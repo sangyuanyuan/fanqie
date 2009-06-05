@@ -30,7 +30,27 @@
 		$db = &get_db();
 		$db->close();
 	}
-		
+	
+	function use_jquery(){
+		js_include_once_tag('jquery-1.3.2.min');
+	}
+	
+	function use_jquery_ui(){
+		js_include_once_tag('jquery-1.3.2.min');
+		js_include_once_tag('jquery-ui-1.7.2.custom.min');
+	}	
+	
+	function validate_form($form_name) {
+		js_include_once_tag('jquery-1.3.2.min');
+		js_include_once_tag('jquery.validate');
+		?>
+		<script>
+			$(function(){
+				$("#<?php echo $form_name;?>").validate();
+			});
+		</script>
+		<?php
+	}
 	
 	function show_video_player($width,$height,$source,$url) {
 		?>

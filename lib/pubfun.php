@@ -32,7 +32,7 @@ function get_current_url()
 	return  "http://" .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI];
 }
 
-function getmicrotime(){ 
+function get_microtime(){ 
    list($usec, $sec) = explode(" ",microtime()); 
    return ((float)$usec + (float)$sec); 
 } 
@@ -42,6 +42,7 @@ function alert($msg)
   echo "alert('" .$msg ."');"; 
   echo "</script>"; 		
 }
+
 
 function _get_js_file($js){
 	if (strtolower($js) == "default") {

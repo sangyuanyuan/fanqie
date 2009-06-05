@@ -9,13 +9,11 @@
 	</head>
 	<body>
 		<?php 
-			js_include_once_tag('jquery-1.3.2.min');
+			use_jquery();
 			$db = get_db();	
 			$total_count = 0;
-			$ret = $db->paginate('select * from users where id <100',5);
-			
+			$ret = $db->paginate('select * from users where id <100',5);			
 			echo "<br>";
-
 		?>
 		<div id="page">
 			<?php paginate('/test/test.php','page');?>
