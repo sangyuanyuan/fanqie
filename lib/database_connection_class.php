@@ -1,5 +1,72 @@
 <?php
- class DatabaseConnection
+class database_row_item_class {
+	private $_db;
+	private $aresult = array();
+	private $change_fields = array();
+	function __construct(&$db=null) {
+		$this->_db = $db;	
+		#$this->aresult = array('b' => '');
+	}
+	function load_from_dataset() {
+		if(!is_object($this->_db)) return false;
+		$this->aresult = $this->_db->_aresult;
+	}
+	function update_to_db($table_name, $key='id', $force=false) {
+		if(!is_object($this->_db) || $this->_db->connected == false) return false;
+		if(array_key_exists($key, $this->aresult)===false){
+			return false;
+		}
+		$sql = "update $table_name set ";
+		$pre = "";
+		if($force){
+			foreach ($this->aresult as $k => $v) {
+				if($k == $key){
+					continue;
+				};
+				$sql .= $pre .$k ."='" .$v ."'";
+				$pre = ",";
+			}
+			
+		}else{
+			foreach ($this->change_fields as $k) {
+				$sql .= $pre .$k ."='" .$this->aresult[$k] ."'";
+				$pre = ",";
+			}
+		}
+		$sql .= " where " .$key  ."='" .$this->aresult[$key];
+		return $this->_db->execute($sql);
+	}
+	
+	function field_by_index($index) {
+		return $this->aresult[$index];
+	}
+	
+	function __get($var) {
+		$var = strtolower($var);
+		if(array_key_exists($var, $this->aresult)){
+			return $this->aresult[$var];
+		}else{
+			return null;
+		}
+	}
+	
+	function __set($var,$value) {
+		if(array_key_exists($var, $this->aresult)){
+			$this->aresult[$var] = $value;
+			if(!in_array($var, $this->change_fields)){
+				$this->change_fields[] = $var;	
+			}			
+		}else{
+			return null;
+		};
+	}
+	function reset_var() {
+		$this->aresult = array();
+		$this->change_fields = array();
+	}
+}
+
+ class daatabase_connection_class
   {
   	var $_db=NULL;//the link resource
 	var $_qresult = NULL;//the query result
@@ -10,6 +77,10 @@
   	var $password = '';
 	var $code = 'utf8';
 	var $connected = false;
+	public $record_count = 0;
+	private $data_set = array();
+	private $data_set_pointer = 0;
+
 
   	public function connect()
   	{
@@ -53,6 +124,26 @@
   		return $resutl;
   	}  		
   	
+	function paginate($sql, $per_page=10,$page_var='page') {
+		$page_count_var  = $page_var ."_count";
+		global $$page_count_var;
+		$page = isset($_REQUEST[$page_var]) ? $_REQUEST[$page_var] : 1;
+		$select = substr($sql,0,6);
+		if(strtoupper($select) != 'SELECT'){
+			$this->_debug_info('sql in function painate must be started with SELECT; sql=' .$sql);
+			return false;			
+		}
+
+		$sql = substr_replace($sql," SQL_CALC_FOUND_ROWS ",6, 0) ." limit " .($per_page * ($page - 1)) . "," .$per_page;
+		if($this->query($sql) === false){
+			return false;
+		}
+		$ret = mysql_query('select FOUND_ROWS()');
+		mysql_data_seek($ret,0); 
+		$ret = mysql_fetch_array($ret);
+		$$page_count_var = ceil($ret[0] / $per_page);
+		return $this->data_set;
+	}
 	
 	public function close(){
 		mysql_close();
@@ -60,9 +151,9 @@
 		$this->connected = false;	
 	}  	
 	
-  	public function query($sql)
+  	public function &query($sql)
   	{
-  		$this->reset_vars();
+		$this->reset_vars();
   		if ($this->connected === false) {
   			$this->_debug_info('database connection has not been established!');
   			return  false;
@@ -74,9 +165,16 @@
   		  	return FALSE;
   		}
   		else
-  		{  			
-  		  $this->move_first();
-  		  return TRUE;
+  		{  	
+		  //get the recrod count		
+  		  $this->record_count = mysql_num_rows($this->_qresult);
+		  if($this->_move_first() === false) return $ret;
+		  do{
+  		  	$item = new database_row_item_class($this);
+			$item->load_from_dataset();
+			$this->data_set[] = $item;
+  		  }while($this->_move_next());
+  		  return $this->data_set;
   		}  		  
   	}
   	
@@ -96,73 +194,30 @@
   		  return true;
   		}   		  		
   	}
-
-  	private function _get_record_count(){
-  		return !empty($this->_qresult) ? mysql_num_rows($this->_qresult)  : -1;
-  	}
-  	//get the effected rows count after calling execute function.
-  	private function _get_affect_count(){
-  		return is_resource($this->_db) ? mysql_affected_rows($this->_db)  : -1;
-  	}
-  	
-  	private function _get_last_insert_id(){
-  		return !empty($this->_db) ? mysql_insert_id($this->_db) : -1;
-  	}
-  	
-	 private function reset_vars()
-	 {
-	 	unset($this->_aresult);
-		unset($this->_qresult);
-	 }  	 
-		 
-	public function move_first()
-	{	
-		$this->_aresult = array();
-		if (!is_resource($this->_qresult) || mysql_num_rows($this->_qresult) <=0 )
-		{			
-			return FALSE;
-		}
-		mysql_data_seek($this->_qresult,0); 
-		$this->_aresult = mysql_fetch_array($this->_qresult);
-		return TRUE;
-	}
-
-	public function move_next()
-	{
-		$this->_aresult = array();
-		if (!is_resource($this->_qresult)){
-		  return FALSE;
-		}
-		$rtemp = mysql_fetch_array($this->_qresult);
-		if ($rtemp===FALSE) {
-		  return FALSE;
-		}
-		$this->_aresult = $rtemp;
-		return TRUE;
-	}
 	
-	function move_to($pos)
-	{
-		$this->_aresult = array();
-		if(!is_int($pos) || $pos < 0){
-			$this->_debug_info('fail to call move_to,out of range!');
+	
+	public function move_first(){
+		if($this->record_count <=0 ){
 			return false;
 		}
-		$result = mysql_data_seek($this->_qresult,$pos); 
-		if ($result) {
-			$this->_aresult = mysql_fetch_array($this->_qresult);
-		}
-		return $result;
+		$this->data_set_pointer = 0;
+		return true;
+	}  	
+	
+	public function move_next(){
+		if($this->data_set_pointer + 1 >= $this->record_count) return false;
+		$this->data_set_pointer += 1;
+		return true;
 	}
 		
 	public function field_by_index($index)
 	{
-		return $this->_aresult[$index];
+		return $this->data_set[$this->data_set_pointer]->field_by_index($index);
 	}
 	
 	public function field_by_name($name)
 	{
-		return $this->_aresult[$name];
+		return $this->data_set[$this->data_set_pointer]->$name;
 	}
 	
 	public function get_field_name($index)
@@ -176,7 +231,10 @@
 	}		
   	
  	
-  	private function _connect()
+  	/*
+  	 * private functions defination
+  	 */
+	private function _connect()
   	{
   		
   		$this->_db = mysql_connect($this->servername, $this->username, $this->password);
@@ -201,16 +259,63 @@
   			}  			
   		}
   	}
+	
+  	
+	private function reset_vars()
+	 {
+	 	unset($this->_aresult);
+		unset($this->_qresult);
+		$this->data_set = array();
+		$this->data_set_pointer = 0;		
+		$this->record_count = 0;
+	 }  	 
+		 
+	private function _move_first()
+	{	
+		$this->_aresult = array();
+		if (!is_resource($this->_qresult) || mysql_num_rows($this->_qresult) <=0 )
+		{			
+			return FALSE;
+		}
+		mysql_data_seek($this->_qresult,0); 
+		$this->_aresult = mysql_fetch_array($this->_qresult);
+		return TRUE;
+	}
+
+	private function _move_next()
+	{
+		$this->_aresult = array();
+		if (!is_resource($this->_qresult)){
+		  return FALSE;
+		}
+		$rtemp = mysql_fetch_array($this->_qresult);
+		if ($rtemp===FALSE) {
+		  return FALSE;
+		}
+		$this->_aresult = $rtemp;
+		return TRUE;
+	}
+	
+	private function _move_to($pos)
+	{
+		$this->_aresult = array();
+		if(!is_int($pos) || $pos < 0){
+			$this->_debug_info('fail to call _move_to,out of range!');
+			return false;
+		}
+		$result = mysql_data_seek($this->_qresult,$pos); 
+		if ($result) {
+			$this->_aresult = mysql_fetch_array($this->_qresult);
+		}
+		return $result;
+	}	
   	
   	private function __get($var){
-  		if (strtolower($var) == "record_count"){
-  			return $this->_get_record_count();
-  		}
   		if (strtolower($var) == "affect_count"){
-  			return $this->_get_affect_count();
+  			return mysql_affected_rows($this->_db);
   		}
   		if (strtolower($var) == "last_insert_id"){
-  			return $this->_get_last_insert_id();
+  			return mysql_insert_id($this->_db);
   		}
   	}
   	

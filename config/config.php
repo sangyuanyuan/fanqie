@@ -9,7 +9,7 @@
   */
  
  $db_server_name = 'localhost';
- $db_database_name = 'smgnew';
+ $db_database_name = 'enjoyoung_production';
  $db_user_name = 'root';
  $db_password = '';
  $db_code = 'utf8';
