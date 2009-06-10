@@ -15,6 +15,7 @@
 	</head>
 	<body>
 		<?php 
+			echo phpinfo();
 			use_jquery();
 			$db = get_db();	
 			$total_count = 0;
