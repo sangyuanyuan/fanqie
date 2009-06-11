@@ -20,6 +20,14 @@ class upload_file_class
 		$this->file_count = count($_FILES[$field_name]['name']);
 		if($this->file_count == 1){
 			//only upload one file
+			if($_FILES['upfile']['size']>=$max_file_size){
+				alert('fail to upload file!out of max size range');
+				return false;
+			}
+			if($_FILES[$field_name]['error'] != UPLOAD_ERR_OK){
+				alert('fail to upload file!');
+				return false;
+			}
 			$path_info = pathinfo($_FILES[$field_name]['name']);
 			$extension = $path_info['extension'];
 			if(!empty($filter)){

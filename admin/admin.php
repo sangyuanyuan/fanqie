@@ -24,7 +24,10 @@
 				<?php
 					$db=get_db();
 					$sql='select * from smg_admin_menu where parent_id=0';
-					if($main_menu=$db->query($sql)==ture){
+					$main_menu = $db->query($sql);
+					echo $main_menu[0]->name;
+					if($main_menu !==false){
+						
 						for($i=0;$i<8;$i++){
 				?>
 				<div class=menu1><a href="#">部门设置</a></div>
@@ -35,6 +38,7 @@
 						}
 				 	}else{
 						echo "查询失败<br>";
+						echo $db->get_error();
 						echo $sql;
 					}
 				?>
