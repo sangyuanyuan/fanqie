@@ -2,7 +2,6 @@
 	require_once('../frame.php');
 	css_include_tag('admin');
 	use_jquery_ui();
-	$db=get_db();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -21,15 +20,24 @@
 		</div>
 		<div id=part2>
 			<div id="accordion">
+				
 				<?php
-					$sql='select * from '
-					for($i=0;$i<8;$i++){
+					$db=get_db();
+					$sql='select * from smg_admin_menu where parent_id=0';
+					if($main_menu=$db->query($sql)==ture){
+						for($i=0;$i<8;$i++){
 				?>
 				<div class=menu1><a href="#">部门设置</a></div>
 				<div>
 					<div class=menu2 onClick="javascript:document.getElementById('admin_iframe').src='department.php'">部门管理</div>
 				</div>
-				<?php }?>
+				<?php
+						}
+				 	}else{
+						echo "查询失败<br>";
+						echo $sql;
+					}
+				?>
 				<div class=menu1><a href="#">内容管理</a></div>
 				<div>
 					<div class=menu2 onClick="javascript:document.getElementById('admin_iframe').src='news.php'">.文章管理</div>
@@ -97,8 +105,9 @@
 				<a style="text-decoration:none;" href="http://trac.xun-ao.com" target="_blank" class=menu1>项目管理</a>	 
 			</div>
 			<div class=menu1><a href="/bbs/admincp.php" target="_blank" style="text-decoration:none; color:#333333">论坛管理</a></div>
-			  	<div class=menu1><a href="/blog/admincp.php" target="_blank" style="text-decoration:none; color:#333333">博客管理</a></div>
-			  	<div class=menu1><a href="/multishop_v23_free/system/index.php" target="_blank" style="text-decoration:none; color:#333333">商城管理</a></div>
+			<div class=menu1><a href="/blog/admincp.php" target="_blank" style="text-decoration:none; color:#333333">博客管理</a></div>
+			<div class=menu1><a href="/multishop_v23_free/system/index.php" target="_blank" style="text-decoration:none; color:#333333">商城管理</a></div>
+			<div class=menu1><a href="menu.php" target="admin_iframe">菜单管理</a></div>
 		</div>
 		
 		<div id=part3>

@@ -11,7 +11,7 @@
  $db_server_name = 'localhost';
  $db_database_name = 'enjoyoung_production';
  $db_user_name = 'root';
- $db_password = '';
+ $db_password = 'xunao';
  $db_code = 'utf8';
  
  $db_server_name_bak = '172.27.203.82';
