@@ -4,3 +4,4 @@ Thumbs.db
 upload/*
 *.flv
 ~*
+config/config.php
