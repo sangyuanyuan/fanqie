@@ -5,7 +5,7 @@
 	require_once "../lib/table_class.php";
 	$oupload = new upload_file_class();
 	$oupload->save_dir = '/upload/';
-	$oupload->handle('file');	
+	$oupload->handle('file','filter_pic');	
 	#echo phpinfo();
 	#var_dump($_FILES);
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -20,13 +20,6 @@
 		#var_dump($menu);
 		$menu->save();
 	}else{
-		$menu = new table_class('smg_admin_menu');
-		$items = $menu->find('all',array('conditions' => "id>0", 'limit' => 2, 'order' => ' id DESC'));
-		$menu->find_by_name('123');
-		$click = new table_class('click_count');
-		$click->update('click_count',$click->click_count + 1);
-	
-
 		
 	}
 	
@@ -53,8 +46,7 @@
 		</div>
 		<form enctype="multipart/form-data" action="test.php" method='post'>
 			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo 1024*1024*4;?>">
-			file1 :<input type="file" name="file[]">
-			file2 :<input type="file" name="file[]">
+			file1 :<input type="file" name="file">
 			menu_name: <input type="text" name="menu[name]" value="<?php echo $menu->name;?>">
 			menu_name: <input type="text" name="menu[href]" value="<?php echo $menu->href;?>">
 			parent_id: <input type="text" name="menu[parent_id]" value="<?php echo $menu->parent_id;?>">
