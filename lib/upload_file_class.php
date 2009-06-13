@@ -46,11 +46,11 @@ class upload_file_class
 					return false;
 				}
 			}
-			
-			$save_name = $this->save_dir .rand_str() .'.'.$extension;
+			$ret = rand_str() .'.'.$extension;
+			$save_name = $this->save_dir . $ret;
 			$tmp_name = $_FILES[$field_name]['tmp_name'];
 			if(move_uploaded_file($tmp_name,$save_name)){
-				return $save_name;
+				return $ret;
 			}else{
 				debug_info('上传失败','js');
 			}
