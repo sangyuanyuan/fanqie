@@ -6,3 +6,4 @@ upload/*
 *.flv
 ~*
 config/config.php
+*.bak
