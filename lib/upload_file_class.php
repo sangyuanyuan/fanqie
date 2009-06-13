@@ -2,15 +2,23 @@
 
 $filter_pic = array('jpg','png','bmp','gif','icon');
 $filter_video = array('flv','wmv','wav','mp3','mp4','avi','rm');
+
 class upload_file_class
 {
 	var $save_dir;
 	var $save_type=1;
 	var $file_count = 0;
 	var $field_name = '';
-	var $max_file_size;
-	function handle($field_name='',$filter = '') {
+	var $max_file_size=0;
+	function handle($field_name='file',$filter = '') {
 		$field_name  = empty($field_name) ? $this->field_name : $field_name;
+		if($this->save_dir{0} == '/'){
+			$this->save_dir = $_SERVER['DOCUMENT_ROOT'] . $this->save_dir;
+		}
+		if(is_dir($this->save_dir)===false){
+			debug_info('dir not exists');
+			mkdir($this->save_dir);
+		}
 		if(!array_key_exists($field_name, $_FILES)){
 			if(function_exists(debug_info)){
 				debug_info('fail to handle upload file');
@@ -20,7 +28,7 @@ class upload_file_class
 		$this->file_count = count($_FILES[$field_name]['name']);
 		if($this->file_count == 1){
 			//only upload one file
-			if($_FILES['upfile']['size']>=$max_file_size){
+			if($_FILES[$field_name]['size']>$this->max_file_size & $this->max_file_size > 0){
 				alert('fail to upload file!out of max size range');
 				return false;
 			}
@@ -38,10 +46,17 @@ class upload_file_class
 				}
 			}
 			
-			$save_name = $this->save_dir .rand_str() .$extension;
+			$save_name = $this->save_dir .rand_str() .'.'.$extension;
+			$tmp_name = $_FILES[$field_name]['tmp_name'];
+			if(move_uploaded_file($tmp_name,$save_name)){
+			}else{
+				debug_info('上传失败','js');
+			}
 			
 		}else{
-			
+			foreach ($_FILES[$field_name] as $key => $value) {
+				echo "$key=$value";
+			}
 		}
 	}
 }
