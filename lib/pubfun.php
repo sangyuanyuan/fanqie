@@ -229,6 +229,27 @@ function paginate($url="",$ajax_dom=nil,$page_var="page")
 }
 
 
+function strfck($str)
+{
+	$str=str_replace('\"','"',$str);
+	$str=str_replace('"font-size','"mso-bidi-font-size',$str);
+	$str=str_replace('FONT-SIZE','mso-bidi-font-size',$str);
+	return $str;
+}
+
+//获取FCK字符串内容
+function get_fck_content($str,$symbol='fck_pageindex')
+{
+	$ies = '<div style="page-break-after: always"><span style="display: none">&nbsp;</span></div>';	
+	$ffs = '<div style="page-break-after: always; "><span style="DISPLAY:none">&nbsp;</span></div>';		   
+	$contents = split($ies,$str);
+	if (count($contents) < 0 ) {
+		$contents = split($ffs,$str);
+	}
+	$index = isset($_REQUEST[$symbol]) ? $_REQUEST[$symbol] : 1;
+	return strfck($contents[$index-1]);
+}
+
 
 
 ?>
