@@ -3,6 +3,7 @@
 	require('config/config.php');
 	require_once(CURRENT_DIR ."lib/pubfun.php");
 	require_once(CURRENT_DIR ."lib/database_connection_class.php");
+	require_once(CURRENT_DIR ."lib/table_class.php");
 	
 	function get_config($var,$path=''){
 		if(empty($path)){$path = LIB_PATH .'../config/config.php';}
@@ -14,7 +15,7 @@
 	function &get_db() {
 		global $g_db;
 		if(!is_object($g_db)){
-			$g_db = new daatabase_connection_class();
+			$g_db = new database_connection_class();
 		}
 		if($g_db->connected) return $g_db;
 		$servername = get_config('db_server_name');
