@@ -1,9 +1,9 @@
 function login(param)
 {
   var p;
-  if($.cookie('smg_username')!="")
+  if($.cookie('smg_user_nickname')!="")
   {
-  	p=$.cookie('smg_username');	
+  	p=$.cookie('smg_user_nickname');	
   }
 	else
 	{	
