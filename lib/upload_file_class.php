@@ -17,7 +17,6 @@ class upload_file_class
 			$this->save_dir = $_SERVER['DOCUMENT_ROOT'] . $this->save_dir;
 		}
 		if(is_dir($this->save_dir)===false){
-			debug_info('dir not exists');
 			mkdir($this->save_dir);
 		}
 		if(!array_key_exists($field_name, $_FILES)){
@@ -29,14 +28,15 @@ class upload_file_class
 		$this->file_count = count($_FILES[$field_name]['name']);
 		if($this->file_count == 1){
 			//only upload one file
-			if($_FILES[$field_name]['size']>$this->max_file_size & $this->max_file_size > 0){
-				alert('fail to upload file!out of max size range');
-				return false;
-			}
+			
 			if($_FILES[$field_name]['error'] != UPLOAD_ERR_OK){
 				alert('fail to upload file!' );
 				return false;
 			}
+			if($_FILES[$field_name]['size']>$this->max_file_size & $this->max_file_size > 0){
+				alert('fail to upload file!out of max size range');
+				return false;
+			}			
 			$path_info = pathinfo($_FILES[$field_name]['name']);
 			$extension = $path_info['extension'];
 			if(!empty($filter)){
@@ -53,12 +53,40 @@ class upload_file_class
 				return $ret;
 			}else{
 				debug_info('上传失败','js');
+				return false;
 			}
 			
 		}else{
-			foreach ($_FILES[$field_name] as $key => $value) {
-
+			$result = array();
+			foreach ($_FILES[$field_name]['error'] as $k => $v) {
+				if($v != UPLOAD_ERR_OK){
+					$result[] = array('result' => false, 'name' => '','reason' => $v);
+					continue;
+				}else{
+					if($_FILES[$field_name]['size'][$k]>$this->max_file_size & $this->max_file_size > 0){
+						$result[] = array('result' => false, 'name' => '', 'reason' => 'out of max size range');
+						continue;
+					}			
+					$path_info = pathinfo($_FILES[$field_name]['name'][$k]);
+					$extension = $path_info['extension'];
+					if(!empty($filter)){
+						global $$filter;
+						if(!in_array(strtolower($extension),$$filter)){
+							debug_info('unknow file type');
+							return false;
+						}
+					}
+					$ret = rand_str() .'.'.$extension;
+					$save_name = $this->save_dir . $ret;
+					$tmp_name = $_FILES[$field_name]['tmp_name'][$k];
+					if(move_uploaded_file($tmp_name,$save_name)){
+						$result[] = array('result' => true, 'name' => $ret, 'reason' => 'success');
+					}else{
+						$result[] = array('result' => false, 'name' => '', 'reason' => 'fail to move_uploaded_file');
+					}
+				}
 			}
+			return $result;
 		}
 	}
 }

@@ -1,11 +1,9 @@
 <?php
 	require "../frame.php";
-	require_once "../fckeditor/fckeditor.php";
-	require_once "../lib/upload_file_class.php";
-	require_once "../lib/table_class.php";
 	$oupload = new upload_file_class();
 	$oupload->save_dir = '/upload/';
-	$oupload->handle('file','filter_pic');	
+	$oupload->max_file_size = 1024*1024;
+	$ret = $oupload->handle('file','filter_pic');	
 	#echo phpinfo();
 	#var_dump($_FILES);
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -46,7 +44,8 @@
 		</div>
 		<form enctype="multipart/form-data" action="test.php" method='post'>
 			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo 1024*1024*4;?>">
-			file1 :<input type="file" name="file">
+			file1 :<input type="file" name="file[]">
+			file1 :<input type="file" name="file[]">
 			menu_name: <input type="text" name="menu[name]" value="<?php echo $menu->name;?>">
 			menu_name: <input type="text" name="menu[href]" value="<?php echo $menu->href;?>">
 			parent_id: <input type="text" name="menu[parent_id]" value="<?php echo $menu->parent_id;?>">
