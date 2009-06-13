@@ -1,8 +1,6 @@
 <?php
 	require_once('../frame.php');
 	css_include_tag('admin');
-	use_jquery_ui();
-	$db=get_db();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -26,6 +24,7 @@
 	优先级：<input type="text" name="child_menu_priority"><br>
 	主目录名称：<input type="text" name="child_menu_parent"><br>
 	<input type="submit"  value="提 交">
+	<input type="hidden"  name="type" value="add_menu">
 	</from>
 </body>
 </html>
