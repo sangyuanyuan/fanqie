@@ -2,9 +2,12 @@
 /*
  * public function
  */
-function linux_path($path){
-	return str_replace("\\","/",$path);
-} 
+if (!function_exists('linux_path')){
+	function linux_path($path){
+		return str_replace("\\","/",$path);
+	} 
+}
+
 define(LIB_PATH, linux_path(dirname(__FILE__)) .'/');
 
 function debug_info($msg,$type='php') {
