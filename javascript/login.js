@@ -7,9 +7,9 @@ function login(param)
   }
 	else
 	{	
-		p='<a href="login.frame.php?height=120&width=300&modal=true" class="thickbox" title="Please Sign In">µÇÂ¼</a>';
+		p='<a href="login.frame.php?height=120&width=300&modal=true" class="thickbox" title="Please Sign In">ç™»å½•</a>';
 	}	
-	
-	$('#'+param).html(p);
+	alert(param);
+	$('#'+param).text(p);
 	
 }

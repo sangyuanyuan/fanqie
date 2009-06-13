@@ -50,6 +50,7 @@ class upload_file_class
 			$save_name = $this->save_dir .rand_str() .'.'.$extension;
 			$tmp_name = $_FILES[$field_name]['tmp_name'];
 			if(move_uploaded_file($tmp_name,$save_name)){
+				return $save_name;
 			}else{
 				debug_info('上传失败','js');
 			}
