@@ -11,6 +11,7 @@ class upload_file_class
 	var $field_name = '';
 	var $max_file_size=0;
 	function handle($field_name='file',$filter = '') {
+		if($_SERVER['REQUEST_METHOD'] != 'POST') return;
 		$field_name  = empty($field_name) ? $this->field_name : $field_name;
 		if($this->save_dir{0} == '/'){
 			$this->save_dir = $_SERVER['DOCUMENT_ROOT'] . $this->save_dir;
@@ -55,7 +56,7 @@ class upload_file_class
 			
 		}else{
 			foreach ($_FILES[$field_name] as $key => $value) {
-				echo "$key=$value";
+
 			}
 		}
 	}

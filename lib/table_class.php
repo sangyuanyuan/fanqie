@@ -73,7 +73,7 @@ class table_class{
 			$sqlstr .= " limit " .$limit;
 		}
 
-		$db = get_object('db');
+		$db = get_db();
 		if (!$db->query($sqlstr)) return  null;
 		if($limit == 1){
 			if ($db->record_count <= 0) return null;
@@ -110,7 +110,7 @@ class table_class{
 
 	public function update_attributes($attributes = null){
 		if (is_array($attributes)) {
-			foreach ($attributes as $k => $v) {
+			foreach ($attributes as $k => $v) {		
 				if (array_key_exists($k,$this->fields)) {
 					if ($v == "" && strpos($this->fields_type[$k],'int') !== false) {
 						continue;
