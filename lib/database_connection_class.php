@@ -66,7 +66,7 @@ class database_row_item_class {
 	}
 }
 
- class daatabase_connection_class
+ class database_connection_class
   {
   	var $_db=NULL;//the link resource
 	var $_qresult = NULL;//the query result
