@@ -34,14 +34,14 @@ class upload_file_class
 				return false;
 			}
 			if($_FILES[$field_name]['error'] != UPLOAD_ERR_OK){
-				alert('fail to upload file!');
+				alert('fail to upload file!' );
 				return false;
 			}
 			$path_info = pathinfo($_FILES[$field_name]['name']);
 			$extension = $path_info['extension'];
 			if(!empty($filter)){
 				global $$filter;
-				if(!array_key_exists(strtolower($extension),$$filter)){
+				if(!in_array(strtolower($extension),$$filter)){
 					debug_info('unknow file type');
 					return false;
 				}
