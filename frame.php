@@ -3,6 +3,7 @@
 	require('config/config.php');
 	require_once(CURRENT_DIR ."lib/pubfun.php");
 	require_once(CURRENT_DIR ."lib/database_connection_class.php");
+	require_once(CURRENT_DIR ."lib/table_class.php");
 	
 	function get_config($var,$path=''){
 		if(empty($path)){$path = LIB_PATH .'../config/config.php';}
