@@ -1,8 +1,9 @@
-﻿<?php
+﻿<input type="hidden" id="tg_id" name="tg_id" value="<? echo $_POST['tgid'];?>">
+<?php
   require_once "../frame.php";
   use_jquery_ui();
   $cookie=(isset($_COOKIE['smg_username'])) ? $_COOKIE['smg_username'] : 0;
-  $commenter=$_POST['commenter'];
+  $commenter=$_POST['comment']['commenter'];
   $vowels = array("~", "!", "@", "#", "$", "%", "^", "&", "*", "(",")");
   $commenter=str_replace($vowels,"",$commenter);
   if($commenter=="小番茄"||$commenter=="番茄小编")
@@ -13,15 +14,16 @@
 			$(document).ready(function() {
 	  			alert("特殊名字仅番茄网管理员才能使用！");
 				var val = $("#tg_id").attr("value");
-				window.location.href="/shop/spinfo.php?id=val";
+				window.location.href="/shop/spinfo.php?id="+val;
 			});	
 		</script>
 <? exit;	
   	}
   }
-  $sql="insert into smg_shop_comment(commenter,content,createtime,ip,tg_id) value ('".$_REQUEST['commenter']."','".$_REQUEST['content']."','".Date('Y-m-d H:i:s')."','".getenv('REMOTE_ADDR')."',".$_REQUEST['tgid'].")";
-  echo $sql;
-  $db->execute($sql);
-  get_current_url();
+  $menu = new table_class('smg_shop_comment');
+  $menu->find($_POST['comment']['id']);
+  $menu->update_attributes($_POST['comment']);
+  echo '<br>';
+  $menu->save();
+  redirect('/shop/spinfo.php?id='.$_POST['tgid']);
 ?>
-<input type="hidden" id="tg_id" name="tg_id" value="<? echo $_REQUEST['tgid'];?>">

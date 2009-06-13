@@ -1,50 +1,18 @@
-<? 
-include('../inc/db.inc.php');
-require_once('../libraries/tableobject_class.php');
+Ôªø<? 
+require_once '../frame.php';
+$upload=new upload_file_class();
+
 if($_POST['type']=='insert')
 {
-	$extension=explode(".",$_FILES['upfile']['name']);
-	if(strtolower($extension[(count($extension)-1)])!="")
-	{	
-		$error=0;
-		$extension=explode(".",$_FILES['upfile']['name']);
-		if(strtolower($extension[(count($extension)-1)])!="jpg"&&strtolower($extension[(count($extension)-1)])!="gif"&&strtolower($extension[(count($extension)-1)])!="png"){$error="1"; }
-		if($_FILES['upfile']['error']!=UPLOAD_ERR_OK){$error="1"; }
-		if($_FILES['upfile']['size']>=1048576){$error="1"; }
-		if($error<>"0")
-		{	
-			echo '<script language=javascript>alert("Õº∆¨Ã´¥Û£°")</script>';
-			echo '<script language=javascript>alert("…œ¥´ ß∞‹1£°")</script>';
-			exit;
-		}
-		
-		if($_FILES['upfile']['error']!=UPLOAD_ERR_OK)
-		{
-			echo '<script language=javascript>alert("…œ¥´ ß∞‹2£°")</script>';
-			exit;
-		}
-		
-		$uploaddirall='../upload/shop/';
-		
-		if(strtolower($extension[(count($extension)-1)])=="jpg"){$ext=".jpg";}
-		elseif(strtolower($extension[(count($extension)-1)])=="gif"){$ext=".gif";}
-		else{$ext=".png";}
-		$uploadfilenameall=date('Ymd').genRandomString(6).$ext;
-		$savename = '/upload/shop/'.$uploadfilenameall;	
-		$upfilepathnameall=$uploaddirall.$uploadfilenameall;
-	
-		if(!move_uploaded_file($_FILES['upfile']['tmp_name'],$upfilepathnameall))
-		{
-			echo '<script language=javascript>alert("…œ¥´ ß∞‹3£°")</script>';
-			exit;
-		}
-	}
+	$upload->save_dir = "/upload/pic/";
+	$upload->max_file_size = 1048576;
+	$upload->handle('upfile','filter_pic');
 	ConnectDB();
 		$StrSql='insert into smg_shopdp (name,username,shopurl,createtime) values ("'.$_POST['dpname'].'","'.$_POST['creater'].'","'.$upfilepathnameall.'",now())';
 		$Record = mysql_query($StrSql) or die ("insert error");
 	CloseDB();
 	
-	echo '<script language=javascript>alert("Ã·Ωª≥…π¶£°")</script>';
+	echo '<script language=javascript>alert("Êèê‰∫§ÊàêÂäüÔºÅ")</script>';
 	echo '<script language=javascript>window.location.href="/shop/shoplist.php";</script>';
 	exit;
 }
@@ -61,14 +29,14 @@ if($_POST['type']=='update')
 		if($_FILES['upfile']['size']>=1048576){$error="1"; }
 		if($error<>"0")
 		{	
-			echo '<script language=javascript>alert("Õº∆¨Ã´¥Û£°")</script>';
-			echo '<script language=javascript>alert("…œ¥´ ß∞‹1£°")</script>';
+			echo '<script language=javascript>alert("ÂõæÁâáÂ§™Â§ßÔºÅ")</script>';
+			echo '<script language=javascript>alert("‰∏ä‰º†Â§±Ë¥•1ÔºÅ")</script>';
 			exit;
 		}
 		
 		if($_FILES['upfile']['error']!=UPLOAD_ERR_OK)
 		{
-			echo '<script language=javascript>alert("…œ¥´ ß∞‹2£°")</script>';
+			echo '<script language=javascript>alert("‰∏ä‰º†Â§±Ë¥•2ÔºÅ")</script>';
 			exit;
 		}
 		
@@ -83,7 +51,7 @@ if($_POST['type']=='update')
 	
 		if(!move_uploaded_file($_FILES['upfile']['tmp_name'],$upfilepathnameall))
 		{
-			echo '<script language=javascript>alert("…œ¥´ ß∞‹3£°")</script>';
+			echo '<script language=javascript>alert("‰∏ä‰º†Â§±Ë¥•3ÔºÅ")</script>';
 			exit;
 		}
 	}
@@ -98,7 +66,7 @@ if($_POST['type']=='update')
 		$Record = mysql_query($StrSql) or die ("update error". mysql_error());
 	CloseDB();
 	
-	echo '<script language=javascript>alert("∏¸–¬≥…π¶£°")</script>';
+	echo '<script language=javascript>alert("Êõ¥Êñ∞ÊàêÂäüÔºÅ")</script>';
 	echo '<script language=javascript>window.location.href="/shop/splist.php?id='.$_POST['shopid'] .'";</script>';
 	exit;
 }
