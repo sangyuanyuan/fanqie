@@ -21,20 +21,15 @@
 		<div id=part2>
 			<div id="accordion">
 				<?php
+					
+					$test = new ActiveRecord("smg_admin_menu");
+					
+				
 					$db=get_db();
-<<<<<<< HEAD:admin/admin.php
-					$sql='select * from smg_admin_menu where parent_id=0 and href="" order by priority asc';
+					$sql='select * from smg_admin_menu where parent_id=0 and href="#" order by priority asc';
 					if($db->query($sql)!==false){
 						$main_menu=$db->query($sql);
 						for($i=0;$i<count($main_menu);$i++){
-=======
-					$sql='select * from smg_admin_menu where parent_id=0';
-					$main_menu = $db->query($sql);
-					echo $main_menu[0]->name;
-					if($main_menu !==false){
-						
-						for($i=0;$i<8;$i++){
->>>>>>> b7eb643a3b5692c89792600e6283b1d53fc7e5be:admin/admin.php
 				?>
 				<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
 				<div>
@@ -54,7 +49,6 @@
 						}
 				 	}else{
 						echo "查询失败<br>";
-						echo $db->get_error();
 						echo $sql;
 					}
 				?>
@@ -76,7 +70,7 @@
 		</div>
 		
 		<div id=part3>
-		  <iframe id=admin_iframe name="admin_iframe" scrolling="yes" src="news.php" width="99%" height="700"></iframe>
+		  <iframe id=admin_iframe name="admin_iframe" scrolling="yes" src="menu_list.php" width="99%" height="700"></iframe>
 		</div>
 	</div>
 </body>

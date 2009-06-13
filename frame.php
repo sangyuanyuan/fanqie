@@ -14,7 +14,7 @@
 	function &get_db() {
 		global $g_db;
 		if(!is_object($g_db)){
-			$g_db = new daatabase_connection_class();
+			$g_db = new database_connection_class();
 		}
 		if($g_db->connected) return $g_db;
 		$servername = get_config('db_server_name');
