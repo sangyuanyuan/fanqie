@@ -1,6 +1,6 @@
 ﻿<?
 require_once('../frame.php');
-use_jquery();
+//use_jquery();
 ?>
 <div style="text-align:center ">
 <table border="0" cellpadding="3" cellspacing="3" style="margin:0 auto;" >
@@ -13,7 +13,7 @@ use_jquery();
     <td><input id="passwod_text" type="password" size="20" style="width:180px;"></td>
   </tr>
   <tr align="right">
-    <td colspan="2"><input type="button" style="width:90px;" value="登录" onclick="check_login()">&nbsp;<input type="button" style="width:90px;"  value="取消" onclick="tb_remove();"></td>
+    <td colspan="2"><input type="button" style="width:90px;" value="登录" onclick="check_login();">&nbsp;<input type="button" style="width:90px;"  value="取消" onclick="tb_remove();"></td>
   </tr>
 </table>
 </div>
