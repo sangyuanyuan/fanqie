@@ -108,12 +108,13 @@ class table_class{
 		}
 	}
 	
-	public function delete(){
-		if(empty($this->fields['id'])){
+	public function delete($id=''){
+		$id = empty($id) ? $this->fields['id'] : $id;
+		if(empty($id)){
 			debug_info('id is empty.fail to delete');
 		}
 		$db = get_db();
-		return $db->execute('delete from ' .$this->_tablename .' where id=' . $this->fields['id']);
+		return $db->execute('delete from ' .$this->_tablename .' where id=' . $id);
 	}
 
 	public function update_attributes($attributes = null){
