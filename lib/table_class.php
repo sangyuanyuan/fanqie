@@ -107,6 +107,14 @@ class table_class{
 			$this->_update();
 		}
 	}
+	
+	public function delete(){
+		if(empty($this->fields['id'])){
+			debug_info('id is empty.fail to delete');
+		}
+		$db = get_db();
+		return $db->execute('delete from ' .$this->_tablename .' where id=' . $this->fields['id']);
+	}
 
 	public function update_attributes($attributes = null){
 		if (is_array($attributes)) {
