@@ -40,7 +40,7 @@
 				$main_menu = $menu->find("all",array('conditions' => 'href!="#" and parent_id=0','order' => 'priority'));
 				for($i=0;$i<count($main_menu);$i++){
 			?>
-			<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>" target="_blank"><?php echo $main_menu[$i]->name;?></a></div>
+			<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>" target="admin_iframe"><?php echo $main_menu[$i]->name;?></a></div>
 			<?php }?>
 		</div>
 		
