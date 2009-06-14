@@ -1,6 +1,7 @@
 <?php
 	require_once('../frame.php');
 	css_include_tag('admin');
+	$id=$_REQUEST['id'];
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -11,20 +12,58 @@
 	<title>smg</title>
 </head>
 <body>
+	<table width="795" border="0" id="list" style="font-size:14px;">
 	<form id="menu_form" method="POST" action="menu.post.php">
-	<a href="">添加一级菜单</a><br>
-	名称：<input type="text" name="main_menu_name"><br>
-	链接：<input type="text" name="main_menu_link"><br>
-	描述：<input type="text" name="main_menu_description"><br>
-	优先级：<input type="text" name="main_menu_priority"><br>
-	<a href="">添加二级菜单</a><br>
-	名称：<input type="text" name="child_menu_name"><br>
-	链接：<input type="text" name="child_menu_link"><br>
-	描述：<input type="text" name="child_menu_description"><br>
-	优先级：<input type="text" name="child_menu_priority"><br>
-	主目录名称：<input type="text" name="child_menu_parent"><br>
-	<input type="submit"  value="提 交">
+	<?php if($id==0){?>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td colspan="2" width="795" align="left">　　添加主菜单</td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td>名称：</td>
+			<td align="left"><input type="text" name="menu[name]"></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td>链接：</td>
+			<td align="left"><input type="text" name="menu[href]"></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td>描述：</td>
+			<td align="left"><input type="text" name="menu[description]"></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td>优先级：</td>
+			<td align="left"><input type="text" name="menu[priority]"></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td colspan="2" width="795" align="center"><input type="submit"  value="提 交"></td>
+		</tr>
+	<?php }else{?>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td colspan="2" width="795" align="left">　　添加子菜单</td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td>名称：</td>
+			<td align="left"><input type="text" name="menu[name]"></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td>链接：</td>
+			<td align="left"><input type="text" name="menu[href]"></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td>描述：</td>
+			<td align="left"><input type="text" name="menu[description]"></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td>优先级：</td>
+			<td align="left"><input type="text" name="menu[priority]"></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td colspan="2" width="795" align="center"><input type="submit"  value="提 交"></td>
+		</tr>
+	<?php }?>
 	<input type="hidden"  name="type" value="add_menu">
+	<input type="hidden" name="menu[parent_id]" value="<?php echo $id;?>">
 	</from>
+	</table>
 </body>
 </html>

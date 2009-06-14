@@ -22,51 +22,28 @@
 			<div id="accordion">
 				<?php
 					
-					$test = new ActiveRecord("smg_admin_menu");
-					
-				
-					$db=get_db();
-					$sql='select * from smg_admin_menu where parent_id=0 and href="#" order by priority asc';
-					if($db->query($sql)!==false){
-						$main_menu=$db->query($sql);
-						for($i=0;$i<count($main_menu);$i++){
+					$menu = new table_class("smg_admin_menu");
+					$main_menu = $menu->find("all",array('conditions' => 'href="#"  and parent_id=0','order' => 'priority'));
+					for($i=0;$i<count($main_menu);$i++){
+					$db=get_db();		
 				?>
 				<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
 				<div>
 					<?php
-						$sql='select * from smg_admin_menu where parent_id='.$main_menu[$i]->id.' order by priority asc';
-						if($db->query($sql)!==false){
-							$child_menu=$db->query($sql);
-							for($j=0;$j<count($child_menu);$j++){
+						$child_menu=$menu->find("all",array('conditions' => 'parent_id='.$main_menu[$i]->id,'order' => 'priority'));
+						for($j=0;$j<count($child_menu);$j++){
 					?>
 						<div class=menu2>·<a href="<?php echo $child_menu[$j]->href;?>" target="admin_iframe"><?php echo $child_menu[$j]->name;?></a></div>
-					<?php
-							}
-						}
-					?>
+					<?php }?>
 				</div>
-				<?php
-						}
-				 	}else{
-						echo "查询失败<br>";
-						echo $sql;
-					}
-				?>
+				<?php }?>
 			</div>
 			<?php
-				$sql='select * from smg_admin_menu where parent_id=0 and href!="#" order by priority asc';
-				if($db->query($sql)!==false){
-					$main_menu=$db->query($sql);
-					for($i=0;$i<$db->record_count;$i++){
+				$main_menu = $menu->find("all",array('conditions' => 'href!="#" and parent_id=0','order' => 'priority'));
+				for($i=0;$i<$db->record_count;$i++){
 			?>
 			<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>" target="_blank"><?php echo $main_menu[$i]->name;?></a></div>
-			<?php
-					}
-			 	}else{
-					echo "查询失败<br>";
-					echo $sql;
-				}
-			?>
+			<?php }?>
 		</div>
 		
 		<div id=part3>

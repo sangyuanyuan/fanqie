@@ -28,7 +28,6 @@ class table_class{
 			$this->fields[$name] = $default;
 			$this->fields_default[$name] = $default;
 		}while ($db->move_next());
-
 		//$this->_set_fields_default();
 		if (func_num_args() <= 0) {
 			return ;
@@ -72,9 +71,8 @@ class table_class{
 		if ($limit > 0) {
 			$sqlstr .= " limit " .$limit;
 		}
-
 		$db = get_db();
-		if (!$db->query($sqlstr)) return  null;
+		if (!$db->query($sqlstr)) return  null ;
 		if($limit == 1){
 			if ($db->record_count <= 0) return null;
 			$result = clone $this;
@@ -96,6 +94,7 @@ class table_class{
 			return $result;
 
 		}
+		
 	}
 
 	public function save(){

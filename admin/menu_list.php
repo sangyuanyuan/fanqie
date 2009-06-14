@@ -2,8 +2,9 @@
 	require_once('../frame.php');
 	css_include_tag('admin');
 	use_jquery();
+	js_include_tag('menu_list');
 	$db=get_db();
-	$sql='select * from smg_admin_menu';
+	$sql='select * from smg_admin_menu where parent_id=0';
 	if($db->query($sql)){
 		$record=$db->query($sql);
 	}else{
@@ -20,30 +21,36 @@
 	<title>smg</title>
 </head>
 <body>
-	<table width="795" border="0" id="list">
+	
+	<table width="795" border="0" id="list" style="font-size:14px;">
+		<tr >
+			<div style="padding-top:3px; padding-left:10px; "><a href="add_menu.php?id=0" style="font-weight:bold; font-size:15px; ">添加主目录</a></div>
+		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td width="200">菜单名称</td><td width="100">父目录名称</td><td width="60">优先级</td><td width="150">链接</td><td width="285">操作</td>
+			<td width="300">菜单名称</td><td width="60">优先级</td><td width="150">链接</td><td width="285">操作</td>
 		</tr>
 		<?php
 			for($i=0;$i<count($record);$i++){
 		?>
-			<div id="aaa" >
 				<tr align="center" bgcolor="#f9f9f9" height="22px;" id=<?php echo $record[$i]->id;?> >
-					<td><?php echo $record[$i]->name;?></td>
-					<td>
-						<?php 
-							$sql='select name from smg_admin_menu where id="'.$record[$i]->parent_id.'"';
-							$parent_name=$db->query($sql);
-							echo $parent_name[0]->name;
-						?>
-						
-					</td>
+					<td><div style="margin-left:100px;float:left; display:inline;"><img onmouseover="this.style.cursor='hand'"  name="<?php echo $record[$i]->id;?>" src="/images/admin/plus.gif"></div><div style="padding-top:3px; float:left; display:inline; margin:0 auto"><?php echo $record[$i]->name;?></div></td>
 					<td><?php echo $record[$i]->priority;?></td>
 					<td><?php echo $record[$i]->href;?></td>
-					<td><a href="edit_menu.php?id=<?php echo $record[$i]->id;?>" target="admin_iframe">编辑</a><a  class="del" onmouseover="this.style.cursor='hand'" name="<?php echo $record[$i]->id;?>" style="margin-left:30px;">删除</a></td>
+					<td><a href="add_menu.php?id=<?php echo $record[$i]->id;?>">添加子目录</a><a href="edit_menu.php?id=<?php echo $record[$i]->id;?>"  style="margin-left:30px;" target="admin_iframe">编辑</a><a  class="del" onmouseover="this.style.cursor='hand'" name="<?php echo $record[$i]->id;?>" style="margin-left:30px; color:red">删除</a></td>
 				</tr>
-			</div>
 		<?php
+			$sql='select * from smg_admin_menu where parent_id>0 and parent_id="'.$record[$i]->id.'"';
+			$record2=$db->query($sql);
+			for($j=0;$j<count($record2);$j++){
+		?>
+				<tr align="center" bgcolor="#f9f9f9" height="22px;" style="display:none;" id=<?php echo $record2[$j]->id;?> name="<?php echo $record[$i]->id;?>">
+					<td><div style="font-size:13px; color:blue"><li></li><?php echo $record2[$j]->name;?></li></div></td>
+					<td><?php echo $record2[$j]->priority;?></td>
+					<td><?php echo $record2[$j]->href;?></td>
+					<td><div style="margin-left:70px;"><a href="edit_menu.php?id=<?php echo $record2[$j]->id;?>"  style="margin-left:30px;" target="admin_iframe">编辑</a><a  class="del" onmouseover="this.style.cursor='hand'" name="<?php echo $record2[$j]->id;?>" style="margin-left:30px; color:red;">删除</a></div></td>
+				</tr>
+		<?php
+				}
 			}
 			close_db();
 		?>
@@ -52,22 +59,3 @@
 </body>
 </html>
 
-<script>
-	$(function(){
-		$(".del").click(function(){
-			if(!window.confirm("确定要删除吗")){
-				return false;
-			}else{
-				$.post("menu.post.php",{del_id:$(this).attr('name'),type:"del_menu"},function(data){
-					//alert(data);
-					//alert($("#"+data).attr('id'));
-					$("#"+data).remove();
-				});
-			}
-		});
-
-			//alert($(this).attr('name'));
-			
-	});
-
-</script>
