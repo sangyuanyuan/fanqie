@@ -18,10 +18,15 @@ $(function(){
 					//alert(data);
 					//alert($("#"+data).attr('id'));
 					$("#"+data).remove();
+					window.parent.location.reload();
 				});
 			}
 		});
-
+		
+		if($("input").attr('value')==1){
+			window.parent.location.reload();
+			$("input").attr('value','0');
+		}
 			//alert($(this).attr('name'));
 			
 	});

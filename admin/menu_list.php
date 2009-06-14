@@ -3,14 +3,7 @@
 	css_include_tag('admin');
 	use_jquery();
 	js_include_tag('menu_list');
-	$db=get_db();
-	$sql='select * from smg_admin_menu where parent_id=0';
-	if($db->query($sql)){
-		$record=$db->query($sql);
-	}else{
-		echo "select from smg_admin_menu found error<br>";
-		echo $sql;
-	}
+	$id = $_REQUEST['id'];
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -30,6 +23,8 @@
 			<td width="300">菜单名称</td><td width="60">优先级</td><td width="150">链接</td><td width="285">操作</td>
 		</tr>
 		<?php
+			$menu = new table_class("smg_admin_menu");
+			$record = $menu->find("all",array('conditions' => 'parent_id=0','order' => 'priority'));
 			for($i=0;$i<count($record);$i++){
 		?>
 				<tr align="center" bgcolor="#f9f9f9" height="22px;" id=<?php echo $record[$i]->id;?> >
@@ -39,8 +34,7 @@
 					<td><a href="add_menu.php?id=<?php echo $record[$i]->id;?>">添加子目录</a><a href="edit_menu.php?id=<?php echo $record[$i]->id;?>"  style="margin-left:30px;" target="admin_iframe">编辑</a><a  class="del" onmouseover="this.style.cursor='hand'" name="<?php echo $record[$i]->id;?>" style="margin-left:30px; color:red">删除</a></td>
 				</tr>
 		<?php
-			$sql='select * from smg_admin_menu where parent_id>0 and parent_id="'.$record[$i]->id.'"';
-			$record2=$db->query($sql);
+			$record2 = $menu->find("all",array('conditions' => 'parent_id>0 and parent_id='.$record[$i]->id));
 			for($j=0;$j<count($record2);$j++){
 		?>
 				<tr align="center" bgcolor="#f9f9f9" height="22px;" style="display:none;" id=<?php echo $record2[$j]->id;?> name="<?php echo $record[$i]->id;?>">
@@ -52,9 +46,8 @@
 		<?php
 				}
 			}
-			close_db();
 		?>
-		
+		<input type="hidden" id="reload_flag" value="<?php echo $id;?>">
 	</table>
 </body>
 </html>

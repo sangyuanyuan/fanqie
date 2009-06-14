@@ -28,7 +28,7 @@
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td>链接：</td>
-			<td align="left"><input type="text" name="menu[href]" value="<?php echo $record[0]->href;?>"></td>
+			<td align="left"><input type="text" name="menu[href]" id="href" value="<?php echo $record[0]->href;?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td>描述：</td>
@@ -36,7 +36,7 @@
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td>优先级：</td>
-			<td align="left"><input type="text" name="menu[priority]" value="<?php echo $record[0]->priority;?>"></td>
+			<td align="left"><input type="text" name="menu[priority]" id="priority" value="<?php echo $record[0]->priority;?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit"  value="提 交"></td>
@@ -51,6 +51,13 @@
 
 <script>
 	$(document).ready(function(){
-		
+		$("#submit").click(function(){
+			if($("#href").attr('value')==""){
+				$("#href").attr('value','#');
+			}
+			if($("#priority").attr('value')==""){
+				$("#priority").attr('value','100');
+			}
+		});
 	});
 </script>

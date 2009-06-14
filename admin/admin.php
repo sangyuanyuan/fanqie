@@ -20,12 +20,10 @@
 		</div>
 		<div id=part2>
 			<div id="accordion">
-				<?php
-					
+				<?php				
 					$menu = new table_class("smg_admin_menu");
 					$main_menu = $menu->find("all",array('conditions' => 'href="#"  and parent_id=0','order' => 'priority'));
 					for($i=0;$i<count($main_menu);$i++){
-					$db=get_db();		
 				?>
 				<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
 				<div>
@@ -40,7 +38,7 @@
 			</div>
 			<?php
 				$main_menu = $menu->find("all",array('conditions' => 'href!="#" and parent_id=0','order' => 'priority'));
-				for($i=0;$i<$db->record_count;$i++){
+				for($i=0;$i<count($main_menu);$i++){
 			?>
 			<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>" target="_blank"><?php echo $main_menu[$i]->name;?></a></div>
 			<?php }?>

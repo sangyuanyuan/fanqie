@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
  * public function
  */
@@ -141,6 +141,84 @@ function rand_str($len=10){
 
 function is_ajax(){
 	return strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])=="xmlhttprequest" ? true : false;
+}
+
+
+function   aweek($gdate=" ",$first=0){ 
+  if(!$gdate)   $gdate   =   date( "Y-m-d "); 
+  $w   =   date( "w ",   strtotime($gdate));//取得一周的第几天,星期天开始0-6 
+  $dn   =   $w   ?   $w   -   $first   :   6;//要减去的天数 
+  $st   =   date( "Y-m-d ",   strtotime( "$gdate   - ".$dn. "   days ")); 
+  $data=everyday($st); 
+  return  $data;//返回开始和结束日期 
+} 
+
+function getTimeOfWeek($year,$week,$dir=0)
+{
+  $wday=4-date('w',mktime(0,0,0,1,4,$year))+1;
+  return strtotime(sprintf("+%d weeks",$week-($dir?0:1)),mktime(0,0,0,1,$wday,$year))-($dir?1:0);
+}
+
+function everyday($rq)
+{
+		for($i=0;$i<7;$i++)
+		{
+			$date[]=date("Y-m-d",strtotime("$rq +".$i." days"));
+		}
+		return $date;
+}
+
+
+Function cut_str($str,$start,$len) //设置3个参数 
+{ 
+$strlen=strlen($str); // 获取字符长度
+$clen=0; 
+for($i=0;$i<$strlen;$i++,$clen++) 
+{ 
+  if ($clen>=$start+$len) //当大于截取字符数，则跳出循环
+   break; 
+  if(ord(substr($str,$i,1))>0xa0) //ord 本函数返回字符的 ASCII (美国国家标准交换码) 序数值。本函数和chr()函数相反。
+  { //0xa0 代表 十进制 160,0xa0表示汉字的开始
+   if ($clen>=$start)  //判断截取位置
+    $tmpstr.=substr($str,$i,2);   //中文截取两个字符
+   $i++; 
+  } 
+   else 
+  { 
+   if ($clen>=$start) 
+    $tmpstr.=substr($str,$i,1);   //非中文截取一个字符
+  } 
+} 
+return $tmpstr; 
+} 
+Function showShort($str,$len) 
+{ 
+$tempstr = cSubStr($str,0,$len); 
+if ($str<>$tempstr) 
+  $tempstr .= "..."; //要以什么结尾,修改这里就可以.
+return $tempstr; 
+}
+
+function delhtml($str){   //清除HTML标签
+$st=-1; //开始
+$et=-1; //结束
+$stmp=array();
+$stmp[]="&nbsp;";
+$len=strlen($str);
+for($i=0;$i<$len;$i++){
+   $ss=substr($str,$i,1);
+   if(ord($ss)==60){ //ord("<")==60
+    $st=$i;
+   }
+   if(ord($ss)==62){ //ord(">")==62
+    $et=$i;
+    if($st!=-1){
+     $stmp[]=substr($str,$st,$et-$st+1);
+    }
+   }
+}
+$str=str_replace($stmp,"",$str);
+return $str;
 }
 
 ?>
