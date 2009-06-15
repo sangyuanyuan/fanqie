@@ -55,6 +55,7 @@ function check_logout(param1,param2)
   	 {
 	  	 $('#'+param1).html('<a href="login.php?height=120&width=300&modal=true" class="thickbox">登录</a>');
 	  	 $('#'+param2).hide();
+		 tb_init('a.thickbox');
 	   }
 
 	});
