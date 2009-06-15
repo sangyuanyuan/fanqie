@@ -35,7 +35,8 @@
 		<?php 
 			use_jquery();
 			$db = get_db();
-			
+			$db->paginate('select * from smg_admin_menu',1);
+			#paginate();
 
 			echo "<br>";
 		?>
