@@ -9,9 +9,7 @@
 	{	
 		p='<a href="login.php?height=120&width=300&modal=true" class="thickbox">登录</a>';
 	}	
-	
 	$('#'+param).html(p);
-	
 }
 
 function logout(param)
@@ -24,7 +22,6 @@ function logout(param)
 	else
 	{
 		 $('#'+param).show();
-		
 	}	
 }
 
@@ -53,7 +50,7 @@ function check_logout(param1,param2)
 	$.post('user.post.php',{'user_type':'logout'},function(data){
   	 if(data == "ok")
   	 {
-	  	 $('#'+param1).html('<a href="login.php?height=120&width=300&modal=true" class="thickbox">登录</a>');
+	  	 login(param1);
 	  	 $('#'+param2).hide();
 	   }
 
