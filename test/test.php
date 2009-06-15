@@ -37,7 +37,7 @@
 			$db = get_db();
 			$db->paginate('select * from smg_admin_menu',1);
 			#paginate();
-
+			show_video_player(100,100,'','a.wmv');
 			echo "<br>";
 		?>
 		<div id="page">

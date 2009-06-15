@@ -41,7 +41,7 @@ function reg(param)
 
 
 
-function check_login(param1,param2)
+function check_login(param1,param2,param3)
 {	
 	var login_text=$('#login_text').attr('value');
 	var password_text=$('#passwod_text').attr('value');
@@ -56,24 +56,26 @@ function check_login(param1,param2)
 	  	 var smg_user_nickname = $.cookie('smg_user_nickname');
 	  	 $('#'+param1).html(smg_user_nickname);
 	  	 $('#'+param2).show();
+ 	  	 reg(param3);
 	  	 tb_remove();
 		}
 	});
 }
 
-function check_logout(param1,param2)
+function check_logout(param1,param2,param3)
 {	
 	$.post('user.post.php',{'user_type':'logout'},function(data){
   	 if(data == "ok")
   	 {
 	  	 login(param1);
 	  	 $('#'+param2).hide();
+ 	  	 reg(param3);
 		 	 tb_init('a.thickbox');
 	   }
 	});
 }
 
-function check_reg(param1,param2)
+function check_reg(param1,param2,param3)
 {	
 	var user_text=$('#user_text').attr('value');
 	var password_text=$('#passwod_text').attr('value');
@@ -83,15 +85,19 @@ function check_reg(param1,param2)
   if(user_text==""||password_text==""||password2_text==""||email_text==""){alert("注册信息填写不完整");return false;}
   if(password_text!=password2_text){alert("密码重复错误");return false;}
   
-	$.post('user.post.php',{'user_type':'login','login_text':login_text,'password_text':password_text},function(data){
-  	 if(data == "error"){alert("用户名或密码错误"); return false;}
-  	 if(data == "ok")
+	$.post('user.post.php',{'user_type':'reg','user_text':user_text,'password_text':password_text,'email_text':email_text},function(data){
+  	 if(data == "error"){alert("用户名存在"); return false;}
+  	 else if(data == "ok")
   	 {
-		   var smg_username = $.cookie('smg_username');
+		   alert("注册成功!");
+			 var smg_username = $.cookie('smg_username');
 	  	 var smg_user_nickname = $.cookie('smg_user_nickname');
 	  	 $('#'+param1).html(smg_user_nickname);
 	  	 $('#'+param2).show();
+	  	 reg(param3);
 	  	 tb_remove();
 		}
+		else{alert("注册失败"); return false;}
+		
 	});
 }

@@ -39,4 +39,35 @@ if($_POST['user_type']=="logout")
 		SetCookie(smg_user_nickname,"",$y2k,'/');
 		echo "ok";
 }
+
+if($_POST['user_type']=="reg")
+{
+	$user_text = $_POST['user_text'];
+	$password_text = $_POST['password_text'];
+	$email_text = $_POST['email_text'];
+
+	$db = get_db();
+	$sql = 'select * from smg_user where name="'.$user_text.'" ';
+	$reg_info = $db->query($sql);
+	$reg_info_num = $db->record_count;
+	if($reg_info_num == 1)
+	{
+		echo "error";
+	}
+	else
+	{
+		$y2k = mktime(0,0,0,1,1,2020); 
+		$sql = 'insert into smg_user (name,password,nickname,register_type_id) values ("'.$user_text.'","'.$password_text.'","'.$user_text.'",2) ';
+		$db->execute($sql);
+		SetCookie(smg_username,$user_text,$y2k,'/');
+		SetCookie(smg_user_nickname,$user_text,$y2k,'/');
+		echo "ok";
+	}	
+}
+
+
+
+
+
+
 ?>
