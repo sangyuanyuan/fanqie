@@ -4,6 +4,7 @@
 	require_once(CURRENT_DIR ."lib/pubfun.php");
 	require_once(CURRENT_DIR ."lib/database_connection_class.php");
 	require_once(CURRENT_DIR ."lib/table_class.php");
+	require_once(CURRENT_DIR ."lib/upload_file_class.php");
 	
 	function get_config($var,$path=''){
 		if(empty($path)){$path = LIB_PATH .'../config/config.php';}
@@ -60,6 +61,18 @@
 			});
 		</script>
 		<?php
+	}
+	
+	function is_login($admin=false) {
+		if(!admin){
+			return !empty($_COOKIE['smg_username']);
+		}else{
+			return !empty($_SESSION['smg_username']);
+		}
+	}
+	
+	function require_role($role_name = 'member') {
+		;
 	}
 	
 	function show_video_player($width,$height,$source,$url) {

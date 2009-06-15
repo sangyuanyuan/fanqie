@@ -24,10 +24,7 @@ else
 	}
 	SetCookie(smg_username,$login_text,$y2k,'/');
 	SetCookie(smg_user_nickname,$login_info[0]->nickname,$y2k,'/');
-	//SetCookie(smg_user_nickname,"我123算",$y2k,'/');
-	echo "ok";
-	
-	//echo $_cookie['smg_user_nickname'];
+	echo "ok";	
 }
 
 ?>
