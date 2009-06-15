@@ -20,63 +20,32 @@
 		</div>
 		<div id=part2>
 			<div id="accordion">
-				<?php
-					$db=get_db();
-<<<<<<< HEAD:admin/admin.php
-					$sql='select * from smg_admin_menu where parent_id=0 and href="" order by priority asc';
-					if($db->query($sql)!==false){
-						$main_menu=$db->query($sql);
-						for($i=0;$i<count($main_menu);$i++){
-=======
-					$sql='select * from smg_admin_menu where parent_id=0';
-					$main_menu = $db->query($sql);
-					echo $main_menu[0]->name;
-					if($main_menu !==false){
-						
-						for($i=0;$i<8;$i++){
->>>>>>> b7eb643a3b5692c89792600e6283b1d53fc7e5be:admin/admin.php
+				<?php				
+					$menu = new table_class("smg_admin_menu");
+					$main_menu = $menu->find("all",array('conditions' => 'href="#"  and parent_id=0','order' => 'priority'));
+					for($i=0;$i<count($main_menu);$i++){
 				?>
 				<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
 				<div>
 					<?php
-						$sql='select * from smg_admin_menu where parent_id='.$main_menu[$i]->id.' order by priority asc';
-						if($db->query($sql)!==false){
-							$child_menu=$db->query($sql);
-							for($j=0;$j<count($child_menu);$j++){
+						$child_menu=$menu->find("all",array('conditions' => 'parent_id='.$main_menu[$i]->id,'order' => 'priority'));
+						for($j=0;$j<count($child_menu);$j++){
 					?>
 						<div class=menu2>·<a href="<?php echo $child_menu[$j]->href;?>" target="admin_iframe"><?php echo $child_menu[$j]->name;?></a></div>
-					<?php
-							}
-						}
-					?>
+					<?php }?>
 				</div>
-				<?php
-						}
-				 	}else{
-						echo "查询失败<br>";
-						echo $db->get_error();
-						echo $sql;
-					}
-				?>
+				<?php }?>
 			</div>
 			<?php
-				$sql='select * from smg_admin_menu where parent_id=0 and href!="#" order by priority asc';
-				if($db->query($sql)!==false){
-					$main_menu=$db->query($sql);
-					for($i=0;$i<$db->record_count;$i++){
+				$main_menu = $menu->find("all",array('conditions' => 'href!="#" and parent_id=0','order' => 'priority'));
+				for($i=0;$i<count($main_menu);$i++){
 			?>
-			<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>" target="_blank"><?php echo $main_menu[$i]->name;?></a></div>
-			<?php
-					}
-			 	}else{
-					echo "查询失败<br>";
-					echo $sql;
-				}
-			?>
+			<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>" target="admin_iframe"><?php echo $main_menu[$i]->name;?></a></div>
+			<?php }?>
 		</div>
 		
 		<div id=part3>
-		  <iframe id=admin_iframe name="admin_iframe" scrolling="yes" src="news.php" width="99%" height="700"></iframe>
+		  <iframe id=admin_iframe name="admin_iframe" scrolling="yes" src="menu_list.php" width="99%" height="700"></iframe>
 		</div>
 	</div>
 </body>
