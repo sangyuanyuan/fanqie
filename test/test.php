@@ -1,26 +1,6 @@
 <?php
 	require "../frame.php";
-	$oupload = new upload_file_class();
-	$oupload->save_dir = '/upload/';
-	$oupload->max_file_size = 1024*1024;
-	$ret = $oupload->handle('file','filter_pic');	
-	#echo phpinfo();
-	#var_dump($_FILES);
-	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		var_dump($_POST);
-		$menu = new table_class('smg_admin_menu');
-		$menu->find($_POST['menu']['id']);
-		#var_dump($menu);
 
-		$menu->update_attributes($_POST['menu']);
-		#var_dump($_POST['menu']);
-		echo '<br>';
-		#var_dump($menu);
-		$menu->save();
-	}else{
-		
-	}
-	
 	#$ret = $db->query();
 	#$ret[0]->name;
 ?>
@@ -35,9 +15,13 @@
 		<?php 
 			use_jquery();
 			$db = get_db();
-			$db->paginate('select * from smg_admin_menu',1);
-			#paginate();
-			show_video_player(100,100,'','a.wmv');
+			$image = new smg_images_class();
+			$ret = $image->find(1);
+			#var_dump($ret);
+			$ret->create_thumb('middle1',50);
+			echo $ret->src_path() .";" .$ret->src_path('small');
+			$ret->save();
+			#print_r(count($image->thumb));
 			echo "<br>";
 		?>
 		<div id="page">

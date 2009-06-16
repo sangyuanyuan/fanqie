@@ -2,17 +2,19 @@
 /*            created by sauger at 20090213
 
 */
-
+require_once(dirname(__FILE__) .'/belongs_to_object_class.php');
 class table_class{
 	private $_tablename = "";
 	private $fields_type = array();
 	private $fields_name = array();
 	private $fields_default = array();
 	private $fields = array();
-	private $belongs_to_objects = array();
 	private $has_many_objects = array();
 	private $has_many_objects_items = array();
 	private $is_edited = true;
+	private $belongs_to_object=null;
+	private $belongs_to_name = null;
+	private $is_loaded = false;
 	function __construct($table_name){
 		$this->_tablename = strtolower($table_name);
 		$db = get_db();
@@ -44,6 +46,7 @@ class table_class{
 
 	public function find($param = 'all'){
 		$this->is_edited = false;
+		$this->is_loaded = false;
 		if (is_string($param)) {
 			$param = strtolower($param);
 		}
@@ -75,12 +78,12 @@ class table_class{
 		if (!$db->query($sqlstr)) return  null ;
 		if($limit == 1){
 			if ($db->record_count <= 0) return null;
-			$result = clone $this;
+			
 			foreach ($this->fields as $k => $v){
 				$result->fields[$k] = $db->field_by_name($k);
 				$this->fields[$k] = $db->field_by_name($k);
 			}
-			return $result;
+			$result = clone $this;
 		}else {
 			$result = array();
 			if($db->record_count <= 0) return $result;
@@ -91,9 +94,10 @@ class table_class{
 				}
 				$result[] = $tmp;
 			}while ($db->move_next());
-			return $result;
 
 		}
+		$this->is_loaded = true;
+		return $result;
 		
 	}
 
@@ -131,20 +135,21 @@ class table_class{
 	}
 
 	#belongs_to relationship
-	public function belongs_to($parent,$options=null){
+	public function belongs_to($parent, $options=null){
 		if (!array_key_exists("key",$options)) {
 			$options["key"] = strtolower($parent) ."_id";
 		}
 		if (!array_key_exists("class_name",$options)) {
 			$options["class_name"] = $parent;
 		}
-		if (!class_exists($options["class_name"])) {
-			debug_info($options["class_name"] ." not exists!");
-			return ;
-		}
-		$this->belongs_to_objects[$parent] = $options;
+		$this->belongs_to_name = $parent;
+		$this->belongs_to_object = new belongs_to_object_class($this,$parent, $options);
 	}
 
+	public function has_one($parent, $options = null){
+		$this->belongs_to($parent, $options);
+	}
+	
 	public function has_many($object,$options = null){
 		require_once(dirname(__FILE__).'/has_many_object_class.php');
 		$this->has_many_objects[$object] = new has_many_item($this,$object,$options);
@@ -225,17 +230,18 @@ class table_class{
 	}
 
 	protected function __get($var){
+		if(strtolower($var) == 'class_name'){
+			return $this->_tablename;
+		}
 		if (array_key_exists($var,$this->fields)) {
 			return  $this->fields[$var];
-		}elseif (array_key_exists($var, $this->belongs_to_objects)){
-
-			if (array_key_exists("value", $this->belongs_to_objects[$var])) {
-				return  $this->belongs_to_objects[$var]["value"];
+		}elseif (strtolower($var) == $this->belongs_to_name){
+			
+			if(!$this->belongs_to_object->is_loaded){
+				$this->belongs_to_object->find();	
 			}
-			$p = new  $this->belongs_to_objects[$var]["class_name"];
-			$this->belongs_to_objects[$var]["value"] = $p->find($this->fields[$this->belongs_to_objects[$var]["key"]]);
-			unset($p);
-			return $this->belongs_to_objects[$var]["value"];
+			
+			return $this->belongs_to_object;
 		}elseif (array_key_exists($var,$this->has_many_objects_items)){
 			#get the exists has many items
 			return $this->has_many_objects_items[$var];
@@ -255,13 +261,13 @@ class table_class{
 	}
 
 	protected function _save_belongs_to(){
-		$result = true;
-		foreach ($this->belongs_to_objects as $item){
-			if (!empty($item["value"]) && $item["value"]->is_edited) {
-				$result = $result and $item["value"]->save();
-			}
+
+		$belongs_name = $this->belongs_to_name;
+		if($this->belongs_to_object){
+			return $this->belongs_to_object->save();	
 		}
-		return $result;
+		return true;		
+
 	}
 	
 	protected function _save_has_many(){
