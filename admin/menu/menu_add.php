@@ -1,6 +1,6 @@
 <?php
 	require_once('../../frame.php');
-	validate_form("menu_form");
+	#use_jquery();
 	$id=$_REQUEST['id'];
 ?>
 
@@ -49,6 +49,9 @@
 	</table>
 </body>
 </html>
+<?php
+	validate_form("menu_form");
+?>
 <script>
 	$(document).ready(function(){
 		$("#submit").click(function(){

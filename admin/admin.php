@@ -31,7 +31,7 @@
 						//--------------				
 						if(0==$main_menu[$i]->parent_id){ 
 				?>
-						<div class=menu1 id=list1_<?php echo $i?> ><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
+						<div class="menu1" id="list1_<?php echo $i?>" ><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
 						<? 
 							 //-----
 							 for($j=count($main_menu2)-1;$j>=0;$j--)
