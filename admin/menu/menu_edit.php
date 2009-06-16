@@ -1,8 +1,9 @@
 <?php
 	require_once('../../frame.php');
-	validate_form("menu_form");
 	$id=(int)$_REQUEST['id'];
-	$menu = new table_class('smg_admin_menu');
+	$type=$_REQUEST['type'];
+	if("admin"==$type) {$menu = new table_class('smg_admin_menu');}
+	else if("dept"==$type) {$menu = new table_class('smg_admin_menu_dept');}	
 	$record = $menu->find("all",array('conditions' => 'id='.$id));
 ?>
 
@@ -18,7 +19,10 @@
 	?>
 </head>
 <body>
-	<table width="795" border="0" id="list" style="font-size:14px;">
+<?php
+	validate_form("menu_form");
+?>
+	<table width="795" border="0" id="list">
 	<form id="menu_form" method="post" action="menu.post.php">
 		<tr class=tr1>
 			<td colspan="2">　编辑菜单</td>
@@ -33,7 +37,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>链接方式:</td>
-			<td align="left"><input type="text" name="menu[target]" value="<?php echo $record[0]->target;?>"> (frame,#,_blank)</td>
+			<td align="left"><input type="text" name="menu[target]" value="<?php echo $record[0]->target;?>"> (admin_iframe,#,_blank)</td>
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
@@ -49,6 +53,7 @@
 		<input type="hidden"  name="type" value="edit_menu">
 		<input type="hidden"  name="id" value="<?php echo $id;?>"> 
 		<input type="hidden"  name="parent_id" value="<?php echo $record[0]->parent_id?>"> 
+		<input type="hidden" name="menu_type" value="<?php echo $type;?>">
 	</from>
 	<table>
 </body>

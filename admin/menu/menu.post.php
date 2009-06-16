@@ -1,13 +1,15 @@
 <?php
   require_once('../../frame.php');
-	$url="menu_list.php?id=1";
+	$url="menu_list.php?type=".$_POST['menu_type'];
 	
 	if("del_menu"==$_POST['type']){
-		$menu = new table_class('smg_admin_menu');
+		if("admin"==$_POST['menu_type']) {$menu = new table_class('smg_admin_menu');}
+		else if("dept"==$_POST['menu_type']) {$menu = new table_class('smg_admin_menu_dept');}
 		$menu -> delete($_POST['del_id']);
 		echo $_POST['del_id'];
 	}else{	
-		$menu = new table_class('smg_admin_menu');
+		if("admin"==$_POST['menu_type']) {$menu = new table_class('smg_admin_menu');}
+		else if("dept"==$_POST['menu_type']) {$menu = new table_class('smg_admin_menu_dept');}
 		$menu -> find($_POST['id']);
 		$menu -> update_attributes($_POST['menu']);
 		$menu -> save();
