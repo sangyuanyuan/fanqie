@@ -13,5 +13,4 @@ js_include_once_tag('jquery.cookie');
 login('login_context');
 logout('logout_context');
 reg('reg_context');
-
 </script>
