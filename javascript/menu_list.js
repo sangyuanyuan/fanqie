@@ -14,11 +14,12 @@ $(function(){
 			if(!window.confirm("确定要删除吗")){
 				return false;
 			}else{
-				$.post("menu.post.php",{del_id:$(this).attr('name'),type:"del_menu"},function(data){
+				$.post("menu.post.php",{del_id:$(this).attr('name'),type:"del_menu",menu_type:$("#menu_type").attr('value')},function(data){
 					//alert(data);
 					//alert($("#"+data).attr('id'));
 					$("#"+data).remove();
-					window.parent.location.reload();
+					if($("#menu_type").attr('value')=="admin"){	window.parent.location.reload();}
+					else{window.location.reload();}
 				});
 			}
 		});

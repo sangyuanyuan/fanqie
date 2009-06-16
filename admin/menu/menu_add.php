@@ -1,7 +1,11 @@
 <?php
 	require_once('../../frame.php');
+<<<<<<< HEAD:admin/menu/menu_add.php
 	#use_jquery();
+=======
+>>>>>>> 0346250b66509496be422d7d41f75a7330e35c1b:admin/menu/menu_add.php
 	$id=$_REQUEST['id'];
+	$type=$_REQUEST['type'];
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -14,6 +18,9 @@
 		css_include_tag('admin');
 	?>
 </head>
+<?php
+	validate_form("menu_form");
+?>
 <body>
 	<table width="795" border="0" id="list">
 	<form id="menu_form" method="post" action="menu.post.php">
@@ -30,7 +37,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>链接方式:</td>
-			<td align="left"><input type="text" name="menu[target]"> (frame,#,_blank)</td>
+			<td align="left"><input type="text" name="menu[target]"> (admin_iframe,#,_blank)</td>
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
@@ -45,6 +52,7 @@
 		</tr>
 	<input type="hidden" name="type" value="add_menu">
 	<input type="hidden" name="menu[parent_id]" value="<?php echo $id;?>">
+	<input type="hidden" name="menu_type" value="<?php echo $type;?>">
 	</from>
 	</table>
 </body>

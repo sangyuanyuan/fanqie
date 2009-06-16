@@ -9,7 +9,7 @@
 	}
 	$smg_image = new smg_images_class();
 	$smg_image->src = "/upload/images/" .$img;
-	$smg_image->create_thumb('middle',50,50);
+	$smg_image->create_thumb('middle',50);
 	
 	$smg_image->update_attributes($_POST[img]);
 	var_dump($_POST[img]);
