@@ -21,7 +21,7 @@
 			<td colspan="5">　<a href="menu_add.php?id=0">添加超级管理员菜单主目录</a></td>
 		</tr>
 		<tr class="tr2">
-			<td width="245">菜单名称</td><td width="60">优先级</td><td width="150">链接</td><td width="150">链接方式</td><td width="200">操作</td>
+			<td width="200">菜单名称</td><td width="50">优先级</td><td width="300">链接</td><td width="65">链接方式</td><td width="175">操作</td>
 		</tr>
 		<?php
 			$menu = new table_class("smg_admin_menu");
@@ -34,7 +34,7 @@
 					<td><?php echo $record[$i]->priority;?></td>
 					<td><?php echo $record[$i]->href;?></td>
 					<td><?php echo $record[$i]->target;?></td>
-					<td><a href="menu_add.php?id=<?php echo $record[$i]->id;?>">添加子目录</a>　<a href="edit_menu.php?id=<?php echo $record[$i]->id;?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
+					<td><a href="menu_add.php?id=<?php echo $record[$i]->id;?>">添加子目录</a>　<a href="menu_edit.php?id=<?php echo $record[$i]->id;?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
 				</tr>
 		<?php
 				$record2 = $menu->find("all",array('conditions' => 'parent_id>0 and parent_id='.$record[$i]->id));
@@ -46,7 +46,7 @@
 					<td><?php echo $record2[$j]->priority;?></td>
 					<td><?php echo $record2[$j]->href;?></td>
 					<td><?php echo $record2[$j]->target;?></td>
-					<td><a href="edit_menu.php?id=<?php echo $record2[$j]->id;?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record2[$j]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
+					<td><a href="menu_edit.php?id=<?php echo $record2[$j]->id;?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record2[$j]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
 				</tr>
 		<?php
 				}

@@ -31,7 +31,7 @@
 						//--------------				
 						if(0==$main_menu[$i]->parent_id){ 
 				?>
-						<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
+						<div class=menu1 id=list1_<?php echo $i?> ><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
 						<? 
 							 //-----
 							 for($j=count($main_menu2)-1;$j>=0;$j--)
@@ -39,7 +39,7 @@
 							 		if($main_menu[$i]->id==$main_menu2[$j]->parent_id)
 							 		{
 						 ?>	 			
-						 			<div class=menu2 onClick="">.<?php echo $main_menu2[$j]->name ?></div>
+						 			<div class="menu2 list2_<?php echo $i?>" onClick='$("#admin_iframe").attr("src","<?php echo $main_menu2[$j]->href; ?>")' >.<?php echo $main_menu2[$j]->name ?></div>
 						 <?	 			
 							 		}
 						   }
@@ -55,18 +55,24 @@
 		</div>
 		
 		<div id=part3>
-		  <iframe id=admin_iframe name="admin_iframe" scrolling="yes" src="menu/menu_list.php" width="99%" height="700"></iframe>
-		</div>
-		
-		
-		
-		
-		
-		
+		  <iframe id=admin_iframe name="admin_iframe" scrolling="yes" src="/admin/menu/menu_list.php" width="99%" height="700"></iframe>
+		</div>		
 	</div>
 </body>
 </html>
-
+<script>
+$(function(){
+	$(".menu1").click(function(){
+		$(".menu2").hide();
+		$(this).find(".menu2").show();
+		
+		
+	});
+});
+	
+	
+	
+</script>
 
 
 

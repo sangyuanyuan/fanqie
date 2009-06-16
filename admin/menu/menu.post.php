@@ -11,7 +11,7 @@
 		$menu -> find($_POST['id']);
 		$menu -> update_attributes($_POST['menu']);
 		$menu -> save();
-		//redirect($url);
+		redirect($url);
 	}
 	
 	

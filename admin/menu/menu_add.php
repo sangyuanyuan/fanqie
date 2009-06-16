@@ -16,7 +16,7 @@
 </head>
 <body>
 	<table width="795" border="0" id="list">
-	<form id="menu_form" method="post action="menu.post.php">
+	<form id="menu_form" method="post" action="menu.post.php">
 		<tr class=tr1>
 			<td colspan="2">　添加菜单</td>
 		</tr>
@@ -38,10 +38,10 @@
 		</tr>
 		<tr class=tr3>
 			<td>优先级：</td>
-			<td align="left"><input type="text" name="menu[priority]" id="priority"></td>
+			<td align="left"><input type="text" name="menu[priority]" id="priority" class="required number"></td>
 		</tr>
 		<tr class=tr3>
-			<td colspan="2"><input type="submit" id="submit" value="提 交"></td>
+			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
 	<input type="hidden" name="type" value="add_menu">
 	<input type="hidden" name="menu[parent_id]" value="<?php echo $id;?>">
@@ -49,4 +49,12 @@
 	</table>
 </body>
 </html>
-
+<script>
+	$(document).ready(function(){
+		$("#submit").click(function(){
+			if($("#priority").attr('value')==""){
+				$("#priority").attr('value','100');
+			}
+		});
+	});
+</script>
