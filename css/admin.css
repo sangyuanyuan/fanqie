@@ -1,4 +1,4 @@
-body{font-size:12px; font-family:宋体; background:#C8E4F0; color:#000; margin:0px;}
+body{font-family:宋体; font-size:12px; color:#000; background:#C8E4F0; margin:0px;}
 a{text-decoration:none; color:black;}
 
 #admin_body{width:980px; height:300px; margin:0 auto;}
@@ -9,7 +9,6 @@ a{text-decoration:none; color:black;}
 #part1 #index{width:100px; float:right; display:inline;}
 #part1 #index a{color:#0000ff; text-decoration:underline;}
 
-
 #part2{width:150px; height:700px; background:#E1F0F7; border-right:5px solid #A0CBEE; float:left; display:inline;}
 #part2 .menu1{width:150px; height:20px; padding-top:5px; font-size:15px; color:#333333; font-weight:bold; background:url(/images/admin.jpg) 0 -180px no-repeat;  border-bottom:1px solid #cccccc; text-align:center; cursor:pointer; float:left; display:inline;}
 #part2 .menu1 a{text-decoration:none; color:#333333;}
@@ -18,7 +17,12 @@ a{text-decoration:none; color:black;}
 #part2 .menus{float:left; width:150px;}
 
 #part3{width:825px; height:700px; background:#E1F0F7;  float:left; display:inline;}
-#part4{width:980px; height:80px;  background:url(/images/bg/admin_bg4.jpg) repeat-x;  float:left; display:inline;}
+#part4{width:980px; height:80px;  background:url(/images/admin/bottom_bg.jpg) repeat-x;  float:left; display:inline;}
+
+.tr1{height:25px; font-weight:bold; font-size:14px; text-align:left; background:#f9f9f9;}
+.tr1 a{color:#0000ff; text-decoration:underline;}
+.tr2{height:25px; font-weight:bold; font-size:13px; text-align:center; background:#f9f9f9;}
+.tr3{height:22px; text-align:center; font-size:12px; background:#f9f9f9;}
 
 .pages A{color:#0000FF;}
 
