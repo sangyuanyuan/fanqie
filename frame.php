@@ -1,5 +1,6 @@
 <?php	
 	define(CURRENT_DIR, dirname(__FILE__) ."/");
+	define(ROOT_DIR,CURRENT_DIR);
 	require('config/config.php');
 	require_once(CURRENT_DIR ."lib/pubfun.php");
 	require_once(CURRENT_DIR ."lib/database_connection_class.php");

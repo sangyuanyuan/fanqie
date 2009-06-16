@@ -1,25 +1,7 @@
 <?php
 	require "../frame.php";
-	$oupload = new upload_file_class();
-	$oupload->save_dir = '/upload/';
-	$oupload->max_file_size = 1024*1024;
-	$ret = $oupload->handle('file','filter_pic');	
-	#echo phpinfo();
-	#var_dump($_FILES);
-	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		var_dump($_POST);
-		$menu = new table_class('smg_admin_menu');
-		$menu->find($_POST['menu']['id']);
-		#var_dump($menu);
+	require "../lib/image_handler_class.php";
 
-		$menu->update_attributes($_POST['menu']);
-		#var_dump($_POST['menu']);
-		echo '<br>';
-		#var_dump($menu);
-		$menu->save();
-	}else{
-		
-	}
 	
 	#$ret = $db->query();
 	#$ret[0]->name;
@@ -35,9 +17,17 @@
 		<?php 
 			use_jquery();
 			$db = get_db();
-			$db->paginate('select * from smg_admin_menu',1);
-			#paginate();
-			show_video_player(100,100,'','a.wmv');
+			$image = new table_class('smg_images');
+			$image->has_many('thumb',array('key' => 'parent_id','class_name' => 'smg_images'));
+			$image->belongs_to('parent',array('key' => 'parent_id', 'class_name' => 'smg_images'));
+			$image->find(2);
+			#echo $image->parent_id;
+			//$sub = $image->parent->find();
+			#var_dump($image->parent->title);
+			echo $image->parent->title;
+			$image->parent->title = 'abc11';
+			$image->save();
+			#print_r(count($image->thumb));
 			echo "<br>";
 		?>
 		<div id="page">
