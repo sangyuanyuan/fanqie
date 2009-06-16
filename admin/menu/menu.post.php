@@ -1,5 +1,5 @@
 <?php
-  require_once('../frame.php');
+  require_once('../../frame.php');
 	$url="menu_list.php?id=1";
 	
 	if("del_menu"==$_POST['type']){
@@ -11,7 +11,7 @@
 		$menu -> find($_POST['id']);
 		$menu -> update_attributes($_POST['menu']);
 		$menu -> save();
-		redirect($url);
+		//redirect($url);
 	}
 	
 	
