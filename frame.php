@@ -1,9 +1,14 @@
 <?php	
 	define(CURRENT_DIR, dirname(__FILE__) ."/");
+	define(ROOT_DIR_NONE, dirname(__FILE__));	
+	define(ROOT_DIR,CURRENT_DIR);
 	require('config/config.php');
 	require_once(CURRENT_DIR ."lib/pubfun.php");
 	require_once(CURRENT_DIR ."lib/database_connection_class.php");
 	require_once(CURRENT_DIR ."lib/table_class.php");
+	require_once(CURRENT_DIR ."lib/upload_file_class.php");
+	require_once CURRENT_DIR ."lib/image_handler_class.php";
+	require_once CURRENT_DIR ."lib/smg_images_class.php";	
 	
 	function get_config($var,$path=''){
 		if(empty($path)){$path = LIB_PATH .'../config/config.php';}
@@ -62,40 +67,45 @@
 		<?php
 	}
 	
-	function show_video_player($width,$height,$source,$url) {
+	function is_login($admin=false) {
+		if(!admin){
+			return !empty($_COOKIE['smg_username']);
+		}else{
+			return !empty($_SESSION['smg_username']);
+		}
+	}
+	
+	function require_role($role_name = 'member') {
+		;
+	}
+	
+	function show_video_player($width,$height,$image='',$file,$autostart = "false")
+	{
+		if (strtoupper(substr($file,-3)) == "MP3" || strtoupper(substr($file,-3)) == "WMV" || strtoupper(substr($file,-3)) == "WMA"  || strtoupper(substr($file,-3)) == "AVI" || strtoupper(substr($file,-3)) == "VYF")
+		{
 		?>
-		<object type="application/x-shockwave-flash" data="/flash/vcastr3.swf" width="650" height="500" id="vcastr3">
-			<param name="movie" value="/flash/vcastr3.swf"/> 
-			<param name="allowFullScreen" value="true" />
-			<param name="FlashVars" value="xml=
-				<vcastr>
-					<channel>
-						<item>
-							<source>/upload/video/1.flv</source>
-							<duration></duration>
-							<title>v1</title>
-						</item>
-						<item>
-							<source>/upload/video/1.flv</source>
-							<duration></duration>
-							<title>v2</title>
-						</item>
-					</channel>
-					<config>
-					</config>
-					<plugIns>
-						<logoPlugIn>
-							<url>/flash/logoPlugIn.swf</url>
-							<logoText>fanqie</logoText>
-							<logoTextAlpha>0.75</logoTextAlpha>
-							<logoTextFontSize>30</logoTextFontSize>
-							<logoTextLink>http://172.27.203.81:8080/</logoTextLink>
-							<logoTextColor>0xffffff</logoTextColor>
-							<textMargin>20 20 auto auto</textMargin>
-						</logoPlugIn>
-					</plugIns>
-				</vcastr>"/>
-		</object>		
+			<OBJECT   id=MediaPlayer1   codeBase=http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701standby=Loading   type=application/x-oleobject   height=<?php echo $height;?>   width=<?php echo $width;?>   classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6   VIEWASTEXT> 
+				<PARAM   NAME= "URL"   VALUE= "<?php echo $file;?>"> 
+				<PARAM   NAME= "playCount"   VALUE= "1"> 
+				<PARAM   NAME= "autoStart"   VALUE= "<? echo $autostart;?>"> 
+				<PARAM   NAME= "invokeURLs"   VALUE= "false">
+				<PARAM   NAME= "EnableContextMenu"   VALUE= "false">			
+				<embed src="<?php echo $file;?>" align="baseline" border="0" width="<?php echo $width;?>" height="<?php echo $height;?>" type="application/x-mplayer2"pluginspage="" name="MediaPlayer1" showcontrols="1" showpositioncontrols="0" showaudiocontrols="1" showtracker="1" showdisplay="0" showstatusbar="1" autosize="0" showgotobar="0" showcaptioning="0" autostart="<? echo $autostart;?>" autorewind="0" animationatstart="0" transparentatstart="0" allowscan="1" enablecontextmenu="1" clicktoplay="0" defaultframe="datawindow" invokeurls="0"></embed> 
+			</OBJECT> 		
 		<?php
+			}else 
+			{
+			?>
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="<?php echo $width;?>" height="<?php echo $height;?>" id="FLVPlayer">
+		  <param name="movie" value="/flash/mediaplayer.swf" />
+		  <param name="salign" value="lt" />
+		  <param name="quality" value="high" />
+		  <param name="wmode" value="opaque" />
+		  <param name="scale" value="noscale" />
+		  <param name="FlashVars" value="&image=<?php echo $image;?>&file=<?php echo $file;?>&displayheight=<?php echo $height-15;?>&autostart=<? echo $autostart;?>" />
+		  <embed src="/flash/mediaplayer.swf" flashvars="&image=<?php echo $image;?>&file=<?php echo $file;?>&displayheight=<?php echo $height - 15;?>&autostart=<? echo $autostart;?>" quality="high" scale="noscale" width="<?php echo $width;?>" height="<?php echo $height;?>" name="FLVPlayer" wmode="opaque" salign="LT" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+		</object>
+			<?php
+			}
 	}
 ?>

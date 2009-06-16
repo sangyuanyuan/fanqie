@@ -200,7 +200,7 @@ function paginate($url="",$ajax_dom=nil,$page_var="page")
 	<?php	
 	}
 	?>
-  当前第<select name="pageselect" id="pageselect" onChange="jumppage('<?php echo $url ."&pageindex="; ?>',this.options[this.options.selectedIndex].value);">
+  当前第<select name="pageselect" id="pageselect" onChange="jumppage('<?php echo $url ."&" .$page_var ."="; ?>',this.options[this.options.selectedIndex].value);">
 	<?php	
 	//产生所有页面链接
 	for($i=1;$i<=$pagecount;$i++)
@@ -225,7 +225,11 @@ function paginate($url="",$ajax_dom=nil,$page_var="page")
 				e.preventDefault();
 				$("#<?php echo $ajax_dom;?>").load($(this).attr('href'));
 			});
-			 
+			function jumppage(urlprex,pageindex)
+			{
+				var surl=urlprex+pageindex;
+				window.location.href=surl;
+			} 
 		</script>
 		<?php
 	}

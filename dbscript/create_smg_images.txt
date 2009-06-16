@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_images`;
+CREATE TABLE  `smg_new`.`smg_images` (
+  `id` varchar(255) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` text,
+  `src` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `keywords` varchar(255) DEFAULT NULL,
+  `tags` varchar(255) DEFAULT NULL,
+  `uploader` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `click_count` varchar(255) DEFAULT NULL,
+  `is_adopt` tinyint(1) DEFAULT NULL,
+  `is_dept_adopt` tinyint(1) DEFAULT NULL,
+  `priority` int(11) DEFAULT NULL,
+  `dept_priority` int(11) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `thumb_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
