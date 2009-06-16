@@ -1,6 +1,7 @@
 <?php
 	require "../frame.php";
 	require "../lib/image_handler_class.php";
+	require "../lib/smg_images_class.php";
 
 	
 	#$ret = $db->query();
@@ -17,16 +18,11 @@
 		<?php 
 			use_jquery();
 			$db = get_db();
-			$image = new table_class('smg_images');
-			$image->has_many('thumb',array('key' => 'parent_id','class_name' => 'smg_images'));
-			$image->belongs_to('parent',array('key' => 'parent_id', 'class_name' => 'smg_images'));
-			$image->find(2);
-			#echo $image->parent_id;
-			//$sub = $image->parent->find();
-			#var_dump($image->parent->title);
-			echo $image->parent->title;
-			$image->parent->title = 'abc11';
-			$image->save();
+			$image = new smg_images_class();
+			$image->find(1);
+			#var_dump($ret);
+			$image->create_thumb('middle',50);
+			echo $image->small;
 			#print_r(count($image->thumb));
 			echo "<br>";
 		?>

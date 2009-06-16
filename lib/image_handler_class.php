@@ -360,7 +360,7 @@ class image_handler_class
 	function createImg($a, $b=null)
     {
         $num = func_num_args();
-        if(1 == $num)
+        if(1 == $num || is_null($b))
         {
             $r = (int)$a;
             if($r < 1)
