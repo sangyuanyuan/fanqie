@@ -1,9 +1,6 @@
 <?php
 	require "../frame.php";
-	require "../lib/image_handler_class.php";
-	require "../lib/smg_images_class.php";
 
-	
 	#$ret = $db->query();
 	#$ret[0]->name;
 ?>
@@ -19,10 +16,11 @@
 			use_jquery();
 			$db = get_db();
 			$image = new smg_images_class();
-			$image->find(1);
+			$ret = $image->find(1);
 			#var_dump($ret);
-			$image->create_thumb('middle',50);
-			echo $image->small;
+			$ret->create_thumb('middle1',50);
+			echo $ret->src_path() .";" .$ret->src_path('small');
+			$ret->save();
 			#print_r(count($image->thumb));
 			echo "<br>";
 		?>

@@ -32,8 +32,8 @@ class smg_images_class extends table_class
 	
 	public function create_thumb($name,$width,$height=null){
 		$handler = new image_handler_class();
-		$handler->load(ROOT_DIR . $this->src);
-		$thum_name = $this->_thumb_name($this->src, $name);
+		$handler->load(ROOT_DIR_NONE . $this->src);
+		$thum_name = ROOT_DIR_NONE .$this->_thumb_name($this->src, $name);
 		$handler->resize_image($thum_name,$width,$height);
 		if(in_array($name,$this->thumb_names) ===false){
 			$this->thumb_names[] = $name;
@@ -45,6 +45,16 @@ class smg_images_class extends table_class
 			$this->thumb_name = implode('|',$this->thumb_names);
 		}
 		return parent::save();
+	}
+	
+	public function src_path($thumb_name=null){
+		if($thumb_name){
+			if(in_array($thumb_name,$this->thumb_names)){
+				return($this->_thumb_name($this->src, $thumb_name));
+			}			
+		}
+		return $this->src;
+
 	}
 	
 	protected function __get($var){

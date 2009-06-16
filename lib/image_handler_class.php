@@ -371,7 +371,7 @@ class image_handler_class
             $this->_setNewImgSize($r);
         }
  
-        if(2 == $num)
+        if(2 == $num && $b)
         {
             $w = (int)$a;
             $h = (int)$b;
@@ -379,7 +379,7 @@ class image_handler_class
             {
                 die("目标宽度不能为0");
             }
-            if(0 == $h)
+            if(0 === $h)
             {
                 die("目标高度不能为0");
             }
