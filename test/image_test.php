@@ -12,7 +12,7 @@
 		?>
 	</head>
 	<body>
-		<form name="image_form" id="image_form" enctype="multipart/form-data" action="image_test.post.php" method="post">
+		<form name="image_form" id="image_form" enctype="multipart/form-data" action="image_test_post.php" method="post">
 			title:<input type="text" name="img[title]" id="title">
 			description:<textarea name="img[description]"></textarea>
 			image:<input type="file" name="image">

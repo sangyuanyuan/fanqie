@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_category`;
+CREATE TABLE  `smg_new`.`smg_category` (
+  `id` varchar(255) NOT NULL DEFAULT '',
+  `category_type` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `can_publish` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
