@@ -14,7 +14,7 @@ class upload_file_class
 		if($_SERVER['REQUEST_METHOD'] != 'POST') return;
 		$field_name  = empty($field_name) ? $this->field_name : $field_name;
 		if($this->save_dir{0} == '/'){
-			$this->save_dir = $_SERVER['DOCUMENT_ROOT'] . $this->save_dir;
+			$this->save_dir = ROOT_DIR_NONE . $this->save_dir;
 		}
 		if(is_dir($this->save_dir)===false){
 			mkdir($this->save_dir);

@@ -110,7 +110,7 @@ class image_handler_class
     {
         if(!file_exists($src_img))
         {
-            die("图片不存在");
+            die("图片不存在" .$src_img);
         }
         
         if(!empty($img_type))
@@ -123,7 +123,7 @@ class image_handler_class
         }
         
         $this->_checkValid($this->img_type);
- 
+
         // file_get_contents函数要求php版本>4.3.0
         $src = '';
         if(function_exists("file_get_contents"))
@@ -139,13 +139,16 @@ class image_handler_class
             }
             fclose ($handle);
         }
+		
         if(empty($src))
         {
             die("图片源为空");
         }
-        $this->h_src = @ImageCreateFromString($src);
+		
+        $this->h_src = ImageCreateFromString($src);
         $this->src_w = $this->get_image_width($this->h_src);
         $this->src_h = $this->get_image_height($this->h_src);
+		
     }
  
     /**
