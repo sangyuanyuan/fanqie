@@ -31,11 +31,9 @@
 						//--------------				
 						if(0==$main_menu[$i]->parent_id){ 
 				?>
-<<<<<<< HEAD:admin/admin.php
-						<div class="menu1" id="list1_<?php echo $i?>" ><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
-=======
+
 						<div class="menu1"><a href="<?php echo $main_menu[$i]->href;?>" target="<?php echo $main_menu[$i]->target;?>" list="<?php echo $i;?>"><?php echo $main_menu[$i]->name;?></a></div>
->>>>>>> 0346250b66509496be422d7d41f75a7330e35c1b:admin/admin.php
+
 						<? 
 							 //-----
 							 for($j=count($main_menu2)-1;$j>=0;$j--)
