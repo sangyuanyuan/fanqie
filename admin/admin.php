@@ -26,15 +26,13 @@
 					for($i=0;$i<count($main_menu);$i++){
 				?>
 				<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
-				<div>
 					<?php
 						$child_menu=$menu->find("all",array('conditions' => 'parent_id='.$main_menu[$i]->id,'order' => 'priority'));
 						for($j=0;$j<count($child_menu);$j++){
 					?>
 						<div class=menu2>·<a href="<?php echo $child_menu[$j]->href;?>" target="admin_iframe"><?php echo $child_menu[$j]->name;?></a></div>
-					<?php }?>
-				</div>
-				<?php }?>
+					<?php }
+						}?>
 			</div>
 			<?php
 				$main_menu = $menu->find("all",array('conditions' => 'href!="#" and parent_id=0','order' => 'priority'));
