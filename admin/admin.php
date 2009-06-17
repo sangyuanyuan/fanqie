@@ -24,8 +24,41 @@
 			<div id="accordion">
 				<?php				
 					$menu = new table_class("smg_admin_menu");
+<<<<<<< HEAD:admin/admin.php
+					$main_menu = $menu->find("all",array('order' => 'parent_id,priority desc'));
+					$main_menu2 = $main_menu;
+					//--------------------				
+					for($i=count($main_menu)-1;$i>=0;$i--)
+					{
+
+						//--------------				
+						if(0==$main_menu[$i]->parent_id){ 
+				?>
+
+						<div class="menu1"><a href="<?php echo $main_menu[$i]->href;?>" target="<?php echo $main_menu[$i]->target;?>" list="<?php echo $i;?>"><?php echo $main_menu[$i]->name;?></a></div>
+
+						<? 
+							 //-----
+							 for($j=count($main_menu2)-1;$j>=0;$j--)
+							 {	
+							 		if($main_menu[$i]->id==$main_menu2[$j]->parent_id)
+							 		{
+						 ?>	 			
+						 			<div class="menu2 list2_<?php echo $i;?>" onClick='$("#admin_iframe").attr("src","<?php echo $main_menu2[$j]->href; ?>")' >.<?php echo $main_menu2[$j]->name ?></div>
+						 <?	 			
+							 		}
+						   }
+						   //-----
+						?>
+				<?php 
+						}
+						//--------------				
+					}
+				  //--------------------				
+=======
 					$main_menu = $menu->find("all",array('conditions' => 'href="#"  and parent_id=0','order' => 'priority'));
 					for($i=0;$i<count($main_menu);$i++){
+>>>>>>> db1f775f3ef144d96c55809b7737b3213ad1fa5b:admin/admin.php1
 				?>
 				<div class=menu1><a href="<?php echo $main_menu[$i]->href;?>"><?php echo $main_menu[$i]->name;?></a></div>
 					<?php
