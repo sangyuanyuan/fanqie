@@ -1,7 +1,5 @@
 <?php
 	require_once('../frame.php');
-	css_include_tag('admin');
-	use_jquery_ui();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -10,6 +8,10 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>smg</title>
+	<?php
+		css_include_tag('admin');
+		use_jquery_ui();
+	?>
 </head>
 <body  style="background:url(/images/bg/admin_bg2.jpg) repeat-x;">
 	<div id=admin_body>

@@ -5,6 +5,10 @@
 		<title>title</title>
 		<?php
 			require_once('../frame.php');
+			$image = new smg_images_class();
+			$image->find(1);
+			$image->src_path('small');
+			
 		?>
 	</head>
 	<body>

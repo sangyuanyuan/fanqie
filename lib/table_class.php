@@ -122,7 +122,6 @@ class table_class{
 
 	public function update_attributes($attributes = null){
 		if (is_array($attributes)) {
-			echo "aa";
 			foreach ($attributes as $k => $v) {		
 				if (array_key_exists($k,$this->fields)) {
 					if ($v == "" && strpos($this->fields_type[$k],'int') !== false) {
