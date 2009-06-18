@@ -119,9 +119,9 @@ class table_class{
 			$limit = 1;
 		}
 
-		if ($argsnum >= 2) {
+		if ($argsnum >= 2 || !empty($option)) {
 			$arg = func_get_arg(1);
-			if (!is_array($arg)) return ;
+			#if (!is_array($arg)) return ;
 			if (!empty($arg["conditions"])) {
 				$sqlstr .= " and " .$arg["conditions"];
 			}			
@@ -133,6 +133,7 @@ class table_class{
 			$sqlstr .= " limit " .$limit;
 		}
 		$db = get_db();
+		#$db->echo_sql = true;
 		if($this->echo_sql){
 			echo $sqlstr;
 		};

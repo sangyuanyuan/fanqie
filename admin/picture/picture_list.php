@@ -18,7 +18,7 @@
 <body>
 	<?php
 		$image = new smg_images_class();
-		$images = $image->find("all");
+		$images = $image->paginate("all",null,4);
 		$dept = new table_class("smg_dept");
 		$rows_dept = $dept->find("all");
 		$category = new table_class("smg_category");
