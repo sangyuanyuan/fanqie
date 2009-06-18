@@ -13,15 +13,13 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>smg</title>
-	<?
+	<?php
 		css_include_tag('admin');
-	  use_jquery();
+	 	use_jquery();
+		validate_form("menu_form");
 	?>
 </head>
 <body>
-<?php
-	validate_form("menu_form");
-?>
 	<table width="795" border="0" id="list">
 	<form id="menu_form" method="post" action="menu.post.php">
 		<tr class=tr1>

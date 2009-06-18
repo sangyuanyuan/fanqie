@@ -1,6 +1,6 @@
 <?php
 	require_once('../../frame.php');
-	$type = $_REQUEST['type'];
+	$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : 'admin';
 	if($type=="admin"||$type==""){$menu_title="添加超级管理员菜单主目录"; $menu_table="smg_admin_menu";}
 	else{$menu_title="添加部门管理员菜单主目录"; $menu_table="smg_admin_menu_dept";}
 ?>

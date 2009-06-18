@@ -9,7 +9,7 @@
 	<title>smg</title>
 	<? 	
 		css_include_tag('admin');
-		use_jquery_ui();
+		use_jquery();
   ?>
 </head>
 <body style="background:url(/images/admin/bg.jpg) repeat-x;">
