@@ -1,9 +1,5 @@
 <?php
 	require_once('../../frame.php');
-<<<<<<< HEAD:admin/menu/menu_add.php
-	#use_jquery();
-=======
->>>>>>> 0346250b66509496be422d7d41f75a7330e35c1b:admin/menu/menu_add.php
 	$id=$_REQUEST['id'];
 	$type=$_REQUEST['type'];
 ?>
@@ -57,9 +53,6 @@
 	</table>
 </body>
 </html>
-<?php
-	validate_form("menu_form");
-?>
 <script>
 	$(document).ready(function(){
 		$("#submit").click(function(){

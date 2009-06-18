@@ -1,8 +1,6 @@
 <?php
 	require_once('../../frame.php');
 	$type = $_REQUEST['type'];
-	if($type=="admin"||$type==""){$menu_title="添加超级管理员图片主目录"; $menu_table="smg_images";}
-	else{$menu_title="添加部门管理员图片主目录"; $menu_table="smg_images_dept";}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -17,48 +15,73 @@
 	?>
 </head>
 <body>
-	<table width="795" border="0" id="list">
-		<tr class="tr1">
-			<td colspan="5">　<a href="menu_add.php?id=0&type=<?php echo $type?>"><?php echo $menu_title?></a></td>
-		</tr>
-		<tr class="tr2">
-			<td width="200">菜单名称</td><td width="50">优先级</td><td width="285">链接</td><td width="80">链接方式</td><td width="175">操作</td>
-		</tr>
-		<?php
-			$menu = new table_class($menu_table);
-			$record = $menu->find("all",array('conditions' => 'parent_id=0','order' => 'priority'));
-			//--------------------
-			for($i=0;$i<count($record);$i++){
-		?>
-				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
-					<td><img style="cursor:pointer" name="<?php echo $record[$i]->id;?>" src="/images/admin/plus.gif"><?php echo $record[$i]->name;?></td>
-					<td><?php echo $record[$i]->priority;?></td>
-					<td><?php echo $record[$i]->href;?></td>
-					<td><?php echo $record[$i]->target;?></td>
-					<td><a href="menu_add.php?id=<?php echo $record[$i]->id;?>&type=<?php echo $type?>">添加子目录</a>　<a href="menu_edit.php?id=<?php echo $record[$i]->id;?>&type=<?php echo $type?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
-				</tr>
-		<?php
-				$record2 = $menu->find("all",array('conditions' => 'parent_id>0 and parent_id='.$record[$i]->id));
-				//----------
-				for($j=0;$j<count($record2);$j++){
-		?>
-				<tr class=tr3 style="display:none;" id=<?php echo $record2[$j]->id;?> name="<?php echo $record[$i]->id;?>">
-					<td><li style="color:#0000ff;"><?php echo $record2[$j]->name;?></li></td>
-					<td><?php echo $record2[$j]->priority;?></td>
-					<td><?php echo $record2[$j]->href;?></td>
-					<td><?php echo $record2[$j]->target;?></td>
-					<td><a href="menu_edit.php?id=<?php echo $record2[$j]->id;?>&type=<?php echo $type?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record2[$j]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
-				</tr>
-		<?php
-				}
-				//----------
-			}
-			//--------------------
-		?>
-		<input type="hidden" id="reload_flag" value="<?php echo $id;?>">
-		<input type="hidden" id="menu_type" value="<?php echo $type;?>">
-	</table>
+	<?php
+		$image = new smg_images_class();
+		$images = $image->find("all");
+		#var_dump($images);
+	?>
 	
+		<table width="795" border="0">
+		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td colspan="5" width="795">　　　<a href="picture_add.php" style="color:#0000FF">发布图片</a>　　　　　　
+			搜索　<input id=newskey1 type="text" value="<? echo $key1?>" onKeyPress="newskeypress()">
+			<select id=newskey2 style="width:100px" onChange="newskey()">
+				<option value="">发表部门</option>
+				<? while($rows_dept=mysql_fetch_array($record_dept)){?>
+				<option value="<? echo $rows_dept['id']?>" <? if($rows_dept['id']==$key2){?>selected="selected"<? }?>><? echo $rows_dept['name']?></option>
+				<? }?>
+			</select>
+			<select id=newskey3 style="width:100px" onChange="newskey()">
+				<option value="">所属类别</option>
+				<? while($rows_mainpage=mysql_fetch_array($record_mainpage)){?>
+				<option value="<? echo $rows_mainpage['id']?>" <? if($rows_mainpage['id']==$key3){?>selected="selected"<? }?>><? echo $rows_mainpage['name']?></option>
+				<? }?>
+			</select>
+			<select id=newskey4 style="width:100px" onChange="newskey()">
+				<option value="">发布状况</option>
+				<option value="1" <? if($key4=="1"){?>selected="selected"<? }?>>已发布</option>
+				<option value="0" <? if($key4=="0"){?>selected="selected"<? }?>>未发布</option>
+			</select>
+			<input type="button" value="搜索" style="border:1px solid #0000ff; height:21px" onClick="newskey()">
+			</td>
+		</tr>
+	</table>
+	<?php for($i=0;$i<count($images);$i++){?>
+	<div class=v_box id="<?php echo $images[$i]->id;?>">
+		<a href="<?php echo $images[$i]->url;?>" target="_blank"><img src="<?php echo $images[$i]->src_path('small');?>" width="170" height="70" border="0"></a>
+		<div class=content><a href="<?php echo $images[$i]->url;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $images[$i]->title;?></a></div>
+		<div class=content><a href="?key2=<?php echo $images[$i]->dept_id;?>" style="color:#0000FF"><?php echo $images[$i]->dept_id;?></a></div>
+		<div class=content><a href="?key3=<?php echo $images[$i]->category_id;?>" style="color:#0000FF"><?php echo $images[$i]->category_id;?></a></div>
+		<div class=content style="height:20px">
+			<?php if($images[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" onClick="photocan('<?php echo $rows['id']?>')">撤消</span><? }?>
+			<?php if($images[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" onClick="photopub('<?php echo $rows['id']?>')">发布</span><? }?>
+			<a href="picture_edit.php?id=<?php echo $images[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
+			<span style="cursor:pointer" class="del" name="<?php echo $images[$i]->id;?>">删除</span>
+			<a href="picture_comment.php?id=<?php echo $images[$i]->id;?>" style="color:#000000; text-decoration:none">评论</a>
+			<input type="text" id=priority<? echo $p;?> value="<?php if($images[$i]->priority!=100){echo $images[$i]->priority;}?>" style="width:40px;">
+			<input type="hidden" id=priorityh<? echo $p;?> value="<?php echo $images[$i]->id;?>" style="width:40px;">	
+		</div>
+	</div>
+	<?php }?>
 </body>
 </html>
+
+<script>
+	$(function(){
+		$(".del").click(function(){
+			if(!window.confirm("确定要删除吗")){
+				return false;
+			}else{
+				$.post("picture.post.php",{del_id:$(this).attr('name'),type:"del"},function(data){
+					//alert(data);
+					//alert($("#"+data).attr('id'));
+					$("#"+data).remove();
+				});
+			}
+		});
+		
+		
+	});
+
+</script>
 

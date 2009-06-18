@@ -9,7 +9,7 @@
 	<title>smg</title>
 	<? 	
 		css_include_tag('admin');
-		use_jquery();
+		use_jquery_ui();
   ?>
 </head>
 <body style="background:url(/images/admin/bg.jpg) repeat-x;">
@@ -21,7 +21,7 @@
 		</div>
 		<div id=part2>
 				<?php
-					$menu = new table_class("smg_admin_menu");
+					$menu = new table_class("smg_admin_menu_dept");
 					$main_menu = $menu->find("all",array('order' => 'parent_id,priority desc'));
 					$main_menu2 = $main_menu;
 					//--------------------				
