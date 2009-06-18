@@ -1,6 +1,6 @@
 <?php
 	require "../frame.php";
-	require_role('admin');
+	require_role('member');
 	#$ret = $db->query();
 	#$ret[0]->name;
 	validate_form('test_form');

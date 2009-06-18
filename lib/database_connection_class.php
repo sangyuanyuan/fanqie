@@ -77,6 +77,7 @@ class database_row_item_class {
   	var $password = '';
 	var $code = 'utf8';
 	var $connected = false;
+	public $echo_sql = false;
 	public $record_count = 0;
 	private $data_set = array();
 	private $data_set_pointer = 0;
@@ -137,6 +138,7 @@ class database_row_item_class {
 		}
 
 		$sql = substr_replace($sql," SQL_CALC_FOUND_ROWS ",6, 0) ." limit " .($per_page * ($page - 1)) . "," .$per_page;
+		if($this->echo_sql) echo $sql;
 		if($this->query($sql) === false){
 			return false;
 		}
@@ -157,6 +159,7 @@ class database_row_item_class {
 	
   	public function &query($sql)
   	{
+  		if($this->echo_sql) echo $sql;
 		$this->reset_vars();
   		if ($this->connected === false) {
   			$this->_debug_info('database connection has not been established!');
@@ -183,6 +186,7 @@ class database_row_item_class {
   	}
   	
   	function execute($sqlstr){
+  		if($this->echo_sql) echo $sql;
 		if ($this->connected === false) {
   			$this->_debug_info('database connection has not been established!');
   			return  false;
