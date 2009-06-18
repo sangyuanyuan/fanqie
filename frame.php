@@ -88,7 +88,7 @@
 		return strtolower($_COOKIE['smg_role']) == strtolower($role_name) ? true : false;
 	}
 	
-	function require_role($role_name = 'member') {
+	function require_role($role_name='member') {
 		if(!has_role($role_name)){
 			redirect('/login/login.php');
 		};

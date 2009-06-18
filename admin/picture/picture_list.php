@@ -1,10 +1,10 @@
 <?php
 	require_once('../../frame.php');
-	require_role();
+	require_role("admin");
 	$type = $_REQUEST['type'];
 	$conditions = null;
 	if($_REQUEST['key1']!=""){
-		$conditions[] = "name=".$_REQUEST['key1'];
+		$conditions[] = 'title  like "%'.$_REQUEST['key1'].'%"';
 	}
 	if($_REQUEST['key2']!=""){
 		$conditions[] = "dept_id=".$_REQUEST['key2'];
@@ -19,9 +19,9 @@
 	//var_dump($conditions);
 	if($conditions!=null){
 		$conditions = implode(' and ',$conditions);
-		$images = $image->paginate("all",array("conditions" => $conditions),4);
+		$images = $image->paginate("all",array('conditions' => $conditions,'order' => 'priority desc'),10);
 	}else{
-		$images = $image->paginate("all",null,4);
+		$images = $image->paginate("all",array('order' => 'priority desc'),10);
 	}
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
@@ -46,7 +46,7 @@
 	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td colspan="5" width="795">　　　<a href="picture_add.php" style="color:#0000FF">发布图片</a>　　　　　　
-			搜索　<input id=newskey1 type="text" value="<? echo $key1?>" onKeyPress="newskeypress()">
+			搜索　<input id=newskey1 type="text" value="<? echo $key1?>">
 			<select id=newskey2 style="width:100px" class="select">
 				<option value="">发表部门</option>
 				<?php for($i=0;$i<count($rows_dept);$i++){?>
@@ -64,7 +64,7 @@
 				<option value="1" <? if($key4=="1"){?>selected="selected"<? }?>>已发布</option>
 				<option value="0" <? if($key4=="0"){?>selected="selected"<? }?>>未发布</option>
 			</select>
-			<input type="button" value="搜索" style="border:1px solid #0000ff; height:21px" onClick="newskey()">
+			<input type="button" value="搜索" id="search" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
 	</table>
