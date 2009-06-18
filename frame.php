@@ -67,7 +67,7 @@
 		<?php
 	}
 	
-	function is_login($admin=false) {
+	function has_login($admin=false) {
 		if(!admin){
 			return !empty($_COOKIE['smg_username']);
 		}else{
@@ -75,8 +75,22 @@
 		}
 	}
 	
+	function has_role($role_name){
+		if(!has_login) return false; 
+		if($role_name == 'member') return true; 
+		if(is_role('admin')) return true;
+		if ($role_name == 'admin')  return false;
+		return $role_name == $_COOKIE['smg_role'];		
+	}
+	
+	function is_role($role_name){
+		return strtolower($_COOKIE['smg_role']) == strtolower($role_name) ? true : false;
+	}
+	
 	function require_role($role_name = 'member') {
-		;
+		if(!has_role($role_name)){
+			redirect('/login/login.php');
+		};
 	}
 	
 	function show_video_player($width,$height,$image='',$file,$autostart = "false")

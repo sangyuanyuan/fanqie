@@ -12,6 +12,24 @@
 	$('#'+param).html(p);
 }
 
+function login_with_ajax($name, $password){
+	
+}
+
+function display_login(dom_name){
+	if(!dom_name) dom_name = "login_div";
+	var logout_text = '<span id=login_context>欢迎您　' + $.cookie('smg_user_nickname') + '</span>　<span id=logout_context><a href="#" id="logout_a">退出</a></span>';
+	var login_text = '<a href="login_ajax.php?height=120&width=300&modal=true" class="thickbox">登录</a>　<span id=reg_context>注册</span>';
+	var text = $.cookie('smg_user_nickname') == null ? login_text : logout_text;
+	$("#" + dom_name).html(text);			
+	$('#logout_a').click(function(e){
+		alert('ok');
+		e.preventDefault();
+		$.post('/login/user.post.php',{'user_type':'logout'},function(){display_login(dom_name)});
+	});
+	tb_init('a.thickbox');
+}
+
 function logout(param)
 {
   var p;

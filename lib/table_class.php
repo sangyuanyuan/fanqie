@@ -15,6 +15,7 @@ class table_class{
 	private $belongs_to_object=null;
 	private $belongs_to_name = null;
 	private $is_loaded = false;
+	public $echo_sql = false;
 	function __construct($table_name){
 		$this->_tablename = strtolower($table_name);
 		$db = get_db();
@@ -75,12 +76,15 @@ class table_class{
 			$sqlstr .= " limit " .$limit;
 		}
 		$db = get_db();
+		if($this->echo_sql){
+			echo $sqlstr;
+		};
 		if (!$db->query($sqlstr)) return  null ;
 		if($limit == 1){
 			if ($db->record_count <= 0) return null;
 			
 			foreach ($this->fields as $k => $v){
-				$result->fields[$k] = $db->field_by_name($k);
+				#$result->fields[$k] = $db->field_by_name($k);
 				$this->fields[$k] = $db->field_by_name($k);
 			}
 			$result = clone $this;
