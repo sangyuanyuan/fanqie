@@ -1,5 +1,6 @@
 <?php
 	require_once('../../frame.php');
+	$flag = $_REQUEST['flag'];
 	$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : 'admin';
 	if($type=="admin"||$type==""){$menu_title="添加超级管理员菜单主目录"; $menu_table="smg_admin_menu";}
 	else{$menu_title="添加部门管理员菜单主目录"; $menu_table="smg_admin_menu_dept";}
@@ -56,7 +57,7 @@
 			}
 			//--------------------
 		?>
-		<input type="hidden" id="reload_flag" value="<?php echo $id;?>">
+		<input type="hidden" id="reload_flag" value="<?php echo $flag;?>">
 		<input type="hidden" id="menu_type" value="<?php echo $type;?>">
 	</table>
 </body>
