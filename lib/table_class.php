@@ -15,6 +15,7 @@ class table_class{
 	private $belongs_to_object=null;
 	private $belongs_to_name = null;
 	private $is_loaded = false;
+	public $echo_sql = false;
 	function __construct($table_name){
 		$this->_tablename = strtolower($table_name);
 		$db = get_db();
@@ -46,7 +47,6 @@ class table_class{
 
 	public function find($param = 'all'){
 		$this->is_edited = false;
-		$this->is_loaded = false;
 		if (is_string($param)) {
 			$param = strtolower($param);
 		}
@@ -75,12 +75,15 @@ class table_class{
 			$sqlstr .= " limit " .$limit;
 		}
 		$db = get_db();
+		if($this->echo_sql){
+			echo $sqlstr;
+		};
 		if (!$db->query($sqlstr)) return  null ;
 		if($limit == 1){
 			if ($db->record_count <= 0) return null;
 			
 			foreach ($this->fields as $k => $v){
-				$result->fields[$k] = $db->field_by_name($k);
+				#$result->fields[$k] = $db->field_by_name($k);
 				$this->fields[$k] = $db->field_by_name($k);
 			}
 			$result = clone $this;
@@ -96,9 +99,65 @@ class table_class{
 			}while ($db->move_next());
 
 		}
-		$this->is_loaded = true;
 		return $result;
 		
+	}
+	
+	public function paginate($param = 'all'){
+		$this->is_edited = false;
+		if (is_string($param)) {
+			$param = strtolower($param);
+		}
+		$limit = -1;
+		$argsnum = func_num_args();
+		$sqlstr = "select * from " . $this->_tablename . " where 1=1 ";
+		if (intval($param) > 0) {
+			$sqlstr .= " and id=" .$param;
+			$limit = 1;
+		}
+		if ($param == 'first' || is_int($param)) {
+			$limit = 1;
+		}
+
+		if ($argsnum >= 2) {
+			$arg = func_get_arg(1);
+			if (!is_array($arg)) return ;
+			if (!empty($arg["conditions"])) {
+				$sqlstr .= " and " .$arg["conditions"];
+			}			
+			$limit = (intval($arg["limit"]) > 0) ? $arg["limit"] : $limit;
+			if(!empty($arg["order"])) $sqlstr .= " order by " .$arg["order"];
+		}
+
+		if ($limit > 0) {
+			$sqlstr .= " limit " .$limit;
+		}
+		$db = get_db();
+		if($this->echo_sql){
+			echo $sqlstr;
+		};
+		$db_ret = $db->paginate($sqlstr);
+		if (!$db_ret) return  null ;
+		if($limit == 1){
+			if ($db->record_count <= 0) return null;
+			
+			foreach ($this->fields as $k => $v){
+				$this->fields[$k] = $db_ret[0]->$k;
+			}
+			$result = clone $this;
+		}else {
+			$result = array();
+			if($db->record_count <= 0) return $result;
+			for($i=$db->record_count-1; $i >=0; $i--){
+				$tmp = clone $this;
+				foreach ($this->fields as $k => $v){
+					$tmp->fields[$k] = $db_ret[$i]->$k;
+				}
+				$result[] = $tmp;
+			}
+
+		}
+		return $result;
 	}
 
 	public function save(){

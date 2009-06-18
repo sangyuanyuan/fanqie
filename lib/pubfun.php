@@ -23,11 +23,16 @@ function debug_info($msg,$type='php') {
 }
 	
 define("ROOT_PATH", "/");
-function redirect($url)
+function redirect($url, $type='js')
 {
-  echo "<script LANGUAGE=\"Javascript\">"; 
-  echo "location.href='$url';"; 
-  echo "</script>"; 	
+  if($type == 'js'){
+	 echo "<script LANGUAGE=\"Javascript\">"; 
+	 echo "location.href='$url';"; 
+	 echo "</script>"; 		
+  }elseif($type== 'header'){
+  	header("Location: " . $url); 
+  }
+  
 }
 
 function get_current_url()
@@ -150,7 +155,7 @@ function is_ajax(){
 }
 
 //work only with jquery frame work
-function paginate($url="",$ajax_dom=nil,$page_var="page")
+function paginate($url="",$ajax_dom=null,$page_var="page")
 {
 	$pageindextoken = empty($page_var) ? "page" : $page_var;
 	$pagecounttoken = $pageindextoken . "_count";
@@ -211,12 +216,15 @@ function paginate($url="",$ajax_dom=nil,$page_var="page")
 	 <?php	
 	}
 	?>
-	</select>页
-    <script>
-		function jumppage(){
-			
-		}
-   	</script>
+	</select>页　共<?php echo $pagecount;?>页
+	<script>
+			function jumppage(urlprex,pageindex)
+			{
+				var surl=urlprex+pageindex;
+				window.location.href=surl;
+			} 
+	</script>
+	
 	<?php
 	if(!empty($ajax_dom)){
 		?>
@@ -225,11 +233,6 @@ function paginate($url="",$ajax_dom=nil,$page_var="page")
 				e.preventDefault();
 				$("#<?php echo $ajax_dom;?>").load($(this).attr('href'));
 			});
-			function jumppage(urlprex,pageindex)
-			{
-				var surl=urlprex+pageindex;
-				window.location.href=surl;
-			} 
 		</script>
 		<?php
 	}
