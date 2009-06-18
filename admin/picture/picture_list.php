@@ -18,7 +18,8 @@
 <body>
 	<?php
 		$image = new smg_images_class();
-		$images = $image->find("all");
+		$images = $image->paginate("all",array(),4);
+		//var_dump($images);
 		$dept = new table_class("smg_dept");
 		$rows_dept = $dept->find("all");
 		$category = new table_class("smg_category");
@@ -68,6 +69,11 @@
 		</div>
 	</div>
 	<?php }?>
+	<table width="795" border="0">
+		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td><?php paginate();?></td>
+		</tr>
+	</table>
 </body>
 </html>
 
