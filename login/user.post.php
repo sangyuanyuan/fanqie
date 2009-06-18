@@ -11,11 +11,11 @@ if($_POST['user_type']=="login")
 	$login_info = $db->query($sql);
 	$login_info_num = $db->record_count;
 	if($login_info === false){
-		$error = 'error';
+		$error = '系统错误!';
 	}
 	elseif($login_info_num == 0)
 	{
-		$error = "error";
+		$error = "用户名或密码不对";
 	}
 	else
 	{
@@ -26,7 +26,7 @@ if($_POST['user_type']=="login")
 			$login_info2 = $db->query($sql);
 			SetCookie('smg_user_dept',$login_info2[0]->dept_id,$y2k,'/');
 		}
-		SetCookie('smg_usernam',$login_text,$y2k,'/');
+		SetCookie('smg_username',$login_text,$y2k,'/');
 		SetCookie('smg_user_nickname',$login_info[0]->nick_name,$y2k,'/');
 		setcookie('smg_role', $login_info[0]->role_name,$y2k,'/');
 		$error =  "ok";

@@ -1,7 +1,5 @@
 ﻿<?
 require_once('../frame.php');
-if(!is_ajax()){use_jquery();}
-js_include_once_tag('jquery.cookie');
 ?>
 
 <div style="text-align:center ">
@@ -15,7 +13,15 @@ js_include_once_tag('jquery.cookie');
     <td><input id="passwod_text" name="passwod_text" type="password" size="20" style="width:180px;"></td>
   </tr>
   <tr align="right">
-    <td colspan="2"><input type="button" style="width:90px;" value="登录" onclick="check_login('login_context','logout_context','reg_context');">&nbsp;<input type="button" style="width:90px;"  value="取消" onclick="tb_remove();"></td>
+    <td colspan="2"><input type="button" id="submit_input" style="width:90px;" value="登录">&nbsp;<input type="button" style="width:90px;"  value="取消" onclick="tb_remove();"></td>
   </tr>
 </table>
 </div>
+
+<script>
+	$(function(){
+		$('#submit_input').click(function(){
+			login_with_ajax($('#login_text').attr('value'),$('#passwod_text').attr('value'));
+		});
+	});
+</script>
