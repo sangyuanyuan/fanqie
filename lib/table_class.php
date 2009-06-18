@@ -103,7 +103,7 @@ class table_class{
 		
 	}
 	
-	public function paginate($param = 'all'){
+	public function paginate($param = 'all',$option = null, $page_count = 10,$page_var='page'){
 		$this->is_edited = false;
 		if (is_string($param)) {
 			$param = strtolower($param);
@@ -136,7 +136,7 @@ class table_class{
 		if($this->echo_sql){
 			echo $sqlstr;
 		};
-		$db_ret = $db->paginate($sqlstr);
+		$db_ret = $db->paginate($sqlstr,$page_count,$page_var);
 		if (!$db_ret) return  null ;
 		if($limit == 1){
 			if ($db->record_count <= 0) return null;
