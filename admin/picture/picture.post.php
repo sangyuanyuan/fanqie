@@ -12,6 +12,8 @@
 		$smg_image->find($_POST['id']);
 		$smg_image->update_attribute("is_adopt","1");
 		//echo "撤销";
+	}else if($_POST['type']=="search"){
+		echo $_POST['key2'];
 	}else{
 		$smg_image->find($_POST['id']);
 		if($_POST['type']!=="edit"|$_FILES['image']['name']!=null){

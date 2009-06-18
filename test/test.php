@@ -4,6 +4,10 @@
 	#$ret = $db->query();
 	#$ret[0]->name;
 	validate_form('test_form');
+	$array;
+	$array['key1'] = 'kdfdkfjdk';
+	$array['key2'] = 'key2';
+	var_dump($array);
 
 
 ?>

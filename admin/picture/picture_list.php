@@ -1,6 +1,33 @@
 <?php
 	require_once('../../frame.php');
+	require_role();
 	$type = $_REQUEST['type'];
+	$conditions = null;
+	if($_REQUEST['key1']!=""){
+		$conditions[] = "name=".$_REQUEST['key1'];
+	}
+	if($_REQUEST['key2']!=""){
+		$conditions[] = "dept_id=".$_REQUEST['key2'];
+	}
+	if($_REQUEST['key3']!=""){
+		$conditions[] = "category_id=".$_REQUEST['key3'];
+	}
+	if($_REQUEST['key4']!=""){
+		$conditions[] = "is_adopt=".$_REQUEST['key4'];
+	}
+	$image = new smg_images_class();
+	//var_dump($conditions);
+	if($conditions!=null){
+		$conditions = implode(' and ',$conditions);
+		$images = $image->paginate("all",array("conditions" => $conditions),4);
+	}else{
+		$images = $image->paginate("all",null,4);
+	}
+	$dept = new table_class("smg_dept");
+	$rows_dept = $dept->find("all");
+	$category = new table_class("smg_category");
+	$rows_category = $category->find("all");
+	#var_dump($images);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -16,30 +43,20 @@
 	?>
 </head>
 <body>
-	<?php
-		$image = new smg_images_class();
-		$images = $image->paginate("all",null,4);
-		$dept = new table_class("smg_dept");
-		$rows_dept = $dept->find("all");
-		$category = new table_class("smg_category");
-		$rows_category = $category->find("all");
-		#var_dump($images);
-	?>
-	
-		<table width="795" border="0">
+	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td colspan="5" width="795">　　　<a href="picture_add.php" style="color:#0000FF">发布图片</a>　　　　　　
 			搜索　<input id=newskey1 type="text" value="<? echo $key1?>" onKeyPress="newskeypress()">
 			<select id=newskey2 style="width:100px" class="select">
 				<option value="">发表部门</option>
 				<?php for($i=0;$i<count($rows_dept);$i++){?>
-				<option value="<?php echo $rows_dept[$i]->name; ?>" <?php if($rows_dept[$i]->id==$key2){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
+				<option value="<?php echo $rows_dept[$i]->deptid; ?>" <?php if($rows_dept[$i]->id==$key2){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
 				<? }?>
 			</select>
 			<select id=newskey3 style="width:100px" class="select">
 				<option value="">所属类别</option>
 				<?php for($i=0;$i<count($rows_category);$i++){?>
-				<option value="<?php echo $rows_category[$i]->name; ?>" <?php if($rows_category[$i]->id==$key3){?>selected="selected"<? }?>><?php echo $rows_category[$i]->name; ?></option>
+				<option value="<?php echo $rows_category[$i]->id; ?>" <?php if($rows_category[$i]->id==$key3){?>selected="selected"<? }?>><?php echo $rows_category[$i]->name; ?></option>
 				<? }?>
 			</select>
 			<select id=newskey4 style="width:100px" class="select">

@@ -24,6 +24,6 @@ $(function(){
 	});
 	
 	$(".select").change(function(){
-		//$.post("picture.post.php",{type:"search",key2:})
+			window.location.href="?key1="+$("#newskey1").attr('value')+"&key2="+$("#newskey2").attr('value')+"&key3="+$("#newskey3").attr('value')+"&key4="+$("#newskey4").attr('value');
 	});
 });
