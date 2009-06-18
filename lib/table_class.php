@@ -120,7 +120,7 @@ class table_class{
 		return $db->execute('delete from ' .$this->_tablename .' where id=' . $id);
 	}
 
-	public function update_attributes($attributes = null){
+	public function update_attributes($attributes = null,$auto_save = true){
 		if (is_array($attributes)) {
 			foreach ($attributes as $k => $v) {		
 				if (array_key_exists($k,$this->fields)) {
@@ -131,7 +131,16 @@ class table_class{
 				}
 			}
 		}
-		return $this->save();
+		if($auto_save){
+			return $this->save();	
+		}
+	}
+	
+	public function update_attribute($field, $value,$auto_save =true){
+		$this->$field = $value;
+		if($auto_save){
+			return $this->save();	
+		}
 	}
 
 	#belongs_to relationship
