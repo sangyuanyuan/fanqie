@@ -24,11 +24,11 @@ if($_POST['user_type']=="login")
 		{
 			$sql = 'select * from smg_user_real where id='.$login_info[0]->smg_real_id;
 			$login_info2 = $db->query($sql);
-			SetCookie('smg_user_dept',$login_info2[0]->dept_id,$y2k,'/');
+			@SetCookie('smg_user_dept',$login_info2[0]->dept_id,$y2k,'/');
 		}
-		SetCookie('smg_username',$login_text,$y2k,'/');
-		SetCookie('smg_user_nickname',$login_info[0]->nick_name,$y2k,'/');
-		setcookie('smg_role', $login_info[0]->role_name,$y2k,'/');
+		@SetCookie('smg_username',$login_text,$y2k,'/');
+		@SetCookie('smg_user_nickname',$login_info[0]->nick_name,$y2k,'/');
+		@setcookie('smg_role', $login_info[0]->role_name,$y2k,'/');
 		$error =  "ok";
 	}	
 	if(is_ajax()){
@@ -39,7 +39,7 @@ if($_POST['user_type']=="login")
 			if(empty($last_url)){
 				$last_url = '/admin/admin.php';
 			}
-			redirect($last_url,'header');
+			redirect($last_url);
 		}else{
 			alert($error);
 			redirect('/login/');

@@ -60,7 +60,6 @@ class table_class{
 		if ($param == 'first' || is_int($param)) {
 			$limit = 1;
 		}
-
 		if ($argsnum >= 2) {
 			$arg = func_get_arg(1);
 			if (!is_array($arg)) return ;
