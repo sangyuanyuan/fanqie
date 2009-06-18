@@ -12,8 +12,20 @@
 	$('#'+param).html(p);
 }
 
-function login_with_ajax($name, $password){
-	
+function login_with_ajax(name, password){
+	if(!name) {
+		alert('用户名不能为空! ');
+		return false;
+	}
+	$.post('user.post.php',{'user_type':'login','login_text':name,'password_text':password},function(data){
+  	if(data == "ok")
+  	{
+		display_login();
+		tb_remove();
+	}else{
+		alert(data);
+	}
+	});
 }
 
 function display_login(dom_name){
@@ -27,7 +39,6 @@ function display_login(dom_name){
 		e.preventDefault();
 		$.post('/login/user.post.php',{'user_type':'logout'},function(){display_login(dom_name)});
 	});
-	tb_init('a.thickbox');
 }
 
 function logout(param)

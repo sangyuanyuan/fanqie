@@ -68,15 +68,16 @@
 	}
 	
 	function has_login($admin=false) {
-		if(!admin){
+		if(!$admin){
 			return !empty($_COOKIE['smg_username']);
 		}else{
+			alert('需要管理员权限!');
 			return !empty($_SESSION['smg_username']);
 		}
 	}
 	
 	function has_role($role_name){
-		if(!has_login) return false; 
+		if(!has_login()) return false; 
 		if($role_name == 'member') return true; 
 		if(is_role('admin')) return true;
 		if ($role_name == 'admin')  return false;
