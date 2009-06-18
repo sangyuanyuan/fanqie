@@ -216,7 +216,7 @@ function paginate($url="",$ajax_dom=null,$page_var="page")
 	 <?php	
 	}
 	?>
-	</select>页
+	</select>页　共<?php echo $pagecount;?>页
 	<script>
 			function jumppage(urlprex,pageindex)
 			{
