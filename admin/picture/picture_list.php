@@ -80,7 +80,7 @@
 			<a href="picture_edit.php?id=<?php echo $images[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
 			<span style="cursor:pointer" class="del" name="<?php echo $images[$i]->id;?>">删除</span>
 			<a href="picture_comment.php?id=<?php echo $images[$i]->id;?>" style="color:#000000; text-decoration:none">评论</a>
-			<input type="text" id="priority<? echo $p;?>" value="<?php if($images[$i]->priority!=100){echo $images[$i]->priority;}?>" style="width:40px;">
+			<input type="text" class="priority" name="<?php echo $images[$i]->id;?>" value="<?php echo $images[$i]->priority;?>" style="width:40px;">
 			<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $images[$i]->id;?>" style="width:40px;">	
 		</div>
 	</div>
@@ -88,6 +88,8 @@
 	<table width="795" border="0">
 		<tr  height="25px;" style="font-weight:bold; font-size:13px;">
 			<td><?php paginate();?></td>
+			<td><input type="submit" id="edit_priority" value="编辑优先级"></td>
+			<td><input type="submit" id="clear_priority" value="清空优先级"></td>
 		</tr>
 	</table>
 	<input type="hidden" id="db_talbe" value="smg_images">
