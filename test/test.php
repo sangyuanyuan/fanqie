@@ -1,8 +1,7 @@
 <?php
-	require "../frame.php";
-
-	require_role();
-
+	require "../frame.php";	
+	#require_role();
+	echo category_id_by_name('test2');
 	#$ret = $db->query();
 	#$ret[0]->name;
 	validate_form('test_form');
@@ -16,7 +15,7 @@
 	</head>
 	<body>
 		<?php 
-	var_dump($_COOKIE);
+
 ?>
 		<form id="test_form" action="/login/login.post.php" method="post">
 			name:<input type="text" name="login_text" id="name" class="required">

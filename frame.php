@@ -9,6 +9,7 @@
 	require_once(CURRENT_DIR ."lib/upload_file_class.php");
 	require_once CURRENT_DIR ."lib/image_handler_class.php";
 	require_once CURRENT_DIR ."lib/smg_images_class.php";	
+	require_once CURRENT_DIR ."lib/smg_category_class.php";
 	
 	function get_config($var,$path=''){
 		if(empty($path)){$path = LIB_PATH .'../config/config.php';}
@@ -92,6 +93,27 @@
 		if(!has_role($role_name)){
 			redirect('/login/login.php');
 		};
+	}
+	
+	function category_name_by_id($id) {
+		global $_category;
+		if(empty($_category)) $_category = new smg_category_class();
+		$cate = $_category->items[$id];
+		if($cate){
+			return $cate->name;
+		}else{
+			return '';
+		}
+	}
+	
+	function category_id_by_name($name) {
+		global $_category;
+		if(empty($_category)) $_category = new smg_category_class();
+		foreach ($_category->items as $v) {
+			if($v->name == $name){
+				return $v->id;
+			};
+		}
 	}
 	
 	function show_video_player($width,$height,$image='',$file,$autostart = "false")
