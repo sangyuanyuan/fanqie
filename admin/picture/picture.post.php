@@ -3,7 +3,7 @@
 	$smg_image = new smg_images_class();
 
 	$smg_image->find($_POST['id']);
-	if($_POST['type']!=="edit"|$_FILES['image']['name']!=null){
+	if($_POST['type']!=="edit"||$_FILES['image']['name']!=null){
 		//echo "aa";
 		$upload = new upload_file_class();
 		$upload->save_dir = "/upload/images/";

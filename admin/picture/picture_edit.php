@@ -66,13 +66,3 @@
 	</form>
 </body>
 </html>
-
-<script>
-	$(document).ready(function(){
-		$("#submit").click(function(){
-			if($("#priority").attr('value')==""){
-				$("#priority").attr('value','100');
-			}
-		});
-	});
-</script>
