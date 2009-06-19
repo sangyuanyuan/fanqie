@@ -80,14 +80,14 @@
 			<a href="magazine_edit.php?id=<?php echo $magazine_rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
 			<span style="cursor:pointer" class="del" name="<?php echo $magazine_rows[$i]->id;?>">删除</span>
 			<a href="magazine_comment.php?id=<?php echo $magazine_rows[$i]->id;?>" style="color:#000000; text-decoration:none">评论</a>
-			<input type="text" id="priority<? echo $p;?>" value="<?php if($magazine_rows[$i]->priority!=100){echo $magazine_rows[$i]->priority;}?>" style="width:40px;">
+			<input type="text" class="priority" name="<?php echo $magazine_rows[$i]->id;?>" value="<?php if($magazine_rows[$i]->priority!=100){echo $magazine_rows[$i]->priority;}?>" style="width:40px;">
 			<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $magazine_rows[$i]->id;?>" style="width:40px;">	
 		</div>
 	</div>
 	<?php }?>
 	<table width="795" border="0">
-		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td><?php paginate();?></td>
+		<tr colspan="5" class=tr3>
+			<td><?php paginate();?> <button id="edit_priority">编辑优先级</button> <button id="clear_priority">清空优先级</button></td>
 		</tr>
 	</table>
 	<input type="hidden" id="db_talbe" value="smg_magazine">
