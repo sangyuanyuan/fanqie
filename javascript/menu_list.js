@@ -10,6 +10,7 @@ $(function(){
 			}
 			
 		});
+/*
 		$(".del").click(function(){
 			if(!window.confirm("确定要删除吗")){
 				return false;
@@ -23,7 +24,7 @@ $(function(){
 				});
 			}
 		});
-		
+*/		
 		if($("input").attr('value')==1){
 			window.parent.location.reload();
 			$("input").attr('value','0');
