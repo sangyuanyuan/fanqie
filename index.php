@@ -15,36 +15,18 @@
 	<div id=nav2>
 		<div id=logo>
 	  </div>
-	  <div id=classic1>
-	  	<font class=littletitle>最新</font> 市场 财务 股市<br>
-	  	<font class=littletitle>要点</font> 新闻 社会 上海
-	  </div>
-	  <div id=line>
-	  </div>
-	  <div id=classic2>
-	  	<font class=littletitle>新闻</font> 视频 公告 专题<br>
-	  	<font class=littletitle>爆料</font> 业务 群团 简讯
-	  </div>
-	  <div id=line>
-	  </div>
-	  <div id=classic2>
-	  	<font class=littletitle>论坛</font> 对话 旅游 热点<br>
-	  	<font class=littletitle>博客</font> 聊天 影评 DIY
-	  </div>
-	  <div id=line>
-	  </div>
-	  <div id=classic2>
-	  	<font class=littletitle>摄影</font> 活动 宝宝 音频<br>
-	  	<font class=littletitle>视频</font> 杂志 每周之星
-	  </div>
-	  <div id=line>
-	  </div>
-	  <div id=classic2>
-	  	<font class=littletitle>团购</font> 网店 生日 题库<br>
-	  	<font class=littletitle>工具</font> 菜单 投票 婚介
-	  </div>
-	  <div id=line>
-	  </div>
+		<ul>
+			<li><b>最新</b></li>
+			<li>市场</li>
+			<li>财务</li>
+			<li>股市</li>
+			<li><b>最新</b></li>
+			<li>市场</li>
+			<li>财务</li>
+			<li>股市</li>
+	  </ul>	
+		
+					
 	  <div id=list>
 	  </div>
 	</div>
