@@ -1,6 +1,5 @@
 ﻿<?
 require_once('../frame.php');
-
 if($_POST['user_type']=="login")
 {
 	$login_text = $_POST['login_text'];
@@ -35,14 +34,15 @@ if($_POST['user_type']=="login")
 		echo $error;
 	}else{
 		if($error == 'ok'){
-			$last_url = $_SERVER['HTTP_REFERER'];
+
+			$last_url = $_POST['lasturl'];
 			if(empty($last_url)){
 				$last_url = '/admin/admin.php';
 			}
-			redirect($last_url);
+			redirect($last_url,'header');
 		}else{
 			alert($error);
-			redirect('/login/');
+			redirect('/login/login.php','js');
 		}
 	}	
 }

@@ -158,8 +158,10 @@ function is_ajax(){
 function paginate($url="",$ajax_dom=null,$page_var="page")
 {
 	$pageindextoken = empty($page_var) ? "page" : $page_var;
+	$record_count_token = $pageindextoken . "_record_count";	
+
 	$pagecounttoken = $pageindextoken . "_count";
-	$record_count_token = $pageindextoken . "_record_count";
+
 	global $$pagecounttoken;
 	global $$record_count_token;
 	$pageindex = isset($_REQUEST[$pageindextoken]) ? $_REQUEST[$pageindextoken] : 1;
@@ -206,7 +208,7 @@ function paginate($url="",$ajax_dom=null,$page_var="page")
 	  <span><a class="paginate_link" href="<?php echo $pageprev; ?>">[上页]</a></span>		
 	<?php	
 	}
-	?>共找到<?php global $$record_count_token; ?>条记录　
+	?>共找到<?php echo $$record_count_token; ?>条记录　
   当前第<select name="pageselect" id="pageselect" onChange="jumppage('<?php echo $url ."&" .$page_var ."="; ?>',this.options[this.options.selectedIndex].value);">
 	<?php	
 	//产生所有页面链接
