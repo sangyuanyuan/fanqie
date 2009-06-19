@@ -62,6 +62,7 @@
 	</table>
 	<input type="hidden" name="id" value="<?php echo $id;?>">
 	<input type="hidden" name="type" value="edit">
+	<input type="hidden" name="picture[is_adopt]" value="0">
 	</form>
 </body>
 </html>

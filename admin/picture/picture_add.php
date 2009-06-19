@@ -50,13 +50,14 @@
 			<td>选择图片</td><td align="left">　<input name="image" id="image" type="file">(请上传200x160大小的图片，格式支持jpg、gif、png) <input type="hidden" name="MAX_FILE_SIZE1" value="2097152"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
-			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name=picture[description] class="required"></textarea></td>
+			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="picture[description]" class="required"></textarea></td>
 		</tr>
 
 		<tr bgcolor="#f9f9f9" height="30px;">
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布图片"></td>
 		</tr>	
 	</table>
+	<input type="hidden" name="picture[is_adopt]" value="0">
 	</form>
 </body>
 </html>

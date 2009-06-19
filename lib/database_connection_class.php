@@ -126,7 +126,9 @@ class database_row_item_class {
   	
 	function paginate($sql, $per_page=10,$page_var='page') {
 		$page_count_var  = $page_var ."_count";
+		$record_count_var = $page_var ."_record_count";
 		global $$page_count_var;
+		global $$record_count_var;
 		$page = isset($_REQUEST[$page_var]) ? $_REQUEST[$page_var] : 1;
 		$select = substr($sql,0,6);
 		if(strtoupper($select) != 'SELECT'){
@@ -142,6 +144,8 @@ class database_row_item_class {
 		mysql_data_seek($ret,0); 
 		$ret = mysql_fetch_array($ret);
 		$$page_count_var = ceil($ret[0] / $per_page);
+		$$record_count_var = $ret[0];
+		
 		return $this->data_set;
 	}
 	

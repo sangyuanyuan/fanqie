@@ -68,15 +68,16 @@
 	}
 	
 	function has_login($admin=false) {
-		if(!admin){
+		if(!$admin){
 			return !empty($_COOKIE['smg_username']);
 		}else{
+			alert('需要管理员权限!');
 			return !empty($_SESSION['smg_username']);
 		}
 	}
 	
 	function has_role($role_name){
-		if(!has_login) return false; 
+		if(!has_login()) return false; 
 		if($role_name == 'member') return true; 
 		if(is_role('admin')) return true;
 		if ($role_name == 'admin')  return false;
@@ -87,7 +88,7 @@
 		return strtolower($_COOKIE['smg_role']) == strtolower($role_name) ? true : false;
 	}
 	
-	function require_role($role_name = 'member') {
+	function require_role($role_name='member') {
 		if(!has_role($role_name)){
 			redirect('/login/login.php');
 		};

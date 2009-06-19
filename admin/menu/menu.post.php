@@ -1,6 +1,6 @@
 <?php
   require_once('../../frame.php');
-	$url="menu_list.php?type=".$_POST['menu_type'];
+	$url="menu_list.php?type=".$_POST['menu_type']."&flag=1";
 	
 	if("del_menu"==$_POST['type']){
 		if("admin"==$_POST['menu_type'] || empty($_POST['menu_type'])) {
