@@ -50,19 +50,19 @@
 			<select id=newskey2 style="width:100px" class="select">
 				<option value="">发表部门</option>
 				<?php for($i=0;$i<count($rows_dept);$i++){?>
-				<option value="<?php echo $rows_dept[$i]->deptid; ?>" <?php if($rows_dept[$i]->id==$key2){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
+				<option value="<?php echo $rows_dept[$i]->deptid; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['key2']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
 				<? }?>
 			</select>
 			<select id=newskey3 style="width:100px" class="select">
 				<option value="">所属类别</option>
 				<?php for($i=0;$i<count($rows_category);$i++){?>
-				<option value="<?php echo $rows_category[$i]->id; ?>" <?php if($rows_category[$i]->id==$key3){?>selected="selected"<? }?>><?php echo $rows_category[$i]->name; ?></option>
+				<option value="<?php echo $rows_category[$i]->id; ?>" <?php if($rows_category[$i]->id==$_REQUEST['key3']){?>selected="selected"<? }?>><?php echo $rows_category[$i]->name; ?></option>
 				<? }?>
 			</select>
 			<select id=newskey4 style="width:100px" class="select">
 				<option value="">发布状况</option>
-				<option value="1" <? if($key4=="1"){?>selected="selected"<? }?>>已发布</option>
-				<option value="0" <? if($key4=="0"){?>selected="selected"<? }?>>未发布</option>
+				<option value="1" <? if($_REQUEST['key4']=="1"){?>selected="selected"<? }?>>已发布</option>
+				<option value="0" <? if($_REQUEST['key4']=="0"){?>selected="selected"<? }?>>未发布</option>
 			</select>
 			<input type="button" value="搜索" id="search" style="border:1px solid #0000ff; height:21px">
 			</td>
