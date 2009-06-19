@@ -16,7 +16,6 @@
 	}
 	elseif("edit_priority"==$_POST['post_type'])
 	{
-		$post = new table_class($_POST['db_table']);
 		$id_str=explode("|",$_POST['id_str']); 
 		$priority_str=explode("|",$_POST['priority_str']); 
 		$id_str_num=sizeof($id_str)-1;
@@ -24,7 +23,7 @@
 		{
 			if($priority_str[$i]==""){$priority_str[$i]="100";}
 			$db = get_db();
-			$sql="update smg_dept_list set priority=".$priority_str[$i]." where id=".$id_str[$i];
+			$sql="update ".$_POST['db_table']." set priority=".$priority_str[$i]." where id=".$id_str[$i];
 			$db->execute($sql);
 		}		
 	}

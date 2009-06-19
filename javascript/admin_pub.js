@@ -37,6 +37,7 @@ $(function(){
 			if(!window.confirm("编辑优先级")){return false;}
 			var id_str="";
 			var priority_str="";
+			
     	$(".priority").each(function(){
     			id_str=id_str+$(this).attr("name")+"|";
     			priority_str=priority_str+$(this).attr("value")+"|";

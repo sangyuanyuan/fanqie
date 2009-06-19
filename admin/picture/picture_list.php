@@ -86,10 +86,8 @@
 	</div>
 	<?php }?>
 	<table width="795" border="0">
-		<tr  height="25px;" style="font-weight:bold; font-size:13px;">
-			<td><?php paginate();?></td>
-			<td><input type="submit" id="edit_priority" value="编辑优先级"></td>
-			<td><input type="submit" id="clear_priority" value="清空优先级"></td>
+		<tr colspan="5" class=tr3>
+			<td><?php paginate();?> <button id="edit_priority">编辑优先级</button> <button id="clear_priority">清空优先级</button></td>
 		</tr>
 	</table>
 	<input type="hidden" id="db_talbe" value="smg_images">
