@@ -8,9 +8,18 @@
 </head>
 <body>
 	<div id=nav1>
-		<div id=box>	
-		   企业邮箱 新节目 直播 联系我们 常用办公软件 <img src="/images/a.jpg" width=100 height=12>
-	  </div>
+		<div id=topimg1>
+		   	<img src="/images/top/sm.jpg" width=113 height=24>
+		   	</div>
+		   	<div id=topimg1>
+		   	<img src="/images/top/tools.jpg" width=61 height=24>
+		   	</div>
+		   <div id=toptext1>
+		   	企业邮箱 新节目 直播 联系我们 常用办公软件
+		   </div>
+		   
+		   	
+	  
 	</div>
 	<div id=nav2>
 		<div id=logo>
@@ -46,6 +55,7 @@
 	  <div id=line>
 	  </div>
 	  <div id=list>
+	  	各部门列表
 	  </div>
 	</div>
 
