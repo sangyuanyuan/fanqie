@@ -23,7 +23,7 @@
 	<form id="picture_edit" enctype="multipart/form-data" action="picture.post.php" method="post"> 
 	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td colspan="2" width="795">　　添加图片</td>
+			<td colspan="2" width="795">　　编辑图片</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name="picture[title]" class="required" value="<?php echo $picture_record[0]->title;?>"></td>
@@ -66,13 +66,3 @@
 	</form>
 </body>
 </html>
-
-<script>
-	$(document).ready(function(){
-		$("#submit").click(function(){
-			if($("#priority").attr('value')==""){
-				$("#priority").attr('value','100');
-			}
-		});
-	});
-</script>
