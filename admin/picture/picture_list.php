@@ -86,10 +86,11 @@
 	</div>
 	<?php }?>
 	<table width="795" border="0">
-		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+		<tr  height="25px;" style="font-weight:bold; font-size:13px;">
 			<td><?php paginate();?></td>
 		</tr>
 	</table>
+	<input type="hidden" id="db_talbe" value="smg_images">
 </body>
 </html>
 
