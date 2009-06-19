@@ -35,7 +35,7 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><img style="cursor:pointer" name="<?php echo $record[$i]->id;?>" src="/images/admin/plus.gif"><?php echo $record[$i]->name;?></td>
-					<td><?php echo $record[$i]->priority;?></td>
+					<td><input type="text" class="priority" name="<?php echo $record[$i]->id;?>" value="<?php if($record[$i]->priority!=100){echo $record[$i]->priority;}?>" style="width:30px;"></td>
 					<td><?php echo $record[$i]->href;?></td>
 					<td><?php echo $record[$i]->target;?></td>
 					<td><a href="menu_add.php?id=<?php echo $record[$i]->id;?>&type=<?php echo $type?>">添加子目录</a>　<a href="menu_edit.php?id=<?php echo $record[$i]->id;?>&type=<?php echo $type?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
@@ -47,7 +47,7 @@
 		?>
 				<tr class=tr3 style="display:none;" id=<?php echo $record2[$j]->id;?> name="<?php echo $record[$i]->id;?>">
 					<td><li style="color:#0000ff;"><?php echo $record2[$j]->name;?></li></td>
-					<td><?php echo $record2[$j]->priority;?></td>
+					<td><input type="text" class="priority" name="<?php echo $record2[$j]->id;?>" value="<?php if($record2[$j]->priority!=100){echo $record2[$j]->priority;}?>" style="width:30px;"></td>
 					<td><?php echo $record2[$j]->href;?></td>
 					<td><?php echo $record2[$j]->target;?></td>
 					<td><a href="menu_edit.php?id=<?php echo $record2[$j]->id;?>&type=<?php echo $type?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record2[$j]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
@@ -61,6 +61,11 @@
 		<input type="hidden" id="reload_flag" value="<?php echo $flag;?>">
 		<input type="hidden" id="menu_type" value="<?php echo $type;?>">
 		<input type="hidden" id="db_talbe" value="<?php echo $menu_table;?>">
+	</table>
+	<table width="795" border="0">
+		<tr colspan="5" class=tr3>
+			<td><?php paginate();?> <button id="edit_priority">编辑优先级</button> <button id="clear_priority">清空优先级</button></td>
+		</tr>
 	</table>
 </body>
 </html>
