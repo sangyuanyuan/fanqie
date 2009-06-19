@@ -24,7 +24,7 @@
 	
 	$smg_image->update_attributes($_POST['picture']);
 	//var_dump($_POST[picture]);
-	//redirect('picture_list.php');
+	redirect('picture_list.php');
 	
 	
 ?>
