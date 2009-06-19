@@ -44,7 +44,7 @@
 </head>
 <body>
 	<table width="795" border="0">
-		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+		<tr class="tr1">
 			<td colspan="5" width="795">　　　<a href="video_add.php" style="color:#0000FF">发布视频</a>　　　　　　
 			搜索　<input id=newskey1 type="text" value="<? echo $key1?>">
 			<select id=newskey2 style="width:100px" class="select">
@@ -80,14 +80,14 @@
 			<a href="video_edit.php?id=<?php echo $video_rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
 			<span style="cursor:pointer" class="del" name="<?php echo $video_rows[$i]->id;?>">删除</span>
 			<a href="video_comment.php?id=<?php echo $video_rows[$i]->id;?>" style="color:#000000; text-decoration:none">评论</a>
-			<input type="text" id="priority<? echo $p;?>" value="<?php if($video_rows[$i]->priority!=100){echo $video_rows[$i]->priority;}?>" style="width:40px;">
+			<input type="text" class="priority" name="<?php echo $video_rows[$i]->id;?>" value="<?php if($video_rows[$i]->priority!=100){echo $video_rows[$i]->priority;}?>" style="width:40px;">
 			<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $video_rows[$i]->id;?>" style="width:40px;">	
 		</div>
 	</div>
 	<?php }?>
 	<table width="795" border="0">
-		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td><?php paginate();?></td>
+		<tr colspan="5" class=tr3>
+			<td><?php paginate();?> <button id="edit_priority">编辑优先级</button> <button id="clear_priority">清空优先级</button></td>
 		</tr>
 	</table>
 	<input type="hidden" id="db_talbe" value="smg_video">
