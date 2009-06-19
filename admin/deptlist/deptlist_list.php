@@ -11,7 +11,7 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('nav_list');
+		js_include_tag('admin_pub');
 	?>
 </head>
 <body>
@@ -25,14 +25,14 @@
 		<?php
 			$db = get_db();
 			$sql="select * from smg_dept_list order by priority asc";
-			$dept_list=$db->paginate($sql,20);
+			$record=$db->paginate($sql,20);
 			//--------------------
-			for($i=0;$i<count($dept_list);$i++){
+			for($i=0;$i<count($record);$i++){
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
-					<td><?php echo $dept_list[$i]->name;?></td>
-					<td><?php echo $dept_list[$i]->href;?></td>
-					<td><a class="edit" name="<?php echo $dept_list[$i]->id;?>" style="cursor:pointer">编辑</a>　<a class="edit" name="<?php echo $dept_list[$i]->id;?>" style="cursor:pointer">删除</a>　<input type="text" value="<?php echo $dept_list[$i]->priority;?>" style="width:40px;"></td>
+					<td><?php echo $record[$i]->name;?></td>
+					<td><?php echo $record[$i]->href;?></td>
+					<td><a href="deptlist_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">删除</a>　<input type="text" class="priority" value="<?php echo $record[$i]->priority;?>" style="width:40px;"></td>
 				</tr>
 		<?php
 			}
@@ -41,6 +41,8 @@
 		<tr class="tr3">
 			<td colspan=4><?php paginate('deptlist_list.php?type=a&type2=3');?>　<button>清空优先级</button>　<button>编辑优先级</button></td>
 		</tr>
+		<input type="hidden" id="db_talbe" value="smg_dept_list">
+
 	</table>
 </body>
 </html>
