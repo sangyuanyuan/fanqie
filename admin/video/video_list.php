@@ -70,7 +70,7 @@
 	</table>
 	<?php for($i=0;$i<count($video_rows);$i++){?>
 	<div class=v_box id="<?php echo $video_rows[$i]->id;?>">
-		<a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank"><img src="<?php echo $video_rows[$i]->photourl;?>" width="170" height="70" border="0"></a>
+		<a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank"><img src="<?php echo $video_rows[$i]->photo_url;?>" width="170" height="70" border="0"></a>
 		<div class=content><a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $video_rows[$i]->title;?></a></div>
 		<div class=content><a href="?key2=<?php echo $video_rows[$i]->dept_id;?>" style="color:#0000FF"><?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->deptid==$video_rows[$i]->dept_id){echo $rows_dept[$j]->name;}}?></a></div>
 		<div class=content><a href="?key3=<?php echo $video_rows[$i]->category_id;?>" style="color:#0000FF"><?php for($k=0;$k<count($rows_category);$k++){if($rows_category[$k]->id==$video_rows[$i]->category_id){echo $rows_category[$k]->name;}}?></a></div>

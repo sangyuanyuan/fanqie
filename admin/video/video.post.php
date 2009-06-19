@@ -14,7 +14,7 @@
 				alert('上传图片失败 !');
 				redirect('video_add.php');
 			}
-			$video->photourl = "/upload/images/" .$img;
+			$video->photo_url = "/upload/images/" .$img;
 		}
 		//如果在编辑的情况下没有上传视频则不进入文件上传的过程
 		if($_POST['type']!=="edit"||$_FILES['video']['name']!=null){
@@ -24,7 +24,7 @@
 				alert('上传视频失败 !');
 				redirect('video_add.php');
 			}
-			$video->videourl = "/upload/video/" .$vid;
+			$video->video_url = "/upload/video/" .$vid;
 		}
 		
 
