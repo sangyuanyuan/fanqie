@@ -15,13 +15,13 @@
 	if($_REQUEST['key4']!=""){
 		$conditions[] = "is_adopt=".$_REQUEST['key4'];
 	}
-	$video = new table_class("smg_video");
+	$magazine = new table_class("smg_magazine");
 	//var_dump($conditions);
 	if($conditions!=null){
 		$conditions = implode(' and ',$conditions);
-		$video_rows = $video->paginate("all",array('conditions' => $conditions,'order' => 'priority desc'),10);
+		$magazine_rows = $magazine->paginate("all",array('conditions' => $conditions,'order' => 'priority desc'),10);
 	}else{
-		$video_rows = $video->paginate("all",array('order' => 'priority desc'),10);
+		$magazine_rows = $magazine->paginate("all",array('order' => 'priority desc'),10);
 	}
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
@@ -45,7 +45,7 @@
 <body>
 	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td colspan="5" width="795">　　　<a href="video_add.php" style="color:#0000FF">发布视频</a>　　　　　　
+			<td colspan="5" width="795">　　　<a href="magazine_add.php" style="color:#0000FF">发布电子杂志</a>　　　　　　
 			搜索　<input id=newskey1 type="text" value="<? echo $key1?>">
 			<select id=newskey2 style="width:100px" class="select">
 				<option value="">发表部门</option>
@@ -68,20 +68,20 @@
 			</td>
 		</tr>
 	</table>
-	<?php for($i=0;$i<count($video_rows);$i++){?>
-	<div class=v_box id="<?php echo $video_rows[$i]->id;?>">
-		<a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank"><img src="<?php echo $video_rows[$i]->photo_url;?>" width="170" height="70" border="0"></a>
-		<div class=content><a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $video_rows[$i]->title;?></a></div>
-		<div class=content><a href="?key2=<?php echo $video_rows[$i]->dept_id;?>" style="color:#0000FF"><?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->deptid==$video_rows[$i]->dept_id){echo $rows_dept[$j]->name;}}?></a></div>
-		<div class=content><a href="?key3=<?php echo $video_rows[$i]->category_id;?>" style="color:#0000FF"><?php for($k=0;$k<count($rows_category);$k++){if($rows_category[$k]->id==$video_rows[$i]->category_id){echo $rows_category[$k]->name;}}?></a></div>
+	<?php for($i=0;$i<count($magazine_rows);$i++){?>
+	<div class=v_box id="<?php echo $magazine_rows[$i]->id;?>">
+		<a href="/magazine/magazine.php?id=<?php echo $magazine_rows[$i]->id;?>" target="_blank"><img src="<?php echo $magazine_rows[$i]->photo_url;?>" width="170" height="70" border="0"></a>
+		<div class=content><a href="/magazine/magazine.php?id=<?php echo $magazine_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $magazine_rows[$i]->title;?></a></div>
+		<div class=content><a href="?key2=<?php echo $magazine_rows[$i]->dept_id;?>" style="color:#0000FF"><?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->deptid==$magazine_rows[$i]->dept_id){echo $rows_dept[$j]->name;}}?></a></div>
+		<div class=content><a href="?key3=<?php echo $magazine_rows[$i]->category_id;?>" style="color:#0000FF"><?php for($k=0;$k<count($rows_category);$k++){if($rows_category[$k]->id==$magazine_rows[$i]->category_id){echo $rows_category[$k]->name;}}?></a></div>
 		<div class=content style="height:20px">
-			<?php if($video_rows[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $video_rows[$i]->id;?>">撤消</span><? }?>
-			<?php if($video_rows[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $video_rows[$i]->id;?>">发布</span><? }?>
-			<a href="video_edit.php?id=<?php echo $video_rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-			<span style="cursor:pointer" class="del" name="<?php echo $video_rows[$i]->id;?>">删除</span>
-			<a href="video_comment.php?id=<?php echo $video_rows[$i]->id;?>" style="color:#000000; text-decoration:none">评论</a>
-			<input type="text" id="priority<? echo $p;?>" value="<?php if($video_rows[$i]->priority!=100){echo $video_rows[$i]->priority;}?>" style="width:40px;">
-			<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $video_rows[$i]->id;?>" style="width:40px;">	
+			<?php if($magazine_rows[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $magazine_rows[$i]->id;?>">撤消</span><? }?>
+			<?php if($magazine_rows[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $magazine_rows[$i]->id;?>">发布</span><? }?>
+			<a href="magazine_edit.php?id=<?php echo $magazine_rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
+			<span style="cursor:pointer" class="del" name="<?php echo $magazine_rows[$i]->id;?>">删除</span>
+			<a href="magazine_comment.php?id=<?php echo $magazine_rows[$i]->id;?>" style="color:#000000; text-decoration:none">评论</a>
+			<input type="text" id="priority<? echo $p;?>" value="<?php if($magazine_rows[$i]->priority!=100){echo $magazine_rows[$i]->priority;}?>" style="width:40px;">
+			<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $magazine_rows[$i]->id;?>" style="width:40px;">	
 		</div>
 	</div>
 	<?php }?>
@@ -90,7 +90,7 @@
 			<td><?php paginate();?></td>
 		</tr>
 	</table>
-	<input type="hidden" id="db_talbe" value="smg_video">
+	<input type="hidden" id="db_talbe" value="smg_magazine">
 </body>
 </html>
 

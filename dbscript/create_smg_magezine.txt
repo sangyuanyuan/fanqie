@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS `smg_new`.`smg_video`;
-CREATE TABLE  `smg_new`.`smg_video` (
+DROP TABLE IF EXISTS `smg_new`.`smg_magazine`;
+CREATE TABLE  `smg_new`.`smg_magazine` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `createtime` datetime default NULL,
   `is_adopt` int(10) unsigned default '0',
   `photo_url` varchar(254) default NULL,
-  `video_url` varchar(254) default NULL,
+  `magazine_url` varchar(254) default NULL,
   `clickcount` int(10) unsigned default NULL,
   `priority` int(10) unsigned default '100',
   `is_deptadopt` int(10) unsigned default '0',
@@ -14,15 +14,15 @@ CREATE TABLE  `smg_new`.`smg_video` (
   `category_id` int(10) unsigned default NULL,
   `keywords` varchar(255) default NULL,
   `description` text,
-  `videonlineurl` varchar(255) default NULL,
+  `online_url` varchar(255) default NULL,
   `dept_id` int(10) unsigned default '0',
   `deptpriority` int(10) unsigned default '100',
   `broadcast` int(10) unsigned default NULL,
   PRIMARY KEY  (`id`),
   KEY `Index_2` (`priority`),
   KEY `Index_3` (`dept_id`),
-  KEY `Index_4` (`is_adopt`),
   KEY `Index_5` (`title`),
   KEY `Index_6` (`category_id`),
-  KEY `Index_7` (`deptpriority`)
-) ENGINE=InnoDB AUTO_INCREMENT=637 DEFAULT CHARSET=utf8;
+  KEY `Index_7` (`deptpriority`),
+  KEY `Index_4` USING BTREE (`is_adopt`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
