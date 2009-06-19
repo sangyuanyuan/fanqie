@@ -2,8 +2,8 @@
 	require_once('../../frame.php');
 	$id=(int)$_REQUEST['id'];
 	$type=$_REQUEST['type'];
-	if("admin"==$type) {$menu = new table_class('smg_admin_menu'); $post_table='smg_admin_menu';$post_url="/admin/menu/menu_list.php?type=admin";}
-	else if("dept"==$type) {$menu = new table_class('smg_admin_menu_dept'); $post_table='smg_admin_menu_dept';;$post_url="/admin/menu/menu_list.php?type=dept";}	
+	if("admin"==$type) {$menu = new table_class('smg_admin_menu'); $post_table='smg_admin_menu';$post_url="/admin/menu/menu_list.php?type=admin&flag=1";}
+	else if("dept"==$type) {$menu = new table_class('smg_admin_menu_dept'); $post_table='smg_admin_menu_dept';;$post_url="/admin/menu/menu_list.php?type=dept&flag=1";}	
 	$record = $menu->find("all",array('conditions' => 'id='.$id));
 	
 	

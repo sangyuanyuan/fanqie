@@ -13,7 +13,7 @@ CREATE TABLE  `smg_new`.`smg_images` (
   `click_count` varchar(255) DEFAULT NULL,
   `is_adopt` tinyint(1) DEFAULT NULL,
   `is_dept_adopt` tinyint(1) DEFAULT NULL,
-  `priority` int(11) DEFAULT NULL,
+  `priority` int(11) DEFAULT 100,
   `dept_priority` int(11) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `thumb_name` varchar(255) DEFAULT NULL,

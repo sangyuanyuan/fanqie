@@ -2,8 +2,8 @@
 	require_once('../../frame.php');
 	$id=$_REQUEST['id'];
 	$type=$_REQUEST['type'];
-	if($type=="admin"||$type==""){$post_table="smg_admin_menu";$post_url="/admin/menu/menu_list.php?type=admin";}
-	else{$post_table="smg_admin_menu_dept";$post_url="/admin/menu/menu_list.php?type=dept";}
+	if($type=="admin"||$type==""){$post_table="smg_admin_menu";$post_url="/admin/menu/menu_list.php?type=admin&flag=1";}
+	else{$post_table="smg_admin_menu_dept";$post_url="/admin/menu/menu_list.php?type=dept&flag=1";}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">

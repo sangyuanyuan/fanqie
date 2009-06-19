@@ -16,11 +16,11 @@
 	<?php 
 		css_include_tag('admin');
 		use_jquery();
-		validate_form("picture_add");
+		validate_form("picture_edit");
 	?>
 </head>
 <body style="background:#E1F0F7">
-	<form id="picture_add" enctype="multipart/form-data" action="picture.post.php" method="post"> 
+	<form id="picture_edit" enctype="multipart/form-data" action="picture.post.php" method="post"> 
 	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td colspan="2" width="795">　　添加图片</td>
