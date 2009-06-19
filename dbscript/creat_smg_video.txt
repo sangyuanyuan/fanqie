@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_video`;
+CREATE TABLE  `smg_new`.`smg_video` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `createtime` datetime default NULL,
+  `isadopt` int(10) unsigned default '0',
+  `photourl` varchar(254) default NULL,
+  `videourl` varchar(254) default NULL,
+  `clickcount` int(10) unsigned default NULL,
+  `priority` int(10) unsigned default '100',
+  `isdeptadopt` int(10) unsigned default '0',
+  `isshowongrouppage` int(10) unsigned default '0',
+  `iscommentable` int(10) unsigned default '0',
+  `title` varchar(255) default NULL,
+  `category_id` int(10) unsigned default NULL,
+  `keywords` varchar(255) default NULL,
+  `description` text,
+  `videonlineurl` varchar(255) default NULL,
+  `dept_id` int(10) unsigned default '0',
+  `deptpriority` int(10) unsigned default '100',
+  `broadcast` int(10) unsigned default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `Index_2` (`priority`),
+  KEY `Index_3` (`dept_id`),
+  KEY `Index_4` (`isadopt`),
+  KEY `Index_5` (`title`),
+  KEY `Index_6` (`category_id`),
+  KEY `Index_7` (`deptpriority`)
+) ENGINE=InnoDB AUTO_INCREMENT=637 DEFAULT CHARSET=utf8;
