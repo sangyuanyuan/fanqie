@@ -30,7 +30,7 @@ class upload_file_class
 			//only upload one file
 			
 			if($_FILES[$field_name]['error'] != UPLOAD_ERR_OK){
-				alert('fail to upload file!' );
+				alert('fail to upload file!' .$_FILES[$field_name]['error'] );
 				return false;
 			}
 			if($_FILES[$field_name]['size']>$this->max_file_size & $this->max_file_size > 0){

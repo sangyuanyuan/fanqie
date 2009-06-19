@@ -9,7 +9,7 @@
 		//echo "aa";
 		$upload = new upload_file_class();
 		$upload->save_dir = "/upload/images/";
-		$img = $upload->handle('image]');
+		$img = $upload->handle('image');
 		$upload->save_dir = "/upload/video/";
 		$vid = $upload->handle('video');
 		
