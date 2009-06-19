@@ -34,11 +34,11 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
 			<td align="left" class="newsselect">
-			<select id=selecta name="video[category]">
+			<select id=select name="video[category_id]">
 				<?php	
 					for($i=0;$i<count($category_menu);$i++){
 				?>
-					<option value="<?php echo $category_menu[$i]->id?>;"><?php echo $category_menu[$i]->name;?></option>
+					<option value="<?php echo $category_menu[$i]->id;?>"><?php echo $category_menu[$i]->name;?></option>
 				<? }?>
 			</select>
 			</td>
@@ -50,10 +50,11 @@
 			<td>在线视频</td><td align="left">　<input type="text" size="50" name="video[videonlineurl]">（如果本地上传视频此项请留空！）</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left">　<input name="image" id="image" type="file" class="required">(请上传200x160大小的图片，格式支持jpg、gif、png)</td>
+
+			<td>选择图片</td><td align="left"> <input type="hidden" name="MAX_FILE_SIZE" value="2097152">　<input name="image" id="image" type="file" class="required">(请上传200x160大小的图片，格式支持jpg、gif、png)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择视频</td><td align="left">　<input name="video" id="video" type="file" class="required">(请上传视频，并且不要大于500M)</td>
+			<td>选择视频</td><td align="left">　 <input type="hidden" name="MAX_FILE_SIZE" value="5000000000"> <input name="video" id="video" type="file" class="required">(请上传视频，并且不要大于500M)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
 			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="video[description]" class="required"></textarea></td>
@@ -63,7 +64,7 @@
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布视频"></td>
 		</tr>	
 	</table>
-	
+	<input type="hidden" name="video[is_adopt]" value="0">
 	</form>
 </body>
 </html>

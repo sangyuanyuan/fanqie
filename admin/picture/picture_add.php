@@ -34,11 +34,11 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
 			<td align="left" class="newsselect">
-			<select id=selecta name="picture[category]">
+			<select id=select name="picture[category_id]">
 				<?php	
 					for($i=0;$i<count($category_menu);$i++){
 				?>
-					<option value="<?php echo $category_menu[$i]->id?>;"><?php echo $category_menu[$i]->name;?></option>
+					<option value="<?php echo $category_menu[$i]->id;?>"><?php echo $category_menu[$i]->name;?></option>
 				<? }?>
 			</select>
 			</td>
