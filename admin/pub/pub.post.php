@@ -16,4 +16,17 @@
 		redirect($_POST['url']);
 		
 	}
+	elseif("revocation"==$_POST['type'])
+	{
+		$post = new table_class($_POST['db_table']);
+		$post->find($_POST['id']);
+		$post->update_attribute("is_adopt","0");	
+	}
+	elseif("publish"==$_POST['type'])
+	{
+		$post = new table_class($_POST['db_table']);
+		$post->find($_POST['id']);
+		$post->update_attribute("is_adopt","1");
+	}
+	
 ?>
