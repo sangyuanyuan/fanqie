@@ -13,13 +13,13 @@ $(function(){
 		});
 		
 		$(".revocation").click(function(){
-			$.post("picture.post.php",{id:$(this).attr('name'),type:"revocation"},function(data){
+			$.post("/admin/pub/pub.post.php",{id:$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),type:"revocation"},function(data){
 				window.location.reload();
 			});
 		});
 		
 		$(".publish").click(function(){
-			$.post("picture.post.php",{id:$(this).attr('name'),type:"publish"},function(data){
+			$.post("/admin/pub/pub.post.php",{id:$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),type:"publish"},function(data){
 				window.location.reload();
 			});
 		});
