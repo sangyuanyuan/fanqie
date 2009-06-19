@@ -30,7 +30,7 @@
 			<td colspan="3">　<?php echo $title;?>导航管理</td>
 		</tr>
 		<tr class="tr2">
-			<td width="250">导航名称</td><td width="300">链接</td><td width="245">修改</td>
+			<td width="300">导航名称</td><td width="300">链接</td><td width="195">修改</td>
 		</tr>
 		<?php
 			$menu = new table_class(smg_nav);
@@ -41,7 +41,7 @@
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><input type="text" value="<?php echo $record[$i]->name;?>"></td>
 					<td><input type="text" value="<?php echo $record[$i]->href;?>"></td>
-					<td><a class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">修改</a></td>
+					<td><a class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a></td>
 				</tr>
 		<?php
 			}

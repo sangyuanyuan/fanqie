@@ -16,6 +16,7 @@
 		css_include_tag('admin');
 		use_jquery();
 		js_include_tag('menu_list');
+		js_include_tag('admin_pub');
 	?>
 </head>
 <body>
@@ -59,6 +60,7 @@
 		?>
 		<input type="hidden" id="reload_flag" value="<?php echo $flag;?>">
 		<input type="hidden" id="menu_type" value="<?php echo $type;?>">
+		<input type="hidden" id="db_talbe" value="<?php echo $menu_table;?>">
 	</table>
 </body>
 </html>

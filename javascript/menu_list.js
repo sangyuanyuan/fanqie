@@ -10,6 +10,7 @@ $(function(){
 			}
 			
 		});
+/*
 		$(".del").click(function(){
 			if(!window.confirm("确定要删除吗")){
 				return false;
@@ -23,8 +24,13 @@ $(function(){
 				});
 			}
 		});
+<<<<<<< HEAD:javascript/menu_list.js
+*/		
+		if($("input").attr('value')==1){
+=======
 		
 		if($("#reload_flag").attr('value')==1){
+>>>>>>> f849108563c38c2869c558d0762bdb6c4efbfbd0:javascript/menu_list.js
 			window.parent.location.reload();
 			$("#reload_flag").attr('value','0');
 		}
