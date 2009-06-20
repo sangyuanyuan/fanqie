@@ -1,6 +1,6 @@
 <?php
 	require_once('../../frame.php');
-	require_role("admin");
+	//require_role("admin");
 	$type = $_REQUEST['type'];
 	$conditions = null;
 	if($_REQUEST['key1']!=""){
@@ -26,7 +26,7 @@
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
 	$category = new table_class("smg_category");
-	$rows_category = $category->find("all");
+	$rows_category = $category->find("all",array('conditions' => "category_type='magazine' and parent_id>0"));
 	#var_dump($images);
 ?>
 

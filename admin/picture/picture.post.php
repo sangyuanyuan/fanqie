@@ -1,9 +1,7 @@
 <?php
 	require_once "../../frame.php";
 	$smg_image = new smg_images_class();
-	$smg_image->echo_sql = true;
 	$smg_image->find($_POST['id']);
-	var_dump($_POST['picture']);
 	
 	//如果在编辑的情况下没有上传图片则不进入文件上传的过程
 	if($_POST['type']!=="edit"||$_FILES['image']['name']!=null){
@@ -23,7 +21,6 @@
 	}
 	
 	$smg_image->update_attributes($_POST['picture']);
-	//var_dump($_POST[picture]);
 	redirect('picture_list.php');
 	
 	

@@ -1,6 +1,6 @@
 <?php
 	require_once('../../frame.php');
-	require_role("admin");
+	//require_role("admin");
 	$type = $_REQUEST['type'];
 	$conditions = null;
 	if($_REQUEST['key1']!=""){
@@ -26,8 +26,7 @@
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
 	$category = new table_class("smg_category");
-	$rows_category = $category->find("all");
-	#var_dump($images);
+	$rows_category = $category->find("all",array('conditions' => "category_type='video' and parent_id>0"));
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">

@@ -13,10 +13,5 @@ $(function(){
 
 
 		
-		if($("#reload_flag").attr('value')==1){
-			window.parent.location.reload();
-			$("#reload_flag").attr('value','0');
-		}
-			//alert($(this).attr('name'));
-			
+		
 	});
