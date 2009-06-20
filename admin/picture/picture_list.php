@@ -44,7 +44,7 @@
 </head>
 <body>
 	<table width="795" border="0">
-		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+		<tr class=tr1>
 			<td colspan="5" width="795">　　　<a href="picture_add.php" style="color:#0000FF">发布图片</a>　　　　　　
 			搜索　<input id=newskey1 type="text" value="<? echo $key1?>">
 			<select id=newskey2 style="width:100px" class="select">

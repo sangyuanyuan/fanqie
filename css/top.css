@@ -1,13 +1,30 @@
 ﻿body{margin:0; font-family:arial; font-size:12px;}
 
+
 .littletitle{font-weight:bold}
+
+#topimg1{margin-left:0px; float:right; display:inline;}
+
+#toptext1{ margin-right:0px; float:right; display:inline; line-height:24px}
+
 
 #nav1{width:100%; height:24px; border-bottom:1px solid #E6E6E6; background:#f7f7f7; float:left; display:inline;}
 #nav1 #box{width:980px; height:24px; text-align:right; line-height:24px; margin:0 auto;}
+
 #nav2{width:980px; height:51px; background:url(/images/top/nav2back.jpg) repeat-x; margin:0 auto;}
+<<<<<<< HEAD:css/top.css
 #logo{width:153px; height:51px; background:url(/images/top/logo.jpg) no-repeat; margin-left:29px; float:left; display:inline;}
 #classic1{width:133px; height:51px;  margin-left:8px; float:left; display:inline; color:#ffffff; line-height:25px; text-align:center}
 #classic2{width:133px; height:51px;  margin-left:0px; float:left; display:inline; color:#ffffff; line-height:25px; text-align:center}
 #line{width:3px; height:51px;  margin-left:0px; float:left; display:inline; background:url(/images/top/line.jpg) no-repeat; }
-#list{width:103px; height:51px;  margin-left:0px; float:left; display:inline; background:url(/images/top/list.jpg) no-repeat; }
+#list{width:92px; height:21px;  margin-left:8px; margin-top:15px; margin-bottom:14px; float:left; display:inline; font }
+=======
+#nav2 #logo{width:153px; height:51px; background:url(/images/top/logo.jpg) no-repeat; margin-left:29px; float:left; display:inline;}
+#nav2 ul{width:140px; height:51px; margin:0; background:url(/images/top/line.jpg) no-repeat 138px 0; float:left; display:inline;}
+#nav2 li{margin-top:8px; margin-left:10px; color:#ffffff; float:left; display:inline;}
+
+
+
+#list{width:103px; height:51px;  margin-left:0px; float:left; display:inlIne; background:url(/images/top/list.jpg) no-repeat; }
+>>>>>>> ec2209c66a4997e71db4171716366fd95d01b32a:css/top.css
 
