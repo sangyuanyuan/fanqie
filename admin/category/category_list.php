@@ -41,7 +41,7 @@
 		</tr>
 		<?php
 			$category = new table_class("smg_category");
-			$record = $category->find("all",array('conditions' => 'category_type="'.$type.'" and parent_id>0','order' => 'priority desc'));
+			$record = $category->find("all",array('conditions' => 'category_type="'.$type.'" and parent_id>0','order' => 'priority'));
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){

@@ -19,7 +19,7 @@
 	//var_dump($conditions);
 	if($conditions!=null){
 		$conditions = implode(' and ',$conditions);
-		$magazine_rows = $magazine->paginate("all",array('conditions' => $conditions,'order' => 'priority desc'),10);
+		$magazine_rows = $magazine->paginate("all",array('conditions' => $conditions,'order' => 'priority'),10);
 	}else{
 		$magazine_rows = $magazine->paginate("all",array('order' => 'priority desc'),10);
 	}

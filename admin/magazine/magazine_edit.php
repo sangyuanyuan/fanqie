@@ -4,7 +4,7 @@
 	$magazine = new table_class("smg_magazine");
 	$magazine_record = $magazine->find("all",array('conditions' => 'id='.$id));
 	$category = new table_class("smg_category");
-	$category_menu = $category->find("all",array('conditions' => "category_type='magazine' and parent_id>0 and"));
+	$category_menu = $category->find("all",array('conditions' => "category_type='magazine' and parent_id>0","order" => "priority"));
 	//上述查询语句条件是类型是电子杂志父类不是4种大类并且该类是可发布的
 ?>
 
@@ -29,7 +29,7 @@
 			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name="magazine[title]" value="<?php echo $magazine_record[0]->title;?>" class="required"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="magazine[priority]" value="<?php echo $magazine_record[0]->priority;?>">(1-100)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="magazine[priority]" value="<?php if($magazine_record[0]->priority!=100){echo $magazine_record[0]->priority;}?>">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>开启评论</td><td align="left">　<input type="checkbox" name="magazine[commentable]" id="commentable" <?php if($magazine_record[0]->commentable=="on"){?>checked="checked"<?php }?>></td>
