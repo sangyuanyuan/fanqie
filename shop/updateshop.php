@@ -1,17 +1,26 @@
 ﻿<?
 require "../frame.php";
 require_once "../lib/upload_file_class.php";
+require_once "../fckeditor/fckeditor.php";
+$shopid=$_REQUEST['id'];
+js_include_once_tag('shop');
+css_include_tag('smg');
 parse_str($_SERVER['QUERY_STRING']);
 $cookie=(isset($_COOKIE['smg_username']))? $_COOKIE['smg_username'] : '';
 if($cookie=='')
-{?>
-	<script>
-	echo '<script language=javascript>alert("请登录以后再操作")</script>';
-	echo '<script language=javascript>window.location.href="/admin/";
-	</script>;
+{
+?>
+<!--	<script>
+		$(document).ready(function() {
+			alert("请登录以后再操作");
+			window.location.href="/admin/";
+		});
+	</script>-->
 <?
-	exit;
+	//exit;
 }
+$db=get_db();
+$shop = $db->query('SELECT * FROM smg_shopdp where id='.$shopid);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -20,21 +29,11 @@ if($cookie=='')
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
-	<link href="/css/smg.css" rel="stylesheet" type="text/css">
-	<script src="/js/pubfun.js"></script>
-	<script language="javascript" src="/js/smg.js"></script>
-	<script language="javascript" src="shop.js"></script>
 </head>
 <body >
-	 	<? include('../inc/top.inc.html');
-	 	require_once('../libraries/sqlrecordsmanager.php');
-	 	$sqlmanager = new SqlRecordsManager();
-	 	$shopid=$_REQUEST['id'];
-	 	?>
-	 	
 <div id=bodys>
 	<div id=n_left style="width:100%; margin-top:10px; text-align:center;">
-	<? $shop = $sqlmanager->GetRecords('SELECT * FROM smg_shopdp where id='.$shopid);?>
+	<? ?>
 	<form name="ldap" id="ldap" enctype="multipart/form-data" action="shop.post.php" method="post"> 
 	<table border="0">
 		<tr height="25px;" style="font-weight:bold; font-size:13px;">
@@ -49,7 +48,9 @@ if($cookie=='')
 		<tr align="center" bgcolor="#f9f9f9" height="290px;" id=newsshow2>
 			<td>店铺简介</td><td align="left">
 			
-			<input type="hidden" id="content" name="content" value="" style="display:none" /><input type="hidden" id="content___Config" value="" style="display:none" /><iframe id="content___Frame" src="/admin/FCKeditor/editor/fckeditor.html?InstanceName=content&amp;Toolbar=Default" width="98%" height="280" frameborder="0" scrolling="no"></iframe>
+			<input type="hidden" id="content" name="content" value="" style="display:none" />
+			<input type="hidden" id="content___Config" value="" style="display:none" />
+			<iframe id="content___Frame" src="../FCKeditor/editor/fckeditor.html?InstanceName=content&amp;Toolbar=Default" width="98%" height="280" frameborder="0" scrolling="no"></iframe>
 			</td>
 		</tr>
 		<tr>

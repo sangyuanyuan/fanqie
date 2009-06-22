@@ -75,10 +75,22 @@
 	  </ul>		
 		
 					
+<<<<<<< HEAD:top.php
+<select><option>部门列表</option></select>
+
+=======
 	  <div id=list>
 	  	<div id=font><select><option>部门列表</option></select></div>
+<<<<<<< HEAD:top.php
 	    </div>
 	  </div> 
+=======
+	  
+	  </div>
+>>>>>>> f3d5027682c71274bd4ce3e4e391d8b3c2d57e9a:top.php
+	  
+	 </div> 
+>>>>>>> 323d2e596f4bf3ca77b13545d329ca3205ac2841:top.php
 	</div>
 <!--红色导航-->
    <div id=nav3>
