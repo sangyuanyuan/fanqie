@@ -1,7 +1,7 @@
 <?php
 	require_once('../../frame.php');
 	$category = new table_class("smg_category");
-	$category_menu = $category->find("all",array('conditions' => "category_type='video' and parent_id>0 and can_publish='on'"));
+	$category_menu = $category->find("all",array('conditions' => "category_type='video' and parent_id>0"));
 	//上述查询语句条件是类型是视频父类不是4种大类并且该类是可发布的
 ?>
 
