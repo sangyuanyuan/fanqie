@@ -88,6 +88,7 @@
    	<input></input>
    	<button id=button1></button>
    	<button id=button2></button>
+   	<div id=link>星尚大典 小沈阳 朝鲜核实验</div>
    	</div>
    </div>
 
