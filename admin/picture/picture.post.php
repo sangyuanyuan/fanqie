@@ -19,7 +19,7 @@
 		$smg_image->create_thumb('middle',50);
 		$smg_image->create_thumb('small',170,70);
 	}
-	
+	if($_POST['picture']["priority"]==null){$smg_image->update_attribute("priority","100");}
 	$smg_image->update_attributes($_POST['picture']);
 	redirect('picture_list.php');
 	

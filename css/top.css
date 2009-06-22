@@ -1,4 +1,12 @@
-﻿body{margin:0; font-family:宋体; font-size:12px;}
+
+/*1 宽高*/
+/*2 位置margin*/  
+/*3 字体排榜*/  
+/*4边框*/ 
+/*5背景*/
+
+
+body{margin:0; font-family:宋体; font-size:12px;}
 
 
 
@@ -49,16 +57,26 @@
 /*4边框*/ 
 /*5背景*/
 }
-#nav3 #box button{
+#nav3 #box #button1{
 	/*1 宽高*/
+	width:49px; height:25px; 
 /*2 位置margin*/
-    margin-top:10px;
+    margin-top:10px; margin-left:2px;
 /*3 字体排榜*/  
 /*4边框*/ 
-    border:1px solid #D08B14;
+    border:0px;
 /*5背景*/
-    background:#FFD053;
+    background:url(/images/top/soso.png);
 }
-	
-
+#nav3 #box #button2{
+	/*1 宽高*/
+	width:79px; height:25px; 
+/*2 位置margin*/
+    margin-top:10px; margin-left:2px;
+/*3 字体排榜*/  
+/*4边框*/ 
+    border:0px;
+/*5背景*/
+    background:url(/images/top/gaojisousuo.png);
+}
 

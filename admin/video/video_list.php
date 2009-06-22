@@ -19,9 +19,9 @@
 	//var_dump($conditions);
 	if($conditions!=null){
 		$conditions = implode(' and ',$conditions);
-		$video_rows = $video->paginate("all",array('conditions' => $conditions,'order' => 'priority desc'),10);
+		$video_rows = $video->paginate("all",array('conditions' => $conditions,'order' => 'priority'),10);
 	}else{
-		$video_rows = $video->paginate("all",array('order' => 'priority desc'),10);
+		$video_rows = $video->paginate("all",array('order' => 'priority'),10);
 	}
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");

@@ -73,24 +73,21 @@
 			<li>投票</li>
 			<li>婚介</li>
 	  </ul>		
-		
-					
-
 	  <div id=list>
 	  	<div id=font><select><option>部门列表</option></select></div>
 	    </div>
 	  </div> 
+
 	  
 	  </div>
-	  
 	 </div> 
 	</div>
 <!--红色导航-->
    <div id=nav3>
    	 <div id=box>
    	<input></input>
-   	<button>搜搜</button>
-   	<button>高级搜索</button>
+   	<button id=button1></button>
+   	<button id=button2></button>
    	</div>
    </div>
 
