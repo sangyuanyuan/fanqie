@@ -1,1 +1,2 @@
 ALTER TABLE smg_category ADD priority integer unsigned NOT NULL;
+ALTER TABLE smg_category ADD short_title_length int(10) unsigned default '100';

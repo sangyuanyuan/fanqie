@@ -29,7 +29,7 @@
 			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name="video[title]" value="<?php echo $video_record[0]->title;?>" class="required"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="video[priority]" value="<?php if($video_record[0]->priority!=100){echo $video_record[0]->priority;}?>">(1-100)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="video[priority]" value="<?php if($video_record[0]->priority!=100){echo $video_record[0]->priority;}?>" class="number">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>开启评论</td><td align="left">　<input type="checkbox" name="video[commentable]" id="commentable" <?php if($video_record[0]->commentable=="on"){?>checked="checked"<?php }?>></td>

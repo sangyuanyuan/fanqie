@@ -29,7 +29,7 @@
 			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="magazine[priority]">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>开启评论</td><td align="left">　<input type="checkbox" name="magazine[commentable]" id="commentable" checked="checked"></td>
+			<td>开启评论</td><td align="left">　<input type="checkbox" name="magazine[commentable]" id="commentable" checked="checked" class="number"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
