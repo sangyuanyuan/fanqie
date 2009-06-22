@@ -1,0 +1,10 @@
+body {font-family:宋体; font-size:12px; color:#000;  margin:0px;}
+#index{width:980px; margin:0 auto; margin-top:10px;}
+#index #top{width:980px; float:left; display:inline;}
+#index #bottom{width:980px; float:left; display:inline;}
+#index #bottom #title{width:980px; height:38px; background:url('images/bg/index_bottomtitle.jpg') no-repeat; float:left; display:inline;}
+#index #bottom #left{width:618px; float:left; display:inline;}
+#index #bottom #left .topthree{width:196px; height:154px; margin-right:10px; float:left; display:inline;}
+#index #bottom #left .bottomthree{width:196px; height:204px; margin-right:10px; float:left; display:inline;}
+
+
