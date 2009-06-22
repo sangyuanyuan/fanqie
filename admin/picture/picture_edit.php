@@ -4,7 +4,7 @@
 	$picture = new table_class("smg_images");
 	$picture_record = $picture->find("all",array('conditions' => 'id='.$id));
 	$category = new table_class("smg_category");
-	$category_menu = $category->find("all",array('conditions' => "category_type='picture' and parent_id>0 and can_publish='on'"));
+	$category_menu = $category->find("all",array('conditions' => "category_type='picture' and parent_id>0","order" => "priority"));
 	//上述查询语句条件是类型是图片父类不是4种大类并且该类是可发布的
 ?>
 
@@ -26,10 +26,10 @@
 			<td colspan="2" width="795">　　编辑图片</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name="picture[title]" class="required" value="<?php echo $picture_record[0]->title;?>"></td>
+			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name="picture[title]" class="required" value="<?php echo $picture_record[0]->title;?>" class="number"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="picture[priority]" value="<?php echo $picture_record[0]->priority;?>">(1-100)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="picture[priority]" value="<?php if($picture_record[0]->priority!=100){echo $picture_record[0]->priority;}?>">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>开启评论</td><td align="left">　<input type="checkbox" name="picture[commentable]" id=commentable <?php if($picture_record[0]->commentable==="on"){?>checked="checked"<?php }?> ></td>

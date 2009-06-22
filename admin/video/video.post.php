@@ -29,7 +29,7 @@
 		
 
 	}
-	
+	if($_POST['video']["priority"]==null){$video->update_attribute("priority","100");}
 	$video->update_attributes($_POST['video']);
 	
 	redirect('video_list.php');

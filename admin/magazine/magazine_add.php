@@ -1,7 +1,7 @@
 <?php
 	require_once('../../frame.php');
 	$category = new table_class("smg_category");
-	$category_menu = $category->find("all",array('conditions' => "category_type='magazine' and parent_id>0 and can_publish='on'"));
+	$category_menu = $category->find("all",array('conditions' => "category_type='magazine' and parent_id>0","order" => "priority"));
 	//上述查询语句条件是类型是电子杂志父类不是4种大类并且该类是可发布的
 ?>
 
@@ -29,7 +29,7 @@
 			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="magazine[priority]">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>开启评论</td><td align="left">　<input type="checkbox" name="magazine[commentable]" id="commentable" checked="checked"></td>
+			<td>开启评论</td><td align="left">　<input type="checkbox" name="magazine[commentable]" id="commentable" checked="checked" class="number"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>

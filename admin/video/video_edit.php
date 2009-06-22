@@ -4,7 +4,7 @@
 	$video = new table_class("smg_video");
 	$video_record = $video->find("all",array('conditions' => 'id='.$id));
 	$category = new table_class("smg_category");
-	$category_menu = $category->find("all",array('conditions' => "category_type='video' and parent_id>0 and can_publish='on'"));
+	$category_menu = $category->find("all",array('conditions' => "category_type='video' and parent_id>0","order" => "priority"));
 	//上述查询语句条件是类型是视频父类不是4种大类并且该类是可发布的
 ?>
 
@@ -29,7 +29,7 @@
 			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name="video[title]" value="<?php echo $video_record[0]->title;?>" class="required"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="video[priority]" value="<?php echo $video_record[0]->priority;?>">(1-100)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="video[priority]" value="<?php if($video_record[0]->priority!=100){echo $video_record[0]->priority;}?>" class="number">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>开启评论</td><td align="left">　<input type="checkbox" name="video[commentable]" id="commentable" <?php if($video_record[0]->commentable=="on"){?>checked="checked"<?php }?>></td>

@@ -73,20 +73,24 @@
 			<li>投票</li>
 			<li>婚介</li>
 	  </ul>		
-		
-					
-<<<<<<< HEAD:top.php
-<select><option>部门列表</option></select>
-
-=======
 	  <div id=list>
 	  	<div id=font><select><option>部门列表</option></select></div>
+	    </div>
+	  </div> 
+
 	  
 	  </div>
->>>>>>> f3d5027682c71274bd4ce3e4e391d8b3c2d57e9a:top.php
-	  
 	 </div> 
 	</div>
+<!--红色导航-->
+   <div id=nav3>
+   	 <div id=box>
+   	<input></input>
+   	<button id=button1></button>
+   	<button id=button2></button>
+   	<div id=link>星尚大典 小沈阳 朝鲜核实验</div>
+   	</div>
+   </div>
 
 	
 	

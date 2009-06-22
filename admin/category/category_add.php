@@ -50,17 +50,19 @@
 			<td width=645 align="left"><input type="text" name="post[name]" class="required"></td>
 		</tr>
 		<tr class=tr3>
-			<td>可发布:</td>
-			<td align="left"><input type="checkbox" name=post[can_publish]  checked="checked"></td>
-		</tr>
-		<tr class=tr3>
 			<td>描述：</td>
 			<td align="left"><input type="text" name="post[description]"></td>
 		</tr>
 		<tr class=tr3>
 			<td>优先级：</td>
-			<td align="left"><input type="text" name="post[priority]" id="priority" class="required number"></td>
+			<td align="left"><input type="text" name="post[priority]" id="priority" class="number"></td>
 		</tr>
+		<?php if($type=="news"){?>
+		<tr class=tr3>
+			<td>短标题长度：</td>
+			<td align="left"><input type="text" name="post[short_title_length]" id="short_title_length" class="number"></td>
+		</tr>
+		<?php }?>
 		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>

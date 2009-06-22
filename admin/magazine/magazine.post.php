@@ -29,7 +29,7 @@
 		
 
 	}
-	
+	if($_POST['magazine']["priority"]==null){$magazine->update_attribute("priority","100");}
 	$magazine->update_attributes($_POST['magazine']);
 	
 	redirect('magazine_list.php');
