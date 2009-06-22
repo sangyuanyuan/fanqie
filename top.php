@@ -76,7 +76,9 @@
 		
 					
 	  <div id=list>
-	  	各部门列表
+	  	<div id=font>各部门列表</div>
+	  	<div id=img><img src="/images/top/button-nav2.jpg"></img></div>
+	  
 	  </div>
 	  
 	 </div> 
