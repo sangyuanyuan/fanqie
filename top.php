@@ -75,11 +75,8 @@
 	  </ul>		
 		
 					
-	  <div id=list>
-	  	<div id=font>各部门列表</div>
-	  	<div id=img><img src="/images/top/button-nav2.jpg"></img></div>
-	  
-	  </div>
+<select><option>部门列表</option></select>
+
 	  
 	 </div> 
 	</div>
