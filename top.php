@@ -5,17 +5,8 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>css123</title>
 	<link href="/css/top.css" rel="stylesheet" type="text/css">
-	<link href="/css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div id=index>
-		<div id=bottom>
-			<div id=left>
-				<div class=topthree style="background:url('images/bottom_bg.jpg') no-repeat;">
-					
-				</div>
-			</div>
-		</div>
 	<div id=nav1>
 		<div id=topimg1>
 		   	<img src="/images/top/sm.jpg" width=113 height=24>
@@ -84,9 +75,20 @@
 	  </ul>		
 		
 					
+<<<<<<< HEAD:top.php
 <select><option>部门列表</option></select>
+
+=======
+	  <div id=list>
+	  	<div id=font><select><option>部门列表</option></select></div>
+	  
+	  </div>
+>>>>>>> f3d5027682c71274bd4ce3e4e391d8b3c2d57e9a:top.php
 	  
 	 </div> 
 	</div>
+
+	
+	
 </body>
 </html>
