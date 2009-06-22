@@ -5,17 +5,8 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>css123</title>
 	<link href="/css/top.css" rel="stylesheet" type="text/css">
-	<link href="/css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div id=index>
-		<div id=bottom>
-			<div id=left>
-				<div class=topthree style="background:url('images/bottom_bg.jpg') no-repeat;">
-					
-				</div>
-			</div>
-		</div>
 	<div id=nav1>
 		<div id=topimg1>
 		   	<img src="/images/top/sm.jpg" width=113 height=24>
@@ -85,10 +76,15 @@
 		
 					
 	  <div id=list>
-	  	各部门列表
+	  	<div id=font>各部门列表</div>
+	  	<div id=img><img src="/images/top/button-nav2.jpg"></img></div>
+	  
 	  </div>
 	  
 	 </div> 
 	</div>
+
+	
+	
 </body>
 </html>
