@@ -28,10 +28,6 @@
 			<td width=645 align="left"><input type="text" name="post[name]"  class="required" value="<?php echo $record[0]->name;?>"></td>
 		</tr>
 		<tr class=tr3>
-			<td>可发布:</td>
-			<td align="left"><input type="checkbox" name=post[can_publish]  <?php if($record[0]->can_publish=="on"){?>checked="checked<?php }?>"></td>
-		</tr>
-		<tr class=tr3>
 			<td>描述：</td>
 			<td align="left"><input type="text" name="post[description]"  value="<?php echo $record[0]->description;?>"></td>
 		</tr>

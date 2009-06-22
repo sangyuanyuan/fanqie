@@ -50,10 +50,6 @@
 			<td width=645 align="left"><input type="text" name="post[name]" class="required"></td>
 		</tr>
 		<tr class=tr3>
-			<td>可发布:</td>
-			<td align="left"><input type="checkbox" name=post[can_publish]  checked="checked"></td>
-		</tr>
-		<tr class=tr3>
 			<td>描述：</td>
 			<td align="left"><input type="text" name="post[description]"></td>
 		</tr>
