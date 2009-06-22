@@ -1,4 +1,4 @@
-﻿
+
 /*1 宽高*/
 /*2 位置margin*/  
 /*3 字体排榜*/  
@@ -72,7 +72,7 @@ body{margin:0; font-family:宋体; font-size:12px;}
 	/*1 宽高*/
 	width:79px; height:25px; 
 /*2 位置margin*/
-    margin-top:10px; margin-left:2px
+    margin-top:10px; margin-left:2px;
 /*3 字体排榜*/  
 /*4边框*/ 
     border:0px;
