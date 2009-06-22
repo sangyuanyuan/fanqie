@@ -54,8 +54,7 @@
 			<li>影评</li>
 			<li>DIY</li>
 	  </ul>	
-	  <ul>
-			<li><b>摄影</b></li>
+	  <ul><li><b>摄影</b></li>
 			<li>活动</li>
 			<li>宝宝</li>
 			<li>音频</li>
