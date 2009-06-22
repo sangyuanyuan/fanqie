@@ -5,43 +5,17 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>css123</title>
 	<link href="/css/top.css" rel="stylesheet" type="text/css">
+	<link href="/css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div id=nav1>
-		<div id=topimg1>
-		   	<img src="/images/top/sm.jpg" width=113 height=24>
-		   	</div>
-		   	<div id=topimg1>
-		   	<img src="/images/top/tools.jpg" width=61 height=24>
-		   	</div>
-		   <div id=toptext1>
-		   	企业邮箱 新节目 直播 联系我们 常用办公软件
-		   </div>
-		   
-		   	
-	  
-	</div>
-	<div id=nav2>
-		<div id=logo>
-	  </div>
-		<ul>
-			<li><b>最新</b></li>
-			<li>市场</li>
-			<li>财务</li>
-			<li>股市</li>
-			<li><b>最新</b></li>
-			<li>市场</li>
-			<li>财务</li>
-			<li>股市</li>
-	  </ul>	
-		
+	<div id=index>
+		<div id=bottom>
+			<div id=left>
+				<div class=topthree style="background:url('images/bottom_bg.jpg') no-repeat;">
 					
-	  <div id=list>
-	  	各部门列表
-	  </div>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	
-	
 </body>
 </html>

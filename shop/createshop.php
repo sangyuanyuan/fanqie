@@ -9,14 +9,14 @@ $cookie=(isset($_COOKIE['smg_username']))? $_COOKIE['smg_username'] : '';
 if($cookie=='')
 {
 ?>
-<script>
+<!--<script>
 	$(document).ready(function() {
 	alert("请登录以后再操作");
 	window.location.href="/admin/";
 });	
-</script>
+</script>-->
 <?
-exit;
+//exit;
 }
 $db=get_db();
 $sql="select * from smg_shopdp where username='".$cookie."'";
@@ -24,17 +24,17 @@ $news = $db->query($sql);
 if(count($news)> 0)
 {
 ?>
-<script>
+<!--<script>
 	$(document).ready(function() {
-	alert("您已经拥有一家网店，请不要重复创建以减少服务器的压力！");
+	alert("您已经拥有一家网店，请不要重复创建！");
 	window.location.href="/shop/shoplist.php";
 });	
-</script>
+</script>-->
 <?
-exit;
+//exit;
 }
-?>
 
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
