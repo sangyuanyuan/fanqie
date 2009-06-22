@@ -26,8 +26,7 @@ class smg_category_class
 	public function echo_select($name="category_select"){
 		?>
 		<script>			
-			var relation = new Array();
-			
+			var relation = new Array();			
 		</script>
 		<?
 	}
