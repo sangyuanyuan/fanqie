@@ -35,6 +35,12 @@
 			<td>优先级：</td>
 			<td align="left"><input type="text" name="post[priority]" id="priority" value="<?php if($record[0]->priority!=100){echo $record[0]->priority;}?>" class="number"></td>
 		</tr>
+		<?php if($record[0]->category_type=="news"){?>
+		<tr class=tr3>
+			<td>短标题长度：</td>
+			<td align="left"><input type="text" name="post[short_title_length]" id="short_title_length" value="<?php if($record[0]->short_title_length!=100){echo $record[0]->short_title_length;}?>"class="number"></td>
+		</tr>
+		<?php }?>
 		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
