@@ -28,7 +28,10 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub','title_length');
+		js_include_tag('admin_pub');
+		if($type=="news"){
+			js_include_tag('title_length');
+		}
 	?>
 </head>
 <body>
