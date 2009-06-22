@@ -1,0 +1,1 @@
+ALTER TABLE smg_category ADD priority integer unsigned NOT NULL;

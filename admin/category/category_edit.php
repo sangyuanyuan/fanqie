@@ -1,12 +1,9 @@
 <?php
 	require_once('../../frame.php');
-	$id=(int)$_REQUEST['id'];
-	$type=$_REQUEST['type'];
-	if("admin"==$type) {$menu = new table_class('smg_admin_menu'); $post_table='smg_admin_menu';$post_url="/admin/menu/menu_list.php?type=admin&flag=1";}
-	else if("dept"==$type) {$menu = new table_class('smg_admin_menu_dept'); $post_table='smg_admin_menu_dept';;$post_url="/admin/menu/menu_list.php?type=dept";}	
-	$record = $menu->find("all",array('conditions' => 'id='.$id));
-	
-	
+	$id=$_REQUEST['id'];
+	$category = new table_class('smg_category');
+	$record = $category->find("all",array('conditions' => 'id='.$id));	
+	$post_url = '/admin/category/category_list.php?type='.$record[0]->category_type;
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -17,27 +14,22 @@
 	<title>smg</title>
 	<?php
 		css_include_tag('admin');
-	 	use_jquery();
-		validate_form("menu_form");
+		validate_form("category_form");
 	?>
 </head>
 <body>
 	<table width="795" border="0" id="list">
-	<form id="menu_form" method="post" action="/admin/pub/pub.post.php">
+	<form id="category_form" method="post" action="/admin/pub/pub.post.php">
 		<tr class=tr1>
-			<td colspan="2">　编辑菜单</td>
+			<td colspan="2">　编辑类别</td>
 		</tr>
 		<tr class=tr3>
 			<td width=150>名称：</td>
 			<td width=645 align="left"><input type="text" name="post[name]"  class="required" value="<?php echo $record[0]->name;?>"></td>
 		</tr>
 		<tr class=tr3>
-			<td>链接：</td>
-			<td align="left"><input type="text" name="post[href]" id="href" value="<?php echo $record[0]->href;?>"></td>
-		</tr>
-		<tr class=tr3>
-			<td>链接方式:</td>
-			<td align="left"><input type="text" name="post[target]" value="<?php echo $record[0]->target;?>"> (admin_iframe,#,_blank)</td>
+			<td>可发布:</td>
+			<td align="left"><input type="checkbox" name=post[can_publish]  <?php if($record[0]->can_publish=="on"){?>checked="checked<?php }?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
@@ -50,8 +42,10 @@
 		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
-		<input type="hidden" name="id" value="<?php echo $id;?>"> 
-		<input type="hidden" name="db_table" value="<?php echo $post_table;?>">
+		<input type="hidden" name="post[category_type]" value="<?php echo $record[0]->category_type;?>">
+		<input type="hidden" name="post[parent_id]" value="<?php echo $record[0]->parent_id;?>">
+		<input type="hidden" name="post[id]" value="<?php echo $id;?>">
+		<input type="hidden" name="db_table" value="smg_category">
 		<input type="hidden" name="url" value="<?php echo $post_url;?>">
 		<input type="hidden" name="post_type" value="edit">
 	</form>

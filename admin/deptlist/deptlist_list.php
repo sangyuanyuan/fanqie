@@ -24,7 +24,7 @@
 		</tr>
 		<?php
 			$db = get_db();
-			$sql="select * from smg_dept_list order by priority asc";
+			$sql="select * from smg_dept_list order by priority,id asc";
 			$record=$db->paginate($sql,20);
 			//--------------------
 			for($i=0;$i<count($record);$i++){
@@ -32,14 +32,14 @@
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->name;?></td>
 					<td><?php echo $record[$i]->href;?></td>
-					<td><a href="deptlist_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">删除</a>　<input type="text" class="priority" value="<?php echo $record[$i]->priority;?>" style="width:40px;"></td>
+					<td><a href="deptlist_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">删除</a>　<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if("100"!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:40px;"></td>
 				</tr>
 		<?php
 			}
 			//--------------------
 		?>
 		<tr class="tr3">
-			<td colspan=4><?php paginate('deptlist_list.php?type=a&type2=3');?>　<button>清空优先级</button>　<button>编辑优先级</button></td>
+			<td colspan=4><?php paginate('deptlist_list.php?type=a&type2=3');?>　<button id=clear_priority>清空优先级</button>　<button id=edit_priority>编辑优先级</button></td>
 		</tr>
 		<input type="hidden" id="db_talbe" value="smg_dept_list">
 

@@ -1,15 +1,14 @@
 DROP TABLE IF EXISTS `smg_new`.`smg_dept`;
 CREATE TABLE  `smg_new`.`smg_dept` (
   `id` int(10) unsigned NOT NULL auto_increment,
-  `clickcount` int(11) default NULL,
+  `click_count` int(11) default NULL,
   `code` text,
   `createtime` datetime default NULL,
   `name` varchar(100) default NULL,
   `state` int(11) default NULL,
   `url` varchar(100) default NULL,
-  `priority` int(10) unsigned default NULL,
+  `priority` int(10) unsigned default '100',
   `description` text,
-  `clickcount2` int(11) default NULL,
-  `deptid` int(11) default '1',
+  `dept_id` int(11) default '1',
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;

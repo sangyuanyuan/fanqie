@@ -1,7 +1,8 @@
 <?php
 	require_once('../../frame.php');
 	$category = new table_class("smg_category");
-	$category_menu = $category->find("all");
+	$category_menu = $category->find("all",array('conditions' => "category_type='video' and parent_id>0 and can_publish='on'"));
+	//上述查询语句条件是类型是视频父类不是4种大类并且该类是可发布的
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -12,7 +13,6 @@
 	<title>SMG</title>
 	<?php 
 		css_include_tag('admin');
-		use_jquery();
 		validate_form("video_add");
 	?>
 </head>
@@ -47,7 +47,7 @@
 			<td>关键词</td><td align="left">　<input type="text" size="50" name="video[keywords]">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>在线视频</td><td align="left">　<input type="text" size="50" name="video[videonlineurl]">（如果本地上传视频此项请留空！）</td>
+			<td>在线视频</td><td align="left">　<input type="text" size="50" name="video[online_url]">（如果本地上传视频此项请留空！）</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 

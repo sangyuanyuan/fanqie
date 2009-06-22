@@ -4,7 +4,8 @@
 	$magazine = new table_class("smg_magazine");
 	$magazine_record = $magazine->find("all",array('conditions' => 'id='.$id));
 	$category = new table_class("smg_category");
-	$category_menu = $category->find("all");
+	$category_menu = $category->find("all",array('conditions' => "category_type='magazine' and parent_id>0 and can_publish='on'"));
+	//上述查询语句条件是类型是电子杂志父类不是4种大类并且该类是可发布的
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -15,7 +16,6 @@
 	<title>SMG</title>
 	<?php 
 		css_include_tag('admin');
-		use_jquery();
 		validate_form("magazine_edit");
 	?>
 </head>
@@ -56,7 +56,7 @@
 			<td>选择图片</td><td align="left"> <input type="hidden" name="MAX_FILE_SIZE" value="2097152">　<input name="image" id="image" type="file" >(请上传200x160大小的图片，格式支持jpg、gif、png)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择视频</td><td align="left">　 <input type="hidden" name="MAX_FILE_SIZE" value="5000000"> <input name="magazine" id="magazine" type="file" >(请上传视频，并且不要大于50M)</td>
+			<td>选择视频</td><td align="left">　 <input type="hidden" name="MAX_FILE_SIZE" value="5000000"> <input name="magazine" id="magazine" type="file" >(请上传电子杂志，并且不要大于50M)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
 			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="magazine[description]" class="required"><?php echo $magazine_record[0]->description;?></textarea></td>
