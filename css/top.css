@@ -1,4 +1,4 @@
-﻿body{margin:0; font-family:arial; font-size:12px;}
+﻿body{margin:0; font-family:宋体; font-size:12px;}
 
 
 #topimg1{margin-left:0px; float:right; display:inline;}
@@ -14,7 +14,7 @@
 /*<<<<<<< HEAD:css/top.css*/
 /*=======*/
 #nav2 #logo{width:153px; height:51px; background:url(/images/top/logo.jpg) no-repeat; margin-left:29px; float:left; display:inline;}
-#nav2 ul{width:140px; height:51px; margin:0; background:url(/images/top/line.jpg) no-repeat 138px 2px; float:left; display:inline;}
+#nav2 ul{width:140px; height:51px; margin:0;    background:url(/images/top/line.jpg) no-repeat 138px 2px; float:left; display:inline;}
 #nav2 li{margin-top:8px; margin-left:9px; color:#ffffff; float:left; display:inline;}
 #nav2 #list{width:90px; height:19px;  margin-left:6px; margin-top:14px; float:left; display:inline;}
 #nav2 #list select{width:90px; height:19px; font-size:12px; color:#999999;  display:inline;}

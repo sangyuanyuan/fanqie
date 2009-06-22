@@ -84,9 +84,7 @@
 	  </ul>		
 		
 					
-	  <div id=list>
-	  	各部门列表
-	  </div>
+<select><option>部门列表</option></select>
 	  
 	 </div> 
 	</div>
