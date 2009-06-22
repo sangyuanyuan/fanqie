@@ -43,7 +43,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>优先级：</td>
-			<td align="left"><input type="text" name="post[priority]" id="priority" class="required number"></td>
+			<td align="left"><input type="text" name="post[priority]" id="priority" class="number"></td>
 		</tr>
 		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>

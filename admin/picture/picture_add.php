@@ -26,7 +26,7 @@
 			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name=picture[title] class="required"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name=picture[priority]>(1-100)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name=picture[priority] class="number">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>开启评论</td><td align="left">　<input type="checkbox" name=picture[commentable] id=commentable checked="checked"></td>

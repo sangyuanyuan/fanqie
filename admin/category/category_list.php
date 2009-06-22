@@ -29,15 +29,18 @@
 		css_include_tag('admin');
 		use_jquery();
 		js_include_tag('admin_pub');
+		if($type=="news"){
+			js_include_tag('title_length');
+		}
 	?>
 </head>
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="5">　<a href="category_add.php?id=0&type=<?php echo $type;?>">添加超类</a></td>
+			<td colspan="6">　<a href="category_add.php?id=0&type=<?php echo $type;?>">添加超类</a></td>
 		</tr>
 		<tr class="tr2">
-			<td width="200">菜单名称</td><td width="50">优先级</td><td width="">父类</td><td width="180">所属类别</td><td width="175">操作</td>
+			<td width="200">菜单名称</td><td width="50">优先级</td><td width="150">父类</td><td width="<?php if($type!="news"){echo 1;}?>80">所属类别</td><?php if($type=="news"){?><td width="100">短标题长度</td><?php }?><td width="175">操作</td>
 		</tr>
 		<?php
 			$category = new table_class("smg_category");
@@ -51,6 +54,7 @@
 					<td><input type="text" class="priority" name="<?php echo $record[$i]->id;?>" value="<?php if($record[$i]->priority!=100){echo $record[$i]->priority;}?>" style="width:30px;"></td>
 					<td><?php for($j=0;$j<$count_record;$j++){if($record[$j]->id==$record[$i]->parent_id){echo $record[$j]->name;break;}}?></td>
 					<td><?php echo $category_name;?></td>
+					<?php if($type=="news"){?><td><input type="text" class="short_title" name="<?php echo $record[$i]->id;?>" value="<?php if($record[$i]->short_title_length!=100){echo $record[$i]->short_title_length;}?>" style="width:30px;"></td><?php }?>
 					<td><a href="category_add.php?id=<?php echo $record[$i]->id;?>&type=<?php echo $type?>">添加子类别</a>　<a href="category_edit.php?id=<?php echo $record[$i]->id;?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
 				</tr>
 		<?php
@@ -61,9 +65,8 @@
 	</table>
 	<table width="795" border="0">
 		<tr colspan="5" class=tr3>
-			<td><?php paginate();?> <button id="edit_priority">编辑优先级</button> <button id="clear_priority">清空优先级</button></td>
+			<td><?php paginate();?> <button id="edit_priority">编辑优先级</button> <button id="clear_priority">清空优先级</button><?php if($type=="news"){?><button id="edit_lenght">编辑短标题长度</button><?php }?></td>
 		</tr>
 	</table>
 </body>
 </html>
-

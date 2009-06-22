@@ -26,7 +26,7 @@
 			<td colspan="2" width="795">　　编辑图片</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name="picture[title]" class="required" value="<?php echo $picture_record[0]->title;?>"></td>
+			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name="picture[title]" class="required" value="<?php echo $picture_record[0]->title;?>" class="number"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="picture[priority]" value="<?php if($picture_record[0]->priority!=100){echo $picture_record[0]->priority;}?>">(1-100)</td>
