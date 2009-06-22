@@ -75,11 +75,24 @@
 	  </ul>		
 		
 					
-<select><option>部门列表</option></select>
 
+	  <div id=list>
+	  	<div id=font><select><option>部门列表</option></select></div>
+	    </div>
+	  </div> 
+	  
+	  </div>
 	  
 	 </div> 
 	</div>
+<!--红色导航-->
+   <div id=nav3>
+   	 <div id=box>
+   	<input></input>
+   	<button>搜搜</button>
+   	<button>高级搜索</button>
+   	</div>
+   </div>
 
 	
 	
