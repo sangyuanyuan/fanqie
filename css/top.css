@@ -79,4 +79,15 @@ body{margin:0; font-family:宋体; font-size:12px;}
 /*5背景*/
     background:url(/images/top/gaojisousuo.png);
 }
+#nav3 #box #link{
+	/*1 宽高*/
+	  width:173px; height:24px;
+/*2 位置margin*/
+    margin-left:2px; margin-top:10px; display:inline;
+/*3 字体排榜*/ 
+    text-decoration:underline; line-height:24px; color:#ffffff;
+/*4边框*/ 
+    border:1px solid #000000;
+/*5背景*/
+}
 
