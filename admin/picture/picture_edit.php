@@ -47,7 +47,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>图片链接</td><td align="left">　<input type="text" size="50" name="picture[url]" class="required" value="<?php echo $picture_record[0]->url;?>"></td>
+			<td>图片链接</td><td align="left">　<input type="text" size="50" name="picture[url]" value="<?php echo $picture_record[0]->url;?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>选择图片</td><td align="left">　<input name="image" id="upfile" type="file">(请上传200x160大小的图片，格式支持jpg、gif、png) <input type="hidden" name="MAX_FILE_SIZE1" value="2097152"></td>
