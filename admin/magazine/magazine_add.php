@@ -53,7 +53,7 @@
 			<td>选择图片</td><td align="left"> <input type="hidden" name="MAX_FILE_SIZE" value="2097152">　<input name="image" id="image" type="file" class="required">(请上传200x160大小的图片，格式支持jpg、gif、png)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择电子杂志</td><td align="left">　 <input type="hidden" name="MAX_FILE_SIZE" value="50000000"> <input name="magazine" id="magazine" type="file" class="required">(请上传电子杂志，并且不要大于50M)</td>
+			<td>选择电子杂志</td><td align="left">　 <input type="hidden" name="MAX_FILE_SIZE" value="50000000"> <input name="magazine" id="magazine" type="file" >(请上传电子杂志，并且不要大于50M)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
 			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="magazine[description]" class="required"></textarea></td>
