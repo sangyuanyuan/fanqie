@@ -2,9 +2,8 @@
 	require_once('../../frame.php');
 	validate_form("vote_form");
 ?>
-
- <table width="795" border="0" id="list">
-     <form id="vote_form" method="post" action="vote.post.php">
+ <form id="vote_form" method="post" action="vote.post.php">
+ <table width="795" border="0" id="ajax_table">  
 		<tr class=tr1>
 			<td colspan="2">　添加投票</td>
 		</tr>
@@ -59,7 +58,7 @@
 				短标题<input type="text" name="vote_item1[short_title]" style="width:100px;">
 				<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
 				<input name="item_image1" type="file" style="display:none;">
-				<a  class="add_item" value="1" style="cursor:pointer;">继续添加</a>
+				<a  class="add_item" value="1" style="cursor:pointer;" onclick="add_item()">继续添加</a>
 				</div>
 			</td>	
 		</tr>  
@@ -71,3 +70,14 @@
 		<input type="hidden" name="post_type" id="post_type" value="single_vote">  
  </table>
  </form>
+
+ <script>
+ 	var num = 1;
+ 	function add_item(){
+		$("#ajax_table").append("<tr class=tr3 ><td>投票项目：</td><td align='left'>标题<input type='text' name='vote_item"+num+"[title]' style='width:100px;'>&nbsp;短标题<input type=’text' name='vote_item"+num+"[short_title]' style='width:100px;'><input type='hidden' name='MAX_FILE_SIZE' value='2097152'><input name='item_image"+num+"' type='file' style='display:none;'><a value="+num+" style='cursor:pointer;'></a></td></tr>");
+		num++;
+		
+	}
+	
+	
+ </script>

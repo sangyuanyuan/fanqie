@@ -8,12 +8,14 @@ $(function() {
 			}
 		);
 		
-		$(".add_item").click(function(){
+		$("#add_item").click(function(){
 			 var tableElement = $(this).parent().parent().parent();//得到表格对象
 		        var num = parseInt($(this).attr('value'))+1;
 		        tableElement.after("<tr class=tr3 ><td>投票项目：</td><td align='left'>标题<input type='text' name='vote_item"+num+"[title]' style='width:100px;'>&nbsp;短标题<input type=’text' name='vote_item"+num+"[short_title]' style='width:100px;'><input type='hidden' name='MAX_FILE_SIZE' value='2097152'><input name='item_image"+num+"' type='file' style='display:none;'><a value="+num+" style='cursor:pointer;'></a></td></tr>");
 		    
 		});
+		
+		
 		
 		$("#select_vote_type").change(function(){
 			if($(this).attr('value')=="word_vote"||$(this).attr('value')=="image_vote"){

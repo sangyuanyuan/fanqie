@@ -18,8 +18,8 @@
 </head>
 
 <body>
+<form id="vote_form" method="post" action="vote.post.php">
  <table width="795" border="0" id="list">
-     <form id="vote_form" method="post" action="vote.post.php">
 		<tr class=tr1>
 			<td colspan="2">　添加投票</td>
 		</tr>
@@ -62,11 +62,11 @@
 		</tr>
 		<tr class=tr3>
 			<td>开始日期：</td>
-			<td align="left"><input type="text" class="date"></td>
+			<td align="left"><input type="text" class="date" name="vote[started_at]" id="start"></td>
 		</tr>
 		<tr class=tr3>
 			<td>截止日期：</td>
-			<td align="left"><input type="text"  class="date"></td>
+			<td align="left"><input type="text"  class="date" name="vote[ended_at]" id="end"></td>
 		</tr>
 		<tr class=tr3>
 			<td>投票项目：</td>
@@ -76,7 +76,7 @@
 				短标题<input type="text" name="vote_item1[short_title]" style="width:100px;">
 				<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
 				<input name="item_image1" type="file" style="display:none;">
-				<a  class="add_item" value="1" style="cursor:pointer;">继续添加</a>
+				<a  id="add_item" value="1" style="cursor:pointer;">继续添加</a>
 				</div>
 			</td>	
 			<td align="left" >
@@ -91,8 +91,8 @@
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
 		<input type="hidden" name="post_type" id="post_type" value="single_vote">
-	</form>
-	  
  </table>
+ </form>
+ 
 </body>
 </html>
