@@ -7,3 +7,4 @@ upload/*
 ~*
 config/config.php
 *.bak
+*.png
