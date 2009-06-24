@@ -2,7 +2,6 @@
 require "../frame.php";
 require_once "../lib/upload_file_class.php";
 require_once "../fckeditor/fckeditor.php";
-css_include_tag('smg');
 use_jquery_ui();
 parse_str($_SERVER['QUERY_STRING']);
 $cookie=(isset($_COOKIE['smg_username']))? $_COOKIE['smg_username'] : '';
@@ -41,6 +40,7 @@ if(count($news)> 0)
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
+	<?php css_include_tag('smg'); ?>
 </head>
 <body >
 <div id=bodys>

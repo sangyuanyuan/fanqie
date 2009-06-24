@@ -10,14 +10,14 @@ $cookie=(isset($_COOKIE['smg_username']))? $_COOKIE['smg_username'] : '';
 if($cookie=='')
 {
 ?>
-<!--	<script>
+	<script>
 		$(document).ready(function() {
 			alert("请登录以后再操作");
-			window.location.href="/admin/";
+			window.location.href="/login/login.php";
 		});
-	</script>-->
+	</script>
 <?
-	//exit;
+	exit;
 }
 $db=get_db();
 $shop = $db->query('SELECT * FROM smg_shopdp where id='.$shopid);
