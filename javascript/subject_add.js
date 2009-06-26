@@ -1,26 +1,31 @@
 /**
  * @author sauger
  */
-var items_array = new Array();
 var items_count = 0;
 $.contextMenu.theme = 'xp';   
 var menu1 = [ {'添加模块':function(menuItem,menu) { add_subject_item(this); } }, $.contextMenu.separator, {'Option 2':function(menuItem,menu) { alert("You clicked Option 2!"); } } ]; 		
 var menu2 = [{'编辑':function(menuItem,menu){
-				alert('edit');
+				
+				param = $(this).find("input").serialize();
+				tb_show('编辑','subject_item_edit.php?height=250&width=400&' + param,false)
 			}},{'删除':function(menuItem,menu){
-				id = $(this).attr('id');
-				items_array.remove(id);
 				if(confirm('确认删除?')){$(this).remove();}
 			}}
 ];
 function add_subject_item(ob){
-	item = new Array();
-	item['name'] = '';
-	item['category_type'] = 'newslist';
-	item['description'] = '';
-	item['record_limit'] = 1;
-	items_array[items_count] = item;
+	id = items_count;
 	items_count++;
-	$(ob).append('<div class="subejct_item module" id="'+ id  + '">新闻列表</div>');	
+	$(ob).append(gen_item_str(id));	
 	$('#' +id).contextMenu(menu2);
+}
+
+function gen_item_str(id){
+	var str = '<div class="subejct_item module" id="'+ id  + '">';
+	str += '<input type=hidden name="name[]" value="">';
+	str += '<input type=hidden name="id" value="'+ id  + '">';
+	str += '<input type=hidden name="category_type" value="news">';
+	str += '<input type=hidden name="description" value="">';
+	str += '<input type=hidden name="record_limit" value="">';
+	str += '新闻列表' +id + '</div>';
+	return str;
 }

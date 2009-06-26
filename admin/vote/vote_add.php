@@ -81,7 +81,7 @@
 			</td>	
 			<td align="left" >
 				<div style="display:none;" id="many">
-					<a href="vote_add.ajax.php?height=600&width=600&modal=true" class="thickbox">添加子投票</a>
+					<a href="vote_add.ajax.php?height=400&width=600" class="thickbox">添加子投票</a>
 				</div>
 			</td>
 		</tr>  

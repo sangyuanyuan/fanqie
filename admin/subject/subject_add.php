@@ -5,9 +5,10 @@
 		<title>添加专题</title>
 		<?php
 			require_once('../../frame.php');
-			css_include_tag("subject.css","contextmenu/jquery.contextmenu");			
+			css_include_tag("subject.css","contextmenu/jquery.contextmenu","thickbox");			
 			use_jquery();
-			js_include_tag('tooltip','jquery.contextmenu','subject_add');
+
+			js_include_tag('tooltip','jquery.contextmenu','subject_add','thickbox');
 		?>
 	</head>
 	<body>
@@ -15,11 +16,12 @@
 			
 		</div>
 		<div id="layout" class="bder">
-			<div id="lt_top" class="bder">top<a href="#" title="one">a</a></div>
-			<div id="lt_left" class="bder">left<a href="#" title="two" title"what" id="bs">b</a></div>
-			<div id="lt_center" class="bder">center</div>
-			<div id="lt_right" class="bder">right</div>
-			<div id="lt_bottom" class="bder">bottom</div>
+			<div id="lt_top" class="bder subject_pos">top<a href="#" title="one">a</a></div>
+			<div id="lt_left" class="bder subject_pos">left<a href="#" title="two" title"what" id="bs">b</a></div>
+			<div id="lt_center" class="bder subject_pos">center</div>
+			<div id="lt_right" class="bder subject_pos">right</div>
+			<div style="clear:both"></div>
+			<div id="lt_bottom" class="bder subject_pos">bottom</div>
 		</div>
 	</body>
 </html>
@@ -28,6 +30,6 @@
 		//$("#lt_top").bstip();
 		//$("#bs").bstip();
 		$('#layout').contextMenu(menu1);
-		$('#lt_top').contextMenu(menu1);
+		$('.subject_pos').contextMenu(menu1);
 	});
 </script>
