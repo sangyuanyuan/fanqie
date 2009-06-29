@@ -25,15 +25,44 @@
 		<?php
 			$vote = new table_class("smg_vote");
 			$record = $vote->find("all",array('conditions' => 'is_sub_vote=0','order' => 'created_at desc'));
+			
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){
+				switch($record[$i]->vote_type) {
+						case "word_vote":
+							$vote_name = "文字投票";
+							break;
+						case "image_vote":
+							$vote_name = "图片投票";
+							break;
+						case "more_vote":
+							$vote_name = "复合投票";
+							break;
+						default:
+							$vote_name = "未知类型";
+				}
+				
+				switch($record[$i]->limit_type) {
+					case "user_id":
+						$limit_name = "工号登录";
+						break;
+					case "ip":
+						$limit_name = "IP控制";
+						break;
+					case "no_limit":
+						$limit_name = "不设限制";
+						break;
+					default:
+						$limit_name = "未知类型";
+				}
+				
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->name;?></td>
-					<td><?php echo $record[$i]->limit_type;?></td>
+					<td><?php echo $limit_name;?></td>
 					<td><?php echo $record[$i]->max_vote_count;?></td>
-					<td><?php echo $record[$i]->vote_type;?></td>
+					<td><?php echo $vote_name;?></td>
 					<td><?php echo $record[$i]->created_at;?></td>
 					<td><?php echo $record[$i]->ended_at;?></td>
 					<td><a href="vote_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a><a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer;margin-left:10px;">删除</a></td>
