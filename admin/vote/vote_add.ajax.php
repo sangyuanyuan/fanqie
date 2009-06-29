@@ -54,7 +54,7 @@
 	
 <body>
 <form id="sub_vote_form" method="post" enctype="multipart/form-data" action="ajax.post.php">	
- <table width="795" border="0" id="sub_table">  
+ <table width="570" border="0" id="sub_table">  
 		<tr class=tr1>
 			<td colspan="2">　添加投票</td>
 		</tr>
@@ -88,15 +88,15 @@
 		</tr>
 		<tr class=tr3>
 			<td>票数限制：</td>
-			<td align="left"><?php echo $max_vote_count;?><input type="hidden" name="vote[max_vote_count]" value="<?php echo $max_vote_count;?>"></td>
+			<td align="left"><input type="text" name="vote[max_vote_count]" value="<?php echo $max_vote_count;?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>开始日期：</td>
-			<td align="left"><?php echo $start?><input type="hidden" name="vote[started_at]" value="<?php echo $start;?>"></td>
+			<td align="left"><input type="text" name="vote[started_at]" value="<?php echo substr($start,0,10);?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>截止日期：</td>
-			<td align="left"><?php echo $end?><input type="hidden" name="vote[ended_at]" value="<?php echo $end;?>"></td>
+			<td align="left"><input type="text" name="vote[ended_at]" value="<?php echo substr($end,0,10);?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>投票项目：</td>
@@ -131,7 +131,7 @@
 			<input type="hidden" id="ord_vote_type" value="<?php echo $vote_type;?>">
 		<?php }?>  
  </table>
- <table width="795" border="0" id="list">
+ <table width="570" border="0" id="list">
 		<tr class=tr3>
 			<td colspan="2"><button  type="submit">提 交</button></td>
 		</tr>

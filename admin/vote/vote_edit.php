@@ -137,7 +137,7 @@
 				<tr class="tr3 sub_vote">
 					<td>投票项目：</td>
 					<td align="left" >
-						<a href="vote_add.ajax.php?id=<?php echo $vote_item_record[$i-1]->sub_vote_id;?>&KeepThis=true&TB_iframe=true&height=600&width=600" class="thickbox">查看该投票</a>
+						<a href="vote_add.ajax.php?id=<?php echo $vote_item_record[$i-1]->sub_vote_id;?>&KeepThis=true&TB_iframe=true&height=400&width=540" class="thickbox">查看该投票</a>
 						<a class="del_vote" style="cursor:pointer;margin-left:50px">删除</a>
 						<input type="hidden" name="deleted<?php echo $i;?>" id="deleted<?php echo $i;?>" value="false">
 						<input type="hidden" name="vote_id<?php echo $i;?>" value="<?php echo $vote_item_record[$i-1]->sub_vote_id;?>">
