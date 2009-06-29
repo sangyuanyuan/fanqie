@@ -11,7 +11,7 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub');
+		js_include_tag('vote_list');
 	?>
 </head>
 <body>
@@ -42,7 +42,6 @@
 			}
 			//--------------------
 		?>
-		<input type="hidden" id="db_talbe" value="smg_category">
 	</table>
 </body>
 </html>

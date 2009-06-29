@@ -1,14 +1,15 @@
 body {
 	
 }
-.bder{border:1px solid}
-.module{border:1px dotted}
+.bder{border:1px solid blue}
+.module{border:1px dotted;margin:5px;}
 .subejct_item{width:auto;}
 .subject_pos{margin-left:10px;}
 #top_info{width:100%}
-#layout{width:800px;height:100px;}
+#layout{width:800px;min-height:100px;border:1px dotted;padding:10px;}
 #lt_top{width:100%}
-#lt_left{width:30%;float:left;}
-#lt_center{width:40%;float:left;}
-#lt_right{width:auto;float:left;}
-#lt_center{float:left;}
+#lt_left{width:30%;float:left;margin-top:10px;}
+#lt_center{width:40%;float:left;margin-top:10px;}
+#lt_right{width:auto;float:left;margin-top:10px;}
+#lt_center{float:left;margin-top:10px;}
+#lt_bottom{margin-top:10px;}

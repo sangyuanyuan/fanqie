@@ -1,8 +1,6 @@
 ﻿<? 
 	require "../frame.php";
 	use_jquery_ui();
-	js_include_once_tag('smg');
-	js_include_once_tag('spdg');
 	$id=$_REQUEST['id'];
 	$db=get_db();
 	$tg=$db->query('select * from smg_shop where id='.$id);
@@ -15,7 +13,12 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG网店 -<? echo $tg[0]->title;?></title>
-	<link href="/css/smg.css" rel="stylesheet" type="text/css">
+	<?php 
+		css_include_tag('smg');
+		js_include_once_tag('smg');
+		js_include_once_tag('spdg');
+	?>
+
 </head>
 <body>
 <div id=bodys>
