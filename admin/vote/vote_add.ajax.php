@@ -60,7 +60,7 @@
 		</tr>
 		<tr class=tr3>
 			<td width=150>标题：</td>
-			<td width=645 align="left"><input type="text" name="vote[name]" value="<?php echo $name;?>" class="required"></td>
+			<td width=645 align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$value=$vote_record[0]->name);?></td>
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
@@ -133,7 +133,7 @@
  </table>
  <table width="570" border="0" id="list">
 		<tr class=tr3>
-			<td colspan="2"><button  type="submit">提 交</button></td>
+			<td colspan="2"><button id="submit" type="submit">提 交</button></td>
 		</tr>
 		<input type="hidden" name="vote[is_sub_vote]" value="1">
 		<input type="hidden" name="vote[created_at]"  value="<?php echo date("y-m-d")?>">  
@@ -159,7 +159,14 @@
 		}
 		
 		
-		
+		$("#submit").click(function(){
+			var oEditor = FCKeditorAPI.GetInstance('title') ;
+			var title = oEditor.GetHTML();
+			if(title==""){
+				alert("请输入标题！");
+				return false;
+			}
+		});
 		
 		$(".add_item").click(function(){
 			item_num++;

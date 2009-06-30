@@ -27,6 +27,10 @@
 			$vote->photo_url = "/upload/images/" .$img;
 		}//如果投票上传图片，做处理
 		
+		$table_change = array('<p>'=>'');
+		$table_change += array('</p>'=>'');
+		$title = strtr($_POST['title'],$table_change);
+		$vote->name = $title;
 		$vote->update_attributes($_POST['vote']);
 		
 		for($i=1;$i<=$_POST['vote_item_count'];$i++){

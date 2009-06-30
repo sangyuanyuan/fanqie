@@ -24,7 +24,7 @@
 		</tr>
 		<?php
 			$vote = new table_class("smg_vote");
-			$record = $vote->find("all",array('conditions' => 'is_sub_vote=0','order' => 'created_at desc'));
+			$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0','order' => 'created_at desc'),18);
 			
 			$count_record = count($record);
 			//--------------------
@@ -72,5 +72,12 @@
 			//--------------------
 		?>
 	</table>
+	<div class="div_box">
+		<table width="795" border="0">
+			<tr colspan="5" class=tr3>
+				<td><?php paginate();?></td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

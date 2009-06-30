@@ -19,9 +19,9 @@
 	//var_dump($conditions);
 	if($conditions!=null){
 		$conditions = implode(' and ',$conditions);
-		$images = $image->paginate("all",array('conditions' => $conditions,'order' => 'priority'),10);
+		$images = $image->paginate("all",array('conditions' => $conditions,'order' => 'priority'),12);
 	}else{
-		$images = $image->paginate("all",array('order' => 'priority'),10);
+		$images = $image->paginate("all",array('order' => 'priority'),12);
 	}
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");

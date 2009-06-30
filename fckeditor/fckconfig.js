@@ -133,6 +133,10 @@ FCKConfig.ToolbarSets["Front"] = [
 	['Style','FontFormat','FontName','FontSize','TextColor','BGColor','FitWindow','RemoveFormat'],
 ] ;
 
+FCKConfig.ToolbarSets["Title"] = [
+	['FontSize','TextColor','RemoveFormat'],
+] ;
+
 FCKConfig.EnterMode = 'p' ;			// p | div | br
 FCKConfig.ShiftEnterMode = 'br' ;	// p | div | br
 

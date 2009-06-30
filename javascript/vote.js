@@ -5,6 +5,18 @@ $(function() {
 		var display = "none"; //是否显示添加图片的框
 		var empty = "item_image"; //图片是否可以为空
 	
+
+		$("#submit").click(function(){
+			var oEditor = FCKeditorAPI.GetInstance('title') ;
+			var title = oEditor.GetHTML();
+			if(title==""){
+				alert("请输入标题！");
+				return false;
+			}
+		}); 		
+
+	
+	
 		$(".date_jquery").datepicker(
 			{
 				monthNames:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],

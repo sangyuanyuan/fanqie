@@ -1,12 +1,3 @@
-<?php
-	require "../frame.php";	
-	#require_role();
-	echo category_id_by_name('test2');
-	#$ret = $db->query();
-	#$ret[0]->name;
-	validate_form('test_form');
-
-?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
@@ -14,13 +5,6 @@
 		<title>test</title>
 	</head>
 	<body>
-		<?php 
-
-?>
-		<form id="test_form" action="/login/login.post.php" method="post">
-			name:<input type="text" name="login_text" id="name" class="required">
-			password:<input type="password" name="password_text">
-			<input type="submit" value="submit">
-		</form>
+		<div><a href=""><p>aaa</p></a></div>
 	</body>
 </html>

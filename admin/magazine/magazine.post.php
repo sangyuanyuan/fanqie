@@ -10,7 +10,7 @@
 			//如果在编辑的情况下没有上传图片则不进入文件上传的过程
 			if($_POST['type']!=="edit"||$_FILES['image']['name']!=null){
 				$upload->save_dir = "/upload/images/";
-				$img = $upload->handl('image','filter_pic');
+				$img = $upload->handle('image','filter_pic');
 				if($img === false){
 					alert('上传图片失败 !');
 					redirect('magazine_add.php');
@@ -29,6 +29,10 @@
 			}
 		}
 	}
+	$table_change = array('<p>'=>'');
+	$table_change += array('</p>'=>'');
+	$title = strtr($_POST['title'],$table_change);
+	$magazine->title = $title;
 	if($_POST['magazine']["priority"]==null){$magazine->update_attribute("priority","100");}
 	$magazine->update_attributes($_POST['magazine']);
 	

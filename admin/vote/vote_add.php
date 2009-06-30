@@ -25,7 +25,7 @@
 		</tr>
 		<tr class=tr3>
 			<td width=150>标题：</td>
-			<td width=645 align="left"><input type="text" name="vote[name]" class="required"></td>
+			<td width=645 align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true);?></td>
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
@@ -84,7 +84,7 @@
  </table>
  <table width="795" border="0" id="list">
 		<tr class=tr3>
-			<td colspan="2"><button type="submit">提 交</button></td>
+			<td colspan="2"><button id="submit" type="submit">提 交</button></td>
 		</tr>
 		<input type="hidden" name="vote[created_at]"  value="<?php echo date("y-m-d")?>">
 		<input type="hidden" id="vote_item_count" name="vote_item_count" value="1">

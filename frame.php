@@ -47,12 +47,13 @@
 		js_include_once_tag('jquery-ui-1.7.2.custom.min');
 	}
 	
-	function show_fckeditor($name,$toolbarset='Admin',$expand_toolbar=true) {
+	function show_fckeditor($name,$toolbarset='Admin',$expand_toolbar=true,$value="") {
 		require_once(CURRENT_DIR . 'fckeditor/fckeditor.php');
 		$editor = new FCKeditor($name);
 		$editor->BasicPath = CURRENT_DIR . 'fckeditor';
 		$editor->ToolbarSet = $toolbarset;
 		$editor->Config['ToolbarStartExpanded'] = $expand_toolbar;
+		$editor->Value = $value;
 		$editor->Create();
 	}	
 	

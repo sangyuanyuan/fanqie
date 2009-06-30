@@ -45,7 +45,7 @@
 		</tr>
 		<tr class=tr3>
 			<td width=150>标题：</td>
-			<td width=645 align="left"><input type="text" name="vote[name]" value="<?php echo $vote_record[0]->name;?>" class="required"></td>
+			<td width=645 align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$value=$vote_record[0]->name);?></td>
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
