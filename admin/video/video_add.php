@@ -1,8 +1,13 @@
 <?php
 	require_once('../../frame.php');
+	$type = $_REQUEST['type'];
 	$category = new table_class("smg_category");
-	$category_menu = $category->find("all",array('conditions' => "category_type='video' and parent_id>0","order" => "priority"));
-	//上述查询语句条件是类型是视频父类不是4种大类并且该类是可发布的
+	if($type==""){	
+		$category_menu = $category->find("all",array('conditions' => "category_type='video' and parent_id>0","order" => "priority"));
+	}else{
+		$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."'","order" => "priority"));
+		
+	}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -23,7 +28,7 @@
 			<td colspan="2" width="795">　　添加视频</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true);?></td>
+			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$height="80");?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="video[priority]" class="number">(1-100)</td>
@@ -64,6 +69,7 @@
 		</tr>	
 	</table>
 	<input type="hidden" name="video[is_adopt]" value="0">
+	<input type="hidden" name="special_type" value="<?php echo $type;?>">
 	</form>
 </body>
 </html>

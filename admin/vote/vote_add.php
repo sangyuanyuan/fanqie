@@ -25,7 +25,7 @@
 		</tr>
 		<tr class=tr3>
 			<td width=150>标题：</td>
-			<td width=645 align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true);?></td>
+			<td width=645 align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$height="80");?></td>
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
