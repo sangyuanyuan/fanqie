@@ -6,30 +6,5 @@ body {font-family:宋体; font-size:12px; color:#000000;  margin:0px;}
 #index #top #video .title1{width:80px; height:18px; padding-top:3px; line-height:16px; text-align:center; color:#ffffff; background:#F76900; border:1px solid #C3C3C3; float:left; display:inline;}
 #index #top #video #pic{}
 
-#index #bottom{width:980px; float:left; display:inline;}
-#index #bottom #title{width:980px; height:38px; margin-top:10px; background:url('/images/bg/index_bottomtitle.jpg') no-repeat; float:left; display:inline;}
-#index #bottom #title input{width:440px; height:20px; margin-top:9px; margin-left:330px; border:0px; float:left; display:inline;}
-#index #bottom #left{width:618px; float:left; display:inline;}
-#index #bottom #left a{text-decoration:none;}
-#index #bottom #left .first{width:120px; height:20px; margin-top:30px; margin-left:45px; margin-bottom:10px; font-size:18px; font-weight:bold; float:left; display:inline;}
-#index #bottom #left .first a{color:#F0474E;}
-#index #bottom #left .cl{width:160px; height:18px; line-height:18px; margin-left:20px; float:left; display:inline;}
-#index #bottom #left .cl a{margin-left:5px; color:#000000;}
-#index #bottom #left .topthree{width:196px; height:154px; margin-top:10px; margin-right:10px; float:left; display:inline;}
-#index #bottom #left .bottomthree{width:196px; height:204px; margin-top:10px;  margin-right:10px; float:left; display:inline;}
-#index #bottom #left .bottomthree .pic{width:160px; height:40px; border:0px; margin-top:5px; margin-left:20px; float:left; display:inline;}
-#index #bottom #right{width:353px; float:left; display:inline;}
-#index #bottom #right .bottomright{width:353px; height:151px; margin-left:8px; margin-top:13px; background:url('/images/bg/index_bottomright.jpg') no-repeat; float:left; display:inline;}
-#index #bottom #right .bottomright a{margin-top:20px; color:#ffffff; font-weight:bold; text-decoration:none; float:left; display:inline;}
-#index #bottom #right .content{width:340px; height:95px; float:left; display:inline;}
-#index #bottom #right .content a{margin-top:10px;}
-#index #bottom #right .content .pic{width:110px; height:85px; margin-left:20px; float:left; display:inline;}
-#index #bottom #right .content .pic1{width:73px; height:95px; margin-left:15px; float:left; display:inline;}
-#index #bottom #right .content .cl{width:200px; height:20px; margin-left:10px; float:left; display:inline;}
-#index #bottom #right .content .cl a{color:#000000; font-weight:normal;}
-#index #bottom #right .content .cl1{width:70px; height:95px; margin-left:5px; font-size:16px; float:left; display:inline;}
-#index #bottom #right .content .cl1 a{color:#000000; line-height:18px; font-weight:normal;}
-#index #bottom #right #rightbottom{width:354px; height:34px;; margin-left:8px; margin-top:13px; background:url('/images/bg/index_rightbottom.jpg') no-repeat; float:left; display:inline;}
-#index #bottom #right #rightbottom a{margin-top:10px; text-decoration:none; color:#000000; float:left; display:inline;}
 
 
