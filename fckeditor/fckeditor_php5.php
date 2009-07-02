@@ -95,7 +95,7 @@ class FCKeditor
 	public $Width ;
 	/**
 	 * Height of the FCKeditor.
-	 * Examples: 400, 50%
+	 * Examples: 400, 10%
 	 *
 	 * @var mixed
 	 */
@@ -132,7 +132,7 @@ class FCKeditor
 		$this->InstanceName	= $instanceName ;
 		$this->BasePath		= '/fckeditor/' ;
 		$this->Width		= '100%' ;
-		$this->Height		= '200' ;
+		$this->Height		= '100' ;
 		$this->ToolbarSet	= 'Default' ;
 		$this->Value		= '' ;
 

@@ -133,7 +133,7 @@ FCKConfig.ToolbarSets["Front"] = [
 	['Style','FontFormat','FontName','FontSize','TextColor','BGColor','FitWindow','RemoveFormat'],
 ] ;
 
-FCKConfig.ToolbarSets["Title"] = [	
+FCKConfig.ToolbarSets["Title"] = [
 	['FontSize','TextColor','RemoveFormat'],
 ] ;
 

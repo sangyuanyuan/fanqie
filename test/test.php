@@ -1,3 +1,4 @@
+
 <?php
 	require "../frame.php";	
 	#require_role();
@@ -13,6 +14,7 @@
 	copy_dir('../subject_templet/templet1','../subject/templet1',true);
 	
 ?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
@@ -20,6 +22,7 @@
 		<title>test</title>
 	</head>
 	<body>
+
 		<?php 
 
 ?>

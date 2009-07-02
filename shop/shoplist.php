@@ -12,7 +12,7 @@
 	<script language="javascript" src="/js/smg.js"></script>
 </head>
 <body>
-<? 					
+<?
 	$db=get_db();
 	$sql='select * from smg_shopdp order by createtime desc';
 	$news = $db->paginate($sql,15);

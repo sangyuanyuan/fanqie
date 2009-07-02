@@ -1,0 +1,8 @@
+#btm{width:100%; height:148px; border-top:8px solid #8A8A8A; float:right; display:inline;}
+#btm #content{width:100%; margin:0 auto;}
+#btm #content #top{width:100%; height:46px; margin-top:10px; line-height:20px; text-align:center; color:#666666; font-weight:bold; float:left; display:inline;}
+#btm #content #top A{margin-left:5px; color:#666666; font-weight:normal; text-decoration:none;}
+#btm #content #top A:hover{text-decoration:underline;}
+#btm #content #bottom{width:100%; height:58px; line-height:20px; text-align:center; color:#666666; float:left; display:inline;}
+#btm #content #bottom A{margin-left:10px; color:#666666; font-weight:normal; text-decoration:none;}
+#btm #content #bottom A:hover{text-decoration:underline;}

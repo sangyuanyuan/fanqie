@@ -26,7 +26,7 @@
 			<td colspan="2" width="795">　　编辑电子杂志</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name="magazine[title]" value="<?php echo $magazine_record[0]->title;?>" class="required"></td>
+			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$height="80",$value=$magazine_record[0]->title);?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="magazine[priority]" value="<?php if($magazine_record[0]->priority!=100){echo $magazine_record[0]->priority;}?>" class="number">(1-100)</td>
@@ -72,3 +72,14 @@
 	</form>
 </body>
 </html>
+
+<script>
+	$("#submit").click(function(){
+		var oEditor = FCKeditorAPI.GetInstance('title') ;
+		var title = oEditor.GetHTML();
+		if(title==""){
+			alert("请输入标题！");
+			return false;
+		}
+	}); 		
+</script>

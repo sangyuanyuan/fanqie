@@ -3,9 +3,15 @@
 	$id = $_REQUEST['id'];
 	$picture = new table_class("smg_images");
 	$picture_record = $picture->find("all",array('conditions' => 'id='.$id));
+	
+	$type = $_REQUEST['type'];
 	$category = new table_class("smg_category");
-	$category_menu = $category->find("all",array('conditions' => "category_type='picture' and parent_id>0","order" => "priority"));
-	//上述查询语句条件是类型是图片父类不是4种大类并且该类是可发布的
+	if($type==""){	
+		$category_menu = $category->find("all",array('conditions' => "category_type='picture' and parent_id>0","order" => "priority"));
+		//上述查询语句条件是类型是图片父类不是4种大类并且该类是可发布的
+	}else{
+		$category_menu = $category->find("all",array('conditions' => "category_type='picture' and name='".$type."'","order" => "priority"));
+	}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -26,7 +32,7 @@
 			<td colspan="2" width="795">　　编辑图片</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name="picture[title]" class="required" value="<?php echo $picture_record[0]->title;?>" class="number"></td>
+			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$height="80",$value=$picture_record[0]->title);?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="picture[priority]" value="<?php if($picture_record[0]->priority!=100){echo $picture_record[0]->priority;}?>">(1-100)</td>
@@ -63,6 +69,18 @@
 	<input type="hidden" name="id" value="<?php echo $id;?>">
 	<input type="hidden" name="type" value="edit">
 	<input type="hidden" name="picture[is_adopt]" value="0">
+	<input type="hidden" name="special_type" value="<?php echo $type;?>">
 	</form>
 </body>
 </html>
+
+<script>
+	$("#submit").click(function(){
+		var oEditor = FCKeditorAPI.GetInstance('title') ;
+		var title = oEditor.GetHTML();
+		if(title==""){
+			alert("请输入标题！");
+			return false;
+		}
+	}); 		
+</script>
