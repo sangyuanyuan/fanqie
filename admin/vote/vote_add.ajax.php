@@ -1,47 +1,81 @@
-<?php
-
-	require_once('../../frame.php');
-	$start = $_REQUEST['start'];
-	$end = $_REQUEST['end'];
-	$limit_type = $_REQUEST['limit'];
-	$max_vote_count = $_REQUEST['max'];
-	switch($limit_type) {
-		case "user_id":
-			$limit_name = "工号登录";
-			break;
-		case "ip":
-			$limit_name = "IP控制";
-			break;
-		case "no_limit":
-			$limit_name = "不设限制";
-			break;
-		default:
-			$limit_name = "未知类型";
-	}
+<?php 
+		require_once('../../frame.php');
+		if($_REQUEST['id']!=null){
+			$id = $_REQUEST['id'];
+			$vote = new table_class('smg_vote');
+			$vote_record = $vote->find('all',array('conditions' => 'id='.$id));
+			$vote_item = new table_class('smg_vote_item');
+			$vote_item_record = $vote_item->find('all',array('conditions' => 'vote_id='.$id));
+			$item_count = count($vote_item_record);
+			$name = $vote_record[0]->name;
+			$description = $vote_record[0]->description;
+			$photo_url = $vote_record[0]->photo_url;
+			$vote_type = $vote_record[0]->vote_type;
+			$start = $vote_record[0]->started_at;
+			$end = $vote_record[0]->ended_at;
+			$limit_type = $vote_record[0]->limit_type;
+			$max_vote_count = $vote_record[0]->max_vote_count;
+		}else{
+			$start = $_REQUEST['start'];
+			$end = $_REQUEST['end'];
+			$limit_type = $_REQUEST['limit'];
+			$max_vote_count = $_REQUEST['max'];
+		}
+		
+		switch($limit_type) {
+			case "user_id":
+				$limit_name = "工号登录";
+				break;
+			case "ip":
+				$limit_name = "IP控制";
+				break;
+			case "no_limit":
+				$limit_name = "不设限制";
+				break;
+			default:
+				$limit_name = "未知类型";
+		}
+		
+		
 ?>
-
- <table width="795" border="0" id="ajax_table">  
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+	<meta http-equiv=Content-Language content=zh-CN>
+	<title>smg</title>
+	<?php
+		css_include_tag('admin');
+		use_jquery_ui();
+		js_include_tag('admin_pub');
+		validate_form("sub_vote_form");
+	?>
+</head>
+	
+<body>
+<form id="sub_vote_form" method="post" enctype="multipart/form-data" action="ajax.post.php">	
+ <table width="795" border="0" id="sub_table">  
 		<tr class=tr1>
 			<td colspan="2">　添加投票</td>
 		</tr>
 		<tr class=tr3>
 			<td width=150>标题：</td>
-			<td width=645 align="left"><input type="text" id="name" class="required"></td>
+			<td width=645 align="left"><input type="text" name="vote[name]" value="<?php echo $name;?>" class="required"></td>
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
-			<td align="left"><input type="text" id="description"></td>
+			<td align="left"><input type="text" name="vote[description]" value="<?php echo $description;?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>添加图片：</td>
-			<td align="left"><input type="hidden" id="MAX_FILE_SIZE" value="2097152"><input name="ajax_image" id="ajax_image" type="file"></td>
+			<td align="left"><?php if(null!=$photo_url){?><img src="<?php echo $photo_url;?>" width="50" height="50" border="0"><?php }?><input type="hidden" id="MAX_FILE_SIZE" value="2097152"><input name="image"  type="file"></td>
 		</tr>
 		<tr class=tr3>
 			<td>投票类型：</td>
 			<td align="left" class="newsselect">
-				<select  id="vote_type" onChange="change()">
-					<option value="word_vote">文字投票</option>
-					<option value="image_vote">图片投票</option>
+				<select  id="vote_type" name="vote[vote_type]">
+					<option value="word_vote" <?php if("word_vote"==$vote_type){?>selected="selected"<?php }?>>文字投票</option>
+					<option value="image_vote" <?php if("image_vote"==$vote_type){?>selected="selected"<?php }?>>图片投票</option>
 				</select>
 			</td>
 		</tr>
@@ -49,140 +83,119 @@
 			<td>控制方式：</td>
 			<td align="left">
 				<?php echo $limit_name;?>
-				<input type="hidden" id="limit_name" value="<?php echo $limit_name?>">
+				<input type="hidden" name="vote[limit_type]" value="<?php echo $limit_type;?>">
 			</td>
 		</tr>
 		<tr class=tr3>
 			<td>票数限制：</td>
-			<td align="left"><?php echo $max_vote_count;?><input type="hidden" id="vote[max_vote_count]" value="<?php echo $max_vote_count?>"></td>
+			<td align="left"><?php echo $max_vote_count;?><input type="hidden" name="vote[max_vote_count]" value="<?php echo $max_vote_count;?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>开始日期：</td>
-			<td align="left"><?php echo $start?><input type="hidden" id="start_at" value="<?php echo $start?>"></td>
+			<td align="left"><?php echo $start?><input type="hidden" name="vote[started_at]" value="<?php echo $start;?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>截止日期：</td>
-			<td align="left"><?php echo $end?><input type="hidden" id="end_at" value="<?php echo $end?>"></td>
+			<td align="left"><?php echo $end?><input type="hidden" name="vote[ended_at]" value="<?php echo $end;?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>投票项目：</td>
 			<td align="left" id="single">
-				<div id="single">
-				标题<input type="text" id="title1" style="width:100px;">
-				短标题<input type="text" id="short_title1" style="width:100px;">
+				标题<input type="text" name="vote_item1[title]" style="width:100px;" class="required" <?php if($id!=null){?>value="<?php echo $vote_item_record[0]->title;?>"<?php }?>>
+				<?php if("image_vote"==$vote_type&&null!=$vote_item_record[0]->photo_url){?><img src="<?php echo $vote_item_record[0]->photo_url;?>" class="show_image" width="50" height="50" border="0"><?php }?>
 				<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
-				<input name="ajax_image1"  class="ajax_image" id="ajax_image1" type="file" style="display:none;">
-				<a  class="ajax_add_item" value="1" style="cursor:pointer;" onclick="add_item()">继续添加</a>
-				</div>
+				<input name="item_image1"  class="item_image"  type="file" <?php if("image_vote"!=$vote_type){?>style="display:none;"<?php }?>>
+				<a  class="add_item" value="1" style="cursor:pointer;">继续添加</a>
+				<input type="hidden" name="deleted1" value="false"> 	
 			</td>	
-		</tr>  
+		</tr>
+		<?php if(null!=$id){?>
+			<input type="hidden" name="vote_item1_id" value="<?php echo $vote_item_record[0]->id;?>">
+			<input type="hidden" name="vote_id" value="<?php echo $id;?>">
+			<?php for($k=2;$k<=$item_count;$k++){?>
+				<tr class=tr3>
+					<td>投票项目：</td>
+					<td align="left">
+						标题<input type="text" name="vote_item<?php echo $k;?>[title]" style="width:100px;" class="required" value="<?php echo $vote_item_record[$k-1]->title;?>">
+						<?php if("image_vote"==$vote_type&&null!=$vote_item_record[$k-1]->photo_url){?><img src="<?php echo $vote_item_record[$k-1]->photo_url;?>" class="show_image" width="50" height="50" border="0"><?php }?>
+						<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+						<input name="item_image<?php echo $k;?>"  class="item_image"  type="file" <?php if("image_vote"!=$vote_type){?>style="display:none;"<?php }?>>
+						<input type="hidden" name="vote_item<?php echo $k;?>_id" value="<?php echo $vote_item_record[$k-1]->id;?>">
+						<a class='del_item' name="<?php echo $vote_item_record[$k-1]->id;?>" style='cursor:pointer;'>删除</a>
+						<input type="hidden" name="deleted<?php echo $k;?>" id="deleted<?php echo $k;?>" value="false">
+					</td>	
+				</tr>
+			<?php }?>
+			<input type="hidden" name="sub_type" value="edit_sub">
+			<input type="hidden" id="ord_item_num" value="<?php echo $item_count;?>">
+			<input type="hidden" id="ord_vote_type" value="<?php echo $vote_type;?>">
+		<?php }?>  
  </table>
  <table width="795" border="0" id="list">
 		<tr class=tr3>
-			<td colspan="2"><button  onclick="submit()">提 交</button></td>
+			<td colspan="2"><button  type="submit">提 交</button></td>
 		</tr>
-		<input type="hidden" name="post_type" id="post_type" value="single_vote">
-		<input type="hidden" id="created_at"  value="<?php echo date("y-m-d")?>">  
+		<input type="hidden" name="vote[is_sub_vote]" value="1">
+		<input type="hidden" name="vote[created_at]"  value="<?php echo date("y-m-d")?>">  
+		<input type="hidden" name="sub_item_num" id="sub_item_num" value="<?php if(null==$id){echo 1;}else{echo $item_count;}?>">  
  </table>
-
+ </form>
+ 
+</body>
+</html>
  <script>
- 	var ajax_num = 1;
-	var displayed = "none";
-	
- 	function add_item(){
-		ajax_num++;
-		$("#ajax_table").append("<tr class=tr3 ><td>投票项目：</td><td align='left'>标题<input type='text' id='title"+ajax_num+"' style='width:100px;'>&nbsp;短标题<input type='text' id='short_title"+ajax_num+"' style='width:100px;'><input type='hidden' name='MAX_FILE_SIZE' value='2097152'><input name='ajax_image"+ajax_num+"' id='ajax_image"+ajax_num+"' type='file' class='ajax_image' style='display:"+displayed+";'></td></tr>");
-	}
-	$(".date").click(function(){
-		alert('ok');
-	});
-	$(".date").datepicker(
-			{
-				monthNames:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
-				dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
-				dayNamesMin:["日","一","二","三","四","五","六"],
-				dayNamesShort:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"]
-			}
-		);
-	
-	function submit() {
-		
-		var i=1;
-		var vote_id = 0;
-		var photo_url = "";
-		
-		$.ajaxFileUpload 
-		( 
-			{ 
-				url:'ajax.post.php', 
-				secureuri:false, 
-				fileElementId:'ajax_image', 
-				dataType: 'text', 
-				success: function (data) 
-				{ 
-					photo_url = data;
-					$.post("/admin/vote/ajax.post.php",
-						{
-							'vote[name]':$("#name").attr('value'),
-							'vote[description]':$("#description").attr('value'),
-						    'vote[vote_type]':$("#vote_type").attr('value'),
-						    'vote[limit_type]':$("#limit_name").attr('value'),
-							'vote[max_vote_count]':$("#max_vote_count").attr('value'),
-						    'vote[started_at]':$("#start_at").attr('value'),
-							'vote[ended_at]':$("#end_at").attr('value'),
-							'vote[created_at]':$("#created_at").attr('value'),
-							'vote[photo_url]':photo_url,
-							'type':'ajax_vote'
-						},
-						function(data){
-							vote_id = data;
-							for(j=1;j<=ajax_num;j++){
-								alert("j1"+j);
-								$.ajaxFileUpload 
-								( 
-									{ 
-										url:'ajax.post.php', 
-										secureuri:false, 
-										fileElementId:'ajax_image'+j, 
-										dataType: 'text', 
-										success: function (data) 
-										{ 	
-											
-											photo_url = data;
-											$.post("/admin/vote/ajax.post.php",
-												{
-													'vote_item[title]':$("#title"+j).attr('value'),
-													'vote_item[short_title]':$("#short_title"+j).attr('value'),
-													'vote_item[vote_id]':vote_id,
-													'vote_item[photo_url]':photo_url,
-													'type':'ajax_item'
-												},
-												function(data){
-													//alert(data);
-													alert("j2"+j);
-												}
-											);
-										} 
-									} 
-								) 	
-							}
-							$("#item").before('<tr class=tr3><td>投票项目：</td><td align="left" ><a href="vote_add.ajax.php?height=600&width=600&voteid='+vote_id+'" class="thickbox">查看投票</a><input type="hidden" name="sub_vote_id" value="'+vote_id+'"></td></tr>')
-							tb_remove();
-						}
-					);
-				} 
-			} 
-		) 
-		
-	}
-	
-	$("#vote_type").change(function(){
-		if($("#vote_type").attr('value')=="word_vote"){
-			$(".ajax_image").hide();
-			displayed = "none";
+ 	$(function(){
+		if(null!=$("#ord_item_num").attr('value')){
+			var item_num = $("#ord_item_num").attr('value');
 		}else{
-			$(".ajax_image").show();
-			displayed = "inline";
+			var item_num = 1;
 		}
+		if("image_vote"==$("#ord_vote_type").attr('value')){
+			var displayed = "inline";
+			var empty = "item_image required";
+		}else{
+			var displayed = "none";
+			var empty = "item_image";
+		}
+		
+		
+		
+		
+		$(".add_item").click(function(){
+			item_num++;
+			$("#sub_item_num").attr('value',item_num);
+			$("#sub_table").append("<tr class=tr3 id='tr"+item_num+"'><td>投票项目：</td><td align='left'>标题<input type='text' name='vote_item"+item_num+"[title]' style='width:100px;' class='required'>&nbsp;<input type='hidden' name='MAX_FILE_SIZE' value='2097152'><input name='item_image"+item_num+"' type='file' class='"+empty+"' style='display:"+displayed+";'><a class='del_item' style='cursor:pointer;'>删除</a><input type='hidden' name='deleted"+item_num+"' id='deleted"+item_num+"' value='false'></td></tr>");
+			$(".del_item").click(function(){
+				$(this).prev().attr('class','');
+				$(this).prev().prev().prev().attr('class','');
+				$(this).next().attr('value','true');
+				$(this).parent().parent().hide();
+			})
+			
+		});
+	
+		$("#vote_type").change(function(){
+			if($("#vote_type").attr('value')=="word_vote"){
+				$(".item_image").hide();
+				$(".item_image").attr('class','item_image');
+				$(".show_image").hide();
+				empty = "item_image";
+				displayed = "none";
+			}else{
+				$(".item_image").show();
+				$(".item_image").attr('class','item_image required')
+				empty = "item_image required";
+				displayed = "inline";
+			}
+		});
+		
+		
+		$(".del_item").click(function(){
+				$(this).next().attr('value','true');
+				$(this).parent().parent().hide();
+		})
+		
 	});
+
+ 
  </script>

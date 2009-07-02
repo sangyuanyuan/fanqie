@@ -6,29 +6,36 @@
 		<?php
 			require_once('../../frame.php');
 			css_include_tag("subject.css","contextmenu/jquery.contextmenu","thickbox");			
-			use_jquery();
+			use_jquery_ui();
 
 			js_include_tag('tooltip','jquery.contextmenu','subject_add','thickbox');
 		?>
 	</head>
 	<body>
-		<form method="post" name="add_subject" action="subejct.post.php">
+		<form method="post" name="add_subject" action="subject.post.php">
 			<div id="top_info">
 				<p>
-					<label for="subject_name">专题名称:</label><input type="text" name="subject_name" id="subject_name">					
+					<label for="subject_name">专题名称:</label><input type="text" name="subject[name]" id="subject_name">					
+				</p>
+				<p>
+					<label for="subject_identity">专题标识:</label><input type="text" name="subject[identity]" id="subject_identity">					
 				</p>
 				<p>
 					<label>专题模板:</label>
-					<select name="templet_type" id="templet_type">
-						<option value="1" selected="selected">专题模板1</option>
-						<option value="2" >专题模板2</option>
-						<option value="3" >专题模板3</option>	
+					<select name="subject[templet_name]" id="templet_type">
+						<option value="templet1" selected="selected">专题模板1</option>
+						<option value="templet2" >专题模板2</option>
+						<option value="templet3" >专题模板3</option>	
 					</select>					
+				</p>
+				<p>
+					<input type="hidden" name="operation_type" value="add">
+					<input type="submit" value="提交">					
 				</p>
 			</div>
 			<div id="layout" class="bder">
-				<div id="lt_top" class="bder subject_pos">top<a href="#" title="one">a</a></div>
-				<div id="lt_left" class="bder subject_pos">left<a href="#" title="two" title"what" id="bs">b</a></div>
+				<div id="lt_top" class="bder subject_pos">top</div>
+				<div id="lt_left" class="bder subject_pos">left</div>
 				<div id="lt_center" class="bder subject_pos">center</div>
 				<div id="lt_right" class="bder subject_pos">right</div>
 				<div style="clear:both"></div>
@@ -38,10 +45,5 @@
 	</body>
 </html>
 <script>
-	$(function(){
-		//$("#lt_top").bstip();
-		//$("#bs").bstip();
-		$('#layout').contextMenu(menu1);
-		$('.subject_pos').contextMenu(menu1);
-	});
+
 </script>

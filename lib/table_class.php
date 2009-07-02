@@ -164,9 +164,9 @@ class table_class{
 
 		if(empty($this->fields['id'])){
 			//save net object
-			$this->_save_new();
+			return $this->_save_new();
 		}else {
-			$this->_update();
+			return $this->_update();
 		}
 	}
 	

@@ -70,21 +70,15 @@
 		<tr class=tr3 id="item">
 			<td>投票项目：</td>
 			<td align="left" id="single">
-				<div id="single">
-				标题<input type="text" name="vote_item1[title]" style="width:100px;">
-				短标题<input type="text" name="vote_item1[short_title]" style="width:100px;">
+				标题<input type="text" name="vote_item1[title]" id="first_item" style="width:100px" class="required">
 				<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
-				<input name="item_image1" type="file" class="image" style="display:none;">
-				<a  id="add_item" value="1" style="cursor:pointer;">继续添加</a>
-				</div>
+				<input name="item_image1" type="file" class="item_image" style="display:none;">
+				<a id="add_item" value="1" style="cursor:pointer;">继续添加</a>
+				<input type="hidden" name="deleted1" value="false">
 			</td>	
-			<td align="left" >
-				<div style="display:none;" id="many">
-
+			<td align="left" style="display:none;" id="many">
 					<a  href="" class="thickbox" id="add_sub_vote">添加子投票</a>
 					<a  id="can_not_add" style="display:none; cursor:pointer;">请先填写日期并选择好控制方式</a>
-					<div id="test"></div>
-				</div>
 			</td>
 		</tr>
  </table>
@@ -92,9 +86,9 @@
 		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
-		<input type="hidden" name="post_type" id="post_type" value="single_vote">
 		<input type="hidden" name="vote[created_at]"  value="<?php echo date("y-m-d")?>">
 		<input type="hidden" id="vote_item_count" name="vote_item_count" value="1">
+		<input type="hidden" name="vote[is_sub_vote]" value="0">
  </table>
  </form>
  

@@ -24,7 +24,7 @@
 		</tr>
 		<?php
 			$vote = new table_class("smg_vote");
-			$record = $vote->find("all",array('order' => 'created_at'));
+			$record = $vote->find("all",array('conditions' => 'is_sub_vote=0','order' => 'created_at desc'));
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){

@@ -1,0 +1,6 @@
+/**
+ * @author sauger
+ */
+$(function(){
+	
+});
