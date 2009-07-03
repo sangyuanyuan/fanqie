@@ -27,8 +27,20 @@
 				}
 				$video->video_url = "/upload/video/" .$vid;
 			}
-			
-	
+		}
+	}else{
+		if($_POST['type']!=="edit"||$_FILES['image']['name']!=null||$_FILES['video']['name']!=null){
+			$upload = new upload_file_class();
+			//如果在编辑的情况下没有上传图片则不进入文件上传的过程
+			if($_POST['type']!=="edit"||$_FILES['image']['name']!=null){
+				$upload->save_dir = "/upload/images/";
+				$img = $upload->handle('image','filter_pic');
+				if($img === false){
+					alert('上传图片失败 !');
+					redirect('video_add.php');
+				}
+				$video->photo_url = "/upload/images/" .$img;
+			}
 		}
 	}
 	
@@ -37,9 +49,14 @@
 	$title = strtr($_POST['title'],$table_change);
 	$video->title = $title;
 	if($_POST['video']["priority"]==null){$video->update_attribute("priority","100");}
+	if($_POST['video']["commentable"]==null){$video->update_attribute("commentable","");}
 	$video->update_attributes($_POST['video']);
 	
-	redirect('video_list.php');
+	if($_POST['special_type']==""){
+		redirect('video_list.php');
+	}elseif($_POST['special_type']=="总裁奖"){
+		redirect('/admin/zongcai/zongcai_video.php');
+	}
 	
 	
 ?>

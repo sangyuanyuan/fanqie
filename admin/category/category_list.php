@@ -14,6 +14,12 @@
 		case "magazine":
 			$category_name = "电子杂志";
 			break;
+		case "vote":
+			$category_name = "投票";
+			break;
+		case "problem":
+			$category_name = "试题";
+			break;	
 		default:
 			$category_name = "其他";
 	}
@@ -40,11 +46,11 @@
 			<td colspan="6">　<a href="category_add.php?id=0&type=<?php echo $type;?>">添加超类</a></td>
 		</tr>
 		<tr class="tr2">
-			<td width="200">菜单名称</td><td width="50">优先级</td><td width="150">父类</td><td width="<?php if($type!="news"){echo 1;}?>80">所属类别</td><?php if($type=="news"){?><td width="100">短标题长度</td><?php }?><td width="175">操作</td>
+			<td width="200">类别名称</td><td width="50">优先级</td><td width="150">父类</td><td width="<?php if($type!="news"){echo 1;}?>80">所属类别</td><?php if($type=="news"){?><td width="100">短标题长度</td><?php }?><td width="175">操作</td>
 		</tr>
 		<?php
 			$category = new table_class("smg_category");
-			$record = $category->find("all",array('conditions' => 'category_type="'.$type.'" and parent_id>0','order' => 'priority'));
+			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'priority'),18);
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){

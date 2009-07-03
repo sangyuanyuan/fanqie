@@ -1,7 +1,7 @@
 <?php
 	require_once('../../frame.php');
 	$category = new table_class("smg_category");
-	$category_menu = $category->find("all",array('conditions' => "category_type='magazine' and parent_id>0","order" => "priority"));
+	$category_menu = $category->find("all",array('conditions' => "category_type='magazine'","order" => "priority"));
 	//上述查询语句条件是类型是电子杂志父类不是4种大类并且该类是可发布的
 ?>
 
@@ -23,7 +23,7 @@
 			<td colspan="2" width="795">　　添加电子杂志</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true);?></td>
+			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$height="80");?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="magazine[priority]" class="number">(1-100)</td>
@@ -64,6 +64,7 @@
 		</tr>	
 	</table>
 	<input type="hidden" name="magazine[is_adopt]" value="0">
+	<input type="hidden" name="magazine[create_time]"  value="<?php echo date("y-m-d")?>">
 	</form>
 </body>
 </html>

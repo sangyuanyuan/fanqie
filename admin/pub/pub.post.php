@@ -3,8 +3,17 @@
 	$post = new table_class($_POST['db_table']);
 	if("del"==$_POST['post_type'])
 	{
-		$post -> delete($_POST['del_id']);
-		echo $_POST['del_id'];
+		if($_POST['db_table']=='smg_zongcai_item'){
+			$post -> delete($_POST['del_id']);
+			$db = get_db();
+			$sql = 'delete from smg_zongcai_vote_item where item_id='.$_POST['del_id'];
+			$db -> execute($sql);
+			close_db();
+			echo $_POST['del_id'];
+		}else{
+			$post -> delete($_POST['del_id']);
+			echo $_POST['del_id'];
+		}
 	}	
 	elseif("edit"==$_POST['post_type'])
 	{
@@ -31,12 +40,29 @@
 	elseif("revocation"==$_POST['type'])
 	{
 		$post->find($_POST['id']);
-		$post->update_attribute("is_adopt","0");	
+		if($_POST['db_table']=='smg_zongcai_item'){
+			$post->update_attribute("state","0");
+			$db = get_db();
+			$sql = 'delete from smg_zongcai_vote_item where item_id='.$_POST['id'];
+			$db -> execute($sql);
+			close_db();
+		}else{
+			$post->update_attribute("is_adopt","0");
+		}
 	}
 	elseif("publish"==$_POST['type'])
 	{
 		$post->find($_POST['id']);
-		$post->update_attribute("is_adopt","1");
+		if($_POST['db_table']=='smg_zongcai_item'){
+			$post->update_attribute("state","1");
+			$db = get_db();
+			$sql = 'insert into smg_zongcai_vote_item (vote_id,item_id) values ((select id from smg_zongcai_vote order by id desc limit 1),'.$_POST['id'].')';
+			$db -> execute($sql);
+			close_db();
+		}else{
+			$post->update_attribute("is_adopt","1");
+		}
+		
 	}
 	
 ?>

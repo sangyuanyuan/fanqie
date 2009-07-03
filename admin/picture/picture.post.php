@@ -23,8 +23,13 @@
 	$title = strtr($_POST['title'],$table_change);
 	$smg_image->title = $title;
 	if($_POST['picture']["priority"]==null){$smg_image->update_attribute("priority","100");}
+	if($_POST['picture']["commentable"]==null){$smg_image->update_attribute("commentable","");}
 	$smg_image->update_attributes($_POST['picture']);
-	redirect('picture_list.php');
+	if($_POST['special_type']==""){
+		redirect('picture_list.php');
+	}elseif($_POST['special_type']=="总裁奖"){
+		redirect('/admin/zongcai/zongcai_image.php');
+	}
 	
 	
 ?>
