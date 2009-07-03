@@ -1,5 +1,4 @@
-
-#nav1{width:100%; height:24px; padding-right:132px; border-bottom:1px solid #E6E6E6; background:#f7f7f7;  float:right; display:inline;}
+#nav1{width:100%; height:24px; margin:0px; border-bottom:1px solid #E6E6E6; background:#f7f7f7;  float:right; display:inline;}
 #nav1 #box{width:995px; height:24px; text-align:right; line-height:24px; margin:0 auto; float:right; display:inline; }
 #nav1 #topimg1{margin-right:10px; float:right; display:inline;}
 #nav1 #toptext1{ margin-right:10px; float:right; display:inline; line-height:24px}
@@ -8,7 +7,7 @@
 
 
 /*第二条导航*/
-#nav2{width:995px; height:51px; margin:0 auto; }
+#nav2{width:995px; margin:0 auto; }
 #nav2 #box{width:995px; height:103px; background:url(/images/top/top_top.jpg) no-repeat; float:left; display:inline;}
 #nav2 #box #logo{width:154px; height:51px; margin-top:10px; background:url(/images/top/logo.jpg) no-repeat; margin-left:10px; float:left; display:inline;}
 #nav2 #box .dh{width:140px; height:35px; margin-top:15px;  float:left; display:inline;}

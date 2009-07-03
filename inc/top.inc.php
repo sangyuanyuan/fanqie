@@ -1,5 +1,5 @@
 ﻿	<div id=nav1>
-		<div id=topimg1>
+		<div id=topimg1 style="margin-right:135px;">
 		   	<img src="/images/top/sm.jpg" width=113 height=24>
 		</div>
 		<div id=topimg1>
@@ -86,4 +86,3 @@
 	</div> 
 	</div>
    </div>
-</div>
