@@ -3,27 +3,7 @@
 	$id = $_REQUEST['id'];
 	$type = $_REQUEST['type'];
 	$post_url = '/admin/category/category_list.php?type='.$type;
-	
-	if($id==0){
-		switch ($type) {
-		    case "news":
-		        $parent_id = 1;
-		        break;
-		    case "picture":
-		        $parent_id = 2;
-		        break;
-		    case "video":
-		        $parent_id = 3;
-				break;
-			case "magazine":
-				$parent_id = 4;
-				break;
-			default:
-				$parent_id = 0;
-		}
-	}else{
-		$parent_id = $id;
-	}
+	$parent_id = $id;
 	
 	
 ?>

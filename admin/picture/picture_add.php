@@ -3,7 +3,7 @@
 	$type = $_REQUEST['type'];
 	$category = new table_class("smg_category");
 	if($type==""){	
-		$category_menu = $category->find("all",array('conditions' => "category_type='picture' and parent_id>0","order" => "priority"));
+		$category_menu = $category->find("all",array('conditions' => "category_type='picture'","order" => "priority"));
 		//上述查询语句条件是类型是图片父类不是4种大类并且该类是可发布的
 	}else{
 		$category_menu = $category->find("all",array('conditions' => "category_type='picture' and name='".$type."'","order" => "priority"));
@@ -65,6 +65,7 @@
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布图片"></td>
 		</tr>	
 	</table>
+	<input type="hidden" name="picture[created_at]"  value="<?php echo date("y-m-d")?>">
 	<input type="hidden" name="picture[is_adopt]" value="0">
 	<input type="hidden" name="special_type" value="<?php echo $type;?>">
 	</form>

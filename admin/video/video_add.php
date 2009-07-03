@@ -3,7 +3,7 @@
 	$type = $_REQUEST['type'];
 	$category = new table_class("smg_category");
 	if($type==""){	
-		$category_menu = $category->find("all",array('conditions' => "category_type='video' and parent_id>0","order" => "priority"));
+		$category_menu = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
 	}else{
 		$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."'","order" => "priority"));
 		
@@ -68,6 +68,7 @@
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布视频"></td>
 		</tr>	
 	</table>
+	<input type="hidden" name="video[create_at]"  value="<?php echo date("y-m-d")?>">
 	<input type="hidden" name="video[is_adopt]" value="0">
 	<input type="hidden" name="special_type" value="<?php echo $type;?>">
 	</form>

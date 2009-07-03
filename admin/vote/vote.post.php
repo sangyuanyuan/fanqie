@@ -14,7 +14,6 @@
 		$vote = new table_class('smg_vote');
 		if($_POST['type']=='edit'){
 			$vote->find($_POST['vote_id']);
-			$vote->echo_sql = true;
 		}
 		if($_FILES['image'][name]!=null){
 			$upload = new upload_file_class();

@@ -8,7 +8,7 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG  -总裁奖报名</title>
 	<?php 
-		css_include_tag('subject');
+		css_include_tag('zongcai');
 		validate_form("sing_up");
 	?>
 </head>
