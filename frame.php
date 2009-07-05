@@ -87,12 +87,41 @@
 		return $role_name == $_COOKIE['smg_role'];		
 	}
 	
+	
 	function is_role($role_name){
 		return strtolower($_COOKIE['smg_role']) == strtolower($role_name) ? true : false;
 	}
 	
 	function require_role($role_name='member') {
 		if(!has_role($role_name)){
+			redirect('/login/login.php');
+		};
+	}
+	
+	function judge_role(){
+		if($_SESSION['smg_role']=='member'||$_SESSION['smg_role']==''){
+			redirect('/login/login.php');
+		}else{
+			return 	$_SESSION['smg_role'];
+		}
+		
+	}
+	
+	function background_has_role($role_name){
+		if(!has_login()) return false; 
+		if($role_name == 'member') return $role_name; 
+		if(background_is_role('admin')) return $role_name;
+		if(background_is_role('dept_admin')) return $role_name;
+		return $role_name == $_SESSION['smg_role'];		
+	}
+	
+	
+	function background_is_role($role_name){
+		return strtolower($_SESSION['smg_role']) == strtolower($role_name) ? true : false;
+	}
+	
+	function background_require_role($role_name='member') {
+		if(!background_has_role($role_name)){
 			redirect('/login/login.php');
 		};
 	}
