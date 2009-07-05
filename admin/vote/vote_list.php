@@ -1,5 +1,6 @@
 <?php
 	require_once('../../frame.php');
+	$key = $_REQUEST['key'];
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -17,7 +18,10 @@
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="8">　<a style="margin-right:50px" href="vote_add.php">添加投票</a>搜索&nbsp;<input type="text"></td>
+			<td colspan="8">　<a style="margin-right:50px" href="vote_add.php">添加投票</a>
+			<span style="margin-left:100px; font-size:13px">搜索&nbsp;&nbsp;<input id="search_text" type="text" value="<? echo $key;?>"></span>
+			<input type="button" value="搜索" id="vote_search" style="border:1px solid #0000ff; height:21px">
+			</td>
 		</tr>
 		<tr class="tr2">
 			<td>投票名称</td><td width="80">登录限制</td><td width="80">票数限制</td><td width="80">投票类型</td><td width="80">发布时间</td><td width="80">到期时间</td><td width="80">所属类别</td><td width="120">操作</td>
@@ -27,7 +31,11 @@
 			$category_record = $category->find('all',array('conditions' => 'category_type="vote"'));
 			$category_count = count($category_record);
 			$vote = new table_class("smg_vote");
-			$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0','order' => 'created_at desc'),18);
+			if($key!=''){
+				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and name  like "%'.trim($key).'%"','order' => 'created_at desc'),18);
+			}else{
+				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0','order' => 'created_at desc'),18);
+			}
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){

@@ -11,4 +11,8 @@ $(function(){
 			});
 		}
 	});
+	
+	$("#vote_search").click(function(){
+				window.location.href="?key="+$("#search_text").attr('value');
+	});
 });
