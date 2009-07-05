@@ -1,5 +1,7 @@
 ﻿<? 
-	require_once('frame.php');
+	require_once('../frame.php');
+	$nav = new table_class("smg_nav");
+	$nav = $nav->find("all",array('order' => 'id asc'));
 ?>
 
 <div id=nav1>
@@ -12,56 +14,13 @@
 <div id=nav2>
 	<div id=box>
 		<div id=logo></div>
+		<?php for($j=0;$j<5;$j++){?>
 		<ul>
-				<li><b><a href="#">直播</a></b></li>
-				<li><a href="#">收视</a></li>
-				<li><a href="#">财务</a></li>
-				<li><a href="#">股市</a></li>
-				<li><b><a href="#">要点</a></b></li>
-				<li><a href="#">新闻</a></li>
-				<li><a href="#">社会</a></li>
-				<li><a href="#">上海</a></li>
+				<?php	for($i=8*$j;$i<8*($j+1);$i++)	{ ?>
+				<li><?php if($i==0||$i==8||$i==16||$i==24||$i==32){?><b><?php }?><a href="<?php echo $nav[$i]->href;?>"><?php echo $nav[$i]->name;?></a><?php if($i==0||$i==8||$i==16||$i==24||$i==32){?></b><?php }?></li>
+				<?php	}?>
 	 	</ul>
-	  <ul>
-			<li><b><a href="#">新闻</a></b></li>
-			<li><a href="#">视频</a></li>
-			<li><a href="#">公告</a></li>
-			<li><a href="#">专题</a></li>
-			<li><b><a href="#">报料</a></b></li>
-			<li><a href="#">业务</a></li>
-			<li><a href="#">排行</a></li>
-			<li><a href="#">加精</a></li>
-	  </ul>
-	  <ul>
-			<li><b><a href="#">论坛</a></b></li>
-			<li><a href="#">对话</a></li>
-			<li><a href="#">旅游</a></li>
-			<li><a href="#">热点</a></li>
-			<li><b><a href="#">博客</a></b></li>
-			<li><a href="#">聊天</a></li>
-			<li><a href="#">评论</a></li>
-			<li><a href="#">生活</a></li>
-	  </ul>
-	  <ul>
-			<li><b><a href="#">摄影</a></b></li>
-			<li><a href="#">活动</a></li>
-			<li><a href="#">宝宝</a></li>
-			<li><a href="#">音频</a></li>
-			<li><b><a href="#">视频</a></b></li>
-			<li><a href="#">杂志</a></li>
-			<li><a href="#">明星</a></li>
-			<li><a href="#">幕后</a></li>
-	  </ul>
-	  <ul>
-			<li><b><a href="#">团购</a></b></li>
-			<li><a href="#">网店</a></li>
-			<li><a href="#">生日</a></li>
-			<li><a href="#">题库</a></li>
-			<li><b><a href="#">工具</a></b></li>
-			<li><a href="#">菜单</a></li>
-			<li><a href="#">投票</a></li>
-			<li><a href="#">婚介</a></li>
-	  </ul>
+		<?php }?>
 	  <div id=weather>
 	  	<img src="/images/weather/1.gif">
 	  	<div id=context>多云 20℃～32℃</div>
