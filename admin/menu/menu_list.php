@@ -34,7 +34,7 @@
 			for($i=0;$i<count($record);$i++){
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
-					<td><img style="cursor:pointer" name="<?php echo $record[$i]->id;?>" src="/images/admin/plus.gif"><?php echo $record[$i]->name;?></td>
+					<td><img style="cursor:pointer" name="<?php echo $record[$i]->name;?>" src="/images/admin/plus.gif"><?php echo $record[$i]->name;?></td>
 					<td><input type="text" class="priority" name="<?php echo $record[$i]->id;?>" value="<?php if($record[$i]->priority!=100){echo $record[$i]->priority;}?>" style="width:30px;"></td>
 					<td><?php echo $record[$i]->href;?></td>
 					<td><?php echo $record[$i]->target;?></td>
@@ -45,7 +45,7 @@
 				//----------
 				for($j=0;$j<count($record2);$j++){
 		?>
-				<tr class=tr3 style="display:none;" id=<?php echo $record2[$j]->id;?> name="<?php echo $record[$i]->id;?>">
+				<tr class=tr3 style="display:none;" id=<?php echo $record2[$j]->id;?> name="<?php echo $record[$i]->name;?>">
 					<td><li style="color:#0000ff;"><?php echo $record2[$j]->name;?></li></td>
 					<td><input type="text" class="priority" name="<?php echo $record2[$j]->id;?>" value="<?php if($record2[$j]->priority!=100){echo $record2[$j]->priority;}?>" style="width:30px;"></td>
 					<td><?php echo $record2[$j]->href;?></td>
