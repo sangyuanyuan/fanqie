@@ -1,0 +1,8 @@
+#right{width:330px; margin-top:10px; padding-bottom:10px; background:#FF7200; float:right; display:inline;}
+#right #title{width:300px; height:29px; padding:15px; font-weight:bold; font-size:14px; border-bottom:1px solid #D8DFEA; float:left; display:inline;}
+#right .t{width:290px; height:20px; margin:10px; padding-top:5px; padding-left:25px; font-weight:bold; background:url('/images/pic/answer_pm.gif') no-repeat; float:left; display:inline;}
+#right .content{width:270px; margin-right:15px; float:right; display:inline;}
+#right .content .title{width:270px; font-weight:bold; border-bottom:1px solid #000000; float:left; display:inline;}
+#right .content .context{width:270px; line-height:20px; float:left; display:inline;}
+#right .content .name{float:left; display:inline;}
+#right .content .score{float:right; display:inline;}

@@ -6,9 +6,9 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -答题</title>
+	<title>SMG -投票</title>
 	<?php 
-		css_include_tag('top.css','bottom.css','answer.css','answer_right.css');
+		css_include_tag('top.css','bottom.css','vote.css','vote_right.css');
 	?>
 </head>
 <body>
@@ -20,9 +20,9 @@
 			</div>
 			<div id=content>
 				<div id=head>
-					<div class=title1><span>最新答题</span></div>
-					<div class=title2><span>答题荟萃</span></div>
-					<div class=title2><span>发起答题</span></div>
+					<div class=title2><span>精彩投票</span></div>
+					<div class=title1><span>最新投票</span></div>
+					<div class=title2><span>发起投票</span></div>
 					<div id=line></div>
 				</div>
 				<?php for($i=0;$i<5;$i++){?>
@@ -45,7 +45,7 @@
 				<?php } ?>
 			</div>
 		</div>
-		<?php include('../inc/answer_right.inc.php');?>
+		<?php include('../inc/vote_right.inc.php');?>
 	</div>
 	<? include('../inc/bottom.inc.php');?>
 </body>
