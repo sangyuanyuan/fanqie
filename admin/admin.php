@@ -1,6 +1,8 @@
 <?php
 	require_once('../frame.php');
-	require_role('admin');
+	if(judge_role()=='dept_admin'){
+		redirect('admin2.php');
+	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,7 +10,7 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>smg</title>
-	<? 	
+	<?php	
 		css_include_tag('admin');
 		use_jquery();
   ?>
@@ -16,7 +18,7 @@
 <body style="background:url(/images/admin/bg.jpg) repeat-x;">
 	<div id=admin_body>
 		<div id=part1>
-			<div id=nav>欢迎 <?php echo $_COOKIE['smg_role']; ?></div>
+			<div id=nav>欢迎  <?php echo $_COOKIE['smg_user_nickname']; ?></div>
 			<div id=title>番茄网后台管理系统</div>
 			<div id=index><a href="/index.php" target="_blank">动态主页</a></div>
 		</div>
