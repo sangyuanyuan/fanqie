@@ -24,7 +24,7 @@
 			</tr>
 			<tr class="tr3">
 				<td width="100">项目名称</td>
-				<td width="695" align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$height="80");?></td>
+				<td width="695" align="left"><?php show_fckeditor('title','Title',true,"80");?></td>
 			</tr>
 			<tr class="tr3">
 				<td width="100">添加图片</td>

@@ -1,0 +1,65 @@
+<?php
+	require_once('../../frame.php');
+	$key = $_REQUEST['key'];
+	$dialog = new table_class('smg_dialog');
+	if($key!=''){
+		$records = $dialog->paginate('all',array('conditions' => 'title  like "%'.trim($key).'%"'));
+	}else{
+		$records = $dialog->paginate('all');
+	}
+	$count = count($records);
+?>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv=Content-Type content="text/html; charset=utf8">
+	<meta http-equiv=Content-Language content=zh-CN>
+	<title>SMG</title>
+	<?php 
+		css_include_tag('admin');
+		use_jquery();
+		js_include_tag('admin_pub');
+	?>
+</head>
+<body style="background:#E1F0F7">
+	<table width="795" border="0">
+		<tr class="tr1">
+			<td colspan="5" width="795">　　　<a href="dialog_add.php" style="color:#0000FF">添加对话</a>　　　　　　
+			<span style="margin-left:100px; font-size:13px">搜索&nbsp;&nbsp;<input id="search_text" type="text" value="<? echo $key;?>"></span>
+			<input type="button" value="搜索" id="dialog_search" style="border:1px solid #0000ff; height:21px">
+			</td>
+		</tr>
+		<tr class="tr2">
+			<td width="365">主题</td><td width="140">开始时间</td><td width="140">结束时间</td><td width="250">操作</td>
+		</tr>
+		<?php for($i=0;$i<$count;$i++){?>
+		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
+			<td><a href="/dialog/dialog_show.php?id=<? echo $rows['id'];?>" style="color:#0000FF" target="_blank"><?php echo $records[$i]->title;?></a></td>
+			<td><?php echo substr($records[$i]->start_time,0,10);?></td>
+			<td><?php echo substr($records[$i]->end_time,0,10);?></td>
+			<td><?php if($records[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $records[$i]->id;?>">撤消</span><? }?>
+				<?php if($records[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $records[$i]->id;?>">发布</span><? }?>
+				<a href="dialog_edit.php?id=<?php echo $records[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
+				<span style="cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
+				<a href="/admin/comment/comment.php?id=<?php echo $records[$i]->id;?>&type=dialog" style="color:#000000; text-decoration:none">评论</a>
+			</td>
+		</tr>
+		<? }?>
+	</table>
+	<input type="hidden" id="db_talbe" value="smg_dialog">
+	<div class="div_box">
+		<table width="795" border="0">
+			<tr colspan="5" class=tr3>
+				<td><?php paginate();?></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
+
+<script>
+	$("#dialog_search").click(function(){
+				window.location.href="?key="+$("#search_text").attr('value');
+	});
+</script>

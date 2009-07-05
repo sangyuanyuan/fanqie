@@ -30,7 +30,7 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">题　目</td>
-			<td align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$height="80",$value=$question->title);?><?php if($project_type!='judge'){?></>请在正确的选项后面打勾<?php }?></td>
+			<td align="left"><?php show_fckeditor('title','Title',true,"80",$question->title);?><?php if($project_type!='judge'){?></>请在正确的选项后面打勾<?php }?></td>
 		</tr>
 		<?php if($project_type=='judge'){?>
 		<tr class="tr3">

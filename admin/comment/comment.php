@@ -41,9 +41,9 @@
 		<?php
 			$comment = new table_class("smg_comment");
 			if($conditions!=null){
-				$record = $comment->find("all",array('conditions' => $conditions,'order' => 'created_at'));
+				$record = $comment->paginate("all",array('conditions' => $conditions,'order' => 'created_at'),18);
 			}else{
-				$record = $comment->find("all",array('conditions' => 'resource_type="'.$type.'" and resource_id="'.$id.'"','order' => 'created_at'));	
+				$record = $comment->paginate("all",array('conditions' => 'resource_type="'.$type.'" and resource_id="'.$id.'"','order' => 'created_at'),18);	
 			}
 			$count_record = count($record);
 			//--------------------
@@ -51,7 +51,7 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->nick_name;?></td>
-					<td><textarea cols="40" rows="3" id="comment"><?php echo $record[$i]->comment;?></textarea></td>
+					<td><textarea cols="40" rows="3" class="comment"><?php echo $record[$i]->comment;?></textarea></td>
 					<td><?php echo $record[$i]->created_at;?></td>
 					<td><a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a><a class="edit"  style="color:#000000; text-decoration:none; margin-left:10px; cursor:pointer">编辑</a></td>
 				</tr>
@@ -62,5 +62,12 @@
 		<input type="hidden" id="db_talbe" value="smg_comment">
 		<input type="hidden" id="id" value="<?php echo $record[0]->id;?>">
 	</table>
+	<div class="div_box">
+		<table width="795" border="0">
+			<tr colspan="5" class=tr3>
+				<td><?php paginate();?></td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>
