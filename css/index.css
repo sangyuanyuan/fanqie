@@ -1,2 +1,17 @@
 ﻿body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
-ul{margin:0px;}
+ul{margin:0px; padding:0px;}
+li{margin:0px; list-style-type:none;}
+
+#ibody{width:995px; height:1000px; margin:0 auto;}
+
+#ibody_top{width:995px; height:900px; float:left; display:inline;}
+
+
+#p1{width:310px; height:830px; margin-top:7px; float:left; display:inline;}
+
+#video{width:297px; height:320px; background:url(/images/index/video_bg.jpg) no-repeat; float:left; display:inline;}
+#video #menu{width:246px; height:20px; margin-left:24px; background:#000000; float:left; display:inline;}
+#video #menu .video_item{width:82px; height:17px; padding-top:3px; line-height:15px;  color:#ffffff; text-align:center; cursor:pointer; float:left; display:inline;}
+#video #flash{width:271px; height:182px; margin-top:8px;  margin-left:14px; float:left; display:inline;}
+#video #list{width:265px; height:80px; margin-top:15px; margin-left:18px;float:left; display:inline;}
+#video #list li{width:265px; height:19px; font-size:13px; text-align:left; line-height:17px; float:left; display:inline;}

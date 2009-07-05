@@ -7,8 +7,7 @@
 <div id=nav1>
 	<div id=box>	
    	<img src="/images/top/sms.jpg">
-   	<img src="/images/top/tools.jpg">
-		<div id=context><a href="#">企业邮箱</a> <a href="#">新节目</a> <a href="#">直播</a> <a href="#">联系我们</a> <a href="#">常用办公软件</a></div>		
+		<div id=context><a href="#">企业邮箱</a> <a href="#">新节目</a> <a href="#">直播</a> <a href="#">联系我们</a> <span onclick="javascript:document.getElementById('toolcontent').style.display='inline'">常用办公软件</span></div>		
 	</div>	
 </div>
 <div id=nav2>
@@ -25,7 +24,7 @@
 	  	<img src="/images/weather/1.gif">
 	  	<div id=context>多云 20℃～32℃</div>
 	  </div>	
-	  <div id=dept></div>	  
+	  <span id=deptbtn onclick='$("#deptcontent").show();'></span>	  
 	  <div id=search>
    		<input></input>
    		<button id=button1></button>
@@ -39,9 +38,10 @@
 		</div>
 	</div>
 </div>
-<div id=toptool1>
-	<div id=toptool2>
-		<div id=toptool3 style="display:none" >
+&nbsp;
+<div id=tool>
+	<div id=toolbox>
+		<div id=toolcontent>
 							<div class=tools><a href="http://172.28.2.112:2000/" target="_blank">新华社</a></div>
 							<div class=tools><a href="http://172.27.203.88/techmanage/admin/chart_new1.asp" target="_blank">制作录象计划表</a></div>
 							<div class=tools><a href="http://172.27.203.125" target="_blank">办公自动化系统</a></div>
@@ -54,7 +54,27 @@
 							<div class=tools><a href="http://172.27.203.16:8088/zb/" target="_blank">节目信息管理系统</a></div>
 							<div class=tools><a href="http://172.28.10.31/" target="_blank">广播节目检索系统</a></div>
 							<div class=tools><a href="http://172.27.203.88/assetsmanage/ReadNews.asp?NewsID=1206&BigClassName=动态公告&SmallClassName=动态公告&SpecialID=0" target="_blank">集团固定资产管理信息系统</a></div>
-							<div class=tools style="text-align:right; color:#FF0000; font-weight:bold; cursor:pointer; " onclick="javascript:document.getElementById('toptool3').style.display='none'">关闭</div>
+							<div class=tools style="text-align:right; color:#FF0000; font-weight:bold; cursor:pointer; " onclick='$("#toolcontent").hide();'>关闭</div>
+		</div>
+	</div>
+</div>
+
+<div id=dept>
+	<div id=deptbox>
+		<div id=deptcontent>
+							<div class=depts><a href="http://172.28.2.112:2000/" target="_blank">新华社</a></div>
+							<div class=depts><a href="http://172.27.203.88/techmanage/admin/chart_new1.asp" target="_blank">制作录象计划表</a></div>
+							<div class=depts><a href="http://172.27.203.125" target="_blank">办公自动化系统</a></div>
+							<div class=depts><a href="http://172.27.203.88/waishi/" target="_blank">外事管理系统</a></div>
+							<div class=depts><a href="http://172.27.203.88/CBNBMS/login.aspx" target="_blank">SMG系统</a></div>
+							<div class=depts><a href="http://172.27.203.41/test/login.php" target="_blank">奖金发放系统</a></div>
+							<div class=depts><a href="http://172.27.203.88/smgit/pro_select.htm" target="_blank">串联单查询</a></div>
+							<div class=depts><a href="http://172.27.203.88/stvmis/login.asp" target="_blank">新闻来源系统</a></div>
+							<div class=depts><a href="http://172.27.203.47/login/smglogin.jsp" target="_blank">管理信息平台</a></div>
+							<div class=depts><a href="http://172.27.203.16:8088/zb/" target="_blank">节目信息管理系统</a></div>
+							<div class=depts><a href="http://172.28.10.31/" target="_blank">广播节目检索系统</a></div>
+							<div class=depts><a href="http://172.27.203.88/assetsmanage/ReadNews.asp?NewsID=1206&BigClassName=动态公告&SmallClassName=动态公告&SpecialID=0" target="_blank">集团固定资产管理信息系统</a></div>
+							<div class=tools style="text-align:right; color:#FF0000; font-weight:bold; cursor:pointer;" onclick='$("#deptcontent").hide();'>关闭</div>
 		</div>
 	</div>
 </div>
