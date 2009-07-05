@@ -1,10 +1,2 @@
-body {font-family:宋体; font-size:12px; color:#000000;  margin:0px;}
-#index{width:980px; margin:0 auto; margin-top:10px;}
-#index #top{width:980px; float:left; display:inline;}
-#index #top #video{width:310px; height:308px; background:url('/images/bg/index_video.jpg') no-repeat; float:left; display:inline;}
-#index #top #video .title{width:80px; height:18px; padding-top:3px; line-height:16px; text-align:center; color:#999999; border:1px solid #C3C3C3; float:left; display:inline;}
-#index #top #video .title1{width:80px; height:18px; padding-top:3px; line-height:16px; text-align:center; color:#ffffff; background:#F76900; border:1px solid #C3C3C3; float:left; display:inline;}
-#index #top #video #pic{}
-
-
-
+﻿body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+ul{margin:0px;}
