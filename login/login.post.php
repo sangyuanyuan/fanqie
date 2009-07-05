@@ -28,6 +28,8 @@ else
 	SetCookie('smg_username',$login_text,$y2k,'/');
 	SetCookie('smg_user_nickname',$login_info[0]->nick_name,$y2k,'/');
 	setcookie('smg_role', $login_info[0]->role_name,$y2k,'/');
+ 	session_start(); 
+	$_SESSION["smg_role"] = $login_info[0]->role_name;	
 	$error = "ok";	
 }
 

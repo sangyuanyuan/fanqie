@@ -1,4 +1,10 @@
-﻿<div id=nav1>
+﻿<? 
+	require_once('../frame.php');
+	$nav = new table_class("smg_nav");
+	$nav = $nav->find("all",array('order' => 'id asc'));
+?>
+
+<div id=nav1>
 	<div id=box>	
    	<img src="/images/top/sms.jpg">
    	<img src="/images/top/tools.jpg">
@@ -8,56 +14,13 @@
 <div id=nav2>
 	<div id=box>
 		<div id=logo></div>
+		<?php for($j=0;$j<5;$j++){?>
 		<ul>
-				<li><b><a href="#">直播</a></b></li>
-				<li><a href="#">收视</a></li>
-				<li><a href="#">财务</a></li>
-				<li><a href="#">股市</a></li>
-				<li><b><a href="#">要点</a></b></li>
-				<li><a href="#">新闻</a></li>
-				<li><a href="#">社会</a></li>
-				<li><a href="#">上海</a></li>
+				<?php	for($i=8*$j;$i<8*($j+1);$i++)	{ ?>
+				<li><?php if($i==0||$i==8||$i==16||$i==24||$i==32){?><b><?php }?><a href="<?php echo $nav[$i]->href;?>"><?php echo $nav[$i]->name;?></a><?php if($i==0||$i==8||$i==16||$i==24||$i==32){?></b><?php }?></li>
+				<?php	}?>
 	 	</ul>
-	  <ul>
-			<li><b><a href="#">新闻</a></b></li>
-			<li><a href="#">视频</a></li>
-			<li><a href="#">公告</a></li>
-			<li><a href="#">专题</a></li>
-			<li><b><a href="#">报料</a></b></li>
-			<li><a href="#">业务</a></li>
-			<li><a href="#">排行</a></li>
-			<li><a href="#">加精</a></li>
-	  </ul>
-	  <ul>
-			<li><b><a href="#">论坛</a></b></li>
-			<li><a href="#">对话</a></li>
-			<li><a href="#">旅游</a></li>
-			<li><a href="#">热点</a></li>
-			<li><b><a href="#">博客</a></b></li>
-			<li><a href="#">聊天</a></li>
-			<li><a href="#">评论</a></li>
-			<li><a href="#">生活</a></li>
-	  </ul>
-	  <ul>
-			<li><b><a href="#">摄影</a></b></li>
-			<li><a href="#">活动</a></li>
-			<li><a href="#">宝宝</a></li>
-			<li><a href="#">音频</a></li>
-			<li><b><a href="#">视频</a></b></li>
-			<li><a href="#">杂志</a></li>
-			<li><a href="#">明星</a></li>
-			<li><a href="#">幕后</a></li>
-	  </ul>
-	  <ul>
-			<li><b><a href="#">团购</a></b></li>
-			<li><a href="#">网店</a></li>
-			<li><a href="#">生日</a></li>
-			<li><a href="#">题库</a></li>
-			<li><b><a href="#">工具</a></b></li>
-			<li><a href="#">菜单</a></li>
-			<li><a href="#">投票</a></li>
-			<li><a href="#">婚介</a></li>
-	  </ul>
+		<?php }?>
 	  <div id=weather>
 	  	<img src="/images/weather/1.gif">
 	  	<div id=context>多云 20℃～32℃</div>
@@ -74,6 +37,24 @@
 			<div id=welcome>欢迎您：<span style="font-weight:bold;">admin</span>　<a href="#">修改密码</a>　<a href="#">后台管理</a>　<a href="#">退出</a>
 			</div>
 		</div>
-	  
+	</div>
+</div>
+<div id=toptool1>
+	<div id=toptool2>
+		<div id=toptool3 style="display:none" >
+							<div class=tools><a href="http://172.28.2.112:2000/" target="_blank">新华社</a></div>
+							<div class=tools><a href="http://172.27.203.88/techmanage/admin/chart_new1.asp" target="_blank">制作录象计划表</a></div>
+							<div class=tools><a href="http://172.27.203.125" target="_blank">办公自动化系统</a></div>
+							<div class=tools><a href="http://172.27.203.88/waishi/" target="_blank">外事管理系统</a></div>
+							<div class=tools><a href="http://172.27.203.88/CBNBMS/login.aspx" target="_blank">SMG系统</a></div>
+							<div class=tools><a href="http://172.27.203.41/test/login.php" target="_blank">奖金发放系统</a></div>
+							<div class=tools><a href="http://172.27.203.88/smgit/pro_select.htm" target="_blank">串联单查询</a></div>
+							<div class=tools><a href="http://172.27.203.88/stvmis/login.asp" target="_blank">新闻来源系统</a></div>
+							<div class=tools><a href="http://172.27.203.47/login/smglogin.jsp" target="_blank">管理信息平台</a></div>
+							<div class=tools><a href="http://172.27.203.16:8088/zb/" target="_blank">节目信息管理系统</a></div>
+							<div class=tools><a href="http://172.28.10.31/" target="_blank">广播节目检索系统</a></div>
+							<div class=tools><a href="http://172.27.203.88/assetsmanage/ReadNews.asp?NewsID=1206&BigClassName=动态公告&SmallClassName=动态公告&SpecialID=0" target="_blank">集团固定资产管理信息系统</a></div>
+							<div class=tools style="text-align:right; color:#FF0000; font-weight:bold; cursor:pointer; " onclick="javascript:document.getElementById('toptool3').style.display='none'">关闭</div>
+		</div>
 	</div>
 </div>

@@ -31,7 +31,7 @@
 			<td colspan="2" width="795">　　编辑视频</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$height="80",$value=$video_record[0]->title);?></td>
+			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor('title','Title',true,"80",$video_record[0]->title);?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="video[priority]" value="<?php if($video_record[0]->priority!=100){echo $video_record[0]->priority;}?>" class="number">(1-100)</td>

@@ -1,7 +1,7 @@
 $(function(){
 	$(".edit").click(function(){
 		if(!window.confirm("编辑评论内容")){return false;}
-		$.post("/admin/comment/comment.post.php",{id:$("#id").attr('value'),comment:$("#comment").attr('value')},function(data){
+		$.post("/admin/comment/comment.post.php",{id:$("#id").attr('value'),comment:$(".comment").attr('value')},function(data){
 			if(""==data){window.location.reload();}
 		});	
 	});

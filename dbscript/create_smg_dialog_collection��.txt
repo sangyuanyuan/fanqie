@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_dialog_collection`;
+CREATE TABLE  `smg_new`.`smg_dialog_collection` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `use_id` int(10) unsigned default NULL,
+  `ip` varchar(45) default NULL,
+  `create_time` datetime default NULL,
+  `content` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

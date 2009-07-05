@@ -8,7 +8,7 @@
 	<link href="/css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<? require_once('inc/top.inc.php');?>
+<? require_once('inc/top.inc.html');?>
 
 
 </body>
