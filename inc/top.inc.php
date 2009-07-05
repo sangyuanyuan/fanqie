@@ -1,4 +1,8 @@
-﻿<div id=nav1>
+﻿<? 
+	require_once('frame.php');
+?>
+
+<div id=nav1>
 	<div id=box>	
    	<img src="/images/top/sms.jpg">
    	<img src="/images/top/tools.jpg">
