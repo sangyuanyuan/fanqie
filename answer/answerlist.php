@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -答题</title>
+	<title>SMG -答题列表</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','answer.css','answer_right.css');
 	?>
@@ -20,28 +20,13 @@
 			</div>
 			<div id=content>
 				<div id=head>
-					<div class=title1><span>最新答题</span></div>
-					<div class=title2><span>答题荟萃</span></div>
+					<div class=title2><span>最新答题</span></div>
+					<div class=title1><span>答题荟萃</span></div>
 					<div class=title2><span>发起答题</span></div>
 					<div id=line></div>
 				</div>
-				<?php for($i=0;$i<5;$i++){?>
-				<div class=context>
-					<div class=l>
-						<a target="_blank" href="#"><img border=0 width=65 height=65 src=""></a>
-						<a target="_blank" href="#">我是流氓我怕谁</a>
-					</div>
-					<div class=c>
-						<a target="_blank" href="#">我是流氓我怕谁？</a><br>
-						<input type="checkbox">老流氓<br>
-						<input type="checkbox">流氓老大<br>
-						<input type="checkbox">鬼<br>
-						·　·　·
-					</div>
-					<div class=r>
-						<span>展开</span>
-					</div>
-				</div>
+				<?php for($i=0;$i<18;$i++){?>
+				<div class=listcontext><a target="_blank" href="#">我是流氓我怕谁？</a></div>
 				<?php } ?>
 			</div>
 		</div>
