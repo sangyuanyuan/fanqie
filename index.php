@@ -21,7 +21,8 @@
 <div id=ibody>
  <div id=ibody_top>
  		<div id=p1>
- 			<div id=video>
+ 			<!-- start top_left_top !-->
+ 			<div id=t_l_t>
  				<div id=menu>
  					<div class=video_item id=video_item1 style="background:url(/images/index/video_btn1.jpg)">每日之星</div>
   				<div class=video_item id=video_item2 style="background:url(/images/index/video_btn2.jpg);color:#9f9f9f;">视频新闻</div>
@@ -30,20 +31,172 @@
  				<div id=flash><img src="/images/1.jpg"></div>
  				<div id=list>
  					<ul>
- 						<li><img src="/images/index/arrow2.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
- 						<li><img src="/images/index/arrow1.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
- 						<li><img src="/images/index/arrow1.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
- 						<li><img src="/images/index/arrow1.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
+ 						<li><img src="/images/icon/arrow2.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
+ 						<li><img src="/images/icon/arrow1.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
+ 						<li><img src="/images/icon/arrow1.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
+ 						<li><img src="/images/icon/arrow1.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
  					</ul>		
  				</div>
  			</div>
+ 			<!-- end !-->
+
+ 			<!-- start top_left_middle !-->
+ 			<div id=t_l_m>
+
+ 			</div>
+ 			<!-- end !-->
+
+
+ 			<!-- start top_left_bottom !-->
+ 			<div id=t_l_b>
+
+ 			</div>
+ 			<!-- end !-->
+
 		</div>
+
 		<div id=p2>
+ 			<!-- start top_right_top !-->
+ 			<div id=t_r_t>
+
+ 			</div>
+ 			<!-- end !-->
 		</div>
-		<div id=p3></div>
-		<div id=p4></div>
+
+		<div id=p3>
+ 			<!-- start top_right_center_top !-->
+ 			<div id=t_r_c_t>
+
+ 			</div>
+ 			<!-- end !-->
+			
+ 			<!-- start top_right_center_middle !-->
+ 			<div id=t_r_c_m>
+
+ 			</div>
+ 			<!-- end !-->
+		
+
+ 			<!-- start top_right_center_bottom_left !-->
+ 			<div id=t_r_c_b_l>
+
+ 			</div>
+ 			<!-- end !-->
+
+
+ 			<!-- start top_right_center_bottom_right !-->
+ 			<div id=t_r_c_b_r>
+
+ 			</div>
+ 			<!-- end !-->
+		
+		</div>
+		
+		<div id=p4>
+ 			<!-- start top_right_right_top !-->
+ 			<div id=t_r_r_t>
+
+ 			</div>
+ 			<!-- end !-->			
+			
+ 			<!-- start top_right_right_middle !-->
+ 			<div id=t_r_r_m>
+
+ 			</div>
+ 			<!-- end !-->						
+
+ 			<!-- start top_right_right_bottom !-->
+ 			<div id=t_r_r_b>
+
+ 			</div>
+ 			<!-- end !-->				
+		</div>
 				
  </div>
+ <div id=ibody_line></div>
+ <div id=ibody_center>
+    <div id=p1>
+  		<!-- start center_left_top !-->
+ 			<div id=c_l_t>
+
+ 			</div>
+ 			<!-- end !-->	   	
+    
+  		<!-- start center_left_bottom !-->
+ 			<div id=c_l_b>
+
+ 			</div>
+ 			<!-- end !-->	     
+    
+    </div> 	
+ 	
+    <div id=p2>
+    	
+  		<!-- start center_center_top !-->
+ 			<div id=c_c_t>
+
+ 			</div>
+ 			<!-- end !-->	      	
+    	
+  		<!-- start center_center_top !-->
+ 			<div id=c_c_b>
+
+ 			</div>
+ 			<!-- end !-->	      	
+    	    
+    </div> 	
+    <div id=p3>
+      <!-- start center_right_top !-->
+ 			<div id=c_r_t>
+
+ 			</div>
+ 			<!-- end !-->		
+    	
+      <!-- start center_right_bottom !-->
+ 			<div id=c_r_b>
+
+ 			</div>
+ 			<!-- end !-->	    
+    </div> 	
+ </div>
+ <div id=ibody_bottom>
+    <div id=p1>
+      <!-- start bottom_top_left !-->
+ 			<div id=b_t_l>
+
+ 			</div>
+ 			<!-- end !-->	      	
+ 
+      <!-- start bottom_top_right !-->
+ 			<div id=b_t_r>
+
+ 			</div>
+ 			<!-- end !-->	 
+    	
+    </div>
+    <div id=p2>
+      <!-- start bottom_bottom_left !-->
+ 			<div id=b_b_l>
+
+ 			</div>
+ 			<!-- end !-->	     	
+    	
+      <!-- start bottom_bottom_center !-->
+ 			<div id=b_b_c>
+
+ 			</div>
+ 			<!-- end !-->	     	
+    
+      <!-- start bottom_bottom_right !-->
+ 			<div id=b_b_r>
+
+ 			</div>
+ 			<!-- end !-->	 
+
+    </div>
+ </div> 
+ 
+ 
 </div>
 <? require_once('inc/bottom.inc.php');?>
 
