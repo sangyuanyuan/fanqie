@@ -36,27 +36,38 @@ function smg_category_class(){
 		return ret;
 	}
 	
-	//only used with jquery
-	this.echo_select = function(name,ob,parent_id){
-		parent_id = parent_id || 0;
-		var str = '<select name="' + name +'_' + parent_id + '" id= "' + name + '" level="' + parent_id +'">';
+	this._echo_select=function(name,ob,parent_id){
+		
+		var str = '<select class="category_class" name="' + name +'_' + parent_id + '" id= "' + name +'_' + parent_id + '" level="' + parent_id +'">';
 		str += '<option value=-1>请选择</option>';
-		var items = this.get_sub_category(parent_id);		
+		var items = this.get_sub_category(parent_id);
+		alert(items.length);	
+		if (items.length <= 0) {
+			return;
+		}
 		for(i=items.length-1;i>=0; i--){
 			str += '<option value=' + items[i].id + '>' + items[i].name + '</option>';
 		}
 		str += '</select>';
 		$(ob).append(str);
-		$(function(){
+		alert(str);
+	}
+	//only used with jquery
+	this.echo_select = function(name,ob,parent_id){
+		parent_id = parent_id || 0;
+		var othis = this;
+		this._echo_select(name,ob,parent_id);
 			$('#' + name + '_' + parent_id).change(function(e){
 				select_id = $(this).attr('value');
+				alert('#'+ name + '_' + parent_id + ' ~ .category_class' + $('#'+ name + '_' + parent_id + ' ~ .category_class').attr('class'));
+				$('#'+ name + '_' + parent_id + ' ~ .category_class').remove();
+				
 				if(select_id == -1){
-					$('#'+ name + '_' + parent_id + ' ~ select').remove();
+					return;
 				}else{
-					echo_select(name,ob,$(this).attr('value'));
+					othis._echo_select(name,ob,$(this).attr('value'));
 				}
 			});
-		});
 	}
 }
 

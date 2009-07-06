@@ -9,6 +9,7 @@ class table_class{
 	private $fields_name = array();
 	private $fields_default = array();
 	private $fields = array();
+	private $changed_fields = array();
 	private $has_many_objects = array();
 	private $has_many_objects_items = array();
 	private $is_edited = true;
@@ -52,6 +53,7 @@ class table_class{
 	
 	public function find($param = 'all'){
 		$this->is_edited = false;
+		$this->changed_fields = array();
 		if (is_string($param)) {
 			$param = strtolower($param);
 		}
@@ -297,7 +299,9 @@ class table_class{
 			debug_info("invalid id!");
 			return false;
 		}
+		if(count($this->changed_fields) <= 0) return true;
 		$sqlstr = "update " .$this->_tablename ." set ";
+		/*
 		$first = true;
 		foreach ($this->fields as $k => $v){
 			if(strtolower($k) == 'id') continue;
@@ -317,6 +321,12 @@ class table_class{
 				}
 			}
 		}
+		*/
+		$tmp = array();
+		foreach ($this->changed_fields as $key) {
+			 $tmp[] = $key ."='" .$this->$key ."'";
+		}
+		$sqlstr .= implode(',',$tmp);
 		$sqlstr .= " where id=" .$this->fields['id'];
 		$db = get_db();
 		$result = $db->execute($sqlstr);
@@ -358,7 +368,11 @@ class table_class{
 	protected function __set($key, $value){
 		if (array_key_exists($key,$this->fields)) {
 			$this->fields[$key] = $value;
+			if($value == $this->fields[$key]) return;
 			$this->is_edited = true;
+			if(!in_array($key, $this->changed_fields)){
+				$this->changed_fields[] = $key;
+			}
 		}else if(array_key_exists($key,$this->belongs_to_objects)){
 			$this->belongs_to_objects[$key]["value"] = $value;
 			$this->fields[$this->belongs_to_objects[$key]["key"]] = $value->id;
