@@ -196,7 +196,7 @@ class table_class{
 					if ($v == "" && strpos($this->fields_type[$k],'int') !== false) {
 						continue;
 					}
-					$this->fields[$k] = $v;
+					$this->$k = $v;
 				}
 			}
 		}
@@ -367,8 +367,8 @@ class table_class{
 
 	protected function __set($key, $value){
 		if (array_key_exists($key,$this->fields)) {
-			$this->fields[$key] = $value;
-			if($value == $this->fields[$key]) return;
+			if($value != '' && $value == $this->fields[$key]) return;
+			$this->fields[$key] = $value;			
 			$this->is_edited = true;
 			if(!in_array($key, $this->changed_fields)){
 				$this->changed_fields[] = $key;

@@ -38,7 +38,7 @@ function smg_category_class(){
 	
 	this._echo_select=function(name,ob,parent_id){
 		
-		var str = '<select class="category_class" name="' + name +'_' + parent_id + '" id= "' + name +'_' + parent_id + '" level="' + parent_id +'">';
+		var str = '<select class="category_class" name="' + name +'_' + parent_id + '" id= "' + name +'_' + parent_id + '">';
 		str += '<option value=-1>请选择</option>';
 		var items = this.get_sub_category(parent_id);
 		alert(items.length);	

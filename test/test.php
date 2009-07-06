@@ -4,6 +4,10 @@
 	use_jquery();
 	#$cate = new smg_category_class();
 	#$cate->echo_jsdata();
+	$category = new table_class('smg_category');
+	$category->id = 30;
+	$param = array('name' => '总裁奖12345','description' => '');
+	$category->update_attributes($param);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
