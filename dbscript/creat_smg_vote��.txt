@@ -1,0 +1,18 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_vote`;
+CREATE TABLE  `smg_new`.`smg_vote` (
+  `name` varchar(255) default NULL,
+  `vote_type` varchar(255) default NULL,
+  `description` varchar(255) default NULL,
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `started_at` datetime default NULL,
+  `ended_at` datetime default NULL,
+  `created_at` datetime default NULL,
+  `limit_type` varchar(255) default NULL,
+  `max_vote_count` int(10) unsigned default '1',
+  `photo_url` varchar(255) default NULL,
+  `is_sub_vote` int(10) unsigned default '0',
+  `category_id` int(10) unsigned default NULL,
+  `is_adopt` int(10) unsigned default '0',
+  `click_count` int(10) unsigned default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=357 DEFAULT CHARSET=utf8;

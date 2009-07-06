@@ -1,9 +1,10 @@
 <?php
 	require_once('../../frame.php');
+	judge_role();
 	$flag = $_REQUEST['flag'];
-	$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : 'admin';
-	if($type=="admin"||$type==""){$menu_title="添加超级管理员菜单主目录"; $menu_table="smg_admin_menu";}
-	else{$menu_title="添加部门管理员菜单主目录"; $menu_table="smg_admin_menu_dept";}
+	$type = $_SESSION['smg_role'];
+	if($type=="admin"){$menu_title="添加超级管理员菜单主目录"; $menu_table="smg_admin_menu";}
+	elseif($type=="dept_admin"){$menu_title="添加部门管理员菜单主目录"; $menu_table="smg_admin_menu_dept";}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -34,7 +35,7 @@
 			for($i=0;$i<count($record);$i++){
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
-					<td><img style="cursor:pointer" name="<?php echo $record[$i]->id;?>" src="/images/admin/plus.gif"><?php echo $record[$i]->name;?></td>
+					<td><img style="cursor:pointer" name="<?php echo $record[$i]->name;?>" src="/images/admin/plus.gif"><?php echo $record[$i]->name;?></td>
 					<td><input type="text" class="priority" name="<?php echo $record[$i]->id;?>" value="<?php if($record[$i]->priority!=100){echo $record[$i]->priority;}?>" style="width:30px;"></td>
 					<td><?php echo $record[$i]->href;?></td>
 					<td><?php echo $record[$i]->target;?></td>
@@ -45,7 +46,7 @@
 				//----------
 				for($j=0;$j<count($record2);$j++){
 		?>
-				<tr class=tr3 style="display:none;" id=<?php echo $record2[$j]->id;?> name="<?php echo $record[$i]->id;?>">
+				<tr class=tr3 style="display:none;" id=<?php echo $record2[$j]->id;?> name="<?php echo $record[$i]->name;?>">
 					<td><li style="color:#0000ff;"><?php echo $record2[$j]->name;?></li></td>
 					<td><input type="text" class="priority" name="<?php echo $record2[$j]->id;?>" value="<?php if($record2[$j]->priority!=100){echo $record2[$j]->priority;}?>" style="width:30px;"></td>
 					<td><?php echo $record2[$j]->href;?></td>

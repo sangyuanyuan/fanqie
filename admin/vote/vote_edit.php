@@ -20,6 +20,10 @@
 	$vote_item = new table_class('smg_vote_item');
 	$vote_item_record = $vote_item->find('all',array('conditions' => 'vote_id='.$id));
 	$count = count($vote_item_record);
+	$category = new table_class("smg_category");
+	$category_menu = $category->find("all",array('conditions' => "category_type='vote'","order" => "priority"));
+	$category_count = count($category_menu);
+	
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -45,7 +49,7 @@
 		</tr>
 		<tr class=tr3>
 			<td width=150>标题：</td>
-			<td width=645 align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$height="80",$value=$vote_record[0]->name);?></td>
+			<td width=645 align="left"><?php show_fckeditor('title','Title',true,"80",$vote_record[0]->name);?></td>
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
@@ -54,6 +58,16 @@
 		<tr class=tr3>
 			<td>添加图片：</td>
 			<td align="left"><?php if(null!=$vote_record[0]->photo_url){?><img src="<?php echo  $vote_record[0]->photo_url;?>" width="50" height="50" border="0"><?php }?><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file"></td>
+		</tr>
+		<tr class=tr3>
+			<td>所属类别：</td>
+			<td align="left"  class="newsselect">
+				<select  name="vote[category_id]">
+					<?php for($i=0;$i<$category_count;$i++){?>
+					<option value="<?php echo $category_menu[$i]->id;?>" <?php if($category_menu[$i]->id==$vote_record[0]->category_id){?>selected="selected"<?php }?>><?php echo $category_menu[$i]->name;?></option>
+					<?php }?>
+				</select>
+			</td>
 		</tr>
 		<tr class=tr3>
 			<td>投票类型：</td>

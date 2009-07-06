@@ -1,5 +1,8 @@
 <?php
 	require_once('../../frame.php');
+	$category = new table_class("smg_category");
+	$category_menu = $category->find("all",array('conditions' => "category_type='vote'","order" => "priority"));
+	$count = count($category_menu);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -12,7 +15,7 @@
 	css_include_tag('admin','thickbox','jquery_ui');
 	use_jquery_ui();
 	js_include_once_tag('thickbox');
-	js_include_tag('admin_pub','vote','ajaxfileupload');
+	js_include_tag('admin_pub','vote');
 	validate_form("vote_form");
 ?>
 </head>
@@ -25,7 +28,7 @@
 		</tr>
 		<tr class=tr3>
 			<td width=150>标题：</td>
-			<td width=645 align="left"><?php show_fckeditor($name='title',$toolbarset='Title',$expand_toolbar=true,$height="80");?></td>
+			<td width=645 align="left"><?php show_fckeditor('title','Title',true,"80");?></td>
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
@@ -34,6 +37,16 @@
 		<tr class=tr3>
 			<td>添加图片：</td>
 			<td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file"></td>
+		</tr>
+		<tr class=tr3>
+			<td>所属类别：</td>
+			<td align="left"  class="newsselect">
+				<select  name="vote[category_id]">
+					<?php for($i=0;$i<$count;$i++){?>
+					<option value="<?php echo $category_menu[$i]->id;?>"><?php echo $category_menu[$i]->name;?></option>
+					<?php }?>
+				</select>
+			</td>
 		</tr>
 		<tr class=tr3>
 			<td>投票类型：</td>

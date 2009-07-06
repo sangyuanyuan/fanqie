@@ -1,5 +1,6 @@
 <?php
 	require_once('../../frame.php');
+	$key = $_REQUEST['key'];
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -11,21 +12,30 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('vote_list');
+		js_include_tag('vote_list','admin_pub');
 	?>
 </head>
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="7">　<a style="margin-right:50px" href="vote_add.php">添加投票</a>搜索&nbsp;<input type="text"></td>
+			<td colspan="8">　<a style="margin-right:50px" href="vote_add.php">添加投票</a>
+			<span style="margin-left:100px; font-size:13px">搜索&nbsp;&nbsp;<input id="search_text" type="text" value="<? echo $key;?>"></span>
+			<input type="button" value="搜索" id="vote_search" style="border:1px solid #0000ff; height:21px">
+			</td>
 		</tr>
 		<tr class="tr2">
-			<td width="200">投票名称</td><td width="80">登录限制</td><td width="80">票数限制</td><td width="80">投票类型</td><td width="150">发布时间</td><td width="150">到期时间</td><td width="175">操作</td>
+			<td>投票名称</td><td width="80">登录限制</td><td width="80">票数限制</td><td width="80">投票类型</td><td width="80">发布时间</td><td width="80">到期时间</td><td width="80">所属类别</td><td width="120">操作</td>
 		</tr>
 		<?php
+			$category = new table_class('smg_category');
+			$category_record = $category->find('all',array('conditions' => 'category_type="vote"'));
+			$category_count = count($category_record);
 			$vote = new table_class("smg_vote");
-			$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0','order' => 'created_at desc'),18);
-			
+			if($key!=''){
+				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and name  like "%'.trim($key).'%"','order' => 'created_at desc'),18);
+			}else{
+				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0','order' => 'created_at desc'),18);
+			}
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){
@@ -63,9 +73,15 @@
 					<td><?php echo $limit_name;?></td>
 					<td><?php echo $record[$i]->max_vote_count;?></td>
 					<td><?php echo $vote_name;?></td>
-					<td><?php echo $record[$i]->created_at;?></td>
-					<td><?php echo $record[$i]->ended_at;?></td>
-					<td><a href="vote_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a><a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer;margin-left:10px;">删除</a></td>
+					<td><?php echo substr($record[$i]->created_at, 0, 10);?></td>
+					<td><?php echo substr($record[$i]->ended_at, 0, 10);?></td>
+					<td><?php for($j=0;$j<$category_count;$j++){if($category_record[$j]->id==$record[$i]->category_id){echo $category_record[$j]->name;}}?></td>
+					<td>
+						<?php if($record[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span><? }?>
+						<?php if($record[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span><? }?>
+						<a href="vote_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a>
+						<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer;">删除</a>
+					</td>
 				</tr>
 		<?php
 			}
@@ -79,5 +95,6 @@
 			</tr>
 		</table>
 	</div>
+	<input type="hidden" id="db_talbe" value="smg_vote">
 </body>
 </html>

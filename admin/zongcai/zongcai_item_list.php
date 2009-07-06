@@ -32,7 +32,7 @@
 		<tr class="tr3" id="<?php echo $record[$i]->id;?>">
 			<td><? echo $record[$i]->name;?></a></td>
 			<td><? echo $record[$i]->uploader;?></td>
-			<td><select name="program_type" class="select_type" id="select<?php echo $record[$i]->id;?>">
+			<td><select name="program_type" class="select_type" title="<?php echo $record[$i]->id;?>">
 					<option value="tv_recommend" <?php if($record[$i]->program_type=="tv_recommend"){?>selected="selected"<?php }?>>电视推荐节目投票</option>
 					<option value="tv_self" <?php if($record[$i]->program_type=="tv_self"){?>selected="selected"<?php }?>>电视自荐节目投票</option>
 					<option value="broadcast_recommend" <?php if($record[$i]->program_type=="broadcast_recommend"){?>selected="selected"<?php }?>>广播推荐节目投票</option>
@@ -59,6 +59,10 @@
 </html>
 
 <script>
-	
+	$(".select_type").change(function(){
+		$.post("zongcai_vote.post.php",{'type':'change_type','id':$(this).attr('title'),'value':$(this).attr('value')},function(data){
+			//alert(data);
+		});
+	});
 	
 </script>

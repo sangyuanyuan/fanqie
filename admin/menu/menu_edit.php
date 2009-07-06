@@ -1,9 +1,10 @@
 <?php
 	require_once('../../frame.php');
+	judge_role();
 	$id=(int)$_REQUEST['id'];
-	$type=$_REQUEST['type'];
+	$type = $_SESSION['smg_role'];
 	if("admin"==$type) {$menu = new table_class('smg_admin_menu'); $post_table='smg_admin_menu';$post_url="/admin/menu/menu_list.php?type=admin&flag=1";}
-	else if("dept"==$type) {$menu = new table_class('smg_admin_menu_dept'); $post_table='smg_admin_menu_dept';;$post_url="/admin/menu/menu_list.php?type=dept";}	
+	else if("dept_admin"==$type) {$menu = new table_class('smg_admin_menu_dept'); $post_table='smg_admin_menu_dept';;$post_url="/admin/menu/menu_list.php?type=dept";}	
 	$record = $menu->find("all",array('conditions' => 'id='.$id));
 	
 	

@@ -1,5 +1,6 @@
 <?php
 	require_once('../../frame.php');
+	judge_role('admin');
 	$type = $_REQUEST['type'];
 	switch($type){
 		case "news":
@@ -14,6 +15,12 @@
 		case "magazine":
 			$category_name = "电子杂志";
 			break;
+		case "vote":
+			$category_name = "投票";
+			break;
+		case "problem":
+			$category_name = "试题";
+			break;	
 		default:
 			$category_name = "其他";
 	}
@@ -44,7 +51,7 @@
 		</tr>
 		<?php
 			$category = new table_class("smg_category");
-			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'" and parent_id>0','order' => 'priority'),18);
+			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'priority'),18);
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){

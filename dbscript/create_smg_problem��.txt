@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_problem`;
+CREATE TABLE  `smg_new`.`smg_problem` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `start_time` datetime default NULL,
+  `end_time` datetime default NULL,
+  `limit_time` int(11) default NULL,
+  `point` int(11) default NULL,
+  `type` varchar(45) default NULL,
+  `create_time` datetime default NULL,
+  `is_adopt` int(10) unsigned NOT NULL default '0',
+  `category_id` int(10) unsigned default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
