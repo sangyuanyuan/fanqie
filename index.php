@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG</title>
+	<title>SMG-番茄网-首页</title>
 	<? 	
 		css_include_tag('index');
 		css_include_tag('top');
@@ -114,16 +114,16 @@
 				
  </div>
  <div id=ibody_line></div>
- <div id=ibody_center>
+ <div id=ibody_middle>
     <div id=p1>
-  		<!-- start center_left_top !-->
- 			<div id=c_l_t>
+  		<!-- start middle_left_top !-->
+ 			<div id=m_l_t>
 
  			</div>
  			<!-- end !-->	   	
     
-  		<!-- start center_left_bottom !-->
- 			<div id=c_l_b>
+  		<!-- start middle_left_bottom !-->
+ 			<div id=m_l_b>
 
  			</div>
  			<!-- end !-->	     
@@ -132,28 +132,28 @@
  	
     <div id=p2>
     	
-  		<!-- start center_center_top !-->
- 			<div id=c_c_t>
+  		<!-- start middle_center_top !-->
+ 			<div id=m_c_t>
 
  			</div>
  			<!-- end !-->	      	
     	
-  		<!-- start center_center_top !-->
- 			<div id=c_c_b>
+  		<!-- start middle_center_top !-->
+ 			<div id=m_c_b>
 
  			</div>
  			<!-- end !-->	      	
     	    
     </div> 	
     <div id=p3>
-      <!-- start center_right_top !-->
- 			<div id=c_r_t>
+      <!-- start middle_right_top !-->
+ 			<div id=m_r_t>
 
  			</div>
  			<!-- end !-->		
     	
-      <!-- start center_right_bottom !-->
- 			<div id=c_r_b>
+      <!-- start middle_right_bottom !-->
+ 			<div id=m_r_b>
 
  			</div>
  			<!-- end !-->	    

@@ -6,7 +6,7 @@ li{margin:0px; list-style-type:none;}
 
 #ibody_top{width:995px; height:838px; float:left; display:inline;}
 #ibody_line{width:995px; height:37px; background:url(/images/index/line.jpg); float:left; display:inline;}
-#ibody_center{width:995px; height:370px; float:left; display:inline;}
+#ibody_middle{width:995px; height:370px; float:left; display:inline;}
 #ibody_bottom{width:995px; height:340px; float:left; display:inline;}
 
 #ibody_top #p1{width:310px; height:830px; margin-top:7px; float:left; display:inline;}
@@ -43,22 +43,22 @@ li{margin:0px; list-style-type:none;}
 
 
 
-#ibody_center #p1{width:310px; margin-top:7px; float:left; display:inline;}
-#ibody_center #p2{width:470px; margin-top:8px; float:left; display:inline;}
-#ibody_center #p3{width:215px; margin-top:4px; float:left; display:inline;}
+#ibody_middle #p1{width:310px; margin-top:7px; float:left; display:inline;}
+#ibody_middle #p2{width:470px; margin-top:8px; float:left; display:inline;}
+#ibody_middle #p3{width:215px; margin-top:4px; float:left; display:inline;}
 
 
-#c_l_t{width:308px; height:177px; background:url(/images/index/bg_c_l_t.jpg) no-repeat; float:left; display:inline;}
+#m_l_t{width:308px; height:177px; background:url(/images/index/bg_m_l_t.jpg) no-repeat; float:left; display:inline;}
 
-#c_l_b{width:299px; height:182px; background:url(/images/index/bg_c_l_b.jpg) no-repeat; float:left; display:inline;}
+#m_l_b{width:299px; height:182px; background:url(/images/index/bg_m_l_b.jpg) no-repeat; float:left; display:inline;}
 
-#c_c_t{width:467px; height:175px; background:url(/images/index/bg_c_c_t.jpg) no-repeat; float:left; display:inline;}
+#m_c_t{width:467px; height:175px; background:url(/images/index/bg_m_c_t.jpg) no-repeat; float:left; display:inline;}
 
-#c_c_b{width:467px; height:179px; background:url(/images/index/bg_c_c_b.jpg) no-repeat; float:left; display:inline;}
+#m_c_b{width:467px; height:179px; background:url(/images/index/bg_m_c_b.jpg) no-repeat; float:left; display:inline;}
 
-#c_r_t{width:206px; height:178px; background:url(/images/index/bg_c_r_t.jpg) no-repeat; float:right; display:inline;}
+#m_r_t{width:206px; height:178px; background:url(/images/index/bg_m_r_t.jpg) no-repeat; float:right; display:inline;}
 
-#c_r_b{width:206px; height:182px; background:url(/images/index/bg_c_r_b.jpg) no-repeat; float:right; display:inline;}
+#m_r_b{width:206px; height:182px; background:url(/images/index/bg_m_r_b.jpg) no-repeat; float:right; display:inline;}
 
 #ibody_bottom #p1{width:995px; margin-top:2px; float:left; display:inline;}
 #ibody_bottom #p2{width:995px; margin-top:2px; float:left; display:inline;}
