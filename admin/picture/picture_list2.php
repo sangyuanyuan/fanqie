@@ -1,6 +1,6 @@
 <?php
 	require_once('../../frame.php');
-	judge_role('admin');
+	judge_role('dept_admin');
 	
 	$type = $_REQUEST['type'];
 	$conditions = null;
@@ -26,7 +26,7 @@
 	}
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
-	$category = new table_class("smg_category");
+	$category = new table_class("smg_category_dept");
 	$rows_category = $category->find("all",array('conditions' => "category_type='picture' and parent_id>0"));
 	//上述查询语句条件是类型是图片父类不是4种大类
 ?>

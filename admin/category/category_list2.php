@@ -1,6 +1,8 @@
 <?php
 	require_once('../../frame.php');
-	judge_role('admin');
+	$user = judge_role('dept_admin');
+	echo $user->dept_id;
+	
 	$type = $_REQUEST['type'];
 	switch($type){
 		case "news":
@@ -44,13 +46,13 @@
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="6">　<a href="category_add.php?id=0&type=<?php echo $type;?>">添加超类</a></td>
+			<td colspan="6">　<a href="category_add.php?id=0&type=<?php echo $type;?>&dept_id=">添加超类</a></td>
 		</tr>
 		<tr class="tr2">
 			<td width="200">类别名称</td><td width="50">优先级</td><td width="150">父类</td><td width="<?php if($type!="news"){echo 1;}?>80">所属类别</td><?php if($type=="news"){?><td width="100">短标题长度</td><?php }?><td width="175">操作</td>
 		</tr>
 		<?php
-			$category = new table_class("smg_category");
+			$category = new table_class("smg_category_dept");
 			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'priority'),18);
 			$count_record = count($record);
 			//--------------------

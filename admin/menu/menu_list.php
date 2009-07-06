@@ -1,9 +1,10 @@
 <?php
 	require_once('../../frame.php');
+	judge_role();
 	$flag = $_REQUEST['flag'];
-	$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : 'admin';
-	if($type=="admin"||$type==""){$menu_title="添加超级管理员菜单主目录"; $menu_table="smg_admin_menu";}
-	else{$menu_title="添加部门管理员菜单主目录"; $menu_table="smg_admin_menu_dept";}
+	$type = $_SESSION['smg_role'];
+	if($type=="admin"){$menu_title="添加超级管理员菜单主目录"; $menu_table="smg_admin_menu";}
+	elseif($type=="dept_admin"){$menu_title="添加部门管理员菜单主目录"; $menu_table="smg_admin_menu_dept";}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
