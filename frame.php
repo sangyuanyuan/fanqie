@@ -33,6 +33,28 @@
 		return $g_db;	
 	}
 	
+	function get_dept_info($key){
+		global $g_dept_infos;
+		if(!isset($g_dept_infos)){
+			$db = get_db();
+			$g_dept_infos = $db->query('select * from smg_dept');
+		}
+		if(is_numeric($key)){
+			foreach ($g_dept_infos as $v) {
+				if($v->id == $key){
+					return $v;
+				}
+			}
+		}else{
+			foreach ($g_dept_infos as $v) {
+				if($v->name == $key){
+					return $v;
+				}
+			}
+		}
+		
+	}
+	
 	function close_db() {
 		$db = &get_db();
 		$db->close();

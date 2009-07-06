@@ -19,5 +19,7 @@ body {
  */
 
  #div_left_box{border:1px solid;float:left;min-height:200px;width:45%;}
- #div_right_box{border:1px solid; float:right;width:45%;min-height:200px;}
+ #div_right_box{float:right;width:100%;min-height:200px;}
+ .selected_item{margin-left:5px;margin-top:5px;margin-right:5px;border:1px dotted}
+ .selected_item a{text-decoration:none;}
 

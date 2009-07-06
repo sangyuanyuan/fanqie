@@ -1,18 +1,9 @@
 
 <?php
 	require "../frame.php";	
-	#require_role();
-	$_category = new smg_category_class();
-	foreach ($_category->items as $v) {
-		echo $v->name;
-	}
-	echo intval('a');
-	echo category_id_by_name('test2');
-	#$ret = $db->query();
-	#$ret[0]->name;
-	validate_form('test_form');
-	copy_dir('../subject_templet/templet1','../subject/templet1',true);
-	
+	use_jquery();
+	$cate = new smg_category_class();
+	$cate->echo_jsdata();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -22,7 +13,7 @@
 		<title>test</title>
 	</head>
 	<body>
-
+<img src="/upload/images/ViZZxhqVQK.jpg" width=20 height=20 border=0>
 		<?php 
 
 ?>
@@ -30,6 +21,7 @@
 			name:<input type="text" name="login_text" id="name" class="required">
 			password:<input type="password" name="password_text">
 			<input type="submit" value="submit">
+			<input type="checkbox" name="checkbox" id="checkbox">
 			<input type="hidden" name="hidden" value="a">
 		</form>
 		<a href="#" id="test">test</a>
@@ -38,8 +30,8 @@
 <script>
 	//var a = new Array(1,2);
 	$('#test').click(function(e){
-		var a = $('input').serialize();
-		alert(a);
+		
+		alert($('#checkbox').attr('checked'));
 	});
 
 </script>

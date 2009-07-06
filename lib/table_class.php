@@ -44,7 +44,12 @@ class table_class{
 			}
 		}
 	}
-
+	
+	public function get_field_info($field_name){
+		if(!array_key_exists($field_name, $this->fields)){return null;}
+		return array('name' => $field_name,'value' => $this->$field_name,'default' => $this->fields_default[$field_name],'type' => $this->fields_type[$field]);		
+	}
+	
 	public function find($param = 'all'){
 		$this->is_edited = false;
 		if (is_string($param)) {
@@ -131,6 +136,7 @@ class table_class{
 		if ($limit > 0) {
 			$sqlstr .= " limit " .$limit;
 		}
+		/*
 		$db = get_db();
 		#$db->echo_sql = true;
 		if($this->echo_sql){
@@ -158,6 +164,8 @@ class table_class{
 
 		}
 		return $result;
+		*/
+		return $this->_find_by_sql($sqlstr,$limit);
 	}
 
 	public function save(){
@@ -222,7 +230,36 @@ class table_class{
 		require_once(dirname(__FILE__).'/has_many_object_class.php');
 		$this->has_many_objects[$object] = new has_many_item($this,$object,$options);
 	}
+	
+	private function _find_by_sql($sqlstr,$limit=0){
+		$db = get_db();
+		if($this->echo_sql){
+			echo $sqlstr;
+		};
+		if (!$db->query($sqlstr)) return  null ;
+		if($limit == 1){
+			if ($db->record_count <= 0) return null;
+			
+			foreach ($this->fields as $k => $v){
+				#$result->fields[$k] = $db->field_by_name($k);
+				$this->fields[$k] = $db->field_by_name($k);
+			}
+			$result = clone $this;
+		}else {
+			$result = array();
+			if($db->record_count <= 0) return $result;
+			do {
+				$tmp = clone $this;
+				foreach ($this->fields as $k => $v){
+					$tmp->fields[$k] = $db->field_by_name($k);
+				}
+				$result[] = $tmp;
+			}while ($db->move_next());
 
+		}
+		return $result;		
+	}
+	
 	private function _save_new(){
 		$sqlstr = "insert into " .$this->_tablename ."(";
 		$first = true;
@@ -362,6 +399,8 @@ class table_class{
 				}
 				return $this->find('all',$arg[1]);
 
+			}else if($fieldname = 'sql'){
+				return $this->_find_by_sql($arg[0]);
 			}
 		}else {
 			debug_info(lang_string('I_FUNCTION','function') .$function_name .lang_string('E_NOT_EISTS','not exists!'));
