@@ -1,0 +1,28 @@
+﻿body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+ul{margin:0px; padding:0px;}
+li{margin:0px; list-style-type:none;}
+
+#ibody{width:995px; height:1180px; background:#f1f1f1; margin:0 auto; margin-top:10px;}
+
+
+#ibody_top{width:995px; float:left; display:inline;}
+#ibody_left{width:322px;  float:left; display:inline;}
+#ibody_center{width:375px; float:left; display:inline;}
+#ibody_right{width:290px; margin-top:3px; float:right; display:inline;}
+
+
+#t_l{width:293px; height:242px; margin-top:20px; margin-left:22px; background:url(/images/show/index_t_l.jpg) no-repeat; float:left; display:inline;}
+
+#t_r{width:650px; height:237px; margin-top:20px; margin-right:22px; background:url(/images/show/index_t_r.jpg) no-repeat; float:right; display:inline;}
+
+#l_t{width:293px; height:242px; margin-left:22px; background:url(/images/show/index_l_t.jpg) no-repeat; float:left; display:inline;}
+
+#l_m{width:293px; height:423px; margin-left:22px; background:url(/images/show/index_l_m.jpg) no-repeat; float:left; display:inline;}
+
+#l_b{width:293px; height:218px; margin-left:22px; background:url(/images/show/index_l_b.jpg) no-repeat; float:left; display:inline;}
+
+#c{width:374px; height:885px; background:url(/images/show/index_c.jpg) no-repeat; float:left; display:inline;}
+
+.r{width:268px; height:295px; background:url(/images/show/index_r.jpg) no-repeat; float:left; display:inline;}
+
+

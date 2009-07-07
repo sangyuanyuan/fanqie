@@ -121,6 +121,7 @@
 	}
 	
 	function judge_role($role_name=''){
+		session_start();
 		if($role_name==''){
 			if($_SESSION['smg_role']=='member'||$_SESSION['smg_role']==''){
 				redirect('/login/login.php');
