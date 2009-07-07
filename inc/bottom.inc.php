@@ -19,4 +19,4 @@
 				</div>
 				<div id=bottom>地址：上海市南京西路 651号/威海路298号 邮编：200041 电话：8621-62565899转各部<br />上海文广新闻传媒集团 版权所有 Copyright 2008 SMG All Rights Reserved</div>
 			</div>
-	</div>
+</div>
