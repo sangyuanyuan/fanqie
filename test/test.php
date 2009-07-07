@@ -27,7 +27,7 @@
 			<input type="submit" value="submit">
 			<input type="checkbox" name="checkbox" id="checkbox">
 			<input type="hidden" name="hidden" value="a">
-			<select name="1" id="a">
+			<select name="1" id="a" class="cate">
 				<option>1</option>
 				<option>2</option>
 			</select>
@@ -41,11 +41,23 @@
 </html>
 <script>
 	//var a = new Array(1,2);
+	var i = 0;
 	$('#test').click(function(e){
-		
-		$('select:last').after('<select class="cate"><option >test</option></select>');
+		i++;
+		$('select:last').after('<select class="cate" id="' + i +'"><option >test</option><option >test2</option></select>');
+		//$('select').change(function(){
+		//	index = $('select').index(this);
+		//	alert('index = ' +index);
+		//	$('select:gt('+ index +')').remove();
+		//});
 	});
-	$('#a').change(function(){
-		$('#a ~ .cate').remove();
+	$('#test_form').submit(function(){
+		return false;
+	});
+	$('.cate').change(function(){
+		id = $(this).attr('id');
+		$('select :gt(0)').each(function(){
+			$(this).remove();
+		});
 	});
 </script>
