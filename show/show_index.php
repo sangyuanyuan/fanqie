@@ -25,9 +25,9 @@
 	  <div id=ibody_b>
 	 	  <div id=ibody_left>
 	 	  	<div id=gg>
-	 	  		<div id=top><img src="/images/pic/gg.jpg">　公告</div>
+	 	  		<div id=top><img src="/images/show/show_index_l_t.jpg">　公告</div>
 	 	  	</div>
-			<a target="_blank" href="#"><img border=0 src="/images/pic/subimg.jpg"></a>
+			<a target="_blank" href="#"><img border=0 src="/images/show/show_l_t.jpg"></a>
 			<div class=l_m>
 				<div class=title><div class=left>热门标签</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
 				<div class=content style="border-bottom:none;"></div>

@@ -4,7 +4,7 @@ li{margin:0px; list-style-type:none;}
 
 #ibody{width:995px; height:1180px; margin:0 auto; margin-top:10px; line-height:20px;}
 
-#ibody_t{width:995px; height:500px; background:url('/images/bg/show_video.jpg') no-repeat; float:left; display:inline;}
+#ibody_t{width:995px; height:500px; background:url('/images/show/show_video_t.jpg') no-repeat; float:left; display:inline;}
 #ibody_t_l{width:250px; margin-top:20px; float:left; display:inline;}
 #ibody_t_c{width:480px; margin-top:20px; margin-left:7px; float:left; display:inline;}
 #ibody_t_r{width:250px; margin-top:20px; float:right; display:inline;}

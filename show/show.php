@@ -18,7 +18,7 @@
 <div id=ibody>	
  	  <div id=ibody_left>
  	  	<div id=l_t>
-	 	  	<a target="_blank" href="#"><img border=0 src="/images/pic/subimg.jpg"></a>
+	 	  	<a target="_blank" href="#"><img border=0 src="/images/show/show_l_t.jpg"></a>
 			<a target="_blank" style="margin-left:5px;" href="#"><img border=0 width=140 height=70 src=""></a><a style="margin-left:5px;" target="_blank" href="#"><img border=0  width=140 height=70 src=""></a>
 			<a target="_blank" style="margin-left:5px;" href="#"><img border=0  width=140 height=70 src=""></a><a style="margin-left:5px;" target="_blank" href="#"><img border=0  width=140 height=70 src=""></a>
  	  	</div>
@@ -41,7 +41,7 @@
 		</div>
 	  </div>
 	  <div id=ibody_right>
-	  	<div id=r_t><a target="_blank" href="#"><img border=0 src="/images/pic/show_wxwxzy_right.jpg"></a></div>
+	  	<div id=r_t><a target="_blank" href="#"><img border=0 src="/images/show/show_r_t.jpg"></a></div>
 		<div id=flower>0</div>
 		<div id=tomato>0</div>
 		<div id=r_b>
