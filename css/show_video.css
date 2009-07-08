@@ -1,0 +1,25 @@
+﻿body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+ul{margin:0px; padding:0px;}
+li{margin:0px; list-style-type:none;}
+
+#ibody{width:995px; height:1280px; margin:0 auto; margin-top:10px;}
+
+
+#ibody_left{width:285px; float:left; display:inline;}
+#ibody_right{width:710px; float:left; display:inline;}
+
+
+#l_t{width:276px; height:255px; margin-top:5px; float:left; display:inline;}
+#l_t #btn1{width:85px; height:18px; margin-top:3px; float:right; display:inline;}
+
+#l_m1{width:280px; height:146px; float:left; display:inline;}
+
+
+
+.l_b{width:278px; height:390px; margin-top:15px; border:1px solid #dfdfdf;  float:left; display:inline;}
+
+#r{width:710px; height:800px; background:url(/images/show/bg_1.jpg) no-repeat; float:left; display:inline;}
+
+
+
+
