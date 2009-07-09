@@ -16,8 +16,8 @@
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>	
- 	  <div id=ibody_left>
- 	  	<div class=l_m>
+ <div id=ibody_left>
+ 	  <div class=l>
 			<div class=title><div class=left>每日之星排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
 			<? for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
@@ -31,7 +31,7 @@
 			<? }?>
 		</div>
  	  	
-		<div class=l_m>
+		<div class=l>
 			<div class=title><div class=left>视频排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
 			<? for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
@@ -44,7 +44,7 @@
 				</div>
 			<? }?>
 		</div>
-		<div class=l_m>
+		<div class=l>
 			<div class=title><div class=left>我型我秀排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
 			<? for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
@@ -58,10 +58,10 @@
 			<? }?>
 		</div>
 		
-	  </div>
-	  <div id=ibody_right>
+ </div>
+ <div id=ibody_right>
 	  	
-	  </div>
+ </div>
 
 </div>
 <? require_once('../inc/bottom.inc.php');?>
