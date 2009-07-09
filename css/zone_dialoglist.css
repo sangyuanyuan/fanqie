@@ -1,0 +1,12 @@
+body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+
+#ibody{width:995px; margin:0 auto; margin-top:10px;}
+
+#ibody_left{width:710px; border-bottom:1px solid #FFDB85; float:left; display:inline;}
+#ibody_right{width:277px; float:right; display:inline;}
+
+#l_t{width:710px; height:42px; background:url('/images/zone/dialoglist_l_t.jpg') no-repeat; float:left; display:inline;}
+.l_b{width:710px; height:190px;  background:url('/images/zone/dialoglist_l_b.jpg') no-repeat; float:left; display:inline;}
+#r_t{width:277px; height:167px; background:url('/images/zone/dialoglist_r_t.jpg') no-repeat; float:right; display:inline;}
+#r_b_title{width:277px; height:29px; margin-top:7px; background:url('/images/zone/dialoglist_r_b.jpg') no-repeat; float:right; display:inline;}
+#r_b{width:277px; height:790px; background:#D7D7D7; float:right; display:inline;}
