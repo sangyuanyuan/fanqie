@@ -27,8 +27,9 @@
 			<div id=b_r_t>
 				<input type="text">
 				<textarea></textarea>
+				<button>提　交</button>
 			</div>
-			<div id=b_r_title></div>
+			<div id=b_r_title1></div>
 			<div id=b_r_m></div>
 			<div id=b_r_b1></div>
 			<div id=b_r_title2></div>

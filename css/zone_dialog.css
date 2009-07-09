@@ -13,7 +13,8 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #b_r_t{width:276px; height:156px; float:right; display:inline;}
 #b_r_t input{width:274px; height:20px; border:1px solid #D0D0D0; float:right; display:inline;}
 #b_r_t textarea{width:274px; height:50px; margin-top:5px; border:1px solid #D0D0D0; float:right; display:inline;}
-#b_r_title1{width:276px; height:29px; margin-top:10px; background:url('/images/zone/dialoglist_r_b.jpg') no-repeat; float:right; display:inline;}
+#b_r_t button{width:60px; height:25px; color:#ffffff; margin-top:10px; line-height:20px; border:0px; background:url('/images/zone/dialog_r_t_button.jpg') no-repeat; float:right; display:inline;}
+#b_r_title1{width:275px; height:29px; border-right:1px solid #D7D7D7; margin-top:10px; background:url('/images/zone/dialoglist_r_b.jpg') no-repeat; float:right; display:inline;}
 #b_r_m{width:276px; height:535px; background:#EBEBEB; float:left; display:inline;}
 #b_r_b1{width:276px; height:167px; margin-top:10px; background:url('/images/zone/dialoglist_r_t.jpg') no-repeat; float:right; display:inline;}
 #b_r_title2{width:276px; height:25px; margin-top:10px; background:url('/images/zone/dialog_r_b_title2.jpg') no-repeat; float:right; display:inline;}
