@@ -16,15 +16,13 @@
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
-	  <div id=ibody_t>
-	  	<div id=ibody_t_l></div>
-		<div id=ibody_t_c><img src="/images/pic/show_video.jpg"></div>
-		<div id=ibody_t_r></div>
+	  <div id=ibody_top>
+	  	<div id=t_l></div>
+			<div id=t_c><img src="/images/pic/show_video.jpg"></div>
+			<div id=t_r></div>
 	  </div>
-	  <div id=#ibody_b>
-	 	  <div id=ibody_left>
+	 	<div id=ibody_left>
 	 	  	<div id=l_t>
-	 	  		<div id=content></div>
 	 	  	</div>
 			<div id=l_b>
 				<div id=content></div>
@@ -32,14 +30,13 @@
 			</div>
 		  </div>
 			
-		  <div id=ibody_right>
+		<div id=ibody_right>
 		  	<?php for($i=0;$i<2;$i++){?>
-			  	<div class=r_t>
+			  	<div class=r>
 			  		<div class=content></div>
 			  	</div>
 			<?php }?>
-		  </div>
-	  </div>
+		</div>
 
 </div>
 <? require_once('../inc/bottom.inc.php');?>

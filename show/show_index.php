@@ -16,18 +16,19 @@
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
-	  <div id=ibody_t_l>
-	  	<?php for($i=0; $i<12;$i++){ ?>
-			<img border=0 width=114 height=75 src="">
-		<?php }?>
-	  </div>
-	  <div id=ibody_t_r><img border=0 src="/images/pic/wxwxtr.jpg"></div>
-	  <div id=ibody_b>
-	 	  <div id=ibody_left>
-	 	  	<div id=gg>
+	 <div id=ibody_top>
+	 	  <div id=t_l>
+	  		<?php for($i=0; $i<12;$i++){ ?>
+				<img border=0 width=114 height=75 src="">
+			  <?php }?>
+	 	  </div>
+	 		<div id=t_r><img border=0 src="/images/pic/wxwxtr.jpg"></div>
+	 </div>	
+	 <div id=ibody_left>
+	 	  <div id=l_t>
 	 	  		<div id=top><img src="/images/show/show_index_l_t.jpg">　公告</div>
-	 	  	</div>
-			<a target="_blank" href="#"><img border=0 src="/images/show/show_l_t.jpg"></a>
+	 	  </div>
+		  	<a target="_blank" href="#"><img border=0 src="/images/show/show_l_t.jpg"></a>
 			<div class=l_m>
 				<div class=title><div class=left>热门标签</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
 				<div class=content style="border-bottom:none;"></div>
@@ -47,8 +48,8 @@
 					</div>
 				<? }?>
 			</div>
-		  </div>
-		  <div id=ibody_right>
+		</div>
+		<div id=ibody_right>
 		  	<div id=r_t>
 		  		<div class=left>边走边播</div>
 				<div class=more><a target="_blank" href="#">更多</a></div>
@@ -60,8 +61,7 @@
 					<a style="color:#FF9900; text-decoration:none;" target="_blank" href="#">[电视剧/大陆喜剧]</a>
 				</div>
 			<?php } ?>
-		  </div>
-	  </div>
+		</div>
 
 </div>
 <? require_once('../inc/bottom.inc.php');?>
