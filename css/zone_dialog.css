@@ -17,5 +17,5 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #b_r_m{width:276px; height:535px; background:#EBEBEB; float:left; display:inline;}
 #b_r_b1{width:276px; height:167px; margin-top:10px; background:url('/images/zone/dialoglist_r_t.jpg') no-repeat; float:right; display:inline;}
 #b_r_title2{width:276px; height:25px; margin-top:10px; background:url('/images/zone/dialog_r_b_title2.jpg') no-repeat; float:right; display:inline;}
-.b_r_b2{width:128px; height:120px; margin:5px; text-align:center; float:left; display:inline;}
+.b_r_b2{width:128px;  margin:5px; text-align:center; float:left; display:inline;}
 .b_r_b2 a{line-height:20px; color:#000000; text-decoration:none;}
