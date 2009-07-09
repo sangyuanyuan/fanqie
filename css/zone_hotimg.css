@@ -1,0 +1,14 @@
+body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+
+#ibody{width:995px; margin:0 auto; margin-top:10px;}
+
+#ibody_left{width:707px; border:1px solid #F7E8C0; float:left; display:inline;}
+#ibody_right{width:274px; float:right; display:inline;}
+
+#l_t{width:707px; height:28px; background:url('/images/zone/hotimg_l.jpg') no-repeat; float:left; display:inline;}
+#l_b{width:707px; height:895px; background:#FFF9E6; float:left; display:inline;}
+.r_title{width:274px; height:29px; background:url('/images/zone/blog_r_t.jpg') no-repeat; float:right; display:inline;}
+#r_t{width:274px; height:200px; margin-bottom:10px; background:#ECECEC; float:right; display:inline;}
+#r_m{width:274px; height:260px; margin-bottom:10px; float:right; display:inline;}
+#r_b{width:274px; height:200px; float:right; display:inline;}
+#r_dialog{width:274px; height:149px; margin-top:10px; background:url('/images/zone/blog_r_dialog.jpg') no-repeat; float:right; display:inline;}
