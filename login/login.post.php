@@ -5,7 +5,6 @@ $password_text = $_POST['password_text'];
 
 $db = get_db();
 $sql = 'select * from smg_user where name="'.$login_text.'" and password="'.$password_text.'"';
-echo($sql);
 $login_info = $db->query($sql);
 $login_info_num = $db->record_count;
 $error = "";
@@ -18,6 +17,7 @@ elseif($login_info_num == 0){
 }
 else
 {
+	$user_id = $db->id;
 	$y2k = mktime(0,0,0,1,1,2020); 
 	if ($login_info[0]->register_type == "real")
 	{
@@ -28,6 +28,7 @@ else
 	SetCookie('smg_username',$login_text,$y2k,'/');
 	SetCookie('smg_user_nickname',$login_info[0]->nick_name,$y2k,'/');
 	setcookie('smg_role', $login_info[0]->role_name,$y2k,'/');
+	setcookie('smg_user_id', $user_id,$y2k,'/');
 	$error = "ok";	
 }
 
