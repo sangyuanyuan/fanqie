@@ -1,10 +1,9 @@
 <?php
 	require_once('../../frame.php');
 	judge_role();
-	$flag = $_REQUEST['flag'];
-	$type = $_SESSION['smg_role'];
+	$type = $_REQUEST['type'];
 	if($type=="admin"){$menu_title="添加超级管理员菜单主目录"; $menu_table="smg_admin_menu";}
-	elseif($type=="dept_admin"){$menu_title="添加部门管理员菜单主目录"; $menu_table="smg_admin_menu_dept";}
+	elseif($type=="dept"){$menu_title="添加部门管理员菜单主目录"; $menu_table="smg_admin_menu_dept";}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -42,7 +41,7 @@
 					<td><a href="menu_add.php?id=<?php echo $record[$i]->id;?>&type=<?php echo $type?>">添加子目录</a>　<a href="menu_edit.php?id=<?php echo $record[$i]->id;?>&type=<?php echo $type?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
 				</tr>
 		<?php
-				$record2 = $menu->find("all",array('conditions' => 'parent_id>0 and parent_id='.$record[$i]->id));
+				$record2 = $menu->find("all",array('conditions' => 'parent_id>0 and parent_id='.$record[$i]->id,'order' => 'priority'));
 				//----------
 				for($j=0;$j<count($record2);$j++){
 		?>

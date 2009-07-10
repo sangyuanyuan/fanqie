@@ -1,29 +1,29 @@
 <?php
 	require_once('../../frame.php');
-	//require_role("admin");
-	$type = $_REQUEST['type'];
-	$conditions = null;
+	judge_role('admin');
+	
+	$sql = 'select t1.*,t2.name as dept_name from smg_video t1,smg_dept t2 where t1.dept_id=t2.id';
 	if($_REQUEST['key1']!=""){
-		$conditions[] = 'title  like "%'.$_REQUEST['key1'].'%"';
+		$sql = $sql.' and title  like "%'.trim($_REQUEST['key1']).'%"';
 	}
 	if($_REQUEST['key2']!=""){
-		$conditions[] = "dept_id=".$_REQUEST['key2'];
+		$sql = $sql." and dept_id=".$_REQUEST['key2'];
 	}
 	if($_REQUEST['key4']!=""){
-		$conditions[] = "is_adopt=".$_REQUEST['key4'];
+		$sql = $sql." and is_adopt=".$_REQUEST['key4'];
 	}
+	$sql = $sql.' and is_recommend=1 order by priority';
+	
+	$db = get_db();
+	$video_rows = $db->paginate($sql,10);
+	close_db();
+	
+	$type = $_REQUEST['type'];
+
 	
 	$category = new table_class("smg_category");
 	$rows_category = $category->find("all",array('conditions' => "category_type='video' and name='总裁奖'"));
 	$conditions[] = "category_id=".$rows_category[0]->id;
-	
-	$video = new table_class("smg_video");
-	if($conditions!=null){
-		$conditions = implode(' and ',$conditions);
-		$video_rows = $video->paginate("all",array('conditions' => $conditions,'order' => 'priority'),10);
-	}else{
-		$video_rows = $video->paginate("all",array('order' => 'priority'),10);
-	}
 	
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
@@ -67,8 +67,8 @@
 		<div class=v_box id="<?php echo $video_rows[$i]->id;?>">
 			<a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank"><img src="<?php echo $video_rows[$i]->photo_url;?>" width="170" height="70" border="0"></a>
 			<div class=content><a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $video_rows[$i]->title;?></a></div>
-			<div class=content><a href="?key2=<?php echo $video_rows[$i]->dept_id;?>" style="color:#0000FF"><?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->dept_id==$video_rows[$i]->dept_id){echo $rows_dept[$j]->name;}}?></a></div>
-			<div class=content><a href="?key3=<?php echo $video_rows[$i]->category_id;?>" style="color:#0000FF"><?php for($k=0;$k<count($rows_category);$k++){if($rows_category[$k]->id==$video_rows[$i]->category_id){echo $rows_category[$k]->name;}}?></a></div>
+			<div class=content><a href="?key2=<?php echo $video_rows[$i]->dept_id;?>" style="color:#0000FF"><?php echo $video_rows[$i]->dept_name;?></a></div>
+			<div class=content><a href="?key3=<?php echo $video_rows[$i]->category_id;?>" style="color:#0000FF">总裁奖</a></div>
 			<div class=content style="height:20px">
 				<?php if($video_rows[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $video_rows[$i]->id;?>">撤消</span><? }?>
 				<?php if($video_rows[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $video_rows[$i]->id;?>">发布</span><? }?>

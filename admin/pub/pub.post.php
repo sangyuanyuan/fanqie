@@ -14,12 +14,19 @@
 			$post -> delete($_POST['del_id']);
 			echo $_POST['del_id'];
 		}
+	}elseif("return"==$_POST['post_type'])
+	{
+		$post -> find($_POST['return_id']);
+		$post->is_recommend = 2;
+		$post->is_adopt = 0;
+		$post -> save();
+		echo $_POST['return_id'];
+		
 	}	
 	elseif("edit"==$_POST['post_type'])
 	{
 		$post -> find($_POST['id']);
 		$post -> update_attributes($_POST['post']);
-		$post -> save();
 		redirect($_POST['url']);
 		
 	}
@@ -28,11 +35,16 @@
 		$id_str=explode("|",$_POST['id_str']); 
 		$priority_str=explode("|",$_POST['priority_str']); 
 		$id_str_num=sizeof($id_str)-1;
+		if($_POST['is_dept_list']=='true'){
+			$priority = 'dept_priority';
+		}else{
+			$priority = 'priority';
+		}
 		for($i=$id_str_num-1;$i>=0;$i--)
 		{
 			if($priority_str[$i]==""){$priority_str[$i]="100";}
 			$db = get_db();
-			$sql="update ".$_POST['db_table']." set priority=".$priority_str[$i]." where id=".$id_str[$i];
+			$sql="update ".$_POST['db_table']." set ".$priority."=".$priority_str[$i]." where id=".$id_str[$i];
 			$db->execute($sql);
 		}		
 	}
@@ -47,7 +59,11 @@
 			$db -> execute($sql);
 			close_db();
 		}else{
-			$post->update_attribute("is_adopt","0");
+			if($_POST['is_dept_list']=='true'){
+				$post->update_attribute("is_dept_adopt","0");
+			}else{
+				$post->update_attribute("is_adopt","0");
+			}
 		}
 	}
 	elseif("publish"==$_POST['type'])
@@ -60,7 +76,11 @@
 			$db -> execute($sql);
 			close_db();
 		}else{
-			$post->update_attribute("is_adopt","1");
+			if($_POST['is_dept_list']=='true'){
+				$post->update_attribute("is_dept_adopt","1");
+			}else{
+				$post->update_attribute("is_adopt","1");
+			}
 		}
 		
 	}

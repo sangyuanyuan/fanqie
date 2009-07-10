@@ -1,6 +1,7 @@
 <?php
 	require_once('../../frame.php');
-	judge_role('admin');
+	$user = judge_role('admin');
+	$dept_id = 7;
 	
 	$type = $_REQUEST['type'];
 	$conditions = null;
@@ -16,6 +17,7 @@
 	if($_REQUEST['key4']!=""){
 		$conditions[] = "is_adopt=".$_REQUEST['key4'];
 	}
+	$conditions[] = 'is_recommend=1';
 	$image = new smg_images_class();
 	//var_dump($conditions);
 	if($conditions!=null){
@@ -27,7 +29,7 @@
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
 	$category = new table_class("smg_category");
-	$rows_category = $category->find("all",array('conditions' => "category_type='picture' and parent_id>0"));
+	$rows_category = $category->find("all",array('conditions' => "category_type='picture' "));
 	//上述查询语句条件是类型是图片父类不是4种大类
 ?>
 
@@ -46,7 +48,7 @@
 <body>
 	<table width="795" border="0">
 		<tr class=tr1>
-			<td colspan="5" width="795">　　　<a href="picture_add.php" style="color:#0000FF">发布图片</a>　　　　　　
+			<td colspan="5" width="795">　　　<a href="picture_add.php?" style="color:#0000FF">发布图片</a>　　　　　　
 			搜索　<input id=newskey1 type="text" value="<? echo $_REQUEST['key1']?>">
 			<select id=newskey2 style="width:100px" class="select">
 				<option value="">发表部门</option>
@@ -73,14 +75,34 @@
 		<?php for($i=0;$i<count($images);$i++){?>
 		<div class=v_box id="<?php echo $images[$i]->id;?>">
 			<a href="<?php echo $images[$i]->url;?>" target="_blank"><img src="<?php echo $images[$i]->src_path('small');?>" width="170" height="70" border="0"></a>
-			<div class=content><a href="<?php echo $images[$i]->url;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $images[$i]->title;?></a></div>
-			<div class=content><a href="?key2=<?php echo $images[$i]->dept_id;?>" style="color:#0000FF"><?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->id==$images[$i]->dept_id){echo $rows_dept[$j]->name;}}?></a></div>
-			<div class=content><a href="?key3=<?php echo $images[$i]->category_id;?>" style="color:#0000FF"><?php for($k=0;$k<count($rows_category);$k++){if($rows_category[$k]->id==$images[$i]->category_id){echo $rows_category[$k]->name;}}?></a></div>
+			<div class=content>
+				<a href="<?php echo $images[$i]->url;?>" target="_blank" style="color:#000000; text-decoration:none">
+					<?php echo $images[$i]->title;?>
+				</a>
+			</div>
+			<div class=content>
+				<a href="?key2=<?php echo $images[$i]->dept_id;?>" style="color:#0000FF">
+					<?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->id==$images[$i]->dept_id){echo $rows_dept[$j]->name;}}?>
+				</a>
+			</div>
+			<div class=content>
+				<a href="?key3=<?php echo $images[$i]->category_id;?>" style="color:#0000FF">
+					<?php for($k=0;$k<count($rows_category);$k++){if($rows_category[$k]->id==$images[$i]->category_id){echo $rows_category[$k]->name;}}?>
+				</a>
+			</div>
 			<div class=content style="height:20px">
-				<?php if($images[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $images[$i]->id;?>">撤消</span><? }?>
-				<?php if($images[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $images[$i]->id;?>">发布</span><? }?>
+				<?php if($images[$i]->is_adopt=="1"){?>
+					<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $images[$i]->id;?>">撤消</span>
+				<?php }?>
+				<?php if($images[$i]->is_adopt=="0"){?>
+					<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $images[$i]->id;?>">发布</span>
+				<?php }?>
 				<a href="picture_edit.php?id=<?php echo $images[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-				<span style="cursor:pointer" class="del" name="<?php echo $images[$i]->id;?>">删除</span>
+				<?php if($images[$i]->dept_id!="7"){?>
+					<span style="cursor:pointer" class="return" name="<?php echo $images[$i]->id;?>">退回</span>
+				<?php }else{?>
+					<span style="cursor:pointer" class="del" name="<?php echo $images[$i]->id;?>">删除</span>
+				<?php }?>
 				<a href="/admin/comment/comment.php?id=<?php echo $images[$i]->id;?>&type=picture" style="color:#000000; text-decoration:none">评论</a>
 				<input type="text" class="priority" name="<?php echo $images[$i]->id;?>" value="<?php if($images[$i]->priority!=100){echo $images[$i]->priority;}?>" style="width:40px;">
 				<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $images[$i]->id;?>" style="width:40px;">	

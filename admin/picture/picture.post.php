@@ -26,7 +26,7 @@
 	if($_POST['picture']["commentable"]==null){$smg_image->update_attribute("commentable","");}
 	$smg_image->update_attributes($_POST['picture']);
 	if($_POST['special_type']==""){
-		redirect('picture_list.php');
+		redirect($_POST['url']);
 	}elseif($_POST['special_type']=="总裁奖"){
 		redirect('/admin/zongcai/zongcai_image.php');
 	}

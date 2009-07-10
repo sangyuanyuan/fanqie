@@ -1,0 +1,10 @@
+body{margin:0; background-color: #E6F1F2;}
+ul{margin:0; padding:0}
+
+#top{width:950px; height:102px; border:0px solid #123456; margin:0 auto; background:url(/newscenter/images/titlebg.jpg) no-repeat; }
+#top #search{width:250px; height:20px; margin-top:40px;float:right; display:inline;}
+
+#toplink{width:950px; height:49px; margin:0 auto; background:url(/newscenter/images/menubg.gif); }
+#toplink #link{width:600px; height:45px; margin:0 auto; padding-top:6px; font-size:13px; line-height:20px; }
+#toplink #link li{list-style-type:none; float:left; width:100px }
+#toplink #link li a{text-decoration:none; color:white;}

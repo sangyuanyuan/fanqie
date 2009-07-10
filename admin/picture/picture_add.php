@@ -1,15 +1,31 @@
 <?php
 	require_once('../../frame.php');
+	$role = judge_role();
 	$type = $_REQUEST['type'];
-	$category = new table_class("smg_category");
-	if($type==""){	
-		$category_menu = $category->find("all",array('conditions' => "category_type='picture'","order" => "priority"));
-		//上述查询语句条件是类型是图片父类不是4种大类并且该类是可发布的
+	$dept_id = $_REQUEST['dept_id'];
+	
+	if($role=='admin'){
+		$category = new table_class("smg_category");
+		$url = 'picture_list.php';
+		if($type==""){	
+			$category_menu = $category->find("all",array('conditions' => "category_type='picture'","order" => "priority"));
+		}else{
+			$category_menu = $category->find("all",array('conditions' => "category_type='picture' and name='".$type."'","order" => "priority"));	
+		}
 	}else{
-		$category_menu = $category->find("all",array('conditions' => "category_type='picture' and name='".$type."'","order" => "priority"));
-		
+		$category = new table_class("smg_category_dept");
+		$url = 'picture_list2.php';
+		if($type==""){	
+			$category_menu = $category->find("all",array('conditions' => "category_type='picture' and dept_id=".$dept_id,"order" => "priority"));
+		}else{
+			$category_menu = $category->find("all",array('conditions' => "category_type='picture' and name='".$type."' and dept_id=".$dept_id,"order" => "priority"));	
+		}
+		$category = new table_class("smg_category");
+		$category_menu2 = $category->find("all",array('conditions' => "category_type='picture'","order" => "priority"));
 	}
 	
+	$dept = new table_class("smg_dept");
+	$rows_dept = $dept->find("all");
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -34,15 +50,53 @@
 			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor('title','Title',true,"80");?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name=picture[priority] class="number">(1-100)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="picture[<?php if($role=='dept_admin'){echo 'dept_';}?>priority]" class="number">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>开启评论</td><td align="left">　<input type="checkbox" name=picture[commentable] id=commentable checked="checked"></td>
 		</tr>
+		
+		<?php if($role=='dept_admin'){?>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;">
+			<td>是否推荐到集团首页</td><td align="left">　<input type="checkbox" name=is_recommend id=is_recommend></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" style="display:none">
+			<td>首页分类</td>
+			<td align="left" class="newsselect">
+				<select id=select name="picture[category_id]">
+					<?php	
+						for($i=0;$i<count($category_menu2);$i++){
+					?>
+						<option value="<?php echo $category_menu2[$i]->id;?>"><?php echo $category_menu2[$i]->name;?></option>
+					<? }?>
+				</select>
+			</td>
+		</tr>
+		<?php }?>
+		
+		<?php if($role=='admin'){?>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category">
+			<td>发表部门</td>
+			<td align="left" class="newsselect">
+				<select id=select name="picture[dept_id]">
+					<option value="7" >总编室</option>
+					<?php	
+						for($i=0;$i<count($rows_dept);$i++){
+							if($rows_dept[$i]->id!='7'){
+					?>
+						<option value="<?php echo $rows_dept[$i]->id;?>" ><?php echo $rows_dept[$i]->name;?></option>
+					<?php } }?>
+				</select>
+			</td>
+		</tr>
+		<?php }else{?>
+		<input type="hidden" name="picture[dept_id]"  value="<?php echo $dept_id;?>">
+		<?php } ?>
+		
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
 			<td align="left" class="newsselect">
-				<select id=select name="picture[category_id]">
+				<select id=select name="picture[<?php if($role=='dept_admin'){echo 'dept_';}?>category_id]">
 					<?php	
 						for($i=0;$i<count($category_menu);$i++){
 					?>
@@ -66,7 +120,14 @@
 		</tr>	
 	</table>
 	<input type="hidden" name="picture[created_at]"  value="<?php echo date("y-m-d")?>">
+	<input type="hidden" name="url"  value="<?php echo $url;?>">
 	<input type="hidden" name="picture[is_adopt]" value="0">
+	<input type="hidden" name="picture[is_dept_adopt]" value="0">
+	<?php if($role=='admin'){?>
+	<input type="hidden" name="picture[is_recommend]" id="recommend" value="1">
+	<?php }else{ ?>
+	<input type="hidden" name="picture[is_recommend]" id="recommend" value="0">
+	<?php } ?>
 	<input type="hidden" name="special_type" value="<?php echo $type;?>">
 	</form>
 </body>
@@ -80,5 +141,15 @@
 			alert("请输入标题！");
 			return false;
 		}
-	}); 	
+	}); 
+	
+	$("#is_recommend").click(function(){
+		if($(this).attr('checked')==true){
+			$("#index_category").show();
+			$("#recommend").attr('value','1');
+		}else{
+			$("#index_category").hide();
+			$("#recommend").attr('value','0');
+		}
+	});	
 </script>

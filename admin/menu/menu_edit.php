@@ -1,13 +1,12 @@
 <?php
 	require_once('../../frame.php');
 	judge_role();
-	$id=(int)$_REQUEST['id'];
-	$type = $_SESSION['smg_role'];
-	if("admin"==$type) {$menu = new table_class('smg_admin_menu'); $post_table='smg_admin_menu';$post_url="/admin/menu/menu_list.php?type=admin&flag=1";}
-	else if("dept_admin"==$type) {$menu = new table_class('smg_admin_menu_dept'); $post_table='smg_admin_menu_dept';;$post_url="/admin/menu/menu_list.php?type=dept";}	
+	$type = $_REQUEST['type'];
+	$id = $_REQUEST['id'];
+	if("admin"==$type) {$menu = new table_class('smg_admin_menu'); $post_table='smg_admin_menu'; $post_url="/admin/menu/menu_list.php?type=admin";}
+	else{$menu = new table_class('smg_admin_menu_dept'); $post_table='smg_admin_menu_dept'; $post_url="/admin/menu/menu_list.php?type=dept";}	
 	$record = $menu->find("all",array('conditions' => 'id='.$id));
-	
-	
+
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">

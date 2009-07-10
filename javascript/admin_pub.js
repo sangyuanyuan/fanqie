@@ -13,13 +13,13 @@ $(function(){
 		});
 		
 		$(".revocation").click(function(){
-			$.post("/admin/pub/pub.post.php",{id:$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),type:"revocation"},function(data){
+			$.post("/admin/pub/pub.post.php",{id:$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),type:"revocation",'is_dept_list':$('#is_dept_list').attr('value')},function(data){
 				window.location.reload();
 			});
 		});
 		
 		$(".publish").click(function(){
-			$.post("/admin/pub/pub.post.php",{id:$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),type:"publish"},function(data){
+			$.post("/admin/pub/pub.post.php",{id:$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),type:"publish",'is_dept_list':$('#is_dept_list').attr('value')},function(data){
 				window.location.reload();
 			});
 		});
@@ -38,11 +38,11 @@ $(function(){
 			var id_str="";
 			var priority_str="";
 			
-    	$(".priority").each(function(){
+    		$(".priority").each(function(){
     			id_str=id_str+$(this).attr("name")+"|";
     			priority_str=priority_str+$(this).attr("value")+"|";
 			});
-			$.post("/admin/pub/pub.post.php",{'id_str':id_str,'priority_str':priority_str,'db_table':$('#db_talbe').attr('value'),'post_type':'edit_priority'},function(data){
+			$.post("/admin/pub/pub.post.php",{'id_str':id_str,'priority_str':priority_str,'db_table':$('#db_talbe').attr('value'),'post_type':'edit_priority','is_dept_list':$('#is_dept_list').attr('value')},function(data){
 				if(""==data){window.location.reload();}
 			});		
 			
@@ -54,7 +54,7 @@ $(function(){
 			$(".priority").attr("value","");
 			var id_str="";
 			var priority_str="";
-    	$(".priority").each(function(){
+    		$(".priority").each(function(){
     			id_str=id_str+$(this).attr("name")+"|";
     			priority_str=priority_str+$(this).attr("value")+"|";
 			});
@@ -64,6 +64,17 @@ $(function(){
 			
 		});
 		
-		
+		$(".return").click(function(){
+			if(!window.confirm("确定要退回吗"))
+			{
+				return false;
+			}
+			else
+			{
+				$.post("/admin/pub/pub.post.php",{'return_id':$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),'post_type':'return'},function(data){
+					$("#"+data).remove();
+				});
+			}
+		});
 		
 })

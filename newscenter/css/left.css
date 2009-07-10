@@ -1,0 +1,16 @@
+#left{width:226px; height:950px; float:left; display:inline; border:0px solid black; }
+#left .normaltitle1{width:214px; height:19px; margin-top:5px; padding-top:8px; padding-left:10px; float:left; display:inline; border:0px solid blue;  background:url(/newscenter/images/title.jpg); font-size:14px; font-weight:bold; color:white; }
+#left .normalbox{width:207px; height:152px; padding-top:20px; padding-left:15px; float:left; display:inline; border:1px solid #80C0E0; font-size:13px; line-height:20px;}
+#left .normalbox li{list-style:none; float:left; width:200px; padding:0;}
+#left .normalbox a{text-decoration:none; color:black;}
+#left .normalbox2{width:207px; height:280px; padding-top:20px; padding-left:15px; float:left; display:inline; border:1px solid #80C0E0; font-size:13px; line-height:20px;}
+#left .normalbox2 li{list-style:none; float:left; width:200px; padding:0;}
+#left .normalbox2 a{text-decoration:none; color:black;}
+
+.more{width:50px; height:12px; margin-left:100px;  font-size:12px; border:0px solid black;}
+.more a{text-decoration:none; color:white;}
+.more2{width:50px; height:12px; margin-left:70px;  font-size:12px; border:0px solid black;}
+.more2 a{text-decoration:none; color:white;}
+.more3{width:50px; height:12px; margin-left:85px;  font-size:12px; border:0px solid black;}
+.more3 a{text-decoration:none; color:white; }
+

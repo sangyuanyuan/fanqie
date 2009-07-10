@@ -3,9 +3,9 @@
 	$key = $_REQUEST['key'];
 	$dialog_collection = new table_class('smg_dialog_collection');
 	if($key!=''){
-		$records = $dialog_collection->paginate('all',array('conditions' => 'title  like "%'.trim($key).'%"'));
+		$records = $dialog_collection->paginate('all',array('conditions' => 'title  like "%'.trim($key).'%"','order' => 'dig'));
 	}else{
-		$records = $dialog_collection->paginate('all');
+		$records = $dialog_collection->paginate('all',array('order' => 'dig'));
 	}
 	$count = count($records);
 ?>
