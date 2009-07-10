@@ -1,0 +1,24 @@
+body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+
+#ibody{width:995px; margin:0 auto; margin-top:10px;}
+
+
+#ibody_top{width:995px; float:left; display:inline;}
+#ibody_middle{width:995px; height:37px; margin-top:10px; background:url(/images/index/line.jpg); float:left; display:inline;}
+#ibody_bottom{width:995px; margin-top:10px; float:left; display:inline;}
+
+#t_l{width:397px; float:left; display:inline;}
+#t_c{width:393px; float:left; display:inline;}
+#t_r{width:180px; float:right; display:inline;}
+#t_l_t{width:397px; height:212px; background:url('/images/zone/index_t_l_t.jpg') no-repeat; float:left; display:inline;}
+.t_l_b{width:397px; height:274px; margin-top:10px; background:url('/images/zone/index_t_l_b.jpg') no-repeat; float:left; display:inline;}
+#t_c_t{width:393px; height:202px; margin-top:10px; margin-left:10px; background:url('/images/zone/index_t_c_t.jpg') no-repeat; float:left; display:inline;}
+#t_c_m{width:393px; height:272px; margin-top:10px; margin-left:10px; background:url('/images/zone/index_t_c_m.jpg') no-repeat; float:left; display:inline;}
+#t_c_b{width:393px; height:274px; margin-top:12px; margin-left:10px; background:url('/images/zone/index_t_c_b.jpg') no-repeat; float:left; display:inline;}
+#t_r_t{width:180px; height:97px; margin-top:10px; border:1px solid #EBEBEB; float:left; display:inline;}
+#t_r_t #title{width:180px; color:#FF0000; font-weight:bold; float:left; display:inline;}
+.t_r_m{width:184px; height:276px; margin-top:9px; background:url('/images/zone/index_t_r_m.jpg') no-repeat; float:left; display:inline;}
+#chat{width:180px; height:97px; margin-top:5px; background:url('/images/zone/index_chat.jpg') no-repeat; float:right; display:inline;}
+#b_l{width:457px; height:275px; background:url('/images/zone/index_b_l.jpg') no-repeat; float:left; display:inline;}
+#b_c{width:323px; height:275px; margin-left:15px; background:url('/images/zone/index_b_c.jpg') no-repeat; float:left; display:inline;}
+.b_r{width:183px; height:132px; background:url('/images/zone/index_b_r.jpg') no-repeat; float:right; display:inline;}
