@@ -1,9 +1,10 @@
 
 <?php
 	require "../frame.php";	
+	js_include_tag('smg_category_class');
 	use_jquery();
-	#$cate = new smg_category_class();
-	#$cate->echo_jsdata();
+	$cate = new smg_category_class('news');
+	$cate->echo_jsdata();
 	$category = new table_class('smg_category');
 	$category->id = 30;
 	$param = array('name' => '总裁奖12345','description' => '');
@@ -27,13 +28,7 @@
 			<input type="submit" value="submit">
 			<input type="checkbox" name="checkbox" id="checkbox">
 			<input type="hidden" name="hidden" value="a">
-			<select name="1" id="a">
-				<option>1</option>
-				<option>2</option>
-			</select>
-			<select name="2" id="2" class="cate">
-				<option>2</option>
-			</select>
+			
 			<div>hide me</div>
 		</form>
 		<a href="#" id="test">test</a>
@@ -41,11 +36,32 @@
 </html>
 <script>
 	//var a = new Array(1,2);
+	var i = 0;
 	$('#test').click(function(e){
-		
-		$('select:last').after('<select class="cate"><option >test</option></select>');
+		//i++;
+		//$('select:last').after('<select class="cate" id="' + i +'"><option >test</option><option >test2</option></select>');
+		//$('select').change(function(){
+		//	index = $('select').index(this);
+		//	alert('index = ' +index);
+		//	$('select:gt('+ index +')').remove();
+		//});
+		category.display_select('test',$('#test_form'),-1,'');
 	});
-	$('#a').change(function(){
-		$('#a ~ .cate').remove();
+	$('#test_form').submit(function(){
+		return false;
 	});
+	$('.cate').change(function(){
+		id = $(this).attr('id');
+		$('select :gt(0)').each(function(){
+			$(this).remove();
+		});
+	});
+	
+	function a(callback){
+		callback;
+	}
+	function b(){
+		alert('ao');
+	}
+	a(b());
 </script>

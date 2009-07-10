@@ -306,6 +306,8 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	$c = array();
 	foreach ($keys as $v) {
 		array_push($c, "title like '%$v%'");
+		array_push($c, "tags like '%$v%'");
+		array_push($c, "keywords like '%$v%'");
 		array_push($c, "description like '%$v%'");
 		if($table_name == 'smg_news'){
 			array_push($c, "short_title like '%$v%'");
@@ -313,7 +315,10 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 		}
 	}
 	$c = implode(' OR ' ,$c);
-	$c = $conditions . ' and (' .$c .')';
+	if($conditions){
+		$c = $conditions . ' and (' .$c .')';
+	}
+	
 	$sql = 'select * from ' . $table_name ." where 1=1 and " .$c;
 	$db = get_db();
 	if($page_count > 0){
