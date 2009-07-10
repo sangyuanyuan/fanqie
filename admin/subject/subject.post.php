@@ -7,14 +7,14 @@
 	if ($subject_id == 0){
 		$optype = 'add';
 		$redirect_url = 'subject_add.php';
+		$subject->created_at = date("Y-m-d H:i:s");
 	}else{
 		$optype = 'edit';
 		$redirect_url = 'subject_edit.php?id=' .$subject_id;
 	}
 		
 	if(!$subject->name){
-		alert('专题名称不能为空!');
-		alert($subject->name);		
+		alert('专题名称不能为空!');	
 		redirect($redirect_url);
 		return;
 	}

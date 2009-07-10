@@ -1,0 +1,28 @@
+body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+ul{margin:0px; padding:0px;}
+li{margin:0px; list-style-type:none;}
+
+#ibody{width:995px; height:1180px; margin:0 auto; margin-top:10px; line-height:20px;}
+
+
+#ibody_left{width:296px; float:left; display:inline;}
+#ibody_right{width:680px; height:1000px; background:url('/images/show/star_r.jpg') no-repeat; float:right; display:inline;}
+
+.l{width:290px; margin-top:10px; border:1px solid #DFDFDF; float:left; display:inline;}
+.l a{text-decoration:none;}
+.l .title{width:270px; height:20px; padding:10px; color:#141414; font-weight:bold; font-size:15px; border-bottom:1px solid #DFDFDF; float:left; display:inline;}
+.l .title .left{width:220px; float:left; display:inline;}
+.l .title .more{width:50px; margin-top:2px; font-size:12px; float:right; display:inline;}
+.l .title .more a{color:#FF6600;}
+.l .content{width:270px; margin-left:10px; padding-bottom:10px; border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
+.l .content .left{width:16px; height:13px; margin-top:10px; text-align:center; line-height:13px; font-weight:bold;  color:#ffffff; background:url('/images/show/show_l.jpg') no-repeat; float:left; display:inline;}
+.l .content .middle{width:44px; height:44px; margin-top:10px; margin-left:5px; border:1px solid #C6C6C8; float:left; display:inline;}
+.l .content .middle img{margin-top:2px; margin-left:2px;}
+.l .content .right{width:190px; margin-top:10px; margin-left:5px; float:left; display:inline;}
+.l .content .right .top{width:190px; float:left; display:inline;}
+.l .content .right .top a{color:#666666; font-weight:bold;}
+.l .content .right .bottom{width:190px;  float:left; display:inline;}
+.l .content .right .bottom a{color:#9D9D9D; font-weight:bold;}
+
+
+
