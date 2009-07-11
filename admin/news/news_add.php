@@ -13,7 +13,7 @@
 	<?php 
 		css_include_tag('admin','thickbox');
 		use_jquery();
-		//validate_form("picture_add");
+		validate_form("news_add");
 		js_include_tag('smg_category_class.js','admin/news_add','thickbox');
 		
 	?>
@@ -54,7 +54,7 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>头条控制</td>
 			<td align="left" id="td_headline_type">　
-				  <input type="radio" name="news[sub_headline]" value="1" checked="checked">展示简介 <input type="radio" name="headline" value="2">展示子头条  <a href="sub_headline.php?width=800&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
+				  <input type="radio" name="news[sub_headline]" value="1" checked="checked">展示简介 <input type="radio" name="news[sub_headline]" value="2">展示子头条  <a href="sub_headline.php?width=800&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=target_url>
@@ -81,7 +81,7 @@
 			<td>关键字</td><td align="left">　<input type="text" size="50" name=news[keywords]>(请用空格分隔)</td>
 		</tr>		
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>优先级</td><td align="left">　<input type="text" size="50" name=news[priority]>(0~100)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="50" name=news[priority] class="number">(0~100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3  class="normal_news">
 			<td>新闻视频</td>
@@ -115,7 +115,7 @@
 			<td>新闻内容</td><td><?php show_fckeditor('news[content]','Admin',true,"300");?></td>
 		</tr>
 		<tr bgcolor="#f9f9f9" height="30px;">
-			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布图片"></td>
+			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布新闻"></td>
 		</tr>	
 	</table>
 		<input type="hidden" name="news[related_news]" value="" id="hidden_related_news">
@@ -123,11 +123,13 @@
 		<input type="hidden" name="news[category_id]" id="category_id">
 		<input type="hidden" name="category_add" id="category_add" value="">
 	</form>
-	<a href="#" id="test">test</a>
 </body>
 </html>
 
 <script>
+	$(function(){
+		category.display_select('news_category',$('#td_category_select'),-1);
+	});
 	$('#test').click(function(e){
 		e.preventDefault();
 		//category.echo_category($('#category_select'),'test',0,20);

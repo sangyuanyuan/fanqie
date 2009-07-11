@@ -1,7 +1,5 @@
 <?php
-	require_once('../../frame.php');
-	$user = judge_role('admin');
-	$dept_id = 7;	
+	require_once('../../frame.php');	
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -27,7 +25,7 @@
 		</tr>
 		<?php
 			$db = get_db();
-			$sql="select t1.*,t2.name as category_name,t3.name as dept_name from smg_news t1,smg_category t2,smg_dept t3 where t1.category_id=t2.id and t1.dept_id=t3.id and t1.is_recommend=1 order by priority,created_at desc";
+			$sql="select t1.*,t2.name as category_name,t3.name as dept_name from smg_news t1,smg_category t2,smg_dept t3 where t1.category_id=t2.id and t1.dept_id=t3.id order by priority,created_at desc";
 			$record=$db->paginate($sql,20);
 			//--------------------
 			for($i=0;$i<count($record);$i++){
@@ -45,11 +43,7 @@
 						<?php }?>
 						<a href="news_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　
 						<a href="/admin/comment/comment.php?id=<?php echo $record[$i]->id;?>&type=news" style="color:#000000; text-decoration:none">评论</a>　
-						<?php if($record[$i]->dept_id!="7"){?>
-							<span style="cursor:pointer;color:#FF0000" class="return" name="<?php echo $record[$i]->id;?>">退回</span>
-						<?php }else{?>
-							<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $record[$i]->id;?>">删除</span>
-						<?php }?>
+						<a class="del" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">删除</a>　
 						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:40px;">
 					</td>
 				</tr>

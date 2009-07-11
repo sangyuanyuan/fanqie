@@ -81,7 +81,6 @@
 				str = $('#chosen_subject_name').attr('value') + '<a href="#" id="delete_subject" style="color:blue">删除</a>';
 				str += '<input type="hidden" name="subject_id" value="' + subject_id +'">' ;
 				str += '<input type="hidden" name="subject_category_id" value="'+subject_category_id +'">';
-				$('#subject_id').attr('value',$('#chosen_subject_id').attr('value'));
 				//alert($('#chosen_subject_id').attr('value'));
 				$('#td_subject').html(str);
 				tb_remove();

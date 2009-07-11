@@ -4,7 +4,7 @@
 var category_count = 0;
 $(function(){
 	
-	$('#news_add').submit(function(){
+	$('#news_edit').submit(function(){
 		category_add = '';
 		$('.tr_news_category_add').each(function(i){
 			if(i==0){
@@ -34,7 +34,7 @@ $(function(){
 		}
 		var oEditor = FCKeditorAPI.GetInstance('news[content]') ;
 		var title = oEditor.GetHTML();
-		if(title==""){
+		if(news_type==1&&title==""){
 			alert("请输入新闻内容！");
 			return false;
 		}
@@ -55,16 +55,6 @@ $(function(){
 				alert('请输入新闻目标地址!');
 				return false;
 			}
-		}
-		if(news_type == 2){
-			if($('#tr_file_name input').attr('value')== ''){
-				alert('请选择上传文件!');
-				return false;
-			}
-		}
-		if($('#video_src').attr('value') != '' && $('#video_pic').attr('value') == ''){
-			alert('请选择视频图片!');
-			return false;
 		}
 		
 
@@ -89,7 +79,7 @@ $(function(){
 			$(this).parent().parent().remove();
 		});
 	});
-	category.display_select('news_category',$('#td_category_select'),-1);
+	category.display_select('news_category',$('#td_category_select'),$("#category_id").attr('value'));
 	toggle_news_type();
 });
 

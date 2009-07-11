@@ -113,7 +113,8 @@
 			}
 		});
 		category.display_select('news_category',$('#span_category_select'),<?php echo $filter_category;?>);
-
+		
+		
 </script>
 <?php 
 	if($_REQUEST['show_div'] != '0'){
