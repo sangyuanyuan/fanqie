@@ -4,25 +4,7 @@
 	$dept_id = $_REQUEST['dept_id'];
 	$type = $_REQUEST['type'];
 	
-	if($role=='admin'){
-		$category = new table_class("smg_category");
-		$url = 'index.php';
-		if($type==""){	
-			$category_menu = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
-		}else{
-			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."'","order" => "priority"));	
-		}
-	}else{
-		$category = new table_class("smg_category_dept");
-		$url = 'news_list.php';
-		if($type==""){	
-			$category_menu = $category->find("all",array('conditions' => "category_type='video' and dept_id=".$dept_id,"order" => "priority"));
-		}else{
-			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."' and dept_id=".$dept_id,"order" => "priority"));	
-		}
-		$category = new table_class("smg_category");
-		$category_menu2 = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
-	}
+	
 	
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
@@ -45,8 +27,27 @@
 </head>
 <?php 
 //initialize the categroy;
-	$category = new smg_category_class('news');
-	$category->echo_jsdata();
+	if($role=='admin'){
+		$url = 'index.php';
+		if($type==""){	
+			$category = new smg_category_class('news');
+			$category->echo_jsdata();
+		}else{
+			$category = new smg_category_class('news',null,$type);
+			$category->echo_jsdata();
+		}
+	}else{
+		$url = 'news_list.php';
+		if($type==""){	
+			$category = new smg_category_class('news',$dept_id);
+			$category->echo_jsdata();
+		}else{
+			$category = new smg_category_class('news',$dept_id,$type);
+			$category->echo_jsdata();
+		}
+		$category = new smg_category_class('news');
+		$category->echo_jsdata('dept_category');
+	}
 	
 ?>
 <body style="background:#E1F0F7">
@@ -68,6 +69,35 @@
 			<a href="#" id="a_add_category" style="color:blue;">添加</a>
 			</td>
 		</tr>
+		
+		<?php if($role=='dept_admin'){?>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;">
+			<td>是否推荐到集团首页</td><td colspan="5" align="left">　<input type="checkbox" name=is_recommend id=is_recommend></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" >
+			<td>首页分类</td>
+			<td colspan="5" align="left" class="newsselect1" >　				
+			<span id="td_category_dept"></span>
+			</td>
+		</tr>
+		<input type="hidden" name="magazine[dept_id]"  value="<?php echo $dept_id;?>">
+		<?php }else{?>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category">
+			<td>发表部门</td>
+			<td colspan="5" align="left" class="newsselect1">
+				<select id=select name="magazine[dept_id]">
+					<option value="7" >总编室</option>
+					<?php	
+						for($i=0;$i<count($rows_dept);$i++){
+							if($rows_dept[$i]->id!='7'){
+					?>
+						<option value="<?php echo $rows_dept[$i]->id;?>" ><?php echo $rows_dept[$i]->name;?></option>
+					<?php } }?>
+				</select>
+			</td>
+		</tr>
+		<?php }?>
+		
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3 >
 			<td>新闻类别</td>
 			<td colspan="5" align="left" id="td_newstype">　
@@ -147,8 +177,11 @@
 		<?php if($role=='admin'){
 		?>
 		<input type="hidden" name="news[is_recommend]" value="1">
-		<input type="hidden" name="news[dept_id]" value="7">
 		<?php
+		}else{
+		?>
+		<input type="hidden" name="news[is_recommend]" value="0">
+		<?
 		} ?>	
 		<input type="hidden" name="category_add" id="category_add" value="">
 	</form>

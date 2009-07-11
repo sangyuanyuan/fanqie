@@ -6,17 +6,42 @@ class smg_category_class
 {
 	public $items;
 	private $table;
-	function __construct($type=null) {
-		$table = new table_class('smg_category');
-		if(empty($type)){
-			$items = $table->find('all');
+	function __construct($type=null,$dept_id=null,$name=null) {
+		
+		if(empty($dept_id)){
+			$table = new table_class('smg_category');
+			
+			if(empty($name)){
+				if(empty($type)){
+					$items = $table->find('all');
+				}else{
+					$items = $table->find('all',array('conditions' => "category_type = '" .$type ."'"));
+				}
+			}else{
+				$items = $table->find('all',array('conditions' => "name = '" .$name ."'"));
+			}
+			
+			foreach ($items as $item) {
+				$this->items[$item->id] = $item;
+			}
 		}else{
-			$items = $table->find('all',array('conditions' => "category_type = '" .$type ."'"));
+			$table = new table_class('smg_category_dept');
+			if(empty($name)){
+				if(empty($type)){
+					$items = $table->find('all',array('conditions' => 'dept_id='.$dept_id));
+				}else{
+					$items = $table->find('all',array('conditions' => "category_type = '" .$type ."' and dept_id=".$dept_id));
+				}
+			}else{
+				$items = $table->find('all',array('conditions' => "name = '" .$name ."' and dept_id=".$dept_id));
+			}
+			
+			
+			foreach ($items as $item) {
+				$this->items[$item->id] = $item;
+			}
 		}
 		
-		foreach ($items as $item) {
-			$this->items[$item->id] = $item;
-		}
 	}
 	
 	public function &find($id){
@@ -44,13 +69,13 @@ class smg_category_class
 		}
 	}
 	
-	public function echo_jsdata(){
+	public function echo_jsdata($name='category'){
 		?>
 		<script>
-			var category = new smg_category_class();
+			var <?php echo $name;?> = new smg_category_class();
 			<?php foreach ($this->items as $v) {
 				echo " var tmpitem = new smg_category_item_class('$v->id','$v->name','$v->parent_id','$v->priority','$v->short_title_length');";
-				echo "category.push(tmpitem);";
+				echo "$name.push(tmpitem);";
 			}?>
 		</script>
 		<?php

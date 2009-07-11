@@ -34,7 +34,7 @@ $(function(){
 		}
 		var oEditor = FCKeditorAPI.GetInstance('news[content]') ;
 		var title = oEditor.GetHTML();
-		if(title==""){
+		if(news_type==1&&title==""){
 			alert("请输入新闻内容！");
 			return false;
 		}
@@ -89,6 +89,7 @@ $(function(){
 		});
 	});
 	category.display_select('news_category',$('#td_category_select'),-1);
+	dept_category.display_select('news_category_dept',$('#td_category_dept'),-1);
 	toggle_news_type();
 });
 
