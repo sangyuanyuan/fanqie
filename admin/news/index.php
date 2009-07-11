@@ -2,6 +2,18 @@
 	require_once('../../frame.php');
 	$user = judge_role('admin');
 	$dept_id = 7;	
+	
+	$category_id = $_REQUEST['category'];
+	$db = get_db();
+	$sql = 'select * from smg_category';
+	$rows_category = $db->query($sql);
+	$sql="select t1.*,t2.name as category_name,t3.name as dept_name from smg_news t1,smg_category t2,smg_dept t3 where t1.category_id=t2.id and t1.dept_id=t3.id and t1.is_recommend=1";
+	if($category_id!=''){
+		$sql = $sql." and t1.category_id=".$category_id;
+	}
+	$sql = $sql." order by priority,created_at desc";
+	$record=$db->paginate($sql,20);
+	
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -20,22 +32,33 @@
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="5">　<a href="news_add.php">添加新闻</a></td>
+			<td colspan="5">
+				　<a href="news_add.php">添加新闻</a>
+				<select id=category style="width:100px" class="select_new">
+					<option value="">所属类别</option>
+					<?php for($i=0;$i<count($rows_category);$i++){?>
+					<option value="<?php echo $rows_category[$i]->id; ?>" <?php if($rows_category[$i]->id==$_REQUEST['category']){?>selected="selected"<? }?>><?php echo $rows_category[$i]->name; ?></option>
+					<? }?>
+				</select>
+			
+			
+			</td>
 		</tr>
 		<tr class="tr2">
 			<td width="300">标题</td><td width="100">新闻类型</td><td width="100">所属类别</td><td width="100">所属部门</td><td width="250">操作</td>
 		</tr>
 		<?php
-			$db = get_db();
-			$sql="select t1.*,t2.name as category_name,t3.name as dept_name from smg_news t1,smg_category t2,smg_dept t3 where t1.category_id=t2.id and t1.dept_id=t3.id and t1.is_recommend=1 order by priority,created_at desc";
-			$record=$db->paginate($sql,20);
 			//--------------------
 			for($i=0;$i<count($record);$i++){
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->title;?></td>
 					<td><?php if($record[$i]->news_type==1){echo '普通新闻';}elseif($record[$i]->news_type==2){echo '文件新闻';}else{echo '链接新闻';}?></td>
-					<td><?php echo $record[$i]->category_name;?></td>
+					<td>
+						<a href="?category=<?php echo $record[$i]->category_id;?>" style="color:#0000FF">
+							<?php echo $record[$i]->category_name;?>
+						</a>
+					</td>
 					<td><?php echo $record[$i]->dept_name;?></td>
 					<td><?php if($record[$i]->is_adopt=="1"){?>
 							<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>　
@@ -66,3 +89,8 @@
 </body>
 </html>
 
+<script>
+	$(".select_new").change(function(){
+			window.location.href="?key1="+$("#newskey1").attr('value')+"&key2="+$("#newskey2").attr('value')+"&category="+$("#category").attr('value')+"&key4="+$("#newskey4").attr('value');
+	});
+</script>

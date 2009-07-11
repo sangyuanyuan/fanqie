@@ -1,6 +1,31 @@
 <?php
 	require_once('../../frame.php');
+	$role = judge_role();
+	$dept_id = $_REQUEST['dept_id'];
 	$type = $_REQUEST['type'];
+	
+	if($role=='admin'){
+		$category = new table_class("smg_category");
+		$url = 'index.php';
+		if($type==""){	
+			$category_menu = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
+		}else{
+			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."'","order" => "priority"));	
+		}
+	}else{
+		$category = new table_class("smg_category_dept");
+		$url = 'news_list.php';
+		if($type==""){	
+			$category_menu = $category->find("all",array('conditions' => "category_type='video' and dept_id=".$dept_id,"order" => "priority"));
+		}else{
+			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."' and dept_id=".$dept_id,"order" => "priority"));	
+		}
+		$category = new table_class("smg_category");
+		$category_menu2 = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
+	}
+	
+	$dept = new table_class("smg_dept");
+	$rows_dept = $dept->find("all");
 	
 ?>
 
@@ -28,42 +53,43 @@
 	<form id="news_add" enctype="multipart/form-data" action="news.post.php" method="post"> 
 	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td colspan="2" width="795">　　添加新闻</td>
+			<td colspan="6" width="795">　　添加新闻</td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50");?></td>
+		<tr align="center" bgcolor="#f9f9f9" height="22px;">
+			<td  width="100">标　题</td><td colspan="5" width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50");?></td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">短标题</td><td width="695" align="left"><?php show_fckeditor('news[short_title]','Title',false,"50");?></td>
+		<tr align="center" bgcolor="#f9f9f9" height="22px;">
+			<td width="100">短标题</td><td colspan="5" width="695" align="left"><?php show_fckeditor('news[short_title]','Title',false,"50");?></td>
 		</tr>		
-		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>分　类</td>
-			<td align="left" class="newsselect1" >　				
+		<tr align="center" bgcolor="#f9f9f9" height="22px;">
+			<td >分　类</td>
+			<td colspan="5" align="left" class="newsselect1" >　				
 			<span id="td_category_select"></span>
 			<a href="#" id="a_add_category" style="color:blue;">添加</a>
 			</td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
+		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3 >
 			<td>新闻类别</td>
-			<td align="left" id="td_newstype">　
+			<td colspan="5" align="left" id="td_newstype">　
 				<input type="radio" name="news[news_type]" value="1" checked="checked">默认
 				<input type="radio" name="news[news_type]" value="2">文件
 				<input type="radio" name="news[news_type]" value="3">URL
 			</td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;">
+		<tr align="center" bgcolor="#f9f9f9" height="22px;">
 			<td>头条控制</td>
-			<td align="left" id="td_headline_type">　
+			<td colspan="5" align="left" id="td_headline_type">　
 				  <input type="radio" name="news[sub_headline]" value="1" checked="checked">展示简介 <input type="radio" name="news[sub_headline]" value="2">展示子头条  <a href="sub_headline.php?width=800&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
 			</td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=target_url>
-			<td>URL</td><td align="left">　<input type="text" size="50" name=news[target_url]></td>
+		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=target_url>
+			<td>URL</td><td colspan="5" align="left">　<input type="text" size="50" name=news[target_url]></td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=tr_file_name >
-			<td>上传文件</td><td align="left">　<input type="file" size="50" name=file_name></td>
+		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=tr_file_name >
+			<td>上传文件</td><td colspan="5" align="left">　<input type="file" size="50" name=file_name></td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
+		
+		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3 >
 			<td>新闻标签</td>
 			<td align="left">　
 				<select name="news[tags]" style="margin-left:10px;">
@@ -76,51 +102,54 @@
 				?>
 				</select>
 			</td>
-		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>关键字</td><td align="left">　<input type="text" size="50" name=news[keywords]>(请用空格分隔)</td>
+			<td>关键字</td><td align="left">　<input type="text" size="20" name=news[keywords]>(请用空格分隔)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="20" name=news[priority] class="number">(0~100)</td>
 		</tr>		
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>优先级</td><td align="left">　<input type="text" size="50" name=news[priority] class="number">(0~100)</td>
-		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3  class="normal_news">
+	
+		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3  class="normal_news">
 			<td>新闻视频</td>
-			<td align="left" id="td_video">　				
+			<td align="left" id="td_video" colspan="5">　				
 				视频文件<input type="file" name="video_src" id="video_src">	
 				视频图片<input type="file" name="video_pic" id="video_pic">
 			</td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 class="normal_news">
+		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3 class="normal_news">
 			<td>新闻投票</td>
-			<td align="left" id="td_vote">　
+			<td align="left" id="td_vote" colspan="5">　
 				<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>
 				<input type="hidden" name="news[vote_id]" id="vote_id">	
 			</td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3  class="normal_news">
+		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3  class="normal_news">
 			<td>所属专题</td>　
-			<td align="left" id="td_subject">　
+			<td align="left" id="td_subject" colspan="5">　
 				<a style="color:blue;" href="assign_subject.php?width=600&height=400" class="thickbox" id="a_assign_subject">关联专题</a>
 				<input type="hidden" name="subject_id" value="">
 				<input type="hidden" name="subject_category_id" value="">
 			</td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3  class="normal_news">
-			<td>其他选项</td><td align="left">　<input type="checkbox" name="news[forbbide_copy]" value="1"> 禁止复制  <input type="checkbox" name="news[is_adopt]" value="1">直接发布 <a style="color:blue;" href="filte_news.php?width=800&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
+		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3  class="normal_news">
+			<td>其他选项</td><td align="left" colspan="5">　<input type="checkbox" name="news[forbbide_copy]" value="1"> 禁止复制  <input type="checkbox" name="news[is_adopt]" value="1">直接发布 <a style="color:blue;" href="filte_news.php?width=800&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1  class="normal_news">
-			<td>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
+		<tr align="center" bgcolor="#f9f9f9" height="100px;" id=newsshow1  class="normal_news">
+			<td>简短描述</td><td colspan="5"><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1 class="normal_news">
-			<td>新闻内容</td><td><?php show_fckeditor('news[content]','Admin',true,"300");?></td>
+			<td>新闻内容</td><td colspan="5"><?php show_fckeditor('news[content]','Admin',true,"300");?></td>
 		</tr>
 		<tr bgcolor="#f9f9f9" height="30px;">
-			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布新闻"></td>
+			<td colspan="6" width="795" align="center"><input id="submit" type="submit" value="发布新闻"></td>
 		</tr>	
 	</table>
 		<input type="hidden" name="news[related_news]" value="" id="hidden_related_news">
 		<input type="hidden" name="news[sub_news_id]" value="" id="hidden_sub_headlines">
 		<input type="hidden" name="news[category_id]" id="category_id">
+		<?php if($role=='admin'){
+		?>
+		<input type="hidden" name="news[is_recommend]" value="1">
+		<input type="hidden" name="news[dept_id]" value="7">
+		<?php
+		} ?>	
 		<input type="hidden" name="category_add" id="category_add" value="">
 	</form>
 </body>
