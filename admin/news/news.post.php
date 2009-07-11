@@ -28,7 +28,7 @@
 	}
 	if($_FILES['video_src']['name'] != ''){
 		$upload = new upload_file_class();
-		$upload->save_dir = '/upload/video';
+		$upload->save_dir = '/upload/video/';
 		$upload_name = $upload->handle('video_src');
 		$news->video_src = '/upload/video/' .$upload_name;
 		$news->video_photo_src = '/upload/video/' .$upload->handle('video_pic');

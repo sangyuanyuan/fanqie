@@ -32,6 +32,13 @@
 			<div>hide me</div>
 		</form>
 		<a href="#" id="test">test</a>
+		<div id="div1">
+			<p>
+				<div id="div2">
+					abc;
+				</div>
+			</p>
+		</div>
 	</body>
 </html>
 <script>
@@ -45,7 +52,8 @@
 		//	alert('index = ' +index);
 		//	$('select:gt('+ index +')').remove();
 		//});
-		category.display_select('test',$('#test_form'),-1,'');
+		//category.display_select('test',$('#test_form'),-1,'');
+		alert($('#div1 #div2').html());
 	});
 	$('#test_form').submit(function(){
 		return false;
@@ -57,11 +65,4 @@
 		});
 	});
 	
-	function a(callback){
-		callback;
-	}
-	function b(){
-		alert('ao');
-	}
-	a(b());
 </script>

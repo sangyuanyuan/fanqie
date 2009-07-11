@@ -49,7 +49,7 @@
 	$redirect_url = 'subject_edit.php?id=' .$subject->id;
 	/*
 	 * 处理分类
-	 */
+
 	$cate = new table_class('smg_subject_category');
 	foreach ($_POST['cate_id'] as $k => $v) {
 		$cate->id = $v;
@@ -66,6 +66,7 @@
 		$cate->priority = $k;
 		$cate->save();
 	}
+	*/
 	redirect($redirect_url);
 	
 ?>

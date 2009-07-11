@@ -9,10 +9,10 @@
 			if($subject_id <=0){
 				die('非法的专题id!');
 			}
-			css_include_tag("subject.css","contextmenu/jquery.contextmenu","thickbox");			
+			css_include_tag("subject/subject.css","subject/subject1.css","contextmenu/jquery.contextmenu","thickbox");			
 			use_jquery_ui();
 
-			js_include_tag('tooltip','jquery.contextmenu','subject_add','thickbox');
+			js_include_tag('jquery.contextmenu','admin/subject_edit','thickbox','admin/subject_module_class');
 			
 			/*
 			 * get data
@@ -46,27 +46,56 @@
 				</p>
 			</div>
 			<div id="layout" class="bder">
-				<div id="lt_top" class="bder subject_pos">top</div>
-				<div id="lt_left" class="bder subject_pos">left</div>
-				<div id="lt_center" class="bder subject_pos">center</div>
-				<div id="lt_right" class="bder subject_pos">right</div>
-				<div style="clear:both"></div>
-				<div id="lt_bottom" class="bder subject_pos">bottom</div>
+				<div id="menu" class="bder">menu</div>
+				<div id="pos1" class="bder subject_pos">left</div>
+				<div id="right_box" class="bder">
+					<div id="pos2" class="bder subject_pos">top</div>
+					<div id="pos3" class="bder subject_pos">left</div>
+					<div id="pos4" class="bder subject_pos">right</div>
+					<div style="clear:both"></div>
+					<div id="pos5" class="bder subject_pos">center</div>
+					<div id="pos6" class="bder subject_pos">left</div>
+					<div id="pos7" class="bder subject_pos">right</div>
+					<div style="clear:both"></div>
+					<div id="pos8" class="bder subject_pos">bottom</div>
+				</div>
 			</div>
+			<input type="hidden" name="id" id="hidden_id" value="<?php echo $subject->id;?>">
 		</form>
 	</body>
 </html>
+<?php
+	$modules = new table_class('smg_subject_modules');
+	$modules = $modules->find('all',array('conditions' => 'subject_id=' . $subject->id,'order' => 'category_type,priority ASC'));
+?>
 <script>
 
 	$(function(){
-		<?php $category = new table_class('smg_subject_category');
-			$items = $category->find('all',array('conditions' => 'subject_id=' .$subject->id, 'order' => 'pos,priority ASC'));
-			foreach ($items as $v) {
-			
-		?>;		
-		add_subject_item($('#<?php echo $v->pos;?>'),<?php echo $v->id;?>,'<?php echo $v->name;?>','<?php echo $v->category_type;?>','<?php echo $v->description;?>',<?php echo $v->record_limit;?>,true,<?php echo $v->height;?>,<?php echo $v->element_width;?>,<?php echo $v->element_height;?>,<?php echo $v->scroll_type;?>);
+		manager = new subject_modules_manager_class();
 		<?php
+			$icount = count($modules);
+			if($icount > 0){
+				
+
+			foreach($modules as $item){
+			?>
+				module = new subject_module_class();
+				module.subject_id = '<?php echo $subject->id;?>'
+				module.id = '<?php echo $item->id;?>';
+				module.category_id = '<?php echo $item->category_id;?>';
+				module.category_type = '<?php echo $item->category_type;?>';
+				module.height = '<?php echo $item->height;?>';
+				module.element_height = '<?php echo $item->element_height;?>';
+				module.element_width = '<?php echo $item->element_width;?>';
+				module.scroll_type = '<?php echo $item->scroll_type;?>';
+				module.record_limit = '<?php echo $item->record_limit;?>';
+				module.name = '<?php echo $item->name;?>';
+				module.pos_name = '<?php echo $item->pos_name;?>';
+				manager.items.push(module);
+				module.display_info(true);
+			<?
+				}
 			}
-		?>;
+		?>
 	});
 </script>

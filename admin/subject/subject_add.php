@@ -5,17 +5,17 @@
 		<title>添加专题</title>
 		<?php
 			require_once('../../frame.php');
-			css_include_tag("subject.css","contextmenu/jquery.contextmenu","thickbox");			
-			use_jquery_ui();
-
-			js_include_tag('tooltip','jquery.contextmenu','subject_add','thickbox');
+			#css_include_tag("subject.css","contextmenu/jquery.contextmenu","thickbox");			
+			use_jquery();
+			validate_form('form_add_subject');
+			#js_include_tag('tooltip','jquery.contextmenu','admin/subject_add','thickbox');
 		?>
 	</head>
 	<body>
-		<form method="post" name="add_subject" action="subject.post.php">
+		<form method="post" name="add_subject" id="form_add_subject" action="subject.post.php">
 			<div id="top_info">
 				<p>
-					<label for="subject_name">专题名称:</label><input type="text" name="subject[name]" id="subject_name">					
+					<label for="subject_name">专题名称:</label><input type="text" name="subject[name]" id="subject_name" class="requiered">					
 				</p>
 				<p>
 					<label for="subject_identity">专题标识:</label><input type="text" name="subject[identity]" id="subject_identity">					
@@ -29,18 +29,12 @@
 					</select>					
 				</p>
 				<p>
-					<input type="hidden" name="operation_type" value="add">
+					<label for="description">描述</label>
+					<textarea name="subject[description]"></textarea>
+				<p>
 					<input type="submit" value="提交">					
 				</p>
-			</div>
-			<div id="layout" class="bder">
-				<div id="lt_top" class="bder subject_pos">top</div>
-				<div id="lt_left" class="bder subject_pos">left</div>
-				<div id="lt_center" class="bder subject_pos">center</div>
-				<div id="lt_right" class="bder subject_pos">right</div>
-				<div style="clear:both"></div>
-				<div id="lt_bottom" class="bder subject_pos">bottom</div>
-			</div>
+			</div>			
 		</form>
 	</body>
 </html>
