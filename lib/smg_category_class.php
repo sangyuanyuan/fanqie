@@ -69,13 +69,13 @@ class smg_category_class
 		}
 	}
 	
-	public function echo_jsdata($name='category'){
+	public function echo_jsdata($var_name='category'){
 		?>
 		<script>
-			var <?php echo $name;?> = new smg_category_class();
+			var <?php echo $var_name;?> = new smg_category_class();
 			<?php foreach ($this->items as $v) {
 				echo " var tmpitem = new smg_category_item_class('$v->id','$v->name','$v->parent_id','$v->priority','$v->short_title_length');";
-				echo "$name.push(tmpitem);";
+				echo "$var_name.push(tmpitem);";
 			}?>
 		</script>
 		<?php

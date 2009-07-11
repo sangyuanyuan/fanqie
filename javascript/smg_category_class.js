@@ -61,7 +61,8 @@ function smg_category_class(){
 		}
 	}
 	
-	this.display_select=function(name,ob,id,object){
+	this.display_select=function(name,ob,id,object,callback){
+		var othis = this;
 		if(object){
 			t_parent_id = $(object).attr('parent_id');			
 		}
@@ -70,14 +71,31 @@ function smg_category_class(){
 
 		if(id==-1){						
 			if(object){				
-				this.display_select(name,ob,t_parent_id);
+				this.display_select(name,ob,t_parent_id,'',callback);
 			}else{
 				this.echo_category(ob,name,0,-1);
 				$(ob).find('select:first').change(function(){
-					category.display_select(name,$(ob),$(this).attr('value'),'');					
+					category.display_select(name,$(ob),$(this).attr('value'),'',callback);	
+					if(callback){
+						tid = $(this).val();
+						if(tid != -1){
+							var item = othis.get_item(tid);
+							max_len = item.short_title_length;
+						}							
+						callback(tid,max_len);
+					}
+									
 				});		
 				$(ob).find('select').not($(ob).find('select:first')).change(function(){
-					category.display_select(name,$(ob),$(this).attr('value'),this);
+					category.display_select(name,$(ob),$(this).attr('value'),this,callback);
+					if(callback){
+						tid = $(this).val();
+						if(tid != -1){
+							var item = othis.get_item(tid);
+							max_len = item.short_title_length;
+						}							
+						callback(tid,max_len);
+					}
 				});	
 			}
 			return;
@@ -106,10 +124,26 @@ function smg_category_class(){
 		
 		this.echo_category(ob,name,item1,-1);
 		$(ob).find('select:first').change(function(){
-			category.display_select(name,$(ob),$(this).attr('value'),'');
+			category.display_select(name,$(ob),$(this).attr('value'),'',callback);
+			if(callback){
+						tid = $(this).val();
+						if(tid != -1){
+							var item = othis.get_item(tid);
+							max_len = item.short_title_length;
+						}							
+						callback(tid,max_len);
+					}
 		});		
 		$(ob).find('select').not($(ob).find('select:first')).change(function(){
-			category.display_select(name,$(ob),$(this).attr('value'),this);
+			category.display_select(name,$(ob),$(this).attr('value'),this,callback);
+			if(callback){
+						tid = $(this).val();
+						if(tid != -1){
+							var item = othis.get_item(tid);
+							max_len = item.short_title_length;
+						}							
+						callback(tid,max_len);
+					}
 		});	
 	}
 	
