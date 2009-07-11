@@ -30,15 +30,15 @@
 	if($_FILES['video_src']['name'] != ''){
 		$upload = new upload_file_class();
 		$upload->save_dir = '/upload/video/';
-		$upload_name = $upload->handle('video_src');
+		$upload_name = $upload->handle('video_src','filter_video');
 		$news->video_src = '/upload/video/' .$upload_name;
-		$news->video_photo_src = '/upload/video/' .$upload->handle('video_pic');
+		$news->video_photo_src = '/upload/video/' .$upload->handle('video_pic','filter_pic');
 		$news->video_flag = 1;		
 	}
 	
 	if($_FILES['file_name']['name'] != ''){
 		$upload = new upload_file_class();
-		$upload->save_dir = '/upload/file';
+		$upload->save_dir = '/upload/file/';
 		$upload_name = $upload->handle('file_name');
 		$news->file_name = '/upload/file/' .$upload_name;	
 	}
@@ -56,8 +56,8 @@
 	if($news_id == 0){
 		//insert news
 		$news->created_at = date("Y-m-d H:i:s");
+		$news->last_edited_at = date("Y-m-d H:i:s");
 		$news->publisher_id = $_COOKIE['smg_user_id'];
-		$news->dept_id = $_COOKIE['smg_user_dept'];
 		$news->click_count = 0;					
 		$news->is_deleted = 0;
 		$news->can_commentable = 1;
@@ -115,7 +115,7 @@
 		
 	}
 	
-	redirect('index.php');
+	redirect('index.php?category='.$news->category_id);
 	#var_dump($news);
 	
 ?>
