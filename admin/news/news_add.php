@@ -31,10 +31,10 @@
 			<td colspan="2" width="795">　　添加新闻</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50");?></td>
+			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50",'500');?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td width="100">短标题</td><td width="695" align="left"><?php show_fckeditor('news[short_title]','Title',false,"50");?></td>
+			<td width="100">短标题</td><td width="695" align="left"><?php show_fckeditor('news[short_title]','Title',false,"50",'500');?><span id="max_len"></span></td>
 		</tr>		
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
@@ -128,7 +128,7 @@
 
 <script>
 	$(function(){
-		category.display_select('news_category',$('#td_category_select'),-1);
+		//category.display_select('news_category',$('#td_category_select'),-1);
 	});
 	$('#test').click(function(e){
 		e.preventDefault();

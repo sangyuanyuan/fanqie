@@ -53,16 +53,13 @@
 		//	$('select:gt('+ index +')').remove();
 		//});
 		//category.display_select('test',$('#test_form'),-1,'');
-		alert($('#div1 #div2').html());
+		//alert($('#div1 #div2').html());
+		alert(str_length($('#name').val()) + ';' + $('#name').val().length);
 	});
 	$('#test_form').submit(function(){
 		return false;
 	});
-	$('.cate').change(function(){
-		id = $(this).attr('id');
-		$('select :gt(0)').each(function(){
-			$(this).remove();
-		});
-	});
-	
+function str_length(str){
+	return   str.replace(/[^\x00-\xff]/g,"**").length;
+}
 </script>
