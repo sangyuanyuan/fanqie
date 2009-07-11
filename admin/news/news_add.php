@@ -151,7 +151,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3  class="normal_news">
-			<td>所属专题</td>　
+			<td>所属专题</td>
 			<td align="left" id="td_subject" colspan="5">　
 				<a style="color:blue;" href="assign_subject.php?width=600&height=400" class="thickbox" id="a_assign_subject">关联专题</a>
 				<input type="hidden" name="subject_id" value="">
