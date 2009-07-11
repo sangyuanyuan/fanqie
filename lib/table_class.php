@@ -73,7 +73,7 @@ class table_class{
 			if (!empty($arg["conditions"])) {
 				$sqlstr .= " and " .$arg["conditions"];
 			}			
-			$limit = (intval($arg["limit"]) > 0) ? $arg["limit"] : $limit;
+			$limit = (intval($arg["limit"]) > 0) ? intval($arg["limit"]) : $limit;
 			if(!empty($arg["order"])) $sqlstr .= " order by " .$arg["order"];
 		}
 
@@ -172,7 +172,7 @@ class table_class{
 
 	public function save(){
 
-		if(empty($this->fields['id'])){
+		if(empty($this->fields['id']) || $this->fields['id'] <= 0){
 			//save net object
 			return $this->_save_new();
 		}else {

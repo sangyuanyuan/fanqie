@@ -47,7 +47,6 @@ $(function(){
 			alert('请选择分类!');
 			return false;
 		}
-		//alert(category_id);
 		$('#category_id').attr('value',category_id);
 		news_type=  $('#td_newstype').find('input:checked').attr('value');
 		if(news_type == 3){
