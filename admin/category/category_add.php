@@ -1,9 +1,18 @@
 <?php
 	require_once('../../frame.php');
+	$role = judge_role();
 	$id = $_REQUEST['id'];
 	$type = $_REQUEST['type'];
-	$post_url = '/admin/category/category_list.php?type='.$type;
 	$parent_id = $id;
+	if($role=='admin'){
+		$post_table = smg_category;
+		$post_url = '/admin/category/category_list.php?type='.$type;
+	}else{
+		$post_table = smg_category_dept;
+		$dept_id = $_REQUEST['dept_id'];
+		$post_url = '/admin/category/category_list2.php?type='.$type;
+	}
+	
 	
 	
 ?>
@@ -46,9 +55,13 @@
 		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
+		<?php if($role=='dept_admin'){
+		?>
+		<input type="hidden" name="post[dept_id]" value="<?php echo $dept_id;?>">
+		<?php } ?>	
 		<input type="hidden" name="post[category_type]" value="<?php echo $type;?>">
 		<input type="hidden" name="post[parent_id]" value="<?php echo $parent_id;?>">
-		<input type="hidden" name="db_table" value="smg_category">
+		<input type="hidden" name="db_table" value="<?php echo $post_table;?>">
 		<input type="hidden" name="url" value="<?php echo $post_url;?>">
 		<input type="hidden" name="post_type" value="edit">
 	</form>

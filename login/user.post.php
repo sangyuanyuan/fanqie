@@ -41,6 +41,7 @@ if($_POST['user_type']=="login")
 			$last_url = $_POST['lasturl'];
 			if(empty($last_url)){
 				$last_url = '/admin/admin.php';
+				//var_dump($_SESSION);
 			}
 			redirect($last_url,'header');
 		}else{

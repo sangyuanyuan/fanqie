@@ -1,0 +1,15 @@
+body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+
+#ibody{width:995px; margin:0 auto;}
+
+#ibody_top{width:995px; float:left; display:inline;}
+#ibody_middle{width:995px; height:37px; margin-top:10px; background:url(/images/index/line.jpg); float:left; display:inline;}
+#ibody_bottom{width:995px; float:left; display:inline;}
+
+#t_l{width:493px; height:782px; margin-top:10px; background:url('/images/server/index_t_l.jpg') no-repeat; float:left; display:inline;}
+#t_r_t{width:498px; height:121px; background:url('/images/server/index_t_r_t.jpg') no-repeat; float:right; display:inline;}
+#t_r_m{width:493px; height:262px;  background:url('/images/server/index_t_r_m.jpg') no-repeat; float:right; display:inline;}
+#t_r_b{width:502px; height:250px; margin-top:9px;  background:url('/images/server/index_t_r_b.jpg') no-repeat; float:right; display:inline;}
+#t_r_answer{width:493px; height:141px; margin-top:9px; background:url('/images/server/index_t_r_answer.jpg') no-repeat; float:right; display:inline;}
+#b_l{width:656px; height:295px; background:url('/images/server/index_b_l.jpg') no-repeat; float:left; display:inline;}
+#b_r{width:331px; height:275px; margin-top:14px; background:url('/images/server/index_b_r.jpg') no-repeat; float:right; display:inline;}

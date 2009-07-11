@@ -1,9 +1,9 @@
 <?php
 	require_once('../../frame.php');
 	judge_role();
+	$type = $_REQUEST['type'];
 	$id=$_REQUEST['id'];
-	$type = $_SESSION['smg_role'];
-	if($type=="admin"||$type==""){$post_table="smg_admin_menu";$post_url="/admin/menu/menu_list.php?type=admin&flag=1";}
+	if($type=="admin"){$post_table="smg_admin_menu";$post_url="/admin/menu/menu_list.php?type=admin&flag=1";}
 	else{$post_table="smg_admin_menu_dept";$post_url="/admin/menu/menu_list.php?type=dept";}
 ?>
 

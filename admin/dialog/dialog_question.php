@@ -59,7 +59,7 @@
 
 <script>
 	$(".edit").click(function(){
-		if(!window.confirm("编辑评论内容")){return false;}
+		if(!window.confirm("编辑内容")){return false;}
 		$.post("dialog.post.php",{'id':$(this).attr('value'),'content':$(".content").attr('value'),'type':'edit_content','db_table':'smg_dialog_question'},function(data){
 			if(""==data){window.location.reload();}
 		});	

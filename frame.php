@@ -180,6 +180,36 @@
 		}
 	}
 	
+	function get_dept_news($news_id) {
+		$db = get_db();
+		$sql='update smg_news set click_count=click_count+1 where id='.$news_id;
+		$db -> execute($sql);
+		$sql ='select t1.*,t2.name as category_name from smg_news t1,smg_category_dept t2 where t1.dept_category_id=t2.id and t1.id='.$news_id;
+		$news = $db->query($sql);
+		close_db();
+		return $news;
+	}
+	
+	function get_dept_list($table,$dept_cate_id) {
+		$db = get_db();
+		$sql ='SELECT t1.*,t2.name as category_name FROM '.$table.' t1,smg_category_dept t2 where t1.is_dept_adopt=1 and t1.dept_category_id=t2.id and t1.dept_category_id='.$dept_cate_id;
+		$list = $db->paginate($sql,25);
+		close_db();
+		return $list;
+	}
+	
+	function get_comments($resource_id,$resource_type,$max_count='') {
+		global $_comment;
+		if(empty($_comment)) $_comment = new table_class('smg_comment');
+		if($max_count==''){
+			$records = $_comment->find('all',array('conditions' => 'resource_id='.$resource_id.' and resource_type="'.$resource_type.'"'));
+		}else{
+			$records = $_comment->find('all',array('conditions' => 'resource_id='.$resource_id.' and resource_type="'.$resource_type.'"','limit' => $max_count));
+		}
+		return $records;
+
+	}
+	
 	function show_video_player($width,$height,$image='',$file,$autostart = "false")
 	{
 		if (strtoupper(substr($file,-3)) == "MP3" || strtoupper(substr($file,-3)) == "WMV" || strtoupper(substr($file,-3)) == "WMA"  || strtoupper(substr($file,-3)) == "AVI" || strtoupper(substr($file,-3)) == "VYF")

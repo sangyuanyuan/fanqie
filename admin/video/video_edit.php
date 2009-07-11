@@ -1,16 +1,39 @@
 <?php
 	require_once('../../frame.php');
+	$role = judge_role();
 	$id = $_REQUEST['id'];
+	
 	$video = new table_class("smg_video");
 	$video_record = $video->find("all",array('conditions' => 'id='.$id));
 	$type = $_REQUEST['type'];
-	$category = new table_class("smg_category");
-	if($type==""){	
-		$category_menu = $category->find("all",array('conditions' => "category_type='video' and parent_id>0","order" => "priority"));
+	
+	if($role=='admin'){
+		$category = new table_class("smg_category");
+		$url = 'video_list.php';
+		$priority = 'priority';
+		$category_id = 'category_id';
+		if($type==""){	
+			$category_menu = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
+		}else{
+			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."'","order" => "priority"));	
+		}
 	}else{
-		$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."'","order" => "priority"));
-		
+		$category = new table_class("smg_category_dept");
+		$url = 'video_list2.php';
+		$priority = 'dept_priority';
+		$category_id = 'dept_category_id';
+		$dept_id = $_REQUEST['dept_id'];
+		if($type==""){	
+			$category_menu = $category->find("all",array('conditions' => "category_type='video' and dept_id=".$dept_id,"order" => "priority"));
+		}else{
+			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."' and dept_id=".$dept_id,"order" => "priority"));	
+		}
+		$category = new table_class("smg_category");
+		$category_menu2 = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
 	}
+	
+	$dept = new table_class("smg_dept");
+	$rows_dept = $dept->find("all");
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -34,19 +57,54 @@
 			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor('title','Title',true,"80",$video_record[0]->title);?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="video[priority]" value="<?php if($video_record[0]->priority!=100){echo $video_record[0]->priority;}?>" class="number">(1-100)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="video[<?php echo $priority?>]" value="<?php if($video_record[0]->$priority!=100){echo $video_record[0]->$priority;}?>" class="number">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>开启评论</td><td align="left">　<input type="checkbox" name="video[commentable]" id="commentable" <?php if($video_record[0]->commentable=="on"){?>checked="checked"<?php }?>></td>
 		</tr>
+		
+		<?php if($role=='dept_admin'){?>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;">
+			<td>是否推荐到集团首页</td><td align="left">　<input type="checkbox"  id=is_recommend <?php if($video_record[0]->is_recommend=='1'){?>checked="checked"<?php }?>></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" <?php if($video_record[0]->is_recommend=='0'){?>style="display:none"<?php }?>>
+			<td>首页分类</td>
+			<td align="left" class="newsselect">
+				<select id=select name="video[category_id]">
+					<?php	
+						for($i=0;$i<count($category_menu2);$i++){
+					?>
+						<option value="<?php echo $category_menu2[$i]->id;?>"><?php echo $category_menu2[$i]->name;?></option>
+					<? }?>
+				</select>
+			</td>
+		</tr>
+		<?php }?>
+		
+		<?php if($role=='admin'){?>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category">
+			<td>发表部门</td>
+			<td align="left" class="newsselect">
+				<select id=select name="video[dept_id]">
+					<option value="7" >总编室</option>
+					<?php	
+						for($i=0;$i<count($rows_dept);$i++){
+					?>
+						<option value="<?php echo $rows_dept[$i]->id;?>" <?php if($rows_dept[$i]->id==$video_record[0]->dept_id){?>selected="selected"<?php } ?>  ><?php echo $rows_dept[$i]->name;?></option>
+					<?php } ?>
+				</select>
+			</td>
+		</tr>
+		<?php } ?>
+		
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
 			<td align="left" class="newsselect">
-			<select id=select name="video[category_id]">
+			<select id=select name="video[<?php echo $category_id;?>]">
 				<?php	
 					for($i=0;$i<count($category_menu);$i++){
 				?>
-					<option value="<?php echo $category_menu[$i]->id;?>" <?php if($video_record[0]->category_id==$category_menu[$i]->id){?>selected="selected"<? }?>><?php echo $category_menu[$i]->name;?></option>
+					<option value="<?php echo $category_menu[$i]->id;?>" <?php if($video_record[0]->$category_id==$category_menu[$i]->id){?>selected="selected"<? }?>><?php echo $category_menu[$i]->name;?></option>
 				<? }?>
 			</select>
 			</td>
@@ -55,7 +113,7 @@
 			<td>关键词</td><td align="left">　<input type="text" size="50" name="video[keywords]" value="<?php echo $video_record[0]->keywords;?>">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>在线视频</td><td align="left">　<input type="text" size="50" name="video[online_url]" value="<?php echo $video_record[0]->videonlineurl;?>">（如果本地上传视频此项请留空！）</td>
+			<td>在线视频</td><td align="left">　<input type="text" size="50" name="video[online_url]" value="<?php echo $video_record[0]->online_url;?>">（如果本地上传视频此项请留空！）</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>选择图片</td><td align="left"> <input type="hidden" name="MAX_FILE_SIZE" value="2097152">　<input name="image" id="image" type="file" >(请上传200x160大小的图片，格式支持jpg、gif、png)</td>
@@ -73,7 +131,16 @@
 	</table>
 	<input type="hidden" name="id" value="<?php echo $id;?>">
 	<input type="hidden" name="type" value="edit">
+	<input type="hidden" name="url"  value="<?php echo $url;?>">
+	<?php if($role=='admin'){
+	?>
+	<input type="hidden" name="video[is_recommend]" id="recommend" value="1">
 	<input type="hidden" name="video[is_adopt]" value="0">
+	<?php }elseif($role=='dept_admin'){
+	?>
+	<input type="hidden" name="video[is_recommend]" id="recommend" value="<?php echo $video_record[0]->is_recommend;?>">
+	<input type="hidden" name="video[is_dept_adopt]" value="0">
+	<?php } ?>
 	<input type="hidden" name="special_type" value="<?php echo $type;?>">
 	</form>
 </body>
@@ -87,5 +154,15 @@
 			alert("请输入标题！");
 			return false;
 		}
-	}); 		
+	}); 	
+	
+	$("#is_recommend").click(function(){
+		if($(this).attr('checked')==true){
+			$("#index_category").show();
+			$("#recommend").attr('value','1');
+		}else{
+			$("#index_category").hide();
+			$("#recommend").attr('value','0');
+		}
+	});			
 </script>

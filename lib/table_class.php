@@ -421,6 +421,28 @@ class table_class{
 		}
 
 	}
+	
+	
+	public function show_content($dept_name='',$category_name='',$limit=''){
+		$db = get_db();		
+		$sql = 'select * from smg_dept where name="'.$dept_name.'"';
+		$record = $db->query($sql);
+		$dept_id = $record[0]->id;
+		$sql = 'select * from smg_category_dept where dept_id='.$dept_id.' and name="'.$category_name.'"';
+		$record = $db->query($sql);
+		$category_id = $record[0]->id;
+		$sql = 'select * from '.$this->_tablename.' where dept_category_id='.$category_id;
+		if($this->_tablename!='smg_link'){
+			$sql = 'select * from '.$this->_tablename.' where is_dept_adopt=1 and dept_category_id='.$category_id.' order by dept_priority';
+		}else{
+			$sql = 'select * from '.$this->_tablename.' where category_id='.$category_id.' order by priority';
+		}
+		if($limit!=''){
+			$sql = $sql.' limit '.$limit;
+		}
+		$record = $db->query($sql);
+		return $record;
+	}
 
 }
 

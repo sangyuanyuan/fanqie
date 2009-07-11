@@ -1,10 +1,11 @@
 <?php 
 	require "../../frame.php";
-	var_dump($_POST);
-	var_dump($_FILES);
 	$news_id = $_POST['id'] ? $_POST['id'] : 0;
 	
 	$news = new table_class('smg_news');
+	if($news_id!=0){
+		$news->find($news_id);
+	}
 	
 	$news->update_attributes($_POST['news'],false);
 	$pos = strpos(strtolower($news->content), '<img ');
@@ -33,7 +34,25 @@
 		$news->video_src = '/upload/video/' .$upload_name;
 		$news->video_photo_src = '/upload/video/' .$upload->handle('video_pic');
 		$news->video_flag = 1;		
-	}	
+	}
+	
+	if($_FILES['file_name']['name'] != ''){
+		$upload = new upload_file_class();
+		$upload->save_dir = '/upload/file';
+		$upload_name = $upload->handle('file_name');
+		$news->file_name = '/upload/file/' .$upload_name;	
+	}
+	$table_change = array('<p>'=>'');
+	$table_change += array('</p>'=>'');
+	$title = strtr($news->title,$table_change);
+	$short_title =  strtr($news->short_title,$table_change);
+	$description =  strtr($news->description,$table_change);
+	$content =  strtr($news->content,$table_change);
+	$news->title = $title;
+	$news->short_title = $short_title;
+	$news->description = $description;
+	$news->content = $content;
+		
 	if($news_id == 0){
 		//insert news
 		$news->created_at = date("Y-m-d H:i:s");
@@ -63,9 +82,40 @@
 		}
 		
 
+	}else{
+		//update news
+		if($_POST['news']['forbbide_copy']==''){
+			$news->forbbide_copy=0;
+		}
+		if($_POST['news']['is_adopt']==''){
+			$news->is_adopt=0;
+		}
+		$news->last_edited_at = date("Y-m-d H:i:s");
+		$news->save();
+		
+		if($_POST['subject_id']){
+			$category_item = new table_class('smg_subject_items');
+			$category_item->find('all',array('conditions' => 'category_type="news" and resource_id='.$news_id));
+			$category_item->category_type = 'news';
+			$category_item->resource_id = $news->id;
+			$category_item->subject_id = $_POST['subject_id'];
+			$category_item->category_id = $_POST['subject_category_id'];
+			$category_item->save();
+		}
+		if($_POST['category_add']){
+			$category_add = explode(',', $_POST['category_add']);
+			$copy_from = $news->id;
+			foreach ($category_add as $v) {
+				$news->category_id = $v;
+				$news->id=0;
+				$news->copy_from = $copy_from;
+				$news->save();
+			}
+		}
+		
 	}
 	
-	
+	redirect('index.php');
 	#var_dump($news);
 	
 ?>

@@ -41,7 +41,8 @@
 			<td><?php echo $records[$i]->question_content;?></td>
 			<td><?php echo $records[$i]->title;?></td>
 			<td><?php echo substr($records[$i]->create_time, 0, 10);$records[$i]->create_time;?></td>
-			<td><a class="edit" value="<?php echo $records[$i]->id;?>" style="color:#000000; text-decoration:none; cursor:pointer">编辑</a>
+			<td><a href="/admin/comment/comment.php?id=<?php echo $records[$i]->id;?>&type=dialog" style="color:#000000; text-decoration:none">评论</a>
+				<a class="edit" value="<?php echo $records[$i]->id;?>" style="color:#000000; text-decoration:none; cursor:pointer">编辑</a>
 				<span style="color:#FF0000; cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
 			</td>
 		</tr>
@@ -60,7 +61,7 @@
 
 <script>
 	$(".edit").click(function(){
-		if(!window.confirm("编辑评论内容")){return false;}
+		if(!window.confirm("编辑内容")){return false;}
 		$.post("dialog.post.php",{'id':$(this).attr('value'),'content':$(".content").attr('value'),'type':'edit_content','db_table':'smg_dialog_answer'},function(data){
 			if(""==data){window.location.reload();}
 		});	

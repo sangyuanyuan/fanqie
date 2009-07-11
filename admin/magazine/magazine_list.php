@@ -1,33 +1,32 @@
 <?php
 	require_once('../../frame.php');
-	//require_role("admin");
-	$type = $_REQUEST['type'];
-	$conditions = null;
+	$user = judge_role('admin');
+	$dept_id = 7;
+	
+	$sql = 'select t1.*,t2.name as dept_name,t3.name as category_name from smg_magazine t1,smg_dept t2,smg_category t3 where t1.dept_id=t2.id and t1.category_id=t3.id';
 	if($_REQUEST['key1']!=""){
-		$conditions[] = 'title  like "%'.$_REQUEST['key1'].'%"';
+		$sql = $sql.' and title  like "%'.trim($_REQUEST['key1']).'%"';
 	}
 	if($_REQUEST['key2']!=""){
-		$conditions[] = "dept_id=".$_REQUEST['key2'];
+		$sql = $sql." and dept_id=".$_REQUEST['key2'];
 	}
 	if($_REQUEST['key3']!=""){
-		$conditions[] = "category_id=".$_REQUEST['key3'];
+		$sql = $sql." and category_id=".$_REQUEST['key3'];
 	}
 	if($_REQUEST['key4']!=""){
-		$conditions[] = "is_adopt=".$_REQUEST['key4'];
+		$sql = $sql." and is_adopt=".$_REQUEST['key4'];
 	}
+	$sql = $sql.' and is_recommend=1 order by priority';
 	$magazine = new table_class("smg_magazine");
-	//var_dump($conditions);
-	if($conditions!=null){
-		$conditions = implode(' and ',$conditions);
-		$magazine_rows = $magazine->paginate("all",array('conditions' => $conditions,'order' => 'priority'),10);
-	}else{
-		$magazine_rows = $magazine->paginate("all",array('order' => 'priority desc'),10);
-	}
+	
+	$db = get_db();
+	$magazine_rows = $db->paginate($sql,10);
+	close_db();
+		
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
 	$category = new table_class("smg_category");
-	$rows_category = $category->find("all",array('conditions' => "category_type='magazine' and parent_id>0"));
-	//上述查询语句条件是类型是电子杂志父类不是4种大类
+	$rows_category = $category->find("all",array('conditions' => "category_type='magazine'"));
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -72,14 +71,28 @@
 		<?php for($i=0;$i<count($magazine_rows);$i++){?>
 		<div class=v_box id="<?php echo $magazine_rows[$i]->id;?>">
 			<a href="/magazine/magazine.php?id=<?php echo $magazine_rows[$i]->id;?>" target="_blank"><img src="<?php echo $magazine_rows[$i]->photo_url;?>" width="170" height="70" border="0"></a>
-			<div class=content><a href="/magazine/magazine.php?id=<?php echo $magazine_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $magazine_rows[$i]->title;?></a></div>
-			<div class=content><a href="?key2=<?php echo $magazine_rows[$i]->dept_id;?>" style="color:#0000FF"><?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->id==$magazine_rows[$i]->dept_id){echo $rows_dept[$j]->name;}}?></a></div>
-			<div class=content><a href="?key3=<?php echo $magazine_rows[$i]->category_id;?>" style="color:#0000FF"><?php for($k=0;$k<count($rows_category);$k++){if($rows_category[$k]->id==$magazine_rows[$i]->category_id){echo $rows_category[$k]->name;}}?></a></div>
+			<div class=content>
+				<a href="/magazine/magazine.php?id=<?php echo $magazine_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $magazine_rows[$i]->title;?></a>
+			</div>
+			<div class=content>
+				<a href="?key2=<?php echo $magazine_rows[$i]->dept_id;?>" style="color:#0000FF"><?php echo $magazine_rows[$i]->dept_name;?></a>
+			</div>
+			<div class=content>
+				<a href="?key3=<?php echo $magazine_rows[$i]->category_id;?>" style="color:#0000FF"><?php echo $magazine_rows[$i]->category_name;?></a>
+			</div>
 			<div class=content style="height:20px">
-				<?php if($magazine_rows[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $magazine_rows[$i]->id;?>">撤消</span><? }?>
-				<?php if($magazine_rows[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $magazine_rows[$i]->id;?>">发布</span><? }?>
+				<?php if($magazine_rows[$i]->is_adopt=="1"){?>
+					<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $magazine_rows[$i]->id;?>">撤消</span>
+				<?php }?>
+				<?php if($magazine_rows[$i]->is_adopt=="0"){?>
+					<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $magazine_rows[$i]->id;?>">发布</span>
+				<?php }?>
 				<a href="magazine_edit.php?id=<?php echo $magazine_rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-				<span style="cursor:pointer" class="del" name="<?php echo $magazine_rows[$i]->id;?>">删除</span>
+				<?php if($magazine_rows[$i]->dept_id!="7"){?>
+					<span style="cursor:pointer" class="return" name="<?php echo $magazine_rows[$i]->id;?>">退回</span>
+				<?php }else{?>
+					<span style="cursor:pointer" class="del" name="<?php echo $magazine_rows[$i]->id;?>">删除</span>
+				<?php }?>
 				<a href="/admin/comment/comment.php?id=<?php echo $magazine_rows[$i]->id;?>&type=magazine" style="color:#000000; text-decoration:none">评论</a>
 				<input type="text" class="priority" name="<?php echo $magazine_rows[$i]->id;?>" value="<?php if($magazine_rows[$i]->priority!=100){echo $magazine_rows[$i]->priority;}?>" style="width:40px;">
 				<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $magazine_rows[$i]->id;?>" style="width:40px;">	

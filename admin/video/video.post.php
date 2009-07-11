@@ -53,7 +53,7 @@
 	$video->update_attributes($_POST['video']);
 	
 	if($_POST['special_type']==""){
-		redirect('video_list.php');
+		redirect($_POST['url']);
 	}elseif($_POST['special_type']=="总裁奖"){
 		redirect('/admin/zongcai/zongcai_video.php');
 	}

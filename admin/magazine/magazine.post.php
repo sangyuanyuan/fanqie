@@ -48,11 +48,11 @@
 	$table_change += array('</p>'=>'');
 	$title = strtr($_POST['title'],$table_change);
 	$magazine->title = $title;
-	if($_POST['magazine']["priority"]==null){$magazine->update_attribute("priority","100");}\
+	if($_POST['magazine']["priority"]==null){$magazine->update_attribute("priority","100");}
 	if($_POST['magazine']["commentable"]==null){$magazine->update_attribute("commentable","");}
 	$magazine->update_attributes($_POST['magazine']);
 	
-	redirect('magazine_list.php');
+	redirect($_POST['url']);
 	
 	
 ?>
