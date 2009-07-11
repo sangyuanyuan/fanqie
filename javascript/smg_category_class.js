@@ -50,8 +50,11 @@ function smg_category_class(){
 	}
 	
 	this.get_item = function(id){
+		
 		var icount = this.items.length;
+		
 		for(i=0;i<icount ; i++){
+			
 			if (this.items[i].id == id){
 				return this.items[i];
 			}
@@ -79,19 +82,22 @@ function smg_category_class(){
 			}
 			return;
 		}else{
-			parent = new Array();
-			parent.push(id);
+			
+			var tparent = new Array();			
+			tparent.push(id);
+			
 			tmp_id = id;
 			while(true){
-				item = this.get_item(tmp_id);
-				parent.push(item.parent_id);
+				
+				var item = this.get_item(tmp_id);
+				tparent.push(item.parent_id);
 				if(item.parent_id == 0) break;
 				tmp_id = item.parent_id;
 			}
-			item1 = parent.pop();
+			item1 = tparent.pop();
 			item2 = item1;
 			while(true){
-				item2 = parent.pop();
+				item2 = tparent.pop();
 				if (item2 == undefined) break;
 				this.echo_category(ob,name,item1,item2);
 				item1 = item2;
