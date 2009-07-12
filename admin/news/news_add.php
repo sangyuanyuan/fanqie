@@ -57,9 +57,9 @@
 			<td colspan="6" width="795">　　添加新闻</td>
 		</tr>
 		<tr class=tr3>
-			<td width="130" height="55">标题/短标题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50",300);?>　/　<?php show_fckeditor('news[short_title]','Title',false,"50",300);?><span id="max_len"></span></td>
+			<td width="130">标题/短标题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50",300);?>　/　<?php show_fckeditor('news[short_title]','Title',false,"50",300);?><span id="max_len"></span></td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="22px;">
+		<tr class=tr3>
 			<td>分　类</td>
 			<td align="left" class="newsselect1" ><span id="td_category_select"></span><a href="#" id="a_add_category" style="color:blue;">添加</a></td>
 		</tr>
@@ -78,7 +78,7 @@
 		<?php }else{?>
 		<tr class=tr3 id="index_category">
 			<td>发表部门</td>
-			<td align="left" class="newsselect1">
+			<td align="left">
 				<select id=select name="magazine[dept_id]">
 
 					<option value="7" >总编室</option>
@@ -159,10 +159,10 @@
 			<td align="left"><input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  <input type="checkbox" name="news[is_adopt]" value="1">直接发布　<a style="color:blue;" href="filte_news.php?width=800&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
 		</tr>
 		<tr class=tr3 id=newsshow1  class="normal_news">
-			<td height=100>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
+			<td>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
 		</tr>
 		<tr class=tr3 id=newsshow1 class="normal_news">
-			<td height=265>新闻内容</td><td><?php show_fckeditor('news[content]','Admin',true,"265");?></td>
+			<td>新闻内容</td><td><?php show_fckeditor('news[content]','Admin',true,"255");?></td>
 		</tr>
 		<tr class=tr3>
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布新闻"></td>
