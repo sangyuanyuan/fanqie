@@ -54,6 +54,7 @@
 		}
 		
 	}
+
 	
 	function close_db() {
 		$db = &get_db();

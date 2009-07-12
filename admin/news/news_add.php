@@ -80,6 +80,7 @@
 			<td>发表部门</td>
 			<td align="left" class="newsselect1">
 				<select id=select name="magazine[dept_id]">
+
 					<option value="7" >总编室</option>
 					<?php	
 						for($i=0;$i<count($rows_dept);$i++){

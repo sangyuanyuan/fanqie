@@ -135,12 +135,11 @@ class table_class{
 			if(!empty($arg["order"])) $sqlstr .= " order by " .$arg["order"];
 		}
 
-		if ($limit > 0) {
-			$sqlstr .= " limit " .$limit;
-		}
-		/*
+		#if ($limit > 0) {
+		#	$sqlstr .= " limit " .$limit;
+		#}
+
 		$db = get_db();
-		#$db->echo_sql = true;
 		if($this->echo_sql){
 			echo $sqlstr;
 		};
@@ -166,8 +165,8 @@ class table_class{
 
 		}
 		return $result;
-		*/
-		return $this->_find_by_sql($sqlstr,$limit);
+
+		#return $this->_find_by_sql($sqlstr,$limit);
 	}
 
 	public function save(){
