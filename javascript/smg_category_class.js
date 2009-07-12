@@ -81,6 +81,8 @@ function smg_category_class(){
 						if(tid != -1){
 							var item = othis.get_item(tid);
 							max_len = item.short_title_length;
+						}else{
+							max_len = -1;
 						}							
 						callback(tid,max_len);
 					}
@@ -93,6 +95,8 @@ function smg_category_class(){
 						if(tid != -1){
 							var item = othis.get_item(tid);
 							max_len = item.short_title_length;
+						}else{
+							max_len = -1;
 						}							
 						callback(tid,max_len);
 					}
@@ -130,7 +134,9 @@ function smg_category_class(){
 						if(tid != -1){
 							var item = othis.get_item(tid);
 							max_len = item.short_title_length;
-						}							
+						}	else{
+							max_len = -1;
+						}						
 						callback(tid,max_len);
 					}
 		});		
@@ -141,6 +147,8 @@ function smg_category_class(){
 						if(tid != -1){
 							var item = othis.get_item(tid);
 							max_len = item.short_title_length;
+						}else{
+							max_len = -1;
 						}							
 						callback(tid,max_len);
 					}
@@ -149,7 +157,7 @@ function smg_category_class(){
 	
 	this.echo_category=function(ob,name,parent_id,id){
 		var str = '<select class="' + name + '" id="' + name +'_' + parent_id + '" parent_id=' + parent_id +'>';
-		str += '<option value=-1>请选择分类</option>';
+		str += '<option value="-1">请选择分类</option>';
 		var items = this.get_sub_category(parent_id);
 		if (items.length <= 0) {
 			return;

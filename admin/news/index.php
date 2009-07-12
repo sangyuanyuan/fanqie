@@ -143,9 +143,13 @@
 		category.display_select('category_select',$('#span_category'),<?php echo $category_id;?>,'',function(id){
 			$('#category').val(id);
 			category_id = $('.category_select:last').val();
+			if(id==-1){
+				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category=&adopt="+$("#adopt").attr('value');				
+			}
 			if(category_id != -1){
 				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 			}
+		
 		});
 		var all_selected = false;
 		$('#select_all').click(function(){

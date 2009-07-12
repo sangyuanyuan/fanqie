@@ -3,7 +3,7 @@
 	$db = get_db();
 	if($_POST['delete_news']){
 		$delete_news_id  = implode(',',$_POST['delete_news']);
-		$sql = 'update smg_news set is_deleted=1, is_adopt=0 where id in(' .$delete_news_id .')';
+		$sql = 'delete from smg_news where id in(' .$delete_news_id .')';
 		$db->execute($sql);
 	}
 	if($_POST['back_news']){
