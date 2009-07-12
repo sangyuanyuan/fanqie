@@ -76,7 +76,7 @@
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
 				</select>
 				<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
-				<input type="hidden" value="" id="category">
+				<input type="hidden" value="<?php echo $category_id;?>" id="category">
 			</td>
 		</tr>
 		<tr class="tr2">

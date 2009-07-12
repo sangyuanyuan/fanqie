@@ -36,7 +36,7 @@
 			}
 		?>
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td colspan="2" width="795">　　添加新闻</td>
+			<td colspan="2" width="795">　　编辑新闻</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50",$news->title);?></td>
