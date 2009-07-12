@@ -13,7 +13,7 @@
 	$sql = 'select * from smg_dept';
 	$rows_dept = $db->query($sql);
 	#$sql="select t1.*,t2.name as category_name,t3.name as dept_name from smg_news t1,smg_category t2,smg_dept t3 where t1.category_id=t2.id and t1.dept_id=t3.id and t1.is_recommend=1";
-	$c = array();
+	$c = array("is_deleted = 0");
 	if($title!=''){
 		$sql = $sql." and t1.short_title like '%".$title."%'";
 	}
@@ -76,12 +76,12 @@
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
 				</select>
 				<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
-				<input type="hidden" value="" id="category">
+				<input type="hidden" value="<?php echo $category_id;?>" id="category">
 			</td>
 		</tr>
 		<tr class="tr2">
 
-			<td width="55">删/退</td><td width="200">短标题</td><td width="100">发表部门</td><td width="100">所属类别</td><td width="120">发布时间</td><td width="220">操作</td>
+			<td width="55">删/退</td><td width="220">短标题</td><td width="100">发表部门</td><td width="100">所属类别</td><td width="120">发布时间</td><td width="200">操作</td>
 		</tr>
 		<?php
 			//--------------------
@@ -89,21 +89,19 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<?php 
-						$var_name = $record[$i]->is_recommend == 1 ? "back_news[]" : "delete_news[]";
+						$var_name = $record[$i]->dept_id != 7 ? "back_news[]" : "delete_news[]";
 					?>
-					<td><input style="width:10px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $record[$i]->id;?>"></td>
+					<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $record[$i]->id;?>"></td>
 					<td><?php echo $record[$i]->short_title;?></td>
-					<td><?php if($record[$i]->news_type==1){echo '普通新闻';}elseif($record[$i]->news_type==2){echo '文件新闻';}else{echo '链接新闻';}?></td>
+					<td>
+						<a href="?dept=<?php echo $record[$i]->dept_id;?>" style="color:#0000FF"><?php echo get_dept_info($record[$i]->dept_id)->name;?></a>
+					</td>
 					<td>
 						<a href="?category=<?php echo $record[$i]->category_id;?>" style="color:#0000FF">
 							<?php echo $category->find($record[$i]->category_id)->name; ?>
 						</a>
-					</td>
-					<td>
-						<a href="?dept=<?php echo $record[$i]->dept_id;?>" style="color:#0000FF">
-							<?php echo get_dept_info($record[$i]->dept_id)->name;?>
-						</a>
-					</td>
+					</td>						
+					<td><?php echo $record[$i]->created_at;?></td>				
 					<td><?php if($record[$i]->is_adopt=="1"){?>
 							<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>
 						<?php }?>
@@ -150,6 +148,10 @@
 	$(function(){
 		category.display_select('category_select',$('#span_category'),<?php echo $category_id;?>,'',function(id){
 			$('#category').val(id);
+			category_id = $('.category_select:last').val();
+			if(category_id != -1){
+				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			}
 		});
 		var all_selected = false;
 		$('#select_all').click(function(){
@@ -158,10 +160,13 @@
 		});
 		$('#button_delete').click(function(){
 			$.post('delete_news.php',$('input:checkbox').serializeArray(),function(data){
-				alert(data);
-				//window.location.reload();
+				window.location.reload();
 			});
-			//alert($('input:checkbox').serialize());
+		});
+		$('#title').keydown(function(e){
+			if(e.keyCode == 13){
+				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			}
 		});
 	});
 </script>

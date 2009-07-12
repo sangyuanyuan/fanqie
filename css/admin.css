@@ -24,10 +24,9 @@ a{text-decoration:none; color:black;}
 .tr1{height:25px; font-weight:bold; font-size:14px; text-align:left; background:#f9f9f9;}
 .tr1 a{color:#0000ff; text-decoration:underline;}
 .tr2{height:25px; font-weight:bold; font-size:13px; text-align:center; background:#f9f9f9;}
-.tr3{height:22px; text-align:center; font-size:12px; background:#f9f9f9;}
+.tr3{height:22px; text-align:center; font-size:12px; line-height:15px; background:#f9f9f9;}
 .tr3 input{width:230px;}
-.tr4{height:22px; text-align:center; font-size:12px; background:#f9f9f9;}
-.tr3 input{width:150px;}
+.tr4{height:22px; text-align:center; font-size:12px;  line-height:15px; background:#f9f9f9;}
 
 .priority{width:50px;}
 
