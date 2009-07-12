@@ -9,7 +9,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG-添加新闻</title>
+	<title>SMG-编辑新闻</title>
 	<?php 
 		css_include_tag('admin','thickbox');
 		use_jquery();

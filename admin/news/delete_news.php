@@ -1,8 +1,17 @@
 <?php
 	require "../../frame.php";
-	$delete_news_id  = implode(',',$_POST['delete_news']);
-	$back_news_id = implode(',',$_POST['back_news']);
-	echo "delete:" .$delete_news_id .';back:' .$back_news_id;
+	$db = get_db();
+	if($_POST['delete_news']){
+		$delete_news_id  = implode(',',$_POST['delete_news']);
+		$sql = 'update smg_news set is_deleted=1, is_adopt=0 where id in(' .$delete_news_id .')';
+		$db->execute($sql);
+	}
+	if($_POST['back_news']){
+		$back_news_id = implode(',',$_POST['back_news']);	
+		$sql = 'update smg_news set is_recommend=2, is_adopt=0 where id in(' .$back_news_id .')';
+		$db->execute($sql);		
+	}
+	
 	
 	
 ?>
