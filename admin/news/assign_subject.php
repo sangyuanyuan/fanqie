@@ -7,7 +7,7 @@
 ?>
 
 
-	<table width="600" border="0" id="list" style="boder:1px solid">
+	<table width="600" border="0" id="list">
 		<tr class="tr1">
 			<td colspan="4">　
 			<span style="margin-left:100px; font-size:13px">搜索&nbsp;&nbsp;<input id="search_text" type="text" value="<? echo $key;?>"></span>
@@ -31,7 +31,7 @@
 			for($i=0;$i<$count_record;$i++)	{
 				
 		?>
-				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
+				<tr  id=<?php echo $record[$i]->id;?> >
 					<td align="left"><input type="radio" value="<?php echo $subjects[$i]->id;?>" name="subject" style="width:10px;"><span><?php echo $subjects[$i]->name;?></span></td>
 					<td>
 						<select class="subject_category_select">

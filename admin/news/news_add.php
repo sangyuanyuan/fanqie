@@ -29,6 +29,8 @@
 //initialize the categroy;
 	if($role=='admin'){
 		$url = 'index.php';
+		$priority = 'priority';
+		$is_adopt = 'is_adopt';
 		if($type==""){	
 			$category = new smg_category_class('news');
 			$category->echo_jsdata();
@@ -38,7 +40,10 @@
 		}
 	}else{
 		$url = 'news_list.php';
+		$priority = 'dept_priority';
+		$is_adopt = 'is_dept_adopt';
 		if($type==""){	
+			//echo $dept_id;
 			$category = new smg_category_class('news',$dept_id);
 			$category->echo_jsdata();
 		}else{
@@ -74,7 +79,7 @@
 			<span id="td_category_dept"></span>
 			</td>
 		</tr>
-		<input type="hidden" name="magazine[dept_id]"  value="<?php echo $dept_id;?>">
+		<input type="hidden" name="news[dept_id]"  value="<?php echo $dept_id;?>">
 		<?php }else{?>
 		<tr class=tr3 id="index_category">
 			<td>发表部门</td>
@@ -82,7 +87,7 @@
 				<select id=select name="magazine[dept_id]">
 
 					<option value="7" >总编室</option>
-					<?php	
+					<?php
 						for($i=0;$i<count($rows_dept);$i++){
 							if($rows_dept[$i]->id!='7'){
 					?>
@@ -92,7 +97,6 @@
 			</td>
 		</tr>
 		<?php }?>
-		
 		<tr class=tr4 id=newsshow3 >
 			<td>类别</td>
 			<td align="left" id="td_newstype">
@@ -107,7 +111,6 @@
 				<input type="radio" name="news[sub_headline]" value="1" checked="checked">展示简介 <input type="radio" name="news[sub_headline]" value="2">展示子头条　<a href="sub_headline.php?width=800&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
 			</td>
 		</tr>
-		
 		<tr class=tr4 id=newsshow3 >
 			<td>标签/关键词/优先级</td>
 			<td align="left">
@@ -139,14 +142,14 @@
 				视频图片<input type="file" name="video_pic" id="video_pic">
 			</td>
 		</tr>
-		<tr class=tr3 id=newsshow3 class="normal_news">
+		<tr id=newsshow3 class="normal_news tr3">
 			<td>投票</td>
 			<td align="left" id="td_vote">
 				<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>
-				<input type="hidden" name="news[vote_id]" id="vote_id">	
+				<input type="hidden" name="news[vote_id]" id="vote_id">
 			</td>
 		</tr>
-		<tr class=tr3 id=newsshow3  class="normal_news">
+		<tr id=newsshow3  class="normal_news tr3">
 			<td>所属专题</td>
 			<td align="left" id="td_subject">
 				<a style="color:blue;" href="assign_subject.php?width=600&height=400" class="thickbox" id="a_assign_subject">关联专题</a>
@@ -154,15 +157,23 @@
 				<input type="hidden" name="subject_category_id" value="">
 			</td>
 		</tr>
-		<tr class=tr4 id=newsshow3  class="normal_news">
+		<tr id=newsshow3  class="normal_news tr4">
 			<td>其他选项</td>
 			<td align="left"><input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  <input type="checkbox" name="news[is_adopt]" value="1">直接发布　<a style="color:blue;" href="filte_news.php?width=800&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
 		</tr>
+<<<<<<< HEAD:admin/news/news_add.php
+		<tr id=newsshow1  class="normal_news tr3">
+			<td height=100>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
+		</tr>
+		<tr id=newsshow1 class="normal_news tr3">
+			<td height=265>新闻内容</td><td><?php show_fckeditor('news[content]','Admin',true,"265");?></td>
+=======
 		<tr class=tr3 id=newsshow1  class="normal_news">
 			<td>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
 		</tr>
 		<tr class=tr3 id=newsshow1 class="normal_news">
 			<td>新闻内容</td><td><?php show_fckeditor('news[content]','Admin',true,"255");?></td>
+>>>>>>> a649a3b5bb76a3d3033015232ce7bf1c23c27b59:admin/news/news_add.php
 		</tr>
 		<tr class=tr3>
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布新闻"></td>
@@ -178,6 +189,7 @@
 		}else{
 		?>
 		<input type="hidden" name="news[is_recommend]" value="0">
+		<input type="hidden" name="news[dept_category_id]" id="dept_category_id">
 		<?
 		} ?>	
 		<input type="hidden" name="category_add" id="category_add" value="">

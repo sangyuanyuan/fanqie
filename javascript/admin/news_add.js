@@ -44,19 +44,41 @@ $(function(){
 		priority = $('#priority').attr('value');
 		if(priority == '') priority = 100;
 		
-		$('#priority').attr('value', priority);		
-		category_id = $('.news_category:last').attr('value');
-		if(category_id == -1){
-			alert('请选择分类!');
-			return false;
+		$('#priority').attr('value', priority);	
+		
+		if(typeof(dept_category) != 'undefined'){
+			category_id = $('.news_category_dept:last').attr('value');
+			if(category_id == -1){
+				alert('请选择分类!');
+				return false;
+			}
+			$('#category_id').attr('value',category_id);
+			dept_category_id = $('.news_category:last').attr('value');
+			if(dept_category_id == -1){
+				alert('请选择分类!');
+				return false;
+			}
+			$('#$dept_category_id').attr('value',dept_category_id);
+			var item = category.get_item(dept_category_id);
+	
+			if(str_length(short_title) > item.short_title_length){
+				alert('短标题太长,请重新输入!');
+				return false;
+			}			
+		}else{
+			category_id = $('.news_category:last').attr('value');
+			if(category_id == -1){
+				alert('请选择分类!');
+				return false;
+			}
+			$('#category_id').attr('value',category_id);
+			var item = category.get_item(category_id);
+	
+			if(str_length(short_title) > item.short_title_length){
+				alert('短标题太长,请重新输入!');
+				return false;
+			}		
 		}
-		$('#category_id').attr('value',category_id);
-		var item = category.get_item(category_id);
-
-		if(str_length(short_title) > item.short_title_length){
-			alert('短标题太长,请重新输入!');
-			return false;
-		}		
 		news_type=  $('#td_newstype').find('input:checked').attr('value');
 		if(news_type == 3){
 			if($('#target_url input').attr('value')== ''){
@@ -86,7 +108,7 @@ $(function(){
 	$('#a_add_category').click(function(e){
 		e.preventDefault();
 		category_count++;
-		str = '<tr class="tr_news_category_add" align="center" bgcolor="#f9f9f9" height="25px;"><td>分　类</td><td align="left">';
+		str = '<tr class="tr_news_category_add" align="center" bgcolor="#f9f9f9" height="25px;"><td>分　类</td><td colspan="5" align="left">';
 		str += '<span id="td_category_select_'+ category_count +'"></span>';
 		str += '<a href="#" class="a_delete_category" style="color:blue;"> 删除</a>';
 		$('#td_category_select').parent().parent().after(str);

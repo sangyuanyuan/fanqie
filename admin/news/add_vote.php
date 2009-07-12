@@ -59,10 +59,10 @@
 	</table>
 	<div class="div_box" style="width:600px;">
 		<table width="600" border="0">
-			<tr colspan="5" class=tr3>
+			<tr colspan="4" class=tr3>
 				<td><?php paginate('','result_box');?></td>
 			</tr>
-			<tr colspan="5" class=tr3>
+			<tr colspan="4" class=tr3>
 				<td><button id="save">确定</button> <button id="cancel">取消</button></td>
 			</tr>
 		</table>
