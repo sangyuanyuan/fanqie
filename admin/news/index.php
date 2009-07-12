@@ -81,7 +81,7 @@
 		</tr>
 		<tr class="tr2">
 
-			<td width="55">删/退</td><td width="200">短标题</td><td width="100">发表部门</td><td width="100">所属类别</td><td width="120">发布时间</td><td width="220">操作</td>
+			<td width="55">删/退</td><td width="220">短标题</td><td width="100">发表部门</td><td width="100">所属类别</td><td width="120">发布时间</td><td width="200">操作</td>
 		</tr>
 		<?php
 			//--------------------
@@ -91,7 +91,7 @@
 					<?php 
 						$var_name = $record[$i]->dept_id != 7 ? "back_news[]" : "delete_news[]";
 					?>
-					<td><input style="width:10px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $record[$i]->id;?>"></td>
+					<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $record[$i]->id;?>"></td>
 					<td><?php echo $record[$i]->short_title;?></td>
 					<td>
 						<a href="?dept=<?php echo $record[$i]->dept_id;?>" style="color:#0000FF"><?php echo get_dept_info($record[$i]->dept_id)->name;?></a>
@@ -142,6 +142,10 @@
 	$(function(){
 		category.display_select('category_select',$('#span_category'),<?php echo $category_id;?>,'',function(id){
 			$('#category').val(id);
+			category_id = $('.category_select:last').val();
+			if(category_id != -1){
+				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			}
 		});
 		var all_selected = false;
 		$('#select_all').click(function(){
