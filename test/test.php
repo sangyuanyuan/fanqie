@@ -9,6 +9,7 @@
 	$category->id = 30;
 	$param = array('name' => '总裁奖12345','description' => '');
 	$category->update_attributes($param);
+	var_dump($_GET);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">

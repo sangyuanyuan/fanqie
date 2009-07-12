@@ -1,5 +1,7 @@
 ﻿<?php
 	require_once('frame.php');
+	$db = get_db();
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,47 +10,163 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-首页</title>
 	<? 	
-		css_include_tag('index');
-		css_include_tag('top');
-		css_include_tag('bottom');
+		css_include_tag('index','top','bottom');
 		use_jquery();
 	  js_include_once_tag('index');
   ?>
 	
 </head>
+
 <body>
 <? require_once('inc/top.inc.html');?>
 <div id=ibody>
  <div id=ibody_top>
  		<div id=p1>
  			<!-- start top_left_top !-->
+ 			<?php
+				$sql = 'select n.short_title,n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where c.name="每日之星" and c.category_type="news" order by n.priority asc limit 4';
+				$record_star=$db -> query($sql);
+				$sql = 'select n.short_title,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where c.name="视频新闻" and c.category_type="news" order by n.priority asc limit 4';
+				$record_video=$db -> query($sql);
+				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
+				$record_ad=$db -> query($sql);
+  		?>
  			<div id=t_l_t>
  				<div id=menu>
- 					<div class=video_item id=video_item1 style="background:url(/images/index/video_btn1.jpg)">每日之星</div>
-  				<div class=video_item id=video_item2 style="background:url(/images/index/video_btn2.jpg);color:#9f9f9f;">视频新闻</div>
- 					<div class=video_item id=video_item3 style="background:url(/images/index/video_btn2.jpg);color:#9f9f9f;">番茄广告</div>
+ 					<div class=item id=item1 param="1" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">每日之星</div>
+  				<div class=item id=item2 param="2" style="background:url(/images/index/btn1.jpg)">视频新闻</div>
+ 					<div class=item id=item3 param="3" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">番茄广告</div>
 				</div>	
- 				<div id=flash><img src="/images/1.jpg"></div>
- 				<div id=list>
+  			<div class=content id=content1>
+  				
+  				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+					<div id="focus_01"></div> 
+					<script type="text/javascript"> 
+					var pic_width1=271; //图片宽度
+					var pic_height1=183; //图片高度
+					var pics1="<?php echo $record_star[0]->photo_src.",".$record_star[1]->photo_src.",".$record_star[2]->photo_src.",".$record_star[3]->photo_src ?>";
+					var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
+					var texts1="<?php echo $record_star[0]->short_title.",".$record_star[1]->short_title.",".$record_star[2]->short_title.",".$record_star[3]->short_title ?>";
+ 	
+					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
+					picflash.addParam('wmode','opaque');
+					picflash.addVariable("picurl",pics1);
+					picflash.addVariable("piclink",mylinks1);
+					picflash.addVariable("pictext",texts1);				
+					picflash.addVariable("pictime","5");
+					picflash.addVariable("borderwidth","271");
+					picflash.addVariable("borderheight","183");
+					picflash.addVariable("borderw","false");
+					picflash.addVariable("buttondisplay","true");
+					picflash.addVariable("textheight","15");				
+					picflash.addVariable("pic_width",pic_width1);
+					picflash.addVariable("pic_height",pic_height1);
+					picflash.write("focus_01");				
+					</script>  				
+  		  </div>
+ 				<div class=content id=content2 style="background:url(/images/index/bg_flash.jpg);display:inline;">
+ 					<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=225px height=182px scrolling="no" frameborder="0"></iframe>
+ 				</div>
+  			<div class=content id=content3>
+					<div id="focus_02"></div> 
+ 					<script type="text/javascript"> 
+					var pic_width1=271; 
+					var pic_height1=183; 
+					var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
+					var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
+					var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
+ 	
+					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "271", "183", "4","#FFFFFF");
+					picflash.addParam('wmode','opaque');
+					picflash.addVariable("picurl",pics1);
+					picflash.addVariable("piclink",mylinks1);
+					picflash.addVariable("pictext",texts1);				
+					picflash.addVariable("pictime","5");
+					picflash.addVariable("borderwidth","271");
+					picflash.addVariable("borderheight","183");
+					picflash.addVariable("borderw","false");
+					picflash.addVariable("buttondisplay","true");
+					picflash.addVariable("textheight","15");				
+					picflash.addVariable("pic_width",pic_width1);
+					picflash.addVariable("pic_height",pic_height1);
+					picflash.write("focus_02");				
+					</script>   				
+  			</div>
+ 				<div class=list id=list1>
  					<ul>
- 						<li><img src="/images/icon/arrow2.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
- 						<li><img src="/images/icon/arrow1.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
- 						<li><img src="/images/icon/arrow1.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
- 						<li><img src="/images/icon/arrow1.gif"> 满文军妻子被正式批捕 黄晓明疑遭封杀</li>
+ 						<?php for($i=0; $i<count($record_star); $i++){?>
+ 						<li><?php echo $record_star[$i]->short_title ?></li>
+ 						<? }?>
+ 					</ul>		
+ 				</div>  			 			
+  			<div class=list id=list2  style="display:inline;">
+ 					<ul>
+ 						<li class=video style="color:#2C345B; font-weight:bold; background:url(/images/icon/arrow2.gif) no-repeat 0 3px" param1=<?php echo $record_video[0]->video_photo_src ?> param2=<?php echo $record_video[0]->video_src ?>><?php echo $record_video[0]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[1]->video_photo_src ?> param2=<?php echo $record_video[1]->video_src ?>><?php echo $record_video[1]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[2]->video_photo_src ?> param2=<?php echo $record_video[2]->video_src ?>><?php echo $record_video[2]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[3]->video_photo_src ?> param2=<?php echo $record_video[3]->video_src ?>><?php echo $record_video[3]->short_title ?></li>
+ 					</ul>	
+ 				</div>
+ 				<div class=list  id=list3>
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_ad); $i++){?>
+ 						<li><?php echo $record_ad[$i]->title ?></li>
+ 						<? }?>
  					</ul>		
  				</div>
  			</div>
  			<!-- end !-->
 
- 			<!-- start top_left_middle !-->
- 			<div id=t_l_m>
 
+
+
+ 			<!-- start top_left_middle !-->
+  		<?php
+				$sql = 'select s.name from smg_subject s order by s.created_at desc limit 10';
+				$record_subject=$db -> query($sql);
+				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="对外出击" and c.category_type="news" order by n.priority asc limit 4';
+				$record_out=$db -> query($sql);
+  		?>
+  		<div id=t_l_m>
+ 				<div class=btn_tlm param=1 style="background:url(/images/index/btn3.jpg) no-repeat">专题新闻</div>
+ 				<div class=btn_tlm param=2 style="background:url(/images/index/btn4.jpg) no-repeat">对外出击</div>
+ 				<div class=list_tlm id=list_tlm1>
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_subject); $i++){?>
+ 						<li><span style="color:#CCCCCC">·</span><?php echo $record_subject[$i]->name ?></li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
+ 				<div class=list_tlm id=list_tlm2  style="display:inline;">
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_out); $i++){?>
+ 						<li><span style="color:#CCCCCC">·</span><?php echo $record_out[$i]->short_title ?></li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
  			</div>
  			<!-- end !-->
 
 
  			<!-- start top_left_bottom !-->
  			<div id=t_l_b>
+ 				<div class=btn_tlb param=1 style="background:url(/images/index/btn4.jpg) no-repeat">小编加精</div>
+ 				<div class=btn_tlb param=2 style="background:url(/images/index/btn3.jpg) no-repeat">新闻速读</div>
+ 				<div class=list_tlb id=list_tlb1 style="display:inline;">
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_subject); $i++){?>
+ 						<li><span style="color:#CCCCCC">·</span><?php echo $record_subject[$i]->name ?></li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
+ 				<div class=list_tlb id=list_tlb2>
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_out); $i++){?>
+ 						<li><span style="color:#CCCCCC">·</span>我</li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
+
 
  			</div>
  			<!-- end !-->

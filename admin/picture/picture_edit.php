@@ -33,7 +33,6 @@
 	
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
-	echo $picture_record[0]->title;
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -113,7 +112,7 @@
 			<td>图片链接</td><td align="left">　<input type="text" size="50" name="picture[url]" value="<?php echo $picture_record[0]->url;?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left">　<input name="image" id="upfile" type="file">(请上传200x160大小的图片，格式支持jpg、gif、png) <input type="hidden" name="MAX_FILE_SIZE1" value="2097152"></td>
+			<td>选择图片</td><td align="left">　<input name="image" id="upfile" type="file"><a href="<?php echo $picture_record[0]->src;?>" target="_blank">点击查看图片</a><input type="hidden" name="MAX_FILE_SIZE1" value="2097152"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
 			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="picture[description]" class="required" ><?php echo $picture_record[0]->description;?></textarea></td>
