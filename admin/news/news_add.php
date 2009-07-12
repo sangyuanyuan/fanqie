@@ -85,7 +85,7 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category">
 			<td>发表部门</td>
 			<td colspan="5" align="left" class="newsselect1">
-				<select id=select name="magazine[dept_id]">
+				<select id=select name="news[dept_id]">
 					<option value="7" >总编室</option>
 					<?php	
 						for($i=0;$i<count($rows_dept);$i++){
