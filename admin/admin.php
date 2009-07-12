@@ -59,7 +59,7 @@
 		</div>
 		
 		<div id=part3>
-		  <iframe id=admin_iframe name="admin_iframe" scrolling="yes" src="/admin/menu/menu_list.php" width="99%" height="700"></iframe>
+		  <iframe id=admin_iframe name="admin_iframe" scrolling="yes" frameborder="0" src="/admin/menu/menu_list.php" width="99%" height="700"></iframe>
 		</div>		
 	</div>
 </body>

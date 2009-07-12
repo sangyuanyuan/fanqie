@@ -23,20 +23,20 @@
  <div id=ibody_top>
  		<div id=p1>
  			<!-- start top_left_top !-->
+ 			<?php
+				$sql = 'select n.short_title,n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where c.name="每日之星" and c.category_type="news" order by n.priority asc limit 4';
+				$record_star=$db -> query($sql);
+				$sql = 'select n.short_title,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where c.name="视频新闻" and c.category_type="news" order by n.priority asc limit 4';
+				$record_video=$db -> query($sql);
+				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
+				$record_ad=$db -> query($sql);
+  		?>
  			<div id=t_l_t>
  				<div id=menu>
- 					<div class=item id=item1 value="1" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">每日之星</div>
-  				<div class=item id=item2 value="2" style="background:url(/images/index/btn1.jpg)">视频新闻</div>
- 					<div class=item id=item3 value="3" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">番茄广告</div>
+ 					<div class=item id=item1 param="1" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">每日之星</div>
+  				<div class=item id=item2 param="2" style="background:url(/images/index/btn1.jpg)">视频新闻</div>
+ 					<div class=item id=item3 param="3" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">番茄广告</div>
 				</div>	
- 				<?
-					$sql = 'select n.short_title,n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where c.name="每日之星" and c.category_type="news" order by n.priority asc limit 4';
-					$record_star=$db -> query($sql);
-					$sql = 'select n.short_title,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where c.name="视频新闻" and c.category_type="news" order by n.priority asc limit 4';
-					$record_video=$db -> query($sql);
-					$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
-					$record_ad=$db -> query($sql);
-  			?>
   			<div class=content id=content1>
   				
   				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
@@ -44,9 +44,9 @@
 					<script type="text/javascript"> 
 					var pic_width1=271; //图片宽度
 					var pic_height1=183; //图片高度
-					var pics1="<?php echo $record_star[0]->photo_src.",".$record_star[1]->photo_src.",".$record_star[2]->photo_src.",".$record_star[3]->photo_src."," ?>";
+					var pics1="<?php echo $record_star[0]->photo_src.",".$record_star[1]->photo_src.",".$record_star[2]->photo_src.",".$record_star[3]->photo_src ?>";
 					var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
-					var texts1="<?php echo $record_star[0]->short_title.",".$record_star[1]->short_title.",".$record_star[2]->short_title.",".$record_star[3]->short_title."," ?>";
+					var texts1="<?php echo $record_star[0]->short_title.",".$record_star[1]->short_title.",".$record_star[2]->short_title.",".$record_star[3]->short_title ?>";
  	
 					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
@@ -72,9 +72,9 @@
  					<script type="text/javascript"> 
 					var pic_width1=271; 
 					var pic_height1=183; 
-					var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src."," ?>";
+					var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
 					var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
-					var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title."," ?>";
+					var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
  	
 					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "271", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
@@ -101,10 +101,10 @@
  				</div>  			 			
   			<div class=list id=list2  style="display:inline;">
  					<ul>
- 						<li class=video style="color:#2C345B; font-weight:bold; background:url(/images/icon/arrow2.gif) no-repeat 0 3px" value1=<?php echo $record_video[0]->video_photo_src ?> value2=<?php echo $record_video[0]->video_src ?>><?php echo $record_video[0]->short_title ?></li>
- 						<li class=video value1=<?php echo $record_video[1]->video_photo_src ?> value2=<?php echo $record_video[1]->video_src ?>><?php echo $record_video[1]->short_title ?></li>
- 						<li class=video value1=<?php echo $record_video[2]->video_photo_src ?> value2=<?php echo $record_video[2]->video_src ?>><?php echo $record_video[2]->short_title ?></li>
- 						<li class=video value1=<?php echo $record_video[3]->video_photo_src ?> value2=<?php echo $record_video[3]->video_src ?>><?php echo $record_video[3]->short_title ?></li>
+ 						<li class=video style="color:#2C345B; font-weight:bold; background:url(/images/icon/arrow2.gif) no-repeat 0 3px" param1=<?php echo $record_video[0]->video_photo_src ?> param2=<?php echo $record_video[0]->video_src ?>><?php echo $record_video[0]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[1]->video_photo_src ?> param2=<?php echo $record_video[1]->video_src ?>><?php echo $record_video[1]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[2]->video_photo_src ?> param2=<?php echo $record_video[2]->video_src ?>><?php echo $record_video[2]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[3]->video_photo_src ?> param2=<?php echo $record_video[3]->video_src ?>><?php echo $record_video[3]->short_title ?></li>
  					</ul>	
  				</div>
  				<div class=list  id=list3>
@@ -117,15 +117,56 @@
  			</div>
  			<!-- end !-->
 
- 			<!-- start top_left_middle !-->
- 			<div id=t_l_m>
 
+
+
+ 			<!-- start top_left_middle !-->
+  		<?php
+				$sql = 'select s.name from smg_subject s order by s.created_at desc limit 10';
+				$record_subject=$db -> query($sql);
+				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="对外出击" and c.category_type="news" order by n.priority asc limit 4';
+				$record_out=$db -> query($sql);
+  		?>
+  		<div id=t_l_m>
+ 				<div class=btn_tlm param=1 style="background:url(/images/index/btn3.jpg) no-repeat">专题新闻</div>
+ 				<div class=btn_tlm param=2 style="background:url(/images/index/btn4.jpg) no-repeat">对外出击</div>
+ 				<div class=list_tlm id=list_tlm1>
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_subject); $i++){?>
+ 						<li><span style="color:#CCCCCC">·</span><?php echo $record_subject[$i]->name ?></li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
+ 				<div class=list_tlm id=list_tlm2  style="display:inline;">
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_out); $i++){?>
+ 						<li><span style="color:#CCCCCC">·</span><?php echo $record_out[$i]->short_title ?></li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
  			</div>
  			<!-- end !-->
 
 
  			<!-- start top_left_bottom !-->
  			<div id=t_l_b>
+ 				<div class=btn_tlb param=1 style="background:url(/images/index/btn4.jpg) no-repeat">小编加精</div>
+ 				<div class=btn_tlb param=2 style="background:url(/images/index/btn3.jpg) no-repeat">新闻速读</div>
+ 				<div class=list_tlb id=list_tlb1 style="display:inline;">
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_subject); $i++){?>
+ 						<li><span style="color:#CCCCCC">·</span><?php echo $record_subject[$i]->name ?></li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
+ 				<div class=list_tlb id=list_tlb2>
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_out); $i++){?>
+ 						<li><span style="color:#CCCCCC">·</span>我</li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
+
 
  			</div>
  			<!-- end !-->
