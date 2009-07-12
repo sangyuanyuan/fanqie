@@ -155,7 +155,7 @@ class table_class{
 		}else {
 			$result = array();
 			if($db->record_count <= 0) return $result;
-			for($i=$db->record_count-1; $i >=0; $i--){
+			for($i=0; $i < $db->record_count; $i++){
 				$tmp = clone $this;
 				foreach ($this->fields as $k => $v){
 					$tmp->fields[$k] = $db_ret[$i]->$k;
