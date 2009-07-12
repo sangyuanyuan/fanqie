@@ -29,6 +29,8 @@
 //initialize the categroy;
 	if($role=='admin'){
 		$url = 'index.php';
+		$priority = 'priority';
+		$is_adopt = 'is_adopt';
 		if($type==""){	
 			$category = new smg_category_class('news');
 			$category->echo_jsdata();
@@ -38,7 +40,10 @@
 		}
 	}else{
 		$url = 'news_list.php';
+		$priority = 'dept_priority';
+		$is_adopt = 'is_dept_adopt';
 		if($type==""){	
+			//echo $dept_id;
 			$category = new smg_category_class('news',$dept_id);
 			$category->echo_jsdata();
 		}else{
@@ -64,7 +69,7 @@
 		</tr>		
 		<tr align="center" bgcolor="#f9f9f9" height="22px;">
 			<td >分　类</td>
-			<td colspan="5" align="left" class="newsselect1" >　				
+			<td colspan="5" align="left">
 			<span id="td_category_select"></span>
 			<a href="#" id="a_add_category" style="color:blue;">添加</a>
 			</td>
@@ -76,18 +81,18 @@
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" >
 			<td>首页分类</td>
-			<td colspan="5" align="left" class="newsselect1" >　				
+			<td colspan="5" align="left">
 			<span id="td_category_dept"></span>
 			</td>
 		</tr>
-		<input type="hidden" name="magazine[dept_id]"  value="<?php echo $dept_id;?>">
+		<input type="hidden" name="news[dept_id]"  value="<?php echo $dept_id;?>">
 		<?php }else{?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category">
 			<td>发表部门</td>
-			<td colspan="5" align="left" class="newsselect1">
+			<td colspan="5" align="left">
 				<select id=select name="magazine[dept_id]">
 					<option value="7" >总编室</option>
-					<?php	
+					<?php
 						for($i=0;$i<count($rows_dept);$i++){
 							if($rows_dept[$i]->id!='7'){
 					?>
@@ -100,7 +105,7 @@
 		
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3 >
 			<td>新闻类别</td>
-			<td colspan="5" align="left" id="td_newstype">　
+			<td colspan="5" align="left" id="td_newstype">
 				<input type="radio" name="news[news_type]" value="1" checked="checked">默认
 				<input type="radio" name="news[news_type]" value="2">文件
 				<input type="radio" name="news[news_type]" value="3">URL
@@ -108,7 +113,7 @@
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="22px;">
 			<td>头条控制</td>
-			<td colspan="5" align="left" id="td_headline_type">　
+			<td colspan="5" align="left" id="td_headline_type">
 				  <input type="radio" name="news[sub_headline]" value="1" checked="checked">展示简介 <input type="radio" name="news[sub_headline]" value="2">展示子头条  <a href="sub_headline.php?width=800&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
 			</td>
 		</tr>
@@ -121,7 +126,7 @@
 		
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3 >
 			<td>新闻标签</td>
-			<td align="left">　
+			<td align="left">
 				<select name="news[tags]" style="margin-left:10px;">
 					<option value="">请选择</option>
 				<?php
@@ -134,25 +139,25 @@
 			</td>
 			<td>关键字</td><td align="left">　<input type="text" size="20" name=news[keywords]>(请用空格分隔)</td>
 			<td>优先级</td><td align="left">　<input type="text" size="20" name=news[priority] class="number">(0~100)</td>
-		</tr>		
+		</tr>
 	
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3  class="normal_news">
 			<td>新闻视频</td>
-			<td align="left" id="td_video" colspan="5">　				
-				视频文件<input type="file" name="video_src" id="video_src">	
+			<td align="left" id="td_video" colspan="5">
+				视频文件<input type="file" name="video_src" id="video_src">
 				视频图片<input type="file" name="video_pic" id="video_pic">
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3 class="normal_news">
 			<td>新闻投票</td>
-			<td align="left" id="td_vote" colspan="5">　
+			<td align="left" id="td_vote" colspan="5">
 				<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>
-				<input type="hidden" name="news[vote_id]" id="vote_id">	
+				<input type="hidden" name="news[vote_id]" id="vote_id">
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3  class="normal_news">
-			<td>所属专题</td>　
-			<td align="left" id="td_subject" colspan="5">　
+			<td>所属专题</td>
+			<td align="left" id="td_subject" colspan="5">
 				<a style="color:blue;" href="assign_subject.php?width=600&height=400" class="thickbox" id="a_assign_subject">关联专题</a>
 				<input type="hidden" name="subject_id" value="">
 				<input type="hidden" name="subject_category_id" value="">
@@ -181,6 +186,7 @@
 		}else{
 		?>
 		<input type="hidden" name="news[is_recommend]" value="0">
+		<input type="hidden" name="news[dept_category_id]" id="dept_category_id">
 		<?
 		} ?>	
 		<input type="hidden" name="category_add" id="category_add" value="">

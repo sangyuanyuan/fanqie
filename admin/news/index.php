@@ -7,7 +7,7 @@
 	$dept_id = $_REQUEST['dept'];
 	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
-	$sql = 'select * from smg_category';
+	$sql = 'select * from smg_category where category_type="news"';
 	$rows_category = $db->query($sql);
 	$sql = 'select * from smg_dept';
 	$rows_dept = $db->query($sql);
@@ -83,7 +83,11 @@
 							<?php echo $record[$i]->category_name;?>
 						</a>
 					</td>
-					<td><?php echo $record[$i]->dept_name;?></td>
+					<td>
+						<a href="?dept=<?php echo $record[$i]->dept_id;?>" style="color:#0000FF">
+							<?php echo $record[$i]->dept_name;?>
+						</a>
+					</td>
 					<td><?php if($record[$i]->is_adopt=="1"){?>
 							<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>　
 						<?php }?>
@@ -116,6 +120,12 @@
 <script>
 	$("#search_new").click(function(){
 			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+	});
+	
+	$("#title").keypress(function(){
+			if(event.keyCode==13){
+				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			}
 	});
 	
 	$(".select_new").change(function(){
