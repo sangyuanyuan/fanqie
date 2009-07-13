@@ -45,6 +45,17 @@
 			<td>优先级：</td>
 			<td align="left"><input type="text" name="post[priority]" id="priority" value="<?php if($record[0]->priority!=100){echo $record[0]->priority;}?>" class="number"></td>
 		</tr>
+		<tr class=tr3>
+			<td>平台：</td>
+			<td align="left">
+				<select name="post[platform]">
+					<option value="news" <?php if($record[0]->platform == 'news') {?>  selected="selected" <?php }?>>新闻平台</option>
+					<option value="zone" <?php if($record[0]->platform == 'zone') {?>  selected="selected" <?php }?>>交流平台</option>
+					<option value="show" <?php if($record[0]->platform == 'show') {?>  selected="selected" <?php }?>>展示平台</option>
+					<option value="server" <?php if($record[0]->platform == 'server') {?>  selected="selected" <?php }?>>服务平台</option>
+				</select>
+			</td>
+		</tr>
 		<?php if($record[0]->category_type=="news"){?>
 		<tr class=tr3>
 			<td>短标题长度：</td>

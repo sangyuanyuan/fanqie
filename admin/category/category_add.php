@@ -46,6 +46,17 @@
 			<td>优先级：</td>
 			<td align="left"><input type="text" name="post[priority]" id="priority" class="number"></td>
 		</tr>
+		<tr class=tr3>
+			<td>平台：</td>
+			<td align="left">
+				<select name="post[platform]">
+					<option value="news">新闻平台</option>
+					<option value="zone">交流平台</option>
+					<option value="show">展示平台</option>
+					<option value="server">服务平台</option>
+				</select>
+			</td>
+		</tr>		
 		<?php if($type=="news"){?>
 		<tr class=tr3>
 			<td>短标题长度：</td>
