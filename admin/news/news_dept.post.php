@@ -136,7 +136,7 @@
 		
 	}
 	
-	redirect('index.php?category='.$news->category_id);
+	#redirect('index.php?category='.$news->category_id);
 	#var_dump($news);
 	
 ?>

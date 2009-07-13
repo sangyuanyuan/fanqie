@@ -90,7 +90,7 @@
 		<tr class=tr3 id=tr_file_name >
 			<td>上传文件</td>
 			<td align="left">
-				<input type="file" size="50" name=file_name value="<?php echo $news->file_name;?>">
+				<input type="file" name=file_name value="<?php echo $news->file_name;?>">
 				<?php
 					if($news->news_type == 2 && $news->file_name){
 						?>

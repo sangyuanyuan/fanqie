@@ -98,8 +98,8 @@
 		
 		<tr class=tr3 id=tr_file_name >
 			<td>上传文件</td>
-			<td align="left">
-				<input type="file" size="50" name=file_name>
+			<td align="left" id="tr_file_name">
+				<input type="file" name=file_name value="<?php echo $news->file_name;?>">
 				<?php
 					if($news->news_type == 2 && $news->file_name){
 						?>
@@ -188,6 +188,7 @@
 		<input type="hidden" name="subject_id" value="<?php echo $subject->id;?>" id="hidden_subject_id">
 		<input type="hidden" name="subject_category_id" value="'<?php echo $record[0]->category_id;?>'" id="hidden_subject_category_id">		
 		<input type="hidden" name="delete_subject" value="0" id="hidden_delete_subject">
+		<input type="hidden" name="id" value="<?php echo $news->id;?>">
 	</form>
 </body>
 </html>

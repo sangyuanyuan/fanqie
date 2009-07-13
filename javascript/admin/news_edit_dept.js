@@ -67,12 +67,7 @@ $(function(){
 				return false;
 			}
 		}
-		if(news_type == 2){
-			if($('#tr_file_name input').attr('value')== ''){
-				alert('请选择上传文件!');
-				return false;
-			}
-		}
+
 		if($('#video_src').attr('value') != '' && $('#video_pic').attr('value') == ''){
 			alert('请选择视频图片!');
 			return false;
@@ -116,6 +111,10 @@ $(function(){
 	});		
 	toggle_news_type();
 	toggle_is_recommend();
+	if($('#hidden_is_recommend').val() == 1){
+		$('#is_recommend').attr('disabled',true);
+		$('.news_category_index').attr('disabled',true);
+	}
 });
 
 function toggle_news_type(){
