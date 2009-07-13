@@ -9,6 +9,7 @@
 	}
 	
 	$news->update_attributes($_POST['news'],false);
+	$news->is_recommend = 1;
 	if($news->is_dept_adopt != 1){
 		$news->is_dept_adopt = 0;
 	}
@@ -137,7 +138,7 @@
 		
 	}
 	
-	#redirect('index.php?category='.$news->category_id);
+	redirect('index.php?category='.$news->category_id);
 	#var_dump($news);
 	
 ?>

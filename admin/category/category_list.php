@@ -1,6 +1,7 @@
 <?php
 	require_once('../../frame.php');
 	judge_role('admin');
+	
 	$type = $_REQUEST['type'];
 	switch($type){
 		case "news":
@@ -47,11 +48,11 @@
 			<td colspan="6">　<a href="category_add.php?id=0&type=<?php echo $type;?>">添加超类</a></td>
 		</tr>
 		<tr class="tr2">
-			<td width="200">类别名称</td><td width="50">优先级</td><td width="150">父类</td><td width="<?php if($type!="news"){echo 1;}?>80">所属类别</td><?php if($type=="news"){?><td width="100">短标题长度</td><?php }?><td width="175">操作</td>
+			<td width="200">类别名称</td><td width="50">优先级</td><td width="150">父类</td><td width="<?php if($type!="news"){echo 1;}?>80">所属平台</td><?php if($type=="news"){?><td width="100">短标题长度</td><?php }?><td width="175">操作</td>
 		</tr>
 		<?php
 			$category = new table_class("smg_category");
-			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'priority'),18);
+			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'platform,priority'),18);
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){
@@ -60,8 +61,8 @@
 					<td><?php echo $record[$i]->name;?></td>
 					<td><input type="text" class="priority" name="<?php echo $record[$i]->id;?>" value="<?php if($record[$i]->priority!=100){echo $record[$i]->priority;}?>" style="width:30px;"></td>
 					<td><?php for($j=0;$j<$count_record;$j++){if($record[$j]->id==$record[$i]->parent_id){echo $record[$j]->name;break;}}?></td>
-					<td><?php echo $category_name;?></td>
-					<?php if($type=="news"){?><td><input type="text" class="short_title" name="<?php echo $record[$i]->id;?>" value="<?php if($record[$i]->short_title_length!=100){echo $record[$i]->short_title_length;}?>" style="width:30px;"></td><?php }?>
+					<td><?php echo $record[$i]->platform;?></td>
+					<?php if($type=="news"){?><td><input type="text" class="short_title" name="<?php echo $record[$i]->id;?>" value="<?php echo $record[$i]->short_title_length;?>" style="width:30px;"></td><?php }?>
 					<td><a href="category_add.php?id=<?php echo $record[$i]->id;?>&type=<?php echo $type?>">添加子类别</a>　<a href="category_edit.php?id=<?php echo $record[$i]->id;?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
 				</tr>
 		<?php
