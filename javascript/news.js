@@ -1,12 +1,6 @@
-$(document).ready(function(){
-		edit.document.designMode="on"; 
+	$(document).ready(function(){
+		display_fqbq('fqbq','fck');
 	})
-	
-	function face(i)
-	{	
-	   edit.document.body.innerHTML+="<img width=20 height=20 src='/images/fqbq/"+i+".gif' />";
-	}
-	$("#edit").blur(function(){document.getElementById("comment").value=edit.document.body.innerHTML;})
 	$("#r_t").click(function(){location.href="news_sub.php";})
 	function ChangeTab(num)
 	{
@@ -55,3 +49,4 @@ $(document).ready(function(){
 			}
 		})
 	}
+	
