@@ -7,6 +7,9 @@
 	}
 	
 	$news->update_attributes($_POST['news'],false);
+	if($news->is_dept_adopt!=1){
+		$news->is_dept_adopt = 0;
+	}
 	$category = new table_class('smg_category');
 	if($news->category_id!=''){
 		$category->find($news->category_id);
@@ -136,7 +139,7 @@
 		
 	}
 	
-	redirect('news_list.php?category='.$news->category_id);
+	redirect('news_list.php?category='.$news->dept_category_id);
 	#var_dump($news);
 	
 ?>
