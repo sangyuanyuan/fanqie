@@ -42,6 +42,7 @@
 				</div>
 			</p>
 		</div>
+		<iframe id="iframe" name="iframe"></iframe>
 		<?php show_fckeditor('fck');?>
 	</body>
 </html>
@@ -60,9 +61,11 @@
 		//alert($('#div1 #div2').html());
 		display_fqbq('div2','fck1');
 	});
+	iframe.document.designMode = "on";
 	$('#test_form').submit(function(){
 		return false;
 	});
+	
 function str_length(str){
 	return   str.replace(/[^\x00-\xff]/g,"**").length;
 }

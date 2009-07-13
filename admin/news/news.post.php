@@ -16,12 +16,13 @@
 	
 	$pos = strpos(strtolower($news->content), '<img ');
 	if($pos !== false){
-		$pos_end = strpos(strtolower($news->content), '> ',$pos);
+		$pos_end = strpos(strtolower($news->content), '>',$pos);
 		$imgstr = substr($news->content, $pos,$pos_end -$pos +1);
-		alert($imgstr);
+		#alert($pos_end .';'.$imgstr);
 		$pos = strpos($imgstr, 'src="');
 		$pos_end = strpos($imgstr, '"',$pos + 5);
-		$src = substr($imgstr, $pos+5,$pos_end-$pos - 3);
+		$src = substr($imgstr, $pos+5,$pos_end - $pos - 5);
+		alert($src);
 		$news->photo_src = $src;
 		$news->is_photo_news = 1;
 	}else{

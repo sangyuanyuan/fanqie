@@ -134,7 +134,7 @@ FCKConfig.ToolbarSets["Front"] = [
 ] ;
 
 FCKConfig.ToolbarSets["Title"] = [
-	['FontSize','TextColor','RemoveFormat'],
+	['FontSize','TextColor','RemoveFormat','Bold'],
 ] ;
 
 FCKConfig.EnterMode = 'p' ;			// p | div | br
