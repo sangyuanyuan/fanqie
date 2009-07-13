@@ -36,9 +36,7 @@
 	if ($news->priority == ""){
 		$news->priority = 100;
 	}
-	if($news->is_adopt == ''){
-		$news->is_adopt = 0;
-	}
+	
 	if($_FILES['video_src']['name'] != ''){
 		$upload = new upload_file_class();
 		$upload->save_dir = '/upload/video/';
@@ -73,6 +71,9 @@
 		$news->click_count = 0;					
 		$news->is_deleted = 0;
 		$news->can_commentable = 1;
+		if($news->is_adopt == ''){
+			$news->is_adopt = 0;
+		}
 		$news->save();
 		if($_POST['delete_subject']!= 2)	{				
 			if($_POST['subject_id']){
@@ -101,10 +102,7 @@
 		//update news
 		if($_POST['news']['forbbide_copy']==''){
 			$news->forbbide_copy=0;
-		}
-		if($_POST['news']['is_adopt']==''){
-			$news->is_adopt=0;
-		}
+		}		
 		$news->last_edited_at = date("Y-m-d H:i:s");
 		$news->save();
 		if($_POST['delete_subject'] == 1){	
