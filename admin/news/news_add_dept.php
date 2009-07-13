@@ -1,7 +1,7 @@
 <?php
 	require_once('../../frame.php');
 	$role = judge_role();
-	$dept_id = $_REQUEST['dept_id'];
+	$dept_id = $_COOKIE['smg_user_dept'];
 	$type = $_REQUEST['type'];
 	
 	
@@ -21,42 +21,31 @@
 		css_include_tag('admin','thickbox');
 		use_jquery();
 		validate_form("news_add");
-		js_include_tag('smg_category_class.js','admin/news_add','thickbox');
-		
+		js_include_tag('smg_category_class.js','admin/news_add_dept','thickbox');		
 	?>
 </head>
 <?php 
 //initialize the categroy;
-	if($role=='admin'){
-		$url = 'index.php';
-		$priority = 'priority';
-		$is_adopt = 'is_adopt';
-		if($type==""){	
-			$category = new smg_category_class('news');
-			$category->echo_jsdata();
-		}else{
-			$category = new smg_category_class('news',null,$type);
-			$category->echo_jsdata();
-		}
-	}else{
+
 		$url = 'news_list.php';
 		$priority = 'dept_priority';
 		$is_adopt = 'is_dept_adopt';
 		if($type==""){	
 			//echo $dept_id;
 			$category = new smg_category_class('news',$dept_id);
-			$category->echo_jsdata();
+			//$category->echo_jsdata('dept_category');
 		}else{
 			$category = new smg_category_class('news',$dept_id,$type);
-			$category->echo_jsdata();
+			//$category->echo_jsdata('dept_category');
 		}
-		$category = new smg_category_class('news');
+		$category1 = new smg_category_class('news');
 		$category->echo_jsdata('dept_category');
-	}
+		$category1->echo_jsdata('category');
+		
 	
 ?>
 <body style="background:#E1F0F7">
-	<form id="news_add" enctype="multipart/form-data" action="news.post.php" method="post"> 
+	<form id="news_add" enctype="multipart/form-data" action="news_dept.post.php" method="post"> 
 	<table width="795" border="0">
 		<tr class=tr1>
 			<td colspan="6" width="795">　　添加新闻</td>
@@ -71,44 +60,22 @@
 		
 		<?php if($role=='dept_admin'){?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>是否推荐到集团首页</td><td align="left">　<input type="checkbox" name=is_recommend id=is_recommend></td>
+			<td>是否推荐到集团首页</td><td align="left">　<input type="checkbox" id=is_recommend></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" >
 			<td>首页分类</td>
-			<td align="left" class="newsselect1" >　				
-			<span id="td_category_dept"></span>
+			<td align="left" class="newsselect1" >			
+			<span id="td_category_index"></span>
 			</td>
 		</tr>
 		<input type="hidden" name="news[dept_id]"  value="<?php echo $dept_id;?>">
-		<?php }else{?>
-		<tr class=tr3 id="index_category">
-			<td>发表部门</td>
-			<td align="left">
-				<select id=select name="news[dept_id]">
-
-					<option value="7" >总编室</option>
-					<?php
-						for($i=0;$i<count($rows_dept);$i++){
-							if($rows_dept[$i]->id!='7'){
-					?>
-						<option value="<?php echo $rows_dept[$i]->id;?>" ><?php echo $rows_dept[$i]->name;?></option>
-					<?php } }?>
-				</select>
-			</td>
-		</tr>
-		<?php }?>
+		<?php }?>		
 		<tr class=tr4 id=newsshow3 >
 			<td>类别</td>
 			<td align="left" id="td_newstype">
 				<input type="radio" name="news[news_type]" value="1" checked="checked">默认
 				<input type="radio" name="news[news_type]" value="2">文件
 				<input type="radio" name="news[news_type]" value="3">URL
-			</td>
-		</tr>
-		<tr class=tr4>
-			<td>头条控制</td>
-			<td align="left" id="td_headline_type">
-				<input type="radio" name="news[sub_headline]" value="1" checked="checked">展示简介 <input type="radio" name="news[sub_headline]" value="2">展示子头条　<a href="sub_headline.php?width=650&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
 			</td>
 		</tr>
 		<tr class=tr4 id=newsshow3 >
@@ -124,7 +91,7 @@
 				?>
 				</select>　　/　　
 				<input type="text" size="20" name=news[keywords]>(空格分隔)　　/　　
-				<input type="text" size="10" name=news[priority] class="number">(0~100)</td>
+				<input type="text" size="10" name=news[dept_priority] class="number">(0~100)</td>
 		</tr>		
 		
 		<tr class=tr3 id=tr_file_name >
@@ -157,7 +124,7 @@
 		</tr>
 		<tr id=newsshow3  class="normal_news tr4">
 			<td>其他选项</td>
-			<td align="left"><input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  <input type="checkbox" name="news[is_adopt]" value="1">直接发布  <input type="checkbox" name="news[image_flag]" value="1">图片提示　<a style="color:blue;" href="filte_news.php?width=650&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
+			<td align="left"><input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  <input type="checkbox" name="news[is_dept_adopt]" value="1">直接发布  <input type="checkbox" name="news[image_flag]" value="1">图片提示　<a style="color:blue;" href="filte_news.php?width=650&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
 		</tr>
 		<tr id=newsshow1  class="normal_news tr3">
 			<td height=100>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
@@ -171,17 +138,11 @@
 	</table>
 		<input type="hidden" name="news[related_news]" value="" id="hidden_related_news">
 		<input type="hidden" name="news[sub_news_id]" value="" id="hidden_sub_headlines">
-		<input type="hidden" name="news[category_id]" id="category_id">
-		<?php if($role=='admin'){
-		?>
-		<input type="hidden" name="news[is_recommend]" value="1">
-		<?php
-		}else{
-		?>
-		<input type="hidden" name="news[is_recommend]" value="0">
-		<input type="hidden" name="news[dept_category_id]" id="dept_category_id">
-		<?
-		} ?>	
+		<input type="hidden" name="news[category_id]" id="category_id_index">
+
+		<input type="hidden" name="news[is_recommend]" id="hidden_is_recommend" value="0">
+		<input type="hidden" name="news[dept_category_id]" id="category_id">
+	
 		<input type="hidden" name="category_add" id="category_add" value="">
 		<input type="hidden" name="subject_id" value="" id="hidden_subject_id">
 		<input type="hidden" name="subject_category_id" value="" id="hidden_subject_category_id">		

@@ -20,17 +20,18 @@ function smg_category_item_class(id,name,parent_id,priority,short_title_length){
 }
 
 function smg_category_class(){
-	this.items = new Array();
+	var items = new Array();
+	this.class_name;
 	this.push = function(item){
-		this.items.push(item);
+		items.push(item);
 	}
 	this.get_sub_category = function(parent){
 		parent = parent || 0;
 		var ret = new Array();
-		var icount = this.items.length;
+		var icount = items.length;
 		for(i=0;i<icount ; i++){
-			if (this.items[i].parent_id == parent){
-				ret.push(this.items[i]);
+			if (items[i].parent_id == parent){
+				ret.push(items[i]);
 			}
 		}
 		return ret;
@@ -42,8 +43,8 @@ function smg_category_class(){
 		parent = item.parent_id;
 		var icount = this.items.length;
 		for(i=0;i<icount ; i++){
-			if (this.items[i].parent_id == parent){
-				ret.push(this.items[i]);
+			if (items[i].parent_id == parent){
+				ret.push(items[i]);
 			}
 		}
 		return ret;
@@ -51,17 +52,18 @@ function smg_category_class(){
 	
 	this.get_item = function(id){
 		
-		var icount = this.items.length;
+		var icount = items.length;
 		
 		for(i=0;i<icount ; i++){
 			
-			if (this.items[i].id == id){
-				return this.items[i];
+			if (items[i].id == id){
+				return items[i];
 			}
 		}
 	}
 	
 	this.display_select=function(name,ob,id,object,callback){
+		this.class_name = name;
 		var othis = this;
 		if(object){
 			t_parent_id = $(object).attr('parent_id');			
@@ -75,7 +77,7 @@ function smg_category_class(){
 			}else{
 				this.echo_category(ob,name,0,-1);
 				$(ob).find('select:first').change(function(){
-					category.display_select(name,$(ob),$(this).attr('value'),'',callback);	
+					othis.display_select(name,$(ob),$(this).attr('value'),'',callback);	
 					if(callback){
 						tid = $(this).val();
 						if(tid != -1){
@@ -89,7 +91,7 @@ function smg_category_class(){
 									
 				});		
 				$(ob).find('select').not($(ob).find('select:first')).change(function(){
-					category.display_select(name,$(ob),$(this).attr('value'),this,callback);
+					othis.display_select(name,$(ob),$(this).attr('value'),this,callback);
 					if(callback){
 						tid = $(this).val();
 						if(tid != -1){
@@ -111,7 +113,7 @@ function smg_category_class(){
 			tmp_id = id;
 			while(true){
 				
-				var item = this.get_item(tmp_id);
+				var item = othis.get_item(tmp_id);
 				tparent.push(item.parent_id);
 				if(item.parent_id == 0) break;
 				tmp_id = item.parent_id;
@@ -128,7 +130,7 @@ function smg_category_class(){
 		
 		this.echo_category(ob,name,item1,-1);
 		$(ob).find('select:first').change(function(){
-			category.display_select(name,$(ob),$(this).attr('value'),'',callback);
+			othis.display_select(name,$(ob),$(this).attr('value'),'',callback);
 			if(callback){
 						tid = $(this).val();
 						if(tid != -1){
@@ -141,7 +143,7 @@ function smg_category_class(){
 					}
 		});		
 		$(ob).find('select').not($(ob).find('select:first')).change(function(){
-			category.display_select(name,$(ob),$(this).attr('value'),this,callback);
+			othis.display_select(name,$(ob),$(this).attr('value'),this,callback);
 			if(callback){
 						tid = $(this).val();
 						if(tid != -1){

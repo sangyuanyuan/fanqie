@@ -74,8 +74,8 @@ class smg_category_class
 		<script>
 			var <?php echo $var_name;?> = new smg_category_class();
 			<?php foreach ($this->items as $v) {
-				echo " var tmpitem = new smg_category_item_class('$v->id','$v->name','$v->parent_id','$v->priority','$v->short_title_length');";
-				echo "$var_name.push(tmpitem);";
+				#echo " var tmpitem = new smg_category_item_class('$v->id','$v->name','$v->parent_id','$v->priority','$v->short_title_length');";
+				echo "$var_name.push(new smg_category_item_class('$v->id','$v->name','$v->parent_id','$v->priority','$v->short_title_length'));";
 			}?>
 		</script>
 		<?php

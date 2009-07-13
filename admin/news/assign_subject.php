@@ -79,17 +79,17 @@
 					return false;
 				}
 				str = $('#chosen_subject_name').attr('value') + '<a href="#" id="delete_subject" style="color:blue">删除</a>';
-				str += '<input type="hidden" name="subject_id" value="' + subject_id +'">' ;
-				str += '<input type="hidden" name="subject_category_id" value="'+subject_category_id +'">';
+				$('#hidden_subject_id').val(subject_id);
+				$('#hidden_subject_category_id').val(subject_category_id);
+				$('#hidden_delete_subject').val('1');
 				//alert($('#chosen_subject_id').attr('value'));
 				$('#td_subject').html(str);
 				tb_remove();
 				$('#delete_subject').click(function(e){
 					e.preventDefault();
 					str = '<a style="color:blue;" href="assign_subject.php?width600&height=400" class="thickbox" id="a_assign_subject">关联专题</a>';
-					str += '<input type="hidden" name="subject_id" value="">';
-					str += '<input type="hidden" name="subject_category_id" value="">';
 					$('#td_subject').html(str);
+					$('#hidden_delete_subject').val('2');				
 					tb_init('#a_assign_subject');
 				});
 			}
