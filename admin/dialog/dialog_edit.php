@@ -36,18 +36,18 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">上传图片</td>
-			<td width="695" align="left">　<?php if($dialog->photo_url!=''){?><img src="<?php echo $dialog->photo_url;?>" width="50" height="50" border="0"><?php }?><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file"></td>
+			<td width="695" align="left">　<?php if($dialog->photo_url!=''){?><a href="<?php echo $dialog->photo_url;?>" target="_blank" title="点击查看大图"><img src="<?php echo $dialog->photo_url;?>" width="68" height="50" border="0" style="margin-right:10px;"></a><?php }?><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file"></td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">上传视频</td>
-			<td width="695" align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="5000000000"> <input name="video" id="video" type="file">(请上传视频，并且不要大于500M)</td>
+			<td width="695" align="left">　<?php if($dialog->video_url!=''){?><a href="<?php echo $dialog->video_url;?>" target="_blank">点击查看视频</a><?php }?><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"> <input name="video" id="video" type="file">(请上传视频，并且不要大于500M)</td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">领导工号</td>
 			<td width="695" align="left">　<input type="text" size="50" name=post[leader_ids] value="<?php echo $dialog->leader_ids?>" class="required">(请用","分隔开领导工号,比如:001,002)</td>
 		</tr>
 		<tr class="tr3">
-			<td width="100"><span style="cursor:pointer; color:#0033CC; text-decoration:underline" onClick="dialog_show_leaders()">检查领导工号</span></td>
+			<td width="100"><span style="cursor:pointer; color:#0033CC; text-decoration:underline" class="check_user" id="leader">检查领导工号</span></td>
 			<td width="695" align="left">　<span id=show_leaders></span></td>
 		</tr>
 		<tr class="tr3">
@@ -55,7 +55,7 @@
 			<td width="695" align="left">　<input type="text" size="50" name=post[master_ids] value="<?php echo $dialog->master_ids?>" class="required">(请用","分隔开主持人工号,比如:001,002)</td>
 		</tr>
 		<tr class="tr3">
-			<td width="100"><span style="cursor:pointer; color:#0033CC; text-decoration:underline" onClick="dialog_show_masters()">检查主持人工号</span></td>
+			<td width="100"><span style="cursor:pointer; color:#0033CC; text-decoration:underline" class="check_user" id="master">检查主持人工号</span></td>
 			<td width="695" align="left">　<span id=show_masters></span></td>
 		</tr>
 
@@ -92,4 +92,16 @@
 			dateFormat: 'yy-mm-dd'
 		}
 	);
+	
+	$("#leader").click(function(){
+		$.post("dialog.post.php",{'type':'check_user','id':$(this).parent().parent().prev().children().children().attr('value')},function(data){
+			$("#show_leaders").html(data);
+		})
+	});
+	
+	$("#master").click(function(){
+		$.post("dialog.post.php",{'type':'check_user','id':$(this).parent().parent().prev().children().children().attr('value')},function(data){
+			$("#show_masters").html(data);
+		})
+	})
 </script>

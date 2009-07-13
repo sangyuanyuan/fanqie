@@ -8,12 +8,12 @@
 	$db = get_db();
 	$sql = 'select * from smg_dept';
 	$rows_dept = $db->query($sql);
+	$c = array("is_adopt=0");
 	if($dept_id!=''){
 		array_push($c, "dept_id=$dept_id");
 	}
 	$category_id = category_id_by_name('我要报料');
 	array_push($c, "category_id=$category_id");
-	array_push($c, "is_adopt=0");
 	if($title){
 		$record = search_content($title,'smg_news',implode(' and ', $c),20,'priority asc,created_at desc');
 	}else{
@@ -39,7 +39,6 @@
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
 			<td colspan="6">
-				　<a href="news_add.php">添加新闻</a>
 				搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
 				<select id=dept style="width:100px" class="select_new">
 					<option value="">发表部门</option>
@@ -52,7 +51,7 @@
 		</tr>
 		<tr class="tr2">
 
-			<td width="55">删/退</td><td width="220">短标题</td><td width="100">发布者工号</td><td width="100">所属类别</td><td width="120">发布时间</td><td width="200">操作</td>
+			<td width="55">删/退</td><td width="220">短标题</td><td width="100">所属部门</td><td width="100">发布者工号</td><td width="120">发布时间</td><td width="200">操作</td>
 		</tr>
 		<?php
 			//--------------------
