@@ -21,8 +21,8 @@ $(function(){
 			return false;
 		}	
 		var oEditor = FCKeditorAPI.GetInstance('news[short_title]') ;
-		var title = oEditor.GetHTML();
-		if(title==""){
+		var short_title = oEditor.GetHTML();
+		if(short_title==""){
 			alert("请输入短标题！");
 			return false;
 		}
@@ -47,8 +47,12 @@ $(function(){
 			alert('请选择分类!');
 			return false;
 		}
-		//alert(category_id);
 		$('#category_id').attr('value',category_id);
+		var item = category.get_item(category_id);
+		if(str_length(short_title) > item.short_title_length){
+			alert('短标题太长,请重新输入!');
+			return false;
+		}	
 		news_type=  $('#td_newstype').find('input:checked').attr('value');
 		if(news_type == 3){
 			if($('#target_url input').attr('value')== ''){
@@ -129,4 +133,8 @@ function remove_sub_headlines(id){
 			sub_headlines.splice(i,1);
 		}
 	}
+}
+
+function str_length(str){
+	return   str.replace(/[^\x00-\xff]/g,"**").length;
 }

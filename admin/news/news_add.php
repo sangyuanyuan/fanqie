@@ -62,7 +62,7 @@
 			<td colspan="6" width="795">　　添加新闻</td>
 		</tr>
 		<tr class=tr3>
-			<td width="130">标题/短标题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50",300);?>　/　<?php show_fckeditor('news[short_title]','Title',false,"50",300);?><span id="max_len"></span></td>
+			<td width="130">标题/短标题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50",'',300);?>　/　<?php show_fckeditor('news[short_title]','Title',false,"50",'',300);?><span id="max_len"></span></td>
 		</tr>
 		<tr class=tr3>
 			<td>分　类</td>
@@ -161,19 +161,13 @@
 			<td>其他选项</td>
 			<td align="left"><input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  <input type="checkbox" name="news[is_adopt]" value="1">直接发布　<a style="color:blue;" href="filte_news.php?width=800&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
 		</tr>
-<<<<<<< HEAD:admin/news/news_add.php
-		<tr id=newsshow1  class="normal_news tr3">
-			<td height=100>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
-		</tr>
-		<tr id=newsshow1 class="normal_news tr3">
-			<td height=265>新闻内容</td><td><?php show_fckeditor('news[content]','Admin',true,"265");?></td>
-=======
+
 		<tr class=tr3 id=newsshow1  class="normal_news">
 			<td>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
 		</tr>
 		<tr class=tr3 id=newsshow1 class="normal_news">
 			<td>新闻内容</td><td><?php show_fckeditor('news[content]','Admin',true,"255");?></td>
->>>>>>> a649a3b5bb76a3d3033015232ce7bf1c23c27b59:admin/news/news_add.php
+
 		</tr>
 		<tr class=tr3>
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布新闻"></td>

@@ -69,7 +69,17 @@
 			<td>URL</td><td align="left">　<input type="text" size="50" name=news[target_url] value="<?php echo $news->target_url; ?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=tr_file_name >
-			<td>上传文件</td><td align="left">　<input type="file" size="50" name=file_name value="<?php echo $news->file_name;?>"></td>
+			<td>上传文件</td>
+			<td align="left">
+				　<input type="file" size="50" name=file_name value="<?php echo $news->file_name;?>">
+				<?php
+					if($news->news_type == 2 && $news->file_name){
+						?>
+						　<a href="<?php echo $news->file_name;?>" target="_blank" style="color:blue;">查看</a>
+						<?php
+					}
+				?>
+			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>新闻标签</td>
@@ -193,19 +203,11 @@
 		sub_headlines = $('#hidden_sub_headlines').attr('value').split(",");
 		related_news = $('#hidden_related_news').attr('value').split(",");
 	});
-	$('#test').click(function(e){
-		e.preventDefault();
-		//category.echo_category($('#category_select'),'test',0,20);
-		//category.display_select('test',$('#category_select'),30);
-		alert($('#td_newstype').find('input:checked').attr('value'));
-	});	
+
 	$('#select').click(function(){
 		$('#select ~ .cate').remove();
 	});
-	//category.echo_category($('#category_select'),'test',0,-1);
-	//$('#category_select select').change(function(){
-	//	category.display_select('test',$('#category_select'),$(this).attr('value'),this);
-	//});
+
 	
 
 </script>
