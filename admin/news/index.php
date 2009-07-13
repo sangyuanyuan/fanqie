@@ -6,7 +6,6 @@
 	$title = $_REQUEST['title'];
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
 	$dept_id = $_REQUEST['dept'];
-	echo $dept_id;
 	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
 	#$sql = 'select * from smg_category';
