@@ -3,32 +3,28 @@
 	$user = judge_role('dept_admin');
 	$dept_id = $user->dept_id;
 	
-	$type = $_REQUEST['type'];
-	$conditions = null;
-	if($_REQUEST['key1']!=""){
-		$conditions[] = 'title  like "%'.trim($_REQUEST['key1']).'%"';
+	$title = $_REQUEST['title'];
+	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
+	$is_adopt = $_REQUEST['adopt'];
+	$db = get_db();
+	$sql = 'select * from smg_dept';
+	$rows_dept = $db->query($sql);
+	$c = array();
+	if($title!= ''){
+		array_push($c, "title like '%".trim($title)."%' or keywords like '%".trim($title)."%' or description like '%".trim($title)."%'");
 	}
-	if($_REQUEST['key2']!=""){
-		$conditions[] = "is_recommend=".$_REQUEST['key2'];
+	if($category_id > 0){
+		array_push($c, "dept_category_id=$category_id");
 	}
-	if($_REQUEST['key3']!=""){
-		$conditions[] = "dept_category_id=".$_REQUEST['key3'];
+	if($is_recommend!=''){
+		array_push($c, "is_recommend=$is_recommend");
 	}
-	if($_REQUEST['key4']!=""){
-		$conditions[] = "is_dept_adopt=".$_REQUEST['key4'];
+	if($is_adopt!=''){
+		array_push($c, "is_dept_adopt=$is_adopt");
 	}
-	$conditions[] = "dept_id=".$dept_id;
+	array_push($c, "dept_id=$dept_id");
 	$image = new smg_images_class();
-	//var_dump($conditions);
-	if($conditions!=null){
-		$conditions = implode(' and ',$conditions);
-		$images = $image->paginate("all",array('conditions' => $conditions,'order' => 'dept_priority'),12);
-	}else{
-		$images = $image->paginate("all",array('order' => 'dept_priority'),12);
-	}
-	$category = new table_class("smg_category_dept");
-	$rows_category = $category->find("all",array('conditions' => 'category_type="picture" and dept_id='.$dept_id));
-	//上述查询语句条件是类型是图片父类不是4种大类
+	$images = $image->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'dept_priority asc,created_at desc'),12);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -40,32 +36,30 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub');
+		js_include_tag('admin_pub','smg_category_class');
+		$category = new smg_category_class('picture',$dept_id);
+		$category->echo_jsdata();		
 	?>
 </head>
 <body>
 	<table width="795" border="0">
 		<tr class=tr1>
 			<td colspan="5" width="795">　　　<a href="picture_add.php?dept_id=<?php echo $dept_id;?>" style="color:#0000FF">发布图片</a>　　　　　　
-			搜索　<input id=newskey1 type="text" value="<? echo $_REQUEST['key1']?>">
-			<select id=newskey2 style="width:100px" class="select">
+			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
+			<select id=recommend style="width:100px" class="select_new">
 				<option value="">推荐状态</option>
-				<option value="1" <? if($_REQUEST['key2']=="1"){?>selected="selected"<? }?>>已推荐</option>
-				<option value="0" <? if($_REQUEST['key2']=="0"){?>selected="selected"<? }?>>未推荐</option>
-				<option value="2" <? if($_REQUEST['key2']=="2"){?>selected="selected"<? }?>>被退回</option>
+				<option value="1" <? if($_REQUEST['recommend']=="1"){?>selected="selected"<? }?>>已推荐</option>
+				<option value="0" <? if($_REQUEST['recommend']=="0"){?>selected="selected"<? }?>>未推荐</option>
+				<option value="2" <? if($_REQUEST['recommend']=="2"){?>selected="selected"<? }?>>被退回</option>
 			</select>
-			<select id=newskey3 style="width:100px" class="select">
-				<option value="">所属类别</option>
-				<?php for($i=0;$i<count($rows_category);$i++){?>
-				<option value="<?php echo $rows_category[$i]->id; ?>" <?php if($rows_category[$i]->id==$_REQUEST['key3']){?>selected="selected"<? }?>><?php echo $rows_category[$i]->name; ?></option>
-				<? }?>
-			</select>
-			<select id=newskey4 style="width:100px" class="select">
+			<span id="span_category"></span>
+			<select id=adopt style="width:90px" class="select_new">
 				<option value="">发布状况</option>
-				<option value="1" <? if($_REQUEST['key4']=="1"){?>selected="selected"<? }?>>已发布</option>
-				<option value="0" <? if($_REQUEST['key4']=="0"){?>selected="selected"<? }?>>未发布</option>
+				<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
+				<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
 			</select>
-			<input type="button" value="搜索" id="search" style="border:1px solid #0000ff; height:21px">
+			<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
+			<input type="hidden" value="<?php echo $category_id;?>" id="category">
 			</td>
 		</tr>
 	</table>
@@ -77,7 +71,7 @@
 			<div class=content>
 				<?php if($images[$i]->is_recommend=='0'){echo '未推荐';}elseif($images[$i]->is_recommend=='1'){echo '已推荐';}elseif($images[$i]->is_recommend=='2'){echo '被退回';}?>
 			</div>
-			<div class=content><a href="?key3=<?php echo $images[$i]->dept_category_id;?>" style="color:#0000FF"><?php for($k=0;$k<count($rows_category);$k++){if($rows_category[$k]->id==$images[$i]->dept_category_id){echo $rows_category[$k]->name;}}?></a></div>
+			<div class=content><a href="?category=<?php echo $images[$i]->dept_category_id;?>" style="color:#0000FF"><?php echo $category->find($images[$i]->dept_category_id)->name; ?></a></a></div>
 			<div class=content style="height:20px">
 				<?php if($images[$i]->is_dept_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $images[$i]->id;?>">撤消</span><? }?>
 				<?php if($images[$i]->is_dept_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $images[$i]->id;?>">发布</span><? }?>
@@ -102,5 +96,22 @@
 </body>
 </html>
 
+<script>
+	$(function(){
+		category.display_select('category_select',$('#span_category'),<?php echo $category_id;?>,'',function(id){
+			$('#category').val(id);
+			category_id = $('.category_select:last').val();
+			if(id==-1){
+				window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category=&adopt="+$("#adopt").attr('value');
+			}
+			if(category_id != -1){
+				window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			}
+		
+		});
+		
+		
+	});
+</script>
 
 

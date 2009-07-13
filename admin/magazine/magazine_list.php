@@ -20,6 +20,7 @@
 	if($is_adopt!=''){
 		array_push($c, "is_adopt=$is_adopt");
 	}
+	array_push($c, "is_recommend=1");
 	if($title){
 		$magazine_rows = search_content($title,'smg_magazine',implode(' and ', $c),20,'priority asc,create_time desc');
 	}else{
@@ -87,9 +88,9 @@
 				<?php }?>
 				<a href="magazine_edit.php?id=<?php echo $magazine_rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
 				<?php if($magazine_rows[$i]->dept_id!="7"){?>
-					<span style="cursor:pointer" class="return" name="<?php echo $magazine_rows[$i]->id;?>">退回</span>
+					<span style="cursor:pointer;color:#ff0000;" class="return" name="<?php echo $magazine_rows[$i]->id;?>">退回</span>
 				<?php }else{?>
-					<span style="cursor:pointer" class="del" name="<?php echo $magazine_rows[$i]->id;?>">删除</span>
+					<span style="cursor:pointer;color:#ff0000;" class="del" name="<?php echo $magazine_rows[$i]->id;?>">删除</span>
 				<?php }?>
 				<a href="/admin/comment/comment.php?id=<?php echo $magazine_rows[$i]->id;?>&type=magazine" style="color:#000000; text-decoration:none">评论</a>
 				<input type="text" class="priority" name="<?php echo $magazine_rows[$i]->id;?>" value="<?php if($magazine_rows[$i]->priority!=100){echo $magazine_rows[$i]->priority;}?>" style="width:40px;">
@@ -121,22 +122,6 @@
 				window.location.href = "?title=" + $("#title").attr('value') + "&dept=" + $("#dept").attr('value') + "&category=" + $("#category").attr('value') + "&adopt=" + $("#adopt").attr('value');
 			}
 		})
-		
-		var all_selected = false;
-		$('#select_all').click(function(){
-			all_selected = !all_selected;
-			$('input:checkbox').attr('checked',all_selected);
-		});
-		$('#button_delete').click(function(){
-			$.post('delete_news.php',$('input:checkbox').serializeArray(),function(data){
-				window.location.reload();
-			});
-		});
-		$('#title').keydown(function(e){
-			if(e.keyCode == 13){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-			}
-		});
 	});
 </script>
 
