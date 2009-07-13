@@ -64,6 +64,9 @@ function smg_category_class(){
 	
 	this.display_select=function(name,ob,id,object,callback){
 		this.class_name = name;
+		if(id == 0 || id == '') {
+			id = -1;
+		}
 		var othis = this;
 		if(object){
 			t_parent_id = $(object).attr('parent_id');			
@@ -71,7 +74,7 @@ function smg_category_class(){
 
 		$(ob).find('select').remove();
 
-		if(id==-1){						
+		if(id==-1 || id == 0 || id== ""){						
 			if(object){				
 				this.display_select(name,ob,t_parent_id,'',callback);
 			}else{
@@ -146,7 +149,7 @@ function smg_category_class(){
 			othis.display_select(name,$(ob),$(this).attr('value'),this,callback);
 			if(callback){
 						tid = $(this).val();
-						if(tid != -1){
+						if(tid != -1 || id == 0 || id== ""){
 							var item = othis.get_item(tid);
 							max_len = item.short_title_length;
 						}else{

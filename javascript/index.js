@@ -4,7 +4,7 @@ $(function(){
 			var video_item=$(this).attr('id');
 			$(".item").css('background','url(/images/index/btn2.jpg) no-repeat');
 			$(".item").css('color','#9f9f9f');
-			$(".content").hide();
+			$(".content_tlt").hide();
 			$(".list").hide();
 			$(this).css('background','url(/images/index/btn1.jpg) no-repeat');
 			$(this).css('color','#ffffff');
@@ -32,6 +32,32 @@ $(function(){
 			$("#list_tlb"+num).show();
 
 	});	
+
+	$(".menu_trrt").mouseover(function(){
+			
+			$(".menu_trrt").css('background','url(/images/index/btn8.jpg) no-repeat');
+			$(".menu_trrt").css('font-weight','normal');
+			$(this).css('background','url(/images/index/btn7.jpg) no-repeat');
+			$(this).css('font-weight','bold');
+			$(".content_trrt").hide();
+			var num=$(this).attr('param');
+			$("#content_trrt"+num).show();
+
+	});	
+
+	$(".menu_trrb").mouseover(function(){
+			
+			$(".menu_trrb").css('background','url(/images/index/btn8.jpg) no-repeat');
+			$(".menu_trrb").css('font-weight','normal');
+			$(this).css('background','url(/images/index/btn7.jpg) no-repeat');
+			$(this).css('font-weight','bold');
+			$(".content_trrb").hide();
+			var num=$(this).attr('param');
+			$("#content_trrb"+num).show();
+
+	});	
+
+
 		
 });
 
