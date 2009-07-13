@@ -156,7 +156,7 @@ include("inc/topbar.inc.php");
                   <td class="yel">
                   <?php
                   		$db = get_db();
-                  		$sql = 'select * from smg_comment where resource_type=="yhdjs" order by created_at';
+                  		$sql = 'select * from smg_comment where resource_type="yhdjs" order by created_at';
 						$records = $db->query($sql);
 						$count = count($records);
                   	 for($i=0;$i<$count;$i++){?>
@@ -514,7 +514,7 @@ include("inc/topbar.inc.php");
                 <td height="31" background="images/rig_05.jpg"><table width="226" height="20" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                   <?php
-                  		$records = show_content('smg_news','news','纪实频道','文明采风','8');
+                  		$records = show_content('smg_news','news','纪实频道','群团乐趣','1');
 						$count = count($records);
                   ?>
                     <td width="37" height="20">&nbsp;</td>
@@ -527,10 +527,10 @@ include("inc/topbar.inc.php");
                   <tr>
                     <td width="146" height="25" class="m-t">[群团乐趣]</td>--------------------------------------------------------------
                     
-                    <td width="114" rowspan="2" align="center"><img src="<? echo $wmlv->items[0]->photourl; ?>" width="80" height="80"></td>
+                    <td width="114" rowspan="2" align="center"><img src="<? echo $records[0]->photo_src; ?>" width="80" height="80"></td>
                   </tr>
                   <tr>
-                    <td class="nr-d"><a target="_blank" href="news.php?id=<? echo $wmlv->items[0]->id;?>" class="whi"><? echo $wmlv->items[0]->title;?></a></td>
+                    <td class="nr-d"><a target="_blank" href="news.php?id=<? echo $records[0]->id;?>" class="whi"><? echo $records[0]->title;?></a></td>
                   </tr>
                   <tr>
                     <td height="18" colspan="2" class="nr-d"><img src="images/line.jpg" width="251" height="14"></td>
@@ -538,11 +538,17 @@ include("inc/topbar.inc.php");
                   </table>
                   <table width="251" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                      <td class="whi"><? for($i=1;                   	
-		              					<a target="_blank" href="news.php?id=<? echo $wmlv->items[$i]->id;?>" class="whi">・<? echo $wmlv->items[$i]->title;?></a><br/><? } ?>
-		              					<? for($i=0;$i<4;$i<4;$i++){?>$i++){?>                   	
-		              					<a target="_blank" href="news.php?id=<? echo $wmlv2->items[$i]->id;?>" class="whi">・<? echo $wmlv2->items[$i]->title;?></a><br/><? } ?>
-		              					</td>
+                      <td class="whi">
+                      		<?php 
+								$records = show_content('smg_news','news','纪实频道','文明采风','7');
+								$count = count($records);
+								for($i=0;$i<$count;$i++) {
+							?>
+								<a target="_blank" href="news.php?id=<? echo$records[$i]->id;?>" class="whi">・<? echo $records[$i]->title;?></a><br/>
+							<?php 
+								}
+							?>   
+					  </td>
                     </tr>
                   </table>
                   <table width="251" border="0" cellspacing="0" cellpadding="0">
@@ -551,11 +557,12 @@ include("inc/topbar.inc.php");
               <tr>
                 <td height="31" background="images/rig_07.jpg"><table width="226" height="21" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                  <? 
-                 	 $newslist1 = load_module('pos_indexcenter2',8);
+                  <?php
+                 	 	$records = show_content('smg_news','news','纪实频道','党员活动','8');
+						$count = count($records);
                   ?>
                     <td width="37">&nbsp;</td>
-                    <td width="189" valign="bottom" class="m-t"><div style="float:left; display:inline;"><? echo $newslist1->categoryname;?></div><div style="float:right; display:inline"><a target="_blank" style="color:#ffffff; text-decoration:none;" href="photolist.php">更多</a></div></td>
+                    <td width="189" valign="bottom" class="m-t"><div style="float:left; display:inline;">党员活动</div><div style="float:right; display:inline"><a target="_blank" style="color:#ffffff; text-decoration:none;" href="photolist.php">更多</a></div></td>
                   </tr>
                   </table></td>
               </tr>
