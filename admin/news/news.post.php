@@ -9,6 +9,7 @@
 	}
 	
 	$news->update_attributes($_POST['news'],false);
+	$news->is_recommend = 1;
 	if($news->is_dept_adopt != 1){
 		$news->is_dept_adopt = 0;
 	}
