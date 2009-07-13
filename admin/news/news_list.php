@@ -20,7 +20,7 @@
 	}
 	array_push($c, "dept_id=$dept_id");
 	if($title){
-		$record = search_content($title,'smg_news',implode(' and ', $c),20,'dept_priority asc,create_time desc');
+		$record = search_content($title,'smg_news',implode(' and ', $c),20,'dept_priority asc,created_at desc');
 	}else{
 		$news = new table_class('smg_news');
 		$record = $news->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'dept_priority asc,created_at desc'),20);
@@ -102,13 +102,15 @@
 							<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span>　
 						<?php }?>
 						<a href="news_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　
-						<a href="/admin/comment/comment.php?id=<?php echo $record[$i]->id;?>&type=news" style="color:#000000; text-decoration:none">评论</a>　
 						<?php if($record[$i]->is_recommend=='1'){?>
-							<span style="cursor:pointer;"><a style="color:#333333;" title="推荐到集团首页不能删除">删除</a></span>
+							<span style="cursor:pointer;"><a style="color:#333333" title="推荐到集团首页不能删除" >删除</a></span>
 						<?php }else{?>
 							<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $record[$i]->id;?>">删除</span>
 						<?php }?>
-						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:40px;">
+						<span style="color:#FF0000;cursor:pointer" >
+							<a href="/admin/comment/comment.php?id=<?php echo $record[$i]->id;?>&type=news" style="color:#000000; text-decoration:none">评论管理</a>
+						</span>
+						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$record[$i]->dept_priority){echo $record[$i]->dept_priority;};?>" style="width:40px;">
 					</td>
 				</tr>
 		<?php
