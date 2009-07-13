@@ -74,7 +74,7 @@ class database_row_item_class {
   	var $servername='localhost';
   	var $databasename = 'mysql';
   	var $username = 'root';
-  	var $password = '';
+  	var $password = 'xunao';
 	var $code = 'utf8';
 	var $connected = false;
 	public $echo_sql = false;
