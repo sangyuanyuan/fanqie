@@ -173,7 +173,7 @@ function remove_sub_headlines(id){
 	icount = sub_headlines.length;
 	for(i=0;i<icount;i++){
 		if(sub_headlines[i] == id){
-			sub_headlines = sub_headlines.splice(i,1);
+			sub_headlines.splice(i,1);
 		}
 	}
 	$('#hidden_sub_headlines').attr('value',sub_headlines.join(','));

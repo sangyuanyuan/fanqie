@@ -22,11 +22,11 @@
 		$pos = strpos($imgstr, 'src="');
 		$pos_end = strpos($imgstr, '"',$pos + 5);
 		$src = substr($imgstr, $pos+5,$pos_end - $pos - 5);
-		alert($src);
 		$news->photo_src = $src;
 		$news->is_photo_news = 1;
 	}else{
 		$news->is_photo_news = 0;
+		$news->photo_src = "";
 	}
 	if ($news->priority == ""){
 		$news->priority = 100;
