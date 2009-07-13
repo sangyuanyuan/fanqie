@@ -100,8 +100,7 @@
 						<a href="?category=<?php echo $record[$i]->category_id;?>" style="color:#0000FF">
 							<?php echo $category->find($record[$i]->category_id)->name; ?>
 						</a>
-					</td>						
-					<td><?php echo $record[$i]->created_at;?></td>				
+					</td>									
 					<td><?php if($record[$i]->is_adopt=="1"){?>
 							<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>
 						<?php }?>

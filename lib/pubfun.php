@@ -306,10 +306,10 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	$c = array();
 	foreach ($keys as $v) {
 		array_push($c, "title like '%$v%'");
-		array_push($c, "tags like '%$v%'");
 		array_push($c, "keywords like '%$v%'");
 		array_push($c, "description like '%$v%'");
 		if($table_name == 'smg_news'){
+			array_push($c, "tags like '%$v%'");
 			array_push($c, "short_title like '%$v%'");
 			array_push($c, "content like '%$v%'");
 		}

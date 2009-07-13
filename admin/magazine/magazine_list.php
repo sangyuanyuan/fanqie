@@ -1,32 +1,31 @@
 <?php
 	require_once('../../frame.php');
 	$user = judge_role('admin');
-	$dept_id = 7;
 	
-	$sql = 'select t1.*,t2.name as dept_name,t3.name as category_name from smg_magazine t1,smg_dept t2,smg_category t3 where t1.dept_id=t2.id and t1.category_id=t3.id';
-	if($_REQUEST['key1']!=""){
-		$sql = $sql.' and title  like "%'.trim($_REQUEST['key1']).'%"';
-	}
-	if($_REQUEST['key2']!=""){
-		$sql = $sql." and dept_id=".$_REQUEST['key2'];
-	}
-	if($_REQUEST['key3']!=""){
-		$sql = $sql." and category_id=".$_REQUEST['key3'];
-	}
-	if($_REQUEST['key4']!=""){
-		$sql = $sql." and is_adopt=".$_REQUEST['key4'];
-	}
-	$sql = $sql.' and is_recommend=1 order by priority';
-	$magazine = new table_class("smg_magazine");
 	
+	$title = $_REQUEST['title'];
+	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
+	$dept_id = $_REQUEST['dept'];
+	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
-	$magazine_rows = $db->paginate($sql,10);
-	close_db();
-		
-	$dept = new table_class("smg_dept");
-	$rows_dept = $dept->find("all");
-	$category = new table_class("smg_category");
-	$rows_category = $category->find("all",array('conditions' => "category_type='magazine'"));
+	$sql = 'select * from smg_dept';
+	$rows_dept = $db->query($sql);
+	$c = array();
+	if($category_id > 0){
+		array_push($c, "category_id=$category_id");
+	}
+	if($dept_id!=''){
+		array_push($c, "dept_id=$dept_id");
+	}
+	if($is_adopt!=''){
+		array_push($c, "is_adopt=$is_adopt");
+	}
+	if($title){
+		$magazine_rows = search_content($title,'smg_magazine',implode(' and ', $c),20,'priority asc,create_time desc');
+	}else{
+		$magazine = new table_class('smg_magazine');
+		$magazine_rows = $magazine->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'priority asc,create_time desc'),20);
+	}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -38,32 +37,31 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub');
+		js_include_tag('admin_pub','smg_category_class');
+		$category = new smg_category_class('magazine');
+		$category->echo_jsdata();		
 	?>
 </head>
 <body>
 	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td width="795">　　　<a href="magazine_add.php" style="color:#0000FF">发布电子杂志</a>　　　　　　
-			搜索　<input id=newskey1 type="text" value="<? echo $_REQUEST['key1']?>">
-			<select id=newskey2 style="width:90px" class="select">
-				<option value="">发表部门</option>
-				<?php for($i=0;$i<count($rows_dept);$i++){?>
-				<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['key2']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
-				<? }?>
-			</select>
-			<select id=newskey3 style="width:90px" class="select">
-				<option value="">所属类别</option>
-				<?php for($i=0;$i<count($rows_category);$i++){?>
-				<option value="<?php echo $rows_category[$i]->id; ?>" <?php if($rows_category[$i]->id==$_REQUEST['key3']){?>selected="selected"<? }?>><?php echo $rows_category[$i]->name; ?></option>
-				<? }?>
-			</select>
-			<select id=newskey4 style="width:90px" class="select">
-				<option value="">发布状况</option>
-				<option value="1" <? if($_REQUEST['key4']=="1"){?>selected="selected"<? }?>>已发布</option>
-				<option value="0" <? if($_REQUEST['key4']=="0"){?>selected="selected"<? }?>>未发布</option>
-			</select>
-			<input type="button" value="搜索" id="search" style="border:1px solid #0000ff; height:21px">
+			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
+				<select id=dept style="width:100px" class="select_new">
+					<option value="">发表部门</option>
+					<?php for($i=0;$i<count($rows_dept);$i++){?>
+					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
+					<? }?>
+				</select>
+				<span id="span_category"></span>
+				
+				<select id=adopt style="width:100px" class="select_new">
+					<option value="">发布状况</option>
+					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
+					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
+				</select>
+				<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
+				<input type="hidden" value="<?php echo $category_id;?>" id="category">
 			</td>
 		</tr>
 	</table>
@@ -75,10 +73,10 @@
 				<a href="/magazine/magazine.php?id=<?php echo $magazine_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $magazine_rows[$i]->title;?></a>
 			</div>
 			<div class=content>
-				<a href="?key2=<?php echo $magazine_rows[$i]->dept_id;?>" style="color:#0000FF"><?php echo $magazine_rows[$i]->dept_name;?></a>
+				<a href="?dept=<?php echo $magazine_rows[$i]->dept_id;?>" style="color:#0000FF"><?php echo get_dept_info($magazine_rows[$i]->dept_id)->name;?></a>
 			</div>
 			<div class=content>
-				<a href="?key3=<?php echo $magazine_rows[$i]->category_id;?>" style="color:#0000FF"><?php echo $magazine_rows[$i]->category_name;?></a>
+				<a href="?category=<?php echo $magazine_rows[$i]->category_id;?>" style="color:#0000FF"><?php echo $category->find($magazine_rows[$i]->category_id)->name; ?></a>
 			</div>
 			<div class=content style="height:20px">
 				<?php if($magazine_rows[$i]->is_adopt=="1"){?>
@@ -111,5 +109,34 @@
 </body>
 </html>
 
-
+<script>
+	$(function(){
+		category.display_select('category_select',$('#span_category'),<?php echo $category_id;?>,'', function(id){
+			$('#category').val(id);
+			category_id = $('.category_select:last').val();
+			if (id == -1) {
+				window.location.href = "?title=" + $("#title").attr('value') + "&dept=" + $("#dept").attr('value') + "&category=&adopt=" + $("#adopt").attr('value');
+			}
+			if (category_id != -1) {
+				window.location.href = "?title=" + $("#title").attr('value') + "&dept=" + $("#dept").attr('value') + "&category=" + $("#category").attr('value') + "&adopt=" + $("#adopt").attr('value');
+			}
+		})
+		
+		var all_selected = false;
+		$('#select_all').click(function(){
+			all_selected = !all_selected;
+			$('input:checkbox').attr('checked',all_selected);
+		});
+		$('#button_delete').click(function(){
+			$.post('delete_news.php',$('input:checkbox').serializeArray(),function(data){
+				window.location.reload();
+			});
+		});
+		$('#title').keydown(function(e){
+			if(e.keyCode == 13){
+				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			}
+		});
+	});
+</script>
 

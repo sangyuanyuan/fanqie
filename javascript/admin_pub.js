@@ -32,7 +32,6 @@ $(function(){
 				window.location.href="?key1="+$("#newskey1").attr('value')+"&key2="+$("#newskey2").attr('value')+"&key3="+$("#newskey3").attr('value')+"&key4="+$("#newskey4").attr('value');
 		});
 		
-		
 		$("#edit_priority").click(function(){
 			if(!window.confirm("编辑优先级")){return false;}
 			var id_str="";

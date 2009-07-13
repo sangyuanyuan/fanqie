@@ -90,7 +90,7 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
 			<td align="left" class="newsselect">
-			<select id=select name="magazine[$category_id]">
+			<select id=select name="magazine[<?php echo $category_id?>]">
 				<?php	
 					for($i=0;$i<count($category_menu);$i++){
 				?>
