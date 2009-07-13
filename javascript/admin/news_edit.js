@@ -21,8 +21,8 @@ $(function(){
 			return false;
 		}	
 		var oEditor = FCKeditorAPI.GetInstance('news[short_title]') ;
-		var title = oEditor.GetHTML();
-		if(title==""){
+		var short_title = remove_hmtl_tag(oEditor.GetHTML());
+		if(short_title==""){
 			alert("请输入短标题！");
 			return false;
 		}
@@ -47,8 +47,12 @@ $(function(){
 			alert('请选择分类!');
 			return false;
 		}
-		//alert(category_id);
 		$('#category_id').attr('value',category_id);
+		var item = category.get_item(category_id);
+		if(str_length(short_title) > item.short_title_length){
+			alert('短标题太长,请重新输入!');
+			return false;
+		}	
 		news_type=  $('#td_newstype').find('input:checked').attr('value');
 		if(news_type == 3){
 			if($('#target_url input').attr('value')== ''){
@@ -81,6 +85,22 @@ $(function(){
 	});
 	category.display_select('news_category',$('#td_category_select'),$("#category_id").attr('value'));
 	toggle_news_type();
+	$('#image_flag_checkbox').click(function(){
+		if($(this).attr('checked')){
+			$('#hidden_image_flag').val('1');
+		}else{
+			$('#hidden_image_flag').val('0');
+		}	
+		//alert($('#hidden_image_flag').val());	
+	});
+	$('#forbbide_copy_checkbox').click(function(){
+		if($(this).attr('checked')){
+			$('#hidden_forbbide_copy').val('1');
+		}else{
+			$('#hidden_forbbide_copy').val('0');
+		}		
+		//alert($('#hidden_forbbide_copy').val());
+	});
 });
 
 function toggle_news_type(){
@@ -103,7 +123,7 @@ var related_news = new Array();
 function add_related_news(id){
 	//remove_related_news(id);
 	related_news.push(id);
-	$('#hidden_related_news').attr('value',related_news.toString());
+	$('#hidden_related_news').attr('value',related_news.join(','));
 	//alert(related_news.toString());
 }
 
@@ -114,19 +134,30 @@ function remove_related_news(id){
 			related_news.splice(i,1);
 		}
 	}
+	$('#hidden_related_news').attr('value',related_news.join(','));
 }
 
 var sub_headlines = new Array();
 function add_sub_headlines(id){
 	sub_headlines.push(id);
-	$('#hidden_sub_headlines').attr('value',sub_headlines.toString());
+	$('#hidden_sub_headlines').attr('value',sub_headlines.join(','));
 }
 
 function remove_sub_headlines(id){
 	icount = sub_headlines.length;
 	for(i=0;i<icount;i++){
 		if(sub_headlines[i] == id){
-			sub_headlines.splice(i,1);
+			sub_headlines = sub_headlines.splice(i,1);
 		}
 	}
+	$('#hidden_sub_headlines').attr('value',sub_headlines.join(','));
 }
+
+function str_length(str){
+	return   str.replace(/[^\x00-\xff]/g,"**").length;
+}
+
+ function remove_hmtl_tag(str) 
+          { 
+             return str.replace(/<\/?.+?>/g,"");//去掉所有的html标记 
+          } 

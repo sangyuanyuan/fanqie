@@ -6,6 +6,7 @@
 	$title = $_REQUEST['title'];
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
 	$dept_id = $_REQUEST['dept'];
+	echo $dept_id;
 	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
 	#$sql = 'select * from smg_category';
@@ -135,12 +136,6 @@
 			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 	});
 	
-	$("#title").keypress(function(){
-			if(event.keyCode==13){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-			}
-	});
-	
 	$(".select_new").change(function(){
 			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 	});
@@ -162,9 +157,11 @@
 			$('input:checkbox').attr('checked',all_selected);
 		});
 		$('#button_delete').click(function(){
-			$.post('delete_news.php',$('input:checkbox').serializeArray(),function(data){
-				window.location.reload();
-			});
+			if (confirm('确定删除/退回选中新闻?')) {
+				$.post('delete_news.php', $('input:checkbox').serializeArray(), function(data){
+					window.location.reload();
+				});
+			}
 		});
 		$('#title').keydown(function(e){
 			if(e.keyCode == 13){

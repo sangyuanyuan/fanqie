@@ -45,7 +45,7 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td>短标题</td><td width="80">新闻类别</td><td width="80">部门</td>
+			<td align=left>短标题</td><td width="80">新闻类别</td><td width="80">部门</td>
 		</tr>
 		<?php
 			$subject = new table_class("smg_news");
@@ -62,7 +62,7 @@
 						<span><?php echo strip_tags($items[$i]->short_title);?></span>
 					</td>
 					<td>
-						<?php echo $items[$i]->category_id;?>
+						<?php echo $category->find($items[$i]->category_id)->name; ?>
 					</td>
 					<td><?php $cate = get_dept_info($items[$i]->dept_id);echo $cate->name;?></td>					
 				</tr>

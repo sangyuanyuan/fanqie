@@ -62,14 +62,24 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>头条控制</td>
 			<td align="left" id="td_headline_type">　
-				  <input type="radio" name="news[sub_headline]" value="1" <?php if($news->sub_headline==1){ ?> checked="checked" <?php } ?>>展示简介 <input type="radio" name="news[sub_headline]" value="2" <?php if($news->sub_headline==2){ ?> checked="checked" <?php } ?>>展示子头条  <a href="sub_headline.php?width=800&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
+				  <input type="radio" name="news[sub_headline]" value="1" <?php if($news->sub_headline==1){ ?> checked="checked" <?php } ?>>展示简介 <input type="radio" name="news[sub_headline]" value="2" <?php if($news->sub_headline==2){ ?> checked="checked" <?php } ?>>展示子头条  <a href="sub_headline.php?width=650&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=target_url>
 			<td>URL</td><td align="left">　<input type="text" size="50" name=news[target_url] value="<?php echo $news->target_url; ?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=tr_file_name >
-			<td>上传文件</td><td align="left">　<input type="file" size="50" name=file_name value="<?php echo $news->file_name;?>"></td>
+			<td>上传文件</td>
+			<td align="left">
+				　<input type="file" size="50" name=file_name value="<?php echo $news->file_name;?>">
+				<?php
+					if($news->news_type == 2 && $news->file_name){
+						?>
+						　<a href="<?php echo $news->file_name;?>" target="_blank" style="color:blue;">查看</a>
+						<?php
+					}
+				?>
+			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>新闻标签</td>
@@ -150,7 +160,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3  class="normal_news">
-			<td>其他选项</td><td align="left">　<input type="checkbox" name="news[forbbide_copy]" value="1" <?php if($news->forbbide_copy==1){?>checked="checked" <?php } ?>> 禁止复制  <input type="checkbox" name="news[is_adopt]" value="1" >直接发布 <a style="color:blue;" href="filte_news.php?width=800&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
+			<td>其他选项</td><td align="left">　<input type="checkbox" id="forbbide_copy_checkbox" value="1" <?php if($news->forbbide_copy==1){?>checked="checked" <?php } ?>> 禁止复制  <input type="checkbox"  name="news[is_adopt]" value="1" >直接发布  <input type="checkbox" value="1" id="image_flag_checkbox" <?php if($news->image_flag == 1) echo "checked=\"checked\"";?>>图片提示 <a style="color:blue;" href="filte_news.php?width=650&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1  class="normal_news">
 			<td>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100",$news->description);?></td>
@@ -166,6 +176,8 @@
 		<input type="hidden" name="news[sub_news_id]" value="<?php echo $news->sub_news_id?>"  id="hidden_sub_headlines">
 		<input type="hidden" name="news[category_id]" id="category_id" value="<?php echo $news->category_id;?>">
 		<input type="hidden" name="category_add" id="category_add" value="">
+		<input type="hidden" name="news[image_flag]" value="<?php echo $news->image_flag;?>" id="hidden_image_flag">
+		<input type="hidden" name="news[forbbide_copy]" value="<?php echo $news->forbbide_copy;?>" id="hidden_forbbide_copy">
 		<input type="hidden" name="id"  value="<?php echo $news->id; ?>">
 	</form>
 </body>
@@ -189,23 +201,19 @@
 			$('#td_subject').html(str);
 			tb_init('#a_assign_subject');
 		});
+		if( $('#hidden_sub_headlines').attr('value')){
+			sub_headlines = $('#hidden_sub_headlines').attr('value').split(",");
+		}
+		if($('#hidden_related_news').attr('value')){
+			related_news = $('#hidden_related_news').attr('value').split(",");
+		}
 		
-		sub_headlines = $('#hidden_sub_headlines').attr('value').split(",");
-		related_news = $('#hidden_related_news').attr('value').split(",");
 	});
-	$('#test').click(function(e){
-		e.preventDefault();
-		//category.echo_category($('#category_select'),'test',0,20);
-		//category.display_select('test',$('#category_select'),30);
-		alert($('#td_newstype').find('input:checked').attr('value'));
-	});	
+
 	$('#select').click(function(){
 		$('#select ~ .cate').remove();
 	});
-	//category.echo_category($('#category_select'),'test',0,-1);
-	//$('#category_select select').change(function(){
-	//	category.display_select('test',$('#category_select'),$(this).attr('value'),this);
-	//});
+
 	
 
 </script>
