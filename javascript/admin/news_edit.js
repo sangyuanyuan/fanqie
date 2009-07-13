@@ -85,6 +85,22 @@ $(function(){
 	});
 	category.display_select('news_category',$('#td_category_select'),$("#category_id").attr('value'));
 	toggle_news_type();
+	$('#image_flag_checkbox').click(function(){
+		if($(this).attr('checked')){
+			$('#hidden_image_flag').val('1');
+		}else{
+			$('#hidden_image_flag').val('0');
+		}	
+		//alert($('#hidden_image_flag').val());	
+	});
+	$('#forbbide_copy_checkbox').click(function(){
+		if($(this).attr('checked')){
+			$('#hidden_forbbide_copy').val('1');
+		}else{
+			$('#hidden_forbbide_copy').val('0');
+		}		
+		//alert($('#hidden_forbbide_copy').val());
+	});
 });
 
 function toggle_news_type(){

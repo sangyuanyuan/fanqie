@@ -160,7 +160,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3  class="normal_news">
-			<td>其他选项</td><td align="left">　<input type="checkbox" name="news[forbbide_copy]" value="1" <?php if($news->forbbide_copy==1){?>checked="checked" <?php } ?>> 禁止复制  <input type="checkbox" name="news[is_adopt]" value="1" >直接发布 <a style="color:blue;" href="filte_news.php?width=800&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
+			<td>其他选项</td><td align="left">　<input type="checkbox" id="forbbide_copy_checkbox" value="1" <?php if($news->forbbide_copy==1){?>checked="checked" <?php } ?>> 禁止复制  <input type="checkbox"  name="news[is_adopt]" value="1" >直接发布  <input type="checkbox" value="1" id="image_flag_checkbox" <?php if($news->image_flag == 1) echo "checked=\"checked\"";?>>图片提示 <a style="color:blue;" href="filte_news.php?width=800&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1  class="normal_news">
 			<td>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100",$news->description);?></td>
@@ -176,6 +176,8 @@
 		<input type="hidden" name="news[sub_news_id]" value="<?php echo $news->sub_news_id?>"  id="hidden_sub_headlines">
 		<input type="hidden" name="news[category_id]" id="category_id" value="<?php echo $news->category_id;?>">
 		<input type="hidden" name="category_add" id="category_add" value="">
+		<input type="hidden" name="news[image_flag]" value="<?php echo $news->image_flag;?>" id="hidden_image_flag">
+		<input type="hidden" name="news[forbbide_copy]" value="<?php echo $news->forbbide_copy;?>" id="hidden_forbbide_copy">
 		<input type="hidden" name="id"  value="<?php echo $news->id; ?>">
 	</form>
 </body>
