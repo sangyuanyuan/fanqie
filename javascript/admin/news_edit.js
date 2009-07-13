@@ -85,7 +85,7 @@ $(function(){
 	});
 	category.display_select('news_category',$('#td_category_select'),$("#category_id").attr('value'),'',function(id,max_len){
 		if(id != -1){
-			$('#max_len').html('(长度限制:'+ max_len / 2 + '个汉字)');
+			$('#max_len').html('('+ max_len / 2 + ')');
 		}else{
 			$('#max_len').html('');
 		}
