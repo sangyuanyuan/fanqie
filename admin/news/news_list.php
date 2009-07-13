@@ -101,7 +101,7 @@
 						<?php if($record[$i]->is_dept_adopt=="0"){?>
 							<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span>　
 						<?php }?>
-						<a href="news_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　
+						<a href="news_edit_dept.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　
 						<?php if($record[$i]->is_recommend=='1'){?>
 							<span style="cursor:pointer;"><a style="color:#333333" title="推荐到集团首页不能删除" >删除</a></span>
 						<?php }else{?>
