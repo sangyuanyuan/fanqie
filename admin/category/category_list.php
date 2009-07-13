@@ -51,7 +51,7 @@
 		</tr>
 		<?php
 			$category = new table_class("smg_category");
-			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'priority'),18);
+			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'platform,priority'),18);
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){
