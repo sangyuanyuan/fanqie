@@ -1,8 +1,5 @@
 <?php
 	 require_once('../frame.php');
-	 $news = new table_class('smg_news');
-	 $picture = new table_class('smg_images');
-	 $link = new table_class('smg_link');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -19,7 +16,7 @@
 	<div id="left">
 		<div class="normaltitle1">
 			<?php
-				$records = $news->show_content('电视新闻中心','最新公告','10');
+				$records = show_content('smg_news','news','电视新闻中心','最新公告','10');
 				$count = count($records);
      		?>
 			最新公告
@@ -46,11 +43,11 @@
 		
 		<div class="normaltitle1">
 			<?php
-				$records = $news->show_content('电视新闻中心','规章制度','10');
+				$records = show_content('smg_news','news','电视新闻中心','规章制度','10');
 				$count = count($records);
       		?>
 			规章制度
-      		<span class="more"><a href="newslist.php?id=105">more>></a></span>
+      		<span class="more"><a href="newslist.php?id=<?php echo dept_category_id_by_name('规章制度','电视新闻中心','news');?>">more>></a></span>
 		</div>
 		<div class="normalbox">
 			<?php
@@ -72,11 +69,11 @@
 		
 		<div class="normaltitle1">
 			<?php
-				$records = $news->show_content('电视新闻中心','常用表格下载','10');
+				$records = show_content('smg_news','news','电视新闻中心','常用表格下载','10');
 				$count = count($records);
       		?>
 			常用表格下载
-      		<span class="more4"><a href="newslist.php?id=107">more>></a></span>
+      		<span class="more4"><a href="newslist.php?id=<?php echo dept_category_id_by_name('常用表格下载','电视新闻中心','news');?>">more>></a></span>
 		</div>
 		<div class="normalbox">
 			<?php
@@ -97,10 +94,6 @@
 		</div>
 		
 		<div class="normaltitle1">
-			<?php
-				$records = $news->show_content('电视新闻中心','收视率查询','10');
-				$count = count($records);
-      		?>
 			收视率查询
 		</div>
 		<div class="normalbox2">
@@ -111,7 +104,7 @@
 	<div id="center">
 		<div id="flash">
 			<?php
-      			$records = $picture->show_content('电视新闻中心','flash','4');
+      			$records = show_content('smg_images','picture','电视新闻中心','flash','4');
 				$count = count($records);
       			for ($i=0;$i<$count;$i++)
 				{
@@ -147,11 +140,11 @@
 		</div>
 		<div class="normaltitle2">
 			<?php
-				$records = $news->show_content('电视新闻中心','今日头条','10');
+				$records = show_content('smg_news','news','电视新闻中心','今日头条','10');
 				$count = count($records);
       		?>
 			今日头条
-      <span class="more2"><a href="newslist.php?id=108">more>></a></span>
+      <span class="more2"><a href="newslist.php?id=<?php echo dept_category_id_by_name('今日头条','电视新闻中心','news');?>">more>></a></span>
 		</div>
 		<div class="normalbox3">
 			<div class="box">
@@ -186,11 +179,11 @@
 		</div>
 		<div class="normaltitle2">
 			<?php
-				$records = $news->show_content('电视新闻中心','部门快讯','10');
+				$records = show_content('smg_news','news','电视新闻中心','部门快讯','10');
 				$count = count($records);
       		?>
 			部门快讯
-      <span class="more2"><a href="newslist.php?id=109">more>></a></span>
+      <span class="more2"><a href="newslist.php?id=<?php echo dept_category_id_by_name('部门快讯','电视新闻中心','news');?>">more>></a></span>
 		</div>
 		<div class="normalbox3">
 			<div class="box">
@@ -224,11 +217,11 @@
 		</div>
 		<div class="normaltitle2">
 			<?php
-				$records = $news->show_content('电视新闻中心','党建创建','10');
+				$records = show_content('smg_news','news','电视新闻中心','党建创建','10');
 				$count = count($records);
       		?>
 			今日头条
-      <span class="more2"><a href="newslist.php?id=110">more>></a></span>
+      <span class="more2"><a href="newslist.php?id=<?php echo dept_category_id_by_name('党建创建','电视新闻中心','news');?>">more>></a></span>
 		</div>
 		<div class="normalbox3">
 			<div class="box">
@@ -264,7 +257,7 @@
 		<div id="show">
 			<div id="photo">
 				<?php
-					$records = $picture->show_content('电视新闻中心','我型我秀',10);
+					$records = show_content('smg_images','picture','电视新闻中心','我型我秀',10);
 					$count = count($records);
 	      		?>
 	      <marquee height="133" onmouseover=this.stop() onmouseout=this.start() scrollamount=3>
@@ -282,10 +275,6 @@
 	<div id="right">
 		<div id="box">
 			<div id="title">
-			<?php
-				$records = $news->show_content('电视新闻中心','生日快乐','10');
-				$count = count($records);
-      		?>
 			生日快乐
 			</div>
 			<div id="boxb">
@@ -302,11 +291,11 @@
 		</div>
 		<div class="normaltitle3">
 			<?php
-				$records = $news->show_content('电视新闻中心','深度思考','10');
+				$records = show_content('smg_news','news','电视新闻中心','深度思考','10');
 				$count = count($records);
       		?>
 			深度思考
-     		<span class="more3"><a href="newslist.php?id=112">more>></a></span>
+     		<span class="more3"><a href="newslist.php?id=<?php echo dept_category_id_by_name('深度思考','电视新闻中心','news');?>">more>></a></span>
 		</div>
 		<div class="normalbox4">
 			<?php
@@ -319,11 +308,11 @@
 		</div>
 		<div class="normaltitle3">
 			<?php
-				$records = $news->show_content('电视新闻中心','资料交流','10');
+				$records = show_content('smg_news','news','电视新闻中心','资料交流','10');
 				$count = count($records);
       		?>
 			资料交流
-      <span class="more3"><a href="newslist.php?id=113">more>></a></span>
+      <span class="more3"><a href="newslist.php?id=<?php echo dept_category_id_by_name('资料交流','电视新闻中心','news');?>">more>></a></span>
 		</div>
 		<div class="normalbox4">
 			<?php
@@ -350,7 +339,7 @@
 		</div>
 		<div class="normaltitle3">
 			<?php
-				$records = $link->show_content('电视新闻中心','相关链接','10');
+				$records = show_content('smg_link','link','电视新闻中心','相关链接','10');
 				$count = count($records);
      		?>
 			相关链接

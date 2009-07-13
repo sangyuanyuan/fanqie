@@ -10,7 +10,7 @@
 	$db = get_db();
 	$sql = 'select * from smg_category_dept where category_type="news" and dept_id='.$dept_id;
 	$rows_category = $db->query($sql);
-	$sql="select t1.*,t2.name as category_name from smg_news t1,smg_category_dept t2 where t1.dept_category_id=t2.id and t1.dept_id=".$dept_id." and t1.is_recommend=1";
+	$sql="select t1.*,t2.name as category_name from smg_news t1,smg_category_dept t2 where t1.dept_category_id=t2.id and t1.dept_id=".$dept_id;
 	if($title!=''){
 		$sql = $sql." and t1.short_title like '%".$title."%'";
 	}
@@ -24,6 +24,7 @@
 		$sql = $sql." and t1.dept_is_adopt=".$is_adopt;
 	}
 	$sql = $sql." order by dept_priority,created_at desc";
+	echo $sql;
 	$record=$db->paginate($sql,20);
 	
 ?>
