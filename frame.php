@@ -243,4 +243,8 @@
 			<?php
 			}
 	}
+	
+	function echo_fqbq($container,$insert_container) {
+		
+	}
 ?>

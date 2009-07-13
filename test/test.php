@@ -17,6 +17,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>test</title>
+		<?php js_include_tag('pubfun');?>
 	</head>
 	<body>
 <img src="/upload/images/ViZZxhqVQK.jpg" width=20 height=20 border=0>
@@ -33,6 +34,7 @@
 			<div>hide me</div>
 		</form>
 		<a href="#" id="test">test</a>
+		<textarea id="fck1"></textarea>
 		<div id="div1">
 			<p>
 				<div id="div2">
@@ -40,6 +42,7 @@
 				</div>
 			</p>
 		</div>
+		<?php show_fckeditor('fck');?>
 	</body>
 </html>
 <script>
@@ -55,7 +58,7 @@
 		//});
 		//category.display_select('test',$('#test_form'),-1,'');
 		//alert($('#div1 #div2').html());
-		alert(str_length($('#name').val()) + ';' + $('#name').val().length);
+		display_fqbq('div2','fck');
 	});
 	$('#test_form').submit(function(){
 		return false;
