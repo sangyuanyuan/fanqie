@@ -107,7 +107,6 @@
 			<div class=abouttitle>更多关于“<span style="text-decoration:underline;;"><?php echo $record[0]->keywords?></span>”的新闻</div>
 			<div class=aboutcontent>
 				<div class=title>相关链接</div>
-				<ul>
 				<?php for($i=0;$i<count($about);$i++){ ?>
 					<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
@@ -125,7 +124,6 @@
 						<?php }?>
 					</div>
 				<?php } ?>
-				</ul>
 			</div>
 			<form id="news_comment_digg" action="news_digg.post.php">
 			<?php if(count($comment)>0){?>
@@ -167,11 +165,11 @@
 			<div class=aboutcontent>
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php echo count($comment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
 				<input type="text">
-				<?php show_fckeditor('fck','Title',false);?>
+				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('fck','Title',false,'75','','600');?></div>
 				<div id=fqbq>
 					
 				</div>
-				<button>提交评论</button>
+				<button id="comment_sub">提交评论</button>
 			</div>
 		</div>
 	</div>

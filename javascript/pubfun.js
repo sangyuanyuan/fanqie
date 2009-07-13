@@ -3,6 +3,14 @@
  */
 function display_fqbq(container,insert_container,is_fck){
 	var str = '';
+	str += '<img src="/images/fqbq/1.jpg" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/2.jpg" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/3.jpg" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/4.jpg" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/5.jpg" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/6.jpg" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/7.jpg" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/8.jpg" border=0 style="cursor:pointer">';
 	str += '<img src="/images/fqbq/9.jpg" border=0 style="cursor:pointer">';
 	str += '<img src="/images/fqbq/10.jpg" border=0 style="cursor:pointer">';
 	str += '<img src="/images/fqbq/11.jpg" border=0 style="cursor:pointer">';
