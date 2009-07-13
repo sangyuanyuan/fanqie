@@ -108,7 +108,11 @@
 				<?php
 				$tags = get_config('g_news_tags');
 				foreach ($tags as $v) {
-					echo "<option value='{$v}' selected='selected'>$v</option>";
+					echo "<option value='{$v}'"; 
+					if($v == $news->tags)
+					echo "selected='selected'";
+					
+					echo ">$v</option>";
 				}
 				?>
 				</select>　　/　　
