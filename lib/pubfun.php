@@ -358,6 +358,27 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	}
 	*/
 }
+function delhtml($str){   //清除HTML标签
+$st=-1; //开始
+$et=-1; //结束
+$stmp=array();
+$stmp[]="&nbsp;";
+$len=strlen($str);
+for($i=0;$i<$len;$i++){
+   $ss=substr($str,$i,1);
+   if(ord($ss)==60){ //ord("<")==60
+    $st=$i;
+   }
+   if(ord($ss)==62){ //ord(">")==62
+    $et=$i;
+    if($st!=-1){
+     $stmp[]=substr($str,$st,$et-$st+1);
+    }
+   }
+}
+$str=str_replace($stmp,"",$str);
+return $str;
+}
 
 
 ?>
