@@ -69,7 +69,7 @@ function smg_category_class(){
 		}
 		var othis = this;
 		if(object){
-			t_parent_id = $(object).attr('parent_id');			
+			var t_parent_id = $(object).attr('parent_id');			
 		}
 
 		$(ob).find('select').remove();
@@ -82,12 +82,12 @@ function smg_category_class(){
 				$(ob).find('select:first').change(function(){
 					othis.display_select(name,$(ob),$(this).attr('value'),'',callback);	
 					if(callback){
-						tid = $(this).val();
+						var tid = $(this).val();
 						if(tid != -1){
 							var item = othis.get_item(tid);
-							max_len = item.short_title_length;
+							var max_len = item.short_title_length;
 						}else{
-							max_len = -1;
+							var max_len = -1;
 						}							
 						callback(tid,max_len);
 					}
@@ -96,12 +96,12 @@ function smg_category_class(){
 				$(ob).find('select').not($(ob).find('select:first')).change(function(){
 					othis.display_select(name,$(ob),$(this).attr('value'),this,callback);
 					if(callback){
-						tid = $(this).val();
+						var tid = $(this).val();
 						if(tid != -1){
 							var item = othis.get_item(tid);
-							max_len = item.short_title_length;
+							var max_len = item.short_title_length;
 						}else{
-							max_len = -1;
+							var max_len = -1;
 						}							
 						callback(tid,max_len);
 					}
@@ -113,7 +113,7 @@ function smg_category_class(){
 			var tparent = new Array();			
 			tparent.push(id);
 			
-			tmp_id = id;
+			var tmp_id = id;
 			while(true){
 				
 				var item = othis.get_item(tmp_id);
@@ -121,8 +121,8 @@ function smg_category_class(){
 				if(item.parent_id == 0) break;
 				tmp_id = item.parent_id;
 			}
-			item1 = tparent.pop();
-			item2 = item1;
+			var item1 = tparent.pop();
+			var item2 = item1;
 			while(true){
 				item2 = tparent.pop();
 				if (item2 == undefined) break;
@@ -135,12 +135,12 @@ function smg_category_class(){
 		$(ob).find('select:first').change(function(){
 			othis.display_select(name,$(ob),$(this).attr('value'),'',callback);
 			if(callback){
-						tid = $(this).val();
+						var tid = $(this).val();
 						if(tid != -1){
 							var item = othis.get_item(tid);
-							max_len = item.short_title_length;
+							var max_len = item.short_title_length;
 						}	else{
-							max_len = -1;
+							var max_len = -1;
 						}						
 						callback(tid,max_len);
 					}
@@ -148,12 +148,12 @@ function smg_category_class(){
 		$(ob).find('select').not($(ob).find('select:first')).change(function(){
 			othis.display_select(name,$(ob),$(this).attr('value'),this,callback);
 			if(callback){
-						tid = $(this).val();
+						var tid = $(this).val();
 						if(tid != -1 || id == 0 || id== ""){
 							var item = othis.get_item(tid);
-							max_len = item.short_title_length;
+							var max_len = item.short_title_length;
 						}else{
-							max_len = -1;
+							var max_len = -1;
 						}							
 						callback(tid,max_len);
 					}
