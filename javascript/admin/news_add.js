@@ -149,7 +149,7 @@ var related_news = new Array();
 function add_related_news(id){
 	//remove_related_news(id);
 	related_news.push(id);
-	$('#hidden_related_news').attr('value',related_news.toString());
+	$('#hidden_related_news').attr('value',related_news.join(','));
 	//alert(related_news.toString());
 }
 
@@ -160,23 +160,24 @@ function remove_related_news(id){
 			related_news.splice(i,1);
 		}
 	}
+	$('#hidden_related_news').attr('value',related_news.join(','));
 }
 
 var sub_headlines = new Array();
 function add_sub_headlines(id){
 	sub_headlines.push(id);
-	$('#hidden_sub_headlines').attr('value',sub_headlines.toString());
+	$('#hidden_sub_headlines').attr('value',sub_headlines.join(','));
 }
 
 function remove_sub_headlines(id){
 	icount = sub_headlines.length;
 	for(i=0;i<icount;i++){
 		if(sub_headlines[i] == id){
-			sub_headlines.splice(i,1);
+			sub_headlines = sub_headlines.splice(i,1);
 		}
 	}
+	$('#hidden_sub_headlines').attr('value',sub_headlines.join(','));
 }
-
 function str_length(str){
 	return   str.replace(/[^\x00-\xff]/g,"**").length;
 }

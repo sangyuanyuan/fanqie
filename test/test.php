@@ -37,7 +37,7 @@
 		<textarea id="fck1"></textarea>
 		<div id="div1">
 			<p>
-				<div id="div2">
+				<div id="div2" style="width:150px;">
 					abc;
 				</div>
 			</p>
@@ -58,7 +58,7 @@
 		//});
 		//category.display_select('test',$('#test_form'),-1,'');
 		//alert($('#div1 #div2').html());
-		display_fqbq('div2','fck');
+		display_fqbq('div2','fck1');
 	});
 	$('#test_form').submit(function(){
 		return false;
