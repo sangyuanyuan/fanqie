@@ -40,39 +40,26 @@ $(function(){
 		
 		$('#priority').attr('value', priority);	
 		
-		if(typeof(dept_category) != 'undefined'){
-			category_id = $('.news_category_dept:last').attr('value');
-			if(category_id == -1){
-				alert('请选择分类!');
-				return false;
-			}
-			$('#category_id').attr('value',category_id);
-			dept_category_id = $('.news_category:last').attr('value');
-			if(dept_category_id == -1){
-				alert('请选择分类!');
-				return false;
-			}
-			$('#$dept_category_id').attr('value',dept_category_id);
-			var item = category.get_item(dept_category_id);
-	
-			if(str_length(short_title) > item.short_title_length){
-				alert('短标题太长,请重新输入!');
-				return false;
-			}			
-		}else{
-			category_id = $('.news_category:last').attr('value');
-			if(category_id == -1){
-				alert('请选择分类!');
-				return false;
-			}
-			$('#category_id').attr('value',category_id);
-			var item = category.get_item(category_id);
-	
-			if(str_length(short_title) > item.short_title_length){
-				alert('短标题太长,请重新输入!');
-				return false;
-			}		
+		
+		category_id = $('.news_category:last').attr('value');
+		if(category_id == -1){
+			alert('请选择分类!');
+			return false;
 		}
+		$('#category_id').attr('value',category_id);
+		if($('#is_recommend').attr('checked')){					
+			category_id_index = $('.news_category_index:last').attr('value');
+			if(category_id_index == -1){
+				alert('请选择首页分类!');
+				return false;
+			}
+			$('#category_id_index').attr('value',category_id_index);		
+		}
+		var item = dept_category.get_item(category_id);
+		if(str_length(short_title) > item.short_title_length){
+			alert('短标题太长,请重新输入!');
+			return false;	
+		}				
 		news_type=  $('#td_newstype').find('input:checked').attr('value');
 		if(news_type == 3){
 			if($('#target_url input').attr('value')== ''){
@@ -91,8 +78,11 @@ $(function(){
 			return false;
 		}
 			
-		
 		return true;
+	});
+	
+	$('#is_recommend').click(function(){
+		toggle_is_recommend();
 	});
 	
 	$('#td_newstype input').click(function(){
@@ -106,27 +96,26 @@ $(function(){
 		str += '<span id="td_category_select_'+ category_count +'"></span>';
 		str += '<a href="#" class="a_delete_category" style="color:blue;"> 删除</a>';
 		$('#td_category_select').parent().parent().after(str);
-		category.display_select('news_category_add',$('#td_category_select_'+ category_count),-1);
+		dept_category.display_select('news_category_add',$('#td_category_select_'+ category_count),-1);
 		$('.a_delete_category').click(function(e){
 			e.preventDefault();			
 			$(this).parent().parent().remove();
 		});
 	});
 
-	//category.display_select('news_category',$('#td_category_select'),-1);
-	
-	if(typeof(dept_category) != 'undefined'){
-		dept_category.display_select('news_category_dept',$('#td_category_dept'),-1);		
-	}
-	category.display_select('news_category',$('#td_category_select'),-1,'',function(id,max_len){
+	//category.display_select('news_category',$('#td_category_select'),-1);	
+		
+	category.display_select('news_category_index',$('#td_category_index'),-1,'');
+	dept_category.display_select('news_category',$('#td_category_select'),-1,'',function(id,max_len){
 		//alert('id=' + id + ';max_len=' + max_len);
 		if(id != -1){
 			$('#max_len').html('(长度限制:'+ max_len / 2 + '个汉字)');
 		}else{
 			$('#max_len').html('');
 		}
-	});	
+	});		
 	toggle_news_type();
+	toggle_is_recommend();
 });
 
 function toggle_news_type(){
@@ -145,6 +134,18 @@ function toggle_news_type(){
 		$('#tr_file_name').hide();
 	}
 }
+
+function toggle_is_recommend(){
+	if($('#is_recommend').attr('checked')){
+		$('#hidden_is_recommend').val('1');
+		$('#index_category').show();
+	}else{
+		$('#category_id_index').val('');
+		$('#hidden_is_recommend').val('0');
+		$('#index_category').hide();
+	}	
+}
+
 var related_news = new Array();
 function add_related_news(id){
 	//remove_related_news(id);
@@ -183,6 +184,6 @@ function str_length(str){
 }
 
  function remove_hmtl_tag(str) 
-          { 
+  { 
              return str.replace(/<\/?.+?>/g,"");//去掉所有的html标记 
-          } 
+  } 

@@ -1,7 +1,7 @@
 <?php 
 	require "../../frame.php";
 	$news_id = $_POST['id'] ? $_POST['id'] : 0;
-	#var_dump($_POST);
+	var_dump($_POST);
 	//exit;
 	$news = new table_class('smg_news');
 	if($news_id!=0){
@@ -83,7 +83,9 @@
 				$category_add = explode(',', $_POST['category_add']);
 				$copy_from = $news->id;
 				foreach ($category_add as $v) {
-					$news->category_id = $v;
+					$news->dept_category_id = $v;
+					$news->category_id = 0;
+					$news->is_recommend = 0;
 					$news->id=0;
 					$news->copy_from = $copy_from;
 					$news->save();
@@ -125,7 +127,9 @@
 			$category_add = explode(',', $_POST['category_add']);
 			$copy_from = $news->id;
 			foreach ($category_add as $v) {
-				$news->category_id = $v;
+				$news->dept_category_id = $v;
+				$news->category_id = 0;
+				$news->is_recommend = 0;
 				$news->id=0;
 				$news->copy_from = $copy_from;
 				$news->save();

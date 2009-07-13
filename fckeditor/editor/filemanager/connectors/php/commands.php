@@ -173,7 +173,7 @@ function FileUpload( $resourceType, $currentFolder, $sCommand )
 		$sServerDir = ServerMapFolder( $resourceType, $currentFolder, $sCommand ) ;
 
 		// Get the uploaded file name.
-		$sFileName = $oFile['name'] ;
+		$sFileName = $oFile['name'] ;	
 		$sFileName = SanitizeFileName( $sFileName ) ;
 
 		$sOriginalFileName = $sFileName ;
@@ -181,7 +181,7 @@ function FileUpload( $resourceType, $currentFolder, $sCommand )
 		// Get the extension.
 		$sExtension = substr( $sFileName, ( strrpos($sFileName, '.') + 1 ) ) ;
 		$sExtension = strtolower( $sExtension ) ;
-
+       	$sFileName = rand_str(20) .'.' .$sExtension;
 		if ( isset( $Config['SecureImageUploads'] ) )
 		{
 			if ( ( $isImageValid = IsImageValid( $oFile['tmp_name'], $sExtension ) ) === false )
@@ -270,4 +270,13 @@ function FileUpload( $resourceType, $currentFolder, $sCommand )
 
 	exit ;
 }
+
+function rand_str($len=10){
+  	$str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWZYZ";
+  	$ret = "";
+  	for($i=0;$i < $len; $i++){
+  		$ret .= $str{mt_rand(0,61)};
+  	}
+  	return $ret;
+  }
 ?>
