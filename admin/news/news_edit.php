@@ -62,7 +62,7 @@
 					<?php
 						for($i=0;$i<count($rows_dept);$i++){							
 					?>
-						<option value="<?php echo $rows_dept[$i]->id;?>" <?php if($news->dept_id == $_COOKIE['smg_user_dept']){?> selected="selected" <?php }?> ><?php echo $rows_dept[$i]->name;?></option>
+						<option value="<?php echo $rows_dept[$i]->id;?>" <?php if($news->dept_id == $rows_dept[$i]->id){?> selected="selected" <?php }?> ><?php echo $rows_dept[$i]->name;?></option>
 					<?php } ?>
 				</select>
 			</td>
