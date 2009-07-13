@@ -62,7 +62,7 @@
 						<span><?php echo strip_tags($items[$i]->short_title);?></span>
 					</td>
 					<td>
-						<?php echo $items[$i]->category_id;?>
+						<?php echo $category->find($items[$i]->category_id)->name; ?>
 					</td>
 					<td><?php $cate = get_dept_info($items[$i]->dept_id);echo $cate->name;?></td>					
 				</tr>

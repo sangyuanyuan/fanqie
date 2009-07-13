@@ -62,7 +62,7 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>头条控制</td>
 			<td align="left" id="td_headline_type">　
-				  <input type="radio" name="news[sub_headline]" value="1" <?php if($news->sub_headline==1){ ?> checked="checked" <?php } ?>>展示简介 <input type="radio" name="news[sub_headline]" value="2" <?php if($news->sub_headline==2){ ?> checked="checked" <?php } ?>>展示子头条  <a href="sub_headline.php?width=800&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
+				  <input type="radio" name="news[sub_headline]" value="1" <?php if($news->sub_headline==1){ ?> checked="checked" <?php } ?>>展示简介 <input type="radio" name="news[sub_headline]" value="2" <?php if($news->sub_headline==2){ ?> checked="checked" <?php } ?>>展示子头条  <a href="sub_headline.php?width=650&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=target_url>
@@ -160,7 +160,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3  class="normal_news">
-			<td>其他选项</td><td align="left">　<input type="checkbox" id="forbbide_copy_checkbox" value="1" <?php if($news->forbbide_copy==1){?>checked="checked" <?php } ?>> 禁止复制  <input type="checkbox"  name="news[is_adopt]" value="1" >直接发布  <input type="checkbox" value="1" id="image_flag_checkbox" <?php if($news->image_flag == 1) echo "checked=\"checked\"";?>>图片提示 <a style="color:blue;" href="filte_news.php?width=800&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
+			<td>其他选项</td><td align="left">　<input type="checkbox" id="forbbide_copy_checkbox" value="1" <?php if($news->forbbide_copy==1){?>checked="checked" <?php } ?>> 禁止复制  <input type="checkbox"  name="news[is_adopt]" value="1" >直接发布  <input type="checkbox" value="1" id="image_flag_checkbox" <?php if($news->image_flag == 1) echo "checked=\"checked\"";?>>图片提示 <a style="color:blue;" href="filte_news.php?width=650&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1  class="normal_news">
 			<td>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100",$news->description);?></td>
@@ -201,9 +201,13 @@
 			$('#td_subject').html(str);
 			tb_init('#a_assign_subject');
 		});
+		if( $('#hidden_sub_headlines').attr('value')){
+			sub_headlines = $('#hidden_sub_headlines').attr('value').split(",");
+		}
+		if($('#hidden_related_news').attr('value')){
+			related_news = $('#hidden_related_news').attr('value').split(",");
+		}
 		
-		sub_headlines = $('#hidden_sub_headlines').attr('value').split(",");
-		related_news = $('#hidden_related_news').attr('value').split(",");
 	});
 
 	$('#select').click(function(){
