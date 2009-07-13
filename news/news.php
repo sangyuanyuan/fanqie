@@ -11,8 +11,8 @@
 	<title>SMG-番茄网-新闻-普通子页</title>
 	<? 	
 		css_include_tag('news_news','top','bottom');
-		js_include_once_tag('pubfun','news');
 		use_jquery();
+		js_include_once_tag('pubfun','news');		
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
 		$record=$db->query($sql);
@@ -167,10 +167,11 @@
 			<div class=aboutcontent>
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php echo count($comment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
 				<input type="text">
-				<?php show_fckeditor('fck');?>
+				<?php show_fckeditor('fck','Title',false);?>
 				<div id=fqbq>
-					<button>提交评论</button>
+					
 				</div>
+				<button>提交评论</button>
 			</div>
 		</div>
 	</div>
