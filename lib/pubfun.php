@@ -300,7 +300,7 @@ function copy_dir($source, $destination, $child=1){
 	return true; 
 } 
 
-function search_content($key,$table_name='smg_news',$conditions=null,$page_count = 0){
+function search_content($key,$table_name='smg_news',$conditions=null,$page_count = 0, $order=''){
 	$table = new table_class($table_name);
 	$keys = explode(' ',$key);
 	$c = array();
@@ -320,6 +320,9 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	}
 	
 	$sql = 'select * from ' . $table_name ." where 1=1 and " .$c;
+	if ($order){
+		$sql = $sql . ' order  by ' .$order;
+	}
 	$db = get_db();
 	if($page_count > 0){
 		return $db->paginate($sql);	

@@ -135,12 +135,11 @@ class table_class{
 			if(!empty($arg["order"])) $sqlstr .= " order by " .$arg["order"];
 		}
 
-		if ($limit > 0) {
-			$sqlstr .= " limit " .$limit;
-		}
-		/*
+		#if ($limit > 0) {
+		#	$sqlstr .= " limit " .$limit;
+		#}
+
 		$db = get_db();
-		#$db->echo_sql = true;
 		if($this->echo_sql){
 			echo $sqlstr;
 		};
@@ -156,7 +155,7 @@ class table_class{
 		}else {
 			$result = array();
 			if($db->record_count <= 0) return $result;
-			for($i=$db->record_count-1; $i >=0; $i--){
+			for($i=0; $i < $db->record_count; $i++){
 				$tmp = clone $this;
 				foreach ($this->fields as $k => $v){
 					$tmp->fields[$k] = $db_ret[$i]->$k;
@@ -166,8 +165,8 @@ class table_class{
 
 		}
 		return $result;
-		*/
-		return $this->_find_by_sql($sqlstr,$limit);
+
+		#return $this->_find_by_sql($sqlstr,$limit);
 	}
 
 	public function save(){

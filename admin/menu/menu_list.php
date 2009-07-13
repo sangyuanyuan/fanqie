@@ -2,7 +2,7 @@
 	require_once('../../frame.php');
 	judge_role();
 	$type = $_REQUEST['type'];
-	if($type=="admin"){$menu_title="添加超级管理员菜单主目录"; $menu_table="smg_admin_menu";}
+	if($type=="admin"||$type==""){$menu_title="添加超级管理员菜单主目录"; $menu_table="smg_admin_menu";}
 	elseif($type=="dept"){$menu_title="添加部门管理员菜单主目录"; $menu_table="smg_admin_menu_dept";}
 ?>
 

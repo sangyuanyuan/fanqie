@@ -8,6 +8,12 @@
 	}
 	
 	$news->update_attributes($_POST['news'],false);
+	$category = new table_class('smg_category');
+	if($news->category_id!=''){
+		$category->find($news->category_id);
+		$news->platform = $category->platform;
+	}
+	
 	$pos = strpos(strtolower($news->content), '<img ');
 	if($pos !== false){
 		$pos_end = strpos(strtolower($news->content), '> ',$pos);
