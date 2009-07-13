@@ -28,6 +28,7 @@
 	if($is_adopt!=''){
 		array_push($c, "is_adopt=$is_adopt");
 	}
+	array_push($c, "is_recommend=1");
 	if($title){
 		$record = search_content($title,'smg_news',implode(' and ', $c),20,'priority asc,created_at desc');
 	}else{
@@ -118,7 +119,7 @@
 						<?php }else{?>
 							<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $record[$i]->id;?>">删除</span>
 						<?php }?>
-						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php echo $record[$i]->priority;?>" style="width:40px;">
+						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:40px;">
 					</td>
 				</tr>
 		<?php
