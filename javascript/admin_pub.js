@@ -62,7 +62,7 @@ $(function(){
     			priority_str=priority_str+$(this).attr("value")+"|";
 			});
 			$.post("/admin/pub/pub.post.php",{'id_str':id_str,'priority_str':priority_str,'db_table':$('#db_talbe').attr('value'),'post_type':'edit_priority','is_dept_list':$('#is_dept_list').attr('value')},function(data){
-				if(""==data){window.location.reload();}
+				window.location.reload();
 			});		
 			
 		});
@@ -78,7 +78,7 @@ $(function(){
     			priority_str=priority_str+$(this).attr("value")+"|";
 			});
 			$.post("/admin/pub/pub.post.php",{'id_str':id_str,'priority_str':priority_str,'db_table':$('#db_talbe').attr('value'),'post_type':'edit_priority'},function(data){
-				if(""==data){window.location.reload();}
+				window.location.reload();
 			});		
 			
 		});

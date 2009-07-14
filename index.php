@@ -259,7 +259,7 @@
 				<div id=content1><?php echo $record_import[0]->short_title; ?></div>
  				<a href="" id=btn ></a>
  				<?php
-					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.category_type="news" order by n.priority asc limit 41';
+					$sql = 'select n.short_title,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.category_type="news" order by n.priority asc limit 41';
 					$record_import_a=$db -> query($sql);
 					$sql = 'select n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.category_type="news" order by n.priority asc limit 6';
 					$record_import_b=$db -> query($sql);
@@ -267,79 +267,79 @@
  				<div id=box>
  					<div id=l>
  						<ul>
- 						 <?php for($i=0; $i<6; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=0; $i<5; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>
  						<div class=space></div>
   					<ul>
- 						 <?php for($i=6; $i<9; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=5; $i<8; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>
  						<div class=space></div>
   					<ul>
- 						 <?php for($i=9; $i<12; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=8; $i<11; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>
  						<div class=space></div>
-						<img src="<?php echo $record_import_b[0]->photo_src ?>" >
- 						<img src="<?php echo $record_import_b[0]->photo_src ?>" >
+						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
+ 						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
   					<ul>
- 						 <?php for($i=12; $i<14; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=11; $i<13; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>						
  					</div>	
  					
  					<div id=c>
    					<ul>
- 						 <?php for($i=14; $i<20; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=13; $i<18; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>								
  						<div class=space></div>
-						<img src="<?php echo $record_import_b[0]->photo_src ?>" >
- 						<img src="<?php echo $record_import_b[0]->photo_src ?>" >
+						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
+ 						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
  						<div class=space></div>
    					<ul>
- 						 <?php for($i=20; $i<23; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=18; $i<21; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>			
  						<div class=space></div>
    					<ul>
- 						 <?php for($i=23; $i<28; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=21; $i<26; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>	
  					</div>	 
  					
  					<div id=r>
-						<img src="<?php echo $record_import_b[0]->photo_src ?>" >
- 						<img src="<?php echo $record_import_b[0]->photo_src ?>" >
+						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
+ 						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
     				<ul>
- 						 <?php for($i=28; $i<31; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=26; $i<28; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>
      				<ul>
- 						 <?php for($i=31; $i<34; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=28; $i<31; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>
       			<ul>
- 						 <?php for($i=34; $i<37; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=31; $i<34; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>												
       			<ul>
- 						 <?php for($i=37; $i<42; $i++){?>
- 							<li><a href=""><?php echo $record_import_a[$i]->short_title ?></a></li>
+ 						 <?php for($i=34; $i<39; $i++){?>
+ 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>	
  					</div>	 				
