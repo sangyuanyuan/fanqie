@@ -4,27 +4,27 @@
 	$dept_id = $user->dept_id;
 	
 	$title = $_REQUEST['title'];
-	$category_id = $_REQUEST['category'];
-	$is_adopt = $_REQUEST['adopt'];
+	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
 	$is_recommend = $_REQUEST['recommend'];
+	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
-	$sql = 'select * from smg_category_dept where category_type="news" and dept_id='.$dept_id;
-	$rows_category = $db->query($sql);
-	$sql="select t1.*,t2.name as category_name from smg_news t1,smg_category_dept t2 where t1.dept_category_id=t2.id and t1.dept_id=".$dept_id." and t1.is_recommend=1";
-	if($title!=''){
-		$sql = $sql." and t1.short_title like '%".$title."%'";
-	}
-	if($category_id!=''){
-		$sql = $sql." and t1.dept_category_id=".$category_id;
+	$c = array();
+	if($category_id > 0){
+		array_push($c, "dept_category_id=$category_id");
 	}
 	if($is_recommend!=''){
-		$sql = $sql." and t1.is_recommend=".$is_recommend;
+		array_push($c, "is_recommend=$is_recommend");
 	}
 	if($is_adopt!=''){
-		$sql = $sql." and t1.dept_is_adopt=".$is_adopt;
+		array_push($c, "is_dept_adopt=$is_adopt");
 	}
-	$sql = $sql." order by dept_priority,created_at desc";
-	$record=$db->paginate($sql,20);
+	array_push($c, "dept_id=$dept_id");
+	if($title){
+		$record = search_content($title,'smg_news',implode(' and ', $c),20,'dept_priority asc,created_at desc');
+	}else{
+		$news = new table_class('smg_news');
+		$record = $news->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'dept_priority asc,created_at desc'),20);
+	}
 	
 ?>
 
@@ -37,7 +37,9 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub');
+		js_include_tag('admin_pub','smg_category_class');
+		$category = new smg_category_class('news',$dept_id);
+		$category->echo_jsdata();		
 	?>
 </head>
 
@@ -45,30 +47,26 @@
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
 			<td colspan="5">
-				　<a href="news_add.php?dept_id=<?php echo $dept_id;?>">添加新闻</a>
+				　<a href="news_add_dept.php">添加新闻</a>
 				搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
 				<select id=recommend style="width:100px" class="select_new">
-					<option value="">推荐状况</option>
+					<option value="">推荐状态</option>
 					<option value="1" <? if($_REQUEST['recommend']=="1"){?>selected="selected"<? }?>>已推荐</option>
 					<option value="0" <? if($_REQUEST['recommend']=="0"){?>selected="selected"<? }?>>未推荐</option>
 					<option value="2" <? if($_REQUEST['recommend']=="2"){?>selected="selected"<? }?>>被退回</option>
 				</select>
-				<select id=category style="width:100px" class="select_new">
-					<option value="">所属类别</option>
-					<?php for($i=0;$i<count($rows_category);$i++){?>
-					<option value="<?php echo $rows_category[$i]->id; ?>" <?php if($rows_category[$i]->id==$_REQUEST['category']){?>selected="selected"<? }?>><?php echo $rows_category[$i]->name; ?></option>
-					<? }?>
-				</select>
-				<select id=adopt style="width:100px" class="select_new">
+				<span id="span_category"></span>
+				<select id=adopt style="width:90px" class="select_new">
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
 				</select>
 				<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
+				<input type="hidden" value="<?php echo $category_id;?>" id="category">
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td width="300">标题</td><td width="100">新闻类型</td><td width="100">所属类别</td><td width="100">所属部门</td><td width="250">操作</td>
+			<td width="300">标题</td><td width="100">所属类别</td><td width="100">发布时间</td><td width="100">推荐到集团首页</td><td width="250">操作</td>
 		</tr>
 		<?php
 			//--------------------
@@ -76,11 +74,13 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->short_title;?></td>
-					<td><?php if($record[$i]->news_type==1){echo '普通新闻';}elseif($record[$i]->news_type==2){echo '文件新闻';}else{echo '链接新闻';}?></td>
 					<td>
 						<a href="?category=<?php echo $record[$i]->dept_category_id;?>" style="color:#0000FF">
-							<?php echo $record[$i]->category_name;?>
+							<?php echo $category->find($record[$i]->dept_category_id)->name; ?>
 						</a>
+					</td>
+					<td>
+						<?php echo $record[$i]->created_at;?>
 					</td>
 					<td>
 						<a href="?recommend=<?php echo $record[$i]->is_recommend;?>" style="color:#0000FF">
@@ -101,14 +101,16 @@
 						<?php if($record[$i]->is_dept_adopt=="0"){?>
 							<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span>　
 						<?php }?>
-						<a href="news_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　
-						<a href="/admin/comment/comment.php?id=<?php echo $record[$i]->id;?>&type=news" style="color:#000000; text-decoration:none">评论</a>　
+						<a href="news_edit_dept.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　
 						<?php if($record[$i]->is_recommend=='1'){?>
-							<span style="color:#333333">删除</span>
+							<span style="cursor:pointer;"><a style="color:#333333" title="推荐到集团首页不能删除" >删除</a></span>
 						<?php }else{?>
 							<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $record[$i]->id;?>">删除</span>
 						<?php }?>
-						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:40px;">
+						<span style="color:#FF0000;cursor:pointer" >
+							<a href="/admin/comment/comment.php?id=<?php echo $record[$i]->id;?>&type=news" style="color:#000000; text-decoration:none">评论管理</a>
+						</span>
+						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$record[$i]->dept_priority){echo $record[$i]->dept_priority;};?>" style="width:40px;">
 					</td>
 				</tr>
 		<?php
@@ -126,17 +128,19 @@
 </html>
 
 <script>
-	$("#search_new").click(function(){
-			window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-	});
-	
-	$("#title").keypress(function(){
-			if(event.keyCode==13){
+	$(function(){
+		category.display_select('category_select',$('#span_category'),<?php echo $category_id;?>,'',function(id){
+			$('#category').val(id);
+			category_id = $('.category_select:last').val();
+			if(id==-1){
+				window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category=&adopt="+$("#adopt").attr('value');
+			}
+			if(category_id != -1){
 				window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 			}
-	});
-	
-	$(".select_new").change(function(){
-			window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+		
+		});
+		
+		
 	});
 </script>

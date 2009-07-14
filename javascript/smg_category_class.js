@@ -20,17 +20,18 @@ function smg_category_item_class(id,name,parent_id,priority,short_title_length){
 }
 
 function smg_category_class(){
-	this.items = new Array();
+	var items = new Array();
+	this.class_name;
 	this.push = function(item){
-		this.items.push(item);
+		items.push(item);
 	}
 	this.get_sub_category = function(parent){
 		parent = parent || 0;
 		var ret = new Array();
-		var icount = this.items.length;
+		var icount = items.length;
 		for(i=0;i<icount ; i++){
-			if (this.items[i].parent_id == parent){
-				ret.push(this.items[i]);
+			if (items[i].parent_id == parent){
+				ret.push(items[i]);
 			}
 		}
 		return ret;
@@ -42,8 +43,8 @@ function smg_category_class(){
 		parent = item.parent_id;
 		var icount = this.items.length;
 		for(i=0;i<icount ; i++){
-			if (this.items[i].parent_id == parent){
-				ret.push(this.items[i]);
+			if (items[i].parent_id == parent){
+				ret.push(items[i]);
 			}
 		}
 		return ret;
@@ -51,52 +52,56 @@ function smg_category_class(){
 	
 	this.get_item = function(id){
 		
-		var icount = this.items.length;
+		var icount = items.length;
 		
 		for(i=0;i<icount ; i++){
 			
-			if (this.items[i].id == id){
-				return this.items[i];
+			if (items[i].id == id){
+				return items[i];
 			}
 		}
 	}
 	
 	this.display_select=function(name,ob,id,object,callback){
+		this.class_name = name;
+		if(id == 0 || id == '') {
+			id = -1;
+		}
 		var othis = this;
 		if(object){
-			t_parent_id = $(object).attr('parent_id');			
+			var t_parent_id = $(object).attr('parent_id');			
 		}
 
 		$(ob).find('select').remove();
 
-		if(id==-1){						
+		if(id==-1 || id == 0 || id== ""){						
 			if(object){				
 				this.display_select(name,ob,t_parent_id,'',callback);
 			}else{
 				this.echo_category(ob,name,0,-1);
 				$(ob).find('select:first').change(function(){
-					category.display_select(name,$(ob),$(this).attr('value'),'',callback);	
+					othis.display_select(name,$(ob),$(this).attr('value'),'',callback);	
 					if(callback){
-						tid = $(this).val();
+						var tid = $(this).val();
 						if(tid != -1){
 							var item = othis.get_item(tid);
-							max_len = item.short_title_length;
+							var max_len = item.short_title_length;
 						}else{
-							max_len = -1;
+							var max_len = -1;
 						}							
 						callback(tid,max_len);
 					}
 									
 				});		
 				$(ob).find('select').not($(ob).find('select:first')).change(function(){
-					category.display_select(name,$(ob),$(this).attr('value'),this,callback);
+					othis.display_select(name,$(ob),$(this).attr('value'),this,callback);
 					if(callback){
-						tid = $(this).val();
+						var tid = $(this).val();
 						if(tid != -1){
 							var item = othis.get_item(tid);
-							max_len = item.short_title_length;
+							var max_len = item.short_title_length;
 						}else{
-							max_len = -1;
+							var max_len = -1;
 						}							
 						callback(tid,max_len);
 					}
@@ -108,16 +113,16 @@ function smg_category_class(){
 			var tparent = new Array();			
 			tparent.push(id);
 			
-			tmp_id = id;
+			var tmp_id = id;
 			while(true){
 				
-				var item = this.get_item(tmp_id);
+				var item = othis.get_item(tmp_id);
 				tparent.push(item.parent_id);
 				if(item.parent_id == 0) break;
 				tmp_id = item.parent_id;
 			}
-			item1 = tparent.pop();
-			item2 = item1;
+			var item1 = tparent.pop();
+			var item2 = item1;
 			while(true){
 				item2 = tparent.pop();
 				if (item2 == undefined) break;
@@ -128,27 +133,27 @@ function smg_category_class(){
 		
 		this.echo_category(ob,name,item1,-1);
 		$(ob).find('select:first').change(function(){
-			category.display_select(name,$(ob),$(this).attr('value'),'',callback);
+			othis.display_select(name,$(ob),$(this).attr('value'),'',callback);
 			if(callback){
-						tid = $(this).val();
+						var tid = $(this).val();
 						if(tid != -1){
 							var item = othis.get_item(tid);
-							max_len = item.short_title_length;
+							var max_len = item.short_title_length;
 						}	else{
-							max_len = -1;
+							var max_len = -1;
 						}						
 						callback(tid,max_len);
 					}
 		});		
 		$(ob).find('select').not($(ob).find('select:first')).change(function(){
-			category.display_select(name,$(ob),$(this).attr('value'),this,callback);
+			othis.display_select(name,$(ob),$(this).attr('value'),this,callback);
 			if(callback){
-						tid = $(this).val();
-						if(tid != -1){
+						var tid = $(this).val();
+						if(tid != -1 || id == 0 || id== ""){
 							var item = othis.get_item(tid);
-							max_len = item.short_title_length;
+							var max_len = item.short_title_length;
 						}else{
-							max_len = -1;
+							var max_len = -1;
 						}							
 						callback(tid,max_len);
 					}

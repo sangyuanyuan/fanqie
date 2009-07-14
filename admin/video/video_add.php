@@ -112,10 +112,10 @@
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 
-			<td>选择图片</td><td align="left"> <input type="hidden" name="MAX_FILE_SIZE" value="2097152">　<input name="image" id="image" type="file" class="required">(请上传200x160大小的图片，格式支持jpg、gif、png)</td>
+			<td>选择图片</td><td align="left"> <input type="hidden" name="MAX_FILE_SIZE" value="2097152">　<input name="image" id="image" type="file" class="required">(请上传小于2M的图片，格式支持jpg、gif、png)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择视频</td><td align="left">　 <input type="hidden" name="MAX_FILE_SIZE" value="5000000000"> <input name="video" id="video" type="file">(请上传视频，并且不要大于500M)</td>
+			<td>选择视频</td><td align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file">(请上传视频，并且不要大于500M)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
 			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="video[description]" class="required"></textarea></td>
@@ -125,7 +125,7 @@
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布视频"></td>
 		</tr>	
 	</table>
-	<input type="hidden" name="video[create_at]"  value="<?php echo date("y-m-d")?>">
+	<input type="hidden" name="video[created_at]"  value="<?php echo date("y-m-d")?>">
 	<input type="hidden" name="url"  value="<?php echo $url;?>">
 	<input type="hidden" name="video[is_adopt]" value="0">
 	<input type="hidden" name="video[is_dept_adopt]" value="0">

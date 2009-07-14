@@ -112,7 +112,7 @@
 			<td>图片链接</td><td align="left">　<input type="text" size="50" name="picture[url]" value="<?php echo $picture_record[0]->url;?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left">　<input name="image" id="upfile" type="file"><a href="<?php echo $picture_record[0]->src;?>" target="_blank">点击查看图片</a><input type="hidden" name="MAX_FILE_SIZE1" value="2097152"></td>
+			<td>选择图片</td><td align="left">　<input name="image" id="upfile" type="file"><a href="<?php echo $picture_record[0]->src;?>" target="_blank">点击查看图片</a><input type="hidden" name="MAX_FILE_SIZE1" value="2097152">(请上传小于2M的图片，格式支持jpg、gif、png)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
 			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="picture[description]" class="required" ><?php echo $picture_record[0]->description;?></textarea></td>

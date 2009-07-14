@@ -3,30 +3,28 @@
 	$user = judge_role('dept_admin');
 	$dept_id = $user->dept_id;
 	
-	$sql = 'select t1.*,t3.name as category_name from smg_video t1,smg_category t3 where t1.category_id=t3.id and t1.dept_id='.$dept_id;
-	if($_REQUEST['key1']!=""){
-		$sql = $sql.' and title  like "%'.trim($_REQUEST['key1']).'%"';
-	}
-	if($_REQUEST['key2']!=""){
-		$sql = $sql." and is_recommend=".$_REQUEST['key2'];
-	}
-	if($_REQUEST['key3']!=""){
-		$sql = $sql." and dept_category_id=".$_REQUEST['key3'];
-	}
-	if($_REQUEST['key4']!=""){
-		$sql = $sql." and is_dept_adopt=".$_REQUEST['key4'];
-	}
-	$sql = $sql.' and is_recommend=1 order by priority';
-	
+	$title = $_REQUEST['title'];
+	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
+	$is_recommend = $_REQUEST['recommend'];
+	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
-	$video_rows = $db->paginate($sql,10);
-	close_db();
-	
-	$type = $_REQUEST['type'];
-	 
-	$category = new table_class("smg_category_dept");
-	$rows_category = $category->find("all",array('conditions' => 'category_type="video" and dept_id='.$dept_id));
-
+	$c = array();
+	if($category_id > 0){
+		array_push($c, "dept_category_id=$category_id");
+	}
+	if($is_recommend!=''){
+		array_push($c, "is_recommend=$is_recommend");
+	}
+	if($is_adopt!=''){
+		array_push($c, "is_dept_adopt=$is_adopt");
+	}
+	array_push($c, "dept_id=$dept_id");
+	if($title){
+		$video_rows = search_content($title,'smg_video',implode(' and ', $c),20,'dept_priority asc,created_at desc');
+	}else{
+		$video = new table_class('smg_video');
+		$video_rows = $video->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'dept_priority asc,created_at desc'),20);
+	}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -38,32 +36,30 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub');
+		js_include_tag('admin_pub','smg_category_class');
+		$category = new smg_category_class('video',$dept_id);
+		$category->echo_jsdata();		
 	?>
 </head>
 <body>
 	<table width="795" border="0">
 		<tr class="tr1">
 			<td colspan="5" width="795">　　　<a href="video_add.php?dept_id=<?php echo $dept_id;?>" style="color:#0000FF">发布视频</a>　　　　　　
-			搜索　<input id=newskey1 type="text" value="<? echo $_REQUEST['key1']?>">
-			<select id=newskey2 style="width:100px" class="select">
+			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
+			<select id=recommend style="width:100px" class="select_new">
 				<option value="">推荐状态</option>
-				<option value="1" <? if($_REQUEST['key2']=="1"){?>selected="selected"<? }?>>已推荐</option>
-				<option value="0" <? if($_REQUEST['key2']=="0"){?>selected="selected"<? }?>>未推荐</option>
-				<option value="2" <? if($_REQUEST['key2']=="2"){?>selected="selected"<? }?>>被退回</option>
+				<option value="1" <? if($_REQUEST['recommend']=="1"){?>selected="selected"<? }?>>已推荐</option>
+				<option value="0" <? if($_REQUEST['recommend']=="0"){?>selected="selected"<? }?>>未推荐</option>
+				<option value="2" <? if($_REQUEST['recommend']=="2"){?>selected="selected"<? }?>>被退回</option>
 			</select>
-			<select id=newskey3 style="width:100px" class="select">
-				<option value="">所属类别</option>
-				<?php for($i=0;$i<count($rows_category);$i++){?>
-				<option value="<?php echo $rows_category[$i]->id; ?>" <?php if($rows_category[$i]->id==$_REQUEST['key3']){?>selected="selected"<? }?>><?php echo $rows_category[$i]->name; ?></option>
-				<? }?>
-			</select>
-			<select id=newskey4 style="width:100px" class="select">
+			<span id="span_category"></span>
+			<select id=adopt style="width:90px" class="select_new">
 				<option value="">发布状况</option>
-				<option value="1" <? if($_REQUEST['key4']=="1"){?>selected="selected"<? }?>>已发布</option>
-				<option value="0" <? if($_REQUEST['key4']=="0"){?>selected="selected"<? }?>>未发布</option>
+				<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
+				<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
 			</select>
-			<input type="button" value="搜索" id="search" style="border:1px solid #0000ff; height:21px">
+			<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
+			<input type="hidden" value="<?php echo $category_id;?>" id="category">
 			</td>
 		</tr>
 	</table>
@@ -78,7 +74,7 @@
 				<?php if($video_rows[$i]->is_recommend=='0'){echo '未推荐';}elseif($video_rows[$i]->is_recommend=='1'){echo '已推荐';}elseif($video_rows[$i]->is_recommend=='2'){echo '被退回';}?>
 			</div>
 			<div class=content>
-				<a href="?key3=<?php echo $video_rows[$i]->dept_category_id;?>" style="color:#0000FF"><?php echo $video_rows[$i]->category_name;?></a>
+				<a href="?category=<?php echo $video_rows[$i]->dept_category_id;?>" style="color:#0000FF"><?php echo $category->find($video_rows[$i]->dept_category_id)->name; ?></a>
 			</div>
 			<div class=content style="height:20px">
 				<?php if($video_rows[$i]->is_dept_adopt=="1"){?>
@@ -88,7 +84,7 @@
 				<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $video_rows[$i]->id;?>">发布</span>
 				<? }?>
 				<a href="video_edit.php?id=<?php echo $video_rows[$i]->id;?>&dept_id=<?php echo $dept_id;?>"" style="color:#000000; text-decoration:none">编辑</a> 
-				<?php if($video_rows[$i]->is_recommend=='1'){?><span style="color:#333333">删除</span><?}else{?><span style="cursor:pointer" class="del" name="<?php echo $video_rows[$i]->id;?>">删除</span><?php }?>
+				<?php if($video_rows[$i]->is_recommend=='1'){?><span style="color:#333333">删除</span><?}else{?><span style="cursor:pointer;color:#ff0000;" class="del" name="<?php echo $video_rows[$i]->id;?>">删除</span><?php }?>
 				<a href="/admin/comment/comment.php?id=<?php echo $video_rows[$i]->id;?>&type=video" style="color:#000000; text-decoration:none">评论</a>
 				<input type="text" class="priority" name="<?php echo $video_rows[$i]->id;?>" value="<?php if($video_rows[$i]->dept_priority!=100){echo $video_rows[$i]->dept_priority;}?>" style="width:40px;">
 				<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $video_rows[$i]->id;?>" style="width:40px;">	
@@ -109,4 +105,21 @@
 </html>
 
 
+<script>
+	$(function(){
+		category.display_select('category_select',$('#span_category'),<?php echo $category_id;?>,'',function(id){
+			$('#category').val(id);
+			category_id = $('.category_select:last').val();
+			if(id==-1){
+				window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category=&adopt="+$("#adopt").attr('value');
+			}
+			if(category_id != -1){
+				window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			}
+		
+		});
+		
+		
+	});
+</script>
 

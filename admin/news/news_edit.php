@@ -2,6 +2,7 @@
 	require_once('../../frame.php');
 	$type = $_REQUEST['type'];
 	$id = $_REQUEST['id'];
+	$role = judge_role();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -22,6 +23,9 @@
 //initialize the categroy;
 	$category = new smg_category_class('news');
 	$category->echo_jsdata();
+	$db = get_db();
+	$rows_dept = $db->query('select * from smg_dept');
+	
 	
 ?>
 <body style="background:#E1F0F7">
@@ -48,6 +52,24 @@
 			<a href="#" id="a_add_category" style="color:blue;">添加</a>
 			</td>
 		</tr>
+		<?php 
+		  if($role == 'admin'){
+		  	?>
+			<tr class=tr3 id="index_category">
+			<td>发表部门</td>
+			<td align="left">
+				<select id=select name="news[dept_id]">
+					<?php
+						for($i=0;$i<count($rows_dept);$i++){							
+					?>
+						<option value="<?php echo $rows_dept[$i]->id;?>" <?php if($news->dept_id == $rows_dept[$i]->id){?> selected="selected" <?php }?> ><?php echo $rows_dept[$i]->name;?></option>
+					<?php } ?>
+				</select>
+			</td>
+		</tr>			
+			<?
+		  }
+		?>
 		<tr class=tr4 id=newsshow3 >
 			<td>新闻类别</td>
 			<td align="left" id="td_newstype">
@@ -68,7 +90,7 @@
 		<tr class=tr3 id=tr_file_name >
 			<td>上传文件</td>
 			<td align="left">
-				<input type="file" size="50" name=file_name value="<?php echo $news->file_name;?>">
+				<input type="file" name=file_name value="<?php echo $news->file_name;?>">
 				<?php
 					if($news->news_type == 2 && $news->file_name){
 						?>
@@ -86,7 +108,11 @@
 				<?php
 				$tags = get_config('g_news_tags');
 				foreach ($tags as $v) {
-					echo "<option value='{$v}' selected='selected'>$v</option>";
+					echo "<option value='{$v}'"; 
+					if($v == $news->tags)
+					echo "selected='selected'";
+					
+					echo ">$v</option>";
 				}
 				?>
 				</select>　　/　　
@@ -109,13 +135,11 @@
 						$vote->find($news->vote_id);
 						echo $vote->name;
 				?>
-				<a href="#" id="delete_vote" style="color:blue">删除</a>
-				<input type="hidden" name="news[vote_id]" value="<?php echo $news->vote_id; ?>">
+				<a href="#" id="delete_vote" style="color:blue">删除</a>				
 				<?php
 					}else{
 				?>
-				<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>
-				<input type="hidden" name="news[vote_id]" id="vote_id">	
+				<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>	
 				<?php	
 					} 
 				?>	
@@ -134,14 +158,10 @@
 						echo $subject->name;
 				?>
 				<a href="#" id="delete_subject" style="color:blue">删除</a>
-				<input type="hidden" name="subject_id" value="<?php echo $subject->id;?>">
-				<input type="hidden" name="subject_category_id" value="'<?php echo $record[0]->category_id;?>'">
 				<?php
 					}else{
 				?>
 				<a style="color:blue;" href="assign_subject.php?width=600&height=400" class="thickbox" id="a_assign_subject">关联专题</a>
-				<input type="hidden" name="subject_id" value="">
-				<input type="hidden" name="subject_category_id" value="">
 				<?php
 					}
 				?>
@@ -167,6 +187,10 @@
 		<input type="hidden" name="news[image_flag]" value="<?php echo $news->image_flag;?>" id="hidden_image_flag">
 		<input type="hidden" name="news[forbbide_copy]" value="<?php echo $news->forbbide_copy;?>" id="hidden_forbbide_copy">
 		<input type="hidden" name="id"  value="<?php echo $news->id; ?>">
+		<input type="hidden" name="news[vote_id]"  id="vote_id" value="<?php echo $news->vote_id; ?>">
+		<input type="hidden" name="subject_id" value="<?php echo $subject->id;?>" id="hidden_subject_id">
+		<input type="hidden" name="subject_category_id" value="'<?php echo $record[0]->category_id;?>'" id="hidden_subject_category_id">		
+		<input type="hidden" name="delete_subject" id="hidden_delete_subject" value="0">
 	</form>
 </body>
 </html>
@@ -176,18 +200,20 @@
 		
 		$('#delete_vote').click(function(e){
 			e.preventDefault();
-			str = '<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a><input type="hidden" name="news[vote_id]" value="0">';
+			str = '<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>';
 			$('#td_vote').html(str);
+			$('#vote_id').val('0');
+			alert($('#vote_id').val());
 			tb_init('#a_vote_id');
 		});
 		
 		$('#delete_subject').click(function(e){
 			e.preventDefault();
 			str = '<a style="color:blue;" href="assign_subject.php?width600&height=400" class="thickbox" id="a_assign_subject">关联专题</a>';
-			str += '<input type="hidden" name="subject_id" value="">';
-			str += '<input type="hidden" name="subject_category_id" value="">';
 			$('#td_subject').html(str);
 			tb_init('#a_assign_subject');
+			//$('#hidden_subject_id,#subject_category_id').val('0');
+			$('#hidden_delete_subject').val('2');
 		});
 		if( $('#hidden_sub_headlines').attr('value')){
 			sub_headlines = $('#hidden_sub_headlines').attr('value').split(",");

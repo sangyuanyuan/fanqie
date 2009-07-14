@@ -116,10 +116,10 @@
 			<td>在线视频</td><td align="left">　<input type="text" size="50" name="video[online_url]" value="<?php echo $video_record[0]->online_url;?>">（如果本地上传视频此项请留空！）</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left"> <input type="hidden" name="MAX_FILE_SIZE" value="2097152">　<input name="image" id="image" type="file" >(请上传200x160大小的图片，格式支持jpg、gif、png)</td>
+			<td>选择图片</td><td align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" ><a href="<?php echo $video_record[0]->photo_url;?>" target="_blank">点击查看图片</a>(请上传小于2M的图片，格式支持jpg、gif、png))</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择视频</td><td align="left">　 <input type="hidden" name="MAX_FILE_SIZE" value="5000000000"> <input name="video" id="video" type="file" >(请上传视频，并且不要大于500M)</td>
+			<td>选择视频</td><td align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file" ><?php if($video_record[0]->video_url!=''){?><a href="<?php echo $video_record[0]->video_url;?>" target="_blank">点击查看视频</a><?php } ?>(请上传视频，并且不要大于500M)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
 			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="video[description]" class="required"><?php echo $video_record[0]->description;?></textarea></td>

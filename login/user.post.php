@@ -19,11 +19,12 @@ if($_POST['user_type']=="login")
 	else
 	{
 		$y2k = mktime(0,0,0,1,1,2020); 
-		if ($login_info[0]->register_type == "real")
+		if ($login_info[0]->register_type == "user_id")
 		{
 			$sql = 'select * from smg_user_real where id='.$login_info[0]->smg_real_id;
 			$login_info2 = $db->query($sql);
 			@SetCookie('smg_user_dept',$login_info2[0]->dept_id,$y2k,'/');
+			#alert($_COOKIE['smg_user_dept']);
 		}
 		@SetCookie('smg_username',$login_text,$y2k,'/');
 		@SetCookie('smg_userid',$login_info[0]->smg_real_id,$y2k,'/');
@@ -31,6 +32,9 @@ if($_POST['user_type']=="login")
 		@setcookie('smg_role', $login_info[0]->role_name,$y2k,'/');
 		session_start(); 
 		$_SESSION["smg_role"] = $login_info[0]->role_name;	
+		if($_SESSION['smg_role'] == 'admin'){
+			@SetCookie('smg_user_dept',7,$y2k,'/');
+		}
 		$error =  "ok";
 	}	
 	if(is_ajax()){

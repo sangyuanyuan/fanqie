@@ -5,7 +5,7 @@
 	
 	$title = $_REQUEST['title'];
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
-	$is_recommend = $_REQUEST['dept'];
+	$is_recommend = $_REQUEST['recommend'];
 	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
 	$c = array();
@@ -20,10 +20,10 @@
 	}
 	array_push($c, "dept_id=$dept_id");
 	if($title){
-		$magazine_rows = search_content($title,'smg_magazine',implode(' and ', $c),20,'priority asc,create_time desc');
+		$magazine_rows = search_content($title,'smg_magazine',implode(' and ', $c),20,'dept_priority asc,create_time desc');
 	}else{
 		$magazine = new table_class('smg_magazine');
-		$magazine_rows = $magazine->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'priority asc,create_time desc'),20);
+		$magazine_rows = $magazine->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'dept_priority asc,create_time desc'),20);
 	}
 ?>
 
@@ -46,11 +46,11 @@
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td width="795">　　　<a href="magazine_add.php?dept_id=<?php echo $dept_id;?>" style="color:#0000FF">发布电子杂志</a>　　　　　　
 			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
-			<select id=dept style="width:100px" class="select_new">
+			<select id=recommend style="width:100px" class="select_new">
 				<option value="">推荐状态</option>
-				<option value="1" <? if($_REQUEST['dept']=="1"){?>selected="selected"<? }?>>已推荐</option>
-				<option value="0" <? if($_REQUEST['dept']=="0"){?>selected="selected"<? }?>>未推荐</option>
-				<option value="2" <? if($_REQUEST['dept']=="2"){?>selected="selected"<? }?>>被退回</option>
+				<option value="1" <? if($_REQUEST['recommend']=="1"){?>selected="selected"<? }?>>已推荐</option>
+				<option value="0" <? if($_REQUEST['recommend']=="0"){?>selected="selected"<? }?>>未推荐</option>
+				<option value="2" <? if($_REQUEST['recommend']=="2"){?>selected="selected"<? }?>>被退回</option>
 			</select>
 			<span id="span_category"></span>
 			<select id=adopt style="width:90px" class="select_new">
@@ -59,6 +59,7 @@
 				<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
 			</select>
 			<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
+			<input type="hidden" value="<?php echo $category_id;?>" id="category">
 			</td>
 		</tr>
 	</table>
@@ -73,7 +74,7 @@
 				<?php if($magazine_rows[$i]->is_recommend=='0'){echo '未推荐';}elseif($magazine_rows[$i]->is_recommend=='1'){echo '已推荐';}elseif($magazine_rows[$i]->is_recommend=='2'){echo '被退回';}?>
 			</div>
 			<div class=content>
-				<a href="?category=<?php echo $magazine_rows[$i]->dept_category_id;?>" style="color:#0000FF"><?php echo $magazine_rows[$i]->category_name;?></a>
+				<a href="?category=<?php echo $magazine_rows[$i]->dept_category_id;?>" style="color:#0000FF"><?php echo $category->find($magazine_rows[$i]->dept_category_id)->name; ?></a>
 			</div>
 			<div class=content style="height:20px">
 				<?php if($magazine_rows[$i]->is_dept_adopt=="1"){?>
@@ -83,7 +84,7 @@
 					<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $magazine_rows[$i]->id;?>">发布</span>
 				<?php }?>
 				<a href="magazine_edit.php?id=<?php echo $magazine_rows[$i]->id;?>&dept_id=<?php echo $dept_id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-				<?php if($magazine_rows[$i]->is_recommend=='1'){?><span style="color:#333333">删除</span><?}else{?><span style="cursor:pointer" class="del" name="<?php echo $magazine_rows[$i]->id;?>">删除</span><?php }?>
+				<?php if($magazine_rows[$i]->is_recommend=='1'){?><span style="color:#333333">删除</span><?}else{?><span style="cursor:pointer;color:#ff0000;" class="del" name="<?php echo $magazine_rows[$i]->id;?>">删除</span><?php }?>
 				<a href="/admin/comment/comment.php?id=<?php echo $magazine_rows[$i]->id;?>&type=magazine" style="color:#000000; text-decoration:none">评论</a>
 				<input type="text" class="priority" name="<?php echo $magazine_rows[$i]->id;?>" value="<?php if($magazine_rows[$i]->dept_priority!=100){echo $magazine_rows[$i]->dept_priority;}?>" style="width:40px;">
 				<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $magazine_rows[$i]->id;?>" style="width:40px;">	
@@ -110,42 +111,15 @@
 			$('#category').val(id);
 			category_id = $('.category_select:last').val();
 			if(id==-1){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category=&adopt="+$("#adopt").attr('value');				
+				window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category=&adopt="+$("#adopt").attr('value');
 			}
 			if(category_id != -1){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+				window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 			}
 		
 		});
-		var all_selected = false;
-		$('#select_all').click(function(){
-			all_selected = !all_selected;
-			$('input:checkbox').attr('checked',all_selected);
-		});
-		$('#button_delete').click(function(){
-			$.post('delete_news.php',$('input:checkbox').serializeArray(),function(data){
-				window.location.reload();
-			});
-		});
-		$('#title').keydown(function(e){
-			if(e.keyCode == 13){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-			}
-		});
 		
-		$("#search_new").click(function(){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-		});
 		
-		$("#title").keypress(function(){
-				if(event.keyCode==13){
-					window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-				}
-		});
-		
-		$(".select_new").change(function(){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-		});
 	});
 </script>
 

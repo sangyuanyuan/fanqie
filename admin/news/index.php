@@ -1,12 +1,9 @@
 <?php
-	#var_dump($_REQUEST);
 	require_once('../../frame.php');
 	$user = judge_role('admin');	
-	
 	$title = $_REQUEST['title'];
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
 	$dept_id = $_REQUEST['dept'];
-	echo $dept_id;
 	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
 	#$sql = 'select * from smg_category';
@@ -14,7 +11,7 @@
 	$sql = 'select * from smg_dept';
 	$rows_dept = $db->query($sql);
 	#$sql="select t1.*,t2.name as category_name,t3.name as dept_name from smg_news t1,smg_category t2,smg_dept t3 where t1.category_id=t2.id and t1.dept_id=t3.id and t1.is_recommend=1";
-	$c = array("is_deleted = 0");
+	$c = array('is_recommend=1');
 	if($title!=''){
 		$sql = $sql." and t1.short_title like '%".$title."%'";
 	}
@@ -28,6 +25,7 @@
 	if($is_adopt!=''){
 		array_push($c, "is_adopt=$is_adopt");
 	}
+	array_push($c, "is_recommend=1");
 	if($title){
 		$record = search_content($title,'smg_news',implode(' and ', $c),20,'priority asc,created_at desc');
 	}else{
@@ -35,7 +33,7 @@
 		$record = $news->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'priority asc,created_at desc'),20);
 	}
 	
-
+ 
 	#$sql = $sql." order by priority,created_at desc";
 	#echo $sql;
 	#$record=$db->paginate($sql,20);
@@ -62,16 +60,12 @@
 		<tr class="tr1">
 			<td colspan="6">
 				　<a href="news_add.php">添加新闻</a>
-				搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
-				<select id=dept style="width:100px" class="select_new">
+				　　　搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>"><select id=dept style="width:100px" class="select_new">
 					<option value="">发表部门</option>
 					<?php for($i=0;$i<count($rows_dept);$i++){?>
 					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
 					<? }?>
-				</select>
-				<span id="span_category"></span>
-				
-				<select id=adopt style="width:100px" class="select_new">
+				</select><span id="span_category"></span><select id=adopt style="width:100px" class="select_new">
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
