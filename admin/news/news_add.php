@@ -157,7 +157,7 @@
 		</tr>
 		<tr id=newsshow3  class="normal_news tr4">
 			<td>其他选项</td>
-			<td align="left"><input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  <input type="checkbox" name="news[is_adopt]" value="1">直接发布  <input type="checkbox" name="news[image_flag]" value="1">图片提示　<a style="color:blue;" href="filte_news.php?width=650&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
+			<td align="left"><input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  <input type="checkbox" name="news[is_adopt]" value="1" checked="checked">直接发布  <input type="checkbox" name="news[image_flag]" value="1">图片提示　<a style="color:blue;" href="filte_news.php?width=650&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
 		</tr>
 		<tr id=newsshow1  class="normal_news tr3">
 			<td height=100>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>

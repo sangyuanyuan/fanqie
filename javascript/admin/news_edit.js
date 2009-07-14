@@ -92,7 +92,7 @@ $(function(){
 	});
 	var item = category.get_item($("#category_id").val());
 	if(item.id != -1){
-		$('#max_len').html('(长度限制:'+ item.short_title_length / 2 + '个汉字)');
+		$('#max_len').html('('+ item.short_title_length +')');
 	}
 	toggle_news_type();
 	$('#image_flag_checkbox').click(function(){
@@ -101,7 +101,6 @@ $(function(){
 		}else{
 			$('#hidden_image_flag').val('0');
 		}	
-		//alert($('#hidden_image_flag').val());	
 	});
 	$('#forbbide_copy_checkbox').click(function(){
 		if($(this).attr('checked')){
@@ -109,7 +108,6 @@ $(function(){
 		}else{
 			$('#hidden_forbbide_copy').val('0');
 		}		
-		//alert($('#hidden_forbbide_copy').val());
 	});
 });
 
