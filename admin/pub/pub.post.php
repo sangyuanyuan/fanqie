@@ -32,6 +32,7 @@
 	}
 	elseif("edit_priority"==$_POST['post_type'])
 	{
+		echo "1";
 		$id_str=explode("|",$_POST['id_str']); 
 		$priority_str=explode("|",$_POST['priority_str']); 
 		$id_str_num=sizeof($id_str)-1;
@@ -46,7 +47,8 @@
 			$db = get_db();
 			$sql="update ".$_POST['db_table']." set ".$priority."=".$priority_str[$i]." where id=".$id_str[$i];
 			$db->execute($sql);
-		}		
+		}
+		echo "2";
 	}
 	
 	elseif("revocation"==$_POST['type'])
