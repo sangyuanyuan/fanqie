@@ -24,11 +24,11 @@
  		<div id=p1>
  			<!-- start top_left_top !-->
  			<?php
-				$sql = 'select n.short_title,n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where c.name="每日之星" and c.category_type="news" order by n.priority asc limit 4';
+				$sql = 'select n.short_title,n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="每日之星" and c.category_type="news" order by n.priority asc limit 4';
 				$record_star=$db -> query($sql);
-				$sql = 'select n.short_title,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where c.name="视频新闻" and c.category_type="news" order by n.priority asc limit 4';
+				$sql = 'select n.short_title,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="视频新闻" and c.category_type="news" order by n.priority asc limit 4';
 				$record_video=$db -> query($sql);
-				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
+				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where n.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
   		?>
  			<div id=t_l_t>
@@ -122,9 +122,9 @@
 
  			<!-- start top_left_middle !-->
   		<?php
-				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="专题新闻" and c.category_type="news" order by n.priority asc limit 10';
+				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.category_type="news" order by n.priority asc limit 10';
 				$record_subject=$db -> query($sql);
-				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="对外出击" and c.category_type="news" order by n.priority asc limit 10';
+				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.category_type="news" order by n.priority asc limit 10';
 				$record_out=$db -> query($sql);
   		?>
   		<div id=t_l_m>
@@ -152,7 +152,7 @@
  			<?php
 				$sql = 'select n.short_title from smg_news n where n.tags="小编加精"  order by n.last_edited_at desc limit 10';
 				$record_marrow=$db -> query($sql);
-				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="新闻速读" and c.category_type="news" order by n.priority asc limit 10';
+				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.category_type="news" order by n.priority asc limit 10';
 				$record_quick=$db -> query($sql);
 			?>
 			<div id=t_l_b>
@@ -182,7 +182,7 @@
 		<div id=p2>
  			<!-- start top_right_top !-->
   		<?php
-				$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where c.name="大头条" and c.category_type="news" order by n.priority asc limit 1';
+				$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.category_type="news" order by n.priority asc limit 1';
 				$record_head=$db -> query($sql);
 			?>
 			<div id=t_r_t>
@@ -218,7 +218,7 @@
  			<!-- start top_right_center_top !-->
  			<div id=t_r_c_t>
  				<?php
-					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where c.name="小头条" and c.category_type="news" and n.priority=1 ';
+					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.category_type="news" order by n.priority asc limit 1 ';
 					$record_head=$db -> query($sql);
 				?>
 				<div class=title><?php echo $record_head[0]->short_title ?></div>
@@ -228,7 +228,7 @@
  					{ 
  							echo $record_head[0]->description; 
  					}
- 					else
+ 					if($record_head[0]->sub_headline<>1&&$record_head[0]->sub_headline<>"")
  					{
  							$sub_news_str=explode(",",$record_head[0]->sub_news_id); 
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
@@ -244,7 +244,7 @@
 				?>					
 				</div>
  				<?php
-					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where c.name="小头条" and c.category_type="news" and n.priority=2 ';
+					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.category_type="news" order by n.priority asc limit 1,2 ';
 					$record_head=$db -> query($sql);
 				?>
 				<div class=title><?php echo $record_head[0]->short_title ?></div>
@@ -254,7 +254,7 @@
  					{ 
  							echo $record_head[0]->description; 
  					}
- 					else
+ 					if($record_head[0]->sub_headline<>1&&$record_head[0]->sub_headline<>"")
  					{
  							$sub_news_str=explode(",",$record_head[0]->sub_news_id); 
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
@@ -276,15 +276,15 @@
  			<div id=t_r_c_m>
  				<div id=title></div>
   			<?php
-					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="重点关注-头" and c.category_type="news" order by n.priority asc limit 1 ';
+					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.category_type="news" order by n.priority asc limit 1 ';
 					$record_import=$db -> query($sql);
 				?>				
 				<div id=content1><?php echo $record_import[0]->short_title; ?></div>
  				<a href="" id=btn ></a>
  				<?php
-					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="重点关注-普" and c.category_type="news" order by n.priority asc limit 41';
+					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.category_type="news" order by n.priority asc limit 41';
 					$record_import_a=$db -> query($sql);
-					$sql = 'select n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where c.name="重点关注-图" and c.category_type="news" order by n.priority asc limit 6';
+					$sql = 'select n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.category_type="news" order by n.priority asc limit 6';
 					$record_import_b=$db -> query($sql);
 				?>	
  				<div id=box>
@@ -366,8 +366,8 @@
              <? }?>
  						</ul>	
  					</div>	 				
- 				
  				</div>
+ 				<div id=title2></div>
  			</div>
  			<!-- end !-->
 		
@@ -381,9 +381,9 @@
 
  			<!-- start top_right_center_bottom_right !-->
   		<?php
-				$sql = 'select n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where c.name="业界动态-图" and c.category_type="news" order by n.priority asc limit 1';
+				$sql = 'select n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态-图" and c.category_type="news" order by n.priority asc limit 1';
 				$record_industry=$db -> query($sql);
-				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="业界动态-普" and c.category_type="news" order by n.priority asc limit 7';
+				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态-普" and c.category_type="news" order by n.priority asc limit 7';
 				$record_industry2=$db -> query($sql);		
 			?>
 			<div id=t_r_c_b_r>
@@ -446,7 +446,7 @@
 					</div> 					
  				</div>
  				<?php
- 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="快乐番茄" and c.category_type="news" order by n.priority asc limit 12';
+ 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.category_type="news" order by n.priority asc limit 12';
 					$record_happy=$db -> query($sql);		
 				?>	
  				<div class=content_trrt id=content_trrt2>
@@ -473,7 +473,7 @@
 					</div> 				
  				</div>
  				<?php
- 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="讨论区" and c.category_type="news" order by n.priority asc limit 12';
+ 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="讨论区" and c.category_type="news" order by n.priority asc limit 12';
 					$record_discuss=$db -> query($sql);		
 				?>	
  				<div class=content_trrt id=content_trrt3>
@@ -506,7 +506,7 @@
 			
  			<!-- start top_right_right_middle !-->
  			<?php
- 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where c.name="我要报料" and c.category_type="news" order by n.priority asc limit 12';
+ 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.category_type="news" order by n.priority asc limit 12';
 					$record_baoliao=$db -> query($sql);		
 			?>	 		
 			<div id=t_r_r_m>
