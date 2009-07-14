@@ -28,7 +28,7 @@
 				$record_star=$db -> query($sql);
 				$sql = 'select n.short_title,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="视频新闻" and c.category_type="news" order by n.priority asc limit 4';
 				$record_video=$db -> query($sql);
-				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where n.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
+				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
   		?>
  			<div id=t_l_t>
@@ -218,7 +218,7 @@
  			<!-- start top_right_center_top !-->
  			<div id=t_r_c_t>
  				<?php
-					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.category_type="news" order by n.priority asc limit 2';
+					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.category_type="news" order by n.priority asc limit 2 ';
 					$record_head=$db -> query($sql);
 					for($j=0;$j<=1;$j++){
 				?>
