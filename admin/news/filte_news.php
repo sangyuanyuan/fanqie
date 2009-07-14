@@ -50,7 +50,7 @@
 		<?php
 			$subject = new table_class("smg_news");
 
-			$items = search_content($_POST[$key],'smg_news',$conditions,10);
+			$items = search_content($_REQUEST['key'],'smg_news',$conditions,10);
 			$count_record = count($items);			
 			//--------------------		
 			for($i=0;$i<$count_record;$i++)	{
