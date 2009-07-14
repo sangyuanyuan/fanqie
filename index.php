@@ -539,14 +539,49 @@
  <div id=ibody_middle>
     <div id=p1>
   		<!-- start middle_left_top !-->
- 			<div id=m_l_t>
-
+			<div id=m_l_t>
+ 				<a href="" id=more></a>
+  			<?php
+ 					$sql = 'select n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目点评-图" and c.category_type="news" order by n.priority asc limit 1';
+					$record_program=$db -> query($sql);		
+				?>	 	
+ 				<img src="<?php echo $record_program[0]->photo_src ?>">
+  			<?php
+ 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目点评-普" and c.category_type="news" order by n.priority asc limit 6';
+					$record_program=$db -> query($sql);		
+				?>	 	
+				<div id=content_mlt>
+					<ul>
+						<li style="color:#FF6600; font-weight:bold; font-size:14px; height:25px;"><?php echo $record_program[0]->short_title ?></li>
+						<?php for($i=1;$i<6;$i++){ ?>
+						<li><?php echo $record_program[$i]->short_title ?></li>
+						<? }?>
+					</ul>
+ 				</div>
  			</div>
  			<!-- end !-->	   	
     
   		<!-- start middle_left_bottom !-->
  			<div id=m_l_b>
-
+ 				<div id=title>博 客</div>
+ 				<a href="" id=more></a>
+  			<?php
+ 					$sql = 'select n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="博客-图" and c.category_type="news" order by n.priority asc limit 1';
+					$record_blog=$db -> query($sql);		
+				?>	 	
+ 				<img src="<?php echo $record_blog[0]->photo_src ?>">
+  			<?php
+ 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="博客-普" and c.category_type="news" order by n.priority asc limit 5';
+					$record_blog=$db -> query($sql);		
+				?>	 	
+				<div id=content_mlb>
+					<ul>
+						<li style="color:#666666; font-weight:bold; font-size:13px; height:25px;"><?php echo $record_blog[0]->short_title ?></li>
+						<?php for($i=1;$i<5;$i++){ ?>
+						<li><a href="">·<?php echo $record_blog[$i]->short_title ?></a></li>
+						<? }?>
+					</ul>
+ 				</div> 				
  			</div>
  			<!-- end !-->	     
     
@@ -556,13 +591,59 @@
     	
   		<!-- start middle_center_top !-->
  			<div id=m_c_t>
-
+ 				<a href="" id=more1></a>
+ 				<a href="" id=more2></a>
+  			<?php
+  				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="我行我秀-图" and c.category_type="picture" order by i.priority asc limit 1';
+					$record_show=$db -> query($sql);
+  			?>
+  			<div id=box1>
+	  			<img src="<?php echo $record_show[0]->src ?>">
+  				<?php
+  					$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="我行我秀-普" and c.category_type="picture" order by i.priority asc limit 5';
+						$record_show=$db -> query($sql);
+  				?>
+  				<ul>
+  					<?php for($i=0;$i<=4;$i++){?>
+  					<li><?php echo $record_show[$i]->title?></li>
+  					<? }?>
+   				</ul>
+  			</div>
+  			<div id=box2>
+   				<?php
+ 						$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="部门比拼" and c.category_type="news" order by n.priority asc limit 5';
+						$record_dept=$db -> query($sql);
+  				?>
+  				<ul>
+  					<?php for($i=0;$i<=4;$i++){?>
+  					<li><?php echo $record_dept[$i]->short_title?></li>
+  					<? }?>
+   				</ul> 			
+  			</div>
  			</div>
  			<!-- end !-->	      	
     	
   		<!-- start middle_center_top !-->
  			<div id=m_c_b>
+ 				<div class=box>
+   				<?php
+   					$sql = 'select * from smg_category where name="番茄专栏"';
+						$record=$db -> query($sql);
+ 						$sql = 'select n.short_title,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.parent_id='.$record[0]->id.' and c.category_type="news" order by n.priority asc limit 5';
+						$record=$db -> query($sql);
+  				?> 		
+  				<ul>
+  					<?php for($i=0;$i<=4;$i++){?>
+  					<li>【<?php echo $record[$i]->name?>】<a href=""><?php echo $record[$i]->short_title?></a></li>
+  					<? }?>
+ 					</ul>	
+  				
+  							
+ 				</div>
+ 				
+ 				<div class=box>
 
+ 				</div>
  			</div>
  			<!-- end !-->	      	
     	    
