@@ -11,7 +11,7 @@
 	$sql = 'select * from smg_dept';
 	$rows_dept = $db->query($sql);
 	#$sql="select t1.*,t2.name as category_name,t3.name as dept_name from smg_news t1,smg_category t2,smg_dept t3 where t1.category_id=t2.id and t1.dept_id=t3.id and t1.is_recommend=1";
-	$c = array("is_deleted = 0");
+	$c = array('is_recommend=1');
 	if($title!=''){
 		$sql = $sql." and t1.short_title like '%".$title."%'";
 	}
