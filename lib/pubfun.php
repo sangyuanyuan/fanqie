@@ -451,4 +451,16 @@ return $str;
 }
 
 
+function show_img($state,$width,$height)
+{
+	if($state==1){echo '<img src="/images/index/pic.gif" width='.$width.'  height='.$height.' >';}
+}
+
+function show_video($state,$width,$height)
+{
+	if($state==1){echo '<img src="/images/index/video.gif" width='.$width.'  height='.$height.' >';}
+}
 ?>
+
+
+

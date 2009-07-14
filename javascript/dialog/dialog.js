@@ -19,6 +19,7 @@ $(function(){
 			return;
 		}
 		;
-		$('#ajax_ret').load('dialog.ajax.php',{'question_count':$('#question_count').val(),'last_question_id':$('#last_question_id').val(),'writer':writer,'content':question,'optype':'add_question'});
+		dialog_id = $('#dialog_id').val();
+		$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'question_count':$('#question_count').val(),'last_question_id':$('#last_question_id').val(),'writer':writer,'content':question,'optype':'add_question'});
 	});
 });

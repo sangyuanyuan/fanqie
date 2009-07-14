@@ -186,7 +186,7 @@ class database_row_item_class {
   	}
   	
   	function execute($sqlstr){
-  		if($this->echo_sql) echo $sql;
+  		if($this->echo_sql) echo $sqlstr;
 		if ($this->connected === false) {
   			$this->_debug_info('database connection has not been established!');
   			return  false;
@@ -194,7 +194,7 @@ class database_row_item_class {
   		$this->_qresult = mysql_query($sqlstr, $this->_db);
   		if ($this->_qresult===FALSE)
   		{
-  			$this->_debug_info('fail to execute sql!' . $this->get_error() .";query string = " .$sql);
+  			$this->_debug_info('fail to execute sql!' . $this->get_error() .";query string = " .$sqlstr);
   		  	return FALSE;
   		}
   		else
