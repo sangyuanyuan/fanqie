@@ -15,10 +15,10 @@ class smg_category_class
 				if(empty($type)){
 					$items = $table->find('all');
 				}else{
-					$items = $table->find('all',array('conditions' => "category_type = '" .$type ."'"));
+					$items = $table->find('all',array('conditions' => "category_type = '" .$type ."'",'order' => 'platform, priority'));
 				}
 			}else{
-				$items = $table->find('all',array('conditions' => "name = '" .$name ."'"));
+				$items = $table->find('all',array('conditions' => "name = '" .$name ."'",'order' => 'platform ,priority'));
 			}
 			
 			foreach ($items as $item) {
