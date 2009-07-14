@@ -41,7 +41,7 @@
 			<td><?php if($records[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $records[$i]->id;?>">撤消</span><? }?>
 				<?php if($records[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $records[$i]->id;?>">发布</span><? }?>
 				<a href="dialog_edit.php?id=<?php echo $records[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-				<span style="cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
+				<span style="cursor:pointer" class="del_dialog" name="<?php echo $records[$i]->id;?>">删除</span>
 				<a href="/admin/comment/comment.php?id=<?php echo $records[$i]->id;?>&type=dialog" style="color:#000000; text-decoration:none">评论</a>
 			</td>
 		</tr>
@@ -62,4 +62,18 @@
 	$("#dialog_search").click(function(){
 				window.location.href="?key="+$("#search_text").attr('value');
 	});
+	
+	$(".del_dialog").click(function(){
+			if(!window.confirm("确定要删除吗"))
+			{
+				return false;
+			}
+			else
+			{	//alert($(this).attr('name'));
+				$.post("dialog.post.php",{'del_id':$(this).attr('name'),'type':'del_dialog'},function(data){
+					//alert(data);
+					$("#"+data).remove();
+				});
+			}
+	})
 </script>

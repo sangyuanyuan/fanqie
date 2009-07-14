@@ -3,20 +3,17 @@
 	//require_role("admin");
 	$type = $_REQUEST['type'];
 	$conditions = null;
-	if($_REQUEST['key1']!=""){
-		$conditions[] = 'title  like "%'.trim($_REQUEST['key1']).'%"';
+	if($_REQUEST['title']!=""){
+		$conditions[] = 'title  like "%'.trim($_REQUEST['title']).'%"';
 	}
-	if($_REQUEST['key2']!=""){
-		$conditions[] = "dept_id=".$_REQUEST['key2'];
+	if($_REQUEST['dept']!=""){
+		$conditions[] = "dept_id=".$_REQUEST['dept'];
 	}
-	if($_REQUEST['key4']!=""){
-		$conditions[] = "is_adopt=".$_REQUEST['key4'];
+	if($_REQUEST['adopt']!=""){
+		$conditions[] = "is_adopt=".$_REQUEST['adopt'];
 	}
 	$conditions[] = 'is_recommend=1';
 	
-	$category = new table_class("smg_category");
-	$rows_category = $category->find("all",array('conditions' => "category_type='picture' and name='总裁奖'"));
-	$conditions[] = "category_id=".$rows_category[0]->id;
 	$image = new smg_images_class();
 	//var_dump($conditions);
 	if($conditions!=null){
@@ -45,17 +42,17 @@
 	<table width="795" border="0">
 		<tr class=tr1>
 			<td colspan="5" width="795">　　　<a href="/admin/picture/picture_add.php?type=总裁奖" style="color:#0000FF">发布图片</a>　　　　　　
-			搜索　<input id=newskey1 type="text" value="<? echo $_REQUEST['key1']?>">
-			<select id=newskey2 style="width:100px" class="select">
+			搜索　<input id=title_new type="text" value="<? echo $_REQUEST['title']?>">
+			<select id=dept style="width:100px" class="select">
 				<option value="">发表部门</option>
 				<?php for($i=0;$i<count($rows_dept);$i++){?>
-				<option value="<?php echo $rows_dept[$i]->dept_id;?>" <?php if($rows_dept[$i]->id==$_REQUEST['key2']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
+				<option value="<?php echo $rows_dept[$i]->id;?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
 				<? }?>
 			</select>
-			<select id=newskey4 style="width:100px" class="select">
+			<select id=adopt style="width:100px" class="select">
 				<option value="">发布状况</option>
-				<option value="1" <? if($_REQUEST['key4']=="1"){?>selected="selected"<? }?>>已发布</option>
-				<option value="0" <? if($_REQUEST['key4']=="0"){?>selected="selected"<? }?>>未发布</option>
+				<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
+				<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
 			</select>
 			<input type="button" value="搜索" id="search" style="border:1px solid #0000ff; height:21px">
 			</td>
@@ -66,8 +63,8 @@
 		<div class=v_box id="<?php echo $images[$i]->id;?>">
 			<a href="<?php echo $images[$i]->url;?>" target="_blank"><img src="<?php echo $images[$i]->src_path('small');?>" width="170" height="70" border="0"></a>
 			<div class=content><a href="<?php echo $images[$i]->url;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $images[$i]->title;?></a></div>
-			<div class=content><a href="?key2=<?php echo $images[$i]->dept_id;?>" style="color:#0000FF"><?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->id==$images[$i]->dept_id){echo $rows_dept[$j]->name;}}?></a></div>
-			<div class=content><a href="?key3=<?php echo $images[$i]->category_id;?>" style="color:#0000FF">总裁奖</a></div>
+			<div class=content><a href="?dept=<?php echo $images[$i]->dept_id;?>" style="color:#0000FF"><?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->id==$images[$i]->dept_id){echo $rows_dept[$j]->name;}}?></a></div>
+			<div class=content>总裁奖</div>
 			<div class=content style="height:20px">
 				<?php if($images[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $images[$i]->id;?>">撤消</span><? }?>
 				<?php if($images[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $images[$i]->id;?>">发布</span><? }?>
@@ -91,5 +88,20 @@
 </body>
 </html>
 
-
+<script>
+		$("#search").click(function(){
+				window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
+			
+		});
+		
+		$("#title_new").keypress(function(event){
+				if(event.keyCode==13){
+					window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
+				}
+		});
+		
+		$(".select").change(function(){
+				window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
+		});
+</script>
 
