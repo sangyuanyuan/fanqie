@@ -218,7 +218,7 @@
  			<!-- start top_right_center_top !-->
  			<div id=t_r_c_t>
  				<?php
-					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.category_type="news" order by n.priority asc limit 1 ';
+					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.category_type="news" order by n.priority asc limit 2 ';
 					$record_head=$db -> query($sql);
 				?>
 				<div class=title><?php echo $record_head[0]->short_title ?></div>
@@ -243,27 +243,23 @@
 					}	
 				?>					
 				</div>
- 				<?php
-					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.category_type="news" order by n.priority asc limit 1,2 ';
-					$record_head=$db -> query($sql);
-				?>
-				<div class=title><?php echo $record_head[0]->short_title ?></div>
+				<div class=title><?php echo $record_head[1]->short_title ?></div>
 				<div class=content>
  				<?php
- 					if($record_head[0]->sub_headline==1)
+ 					if($record_head[1]->sub_headline==1)
  					{ 
- 							echo $record_head[0]->description; 
+ 							echo $record_head[1]->description; 
  					}
- 					if($record_head[0]->sub_headline<>1&&$record_head[0]->sub_headline<>"")
+ 					if($record_head[1]->sub_headline<>1&&$record_head[1]->sub_headline<>"")
  					{
- 							$sub_news_str=explode(",",$record_head[0]->sub_news_id); 
+ 							$sub_news_str=explode(",",$record_head[1]->sub_news_id); 
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
 						
 							for($i=0;$i<=$sub_news_str_num;$i++)
 							{
 									$sql="select * from smg_news where id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
-									echo "[<a href=''>".$record_sub_news[0]->short_title."</a>]";
+									echo "[<a href=''>".$record_sub_news[1]->short_title."</a>]";
 							}		
 
 					}	
