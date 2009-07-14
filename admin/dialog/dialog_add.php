@@ -8,6 +8,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf8">
 	<meta http-equiv=Content-Language content=zh-CN>
+	<script language="javascript" type="text/javascript" src="/javascript/My97DatePicker/WdatePicker.js"></script>
 	<title>SMG</title>
 	<?php 
 		css_include_tag('admin','jquery_ui');
@@ -27,11 +28,11 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">开始时间</td>
-			<td width="695" align="left">　<input type="text" name=post[start_time] class="date_jquery required"></td>
+			<td width="695" align="left">　<input type="text" size="20"  name=post[start_time] id=start_time  onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'end_time\')||\'2020-10-01 12:00:00\'}'})" class="Wdate" ></td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">结束时间</td>
-			<td width="695" align="left">　<input type="text" name=post[end_time] class="date_jquery required"></td>
+			<td width="695" align="left">　<input type="text" size="20"  name=post[end_time] id=end_time onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'start_time\')||\'2020-10-01 12:00:00\'}'})" class="Wdate" ></td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">上传图片</td>
@@ -39,27 +40,27 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">上传视频</td>
-			<td width="695" align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="5000000000"> <input name="video" id="video" type="file">(请上传视频，并且不要大于500M)</td>
+			<td width="695" align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file">(请上传视频，并且不要大于500M)</td>
 		</tr>
 		<tr class="tr3">
-			<td width="100">领导工号</td>
-			<td width="695" align="left">　<input type="text" size="50" name=post[leader_ids] class="required">(请用","分隔开领导工号,比如:001,002)</td>
-		</tr>
-		<tr class="tr3">
-			<td width="100"><span style="cursor:pointer; color:#0033CC; text-decoration:underline" class="check_user" id="leader">检查领导工号</span></td>
-			<td width="695" align="left">　<span id=show_leaders></span></td>
+			<td width="100">对话者工号</td>
+			<td width="695" align="left">　<input type="text" size="50" name=leader_id1 class="required"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="learder_image1" id="learder_image1" type="file">
+				<span style="cursor:pointer" id="add_leader">继续添加</span>
+				<span style="cursor:pointer; color:#0033CC; text-decoration:underline" class="check_user" id="leader">检查对话者工号</span>
+				<span id=show_leaders></span>
+			</td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">主持人工号</td>
 			<td width="695" align="left">　<input type="text" size="50" name=post[master_ids] class="required">(请用","分隔开主持人工号,比如:001,002)</td>
 		</tr>
 		<tr class="tr3">
-			<td width="100"><span style="cursor:pointer; color:#0033CC; text-decoration:underline" class="check_user" id="master">检查主持人工号</span></td>
+			<td width="100"><span style="cursor:pointer; color:#0033CC; text-decoration:underline" id="master">检查主持人工号</span></td>
 			<td width="695" align="left">　<span id=show_masters></span></td>
 		</tr>
 
 		<tr class="tr3">
-			<td>内　容</td><td align="left">　<textarea cols="80" rows="8" name=post[content] class="required"></textarea></td>
+			<td>内　容</td><td align="left">　<?php show_fckeditor('content','Admin',true,"250");?></td>
 		</tr>
 
 		<tr bclass="tr3">
@@ -67,6 +68,7 @@
 		</tr>	
 	</table>
 	<input type="hidden" name=post[create_time] value="<?php echo date("y-m-d")?>">
+	<input type="hidden" name=learder_count id=learder_count value="1">
 	<input type="hidden" name=post[is_adopt] value="0">
 	<?php if($id!=''){?>
 	<input type="hidden" name=collection value="<?php echo $id;?>">
@@ -76,6 +78,7 @@
 </html>
 
 <script>
+	var num = 1;
 	$("#submit").click(function(){
 		var oEditor = FCKeditorAPI.GetInstance('title') ;
 		var title = oEditor.GetHTML();
@@ -95,8 +98,8 @@
 		}
 	);
 	
-	$("#leader").click(function(){
-		$.post("dialog.post.php",{'type':'check_user','id':$(this).parent().parent().prev().children().children().attr('value')},function(data){
+	$(".check_user").click(function(){
+		$.post("dialog.post.php",{'type':'check_user','id':$(this).prev().prev().prev().prev().attr('value')},function(data){
 			$("#show_leaders").html(data);
 		})
 	});
@@ -106,4 +109,15 @@
 			$("#show_masters").html(data);
 		})
 	})
+	
+	$("#add_leader").click(function(){
+		num++;
+		$("#learder_count").attr('value',num);
+		$(this).parent().parent().after('<tr class="tr3"><td width="100">对话者工号</td><td width="695" align="left">　<input type="text" size="50" name=leader_id'+num+' class="required"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="learder_image'+num+'" id="learder_image'+num+'" type="file"><span style="cursor:pointer; color:#0033CC; text-decoration:underline" class="check_user" id="leader">检查对话者工号</span></td></tr>');
+		$(".check_user").click(function(){
+			$.post("dialog.post.php",{'type':'check_user','id':$(this).prev().prev().prev().attr('value')},function(data){
+				$("#show_leaders").html(data);
+			})
+		});
+	});
 </script>
