@@ -121,7 +121,7 @@ $(function(){
 	category.display_select('news_category',$('#td_category_select'),-1,'',function(id,max_len){
 		//alert('id=' + id + ';max_len=' + max_len);
 		if(id != -1){
-			$('#max_len').html('('+ max_len / 2 + ')');
+			$('#max_len').html('('+ max_len + ')');
 		}else{
 			$('#max_len').html('');
 		}
