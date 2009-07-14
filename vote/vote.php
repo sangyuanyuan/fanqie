@@ -50,3 +50,11 @@
 	<? include('../inc/bottom.inc.php');?>
 </body>
 </html>
+
+<script>
+	$(function(){
+		alert('aa');
+		alert($("#commenter").attr('value'));
+	})
+		
+</script>

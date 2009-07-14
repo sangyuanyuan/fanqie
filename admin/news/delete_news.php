@@ -9,6 +9,7 @@
 	if($_POST['back_news']){
 		$back_news_id = implode(',',$_POST['back_news']);	
 		$sql = 'update smg_news set is_recommend=2, is_adopt=0 where id in(' .$back_news_id .')';
+		//echo $sql;
 		$db->execute($sql);		
 	}
 	
