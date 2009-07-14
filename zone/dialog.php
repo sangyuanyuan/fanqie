@@ -108,6 +108,7 @@
 <div id="div_hidden">
 	<input type="hidden" id="last_question_id" name="last_question_id" value="<?php echo $questions[count($questions)-1]->id; ?>">
 	<input type="hidden" id="question_count" name="question_count" value="<?php echo count($questions); ?>">
+	<input type="hidden" id="dialog_id" value="<?php echo $dialog->id;?>">
 </div>
 <div id="ajax_ret" style="display:none;"></div>
 <? require_once('../inc/bottom.inc.php');?>

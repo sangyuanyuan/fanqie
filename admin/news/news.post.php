@@ -9,6 +9,9 @@
 	}
 	
 	$news->update_attributes($_POST['news'],false);
+	$news->content = str_replace("'", "\'", $news->content);
+	$news->description = str_replace("'", "\'", $news->description);
+	#$news->echo_sql = true;
 	$news->is_recommend = 1;
 	if($news->is_dept_adopt != 1){
 		$news->is_dept_adopt = 0;

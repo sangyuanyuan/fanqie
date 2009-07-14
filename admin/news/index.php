@@ -87,7 +87,18 @@
 						$var_name = $record[$i]->dept_id != 7 ? "back_news[]" : "delete_news[]";
 					?>
 					<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $record[$i]->id;?>"></td>
-					<td><?php echo $record[$i]->short_title;?></td>
+					<?php
+						$cate_name = category_name_by_id($record[$i]->category_id);
+						$platform = $record[$i]->platform ? $record[$i]->platform : 'news';
+						if($cate_name == '大头条' || $cate_name == '小头条'){
+							$url = "/$platform/news/news_head.php?id={$record[$i]->id}";
+						}else if($platform == 'show'){
+							$url = "/$platform/content.php?id={$record[$i]->id}";
+						}else{
+							$url="/$platform/news/news.php?id={$record[$i]->id}";
+						}
+					?>
+					<td><a href="<?php echo $url;?>" target="_blank"><?php echo $record[$i]->short_title;?></a></td>
 					<td>
 						<a href="?dept=<?php echo $record[$i]->dept_id;?>" style="color:#0000FF"><?php echo get_dept_info($record[$i]->dept_id)->name;?></a>
 					</td>
