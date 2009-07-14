@@ -83,6 +83,13 @@
 			}
 		}
 		
+	}elseif("comment"==$_POST['type'])
+	{
+		$comment = new table_class('smg_comment');
+		$comment -> update_attributes($_POST['post'],false);
+		$comment->user_id = $_COOKIE['smg_userid'];
+		$comment->created_at = date("Y-m-d H:i:s");
+		$comment ->save();
 	}
 	
 ?>
