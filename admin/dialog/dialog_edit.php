@@ -20,7 +20,7 @@
 <form id="dialog_add" method="post" enctype="multipart/form-data" action="dialog.post.php">
 	<table width="795" border="0">
 		<tr class="tr1">
-			<td colspan="2" width="795">　　添加对话</td>
+			<td colspan="2" width="795">　　编辑对话</td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">标　题</td>
