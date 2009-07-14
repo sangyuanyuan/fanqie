@@ -70,3 +70,6 @@
 </body>
 </html>
 
+<script>
+	alert($("#commenter").attr('value'));
+</script>
