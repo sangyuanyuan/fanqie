@@ -194,7 +194,7 @@
  					{ 
  							echo $record_head[0]->description; 
  					}
- 					else
+ 					if($record_head[0]->sub_headline<>1&&$record_head[0]->sub_headline<>"")
  					{
  							$sub_news_str=explode(",",$record_head[0]->sub_news_id); 
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
