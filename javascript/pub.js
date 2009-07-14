@@ -8,8 +8,8 @@ $(function(){
 		}else{
 			var commenter = '';
 		}
-		if($("#title").attr('value')!='undefined'){
-			var title = $("#title").attr('value');
+		if($("#comment_title").attr('value')!='undefined'){
+			var title = $("#comment_title").attr('value');
 		}else{
 			var title = '';
 		}

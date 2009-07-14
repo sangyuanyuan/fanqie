@@ -12,7 +12,7 @@
 	<title>SMG-番茄网-新闻-新闻头条</title>
 	<? 	
 		css_include_tag('news_news_head','top','bottom');
-		js_include_once_tag('news.js');
+		js_include_once_tag('pubfun','news','pub');
 		use_jquery();
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
@@ -166,15 +166,13 @@
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php echo count($comment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
-				<input type="text">
-				<iframe id="edit" name="edit" frameborder=0 ></iframe>
-				<input type="hidden" id="comment">
+				<input type="text" id="commenter"><input type="hidden" id="resource_id" value="<?php echo id;?>"><input type="hidden" id="resource_type" value="news">
+				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('comment','Title',false,'75','','600');?></div>
 				<div id=fqbq>
-					<?php for($i=1;$i<23;$i++){?>
-						<img width=20 height=20 customer="<?php echo $i;?>" src="/images/fqbq/<?php echo $i;?>.gif" onclick="face(<?php echo $i;?>)" />
-					<?php }?><br>
-					<button>提交评论</button>
+					
 				</div>
+				<button id="submit_comment">提交评论</button>
+			</div>
 			</div>
 		</div>
 	</div>

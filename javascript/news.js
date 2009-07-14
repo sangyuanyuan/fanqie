@@ -1,5 +1,5 @@
 	$(document).ready(function(){
-		display_fqbq('fqbq','fck');
+		display_fqbq('fqbq','comment');
 	})
 	$("#r_t").click(function(){location.href="news_sub.php";})
 	function ChangeTab(num)

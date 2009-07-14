@@ -12,7 +12,7 @@
 	<? 	
 		css_include_tag('news_news','top','bottom');
 		use_jquery();
-		js_include_once_tag('pubfun','news');		
+		js_include_once_tag('pubfun','news',"pub");		
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
 		$record=$db->query($sql);
@@ -164,12 +164,12 @@
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php echo count($comment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
-				<input type="text">
-				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('fck','Title',false,'75','','600');?></div>
+				<input type="text" id="commenter"><input type="hidden" id="resource_id" value="<?php echo id;?>"><input type="hidden" id="resource_type" value="news">
+				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('comment','Title',false,'75','','600');?></div>
 				<div id=fqbq>
 					
 				</div>
-				<button id="comment_sub">提交评论</button>
+				<button id="submit_comment">提交评论</button>
 			</div>
 		</div>
 	</div>
@@ -202,7 +202,7 @@
 			<div class=b_t_title2 id=r_b_t_title3 onmouseover="ChangeTab1(3)">精彩视频</div>
 			<div id=b_t_3 style="display:block;">
 			<?php 
-			 $sql="select * from smg_video where is_adopt=1 order by priority asc,create_at desc";
+			 $sql="select * from smg_video where is_adopt=1 order by priority asc,created_at desc";
 			 $jcsp=$db->paginate($sql,10);
 			 for($i=0;$i<count($jcsp);$i++){	 	
 			 ?>
