@@ -42,11 +42,11 @@
 	<table width="795" border="0">
 		<tr class=tr1>
 			<td colspan="5" width="795">　　　<a href="/admin/picture/picture_add.php?type=总裁奖" style="color:#0000FF">发布图片</a>　　　　　　
-			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
+			搜索　<input id=title_new type="text" value="<? echo $_REQUEST['title']?>">
 			<select id=dept style="width:100px" class="select">
 				<option value="">发表部门</option>
 				<?php for($i=0;$i<count($rows_dept);$i++){?>
-				<option value="<?php echo $rows_dept[$i]->dept_id;?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
+				<option value="<?php echo $rows_dept[$i]->id;?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
 				<? }?>
 			</select>
 			<select id=adopt style="width:100px" class="select">
@@ -88,5 +88,20 @@
 </body>
 </html>
 
-
+<script>
+		$("#search").click(function(){
+				window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
+			
+		});
+		
+		$("#title_new").keypress(function(event){
+				if(event.keyCode==13){
+					window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
+				}
+		});
+		
+		$(".select").change(function(){
+				window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
+		});
+</script>
 
