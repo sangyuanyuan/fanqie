@@ -24,7 +24,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #l_b .aboutcontent input{width:340px; height:16px; margin-left:14px; border:1px solid #CDCDCD; float:left; display:inline;}
 #l_b .aboutcontent iframe{width:600px; height:75px; margin-top:5px; margin-left:14px; border:1px solid #CDCDCD; font-size:12px; float:left; display:inline;}
 #l_b .aboutcontent #fqbq{width:600px; margin-top:5px; margin-left:14px; float:left; display:inline;}
-#l_b .aboutcontent #fqbq button{margin-top:10px; border:0px; background:#ffffff; line-height:20px; float:right; display:inline;}
+#l_b .aboutcontent button{margin-top:10px; border:0px; background:#ffffff; line-height:20px; float:right; display:inline;}
 #l_b #comment{width:628px; margin-top:10px; margin-left:20px; border:1px solid #DDDDDD; border-bottom:none; background:#ffffff; float:left; display:inline;}
 #l_b #comment .content{width:628px; border-bottom:1px solid #dddddd; float:left; display:inline;}
 #l_b #comment .content .title1{width:618px; height:30px; margin-top:5px; margin-left:10px; line-height:30px; background:url('/images/news/news_comment_title.jpg') no-repeat; float:left; display:inline;}

@@ -23,7 +23,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #l_b .aboutcontent .content a{color:#000000; font-size:14px; text-decoration:none;}
 #l_b .aboutcontent input{width:340px; height:16px; margin-left:14px; border:1px solid #CDCDCD; float:left; display:inline;}
 #l_b .aboutcontent #fqbq{width:600px; margin-top:5px; margin-left:14px; float:left; display:inline;}
-#l_b .aboutcontent #fqbq button{margin-top:10px; border:0px; background:#ffffff; line-height:20px; float:right; display:inline;}
+#l_b .aboutcontent button{margin-top:10px; border:0px; background:#ffffff; line-height:20px; float:right; display:inline;}
 #l_b #comment_sub{margin-top:10px; margin-right:10px; border:0px; background:#ffffff; line-height:20px; float:right; display:inline;}
 #l_b #comment{width:628px; margin-top:10px; margin-left:20px; border:1px solid #DDDDDD; border-bottom:none; background:#ffffff; float:left; display:inline;}
 #l_b #comment .content{width:628px; border-bottom:1px solid #dddddd; float:left; display:inline;}
