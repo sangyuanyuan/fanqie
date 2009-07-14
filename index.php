@@ -28,7 +28,7 @@
 				$record_star=$db -> query($sql);
 				$sql = 'select n.short_title,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="视频新闻" and c.category_type="news" order by n.priority asc limit 4';
 				$record_video=$db -> query($sql);
-				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where n.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
+				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
   		?>
  			<div id=t_l_t>
@@ -220,17 +220,18 @@
  				<?php
 					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.category_type="news" order by n.priority asc limit 2 ';
 					$record_head=$db -> query($sql);
+					for($j=0;$j<=1;$j++){
 				?>
-				<div class=title><?php echo $record_head[0]->short_title ?></div>
+				<div class=title><?php echo $record_head[$j]->short_title ?></div>
 				<div class=content>
  				<?php
- 					if($record_head[0]->sub_headline==1)
+ 					if($record_head[$j]->sub_headline==1)
  					{ 
- 							echo $record_head[0]->description; 
+ 							echo $record_head[$j]->description; 
  					}
- 					if($record_head[0]->sub_headline<>1&&$record_head[0]->sub_headline<>"")
+ 					if($record_head[$j]->sub_headline<>1&&$record_head[$j]->sub_headline<>"")
  					{
- 							$sub_news_str=explode(",",$record_head[0]->sub_news_id); 
+ 							$sub_news_str=explode(",",$record_head[$j]->sub_news_id); 
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
 
 							for($i=0;$i<=$sub_news_str_num;$i++)
@@ -243,28 +244,8 @@
 					}	
 				?>					
 				</div>
-				<div class=title><?php echo $record_head[1]->short_title ?></div>
-				<div class=content>
- 				<?php
- 					if($record_head[1]->sub_headline==1)
- 					{ 
- 							echo $record_head[1]->description; 
- 					}
- 					if($record_head[1]->sub_headline<>1&&$record_head[1]->sub_headline<>"")
- 					{
- 							$sub_news_str=explode(",",$record_head[1]->sub_news_id); 
-				  		$sub_news_str_num=sizeof($sub_news_str)-1;
-						
-							for($i=0;$i<=$sub_news_str_num;$i++)
-							{
-									$sql="select * from smg_news where id=".$sub_news_str[$i];
-									$record_sub_news = $db -> query($sql);
-									echo "[<a href=''>".$record_sub_news[1]->short_title."</a>]";
-							}		
+				<? }?>
 
-					}	
-				?>						
-				</div>
  			</div>
  			<!-- end !-->
 			
