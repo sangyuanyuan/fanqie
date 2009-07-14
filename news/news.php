@@ -103,6 +103,7 @@
 					<button>投票</button>
 				</div>
 			<? }}?>
+			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a href="news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<div class=abouttitle>更多关于“<span style="text-decoration:underline;;"><?php echo $record[0]->keywords?></span>”的新闻</div>
 			<div class=aboutcontent>
