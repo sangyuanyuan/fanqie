@@ -103,6 +103,15 @@ $(function(){
 			$('#hidden_forbbide_copy').val('0');
 		}		
 	});
+	
+	$('#check_box_commentable').click(function(){
+		if($(this).attr('checked')){
+			$('#hidden_is_commentable').val(1);
+		}else{
+			$('#hidden_is_commentable').val(0);
+		}
+		
+	});
 });
 
 function toggle_news_type(){

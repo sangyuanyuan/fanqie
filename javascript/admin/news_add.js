@@ -126,6 +126,15 @@ $(function(){
 			$('#max_len').html('');
 		}
 	});	
+	
+	$('#check_box_commentable').click(function(){
+		if($(this).attr('checked')){
+			$('#hidden_is_commentable').val(1);
+		}else{
+			$('#hidden_is_commentable').val(0);
+		}
+		
+	});
 	toggle_news_type();
 });
 
