@@ -59,7 +59,9 @@
 		//});
 		//category.display_select('test',$('#test_form'),-1,'');
 		//alert($('#div1 #div2').html());
-		display_fqbq('div2','fck1');
+		$.post('test.post.php',{},function(data){
+			alert(data);
+		});
 	});
 	iframe.document.designMode = "on";
 	$('#test_form').submit(function(){
