@@ -55,7 +55,7 @@
 						<?php echo $record3[0]->name;?><br>
 						<?php for($j=0;$j<count($record4);$j++){
 						if($record3[0]->max_item_count>1){?>
-							<div class=content><input type="checkbox">
+							<div class=content><input name="ck" type="checkbox">
 							<?php if($record3[0]->vote_type=="word_vote"){ 
 								echo $record4[$j]->title;?></div>
 								<?php }else{?>
@@ -64,7 +64,8 @@
 							?>
 						<?php }
 						else{?>
-							<div class=content><input type="radio">
+							<div class=content>
+								<input name="rd" type="radio">
 							<?php if($record3[0]->vote_type=="word_vote"){ 
 								echo $record4[$j]->title;?></div>
 								<?php }else{?>
@@ -73,7 +74,7 @@
 							?>
 						<?php }
 						}?>
-						<button>投票</button>
+						<button id="vote_submit">投票</button>
 					</div>
 				<? }
 				}else{?>
@@ -83,25 +84,25 @@
 						if($record1[0]->max_item_count>1){
 					?>
 							<div class=content>
-								<input type="checkbox">
+								<input name="ck" type="checkbox">
 								<?php if($record1[0]->vote_type=="word_vote"){ 
 									echo $record2[$i]->title;?>
 							</div>
 						<?php }else{?>
-							<img src="<?php echo $record2[$i]->photourl;?>">		
+							<img src="<?php echo $record2[$i]->photourl;?>">
 						<?php }
 							?>
 						<?php }
 						else{?>
 							<div class=content>
-								<input type="radio">
+								<input name="rd" type="radio">
 							<?php if($record1[0]->vote_type=="word_vote"){ 
 								echo $record2[$i]->title;?></div>
 							<?php }else{?>
 								<img src="<?php echo $record2[$i]->photourl;?>">		
 							<?php }
 						}}?>
-					<button>投票</button>
+					<button id="vote_submit">投票</button>
 				</div>
 			<? }}?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
@@ -128,7 +129,7 @@
 				<?php } ?>
 			</div>
 			<form id="news_comment_digg" action="news_digg.post.php">
-			<?php if(count($comment)>0){?>
+			<?php if($record[0]->is_commentable>0){ if(count($comment)>0){?>
 			<div id=comment>
 				<?php for($i=0;$i<2;$i++){ ?>
 					<div class=content>	
@@ -173,6 +174,7 @@
 				</div>
 				<button id="submit_comment">提交评论</button>
 			</div>
+			<?php } ?>
 		</div>
 	</div>
 	<div id=ibody_right>

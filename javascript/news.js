@@ -42,5 +42,27 @@
 			}
 		)
 	}
+	
+	function vote(){
+		  var item = $("input[name='rb'][checked]").val();
+		  if (item != "") {
+		  	$.post('/vote/vote.post.php', {
+		  		'item_id': item,
+		  		'userid': ''
+		  	}, function(data){
+		  	})
+		  }
+		  else {
+		  	var sport = $("input[name='ck'][checked]");
+		  	for (var i = 0; i < sport.length; i++) {
+				$.post('/vote/vote.post.php', {
+		  		'item_id': sport.eq(i).val(),
+		  		'userid': ''
+			  	}, function(data){
+			  	})
+		  	}
+		  }
+		
+	}
 
 	
