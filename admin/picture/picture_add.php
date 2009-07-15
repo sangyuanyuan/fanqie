@@ -52,6 +52,9 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="picture[<?php if($role=='dept_admin'){echo 'dept_';}?>priority]" class="number">(1-100)</td>
 		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
+			<td>关键词</td><td align="left">　<input type="text" size="50" name="picture[keywords]">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
+		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>开启评论</td><td align="left">　<input type="checkbox" name=picture[commentable] id=commentable checked="checked"></td>
 		</tr>

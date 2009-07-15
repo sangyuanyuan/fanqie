@@ -130,6 +130,7 @@
 </html>
 
 <script>
+	
 	$("#submit").click(function(){
 		var oEditor = FCKeditorAPI.GetInstance('title') ;
 		var title = oEditor.GetHTML();
