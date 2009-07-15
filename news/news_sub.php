@@ -42,7 +42,7 @@
 	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　内容</div>
-		<div id=m_r><?php show_fckeditor('news[content]','Admin',true,"270","750");?></div>
+		<div id=m_r><?php show_fckeditor('news[content]','Admin',true,"270","","750");?></div>
 	</div>
 	<div class=title>视频上传</div>
 	<div id=b>
