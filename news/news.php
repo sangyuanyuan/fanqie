@@ -27,6 +27,7 @@
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
+	<input type="hidden" id="newsid" value="<?php echo $id;?>">
 	<div id=ibody_left>
 		<div id=l_t>
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
