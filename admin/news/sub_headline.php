@@ -4,11 +4,15 @@
 	if($_REQUEST['show_div'] != '0'){
 		echo "<div id='result_box'>";
 	}
-	$filter_dept = $_POST['filter_dept'] ? $_POST['filter_dept'] : -1;
+	$filter_dept = $_REQUEST['filter_dept'] ? $_REQUEST['filter_dept'] : -1;
 	if($filter_dept != -1){
 		$conditions[] = 'dept_id =' .$filter_dept;		
 	}
-	$filter_category = $_POST['filter_category'] ? $_POST['filter_category'] : -1;
+	$filter_adopt = isset($_REQUEST['filter_adopt']) ? $_REQUEST['filter_adopt'] : -1;
+	if($filter_adopt != -1){
+		$conditions[] = 'is_adopt= ' .$filter_adopt;
+	}
+	$filter_category = $_REQUEST['filter_category'] ? $_REQUEST['filter_category'] : -1;
 	if($filter_category != -1){
 		$conditions[] = 'category_id =' .$filter_category;		
 	}
@@ -34,7 +38,7 @@
 				$dept = new table_class('smg_dept');
 				$items = $dept->find('all');
 				foreach ($items as $v) {
-					if($v->id == intval($_POST['filter_dept'])){
+					if($v->id == $filter_dept){
 						echo "<option value='{$v->id}' selected='selected'>{$v->name}</option>";
 					}else{
 						echo "<option value='{$v->id}'>{$v->name}</option>";
@@ -44,6 +48,11 @@
 				?>
 			</select>	
 			<span id="span_category_select"></span>
+			<select id="filter_adopt">
+				<option value="-1">发布状态</option>
+				<option value="0" <?php if($filter_adopt == 0) echo ' selected="selected"' ?>>未发布</option>
+				<option value="1" <?php if($filter_adopt == 1) echo ' selected="selected"' ?>>已发布</option>
+			</select>
 			<input type="button" value="搜索" id="subject_search" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
@@ -103,14 +112,27 @@
 			tb_remove();
 		});	
 		$('#subject_search').click(function(){
-			$('#result_box').load('filte_news.php',{'show_div':'0','key':$('#search_text').attr('value'),'filter_dept':$('#filter_dept').attr('value'),'filter_category':$('.news_category:last').attr('value')});
+			send_search();
 		});
 		$('#list input:checkbox').each(function(){
 			if(jQuery.inArray($(this).attr('id'),sub_headlines) != -1){
 				$(this).attr('checked',true);
 			}
 		});
-		category.display_select('news_category',$('#span_category_select'),<?php echo $filter_category;?>);
+		$('#filter_dept,#filter_adopt').change(function(){
+			send_search();
+		});
+		function send_search(){
+			var filter_dept = $('#filter_dept').attr('value');
+			var filter_category = $('.news_category:last').attr('value');
+			var filter_adopt = $('#filter_adopt').attr('value');
+			url = 'sub_headline.php?filter_dept=' + filter_dept;
+			url += '&filter_category=' + filter_category;
+			url += '&filter_adopt=' + filter_adopt;
+			url += '&key=' + $('#search_text').val();
+			$('#result_box').load(url,{'show_div':'0'});			
+		}
+		category.display_select('news_category',$('#span_category_select'),<?php echo $filter_category;?>,'',function(){send_search();});
 		
 		
 </script>
