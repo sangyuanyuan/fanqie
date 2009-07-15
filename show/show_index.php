@@ -7,10 +7,10 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-展示-我型我秀主页</title>
-	<? 	
+	<?php
 		css_include_tag('show_show_index','top','bottom');
 		use_jquery();
-  ?>
+  	?>
 	
 </head>
 <body>
@@ -18,7 +18,10 @@
 <div id=ibody>
 	 <div id=ibody_top>
 	 	  <div id=t_l>
-	  		<?php for($i=0; $i<12;$i++){ ?>
+	  		<?php 
+				
+				for($i=0; $i<12;$i++){ 
+			?>
 				<img border=0 width=114 height=75 src="">
 			  <?php }?>
 	 	  </div>

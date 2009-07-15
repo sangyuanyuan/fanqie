@@ -145,11 +145,11 @@
 	}
 	
 	function background_has_role($role_name){
-		if(!has_login()) return false; 
-		if($role_name == 'member') return $role_name; 
+		if(!has_login()) return false;
+		if($role_name == 'member') return $role_name;
 		if(background_is_role('admin')) return $role_name;
 		if(background_is_role('dept_admin')) return $role_name;
-		return $role_name == $_SESSION['smg_role'];		
+		return $role_name == $_SESSION['smg_role'];
 	}
 	
 	
@@ -189,7 +189,7 @@
 		if(empty($_dept_category)){
 			$dept_category = new table_class('smg_category_dept');
 			$_dept_category = $dept_category->find('all');
-		} 
+		}
 		$dept_id = get_dept_info($dept_name)->id;
 		foreach ($_dept_category as $v) {
 			if($v->name == $name&&$v->dept_id==$dept_id&&$v->category_type==$type){
