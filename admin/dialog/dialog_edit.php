@@ -32,11 +32,11 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">开始时间</td>
-			<td width="695" align="left">　<input type="text" size="20"  name=post[start_time] id=start_time  value="<?php echo $dialog->start_time;?>" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'end_time\')||\'2020-10-01 12:00:00\'}'})" class="Wdate" ></td>
+			<td width="695" align="left">　<input type="text" size="20"  name=post[start_time] id=start_time  value="<?php echo $dialog->start_time;?>" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{\'2020-10-01 12:00:00\'}'})" class="Wdate" ></td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">结束时间</td>
-			<td width="695" align="left">　<input type="text" size="20"  name=post[end_time] id=end_time value="<?php echo $dialog->end_time;?>" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'start_time\')||\'2020-10-01 12:00:00\'}'})" class="Wdate" ></td>
+			<td width="695" align="left">　<input type="text" size="20"  name=post[end_time] id=end_time value="<?php echo $dialog->end_time;?>" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'starttime\')}',maxDate:'2020-10-01 12:00:00'})" class="Wdate" ></td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">上传图片</td>

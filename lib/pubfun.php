@@ -248,6 +248,8 @@ function strfck($str)
 	$str=str_replace('\"','"',$str);
 	$str=str_replace('"font-size','"mso-bidi-font-size',$str);
 	$str=str_replace('FONT-SIZE','mso-bidi-font-size',$str);
+	$str=str_replace("<div>","<span>",$str);
+	$str=str_replace("</div>","</span>",$str);
 	return $str;
 }
 
@@ -266,8 +268,8 @@ function get_fck_content($str,$symbol='fck_pageindex')
 
 function print_fck_pages($str,$url="",$symbol='fck_pageindex')
 {
-	$ies = '<div style="page-break-after: always"><span style="display: none">&nbsp;</span></div>';	
-	$ffs = '<div style="page-break-after: always; "><span style="DISPLAY:none">&nbsp;</span></div>';
+	$ies = '<span style="page-break-after: always"><span style="display: none">&nbsp;</span></span>';	
+	$ffs = '<span style="page-break-after: always; "><span style="DISPLAY:none">&nbsp;</span></span>';
 	$pagecount = substr_count($str,$ies);
 	$pagecount = $pagecount <=0 ? substr_count($str,$ffs) : $pagecount;
 	$pagecount++;

@@ -1,6 +1,6 @@
 	$(document).ready(function(){
 		display_fqbq('fqbq','comment');
-		updatenews($("#newsid").attr('value'));
+		updatenews();
 	})
 	$("#r_t").click(function(){location.href="news_sub.php";})
 	function ChangeTab(num)
@@ -31,42 +31,38 @@
 		document.getElementById("b_b_"+num).style.display='block';	
 	}
 	function digg(type,id){
-		$.ajax({
-			type: "POST",
-			url: "news_digg.post.php",
-			timeout: 20000,
-			error: function(){
-				alert('error');
-			},
-			data: "type=" + type + "&comment_id=" + id ,
-			success: function(msg){
+		$.post('news_digg.post.php',{'type':type,'comment_id':id},function(data){
 			
-				//当AJAX请求失败时添加一个被执行的方法
-				if(msg!='OK'){
-					alert('刷新太快了请稍后再试！');
-				}else{
-					alert('评论成功！');
-				}
 			}
-		})
+		)
 	}
-	function updatenews(id){
-		$.ajax({
-			type: "POST",
-			url: "news_update.post.php",
-			timeout: 20000,
-			error: function(){
-				alert('error');
-			},
-			data: "newsid="+id ,
-			success: function(msg){
+	function updatenews(){
+		$.post('news_update.post.php',{'newsid':$("#newsid").attr('value')},function(data){
 			
-				//当AJAX请求失败时添加一个被执行的方法
-				if(msg!='OK'){
-					
-				}else{
-				}
 			}
-		})
+		)
 	}
+	
+	function vote(){
+		  var item = $("input[name='rb'][checked]").val();
+		  if (item != "") {
+		  	$.post('/vote/vote.post.php', {
+		  		'item_id': item,
+		  		'userid': ''
+		  	}, function(data){
+		  	})
+		  }
+		  else {
+		  	var sport = $("input[name='ck'][checked]");
+		  	for (var i = 0; i < sport.length; i++) {
+				$.post('/vote/vote.post.php', {
+		  		'item_id': sport.eq(i).val(),
+		  		'userid': ''
+			  	}, function(data){
+			  	})
+		  	}
+		  }
+		
+	}
+
 	
