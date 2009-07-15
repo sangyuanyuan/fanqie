@@ -27,6 +27,7 @@
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
+	<input type="hidden" id="newsid" value="<?php echo $id;?>">
 	<div id=ibody_left>
 		<div id=l_t>
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
@@ -103,6 +104,7 @@
 					<button>投票</button>
 				</div>
 			<? }}?>
+			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a href="news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<div class=abouttitle>更多关于“<span style="text-decoration:underline;;"><?php echo $record[0]->keywords?></span>”的新闻</div>
 			<div class=aboutcontent>

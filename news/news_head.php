@@ -12,8 +12,8 @@
 	<title>SMG-番茄网-新闻-新闻头条</title>
 	<? 	
 		css_include_tag('news_news_head','top','bottom');
-		js_include_once_tag('pubfun','news','pub');
 		use_jquery();
+		js_include_once_tag('pubfun','news','pub');
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
 		$record=$db->query($sql);
@@ -22,7 +22,7 @@
 		$comment=$db->paginate($sql,5);
 		$sql="select count(*) as flowernum,(select count(*) from smg_comment_digg cd where cd.type='tomato' and cd.comment_id=d.comment_id) as tomatonum,c.* from smg_comment_digg d left join smg_comment c on d.comment_id=c.id and d.type='flower' group by d.comment_id order by flowernum desc";
 		$digg=$db->query($sql);
-
+		
     ?>
 	
 </head>
@@ -30,6 +30,7 @@
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
 	<div id=ibody_left>
+		<input type="hidden" id="newsid" value="<?php echo $id;?>">
 		<div id=l_t>
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
 		</div>
@@ -105,11 +106,11 @@
 					<button>投票</button>
 				</div>
 			<? }}?>
+			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a href="news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<div class=abouttitle>更多关于“<span style="text-decoration:underline;;"><?php echo $record[0]->keywords?></span>”的新闻</div>
 			<div class=aboutcontent>
 				<div class=title>相关链接</div>
-				<ul>
 				<?php for($i=0;$i<count($about);$i++){ ?>
 					<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
@@ -127,8 +128,8 @@
 						<?php }?>
 					</div>
 				<?php } ?>
-				</ul>
 			</div>
+			<form id="news_comment_digg" action="news_digg.post.php">
 			<?php if(count($comment)>0){?>
 			<div id=comment>
 				<?php for($i=0;$i<2;$i++){ ?>
@@ -160,9 +161,10 @@
 						</div>
 					</div>
 				<?php } ?>
-				<div id=page><?php  paginate('news_head.php?id='.$id);?></div>
+				<div id=page><?php  paginate('news.php?id='.$id);?></div>
 			</div>
 			<?php }?>
+			</form>
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php echo count($comment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
@@ -172,7 +174,6 @@
 					
 				</div>
 				<button id="submit_comment">提交评论</button>
-			</div>
 			</div>
 		</div>
 	</div>
@@ -231,9 +232,9 @@
 			<? }?>
 		</div>
 		<div id=r_b2>
-			<div class=r_title1 id=r_b2_title1 onMouseOver="ChangeTab(1)">部门发表量</div>
-			<div class=r_title2 id=r_b2_title2 onMouseOver="ChangeTab(2)" >部门点击排行榜</div>
-			<div id=r_b_1 style="display:none;">
+			<div class=b_b_title1 id=r_b_b_title1 onMouseOver="ChangeTab(1)">部门发表量</div>
+			<div class=b_b_title2 id=r_b_b_title2 onMouseOver="ChangeTab(2)" >部门点击排行榜</div>
+			<div id=b_b_1 style="display:none;">
 			<?php 
 			 $sql="select count(*) as num,d.name from smg_news n right join smg_dept d on n.dept_id=d.id group by n.dept_id order by num desc";
 			 $clickcount=$db->paginate($sql,10);
@@ -252,7 +253,7 @@
 			<? }?>
 			</div>
 			
-			<div id=r_b_2 style="display:block;">
+			<div id=b_b_2 style="display:block;">
 			<?php 
 			 $sql="select * from smg_dept order by click_count desc";
 			 $clickcount=$db->paginate($sql,10);

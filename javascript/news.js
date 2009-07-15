@@ -1,5 +1,6 @@
 	$(document).ready(function(){
 		display_fqbq('fqbq','comment');
+		updatenews($("#newsid").attr('value'));
 	})
 	$("#r_t").click(function(){location.href="news_sub.php";})
 	function ChangeTab(num)
@@ -45,6 +46,25 @@
 					alert('刷新太快了请稍后再试！');
 				}else{
 					alert('评论成功！');
+				}
+			}
+		})
+	}
+	function updatenews(id){
+		$.ajax({
+			type: "POST",
+			url: "news_update.post.php",
+			timeout: 20000,
+			error: function(){
+				alert('error');
+			},
+			data: "newsid="+id ,
+			success: function(msg){
+			
+				//当AJAX请求失败时添加一个被执行的方法
+				if(msg!='OK'){
+					
+				}else{
 				}
 			}
 		})
