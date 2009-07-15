@@ -35,15 +35,18 @@
 		</form>
 		<a href="#" id="test">test</a>
 		<textarea id="fck1"></textarea>
-		<div id="div1">
+		<div id="div1" style="overflow-y:auto;; overflow-x:hidden; width:50px; height:50px;">
+			sadfl;asdf
+			sadfl;asdf
+			sadfl;asdf
+			sadfl;asdf
 			<p>
 				<div id="div2" style="width:150px;">
 					abc;
 				</div>
 			</p>
+			
 		</div>
-		<iframe id="iframe" name="iframe"></iframe>
-		<?php show_fckeditor('fck');?>
 	</body>
 </html>
 <script>
@@ -59,11 +62,8 @@
 		//});
 		//category.display_select('test',$('#test_form'),-1,'');
 		//alert($('#div1 #div2').html());
-		$.post('test.post.php',{},function(data){
-			alert(data);
-		});
+		$('#div1').scrollTop(10000);
 	});
-	iframe.document.designMode = "on";
 	$('#test_form').submit(function(){
 		return false;
 	});

@@ -16,8 +16,7 @@
 		$conditions = implode(' and ', $conditions);	
 	}
 	$category = new smg_category_class('news');
-	$category->echo_jsdata();
-	
+	$category->echo_jsdata();	
 ?>
 
 

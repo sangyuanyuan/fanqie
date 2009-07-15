@@ -10,8 +10,8 @@
 	<title>SMG-番茄网-交流-对话全文</title>
 	<? 	
 		use_jquery();
-		css_include_tag('zone_dialog','top','bottom');
-		js_include_tag('dialog/dialog','pubfun');
+		css_include_tag('zone_dialog','top','bottom','thickbox');
+		js_include_tag('dialog/dialog','pubfun','thickbox');
 		
   ?>
 	
@@ -57,7 +57,14 @@
 					?>
 				</div>
 				<div id="div_leader">
-					<div id="div_online_leader">在线领导</div>					
+					<div id="div_online_leader">对话嘉宾</div>	
+					<?php
+						$len = count($leaders);
+						for($i=0;$i < $len; $i ++){
+							$img = $leaders[$i]->photo_src ? $leaders[$i]->photo_src : '/images/zone/boy.gif';?>
+							<div style="margin-left:2px;"><img src="<?php echo $img;?>" width=20 height=20> <?php echo $leaders[$i]->name;?></div>
+					<?php	}
+					?>				
 					<!-- refresh leader status here -->
 				</div>
 				<div id="div_add_question">
@@ -75,10 +82,17 @@
 				<div id="answer_title"></div>
 				<div id="div_answer_list">
 					<div id="div_answer_list_innerbox">
-						<div class="answer_question"><span class="answer_question_index"><b>问题1.</b></span>的答复第三方的答复第三方的答复第三方的答复第三方的答复第三方的答复第三方的答复第三方的答复第三方的答复第三方的答复第三方<span class="question_time"> 网友23 2009-12-12</span></div>
-						<div class="answer_answer">
-						sdfsdfasdfasdfsadfdsf
-						</div>
+						<?php
+							$db = get_db();
+							$sql = 'select a.*,b.id as qid, b.content as  qcontent, b.writer, b.create_time as qcreate_time from smg_dialog_answer a left join smg_dialog_question b on a.question_id=b.id';
+							$sql .= ' where a.dialog_id=' .$dialog->id;
+							$answers = $db->query($sql);
+							$answer_count = $answers ? count($answers) : 0;
+							$last_answer_id = $answer_count == 0 ? 0 : $answers[$answer_count -1]->id;
+							for($i=0;$i < $answer_count; $i++){
+								echo_dialog_answer($answers[$i],$i+1);
+							}
+						?>
 					</div>
 					
 				</div>
@@ -86,9 +100,9 @@
 		</div>
 		<div id=b_r>
 			<div id=b_r_t>
-				<input type="text">
-				<textarea></textarea>
-				<button>提　交</button>
+				<input id="comment_writer" type="text">
+				<textarea id="comment_content"></textarea>
+				<button id="comment_button">提　交</button>
 			</div>
 			<div id=b_r_title1></div>
 			<div id=b_r_m></div>
@@ -104,11 +118,13 @@
 		</div>
 	</div>
 </div>
-<div id="div_hidden">
+<form id="div_hidden">
 	<input type="hidden" id="last_question_id" name="last_question_id" value="<?php echo intval($questions[count($questions)-1]->id); ?>">
 	<input type="hidden" id="question_count" name="question_count" value="<?php echo count($questions); ?>">
 	<input type="hidden" id="dialog_id" value="<?php echo $dialog->id;?>">
-</div>
+	<input type="hidden" id="last_answer_id" name="last_answer_id" value="<?php echo $last_answer_id;?>">
+	<input type="hidden" id="answer_count" name="answer_count" value="<?php echo $answer_count;?>">
+</form>
 <div id="ajax_ret" style="display:none;"></div>
 <? require_once('../inc/bottom.inc.php');?>
 
