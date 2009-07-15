@@ -11,7 +11,7 @@
 	$news->update_attributes($_POST['news'],false);
 	$news->content = str_replace("'", '\"', $news->content);
 	$news->description = str_replace("'", '\"', $news->description);
-	$news->content = strtr($news->content,array('<div>' => '','</div>' => '','<DIV>' => '','</DIV>' => ''));
+	#$news->content = strtr($news->content,array('<div>' => '','</div>' => '','<DIV>' => '','</DIV>' => ''));
 	$news->keywords = str_replace('　',' ',$news->keywords);
 	#$news->echo_sql = true;
 	$news->is_recommend = 1;

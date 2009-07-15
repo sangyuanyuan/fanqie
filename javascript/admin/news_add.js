@@ -172,6 +172,22 @@ function remove_related_news(id){
 	$('#hidden_related_news').attr('value',related_news.join(','));
 }
 
+var related_videos = new Array();
+function add_related_videos(id){
+	related_videos.push(id);
+	$('#hidden_related_videos').attr('value',related_videos.join(','));
+}
+
+function remove_related_videos(id){
+	icount = related_videos.length;
+	for(i=0;i<icount;i++){
+		if(related_videos[i] == id){
+			related_videos.splice(i,1);
+		}
+	}
+	$('#hidden_related_videos').attr('value',related_videos.join(','));
+}
+
 var sub_headlines = new Array();
 function add_sub_headlines(id){
 	sub_headlines.push(id);

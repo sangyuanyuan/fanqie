@@ -4,7 +4,7 @@
 	if($_REQUEST['show_div'] != '0'){
 		echo "<div id='result_box'>";
 	}
-	$filter_dept = $_REQUEST['filter_dept'] ? $_REQUEST['filter_dept'] : -1;
+	$filter_dept = isset($_REQUEST['filter_dept']) ? $_REQUEST['filter_dept'] : -1;
 	if($filter_dept != -1){
 		$conditions[] = 'dept_id =' .$filter_dept;		
 	}
@@ -19,9 +19,8 @@
 	if($conditions){
 		$conditions = implode(' and ', $conditions);	
 	}
-	$category = new smg_category_class('news');
-	$category->echo_jsdata();
-	
+	$category = new smg_category_class('video');
+	$category->echo_jsdata('video_category');	
 ?>
 <?
 		css_include_tag('admin');
@@ -57,12 +56,12 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td width="50">选择</td><td width="350">短标题</td><td width="100">发表部门</td><td width="100">所属类别</td>
+			<td width="50">选择</td><td width="350">标题</td><td width="100">发表部门</td><td width="100">所属类别</td>
 		</tr>
 		<?php
-			$subject = new table_class("smg_news");
+			$subject = new table_class("smg_video");
 
-			$items = search_content($_POST[$key],'smg_news',$conditions,10);
+			$items = search_content($_REQUEST['key'],'smg_video',$conditions,10);
 			$count_record = count($items);			
 			//--------------------		
 			for($i=0;$i<$count_record;$i++)	{
@@ -70,14 +69,13 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><input type="checkbox" id="<?php echo $items[$i]->id;?>" value="<?php echo $items[$i]->id;?>" name="subject" style="width:12px;"></td>
-					<td><?php echo strip_tags($items[$i]->short_title);?></td>
+					<td><?php echo strip_tags($items[$i]->title);?></td>
 					<td><?php $cate = get_dept_info($items[$i]->dept_id);echo $cate->name;?></td>					
 					<td><?php echo $category->find($items[$i]->category_id)->name; ?></td>
 				</tr>
 		<?php
 			}
 			//--------------------
-			
 		?>
 		<tr class=tr3>
 				<td colspan="4"><?php paginate('','result_box');?></td>
@@ -88,22 +86,21 @@
 					<input type="hidden" id="chosen_subject_name" value="">
 					<input type="hidden" id="chosen_subject_category_id" value="">
 				</td>
-		</tr>
+		</tr>		
 	</table>
-
 
 <script>
 		$('#list input:checkbox').click(function(){
 			if($(this).attr('checked')){
-				add_sub_headlines($(this).attr('id'));
+				add_related_videos($(this).attr('id'));
 			}else{
-				remove_sub_headlines($(this).attr('id'));
+				remove_related_videos($(this).attr('id'));
 			}
 		});
 		
 		$('#save').click(function(){
-			sub_headlines.length = 0;
-			$('#hidden_sub_headlines').attr('value','');
+			related_videos.length = 0;
+			$('#hidden_related_videos').attr('value','');
 			$('#list input:checkbox').each(function(){
 				$(this).attr('checked',false);
 			});
@@ -111,35 +108,38 @@
 		$('#cancel,#button_ok').click(function(){
 			tb_remove();
 		});	
+
+
 		$('#subject_search').click(function(){
 			send_search();
 		});
-		$('#list input:checkbox').each(function(){
-			if(jQuery.inArray($(this).attr('id'),sub_headlines) != -1){
-				$(this).attr('checked',true);
-			}
-		});
 		$('#filter_dept,#filter_adopt').change(function(){
 			send_search();
+		});
+		$('#list input:checkbox').each(function(){
+			if(jQuery.inArray($(this).attr('id'),related_videos) != -1){
+				$(this).attr('checked',true);
+			}
 		});
 		$('#search_text').keydown(function(e){
 			if(e.keyCode == 13){
 				send_search();
 			}
 		});
+		
 		function send_search(){
 			var filter_dept = $('#filter_dept').attr('value');
-			var filter_category = $('.news_category:last').attr('value');
+			var filter_category = $('.video_category:last').attr('value');
 			var filter_adopt = $('#filter_adopt').attr('value');
-			url = 'sub_headline.php?filter_dept=' + filter_dept;
+			url = 'related_video.php?filter_dept=' + filter_dept;
 			url += '&filter_category=' + filter_category;
 			url += '&filter_adopt=' + filter_adopt;
 			url += '&key=' + $('#search_text').val();
 			$('#result_box').load(url,{'show_div':'0'});			
+			//$('#result_box').load('filte_news.php',{'show_div':'0','key':$('#search_text').attr('value'),'filter_dept':$('#filter_dept').attr('value'),'filter_category':$('.news_category:last').attr('value'),'filter_adopt':$('#filter_adopt').attr('value')});			
 		}
 		category.display_select('news_category',$('#span_category_select'),<?php echo $filter_category;?>,'',function(){send_search();});
-		
-		
+
 </script>
 <?php 
 	if($_REQUEST['show_div'] != '0'){
