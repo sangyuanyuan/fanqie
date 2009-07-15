@@ -23,12 +23,11 @@
 
 	<table width="600" border="0" id="list" style="boder:1px solid">
 		<tr class="tr1">
-			<td colspan="4">　
-			<span style="margin-left:100px; font-size:13px">搜索&nbsp;&nbsp;<input id="search_text" type="text" value="<? echo $key;?>"></span>
-			分类<span id="span_category_select"></span>
-			部门<select style="width:100px;" name="filter_dept" id="filter_dept">
-				<option value="-1">请选择</option>
-			<?php 
+			<td colspan="4" align=center>　
+			<span font-size:13px">搜索&nbsp;&nbsp;<input id="search_text" type="text" value="<? echo $key;?>"></span>
+			<select style="width:100px;" name="filter_dept" id="filter_dept">
+				<option value="-1">发表部分</option>
+				<?php 
 				$dept = new table_class('smg_dept');
 				$items = $dept->find('all');
 				foreach ($items as $v) {
@@ -39,13 +38,14 @@
 					}
 					
 				}
-			?>
-			</select>			
+				?>
+			</select>	
+			<span id="span_category_select"></span>
 			<input type="button" value="搜索" id="subject_search" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
-		<tr class="tr2">
-			<td align=left>短标题</td><td width="80">新闻类别</td><td width="80">部门</td>
+		<tr class="tr2" align=center>
+			<td>短标题</td><td width="80">新闻类别</td><td width="80">部门</td>
 		</tr>
 		<?php
 			$subject = new table_class("smg_news");
