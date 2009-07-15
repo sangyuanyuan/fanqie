@@ -55,7 +55,7 @@
 				<td colspan="4"><?php paginate('','result_box');?></td>
 		</tr>	
 		<tr class=tr3>
-				<td colspan="4"><button id="save" style="width:150px;">确定</button><button id="??" style="width:150px">取消所有关联</button><button id="cancel" style="width:150px;">关闭</button>
+				<td colspan="4"><button id="save" style="width:150px;">确定</button><button id="cancel" style="width:150px;">关闭</button>
 						<input type="hidden" id="chosen_subject_id" value="">
 						<input type="hidden" id="chosen_subject_name" value="">
 						<input type="hidden" id="chosen_subject_category_id" value="">

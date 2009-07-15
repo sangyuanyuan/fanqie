@@ -194,7 +194,7 @@
  					{ 
  							echo $record_head[0]->description; 
  					}
- 					if($record_head[0]->sub_headline<>1&&$record_head[0]->sub_headline<>"")
+ 					if($record_head[0]->sub_headline<>1&&$record_head[0]->sub_headline<>""&&$record_head[0]->sub_news_id<>"")
  					{
  							$sub_news_str=explode(",",$record_head[0]->sub_news_id); 
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
@@ -229,7 +229,7 @@
  					{ 
  							echo $record_head[$j]->description; 
  					}
- 					if($record_head[$j]->sub_headline<>1&&$record_head[$j]->sub_headline<>"")
+ 					if($record_head[$j]->sub_headline<>1&&$record_head[$j]->sub_headline<>""&&$record_head[$j]->sub_news_id<>"")
  					{
  							$sub_news_str=explode(",",$record_head[$j]->sub_news_id); 
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
