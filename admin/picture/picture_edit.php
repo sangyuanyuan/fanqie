@@ -58,6 +58,9 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="picture[<?php echo $priority?>]" value="<?php if($picture_record[0]->$priority!=100){echo $picture_record[0]->$priority;}?>">(1-100)</td>
 		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
+			<td>关键词</td><td align="left">　<input type="text" size="50" name="picture[keywords]" value="<?php echo $picture_record[0]->keywords;?>">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
+		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>开启评论</td><td align="left">　<input type="checkbox" name="picture[commentable]" id=commentable <?php if($picture_record[0]->commentable==="on"){?>checked="checked"<?php }?> ></td>
 		</tr>

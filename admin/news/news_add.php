@@ -138,8 +138,9 @@
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3  class="normal_news">
 			<td>视频</td>
 			<td align="left" id="td_video">			
-				视频文件<input type="file" name="video_src" id="video_src">　　	
-				视频图片<input type="file" name="video_pic" id="video_pic">
+				视频<input type="file" name="video_src" id="video_src">　
+				缩略图<input type="file" name="video_pic" id="video_pic">　
+				<input type="checkbox">低清
 			</td>
 		</tr>
 		<tr id=newsshow3 class="normal_news tr3">

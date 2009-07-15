@@ -5,17 +5,17 @@
 		echo "<div id='result_box'>";
 	}
 ?>
+<?
+		css_include_tag('admin');
 
+?>
 
 	<table width="600" border="0" id="list">
-		<tr class="tr1">
-			<td colspan="4">　
-			<span style="margin-left:100px; font-size:13px">搜索&nbsp;&nbsp;<input id="search_text" type="text" value="<? echo $key;?>"></span>
-			<input type="button" value="搜索" id="subject_search" style="border:1px solid #0000ff; height:21px">
-			</td>
+		<tr class="tr2">
+			<td colspan="4">搜索 <input id="search_text" type="text" value="<? echo $key;?>"><input type="button" value="搜索" id="subject_search" style="border:1px solid #0000ff; height:21px"></td>
 		</tr>
 		<tr class="tr2">
-			<td>专题名称</td><td width="80">新闻类别</td><td width="80">发布时间</td>
+			<td width=50>选择</td><td width=350>专题名称</td><td width="100">新闻类别</td><td width="100">发布时间</td>
 		</tr>
 		<?php
 			$subject = new table_class("smg_subject");
@@ -31,8 +31,9 @@
 			for($i=0;$i<$count_record;$i++)	{
 				
 		?>
-				<tr  id=<?php echo $record[$i]->id;?> >
-					<td align="left"><input type="radio" value="<?php echo $subjects[$i]->id;?>" name="subject" style="width:10px;"><span><?php echo $subjects[$i]->name;?></span></td>
+				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
+					<td><input type="radio" value="<?php echo $subjects[$i]->id;?>" name="subject" style="width:10px;"></td>
+					<td><?php echo $subjects[$i]->name;?></td>
 					<td>
 						<select class="subject_category_select">
 							<option value="-1">请选择</option>
@@ -50,20 +51,18 @@
 			}
 			//--------------------
 		?>
+		<tr class=tr3>
+				<td colspan="4"><?php paginate('','result_box');?></td>
+		</tr>	
+		<tr class=tr3>
+				<td colspan="4"><button id="save" style="width:150px;">确定</button><button id="cancel" style="width:150px;">关闭</button>
+						<input type="hidden" id="chosen_subject_id" value="">
+						<input type="hidden" id="chosen_subject_name" value="">
+						<input type="hidden" id="chosen_subject_category_id" value="">
+				</td>
+		</tr>
 	</table>
-	<div class="div_box" style="width:600px;">
-		<table width="600" border="0">
-			<tr colspan="5" class=tr3>
-				<td><?php paginate('','result_box');?></td>
-			</tr>
-			<tr colspan="5" class=tr3>
-				<td><button id="save">确定</button> <button id="cancel">取消</button></td>
-			</tr>
-		</table>
-	</div>
-	<input type="hidden" id="chosen_subject_id" value="">
-	<input type="hidden" id="chosen_subject_name" value="">
-	<input type="hidden" id="chosen_subject_category_id" value="">
+
 
 <script>
 		$('#save').click(function(){

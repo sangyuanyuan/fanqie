@@ -1,5 +1,8 @@
 <?php
 	require_once('../frame.php');
+	$id = $_REQUEST['id'];
+	$image = new smg_images_class();
+	$image->find($id);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,10 +10,10 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-展示-我型我秀子页</title>
-	<? 	
+	<?php
 		css_include_tag('show_show','top','bottom');
 		use_jquery();
-  ?>
+  	?>
 	
 </head>
 <body>
@@ -43,24 +46,30 @@
 		</div>
  </div>
  <div id=ibody_right>
-	  <div id=r_t><a target="_blank" href="#"><img border=0 src="/images/show/show_r_t.jpg"></a></div>
-		<div id=flower>0</div>
-		<div id=tomato>0</div>
+	  <div id=r_t><a target="_blank" href="<?php echo $image->src;?>"><img border=0 src="<?php echo $image->src_path('middle')?>"></a></div>
+		<div id=flower><?php echo $image->flower;?></div>
+		<div id=tomato><?php echo $image->tomato;?></div>
 		<div id=r_b>
 			<div id=r_b_l>
 				<div class=title>网友评论</div>
 				<div class=more><a target="_blank" href="#">更多>></a></div>
-				<?php for($i=0;$i<4;$i++){?>
+				<?php 
+					$comments = get_comments($id,'picture',4);
+					$count = count($comments);
+					$records = get_comments($id,'picture');
+					$t_count = count($records);
+					for($i=0;$i<$count;$i++){
+				?>
 					<div class=content>
 						<div class=l><a target="_blank" href="#"><img border=0 width=45 height=42 src=""></a></div>
 						<div class=r>
-							<div class=t><a target="_blank" href="#">test</a></div>
-							<div class=b><a target="_blank" href="#">test</a></div>
+							<div class=t><?php echo $comments[$i]->nick_name?></div>
+							<div class=b><?php echo $comments[$i]->comment?></div>
 						</div>
 					</div>
 				<?php }?>
 				<div id=comment>
-					现在有人<span style="#FF5800">0</span>对本文发表评论　<a target="_blank" href="#">查看所有评论</a>
+					现在有<span style="#FF5800"><?php echo $t_count;?></span>人对本文发表评论　<a target="_blank" href="#">查看所有评论</a>
 					<br><input style="width:330px;" type="text"><br><textarea style="width:330px;" rows=5></textarea><br><br><br>
 					<button style=" float:right;">提交评论</button>
 				</div>
