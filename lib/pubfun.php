@@ -461,6 +461,3 @@ function show_video($state,$width,$height)
 	if($state==1){echo '<img src="/images/index/video.gif" width='.$width.'  height='.$height.' >';}
 }
 ?>
-
-
-
