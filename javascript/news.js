@@ -1,5 +1,5 @@
 	$(document).ready(function(){
-		display_fqbq('fqbq','comment');
+		display_fqbq('fqbq','post[comment]');
 		updatenews();
 		$("#r_t").click(function(){location.href="news_sub.php";})
 	})

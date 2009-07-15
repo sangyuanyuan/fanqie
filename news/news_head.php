@@ -18,7 +18,7 @@
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
 		$record=$db->query($sql);
 		$about=search_content($record[0]->keywords,'smg_news','',10);
-		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id;
+		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d left join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' group by d.diggtoid order by flowernum desc";
 		$digg=$db->query($sql);
@@ -125,16 +125,16 @@
 					<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
 							<img src="/images/news/li_square.jpg"><a target="_blank" href="news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?> <span style="#838383"><?php echo $about[$i]->last_edited_at; ?></span>
-							</a>
+								<?php echo delhtml($about[$i]->title); ?></a>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+							
 						<?php }else if($about[$i]->video_src!=""){?>
 							<img src="/images/news/li_square.jpg"><a target="_blank" href="news_video.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?> <span style="#838383"><?php echo $about[$i]->last_edited_at; ?></span>
-							</a>
+								<?php echo delhtml($about[$i]->title); ?></a>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+							
 						<?php }else{?>
 							<img src="/images/news/li_square.jpg"><a target="_blank" href="news.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?> <span style="#838383"><?php echo $about[$i]->last_edited_at; ?></span>
-							</a>
+								<?php echo delhtml($about[$i]->title); ?></a>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+							
 						<?php }?>
 					</div>
 				<?php } ?>
@@ -142,28 +142,29 @@
 			
 			<?php  if(count($comment)>0){?>
 			<div id=comment>
-				<?php for($i=0;$i<2;$i++){ ?>
+				<?php if(count($digg)>0){
+				 for($i=0;$i<2;$i++){ ?>
 					<div class=content>	
 						<div class=title1>
 							<div style="width:110px; margin-left:118px; float:left; display:inline;">
-								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->title;?></span>
+								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<img onclick="digg('flower',<? echo $digg[$i]->id;?>)" src="/images/news/news_flower.jpg">　　<span style="color:#FF0000;"><?php echo $digg[$i]->flowernum;?></span><img onclick="digg('tomato',<? echo $digg[$i]->id;?>)" style="margin-left:100px;" src="/images/news/news_tomato.jpg">　　<span style="color:#FF0000;"><?php echo $digg[$i]->tomatonum;?></span>　　　　　　　<span style="color:#FF0000;"><?php echo $digg[$i]->created_at; ?></span>
+								<img onclick="digg('flower',<?php echo $digg[$i]->id;?>)" src="/images/news/news_flower.jpg">　　<span style="color:#FF0000;"><?php echo $digg[$i]->flowernum;?></span><img onclick="digg('tomato',<? echo $digg[$i]->id;?>)" style="margin-left:100px;" src="/images/news/news_tomato.jpg">　　<span style="color:#FF0000;"><?php echo $digg[$i]->tomatonum;?></span><span style="color:#FF0000;"><?php echo $digg[$i]->created_at; ?></span>
 							</div>
 						</div>	
 						<div class=context>
 							<?php echo get_fck_content($digg[$i]->comment);?>
 						</div>
 					</div>
-				<?php }  for($i=0;$i<count($comment);$i++){ ?>
+				<?php }}  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
 						<div class=title>
-							<div style="width:230px; float:left; display:inline;">
-								<span style="color:#FF0000; text-decoration:underline;"><? echo $comment[$i]->title;?></span>
+							<div style="width:230px; margin-top:10px; margin-left:10px; line-height:20px; float:left; display:inline;">
+								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<img onclick="digg('flower',<? echo $comment[$i]->id;?>)" src="/images/news/news_flower.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->flowernum;?></span><img onclick="digg('tomato',<? echo $comment[$i]->id;?>)" style="margin-left:100px;" src="/images/news/news_tomato.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->tomatonum;?></span>　　　　　　　<span style="color:#FF0000;"><?php echo $comment[$i]->created_at; ?></span>
+								<img onclick="digg('flower',<?php echo $comment[$i]->id;?>)" src="/images/news/news_flower.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->flowernum;?></span><img onclick="digg('tomato',<?php echo $comment[$i]->id;?>)" style="margin-left:100px;" src="/images/news/news_tomato.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->tomatonum;?></span>　<span style="color:#FF0000;"><?php echo $comment[$i]->created_at; ?></span>
 							</div>
 						</div>	
 						<div class=context>
@@ -171,19 +172,19 @@
 						</div>
 					</div>
 				<?php } ?>
-				<div id=page><?php  paginate('news.php?id='.$id);?></div>
+				<div id=page><?php  paginate('news_head.php?id='.$id);?></div>
 			</div>
 			<?php }?>
 			<form method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
-				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php echo count($comment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
+				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
 				<input type="text" id="commenter" name="post[nick_name]">
 				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">
 				<input type="hidden" id="resource_type" name="post[resource_type]" value="news">
-				<input type="hidden" name="target_url" value="news.php?id=<?php echo $id;?>">
+				<input type="hidden" name="target_url" value="<?php   $string = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; echo $string;?>">
 				<input type="hidden" name="type" value="comment">
-				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('comment','Title',false,'75','','600');?></div>
+				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('post[comment]','Title',false,'75','','600');?></div>
 				<div id=fqbq>
 					
 				</div>
