@@ -98,11 +98,16 @@
 		});	
 		$('input:radio').click(function(){
 			$('#chosen_subject_id').attr('value',$(this).attr('value'));
-			$('#chosen_subject_name').attr('value',$(this).next('span').html());
+			$('#chosen_subject_name').attr('value',$(this).parent().next('td').html());
 			$('#chosen_subject_category_id').attr('value','');						
 		});
 		$('.subject_category_select').change(function(){
 			$('#chosen_subject_category_id').attr('value',$(this).attr('value'));
+		});
+		$('#search_text').keydown(function(e){
+			if(e.keyCode == 13){
+				send_search();
+			}
 		});
 		$('#subject_search').click(function(){
 			$('#result_box').load('assign_subject.php',{'show_div':'0','key':$('#search_text').attr('value')});

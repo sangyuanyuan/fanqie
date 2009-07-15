@@ -77,6 +77,14 @@ $(function(){
 			alert('请选择视频图片!');
 			return false;
 		}
+		$('#check_box_commentable').click(function(){
+		if($(this).attr('checked')){
+			$('#hidden_is_commentable').val(1);
+		}else{
+			$('#hidden_is_commentable').val(0);
+		}
+		
+	});
 			
 		return true;
 	});

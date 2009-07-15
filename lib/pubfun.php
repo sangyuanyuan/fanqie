@@ -374,6 +374,7 @@ function copy_dir($source, $destination, $child=1){
 
 function search_content($key,$table_name='smg_news',$conditions=null,$page_count = 0, $order=''){
 	$table = new table_class($table_name);
+	$key = str_replace('　', ' ', $key);
 	$keys = explode(' ',$key);
 	$c = array();
 	foreach ($keys as $v) {

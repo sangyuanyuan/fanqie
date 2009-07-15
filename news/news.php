@@ -17,7 +17,7 @@
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
 		$record=$db->query($sql);
 		$about=search_content($record[0]->keywords,'smg_news','',10);
-		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id;
+		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d left join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' group by d.diggtoid order by flowernum desc";
 		$digg=$db->query($sql);
@@ -43,7 +43,7 @@
 		<div id=l_b>
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
-			<?php if($record[0]->video_src!=""){?><div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div><?php } ?>
+			<div id=video><?php if($record[0]->video_src!=""){ show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src);} ?></div>
 			<div id=content>
 				<?php echo get_fck_content($record[0]->content);?>
 			</div>
@@ -117,44 +117,27 @@
 			<? }}?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a href="news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
-			<div class=abouttitle>更多关于“<span style="text-decoration:underline;;"><?php echo delhtml($record[0]->shorttile);?></span>”的新闻</div>
+			<div class=abouttitle>更多关于“<span style="text-decoration:underline;"><?php echo delhtml($record[0]->shorttile);?></span>”的新闻</div>
 			<div class=aboutcontent>
 				<div class=title>相关链接</div>
 				<?php for($i=0;$i<count($about);$i++){ ?>
 					<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
 							<img src="/images/news/li_square.jpg"><a target="_blank" href="news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?> <span style="#838383"><?php echo $about[$i]->last_edited_at; ?></span>
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else if($about[$i]->video_src!=""){?>
 							<img src="/images/news/li_square.jpg"><a target="_blank" href="news_video.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?> <span style="#838383"><?php echo $about[$i]->last_edited_at; ?></span>
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
 							<img src="/images/news/li_square.jpg"><a target="_blank" href="news.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?> <span style="#838383"><?php echo $about[$i]->last_edited_at; ?></span>
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }?>
 					</div>
-				<?php } if(count($about)<10){
-						$aboutb=$db->paginate("select * from smg_news where ",11);
-					?>
-					<div class=content>
-						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							<img src="/images/news/li_square.jpg"><a target="_blank" href="news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?> <span style="#838383"><?php echo $about[$i]->last_edited_at; ?></span>
-							</a>
-						<?php }else if($about[$i]->video_src!=""){?>
-							<img src="/images/news/li_square.jpg"><a target="_blank" href="news_video.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?> <span style="#838383"><?php echo $about[$i]->last_edited_at; ?></span>
-							</a>
-						<?php }else{?>
-							<img src="/images/news/li_square.jpg"><a target="_blank" href="news.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?> <span style="#838383"><?php echo $about[$i]->last_edited_at; ?></span>
-							</a>
-						<?php }?>
-					</div>
-				<?php }?>
+				<?php } ?>
+					
 			</div>
 			<form id="news_comment_digg" action="news_digg.post.php">
 			<?php if($record[0]->is_commentable>0){ if(count($comment)>0){?>
@@ -162,11 +145,11 @@
 				<?php for($i=0;$i<2;$i++){ ?>
 					<div class=content>	
 						<div class=title1>
-							<div style="width:110px; margin-left:118px; float:left; display:inline;">
+							<div style="width:110px; line-height:20px; margin-left:118px; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->title;?></span>
 							</div>
-							<div style="width:370px; float:right; display:inline;">
-								<img onclick="digg('flower',<? echo $digg[$i]->id;?>)" src="/images/news/news_flower.jpg">　　<span style="color:#FF0000;"><?php echo $digg[$i]->flowernum;?></span><img onclick="digg('tomato',<? echo $digg[$i]->id;?>)" style="margin-left:100px;" src="/images/news/news_tomato.jpg">　　<span style="color:#FF0000;"><?php echo $digg[$i]->tomatonum;?></span>　　　　　　　<span style="color:#FF0000;"><?php echo $digg[$i]->created_at; ?></span>
+							<div style="width:370px; line-height:20px;  float:right; display:inline;">
+								<img onclick="digg('flower',<? echo $digg[$i]->id;?>)" src="/images/news/news_flower.jpg">　　<span style="color:#FF0000;"><?php echo $digg[$i]->flowernum;?></span><img onclick="digg('tomato',<? echo $digg[$i]->id;?>)" style="margin-left:100px;" src="/images/news/news_tomato.jpg">　　<span style="color:#FF0000;"><?php echo $digg[$i]->tomatonum;?></span>　<span style="color:#FF0000;"><?php echo $digg[$i]->created_at; ?></span>
 							</div>
 						</div>	
 						<div class=context>

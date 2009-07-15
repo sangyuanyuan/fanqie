@@ -11,6 +11,8 @@
 	$news->update_attributes($_POST['news'],false);
 	$news->content = str_replace("'", '\"', $news->content);
 	$news->description = str_replace("'", '\"', $news->description);
+	#$news->content = strtr($news->content,array('<div>' => '','</div>' => '','<DIV>' => '','</DIV>' => ''));
+	$news->keywords = str_replace('　',' ',$news->keywords);
 	#$news->echo_sql = true;
 	$news->is_recommend = 1;
 	if($news->is_dept_adopt != 1){
@@ -139,7 +141,7 @@
 		
 	}
 	
-	redirect('index.php?category='.$news->category_id);
+	redirect('index.php?category='.$_POST['news']['category_id']);
 	#var_dump($news);
 	
 ?>

@@ -4,15 +4,15 @@
 	if($_REQUEST['show_div'] != '0'){
 		echo "<div id='result_box'>";
 	}
-	$filter_dept = isset($_POST['filter_dept']) ? $_POST['filter_dept'] : -1;
+	$filter_dept = isset($_REQUEST['filter_dept']) ? $_REQUEST['filter_dept'] : -1;
 	if($filter_dept != -1){
 		$conditions[] = 'dept_id =' .$filter_dept;		
 	}
-	$filter_adopt = isset($_POST['filter_adopt']) ? $_POST['filter_adopt'] : -1;
+	$filter_adopt = isset($_REQUEST['filter_adopt']) ? $_REQUEST['filter_adopt'] : -1;
 	if($filter_adopt != -1){
 		$conditions[] = 'is_adopt= ' .$filter_adopt;
 	}
-	$filter_category = $_POST['filter_category'] ? $_POST['filter_category'] : -1;
+	$filter_category = $_REQUEST['filter_category'] ? $_REQUEST['filter_category'] : -1;
 	if($filter_category != -1){
 		$conditions[] = 'category_id =' .$filter_category;		
 	}
@@ -125,6 +125,11 @@
 		$('#list input:checkbox').each(function(){
 			if(jQuery.inArray($(this).attr('id'),related_news) != -1){
 				$(this).attr('checked',true);
+			}
+		});
+		$('#search_text').keydown(function(e){
+			if(e.keyCode == 13){
+				send_search();
 			}
 		});
 		

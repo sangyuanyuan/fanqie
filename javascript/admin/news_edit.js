@@ -103,6 +103,15 @@ $(function(){
 			$('#hidden_forbbide_copy').val('0');
 		}		
 	});
+	
+	$('#check_box_commentable').click(function(){
+		if($(this).attr('checked')){
+			$('#hidden_is_commentable').val(1);
+		}else{
+			$('#hidden_is_commentable').val(0);
+		}
+		
+	});
 });
 
 function toggle_news_type(){
@@ -154,6 +163,23 @@ function remove_sub_headlines(id){
 	}
 	$('#hidden_sub_headlines').attr('value',sub_headlines.join(','));
 }
+
+var related_videos = new Array();
+function add_related_videos(id){
+	related_videos.push(id);
+	$('#hidden_related_videos').attr('value',related_videos.join(','));
+}
+
+function remove_related_videos(id){
+	icount = related_videos.length;
+	for(i=0;i<icount;i++){
+		if(related_videos[i] == id){
+			related_videos.splice(i,1);
+		}
+	}
+	$('#hidden_related_videos').attr('value',related_videos.join(','));
+}
+
 
 function str_length(str){
 	return   str.replace(/[^\x00-\xff]/g,"**").length;

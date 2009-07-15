@@ -140,7 +140,8 @@
 			<td align="left" id="td_video">			
 				视频<input type="file" name="video_src" id="video_src">　
 				缩略图<input type="file" name="video_pic" id="video_pic">　
-				<input type="checkbox">低清
+				<input type="checkbox" id="ch_low_quality">低清
+				<input type="hidden" name="news[low_quality]" id="hidden_low_quality" value="0">
 			</td>
 		</tr>
 		<tr id=newsshow3 class="normal_news tr3">
@@ -158,7 +159,14 @@
 		</tr>
 		<tr id=newsshow3  class="normal_news tr4">
 			<td>其他选项</td>
-			<td align="left"><input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  <input type="checkbox" name="news[is_adopt]" value="1" checked="checked">直接发布  <input type="checkbox" name="news[image_flag]" value="1">图片提示　<a style="color:blue;" href="filte_news.php?width=600&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
+			<td align="left">
+				<input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  
+				<input type="checkbox" name="news[is_adopt]" value="1" checked="checked">直接发布  
+				<input type="checkbox" name="news[image_flag]" value="1">图片提示　
+				<input type="checkbox" id="check_box_commentable" value="1" checked="checked">开启评论 
+				<a style="color:blue;" href="filte_news.php?width=600&height=400" class="thickbox" id="related_news">手动关联相关新闻</a> 
+				<a style="color:blue;" href="related_video.php?width=600&height=400" class="thickbox" id="related_news">关联相关视频</a>
+			</td>
 		</tr>
 		<tr id=newsshow1  class="normal_news tr3">
 			<td height=100>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
@@ -187,25 +195,20 @@
 		<input type="hidden" name="subject_id" value="" id="hidden_subject_id">
 		<input type="hidden" name="subject_category_id" value="" id="hidden_subject_category_id">		
 		<input type="hidden" name="delete_subject" value="0" id="hidden_delete_subject">
+		<input type="hidden" name="news[is_commentable]" value="1" id="hidden_is_commentable">
+		<input type="hidden" name="news[related_videos]" value="" id="hidden_related_videos">
 	</form>
 </body>
 </html>
 
 <script>
 	$(function(){
-		//category.display_select('news_category',$('#td_category_select'),-1);
+		$('#ch_low_quality').change(function(){
+			if($(this).attr('checked')){
+				$('#hidden_low_quality').val(1);
+			}else{
+				$('#hidden_low_quality').val(0);
+			}
+		});
 	});
-	$('#test').click(function(e){
-		e.preventDefault();
-		//category.echo_category($('#category_select'),'test',0,20);
-		//category.display_select('test',$('#category_select'),30);
-		alert($('#td_newstype').find('input:checked').attr('value'));
-	});	
-	$('#select').click(function(){
-		$('#select ~ .cate').remove();
-	});
-	//category.echo_category($('#category_select'),'test',0,-1);
-	//$('#category_select select').change(function(){
-	//	category.display_select('test',$('#category_select'),$(this).attr('value'),this);
-	//});
 </script>
