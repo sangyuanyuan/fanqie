@@ -14,5 +14,27 @@
 		}
 		$comment -> save();
 		redirect($_POST['target_url']);
+   	}elseif($_POST['type']=='flower'){
+   		$table = new table_class($_POST['db_table']);
+		$table->find($_POST['id']);
+		$table->update_attribute('flower',$table->flower+1);
+   		$ip=getenv('REMOTE_ADDR');
+		$type = 'flower';
+		$file_type = $_POST['digg_type'];
+		$diggtoid = $_POST['id'];
+		$sql="insert into smg_digg(ip,type,diggtoid,file_type) values('".$ip."','".$type."',".$diggtoid.",'".$file_type."')";
+		$db = get_db();
+		$db->execute($sql);
+   	}elseif($_POST['type']=='tomato'){
+   		$table = new table_class($_POST['db_table']);
+		$table->find($_POST['id']);
+		$table->update_attribute('tomato',$table->tomato+1);
+   		$ip=getenv('REMOTE_ADDR');
+		$type = 'tomato';
+		$file_type = $_POST['digg_type'];
+		$diggtoid = $_POST['id'];
+		$sql="insert into smg_digg(ip,type,diggtoid,file_type) values('".$ip."','".$type."',".$diggtoid.",'".$file_type."')";
+		$db = get_db();
+		$db->execute($sql);
    	}
 ?>
