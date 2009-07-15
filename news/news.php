@@ -44,7 +44,7 @@
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
 			<div id=content>
-				<?php echo get_fck_content($record[0]->content); ?>
+				<?php echo get_fck_content($record[0]->content);?>
 			</div>
 			<?php 
 			if($record[0]->vote_id!=""){
@@ -176,7 +176,7 @@
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php echo count($comment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
-				<input type="text" id="commenter"><input type="hidden" id="resource_id" value="<?php echo id;?>"><input type="hidden" id="resource_type" value="news">
+				<input type="text" id="commenter"><input type="hidden" id="resource_id" value="<?php echo $id;?>"><input type="hidden" id="resource_type" value="news">
 				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('comment','Title',false,'75','','600');?></div>
 				<div id=fqbq>
 					
