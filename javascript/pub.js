@@ -3,6 +3,7 @@
  */
 $(function(){
 	$("#submit_comment").click(function(){
+		alert($("#comment").attr('value'));
 		if($("#commenter").attr('value')!='undefined'){
 			var commenter = $("#commenter").attr('value');
 		}else{
@@ -30,7 +31,7 @@ $(function(){
 		}
 		$.post('/pub/pub.post.php',{'post_type':'comment','post[nick_name]':commenter,'post[title]':title,'post[comment]':comment,'post[resource_id]':resource_id,'post[resource_type]':resource_type},function(data){
 			if(data==''){
-				window.location.reload();
+				//window.location.reload();
 			}else{
 				alert(data);
 			}
