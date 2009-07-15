@@ -127,6 +127,11 @@
 				$(this).attr('checked',true);
 			}
 		});
+		$('#search_text').keydown(function(e){
+			if(e.keyCode == 13){
+				send_search();
+			}
+		});
 		
 		function send_search(){
 			var filter_dept = $('#filter_dept').attr('value');

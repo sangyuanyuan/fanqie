@@ -96,6 +96,11 @@
 		$('#cancel').click(function(){
 			tb_remove();
 		});	
+		$('#search_text').keydown(function(e){
+			if(e.keyCode == 13){
+				send_search();
+			}
+		});
 		$('input:radio').click(function(){
 			$('#chosen_vote_id').attr('value',$(this).attr('value'));
 			$('#chosen_vote_name').attr('value',$(this).parent().next('td').html());			
