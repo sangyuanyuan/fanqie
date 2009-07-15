@@ -19,16 +19,18 @@
 	$category->echo_jsdata();
 	
 ?>
+<?
+		css_include_tag('admin');
 
+?>
 
 	<table width="600" border="0" id="list" style="boder:1px solid">
-		<tr class="tr1">
-			<td colspan="4">　
-			<span style="margin-left:100px; font-size:13px">搜索&nbsp;&nbsp;<input id="search_text" type="text" value="<? echo $key;?>"></span>
-			分类<span id="span_category_select"></span>
-			部门<select style="width:100px;" name="filter_dept" id="filter_dept">
-				<option value="-1">请选择</option>
-			<?php 
+		<tr class="tr2">
+			<td colspan="4" align=center>　
+			搜索 <input id="search_text" type="text" value="<? echo $key;?>">
+			<select style="width:100px;" name="filter_dept" id="filter_dept">
+				<option value="-1">发表部门</option>
+				<?php 
 				$dept = new table_class('smg_dept');
 				$items = $dept->find('all');
 				foreach ($items as $v) {
@@ -39,13 +41,14 @@
 					}
 					
 				}
-			?>
-			</select>			
+				?>
+			</select>	
+			<span id="span_category_select"></span>
 			<input type="button" value="搜索" id="subject_search" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td align=left>短标题</td><td width="80">新闻类别</td><td width="80">部门</td>
+			<td width="50">选择</td><td width="350">短标题</td><td width="100">发表部门</td><td width="100">所属类别</td>
 		</tr>
 		<?php
 			$subject = new table_class("smg_news");
@@ -57,33 +60,28 @@
 				
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
-					<td align="left" >
-						<input type="checkbox" id="<?php echo $items[$i]->id;?>" value="<?php echo $items[$i]->id;?>" name="subject" style="width:10px;">
-						<span><?php echo strip_tags($items[$i]->short_title);?></span>
-					</td>
-					<td>
-						<?php echo $category->find($items[$i]->category_id)->name; ?>
-					</td>
+					<td><input type="checkbox" id="<?php echo $items[$i]->id;?>" value="<?php echo $items[$i]->id;?>" name="subject" style="width:12px;"></td>
+					<td><?php echo strip_tags($items[$i]->short_title);?></td>
 					<td><?php $cate = get_dept_info($items[$i]->dept_id);echo $cate->name;?></td>					
+					<td><?php echo $category->find($items[$i]->category_id)->name; ?></td>
 				</tr>
 		<?php
 			}
 			//--------------------
+			
 		?>
+		<tr class=tr3>
+				<td colspan="4"><?php paginate('','result_box');?></td>
+		</tr>
+		<tr class=tr3>
+				<td colspan="4"><button id="button_ok" style="width:150px">确定</button><button id="save" style="width:150px">取消所有关联</button><button id="cancel" style="width:150px">关闭</button>
+					<input type="hidden" id="chosen_subject_id" value="">
+					<input type="hidden" id="chosen_subject_name" value="">
+					<input type="hidden" id="chosen_subject_category_id" value="">
+				</td>
+		</tr>
 	</table>
-	<div class="div_box" style="width:600px;">
-		<table width="600" border="0">
-			<tr colspan="5" class=tr3>
-				<td><?php paginate('','result_box');?></td>
-			</tr>
-			<tr colspan="5" class=tr3>
-				<button id="button_ok">确定</button><button id="cancel">关闭</button><button id="save">取消所有关联</button> </td>
-			</tr>
-		</table>
-	</div>
-	<input type="hidden" id="chosen_subject_id" value="">
-	<input type="hidden" id="chosen_subject_name" value="">
-	<input type="hidden" id="chosen_subject_category_id" value="">
+
 
 <script>
 		$('#list input:checkbox').click(function(){
