@@ -1,6 +1,6 @@
 	$(document).ready(function(){
 		display_fqbq('fqbq','comment');
-		updatenews($("#newsid").attr('value'));
+		updatenews(document.getElementById('newsid').value);
 	})
 	$("#r_t").click(function(){location.href="news_sub.php";})
 	function ChangeTab(num)
@@ -60,11 +60,11 @@
 			},
 			data: "newsid="+id ,
 			success: function(msg){
-			
 				//当AJAX请求失败时添加一个被执行的方法
 				if(msg!='OK'){
-					
+					alert('失败');
 				}else{
+					alert('成功');
 				}
 			}
 		})
