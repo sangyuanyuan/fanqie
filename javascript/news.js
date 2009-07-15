@@ -1,8 +1,9 @@
 	$(document).ready(function(){
 		display_fqbq('fqbq','comment');
 		updatenews();
+		$("#r_t").click(function(){location.href="news_sub.php";})
 	})
-	$("#r_t").click(function(){location.href="news_sub.php";})
+	
 	function ChangeTab(num)
 	{
 		var tag1=document.getElementById("r_b_b_title1");

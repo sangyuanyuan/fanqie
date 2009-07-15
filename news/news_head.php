@@ -39,11 +39,12 @@
 	<div id=ibody_left>
 		<input type="hidden" id="newsid" value="<?php echo $id;?>">
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span> <a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
 		</div>
 		<div id=l_b>
-			<div id=title><div id="content"><img src="/images/news/title_img.jpg" />　<?php echo delhtml($record[0]->title);?>　<img src="/images/news/title_img.jpg" /></div></div>
+			<div id=title><img src="/images/news/title_img.jpg" />　<?php echo delhtml($record[0]->title);?>　<img src="/images/news/title_img.jpg" /></div>
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
+			<?php if($record[0]->video_src!=""){?><div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div><?php } ?>
 			<div id=content>
 				<?php echo get_fck_content($record[0]->content); ?>
 			</div>
@@ -117,7 +118,7 @@
 			<? }}?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a href="news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
-			<div class=abouttitle>更多关于“<span style="text-decoration:underline;;"><?php echo $record[0]->keywords?></span>”的新闻</div>
+			<div class=abouttitle>更多关于“<span style="text-decoration:underline;"><?php echo delhtml($record[0]->shorttile);?></span>”的新闻</div>
 			<div class=aboutcontent>
 				<div class=title>相关链接</div>
 				<?php for($i=0;$i<count($about);$i++){ ?>
@@ -173,16 +174,22 @@
 				<div id=page><?php  paginate('news.php?id='.$id);?></div>
 			</div>
 			<?php }?>
+			<form method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php echo count($comment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
-				<input type="text" id="commenter"><input type="hidden" id="resource_id" value="<?php echo $id;?>"><input type="hidden" id="resource_type" value="news">
+				<input type="text" id="commenter" name="post[nick_name]">
+				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">
+				<input type="hidden" id="resource_type" name="post[resource_type]" value="news">
+				<input type="hidden" name="target_url" value="news.php?id=<?php echo $id;?>">
+				<input type="hidden" name="type" value="comment">
 				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('comment','Title',false,'75','','600');?></div>
 				<div id=fqbq>
 					
 				</div>
-				<button id="submit_comment">提交评论</button>
+				<button type="submit">提交评论</button>
 			</div>
+			</form>
 		</div>
 	</div>
 	<div id=ibody_right>
