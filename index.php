@@ -24,9 +24,9 @@
  		<div id=p1>
  			<!-- start top_left_top !-->
  			<?php
-				$sql = 'select n.short_title,n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="每日之星" and c.category_type="news" order by n.priority asc limit 4';
+				$sql = 'select n.short_title, c.platform,n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="每日之星" and c.category_type="news" order by n.priority asc limit 4';
 				$record_star=$db -> query($sql);
-				$sql = 'select n.short_title,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="视频新闻" and c.category_type="news" order by n.priority asc limit 4';
+				$sql = 'select n.short_title, c.platform,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="视频新闻" and c.category_type="news" order by n.priority asc limit 4';
 				$record_video=$db -> query($sql);
 				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
@@ -122,9 +122,9 @@
 
  			<!-- start top_left_middle !-->
   		<?php
-				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.category_type="news" order by n.priority asc limit 10';
+				$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.category_type="news" order by n.priority asc limit 10';
 				$record_subject=$db -> query($sql);
-				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.category_type="news" order by n.priority asc limit 10';
+				$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.category_type="news" order by n.priority asc limit 10';
 				$record_out=$db -> query($sql);
   		?>
   		<div id=t_l_m>
@@ -150,9 +150,9 @@
 
  			<!-- start top_left_bottom !-->
  			<?php
-				$sql = 'select n.short_title from smg_news n where n.tags="小编加精"  order by n.last_edited_at desc limit 10';
+				$sql = 'select n.short_title,c.platform  from smg_news n where n.tags="小编加精"  order by n.last_edited_at desc limit 10';
 				$record_marrow=$db -> query($sql);
-				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.category_type="news" order by n.priority asc limit 10';
+				$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.category_type="news" order by n.priority asc limit 10';
 				$record_quick=$db -> query($sql);
 			?>
 			<div id=t_l_b>
@@ -182,11 +182,11 @@
 		<div id=p2>
  			<!-- start top_right_top !-->
   		<?php
-				$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.category_type="news" order by n.priority asc limit 1';
+				$sql = 'select n.*,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.category_type="news" order by n.priority asc limit 1';
 				$record_head=$db -> query($sql);
 			?>
 			<div id=t_r_t>
- 				<div id=title><?php echo $record_head[0]->short_title ?></div>
+ 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a></div>
  				<a href="" id=btn></a>
  				<div id=content>
  				<?php
@@ -203,7 +203,7 @@
 							{
 									$sql="select * from smg_news where id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
-									echo "[<a href=''>".$record_sub_news[0]->short_title."</a>]";
+									echo "[<a href='/".$record_sub_news[0]->platform."/news/news_head.php?id=".$record_sub_news[0]->id."' target=_blank>".$record_sub_news[0]->short_title."</a>]";
 							}		
 
 					}	
@@ -222,7 +222,7 @@
 					$record_head=$db -> query($sql);
 					for($j=0;$j<=1;$j++){
 				?>
-				<div class=title><?php echo $record_head[$j]->short_title ?></div>
+ 				<div class=title><a href="<?php echo "/".$record_head[$j]->platform."/news/news_head.php?id=".$record_head[$j]->id ?>" target="_blank"><?php echo $record_head[$j]->short_title ?></a></div>
 				<div class=content>
  				<?php
  					if($record_head[$j]->sub_headline==1)
@@ -238,7 +238,7 @@
 							{
 									$sql="select * from smg_news where id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
-									echo "[<a href=''>".$record_sub_news[0]->short_title."</a>]";
+									echo "[<a href='/".$record_sub_news[0]->platform."/news/news_head.php?id=".$record_sub_news[0]->id."' target=_blank>".$record_sub_news[0]->short_title."</a>]";
 							}		
 
 					}	
@@ -253,42 +253,42 @@
  			<div id=t_r_c_m>
  				<div id=title></div>
   			<?php
-					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.category_type="news" order by n.priority asc limit 1 ';
+					$sql = 'select n.short_title,c.platform,n.id  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.category_type="news" order by n.priority asc limit 1 ';
 					$record_import=$db -> query($sql);
 				?>				
-				<div id=content1><?php echo $record_import[0]->short_title; ?></div>
+				<div id=content1><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a></div>
  				<a href="" id=btn ></a>
  				<?php
-					$sql = 'select n.short_title,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.category_type="news" order by n.priority asc limit 41';
+					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.category_type="news" order by n.priority asc limit 41';
 					$record_import_a=$db -> query($sql);
-					$sql = 'select n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.category_type="news" order by n.priority asc limit 6';
+					$sql = 'select n.photo_src, c.platform,n.id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.category_type="news" order by n.priority asc limit 6';
 					$record_import_b=$db -> query($sql);
 				?>	
  				<div id=box>
  					<div id=l>
  						<ul>
  						 <?php for($i=0; $i<5; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>
  						<div class=space></div>
   					<ul>
  						 <?php for($i=5; $i<8; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>
  						<div class=space></div>
   					<ul>
  						 <?php for($i=8; $i<11; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>
  						<div class=space></div>
-						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
- 						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
+						<a href="<?php echo "/".$record_import_b[0]->platform."/news/news.php?id=".$record_import_b[0]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" border=0 ></a>
+						<a href="<?php echo "/".$record_import_b[1]->platform."/news/news.php?id=".$record_import_b[1]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[1]->photo_src ?>" border=0 ></a>
   					<ul>
  						 <?php for($i=11; $i<13; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>						
  					</div>	
@@ -296,50 +296,50 @@
  					<div id=c>
    					<ul>
  						 <?php for($i=13; $i<18; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>								
  						<div class=space></div>
-						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
- 						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
+						<a href="<?php echo "/".$record_import_b[2]->platform."/news/news.php?id=".$record_import_b[2]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[2]->photo_src ?>" border=0 ></a>
+						<a href="<?php echo "/".$record_import_b[3]->platform."/news/news.php?id=".$record_import_b[3]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[3]->photo_src ?>" border=0 ></a>
  						<div class=space></div>
    					<ul>
  						 <?php for($i=18; $i<21; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>			
  						<div class=space></div>
    					<ul>
  						 <?php for($i=21; $i<26; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>	
  					</div>	 
  					
  					<div id=r>
-						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
- 						<img class=imgs src="<?php echo $record_import_b[0]->photo_src ?>" >
+						<a href="<?php echo "/".$record_import_b[4]->platform."/news/news.php?id=".$record_import_b[4]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[4]->photo_src ?>" border=0 ></a>
+						<a href="<?php echo "/".$record_import_b[5]->platform."/news/news.php?id=".$record_import_b[5]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[5]->photo_src ?>" border=0 ></a>
     				<ul>
  						 <?php for($i=26; $i<28; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>
      				<ul>
  						 <?php for($i=28; $i<31; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>
       			<ul>
  						 <?php for($i=31; $i<34; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>												
       			<ul>
  						 <?php for($i=34; $i<39; $i++){?>
- 							<li><div><a href=""><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
+ 							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>	
  					</div>	 				
@@ -360,7 +360,7 @@
   		<?php
 				$sql = 'select n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态-图" and c.category_type="news" order by n.priority asc limit 1';
 				$record_industry=$db -> query($sql);
-				$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态-普" and c.category_type="news" order by n.priority asc limit 7';
+				$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态-普" and c.category_type="news" order by n.priority asc limit 7';
 				$record_industry2=$db -> query($sql);		
 			?>
 			<div id=t_r_c_b_r>
@@ -423,7 +423,7 @@
 					</div> 					
  				</div>
  				<?php
- 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.category_type="news" order by n.priority asc limit 12';
+ 					$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.category_type="news" order by n.priority asc limit 12';
 					$record_happy=$db -> query($sql);		
 				?>	
  				<div class=content_trrt id=content_trrt2>
@@ -450,7 +450,7 @@
 					</div> 				
  				</div>
  				<?php
- 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="讨论区" and c.category_type="news" order by n.priority asc limit 12';
+ 					$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="讨论区" and c.category_type="news" order by n.priority asc limit 12';
 					$record_discuss=$db -> query($sql);		
 				?>	
  				<div class=content_trrt id=content_trrt3>
@@ -483,7 +483,7 @@
 			
  			<!-- start top_right_right_middle !-->
  			<?php
- 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.category_type="news" order by n.priority asc limit 12';
+ 					$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.category_type="news" order by n.priority asc limit 12';
 					$record_baoliao=$db -> query($sql);		
 			?>	 		
 			<div id=t_r_r_m>
@@ -496,7 +496,7 @@
 
  			<!-- start top_right_right_bottom !-->
  			<?php
- 					$sql = 'select n.short_title from smg_news n  where TO_DAYS(NOW()) - TO_DAYS(n.last_edited_at) <= 7 order by n.click_count desc limit 10';
+ 					$sql = 'select n.short_title,c.platform  from smg_news n  where TO_DAYS(NOW()) - TO_DAYS(n.last_edited_at) <= 7 order by n.click_count desc limit 10';
 					$record_news=$db -> query($sql);		
 			?>	 
  			<div id=t_r_r_b>
@@ -547,7 +547,7 @@
 				?>	 	
  				<img src="<?php echo $record_program[0]->photo_src ?>">
   			<?php
- 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目点评-普" and c.category_type="news" order by n.priority asc limit 6';
+ 					$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目点评-普" and c.category_type="news" order by n.priority asc limit 6';
 					$record_program=$db -> query($sql);		
 				?>	 	
 				<div id=content_mlt>
@@ -571,7 +571,7 @@
 				?>	 	
  				<img src="<?php echo $record_blog[0]->photo_src ?>">
   			<?php
- 					$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="博客-普" and c.category_type="news" order by n.priority asc limit 5';
+ 					$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="博客-普" and c.category_type="news" order by n.priority asc limit 5';
 					$record_blog=$db -> query($sql);		
 				?>	 	
 				<div id=content_mlb>
@@ -611,7 +611,7 @@
   			</div>
   			<div id=box2>
    				<?php
- 						$sql = 'select n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="部门比拼" and c.category_type="news" order by n.priority asc limit 5';
+ 						$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="部门比拼" and c.category_type="news" order by n.priority asc limit 5';
 						$record_dept=$db -> query($sql);
   				?>
   				<ul>
@@ -629,7 +629,7 @@
    				<?php
    					$sql = 'select * from smg_category where name="番茄专栏"';
 						$record=$db -> query($sql);
- 						$sql = 'select n.short_title,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.parent_id='.$record[0]->id.' and c.category_type="news" order by n.priority asc limit 5';
+ 						$sql = 'select n.short_title, c.platform,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.parent_id='.$record[0]->id.' and c.category_type="news" order by n.priority asc limit 5';
 						$record=$db -> query($sql);
   				?> 		
   				<ul>
