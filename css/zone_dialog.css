@@ -44,3 +44,4 @@ body {margin:0px; font-family:宋体; font-size:12px;  color:#000000;}
 .answer_question{width:654px; background-color:#FFF2E1; padding:3px; overflow:auto;word-break:break-all;}
 .answer_question_index{color:#0000FF;}
 .answer_answer{ text-indent:40px;}
+.span_a{cursor:pointer;}

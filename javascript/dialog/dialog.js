@@ -19,7 +19,15 @@ $(function(){
 			return;
 		}
 		;
-		dialog_id = $('#dialog_id').val();
-		$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'question_count':$('#question_count').val(),'last_question_id':$('#last_question_id').val(),'writer':writer,'content':question,'optype':'add_question'});
+		var dialog_id = $('#dialog_id').val();
+		var question_count = $('#question_count').val();
+		var last_question_id = $('#last_question_id').val();
+		$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'question_count':question_count,'last_question_id':last_question_id,'writer':writer,'content':question,'optype':'add_question'});
 	});
 });
+
+function delete_question(e,id){
+	//alert(id);
+	var dialog_id = $('#dialog_id').val();
+	$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'optype':'delete_question','question_id':id});
+}

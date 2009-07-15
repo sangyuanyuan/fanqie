@@ -12,7 +12,11 @@
 			$question->content = str_replace('</p>','',$question->content);
 			$question->save();
 			break;
-		
+		case 'delete_question':
+			$question = new table_class('smg_dialog_question');
+			$question->delete($_POST['question_id']);
+			echo "<script>document.location.reload();";
+			exit;
 		default:
 			;
 		break;

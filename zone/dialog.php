@@ -50,8 +50,7 @@
 					<?php
 					  	$questions = new table_class('smg_dialog_question');
 					  	$questions = $questions->find('all',array('conditions' => "dialog_id={$dialog->id}"));
-						$len = count($questions);
-						echo "<script>question_count=$len;last_question_id={$questions[$len-1]->id};</script>";
+						$len = count($questions);						
 						for ($i=0;$i < $len; $i++) {
 							echo_dialog_question($questions[$i],$i + 1);
 						}
@@ -106,7 +105,7 @@
 	</div>
 </div>
 <div id="div_hidden">
-	<input type="hidden" id="last_question_id" name="last_question_id" value="<?php echo $questions[count($questions)-1]->id; ?>">
+	<input type="hidden" id="last_question_id" name="last_question_id" value="<?php echo intval($questions[count($questions)-1]->id); ?>">
 	<input type="hidden" id="question_count" name="question_count" value="<?php echo count($questions); ?>">
 	<input type="hidden" id="dialog_id" value="<?php echo $dialog->id;?>">
 </div>
