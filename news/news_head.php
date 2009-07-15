@@ -18,25 +18,33 @@
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
 		$record=$db->query($sql);
 		$about=search_content($record[0]->keywords,'smg_news','',10);
-		$sql="select *,(select count(*) from smg_comment_digg d where d.comment_id=c.id and d.type='flower') as flowernum,(select count(*) from smg_comment_digg d where d.comment_id=c.id and d.type='tomato') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id;
+		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id;
 		$comment=$db->paginate($sql,5);
-		$sql="select count(*) as flowernum,(select count(*) from smg_comment_digg cd where cd.type='tomato' and cd.comment_id=d.comment_id) as tomatonum,c.* from smg_comment_digg d left join smg_comment c on d.comment_id=c.id and d.type='flower' group by d.comment_id order by flowernum desc";
+		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d left join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' group by d.diggtoid order by flowernum desc";
 		$digg=$db->query($sql);
-		
+		if($record[0]->news_type==2)
+		{
+			redirect($record[0]->file_name);
+		}
+		else if($record[0]->news_type==3)
+		{
+			redirect($record[0]->target_url);
+		}
     ?>
 	
 </head>
-<body>
+<body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
 	<div id=ibody_left>
 		<input type="hidden" id="newsid" value="<?php echo $id;?>">
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">> <a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
 		</div>
 		<div id=l_b>
-			<div id=title><?php echo delhtml($record[0]->title);?></div>
+			<div id=title><div id="content"><img src="/images/news/title_img.jpg" />　<?php echo delhtml($record[0]->title);?>　<img src="/images/news/title_img.jpg" /></div></div>
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
+			<?php if($record[0]->video_src!=""){?><div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div><?php } ?>
 			<div id=content>
 				<?php echo get_fck_content($record[0]->content); ?>
 			</div>
@@ -57,16 +65,15 @@
 						<?php echo $record3[0]->name;?><br>
 						<?php for($j=0;$j<count($record4);$j++){
 						if($record3[0]->max_item_count>1){?>
-							<div class=content><input type="checkbox">
+							<div class=content><input name="cb" type="checkbox" value="<?php echo $record4[$i]->id;?>">
 							<?php if($record3[0]->vote_type=="word_vote"){ 
 								echo $record4[$j]->title;?></div>
 								<?php }else{?>
 								<img src="<?php echo $record4[$j]->photourl;?>">		
-								<?php }
-							?>
+								<?php }?>
 						<?php }
 						else{?>
-							<div class=content><input type="radio">
+							<div class=content><input name="rb"  type="radio" value="<?php echo $record4[$i]->id;?>">
 							<?php if($record3[0]->vote_type=="word_vote"){ 
 								echo $record4[$j]->title;?></div>
 								<?php }else{?>
@@ -75,7 +82,8 @@
 							?>
 						<?php }
 						}?>
-						<button>投票</button>
+						<input type="hidden" id="vote_value">
+						<button id="vote_submit" onclick="vote()">投票</button>
 					</div>
 				<? }
 				}else{?>
@@ -85,7 +93,7 @@
 						if($record1[0]->max_item_count>1){
 					?>
 							<div class=content>
-								<input type="checkbox">
+								<input name="cb" type="checkbox" value="<?php echo $record2[$i]->id;?>">
 								<?php if($record1[0]->vote_type=="word_vote"){ 
 									echo $record2[$i]->title;?>
 							</div>
@@ -96,19 +104,21 @@
 						<?php }
 						else{?>
 							<div class=content>
-								<input type="radio">
+								<input name="rb" type="radio" value="<?php echo $record2[$i]->id;?>">
 							<?php if($record1[0]->vote_type=="word_vote"){ 
 								echo $record2[$i]->title;?></div>
 							<?php }else{?>
 								<img src="<?php echo $record2[$i]->photourl;?>">		
 							<?php }
-						}}?>
-					<button>投票</button>
+						}
+						}?>
+						<input type="hidden" id="vote_value">
+					<button id="vote_submit" onclick="vote()">投票</button>
 				</div>
 			<? }}?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a href="news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
-			<div class=abouttitle>更多关于“<span style="text-decoration:underline;;"><?php echo $record[0]->keywords?></span>”的新闻</div>
+			<div class=abouttitle>更多关于“<span style="text-decoration:underline;"><?php echo delhtml($record[0]->shorttile);?></span>”的新闻</div>
 			<div class=aboutcontent>
 				<div class=title>相关链接</div>
 				<?php for($i=0;$i<count($about);$i++){ ?>
@@ -129,8 +139,8 @@
 					</div>
 				<?php } ?>
 			</div>
-			<form id="news_comment_digg" action="news_digg.post.php">
-			<?php if(count($comment)>0){?>
+			
+			<?php  if(count($comment)>0){?>
 			<div id=comment>
 				<?php for($i=0;$i<2;$i++){ ?>
 					<div class=content>	
@@ -164,11 +174,10 @@
 				<div id=page><?php  paginate('news.php?id='.$id);?></div>
 			</div>
 			<?php }?>
-			</form>
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php echo count($comment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
-				<input type="text" id="commenter"><input type="hidden" id="resource_id" value="<?php echo id;?>"><input type="hidden" id="resource_type" value="news">
+				<input type="text" id="commenter"><input type="hidden" id="resource_id" value="<?php echo $id;?>"><input type="hidden" id="resource_type" value="news">
 				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('comment','Title',false,'75','','600');?></div>
 				<div id=fqbq>
 					

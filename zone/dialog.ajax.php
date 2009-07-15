@@ -10,9 +10,59 @@
 			$question->writer = $_POST['writer'];
 			$question->content = str_replace('<p>', '', $_POST['content']);
 			$question->content = str_replace('</p>','',$question->content);
-			$question->save();
+			if($question->save()){
+				$alert_str = '发布成功!';
+			}else{
+				$alert_str = '发布失败!';
+			};
 			break;
-		
+		case 'delete_question':
+			$question = new table_class('smg_dialog_question');
+			if($question->delete($_POST['question_id'])){
+				$alert_str = '删除成功!';
+			}else{
+				$alert_str = '删除失败!';
+			};
+			echo "<script>alert('$alert_str');location.reload();</script>";
+			exit;
+		case 'answer_question':
+			$tanswer = new table_class('smg_dialog_answer');
+			$tanswer->update_attributes($_POST['answer'],false);
+			$tanswer->create_time = date("Y-m-d H:i:s");
+			$tanswer->leader_id = $_COOKIE['smg_userid'];
+			$tanswer->content = str_replace('<p>', '', $tanswer->content);
+			$tanswer->content = str_replace('</p>', '', $tanswer->content);
+			if($tanswer->save()){
+				$alert_str = '回复成功!';
+			}else{
+				$alert_str = '回复失败!';
+			}
+			break;
+		case 'edit_answer':
+			$tanswer = new table_class('smg_dialog_answer');
+			$tanswer->update_attributes($_POST['answer'],false);
+			$tanswer->create_time = date("Y-m-d H:i:s");
+			$tanswer->leader_id = $_COOKIE['smg_userid'];
+			$tanswer->content = str_replace('<p>', '', $tanswer->content);
+			$tanswer->content = str_replace('</p>', '', $tanswer->content);
+			$tanswer->id = $_REQUEST['answer_id'];
+			if($tanswer->save()){
+				$alert_str = '编辑回复成功!';
+			}else{
+				$alert_str = '编辑回复失败!';
+			}
+			echo "<script>alert('$alert_str');location.reload();</script>";
+			exit;			
+			break;
+		case 'delete_answer':
+			$answer = new table_class('smg_dialog_answer');
+			if($answer->delete($_POST['answer_id'])){
+				$alert_str = '删除成功!';
+			}else{
+				$alert_str = '删除失败!';
+			};
+			echo "<script>alert('$alert_str');location.reload();</script>";
+			exit;	
 		default:
 			;
 		break;
@@ -20,18 +70,41 @@
 	
 	//refresh the question box
 	$db = get_db();
-	$questions = $db->query('select * from smg_dialog_question where id > ' .$_POST['last_question_id']);
-	$question_count = $_POST['question_count'];
+	$questions = $db->query('select * from smg_dialog_question where id > ' .$_REQUEST['last_question_id'] .' and dialog_id=' .$_REQUEST['dialog_id']);
+	$question_count = $_REQUEST['question_count'];
+	$last_question_id = $questions ? $questions[count($questions)-1]->id : $_REQUEST['last_question_id'];
 	$len = count($questions);
+	
+	$sql = 'select a.*,b.content as  qcontent, b.writer, b.create_time as qcreate_time from smg_dialog_answer a left join smg_dialog_question b on a.question_id=b.id';
+	$sql .=  ' where a.id > ' .$_REQUEST['last_answer_id'] .' and a.dialog_id=' .$_REQUEST['dialog_id'];
+	$answers = $db->query($sql);
+	$answer_count = $_REQUEST['answer_count'];
+	$last_answer_id = $answers ? $answers[count($answers)-1]->id : $_REQUEST['last_answer_id'];
+	$len1 = count($answers);	
 	?>
 	<script>
+		var str ;
 	<?php
 	for($i=0;$i<$len;$i++){
 		$question_count ++;?>
-		var str = '<?php echo_dialog_question($questions[$i],$question_count);?>';
+		str = '<?php echo_dialog_question($questions[$i],$question_count);?>';
 		$('#div_question').append(str);
-
-	<? }?>
-	$('#last_question_id').val(<? echo array_pop($questions)->id;?>);
-	$('#question_count').val(<?php echo $question_count;?>);
+	<?php } ?>
+	$('#last_question_id').val('<?php echo $last_question_id;?>');
+	$('#question_count').val('<?php echo $question_count;?>');
+	
+	<?php
+	for($i=0;$i<$len1;$i++){
+		$answer_count ++;?>
+		str = '<?php echo_dialog_answer($answers[$i],$answer_count);?>';
+		$('#div_answer_list_innerbox').append(str);
+	<?php } 
+		if($alert_str){
+			echo "alert('$alert_str');";
+		}
+	?>
+	$('#last_answer_id').val('<?php echo $last_answer_id;?>');
+	$('#answer_count').val('<?php echo $answer_count;?>');	
+	
+	scroll_buttom();
 	</script>

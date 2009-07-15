@@ -5,7 +5,7 @@
 	$db = get_db();
 	if($db->execute($sql))
 	{
-		echo 'OK';
+		
 	}
 	else
 	{
