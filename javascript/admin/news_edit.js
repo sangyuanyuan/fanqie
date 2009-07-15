@@ -26,12 +26,6 @@ $(function(){
 			alert("请输入短标题！");
 			return false;
 		}
-		var oEditor = FCKeditorAPI.GetInstance('news[description]') ;
-		var title = oEditor.GetHTML();
-		if(title==""){
-			alert("请输入简短描述！");
-			return false;
-		}
 		var oEditor = FCKeditorAPI.GetInstance('news[content]') ;
 		var title = oEditor.GetHTML();
 		if(news_type==1&&title==""){
