@@ -124,7 +124,8 @@
 			<td align="left" id="td_video">
 				视频<input type="file" name="video_src" id="video_src">　
 				缩略图<input type="file" name="video_pic" id="video_pic" value="<?php echo $news->video_photo_src?>">
-				<input type="checkbox">低清
+				<input type="checkbox" id="ch_low_quality" <?php if($news->low_quality) echo ' checked="checked"';?>>低清
+				<input type="hidden" name="news[low_quality]" id="hidden_low_quality" value="<?php echo $news->low_quality?>">
 			</td>
 		</tr>
 		<tr class="normal_news tr3">
@@ -205,7 +206,6 @@
 			str = '<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>';
 			$('#td_vote').html(str);
 			$('#vote_id').val('0');
-			alert($('#vote_id').val());
 			tb_init('#a_vote_id');
 		});
 		
@@ -223,12 +223,17 @@
 		if($('#hidden_related_news').attr('value')){
 			related_news = $('#hidden_related_news').attr('value').split(",");
 		}
+		$('#ch_low_quality').change(function(){
+			if($(this).attr('checked')){
+				$('#hidden_low_quality').val(1);
+			}else{
+				$('#hidden_low_quality').val(0);
+			}
+		});
 		
 	});
 
-	$('#select').click(function(){
-		$('#select ~ .cate').remove();
-	});
+
 
 	
 

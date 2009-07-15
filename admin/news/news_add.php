@@ -140,7 +140,8 @@
 			<td align="left" id="td_video">			
 				视频<input type="file" name="video_src" id="video_src">　
 				缩略图<input type="file" name="video_pic" id="video_pic">　
-				<input type="checkbox">低清
+				<input type="checkbox" id="ch_low_quality">低清
+				<input type="hidden" name="news[low_quality]" id="hidden_low_quality" value="0">
 			</td>
 		</tr>
 		<tr id=newsshow3 class="normal_news tr3">
@@ -194,19 +195,12 @@
 
 <script>
 	$(function(){
-		//category.display_select('news_category',$('#td_category_select'),-1);
+		$('#ch_low_quality').change(function(){
+			if($(this).attr('checked')){
+				$('#hidden_low_quality').val(1);
+			}else{
+				$('#hidden_low_quality').val(0);
+			}
+		});
 	});
-	$('#test').click(function(e){
-		e.preventDefault();
-		//category.echo_category($('#category_select'),'test',0,20);
-		//category.display_select('test',$('#category_select'),30);
-		alert($('#td_newstype').find('input:checked').attr('value'));
-	});	
-	$('#select').click(function(){
-		$('#select ~ .cate').remove();
-	});
-	//category.echo_category($('#category_select'),'test',0,-1);
-	//$('#category_select select').change(function(){
-	//	category.display_select('test',$('#category_select'),$(this).attr('value'),this);
-	//});
 </script>

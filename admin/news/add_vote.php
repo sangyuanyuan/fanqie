@@ -98,7 +98,7 @@
 		});	
 		$('input:radio').click(function(){
 			$('#chosen_vote_id').attr('value',$(this).attr('value'));
-			$('#chosen_vote_name').attr('value',$(this).next('span').html());			
+			$('#chosen_vote_name').attr('value',$(this).parent().next('td').html());			
 		});
 		$('#vote_search').click(function(){
 			$('#result_box').load('add_vote.php',{'show_div':'0','key':$('#search_text').attr('value')});
