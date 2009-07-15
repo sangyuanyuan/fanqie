@@ -59,10 +59,10 @@
 		</tr>
 		
 		<?php if($role=='dept_admin'){?>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>是否推荐到集团首页</td><td align="left">　<input type="checkbox" id=is_recommend></td>
+		<tr class=tr4>
+			<td>是否推荐到集团首页</td><td align="left"><input type="checkbox" id=is_recommend></td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" >
+		<tr class=tr3 id="index_category" >
 			<td>首页分类</td>
 			<td align="left" class="newsselect1" >			
 			<span id="td_category_index"></span>
@@ -70,7 +70,7 @@
 		</tr>
 		<input type="hidden" name="news[dept_id]"  value="<?php echo $dept_id;?>">
 		<?php }?>		
-		<tr class=tr4 id=newsshow3 >
+		<tr class=tr4>
 			<td>类别</td>
 			<td align="left" id="td_newstype">
 				<input type="radio" name="news[news_type]" value="1" checked="checked">默认
@@ -78,7 +78,7 @@
 				<input type="radio" name="news[news_type]" value="3">URL
 			</td>
 		</tr>
-		<tr class=tr4 id=newsshow3 >
+		<tr class=tr3>
 			<td>标签/关键词/优先级</td>
 			<td align="left">
 				<select name="news[tags]">
@@ -94,7 +94,7 @@
 				<input type="text" size="10" name=news[dept_priority] class="number">(0~100)</td>
 		</tr>		
 		
-		<tr class=tr3 id=tr_file_name >
+		<tr class=tr3 id=tr_file_name>
 			<td>上传文件</td><td align="left"><input type="file" size="50" name=file_name></td>
 		</tr>	
 		
@@ -102,34 +102,34 @@
 			<td>URL</td><td align="left"><input type="text" size="50" name=news[target_url]></td>
 		</tr>
 				
-		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3  class="normal_news">
+		<tr  class=tr3 class="normal_news">
 			<td>视频</td>
 			<td align="left" id="td_video">			
 				视频文件<input type="file" name="video_src" id="video_src">　　	
 				视频图片<input type="file" name="video_pic" id="video_pic">
 			</td>
 		</tr>
-		<tr id=newsshow3 class="normal_news tr3">
+		<tr class=tr3  class="normal_news tr3">
 			<td>投票</td>
 			<td align="left" id="td_vote">
 				<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>
 				<input type="hidden" name="news[vote_id]" id="vote_id">
 			</td>
 		</tr>
-		<tr id=newsshow3  class="normal_news tr3">
+		<tr class="normal_news tr3">
 			<td>所属专题</td>
 			<td align="left" id="td_subject">
 				<a style="color:blue;" href="assign_subject.php?width=600&height=400" class="thickbox" id="a_assign_subject">关联专题</a>
 			</td>
 		</tr>
-		<tr id=newsshow3  class="normal_news tr4">
+		<tr class="normal_news tr4">
 			<td>其他选项</td>
-			<td align="left"><input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  <input type="checkbox" name="news[is_dept_adopt]" value="1">直接发布  <input type="checkbox" name="news[image_flag]" value="1">图片提示　<input type="checkbox" id="check_box_commentable" value="1" checked="checked">开启评论 <a style="color:blue;" href="filte_news.php?width=650&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
+			<td align="left"><input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  <input type="checkbox" name="news[is_dept_adopt]" value="1">直接发布  <input type="checkbox" name="news[image_flag]" value="1">图片提示　<input type="checkbox" id="check_box_commentable" value="1" checked="checked">开启评论 <a style="color:blue;" href="filte_news.php?width=600&height=400" class="thickbox" id="related_news">手动关联相关新闻</a></td>
 		</tr>
-		<tr id=newsshow1  class="normal_news tr3">
+		<tr class="normal_news tr3">
 			<td height=100>简短描述</td><td><?php show_fckeditor('news[description]','Admin',true,"100");?></td>
 		</tr>
-		<tr id=newsshow1 class="normal_news tr3">
+		<tr class="normal_news tr3">
 			<td height=265>新闻内容</td><td><?php show_fckeditor('news[content]','Admin',true,"265");?></td>
 		</tr>
 		<tr class=tr3>

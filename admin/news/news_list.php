@@ -47,16 +47,13 @@
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
 			<td colspan="5">
-				　<a href="news_add_dept.php">添加新闻</a>
-				搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
-				<select id=recommend style="width:100px" class="select_new">
+				　<a href="news_add_dept.php">添加新闻</a>　　　搜索　
+				<input id=title type="text" value="<? echo $_REQUEST['title']?>"><select id=recommend style="width:100px" class="select_new">
 					<option value="">推荐状态</option>
 					<option value="1" <? if($_REQUEST['recommend']=="1"){?>selected="selected"<? }?>>已推荐</option>
 					<option value="0" <? if($_REQUEST['recommend']=="0"){?>selected="selected"<? }?>>未推荐</option>
 					<option value="2" <? if($_REQUEST['recommend']=="2"){?>selected="selected"<? }?>>被退回</option>
-				</select>
-				<span id="span_category"></span>
-				<select id=adopt style="width:90px" class="select_new">
+				</select><span id="span_category"></span><select id=adopt style="width:90px" class="select_new">
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
@@ -66,7 +63,7 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td width="300">标题</td><td width="100">所属类别</td><td width="100">发布时间</td><td width="100">推荐到集团首页</td><td width="250">操作</td>
+			<td width="235">短标题</td><td width="110">所属类别</td><td width="130">发布时间</td><td width="110">推荐到集团首页</td><td width="210">操作</td>
 		</tr>
 		<?php
 			//--------------------
@@ -96,14 +93,14 @@
 						</a>
 					</td>
 					<td><?php if($record[$i]->is_dept_adopt=="1"){?>
-							<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>　
+						<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>　
 						<?php }?>
 						<?php if($record[$i]->is_dept_adopt=="0"){?>
-							<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span>　
+						<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span>
 						<?php }?>
-						<a href="news_edit_dept.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　
+						<a href="news_edit_dept.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>
 						<?php if($record[$i]->is_recommend=='1'){?>
-							<span style="cursor:pointer;"><a style="color:#333333" title="推荐到集团首页不能删除" >删除</a></span>
+						<span style="cursor:pointer;"><a style="color:#333333" title="推荐到集团首页不能删除" >删除</a></span>
 						<?php }else{?>
 							<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $record[$i]->id;?>">删除</span>
 						<?php }?>
