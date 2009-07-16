@@ -31,7 +31,6 @@
 	}
 	$leaders = new table_class('smg_dialog_leader');
 	$leaders = $leaders->find('all',array('conditions' => "dialog_id = $dialog->id"));
-	
 ?>
 <div id=ibody>
 	<div id=ibody_top></div>
@@ -52,7 +51,7 @@
 					  	$questions = $questions->find('all',array('conditions' => "dialog_id={$dialog->id}"));
 						$len = count($questions);						
 						for ($i=0;$i < $len; $i++) {
-							echo_dialog_question($questions[$i],$i + 1);
+							echo_dialog_question($questions[$i],$i + 1,intval($_REQUEST['id']));
 						}
 					?>
 				</div>
@@ -90,7 +89,7 @@
 							$answer_count = $answers ? count($answers) : 0;
 							$last_answer_id = $answer_count == 0 ? 0 : $answers[$answer_count -1]->id;
 							for($i=0;$i < $answer_count; $i++){
-								echo_dialog_answer($answers[$i],$i+1);
+								echo_dialog_answer($answers[$i],$i+1,intval($_REQUEST['id']));
 							}
 						?>
 					</div>
@@ -101,18 +100,39 @@
 		<div id=b_r>
 			<div id=b_r_t>
 				<input id="comment_writer" type="text">
-				<textarea id="comment_content"></textarea>
+				<?php show_fckeditor('fck_comment_content','Title',false,50,'',270);?>
+				<div id="comment_emotion"></div>
+				<input style="display:none;" type="hidden" name="comment_content" value="" id="comment_content">
 				<button id="comment_button">提　交</button>
 			</div>
-			<div id=b_r_title1></div>
-			<div id=b_r_m></div>
+			<div id=b_r_title1><div style=" margin-top:5px;margin-left:40px;font-size:larger;"><b>评论列表</b></div></div>
+			<div id=b_r_m>
+				<div id="comment_list_box">
+				<?php 
+				$dialog_comment = new table_class('smg_comment');
+				$dialog_comment = $dialog_comment->find('all',array('conditions' => "resource_type='dialog' and resource_id={$dialog->id}"));
+				if($dialog_comment){
+					foreach ($dialog_comment as $v) {				
+						echo_dialog_comment($v);
+					}
+					$last_comment_id = $dialog_comment[count($dialog_comment)-1]->id;
+				}else{
+					$last_comment_id = 0;
+				}				
+				?>
+				</div>
+			</div>
 			<div id=b_r_b1></div>
-			<div id=b_r_title2></div>
-			<?php for($i=0;$i<4;$i++){?>
+			<div id=b_r_title2><div style=" margin-top:3px;margin-left:40px;font-size:larger;"><b>往期对话索引</b></div></div>
+			<?php 
+				$db = get_db();
+				$latest_dialogs = $db->query('select * from smg_dialog where id !=' .$dialog->id .' order by id desc limit 4');
+				for($i=0;$i<4;$i++){
+				?>
 				<div class=b_r_b2>
-					<a target="_blank" href="#"><img border=0 width=128 height=82 src=""></a>
+					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><img border=0 width=128 height=82 src="<?php echo $latest_dialogs[$i]->photo_url;?>">
 					<br>
-					<a target="_blank" href="#">test</a>	
+					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><?php echo $latest_dialogs[$i]->title;?></a>	
 				</div>
 			<?php }?>
 		</div>
@@ -124,6 +144,7 @@
 	<input type="hidden" id="dialog_id" value="<?php echo $dialog->id;?>">
 	<input type="hidden" id="last_answer_id" name="last_answer_id" value="<?php echo $last_answer_id;?>">
 	<input type="hidden" id="answer_count" name="answer_count" value="<?php echo $answer_count;?>">
+	<input type="hidden" id="last_comment_id" name="last_comment_id" value="<?php echo $last_comment_id;?>">
 </form>
 <div id="ajax_ret" style="display:none;"></div>
 <? require_once('../inc/bottom.inc.php');?>

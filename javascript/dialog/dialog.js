@@ -3,6 +3,7 @@
  */
 $(function(){
 	display_fqbq('div_q_emotion','fck_question_content');
+	display_fqbq('comment_emotion','fck_comment_content');
 	$('#a_submit_q').click(function(e){
 		e.preventDefault();
 		var writer = $('#writer').val();
@@ -27,21 +28,41 @@ $(function(){
 			alert('请输入用户名');
 			return;
 		}
-		var content = $('#comment_content').val();
+		var oeditor = FCKeditorAPI.GetInstance('fck_comment_content') ;
+		var content = oeditor.GetHTML();
 		if(content==''){
 			alert('请输入评论内容!');
 			return;
+		}else{
+			$('#comment_content').val(content);
 		}
 		var dialog_id = $('#dialog_id').val();
-		$.post('/pub/comment.post.php',{'resource_type':'dialog','resource_id':dialog_id,'comment[nick_name]':writer,'comment[content]':content},function(){
-			
+		$.post('/pub/comment.post.php',{'comment[resource_type]':'dialog','comment[resource_id]':dialog_id,'comment[nick_name]':writer,'comment[comment]':content},function(data){
+			if(data > 0){
+				alert('发表评论成功!');
+			}else{
+				alert('发表评论失败');
+			}
+			var dialog_id = $('#dialog_id').val();
+			var query_str = $('#div_hidden').serialize();
+			$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id});
 		});
 	});
+	
+	tb_init('.comment_href');
 	scroll_buttom();
+	setInterval('refresh_data()',60000);
 });
+
+function refresh_data(){
+	var dialog_id = $('#dialog_id').val();
+	var query_str = $('#div_hidden').serialize();
+	$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id});
+}
 
 function delete_question(id){
 	var dialog_id = $('#dialog_id').val();
+	
 	$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'optype':'delete_question','question_id':id});
 }
 
@@ -64,4 +85,5 @@ function edit_answer(qid, id){
 function scroll_buttom(){
 	$('#div_question').scrollTop(10000);
 	$('#div_answer_list').scrollTop(10000);
+	$('#comment_list_box').scrollTop(10000);
 }

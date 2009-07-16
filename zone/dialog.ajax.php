@@ -1,6 +1,11 @@
 <?php
 	require "../frame.php";
 	require "pub.php";
+	$dialog_id = $_REQUEST['dialog_id'];
+	if(intval($dialog_id)<=0){
+		alert('找不到相应的对话!');
+		exit;
+	}
 	switch ($_POST['optype']) {
 		case 'add_question':
 			$question = new table_class('smg_dialog_question');
@@ -87,16 +92,28 @@
 	<?php
 	for($i=0;$i<$len;$i++){
 		$question_count ++;?>
-		str = '<?php echo_dialog_question($questions[$i],$question_count);?>';
+		str = '<?php echo_dialog_question($questions[$i],$question_count,$dialog_id);?>';
 		$('#div_question').append(str);
 	<?php } ?>
 	$('#last_question_id').val('<?php echo $last_question_id;?>');
 	$('#question_count').val('<?php echo $question_count;?>');
 	
 	<?php
+	$comment = new table_class('smg_comment');
+	//$comment->echo_sql = true;
+	$comment = $comment->find('all',array('conditions' => "resource_type='dialog' and resource_id={$_REQUEST['dialog_id']} and id > {$_REQUEST['last_comment_id']}",'order' => 'created_at desc'));
+	$len2 = count($comment);
+	$last_comment_id = $len2 > 0 ? $comment[$len2-1]->id : $_REQUEST['last_comment_id'];
+	for($i=0;$i<$len2;$i++){?>
+		str = '<?php echo_dialog_comment($comment[$i]);?>';
+		$('#comment_list_box').append(str);
+	<?php } ?>
+	$('#last_comment_id').val('<?php echo $last_comment_id;?>');	
+	
+	<?php
 	for($i=0;$i<$len1;$i++){
 		$answer_count ++;?>
-		str = '<?php echo_dialog_answer($answers[$i],$answer_count);?>';
+		str = '<?php echo_dialog_answer($answers[$i],$answer_count,$dialog_id);?>';
 		$('#div_answer_list_innerbox').append(str);
 	<?php } 
 		if($alert_str){
@@ -106,5 +123,8 @@
 	$('#last_answer_id').val('<?php echo $last_answer_id;?>');
 	$('#answer_count').val('<?php echo $answer_count;?>');	
 	
+	//rebind the thick box event for comment_href
+	$('.comment_href').unbind();
+	tb_init('.comment_href');
 	scroll_buttom();
 	</script>

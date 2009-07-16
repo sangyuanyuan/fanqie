@@ -7,7 +7,9 @@
 	}else if(intval($_REQUEST['id'])>0){
 		$comment->id = intval($_REQUEST['id']);
 	}
-	
+	if($comment->id <= 0){
+		$comment->created_at = date("Y-m-d H:i:s");
+	}
 	if($comment->save()){
 		echo $comment->id;
 	}else{

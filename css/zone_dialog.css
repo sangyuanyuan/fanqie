@@ -45,3 +45,13 @@ body {margin:0px; font-family:宋体; font-size:12px;  color:#000000;}
 .answer_question_index{color:#0000FF;}
 .answer_answer{ text-indent:40px;}
 .span_a{cursor:pointer;}
+
+#comment_list_box{width:260px; height:520px; background-color:#FFFFFF; margin-left:7px;margin-top:3px; overflow-y:auto; overflow-x:hidden;}
+.comment_list_item{width:240px; border-bottom:1px solid; margin-left:10px;margin-top:5px;}
+.comment_list_writer{color:#3366FF;}
+.comment_list_time{text-align:right;color:#999999}
+
+#comment_emotion img{margin-left:5px;}
+.div_emotion img{margin-left:5px;}
+.q_comment_item {width:654px; margin-top:5px;}
+#q_comment_list{border:1px groove #999999;padding:10px; min-height:300px;}
