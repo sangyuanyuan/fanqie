@@ -84,22 +84,6 @@
 				  <input type="radio" name="news[sub_headline]" value="1" <?php if($news->sub_headline==1){ ?> checked="checked" <?php } ?>>展示简介 <input type="radio" name="news[sub_headline]" value="2" <?php if($news->sub_headline==2){ ?> checked="checked" <?php } ?>>展示子头条  <a href="sub_headline.php?width=600&height=400" style="color:blue;" class="thickbox" id="a_sub_headline">关联子头条</a>
 			</td>
 		</tr>
-		<tr class=tr3 id=target_url>
-			<td>URL</td><td align="left"><input type="text" size="50" name=news[target_url] value="<?php echo $news->target_url; ?>"></td>
-		</tr>
-		<tr class=tr3 id=tr_file_name >
-			<td>上传文件</td>
-			<td align="left">
-				<input type="file" name=file_name value="<?php echo $news->file_name;?>">
-				<?php
-					if($news->news_type == 2 && $news->file_name){
-						?>
-						　<a href="<?php echo $news->file_name;?>" target="_blank" style="color:blue;">查看</a>
-						<?php
-					}
-				?>
-			</td>
-		</tr>
 		<tr class=tr4 id=newsshow3 >
 			<td>标签/关键词/优先级</td>
 			<td align="left">
@@ -119,7 +103,23 @@
 				<input type="text" size="20" name=news[keywords] value="<?php echo $news->keywords;?>">(空格分隔)　　/　　
 				<input type="text" size="10" name=news[priority]  class="number" value="<?php echo $news->priority;?>">(0~100)</td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3  class="normal_news">
+		<tr class=tr3 id=target_url>
+			<td>URL</td><td align="left"><input type="text" size="50" name=news[target_url] value="<?php echo $news->target_url; ?>"></td>
+		</tr>
+		<tr class=tr3 id=tr_file_name >
+			<td>上传文件</td>
+			<td align="left">
+				<input type="file" name=file_name value="<?php echo $news->file_name;?>">
+				<?php
+					if($news->news_type == 2 && $news->file_name){
+						?>
+						　<a href="<?php echo $news->file_name;?>" target="_blank" style="color:blue;">查看</a>
+						<?php
+					}
+				?>
+			</td>
+		</tr>
+		<tr id=newsshow3  class="normal_news tr4">
 			<td>新闻视频</td>
 			<td align="left" id="td_video">
 				视频<input type="file" name="video_src" id="video_src">　
