@@ -143,7 +143,8 @@
 			</div>
 			<?php if($record[0]->is_commentable>0){ if(count($comment)>0){?>
 			<div id=comment>
-				<?php for($i=0;$i<2;$i++){ ?>
+				<?php if(count($digg)>0){
+					 for($i=0;$i<2;$i++){ ?>
 					<div class=content>	
 						<div class=title1>
 							<div style="width:110px; line-height:20px; margin-left:118px; float:left; display:inline;">
@@ -157,14 +158,14 @@
 							<?php echo get_fck_content($digg[$i]->comment);?>
 						</div>
 					</div>
-				<?php }  for($i=0;$i<count($comment);$i++){ ?>
+				<?php }}  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
 						<div class=title>
 							<div style="width:230px; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $comment[$i]->title;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<img onclick="digg('flower',<? echo $comment[$i]->id;?>)" src="/images/news/news_flower.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->flowernum;?></span><img onclick="digg('tomato',<? echo $comment[$i]->id;?>)" style="margin-left:100px;" src="/images/news/news_tomato.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->tomatonum;?></span>　　　　　　　<span style="color:#FF0000;"><?php echo $comment[$i]->created_at; ?></span>
+								<img onclick="digg('flower',<? echo $comment[$i]->id;?>)" src="/images/news/news_flower.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->flowernum;?></span><img onclick="digg('tomato',<? echo $comment[$i]->id;?>)" style="margin-left:100px;" src="/images/news/news_tomato.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->tomatonum;?></span>　<span style="color:#FF0000;"><?php echo $comment[$i]->created_at; ?></span>
 							</div>
 						</div>	
 						<div class=context>
