@@ -119,7 +119,7 @@
 				?>
 			</td>
 		</tr>
-		<tr id=newsshow3  class="normal_news tr3">
+		<tr id=newsshow3  class="normal_news tr4">
 			<td>新闻视频</td>
 			<td align="left" id="td_video">
 				视频<input type="file" name="video_src" id="video_src">　
