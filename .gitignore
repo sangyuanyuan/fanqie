@@ -8,3 +8,6 @@ upload/*
 config/config.php
 *.bak
 *.png
+bbs/*
+blog/*
+ucenter/*
