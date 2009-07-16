@@ -81,7 +81,8 @@
 							?>
 						<?php }
 						}?>
-						<input type="hidden" id="vote_value">
+						<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
+						<input type="hidden" id="limit_type" value="<?php echo $record1[0]->limit_type;?>">
 						<button id="vote_submit" onclick="vote()">投票</button>
 					</div>
 				<? }
@@ -111,7 +112,8 @@
 							<?php }
 						}
 						}?>
-						<input type="hidden" id="vote_value">
+						<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
+						<input type="hidden" id="limit_type" value="<?php echo $record1[0]->limit_type;?>">
 					<button id="vote_submit" onclick="vote()">投票</button>
 				</div>
 			<? }}?>
@@ -123,15 +125,15 @@
 				<?php for($i=0;$i<count($about);$i++){ ?>
 					<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							<img src="/images/news/li_square.jpg"><a target="_blank" href="news_head.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="news_head.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else if($about[$i]->video_src!=""){?>
-							<img src="/images/news/li_square.jpg"><a target="_blank" href="news_video.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="news_video.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
-							<img src="/images/news/li_square.jpg"><a target="_blank" href="news.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="news.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }?>
@@ -139,10 +141,10 @@
 				<?php } ?>
 					
 			</div>
-			<form id="news_comment_digg" action="news_digg.post.php">
 			<?php if($record[0]->is_commentable>0){ if(count($comment)>0){?>
 			<div id=comment>
-				<?php for($i=0;$i<2;$i++){ ?>
+				<?php if(count($digg)>0){
+					 for($i=0;$i<2;$i++){ ?>
 					<div class=content>	
 						<div class=title1>
 							<div style="width:110px; line-height:20px; margin-left:118px; float:left; display:inline;">
@@ -156,14 +158,14 @@
 							<?php echo get_fck_content($digg[$i]->comment);?>
 						</div>
 					</div>
-				<?php }  for($i=0;$i<count($comment);$i++){ ?>
+				<?php }}  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
 						<div class=title>
 							<div style="width:230px; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $comment[$i]->title;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<img onclick="digg('flower',<? echo $comment[$i]->id;?>)" src="/images/news/news_flower.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->flowernum;?></span><img onclick="digg('tomato',<? echo $comment[$i]->id;?>)" style="margin-left:100px;" src="/images/news/news_tomato.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->tomatonum;?></span>　　　　　　　<span style="color:#FF0000;"><?php echo $comment[$i]->created_at; ?></span>
+								<img onclick="digg('flower',<? echo $comment[$i]->id;?>)" src="/images/news/news_flower.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->flowernum;?></span><img onclick="digg('tomato',<? echo $comment[$i]->id;?>)" style="margin-left:100px;" src="/images/news/news_tomato.jpg">　　<span style="color:#FF0000;"><?php echo $comment[$i]->tomatonum;?></span>　<span style="color:#FF0000;"><?php echo $comment[$i]->created_at; ?></span>
 							</div>
 						</div>	
 						<div class=context>
@@ -174,9 +176,8 @@
 				<div id=page><?php  paginate('news.php?id='.$id);?></div>
 			</div>
 			<?php }?>
-			</form>
 			<div class=abouttitle>发表评论</div>
-			<form action="/pub/pub.post.php">
+			<form method="post" action="/pub/pub.post.php">
 			<div class=aboutcontent>
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php echo count($comment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
 				<input type="text" id="commenter" name="post[nick_name]">
@@ -196,9 +197,40 @@
 	</div>
 	<div id=ibody_right>
 		<div id=r_t></div>
-		<?php if($record[0]->video_src!=""){ ?>
-			<div id=r_video><?php show_video_player('298','240',$record[0]->video_photo_src,$record[0]->video_src);?></div>
-		<?php } ?>
+		<? if($record[0]->related_videos!=""){?>
+	<div id=ibody_right>
+		<div id=r_t></div>
+		<?php
+		$keys = explode(',',$record[0]->related_videos);
+		$sql="select * from smg_video where id=".$keys[0];
+		$r_video=$db->query($sql);
+		 if($record[0]->video_src==""){
+		 	if($record[0]->low_quality==0){
+			?>
+			<div id=r_video><?php show_video_player('298','240',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
+		<?php }
+			else
+			{?>
+				<div id=r_video><?php show_video_player('150','120',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
+			<?php }
+		}} ?>
+		<div id=r_m>
+			<?php 
+			 for($i=1;$i<count($keys);$i++){
+			 	$sql="select * from smg_video where id=".$keys[$i];
+			 	$morehead=$db->query($sql);
+			 ?> 
+			 	<div class="r_content">
+			 		<?php if($i<3){?>
+			 			<div class=pic1>0<?php echo $i+1;?></div>
+			 			<div class=cl1><a starget="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
+					<?php }else{?>
+						<div class=pic2>0<?php echo $i+1;?></div>
+						<div class=cl2><a starget="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
+					<?php }?>				
+				</div>
+			<? }?>
+		</div>
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 

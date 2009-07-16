@@ -1,5 +1,7 @@
 <?php 
 	require "../../frame.php";
+	#var_dump($_POST);
+	//die();
 	$news_id = $_POST['id'] ? $_POST['id'] : 0;
 	$news = new table_class('smg_news');
 	if($news_id!=0){
@@ -33,9 +35,7 @@
 	if ($news->priority == ""){
 		$news->priority = 100;
 	}
-	if($news->is_adopt == ''){
-		$news->is_adopt = 0;
-	}
+	$news->is_adopt = 0;
 	if($_FILES['video_src']['name'] != ''){
 		$upload = new upload_file_class();
 		$upload->save_dir = '/upload/video/';
@@ -61,6 +61,8 @@
 	$news->short_title = $short_title;
 	$news->description = $description;
 	$news->content = $content;
+	$news->dept_category_id = $news->dept_category_id >= 0 ? $news->dept_category_id : 0;
+	$news->category_id = $news->category_id >= 0 ? $news->category_id : 0;
 		
 	if($news_id == 0){
 		//insert news
@@ -79,19 +81,7 @@
 				$category_item->resource_id = $news->id;
 				$category_item->category_id = $_POST['subject_category_id'];
 				$category_item->save();
-			}
-			if($_POST['category_add']){
-				$category_add = explode(',', $_POST['category_add']);
-				$copy_from = $news->id;
-				foreach ($category_add as $v) {
-					$news->dept_category_id = $v;
-					$news->category_id = 0;
-					$news->is_recommend = 0;
-					$news->id=0;
-					$news->copy_from = $copy_from;
-					$news->save();
-				}
-			}
+			}			
 		}
 		
 		
@@ -124,19 +114,20 @@
 				$db = get_db();
 				$db->execute($sql);
 		}
-		if($_POST['category_add']){
-			$category_add = explode(',', $_POST['category_add']);
-			$copy_from = $news->id;
-			foreach ($category_add as $v) {
-				$news->dept_category_id = $v;
-				$news->category_id = 0;
-				$news->is_recommend = 0;
-				$news->id=0;
-				$news->copy_from = $copy_from;
-				$news->save();
-			}
-		}
 		
+	}
+	if($_POST['category_add']){
+		$category_add = explode(',', $_POST['category_add']);
+		$copy_from = $news->id;
+		foreach ($category_add as $v) {
+			if(intval($v)<=0) continue;
+			$news->dept_category_id = $v;
+			$news->category_id = 0;
+			$news->is_recommend = 0;
+			$news->id=0;
+			$news->copy_from = $copy_from;
+			$news->save();
+		}
 	}
 	
 

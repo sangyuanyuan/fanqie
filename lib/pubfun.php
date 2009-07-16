@@ -248,8 +248,6 @@ function strfck($str)
 	$str=str_replace('\"','"',$str);
 	$str=str_replace('"font-size','"mso-bidi-font-size',$str);
 	$str=str_replace('FONT-SIZE','mso-bidi-font-size',$str);
-	$str=str_replace("<div>","<span>",$str);
-	$str=str_replace("</div>","</span>",$str);
 	return $str;
 }
 
