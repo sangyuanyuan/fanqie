@@ -31,8 +31,15 @@
 					?>
 				</div>
 				<div class=digg>
-					<div id="flower">333</div>
-					<div id="tomato">222</div>
+					<div id="flower">
+						<?php echo $video->flower;?>
+						<input type="hidden" id="hidden_flower" value="<?php echo $video->flower;?>">
+					</div>
+					<div id="tomato">
+						<?php echo $video->tomato;?>
+						<input type="hidden" id="hidden_tomato" value="<?php echo $video->tomato;?>">
+					</div>
+					<input type="hidden" id="video_id" value="<?php echo $id;?>">
 				</div>
 			</div>
 			<div id=t_r></div>
@@ -94,11 +101,16 @@
 		  </div>
 			
 		<div id=ibody_right>
-		  	<?php for($i=0;$i<2;$i++){?>
-			  	<div class=r>
+			  	<div id=r_t>
+			  		<div class=title>更多该用户的视频</div>
+					<div class=more>全部333个视频>></div>
 			  		<div class=content></div>
 			  	</div>
-			<?php }?>
+				<div id=r_b>
+					<div class=title>相关视频</div>
+					<div class=more>更多333个视频>></div>
+			  		<div class=content></div>
+			  	</div>
 		</div>
 
 </div>
@@ -110,6 +122,9 @@
 
 <script>
 	$(function(){
+		var flower_num = $("#hidden_flower").attr('value');
+		var tomato_num = $("#hidden_tomato").attr('value');
+		
 		display_fqbq('fqbq','post[comment]');
 		
 		$("#submit_comment").click(function(){
@@ -120,6 +135,28 @@
 				return false;
 			}
 			$("#comment_form").submit();
+		})
+		
+		$("#flower").click(function(){
+			flower_num++;
+			$("#hidden_flower").attr('value',flower_num);
+			$(this).html(flower_num);
+			$.post("/pub/pub.post.php",{'type':'flower','id':$("#video_id").attr('value'),'db_table':'smg_video','digg_type':'video'},function(data){
+				if(data!=''){
+					alert(data);
+				}
+			});
+		});
+		
+		$("#tomato").click(function(){
+			tomato_num++;
+			$("#hidden_tomato").attr('value',tomato_num);
+			$(this).html(tomato_num);
+			$.post("/pub/pub.post.php",{'type':'tomato','id':$("#video_id").attr('value'),'db_table':'smg_video','digg_type':'video'},function(data){
+				if(data!=''){
+					alert(data);
+				}
+			});
 		})
 	});
 </script>

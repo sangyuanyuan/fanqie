@@ -13,15 +13,15 @@ li{margin:0px; list-style-type:none;}
 #t_c{width:480px; margin-top:20px; margin-left:7px; float:left; display:inline;}
 #t_c .video{width:480px; float:left; display:inline;}
 #t_c .digg{width:480px; margin-top:10px; float:left; display:inline;}
-#t_c .digg #flower{width:95px; height:29px; margin-left:100px;  background:url('/images/show/flower.jpg'); float:left; display:inline;}
-#t_c .digg #tomato{width:95px; height:29px; margin-left:90px; background:url('/images/show/tomato.jpg'); float:left; display:inline;}
+#t_c .digg #flower{width:40px; height:25px; margin-left:100px; padding-left:55px; padding-top:4px; font-size:15px; color:#FF0000; font-weight:bolder; background:url('/images/show/flower.jpg'); cursor:pointer; float:left; display:inline;}
+#t_c .digg #tomato{width:40px; height:25px; margin-left:90px; padding-left:55px; padding-top:4px; font-size:15px; color:#999999; font-weight:bolder; background:url('/images/show/tomato.jpg'); cursor:pointer; float:left; display:inline;}
 #t_r{width:250px; margin-top:20px; float:right; display:inline;}
 
 
 
 
 #l_t{width:570px; padding-bottom:10px; background:#E8E7E3; border:10px solid #F37916; float:left; display:inline; font-family:黑体;}
-#l_t .title{width:550px; height:10px; padding:10px; line-height:15px; font-size:15px;}
+#l_t .title{width:550px; height:10px; padding:10px; line-height:15px; font-size:15px; float:left; display:inline;}
 #l_t .content{width:570px; font-size:13px; color:#666666; float:left; display:inline;}
 #l_t .content .title{width:auto; height:auto; padding:0; margin-left:15px; font-size:13px; float:left; display:inline;}
 #l_t .content .top{width:570px; float:left; display:inline;}
@@ -35,7 +35,7 @@ li{margin:0px; list-style-type:none;}
 #l_t .content .bottom #name{width:550px; height:30px; margin-left:15px;line-height:25px;  float:left; display:inline; overflow:hidden;}
 
 #l_b{width:570px; margin-top:10px; padding-bottom:30px; background:#E8E7E3; border:10px solid #F37916; float:left; display:inline;}
-#l_b .title{width:550px; height:10px; padding:10px; line-height:15px; font-size:15px; font-family:黑体;}
+#l_b .title{width:550px; height:10px; padding:10px; line-height:15px; font-size:15px; font-family:黑体; float:left; display:inline;}
 #l_b .content{width:550px; padding-bottom:5px; font-size:13px; margin-left:10px; border-top:1px solid #dddddd; color:#666666; float:left; display:inline;}
 #l_b .content .nick_name{width:auto; height:20px; margin-left:10px; margin-top:10px; color:#0093BB; font-size:13px; overflow:hidden; line-height:20px; float:left; display:inline;}
 #l_b .content .time{width:300px; height:20px; margin-top:10px; margin-left:10px; color:#666666; font-size:13px; overflow:hidden; line-height:20px; float:left; display:inline;}
@@ -50,7 +50,12 @@ li{margin:0px; list-style-type:none;}
 #l_b #paginate{width:400px; margin-left:100px;}
 #l_b #paginate a{color:#000000}
 
-.r{width:380px; height:240px; margin-top:10px; background:#E8E7E3; border:10px solid #F37916; float:left; display:inline;}
-
-.r .content{}
+#r_t{width:380px;  margin-top:10px; background:#E8E7E3; border:10px solid #F37916; float:left; display:inline; font-family:黑体;}
+#r_t .title{width:200px; height:10px; padding:10px; line-height:15px; font-size:15px; float:left; display:inline;}
+#r_t .more{height:10px; padding:10px; line-height:15px; font-size:15px; float:right; display:inline; color:#FF6600;}
+#r_t .content{}
+#r_b{width:380px;  margin-top:10px; background:#E8E7E3; border:10px solid #F37916; float:left; display:inline; font-family:黑体;}
+#r_b .title{width:200px; height:10px; padding:10px; line-height:15px; font-size:15px; float:left; display:inline;}
+#r_b .more{height:10px; padding:10px; line-height:15px; font-size:15px; float:right; display:inline; color:#FF6600;}
+#r_b .content{}
 
