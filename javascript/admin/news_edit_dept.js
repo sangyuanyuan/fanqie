@@ -56,7 +56,7 @@ $(function(){
 				return false;	
 			}	
 		}
-		var item = dept_category.get_item(category_id);
+		var item = category.get_item(category_id);
 		if(item != undefined && str_length(short_title) > item.short_title_length){
 			alert('短标题太长,请重新输入!');
 			return false;	

@@ -21,8 +21,10 @@ class smg_category_class
 				$items = $table->find('all',array('conditions' => "name = '" .$name ."'",'order' => 'platform ,priority'));
 			}
 			
-			foreach ($items as $item) {
-				$this->items[$item->id] = $item;
+			if($items){
+				foreach ($items as $item) {
+					$this->items[$item->id] = $item;
+				}
 			}
 		}else{
 			$table = new table_class('smg_category_dept');
@@ -36,10 +38,12 @@ class smg_category_class
 				$items = $table->find('all',array('conditions' => "name = '" .$name ."' and dept_id=".$dept_id));
 			}
 			
-			
-			foreach ($items as $item) {
-				$this->items[$item->id] = $item;
+			if($items){
+				foreach ($items as $item) {
+					$this->items[$item->id] = $item;
+				}
 			}
+			
 		}
 		
 	}
@@ -73,10 +77,9 @@ class smg_category_class
 		?>
 		<script>
 			var <?php echo $var_name;?> = new smg_category_class();
-			<?php foreach ($this->items as $v) {
-				#echo " var tmpitem = new smg_category_item_class('$v->id','$v->name','$v->parent_id','$v->priority','$v->short_title_length');";
+			<?php if($this->items){ foreach ($this->items as $v) {
 				echo "$var_name.push(new smg_category_item_class('$v->id','$v->name','$v->parent_id','$v->priority','$v->short_title_length'));";
-			}?>
+			}}?>
 		</script>
 		<?php
 	}
