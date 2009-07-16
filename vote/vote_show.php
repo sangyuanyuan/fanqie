@@ -18,7 +18,7 @@ if($vote[0]->is_sub_vote==0)
 }
 else
 {
-	$voteitems=$db->query("select * from smg_vote_item where sub_vote_id=" .$_REQUEST['vote_id']);
+	$voteitems=$db->query("select s.*,v.title from smg_vote_item s inner join smg_vote_item v on s.vote_id=v.sub_vote_id and s.vote_id=" .$_REQUEST['vote_id']);
 }
 //echo "select * from " .$_REQUEST['tablepre'] ."vote_item where vote_id=" .$_REQUEST['vote_id'] ." order by priority asc";
 $pageindex = isset($_REQUEST['pageindex']) ? $_REQUEST['pageindex']: 1;
