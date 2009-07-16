@@ -15,7 +15,7 @@
 		css_include_tag('admin','thickbox');
 		use_jquery();
 		validate_form("news_edit");
-		js_include_tag('smg_category_class.js','admin/news_edit','thickbox');
+		js_include_tag('smg_category_class.js', 'admin/news_pub', 'admin/news_edit','thickbox');
 		
 	?>
 </head>
@@ -234,13 +234,6 @@
 		if($('#hidden_related_videos').attr('value')){
 			related_videos = $('#hidden_related_videos').attr('value').split(",");
 		}
-		$('#ch_low_quality').change(function(){
-			if($(this).attr('checked')){
-				$('#hidden_low_quality').val(1);
-			}else{
-				$('#hidden_low_quality').val(0);
-			}
-		});
 		
 	});
 
