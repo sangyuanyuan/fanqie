@@ -49,7 +49,9 @@
 		  if (item != "") {
 		  	$.post('/vote/vote.post.php', {
 		  		'item_id': item,
-		  		'userid': ''
+		  		'userid': $("#user_id").attr('value'),
+				'type':$("#limit_type").attr('value'),
+				'target_url':$("#target_url").attr('value')
 		  	}, function(data){
 		  	})
 		  }
@@ -58,7 +60,9 @@
 		  	for (var i = 0; i < sport.length; i++) {
 				$.post('/vote/vote.post.php', {
 		  		'item_id': sport.eq(i).val(),
-		  		'userid': ''
+		  		'userid': $("#user_id").attr('value'),
+				'type':$("#limit_type").attr('value'),
+				'target_url':$("#target_url").attr('value')
 			  	}, function(data){
 			  	})
 		  	}

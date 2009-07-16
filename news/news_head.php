@@ -2,7 +2,7 @@
 	require_once('../frame.php');
 	$id=$_REQUEST['id'];
 	if($id==""||$id==null){die('没有找到网页');}
-	
+	$cookie= (isset($_COOKIE['vote_user'])) ? $_COOKIE['vote_user'] : 0;
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,7 +15,7 @@
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
+		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);
 		$about=search_content($record[0]->keywords,'smg_news','',10);
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
@@ -82,7 +82,8 @@
 							?>
 						<?php }
 						}?>
-						<input type="hidden" id="vote_value">
+						<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
+						<input type="hidden" id="limit_type" value="<?php echo $record1[0]->limit_type;?>">
 						<button id="vote_submit" onclick="vote()">投票</button>
 					</div>
 				<? }
@@ -112,7 +113,8 @@
 							<?php }
 						}
 						}?>
-						<input type="hidden" id="vote_value">
+						<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
+						<input type="hidden" id="limit_type" value="<?php echo $record1[0]->limit_type;?>">
 					<button id="vote_submit" onclick="vote()">投票</button>
 				</div>
 			<? }}?>
@@ -182,7 +184,7 @@
 				<input type="text" id="commenter" name="post[nick_name]">
 				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">
 				<input type="hidden" id="resource_type" name="post[resource_type]" value="news">
-				<input type="hidden" name="target_url" value="<?php   $string = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; echo $string;?>">
+				<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
 				<input type="hidden" name="type" value="comment">
 				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('post[comment]','Title',false,'75','','600');?></div>
 				<div id=fqbq>
@@ -193,24 +195,36 @@
 			</form>
 		</div>
 	</div>
+	<? if($record[0]->related_videos!=""){?>
 	<div id=ibody_right>
 		<div id=r_t></div>
-		<?php if($record[0]->video_src!=""){ ?>
-			<div id=r_video><?php show_video_player('298','240',$record[0]->video_photo_src,$record[0]->video_src);?></div>
-		<?php } ?>
+		<?php
+		$keys = explode(',',$record[0]->related_videos);
+		$sql="select * from smg_video where id=".$keys[0];
+		$r_video=$db->query($sql);
+		 if($record[0]->video_src==""){
+		 	if($record[0]->low_quality==0){
+			?>
+			<div id=r_video><?php show_video_player('298','240',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
+		<?php }
+			else
+			{?>
+				<div id=r_video><?php show_video_player('150','120',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
+			<?php }
+		}} ?>
 		<div id=r_m>
 			<?php 
-			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." order by priority asc,last_edited_at desc";
-			 $morehead=$db->paginate($sql,6);
-			 for($i=0;$i<count($morehead);$i++){	 	
-			 ?>
+			 for($i=1;$i<count($keys);$i++){
+			 	$sql="select * from smg_video where id=".$keys[$i];
+			 	$morehead=$db->query($sql);
+			 ?> 
 			 	<div class="r_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><a starget="_blank" href="/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+			 			<div class=cl1><a starget="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
 					<?php }else{?>
 						<div class=pic2>0<?php echo $i+1;?></div>
-						<div class=cl2><a starget="_blank" href="/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+						<div class=cl2><a starget="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>
@@ -238,7 +252,7 @@
 			<?php 
 			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='小编加精' order by priority asc,last_edited_at desc";
 			 $xbjj=$db->paginate($sql,10);
-			 for($i=0;$i<count($xbjj);$i++){	 	
+			 for($i=0;$i<count($xbjj);$i++){
 			 ?>
 			 	<div class="r_content">
 			 		<ul>
