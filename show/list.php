@@ -1,7 +1,6 @@
 ﻿<?php
 	require_once('../frame.php');
 	$id = $_REQUEST['id'];
-	if($id==''){$id=24;}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,29 +38,29 @@
 				$record_ad=$db -> query($sql);
 			?>
 	 	 	<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-				<div id="focus_02"></div> 
-				<script type="text/javascript"> 
-					var pic_width1=276; 
-					var pic_height1=146; 
-					var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
-					var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
-					var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
- 	
-					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "276", "146", "4","#FFFFFF");
-					picflash.addParam('wmode','opaque');
-					picflash.addVariable("picurl",pics1);
-					picflash.addVariable("piclink",mylinks1);
-					picflash.addVariable("pictext",texts1);				
-					picflash.addVariable("pictime","5");
-					picflash.addVariable("borderwidth","276");
-					picflash.addVariable("borderheight","146");
-					picflash.addVariable("borderw","false");
-					picflash.addVariable("buttondisplay","true");
-					picflash.addVariable("textheight","15");				
-					picflash.addVariable("pic_width",pic_width1);
-					picflash.addVariable("pic_height",pic_height1);
-					picflash.write("focus_02");				
-				</script>   	
+			<div id="focus_02"></div> 
+			<script type="text/javascript"> 
+				var pic_width1=276; 
+				var pic_height1=146; 
+				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
+				var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
+				var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
+	
+				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "276", "146", "4","#FFFFFF");
+				picflash.addParam('wmode','opaque');
+				picflash.addVariable("picurl",pics1);
+				picflash.addVariable("piclink",mylinks1);
+				picflash.addVariable("pictext",texts1);				
+				picflash.addVariable("pictime","5");
+				picflash.addVariable("borderwidth","276");
+				picflash.addVariable("borderheight","146");
+				picflash.addVariable("borderw","false");
+				picflash.addVariable("buttondisplay","true");
+				picflash.addVariable("textheight","15");				
+				picflash.addVariable("pic_width",pic_width1);
+				picflash.addVariable("pic_height",pic_height1);
+				picflash.write("focus_02");				
+			</script>   	
  	 	 </div>
  	   <!-- end -->
  	   
@@ -110,9 +109,13 @@
 	 <div id=ibody_right>
      <!-- start right !-->
  	 	 <div id=r>
- 	 	 	<div class=title><div class=left><?php echo category_name_by_id($id);?></div></div>
+ 	 	 	<div class=title><div class=left><?php if($id!=''){echo category_name_by_id($id);}else{echo '图片列表';}?></div></div>
 			<?php  
-				$sql = 'select id,short_title,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by created_at desc,priority asc';
+				if($id!=''){
+					$sql = 'select id,short_title,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by created_at desc,priority asc';
+				}else{
+					$sql = 'select id,title as short_title,created_at from smg_images where is_adopt=1 order by created_at desc,priority asc';
+				}
 				$records = $db->paginate($sql,45);
 				close_db();
 				$count = count($records);
@@ -120,19 +123,18 @@
 			?>
 			<div class=content>
 				<div class=left>
-					<a href="/news/news.php?id=<?php echo $records[$i]->id;?>" title="<?php echo $records[$i]->short_title;?>"><?php echo $records[$i]->short_title;?></a>
+					<a href="<?if($id!=''){echo '/news/news.php';}else{echo 'show.php';}?>?id=<?php echo $records[$i]->id;?>" title="<?php echo $records[$i]->short_title;?>"><?php echo $records[$i]->short_title;?></a>
 				</div>
 				<div class=right>
 					<?php echo $records[$i]->created_at; ?>
 				</div>
 			</div>
-			<?php }?> 
-			</div>
- 	 	 </div>
+			<?php }?>
+			<div id=paginate><?php paginate();?></div>
+		</div>
+ 	 </div>
  	   <!-- end --> 		 	
-	 </div>  	 
- 
-</div>
+</div>  	 
 <? require_once('../inc/bottom.inc.php');?>
 
 

@@ -17,10 +17,13 @@ class smg_images_class extends table_class
 				$result = parent::find();
 				break;
 			case 1:
-				$result = parent::find(func_get_arg(0));
+				$p1 = func_get_arg(0);
+				$result = parent::find($p1);
 				break;	
 			case 2:
-				$result = parent::find(func_get_arg(0),func_get_arg(0));
+				$p1 = func_get_arg(0);
+				$p2 = func_get_arg(1);
+				$result = parent::find($p1,$p2);
 				break;					
 			default:
 				;
