@@ -62,6 +62,10 @@
 					</div>
 					<div class=center>
 						<div class=left>
+							<div class=title>发布者：</div>
+							<div id=publisher><?php echo$video->publisher;?></div>
+						</div>
+						<div class=middle>
 							<div class=title>发布于：</div>
 							<div id=date><?php echo substr($video->created_at, 0, 10);?></div>
 						</div>
@@ -98,7 +102,6 @@
 						<div id=commenter_box><input type="text" name="post[nick_name]">请输入昵称</div>
 						<input type="hidden" name="post[resource_id]" value="<?php echo $id;?>">
 						<input type="hidden" name="post[resource_type]" value="video">
-						<input type="hidden" name="target_url" value="/show/video.php?id=<?php echo $id;?>">
 						<input type="hidden" name="type" value="comment">
 						<div id="commit_fck"><?php show_fckeditor('post[comment]','Title',false,'75','','540');?></div>
 						<div id=fqbq></div>
@@ -112,14 +115,13 @@
 			  	<div id=r_t>
 			  		<?php 
 						$db = get_db();
-						$sql = 'select * from smg_video where publisher="'.$video->publisher.'" and id!='.$id;
+						$sql = 'select * from smg_video where is_adopt=1 and publisher="'.$video->publisher.'" and id!='.$id.' limit 6';
 						$records = $db->query($sql);
 						$count = count($records);
 					?>
 			  		<div class=title>更多该用户的视频</div>
-					<div class=more><a href="">全部<?php echo $count;?>个视频>></a></div>
+					<div class=more><a href="video_list.php?name=<?php echo $video->publisher?>">全部<?php echo $count;?>个视频>></a></div>
 		  			<?php 
-						$count = $count>6?6:$count;
 						for($i=0;$i<$count;$i++) {
 					?>
 					<div class=content>
@@ -150,7 +152,7 @@
 						$count = count($records);
 					?>
 					<div class=title>相关视频</div>
-					<div class=more><a href="">更多<?php echo $count;?>个视频>></a></div>
+					<div class=more><a href="video_list.php">更多<?php echo $count;?>个视频>></a></div>
 			  		<?php 
 						$count = $count>6?6:$count;
 						for($i=0;$i<$count;$i++) {

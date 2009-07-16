@@ -13,7 +13,7 @@
 			$comment->nick_name = '匿名用户';
 		}
 		$comment -> save();
-		redirect($_POST['target_url']);
+		redirect($_SERVER['HTTP_REFERER']);
    	}elseif($_POST['type']=='flower'){
    		$table = new table_class($_POST['db_table']);
 		$table->find($_POST['id']);

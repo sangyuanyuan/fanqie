@@ -23,9 +23,9 @@ li{margin:0px; list-style-type:none;}
 .l_b .content .middle{width:44px; height:44px; margin-top:10px; margin-left:5px; border:1px solid #C6C6C8; float:left; display:inline;}
 .l_b .content .middle img{margin-top:2px; margin-left:2px;}
 .l_b .content .right{width:178px; margin-top:10px; margin-left:5px; float:left; display:inline;}
-.l_b .content .right .top{width:190px; float:left; display:inline;}
+.l_b .content .right .top{width:100px; line-height:15px; float:left; display:inline;}
 .l_b .content .right .top a{color:#666666; font-weight:bold;}
-.l_b .content .right .bottom{width:190px;  float:left; display:inline;}
+.l_b .content .right .bottom{width:100px; line-height:15px; float:left; display:inline;}
 .l_b .content .right .bottom a{color:#9D9D9D; font-weight:bold;}
 
 #r{width:710px; height:800px; background:url(/images/show/bg_1.jpg) no-repeat; float:left; display:inline;}
@@ -33,10 +33,12 @@ li{margin:0px; list-style-type:none;}
 #r .title .left{width:75px; float:left; margin-left:15px; border-right:1px solid #dfdfdf; display:inline; line-height:15px;}
 #r .title .more{width:50px; margin-top:2px; font-size:12px; float:right; display:inline;}
 #r .title .more a{color:#FF6600; line-height:15px;}
-#r .content{width:690px; height:20px; font-size:12px; padding:10px; float:left; display:inline;}
-#r .content .left{width:450px; height:12px; margin-left:22px; overflow:hidden; float:left; display:inline;}
+#r .content{width:690px; height:20px; font-size:12px; margin-left:10px; maring-top:5px; line-height:20px; float:left; display:inline;}
+#r .content .left{width:450px; height:20px; margin-left:22px; overflow:hidden; float:left; display:inline;}
 #r .content .left a{color:#000000; text-decoration:none; font-size:12px; line-height:12px;}
-#r .content .right{width:150px; height:12px; margin-left:50px; color:#A9A9A9; float:left; display:inline;}
+#r .content .right{width:150px; height:20px; margin-left:50px; color:#A9A9A9; float:left; display:inline;}
+
+#paginate{margin:0 auto; float:left; display:inline;}
 
 
 
