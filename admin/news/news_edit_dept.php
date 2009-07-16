@@ -57,10 +57,10 @@
 		</tr>
 		
 		<?php if($role=='dept_admin'){?>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>是否推荐到集团首页</td><td><input type="checkbox" id=is_recommend <?php if ($news->is_recommend) {?>  checked="checked" <?php }?>></td>
+		<tr  class=tr4>
+			<td>是否推荐到集团首页</td><td align=left><input type="checkbox" id=is_recommend <?php if ($news->is_recommend) {?>  checked="checked" <?php }?>></td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" >
+		<tr class=tr3 id="index_category" >
 			<td>首页分类</td>
 			<td align="left" class="newsselect1" >			
 			<span id="td_category_index"></span>
@@ -114,11 +114,12 @@
 			<td>URL</td><td align="left"><input type="text" size="50" name=news[target_url] value="<?php echo $news->target_url; ?>"></td>
 		</tr>
 				
-		<tr align="center" bgcolor="#f9f9f9" height="22px;" id=newsshow3  class="normal_news">
+		<tr id=newsshow3  class="normal_news tr3">
 			<td>视频</td>
 			<td align="left" id="td_video">			
-				视频文件<input type="file" name="video_src" id="video_src">　　	
-				视频图片<input type="file" name="video_pic" id="video_pic">
+				视频<input type="file" name="video_src" id="video_src">　	
+				缩略图<input type="file" name="video_pic" id="video_pic">　
+				低清
 			</td>
 		</tr>
 		<tr id=newsshow3 class="normal_news tr3">

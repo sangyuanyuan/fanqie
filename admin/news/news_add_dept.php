@@ -105,8 +105,9 @@
 		<tr  class=tr3 class="normal_news">
 			<td>视频</td>
 			<td align="left" id="td_video">			
-				视频文件<input type="file" name="video_src" id="video_src">　　	
-				视频图片<input type="file" name="video_pic" id="video_pic">
+				视频<input type="file" name="video_src" id="video_src">　
+				缩略图<input type="file" name="video_pic" id="video_pic">　
+				低清
 			</td>
 		</tr>
 		<tr class=tr3  class="normal_news tr3">
