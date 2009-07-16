@@ -145,7 +145,7 @@
 		<input type="hidden" name="news[category_id]" id="category_id_index">
 
 		<input type="hidden" name="news[is_recommend]" id="hidden_is_recommend" value="0">
-		<input type="hidden" name="news[dept_category_id]" id="category_id">
+		<input type="hidden" name="news[dept_category_id]" id="category_id" value="-1">
 	
 		<input type="hidden" name="category_add" id="category_add" value="">
 		<input type="hidden" name="subject_id" value="" id="hidden_subject_id">

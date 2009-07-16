@@ -180,7 +180,7 @@
 	</table>
 		<input type="hidden" name="news[related_news]" value="" id="hidden_related_news">
 		<input type="hidden" name="news[sub_news_id]" value="" id="hidden_sub_headlines">
-		<input type="hidden" name="news[category_id]" id="category_id">
+		<input type="hidden" name="news[category_id]" id="category_id" value="-1">
 		<?php if($role=='admin'){
 		?>
 		<input type="hidden" name="news[is_recommend]" value="1">
