@@ -27,7 +27,15 @@
 						$video->find($id);
 						$video->click_count = $video->click_count+1;
 						$video->save();
-						show_video_player('480','390',$video->photo_url,$video->video_url,$autostart = "false"); 
+						if($video->video_url!=''){
+							show_video_player('480','390',$video->photo_url,$video->video_url,$autostart = "false");
+						}elseif($video->online_url!=''){
+							show_video_player('480','390',$video->photo_url,$video->online_url,$autostart = "false");
+						}else{
+					?>
+					<div class=error>对不起，你所访问的视频链接不存在，请与管理员联系！</div>
+					<?
+						}
 					?>
 				</div>
 				<div class=digg>
@@ -102,14 +110,64 @@
 			
 		<div id=ibody_right>
 			  	<div id=r_t>
+			  		<?php 
+						$db = get_db();
+						$sql = 'select * from smg_video where publisher="'.$video->publisher.'" and id!='.$id;
+						$records = $db->query($sql);
+						$count = count($records);
+					?>
 			  		<div class=title>更多该用户的视频</div>
-					<div class=more>全部333个视频>></div>
-			  		<div class=content></div>
+					<div class=more><a href="">全部<?php echo $count;?>个视频>></a></div>
+		  			<?php 
+						$count = $count>6?6:$count;
+						for($i=0;$i<$count;$i++) {
+					?>
+					<div class=content>
+						<div class=box>
+							<div class=photo>
+								<a href="video.php?id=<?php echo $records[$i]->id;?>">
+									<img src="<?php echo $records[$i]->photo_url;?>" width="90" height="56" border=0>
+								</a>
+							</div>
+						</div>
+						<div class=title><a href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
+					</div>
+					<?
+						}
+					?>
 			  	</div>
 				<div id=r_b>
+					<?php 
+						$db = get_db();
+						$keywords = explode(",", $video->keywords);
+						if(count($keywords==0))$keywords = explode("，", $video->keywords);
+						$key_count = count($keywords);
+						$sql = 'select * from smg_video where id!='.$id;
+						for($i=0;$i<$key_count;$i++){
+						}
+						
+						$records = $db->query($sql);
+						$count = count($records);
+					?>
 					<div class=title>相关视频</div>
-					<div class=more>更多333个视频>></div>
-			  		<div class=content></div>
+					<div class=more><a href="">更多<?php echo $count;?>个视频>></a></div>
+			  		<?php 
+						$count = $count>6?6:$count;
+						for($i=0;$i<$count;$i++) {
+					?>
+					<div class=content>
+						<div class=box>
+							<div class=photo>
+								<a href="video.php?id=<?php echo $records[$i]->id;?>">
+									<img src="<?php echo $records[$i]->photo_url;?>" width="90" height="56" border=0>
+								</a>
+							</div>
+						</div>
+						<div class=title><a href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
+					</div>
+					<?
+						}
+					?>
 			  	</div>
 		</div>
 

@@ -97,7 +97,7 @@
 			<td>URL</td><td align="left"><input type="text" size="50" name=news[target_url]></td>
 		</tr>
 				
-		<tr  class=tr3 class="normal_news">
+		<tr class="normal_news tr4">
 			<td>视频</td>
 			<td align="left" id="td_video">			
 				视频<input type="file" name="video_src" id="video_src">　
