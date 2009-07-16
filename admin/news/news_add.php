@@ -21,7 +21,7 @@
 		css_include_tag('admin','thickbox');
 		use_jquery();
 		validate_form("news_add");
-		js_include_tag('smg_category_class.js','admin/news_add','thickbox');
+		js_include_tag('smg_category_class.js','admin/news_pub', 'admin/news_add','thickbox');
 		
 	?>
 </head>
