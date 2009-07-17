@@ -140,9 +140,8 @@ class table_class{
 		#}
 
 		$db = get_db();
-		if($this->echo_sql){
-			echo $sqlstr;
-		};
+		$db->echo_sql =$this->echo_sql;
+
 		$db_ret = $db->paginate($sqlstr,$page_count,$page_var);
 		if (!$db_ret) return  null ;
 		if($limit == 1){

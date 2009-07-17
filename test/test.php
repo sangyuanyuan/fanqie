@@ -6,10 +6,16 @@
 	$cate = new smg_category_class('news');
 	$cate->echo_jsdata();
 	$category = new table_class('smg_category');
+	$category->echo_sql = true;
+
 	$category->id = 30;
 	$param = array('name' => '总裁奖12345','description' => '');
 	$category->update_attributes($param);
-	var_dump($_GET);
+	$category->echo_sql = true;
+	$category->paginate('all');
+	$db =  get_db();
+	$db->echo_sql =true;
+	#$db->paginate('select * from smg_category');
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">

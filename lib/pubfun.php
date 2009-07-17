@@ -370,7 +370,7 @@ function copy_dir($source, $destination, $child=1){
 	return true; 
 } 
 
-function search_content($key,$table_name='smg_news',$conditions=null,$page_count = 0, $order=''){
+function search_content($key,$table_name='smg_news',$conditions=null,$page_count = 10, $order=''){
 	$table = new table_class($table_name);
 	$key = str_replace('　', ' ', $key);
 	$keys = explode(' ',$key);
@@ -396,38 +396,11 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	}
 	$db = get_db();
 	if($page_count > 0){
-		return $db->paginate($sql);	
+		return $db->paginate($sql,$page_count);	
 	}else{
 		return $db->query($sql);
 	}
-	
-	/*
-	switch ($table_name) {
-		case 'smg_news':			
-			foreach ($keys as $v) {
-				array_push($c, "title like '%$v%'");
-				array_push($c, "short_title like '%$v%'");
-				array_push($c, "description like '%$v%'");
-				array_push($c, "content like '%$v%'");
-			}
-		break;
-		case 'smg_images':
-			foreach ($keys as $v) {
-				array_push($c, "title like '%$v%'");
-				array_push($c, "description like '%$v%'");
-			}
-			break;
-		case 'smg_video':
-			foreach ($keys as $v) {
-				array_push($c, "title like '%$v%'");
-				array_push($c, "description like '%$v%'");
-			}
-			break;
-		default:
-			;
-		break;
-	}
-	*/
+		
 }
 function delhtml($str){   //清除HTML标签
 $st=-1; //开始

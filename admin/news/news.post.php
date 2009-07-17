@@ -30,6 +30,9 @@
 		$imgstr = substr($news->content, $pos,$pos_end -$pos +1);
 		#alert($pos_end .';'.$imgstr);
 		$pos = strpos($imgstr, 'src="');
+		if($pos === false){
+			$pos = strpos($imgstr, 'src=\"');
+		}
 		$pos_end = strpos($imgstr, '"',$pos + 5);
 		$src = substr($imgstr, $pos+5,$pos_end - $pos - 5);
 		$news->photo_src = $src;

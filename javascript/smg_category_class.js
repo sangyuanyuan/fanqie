@@ -117,6 +117,10 @@ function smg_category_class(){
 			while(true){
 				
 				var item = othis.get_item(tmp_id);
+				if(item == undefined){
+					tparent.push(0);
+					break;	
+				}
 				tparent.push(item.parent_id);
 				if(item.parent_id == 0) break;
 				tmp_id = item.parent_id;
