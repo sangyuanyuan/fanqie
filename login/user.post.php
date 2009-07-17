@@ -1,5 +1,7 @@
 ﻿<?
 require_once('../frame.php');
+include('uc_client/config.inc.php');
+include('uc_client/client.php');
 if($_POST['user_type']=="login")
 {
 	$login_text = $_POST['login_text'];
@@ -24,9 +26,12 @@ if($_POST['user_type']=="login")
 			$sql = 'select * from smg_user_real where id='.$login_info[0]->smg_real_id;
 			$login_info2 = $db->query($sql);
 			@SetCookie('smg_user_dept',$login_info2[0]->dept_id,$y2k,'/');
+			$nick_name = $login_info2->nickname;
 			#alert($_COOKIE['smg_user_dept']);
+		}else{
+			$nick_name = $login_text;
 		}
-		@SetCookie('smg_username',$login_text,$y2k,'/');
+		@SetCookie('smg_username',$nick_name,$y2k,'/');
 		@SetCookie('smg_userid',$login_info[0]->smg_real_id,$y2k,'/');
 		@SetCookie('smg_user_nickname',$login_info[0]->nick_name,$y2k,'/');
 		@setcookie('smg_role', $login_info[0]->role_name,$y2k,'/');
@@ -36,6 +41,23 @@ if($_POST['user_type']=="login")
 			@SetCookie('smg_user_dept',7,$y2k,'/');
 		}
 		$error =  "ok";
+		$ret = uc_user_login($login_text,$password_text);
+		if($ret[0] == -1)
+		{//not exist!
+			uc_user_register($login_text,$password_text,$login_text ."@smg.com");
+		}elseif ($ret[0] == -2)
+		{//password wrong
+			uc_user_edit($login_text,"",$password_text,$login_text ."@smg.com",1);
+		}
+		
+		if($ret[0]>0)
+		{
+			echo (uc_user_synlogin($ret[0]));
+		}
+		if($ret[0]<=0)
+		{
+			uc_user_login($login_text,$password_text);
+		}
 	}	
 	if(is_ajax()){
 		echo $error;
@@ -47,7 +69,7 @@ if($_POST['user_type']=="login")
 				$last_url = '/admin/admin.php';
 				//var_dump($_SESSION);
 			}
-			redirect($last_url,'header');
+			redirect($last_url);
 		}else{
 			alert($error);
 			redirect('/login/login.php','js');
@@ -57,12 +79,13 @@ if($_POST['user_type']=="login")
 
 
 
-if($_POST['user_type']=="logout")
+if($_REQUEST['user_type']=="logout")
 {
 		SetCookie('smg_user_dept',"",$y2k,'/');
 		SetCookie('smg_username',"",$y2k,'/');
 		SetCookie('smg_user_nickname',"",$y2k,'/');
 		SetCookie('smg_role',"",$y2k,'/');
+		echo uc_user_synlogout();
 		echo "ok";
 }
 
@@ -83,10 +106,11 @@ if($_POST['user_type']=="reg")
 	else
 	{
 		$y2k = mktime(0,0,0,1,1,2020); 
-		$sql = 'insert into smg_user (name,password,nickname,register_type_id) values ("'.$user_text.'","'.$password_text.'","'.$user_text.'",2) ';
+		$sql = 'insert into smg_user (name,password,nickname,register_type,role) values ("'.$user_text.'","'.$password_text.'","'.$user_text.'",2,"member") ';
 		$db->execute($sql);
 		SetCookie(smg_username,$user_text,$y2k,'/');
 		SetCookie(smg_user_nickname,$user_text,$y2k,'/');
+		uc_user_register($user_text,$password_text,$user_text ."@smg.com");
 		echo "ok";
 	}	
 }
