@@ -1,7 +1,7 @@
 <?php 
 	require "../../frame.php";
 	$news_id = $_POST['id'] ? $_POST['id'] : 0;
-	#var_dump($_POST);
+	var_dump($_POST);
 	//exit;
 	$news = new table_class('smg_news');
 	if($news_id!=0){
@@ -141,7 +141,7 @@
 		
 	}
 	
-	redirect('index.php?category='.$_POST['news']['category_id']);
+	//redirect('index.php?category='.$_POST['news']['category_id']);
 	#var_dump($news);
 	
 ?>

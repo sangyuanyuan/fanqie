@@ -7,10 +7,10 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-展示-每日之星</title>
-	<? 	
+	<?php
 		css_include_tag('show_star','top','bottom');
 		use_jquery();
-  ?>
+  	?>
 	
 </head>
 <body>
@@ -19,7 +19,14 @@
  <div id=ibody_left>
  	  <div class=l>
 			<div class=title><div class=left>每日之星排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
-			<? for($i=0;$i<5;$i++){?>
+			<?php
+				$db = get_db();
+				$category_id = category_id_by_name('每日之星');
+				$sql = 'select id,short_title,click_count from smg_news where is_adopt=1 and category_id='.$category_id.'order by click_count limit 5 ';
+				$records = $db->query($sql);
+				$count = count($records);
+				for($i=0;$i<$count;$i++){
+			?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
 					<div class=middle><a target="_blank" href="#"><img border=0 width=40 height=40 src=""></a></div>
