@@ -60,7 +60,7 @@ $(function(){
 	});
 	
 	var item = category.get_item($("#category_id").val());
-	if(item.id != -1){
+	if(item != undefined &&  item.id != -1){
 		$('#max_len').html('('+ item.short_title_length +')');
 	}
 

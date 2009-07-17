@@ -138,7 +138,6 @@ class database_row_item_class {
 		}
 
 		$sql = substr_replace($sql," SQL_CALC_FOUND_ROWS ",6, 0) ." limit " .($per_page * ($page - 1)) . "," .$per_page;
-		if($this->echo_sql) echo $sql;
 		if($this->query($sql) === false){
 			return false;
 		}
