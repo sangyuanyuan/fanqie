@@ -7,13 +7,10 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-展示-首页</title>
-	<? 	
+	<?php 	
 		css_include_tag('show_index','top','bottom');
 		use_jquery();
-		$db = get_db();
-		$sql="select * from smg_video where category_id in (select top1 * from smg_category where category_type='video' order by priority asc) order by priority asc,create_at desc";
-		$record=$db->query($sql);
-  ?>
+ 	?>
 	
 </head>
 <body>
@@ -22,50 +19,45 @@
 	 <div id=ibody_top>
      <!-- start top_left !-->
  	 	 <div id=t_l>
- 	 	 	<?php show_video_player('293','242',$record[0]->video_photo_src,$record[0]->video_src);?>
+ 	 	 	<?php 
+				$db = get_db();
+				$sql="select * from smg_video where category_id in (select id from smg_category where category_type='video' order by priority asc) and is_adopt=1 and photo_url is not null order by priority asc,created_at desc limit 1";
+				$record=$db->query($sql);
+				show_video_player('293','230',$record[0]->photo_url,$record[0]->video_url);
+			?>
  	 	 </div>
  	   <!-- end -->
  	 
       <!-- start top_right !-->
  	 	 <div id=t_r>
- 	 	 	<? $pics = $db->query('SELECT * FROM smg_images s where is_adopt=1 and category_id in (select id from smg_category where name="番茄广告") and is_adopt=1  order by priority asc, created_at desc',1,5);
-				$picsurl10 = array();
-				$picslink10 = array();
-				$picstext10 = array();
-				for ($i=0;$i<count($pics);$i++)
-				{
-					$picsurl10[]=$pics[$i]->photourl;
-					$picslink10[]=$pics[$i]->photolink;
-					$picstext10[]=$pics[$i]->title;
-				}
-				?>
-				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-				<div id="focus_10"></div> 
-				<script type="text/javascript"> 
-				var pic_width=216; //图片宽度
-				var pic_height=230; //图片高度
-				var pics10="<?php echo implode(',',$picsurl10);?>";
-				var mylinks10="<?php echo implode(',',$picslink10);?>";
-				
-				var texts10="<?php echo implode(',',$picstext10);?>";
- 
-				var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "590", "212", "6","#FFFFFF");
+ 	 	 	<?php
+				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc,created_at desc limit 4';
+				$record_ad=$db -> query($sql);
+			?>
+			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+			<div id="focus_02"></div> 
+			<script type="text/javascript"> 
+				var pic_width1=276; 
+				var pic_height1=146; 
+				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
+				var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
+				var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
+	
+				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "590", "212", "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');
-				picflash.addVariable("picurl",pics10);
-				picflash.addVariable("piclink",mylinks10);
-				picflash.addVariable("pictext",texts10);				
-				picflash.addVariable("pictime","5000");
+				picflash.addVariable("picurl",pics1);
+				picflash.addVariable("piclink",mylinks1);
+				picflash.addVariable("pictext",texts1);				
+				picflash.addVariable("pictime","5");
 				picflash.addVariable("borderwidth","590");
 				picflash.addVariable("borderheight","212");
 				picflash.addVariable("borderw","false");
 				picflash.addVariable("buttondisplay","true");
-				picflash.addVariable("textheight","20");
-				picflash.addVariable("textcolor","#FF0000");	
-				picflash.addVariable("pic_width",pic_width);
-				picflash.addVariable("pic_height",pic_height);
-				
-				picflash.write("focus_10");				
-				</script>
+				picflash.addVariable("textheight","15");				
+				picflash.addVariable("pic_width",pic_width1);
+				picflash.addVariable("pic_height",pic_height1);
+				picflash.write("focus_02");				
+			</script> 
  	 	 </div>
  	   <!-- end -->	 
  	 </div>
@@ -94,8 +86,8 @@
      <!-- start left_middle !-->
  	 	 <div id=l_m>
  	 	 	<?php 
-				$sql="select * from smg_video where is_adopt=1 order by click_count desc";
-				$spphb=$db->paginate($sql,5);
+				$sql = 'select * from smg_video where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
+				$spphb=$db->query($sql,5);
 			?>
  	 	 	<div class=l_title>
  	 	 		<div class=title_l>
@@ -108,7 +100,7 @@
 			<div class=content>
 				<?php
 				 for($i=0;$i<count($spphb);$i++){?>
-					<div class="context">
+					<div class="context" >
 						<?php if($i<3){?>
 							<div class=pic1>0<?php echo $i+1;?></div>
 						<?php }else{?>
@@ -123,7 +115,7 @@
 								</div>
 							</div>
 						<?php }else{?>
-							<div class=context2>
+							<div class=context2 <?php if($i==(count($spphb)-1)){?>style="border:0;"<?php } ?> >
 								<div class=left><a target="_blank" href="video.php?id=<?php echo $spphb[$i]->id;?>"><?php echo get_fck_content($spphb[$i]->title);?></a></div>
 								<div class=right><?php echo $spphb[$i]->click_count;?></div>
 							</div>
@@ -132,8 +124,8 @@
 				<?php } ?>
 			</div>
 			<?php 
-				$sql="select * from smg_images where is_adopt=1 and category_id in (select id from smg_category where name='我行我秀') order by click_count desc";
-				$wxwxph=$db->paginate($sql,5);
+				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
+				$wxwxph=$db->query($sql);
 				$sql="select * from smg_images where is_adopt=1 and category_id in (select id from smg_category where name='摄友') order by click_count desc";
 				$sy=$db->paginate($sql,5);
 			?>
@@ -164,7 +156,7 @@
 								</div>
 							</div>
 						<?php }else{?>
-							<div class=context2>
+							<div class=context2 <?php if($i==(count($spphb)-1)){?>style="border:0;"<?php } ?>>
 								<div class=left><a target="_blank" href="video.php?id=<?php echo $wxwx[$i]->id;?>"><?php echo get_fck_content($wxwxph[$i]->title);?></a></div>
 								<div class=right><?php echo $wxwxph[$i]->click_count;?></div>
 							</div>

@@ -15,7 +15,7 @@ li{margin:0px; list-style-type:none;}
 .l_title .title_r{width:50px; height:20px; line-height:16px; float:right; display:inline;}
 .l_title .title_r a{color:#FF6600; text-decoration:none;}
 
-#t_l{width:293px; height:242px; margin-top:20px; margin-left:22px; background:url(/images/show/index_t_l.jpg) no-repeat; float:left; display:inline;}
+#t_l{width:293px; height:225px; margin-top:25px; margin-left:22px; background:url(/images/show/index_t_l.jpg) no-repeat; float:left; display:inline;}
 
 #t_r{width:610px; height:225px; margin-top:20px; margin-right:22px; padding-top:10px; padding-top:12px; padding-left:40px; background:url(/images/show/index_t_r.jpg) no-repeat; float:right; display:inline;}
 
@@ -24,19 +24,19 @@ li{margin:0px; list-style-type:none;}
 #l_t .content img{margin-top:7px; float:left; display:inline;}
 #l_t .content a{color:#666666; text-decoration:none;}
 #l_m{width:293px; height:423px; margin-left:22px; background:url(/images/show/index_l_m.jpg) no-repeat; float:left; display:inline;}
-#l_m .content{width:250px; height:157px; margin-top:10px; margin-left:10px; margin-bottom:10px; float:left; display:inline;}
+#l_m .content{width:250px; height:157px; margin-top:5px; margin-left:10px; margin-bottom:10px; float:left; display:inline;}
 #l_m .content .context{width:250px;  float:left; display:inline;}
-#l_m .content .context .context1{width:230px; height:67px; margin-left:5px; border-bottom:1px dotted #ADD5ED; float:left; display:inline;}
+#l_m .content .context .context1{width:230px; height:60px; margin-left:5px; border-bottom:1px dotted #ADD5ED; float:left; display:inline;}
 #l_m .content .context .context1 .left{width:71px; height:56px; border:1px solid #C1CBD7; float:left; display:inline;}
 #l_m .content .context .context1 .right{width:155px; height:58px; float:right; display:inline;}
 #l_m .content .context .context1 .right a{width:150px; height:16px; line-height:16px; color:#2872B5; text-decoration:none; overflow:hidden; float:right; display:inline;}
 #l_m .content .context .context1 .right span{width:150px; height:16px; margin-top:2px; line-height:16px; color:#2872B5; overflow:hidden; float:right; display:inline;}
-#l_m .content .context .context2{width:230px; height:20px;  margin-left:5px; border-bottom:1px dotted #ADD5ED; line-height:20px; float:left; display:inline;}
-#l_m .content .context .context2 .left{width:170px; height:20px; float:left; display:inline;}
-#l_m .content .context .context2 a{text-decoration:none;}
-#l_m .content .context .context2 .right{width:50px; height:20px; color:#888888; float:right; display:inline;}
-#l_m .content .context .pic1{width:12px; height:11px; padding-left:1px; margin-top:1px; font-size:10px; line-height:10px; color:#ffffff; font-weight:bold; background:url('/images/news/news_one_three.jpg') no-repeat; float:left; display:inline;}
-#l_m .content .context .pic2{width:12px; height:11px; padding-left:1px; margin-top:1px; font-size:10px; line-height:10px; color:#ffffff; font-weight:bold; background:url('/images/news/news_four_eight.jpg') no-repeat; float:left; display:inline;}
+#l_m .content .context .context2{width:230px; height:24px;  margin-left:5px; border-bottom:1px dotted #ADD5ED; line-height:24px; float:left; display:inline;}
+#l_m .content .context .context2 .left{width:170px; height:24px; overflow:hidden; float:left; display:inline;}
+#l_m .content .context .context2 a{text-decoration:none; color:#333333;}
+#l_m .content .context .context2 .right{width:50px; height:24px; color:#888888; float:right; display:inline;}
+#l_m .content .context .pic1{width:12px; height:11px; padding-left:1px; margin-top:6px; font-size:10px; line-height:10px; color:#ffffff; font-weight:bold; background:url('/images/news/news_one_three.jpg') no-repeat; float:left; display:inline;}
+#l_m .content .context .pic2{width:12px; height:11px; padding-left:1px; margin-top:6px; font-size:10px; line-height:10px; color:#ffffff; font-weight:bold; background:url('/images/news/news_four_eight.jpg') no-repeat; float:left; display:inline;}
 #l_b{width:293px; height:218px; margin-left:22px; background:url(/images/show/index_l_b.jpg) no-repeat; float:left; display:inline;}
 .l_b_l{width:129px; height:163px; margin-top:5px; margin-left:20px; float:left; display:inline;}
 .l_b_r{width:119px; height:163px; margin-top:5px; margin-right:10px; float:right; display:inline;}
