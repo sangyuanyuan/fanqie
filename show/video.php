@@ -39,11 +39,11 @@
 					?>
 				</div>
 				<div class=digg>
-					<div id="flower">
+					<div id="flower" title="送鲜花">
 						<?php echo $video->flower;?>
 						<input type="hidden" id="hidden_flower" value="<?php echo $video->flower;?>">
 					</div>
-					<div id="tomato">
+					<div id="tomato" title="丢番茄">
 						<?php echo $video->tomato;?>
 						<input type="hidden" id="hidden_tomato" value="<?php echo $video->tomato;?>">
 					</div>
@@ -120,19 +120,19 @@
 						$count = count($records);
 					?>
 			  		<div class=title>更多该用户的视频</div>
-					<div class=more><a href="video_list.php?name=<?php echo $video->publisher?>">全部<?php echo $count;?>个视频>></a></div>
+					<div class=more><a target="_blank" href="video_list.php?name=<?php echo $video->publisher?>">全部<?php echo $count;?>个视频>></a></div>
 		  			<?php 
 						for($i=0;$i<$count;$i++) {
 					?>
 					<div class=content>
 						<div class=box>
 							<div class=photo>
-								<a href="video.php?id=<?php echo $records[$i]->id;?>">
+								<a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>">
 									<img src="<?php echo $records[$i]->photo_url;?>" width="90" height="56" border=0>
 								</a>
 							</div>
 						</div>
-						<div class=title><a href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
+						<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
 					</div>
 					<?
 						}
@@ -152,7 +152,7 @@
 						$count = count($records);
 					?>
 					<div class=title>相关视频</div>
-					<div class=more><a href="video_list.php">更多<?php echo $count;?>个视频>></a></div>
+					<div class=more><a target="_blank" href="video_list.php">更多<?php echo $count;?>个视频>></a></div>
 			  		<?php 
 						$count = $count>6?6:$count;
 						for($i=0;$i<$count;$i++) {
@@ -160,12 +160,12 @@
 					<div class=content>
 						<div class=box>
 							<div class=photo>
-								<a href="video.php?id=<?php echo $records[$i]->id;?>">
+								<a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>">
 									<img src="<?php echo $records[$i]->photo_url;?>" width="90" height="56" border=0>
 								</a>
 							</div>
 						</div>
-						<div class=title><a href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
+						<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
 					</div>
 					<?
 						}
