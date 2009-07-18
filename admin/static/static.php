@@ -67,5 +67,31 @@ if($type=="bottom")
   echo "底部静态执行成功<br>";
 
 }
+
+
+if($type=="report")
+{
+	$full_path='http://172.27.203.88/rd/datacsmselect.asp';
+	$fcontent="";
+	$fp= fopen($full_path,'r');
+	while(!feof($fp))
+	{
+  		$fcontent=$fcontent.fgets($fp,4096);
+	}
+	fclose($fp);
+	$fcontent=StrChar($fcontent);
+	$filename='../../index_report.html';
+	$handle=fopen($filename,"wt");
+	
+	$fcontent='<meta http-equiv=Content-Type content="text/html; charset=gbk">'.$fcontent;
+	fwrite($handle,$fcontent);
+	fclose($handle);
+  echo "收视率报表静态执行成功<br>";
+
+}
+
+
+
+
 ?>
 </body>

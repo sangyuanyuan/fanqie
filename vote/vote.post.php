@@ -5,6 +5,7 @@
 	$userid=$_REQUEST['userid'];
 	$type=$_REQUEST['type'];
 	$target_url=$_REQUEST['$target_url'];
+	$vote_id=$_REQUEST['vote_id'];
 	$db=get_db();
 	if($type=="user_id")
 	{
@@ -36,10 +37,17 @@
 				redirect($target_url);
 			}
 	}
-	$sql="insert into smg_vote_item_record(vote_item_id,created_at,ip,userid) value (".$vote_item_id.",now(),'".$ip."',".$userid.")";
+	if($userid!="")
+	{
+		$sql="insert into smg_vote_item_record(vote_item_id,created_at,ip,userid,vote_id) value (".$vote_item_id.",now(),'".$ip."',".$userid.",".$vote_id.")";
+	}
+	else
+	{
+		$sql="insert into smg_vote_item_record(vote_item_id,created_at,ip,vote_id) value (".$vote_item_id.",now(),'".$ip."',".$vote_id.")";
+	}
 	if($db->execute($sql))
 	{
-
+		echo $sql;
 	}
 	else{
 		echo "error";
