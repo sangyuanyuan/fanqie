@@ -57,8 +57,7 @@
 	 	  		<div class=title>视频信息</div>
 				<div class=content><span></span>
 					<div class=top>
-						<div class=title>视频简介：</div>
-						<div id=description><?php echo $video->description;?></div>
+						<div id=name>视频名称：<?php echo $video->title;?></div>
 					</div>
 					<div class=center>
 						<div class=left>
@@ -75,7 +74,8 @@
 						</div>
 					</div>
 					<div class=bottom>
-						<div id=name>视频名称：<?php echo $video->title;?></div>
+						<div class=title>视频简介：</div>
+						<div id=description><?php echo $video->description;?></div>
 					</div>
 				</div>
 	 	  	</div>
