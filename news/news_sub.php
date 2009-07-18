@@ -39,7 +39,7 @@
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　标题</div>
-		<div class=t_r><input type="text" name="news[title]"></div>
+		<div class=t_r><input id="news_title" type="text" name="news[title]"></div>
 	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　内容</div>
@@ -57,7 +57,7 @@
 		</div>
 	</div>
 	<div id=b_button>
-			<button onclick="tj()">提　交</button>
+			<button id="button_submit">提　交</button>
 	</div>
 	</form>
 </div>
@@ -66,5 +66,19 @@
 </body>
 </html>
 <script>
-	function tj(){ document.news_add.submit();}
+	$(function(){
+		$('#button_submit').click(function(){
+			if($('#news_title').val() == ''){
+				alert('请填写新闻标题!');
+				return false;
+			}
+			var oEditor = FCKeditorAPI.GetInstance('news[content]');
+			if(oEditor.GetHTML()==''){
+				alert('请填写新闻内容!');
+				return false;
+			}
+			
+			document.news_add.submit();
+		});
+	});
 </script>
