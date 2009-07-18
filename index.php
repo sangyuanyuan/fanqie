@@ -448,7 +448,7 @@
 
  			<!-- start top_right_right_bottom !-->
  			<?php
- 					$sql = 'select n.short_title from smg_news n where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 order by n.click_count desc limit 10';
+ 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 order by n.click_count desc limit 10';
 					$record_news=$db -> query($sql);		
 			?>	 
  			<div id=t_r_r_b>
@@ -463,7 +463,7 @@
 				<div class=content_trrb id=content_trrb1 style="display:inline">
 					<ul>
 					<?php for($i=0;$i<10;$i++){?>
-						<li><a href=""   <?php if($i<=2){?>  style="color:#E52520" <?php }?> ><?php echo $record_news[$i]->short_title; ?></a></li>
+						<li><a href="/<?php echo $record_news[$i]->platform ?>/news/news.php?id=<?php echo $record_news[$i]->news_id ?>"   <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo $record_news[$i]->short_title; ?></a></li>
 					<? }?>	
 					</ul>
 				</div>
