@@ -17,7 +17,28 @@
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);
-		$about=search_content($record[0]->keywords,'smg_news','',10);
+		
+		if($record[0]->related_news!="")
+		{
+			$about1=search_content($record[0]->related_news,"smg_news");
+			if(count($about1)<10)
+			{
+				$about=seach_content($record[0]->keywords,'smg_news','',10-count($about1));
+				if((count($about)+count($about1))<10)
+				{
+					$num=10-count($about)-count(about1);
+					$about2=$db->query("select * from smg_news where is_adopt order by rand() limit ".$num);
+				}
+			}
+		}
+		else{
+			$about=search_content($record[0]->keywords,'smg_news');
+			if(count($about1)<10)
+			{
+				$num=10-count(about1);
+				$about1=$db->query("select * from smg_news where is_adopt=1 order by rand() limit ".$num);
+			}
+		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d left join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' group by d.diggtoid order by flowernum desc";
@@ -42,7 +63,7 @@
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span> <a href="/news/news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
 		</div>
 		<div id=l_b>
-			<div id=title><img src="/images/news/title_img.jpg" />　<?php echo delhtml($record[0]->title);?>　<img src="/images/news/title_img.jpg" /></div>
+			<div id=title><?php echo delhtml($record[0]->title);?></div>
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
 			<?php if($record[0]->video_src!=""){?><div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div><?php } ?>
 			<div id=content>
@@ -126,26 +147,87 @@
 			<div class=abouttitle>更多关于“<span style="text-decoration:underline;"><?php echo delhtml($record[0]->short_title);?></span>”的新闻</div>
 			<div class=aboutcontent>
 				<div class=title>相关链接</div>
-				<?php for($i=0;$i<count($about);$i++){ ?>
+				<?php if($record[0]->related_news!=""){
+					 for($i=0;$i<count($about1);$i++){ ?>
+					<div class=content>
+						<?php if($about1[$i]->category_id=="1"||$about1[$i]->category_id=="2"){ ?>
+							·<a target="_blank" href="news_head.php?id=<?php echo $about1[$i]->id; ?>">
+								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
+							</a>
+						<?php }else{?>
+							·<a target="_blank" href="news.php?id=<?php echo $about1[$i]->id; ?>">
+								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
+							</a>
+						<?php }?>
+					</div>
+				<?php }
+					if(count($about1)<10)
+					{
+					 for($i=0;$i<count($about);$i++){
+					?>
 					<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
 							·<a target="_blank" href="news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?></a>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
-							
-						<?php }else if($about[$i]->video_src!=""){?>
-							·<a target="_blank" href="news_video.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?></a>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
-							
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+							</a>
 						<?php }else{?>
 							·<a target="_blank" href="news.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?></a>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
-							
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+							</a>
 						<?php }?>
 					</div>
-				<?php } ?>
+					<?php }
+						if((count($about1)+count($about))<10)
+						{
+							for($i=0;$i<count($about2);$i++)
+							{?>
+					<div class=content>
+						<?php if($about2[$i]->category_id=="1"||$about2[$i]->category_id=="2"){ ?>
+							·<a target="_blank" href="news_head.php?id=<?php echo $about2[$i]->id; ?>">
+								<?php echo delhtml($about2[$i]->title); ?>  <span style="color:#838383">(<?php echo $about2[$i]->last_edited_at; ?>)</span>
+							</a>
+						<?php }else{?>
+							·<a target="_blank" href="news.php?id=<?php echo $about2[$i]->id; ?>">
+								<?php echo delhtml($about2[$i]->title); ?>  <span style="color:#838383">(<?php echo $about2[$i]->last_edited_at; ?>)</span>
+							</a>
+						<?php }?>
+					</div>		
+							<?php }
+						}
+					}
+				 }else{
+					for($i=0;$i<count($about);$i++){
+					?>
+				<div class=content>
+						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
+							·<a target="_blank" href="news_head.php?id=<?php echo $about[$i]->id; ?>">
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+							</a>
+						<?php }else{?>
+							·<a target="_blank" href="news.php?id=<?php echo $about[$i]->id; ?>">
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+							</a>
+						<?php }?>
+					</div>		
+				<?php }if(count($about)<10)
+				{
+					for($i=0;$i<count($about1);$i++){?>
+				<div class=content>
+						<?php if($about1[$i]->category_id=="1"||$about1[$i]->category_id=="2"){ ?>
+							·<a target="_blank" href="news_head.php?id=<?php echo $about1[$i]->id; ?>">
+								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
+							</a>
+						<?php }else{?>
+							·<a target="_blank" href="news.php?id=<?php echo $about1[$i]->id; ?>">
+								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
+							</a>
+						<?php }?>
+					</div>		
+				<?php }}}?>
+					
 			</div>
 			
-			<?php  if(count($comment)>0){?>
+			<?php if($record[0]->is_commentable==1){ if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
 				 for($i=0;$i<2;$i++){ ?>
@@ -199,6 +281,7 @@
 				<button type="submit">提交评论</button>
 			</div>
 			</form>
+			<?php }?>
 		</div>
 	</div>
 	
