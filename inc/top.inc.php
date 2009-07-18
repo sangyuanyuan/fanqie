@@ -2,6 +2,8 @@
 	require_once('../frame.php');
 	$nav = new table_class("smg_nav");
 	$nav = $nav->find("all",array('order' => 'id asc'));
+	use_jquery();
+	js_include_tag('jquery.cookie','pubfun');
 ?>
 
 <div id=nav1>
@@ -78,3 +80,6 @@
 		</div>
 	</div>
 </div>
+<script>
+	display_login();
+</script>

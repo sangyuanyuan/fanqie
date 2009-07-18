@@ -88,6 +88,7 @@
 
 	}else{
 		//update news
+		date("Y-m-d H:i:s");
 		if($_POST['news']['forbbide_copy']==''){
 			$news->forbbide_copy=0;
 		}

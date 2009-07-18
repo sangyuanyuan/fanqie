@@ -26,14 +26,14 @@ if($_POST['user_type']=="login")
 			$sql = 'select * from smg_user_real where id='.$login_info[0]->smg_real_id;
 			$login_info2 = $db->query($sql);
 			@SetCookie('smg_user_dept',$login_info2[0]->dept_id,$y2k,'/');
-			$nick_name = $login_info2->nickname;
+			$nick_name = $login_info2[0]->nickname;
 			#alert($_COOKIE['smg_user_dept']);
 		}else{
 			$nick_name = $login_text;
 		}
-		@SetCookie('smg_username',$nick_name,$y2k,'/');
+		@SetCookie('smg_username',$login_text,$y2k,'/');
 		@SetCookie('smg_userid',$login_info[0]->smg_real_id,$y2k,'/');
-		@SetCookie('smg_user_nickname',$login_info[0]->nick_name,$y2k,'/');
+		@SetCookie('smg_user_nickname',$nick_name,$y2k,'/');
 		@setcookie('smg_role', $login_info[0]->role_name,$y2k,'/');
 		session_start(); 
 		$_SESSION["smg_role"] = $login_info[0]->role_name;	
@@ -86,7 +86,12 @@ if($_REQUEST['user_type']=="logout")
 		SetCookie('smg_user_nickname',"",$y2k,'/');
 		SetCookie('smg_role',"",$y2k,'/');
 		echo uc_user_synlogout();
-		echo "ok";
+		if(is_ajax()){
+			echo "ok";
+		}else{
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+		
 }
 
 if($_POST['user_type']=="reg")
