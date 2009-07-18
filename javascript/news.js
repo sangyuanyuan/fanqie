@@ -39,7 +39,6 @@
 			window.location.href="/vote/vote_show.php?vote_id="+vote_id;
 		}
 		)
-		$("#r_t").click(function(){location.href="/news/news_sub.php";});
 		$(".flower").click(function(){
 			var flowernum=$(this).next().next().html();
 			flowernum=parseInt(flowernum)+1;
@@ -79,11 +78,11 @@
 			$("#b_b_"+num).css("display","block");
 		})
 		$(".b_head_title1").mouseover(function(){		
-			$(".b_head_title1").css("background","#DD0D0B");
-			$(".b_head_title1").css("color","#ffffff");
+			$(".b_head_title1").css("background","none");
+			$(".b_head_title1").css("color","#000000");
 			$(".b_b").css("display","none");
-			$(this).css("background","none");
-			$(this).css("color","#000000");
+			$(this).css("background","#DD0D0B");
+			$(this).css("color","#ffffff");
 			var num=$(this).attr("param");
 			$("#b_b_"+num).css("display","block");
 		})
