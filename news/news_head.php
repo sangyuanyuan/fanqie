@@ -16,11 +16,7 @@
 		js_include_once_tag('pubfun','news','pub');
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
-		$record=$db->query($sql);
-		
-<<<<<<< HEAD:news/news_head.php
-
-=======
+		$record=$db->query($sql);	
 		if($record[0]->related_news!="")
 		{
 			$about1=search_newsid($record[0]->related_news,"smg_news");
@@ -32,7 +28,6 @@
 		else{
 			$about=search_keywords($record[0]->keywords,'smg_news');
 		}
->>>>>>> 74f7f573d768e75b568268d512a84501659f3457:news/news_head.php
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d left join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' group by d.diggtoid order by flowernum desc";
@@ -249,7 +244,7 @@
 	</div>
 	
 	<div id=ibody_right>
-		<div id=r_t><a target="_blank" href="/news/sub_news.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
+		<div id=r_t><a target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
 		<?php
 		if($record[0]->related_videos!=""){
 		$keys = explode(',',$record[0]->related_videos);
