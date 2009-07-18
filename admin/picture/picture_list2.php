@@ -66,8 +66,8 @@
 	<div class="div_box">
 		<?php for($i=0;$i<count($images);$i++){?>
 		<div class=v_box id="<?php echo $images[$i]->id;?>">
-			<a href="<?php echo $images[$i]->url;?>" target="_blank"><img src="<?php echo $images[$i]->src_path('small');?>" width="170" height="70" border="0"></a>
-			<div class=content><a href="<?php echo $images[$i]->url;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $images[$i]->title;?></a></div>
+			<a href="/show/show.php?id=<?php echo $images[$i]->id;?>" target="_blank"><img src="<?php echo $images[$i]->src_path('small');?>" width="170" height="70" border="0"></a>
+			<div class=content><a href="/show/show.php?id=<?php echo $images[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $images[$i]->title;?></a></div>
 			<div class=content>
 				<?php if($images[$i]->is_recommend=='0'){echo '未推荐';}elseif($images[$i]->is_recommend=='1'){echo '已推荐';}elseif($images[$i]->is_recommend=='2'){echo '被退回';}?>
 			</div>

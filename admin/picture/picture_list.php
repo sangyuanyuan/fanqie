@@ -68,9 +68,9 @@
 	<div class="div_box">
 		<?php for($i=0;$i<count($images);$i++){?>
 		<div class=v_box id="<?php echo $images[$i]->id;?>">
-			<a href="<?php echo $images[$i]->url;?>" target="_blank"><img src="<?php echo $images[$i]->src_path('small');?>" width="170" height="70" border="0"></a>
+			<a href="/show/show.php?id=<?php echo $images[$i]->id;?>" target="_blank"><img src="<?php echo $images[$i]->src_path('small');?>" width="170" height="70" border="0"></a>
 			<div class=content>
-				<a href="<?php echo $images[$i]->url;?>" target="_blank" style="color:#000000; text-decoration:none">
+				<a href="/show/show.php?id=<?php echo $images[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none">
 					<?php echo $images[$i]->title;?>
 				</a>
 			</div>
