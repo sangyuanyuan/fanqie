@@ -20,10 +20,10 @@
 <div id=ibody>	
  <div id=ibody_left>
  	  <div class=l>
-			<div class=title><div class=left>每日之星排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
+ 	  		<?php $category_id = category_id_by_name('每日之星'); ?>
+			<div class=title><div class=left>每日之星排行榜</div><div class="more"><a target="_blank" href="list.php?id=<?php echo $category_id; ?>&type=news">更多>></a></div></div>
 			<?php
 				$db = get_db();
-				$category_id = category_id_by_name('每日之星');
 				$sql = 'select id,short_title,click_count,photo_src from smg_news where is_adopt=1 and category_id='.$category_id.' and photo_src!="" and click_count is not null order by click_count desc limit 5 ';
 				$records = $db->query($sql);
 				$count = count($records);
@@ -45,7 +45,7 @@
 				$sql = 'select * from smg_video where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
-			<div class=title><div class=left>视频排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
+			<div class=title><div class=left>视频排行榜</div></div>
 			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
@@ -62,7 +62,7 @@
 				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
-			<div class=title><div class=left>我型我秀排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
+			<div class=title><div class=left>我型我秀排行榜</div></div>
 			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
@@ -85,7 +85,6 @@
 		?>
 		<div class=top>
 			<div class=left>每日之星</div>
-			<div class=more><a href="list.php">更多>></a></div>
 		</div>
 		
 		<div class=title><?php echo $news->title; ?></div>

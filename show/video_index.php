@@ -56,7 +56,7 @@
  	 	 <div id=l_m1>
  	 	 	<?php
 				$db = get_db();
-				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
+				$sql = 'select i.id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
 			?>
 			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
@@ -65,7 +65,7 @@
 				var pic_width1=276; 
 				var pic_height1=146; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
-				var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
+				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
 				var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
 	
 				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "287", "146", "4","#FFFFFF");
@@ -82,7 +82,7 @@
 				picflash.addVariable("pic_width",pic_width1);
 				picflash.addVariable("pic_height",pic_height1);
 				picflash.write("focus_02");				
-			</script>
+			</script> 
  	 	 </div>
 		 
 		 <div class=l_m>
@@ -183,7 +183,6 @@
 			<div class=line></div>
 			<div class=r_b_title>
 		  		<div class=left>视频新闻</div>
-				<div class=more><a target="_blank" href="list.php?type=video&cate=视频新闻">更多</a></div>
 		  	</div>
 			<div class=r_b_content>
 			<?php
@@ -201,12 +200,12 @@
 			</div>
 			<div class=line></div>
 			<div class=r_b_title>
+				<?php $category_id = category_id_by_name('佳片共赏'); ?>
 		  		<div class=left>佳片共赏</div>
-				<div class=more><a target="_blank" href="list.php?type=video&cate=佳片共赏">更多</a></div>
+				<div class=more><a target="_blank" href="list.php?type=video&id=<?php echo $category_id; ?>">更多</a></div>
 		  	</div>
 			<div class=r_b_content>
 			<?php
-				$category_id = category_id_by_name('佳片共赏');
 				$sql = 'select * from smg_video where is_adopt=1 and category_id='.$category_id.' order by priority asc,created_at desc limit 8';
 				$records = $db->query($sql);
 				$count = count($records);

@@ -34,25 +34,25 @@
  	 	 <div id=l_m>
  	 	 	<?php
 				$db = get_db();
-				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
+				$sql = 'select i.id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
 			?>
-	 	 	<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
 			<div id="focus_02"></div> 
 			<script type="text/javascript"> 
 				var pic_width1=276; 
 				var pic_height1=146; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
-				var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
+				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
 				var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
 	
-				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "276", "146", "4","#FFFFFF");
+				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "287", "146", "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');
 				picflash.addVariable("picurl",pics1);
 				picflash.addVariable("piclink",mylinks1);
 				picflash.addVariable("pictext",texts1);				
 				picflash.addVariable("pictime","5");
-				picflash.addVariable("borderwidth","276");
+				picflash.addVariable("borderwidth","287");
 				picflash.addVariable("borderheight","146");
 				picflash.addVariable("borderw","false");
 				picflash.addVariable("buttondisplay","true");
