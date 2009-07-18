@@ -123,7 +123,7 @@
 			<? }}?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a href="news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
-			<div class=abouttitle>更多关于“<span style="text-decoration:underline;"><?php echo delhtml($record[0]->shorttile);?></span>”的新闻</div>
+			<div class=abouttitle>更多关于“<span style="text-decoration:underline;"><?php echo delhtml($record[0]->short_title);?></span>”的新闻</div>
 			<div class=aboutcontent>
 				<div class=title>相关链接</div>
 				<?php for($i=0;$i<count($about);$i++){ ?>

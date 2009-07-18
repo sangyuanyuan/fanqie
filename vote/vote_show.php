@@ -11,32 +11,14 @@
 <body>
 <? require_once('../inc/top.inc.html');
 	$db = get_db();
-$vote = $db->query('select * from smg_vote  where id=' .$_REQUEST['vote_id']);
-if($vote[0]->is_sub_vote==0)
-{
-	$voteitems=$db->query("select * from smg_vote_item where vote_id=" .$_REQUEST['vote_id']);
-	$allcount=0;
-	for($i=0;$i<count(voteitems);$i++){
-		$count=$db->query("select count(*) as num from smg_vote_item_record where vote_id=".$_REQUEST['vote_id']);
-		$allcount=$allcount+(int)$count[0]->num;
-	}
-	
-}
-else
-{
 	$voteitem=$db->query("select * from smg_vote_item where vote_id=".$_REQUEST['vote_id']);
-	for($i=0;$i<count($voteitems);$i++)
-	{
-		$voteitems=$db->query("select * from smg_vote_item where vote_id=".$voteitem[$i]->sub_vote_id);
-		for($j=0;$j<count($voteitems);$j++){
-			$count=$db->query("select * from smg_vote_item_record where vote_id=".$voteitems[$i]->vote_id);
-			
-		}
-	}
-}
+	$count=$db->query("select count(*) as num from smg_vote_item_record where vote_id=".$_REQUEST['vote_id']);
+	$allcount=count($count);
+
 //echo "select * from " .$_REQUEST['tablepre'] ."vote_item where vote_id=" .$_REQUEST['vote_id'] ." order by priority asc";
 
 ?>
+<div id=ibody>
 <div>总共<span style="color:#FF0000;"><?php echo $allcount;?></span>人参加</div>
 <table  border="0" bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
@@ -59,21 +41,20 @@ else
 		</td>
 	</tr>
   <?php
-    for($i=0;$i<count($voteitems);$i++)
+    for($i=0;$i<count($voteitem);$i++)
     {
-    	//$records[$i]->recordcount = ($records[$i]->recordcount == "") ? 0 :$records[$i]->recordcount;
+    	$vote=$db->query("select count(*) as value from where item_id=".$voteitem[$i]->id);
   ?>
 	<tr>
 		<td bgcolor="#FFFFFF">
 			<?php echo $i+1;?>
 		</td>
 		<td  bgcolor="#FFFFFF">
-			<?php echo $voteitems[$i]->name;?>
+			<?php echo $voteitem[$i]->title;?>
 		</td>
 		<td bgcolor="#FFFFFF" align=left>
 			<?php 
-				$count = $voteitems[$i]->itemvalue;
-				
+				$count = $vote[0]->value;
 				$count = ($allcount >0) ? ($count/$allcount) : 0;
 				echo sprintf("%.2f",$count * 100) .'%';?>
 				<div style="background:url('/images/votebg.gif') repeat-x; height:9px;width:<?php echo ceil($count * 100)*3;?>px;"></div>
@@ -102,8 +83,6 @@ else
 </div>
 <?
   echo '</div>';
-  $display->displayright();
-  $display->displaybottom();
 ?>
 <? require_once('../inc/bottom.inc.php');?>
 

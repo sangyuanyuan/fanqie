@@ -33,6 +33,11 @@
 		  }
 		
 		})
+		$(".ck").click(function(){
+			var vote_id=$(this).prev().prev().attr("value");
+			window.location.href="/vote/vote_show.php?id="+vote_id;
+		}
+		)
 		$("#r_t").click(function(){location.href="/news/news_sub.php";});
 		$(".flower").click(function(){
 			var flowernum=$(this).next().next().html();
