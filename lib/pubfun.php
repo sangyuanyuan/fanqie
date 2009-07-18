@@ -259,19 +259,29 @@ function strfck($str)
 function get_fck_content($str,$symbol='fck_pageindex')
 {
 	$ies = '<div style="page-break-after: always"><span style="display: none">&nbsp;</span></div>';	
-	$ffs = '<div style="page-break-after: always; "><span style="DISPLAY:none">&nbsp;</span></div>';		   
+	$ffs = '<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>';		   	
 	$contents = split($ies,$str);
-	if (count($contents) < 0 ) {
+	$record_count_token = $symbol . "_record_count";	
+	$pagecounttoken = $symbol . "_count";
+	global $$pagecounttoken;
+	global $$record_count_token;
+	if (count($contents) < 2 ) {
 		$contents = split($ffs,$str);
 	}
+	$$record_count_token = count($contents);
+	$$pagecounttoken = $$record_count_token;
 	$index = isset($_REQUEST[$symbol]) ? $_REQUEST[$symbol] : 1;
 	return strfck($contents[$index-1]);
 }
 
-function print_fck_pages($str,$url="",$symbol='fck_pageindex')
+function print_fck_pages($str,$url="",$symbol='fck_pageindex'){
+	paginate($url,null,$symbol);
+};
+
+function print_fck_pages1($str,$url="",$symbol='fck_pageindex')
 {
-	$ies = '<span style="page-break-after: always"><span style="display: none">&nbsp;</span></span>';	
-	$ffs = '<span style="page-break-after: always; "><span style="DISPLAY:none">&nbsp;</span></span>';
+	$ies = '<div style="page-break-after: always"><span style="display: none">&nbsp;</span></div>';	
+	$ffs = '<div style="page-break-after: always; "><span style="DISPLAY:none">&nbsp;</span></div>';
 	$pagecount = substr_count($str,$ies);
 	$pagecount = $pagecount <=0 ? substr_count($str,$ffs) : $pagecount;
 	$pagecount++;
@@ -334,6 +344,13 @@ function print_fck_pages($str,$url="",$symbol='fck_pageindex')
 	}
 	?>
 	</select>页
+	<script>
+			function jumppage(urlprex,pageindex)
+			{
+				var surl=urlprex+pageindex;
+				window.location.href=surl;
+			} 
+	</script>
 
 	<?php	
 	
