@@ -95,7 +95,7 @@
 		</div>
 		<div class=content>
 			<?php echo get_fck_content($news->content); ?>
-			<div id=page><?php print_fck_pages($news->content,'star.php?id='.$id); ?></div>
+			<div id=page><?php print_fck_pages($news->content,'article.php?id='.$id); ?></div>
 		</div>
 		<div id=point>
 			<?php 
@@ -121,12 +121,12 @@
 			<?php 
 				for($i=0;$i<$s_point;$i++){
 			?>
-			<div class=star value="<?php echo $i+1; ?>" style="background:url('/images/show/star1.jpg') no-repeat;"></div>
+			<div class=star value="<?php echo $i+1; ?>"  title="<?php echo ($i+1)."分";?>" style="background:url('/images/show/star1.jpg') no-repeat;"></div>
 			<?php } ?>
 			<?php 
 				for($i=$s_point;$i<10;$i++){
 			?>
-			<div class=star value="<?php echo $i+1; ?>"></div>
+			<div class=star value="<?php echo $i+1; ?>"  title="<?php echo ($i+1)."分";?>"></div>
 			<?php } ?>
 			<div id=info>共<?php echo $count; ?>人评分[点击星星直接打分]</div>
 			
