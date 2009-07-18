@@ -1,6 +1,7 @@
 <?php
 	require_once('../frame.php');
 	$id=$_REQUEST['id'];
+	//$id =14621;
 	if($id==""||$id==null){die('没有找到网页');}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -142,7 +143,7 @@
 					<div class="btn"><button class="vote_submit" param="0">投票</button><input type="hidden" id="vote_id" value="<?php echo $record2[0]->vote_id; ?>"><input type="hidden" value="<?php echo $record1[0]->limit_type;?>"> <button id="show_vote">查看</button></div>
 				</div>
 			<? }}?>
-			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
+			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news.php?id=".$id); ?></div>
 			<div id=more><a href="news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<div class=abouttitle>更多关于“<span style="text-decoration:underline;"><?php echo delhtml($record[0]->short_title);?></span>”的新闻</div>
 			<div class=aboutcontent>

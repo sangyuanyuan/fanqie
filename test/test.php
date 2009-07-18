@@ -3,6 +3,8 @@
 	
 	require "../frame.php";	
 	echo now();
+	echo urldecode('%E5%8A%A0');
+	echo urldecode('\xe5\x8a\xa0');
 	echo phpinfo();
 	#$db->paginate('select * from smg_category');
 
