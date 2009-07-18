@@ -22,19 +22,20 @@
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　部门</div>
 		<div class=t_r>
 			<select id=select name="news[dept_id]">
+				<option>请选择</option>
 				<?php 
 				$sql="SELECT * FROM smg_dept";
 				$db = get_db();
 				$dept=$db->query($sql);
 				for($i=0;$i<count($dept);$i++){ ?>
-					<option <?php if($i==6){?>selected=selected<?php } ?> value="<?php echo $dept[$i]->id;?>" ><?php echo $dept[$i]->name;?></option>
+					<option <?php if($i==$_COOKIE['smg_user_dept']){?>selected=selected<?php } ?> value="<?php echo $dept[$i]->id;?>" ><?php echo $dept[$i]->name;?></option>
 				<?php }?>
 			</select>
 		</div>
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　工号</div>
-		<div class=t_r><input type="text" name="news[publisher_id]"></div>
+		<div class=t_r><input type="text" name="news[publisher_id]" value="<?php echo $_COOKIE['smg_username'];?>"></div>
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　标题</div>

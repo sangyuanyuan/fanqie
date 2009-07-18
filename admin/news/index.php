@@ -1,7 +1,7 @@
 <?php
 	require_once('../../frame.php');
 	$user = judge_role('admin');	
-	$title = $_REQUEST['title'];
+	$title = urldecode($_REQUEST['title']);
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
 	$dept_id = $_REQUEST['dept'];
 	$is_adopt = $_REQUEST['adopt'];
@@ -128,7 +128,8 @@
 
 <script>
 	$("#search_new").click(function(){
-			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			//window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			send_search();
 	});
 	
 	$(".select_new").change(function(){
@@ -158,9 +159,12 @@
 				});
 			}
 		});
+		function send_search(){
+			window.location.href="?title="+encodeURI($("#title").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+		}
 		$('#title').keydown(function(e){
 			if(e.keyCode == 13){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+				send_search();
 			}
 		});
 	});
