@@ -11,6 +11,7 @@
 	<?php
 		css_include_tag('show_star','top','bottom');
 		use_jquery();
+		js_include_tag('pubfun');
   	?>
 	
 </head>
@@ -82,11 +83,122 @@
 			$news->click_count = $news->click_count+1;
 			$news -> save();
 		?>
+		<div class=top>
+			<div class=left>每日之星</div>
+			<div class=more><a href="list.php">更多>></a></div>
+		</div>
+		
+		<div class=title><?php echo $news->title; ?></div>
+		<div class=a_title>
+			来源：<?php echo get_dept_info($news->dept_id)->name;?>&nbsp;
+			浏览次数：<font color=#C2130E><?php echo $news->click_count; ?></font>&nbsp;
+			时间：<?php echo $news->created_at; ?>
+		</div>
+		<div class=content>
+			<?php echo get_fck_content($news->content); ?>
+			<div id=page><?php print_fck_pages($news->content,'star.php?id='.$id); ?></div>
+		</div>
+		<div id=point>
+			<?php 
+				$sql = 'select avg(point) as a_point,count(point) as count from smg_star_point where type="news" and resource_id='.$id;
+				$record = $db->query($sql);
+				$point = $record[0]->a_point;
+				$count = $record[0]->count;
+				if($point==''){
+					$point = '0.0';
+				}else{
+					$r_point = substr($point, 0, 3);
+					if($r_point=='10.')$r_point=10;
+					$o_point = substr($point, 0, 1);
+					if(substr($r_point,2,1)=='0'){
+						$s_point=$r_point;
+					}else{
+						$s_point = ($r_point-$o_point)>0.49?($o_point+1):$o_point;
+					}
+				}
+				if($count=='')$count=0;
+			?>
+			<div id=result><?php echo $r_point;?></div>
+			<?php 
+				for($i=0;$i<$s_point;$i++){
+			?>
+			<div class=star value="<?php echo $i+1; ?>" style="background:url('/images/show/star1.jpg') no-repeat;"></div>
+			<?php } ?>
+			<?php 
+				for($i=$s_point;$i<10;$i++){
+			?>
+			<div class=star value="<?php echo $i+1; ?>"></div>
+			<?php } ?>
+			<div id=info>共<?php echo $count; ?>人评分[点击星星直接打分]</div>
+			
+		</div>
+		
+		<div id=comment>
+			<?php 
+				$comment = new table_class('smg_comment');
+				$records = $comment->find('all',array('conditions' => 'resource_type="news" and resource_id='.$id));
+				$count2 = count($records);
+				$records = $comment->paginate('all',array('conditions' => 'resource_type="news" and resource_id='.$id,'order' => 'created_at desc'),10);
+				$count = count($records);
+				for($i=0;$i<$count;$i++){
+			?>
+				<div class=content>
+					<div class=r>
+						<div class=t><?php echo $records[$i]->nick_name?></div>
+						<div class=b><?php echo $records[$i]->comment?></div>
+					</div>
+				</div>
+			<?php }?>
+			<div id=paginate><?php paginate();?></div>
+			<div class=f_title><div id=f>发表评论</div></div>
+			<div id=comment_box>
+				<form id="comment_form" action="/pub/pub.post.php" method="post">
+					<div class=c_title>现在有<span style="color:#FF5800"><?php echo $count2;?></span>人发表评论</div>
+					<div id=commenter_box><input type="text" style="width:340px;" name="post[nick_name]"></div>
+					<input type="hidden" name="post[resource_id]" value="<?php echo $id;?>">
+					<input type="hidden" name="post[resource_type]" value="news">
+					<input type="hidden" name="type" value="comment">
+					<div id="commit_fck"><?php show_fckeditor('post[comment]','Title',false,'75','','650');?></div>
+					<div id=fqbq></div>
+					<div id=submit_comment></div>
+				</form>
+			</div>
+		</div>
  </div>
 
 </div>
-<? require_once('../inc/bottom.inc.php');?>
+<?php
+	close_db();
+	require_once('../inc/bottom.inc.php');
+?>
 
-
+<input type="hidden" value="<?php echo $id; ?>" id="news_id">
 </body>
 </html>
+
+<script>
+	$(function(){
+		$(".star").click(function(){
+			$.post("/pub/pub.post.php",{'type':'star','r_type':'news','id':$("#news_id").attr('value'),'value':$(this).attr('value')},function(data){
+				if(data!=""){
+					alert(data);
+				}else{
+					window.location.reload();
+				}
+			});
+		});
+		
+		display_fqbq('fqbq','post[comment]');
+			
+		$("#submit_comment").click(function(){
+			var oEditor = FCKeditorAPI.GetInstance('post[comment]') ;
+			var comment = oEditor.GetHTML();
+			if(comment==""){
+				alert("请输入评论内容！");
+				return false;
+			}
+			$("#comment_form").submit();
+		});
+	});
+	
+</script>
