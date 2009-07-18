@@ -345,7 +345,7 @@
 			 ?>
 			 	<div class="r_content">
 			 		<ul>
-						<li>·<a target="_blank" href="/show/video.php?id=<?php $jcsp[$i]->id;?>"><?php echo get_fck_content($jcsp[$i]->title); ?></a></li>
+						<li>·<a target="_blank" href="/show/video.php?id=<?php echo $jcsp[$i]->id;?>"><?php echo get_fck_content($jcsp[$i]->title); ?></a></li>
 					</ul>			
 				</div>
 			<? }?>
