@@ -9,6 +9,7 @@ li{margin:0px; list-style-type:none;}
 #ibody_right{width:684px; float:right; display:inline;}
 
 #l_t{width:296px; float:left; display:inline;}
+
 .l_m{width:290px; margin-top:10px; border:1px solid #DFDFDF; float:left; display:inline;}
 .l_m a{text-decoration:none;}
 .l_m .title{width:270px; height:20px; padding:10px; color:#141414; font-weight:bold; font-size:15px; border-bottom:1px solid #DFDFDF; float:left; display:inline;}
@@ -32,17 +33,17 @@ li{margin:0px; list-style-type:none;}
 #info .title{width:550px; height:10px; padding:10px; line-height:15px; font-size:15px; float:left; display:inline;}
 #info .content{width:570px; font-size:13px; margin-top:20px; color:#666666; float:left; display:inline;}
 #info .content .title{width:auto; height:auto; padding:0; margin-left:15px; font-size:13px; float:left; display:inline;}
-#info .content .top{width:570px; float:left; display:inline;}
-#info .content .top #description{width:480px; line-height:15px; overflow:hidden; float:left; display:inline;}
-#info .content .center{width:570px; height:30px; margin-top:20px; float:left; display:inline;}
+#info .content .bottom{width:570px; padding-bottom:15px; float:left; display:inline;}
+#info .content .bottom #description{width:480px; line-height:15px; overflow:hidden; float:left; display:inline;}
+#info .content .center{width:570px; height:30px; margin-top:10px; float:left; display:inline;}
 #info .content .center .left{width:190px; float:left; display:inline;}
 #info .content .center .left #publisher{width:100px; font-size:13px; color:#0093BB;  line-height:15px; font-weight:bolder; float:left; display:inline;}
 #info .content .center .middle{width:190px; float:left; display:inline;}
 #info .content .center .middle #date{width:100px; font-size:13px; color:#FF6600;  line-height:15px; font-weight:bolder; float:left; display:inline;}
 #info .content .center .right{width:190px; float:left; display:inline;}
 #info .content .center .right #count{font-weight:bolder;  line-height:15px; color:#FF6600; float:left; display:inline;}
-#info .content .bottom{width:570px; float:left; display:inline;}
-#info .content .bottom #name{width:550px; height:30px; margin-left:15px;line-height:25px;  float:left; display:inline; overflow:hidden;}
+#info .content .top{width:570px; float:left; display:inline;}
+#info .content .top #name{width:550px; height:30px; margin-left:15px;line-height:25px;  float:left; display:inline; overflow:hidden;}
 
 #r_b{width:680px; margin-top:10px; background:url('/images/show/show_r_b.jpg') no-repeat; float:left; display:inline;}
 
