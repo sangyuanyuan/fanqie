@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_star_point`;
+CREATE TABLE  `smg_new`.`smg_star_point` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(45) DEFAULT NULL,
+  `resource_id` int(10) unsigned DEFAULT NULL,
+  `point` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

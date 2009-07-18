@@ -36,5 +36,11 @@
 		$sql="insert into smg_digg(ip,type,diggtoid,file_type) values('".$ip."','".$type."',".$diggtoid.",'".$file_type."')";
 		$db = get_db();
 		$db->execute($sql);
+   	}elseif($_POST['type']=='star'){
+   		$table = new table_class('smg_star_point');
+		$table->type = $_POST['r_type'];
+		$table->resource_id = $_POST['id'];
+		$table->point = $_POST['value'];
+		$table->save();
    	}
 ?>

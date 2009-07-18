@@ -3,7 +3,7 @@
 	$magazine = new table_class("smg_magazine");
 	$magazine->find($_POST['id']);
 	
-	var_dump($_POST);
+	//var_dump($_POST);
 	
 	if($_POST['magazine']['online_url']==null){
 		//如果在编辑的情况下没有上传文件则不进入文件上传的过程
@@ -54,7 +54,7 @@
 	if($_POST['magazine']["commentable"]==null){$magazine->update_attribute("commentable","");}
 	$magazine->update_attributes($_POST['magazine']);
 	
-	//redirect($_POST['url']);
+	redirect($_POST['url']);
 	
 	
 ?>
