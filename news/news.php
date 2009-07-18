@@ -264,7 +264,7 @@
 				?>
 				<div class="r_content">
 					<ul>
-			 			<li>·<a href="/bbs/viewthread.php?tid=<?php $bbs[$i]->tid;?>"><?php echo $bbs[$i]->subject; ?></a></li>
+			 			<li>·<a target="_blank" href="/bbs/viewthread.php?tid=<?php echo $bbs[$i]->tid;?>"><?php echo $bbs[$i]->subject; ?></a></li>
 					</ul>		
 				</div>
 				<? }?>
@@ -277,7 +277,7 @@
 				?>
 				<div class="r_content">
 					<ul>
-			 			<li>·<a href="/blog/?uid-<?php echo $blog[$i]->uid;?>-action-viewspace-itemid-<?php echo $blog[$i]->itemid;?>"><?php echo $blog[$i]->subject; ?></a></li>		
+			 			<li>·<a target="_blank" href="/blog/?uid-<?php echo $blog[$i]->uid;?>-action-viewspace-itemid-<?php echo $blog[$i]->itemid;?>"><?php echo $blog[$i]->subject; ?></a></li>		
 					</ul>
 				</div>
 				<? }?>
@@ -290,7 +290,7 @@
 			 ?>
 			 	<div class="r_content">
 			 		<ul>
-						<li>·<a href="/show/video.php?id=<?php $jcsp[$i]->id;?>"><?php echo get_fck_content($jcsp[$i]->title); ?></a></li>
+						<li>·<a target="_blank" href="/show/video.php?id=<?php $jcsp[$i]->id;?>"><?php echo get_fck_content($jcsp[$i]->title); ?></a></li>
 					</ul>			
 				</div>
 			<? }?>

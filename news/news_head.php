@@ -237,7 +237,7 @@
 		<div class=r_b1>
 			<div class=title>历史头条</div>
 			<?php 
-			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and (category_id=1 or category_id=2) order by priority asc,last_edited_at desc";
+			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='历史头条' order by priority asc,last_edited_at desc";
 			 $morehead=$db->paginate($sql,8);
 			 for($i=0;$i<count($morehead);$i++){	 	
 			 ?>
