@@ -1,0 +1,54 @@
+body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+ul{margin:0px; padding:0px;}
+li{margin:0px; list-style-type:none;}
+
+#ibody{width:995px; margin:0 auto; padding-bottom:40px; margin-top:10px; line-height:20px;}
+a{text-decoration:none;}
+
+#ibody_left{width:295px; float:left; display:inline;}
+#ibody_right{width:680px;  background:url('/images/show/star_r.jpg') no-repeat; float:right; display:inline;}
+
+.l{width:278px; margin-top:12px; border:1px solid #dfdfdf; float:left; display:inline;}
+.l .title{width:258px; height:20px; padding:10px; color:#141414; font-weight:bold; font-size:15px; border-bottom:1px solid #DFDFDF; float:left; display:inline;}
+.l .title .left{width:200px; float:left; display:inline; line-height:15px;} 
+.l .title .more{width:50px; margin-top:2px; font-size:12px; float:right; display:inline;}
+.l .title .more a{color:#FF6600; line-height:15px;}
+.l .content{width:258px; margin-left:10px; padding-bottom:10px; border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
+.l .content .left{width:16px; height:13px; margin-top:10px; text-align:center; line-height:13px; font-weight:bold;  color:#ffffff; background:url('/images/icon/show_wxwxzy.jpg') no-repeat; float:left; display:inline;}
+.l .content .middle{width:44px; height:44px; margin-top:10px; margin-left:5px; border:1px solid #C6C6C8; float:left; display:inline;}
+.l .content .middle img{margin-top:2px; margin-left:2px;}
+.l .content .right{width:178px; margin-top:10px; margin-left:5px; float:left; display:inline;}
+.l .content .right .top{width:100px; height:15px; overflow:hidden; line-height:15px; float:left; display:inline;}
+.l .content .right .top a{color:#666666; font-weight:bold;}
+.l .content .right .bottom{width:100px; line-height:15px; float:left; display:inline;}
+.l .content .right .bottom a{color:#9D9D9D; font-weight:bold;}
+
+#ibody_right .top{width:680px; height:20px; margin-top:20px; padding:10px; color:#141414; font-weight:bold; font-size:14px; font-family:黑体; line-height:14px; float:left; display:inline;}
+#ibody_right .top .left{width:75px; height:14px; margin-left:12px; border-right:1px solid #dfdfdf; float:left; display:inline;}
+#ibody_right .top .more{width:50px; height:13px; font-size:13px; margin-top:1px; margin-left:520px; font-weight:normal; float:left; display:inline;}
+#ibody_right .top .more a{color:#FF6600;}
+#ibody_right .title{width:680px; height:30px; margin-top:10px; font-size:25px; font-weight:bolder; font-family:黑体; line-height:30px; text-align:center; float:left; display:inline;}
+#ibody_right .a_title{width:560px; height:27px; margin-top:15px; margin-left:60px; text-align:center; font-size:12px; line-height:27px;  border-top:1px solid #dfdfdf; border-bottom:1px solid #dfdfdf; }
+#ibody_right .content{width:640px; margin-top:15px; margin-left:20px; overflow:hidden; float:left; display:inline;}
+#ibody_right #page{width:680px; height:15px; line-height:15px; margin-top:10px; text-align:center; float:left; display:inline;}
+#ibody_right #point{width:680px; height:125px; float:left; display:inline;}
+#ibody_right #point #result{width:75px; height:75px; margin-left:50px; font-size:40px; font-weight:bolder; font-family:Arial; line-height:75px; float:left; display:inline;}
+#ibody_right #point .star{width:38px; height:38px; margin-top:18px; margin-right:5px; cursor:pointer; background:url('/images/show/star2.jpg') no-repeat; float:left; display:inline;}
+#ibody_right #point #info{width:200px; height:25px; margin-top:40px; margin-right:20px; color:#666666; font-size:12px; line-height:12px; float:right; display:inline;}
+#ibody_right #comment .content{width:660px; margin-left:10px; padding-bottom:10px; border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
+#ibody_right #comment .content .l{width:55px; height:52px; margin-top:10px; margin-left:10px; border:1px solid #CCCCCC; float:left; display:inline;}
+#ibody_right #comment .content .l img{margin:5px;}
+#ibody_right #comment .content .r{width:670px; margin-top:10px; margin-left:10px; float:left; display:inline;}
+#ibody_right #comment .content .r .t{width:670px; float:left; color:#FF6600; display:inline;}
+#ibody_right #comment .content .r .b{width:670px; word-wrap:break-word; float:left; display:inline;}
+#ibody_right #comment #paginate{width:330px; margin-top:20px; margin-left:10px; float:left; display:inline;}
+#ibody_right #comment #paginate a{color:#000000}
+#ibody_right #comment #comment_box{width:678px; height:200px; margin-top:10px; border:1px solid #CDCDCD; float:left; display:inline;}
+#ibody_right #comment #comment_box #commit_fck{width:670px;  margin-left:10px; float:left; display:inline;}
+#ibody_right #comment #comment_box #fqbq{width:600px; margin-left:13px; float:left; display:inline;}
+#ibody_right #comment #comment_box #commenter_box{width:670px;  margin-left:10px; margin-top:10px; float:left; display:inline;}
+#ibody_right #comment #comment_box #submit_comment{width:66px; height:19px; margin-top:10px; margin-right:20px; cursor:pointer; float:right; display:inline; background:url(/images/show/show_submit.jpg);}
+#ibody_right #comment #comment_box .c_title{width:480px; margin-left:7px; margin-top:13px; font-size:13px; float:left; display:inline; font-weight:normal;}
+#ibody_right #comment .f_title{width:680px; height:25px; background:url(/images/show/star_tbg.jpg); float:left; display:inline;}
+#ibody_right #comment .f_title #f{ margin-top:2px; margin-left:20px; font-size:15px; line-height:20px; color:#ffffff; font-weight:bolder; float:left; display:inline; }
+
