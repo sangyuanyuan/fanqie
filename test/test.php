@@ -3,6 +3,7 @@
 	
 	require "../frame.php";	
 	echo now();
+	echo phpinfo();
 	#$db->paginate('select * from smg_category');
 
 	write_to_file('d:\tmp.txt', 'dfadsfsadfsdfdsfsd'. chr(13) .chr(10).'123123\r\n');
