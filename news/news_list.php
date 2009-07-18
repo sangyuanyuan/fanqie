@@ -12,6 +12,7 @@
 	<? 	
 		css_include_tag('news_news_list','top','bottom');
 		use_jquery();
+		js_include_once_tag('news_list');
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.category_id=".$id;
 		$record=$db->paginate($sql,20);		
@@ -37,7 +38,7 @@
 		</div>
 	</div>
 	<div id=ibody_right>
-		<div id=r_t></div>
+		<div id=r_t><a target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
@@ -48,36 +49,62 @@
 			 	<div class="r_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><a starget="_blank" href="/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+			 			<div class=cl1><a starget="_blank" href="/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }else{?>
 						<div class=pic2>0<?php echo $i+1;?></div>
-						<div class=cl2><a starget="_blank" href="/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+						<div class=cl2><a starget="_blank" href="/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }?>				
 				</div>
 			<?php }?>
 		</div>
 		<div id=r_b_t>
-			<div class=b_t_title1 id=r_b_t_title1 onmouseover="ChangeTab1(1)">论坛新帖</div>
-			<div class=b_t_title1 id=r_b_t_title2 onmouseover="ChangeTab1(2)">博客新帖</div>
-			<div class=b_t_title2 id=r_b_t_title3 onmouseover="ChangeTab1(3)">精彩视频</div>
-			<div id=b_t_3 style="display:block;">
+			<div class=b_t_title1 param=1>论坛新帖</div>
+			<div class=b_t_title1 param=2>博客新帖</div>
+			<div class=b_t_title1 param=3 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat">精彩视频</div>
+			<div class="b_t" id="b_t_1" style="display:none;">
+				<? 
+					$sql="SELECT * FROM bbs_posts where subject<>'' order by pid desc";
+					$bbs=$db->paginate($sql,10);
+					for($i=0;$i<count($bbs);$i++){
+				?>
+				<div class="r_content">
+					<ul>
+			 			<li>·<a target="_blank" href="/bbs/viewthread.php?tid=<?php echo $bbs[$i]->tid;?>"><?php echo $bbs[$i]->subject; ?></a></li>
+					</ul>		
+				</div>
+				<? }?>
+			</div>
+			<div class=b_t id="b_t_2" style="display:none;">
+				<? 
+					$sql="SELECT * FROM blog_spaceitems order by itemid desc";
+					$blog=$db->paginate($sql,10);
+					for($i=0;$i<count($bbs);$i++){
+				?>
+				<div class="r_content">
+					<ul>
+			 			<li>·<a target="_blank" href="/blog/?uid-<?php echo $blog[$i]->uid;?>-action-viewspace-itemid-<?php echo $blog[$i]->itemid;?>"><?php echo $blog[$i]->subject; ?></a></li>		
+					</ul>
+				</div>
+				<? }?>
+			</div>
+			<div class=b_t id="b_t_3" style="display:inline;">
 			<?php 
-			 $sql="select * from smg_video where is_adopt=1 order by priority asc,create_at desc";
+			 $sql="select * from smg_video where is_adopt=1 order by priority asc,created_at desc";
 			 $jcsp=$db->paginate($sql,10);
 			 for($i=0;$i<count($jcsp);$i++){	 	
 			 ?>
 			 	<div class="r_content">
 			 		<ul>
-			 			<li><a href="/show/video.php?id=<?php $jcsp[$i]->id;?>"><?php echo get_fck_content($jcsp[$i]->title); ?></a></li>
-			 		</ul>			
+						<li>·<a target="_blank" href="/show/video.php?id=<?php $jcsp[$i]->id;?>"><?php echo get_fck_content($jcsp[$i]->title); ?></a></li>
+					</ul>			
 				</div>
 			<? }?>
 			</div>
 		</div>
 		<div id=r_b_b>
-			<div class=b_b_title1 id=r_b_b_title1 onmouseover="ChangeTab(1)">部门发表量</div>
-			<div class=b_b_title2 id=r_b_b_title2 onmouseover="ChangeTab(2)">部门点击排行榜</div>
-			<div id=b_b_1 style="display:none;">
+			<div class=b_b_title1 param=1>部门发表量</div>
+			<div class=b_b_title1 param=2 style="background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
+			<div id="b_b_1" class="b_b" style="display:none">
 			<?php 
 			 $sql="select count(*) as num,d.name from smg_news n right join smg_dept d on n.dept_id=d.id group by n.dept_id order by num desc";
 			 $clickcount=$db->paginate($sql,10);
@@ -95,15 +122,14 @@
 				</div>
 			<? }?>
 			</div>
-			
-			<div id=b_b_2 style="display:block;">
+			<div id="b_b_2" class="b_b" style="display:block;">
 			<?php 
 			 $sql="select * from smg_dept order by click_count desc";
 			 $clickcount=$db->paginate($sql,10);
 			 $total=$db->query("select sum(click_count) as total from smg_dept");
 			 for($i=0;$i<count($clickcount);$i++){	 	
 			 ?>
-			 	<div class="r_b2_content">
+			 	<div  class="r_b2_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
 			 			<div class=cl1><a starget="_blank" href="/news/news_head.php?id=<?php echo $clickcount[$i]->id;?>"><?php echo delhtml($clickcount[$i]->name);?></a></div><div class=percentage><?php $count=$clickcount[$i]->click_count/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
