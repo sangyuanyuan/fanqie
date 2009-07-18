@@ -130,7 +130,7 @@
 				<div class=center>
 					<div class=left>
 						<div class=title>发布者：</div>
-						<div id=publisher><?php $image->publisher;?></div>
+						<div id=publisher><?php echo $image->publisher;?></div>
 					</div>
 					<div class=middle>
 						<div class=title>发布于：</div>
