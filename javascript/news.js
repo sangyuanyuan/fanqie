@@ -1,9 +1,6 @@
 	$(document).ready(function(){
 		display_fqbq('fqbq','post[comment]');
-		$.post('/news/news_update.post.php',{'newsid':$("#newsid").attr('value')},function(data){
-				
-			}
-		)
+
 		$(".vote_submit").click(function(){
 		  var num=$(this).attr('param');
 		  var item = $("input[name='rb"+num+"'][checked]").val();

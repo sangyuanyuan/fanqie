@@ -20,24 +20,14 @@
 		
 		if($record[0]->related_news!="")
 		{
-			$about1=search_content($record[0]->related_news,"smg_news");
+			$about1=search_newsid($record[0]->related_news,"smg_news");
 			if(count($about1)<10)
 			{
-				$about=seach_content($record[0]->keywords,'smg_news','',10-count($about1));
-				if((count($about)+count($about1))<10)
-				{
-					$num=10-count($about)-count(about1);
-					$about2=$db->query("select * from smg_news where is_adopt order by rand() limit ".$num);
-				}
+				$about=search_keywords($record[0]->keywords,'smg_news',10-count($about1));
 			}
 		}
 		else{
-			$about=search_content($record[0]->keywords,'smg_news');
-			if(count($about1)<10)
-			{
-				$num=10-count(about1);
-				$about1=$db->query("select * from smg_news where is_adopt=1 order by rand() limit ".$num);
-			}
+			$about=search_keywords($record[0]->keywords,'smg_news');
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
@@ -177,24 +167,7 @@
 						<?php }?>
 					</div>
 					<?php }
-						if((count($about1)+count($about))<10)
-						{
-							for($i=0;$i<count($about2);$i++)
-							{?>
-					<div class=content>
-						<?php if($about2[$i]->category_id=="1"||$about2[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="news_head.php?id=<?php echo $about2[$i]->id; ?>">
-								<?php echo delhtml($about2[$i]->title); ?>  <span style="color:#838383">(<?php echo $about2[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }else{?>
-							·<a target="_blank" href="news.php?id=<?php echo $about2[$i]->id; ?>">
-								<?php echo delhtml($about2[$i]->title); ?>  <span style="color:#838383">(<?php echo $about2[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }?>
-					</div>		
-							<?php }
 						}
-					}
 				 }else{
 					for($i=0;$i<count($about);$i++){
 					?>
@@ -209,21 +182,7 @@
 							</a>
 						<?php }?>
 					</div>		
-				<?php }if(count($about)<10)
-				{
-					for($i=0;$i<count($about1);$i++){?>
-				<div class=content>
-						<?php if($about1[$i]->category_id=="1"||$about1[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="news_head.php?id=<?php echo $about1[$i]->id; ?>">
-								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }else{?>
-							·<a target="_blank" href="news.php?id=<?php echo $about1[$i]->id; ?>">
-								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }?>
-					</div>		
-				<?php }}}?>
+				<?php }}?>
 					
 			</div>
 			
@@ -237,7 +196,7 @@
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　　<span id="hidden_flower" style="width:50px; color:#FF0000; font-weight:bold;"><?php echo $digg[$i]->flowernum;?></span><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　<span style="color:#FF0000; font-weight:bold;"><?php echo $digg[$i]->tomatonum;?></span></div>
+								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　　<div id="hidden_flower" style="width:100px; color:#FF0000; font-weight:bold; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　<span style="color:#FF0000; font-weight:bold;"><?php echo $digg[$i]->tomatonum;?></span></div>
 								<div style="width:140px; line-height:20px;  color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
 							</div>
 						</div>	
@@ -252,7 +211,7 @@
 								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　　<span style="width:50px; color:#999999; font-weight:bold;"><?php echo $comment[$i]->flowernum;?></span><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $comment[$i]->tomatonum;?></span></div>　
+								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　　<div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $comment[$i]->tomatonum;?></span></div>　
 								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
 							</div>
 						</div>	
