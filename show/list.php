@@ -87,8 +87,6 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$category_id = category_id_by_name('我型我秀');
-				if($category_id==''){$category_id=1;}
 				$sql = 'select * from smg_images where week(created_at)=week("'.date("Y-m-d").'") order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>

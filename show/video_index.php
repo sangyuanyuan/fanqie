@@ -137,9 +137,7 @@
 					<?php
 						for($i=0;$i<4;$i++){
 					?>
-					<div class=img <?php if($i==0){?>style="opacity:1; filter:alpha(opacity=100);"<?}?>>
-						<img id="<?php echo $i+1;?>" width="80" height="46" src="<?php echo $records[$i]->photo_url?>" border=0 value="video.php?id=<?php echo $records[$i]->id?>" style="none">
-					</div>
+					<img class="img" id="<?php echo $i+1;?>" width="80" height="46" src="<?php echo $records[$i]->photo_url?>" border=0 value="video.php?id=<?php echo $records[$i]->id?>" <?php if($i==0){?>style="opacity:1; filter:alpha(opacity=100);"<?}?>>
 					<?php
 						}
 					?>
@@ -240,15 +238,15 @@
 		$(".img").click(function(){
 			$(".img").css('opacity','0.3');
 			$(this).css('opacity','1');
-			$("#big_pic").attr('src',$(this).children().attr('src'));
-			$("#pic_url").attr('href',$(this).children().attr('value'));
+			$("#big_pic").attr('src',$(this).attr('src'));
+			$("#pic_url").attr('href',$(this).attr('value'));
 		})
 	})
 	
 	
 	function change(){
 		$(".img").css('opacity','0.3');
-		$("#"+num).parent().css('opacity','1');
+		$("#"+num).css('opacity','1');
 		$("#big_pic").attr('src',$("#"+num).attr('src'));
 		$("#pic_url").attr('href',$("#"+num).attr('value'));
 		if(num!=4){num++}else{num=1}
