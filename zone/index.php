@@ -18,7 +18,7 @@
 <div id=ibody>
 	<div id=ibody_top>
 		<div id=t_l>
-			<div id=t_l_t></div>
+			<div id=t_l_t>hot讨论区</div>
 			<div class=t_l_b></div>
 			<div class=t_l_b></div>
 		</div>

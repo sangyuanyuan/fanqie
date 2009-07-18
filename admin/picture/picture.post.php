@@ -12,7 +12,7 @@
 		
 		if($img === false){
 			alert('上传文件失败 !');
-			redirect('picture_add.php');
+			redirect($_SERVER['HTTP_REFERER']);
 		}
 		$smg_image->src = "/upload/images/" .$img;
 		$smg_image->create_thumb('middle',50);
@@ -24,6 +24,7 @@
 	$smg_image->title = $title;
 	if($_POST['picture']["priority"]==null){$smg_image->update_attribute("priority","100");}
 	if($_POST['picture']["commentable"]==null){$smg_image->update_attribute("commentable","");}
+	$smg_image->publisher = $_COOKIE['smg_user_nickname'];
 	$smg_image->update_attributes($_POST['picture']);
 	if($_POST['special_type']==""){
 		redirect($_POST['url']);

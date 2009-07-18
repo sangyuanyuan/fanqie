@@ -1,7 +1,7 @@
 <?php 
 	require "../../frame.php";
 	$news_id = $_POST['id'] ? $_POST['id'] : 0;
-	#var_dump($_POST);
+	//var_dump($_POST);
 	//exit;
 	$news = new table_class('smg_news');
 	if($news_id!=0){
@@ -29,10 +29,8 @@
 		$pos_end = strpos(strtolower($news->content), '>',$pos);
 		$imgstr = substr($news->content, $pos,$pos_end -$pos +1);
 		#alert($pos_end .';'.$imgstr);
+		$imgstr = str_replace('\"', '"', $imgstr);
 		$pos = strpos($imgstr, 'src="');
-		if($pos === false){
-			$pos = strpos($imgstr, 'src=\"');
-		}
 		$pos_end = strpos($imgstr, '"',$pos + 5);
 		$src = substr($imgstr, $pos+5,$pos_end - $pos - 5);
 		$news->photo_src = $src;

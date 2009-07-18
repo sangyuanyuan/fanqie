@@ -1,0 +1,245 @@
+<meta http-equiv=Content-Type content="text/html; charset=gbk">
+<body topmargin=5 leftmargin=5>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+
+var dDate = new Date();
+var dCurMonth = dDate.getMonth();
+var dCurDayOfMonth = dDate.getDate();
+var dCurYear = dDate.getFullYear();
+var objPrevElement = new Object();
+var count;
+function fToggleColor(myElement) {
+var toggleColor = "#ff0000";
+if (myElement.id == "calDateText") {
+if (myElement.color == toggleColor) {
+myElement.color = "";
+} else {
+myElement.color = toggleColor;
+   }
+} else if (myElement.id == "calCell") {
+for (var i in myElement.children) {
+if (myElement.children[i].id == "calDateText") {
+if (myElement.children[i].color == toggleColor) {
+myElement.children[i].color = "";
+} else {
+myElement.children[i].color = toggleColor;
+            }
+         }
+      }
+   }
+}
+function fSetSelectedDay(myElement){
+if (myElement.id == "calCell") {
+if (!isNaN(parseInt(myElement.children["calDateText"].innerText))) {
+var objTemp=myElement.parentNode.parentNode;
+for (i=1;i<7;i++)
+  for (j=0;j<7;j++)
+  objTemp.childNodes[i].childNodes[j].childNodes[0].style.backgroundColor=""; 
+myElement.bgColor = "#c0c0c0";
+objPrevElement.bgColor = "";
+document.all.post_day.value = parseInt(myElement.children["calDateText"].innerText);
+objPrevElement = myElement;
+//if (parseInt(frmCalendarSample.post_day.value)<10)
+  // frmCalendarSample.post_day.value="0" + frmCalendarSample.post_day.value;
+window.open("http://172.27.203.40/fzyjshare/web/csmdaily/"+frmCalendarSample.datatype.value+frmCalendarSample.post_year.value.substring(frmCalendarSample.post_year.value.length-2)+"-"+frmCalendarSample.post_month.value+"-"+frmCalendarSample.post_day.value+".xls","data","");
+      }
+   }   
+}
+function fGetDaysInMonth(iMonth, iYear) {
+var dPrevDate = new Date(iYear, iMonth, 0);
+return dPrevDate.getDate();
+}
+function fBuildCal(iYear, iMonth, iDayStyle) {
+var aMonth = new Array();
+aMonth[0] = new Array(7);
+aMonth[1] = new Array(7);
+aMonth[2] = new Array(7);
+aMonth[3] = new Array(7);
+aMonth[4] = new Array(7);
+aMonth[5] = new Array(7);
+aMonth[6] = new Array(7);
+var dCalDate = new Date(iYear, iMonth-1, 1);
+var iDayOfFirst = dCalDate.getDay();
+//document.write(iYear+" "+iMonth+" "+iDayOfFirst);
+var iDaysInMonth = fGetDaysInMonth(iMonth, iYear);
+var iVarDate = 1;
+var i, d, w;
+if (iDayStyle == 2) {
+aMonth[0][0] = "星期日";
+aMonth[0][1] = "星期一";
+aMonth[0][2] = "星期二";
+aMonth[0][3] = "星期三";
+aMonth[0][4] = "星期四";
+aMonth[0][5] = "星期五";
+aMonth[0][6] = "星期六";
+} else if (iDayStyle == 1) {
+aMonth[0][0] = "周日";
+aMonth[0][1] = "周一";
+aMonth[0][2] = "周二";
+aMonth[0][3] = "周三";
+aMonth[0][4] = "周四";
+aMonth[0][5] = "周五";
+aMonth[0][6] = "周六";
+} else {
+aMonth[0][0] = "日";
+aMonth[0][1] = "一";
+aMonth[0][2] = "二";
+aMonth[0][3] = "三";
+aMonth[0][4] = "四";
+aMonth[0][5] = "五";
+aMonth[0][6] = "六";
+}
+for (d = iDayOfFirst; d < 7; d++) {
+aMonth[1][d] = iVarDate;
+iVarDate++;
+}
+for (w = 2; w < 7; w++) {
+for (d = 0; d < 7; d++) {
+if (iVarDate <= iDaysInMonth) {
+aMonth[w][d] = iVarDate;
+iVarDate++;
+      }
+   }
+}
+return aMonth;
+}
+function fDrawCal(iYear, iMonth, iDay, iCellWidth, iCellHeight, sDateTextSize, sDateTextWeight, iDayStyle) {
+var myMonth;
+myMonth = fBuildCal(iYear, iMonth, iDayStyle);
+document.write("<table border='0' width='100%'>")
+document.write("<tr>");
+document.write("<td align='left' style='FONT-FAMILY:Arial;FONT-SIZE:12px;FONT-WEIGHT: bold'>" + myMonth[0][0] + "</td>");
+document.write("<td align='left' style='FONT-FAMILY:Arial;FONT-SIZE:12px;FONT-WEIGHT: bold'>" + myMonth[0][1] + "</td>");
+document.write("<td align='left' style='FONT-FAMILY:Arial;FONT-SIZE:12px;FONT-WEIGHT: bold'>" + myMonth[0][2] + "</td>");
+document.write("<td align='left' style='FONT-FAMILY:Arial;FONT-SIZE:12px;FONT-WEIGHT: bold'>" + myMonth[0][3] + "</td>");
+document.write("<td align='left' style='FONT-FAMILY:Arial;FONT-SIZE:12px;FONT-WEIGHT: bold'>" + myMonth[0][4] + "</td>");
+document.write("<td align='left' style='FONT-FAMILY:Arial;FONT-SIZE:12px;FONT-WEIGHT: bold'>" + myMonth[0][5] + "</td>");
+document.write("<td align='left' style='FONT-FAMILY:Arial;FONT-SIZE:12px;FONT-WEIGHT: bold'>" + myMonth[0][6] + "</td>");
+document.write("</tr>");
+for (w = 1; w < 7; w++) {
+document.write("<tr>")
+for (d = 0; d < 7; d++) {
+document.write("<td align='center' valign='top' width='" + iCellWidth + "' height='" + iCellHeight + "' id=calCell style='CURSOR:Hand' onMouseOver='fToggleColor(this)' onMouseOut='fToggleColor(this)' onclick=fSetSelectedDay(this)>");
+if (!isNaN(myMonth[w][d])) {
+
+	if (myMonth[w][d]==iDay) {
+document.write("<font id=calDateText onMouseOver='fToggleColor(this)' style='CURSOR:Hand;COLOR:red;FONT-FAMILY:Arial;FONT-SIZE:" + sDateTextSize + ";FONT-WEIGHT:" + sDateTextWeight + "' onMouseOut='fToggleColor(this)' onclick=fSetSelectedDay(this)>" + myMonth[w][d] + "</font>");
+	}else{
+document.write("<font id=calDateText onMouseOver='fToggleColor(this)' style='CURSOR:Hand;FONT-FAMILY:Arial;FONT-SIZE:" + sDateTextSize + ";FONT-WEIGHT:" + sDateTextWeight + "' onMouseOut='fToggleColor(this)' onclick=fSetSelectedDay(this)>" + myMonth[w][d] + "</font>");
+	}
+	
+} else {
+document.write("<font id=calDateText onMouseOver='fToggleColor(this)' style='CURSOR:Hand;FONT-FAMILY:Arial;FONT-SIZE:" + sDateTextSize + ";FONT-WEIGHT:" + sDateTextWeight + "' onMouseOut='fToggleColor(this)' onclick=fSetSelectedDay(this)> </font>");
+}
+document.write("</td>")
+}
+document.write("</tr>");
+}
+document.write("</table>");
+
+}
+function fUpdateCal(iYear, iMonth) {
+myMonth = fBuildCal(iYear, iMonth);
+objPrevElement.bgColor = "";
+document.all.post_day.value = "";
+for (w = 1; w < 7; w++) {
+for (d = 0; d < 7; d++) {
+if (!isNaN(myMonth[w][d])) {
+calDateText[((7*w)+d)-7].innerText = myMonth[w][d];
+} else {
+calDateText[((7*w)+d)-7].innerText = " ";
+         }
+      }
+   }
+}
+
+// End -->
+</SCRIPT>
+<form name="frmCalendarSample" method="post" action="datadateselect.asp" ID="Form1">
+<table width="150" border="0" cellpadding="1" cellspacing="1" ID="Table1" bgcolor=#a6cbed>
+	<tr>
+	  <td align=center bgcolor=#e6ffff style="font-size:12px">
+	     选择<select name="datatype" style="font-size:12px">
+	     <option value="CSM">日报告CSM上海</option>
+	     
+	     </select><br>数据日期
+	  </td>
+	</tr>
+	<tr>
+		
+		<td width="100%" valign="bottom"  style="font-size:13px;padding-left:4px" bgcolor=#ffffff >
+			
+			
+                    <input type="hidden" name="post_day" value="" ID="Hidden1">
+			<select name="post_year" onchange='fUpdateCal(frmCalendarSample.post_year.value, frmCalendarSample.post_month.value)' style="width:54px;" ID="Select1">
+			  	
+				<option value="2002">2002</option>
+			  	
+				<option value="2003">2003</option>
+			  	
+				<option value="2004">2004</option>
+			  	
+				<option value="2005">2005</option>
+			  	
+				<option value="2006">2006</option>
+			  	
+				<option value="2007">2007</option>
+			  	
+				<option value="2008">2008</option>
+			  	
+				<option value="2009">2009</option>
+			  	
+			</select>
+			
+			年&nbsp;
+			<select name="post_month" onchange='fUpdateCal(frmCalendarSample.post_year.value, frmCalendarSample.post_month.value)' style="width:40px;" ID="Select2">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+			</select>月
+			
+		</td>
+		
+	</tr>
+	<tr>
+		<td  valign="top" bgcolor=#ffffff>
+			<script language="JavaScript">
+
+var dCurDate = new Date();
+dCurYear=dCurDate.getFullYear();
+dCurMonth=dCurDate.getMonth() + 1;
+dCurDayOfMonth=dCurDate.getDate();
+
+frmCalendarSample.post_month.options[dCurMonth-1].selected = true;
+for (i = 0; i < frmCalendarSample.post_year.length; i++)
+if (frmCalendarSample.post_year.options[i].innerHTML == dCurYear)
+frmCalendarSample.post_year.options[i].selected = true;
+//window.alert(dCurMonth);
+fDrawCal(dCurYear, dCurMonth, dCurDayOfMonth, 10, 9, "10px", "bold", 0);
+			</script>
+			
+		</td>
+	</tr>
+</table>
+<li style="font-size:12px">
+     上传时间：每日下午16:30前上传昨日收视报告
+  </li>
+  <li style="font-size:12px"> 查询：发展研究部   陈书昊  
+    
+  </li>
+  <li style="font-size:12px">分机：5449</li>
+ 
+</form>
+
+  
+</body>

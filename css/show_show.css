@@ -23,10 +23,26 @@ li{margin:0px; list-style-type:none;}
 .l_m .content .right .bottom{width:190px; color:#9D9D9D; font-weight:bold; float:left; display:inline;}
 
 #r_t{width:684px; background:url('/images/show/show_r.jpg') no-repeat; float:left; display:inline;}
-#r_t #image{width:684px; height:434px; padding:7px; float:left; display:inline;}
+#r_t #image{width:670px; height:434px; padding:7px; float:left; display:inline;}
 #r_t .digg{width:672px; float:left; display:inline;}
 #r_t .digg #flower{width:40px; height:25px; margin-left:180px; padding-left:55px; padding-top:4px; font-size:15px; color:#FF0000; font-weight:bolder; background:url('/images/show/flower.jpg'); cursor:pointer; float:left; display:inline;}
 #r_t .digg #tomato{width:40px; height:25px; margin-left:110px; padding-left:55px; padding-top:4px; font-size:15px; color:#999999; font-weight:bolder; background:url('/images/show/tomato.jpg'); cursor:pointer; float:left; display:inline;}
+
+#info{width:680px; margin-top:20px; border:3px dashed #D2D2D2; float:left; display:inline;}
+#info .title{width:550px; height:10px; padding:10px; line-height:15px; font-size:15px; float:left; display:inline;}
+#info .content{width:570px; font-size:13px; margin-top:20px; color:#666666; float:left; display:inline;}
+#info .content .title{width:auto; height:auto; padding:0; margin-left:15px; font-size:13px; float:left; display:inline;}
+#info .content .top{width:570px; float:left; display:inline;}
+#info .content .top #description{width:480px; line-height:15px; overflow:hidden; float:left; display:inline;}
+#info .content .center{width:570px; height:30px; margin-top:20px; float:left; display:inline;}
+#info .content .center .left{width:190px; float:left; display:inline;}
+#info .content .center .left #publisher{width:100px; font-size:13px; color:#0093BB;  line-height:15px; font-weight:bolder; float:left; display:inline;}
+#info .content .center .middle{width:190px; float:left; display:inline;}
+#info .content .center .middle #date{width:100px; font-size:13px; color:#FF6600;  line-height:15px; font-weight:bolder; float:left; display:inline;}
+#info .content .center .right{width:190px; float:left; display:inline;}
+#info .content .center .right #count{font-weight:bolder;  line-height:15px; color:#FF6600; float:left; display:inline;}
+#info .content .bottom{width:570px; float:left; display:inline;}
+#info .content .bottom #name{width:550px; height:30px; margin-left:15px;line-height:25px;  float:left; display:inline; overflow:hidden;}
 
 #r_b{width:680px; margin-top:10px; background:url('/images/show/show_r_b.jpg') no-repeat; float:left; display:inline;}
 
@@ -55,3 +71,9 @@ li{margin:0px; list-style-type:none;}
 #r_b .more a{color:#FF6600; text-decoration:none;}
 
 
+.tag1{height:20px; margin:10px; font-weight:bolder; line-height:18px; font-size:18px; font-family:黑体; color:#FF0000; float:left; display:inline; cursor:pointer;}
+.tag2{height:20px; margin:10px; line-height:20px; font-size:20px; font-family:宋体; color:#0099FF; float:left; display:inline; cursor:pointer;}
+.tag3{height:20px; margin:10px; font-weight:bolder; line-height:16px; font-size:16px; font-family:隶书; color:#0099FF; float:left; display:inline; cursor:pointer;}
+.tag4{height:20px; margin:10px; line-height:19px; font-size:19px; font-family:黑体; color:#00FF00; float:left; display:inline; cursor:pointer;}
+.tag5{height:20px; margin:10px; font-weight:bolder; line-height:17px; font-size:17px; font-family:宋体; color:#00FF66; float:left; display:inline; cursor:pointer;}
+.tag6{height:20px; margin:10px; font-weight:bolder; line-height:18px; font-size:18px; font-family:黑体; color:#FF6600; float:left; display:inline; cursor:pointer;}
