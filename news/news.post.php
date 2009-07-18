@@ -1,13 +1,12 @@
 <?php 
 	require "../frame.php";
-	$news_id = $_POST['id'] ? $_POST['id'] : 0;
 	
 	$news = new table_class('smg_news');
-	if($news_id!=0){
-		$news->find($news_id);
-	}
-	
 	$news->update_attributes($_POST['news'],false);
+	$news->content = str_replace("'",'\"',$news->content); //mysql_escape_string($news->content);
+	$news->description = str_replace("'",'\"',$news->description);//$news->description = mysql_escape_string($news->description);
+	$news->keywords = str_replace('　',' ',$news->keywords);
+	$news->is_recommend = 1;	
 	$pos = strpos(strtolower($news->content), '<img ');
 	if($pos !== false){
 		$pos_end = strpos(strtolower($news->content), '>',$pos);
