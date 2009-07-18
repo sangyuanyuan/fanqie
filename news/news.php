@@ -89,7 +89,7 @@
 							<div class=content><input name="rb<?php echo $i; ?>"  type="radio" value="<?php echo $record4[$k]->id;?>"><img src="<?php echo $record4[$k]->photourl;?>"></div>
 								<?php }}?>
 						<?php } }?>
-						<div class="btn"><button class="vote_submit" param="<?php echo $i;?>"> 投票</button><input type="hidden" value="<?php echo $record4[0]->vote_id;?>"><input type="hidden"  value="<?php echo $record3[0]->limit_type;?>">　<button class="ck">查看</button></div>
+						<div class="btn"><button class="vote_submit" param="<?php echo $i;?>"> 投票</button><input type="hidden" value="<?php echo $record4[0]->vote_id;?>"><input type="hidden"  value="<?php echo $record3[0]->limit_type;?>">　<button class="show_vote">查看</button></div>
 					<?php }?>
 				</div>
 				<? 
@@ -118,7 +118,7 @@
 							<?php }
 						}
 						}?>	
-					<div class="btn"><button class="vote_submit" param="0">投票</button><input type="hidden" id="vote_id" value="<?php echo $record2[0]->vote_id; ?>"><input type="hidden" value="<?php echo $record1[0]->limit_type;?>"> <button id="ck">查看</button></div>
+					<div class="btn"><button class="vote_submit" param="0">投票</button><input type="hidden" id="vote_id" value="<?php echo $record2[0]->vote_id; ?>"><input type="hidden" value="<?php echo $record1[0]->limit_type;?>"> <button id="show_vote">查看</button></div>
 				</div>
 			<? }}?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>

@@ -33,9 +33,10 @@
 		  }
 		
 		})
-		$(".ck").click(function(){
+		$(".show_vote").click(function(){
 			var vote_id=$(this).prev().prev().attr("value");
-			window.location.href="/vote/vote_show.php?id="+vote_id;
+			alert (vote_id);
+			window.location.href="/vote/vote_show.php?vote_id="+vote_id;
 		}
 		)
 		$("#r_t").click(function(){location.href="/news/news_sub.php";});
