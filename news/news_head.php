@@ -30,7 +30,7 @@
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
-		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by d.diggtoid order by flowernum desc";
+		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by flowernum desc ";
 		
 		$digg=$db->paginate($sql,2);
 		if($record[0]->news_type==2)
@@ -201,7 +201,10 @@
 								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　　<div id="hidden_flower" style="width:100px; color:#FF0000; font-weight:bold; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　<span style="color:#FF0000; font-weight:bold;"><?php echo $digg[$i]->tomatonum;?></span></div>
 								<div style="width:140px; line-height:20px;  color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
 							</div>
-						</div>	
+						</div>
+						<div class=context>
+								<?php  echo strfck($digg[$i]->comment);?>
+							</div>	
 					</div>
 				<?php }}  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
@@ -213,7 +216,10 @@
 								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　　<div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $comment[$i]->tomatonum;?></span></div>　
 								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
 							</div>
-						</div>	
+						</div>
+						<div class=context>
+							<?php echo 'a'; echo strfck($comment[$i]->comment);?>
+						</div>
 					</div>
 				<?php } if(count($comment)>5){?>
 				<div class=page><?php paginate('news_head.php?id='.$id);?></div><?php } ?>

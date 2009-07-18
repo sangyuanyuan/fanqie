@@ -31,7 +31,7 @@
 		
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
-		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by d.diggtoid order by flowernum desc";
+		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' order by flowernum desc";
 		$digg=$db->paginate($sql,2);
 		if($record[0]->news_type==2)
 		{
@@ -192,7 +192,7 @@
 			<?php if($record[0]->is_commentable==1){ if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
-				 for($i=0;$i< count($digg);$i++){ ?>
+				 for($i=0;$i<count($digg);$i++){ ?>
 					<div class=content>	
 						<div class=title1>
 							<div style="width:110px; margin-left:118px; float:left; display:inline;">
@@ -202,10 +202,10 @@
 								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　　<div id="hidden_flower" style="width:100px; color:#FF0000; font-weight:bold; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　<span style="color:#FF0000; font-weight:bold;"><?php echo $digg[$i]->tomatonum;?></span></div>
 								<div style="width:140px; line-height:20px;  color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
 							</div>
-						</div>	
-						<div class=context>
-							<?php echo get_fck_content($digg[$i]->comment);?>
 						</div>
+						<div class=context>
+								<?php  echo strfck($digg[$i]->comment);?>
+							</div>	
 					</div>
 				<?php }}  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
@@ -217,13 +217,14 @@
 								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　　<div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $comment[$i]->tomatonum;?></span></div>　
 								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
 							</div>
-						</div>	
+						</div>
 						<div class=context>
-							<?php echo get_fck_content($comment[$i]->comment);?>
+							<?php echo 'a'; echo strfck($comment[$i]->comment);?>
 						</div>
 					</div>
 				<?php } if(count($comment)>5){?>
-				<div id=page><?php paginate('news_head.php?id='.$id);?></div>><?php } ?></div>
+				<div class=page><?php paginate('news_head.php?id='.$id);?></div><?php } ?>
+			</div>
 			<?php }?>
 			<form method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
@@ -345,7 +346,7 @@
 			 ?>
 			 	<div class="r_content">
 			 		<ul>
-						<li>·<a target="_blank" href="/show/video.php?id=<?php echo $jcsp[$i]->id;?>"><?php echo get_fck_content($jcsp[$i]->title); ?></a></li>
+						<li>·<a target="_blank" href="/show/video.php?id=<?php echo $jcsp[$i]->id;?>"><?php echo strfck($jcsp[$i]->title); ?></a></li>
 					</ul>			
 				</div>
 			<? }?>
@@ -361,12 +362,13 @@
 left join (select count(dept_id) as p1allcounts,dept_id from smg_images where is_recommend=1 group by dept_id) p1 on a.id=p1.dept_id left join  (select count(dept_id) as p2counts,dept_id from smg_images where is_adopt=1 group by dept_id) p2 on p1.dept_id = p2.dept_id
 left join (select count(dept_id) as v1allcounts,dept_id from smg_video where is_recommend=1 group by dept_id) v1 on a.id=v1.dept_id left join  (select count(dept_id) as v2counts,dept_id from smg_video where is_adopt=1 group by dept_id) v2 on v1.dept_id = v2.dept_id
 order by b.allcounts desc) tb order by a1 desc";
-			$pubcount=$db->paginate($sql,10);
+			$pubcount=$db->query($sql);
 			$total=0;
 			for($i=0;$i<count($pubcount);$i++)
 			{
 				$total=$total+(int)$pubcount[$i]->a1;
 			}
+			$pubcount=$db->paginate($sql,10);
 			 for($i=0;$i<count($pubcount);$i++){	 	
 			 ?>
 			 	<div class="r_b2_content">
@@ -375,7 +377,7 @@ order by b.allcounts desc) tb order by a1 desc";
 			 			<div class=cl1><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }else{?>
 						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
-						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$clickcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }?>				
 				</div>
 			<? }?>
@@ -406,3 +408,4 @@ order by b.allcounts desc) tb order by a1 desc";
 
 </body>
 </html>
+
