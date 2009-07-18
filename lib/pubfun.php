@@ -270,8 +270,8 @@ function get_fck_content($str,$symbol='fck_pageindex')
 
 function print_fck_pages($str,$url="",$symbol='fck_pageindex')
 {
-	$ies = '<span style="page-break-after: always"><span style="display: none">&nbsp;</span></span>';	
-	$ffs = '<span style="page-break-after: always; "><span style="DISPLAY:none">&nbsp;</span></span>';
+	$ies = '<div style="page-break-after: always"><span style="display: none">&nbsp;</span></div>';	
+	$ffs = '<div style="page-break-after: always; "><span style="DISPLAY:none">&nbsp;</span></div>';
 	$pagecount = substr_count($str,$ies);
 	$pagecount = $pagecount <=0 ? substr_count($str,$ffs) : $pagecount;
 	$pagecount++;
@@ -334,6 +334,13 @@ function print_fck_pages($str,$url="",$symbol='fck_pageindex')
 	}
 	?>
 	</select>页
+	<script>
+			function jumppage(urlprex,pageindex)
+			{
+				var surl=urlprex+pageindex;
+				window.location.href=surl;
+			} 
+	</script>
 
 	<?php	
 	

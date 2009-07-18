@@ -30,8 +30,9 @@
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
-		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d left join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and diggtoid=".$id." group by d.diggtoid order by flowernum desc";
-		$digg=$db->query($sql);
+		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by d.diggtoid order by flowernum desc";
+		
+		$digg=$db->paginate($sql,2);
 		if($record[0]->news_type==2)
 		{
 			redirect($record[0]->file_name);
@@ -56,8 +57,9 @@
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
 			<?php if($record[0]->video_src!=""){?><div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div><?php } ?>
 			<div id=content>
-				<?php echo get_fck_content($record[0]->content); ?>
+				<?php echo get_fck_content($record[0]->content);?>
 			</div>
+			
 			<?php 
 			if($record[0]->vote_id!=""){?>
 				
@@ -189,7 +191,7 @@
 			<?php if($record[0]->is_commentable==1){ if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
-				 for($i=0;$i<2;$i++){ ?>
+				 for($i=0;$i<count($digg);$i++){ ?>
 					<div class=content>	
 						<div class=title1>
 							<div style="width:110px; margin-left:118px; float:left; display:inline;">
@@ -200,9 +202,6 @@
 								<div style="width:140px; line-height:20px;  color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
 							</div>
 						</div>	
-						<div class=context>
-							<?php echo get_fck_content($digg[$i]->comment);?>
-						</div>
 					</div>
 				<?php }}  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
@@ -215,12 +214,9 @@
 								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
 							</div>
 						</div>	
-						<div class=context>
-							<?php echo get_fck_content($comment[$i]->comment);?>
-						</div>
 					</div>
 				<?php } if(count($comment)>5){?>
-				<div id=page><?php  paginate('news_head.php?id='.$id);?></div><?php } ?>
+				<div class=page><?php paginate('news_head.php?id='.$id);?></div><?php } ?>
 			</div>
 			<?php }?>
 			<form method="post" action="/pub/pub.post.php">
