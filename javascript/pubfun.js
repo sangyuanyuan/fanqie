@@ -49,6 +49,7 @@ function display_login(dom_id){
 	}else{
 		str = '<img src="/images/top/person.jpg"><div id=welcome>欢迎您：<span style="font-weight:bold;">';
 		str += $.cookie('smg_user_nickname') +'</span>　<a href="#">修改密码</a>';
+		str += ' <a href="/home/?uid=' + $.cookie('smg_uid') + '">番茄家园</a>';
 		if($.cookie('smg_user_dept') == 7){
 			str += '　<a href="/admin/admin.php">后台管理</a>';
 		}else if($.cookie('smg_user_dept') > 0){
