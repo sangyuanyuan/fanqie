@@ -67,7 +67,7 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$sql = 'select * from smg_video where week(created_at)=week("'.date("Y-m-d").'") order by click_count limit 5;';
+				$sql = 'select * from smg_video where week(created_at)=week("'.date("Y-m-d").'") order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>视频排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
@@ -87,19 +87,17 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$category_id = category_id_by_name('我型我秀');
-				if($category_id==''){$category_id=1;}
-				$sql = 'select * from smg_images where week(created_at)=week("'.date("Y-m-d").'") and category_id='.$category_id.' order by click_count limit 5;';
+				$sql = 'select * from smg_images where week(created_at)=week("'.date("Y-m-d").'") order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>我型我秀排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
 			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
-					<div class=middle><a target="_blank" href="show_image?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->src?>"></a></div>
+					<div class=middle><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="show_image?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->title;?></a></div>
-						<div class=bottom><a target="_blank" href="show_image?id=<?php echo $records[$i]->id;?>">被点击了<?php echo $records[$i]->click_count;?>次</a></div>
+						<div class=top><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->title;?></a></div>
+						<div class=bottom><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>">被点击了<?php echo $records[$i]->click_count;?>次</a></div>
 					</div>
 				</div>
 			<? }?>

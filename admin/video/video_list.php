@@ -45,7 +45,7 @@
 <body>
 	<table width="795" border="0">
 		<tr class="tr1">
-			<td colspan="5" width="795">　　　<a href="video_add.php" style="color:#0000FF">发布视频</a>　　　　　　
+			<td colspan="5" width="795">　　　<a href="video_add.php" style="color:#0000FF">发布视频</a>
 			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
 				<select id=dept style="width:100px" class="select_new">
 					<option value="">发表部门</option>
