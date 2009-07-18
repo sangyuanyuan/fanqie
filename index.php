@@ -203,7 +203,7 @@
 							{
 									$sql="select * from smg_news where id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
-									echo "[<a href=\"/".$record_sub_news[0]->platform."/news/news_head.php?id=\".$record_sub_news[0]->id."' target=_blank>".$record_sub_news[0]->short_title."</a>]";
+									echo "[<a href=\'/".$record_sub_news[0]->platform."/news/news_head.php?id=".$record_sub_news[0]->id."\' target=_blank>".$record_sub_news[0]->short_title."</a>]";
 							}		
 
 					}	
