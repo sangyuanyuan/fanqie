@@ -46,7 +46,7 @@
 		 	</div>
 		  	<a target="_blank" href="#"><img border=0 src="/images/show/show_l_t.jpg"></a>
 			<div class=l_m>
-				<div class=title><div class=left>热门标签</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
+				<div class=title><div class=left>热门标签</div></div>
 				<div class=content style="border-bottom:none;">
 				<?php
 					$sql = 'select keywords from smg_images where keywords!="" order by click_count desc limit 10';
@@ -69,7 +69,8 @@
 			</div>
 			<div class=l_m2>
 			<?php
-				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc,created_at desc limit 4';
+				$db = get_db();
+				$sql = 'select i.id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
 			?>
 			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
@@ -78,7 +79,7 @@
 				var pic_width1=276; 
 				var pic_height1=146; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
-				var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
+				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
 				var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
 	
 				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "287", "146", "4","#FFFFFF");
@@ -98,7 +99,7 @@
 			</script> 
 			</div>
 		  	<div class=l_m>
-				<div class=title><div class=left>用户排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
+				<div class=title><div class=left>用户排行榜</div></div>
 				<?php
 					$db = get_db();
 					$sql = 'SELECT publisher,count(*) as num FROM smg_images where publisher!="" group by publisher limit 5';

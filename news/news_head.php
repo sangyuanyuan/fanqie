@@ -30,7 +30,7 @@
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
-		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d left join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' group by d.diggtoid order by flowernum desc";
+		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d left join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and diggtoid=".$id." group by d.diggtoid order by flowernum desc";
 		$digg=$db->query($sql);
 		if($record[0]->news_type==2)
 		{
@@ -219,9 +219,8 @@
 							<?php echo get_fck_content($comment[$i]->comment);?>
 						</div>
 					</div>
-				<?php } if(count($comment>5)){?>
-				
-				<div id=page><?php  paginate('news_head.php?id='.$id);?></div>><?php } ?>
+				<?php } if(count($comment)>5){?>
+				<div id=page><?php  paginate('news_head.php?id='.$id);?></div><?php } ?>
 			</div>
 			<?php }?>
 			<form method="post" action="/pub/pub.post.php">
@@ -306,10 +305,10 @@
 			 ?>
 			 	<div class="r_content">
 			 		<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
-						<div class=cl1>·<a starget="_blank" href="/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1>·<a target="_blank" href="/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }else
 					{?>
-						<div class=cl1>·<a starget="_blank" href="/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1>·<a target="_blank" href="/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>
@@ -324,12 +323,13 @@
 left join (select count(dept_id) as p1allcounts,dept_id from smg_images where is_recommend=1 group by dept_id) p1 on a.id=p1.dept_id left join  (select count(dept_id) as p2counts,dept_id from smg_images where is_adopt=1 group by dept_id) p2 on p1.dept_id = p2.dept_id
 left join (select count(dept_id) as v1allcounts,dept_id from smg_video where is_recommend=1 group by dept_id) v1 on a.id=v1.dept_id left join  (select count(dept_id) as v2counts,dept_id from smg_video where is_adopt=1 group by dept_id) v2 on v1.dept_id = v2.dept_id
 order by b.allcounts desc) tb order by a1 desc";
-			$pubcount=$db->paginate($sql,10);
+			$pubcount=$db->query($sql);
 			$total=0;
 			for($i=0;$i<count($pubcount);$i++)
 			{
 				$total=$total+(int)$pubcount[$i]->a1;
 			}
+			$pubcount=$db->paginate($sql,10);
 			 for($i=0;$i<count($pubcount);$i++){	 	
 			 ?>
 			 	<div class="r_b2_content">
@@ -338,7 +338,7 @@ order by b.allcounts desc) tb order by a1 desc";
 			 			<div class=cl1><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }else{?>
 						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
-						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$clickcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }?>				
 				</div>
 			<? }?>
