@@ -8,14 +8,14 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-新闻-新闻列表页面</title>
+	<title>SMG-番茄网-评论列表页面</title>
 	<? 	
 		css_include_tag('news_news_list','top','bottom');
 		use_jquery();
-		js_include_once_tag('news_list');
+		js_include_once_tag();
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
-		$record=$db->paginate($sql,20);		
+		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='".$_REQUEST["type"]."' and resource_id=".$_REQUEST["id"]." order by created_at desc";
+		$comment=$db->paginate($sql,20);	
   ?>
 	
 </head>
@@ -27,14 +27,24 @@
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
 		</div>
 		<div id=l_b>
-			<?php for($i=0;$i<count($record);$i++){ ?>
-				<div class=l_b_l>
-					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
-					<div class=l_b_l_r><a target="_blank" href="news.php?id=<?php echo $record[$i]->id;?>"><?php echo get_fck_content($record[$i]->title);?></a></div>
-				</div>
-				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
-			<?php }?>
-			<div id=page><?php paginate('news_list.php?id='.$id);?></div>
+			 <?php for($i=0;$i<count($comment);$i++){ ?>
+					<div class=content>	
+						<div class=title>
+							<div style="width:230px; margin-top:10px; margin-left:10px; line-height:20px; float:left; display:inline;">
+								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
+							</div>
+							<div style="width:370px; float:right; display:inline;">
+								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　　<div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $comment[$i]->tomatonum;?></span></div>　
+								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
+							</div>
+						</div>
+						<div class=context>
+							<?php echo strfck($comment[$i]->comment);?>
+						</div>
+					</div>
+				<?php } if(count($comment)>5){?>
+				<div class=page><?php paginate('news_head.php?id='.$id);?></div><?php } ?>
+			</div>
 		</div>
 	</div>
 	<div id=ibody_right>

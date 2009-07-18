@@ -31,10 +31,10 @@
 			?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
-					<div class=middle><a target="_blank" href="star.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_src?>"></a></div>
+					<div class=middle><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_src?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="star.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->short_title;?></a></div>
-						<div class=bottom><a target="_blank" href="star.php?id=<?php echo $records[$i]->id;?>">被浏览了<?php echo $records[$i]->click_count ?>次</a></div>
+						<div class=top><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->short_title;?></a></div>
+						<div class=bottom><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>">被浏览了<?php echo $records[$i]->click_count ?>次</a></div>
 					</div>
 				</div>
 			<? }?>
@@ -62,7 +62,7 @@
 				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
-			<div class=title><div class=left>我型我秀排行榜</div></div>
+			<div class=title><div class=left>我行我秀排行榜</div></div>
 			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
@@ -95,7 +95,7 @@
 		</div>
 		<div class=content>
 			<?php echo get_fck_content($news->content); ?>
-			<div id=page><?php print_fck_pages($news->content,'star.php?id='.$id); ?></div>
+			<div id=page><?php print_fck_pages($news->content,'article.php?id='.$id); ?></div>
 		</div>
 		<div id=point>
 			<?php 
@@ -121,12 +121,12 @@
 			<?php 
 				for($i=0;$i<$s_point;$i++){
 			?>
-			<div class=star value="<?php echo $i+1; ?>" style="background:url('/images/show/star1.jpg') no-repeat;"></div>
+			<div class=star value="<?php echo $i+1; ?>"  title="<?php echo ($i+1)."分";?>" style="background:url('/images/show/star1.jpg') no-repeat;"></div>
 			<?php } ?>
 			<?php 
 				for($i=$s_point;$i<10;$i++){
 			?>
-			<div class=star value="<?php echo $i+1; ?>"></div>
+			<div class=star value="<?php echo $i+1; ?>"  title="<?php echo ($i+1)."分";?>"></div>
 			<?php } ?>
 			<div id=info>共<?php echo $count; ?>人评分[点击星星直接打分]</div>
 			

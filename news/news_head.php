@@ -30,9 +30,9 @@
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
-		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by flowernum desc ";
+		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by flowernum desc limit 2";
 		
-		$digg=$db->paginate($sql,2);
+		$digg=$db->query($sql);
 		if($record[0]->news_type==2)
 		{
 			redirect($record[0]->file_name);
@@ -218,7 +218,7 @@
 							</div>
 						</div>
 						<div class=context>
-							<?php echo 'a'; echo strfck($comment[$i]->comment);?>
+							<?php echo strfck($comment[$i]->comment);?>
 						</div>
 					</div>
 				<?php } if(count($comment)>5){?>
@@ -283,8 +283,8 @@
 		<div class=r_b1>
 			<div class=title>历史头条</div>
 			<?php 
-			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='历史头条' order by priority asc,last_edited_at desc";
-			 $morehead=$db->paginate($sql,8);
+			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='历史头条' order by priority asc,last_edited_at desc limit 8";
+			 $morehead=$db->query($sql);
 			 for($i=0;$i<count($morehead);$i++){	 	
 			 ?>
 			 	<div class="r_content">
@@ -301,8 +301,8 @@
 		<div class=r_b1>
 			<div class=title>小编加精</div>
 			<?php 
-			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='小编加精' order by priority asc,last_edited_at desc";
-			 $xbjj=$db->paginate($sql,10);
+			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='小编加精' order by priority asc,last_edited_at desc limit 10";
+			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){
 			 ?>
 			 	<div class="r_content">
@@ -324,14 +324,13 @@
 (select count(dept_id) as allcounts,dept_id from smg_news where is_recommend=1  group by dept_id) b on a.id=b.dept_id left join  (select count(dept_id) as counts,dept_id from smg_news where is_adopt=1 group by dept_id) c on b.dept_id = c.dept_id
 left join (select count(dept_id) as p1allcounts,dept_id from smg_images where is_recommend=1 group by dept_id) p1 on a.id=p1.dept_id left join  (select count(dept_id) as p2counts,dept_id from smg_images where is_adopt=1 group by dept_id) p2 on p1.dept_id = p2.dept_id
 left join (select count(dept_id) as v1allcounts,dept_id from smg_video where is_recommend=1 group by dept_id) v1 on a.id=v1.dept_id left join  (select count(dept_id) as v2counts,dept_id from smg_video where is_adopt=1 group by dept_id) v2 on v1.dept_id = v2.dept_id
-order by b.allcounts desc) tb order by a1 desc";
+order by b.allcounts desc) tb order by a1 desc limit 10";
 			$pubcount=$db->query($sql);
 			$total=0;
 			for($i=0;$i<count($pubcount);$i++)
 			{
 				$total=$total+(int)$pubcount[$i]->a1;
 			}
-			$pubcount=$db->paginate($sql,10);
 			 for($i=0;$i<count($pubcount);$i++){	 	
 			 ?>
 			 	<div class="r_b2_content">
@@ -348,8 +347,8 @@ order by b.allcounts desc) tb order by a1 desc";
 			
 			<div id=b_b_2 class="b_b" style="display:block;">
 			<?php 
-			 $sql="select * from smg_dept order by click_count desc";
-			 $clickcount=$db->paginate($sql,10);
+			 $sql="select * from smg_dept order by click_count desc limit 10";
+			 $clickcount=$db->query($sql);
 			 $total=$db->query("select sum(click_count) as total from smg_dept");
 			 for($i=0;$i<count($clickcount);$i++){	 	
 			 ?>
