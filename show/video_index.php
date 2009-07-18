@@ -147,7 +147,7 @@
 			<div id=r_t_r>
 				<div class=title>视频排行榜</div>
 					<?php
-						$sql = 'select id,title from smg_video where is_adopt=1 order by click_count';
+						$sql = 'select id,title from smg_video where is_adopt=1 order by click_count limit 10;';
 						$records = $db->query($sql);
 						$count = count($records);
 						for($i=0;$i<$count;$i++){
