@@ -14,7 +14,7 @@
 		use_jquery();
 		js_include_once_tag('news_list');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.category_id=".$id;
+		$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
 		$record=$db->paginate($sql,20);		
   ?>
 	
