@@ -44,6 +44,10 @@ function get_microtime(){
    list($usec, $sec) = explode(" ",microtime()); 
    return ((float)$usec + (float)$sec); 
 } 
+
+function now(){
+	return date("Y-m-d H:i:s");
+}
 function alert($msg)
 {
   echo "<script LANGUAGE=\"Javascript\">"; 
@@ -433,5 +437,58 @@ function show_img($state,$width,$height)
 function show_video($state,$width,$height)
 {
 	if($state==1){echo '<img src="/images/index/video.gif" width='.$width.'  height='.$height.' >';}
+}
+
+function search_keywords($key,$table_name='smg_news',$page_count = 10, $order=''){
+	$table = new table_class($table_name);
+	$key = str_replace('　', ' ', $key);
+	$keys = explode(' ',$key);
+	$c = array();
+	foreach ($keys as $v) {
+		array_push($c, "keywords like '%$v%'");
+	}
+	$c = implode(' OR ' ,$c);
+	
+	$sql = 'select * from ' . $table_name ." where 1=1 and " .$c;
+	if ($order){
+		$sql = $sql . ' order  by ' .$order;
+	}
+	$db = get_db();
+	if($page_count > 0){
+		return $db->paginate($sql,$page_count);	
+	}else{
+		return $db->query($sql);
+	}
+		
+}
+
+function search_newsid($key,$table_name='smg_news',$page_count = 10, $order=''){
+	$table = new table_class($table_name);
+	$key = str_replace('　', ' ', $key);
+	$keys = explode(',',$key);
+	$c = array();
+	foreach ($keys as $v) {
+		array_push($c, "id = '$v'");
+	}
+	$c = implode(' OR ' ,$c);
+	
+	$sql = 'select * from ' . $table_name ." where 1=1 and " .$c;
+	if ($order){
+		$sql = $sql . ' order  by ' .$order;
+	}
+	$db = get_db();
+	if($page_count > 0){
+		return $db->paginate($sql,$page_count);	
+	}else{
+		return $db->query($sql);
+	}
+}
+		
+
+function write_to_file($filename,$content,$mode='a'){
+	$fp = fopen($filename, $mode);
+	fwrite($fp,$content);
+	fclose($fp);
+
 }
 ?>

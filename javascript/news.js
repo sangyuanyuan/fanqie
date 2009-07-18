@@ -15,7 +15,6 @@
 				'target_url':$("#target_url").attr('value'),
 				'vote_id':$(this).next().attr('value')
 		  	}, function(data){
-				alert(data);
 		  	})
 		  }
 		  else {
@@ -33,12 +32,12 @@
 		  }
 		
 		})
+		
 		$(".show_vote").click(function(){
 			var vote_id=$(this).prev().prev().attr("value");
-			alert (vote_id);
 			window.location.href="/vote/vote_show.php?vote_id="+vote_id;
-		}
-		)
+		})
+		
 		$(".flower").click(function(){
 			var flowernum=$(this).next().next().html();
 			flowernum=parseInt(flowernum)+1;
