@@ -25,7 +25,7 @@
 				if((count($about)+count($about1))<10)
 				{
 					$num=10-count($about)-count(about1);
-					$about2=$db->query("select * from smg_news where is_adopt=1 order by rand() limit ".$num);
+					$about2=$db->query("select * from smg_news where is_adopt=1 and id<>".$id." order by rand() limit ".$num);
 				}
 			}
 		}
@@ -34,7 +34,7 @@
 			if(count($about1)<10)
 			{
 				$num=10-count(about1);
-				$about1=$db->query("select * from smg_news where is_adopt=1 order by rand() limit ".$num);
+				$about1=$db->query("select * from smg_news where is_adopt=1 and id<>".$id." order by rand() limit ".$num);
 			}
 		}
 		
