@@ -238,7 +238,7 @@
 							</div>
 							<div style="width:370px; float:right; display:inline;">
 								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　　<span id="hidden_flower" style="width:50px; color:#FF0000; font-weight:bold;"><?php echo $digg[$i]->flowernum;?></span><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　<span style="color:#FF0000; font-weight:bold;"><?php echo $digg[$i]->tomatonum;?></span></div>
-								<div style="width:140px; color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
+								<div style="width:140px; line-height:20px;  color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
 							</div>
 						</div>	
 						<div class=context>
@@ -253,7 +253,7 @@
 							</div>
 							<div style="width:370px; float:right; display:inline;">
 								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　　<span style="width:50px; color:#999999; font-weight:bold;"><?php echo $comment[$i]->flowernum;?></span><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $comment[$i]->tomatonum;?></span></div>　
-								<div style="width:140px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
+								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
 							</div>
 						</div>	
 						<div class=context>
