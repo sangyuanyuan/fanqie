@@ -31,10 +31,10 @@
 			?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
-					<div class=middle><a target="_blank" href="star.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_src?>"></a></div>
+					<div class=middle><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_src?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="star.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->short_title;?></a></div>
-						<div class=bottom><a target="_blank" href="star.php?id=<?php echo $records[$i]->id;?>">被浏览了<?php echo $records[$i]->click_count ?>次</a></div>
+						<div class=top><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->short_title;?></a></div>
+						<div class=bottom><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>">被浏览了<?php echo $records[$i]->click_count ?>次</a></div>
 					</div>
 				</div>
 			<? }?>
@@ -62,7 +62,7 @@
 				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
-			<div class=title><div class=left>我型我秀排行榜</div></div>
+			<div class=title><div class=left>我行我秀排行榜</div></div>
 			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
