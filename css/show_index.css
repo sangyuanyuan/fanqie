@@ -22,7 +22,7 @@ li{margin:0px; list-style-type:none;}
 #l_t{width:293px; height:242px; margin-left:22px; background:url(/images/show/index_l_t.gif) no-repeat; float:left; display:inline;}
 #l_t .content{width:272px; height:20px; margin-left:15px; line-height:20px; border-top:1px solid #EAEAEA; float:left; display:inline;}
 #l_t .content img{margin-top:7px; float:left; display:inline;}
-#l_t .content .c_a{width:200px; height:20px; margin-left:10px; padding-left:5px;  border-left:1px solid #EAEAEA; float:left; display:inline;}
+#l_t .content .c_a{width:200px; height:20px; margin-left:10px; line-height:20px; padding-left:5px; overflow:hidden; border-left:1px solid #EAEAEA; float:left; display:inline;}
 #l_t .content .c_a a{color:#666666; text-decoration:none;}
 #l_t .content .c_t{padding-left:8px; color:#666666;  border-left:1px solid #EAEAEA; float:left; display:inline;}
 #l_m{width:293px; height:423px; margin-left:22px; background:url(/images/show/index_l_m.gif) no-repeat; float:left; display:inline;}
