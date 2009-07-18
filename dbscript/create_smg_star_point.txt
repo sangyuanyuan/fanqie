@@ -5,4 +5,4 @@ CREATE TABLE  `smg_new`.`smg_star_point` (
   `resource_id` int(10) unsigned DEFAULT NULL,
   `point` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf-8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
