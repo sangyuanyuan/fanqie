@@ -9,8 +9,8 @@
 	}
 	
 	$news->update_attributes($_POST['news'],false);
-	$news->content = str_replace("'", '\"', $news->content);
-	$news->description = str_replace("'", '\"', $news->description);
+	$news->content = mysql_escape_string($news->content);
+	$news->description = mysql_escape_string($news->description);
 	#$news->content = strtr($news->content,array('<div>' => '','</div>' => '','<DIV>' => '','</DIV>' => ''));
 	$news->keywords = str_replace('　',' ',$news->keywords);
 	#$news->echo_sql = true;
@@ -106,6 +106,7 @@
 
 	}else{
 		//update news
+		$news->last_edited_at = date("Y-m-d H:i:s");
 		if($_POST['news']['forbbide_copy']==''){
 			$news->forbbide_copy=0;
 		}		

@@ -1,6 +1,6 @@
 <?php
 	require_once('../../frame.php');
-	$key = $_REQUEST['key'];
+	$key = urldecode($_REQUEST['key']);
 	if($_REQUEST['show_div'] != '0'){
 		echo "<div id='result_box'>";
 	}
@@ -62,7 +62,7 @@
 		<?php
 			$subject = new table_class("smg_news");
 
-			$items = search_content($_POST[$key],'smg_news',$conditions,10);
+			$items = search_content($key,'smg_news',$conditions,10);
 			$count_record = count($items);			
 			//--------------------		
 			for($i=0;$i<$count_record;$i++)	{

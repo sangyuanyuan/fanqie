@@ -1,6 +1,6 @@
 <?php
 	require_once('../../frame.php');
-	$key = $_REQUEST['key'];
+	$key = urldecode($_REQUEST['key']);
 	if($_REQUEST['show_div'] != '0'){
 		echo "<div id='result_box'>";
 	}
@@ -105,8 +105,11 @@
 			$('#chosen_vote_id').attr('value',$(this).attr('value'));
 			$('#chosen_vote_name').attr('value',$(this).parent().next('td').html());			
 		});
-		$('#vote_search').click(function(){
+		function send_search(){
 			$('#result_box').load('add_vote.php',{'show_div':'0','key':$('#search_text').attr('value')});
+		}
+		$('#vote_search').click(function(){
+			send_search();
 		});
 </script>
 <?php 

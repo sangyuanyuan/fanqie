@@ -1,6 +1,7 @@
 <?php
 	require_once('../../frame.php');
-	$key = $_REQUEST['key'];
+	
+	$key = urldecode($_REQUEST['key']);
 	if($_REQUEST['show_div'] != '0'){
 		echo "<div id='result_box'>";
 	}
@@ -109,8 +110,11 @@
 				send_search();
 			}
 		});
-		$('#subject_search').click(function(){
+		function send_search(){
 			$('#result_box').load('assign_subject.php',{'show_div':'0','key':$('#search_text').attr('value')});
+		}
+		$('#subject_search').click(function(){
+			send_search();
 		});
 </script>
 <?php 
