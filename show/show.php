@@ -185,7 +185,7 @@
 				<div class=more><a target="_blank" href="show_list.php?name=<?php echo $image->publisher;?>">更多>></a></div>
 				<?php
 					$images = new smg_images_class();
-					$records = $images->find('all',array('conditions' => 'is_adopt=1 and publisher="'.$image->publisher.'" and id!='.$id,'limit' => '8'));
+					$records = $images->find('all',array('conditions' => 'is_adopt=1 and src is not null and publisher="'.$image->publisher.'" and id!='.$id,'limit' => '8'));
 					$count = count($records);
 					for($i=0;$i<$count;$i++){ 
 				?>
