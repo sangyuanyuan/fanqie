@@ -218,7 +218,7 @@
 							</div>
 						</div>
 						<div class=context>
-							<?php echo 'a'; echo strfck($comment[$i]->comment);?>
+							<?php echo strfck($comment[$i]->comment);?>
 						</div>
 					</div>
 				<?php } if(count($comment)>5){?>
