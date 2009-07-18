@@ -1,7 +1,7 @@
 <?php
 	require_once('../../frame.php');
 	$user = judge_role('admin');	
-	$title = $_REQUEST['title'];
+	$title = urldecode($_REQUEST['title']);
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
 	$dept_id = $_REQUEST['dept'];
 	$is_adopt = $_REQUEST['adopt'];
@@ -47,7 +47,7 @@
 		<tr class="tr1">
 			<td colspan="6">
 				　<a href="news_add.php">添加新闻</a>
-				　　　搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>"><select id=dept style="width:100px" class="select_new">
+				　　　搜索　<input id=title type="text" value="<? echo $title;?>"><select id=dept style="width:100px" class="select_new">
 					<option value="">发表部门</option>
 					<?php for($i=0;$i<count($rows_dept);$i++){?>
 					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
@@ -128,7 +128,8 @@
 
 <script>
 	$("#search_new").click(function(){
-			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			//window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			send_search();
 	});
 	
 	$(".select_new").change(function(){
@@ -158,9 +159,12 @@
 				});
 			}
 		});
+		function send_search(){
+			window.location.href="?title="+encodeURI($("#title").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+		}
 		$('#title').keydown(function(e){
 			if(e.keyCode == 13){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+				send_search();
 			}
 		});
 	});
