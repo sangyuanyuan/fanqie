@@ -15,14 +15,27 @@ $vote = $db->query('select * from smg_vote  where id=' .$_REQUEST['vote_id']);
 if($vote[0]->is_sub_vote==0)
 {
 	$voteitems=$db->query("select * from smg_vote_item where vote_id=" .$_REQUEST['vote_id']);
+	$allcount=0;
+	for($i=0;$i<count(voteitems);$i++){
+		$count=$db->query("select count(*) as num from smg_vote_item_record where vote_id=".$_REQUEST['vote_id']);
+		$allcount=$allcount+(int)$count[0]->num;
+	}
+	
 }
 else
 {
-	$voteitems=$db->query("select s.*,v.title from smg_vote_item s inner join smg_vote_item v on s.vote_id=v.sub_vote_id and s.vote_id=" .$_REQUEST['vote_id']);
+	$voteitem=$db->query("select * from smg_vote_item where vote_id=".$_REQUEST['vote_id']);
+	for($i=0;$i<count($voteitems);$i++)
+	{
+		$voteitems=$db->query("select * from smg_vote_item where vote_id=".$voteitem[$i]->sub_vote_id);
+		for($j=0;$j<count($voteitems);$j++){
+			$count=$db->query("select * from smg_vote_item_record where vote_id=".$voteitems[$i]->vote_id);
+			
+		}
+	}
 }
 //echo "select * from " .$_REQUEST['tablepre'] ."vote_item where vote_id=" .$_REQUEST['vote_id'] ." order by priority asc";
-$pageindex = isset($_REQUEST['pageindex']) ? $_REQUEST['pageindex']: 1;
-$comments = $sqlmanager->GetRecords("select * from smg_vote_comment where vote_id=".$_REQUEST['vote_id']." order by createtime",$pageindex,5);
+
 ?>
 <div>总共<span style="color:#FF0000;"><?php echo $allcount;?></span>人参加</div>
 <table  border="0" bgcolor="#CCCCCC" cellspacing=1>
@@ -33,7 +46,7 @@ $comments = $sqlmanager->GetRecords("select * from smg_vote_comment where vote_i
 	</tr>
 	<tr>
 		<td bgcolor="#FFFFFF" width=20>
-			&nbsp;
+			&nbsp
 		</td>
 		<td bgcolor="#FFFFFF">
 			选项
@@ -53,7 +66,7 @@ $comments = $sqlmanager->GetRecords("select * from smg_vote_comment where vote_i
 	<tr>
 		<td bgcolor="#FFFFFF">
 			<?php echo $i+1;?>
-		</td bgcolor="#FFFFFF">
+		</td>
 		<td  bgcolor="#FFFFFF">
 			<?php echo $voteitems[$i]->name;?>
 		</td>
@@ -83,23 +96,9 @@ $comments = $sqlmanager->GetRecords("select * from smg_vote_comment where vote_i
   <?php }?>
   <div class="pageurl">
      <?php 
-        echo PrintPageUrl("viewresult.php?id=" .$_REQUEST['vote_id']."&tablepre=smg_",$pageindex,$sqlmanager->pagecount);   
+        echo paginate("vote_show.php?id=" .$_REQUEST['vote_id']);   
      ?>
    </div>
-		<div id=content8>
-    		<div id=left>发表评论</div>
-    		<div id=right><a href="/comment/comment.php" target="_blank" style="text-decoration:none;color:#000;">更多评论>> </a></div>
-    </div>
-    <form name="commentform" method="post" action="/vote/createcomment.php">
-    	 <input type="hidden" name="voteid" value="<?php echo $_REQUEST['vote_id'];?>">
-       <div id=content9>
-    	   用户：<input type="text" value="" id="commenter" name="commenter">   	
-       </div>
-       <div id=content10>
-    	  <div id=left>评论：</div><textarea id="commentcontent" name="comment"></textarea>
-       </div>   
-       <div id=content11 onClick="return PostComment();"></div>
-    </form>
 </div>
 <?
   echo '</div>';
