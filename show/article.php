@@ -84,7 +84,7 @@
 			$news -> save();
 		?>
 		<div class=top>
-			<div class=left><?php $category_name = category_name_by_id($id); echo $category_name; ?></div>
+			<div class=left><?php $category_name = category_name_by_id($news->category_id); echo $category_name; ?></div>
 		</div>
 		
 		<div class=title><?php echo $news->title; ?></div>
