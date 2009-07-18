@@ -10,6 +10,7 @@
 	<? 	
 		css_include_tag('zone_index','top','bottom');
 		use_jquery();
+		$sql="select n.* from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='HOT讨论区' order by n.last_edit_at"
   ?>
 	
 </head>
@@ -20,6 +21,7 @@
 		<div id=t_l>
 			<div id=t_l_t>
 				<div id=title>HOT讨论区</div>
+				<div id=left><img width=230 height=122 src=""></div>
 			</div>
 			<div class=t_l_b>
 				<div class="title">BBS</div>
