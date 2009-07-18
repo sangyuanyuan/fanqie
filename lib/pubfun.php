@@ -44,6 +44,10 @@ function get_microtime(){
    list($usec, $sec) = explode(" ",microtime()); 
    return ((float)$usec + (float)$sec); 
 } 
+
+function now(){
+	return date("Y-m-d H:i:s");
+}
 function alert($msg)
 {
   echo "<script LANGUAGE=\"Javascript\">"; 
@@ -433,5 +437,10 @@ function show_img($state,$width,$height)
 function show_video($state,$width,$height)
 {
 	if($state==1){echo '<img src="/images/index/video.gif" width='.$width.'  height='.$height.' >';}
+}
+function write_to_file($filename,$content,$mode='a'){
+	$fp = fopen($filename, $mode);
+	fwrite($fp,$content);
+	fclose($fp);
 }
 ?>
