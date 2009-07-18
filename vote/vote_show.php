@@ -7,18 +7,19 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-投票结果显示</title>
+	<?php css_include_tag('top','bottom'); ?>
 </head>
 <body>
-<? require_once('../inc/top.inc.html');
+<?php require_once('../inc/top.inc.html');
 	$db = get_db();
 	$voteitem=$db->query("select * from smg_vote_item where vote_id=".$_REQUEST['vote_id']);
 	$count=$db->query("select count(*) as num from smg_vote_item_record where vote_id=".$_REQUEST['vote_id']);
-	$allcount=count($count);
+	$allcount=$count[0]->num;
 
 //echo "select * from " .$_REQUEST['tablepre'] ."vote_item where vote_id=" .$_REQUEST['vote_id'] ." order by priority asc";
 
 ?>
-<div id=ibody>
+<div id=ibody style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px;">
 <div>总共<span style="color:#FF0000;"><?php echo $allcount;?></span>人参加</div>
 <table  border="0" bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
@@ -43,7 +44,7 @@
   <?php
     for($i=0;$i<count($voteitem);$i++)
     {
-    	$vote=$db->query("select count(*) as value from where item_id=".$voteitem[$i]->id);
+    	$vote=$db->query("select count(*) as value from smg_vote_item_record where vote_item_id=".$voteitem[$i]->id);
   ?>
 	<tr>
 		<td bgcolor="#FFFFFF">
@@ -67,23 +68,8 @@
 	}
 	?>
 </table>
-<div style="text-align:left; float:left; display:inline;">
-	<? for($i=0;$i<count($comments);$i++){?>
-    <div class=content7>
-    	<div class=name><a href="#"><?php echo $comments[$i]->commenter; ?></a></div>	
-    	<div class=time><?php echo $comments[$i]->createtime; ?></div>	
-    	<div class=context><?php echo strfck($comments[$i]->content); ?></div>	
-    </div>
-  <?php }?>
-  <div class="pageurl">
-     <?php 
-        echo paginate("vote_show.php?id=" .$_REQUEST['vote_id']);   
-     ?>
-   </div>
-</div>
-<?
-  echo '</div>';
-?>
+
+
 <? require_once('../inc/bottom.inc.php');?>
 
 </body>

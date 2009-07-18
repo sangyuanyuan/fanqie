@@ -124,7 +124,7 @@
   		<?php
 				$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.category_type="news" order by n.priority asc limit 10';
 				$record_subject=$db -> query($sql);
-				$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.category_type="news" order by n.priority asc limit 10';
+				$sql = 'select n.id,n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.category_type="news" order by n.priority asc limit 10';
 				$record_out=$db -> query($sql);
   		?>
   		<div id=t_l_m>
@@ -140,7 +140,7 @@
  				<div class=list_tlm id=list_tlm2  style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_out); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><?php echo $record_out[$i]->short_title ?></li>
+ 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_out[$i]->platform ?>/news/news.php?id=<?php echo $record_out[$i]->id ?>" target=_blank><?php echo $record_out[$i]->short_title ?></a></li>
  						<? }?>
  				  </ul>
  				</div>
@@ -182,17 +182,17 @@
 		<div id=p2>
  			<!-- start top_right_top !-->
   		<?php
-				$sql = 'select n.*,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.category_type="news" order by n.priority asc limit 1';
+				$sql = 'select n.*,n.id as news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.category_type="news" order by n.priority asc limit 1';
 				$record_head=$db -> query($sql);
 			?>
 			<div id=t_r_t>
- 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a></div>
+ 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a></div>
  				<a href="" id=btn></a>
  				<div id=content>
  				<?php
  					if($record_head[0]->sub_headline==1)
  					{ 
- 							echo $record_head[0]->description; 
+ 							echo $record_head[0]->news_description; 
  					}
  					if($record_head[0]->sub_headline<>1&&$record_head[0]->sub_headline<>""&&$record_head[0]->sub_news_id<>"")
  					{
@@ -201,9 +201,9 @@
 
 							for($i=0;$i<=$sub_news_str_num;$i++)
 							{
-									$sql="select * from smg_news where id=".$sub_news_str[$i];
+									$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
-									echo "[<a href='/".$record_sub_news[0]->platform."/news/news_head.php?id=".$record_sub_news[0]->id."' target=_blank>".$record_sub_news[0]->short_title."</a>]";
+									echo '[<a href="'.$record_sub_news[0]->platform.'/news/news_head.php?id='.$record_sub_news[0]->news_id.'" target=_blank>'.$record_sub_news[0]->short_title.'</a>]';
 							}		
 
 					}	
@@ -218,16 +218,16 @@
  			<!-- start top_right_center_top !-->
  			<div id=t_r_c_t>
  				<?php
-					$sql = 'select n.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.category_type="news" order by n.priority asc limit 2 ';
+					$sql = 'select n.*,n.id as news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.category_type="news" order by n.priority asc limit 2 ';
 					$record_head=$db -> query($sql);
 					for($j=0;$j<=1;$j++){
 				?>
- 				<div class=title><a href="<?php echo "/".$record_head[$j]->platform."/news/news_head.php?id=".$record_head[$j]->id ?>" target="_blank"><?php echo $record_head[$j]->short_title ?></a></div>
+ 				<div class=title><a href="<?php echo "/".$record_head[$j]->platform."/news/news_head.php?id=".$record_head[$j]->news_id ?>" target="_blank"><?php echo $record_head[$j]->short_title ?></a></div>
 				<div class=content>
  				<?php
  					if($record_head[$j]->sub_headline==1)
  					{ 
- 							echo $record_head[$j]->description; 
+ 							echo $record_head[$j]->news_description; 
  					}
  					if($record_head[$j]->sub_headline<>1&&$record_head[$j]->sub_headline<>""&&$record_head[$j]->sub_news_id<>"")
  					{
@@ -236,9 +236,9 @@
 
 							for($i=0;$i<=$sub_news_str_num;$i++)
 							{
-									$sql="select * from smg_news where id=".$sub_news_str[$i];
+									$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
-									echo "[<a href='/".$record_sub_news[0]->platform."/news/news_head.php?id=".$record_sub_news[0]->id."' target=_blank>".$record_sub_news[0]->short_title."</a>]";
+									echo '[<a href="'.$record_sub_news[0]->platform.'/news/news_head.php?id='.$record_sub_news[0]->news_id.'" target=_blank>'.$record_sub_news[0]->short_title.'</a>]';
 							}		
 
 					}	

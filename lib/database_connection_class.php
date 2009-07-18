@@ -138,7 +138,8 @@ class database_row_item_class {
 		}
 
 		$sql = substr_replace($sql," SQL_CALC_FOUND_ROWS ",6, 0) ." limit " .($per_page * ($page - 1)) . "," .$per_page;
-		if($this->query($sql) === false){
+		$ret = $this->query($sql);
+		if($ret === false){
 			return false;
 		}
 		$ret = mysql_query('select FOUND_ROWS()');
@@ -164,7 +165,16 @@ class database_row_item_class {
   			$this->_debug_info('database connection has not been established!');
   			return  false;
   		}
+		global $g_db_log_file;
+		if($g_db_log_file){
+			$f_start = get_microtime();
+		}			
   		$this->_qresult = mysql_query($sql, $this->_db);
+		if($g_db_log_file){
+			$f_length = get_microtime() - $f_start;
+			$str = chr(13).chr(10). now() ." ".$_SERVER['SCRIPT_NAME'] ." execute sql: ({$f_length}ms)"  .$sql;
+			write_to_file($g_db_log_file,$str);
+		}			
   		if ($this->_qresult===FALSE)
   		{
   			$this->_debug_info('fail to query db!' . $this->get_error() .";query string = " .$sql);
@@ -190,7 +200,17 @@ class database_row_item_class {
   			$this->_debug_info('database connection has not been established!');
   			return  false;
   		}
+		global $g_db_log_file;
+		if($g_db_log_file){
+			$f_start = get_microtime();
+		}			
   		$this->_qresult = mysql_query($sqlstr, $this->_db);
+		if($g_db_log_file){
+			$f_length = get_microtime() - $f_start;
+			$str = chr(13).chr(10). now()." ".$_SERVER['SCRIPT_NAME'] ." execute sql: ({$f_length}ms)"  .$sqlstr;
+			write_to_file($g_db_log_file,$str);
+		}	
+
   		if ($this->_qresult===FALSE)
   		{
   			$this->_debug_info('fail to execute sql!' . $this->get_error() .";query string = " .$sqlstr);
