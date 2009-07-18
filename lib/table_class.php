@@ -346,7 +346,7 @@ class table_class{
 		if(strtolower($var) == 'class_name'){
 			return $this->_tablename;
 		}
-		if (array_key_exists($var,$this->fields)) {
+		if (@array_key_exists($var,$this->fields)) {
 			return  $this->fields[$var];
 		}elseif (strtolower($var) == $this->belongs_to_name){
 			
@@ -355,23 +355,23 @@ class table_class{
 			}
 			
 			return $this->belongs_to_object;
-		}elseif (array_key_exists($var,$this->has_many_objects_items)){
+		}elseif (@array_key_exists($var,$this->has_many_objects_items)){
 			#get the exists has many items
 			return $this->has_many_objects_items[$var];
-		}elseif (array_key_exists($var,$this->has_many_objects)){
+		}elseif (@array_key_exists($var,$this->has_many_objects)){
 			return $this->has_many_objects[$var];
 		}
 	}
 
 	protected function __set($key, $value){
-		if (array_key_exists($key,$this->fields)) {
+		if (@array_key_exists($key,$this->fields)) {
 			if($value != '' && $value == $this->fields[$key]) return;
 			$this->fields[$key] = $value;			
 			$this->is_edited = true;
 			if(!in_array($key, $this->changed_fields)){
 				$this->changed_fields[] = $key;
 			}
-		}else if(array_key_exists($key,$this->belongs_to_objects)){
+		}else if(@array_key_exists($key,$this->belongs_to_objects)){
 			$this->belongs_to_objects[$key]["value"] = $value;
 			$this->fields[$this->belongs_to_objects[$key]["key"]] = $value->id;
 		}

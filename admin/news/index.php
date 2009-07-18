@@ -1,13 +1,18 @@
 <?php
 	require_once('../../frame.php');
+	$title = urldecode($_REQUEST['title']);
+//		$title=urldecode($title);
+//	
+	echo $_REQUEST['title'];
+	echo urldecode($_REQUEST['title']);
+	echo mb_convert_encoding($_REQUEST['title'],'UTF-8','GB2312');
+	echo mb_convert_encoding(urldecode('%E5%8A%A0'),'UTF-8','GB2312');
+	
 	$user = judge_role('admin');	
-	$title = $_REQUEST['title'];
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
 	
 
-	$title=urldecode($title);
-	$title=mb_convert_encoding($title,'UTF-8','GB2312');
-	echo $title;
+
 	
 	$dept_id = $_REQUEST['dept'];
 	$is_adopt = $_REQUEST['adopt'];
