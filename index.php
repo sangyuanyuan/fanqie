@@ -182,11 +182,11 @@
 		<div id=p2>
  			<!-- start top_right_top !-->
   		<?php
-				$sql = 'select n.*,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.category_type="news" order by n.priority asc limit 1';
+				$sql = 'select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.category_type="news" order by n.priority asc limit 1';
 				$record_head=$db -> query($sql);
 			?>
 			<div id=t_r_t>
- 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a></div>
+ 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a></div>
  				<a href="" id=btn></a>
  				<div id=content>
  				<?php
