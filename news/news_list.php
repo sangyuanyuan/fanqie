@@ -42,8 +42,8 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='小编推荐' order by priority asc,last_edited_at desc";
-			 $xbjj=$db->paginate($sql,8);
+			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='小编推荐' order by priority asc,last_edited_at desc limit 8";
+			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
 			 	<div class="r_content">
@@ -63,8 +63,8 @@
 			<div class=b_t_title1 param=3 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat">精彩视频</div>
 			<div class="b_t" id="b_t_1" style="display:none;">
 				<? 
-					$sql="SELECT * FROM bbs_posts where subject<>'' order by pid desc";
-					$bbs=$db->paginate($sql,10);
+					$sql="SELECT * FROM bbs_posts where subject<>'' order by pid desc limit 10";
+					$bbs=$db->query($sql);
 					for($i=0;$i<count($bbs);$i++){
 				?>
 				<div class="r_content">
@@ -76,8 +76,8 @@
 			</div>
 			<div class=b_t id="b_t_2" style="display:none;">
 				<? 
-					$sql="SELECT * FROM blog_spaceitems order by itemid desc";
-					$blog=$db->paginate($sql,10);
+					$sql="SELECT * FROM blog_spaceitems order by itemid desc limit 10";
+					$blog=$db->query($sql);
 					for($i=0;$i<count($bbs);$i++){
 				?>
 				<div class="r_content">
@@ -89,8 +89,8 @@
 			</div>
 			<div class=b_t id="b_t_3" style="display:inline;">
 			<?php 
-			 $sql="select * from smg_video where is_adopt=1 order by priority asc,created_at desc";
-			 $jcsp=$db->paginate($sql,10);
+			 $sql="select * from smg_video where is_adopt=1 order by priority asc,created_at desc limit 10";
+			 $jcsp=$db->query($sql);
 			 for($i=0;$i<count($jcsp);$i++){	 	
 			 ?>
 			 	<div class="r_content">
@@ -110,8 +110,8 @@
 (select count(dept_id) as allcounts,dept_id from smg_news where is_recommend=1  group by dept_id) b on a.id=b.dept_id left join  (select count(dept_id) as counts,dept_id from smg_news where is_adopt=1 group by dept_id) c on b.dept_id = c.dept_id
 left join (select count(dept_id) as p1allcounts,dept_id from smg_images where is_recommend=1 group by dept_id) p1 on a.id=p1.dept_id left join  (select count(dept_id) as p2counts,dept_id from smg_images where is_adopt=1 group by dept_id) p2 on p1.dept_id = p2.dept_id
 left join (select count(dept_id) as v1allcounts,dept_id from smg_video where is_recommend=1 group by dept_id) v1 on a.id=v1.dept_id left join  (select count(dept_id) as v2counts,dept_id from smg_video where is_adopt=1 group by dept_id) v2 on v1.dept_id = v2.dept_id
-order by b.allcounts desc) tb order by a1 desc";
-			$pubcount=$db->paginate($sql,10);
+order by b.allcounts desc) tb order by a1 desc limit 10";
+			$pubcount=$db->query($sql);
 			$total=0;
 			for($i=0;$i<count($pubcount);$i++)
 			{
@@ -133,8 +133,8 @@ order by b.allcounts desc) tb order by a1 desc";
 			
 			<div id=b_b_2 class="b_b" style="display:block;">
 			<?php 
-			 $sql="select * from smg_dept order by click_count desc";
-			 $clickcount=$db->paginate($sql,10);
+			 $sql="select * from smg_dept order by click_count desc limit 10";
+			 $clickcount=$db->query($sql);
 			 $total=$db->query("select sum(click_count) as total from smg_dept");
 			 for($i=0;$i<count($clickcount);$i++){	 	
 			 ?>

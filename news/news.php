@@ -283,8 +283,8 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='小编推荐' order by priority asc,last_edited_at desc";
-			 $xbjj=$db->paginate($sql,8);
+			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='小编推荐' order by priority asc,last_edited_at desc limit 8";
+			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
 			 	<div class="r_content">
@@ -314,8 +314,8 @@
 			<div class=b_t_title1 param=3 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat">精彩视频</div>
 			<div class="b_t" id="b_t_1" style="display:none;">
 				<? 
-					$sql="SELECT * FROM bbs_posts where subject<>'' order by pid desc";
-					$bbs=$db->paginate($sql,10);
+					$sql="SELECT * FROM bbs_posts where subject<>'' order by pid desc limit 10";
+					$bbs=$db->query($sql);
 					for($i=0;$i<count($bbs);$i++){
 				?>
 				<div class="r_content">
@@ -327,8 +327,8 @@
 			</div>
 			<div class=b_t id="b_t_2" style="display:none;">
 				<? 
-					$sql="SELECT * FROM blog_spaceitems order by itemid desc";
-					$blog=$db->paginate($sql,10);
+					$sql="SELECT * FROM blog_spaceitems order by itemid desc limit 10";
+					$blog=$db->query($sql);
 					for($i=0;$i<count($bbs);$i++){
 				?>
 				<div class="r_content">
@@ -340,8 +340,8 @@
 			</div>
 			<div class=b_t id="b_t_3" style="display:inline;">
 			<?php 
-			 $sql="select * from smg_video where is_adopt=1 order by priority asc,created_at desc";
-			 $jcsp=$db->paginate($sql,10);
+			 $sql="select * from smg_video where is_adopt=1 order by priority asc,created_at desc limit 10";
+			 $jcsp=$db->query($sql);
 			 for($i=0;$i<count($jcsp);$i++){	 	
 			 ?>
 			 	<div class="r_content">
@@ -385,8 +385,8 @@ order by b.allcounts desc) tb order by a1 desc";
 			
 			<div id=b_b_2 class="b_b" style="display:block;">
 			<?php 
-			 $sql="select * from smg_dept order by click_count desc";
-			 $clickcount=$db->paginate($sql,10);
+			 $sql="select * from smg_dept order by click_count desc limit 10";
+			 $clickcount=$db->query($sql);
 			 $total=$db->query("select sum(click_count) as total from smg_dept");
 			 for($i=0;$i<count($clickcount);$i++){	 	
 			 ?>
