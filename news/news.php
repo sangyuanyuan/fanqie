@@ -1,6 +1,7 @@
 <?php
 	require_once('../frame.php');
 	$id=$_REQUEST['id'];
+	//$id =14621;
 	if($id==""||$id==null){die('没有找到网页');}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">

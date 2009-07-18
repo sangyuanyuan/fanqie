@@ -160,6 +160,7 @@
 			}
 		});
 		function send_search(){
+			alert(encodeURI($("#title").attr('value')));
 			window.location.href="?title="+encodeURI($("#title").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 		}
 		$('#title').keydown(function(e){
