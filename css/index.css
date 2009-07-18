@@ -27,6 +27,7 @@ p{margin:0px; padding:0px;}
 #t_l_m .btn_tlm{width:83px; height:19px; margin-left:44px; padding-top:12px; line-height:15px; font-weight:bold; text-align:center; color:#ffffff; cursor:pointer; float:left; display:inline;}
 #t_l_m .list_tlm{width:260px; height:200px; margin-top:10px; margin-left:18px;  float:left; display:none;}
 #t_l_m .list_tlm li{width:245px; height:19px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; float:left; display:inline;}
+#t_l_m .list_tlm li a{color:#000000; text-decoration:none;}
 
 #t_l_b{width:305px; height:260px; background:url(/images/index/bg_t_l_b.jpg) no-repeat; float:left; display:inline;}
 #t_l_b .btn_tlb{width:83px; height:31px; margin-top:6px; margin-left:44px; padding-top:12px; line-height:15px; font-weight:bold; text-align:center; color:#ffffff; cursor:pointer;  float:left; display:inline;}
