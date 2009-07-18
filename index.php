@@ -38,59 +38,13 @@
  					<div class=item id=item3 param="3" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">番茄广告</div>
 				</div>	
   			<div class=content_tlt id=content1>
-  				
-  				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-					<div id="focus_01"></div> 
-					<script type="text/javascript"> 
-					var pic_width1=271; //图片宽度
-					var pic_height1=183; //图片高度
-					var pics1="<?php echo $record_star[0]->photo_src.",".$record_star[1]->photo_src.",".$record_star[2]->photo_src.",".$record_star[3]->photo_src ?>";
-					var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
-					var texts1="<?php echo $record_star[0]->short_title.",".$record_star[1]->short_title.",".$record_star[2]->short_title.",".$record_star[3]->short_title ?>";
- 	
-					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
-					picflash.addParam('wmode','opaque');
-					picflash.addVariable("picurl",pics1);
-					picflash.addVariable("piclink",mylinks1);
-					picflash.addVariable("pictext",texts1);				
-					picflash.addVariable("pictime","5");
-					picflash.addVariable("borderwidth","271");
-					picflash.addVariable("borderheight","183");
-					picflash.addVariable("borderw","false");
-					picflash.addVariable("buttondisplay","true");
-					picflash.addVariable("textheight","15");				
-					picflash.addVariable("pic_width",pic_width1);
-					picflash.addVariable("pic_height",pic_height1);
-					picflash.write("focus_01");				
-					</script>  				
+		
   		  </div>
  				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg);display:inline;">
  					<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=225px height=182px scrolling="no" frameborder="0"></iframe>
  				</div>
   			<div class=content_tlt id=content3>
-					<div id="focus_02"></div> 
- 					<script type="text/javascript"> 
-					var pic_width1=271; 
-					var pic_height1=183; 
-					var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
-					var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
-					var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
- 	
-					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "271", "183", "4","#FFFFFF");
-					picflash.addParam('wmode','opaque');
-					picflash.addVariable("picurl",pics1);
-					picflash.addVariable("piclink",mylinks1);
-					picflash.addVariable("pictext",texts1);				
-					picflash.addVariable("pictime","5");
-					picflash.addVariable("borderwidth","271");
-					picflash.addVariable("borderheight","183");
-					picflash.addVariable("borderw","false");
-					picflash.addVariable("buttondisplay","true");
-					picflash.addVariable("textheight","15");				
-					picflash.addVariable("pic_width",pic_width1);
-					picflash.addVariable("pic_height",pic_height1);
-					picflash.write("focus_02");				
-					</script>   				
+			
   			</div>
  				<div class=list id=list1>
  					<ul>
@@ -122,7 +76,7 @@
 
  			<!-- start top_left_middle !-->
   		<?php
-				$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.category_type="news" order by n.priority asc limit 10';
+				$sql = 'select n.id,n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.category_type="news" order by n.priority asc limit 10';
 				$record_subject=$db -> query($sql);
 				$sql = 'select n.id,n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.category_type="news" order by n.priority asc limit 10';
 				$record_out=$db -> query($sql);
@@ -133,11 +87,11 @@
  				<div class=list_tlm id=list_tlm1>
  					<ul>
  						<?php for($i=0; $i<count($record_subject); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><?php echo $record_subject[$i]->name ?></li>
+ 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_subject[$i]->platform ?>/news/news.php?id=<?php echo $record_subject[$i]->id ?>" target=_blank><?php echo $record_subject[$i]->short_title ?></a></li>
  						<? }?>
  				  </ul>
  				</div>
- 				<div class=list_tlm id=list_tlm2  style="display:inline;">
+ 				<div class=list_tlm id=list_tlm2 style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_out); $i++){?>
  						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_out[$i]->platform ?>/news/news.php?id=<?php echo $record_out[$i]->id ?>" target=_blank><?php echo $record_out[$i]->short_title ?></a></li>
@@ -150,9 +104,9 @@
 
  			<!-- start top_left_bottom !-->
  			<?php
-				$sql = 'select n.short_title,c.platform  from smg_news n where n.tags="小编加精"  order by n.last_edited_at desc limit 10';
+				$sql = 'select n.id,n.short_title,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.tags="小编加精"  order by n.last_edited_at desc limit 10';
 				$record_marrow=$db -> query($sql);
-				$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.category_type="news" order by n.priority asc limit 10';
+				$sql = 'select n.id,n.short_title,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.category_type="news" order by n.priority asc limit 10';
 				$record_quick=$db -> query($sql);
 			?>
 			<div id=t_l_b>
@@ -161,14 +115,14 @@
  				<div class=list_tlb id=list_tlb1 style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_marrow); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><?php echo $record_marrow[$i]->short_title ?></li>
+ 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_marrow[$i]->platform ?>/news/news.php?id=<?php echo $record_marrow[$i]->id ?>" target=_blank><?php echo $record_marrow[$i]->short_title ?></a></li>
  						<? }?>
  				  </ul>
  				</div>
  				<div class=list_tlb id=list_tlb2>
  					<ul>
  						<?php for($i=0; $i<count($record_quick); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><?php echo $record_quick[$i]->short_title ?></li>
+ 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_quick[$i]->platform ?>/news/news.php?id=<?php echo $record_quick[$i]->id ?>" target=_blank><?php echo $record_quick[$i]->short_title ?></a></li>
  						<? }?>
  				  </ul>
  				</div>
@@ -182,12 +136,12 @@
 		<div id=p2>
  			<!-- start top_right_top !-->
   		<?php
-				$sql = 'select n.*,n.id as news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.category_type="news" order by n.priority asc limit 1';
+				$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.category_type="news" order by n.priority asc limit 1';
 				$record_head=$db -> query($sql);
 			?>
 			<div id=t_r_t>
  				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a></div>
- 				<a href="" id=btn></a>
+ 				<a href="/news/news_list.php?id=<?php echo $record_head[0]->cid; ?>" id=btn target=_blank></a>
  				<div id=content>
  				<?php
  					if($record_head[0]->sub_headline==1)
@@ -358,28 +312,26 @@
 
  			<!-- start top_right_center_bottom_right !-->
   		<?php
-				$sql = 'select n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态-图" and c.category_type="news" order by n.priority asc limit 1';
+				$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.category_type="server" order by n.priority asc limit 8';
 				$record_industry=$db -> query($sql);
-				$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态-普" and c.category_type="news" order by n.priority asc limit 7';
-				$record_industry2=$db -> query($sql);		
 			?>
 			<div id=t_r_c_b_r>
 					<div id=title></div>
-					<a href="" id=more></a>
+					<a href="/" id=more></a>
 					<div id=box1>
 						<img src="<?php echo $record_industry[0]->photo_src ?>" >
 						<ul>
-							<li><?php echo $record_industry2[0]->short_title ?></li>
-							<li><?php echo $record_industry2[1]->short_title ?></li>
-							<li><?php echo $record_industry2[2]->short_title ?></li>
+							<li><?php echo $record_industry[1]->short_title ?>123</li>
+							<li><?php echo $record_industry[2]->short_title ?></li>
+							<li><?php echo $record_industry[3]->short_title ?></li>
 						</ul>	
 					</div>	
 					<div id=box2>
 						<ul>
-							<li>·<?php echo $record_industry2[3]->short_title ?></li>
-							<li>·<?php echo $record_industry2[4]->short_title ?></li>
-							<li>·<?php echo $record_industry2[5]->short_title ?></li>
-							<li>·<?php echo $record_industry2[6]->short_title ?></li>
+							<li>·<?php echo $record_industry[4]->short_title ?></li>
+							<li>·<?php echo $record_industry[5]->short_title ?></li>
+							<li>·<?php echo $record_industry[6]->short_title ?></li>
+							<li>·<?php echo $record_industry[7]->short_title ?></li>
 						</ul>						
 					</div>
  			</div>
