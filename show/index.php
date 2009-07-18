@@ -31,7 +31,8 @@
       <!-- start top_right !-->
  	 	 <div id=t_r>
  	 	 	<?php
-				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc,created_at desc limit 4';
+				$db = get_db();
+				$sql = 'select i.id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
 			?>
 			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
@@ -40,7 +41,7 @@
 				var pic_width1=276; 
 				var pic_height1=146; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
-				var mylinks1="/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php,/fqtg/fqtglist.php";
+				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
 				var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
 	
 				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "590", "212", "4","#FFFFFF");
@@ -75,13 +76,13 @@
  	 	 			每日之星
  	 	 		</div>
 				<div class=title_r>
-					<?php if(count($star)>0){?><a target="_blank" href="list.php?id=<?php echo $category_id;?>">More..</a><?php } ?>
+					<?php if(count($star)>0){?><a target="_blank" href="list.php?id=<?php echo $category_id;?>type=news">More..</a><?php } ?>
 				</div>
  	 	 	</div>
 			<?php for($i=0;$i<count($star);$i++){?>
 				<div class="content">
 					<img src="/images/show/red_square.jpg">
-					<div class=c_a><a href="star.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->title;?></a></div>
+					<div class=c_a><a target="_blank" href="star.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->title;?></a></div>
 					<div class=c_t><?php echo  substr($star[$i]->last_edited_at, 5, 5);?></div>
 				</div>
 			<?php }?>
@@ -101,9 +102,6 @@
  	 	 			<span id="t_l1" class=change value="视频排行榜" name="hide1" style="cursor:pointer; border-right:1px dotted #25619A; color:#25619A">视频排行榜</span>
 					<span id="t_l2" class=change value="播客排行榜" name="hide1" style="cursor:pointer; margin-left:5px; color:#999999">播客排行榜</span>
  	 	 		</div>
-				<div class=title_r>
-					<?php if(count($star)>0){?><!--<a target="_blank" href="list.php?id=<?php $star[0]->category_id;?>">More..</a>--><?php } ?>
-				</div>
  	 	 	</div>
 			<div class="content hide1" id="视频排行榜">
 				<?php
@@ -308,7 +306,7 @@
  	 	 			节目点评
  	 	 		</div>
 				<div class=title_r>
-					<?php if(count($star)>0){?><a target="_blank" href="list.php?id=<?php echo $category_id;?>">More..</a><?php } ?>
+					<a target="_blank" href="list.php?id=<?php echo $category_id;?>&type=news">More..</a>
 				</div>
  	 	 	</div>
 			<?php for($i=0;$i<count($star);$i++){?>
@@ -331,7 +329,7 @@
  	 	 			部门比拼
  	 	 		</div>
 				<div class=title_r>
-					<?php if(count($star)>0){?><a target="_blank" href="list.php?id=<?php echo $category_id;?>">More..</a><?php } ?>
+					<a target="_blank" href="list.php?id=<?php echo $category_id;?>&type=news">More..</a>
 				</div>
  	 	 	</div>
 			<?php for($i=0;$i<count($star);$i++){?>
@@ -354,7 +352,7 @@
  	 	 			台前幕后
  	 	 		</div>
 				<div class=title_r>
-					<?php if(count($star)>0){?><a target="_blank" href="list.php?id=<?php echo $category_id;?>">More..</a><?php } ?>
+					<a target="_blank" href="list.php?id=<?php echo $category_id;?>&type=news">More..</a>
 				</div>
  	 	 	</div>
 			<?php for($i=0;$i<count($star);$i++){?>
