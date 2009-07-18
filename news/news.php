@@ -31,8 +31,8 @@
 		
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
-		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d left join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and d.diggtoid=".$id." group by d.diggtoid  order by flowernum desc";
-		$digg=$db->query($sql);
+		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by d.diggtoid order by flowernum desc";
+		$digg=$db->paginate($sql,2);
 		if($record[0]->news_type==2)
 		{
 			redirect($record[0]->file_name);
@@ -133,7 +133,7 @@
 					<div class="btn"><button class="vote_submit" param="0">投票</button><input type="hidden" id="vote_id" value="<?php echo $record2[0]->vote_id; ?>"><input type="hidden" value="<?php echo $record1[0]->limit_type;?>"> <button id="show_vote">查看</button></div>
 				</div>
 			<? }}?>
-			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
+			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
 			<div id=more><a href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<?php if(count($about)>0||count($about1)>0){?>
 			<div class=abouttitle><div style="float:left; display:inline;">更多关于</div><div style="width:150px; height:20px; line-height:20px; overflow:hidden; text-decoration:underline; float:left; display:inline">"<?php echo delhtml($record[0]->short_title);?>"</div><div style="float:left; display:inline;">的新闻</div></div>
@@ -192,7 +192,7 @@
 			<?php if($record[0]->is_commentable==1){ if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
-				 for($i=0;$i<2;$i++){ ?>
+				 for($i=0;$i< count($digg);$i++){ ?>
 					<div class=content>	
 						<div class=title1>
 							<div style="width:110px; margin-left:118px; float:left; display:inline;">
