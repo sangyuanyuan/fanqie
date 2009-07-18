@@ -375,41 +375,41 @@
 					</div> 					
  				</div>
  				<?php
- 					$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="news" order by n.priority asc limit 12';
+ 					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc limit 12';
 					$record_happy=$db -> query($sql);		
 				?>	
  				<div class=content_trrt id=content_trrt2>
  					<div class=box>
 						<ul>
 							<?php for($i=0;$i<4;$i++){?>
-							<li>·<?php echo $record_happy[$i]->short_title ?></li>
+							<li>·<a href="/<?php echo $record_happy[$i]->platform?>/news/news.php?id=<?php echo $record_happy[$i]->news_id?>" target=_blank><?php echo $record_happy[$i]->short_title ?></a></li>
 							<? }?>
 						</ul>
 					</div>
 					<div class=box>
 						<ul>
 							<?php for($i=4;$i<8;$i++){?>
-							<li>·<?php echo $record_happy[$i]->short_title ?></li>
+							<li>·<a href="/<?php echo $record_happy[$i]->platform?>/news/news.php?id=<?php echo $record_happy[$i]->news_id?>" target=_blank><?php echo $record_happy[$i]->short_title ?></a></li>
 							<? }?>
 						</ul>
 					</div>
 					<div class=box>
 						<ul>
 							<?php for($i=8;$i<12;$i++){?>
-							<li>·<?php echo $record_happy[$i]->short_title ?></li>
+							<li>·<a href="/<?php echo $record_happy[$i]->platform?>/news/news.php?id=<?php echo $record_happy[$i]->news_id?>" target=_blank><?php echo $record_happy[$i]->short_title ?></a></li>
 							<? }?>
 						</ul>
 					</div> 				
  				</div>
  				<?php
- 					$sql = 'select n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="讨论区" and c.platform="news" order by n.priority asc limit 12';
+ 					$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="讨论区" and c.platform="zone" order by n.priority asc limit 12';
 					$record_discuss=$db -> query($sql);		
 				?>	
  				<div class=content_trrt id=content_trrt3>
  					<div class=box>
 						<ul>
 							<?php for($i=0;$i<4;$i++){?>
-							<li>·<?php echo $record_discuss[$i]->short_title ?></li>
+							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
 							<? }?>
 						</ul>
 					</div>
