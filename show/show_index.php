@@ -50,6 +50,7 @@
 				<div class=content style="border-bottom:none;">
 				<?php
 					$sql = 'select keywords from smg_images where keywords!="" order by click_count desc limit 10';
+					echo $sql;
 					$records = $db->query($sql);
 					$c = array();
 					for($i=0;$i<count($records);$i++){
