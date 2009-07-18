@@ -21,8 +21,12 @@
 			<div id=t_l_t>
 				<div id=title>HOT讨论区</div>
 			</div>
-			<div class=t_l_b></div>
-			<div class=t_l_b></div>
+			<div class=t_l_b>
+				<div class="title">BBS</div>
+			</div>
+			<div class=t_l_b>
+				<div class="title">BBS</div>
+			</div>
 		</div>
 		<div id=t_c>
 			<div id=t_c_t></div>
