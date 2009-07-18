@@ -83,9 +83,7 @@ if($type=="report")
 	$filename='../../index_report.html';
 	$handle=fopen($filename,"wt");
 	
-	//$fcontent=iconv("UTF-8","GB2312",$fcontent);
-	$fcontent=chr(239).chr(187).chr(191).$fcontent;
-	//fwrite($handle,iconv("UTF-8","GB2312",$fcontent));
+	$fcontent='<meta http-equiv=Content-Type content="text/html; charset=gbk">'.$fcontent;
 	fwrite($handle,$fcontent);
 	fclose($handle);
   echo "收视率报表静态执行成功<br>";
