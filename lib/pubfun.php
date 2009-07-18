@@ -44,6 +44,10 @@ function get_microtime(){
    list($usec, $sec) = explode(" ",microtime()); 
    return ((float)$usec + (float)$sec); 
 } 
+
+function now(){
+	return date("Y-m-d H:i:s");
+}
 function alert($msg)
 {
   echo "<script LANGUAGE=\"Javascript\">"; 
@@ -478,6 +482,13 @@ function search_newsid($key,$table_name='smg_news',$page_count = 10, $order=''){
 	}else{
 		return $db->query($sql);
 	}
+}
 		
+
+function write_to_file($filename,$content,$mode='a'){
+	$fp = fopen($filename, $mode);
+	fwrite($fp,$content);
+	fclose($fp);
+
 }
 ?>
