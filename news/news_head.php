@@ -200,7 +200,7 @@
 	</div>
 	
 	<div id=ibody_right>
-		<div id=r_t></div>
+		div id=r_t></div>
 		<?php
 		if($record[0]->related_videos!=""){
 		$keys = explode(',',$record[0]->related_videos);
@@ -209,13 +209,13 @@
 		 if($record[0]->video_src==""){
 		 	if($record[0]->low_quality==0){
 			?>
-			<div id=r_video><?php show_video_player('298','240',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
+			<div class=r_video><?php show_video_player('298','240',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
 		<?php }
 			else
 			{?>
-				<div id=r_video><?php show_video_player('150','120',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
+				<div class=r_video><?php show_video_player('150','120',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
 			<?php }
-		}} ?>
+		} ?>
 		<div id=r_m>
 			<?php 
 			 for($i=1;$i<count($keys);$i++){
@@ -233,6 +233,7 @@
 				</div>
 			<? }?>
 		</div>
+		<? }?>
 		<div class=r_b1>
 			<div class=title>历史头条</div>
 			<?php 
