@@ -29,7 +29,7 @@ class table_class{
 			$type = $db->field_by_index(1);
 			$default = $db->field_by_name('Default');
 			$this->fields_type[$name] = $type;
-			$this->fields[$name] = $default;
+			$this->fields[$name] = $Default;
 			$this->fields_default[$name] = $default;
 		}while ($db->move_next());
 		//$this->_set_fields_default();

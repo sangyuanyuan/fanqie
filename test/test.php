@@ -2,10 +2,9 @@
 <?php
 	
 	require "../frame.php";	
-	echo now();
-	echo urldecode('%E5%8A%A0');
-	echo urldecode('\xe5\x8a\xa0');
-	echo phpinfo();
+	$new = new table_class('smg_news');
+	var_dump($_COOKIE);
+	
 	#$db->paginate('select * from smg_category');
 
 	write_to_file('d:\tmp.txt', 'dfadsfsadfsdfdsfsd'. chr(13) .chr(10).'123123\r\n');

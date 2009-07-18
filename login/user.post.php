@@ -52,12 +52,13 @@ if($_POST['user_type']=="login")
 		
 		if($ret[0]>0)
 		{
+			@setcookie('smg_uid', $ret[0],$y2k,'/');
 			echo (uc_user_synlogin($ret[0]));
 		}
 		if($ret[0]<=0)
 		{
 			uc_user_login($login_text,$password_text);
-		}
+		}	
 	}	
 	if(is_ajax()){
 		echo $error;
@@ -65,9 +66,12 @@ if($_POST['user_type']=="login")
 		if($error == 'ok'){
 
 			$last_url = $_POST['lasturl'];
-			if(empty($last_url)){
+			if($login_info[0]->role_name == 'admin' || $login_info[0]->role_name == 'dept_admin'){
+				
 				$last_url = '/admin/admin.php';
 				//var_dump($_SESSION);
+			}else{
+				$last_url = '/';
 			}
 			redirect($last_url);
 		}else{
