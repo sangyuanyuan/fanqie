@@ -91,7 +91,7 @@ p{margin:0px; padding:0px;}
 
 #t_r_r_m{width:206px; height:194px; background:url(/images/index/bg_t_r_r_m.jpg) no-repeat; float:right; display:inline;}
 #t_r_r_m #btn{width:75px; height:24px; margin-top:33px; margin-left:10px; background:url(/images/index/btn9.jpg) no-repeat; float:left; display:inline;}
-#t_r_r_m #content_trrm{width:180px; height:115px; margin-top:5px; margin-left:15px; color:#656565; line-height:18px; float:left; display:inline;}
+#t_r_r_m #content_trrm{width:175px; height:115px; overflow:hidden; margin-top:5px; margin-left:15px; color:#656565; line-height:19px; float:left; display:inline;}
 #t_r_r_m #content_trrm a{color:#656565; text-decoration:none;}
 #t_r_r_m #content_trrm a:hover{color:#656565; text-decoration:underline;}
  
