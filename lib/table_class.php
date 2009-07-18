@@ -27,9 +27,9 @@ class table_class{
 		do {
 			$name = $db->field_by_index(0);
 			$type = $db->field_by_index(1);
-			$default = $db->field_by_name('Default');
+			$default = $db->field_by_index(4);
 			$this->fields_type[$name] = $type;
-			$this->fields[$name] = $Default;
+			$this->fields[$name] = $default;
 			$this->fields_default[$name] = $default;
 		}while ($db->move_next());
 		//$this->_set_fields_default();
