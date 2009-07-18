@@ -82,7 +82,7 @@
 			<?php for($i=0;$i<count($star);$i++){?>
 				<div class="content">
 					<img src="/images/show/red_square.jpg">
-					<div class=c_a><a target="_blank" href="star.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->title;?></a></div>
+					<div class=c_a><a target="_blank" href="star.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->short_title;?></a></div>
 					<div class=c_t><?php echo  substr($star[$i]->last_edited_at, 5, 5);?></div>
 				</div>
 			<?php }?>
@@ -312,7 +312,7 @@
 			<?php for($i=0;$i<count($star);$i++){?>
 				<div class="content">
 					<img src="/images/show/red_square.jpg">
-					<div class=c_a><a href="star.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->title;?></a></div>
+					<div class=c_a><a href="star.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->short_title;?></a></div>
 					<div class=c_t><?php echo  substr($star[$i]->last_edited_at, 5, 5);?></div>
 				</div>
 			<?php }?>
@@ -335,7 +335,7 @@
 			<?php for($i=0;$i<count($star);$i++){?>
 				<div class="content">
 					<img src="/images/show/red_square.jpg">
-					<div class=c_a><a href="star.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->title;?></a></div>
+					<div class=c_a><a href="star.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->short_title;?></a></div>
 					<div class=c_t><?php echo  substr($star[$i]->last_edited_at, 5, 5);?></div>
 				</div>
 			<?php }?>
@@ -358,7 +358,7 @@
 			<?php for($i=0;$i<count($star);$i++){?>
 				<div class="content">
 					<img src="/images/show/red_square.jpg">
-					<div class=c_a><a href="star.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->title;?></a></div>
+					<div class=c_a><a href="star.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->short_title;?></a></div>
 					<div class=c_t><?php echo  substr($star[$i]->last_edited_at, 5, 5);?></div>
 				</div>
 			<?php }?>

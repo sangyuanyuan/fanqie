@@ -22,28 +22,28 @@
 <div id=ibody>	
  <div id=ibody_left>
  	  	<div id=l_t>
-	 	  	<a target="_blank" href="#"><img border=0 src="/images/show/show_l_t.jpg"></a>
+	 	  	<a target="_blank" href="#"><img border=0 src="/images/show/show_l_t.jpg" width="290"></a>
 			<?php
 				$db = get_db();
 				$sql = 'select i.id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
 			?>
 			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-			<div id="focus_02"></div> 
+			<div id="focus_02" style="margin-top:5px;"></div> 
 			<script type="text/javascript"> 
-				var pic_width1=276; 
+				var pic_width1=287; 
 				var pic_height1=146; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
 				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
 				var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
 	
-				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "287", "146", "4","#FFFFFF");
+				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "290", "146", "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');
 				picflash.addVariable("picurl",pics1);
 				picflash.addVariable("piclink",mylinks1);
 				picflash.addVariable("pictext",texts1);				
 				picflash.addVariable("pictime","5");
-				picflash.addVariable("borderwidth","287");
+				picflash.addVariable("borderwidth","290");
 				picflash.addVariable("borderheight","146");
 				picflash.addVariable("borderw","false");
 				picflash.addVariable("buttondisplay","true");
@@ -106,11 +106,11 @@
 				</a>
 			</div>
 			<div class=digg>
-				<div id="flower">
+				<div id="flower" title="送鲜花">
 					<?php echo $image->flower;?>
 					<input type="hidden" id="hidden_flower" value="<?php echo $image->flower;?>">
 				</div>
-				<div id="tomato">
+				<div id="tomato" title="丢番茄">
 					<?php echo $image->tomato;?>
 					<input type="hidden" id="hidden_tomato" value="<?php echo $image->tomato;?>">
 				</div>
@@ -124,13 +124,12 @@
 	  		<div class=title>图片信息</div>
 			<div class=content>
 				<div class=top>
-					<div class=title>视频简介：</div>
-					<div id=description><?php echo $image->description;?></div>
+					<div id=name>图片名称：<?php echo $image->title;?></div>
 				</div>
 				<div class=center>
 					<div class=left>
 						<div class=title>发布者：</div>
-						<div id=publisher><?php $image->publisher;?></div>
+						<div id=publisher><?php echo $image->publisher;?></div>
 					</div>
 					<div class=middle>
 						<div class=title>发布于：</div>
@@ -142,8 +141,10 @@
 					</div>
 				</div>
 				<div class=bottom>
-					<div id=name>图片名称：<?php echo $image->title;?></div>
+					<div class=title>图片简介：</div>
+					<div id=description><?php echo $image->description;?></div>
 				</div>
+				
 			</div>
 		</div>
 		
@@ -185,11 +186,11 @@
 				<div class=more><a target="_blank" href="show_list.php?name=<?php echo $image->publisher;?>">更多>></a></div>
 				<?php
 					$images = new smg_images_class();
-					$records = $images->find('all',array('conditions' => 'is_adopt=1 and publisher="'.$image->publisher.'" and id!='.$id,'limit' => '8'));
+					$records = $images->find('all',array('conditions' => 'is_adopt=1 and src is not null and publisher="'.$image->publisher.'" and id!='.$id,'limit' => '8'));
 					$count = count($records);
 					for($i=0;$i<$count;$i++){ 
 				?>
-					<div class=pic><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img width=145 height=105 border=0 src="<?php echo $records[$i]->src_path('small');?>"></a></div>
+					<div class=pic><a target="_blank" title="<?php echo $records[$i]->title; ?>" href="show.php?id=<?php echo $records[$i]->id;?>"><img width=145 height=105 border=0 src="<?php echo $records[$i]->src_path('small');?>"></a></div>
 				<?php }?>
 			</div>
 		</div>
