@@ -20,13 +20,14 @@
 	 <div id=ibody_top>
 	 	  <div id=t_l>
 	  		<?php 
+				$db = get_db();
 				$images = new smg_images_class();
 				$records = $images->find('all',array('conditions' => 'is_adopt=1','limit' => '12','order' => 'created_at desc'));
 				$count = count($records);
 				for($i=0; $i<$count;$i++){ 
 			?>
 				
-				<div class=img><img style="cursor:pointer;" class="small_pic" border=0 width=110 height=72 src="<?php echo $records[$i]->src_path('small');?>" name="<?php echo $records[$i]->src;?>" value="<?php echo $records[$i]->url;?>"></div>
+				<div class=img><img id="<?php echo $i+1;?>" style="cursor:pointer;" class="small_pic" border=0 width=110 height=72 src="<?php echo $records[$i]->src_path('small');?>" name="<?php echo $records[$i]->src;?>" value="show.php?id=<?php echo $records[$i]->id;?>"></div>
 			  <?php }?>
 	 	  </div>
 	 	  <div id=t_r><a href="<?php echo $records[0]->url?>" target="_blank" id="pic_url"><img border=0 id="big_pic" width="518" height="236" src="<?php echo $records[0]->src?>"></a></div>
@@ -34,16 +35,41 @@
 	 <div id=ibody_left>
 		 	<div id=l_t>
 		 	 	 <div id=top><img src="/images/show/show_index_l_t.jpg">　公告</div>
+				 <div class=content>
+				 	<?php
+						$category_id = category_id_by_name('展示公告');
+						$sql = 'select content from smg_news where category_id='.$category_id.' and is_adopt=1 order by priority asc,created_at desc limit 1';
+						$record = $db->query($sql);
+					?>
+					<?php echo $record[0]->content;?>
+				 </div>
 		 	</div>
 		  	<a target="_blank" href="#"><img border=0 src="/images/show/show_l_t.jpg"></a>
 			<div class=l_m>
 				<div class=title><div class=left>热门标签</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
-				<div class=content style="border-bottom:none;"></div>
+				<div class=content style="border-bottom:none;">
+				<?php
+					$sql = 'select keywords from smg_images where keywords!="" order by click_count desc limit 10';
+					$records = $db->query($sql);
+					$c = array();
+					for($i=0;$i<count($records);$i++){
+						$keywords = explode(',', $records[$i]->keywords);
+						if(count($keywords)==0)$keywords = explode('，', $records[$i]->keywords);
+						for($j=0;$j<count($keywords);$j++){
+							if(!in_array($keywords[$j],$c))array_push($c,$keywords[$j]);
+						}
+						$keywords = '';
+					}
+					for($i=0;$i<count($c);$i++){
+				?>
+				<div class="tag<?php echo rand(1, 6);?>"><?php echo $c[$i];?></div>
+				<?php } ?>
+				
+				</div>
 			</div>
 			<div class=l_m2>
 			<?php
-				$db = get_db();
-				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
+				$sql = 'select i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc,created_at desc limit 4';
 				$record_ad=$db -> query($sql);
 			?>
 			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
@@ -83,7 +109,7 @@
 					<div class=content <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 						<div class=left><? echo $i+1;?></div>
 						<div class=right>
-							<div class=top><a href="show_list.php?name=<?php echo $records[$i]->publisher;?>"><?php echo $records[$i]->publisher; ?></a></div>
+							<div class=top><a href="show_list.php?name=<?php echo $records[$i]->publisher;?>&type=image"><?php echo $records[$i]->publisher; ?></a></div>
 							<div class=bottom>发布了<?php echo $records[$i]->num; ?>张图片！</div>
 						</div>
 					</div>
@@ -93,12 +119,12 @@
 		<div id=ibody_right>
 		  	<div id=r_t>
 		  		<div class=left>边走边播</div>
-				<div class=more><a target="_blank" href="list.php">更多</a></div>
+				<div class=more><a target="_blank" href="list.php?type=image">更多</a></div>
 		  	</div>
 			<div class=r_b>
 			<?php
 				$images = new smg_images_class();
-				$records = $images->paginate('all',array('order' => 'priority'),24);
+				$records = $images->paginate('all',array('conditions' => 'is_adopt=1','order' => 'priority asc,created_at desc'),24);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
@@ -113,17 +139,43 @@
 		</div>
 
 </div>
-<? require_once('../inc/bottom.inc.php');?>
+<?php
+	close_db();
+	require_once('../inc/bottom.inc.php');
+?>
 
 
 </body>
 </html>
 
 <script>
+	var num=1;
+	
 	$(function(){
 		$(".small_pic").click(function(){
 			$("#big_pic").attr('src',$(this).attr('name'));
 			$("#pic_url").attr('href',$(this).attr('value'));
 		});
+		
+		$("[class*=tag]").click(function(){
+			window.location.href="list.php?tag="+$(this).html()+"&type=show";
+		})
 	});
+	
+	function change(){
+		num = boundrandom(1,12);
+		$("#big_pic").attr('src',$("#"+num).attr('name'));
+		$("#pic_url").attr('href',$("#"+num).attr('value'));
+	}
+	
+	function boundrandom(bound1, bound2) {
+        return parseInt(Math.random() * (bound1 - bound2) + bound2);
+    }
+
+	
+	setInterval(change,5000);
+	
+	
+	//$("#pic_url").attr('href',$(this).attr('value'));
+	
 </script>

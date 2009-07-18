@@ -13,7 +13,7 @@
 				$img = $upload->handle('image','filter_pic');
 				if($img === false){
 					alert('上传图片失败 !');
-					redirect('video_add.php');
+					redirect($_SERVER['HTTP_REFERER']);
 				}
 				$video->photo_url = "/upload/images/" .$img;
 			}
@@ -23,7 +23,7 @@
 				$vid = $upload->handle('video','filter_video');
 				if($vid === false){
 					alert('上传视频失败 !');
-					redirect('video_add.php');
+					redirect($_SERVER['HTTP_REFERER']);
 				}
 				$video->video_url = "/upload/video/" .$vid;
 			}
@@ -50,6 +50,7 @@
 	$video->title = $title;
 	if($_POST['video']["priority"]==null){$video->update_attribute("priority","100");}
 	if($_POST['video']["commentable"]==null){$video->update_attribute("commentable","");}
+	$video->publisher = $_COOKIE['smg_user_nickname'];
 	$video->update_attributes($_POST['video']);
 	
 	if($_POST['special_type']==""){

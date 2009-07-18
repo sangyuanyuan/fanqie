@@ -1,5 +1,6 @@
 <?php
 	require_once('../frame.php');
+	$id = $_REQUEST['id'];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,10 +8,10 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-展示-每日之星</title>
-	<? 	
+	<?php
 		css_include_tag('show_star','top','bottom');
 		use_jquery();
-  ?>
+  	?>
 	
 </head>
 <body>
@@ -19,40 +20,55 @@
  <div id=ibody_left>
  	  <div class=l>
 			<div class=title><div class=left>每日之星排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
-			<? for($i=0;$i<5;$i++){?>
+			<?php
+				$db = get_db();
+				$category_id = category_id_by_name('每日之星');
+				$sql = 'select id,short_title,click_count,photo_src from smg_news where is_adopt=1 and category_id='.$category_id.' and photo_src!="" and click_count is not null order by click_count desc limit 5 ';
+				$records = $db->query($sql);
+				$count = count($records);
+				for($i=0;$i<$count;$i++){
+			?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
-					<div class=middle><a target="_blank" href="#"><img border=0 width=40 height=40 src=""></a></div>
+					<div class=middle><a target="_blank" href="star.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_src?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="#">test</a></div>
-						<div class=bottom><a target="_blank" href="#">test</a></div>
+						<div class=top><a target="_blank" href="star.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->short_title;?></a></div>
+						<div class=bottom><a target="_blank" href="star.php?id=<?php echo $records[$i]->id;?>">被浏览了<?php echo $records[$i]->click_count ?>次</a></div>
 					</div>
 				</div>
 			<? }?>
 		</div>
  	  	
 		<div class=l>
+			<?php 
+				$sql = 'select * from smg_video where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
+				$records = $db->query($sql);
+			?>
 			<div class=title><div class=left>视频排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
-			<? for($i=0;$i<5;$i++){?>
+			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
-					<div class=middle><a target="_blank" href="#"><img border=0 width=40 height=40 src=""></a></div>
+					<div class=middle><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_url?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="#">test</a></div>
-						<div class=bottom><a target="_blank" href="#">test</a></div>
+						<div class=top><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->title;?></a></div>
+						<div class=bottom><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>">被播放了<?php echo $records[$i]->click_count ?>次</a></div>
 					</div>
 				</div>
 			<? }?>
 		</div>
 		<div class=l>
+			<?php 
+				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
+				$records = $db->query($sql);
+			?>
 			<div class=title><div class=left>我型我秀排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
-			<? for($i=0;$i<5;$i++){?>
+			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
-					<div class=middle><a target="_blank" href="#"><img border=0 width=40 height=40 src=""></a></div>
+					<div class=middle><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="#">test</a></div>
-						<div class=bottom><a target="_blank" href="#">test</a></div>
+						<div class=top><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->title;?></a></div>
+						<div class=bottom><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>">被点击了<?php echo $records[$i]->click_count;?>次</a></div>
 					</div>
 				</div>
 			<? }?>
@@ -60,7 +76,12 @@
 		
  </div>
  <div id=ibody_right>
-	  	
+	  	<?php
+			$news = new table_class('smg_news');
+			$news -> find($id);
+			$news->click_count = $news->click_count+1;
+			$news -> save();
+		?>
  </div>
 
 </div>
