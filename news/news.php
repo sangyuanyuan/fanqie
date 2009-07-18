@@ -21,21 +21,11 @@
 			$about1=search_newsid($record[0]->related_news,"smg_news");
 			if(count($about1)<10)
 			{
-				$about=search_keywords($record[0]->keywords,'smg_news',10-count($about1));
-				if((count($about)+count($about1))<10)
-				{
-					$num=10-count($about)-count(about1);
-					$about2=$db->query("select * from smg_news where is_adopt=1 and id<>".$id." order by rand() limit ".$num);
-				}
+				$about=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1));
 			}
 		}
 		else{
-			$about=search_keywords($record[0]->keywords,'smg_news');
-			if(count($about1)<10)
-			{
-				$num=10-count(about1);
-				$about1=$db->query("select * from smg_news where is_adopt=1 and id<>".$id." order by rand() limit ".$num);
-			}
+			$about=search_keywords($record[0]->keywords,'smg_news',$record);
 		}
 		
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
@@ -144,8 +134,10 @@
 			<? }}?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a href="news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
-			<div class=abouttitle>更多关于“<span style="text-decoration:underline;"><?php echo delhtml($record[0]->short_title);?></span>”的新闻</div>
+			<?php if(count($about)>0||count($about1)>0){?>
+			<div class=abouttitle><div style="float:left; display:inline;">更多关于</div><div style="width:150px; height:20px; line-height:20px; overflow:hidden; text-decoration:underline; float:left; display:inline">"<?php echo delhtml($record[0]->short_title);?>"</div><div style="float:left; display:inline;">的新闻</div></div>
 			<div class=aboutcontent>
+				
 				<div class=title>相关链接</div>
 				<?php if($record[0]->related_news!=""){
 					 for($i=0;$i<count($about1);$i++){ ?>
@@ -177,24 +169,7 @@
 						<?php }?>
 					</div>
 					<?php }
-						if((count($about1)+count($about))<10)
-						{
-							for($i=0;$i<count($about2);$i++)
-							{?>
-					<div class=content>
-						<?php if($about2[$i]->category_id=="1"||$about2[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="news_head.php?id=<?php echo $about2[$i]->id; ?>">
-								<?php echo delhtml($about2[$i]->title); ?>  <span style="color:#838383">(<?php echo $about2[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }else{?>
-							·<a target="_blank" href="news.php?id=<?php echo $about2[$i]->id; ?>">
-								<?php echo delhtml($about2[$i]->title); ?>  <span style="color:#838383">(<?php echo $about2[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }?>
-					</div>		
-							<?php }
 						}
-					}
 				 }else{
 					for($i=0;$i<count($about);$i++){
 					?>
@@ -209,23 +184,10 @@
 							</a>
 						<?php }?>
 					</div>		
-				<?php }if(count($about)<10)
-				{
-					for($i=0;$i<count($about1);$i++){?>
-				<div class=content>
-						<?php if($about1[$i]->category_id=="1"||$about1[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="news_head.php?id=<?php echo $about1[$i]->id; ?>">
-								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }else{?>
-							·<a target="_blank" href="news.php?id=<?php echo $about1[$i]->id; ?>">
-								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }?>
-					</div>		
-				<?php }}}?>
+				<?php }}?>
 					
 			</div>
+			<?php } ?>
 			<?php if($record[0]->is_commentable==1){ if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
@@ -328,11 +290,21 @@
 			 	<div class="r_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><a starget="_blank" href="/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
-					<?php }else{?>
+			 		<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
+						<div class=cl1><a starget="_blank" href="/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+					<?php }else
+					{?>
+						<div class=cl1><a starget="_blank" href="/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+					<?php }
+					}else{
+						?>
 						<div class=pic2>0<?php echo $i+1;?></div>
+						<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
 						<div class=cl2><a starget="_blank" href="/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
-					<?php }?>				
+					<?php }else{?>
+						<div class=cl2><a starget="_blank" href="/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+					<?php }
+					}?>				
 				</div>
 			<?php }?>
 		</div>
@@ -385,36 +357,45 @@
 			<div class=b_b_title1 param=2 style="background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
 			<div id="b_b_1" class="b_b" style="display:none">
 			<?php 
-			 $sql="select count(*) as num,d.name from smg_news n right join smg_dept d on n.dept_id=d.id group by n.dept_id order by num desc";
-			 $clickcount=$db->paginate($sql,10);
-			 $total=$db->query("select count(*) as total from smg_dept where dept_id<>''");
-			 for($i=0;$i<count($clickcount);$i++){	 	
+			 $sql="select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
+(select count(dept_id) as allcounts,dept_id from smg_news where is_recommend=1  group by dept_id) b on a.id=b.dept_id left join  (select count(dept_id) as counts,dept_id from smg_news where is_adopt=1 group by dept_id) c on b.dept_id = c.dept_id
+left join (select count(dept_id) as p1allcounts,dept_id from smg_images where is_recommend=1 group by dept_id) p1 on a.id=p1.dept_id left join  (select count(dept_id) as p2counts,dept_id from smg_images where is_adopt=1 group by dept_id) p2 on p1.dept_id = p2.dept_id
+left join (select count(dept_id) as v1allcounts,dept_id from smg_video where is_recommend=1 group by dept_id) v1 on a.id=v1.dept_id left join  (select count(dept_id) as v2counts,dept_id from smg_video where is_adopt=1 group by dept_id) v2 on v1.dept_id = v2.dept_id
+order by b.allcounts desc) tb order by a1 desc";
+			$pubcount=$db->paginate($sql,10);
+			$total=0;
+			for($i=0;$i<count($pubcount);$i++)
+			{
+				$total=$total+(int)$pubcount[$i]->a1;
+			}
+			 for($i=0;$i<count($pubcount);$i++){	 	
 			 ?>
 			 	<div class="r_b2_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><a starget="_blank" href="/news/news_head.php?id=<?php echo $clickcount[$i]->id;?>"><?php echo delhtml($clickcount[$i]->name);?></a></div><div class=percentage><?php $count=$clickcount[$i]->num/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+			 			<div class=cl1><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }else{?>
 						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
-						<div class=cl2><a starget="_blank" href="/news/news_head.php?id=<?php echo $clickcount[$i]->id;?>"><?php echo delhtml($clickcount[$i]->name);?></a></div><div class=percentage><?php $count=$clickcount[$i]->num/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$clickcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }?>				
 				</div>
 			<? }?>
 			</div>
-			<div id="b_b_2" class="b_b" style="display:block;">
+			
+			<div id=b_b_2 class="b_b" style="display:block;">
 			<?php 
 			 $sql="select * from smg_dept order by click_count desc";
 			 $clickcount=$db->paginate($sql,10);
 			 $total=$db->query("select sum(click_count) as total from smg_dept");
 			 for($i=0;$i<count($clickcount);$i++){	 	
 			 ?>
-			 	<div  class="r_b2_content">
+			 	<div class="r_b2_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><a starget="_blank" href="/news/news_head.php?id=<?php echo $clickcount[$i]->id;?>"><?php echo delhtml($clickcount[$i]->name);?></a></div><div class=percentage><?php $count=$clickcount[$i]->click_count/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+			 			<div class=cl1><?php echo delhtml($clickcount[$i]->name);?></div><div class=percentage><?php $count=$clickcount[$i]->click_count/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }else{?>
 						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
-						<div class=cl2><a starget="_blank" href="/news/news_head.php?id=<?php echo $clickcount[$i]->id;?>"><?php echo delhtml($clickcount[$i]->name);?></a></div><div class=percentage><?php $count=$clickcount[$i]->click_count/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+						<div class=cl2><?php echo delhtml($clickcount[$i]->name);?></div><div class=percentage><?php $count=$clickcount[$i]->click_count/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }?>				
 				</div>
 			 <? }?>
