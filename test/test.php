@@ -3,7 +3,8 @@
 	
 	require "../frame.php";	
 	$new = new table_class('smg_news');
-	var_dump($_COOKIE);
+#	var_dump($new);
+	#var_dump($_COOKIE);
 	
 	#$db->paginate('select * from smg_category');
 

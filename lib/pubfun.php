@@ -463,15 +463,19 @@ function search_keywords($key,$table_name='smg_news',$about='',$page_count = 10,
 	$c = array();
 	$d=array();
 	foreach ($keys as $v) {
-		array_push($c, "keywords like '%$v%'");
+		array_push($c, "n.keywords like '%$v%'");
 	}
+	
 	for($i=0;$i<count($about);$i++)
 	{
-		array_push($d,"id<>".$about[$i]->id);
+		array_push($d,"n.id<>".$about[$i]->id);
+		
 	}
 	$c = implode(' OR ' ,$c);
 	$d = implode(' and ',$d);
-	$sql = 'select * from ' . $table_name ." where 1=1 and " .$d." and ".$c;
+
+	$sql = 'select *,c.platform from ' . $table_name ." n inner join smg_category c on n.category_id=c.id and 1=1 and " .$d." and (".$c .")";
+	echo ($sql);
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}
@@ -487,15 +491,8 @@ function search_keywords($key,$table_name='smg_news',$about='',$page_count = 10,
 
 function search_newsid($key,$table_name='smg_news',$page_count = 10, $order=''){
 	$table = new table_class($table_name);
-	$key = str_replace('　', ' ', $key);
-	$keys = explode(',',$key);
-	$c = array();
-	foreach ($keys as $v) {
-		array_push($c, "id = '$v'");
-	}
-	$c = implode(' OR ' ,$c);
-	
-	$sql = 'select * from ' . $table_name ." where 1=1 and " .$c;
+
+	$sql = 'select * from ' . $table_name ." n inner join smg_category c on n.category_id=c.id  and n.id in (".$key.")";
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}
