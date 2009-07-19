@@ -105,7 +105,19 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>关键词</td><td align="left">　<input type="text" size="50" name="video[keywords]">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
+			<td>标签/关键词</td>
+			<td align="left">
+				　<select name="video[tags]">
+					<option value="">请选择</option>
+				<?php
+				$tags = get_config('g_video_tags');
+				foreach ($tags as $v) {
+					echo "<option value='{$v}'>$v</option>";
+				}
+				?>
+				</select>　　/
+				<input type="text"name="video[keywords]">(请用空格或者","分隔开关键词,比如:高考 升学)				
+			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>在线视频</td><td align="left">　<input type="text" size="50" name="video[online_url]">（如果本地上传视频此项请留空！）</td>
