@@ -27,7 +27,7 @@
 	$smg_image->publisher = $_COOKIE['smg_user_nickname'];
 	$smg_image->update_attributes($_POST['picture']);
 	if($_POST['special_type']==""){
-		redirect($_POST['url']);
+		redirect($_POST['url'] .'&category=' .$smg_image->category_id);
 	}elseif($_POST['special_type']=="总裁奖"){
 		redirect('/admin/zongcai/zongcai_image.php');
 	}

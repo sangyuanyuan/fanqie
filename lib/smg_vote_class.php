@@ -59,10 +59,24 @@
 				<?php }		
 			}else{
 				foreach ($this->vote_items as $v) {?>
-					<li><?php echo $v->title;?></li>
+					<li>
+						<?php
+						if($this->max_item_count > 1){ ?>
+						<input type="checkbox" name="vote_class[<?php echo $this->id;?>][]" max-item="<?php echo $this->max_item_count;?>">
+						<?php }else{ ?>
+						<input type="radio" name="vote_class[<?php echo $this->id;?>][]">	
+						<?php }
+						?>
+						<?php echo $v->title;?>
+					</li>
 				<?php }
 			?>
 		<?php }
 		}
 	}
 ?>
+<script>
+	function vote_item_select(e){
+		
+	}
+</script>
