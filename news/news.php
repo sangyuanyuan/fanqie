@@ -26,6 +26,7 @@
 			}
 		}
 		else{
+			
 			$about=search_keywords($record[0]->keywords,'smg_news',$record);
 		}
 		

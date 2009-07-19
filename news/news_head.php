@@ -26,6 +26,7 @@
 			}
 		}
 		else{
+			
 			$about=search_keywords($record[0]->keywords,'smg_news',$record);
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
