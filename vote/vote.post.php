@@ -47,7 +47,7 @@
 	}
 	if($db->execute($sql))
 	{
-		echo $sql;
+		
 	}
 	else{
 		echo "error";

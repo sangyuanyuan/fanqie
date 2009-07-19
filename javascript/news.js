@@ -1,4 +1,4 @@
-	$(document).ready(function(){
+﻿	$(document).ready(function(){
 		display_fqbq('fqbq','post[comment]');
 		$.post('/news/news_update.post.php',{'newsid':$("#newsid").attr('value')},function(data){
 				
@@ -15,6 +15,14 @@
 				'target_url':$("#target_url").attr('value'),
 				'vote_id':$(this).next().attr('value')
 		  	}, function(data){
+		  		if(data=="")
+		  		{
+		  			alert('投票成功！');	
+		  		}
+		  		else if(data=="error")
+		  		{
+		  			alert('投票失败！');	
+		  		}
 		  	})
 		  }
 		  else {
@@ -27,6 +35,14 @@
 				'target_url':$("#target_url").attr('value'),
 				'vote_id':$("#vote_id").attr('value')
 			  	}, function(data){
+			  	if(data=="")
+		  		{
+		  			alert('投票成功！');	
+		  		}
+		  		else if(data=="error")
+		  		{
+		  			alert('投票失败！');	
+		  		}
 			  	})
 		  	}
 		  }
@@ -35,7 +51,7 @@
 		
 		$(".show_vote").click(function(){
 			var vote_id=$(this).prev().prev().attr("value");
-			window.location.href="/vote/vote_show.php?vote_id="+vote_id;
+			window.open("/vote/vote_show.php?vote_id="+vote_id);
 		})
 		
 		$(".flower").click(function(){
