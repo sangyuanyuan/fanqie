@@ -474,8 +474,7 @@ function search_keywords($key,$table_name='smg_news',$about='',$page_count = 10,
 	$c = implode(' OR ' ,$c);
 	$d = implode(' and ',$d);
 
-	$sql = 'select *,c.platform from ' . $table_name ." n inner join smg_category c on n.category_id=c.id and 1=1 and " .$d." and (".$c .")";
-	echo ($sql);
+	$sql = 'select n.*,c.platform from ' . $table_name ." n inner join smg_category c on n.category_id=c.id and 1=1 and n.is_adopt=1 and " .$d." and (".$c .")";
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}
@@ -492,7 +491,7 @@ function search_keywords($key,$table_name='smg_news',$about='',$page_count = 10,
 function search_newsid($key,$table_name='smg_news',$page_count = 10, $order=''){
 	$table = new table_class($table_name);
 
-	$sql = 'select * from ' . $table_name ." n inner join smg_category c on n.category_id=c.id  and n.id in (".$key.")";
+	$sql = 'select n.* from ' . $table_name ." n inner join smg_category c on n.category_id=c.id and n.is_adopt=i and n.id in (".$key.")";
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}

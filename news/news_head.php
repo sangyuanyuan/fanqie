@@ -21,21 +21,17 @@
 		if($record[0]->related_news!="")
 		{
 			
-			$about1=search_newsid($record[0]->related_news,"smg_news");
-			$about += $about1;
+			$about1=search_newsid($record[0]->related_news,"smg_news",10,"priority asc,last_edited_at desc");
+			$about = $about1;// = array_merge($about,$about1);
 			if(count($about1)<10)
 			{
-				$a2=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1));
+				$a2=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1),"priority asc,last_edited_at desc");
 				$about = array_merge($about, $a2);
-				for($i=0;$i<count($about);$i++){
-					alert($about[$i]->id);
-				}
-				var_dump($a2[0]->id);
 			}
 		}
 		else{
 			
-			$about=search_keywords($record[0]->keywords,'smg_news',$record);
+			$about=search_keywords($record[0]->keywords,'smg_news',$record,10,"priority asc,last_edited_at desc");
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);

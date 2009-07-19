@@ -246,7 +246,7 @@
 		})
 		
 		$("[class*=tag]").click(function(){
-			window.location.href="list.php?tag="+$(this).html();
+			//window.location.href="list.php?tag="+$(this).html();
 		})
 	});
 </script>
