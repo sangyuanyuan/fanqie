@@ -85,7 +85,7 @@ p{margin:0px; padding:0px;}
 
 #t_r_r_t{width:206px; height:310px; background:url(/images/index/bg_t_r_r_t.jpg) no-repeat; overflow:hidden; float:right; display:inline;}
 #t_r_r_t .menu_trrt{width:65px; height:18px; padding-top:5px; line-height:15px; text-align:center; color:#666666; cursor:pointer; float:left; display:inline;}
-#t_r_r_t .content_trrt{width:180px; height:250px; margin-top:10px; margin-left:18px; overflow:hidden; line-height:20px;  float:left; display:inline;}
+#t_r_r_t .content_trrt{width:180px; height:260px; margin-top:10px; margin-left:18px; line-height:20px;  float:left; display:inline;}
 #t_r_r_t .content_trrt .box{width:165px; height:78px; margin-bottom:12px;  line-height:20px;  float:left; display:inline;}
 
 #t_r_r_t #content_trrt1 .box li{width:80px; line-height:18px; color:#5F5F5F; float:left; display:inline;}
