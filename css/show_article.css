@@ -48,7 +48,7 @@ a{text-decoration:none;}
 #ibody_right #comment #comment_box #commit_fck{width:670px;  margin-left:10px; float:left; display:inline;}
 #ibody_right #comment #comment_box #fqbq{width:600px; margin-left:13px; float:left; display:inline;}
 #ibody_right #comment #comment_box #commenter_box{width:670px;  margin-left:11px; margin-top:10px; float:left; display:inline;}
-#ibody_right #comment #comment_it_comment{width:66px; height:19px; margin-top:10px; margin-right:20px; cursor:pointer; float:right; display:inline; background:url(/images/show/show_submit.jpg);}
+#ibody_right #comment #submit_comment{width:66px; height:19px; margin-top:10px; margin-right:20px; cursor:pointer; float:right; display:inline; background:url(/images/show/show_submit.jpg);}
 #ibody_right #comment #comment_box .c_title{width:480px; margin-left:7px; margin-top:13px; font-size:13px; float:left; display:inline; font-weight:normal;}
 #ibody_right #comment .f_title{width:680px; hbox #submeight:25px; background:url(/images/show/star_tbg.jpg); float:left; display:inline;}
 #ibody_right #comment .f_title #f{ margin-top:2px; margin-left:20px; font-size:15px; line-height:20px; color:#ffffff; font-weight:bolder; float:left; display:inline; }

@@ -7,12 +7,18 @@
 		switch($type){
 			case 'video':
 				$l_sql = 'select * from smg_video where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+				$l_title = 'title';
+				$link = 'video.php?id=';
 				break;
 			case 'news':
 				$l_sql = 'select * from smg_news where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+				$l_title = 'short_title';
+				$link = 'article.php?id=';
 				break;
 			case 'image':
 				$l_sql = 'select * from smg_images where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+				$l_title = 'title';
+				$link = 'show.php?id=';
 				break;
 			default:
 				break;
@@ -21,15 +27,26 @@
 		switch($type){
 			case 'video':
 				$title = '视频列表';
+				$l_title = 'title';
+				$link = 'video.php?id=';
 				$l_sql = 'select * from smg_video where  is_adopt=1 order by priority asc,created_at desc';
 				break;
 			case 'news':
 				$title = '新闻列表';
+				$link = 'article.php?id=';
+				$l_title = 'short_title';
 				$l_sql = 'select * from smg_news where  is_adopt=1 order by priority asc,created_at desc';
 				break;
 			case 'image':
 				$title = '图片列表';
+				$link = 'show.php?id=';
+				$l_title = 'title';
 				$l_sql = 'select * from smg_images where  is_adopt=1 order by priority asc,created_at desc';
+				break;
+			case 'magazine':
+				$title = '杂志列表';
+				$l_title = 'title';
+				$l_sql = 'select * from smg_magazine where  is_adopt=1 order by priority asc,create_time desc';
 				break;
 			default:
 				$title = '未知列表';
@@ -81,13 +98,13 @@
 				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
 				var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
 	
-				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "287", "146", "4","#FFFFFF");
+				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "276", "146", "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');
 				picflash.addVariable("picurl",pics1);
 				picflash.addVariable("piclink",mylinks1);
 				picflash.addVariable("pictext",texts1);				
 				picflash.addVariable("pictime","5");
-				picflash.addVariable("borderwidth","287");
+				picflash.addVariable("borderwidth","276");
 				picflash.addVariable("borderheight","146");
 				picflash.addVariable("borderw","false");
 				picflash.addVariable("buttondisplay","true");
@@ -142,17 +159,17 @@
 	 <div id=ibody_right>
      <!-- start right !-->
  	 	 <div id=r>
- 	 	 	<div class=title><div class=left><?php  echo $title;?></div></div>
+ 	 	 	<div class=title><div class=left><?php echo $title;?></div></div>
 			<?php  
 				if($l_sql!=''){
-					$records = $db->paginate($l_sql,45);
+					$records = $db->paginate($l_sql,50);
 					close_db();
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
 			?>
 			<div class=content>
 				<div class=left>
-					<a href="<?if($id!=''){echo '/news/news.php';}else{echo 'show.php';}?>?id=<?php echo $records[$i]->id;?>" title="<?php echo $records[$i]->short_title;?>"><?php echo $records[$i]->short_title;?></a>
+					<a href="<?php if($type!='magazine'){echo $link.$records[$i]->id;}else{echo $records[$i]->online_url;}?>" target="_blank" title="<?php echo $records[$i]->title;?>"><?php echo $records[$i]->$l_title;?></a>
 				</div>
 				<div class=right>
 					<?php echo $records[$i]->created_at; ?>
