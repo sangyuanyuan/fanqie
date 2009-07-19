@@ -24,10 +24,10 @@
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">所有评论</a>
 		</div>
 		<div id=l_b>
-			<div class=comment><div class=comment_title style="background:url('/images/comment/l_title.jpg') no-repeat;" param="1">新闻评论</div><div class=comment_title param="2">图片评论</div><div class=comment_title param="3">视频评论</div></div>
+			<div class=comment><div class=comment_title style="font-weight:bold; background:url('/images/comment/l_title.jpg') no-repeat;" param="1">新闻评论</div><div class=comment_title param="2">图片评论</div><div class=comment_title param="3">视频评论</div></div>
 			<div id=comment_title1 class="c_title" style="display:block;">
 			<?php $sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' order by created_at desc";
-		$news=$db->paginate($sql,10); ?>
+		$news=$db->paginate($sql,10,'newspaginate'); ?>
 			 <div class="comment">
 			 <?php for($i=0;$i<count($news);$i++){ ?>
 					<div class=content>	
@@ -46,11 +46,11 @@
 					</div>
 					<?php }?>	
 				</div>
-				<div class=page><?php paginate('all_comment.php');?></div>
+				<div class=page><?php paginate('','','newspaginate');?></div>
 			 </div>
 			 <div id=comment_title2 class="c_title" style="display:none;">
 			 <?php $sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='picture' order by created_at desc";
-		$pic=$db->paginate($sql,10); ?>
+		$pic=$db->paginate($sql,10,'picpaginate'); ?>
 			 <div class="comment">
 			 <?php for($i=0;$i<count($pic);$i++){ ?>
 					<div class=content>	
@@ -69,11 +69,11 @@
 					</div>
 					<?php }?>
 					</div>
-					<div class=page><?php paginate('all_comment.php');?></div>
+					<div class=page><?php paginate('','','picpaginate');?></div>
 			 </div>
 			 <div id=comment_title3 class="c_title" style="display:none;">
 			 <?php $sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='video' order by created_at desc";
-		$video=$db->paginate($sql,10); if(count($video)>0){?>
+		$video=$db->paginate($sql,10,'videopaginate'); if(count($video)>0){?>
 			 <div class="comment">
 			 <?php for($i=0;$i<count($video);$i++){ ?>
 					<div class=content>	
@@ -92,7 +92,7 @@
 					</div>
 					<?php }?>
 					</div>
-					<div class=page><?php paginate('all_comment.php');?></div>
+					<div class=page><?php paginate('','','videopaginate');?></div>
 					<?php } ?>
 			 </div>
 			</div>
@@ -135,7 +135,7 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select *,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and tags='小编推荐' order by n.priority asc,n.last_edited_at desc limit 8"; 
+			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
@@ -143,18 +143,18 @@
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
 			 		<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
-						<div class=cl1><a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }else
 					{?>
-						<div class=cl1><a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }
 					}else{
 						?>
 						<div class=pic2>0<?php echo $i+1;?></div>
 						<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
-						<div class=cl2><a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl2><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }else{?>
-						<div class=cl2><a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl2><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }
 					}?>				
 				</div>
@@ -204,9 +204,9 @@
 			<? }?>
 			</div>
 		</div>
-	<div id=r_b_b>
-			<div class=b_b_title1 style="color:#C2130E; text-decoration:underline;" param=1>部门发表量</div>
-			<div class=b_b_title1 param=2 style="font-weight:bold; color:#000000; text-decoration:none; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
+		<div id=r_b_b>
+			<div class=b_b_title1 style="font-weight:bold; color:#000000; text-decoration:none;" param=1>部门发表量</div>
+			<div class=b_b_title1 param=2 style="color:#C2130E; text-decoration:underline; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
 			<div id="b_b_1" class="b_b" style="display:none">
 			<?php 
 			 $sql="select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
@@ -259,3 +259,4 @@ order by b.allcounts desc) tb order by a1 desc limit 10";
 
 </body>
 </html>
+

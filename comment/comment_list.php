@@ -83,7 +83,7 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select *,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$_REQUEST['id']." and n.tags='小编推荐' order by n.priority asc,n.last_edited_at desc limit 8"; 
+			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$_REQUEST['id']." and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
@@ -91,18 +91,18 @@
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
 			 		<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
-						<div class=cl1><a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }else
 					{?>
-						<div class=cl1><a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }
 					}else{
 						?>
 						<div class=pic2>0<?php echo $i+1;?></div>
 						<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
-						<div class=cl2><a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl2><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }else{?>
-						<div class=cl2><a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl2><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }
 					}?>				
 				</div>
@@ -152,9 +152,9 @@
 			<? }?>
 			</div>
 		</div>
-	<div id=r_b_b>
-			<div class=b_b_title1 style="color:#C2130E; text-decoration:underline;" param=1>部门发表量</div>
-			<div class=b_b_title1 param=2 style="font-weight:bold; color:#000000; text-decoration:none; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
+		<div id=r_b_b>
+			<div class=b_b_title1 style="font-weight:bold; color:#000000; text-decoration:none;" param=1>部门发表量</div>
+			<div class=b_b_title1 param=2 style="color:#C2130E; text-decoration:underline; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
 			<div id="b_b_1" class="b_b" style="display:none">
 			<?php 
 			 $sql="select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
@@ -207,3 +207,4 @@ order by b.allcounts desc) tb order by a1 desc limit 10";
 
 </body>
 </html>
+

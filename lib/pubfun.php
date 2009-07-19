@@ -496,6 +496,7 @@ function search_newsid($key,$table_name='smg_news',$page_count = 10, $order=''){
 		$sql = $sql . ' order  by ' .$order;
 	}
 	$db = get_db();
+	
 	if($page_count > 0){
 		return $db->paginate($sql,$page_count);	
 	}else{

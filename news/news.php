@@ -144,7 +144,7 @@
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
 			<div id=more><a href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<?php if(count($about)>0||count($about1)>0){?>
-			<div class=abouttitle><div style="float:left; display:inline;">更多关于</div><div style="width:150px; height:20px; line-height:20px; overflow:hidden; text-decoration:underline; float:left; display:inline">"<?php echo delhtml($record[0]->short_title);?>"</div><div style="float:left; display:inline;">的新闻</div></div>
+			<div class=abouttitle><div style="float:left; display:inline;">更多关于“</div><div style="width:150px; height:20px; line-height:20px; overflow:hidden; text-decoration:underline; float:left; display:inline"><?php echo delhtml($record[0]->short_title);?></div><div style="float:left; display:inline;">”的新闻</div></div>
 			<div class=aboutcontent>
 			
 				<div class=title>相关链接</div>
@@ -354,8 +354,8 @@
 			</div>
 		</div>
 		<div id=r_b_b>
-			<div class=b_b_title1 style="color:#C2130E; text-decoration:underline;" param=1>部门发表量</div>
-			<div class=b_b_title1 param=2 style="font-weight:bold; color:#000000; text-decoration:none; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
+			<div class=b_b_title1 style="font-weight:bold; color:#000000; text-decoration:none;" param=1>部门发表量</div>
+			<div class=b_b_title1 param=2 style="color:#C2130E; text-decoration:underline; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
 			<div id="b_b_1" class="b_b" style="display:none">
 			<?php 
 			 $sql="select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
