@@ -57,7 +57,14 @@
 			<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
-			<div id=video><?php if($record[0]->video_src!=""){ show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src);} ?></div>
+			<?php if($record[0]->video_src!=""){
+					if($record[0]->low_quality==0){
+				?>
+			<div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+			<?php }else
+			{?>
+			 <div id=video><?php show_video_player('265','218',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+			<?php }} ?>
 			<div id=content>
 				<?php echo get_fck_content($record[0]->content);?>
 			</div>
@@ -250,7 +257,6 @@
 		<div id=r_t><a target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
 		<?php
 		if($record[0]->related_videos!=""){
-		$keys = explode(',',$record[0]->related_videos);
 		$sql="select * from smg_video where id=".$keys[0];
 		$r_video=$db->query($sql);
 		 if($record[0]->video_src==""){
@@ -266,7 +272,7 @@
 		<div id=r_m>
 			<?php 
 			 for($i=1;$i<count($keys);$i++){
-			 	$sql="select * from smg_video where id=".$keys[$i];
+			 	$sql="select * from smg_video where id in (".$record[0]->related_videos.")";
 			 	$morehead=$db->query($sql);
 			 ?> 
 			 	<div class="r_content">

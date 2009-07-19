@@ -28,7 +28,7 @@
 				$a2=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1));
 				$about = array_merge($about, $a2);
 				for($i=0;$i<count($about);$i++){
-				alert($about[0]->id);
+					alert($about[$i]->id);
 				}
 				var_dump($a2[0]->id);
 			}
@@ -64,7 +64,14 @@
 		<div id=l_b>
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
-			<?php if($record[0]->video_src!=""){?><div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div><?php } ?>
+			<?php if($record[0]->video_src!=""){
+					if($record[0]->low_quality==0){
+				?>
+			<div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+			<?php }else
+			{?>
+				<div id=video><?php show_video_player('265','218',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+			<?php }} ?>
 			<div id=content>
 				<?php echo get_fck_content($record[0]->content);?>
 			</div>
@@ -240,22 +247,22 @@
 		} ?>
 		<div id=r_m>
 			<?php 
-			 for($i=1;$i<count($keys);$i++){
+			 for($i=1;$i< count($keys);$i++){
 			 	$sql="select * from smg_video where id=".$keys[$i];
 			 	$morehead=$db->query($sql);
 			 ?> 
 			 	<div class="r_content">
-			 		<?php if($i<3){?>
+			 		<?php if($i<10){ if($i<3){?>
 			 			<div class=pic1>0<?php echo $i;?></div>
 			 			<div class=cl1><a target="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
 					<?php }else{?>
 						<div class=pic2>0<?php echo $i;?></div>
 						<div class=cl2><a target="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
-					<?php }?>				
+					<?php }}?>				
 				</div>
 			<? }?>
 		</div>
-		<? }?>
+		<?php }?>
 		<div class=r_b1>
 			<div class=title>历史头条</div>
 			<?php 
