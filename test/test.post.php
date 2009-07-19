@@ -1,4 +1,4 @@
 <?php
 	require "../frame.php";
-	echo 'ok';
+	var_dump($_POST);
 ?>

@@ -40,19 +40,29 @@
 				foreach ($this->vote_items as $v) {
 					$tmpitem = new smg_vote_class();
 					$tmpitems[] = $tmpitem->find($v->sub_vote_id);
+					
 				}
 				$this->vote_items = $tmpitems;
 			}
+			return $this;
 		}
 		
-		function display(){
+		function display($show_tile=true){
+			if($show_tile){
 			?>
-			<ul><?php echo $this->name;?> </ul>
+			<ul class="vote_title"><?php echo $this->name;?> </ul>
 			<?php 
+			}
+			if($this->vote_type == "more_vote"){
+				foreach ($this->vote_items as $v) {?>
+					<div class="sub_vote"><?php $v->display();?></div>
+				<?php }		
+			}else{
 				foreach ($this->vote_items as $v) {?>
 					<li><?php echo $v->title;?></li>
 				<?php }
 			?>
 		<?php }
+		}
 	}
 ?>
