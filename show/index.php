@@ -76,7 +76,7 @@
  	 	 			每日之星
  	 	 		</div>
 				<div class=title_r>
-					<?php if(count($star)>0){?><a target="_blank" href="list.php?id=<?php echo $category_id;?>type=news">More..</a><?php } ?>
+					<?php if(count($star)>0){?><a target="_blank" href="list.php?id=<?php echo $category_id;?>&type=news">More..</a><?php } ?>
 				</div>
  	 	 	</div>
 			<?php for($i=0;$i<count($star);$i++){?>
