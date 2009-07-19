@@ -44,7 +44,7 @@
 					<?php echo $record[0]->content;?>
 				 </div>
 		 	</div>
-		  	<a target="_blank" href="#"><img border=0 src="/images/show/show_l_t.jpg"></a>
+		  	<a target="_blank" href="show_sub.php?type=image"><img border=0 src="/images/show/show_l_t.jpg"></a>
 			<div class=l_m>
 				<div class=title><div class=left>热门标签</div></div>
 				<div class=content style="border-bottom:none;">
