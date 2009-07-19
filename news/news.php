@@ -257,6 +257,7 @@
 		<div id=r_t><a target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
 		<?php
 		if($record[0]->related_videos!=""){
+		$keys = explode(',',$record[0]->related_videos);
 		$sql="select * from smg_video where id=".$keys[0];
 		$r_video=$db->query($sql);
 		 if($record[0]->video_src==""){?>
@@ -264,17 +265,17 @@
 		<?php } ?>
 		<div id=r_m>
 			<?php 
-			 for($i=1;$i<count($keys);$i++){
+			 for($i=0;$i<count($keys);$i++){
 			 	$sql="select * from smg_video where id in (".$record[0]->related_videos.")";
-			 	$morehead=$db->query($sql);
+			 	$videolist=$db->query($sql);
 			 ?> 
 			 	<div class="r_content">
 			 		<?php if($i<3){?>
-			 			<div class=pic1>0<?php echo $i;?></div>
-			 			<div class=cl1><a target="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
+			 			<div class=pic1>0<?php echo $i+1;?></div>
+			 			<div class=cl1><a target="_blank" href="/show/video.php?id=<?php echo $videolist[0]->id;?>"><?php echo delhtml($videolist[0]->title);?></a></div>
 					<?php }else{?>
-						<div class=pic2>0<?php echo $i;?></div>
-						<div class=cl2><a target="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
+						<div class=pic2><?php if($i<9){ echo "0".($i+1);}else{ echo $i+1;}?></div>
+						<div class=cl2><a target="_blank" href="/show/video.php?id=<?php echo $videolist[0]->id;?>"><?php echo delhtml($videolist[0]->title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>

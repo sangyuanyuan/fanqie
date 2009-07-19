@@ -243,18 +243,22 @@
 		} ?>
 		<div id=r_m>
 			<?php 
-			 for($i=1;$i< count($keys);$i++){
+			 for($i=0;$i< count($keys);$i++){
 			 	$sql="select * from smg_video where id=".$keys[$i];
-			 	$morehead=$db->query($sql);
+			 	$videolist=$db->query($sql);
 			 ?> 
 			 	<div class="r_content">
-			 		<?php if($i<10){ if($i<3){?>
-			 			<div class=pic1>0<?php echo $i;?></div>
-			 			<div class=cl1><a target="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
+			 		<?php  if($i<3){?>
+			 			<div class=pic1>0<?php echo $i+1;?></div>
+			 			<div class=cl1><a target="_blank" href="/show/video.php?id=<?php echo $videolist[0]->id;?>"><?php echo delhtml($videolist[0]->title);?></a></div>
 					<?php }else{?>
-						<div class=pic2>0<?php echo $i;?></div>
-						<div class=cl2><a target="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
-					<?php }}?>				
+						<div class=pic2>
+							<?php if($i<9){
+								 echo "0".($i+1);
+								 }else{ echo $i+1;}?>
+						</div>
+						<div class=cl2><a target="_blank" href="/show/video.php?id=<?php echo $videolist[0]->id;?>"><?php echo delhtml($videolist[0]->title);?></a></div>
+					<?php }?>				
 				</div>
 			<? }?>
 		</div>
