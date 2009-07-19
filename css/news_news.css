@@ -34,7 +34,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #l_b #comment .content .title2{width:633px; height:30px; margin-top:5px; margin-left:10px; line-height:30px; float:left; display:inline;}
 #l_b #comment .content .context{width:633px; margin-top:10px; margin-left:10px; padding-bottom:5px; line-height:20px; float:left; display:inline;}
 #l_b #comment img{margin-top:5px; cursor:pointer;}
-#l_b #comment #page{width:623px; margin-top:10px; margin-left:10px; line-height:20px; text-align:center; float:left; display:inline;}
+#l_b #comment .page{width:623px; margin-top:10px; margin-left:10px; line-height:20px; text-align:center; float:left; display:inline;}
 #r_t{width:298px; height:82px; margin-bottom:10px; cursor:pointer; float:right; display:inline;}
 .r_video{width:298px; height:240px; margin-top:10px; background:url('/images/news/news_head_r_video.jpg') no-repeat; float:right; display:inline;}
 #r_m{with:296px; margin-top:10px; padding-bottom:10px; border:1px solid #D1E3F4; float:right; display:inline;}

@@ -1,42 +1,4 @@
 	$(document).ready(function(){
-		display_fqbq('fqbq','post[comment]');
-		$.post('/news/news_update.post.php',{'newsid':$("#newsid").attr('value')},function(data){
-				
-			}
-		)
-		$(".vote_submit").click(function(){
-		  var num=$(this).attr('param');
-		  var item = $("input[name='rb"+num+"'][checked]").val();
-		  if (item != "") {
-		  	$.post('/vote/vote.post.php', {
-		  		'item_id': item,
-		  		'userid': $("#user_id").attr('value'),
-				'type':$("#limit_type").attr('value'),
-				'target_url':$("#target_url").attr('value'),
-				'vote_id':$(this).next().attr('value')
-		  	}, function(data){
-		  	})
-		  }
-		  else {
-		  	var sport = $("input[name='ck"+num+"'][checked]");
-		  	for (var i = 0; i < sport.length; i++) {
-				$.post('/vote/vote.post.php', {
-		  		'item_id': sport.eq(i).val(),
-		  		'userid': $("#user_id").attr('value'),
-				'type':$("#limit_type").attr('value'),
-				'target_url':$("#target_url").attr('value'),
-				'vote_id':$("#vote_id").attr('value')
-			  	}, function(data){
-			  	})
-		  	}
-		  }
-		
-		})
-		
-		$(".show_vote").click(function(){
-			var vote_id=$(this).prev().prev().attr("value");
-			window.location.href="/vote/vote_show.php?vote_id="+vote_id;
-		})
 		
 		$(".flower").click(function(){
 			var flowernum=$(this).next().next().html();
@@ -80,15 +42,15 @@
 			var num=$(this).attr("param");
 			$("#b_b_"+num).css("display","block");
 		})
-		$(".b_head_title1").mouseover(function(){		
-			$(".b_head_title1").css("background","none");
-			$(".b_head_title1").css("color","#000000");
-			$(".b_b").css("display","none");
-			$(this).css("background","#DD0D0B");
-			$(this).css("color","#ffffff");
+		
+		$(".comment_title").mouseover(function(){		
+			$('.comment_title').css("background","url('/images/news/news_r_title_bg.jpg') repeat-x");
+			$(".c_title").css("display","none");
+			$(this).css("background","url('/images/comment/l_title.jpg') no-repeat");
 			var num=$(this).attr("param");
-			$("#b_b_"+num).css("display","block");
+			$("#comment_title"+num).css("display","block");
 		})
+		
 	})
 	
 	

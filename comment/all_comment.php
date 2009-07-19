@@ -8,12 +8,11 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-评论列表页面</title>
 	<? 	
-		css_include_tag('comment_list','top','bottom');
+		css_include_tag('all_comment','top','bottom');
 		use_jquery();
-		js_include_once_tag("comment_list");
+		js_include_once_tag("all_comment");
 		$db = get_db();
-		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='".$_REQUEST["type"]."' and resource_id=".$_REQUEST["id"]." order by created_at desc";
-		$comment=$db->paginate($sql,10);	
+	
   ?>
 	
 </head>
@@ -22,28 +21,81 @@
 <div id=ibody>
 	<div id=ibody_left>
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#"><?php if($_REQUEST[type]=="news"){ echo '新闻评论';}else if($_REQUEST[type]=="picture"){ echo "图片评论";}else if($_REQUEST[type]=="video"){ echo "视频评论";}?></a>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">所有评论</a>
 		</div>
 		<div id=l_b>
-			<div class=comment>
-			 <?php for($i=0;$i<count($comment);$i++){ ?>
+			<div class=comment><div class=comment_title style="background:url('/images/comment/l_title.jpg') no-repeat;" param="1">新闻评论</div><div class=comment_title param="2">图片评论</div><div class=comment_title param="3">视频评论</div></div>
+			<div id=comment_title1 class="c_title" style="display:block;">
+			<?php $sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' order by created_at desc";
+		$news=$db->paginate($sql,10); ?>
+			 <div class="comment">
+			 <?php for($i=0;$i<count($news);$i++){ ?>
 					<div class=content>	
 						<div class=title>
 							<div style="width:230px; margin-top:10px; margin-left:10px; line-height:20px; float:left; display:inline;">
-								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
+								<span style="color:#FF0000; text-decoration:underline;"><?php echo $news[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　　<div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $comment[$i]->tomatonum;?></span></div>　
-								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
+								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $news[$i]->id;?>">　　<div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $news[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $news[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $news[$i]->tomatonum;?></span></div>　
+								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $news[$i]->created_at; ?></div>
 							</div>
 						</div>
 						<div class=context>
-							<?php echo strfck($comment[$i]->comment);  ?>
+							<?php echo strfck($news[$i]->comment); ?>
 						</div>
 					</div>
-					<?php  } if(count($comment)>=10){?><div class=page><?php paginate('comment_list.php?id='.$_REQUEST['id'].'&type='.$_REQUEST['type']);?></div><?php } ?>
-					</div>
+					<?php }?>	
 				</div>
+				<div class=page><?php paginate('all_comment.php');?></div>
+			 </div>
+			 <div id=comment_title2 class="c_title" style="display:none;">
+			 <?php $sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='picture' order by created_at desc";
+		$pic=$db->paginate($sql,10); ?>
+			 <div class="comment">
+			 <?php for($i=0;$i<count($pic);$i++){ ?>
+					<div class=content>	
+						<div class=title>
+							<div style="width:230px; margin-top:10px; margin-left:10px; line-height:20px; float:left; display:inline;">
+								<span style="color:#FF0000; text-decoration:underline;"><?php echo $pic[$i]->nick_name;?></span>
+							</div>
+							<div style="width:370px; float:right; display:inline;">
+								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $pic[$i]->id;?>">　　<div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $pic[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $pic[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $pic[$i]->tomatonum;?></span></div>　
+								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $pic[$i]->created_at; ?></div>
+							</div>
+						</div>
+						<div class=context>
+							<?php echo strfck($pic[$i]->comment);?>
+						</div>
+					</div>
+					<?php }?>
+					</div>
+					<div class=page><?php paginate('all_comment.php');?></div>
+			 </div>
+			 <div id=comment_title3 class="c_title" style="display:none;">
+			 <?php $sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='video' order by created_at desc";
+		$video=$db->paginate($sql,10); if(count($video)>0){?>
+			 <div class="comment">
+			 <?php for($i=0;$i<count($video);$i++){ ?>
+					<div class=content>	
+						<div class=title>
+							<div style="width:230px; margin-top:10px; margin-left:10px; line-height:20px; float:left; display:inline;">
+								<span style="color:#FF0000; text-decoration:underline;"><?php echo $video[$i]->nick_name;?></span>
+							</div>
+							<div style="width:370px; float:right; display:inline;">
+								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $video[$i]->id;?>">　　<div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $video[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $video[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $video[$i]->tomatonum;?></span></div>　
+								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $video[$i]->created_at; ?></div>
+							</div>
+						</div>
+						<div class=context>
+							<?php echo strfck($video[$i]->comment);?>
+						</div>
+					</div>
+					<?php }?>
+					</div>
+					<div class=page><?php paginate('all_comment.php');?></div>
+					<?php } ?>
+			 </div>
+			</div>
 	</div>
 	<div id=ibody_right>
 		<div id=r_t><a target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
@@ -83,7 +135,7 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select *,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$_REQUEST['id']." and n.tags='小编推荐' order by n.priority asc,n.last_edited_at desc limit 8"; 
+			 $sql="select *,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and tags='小编推荐' order by n.priority asc,n.last_edited_at desc limit 8"; 
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
