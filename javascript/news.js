@@ -73,13 +73,16 @@
 			$(".b_b_title1").css("background","url(/images/news/news_r_title_bg.jpg) repeat-x");
 			$(".b_b_title1").css("color","#C2130E");
 			$(".b_b_title1").css("text-decoration","underline");
+			$(".b_b_title1").css("font-weight","normal");
 			$(".b_b").css("display","none");
 			$(this).css("background","url('/images/news/news_r_b_b_title1.jpg') no-repeat");
 			$(this).css("color","#000000");
 			$(this).css("font-weight","bold");
+			$(this).css("text-decoration","none");
 			var num=$(this).attr("param");
 			$("#b_b_"+num).css("display","block");
 		})
+		
 		$(".b_head_title1").mouseover(function(){		
 			$(".b_head_title1").css("background","none");
 			$(".b_head_title1").css("color","#000000");
