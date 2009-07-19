@@ -17,12 +17,20 @@
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);	
+		$about = array();
 		if($record[0]->related_news!="")
 		{
+			
 			$about1=search_newsid($record[0]->related_news,"smg_news");
+			$about += $about1;
 			if(count($about1)<10)
 			{
-				$about=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1));
+				$a2=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1));
+				$about = array_merge($about, $a2);
+				for($i=0;$i<count($about);$i++){
+				alert($about[0]->id);
+				}
+				var_dump($a2[0]->id);
 			}
 		}
 		else{
@@ -140,39 +148,7 @@
 			<div class=abouttitle><div style="float:left; display:inline;">更多关于“</div><div style="width:150px; height:20px; line-height:20px; overflow:hidden; text-decoration:underline; float:left; display:inline"><?php echo delhtml($record[0]->short_title);?></div><div style="float:left; display:inline;">”的新闻</div></div>
 			<div class=aboutcontent>
 				<div class=title>相关链接</div>
-				<?php if($record[0]->related_news!=""){
-					 for($i=0;$i<count($about1);$i++){ ?>
-					<div class=content>
-						<?php if($about1[$i]->category_id=="1"||$about1[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="<?php echo $about1[$i]->platform ?>/news/news_head.php?id=<?php echo $about1[$i]->id; ?>">
-								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }else{?>
-							·<a target="_blank" href="<?php echo $about1[$i]->platform ?>/news/news.php?id=<?php echo $about1[$i]->id; ?>">
-								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }?>
-					</div>
-				<?php }
-					if(count($about1)<10)
-					{
-					 for($i=0;$i<count($about);$i++){
-					?>
-					<div class=content>
-						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }else{?>
-							·<a target="_blank" href="<?php echo $about[$i]->platform ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }?>
-					</div>
-					<?php }
-						}
-				 }else{
-					for($i=0;$i<count($about);$i++){
+					<?php for($i=0;$i<count($about);$i++){
 					?>
 				<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
@@ -185,8 +161,7 @@
 							</a>
 						<?php }?>
 					</div>		
-				<?php }}?>
-					
+				<?php }?>		
 			</div>
 			<?php } ?>
 			<?php if($record[0]->is_commentable==1){ if(count($comment)>0){?>
