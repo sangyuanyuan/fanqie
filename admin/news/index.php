@@ -127,14 +127,7 @@
 </html>
 
 <script>
-	$("#search_new").click(function(){
-			//window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-			send_search();
-	});
 	
-	$(".select_new").change(function(){
-			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-	});
 	$(function(){
 		category.display_select('category_select',$('#span_category'),<?php echo $category_id;?>,'',function(id){
 			$('#category').val(id);
@@ -159,8 +152,15 @@
 				});
 			}
 		});
+		$("#search_new").click(function(){
+				//window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+				send_search();
+		});
+		
+		$(".select_new").change(function(){
+				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+		});		
 		function send_search(){
-			alert(encodeURI($("#title").attr('value')));
 			window.location.href="?title="+encodeURI($("#title").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 		}
 		$('#title').keydown(function(e){
