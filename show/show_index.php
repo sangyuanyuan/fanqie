@@ -22,7 +22,7 @@
 	  		<?php 
 				$db = get_db();
 				$images = new smg_images_class();
-				$records = $images->find('all',array('conditions' => 'is_adopt=1','limit' => '12','order' => 'created_at desc'));
+				$records = $images->find('all',array('conditions' => 'is_adopt=1 and src is not null','limit' => '12','order' => 'created_at desc'));
 				$count = count($records);
 				for($i=0; $i<$count;$i++){ 
 			?>
@@ -125,7 +125,7 @@
 			<div class=r_b>
 			<?php
 				$images = new smg_images_class();
-				$records = $images->paginate('all',array('conditions' => 'is_adopt=1','order' => 'priority asc,created_at desc'),24);
+				$records = $images->paginate('all',array('conditions' => 'is_adopt=1 and src is not null','order' => 'priority asc,created_at desc'),24);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>

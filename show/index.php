@@ -252,7 +252,7 @@
  	 
  	 <div id=ibody_center>
  	 	<?php 
-			$sql = "select * from smg_images where is_adopt=1 and publisher is not null order by priority asc,created_at desc limit 6";
+			$sql = "select * from smg_images where is_adopt=1 and publisher is not null and src is not null order by priority asc,created_at desc limit 6";
 			$records = $db->query($sql);
 			$count = count($records);
 		?>
