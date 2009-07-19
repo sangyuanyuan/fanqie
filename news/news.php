@@ -259,16 +259,9 @@
 		if($record[0]->related_videos!=""){
 		$sql="select * from smg_video where id=".$keys[0];
 		$r_video=$db->query($sql);
-		 if($record[0]->video_src==""){
-		 	if($record[0]->low_quality==0){
-			?>
+		 if($record[0]->video_src==""){?>
 			<div class=r_video><?php show_video_player('298','240',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
-		<?php }
-			else
-			{?>
-				<div class=r_video><?php show_video_player('150','120',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
-			<?php }
-		} ?>
+		<?php } ?>
 		<div id=r_m>
 			<?php 
 			 for($i=1;$i<count($keys);$i++){
