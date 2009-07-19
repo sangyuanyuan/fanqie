@@ -21,7 +21,6 @@
 		}
 		else if($tags!=""&&$tags!=null)
 		{
-				alert($tags);
 				$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."'";
 		}
 		
