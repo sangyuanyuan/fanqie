@@ -284,7 +284,7 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select *,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
+			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>

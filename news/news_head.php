@@ -266,7 +266,7 @@
 		<div class=r_b1>
 			<div class=title>历史头条</div>
 			<?php 
-			 $sql="select *,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='历史头条' order by n.priority asc,n.last_edited_at desc limit 8";
+			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='历史头条' order by n.priority asc,n.last_edited_at desc limit 8";
 			 $morehead=$db->query($sql);
 			 for($i=0;$i<count($morehead);$i++){	 	
 			 ?>
@@ -284,7 +284,7 @@
 		<div class=r_b1>
 			<div class=title>小编加精</div>
 			<?php 
-			 $sql="select *,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='小编加精' order by n.priority asc,n.last_edited_at desc limit 10";
+			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='小编加精' order by n.priority asc,n.last_edited_at desc limit 10";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){
 			 ?>
