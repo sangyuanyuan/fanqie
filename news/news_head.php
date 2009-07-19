@@ -26,6 +26,7 @@
 			}
 		}
 		else{
+			
 			$about=search_keywords($record[0]->keywords,'smg_news',$record);
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
@@ -143,11 +144,11 @@
 					 for($i=0;$i<count($about1);$i++){ ?>
 					<div class=content>
 						<?php if($about1[$i]->category_id=="1"||$about1[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="news_head.php?id=<?php echo $about1[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about1[$i]->platform ?>/news/news_head.php?id=<?php echo $about1[$i]->id; ?>">
 								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
-							·<a target="_blank" href="news.php?id=<?php echo $about1[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about1[$i]->platform ?>/news/news.php?id=<?php echo $about1[$i]->id; ?>">
 								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }?>
@@ -159,11 +160,11 @@
 					?>
 					<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="news_head.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
-							·<a target="_blank" href="news.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about[$i]->platform ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }?>
@@ -175,11 +176,11 @@
 					?>
 				<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="news_head.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
-							·<a target="_blank" href="news.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about[$i]->platform ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }?>
@@ -198,7 +199,7 @@
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　　<div id="hidden_flower" style="width:100px; color:#FF0000; font-weight:bold; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　<span style="color:#FF0000; font-weight:bold;"><?php echo $digg[$i]->tomatonum;?></span></div>
+								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　<div id="hidden_flower" style="width:100px; color:#FF0000; font-weight:bold; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　<span style="color:#FF0000; font-weight:bold;"><?php echo $digg[$i]->tomatonum;?></span></div>
 								<div style="width:140px; line-height:20px;  color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
 							</div>
 						</div>
@@ -213,7 +214,7 @@
 								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　　<div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $comment[$i]->tomatonum;?></span></div>　
+								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<span style="color:#999999; font-weight:bold;"><?php echo $comment[$i]->tomatonum;?></span></div>　
 								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
 							</div>
 						</div>
@@ -221,14 +222,14 @@
 							<?php echo strfck($comment[$i]->comment);?>
 						</div>
 					</div>
-				<?php } if(count($comment)>5){?>
+				<?php } if(count($comment)>=5){?>
 				<div class=page><?php paginate('news_head.php?id='.$id);?></div><?php } ?>
 			</div>
 			<?php }?>
 			<form method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
-				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论　　<a href="comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
+				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论　　<a target="_blank" href="/news/comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
 				<input type="text" id="commenter" name="post[nick_name]">
 				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">
 				<input type="hidden" id="resource_type" name="post[resource_type]" value="news">
@@ -283,17 +284,17 @@
 		<div class=r_b1>
 			<div class=title>历史头条</div>
 			<?php 
-			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='历史头条' order by priority asc,last_edited_at desc limit 8";
+			 $sql="select *,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='历史头条' order by n.priority asc,n.last_edited_at desc limit 8";
 			 $morehead=$db->query($sql);
 			 for($i=0;$i<count($morehead);$i++){	 	
 			 ?>
 			 	<div class="r_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><a target="_blank" href="/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+			 			<div class=cl1><a target="_blank" href="<?php echo $morehead[$i]->platform;?>/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
 					<?php }else{?>
 						<div class=pic2>0<?php echo $i+1;?></div>
-						<div class=cl2><a target="_blank" href="/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+						<div class=cl2><a target="_blank" href="<?php echo $morehead[$i]->platform;?>/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>
@@ -301,16 +302,16 @@
 		<div class=r_b1>
 			<div class=title>小编加精</div>
 			<?php 
-			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='小编加精' order by priority asc,last_edited_at desc limit 10";
+			 $sql="select *,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='小编加精' order by n.priority asc,n.last_edited_at desc limit 10";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){
 			 ?>
 			 	<div class="r_content">
 			 		<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
-						<div class=cl1>·<a target="_blank" href="/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1>·<a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }else
 					{?>
-						<div class=cl1>·<a target="_blank" href="/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1>·<a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>
