@@ -19,9 +19,9 @@
 //echo "select * from " .$_REQUEST['tablepre'] ."vote_item where vote_id=" .$_REQUEST['vote_id'] ." order by priority asc";
 
 ?>
-<div id=ibody style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px;">
-<div>总共<span style="color:#FF0000;"><?php echo $allcount;?></span>人参加</div>
-<table  border="0" bgcolor="#CCCCCC" cellspacing=1>
+<div id=ibody style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px; display:inline">
+<div style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px;">总共<span style="color:#FF0000;"><?php echo $allcount;?></span>人参加</div>
+<table align="center"  border="0" bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
 		<td colspan="4" align="center">
 			<?php echo $vote->title;?>
@@ -46,7 +46,7 @@
     {
     	$vote=$db->query("select count(*) as value from smg_vote_item_record where vote_item_id=".$voteitem[$i]->id);
   ?>
-	<tr>
+	<tr align="center">
 		<td bgcolor="#FFFFFF">
 			<?php echo $i+1;?>
 		</td>
@@ -61,14 +61,14 @@
 				<div style="background:url('/images/votebg.gif') repeat-x; height:9px;width:<?php echo ceil($count * 100)*3;?>px;"></div>
 		</td>
 	  <td bgcolor="#FFFFFF">
-	  	<?php echo $voteitems[$i]->itemvalue;?>
+	  	<?php echo $vote[0]->value;?>
 	  </td>
 	</tr>
 	<?php	
 	}
 	?>
 </table>
-
+</div>
 
 <? require_once('../inc/bottom.inc.php');?>
 
