@@ -152,11 +152,11 @@
 					 for($i=0;$i<count($about1);$i++){ ?>
 					<div class=content>
 						<?php if($about1[$i]->category_id=="1"||$about1[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="<?php echo $about1[$i]->platform; ?>/news/news_head.php?id=<?php echo $about1[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about1[$i]->platform; ?>/news_head.php?id=<?php echo $about1[$i]->id; ?>">
 								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
-							·<a target="_blank" href="<?php echo $about1[$i]->platform; ?>/news/news.php?id=<?php echo $about1[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about1[$i]->platform; ?>/news.php?id=<?php echo $about1[$i]->id; ?>">
 								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }?>
@@ -168,11 +168,11 @@
 					?>
 					<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="<?php echo $about1[$i]->platform; ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about1[$i]->platform; ?>/news_head.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
-							·<a target="_blank" href="<?php echo $about1[$i]->platform; ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about1[$i]->platform; ?>/news.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }?>
@@ -184,11 +184,11 @@
 					?>
 				<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="<?php echo $about[$i]->platform; ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about[$i]->platform; ?>/news_head.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
-							·<a target="_blank" href="<?php echo $about[$i]->platform; ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about[$i]->platform; ?>/news.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }?>
@@ -237,7 +237,7 @@
 			<form method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
-				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论　　<a target="_blank" href="/news/comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
+				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论　　<a target="_blank" href="/news/comment_list.php?id=<?php echo $id;?>&type=news">查看更多评论</a>　　<a target="_blank" href="/news/comment_list.php">查看所有评论</a></div>
 				<input type="text" id="commenter" name="post[nick_name]">
 				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">
 				<input type="hidden" id="resource_type" name="post[resource_type]" value="news">
@@ -284,7 +284,7 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select *,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
+			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
