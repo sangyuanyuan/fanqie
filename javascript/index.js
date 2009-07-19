@@ -41,6 +41,8 @@ $(function(){
 			$(this).css('font-weight','bold');
 			$(".content_trrt").hide();
 			var num=$(this).attr('param');
+			$(".content_trrt").css("float","right");
+			$(".content_trrt").css("margin-right","8px");
 			$("#content_trrt"+num).show();
 
 	});	

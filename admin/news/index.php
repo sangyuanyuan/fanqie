@@ -1,9 +1,8 @@
 <?php
 	require_once('../../frame.php');
+	echo '1='. $_REQUEST['title'];
 	$title = urldecode($_REQUEST['title']);
-//		$title=urldecode($title);
-//	
-	echo $_REQUEST['title'];
+	echo '2='.$title;
 	echo urldecode($_REQUEST['title']);
 	echo mb_convert_encoding($_REQUEST['title'],'UTF-8','GB2312');
 	echo mb_convert_encoding(urldecode('%E5%8A%A0'),'UTF-8','GB2312');
@@ -171,7 +170,6 @@
 			}
 		});
 		function send_search(){
-			alert(encodeURI($("#title").attr('value')));
 			window.location.href="?title="+encodeURI($("#title").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 		}
 		$('#title').keydown(function(e){
