@@ -629,14 +629,12 @@
  			<div id=m_c_b>
  				<div class=box>
    				<?php
-   					$sql = 'select * from smg_category where name="番茄专栏"';
-						$record=$db -> query($sql);
- 						$sql = 'select n.short_title,n.tags, c.platform,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄专栏" and c.platform="zone" order by n.priority asc limit 5';
+ 						$sql = 'select n.id as news_id,n.short_title,n.tags, c.platform,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄专栏" and c.platform="zone" order by n.priority asc limit 5';
 						$record=$db -> query($sql);
   				?> 		
   				<ul>
   					<?php for($i=0;$i<=4;$i++){?>
-  					<li>【<?php echo $record[$i]->tags?>】<a href=""><?php echo $record[$i]->short_title?></a></li>
+  					<li>【<?php echo $record[$i]->tags?>】<a href="/<?php echo $record[$i]->platform?>/news/news.php?id=<?php echo $record[$i]->news_id?>" target=_blank><?php echo $record[$i]->short_title?></a></li>
   					<? }?>
  					</ul>	
   				

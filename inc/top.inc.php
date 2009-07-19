@@ -18,7 +18,7 @@
 		<?php for($j=0;$j<5;$j++){?>
 		<ul>
 				<?php	for($i=8*$j;$i<8*($j+1);$i++)	{ ?>
-				<li><?php if($i%4==0){?><b><?php }?><a href="<?php echo $nav[$i]->href;?>"><?php echo $nav[$i]->name;?></a><?php if($i%4==0){?></b><?php }?></li>
+				<li><?php if($i%4==0){?><b><?php }?><a href="<?php echo $nav[$i]->href;?>" target=_blank><?php echo $nav[$i]->name;?></a><?php if($i%4==0){?></b><?php }?></li>
 				<?php	}?>
 	 	</ul>
 		<?php }?>
@@ -34,8 +34,8 @@
    		<div id=hot><a href="#">星尚大典</a> <a href="#">小沈阳</a> <a href="#">朝鲜核实验</a></div>
    	</div>
 		<div id=login>
-			<img src="/images/top/person.jpg">
-			<div id=welcome>欢迎您：<span style="font-weight:bold;">admin</span>　<a href="#">修改密码</a>　<a href="#">后台管理</a>　<a href="#">退出</a>
+			<div id=welcome>			<img src="/images/top/person.jpg">
+欢迎您：<span style="font-weight:bold;">admin</span>　<a href="#">修改密码</a>　<a href="#">后台管理</a>　<a href="#">退出</a>
 			</div>
 		</div>
 	</div>
