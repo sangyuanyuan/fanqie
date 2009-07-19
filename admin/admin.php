@@ -15,12 +15,13 @@
 	<?php	
 		css_include_tag('admin');
 		use_jquery();
+		js_include_tag('jquery.cookie.js', 'pubfun');
   ?>
 </head>
 <body style="background:url(/images/admin/bg.jpg) repeat-x;">
 	<div id=admin_body>
 		<div id=part1>
-			<div id=nav>欢迎  <?php echo $_COOKIE['smg_user_nickname']; ?></div>
+			<div id=nav style="width:360px;">欢迎  <?php echo $_COOKIE['smg_user_nickname']; ?></div>
 			<div id=title>番茄网后台管理系统</div>
 			<div id=index><a href="/index.php" target="_blank">动态主页</a></div>
 		</div>
@@ -75,6 +76,7 @@ $(function(){
 		}
 	});
 	
+	display_login('nav',true);
 });
 </script>
 
