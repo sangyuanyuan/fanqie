@@ -57,7 +57,7 @@
 	<?php if($type=='video'){
 	?>
 	<input type="hidden" name="type" value="video">
-	<input type="hidden" name="show[category_id]" value="<?php echo category_id_by_name('我要上传','video'); ?>">
+	<input type="hidden" name="show[category_id]" value="<?php echo category_id_by_name('我要上传','video');?>">
 	<div id=b>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　视频照片</div>
 		<div class=t_r>

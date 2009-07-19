@@ -19,11 +19,14 @@
 			$image->create_thumb('small',170,70);
 		}
 		$image->commentable = 'on';
+		$image->priority = 1;
+		$image->is_recommend = 1;
 		$image->created_at = date("Y-m-d H:i:s");
 		$image->save();
 	}else{
 		$video = new table_class('smg_video');
 		$video -> update_attributes($_POST['show'],false);
+		$upload = new upload_file_class();
 		if($_FILES['image']['name']!=null){
 			$upload->save_dir = "/upload/images/";
 			$img = $upload->handle('image','filter_pic');
@@ -43,6 +46,8 @@
 			$video->video_url = "/upload/video/" .$vid;
 		}
 		$video->commentable = 'on';
+		$video->is_recommend = 1;
+		$video->priority = 1;
 		$video->created_at = date("Y-m-d H:i:s");
 		$video->save();
 	}

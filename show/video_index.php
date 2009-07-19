@@ -21,7 +21,7 @@
  	 	 	 <div id=video>
  	 	 	 	<?php 
 					$db = get_db();
-					$category_id = category_id_by_name('视频首页视频');
+					$category_id = category_id_by_name('视频首页视频','video');
 					$sql = 'select * from smg_video where category_id='.$category_id.' and is_adopt=1 and video_url!="" order by priority asc,created_at desc limit 1';
 					$record = $db->query($sql);
 					show_video_player('285','265',$record[0]->photo_url,$record[0]->video_url,$autostart = "false");
@@ -125,7 +125,7 @@
 	 <div id=ibody_right>
 	 	<div id=r_t>
 	 		<?php 
-				$category_id = category_id_by_name('视频首页顶部图');
+				$category_id = category_id_by_name('视频首页顶部图','video');
 				$sql = 'select * from smg_video where category_id='.$category_id.' and is_adopt=1  order by priority asc,created_at desc limit 4';
 				$records = $db->query($sql);
 			?>
@@ -200,7 +200,7 @@
 			</div>
 			<div class=line></div>
 			<div class=r_b_title>
-				<?php $category_id = category_id_by_name('佳片共赏'); ?>
+				<?php $category_id = category_id_by_name('佳片共赏','video'); ?>
 		  		<div class=left>佳片共赏</div>
 				<div class=more><a target="_blank" href="list.php?type=video&id=<?php echo $category_id; ?>">更多</a></div>
 		  	</div>
@@ -242,6 +242,9 @@
 		})
 	})
 	
+	$("#btn1").click(function(){
+		window.location.href = "show_sub.php?type=video";
+	});
 	
 	function change(){
 		$(".img").css('opacity','0.3');
