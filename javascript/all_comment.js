@@ -33,20 +33,24 @@
 		
 		$(".b_b_title1").mouseover(function(){		
 			$(".b_b_title1").css("background","url(/images/news/news_r_title_bg.jpg) repeat-x");
-			$(".b_b_title1").css("color","#C2130E");
-			$(".b_b_title1").css("text-decoration","underline");
+			$(".b_b_title1").css("color","#000000");
+			$(".b_b_title1").css("text-decoration","none");
+			$(".b_b_title1").css("font-weight","bold");
 			$(".b_b").css("display","none");
 			$(this).css("background","url('/images/news/news_r_b_b_title1.jpg') no-repeat");
-			$(this).css("color","#000000");
-			$(this).css("font-weight","bold");
+			$(this).css("color","#C2130E");
+			$(this).css("font-weight","normal");
+			$(this).css("text-decoration","underline");
 			var num=$(this).attr("param");
 			$("#b_b_"+num).css("display","block");
 		})
 		
 		$(".comment_title").mouseover(function(){		
 			$('.comment_title').css("background","url('/images/news/news_r_title_bg.jpg') repeat-x");
+			$('.comment_title').css("font-weight","normal");
 			$(".c_title").css("display","none");
 			$(this).css("background","url('/images/comment/l_title.jpg') no-repeat");
+			$(this).css("font-weight","bold");
 			var num=$(this).attr("param");
 			$("#comment_title"+num).css("display","block");
 		})
