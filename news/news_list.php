@@ -1,7 +1,8 @@
 <?php
 	require_once('../frame.php');
 	$id=$_REQUEST['id'];
-	if($id==""||$id==null){die('没有找到网页');}
+	$tags=urldecode($_REQUEST['tags']);
+	if(($id==""||$id==null)&&($tags==""||$tags==null)){die('没有找到网页');}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,7 +15,16 @@
 		use_jquery();
 		js_include_once_tag('news_list');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
+		if($id!=""&&$id!=null)
+		{
+			$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
+		}
+		else if($tags!=""&&$tags!=null)
+		{
+				alert($tags);
+				$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."'";
+		}
+		
 		$record=$db->paginate($sql,20);		
   ?>
 	
