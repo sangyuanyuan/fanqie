@@ -237,7 +237,7 @@
 			<form method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
-				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论<?php if(count($totalcoment)>0){ ?>　　<a target="_blank" href="/news/comment_list.php?id=<?php echo $id;?>&type=news">查看更多评论</a><?php }?>　　<a target="_blank" href="/comment/all_comment.php">查看所有评论</a></div>
+				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论<?php if(count($totalcoment)>0){ ?>　　<a target="_blank" href="/comment/comment_list.php?id=<?php echo $id;?>&type=news">查看更多评论</a><?php }?>　　<a target="_blank" href="/comment/all_comment.php">查看所有评论</a></div>
 				<input type="text" id="commenter" name="post[nick_name]">
 				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">
 				<input type="hidden" id="resource_type" name="post[resource_type]" value="news">
@@ -354,8 +354,8 @@
 			</div>
 		</div>
 		<div id=r_b_b>
-			<div class=b_b_title1 param=1>部门发表量</div>
-			<div class=b_b_title1 param=2 style="background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
+			<div class=b_b_title1 style="color:#C2130E; text-decoration:underline;" param=1>部门发表量</div>
+			<div class=b_b_title1 param=2 style="font-weight:bold; color:#000000; text-decoration:none; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
 			<div id="b_b_1" class="b_b" style="display:none">
 			<?php 
 			 $sql="select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join

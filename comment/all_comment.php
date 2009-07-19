@@ -204,9 +204,9 @@
 			<? }?>
 			</div>
 		</div>
-		<div id=r_b_b>
-			<div class=b_b_title1 param=1>部门发表量</div>
-			<div class=b_b_title1 param=2 style="background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
+	<div id=r_b_b>
+			<div class=b_b_title1 style="color:#C2130E; text-decoration:underline;" param=1>部门发表量</div>
+			<div class=b_b_title1 param=2 style="font-weight:bold; color:#000000; text-decoration:none; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
 			<div id="b_b_1" class="b_b" style="display:none">
 			<?php 
 			 $sql="select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
