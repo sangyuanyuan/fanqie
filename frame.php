@@ -174,11 +174,11 @@
 		}
 	}
 	
-	function category_id_by_name($name) {
+	function category_id_by_name($name,$type='news') {
 		global $_category;
 		if(empty($_category)) $_category = new smg_category_class();
 		foreach ($_category->items as $v) {
-			if($v->name == $name){
+			if($v->name == $name && $v->category_type == $type){
 				return $v->id;
 			};
 		}
