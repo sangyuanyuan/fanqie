@@ -92,7 +92,7 @@
      <!-- start left_middle !-->
  	 	 <div id=l_m>
  	 	 	<?php 
-				$sql = 'select * from smg_video where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
+				$sql = 'select * from smg_video where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$spphb=$db->query($sql);
 				$sql = 'SELECT publisher,count(*) as num FROM smg_video where publisher!="" group by publisher limit 5';
 				$bk=$db->query($sql);
@@ -155,7 +155,7 @@
 				<?php } ?>
 			</div>
 			<?php 
-				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
+				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$wxwxph=$db->query($sql);
 				$sql = 'SELECT publisher,count(*) as num FROM smg_images where publisher!="" group by publisher limit 5';
 				$sy=$db->query($sql);

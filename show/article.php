@@ -42,7 +42,7 @@
  	  	
 		<div class=l>
 			<?php 
-				$sql = 'select * from smg_video where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
+				$sql = 'select * from smg_video where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>视频排行榜</div></div>
@@ -59,7 +59,7 @@
 		</div>
 		<div class=l>
 			<?php 
-				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") order by click_count desc limit 5;';
+				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>我行我秀排行榜</div></div>

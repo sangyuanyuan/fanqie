@@ -1,6 +1,41 @@
 ﻿<?php
 	require_once('../frame.php');
 	$id = $_REQUEST['id'];
+	$type = $_REQUEST['type'];
+	if($id!=''){
+		$title = category_name_by_id($id);
+		switch($type){
+			case 'video':
+				$l_sql = 'select * from smg_video where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+				break;
+			case 'news':
+				$l_sql = 'select * from smg_news where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+				break;
+			case 'image':
+				$l_sql = 'select * from smg_images where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+				break;
+			default:
+				break;
+		}
+	}else{
+		switch($type){
+			case 'video':
+				$title = '视频列表';
+				$l_sql = 'select * from smg_video where  is_adopt=1 order by priority asc,created_at desc';
+				break;
+			case 'news':
+				$title = '新闻列表';
+				$l_sql = 'select * from smg_news where  is_adopt=1 order by priority asc,created_at desc';
+				break;
+			case 'image':
+				$title = '图片列表';
+				$l_sql = 'select * from smg_images where  is_adopt=1 order by priority asc,created_at desc';
+				break;
+			default:
+				$title = '未知列表';
+				break;
+		}
+	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -67,10 +102,10 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$sql = 'select * from smg_video where week(created_at)=week("'.date("Y-m-d").'") order by click_count desc limit 5;';
+				$sql = 'select * from smg_video where week(created_at)=week("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
-			<div class=title><div class=left>视频排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
+			<div class=title><div class=left>视频排行榜</div></div>
 			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
@@ -87,10 +122,10 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$sql = 'select * from smg_images where week(created_at)=week("'.date("Y-m-d").'") order by click_count desc limit 5;';
+				$sql = 'select * from smg_images where week(created_at)=week("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
-			<div class=title><div class=left>我型我秀排行榜</div><div class="more"><a target="_blank" href="#">更多>></a></div></div>
+			<div class=title><div class=left>我型我秀排行榜</div></div>
 			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
@@ -107,17 +142,13 @@
 	 <div id=ibody_right>
      <!-- start right !-->
  	 	 <div id=r>
- 	 	 	<div class=title><div class=left><?php if($id!=''){echo category_name_by_id($id);}else{echo '图片列表';}?></div></div>
+ 	 	 	<div class=title><div class=left><?php  echo $title;?></div></div>
 			<?php  
-				if($id!=''){
-					$sql = 'select id,short_title,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by created_at desc,priority asc';
-				}else{
-					$sql = 'select id,title as short_title,created_at from smg_images where is_adopt=1 order by created_at desc,priority asc';
-				}
-				$records = $db->paginate($sql,45);
-				close_db();
-				$count = count($records);
-				for($i=0;$i<$count;$i++){
+				if($l_sql!=''){
+					$records = $db->paginate($l_sql,45);
+					close_db();
+					$count = count($records);
+					for($i=0;$i<$count;$i++){
 			?>
 			<div class=content>
 				<div class=left>
@@ -127,7 +158,7 @@
 					<?php echo $records[$i]->created_at; ?>
 				</div>
 			</div>
-			<?php }?>
+			<?php } }?>
 			<div id=paginate><?php paginate();?></div>
 		</div>
  	 </div>
