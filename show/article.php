@@ -188,6 +188,7 @@
 		});
 		
 		display_fqbq('fqbq','post[comment]');
+		$("#fqbq").children().css('margin-left','5px');
 			
 		$("#submit_comment").click(function(){
 			var oEditor = FCKeditorAPI.GetInstance('post[comment]') ;

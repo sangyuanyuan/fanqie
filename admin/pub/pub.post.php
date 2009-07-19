@@ -16,7 +16,7 @@
 		}
 	}elseif("return"==$_POST['post_type'])
 	{
-		$post -> find($_POST['return_id']);
+		if($_POST['id']!='')$post -> find($_POST['return_id']);
 		$post->is_recommend = 2;
 		$post->is_adopt = 0;
 		$post -> save();
@@ -25,7 +25,7 @@
 	}	
 	elseif("edit"==$_POST['post_type'])
 	{
-		$post -> find($_POST['id']);
+		if($_POST['id']!='')$post -> find($_POST['id']);
 		$post -> update_attributes($_POST['post']);
 		redirect($_POST['url']);
 		
@@ -53,7 +53,7 @@
 	
 	elseif("revocation"==$_POST['type'])
 	{
-		$post->find($_POST['id']);
+		if($_POST['id']!='')$post->find($_POST['id']);
 		if($_POST['db_table']=='smg_zongcai_item'){
 			$post->update_attribute("state","0");
 			$db = get_db();
@@ -70,7 +70,7 @@
 	}
 	elseif("publish"==$_POST['type'])
 	{
-		$post->find($_POST['id']);
+		if($_POST['id']!='')$post->find($_POST['id']);
 		if($_POST['db_table']=='smg_zongcai_item'){
 			$post->update_attribute("state","1");
 			$db = get_db();

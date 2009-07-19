@@ -23,7 +23,7 @@
 <div id=ibody>	
  <div id=ibody_left>
  	  	<div id=l_t>
-	 	  	<a target="_blank" href="#"><img border=0 src="/images/show/show_l_t.jpg" width="290"></a>
+	 	  	<a target="_blank" href="show_sub.php?type=image"><img border=0 src="/images/show/show_l_t.jpg" width="290"></a>
 			<?php
 				$db = get_db();
 				$sql = 'select i.id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
@@ -109,11 +109,11 @@
 			<div class=digg>
 				<div id="flower" title="送鲜花">
 					<?php echo $image->flower;?>
-					<input type="hidden" id="hidden_flower" value="<?php echo $image->flower;?>">
+					<input type="hidden" id="hidden_flower" value="<?php echo $image->flower!=''?$image->flower:0;?>">
 				</div>
 				<div id="tomato" title="丢番茄">
 					<?php echo $image->tomato;?>
-					<input type="hidden" id="hidden_tomato" value="<?php echo $image->tomato;?>">
+					<input type="hidden" id="hidden_tomato" value="<?php echo $image->tomato!=''?$image->tomato:0;?>">
 				</div>
 				<input type="hidden" id="image_id" value="<?php echo $id;?>">
 			</div>

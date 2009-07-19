@@ -1,8 +1,14 @@
-<?php
+﻿<?php
 	require_once('../../frame.php');
-	$user = judge_role('admin');	
+
 	$title = urldecode($_REQUEST['title']);
+
+	$user = judge_role('admin');	
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
+	
+
+
+	
 	$dept_id = $_REQUEST['dept'];
 	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();

@@ -29,11 +29,10 @@
 			
 			$about=search_keywords($record[0]->keywords,'smg_news',$record,10,"priority asc,last_edited_at desc");
 		}
-		
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
-		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.* from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by flowernum desc ";
-		$digg=$db->paginate($sql,2);
+		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by flowernum desc limit 2";
+		$digg=$db->query($sql);
 		if($record[0]->news_type==2)
 		{
 			redirect($record[0]->file_name);
@@ -138,7 +137,7 @@
 							<?php }
 						}
 						}?>	
-					<div class="btn"><button class="vote_submit" param="0">投票</button><input type="hidden" id="vote_id" value="<?php echo $record2[0]->vote_id; ?>"><input type="hidden" value="<?php echo $record1[0]->limit_type;?>"> <button id="show_vote">查看</button></div>
+					<div class="btn"><button class="vote_submit" param="0">投票</button><input type="hidden" id="vote_id" value="<?php echo $record2[0]->vote_id; ?>"><input type="hidden" value="<?php echo $record1[0]->limit_type;?>"> <button class="show_vote">查看</button></div>
 				</div>
 			<? }}?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
@@ -197,7 +196,9 @@
 					
 			</div>
 			<?php } ?>
-			<?php if($record[0]->is_commentable==1){ if(count($comment)>0){?>
+			<?php if($record[0]->is_commentable==1){ 
+				
+				if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
 				 for($i=0;$i<count($digg);$i++){ ?>
@@ -207,7 +208,7 @@
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>"><div id="hidden_flower" style="width:100px; color:#FF0000; font-weight:bold; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　<span style="color:#FF0000; font-weight:bold;">　<?php echo $digg[$i]->tomatonum;?></span></div>
+								<div style="width:220px; float:left; display:inline;"><img title="送鲜花" class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>"> <div id="hidden_flower" style="width:100px; color:#FF0000; font-weight:bold; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img title="扔番茄" class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>">　<div style="color:#FF0000; font-weight:bold; display:inline"><?php echo $digg[$i]->tomatonum;?></div></div>
 								<div style="width:140px; line-height:20px;  color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
 							</div>
 						</div>
@@ -215,14 +216,16 @@
 								<?php  echo strfck($digg[$i]->comment);?>
 							</div>	
 					</div>
-				<?php }}  for($i=0;$i<count($comment);$i++){ ?>
+				<?php }}
+				
+				  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
 						<div class=title>
 							<div style="width:230px; margin-top:10px; margin-left:10px; line-height:20px; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; float:left; display:inline;"><img class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>"><div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img class="tomato" style="margin-left:50px;" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<span style="color:#999999; font-weight:bold;">　<?php echo $comment[$i]->tomatonum;?></span></div>　
+								<div style="width:220px; float:left; display:inline;"><img title="送鲜花" class="flower" src="/images/news/news_flower.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>"> <div style="width:100px; color:#999999; font-weight:bold; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img title="扔番茄" style="margin-left:50px;" class="tomato" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>">　<div style="color:#999999; font-weight:bold; display:inline;"><?php echo $comment[$i]->tomatonum;?></div></div>　
 								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
 							</div>
 						</div>
@@ -230,8 +233,8 @@
 							<?php echo strfck($comment[$i]->comment);?>
 						</div>
 					</div>
-				<?php } if(count($comment)>=5){?>
-				<div class=page><?php paginate('news_head.php?id='.$id);?></div><?php } ?>
+				<?php }?>
+				<div class=page><?php paginate('news.php?id='.$id);?></div>
 			</div>
 			<?php }?>
 			<form method="post" action="/pub/pub.post.php">

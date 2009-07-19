@@ -41,11 +41,11 @@
 				<div class=digg>
 					<div id="flower" title="送鲜花">
 						<?php echo $video->flower;?>
-						<input type="hidden" id="hidden_flower" value="<?php echo $video->flower;?>">
+						<input type="hidden" id="hidden_flower" value="<?php echo $video->flower!=''?$video->flower:0;?>">
 					</div>
 					<div id="tomato" title="丢番茄">
 						<?php echo $video->tomato;?>
-						<input type="hidden" id="hidden_tomato" value="<?php echo $video->tomato;?>">
+						<input type="hidden" id="hidden_tomato" value="<?php echo $video->tomato!=''?$video->tomato:0;?>">
 					</div>
 					<input type="hidden" id="video_id" value="<?php echo $id;?>">
 				</div>
