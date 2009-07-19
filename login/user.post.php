@@ -89,11 +89,12 @@ if($_REQUEST['user_type']=="logout")
 		SetCookie('smg_username',"",$y2k,'/');
 		SetCookie('smg_user_nickname',"",$y2k,'/');
 		SetCookie('smg_role',"",$y2k,'/');
+		$_SESSION["smg_role"]  = '';
 		echo uc_user_synlogout();
 		if(is_ajax()){
 			echo "ok";
 		}else{
-			redirect($_SERVER['HTTP_REFERER']);
+			redirect('/');
 		}
 		
 }
