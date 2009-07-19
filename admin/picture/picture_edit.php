@@ -102,7 +102,7 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
 			<td align="left" class="newsselect">
-			<select id=selecta name="picture[<?php echo $category_id;?>]">
+			<select id=url_s name="picture[<?php echo $category_id;?>]">
 				<?php	
 					for($i=0;$i<count($category_menu);$i++){
 				?>
@@ -128,7 +128,7 @@
 
 	<input type="hidden" name="id" value="<?php echo $id;?>">
 	<input type="hidden" name="type" value="edit">
-	<input type="hidden" name="url"  value="<?php echo $url;?>">
+	<input type="hidden" name="url" id=url  value="<?php echo $url;?>">
 	<?php if($role=='admin'){
 	?>
 	<input type="hidden" name="picture[is_recommend]" id="recommend" value="1">
@@ -142,6 +142,10 @@
 </html>
 
 <script>
+	var url = $("#url").attr('value');
+	var new_url = url+"?category="+$("#url_s").attr('value');
+	$("#url").attr('value',new_url);
+	
 	$("#submit").click(function(){
 		var oEditor = FCKeditorAPI.GetInstance('title') ;
 		var title = oEditor.GetHTML();
@@ -159,5 +163,10 @@
 			$("#index_category").hide();
 			$("#recommend").attr('value','0');
 		}
-	});		
+	});
+	
+	$("#url_s").change(function(){
+		new_url = url+"?category="+$(this).attr('value');
+		$("#url").attr('value',new_url);
+	});
 </script>
