@@ -27,6 +27,7 @@ li{margin:0px; list-style-type:none;}
 #l_t .content .title{width:auto; height:auto; padding:0; margin-left:15px; font-size:13px; float:left; display:inline;}
 #l_t .content .bottom{width:570px; padding-bottom:10px; float:left; display:inline;}
 #l_t .content .bottom #description{width:480px; line-height:15px; overflow:hidden; float:left; display:inline;}
+#l_t .content .bottom #description p{margin:0; padding:0;}
 #l_t .content .center{width:570px; height:30px; margin-top:10px; float:left; display:inline;}
 #l_t .content .center .left{width:190px; float:left; display:inline;}
 #l_t .content .center .left #publisher{width:100px; font-size:13px; color:#0093BB;  line-height:15px; font-weight:bolder; float:left; display:inline;}

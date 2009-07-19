@@ -160,7 +160,7 @@
 		});
 		
 		$("[class*=tag]").click(function(){
-			window.location.href="list.php?tag="+$(this).html()+"&type=show";
+			//window.location.href="list.php?tag="+$(this).html()+"&type=show";
 		})
 	});
 	
