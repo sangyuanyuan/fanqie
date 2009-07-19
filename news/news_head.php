@@ -22,15 +22,15 @@
 		{
 			
 			$about1=search_newsid($record[0]->related_news,"smg_news");
-			$about += $about1;
+			$about = $about1;// = array_merge($about,$about1);
 			if(count($about1)<10)
 			{
 				$a2=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1));
 				$about = array_merge($about, $a2);
 				for($i=0;$i<count($about);$i++){
-				alert($about[0]->id);
+					$tmp = $about[$i]->id .',';
 				}
-				var_dump($a2[0]->id);
+				echo $tmp;
 			}
 		}
 		else{
