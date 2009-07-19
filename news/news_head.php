@@ -21,21 +21,17 @@
 		if($record[0]->related_news!="")
 		{
 			
-			$about1=search_newsid($record[0]->related_news,"smg_news");
+			$about1=search_newsid($record[0]->related_news,"smg_news",10,"priority asc,last_edited_at desc");
 			$about = $about1;// = array_merge($about,$about1);
 			if(count($about1)<10)
 			{
-				$a2=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1));
+				$a2=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1),"priority asc,last_edited_at desc");
 				$about = array_merge($about, $a2);
-				for($i=0;$i<count($about);$i++){
-					$tmp = $about[$i]->id .',';
-				}
-				echo $tmp;
 			}
 		}
 		else{
 			
-			$about=search_keywords($record[0]->keywords,'smg_news',$record);
+			$about=search_keywords($record[0]->keywords,'smg_news',$record,10,"priority asc,last_edited_at desc");
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
@@ -64,7 +60,14 @@
 		<div id=l_b>
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
-			<?php if($record[0]->video_src!=""){?><div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div><?php } ?>
+			<?php if($record[0]->video_src!=""){
+					if($record[0]->low_quality==0){
+				?>
+			<div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+			<?php }else
+			{?>
+				<div id=video><?php show_video_player('265','218',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+			<?php }} ?>
 			<div id=content>
 				<?php echo get_fck_content($record[0]->content);?>
 			</div>
@@ -204,7 +207,7 @@
 			<form method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent>
-				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论　　<a target="_blank" href="/news/comment_list.php?id=<?php echo $id;?>&type=news">查看所有评论</a></div>
+				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论　　<a target="_blank" href="/news/comment_list.php?id=<?php echo $id;?>&type=news">查看更多评论</a>　　<a target="_blank" href="/news/comment_list.php">查看所有评论</a></div>
 				<input type="text" id="commenter" name="post[nick_name]">
 				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">
 				<input type="hidden" id="resource_type" name="post[resource_type]" value="news">
@@ -240,36 +243,40 @@
 		} ?>
 		<div id=r_m>
 			<?php 
-			 for($i=1;$i<count($keys);$i++){
+			 for($i=0;$i< count($keys);$i++){
 			 	$sql="select * from smg_video where id=".$keys[$i];
-			 	$morehead=$db->query($sql);
+			 	$videolist=$db->query($sql);
 			 ?> 
 			 	<div class="r_content">
-			 		<?php if($i<3){?>
-			 			<div class=pic1>0<?php echo $i;?></div>
-			 			<div class=cl1><a target="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
+			 		<?php  if($i<3){?>
+			 			<div class=pic1>0<?php echo $i+1;?></div>
+			 			<div class=cl1><a target="_blank" href="/show/video.php?id=<?php echo $videolist[0]->id;?>"><?php echo delhtml($videolist[0]->title);?></a></div>
 					<?php }else{?>
-						<div class=pic2>0<?php echo $i;?></div>
-						<div class=cl2><a target="_blank" href="/show/video.php?id=<?php echo $morehead[0]->id;?>"><?php echo delhtml($morehead[0]->title);?></a></div>
+						<div class=pic2>
+							<?php if($i<9){
+								 echo "0".($i+1);
+								 }else{ echo $i+1;}?>
+						</div>
+						<div class=cl2><a target="_blank" href="/show/video.php?id=<?php echo $videolist[0]->id;?>"><?php echo delhtml($videolist[0]->title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>
 		</div>
-		<? }?>
+		<?php }?>
 		<div class=r_b1>
 			<div class=title>历史头条</div>
 			<?php 
-			 $sql="select *,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='历史头条' order by n.priority asc,n.last_edited_at desc limit 8";
+			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='历史头条' order by n.priority asc,n.last_edited_at desc limit 8";
 			 $morehead=$db->query($sql);
 			 for($i=0;$i<count($morehead);$i++){	 	
 			 ?>
 			 	<div class="r_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><a target="_blank" href="<?php echo $morehead[$i]->platform;?>/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+			 			<div class=cl1><a target="_blank" href="<?php echo $morehead[$i]->platform;?>/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
 					<?php }else{?>
 						<div class=pic2>0<?php echo $i+1;?></div>
-						<div class=cl2><a target="_blank" href="<?php echo $morehead[$i]->platform;?>/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+						<div class=cl2><a target="_blank" href="<?php echo $morehead[$i]->platform;?>/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>
@@ -277,16 +284,16 @@
 		<div class=r_b1>
 			<div class=title>小编加精</div>
 			<?php 
-			 $sql="select *,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='小编加精' order by n.priority asc,n.last_edited_at desc limit 10";
+			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='小编加精' order by n.priority asc,n.last_edited_at desc limit 10";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){
 			 ?>
 			 	<div class="r_content">
 			 		<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
-						<div class=cl1>·<a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1>·<a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }else
 					{?>
-						<div class=cl1>·<a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1>·<a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>
