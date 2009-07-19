@@ -2,7 +2,11 @@
 <?php
 	
 	require "../frame.php";	
-	$new = new table_class('smg_news');
+	require "../lib/smg_vote_class.php";
+	$vote = new smg_vote_class();
+	$vote->find(363);
+	$vote->display();
+	#var_dump($vote);
 #	var_dump($new);
 	#var_dump($_COOKIE);
 	

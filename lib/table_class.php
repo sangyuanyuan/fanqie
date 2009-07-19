@@ -103,7 +103,7 @@ class table_class{
 				}
 				$result[] = $tmp;
 			}while ($db->move_next());
-
+			$this->fields = $result[0]->fields;
 		}
 		return $result;
 		
