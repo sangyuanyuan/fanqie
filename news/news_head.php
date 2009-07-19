@@ -273,10 +273,10 @@
 			 	<div class="r_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><a target="_blank" href="<?php echo $morehead[$i]->platform;?>/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+			 			<div class=cl1><a target="_blank" href="<?php echo $morehead[$i]->platform;?>/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
 					<?php }else{?>
 						<div class=pic2>0<?php echo $i+1;?></div>
-						<div class=cl2><a target="_blank" href="<?php echo $morehead[$i]->platform;?>/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+						<div class=cl2><a target="_blank" href="<?php echo $morehead[$i]->platform;?>/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>
@@ -290,10 +290,10 @@
 			 ?>
 			 	<div class="r_content">
 			 		<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
-						<div class=cl1>·<a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1>·<a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }else
 					{?>
-						<div class=cl1>·<a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+						<div class=cl1>·<a target="_blank" href="<?php echo $xbjj[$i]->platform;?>/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>
