@@ -1,7 +1,8 @@
 <?php
 	require_once('../frame.php');
 	$id=$_REQUEST['id'];
-	if($id==""||$id==null){die('没有找到网页');}
+	$tags=urldecode($_REQUEST['tags']);
+	if(($id==""||$id==null)&&($tags==""||$tags==null)){die('没有找到网页');}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,7 +15,15 @@
 		use_jquery();
 		js_include_once_tag('news_list');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
+		if($id!=""&&$id!=null)
+		{
+			$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
+		}
+		else if($tags!=""&&$tags!=null)
+		{
+				$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."'";
+		}
+		
 		$record=$db->paginate($sql,20);		
   ?>
 	
@@ -24,7 +33,7 @@
 <div id=ibody>
 	<div id=ibody_left>
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><?php if($id!=""||$id!=null){ ?><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a><?php } else{?><a href="news_list.php?tags=<? echo $tags;?>"><?php echo $tags;?><?php } ?>
 		</div>
 		<div id=l_b>
 			<?php for($i=0;$i<count($record);$i++){ ?>
@@ -33,7 +42,7 @@
 					<div class=l_b_l_r><a target="_blank" href="news.php?id=<?php echo $record[$i]->id;?>"><?php echo get_fck_content($record[$i]->title);?></a></div>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
-			<?php }?>
+			<?php } ?>
 			<div id=page><?php paginate('news_list.php?id='.$id);?></div>
 		</div>
 	</div>
@@ -42,18 +51,28 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select * from smg_news where is_adopt=1 and id<>".$id." and tags='小编推荐' order by priority asc,last_edited_at desc limit 8";
+			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
 			 	<div class="r_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><a starget="_blank" href="/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
-					<?php }else{?>
+			 		<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
+						<div class=cl1><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+					<?php }else
+					{?>
+						<div class=cl1><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+					<?php }
+					}else{
+						?>
 						<div class=pic2>0<?php echo $i+1;?></div>
-						<div class=cl2><a starget="_blank" href="/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
-					<?php }?>				
+						<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
+						<div class=cl2><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+					<?php }else{?>
+						<div class=cl2><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+					<?php }
+					}?>				
 				</div>
 			<?php }?>
 		</div>
@@ -95,15 +114,15 @@
 			 ?>
 			 	<div class="r_content">
 			 		<ul>
-						<li>·<a target="_blank" href="/show/video.php?id=<?php $jcsp[$i]->id;?>"><?php echo get_fck_content($jcsp[$i]->title); ?></a></li>
+						<li>·<a target="_blank" href="/show/video.php?id=<?php echo $jcsp[$i]->id;?>"><?php echo strfck($jcsp[$i]->title); ?></a></li>
 					</ul>			
 				</div>
 			<? }?>
 			</div>
 		</div>
 		<div id=r_b_b>
-			<div class=b_b_title1 param=1>部门发表量</div>
-			<div class=b_b_title1 param=2 style="background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
+			<div class=b_b_title1 style="font-weight:bold; color:#000000; text-decoration:none;" param=1>部门发表量</div>
+			<div class=b_b_title1 param=2 style="color:#C2130E; text-decoration:underline; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">部门点击排行榜</div>
 			<div id="b_b_1" class="b_b" style="display:none">
 			<?php 
 			 $sql="select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
@@ -125,7 +144,7 @@ order by b.allcounts desc) tb order by a1 desc limit 10";
 			 			<div class=cl1><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }else{?>
 						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
-						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$clickcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->a1/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }?>				
 				</div>
 			<? }?>
@@ -156,3 +175,4 @@ order by b.allcounts desc) tb order by a1 desc limit 10";
 
 </body>
 </html>
+

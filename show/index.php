@@ -23,7 +23,7 @@
 				$db = get_db();
 				$sql="select * from smg_video where category_id in (select id from smg_category where category_type='video' order by priority asc) and is_adopt=1 and photo_url is not null order by priority asc,created_at desc limit 1";
 				$record=$db->query($sql);
-				show_video_player('293','230',$record[0]->photo_url,$record[0]->video_url);
+				show_video_player('288','230',$record[0]->photo_url,$record[0]->video_url);
 			?>
  	 	 </div>
  	   <!-- end -->
@@ -76,7 +76,7 @@
  	 	 			每日之星
  	 	 		</div>
 				<div class=title_r>
-					<?php if(count($star)>0){?><a target="_blank" href="list.php?id=<?php echo $category_id;?>type=news">More..</a><?php } ?>
+					<?php if(count($star)>0){?><a target="_blank" href="list.php?id=<?php echo $category_id;?>&type=news">More..</a><?php } ?>
 				</div>
  	 	 	</div>
 			<?php for($i=0;$i<count($star);$i++){?>
@@ -252,7 +252,7 @@
  	 
  	 <div id=ibody_center>
  	 	<?php 
-			$sql = "select * from smg_images where is_adopt=1 and publisher is not null order by priority asc,created_at desc limit 6";
+			$sql = "select * from smg_images where is_adopt=1 and publisher is not null and src is not null order by priority asc,created_at desc limit 6";
 			$records = $db->query($sql);
 			$count = count($records);
 		?>

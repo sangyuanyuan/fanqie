@@ -100,7 +100,7 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
 			<td align="left" class="newsselect">
-			<select id=select name="video[<?php echo $category_id;?>]">
+			<select id=url_s name="video[<?php echo $category_id;?>]">
 				<?php	
 					for($i=0;$i<count($category_menu);$i++){
 				?>
@@ -110,7 +110,23 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>关键词</td><td align="left">　<input type="text" size="50" name="video[keywords]" value="<?php echo $video_record[0]->keywords;?>">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
+			<td>关键词</td>
+			<td align="left">　
+				<select name="video[tags]">
+					<option value="">请选择</option>
+				<?php
+				$tags = get_config('g_video_tags');
+				foreach ($tags as $v) {
+					echo "<option value='{$v}'"; 
+					if($v == $video_record[0]->tags)
+					echo "selected='selected'";
+					
+					echo ">$v</option>";
+				}
+				?>
+				<input type="text" name="video[keywords]" value="<?php echo $video_record[0]->keywords;?>">(请用空格或者","分隔开关键词,比如:高考 升学)
+				
+			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>在线视频</td><td align="left">　<input type="text" size="50" name="video[online_url]" value="<?php echo $video_record[0]->online_url;?>">（如果本地上传视频此项请留空！）</td>
@@ -131,7 +147,7 @@
 	</table>
 	<input type="hidden" name="id" value="<?php echo $id;?>">
 	<input type="hidden" name="type" value="edit">
-	<input type="hidden" name="url"  value="<?php echo $url;?>">
+	<input type="hidden" name="url" id=url value="<?php echo $url;?>">
 	<?php if($role=='admin'){
 	?>
 	<input type="hidden" name="video[is_recommend]" id="recommend" value="1">
@@ -145,6 +161,10 @@
 </html>
 
 <script>
+	var url = $("#url").attr('value');
+	var new_url = url+"?category="+$("#url_s").attr('value');
+	$("#url").attr('value',new_url);
+	
 	$("#submit").click(function(){
 		var oEditor = FCKeditorAPI.GetInstance('title') ;
 		var title = oEditor.GetHTML();
@@ -162,5 +182,10 @@
 			$("#index_category").hide();
 			$("#recommend").attr('value','0');
 		}
-	});			
+	});
+	
+	$("#url_s").change(function(){
+		new_url = url+"?category="+$(this).attr('value');
+		$("#url").attr('value',new_url);
+	});	
 </script>

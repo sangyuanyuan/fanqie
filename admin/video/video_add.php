@@ -95,7 +95,7 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
 			<td align="left" class="newsselect">
-			<select id=select name="video[<?php if($role=='dept_admin'){echo 'dept_';}?>category_id]">
+			<select id=url_s name="video[<?php if($role=='dept_admin'){echo 'dept_';}?>category_id]">
 				<?php	
 					for($i=0;$i<count($category_menu);$i++){
 				?>
@@ -105,7 +105,19 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>关键词</td><td align="left">　<input type="text" size="50" name="video[keywords]">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
+			<td>标签/关键词</td>
+			<td align="left">
+				　<select name="video[tags]">
+					<option value="">请选择</option>
+				<?php
+				$tags = get_config('g_video_tags');
+				foreach ($tags as $v) {
+					echo "<option value='{$v}'>$v</option>";
+				}
+				?>
+				</select>　　/
+				<input type="text"name="video[keywords]">(请用空格或者","分隔开关键词,比如:高考 升学)				
+			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>在线视频</td><td align="left">　<input type="text" size="50" name="video[online_url]">（如果本地上传视频此项请留空！）</td>
@@ -126,7 +138,7 @@
 		</tr>	
 	</table>
 	<input type="hidden" name="video[created_at]"  value="<?php echo date("y-m-d")?>">
-	<input type="hidden" name="url"  value="<?php echo $url;?>">
+	<input type="hidden" name="url" id=url value="<?php echo $url;?>">
 	<input type="hidden" name="video[is_adopt]" value="0">
 	<input type="hidden" name="video[is_dept_adopt]" value="0">
 	<?php if($role=='admin'){?>
@@ -140,6 +152,10 @@
 </html>
 
 <script>
+	var url = $("#url").attr('value');
+	var new_url = url+"?category="+$("#url_s").attr('value');
+	$("#url").attr('value',new_url);
+	
 	$("#submit").click(function(){
 		var oEditor = FCKeditorAPI.GetInstance('title') ;
 		var title = oEditor.GetHTML();
@@ -157,5 +173,10 @@
 			$("#index_category").hide();
 			$("#recommend").attr('value','0');
 		}
-	});		
+	});
+	
+	$("#url_s").change(function(){
+		new_url = url+"?category="+$(this).attr('value');
+		$("#url").attr('value',new_url);
+	});
 </script>
