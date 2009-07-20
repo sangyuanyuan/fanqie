@@ -21,11 +21,11 @@
 		}
 		else if($tags!=""&&$tags!=null)
 		{
-			$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."'";
+			$sql="select n.title,n.platform,n.id,n.last_edited_at,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."'";
 		}
 		else
 		{
-				$sql="slect * from smg_news where is_adopt=1 order by last_edited_at desc";
+				$sql="select title,platform,id,last_edited_at from smg_news where is_adopt=1 order by last_edited_at desc";
 		}
 		
 		$record=$db->paginate($sql,20);		
@@ -55,7 +55,7 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
@@ -86,7 +86,7 @@
 			<div class=b_t_title1 param=3 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat">精彩视频</div>
 			<div class="b_t" id="b_t_1" style="display:none;">
 				<? 
-					$sql="SELECT * FROM bbs_posts where subject<>'' order by pid desc limit 10";
+					$sql="SELECT tid,subject FROM bbs_posts where subject<>'' order by pid desc limit 10";
 					$bbs=$db->query($sql);
 					for($i=0;$i<count($bbs);$i++){
 				?>
@@ -99,9 +99,9 @@
 			</div>
 			<div class=b_t id="b_t_2" style="display:none;">
 				<? 
-					$sql="SELECT * FROM blog_spaceitems order by itemid desc limit 10";
+					$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by itemid desc limit 10";
 					$blog=$db->query($sql);
-					for($i=0;$i<count($bbs);$i++){
+					for($i=0;$i<count($blog);$i++){
 				?>
 				<div class="r_content">
 					<ul>
@@ -112,7 +112,7 @@
 			</div>
 			<div class=b_t id="b_t_3" style="display:inline;">
 			<?php 
-			 $sql="select * from smg_video where is_adopt=1 order by priority asc,created_at desc limit 10";
+			 $sql="select id,title from smg_video where is_adopt=1 order by priority asc,created_at desc limit 10";
 			 $jcsp=$db->query($sql);
 			 for($i=0;$i<count($jcsp);$i++){	 	
 			 ?>
