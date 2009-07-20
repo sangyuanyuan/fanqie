@@ -16,7 +16,7 @@
 	<div id=answer>
 		<div id=left>
 			<div id=title>
-				<div id=backup><a target="_blank" href="#">＜＜返回上一页</a></div>
+				<div id=backup><a target="_blank" href="/">＜＜返回上一页</a></div>
 			</div>
 			<div id=content>
 				<div id=head>
@@ -25,24 +25,40 @@
 					<div class=title2><span>发起答题</span></div>
 					<div id=line></div>
 				</div>
-				<?php for($i=0;$i<5;$i++){?>
+				<?php 
+					$db = get_db();
+					$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc';
+					$record1 = $db->paginate($sql,5);
+					$count = count($record1);
+					$question_ids = $record1[0]->id;
+					for($i=1;$i<$count;$i++){
+						$question_ids = $question_ids.','.$record1[$i]->id;
+					}
+					$sql = 'select name,question_id from smg_question_item where question_id in('.$question_ids.') order by question_id';
+					$record2 = $db->query($sql);
+					for($i=0;$i<$count;$i++){?>
 				<div class=context>
-					<div class=l>
-						<a target="_blank" href="#"><img border=0 width=65 height=65 src=""></a>
-						<a target="_blank" href="#">我是流氓我怕谁</a>
-					</div>
 					<div class=c>
-						<a target="_blank" href="#">我是流氓我怕谁？</a><br>
-						<input type="checkbox">老流氓<br>
-						<input type="checkbox">流氓老大<br>
-						<input type="checkbox">鬼<br>
+						<div class=title><a target="_blank" href="#"><?php echo $record1[$i]->title;?></a></div>
+						<?php 
+							$j = 0;
+							$k = 0;
+							while($record2[$j]->question_id){
+								if($record2[$j]->question_id==$record1[$i]->id){
+									$k++;
+						?>
+						<input type="checkbox"><?php echo $record2[$j]->name; ?><br>
+						<?
+								}
+								if($k==3)break;
+								$j++;
+							}
+						?>
 						·　·　·
-					</div>
-					<div class=r>
-						<span>展开</span>
 					</div>
 				</div>
 				<?php } ?>
+				<div id=paginate><?php paginate();?></div>
 			</div>
 		</div>
 		<?php include('../inc/answer_right.inc.php');?>

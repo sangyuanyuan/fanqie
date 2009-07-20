@@ -60,6 +60,7 @@
 			</tr>
 		</table>
 	</div>
+	<input type="hidden" id="db_talbe" value="smg_question">
 </body>
 </html>
 <script>

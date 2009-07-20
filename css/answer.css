@@ -12,12 +12,13 @@ body{font-family:宋体; line-height:0px; font-size:12px; color:#000000; margin:
 #left #content .context{width:585px; margin-top:10px; padding-bottom:10px; border:1px solid #cccccc; float:left; display:inline;}
 #left #content .context .l{width:65px; margin-top:10px; margin-left:15px; float:left; display:inline;}
 #left #content .context .l a{color:#336699;}
-#left #content .context .c{width:420px; margin-top:10px; margin-left:10px; float:left; display:inline;}
-#left #content .context .c a{color:#336699; font-weight:bold;}
+#left #content .context .c{width:450px; margin-top:10px; margin-left:10px; float:left; display:inline;}
+#left #content .context .c .title{width:450px; height:20px; overflow:hidden; line-height:20px; float:left; display:inline;}
+#left #content .context .c .title a{color:#336699; font-weight:bold;}
 #left #content .context .r{width:100px; position:relative; float:left; display:inline;}
 #left #content .context .r span{width:50px; color:#2872B5; text-decoration:underline; position:absolute; margin-left:420px;  bottom:0px; padding-bottom:3px;}
 
-#left #content .listcontext{width:565px; height:25px; line-height:20px; margin-left:20px; margin-top:10px; background:url('/images/icon/answer.jpg') no-repeat; float:left; display:inline;}
+#left #content .listcontext{width:565px; height:25px; line-height:25px; margin-left:20px; margin-top:10px; background:url('/images/icon/answer.jpg') no-repeat; overflow:hidden; float:left; display:inline;}
 #left #content .listcontext a{margin-left:25px; color:#000000;}
 
 #left #content #question{width:585px; float:left; display:inline;}
@@ -28,3 +29,6 @@ body{font-family:宋体; line-height:0px; font-size:12px; color:#000000; margin:
 #left #content #question #mid .option{width:400px; margin-top:10px; margin-left:150px; float:left; display:inline;}
 #left #content #question #mid #more{margin-top:10px; color:#336799; text-decoration:underline; cursor:pointer; float:right; display:inline;}
 #left #content #question button{width:114px; height:27px; margin-top:10px;color:#ffffff; background:url('/images/bg/answer_button.jpg') no-repeat; border:0px; float:left; display:inline;}
+
+#paginate{width:450px; height:30px; margin-top:30px; margin-left:150px; float:left; display:inline;}
+#paginate a{color:#000000; text-decoration:none;}

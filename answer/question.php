@@ -20,7 +20,7 @@
 	<div id=answer>
 		<div id=left>
 			<div id=title>
-				<div id=backup><a target="_blank" href="#">＜＜返回上一页</a></div>
+				<div id=backup><a target="_blank" href="/">＜＜返回上一页</a></div>
 			</div>
 			<div id=content>
 				<div id=head>
@@ -43,7 +43,7 @@
 						<div class=option>选项：<input type="text" name="item[0][name]" class="required" style="width:200px; border:1px solid #000000;"><input class="checkbox" type="checkbox" name=item[0][attribute]>此为正解</div>
 						<div class=option>选项：<input type="text" name="item[1][name]" class="required" style="width:200px; border:1px solid #000000;"><input class="checkbox "type="checkbox" name=item[1][attribute]>此为正解</div>
 						<div class=more id=more>增加更多的选项</div><br>
-						<button id=submit >发布答题</button>
+						<button id=submit type="submit">发布答题</button>
 					</div>
 				</div>
 				</form>
