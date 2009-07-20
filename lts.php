@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
 * 黑夜路人简易聊天室
 * 作者: heiyeluren <heiyeluren_at_163.com>
@@ -45,13 +45,13 @@ E_CORE_WARNING : 这象是E_WARNING，不同处在于它是由PHP的核心所产
 如果是error_reporting (7) 里面的7是怎么得到的呢? 也就是1+2+4 同等E_ERROR+E_WARNING+E_PARSE
 */
 session_start(); //启动 session
-header("ContentType:text/html;charset=gb2312"); //设置网业编码格式
+header("ContentType:text/html;charset=utf-8"); //设置网业编码格式
 define("SCRIPT", $_SERVER['SCRIPT_NAME']); //$_SERVER['SCRIPT_NAME']获取当前文件夹和自身文件名
 define("CHAT_NOTE", "./chat.txt");
 define("ONLINE_LIST", "./online.txt");
-define("REF_TIME", 5);
-define("CHAT_NAME", "黑夜路人聊天室");
-define("AD_MSG", "今天是中国情人节, 祝大家情人节快乐!!");
+define("REF_TIME", 3);
+define("CHAT_NAME", "番茄网聊天室");
+define("AD_MSG", "聊天室");
 
 //获取值
 if (isset($_GET['action']) && !empty($_GET['action'])) {

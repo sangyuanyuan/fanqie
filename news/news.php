@@ -150,24 +150,24 @@
 				<?php if($record[0]->related_news!=""){
 					 for($i=0;$i<count($about1);$i++){ ?>
 					<div class=content>
-						<?php if($about1[$i]->category_id=="1"||$about1[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="/<?php echo $about1[$i]->platform; ?>/news/news_head.php?id=<?php echo $about1[$i]->id; ?>">
-								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
+						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
+							·<a target="_blank" href="/<?php echo $about[$i]->platform; ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
 							·<a target="_blank" href="/<?php echo $about1[$i]->platform; ?>/news/news.php?id=<?php echo $about1[$i]->id; ?>">
-								<?php echo delhtml($about1[$i]->title); ?>  <span style="color:#838383">(<?php echo $about1[$i]->last_edited_at; ?>)</span>
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }?>
 					</div>
 				<?php }
-					if(count($about1)<10)
+					if(count($about)<10)
 					{
 					 for($i=0;$i<count($about);$i++){
 					?>
 					<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="<?php echo $about1[$i]->platform; ?>/news_head.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="<?php echo $about[$i]->platform; ?>/news_head.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
