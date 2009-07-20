@@ -28,7 +28,7 @@
 				$db = get_db();
 				$dept=$db->query($sql);
 				for($i=0;$i<count($dept);$i++){ ?>
-					<option <?php if($i==$_COOKIE['smg_user_dept']){?>selected="selected"<?php } ?> value="<?php echo $dept[$i]->id;?>" ><?php echo $dept[$i]->name;?></option>
+					<option <?php if($dept[$i]->id==$_COOKIE['smg_user_dept']){?>selected="selected"<?php } ?> value="<?php echo $dept[$i]->id;?>" ><?php echo $dept[$i]->name;?></option>
 				<?php }?>
 			</select>
 		</div>
