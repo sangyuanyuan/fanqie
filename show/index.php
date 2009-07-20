@@ -162,14 +162,14 @@
 			?>
 			<div class=l_title>
  	 	 		<div class=title_l>
- 	 	 			<span id="t_l1" class=change  name="hide2" value="我型我秀排行榜" style="cursor:pointer; border-right:1px dotted #25619A; color:#25619A">我型我秀排行榜</span>
+ 	 	 			<span id="t_l1" class=change  name="hide2" value="我行我秀排行榜" style="cursor:pointer; border-right:1px dotted #25619A; color:#25619A">我行我秀排行榜</span>
 					<span id="t_l2" class=change  name="hide2" value="摄友排行榜" style="cursor:pointer; margin-left:5px; color:#999999">摄友排行榜</span>
  	 	 		</div>
 				<div class=title_r>
 					<?php if(count($star)>0){?><!--<a target="_blank" href="list.php?id=<?php $star[0]->category_id;?>">More..</a>--><?php } ?>
 				</div>
  	 	 	</div>
-			<div class="content hide2" id="我型我秀排行榜">
+			<div class="content hide2" id="我行我秀排行榜">
 				<?php
 				 for($i=0;$i<count($wxwxph);$i++){?>
 					<div class="context" id="picph1" style="display:inline;">
@@ -259,7 +259,7 @@
      <!-- start center !-->
  	 	 <div id=c>
  	 	 	<div class="c_title">
- 	 	 		<div class=title_l>我型我秀</div>
+ 	 	 		<div class=title_l>我行我秀</div>
 				<div class=title_r><a target="_blank" href="show_index.php">More..</a></div>
 			</div>
 			<div class="c_context">

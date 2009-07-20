@@ -22,6 +22,7 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
+		js_include_tag('admin_pub');
 	?>
 </head>
 <body style="background:#E1F0F7">
@@ -40,7 +41,13 @@
 			<td><?php echo $records[$i]->title;?></td>
 			<td><?php echo $records[$i]->theme;?></td>
 			<td><?php echo substr($records[$i]->create_time,0,10);?></td>
-			<td><span style="cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
+			<td><?php if($records[$i]->is_adopt=="1"){?>
+					<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $records[$i]->id;?>">撤消</span>
+				<?php }?>
+				<?php if($records[$i]->is_adopt=="0"){?>
+					<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $records[$i]->id;?>">发布</span>
+				<?php }?>
+				<span style="cursor:pointer" class="del_question" name="<?php echo $records[$i]->id;?>">删除</span>
 				<a href="approval_edit.php?id=<?php echo $records[$i]->id;?>">编辑</a>
 			</td>
 		</tr>
@@ -56,7 +63,7 @@
 </body>
 </html>
 <script>
-	$(".del").click(function(){
+	$(".del_question").click(function(){
 		if(!window.confirm("确定要删除吗"))
 			{
 				return false;

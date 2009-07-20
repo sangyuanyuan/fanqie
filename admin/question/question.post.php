@@ -56,6 +56,11 @@
 			}
 		}
 		
-		//redirect('question_list.php?id='.$project_id);
+		if($_POST['url']==''){
+			redirect('question_list.php?id='.$project_id);
+		}else{
+			redirect($_POST['url']);
+		}
+		
 	}
 ?>

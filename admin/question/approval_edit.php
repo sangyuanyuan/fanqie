@@ -34,7 +34,7 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">答题说明</td>
-			<td align="left"><textarea cols="80" rows="8" name="question[description]" class="required"><?php echo $question->description; ?></textarea></td>
+			<td align="left"><textarea cols="80" rows="4" name="question[description]"><?php echo $question->description; ?></textarea></td>
 		</tr>
 		<?php
 				for($i=1;$i<=2;$i++){
@@ -69,6 +69,7 @@
 			<td colspan="2" width="795" align="center"><button type="submit" id="submit">发布题目</button></td>
 		</tr>	
 		<input type="hidden" name="question_id" value="<?php echo $id;?>">
+		<input type="hidden" name="url" value="approval.php">
 	</table>
 	</form>
 </body>

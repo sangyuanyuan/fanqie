@@ -6,17 +6,17 @@
 		$title = category_name_by_id($id);
 		switch($type){
 			case 'video':
-				$l_sql = 'select * from smg_video where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+				$l_sql = 'select title,id,created_at from smg_video where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
 				$l_title = 'title';
 				$link = 'video.php?id=';
 				break;
 			case 'news':
-				$l_sql = 'select * from smg_news where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+				$l_sql = 'select title,short_title,id,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
 				$l_title = 'short_title';
 				$link = 'article.php?id=';
 				break;
 			case 'image':
-				$l_sql = 'select * from smg_images where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+				$l_sql = 'select title,id,created_at from smg_images where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
 				$l_title = 'title';
 				$link = 'show.php?id=';
 				break;
@@ -29,24 +29,24 @@
 				$title = '视频列表';
 				$l_title = 'title';
 				$link = 'video.php?id=';
-				$l_sql = 'select * from smg_video where  is_adopt=1 order by priority asc,created_at desc';
+				$l_sql = 'select title,id,created_at from smg_video where is_adopt=1 order by priority asc,created_at desc';
 				break;
 			case 'news':
 				$title = '新闻列表';
 				$link = 'article.php?id=';
 				$l_title = 'short_title';
-				$l_sql = 'select * from smg_news where  is_adopt=1 order by priority asc,created_at desc';
+				$l_sql = 'select title,short_title,id,created_at from smg_news where  is_adopt=1 order by priority asc,created_at desc';
 				break;
 			case 'image':
 				$title = '图片列表';
 				$link = 'show.php?id=';
 				$l_title = 'title';
-				$l_sql = 'select * from smg_images where  is_adopt=1 order by priority asc,created_at desc';
+				$l_sql = 'select title,id,created_at from smg_images where  is_adopt=1 order by priority asc,created_at desc';
 				break;
 			case 'magazine':
 				$title = '杂志列表';
 				$l_title = 'title';
-				$l_sql = 'select * from smg_magazine where  is_adopt=1 order by priority asc,create_time desc';
+				$l_sql = 'select online_url,title,create_time from smg_magazine where  is_adopt=1 order by priority asc,create_time desc';
 				break;
 			default:
 				$title = '未知列表';
@@ -119,7 +119,7 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$sql = 'select * from smg_video where week(created_at)=week("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select id,photo_url,title,click_count from smg_video where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>视频排行榜</div></div>
@@ -139,10 +139,10 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$sql = 'select * from smg_images where week(created_at)=week("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select id,src,title,click_count from smg_images where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
-			<div class=title><div class=left>我型我秀排行榜</div></div>
+			<div class=title><div class=left>我行我秀排行榜</div></div>
 			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
@@ -172,7 +172,7 @@
 					<a href="<?php if($type!='magazine'){echo $link.$records[$i]->id;}else{echo $records[$i]->online_url;}?>" target="_blank" title="<?php echo $records[$i]->title;?>"><?php echo $records[$i]->$l_title;?></a>
 				</div>
 				<div class=right>
-					<?php echo $records[$i]->created_at; ?>
+					<?php if($type!='magazine'){echo $records[$i]->created_at;}else{echo $records[$i]->create_time;}?>
 				</div>
 			</div>
 			<?php } }?>
