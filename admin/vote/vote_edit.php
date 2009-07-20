@@ -91,13 +91,8 @@
 			<td align="left"><input type="text" name="vote[max_vote_count]" class="number" id="max_vote_count" value="<?php echo $vote_record[0]->max_vote_count;?>">如果不填则无限制</td>
 		</tr>
 		<tr class=tr3>
-<<<<<<< HEAD:admin/vote/vote_edit.php
-			<td>多选限制：</td>
-			<td align="left"><input type="text" name="vote[max_item_count]" class="number" id="max_vote_count" value="<?php echo $vote_record[0]->max_item_count;?>">如果不填则为单选</td>
-=======
 			<td>投票选项限制：</td>
 			<td align="left"><input type="text" name="vote[max_item_count]" class="number" id="max_item_count" value="<?php echo $vote_record[0]->max_item_count;?>">如果不填则无限制</td>
->>>>>>> 8540fcfaab5c40c395323a9b29899794b26f1fa2:admin/vote/vote_edit.php
 		</tr>
 		<tr class=tr3>
 			<td>开始日期：</td>

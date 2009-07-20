@@ -21,7 +21,7 @@
  	 	 <div id=t_l>
  	 	 	<?php 
 				$db = get_db();
-				$sql="select * from smg_video where category_id in (select id from smg_category where category_type='video' order by priority asc) and is_adopt=1 and photo_url is not null order by priority asc,created_at desc limit 1";
+				$sql="select * from smg_video where tags='视频推荐' and is_adopt=1 and photo_url is not null order by priority asc,created_at desc limit 1";
 				$record=$db->query($sql);
 				show_video_player('288','230',$record[0]->photo_url,$record[0]->video_url);
 			?>
@@ -295,7 +295,7 @@
  	 
  	 <div id=ibody_right>
      <!-- start right !-->
- 	 	 <div class=box >
+ 	 	 <div class=box style="margin-top:4px;">
  	 	 	<?php 
 				$category_id = category_id_by_name('节目点评');
 				$sql='select * from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 8';
@@ -318,7 +318,7 @@
 			<?php }?>
  	 	 </div>
 		 
-		  <div class=box >
+		  <div class=box style="margin-top:6px;">
  	 	 	<?php 
 				$category_id = category_id_by_name('部门比拼');
 				$sql='select * from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 8';
@@ -341,7 +341,7 @@
 			<?php }?>
  	 	 </div>
 		 
-		  <div class=box style="height:443px; background:url(/images/show/show_index_rbg2.gif)">
+		  <div class=box>
  	 	 	<?php 
 				$category_id = category_id_by_name('台前幕后');
 				$sql='select * from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 17';
