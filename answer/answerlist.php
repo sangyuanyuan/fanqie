@@ -16,13 +16,13 @@
 	<div id=answer>
 		<div id=left>
 			<div id=title>
-				<div id=backup><a target="_blank" href="#">＜＜返回上一页</a></div>
+				<div id=backup><a target="_blank" href="/">＜＜返回上一页</a></div>
 			</div>
 			<div id=content>
 				<div id=head>
-					<div class=title2><span>最新答题</span></div>
-					<div class=title1><span>答题荟萃</span></div>
-					<div class=title2><span>发起答题</span></div>
+					<div class=title2><span><a href="answer.php">最新答题</a></span></div>
+					<div class=title1><span><a href="answerlist.php">答题荟萃</a></span></div>
+					<div class=title2><span><a href="question.php">发起答题</a></span></div>
 					<div id=line></div>
 				</div>
 				<?php

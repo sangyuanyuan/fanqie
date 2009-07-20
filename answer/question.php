@@ -24,9 +24,9 @@
 			</div>
 			<div id=content>
 				<div id=head>
-					<div class=title2><span>最新答题</span></div>
-					<div class=title2><span>答题荟萃</span></div>
-					<div class=title1><span>发起答题</span></div>
+					<div class=title2><span><a href="answer.php">最新答题</a></span></div>
+					<div class=title2><span><a href="answerlist.php">答题荟萃</a></span></div>
+					<div class=title1><span><a href="question.php">发起答题</a></span></div>
 					<div id=line></div>
 				</div>
 				<form id="question" action="question.post.php" method="post">

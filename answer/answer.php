@@ -20,15 +20,15 @@
 			</div>
 			<div id=content>
 				<div id=head>
-					<div class=title1><span>最新答题</span></div>
-					<div class=title2><span>答题荟萃</span></div>
-					<div class=title2><span>发起答题</span></div>
+					<div class=title1><span><a href="answer.php">最新答题</a></span></div>
+					<div class=title2><span><a href="answerlist.php">答题荟萃</a></span></div>
+					<div class=title2><span><a href="question.php">发起答题</a></span></div>
 					<div id=line></div>
 				</div>
 				<?php 
 					$db = get_db();
 					$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc';
-					$record1 = $db->paginate($sql,5);
+					$record1 = $db->paginate($sql,6);
 					$count = count($record1);
 					$question_ids = $record1[0]->id;
 					for($i=1;$i<$count;$i++){
@@ -39,7 +39,7 @@
 					for($i=0;$i<$count;$i++){?>
 				<div class=context>
 					<div class=c>
-						<div class=title><a target="_blank" href="#"><?php echo $record1[$i]->title;?></a></div>
+						<div class=title><a target="_blank" href="show_question.php?id=<?php echo $record1[$i]->id; ?>"><?php echo $record1[$i]->title;?></a></div>
 						<?php 
 							$j = 0;
 							$k = 0;
@@ -47,14 +47,13 @@
 								if($record2[$j]->question_id==$record1[$i]->id){
 									$k++;
 						?>
-						<input type="checkbox"><?php echo $record2[$j]->name; ?><br>
+						<div class=item><input type="checkbox"><?php echo $record2[$j]->name; ?></div>
 						<?
 								}
 								if($k==3)break;
 								$j++;
 							}
 						?>
-						·　·　·
 					</div>
 				</div>
 				<?php } ?>
