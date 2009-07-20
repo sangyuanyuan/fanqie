@@ -226,7 +226,7 @@
      <!-- start left_bottom !-->
  	 	 <div id=l_b>
  	 	 	<?php 
-				$sql="select id,online_url,photo_url,,description,title,create_time from smg_magazine where is_adopt=1 order by priority asc,create_time desc limit 1";
+				$sql="select id,online_url,photo_url,description,title,create_time from smg_magazine where is_adopt=1 order by priority asc,create_time desc limit 1";
 				$magazine=$db->query($sql);
 			?>
  	 	 	<div class=l_title>

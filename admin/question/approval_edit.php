@@ -28,6 +28,10 @@
 			<td width="100">题　目</td>
 			<td align="left"><?php show_fckeditor('title','Title',true,"80",$question->title);?><?php if($project_type!='judge'){?></>请在正确的选项后面打勾<?php }?></td>
 		</tr>
+		<tr class="tr3">
+			<td width="100">主　题</td>
+			<td align="left"><input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"></td>
+		</tr>
 		<?php
 				for($i=1;$i<=2;$i++){
 		?>
