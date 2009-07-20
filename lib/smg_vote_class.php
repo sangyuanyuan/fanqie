@@ -47,39 +47,56 @@
 			return $this;
 		}
 		
-		function display($show_tile=true){
-			if($show_tile){
+		function display_vote_box($show_tile=true){
 			?>
-			<form class="vote_form">
-			<ul class="vote_title"><?php echo $this->name;?> </ul>
-			<?php 
-			}
-			if($this->vote_type == "more_vote"){
-				foreach ($this->vote_items as $v) {?>
-					<div class="sub_vote"><?php $v->display();?></div>
-				<?php }		
-			}else{
-				echo "<div class=\"vote_items_box\" max-item=\"{$this->max_item_count}\" vote_name=\"{$this->name}\">";
-				foreach ($this->vote_items as $v) {?>
-					<li class="vote_item">
+			<div class="vote_box">
+				<?php if($show_tile) {?><div class="vote_title"><?php echo $this->name;?></div><?php }?>
+				<div class="vote_items_box" max-item="<?php echo $this->max_item_count;?>" vote_name="<?php echo strip_tags($this->name);?>">
+					<?php 
+					foreach ($this->vote_items as $v) {?>
+					<div class="vote_item">
 						<?php
-						if($this->max_item_count > 1){ ?>
-						<input class="input_vote_item" type="checkbox" name="vote_class[<?php echo $this->id;?>][]">
-						<?php }else{ ?>
-						<input class="input_vote_item" type="radio" name="vote_class[<?php echo $this->id;?>][]">	
+						if($this->max_item_count > 1){ 
+							if($this->vote_type == 'image_vote'){?>
+							<img src="<?php echo $v->photo_url;?>">	<div style="clear:both"></div>
+						<?php	}
+						?>
+						<input class="input_vote_item" type="checkbox" name="vote_class[<?php echo $this->id;?>][]" value="<?php echo $v->id;?>">
+						<?php }else{ if($this->vote_type == 'image_vote'){?>
+							<img src="<?php echo $v->photo_url;?>">	<div style="clear:both"></div>
+						<?php	} ?>
+						<input class="input_vote_item" type="radio" name="vote_class[<?php echo $this->id;?>][]" value="<?php echo $v->id;?>">	
 						<?php }
 						?>
 						<?php echo $v->title;?>
-					</li>
-				<?php }
-				echo "</div>";
-			?>
-		<?php } ?>
+					</div>
+				<?php } ?>
+				</div>
+			</div>
+			<?php
+		}
+		
+		function display($show_tile=true,$show_button = true,$sub_vote = false){
+			echo '<form class="vote_form" method="post" action="/pub/vote.post.php">';
+			if($show_tile){
+			?>			
+			<div class="vote_title"><?php echo $this->name;?> </div>
+			<?php 
+			}
+			if($this->vote_type == "more_vote"){
+				foreach ($this->vote_items as $v) { 
+					$v->display_vote_box($show_tile);
+				}		
+			}else{
+				$this->display_vote_box($show_tile);
+			} ?>
+
 		<div class="vote_button_box">
-			<input type="submit" value="投票" class="submit_vote"> <input type="submit" value="查看" class="view_vote">
+			<input type="submit" value="投票" class="submit_vote"> <input type="submit" value="查看" class="view_vote">			
 		</div>
+		<input type="hidden" name="vote_id" value="<?php echo $this->id;?>">
 		</form>
-		<?php }
+	<?php }
 	}
 ?>
 <script>
@@ -95,17 +112,36 @@
 				}
 			}			
 		});
-	});
-	$('.submit_vote').click(function(){
-		$(this).parent().find('.vote_items_box').forEach(function(){
-			var max_item = $(this).attr('max-item');
-			if(max_item != undefined){
-				var select_count = $(this).find('input:checked').length;
-				if(max_item < select_count){
-					alert('投票:' + $(this).attr('vote_name') + ' 最多只能选择 ' + max_item +' 个选项');
+		$('.submit_vote').click(function(){
+			var result = true;;
+			$(this).parent().parent().find('.vote_items_box').each(function(){
+				if($(this).find('input:checked').length <=0 && $(this).find('input:selected').length <= 0){
+					alert('投票:' + $(this).attr('vote_name') +' 至少选择一个选项');
+					result = false;
 					return false;
 				}
-			}	
+				var max_item = $(this).attr('max-item');
+				if(max_item != undefined){
+					var select_count = $(this).find('input:checked').length;
+					if(max_item < select_count){
+						alert('投票:' + $(this).attr('vote_name') + ' 最多只能选择 ' + max_item +' 个选项');
+						result = false;
+						return false;
+					}
+				}
+					
+			});	
+			return result;		
+		});
+		
+		$('.view_vote').click(function(){
+			return false;
 		});
 	});
+	
+	 function remove_html_tag(str) 
+	{ 
+ 		return str.replace(/<\/?.+?>/g,"");//去掉所有的html标记 
+	} 
+
 </script>
