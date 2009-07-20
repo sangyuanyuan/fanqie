@@ -456,29 +456,28 @@ function show_video($state,$width,$height)
 	if($state==1){echo '<img src="/images/index/video.gif" width='.$width.'  height='.$height.' >';}
 }
 
-function search_keywords($key,$table_name='smg_news',$about='',$page_count = 10, $order=''){
+function search_keywords($id,$key,$table_name='smg_news',$about='',$page_count = 10, $order=''){
 	$table = new table_class($table_name);
 	$key = str_replace('　', ' ', $key);
 	$keys = explode(' ',$key);
 	$c = array();
 	$d=array();
 	foreach ($keys as $v) {
-		array_push($c, "n.keywords like '%$v%'");
+		if($v!=""){
+			array_push($c, "n.keywords like '%$v%'");
+		}
 	}
 	
 	for($i=0;$i<count($about);$i++)
 	{
-		array_push($d,"n.id<>".$about[$i]->id);
-		
+		array_push($d,"n.id<>".$about[$i]->id);	
 	}
-	$c = implode(' OR ' ,$c);
 	$d = implode(' and ',$d);
-
-	$sql = 'select n.*,c.platform from ' . $table_name ." n inner join smg_category c on n.category_id=c.id and 1=1 and n.is_adopt=1 and " .$d." and (".$c .")";
+	$c = implode(' OR ' ,$c);	
+	$sql = "select n.title,n.id,n.last_edited_at,n.category_id,n.platform from " .$table_name ." n inner join smg_category c on n.category_id=c.id and 1=1 and n.is_adopt=1 and n.id<>".$id." and ".$d." and (".$c.")";
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}
-	
 	$db = get_db();
 	if($page_count > 0){
 		return $db->paginate($sql,$page_count);	
@@ -491,7 +490,7 @@ function search_keywords($key,$table_name='smg_news',$about='',$page_count = 10,
 function search_newsid($id,$key,$table_name='smg_news',$page_count = 10, $order=''){
 	$table = new table_class($table_name);
 
-	$sql = 'select n.* from ' . $table_name ." n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.id<>".$id." and n.id in (".$key.")";
+	$sql = "select n.title,n.id,n.last_edited_at,n.category_id,n.platform from " . $table_name ." n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.id<>".$id." and n.id in (".$key.")";
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}
