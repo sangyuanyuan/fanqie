@@ -64,7 +64,7 @@
 		</tr>
 		<?php
 				}
-				for($i=3;$i<=$count;$i++){
+				if($count>2){for($i=3;$i<=$count;$i++){
 		?>
 		<tr class="tr3" >
 			<td>答案选项</td>
@@ -75,7 +75,7 @@
 		　	</td>
 		</tr>
 		<?php 
-				}
+				}}
 		?>
 		<input type="hidden" name="item_num" id="num" value="<?php echo $count;?>">
 		<?php
