@@ -53,8 +53,8 @@
 						
 						$vote_item->photo_url = "/upload/images/" .$img;
 					}//投票项目图片处理
-					
-					$vote_item->update_attributes($_POST['vote_item'.$i]);
+					$vote_item->title = $_POST['vote_item'.$i][title];
+					$vote_item -> save();
 				}else{
 					$vote_item->sub_vote_id = $_POST['vote_id'.$i];
 					$vote_item->save();
