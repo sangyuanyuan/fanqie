@@ -101,7 +101,12 @@
 				<div id=title1>博客</div>
 				<div id=title2>观点视角</div>
 				<div id=left>
-					<a href="<?php echo $gdsjimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $gdsjimg[0]->src;?>">
+					<a href="<?php echo $gdsjimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $gdsjimg[0]->src;?>"><div style="width:100px; margin-top:5px; height:15px; overflow:hidden; float:left; display:inline;">大家都是卡拉幻觉大厦<?php echo $gdsjimg[0]->title;?></div></a>
+				</div>
+				<div id=right>
+					<?php for($i=0;$i< count($gdsj);$i++){ ?>
+					
+					<?php }?>
 				</div>
 			</div>
 			<div id=t_c_m></div>

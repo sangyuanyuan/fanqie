@@ -17,15 +17,15 @@
 		$db = get_db();
 		if($id!=""&&$id!=null)
 		{
-			$sql="select n.*,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
+			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
 		}
 		else if($tags!=""&&$tags!=null)
 		{
-			$sql="select n.title,n.platform,n.id,n.last_edited_at,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."'";
+			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."'";
 		}
 		else
 		{
-				$sql="select title,platform,id,last_edited_at from smg_news where is_adopt=1 order by last_edited_at desc";
+				$sql="select title,platform,id,last_edited_at,category_id from smg_news where is_adopt=1 order by last_edited_at desc";
 		}
 		
 		$record=$db->paginate($sql,20);		
@@ -42,11 +42,17 @@
 		<div id=l_b>
 			<?php for($i=0;$i<count($record);$i++){ ?>
 				<div class=l_b_l>
+					<?php if($record[$i]->category_id==1||$record[$i]->category_id==2){ ?>
 					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
-					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news.php?id=<?php echo $record[$i]->id;?>"><?php echo get_fck_content($record[$i]->title);?></a></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo get_fck_content($record[$i]->title);?></a></div>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
-			<?php } ?>
+			<?php }else{?>
+			<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo get_fck_content($record[$i]->title);?></a></div>
+				</div>
+				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+			<?php }} ?>
 			<div id=page><?php paginate('news_list.php?id='.$id);?></div>
 		</div>
 	</div>

@@ -41,8 +41,9 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #t_c_t{width:393px; height:202px; margin-top:10px; margin-left:10px; background:url('/images/zone/index_t_c_t.jpg') no-repeat; float:left; display:inline;}
 #t_c_t #title1{width:35px; height:20px; margin-top:10px; margin-left:25px; background:#ffffff; line-height:20px; font-size:16px; font-weight:bold; float:left; display:inline;}
 #t_c_t #title2{width:300px; height:20px; margin-top:10px; margin-left:10px; line-height:20px; font-size:16px; color:#FF9900; font-weight:bold; float:left; display:inline;}
-#t_c_t #left{width:110px; float:left; display:inline;}
-#t_c_t #right{width:110px; float:left; display:inline;}
+#t_c_t #left{width:100px; margin-top:10px; margin-left:10px; line-height:15px; float:left; display:inline;}
+#t_c_t #right{width:270px; margin-right:5px; float:right; display:inline;}
+#t_c_t #right .content{width:270px; height:18px; overflow:hidden; float:left; display:inline;}
 #t_c_m{width:393px; height:272px; margin-top:10px; margin-left:10px; background:url('/images/zone/index_t_c_m.jpg') no-repeat; float:left; display:inline;}
 #t_c_b{width:393px; height:274px; margin-top:12px; margin-left:10px; background:url('/images/zone/index_t_c_b.jpg') no-repeat; float:left; display:inline;}
 #t_r_t{width:180px; height:97px; margin-top:10px; border:1px solid #EBEBEB; float:left; display:inline;}
