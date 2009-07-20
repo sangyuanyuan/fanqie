@@ -11,8 +11,8 @@
 		css_include_tag('zone_index','top','bottom');
 		use_jquery();
 		$db=get_db();
-		$sql="select n.* from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='HOT讨论区' order by ,n.last_edit_at";
-		$record=$db->query
+		$sql="select n.* from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='HOT讨论区' order by priority asc,n.last_edit_at desc";
+		$record=$db->query($sql);
   ?>
 	
 </head>
@@ -22,14 +22,38 @@
 	<div id=ibody_top>
 		<div id=t_l>
 			<div id=t_l_t>
-				<div id=title>HOT讨论区</div>
-				<div id=left><a href="/news/news.php?id=<?php echo  ?>"><img width=230 height=122 src=""></div>
+				<div id=t_l_title>HOT讨论区</div>
+				<div id=left>
+					<div id=pic><a target="_blank" href="/<?php echo $record[0]->platform; ?>/news/news.php?id=<?php echo $record[0]->id;?>"><img border=0 width=230 height=122 src="<?php echo $record[0]->photo_src; ?>"></a></div>
+					<div id=title>
+						<a target="_blank" href="/<?php echo $record[0]->platform; ?>/news/news.php?id=<?php echo $record[0]->id; ?>">testettttttttttttttttttttttttttttttttttttttttttttttttt<?php echo delhtml($record[0]->title);?></a>
+					</div>
+					<div id=content>
+						<a target="_blank" href="/<?php echo $record[0]->platform; ?>/news/news.php?id=<?php echo $record[0]->id;?>">testestttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt<?php echo delhtml($record[0]->description);?></a>
+					</div>
+				</div>
+				<div id=right>
+					<?php for($i=1;$i< 11;$i++){ ?>
+						<div class="content">
+							<?php if($i==1){?>
+							<img src="/images/icon/arrow2.gif">
+							<a style="color:#2C345B; font-weight:bold;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><span style="color:#cccccc;">·</span>tttttttttttttt<?php echo delhtml($record[$i]->short_title); ?></a>
+							<?php }else{?>
+							<img src="/images/icon/arrow1.gif">
+							<a style="color:#000000;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>">
+								<span style="color:#cccccc;">·</span>
+								ttttttttttttttttttt<?php echo delhtml($record[$i]->short_title); ?>
+							</a>
+							<?php } ?>
+						</div>
+					<?php } ?>
+				</div>
 			</div>
 			<div class=t_l_b>
-				<div class="title">BBS</div>
+				<div class="title">BBS</div><div class="title_right">【上班这点事】</div>
 			</div>
 			<div class=t_l_b>
-				<div class="title">BBS</div>
+				<div class="title">BBS</div><div class="title_right">【生活大杂烩】</div>
 			</div>
 		</div>
 		<div id=t_c>
