@@ -56,6 +56,6 @@
 			}
 		}
 		
-		redirect('question_list.php?id='.$project_id);
+		//redirect('question_list.php?id='.$project_id);
 	}
 ?>

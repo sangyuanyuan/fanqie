@@ -41,7 +41,7 @@
 			<td><?php echo $records[$i]->theme;?></td>
 			<td><?php echo substr($records[$i]->create_time,0,10);?></td>
 			<td><span style="cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
-				<a href="question_edit.php?id=<?php echo $records[$i]->id;?>">编辑</a>
+				<a href="approval_edit.php?id=<?php echo $records[$i]->id;?>">编辑</a>
 			</td>
 		</tr>
 		<?  }?>

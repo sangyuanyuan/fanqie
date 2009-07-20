@@ -26,11 +26,15 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">题　目</td>
-			<td align="left"><?php show_fckeditor('title','Title',true,"80",$question->title);?><?php if($project_type!='judge'){?></>请在正确的选项后面打勾<?php }?></td>
+			<td align="left"><?php show_fckeditor('title','Title',true,"80",$question->title);?><?php if($project_type!='judge'){?>请在正确的选项后面打勾<?php }?></td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">主　题</td>
-			<td align="left"><input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"></td>
+			<td align="left"><input type="text" name="question[theme]" value="<?php echo $question->theme;?>" class="required"></td>
+		</tr>
+		<tr class="tr3">
+			<td width="100">答题说明</td>
+			<td align="left"><textarea cols="80" rows="8" name="question[description]" class="required"><?php echo $question->description; ?></textarea></td>
 		</tr>
 		<?php
 				for($i=1;$i<=2;$i++){
@@ -38,7 +42,7 @@
 		<tr class="tr3" >
 			<td>答案选项</td>
 			<td align="left">
-			　<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><input class="check" type="checkbox" <?php if($records[$i-1]->attribute=='1'){?>checked="checked"<?php }?> name="check<?php echo $i;?>">
+			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><input class="check" type="checkbox" <?php if($records[$i-1]->attribute=='1'){?>checked="checked"<?php }?> name="check<?php echo $i;?>">
 				<input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
@@ -52,7 +56,7 @@
 		<tr class="tr3" >
 			<td>答案选项</td>
 			<td align="left">
-			　<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><input class="check" type="checkbox" <?php if($records[$i-1]->attribute=='1'){?>checked="checked"<?php }?> name="check<?php echo $i;?>">
+			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><input class="check" type="checkbox" <?php if($records[$i-1]->attribute=='1'){?>checked="checked"<?php }?> name="check<?php echo $i;?>">
 			  <a class="del_item"  name="<?php echo $records[$i-1]->id;?>" style="cursor:pointer;">删除</a>
 			  <input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
 		　	</td>
@@ -76,7 +80,7 @@
 		
 		$("#add_item").click(function(){
 			num++;
-			$(this).parent().parent().next().after('<tr class="tr3" ><td>答案选项</td><td align="left">　<input type="text" name="item'+num+'[name]" class="required"><input type="checkbox" class="check" name="check'+num+'"><a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
+			$(this).parent().parent().next().after('<tr class="tr3" ><td>答案选项</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><input type="checkbox" class="check" name="check'+num+'"><a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
 			$("#num").attr('value',num);
 			$(".del_item").click(function(){
 				$(this).parent().parent().remove();
