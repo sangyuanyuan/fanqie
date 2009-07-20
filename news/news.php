@@ -142,58 +142,24 @@
 			<? }}?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
 			<div id=more><a href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
-			<?php if(count($about)>0||count($about1)>0){?>
+			<?php if(count($about)>0||count($about)>0){?>
 			<div class=abouttitle><div style="float:left; display:inline;">更多关于“</div><div style="width:150px; height:20px; line-height:20px; overflow:hidden; text-decoration:underline; float:left; display:inline"><?php echo delhtml($record[0]->short_title);?></div><div style="float:left; display:inline;">”的新闻</div></div>
 			<div class=aboutcontent>
-			
 				<div class=title>相关链接</div>
-				<?php if($record[0]->related_news!=""){
-					 for($i=0;$i<count($about1);$i++){ ?>
-					<div class=content>
-						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="/<?php echo $about[$i]->platform; ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }else{?>
-							·<a target="_blank" href="/<?php echo $about1[$i]->platform; ?>/news/news.php?id=<?php echo $about1[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }?>
-					</div>
-				<?php }
-					if(count($about)<10)
-					{
-					 for($i=0;$i<count($about);$i++){
-					?>
-					<div class=content>
-						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="<?php echo $about[$i]->platform; ?>/news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }else{?>
-							·<a target="_blank" href="<?php echo $about1[$i]->platform; ?>/news.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
-							</a>
-						<?php }?>
-					</div>
-					<?php }
-						}
-				 }else{
-					for($i=0;$i<count($about);$i++){
+					<?php for($i=0;$i<count($about);$i++){
 					?>
 				<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="<?php echo $about[$i]->platform; ?>/news_head.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }else{?>
-							·<a target="_blank" href="<?php echo $about[$i]->platform; ?>/news.php?id=<?php echo $about[$i]->id; ?>">
+							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
 								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
 							</a>
 						<?php }?>
 					</div>		
-				<?php }}?>
-					
+				<?php }?>		
 			</div>
 			<?php } ?>
 			<?php if($record[0]->is_commentable==1){ 
