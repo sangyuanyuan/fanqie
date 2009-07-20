@@ -31,7 +31,7 @@
 				<td align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file"></td>
 			</tr>
 			<tr class=tr3>
-				<td>所属类别：</td>
+				<td>所属类别</td>
 				<td align="left"  class="newsselect">
 					<select  name="post[category_id]">
 						<?php for($i=0;$i<$count;$i++){?>

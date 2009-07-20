@@ -73,7 +73,7 @@
 	<input type="hidden" name="type" value="image">
 	<input type="hidden" name="show[category_id]" value="<?php echo category_id_by_name('我要上传','picture'); ?>">
 	<div id=b>
-		<div class=l><img src="/images/news/news_sub_icon.jpg">　视频照片</div>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择图片</div>
 		<div class=t_r>
 			<input type="file" name="image" id="image" class="required">
 		</div>
