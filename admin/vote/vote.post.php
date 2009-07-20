@@ -35,7 +35,7 @@
 		for($i=1;$i<=$_POST['vote_item_count'];$i++){
 			if($_POST['deleted'.$i]=='false'){
 				$vote_item = new table_class('smg_vote_item');
-				if(null!==$_POST['vote_id']){
+				if(null!==$_POST['vote_item'.$i.'_id']){
 					$vote_item->find($_POST['vote_item'.$i.'_id']);
 				}
 				$vote_item->vote_id = $vote->id;
