@@ -148,5 +148,5 @@
 			$("#index_category").hide();
 			$("#recommend").attr('value','0');
 		}
-	});	 		
+	});
 </script>

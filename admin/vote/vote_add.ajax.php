@@ -87,16 +87,8 @@
 			</td>
 		</tr>
 		<tr class=tr3>
-			<td>票数限制：</td>
-			<td align="left"><input type="text" name="vote[max_vote_count]" value="<?php echo $max_vote_count;?>"></td>
-		</tr>
-		<tr class=tr3>
-			<td>开始日期：</td>
-			<td align="left"><input type="text" name="vote[started_at]" value="<?php echo substr($start,0,10);?>"></td>
-		</tr>
-		<tr class=tr3>
-			<td>截止日期：</td>
-			<td align="left"><input type="text" name="vote[ended_at]" value="<?php echo substr($end,0,10);?>"></td>
+			<td>投票选项限制：</td>
+			<td align="left"><input type="text" name="vote[max_item_count]" value="<?php echo $vote_item_record[0]->max_item_count;;?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>投票项目：</td>

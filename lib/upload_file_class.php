@@ -26,7 +26,7 @@ class upload_file_class
 			return false;
 		}
 		$this->file_count = count($_FILES[$field_name]['name']);
-		if($this->file_count == 1){
+		if(!is_array($_FILES[$field_name]['name'])){
 			//only upload one file
 			
 			if($_FILES[$field_name]['error'] != UPLOAD_ERR_OK){

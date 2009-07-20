@@ -50,6 +50,7 @@
 		function display($show_tile=true){
 			if($show_tile){
 			?>
+			<form class="vote_form">
 			<ul class="vote_title"><?php echo $this->name;?> </ul>
 			<?php 
 			}
@@ -58,25 +59,53 @@
 					<div class="sub_vote"><?php $v->display();?></div>
 				<?php }		
 			}else{
+				echo "<div class=\"vote_items_box\" max-item=\"{$this->max_item_count}\" vote_name=\"{$this->name}\">";
 				foreach ($this->vote_items as $v) {?>
-					<li>
+					<li class="vote_item">
 						<?php
 						if($this->max_item_count > 1){ ?>
-						<input type="checkbox" name="vote_class[<?php echo $this->id;?>][]" max-item="<?php echo $this->max_item_count;?>">
+						<input class="input_vote_item" type="checkbox" name="vote_class[<?php echo $this->id;?>][]">
 						<?php }else{ ?>
-						<input type="radio" name="vote_class[<?php echo $this->id;?>][]">	
+						<input class="input_vote_item" type="radio" name="vote_class[<?php echo $this->id;?>][]">	
 						<?php }
 						?>
 						<?php echo $v->title;?>
 					</li>
 				<?php }
+				echo "</div>";
 			?>
+		<?php } ?>
+		<div class="vote_button_box">
+			<input type="submit" value="投票" class="submit_vote"> <input type="submit" value="查看" class="view_vote">
+		</div>
+		</form>
 		<?php }
-		}
 	}
 ?>
 <script>
-	function vote_item_select(e){
-		
-	}
+	$(function(){
+		$('.input_vote_item').click(function(e){
+			var item_box = $(this).parent().parent();
+			var max_item = $(item_box).attr('max-item');
+			if(max_item != undefined){
+				var select_count = $(this).parent().parent().find('input:checked').length;
+				if(max_item < select_count){
+					alert('投票:' + $(item_box).attr('vote_name') + ' 最多只能选择 ' + max_item +' 个选项');
+					return false;
+				}
+			}			
+		});
+	});
+	$('.submit_vote').click(function(){
+		$(this).parent().find('.vote_items_box').forEach(function(){
+			var max_item = $(this).attr('max-item');
+			if(max_item != undefined){
+				var select_count = $(this).find('input:checked').length;
+				if(max_item < select_count){
+					alert('投票:' + $(this).attr('vote_name') + ' 最多只能选择 ' + max_item +' 个选项');
+					return false;
+				}
+			}	
+		});
+	});
 </script>

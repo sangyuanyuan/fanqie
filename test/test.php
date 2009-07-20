@@ -3,9 +3,10 @@
 	
 	require "../frame.php";	
 	use_jquery();
+	var_dump($_COOKIE);
 	require "../lib/smg_vote_class.php";
 	$vote = new smg_vote_class();
-	$vote->find(363);
+	$vote->find(355);
 	$vote->display();
 ?>
 

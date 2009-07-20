@@ -16,18 +16,25 @@
 	<div id=answer>
 		<div id=left>
 			<div id=title>
-				<div id=backup><a target="_blank" href="#">＜＜返回上一页</a></div>
+				<div id=backup><a target="_blank" href="/">＜＜返回上一页</a></div>
 			</div>
 			<div id=content>
 				<div id=head>
-					<div class=title2><span>最新答题</span></div>
-					<div class=title1><span>答题荟萃</span></div>
-					<div class=title2><span>发起答题</span></div>
+					<div class=title2><span><a href="answer.php">最新答题</a></span></div>
+					<div class=title1><span><a href="answerlist.php">答题荟萃</a></span></div>
+					<div class=title2><span><a href="question.php">发起答题</a></span></div>
 					<div id=line></div>
 				</div>
-				<?php for($i=0;$i<18;$i++){?>
-				<div class=listcontext><a target="_blank" href="#">我是流氓我怕谁？</a></div>
+				<?php
+					$db = get_db();
+					$sql = 'select id,title from smg_question where is_adopt=1 order by create_time';
+					$records = $db->paginate($sql,18);
+					close_db();
+					$count = count($records);
+					for($i=0;$i<$count;$i++){?>
+				<div class=listcontext><a target="_blank" href="show_question.php?id=<?php echo $records[$i]->id; ?>"><?php echo $records[$i]->title;?></a></div>
 				<?php } ?>
+				<div id=paginate><?php paginate();?></div>
 			</div>
 		</div>
 		<?php include('../inc/answer_right.inc.php');?>

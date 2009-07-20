@@ -1,6 +1,7 @@
 var vote_num = 0;
 
 $(function() {
+		
 		var num = 1; //记录有几条投票项目	
 		var display = "none"; //是否显示添加图片的框
 		var empty = "item_image"; //图片是否可以为空
