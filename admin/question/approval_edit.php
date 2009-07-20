@@ -3,10 +3,6 @@
 	$id = $_REQUEST['id'];
 	$question = new table_class('smg_question');
 	$question->find($id);
-	$problem_id = $question->problem_id;
-	$problem = new table_class('smg_problem');
-	$problem->find($problem_id);
-	$project_type = $problem->type;
 	$question_item = new table_class('smg_question_item');
 	$records = $question_item->find('all',array('conditions' => 'question_id='.$id));
 	$count = count($records);
@@ -32,24 +28,7 @@
 			<td width="100">题　目</td>
 			<td align="left"><?php show_fckeditor('title','Title',true,"80",$question->title);?><?php if($project_type!='judge'){?></>请在正确的选项后面打勾<?php }?></td>
 		</tr>
-		<?php if($project_type=='judge'){?>
-		<tr class="tr3">
-			<td>是非题选择</td>
-			<td align="left">
-				　<select name="item[attribute]">
-					<option value="1" <?php if($records[0]->attribute=='1'){?>selected="selected"<?php }?> >对</option>
-					<option value="0" <?php if($records[0]->attribute=='0'){?>selected="selected"<?php }?> >错</option> 
-				</select>
-			</td>
-		</tr>
-		<tr class="tr3">
-			<td>说明(选填)</td>
-			<td align="left">　<input type="text" name="item[name]" value="<?php echo $records[0]->name;?>">正确的说法是
-			</td>
-		</tr>
-		<input type="hidden" name="item_num" value="1">
-		<?php 
-			}else{	
+		<?php
 				for($i=1;$i<=2;$i++){
 		?>
 		<tr class="tr3" >
@@ -64,7 +43,7 @@
 		</tr>
 		<?php
 				}
-				for($i=3;$i<=$count;$i++){
+				if($count>2){for($i=3;$i<=$count;$i++){
 		?>
 		<tr class="tr3" >
 			<td>答案选项</td>
@@ -75,12 +54,9 @@
 		　	</td>
 		</tr>
 		<?php 
-				}
+				}}
 		?>
 		<input type="hidden" name="item_num" id="num" value="<?php echo $count;?>">
-		<?php
-			}
-		?>
 		<tr class="tr3">
 			<td colspan="2" width="795" align="center"><button type="submit" id="submit">发布题目</button></td>
 		</tr>	

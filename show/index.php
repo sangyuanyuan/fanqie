@@ -21,7 +21,7 @@
  	 	 <div id=t_l>
  	 	 	<?php 
 				$db = get_db();
-				$sql="select * from smg_video where tags='视频推荐' and is_adopt=1 and photo_url is not null order by priority asc,created_at desc limit 1";
+				$sql="select photo_url,video_url from smg_video where tags='视频推荐' and is_adopt=1 and photo_url is not null order by priority asc,created_at desc limit 1";
 				$record=$db->query($sql);
 				show_video_player('288','230',$record[0]->photo_url,$record[0]->video_url);
 			?>
@@ -68,7 +68,7 @@
  	 	 <div id=l_t>
  	 	 	<?php 
 				$category_id = category_id_by_name('每日之星');
-				$sql='select * from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 9';
+				$sql='select id,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 9';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=l_title>
@@ -92,7 +92,7 @@
      <!-- start left_middle !-->
  	 	 <div id=l_m>
  	 	 	<?php 
-				$sql = 'select * from smg_video where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select id,description,click_count,title,photo_url from smg_video where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$spphb=$db->query($sql);
 				$sql = 'SELECT publisher,count(*) as num FROM smg_video where publisher!="" group by publisher limit 5';
 				$bk=$db->query($sql);
@@ -155,7 +155,7 @@
 				<?php } ?>
 			</div>
 			<?php 
-				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select id,description,click_count,title,src from smg_images where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$wxwxph=$db->query($sql);
 				$sql = 'SELECT publisher,count(*) as num FROM smg_images where publisher!="" group by publisher limit 5';
 				$sy=$db->query($sql);
@@ -226,7 +226,7 @@
      <!-- start left_bottom !-->
  	 	 <div id=l_b>
  	 	 	<?php 
-				$sql="select * from smg_magazine where is_adopt=1 order by priority asc,create_time desc limit 1";
+				$sql="select id,online_url,photo_url,,description,title,create_time from smg_magazine where is_adopt=1 order by priority asc,create_time desc limit 1";
 				$magazine=$db->query($sql);
 			?>
  	 	 	<div class=l_title>
@@ -252,7 +252,7 @@
  	 
  	 <div id=ibody_center>
  	 	<?php 
-			$sql = "select * from smg_images where is_adopt=1 and publisher is not null and src is not null order by priority asc,created_at desc limit 6";
+			$sql = "select id,src,title,publisher from smg_images where is_adopt=1 and publisher is not null and src is not null order by priority asc,created_at desc limit 6";
 			$records = $db->query($sql);
 			$count = count($records);
 		?>
@@ -272,7 +272,7 @@
 				<?php } ?>		
 			</div>
 			<?php 
-				$sql="select * from smg_video where is_adopt=1 and publisher is not null order by priority asc,created_at desc limit 4";
+				$sql="select id,photo_url,title,publisher from smg_video where is_adopt=1 and publisher is not null order by priority asc,created_at desc limit 4";
 				$records = $db->query($sql);
 				$count = count($records);
 			?>
@@ -298,7 +298,7 @@
  	 	 <div class=box style="margin-top:4px;">
  	 	 	<?php 
 				$category_id = category_id_by_name('节目点评');
-				$sql='select * from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 8';
+				$sql='select id,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=r_title>
@@ -321,7 +321,7 @@
 		  <div class=box style="margin-top:6px;">
  	 	 	<?php 
 				$category_id = category_id_by_name('部门比拼');
-				$sql='select * from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 8';
+				$sql='select id,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=r_title>
@@ -344,7 +344,7 @@
 		  <div class=box>
  	 	 	<?php 
 				$category_id = category_id_by_name('台前幕后');
-				$sql='select * from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 17';
+				$sql='select id,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=r_title>
