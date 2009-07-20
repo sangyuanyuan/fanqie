@@ -295,7 +295,7 @@
  	 
  	 <div id=ibody_right>
      <!-- start right !-->
- 	 	 <div class=box style="margin-top:4px;">
+ 	 	 <div class=box>
  	 	 	<?php 
 				$category_id = category_id_by_name('节目点评');
 				$sql='select id,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
@@ -318,7 +318,7 @@
 			<?php }?>
  	 	 </div>
 		 
-		  <div class=box style="margin-top:6px;">
+		  <div class=box>
  	 	 	<?php 
 				$category_id = category_id_by_name('部门比拼');
 				$sql='select id,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
