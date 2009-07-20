@@ -24,7 +24,6 @@
 			</div>
 			<div id=content>
 				<div id=head>
-					<div class=title2><span><a href="answer.php">最新答题</a></span></div>
 					<div class=title2><span><a href="answerlist.php">答题荟萃</a></span></div>
 					<div class=title1><span><a href="question.php">发起答题</a></span></div>
 					<div id=line></div>
