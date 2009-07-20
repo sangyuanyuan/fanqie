@@ -37,10 +37,13 @@
 						<div class="content">
 							<?php if($i==1){?>
 							<img src="/images/icon/arrow2.gif">
-							<a style="color:#2C345B; font-weight:bold; text-decoration:none;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><span style="color:#cccccc;">·</span>tttttttttttttt<?php echo delhtml($record[$i]->short_title); ?></a>
+							<a style="color:#2C345B; font-weight:bold;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><span style="color:#cccccc;">·</span>tttttttttttttt<?php echo delhtml($record[$i]->short_title); ?></a>
 							<?php }else{?>
 							<img src="/images/icon/arrow1.gif">
-							<a style="color:#000000; text-decoration:none;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><span style="color:#cccccc;">·</span>ttttttttttttttttttt<?php echo delhtml($record[$i]->short_title); ?></a>
+							<a style="color:#000000;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>">
+								<span style="color:#cccccc;">·</span>
+								ttttttttttttttttttt<?php echo delhtml($record[$i]->short_title); ?>
+							</a>
 							<?php } ?>
 						</div>
 					<?php } ?>
