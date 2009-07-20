@@ -9,7 +9,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #l_t a{color:#B23200; text-decoration:none;}
 #l_b{width:685px; margin-top:10px; padding-bottom:10px; border:1px solid #E9A8A8; background:#FBF2F4; float:left; display:inline;}
 #l_b #title{width:630px; margin-top:20px; margin-left:25px; margin-bottom:10px; line-height:35px; font-size:25px; font-weight:bold; text-align:center; color:#F90000; float:left; display:inline;}
-#l_b #comefrom{width:523px; height:30px; margin-left:81px; line-height:30px; padding-top:4px; font-size:12px; border-top:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC; text-align:center;  float:left; display:inline;}
+#l_b #comefrom{width:600px; height:30px; margin-left:42px; line-height:30px; padding-top:4px; font-size:12px; border-top:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC; text-align:center;  float:left; display:inline;}
 #l_b #video{width:645px; margin-top:30px; margin-left:20px; text-align:center; float:left; display:inline;}
 #l_b #content{width:645px; margin-top:20px; margin-left:20px;  line-height:20px; font-size:14px; float:left; display:inline;}
 #l_b #contentpage{width:685px; margin-top:10px; line-height:20px; text-align:center; float:left; display:inline;}

@@ -21,18 +21,20 @@
 		if($record[0]->related_news!="")
 		{
 			
-			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"priority asc,last_edited_at desc");
+			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"n.priority asc,last_edited_at desc");
 			$about = $about1;
 			if(count($about1)<10)
 			{
-				$a2=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1),"priority asc,last_edited_at desc");
-				$about = array_merge($about, $a2);
+				if($record[0]->keywords!=""){
+					$a2=search_keywords($id,$record[0]->keywords,'smg_news',$about1,10-count($about1),"n.priority asc,last_edited_at desc");
+					$about = array_merge($about, $a2);
+				}
 			}
 			
 		}
 		else{
 			
-			$about=search_keywords($record[0]->keywords,'smg_news',$record,10,"priority asc,last_edited_at desc");
+			$about=search_keywords($id,$record[0]->keywords,'smg_news',$record,10,"n.priority asc,last_edited_at desc");
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
@@ -232,7 +234,7 @@
 		<?php
 		if($record[0]->related_videos!=""){
 		$keys = explode(',',$record[0]->related_videos);
-		$sql="select * from smg_video where id=".$keys[0];
+		$sql="select photo_url,video_url from smg_video where id=".$keys[0];
 		$r_video=$db->query($sql);
 		 if($record[0]->video_src==""){
 		 	if($record[0]->low_quality==0){
@@ -247,7 +249,7 @@
 		<div id=r_m>
 			<?php 
 			 for($i=0;$i< count($keys);$i++){
-			 	$sql="select * from smg_video where id=".$keys[$i];
+			 	$sql="select id,title from smg_video where id=".$keys[$i];
 			 	$videolist=$db->query($sql);
 			 ?> 
 			 	<div class="r_content">
@@ -269,7 +271,7 @@
 		<div class=r_b1>
 			<div class=title>历史头条</div>
 			<?php 
-			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='历史头条' order by n.priority asc,n.last_edited_at desc limit 8";
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='历史头条' order by n.priority asc,n.last_edited_at desc limit 8";
 			 $morehead=$db->query($sql);
 			 for($i=0;$i<count($morehead);$i++){	 	
 			 ?>
@@ -287,7 +289,7 @@
 		<div class=r_b1>
 			<div class=title>小编加精</div>
 			<?php 
-			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='小编加精' order by n.priority asc,n.last_edited_at desc limit 10";
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='小编加精' order by n.priority asc,n.last_edited_at desc limit 10";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){
 			 ?>
