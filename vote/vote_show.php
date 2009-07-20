@@ -24,7 +24,7 @@
 <table align="center"  border="0" bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
 		<td colspan="4" align="center">
-			<?php echo $vote->title;?>
+			<?php echo $vote->name;?>
 		</td>
 	</tr>
 	<tr>

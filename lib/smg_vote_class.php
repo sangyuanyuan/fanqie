@@ -47,10 +47,10 @@
 			return $this;
 		}
 		
-		function display_vote_box($show_tile=true){
+		function display_vote_box($show_title=true){
 			?>
 			<div class="vote_box">
-				<?php if($show_tile) {?><div class="vote_title"><?php echo $this->name;?></div><?php }?>
+				<?php if($show_title) {?><div class="vote_title"><?php echo $this->name;?></div><?php }?>
 				<div class="vote_items_box" max-item="<?php echo $this->max_item_count;?>" vote_name="<?php echo strip_tags($this->name);?>">
 					<?php 
 					foreach ($this->vote_items as $v) {?>
@@ -76,23 +76,67 @@
 			<?php
 		}
 		
-		function display($show_tile=true,$show_button = true,$sub_vote = false){
-			echo '<form class="vote_form" method="post" action="/pub/vote.post.php">';
-			if($show_tile){
+		function display($show_title=true,$show_sub_title = true,$target="_self"){
+			if(func_num_args() == 1 && is_array(func_get_arg(0))){
+				$p = func_get_arg(0);
+				if(array_key_exists('show_sub_title', $p)){
+					$show_sub_title = $p['show_sub_title'];
+				}else{
+					$show_sub_title = true;
+				}
+				
+				if(array_key_exists('show_title', $p)){
+					$show_title = $p['show_title'];
+				}else{
+					$show_title = true;
+				}
+				
+				if(array_key_exists('target', $p)){
+					$target = $p['target'];
+				}else{
+					$target = "_self";
+				}
+				
+				if(array_key_exists('submit_src', $p)){
+					$submit_src = $p['submit_src'];
+				}else{
+					$submit_src = "";
+				}
+				
+				if(array_key_exists('view_src', $p)){
+					$view_src = $p['view_src'];
+				}else{
+					$view_src = "";
+				}
+				
+			}
+			echo '<form class="vote_form" method="post" action="/pub/vote.post.php" target="'.$target.'">';
+			if($show_title){
 			?>			
 			<div class="vote_title"><?php echo $this->name;?> </div>
 			<?php 
 			}
 			if($this->vote_type == "more_vote"){
 				foreach ($this->vote_items as $v) { 
-					$v->display_vote_box($show_tile);
+					$v->display_vote_box($show_sub_title);
 				}		
 			}else{
-				$this->display_vote_box($show_tile);
+				$this->display_vote_box($show_title);
 			} ?>
-
+		<div style="clear:both;"></div>
 		<div class="vote_button_box">
-			<input type="submit" value="投票" class="submit_vote"> <input type="submit" value="查看" class="view_vote">			
+			<?php
+			if($submit_src){
+				echo '<input type="image" src="'.$submit_src .'" value="投票" class="submit_vote"> ';
+			}else{
+				echo '<input type="submit" value="投票" class="submit_vote"> ';
+			}
+			if($view_src){
+				echo '<input type="image" src="'.$view_src.'" value="查看" class="view_vote">';
+			}else{
+				echo '<input type="submit" value="查看" class="view_vote">';
+			}
+			?>		
 		</div>
 		<input type="hidden" name="vote_id" value="<?php echo $this->id;?>">
 		</form>
@@ -131,11 +175,13 @@
 				}
 					
 			});	
+			$(this).parent().parent().attr('action','/pub/vote.post.php');
 			return result;		
 		});
 		
 		$('.view_vote').click(function(){
-			return false;
+			$(this).parent().parent().attr('action','/vote/vote_show.php');
+			return true;
 		});
 	});
 	

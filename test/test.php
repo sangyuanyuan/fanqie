@@ -8,7 +8,7 @@
 	$vote->find(355);
 	$vote->display();
 	$vote->find(350);
-	$vote->display();
+	$vote->display(array('submit_src' => '/images/btn/btn1.jpg','show_sub_title' => false));
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">

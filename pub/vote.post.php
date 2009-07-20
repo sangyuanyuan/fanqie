@@ -1,3 +1,10 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>番茄投票</title>
+	</head>
+
+</html>
 <?php
 	require "../frame.php";
 	var_dump($_POST);
