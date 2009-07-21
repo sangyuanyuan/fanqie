@@ -4,10 +4,6 @@
 	require "../frame.php";	
 	use_jquery();
 	$vote = new smg_vote_class();
-	$vote->find(355);
-	$vote->display();
-	$vote->find(350);
-	$vote->display(array('submit_src' => '/images/btn/btn1.jpg','show_sub_title' => false));
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -21,6 +17,10 @@
 		<link href="test.css" rel="stylesheet" type="text/css">
 	</head>
 	<?php 
+	$vote->find(355);
+	$vote->display();
+	$vote->find(350);
+	#$vote->display(array('submit_src' => '/images/btn/btn1.jpg','show_sub_title' => false));
 
 	?>
 	<body>		
@@ -37,9 +37,6 @@ $(function(){
 		e.preventDefault();
 		alert(e.data.fuck);
 		//window.location.href = "?tags=" + $('input:first').val();
-	});
-	$(window).unload(function(){
-		alert('unload');
 	});
 });
 </script>

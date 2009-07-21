@@ -16,7 +16,9 @@
 		<div id="search_box">
 			<b>搜索</b>
 			<input type="text" name="key" id="search_text" value="<?php $_REQUEST['key'];?>">
-			
+			<select name="search_type">
+				<option value=""></option>
+			</select>
 		</div>
 	</div>
 	<div id="right_box">
