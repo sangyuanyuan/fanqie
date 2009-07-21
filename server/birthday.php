@@ -18,7 +18,11 @@
 <div id=ibody>
 	<div class="l">
     		<div id="title"></div>
-     	  <div class="neirong"><img src="/images/3.jpg" /></div>
+     	  <div id="menu">
+     	  	<div id="menu1">我的生日</div>	
+     	  	<div id="menu2">日历</div>
+     	  	<div id=date>TODAY 2009-10-10</div>
+     	  </div>
         <div class="mainleft3">
             <div class="neirong2"><a href="#"><img src="images/4.jpg" width="30" height="20" border="0" /></a>七月2009<a href="#"><img src="images/5.jpg" width="30" height="20" border="0" /></a> </div>
           <div class="neirong3">
