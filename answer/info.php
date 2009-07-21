@@ -31,7 +31,7 @@
 			$("#nick_name").attr('value',$("#user_name").attr('value'));
 			$("#phone").attr('value',$("#user_photo").attr('value'));
 			$("#dept_id").attr('value',$("#deptid").attr('value'));
-			$("#answer_form").attr('action','result.php');
+			$("#answer_form").attr('action','answer.post.php');
 			$("#answer_form").submit();
 		}
 	})

@@ -38,7 +38,7 @@
 		</tr>
 		<?php for($i=0;$i<$count;$i++){?>
 		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
-			<td><?php echo $records[$i]->title;?></td>
+			<td><a href='/answer/answer.php?id=<?php echo $records[$i]->id;?>' target="_blank"><?php echo $records[$i]->title;?></a></td>
 			<td><?php echo $records[$i]->theme;?></td>
 			<td><?php echo substr($records[$i]->create_time,0,10);?></td>
 			<td><?php if($records[$i]->is_adopt=="1"){?>
