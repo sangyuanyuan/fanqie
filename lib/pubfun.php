@@ -463,9 +463,7 @@ function search_keywords($id,$key,$table_name='smg_news',$about='',$page_count =
 	$c = array();
 	$d=array();
 	foreach ($keys as $v) {
-		if($v!=""){
-			array_push($c, "n.keywords like '%$v%'");
-		}
+		array_push($c, "n.keywords like '%$v%'");
 	}
 	
 	for($i=0;$i<count($about);$i++)
@@ -473,8 +471,8 @@ function search_keywords($id,$key,$table_name='smg_news',$about='',$page_count =
 		array_push($d,"n.id<>".$about[$i]->id);	
 	}
 	$d = implode(' and ',$d);
-	$c = implode(' OR ' ,$c);	
-	$sql = "select n.title,n.id,n.last_edited_at,n.category_id,n.platform from " .$table_name ." n inner join smg_category c on n.category_id=c.id and 1=1 and n.is_adopt=1 and n.id<>".$id." and ".$d." and (".$c.")";
+	$c = implode(' OR ' ,$c);
+	$sql = "select n.title,n.id,n.last_edited_at,n.category_id,n.platform from " .$table_name ." n inner join smg_category c on n.category_id=c.id and 1=1 and n.is_adopt=1 and ".$d." and (".$c.")";
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}

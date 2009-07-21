@@ -32,7 +32,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #l_b #comment .content{width:643px; border-bottom:1px solid #dddddd; float:left; display:inline;}
 #l_b #comment .content .title1{width:633px; height:30px; margin-top:5px; margin-left:10px; line-height:30px; background:url('/images/news/news_comment_title.jpg') no-repeat; float:left; display:inline;}
 #l_b #comment .content .title2{width:633px; height:30px; margin-top:5px; margin-left:10px; line-height:30px; float:left; display:inline;}
-#l_b #comment .content .context{width:633px; margin-top:10px;  padding-bottom:5px; line-height:20px; float:left; display:inline;}
+#l_b #comment .content .context{width:633px; margin-top:10px; margin-left:10px; padding-bottom:5px; line-height:20px; float:left; display:inline;}
 #l_b #comment img{margin-top:5px; cursor:pointer;}
 #l_b #comment .page{width:643px; margin-top:10px; line-height:20px; padding-bottom:10px; text-align:center; border-bottom:1px solid #dddddd; float:left; display:inline;}
 #r_t{width:298px; height:82px; margin-bottom:10px; cursor:pointer; float:right; display:inline;}
