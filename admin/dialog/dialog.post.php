@@ -25,7 +25,7 @@
 		$contents = '';
 		for($i=0;$i<$count;$i++){
 			$user = new table_class('smg_user');
-			$user->find('first',array('conditions' => 'name='.$ids[$i]));
+			$user->find('first',array('conditions' => "name='{$ids[$i]}'"));
 			
 			if($user->nick_name==''){
 				$contents = $contents.$ids[$i].':查无此人！';
