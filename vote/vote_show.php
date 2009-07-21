@@ -12,19 +12,39 @@
 <body>
 <?php require_once('../inc/top.inc.html');
 	$db = get_db();
-	$voteitem=$db->query("select * from smg_vote_item where vote_id=".$_REQUEST['vote_id']);
-	$count=$db->query("select count(*) as num from smg_vote_item_record where vote_id=".$_REQUEST['vote_id']);
-	$allcount=$count[0]->num;
-
-//echo "select * from " .$_REQUEST['tablepre'] ."vote_item where vote_id=" .$_REQUEST['vote_id'] ." order by priority asc";
-
+	$vote = new table_class('smg_vote');
+	$vote->find($_REQUEST['vote_id']);
+	$vote_name = $vote->name;
+	if($vote->vote_type != 'more_vote'){
+		$sql = "select sum(vote_count) from smg_vote_item where vote_id={$vote->id}";
+		$db->query($sql);
+		$name[] = $vote->name;		
+		$total_count[] = $db->field_by_index(0);
+		$vote_items[] = $db->query('select * from smg_vote_item where vote_id=' .$vote->id);
+		$len[] = $db->record_count;
+	}else{
+		$vote_tmp = $db->query('select sub_vote_id from smg_vote_item where vote_id =' .$vote->id);
+		foreach ($vote_tmp as $v) {
+			$vote->find($v->field_by_index(0));
+			$sql = "select sum(vote_count) from smg_vote_item where vote_id={$vote->id}";
+			$db->query($sql);
+			$name[] = $vote->name;		
+			$total_count[] = $db->field_by_index(0);
+			$vote_items[] = $db->query('select * from smg_vote_item where vote_id=' .$vote->id);
+			$len[] = $db->record_count;
+		}
+	}
+	$vote_len = count($name);
 ?>
 <div id=ibody style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px; display:inline">
-<div style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px;">总共<span style="color:#FF0000;"><?php echo $allcount;?></span>人参加</div>
+<div style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px;"><b><?php echo $vote_name;?></b>投票结果:<span style="color:#FF0000;"></span></div>
+<?php 
+   for($j=0;$j < $vote_len; $j++){
+?>
 <table align="center"  border="0" bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
 		<td colspan="4" align="center">
-			<?php echo $vote->name;?>
+			<?php echo $name[$j];?>
 		</td>
 	</tr>
 	<tr>
@@ -38,36 +58,37 @@
 			比例
 		</td>
 		<td bgcolor="#FFFFFF">
-			票数
+			票数(共<?php echo $total_count[$j];?>票)
 		</td>
 	</tr>
   <?php
-    for($i=0;$i<count($voteitem);$i++)
+    for($i=0;$i<$len[$j];$i++)
     {
-    	$vote=$db->query("select count(*) as value from smg_vote_item_record where vote_item_id=".$voteitem[$i]->id);
   ?>
 	<tr align="center">
 		<td bgcolor="#FFFFFF">
 			<?php echo $i+1;?>
 		</td>
 		<td  bgcolor="#FFFFFF">
-			<?php echo $voteitem[$i]->title;?>
+			<?php echo $vote_items[$j][$i]->title;?>
 		</td>
 		<td bgcolor="#FFFFFF" align=left>
 			<?php 
-				$count = $vote[0]->value;
-				$count = ($allcount >0) ? ($count/$allcount) : 0;
+				$count = ($total_count[$j] >0) ? ($vote_items[$j][$i]->vote_count /$total_count[$j]) : 0;
 				echo sprintf("%.2f",$count * 100) .'%';?>
 				<div style="background:url('/images/votebg.gif') repeat-x; height:9px;width:<?php echo ceil($count * 100)*3;?>px;"></div>
 		</td>
 	  <td bgcolor="#FFFFFF">
-	  	<?php echo $vote[0]->value;?>
+	  	<?php echo $vote_items[$j][$i]->vote_count;?>
 	  </td>
 	</tr>
 	<?php	
 	}
 	?>
 </table>
+<?php
+   }
+   ?>
 </div>
 
 <? require_once('../inc/bottom.inc.php');?>

@@ -54,7 +54,7 @@
 				<div class="vote_items_box" max-item="<?php echo $this->max_item_count;?>" vote_name="<?php echo strip_tags($this->name);?>">
 					<?php 
 					foreach ($this->vote_items as $v) {?>
-					<div class="vote_item">
+					<div class="vote_item" title="<?php echo $v->title;?>">
 						<?php
 						if($this->max_item_count > 1){ 
 							if($this->vote_type == 'image_vote'){?>
@@ -111,12 +111,12 @@
 				
 			}
 			echo '<form class="vote_form" method="post" action="/pub/vote.post.php" target="'.$target.'">';
-			if($show_title){
-			?>			
-			<div class="vote_title"><?php echo $this->name;?> </div>
-			<?php 
-			}
 			if($this->vote_type == "more_vote"){
+				if($show_title){
+				?>			
+				<div class="vote_main_title"><?php echo $this->name;?> </div>
+				<?php 
+				}				
 				foreach ($this->vote_items as $v) { 
 					$v->display_vote_box($show_sub_title);
 				}		
