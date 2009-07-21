@@ -33,6 +33,10 @@
 			<td align="left"><input type="text" name="question[theme]" value="<?php echo $question->theme;?>" class="required"></td>
 		</tr>
 		<tr class="tr3">
+			<td width="100">昵　称</td>
+			<td align="left"><input type="text" name="question[nick_name]" value="<?php echo $question->nick_name;?>" class="required"></td>
+		</tr>
+		<tr class="tr3">
 			<td width="100">答题说明</td>
 			<td align="left"><textarea cols="80" rows="4" name="question[description]"><?php echo $question->description; ?></textarea></td>
 		</tr>

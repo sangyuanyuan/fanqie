@@ -246,6 +246,12 @@
 
 	}
 	
+	function num_to_ABC($num) {
+		$ABC = 'A';
+		$ABC = chr(ord($ABC)+$num).'.';
+		return $ABC;
+	}
+	
 	function show_video_player($width,$height,$image='',$file,$autostart = "false")
 	{
 		if (strtoupper(substr($file,-3)) == "MP3" || strtoupper(substr($file,-3)) == "WMV" || strtoupper(substr($file,-3)) == "WMA"  || strtoupper(substr($file,-3)) == "AVI" || strtoupper(substr($file,-3)) == "VYF")

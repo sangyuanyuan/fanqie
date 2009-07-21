@@ -1,5 +1,20 @@
 <?php
     require_once('../frame.php');
+	$id = $_REQUEST['id'];
+	$sql = 'select id,title,nick_name from smg_question where id>='.$id.' and is_adopt=1 order by create_time limit 2';
+	$db = get_db();
+	$records = $db->query($sql);
+	$number = isset($_POST['number'])?$_POST['number']:'1';
+	$point = isset($_POST['point'])?$_POST['point']:'0';
+	if(isset($_POST['lave'])){
+		$lave = $_POST['lave'];
+		$q_count = $_POST['count'];
+	}else{
+		$sql = 'select count(*) as count from smg_question where is_adopt=1 and id>'.$id.' order by create_time';
+		$record = $db->query($sql);
+		$lave = $record[0]->count;
+		$q_count = $record[0]->count;
+	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,128 +23,103 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
 	<?php 
-		css_include_tag('top.css','bottom.css','answer/answer');
+		css_include_tag('top.css','bottom.css','answer/answer','thickbox');
 	?>
-	<script Language="javascript"> 
-			var seconds = 18;//记数时间 
-			var handle;//事件柄 
-			
-			//开始记数器 
-			function startTimer() { 
-			handle = setInterval("timer()",1000); 
-			} 
-			
-			//结束记数器 
-			function stopTimer() { 
-				clearInterval(handle); 
-				seconds = 18; 
-				if(document.getElementById('question_num').value!=10){
-					chick();
-				}else{
-					document.getElementById('question').style.display='none';
-					
-				}
-				document.all.point.innerHTML = "<span style='font-size:18px;'> <span style='color:red;'>0!</span>"; 
-				
-			} 
-			
-			//计数器 
-			function timer() { 
-				seconds -= 1; 
-				document.all.point.innerHTML = "<span style='font-size:16px;'> <span style='color:red;'>" + seconds + "</span> "; 
-				document.getElementById('time').value=seconds;
-				if (seconds == 0) { 
-					stopTimer(); 
-					document.getElementById('time').value=seconds;
-				} 
-			} 
-			
-			 
-		</script> 
-	
 </head>
 <?php
 	require_once('../inc/top.inc.php');
+	js_include_once_tag('thickbox');
 ?>
 
-<form name="newth" id="newth" method="POST" action="newth.php?id=<? echo $problemid;?>" >
+<form id="answer_form" method="POST" action="<?php if($lave=='0'){echo 'result.php';}else{echo 'answer.php?id='.$records[1]->id;}?>" >
 <div id=ibody>
 
-	<div id="top">
-	</div>
-	<div id="time">
-	</div>
+	<div id="time">30</div>
 	
 	<div id="point">
+		<?php echo $point;?>
 	</div>
 	<div id="middle">	
-		<div id="question_title">
-		aaa
-		</div>
+		<div id=num><?php echo $number;?>.</div>
+		<div id="question_title"><?php echo $records[0]->title; ?></div>
 		
-		
+		<?php
+			$sql = 'select id,name,attribute from smg_question_item where question_id='.$id;
+			$items = $db->query($sql);
+			$count = count($items);
+			$answer = '';
+			for($i=0;$i<$count;$i++){
+		?>
 		<div class="question_option">
-			aaa
+			<input class=checkbox type="checkbox" name="<?php echo $items[$i]->id;?>">
+			<?php 
+				echo num_to_ABC($i).$items[$i]->name;
+				if($items[$i]->attribute==1)$answer = $answer.$items[$i]->id;
+			?>
 		</div>
-		<div class="question_option">
-			aaa
-		</div>
-			
+		<?php
+			}
+		?>
 	</div>
 	
 	<div id=bottom>
-		<div id="submit" >
-		</div>	
+		<div id="lave">还剩余<?php echo $lave;?>题</div>
+		<div id="publisher">发布者：<?php echo $records[0]->nick_name; ?></div>
+		<div id="submit" ></div>
+		<div id="leave" ></div>	
 	</div>
-	<table id="nametable" style="margin-left:100px; display:none;"><tr><td>姓名：</td><td><input type="text" name="username" id="username"></td><td>所属部门：</td>
-		<td><select id="deptid" name="deptid">
-				<option value=<? echo $dept[$i]->id; if($dept[$i]->id==7){?> selected="selected"<? }?>>
-				</option>
-		</select></td>
-		<td>联系方式：</td><td><input type="text" name="phone" id="phone"></td>
-	</tr>　  
- 
-	</table>
-	
 </div>
 
-
-
+<input type="hidden" name="number" value="<?php echo $number+1;?>">
+<input type="hidden" name="lave" value="<?php echo $lave-1;?>">
+<input type="hidden" name="point" id="r_point" value="<?php echo $point;?>">
+<input type="hidden" name="record[nick_name]" id="nick_name">
+<input type="hidden" name="record[phone]" id="phone">
+<input type="hidden" name="record[dept_id]" id="dept_id">
+<input type="hidden" name="count" value="<?php echo $q_count;?>">
 </form>
 <?php include('../inc/bottom.inc.php');?>
 </body>
 </html>
 
 <script language="javascript"> 
-
-
-var flag=0;
-function chick(){ 
-	//alert(document.getElementById("question_num").value);
-	if(document.getElementById("question_num").value!=10){
-		newth.submit();
-	}else{
-		var username=document.getElementById("username").value;
-		if(username.replace(" ","")=="")
-		{
-			alert('姓名不能为空！');
-			return false;
-		}
-		newth.action="newth.post.php";
-		newth.submit();
-	}
-
-} 
-
-
-function onload1(){ 
-	setTimeout("startTimer()",100);
-	if(document.getElementById("question_num").value==10){
-		document.getElementById("nametable").style.display='inline';
-	}
+	var answer = '';
+	var r_answer = <?php echo $answer;?>;
+	var point = 0;
+	var second = 30;
+	var lave = <?php echo $lave;?>
 	
-} 
+	handle = setInterval("timer()",1000); 
+	
+	$("#submit").click(function(){
+		clearInterval(handle);
+		$(".checkbox").each(function(){
+			if($(this).attr('checked'))answer = answer+$(this).attr('name');
+		});
+		if (answer == r_answer){
+			$("#r_point").attr('value', parseInt($("#r_point").attr('value'))+10);
+		}
+		if(lave==0){
+			tb_show('请填入您的个人信息','info.php?height=300&width=400&modal=true');
+		}else{
+			$("#answer_form").submit();
+		}
+		
+	});
+
+	function timer(){
+		if(second>0){
+			second--;
+			$("#time").html(second);
+		}else{
+			clearInterval(handle);
+			if (lave == 0) {
+				tb_show('请填入您的个人信息','info.php?height=300&width=300');
+			}else{
+				alert("时间到了！进入下一题");
+				$("#answer_form").submit();
+			}
+		}
+	}
 
 </script>
-
-<? //print_r($_POST)?>
