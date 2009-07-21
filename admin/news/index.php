@@ -158,21 +158,21 @@
 				});
 			}
 		});
-		$("#search_new").click(function(){
+		//$("#search_new").click(function(){
 				//window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-				send_search();
-		});
+		//		send_search();
+		//});
 		
-		$(".select_new").change(function(){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-		});		
-		function send_search(){
-			window.location.href="?title="+encodeURI($("#title").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-		}
-		$('#title').keydown(function(e){
-			if(e.keyCode == 13){
-				send_search();
-			}
-		});
+		//$(".select_new").change(function(){
+		//		window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+		//});		
+		//function send_search(){
+		//	window.location.href="?title="+encodeURI($("#title").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+		//}
+		//$('#title').keydown(function(e){
+		//	if(e.keyCode == 13){
+		//		send_search();
+		//	}
+		//});
 	});
 </script>

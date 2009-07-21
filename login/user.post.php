@@ -88,6 +88,7 @@ if($_REQUEST['user_type']=="logout")
 		SetCookie('smg_user_dept',"",$y2k,'/');
 		SetCookie('smg_username',"",$y2k,'/');
 		SetCookie('smg_user_nickname',"",$y2k,'/');
+		SetCookie('smg_userid',"",$y2k,'/');
 		SetCookie('smg_role',"",$y2k,'/');
 		$_SESSION["smg_role"]  = '';
 		echo uc_user_synlogout();

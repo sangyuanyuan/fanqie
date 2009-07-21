@@ -505,13 +505,17 @@
 
  			<!-- start top_right_right_bottom !-->
  			<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 order by n.click_count desc limit 10';
-					$record_news=$db -> query($sql);		
+ 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 30 order by n.click_count desc limit 10';
+					$record_news=$db -> query($sql);	
+					$sql='select uid,itemid,subject from blog_spaceitems order by itemid desc limit 10';
+					$record_blog=$db -> query($sql);	
+					$sql="select tid,subject from bbs_posts where subject<>'' order by pid desc limit 10";
+					$record_bbs=$db -> query($sql);	
 			?>	 
  			<div id=t_r_r_b>
  				<div class=menu_trrb id=menu_trrb1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; margin-left:9px; font-weight:bold;">新闻排行</div>
- 				<div class=menu_trrb id=menu_trrb2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;">博客排行</div>
- 				<div class=menu_trrb id=menu_trrb3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;">论坛排行</div>
+ 				<div class=menu_trrb id=menu_trrb2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;">最新博文</div>
+ 				<div class=menu_trrb id=menu_trrb3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;">最新热帖</div>
 				<div id=number>
 					<?php for($i=1;$i<=10;$i++){?>
 					<img src="/images/number/<?php echo $i?>.jpg">
@@ -527,14 +531,14 @@
 				<div class=content_trrb id=content_trrb2>
 					<ul>
 					<?php for($i=0;$i<10;$i++){?>
-						<li><a href=""   <?php if($i<=2){?>  style="color:#E52520" <?php }?> >博客排行博客排行博客排行</a></li>
+						<li><a href="/blog/?uid-<?php echo $record_blog[$i]->uid; ?>-action-viewspace-itemid-<?php echo $record_blog[$i]->itemid; ?>" <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo $record_blog[$i]->subject; ?></a></li>
 					<? }?>	
 					</ul>
 				</div>
 				<div class=content_trrb id=content_trrb3>
 					<ul>
 					<?php for($i=0;$i<10;$i++){?>
-						<li><a href=""   <?php if($i<=2){?>  style="color:#E52520" <?php }?> >论坛排行论坛排行论坛排行</a></li>
+						<li><a href="/bbs/viewthread.php?tid=<?php echo $record_bbs[$i]->tid; ?>" <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo $record_bbs[$i]->subject; ?></a></li>
 					<? }?>	
 					</ul>
 				</div>

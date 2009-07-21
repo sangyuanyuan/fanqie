@@ -17,22 +17,6 @@
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
 		$record=$db->query($sql);
-		if($record[0]->related_news!="")
-		{
-			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"priority asc,last_edited_at desc");
-			if(count($about1)<10)
-			{
-				$about=search_keywords($record[0]->keywords,'smg_news',$about1,10-count($about1),"priority asc,last_edited_at desc");
-			}
-		}
-		else{
-			
-			$about=search_keywords($record[0]->keywords,'smg_news',$record,10,"priority asc,last_edited_at desc");
-		}
-		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
-		$comment=$db->paginate($sql,5);
-		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by flowernum desc limit 2";
-		$digg=$db->query($sql);
 		if($record[0]->news_type==2)
 		{
 			redirect($record[0]->file_name);
@@ -41,6 +25,27 @@
 		{
 			redirect($record[0]->target_url);
 		}
+		if($record[0]->related_news!="")
+		{
+			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"n.priority asc,last_edited_at desc");
+			$about = $about1;
+			if(count($about1)<10)
+			{
+				if($record[0]->keywords!=""){
+					$a2=search_keywords($id,$record[0]->keywords,'smg_news',$about1,10-count($about1),"n.priority asc,last_edited_at desc");
+					$about = array_merge($about, $a2);
+				}
+			}
+		}
+		else{
+			
+			$about=search_keywords($id,$record[0]->keywords,'smg_news',$record,10,"n.priority asc,last_edited_at desc");
+		}
+		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
+		$comment=$db->paginate($sql,5);
+		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by flowernum desc limit 2";
+		$digg=$db->query($sql);
+		
   ?>
 	
 </head>
@@ -141,7 +146,7 @@
 				</div>
 			<? }}?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
-			<div id=more><a href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
+			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<?php if(count($about)>0||count($about)>0){?>
 			<div class=abouttitle><div style="float:left; display:inline;">更多关于“</div><div style="width:150px; height:20px; line-height:20px; overflow:hidden; text-decoration:underline; float:left; display:inline"><?php echo delhtml($record[0]->short_title);?></div><div style="float:left; display:inline;">”的新闻</div></div>
 			<div class=aboutcontent style="padding-bottom:10px;">
@@ -227,7 +232,7 @@
 		<?php
 		if($record[0]->related_videos!=""){
 		$keys = explode(',',$record[0]->related_videos);
-		$sql="select * from smg_video where id=".$keys[0];
+		$sql="select photo_url,video_url from smg_video where id=".$keys[0];
 		$r_video=$db->query($sql);
 		 if($record[0]->video_src==""){?>
 			<div class=r_video><?php show_video_player('298','240',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
@@ -235,7 +240,7 @@
 		<div id=r_m>
 			<?php 
 			 for($i=0;$i<count($keys);$i++){
-			 	$sql="select * from smg_video where id in (".$record[0]->related_videos.")";
+			 	$sql="select id,title from smg_video where id in (".$keys[$i].")";
 			 	$videolist=$db->query($sql);
 			 ?> 
 			 	<div class="r_content">
@@ -253,7 +258,7 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select n.*,c.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
@@ -284,7 +289,7 @@
 			<div class=b_t_title1 param=3 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat">精彩视频</div>
 			<div class="b_t" id="b_t_1" style="display:none;">
 				<? 
-					$sql="SELECT * FROM bbs_posts where subject<>'' order by pid desc limit 10";
+					$sql="SELECT tid,subject FROM bbs_posts where subject<>'' order by pid desc limit 10";
 					$bbs=$db->query($sql);
 					for($i=0;$i<count($bbs);$i++){
 				?>
@@ -297,9 +302,9 @@
 			</div>
 			<div class=b_t id="b_t_2" style="display:none;">
 				<? 
-					$sql="SELECT * FROM blog_spaceitems order by itemid desc limit 10";
+					$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by itemid desc limit 10";
 					$blog=$db->query($sql);
-					for($i=0;$i<count($bbs);$i++){
+					for($i=0;$i<count($blog);$i++){
 				?>
 				<div class="r_content">
 					<ul>
@@ -310,7 +315,7 @@
 			</div>
 			<div class=b_t id="b_t_3" style="display:inline;">
 			<?php 
-			 $sql="select * from smg_video where is_adopt=1 order by priority asc,created_at desc limit 10";
+			 $sql="select id,title from smg_video where is_adopt=1 order by priority asc,created_at desc limit 10";
 			 $jcsp=$db->query($sql);
 			 for($i=0;$i<count($jcsp);$i++){	 	
 			 ?>

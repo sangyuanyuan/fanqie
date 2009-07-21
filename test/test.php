@@ -3,11 +3,7 @@
 	
 	require "../frame.php";	
 	use_jquery();
-	var_dump($_COOKIE);
-	require "../lib/smg_vote_class.php";
 	$vote = new smg_vote_class();
-	$vote->find(355);
-	$vote->display();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -15,19 +11,19 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>test</title>
-		<?php js_include_tag('pubfun');?>
+		<?php js_include_tag('pubfun');
+			
+		?>
+		<link href="test.css" rel="stylesheet" type="text/css">
 	</head>
 	<?php 
+	$vote->find(355);
+	$vote->display();
+	$vote->find(350);
+	#$vote->display(array('submit_src' => '/images/btn/btn1.jpg','show_sub_title' => false));
 
 	?>
-	<body>
-		<form action="test.post.php" method="post">
-			<input type="text" name="test[1][]">
-			<input type="text" name="test[1][]">
-			<input type="text" name="test[1][]">
-			<input type="submit" value="submit">
-		</form>
-		<a href="#" id="test">test</a>
+	<body>		
 	</body>
 </html>
 <script>
