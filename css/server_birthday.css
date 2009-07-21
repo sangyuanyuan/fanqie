@@ -1,0 +1,30 @@
+body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+
+#ibody{width:995px; border:1px #D8DFEA solid; margin:0 auto; margin-top:15px;}
+
+.l{width:751px; float:left; display:inline;}
+.r{width:244px; height:784px; background:url(/images/server/birthday_2.jpg); float:left;  display:inline;}
+
+.l #title{width:751px; height:111px; background:url(/images/server/birthday_1.jpg) no-repeat; float:left;  display:inline;}
+.linshi{ float:left; margin:5px 0px 5px 0px; display:inline;}
+
+
+.font99{ color:#000000; font-weight:bold;}
+
+
+
+
+		.mainleft3{ width:731px; float:left; padding-left:20px;}
+	
+	
+.neirong{ float:left; margin:5px 0px 5px 0px; display:inline;}
+.neirong2{ width:731px; height:29px; float:left; margin:5px 0px 5px 0px; display:inline; background-color:#F1F1F1; border-bottom:1px #898989 solid; border-top:1px #898989 solid;text-align:center;}
+.neirong3{ width:731px; float:left;}
+.li{ width:104px; float:left; line-height:29px; text-align:center;}
+.bg{ width:91px; height:103px; float:left;  padding:19px 0px 0px 13px; display:inline;}
+.lan{ background-image:url(../images/lan.jpg);}
+.lv{ background-image:url(../images/lv.jpg);}
+.zi{ background-image:url(../images/zi.jpg);}
+.hong{ background-image:url(../images/hong.jpg);}
+.kafei{ background-image:url(../images/kafei.jpg);}
+.huang{ background-image:url(../images/huang.jpg);}
