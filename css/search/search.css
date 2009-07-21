@@ -1,0 +1,6 @@
+body {
+	
+}
+#ibody{width:995px;min-height:500px; margin:0 auto; margin-top:10px; background:url('/images/search_top.gif') no-repeat;}
+#left_box {width:690px;float:left;}
+#right_box{width:260px;height:280px;float:left;}

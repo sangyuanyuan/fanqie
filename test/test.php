@@ -3,7 +3,6 @@
 	
 	require "../frame.php";	
 	use_jquery();
-	require "../lib/smg_vote_class.php";
 	$vote = new smg_vote_class();
 	$vote->find(355);
 	$vote->display();
@@ -38,6 +37,9 @@ $(function(){
 		e.preventDefault();
 		alert(e.data.fuck);
 		//window.location.href = "?tags=" + $('input:first').val();
+	});
+	$(window).unload(function(){
+		alert('unload');
 	});
 });
 </script>
