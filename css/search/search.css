@@ -3,4 +3,16 @@ body {
 }
 #ibody{width:995px;min-height:500px; margin:0 auto; margin-top:10px; background:url('/images/search_top.gif') no-repeat;}
 #left_box {width:690px;float:left;}
-#right_box{width:260px;height:280px;float:left;}
+#right_box{width:260px;height:280px;float:left; margin-top:8px;}
+#search_box{margin-left:10px;margin-top:8px;}
+.date_jquery{width:75px;height:16px;}
+#submit{border:1px #0000FF solid;background-color:#D4D0C8;line-height:20px; font-size:larger;cursor:pointer;}
+#search_result{margin-top:10px;margin-left:30px;}
+#search_result li{ list-style-type:disc; margin-top:15px;}
+#search_result li a{color:#000;text-decoration:none;}
+#search_result span {display:inline;color:#999999}
+#search_top10{background:url('/images/search_top10.gif') no-repeat;width:253px;height:26px;}
+#top10_box{width:253px;border:1px solid #F5F5F5; border-top:none;}
+.top10_item{margin-left:10px;margin-top:5px; width:240px; line-height:20px;}
+.top10_item .span_right{float:right;color:red; line-height:20px;display:inline;width:30px;}
+.span_left{float:left; line-height:20px;width:210px;}

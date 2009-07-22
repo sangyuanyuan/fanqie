@@ -392,9 +392,17 @@ function copy_dir($source, $destination, $child=1){
 } 
 
 function search_content($key,$table_name='smg_news',$conditions=null,$page_count = 10, $order=''){
-	$table = new table_class($table_name);
+	$db = get_db();
 	$key = str_replace('　', ' ', $key);
 	$keys = explode(' ',$key);
+	if($keys){
+		foreach ($keys as $v) {
+			if($v){
+				$db->execute("insert into smg_search_keys (search_key,search_count) values ('{$v}',1) ON DUPLICATE KEY update search_count = search_count +1;");;
+			}			
+		}
+	}
+	$table = new table_class($table_name);	
 	$c = array();
 	foreach ($keys as $v) {
 		array_push($c, "title like '%$v%'");
@@ -415,7 +423,7 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}
-	$db = get_db();
+	
 	if($page_count > 0){
 		return $db->paginate($sql,$page_count);	
 	}else{
