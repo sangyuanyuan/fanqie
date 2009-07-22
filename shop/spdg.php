@@ -1,40 +1,17 @@
-<? 
-	require_once('../libraries/tablemanager.class.php');
-	require_once('../libraries/sqlrecordsmanager.php');
-	require_once('../inc/pubfun.inc.php');
-	$page_size=20;
+ï»¿<? 
+	require_once('../frame.php');
 	$id=$_REQUEST['id'];
-	$sqlmanager = new SqlRecordsManager();
-	$tg=$sqlmanager->GetRecords('select * from smg_shop where id='.$id);
-	$page = isset($_REQUEST['page']) ? $_REQUEST['page']: 1;
+	$db=get_db();
+	$tg=$db->query('select * from smg_shop where id='.$id);
 	$strsql='select * from smg_shop_signup where tg_id='.$id.' order by createtime desc';
-	$record=mysql_query($strsql) or die ("select error1");
-	$record_num=mysql_num_rows($record);
-	$rs_num=$record_num;
-	if( $rs_num>0 ){
-   		if( $rs_num < $page_size ){ $page_count = 1; }               
-   		if( $rs_num % $page_size ){                                  
-       		$page_count = (int)($rs_num / $page_size) + 1;           
-   		}else{
-       		$page_count = $rs_num / $page_size;                      
-  		}
-	}
-	else{
-   		$page_count = 0;
-	}
-	if ($page=="")  {$page=1;}
-	if ($page>$page_count)  {$page=$page_count;}
-	if ($page==0)  {$page=1;}
-	if ($page< 0)  {$page=1;}
-	$strsql='select * from smg_shop_signup where tg_id='.$id.' order by createtime desc limit '.($page-1)*$page_size.','.$page_size;
-	$record=mysql_query($strsql) or die ("select error2");
+	$record=$db->paginate($strsql,20);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMGÍÅ¹º -<? echo $tg[0]->title;?></title>
+	<title>SMGç½‘åº— -<? echo $tg[0]->title;?></title>
 	<link href="/css/smg.css" rel="stylesheet" type="text/css">
 	<script language="javascript" src="/js/smg.js"></script>
 	<script language="javascript" src="spdg.js"></script>
@@ -47,27 +24,27 @@
 <div id=bodys>
 <div id=nyf_left>
 	<form name="fqtg" method="post" action="/shop/spdg.post.php"> 
- 		<div id=content1><a href="/">Ê×Ò³</a>¡¡>¡¡<? echo $tg[0]->title;?></div>
- 		<div style="width:100px; height:20px; margin-top:12px; margin-left:25px; text-align:center; float:left; display:inline;">ĞÕÃû</div>	
-    	<div style="width:250px; height:20px; margin-top:12px; margin-left:10px; text-align:center; overflow:hidden; float:left; display:inline;">ÉÌÆ·Ãû³Æ</div><div style="width:30px; margin-left:10px; margin-top:12px; text-align:center; float:left; display:inline;">ÊıÁ¿</div>¡¡¡¡
-    	<div style="width:200px; height:20px; margin-top:-2px; margin-left:20px; text-align:center; color:#0071B5; float:left; display:inline;">¶©¹ºÊ±¼ä</div>
+ 		<div id=content1><a href="/">é¦–é¡µ</a>ã€€>ã€€<? echo $tg[0]->title;?></div>
+ 		<div style="width:100px; height:20px; margin-top:12px; margin-left:25px; text-align:center; float:left; display:inline;">å§“å</div>	
+    	<div style="width:250px; height:20px; margin-top:12px; margin-left:10px; text-align:center; overflow:hidden; float:left; display:inline;">å•†å“åç§°</div><div style="width:30px; margin-left:10px; margin-top:12px; text-align:center; float:left; display:inline;">æ•°é‡</div>ã€€ã€€
+    	<div style="width:200px; height:20px; margin-top:-2px; margin-left:20px; text-align:center; color:#0071B5; float:left; display:inline;">è®¢è´­æ—¶é—´</div>
     <? while($nyf=mysql_fetch_array($record)){?>	
     	<div style="width:100px; height:20px; margin-top:12px; margin-left:25px; text-align:center; float:left; display:inline;"><?php echo $nyf['name'];?></div>	
-    	<div style="width:250px; height:20px; margin-top:12px; margin-left:10px; text-align:center; overflow:hidden; float:left; display:inline;"><?php echo $nyf['spname']; ?></div><div style="width:30px; margin-top:12px; margin-left:10px; text-align:center; float:left; display:inline;"><? echo $nyf['num'];?></div>¡¡¡¡
+    	<div style="width:250px; height:20px; margin-top:12px; margin-left:10px; text-align:center; overflow:hidden; float:left; display:inline;"><?php echo $nyf['spname']; ?></div><div style="width:30px; margin-top:12px; margin-left:10px; text-align:center; float:left; display:inline;"><? echo $nyf['num'];?></div>ã€€ã€€
     	<div style="width:200px; height:20px; margin-top:12px; margin-left:20px; text-align:center; color:#0071B5; float:left; display:inline;"><?php echo $nyf['createtime']; ?></div>	
     	
     <? }?>
 
       <div class=pageurl>
-      	<a href="?id=<? echo $id;?>&page=1">Ê×Ò³</a> 
-				<a href="?id=<? echo $id;?>&page=<? echo $page-1;?>">ÉÏÒ»Ò³</a> 
-				<a href="?id=<? echo $id;?>&page=<? echo $page+1;?>">ÏÂÒ»Ò³</a> 
-				<a href="?id=<? echo $id;?>&page=<? echo $page_count;?>">Ä©Ò³</a> 
-				¹²<? echo $rs_num;?>Ìõ¼ÇÂ¼ 
-				µÚ<? echo $page;?>Ò³/¹²<? echo $page_count;?>Ò³
+      	<a href="?id=<? echo $id;?>&page=1">é¦–é¡µ</a> 
+				<a href="?id=<? echo $id;?>&page=<? echo $page-1;?>">ä¸Šä¸€é¡µ</a> 
+				<a href="?id=<? echo $id;?>&page=<? echo $page+1;?>">ä¸‹ä¸€é¡µ</a> 
+				<a href="?id=<? echo $id;?>&page=<? echo $page_count;?>">æœ«é¡µ</a> 
+				å…±<? echo $rs_num;?>æ¡è®°å½• 
+				ç¬¬<? echo $page;?>é¡µ/å…±<? echo $page_count;?>é¡µ
 				<select id="newyearpage" name="newyearpage"  onChange="jumppage('/shop/spdg.php?id=<? echo $id;?>&page=',this.options[this.options.selectedIndex].value)">
 					<? for($i=1;$i<=$page_count;$i++){?>
-					<option <? if($page==$i){?>selected="selected"<? }?> value="<? echo $i;?>">µÚ<? echo $i;?>Ò³</option>
+					<option <? if($page==$i){?>selected="selected"<? }?> value="<? echo $i;?>">ç¬¬<? echo $i;?>é¡µ</option>
 					<? }?>
 				</select>
 				<input type="hidden" id=page value=<? echo $page;?>>
@@ -75,21 +52,21 @@
 
        <div id=content9 <? if(strtotime(date("Y-m-d H:i:s")) > strtotime($tg[0]->endtime)){?>style="display:none;"<? }?>>
        	<hr>
-       	 ÓÃ»§ĞÕÃû£º<input type="text" id="buyname" name="buyname"><br>
-       	 ÉÌÆ·Ãû³Æ£º<input type="text" id="spname" name="spname"><br>
-       	 ÉÌÆ·ÊıÁ¿£º<input type="text" id="num" name="num"><span style="color:red;">Ö»ÒªÌîÊı×Ö</span><br>  	 
-    	   ÁªÏµ·½Ê½£º<input type="text" id="phone" name="phone"><br>
-    	   <? if($tg[0]->issendfq==0){?>ËÍ»õµØÖ·£º<input type="text" id="address" name="address"><? } else {?><input type="hidden" id="address" name="address" value="Íşº£Â·298ºÅ26Â¥×Ü±àÊÒ·¬ÇÑÍø"><? }?><br> 
-    	   ÆäËû±¸×¢£º<textarea id="remark" name="remark" rows="10"></textarea>
+       	 ç”¨æˆ·å§“åï¼š<input type="text" id="buyname" name="buyname"><br>
+       	 å•†å“åç§°ï¼š<input type="text" id="spname" name="spname"><br>
+       	 å•†å“æ•°é‡ï¼š<input type="text" id="num" name="num"><span style="color:red;">åªè¦å¡«æ•°å­—</span><br>  	 
+    	   è”ç³»æ–¹å¼ï¼š<input type="text" id="phone" name="phone"><br>
+    	   <? if($tg[0]->issendfq==0){?>é€è´§åœ°å€ï¼š<input type="text" id="address" name="address"><? } else {?><input type="hidden" id="address" name="address" value="å¨æµ·è·¯298å·26æ¥¼æ€»ç¼–å®¤ç•ªèŒ„ç½‘"><? }?><br> 
+    	   å…¶ä»–å¤‡æ³¨ï¼š<textarea id="remark" name="remark" rows="10"></textarea>
     	   <input type="hidden" id="tg_id" name="tg_id" value="<? echo $id;?>">
        </div> 
-       <div <? if(strtotime(date("Y-m-d H:i:s")) > strtotime($tg[0]->endtime)){?>style="display:none;"<? }?> id=content11 onclick="check()" >¶©¡¡¹º</div>
+       <div <? if(strtotime(date("Y-m-d H:i:s")) > strtotime($tg[0]->endtime)){?>style="display:none;"<? }?> id=content11 onclick="check()" >è®¢ã€€è´­</div>
       </form>
  </div>
 
  <div id=n_right>
  		<div id=content>
- 			<div class=title>Í¼Æ¬ĞÂÎÅ</div>
+ 			<div class=title>å›¾ç‰‡æ–°é—»</div>
 			<? 
  	    $photonews = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=35 and isphotonews =1 and isadopt=1 order by priority asc, pubdate desc',1,3);
  	    for($i=0;$i<count($photonews);$i++){?>
@@ -99,11 +76,11 @@
  		</div>
 		<div id=r1>
 	 		 <div id=bbs>
-	 				<div class=title>ÂÛÌ³¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡<a href="/bbs/">½øÈëÂÛÌ³</a></div>
+	 				<div class=title>è®ºå›ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€<a href="/bbs/">è¿›å…¥è®ºå›</a></div>
 					<script type="text/javascript" src="/bbs/api/javascript.php?key=threads_latestreply6"></script>
 	 		 </div> 	
 	 		 <div id=blog>
-	 				<div class=title>²©¿Í¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡<a href="/blog">½øÈë²©¿Í</a></div>
+	 				<div class=title>åšå®¢ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€<a href="/blog">è¿›å…¥åšå®¢</a></div>
 				 <script language="JavaScript" src="/blog/batch.javascript.php?param=UDUCOg06XD4BaQ11XHddLAdqAX1WJQQkDTZTY1EzBGsCaQA7W2RUelc7CHZTZQpuBnxQLFA5B3lZb1xuB3MFfFAnAjkNJlwpASINRVxLXQ8HTAF9VjoEPQ06U2lRIgQmAjUAeFs1VHpXNwhlU2IKYwZrUHdQOQc6WWZcIAc5BThQZwJ5DSFcLQFuDS5cbF0wB2ABNVYJBDgNNlN0UTMEegJxACZbZlQlVzgIfVM3"></script>
 	 		 </div>
 		</div>
