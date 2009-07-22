@@ -1,4 +1,4 @@
-<?php
+๏ปฟ<?php
   require_once('../libraries/tableobject_class.php');
   require_once('../inc/pubfun.inc.php');
   $cookie=(isset($_COOKIE['smg_username'])) ? $_COOKIE['smg_username'] : 0;
@@ -6,11 +6,11 @@
   $commenter=$_REQUEST['commenter'];
   $vowels = array("~", "!", "@", "#", "$", "%", "^", "&", "*", "(",")");
   $commenter=str_replace($vowels,"",$commenter);
-  if($commenter=="ะกทฌวั"||$commenter=="ทฌวัะกฑเ")
+  if($commenter=="ๅฐ็•ช่"||$commenter=="็•ช่ๅฐ็ผ–")
   {
   		if($cookie!="01004660"&&$cookie!="01004645")
   		{
-  			echo '<script language=javascript>alert("ฬุสโร๛ืึฝ๖ทฌวัอ๘นÜภํิฑฒลฤÜสนำรฃก")</script>';
+  			alert("็นๆฎๅๅญ—ไป…็•ช่็ฝ‘็ฎก็ๅ‘ๆ่ฝไฝฟ็”จ๏ผ");
 				echo '<script language=javascript>window.location.href="/fqtg/fqtg.php?id='.$_REQUEST['tgid'].';</script>';
 				exit;	
   		}
