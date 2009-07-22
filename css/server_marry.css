@@ -13,9 +13,10 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #t_r{width:500px; height:696px; margin-top:8px; margin-left:7px; background:url('/images/server/marry_t_r.jpg') no-repeat; float:left; display:inline;}
 #t_r .box{width:450px; height:300px; margin-left:56px; margin-top:11px;  float:left; display:inline;}
 #t_r #wybm{margin-left:330px; margin-top:10px;}
-.b1{width:995px; height:131px; margin-top:10px;  background:url('/images/server/marry_b1.jpg') no-repeat; float:left; display:inline;}
-.b2{width:995px; height:131px; margin-top:10px; background:url('/images/server/marry_b2.jpg') no-repeat; float:left; display:inline;}
-
+.b1{width:995px; height:131px; margin-top:10px;  background:url('/images/server/marry_b1.gif') no-repeat; float:left; display:inline;}
+.b2{width:995px; height:131px; margin-top:10px; background:url('/images/server/marry_b2.gif') no-repeat; float:left; display:inline;}
+.b3{width:995px; height:131px; margin-top:10px;  background:url('/images/server/marry_b3.gif') no-repeat; float:left; display:inline;}
+.b4{width:995px; height:131px; margin-top:10px; background:url('/images/server/marry_b4.gif') no-repeat; float:left; display:inline;}
 
 .content{ width:450px; height:148px; margin-left:15px; padding-top:10px; float:left; display:inline;}
 .content .radio{width:20px; height:70px; margin-top:60px; margin-right:5px; float:left; display:inline;}

@@ -1,7 +1,10 @@
 <?php
 	require_once "../../frame.php";
 	$magazine = new table_class("smg_magazine");
-	$magazine->find($_POST['id']);
+	if($_POST['id']!=''){
+		$magazine->find($_POST['id']);
+	}
+	
 	
 	//var_dump($_POST);
 	
