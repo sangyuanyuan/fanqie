@@ -34,6 +34,12 @@ $(function(){
 		}
 	);
 	
+	$('#search_text').keydown(function(e){
+		if(e.keycode == 13){
+			$('form').submit();
+		}
+	});
+	
 	$('#submit').click(function(e){
 		$('form').submit();
 	});
