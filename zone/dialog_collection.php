@@ -5,7 +5,7 @@ js_include_once_tag('jquery.cookie');
 ?>
 
 <div style="text-align:center">
-	<form id="dialog_form" enctype="multipart/form-data" action="dialog_collection.post.php" method="post"> 
+	<form id="dialog_form" action="dialog_collection.post.php" method="post"> 
 		<table border="0" cellpadding="3" cellspacing="3" style="margin:0 auto;" >
 		  <tr>
 		    <td>昵称：</td>
@@ -20,7 +20,7 @@ js_include_once_tag('jquery.cookie');
 		    <td><textarea id="dialog_content" name="dialog[content]" style="width:300px; height:150px;"></textarea>
 		  </tr>
 		  <tr>
-		    <td colspan="2"><input type="button" id="submit" style="width:90px;" value="提交"></td>
+		    <td colspan="2"><input type="submit" id="submit" style="width:90px;" value="提交"></td>
 		  </tr>
 		</table>
 	</form>	
@@ -32,6 +32,7 @@ $(function(){
 			if($("#dialog_user").attr("value")==""){alert("昵称不能为空！"); return false;}
 			if($("#dialog_title").attr("value")==""){alert("题目不能为空！"); return false;}
 			if($("#dialog_content").attr("value")==""){alert("内容不能为空！"); return false;}
+<<<<<<< HEAD:zone/dialog_collection.php
 			$.post('/zone/dialog_collection.post.php',{'dialog[user_id]':$("#dialog_user").attr('value'),'dialog[title]':$("#dialog_user").attr('value'),'dialog[content]':$("#dialog_content").attr('value')},function(data){
 				alert(data);
 				
@@ -39,6 +40,10 @@ $(function(){
 			)
 
 
+=======
+			$("#dialog_form").submit();
+			
+>>>>>>> 14f5cbe114033fc4a23ceb50c69b0ef0c3a410d6:zone/dialog_collection.php
 	})		
 });
 
