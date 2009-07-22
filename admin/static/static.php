@@ -80,6 +80,8 @@ if($type=="report")
 	}
 	fclose($fp);
 	$fcontent=StrChar($fcontent);
+	
+	$fcontent=str_replace('<li style="font-size:12px">','<li style="display:none">',$fcontent);
 	$filename='../../index_report.html';
 	$handle=fopen($filename,"wt");
 	

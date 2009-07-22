@@ -23,7 +23,7 @@
 		<?php
 		
 			$sql = 'select * from smg_dialog order by create_time desc';
-			$record=$db -> paginate($sql,1);
+			$record=$db -> paginate($sql,5,"param1");
 		?>
 		<?php for($i=0;$i<count($record);$i++){ ?>
 			<div class=l_b>
@@ -37,20 +37,30 @@
 				<div class=content><?php echo $record[$i]->content ?></div>
 			</div>
 		<?php } ?>
-		<div id=page1><?php paginate();?></div>
+		<div id=page1><?php paginate("","","param1");?></div>
 	</div>
 	<div id=ibody_right>
 		<a href="dialog_collection.php?width=400&height=250" class="thickbox" id="r_t"></a>
 		<div id=r_b>
 			<div id=title>征集话题列表</div>
 			<?php
-				$sql = 'select * from smg_dialog_collection order by create_time desc limit 10';
-				$record=$db -> query($sql);
+				$sql = 'select * from smg_dialog_collection order by create_time desc';
+				$record=$db -> paginate($sql,5,"param2");
+
 			?>
 			<div id=content>
-				<div class=box></div>
-				
+				<?php for($i=0;$i<count($record);$i++){ ?>
+				<div class=box>
+					<img src="/images/zone/digg.jpg" style="cursor:pointer" class="digg" id="<?php echo $record[$i]->id?>" > <span class=font3>人气：</span><span class=font3 id="digg<?php echo $record[$i]->id?>"><?php echo $record[$i]->dig?></span><br>
+					<span class=font1>发起人：</span><?php echo $record[$i]->use_id?><br>
+					<span class=font1>题目：</span><?php echo $record[$i]->title?><br>
+					<span class=font1>内容：</span><?php echo $record[$i]->content?><br>
+					<span class=font2><?php echo $record[$i]->create_time?></span><br>
+				</div>
+				<? }?>
 			</div>
+			<div id=page2><?php paginate("","","param2");?></div>
+
 		</div>
 	</div>
 </div>
@@ -58,3 +68,20 @@
 
 </body>
 </html>
+<script>
+$(function(){
+	$(".digg").click(function()
+	{
+		var num=$(this).attr("id");
+		var digg=$("#digg"+num).html();
+		digg=parseInt(digg)+1;
+		$("#digg"+num).html(digg);
+		$.post('/zone/dialog.post.php',{'type':'digg','id':num},function(data){
+				}
+		)
+
+	})		
+});
+
+
+</script>

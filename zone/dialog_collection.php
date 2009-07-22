@@ -32,8 +32,9 @@ $(function(){
 			if($("#dialog_use").attr("value")==""){alert("昵称不能为空！"); return false;}
 			if($("#dialog_title").attr("value")==""){alert("题目不能为空！"); return false;}
 			if($("#dialog_content").attr("value")==""){alert("内容不能为空！"); return false;}
-			$.post('/zone/dialog_collection.post.php',{'dialog[use_id]':$("#dialog_use").attr('value'),'dialog[title]':$("#dialog_title").attr('value'),'dialog[content]':$("#dialog_content").attr('value')},function(data){
-				alert(data);
+			$.post('/zone/dialog.post.php',{'type':'collection','dialog[use_id]':$("#dialog_use").attr('value'),'dialog[title]':$("#dialog_title").attr('value'),'dialog[content]':$("#dialog_content").attr('value')},function(data){
+				alert("提交成功");
+				window.location.reload();
 				
 				}
 			)
