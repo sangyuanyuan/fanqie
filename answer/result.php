@@ -47,7 +47,7 @@
 							$tot = $tot/$record->question_count;
 							$tot = substr($tot, 0, 2).'%';
 							echo $tot;
-						?>
+						?></font>
 					</div>
 				</div>
 				<div style="width:400px;height:40px;">

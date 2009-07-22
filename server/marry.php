@@ -18,8 +18,61 @@
 <div id=ibody>
 	<div id=ibody_top>
 		<div id=t_t></div>
-		<div id=t_l></div>
-		<div id=t_r></div>
+		<div id=t_l>
+			<div class=box>
+				<?php 
+					$db = get_db();
+					$sql = 'select * from smg_marry where sex="woman"';
+					$records = $db->query($sql);
+					$count = count($records);
+					for($i=0;$i<$count;$i++){
+				?>
+				<div class=content>
+					<div class=radio><input type="radio" name="woman_choose" value="<?php echo $i+1; ?>"></div>
+					<div class=pic><img src="<?php echo $records[$i]->photo;?>" width="102" height="142" border="0"></div>
+					<div class=info>
+					姓名：<?php echo $records[$i]->name; ?>&nbsp;
+					出生年份：<?php echo substr($records[$i]->birthday, 0, 4); ?>&nbsp;
+					身高：<?php echo $records[$i]->height; ?></br>
+					学历：<?php echo $records[$i]->education; ?>&nbsp;
+					毕业学校：<?php echo $records[$i]->school; ?></br>
+					职业：<?php echo $records[$i]->job; ?>&nbsp;
+					收入：<?php echo $records[$i]->income; ?></br>
+					恋爱史：<?php echo $records[$i]->history; ?></br>
+					择偶标准：<?php echo $records[$i]->request; ?>
+					</div>
+				</div>
+				<?php } ?>
+			</div>
+		</div>
+		<div id=t_r>
+			<div id=wybm><a href="apply.php" target="_blank"><img src="/images/server/wybm.gif" border=0></a></div>
+			<div class=box>
+				<?php 
+					$db = get_db();
+					$sql = 'select * from smg_marry where sex="man"';
+					$records = $db->query($sql);
+					$count = count($records);
+					for($i=0;$i<$count;$i++){
+				?>
+				<div class=content>
+					<div class=radio><input type="radio" name="man_choose" value="<?php echo $i+1; ?>"></div>
+					<div class=pic><img src="<?php echo $records[$i]->photo;?>" width="102" height="142" border="0"></div>
+					<div class=info>
+					姓名：<?php echo $records[$i]->name; ?>&nbsp;
+					出生年份：<?php echo substr($records[$i]->birthday, 0, 4); ?>&nbsp;
+					身高：<?php echo $records[$i]->height; ?></br>
+					学历：<?php echo $records[$i]->education; ?>&nbsp;
+					毕业学校：<?php echo $records[$i]->school; ?></br>
+					职业：<?php echo $records[$i]->job; ?>&nbsp;
+					收入：<?php echo $records[$i]->income; ?></br>
+					恋爱史：<?php echo $records[$i]->history; ?></br>
+					择偶标准：<?php echo $records[$i]->request; ?>
+					</div>
+				</div>
+				<?php } ?>
+			</div>
+		</div>
 	</div>
 	<div id=ibody_middle></div>
 	<div id=ibody_line></div>
