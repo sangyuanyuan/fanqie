@@ -23,7 +23,6 @@
   $menu = new table_class('smg_shop_comment');
   $menu->find($_POST['comment']['id']);
   $menu->update_attributes($_POST['comment']);
-  echo '<br>';
   $menu->save();
   redirect('/shop/spinfo.php?id='.$_POST['tgid']);
 ?>

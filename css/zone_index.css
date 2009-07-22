@@ -50,7 +50,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #t_c_m{width:393px; height:272px; margin-top:10px; margin-left:10px; background:url('/images/zone/index_t_c_m.jpg') no-repeat; float:left; display:inline;}
 #t_c_m #title1{width:35px; height:20px; margin-top:10px; margin-left:25px; background:#ffffff; line-height:20px; font-size:16px; font-weight:bold; float:left; display:inline;}
 #t_c_m #title2{width:300px; height:30px; margin-top:5px; margin-left:10px; line-height:20px; font-size:16px; color:#FF9900; font-weight:bold; float:left; display:inline;}
-#t_c_m #left{width:100px; margin-top:10px; margin-left:10px; line-height:15px; text-align:center; float:left; display:inline;}
+#t_c_m #left{width:100px; margin-top:10px; margin-left:10px; line-height:15px; float:left; display:inline;}
 #t_c_m #left .content{width:100px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;}
 #t_c_m #left .content a{color:#000000; text-decoration:none;}
 #t_c_m #right{width:270px; margin-top:8px; margin-right:5px; float:right; display:inline;}
@@ -81,6 +81,14 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #b_l .content a{text-decoration:none;}
 #b_c{width:323px; height:275px; margin-left:15px; background:url('/images/zone/index_b_c.jpg') no-repeat; float:left; display:inline;}
 #b_c #title{width:200px; height:20px; margin-top:10px; margin-left:30px; color:#999999; line-height:20px; font-weight:bold; float:left; display:inline;}
+#b_c #b_c_l{width:130px; margin-top:20px; margin-left:15px; float:left; display:inline;}
+#b_c #b_c_l #pic{width:130px; height:170px; float:left; display:inline;}
+#b_c #b_c_l #pic img{width:120px; height:160px; border:0px; margin:5px; float:left; display:inline;}
+#b_c #b_c_l #pictitle{width:130px; height:20px; margin-top:10px; line-height:20px; overflow:hidden; text-align:center; float:left; display:inline;}
+#b_c #b_c_l #pictitle a{color:#FF6600; font-weight:bold; text-decoration:none;}
+#b_c #b_c_r{width:160px; height:200px; margin-top:20px; margin-left:5px; float:left; display:inline;}
+#b_c #b_c_r #b_c_r_title{width:160px; height:20px; font-size:16px; font-weight:bold; color:#333333; line-height:20px; overflow:hidden; float:left; display:inline;}
+#b_c #b_c_r #content{width:160px; height:180px; line-height:20px; overflow:hidden; text-indent:24px; float:left; display:inline;}
 .b_r{width:183px; height:132px; background:url('/images/zone/index_b_r.jpg') no-repeat; float:right; display:inline;}
 .b_r .title{width:170px; height:20px; margin-top:3px; margin-left:5px; line-height:27px; color:#ffffff; font-size:16px; font-weight:bold; float:left; display:inline;}
 .b_r .content{widht:55px; height:20px; margin-top:2px; margin-left:8px; line-height:20px; overflow:hidden; float:left; display:inline;}

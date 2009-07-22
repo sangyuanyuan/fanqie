@@ -50,6 +50,10 @@
 		$blogph=$db->query($sql);
 		$sql="SELECT uid,username FROM blog_userspaces b order by viewnum desc limit 15";
 		$bloghotspace=$db->query($sql);
+		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='博主真人秀' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 1";
+		$blogsure=$db->query($sql);
+		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='博主真人秀' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
+		$blogsureimg=$db->query($sql);
   ?>
 	
 </head>
@@ -124,7 +128,7 @@
 				<div id=title1>博客</div>
 				<div id=title2>观点视角</div>
 				<div id=left>
-					<a target="_blank" href="<?php echo $gdsjimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $gdsjimg[0]->src;?>"><div style="width:100px; margin-top:5px; height:15px; overflow:hidden; float:left; display:inline;"><?php echo delhtml($gdsjimg[0]->title);?></div></a>
+					<a target="_blank" href="<?php echo $gdsjimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $gdsjimg[0]->src;?>"><div style="width:100px; margin-top:5px; height:15px; text-align:center; overflow:hidden; float:left; display:inline;"><?php echo delhtml($gdsjimg[0]->title);?></div></a>
 					<?php for($i=0;$i<3;$i++){?>
 						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $gdsj[$i]->platform; ?>/news/news.php?id=<?php echo $gdsj[$i]->id; ?>"><?php echo $gdsj[$i]->short_title; ?></a></div>
 					<?php } ?>
@@ -139,7 +143,7 @@
 				<div id=title1>博客</div>
 				<div id=title2>分享生活</div>
 				<div id=left>
-					<a target="_blank" href="<?php echo $fxshimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $fxshimg[0]->src;?>"><div style="width:100px; margin-top:5px; height:15px; overflow:hidden; float:left; display:inline;"><?php echo delhtml($fxshimg[0]->title);?></div></a>
+					<a target="_blank" href="<?php echo $fxshimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $fxshimg[0]->src;?>"><div style="width:100px; text-align:center; margin-top:5px; height:15px; overflow:hidden; float:left; display:inline;"><?php echo delhtml($fxshimg[0]->title);?></div></a>
 					<?php for($i=0;$i<7;$i++){?>
 						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo $fxsh[$i]->short_title; ?></a></div>
 					<?php }?>
@@ -165,8 +169,7 @@
 				<form method="post" action="/pub/pub.post.php">
 					<div id="subcomment">
 						<input type="text" id="commenter" name="post[nick_name]">
-						<textarea name="post[comment]">
-						</textarea>
+						<textarea name="post[comment]"></textarea>
 						<input type="hidden" id="resource_type" name="post[resource_type]" value="zone">
 						<input type="hidden" name="type" value="comment">
 						<button type="submit">回复</button>
@@ -222,6 +225,14 @@
 		</div>
 		<div id=b_c>
 			<div id=title>博主真人秀</div>
+			<div id=b_c_l>
+				<div id=pic><a target="_blank" href="<?php echo $blogsureimg[0]->url; ?>"><img src="<?php echo $blogsureimg[0]->src;?>"></a></div>
+				<div id=pictitle><a target="_blank" href="<?php echo $blogsureimg[0]->url;?>"><?php echo $blogsureimg[0]->title;?></a></div>
+			</div>
+			<div id=b_c_r>
+				<div id=b_c_r_title><?php echo $blogsure[0]->short_title; ?></div>
+				<div id=content><?php echo $blogsure[0]->description;?></div>
+			</div>
 		</div>
 		<div class=b_r>
 			<div class="title">热门博主列表</div>

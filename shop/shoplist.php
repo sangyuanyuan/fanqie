@@ -18,7 +18,7 @@
 <div id=bodys>
 	<div id=fqtglist><a href="/">首页</a>　>　<a href="/shop/shoplist.php">店铺列表</a></div>
 	<div id=fqtglistcount style="padding-top:10px;">
-		<a style="margin-left:10px; font-size:16px;" target="_blank" href="createshop.php">创建店铺</a>
+		<a style="font-size:16px;" target="_blank" href="createshop.php">创建店铺</a>
 		<? for($i=0;$i<count($news);$i++){?>
 		<div class=context>
 			
@@ -33,6 +33,6 @@
  			<?php paginate('shoplist.php');?>
 	</div>
 </div>
-<? require_once('../inc/bottom.inc.html');?>	
+<?php require_once('../inc/bottom.inc.html');?>	
 </body>
 </html>
