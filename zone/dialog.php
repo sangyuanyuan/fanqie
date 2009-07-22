@@ -122,7 +122,7 @@
 				?>
 				</div>
 			</div>
-			<div id=b_r_b1></div>
+			<a href="dialog_collection.php?width=400&height=250" class="thickbox" id=b_r_b1></a>
 			<div id=b_r_title2><div style=" margin-top:3px;margin-left:40px;font-size:larger;"><b>往期对话索引</b></div></div>
 			<?php 
 				$db = get_db();
