@@ -5,7 +5,7 @@ js_include_once_tag('jquery.cookie');
 ?>
 
 <div style="text-align:center">
-	<form id="dialog_form" enctype="multipart/form-data" action="dialog_collection.post.php" method="post"> 
+	<form id="dialog_form" action="dialog_collection.post.php" method="post"> 
 		<table border="0" cellpadding="3" cellspacing="3" style="margin:0 auto;" >
 		  <tr>
 		    <td>昵称：</td>
@@ -20,7 +20,7 @@ js_include_once_tag('jquery.cookie');
 		    <td><textarea id="dialog_content" name="dialog[content]" style="width:300px; height:150px;"></textarea>
 		  </tr>
 		  <tr>
-		    <td colspan="2"><input type="button" id="submit" style="width:90px;" value="提交"></td>
+		    <td colspan="2"><input type="submit" id="submit" style="width:90px;" value="提交"></td>
 		  </tr>
 		</table>
 	</form>	
@@ -33,6 +33,7 @@ $(function(){
 			if($("#dialog_title").attr("value")==""){alert("题目不能为空！"); return false;}
 			if($("#dialog_content").attr("value")==""){alert("内容不能为空！"); return false;}
 			$("#dialog_form").submit();
+			
 	})		
 });
 

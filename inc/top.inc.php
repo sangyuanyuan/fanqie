@@ -32,6 +32,7 @@
 	   		<input type="text" name="key"></input>
 	   		<button id=button1></button>
 	   		<button id=button2></button>
+			<input type="hidden" name="search_type" id="search_type_hidden" value="smg_news">
 		</form>
    		<div id=hot><a href="#">星尚大典</a> <a href="#">小沈阳</a> <a href="#">朝鲜核实验</a></div>
    	</div>
@@ -87,10 +88,12 @@
 	$(function(){
 		$('#button1').click(function(){
 			$('#top_search_form').attr('action','/search/?search_key=smg_news');
+			$('#search_type_hidden').val('smg_news');
 			$('#top_search_form').submit();
 		});
 		$('#button2').click(function(){
 			$('#top_search_form').attr('action','/search/');
+			$('#search_type_hidden').val('');
 			$('#top_search_form').submit();
 		});
 	});

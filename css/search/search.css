@@ -12,7 +12,7 @@ body {
 #search_result li a{color:#000;text-decoration:none;}
 #search_result span {display:inline;color:#999999}
 #search_top10{background:url('/images/search_top10.gif') no-repeat;width:253px;height:26px;}
-#top10_box{width:253px;border:1px solid #F5F5F5; border-top:none;}
-.top10_item{margin-left:10px;margin-top:5px; width:240px; line-height:20px;}
+#top10_box{width:253px;border:1px solid #F5F5F5; border-top:none;height:220px; }
+.top10_item{margin-left:10px;margin-top:5px; width:240px;line-height:20px;}
 .top10_item .span_right{float:right;color:red; line-height:20px;display:inline;width:30px;}
 .span_left{float:left; line-height:20px;width:210px;}
