@@ -41,6 +41,7 @@
 		<a href="dialog_collection.php?width=400&height=250" class="thickbox" id="r_t"></a>
 		<div id=r_b>
 			<div id=title>征集话题列表</div>
+			<div id=content></div>
 		</div>
 	</div>
 </div>

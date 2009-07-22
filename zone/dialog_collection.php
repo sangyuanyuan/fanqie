@@ -32,7 +32,13 @@ $(function(){
 			if($("#dialog_user").attr("value")==""){alert("昵称不能为空！"); return false;}
 			if($("#dialog_title").attr("value")==""){alert("题目不能为空！"); return false;}
 			if($("#dialog_content").attr("value")==""){alert("内容不能为空！"); return false;}
-			$("#dialog_form").submit();
+			$.post('/zone/dialog_collection.post.php',{'dialog[user_id]':$("#dialog_user").attr('value'),'dialog[title]':$("#dialog_user").attr('value'),'dialog[content]':$("#dialog_content").attr('value')},function(data){
+				alert(data);
+				
+				}
+			)
+
+
 	})		
 });
 

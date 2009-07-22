@@ -17,3 +17,4 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #r_t{width:277px; height:167px; background:url('/images/zone/dialoglist_r_t.jpg') no-repeat; float:right; display:inline;}
 #r_b{width:275px; height:814px; margin-top:10px; background:#EBEBEB; border:1px solid #D7D7D7; float:right; display:inline;}
 #r_b #title{width:242px; height:24px; padding-top:4px; padding-left:35px; font-size:14px; font-weight:bold; line-height:20px; background:url('/images/zone/dialoglist_r_b.jpg') no-repeat; float:left; display:inline;}
+#r_b #content{width:232px; height:24px; background:#ffffff; float:left; display:inline;}
