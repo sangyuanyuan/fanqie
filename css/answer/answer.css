@@ -1,0 +1,21 @@
+body {
+	margin:0;
+	padding:0;
+}
+
+#ibody{width:950px; margin:0 auto; padding:30px;}
+
+#a_top{width:725px; height:100px; margin:0 auto; background:url(/images/answer/kxfzg.jpg) no-repeat;}
+#time{width:45px; height:28px; margin-top:30px; margin-left:150px; line-height:15px; font-size:15px; padding-top:15px; text-align:center; background:url(/images/answer/bg3.jpg) no-repeat; float:left; display:inline;}
+#point{width:76px; height:35px; margin-top:40px; margin-left:500px; padding-top:10px; padding-left:40px; line-height:15px; background:url(/images/answer/bg2.jpg) no-repeat; float:left; display:inline;}
+
+#middle{width:636px; margin-left:150px; padding-bottom:20px; border:2px solid #F2F2F2; float:left; display:inline; }
+#middle #num{font-size:16px; padding-top:20px; padding-left:15px; font-weight:bold; color:#D5273E; line-height:20px; float:left; display:inline;}
+#middle #question_title{width:580px; padding-right:20px; padding-top:20px; font-size:15px; font-weight:bold; color:#D5273E; line-height:20px; float:left; display:inline;}
+#middle .question_option{width:500px; height:20px; margin-top:10px; margin-left:30px; line-height:15px; float:left; display:inline;}
+
+#bottom{width:950px; padding-top:5px; float:left; display:inline;}
+#bottom #lave{width:180px; height:20px; margin-left:500px; color:#666666; font-size:14px; line-height:20px; float:left; display:inline;}
+#bottom #publisher{width:200px; height:20px; color:#666666; font-size:14px; line-height:20px; float:left; display:inline;}
+#bottom #submit{width:152px; height:27px; margin-left:300px; margin-top:20px; cursor:pointer; background:url(/images/answer/submit.gif); float:left; display:inline;}
+#bottom #leave{width:96px; height:27px; margin-left:200px; margin-top:20px; cursor:pointer; background:url(/images/answer/leave.gif); float:left; display:inline;}

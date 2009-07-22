@@ -1,18 +1,20 @@
 <?php
     require_once('../frame.php');
-	$id = $_REQUEST['id'];
-	$sql = 'select id,title,nick_name from smg_question where id>='.$id.' and is_adopt=1 order by create_time limit 2';
-	$db = get_db();
-	$records = $db->query($sql);
+	$problem_id = $_REQUEST['id'];
 	$number = isset($_POST['number'])?$_POST['number']:'1';
 	$point = isset($_POST['point'])?$_POST['point']:'0';
+	$db = get_db();
+	$sql = 'select * from smg_problem where id='.$problem_id;
+	$problem = $db->query($sql);
+	$sql = 'select id,title,nick_name from smg_question where problem_id='.$problem_id.' order by create_time limit '.($number-1).',1';
+	$records = $db->query($sql);
 	if(isset($_POST['lave'])){
 		$lave = $_POST['lave'];
 		$q_count = $_POST['count'];
 	}else{
-		$sql = 'select count(*) as count from smg_question where is_adopt=1 and id>'.$id.' order by create_time';
+		$sql = 'select count(*) as count from smg_question where problem_id='.$problem_id.' order by create_time';
 		$record = $db->query($sql);
-		$lave = $record[0]->count;
+		$lave = $record[0]->count-1;
 		$q_count = $record[0]->count;
 	}
 ?>
@@ -31,10 +33,10 @@
 	js_include_once_tag('thickbox');
 ?>
 
-<form id="answer_form" method="POST" action="<?php if($lave=='0'){echo 'result.php';}else{echo 'answer.php?id='.$records[1]->id;}?>" >
+<form id="answer_form" method="POST" action="pro_answer.php?id=<?php echo $problem_id; ?>" >
 <div id=ibody>
 
-	<div id="time">30</div>
+	<div id="time"><?php echo $problem[0]->limit_time;?></div>
 	
 	<div id="point">
 		<?php echo $point;?>
@@ -44,7 +46,7 @@
 		<div id="question_title"><?php echo $records[0]->title; ?></div>
 		
 		<?php
-			$sql = 'select id,name,attribute from smg_question_item where question_id='.$id;
+			$sql = 'select id,name,attribute from smg_question_item where question_id='.$records[0]->id;
 			$items = $db->query($sql);
 			$count = count($items);
 			$answer = '';
@@ -63,13 +65,14 @@
 	</div>
 	
 	<div id=bottom>
-		<div id="lave">还剩余<?php echo $lave;?>题</div>
-		<div id="publisher">发布者：<?php echo $records[0]->nick_name; ?></div>
+		<div id="lave" style="margin-left:680px;">还剩余<?php echo $lave;?>题</div>
 		<div id="submit" ></div>
 		<div id="leave" ></div>	
 	</div>
 </div>
 
+<input type="hidden" name="limit_time" id="limit_time" value="<?php echo $problem[0]->limit_time;?>">
+<input type="hidden" name="point_value" id="point_value" value="<?php echo $problem[0]->point;?>">
 <input type="hidden" name="number" value="<?php echo $number+1;?>">
 <input type="hidden" name="lave" value="<?php echo $lave-1;?>">
 <input type="hidden" name="point" id="r_point" value="<?php echo $point;?>">
@@ -86,10 +89,16 @@
 	var answer = '';
 	var r_answer = <?php echo $answer;?>;
 	var point = 0;
-	var second = 30;
+	if($("#limit_time").attr('value')!=''){
+		var second = $("#limit_time").attr('value');
+		handle = setInterval("timer()",1000); 
+	}
+	if($("#point_value").attr('value')!=''){
+		var add_point = parseInt($("#point_value").attr('value'));
+	}else{
+		var add_point = 10;
+	}
 	var lave = <?php echo $lave;?>
-	
-	handle = setInterval("timer()",1000); 
 	
 	$("#submit").click(function(){
 		clearInterval(handle);
@@ -97,7 +106,7 @@
 			if($(this).attr('checked'))answer = answer+$(this).attr('name');
 		});
 		if (answer == r_answer){
-			$("#r_point").attr('value', parseInt($("#r_point").attr('value'))+10);
+			$("#r_point").attr('value', parseInt($("#r_point").attr('value'))+add_point);
 		}
 		if(lave==0){
 			tb_show('请填入您的个人信息','info.php?height=300&width=400&modal=true');

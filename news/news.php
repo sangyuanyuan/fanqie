@@ -17,6 +17,14 @@
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
 		$record=$db->query($sql);
+		if($record[0]->news_type==2)
+		{
+			redirect($record[0]->file_name);
+		}
+		else if($record[0]->news_type==3)
+		{
+			redirect($record[0]->target_url);
+		}
 		if($record[0]->related_news!="")
 		{
 			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"n.priority asc,last_edited_at desc");
@@ -37,14 +45,7 @@
 		$comment=$db->paginate($sql,5);
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by flowernum desc limit 2";
 		$digg=$db->query($sql);
-		if($record[0]->news_type==2)
-		{
-			redirect($record[0]->file_name);
-		}
-		else if($record[0]->news_type==3)
-		{
-			redirect($record[0]->target_url);
-		}
+		
   ?>
 	
 </head>
