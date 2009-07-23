@@ -8,9 +8,9 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #ibody_bottom{width:995px; float:left; display:inline;}
 
 #t_t{width:995px; height:88px; background:url('/images/server/marry_t_t.jpg') no-repeat; float:left; display:inline;}
-#t_l{width:476px; height:694px; margin-top:10px; background:url('/images/server/marry_t_l.jpg') no-repeat; float:left; display:inline;}
+#t_l{width:476px; height:704px; margin-top:10px; background:url('/images/server/marry_t_l.jpg') no-repeat; float:left; display:inline;}
 #t_l .box{width:441px; margin-left:35px; margin-top:55px; float:left; display:inline;}
-#t_r{width:500px; height:696px; margin-top:8px; margin-left:7px; background:url('/images/server/marry_t_r.jpg') no-repeat; float:left; display:inline;}
+#t_r{width:500px; height:706px; margin-top:8px; margin-left:7px; background:url('/images/server/marry_t_r.jpg') no-repeat; float:left; display:inline;}
 #t_r .box{width:444px;  margin-left:56px; margin-top:11px;  float:left; display:inline;}
 #t_r #wybm{margin-left:330px; margin-top:10px;}
 .b1{width:995px; height:131px; margin-top:10px;  background:url('/images/server/marry_b1.gif') no-repeat; float:left; display:inline;}
@@ -58,3 +58,9 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #ibody_middle #m_bottom #comment{margin-left:60px; margin-top:5px; float:left; display:inline;}
 #ibody_middle #m_bottom #qhx{width:184px; height:139px; margin-left:65px; background:url('/images/server/qhx.gif') no-repeat; cursor:pointer; float:left; display:inline;}
 
+
+#l_paginate{width:400px; height:20px; margin-top:5px; margin-left:100px; float:left; display:inline;}
+#l_paginate a{color:#000000; text-decoration:none;}
+
+#r_paginate{width:400px; height:20px; margin-top:5px; margin-left:100px; float:left; display:inline;}
+#r_paginate a{color:#000000; text-decoration:none;}
