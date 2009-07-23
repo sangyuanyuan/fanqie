@@ -1,0 +1,16 @@
+body {
+	
+}
+#ibody{width:995px;  margin:0 auto;}
+#chat_room_top{width:995px;height:30px;margin-top:10px; background:url('/images/zone/chat_room_top.gif') no-repeat;}
+#chat_content_box{width:993px;height:300px; border:1px solid #F7E8C0; background-color:#FFF9E6;float:left; overflow-x:hidden;overflow-y:auto;}
+#tool_box{width:993px;height:100px;border:1px solid #CFCFCF;float:left;margin-top:10px;}
+#chat_connect_box{width:200px;height:80px;margin-left:20px;margin-top:10px;float:left;}
+#msg_box{width:760px;height:95px;float:left;}
+#fck_box{width:500px;height:95px;float:left;}
+#emotion{width:250px;height:65px;float:left; margin-left:5px; border: 1px solid #FFF9E6;margin-top:2px;}
+#emotion img{margin-left:2px;}
+#submit{margin-left:5px;}
+#search_chater{font-size:xx-large;}
+.chat_record{margin-left:20px;margin-top:5px;}
+.chat_record_title span{color:#00CCCC;}

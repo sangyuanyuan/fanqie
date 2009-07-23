@@ -64,11 +64,11 @@
 					}
 					$start_time = $_REQUEST['start_time'];
 					if($start_time){
-						$c[] = 'created_at >=' .$start_time;
+						$c[] = "created_at >='" .$start_time ."'";
 					}
 					$end_time = $_REQUEST['end_time'];
 					if($end_time){
-						$c[] = 'created_at <=' .$end_time;
+						$c[] = "created_at <='" .$end_time ."'";
 					}
 					if($c) 	$conditions = implode(' and ' ,$c);
 					$items = search_content($_REQUEST['key'],$_REQUEST['search_type'],$conditions,20);

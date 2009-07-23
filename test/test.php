@@ -38,5 +38,8 @@ $(function(){
 		alert(e.data.fuck);
 		//window.location.href = "?tags=" + $('input:first').val();
 	});
+	$(window).unload(function(){
+		alert('unload');
+	});
 });
 </script>

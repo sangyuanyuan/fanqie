@@ -37,8 +37,10 @@
 				<div class=content><?php echo $record[$i]->content ?></div>
 			</div>
 		<?php } ?>
+
 		<div id=page1><?php paginate("","","param1");?></div>
 	</div>
+	
 	<div id=ibody_right>
 		<a href="dialog_collection.php?width=400&height=250" class="thickbox" id="r_t"></a>
 		<div id=r_b>
