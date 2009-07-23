@@ -21,13 +21,15 @@
 		<div id=t_t></div>
 		<div id=t_l>
 			<div class=box>
+				<marquee direction=up behavior=scroll scrollamount=3 onmouseover=this.stop() onmouseleave=this.start() style="height:635px;">
 				<?php 
 					$db = get_db();
-					$sql = 'select * from smg_marry where sex="woman" limit 4';
+					$sql = 'select * from smg_marry where sex="woman"';
 					$records = $db->query($sql);
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
 				?>
+				
 				<div class=content>
 					<div class=radio><input type="radio" class=woman name="woman_choose" value="<?php echo $records[$i]->id; ?>"></div>
 					<div class=pic><img src="<?php echo $records[$i]->photo;?>" width="102" height="142" border="0"></div>
@@ -45,14 +47,17 @@
 					</div>
 				</div>
 				<?php } ?>
+				</marquee>
 			</div>
+			
 		</div>
 		<div id=t_r>
 			<div id=wybm><a href="apply.php" target="_blank"><img src="/images/server/wybm.gif" border=0></a></div>
 			<div class=box>
+				<marquee direction=down behavior=scroll scrollamount=3 onmouseover=this.stop() onmouseleave=this.start() style="height:635px;">
 				<?php 
 					$db = get_db();
-					$sql = 'select * from smg_marry where sex="man" limit 4';
+					$sql = 'select * from smg_marry where sex="man"';
 					$records = $db->query($sql);
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
@@ -74,6 +79,7 @@
 					</div>
 				</div>
 				<?php } ?>
+				</marquee>
 			</div>
 		</div>
 	</div>
@@ -107,6 +113,7 @@
 			<?php } ?>
 		</div>
 		<div id=m_bottom>
+			<div id=paginate><?php paginate();?></div>
 			<div id=comment>
 				留 言 人：<input type=text id="pulisher"><br>
 				留言内容：<textarea  style="width:535px; height:105px;" id="comment_content"></textarea>
