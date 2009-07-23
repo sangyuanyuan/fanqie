@@ -2,7 +2,7 @@ body {margin:0px; font-family:宋体; font-size:12px;  color:#000000;}
 
 #ibody{width:995px; margin:0 auto; margin-top:10px;}
 
-#ibody_left{width:710px; border-bottom:1px solid #FFDB85; float:left; display:inline;}
+#ibody_left{width:710px;  float:left; display:inline;}
 #ibody_right{width:277px; float:right; display:inline;}
 
 #l_t{width:710px; height:42px; background:url('/images/zone/dialoglist_l_t.jpg') no-repeat; float:left; display:inline;}
@@ -13,10 +13,16 @@ body {margin:0px; font-family:宋体; font-size:12px;  color:#000000;}
 .l_b img{width:250px; height:130px; margin-top:15px; margin-left:20px; float:left; display:inline;}
 .l_b .video{width:250px; height:130px; margin-top:15px; margin-left:20px; float:left; display:inline;}
 .l_b .content{width:400px; height:130px; color:#666666; font-size:14px; line-height:22px; overflow:hidden; margin-top:15px; margin-right:20px; float:right; display:inline;}
-#page1{width:700px; height:30px; text-align:center; background:#123456; float:left; display:inline; margin-top:3px;}
+#page1{width:710px; height:30px; padding-top:10px; text-align:center; border-top:1px solid #FFDB85; float:left; display:inline;}
+#page1 a{color:#0000ff;}
 
 #r_t{width:277px; height:167px; background:url('/images/zone/dialoglist_r_t.jpg') no-repeat; float:right; display:inline;}
-#r_b{width:275px; height:814px; margin-top:10px; background:#EBEBEB; border:1px solid #D7D7D7; float:right; display:inline;}
+#r_b{width:275px; margin-top:10px; padding-bottom:5px; background:#EBEBEB; border:1px solid #D7D7D7; float:right; display:inline;}
 #r_b #title{width:242px; height:24px; padding-top:4px; padding-left:35px; font-size:14px; font-weight:bold; line-height:20px; background:url('/images/zone/dialoglist_r_b.jpg') no-repeat; float:left; display:inline;}
-#r_b #content{width:265px; height:780px; margin-left:5px; background:#ffffff; float:left; display:inline;}
-#r_b #content .box{width:255px; margin-left:5px; border-bottom:1px solid #000000; float:left; display:inline;}
+#r_b #content{width:265px; margin-left:5px; padding-bottom:5px; background:#ffffff; float:left; display:inline;}
+#r_b #content .box{width:245px; margin-left:10px; padding-top:10px; color:#000000; padding-bottom:10px; line-height:20px; border-bottom:1px solid #000000; float:left; display:inline;}
+#r_b #content .box .font1{color:#3366FF;}
+#r_b #content .box .font2{color:#999999; float:right;}
+#r_b #content .box .font3{color:#ff0000;}
+#page2{width:265px; height:50px; margin-left:5px; text-align:center; line-height:20px;  background:#ffffff; float:left; display:inline;}
+#page2 a{color:#0000ff;}

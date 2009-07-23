@@ -1,8 +1,10 @@
 <?php
 	require_once "../../frame.php";
 	$video = new table_class("smg_video");
-	$video->find($_POST['id']);
-	
+	if($_POST['id']!=''){
+		$video->find($_POST['id']);
+	}
+
 	if($_POST['video']['online_url']==null){
 		//如果在编辑的情况下没有上传文件则不进入文件上传的过程
 		if($_POST['type']!=="edit"||$_FILES['image']['name']!=null||$_FILES['video']['name']!=null){

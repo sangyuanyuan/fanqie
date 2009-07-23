@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_marry_comment`;
+CREATE TABLE  `smg_new`.`smg_marry_comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nick_name` varchar(255) DEFAULT NULL,
+  `comment` text,
+  `boy_name` varchar(255) DEFAULT NULL,
+  `girl_name` varchar(255) DEFAULT NULL,
+  `boy_photo` varchar(255) DEFAULT NULL,
+  `girl_photo` varchar(255) DEFAULT NULL,
+  `n_sorce` int(10) unsigned DEFAULT NULL,
+  `s_sorce` int(10) unsigned DEFAULT NULL,
+  `b_sorce` int(10) unsigned DEFAULT NULL,
+  `x_sorce` int(10) unsigned DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,19 +1,21 @@
-﻿<? 
-	require_once('../frame.php');
-	css_include_tag('smg');
-?>
+﻿<?php require_once('../frame.php'); ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -店铺列表</title>
+	<?php
+		css_include_tag('smg','top','bottom');
+		use_jquery();
+	 ?>
 </head>
 <body>
 <? 
-	$cookie=(isset($_COOKIE['smg_username']))? $_COOKIE['smg_username'] : '';
+	include('../inc/top.inc.html');
 	$db=get_db();
-	$news=$db->paginate('SELECT * FROM smg_shop where shopdpid='.$_REQUEST['id'].' order by createtime desc',15);
+	$cookie=(isset($_COOKIE['smg_username']))? $_COOKIE['smg_username'] : '';
+	$news=$db->paginate('SELECT * FROM smg_shop where shopdpid='.$_REQUEST['id'].' and isadopt=1 order by createtime desc',16);
 	$name=$db->query('select * from smg_shopdp where id='.$_REQUEST['id']);
 	
 ?>
@@ -32,17 +34,17 @@
 			?>		
 		<div class=context>
 			<div class=cl>
-				<a href="/shop/spinfo.php?id=<? echo $news[$i]->id;?>"><img border=0 width=160 height=105 src="<? echo $news[$i]->photourl;?>" /></a><br>
-				<a href="/shop/spinfo.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>		
+				<a target="_blank" href="/shop/spinfo.php?id=<? echo $news[$i]->id;?>"><img border=0 width=160 height=105 src="<? echo $news[$i]->photourl;?>" /></a><br>
+				<a target="_blank" href="/shop/spinfo.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a>
+			</div>		
 		</div>
 		<? }}?>
 		
 	</div>
 	<div id=fqtglistcount_page>
-      <div class="pageurl">
-         <?php paginate("/shop/splist.php?id=".$_REQUEST['id']); ?>
-      </div>
+       <?php paginate("/shop/splist.php"); ?>
 	</div>
 </div>
+<? include('../inc/bottom.inc.html');?>	
 </body>
 </html>
