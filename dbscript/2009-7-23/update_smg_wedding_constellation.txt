@@ -1,0 +1,2 @@
+update smg_wedding_constellation set constellation2="Ä¦ôÉ" where constellation2="Ä§ôÉ";
+update smg_wedding_constellation set constellation1="Ä¦ôÉ" where constellation1="Ä§ôÉ";

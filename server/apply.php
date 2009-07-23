@@ -35,7 +35,7 @@
 		</div>
 	</div>
 	<div class=t>
-		<div class=l><img src="/images/news/news_sub_icon.jpg">　生日</div>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　生日/生肖</div>
 		<div class=t_r>
 			<select id=year name="year">
 				<option value="0">请选择</option>
@@ -58,10 +58,25 @@
 				<option value="<?php echo $i ?>"><?php echo $i ?></option>
 				<?php }  ?>
 			</select>
+			<select id=zodiac name="marry[zodiac]">
+				<option value="0">请选择</option>
+				<option value="鼠">鼠</option>
+				<option value="牛">牛</option>
+				<option value="虎">虎</option>
+				<option value="兔">兔</option>
+				<option value="龙">龙</option>
+				<option value="蛇">蛇</option>
+				<option value="马">马</option>
+				<option value="羊">羊</option>
+				<option value="猴">猴</option>
+				<option value="鸡">鸡</option>
+				<option value="狗">狗</option>
+				<option value="猪">猪</option>
+			</select>
 		</div>
 	</div>
 	<div class=t>
-		<div class=l><img src="/images/news/news_sub_icon.jpg">　身高</div>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　身高/血型/星座</div>
 		<div class=t_r>
 			<select id=height name="marry[height]">
 				<option value="0">请选择</option>
@@ -69,6 +84,27 @@
 				?>
 				<option value="<?php echo $i ?>"><?php echo $i;?>cm</option>
 				<?php }  ?>
+			</select>
+			<select id=blood name="marry[blood]">
+				<option value="0">请选择</option>
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="AB">AB</option>
+				<option value="O">O</option>
+			</select>
+			<select id=star name="marry[star]">
+				<option value="白羊">白羊座</option>
+				<option value="金牛">金牛座</option>
+				<option value="双子">双子座</option>
+				<option value="巨蟹">巨蟹座</option>
+				<option value="狮子">狮子座</option>
+				<option value="处女">处女座</option>
+				<option value="天秤">天秤座</option>
+				<option value="天蝎">天蝎座</option>
+				<option value="射手">射手座</option>
+				<option value="摩羯">摩羯座</option>
+				<option value="水瓶">水瓶座</option>
+				<option value="双鱼">双鱼座</option>
 			</select>
 		</div>
 	</div>
@@ -133,6 +169,16 @@
 		}
 		if($("#height").attr('value')=='0'){
 			alert('请选择身高！');
+			return false;
+		}
+		
+		if($("#blood").attr('value')=='0'){
+			alert('请选择血型！');
+			return false;
+		}
+		
+		if($("#zodiac").attr('value')=='0'){
+			alert('请选择生肖！');
 			return false;
 		}
 		
