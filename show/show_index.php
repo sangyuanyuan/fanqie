@@ -10,7 +10,6 @@
 	<?php
 		css_include_tag('show_show_index','top','bottom');
 		use_jquery();
-		
   	?>
 	
 </head>
@@ -34,7 +33,7 @@
 	 	  <div id=t_r><a href="<?php echo $records[0]->url?>" target="_blank" id="pic_url"><img border=0 id="big_pic" width="518" height="236" src="<?php echo $records[0]->src?>"></a></div>
 	 </div>	
 	 <div id=ibody_left>
-		  	<a target="_blank" href="show_sub.php?type=image"><img border=0 src="/images/show/show_l_t.jpg"></a>
+		  	<a target="_blank" href="show_sub.php?type=image"><img border=0 src="/images/show/show_l_t.jpg" width="285"></a>
 			<div class=l_m>
 				<div class=title><div class=left>热门标签</div></div>
 				<div class=content style="border-bottom:none;">
@@ -43,10 +42,10 @@
 					$records = $db->query($sql);
 					$c = array();
 					for($i=0;$i<count($records);$i++){
-						$keywords = explode('　', $records[$i]->keywords);
-						if(count($keywords)==0)$keywords = explode(' ', $records[$i]->keywords);
-						if(count($keywords)==0)$keywords = explode(',', $records[$i]->keywords);
+						$keywords = explode(',', $records[$i]->keywords);
 						if(count($keywords)==0)$keywords = explode('，', $records[$i]->keywords);
+						if(count($keywords)==0)$keywords = explode('　', $records[$i]->keywords);
+						if(count($keywords)==0)$keywords = explode(' ', $records[$i]->keywords);
 						for($j=0;$j<count($keywords);$j++){
 							if(!in_array($keywords[$j],$c))array_push($c,$keywords[$j]);
 						}
@@ -54,7 +53,7 @@
 					}
 					for($i=0;$i<count($c);$i++){
 				?>
-				<div class="tag<?php echo rand(1, 6);?>"><?php echo $c[$i];?></div>
+				<a class="tag<?php echo rand(1, 6);?>" href="/search/?key=<?php echo urlencode($c[$i]);?>&search_type=smg_images"><?php echo $c[$i];?></a>
 				<?php } ?>
 				
 				</div>
@@ -65,9 +64,9 @@
 				$sql = 'select i.id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
 			?>
-			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+			<script src="/flash_1.js" type="text/javascript"></script>
 			<div id="focus_02"></div> 
-			<script type="text/javascript"> 
+			<script type="text/javascript"> sh/sohufla
 				var pic_width1=276; 
 				var pic_height1=146; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";

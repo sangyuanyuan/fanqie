@@ -49,9 +49,10 @@ li{margin:0px; list-style-type:none;}
 #paginate a{color:#000000;}
 
 
-.tag1{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:18px; font-family:黑体; color:#FF0000; float:left; display:inline; cursor:pointer;}
-.tag2{width:115px; height:22px; margin-left:10px; line-height:22px; font-size:20px; font-family:宋体; color:#0099FF; float:left; display:inline; cursor:pointer;}
-.tag3{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:16px; font-family:隶书; color:#0099FF; float:left; display:inline; cursor:pointer;}
-.tag4{width:115px; height:22px; margin-left:10px; line-height:20px; font-size:19px; font-family:黑体; color:#00FF00; float:left; display:inline; cursor:pointer;}
-.tag5{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:17px; font-family:宋体; color:#00FF66; float:left; display:inline; cursor:pointer;}
-.tag6{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:18px; font-family:黑体; color:#FF6600; float:left; display:inline; cursor:pointer;}
+.tag1{ font-weight:bolder; line-height:27px; font-size:18px; color:#FF8C0D;}
+.tag2{ line-height:27px; font-size:20px; color:#0099FF;}
+.tag3{ font-weight:bolder; line-height:27px; font-size:16px;color:#0099FF;}
+.tag4{  line-height:27px; font-size:19px; color:#00FF00; }
+.tag5{ font-weight:bolder; line-height:27px; font-size:17px;  color:#00FF66;}
+.tag6{ font-weight:bolder; line-height:27px; font-size:18px; color:#FF6600; }
+
