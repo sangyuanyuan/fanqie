@@ -53,7 +53,7 @@
 					}
 					for($i=0;$i<count($c);$i++){
 				?>
-				<a class="tag<?php echo rand(1, 6);?>" href="/search/?key=<?php echo urlencode($c[$i]);?>&search_type=smg_images"><?php echo $c[$i];?></a>
+				<a class="tag<?php echo rand(1, 6);?>" target="_blank" href="/search/?key=<?php echo urlencode($c[$i]);?>&search_type=smg_images"><?php echo $c[$i];?></a>
 				<?php } ?>
 				
 				</div>
@@ -103,7 +103,7 @@
 					<div class=content <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 						<div class=left><? echo $i+1;?></div>
 						<div class=right>
-							<div class=top><a href="show_list.php?name=<?php echo $records[$i]->publisher;?>&type=image"><?php echo $records[$i]->publisher; ?></a></div>
+							<div class=top><?php echo $records[$i]->publisher; ?></div>
 							<div class=bottom>发布了<?php echo $records[$i]->num; ?>张图片！</div>
 						</div>
 					</div>
