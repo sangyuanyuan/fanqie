@@ -16,7 +16,7 @@
 		}
 	}elseif("return"==$_POST['post_type'])
 	{
-		if($_POST['id']!='')$post -> find($_POST['return_id']);
+		if($_POST['return_id']!='')$post -> find($_POST['return_id']);
 		$post->is_recommend = 2;
 		$post->is_adopt = 0;
 		$post -> save();
