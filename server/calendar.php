@@ -15,6 +15,49 @@
 </head>
 <body>
 <? require_once('../inc/top.inc.html');
+	function e2c($num){
+		switch ($num) {
+			case 1:
+				return '一';
+				break;
+			case 2:
+				return '二';
+				break;
+			case 3:
+				return '三';
+				break;
+			case 4:
+				return '四';
+				break;
+			case 5:
+				return '五';
+				break;
+			case 6:
+				return '六';
+				break;
+			case 7:
+				return '七';
+				break;
+			case 8:
+				return '八';
+				break;
+			case 9:
+				return '九';
+				break;
+			case 10:
+				return '十';
+				break;
+			case 11:
+				return '十一';
+				break;
+			case 12:
+				return '十二';
+				break;			
+			default:
+				;
+			break;
+		}
+	}
 	js_include_tag('service/calendar','thickbox');
 	$add_month = $_REQUEST['add_month'] ? intval($_REQUEST['add_month']) : 0;
 	$date = strtotime("+$add_month month");
@@ -43,7 +86,7 @@
      	  </div>
         <div id="month">
         	<a href="#" id="a_prev"><img src="/images/server/btn2.jpg" width="30" height="20" border="0" /></a>
-        	七月2009
+        	<?php echo e2c(intval($m)) .'月' .date('Y',$date);?>
         	<a href="#" id="a_next"><img src="/images/server/btn1.jpg" width="30" height="20" border="0" /></a> 
         </div>
         <div id="week">
