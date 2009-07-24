@@ -27,7 +27,7 @@
 				for($i=0; $i<$count;$i++){ 
 			?>
 				
-				<div class=img><img id="<?php echo $i+1;?>" style="cursor:pointer;" class="small_pic" border=0 width=110 height=72 src="<?php echo $records[$i]->src_path('small');?>" name="<?php echo $records[$i]->src;?>" value="show.php?id=<?php echo $records[$i]->id;?>"></div>
+				<div class=img><img alt="<?php echo $records[$i]->title;?>" id="<?php echo $i+1;?>" style="cursor:pointer;" class="small_pic" border=0 width=110 height=72 src="<?php echo $records[$i]->src_path('small');?>" name="<?php echo $records[$i]->src;?>" value="show.php?id=<?php echo $records[$i]->id;?>"></div>
 			  <?php }?>
 	 	  </div>
 	 	  <div id=t_r><a href="<?php echo $records[0]->url?>" target="_blank" id="pic_url"><img border=0 id="big_pic" width="518" height="236" src="<?php echo $records[0]->src?>"></a></div>

@@ -64,5 +64,6 @@
 	
 	$sql = 'update smg_vote_item set vote_count = vote_count + 1 where id in (' . implode(',',$item_ids) .')';
 	$db->execute($sql);
+	alert('投票成功,感谢您的参与!');
 	redirect($_SERVER['HTTP_REFERER']);
 ?>

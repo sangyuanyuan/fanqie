@@ -73,7 +73,7 @@
 		//insert news
 		$news->created_at = date("Y-m-d H:i:s");
 		$news->last_edited_at = date("Y-m-d H:i:s");
-		$news->publisher_id = $_COOKIE['smg_userid'];
+		$news->publisher_id = $_COOKIE['smg_user_nickname'];
 		$news->click_count = 0;					
 		$news->is_deleted = 0;
 		$news->can_commentable = 1;
