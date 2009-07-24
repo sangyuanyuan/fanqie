@@ -75,6 +75,11 @@
 				}
 			}
 		}
-		redirect('vote_list.php');
+		if($_POST['is_app']==1){
+			redirect('approval.php');
+		}else{
+			redirect('vote_list.php');
+		}
+		
 	}	
 ?>

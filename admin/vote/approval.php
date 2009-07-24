@@ -24,62 +24,28 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td>投票名称</td><td width="80">登录限制</td><td width="80">票数限制</td><td width="80">投票类型</td><td width="80">发布时间</td><td width="80">到期时间</td><td width="80">所属类别</td><td width="120">操作</td>
+			<td>投票名称</td><td width=120>可选几项</td><td width=120>发布时间</td><td width=120>操作</td>
 		</tr>
 		<?php
-			$category = new table_class('smg_category');
-			$category_record = $category->find('all',array('conditions' => 'category_type="vote"'));
-			$category_count = count($category_record);
 			$vote = new table_class("smg_vote");
 			if($key!=''){
-				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and category_id>0 and name  like "%'.trim($key).'%"','order' => 'created_at desc'),18);
+				$record = $vote->paginate("all",array('conditions' => 'category_id=0 and name like "%'.trim($key).'%"','order' => 'created_at desc'),18);
 			}else{
-				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and category_id>0','order' => 'created_at desc'),18);
+				$record = $vote->paginate("all",array('conditions' => 'category_id=0','order' => 'created_at desc'),18);
 			}
 			$count_record = count($record);
-			//--------------------
 			for($i=0;$i<$count_record;$i++){
-				switch($record[$i]->vote_type) {
-						case "word_vote":
-							$vote_name = "文字投票";
-							break;
-						case "image_vote":
-							$vote_name = "图片投票";
-							break;
-						case "more_vote":
-							$vote_name = "复合投票";
-							break;
-						default:
-							$vote_name = "未知类型";
-				}
-				
-				switch($record[$i]->limit_type) {
-					case "user_id":
-						$limit_name = "工号登录";
-						break;
-					case "ip":
-						$limit_name = "IP控制";
-						break;
-					case "no_limit":
-						$limit_name = "不设限制";
-						break;
-					default:
-						$limit_name = "未知类型";
-				}
+			//--------------------
 				
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->name;?></td>
-					<td><?php echo $limit_name;?></td>
-					<td><?php echo $record[$i]->max_vote_count;?></td>
-					<td><?php echo $vote_name;?></td>
+					<td><?php echo $record[$i]->max_item_count;?></td>
 					<td><?php echo substr($record[$i]->created_at, 0, 10);?></td>
-					<td><?php echo substr($record[$i]->ended_at, 0, 10);?></td>
-					<td><?php for($j=0;$j<$category_count;$j++){if($category_record[$j]->id==$record[$i]->category_id){echo $category_record[$j]->name;}}?></td>
 					<td>
 						<?php if($record[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span><? }?>
 						<?php if($record[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span><? }?>
-						<a href="vote_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a>
+						<a href="approval_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a>
 						<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer;">删除</a>
 					</td>
 				</tr>

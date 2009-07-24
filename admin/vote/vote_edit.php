@@ -61,8 +61,8 @@
 		</tr>
 		<tr class=tr3>
 			<td>所属类别：</td>
-			<td align="left"  class="newsselect">
-				<select  name="vote[category_id]">
+			<td align="left">
+				<select name="vote[category_id]">
 					<?php for($i=0;$i<$category_count;$i++){?>
 					<option value="<?php echo $category_menu[$i]->id;?>" <?php if($category_menu[$i]->id==$vote_record[0]->category_id){?>selected="selected"<?php }?>><?php echo $category_menu[$i]->name;?></option>
 					<?php }?>
@@ -78,7 +78,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>控制方式：</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select id=select_limit_type name="vote[limit_type]">
 					<option value="user_id" <?php if("user_id"==$vote_record[0]->limit_type){?>selected="selected"<?php }?> >工号登录</option>
 					<option value="ip" <?php if("ip"==$vote_record[0]->limit_type){?>selected="selected"<?php }?> >IP控制</option>
@@ -106,7 +106,7 @@
 			<tr class=tr3>
 				<td>投票项目：</td>
 				<td align="left">
-					标题<input type="text" name="vote_item1[title]" id="first_item" style="width:100px" class="required" value="<?php echo $vote_item_record[0]->title?>">
+					<input type="text" name="vote_item1[title]" id="first_item" style="width:100px" class="required" value="<?php echo $vote_item_record[0]->title?>">
 					<a id="add_item" value="1" style="cursor:pointer;">继续添加</a>
 					<input type="hidden" name="deleted1" value="false">
 					<input type="hidden" name="vote_item1_id" value="<?php echo $vote_item_record[0]->id;?>">
@@ -116,7 +116,7 @@
 				<tr class=tr3>
 					<td>投票项目：</td>
 					<td align="left">
-						标题<input type="text" name="vote_item<?php echo $k;?>[title]" style="width:100px;" class="required" value="<?php echo $vote_item_record[$k-1]->title;?>">
+						<input type="text" name="vote_item<?php echo $k;?>[title]" style="width:100px;" class="required" value="<?php echo $vote_item_record[$k-1]->title;?>">
 						<a class='del_item' name="<?php echo $vote_item_record[$k-1]->id;?>" style='cursor:pointer;'>删除</a>
 						<input type="hidden" name="deleted<?php echo $k;?>" id="deleted<?php echo $k;?>" value="false">
 						<input type="hidden" name="vote_item<?php echo $k;?>_id" value="<?php echo $vote_item_record[$k-1]->id;?>">
@@ -127,7 +127,7 @@
 			<tr class=tr3>
 				<td>投票项目：</td>
 				<td align="left">
-					标题<input type="text" name="vote_item1[title]" id="first_item" value="<?php echo $vote_item_record[0]->title?>" style="width:100px" class="required">
+					<input type="text" name="vote_item1[title]" id="first_item" value="<?php echo $vote_item_record[0]->title?>" style="width:100px" class="required">
 					<?php if(null!=$vote_item_record[0]->photo_url){?><img src="<?php echo $vote_item_record[0]->photo_url;?>" class="show_image" width="50" height="50" border="0"><?php }?>
 					<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
 					<input name="item_image1"  class="item_image"  type="file">
@@ -140,7 +140,7 @@
 				<tr class=tr3>
 					<td>投票项目：</td>
 					<td align="left">
-						标题<input type="text" name="vote_item<?php echo $k;?>[title]" style="width:100px;" class="required" value="<?php echo $vote_item_record[$k-1]->title;?>">
+						<input type="text" name="vote_item<?php echo $k;?>[title]" style="width:100px;" class="required" value="<?php echo $vote_item_record[$k-1]->title;?>">
 						<?php if(null!=$vote_item_record[$k-1]->photo_url){?><img src="<?php echo $vote_item_record[$k-1]->photo_url;?>" class="show_image" width="50" height="50" border="0"><?php }?>
 						<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
 						<input name="item_image<?php echo $k;?>"  class="item_image"  type="file">
