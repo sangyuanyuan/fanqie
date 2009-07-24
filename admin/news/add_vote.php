@@ -106,7 +106,7 @@
 			$('#chosen_vote_name').attr('value',$(this).parent().next('td').html());			
 		});
 		function send_search(){
-			$('#result_box').load('add_vote.php',{'show_div':'0','key':$('#search_text').attr('value')});
+			$('#result_box').load('add_vote.php',{'show_div':'0','key':encodeURI($('#search_text').attr('value'))});
 		}
 		$('#vote_search').click(function(){
 			send_search();

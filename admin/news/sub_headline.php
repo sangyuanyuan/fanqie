@@ -134,7 +134,7 @@
 			url = 'sub_headline.php?filter_dept=' + filter_dept;
 			url += '&filter_category=' + filter_category;
 			url += '&filter_adopt=' + filter_adopt;
-			url += '&key=' + $('#search_text').val();
+			url += '&key=' + encodeURI($('#search_text').val());
 			$('#result_box').load(url,{'show_div':'0'});			
 		}
 		category.display_select('news_category',$('#span_category_select'),<?php echo $filter_category;?>,'',function(){send_search();});

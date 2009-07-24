@@ -140,7 +140,7 @@
 			url = 'filte_news.php?filter_dept=' + filter_dept;
 			url += '&filter_category=' + filter_category;
 			url += '&filter_adopt=' + filter_adopt;
-			url += '&key=' + $('#search_text').val();
+			url += '&key=' + encodeURI($('#search_text').val());
 			$('#result_box').load(url,{'show_div':'0'});			
 			//$('#result_box').load('filte_news.php',{'show_div':'0','key':$('#search_text').attr('value'),'filter_dept':$('#filter_dept').attr('value'),'filter_category':$('.news_category:last').attr('value'),'filter_adopt':$('#filter_adopt').attr('value')});			
 		}
