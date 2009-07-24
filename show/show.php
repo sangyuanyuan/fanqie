@@ -10,7 +10,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-展示-我型我秀子页</title>
+	<title>SMG-番茄网-展示-摄影</title>
 	<?php
 		css_include_tag('show_show','top','bottom');
 		use_jquery();
@@ -33,19 +33,19 @@
 			<div id="focus_02" style="margin-top:5px;"></div> 
 			<script type="text/javascript"> 
 				var pic_width1=287; 
-				var pic_height1=146; 
+				var pic_height1=190; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
 				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
 				var texts1=<?php echo '"',flash_str_replace($record_star[0]->short_title).",".flash_str_replace($record_star[1]->short_title).",".flash_str_replace($record_star[2]->short_title).",".flash_str_replace($record_star[3]->short_title).'"'; ?>;
 	
-				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "290", "146", "4","#FFFFFF");
+				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "290", "190", "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');
 				picflash.addVariable("picurl",pics1);
 				picflash.addVariable("piclink",mylinks1);
 				picflash.addVariable("pictext",texts1);				
 				picflash.addVariable("pictime","5");
 				picflash.addVariable("borderwidth","290");
-				picflash.addVariable("borderheight","146");
+				picflash.addVariable("borderheight","190");
 				picflash.addVariable("borderw","false");
 				picflash.addVariable("buttondisplay","true");
 				picflash.addVariable("textheight","15");				
@@ -79,10 +79,10 @@
 				$records = $db->query($sql);
 				$c = array();
 				for($i=0;$i<count($records);$i++){
-					$keywords = explode('　', $records[$i]->keywords);
-					if(count($keywords)==0)$keywords = explode(' ', $records[$i]->keywords);
-					if(count($keywords)==0)$keywords = explode(',', $records[$i]->keywords);
+					$keywords = explode(',', $records[$i]->keywords);
 					if(count($keywords)==0)$keywords = explode('，', $records[$i]->keywords);
+					if(count($keywords)==0)$keywords = explode('　', $records[$i]->keywords);
+					if(count($keywords)==0)$keywords = explode(' ', $records[$i]->keywords);
 					for($j=0;$j<count($keywords);$j++){
 						if(!in_array($keywords[$j],$c))array_push($c,$keywords[$j]);
 					}
@@ -90,7 +90,7 @@
 				}
 				for($i=0;$i<count($c);$i++){
 			?>
-			<div class="tag<?php echo rand(1, 6);?>"><?php echo $c[$i];?></div>
+			<a class="tag<?php echo rand(1, 6);?>" target="_blank" href="/search/?key=<?php echo urlencode($c[$i]);?>&search_type=smg_images"><?php echo $c[$i];?></a>
 			<?php } ?>
 			</div>
 		</div>
