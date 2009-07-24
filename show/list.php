@@ -75,9 +75,10 @@
      <!-- start left_top !-->
  	 	 <div id=l_t>
 	 	 	<?php 
-				$video = new table_class('smg_video');
-				$video -> find('first');
-				show_video_player('276','235',$video->photo_url,$video->video_url,$autostart = "false"); 
+				$db = get_db();
+				$sql="select photo_url,video_url from smg_video where tags='视频推荐' and is_adopt=1 and photo_url is not null order by priority asc,created_at desc limit 1";
+				$record=$db->query($sql);
+				show_video_player('276','235',$record[0]->photo_url,$record[0]->video_url,$autostart = "false"); 
 			?>
  	 	 </div>
  	   <!-- end -->
