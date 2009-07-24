@@ -38,7 +38,7 @@
 		global $g_dept_infos;
 		if(!isset($g_dept_infos)){
 			$db = get_db();
-			$g_dept_infos = $db->query('select * from smg_dept');
+			$g_dept_infos = $db->query('select id,name from smg_dept');
 		}
 		if(is_numeric($key)){
 			foreach ($g_dept_infos as $v) {
