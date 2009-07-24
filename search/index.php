@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-新闻-普通子页</title>	
+	<title>SMG-番茄网-搜索</title>	
 	<?php
 	include_once "../frame.php";
 	
@@ -25,12 +25,11 @@
 
 ?>	
 <div id="ibody">
-	<div id="left_box">
 		<div id="search_box">
 			<form id="search_form" method="get" action="">
-			<b>搜索</b>
-			<input type="text" name="key" id="search_text" value="<?php echo $_REQUEST['key'];?>" style="width:100px;">
-			<select name="search_type" id="search_type">
+				<br>
+			　<input type="text" name="key" id="search_text" value="<?php echo $_REQUEST['key'];?>" style="width:200px;">
+			<select name="search_type" id="search_type" style="width:100px;">
 				<option <?php if($_REQUEST['search_type'] == 'smg_news') echo ' selected="selected"';?> value="smg_news">新闻</option>
 				<option <?php if($_REQUEST['search_type'] == 'smg_video') echo ' selected="selected"';?> value="smg_video">视频</option>
 				<option <?php if($_REQUEST['search_type'] == 'smg_images') echo ' selected="selected"';?> value="smg_images">图片</option>
@@ -38,16 +37,16 @@
 			<?php
 			$dept = $db->query("select * from smg_dept");			
 			?>
-			<select name="dept_id" style="width:80px;">
+			<select name="dept_id" style="width:100px;">
 				<option value="0">部门</option>
 				<?php foreach($dept as $v) { ?>
 				<option value="<?php echo $v->id;?>" <?php if($v->id == $_REQUEST['dept_id']) echo ' selected="selected"';?>><?php echo $v->name;?></option>
 				<?php } ?>
 			</select>
 			<span id="category"></span>
-			时间:<input type="text" name="start_time" class="date_jquery" value="<?php echo $_REQUEST['start_time'];?>">
-			-<input type="text" name="end_time" class="date_jquery" value="<?php echo $_REQUEST['end_time'];?>">
-			<span id="submit">搜索</span>
+			　时间　<input type="text" name="start_time" disable="disableed" class="date_jquery" value="<?php echo $_REQUEST['start_time'];?>"  style="width:100px;">
+		　-　<input type="text" name="end_time" class="date_jquery" value="<?php echo $_REQUEST['end_time'];?>"  style="width:100px;">
+			 　<input type="submit" id="submit" style="width:100px; height:22px;" value="搜索">
 			<input type="hidden" name="category_id" id="category_id" value="<?php echo $_REQUEST['category_id'];?>">
 			</form>
 		</div>
@@ -90,8 +89,7 @@
 				}
 			?>
 		</div>
-		<div><?php paginate();?></div>
-	</div>
+		<div id=page><?php paginate();?></div>
 </div>
 <?php include('../inc/bottom.inc.php');?>
 </body>

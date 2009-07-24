@@ -2,6 +2,7 @@
 	require_once('../frame.php');
 	$nav = new table_class("smg_nav");
 	$nav = $nav->find("all",array('order' => 'id asc'));
+	$db = get_db();
 	use_jquery();
 	js_include_tag('jquery.cookie','pubfun');
 ?>
@@ -34,7 +35,15 @@
 	   		<button id=button2></button>
 			<input type="hidden" name="search_type" id="search_type_hidden" value="smg_news">
 		</form>
-   		<div id=hot><a href="#">星尚大典</a> <a href="#">小沈阳</a> <a href="#">朝鲜核实验</a></div>
+ 			<?php
+ 				$sql = 'select search_key,count(search_key) as icount from smg_search_keys where TO_DAYS(NOW())-TO_DAYS(created_at) <= 30 group by search_key order by icount desc limit 6';
+				$record=$db -> query($sql);		
+			?>			
+   		<div id=hot>
+   			<?php for($i=0;$i<3;$i++){?>
+   			<a href="/search/?key=<?php echo urlencode($record[$i]->search_key)?>" target=_blank><?php echo $record[$i]->search_key ?></a> 
+   			<? }?>
+   		</div>
    	</div>
 		<div id=login>
 			<div id=welcome>			<img src="/images/top/person.jpg">
