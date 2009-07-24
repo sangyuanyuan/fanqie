@@ -396,9 +396,10 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	$key = str_replace('　', ' ', $key);
 	$keys = explode(' ',$key);
 	if($keys){
+		$now = now();
 		foreach ($keys as $v) {
 			if($v){
-				$db->execute("insert into smg_search_keys (search_key,search_count) values ('{$v}',1) ON DUPLICATE KEY update search_count = search_count +1;");;
+				$db->execute("insert into smg_search_keys (search_key,created_at) values ('{$v}','{$now}')");;
 			}			
 		}
 	}

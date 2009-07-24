@@ -157,7 +157,6 @@
 			});
 			$('.submit_vote').unbind();
 			$('.submit_vote').click(function(){
-				alert($(this).parent().parent().attr('class'));
 				var result = true;;
 				$(this).parent().parent().find('.vote_items_box').each(function(){
 					if($(this).find('input:checked').length <=0 && $(this).find('input:selected').length <= 0){
