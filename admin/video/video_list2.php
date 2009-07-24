@@ -23,7 +23,7 @@
 		$video_rows = search_content($title,'smg_video',implode(' and ', $c),20,'dept_priority asc,created_at desc');
 	}else{
 		$video = new table_class('smg_video');
-		$video_rows = $video->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'dept_priority asc,created_at desc'),20);
+		$video_rows = $video->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'dept_priority asc,created_at desc'),12);
 	}
 ?>
 
@@ -44,16 +44,13 @@
 <body>
 	<table width="795" border="0">
 		<tr class="tr1">
-			<td colspan="5" width="795">　　　<a href="video_add.php?dept_id=<?php echo $dept_id;?>" style="color:#0000FF">发布视频</a>　　　　　　
-			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
-			<select id=recommend style="width:100px" class="select_new">
+			<td colspan="5" width="795">　<a href="video_add.php?dept_id=<?php echo $dept_id;?>" style="color:#0000FF">发布视频</a> 　　　
+			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>"><select id=recommend style="width:100px" class="select_new">
 				<option value="">推荐状态</option>
 				<option value="1" <? if($_REQUEST['recommend']=="1"){?>selected="selected"<? }?>>已推荐</option>
 				<option value="0" <? if($_REQUEST['recommend']=="0"){?>selected="selected"<? }?>>未推荐</option>
 				<option value="2" <? if($_REQUEST['recommend']=="2"){?>selected="selected"<? }?>>被退回</option>
-			</select>
-			<span id="span_category"></span>
-			<select id=adopt style="width:90px" class="select_new">
+			</select><span id="span_category"></span><select id=adopt style="width:90px" class="select_new">
 				<option value="">发布状况</option>
 				<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 				<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
@@ -75,6 +72,9 @@
 			</div>
 			<div class=content>
 				<a href="?category=<?php echo $video_rows[$i]->dept_category_id;?>" style="color:#0000FF"><?php echo $category->find($video_rows[$i]->dept_category_id)->name; ?></a>
+			</div>
+			<div class=content>
+				<?php echo $video_rows[$i]->created_at; ?>
 			</div>
 			<div class=content style="height:20px">
 				<?php if($video_rows[$i]->is_dept_adopt=="1"){?>

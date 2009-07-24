@@ -75,9 +75,10 @@
      <!-- start left_top !-->
  	 	 <div id=l_t>
 	 	 	<?php 
-				$video = new table_class('smg_video');
-				$video -> find('first');
-				show_video_player('276','235',$video->photo_url,$video->video_url,$autostart = "false"); 
+				$db = get_db();
+				$sql="select photo_url,video_url from smg_video where tags='视频推荐' and is_adopt=1 and photo_url is not null order by priority asc,created_at desc limit 1";
+				$record=$db->query($sql);
+				show_video_player('276','235',$record[0]->photo_url,$record[0]->video_url,$autostart = "false"); 
 			?>
  	 	 </div>
  	   <!-- end -->
@@ -96,7 +97,7 @@
 				var pic_height1=146; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
 				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
-				var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
+				var texts1=<?php echo '"',flash_str_replace($record_star[0]->short_title).",".flash_str_replace($record_star[1]->short_title).",".flash_str_replace($record_star[2]->short_title).",".flash_str_replace($record_star[3]->short_title).'"'; ?>;
 	
 				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "276", "146", "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');

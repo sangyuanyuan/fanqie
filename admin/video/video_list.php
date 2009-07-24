@@ -24,7 +24,7 @@
 		$video_rows = search_content($title,'smg_video',implode(' and ', $c),20,'priority asc,created_at desc');
 	}else{
 		$video = new table_class('smg_video');
-		$video_rows = $video->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'priority asc,created_at desc'),20);
+		$video_rows = $video->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'priority asc,created_at desc'),12);
 	}
 ?>
 
@@ -45,21 +45,16 @@
 <body>
 	<table width="795" border="0">
 		<tr class="tr1">
-			<td colspan="5" width="795">　　　<a href="video_add.php" style="color:#0000FF">发布视频</a>
-			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
-				<select id=dept style="width:100px" class="select_new">
+			<td colspan="5" width="795">　<a href="video_add.php" style="color:#0000FF">发布视频</a> 　　　
+			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>"><select id=dept style="width:100px" class="select_new">
 					<option value="">发表部门</option>
 					<?php for($i=0;$i<count($rows_dept);$i++){?>
 					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
 					<? }?>
-				</select>
-				<span id="span_category"></span>
-				
-				<select id=adopt style="width:100px" class="select_new">
+				</select><span id="span_category"></span><select id=adopt style="width:100px" class="select_new">
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
-					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
-				</select>
+					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option></select>
 				<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
 				<input type="hidden" value="<?php echo $category_id;?>" id="category">
 			</td>
@@ -85,6 +80,9 @@
 				<a href="?category=<?php echo $video_rows[$i]->category_id;?>" style="color:#0000FF">
 					<a href="?category=<?php echo $video_rows[$i]->category_id;?>" style="color:#0000FF"><?php echo $category->find($video_rows[$i]->category_id)->name; ?></a>
 				</a>
+			</div>
+			<div class=content>
+				<?php echo $video_rows[$i]->created_at; ?>
 			</div>
 			<div class=content style="height:20px">
 				<?php if($video_rows[$i]->is_adopt=="1"){?>

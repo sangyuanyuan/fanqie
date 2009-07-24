@@ -42,7 +42,7 @@
 				var pic_height1=146; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
 				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
-				var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
+				var texts1=<?php echo '"',flash_str_replace($record_star[0]->short_title).",".flash_str_replace($record_star[1]->short_title).",".flash_str_replace($record_star[2]->short_title).",".flash_str_replace($record_star[3]->short_title).'"'; ?>;
 	
 				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "590", "212", "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');
@@ -225,25 +225,25 @@
 
      <!-- start left_bottom !-->
  	 	 <div id=l_b>
- 	 	 	<?php 
-				$sql="select id,online_url,photo_url,description,title,create_time from smg_magazine where is_adopt=1 order by priority asc,create_time desc limit 1";
-				$magazine=$db->query($sql);
+ 	 	 	<?php
+				$sql="select t1.id,t1.url,t1.src,t1.description,t1.title,t1.created_at from smg_images t1 join smg_category t2 on t1.category_id = t2.id where t1.is_adopt=1 and t2.name='在线杂志' order by t1.priority asc,t1.created_at desc limit 1";
+				$record=$db->query($sql);
 			?>
  	 	 	<div class=l_title>
  	 	 		<div class=title_l>
  	 	 			在线杂志
  	 	 		</div>
 				<div class=title_r>
-					<?php if(count($magazine)>0){?><a target="_blank" href="list.php?type=magazine">More..</a><?php } ?>
+					<?php if(count($record)>0){?><a target="_blank" href="list.php?type=magazine">More..</a><?php } ?>
 				</div>
  	 	 	</div>
 			<div class="l_b_l">
-				<a target="_blank" href="<?php echo $magazine[0]->online_url;?>"><img width=129 height=163 border=0 src="<?php echo $magazine[0]->photo_url;?>"></a>
+				<a target="_blank" href="<?php echo $record[0]->url;?>"><img width=129 height=163 border=0 src="<?php echo $record[0]->src;?>"></a>
 			</div>
 			<div class="l_b_r">
-				<a target="_blank" href="<?php echo $magazine[0]->online_url;?>"><?php echo $magazine[0]->title;?></a>
-				<div class=m_info>本期主要内容：</br><font color="#666666"><?php echo $magazine[0]->description;?></font></div>
-				<div class=m_info>发行日期：</br><?php echo substr($magazine[0]->create_time,0,10); ?></div>
+				<div style="width:120px; overflow:hidden"><a target="_blank" href="<?php echo $record[0]->url;?>"><?php echo $record[0]->title;?></a></div>
+				<div class=m_info>本期主要内容：</br><font color="#666666"><?php echo $record[0]->description;?></font></div>
+				<div class=m_info>发行日期：</br><?php echo substr($record[0]->created_at,0,10); ?></div>
 			</div>
  	 	 </div>
  	   <!-- end -->
@@ -252,7 +252,7 @@
  	 
  	 <div id=ibody_center>
  	 	<?php 
-			$sql = "select id,src,title,publisher from smg_images where is_adopt=1 and publisher is not null and src is not null order by priority asc,created_at desc limit 6";
+			$sql = "select t1.id,t1.src,t1.title,t1.publisher from smg_images t1,smg_category t2 where t1.is_adopt=1 and t1.publisher is not null and t1.src is not null and t1.category_id=t2.id and t2.platform='show' order by t1.priority asc,t1.created_at desc limit 6";
 			$records = $db->query($sql);
 			$count = count($records);
 		?>
@@ -267,12 +267,12 @@
 				<div class=c_content>
 					<div class=pic><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=90 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=title><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=publisher><?php echo $records[$i]->publisher?></div>
+					<div class=publisher>作者：<?php echo $records[$i]->publisher?></div>
 				</div>	
 				<?php } ?>		
 			</div>
 			<?php 
-				$sql="select id,photo_url,title,publisher from smg_video where is_adopt=1 and publisher is not null order by priority asc,created_at desc limit 4";
+				$sql="select t1.id,t1.photo_url,t1.title,t1.publisher from smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.publisher is not null and t2.platform='show' order by t1.priority asc,t1.created_at desc limit 4";
 				$records = $db->query($sql);
 				$count = count($records);
 			?>
@@ -285,7 +285,7 @@
 				<div class=c_content>
 					<div class=pic ><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=90 src="<?php echo $records[$i]->photo_url?>"></a></div>
 					<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=publisher><?php echo $records[$i]->publisher?></div>
+					<div class=publisher>博客：<?php echo $records[$i]->publisher?></div>
 				</div>	
 				<?php } ?>		
 			</div>

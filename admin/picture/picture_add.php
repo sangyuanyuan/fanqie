@@ -50,22 +50,22 @@
 			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor('title','Title',true,"80");?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="picture[<?php if($role=='dept_admin'){echo 'dept_';}?>priority]" class="number">(1-100)</td>
+			<td>优先级</td><td align="left"><input type="text" size="10" id="priority" name="picture[<?php if($role=='dept_admin'){echo 'dept_';}?>priority]" class="number">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>关键词</td><td align="left">　<input type="text" size="50" name="picture[keywords]">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
+			<td>关键词</td><td align="left"><input type="text" size="50" name="picture[keywords]">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>开启评论</td><td align="left">　<input type="checkbox" name=picture[commentable] id=commentable checked="checked"></td>
+			<td>开启评论</td><td align="left"><input type="checkbox" name=picture[commentable] id=commentable checked="checked"></td>
 		</tr>
 		
 		<?php if($role=='dept_admin'){?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>是否推荐到集团首页</td><td align="left">　<input type="checkbox" name=is_recommend id=is_recommend></td>
+			<td>是否推荐到集团首页</td><td align="left"><input type="checkbox" name=is_recommend id=is_recommend></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" style="display:none">
 			<td>首页分类</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select id=select name="picture[category_id]">
 					<?php	
 						for($i=0;$i<count($category_menu2);$i++){
@@ -80,7 +80,7 @@
 		<?php if($role=='admin'){?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category">
 			<td>发表部门</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select id=select name="picture[dept_id]">
 					<option value="7" >总编室</option>
 					<?php	
@@ -98,7 +98,7 @@
 		
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select id=url_s name="picture[<?php if($role=='dept_admin'){echo 'dept_';}?>category_id]">
 					<?php	
 						for($i=0;$i<count($category_menu);$i++){
@@ -109,23 +109,23 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>图片链接</td><td align="left">　<input type="text" size="50" name=picture[url]></td>
+			<td>图片链接</td><td align="left"><input type="text" size="50" name=picture[url]></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" class="required">(请上传小于2M的图片，格式支持jpg、gif、png) </td>
+			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" class="required">(请上传小于2M的图片，格式支持jpg、gif、png) </td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
-			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="picture[description]" class="required"></textarea></td>
+			<td>简短描述</td><td align="left"><textarea cols="80" rows="8" name="picture[description]" class="required"></textarea></td>
 		</tr>
 
 		<tr bgcolor="#f9f9f9" height="30px;">
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布图片"></td>
 		</tr>	
 	</table>
-	<input type="hidden" name="picture[created_at]"  value="<?php echo date("y-m-d")?>">
+	<input type="hidden" name="picture[created_at]"  value="<?php echo date("Y-m-d H:i:s")?>">
 	<input type="hidden" name="url" id=url  value="<?php echo $url;?>">
-	<input type="hidden" name="picture[is_adopt]" value="0">
-	<input type="hidden" name="picture[is_dept_adopt]" value="0">
+	<input type="hidden" name="picture[is_adopt]" value="1">
+	<input type="hidden" name="picture[is_dept_adopt]" value="1">
 	<?php if($role=='admin'){?>
 	<input type="hidden" name="picture[is_recommend]" id="recommend" value="1">
 	<?php }else{ ?>

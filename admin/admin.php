@@ -45,7 +45,11 @@
 							 		if($main_menu[$i]->id==$main_menu2[$j]->parent_id)
 							 		{
 						 ?>	 			
+						 			<? if($main_menu2[$j]->target<>"_blank"){?>
 						 			<div class="menu2 list2_<?php echo $i;?>" onClick='$("#admin_iframe").attr("src","<?php echo $main_menu2[$j]->href; ?>")' >.<?php echo $main_menu2[$j]->name ?></div>
+						 			<? }else{?>
+						 			<a class="menu2 list2_<?php echo $i;?>" href="<?php echo $main_menu2[$j]->href; ?>") target=_blank>.<?php echo $main_menu2[$j]->name ?></a>
+						 			<? }?>
 						 <?	 			
 							 		}
 						   }

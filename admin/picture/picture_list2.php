@@ -44,16 +44,13 @@
 <body>
 	<table width="795" border="0">
 		<tr class=tr1>
-			<td colspan="5" width="795">　　　<a href="picture_add.php?dept_id=<?php echo $dept_id;?>" style="color:#0000FF">发布图片</a>　　　　　　
-			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
-			<select id=recommend style="width:100px" class="select_new">
+			<td colspan="5" width="795">　<a href="picture_add.php?dept_id=<?php echo $dept_id;?>" style="color:#0000FF">发布图片</a> 　　　
+			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>"><select id=recommend style="width:100px" class="select_new">
 				<option value="">推荐状态</option>
 				<option value="1" <? if($_REQUEST['recommend']=="1"){?>selected="selected"<? }?>>已推荐</option>
 				<option value="0" <? if($_REQUEST['recommend']=="0"){?>selected="selected"<? }?>>未推荐</option>
 				<option value="2" <? if($_REQUEST['recommend']=="2"){?>selected="selected"<? }?>>被退回</option>
-			</select>
-			<span id="span_category"></span>
-			<select id=adopt style="width:90px" class="select_new">
+			</select><span id="span_category"></span><select id=adopt style="width:90px" class="select_new">
 				<option value="">发布状况</option>
 				<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 				<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
@@ -72,6 +69,9 @@
 				<?php if($images[$i]->is_recommend=='0'){echo '未推荐';}elseif($images[$i]->is_recommend=='1'){echo '已推荐';}elseif($images[$i]->is_recommend=='2'){echo '被退回';}?>
 			</div>
 			<div class=content><a href="?category=<?php echo $images[$i]->dept_category_id;?>" style="color:#0000FF"><?php echo $category->find($images[$i]->dept_category_id)->name; ?></a></a></div>
+			<div class=content>
+				<?php echo $images[$i]->created_at; ?>
+			</div>
 			<div class=content style="height:20px">
 				<?php if($images[$i]->is_dept_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $images[$i]->id;?>">撤消</span><? }?>
 				<?php if($images[$i]->is_dept_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $images[$i]->id;?>">发布</span><? }?>
