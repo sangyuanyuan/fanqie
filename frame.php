@@ -30,7 +30,24 @@
 		$username = get_config('db_user_name');
 		$password = get_config('db_password');
 		$code = get_config('db_code');
-		$g_db->connect($servername,$dbname,$username,$password,$code);	
+		$note_emails = "chenlong@xun-ao.com, sunyoujie@xun-ao.com, shengzhifeng@xun-ao.com, zhanghao@xun-ao.com";
+		if($g_db->connect($servername,$dbname,$username,$password,$code)===FALSE){			
+			$last_time = file_get_contents(dirname(__FILE__) .'/config/last_disconnect.txt');
+			
+			if($last_time == ''){				
+				write_to_file(dirname(__FILE__) .'/config/last_disconnect.txt',now(),'w');
+				@mail($note_emails,'数据库连接失败','主备数据库均无法连接，请立即检查'.$this->servername);
+				
+			}
+			$servername = get_config('db_server_name_bak');
+			$dbname = get_config('db_database_name_bak');
+			$username = get_config('db_user_name_bak');
+			$password = get_config('db_password_bak');
+			$code = get_config('db_code_bak');
+			if($g_db->connect($servername,$dbname,$username,$password,$code)===false){
+				
+			}
+		};	
 		return $g_db;	
 	}
 	

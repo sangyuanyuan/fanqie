@@ -7,7 +7,6 @@
 </html>
 <?php
 	require "../frame.php";
-	var_dump($_POST);
 	$vote_id = intval($_POST['vote_id']);
 	$table = new table_class('smg_vote');
 	$vote = $table->find($vote_id);
@@ -65,5 +64,6 @@
 	
 	$sql = 'update smg_vote_item set vote_count = vote_count + 1 where id in (' . implode(',',$item_ids) .')';
 	$db->execute($sql);
-	alert('投票成功,感谢您的参与');
+	alert('投票成功,感谢您的参与!');
+	redirect($_SERVER['HTTP_REFERER']);
 ?>
