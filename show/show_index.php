@@ -117,8 +117,8 @@
 		  	</div>
 			<div class=r_b>
 			<?php
-				$images = new smg_images_class();
-				$records = $images->paginate('all',array('conditions' => 'is_adopt=1 and src is not null','order' => 'priority asc,created_at desc'),16);
+				$sql="select t1.id,t1.photo_url,t1.title,t1.publisher from smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.publisher is not null and t2.platform='show' order by t1.priority asc,t1.created_at desc";
+				$records = $db->paginate($sql,16);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
