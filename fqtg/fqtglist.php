@@ -1,20 +1,19 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+﻿<?php require_once('../frame.php'); ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -番茄团购列表</title>
-	<link href="/css/smg.css" rel="stylesheet" type="text/css">
-	<script language="javascript" src="/js/smg.js"></script>
+	<?php css_include_tag('smg','top','bottom');
+		use_jquery(); ?>
 
 </head>
 <body>
 <? 
-	include('../inc/top.inc.html');
-	require_once('../libraries/sqlrecordsmanager.php');
-	$sqlmanager = new SqlRecordsManager();
-	$news=$sqlmanager->GetRecords('SELECT * FROM smg_tg where isadopt=1 order by createtime desc');
-	$news2=$sqlmanager->GetRecords('select * from smg_news where main_cate_id=58 and isadopt=1 order by pubdate desc');
+	require_once('../inc/top.inc.html');
+	$db = get_db();
+	$news=$db->query('SELECT * FROM smg_tg where isadopt=1 order by createtime desc');
 ?>
 <div id=bodys>
 	<div id=fqtglist><a href="/">首页</a>　>　<a href="/fqtg/fqtglist.php">番茄团购列表</a></div>
@@ -27,35 +26,6 @@
 				<a href="/fqtg/fqtg.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>		
 		</div>
 		<? }?>
-		<? for($i=0;$i<count($news2);$i++){
-				if($news2[$i]->linkurl==""){
-			?>
-		<div class=context>
-			<div class=cl>
-				
-				<img width=160 height=105 src="<? echo $news2[$i]->photourl;?>" /><br>
-				<a href="/news/news-54.php?id=<? echo $news2[$i]->id;?>"><? echo $news2[$i]->title;?></a></div>
-			
-		</div>
-		<? 
-			}
-		}
-		?>
-	</div>
-	<div id=fqtglistcount_page>
-		
-    <?php 
-     //显示评论页数链接
-     if($commentmanager->pagecount > 1)
-     {
-    ?>
-      <div class="pageurl">
-         <?php echo PrintPageUrl("/fqtg/fqtglist.php",$pageindex,$commentmanager->pagecount); ?>
-      </div>
-    <?php
-  	}
-  	//显示评论页面链接完成
-    ?>
 	</div>
 </div>
 <? include('../inc/bottom.inc.html');?>	

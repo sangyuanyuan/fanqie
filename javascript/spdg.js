@@ -1,5 +1,5 @@
 ﻿$(document).ready(function(){
- 	$('#createshop').click(function()
+ 	$('.dg').click(function()
 	{
 		var buyname=$("#buyname").attr("value");
 		var spname=$("#spname").attr("value");

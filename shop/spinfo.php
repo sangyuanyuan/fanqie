@@ -1,36 +1,34 @@
-<? 
-require_once('../libraries/tablemanager.class.php');
-require_once('../inc/pubfun.inc.php');
-require_once('../libraries/sqlrecordsmanager.php');
+ï»¿<? 
+require_once('../frame.php');
 	$actid = $_REQUEST['id'];
-	if($actid==""){die ('Ã»ÓÐÕÒµ½ÍøÒ³');}
-	ConnectDB();
-		$StrSql='update smg_tg set clickcount=clickcount+1 where id='.$actid;
-		$Record = mysql_query($StrSql) or die ("update error");
-	CloseDB();
-	$sqlmanager = new SqlRecordsManager();
-	$pageindex = isset($_REQUEST['pageindex']) ? $_REQUEST['pageindex']: 1;	
-	$news=$sqlmanager->GetRecords('SELECT * FROM smg_shop where id='.$actid);
-	$countnews=$sqlmanager->GetRecords('SELECT count(*) as total,sum(num) as zs FROM smg_shop_signup where tg_id='.$actid);
-	$comments=$sqlmanager->GetRecords('select * from smg_shop_comment where shop_id='.$actid.' order by createtime desc', $pageindex, 5);
+	$cookie=(isset($_COOKIE['smg_username'])) ? $_COOKIE['smg_username'] : 0;
+	if($actid==""){die ('æ²¡æœ‰æ‰¾åˆ°ç½‘é¡µ');}
+	$db = get_db();
+	$StrSql='update smg_tg set clickcount=clickcount+1 where id='.$actid;
+	$Record = $db->execute($StrSql);
+	$news=$db->query('SELECT * FROM smg_shop where id='.$actid);
+	$countnews=$db->query('SELECT count(*) as total,sum(num) as zs FROM smg_shop_signup where tg_id='.$actid);
+	$comments=$db->paginate('select * from smg_comment where resource_id='.$actid.' and resource_type="shop" order by created_at desc',5);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -ÉÌÆ·ÏêÏ¸</title>
-	<link href="/css/smg.css" rel="stylesheet" type="text/css">
-	<script language="javascript" src="/js/smg.js"></script>
+	<title>SMG -å•†å“è¯¦ç»†</title>
+	<?php css_include_tag('smg','top','bottom');
+		use_jquery(); 
+		js_include_once_tag('tg');
+	?>
 </head>
 <body>
 
-<? include('../inc/top.inc.html');?>
+<? require_once('../inc/top.inc.html');?>
 <div id=bodys>
  <div id=activitynews>
- 		<div id=activity_content1><a href="/">Ê×Ò³</a>¡¡>¡¡<a href="#">ÉÌÆ·¼ò½é</a></div>
+ 		<div id=activity_content1><a href="/">é¦–é¡µ</a>ã€€>ã€€<a href="#">å•†å“ç®€ä»‹</a></div>
 		<div id=content2><? echo $news[0]->title;?></div>
- 		<div id=content3>¿ªÊ¼Ê±¼ä: <? echo $news[0]->starttime;?>  ½áÊøÊ±¼ä£º<? echo $news[0]->endtime;?>  ä¯ÀÀÁ¿£º<? echo $news[0]->clickcount;?></div>
+ 		<div id=content3>å¼€å§‹æ—¶é—´: <? echo $news[0]->starttime;?>  ç»“æŸæ—¶é—´ï¼š<? echo $news[0]->endtime;?>  æµè§ˆé‡ï¼š<? echo $news[0]->clickcount;?></div>
 		<div id=content4>
 			<? 
 			$start_date=date("Y-m-d H:i:s");
@@ -44,22 +42,22 @@ require_once('../libraries/sqlrecordsmanager.php');
 			$end_date_day = substr($end_date,8,2);  
 			$end_time = mktime(0,0,0,$end_date_month,$end_date_day,$end_date_year);
 			$days=round(($end_time-$start_time)/3600/24);
-			if($days >=0){?>Àë¶©¹ºÊ±¼ä<span style="color:red; font-weight:bold;"><? echo $days; ?></span>Ìì<? }else{?>¶©¹ºÒÑ½ØÖ¹£¡<? }?><br>¹²ÓÐ
-				<a href="/fqtg/fqtgdg.php?id=<? echo $actid;?>" style="color:red; font-weight:bold; text-decoration:none;"><? echo $countnews[0]->total;?></a>Î»ÓÃ»§¶©¹º¡£¶©¹ºÉÌÆ·<a href="/fqtg/fqtgdg.php?id=<? echo $actid;?>" style="color:red; font-weight:bold; text-decoration:none;"><? echo $countnews[0]->zs;?></a>¼þ<br>
-					<? if($news[0]->maxnum!=""){?>ÏÞÁ¿¶©¹º<? echo $news[0]->maxnum;?>,ÒÑ¾­¶©¹º<? echo $countnews[0]->zs;?>,Ê£Óà<? echo ((int)$news[0]->maxnum-(int)$countnews[0]->zs); }?>
-				<?php echo getfckcontent($news[0]->content);?></div>
-		<div style="width:976px; margin-top:10px; margin-left:10px; text-align:center; font-size:15px; line-height:25px; float:left; display:inline;"><?php print_fck_pages($news->content,"/fgtg/fgtg.php?id=".$id);?></div>
+			if($days >=0){?>ç¦»è®¢è´­æ—¶é—´<span style="color:red; font-weight:bold;"><? echo $days; ?></span>å¤©<? }else{?>è®¢è´­å·²æˆªæ­¢ï¼<? }?><br>å…±æœ‰
+				<span style="color:red; font-weight:bold;"><? echo $countnews[0]->total;?></span>ä½ç”¨æˆ·è®¢è´­ã€‚è®¢è´­å•†å“<span style="color:red; font-weight:bold;"><? echo $countnews[0]->zs;?></span>ä»¶<br>
+					<? if($news[0]->maxnum!=""){?>é™é‡è®¢è´­<? echo $news[0]->maxnum;?>,å·²ç»è®¢è´­<? echo $countnews[0]->zs;?>,å‰©ä½™<? echo ((int)$news[0]->maxnum-(int)$countnews[0]->zs); }?>
+				<?php echo get_fck_content($news[0]->content);?></div>
+		<div style="width:976px; margin-top:10px; margin-left:10px; text-align:center; font-size:15px; line-height:25px; float:left; display:inline;"><?php print_fck_pages($news[0]->content,"/fgtg/fgtg.php?id=".$id);?></div>
     <div id=content5>
 			 <? if($news[0]->maxnum!=""){
     		if(strtotime(date("Y-m-d H:i:s")) < strtotime($news[0]->endtime)&&($news[0]->maxnum>=$countnews[0]->zs)){?>
-    	<a target="_blank" href="/shop/spdg.php?id=<? echo $actid;?>">¶©¹ºÉÌÆ·</a>
+    	<a target="_blank" href="/shop/spdg.php?id=<? echo $actid;?>">è®¢è´­å•†å“</a>
     	<? } else{?>
     	
     	<? }
     	}
     	else{
     	if(strtotime(date("Y-m-d H:i:s")) < strtotime($news[0]->endtime)){?>
-    	<a target="_blank" href="/shop/spdg.php?id=<? echo $actid;?>">¶©¹ºÉÌÆ·</a>
+    	<a target="_blank" href="/shop/spdg.php?id=<? echo $actid;?>">è®¢è´­å•†å“</a>
     	<? } else{?>
     	
     	<? 
@@ -68,45 +66,50 @@ require_once('../libraries/sqlrecordsmanager.php');
     </div>
     <? for($i=0;$i<count($comments);$i++){?>
     <div class=content7>
-    	<div class=name><a href="#"><?php echo $comments[$i]->commenter; ?></a></div>	
-    	<div class=time><?php echo $comments[$i]->createtime; ?></div>	
-    	<div class=context><?php echo $comments[$i]->content; ?></div>	
+    	<div class=name><a href="#"><?php echo $comments[$i]->nick_name; ?></a></div>	
+    	<div class=time><?php echo $comments[$i]->created_at; ?></div>	
+    	<div class=context><?php echo $comments[$i]->comment; ?></ommdiv>	
     </div>
     
     <?php }
-     //ÏÔÊ¾ÆÀÂÛÒ³ÊýÁ´½Ó
+     //æ˜¾ç¤ºè¯„è®ºé¡µæ•°é“¾æŽ¥
      if($sqlmanager->pagecount > 1)
      {
     ?>
       <div class="pageurl">
          <?php 
 	         if($fck_pageindex=="")
-	          echo PrintPageUrl("/shop/spinfo.php?id=" .$actid,$pageindex,$sqlmanager->pagecount); 
+	          echo paginate("/shop/spinfo.php?id=" .$actid); 
            else
-           	echo PrintPageUrl("/shop/spinfo.php?id=" .$actid."&fck_pageindex=".$fck_pageindex,$pageindex,$sqlmanager->pagecount);  
+           	echo paginate("/shop/spinfo.php?id=" .$actid."&fck_pageindex=".$_REQUEST['fck_pageindex']);  
          ?>
       </div>
     <?php
   	}
-  	//ÏÔÊ¾ÆÀÂÛÒ³ÃæÁ´½ÓÍê³É
+  	//æ˜¾ç¤ºè¯„è®ºé¡µé¢é“¾æŽ¥å®Œæˆ
     ?>
    
     <div id=content8>
-    		<div id=left>·¢±íÆÀÂÛ</div>
-    		<div id=right><a href="/comment/comment.php" target="_blank" style="text-decoration:none;color:#000;">¸ü¶àÆÀÂÛ>> </a></div>
+    		<div id=left>å‘è¡¨è¯„è®º</div>
+    		<div id=right><a href="/comment/comment.php" target="_blank" style="text-decoration:none;color:#000;">æ›´å¤šè¯„è®º>> </a></div>
     </div>
-    <form name="commentform" method="post" action="createcomment.php">
+    <form id="comment" method="post" action="/pub/pub.post.php">
     	 <input type="hidden" id="tgid" name="tgid" value="<?php echo $actid; ?>">
        <div id=content9>
-    	   ÓÃ»§£º<input type="text" value="" id="commenter" name="commenter">   	
+    	   ç”¨æˆ·ï¼š<input type="text" value="" id="commenter" name="post[nick_name]">  
+		   <input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $actid;?>">
+			<input type="hidden" id="resource_type" name="post[resource_type]" value="shop">
+			<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
+			<input type="hidden" name="type" value="comment">
+			<input type="hidden" id="username" value="<?php echo $cookie; ?>">
        </div>
        <div id=content10>
-    	  <div id=left>ÆÀÂÛ£º</div><textarea id="commentcontent" name="content"></textarea>
+    	  <div id=left>è¯„è®ºï¼š</div><textarea id="commentcontent" name="post[comment]"></textarea>
        </div>  
-       <div id=content11 onClick="return PostComment();"></div>
+       <div id=content11></div>
     </form>
  </div>
 </div>
-<? include('../inc/bottom.inc.html');?>	
+<? require_once('../inc/bottom.inc.html');?>	
 </body>
 </html>

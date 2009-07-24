@@ -56,7 +56,7 @@ $count=$db->query($total);
 		</tr>	
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;" align="center">
 			<td colspan="9" width="800" class="pages">
-				<?php paginate("/admin/shop/shoplist.php?id=".$id); ?>
+				<?php paginate(); ?>
 			</td>
 		</tr>
 		<input type="hidden" id="db_talbe" value="smg_shop_signup">

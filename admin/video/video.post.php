@@ -50,6 +50,7 @@
 	$table_change += array('</p>'=>'');
 	$title = strtr($_POST['title'],$table_change);
 	$video->title = $title;
+	$video->publisher = $_COOKIE['smg_user_nickname'];
 	if($_POST['video']["priority"]==null){$video->update_attribute("priority","100");}
 	if($_POST['video']["commentable"]==null){$video->update_attribute("commentable","");}
 	$video->publisher = $_COOKIE['smg_user_nickname'];

@@ -53,7 +53,7 @@
 					}
 					for($i=0;$i<count($c);$i++){
 				?>
-				<a class="tag<?php echo rand(1, 6);?>" href="/search/?key=<?php echo urlencode($c[$i]);?>&search_type=smg_images"><?php echo $c[$i];?></a>
+				<a class="tag<?php echo rand(1, 6);?>" target="_blank" href="/search/?key=<?php echo urlencode($c[$i]);?>&search_type=smg_images"><?php echo $c[$i];?></a>
 				<?php } ?>
 				
 				</div>
@@ -103,7 +103,7 @@
 					<div class=content <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 						<div class=left><? echo $i+1;?></div>
 						<div class=right>
-							<div class=top><a href="show_list.php?name=<?php echo $records[$i]->publisher;?>&type=image"><?php echo $records[$i]->publisher; ?></a></div>
+							<div class=top><?php echo $records[$i]->publisher; ?></div>
 							<div class=bottom>发布了<?php echo $records[$i]->num; ?>张图片！</div>
 						</div>
 					</div>
@@ -117,7 +117,7 @@
 		  	</div>
 			<div class=r_b>
 			<?php
-				$sql="select t1.id,t1.photo_url,t1.title,t1.publisher from smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.publisher is not null and t2.platform='show' order by t1.priority asc,t1.created_at desc";
+				$sql="select t1.* from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.publisher is not null and t2.platform='show' order by t1.priority asc,t1.created_at desc";
 				$records = $db->paginate($sql,16);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){

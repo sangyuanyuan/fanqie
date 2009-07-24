@@ -16,7 +16,6 @@ if($cookie=="")
 	exit;
 }
 $strsql='select * from smg_shop where shopdpid=(select id from smg_shopdp where username="'.$cookie.'") order by createtime desc';
-echo $strsql;
 $rows=$db->paginate($strsql,20);
 ?>
 

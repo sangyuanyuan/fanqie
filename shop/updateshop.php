@@ -23,15 +23,15 @@ if($cookie=='')
 	<script language="javascript" src="shop.js"></script>
 </head>
 <body >
-	 	<? include('../inc/top.inc.html');
+	 	<? require_once('../inc/top.inc.html');
 	 	
-	 	$sqlmanager = new SqlRecordsManager();
+	 	$db = get_db();
 	 	$shopid=$_REQUEST['id'];
 	 	?>
 	 	
 <div id=bodys>
 	<div id=n_left style="width:100%; margin-top:10px; text-align:center;">
-	<? $shop = $sqlmanager->GetRecords('SELECT * FROM smg_shopdp where id='.$shopid);?>
+	<? $shop = $db->query('SELECT * FROM smg_shopdp where id='.$shopid);?>
 	<form name="ldap" id="ldap" enctype="multipart/form-data" action="shop.post.php" method="post"> 
 	<table border="0">
 		<tr height="25px;" style="font-weight:bold; font-size:13px;">
@@ -62,7 +62,7 @@ if($cookie=='')
 	</form>
 	</div>
 </div>
-	<? include('../inc/bottom.inc.html');
+	<? require_once('../inc/bottom.inc.html');
 ?>
 </body>
 </html>
