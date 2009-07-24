@@ -49,20 +49,12 @@
 				<div class=title><div class=left>热门标签</div></div>
 				<div class=content style="border-bottom:none;">
 				<?php
-					$sql = 'select keywords from smg_images where keywords!="" order by click_count desc limit 10';
+					$sql = 'select name from smg_category where category_type="picture"';
 					$records = $db->query($sql);
-					$c = array();
-					for($i=0;$i<count($records);$i++){
-						$keywords = explode(',', $records[$i]->keywords);
-						if(count($keywords)==0)$keywords = explode('，', $records[$i]->keywords);
-						for($j=0;$j<count($keywords);$j++){
-							if(!in_array($keywords[$j],$c))array_push($c,$keywords[$j]);
-						}
-						$keywords = '';
-					}
-					for($i=0;$i<count($c);$i++){
+					$count = count($records);
+					for($i=0;$i<$count;$i++){
 				?>
-				<div class="tag<?php echo rand(1, 6);?>"><?php echo $c[$i];?></div>
+				<div class="tag<?php echo rand(1, 6);?>"><?php echo $records[$i]->name;?></div>
 				<?php } ?>
 				
 				</div>

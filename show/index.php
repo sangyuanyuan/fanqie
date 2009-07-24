@@ -252,7 +252,7 @@
  	 
  	 <div id=ibody_center>
  	 	<?php 
-			$sql = "select id,src,title,publisher from smg_images where is_adopt=1 and publisher is not null and src is not null order by priority asc,created_at desc limit 6";
+			$sql = "select t1.id,t1.src,t1.title,t1.publisher from smg_images t1,smg_category t2 where t1.is_adopt=1 and t1.publisher is not null and t1.src is not null and t1.category_id=t2.id and t2.platform='show' order by t1.priority asc,t1.created_at desc limit 6";
 			$records = $db->query($sql);
 			$count = count($records);
 		?>

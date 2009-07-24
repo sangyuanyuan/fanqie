@@ -65,11 +65,11 @@ li{margin:0px; list-style-type:none;}
 .line{width:650px; height:1px; margin-left:25px; margin-top:20px; border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
 
 
-.tag1{height:20px; margin:10px; font-weight:bolder; line-height:18px; font-size:18px; font-family:黑体; color:#FF0000; float:left; display:inline; cursor:pointer;}
-.tag2{height:20px; margin:10px; line-height:20px; font-size:20px; font-family:宋体; color:#0099FF; float:left; display:inline; cursor:pointer;}
-.tag3{height:20px; margin:10px; font-weight:bolder; line-height:16px; font-size:16px; font-family:隶书; color:#0099FF; float:left; display:inline; cursor:pointer;}
-.tag4{height:20px; margin:10px; line-height:19px; font-size:19px; font-family:黑体; color:#00FF00; float:left; display:inline; cursor:pointer;}
-.tag5{height:20px; margin:10px; font-weight:bolder; line-height:17px; font-size:17px; font-family:宋体; color:#00FF66; float:left; display:inline; cursor:pointer;}
-.tag6{height:20px; margin:10px; font-weight:bolder; line-height:18px; font-size:18px; font-family:黑体; color:#FF6600; float:left; display:inline; cursor:pointer;}
+.tag1{height:22px; margin:10px; font-weight:bolder; line-height:22px; font-size:18px; font-family:黑体; color:#FF0000; float:left; display:inline; cursor:pointer;}
+.tag2{height:22px; margin:10px; line-height:22px; font-size:20px; font-family:宋体; color:#0099FF; float:left; display:inline; cursor:pointer;}
+.tag3{height:22px; margin:10px; font-weight:bolder; line-height:22px; font-size:16px; font-family:隶书; color:#0099FF; float:left; display:inline; cursor:pointer;}
+.tag4{height:22px; margin:10px; line-height:20px; font-size:19px; font-family:黑体; color:#00FF00; float:left; display:inline; cursor:pointer;}
+.tag5{height:22px; margin:10px; font-weight:bolder; line-height:22px; font-size:17px; font-family:宋体; color:#00FF66; float:left; display:inline; cursor:pointer;}
+.tag6{height:22px; margin:10px; font-weight:bolder; line-height:22px; font-size:18px; font-family:黑体; color:#FF6600; float:left; display:inline; cursor:pointer;}
 
 
