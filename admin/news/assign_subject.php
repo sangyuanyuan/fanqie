@@ -111,7 +111,7 @@
 			}
 		});
 		function send_search(){
-			$('#result_box').load('assign_subject.php',{'show_div':'0','key':$('#search_text').attr('value')});
+			$('#result_box').load('assign_subject.php',{'show_div':'0','key':encodeURI($('#search_text').attr('value'))});
 		}
 		$('#subject_search').click(function(){
 			send_search();
