@@ -141,7 +141,7 @@
 							<div class=context1>
 								<div class=right>
 									<a href="list.php?publisher=<?php echo $bk[$i]->publisher;?>&type=video"><?php echo $bk[$i]->publisher;?></a><br>
-									<span><?php echo $bk[$i]->publisher;?></span>
+									<span><?php echo get_dept_info($bk[$i]->dept_id)->name;?></span>
 									<span>视频数：<?php echo $bk[$i]->num;?></span>
 								</div>
 							</div>
