@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-展示-我型我秀主页</title>
+	<title>SMG-番茄网-展示-摄影主页</title>
 	<?php
 		css_include_tag('show_show_index','top','bottom');
 		use_jquery();
@@ -20,9 +20,10 @@
 	 <div id=ibody_top>
 	 	  <div id=t_l>
 	  		<?php 
+				$category_id = category_id_by_name('摄影主页','picture');
 				$db = get_db();
 				$images = new smg_images_class();
-				$records = $images->find('all',array('conditions' => 'is_adopt=1 and src is not null','limit' => '12','order' => 'created_at desc'));
+				$records = $images->find('all',array('conditions' => 'is_adopt=1 and src is not null and category_id='.$category_id,'limit' => '12','order' => 'created_at desc'));
 				$count = count($records);
 				for($i=0; $i<$count;$i++){ 
 			?>
@@ -33,17 +34,6 @@
 	 	  <div id=t_r><a href="<?php echo $records[0]->url?>" target="_blank" id="pic_url"><img border=0 id="big_pic" width="518" height="236" src="<?php echo $records[0]->src?>"></a></div>
 	 </div>	
 	 <div id=ibody_left>
-		 	<div id=l_t>
-		 	 	 <div id=top><img src="/images/show/show_index_l_t.jpg">　公告</div>
-				 <div class=content>
-				 	<?php
-						$category_id = category_id_by_name('展示公告');
-						$sql = 'select content from smg_news where category_id='.$category_id.' and is_adopt=1 order by priority asc,created_at desc limit 1';
-						$record = $db->query($sql);
-					?>
-					<?php echo $record[0]->content;?>
-				 </div>
-		 	</div>
 		  	<a target="_blank" href="show_sub.php?type=image"><img border=0 src="/images/show/show_l_t.jpg"></a>
 			<div class=l_m>
 				<div class=title><div class=left>热门标签</div></div>
