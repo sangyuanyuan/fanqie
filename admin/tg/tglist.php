@@ -1,14 +1,15 @@
-<?
+﻿<?
 parse_str($_SERVER['QUERY_STRING']);
-require_once('../../frame.php');
-use_jquery();
+include('../../frame.php');
+$db=get_db();
 $sql="";
 if($key1<>""){$sql=' and a.name like "%'.$key1.'%" ';}
 if($id==""){$id=$key4;}
-$strsql='select a.*,b.name as deptname from smg_shop_signup a left join smg_dept b on a.dept_id=b.id where tg_id='.$id.$sql.' order by a.createtime desc';
-$db=get_db();
+
+$strsql='select * from smg_tg_signup a where a.tg_id='.$id.$sql;
 $rows=$db->paginate($strsql,20);
-$total='select sum(num) as total from smg_shop_signup where tg_id='.$id;
+
+$total='select sum(num) as total from smg_tg_signup where tg_id='.$id;
 $count=$db->query($total);
 
 ?>
@@ -16,22 +17,18 @@ $count=$db->query($total);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG</title>
-	<?php
-		css_include_tag('admin');
-		validate_form("shop_edit");
-		js_include_once_tag('My97DatePicker/WdatePicker.js');
-		js_include_tag('admin_pub');
-	?>
+	<title>SMG -团购后台</title>
+	<link href="/css/admin.css" rel="stylesheet" type="text/css">
+	<script language=javascript src="admin.js"></script>
 </head>
 <body style="background:#E1F0F7">
 	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td colspan="9" width="795">　　　搜索　<input id=newskey1 type="text" value="<? echo $key1?>" onKeyPress="newskeypress()">
 			<input id=newskey2 type="hidden"><input id=newskey3 type="hidden"><input id=newskey4 type="hidden" value="<? echo $id?>">
-			<input id=search name=search type="button" value="搜索" style="border:1px solid #0000ff; height:21px" onClick="newskey()">
+			<input type="button" value="搜索" style="border:1px solid #0000ff; height:21px" onClick="newskey()">
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
@@ -47,7 +44,7 @@ $count=$db->query($total);
 			<td><? echo $rows[$i]->createtime;?></td>
 			<td><? echo $rows[$i]->address;?></td>
 			<td><? echo $rows[$i]->remark;?></td>
-			<td><a href="#" class=del name="<?php echo $rows[$i]->id;?>">删除</a></td>
+			<td><a href="#" onclick="deltg(<? echo $rows['id'];?>)">删除</a></td>
 		</tr>
 		<? }?>
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" >
@@ -59,7 +56,7 @@ $count=$db->query($total);
 				<?php paginate(); ?>
 			</td>
 		</tr>
-		<input type="hidden" id="db_talbe" value="smg_shop_signup">
+	
 	</table>
 </body>
 </html>

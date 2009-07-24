@@ -1250,5 +1250,8 @@ body {font-family:����; font-size:12px; color:#000;  margin:0px;}
 
 #container{width:998px; height:100px; position:absolute;  margin:0 auto;}
 
+.t_r_m_content{width:240px; height:15px; margin-top:10px; margin-left:10px; line-height:15px;  overflow:hidden; float:left; display:inline;}
+.t_r_m_content a{color:#666666; text-decoration:none;}
+
 /* sauger */
 .pageurl{width:670px;float:left;text-align:right;margin-top:10px;}
