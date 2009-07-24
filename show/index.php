@@ -94,7 +94,7 @@
  	 	 	<?php 
 				$sql = 'select id,description,click_count,title,photo_url from smg_video where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$spphb=$db->query($sql);
-				$sql = 'SELECT publisher,count(*) as num FROM smg_video where publisher!="" group by publisher limit 5';
+				$sql = 'SELECT publisher,dept_id,count(*) as num FROM smg_video where publisher!="" group by publisher limit 5';
 				$bk=$db->query($sql);
 			?>
  	 	 	<div class=l_title>
@@ -157,7 +157,7 @@
 			<?php 
 				$sql = 'select id,description,click_count,title,src from smg_images where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
 				$wxwxph=$db->query($sql);
-				$sql = 'SELECT publisher,count(*) as num FROM smg_images where publisher!="" group by publisher limit 5';
+				$sql = 'SELECT publisher,dept_id,count(*) as num FROM smg_images where publisher!="" group by publisher limit 5';
 				$sy=$db->query($sql);
 			?>
 			<div class=l_title>
@@ -207,7 +207,7 @@
 							<div class=context1>
 								<div class=right>
 									<a href="list.php?publisher=<?php echo $sy[$i]->publisher;?>&type=show"><?php echo $sy[$i]->publisher;?></a><br>
-									<span><?php echo $sy[$i]->publisher;?></span>
+									<span><?php echo get_dept_info($sy[$i]->dept_id)->name;?></span>
 									<span>图片数：<?php echo $sy[$i]->num;?></span>
 								</div>
 							</div>
