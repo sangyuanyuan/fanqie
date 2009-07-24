@@ -218,8 +218,8 @@
 				for($i=0;$i<$count;$i++){
 			?>
 				<div class=content>
-					<div class=pic><a target="_blank" href="/<?php echo $records[$i]->platform; ?>/news.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->video_photo_src?>"></a></div>
-					<div class=title><a target="_blank" href="/<?php echo $records[$i]->platform; ?>/news.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->short_title);?></a></div>
+					<div class=pic><a target="_blank" href="/<?php echo $records[$i]->platform; ?>/news/news.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->video_photo_src?>"></a></div>
+					<div class=title><a target="_blank" href="/<?php echo $records[$i]->platform; ?>/news/news.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->short_title);?></a></div>
 					<div class=publisher><?php if($records[$i]->publisher_id!=''){echo $records[$i]->publisher_id;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
 					<div class=keywords><?php echo $records[$i]->created_at;?></div>
 					<div class=keywords>点击：<?php echo $records[$i]->click_count;?>次</div>
