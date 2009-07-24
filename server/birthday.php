@@ -25,7 +25,7 @@
     	<div id="title"></div>
      	<div id="menu">
 			<div id="menu1">我的生日</div>	
-     	  	<div id="menu2">日历</div>
+     	  	<div id="menu2"><a href="calendar.php">日历</a></div>
 			<div id="contrl" value='<?php echo $state ?>' name="<?php echo $user_id;?>"><?php if($state==0){echo '屏蔽我的生日';}else{echo '开启我的生日';} ?></div>
      	  	<div id=date>TODAY <?php echo date("Y-m-d") ?></div>
      	</div>
