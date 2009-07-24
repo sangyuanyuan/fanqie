@@ -48,11 +48,10 @@ $shop_record = $shop->find("all",array('conditions' => 'id='.$id));
 			<td>选择图片</td><td align="left"> <input type="hidden" name="MAX_FILE_SIZE" value="2097152"> <input name="upfile1" id="upfile1" type="file" value="<? echo $rows['photourl'];?>">(请上传200x160大小的图片，格式支持jpg、gif、png) <input type="hidden" name="MAX_FILE_SIZE1" value="2097152"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1 style="font-size:12px">
-			<td>内　容</td><td align="left"><input type="hidden" id="content" name="shop[content]" value="<? echo htmlspecialchars($shop_record[0]->content);?>" style="display:none" /><input type="hidden" id="content___Config" value="" style="display:none" /><iframe id="content___Frame" src="./FCKeditor/editor/fckeditor.html?InstanceName=content&amp;Toolbar=Default" width="98%" height="280" frameborder="0" scrolling="no"></iframe>
-</td>
+			<td>内　容</td><td align="left"><?php show_fckeditor('shop[content]','Admin',true,"280",$shop_record[0]->content,"98%");?></td>
 		</tr>
 		<tr bgcolor="#f9f9f9" height="30px;">
-			<td colspan="2" width="795" align="center"><button type="submit" id="submit" >发布活动</button></td>
+			<td colspan="2" width="795" align="center"><button type="submit" id="submit" >发布商品</button></td>
 		</tr>	
 	</table>
 			<input type="hidden" name="type" id="type" value="edit">

@@ -23,7 +23,7 @@
 	<div id=fqtglist><a href="/">首页</a>　>　<a href="/shop/shoplist.php">店铺列表</a>　>　<a href="/shop/splist.php?id=<? echo $_REQUEST['id'];?>">商品列表</a></div>
 	<div id=fqtglistcount style="padding-top:10px;">
 		<? if($name[0]->username==$cookie){?>
-		<a style="margin-top:10px; margin-left:10px; font-size:16px;" target="_blank" href="/admin/shop.php">商品管理</a><a style="margin-top:10px; margin-left:10px; font-size:16px;" target="_blank" href="updateshop.php?id=<? echo $_REQUEST['id'];?>">更新店铺</a>
+		<a style="margin-top:10px; margin-left:10px; font-size:16px;" target="_blank" href="/admin/shop/shop.php">商品管理</a><a style="margin-top:10px; margin-left:10px; font-size:16px;" target="_blank" href="updateshop.php?id=<? echo $_REQUEST['id'];?>">更新店铺</a>
 		<div style="margin-left:10px;">
 			<!-- remark  --> 
 			<?php echo $name[0]->remark;?>

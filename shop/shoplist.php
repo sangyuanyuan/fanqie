@@ -30,7 +30,7 @@
 		
 	</div>
 	<div id=fqtglistcount_page>
- 			<?php paginate('shoplist.php');?>
+ 			<?php paginate();?>
 	</div>
 </div>
 <?php require_once('../inc/bottom.inc.html');?>	

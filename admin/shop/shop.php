@@ -1,19 +1,15 @@
 <?
+require_once('../../frame.php');
+$db=get_db();
 $cookie= (isset($_COOKIE['smg_username'])) ? $_COOKIE['smg_username'] : '';
 if($cookie=='')
 {
 	echo '<script language="javascript">window.location.href="/admin/";</script>'; 
 }
 include('../inc/db.inc.php');
-ConnectDB();
 $sqlstr="select * from smg_shopdp where username='".$cookie."'";
-$record=mysql_query($sqlstr) or die ("select error2");
-$record_num=mysql_num_rows($record);
-if($record_num == 0)
-{
-	//echo '<script language="javascript">alert("请先创建番茄网店,再管理商品！");</script>';
-	//echo '<script language="javascript">window.location.href="/shop/createshop.php";</script>';
-}
+$record=$db->query($sqlstr);
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,8 +17,10 @@ if($record_num == 0)
 	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>smg</title>
-	<link href="/css/admin.css" rel="stylesheet" type="text/css">
-	<script language=javascript src="admin.js"></script>
+	<?php css_include_tag('admin');
+		use_jquery(); 
+		js_include_once_tag('admin');
+	?>
 </head>
 <script language="javascript" charset="utf-8">
 function get_cookie(name)
@@ -63,4 +61,3 @@ return result;
 	</div>
 </body>
 </html>
-<? CloseDB();?>

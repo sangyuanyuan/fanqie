@@ -1,6 +1,6 @@
 <?php
 	require_once('../frame.php');
-	
+	$ip=$_SERVER['REMOTE_ADDR'];
 	
    	if($_POST['type']=='comment'){
    		$comment = new table_class('smg_comment');
@@ -12,6 +12,7 @@
 		if($comment->nick_name==''){
 			$comment->nick_name = '匿名用户';
 		}
+		$comment->ip=$ip;
 		$comment -> save();
 		redirect($_SERVER['HTTP_REFERER']);
    	}elseif($_POST['type']=='flower'){
