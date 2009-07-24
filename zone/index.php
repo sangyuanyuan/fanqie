@@ -67,7 +67,7 @@
 				<div id=left>
 					<div id=pic><a target="_blank" href="<?php echo $tlqimg[0]->url; ?>"><img border=0 width=230 height=122 src="<?php echo $tlqimg[0]->src; ?>"></a></div>
 					<div id=title>
-						<a target="_blank" href="/<?php echo $record[0]->platform; ?>/news/news.php?id=<?php echo $record[0]->id; ?>"><?php echo delhtml($record[0]->title);?></a>
+						<a target="_blank" href="<?php echo $tlqimg[0]->url; ?>"><?php echo delhtml($tlqimg[0]->title);?></a>
 					</div>
 					<div id=content>
 						<a target="_blank" href="/<?php echo $record[0]->platform; ?>/news/news.php?id=<?php echo $record[0]->id;?>"><?php echo delhtml($record[0]->description);?></a>
@@ -182,7 +182,7 @@
 				<div id=title><img src="/images/show/show_index_l_t.jpg">　公告</div>
 				<div id=content><?php echo delhtml($gg[0]->description);?></div>
 			</div>
-			<div id=chat></div>
+			<div id=chat><a target="_blank" href="/zone/chat_room.php"><img border=0 src="/images/zone/index_chat.jpg"></a></div>
 			<div class=t_r_m>
 				<div class=t_r_m_top><img src="/images/zone/index_blog.jpg"></div>
 				<div class=t_r_m_title1 param=1 style="font-weight:bold; color:#FF4700; cursor:pointer;">最新博文</div><div param=2 class=t_r_m_title1 style="cursor:pointer;">最热博文</div>

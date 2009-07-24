@@ -64,8 +64,6 @@
 				$sql = 'select i.id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
 				$record_ad=$db -> query($sql);
 			?>
-			<script src="/flash_1.js" type="text/javascript"></script>
-			<div id="focus_02"></div> 
 			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
 			<div id="focus_02"></div> 
 			<script type="text/javascript"> 
