@@ -25,7 +25,7 @@ $rows=$db->query($strsql);
 			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name=title id=title value="<? echo $rows[0]->title?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;"  style="font-size:12px">
-			<td>优先级</td><td align="left">　<input type="text" size="10" name=priority id=priority value="<? if($rows[0]->priority=="100"){ echo "";}else{ echo $rows['priority'];}?>">(1-100)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="10" name=priority id=priority value="<? if($rows[0]->priority=="100"){ echo "";}else{ echo $rows[0]->priority;}?>">(1-100)</td>
 		</tr>
 		<tr align="left" bgcolor="#f9f9f9" height="25px;"  style="font-size:12px">
 			<td align="left">是否送到番茄网</td><td>　<input type="checkbox" id="issendfq" name="issendfq" onclick="tgcheck()" <? if($rows[0]->issendfq==1){?>checked="checked"<? }?>><input type="hidden" id="sendfq" name="sendfq" value="1"></td>
