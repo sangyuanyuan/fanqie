@@ -78,6 +78,6 @@
 	});
 	
 	$("#question_search").click(function(){
-				window.location.href="question_list.php?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
+				window.location.href="?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
 	});
 </script>

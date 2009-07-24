@@ -23,11 +23,12 @@
 			<div class=box>
 				<?php 
 					$db = get_db();
-					$sql = 'select * from smg_marry where sex="woman" limit 4';
-					$records = $db->query($sql);
+					$sql = 'select * from smg_marry where sex="woman"';
+					$records = $db->paginate($sql,4,'left');
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
 				?>
+				
 				<div class=content>
 					<div class=radio><input type="radio" class=woman name="woman_choose" value="<?php echo $records[$i]->id; ?>"></div>
 					<div class=pic><img src="<?php echo $records[$i]->photo;?>" width="102" height="142" border="0"></div>
@@ -46,14 +47,15 @@
 				</div>
 				<?php } ?>
 			</div>
+			<div id=l_paginate><?php paginate('',null,'left');?></div>
 		</div>
 		<div id=t_r>
 			<div id=wybm><a href="apply.php" target="_blank"><img src="/images/server/wybm.gif" border=0></a></div>
 			<div class=box>
 				<?php 
 					$db = get_db();
-					$sql = 'select * from smg_marry where sex="man" limit 4';
-					$records = $db->query($sql);
+					$sql = 'select * from smg_marry where sex="man"';
+					$records = $db->paginate($sql,4,'right');
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
 				?>
@@ -75,6 +77,7 @@
 				</div>
 				<?php } ?>
 			</div>
+			<div id=r_paginate><?php paginate('',null,'right');?></div>
 		</div>
 	</div>
 	<div id=ibody_middle>
@@ -82,7 +85,7 @@
 		<div id=m_top>
 			<?php
 				$sql = 'select * from smg_marry_comment order by created_at desc';
-				$records = $db->paginate($sql,6);
+				$records = $db->paginate($sql,6,'comment');
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
@@ -107,6 +110,7 @@
 			<?php } ?>
 		</div>
 		<div id=m_bottom>
+			<div id=paginate><?php paginate('',null,'comment');?></div>
 			<div id=comment>
 				留 言 人：<input type=text id="pulisher"><br>
 				留言内容：<textarea  style="width:535px; height:105px;" id="comment_content"></textarea>

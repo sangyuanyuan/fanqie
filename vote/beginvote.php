@@ -12,7 +12,10 @@
 	?>
 </head>
 <body>
-	<? require_once('../inc/top.inc.php');?>
+	<?php 
+		require_once('../inc/top.inc.php');
+		validate_form("vote");
+	?>
 	<div id=answer>
 		<div id=left>
 			<div id=title>
@@ -25,19 +28,25 @@
 					<div class=title1><span>发起投票</span></div>
 					<div id=line></div>
 				</div>
+				<form id="vote" action="beginvote.post.php" method="post">
 				<div id=question>
 					<div id=wz>为哪款手机而烦恼？给宝宝起一个什么名字？今年生日怎么过？那就发动所有好友投票帮你决定吧！你也可以用“投票”来做其他方面的小调查</div>
 					<div id=top>
-						投票主题：<input type="text" style="width:280px; border:1px solid #000000;">　　　<span>添加详细投票说明</span>
+						投票主题：<input type="text"  name="vote[name]" class="required" style="width:250px; border:1px solid #000000;">　　<span id=add_description style="cursor:pointer;">添加详细投票说明</span><br><br>	
+						能选几项：<input type="text"  name="vote[max_item_count]" class="required number" style="width:250px; border:1px solid #000000;">
+						<div id=description style="margin-top:10px; display:none;">
+							答题说明：<textarea name="vote[description]" style="width:280px; border:1px solid #000000;"></textarea>
+						</div>
 					</div>
+					
 					<div id=mid>
-						<?PHP for($i=0;$i<10;$i++){ ?>
-							<div class=option>侯选项<? echo $i+1;?>：<input type="text" style="width:200px; border:1px solid #000000;"></div>
-							<?PHP if($i==9){?><div class=more>增加更多的选项</div><?PHP }?>
-						<? }?>
-						<div id=btn><button>发布投票</button></div>
+						<div class=option>侯选项：<input type="text" name="item[0][name]" class="required" style="width:200px; border:1px solid #000000;"></div>
+						<div class=option>侯选项：<input type="text" name="item[1][name]" class="required" style="width:200px; border:1px solid #000000;"></div>
+						<div class=more id=more>增加更多的侯选项</div><br>
+						<div id=btn><button type="submit">发布投票</button></div>
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
 		<?php include('../inc/vote_right.inc.php');?>
@@ -45,3 +54,22 @@
 	<? include('../inc/bottom.inc.php');?>
 </body>
 </html>
+
+<script>
+	$(function(){
+		var num = 2;
+		
+		$("#more").click(function(){
+			$(this).before('<div class=option>侯选项：<input type="text" name="item['+num+'][name]" class="required" style="width:200px; border:1px solid #000000;"><span style="cursor:pointer; margin-left:15px;" class=del>删除</span></div>')
+			num++;
+			$(".del").click(function(){
+				$(this).parent().remove();
+			})
+		});
+		
+		$("#add_description").click(function(){
+			$("#description").show();
+			$("#description").children().attr('class','required');
+		});
+	})
+</script>

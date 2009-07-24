@@ -25,6 +25,8 @@ body {margin:0px; font-family:宋体; font-size:12px;  color:#000000;}
 .day_content{width:90px;height:85px;float:left; display:inline; margin-left:10px; overflow:hidden;}
 .day_content a{color:#000}
 #send_gift_day{width:600px;height:400px;}
-#send_gift_day #left_div{width:300px;float:left; border: 1px solid;}
-#send_gift_day #right_div{width:300px;flaot:left;border:1px solid;}
+#send_gift_day #left_div{width:600px;float:left; }
+#send_gift_day #right_div{width:500px;float:left;}
+.list_item{width:290px;float:left;margin-left:5px;}
+.gift{width:70px;float:left;}
 
