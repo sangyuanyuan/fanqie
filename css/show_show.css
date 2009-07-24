@@ -72,9 +72,9 @@ li{margin:0px; list-style-type:none;}
 #r_b .more a{color:#FF6600; text-decoration:none;}
 
 
-.tag1{height:22px; margin:10px; font-weight:bolder; line-height:22px; font-size:18px; font-family:黑体; color:#FF0000; float:left; display:inline; cursor:pointer;}
-.tag2{height:22px; margin:10px; line-height:22px; font-size:20px; font-family:宋体; color:#0099FF; float:left; display:inline; cursor:pointer;}
-.tag3{height:22px; margin:10px; font-weight:bolder; line-height:22px; font-size:16px; font-family:隶书; color:#0099FF; float:left; display:inline; cursor:pointer;}
-.tag4{height:22px; margin:10px; line-height:20px; font-size:19px; font-family:黑体; color:#00FF00; float:left; display:inline; cursor:pointer;}
-.tag5{height:22px; margin:10px; font-weight:bolder; line-height:22px; font-size:17px; font-family:宋体; color:#00FF66; float:left; display:inline; cursor:pointer;}
-.tag6{height:22px; margin:10px; font-weight:bolder; line-height:22px; font-size:18px; font-family:黑体; color:#FF6600; float:left; display:inline; cursor:pointer;}
+.tag1{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:18px; font-family:黑体; color:#FF0000; float:left; display:inline; cursor:pointer;}
+.tag2{width:115px; height:22px; margin-left:10px; line-height:22px; font-size:20px; font-family:宋体; color:#0099FF; float:left; display:inline; cursor:pointer;}
+.tag3{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:16px; font-family:隶书; color:#0099FF; float:left; display:inline; cursor:pointer;}
+.tag4{width:115px; height:22px; margin-left:10px; line-height:20px; font-size:19px; font-family:黑体; color:#00FF00; float:left; display:inline; cursor:pointer;}
+.tag5{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:17px; font-family:宋体; color:#00FF66; float:left; display:inline; cursor:pointer;}
+.tag6{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:18px; font-family:黑体; color:#FF6600; float:left; display:inline; cursor:pointer;}

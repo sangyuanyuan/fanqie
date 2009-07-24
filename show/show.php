@@ -75,7 +75,7 @@
 			<div class=title><div class=left>热门标签</div></div>
 			<div class=content style="border-bottom:none;">
 			<?php
-					$sql = 'select name from smg_category where category_type="picture"';
+					$sql = 'select name from smg_category where category_type="picture" and platform="show"';
 					$records = $db->query($sql);
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
