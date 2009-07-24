@@ -74,7 +74,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 .t_r_m_title2{width:58px; height:17px; margin-top:5px; margin-left:10px; color:#000000; line-height:17px; float:left; display:inline;}
 .t_r_m_content{width:160px; height:22px; margin-left:10px; line-height:22px;  overflow:hidden; float:left; display:inline;}
 .t_r_m_content a{color:#666666; text-decoration:none;}
-#chat{width:180px; height:97px; margin-top:5px; background:url('/images/zone/index_chat.jpg') no-repeat; float:right; display:inline;}
+#chat{width:182px; height:97px; margin-top:5px; float:right; display:inline;}
 #b_l{width:457px; height:275px; background:url('/images/zone/index_b_l.jpg') no-repeat; float:left; display:inline;}
 #b_l #title{width:400px; height:20px; margin-top:10px; margin-left:30px; color:#999999; line-height:20px; font-weight:bold; float:left; display:inline;}
 #b_l .content{width:132px; height:110px; margin-top:10px; margin-left:15px; line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;}

@@ -3,7 +3,6 @@ parse_str($_SERVER['QUERY_STRING']);
 include('../../frame.php');
 $db=get_db();
 
-$smg_dept=$_COOKIE['smg_dept'];
 
 $sql="";
 if($key1<>""&&$key4==""){$sql=' where title like "%'.$key1.'%" ';}
@@ -11,7 +10,7 @@ if($key1<>""&&$key4<>""){$sql=' where title like "%'.$key1.'%" and isadopt='.$ke
 if($key1==""&&$key4<>""){$sql=' where isadopt='.$key4.' ';}
 
 
-$strsql='select * from smg_tg  '.$sql.' order by createtime desc';
+$strsql='select * from smg_tg  '.$sql.' order by priority asc, createtime desc';
 $rows=$db->paginate($strsql,20);
 ?>
 
@@ -20,9 +19,9 @@ $rows=$db->paginate($strsql,20);
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG</title>
+	<title>SMG -团购后台</title>
 	<?php css_include_tag('admin','top','bottom');
-		use_jquery(); ?>
+		js_include_once_tag('admin');?>
 </head>
 <body style="background:#E1F0F7">
 	<table width="795" border="0">
@@ -46,7 +45,7 @@ $rows=$db->paginate($strsql,20);
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" >
 			<td><a style="color:#000000; text-decoration:none" target="_blank" href="/fqtg/fqtg.php?id=<? echo $rows[$i]->id;?>"><? echo $rows[$i]->title;?></td>
 			<td><? echo $rows[$i]->starttime;?></td>
-			<td><? echo $rows['endtime'];?></td>
+			<td><? echo $rows[$i]->endtime;?></td>
 			<td><a href="tglist.php?id=<? echo $rows[$i]->id;?>" style="color:#000000">查看</a></td>
 			<td><? if($rows[$i]->isadopt=="1"){?><span style="color:#FF0000;cursor:pointer" onClick="tgcan('<? echo $rows[$i]->id;?>')">撤消</span><? }?>
 				<? if($rows[$i]->isadopt=="0"){?><span style="color:#0000FF;cursor:pointer" onClick="tgpub('<? echo $rows[$i]->id;?>')">发布</span><? }?>
