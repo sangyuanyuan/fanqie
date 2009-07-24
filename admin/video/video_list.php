@@ -24,7 +24,7 @@
 		$video_rows = search_content($title,'smg_video',implode(' and ', $c),20,'priority asc,created_at desc');
 	}else{
 		$video = new table_class('smg_video');
-		$video_rows = $video->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'priority asc,created_at desc'),20);
+		$video_rows = $video->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'priority asc,created_at desc'),12);
 	}
 ?>
 
