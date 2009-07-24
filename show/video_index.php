@@ -26,9 +26,9 @@
 					show_video_player('285','265',$record[0]->photo_url,$record[0]->video_url,$autostart = "false");
 				?>
 			 </div>
- 	 	 	 <div id=btn1></div>
-			 <div id=info>发布者：<?php echo $record[0]->publisher;?></div>
  	 	 </div>
+		 
+		 <div id=pic><a href="show_sub.php?type=video" ><img src="/images/show/video_up.jpg" border=0></a></div>
 		 
 		 <div class=l_m>
 			<div class=title><div class=left>热门标签</div></div>
@@ -64,19 +64,19 @@
 			<div id="focus_02"></div> 
 			<script type="text/javascript"> 
 				var pic_width1=276; 
-				var pic_height1=146; 
+				var pic_height1=190; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
 				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
 				var texts1=<?php echo '"',flash_str_replace($record_ad[0]->title).",".flash_str_replace($record_ad[1]->title).",".flash_str_replace($record_ad[2]->title).",".flash_str_replace($record_ad[3]->title).'"'; ?>;
 	
-				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "287", "146", "4","#FFFFFF");
+				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "287", "190", "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');
 				picflash.addVariable("picurl",pics1);
 				picflash.addVariable("piclink",mylinks1);
 				picflash.addVariable("pictext",texts1);				
 				picflash.addVariable("pictime","5");
 				picflash.addVariable("borderwidth","287");
-				picflash.addVariable("borderheight","146");
+				picflash.addVariable("borderheight","190");
 				picflash.addVariable("borderw","false");
 				picflash.addVariable("buttondisplay","true");
 				picflash.addVariable("textheight","15");				
@@ -148,14 +148,15 @@
 			<div id=r_t_r>
 				<div class=title>视频排行榜</div>
 					<?php
-						$sql = 'select id,title from smg_video where is_adopt=1 order by click_count limit 10;';
+						$sql = 'select id,title,click_count from smg_video where is_adopt=1 order by click_count desc limit 10;';
 						$records = $db->query($sql);
 						$count = count($records);
 						for($i=0;$i<$count;$i++){
 					?>
 					<div class=content>
 						<div class="<?php if($i<3){echo 'left';}else{echo 'left2';}?>"><?php echo $i+1; ?></div>
-						<div class=right><a href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
+						<div class=right><a href="video.php?id=<?php echo $records[$i]->id;?>" target="_blank" title="<?php echo $records[$i]->title;?>" ><?php echo strip_tags($records[$i]->title);?></a></div>
+						<div class=click_count><?php echo $records[$i]->click_count; ?></div>
 					</div>
 					<?php }?>
 			</div>
@@ -177,7 +178,7 @@
 				<div class=content>
 					<div class=pic><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->photo_url?>"></a></div>
 					<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=publisher>作者：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
+					<div class=publisher>播客：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
 					<div class=keywords><?php echo $records[$i]->created_at;?></div>
 					<div class=keywords>点击：<?php echo $records[$i]->click_count;?>次</div>
 				</div>
@@ -187,6 +188,7 @@
 			<?php $category_id = category_id_by_name('佳片共赏','video'); ?>
 			<div class=r_b_title>
 		  		<div class=left>佳片共赏</div>
+				<div class=more><a target="_blank" href="list.php?type=video&id=<?php echo $category_id; ?>">更多</a></div>
 		  	</div>
 			<div class=r_b_content>
 			<?php
@@ -198,7 +200,7 @@
 				<div class=content>
 					<div class=pic><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->photo_url?>"></a></div>
 					<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=publisher>作者：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
+					<div class=publisher>播客：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
 					<div class=keywords><?php echo $records[$i]->created_at;?></div>
 					<div class=keywords>点击：<?php echo $records[$i]->click_count;?>次</div>
 				</div>
@@ -207,19 +209,18 @@
 			<div class=line></div>
 			<div class=r_b_title>
 		  		<div class=left>视频新闻</div>
-				<div class=more><a target="_blank" href="list.php?type=video&id=<?php echo $category_id; ?>">更多</a></div>
 		  	</div>
 			<div class=r_b_content>
 			<?php
-				$sql = 'select * from smg_news where is_adopt=1 and video_flag=1 and video_photo_src!="" and short_title!="" order by priority asc, created_at desc limit 4';
+				$sql = 'select t1.id,t1.dept_id,t1.short_title,t1.publisher_id,t1.created_at,t1.click_count,t2.platform from smg_news t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.video_flag=1 and t1.video_photo_src!="" and t1.short_title!="" order by t1.priority asc, t1.created_at desc limit 4';
 				$records = $db->query($sql);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
 				<div class=content>
-					<div class=pic><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->video_photo_src?>"></a></div>
-					<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->short_title);?></a></div>
-					<div class=publisher>作者：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
+					<div class=pic><a target="_blank" href="\<?php echo $records[$i]->platfrom; ?>\news.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->video_photo_src?>"></a></div>
+					<div class=title><a target="_blank" href="\<?php echo $records[$i]->platfrom; ?>\news.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->short_title);?></a></div>
+					<div class=publisher>播客：<?php if($records[$i]->publisher_id!=''){echo $records[$i]->publisher_id;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
 					<div class=keywords><?php echo $records[$i]->created_at;?></div>
 					<div class=keywords>点击：<?php echo $records[$i]->click_count;?>次</div>
 				</div>
@@ -249,9 +250,6 @@
 		})
 	})
 	
-	$("#btn1").click(function(){
-		window.location.href = "show_sub.php?type=video";
-	});
 	
 	function change(){
 		$(".img").css('opacity','0.3');
