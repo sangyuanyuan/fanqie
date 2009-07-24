@@ -92,17 +92,6 @@
 		</div>
 		<div><?php paginate();?></div>
 	</div>
-	<div id="right_box" >
-		<div id="search_top10"></div>
-		<div id="top10_box">
-			<?php
-				$top = $db->query('select * from smg_search_keys order by search_count desc limit 10');
-			?>
-			<?php for($i=0;$i<10;$i++){?>
-				<div class="top10_item"><div class="span_left"><?php echo $i+1 .'. <a href="?search_type=smg_news&key=' .$top[$i]->search_key .'">'.$top[$i]->search_key .'</a>';?></div><div class="span_right"><?php echo $top[$i]->search_count;?></div></div>
-			<?php }?>
-		</div>
-	</div>
 </div>
 <?php include('../inc/bottom.inc.php');?>
 </body>
