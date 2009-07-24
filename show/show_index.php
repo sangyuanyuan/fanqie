@@ -123,7 +123,7 @@
 				<div class=content>
 					<div class=pic><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=title><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=keywords>作者：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
+					<div class=publisher>作者：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
 					<div class=keywords><?php echo $records[$i]->created_at;?></div>
 					<div class=keywords>点击：<?php echo $records[$i]->click_count;?>次</div>
 				</div>
