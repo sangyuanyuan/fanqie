@@ -1,4 +1,4 @@
-body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+body {margin:0px; font-family:宋体; font-size:12px;  color:#000000;}
 
 #ibody{width:995px; height:950px; border:1px #D8DFEA solid; margin:0 auto; margin-top:15px;}
 
@@ -21,5 +21,10 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 .l #context .bg5{width:103px; height:122px; background:url(/images/server/5.jpg); float:left; display:inline;}
 .l #context .bg6{width:103px; height:122px; background:url(/images/server/6.jpg); float:left; display:inline;}
 .l #context .bg7{width:103px; height:122px; background:url(/images/server/7.jpg); float:left; display:inline;}
-
+.day_title{color:red;font-size:larger;width:90px; text-align:right;margin-top:3px;float:left; display:inline;}
+.day_content{width:90px;height:85px;float:left; display:inline; margin-left:10px; overflow:hidden;}
+.day_content a{color:#000}
+#send_gift_day{width:600px;height:400px;}
+#send_gift_day #left_div{width:300px;float:left; border: 1px solid;}
+#send_gift_day #right_div{width:300px;flaot:left;border:1px solid;}
 

@@ -4,6 +4,10 @@
 	require "../frame.php";	
 	use_jquery();
 	$vote = new smg_vote_class();
+	$a[1]='a';
+	$a[3]='b';
+	echo $a[1];
+	#echo date('t');
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
