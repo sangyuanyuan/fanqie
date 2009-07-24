@@ -66,9 +66,11 @@
 			?>
 			<script src="/flash_1.js" type="text/javascript"></script>
 			<div id="focus_02"></div> 
-			<script type="text/javascript"> sh/sohufla
-				var pic_width1=276; 
-				var pic_height1=146; 
+			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+			<div id="focus_02"></div> 
+			<script type="text/javascript"> 
+				var pic_width1=287; 
+				var pic_height1=190; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
 				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
 				var texts1=<?php echo '"',flash_str_replace($record_ad[0]->title).",".flash_str_replace($record_ad[1]->title).",".flash_str_replace($record_ad[2]->title).",".flash_str_replace($record_ad[3]->title).'"'; ?>;
