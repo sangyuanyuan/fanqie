@@ -515,4 +515,11 @@ function write_to_file($filename,$content,$mode='a'){
 	fclose($fp);
 
 }
+
+function flash_str_replace($content){
+	$content = str_replace('"',"'",$content);
+	$content = str_replace(",","",$content);
+	return $content;
+
+}
 ?>

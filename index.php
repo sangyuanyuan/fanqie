@@ -45,7 +45,7 @@
 					var pic_height1=183; //图片高度
 					var pics1="<?php echo $record_star[0]->photo_src.",".$record_star[1]->photo_src.",".$record_star[2]->photo_src.",".$record_star[3]->photo_src ?>";
 					var mylinks1="<?php echo "/show/article.php?id=".$record_star[0]->news_id.",/show/article.php?id=".$record_star[1]->news_id.",/show/article.php?id=".$record_star[2]->news_id.",/show/article.php?id=".$record_star[3]->news_id; ?>";
-					var texts1="<?php echo $record_star[0]->short_title.",".$record_star[1]->short_title.",".$record_star[2]->short_title.",".$record_star[3]->short_title ?>";
+					var texts1=<?php echo '"',flash_str_replace($record_star[0]->short_title).",".flash_str_replace($record_star[1]->short_title).",".flash_str_replace($record_star[2]->short_title).",".flash_str_replace($record_star[3]->short_title).'"'; ?>;
  	
 					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
@@ -74,7 +74,7 @@
 					var pic_height1=183; //图片高度
 					var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
 					var mylinks1="<?php echo "/show/show.php?id=".$record_ad[0]->img_id.",/show/show.php?id=".$record_ad[1]->img_id.",/show/show.php?id=".$record_ad[2]->img_id.",/show/show.php?id=".$record_ad[3]->img_id; ?>";
-					var texts1="<?php echo $record_ad[0]->title.",".$record_ad[1]->title.",".$record_ad[2]->title.",".$record_ad[3]->title ?>";
+					var texts1=<?php echo '"'.flash_str_replace($record_ad[0]->title).",".flash_str_replace($record_ad[1]->title).",".flash_str_replace($record_ad[2]->title).",".flash_str_replace($record_ad[3]->title).'"' ?>;
  	
 					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
@@ -553,16 +553,16 @@
     <div id=p1>
   		<!-- start middle_left_top !-->
   		<?php
- 					$sql = 'select n.id as news_id,n.photo_src,n.short_title,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目点评" and c.platform="show" order by n.priority asc limit 7';
+ 					$sql = 'select n.id as news_id,n.photo_src,n.short_title,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目点评" and c.platform="show" order by n.priority asc limit 6';
 					$record_program=$db -> query($sql);
 			?>	
 			<div id=m_l_t>
  				<a href="/show/list.php?type=news&id=<?php echo $record_program[0]->cid ?>"  target=_blank id=more></a>
- 				<a href="/show/article.php?id=<?php echo $record_program[0]->news_id ?>" target=_blank><img src="<?php echo $record_program[0]->photo_src ?>" border=0></a>
+ 				<img src="/images/index/program.jpg">
 				<div id=content_mlt>
 					<ul>
-						<li style="line-height:25px; height:25px"><a href="/show/article.php?id=<?php echo $record_program[1]->news_id ?>" target=_blank style="color:#FF6600; font-weight:bold; font-size:14px;"><?php echo $record_program[1]->short_title ?></a></li>
-						<?php for($i=2;$i<7;$i++){ ?>
+						<li style="line-height:25px; height:25px"><a href="/show/article.php?id=<?php echo $record_program[0]->news_id ?>" target=_blank style="color:#FF6600; font-weight:bold; font-size:14px;"><?php echo $record_program[0]->short_title ?></a></li>
+						<?php for($i=1;$i<6;$i++){ ?>
 						<li><a href="/show/article.php?id=<?php echo $record_program[$i]->news_id ?>" target=_blank><?php echo $record_program[$i]->short_title ?></a></li>
 						<? }?>
 					</ul>
