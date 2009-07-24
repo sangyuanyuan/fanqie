@@ -80,7 +80,7 @@
 	<div class="l">
     		<div id="title"></div>
      	  <div id="menu">
-     	  	<div id="menu1">我的生日</div>	
+     	  	<div id="menu1"><a href="birthday.php">我的生日</a></div>	
      	  	<div id="menu2">日历</div>
      	  	<div id=date>TODAY <?php echo date("Y-m-d");?></div>
      	  </div>
