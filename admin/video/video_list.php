@@ -86,6 +86,9 @@
 					<a href="?category=<?php echo $video_rows[$i]->category_id;?>" style="color:#0000FF"><?php echo $category->find($video_rows[$i]->category_id)->name; ?></a>
 				</a>
 			</div>
+			<div class=content>
+				<?php echo $video_rows[$i]->created_at; ?>
+			</div>
 			<div class=content style="height:20px">
 				<?php if($video_rows[$i]->is_adopt=="1"){?>
 					<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $video_rows[$i]->id;?>">撤消</span>

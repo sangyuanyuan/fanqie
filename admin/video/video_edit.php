@@ -57,19 +57,19 @@
 			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor('title','Title',true,"80",$video_record[0]->title);?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="video[<?php echo $priority?>]" value="<?php if($video_record[0]->$priority!=100){echo $video_record[0]->$priority;}?>" class="number">(1-100)</td>
+			<td>优先级</td><td align="left"><input type="text" size="10" id="priority" name="video[<?php echo $priority?>]" value="<?php if($video_record[0]->$priority!=100){echo $video_record[0]->$priority;}?>" class="number">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>开启评论</td><td align="left">　<input type="checkbox" name="video[commentable]" id="commentable" <?php if($video_record[0]->commentable=="on"){?>checked="checked"<?php }?>></td>
+			<td>开启评论</td><td align="left"><input type="checkbox" name="video[commentable]" id="commentable" <?php if($video_record[0]->commentable=="on"){?>checked="checked"<?php }?>></td>
 		</tr>
 		
 		<?php if($role=='dept_admin'){?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>是否推荐到集团首页</td><td align="left">　<input type="checkbox"  id=is_recommend <?php if($video_record[0]->is_recommend=='1'){?>checked="checked"<?php }?>></td>
+			<td>是否推荐到集团首页</td><td align="left"><input type="checkbox"  id=is_recommend <?php if($video_record[0]->is_recommend=='1'){?>checked="checked"<?php }?>></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" <?php if($video_record[0]->is_recommend=='0'){?>style="display:none"<?php }?>>
 			<td>首页分类</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select id=select name="video[category_id]">
 					<?php	
 						for($i=0;$i<count($category_menu2);$i++){
@@ -84,7 +84,7 @@
 		<?php if($role=='admin'){?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category">
 			<td>发表部门</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select id=select name="video[dept_id]">
 					<option value="7" >总编室</option>
 					<?php	
@@ -99,7 +99,7 @@
 		
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 			<select id=url_s name="video[<?php echo $category_id;?>]">
 				<?php	
 					for($i=0;$i<count($category_menu);$i++){
@@ -111,7 +111,7 @@
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>关键词</td>
-			<td align="left">　
+			<td align="left">
 				<select name="video[tags]">
 					<option value="">请选择</option>
 				<?php
@@ -125,20 +125,19 @@
 				}
 				?>
 				<input type="text" name="video[keywords]" value="<?php echo $video_record[0]->keywords;?>">(请用空格或者","分隔开关键词,比如:高考 升学)
-				
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>在线视频</td><td align="left">　<input type="text" size="50" name="video[online_url]" value="<?php echo $video_record[0]->online_url;?>">（如果本地上传视频此项请留空！）</td>
+			<td>在线视频</td><td align="left"><input type="text" size="50" name="video[online_url]" value="<?php echo $video_record[0]->online_url;?>">（如果本地上传视频此项请留空！）</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" ><a href="<?php echo $video_record[0]->photo_url;?>" target="_blank">点击查看图片</a>(请上传小于2M的图片，格式支持jpg、gif、png))</td>
+			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" ><a href="<?php echo $video_record[0]->photo_url;?>" target="_blank">点击查看图片</a>(请上传小于2M的图片，格式支持jpg、gif、png))</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择视频</td><td align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file" ><?php if($video_record[0]->video_url!=''){?><a href="<?php echo $video_record[0]->video_url;?>" target="_blank">点击查看视频</a><?php } ?>(请上传视频，并且不要大于500M)</td>
+			<td>选择视频</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file" ><?php if($video_record[0]->video_url!=''){?><a href="<?php echo $video_record[0]->video_url;?>" target="_blank">点击查看视频</a><?php } ?>(请上传视频，并且不要大于500M)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
-			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="video[description]" class="required"><?php echo $video_record[0]->description;?></textarea></td>
+			<td>简短描述</td><td align="left"><textarea cols="80" rows="8" name="video[description]" class="required"><?php echo $video_record[0]->description;?></textarea></td>
 		</tr>
 
 		<tr bgcolor="#f9f9f9" height="30px;">

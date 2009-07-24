@@ -56,22 +56,22 @@
 			<td width="100">标　题</td><td width="695" align="left"><?php show_fckeditor('title','Title',true,"80",$picture_record[0]->title);?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>优先级</td><td align="left">　<input type="text" size="10" id="priority" name="picture[<?php echo $priority?>]" value="<?php if($picture_record[0]->$priority!=100){echo $picture_record[0]->$priority;}?>">(1-100)</td>
+			<td>优先级</td><td align="left"><input type="text" size="10" id="priority" name="picture[<?php echo $priority?>]" value="<?php if($picture_record[0]->$priority!=100){echo $picture_record[0]->$priority;}?>">(1-100)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>关键词</td><td align="left">　<input type="text" size="50" name="picture[keywords]" value="<?php echo $picture_record[0]->keywords;?>">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
+			<td>关键词</td><td align="left"><input type="text" size="50" name="picture[keywords]" value="<?php echo $picture_record[0]->keywords;?>">(请用空格或者","分隔开关键词,比如:高考 升学)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>开启评论</td><td align="left">　<input type="checkbox" name="picture[commentable]" id=commentable <?php if($picture_record[0]->commentable==="on"){?>checked="checked"<?php }?> ></td>
+			<td>开启评论</td><td align="left"><input type="checkbox" name="picture[commentable]" id=commentable <?php if($picture_record[0]->commentable==="on"){?>checked="checked"<?php }?> ></td>
 		</tr>
 		
 		<?php if($role=='dept_admin'){?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>是否推荐到集团首页</td><td align="left">　<input type="checkbox"  id=is_recommend <?php if($picture_record[0]->is_recommend=='1'){?>checked="checked"<?php }?>></td>
+			<td>是否推荐到集团首页</td><td align="left"><input type="checkbox"  id=is_recommend <?php if($picture_record[0]->is_recommend=='1'){?>checked="checked"<?php }?>></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" <?php if($picture_record[0]->is_recommend=='0'){?>style="display:none"<?php }?>>
 			<td>首页分类</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select id=select name="picture[category_id]">
 					<?php	
 						for($i=0;$i<count($category_menu2);$i++){
@@ -86,7 +86,7 @@
 		<?php if($role=='admin'){?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category">
 			<td>发表部门</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select id=select name="picture[dept_id]">
 					<option value="7" >总编室</option>
 					<?php	
@@ -101,7 +101,7 @@
 		
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
 			<td>分　类</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 			<select id=url_s name="picture[<?php echo $category_id;?>]">
 				<?php	
 					for($i=0;$i<count($category_menu);$i++){
@@ -112,13 +112,13 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>图片链接</td><td align="left">　<input type="text" size="50" name="picture[url]" value="<?php echo $picture_record[0]->url;?>"></td>
+			<td>图片链接</td><td align="left"><input type="text" size="50" name="picture[url]" value="<?php echo $picture_record[0]->url;?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left">　<input name="image" id="upfile" type="file"><a href="<?php echo $picture_record[0]->src;?>" target="_blank">点击查看图片</a><input type="hidden" name="MAX_FILE_SIZE1" value="2097152">(请上传小于2M的图片，格式支持jpg、gif、png)</td>
+			<td>选择图片</td><td align="left"><input name="image" id="upfile" type="file"><a href="<?php echo $picture_record[0]->src;?>" target="_blank">点击查看图片</a><input type="hidden" name="MAX_FILE_SIZE1" value="2097152">(请上传小于2M的图片，格式支持jpg、gif、png)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
-			<td>简短描述</td><td align="left">　<textarea cols="80" rows="8" name="picture[description]" class="required" ><?php echo $picture_record[0]->description;?></textarea></td>
+			<td>简短描述</td><td align="left"><textarea cols="80" rows="8" name="picture[description]" class="required" ><?php echo $picture_record[0]->description;?></textarea></td>
 		</tr>
 
 		<tr bgcolor="#f9f9f9" height="30px;">

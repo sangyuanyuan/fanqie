@@ -84,6 +84,9 @@
 					<a href="?category=<?php echo $images[$i]->category_id;?>" style="color:#0000FF"><?php echo $category->find($images[$i]->category_id)->name; ?></a>
 				</a>
 			</div>
+			<div class=content>
+				<?php echo $images[$i]->created_at; ?>
+			</div>
 			<div class=content style="height:20px">
 				<?php if($images[$i]->is_adopt=="1"){?>
 					<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $images[$i]->id;?>">撤消</span>
