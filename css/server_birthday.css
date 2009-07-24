@@ -22,3 +22,6 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 .l #context .box .picture{width:55px; height:55px; margin-left:10px; float:left; display:inline;}
 .l #context .box .message{width:300px; height:20px; margin-top:30px; margin-left:15px; color:#666666; overflow:hidden; line-height:20px; float:left; display:inline;}
 .l #context .box .date{height:20px; margin-top:30px; margin-left:30px; color:#666666; line-height:20px; float:left; display:inline;}
+
+#paginate{margin-left:230px; margin-top:30px; float:left; display:inline;}
+#paginate a{ color:#000000; text-decoration:none;}
