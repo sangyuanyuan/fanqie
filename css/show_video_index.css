@@ -23,8 +23,7 @@ li{margin:0px; list-style-type:none;}
 .l_m .content{width:265px; margin-left:10px; padding-bottom:10px; border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
 .l_m .content .left{width:16px; height:13px; margin-top:10px; text-align:center; line-height:13px; font-weight:bold;  color:#ffffff; background:url('/images/icon/show_wxwxzy.jpg') no-repeat; float:left; display:inline;}
 .l_m .content .right{width:190px; margin-top:5px; margin-left:20px; float:left; display:inline;}
-.l_m .content .right .top{width:190px; float:left; display:inline;}
-.l_m .content .right .top a{color:#666666; font-weight:bold;}
+.l_m .content .right .top{width:190px; color:#666666; font-weight:bold; float:left; display:inline;}
 .l_m .content .right .bottom{width:190px; color:#9D9D9D; font-weight:bold; float:left; display:inline;}
 
 #l_m1{width:280px; height:146px; margin-top:20px; float:left; display:inline;}
@@ -32,8 +31,8 @@ li{margin:0px; list-style-type:none;}
 #l_b{width:285px; margin-top:20px; font-size:13px; font-family:黑体 float:left; display:inline;}
 #l_b .title{width:265px; height:20px; padding:10px; color:#141414; font-weight:bold; font-size:15px; float:left; display:inline;}
 #l_b .content{width:260px; margin-left:10px; padding:3px; border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
-#l_b .content .left{width:40px; height:22px; line-height:22px; color:#A1A1A1; float:left; display:inline;}
-#l_b .content .right{width:223px; height:22px; line-height:22px; overflow:hidden; float:left; display:inline;}
+#l_b .content .left{width:40px; height:30px; line-height:30px; color:#A1A1A1; float:left; display:inline;}
+#l_b .content .right{width:223px; height:30px; line-height:30px; overflow:hidden; float:left; display:inline;}
 #l_b .content .right a{ text-decoration:none; color:#0099BB}
 
 #r_t{width:690px; height:285px; margin-left:10px; padding:0; line-height:20px; float:left; display:inline;}
@@ -58,18 +57,19 @@ li{margin:0px; list-style-type:none;}
 .r_b_content{width:700px; float:left; display:inline; }
 .r_b_content .content{width:130px; float:left; margin-left:30px; margin-top:10px; display:inline;}
 .r_b_content .content .pic{width:120px; height:75px; padding:5px; border:1px solid #CCCCCC; float:left; display:inline;}
-.r_b_content .content .title{width:130px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
+.r_b_content .content .title{width:130px; height:20px; text-align:center; line-height:20px; overflow:hidden; float:left; display:inline;}
 .r_b_content .content .title a{color:#0099BB;}
-.r_b_content .content .keywords{width:130px; height:20px; line-height:20px; color:#FF9900; overflow:hidden; float:left; display:inline;}
+.r_b_content .content .keywords{width:130px; height:20px; line-height:20px; text-align:center; color:#666666; overflow:hidden; float:left; display:inline;}
+.r_b_content .content .publisher{width:130px; height:20px; line-height:20px; text-align:center; color:#FF0000; overflow:hidden; float:left; display:inline;}
 
 .line{width:650px; height:1px; margin-left:25px; margin-top:20px; border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
 
 
-.tag1{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:18px; font-family:黑体; color:#FF0000; float:left; display:inline; cursor:pointer;}
-.tag2{width:115px; height:22px; margin-left:10px; line-height:22px; font-size:20px; font-family:宋体; color:#0099FF; float:left; display:inline; cursor:pointer;}
-.tag3{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:16px; font-family:隶书; color:#0099FF; float:left; display:inline; cursor:pointer;}
-.tag4{width:115px; height:22px; margin-left:10px; line-height:20px; font-size:19px; font-family:黑体; color:#00FF00; float:left; display:inline; cursor:pointer;}
-.tag5{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:17px; font-family:宋体; color:#00FF66; float:left; display:inline; cursor:pointer;}
-.tag6{width:115px; height:22px; margin-left:10px; font-weight:bolder; line-height:22px; font-size:18px; font-family:黑体; color:#FF6600; float:left; display:inline; cursor:pointer;}
+.tag1{ font-weight:bolder; line-height:27px; font-size:18px; color:#FF8C0D;}
+.tag2{ line-height:27px; font-size:20px; color:#0099FF;}
+.tag3{ font-weight:bolder; line-height:27px; font-size:16px;color:#0099FF;}
+.tag4{  line-height:27px; font-size:19px; color:#00FF00; }
+.tag5{ font-weight:bolder; line-height:27px; font-size:17px;  color:#00FF66;}
+.tag6{ font-weight:bolder; line-height:27px; font-size:18px; color:#FF6600; }
 
 

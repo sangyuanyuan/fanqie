@@ -21,8 +21,7 @@
  	 	 	 <div id=video>
  	 	 	 	<?php 
 					$db = get_db();
-					$category_id = category_id_by_name('视频首页视频','video');
-					$sql = 'select * from smg_video where category_id='.$category_id.' and is_adopt=1 and video_url!="" order by priority asc,created_at desc limit 1';
+					$sql="select photo_url,video_url from smg_video where tags='视频推荐' and is_adopt=1 and photo_url is not null order by priority asc,created_at desc limit 1";
 					$record = $db->query($sql);
 					show_video_player('285','265',$record[0]->photo_url,$record[0]->video_url,$autostart = "false");
 				?>
@@ -39,10 +38,10 @@
 				$records = $db->query($sql);
 				$c = array();
 				for($i=0;$i<count($records);$i++){
-					$keywords = explode('　', $records[$i]->keywords);
-					if(count($keywords)==0)$keywords = explode(' ', $records[$i]->keywords);
-					if(count($keywords)==0)$keywords = explode(',', $records[$i]->keywords);
+					$keywords = explode(',', $records[$i]->keywords);
 					if(count($keywords)==0)$keywords = explode('，', $records[$i]->keywords);
+					if(count($keywords)==0)$keywords = explode('　', $records[$i]->keywords);
+					if(count($keywords)==0)$keywords = explode(' ', $records[$i]->keywords);
 					for($j=0;$j<count($keywords);$j++){
 						if(!in_array($keywords[$j],$c))array_push($c,$keywords[$j]);
 					}
@@ -50,7 +49,7 @@
 				}
 				for($i=0;$i<count($c);$i++){
 			?>
-			<div class="tag<?php echo rand(1, 6);?>"><?php echo $c[$i];?></div>
+			<a class="tag<?php echo rand(1, 6);?>" target="_blank" href="/search/?key=<?php echo urlencode($c[$i]);?>&search_type=smg_images"><?php echo $c[$i];?></a>
 			<?php } ?>
 			</div>
 		</div>	
@@ -98,7 +97,7 @@
 				<div class=content <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><?php echo $i+1;?></div>
 					<div class=right>
-						<div class=top><a href="show_list.php?name=<?php echo $records[$i]->publisher;?>&type=video"><?php echo $records[$i]->publisher; ?></a></div>
+						<div class=top><?php echo $records[$i]->publisher; ?></div>
 						<div class=bottom>发布了<?php echo $records[$i]->num; ?>个视频！</div>
 					</div>
 				</div>
@@ -178,33 +177,16 @@
 				<div class=content>
 					<div class=pic><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->photo_url?>"></a></div>
 					<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=keywords>[<?php if($records[$i]->keywords!=''){echo $records[$i]->keywords;}else{echo '最新视频';}?>]</div>
+					<div class=publisher>作者：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
+					<div class=keywords><?php echo $records[$i]->created_at;?></div>
+					<div class=keywords>点击：<?php echo $records[$i]->click_count;?>次</div>
 				</div>
 			<?php } ?>
 			</div>
 			<div class=line></div>
+			<?php $category_id = category_id_by_name('佳片共赏','video'); ?>
 			<div class=r_b_title>
-		  		<div class=left>视频新闻</div>
-		  	</div>
-			<div class=r_b_content>
-			<?php
-				$sql = 'select * from smg_news where is_adopt=1 and video_flag=1 and video_photo_src!="" and short_title!="" order by priority asc, created_at desc limit 8';
-				$records = $db->query($sql);
-				$count = count($records);
-				for($i=0;$i<$count;$i++){
-			?>
-				<div class=content>
-					<div class=pic><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->video_photo_src?>"></a></div>
-					<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->short_title);?></a></div>
-					<div class=keywords>[<?php if($records[$i]->keywords!=''){echo $records[$i]->keywords;}else{echo '新闻视频';}?>]</div>
-				</div>
-			<?php } ?>
-			</div>
-			<div class=line></div>
-			<div class=r_b_title>
-				<?php $category_id = category_id_by_name('佳片共赏','video'); ?>
 		  		<div class=left>佳片共赏</div>
-				<div class=more><a target="_blank" href="list.php?type=video&id=<?php echo $category_id; ?>">更多</a></div>
 		  	</div>
 			<div class=r_b_content>
 			<?php
@@ -216,7 +198,30 @@
 				<div class=content>
 					<div class=pic><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->photo_url?>"></a></div>
 					<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=keywords>[<?php if($records[$i]->keywords!=''){echo $records[$i]->keywords;}else{echo '佳片共赏';}?>]</div>
+					<div class=publisher>作者：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
+					<div class=keywords><?php echo $records[$i]->created_at;?></div>
+					<div class=keywords>点击：<?php echo $records[$i]->click_count;?>次</div>
+				</div>
+			<?php } ?>
+			</div>
+			<div class=line></div>
+			<div class=r_b_title>
+		  		<div class=left>视频新闻</div>
+				<div class=more><a target="_blank" href="list.php?type=video&id=<?php echo $category_id; ?>">更多</a></div>
+		  	</div>
+			<div class=r_b_content>
+			<?php
+				$sql = 'select * from smg_news where is_adopt=1 and video_flag=1 and video_photo_src!="" and short_title!="" order by priority asc, created_at desc limit 4';
+				$records = $db->query($sql);
+				$count = count($records);
+				for($i=0;$i<$count;$i++){
+			?>
+				<div class=content>
+					<div class=pic><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->video_photo_src?>"></a></div>
+					<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->short_title);?></a></div>
+					<div class=publisher>作者：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
+					<div class=keywords><?php echo $records[$i]->created_at;?></div>
+					<div class=keywords>点击：<?php echo $records[$i]->click_count;?>次</div>
 				</div>
 			<?php } ?>
 			</div>
