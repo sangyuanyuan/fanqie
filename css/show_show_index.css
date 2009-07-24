@@ -43,7 +43,7 @@ li{margin:0px; list-style-type:none;}
 .r_b .content .pic{width:120px; height:75px; padding:5px; border:1px solid #CCCCCC; float:left; display:inline;}
 .r_b .content .title{width:130px; height:20px; line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;}
 .r_b .content .title a{color:#0099BB;}
-.r_b .content .keywords{width:130px; height:20px; line-height:20px; text-align:center; color:#FF9900; overflow:hidden; float:left; display:inline;}
+.r_b .content .keywords{width:130px; height:20px; line-height:20px; text-align:center; color:#666666; overflow:hidden; float:left; display:inline;}
 
 #paginate{width:500px; margin-left:140px; margin-top:40px; float:left; display:inline;}
 #paginate a{color:#000000;}
