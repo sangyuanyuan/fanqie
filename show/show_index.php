@@ -117,14 +117,16 @@
 			<div class=r_b>
 			<?php
 				$images = new smg_images_class();
-				$records = $images->paginate('all',array('conditions' => 'is_adopt=1 and src is not null','order' => 'priority asc,created_at desc'),24);
+				$records = $images->paginate('all',array('conditions' => 'is_adopt=1 and src is not null','order' => 'priority asc,created_at desc'),16);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
 				<div class=content>
 					<div class=pic><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=title><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=keywords><?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
+					<div class=keywords>作者：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
+					<div class=keywords><?php echo $records[$i]->created_at;?></div>
+					<div class=keywords>点击：<?php echo $records[$i]->click_count;?>次</div>
 				</div>
 			<?php } ?>
 			<div id=paginate><?php paginate();?></div>
