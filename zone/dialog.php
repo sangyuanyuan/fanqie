@@ -79,6 +79,12 @@
 					<div id="div_q_emotion" style="width:100%;float:left;"></div>
 				</div>
 				<div id="answer_title"></div>
+							<?php 
+					if($dialog->video_url){
+						echo "<div>video</div>";
+						#show_video_player(400,220,$dialog->photo_url,$dialog->video_url);
+					}
+				?>
 				<div id="div_answer_list">
 					<div id="div_answer_list_innerbox">
 						<?php
