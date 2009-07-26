@@ -203,7 +203,7 @@
 			<div id=title>劲爆热图</div>
 			<?php for($i=0;$i<count($jbrt);$i++){?>
 				<div class="content">
-					<a target="_blank" href="<?php echo $jbrt[$i]->url;?>"><img border=0 width=132 height=90 src="<?php echo $jbrt[$i]->src;?>"><br><?php echo $jbrt[$i]->title;?></a>
+					<a target="_blank" href="<?php echo $jbrt[$i]->url;?>"><img border=0 width=132 height=90 src="<?php echo $jbrt[$i]->src;?>"><br><span style="color:#000000;"><?php echo $jbrt[$i]->title;?></span></a>
 				</div>
 			<?php } ?>
 		</div>
