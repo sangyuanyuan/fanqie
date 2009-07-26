@@ -152,7 +152,7 @@
 					<div class=middle><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_url?>"></a></div>
 					<div class=right>
 						<div class=top><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>" title="<?php echo $records[$i]->title;?>"><?php echo $records[$i]->title;?></a></div>
-						<div class=bottom><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>">被播放了<?php echo $records[$i]->click_count ?>次</a></div>
+						<div class=bottom>被播放了<?php echo $records[$i]->click_count ?>次</div>
 					</div>
 				</div>
 			<? }?>
@@ -172,7 +172,7 @@
 					<div class=middle><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=right>
 						<div class=top><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>" title="<?php echo $records[$i]->title;?>"><?php echo $records[$i]->title;?></a></div>
-						<div class=bottom><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>">被点击了<?php echo $records[$i]->click_count;?>次</a></div>
+						<div class=bottom>被点击了<?php echo $records[$i]->click_count;?>次</div>
 					</div>
 				</div>
 			<? }?>

@@ -94,7 +94,7 @@
  	 	 	<?php 
 				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.photo_url from smg_video t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and t1.is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5;';
 				$spphb=$db->query($sql);
-				$sql = 'SELECT t1.publisher,t1.dept_id,count(t1.title) as num FROM smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.publisher!="admin" and t2.platform="show" group by t1.publisher limit 5';
+				$sql = 'SELECT t1.publisher,t1.dept_id,count(t1.title) as num FROM smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.is_adopt=1 and t1.publisher!="admin" and t2.platform="show" group by t1.publisher limit 5';
 				$bk=$db->query($sql);
 			?>
  	 	 	<div class=l_title>
@@ -140,7 +140,7 @@
 						<?php } if($i==0){?>					
 							<div class=context1>
 								<div class=right>
-									<a href="list.php?publisher=<?php echo $bk[$i]->publisher;?>&type=video" target="_blank"><?php echo $bk[$i]->publisher;?></a><br>
+									<a href="list.php?publisher=<?php echo urlencode($bk[$i]->publisher);?>&type=video" target="_blank"><?php echo $bk[$i]->publisher;?></a><br>
 									<span><?php echo get_dept_info($bk[$i]->dept_id)->name;?></span>
 									<span>视频数：<?php echo $bk[$i]->num;?></span>
 								</div>
@@ -157,7 +157,7 @@
 			<?php 
 				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5;';
 				$wxwxph=$db->query($sql);
-				$sql = 'SELECT t1.publisher,t1.dept_id,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.publisher!="admin" and t2.platform="show" group by t1.publisher limit 5';
+				$sql = 'SELECT t1.publisher,t1.dept_id,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.publisher!="admin" and t1.is_adopt=1 and t2.platform="show" group by t1.publisher limit 5';
 				$sy=$db->query($sql);
 			?>
 			<div class=l_title>
@@ -213,7 +213,7 @@
 							</div>
 						<?php }else{?>
 							<div class=context2 <?php if($i==(count($sy)-1)){?>style="border:0;"<?php } ?> >
-								<div class=left><a target="_blank" href="list.php?publisher=<?php echo $sy[$i]->publisher;?>&type=image"><?php echo $sy[$i]->publisher;?></a></div>
+								<div class=left><a target="_blank" href="list.php?publisher=<?php echo urlencode($sy[$i]->publisher);?>&type=image"><?php echo $sy[$i]->publisher;?></a></div>
 								<div class=right><?php echo $sy[$i]->num;?></div>
 							</div>
 						<?php } ?>
@@ -226,6 +226,7 @@
      <!-- start left_bottom !-->
  	 	 <div id=l_b>
  	 	 	<?php
+				$category_id = category_id_by_name('在线杂志','picture');
 				$sql="select t1.id,t1.url,t1.src,t1.description,t1.title,t1.created_at from smg_images t1 join smg_category t2 on t1.category_id = t2.id where t1.is_adopt=1 and t2.name='在线杂志' order by t1.priority asc,t1.created_at desc limit 1";
 				$record=$db->query($sql);
 			?>
@@ -234,7 +235,7 @@
  	 	 			在线杂志
  	 	 		</div>
 				<div class=title_r>
-					<?php if(count($record)>0){?><a target="_blank" href="list.php?type=image">More..</a><?php } ?>
+					<?php if(count($record)>0){?><a target="_blank" href="list.php?type=image&id=<?php echo $category_id;?>">More..</a><?php } ?>
 				</div>
  	 	 	</div>
 			<div class="l_b_l">
