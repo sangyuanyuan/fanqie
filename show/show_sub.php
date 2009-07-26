@@ -56,26 +56,26 @@
 	<div class=title><?php echo $title; ?></div>
 	<?php if($type=='video'){
 	?>
-	<input type="hidden" name="type" value="video">
+	<input type="hidden" name="type" id="s_type" value="video">
 	<input type="hidden" name="show[category_id]" value="<?php echo category_id_by_name('我要上传','video');?>">
 	<div id=b>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　视频照片</div>
 		<div class=t_r>
-			<input type="file" name="image" id="image" class="required">
+			<input type="file" name="image" id="image" class="required">('png','jpg','gif')
 		</div>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择视频</div>
 		<div class=t_r>
-			<input type="file" name="video" id="video" class="required">
+			<input type="file" name="video" id="video" class="required">('flv','wmv','wav','mp3','mp4','avi','rm')
 		</div>
 	</div>
 	<?php }else{
 	?>
-	<input type="hidden" name="type" value="image">
+	<input type="hidden" name="type" id="s_type" value="image">
 	<input type="hidden" name="show[category_id]" value="<?php echo category_id_by_name('我要上传','picture'); ?>">
 	<div id=b>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择图片</div>
 		<div class=t_r>
-			<input type="file" name="image" id="image" class="required">
+			<input type="file" name="image" id="image" class="required">('png','jpg','gif')
 		</div>
 	</div>
 	<?php } ?>
@@ -91,6 +91,30 @@
 
 <script>
 	$("#button_submit").click(function(){
+		if($("#s_type").val()=="image"){
+			var upfile1 = $("#image").val();
+			var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);
+			if(upload_file_extension.toLowerCase()!=".png"&&upload_file_extension.toLowerCase()!=".jpg"&&upload_file_extension.toLowerCase()!=".gif"){
+				alert("上传图片类型错误");
+				return false;
+			}
+		}else{
+			var upfile1 = $("#image").val();
+			var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);
+			if(upload_file_extension.toLowerCase()!=".png"&&upload_file_extension.toLowerCase()!=".jpg"&&upload_file_extension.toLowerCase()!=".gif"){
+				alert("上传图片类型错误");
+				return false;
+			}
+			var upfile2 = $("#video").val();
+			upload_file_extension=upfile2.substring(upfile2.length-4,upfile2.length);
+			if(upload_file_extension.toLowerCase()!=".flv"&&upload_file_extension.toLowerCase()!=".wmv"&&upload_file_extension.toLowerCase()!=".wav"&&upload_file_extension.toLowerCase()!=".mp3"&&upload_file_extension.toLowerCase()!=".mp4"&&upload_file_extension.toLowerCase()!=".avi"){
+				upload_file_extension=upfile2.substring(upfile2.length-3,upfile2.length);
+				if(upload_file_extension.toLowerCase()!=".rm"){
+					alert("上传视频类型错误");
+					return false;
+				}
+			}
+		}
 		$("#show").submit();
 	});
 </script>
