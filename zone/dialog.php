@@ -33,7 +33,7 @@
 	$leaders = $leaders->find('all',array('conditions' => "dialog_id = $dialog->id"));
 ?>
 <div id=ibody>
-	<div id=ibody_top></div>
+	<div id=ibody_top><img src="<?php echo $dialog->photo_url;?>"></div>
 	<div id=ibody_middle>
 		<div id="dialog_desc"><?php echo $dialog->content;?></div>
 		<div id="dialog_leader" calss="border">
