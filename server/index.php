@@ -282,9 +282,12 @@
 	<div id=ibody_bottom>
 		<div id=b_l>
 			<div id=b_l_t>
-				<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="100%" height="100%" style="line-height:20px;">
+				<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="510" height="120" style="line-height:20px;">
 					<?php for($i=0;$i<count($man);$i++){?>
-						<div class=content><div class=pic><a target="_blank" href="/sever/marry.php"><img border=0 width=87 height=105 src="<?php echo $man[$i]->photo;?>"></a></div><div class=context>姓名：<?php echo $man[$i]->name;?><br>出生年月：<?php echo $man[$i]->birthday; ?><br>身高：<?php echo $man[$i]->height;?>米<br>学历：<?php echo $man[$i]->education;?><br>毕业院校：<?php echo $man[$i]->school;?></div></div>
+						<div class=content>
+							<div class=pic><a target="_blank" href="/sever/marry.php"><img border=0 width=87 height=105 src="<?php echo $man[$i]->photo;?>"></a></div>
+							<div class=context>姓名：<?php echo $man[$i]->name;?><br>出生年月：<?php echo $man[$i]->birthday; ?><br>身高：<?php echo $man[$i]->height;?>米<br>学历：<?php echo $man[$i]->education;?><br>毕业院校：<?php echo $man[$i]->school;?></div>
+						</div>
 					<?php } ?>
 				</MARQUEE>	
 			</div>
@@ -294,6 +297,9 @@
 						<div class=content><div class=pic><a target="_blank" href="/sever/marry.php"><img border=0 width=87 height=105 src="<?php echo $woman[$i]->photo;?>"></a></div><div class=context>姓名：<?php echo $woman[$i]->name;?><br>出生年月：<?php echo $woman[$i]->birthday; ?><br>身高：<?php echo $woman[$i]->height;?>米<br>学历：<?php echo $woman[$i]->education;?><br>毕业院校：<?php echo $woman[$i]->school;?></div></div>
 					<?php } ?>
 				</MARQUEE>	
+			</div>
+			<div id=b_l_b_r>
+				<a target="_blank" href="/server/apply.php"><img border=0 src="/images/server/wyzh.jpg"></a>
 			</div>
 		</div>
 		<div id=b_r>

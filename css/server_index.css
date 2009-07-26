@@ -65,15 +65,15 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #t_r_answer_b #t_r_answer_b_l .content a{color:#000000; line-height:17px; text-decoration:none;}
 #t_r_answer_b #t_r_answer_b_r{width:84px; height:21px; margin-top:8px; margin-right:3px; font-size:13px; text-align:center; color:#ffffff; cursor:pointer; line-height:21px; float:right; display:inline;}
 #b_l{width:656px; height:295px; background:url('/images/server/index_b_l.jpg') no-repeat; float:left; display:inline;}
-#b_l #b_l_t{width:510px; height:113px; margin-top:25px; margin-left:130px; float:left; display:inline;}
-#b_l #b_l_t .content{width:250px; height:113px; margin-top:5px; float:left; display:inline;}
+#b_l #b_l_t{width:510px; height:120px; margin-top:25px; margin-left:130px; overflow:hidden; float:left; display:inline;}
+#b_l #b_l_t .content{width:250px; height:113px; margin-top:5px; overflow:hidden; float:left; display:inline;}
 #b_l #b_l_t .content .pic{width:87px; height:105px; padding:4px; border:1px solid #EBDCCB; float:left; display:inline;}
 #b_l #b_l_t .content .context{width:150px; height:113px; line-height:18px; overflow:hidden; float:right; display:inline;}
-#b_l #b_l_b{width:510px; height:113px; margin-top:10px; margin-left:20px; float:left; display:inline;}
-#b_l #b_l_b .content{width:250px; height:113px; margin-top:5px; float:left; display:inline;}
+#b_l #b_l_b{width:510px; height:120px; margin-top:5px; margin-left:20px; overflow:hidden; float:left; display:inline;}
+#b_l #b_l_b .content{width:250px; height:113px;  margin-top:5px; overflow:hidden; float:left; display:inline;}
 #b_l #b_l_b .content .pic{width:87px; height:105px; padding:4px; border:1px solid #EBDCCB; float:left; display:inline;}
 #b_l #b_l_b .content .context{width:150px; height:113px; line-height:18px; overflow:hidden; float:right; display:inline;}
-#b_l #b_l_b_r{width:}
+#b_l #b_l_b_r{width:78px; height:78px; margin-top:40px; margin-left:20px; float:left; display:inline;}
 #b_r{width:331px; height:275px; margin-top:14px; background:url('/images/server/index_b_r.jpg') no-repeat; float:right; display:inline;}
 #b_r #left{width:180px; margin-top:20px; float:left; display:inline;}
 #b_r #left #tp{width:70px; height:25px;  margin-left:58px; padding-top:14px; padding-left:10px; background:url('/images/server/index_tp_bg.jpg') no-repeat; line-height:24px; font-size:14px; color:#ffffff; font-weight:bold; text-align:center; float:left; display:inline;}
