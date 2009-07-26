@@ -75,13 +75,13 @@ function delete_answer(id){
 
 function answer_question(id){
 	var dialog_id = $('#dialog_id').val();	
-	tb_show('回答问题','answer_question.php?height=350&width=670&modal=true&question_id=' + id + '&dialog_id=' + dialog_id,false);
+	tb_show('回答问题','answer_question.php?height=350&width=661&modal=true&question_id=' + id + '&dialog_id=' + dialog_id,false);
 	//$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'optype':'answer_question','question_id':id});
 }
 
 function edit_answer(qid, id){
 	var dialog_id = $('#dialog_id').val();	
-	tb_show('回答问题','edit_answer.php?height=350&width=670&modal=true&question_id=' + qid + '&dialog_id=' + dialog_id + '&answer_id=' + id,false);	
+	tb_show('回答问题','edit_answer.php?height=350&width=661&modal=true&question_id=' + qid + '&dialog_id=' + dialog_id + '&answer_id=' + id,false);	
 }
 
 function scroll_buttom(){
