@@ -114,7 +114,7 @@
 	<?php
 	for($i=0;$i<$len1;$i++){
 		$answer_count ++;?>
-		str = '<?php echo_dialog_answer($answers[$i],$answer_count,$dialog_id);?>';
+		str = '<?php echo_dialog_answer($answers[$i]->id,$answer_count,$dialog_id);?>';
 		$('#div_answer_list_innerbox').append(str);
 	<?php } 
 		if($alert_str){
