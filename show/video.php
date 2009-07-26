@@ -81,7 +81,7 @@
 						picflash.write("focus_02");				
 					</script> 
 				</div>
-				<div id="up_pic"><a href="show_sub.php?type=video" ><img src="/images/show/video_up2.jpg" width="395" height="154" border=0></a></div>
+				<div id="up_pic"><a href="show_sub.php?type=video" ><img src="/images/show/video_up2.jpg" width="395" height="144" border=0></a></div>
 			</div>
 	  </div>
 	 	<div id=ibody_left>
@@ -152,7 +152,6 @@
 					?>
 			  	<div id=r_t <?php if($count==0){?>style="display:none;"<?php } ?>>
 			  		<div class=title>更多该用户的视频</div>
-					<div class=more><a target="_blank" href="video_list.php?name=<?php echo $video->publisher?>">全部<?php echo $count;?>个视频>></a></div>
 		  			<?php 
 						for($i=0;$i<$count;$i++) {
 					?>
@@ -227,7 +226,7 @@
 					?>
 			  	</div>
 		</div>
-
+		
 </div>
 <? require_once('../inc/bottom.inc.php');?>
 
