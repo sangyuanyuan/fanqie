@@ -4,7 +4,7 @@
 		$master_ids = get_master_ids($dialog_id);
 		echo "<div class=\"question_list\"><span class=\"question_index\"><b>$index.</b></span><span class=\"question_writer\"><b>{$item->writer}: </b></span>{$item->content}";
 		echo '  <span class="question_time">' .$item->create_time .'</span>';
-		echo ' <a href="comment_question.php?height=310&width=670&question_id='.$item->id .'" title="评论问题" class="comment_href">评论</a>';
+		echo ' <a href="comment_question.php?height=310&width=661&question_id='.$item->id .'" title="评论问题" class="comment_href">评论</a>';
 		if(in_array($_COOKIE['smg_username'], $master_ids)){
 			echo ' <span class="span_a" onclick="answer_question('.$item->id.');">回复</span> <span class="span_a" onclick="delete_question(' .$item->id .')">删除</span>';
 		}
