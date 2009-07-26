@@ -32,7 +32,8 @@ p{margin:0px; padding:0px;}
 #div_question{width:585px; height:240px; margin-top:5px; overflow-x:hidden; overflow-y:scroll; float:left; display:inline;}
 #div_leader{width:115px; height:238px; margin-top:6px; margin-left:3px; border:1px solid #808080; overflow-y:auto; overflow-x:hidden; float:left; display:inline;}
 #div_online_leader{width:100px; border-bottom:solid 1px; margin-left:2px;}
-.question_list{width:545px; margin:5px;margin-left:15px;}
+.question_list0{width:545px; margin:5px;margin-left:15px;}
+.question_list1{width:545px; margin:5px;margin-left:15px;background-color:#FFF2E1}
 .question_list .question_index{color:blue}
 .question_list .question_writer{color:#DE4900;margin-left:3px;}
 .question_time{color:gray}

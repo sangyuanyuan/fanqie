@@ -15,6 +15,7 @@
 			$question->writer = $_POST['writer'];
 			$question->content = str_replace('<p>', '', $_POST['content']);
 			$question->content = str_replace('</p>','',$question->content);
+			$question->is_master = $_POST['is_master'];
 			if($question->save()){
 				$alert_str = '发布成功!';
 			}else{
@@ -106,7 +107,7 @@
 	$last_comment_id = $len2 > 0 ? $comment[$len2-1]->id : $_REQUEST['last_comment_id'];
 	for($i=0;$i<$len2;$i++){?>
 		str = '<?php echo_dialog_comment($comment[$i]);?>';
-		$('#comment_list_box').append(str);
+		$('#comment_list_box').prepend(str);
 	<?php } ?>
 	$('#last_comment_id').val('<?php echo $last_comment_id;?>');	
 	
