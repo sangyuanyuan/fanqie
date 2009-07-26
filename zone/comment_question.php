@@ -12,13 +12,13 @@
 	</div>
 	<div>
 		<form id="form_comment_q">
-			<input type="text" name="comment[nick_name]" id="cq_writer"> 请填写用户名
-			<?php show_fckeditor('fck_cq','Title',false,115,'',666);?>
+			<input type="text" name="comment[nick_name]" id="cq_writer" style="width:300px"> 请填写用户名
+			<?php show_fckeditor('fck_cq','Title',false,115,'',660);?>
 			<input type="hidden" id="cq_comment" name="comment[comment]" value="" style="display:none;">
 			<input type="hidden" name="comment[resource_type]" value="dialog" style="display:none;">
 			<input type="hidden" name="comment[resource_id]" value="<?php echo $question->dialog_id;?>" style="display:none;">
 			<div id="cq_emotion" class="div_emotion"></div>
-			<div style="text-align:center"><button id="cq_save">提交</button> <button id="cq_cancel">取消</button></div>			
+			<div style="text-align:center"><button id="cq_save" style="width:100px;">提交</button> <button id="cq_cancel" style="width:100px;">取消</button></div>			
 			<input type="hidden" name="comment[reserve]" value='<?php echo ($question->content); ?>'>
 		</form>
 	</div>
