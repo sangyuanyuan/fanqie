@@ -31,7 +31,7 @@ $(function(){
 		$('#ajax_result').load('chat_room.post.php',{'op':'chat','content':content});	
 	});
 	$('#clear').click(function(){
-		$('#chat_content_box').html();
+		$('#chat_content_box').html('');
 	});
 	toggle_button();
 	setInterval('refresh()',5000);
