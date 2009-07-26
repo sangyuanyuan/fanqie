@@ -92,5 +92,5 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #b_c #b_c_r #b_c_r_content{width:135px; height:180px; line-height:20px; overflow:hidden; text-indent:24px; float:left; display:inline;}
 .b_r{width:183px; height:132px; background:url('/images/zone/index_b_r.jpg') no-repeat; float:right; display:inline;}
 .b_r .title{width:170px; height:20px; margin-top:3px; margin-left:5px; line-height:27px; color:#ffffff; font-size:16px; font-weight:bold; float:left; display:inline;}
-.b_r .content{widht:50px; height:20px; margin-top:4px; margin-left:8px; line-height:20px; overflow:hidden; float:left; display:inline;}
+.b_r .content{widht:50px; height:20px; margin-top:5px; margin-left:8px; line-height:20px; overflow:hidden; float:left; display:inline;}
 .b_r .content a{color:#666666;}
