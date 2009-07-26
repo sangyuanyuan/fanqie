@@ -27,7 +27,7 @@
 			$bznum=10-count($shopph);
 			$bz=$db->query('select * from smg_shopdp where id not in ('.$bt1.') limit '.$bznum);
 		}
-		$gj=$db->query('SELECT s.id,s.title,s.platform,d.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="番茄工具" and c.category_type="news" inner join smg_dept d on s.dept_id=d.id order by s.priority asc, s.last_edited_at desc limit 9');
+		$gj=$db->query('SELECT s.id,s.title,s.last_edited_at,s.platform,d.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="番茄工具" and c.category_type="news" inner join smg_dept d on s.dept_id=d.id order by s.priority asc, s.last_edited_at desc limit 9');
 		$nbxx=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="内部信息" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
   		$yczh=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="演出展会" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
   		$xptj=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="新片推荐" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
@@ -36,6 +36,8 @@
 		$tyyl=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="体育娱乐" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
 		$tk=$db->query('select id,name from smg_problem order by create_time desc');
 		$tp=$db->query('SELECT * FROM smg_vote s where vote_type<>"more_type" and is_sub_vote=0 order by created_at desc');
+		$man=$db->query('select name,birthday,height,education,photo,school from smg_marry where sex="man" order by id desc');
+		$woman=$db->query('select name,birthday,height,education,photo,school from smg_marry where sex="woman" order by id desc');
   ?>
 	
 </head>
@@ -252,7 +254,7 @@
 		<div id=t_r_b>
 			<div id=content>
 				<?php for($i=0;$i<count($gj);$i++){ ?>
-					<div class=context><span style="color:#0070B0;">[<?php echo $gj[$i]->name; ?>]</span><a href="/<?php echo $gj[$i]->platform; ?>/news/news.php?id=<?php echo $gj[$i]->id; ?>"><?php echo delhtml($gj[$i]->title);?></a> <span style="color:#999999"><?php echo $gj[$i]->last_edited_at;?></span></div>
+					<div class=context><div class="contexttitle"><a href="/<?php echo $gj[$i]->platform; ?>/news/news.php?id=<?php echo $gj[$i]->id; ?>"><span style="color:#0070B0; ">[<?php echo $gj[$i]->name; ?>]</span><?php echo delhtml($gj[$i]->title);?></a></div><div style="width:120px; height:25px; color:#999999; cursor:pointer; float:right; display:inline;"><?php echo $gj[$i]->last_edited_at;?></div></div>
 				<?php } ?>
 			</div>
 		</div>
@@ -278,7 +280,22 @@
 	</div>
 	<div id=ibody_middle></div>
 	<div id=ibody_bottom>
-		<div id=b_l></div>
+		<div id=b_l>
+			<div id=b_l_t>
+				<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="100%" height="100%" style="line-height:20px;">
+					<?php for($i=0;$i<count($man);$i++){?>
+						<div class=content><div class=pic><a target="_blank" href="/sever/marry.php"><img border=0 width=87 height=105 src="<?php echo $man[$i]->photo;?>"></a></div><div class=context>姓名：<?php echo $man[$i]->name;?><br>出生年月：<?php echo $man[$i]->birthday; ?><br>身高：<?php echo $man[$i]->height;?>米<br>学历：<?php echo $man[$i]->education;?><br>毕业院校：<?php echo $man[$i]->school;?></div></div>
+					<?php } ?>
+				</MARQUEE>	
+			</div>
+			<div id=b_l_b>
+				<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="100%" height="100%" style="line-height:20px;">
+					<?php for($i=0;$i<count($woman);$i++){?>
+						<div class=content><div class=pic><a target="_blank" href="/sever/marry.php"><img border=0 width=87 height=105 src="<?php echo $woman[$i]->photo;?>"></a></div><div class=context>姓名：<?php echo $woman[$i]->name;?><br>出生年月：<?php echo $woman[$i]->birthday; ?><br>身高：<?php echo $woman[$i]->height;?>米<br>学历：<?php echo $woman[$i]->education;?><br>毕业院校：<?php echo $woman[$i]->school;?></div></div>
+					<?php } ?>
+				</MARQUEE>	
+			</div>
+		</div>
 		<div id=b_r>
 			<div id=left>
 				<div id="tp">投票</div>

@@ -63,7 +63,7 @@
 		case 'delete_answer':
 			$answer = new table_class('smg_dialog_answer');
 			if($answer->delete($_POST['answer_id'])){
-				//$alert_str = '删除成功!';
+				$alert_str = '';
 			}else{
 				$alert_str = '删除失败!';
 			};
@@ -81,7 +81,7 @@
 	$last_question_id = $questions ? $questions[count($questions)-1]->id : $_REQUEST['last_question_id'];
 	$len = count($questions);
 	
-	$sql = 'select a.*,b.content as  qcontent, b.writer, b.create_time as qcreate_time from smg_dialog_answer a left join smg_dialog_question b on a.question_id=b.id';
+	$sql = 'select a.*,b.id as qid,b.content as  qcontent, b.writer, b.create_time as qcreate_time from smg_dialog_answer a left join smg_dialog_question b on a.question_id=b.id';
 	$sql .=  ' where a.id > ' .$_REQUEST['last_answer_id'] .' and a.dialog_id=' .$_REQUEST['dialog_id'];
 	$answers = $db->query($sql);
 	$answer_count = $_REQUEST['answer_count'];
@@ -89,7 +89,7 @@
 	$len1 = count($answers);	
 	?>
 	<script>
-		var str ;
+		var str;
 	<?php
 	for($i=0;$i<$len;$i++){
 		$question_count ++;?>
@@ -125,7 +125,7 @@
 	$('#answer_count').val('<?php echo $answer_count;?>');	
 	
 	//rebind the thick box event for comment_href
-	$('.comment_href').unbind();
-	tb_init('.comment_href');
+	//$('.comment_href').unbind();
+	//tb_init('.comment_href');
 	scroll_buttom();
 	</script>

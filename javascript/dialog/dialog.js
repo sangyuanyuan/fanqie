@@ -17,6 +17,10 @@ $(function(){
 			alert('请输入问题内容!');
 			return;
 		};
+		if(question.length > 200){
+			alert('提问内容请不要超过100个汉字');
+			return false;
+		}
 		var dialog_id = $('#dialog_id').val();
 		var query_str = $('#div_hidden').serialize();
 		$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id,'writer':writer,'content':question,'optype':'add_question','is_master':$('#is_master').val()});
@@ -35,23 +39,25 @@ $(function(){
 			alert('请输入评论内容!');
 			return;
 		}else{
+			if(content.length > 200){
+				alert('评论内容请不要超过100个汉字');
+				return false;
+			}
 			$('#comment_content').val(content);
 		}
 		var dialog_id = $('#dialog_id').val();
 		$.post('/pub/comment.post.php',{'comment[resource_type]':'dialog','comment[resource_id]':dialog_id,'comment[nick_name]':writer,'comment[comment]':content},function(data){
 			if(data > 0){
-				alert('发表评论成功!');
+				//alert('发表评论成功!');
 			}else{
 				alert('发表评论失败');
-			}
-			oeditor.SetHTML('');
+			}			
 			var dialog_id = $('#dialog_id').val();
 			var query_str = $('#div_hidden').serialize();
 			$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id});
 		});
 	});
-	
-	tb_init('.comment_href');
+	//tb_init('.comment_href');
 	scroll_buttom();
 	setInterval('refresh_data()',10000);
 });
@@ -69,8 +75,10 @@ function delete_question(id){
 }
 
 function delete_answer(id){
-	var dialog_id = $('#dialog_id').val();
-	$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'optype':'delete_answer','answer_id':id});
+	if(confirm('确认删除此回复?')){
+		var dialog_id = $('#dialog_id').val();
+		$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'optype':'delete_answer','answer_id':id});
+	}
 }
 
 function answer_question(id){
@@ -82,6 +90,10 @@ function answer_question(id){
 function edit_answer(qid, id){
 	var dialog_id = $('#dialog_id').val();	
 	tb_show('回答问题','edit_answer.php?height=350&width=661&modal=true&question_id=' + qid + '&dialog_id=' + dialog_id + '&answer_id=' + id,false);	
+}
+
+function show_comment_box(id){
+	tb_show('评论问题','comment_question.php?height=310&width=661&question_id=' + id,false);
 }
 
 function scroll_buttom(){
