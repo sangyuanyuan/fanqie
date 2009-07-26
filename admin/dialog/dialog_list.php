@@ -19,6 +19,7 @@
 	<?php 
 		css_include_tag('admin');
 		use_jquery();
+		js_include_tag('admin_pub');
 	?>
 </head>
 <body style="background:#E1F0F7">
