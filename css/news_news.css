@@ -19,6 +19,10 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #l_b .vote .content{width:590px; margin-left:5px; float:left; display:inline;}
 #l_b .vote .btn{width:590px; height:24px; margin-bottom:10px; margin-left:5px; float:left; display:inline}
 #l_b .vote button{width:60px; height:24px; margin-top:10px; margin-left:10px; border:0px; color:#ffffff; background:url('/images/news/news_vote_button.jpg') no-repeat;}
+#l_b .vote .vote_main_title{width:590px; height:20px; margin-bottom:10px; font-size:18px; font-weight:bold; color:#000000; line-height:20px; float:left; display:inline;}
+#l_b .vote .vote_title{width:590px; height:18px; margin-top:5px; margin-bottom:5px; font-size:14px; font-weight:bold; float:left; display:inline;}
+#l_b .vote .vote_item{width:590px; height:20px; margin-bottom:5px; line-height:20px; float:left; display:inline;}
+#l_b .vote .vote_button_box{width:590px; margin-top:10px; float:left; display:inline;}
 #l_b .abouttitle{width:635px; height:23px; margin-top:10px; margin-left:20px; padding-left:10px; line-height:23px; color:#ffffff; font-weight:bold; font-size:14px; background:#C2130E; float:left; display:inline;}
 #l_b .aboutcontent{width:643px; margin-top:5px; margin-left:20px; border:1px solid #CCCCCC; float:left; display:inline;}
 #l_b .aboutcontent .title{width:613px; height:26px; margin-top:10px;  margin-left:10px; margin-bottom:10px; padding-left:10px; line-height:26px; font-size:12px; color:#000000; text-align:left; background:#CCCCCC; float:left; display:inline;}
@@ -49,9 +53,9 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 .r_content li{width:276px; height:14px; line-height:14px; overflow:hidden; float:left; display:inline;}
 .r_content li a{color:#000000; text-decoration:none;}
 #r_b_t{width:298px; margin-top:10px; padding-bottom:10px; border:1px solid #D1E3F4; float:right; display:inline;}
-#r_b_t .b_t_title1{width:99px; height:30px; margin-bottom:10px; background:url('/images/news/news_r_title_bg.jpg') repeat-x; font-weight:bold; line-height:30px; text-align:center; font-size:14px; cursor:pointer; float:left; display:inline;}
+#r_b_t .b_t_title1{width:99px; height:30px; background:url('/images/news/news_r_title_bg.jpg') repeat-x; font-weight:bold; line-height:30px; text-align:center; font-size:14px; cursor:pointer; float:left; display:inline;}
 #r_b_b{width:298px; margin-top:10px; padding-bottom:10px; border:1px solid #D1E3F4; float:right; display:inline;}
-#r_b_b .b_b_title1{width:149px; height:30px; margin-bottom:10px; background:url('/images/news/news_r_title_bg.jpg') repeat-x; line-height:30px; text-align:center; font-size:14px; cursor:pointer; float:left; display:inline;}
+#r_b_b .b_b_title1{width:149px; height:30px; background:url('/images/news/news_r_title_bg.jpg') repeat-x; line-height:30px; text-align:center; font-size:14px; cursor:pointer; float:left; display:inline;}
 .r_b2_content{width:276px; height:14px; margin-top:7px;  margin-left:10px;  float:left; display:inline;}
 .r_b2_content .pic1{width:12px; height:11px; padding-left:1px; margin-top:1px; font-size:10px; line-height:10px; color:#ffffff; font-weight:bold; background:url('/images/news/news_one_three.jpg') no-repeat; float:left; display:inline;}
 .r_b2_content .pic2{width:12px; height:11px; padding-left:1px; margin-top:1px; font-size:10px; line-height:10px; color:#ffffff; font-weight:bold; background:url('/images/news/news_four_eight.jpg') no-repeat; float:left; display:inline;}
