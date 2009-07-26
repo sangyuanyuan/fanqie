@@ -51,8 +51,7 @@ $(function(){
 				//alert('发表评论成功!');
 			}else{
 				alert('发表评论失败');
-			}
-			oeditor.SetHTML('');
+			}			
 			var dialog_id = $('#dialog_id').val();
 			var query_str = $('#div_hidden').serialize();
 			$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id});
