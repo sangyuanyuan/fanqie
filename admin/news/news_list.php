@@ -145,8 +145,7 @@
 			}
 			if(category_id != -1){
 				window.location.href="?title="+$("#title").attr('value')+"&recommend="+$("#recommend").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-			}
-		
+			}		
 		});
 		
 		

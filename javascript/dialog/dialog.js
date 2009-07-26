@@ -20,6 +20,7 @@ $(function(){
 		var dialog_id = $('#dialog_id').val();
 		var query_str = $('#div_hidden').serialize();
 		$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id,'writer':writer,'content':question,'optype':'add_question'});
+		oeditor.SetHTML('');
 	});
 	
 	$('#comment_button').click(function(){
@@ -43,6 +44,7 @@ $(function(){
 			}else{
 				alert('发表评论失败');
 			}
+			oeditor.SetHTML('');
 			var dialog_id = $('#dialog_id').val();
 			var query_str = $('#div_hidden').serialize();
 			$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id});

@@ -61,7 +61,7 @@
 		<div class=l_m>
 			<div class=title><div class=left>用户排行榜</div></div>
 			<?php
-				$sql = 'SELECT t1.publisher,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t2.platform="show" group by t1.publisher limit 5';
+				$sql = 'SELECT t1.publisher,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.is_adopt=1 and t1.publisher!="admin" and t2.platform="show" group by t1.publisher limit 5';
 				$records = $db->query($sql);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
@@ -69,7 +69,7 @@
 				<div class=content <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="list.php?publisher=<?php echo $records[$i]->publisher;?>"><?php echo $records[$i]->publisher; ?></a></div>
+						<div class=top><a target="_blank" href="list.php?publisher=<?php echo urlencode($records[$i]->publisher);?>"><?php echo $records[$i]->publisher; ?></a></div>
 						<div class=bottom>发布了<?php echo $records[$i]->num; ?>张图片！</div>
 					</div>
 				</div>
@@ -177,7 +177,7 @@
 				<div id=comment_box>
 					<form id="comment_form" action="/pub/pub.post.php" method="post">
 						<div class=title>现在有<span style="color:#FF5800"><?php echo $count2;?></span>人发表评论</div>
-						<div id=commenter_box><input type="text" style="width:330px;" name="post[nick_name]"></div>
+						<div id=commenter_box><input type="text" style="width:330px;" id="c_n_n" name="post[nick_name]"></div>
 						<input type="hidden" name="post[resource_id]" value="<?php echo $id;?>">
 						<input type="hidden" name="post[resource_type]" value="picture">
 						<input type="hidden" name="type" value="comment">
@@ -222,7 +222,10 @@
 		$("#submit_comment").click(function(){
 			var oEditor = FCKeditorAPI.GetInstance('post[comment]') ;
 			var comment = oEditor.GetHTML();
-			alert($("#commenter_box").next().val().length());
+			if($("#c_n_n").val().length>80){
+				alert("昵称长度太长！");
+				return false;
+			}
 			if(comment==""){
 				alert("请输入评论内容！");
 				return false;
