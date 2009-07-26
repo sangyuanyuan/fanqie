@@ -65,7 +65,7 @@
 			<div id=t_l_t>
 				<div id=t_l_title>HOT讨论区</div>
 				<div id=left>
-					<div id=pic><a target="_blank" href="<?php echo $tlqimg[0]->url; ?>"><img border=0 width=170 height=152 src="<?php echo $tlqimg[0]->src; ?>"></a></div>
+					<div id=pic><a target="_blank" href="<?php echo $tlqimg[0]->url; ?>"><img border=0 width=170 height=145 src="<?php echo $tlqimg[0]->src; ?>"></a></div>
 					<div id=title>
 						<a target="_blank" href="<?php echo $tlqimg[0]->url; ?>"><?php echo delhtml($tlqimg[0]->title);?></a>
 					</div>
