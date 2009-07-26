@@ -59,7 +59,7 @@
 						 ?><br>
 					联系方式：<?php  if($records[$i]->phone!=''){echo $records[$i]->phone;}else{echo '保密';} ?><br>
 					恋爱史：<?php  if($records[$i]->history!=''){echo $records[$i]->history;}else{echo '保密';}; ?><br>
-					择偶标准：<?php echo $records[$i]->request; ?>
+					择偶标准：<span title="<?php echo $records[$i]->request; ?>"><?php echo $records[$i]->request; ?></span>
 					</div>
 				</div>
 				<?php } ?>
@@ -106,7 +106,7 @@
 						 ?><br>
 					联系方式：<?php  if($records[$i]->phone!=''){echo $records[$i]->phone;}else{echo '保密';} ?><br>
 					恋爱史：<?php  if($records[$i]->history!=''){echo $records[$i]->history;}else{echo '保密';}; ?><br>
-					择偶标准：<?php echo $records[$i]->request; ?>
+					择偶标准：<span title="<?php echo $records[$i]->request; ?>"><?php echo $records[$i]->request; ?></span>
 					</div>
 				</div>
 				<?php } ?>
@@ -130,7 +130,7 @@
 					<div class=and>and</div>
 					<div class=boy_name><?php echo $records[$i]->boy_name;?></div>
 					<div class=commenter><?php echo $records[$i]->nick_name;?>：</div>
-					<div class=comment_text><?php echo $records[$i]->comment;?></div>
+					<div class=comment_text title="<?php echo $records[$i]->comment;?>"><?php echo $records[$i]->comment;?></div>
 				</div>
 				<div class=photo><img src="<?php echo $records[$i]->boy_photo;?>" width="50" height="65"></div>
 				<div class=right>
@@ -146,7 +146,7 @@
 		<div id=m_bottom>
 			<div id=paginate><?php paginate('',null,'comment');?></div>
 			<div id=comment>
-				留 言 人：<input type=text id="pulisher"><br>
+				留 言 人：<input type=text id="pulisher" maxlength="10"><br>
 				留言内容：<textarea  style="width:535px; height:105px;" id="comment_content"></textarea>
 			</div>
 			<div id=qhx></div>
@@ -159,8 +159,8 @@
 			<div class=b_l>
 				<div class=b_title>在这里输入你与想测的人的名字，即可测算出你们的关系哦。准的有点邪哦，快来试试吧。</div>
 				<div class=b_input>
-					您的姓名：<input type=text>&nbsp
-					对方的姓名：<input type=text>&nbsp
+					您的姓名：<input type=text maxlength="10">&nbsp
+					对方的姓名：<input type=text maxlength="10">&nbsp
 					<button id=xmpd>姓名配对</button>
 				</div>
 			</div>
