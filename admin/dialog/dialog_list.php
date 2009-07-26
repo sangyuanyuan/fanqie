@@ -3,9 +3,9 @@
 	$key = $_REQUEST['key'];
 	$dialog = new table_class('smg_dialog');
 	if($key!=''){
-		$records = $dialog->paginate('all',array('conditions' => 'title  like "%'.trim($key).'%"'));
+		$records = $dialog->paginate('all',array('conditions' => 'title  like "%'.trim($key).'%"','order' => 'id desc'));
 	}else{
-		$records = $dialog->paginate('all');
+		$records = $dialog->paginate('all',array('order' => 'id desc'));
 	}
 	$count = count($records);
 ?>
@@ -35,7 +35,7 @@
 		</tr>
 		<?php for($i=0;$i<$count;$i++){?>
 		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
-			<td><a href="/dialog/dialog_show.php?id=<? echo $rows['id'];?>" style="color:#0000FF" target="_blank"><?php echo $records[$i]->title;?></a></td>
+			<td><a href="/zone/dialog.php?id=<? echo $records[$i]->id;?>" style="color:#0000FF" target="_blank"><?php echo $records[$i]->title;?></a></td>
 			<td><?php echo substr($records[$i]->start_time,0,10);?></td>
 			<td><?php echo substr($records[$i]->end_time,0,10);?></td>
 			<td><?php if($records[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $records[$i]->id;?>">撤消</span><? }?>

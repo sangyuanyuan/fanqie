@@ -17,7 +17,7 @@
 	<form method="post" action="dept.post.php">
 		<table width="795" border="0" id="list">
 			<tr class="tr1">
-				<td colspan="4" align=left>　编辑部门</td>
+				<td colspan="4" align=left>　<?php if($_REQUEST['dept_id']) echo '编辑部门'; else echo '新添部门';?></td>
 			</tr>
 			<tr class="tr2">
 				<td width="100">部门名称</td><td  align=left><input type="text" name="dept[name]" value="<?php echo $dept->name;?>"></td>
@@ -38,6 +38,7 @@
 				<td width="100" colspan=2><input type="submit" value="提交"></td>
 			</tr>
 		</table>
+		<input type="hidden" name="dept_id" value="<?php echo $_REQUEST['dept_id'];?>">
 	</form>
 </body>
 </html>

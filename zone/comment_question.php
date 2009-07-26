@@ -3,7 +3,6 @@
 	//var_dump($_REQUEST);
 	$question = new table_class('smg_dialog_question');
 	$question = $question->find($_REQUEST['question_id']);
-	
 ?>
 <div>
 	<div class="answer_question">
@@ -16,15 +15,14 @@
 			<input type="text" name="comment[nick_name]" id="cq_writer"> 请填写用户名
 			<?php show_fckeditor('fck_cq','Title',false,115,'',666);?>
 			<input type="hidden" id="cq_comment" name="comment[comment]" value="" style="display:none;">
-			<input type="hidden" name="comment[resource_type]" value="dialog_question" style="display:none;">
-			<input type="hidden" name="comment[resource_id]" value="<?php echo $question->id;?>" style="display:none;">
+			<input type="hidden" name="comment[resource_type]" value="dialog" style="display:none;">
+			<input type="hidden" name="comment[resource_id]" value="<?php echo $question->dialog_id;?>" style="display:none;">
 			<div id="cq_emotion" class="div_emotion"></div>
 			<div style="text-align:center"><button id="cq_save">提交</button> <button id="cq_cancel">取消</button></div>			
+			<input type="hidden" name="comment[reserve]" value='<?php echo ($question->content); ?>'>
 		</form>
 	</div>
-	<div><h3>历史评论</h3></div>
-	<div id="q_comment_list">			
-	</div>
+
 </div>
 
 <script>
