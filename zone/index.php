@@ -24,11 +24,11 @@
 		$shdzh=$db->query($sql);
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='生活大杂烩' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 2";
 		$shdzhimg=$db->query($sql);
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='观点视角' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 11";
+		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='观点视角' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 8";
 		$gdsj=$db->query($sql);
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='观点视角' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
 		$gdsjimg=$db->query($sql);
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='分享生活' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 18";
+		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='分享生活' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 11";
 		$fxsh=$db->query($sql);
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='分享生活' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
 		$fxshimg=$db->query($sql);
@@ -113,28 +113,35 @@
 			<div id=t_c_t>
 				<div id=title1>博客</div>
 				<div id=title2>观点视角</div>
-				<div id=left>
-					<a target="_blank" href="<?php echo $gdsjimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $gdsjimg[0]->src;?>"><div style="width:100px; margin-top:5px; height:15px; text-align:center; text-decoration:none; color:#0000FF; overflow:hidden; cursor:pointer; float:left; display:inline;"><?php echo delhtml($gdsjimg[0]->title);?></div></a>
-					<?php for($i=0;$i<3;$i++){?>
-						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $gdsj[$i]->platform; ?>/news/news.php?id=<?php echo $gdsj[$i]->id; ?>"><?php echo delhtml($gdsj[$i]->short_title); ?></a></div>
-					<?php } ?>
+				<div id=t_c_t_t>
+					<div id=left>
+						<a target="_blank" href="<?php echo $gdsjimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $gdsjimg[0]->src;?>"><div style="width:100px; margin-top:5px; height:15px; text-align:center; text-decoration:none; color:#0000FF; overflow:hidden; cursor:pointer; float:left; display:inline;"><?php echo delhtml($gdsjimg[0]->title);?></div></a>
+					</div>
+					<div id=right>
+						<?php for($i=0;$i<5;$i++){ ?>
+							<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $gdsj[$i]->platform; ?>/news/news.php?id=<?php echo $gdsj[$i]->id; ?>"><?php echo delhtml($gdsj[$i]->title);?></a></div>
+						<?php }?>
+					</div>
 				</div>
-				<div id=right>
-					<?php for($i=3;$i<count($gdsj);$i++){ ?>
-						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==3){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $gdsj[$i]->platform; ?>/news/news.php?id=<?php echo $gdsj[$i]->id; ?>"><?php echo delhtml($gdsj[$i]->title);?></a></div>
-					<?php }?>
+				<div id=t_c_t_b>
+					<?php for($i=5; $i<count($gdsj);$i++){ ?>
+						<div class=t_c_t_b_content><span style="color:#cccccc;">·</span><a target="_blank" href="/<?php echo $gdsj[$i]->platform; ?>/news/news.php?id=<?php echo $gdsj[$i]->id; ?>"><?php echo delhtml($gdsj[$i]->title);?></a></div>
+					<?php } ?>
 				</div>
 			</div>
 			<div id=t_c_m>
 				<div id=title1>博客</div>
 				<div id=title2>分享生活</div>
-				<div id=left><a target="_blank" href="<?php echo $fxshimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $fxshimg[0]->src;?>"><div style="width:100px; text-align:center; margin-top:5px; height:15px; overflow:hidden; text-decoration:none; color:#0000FF; cursor:pointer; float:left; display:inline;"><?php echo delhtml($fxshimg[0]->title);?></div></a>
-					<?php for($i=0;$i<7;$i++){?>
-						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->short_title); ?></a></div>
-					<?php }?>
+				<div id=t_c_m_t>
+					<div id=left><a target="_blank" href="<?php echo $fxshimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $fxshimg[0]->src;?>"><div style="width:100px; text-align:center; margin-top:5px; height:15px; overflow:hidden; text-decoration:none; color:#0000FF; cursor:pointer; float:left; display:inline;"><?php echo delhtml($fxshimg[0]->title);?></div></a></div>
+					<div id=right>
+						<?php for($i=0;$i<5;$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div><?php }?>
+					</div>
 				</div>
-				<div id=right>
-					<?php for($i=7;$i<count($fxsh);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==3){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div><?php }?>
+				<div id=t_c_m_b>
+					<?php for($i=5; $i<count($fxsh);$i++){ ?>
+						<div class=t_c_m_b_content><span style="color:#cccccc;">·</span><a target="_blank" href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div>
+					<?php } ?>
 				</div>
 			</div>
 			<div id=t_c_b>

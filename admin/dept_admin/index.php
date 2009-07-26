@@ -17,14 +17,14 @@
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="4">　<a href="deptlist_add.php">添加部门</a></td>
+			<td colspan="4">　<a href="dept_edit.php">添加部门</a></td>
 		</tr>
 		<tr class="tr2">
 			<td width="300">部门名称</td><td width="50">点击次数</td><td width="250">创建时间</td><td width="195">操作</td>
 		</tr>
 		<?php
 			$db = get_db();
-			$sql="select * from smg_dept where state =1  order by priority,id asc";
+			$sql="select * from smg_dept   order by priority,id asc";
 			$record=$db->paginate($sql,20);
 			//--------------------
 			for($i=0;$i<count($record);$i++){
@@ -33,14 +33,14 @@
 					<td><?php echo $record[$i]->name;?></td>
 					<td><?php echo $record[$i]->click_count;?></td>
 					<td><?php echo $record[$i]->created_at;?></td>
-					<td><a href="dept_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">删除</a>　<a href="dept_admin.php?dept_id=<?php echo $record[$i]->id;?>" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">管理员管理</a>　<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if("100"!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:40px;"></td>
+					<td><a href="dept_edit.php?dept_id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">删除</a>　<a href="dept_admin.php?dept_id=<?php echo $record[$i]->id;?>" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">管理员管理</a>　<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if("100"!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:40px;"></td>
 				</tr>
 		<?php
 			}
 			//--------------------
 		?>
 		<tr class="tr3">
-			<td colspan=4><?php paginate('deptlist_list.php?type=a&type2=3');?>　<button id=clear_priority>清空优先级</button>　<button id=edit_priority>编辑优先级</button></td>
+			<td colspan=4><?php paginate();?>　<button id=clear_priority>清空优先级</button>　<button id=edit_priority>编辑优先级</button></td>
 		</tr>
 		<input type="hidden" id="db_talbe" value="smg_dept">
 

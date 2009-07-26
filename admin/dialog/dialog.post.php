@@ -103,7 +103,7 @@
 				$dialog_leader->dialog_id = $dialog->id;
 				$dialog_leader->leader_id = $_POST['leader_id'.$i];
 				$user = new table_class('smg_user');
-				$user->find('first',array('conditions' => 'name='.$_POST['leader_id'.$i]));
+				$user->find('first',array('conditions' => "name='".$_POST['leader_id'.$i] ."'"));
 				$dialog_leader->name = $user->nick_name;
 				$dialog_leader->leader_state = 1;
 				$dialog_leader->save();
@@ -112,6 +112,6 @@
 			
 		}
 		
-		redirect('dialog_list.php');
+		#redirect('dialog_list.php');
 	}
 ?>
