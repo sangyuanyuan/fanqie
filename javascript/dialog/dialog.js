@@ -57,8 +57,7 @@ $(function(){
 			$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id});
 		});
 	});
-	$('.comment_href').unbind();
-	tb_init('.comment_href');
+	//tb_init('.comment_href');
 	scroll_buttom();
 	setInterval('refresh_data()',10000);
 });
@@ -91,6 +90,10 @@ function answer_question(id){
 function edit_answer(qid, id){
 	var dialog_id = $('#dialog_id').val();	
 	tb_show('回答问题','edit_answer.php?height=350&width=661&modal=true&question_id=' + qid + '&dialog_id=' + dialog_id + '&answer_id=' + id,false);	
+}
+
+function show_comment_box(id){
+	tb_show('评论问题','comment_question.php?height=310&width=661&question_id=' + id,false);
 }
 
 function scroll_buttom(){

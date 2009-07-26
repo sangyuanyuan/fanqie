@@ -125,7 +125,7 @@
 	$('#answer_count').val('<?php echo $answer_count;?>');	
 	
 	//rebind the thick box event for comment_href
-	$('.comment_href').unbind();
-	tb_init('.comment_href');
+	//$('.comment_href').unbind();
+	//tb_init('.comment_href');
 	scroll_buttom();
 	</script>
