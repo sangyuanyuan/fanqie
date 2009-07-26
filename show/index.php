@@ -68,7 +68,7 @@
  	 	 <div id=l_t>
  	 	 	<?php 
 				$category_id = category_id_by_name('每日之星');
-				$sql='select id,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 9';
+				$sql='select id,title,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 9';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=l_title>
@@ -82,7 +82,7 @@
 			<?php for($i=0;$i<count($star);$i++){?>
 				<div class="content">
 					<img src="/images/show/red_square.jpg">
-					<div class=c_a><a target="_blank" href="article.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->short_title;?></a></div>
+					<div class=c_a><a target="_blank" href="article.php?id=<?php echo $star[$i]->id;?>" title="<?php echo strip_tags($star[$i]->title);?>"><?php echo strip_tags($star[$i]->short_title);?></a></div>
 					<div class=c_t><?php echo  substr($star[$i]->last_edited_at, 5, 5);?></div>
 				</div>
 			<?php }?>
@@ -92,9 +92,9 @@
      <!-- start left_middle !-->
  	 	 <div id=l_m>
  	 	 	<?php 
-				$sql = 'select id,description,click_count,title,photo_url from smg_video where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.photo_url from smg_video t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and t1.is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5;';
 				$spphb=$db->query($sql);
-				$sql = 'SELECT publisher,dept_id,count(*) as num FROM smg_video where publisher!="" group by publisher limit 5';
+				$sql = 'SELECT t1.publisher,t1.dept_id,count(t1.title) as num FROM smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t2.platform="show" group by t1.publisher limit 5';
 				$bk=$db->query($sql);
 			?>
  	 	 	<div class=l_title>
@@ -140,7 +140,7 @@
 						<?php } if($i==0){?>					
 							<div class=context1>
 								<div class=right>
-									<a href="list.php?publisher=<?php echo $bk[$i]->publisher;?>&type=video"><?php echo $bk[$i]->publisher;?></a><br>
+									<a href="list.php?publisher=<?php echo $bk[$i]->publisher;?>&type=video" target="_blank"><?php echo $bk[$i]->publisher;?></a><br>
 									<span><?php echo get_dept_info($bk[$i]->dept_id)->name;?></span>
 									<span>视频数：<?php echo $bk[$i]->num;?></span>
 								</div>
@@ -155,9 +155,9 @@
 				<?php } ?>
 			</div>
 			<?php 
-				$sql = 'select id,description,click_count,title,src from smg_images where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5;';
 				$wxwxph=$db->query($sql);
-				$sql = 'SELECT publisher,dept_id,count(*) as num FROM smg_images where publisher!="" group by publisher limit 5';
+				$sql = 'SELECT t1.publisher,t1.dept_id,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t2.platform="show" group by t1.publisher limit 5';
 				$sy=$db->query($sql);
 			?>
 			<div class=l_title>
@@ -197,7 +197,7 @@
 			</div>
 			<div class="content hide2" id="摄友排行榜" style="display:none">
 				<?php
-				 for($i=0;$i<count($bk);$i++){?>
+				 for($i=0;$i<count($sy);$i++){?>
 					<div class="context" >
 						<?php if($i<3){?>
 							<div class=pic1>0<?php echo $i+1;?></div>
@@ -206,14 +206,14 @@
 						<?php } if($i==0){?>					
 							<div class=context1>
 								<div class=right>
-									<a href="list.php?publisher=<?php echo $sy[$i]->publisher;?>&type=show"><?php echo $sy[$i]->publisher;?></a><br>
+									<a href="list.php?publisher=<?php echo $sy[$i]->publisher;?>&type=image"><?php echo $sy[$i]->publisher;?></a><br>
 									<span><?php echo get_dept_info($sy[$i]->dept_id)->name;?></span>
 									<span>图片数：<?php echo $sy[$i]->num;?></span>
 								</div>
 							</div>
 						<?php }else{?>
 							<div class=context2 <?php if($i==(count($sy)-1)){?>style="border:0;"<?php } ?> >
-								<div class=left><a target="_blank" href="list.php?publisher=<?php echo $sy[$i]->publisher;?>&type=show"><?php echo $sy[$i]->publisher;?></a></div>
+								<div class=left><a target="_blank" href="list.php?publisher=<?php echo $sy[$i]->publisher;?>&type=image"><?php echo $sy[$i]->publisher;?></a></div>
 								<div class=right><?php echo $sy[$i]->num;?></div>
 							</div>
 						<?php } ?>
@@ -298,7 +298,7 @@
  	 	 <div class=box>
  	 	 	<?php 
 				$category_id = category_id_by_name('节目点评');
-				$sql='select id,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
+				$sql='select id,title,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=r_title>
@@ -312,7 +312,7 @@
 			<?php for($i=0;$i<count($star);$i++){?>
 				<div class="content">
 					<img src="/images/show/red_square.jpg">
-					<div class=c_a><a href="article.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->short_title;?></a></div>
+					<div class=c_a><a href="article.php?id=<?php echo $star[$i]->id;?>" target="_blank" title="<?php echo strip_tags($star[$i]->title);?>"><?php echo strip_tags($star[$i]->short_title);?></a></div>
 					<div class=c_t><?php echo  substr($star[$i]->last_edited_at, 5, 5);?></div>
 				</div>
 			<?php }?>
@@ -321,7 +321,7 @@
 		  <div class=box>
  	 	 	<?php 
 				$category_id = category_id_by_name('部门比拼');
-				$sql='select id,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
+				$sql='select id,title,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=r_title>
@@ -335,7 +335,7 @@
 			<?php for($i=0;$i<count($star);$i++){?>
 				<div class="content">
 					<img src="/images/show/red_square.jpg">
-					<div class=c_a><a href="article.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->short_title;?></a></div>
+					<div class=c_a><a href="article.php?id=<?php echo $star[$i]->id;?>" target="_blank" title="<?php echo strip_tags($star[$i]->title);?>"><?php echo strip_tags($star[$i]->short_title);?></a></div>
 					<div class=c_t><?php echo  substr($star[$i]->last_edited_at, 5, 5);?></div>
 				</div>
 			<?php }?>
@@ -344,7 +344,7 @@
 		  <div class=box>
  	 	 	<?php 
 				$category_id = category_id_by_name('台前幕后');
-				$sql='select id,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
+				$sql='select id,title,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=r_title>
@@ -358,7 +358,7 @@
 			<?php for($i=0;$i<count($star);$i++){?>
 				<div class="content">
 					<img src="/images/show/red_square.jpg">
-					<div class=c_a><a href="article.php?id=<?php echo $star[$i]->id;?>"><?php echo $star[$i]->short_title;?></a></div>
+					<div class=c_a><a href="article.php?id=<?php echo $star[$i]->id;?>" target="_blank" title="<?php echo strip_tags($star[$i]->title);?>"><?php echo strip_tags($star[$i]->short_title);?></a></div>
 					<div class=c_t><?php echo  substr($star[$i]->last_edited_at, 5, 5);?></div>
 				</div>
 			<?php }?>

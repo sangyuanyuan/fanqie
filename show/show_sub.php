@@ -90,7 +90,7 @@
 </html>
 
 <script>
-	$("#button_subimt").click(function(){
+	$("#button_submit").click(function(){
 		$("#show").submit();
 	});
 </script>

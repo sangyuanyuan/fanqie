@@ -42,13 +42,13 @@
 		$blog=$db->query($sql);
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='劲爆热图' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 6";
 		$jbrt=$db->query($sql);
-		$sql="SELECT count(*) as num,p.author,m.uid FROM bbs_posts p inner join bbs_members m on p.author=m.username and p.author<>'' and p.subject<>'' group by author order by num desc limit 12";
+		$sql="SELECT count(*) as num,p.author,m.uid FROM bbs_posts p inner join bbs_members m on p.author=m.username and p.author<>'' and p.subject<>'' group by author order by num desc limit 15";
 		$bbsph=$db->query($sql);
 		$sql="SELECT count(*) as num,subject,tid FROM bbs_posts where subject<>'' group by tid order by num desc limit 10";
 		$bbstophot=$db->query($sql);
 		$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by viewnum desc limit 10";
 		$blogph=$db->query($sql);
-		$sql="SELECT uid,username FROM blog_userspaces b order by viewnum desc limit 12";
+		$sql="SELECT uid,username FROM blog_userspaces b order by viewnum desc limit 15";
 		$bloghotspace=$db->query($sql);
 		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='博主真人秀' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 1";
 		$blogsure=$db->query($sql);
@@ -134,8 +134,7 @@
 					<?php }?>
 				</div>
 				<div id=right>
-					<?php for($i=7;$i<count($fxsh);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==3){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div>
-					<?php }?>
+					<?php for($i=7;$i<count($fxsh);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==3){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div><?php }?>
 				</div>
 			</div>
 			<div id=t_c_b>
@@ -214,16 +213,19 @@
 		</div>
 		<div class=b_r>
 			<div class="title">热门博主列表</div>
-			<?php for($i=0;$i<count($bloghotspace);$i++){ ?>
-			<div class=content><a target="_blank" href="/bbs/space.php?uid-<?php echo $bloghotspace[$i]->uid?>"><?php echo $bloghotspace[$i]->username; ?></a></div>
-			<?php } ?>
+			<div class=content>
+				<?php for($i=0;$i<count($bloghotspace);$i++){ ?>
+				<a target="_blank" href="/blog/?uid-<?php echo $bloghotspace[$i]->uid?>"><?php echo $bloghotspace[$i]->username; ?></a>
+				<?php } ?>
+			</div>
 		</div>
 		<div class=b_r style="margin-top:10px;">
 			<div class="title">论坛发贴排行</div>
-			<?php for($i=0;$i<count($bbsph);$i++){ ?>
-			<div class=content><a target="_blank" href="/bbs/space.php?uid=<?php echo $bbsph[$i]->uid?>"><?php echo $bbsph[$i]->author; ?></a></div>
-			<?php } ?>
-			
+			<div class=content>
+				<?php for($i=0;$i<count($bbsph);$i++){ ?>
+				<a target="_blank" href="/bbs/space.php?uid=<?php echo $bbsph[$i]->uid?>"><?php echo $bbsph[$i]->author; ?></a>
+				<?php } ?>
+			</div>
 		</div>
 	</div>
 </div>
