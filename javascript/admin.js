@@ -1,19 +1,30 @@
-﻿var showhttp = false;
-var PostDiv="abderraf123123";
-var Urls = "../admin/admin.post.php"
-var PostStr="";
-var HType="";
+﻿$(document).ready(function(){
+	$(".tgcan").click(function(){
+			$.post('/admin/admin.post.php',{'id':$(this).next().attr('value')},'type','tgcan',function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		})
+		$(".tgpub").click(function(){
+			$.post('/admin/admin.post.php',{'id':$(this).next().attr('value')},'type','tgpub',function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		})
+		$(".tgdel").click(function(){
+			$.post('/admin/admin.post.php',{'id':$(this).next().attr('value')},'type','tgdeld',function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		})
+		function newskey(){	var key1=document.getElementById("newskey1").value;	var key2=document.getElementById("newskey2").value;	var key3=document.getElementById("newskey3").value;	var key4=document.getElementById("newskey4").value;	window.location.href="?key1="+key1+"&key2="+key2+"&key3="+key3+"&key4="+key4;}	
+		function newskeypress(){if (event.keyCode==13){newskey()}}
+})
 
-if(window.XMLHttpRequest){showhttp = new XMLHttpRequest();if (showhttp.overrideMimeType) {showhttp.overrideMimeType('text/xml');}}	else if (window.ActiveXObject){try {showhttp = new ActiveXObject("Msxml2.XMLHTTP");} catch (e) {try {showhttp = new ActiveXObject("Microsoft.XMLHTTP");} catch (e) {}}}
 
-function tgcan(num){PostStr=num;Post(Urls,"tgcan",PostStr,rtgcan);}
-function rtgcan(){if (showhttp.readyState == 4) { if (showhttp.status == 200) {var result = showhttp.responseText;  if(result=="OK"){window.location.reload();return false;}} else {alert("服务器忙，请刷新后重试。");}}}
-
-function tgpub(num){PostStr=num; Post(Urls,"tgpub",PostStr,rtgpub);}
-function rtgpub(){if (showhttp.readyState == 4) {if (showhttp.status == 200) {var result = showhttp.responseText; if(result=="OK"){window.location.reload();return false; }} else {alert("服务器忙，请刷新后重试。");}}}
-
-function tgdel(num){if(!window.confirm("确定要删除吗")){return false;};  PostStr=num;Post(Urls,"tgdel",PostStr,rtgdel);}
-function rtgdel(){if (showhttp.readyState == 4) {if (showhttp.status == 200) {var result = showhttp.responseText; alert(result);  if(result=="OK"){window.location.reload();return false; }} else {alert("服务器忙，请刷新后重试。");}}}
 
 function shopcan(num){PostStr=num;Post(Urls,"shopcan",PostStr,rshopcan);}
 function rshopcan(){if (showhttp.readyState == 4) {if (showhttp.status == 200) {var result = showhttp.responseText; if(result=="OK"){window.location.reload();return false;}} else {alert("服务器忙，请刷新后重试。");}}}

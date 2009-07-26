@@ -42,13 +42,13 @@
 		$blog=$db->query($sql);
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='劲爆热图' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 6";
 		$jbrt=$db->query($sql);
-		$sql="SELECT count(*) as num,p.author,m.uid FROM bbs_posts p inner join bbs_members m on p.author=m.username and p.author<>'' and p.subject<>'' group by author order by num desc limit 15";
+		$sql="SELECT count(*) as num,p.author,m.uid FROM bbs_posts p inner join bbs_members m on p.author=m.username and p.author<>'' and p.subject<>'' group by author order by num desc limit 12";
 		$bbsph=$db->query($sql);
 		$sql="SELECT count(*) as num,subject,tid FROM bbs_posts where subject<>'' group by tid order by num desc limit 10";
 		$bbstophot=$db->query($sql);
 		$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by viewnum desc limit 10";
 		$blogph=$db->query($sql);
-		$sql="SELECT uid,username FROM blog_userspaces b order by viewnum desc limit 15";
+		$sql="SELECT uid,username FROM blog_userspaces b order by viewnum desc limit 12";
 		$bloghotspace=$db->query($sql);
 		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='博主真人秀' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 1";
 		$blogsure=$db->query($sql);
@@ -89,23 +89,12 @@
 				</div>
 			</div>
 			<div class=t_l_b>
-				<div class="t_l_b_t"><div class="title">BBS</div><div class="title_right">【上班这点事】</div></div>
-				<div class=t_l_b_l>
-					<?php for($i=0;$i< count($sbzds);$i++){ ?>
-						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->short_title); ?></a>
-						</div>
-					<?php }?> 
-				</div>
-				<div class=t_l_b_r>
-					<?php for($i=0;$i< count($sbzdsimg);$i++){ ?>
-						<div class=content style="margin-top:10px;">
-							<a target="_blank" href="<?php echo $sbzdsimg[$i]->url;?>"><img border=0 width=113 height=81 src="<?php echo $sbzdsimg[$i]->src; ?>"><div style="width:113px; height:18px; margin-top:5px; text-decoration:none; color:#0000FF; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($sbzdsimg[$i]->title);?></div></a>	
-						</div>
-					<?php } ?>
-				</div>
+				<div class=t_l_b_t><div class="title">BBS</div><div class="title_right">【上班这点事】</div></div>
+				<div class=t_l_b_l><?php for($i=0;$i< count($sbzds);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->short_title); ?></a></div><?php }?> </div>
+				<div class=t_l_b_r><?php for($i=0;$i< count($sbzdsimg);$i++){ ?><div class=content style="margin-top:10px;"><a target="_blank" href="<?php echo $sbzdsimg[$i]->url;?>"><img border=0 width=113 height=81 src="<?php echo $sbzdsimg[$i]->src; ?>"><div style="width:113px; height:18px; margin-top:5px; text-decoration:none; color:#0000FF; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($sbzdsimg[$i]->title);?></div></a></div><?php } ?></div>
 			</div>
 			<div class=t_l_b>
-				<div class="t_l_b_t"><div class="title">BBS</div><div class="title_right">【生活大杂烩】</div></div>
+				<div class=t_l_b_t><div class="title">BBS</div><div class="title_right">【生活大杂烩】</div></div>
 				<div class=t_l_b_l1>
 					<?php for($i=0;$i< count($shdzhimg);$i++){ ?>
 						<div class=content style="margin-top:10px;">
@@ -115,9 +104,7 @@
 				</div>
 				<div class=t_l_b_r1>
 					<?php for($i=0;$i< count($shdzh);$i++){ ?>
-						<div class=content><span style="color:#cccccc;">·</span>
-							<a target="_blank" href="/<?php echo $shdzh[$i]->platform;?>/news/news.php?id=<?php echo $shdzh[$i]->id; ?>"><?php echo delhtml($shdzh[$i]->title); ?></a>
-						</div>
+						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" href="/<?php echo $shdzh[$i]->platform;?>/news/news.php?id=<?php echo $shdzh[$i]->id; ?>"><?php echo delhtml($shdzh[$i]->title); ?></a></div>
 					<?php } ?>
 				</div>
 			</div>
@@ -127,9 +114,9 @@
 				<div id=title1>博客</div>
 				<div id=title2>观点视角</div>
 				<div id=left>
-					<a target="_blank" href="<?php echo $gdsjimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $gdsjimg[0]->src;?>"><div style="width:100px; margin-top:5px; height:15px; text-align:center; overflow:hidden; float:left; display:inline;"><?php echo delhtml($gdsjimg[0]->title);?></div></a>
+					<a target="_blank" href="<?php echo $gdsjimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $gdsjimg[0]->src;?>"><div style="width:100px; margin-top:5px; height:15px; text-align:center; text-decoration:none; color:#0000FF; overflow:hidden; cursor:pointer; float:left; display:inline;"><?php echo delhtml($gdsjimg[0]->title);?></div></a>
 					<?php for($i=0;$i<3;$i++){?>
-						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $gdsj[$i]->platform; ?>/news/news.php?id=<?php echo $gdsj[$i]->id; ?>"><?php echo $gdsj[$i]->short_title; ?></a></div>
+						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $gdsj[$i]->platform; ?>/news/news.php?id=<?php echo $gdsj[$i]->id; ?>"><?php echo delhtml($gdsj[$i]->short_title); ?></a></div>
 					<?php } ?>
 				</div>
 				<div id=right>
@@ -141,15 +128,13 @@
 			<div id=t_c_m>
 				<div id=title1>博客</div>
 				<div id=title2>分享生活</div>
-				<div id=left>
-					<a target="_blank" href="<?php echo $fxshimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $fxshimg[0]->src;?>"><div style="width:100px; text-align:center; margin-top:5px; height:15px; overflow:hidden; float:left; display:inline;"><?php echo delhtml($fxshimg[0]->title);?></div></a>
+				<div id=left><a target="_blank" href="<?php echo $fxshimg[0]->url;?>"><img border=0 width=100 height=70 src="<?php echo $fxshimg[0]->src;?>"><div style="width:100px; text-align:center; margin-top:5px; height:15px; overflow:hidden; text-decoration:none; color:#0000FF; cursor:pointer; float:left; display:inline;"><?php echo delhtml($fxshimg[0]->title);?></div></a>
 					<?php for($i=0;$i<7;$i++){?>
-						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo $fxsh[$i]->short_title; ?></a></div>
+						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->short_title); ?></a></div>
 					<?php }?>
 				</div>
 				<div id=right>
-					<?php for($i=7;$i<count($fxsh);$i++){ ?>
-						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==3){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div>
+					<?php for($i=7;$i<count($fxsh);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==3){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div>
 					<?php }?>
 				</div>
 			</div>
@@ -157,8 +142,8 @@
 				<?php for($i=0;$i<count($comment);$i++){ ?>
 					<div class=comment>
 						<div class="top">
-							<span style="color:#378EC4"><?php echo $comment[$i]->nick_name;?></span>
-							<span style="color:#D2D4C6"><?php echo substr($comment[$i]->created_at,0,10); ?></1span>
+							<div style="width:250px; height:20px; color:#378EC4; overflow:hidden; float:left; display:inline;"><?php echo $comment[$i]->nick_name;?></div>
+							<div style="width:100px; margin-left:5px; color:#D2D4C6; float:left; display:inline;"><?php echo substr($comment[$i]->created_at,0,10); ?></div>
 						</div>
 						<div class="bottom">
 							<?php echo delhtml($comment[$i]->comment); ?>
@@ -178,8 +163,8 @@
 		</div>
 		<div id=t_r>
 			<div id=t_r_t>
-				<div id=title><img src="/images/show/show_index_l_t.jpg">　公告</div>
-				<div id=content><?php echo delhtml($gg[0]->description);?></div>
+				<div id=title><img src="/images/show/show_index_l_t.jpg"><img src="/images/zone/gg.jpg"></div>
+				<div id=content><?php echo get_fck_content($gg[0]->description);?></div>
 			</div>
 			<div id=chat><a target="_blank" href="/zone/chat_room.php"><img border=0 src="/images/zone/index_chat.jpg"></a></div>
 			<div class=t_r_m>
@@ -224,14 +209,8 @@
 		</div>
 		<div id=b_c>
 			<div id=title>博主真人秀</div>
-			<div id=b_c_l>
-				<div id=pic><a target="_blank" href="<?php echo $blogsureimg[0]->url; ?>"><img src="<?php echo $blogsureimg[0]->src;?>"></a></div>
-				<div id=pictitle><a target="_blank" href="<?php echo $blogsureimg[0]->url;?>"><?php echo $blogsureimg[0]->title;?></a></div>
-			</div>
-			<div id=b_c_r>
-				<div id=b_c_r_title><?php echo $blogsure[0]->short_title; ?></div>
-				<div id=content><?php echo $blogsure[0]->description;?></div>
-			</div>
+			<div id=b_c_l><div id=pic><a target="_blank" href="<?php echo $blogsureimg[0]->url; ?>"><img src="<?php echo $blogsureimg[0]->src;?>"></a></div><div id=pictitle><a target="_blank" href="<?php echo $blogsureimg[0]->url;?>"><?php echo $blogsureimg[0]->title;?></a></div></div>
+			<div id=b_c_r><div id=b_c_r_title><?php echo $blogsure[0]->short_title; ?></div><div id=b_c_r_content><?php echo $blogsure[0]->description;?></div></div>
 		</div>
 		<div class=b_r>
 			<div class="title">热门博主列表</div>
