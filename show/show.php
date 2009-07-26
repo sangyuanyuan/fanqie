@@ -69,7 +69,7 @@
 				<div class=content <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
 					<div class=right>
-						<div class=top><a href="show_list.php?name=<?php echo $records[$i]->publisher;?>"><?php echo $records[$i]->publisher; ?></a></div>
+						<div class=top><a target="_blank" href="list.php?publisher=<?php echo $records[$i]->publisher;?>"><?php echo $records[$i]->publisher; ?></a></div>
 						<div class=bottom>发布了<?php echo $records[$i]->num; ?>张图片！</div>
 					</div>
 				</div>
@@ -222,6 +222,7 @@
 		$("#submit_comment").click(function(){
 			var oEditor = FCKeditorAPI.GetInstance('post[comment]') ;
 			var comment = oEditor.GetHTML();
+			alert($("#commenter_box").next().val().length());
 			if(comment==""){
 				alert("请输入评论内容！");
 				return false;

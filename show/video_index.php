@@ -97,7 +97,7 @@
 				<div class=content <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><?php echo $i+1;?></div>
 					<div class=right>
-						<div class=top><a href="list.php?publisher=<?php echo $records[$i]->publisher;?>&type=video"><?php echo $records[$i]->publisher; ?></a></div>
+						<div class=top><a target="_blank" href="list.php?publisher=<?php echo $records[$i]->publisher;?>&type=video"><?php echo $records[$i]->publisher; ?></a></div>
 						<div class=bottom>发布了<?php echo $records[$i]->num; ?>个视频！</div>
 					</div>
 				</div>
@@ -114,7 +114,7 @@
 			?>
 			<div class=content>
 				<div class=left><?php echo substr($records[$i]->created_at, 5, 5);?></div>
-				<div class=right><a href="video.php?id=<?php echo $records[$i]->resource_id; ?>"><?php echo $records[$i]->comment;?></a></div>
+				<div class=right><a href="video.php?id=<?php echo $records[$i]->resource_id; ?>" target="_blank"><?php echo $records[$i]->comment;?></a></div>
 			</div>
 			<?php } ?>
 		</div>

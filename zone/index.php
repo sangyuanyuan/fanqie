@@ -155,7 +155,7 @@
 						<textarea name="post[comment]"></textarea>
 						<input type="hidden" id="resource_type" name="post[resource_type]" value="zone">
 						<input type="hidden" name="type" value="comment">
-						<button type="submit">回复</button>
+						<button id="hf" type="submit">回复</button>
 					</div>
 				</form>
 			</div>
@@ -233,3 +233,15 @@
 
 </body>
 </html>
+<script>
+$(document).ready(function(){
+	$("#hf").click(function(){
+		var length=$("#commenter").attr("value").length;
+		if(length>100)
+		{
+			alert('评论名太长！');
+			return false;
+		}
+	})
+})
+</script>
