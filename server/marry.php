@@ -23,7 +23,7 @@
 			<div class=box>
 				<?php 
 					$db = get_db();
-					$sql = 'select * from smg_marry where sex="woman"';
+					$sql = 'select * from smg_marry where sex="woman" order by id desc';
 					$records = $db->paginate($sql,4,'left');
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
@@ -40,7 +40,24 @@
 					学历：<?php if($records[$i]->education!=''){echo $records[$i]->education;}else{echo '保密';} ?>&nbsp;
 					毕业学校：<?php if($records[$i]->school!=''){echo $records[$i]->school;}else{echo '保密';} ?><br>
 					职业：<?php  if($records[$i]->job!=''){echo $records[$i]->job;}else{echo '保密';} ?>&nbsp;
-					收入：<?php  if($records[$i]->income!=''){echo $records[$i]->income;}else{echo '保密';}; ?><br>
+					收入：<?php
+					     	if($records[$i]->income!=''){
+					     		if($records[$i]->income==0){
+					     			echo "2000以下";
+					     		}elseif($records[$i]->income==1){
+					     			echo "2000-4000";
+					     		}elseif($records[$i]->income==2){
+					     			echo "4000-6000";
+					     		}elseif($records[$i]->income==3){
+					     			echo "6000-10000";
+					     		}elseif($records[$i]->income==4){
+					     			echo "10000-20000";
+					     		}elseif($records[$i]->income==5){
+					     			echo "20000以上";
+								}
+							}else{echo '保密';};
+						 ?><br>
+					联系方式：<?php  if($records[$i]->phone!=''){echo $records[$i]->phone;}else{echo '保密';} ?><br>
 					恋爱史：<?php  if($records[$i]->history!=''){echo $records[$i]->history;}else{echo '保密';}; ?><br>
 					择偶标准：<?php echo $records[$i]->request; ?>
 					</div>
@@ -54,7 +71,7 @@
 			<div class=box>
 				<?php 
 					$db = get_db();
-					$sql = 'select * from smg_marry where sex="man"';
+					$sql = 'select * from smg_marry where sex="man" order by id desc';
 					$records = $db->paginate($sql,4,'right');
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
@@ -70,7 +87,24 @@
 					学历：<?php if($records[$i]->education!=''){echo $records[$i]->education;}else{echo '保密';} ?>&nbsp;
 					毕业学校：<?php if($records[$i]->school!=''){echo $records[$i]->school;}else{echo '保密';} ?><br>
 					职业：<?php  if($records[$i]->job!=''){echo $records[$i]->job;}else{echo '保密';} ?>&nbsp;
-					收入：<?php  if($records[$i]->income!=''){echo $records[$i]->income;}else{echo '保密';}; ?><br>
+					收入：<?php
+					     	if($records[$i]->income!=''){
+					     		if($records[$i]->income==0){
+					     			echo "2000以下";
+					     		}elseif($records[$i]->income==1){
+					     			echo "2000-4000";
+					     		}elseif($records[$i]->income==2){
+					     			echo "4000-6000";
+					     		}elseif($records[$i]->income==3){
+					     			echo "6000-10000";
+					     		}elseif($records[$i]->income==4){
+					     			echo "10000-20000";
+					     		}elseif($records[$i]->income==5){
+					     			echo "20000以上";
+								}
+							}else{echo '保密';};
+						 ?><br>
+					联系方式：<?php  if($records[$i]->phone!=''){echo $records[$i]->phone;}else{echo '保密';} ?><br>
 					恋爱史：<?php  if($records[$i]->history!=''){echo $records[$i]->history;}else{echo '保密';}; ?><br>
 					择偶标准：<?php echo $records[$i]->request; ?>
 					</div>
@@ -281,7 +315,6 @@
 			})
 			if(man == 0){
 				alert('请选择一个男生');
-				alert($("#pulisher").val());
 			}else if(woman == 0){
 				alert('请选择一个女生');
 			}else if($("#pulisher").val()==""){

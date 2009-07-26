@@ -109,6 +109,29 @@
 		</div>
 	</div>
 	<div class=t>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　收入</div>
+		<div class=t_r>
+			<select id=star name="marry[income]">
+				<option value="0">2000以下</option>
+				<option value="1">2000-4000</option>
+				<option value="2">4000-6000</option>
+				<option value="3">6000-10000</option>
+				<option value="4">10000-20000</option>
+				<option value="5">20000以上</option>
+			</select>
+		</div>
+	</div>
+	<div class=t>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择图片</div>
+		<div class=t_r>
+			<input type="file" name="image" id="image" class="required">
+		</div>
+	</div>
+	<div class=t>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　联系方式</div>
+		<div class=t_r><input type="text" name="marry[phone]"></div>
+	</div>
+	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　学历</div>
 		<div class=t_r><input type="text" name="marry[education]"></div>
 	</div>
@@ -121,23 +144,12 @@
 		<div class=t_r><input type="text" name="marry[job]"></div>
 	</div>
 	<div class=t>
-		<div class=l><img src="/images/news/news_sub_icon.jpg">　收入</div>
-		<div class=t_r><input type="text" name="marry[income]" ></div>
-	</div>
-	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　恋爱史</div>
 		<div class=t_r><input type="text" name="marry[history]"></div>
 	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　择偶标准</div>
 		<div id=m_r><textarea style="width:740px; height:30px; " name="marry[request]" class="required"></textarea></div>
-	</div>
-	<div class=title><?php echo $title; ?></div>
-	<div id=b>
-		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择图片</div>
-		<div class=t_r>
-			<input type="file" name="image" id="image" class="required">
-		</div>
 	</div>
 	<div id=b_button>
 			<button id="button_submit">提　交</button>
