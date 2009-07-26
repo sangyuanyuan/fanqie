@@ -104,7 +104,7 @@
 				$point = $record[0]->a_point;
 				$count = $record[0]->count;
 				if($point==''){
-					$point = '0.0';
+					$r_point = '0.0';
 				}else{
 					$r_point = substr($point, 0, 3);
 					if($r_point=='10.')$r_point=10;
@@ -112,24 +112,24 @@
 					if(substr($r_point,2,1)=='0'){
 						$s_point=$r_point;
 					}else{
-						$s_point = ($r_point-$o_point)>0.49?($o_point+1):$o_point;
+						$s_point = ($r_point-$o_point)>0.49?(a1):$o_point;
 					}
 				}
 				if($count=='')$count=0;
 			?>
-			<div id=result><?php echo $r_point;?></div>
+			<div id=result><?php echo $r_point.'分';?></div>
 			<?php 
 				for($i=0;$i<$s_point;$i++){
 			?>
-			<div class=star value="<?php echo $i+1; ?>"  title="<?php echo ($i+1)."分";?>" style="background:url('/images/show/star1.jpg') no-repeat;"></div>
+			<div class=star value="<?php echo $i+1; ?>" name="<?php echo $i+1; ?>"  title="<?php echo ($i+1)."分";?>" style="background:url('/images/show/star1.jpg') no-repeat;"></div>
 			<?php } ?>
 			<?php 
 				for($i=$s_point;$i<10;$i++){
 			?>
-			<div class=star value="<?php echo $i+1; ?>"  title="<?php echo ($i+1)."分";?>"></div>
+			<div class=star value="<?php echo $i+1; ?>" name="<?php echo $i+1; ?>"  title="<?php echo ($i+1)."分";?>"></div>
 			<?php } ?>
 			<div id=info>共<?php echo $count; ?>人评分[点击星星直接打分]</div>
-			
+			<input type="hidden" id="y_star" value="<?php echo $s_point;?>">
 		</div>
 		
 		<div id=comment>
@@ -185,6 +185,28 @@
 					window.location.reload();
 				}
 			});
+		});
+		
+		$(".star").hover(function(){
+			var value = parseInt($(this).attr('name'));
+			$(".star").each(function(){
+				if(parseInt($(this).attr('name'))<=value){
+					$(this).css('background','url("/images/show/star3.jpg") no-repeat');
+				}else{
+					$(this).css('background','url("/images/show/star2.jpg") no-repeat');
+				}
+			})
+		});
+		
+		$(".star").mouseout(function(){
+			var value = parseInt($("#y_star").val());
+			$(".star").each(function(){
+				if(parseInt($(this).attr('name'))<=value){
+					$(this).css('background','url("/images/show/star1.jpg") no-repeat');
+				}else{
+					$(this).css('background','url("/images/show/star2.jpg") no-repeat');
+				}
+			})
 		});
 		
 		display_fqbq('fqbq','post[comment]');
