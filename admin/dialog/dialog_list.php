@@ -1,6 +1,6 @@
 <?php
 	require_once('../../frame.php');
-	$key = $_REQUEST['key'];
+	$key = urldecode($_REQUEST['key']);
 	$dialog = new table_class('smg_dialog');
 	if($key!=''){
 		$records = $dialog->paginate('all',array('conditions' => 'title  like "%'.trim($key).'%"','order' => 'id desc'));
@@ -19,7 +19,6 @@
 	<?php 
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub');
 	?>
 </head>
 <body style="background:#E1F0F7">
@@ -60,7 +59,12 @@
 
 <script>
 	$("#dialog_search").click(function(){
-				window.location.href="?key="+$("#search_text").attr('value');
+				window.location.href="?key="+encodeURI($("#search_text").attr('value'));
+	});
+	$('#search_text').keydown(function(e){
+		if(e.keyCode == 13){
+			window.location.href="?key="+ encodeURI($("#search_text").attr('value'));			
+		}
 	});
 	
 	$(".del_dialog").click(function(){
