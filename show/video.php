@@ -81,7 +81,7 @@
 						picflash.write("focus_02");				
 					</script> 
 				</div>
-				<div id="up_pic"><a href="show_sub.php?type=video" ><img src="/images/show/video_up2.jpg" width="395" height="144" border=0></a></div>
+				<div id="up_pic"><a href="show_sub.php?type=video" target="_blank" ><img src="/images/show/video_up2.jpg" width="395" height="144" border=0></a></div>
 			</div>
 	  </div>
 	 	<div id=ibody_left>

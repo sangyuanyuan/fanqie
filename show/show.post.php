@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require "../frame.php";
 	
 	if($_POST['type']=='image'){
@@ -18,6 +18,7 @@
 			$image->create_thumb('middle',50);
 			$image->create_thumb('small',170,70);
 		}
+		$image->category_id=category_id_by_name('我要上传','picture');
 		$image->commentable = 'on';
 		$image->priority = 1;
 		$image->is_recommend = 1;
@@ -45,12 +46,13 @@
 			}
 			$video->video_url = "/upload/video/" .$vid;
 		}
+		$video->category_id=category_id_by_name('我要上传','video');
 		$video->commentable = 'on';
 		$video->is_recommend = 1;
 		$video->priority = 1;
 		$video->created_at = date("Y-m-d H:i:s");
 		$video->save();
 	}
-	alert('上传成功！谢谢！');
+	alert("上传成功！谢谢！");
 	redirect($_SERVER['HTTP_REFERER']);
 ?>
