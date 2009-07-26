@@ -11,22 +11,23 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
+		validate_form('dept_form');
 		$dept = new table_class('smg_dept');
 		$dept= $dept->find($_REQUEST['dept_id']);
 	?>
-	<form method="post" action="dept.post.php">
+	<form id="dept_form" method="post" action="dept.post.php">
 		<table width="795" border="0" id="list">
 			<tr class="tr1">
 				<td colspan="4" align=left>　<?php if($_REQUEST['dept_id']) echo '编辑部门'; else echo '新添部门';?></td>
 			</tr>
 			<tr class="tr2">
-				<td width="100">部门名称</td><td  align=left><input type="text" name="dept[name]" value="<?php echo $dept->name;?>"></td>
+				<td width="100">部门名称</td><td  align=left><input type="text" name="dept[name]" class="required" value="<?php echo $dept->name;?>"></td>
 			</tr>
 			<tr class="tr2">
 				<td width="100">优先级</td><td align=left><input type="text" name="dept[priority]" value="<?php echo $dept->priority;?>"></td>
 			</tr>
 			<tr class="tr2">
-				<td width="100">部门代码</td><td align=left><input type="text" name="dept[code]" value="<?php echo $dept->code;?>"></td>
+				<td width="100">部门代码</td><td align=left><input type="text" name="dept[code]" class="required" value="<?php echo $dept->code;?>"></td>
 			</tr>
 			<tr class="tr2">
 				<td width="100">部门链接</td><td align=left><input type="text" name="dept[url]" value="<?php echo $dept->url;?>"></td>

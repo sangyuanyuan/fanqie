@@ -21,13 +21,13 @@
 <?php 
 	if(intval($_REQUEST['id']) <= 0){
 		alert('对不起,您访问的对话不存在!');
-		redirect('dialoglist.php');
+		redirect('dialog_list.php');
 	}
 	$dialog = new table_class('smg_dialog');
 	$dialog = $dialog->find(intval($_REQUEST['id']));
 	if(!$dialog){
 		alert('对不起,您访问的对话不存在!');
-		redirect('dialoglist.php');
+		redirect('dialog_list.php');
 	}
 	$leaders = new table_class('smg_dialog_leader');
 	$leaders = $leaders->find('all',array('conditions' => "dialog_id = $dialog->id"));
