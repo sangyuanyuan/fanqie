@@ -215,7 +215,7 @@
 			<div class="title">热门博主列表</div>
 			<div class=content>
 				<?php for($i=0;$i<count($bloghotspace);$i++){ ?>
-				<a target="_blank" href="/blog/space.php?uid-<?php echo $bloghotspace[$i]->uid?>"><?php echo $bloghotspace[$i]->username; ?></a>
+				<a target="_blank" href="/blog/?uid-<?php echo $bloghotspace[$i]->uid?>"><?php echo $bloghotspace[$i]->username; ?></a>
 				<?php } ?>
 			</div>
 		</div>
