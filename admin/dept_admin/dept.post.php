@@ -1,5 +1,6 @@
 <?php
 	include "../../frame.php";
+	var_dump($_POST['dept']);
 	$dept_id= $_REQUEST['dept_id'] ? $_REQUEST['dept_id'] : 0;
 	$dept = new table_class('smg_dept');
 	if($dept_id){
@@ -11,5 +12,5 @@
 		$dept->created_at = now();
 	}
 	$dept->save();
-	redirect('index.php');
+	#redirect('index.php');
 ?>

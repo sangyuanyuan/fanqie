@@ -33,7 +33,7 @@
 				<td width="100">部门链接</td><td align=left><input type="text" name="dept[url]" value="<?php echo $dept->url;?>"></td>
 			</tr>
 			<tr class="tr2">
-				<td width="100">简短描述</td><td align=left><textarea name="dept[name]"><?php echo $dept->description;?></textarea></td>
+				<td width="100">简短描述</td><td align=left><textarea name="dept[description]"><?php echo $dept->description;?></textarea></td>
 			</tr>
 			<tr class="tr2">
 				<td width="100" colspan=2><input type="submit" value="提交"></td>

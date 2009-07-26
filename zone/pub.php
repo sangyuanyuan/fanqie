@@ -5,7 +5,7 @@
 		echo "<div class=\"question_list\"><span class=\"question_index\"><b>$index.</b></span><span class=\"question_writer\"><b>{$item->writer}: </b></span>{$item->content}";
 		echo '  <span class="question_time">' .$item->create_time .'</span>';
 		echo ' <a href="comment_question.php?height=310&width=670&question_id='.$item->id .'" title="评论问题" class="comment_href">评论</a>';
-		if(in_array($_COOKIE['smg_userid'], $master_ids)){
+		if(in_array($_COOKIE['smg_username'], $master_ids)){
 			echo ' <span class="span_a" onclick="answer_question('.$item->id.');">回复</span> <span class="span_a" onclick="delete_question(' .$item->id .')">删除</span>';
 		}
 		echo "</div>";
@@ -15,7 +15,7 @@
 		$master_ids = get_master_ids($dialog_id);
 		echo "<div class=\"answer_question\"><span class=\"answer_question_index\"><b>$index.问题:</b></span>{$item->qcontent} <span class=\"question_time\"> {$item->writer} {$item->qcreate_time}</span></div>";
 		echo "<div class=\"answer_answer\">{$item->content}  <span class=\"question_time\">$item->create_time</span>";
-		if(in_array($_COOKIE['smg_userid'], $master_ids)){
+		if(in_array($_COOKIE['smg_username'], $master_ids)){
 			echo ' <span class="span_a" onclick="edit_answer(' .$item->qid.','.$item->id .')">编辑</span>';
 			echo ' <span class="span_a" onclick="delete_answer(' .$item->id .')">删除</span>';
 		}
