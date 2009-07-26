@@ -2,7 +2,29 @@
 	require_once('../frame.php');
 	$id = $_REQUEST['id'];
 	$type = $_REQUEST['type'];
-	if($id!=''){
+	$publisher = $_REQUEST['publisher'];
+	if($publisher!=''){
+		$title = $publisher;
+		switch($type){
+			case 'video':
+				$l_sql = 'select t1.title,t1.id,t1.created_at from smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher="'.$publisher.'" and t1.is_adopt=1 and t2.platform="show" order by t1.priority asc,t1.created_at desc';
+				$l_title = 'title';
+				$link = 'video.php?id=';
+				break;
+			case 'news':
+				$l_sql = 'select title,short_title,id,created_at from smg_news where publisher="'.$publisher.'" and is_adopt=1 order by priority asc,created_at desc';
+				$l_title = 'short_title';
+				$link = 'article.php?id=';
+				break;
+			case 'image':
+				$l_sql='select t1.* from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher="'.$publisher.'" and t1.is_adopt=1 and t2.platform="show" order by t1.priority asc,t1.created_at desc';
+				$l_title = 'title';
+				$link = 'show.php?id=';
+				break;
+			default:
+				break;
+		}
+	}elseif($id!=''){
 		$title = category_name_by_id($id);
 		switch($type){
 			case 'video':
@@ -29,7 +51,7 @@
 				$title = '视频列表';
 				$l_title = 'title';
 				$link = 'video.php?id=';
-				$l_sql = 'select title,id,created_at from smg_video where is_adopt=1 order by priority asc,created_at desc';
+				$l_sql = 'select t1.title,t1.id,t1.created_at from smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.platform="show" order by t1.priority asc,t1.created_at desc';
 				break;
 			case 'news':
 				$title = '新闻列表';
@@ -41,7 +63,7 @@
 				$title = '图片列表';
 				$link = 'show.php?id=';
 				$l_title = 'title';
-				$l_sql = 'select title,id,created_at from smg_images where  is_adopt=1 order by priority asc,created_at desc';
+				$l_sql="select t1.* from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.platform='show' order by t1.priority asc,t1.created_at desc";
 				break;
 			case 'magazine':
 				$title = '杂志列表';
@@ -94,19 +116,19 @@
 			<div id="focus_02"></div> 
 			<script type="text/javascript"> 
 				var pic_width1=276; 
-				var pic_height1=146; 
+				var pic_height1=180; 
 				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
 				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
-				var texts1=<?php echo '"',flash_str_replace($record_star[0]->short_title).",".flash_str_replace($record_star[1]->short_title).",".flash_str_replace($record_star[2]->short_title).",".flash_str_replace($record_star[3]->short_title).'"'; ?>;
+				var texts1=<?php echo '"',flash_str_replace($record_ad[0]->title).",".flash_str_replace($record_ad[1]->title).",".flash_str_replace($record_ad[2]->title).",".flash_str_replace($record_ad[3]->title).'"'; ?>;
 	
-				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "276", "146", "4","#FFFFFF");
+				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "276", "180", "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');
 				picflash.addVariable("picurl",pics1);
 				picflash.addVariable("piclink",mylinks1);
 				picflash.addVariable("pictext",texts1);				
 				picflash.addVariable("pictime","5");
 				picflash.addVariable("borderwidth","276");
-				picflash.addVariable("borderheight","146");
+				picflash.addVariable("borderheight","180");
 				picflash.addVariable("borderw","false");
 				picflash.addVariable("buttondisplay","true");
 				picflash.addVariable("textheight","15");				
@@ -129,7 +151,7 @@
 					<div class=left><? echo $i+1;?></div>
 					<div class=middle><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_url?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->title;?></a></div>
+						<div class=top><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>" title="<?php echo $records[$i]->title;?>"><?php echo $records[$i]->title;?></a></div>
 						<div class=bottom><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>">被播放了<?php echo $records[$i]->click_count ?>次</a></div>
 					</div>
 				</div>
@@ -149,7 +171,7 @@
 					<div class=left><? echo $i+1;?></div>
 					<div class=middle><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->title;?></a></div>
+						<div class=top><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>" title="<?php echo $records[$i]->title;?>"><?php echo $records[$i]->title;?></a></div>
 						<div class=bottom><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>">被点击了<?php echo $records[$i]->click_count;?>次</a></div>
 					</div>
 				</div>
@@ -170,7 +192,7 @@
 			?>
 			<div class=content>
 				<div class=left>
-					<a href="<?php if($type!='magazine'){echo $link.$records[$i]->id;}else{echo $records[$i]->online_url;}?>" target="_blank" title="<?php echo $records[$i]->title;?>"><?php echo $records[$i]->$l_title;?></a>
+					<a href="<?php if($type!='magazine'){echo $link.$records[$i]->id;}else{echo $records[$i]->online_url;}?>" target="_blank" title="<?php echo strip_tags($records[$i]->$l_title);?>"><?php echo strip_tags($records[$i]->$l_title);?></a>
 				</div>
 				<div class=right>
 					<?php if($type!='magazine'){echo $records[$i]->created_at;}else{echo $records[$i]->create_time;}?>
