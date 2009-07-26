@@ -1,0 +1,18 @@
+body {margin:0px; font-family:ËÎÌו; font-size:12px; line-height:0px; color:#000000;}
+ul{margin:0px; padding:0px;}
+li{margin:0px; list-style-type:none;}
+p{margin:0px; padding:0px;}
+
+#ibody{width:995px;  margin:0 auto;}
+
+#t{width:995px; height:30px; margin-top:10px; background:url('/images/zone/chat_room_top.gif') no-repeat; float:left; display:inline;}
+#chat_content_box{width:993px; height:270px; line-height:25px; background-color:#FFF9E6; border:1px solid #F7E8C0; overflow-x:hidden; overflow-y:auto; float:left; display:inline;}
+#tool_box{width:993px; margin-top:10px; padding-bottom:15px; line-height:20px; border:1px solid #CFCFCF; float:left; display:inline;}
+#connect_msg{width:900px; height:25px; margin-top:3px; margin-left:25px; color:#ff0000; line-height:20px; float:left; display:inline;}
+#fck_box{width:950px; height:100px; margin-left:25px; float:left; display:inline;}
+#emotion{width:500px; height:65px; margin-top:2px; margin-left:25px; float:left; display:inline;}
+#emotion img{margin-left:2px;}
+#submit{width:100px; margin-left:5px; float:left;  display:inline;}
+#search_chater{font-size:xx-large;}
+.chat_record{margin-left:20px;margin-top:5px;}
+.chat_record_title span{color:#00CCCC;}
