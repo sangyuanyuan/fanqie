@@ -89,7 +89,7 @@
 	$len1 = count($answers);	
 	?>
 	<script>
-		var str ;
+		var str;
 	<?php
 	for($i=0;$i<$len;$i++){
 		$question_count ++;?>
