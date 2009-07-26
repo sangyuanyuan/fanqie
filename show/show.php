@@ -190,7 +190,6 @@
 			
 			<div id=r_b_r>
 				<div class=title>更多该用户的照片</div>
-				<div class=more><a target="_blank" href="show_list.php?name=<?php echo $image->publisher;?>">更多>></a></div>
 				<?php
 					$images = new smg_images_class();
 					$records = $images->find('all',array('conditions' => 'is_adopt=1 and src is not null and publisher="'.$image->publisher.'" and id!='.$id,'limit' => '8'));
