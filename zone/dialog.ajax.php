@@ -81,7 +81,7 @@
 	$last_question_id = $questions ? $questions[count($questions)-1]->id : $_REQUEST['last_question_id'];
 	$len = count($questions);
 	
-	$sql = 'select a.*,b.content as  qcontent, b.writer, b.create_time as qcreate_time from smg_dialog_answer a left join smg_dialog_question b on a.question_id=b.id';
+	$sql = 'select a.*,b.id as qid,b.content as  qcontent, b.writer, b.create_time as qcreate_time from smg_dialog_answer a left join smg_dialog_question b on a.question_id=b.id';
 	$sql .=  ' where a.id > ' .$_REQUEST['last_answer_id'] .' and a.dialog_id=' .$_REQUEST['dialog_id'];
 	$answers = $db->query($sql);
 	$answer_count = $_REQUEST['answer_count'];
@@ -114,7 +114,7 @@
 	<?php
 	for($i=0;$i<$len1;$i++){
 		$answer_count ++;?>
-		str = '<?php echo_dialog_answer($answers[$i]->id,$answer_count,$dialog_id);?>';
+		str = '<?php echo_dialog_answer($answers[$i],$answer_count,$dialog_id);?>';
 		$('#div_answer_list_innerbox').append(str);
 	<?php } 
 		if($alert_str){
