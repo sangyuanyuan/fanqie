@@ -53,8 +53,8 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #t_c_m #left{width:100px; margin-top:10px; margin-left:10px; line-height:15px; float:left; display:inline;}
 #t_c_m #left .content{width:100px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;}
 #t_c_m #left .content a{color:#000000; text-decoration:none;}
-#t_c_m #right{width:270px; margin-top:8px; margin-right:5px; float:right; display:inline;}
-#t_c_m #right .content{width:270px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#t_c_m #right{width:265px; margin-top:8px; margin-right:5px; float:right; display:inline;}
+#t_c_m #right .content{width:265px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
 #t_c_m #right .content a{color:#000000; text-decoration:none;}
 #t_c_b{width:395px; height:274px; margin-top:12px; margin-left:10px; padding-top:10px; background:url('/images/zone/index_t_c_b.jpg') no-repeat; float:left; display:inline;}
 #t_c_b .comment{width:375px; height:40px; margin-top:2px; margin-left:10px; background:#F0F5F8; float:left; display:inline;}

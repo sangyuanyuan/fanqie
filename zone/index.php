@@ -134,8 +134,7 @@
 					<?php }?>
 				</div>
 				<div id=right>
-					<?php for($i=7;$i<count($fxsh);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==3){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div>
-					<?php }?>
+					<?php for($i=7;$i<count($fxsh);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==3){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div><?php }?>
 				</div>
 			</div>
 			<div id=t_c_b>
