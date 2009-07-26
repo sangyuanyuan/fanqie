@@ -19,7 +19,7 @@ $(function(){
 		};
 		var dialog_id = $('#dialog_id').val();
 		var query_str = $('#div_hidden').serialize();
-		$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id,'writer':writer,'content':question,'optype':'add_question'});
+		$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id,'writer':writer,'content':question,'optype':'add_question','is_master':$('#is_master').val()});
 		oeditor.SetHTML('');
 	});
 	
@@ -87,5 +87,5 @@ function edit_answer(qid, id){
 function scroll_buttom(){
 	$('#div_question').scrollTop(10000);
 	$('#div_answer_list').scrollTop(10000);
-	$('#comment_list_box').scrollTop(10000);
+	//$('#comment_list_box').scrollTop(10000);
 }

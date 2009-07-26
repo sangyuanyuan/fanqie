@@ -69,7 +69,14 @@
 					<!-- refresh leader status here -->
 				</div>
 				<div id="div_add_question">
-					<input type="text" id="writer" value="请填写用户名">
+					<?php
+					if(strpos($dialog->master_ids, $_COOKIE['smg_username'])!==false){
+						echo '<input type="text" id="writer" value="主持人语" disabled="true"><input type=hidden id="is_master" value="1">';
+					}else{
+						echo '<input type="text" id="writer" value="请填写用户名"><input type=hidden id="is_master" value="0">';
+					}
+					
+					?>
 					<div id="div_question_content">
 					<?php 
 					show_fckeditor('fck_question_content','Title',false,85,'',570);
@@ -118,12 +125,12 @@
 				<div id="comment_list_box">
 				<?php 
 				$dialog_comment = new table_class('smg_comment');
-				$dialog_comment = $dialog_comment->find('all',array('conditions' => "resource_type='dialog' and resource_id={$dialog->id}"));
+				$dialog_comment = $dialog_comment->find('all',array('conditions' => "resource_type='dialog' and resource_id={$dialog->id}", 'order' => 'id desc'));
 				if($dialog_comment){
 					foreach ($dialog_comment as $v) {				
 						echo_dialog_comment($v);
 					}
-					$last_comment_id = $dialog_comment[count($dialog_comment)-1]->id;
+					$last_comment_id = $dialog_comment[0]->id;
 				}else{
 					$last_comment_id = 0;
 				}				

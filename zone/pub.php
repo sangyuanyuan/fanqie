@@ -2,7 +2,7 @@
 	function echo_dialog_question($item,$index,$dialog_id){
 		if(!$item) return;
 		$master_ids = get_master_ids($dialog_id);
-		echo "<div class=\"question_list\"><span class=\"question_index\"><b>$index.</b></span><span class=\"question_writer\"><b>{$item->writer}: </b></span>{$item->content}";
+		echo "<div class=\"question_list{$item->is_master}\"><span class=\"question_index\"><b>$index.</b></span><span class=\"question_writer\"><b>{$item->writer}: </b></span>{$item->content}";
 		echo '  <span class="question_time">' .$item->create_time .'</span>';
 		echo ' <a href="comment_question.php?height=310&width=661&question_id='.$item->id .'" title="评论问题" class="comment_href">评论</a>';
 		if(in_array($_COOKIE['smg_username'], $master_ids)){
