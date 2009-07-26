@@ -17,7 +17,7 @@
 			$question->content = str_replace('</p>','',$question->content);
 			$question->is_master = $_POST['is_master'];
 			if($question->save()){
-				$alert_str = '发布成功!';
+				//$alert_str = '发布成功!';
 			}else{
 				$alert_str = '发布失败!';
 			};
@@ -39,7 +39,7 @@
 			$tanswer->content = str_replace('<p>', '', $tanswer->content);
 			$tanswer->content = str_replace('</p>', '', $tanswer->content);
 			if($tanswer->save()){
-				$alert_str = '回复成功!';
+				//$alert_str = '回复成功!';
 			}else{
 				$alert_str = '回复失败!';
 			}
@@ -63,7 +63,7 @@
 		case 'delete_answer':
 			$answer = new table_class('smg_dialog_answer');
 			if($answer->delete($_POST['answer_id'])){
-				$alert_str = '删除成功!';
+				//$alert_str = '删除成功!';
 			}else{
 				$alert_str = '删除失败!';
 			};
