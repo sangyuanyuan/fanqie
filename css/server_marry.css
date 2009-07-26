@@ -47,7 +47,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #ibody_middle #m_top .m_box .center .girl_name{width:80px; height:25px; font-size:20px; font-weight:bolder; font-family:华文行楷; color:#FF0000; line-height:25px; text-align:center; overflow:hidden; float:left; display:inline;}
 #ibody_middle #m_top .m_box .center .and{width:33px; height:25px; font-size:20px; font-weight:bolder; font-family:华文行楷; color:#FFFF00; line-height:25px; text-align:center; overflow:hidden; float:left; display:inline;}
 #ibody_middle #m_top .m_box .center .boy_name{width:80px; height:25px; font-size:20px; font-weight:bolder; font-family:华文行楷; color:#0000FF; line-height:25px; text-align:center; overflow:hidden; float:left; display:inline;}
-#ibody_middle #m_top .m_box .center .commenter{width:199px; height:16px; color:#AB5B5B; line-height:16px; font-weight:bolder; font-family:微软雅黑; overflow:hidden; float:left; display:inline;}
+#ibody_middle #m_top .m_box .center .commenter{width:150px; height:16px; color:#AB5B5B; line-height:16px; font-weight:bolder; font-family:微软雅黑; overflow:hidden; float:left; display:inline;}
 #ibody_middle #m_top .m_box .center .comment_text{width:199px; height:30px; margin-top:3px; line-height:15px; overflow:hidden; float:left; display:inline;}
 #ibody_middle #m_top .m_box .right{width:120px; height:92px; float:left; display:inline;}
 #ibody_middle #m_top .m_box .right .top{width:80px; height:50px; margin-left:40px; font-size:48px; color:#FF0000; font-family:华文行楷; font-weight:bolder; line-height:50px; text-decoration:underline; float:left; display:inline;}
@@ -59,8 +59,8 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #ibody_middle #m_bottom #qhx{width:184px; height:139px; margin-left:65px; background:url('/images/server/qhx.gif') no-repeat; cursor:pointer; float:left; display:inline;}
 
 
-#l_paginate{width:450px; height:20px; margin-top:5px; margin-left:80px; float:left; display:inline;}
+#l_paginate{width:443px; height:20px; margin-top:5px; text-align:center; margin-left:35px; float:left; display:inline;}
 #l_paginate a{color:#000000; text-decoration:none;}
 
-#r_paginate{width:450px; height:20px; margin-top:5px; margin-left:100px; float:left; display:inline;}
+#r_paginate{width:433px; height:20px; margin-top:5px; text-align:center; margin-left:60px; float:left; display:inline;}
 #r_paginate a{color:#000000; text-decoration:none;}
