@@ -63,7 +63,7 @@
 		case 'delete_answer':
 			$answer = new table_class('smg_dialog_answer');
 			if($answer->delete($_POST['answer_id'])){
-				//$alert_str = '删除成功!';
+				$alert_str = '';
 			}else{
 				$alert_str = '删除失败!';
 			};
