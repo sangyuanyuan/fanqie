@@ -28,7 +28,7 @@
 				$sql="select title,platform,id,last_edited_at,category_id from smg_news where is_adopt=1 order by last_edited_at desc";
 		}
 		
-		$record=$db->paginate($sql,20);		
+		$record=$db->paginate($sql,30);		
   ?>
 	
 </head>
