@@ -20,7 +20,7 @@
 	<title>SMG团购 -<? echo $tg[0]->title;?></title>
 	<?php css_include_tag('smg','top','bottom');
 		use_jquery(); 
-		js_include_once_tag('fqtgdg','fqtgdg1');
+		js_include_once_tag('fqtgdg1');
 	?>
 </head>
 <body>
@@ -30,22 +30,28 @@
 ?>
 <div id=bodys>
 <div id=nyf_left>
-	<form name="fqtg" method="post" action="/fqtg/fqtgdg.post.php"> 
  		<div id=content1><a href="/">首页</a>　>　<? echo $tg[0]->title;?></div>
- 		<div style="width:100px; height:20px; margin-top:12px; margin-left:25px; text-align:center; float:left; display:inline;">姓名</div>	
-    	<div style="width:250px; height:20px; margin-top:12px; margin-left:10px; text-align:center; overflow:hidden; float:left; display:inline;">商品名称</div><div style="width:30px; margin-left:10px; margin-top:12px; text-align:center; float:left; display:inline;">数量</div>　　
-    	<div style="width:200px; height:20px; margin-top:-2px; margin-left:20px; text-align:center; color:#0071B5; float:left; display:inline;">订购时间</div>
-    	<? if($_COOKIE['smg_userid']==155||$_COOKIE['smg_userid']==3924||$_COOKIE['smg_userid']==3382){?><div style="width:50px; height:20px; margin-top:-2px; margin-left:20px; text-align:center; color:#0071B5; float:left; display:inline;">操作</div><? }?>
+		<div style="width:690px; height:20px; margin-top:12px; overflow:hidden; float:left; display:inline;">
+	 		<div style="width:100px; height:20px; margin-left:25px;  text-align:center; float:left; display:inline;">姓名</div>
+	    <div style="width:250px; height:20px; margin-left:10px;  text-align:center; overflow:hidden; float:left; display:inline;">商品名称</div>
+			<div style="width:30px; height:20px; margin-left:10px; text-align:center; float:left; display:inline;">数量</div>
+			<div style="width:150px; height:20px; margin-left:10px; text-align:center; color:#0071B5; overflow:hidden; float:left; display:inline;">订购时间</div>
+    	<? if($_COOKIE['smg_userid']==157||$_COOKIE['smg_userid']==3924||$_COOKIE['smg_userid']==3382){?><div style="width:65px; height:20px; margin-left:10px;  text-align:center; float:left; display:inline;">操作</div><? }?>
+    </div>
     <? for($i=0;$i<count($nyf);$i++){?>	
-    	<div style="width:100px; height:20px; margin-top:12px; margin-left:25px; text-align:center; float:left; display:inline;"><?php echo $nyf[$i]->name;?></div>	
-    	<div style="width:250px; height:20px; margin-top:12px; margin-left:10px; text-align:center; overflow:hidden; float:left; display:inline;"><?php echo $nyf[$i]->spname; ?></div><div style="width:30px; margin-top:12px; margin-left:10px; text-align:center; float:left; display:inline;"><? echo $nyf[$i]->num;?></div>　　
-    	<div style="width:200px; height:20px; margin-top:12px; margin-left:20px; text-align:center; color:#0071B5; float:left; display:inline;"><?php echo $nyf[$i]->createtime; ?></div>	
-    	<? if($_COOKIE['smg_userid']==155||$_COOKIE['smg_userid']==3924||$_COOKIE['smg_userid']==3382){?><div style="width:50px; height:20px; margin-top:10px; margin-left:20px; text-align:center; color:#0071B5; float:left; display:inline;"><? if($nyf['state']=="0"){?><button onclick="tg('<? echo $nyf[$i]->id;?>')" style="border:0px;">领取</button><? }else{?>已领取<? }?></div><? }?>
-    <? }?>
+	<div style="width:690px; height:20px; margin-top:12px;  float:left; display:inline;">
+    	<div style="width:100px; height:20px;  margin-left:25px; text-align:center; float:left; display:inline;"><?php echo $nyf[$i]->name;?></div>	
+    	<div style="width:250px; height:20px;  margin-left:10px; text-align:center; overflow:hidden; float:left; display:inline;"><?php echo $nyf[$i]->spname; ?></div>
+			<div style="width:30px; height:20px;  margin-left:10px; text-align:center; float:left; display:inline;"><? echo $nyf[$i]->num;?></div>
+			<div style="width:150px; height:20px; margin-left:15px;  text-align:center; color:#0071B5; float:left; display:inline;"><?php echo $nyf[$i]->createtime; ?></div>
+    	<? if($_COOKIE['smg_userid']==157||$_COOKIE['smg_userid']==3924||$_COOKIE['smg_userid']==3382){?><div style="width:65px; height:20px; margin-left:10px; text-align:center; color:#0071B5; float:left; display:inline"><? if($nyf[$i]->state=="0"){?><button class="lq" style="border:0px;">领取</button><input type="hidden" value="<?php echo $nyf[$i]->id; ?>"><? }else{?>已领取<? }?></div><? }?>
+    </div>
+	<? }?>
 
       <div class=pageurl>
       	<?php paginate('fqtgdg.php?id='.$id);?>
       </div>
+      <form name="fqtg" method="post" action="/fqtg/fqtgdg.post.php"> 
 			<? if($tg[0]->maxnum==""){
        	if(strtotime(date("Y-m-d H:i:s")) < strtotime($tg[0]->endtime)){
        		?>
@@ -67,7 +73,7 @@
     	   <input type="hidden" id="tg_count" name="tg_count" value="<? echo $count[0]->total;?>">
        </div> 
        
-       <div id=content11 onclick="check()" >订　购</div>
+       <div id=content11>订　购</div>
        	<? 
       		}
        	}
@@ -91,7 +97,7 @@
     	   <input type="hidden" id="tg_maxnum" name="tg_maxnum" value="<? echo $tg[0]->maxnum;?>">
     	   <input type="hidden" id="tg_count" name="tg_count" value="<? echo $count[0]->total;?>">
        </div> 
-       	<div id=content11 onclick="check()" >订　购</div><? }?>
+       	<div id=content11 >订　购</div><? }?>
        	<? }?>
       </form>
  </div>
