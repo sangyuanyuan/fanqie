@@ -33,8 +33,10 @@
 	$leaders = $leaders->find('all',array('conditions' => "dialog_id = $dialog->id"));
 ?>
 <div id=ibody>
-	<div id=ibody_top></div>
+	<div id=ibody_top><img src="<?php echo $dialog->photo_url;?>"></div>
 	<div id=ibody_middle>
+		<a href="dialog_list.php" target=_blank id="dialog_more">往期</a>
+		<div id="dialog_title"><?php echo $dialog->title;?></div>
 		<div id="dialog_desc"><?php echo $dialog->content;?></div>
 		<div id="dialog_leader" calss="border">
 			对话嘉宾:<?php echo $leaders[0]->name; if(count($leaders)>1) echo " 等 ";?><br>
@@ -79,6 +81,12 @@
 					<div id="div_q_emotion" style="width:100%;float:left;"></div>
 				</div>
 				<div id="answer_title"></div>
+							<?php 
+					if($dialog->video_url){
+						echo "<div>video</div>";
+						#show_video_player(400,220,$dialog->photo_url,$dialog->video_url);
+					}
+				?>
 				<div id="div_answer_list">
 					<div id="div_answer_list_innerbox">
 						<?php
@@ -99,11 +107,11 @@
 		</div>
 		<div id=b_r>
 			<div id=b_r_t>
-				<input id="comment_writer" type="text">
-				<?php show_fckeditor('fck_comment_content','Title',false,50,'',270);?>
+				<input id="comment_writer" type="text" style="margin-bottom:5px;">
+				<?php show_fckeditor('fck_comment_content','Title',false,70,'',278);?>
 				<div id="comment_emotion"></div>
 				<input style="display:none;" type="hidden" name="comment_content" value="" id="comment_content">
-				<button id="comment_button">提　交</button>
+				<button id="comment_button" style="cursor:pointer;">提　交</button>
 			</div>
 			<div id=b_r_title1><div style=" margin-top:5px;margin-left:40px;font-size:larger;"><b>评论列表</b></div></div>
 			<div id=b_r_m>
@@ -123,7 +131,7 @@
 				</div>
 			</div>
 			<a href="dialog_collection.php?width=400&height=250" class="thickbox" id=b_r_b1></a>
-			<div id=b_r_title2><div style=" margin-top:3px;margin-left:40px;font-size:larger;"><b>往期对话索引</b></div></div>
+			<div id=b_r_title2><a href="dialog_list.php" target=_blank>往期对话</a></div>
 			<?php 
 				$db = get_db();
 				$latest_dialogs = $db->query('select * from smg_dialog where id !=' .$dialog->id .' order by id desc limit 4');
@@ -131,7 +139,6 @@
 				?>
 				<div class=b_r_b2>
 					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><img border=0 width=128 height=82 src="<?php echo $latest_dialogs[$i]->photo_url;?>">
-					<br>
 					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><?php echo $latest_dialogs[$i]->title;?></a>	
 				</div>
 			<?php }?>

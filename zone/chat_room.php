@@ -29,8 +29,9 @@
 					<?php show_fckeditor('fck_content','Title',false,95,'',945);?>
 			</div>
 			<div id="emotion"></div>
-			<button id="submit">发送</button>　
-			<button id="find_chater" style="width:100px;">寻找陌生人</button>
+			<button id="submit">发送</button>
+			<button id="find_chater">寻找陌生人</button>
+			<button id="clear">清屏</button>
 	</div>
 </div>
 <div id="ajax_result"></div>

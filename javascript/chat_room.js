@@ -30,6 +30,9 @@ $(function(){
 		oEditor.SetHTML('');
 		$('#ajax_result').load('chat_room.post.php',{'op':'chat','content':content});	
 	});
+	$('#clear').click(function(){
+		$('#chat_content_box').html('');
+	});
 	toggle_button();
 	setInterval('refresh()',5000);
 	
@@ -44,15 +47,15 @@ function add_chat(content,type){
 	if(type=='i'){
 		name = '【我】说:';
 		var str = '<div class="chat_record">'
-				 + '<div class="chat_record_title"><span>'+ '</span><b>' + name +'</b></div>'
-				 + '<div class="chat_record_content">' + content +'</div>'
-				 + '</div>';
+				 + '<div class="chat_record_title"><span>'+ '</span><b>' + name +'</b>'
+				 + '<span class="chat_record_content">' + content +'</span>'
+				 + '</div></div>';
 	}else if(type=='h'){
 		name = '【陌生人】说:';
 		var str = '<div class="chat_record">'
-				 + '<div class="chat_record_title"><span>'+ '</span><b>' + name +'</b></div>'
-				 + '<div class="chat_record_content">' + content +'</div>'
-				 + '</div>';
+				 + '<div class="chat_record_title"><span>'+ '</span><b>' + name +'</b>'
+				 + '<span class="chat_record_content">' + content +'</span>'
+				 + '</div></div>';
 	}else if(type == 's'){
 		name = '系统消息:';
 		var str = '<div class="chat_record">'
@@ -67,12 +70,15 @@ function toggle_button(){
 	if( chat_status== undefined || chat_status == ''){
 		$('#find_chater').html('寻找陌生人');
 		$('#connect_msg').html('');
+		$('#submit').attr('disabled',true);
 	}else if(chat_status == 'connecting'){
 		$('#connect_msg').html('正在寻找陌生人,请稍后...');
 		$('#find_chater').html('取消寻找');
+		$('#submit').attr('disabled',true);
 	}else if(chat_status == 'connected'){
 		$('#connect_msg').html('匹配成功');
 		$('#find_chater').html('断开');
+		$('#submit').attr('disabled',false);
 	}
 	$('#chat_content_box').scrollTop(10000);
 }

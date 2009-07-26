@@ -4,50 +4,7 @@
 				
 			}
 		)
-		$(".vote_submit").click(function(){
-		  var num=$(this).attr('param');
-		  var item = $("input[name='rb"+num+"'][checked]").val();
-		  if (item != "") {
-		  	$.post('/vote/vote.post.php', {
-		  		'item_id': item,
-		  		'userid': $("#user_id").attr('value'),
-				'type':$("#limit_type").attr('value'),
-				'target_url':$("#target_url").attr('value'),
-				'vote_id':$(this).next().attr('value')
-		  	}, function(data){
-		  		if(data=="")
-		  		{
-		  			alert('投票成功！');	
-		  		}
-		  		else if(data=="error")
-		  		{
-		  			alert('投票失败！');	
-		  		}
-		  	})
-		  }
-		  else {
-		  	var sport = $("input[name='ck"+num+"'][checked]");
-		  	for (var i = 0; i < sport.length; i++) {
-				$.post('/vote/vote.post.php', {
-		  		'item_id': sport.eq(i).val(),
-		  		'userid': $("#user_id").attr('value'),
-				'type':$("#limit_type").attr('value'),
-				'target_url':$("#target_url").attr('value'),
-				'vote_id':$("#vote_id").attr('value')
-			  	}, function(data){
-			  	if(data=="")
-		  		{
-		  			alert('投票成功！');	
-		  		}
-		  		else if(data=="error")
-		  		{
-		  			alert('投票失败！');	
-		  		}
-			  	})
-		  	}
-		  }
 		
-		})
 		
 		$(".show_vote").click(function(){
 			var vote_id=$(this).prev().prev().attr("value");

@@ -76,7 +76,7 @@
 						if($cate_name == '大头条' || $cate_name == '小头条'){
 							$url = "/$platform/news/news_head.php?id={$record[$i]->id}";
 						}else if($platform == 'show'){
-							$url = "/$platform/content.php?id={$record[$i]->id}";
+							$url = "/$platform/article.php?id={$record[$i]->id}";
 						}else{
 							$url="/$platform/news/news.php?id={$record[$i]->id}";
 						}
