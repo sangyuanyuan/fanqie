@@ -182,12 +182,11 @@
 						for($i=1;$i<$key_count;$i++){
 							$sql = $sql.' or keywords like "%'.$keywords[$i].'%"';
 						}
-						
+						$sql = $sql." limit 12";
 						$records = $db->query($sql);
 						$count = count($records);
 					?>
 					<div class=title>相关视频</div>
-					<div class=more><a target="_blank" href="video_list.php">更多<?php echo $count;?>个视频>></a></div>
 			  		<?php 
 						for($i=0;$i<$count;$i++) {
 					?>
@@ -204,7 +203,8 @@
 					<?php
 						}
 						if($count<12){
-							$sql = 'select * from smg_video where id!='.$id.' order by rand() limit 12';
+							$count = 12-$count;
+							$sql = 'select * from smg_video where id!='.$id.' order by rand() limit '.$count;
 							$records = $db->query($sql);
 							$count = count($records);
 							for($i=0;$i<$count;$i++) {
