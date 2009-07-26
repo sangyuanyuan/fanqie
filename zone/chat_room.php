@@ -31,6 +31,7 @@
 			<div id="emotion"></div>
 			<button id="submit">发送</button>　
 			<button id="find_chater" style="width:100px;">寻找陌生人</button>
+			<button id="clear">清屏</button>
 	</div>
 </div>
 <div id="ajax_result"></div>
