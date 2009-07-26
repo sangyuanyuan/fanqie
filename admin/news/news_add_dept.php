@@ -106,6 +106,7 @@
 				<input type="hidden" name="news[low_quality]" id="hidden_low_quality" value="0">
 			</td>
 		</tr>
+		<!--
 		<tr class=tr3  class="normal_news tr3">
 			<td>投票</td>
 			<td align="left" id="td_vote">
@@ -113,6 +114,7 @@
 				<input type="hidden" name="news[vote_id]" id="vote_id">
 			</td>
 		</tr>
+		-->
 		<tr class="normal_news tr3">
 			<td>所属专题</td>
 			<td align="left" id="td_subject">
@@ -123,11 +125,11 @@
 			<td>其他选项</td>
 			<td align="left">
 				<input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  
-				<input type="checkbox" name="news[is_dept_adopt]" value="1" checked="checked">直接发布  
-				<input type="checkbox" name="news[image_flag]" value="1">图片提示　
+				<input type="checkbox" name="news[is_dept_adopt]" value="1" checked="checked">直接发布  		
+				<!-- <input type="checkbox" name="news[image_flag]" value="1">图片提示　-->
 				<input type="checkbox" id="check_box_commentable" value="1" checked="checked">开启评论 
 				<a style="color:blue;" href="filte_news.php?width=600&height=400" class="thickbox" id="related_news">手动关联相关新闻</a> 
-				<a style="color:blue;" href="related_video.php?width=600&height=400" class="thickbox" id="related_news">关联相关视频</a>				
+				<!-- <a style="color:blue;" href="related_video.php?width=600&height=400" class="thickbox" id="related_news">关联相关视频</a>				 -->
 			</td>
 		</tr>
 		<tr class="normal_news tr3">
