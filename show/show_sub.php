@@ -61,11 +61,11 @@
 	<div id=b>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　视频照片</div>
 		<div class=t_r>
-			<input type="file" name="image" id="image" class="required">('png','jpg','gif')
+			<input type="file" name="image" id="image" class="required">(png,jpg,gif)
 		</div>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择视频</div>
 		<div class=t_r>
-			<input type="file" name="video" id="video" class="required">('flv','wmv','wav','mp3','mp4','avi','rm')
+			<input type="file" name="video" id="video" class="required">(flv,wmv,wav,mp3,mp4,avi,rm)
 		</div>
 	</div>
 	<?php }else{
@@ -75,7 +75,7 @@
 	<div id=b>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择图片</div>
 		<div class=t_r>
-			<input type="file" name="image" id="image" class="required">('png','jpg','gif')
+			<input type="file" name="image" id="image" class="required">(png,jpg,gif)
 		</div>
 	</div>
 	<?php } ?>
