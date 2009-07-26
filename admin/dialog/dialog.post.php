@@ -112,6 +112,6 @@
 			
 		}
 		
-		#redirect('dialog_list.php');
+		redirect('dialog_list.php');
 	}
 ?>

@@ -36,7 +36,7 @@
 	<div id=ibody_top><img src="<?php echo $dialog->photo_url;?>"></div>
 	<div id=ibody_middle>
 		<a href="dialog_list.php" target=_blank id="dialog_more">往期</a>
-		<div id="dialog_title"><?php echo $dialog->title;?></div>
+		<div id="dialog_titles"><?php echo $dialog->title;?></div>
 		<div id="dialog_desc"><?php echo $dialog->content;?></div>
 		<div id="dialog_leader" calss="border">
 			对话嘉宾:<?php echo $leaders[0]->name; if(count($leaders)>1) echo " 等 ";?><br>
@@ -69,7 +69,14 @@
 					<!-- refresh leader status here -->
 				</div>
 				<div id="div_add_question">
-					<input type="text" id="writer" value="请填写用户名">
+					<?php
+					if(strpos($dialog->master_ids, $_COOKIE['smg_username'])!==false){
+						echo '<input type="text" id="writer" value="主持人语" disabled="true"><input type=hidden id="is_master" value="1">';
+					}else{
+						echo '<input type="text" id="writer" value="请填写用户名"><input type=hidden id="is_master" value="0">';
+					}
+					
+					?>
 					<div id="div_question_content">
 					<?php 
 					show_fckeditor('fck_question_content','Title',false,85,'',570);
@@ -113,17 +120,17 @@
 				<input style="display:none;" type="hidden" name="comment_content" value="" id="comment_content">
 				<button id="comment_button" style="cursor:pointer;">提　交</button>
 			</div>
-			<div id=b_r_title1><div style=" margin-top:5px;margin-left:40px;font-size:larger;"><b>评论列表</b></div></div>
+			<div id=b_r_title1><div style=" margin-top:4px; margin-left:35px; font-size:larger;"><b>评论列表</b></div></div>
 			<div id=b_r_m>
 				<div id="comment_list_box">
 				<?php 
 				$dialog_comment = new table_class('smg_comment');
-				$dialog_comment = $dialog_comment->find('all',array('conditions' => "resource_type='dialog' and resource_id={$dialog->id}"));
+				$dialog_comment = $dialog_comment->find('all',array('conditions' => "resource_type='dialog' and resource_id={$dialog->id}", 'order' => 'id desc'));
 				if($dialog_comment){
 					foreach ($dialog_comment as $v) {				
 						echo_dialog_comment($v);
 					}
-					$last_comment_id = $dialog_comment[count($dialog_comment)-1]->id;
+					$last_comment_id = $dialog_comment[0]->id;
 				}else{
 					$last_comment_id = 0;
 				}				

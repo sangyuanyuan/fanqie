@@ -15,8 +15,9 @@
 			$question->writer = $_POST['writer'];
 			$question->content = str_replace('<p>', '', $_POST['content']);
 			$question->content = str_replace('</p>','',$question->content);
+			$question->is_master = $_POST['is_master'];
 			if($question->save()){
-				$alert_str = '发布成功!';
+				//$alert_str = '发布成功!';
 			}else{
 				$alert_str = '发布失败!';
 			};
@@ -38,7 +39,7 @@
 			$tanswer->content = str_replace('<p>', '', $tanswer->content);
 			$tanswer->content = str_replace('</p>', '', $tanswer->content);
 			if($tanswer->save()){
-				$alert_str = '回复成功!';
+				//$alert_str = '回复成功!';
 			}else{
 				$alert_str = '回复失败!';
 			}
@@ -62,7 +63,7 @@
 		case 'delete_answer':
 			$answer = new table_class('smg_dialog_answer');
 			if($answer->delete($_POST['answer_id'])){
-				$alert_str = '删除成功!';
+				$alert_str = '';
 			}else{
 				$alert_str = '删除失败!';
 			};
@@ -80,7 +81,7 @@
 	$last_question_id = $questions ? $questions[count($questions)-1]->id : $_REQUEST['last_question_id'];
 	$len = count($questions);
 	
-	$sql = 'select a.*,b.content as  qcontent, b.writer, b.create_time as qcreate_time from smg_dialog_answer a left join smg_dialog_question b on a.question_id=b.id';
+	$sql = 'select a.*,b.id as qid,b.content as  qcontent, b.writer, b.create_time as qcreate_time from smg_dialog_answer a left join smg_dialog_question b on a.question_id=b.id';
 	$sql .=  ' where a.id > ' .$_REQUEST['last_answer_id'] .' and a.dialog_id=' .$_REQUEST['dialog_id'];
 	$answers = $db->query($sql);
 	$answer_count = $_REQUEST['answer_count'];
@@ -106,7 +107,7 @@
 	$last_comment_id = $len2 > 0 ? $comment[$len2-1]->id : $_REQUEST['last_comment_id'];
 	for($i=0;$i<$len2;$i++){?>
 		str = '<?php echo_dialog_comment($comment[$i]);?>';
-		$('#comment_list_box').append(str);
+		$('#comment_list_box').prepend(str);
 	<?php } ?>
 	$('#last_comment_id').val('<?php echo $last_comment_id;?>');	
 	

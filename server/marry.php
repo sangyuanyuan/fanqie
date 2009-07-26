@@ -23,7 +23,7 @@
 			<div class=box>
 				<?php 
 					$db = get_db();
-					$sql = 'select * from smg_marry where sex="woman"';
+					$sql = 'select * from smg_marry where sex="woman" order by id desc';
 					$records = $db->paginate($sql,4,'left');
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
@@ -40,9 +40,26 @@
 					学历：<?php if($records[$i]->education!=''){echo $records[$i]->education;}else{echo '保密';} ?>&nbsp;
 					毕业学校：<?php if($records[$i]->school!=''){echo $records[$i]->school;}else{echo '保密';} ?><br>
 					职业：<?php  if($records[$i]->job!=''){echo $records[$i]->job;}else{echo '保密';} ?>&nbsp;
-					收入：<?php  if($records[$i]->income!=''){echo $records[$i]->income;}else{echo '保密';}; ?><br>
+					收入：<?php
+					     	if($records[$i]->income!=''){
+					     		if($records[$i]->income==0){
+					     			echo "2000以下";
+					     		}elseif($records[$i]->income==1){
+					     			echo "2000-4000";
+					     		}elseif($records[$i]->income==2){
+					     			echo "4000-6000";
+					     		}elseif($records[$i]->income==3){
+					     			echo "6000-10000";
+					     		}elseif($records[$i]->income==4){
+					     			echo "10000-20000";
+					     		}elseif($records[$i]->income==5){
+					     			echo "20000以上";
+								}
+							}else{echo '保密';};
+						 ?><br>
+					联系方式：<?php  if($records[$i]->phone!=''){echo $records[$i]->phone;}else{echo '保密';} ?><br>
 					恋爱史：<?php  if($records[$i]->history!=''){echo $records[$i]->history;}else{echo '保密';}; ?><br>
-					择偶标准：<?php echo $records[$i]->request; ?>
+					择偶标准：<span title="<?php echo $records[$i]->request; ?>"><?php echo $records[$i]->request; ?></span>
 					</div>
 				</div>
 				<?php } ?>
@@ -54,7 +71,7 @@
 			<div class=box>
 				<?php 
 					$db = get_db();
-					$sql = 'select * from smg_marry where sex="man"';
+					$sql = 'select * from smg_marry where sex="man" order by id desc';
 					$records = $db->paginate($sql,4,'right');
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
@@ -70,9 +87,26 @@
 					学历：<?php if($records[$i]->education!=''){echo $records[$i]->education;}else{echo '保密';} ?>&nbsp;
 					毕业学校：<?php if($records[$i]->school!=''){echo $records[$i]->school;}else{echo '保密';} ?><br>
 					职业：<?php  if($records[$i]->job!=''){echo $records[$i]->job;}else{echo '保密';} ?>&nbsp;
-					收入：<?php  if($records[$i]->income!=''){echo $records[$i]->income;}else{echo '保密';}; ?><br>
+					收入：<?php
+					     	if($records[$i]->income!=''){
+					     		if($records[$i]->income==0){
+					     			echo "2000以下";
+					     		}elseif($records[$i]->income==1){
+					     			echo "2000-4000";
+					     		}elseif($records[$i]->income==2){
+					     			echo "4000-6000";
+					     		}elseif($records[$i]->income==3){
+					     			echo "6000-10000";
+					     		}elseif($records[$i]->income==4){
+					     			echo "10000-20000";
+					     		}elseif($records[$i]->income==5){
+					     			echo "20000以上";
+								}
+							}else{echo '保密';};
+						 ?><br>
+					联系方式：<?php  if($records[$i]->phone!=''){echo $records[$i]->phone;}else{echo '保密';} ?><br>
 					恋爱史：<?php  if($records[$i]->history!=''){echo $records[$i]->history;}else{echo '保密';}; ?><br>
-					择偶标准：<?php echo $records[$i]->request; ?>
+					择偶标准：<span title="<?php echo $records[$i]->request; ?>"><?php echo $records[$i]->request; ?></span>
 					</div>
 				</div>
 				<?php } ?>
@@ -96,7 +130,7 @@
 					<div class=and>and</div>
 					<div class=boy_name><?php echo $records[$i]->boy_name;?></div>
 					<div class=commenter><?php echo $records[$i]->nick_name;?>：</div>
-					<div class=comment_text><?php echo $records[$i]->comment;?></div>
+					<div class=comment_text title="<?php echo $records[$i]->comment;?>"><?php echo $records[$i]->comment;?></div>
 				</div>
 				<div class=photo><img src="<?php echo $records[$i]->boy_photo;?>" width="50" height="65"></div>
 				<div class=right>
@@ -112,7 +146,7 @@
 		<div id=m_bottom>
 			<div id=paginate><?php paginate('',null,'comment');?></div>
 			<div id=comment>
-				留 言 人：<input type=text id="pulisher"><br>
+				留 言 人：<input type=text id="pulisher" maxlength="10"><br>
 				留言内容：<textarea  style="width:535px; height:105px;" id="comment_content"></textarea>
 			</div>
 			<div id=qhx></div>
@@ -125,8 +159,8 @@
 			<div class=b_l>
 				<div class=b_title>在这里输入你与想测的人的名字，即可测算出你们的关系哦。准的有点邪哦，快来试试吧。</div>
 				<div class=b_input>
-					您的姓名：<input type=text>&nbsp
-					对方的姓名：<input type=text>&nbsp
+					您的姓名：<input type=text maxlength="10">&nbsp
+					对方的姓名：<input type=text maxlength="10">&nbsp
 					<button id=xmpd>姓名配对</button>
 				</div>
 			</div>
@@ -281,7 +315,6 @@
 			})
 			if(man == 0){
 				alert('请选择一个男生');
-				alert($("#pulisher").val());
 			}else if(woman == 0){
 				alert('请选择一个女生');
 			}else if($("#pulisher").val()==""){
@@ -289,6 +322,10 @@
 			}else if($("#comment_content").val()==""){
 				alert('请输入评论内容');
 			}else{
+				if($("#pulisher").val().length>10){
+					alert("昵称长度太长！");
+					return false;
+				}
 				$.post("marry.post.php",{'boy_id':man,'girl_id':woman,'nick_name':$("#pulisher").val(),'comment':$("#comment_content").val(),'type':'marry'},function(data){
 					if(data==''){
 						window.location.reload();
@@ -303,6 +340,10 @@
 		$("#xmpd").click(function(){
 			var name1 = $(this).prev().prev().attr('value');
 			var name2 = $(this).prev().attr('value');
+			if(name1.length>10||name.length>10){
+				alert("名字太长");
+				return false;
+			}
 			$.post("marry.post.php",{'boy_name':name1,'girl_name':name2,'type':'name'},function(data){
 				$("#boy_name").html(name1);
 				$("#girl_name").html(name2);

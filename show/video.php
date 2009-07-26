@@ -128,7 +128,7 @@
 				</div>
 				<?php } ?>
 				<div id=paginate><?php paginate();?></div>
-				<div id=comment_box>
+				<div id=comment_box <?php if($video->commentable!="on"){?>style="display:none;"<?php } ?>>
 					<form id="comment_form" action="/pub/pub.post.php" method="post">
 						<div class=title>发表评论</div>
 						<div id=commenter_box><input type="text" id="c_n_n" name="post[nick_name]">请输入昵称</div>
