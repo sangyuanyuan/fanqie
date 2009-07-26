@@ -60,7 +60,7 @@
 		<tr class="tr3" id="<?php echo $records[$i-1]->id;?>">
 			<td width="100">对话者工号</td>
 			<td width="695" align="left"><input type="text" size="50" name="leader_id<?php echo $i;?>" class="required" value="<?php echo $records[$i-1]->leader_id;?>"><?php if($records[$i-1]->photo_src!=''){?><a href="<?php echo $records[$i-1]->photo_src;?>" target="_blank" title="点击查看大图"><img src="<?php echo $records[$i-1]->photo_src;?>" width="50" height="50" border="0"></a><?php }?><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="learder_image<?php echo $i;?>" id="learder_image<?php echo $i;?>" type="file">
-				<span style="cursor:pointer; color:#0033CC; text-decoration:underline" class="check_user<?php if($records[$i-1]->photo_src=='')echo '2';?>">检查对话者工号</span>
+				<span style="cursor:pointer; color:#0033CC; text-decoration:underline" class="check_user<?php if($records[$i-1]->photo_src!='')echo '2';?>">检查对话者工号</span>
 				<input type="hidden" name="dialog_leader_id<?php echo $i?>" value="<?php echo $records[$i-1]->id;?>">
 				<span style="cursor:pointer; color:#0033CC; text-decoration:underline" class="del_leader" name="<?php echo $records[$i-1]->id;?>">删除</span>
 			</td>
@@ -123,13 +123,13 @@
 	});
 	
 	$(".check_user1").click(function(){
-		$.post("dialog.post.php",{'type':'check_user','id':$(this).prev().prev().prev().prev().prev().attr('value')},function(data){
+		$.post("dialog.post.php",{'type':'check_user','id':$(this).prev().prev().prev().prev().attr('value')},function(data){
 			$("#show_masters").html(data);
 		})
 	});
 	
 	$(".check_user2").click(function(){
-		$.post("dialog.post.php",{'type':'check_user','id':$(this).prev().prev().prev().attr('value')},function(data){
+		$.post("dialog.post.php",{'type':'check_user','id':$(this).prev().prev().prev().prev().attr('value')},function(data){
 			$("#show_masters").html(data);
 		})
 	});

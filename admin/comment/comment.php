@@ -51,7 +51,7 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->nick_name;?></td>
-					<td><textarea cols="40" rows="3" class="comment"><?php echo $record[$i]->comment;?></textarea></td>
+					<td><?php echo $record[$i]->comment;?></td>
 					<td><?php echo $record[$i]->created_at;?></td>
 					<td><a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a><a class="edit"  style="color:#000000; text-decoration:none; margin-left:10px; cursor:pointer">编辑</a></td>
 				</tr>

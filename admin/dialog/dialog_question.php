@@ -1,11 +1,12 @@
 <?php
 	require_once('../../frame.php');
+	$id = $_REQUEST['id'];
 	$key1 = $_REQUEST['key1'];
 	$db = get_db();
 	if($key1!=''){
-		$sql = 'SELECT t1.*,t2.title FROM  smg_dialog_question t1,smg_dialog t2 where t1.dialog_id = t2.id and t1.content like "%'.trim($key1).'%"';
+		$sql = 'SELECT t1.*,t2.title FROM  smg_dialog_question t1,smg_dialog t2 where t1.dialog_id = t2.id and and t1.dialog_id='.$id.' t1.content like "%'.trim($key1).'%" order by create_time desc';
 	}else{
-		$sql = 'SELECT t1.*,t2.title FROM  smg_dialog_question t1,smg_dialog t2 where t1.dialog_id = t2.id';
+		$sql = 'SELECT t1.*,t2.title FROM  smg_dialog_question t1,smg_dialog t2 where t1.dialog_id = t2.id and t1.dialog_id='.$id.' order by create_time desc';
 	}
 	$records = $db->paginate($sql,18);
 	close_db();
@@ -36,13 +37,11 @@
 		</tr>
 		<?php for($i=0;$i<$count;$i++){?>
 		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
-			<td><textarea cols="25" rows="3" class="content"><?php echo $records[$i]->content;?></textarea></td>
+			<td><?php echo $records[$i]->content;?></td>
 			<td><?php echo $records[$i]->writer;?></td>
 			<td><?php echo $records[$i]->title;?></td>
 			<td><?php echo substr($records[$i]->create_time, 0, 10);$records[$i]->create_time;?></td>
-			<td><a class="edit" value="<?php echo $records[$i]->id;?>" style="color:#000000; text-decoration:none; cursor:pointer">编辑</a>
-				<span style="color:#FF0000; cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
-			</td>
+			<td><span style="color:#FF0000; cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span></td>
 		</tr>
 		<? }?>
 	</table>
@@ -58,13 +57,6 @@
 </html>
 
 <script>
-	$(".edit").click(function(){
-		if(!window.confirm("编辑内容")){return false;}
-		$.post("dialog.post.php",{'id':$(this).attr('value'),'content':$(".content").attr('value'),'type':'edit_content','db_table':'smg_dialog_question'},function(data){
-			if(""==data){window.location.reload();}
-		});	
-	});
-	
 	$("#dialog_search").click(function(){
 				window.location.href="?key1="+$("#search_text").attr('value');
 	});

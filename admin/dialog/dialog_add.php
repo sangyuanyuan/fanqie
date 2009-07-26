@@ -1,7 +1,12 @@
 <?php
 	require_once('../../frame.php');
 	$id = $_REQUEST['id'];
-	$title = $_REQUEST['title'];
+	if($id!=''){
+		$dialog = new table_class('smg_dialog_collection');
+		$dialog->find($id);
+		$title = $dialog->title;
+		$content = $dialog->content;
+	}
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -24,7 +29,7 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">标　题</td>
-			<td width="695" align="left"><?php if($title!=''){show_fckeditor('title','Title',true,"80",$title);}else{show_fckeditor('title','Title',true,"80");}?></td>
+			<td width="695" align="left"><?php if($id!=''){show_fckeditor('title','Title',true,"80",$title);}else{show_fckeditor('title','Title',true,"80");}?></td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">开始时间</td>
@@ -61,7 +66,7 @@
 			</td>
 		</tr>
 		<tr class="tr3">
-			<td>内　容</td><td align="left"><?php show_fckeditor('content','Admin',true,"250");?></td>
+			<td>内　容</td><td align="left"><?php if($id!=''){show_fckeditor('content','Admin',true,"250",$content);}else{show_fckeditor('content','Admin',true,"250");}?></td>
 		</tr>
 
 		<tr bclass="tr3">
