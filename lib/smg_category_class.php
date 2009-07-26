@@ -32,10 +32,10 @@ class smg_category_class
 				if(empty($type)){
 					$items = $table->find('all',array('conditions' => 'dept_id='.$dept_id,'order' => 'platform ,priority'));
 				}else{
-					$items = $table->find('all',array('conditions' => "category_type = '" .$type ."' and dept_id=".$dept_id,'order' => 'platform ,priority'));
+					$items = $table->find('all',array('conditions' => "category_type = '" .$type ."' and dept_id=".$dept_id));
 				}
 			}else{
-				$items = $table->find('all',array('conditions' => "name = '" .$name ."' and dept_id=".$dept_id,'order' => 'platform ,priority'));
+				$items = $table->find('all',array('conditions' => "name = '" .$name ."' and dept_id=".$dept_id));
 			}
 			
 			if($items){

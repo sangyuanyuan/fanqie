@@ -53,7 +53,7 @@ $(function(){
 	
 	tb_init('.comment_href');
 	scroll_buttom();
-	setInterval('refresh_data()',60000);
+	setInterval('refresh_data()',10000);
 });
 
 function refresh_data(){
