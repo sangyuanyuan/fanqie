@@ -57,7 +57,7 @@ $(function(){
 			$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id});
 		});
 	});
-	
+	$('.comment_href').unbind();
 	tb_init('.comment_href');
 	scroll_buttom();
 	setInterval('refresh_data()',10000);
