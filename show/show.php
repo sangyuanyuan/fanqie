@@ -174,7 +174,7 @@
 					</div>
 				<?php }?>
 				<div id=paginate><?php paginate();?></div>
-				<div id=comment_box>
+				<div id=comment_box <?php if($image->commentable!="on"){?>style="display:none;"<?php } ?>>
 					<form id="comment_form" action="/pub/pub.post.php" method="post">
 						<div class=title>现在有<span style="color:#FF5800"><?php echo $count2;?></span>人发表评论</div>
 						<div id=commenter_box><input type="text" style="width:330px;" id="c_n_n" name="post[nick_name]"></div>

@@ -149,8 +149,8 @@
 				</div>
 			<?php }?>
 			<div id=paginate><?php paginate();?></div>
-			<div class=f_title><div id=f>发表评论</div></div>
-			<div id=comment_box>
+			<div class=f_title <?php if($news->is_commentable!=1){?>style="display:none;"<?php } ?>><div id=f>发表评论</div></div>
+			<div id=comment_box <?php if($news->is_commentable!=1){?>style="display:none;"<?php } ?>>
 				<form id="comment_form" action="/pub/pub.post.php" method="post">
 					<div class=c_title>现在有<span style="color:#FF5800"><?php echo $count2;?></span>人发表评论</div>
 					<div id=commenter_box><input type="text" style="width:340px;" id="c_n_n" name="post[nick_name]"></div>
