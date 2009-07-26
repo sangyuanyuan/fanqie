@@ -171,7 +171,7 @@ function smg_category_class(){
 		if (items.length <= 0) {
 			return;
 		}
-		for(i=items.length-1;i>=0; i--){
+		for(i=0;i<items.length; i++){
 			str += '<option value=' + items[i].id;
 			if(items[i].id == id ){
 				str += ' selected="selected"';
