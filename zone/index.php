@@ -65,7 +65,7 @@
 			<div id=t_l_t>
 				<div id=t_l_title>HOT讨论区</div>
 				<div id=left>
-					<div id=pic><a target="_blank" href="<?php echo $tlqimg[0]->url; ?>"><img border=0 width=230 height=122 src="<?php echo $tlqimg[0]->src; ?>"></a></div>
+					<div id=pic><a target="_blank" href="<?php echo $tlqimg[0]->url; ?>"><img border=0 width=190 height=122 src="<?php echo $tlqimg[0]->src; ?>"></a></div>
 					<div id=title>
 						<a target="_blank" href="<?php echo $tlqimg[0]->url; ?>"><?php echo delhtml($tlqimg[0]->title);?></a>
 					</div>
@@ -91,14 +91,14 @@
 			<div class=t_l_b>
 				<div class=t_l_b_t><div class="title">BBS</div><div class="title_right">【上班这点事】</div></div>
 				<div class=t_l_b_l><?php for($i=0;$i< count($sbzds);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->short_title); ?></a></div><?php }?> </div>
-				<div class=t_l_b_r><?php for($i=0;$i< count($sbzdsimg);$i++){ ?><div class=content style="margin-top:10px;"><a target="_blank" href="<?php echo $sbzdsimg[$i]->url;?>"><img border=0 width=113 height=81 src="<?php echo $sbzdsimg[$i]->src; ?>"><div style="width:113px; height:18px; margin-top:5px; text-decoration:none; color:#0000FF; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($sbzdsimg[$i]->title);?></div></a></div><?php } ?></div>
+				<div class=t_l_b_r><?php for($i=0;$i< count($sbzdsimg);$i++){ ?><div class=content style="margin-top:10px;"><a target="_blank" href="<?php echo $sbzdsimg[$i]->url;?>"><div class=t_l_b_pic><img border=0 width=111 height=79 src="<?php echo $sbzdsimg[$i]->src; ?>"></div><div style="width:113px; height:18px; margin-top:5px; text-decoration:none; color:#0000FF; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($sbzdsimg[$i]->title);?></div></a></div><?php } ?></div>
 			</div>
 			<div class=t_l_b>
 				<div class=t_l_b_t><div class="title">BBS</div><div class="title_right">【生活大杂烩】</div></div>
 				<div class=t_l_b_l1>
 					<?php for($i=0;$i< count($shdzhimg);$i++){ ?>
 						<div class=content style="margin-top:10px;">
-							<a target="_blank" href="<?php echo $shdzhimg[$i]->url;?>"><img border=0 width=113 height=81 src="<?php echo $shdzhimg[$i]->src; ?>"><div style="width:113px; height:18px; margin-top:5px; text-decoration:none; color:#0000FF; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($shdzhimg[$i]->title);?></div></a>	
+							<a target="_blank" href="<?php echo $shdzhimg[$i]->url;?>"><div class="t_l_b_pic"><img border=0 width=111 height=79 src="<?php echo $shdzhimg[$i]->src; ?>"></div><div style="width:113px; height:18px; margin-top:5px; text-decoration:none; color:#0000FF; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($shdzhimg[$i]->title);?></div></a>	
 						</div>
 					<?php } ?>
 				</div>
@@ -152,7 +152,7 @@
 				<form method="post" action="/pub/pub.post.php">
 					<div id="subcomment">
 						<input type="text" id="commenter" name="post[nick_name]">
-						<textarea name="post[comment]"></textarea>
+						<textarea id="comment" name="post[comment]"></textarea>
 						<input type="hidden" id="resource_type" name="post[resource_type]" value="zone">
 						<input type="hidden" name="type" value="comment">
 						<button id="hf" type="submit">回复</button>
@@ -237,9 +237,15 @@
 $(document).ready(function(){
 	$("#hf").click(function(){
 		var length=$("#commenter").attr("value").length;
+		var comment=$("#comment").attr("value");
 		if(length>100)
 		{
 			alert('评论名太长！');
+			return false;
+		}
+		if(comment.trim()=="")
+		{
+			alert('评论内容不能为空！');
 			return false;
 		}
 	})
