@@ -36,11 +36,11 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">上传图片</td>
-			<td width="695" align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" class="required"></td>
+			<td width="695" align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" class="required">(png,jpg,gif)</td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">上传视频</td>
-			<td width="695" align="left"><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file">(请上传视频，并且不要大于500M)</td>
+			<td width="695" align="left"><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file">(flv,wmv,wav,mp3,mp4,avi,rm)</td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">对话者工号</td>

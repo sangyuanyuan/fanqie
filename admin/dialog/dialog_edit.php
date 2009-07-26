@@ -40,11 +40,11 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">上传图片</td>
-			<td width="695" align="left"><?php if($dialog->photo_url!=''){?><a href="<?php echo $dialog->photo_url;?>" target="_blank" title="点击查看大图"><img src="<?php echo $dialog->photo_url;?>" width="68" height="50" border="0" style="margin-right:10px;"></a><?php }?><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file"></td>
+			<td width="695" align="left"><?php if($dialog->photo_url!=''){?><a href="<?php echo $dialog->photo_url;?>" target="_blank" title="点击查看大图"><img src="<?php echo $dialog->photo_url;?>" width="68" height="50" border="0" style="margin-right:10px;"></a><?php }?><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file">(png,jpg,gif)</td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">上传视频</td>
-			<td width="695" align="left"><?php if($dialog->video_url!=''){?><a href="<?php echo $dialog->video_url;?>" target="_blank">点击查看视频</a><?php }?><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"> <input name="video" id="video" type="file">(请上传视频，并且不要大于500M)</td>
+			<td width="695" align="left"><?php if($dialog->video_url!=''){?><a href="<?php echo $dialog->video_url;?>" target="_blank">点击查看视频</a><?php }?><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"> <input name="video" id="video" type="file">(flv,wmv,wav,mp3,mp4,avi,rm)</td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">对话者工号</td>
