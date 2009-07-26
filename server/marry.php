@@ -322,6 +322,10 @@
 			}else if($("#comment_content").val()==""){
 				alert('请输入评论内容');
 			}else{
+				if($("#pulisher").val().length>10){
+					alert("昵称长度太长！");
+					return false;
+				}
 				$.post("marry.post.php",{'boy_id':man,'girl_id':woman,'nick_name':$("#pulisher").val(),'comment':$("#comment_content").val(),'type':'marry'},function(data){
 					if(data==''){
 						window.location.reload();
@@ -336,6 +340,10 @@
 		$("#xmpd").click(function(){
 			var name1 = $(this).prev().prev().attr('value');
 			var name2 = $(this).prev().attr('value');
+			if(name1.length>10||name.length>10){
+				alert("名字太长");
+				return false;
+			}
 			$.post("marry.post.php",{'boy_name':name1,'girl_name':name2,'type':'name'},function(data){
 				$("#boy_name").html(name1);
 				$("#girl_name").html(name2);
