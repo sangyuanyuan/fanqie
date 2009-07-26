@@ -92,8 +92,7 @@
 				<div class="t_l_b_t"><div class="title">BBS</div><div class="title_right">【上班这点事】</div></div>
 				<div class=t_l_b_l>
 					<?php for($i=0;$i< count($sbzds);$i++){ ?>
-						<div class=content><span style="color:#cccccc;">·</span>
-							<a target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->short_title); ?></a>
+						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->short_title); ?></a>
 						</div>
 					<?php }?> 
 				</div>

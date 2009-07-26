@@ -22,7 +22,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #t_l_t #right .content{width:130px; height:17px; line-height:18px; overflow:hidden; float:right; display:inline;}
 #t_l_t #right .content a{font-size:13px; text-decoration:none;}
 .t_l_b{width:397px; height:274px; margin-top:10px; background:url('/images/zone/index_t_l_b.jpg') no-repeat; float:left; display:inline;}
-.t_l_b .t_l_b_t{width:397px; height:16px; float:left; display:inline;}
+.t_l_b .t_l_b_t{width:397px; height:16px; margin-bottom:7px; float:left; display:inline;}
 .t_l_b .t_l_b_t .title{width:60px; height:16px; margin-top:14px; margin-left:40px; text-align:center; color:#ffffff; line-height:16px; float:left; display:inline;}
 .t_l_b .t_l_b_t .title_right{height:20px; margin-top:12px; margin-left:15px; line-height:18px; color:#FF0000; font-size:16px; font-weight:bold; float:left; display:inline;}
 .t_l_b .t_l_b_l{width:260px; margin-top:15px; margin-left:10px; float:left; display:inline;}

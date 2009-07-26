@@ -74,4 +74,5 @@ function toggle_button(){
 		$('#connect_msg').html('匹配成功');
 		$('#find_chater').html('断开');
 	}
+	$('#chat_content_box').scrollTop(10000);
 }

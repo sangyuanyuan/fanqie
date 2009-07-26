@@ -13,13 +13,13 @@
 	$vote->max_vote_count = intval($vote->max_vote_count) > 0 ? $vote->max_vote_count : 1;
 	if($vote === false){
 		alert('非法操作!');
-		redirect('/');
+		redirect($_SERVER['HTTP_REFERER']);
 		exit;
 	}
 	
 	if($vote->started_at > now() || $vote->ended_at < now()){
 		alert('该投票已过期或还未开始!');
-		redirect('/');
+		redirect($_SERVER['HTTP_REFERER']);
 		exit;
 	}
 	
