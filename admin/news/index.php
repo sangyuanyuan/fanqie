@@ -124,7 +124,7 @@
 			//--------------------
 		?>
 		<tr class="tr3">
-			<td colspan=6><button id="select_all">全选</button> <button id="button_delete">删除/退回</button> <?php paginate();?>　<button id=clear_priority>清空优先级</button>　<button id=edit_priority>编辑优先级</button></td>
+			<td colspan=6><button id="select_all">全选</button><button id="button_delete">删除/退回</button><?php paginate();?><button id=clear_priority>清空优先级</button><button id=edit_priority>编辑优先级</button></td>
 		</tr>
 		<input type="hidden" id="db_talbe" value="smg_news">
 

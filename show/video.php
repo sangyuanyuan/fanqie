@@ -27,10 +27,9 @@
 						$video->find($id);
 						$video->click_count = $video->click_count+1;
 						$video->save();
+						if($video->online_url!='')redirect($video->online_url);
 						if($video->video_url!=''){
 							show_video_player('537','414',$video->photo_url,$video->video_url,$autostart = "false");
-						}elseif($video->online_url!=''){
-							show_video_player('537','414',$video->photo_url,$video->online_url,$autostart = "false");
 						}else{
 					?>
 					<div class=error>对不起，你所访问的视频链接不存在，请与管理员联系！</div>
@@ -51,7 +50,6 @@
 				</div>
 			</div>
 			<div id=t_r>
-				<div id="up_pic"><a href="show_sub.php?type=video" ><img src="/images/show/video_up2.jpg" width="395" height="170" border=0></a></div>
 				<div id=ad>
 					<?php
 						$db = get_db();
@@ -83,6 +81,7 @@
 						picflash.write("focus_02");				
 					</script> 
 				</div>
+				<div id="up_pic"><a href="show_sub.php?type=video" ><img src="/images/show/video_up2.jpg" width="395" height="154" border=0></a></div>
 			</div>
 	  </div>
 	 	<div id=ibody_left>
@@ -178,16 +177,19 @@
 						if(count($keywords==0))$keywords = explode("，", $video->keywords);
 						$key_count = count($keywords);
 						$sql = 'select * from smg_video where id!='.$id;
-						$sql = $sql.' and keywords like "%'.$keywords[0].'%"';
-						for($i=1;$i<$key_count;$i++){
-							$sql = $sql.' or keywords like "%'.$keywords[$i].'%"';
+						if($key_count>0){
+							if($keywords[0]!=''){
+								$sql = $sql.' and keywords like "%'.$keywords[0].'%"';
+							}
+							for($i=1;$i<$key_count;$i++){
+								$sql = $sql.' or keywords like "%'.$keywords[$i].'%"';
+							}
 						}
-						
+						$sql = $sql." limit 12";
 						$records = $db->query($sql);
 						$count = count($records);
 					?>
 					<div class=title>相关视频</div>
-					<div class=more><a target="_blank" href="video_list.php">更多<?php echo $count;?>个视频>></a></div>
 			  		<?php 
 						for($i=0;$i<$count;$i++) {
 					?>
@@ -204,7 +206,8 @@
 					<?php
 						}
 						if($count<12){
-							$sql = 'select * from smg_video where id!='.$id.' order by rand() limit 12';
+							$count = 12-$count;
+							$sql = 'select * from smg_video where id!='.$id.' order by rand() limit '.$count;
 							$records = $db->query($sql);
 							$count = count($records);
 							for($i=0;$i<$count;$i++) {

@@ -13,35 +13,27 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-交流-匿名聊天</title>
 	<?php 
-	css_include_tag('zone/chat_room','top','bottom');
+	css_include_tag('zone_chat_room','top','bottom');
+	use_jquery();
+	js_include_tag('pubfun.js','jquery.cookie.js','chat_room');
 	?>
 </head>
 <body>
-	<? require_once('../inc/top.inc.html');
-		use_jquery();
-		js_include_tag('pubfun.js','jquery.cookie.js','chat_room');
-	?>
-	
-	<div id="ibody">
-		<div id="chat_room_top"></div>
-		<div id="chat_content_box">
-			
-		</div>
-		<div id="tool_box">
-			<div id="chat_connect_box">
-				<div id="connect_msg">&nbsp;</div>
-				<button id="find_chater">寻找陌生人</button>
+<? require_once('../inc/top.inc.html');	?>
+<div id="ibody">
+	<div id="t"></div>
+	<div id="chat_content_box"></div>
+	<div id="tool_box">
+			<div id="connect_msg">&nbsp;</div>
+			<div id="fck_box">
+					<?php show_fckeditor('fck_content','Title',false,95,'',945);?>
 			</div>
-			<div id="msg_box">
-				<div id="fck_box">
-					<?php show_fckeditor('fck_content','Title',false,95,'',500);?>
-				</div>
-				<div id="emotion"></div>
-				<button id="submit">发送</button>
-			</div>
-		</div>
+			<div id="emotion"></div>
+			<button id="submit">发送</button>　
+			<button id="find_chater" style="width:100px;">寻找陌生人</button>
 	</div>
-	<div id="ajax_result"></div>
-	<? require_once('../inc/bottom.inc.php');?>
+</div>
+<div id="ajax_result"></div>
+<? require_once('../inc/bottom.inc.php');?>
 </body>
 </html>
