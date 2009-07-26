@@ -49,7 +49,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #t_c_t #right .content a{color:#000000; text-decoration:none;}
 #t_c_m{width:393px; height:272px; margin-top:10px; margin-left:10px; background:url('/images/zone/index_t_c_m.jpg') no-repeat; float:left; display:inline;}
 #t_c_m #title1{width:35px; height:20px; margin-top:10px; margin-left:25px; background:#ffffff; line-height:20px; font-size:16px; font-weight:bold; float:left; display:inline;}
-#t_c_m #title2{width:300px; height:30px; margin-top:5px; margin-left:10px; line-height:20px; font-size:16px; color:#FF9900; font-weight:bold; float:left; display:inline;}
+#t_c_m #title2{width:300px; height:20px; margin-top:10px; margin-left:10px; line-height:20px; font-size:16px; color:#FF9900; font-weight:bold; float:left; display:inline;}
 #t_c_m #left{width:100px; margin-top:10px; margin-left:10px; line-height:15px; float:left; display:inline;}
 #t_c_m #left .content{width:100px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;}
 #t_c_m #left .content a{color:#000000; text-decoration:none;}
@@ -67,7 +67,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #t_r_t{width:183px; height:97px; margin-top:10px; border:1px solid #EBEBEB; float:right; display:inline;}
 #t_r_t #title{width:182px; height:30px; line-height:20px; color:#FF0000; font-weight:bold; float:left; display:inline;}
 #t_r_t #title img{margin-right:5px;}
-#t_r_t #content{width:160px; height:60px; margin-left:12px; color:#000000; line-height:15px; overflow:hidden; float:left; display:inline;}
+#t_r_t #content{width:160px; height:60px; margin-left:12px; color:#2B2B2B; line-height:20px; overflow:hidden; float:left; display:inline;}
 .t_r_m{width:185px; height:276px; margin-top:9px; background:url('/images/zone/index_t_r_m.jpg') no-repeat; float:right; display:inline;}
 .t_r_m_top{width:160px; height:30px; margin-left:10px; border-bottom:1px dotted #000000; float:left; display:inline;}
 .t_r_m_top img{margin-top:10px;}

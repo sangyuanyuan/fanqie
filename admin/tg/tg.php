@@ -50,7 +50,7 @@ $rows=$db->paginate($strsql,20);
 			<td><? if($rows[$i]->isadopt=="1"){?><span class="tgcan" style="color:#FF0000;cursor:pointer">撤消</span><input type="hidden" value="<?php echo $rows[$i]->id;?>"><? }?>
 				<? if($rows[$i]->isadopt=="0"){?><span class="tgpub" style="color:#0000FF;cursor:pointer">发布</span><input type="hidden" value="<?php echo $rows[$i]->id;?>"><? }?>
 				 <a href="tgupdate.php?id=<? echo $rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-				 <span style="cursor:pointer" calss="tgdel">删除</span><input type="hidden" value="<?php <? echo $rows[$i]->id;?> ?>">
+				 <span style="cursor:pointer" calss="tgdel">删除</span><input type="hidden" value="<?php echo $rows[$i]->id;?> ?>">
 			</td>
 		</tr>
 		<?  }?>
