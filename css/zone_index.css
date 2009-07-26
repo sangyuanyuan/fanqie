@@ -62,7 +62,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #t_c_b .comment .bottom{width:355px; height:20px; margin-left:7px; line-height:20px; color:#000000; overflow:hidden; float:left; display:inline;}
 #t_c_b #subcomment{width:393px; margin-top:10px; float:left; display:inline;}
 #t_c_b #subcomment input{margin-left:15px; border:1px solid #C2C7CB; float:left; display:inline;}
-#t_c_b #subcomment textarea{width:269px; height:52px; margin-top:5px; margin-left:10px; padding-left:10px; overflow:hidden; border:none; background:url('/images/zone/index_textarea.gif') no-repeat; float:left; display:inline;}
+#t_c_b #subcomment textarea{width:270px; height:52px; margin-top:5px; margin-left:15px; border:1px solid #C5C8CD; float:left; display:inline;}
 #t_c_b #subcomment button{width:58px; height:45px; margin-top:4px; margin-left:10px; margin-right:10px; border:0px; line-height:24px; color:#ffffff; font-weight:bold; font-size:19px; background:url('/images/zone/index_button.jpg') no-repeat; float:left; display:inline;}
 #t_r_t{width:183px; height:97px; margin-top:10px; border:1px solid #EBEBEB; float:right; display:inline;}
 #t_r_t #title{width:182px; height:30px; line-height:20px; color:#FF0000; font-weight:bold; float:left; display:inline;}
