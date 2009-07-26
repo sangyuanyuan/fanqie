@@ -131,7 +131,7 @@
 				<div id=comment_box>
 					<form id="comment_form" action="/pub/pub.post.php" method="post">
 						<div class=title>发表评论</div>
-						<div id=commenter_box><input type="text" name="post[nick_name]">请输入昵称</div>
+						<div id=commenter_box><input type="text" id="c_n_n" name="post[nick_name]">请输入昵称</div>
 						<input type="hidden" name="post[resource_id]" value="<?php echo $id;?>">
 						<input type="hidden" name="post[resource_type]" value="video">
 						<input type="hidden" name="type" value="comment">
@@ -244,6 +244,10 @@
 		$("#submit_comment").click(function(){
 			var oEditor = FCKeditorAPI.GetInstance('post[comment]') ;
 			var comment = oEditor.GetHTML();
+			if($("#c_n_n").val().length>80){
+				alert("昵称长度太长！");
+				return false;
+			}
 			if(comment==""){
 				alert("请输入评论内容！");
 				return false;

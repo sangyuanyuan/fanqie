@@ -153,7 +153,7 @@
 			<div id=comment_box>
 				<form id="comment_form" action="/pub/pub.post.php" method="post">
 					<div class=c_title>现在有<span style="color:#FF5800"><?php echo $count2;?></span>人发表评论</div>
-					<div id=commenter_box><input type="text" style="width:340px;" name="post[nick_name]"></div>
+					<div id=commenter_box><input type="text" style="width:340px;" id="c_n_n" name="post[nick_name]"></div>
 					<input type="hidden" name="post[resource_id]" value="<?php echo $id;?>">
 					<input type="hidden" name="post[resource_type]" value="news">
 					<input type="hidden" name="type" value="comment">
@@ -193,6 +193,10 @@
 		$("#submit_comment").click(function(){
 			var oEditor = FCKeditorAPI.GetInstance('post[comment]') ;
 			var comment = oEditor.GetHTML();
+			if($("#c_n_n").val().length>80){
+				alert("昵称长度太长！");
+				return false;
+			}
 			if(comment==""){
 				alert("请输入评论内容！");
 				return false;

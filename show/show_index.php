@@ -93,7 +93,7 @@
 				<div class=title><div class=left>用户排行榜</div></div>
 				<?php
 					$db = get_db();
-					$sql = 'SELECT t1.publisher,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t2.platform="show" group by t1.publisher limit 5';
+					$sql = 'SELECT t1.publisher,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.publisher!="admin" and t2.platform="show" group by t1.publisher limit 5';
 					$records = $db->query($sql);
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
@@ -101,7 +101,7 @@
 					<div class=content <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 						<div class=left><? echo $i+1;?></div>
 						<div class=right>
-							<div class=top><a href="list.php?publisher=<?php echo $records[$i]->publisher;?>&type=image" target="_blank"><?php echo $records[$i]->publisher; ?></a></div>
+							<div class=top><a href="list.php?publisher=<?php echo urlencode($records[$i]->publisher);?>&type=image" target="_blank"><?php echo $records[$i]->publisher; ?></a></div>
 							<div class=bottom>发布了<?php echo $records[$i]->num; ?>张图片！</div>
 						</div>
 					</div>
