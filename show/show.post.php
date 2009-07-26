@@ -20,7 +20,7 @@
 		}
 		$image->category_id=category_id_by_name('我要上传','picture');
 		$image->commentable = 'on';
-		$image->priority = 1;
+		$image->priority = 100;
 		$image->is_recommend = 1;
 		$image->created_at = date("Y-m-d H:i:s");
 		$image->save();
