@@ -43,7 +43,7 @@
 			$('#cq_comment').val(content);
 			$.post('/pub/comment.post.php',$('#form_comment_q').serializeArray(),function(data){
 				if(data > 0){
-					alert('发表评论成功!');
+					//alert('发表评论成功!');
 				}else{
 					alert('发表评论失败!');
 				}				
