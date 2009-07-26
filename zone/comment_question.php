@@ -47,7 +47,8 @@
 				}else{
 					alert('发表评论失败!');
 				}				
-				load_comments();
+				tb_remove();
+				refresh_data();				
 			});
 			return false;
 			
@@ -57,12 +58,6 @@
 			tb_remove();
 			return false;
 		});
-		
-		load_comments();
-		
-		function load_comments(){
-			$('#q_comment_list').load('cq_list.php?question_id=<?php echo $question->id;?>');
-		};
 				
 	});
 	
