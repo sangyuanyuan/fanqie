@@ -142,8 +142,8 @@
 				<?php for($i=0;$i<count($comment);$i++){ ?>
 					<div class=comment>
 						<div class="top">
-							<div style="width:250px; height:20px; color:#378EC4; overflow:hidden; float:left; display:inline;"><?php echo $comment[$i]->nick_name;?></div>
-							<div style="width:100px; margin-left:5px; color:#D2D4C6; float:left; display:inline;"><?php echo substr($comment[$i]->created_at,0,10); ?></div>
+							<div style="width:290px; height:20px; color:#378EC4; overflow:hidden; float:left; display:inline;"><?php echo $comment[$i]->nick_name;?></div>
+							<div style="width:60px; margin-left:5px; color:#D2D4C6; float:left; display:inline;"><?php echo substr($comment[$i]->created_at,0,10); ?></div>
 						</div>
 						<div class="bottom">
 							<?php echo delhtml($comment[$i]->comment); ?>
@@ -223,6 +223,7 @@
 			<?php for($i=0;$i<count($bbsph);$i++){ ?>
 			<div class=content><a target="_blank" href="/bbs/space.php?uid=<?php echo $bbsph[$i]->uid?>"><?php echo $bbsph[$i]->author; ?></a></div>
 			<?php } ?>
+			
 		</div>
 	</div>
 </div>
