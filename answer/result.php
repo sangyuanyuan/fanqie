@@ -1,8 +1,8 @@
 <?php
     require_once('../frame.php');
 	$id = $_REQUEST['id'];
-	$record = new table_class('smg_question_record');
-	$record->find($id);
+	$r_record = new table_class('smg_question_record');
+	$r_record->find($id);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -10,7 +10,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG</title>
+	<title>SMG-答题-结果页面</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','answer','answer_right');
 	?>
@@ -38,14 +38,14 @@
 					<div class=t_word></>请选择<a href='answerlist.php'>继续答题</a>,或<a href='/'>返回首页</a></div>
 				</div>
 				<div id=r_bottom>
-					<div class=b_word>本次答题总数：<font color="#000000"><?php echo $record->question_count;?></font></div>
-					<div class=b_word>本次答题得分：<font color="#000000"><?php echo $record->point;?></font></div>
+					<div class=b_word>本次答题总数：<font color="#000000"><?php echo $r_record->question_count;?></font></div>
+					<div class=b_word>本次答题得分：<font color="#000000"><?php echo $r_record->point;?></font></div>
 					<div class=b_word>
 						答题正确率：<font color="#FF9900">
 						<?php
-							$tot = $record->point*10;
-							if($record->question_count!=0){
-								$tot = $tot/$record->question_count;
+							$tot = $r_record->point*10;
+							if($r_record->question_count!=0){
+								$tot = $tot/$r_record->question_count;
 								$tot = substr($tot, 0, 2).'%';
 							}else{
 								$tot = '0%';

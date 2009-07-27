@@ -43,7 +43,7 @@
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　姓名</div>
-		<div class=t_r><input type="text" name="show[publisher]" value="<?php echo $_COOKIE['smg_username'];?>" class="required"></div>
+		<div class=t_r><input type="text" name="show[publisher]" value="<?php echo $_COOKIE['smg_user_nickname'];?>" class="required"></div>
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　标题</div>

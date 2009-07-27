@@ -6,6 +6,7 @@
 	$question_record->question_count = isset($_POST['count'])?$_POST['count']:0;
 	$question_record->point = isset($_POST['point'])?$_POST['point']:0;
 	$question_record->created_at = date("Y-m-d H:i:s");
+	$question_record->s_point = isset($_POST['point_value'])?$_POST['point_value']:10;
 	$question_record->save();
 	
 	redirect('result.php?id='.$question_record->id);
