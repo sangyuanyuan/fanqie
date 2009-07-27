@@ -97,7 +97,7 @@
 			<div id="gd">
 				<MARQUEE scrollAmount=1 scrollDelay=10 behavior=scroll width="100%" height="20" style="line-height:20px;">
 					<?php for($i=0;$i<count($gd);$i++){ ?>
-						<a style="color:#FF00FF; font-weight:bold; text-decoration:none;" target="_blank" href="/<?php echo $gd[$i]->platform;?>/news/news.php?id=<?php echo $gd[$i]->id;?>"><?php echo delhtml($gd[$i]->short_title);?></a>
+						<a style="color:#FF00FF; font-weight:bold; text-decoration:none;" target="_blank" href="/fqtg/fqtglist.php"><?php echo delhtml($gd[$i]->short_title);?></a>
 					<?php } ?>
 				</MARQUEE>
 			</div>
@@ -282,21 +282,76 @@
 	<div id=ibody_bottom>
 		<div id=b_l>
 			<div id=b_l_t>
-				<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="510" height="120" style="line-height:20px;">
-					<?php for($i=0;$i<count($man);$i++){?>
-						<div class=content>
+				<DIV id=Layer5>
+				      <DIV id=demo3 style="OVERFLOW: hidden; WIDTH: 100%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo4 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<? for($i=0;$i<count($man);$i++){?>
+				                <TD><div class=content>
 							<div class=pic><a target="_blank" href="/sever/marry.php"><img border=0 width=87 height=105 src="<?php echo $man[$i]->photo;?>"></a></div>
 							<div class=context>姓名：<?php echo $man[$i]->name;?><br>出生年月：<?php echo $man[$i]->birthday; ?><br>身高：<?php echo $man[$i]->height;?>米<br>学历：<?php echo $man[$i]->education;?><br>毕业院校：<?php echo $man[$i]->school;?></div>
-						</div>
-					<?php } ?>
-				</MARQUEE>	
+						</div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id=demo5 vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo5.innerHTML=demo4.innerHTML
+											function Marquee(){
+											if(demo5.offsetWidth-demo3.scrollLeft<=0)
+											demo3.scrollLeft-=demo4.offsetWidth
+											else{
+											demo3.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo3.onmouseover=function() {clearInterval(MyMar)}
+											demo3.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
+				</DIV>			
 			</div>
 			<div id=b_l_b>
-				<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="100%" height="100%" style="line-height:20px;">
-					<?php for($i=0;$i<count($woman);$i++){?>
-						<div class=content><div class=pic><a target="_blank" href="/sever/marry.php"><img border=0 width=87 height=105 src="<?php echo $woman[$i]->photo;?>"></a></div><div class=context>姓名：<?php echo $woman[$i]->name;?><br>出生年月：<?php echo $woman[$i]->birthday; ?><br>身高：<?php echo $woman[$i]->height;?>米<br>学历：<?php echo $woman[$i]->education;?><br>毕业院校：<?php echo $woman[$i]->school;?></div></div>
-					<?php } ?>
-				</MARQUEE>	
+				<DIV id=Layer5>
+				      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 100%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo7 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<? for($i=0;$i<count($woman);$i++){?>
+				                <TD><div class=content>
+							<div class=pic><a target="_blank" href="/sever/marry.php"><img border=0 width=87 height=105 src="<?php echo $woman[$i]->photo;?>"></a></div>
+							<div class=context>姓名：<?php echo $woman[$i]->name;?><br>出生年月：<?php echo $woman[$i]->birthday; ?><br>身高：<?php echo $woman[$i]->height;?>米<br>学历：<?php echo $woman[$i]->education;?><br>毕业院校：<?php echo $woman[$i]->school;?></div>
+						</div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id=demo8 vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo8.innerHTML=demo7.innerHTML
+											function Marquee(){
+											if(demo8.offsetWidth-demo6.scrollLeft<=0)
+											demo6.scrollLeft-=demo7.offsetWidth
+											else{
+											demo6.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo6.onmouseover=function() {clearInterval(MyMar)}
+											demo6.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
+				</DIV>	
 			</div>
 			<div id=b_l_b_r>
 				<a target="_blank" href="/server/apply.php"><img border=0 src="/images/server/wyzh.jpg"></a>
