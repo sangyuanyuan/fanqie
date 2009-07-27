@@ -139,7 +139,7 @@
 			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" >(请上传小于2M的图片，格式支持jpg、gif、png))<?php if($video_record[0]->photo_url!=''){?><a style="color:#0000FF" href="<?php echo $video_record[0]->photo_url;?>" target="_blank">点击查看图片</a><?php } ?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择视频</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file" >(请上传视频，并且不要大于500M)<?php if($video_record[0]->video_url!=''){?><a style="color:#0000FF" href="<?php echo $video_record[0]->video_url;?>" target="_blank">点击下载视频</a><?php } ?></td>
+			<td>选择视频</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file" >(请上传视频，并且不要大于500M)<?php if($video_record[0]->video_url!=''){?><a style="color:#0000FF"  href="<?php echo $video_record[0]->video_url;?>" target="_blank">点击下载视频</a><?php } ?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
 			<td>简短描述</td><td align="left"><textarea cols="80" rows="8" name="video[description]" id="description" class="required"><?php echo $video_record[0]->description;?></textarea></td>
@@ -150,7 +150,8 @@
 		</tr>	
 	</table>
 	<input type="hidden" name="id" value="<?php echo $id;?>">
-	<input type="hidden" name="type" value="edit">
+	<input type="hidden"id="v_u" value="<?php if($video_record[0]->video_url!=''){echo 1;}?>">
+	<input type="hidden" name="type" value="edit">id="v_u"
 	<input type="hidden" name="url" id=url value="<?php echo $url;?>">
 	<?php if($role=='admin'){
 	?>
@@ -192,9 +193,11 @@
 				}
 			}
 		}else{
-			if($("#online").val()==''){
-				alert('请上传一个视频或者输入在线视频地址！');
-				return false;
+			if($("#v_u").val()==""){
+				if($("#online").val()==''){
+					alert('请上传一个视频或者输入在线视频地址！');
+					return false;
+				}
 			}
 		}
 		
