@@ -177,7 +177,7 @@ function paginate($url="",$ajax_dom=null,$page_var="page")
 		unset($params[$pageindextoken]);
 		$url = $_SERVER['PHP_SELF'] ."?";
 		foreach ($params as $k => $v) {
-			$url .= "&" .$k . "=" . $v;
+			$url .= "&" .$k . "=" . urlencode($v);
 		}
 	}
 	
@@ -413,6 +413,8 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 			array_push($c, "tags like '%$v%'");
 			array_push($c, "short_title like '%$v%'");
 			array_push($c, "content like '%$v%'");
+		}else if($table_name == 'smg_video'){
+			array_push($c, "tags like '%$v%'");
 		}
 	}
 	$c = implode(' OR ' ,$c);

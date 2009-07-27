@@ -104,7 +104,7 @@
 						</a>
 					</td>
 					<td><?php if($record[$i]->is_dept_adopt=="1"){?>
-						<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>　
+						<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>
 						<?php }?>
 						<?php if($record[$i]->is_dept_adopt=="0"){?>
 						<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span>
