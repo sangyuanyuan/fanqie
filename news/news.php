@@ -141,7 +141,7 @@
 						</div>
 					</div>
 				<?php }?>
-				<div class=page><?php paginate('news.php?id='.$id);?></div>
+				<div class=page><?php paginate('');?></div>
 			</div>
 			<?php }?>
 			<form method="post" action="/pub/pub.post.php">
