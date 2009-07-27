@@ -12,8 +12,8 @@
 		use_jquery();
 		$db=get_db();
 		$pics = $db->query('SELECT * FROM smg_images s inner join smg_category c on s.category_id=c.id and c.name="番茄团购" and c.category_type="picture" order by s.priority asc, created_at desc limit 7');
-		$tg=$db->query('select id,photourl,title from smg_tg order by priority asc,createtime desc');
-		$gd=$db->query('SELECT s.* FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="番茄团购" and c.category_type="news" order by s.priority asc,s.last_edited_at desc');
+		$tg=$db->query('select id,photourl,title from smg_tg order by priority asc,createtime desc limit 7');
+		$gd=$db->query('SELECT s.* FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="番茄团购" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 5');
 		$shop=$db->query('select * from smg_shopdp order by createtime desc limit 3');
 		$shopph=$db->query('select b.name,b.id from smg_shopdp b inner join (select count(*) as num,s.shopdpid from smg_shop_signup ss inner join smg_shop s on ss.tg_id=s.id group by s.shopdpid order by num desc) as a on b.id=a.shopdpid');
 		if(count($shopph)<10)

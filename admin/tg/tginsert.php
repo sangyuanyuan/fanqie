@@ -47,7 +47,7 @@ include('../../frame.php');
 			<td>内　容</td><td align="left">　<?php show_fckeditor('content','Admin',true,"280","","98%");?></td>
 		</tr>
 		<tr bgcolor="#f9f9f9" height="30px;">
-			<td colspan="2" width="795" align="center"><button type="button" onClick="tgadd()">发布团购</button></td>
+			<td colspan="2" width="795" align="center"><button type="button" id="tg">发布团购</button></td>
 		</tr>	
 	</table>
 			<input type="hidden" name="uptype" value="tginsert">
