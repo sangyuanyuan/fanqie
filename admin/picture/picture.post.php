@@ -5,8 +5,7 @@
 		$smg_image->find($_POST['id']);
 	}
 	//var_dump($_POST);
-	//如果在编辑的情况下没有上传图片则不进入文件上传的过程
-	if($_POST['type']!=="edit"||$_FILES['image']['name']!=null){
+	if($_FILES['image']['name']!=null){
 		$upload = new upload_file_class();
 		$upload->save_dir = "/upload/images/";
 		$img = $upload->handle('image','filter_pic');
@@ -30,7 +29,11 @@
 	$smg_image->publisher = $_COOKIE['smg_user_nickname'];
 	$smg_image->update_attributes($_POST['picture']);
 	if($_POST['special_type']==""){
-		redirect($_POST['url'] .'&category=' .$smg_image->category_id);
+		if($smg_image->dept_category_id!=''){
+			redirect($_POST['url'] .'?category=' .$smg_image->dept_category_id);
+		}else{
+			redirect($_POST['url'] .'?category=' .$smg_image->category_id);
+		}
 	}elseif($_POST['special_type']=="总裁奖"){
 		redirect('/admin/zongcai/zongcai_image.php');
 	}

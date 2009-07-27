@@ -8,9 +8,9 @@
 		$category = new table_class("smg_category");
 		$url = 'picture_list.php';
 		if($type==""){	
-			$category_menu = $category->find("all",array('conditions' => "category_type='picture'","order" => "priority"));
+			$category_menu = $category->find("all",array('conditions' => "category_type='picture'","order" => "platform,priority"));
 		}else{
-			$category_menu = $category->find("all",array('conditions' => "category_type='picture' and name='".$type."'","order" => "priority"));	
+			$category_menu = $category->find("all",array('conditions' => "category_type='picture' and name='".$type."'","order" => "platform,priority"));	
 		}
 	}else{
 		$category = new table_class("smg_category_dept");
@@ -21,7 +21,7 @@
 			$category_menu = $category->find("all",array('conditions' => "category_type='picture' and name='".$type."' and dept_id=".$dept_id,"order" => "priority"));	
 		}
 		$category = new table_class("smg_category");
-		$category_menu2 = $category->find("all",array('conditions' => "category_type='picture'","order" => "priority"));
+		$category_menu2 = $category->find("all",array('conditions' => "category_type='picture'","order" => "platform,priority"));
 	}
 	
 	$dept = new table_class("smg_dept");
@@ -37,7 +37,6 @@
 	<?php 
 		css_include_tag('admin');
 		use_jquery();
-		validate_form("picture_add");
 	?>
 </head>
 <body style="background:#E1F0F7">
@@ -112,10 +111,10 @@
 			<td>图片链接</td><td align="left"><input type="text" size="50" name=picture[url]></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" class="required">(请上传小于2M的图片，格式支持jpg、gif、png) </td>
+			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file">(请上传小于2M的图片，格式支持jpg、gif、png) </td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
-			<td>简短描述</td><td align="left"><textarea cols="80" rows="8" name="picture[description]" class="required"></textarea></td>
+			<td>简短描述</td><td align="left"><textarea cols="76" rows="8" name="picture[description]" id="description"></textarea></td>
 		</tr>
 
 		<tr bgcolor="#f9f9f9" height="30px;">
@@ -137,10 +136,6 @@
 </html>
 
 <script>
-	var url = $("#url").attr('value');
-	var new_url = url+"?category="+$("#url_s").attr('value');
-	$("#url").attr('value',new_url);
-	
 	$("#submit").click(function(){
 		var oEditor = FCKeditorAPI.GetInstance('title') ;
 		var title = oEditor.GetHTML();
@@ -156,6 +151,10 @@
 				return false;
 			}
 		}
+		if($("#description").val()==''){
+			alert('请输入简短描述！');
+			return false;
+		}
 	}); 
 	
 	$("#is_recommend").click(function(){
@@ -168,8 +167,4 @@
 		}
 	});	
 	
-	$("#url_s").change(function(){
-		new_url = url+"?category="+$(this).attr('value');
-		$("#url").attr('value',new_url);
-	});
 </script>
