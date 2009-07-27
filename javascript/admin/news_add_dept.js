@@ -114,7 +114,13 @@ $(function(){
 		toggle_is_recommend();
 	});
 		
-	category_index.display_select('news_category_index',$('#td_category_index'),-1,'');
+	category_index.display_select('news_category_index',$('#td_category_index'),-1,'',function(id,max_len){
+		if(id != -1){
+			$('#max_len').html('('+ max_len + ')');
+		}else{
+			$('#max_len').html('');
+		}
+	});
 	toggle_is_recommend();
 });
 

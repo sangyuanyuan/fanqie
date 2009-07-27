@@ -104,7 +104,13 @@ $(function(){
 		toggle_is_recommend();
 	});
 	
-	category_index.display_select('news_category_index',$('#td_category_index'),$('#category_id_index').val(),'');
+	category_index.display_select('news_category_index',$('#td_category_index'),$('#category_id_index').val(),'',function(id,max_len){
+		if(id != -1){
+			$('#max_len').html('('+ max_len + ')');
+		}else{
+			$('#max_len').html('');
+		}
+	});
 	category.display_select('news_category',$('#td_category_select'),$('#category_id').val(),'',function(id,max_len){
 		if(id != -1){
 			$('#max_len').html('('+ max_len + ')');

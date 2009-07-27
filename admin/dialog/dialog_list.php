@@ -31,7 +31,7 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td width="365">主题</td><td width="140">开始时间</td><td width="140">结束时间</td><td width="250">操作</td>
+			<td width="305">主题</td><td width="140">开始时间</td><td width="140">结束时间</td><td width="250">操作</td>
 		</tr>
 		<?php for($i=0;$i<$count;$i++){?>
 		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
