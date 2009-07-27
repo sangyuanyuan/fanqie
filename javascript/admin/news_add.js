@@ -4,14 +4,21 @@
 $(function(){
 	
 	$('#news_add').submit(function(){
-		if($('#video_src').val() !== undefined){
+		if($('#video_src').val() != undefined && $('#video_src').val() != ''){
 			var video_src = $('#video_src').val().replace(/.+\./,'');
 			video_src = video_src.toLowerCase();
-			if(jQuery.inArray(video_array) == -1){
-				alert('视频格式不支持,请转换格式后再上传!');
+			if(jQuery.inArray(video_src,video_array) == -1){
+				alert('视频格式不支持,请转换格式后再上传!可上传格式:' + video_array.join('|'));
 				return false;
 			}
-			return false;
+		}
+		if($('#video_pic').val() != undefined && $('#video_pic').val() != ''){
+			var video_pic = $('#video_pic').val().replace(/.+\./,'');
+			video_pic = video_pic.toLowerCase();
+			if(jQuery.inArray(video_pic,pic_array) == -1){
+				alert('图片格式不支持,请转换格式后再上传!可上传格式:' + pic_array.join('|'));
+				return false;
+			}
 		}
 		category_add = '';
 		$('.tr_news_category_add').each(function(i){

@@ -67,7 +67,7 @@
 			<a href="/show/show.php?id=<?php echo $images[$i]->id;?>" target="_blank"><img src="<?php echo $images[$i]->src_path('small');?>" width="170" height="70" border="0"></a>
 			<div class=content>
 				<a href="/show/show.php?id=<?php echo $images[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none">
-					<?php echo $images[$i]->title;?>
+					<?php echo strip_tags($images[$i]->title);?>
 				</a>
 			</div>
 			<div class=content>

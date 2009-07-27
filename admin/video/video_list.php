@@ -68,7 +68,7 @@
 			</a>
 			<div class=content>
 				<a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none">
-					<?php echo $video_rows[$i]->title;?>
+					<?php echo strip_tags( $video_rows[$i]->title);?>
 				</a>
 			</div>
 			<div class=content>

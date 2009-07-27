@@ -6,11 +6,8 @@
 	}
 
 	if($_POST['video']['online_url']==null){
-		//如果在编辑的情况下没有上传文件则不进入文件上传的过程
-		if($_POST['type']!=="edit"||$_FILES['image']['name']!=null||$_FILES['video']['name']!=null){
 			$upload = new upload_file_class();
-			//如果在编辑的情况下没有上传图片则不进入文件上传的过程
-			if($_POST['type']!=="edit"||$_FILES['image']['name']!=null){
+			if($_FILES['image']['name']!=null){
 				$upload->save_dir = "/upload/images/";
 				$img = $upload->handle('image','filter_pic');
 				if($img === false){
@@ -19,8 +16,7 @@
 				}
 				$video->photo_url = "/upload/images/" .$img;
 			}
-			//如果在编辑的情况下没有上传视频则不进入文件上传的过程
-			if($_POST['type']!=="edit"||$_FILES['video']['name']!=null){
+			if($_FILES['video']['name']!=null){
 				$upload->save_dir = "/upload/video/";
 				$vid = $upload->handle('video','filter_video');
 				if($vid === false){
@@ -29,12 +25,9 @@
 				}
 				$video->video_url = "/upload/video/" .$vid;
 			}
-		}
 	}else{
-		if($_POST['type']!=="edit"||$_FILES['image']['name']!=null||$_FILES['video']['name']!=null){
 			$upload = new upload_file_class();
-			//如果在编辑的情况下没有上传图片则不进入文件上传的过程
-			if($_POST['type']!=="edit"||$_FILES['image']['name']!=null){
+			if($_FILES['image']['name']!=null){
 				$upload->save_dir = "/upload/images/";
 				$img = $upload->handle('image','filter_pic');
 				if($img === false){
@@ -43,7 +36,6 @@
 				}
 				$video->photo_url = "/upload/images/" .$img;
 			}
-		}
 	}
 	
 	$table_change = array('<p>'=>'');

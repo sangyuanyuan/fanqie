@@ -43,6 +43,7 @@
 	<title>SMG</title>
 	<?php 
 		css_include_tag('admin');
+		use_jquery();
 	?>
 </head>
 <body style="background:#E1F0F7">

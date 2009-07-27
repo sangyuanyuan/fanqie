@@ -8,7 +8,7 @@
 	$db = get_db();
 	$sql = 'select * from smg_dept';
 	$rows_dept = $db->query($sql);
-	$c = array("is_adopt=0");
+	$c = array("is_adopt=0","is_recommend!=2");
 	if($dept_id!=''){
 		array_push($c, "dept_id=$dept_id");
 	}

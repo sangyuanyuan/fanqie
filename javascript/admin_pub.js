@@ -90,8 +90,7 @@ $(function(){
 			}
 			else
 			{
-				$.post("/admin/pub/pub.post.php",{'return_id':$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),'post_type':'return'},function(data){
-					alert(data);
+				$.post("/admin/pub/pub.post.php",{'return_id':$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),'post_type':'return'},function(data){					
 					$("#"+data).remove();
 				});
 			}
