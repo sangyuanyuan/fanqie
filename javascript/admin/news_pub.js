@@ -2,6 +2,7 @@
  * @author sauger
  */
 var category_count = 0;
+
 $(function(){
 $('#td_newstype input').click(function(){
 		toggle_news_type();
@@ -135,5 +136,4 @@ function str_length(str){
  	return str.replace(/<\/?.+?>/g,"");//去掉所有的html标记 
 } 
 
-var video_array = new Array('flv','wmv','wav','mp3','mp4','avi','rm');
-var pic_array = new Array('jpg','png','bmp','gif','icon');
+
