@@ -49,11 +49,11 @@
 	<div id=b>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　视频照片</div>
 		<div class=t_r>
-			<input type="file" name="video_pic" id="video_pic">
+			<input type="file" name="video_pic" id="video_pic">(png,jpg,gif)
 		</div>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择视频</div>
 		<div class=t_r>
-			<input type="file" name="video_src" id="video_src">
+			<input type="file" name="video_src" id="video_src">(flv,wmv,wav,mp3,mp4,avi,rm)
 		</div>
 	</div>
 	<div id=b_button>
