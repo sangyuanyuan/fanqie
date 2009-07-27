@@ -61,6 +61,12 @@
 
 <script>
 	$("#dialog_search").click(function(){
-				window.location.href="?key1="+$("#search_text").attr('value');
+				window.location.href="?id=<?php echo $id;?>&key1="+$("#search_text").attr('value');
+	});
+	
+	$("#search_text").keypress(function(event){
+			if(event.keyCode==13){
+				window.location.href="?id=<?php echo $id;?>&key1="+$("#search_text").attr('value');
+			}
 	});
 </script>

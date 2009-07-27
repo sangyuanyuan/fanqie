@@ -71,6 +71,7 @@
 	</div>
 </div>
 
+<input type="hidden" id="answer" value="<?php echo $answer; ?>">
 <input type="hidden" name="limit_time" id="limit_time" value="<?php echo $problem[0]->limit_time;?>">
 <input type="hidden" name="point_value" id="point_value" value="<?php echo $problem[0]->point;?>">
 <input type="hidden" name="number" value="<?php echo $number+1;?>">
@@ -87,7 +88,7 @@
 
 <script language="javascript"> 
 	var answer = '';
-	var r_answer = <?php echo $answer;?>;
+	var r_answer = $("#answer").val();
 	var point = 0;
 	if($("#limit_time").attr('value')!=''){
 		var second = $("#limit_time").attr('value');
