@@ -39,7 +39,6 @@
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by flowernum desc limit 2";
-		
 		$digg=$db->query($sql);
 		if($record[0]->news_type==2)
 		{
@@ -78,76 +77,13 @@
 			<?php 
 			if($record[0]->vote_id!=""){?>
 				
-				<?php $sql="select * from smg_vote where id=".$record[0]->vote_id;
-				$record1=$db->query($sql);
-				$sql="select * from smg_vote_item where vote_id=".$record1[0]->id;
-				$record2=$db->query($sql);
-				if($record1[0]->vote_type=="more_vote"){		
-				?>
 				<div class=vote>
-						<?php
-						for($i=0;$i<count($record2);$i++){
-						$sql="select * from smg_vote where id=".$record2[$i]->sub_vote_id;
-						$record3=$db->query($sql);
-						?>
-						<div class=content>
-						 <?php echo $record3[0]->name;?></div>
-						<?php for($j=0;$j<count($record3);$j++){
-							$sql="select * from smg_vote_item where vote_id=".$record3[$j]->id;
-							$record4=$db->query($sql);
-						if($record3[$j]->max_item_count>1){?>
-						<?php if($record3[$j]->vote_type=="word_vote"){
-							 for($k=0;$k<count($record4);$k++){ ?>
-							<div class=content><input name="cb<?php echo $i; ?>" type="checkbox" value="<?php echo $record4[$k]->id;?>">
-							<?php echo $record4[$k]->title;?></div>
-								<?php }}else{
-									for($k=0;$k<count($record4);$k++){ 
-								?>
-								<div class=content><input name="cb<?php echo $i; ?>" type="checkbox" value="<?php echo $record4[$k]->id;?>"><img src="<?php echo $record4[$k]->photourl;?>"></div>		
-								<?php }}?>
-						<?php }else{?>
-						<?php if($record3[$j]->vote_type=="word_vote"){ 
-							for($k=0;$k<count($record4);$k++){
-						?>
-							<div class=content><input name="rb<?php echo $i;?>"  type="radio" value="<?php echo $record4[$k]->id;?>"><?php echo $record4[$k]->title;?></div>
-								<?php }}else{
-									for($k=0;$k<count($record4);$k++){
-									?>
-							<div class=content><input name="rb<?php echo $i; ?>"  type="radio" value="<?php echo $record4[$k]->id;?>"><img src="<?php echo $record4[$k]->photourl;?>"></div>
-								<?php }}?>
-						<?php } }?>
-						<div class="btn"><button class="vote_submit" param="<?php echo $i;?>"> 投票</button><input type="hidden" value="<?php echo $record4[0]->vote_id;?>"><input type="hidden"  value="<?php echo $record3[0]->limit_type;?>">　<button class="show_vote">查看</button></div>
-					<?php }?>
+				<?php 
+						$vote = new smg_vote_class();
+						$vote->find($record[0]->vote_id);
+						$vote->display(array('submit_src'=>'/images/news/news_vote_button.jpg','view_src'=>'/images/news/news_view_button.jpg')); ?>
 				</div>
-				<? 
-				}else{?>
-				<div class=vote>
-					<div class=content><?php echo $record1[0]->name;?></div>
-					<?php for($i=0;$i<count($record2);$i++){ 
-						if($record1[0]->max_item_count>1){
-					?>
-					<?php if($record1[0]->vote_type=="word_vote"){?>
-						<div class=content>
-							<input name="cb0" type="checkbox" value="<?php echo $record2[$i]->id;?>"><?php echo $record2[$i]->title;?>
-						</div>
-						<?php }else{?>
-						<div class=content>
-							<input name="cb0" type="checkbox" value="<?php echo $record2[$i]->id;?>"><img src="<?php echo $record2[$i]->photourl;?>">
-						</div>		
-						<?php }}
-						else{?>
-						<?php if($record1[0]->vote_type=="word_vote"){?>
-							<div class=content>
-								<input name="rb0" type="radio" value="<?php echo $record2[$i]->id;?>">
-								<?php echo $record2[$i]->title;?></div>
-							<?php }else{?>
-								<div class=content><input name="rb0" type="radio" value="<?php echo $record2[$i]->id;?>"><img src="<?php echo $record2[$i]->photourl;?>"></div>		
-							<?php }
-						}
-						}?>	
-					<div class="btn"><button class="vote_submit" param="0">投票</button><input type="hidden" id="vote_id" value="<?php echo $record2[0]->vote_id; ?>"><input type="hidden" value="<?php echo $record1[0]->limit_type;?>"> <button id="show_vote">查看</button></div>
-				</div>
-			<? }}?>
+			<? }?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<?php if(count($about)>0||count($about)>0){?>
@@ -180,7 +116,7 @@
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; height:30px; float:left; display:inline;"><img title="送鲜花" class="flower" src="/images/news/news_flower.jpg" style="float:left; display:inline;"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>" style="none"><div id="hidden_flower" style="width:65px; height:12px; margin-left:3px; margin-top:8px; color:#FF0000; font-weight:bold; float:left; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img title="扔番茄" class="tomato" style="float:left; display:inline" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->diggtoid;?>" style="none"><div style="width:70px; height:12px; margin-top:8px; margin-left:10px; color:#FF0000; font-weight:bold; float:left; display:inline"><?php echo $digg[$i]->tomatonum;?></div></div>
+								<div style="width:220px; height:30px; float:left; display:inline;"><img title="送鲜花" class="flower" src="/images/news/news_flower.jpg" style="float:left; display:inline;"><input type="hidden" value="<?php echo $digg[$i]->id;?>" style="none"><div id="hidden_flower" style="width:65px; height:12px; margin-left:3px; margin-top:8px; color:#FF0000; font-weight:bold; float:left; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img title="扔番茄" class="tomato" style="float:left; display:inline" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->id;?>" style="none"><div style="width:70px; height:12px; margin-top:8px; margin-left:10px; color:#FF0000; font-weight:bold; float:left; display:inline"><?php echo $digg[$i]->tomatonum;?></div></div>
 								<div style="width:140px; line-height:20px;  color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
 							</div>
 						</div>
@@ -197,7 +133,7 @@
 								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; float:left; display:inline;"><img title="送鲜花" class="flower" src="/images/news/news_flower.jpg" style="float:left; display:inline;"><input type="hidden" value="<?php echo $comment[$i]->diggtoid;?>" style="none"><div id="hidden_flower" style="width:65px; height:12px; margin-left:3px; margin-top:15px; line-height:15px; color:#FF0000; font-weight:bold; float:left; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img title="扔番茄" class="tomato" style="float:left; display:inline" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->diggtoid;?>" style="none"><div style="width:70px; height:12px; margin-top:15px; margin-left:10px; line-height:15px; color:#FF0000; font-weight:bold; float:left; display:inline"><?php echo $comment[$i]->tomatonum;?></div></div>　
+								<div style="width:220px; float:left; display:inline;"><img title="送鲜花" class="flower" src="/images/news/news_flower.jpg" style="float:left; display:inline;"><input type="hidden" value="<?php echo $comment[$i]->id;?>" style="none"><div id="hidden_flower" style="width:65px; height:12px; margin-left:3px; margin-top:15px; line-height:15px; color:#FF0000; font-weight:bold; float:left; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img title="扔番茄" class="tomato" style="float:left; display:inline" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>" style="none"><div style="width:70px; height:12px; margin-top:15px; margin-left:10px; line-height:15px; color:#FF0000; font-weight:bold; float:left; display:inline"><?php echo $comment[$i]->tomatonum;?></div></div>　
 								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
 							</div>
 						</div>
@@ -205,8 +141,8 @@
 							<?php echo strfck($comment[$i]->comment);?>
 						</div>
 					</div>
-				<?php } if(count($comment)>=5){?>
-				<div class=page><?php paginate('news.php?id='.$id);?></div><?php } ?>
+				<?php }?>
+				<div class=page><?php paginate('news_head.php?id='.$id);?></div>
 			</div>
 			<?php }?>
 			<form method="post" action="/pub/pub.post.php">

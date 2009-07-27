@@ -70,8 +70,9 @@ function refresh_data(){
 
 function delete_question(id){
 	var dialog_id = $('#dialog_id').val();
-	
-	$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'optype':'delete_question','question_id':id});
+	if(confirm('确认删除此问题?')){
+		$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'optype':'delete_question','question_id':id});
+	}
 }
 
 function delete_answer(id){

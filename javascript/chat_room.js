@@ -43,7 +43,7 @@ function refresh(){
 }
 
 function refresh_waiter(count){
-	
+	$('#waiter').html('共有:' + count + ' 正在聊天');
 }
 
 function add_chat(content,type){

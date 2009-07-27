@@ -21,7 +21,7 @@
 <body>
 <? require_once('../inc/top.inc.html');	?>
 <div id="ibody">
-	<div id="t"></div>
+	<div id="t"><span id="waiter"></span></div>
 	<div id="chat_content_box"></div>
 	<div id="tool_box">
 			<div id="connect_msg">&nbsp;</div>

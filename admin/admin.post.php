@@ -1,10 +1,6 @@
 ﻿<?
 include('../frame.php');
 $db=get_db();
-
-
-
-
 if ($_POST["type"]=="tgcan")
 {
 	
@@ -27,8 +23,9 @@ if ($_POST["type"]=="tgpub")
 if ($_POST["type"]=="tgdel")
 {
 
-	$StrSql='delete from smg_tg where id='.$_POST['id']; 
+	$StrSql='delete from smg_tg where id='.$_POST['id'];
 	$Record = $db->execute($StrSql);
+	
 	echo "OK";
 }
 

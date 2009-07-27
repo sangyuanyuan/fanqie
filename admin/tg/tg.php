@@ -17,10 +17,11 @@ $rows=$db->paginate($strsql,20);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -团购后台</title>
 	<?php css_include_tag('admin','top','bottom');
+		use_jquery();
 		js_include_once_tag('admin');?>
 </head>
 <body style="background:#E1F0F7">
@@ -50,7 +51,7 @@ $rows=$db->paginate($strsql,20);
 			<td><? if($rows[$i]->isadopt=="1"){?><span class="tgcan" style="color:#FF0000;cursor:pointer">撤消</span><input type="hidden" value="<?php echo $rows[$i]->id;?>"><? }?>
 				<? if($rows[$i]->isadopt=="0"){?><span class="tgpub" style="color:#0000FF;cursor:pointer">发布</span><input type="hidden" value="<?php echo $rows[$i]->id;?>"><? }?>
 				 <a href="tgupdate.php?id=<? echo $rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-				 <span style="cursor:pointer" calss="tgdel">删除</span><input type="hidden" value="<?php echo $rows[$i]->id;?> ?>">
+				 <span style="cursor:pointer" class="tgdel">删除</span><input type="hidden" value="<?php echo $rows[$i]->id;?> ?>">
 			</td>
 		</tr>
 		<?  }?>

@@ -48,7 +48,7 @@
 		$bbstophot=$db->query($sql);
 		$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by viewnum desc limit 10";
 		$blogph=$db->query($sql);
-		$sql="SELECT uid,username FROM blog_userspaces b order by viewnum desc limit 15";
+		$sql="SELECT uid,spacename FROM blog_userspaces b order by viewnum desc limit 15";
 		$bloghotspace=$db->query($sql);
 		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='博主真人秀' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 1";
 		$blogsure=$db->query($sql);
@@ -159,7 +159,7 @@
 						<textarea id="comment" name="post[comment]"></textarea>
 						<input type="hidden" id="resource_type" name="post[resource_type]" value="zone">
 						<input type="hidden" name="type" value="comment">
-						<button id="hf" type="submit">回复</button>
+						<button id="hf" type="submit">记录</button>
 					</div>
 				</form>
 			</div>
@@ -219,7 +219,7 @@
 			<div class="title">热门博主列表</div>
 			<div class=content>
 				<?php for($i=0;$i<count($bloghotspace);$i++){ ?>
-				<a target="_blank" href="/blog/?uid-<?php echo $bloghotspace[$i]->uid?>"><?php echo $bloghotspace[$i]->username; ?></a>
+				<a target="_blank" href="/blog/?uid-<?php echo $bloghotspace[$i]->uid?>"><?php echo $bloghotspace[$i]->spacename; ?></a>
 				<?php } ?>
 			</div>
 		</div>
