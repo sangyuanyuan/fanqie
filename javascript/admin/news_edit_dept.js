@@ -85,6 +85,9 @@ $(function(){
 				alert('请输入新闻目标地址!');
 				return false;
 			}
+		}else if(news_type==2 && $('#file_name').next('a').length <= 0 && $('#file_name').val() == ''){
+			alert('请选择上传的文件!');
+			return false;
 		}
 
 		if($('#video_src').attr('value') != '' && $('#video_pic').attr('value') == ''){
