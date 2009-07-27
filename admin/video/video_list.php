@@ -67,7 +67,7 @@
 				<img src="<?php echo $video_rows[$i]->photo_url;?>" width="170" height="70" border="0">
 			</a>
 			<div class=content>
-				<a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none">
+				<a href="/show/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none">
 					<?php echo strip_tags( $video_rows[$i]->title);?>
 				</a>
 			</div>
