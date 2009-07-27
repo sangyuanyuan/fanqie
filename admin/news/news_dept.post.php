@@ -132,7 +132,7 @@
 	}
 	
 
-	redirect('news_list.php?category='.$news->dept_category_id);
+	#redirect('news_list.php?category='.$news->dept_category_id);
 
 	#var_dump($news);
 	
