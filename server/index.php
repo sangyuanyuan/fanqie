@@ -363,7 +363,7 @@
 				<div id=vote>
 					<?php $vote = new smg_vote_class();
 					$vote->find($tp[0]->id);
-					$vote->display();?>
+					$vote->display(array("target"=>"_blank"));?>
 				</div>
 			</div>
 			<div id=right>
