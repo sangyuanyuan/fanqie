@@ -31,7 +31,7 @@
 		$password = get_config('db_password');
 		$code = get_config('db_code');
 		$note_emails = "chenlong@xun-ao.com, sunyoujie@xun-ao.com, shengzhifeng@xun-ao.com, zhanghao@xun-ao.com";
-		if($g_db->connect($servername,$dbname,$username,$password,$code)===FALSE){			
+		if($g_db->connect($servername,$dbname,$username,$password,$code)===false){			
 			$last_time = file_get_contents(dirname(__FILE__) .'/config/last_disconnect.txt');
 			
 			if($last_time == ''){				
