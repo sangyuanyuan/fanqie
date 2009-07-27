@@ -6,6 +6,7 @@
 	$db = get_db();
 	$sql = 'select * from smg_problem where id='.$problem_id;
 	$problem = $db->query($sql);
+	$type = $problem[0]->type;
 	$sql = 'select id,title,nick_name from smg_question where problem_id='.$problem_id.' order by create_time limit '.($number-1).',1';
 	$records = $db->query($sql);
 	if(isset($_POST['lave'])){
@@ -50,7 +51,8 @@
 			$items = $db->query($sql);
 			$count = count($items);
 			$answer = '';
-			for($i=0;$i<$count;$i++){
+			if($type=='check'){
+				for($i=0;$i<$count;$i++){
 		?>
 		<div class="question_option">
 			<input class=checkbox type="checkbox" name="<?php echo $items[$i]->id;?>">
@@ -60,7 +62,36 @@
 			?>
 		</div>
 		<?php
+				}
+			}elseif($type=='judge'){
+		?>
+		<div class="question_option">
+			<input class=radio type="radio" name="judge" value="1">正确
+			<?php 
+				$answer = $items[0]->attribute;
+			?>
+		</div>
+		<div class="question_option">
+			<input class=radio type="radio" name="judge" value="0">不正确
+		</div>
+		<?php 
+			}else{
+				for($i=0;$i<$count;$i++){
+		?>
+		<div class="question_option">
+			<input class=radio type="radio" name="judge" value="<?php echo $items[$i]->id;?>">
+			<?php 
+				echo num_to_ABC($i).$items[$i]->name;
+				if($items[$i]->attribute==1)$answer = $items[$i]->id;
+			?>
+		</div>
+		<?php
+				}
 			}
+		?>
+		
+		<?php
+			
 		?>
 	</div>
 	
@@ -102,7 +133,9 @@
 	var lave = <?php echo $lave;?>
 	
 	$("#submit").click(function(){
-		clearInterval(handle);
+		if($("#limit_time").attr('value')!=''){
+			clearInterval(handle);
+		}
 		$(".checkbox").each(function(){
 			if($(this).attr('checked'))answer = answer+$(this).attr('name');
 		});

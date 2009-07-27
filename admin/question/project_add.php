@@ -17,7 +17,7 @@
 	?>
 </head>
 <body style="background:#E1F0F7">
-	<form id="project_add" action="project.post.php" enctype="multipart/form-data" method="post"> 
+	<form id="project_add" action="project.post.php" enctype="multipart/form-data" method="post">
 		<table width="795" border="0" style="font-size:12px;">
 			<tr class="tr1">
 				<td colspan="2" width="795">　　添加项目</td>
@@ -28,11 +28,11 @@
 			</tr>
 			<tr class="tr3">
 				<td width="100">添加图片</td>
-				<td align="left">　<input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file"></td>
+				<td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file"></td>
 			</tr>
 			<tr class=tr3>
 				<td>所属类别</td>
-				<td align="left"  class="newsselect">
+				<td align="left">
 					<select  name="post[category_id]">
 						<?php for($i=0;$i<$count;$i++){?>
 						<option value="<?php echo $category_menu[$i]->id;?>"><?php echo $category_menu[$i]->name;?></option>
@@ -42,37 +42,37 @@
 			</tr>
 			<tr class="tr3">
 				<td>开始时间</td>
-				<td align="left" >　<input type="text" name="start_time" id="start"   class="date_jquery">若不填则发布就可参加
+				<td align="left" ><input type="text" name="start_time" id="start"   class="date_jquery">若不填则发布就可参加
 				</td>
 			</tr>	
 			<tr class="tr3">
 				<td>结束时间</td>
-				<td align="left" >　<input type="text" name="end_time" id="end"  class="date_jquery">若不填则长期有效
+				<td align="left" ><input type="text" name="end_time" id="end"  class="date_jquery">若不填则长期有效
 				</td>
-			</tr>	
+			</tr>
 			<tr class="tr3">
 				<td>答题时限</td>
-				<td align="left" >　<input type="text" name="post[limit_time]"  class="number">若无时限则不需要输入/单位秒</td>
-			</tr>		
+				<td align="left" ><input type="text" name="post[limit_time]"  class="number">若无时限则不需要输入/单位秒</td>
+			</tr>
 			<tr class="tr3">
 				<td>单题分值</td>
-				<td align="left" >　<input type="text" name="post[point]"  class="number">若不输入则用取百分制</td>
-			</tr>	
+				<td align="left" ><input type="text" name="post[point]"  class="number">若不输入则用取百分制</td>
+			</tr>
 			<tr class="tr3">
 				<td>题目类型</td>
 				<td align="left" >
-					　<select id="problemtype" name="post[type]">
+					<select id="problemtype" name="post[type]">
 						<option value="radio">单选题</option>
-						<option value="check">多选题</option> 
+						<option value="check">多选题</option>
 						<option value="judge">是非题</option>
 					</select>
 				</td>
-			</tr>		
+			</tr>
 			<tr bgcolor="#f9f9f9" height="30px;">
-				<input type="hidden" name="ts" id="ts">
 				<td colspan="2" width="795" align="center"><button type="submit" id="submit">发布项目</button></td>
-			</tr>	
+			</tr>
 		</table>
+		<input type="hidden" name="ts" id="ts">
 		<input type="hidden" name="post[create_time]"  value="<?php echo date("y-m-d")?>">
 		<input type="hidden" name="post[is_adopt]"  value="0">
 	</form>

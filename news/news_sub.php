@@ -35,7 +35,7 @@
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　工号</div>
-		<div class=t_r><input type="text" name="news[publisher_id]" value="<?php echo $_COOKIE['smg_username'];?>"></div>
+		<div class=t_r><input type="text" name="news[publisher_id]" value="<?php echo $_COOKIE['smg_user_nickname'];?>"></div>
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　标题</div>
@@ -51,7 +51,7 @@
 		<div class=t_r>
 			<input type="file" name="video_pic" id="video_pic">
 		</div>
-		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择视频</div>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择视频(可选)</div>
 		<div class=t_r>
 			<input type="file" name="video_src" id="video_src">
 		</div>

@@ -33,7 +33,7 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td width="165">内容</td><td width="100">发布人</td><td width="200">所属问题</td><td width="100">所属对话</td><td width="100">创建时间</td><td width="100">操作</td>
+			<td width="295">内容</td><td width="100">发布人</td><td width="100">所属问题</td><td width="100">所属对话</td><td width="100">创建时间</td><td width="100">操作</td>
 		</tr>
 		<?php for($i=0;$i<$count;$i++){?>
 		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
