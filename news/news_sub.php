@@ -98,6 +98,15 @@
 				}
 			}
 			
+			if($("#video_pic").val()==""&&$("#video_src").val()!=""){
+				alert("请上传图片！");
+				return false;
+			}
+			
+			if($("#video_pic").val()!=""&&$("#video_src").val()==""){
+				alert("请上传视频！");
+				return false;
+			}
 			document.news_add.submit();
 		});
 	});
