@@ -149,6 +149,17 @@
 		}
 		
 	});
+	
+	$("#leave").click(function(){
+		clearInterval(handle);
+		$(".checkbox").each(function(){
+			if($(this).attr('checked'))answer = answer+$(this).attr('name');
+		});
+		if (answer == r_answer){
+			$("#r_point").attr('value', parseInt($("#r_point").attr('value'))+10);
+		}
+		tb_show('请填入您的个人信息','info.php?height=300&width=400&modal=true');
+	});
 
 	function timer(){
 		if(second>0){

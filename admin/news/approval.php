@@ -38,20 +38,18 @@
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="6">
-				搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
-				<select id=dept style="width:100px" class="select_new">
+			<td colspan="6"> 　　　
+				搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>"><select id=dept style="width:100px" class="select_new">
 					<option value="">发表部门</option>
 					<?php for($i=0;$i<count($rows_dept);$i++){?>
 					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
 					<? }?>
-				</select>
-				<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
+				</select><input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
 		<tr class="tr2">
 
-			<td width="55">删/退</td><td width="220">短标题</td><td width="100">所属部门</td><td width="100">发布者工号</td><td width="120">发布时间</td><td width="200">操作</td>
+			<td width="55">删/退</td><td width="220">短标题</td><td width="100">所属部门</td><td width="100">发布者姓名</td><td width="120">发布时间</td><td width="200">操作</td>
 		</tr>
 		<?php
 			//--------------------
