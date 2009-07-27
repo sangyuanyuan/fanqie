@@ -6,6 +6,7 @@
 	$title = $_REQUEST['title'];
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
 	$is_adopt = $_REQUEST['adopt'];
+	$is_recommend = $_REQUEST['recommend'];
 	$db = get_db();
 	$sql = 'select * from smg_dept';
 	$rows_dept = $db->query($sql);
