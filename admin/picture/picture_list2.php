@@ -15,7 +15,7 @@
 		array_push($c, "title like '%".trim($title)."%' or keywords like '%".trim($title)."%' or description like '%".trim($title)."%'");
 	}
 	if($category_id > 0){
-		array_push($c, "dept_category_id=$category_id");
+		array_push($c, "category_id=$category_id");
 	}
 	if($is_recommend!=''){
 		array_push($c, "is_recommend=$is_recommend");
