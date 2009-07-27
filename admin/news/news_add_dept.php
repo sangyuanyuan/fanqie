@@ -46,7 +46,10 @@
 			<td colspan="6" width="795">　　添加新闻</td>
 		</tr>
 		<tr class=tr3>
-			<td width="130">标题/短标题</td><td width="695" align="left"><input type="text" name="news[title]" id="news_title">　/　<input type="text" name="news[short_title]" id="news_short_title"><span id="max_len"></span></td>
+			<td width="130">标题</td><td width="695" align="left"><input type="text" name="news[title]" id="news_title"></td>
+		</tr>
+		<tr class=tr3>
+			<td width="130">短标题</td><td width="695" align="left"><input type="text" name="news[short_title]" id="news_short_title"><span id="max_len"></span></td>
 		</tr>
 		<tr class=tr3>
 			<td>分　类</td>
@@ -74,12 +77,15 @@
 			</td>
 		</tr>
 		<tr class=tr3>
-			<td>关键词/优先级</td>
+			<td>关键词</td>
 			<td align="left">
-				<input type="text" size="20" name=news[keywords]>(空格分隔)　　/　　
-				<input type="text" size="10" name=news[dept_priority] class="number">(0~100)</td>
+				<input type="text" size="20" name=news[keywords]>(空格分隔)
 		</tr>		
-		
+		<tr class=tr3>
+			<td>优先级</td>
+			<td align="left">
+				<input type="text" size="10" name=news[dept_priority] class="number">(0~100)</td>
+		</tr>	
 		<tr class=tr3 id=tr_file_name>
 			<td>上传文件</td><td align="left"><input type="file" size="50" name=file_name></td>
 		</tr>	
