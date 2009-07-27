@@ -37,7 +37,7 @@
 		css_include_tag('admin');
 		use_jquery();
 		js_include_tag('admin_pub','smg_category_class');
-		$category = new smg_category_class('picture',$dept_id);
+		$category = new smg_category_class('picture');
 		$category->echo_jsdata();		
 	?>
 </head>
