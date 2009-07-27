@@ -148,11 +148,13 @@
 			alert("请输入标题！");
 			return false;
 		}
-		var upfile1 = $("#image").val();
-		var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);
-		if(upload_file_extension.toLowerCase()!=".png"&&upload_file_extension.toLowerCase()!=".jpg"&&upload_file_extension.toLowerCase()!=".gif"){
-			alert("上传图片类型错误");
-			return false;
+		if($("#image").val()!=''){
+			var upfile1 = $("#image").val();
+			var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);
+			if(upload_file_extension.toLowerCase()!=".png"&&upload_file_extension.toLowerCase()!=".jpg"&&upload_file_extension.toLowerCase()!=".gif"){
+				alert("上传图片类型错误");
+				return false;
+			}
 		}
 	}); 
 	

@@ -4,7 +4,7 @@
 	$key1 = $_REQUEST['key1'];
 	$db = get_db();
 	if($key1!=''){
-		$sql = 'SELECT t1.*,t2.title FROM  smg_dialog_question t1,smg_dialog t2 where t1.dialog_id = t2.id and and t1.dialog_id='.$id.' t1.content like "%'.trim($key1).'%" order by create_time desc';
+		$sql = 'SELECT t1.*,t2.title FROM  smg_dialog_question t1,smg_dialog t2 where t1.dialog_id = t2.id and t1.dialog_id='.$id.' and t1.content like "%'.trim($key1).'%" order by create_time desc';
 	}else{
 		$sql = 'SELECT t1.*,t2.title FROM  smg_dialog_question t1,smg_dialog t2 where t1.dialog_id = t2.id and t1.dialog_id='.$id.' order by create_time desc';
 	}
@@ -33,7 +33,7 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td width="365">内容</td><td width="140">发布人</td><td width="140">所属对话</td><td width="140">创建时间</td><td width="250">操作</td>
+			<td width="400">内容</td><td width="140">发布人</td><td width="140">所属对话</td><td width="140">创建时间</td><td width="50">操作</td>
 		</tr>
 		<?php for($i=0;$i<$count;$i++){?>
 		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
@@ -58,6 +58,12 @@
 
 <script>
 	$("#dialog_search").click(function(){
-				window.location.href="?key1="+$("#search_text").attr('value');
+				window.location.href="?id=<?php echo $id;?>&key1="+$("#search_text").attr('value');
+	});
+	
+	$("#search_text").keypress(function(event){
+			if(event.keyCode==13){
+				window.location.href="?id=<?php echo $id;?>&key1="+$("#search_text").attr('value');
+			}
 	});
 </script>

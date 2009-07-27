@@ -17,19 +17,22 @@
 			$question->content = str_replace('</p>','',$question->content);
 			$question->is_master = $_POST['is_master'];
 			if($question->save()){
-				//$alert_str = '发布成功!';
+				$alert_str = '';
 			}else{
 				$alert_str = '发布失败!';
 			};
 			break;
 		case 'delete_question':
 			$question = new table_class('smg_dialog_question');
+			$sql = 'delete from smg_dialog_answer where question_id=' .$_POST['question_id'];
+			$db = get_db();
+			$db->execute($sql);
 			if($question->delete($_POST['question_id'])){
-				$alert_str = '删除成功!';
+				$alert_str = '';
 			}else{
 				$alert_str = '删除失败!';
 			};
-			echo "<script>alert('$alert_str');location.reload();</script>";
+			echo "<script>location.reload();</script>";
 			exit;
 		case 'answer_question':
 			$tanswer = new table_class('smg_dialog_answer');
@@ -53,21 +56,21 @@
 			$tanswer->content = str_replace('</p>', '', $tanswer->content);
 			$tanswer->id = $_REQUEST['answer_id'];
 			if($tanswer->save()){
-				$alert_str = '编辑回复成功!';
+				$alert_str = null;
 			}else{
 				$alert_str = '编辑回复失败!';
 			}
-			echo "<script>alert('$alert_str');location.reload();</script>";
+			echo "<script>location.reload();</script>";
 			exit;			
 			break;
 		case 'delete_answer':
 			$answer = new table_class('smg_dialog_answer');
 			if($answer->delete($_POST['answer_id'])){
-				$alert_str = '';
+				$alert_str = null;
 			}else{
 				$alert_str = '删除失败!';
 			};
-			echo "<script>alert('$alert_str');location.reload();</script>";
+			echo "<script>location.reload();</script>";
 			exit;	
 		default:
 			;

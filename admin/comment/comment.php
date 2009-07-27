@@ -3,6 +3,8 @@
 	$type = $_REQUEST['type'];
 	$id = $_REQUEST['id'];
 	$conditions = null;
+	$conditions[] = 'resource_type="'.$type.'"';
+	$conditions[] = 'resource_id='.$id;
 	if($_REQUEST['key1']!=""){
 		$conditions[] = 'nick_name  like "%'.trim($_REQUEST['key1']).'%"';
 	}
@@ -61,6 +63,8 @@
 		?>
 		<input type="hidden" id="db_talbe" value="smg_comment">
 		<input type="hidden" id="id" value="<?php echo $record[0]->id;?>">
+		<input type="hidden" id="r_id" value="<?php echo $id;?>">
+		<input type="hidden" id="r_type" value="<?php echo $type;?>">
 	</table>
 	<div class="div_box">
 		<table width="795" border="0">
@@ -71,3 +75,24 @@
 	</div>
 </body>
 </html>
+
+
+<script>
+	$(function(){
+		$("#search").click(function(){
+					window.location.href="?key1="+$("#user_name").attr('value')+"&key2="+$("#comment").attr('value')+"&type="+$("#r_type").val()+"&id="+$("#r_id").val();
+		});
+		
+		$("#user_name").keypress(function(event){
+				if(event.keyCode==13){
+					window.location.href="?key1="+$("#user_name").attr('value')+"&key2="+$("#comment").attr('value')+"&type="+$("#r_type").val()+"&id="+$("#r_id").val();
+				}
+		});
+		
+		$("#comment").keypress(function(event){
+				if(event.keyCode==13){
+					window.location.href="?key1="+$("#user_name").attr('value')+"&key2="+$("#comment").attr('value')+"&type="+$("#r_type").val()+"&id="+$("#r_id").val();
+				}
+		});
+	})
+</script>

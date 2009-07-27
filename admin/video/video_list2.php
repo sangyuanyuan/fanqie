@@ -84,8 +84,8 @@
 				<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $video_rows[$i]->id;?>">发布</span>
 				<? }?>
 				<a href="video_edit.php?id=<?php echo $video_rows[$i]->id;?>&dept_id=<?php echo $dept_id;?>"" style="color:#000000; text-decoration:none">编辑</a> 
-				<?php if($video_rows[$i]->is_recommend=='1'){?><span style="color:#333333">删除</span><?}else{?><span style="cursor:pointer;color:#ff0000;" class="del" name="<?php echo $video_rows[$i]->id;?>">删除</span><?php }?>
 				<a href="/admin/comment/comment.php?id=<?php echo $video_rows[$i]->id;?>&type=video" style="color:#000000; text-decoration:none">评论</a>
+				<?php if($video_rows[$i]->is_recommend=='1'){?><span style="color:#333333">删除</span><?}else{?><span style="cursor:pointer;color:#ff0000;" class="del" name="<?php echo $video_rows[$i]->id;?>">删除</span><?php }?>
 				<input type="text" class="priority" name="<?php echo $video_rows[$i]->id;?>" value="<?php if($video_rows[$i]->dept_priority!=100){echo $video_rows[$i]->dept_priority;}?>" style="width:40px;">
 				<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $video_rows[$i]->id;?>" style="width:40px;">	
 			</div>
