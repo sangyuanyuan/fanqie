@@ -12,7 +12,7 @@
 	$rows_dept = $db->query($sql);
 	$c = array();
 	if($title!= ''){
-		array_push($c, "title like '%".trim($title)."%' or keywords like '%".trim($title)."%' or description like '%".trim($title)."%'");
+		array_push($c, "(title like '%".trim($title)."%' or keywords like '%".trim($title)."%' or description like '%".trim($title)."%')");
 	}
 	if($category_id > 0){
 		array_push($c, "category_id=$category_id");
