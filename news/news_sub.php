@@ -34,7 +34,7 @@
 		</div>
 	</div>
 	<div class=t>
-		<div class=l><img src="/images/news/news_sub_icon.jpg">　工号</div>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　姓名</div>
 		<div class=t_r><input type="text" name="news[publisher_id]" value="<?php echo $_COOKIE['smg_user_nickname'];?>"></div>
 	</div>
 	<div class=t>
@@ -45,13 +45,13 @@
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　内容</div>
 		<div id=m_r><?php show_fckeditor('news[content]','Admin',true,"270","","750");?></div>
 	</div>
-	<div class=title>视频上传</div>
+	<div class=title>视频上传(可选)</div>
 	<div id=b>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　视频照片</div>
 		<div class=t_r>
 			<input type="file" name="video_pic" id="video_pic">
 		</div>
-		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择视频(可选)</div>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择视频</div>
 		<div class=t_r>
 			<input type="file" name="video_src" id="video_src">
 		</div>
@@ -76,6 +76,26 @@
 			if(oEditor.GetHTML()==''){
 				alert('请填写新闻内容!');
 				return false;
+			}
+			if($("#video_pic").val()!=""){
+				var upfile1 = $("#video_pic").val();
+				var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);
+				if(upload_file_extension.toLowerCase()!=".png"&&upload_file_extension.toLowerCase()!=".jpg"&&upload_file_extension.toLowerCase()!=".gif"){
+					alert("上传图片类型错误");
+					return false;
+				}
+			}
+			
+			if($("#video_src").val()!=""){
+				var upfile2 = $("#video_src").val();
+				upload_file_extension=upfile2.substring(upfile2.length-4,upfile2.length);
+				if(upload_file_extension.toLowerCase()!=".flv"&&upload_file_extension.toLowerCase()!=".wmv"&&upload_file_extension.toLowerCase()!=".wav"&&upload_file_extension.toLowerCase()!=".mp3"&&upload_file_extension.toLowerCase()!=".mp4"&&upload_file_extension.toLowerCase()!=".avi"){
+					upload_file_extension=upfile2.substring(upfile2.length-3,upfile2.length);
+					if(upload_file_extension.toLowerCase()!=".rm"){
+						alert("上传视频类型错误");
+						return false;
+					}
+				}
 			}
 			
 			document.news_add.submit();
