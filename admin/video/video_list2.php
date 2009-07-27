@@ -63,7 +63,7 @@
 	<div class="div_box">
 		<?php for($i=0;$i<count($video_rows);$i++){?>
 		<div class=v_box id="<?php echo $video_rows[$i]->id;?>">
-			<a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank"><img src="<?php echo $video_rows[$i]->photo_url;?>" width="170" height="70" border="0"></a>
+			<a href="/show/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank"><img src="<?php echo $video_rows[$i]->photo_url;?>" width="170" height="70" border="0"></a>
 			<div class=content>
 				<a href="/show/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo strip_tags( $video_rows[$i]->title);?></a>
 			</div>

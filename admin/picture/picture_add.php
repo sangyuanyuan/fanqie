@@ -66,6 +66,7 @@
 			<td>首页分类</td>
 			<td align="left">
 				<select id=select name="picture[category_id]">
+					<option value="">请选择分类</option>
 					<?php	
 						for($i=0;$i<count($category_menu2);$i++){
 					?>
@@ -80,7 +81,7 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category">
 			<td>发表部门</td>
 			<td align="left">
-				<select id=select name="picture[dept_id]">
+				<select name="picture[dept_id]">
 					<option value="7" >总编室</option>
 					<?php	
 						for($i=0;$i<count($rows_dept);$i++){
@@ -108,7 +109,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>图片链接</td><td align="left"><input type="text" size="50" name=picture[url]></td>
+			<td>图片链接</td><td align="left"><input type="text" size="50" id="online" name=picture[url]></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file">(请上传小于2M的图片，格式支持jpg、gif、png) </td>
@@ -150,10 +151,21 @@
 				alert("上传图片类型错误");
 				return false;
 			}
+		}else{
+			if($("#online").val()==''){
+				alert("请上传一个图片或者输入链接地址");
+				return false;
+			}
 		}
 		if($("#description").val()==''){
 			alert('请输入简短描述！');
 			return false;
+		}
+		if($("#select").val()==''){
+			if($("#is_recommend").attr('checked')==true){
+				alert("请选择一个首页分类");
+				return false;
+			}
 		}
 	}); 
 	
