@@ -12,7 +12,7 @@
 	$rows_dept = $db->query($sql);
 	$c = array();
 	if($title!= ''){
-		array_push($c, "title like '%".trim($title)."%' or keywords like '%".trim($title)."%' or description like '%".trim($title)."%'");
+		array_push($c, "(title like '%".trim($title)."%' or keywords like '%".trim($title)."%' or description like '%".trim($title)."%')");
 	}
 	if($category_id > 0){
 		array_push($c, "category_id=$category_id");
@@ -77,8 +77,8 @@
 				<?php if($images[$i]->is_dept_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $images[$i]->id;?>">撤消</span><? }?>
 				<?php if($images[$i]->is_dept_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $images[$i]->id;?>">发布</span><? }?>
 				<a href="picture_edit.php?id=<?php echo $images[$i]->id;?>&dept_id=<?php echo $dept_id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-				<?php if($images[$i]->is_recommend=='1'){?><span style="color:#333333">删除</span><?}else{?><span style="cursor:pointer; color:#FF0000"" class="del" name="<?php echo $images[$i]->id;?>">删除</span><?php }?>
 				<a href="/admin/comment/comment.php?id=<?php echo $images[$i]->id;?>&type=picture" style="color:#000000; text-decoration:none">评论</a>
+				<?php if($images[$i]->is_recommend=='1'){?><span style="color:#999999">删除</span><?}else{?><span style="cursor:pointer; color:#FF0000"" class="del" name="<?php echo $images[$i]->id;?>">删除</span><?php }?>
 				<input type="text" class="priority" name="<?php echo $images[$i]->id;?>" value="<?php if($images[$i]->dept_priority!=100){echo $images[$i]->dept_priority;}?>" style="width:40px;">
 				<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $images[$i]->id;?>" style="width:40px;">	
 			</div>

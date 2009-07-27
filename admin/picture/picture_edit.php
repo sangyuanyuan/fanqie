@@ -67,16 +67,17 @@
 		
 		<?php if($role=='dept_admin'){?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>是否推荐到集团首页</td><td align="left"><input type="checkbox"  id=is_recommend <?php if($picture_record[0]->is_recommend=='1'){?>checked="checked"<?php }?>></td>
+			<td>是否推荐到集团首页</td><td align="left"><input type="checkbox"  id=is_recommend <?php if($picture_record[0]->is_recommend=='1'){?>checked="checked" disabled="disabled"<?php }?>></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" <?php if($picture_record[0]->is_recommend=='0'){?>style="display:none"<?php }?>>
 			<td>首页分类</td>
 			<td align="left">
-				<select id=select name="picture[category_id]">
+				<select id=select name="picture[category_id]" <?php if($picture_record[0]->is_recommend=='1'){?>disabled="disabled"<?php }?> >
+					<option value="">请选择分类</option>
 					<?php	
 						for($i=0;$i<count($category_menu2);$i++){
 					?>
-						<option value="<?php echo $category_menu2[$i]->id;?>"><?php echo $category_menu2[$i]->name;?></option>
+						<option value="<?php echo $category_menu2[$i]->id;?>" <?php  if($category_menu2[$i]->id==$picture_record[0]->category_id){?>selected="selected"<?php }?> ><?php echo $category_menu2[$i]->name;?></option>
 					<? }?>
 				</select>
 			</td>
@@ -87,7 +88,7 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category">
 			<td>发表部门</td>
 			<td align="left">
-				<select id=select name="picture[dept_id]">
+				<select name="picture[dept_id]">
 					<option value="7" >总编室</option>
 					<?php	
 						for($i=0;$i<count($rows_dept);$i++){
@@ -112,7 +113,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>图片链接</td><td align="left"><input type="text" size="50" name="picture[url]" value="<?php echo $picture_record[0]->url;?>"></td>
+			<td>图片链接</td><td align="left"><input type="text" size="50" name="picture[url]" id="online" value="<?php echo $picture_record[0]->url;?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>选择图片</td><td align="left"><input name="image" id="upfile" type="file"><input type="hidden" name="MAX_FILE_SIZE1" value="2097152">(请上传小于2M的图片，格式支持jpg、gif、png)<?php if($picture_record[0]->src!=''){?><a href="<?php echo $picture_record[0]->src;?>" target="_blank" style="color:#0000FF">点击查看图片</a><?php } ?></td>
@@ -125,7 +126,7 @@
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布图片"></td>
 		</tr>	
 	</table>
-
+	<input type="hidden" id="v_u" value="<?php if($picture_record[0]->url!=''){echo 1;}?>">
 	<input type="hidden" name="id" value="<?php echo $id;?>">
 	<input type="hidden" name="type" value="edit">
 	<input type="hidden" name="url" id=url  value="<?php echo $url;?>">
@@ -149,17 +150,30 @@
 			alert("请输入标题！");
 			return false;
 		}
-		if($("#image").val()!=''){
-			var upfile1 = $("#image").val();
+		if($("#upfile").val()!=''){
+			var upfile1 = $("#upfile").val();
 			var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);
 			if(upload_file_extension.toLowerCase()!=".png"&&upload_file_extension.toLowerCase()!=".jpg"&&upload_file_extension.toLowerCase()!=".gif"){
 				alert("上传图片类型错误");
 				return false;
 			}
+		}else{
+			if($("#v_u").val()!=""){
+				if($("#online").val()==''){
+					alert("请上传一个图片或者输入链接地址");
+					return false;
+				}
+			}
 		}
 		if($("#description").val()==''){
 			alert('请输入简短描述！');
 			return false;
+		}
+		if($("#select").val()==''){
+			if($("#is_recommend").attr('checked')==true){
+				alert("请选择一个首页分类");
+				return false;
+			}
 		}
 	}); 
 	

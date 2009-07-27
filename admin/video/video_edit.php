@@ -65,16 +65,16 @@
 		
 		<?php if($role=='dept_admin'){?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>是否推荐到集团首页</td><td align="left"><input type="checkbox"  id=is_recommend <?php if($video_record[0]->is_recommend=='1'){?>checked="checked"<?php }?>></td>
+			<td>是否推荐到集团首页</td><td align="left"><input type="checkbox"  id=is_recommend <?php if($video_record[0]->is_recommend=='1'){?>checked="checked"  disabled="disabled"<?php }?>></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" <?php if($video_record[0]->is_recommend=='0'){?>style="display:none"<?php }?>>
 			<td>首页分类</td>
 			<td align="left">
-				<select id=select name="video[category_id]">
+				<select id=select name="video[category_id]" <?php if($video_record[0]->is_recommend=='1'){?>disabled="disabled"<?php }?>>
 					<?php	
 						for($i=0;$i<count($category_menu2);$i++){
 					?>
-						<option value="<?php echo $category_menu2[$i]->id;?>"><?php echo $category_menu2[$i]->name;?></option>
+						<option value="<?php echo $category_menu2[$i]->id;?>" <?php  if($category_menu2[$i]->id==$video_record[0]->category_id){?>selected="selected"<?php }?> ><?php echo $category_menu2[$i]->name;?></option>
 					<? }?>
 				</select>
 			</td>
