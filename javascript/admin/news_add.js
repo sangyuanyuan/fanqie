@@ -7,7 +7,10 @@ $(function(){
 		if($('#video_src').val() !== undefined){
 			var video_src = $('#video_src').val().replace(/.+\./,'');
 			video_src = video_src.toLowerCase();
-			alert(video_src);
+			if(jQuery.inArray(video_array) == -1){
+				alert('视频格式不支持,请转换格式后再上传!');
+				return false;
+			}
 			return false;
 		}
 		category_add = '';

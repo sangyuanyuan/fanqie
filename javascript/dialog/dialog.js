@@ -70,7 +70,7 @@ function refresh_data(){
 
 function delete_question(id){
 	var dialog_id = $('#dialog_id').val();
-	if(confirm('删除问题将问题相关的答案,确认删除此问题?')){
+	if(confirm('确认删除此问题?')){
 		$('#ajax_ret').load('dialog.ajax.php',{'dialog_id':dialog_id,'optype':'delete_question','question_id':id});
 	}
 }
