@@ -10,7 +10,7 @@
 	$db = get_db();
 	$c = array();
 	if($category_id > 0){
-		array_push($c, "dept_category_id=$category_id");
+		array_push($c, "category_id=$category_id");
 	}
 	if($is_recommend!=''){
 		array_push($c, "is_recommend=$is_recommend");
@@ -37,7 +37,7 @@
 		css_include_tag('admin');
 		use_jquery();
 		js_include_tag('admin_pub','smg_category_class');
-		$category = new smg_category_class('video',$dept_id);
+		$category = new smg_category_class('video');
 		$category->echo_jsdata();		
 	?>
 </head>

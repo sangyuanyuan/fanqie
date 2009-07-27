@@ -6,6 +6,7 @@
 	$title = $_REQUEST['title'];
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
 	$is_adopt = $_REQUEST['adopt'];
+	$is_recommend = $_REQUEST['recommend'];
 	$db = get_db();
 	$sql = 'select * from smg_dept';
 	$rows_dept = $db->query($sql);
@@ -14,7 +15,7 @@
 		array_push($c, "title like '%".trim($title)."%' or keywords like '%".trim($title)."%' or description like '%".trim($title)."%'");
 	}
 	if($category_id > 0){
-		array_push($c, "dept_category_id=$category_id");
+		array_push($c, "category_id=$category_id");
 	}
 	if($is_recommend!=''){
 		array_push($c, "is_recommend=$is_recommend");
@@ -37,7 +38,7 @@
 		css_include_tag('admin');
 		use_jquery();
 		js_include_tag('admin_pub','smg_category_class');
-		$category = new smg_category_class('picture',$dept_id);
+		$category = new smg_category_class('picture');
 		$category->echo_jsdata();		
 	?>
 </head>

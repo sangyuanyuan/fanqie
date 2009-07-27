@@ -141,8 +141,9 @@
 						</div>
 					</div>
 				<?php }?>
-				<div class=page><?php paginate('news.php?id='.$id);?></div>
+				
 			</div>
+			<div class=page><?php paginate('');?></div>
 			<?php }?>
 			<form method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>

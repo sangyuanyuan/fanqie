@@ -13,9 +13,9 @@
 		$priority = 'priority';
 		$category_id = 'category_id';
 		if($type==""){	
-			$category_menu = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
+			$category_menu = $category->find("all",array('conditions' => "category_type='video'","order" => "platform,priority"));
 		}else{
-			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."'","order" => "priority"));	
+			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."'","order" => "platform,priority"));	
 		}
 	}else{
 		$category = new table_class("smg_category_dept");
@@ -29,7 +29,7 @@
 			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."' and dept_id=".$dept_id,"order" => "priority"));	
 		}
 		$category = new table_class("smg_category");
-		$category_menu2 = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
+		$category_menu2 = $category->find("all",array('conditions' => "category_type='video'","order" => "platform,priority"));
 	}
 	
 	$dept = new table_class("smg_dept");
@@ -44,7 +44,7 @@
 	<title>SMG</title>
 	<?php 
 		css_include_tag('admin');
-		validate_form("video_edit");
+		use_jquery();
 	?>
 </head>
 <body style="background:#E1F0F7">
@@ -110,7 +110,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>关键词</td>
+			<td>标签</td>
 			<td align="left">
 				<select name="video[tags]">
 					<option value="">请选择</option>
@@ -124,6 +124,11 @@
 					echo ">$v</option>";
 				}
 				?>
+			</td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
+			<td>关键词</td>
+			<td align="left">
 				<input type="text" name="video[keywords]" value="<?php echo $video_record[0]->keywords;?>">(请用空格或者","分隔开关键词,比如:高考 升学)
 			</td>
 		</tr>
@@ -131,13 +136,13 @@
 			<td>在线视频</td><td align="left"><input type="text" size="50" name="video[online_url]" value="<?php echo $video_record[0]->online_url;?>">（如果本地上传视频此项请留空！）</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" ><a href="<?php echo $video_record[0]->photo_url;?>" target="_blank">点击查看图片</a>(请上传小于2M的图片，格式支持jpg、gif、png))</td>
+			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" >(请上传小于2M的图片，格式支持jpg、gif、png))<?php if($video_record[0]->photo_url!=''){?><a style="color:#0000FF" href="<?php echo $video_record[0]->photo_url;?>" target="_blank">点击查看图片</a><?php } ?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择视频</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file" ><?php if($video_record[0]->video_url!=''){?><a href="<?php echo $video_record[0]->video_url;?>" target="_blank">点击查看视频</a><?php } ?>(请上传视频，并且不要大于500M)</td>
+			<td>选择视频</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file" >(请上传视频，并且不要大于500M)<?php if($video_record[0]->video_url!=''){?><a style="color:#0000FF" href="<?php echo $video_record[0]->video_url;?>" target="_blank">点击下载视频</a><?php } ?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
-			<td>简短描述</td><td align="left"><textarea cols="80" rows="8" name="video[description]" class="required"><?php echo $video_record[0]->description;?></textarea></td>
+			<td>简短描述</td><td align="left"><textarea cols="80" rows="8" name="video[description]" id="description" class="required"><?php echo $video_record[0]->description;?></textarea></td>
 		</tr>
 
 		<tr bgcolor="#f9f9f9" height="30px;">
@@ -160,10 +165,6 @@
 </html>
 
 <script>
-	var url = $("#url").attr('value');
-	var new_url = url+"?category="+$("#url_s").attr('value');
-	$("#url").attr('value',new_url);
-	
 	$("#submit").click(function(){
 		var oEditor = FCKeditorAPI.GetInstance('title') ;
 		var title = oEditor.GetHTML();
@@ -191,6 +192,10 @@
 				}
 			}
 		}
+		if($("#description").val()==''){
+			alert('请输入简短描述！');
+			return false;
+		}
 	}); 	
 	
 	$("#is_recommend").click(function(){
@@ -203,8 +208,4 @@
 		}
 	});
 	
-	$("#url_s").change(function(){
-		new_url = url+"?category="+$(this).attr('value');
-		$("#url").attr('value',new_url);
-	});	
 </script>

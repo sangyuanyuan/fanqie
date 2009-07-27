@@ -8,9 +8,9 @@
 		$category = new table_class("smg_category");
 		$url = 'video_list.php';
 		if($type==""){	
-			$category_menu = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
+			$category_menu = $category->find("all",array('conditions' => "category_type='video'","order" => "platform,priority"));
 		}else{
-			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."'","order" => "priority"));	
+			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."'","order" => "platform,priority"));	
 		}
 	}else{
 		$category = new table_class("smg_category_dept");
@@ -21,7 +21,7 @@
 			$category_menu = $category->find("all",array('conditions' => "category_type='video' and name='".$type."' and dept_id=".$dept_id,"order" => "priority"));	
 		}
 		$category = new table_class("smg_category");
-		$category_menu2 = $category->find("all",array('conditions' => "category_type='video'","order" => "priority"));
+		$category_menu2 = $category->find("all",array('conditions' => "category_type='video'","order" => "platform,priority"));
 	}
 	
 	$dept = new table_class("smg_dept");
@@ -36,7 +36,7 @@
 	<title>SMG</title>
 	<?php 
 		css_include_tag('admin');
-		validate_form("video_add");
+		use_jquery();
 	?>
 </head>
 <body style="background:#E1F0F7">
@@ -105,7 +105,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>标签/关键词</td>
+			<td>标签</td>
 			<td align="left">
 				<select name="video[tags]">
 					<option value="">请选择</option>
@@ -115,7 +115,13 @@
 					echo "<option value='{$v}'>$v</option>";
 				}
 				?>
-				</select>　　/
+				</select>			
+			</td>
+		</tr>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
+			<td>关键词</td>
+			<td align="left">
 				<input type="text"name="video[keywords]">(请用空格或者","分隔开关键词,比如:高考 升学)				
 			</td>
 		</tr>
@@ -124,13 +130,13 @@
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 
-			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" class="required">(请上传小于2M的图片，格式支持jpg、gif、png)</td>
+			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file">(请上传小于2M的图片，格式支持jpg、gif、png)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>选择视频</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file">(请上传视频，并且不要大于500M)</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
-			<td>简短描述</td><td align="left"><textarea cols="80" rows="8" name="video[description]" class="required"></textarea></td>
+			<td>简短描述</td><td align="left"><textarea cols="80" rows="8" name="video[description]" id="description" class="required"></textarea></td>
 		</tr>
 
 		<tr bgcolor="#f9f9f9" height="30px;">
@@ -152,10 +158,6 @@
 </html>
 
 <script>
-	var url = $("#url").attr('value');
-	var new_url = url+"?category="+$("#url_s").attr('value');
-	$("#url").attr('value',new_url);
-	
 	$("#submit").click(function(){
 		var oEditor = FCKeditorAPI.GetInstance('title') ;
 		var title = oEditor.GetHTML();
@@ -170,6 +172,9 @@
 				alert("上传图片类型错误");
 				return false;
 			}
+		}else{
+			alert("请上传一个图片！");
+			return false;
 		}
 		if($("#video").val()!=''){
 			var upfile2 = $("#video").val();
@@ -181,6 +186,11 @@
 					return false;
 				}
 			}
+		}
+		
+		if($("#description").val()==''){
+			alert('请输入简短描述！');
+			return false;
 		}
 	}); 	
 	
@@ -194,8 +204,4 @@
 		}
 	});
 	
-	$("#url_s").change(function(){
-		new_url = url+"?category="+$(this).attr('value');
-		$("#url").attr('value',new_url);
-	});
 </script>
