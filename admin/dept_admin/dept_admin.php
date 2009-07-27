@@ -12,7 +12,7 @@
 		css_include_tag('admin');
 		use_jquery();
 		$dept_id = $_REQUEST['dept_id'];
-		$sql = "select a.* from smg_user a  right join smg_user_real b on a.smg_real_id = b.id where role_name='dept_admin' and b.dept_id=$dept_id";
+		$sql = "select a.* from smg_user a  right join smg_user_real b on a.smg_real_id = b.id where b.dept_id=$dept_id order by role_name";
 		$db = get_db();
 		$admins = $db->query($sql);		
 	?>
@@ -32,7 +32,7 @@
 				<tr class=tr3 id=<?php echo $admins[$i]->id;?> >
 					<td><?php echo $admins[$i]->name;?></td>
 					<td><?php echo $admins[$i]->nick_name;?></td>
-					<td><a class="del" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">删除</a></td>
+					<td><?php if ($admins[$i]->role_name=='member'){ ;?><a href="#" class="set_admin">设置为管理员</a><?php } else { ?><a class="del" name="<?php echo $record[$i]->id;?>" style="cursor:pointer;color:red;">取消管理员</a><?php };?></td>
 				</tr>
 		<?php
 			}
@@ -46,12 +46,21 @@
 	$(function(){
 		$('.del').click(function(){
 			var tparent = $(this).parent().parent();
-			if(confirm('您确认要删除吗?')){
+			if(confirm('您确认要取消管理员权限吗?')){
 				$.post('delete_dept_admin.php',{'id':$(this).parent().parent().attr('id')},function(){
-					$(tparent).remove();
+					window.location.reload();
 				});
 			}
 		});
+		
+		$('.set_admin').click(function(e){
+			e.preventDefault();
+			
+			var tparent = $(this).parent().parent();
+
+			$('#retdiv').load('add_dept_admin.php',{'dept_id':'<?php echo $dept_id;?>','id':$(tparent).attr('id')});
+		});
+		
 		$('#submit').click(function(){
 			$('#retdiv').load('add_dept_admin.php',{'dept_id':'<?php echo $dept_id;?>','name':$('#loginname').val()});
 		});
