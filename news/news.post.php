@@ -58,8 +58,7 @@
 		$news->can_commentable = 1;
 		$news->save();			
 	}
-	
+	alert("上传成功！谢谢！");
 	redirect('news_sub.php');
 	#var_dump($news);
-	
 ?>
