@@ -151,7 +151,7 @@
 	</table>
 	<input type="hidden" name="id" value="<?php echo $id;?>">
 	<input type="hidden"id="v_u" value="<?php if($video_record[0]->video_url!=''){echo 1;}?>">
-	<input type="hidden" name="type" value="edit">id="v_u"
+	<input type="hidden" name="type" value="edit">
 	<input type="hidden" name="url" id=url value="<?php echo $url;?>">
 	<?php if($role=='admin'){
 	?>
