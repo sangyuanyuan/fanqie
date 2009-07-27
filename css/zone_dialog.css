@@ -62,3 +62,5 @@ p{margin:0px; padding:0px;}
 .q_comment_item {width:654px; margin-top:5px;}
 #q_comment_list{border:1px groove #999999;padding:10px; min-height:300px;}
 .comment_question{background-color:#999999}
+
+#video{width:685px; margin-top:10px; margin-left:10px; text-align:center; float:left; display:inline;}

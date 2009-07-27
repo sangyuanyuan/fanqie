@@ -22,7 +22,7 @@
 		<div id=l_t></div>
 		<?php
 		
-			$sql = 'select * from smg_dialog order by create_time desc';
+			$sql = 'select * from smg_dialog where is_adopt=1 order by create_time desc';
 			$record=$db -> paginate($sql,5,"param1");
 		?>
 		<?php for($i=0;$i<count($record);$i++){ ?>
