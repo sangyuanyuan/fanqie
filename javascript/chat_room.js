@@ -42,6 +42,10 @@ function refresh(){
 	$('#ajax_result').load('chat_room.post.php',{'op':'refresh'});	
 }
 
+function refresh_waiter(count){
+	
+}
+
 function add_chat(content,type){
 	var name ='';
 	if(type=='i'){
@@ -76,8 +80,8 @@ function toggle_button(){
 		$('#find_chater').html('取消寻找');
 		$('#submit').attr('disabled',true);
 	}else if(chat_status == 'connected'){
-		$('#connect_msg').html('匹配成功');
-		$('#find_chater').html('断开');
+		$('#connect_msg').html('已经有一位聊友进入');
+		$('#find_chater').html('聊友已离开');
 		$('#submit').attr('disabled',false);
 	}
 	$('#chat_content_box').scrollTop(10000);

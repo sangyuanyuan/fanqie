@@ -24,6 +24,9 @@
 			break;
 		case 'delete_question':
 			$question = new table_class('smg_dialog_question');
+			$sql = 'delete from smg_dialog_answer where question_id=' .$_POST['question_id'];
+			$db = get_db();
+			$db->execute($sql);
 			if($question->delete($_POST['question_id'])){
 				$alert_str = '';
 			}else{
