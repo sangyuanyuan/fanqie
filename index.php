@@ -24,7 +24,7 @@
  		<div id=p1>
  			<!-- start top_left_top !-->
  			<?php
-				$sql = 'select n.id as news_id,n.short_title, c.platform,n.photo_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="每日之星" and c.platform="show" order by n.priority asc limit 4';
+				$sql = 'select i.id as img_id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="每日之星" and c.platform="show" order by i.priority asc limit 4';
 				$record_star=$db -> query($sql);
 				$sql = 'select n.short_title, c.platform,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="视频新闻" and c.platform="news" order by n.priority asc limit 4';
 				$record_video=$db -> query($sql);
@@ -43,9 +43,9 @@
 					<script type="text/javascript"> 
 					var pic_width1=271; //图片宽度
 					var pic_height1=183; //图片高度
-					var pics1="<?php echo $record_star[0]->photo_src.",".$record_star[1]->photo_src.",".$record_star[2]->photo_src.",".$record_star[3]->photo_src ?>";
-					var mylinks1="<?php echo "/show/article.php?id=".$record_star[0]->news_id.",/show/article.php?id=".$record_star[1]->news_id.",/show/article.php?id=".$record_star[2]->news_id.",/show/article.php?id=".$record_star[3]->news_id; ?>";
-					var texts1=<?php echo '"',flash_str_replace($record_star[0]->short_title).",".flash_str_replace($record_star[1]->short_title).",".flash_str_replace($record_star[2]->short_title).",".flash_str_replace($record_star[3]->short_title).'"'; ?>;
+					var pics1="<?php echo $record_star[0]->src.",".$record_star[1]->src.",".$record_star[2]->src.",".$record_star[3]->src ?>";
+					var mylinks1="<?php echo "/show/article.php?id=".$record_star[0]->img_id.",/show/article.php?id=".$record_star[1]->img_id.",/show/article.php?id=".$record_star[2]->img_id.",/show/article.php?id=".$record_star[3]->img_id; ?>";
+					var texts1=<?php echo '"',flash_str_replace($record_star[0]->title).",".flash_str_replace($record_star[1]->title).",".flash_str_replace($record_star[2]->title).",".flash_str_replace($record_star[3]->title).'"'; ?>;
  	
 					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
@@ -96,7 +96,7 @@
  				<div class=list id=list1>
  					<ul>
  						<?php for($i=0; $i<count($record_star); $i++){?>
- 						<li><a href="/show/article.php?id=<?php echo $record_star[$i]->news_id ?>" target=_blank><?php echo $record_star[$i]->short_title ?></a></li>
+ 						<li><a href="/show/show.php?id=<?php echo $record_star[$i]->img_id ?>" target=_blank><?php echo $record_star[$i]->title ?></a></li>
  						<? }?>
  					</ul>		
  				</div>  			 			
@@ -403,7 +403,7 @@
  				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;">快乐番茄</div>
  				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;">讨论区</div>
  					<?php
- 						$sql = 'select * from smg_tg s order by createtime desc limit 3';
+ 						$sql = 'select * from smg_tg where isadopt=1 order by createtime desc limit 3';
 						$record_tg=$db -> query($sql);		
 					?>	
  				<div class=content_trrt id=content_trrt1>
@@ -411,8 +411,8 @@
 					<div class=box>
 						<a href="/fqtg/fqtg.php?id=<?php echo $record_tg[$i]->id?>" target=_blank><img src="<?php echo $record_tg[$i]->photourl ?>" target=_blank border=0></a>
 						<ul>
-							<li><a href="/fqtg/fqtg.php?id=<?php echo $record_tg[$i]->id?>" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
-							<li style="height:36px; line-height:18px; color:#A1A0A0; overflow:hidden;"><?php echo $record_tg[$i]->content;?></li>
+							<li style="height:18px; overflow:hidden;"><a href="/fqtg/fqtg.php?id=<?php echo $record_tg[$i]->id?>" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
+							<li style="height:36px; line-height:18px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
 							<li style="color:#BD0A01">番茄价：<?php echo $record_tg[$i]->price ?></li>
 						</ul>
 					</div>
@@ -587,20 +587,20 @@
     	
   		<!-- start middle_center_top !-->
   		<?php
-  				$sql = 'select i.id as img_id,i.title,i.src,c.id as cid from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="我行我秀" and c.platform="show" order by i.priority asc limit 6';
+  				$sql = 'select i.id as img_id,i.title,i.src,c.id as cid from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.platform="show"  and src<>"" order by i.created_at desc limit 6';
 					$record_show=$db -> query($sql);
 
  					$sql = 'select n.id as news_id,n.short_title,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="部门比拼" and c.platform="show" order by n.priority asc limit 5';
 					$record_dept=$db -> query($sql);
   		?>
  			<div id=m_c_t>
- 				<a href="/show/list.php?type=image&id=<?php echo $record_show[0]->cid?>" id=more1 target=_blank></a>
+ 				<a href="/show/list.php?type=image" id=more1 target=_blank></a>
  				<a href="/show/list.php?type=news&id=<?php echo $record_dept[0]->cid?>" id=more2 target=_blank></a>
 
   			<div id=box1>
 	  			<a href="/show/show.php?id=<?php echo $record_show[0]->img_id?>" target=_blank><img src="<?php echo $record_show[0]->src ?>" border=0></a>
   				<ul>
-  					<?php for($i=0;$i<=4;$i++){?>
+  					<?php for($i=1;$i<6;$i++){?>
   					<li><a href="/show/show.php?id=<?php echo $record_show[$i]->img_id?>" target=_blank><?php echo $record_show[$i]->title?></a></li>
   					<? }?>
    				</ul>
@@ -633,7 +633,21 @@
  				</div>
  				
  				<div class=box>
-
+   				<?php
+ 						$sql = 'select * from smg_dialog where is_adopt=1 order by create_time desc limit 3';
+						$record=$db -> query($sql);
+  				?>
+  				<img src="<?php echo $record[0]->photo_url ?>">
+  				<div id=context1>
+  					<a href="/zone/dialog.php?id=<?php echo $record[0]->id ?>" target=_blank><?php echo $record[0]->title ?></a>
+  				</div>
+  				<div id=context2>
+  					<?php echo $record[0]->content ?>
+  				</div>
+  				<div id=context3>
+  					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[1]->id ?>" target=_blank><?php echo $record[1]->title ?></a></li>
+  					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[2]->id ?>" target=_blank><?php echo $record[2]->title ?></a></li>
+  				</div>
  				</div>
  			</div>
  			<!-- end !-->	      	
@@ -646,6 +660,7 @@
 				$record_video=$db -> query($sql);
 			?>
  			<div id=m_r_t>
+ 				<a href="/blog/" id=more target=_blank></a>
 				<div id=content_mrt>
   					<li><a href="/show/video.php?id=<?php echo $record_video[0]->video_id ?>" style="color:#F0474E; font-size:14px; font-weight:bold" target=_blank><?php echo $record_video[$i]->title?></a></li>
 					<?php for($i=1;$i<6;$i++){?>
