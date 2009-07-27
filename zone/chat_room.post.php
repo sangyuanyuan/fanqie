@@ -36,6 +36,7 @@
 			break;
 		case 'refresh':
 			$today = substr(now(), 0,10);
+			$expire_date = mktime(date('H')+1,date('i'),date('s'),date('m'),date('d'),date('Y'));
 			$msgs = $db->query("select * from smg_chat_message where reciever='$chat_id' and created_at >='$today'");
 			if(is_array($msgs)){
 				foreach ($msgs as $v) {
@@ -47,11 +48,11 @@
 					if($v->msg_type=='chat'){
 						$str .= "add_chat('{$v->content}','h');";
 					}else if($v->msg_type=='connect'){
-						$str .= "add_chat('匹配成功','s');";
+						$str .= "add_chat('已经有一位聊友进入','s');";
 						$_SESSION['remote_id'] = $v->content;
 						set_status('connected');
 					}else if($v->msg_type == 'disconnect'){
-						$str .= "add_chat('对方已断开连接','s');";
+						$str .= "add_chat('聊友已离开','s');";
 						unset($_SESSION['remote_id']);
 						set_status('');						
 					}
