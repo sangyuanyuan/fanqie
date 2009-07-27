@@ -133,7 +133,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>在线视频</td><td align="left"><input type="text" size="50" name="video[online_url]" value="<?php echo $video_record[0]->online_url;?>">（如果本地上传视频此项请留空！）</td>
+			<td>在线视频</td><td align="left"><input type="text" size="50" name="video[online_url]" value="<?php echo $video_record[0]->online_url;?>" id="online">（如果本地上传视频此项请留空！）</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" >(请上传小于2M的图片，格式支持jpg、gif、png))<?php if($video_record[0]->photo_url!=''){?><a style="color:#0000FF" href="<?php echo $video_record[0]->photo_url;?>" target="_blank">点击查看图片</a><?php } ?></td>
@@ -191,7 +191,12 @@
 					return false;
 				}
 			}
+		}else{
+			if($("#online").val()==''){
+				alert('请上传一个视频或者输入在线视频地址！');
+			}
 		}
+		
 		if($("#description").val()==''){
 			alert('请输入简短描述！');
 			return false;
