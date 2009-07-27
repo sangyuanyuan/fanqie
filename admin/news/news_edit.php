@@ -109,9 +109,9 @@
 		<tr class=tr3 id=tr_file_name >
 			<td>上传文件</td>
 			<td align="left">
-				<input type="file" name=file_name value="<?php echo $news->file_name;?>">
+				<input type="file" name=file_name id="file_name" value="<?php echo $news->file_name;?>">
 				<?php
-					if($news->news_type == 2 && $news->file_name){
+					if($news->file_name){
 						?>
 						　<a href="<?php echo $news->file_name;?>" target="_blank" style="color:blue;">查看</a>
 						<?php

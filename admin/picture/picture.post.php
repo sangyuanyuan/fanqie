@@ -29,10 +29,11 @@
 	$smg_image->publisher = $_COOKIE['smg_user_nickname'];
 	$smg_image->update_attributes($_POST['picture']);
 	if($_POST['special_type']==""){
-		if($smg_image->dept_category_id!=''){
-			redirect($_POST['url'] .'?category=' .$smg_image->dept_category_id);
-		}else{
+		if($smg_image->category_id!=''){
 			redirect($_POST['url'] .'?category=' .$smg_image->category_id);
+		}else{
+			redirect($_POST['url']);
+
 		}
 	}elseif($_POST['special_type']=="总裁奖"){
 		redirect('/admin/zongcai/zongcai_image.php');

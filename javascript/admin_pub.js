@@ -77,7 +77,7 @@ $(function(){
     			id_str=id_str+$(this).attr("name")+"|";
     			priority_str=priority_str+$(this).attr("value")+"|";
 			});
-			$.post("/admin/pub/pub.post.php",{'id_str':id_str,'priority_str':priority_str,'db_table':$('#db_talbe').attr('value'),'post_type':'edit_priority'},function(data){
+			$.post("/admin/pub/pub.post.php",{'id_str':id_str,'priority_str':priority_str,'db_table':$('#db_talbe').attr('value'),'post_type':'edit_priority','is_dept_list':$('#is_dept_list').attr('value')},function(data){
 				window.location.reload();
 			});		
 			

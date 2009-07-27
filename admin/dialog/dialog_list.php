@@ -25,8 +25,8 @@
 <body style="background:#E1F0F7">
 	<table width="795" border="0">
 		<tr class="tr1">
-			<td colspan="5" width="795">　　　<a href="dialog_add.php" style="color:#0000FF">添加对话</a>　　　　　　
-			<span style="margin-left:100px; font-size:13px">搜索&nbsp;&nbsp;<input id="search_text" type="text" value="<? echo $key;?>"></span>
+			<td colspan="5" width="795">　<a href="dialog_add.php" style="color:#0000FF">添加对话</a> 　　　
+			<span style="font-size:13px">搜索　<input id="search_text" type="text" value="<? echo $key;?>"></span>
 			<input type="button" value="搜索" id="dialog_search" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>

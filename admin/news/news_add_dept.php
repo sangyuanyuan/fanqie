@@ -46,11 +46,11 @@
 			<td colspan="6" width="795">　　添加新闻</td>
 		</tr>
 		<tr class=tr3>
-			<td width="130">标题/短标题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50",'',300);?>　/　<?php show_fckeditor('news[short_title]','Title',false,"50",'',300);?><span id="max_len"></span></td>
+			<td width="130">标题/短标题</td><td width="695" align="left"><input type="text" name="news[title]" id="news_title">　/　<input type="text" name="news[short_title]" id="news_short_title"><span id="max_len"></span></td>
 		</tr>
 		<tr class=tr3>
 			<td>分　类</td>
-			<td align="left" class="newsselect1" ><span id="td_category_select"></span><a href="#" id="a_add_category" style="color:blue;">添加</a></td>
+			<td align="left" class="newsselect1" ><span id="td_category_select"></span></td><!-- <a href="#" id="a_add_category" style="color:blue;">添加</a></td>-->
 		</tr>
 		
 		<?php if($role=='dept_admin'){?>
@@ -74,17 +74,8 @@
 			</td>
 		</tr>
 		<tr class=tr3>
-			<td>标签/关键词/优先级</td>
+			<td>关键词/优先级</td>
 			<td align="left">
-				<select name="news[tags]">
-					<option value="">请选择</option>
-				<?php
-				$tags = get_config('g_news_tags');
-				foreach ($tags as $v) {
-					echo "<option value='{$v}'>$v</option>";
-				}
-				?>
-				</select>　　/　　
 				<input type="text" size="20" name=news[keywords]>(空格分隔)　　/　　
 				<input type="text" size="10" name=news[dept_priority] class="number">(0~100)</td>
 		</tr>		
@@ -125,11 +116,12 @@
 			<td>其他选项</td>
 			<td align="left">
 				<input type="checkbox" name="news[forbbide_copy]" value="1">禁止复制  
-				<input type="checkbox" name="news[is_dept_adopt]" value="1" checked="checked">直接发布  		
+					
 				<!-- <input type="checkbox" name="news[image_flag]" value="1">图片提示　-->
-				<input type="checkbox" id="check_box_commentable" value="1" checked="checked">开启评论 
-				<a style="color:blue;" href="filte_news.php?width=600&height=400" class="thickbox" id="related_news">手动关联相关新闻</a> 
-				<!-- <a style="color:blue;" href="related_video.php?width=600&height=400" class="thickbox" id="related_news">关联相关视频</a>				 -->
+				<input type="checkbox" id="check_box_commentable" value="1" checked="checked">开启评论 				
+				<!-- <a style="color:blue;" href="related_video.php?width=600&height=400" class="thickbox" id="related_news">关联相关视频</a>
+				<input type="checkbox" name="news[is_dept_adopt]" value="1" checked="checked">直接发布 
+				<a style="color:blue;" href="filte_news.php?width=600&height=400" class="thickbox" id="related_news">手动关联相关新闻</a>  					 -->
 			</td>
 		</tr>
 		<tr class="normal_news tr3">

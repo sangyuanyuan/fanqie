@@ -3,7 +3,7 @@
 <head>
 <title>新闻中心内网</title>
 <link href="css/yhzs.css" rel="stylesheet" type="text/css">
-<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script language="javascript" src="/js/smg.js"></script>
 </head>
 <body>

@@ -33,7 +33,7 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td width="365">内容</td><td width="140">发布人</td><td width="140">所属问题</td><td width="140">所属对话</td><td width="140">创建时间</td><td width="250">操作</td>
+			<td width="165">内容</td><td width="100">发布人</td><td width="200">所属问题</td><td width="100">所属对话</td><td width="100">创建时间</td><td width="100">操作</td>
 		</tr>
 		<?php for($i=0;$i<$count;$i++){?>
 		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
@@ -42,8 +42,7 @@
 			<td><?php echo $records[$i]->question_content;?></td>
 			<td><?php echo $records[$i]->title;?></td>
 			<td><?php echo substr($records[$i]->create_time, 0, 10);$records[$i]->create_time;?></td>
-			<td><a href="/admin/comment/comment.php?id=<?php echo $records[$i]->id;?>&type=dialog" style="color:#000000; text-decoration:none">评论</a>
-				<span style="color:#FF0000; cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
+			<td><span style="color:#FF0000; cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
 			</td>
 		</tr>
 		<? }?>

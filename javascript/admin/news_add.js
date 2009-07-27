@@ -4,7 +4,9 @@
 $(function(){
 	
 	$('#news_add').submit(function(){
-		if($('#video_src').val() != undefined && $('#video_src').val() != ''){
+		var video_array = new Array('flv','wmv','wav','mp3','mp4','avi','rm');
+		var pic_array = new Array('jpg','png','bmp','gif','icon');
+		if($('#video_src').val() != ''){
 			var video_src = $('#video_src').val().replace(/.+\./,'');
 			video_src = video_src.toLowerCase();
 			if(jQuery.inArray(video_src,video_array) == -1){
@@ -12,7 +14,7 @@ $(function(){
 				return false;
 			}
 		}
-		if($('#video_pic').val() != undefined && $('#video_pic').val() != ''){
+		if($('#video_pic').val() != ''){
 			var video_pic = $('#video_pic').val().replace(/.+\./,'');
 			video_pic = video_pic.toLowerCase();
 			if(jQuery.inArray(video_pic,pic_array) == -1){

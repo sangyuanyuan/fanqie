@@ -43,11 +43,11 @@
 			<td colspan="6" width="795">　　编辑新闻</td>
 		</tr>
 		<tr class=tr3>
-			<td width="130">标题/短标题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50",$news->title,300);?>　/　<?php show_fckeditor('news[short_title]','Title',false,"50",$news->short_title,300);?><span id="max_len"></span></td>
+			<td width="130">标题/短标题</td><td width="695" align="left"><input type="text" name="news[title]" id="news_title" value="<?php echo $news->title;?>">　/　<input type="text" name="news[short_title]" id="news_short_title" value="<?php echo $news->short_title;?>"><span id="max_len"></span></td>
 		</tr>
 		<tr class=tr3>
 			<td>分　类</td>
-			<td align="left" class="newsselect1" ><span id="td_category_select"></span><a href="#" id="a_add_category" style="color:blue;">添加</a></td>
+			<td align="left" class="newsselect1" ><span id="td_category_select"></span></td> <!-- <a href="#" id="a_add_category" style="color:blue;">添加</a></td>-->
 		</tr>
 		
 		<?php if($role=='dept_admin'){?>
@@ -71,21 +71,8 @@
 			</td>
 		</tr>
 		<tr class=tr4 id=newsshow3 >
-			<td>标签/关键词/优先级</td>
+			<td>关键词/优先级</td>
 			<td align="left">
-				<select name="news[tags]">
-					<option value="">请选择</option>
-				<?php
-				$tags = get_config('g_news_tags');
-				foreach ($tags as $v) {
-					echo "<option value='{$v}'"; 
-					if($v == $news->tags)
-					echo "selected='selected'";
-					
-					echo ">$v</option>";
-				}
-				?>
-				</select>　　/　　
 				<input type="text" size="20" name=news[keywords]  value="<?php echo $news->keywords;?>">(空格分隔)　　/　　
 				<input type="text" size="10" name=news[dept_priority] class="number" value="<?php echo $news->dept_priority;?>">(0~100)</td>
 		</tr>		
@@ -93,7 +80,7 @@
 		<tr class=tr3 id=tr_file_name >
 			<td>上传文件</td>
 			<td align="left" id="tr_file_name">
-				<input type="file" name=file_name value="<?php echo $news->file_name;?>">
+				<input type="file" name=file_name id="file_name" value="<?php echo $news->file_name;?>">
 				<?php
 					if($news->news_type == 2 && $news->file_name){
 						?>
@@ -163,12 +150,12 @@
 		<tr id=newsshow3  class="normal_news tr4">
 			<td>其他选项</td>
 			<td align="left">
-				<input type="checkbox" name="news[forbbide_copy]" value="1" <?php if($news->forbbide_copy==1){?>checked="checked" <?php } ?>>禁止复制  
-				<input type="checkbox" name="news[is_dept_adopt]" value="1">直接发布  				
+				<input type="checkbox" name="news[forbbide_copy]" value="1" <?php if($news->forbbide_copy==1){?>checked="checked" <?php } ?>>禁止复制   				
 				<!-- <input type="checkbox" name="news[image_flag]" value="1" <?php if($news->image_flag == 1) echo "checked=\"checked\"";?>>图片提示　-->
 				<input type="checkbox" id="check_box_commentable" <?php if($news->is_commentable) echo 'checked="checked"';?>>开启评论  
-				<a style="color:blue;" href="filte_news.php?width=600&height=400" class="thickbox" id="related_news">手动关联相关新闻</a>
-				<!-- <a style="color:blue;" href="related_video.php?width=600&height=400" class="thickbox" id="related_news">关联相关视频</a>-->
+				<!-- <a style="color:blue;" href="filte_news.php?width=600&height=400" class="thickbox" id="related_news">手动关联相关新闻</a>
+								<input type="checkbox" name="news[is_dept_adopt]" value="1">直接发布 
+				<a style="color:blue;" href="related_video.php?width=600&height=400" class="thickbox" id="related_news">关联相关视频</a>-->
 			</td>
 		</tr>
 		<tr id=newsshow1  class="normal_news tr3">

@@ -82,6 +82,11 @@
 			$news -> find($id);
 			$news->click_count = $news->click_count+1;
 			$news -> save();
+			if($news->news_type==2){
+				redirect($news->file_name);
+			}elseif($news->news_type==3){
+				redirect($news->target_url);
+			}
 		?>
 		<div class=top>
 			<div class=left><?php $category_name = category_name_by_id($news->category_id); echo $category_name; ?></div>
