@@ -67,12 +67,12 @@
 		
 		<?php if($role=='dept_admin'){?>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;">
-			<td>是否推荐到集团首页</td><td align="left"><input type="checkbox"  id=is_recommend <?php if($picture_record[0]->is_recommend=='1'){?>checked="checked"<?php }?>></td>
+			<td>是否推荐到集团首页</td><td align="left"><input type="checkbox"  id=is_recommend <?php if($picture_record[0]->is_recommend=='1'){?>checked="checked" disabled="disabled"<?php }?>></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id="index_category" <?php if($picture_record[0]->is_recommend=='0'){?>style="display:none"<?php }?>>
 			<td>首页分类</td>
 			<td align="left">
-				<select id=select name="picture[category_id]">
+				<select id=select name="picture[category_id]" <?php if($picture_record[0]->is_recommend=='1'){?>disabled="disabled"<?php }?> >
 					<option value="">请选择分类</option>
 					<?php	
 						for($i=0;$i<count($category_menu2);$i++){
