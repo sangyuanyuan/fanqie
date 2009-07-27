@@ -77,7 +77,7 @@
 					<?php	
 						for($i=0;$i<count($category_menu2);$i++){
 					?>
-						<option value="<?php echo $category_menu2[$i]->id;?>"><?php echo $category_menu2[$i]->name;?></option>
+						<option value="<?php echo $category_menu2[$i]->id;?>" <?php  if($category_menu2[$i]->id==$picture_record[0]->category_id){?>selected="selected"<?php }?> ><?php echo $category_menu2[$i]->name;?></option>
 					<? }?>
 				</select>
 			</td>
