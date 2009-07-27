@@ -23,6 +23,7 @@
 		$pos_end = strpos(strtolower($news->content), '>',$pos);
 		$imgstr = substr($news->content, $pos,$pos_end -$pos +1);
 		#alert($pos_end .';'.$imgstr);
+		$imgstr = str_replace('\"', '"', $imgstr);
 		$pos = strpos($imgstr, 'src="');
 		$pos_end = strpos($imgstr, '"',$pos + 5);
 		$src = substr($imgstr, $pos+5,$pos_end - $pos - 5);

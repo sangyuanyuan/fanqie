@@ -1,6 +1,9 @@
 <?php
+if($_REQUEST['hide_retdiv']){
+  	echo "<div id=retdiv>";
+  }
 ?>
-<h2><?php echo "赠送礼物给{$_POST['nickname']}";?></h2>
+<h2><?php echo "赠送礼物给{$_REQUEST['nickname']}";?></h2>
 <div id="msg_box">
 	您的大名:<input type="text" id="name">	
 	<div>
@@ -39,14 +42,19 @@
 				return false;
 			}
 			var src = $('input:checked').prev().attr('src');
-			$.post('send_gift.post.php',{'gift[reciever]':'<?php echo $_POST["loginname"];?>','gift[sender]':sender,'gift[message]':tcontent,'gift[gift_src]':src},function(data){
+			$.post('send_gift.post.php',{'gift[reciever]':'<?php echo $_REQUEST["loginname"];?>','gift[sender]':sender,'gift[message]':tcontent,'gift[gift_src]':src},function(data){
 				alert(data);
 				$('#tcontent').val('');
 			});
 		});
 		
 		$('#cancel').click(function(){
-			$('#retdiv').load('send_gift_day.php',{'date':'<?php echo $_POST["date"];?>','hide_retdiv':true});
+			$('#retdiv').load('send_gift_day.php',{'date':'<?php echo $_REQUEST["date"];?>','hide_retdiv':true});
 		});
 	});
 </script>
+<?php 
+if($_REQUEST['hide_retdiv']){
+  	echo "</div>";
+  }
+  ?>

@@ -3,7 +3,9 @@
  */
 $(function(){
 	
-	$('#news_edit').submit(function(){
+	$('#news_edit').submit(function(){		
+		var video_array = new Array('flv','wmv','wav','mp3','mp4','avi','rm');
+		var pic_array = new Array('jpg','png','bmp','gif','icon');
 		if($('#video_src').val() != ''){
 			var video_src = $('#video_src').val().replace(/.+\./,'');
 			video_src = video_src.toLowerCase();
@@ -68,10 +70,11 @@ $(function(){
 				alert('请输入新闻目标地址!');
 				return false;
 			}
+		}else if(news_type==2 && $('#file_name').next('a').length <= 0 && $('#file_name').val() == ''){
+			alert('请选择上传的文件!');
+			return false;
 		}
-		
-
-		
+				
 		return true;
 	});
 	
