@@ -29,7 +29,7 @@
 			}else{
 				$alert_str = '删除失败!';
 			};
-			echo "<script>alert('$alert_str');location.reload();</script>";
+			echo "<script>location.reload();</script>";
 			exit;
 		case 'answer_question':
 			$tanswer = new table_class('smg_dialog_answer');
