@@ -28,15 +28,15 @@ $rows=$db->paginate($strsql,20);
 	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td colspan="5" width="795">　　　<a href="tginsert.php" style="color:#0000FF">发布团购</a>　　　　　　
-			搜索　<input id=newskey1 type="text" value="<? echo $key1?>" onKeyPress="newskeypress()">
+			搜索　<input id=newskey1 type="text" value="<? echo $key1?>" >
 				  <input id=newskey2 type="hidden">
 				  <input id=newskey3 type="hidden">
-			<select id=newskey4 style="width:100px" onChange="newskey()">
+			<select id=newskey4 style="width:100px">
 				<option value="">发布状况</option>
 				<option value="1" <? if($key4=="1"){?>selected="selected"<? }?>>已发布</option>
 				<option value="0" <? if($key4=="0"){?>selected="selected"<? }?>>未发布</option>
 			</select>
-			<input type="button" value="搜索" style="border:1px solid #0000ff; height:21px" onClick="newskey()">
+			<input id="searchinput" type="button" value="搜索" style="border:1px solid #0000ff; height:21px" >
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
@@ -51,7 +51,7 @@ $rows=$db->paginate($strsql,20);
 			<td><? if($rows[$i]->isadopt=="1"){?><span class="tgcan" style="color:#FF0000;cursor:pointer">撤消</span><input type="hidden" value="<?php echo $rows[$i]->id;?>"><? }?>
 				<? if($rows[$i]->isadopt=="0"){?><span class="tgpub" style="color:#0000FF;cursor:pointer">发布</span><input type="hidden" value="<?php echo $rows[$i]->id;?>"><? }?>
 				 <a href="tgupdate.php?id=<? echo $rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-				 <span style="cursor:pointer" class="tgdel">删除</span><input type="hidden" value="<?php echo $rows[$i]->id;?> ?>">
+				 <span style="cursor:pointer" class="tgdel">删除</span><input type="hidden" value="<?php echo $rows[$i]->id;?>">
 			</td>
 		</tr>
 		<?  }?>

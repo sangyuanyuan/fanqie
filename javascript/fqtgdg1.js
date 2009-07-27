@@ -8,14 +8,14 @@ $(document).ready(function(){
 				var address=$("#address").attr['value'];
 				var maxnum=$("#tg_maxnum").attr['value'];
 				var nownum=$("#tg_count").attr['value'];
-				if(buyname==""){alert("ÓÃ»§ÐÕÃû²»ÄÜÎª¿Õ£¡");return false;}
-				if(spname==""){alert("ÉÌÆ·Ãû³Æ²»ÄÜÎª¿Õ£¡");return false;}
-				if(mobile==""){alert("ÁªÏµ·½Ê½²»ÄÜÎª¿Õ£¡");return false;}
-				if(address==""){alert("ËÍ»õµØÖ·²»ÄÜÎª¿Õ£¡");return false;}
-				if(num==""){alert("ÊýÁ¿²»ÄÜÎª¿Õ£¡");return false;}
+				if(buyname==""){alert("ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½");return false;}
+				if(spname==""){alert("ï¿½ï¿½Æ·ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½");return false;}
+				if(mobile==""){alert("jÏµï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½");return false;}
+				if(address==""){alert("ï¿½Í»ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½");return false;}
+				if(num==""){alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½");return false;}
 				if(maxnum!="")
 				{
-					if((parseInt(num)+parseInt(nownum))>maxnum){alert("¶Ô²»Æð´æ»õ²»×ã£¡");return false;}
+					if((parseInt(num)+parseInt(nownum))>maxnum){alert("ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¡");return false;}
 				}
 				document.fqtg.submit();			
 		})
@@ -26,5 +26,38 @@ $(document).ready(function(){
 				  location.reload();
 				}
 			)
+		})
+		$(".b_t_title1").mouseover(function(){		
+			$(".b_t_title1").css("background","url(/images/news/news_r_title_bg.jpg) repeat-x");
+			$(".b_t_title1").css("font-weight","bold");
+			$(".b_t").css("display","none");
+			$(this).css("background","url(/images/news/news_r_b_t_title2.jpg) no-repeat");
+			$(this).css("font-weight","normal");
+			var num=$(this).attr("param");
+			$("#b_t_"+num).css("display","block");
+		})
+		
+		$(".b_b_title1").mouseover(function(){		
+			$(".b_b_title1").css("background","url(/images/news/news_r_title_bg.jpg) repeat-x");
+			$(".b_b_title1").css("color","#000000");
+			$(".b_b_title1").css("text-decoration","none");
+			$(".b_b_title1").css("font-weight","bold");
+			$(".b_b").css("display","none");
+			$(this).css("background","url('/images/news/news_r_b_b_title1.jpg') no-repeat");
+			$(this).css("color","#C2130E");
+			$(this).css("font-weight","normal");
+			$(this).css("text-decoration","underline");
+			var num=$(this).attr("param");
+			$("#b_b_"+num).css("display","block");
+		})
+		
+		$(".b_head_title1").mouseover(function(){		
+			$(".b_head_title1").css("background","none");
+			$(".b_head_title1").css("color","#000000");
+			$(".b_b").css("display","none");
+			$(this).css("background","#DD0D0B");
+			$(this).css("color","#ffffff");
+			var num=$(this).attr("param");
+			$("#b_b_"+num).css("display","block");
 		})
 	})

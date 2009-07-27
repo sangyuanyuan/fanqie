@@ -43,7 +43,10 @@
 			<td colspan="6" width="795">　　编辑新闻</td>
 		</tr>
 		<tr class=tr3>
-			<td width="130">标题/短标题</td><td width="695" align="left"><input type="text" name="news[title]" id="news_title" value="<?php echo $news->title;?>">　/　<input type="text" name="news[short_title]" id="news_short_title" value="<?php echo $news->short_title;?>"><span id="max_len"></span></td>
+			<td width="130">标题</td><td width="695" align="left"><input type="text" name="news[title]" id="news_title" value="<?php echo $news->title;?>"></td>
+		</tr>
+		<tr class=tr3>
+			<td width="130">短标题</td><td width="695" align="left"><input type="text" name="news[short_title]" id="news_short_title" value="<?php echo $news->short_title;?>"><span id="max_len"></span></td>
 		</tr>
 		<tr class=tr3>
 			<td>分　类</td>
@@ -71,12 +74,16 @@
 			</td>
 		</tr>
 		<tr class=tr4 id=newsshow3 >
-			<td>关键词/优先级</td>
+			<td>关键词</td>
 			<td align="left">
-				<input type="text" size="20" name=news[keywords]  value="<?php echo $news->keywords;?>">(空格分隔)　　/　　
-				<input type="text" size="10" name=news[dept_priority] class="number" value="<?php echo $news->dept_priority;?>">(0~100)</td>
+				<input type="text" size="20" name=news[keywords]  value="<?php echo $news->keywords;?>">(空格分隔)
+			</td>
 		</tr>		
-		
+		<tr class=tr4 id=newsshow3 >
+			<td>优先级</td>
+			<td align="left">
+				<input type="text" size="10" name=news[dept_priority] class="number" value="<?php echo $news->dept_priority;?>">(0~100)</td>
+		</tr>
 		<tr class=tr3 id=tr_file_name >
 			<td>上传文件</td>
 			<td align="left" id="tr_file_name">
