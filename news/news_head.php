@@ -78,76 +78,13 @@
 			<?php 
 			if($record[0]->vote_id!=""){?>
 				
-				<?php $sql="select * from smg_vote where id=".$record[0]->vote_id;
-				$record1=$db->query($sql);
-				$sql="select * from smg_vote_item where vote_id=".$record1[0]->id;
-				$record2=$db->query($sql);
-				if($record1[0]->vote_type=="more_vote"){		
-				?>
 				<div class=vote>
-						<?php
-						for($i=0;$i<count($record2);$i++){
-						$sql="select * from smg_vote where id=".$record2[$i]->sub_vote_id;
-						$record3=$db->query($sql);
-						?>
-						<div class=content>
-						 <?php echo $record3[0]->name;?></div>
-						<?php for($j=0;$j<count($record3);$j++){
-							$sql="select * from smg_vote_item where vote_id=".$record3[$j]->id;
-							$record4=$db->query($sql);
-						if($record3[$j]->max_item_count>1){?>
-						<?php if($record3[$j]->vote_type=="word_vote"){
-							 for($k=0;$k<count($record4);$k++){ ?>
-							<div class=content><input name="cb<?php echo $i; ?>" type="checkbox" value="<?php echo $record4[$k]->id;?>">
-							<?php echo $record4[$k]->title;?></div>
-								<?php }}else{
-									for($k=0;$k<count($record4);$k++){ 
-								?>
-								<div class=content><input name="cb<?php echo $i; ?>" type="checkbox" value="<?php echo $record4[$k]->id;?>"><img src="<?php echo $record4[$k]->photourl;?>"></div>		
-								<?php }}?>
-						<?php }else{?>
-						<?php if($record3[$j]->vote_type=="word_vote"){ 
-							for($k=0;$k<count($record4);$k++){
-						?>
-							<div class=content><input name="rb<?php echo $i;?>"  type="radio" value="<?php echo $record4[$k]->id;?>"><?php echo $record4[$k]->title;?></div>
-								<?php }}else{
-									for($k=0;$k<count($record4);$k++){
-									?>
-							<div class=content><input name="rb<?php echo $i; ?>"  type="radio" value="<?php echo $record4[$k]->id;?>"><img src="<?php echo $record4[$k]->photourl;?>"></div>
-								<?php }}?>
-						<?php } }?>
-						<div class="btn"><button class="vote_submit" param="<?php echo $i;?>"> 投票</button><input type="hidden" value="<?php echo $record4[0]->vote_id;?>"><input type="hidden"  value="<?php echo $record3[0]->limit_type;?>">　<button class="show_vote">查看</button></div>
-					<?php }?>
+				<?php 
+						$vote = new smg_vote_class();
+						$vote->find($record[0]->vote_id);
+						$vote->display(array('submit_src'=>'/images/news/news_vote_button.jpg','view_src'=>'/images/news/news_view_button.jpg')); ?>
 				</div>
-				<? 
-				}else{?>
-				<div class=vote>
-					<div class=content><?php echo $record1[0]->name;?></div>
-					<?php for($i=0;$i<count($record2);$i++){ 
-						if($record1[0]->max_item_count>1){
-					?>
-					<?php if($record1[0]->vote_type=="word_vote"){?>
-						<div class=content>
-							<input name="cb0" type="checkbox" value="<?php echo $record2[$i]->id;?>"><?php echo $record2[$i]->title;?>
-						</div>
-						<?php }else{?>
-						<div class=content>
-							<input name="cb0" type="checkbox" value="<?php echo $record2[$i]->id;?>"><img src="<?php echo $record2[$i]->photourl;?>">
-						</div>		
-						<?php }}
-						else{?>
-						<?php if($record1[0]->vote_type=="word_vote"){?>
-							<div class=content>
-								<input name="rb0" type="radio" value="<?php echo $record2[$i]->id;?>">
-								<?php echo $record2[$i]->title;?></div>
-							<?php }else{?>
-								<div class=content><input name="rb0" type="radio" value="<?php echo $record2[$i]->id;?>"><img src="<?php echo $record2[$i]->photourl;?>"></div>		
-							<?php }
-						}
-						}?>	
-					<div class="btn"><button class="vote_submit" param="0">投票</button><input type="hidden" id="vote_id" value="<?php echo $record2[0]->vote_id; ?>"><input type="hidden" value="<?php echo $record1[0]->limit_type;?>"> <button id="show_vote">查看</button></div>
-				</div>
-			<? }}?>
+			<? }?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<?php if(count($about)>0||count($about)>0){?>

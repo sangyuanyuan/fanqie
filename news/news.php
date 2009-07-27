@@ -73,15 +73,13 @@
 				<?php echo get_fck_content($record[0]->content);?>
 			</div>
 			<?php 
-			if($record[0]->vote_id!=""){?>
-				
+			if($record[0]->vote_id!=""){?>	
 				<div class=vote>
 				<?php 
 						$vote = new smg_vote_class();
 						$vote->find($record[0]->vote_id);
 						$vote->display(array('submit_src'=>'/images/news/news_vote_button.jpg','view_src'=>'/images/news/news_view_button.jpg')); ?>
-				</div>
-				
+				</div>	
 			<? }?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
 			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
