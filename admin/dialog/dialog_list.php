@@ -43,6 +43,8 @@
 				<a href="dialog_edit.php?id=<?php echo $records[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
 				<span style="cursor:pointer" class="del_dialog" name="<?php echo $records[$i]->id;?>">删除</span>
 				<a href="/admin/comment/comment.php?id=<?php echo $records[$i]->id;?>&type=dialog" style="color:#000000; text-decoration:none">评论</a>
+				<a href="dialog_question.php?id=<?php echo $records[$i]->id;?>" style="color:#000000; text-decoration:none">问题</a>
+				<a href="dialog_answer.php?id=<?php echo $records[$i]->id;?>" style="color:#000000; text-decoration:none">回答</a>
 			</td>
 		</tr>
 		<? }?>

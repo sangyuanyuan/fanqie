@@ -34,9 +34,9 @@
 		</tr>
 		<?php for($i=0;$i<$count;$i++){?>
 		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
-			<td><?php echo $records[$i]->content;?></td>
+			<td><?php echo $records[$i]->title;?></td>
 			<td><?php echo substr($records[$i]->create_time,0,10);?></td>
-			<td><?php if($records[$i]->is_used=='1'){?><font color='#FF0000'>已采纳</font><?php }else{?><a href="dialog_add.php?id=<?php echo $records[$i]->id;?>&title=<?php echo $records[$i]->content;?>" style="color:#0000FF; text-decoration:none">采纳</a><?php }?>
+			<td><?php if($records[$i]->is_used=='1'){?><font color='#FF0000'>已采纳</font><?php }else{?><a href="dialog_add.php?id=<?php echo $records[$i]->id;?>" style="color:#0000FF; text-decoration:none">采纳</a><?php }?>
 				<span style="cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
 			</td>
 		</tr>

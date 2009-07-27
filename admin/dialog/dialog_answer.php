@@ -1,11 +1,12 @@
 <?php
 	require_once('../../frame.php');
+	$id = $_REQUEST['id'];
 	$key1 = $_REQUEST['key1'];
 	$db = get_db();
 	if($key1!=''){
-		$sql = 'SELECT t1.*,t2.nick_name,t3.content as question_content,t4.title FROM  smg_dialog_answer t1,smg_user t2,smg_dialog_question t3,smg_dialog t4 where t1.leader_id=t2.id and t1.question_id=t3.id and t1.dialog_id = t4.id and t1.content like "%'.trim($key1).'%"';
+		$sql = 'SELECT t1.*,t2.nick_name,t3.content as question_content,t4.title FROM  smg_dialog_answer t1,smg_user t2,smg_dialog_question t3,smg_dialog t4 where t1.leader_id=t2.id and t1.question_id=t3.id and t1.dialog_id = t4.id  and t1.dialog_id='.$id.' and t1.content like "%'.trim($key1).'%"';
 	}else{
-		$sql = 'SELECT t1.*,t2.nick_name,t3.content as question_content,t4.title FROM  smg_dialog_answer t1,smg_user t2,smg_dialog_question t3,smg_dialog t4 where t1.leader_id=t2.id and t1.question_id=t3.id and t1.dialog_id = t4.id';
+		$sql = 'SELECT t1.*,t2.nick_name,t3.content as question_content,t4.title FROM  smg_dialog_answer t1,smg_user t2,smg_dialog_question t3,smg_dialog t4 where t1.leader_id=t2.id and t1.question_id=t3.id and t1.dialog_id = t4.id and t1.dialog_id='.$id;
 	}
 	$records = $db->paginate($sql,18);
 	close_db();
@@ -36,13 +37,12 @@
 		</tr>
 		<?php for($i=0;$i<$count;$i++){?>
 		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
-			<td><textarea cols="25" rows="3" class="content"><?php echo $records[$i]->content;?></textarea></td>
+			<td><?php echo $records[$i]->content;?></td>
 			<td><?php echo $records[$i]->nick_name;?></td>
 			<td><?php echo $records[$i]->question_content;?></td>
 			<td><?php echo $records[$i]->title;?></td>
 			<td><?php echo substr($records[$i]->create_time, 0, 10);$records[$i]->create_time;?></td>
 			<td><a href="/admin/comment/comment.php?id=<?php echo $records[$i]->id;?>&type=dialog" style="color:#000000; text-decoration:none">评论</a>
-				<a class="edit" value="<?php echo $records[$i]->id;?>" style="color:#000000; text-decoration:none; cursor:pointer">编辑</a>
 				<span style="color:#FF0000; cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
 			</td>
 		</tr>
@@ -60,13 +60,6 @@
 </html>
 
 <script>
-	$(".edit").click(function(){
-		if(!window.confirm("编辑内容")){return false;}
-		$.post("dialog.post.php",{'id':$(this).attr('value'),'content':$(".content").attr('value'),'type':'edit_content','db_table':'smg_dialog_answer'},function(data){
-			if(""==data){window.location.reload();}
-		});	
-	});
-	
 	$("#dialog_search").click(function(){
 				window.location.href="?key1="+$("#search_text").attr('value');
 	});
