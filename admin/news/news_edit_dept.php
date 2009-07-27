@@ -106,7 +106,17 @@
 			<td>视频</td>
 			<td align="left" id="td_video">			
 				视频<input type="file" name="video_src" id="video_src">　	
+				<?php 
+				if($news->video_src){
+						echo "<a href=\"{$news->video_src}\" target=\"_blank\">查看</a>";
+					}
+				?>
 				缩略图<input type="file" name="video_pic" id="video_pic">　
+				<?php					
+					if($news->video_photo_src){
+						echo "<a href=\"{$news->video_photo_src}\" target=\"_blank\">查看</a>";
+					}
+				?>
 				<input type="checkbox" id="ch_low_quality" <?php if($news->low_quality) echo ' checked="checked"';?>>低清
 				<input type="hidden" name="news[low_quality]" id="hidden_low_quality" value="<?php echo $news->low_quality?>">
 			</td>
