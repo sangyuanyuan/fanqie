@@ -194,6 +194,7 @@
 		}else{
 			if($("#online").val()==''){
 				alert('请上传一个视频或者输入在线视频地址！');
+				return false;
 			}
 		}
 		
