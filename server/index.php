@@ -35,7 +35,7 @@
 		$gwmd=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="购物摩登" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
 		$tyyl=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="体育娱乐" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
 		$tk=$db->query('select id,name from smg_problem order by create_time desc');
-		$tp=$db->query('SELECT * FROM smg_vote s where vote_type<>"more_type" and is_sub_vote=0 order by created_at desc');
+		$tp=$db->query('SELECT * FROM smg_vote s where vote_type<>"more_type" and vote_type<>"image_vote" and is_sub_vote=0 order by created_at desc');
 		$man=$db->query('select name,birthday,height,education,photo,school from smg_marry where sex="man" order by id desc limit 5');
 		$woman=$db->query('select name,birthday,height,education,photo,school from smg_marry where sex="woman" order by id desc limit 5');
   ?>
