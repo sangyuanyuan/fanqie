@@ -17,7 +17,7 @@
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="4">　<a href="dept_edit.php">添加部门列表</a></td>
+			<td colspan="4">　<a href="deptlist_add.php">添加部门列表</a></td>
 		</tr>
 		<tr class="tr2">
 			<td width="300">部门名称</td><td width="300">链接</td><td width="195">修改</td>

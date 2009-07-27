@@ -20,23 +20,23 @@
 			<tr class="tr1">
 				<td colspan="4" align=left>　<?php if($_REQUEST['dept_id']) echo '编辑部门'; else echo '新添部门';?></td>
 			</tr>
-			<tr class="tr2">
+			<tr class="tr3">
 				<td width="100">部门名称</td><td  align=left><input type="text" name="dept[name]" class="required" value="<?php echo $dept->name;?>"></td>
 			</tr>
-			<tr class="tr2">
+			<tr class="tr3">
 				<td width="100">优先级</td><td align=left><input type="text" name="dept[priority]" value="<?php echo $dept->priority;?>"></td>
 			</tr>
-			<tr class="tr2">
+			<tr class="tr3">
 				<td width="100">部门代码</td><td align=left><input type="text" name="dept[code]" class="required" value="<?php echo $dept->code;?>"></td>
 			</tr>
-			<tr class="tr2">
+			<tr class="tr3">
 				<td width="100">部门链接</td><td align=left><input type="text" name="dept[url]" value="<?php echo $dept->url;?>"></td>
 			</tr>
-			<tr class="tr2">
-				<td width="100">简短描述</td><td align=left><textarea name="dept[description]"><?php echo $dept->description;?></textarea></td>
+			<tr class="tr3">
+				<td width="100" height="70">简短描述</td><td align=left><textarea name="dept[description]" style="width:300px; height:50px;"><?php echo $dept->description;?></textarea></td>
 			</tr>
 			<tr class="tr2">
-				<td width="100" colspan=2><input type="submit" value="提交"></td>
+				<td height=30 colspan=2><input type="submit" value="提交" style="width:100px;"></td>
 			</tr>
 		</table>
 		<input type="hidden" name="dept_id" value="<?php echo $_REQUEST['dept_id'];?>">
