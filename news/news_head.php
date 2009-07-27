@@ -61,7 +61,7 @@
 		</div>
 		<div id=l_b>
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
-			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
+			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　<?php if($record[0]->publisher_id!=""){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
 			<?php if($record[0]->video_src!=""){
 					if($record[0]->low_quality==0){
 				?>
@@ -87,7 +87,7 @@
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<?php if(count($about)>0||count($about)>0){?>
-			<div class=abouttitle><div style="float:left; display:inline;">更多关于“</div><div style="width:150px; height:20px; line-height:20px; overflow:hidden; text-decoration:underline; float:left; display:inline"><?php echo delhtml($record[0]->short_title);?></div><div style="float:left; display:inline;">”的新闻</div></div>
+			<div class=abouttitle><div style="float:left; display:inline;">更多关于“</div><div style="height:20px; line-height:20px; overflow:hidden; text-decoration:underline; float:left; display:inline"><?php echo mb_substr(strip_tags($record[0]->short_title),0,36);?></div><div style="float:left; display:inline;">”的新闻</div></div>
 			<div class=aboutcontent style="padding-bottom:10px;">
 				<div class=title>相关链接</div>
 					<?php for($i=0;$i<count($about);$i++){
@@ -142,8 +142,9 @@
 						</div>
 					</div>
 				<?php }?>
-				<div class=page><?php paginate('');?></div>
+				
 			</div>
+			<div class=page><?php paginate('');?></div>
 			<?php }?>
 			<form method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>

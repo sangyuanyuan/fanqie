@@ -49,10 +49,10 @@
 	$video->update_attributes($_POST['video']);
 	
 	if($_POST['special_type']==""){
-		if($video->dept_category_id!=''){
-			redirect($_POST['url'].'?category='.$video->dept_category_id);
-		}else{
+		if($video->category_id!=''){
 			redirect($_POST['url'].'?category='.$video->category_id);
+		}else{
+			redirect($_POST['url']);
 		}
 	}elseif($_POST['special_type']=="总裁奖"){
 		redirect('/admin/zongcai/zongcai_video.php');

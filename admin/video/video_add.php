@@ -126,7 +126,7 @@
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>在线视频</td><td align="left"><input type="text" size="50" name="video[online_url]">（如果本地上传视频此项请留空！）</td>
+			<td>在线视频</td><td align="left"><input type="text" size="50" name="video[online_url]" id="online">（如果本地上传视频此项请留空！）</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 
@@ -185,6 +185,11 @@
 					alert("上传视频类型错误");
 					return false;
 				}
+			}
+		}else{
+			if($("#online").val()==''){
+				alert('请上传一个视频或者输入在线视频地址！');
+				return false;
 			}
 		}
 		
