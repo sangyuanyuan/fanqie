@@ -15,7 +15,7 @@
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and is_adopt=1 and n.id=".$id;
+		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);
 		if($record[0]->news_type==2)
 		{
@@ -60,7 +60,7 @@
 		<div id=l_b>
 			<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
-			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
+			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　<?php if($record[0]->publisher_id!=""){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
 			<?php if($record[0]->video_src!=""){
 					if($record[0]->low_quality==0){
 				?>
