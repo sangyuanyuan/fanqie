@@ -37,6 +37,7 @@
 		case 'refresh':
 			$today = substr(now(), 0,10);
 			$expire_date = mktime(date('H')+1,date('i'),date('s'),date('m'),date('d'),date('Y'));
+			
 			$msgs = $db->query("select * from smg_chat_message where reciever='$chat_id' and created_at >='$today'");
 			if(is_array($msgs)){
 				foreach ($msgs as $v) {
