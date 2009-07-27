@@ -171,6 +171,26 @@
 			alert("请输入标题！");
 			return false;
 		}
+		if($("#image").val()!=''){
+			var upfile1 = $("#image").val();
+			var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);
+			if(upload_file_extension.toLowerCase()!=".png"&&upload_file_extension.toLowerCase()!=".jpg"&&upload_file_extension.toLowerCase()!=".gif"){
+				alert("上传图片类型错误");
+				return false;
+			}
+		}
+		
+		if($("#video").val()!=''){
+			var upfile2 = $("#video").val();
+			upload_file_extension=upfile2.substring(upfile2.length-4,upfile2.length);
+			if(upload_file_extension.toLowerCase()!=".flv"&&upload_file_extension.toLowerCase()!=".wmv"&&upload_file_extension.toLowerCase()!=".wav"&&upload_file_extension.toLowerCase()!=".mp3"&&upload_file_extension.toLowerCase()!=".mp4"&&upload_file_extension.toLowerCase()!=".avi"){
+				upload_file_extension=upfile2.substring(upfile2.length-3,upfile2.length);
+				if(upload_file_extension.toLowerCase()!=".rm"){
+					alert("上传视频类型错误");
+					return false;
+				}
+			}
+		}
 	}); 	
 	
 	$("#is_recommend").click(function(){

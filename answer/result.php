@@ -44,8 +44,12 @@
 						答题正确率：<font color="#FF9900">
 						<?php
 							$tot = $record->point*10;
-							$tot = $tot/$record->question_count;
-							$tot = substr($tot, 0, 2).'%';
+							if($record->question_count!=0){
+								$tot = $tot/$record->question_count;
+								$tot = substr($tot, 0, 2).'%';
+							}else{
+								$tot = '0%';
+							}
 							echo $tot;
 						?></font>
 					</div>

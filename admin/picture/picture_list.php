@@ -91,12 +91,12 @@
 					<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $images[$i]->id;?>">发布</span>
 				<?php }?>
 				<a href="picture_edit.php?id=<?php echo $images[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-				<?php if($images[$i]->dept_id!="7"){?>
-					<span style="cursor:pointer" class="return" name="<?php echo $images[$i]->id;?>">退回</span>
-				<?php }else{?>
-					<span style="cursor:pointer" class="del" name="<?php echo $images[$i]->id;?>">删除</span>
-				<?php }?>
 				<a href="/admin/comment/comment.php?id=<?php echo $images[$i]->id;?>&type=picture" style="color:#000000; text-decoration:none">评论</a>
+				<?php if($images[$i]->dept_id!="7"){?>
+					<span style="cursor:pointer; color:#FF0000" class="return" name="<?php echo $images[$i]->id;?>">退回</span>
+				<?php }else{?>
+					<span style="cursor:pointer; color:#FF0000" class="del" name="<?php echo $images[$i]->id;?>">删除</span>
+				<?php }?>
 				<input type="text" class="priority" name="<?php echo $images[$i]->id;?>" value="<?php if($images[$i]->priority!=100){echo $images[$i]->priority;}?>" style="width:40px;">
 				<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $images[$i]->id;?>" style="width:40px;">	
 			</div>
