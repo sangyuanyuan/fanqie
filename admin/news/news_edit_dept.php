@@ -43,7 +43,7 @@
 			<td colspan="6" width="795">　　编辑新闻</td>
 		</tr>
 		<tr class=tr3>
-			<td width="130">标题/短标题</td><td width="695" align="left"><?php show_fckeditor('news[title]','Title',false,"50",$news->title,300);?>　/　<?php show_fckeditor('news[short_title]','Title',false,"50",$news->short_title,300);?><span id="max_len"></span></td>
+			<td width="130">标题/短标题</td><td width="695" align="left"><input type="text" name="news[title]" id="news_title" value="<?php echo $news->title;?>">　/　<input type="text" name="news[short_title]" id="news_short_title" value="<?php echo $news->short_title;?>"><span id="max_len"></span></td>
 		</tr>
 		<tr class=tr3>
 			<td>分　类</td>
