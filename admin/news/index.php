@@ -91,7 +91,7 @@
 							$url="/$platform/news/news.php?id={$record[$i]->id}";
 						}
 					?>
-					<td><a href="<?php echo $url;?>" target="_blank"><?php echo $record[$i]->short_title;?></a></td>
+					<td><a href="<?php echo $url;?>" target="_blank"><?php echo strip_tags($record[$i]->short_title);?></a></td>
 					<td>
 						<a href="?dept=<?php echo $record[$i]->dept_id;?>" style="color:#0000FF"><?php echo get_dept_info($record[$i]->dept_id)->name;?></a>
 					</td>

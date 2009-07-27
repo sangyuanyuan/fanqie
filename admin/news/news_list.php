@@ -82,7 +82,7 @@
 							$url="/$platform/news/news.php?id={$record[$i]->id}";
 						}
 					?>
-					<td><a href="<?php echo $url;?>" target="_blank"><?php echo $record[$i]->short_title;?></a></td>
+					<td><a href="<?php echo $url;?>" target="_blank"><?php echo strip_tags($record[$i]->short_title);?></a></td>
 					<td>
 						<a href="?category=<?php echo $record[$i]->category_id;?>" style="color:#0000FF">
 							<?php echo category_name_by_id($record[$i]->category_id); ?>
