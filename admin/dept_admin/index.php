@@ -20,7 +20,7 @@
 			<td colspan="4">　<a href="dept_edit.php">添加部门</a></td>
 		</tr>
 		<tr class="tr2">
-			<td width="300">部门名称</td><td width="50">点击次数</td><td width="250">创建时间</td><td width="195">操作</td>
+			<td width="300">部门名称</td><td width="70">点击次数</td><td width="230">创建时间</td><td width="215">操作</td>
 		</tr>
 		<?php
 			$db = get_db();
