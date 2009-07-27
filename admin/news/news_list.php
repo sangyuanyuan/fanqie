@@ -10,7 +10,7 @@
 	$db = get_db();
 	$c = array();
 	if($category_id > 0){
-		array_push($c, "dept_category_id=$category_id");
+		array_push($c, "category_id=$category_id");
 	}
 	if($is_recommend!=''){
 		array_push($c, "is_recommend=$is_recommend");
@@ -38,7 +38,7 @@
 		css_include_tag('admin');
 		use_jquery();
 		js_include_tag('admin_pub','smg_category_class');
-		$category = new smg_category_class('news',$dept_id);
+		$category = new smg_category_class('news');
 		$category->echo_jsdata();		
 	?>
 </head>
@@ -58,6 +58,7 @@
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
 				</select>
+				<span id="span_category"></span>
 				<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
 				<input type="hidden" value="<?php echo $category_id;?>" id="category">
 			</td>
@@ -83,8 +84,8 @@
 					?>
 					<td><a href="<?php echo $url;?>" target="_blank"><?php echo $record[$i]->short_title;?></a></td>
 					<td>
-						<a href="?category=<?php echo $record[$i]->dept_category_id;?>" style="color:#0000FF">
-							<?php echo $category->find($record[$i]->dept_category_id)->name; ?>
+						<a href="?category=<?php echo $record[$i]->category_id;?>" style="color:#0000FF">
+							<?php echo category_name_by_id($record[$i]->category_id); ?>
 						</a>
 					</td>
 					<td>

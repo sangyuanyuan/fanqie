@@ -4,7 +4,7 @@
 $(function(){
 	
 	$('#news_add').submit(function(){
-		if($('#video_src').val() != undefined && $('#video_src').val() != ''){
+		if($('#video_src').val() != ''){
 			var video_src = $('#video_src').val().replace(/.+\./,'');
 			video_src = video_src.toLowerCase();
 			if(jQuery.inArray(video_src,video_array) == -1){
@@ -12,7 +12,7 @@ $(function(){
 				return false;
 			}
 		}
-		if($('#video_pic').val() != undefined && $('#video_pic').val() != ''){
+		if($('#video_pic').val() != ''){
 			var video_pic = $('#video_pic').val().replace(/.+\./,'');
 			video_pic = video_pic.toLowerCase();
 			if(jQuery.inArray(video_pic,pic_array) == -1){
@@ -29,14 +29,16 @@ $(function(){
 			}			
 		});
 		$('#category_add').attr('value',category_add);
-		var oEditor = FCKeditorAPI.GetInstance('news[title]') ;
-		var title = oEditor.GetHTML();
+		//var oEditor = FCKeditorAPI.GetInstance('news[title]') ;
+		//var title = oEditor.GetHTML();
+		var title= $('#news_title').val();
 		if(title==""){
 			alert("请输入标题！");
 			return false;
 		}	
-		var oEditor = FCKeditorAPI.GetInstance('news[short_title]') ;
-		var short_title = remove_hmtl_tag(oEditor.GetHTML());
+		//var oEditor = FCKeditorAPI.GetInstance('news[short_title]') ;
+		//var short_title = remove_hmtl_tag(oEditor.GetHTML());
+		var short_title= $('#news_short_title').val();
 		if(short_title==""){
 			alert("请输入短标题！");
 			return false;
