@@ -35,7 +35,7 @@
 		<tr class="tr2">
 			<td colspan="4" align=center>　
 			搜索 <input id="search_text" type="text" value="<? echo $key;?>">
-			<select style="width:100px;" name="filter_dept" id="filter_dept">
+			<select style="width:90px;" name="filter_dept" id="filter_dept">
 				<option value="-1">发表部门</option>
 				<?php 
 				$dept = new table_class('smg_dept');
