@@ -699,7 +699,33 @@
     <div id=p1>
       <!-- start bottom_top_left !-->
  			<div id=b_t_l>
-
+ 				<?php  
+					$sql = 'select id,name from smg_vote where is_adopt=1 order by created_at desc limit 12';
+					$record = $db->query($sql);
+					$count = count($record);
+				?>
+				<div class=l_box>
+					<?php
+						$l_count = $count>7?7:$count;
+						for($i=0;$i<$l_count;$i++){
+					?>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/vote/vote.php?id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
+					<?php
+						}
+					?>
+				</div>
+				<div class=r_box>
+					<?php
+						$count = $count-7>0?$count:7;
+						for($i=7;$i<$count;$i++){
+					?>
+					<div class="bottom_title"><li><span style="color:#FF9900;">·</span><a href="/vote/vote.php?id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
+					<?php
+						}
+					?>
+				</div>
+				<div id=vote><a href="/vote/vote_list.php" target="_blank"><img border=0 src="/images/index/vote.jpg"></a></div>
+				<div id=begin_vote><a href="/vote/beginvote.php" target="_blank"><img border=0 src="/images/index/begin_vote.jpg"></a></div>
  			</div>
  			<!-- end !-->	      	
  

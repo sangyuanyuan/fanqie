@@ -67,8 +67,8 @@
 	//$content =  strtr($news->content,$table_change);
 	$news->title = $title;
 	$news->short_title = $short_title;
-	$news->description = $description;
-	$news->content = $content;
+	//$news->description = $description;
+	//$news->content = $content;
 		
 	if($news_id == 0){
 		//insert news
