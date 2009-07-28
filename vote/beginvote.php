@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -投票</title>
+	<title>SMG-番茄网-服务-发起投票</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','vote.css','vote_right.css');
 	?>
