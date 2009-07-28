@@ -28,9 +28,11 @@
 			var title=$("#title").attr('value');
 			var starttime=$("#starttime").attr('value');
 			var endtime=$("#endtime").attr('value');
+			var price=$("#price").attr("value");
 			if(title==""){alert("标题不能为空");return false;}
 			if(starttime==""){alert("开始时间不能为空");return false;}
 			if(endtime==""){alert("结束时间不能为空");return false;}
+			if(price==""){alert("价格不能为空");return false;}
 			var uptype=$("#uptype").attr("value");
 			if(uptype!="tgupdate")
 			{
@@ -43,19 +45,49 @@
 		});
 		$("#searchinput").click(function(){
 			newskey();
-		})
+		});
 		$("#newskey1").keydown(function(e){
 			if (e.keyCode==13)
 			{
 				newskey();
 			}
-		})
+		});
 		$("#newskey4").change(function(){
 			newskey();
 		})
 		$(".menu1").click(function(){
 			$(".menu2").css("display","inline");
-		})
+		});
+		$(".menu2").click(function(){
+			$("#admin_iframe").src="/admin/shop/shopindex.php";
+		});
+		
+		$(".shopcan").click(function(){
+			$.post('/admin/admin.post.php',{'id':$(this).attr('name'),'type':'tgcan'},function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		});
+		
+		$(".shoppub").click(function(){
+			$.post('/admin/admin.post.php',{
+				'id': $(this).attr('name'),
+				'type': 'shoppub'
+			},function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		});
+		$(".shopdel").click(function(){
+			if(!window.confirm("确定要删除吗")){return false;};
+			$.post('/admin/admin.post.php',{'id':$(this).attr('name'),'type':'tgdel'},function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		});
 
 })
 		function newskey()

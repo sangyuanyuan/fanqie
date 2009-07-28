@@ -27,9 +27,10 @@ $rows=$db->paginate($strsql,20);
 	<title>SMG</title>
 	<?php
 		css_include_tag('admin');
+		use_jquery();
 		validate_form("shop_edit");
 		js_include_once_tag('My97DatePicker/WdatePicker.js');
-		js_include_tag('admin_pub');
+		js_include_tag('admin');
 	?>
 </head>
 <body style="background:#E1F0F7">
@@ -48,10 +49,10 @@ $rows=$db->paginate($strsql,20);
 			<td><? echo $rows[$i]->starttime;?></td>
 			<td><? echo $rows[$i]->endtime;?></td>
 			<td><a href="shoplist.php?id=<? echo $rows[$i]->id;?>" style="color:#000000">查看</a></td>
-			<td><? if($rows[$i]->isadopt==1){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<? echo $rows[$i]->id;?>">撤消</span><? }?>
-				<? if($rows[$i]->isadopt==0){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<? echo $rows[$i]->id;?>">发布</span><? }?>
+			<td><? if($rows[$i]->isadopt==1){?><span style="color:#FF0000;cursor:pointer" class="shopcan" name="<? echo $rows[$i]->id;?>">撤消</span><? }?>
+				<? if($rows[$i]->isadopt==0){?><span style="color:#0000FF;cursor:pointer" class="shoppub" name="<? echo $rows[$i]->id;?>">发布</span><? }?>
 				 <a href="shopupdate.php?id=<? echo $rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
-				 <span style="cursor:pointer" class="del" name="<? echo $rows[$i]->id;?>">删除</span> 
+				 <span style="cursor:pointer" class="shopdel" name="<? echo $rows[$i]->id;?>">删除</span> 
 			</td>
 		</tr>
 		<?  }?>
