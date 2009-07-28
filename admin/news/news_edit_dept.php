@@ -206,10 +206,9 @@
 	$(function(){
 		$('#delete_vote').click(function(e){
 			e.preventDefault();
-			str = '<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>';
+			str = '<a href="add_vote.php?width=600&height=400&dept_id=<?php echo $_COOKIE["smg_user_dept"];?>" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>';
 			$('#td_vote').html(str);
 			$('#vote_id').val('0');
-			alert($('#vote_id').val());
 			tb_init('#a_vote_id');
 		});
 		

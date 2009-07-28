@@ -77,7 +77,10 @@
 		}
 		if($_POST['is_app']==1){
 			redirect('approval.php');
-		}else{
+		}else if($_POST['is_app'] == 2){
+			redirect('dept_vote_list.php');
+		}
+		else{
 			redirect('vote_list.php');
 		}
 		
