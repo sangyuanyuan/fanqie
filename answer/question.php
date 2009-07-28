@@ -33,7 +33,7 @@
 					<div id=wz>想炫下你的知识？想知道除了你还有谁知道这事？有些问题你也不清楚？那就发动好友来答题吧！你也可以用“答题”来了解不知道的东西。</div>
 					<div id=top>
 						答题主题：<input type="text" name="question[theme]" style="width:280px; border:1px solid #000000;" class="required">　　　<span id=add_description style="cursor:pointer;">添加详细答题说明</span><br><br>
-						呢　　称：<input type="text" name="question[nick_name]" style="width:280px; border:1px solid #000000;" class="required">
+						呢　　称：<input type="text" name="question[nick_name]" value="<?php echo $_COOKIE['smg_user_nickname'];?>" style="width:280px; border:1px solid #000000;" class="required">
 						<div id=description style="margin-top:10px; display:none;">
 							答题说明：<textarea name="question[description]" style="width:280px; border:1px solid #000000;"></textarea>
 						</div>
