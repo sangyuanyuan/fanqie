@@ -34,17 +34,17 @@ $rows=$db->paginate($strsql,20);
 </head>
 <body style="background:#E1F0F7">
 	<table width="795" border="0">
-		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+		<tr bgcolor="#f9f9f9" height="25" style="font-weight:bold;">
 			<td colspan="5" width="795">　　　<a href="shopinsert.php?id=<? echo $shopid;?>" style="color:#0000FF">发布商品</a>　　　　　　
 			
 			</td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+		<tr align="center" bgcolor="#f9f9f9" height="25" style="font-weight:bold; ">
 			<td width="225">标题</td><td width="130">开始时间</td><td width="130">结束时间</td><td width="100">购买情况</td><td width="210">操作</td>
 		</tr>
 		<? for($i=0;$i<count($rows);$i++){?>
-		<tr align="center" bgcolor="#f9f9f9" height="22px;" >
-			<td><a style="color:#000000; text-decoration:none" target="_blank" href="/shop/splist.php"><? echo $rows['title'];?></td>
+		<tr align="center" bgcolor="#f9f9f9" height="22" style="font-size:12px;" >
+			<td><a style="color:#000000; text-decoration:none" target="_blank" href="/shop/splist.php"><? echo $rows[$i]->title;?></td>
 			<td><? echo $rows[$i]->starttime;?></td>
 			<td><? echo $rows[$i]->endtime;?></td>
 			<td><a href="shoplist.php?id=<? echo $rows[$i]->id;?>" style="color:#000000">查看</a></td>
@@ -55,9 +55,9 @@ $rows=$db->paginate($strsql,20);
 			</td>
 		</tr>
 		<?  }?>
-		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;" align="center">
+		<tr bgcolor="#f9f9f9" height="25" style="font-weight:bold; " align="center">
 			<td colspan="5" width="800" class="pages">
-				<?php paginate("/admin/shop/shopindex.php"); ?>
+				<?php paginate(""); ?>
 			</td>
 		</tr>
 	
