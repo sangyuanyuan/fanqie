@@ -41,7 +41,7 @@
 			?>			
    		<div id=hot>
    			<?php for($i=0;$i<3;$i++){?>
-   			<a href="/search/?key=<?php echo urlencode($record[$i]->search_key)?>" target=_blank><?php echo $record[$i]->search_key ?></a> 
+   			<a href="/search/?key=<?php echo urlencode($record[$i]->search_key)?>" target=_blank><?php echo $record[$i]->search_key ?></a>　
    			<? }?>
    		</div>
    	</div>

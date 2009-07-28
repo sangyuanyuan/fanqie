@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -投票</title>
+	<title>SMG-番茄网-服务-投票列表</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','vote.css','vote_right.css');
 	?>
@@ -29,7 +29,7 @@
 					<div id=line></div>
 				</div>
 				<?php for($i=0;$i<$vote_count;$i++){
-					$vote_photo = 	$vote[$i]->photo_url ? $vote[$i]->photo_url : '/images/pic/vote_default.php';
+					$vote_photo = 	$vote[$i]->photo_url ? $vote[$i]->photo_url : '/images/pic/vote_default.jpg';
 				?>
 				<div class=context>
 					<div class=l>

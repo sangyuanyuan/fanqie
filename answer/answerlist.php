@@ -16,7 +16,6 @@
 	<div id=answer>
 		<div id=left>
 			<div id=title>
-				<div id=backup><a target="_blank" href="/">＜＜返回上一页</a></div>
 			</div>
 			<div id=content>
 				<div id=head>
