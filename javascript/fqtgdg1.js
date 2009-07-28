@@ -21,7 +21,14 @@ $(document).ready(function(){
 		})
 		
 		$(".lq").click(function(){
-			$.post('/fqtg/fqtgdg_post.php',{'id':$(this).next().attr('value')},function(data){
+			$.post('/fqtg/fqtgdg_post.php',{'id':$(this).next().attr('value'),'type':'lq'},function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		})
+		$(".ylq").click(function(){
+			$.post('/fqtg/fqtgdg_post.php',{'id':$(this).attr('name'),'type':'ylq'},function(data){
 				 if(data=="OK")
 				  location.reload();
 				}
