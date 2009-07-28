@@ -1,5 +1,6 @@
 ﻿<?php
     require_once('../frame.php');
+	
 	$problem_id = $_REQUEST['id'];
 	$number = isset($_POST['number'])?$_POST['number']:'1';
 	$point = isset($_POST['point'])?$_POST['point']:'0';
@@ -11,12 +12,14 @@
 	$records = $db->query($sql);
 	if(isset($_POST['lave'])){
 		$lave = $_POST['lave'];
-		$q_count = $_POST['count'];
+		$q_count = $_POST['count']+1;
+		$t_count = $_POST['t_count'];
 	}else{
 		$sql = 'select count(*) as count from smg_question where problem_id='.$problem_id.' order by create_time';
 		$record = $db->query($sql);
+		$t_count = $record[0]->count;
 		$lave = $record[0]->count-1;
-		$q_count = $record[0]->count;
+		$q_count = 1;
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -37,6 +40,8 @@
 <form id="answer_form" method="POST" action="pro_answer.php?id=<?php echo $problem_id; ?>" >
 <div id=ibody>
 
+	<div id="a_top"><img src="<?php echo $problem[0]->photo_url?>"></div>
+	
 	<div id="time"><?php echo $problem[0]->limit_time;?></div>
 	
 	<div id="point">
@@ -44,7 +49,7 @@
 	</div>
 	<div id="middle">	
 		<div id=num><?php echo $number;?>.</div>
-		<div id="question_title"><?php echo $records[0]->title; ?></div>
+		<div id="question_title"><?php echo $records[0]->title; ?>(<?php if($problem[0]->point!=''){echo $problem[0]->point;}else{echo '10';}?>分)</div>
 		
 		<?php
 			$sql = 'select id,name,attribute from smg_question_item where question_id='.$records[0]->id;
@@ -80,7 +85,7 @@
 	</div>
 	
 	<div id=bottom>
-		<div id="lave" style="margin-left:680px;">还剩余<?php echo $lave;?>题</div>
+		<div id="lave" style="margin-left:580px;">总共<?php echo $t_count;?>题　　　还剩余<?php echo $lave;?>题</div>
 		<div id="submit" ></div>
 		<div id="leave" ></div>	
 	</div>
@@ -95,6 +100,7 @@
 <input type="hidden" name="record[nick_name]" id="nick_name">
 <input type="hidden" name="record[phone]" id="phone">
 <input type="hidden" name="record[dept_id]" id="dept_id">
+<input type="hidden" name="t_count" value="<?php echo $t_count;?>">
 <input type="hidden" name="count" value="<?php echo $q_count;?>">
 </form>
 <?php include('../inc/bottom.inc.php');?>
@@ -140,7 +146,7 @@
 			if($(this).attr('checked'))answer = answer+$(this).attr('name');
 		});
 		if (answer == r_answer){
-			$("#r_point").attr('value', parseInt($("#r_point").attr('value'))+10);
+			$("#r_point").attr('value', parseInt($("#r_point").attr('value'))+add_point);
 		}
 		tb_show('请填入您的个人信息','info.php?height=300&width=400&modal=true');
 	});

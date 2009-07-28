@@ -41,7 +41,7 @@
 	</div>
 	<div id="middle">	
 		<div id=num><?php echo $number;?>.</div>
-		<div id="question_title"><?php echo $records[0]->title; ?></div>
+		<div id="question_title"><?php echo $records[0]->title; ?>(10分)</div>
 		
 		<?php
 			$sql = 'select id,name,attribute from smg_question_item where question_id='.$id;
