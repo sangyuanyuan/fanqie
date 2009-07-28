@@ -24,11 +24,11 @@
 		$shdzh=$db->query($sql);
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='生活大杂烩' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 2";
 		$shdzhimg=$db->query($sql);
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='观点视角' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 8";
+		$sql="select n.id,n.short_title,n.title,n.platform,n.description,c.id as cid from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='观点视角' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 8";
 		$gdsj=$db->query($sql);
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='观点视角' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
 		$gdsjimg=$db->query($sql);
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='分享生活' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 11";
+		$sql="select n.id,n.short_title,n.title,n.platform,n.description,c.id as cid from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='分享生活' and c.category_type='news' order by n.priority asc,n.last_edited_at desc limit 11";
 		$fxsh=$db->query($sql);
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='分享生活' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
 		$fxshimg=$db->query($sql);
@@ -109,7 +109,7 @@
 		<div id=t_c>
 			<div id=t_c_t>
 				<div id=title1>博客</div>
-				<div id=title2>观点视角</div>
+				<div id=title2><div class=title2_l>观点视角</div><div class=title2_r><a target="_blank" href="/<?php echo $gdsj[0]->platform; ?>/news/news_list.php?id=<?php echo $gdsj[0]->cid;?>">more</a></div></div>
 				<div id=t_c_t_t>
 					<div id=left>
 						<a target="_blank" href="<?php echo $gdsjimg[0]->url;?>"><div id=pic><img border=0 width=100 height=65 src="<?php echo $gdsjimg[0]->src;?>"></div><div style="width:100px; margin-top:5px; height:15px; text-align:center; text-decoration:none; color:#0000FF; overflow:hidden; cursor:pointer; float:left; display:inline;"><?php echo delhtml($gdsjimg[0]->title);?></div></a>
@@ -128,7 +128,7 @@
 			</div>
 			<div id=t_c_m>
 				<div id=title1>博客</div>
-				<div id=title2>分享生活</div>
+				<div id=title2><div class=title2_l>分享生活</div><div class=title2_r><a target="_blank" href="/<?php echo $fxsh[0]->platform; ?>/news/news_list.php?id=<?php echo $fxsh[0]->cid;?>">more</a></div></div>
 				<div id=t_c_m_t>
 					<div id=left><a target="_blank" href="<?php echo $fxshimg[0]->url;?>"><div id=pic><img border=0 width=100 height=65 src="<?php echo $fxshimg[0]->src;?>"></div><div style="width:100px; text-align:center; margin-top:5px; height:15px; overflow:hidden; text-decoration:none; color:#0000FF; cursor:pointer; float:left; display:inline;"><?php echo delhtml($fxshimg[0]->title);?></div></a></div>
 					<div id=right>
