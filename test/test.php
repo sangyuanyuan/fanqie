@@ -6,7 +6,7 @@
 	$vote = new smg_vote_class();
 	$a[1]='a';
 	$a[3]='b';
-	echo $a[1];
+	echo date('Y-m-d',strtotime('1 month')) .';' . date('Y-m-d',strtotime('-1 month'));;
 	#echo date('t');
 ?>
 
