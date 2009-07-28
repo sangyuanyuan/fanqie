@@ -4,10 +4,10 @@
 	$project_id = 0;
 	if($key!=''){
 		$question = new table_class('smg_question');
-		$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id.' and title  like "%'.trim($key).'%"','order','theme'),18); 
+		$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id.' and title  like "%'.trim($key).'%"','order' => 'create_time desc'),18); 
 	}else{
 		$question = new table_class('smg_question');
-		$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id,'order','theme'),18); 
+		$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id,'order' => 'create_time desc'),18); 
 	}
 	$count = count($records);
 	
