@@ -16,6 +16,7 @@ if($_POST['uptype']=="tginsert")
 	if($error<>"0")
 	{	
 		echo '<script language=javascript>alert("图片太大请压缩到150K以内再上传！")</script>';
+		redirect('/admin/tg/tginsert.php');
 		exit;
 	}
 
@@ -24,6 +25,7 @@ if($_POST['uptype']=="tginsert")
 		if($_FILES['upfile1']['error']!=UPLOAD_ERR_OK||$_FILES['upfile']['error']!=UPLOAD_ERR_OK)
 		{
 			echo '<script language=javascript>alert("上传失败2！")</script>';
+			redirect('/admin/tg/tginsert.php');
 			exit;
 		}
 	
@@ -50,6 +52,7 @@ if($_POST['uptype']=="tginsert")
 		else
 		{
 			echo '<script language=javascript>alert("上传失败！")</script>';
+			redirect('/admin/tg/tginsert.php');
 			exit;
 		}
 	}
@@ -75,6 +78,7 @@ if($_POST['uptype']=="tgupdate")
 		if($error<>"0")
 		{	
 			echo '<script language=javascript>alert("图片太大请压缩到150K以内再上传！")</script>';
+			redirect('/admin/tg/tgupdate.php?id='.$_POST['tgid']);
 			exit;
 		}
 	
@@ -83,6 +87,7 @@ if($_POST['uptype']=="tgupdate")
 			if($_FILES['upfile1']['error']!=UPLOAD_ERR_OK||$_FILES['upfile']['error']!=UPLOAD_ERR_OK)
 			{
 				echo '<script language=javascript>alert("上传失败2！")</script>';
+				redirect('/admin/tg/tgupdate.php?id='.$_POST['tgid']);
 				exit;
 			}
 		
@@ -106,6 +111,7 @@ if($_POST['uptype']=="tgupdate")
 			}else
 			{
 				echo '<script language=javascript>alert("上传失败！")</script>';
+				redirect('/admin/tg/tgupdate.php?id='.$_POST['tgid']);
 				exit;
 			}
 		}

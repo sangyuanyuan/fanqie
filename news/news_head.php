@@ -141,8 +141,7 @@
 							<?php echo strfck($comment[$i]->comment);?>
 						</div>
 					</div>
-				<?php }?>
-				
+				<?php }?>		
 			</div>
 			<div class=page><?php paginate('');?></div>
 			<?php }?>
