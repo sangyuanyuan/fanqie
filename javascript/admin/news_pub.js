@@ -128,7 +128,15 @@ function remove_sub_headlines(id){
 	$('#hidden_sub_headlines').attr('value',sub_headlines.join(','));
 }
 function str_length(str){
-	return   str.replace(/[^\x00-\xff]/g,"**").length;
+	//return   str.replace(/[^\x00-\xff]/g,"**").length;
+	 var i;   
+    var len;   
+    len = 0;   
+    for (i=0;i<str.length;i++)   
+    {   
+        if (str.charCodeAt >255) len+=2; else len++;   
+    }   
+    return len;  
 }
 
  function remove_hmtl_tag(str) 
