@@ -47,7 +47,7 @@
 		<tr class="tr3" >
 			<td>答案选项</td>
 			<td align="left">
-			　<input type="text" name="item<?php echo $i;?>[name]" class="required"><input class="check" type="checkbox" name="check<?php echo $i;?>">
+			　<input type="text" name="item<?php echo $i;?>[name]" class="required"><input class="checkbox" type="checkbox" name="check<?php echo $i;?>">
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
 			<?php }?>
@@ -61,7 +61,7 @@
 			}
 		?>
 		<tr class="tr3">
-			<td colspan="2" width="795" align="center"><button type="submit" id="submit">发布题目</button></td>
+			<td colspan="2" width="795" align="center"><button type="button" id="sub">发布题目</button></td>
 		</tr>	
 		<input type="hidden" name="question[problem_id]" value="<?php echo $project_id;?>">
 		<input type="hidden" name="question[create_time]" value="<?php echo date("y-m-d");?>">
@@ -72,6 +72,7 @@
 
 <script>
 	$(function(){
+		var flag = false;
 		var num = 2;
 		$("#add_item").click(function(){
 			num++;
@@ -84,13 +85,22 @@
 			});
 		});
 		
-		$("#submit").click(function(){
+		$("#sub").click(function(){
 			var oEditor = FCKeditorAPI.GetInstance('title') ;
 			var title = oEditor.GetHTML();
 			if(title==""){
 				alert("请输入标题！");
 				return false;
 			}
+			$("input[type=checkbox]").each(function(){
+				if($(this).attr('checked'))flag=$(this).attr('checked');
+			});
+			
+			if(!flag){
+				alert('请至少选择一个正确答案！');
+				return false;
+			}
+			$("#question_add").submit();
 		});
 	});	
 </script>

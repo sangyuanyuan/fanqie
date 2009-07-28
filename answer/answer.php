@@ -1,12 +1,12 @@
 ﻿<?php
     require_once('../frame.php');
 	$id = $_REQUEST['id'];
-	$sql = 'select id,title,nick_name from smg_question where id>='.$id.' and is_adopt=1 order by create_time limit 2';
+	$sql = 'select id,title,nick_name,description from smg_question where id>='.$id.' and is_adopt=1 order by create_time limit 2';
 	$db = get_db();
 	$records = $db->query($sql);
 	$number = isset($_POST['number'])?$_POST['number']:'1';
 	$point = isset($_POST['point'])?$_POST['point']:'0';
-	if(isset($_POST['lave'])){
+	if(isset($_POST['lave'])){	
 		$lave = $_POST['lave'];
 		$q_count = $_POST['count']+1;
 	}else{
@@ -60,6 +60,9 @@
 		<?php
 			}
 		?>
+		<div id=description>
+			<?php echo $records[0]->description; ?>
+		</div>
 	</div>
 	
 	<div id=bottom>

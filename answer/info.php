@@ -2,7 +2,7 @@
     require_once('../frame.php');
 ?>
 
-<div style="width:250px; margin-top:10px; float:left; display:inline;">请输入您的昵称：<input type="text" id="user_name"></div>
+<div style="width:250px; margin-top:10px; float:left; display:inline;">请输入您的昵称：<input type="text" value="<?php echo $_COOKIE['smg_user_nickname'];?>" id="user_name"></div>
 <div style="width:250px; margin-top:10px; float:left; display:inline;">请输入您的电话：<input type="text" id="user_photo"></div>
 <div style="width:350px; margin-top:10px; float:left; display:inline;">
 	请选择您的部门：<select id="deptid">
@@ -13,7 +13,7 @@
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
-				<option value="<?php echo $records[$i]->id;?>">
+				<option <?php if($records[$i]->id==$_COOKIE['smg_user_dept']){?>selected="selected"<?php } ?> value="<?php echo $records[$i]->id;?>">
 					<?php echo $records[$i]->name;?>
 				</option>
 			<? }?>

@@ -83,4 +83,10 @@
 	$("#question_search").click(function(){
 				window.location.href="question_list.php?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
 	});
+	
+	$('#search_text2').keydown(function(e){
+		if(e.keyCode == 13){
+			window.location.href="question_list.php?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
+		}
+	});
 </script>
