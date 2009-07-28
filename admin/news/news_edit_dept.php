@@ -121,7 +121,6 @@
 				<input type="hidden" name="news[low_quality]" id="hidden_low_quality" value="<?php echo $news->low_quality?>">
 			</td>
 		</tr>
-		<!--
 		<tr id=newsshow3 class="normal_news tr3">
 			<td>投票</td>
 			<td align="left" id="td_vote">
@@ -135,13 +134,12 @@
 				<?php
 					}else{
 				?>
-				<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>	
+				<a href="add_vote.php?width=600&height=400&dept_id=<?php echo $dept_id;?>" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>	
 				<?php	
 					} 
 				?>	
 			</td>
 		</tr>
-		-->
 		<tr id=newsshow3  class="normal_news tr3">
 			<td>所属专题</td>
 			<td align="left" id="td_subject">

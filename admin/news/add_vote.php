@@ -24,11 +24,14 @@
 			$category_record = $category->find('all',array('conditions' => 'category_type="vote"'));
 			$category_count = count($category_record);
 			$vote = new table_class("smg_vote");
-			if($key!=''){
-				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and name  like "%'.trim($key).'%"','order' => 'created_at desc'),18);
-			}else{
-				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0','order' => 'created_at desc'),18);
+			$c[] = "is_sub_vote=0";
+			if($_REQUEST['dept_id']){
+				$c[] = "dept_id";
 			}
+			if($key!=''){
+				$c[] = 'name  like "%'.trim($key).'%"';				
+			}
+			$record = $vote->paginate("all",array('conditions' => implode(' and ',$c),'order' => 'created_at desc'),18);
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){
@@ -87,7 +90,7 @@
 				tb_remove();
 				$('#delete_vote').click(function(e){
 					e.preventDefault();
-					str = '<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a><input type="hidden" name="news[vote_id]" value="0">';
+					str = '<a href="add_vote.php?width=600&height=400?dept_id=<?php echo $_REQUEST["dept_id"];?>" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a><input type="hidden" name="news[vote_id]" value="0">';
 					$('#td_vote').html(str);
 					tb_init('#a_vote_id');
 				});
