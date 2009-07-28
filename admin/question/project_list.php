@@ -93,4 +93,16 @@
 	$("#question_search").click(function(){
 				window.location.href="question_list.php?key="+$("#search_text2").attr('value');
 	});
+	
+	$('#search_text1').keydown(function(e){
+		if(e.keyCode == 13){
+			window.location.href="?key="+$("#search_text1").attr('value');
+		}
+	});
+	
+	$('#search_text2').keydown(function(e){
+		if(e.keyCode == 13){
+			window.location.href="question_list.php?key="+$("#search_text2").attr('value');	
+		}
+	});
 </script>

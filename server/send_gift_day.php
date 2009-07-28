@@ -8,7 +8,7 @@
   }
 ?>
 <div id="send_gift_day">
-	<h2><?php echo $date ;?></h2>
+	<div id=dates><?php echo $date ;?></div>
 	<div id="left_div">
 		<?php 
 		foreach ($birthday as $v) {?>
