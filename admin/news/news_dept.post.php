@@ -58,8 +58,8 @@
 	//$content =  strtr($news->content,$table_change);
 	$news->title = $title;
 	$news->short_title = $short_title;
-	$news->description = $description;
-	$news->content = $content;
+	//$news->description = $description;
+	//$news->content = $content;
 	$news->dept_category_id = $news->dept_category_id >= 0 ? $news->dept_category_id : 0;
 	$news->category_id = $news->category_id >= 0 ? $news->category_id : 0;
 		
