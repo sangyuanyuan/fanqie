@@ -14,7 +14,6 @@
 	}else{
 		//var_dump($_POST);
 		$project = new table_class('smg_problem');
-		$project->echo_sql = true;
 		if(""!=$_POST['id']){
 			$project->find($_POST['id']);
 		}

@@ -5,10 +5,10 @@
 	if($project_id!=''){
 		if($key!=''){
 			$question = new table_class('smg_question');
-			$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id.' and title  like "%'.trim($key).'%"',18)); 
+			$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id.' and title  like "%'.trim($key).'%"','order' => 'create_time desc'),18); 
 		}else{
 			$question = new table_class('smg_question');
-			$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id),18); 
+			$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id,'order' => 'create_time desc'),18); 
 		}
 		$project = new table_class('smg_problem');
 		$project->find($project_id);

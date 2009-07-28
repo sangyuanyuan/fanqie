@@ -56,7 +56,7 @@
 			</tr>
 			<tr class="tr3">
 				<td>单题分值</td>
-				<td align="left" ><input type="text" name="post[point]"  class="number">若不输入则用取百分制</td>
+				<td align="left" ><input type="text" name="post[point]"  class="number">若不输入则每题10分</td>
 			</tr>
 			<tr class="tr3">
 				<td>题目类型</td>

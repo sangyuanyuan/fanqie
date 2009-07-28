@@ -53,7 +53,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
-			<td align="left"><input type="text" name="vote[description]" value="<?php echo $vote_record[0]->description;?>"></td>
+			<td align="left"><textarea cols=70 name="vote[description]"><?php echo $vote_record[0]->description;?></textarea></td>
 		</tr>
 		<tr class=tr3>
 			<td>添加图片：</td>
