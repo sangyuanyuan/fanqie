@@ -9,7 +9,7 @@
 	<title>SMG-番茄网-投票结果显示</title>
 	<?php css_include_tag('top','bottom'); ?>
 </head>
-<body>
+<body style="line-height:0;">
 <?php require_once('../inc/top.inc.html');
 	$db = get_db();
 	$vote = new table_class('smg_vote');
