@@ -1,7 +1,6 @@
 <?php
 	require_once "../../frame.php";
 	$shop= new table_class("smg_shop");
-	$shop->echo_sql = true;
 	if($_POST['tgid']!="")
 	{
 		$shop->find($_POST['tgid']);

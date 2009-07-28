@@ -1,4 +1,4 @@
-body {font-family:����; font-size:12px; color:#000;  margin:0px;}
+body {font-family:����; font-size:12px; color:#000;  margin:0px; line-height:0px;}
 
 #top1{width:998px; height:100px; margin:0 auto; background:url(/images/bg/top_bg.jpg) repeat-x ;}
 /*#top1{width:998px; height:100px; margin:0 auto; background:url(/images/bg/top_bg2.jpg) ;}*/
@@ -312,7 +312,7 @@ body {font-family:����; font-size:12px; color:#000;  margin:0px;}
 #part4 #bright .context .content .left A:hover{text-decoration:underline;}
 #part4 #bright .context .content .num{width:40px; height:20px; margin-right:10px; color:#BA001A; float:right; display:inline;}
 
-#bodys{width:998px; margin:0 auto; margin-top:10px;}
+#bodys{width:998px; margin:0 auto; margin-top:10px; line-height:20px;}
 
 /* right */
 #r1{width:262px; float:right; display:inline;}
