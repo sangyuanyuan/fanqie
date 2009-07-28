@@ -1,7 +1,7 @@
 body{font-family:宋体; line-height:0px; font-size:12px; color:#000000; margin:0px;}
 #answer{width:995px; margin:0 auto; line-height:15px;}
 #left{width:650px; margin-top:10px; padding-bottom:10px; border:1px solid #D8DFEA; float:left; display:inline;}
-#left #title{width:630px; height:50px; padding-top:7px; margin-left:10px; border-bottom: 1px solid #D8DFEA; background:url('/images/pic/answer.jpg') no-repeat; float:left; display:inline;}
+#left #title{width:630px; height:50px; padding-top:7px; margin-left:10px; border-bottom: 1px solid #D8DFEA; background:url('/images/pic/vote.jpg') no-repeat; float:left; display:inline;}
 #left #title a{color:#336699; margin-top:13px; float:right; display:inline;}
 #left #content{width:618px; margin-left:20px; margin-top:10px; float:left; display:inline;}
 #left #content #head{margin-left:10px; float:left; display:inline;}
@@ -20,8 +20,8 @@ body{font-family:宋体; line-height:0px; font-size:12px; color:#000000; margin:
 #left #content .context .r{width:100px; position:relative; float:left; display:inline;}
 #left #content .context .r span{width:50px; color:#2872B5; text-decoration:underline; position:absolute; margin-left:420px;  bottom:0px; padding-bottom:3px;}
 
-#left #content .listcontext{width:565px; height:25px; line-height:25px; margin-left:20px; margin-top:10px; background:url('/images/icon/answer.jpg') no-repeat; overflow:hidden; float:left; display:inline;}
-#left #content .listcontext a{margin-left:25px; color:#000000;}
+#left #content .listcontext{width:565px; height:25px; line-height:25px; margin-left:20px; margin-top:10px; background:url('/images/icon/vote.jpg') no-repeat; overflow:hidden; float:left; display:inline;}
+#left #content .listcontext a{margin-left:25px; color:#000000; }
 
 #left #content #question{width:585px; float:left; display:inline;}
 #left #content #question #wz{width:545px; margin-top:10px; margin-left:20px; color:#999999; text-indent:24px; float:left; display:inline;}
@@ -40,3 +40,4 @@ body{font-family:宋体; line-height:0px; font-size:12px; color:#000000; margin:
 #r_top .t_word a{color:#336699}
 #r_bottom{width:540px; height:100px;  margin-left:20px; margin-top:50px; border:1px solid #D8DFEA; float:left; display:inline;}
 #r_bottom .b_word{width:400px; margin-left:40px; margin-top:13px; color:#999999; float:left; display:inline;}
+.error{color:red;}
