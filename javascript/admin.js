@@ -63,7 +63,7 @@
 		});
 		
 		$(".shopcan").click(function(){
-			$.post('/admin/admin.post.php',{'id':$(this).attr('name'),'type':'tgcan'},function(data){
+			$.post('/admin/admin.post.php',{'id':$(this).attr('name'),'type':'shopcan'},function(data){
 				 if(data=="OK")
 				  location.reload();
 				}
@@ -82,7 +82,7 @@
 		});
 		$(".shopdel").click(function(){
 			if(!window.confirm("确定要删除吗")){return false;};
-			$.post('/admin/admin.post.php',{'id':$(this).attr('name'),'type':'tgdel'},function(data){
+			$.post('/admin/admin.post.php',{'id':$(this).attr('name'),'type':'shopdel'},function(data){
 				 if(data=="OK")
 				  location.reload();
 				}

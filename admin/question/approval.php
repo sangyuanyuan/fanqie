@@ -29,7 +29,7 @@
 	<table width="795" border="0">
 		<tr class="tr1">
 			<td colspan="4" width="795">
-				<span style="margin-left:50px; font-size:13px"><input id="search_text2" type="text"></span>
+			搜索	<span style="margin-left:50px; font-size:13px"><input id="title" type="text"></span>
 			<input type="button" value="搜索题目" id="question_search" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
