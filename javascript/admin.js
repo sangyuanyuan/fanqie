@@ -24,6 +24,14 @@
 				}
 			)
 		});
+		$(".deltg").click(function(){
+			if(!window.confirm("确定要删除吗")){return false;};
+			$.post('/admin/admin.post.php',{'id':$(this).attr('name'),'type':'deltg'},function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		})
 		$("#tg").click(function(){
 			var title=$("#title").attr('value');
 			var starttime=$("#starttime").attr('value');

@@ -174,6 +174,13 @@ p{margin:0px; padding:0px;}
 #ibody_bottom #p2{width:995px; margin-top:2px; float:left; display:inline;}
 
 #b_t_l{width:525px; height:188px; background:url(/images/index/bg_b_t_l.jpg) no-repeat; float:left; display:inline;}
+#b_t_l .l_box{width:180px; height:140px; margin-left:145px; margin-top:50px; float:left; display:inline; }
+#b_t_l .r_box{width:170px; height:100px; margin-top:50px; margin-left:5px; float:left; display:inline; }
+#b_t_l .bottom_title{width:170px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;}
+#b_t_l .bottom_title li{width:170px; padding:0px; margin:0px; float:left; display:inline;}
+#b_t_l .bottom_title a{color:#000000; text-decoration:none;}
+#b_t_l #vote{width:83px; height:23px; margin-left:5px; float:left; display:inline;}
+#b_t_l #begin_vote{width:83px; height:23px; margin-left:5px; float:left; display:inline;}
 
 #b_t_r{width:470px; height:188px; background:url(/images/index/bg_b_t_r.jpg) no-repeat; float:right; display:inline;}
 #b_t_r .m_box{width:205px; height:140px; margin-left:140px; margin-top:40px; float:left; display:inline;}
