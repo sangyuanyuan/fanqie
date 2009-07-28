@@ -20,6 +20,8 @@ $count=$db->query($total);
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -团购后台</title>
+	<?php css_include_tag('admin','top','bottom');
+		use_jquery(); ?>
 	<link href="/css/admin.css" rel="stylesheet" type="text/css">
 	<script language=javascript src="admin.js"></script>
 </head>

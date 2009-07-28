@@ -26,8 +26,8 @@
      	<div id="menu">
 			<div id="menu1">我的生日</div>	
      	  	<div id="menu2"><a href="calendar.php">日历</a></div>
-			<div id="contrl" value='<?php echo $state ?>' name="<?php echo $user_id;?>"><?php if($state==0){echo '屏蔽我的生日';}else{echo '开启我的生日';} ?></div>
-     	  	<div id=date>TODAY <?php echo date("Y-m-d") ?></div>
+			<div id="menu2"><a href="today.php" target=_blank>今日寿星</a></div>
+			<div id="contrl" state='<?php echo $state ?>' name="<?php echo $user_id;?>"><?php if($state==0){echo '屏蔽我的生日';}else{echo '开启我的生日';} ?></div>
      	</div>
   
         <div id="context">
@@ -66,7 +66,7 @@
 <script>
 	$(function(){
 		$("#contrl").click(function(){
-			if($(this).val()==0){
+			if($(this).attr('state')==0){
 				$.post("birthday.post.php",{'id':$(this).attr('name'),'value':'1','type':'contrl'},function(data){
 					if(data==''){
 						alert('屏蔽成功！');
