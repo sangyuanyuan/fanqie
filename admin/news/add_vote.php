@@ -82,7 +82,7 @@
 				alert('请选择投票!');
 				return false;				
 			}else{
-				str = $('#chosen_vote_name').attr('value') + '<a href="#" id="delete_vote" style="color:blue">删除</a>';
+				str = $('#chosen_vote_name').attr('value') + '<a href="#" id="delete_vote" style="color:blue">删除</a>　<a href="#" id="edit_vote" style="color:blue">编辑投票</a>';
 				str += '<input type="hidden" name="news[vote_id]" value="' + vote_id +'">' 
 				$('#vote_id').attr('value',$('#chosen_vote_id').attr('value'));
 				//alert($('#chosen_vote_id').attr('value'));
@@ -93,6 +93,10 @@
 					str = '<a href="add_vote.php?width=600&height=400?dept_id=<?php echo $_REQUEST["dept_id"];?>" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a><input type="hidden" name="news[vote_id]" value="0">';
 					$('#td_vote').html(str);
 					tb_init('#a_vote_id');
+				});
+				$('#edit_vote').click(function(e){
+					e.preventDefault();
+					window.location.href="/admin/vote/vote_edit.php?id=" + $('#vote_id').val();
 				});
 			}
 		});

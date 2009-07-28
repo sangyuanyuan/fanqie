@@ -148,7 +148,7 @@
 			<td>投票</td>
 			<td align="left" id="td_vote">
 				<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>
-				<input type="hidden" name="news[vote_id]" id="vote_id">
+				
 			</td>
 		</tr>
 		<tr id=newsshow3  class="normal_news tr3">
@@ -197,6 +197,8 @@
 		<input type="hidden" name="delete_subject" value="0" id="hidden_delete_subject">
 		<input type="hidden" name="news[is_commentable]" value="1" id="hidden_is_commentable">
 		<input type="hidden" name="news[related_videos]" value="" id="hidden_related_videos">
+		<input type="hidden" name="news[vote_id]" id="vote_id">
+		
 	</form>
 </body>
 </html>
