@@ -28,9 +28,9 @@ $(function() {
 			num++;
 			$("#vote_item_count").attr('value',num);
 			if($("#vote_type").attr('value')=='word_vote'){
-				$("#list").append("<tr class=tr3 id='tr"+num+"'><td>投票项目：</td><td align='left'>标题<input type='text' name='vote_item"+num+"[title]' style='width:100px;' class='required'><a class='del_item' style='cursor:pointer;'>删除</a><input type='hidden' name='deleted"+num+"' id='deleted"+num+"' value='false'></td></tr>");
+				$("#list").append("<tr class=tr3 id='tr"+num+"'><td>投票项目：</td><td align='left'>标题<input type='text' name='vote_item"+num+"[title]' style='width:300px;' class='required'><a class='del_item' style='cursor:pointer;'>删除</a><input type='hidden' name='deleted"+num+"' id='deleted"+num+"' value='false'></td></tr>");
 			}else if($("#vote_type").attr('value')=='image_vote'){
-				$("#list").append("<tr class=tr3 id='tr"+num+"'><td>投票项目：</td><td align='left'>标题<input type='text' name='vote_item"+num+"[title]' style='width:100px;' class='required'>&nbsp;<input type='hidden' name='MAX_FILE_SIZE' value='2097152'><input name='item_image"+num+"' type='file' class='item_image required' ><a class='del_item' style='cursor:pointer;'>删除</a><input type='hidden' name='deleted"+num+"' id='deleted"+num+"' value='false'></td></tr>");
+				$("#list").append("<tr class=tr3 id='tr"+num+"'><td>投票项目：</td><td align='left'>标题<input type='text' name='vote_item"+num+"[title]' style='width:300px;' class='required'>&nbsp;<input type='hidden' name='MAX_FILE_SIZE' value='2097152'><input name='item_image"+num+"' type='file' class='item_image required' ><a class='del_item' style='cursor:pointer;'>删除</a><input type='hidden' name='deleted"+num+"' id='deleted"+num+"' value='false'></td></tr>");
 			}
 			
 			$(".del_item").click(function(){

@@ -106,7 +106,7 @@
 			<tr class=tr3>
 				<td>投票项目：</td>
 				<td align="left">
-					<input type="text" name="vote_item1[title]" id="first_item" style="width:100px" class="required" value="<?php echo $vote_item_record[0]->title?>">
+					<input type="text" name="vote_item1[title]" id="first_item" style="width:300px" class="required" value="<?php echo $vote_item_record[0]->title?>">
 					<a id="add_item" value="1" style="cursor:pointer;">继续添加</a>
 					<input type="hidden" name="deleted1" value="false">
 					<input type="hidden" name="vote_item1_id" value="<?php echo $vote_item_record[0]->id;?>">
@@ -116,7 +116,7 @@
 				<tr class=tr3>
 					<td>投票项目：</td>
 					<td align="left">
-						<input type="text" name="vote_item<?php echo $k;?>[title]" style="width:100px;" class="required" value="<?php echo $vote_item_record[$k-1]->title;?>">
+						<input type="text" name="vote_item<?php echo $k;?>[title]" style="width:300px;" class="required" value="<?php echo $vote_item_record[$k-1]->title;?>">
 						<a class='del_item' name="<?php echo $vote_item_record[$k-1]->id;?>" style='cursor:pointer;'>删除</a>
 						<input type="hidden" name="deleted<?php echo $k;?>" id="deleted<?php echo $k;?>" value="false">
 						<input type="hidden" name="vote_item<?php echo $k;?>_id" value="<?php echo $vote_item_record[$k-1]->id;?>">
