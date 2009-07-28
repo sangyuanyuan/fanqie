@@ -52,7 +52,6 @@
 		</tr>
 		<?php
 			$category = new table_class("smg_category");
-			$category -> echo_sql = true;
 			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'platform,priority'),20);
 			$count_record = count($record);
 			$record2 = $category->find("all",array('conditions' => 'category_type="'.$type.'"','order' => 'priority'));
