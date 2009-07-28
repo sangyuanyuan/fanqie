@@ -60,7 +60,7 @@
 	}
 	js_include_tag('service/calendar','thickbox');
 	$add_month = $_REQUEST['add_month'] ? intval($_REQUEST['add_month']) : 0;
-	$date = strtotime("+$add_month month");
+	$date = strtotime("$add_month month");
 	$y = date('Y',$date);
 	$m = date('m',$date);
 	$first_day = mktime(0,0,0,$m,1,$y);
