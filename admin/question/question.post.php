@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require_once "../../frame.php";
 	
 	if($_POST['post_type']=='del'){

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once('../../frame.php');
 	$category = new table_class("smg_category");
 	$category_menu = $category->find("all",array('conditions' => "category_type='problem'","order" => "priority"));

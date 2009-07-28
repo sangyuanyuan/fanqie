@@ -52,15 +52,17 @@
 		</tr>
 		<?php
 			$category = new table_class("smg_category");
-			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'platform,priority'),20);
+			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'platform,parent_id,priority'),20);
 			$count_record = count($record);
+			$record2 = $category->find("all",array('conditions' => 'category_type="'.$type.'"','order' => 'priority'));
+			$count_record2 = count($record2);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->name;?></td>
 					<td><input type="text" class="priority" name="<?php echo $record[$i]->id;?>" value="<?php if($record[$i]->priority!=100){echo $record[$i]->priority;}?>" style="width:30px;"></td>
-					<td><?php for($j=0;$j<$count_record;$j++){if($record[$j]->id==$record[$i]->parent_id){echo $record[$j]->name;break;}}?></td>
+					<td><?php for($j=0;$j<$count_record2;$j++){if($record2[$j]->id==$record[$i]->parent_id){echo $record2[$j]->name;break;}}?></td>
 					<td><?php echo $record[$i]->platform;?></td>
 					<?php if($type=="news"){?><td><input type="text" class="short_title" name="<?php echo $record[$i]->id;?>" value="<?php echo $record[$i]->short_title_length;?>" style="width:30px;"></td><?php }?>
 					<td><a href="category_add.php?id=<?php echo $record[$i]->id;?>&type=<?php echo $type?>">添加子类别</a>　<a href="category_edit.php?id=<?php echo $record[$i]->id;?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a></td>
