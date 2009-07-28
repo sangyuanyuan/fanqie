@@ -49,6 +49,10 @@ if($_REQUEST['hide_retdiv']){
 		});
 		
 		$('#cancel').click(function(){
+			if($('#retdiv').length <= 0){
+				tb_remove();
+				return false;
+			}
 			$('#retdiv').load('send_gift_day.php',{'date':'<?php echo $_REQUEST["date"];?>','hide_retdiv':true});
 		});
 	});
