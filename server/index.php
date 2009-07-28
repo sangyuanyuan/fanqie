@@ -293,7 +293,7 @@
 				              <TR align=left>
 				              	<? for($i=0;$i<count($man);$i++){?>
 				                <TD><div class=content>
-							<div class=pic><a target="_blank" href="/sever/marry.php"><img border=0 width=87 height=105 src="<?php echo $man[$i]->photo;?>"></a></div>
+							<div class=pic><a target="_blank" href="/server/marry.php"><img border=0 width=87 height=105 src="<?php echo $man[$i]->photo;?>"></a></div>
 							<div class=context>姓名：<?php echo $man[$i]->name;?><br>出生年月：<?php echo $man[$i]->birthday; ?><br>身高：<?php echo $man[$i]->height;?>米<br>学历：<?php echo $man[$i]->education;?><br>毕业院校：<?php echo $man[$i]->school;?></div>
 						</div></TD>
 				                <? }?>
@@ -329,7 +329,7 @@
 				              <TR align=left>
 				              	<? for($i=0;$i<count($woman);$i++){?>
 				                <TD><div class=content>
-							<div class=pic><a target="_blank" href="/sever/marry.php"><img border=0 width=87 height=105 src="<?php echo $woman[$i]->photo;?>"></a></div>
+							<div class=pic><a target="_blank" href="/server/marry.php"><img border=0 width=87 height=105 src="<?php echo $woman[$i]->photo;?>"></a></div>
 							<div class=context>姓名：<?php echo $woman[$i]->name;?><br>出生年月：<?php echo $woman[$i]->birthday; ?><br>身高：<?php echo $woman[$i]->height;?>米<br>学历：<?php echo $woman[$i]->education;?><br>毕业院校：<?php echo $woman[$i]->school;?></div>
 						</div></TD>
 				                <? }?>
