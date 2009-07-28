@@ -36,7 +36,7 @@
 		</tr>
 		<tr class="tr3">
 			<td>说明(选填)</td>
-			<td align="left">　<input type="text" name="item[name]">正确的说法是
+			<td align="left"><input type="text" name="item[name]">正确的说法是
 			</td>
 		</tr>
 		<input type="hidden" name="item_num" value="1">
@@ -47,7 +47,7 @@
 		<tr class="tr3" >
 			<td>答案选项</td>
 			<td align="left">
-			　<input type="text" name="item<?php echo $i;?>[name]" class="required"><input class="checkbox" type="checkbox" name="check<?php echo $i;?>">
+			<input type="text" name="item<?php echo $i;?>[name]" class="required"><input class="checkbox" type="checkbox" name="check<?php echo $i;?>">
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
 			<?php }?>
@@ -76,7 +76,7 @@
 		var num = 2;
 		$("#add_item").click(function(){
 			num++;
-			$(this).parent().parent().next().after('<tr class="tr3" ><td>答案选项</td><td align="left">　<input type="text" name="item'+num+'[name]" class="required"><input type="checkbox" class="check" name="item'+num+'[attribute]"><a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
+			$(this).parent().parent().next().after('<tr class="tr3" ><td>答案选项</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><input type="checkbox" class="check" name="item'+num+'[attribute]"><a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
 			$("#num").attr('value',num);
 			$(".del_item").click(function(){
 				$(this).parent().parent().remove();

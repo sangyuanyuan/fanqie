@@ -77,6 +77,7 @@
 
 <script>
 	$(function(){
+		var flag = false;
 		var num = $("#num").attr('value');
 		
 		$("#add_item").click(function(){
@@ -97,6 +98,16 @@
 				alert("请输入标题！");
 				return false;
 			}
+			
+			$("input[type=checkbox]").each(function(){
+				if($(this).attr('checked'))flag=$(this).attr('checked');
+			});
+			
+			if(!flag){
+				alert('请至少选择一个正确答案！');
+				return false;
+			}
+			$("#question_add").submit();
 		});
 		
 		$(".del_item").click(function(){

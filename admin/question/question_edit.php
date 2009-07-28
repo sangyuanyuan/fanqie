@@ -44,7 +44,7 @@
 		</tr>
 		<tr class="tr3">
 			<td>说明(选填)</td>
-			<td align="left">　<input type="text" name="item[name]" value="<?php echo $records[0]->name;?>">正确的说法是
+			<td align="left"><input type="text" name="item[name]" value="<?php echo $records[0]->name;?>">正确的说法是
 			</td>
 		</tr>
 		<input type="hidden" name="item_num" value="1">
@@ -55,8 +55,8 @@
 		<tr class="tr3" >
 			<td>答案选项</td>
 			<td align="left">
-			　<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><input class="check" type="checkbox" <?php if($records[$i-1]->attribute=='1'){?>checked="checked"<?php }?> name="check<?php echo $i;?>">
-				<input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
+			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><input class="check" type="checkbox" <?php if($records[$i-1]->attribute=='1'){?>checked="checked"<?php }?> name="check<?php echo $i;?>">
+			<input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
 			<?php }?>
@@ -69,9 +69,9 @@
 		<tr class="tr3" >
 			<td>答案选项</td>
 			<td align="left">
-			　<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><input class="check" type="checkbox" <?php if($records[$i-1]->attribute=='1'){?>checked="checked"<?php }?> name="check<?php echo $i;?>">
+			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><input class="check" type="checkbox" <?php if($records[$i-1]->attribute=='1'){?>checked="checked"<?php }?> name="check<?php echo $i;?>">
 			  <a class="del_item"  name="<?php echo $records[$i-1]->id;?>" style="cursor:pointer;">删除</a>
-			  <input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
+			 <input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
 		　	</td>
 		</tr>
 		<?php 
@@ -97,7 +97,7 @@
 		
 		$("#add_item").click(function(){
 			num++;
-			$(this).parent().parent().next().after('<tr class="tr3" ><td>答案选项</td><td align="left">　<input type="text" name="item'+num+'[name]" class="required"><input type="checkbox" class="check" name="check'+num+'"><a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
+			$(this).parent().parent().next().after('<tr class="tr3" ><td>答案选项</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><input type="checkbox" class="check" name="check'+num+'"><a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
 			$("#num").attr('value',num);
 			$(".del_item").click(function(){
 				$(this).parent().parent().remove();
