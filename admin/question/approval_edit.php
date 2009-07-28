@@ -29,10 +29,6 @@
 			<td align="left"><?php show_fckeditor('title','Title',true,"80",$question->title);?><?php if($project_type!='judge'){?>请在正确的选项后面打勾<?php }?></td>
 		</tr>
 		<tr class="tr3">
-			<td width="100">主　题</td>
-			<td align="left"><input type="text" name="question[theme]" value="<?php echo $question->theme;?>" class="required"></td>
-		</tr>
-		<tr class="tr3">
 			<td width="100">昵　称</td>
 			<td align="left"><input type="text" name="question[nick_name]" value="<?php echo $question->nick_name;?>" class="required"></td>
 		</tr>
