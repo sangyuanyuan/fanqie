@@ -41,6 +41,7 @@
 <?php 
    for($j=0;$j < $vote_len; $j++){
 ?>
+<div style="width:995px; margin:0 auto">
 <table align="center"  border="0" bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
 		<td colspan="4" align="center">
@@ -86,6 +87,7 @@
 	}
 	?>
 </table>
+</div>
 <?php
    }
    ?>
