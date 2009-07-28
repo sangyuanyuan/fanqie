@@ -15,7 +15,8 @@ if($cookie=="")
 <?
 	exit;
 }
-$strsql='select * from smg_shop where shopdpid=(select id from smg_shopdp where username="'.$cookie.'") order by createtime desc';
+$shopdpid=$db->query('select id from smg_shopdp where username="'.$cookie.'"');
+$strsql='select * from smg_shop where shopdpid='.$shopdpid[0]->id.' order by priority asc,createtime desc';
 $rows=$db->paginate($strsql,20);
 ?>
 
@@ -45,7 +46,7 @@ $rows=$db->paginate($strsql,20);
 		</tr>
 		<? for($i=0;$i<count($rows);$i++){?>
 		<tr align="center" bgcolor="#f9f9f9" height="22" style="font-size:12px;" >
-			<td><a style="color:#000000; text-decoration:none" target="_blank" href="/shop/splist.php"><? echo $rows[$i]->title;?></td>
+			<td><a style="color:#000000; text-decoration:none" target="_blank" href="/shop/splist.php?id=<?php echo $shopdpid[0]->id;?>"><? echo $rows[$i]->title;?></td>
 			<td><? echo $rows[$i]->starttime;?></td>
 			<td><? echo $rows[$i]->endtime;?></td>
 			<td><a href="shoplist.php?id=<? echo $rows[$i]->id;?>" style="color:#000000">查看</a></td>
