@@ -45,6 +45,10 @@ $(function(){
 			alert("请输入短标题！");
 			return false;
 		}
+		if($('#news_keywords').val()==''){
+			alert("请输入关键字!");
+			return false;
+		}
 		if(news_type == 1){
 			var oEditor = FCKeditorAPI.GetInstance('news[content]') ;
 			var title = oEditor.GetHTML();
