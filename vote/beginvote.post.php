@@ -17,6 +17,6 @@
 		}
 	}
 	
-	alert('发表成功！谢谢参与！');
+	alert('谢谢参与！请等待管理员审批！');
 	redirect('beginvote.php');
 ?>
