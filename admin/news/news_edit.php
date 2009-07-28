@@ -100,7 +100,7 @@
 				}
 				?>
 				</select>　　/　　
-				<input type="text" size="20" name=news[keywords] value="<?php echo $news->keywords;?>">(空格分隔)　　/　　
+				<input type="text" size="20" name=news[keywords]  id="news_keywords"  value="<?php echo $news->keywords;?>">(空格分隔)　　/　　
 				<input type="text" size="10" name=news[priority]  class="number" value="<?php echo $news->priority;?>">(0~100)</td>
 		</tr>
 		<tr class=tr3 id=target_url>

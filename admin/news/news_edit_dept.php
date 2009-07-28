@@ -76,7 +76,7 @@
 		<tr class=tr4 id=newsshow3 >
 			<td>关键词</td>
 			<td align="left">
-				<input type="text" size="20" name=news[keywords]  value="<?php echo $news->keywords;?>">(空格分隔)
+				<input type="text" size="20" name=news[keywords] id="news_keywords"  value="<?php echo $news->keywords;?>">(空格分隔)
 			</td>
 		</tr>		
 		<tr class=tr4 id=newsshow3 >

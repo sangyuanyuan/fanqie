@@ -31,6 +31,10 @@ $(function(){
 			}			
 		});
 		$('#category_add').attr('value',category_add);
+		if($('#news_keywords').val()==''){
+			alert("请输入关键字!");
+			return false;
+		}
 		var oEditor = FCKeditorAPI.GetInstance('news[title]') ;
 		var title = oEditor.GetHTML();
 		if(title==""){
