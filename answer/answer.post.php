@@ -3,8 +3,8 @@
 
 	$question_record = new table_class('smg_question_record');
 	$question_record->update_attributes($_POST['record'],false);
-	$question_record->question_count = isset($_POST['count'])?$_POST['count']:0;
-	$question_record->point = isset($_POST['point'])?$_POST['point']:0;
+	$question_record->question_count = isset($_POST['count'])?$_POST['count']:10;
+	$question_record->point = isset($_POST['point'])?$_POST['point']:10;
 	$question_record->created_at = date("Y-m-d H:i:s");
 	$question_record->s_point = isset($_POST['point_value'])?$_POST['point_value']:10;
 	$dept_score = ($question_record->point/$question_record->s_point)/$question_record->question_count;
