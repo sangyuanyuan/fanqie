@@ -39,19 +39,17 @@ return result;
 }
 </script>
 
-<body style="background:url(/images/bg/admin_bg2.jpg) repeat-x;">
-	<div id=admin_body2>
-	 <div id=part1>
+<body style="background:url(/images/admin/bg.jpg) repeat-x;">
+	<div id=admin_body>
+		<div id=part1>
 	 	<? $cookie= (isset($_COOKIE['smg_admin'])) ? $_COOKIE['smg_admin'] : 0;?>
 		<div id=nav>欢迎 <? echo $record[0]->name;?> | <a href="/">返回主页</a> |　<? if($cookie=="7"||$cookie=="47"){?><a href="/admin/updatepwdlist.php">修改密码列表</a><? }?> |　<span style="cursor:pointer" onClick="Admin_Logout()">退出</span></div>
 		<div id=title>SMG商品管理系统</div>
 		<div id=index><a href="/index.php" target="_blank">动态主页</a></div>
-	 </div>
-	 <div id=part2>	
-		<div class=menu1 onClick="show_menu1(2)">店铺管理</div>
-		  <div id=menus2 class=menus>
-				<div class=menu2 onClick="javascript:document.getElementById('admin_iframe').src='shopindex.php'">.商品管理</div>
-			</div>
+</div>
+	 <div id=part2>
+		<div class=menu1>店铺管理</div>
+		<div id=menus2 class=menus><div class=menu2 onClick="javascript:document.getElementById('admin_iframe').src='shopindex.php'">.商品管理</div></div>
 	 </div>
 	 <div id=part3>
 	  <iframe id=admin_iframe scrolling="yes" src="shopindex.php" width="99%" height="700"></iframe>

@@ -103,15 +103,13 @@
 				<input type="hidden" name="news[low_quality]" id="hidden_low_quality" value="0">
 			</td>
 		</tr>
-		<!--
 		<tr class=tr3  class="normal_news tr3">
 			<td>投票</td>
 			<td align="left" id="td_vote">
-				<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>
+				<a href="add_vote.php?width=600&height=400&dept_id=<?php echo $dept_id;?>" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>
 				<input type="hidden" name="news[vote_id]" id="vote_id">
 			</td>
 		</tr>
-		-->
 		<tr class="normal_news tr3">
 			<td>所属专题</td>
 			<td align="left" id="td_subject">
