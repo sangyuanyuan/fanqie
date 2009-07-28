@@ -60,9 +60,13 @@
 		<?php
 			}
 		?>
+		<?php if($records[0]->description!=''){
+		?>
 		<div id=description>
 			<?php echo $records[0]->description; ?>
 		</div>
+		<?php
+		} ?>
 	</div>
 	
 	<div id=bottom>
