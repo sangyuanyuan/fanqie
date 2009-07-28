@@ -158,7 +158,7 @@
 		}else{
 			clearInterval(handle);
 			if (lave == 0) {
-				tb_show('请填入您的个人信息','info.php?height=300&width=300');
+				tb_show('请填入您的个人信息','info.php?height=300&width=400&modal=true');
 			}else{
 				alert("时间到了！进入下一题");
 				$("#answer_form").submit();

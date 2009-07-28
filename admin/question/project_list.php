@@ -3,9 +3,9 @@
 	$project = new table_class('smg_problem');
 	$key = $_REQUEST['key'];
 	if($key!=''){
-		$record = $project->paginate('all',array('conditions' => 'name  like "%'.trim($key).'%"','order','create_time'),18);
+		$record = $project->paginate('all',array('conditions' => 'name  like "%'.trim($key).'%"','order' => 'create_time desc'),18);
 	}else{
-		$record = $project->paginate('all',array('order','create_time'),18);
+		$record = $project->paginate('all',array('order'=> 'create_time desc'),18);
 	}
 	$count = count($record);
 	$category = new table_class('smg_category');
