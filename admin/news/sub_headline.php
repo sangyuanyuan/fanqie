@@ -70,7 +70,7 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><input type="checkbox" id="<?php echo $items[$i]->id;?>" value="<?php echo $items[$i]->id;?>" name="subject" style="width:12px;"></td>
-					<td><?php echo strip_tags($items[$i]->short_title);?></td>
+					<td><?php echo $items[$i]->short_title;?></td>
 					<td><?php $cate = get_dept_info($items[$i]->dept_id);echo $cate->name;?></td>					
 					<td><?php echo $category->find($items[$i]->category_id)->name; ?></td>
 				</tr>
