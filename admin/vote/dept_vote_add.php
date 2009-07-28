@@ -32,7 +32,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
-			<td align="left"><input type="text" name="vote[description]"></td>
+			<td align="left"><textarea cols=70  name="vote[description]"></textareacols></td>
 		</tr>
 		<tr class=tr3>
 			<td>添加图片：</td>
