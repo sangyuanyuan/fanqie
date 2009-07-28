@@ -147,7 +147,8 @@
 						$vote->find($news->vote_id);
 						echo $vote->name;
 				?>
-				<a href="#" id="delete_vote" style="color:blue">删除</a>				
+				<a href="#" id="delete_vote" style="color:blue">删除</a>		
+				<a href="#" id="edit_vote" style="color:blue">编辑投票</a>		
 				<?php
 					}else{
 				?>
@@ -225,6 +226,10 @@
 			$('#td_vote').html(str);
 			$('#vote_id').val('0');
 			tb_init('#a_vote_id');
+		});
+		$('#edit_vote').click(function(e){
+			e.preventDefault();
+			window.location.href="/admin/vote/vote_edit.php?id=" + $('#vote_id').val();
 		});
 		
 		$('#delete_subject').click(function(e){
