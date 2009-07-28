@@ -26,11 +26,7 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">题　目</td>
-			<td align="left"><?php show_fckeditor('title','Title',true,"80",$question->title);?><?php if($project_type!='judge'){?>请在正确的选项后面打勾<?php }?></td>
-		</tr>
-		<tr class="tr3">
-			<td width="100">主　题</td>
-			<td align="left"><input type="text" name="question[theme]" value="<?php echo $question->theme;?>" class="required"></td>
+			<td align="left"><?php show_fckeditor('title','Title',true,"80",$question->title);?></td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">昵　称</td>
@@ -81,6 +77,7 @@
 
 <script>
 	$(function(){
+		var flag = false;
 		var num = $("#num").attr('value');
 		
 		$("#add_item").click(function(){
@@ -101,6 +98,16 @@
 				alert("请输入标题！");
 				return false;
 			}
+			
+			$("input[type=checkbox]").each(function(){
+				if($(this).attr('checked'))flag=$(this).attr('checked');
+			});
+			
+			if(!flag){
+				alert('请至少选择一个正确答案！');
+				return false;
+			}
+			$("#question_add").submit();
 		});
 		
 		$(".del_item").click(function(){

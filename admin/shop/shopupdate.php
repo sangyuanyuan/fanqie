@@ -29,7 +29,7 @@ $shop_record = $shop->find("all",array('conditions' => 'id='.$id));
 			<td width="100">标　题</td><td width="695" align="left">　<input type="text" size="50" name=shop[title] id=title value="<? echo $shop_record[0]->title;?>" class="required"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;"  style="font-size:12px">
-			<td>优先级</td><td align="left">　<input type="text" size="10" name=shop[priority] id=priority value="<? if($rows['priority']=="100"){ echo "";}else{ echo $rows['priority'];}?>">(1-100)</td>
+			<td>优先级</td><td align="left">　<input type="text" size="10" name=shop[priority] id=priority value="<? if($rows['priority']=="100"){ echo "";}else{ echo $rows[$i]->priority;}?>">(1-100)</td>
 		</tr>
 		<tr align="left" bgcolor="#f9f9f9" height="25px;"  style="font-size:12px">
 			<td align="left">是否送到番茄网</td><td>　<input type="checkbox" id="sendfq" name="sendfq" <? if($shop_record[0]->issendfq==1){?>checked="checked"<? }?>><input type="hidden" id="issendfq" name="shop[issendfq]" value="1"></td>

@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-服务-生日</title>
+	<title>SMG-番茄网-服务-生日日历</title>
 	<? 	
 		css_include_tag('server_calendar','top','bottom','thickbox');
 		use_jquery();
@@ -73,15 +73,16 @@
 	#}
 	$items = $db->query("select count(birthday_short) as icount,substring(birthday_short,4,2) as bday from smg_user_real where birthday_short like '$m%' and hide_birthday!=1 group by birthday_short order by birthday_short");
 	foreach ($items as $v) {
-		$birthday[intval($v->bday)] .= "共有 [{$v->icount}] 人生日,点击查看";
+		$birthday[intval($v->bday)] .= " [{$v->icount}] 人生日";
 	}
 ?>
 <div id=ibody>
 	<div class="l">
     		<div id="title"></div>
      	  <div id="menu">
-     	  	<div id="menu1"><a href="birthday.php">我的生日</a></div>	
-     	  	<div id="menu2">日历</div>
+     	  	<div id="menu2"><a href="birthday.php" target=_blank>我的生日</a></div>	
+    	  	<div id="menu1">日历</div>
+     	  	<div id="menu2"><a href="today.php" target=_blank>今日寿星</a></div>	
      	  	<div id=date>TODAY <?php echo date("Y-m-d");?></div>
      	  </div>
         <div id="month">

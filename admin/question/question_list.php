@@ -5,10 +5,10 @@
 	if($project_id!=''){
 		if($key!=''){
 			$question = new table_class('smg_question');
-			$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id.' and title  like "%'.trim($key).'%"',18)); 
+			$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id.' and title  like "%'.trim($key).'%"','order' => 'create_time desc'),18); 
 		}else{
 			$question = new table_class('smg_question');
-			$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id),18); 
+			$records = $question->paginate('all',array('conditions' => 'problem_id='.$project_id,'order' => 'create_time desc'),18); 
 		}
 		$project = new table_class('smg_problem');
 		$project->find($project_id);
@@ -39,11 +39,17 @@
 	<table width="795" border="0">
 		<tr class="tr1">
 			<td colspan="4" width="795">　　　<a href="question_add.php?id=<?php echo $project_id;?>&type=<?php echo $project_type;?>" style="color:#0000FF">发布问题</a>
-				　　　　　　　　　所属项目：<?php echo $project_name;?>
 				<span style="margin-left:50px; font-size:13px"><input id="search_text2" type="text"></span>
 			<input type="button" value="搜索题目" id="question_search" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
+		<?php if($project_name!=''){
+		?>
+		<tr class="tr1">
+			<td colspan="4" align="center">所属项目：<?php echo $project_name;?></td>
+		</tr>
+		<?php 
+		} ?>
 		<tr class="tr2" style="font-weight:bold; font-size:13px;">
 			<td width="580">问题名称</td><td width="180">创建时间</td><td width="150">操作</td>
 		</tr>
@@ -82,5 +88,11 @@
 	
 	$("#question_search").click(function(){
 				window.location.href="question_list.php?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
+	});
+	
+	$('#search_text2').keydown(function(e){
+		if(e.keyCode == 13){
+			window.location.href="question_list.php?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
+		}
 	});
 </script>

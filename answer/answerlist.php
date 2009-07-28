@@ -26,7 +26,7 @@
 				</div>
 				<?php
 					$db = get_db();
-					$sql = 'select id,title from smg_question where is_adopt=1 order by create_time';
+					$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc';
 					$records = $db->paginate($sql,18);
 					close_db();
 					$count = count($records);

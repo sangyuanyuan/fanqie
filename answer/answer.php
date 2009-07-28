@@ -1,19 +1,19 @@
 ﻿<?php
     require_once('../frame.php');
 	$id = $_REQUEST['id'];
-	$sql = 'select id,title,nick_name from smg_question where id>='.$id.' and is_adopt=1 order by create_time limit 2';
+	$sql = 'select id,title,nick_name,description from smg_question where id>='.$id.' and is_adopt=1 order by create_time limit 2';
 	$db = get_db();
 	$records = $db->query($sql);
 	$number = isset($_POST['number'])?$_POST['number']:'1';
 	$point = isset($_POST['point'])?$_POST['point']:'0';
-	if(isset($_POST['lave'])){
+	if(isset($_POST['lave'])){	
 		$lave = $_POST['lave'];
-		$q_count = $_POST['count'];
+		$q_count = $_POST['count']+1;
 	}else{
 		$sql = 'select count(*) as count from smg_question where is_adopt=1 and id>'.$id.' order by create_time';
 		$record = $db->query($sql);
 		$lave = $record[0]->count;
-		$q_count = $record[0]->count;
+		$q_count = 1;
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -41,7 +41,7 @@
 	</div>
 	<div id="middle">	
 		<div id=num><?php echo $number;?>.</div>
-		<div id="question_title"><?php echo $records[0]->title; ?></div>
+		<div id="question_title"><?php echo $records[0]->title; ?>(10分)</div>
 		
 		<?php
 			$sql = 'select id,name,attribute from smg_question_item where question_id='.$id;
@@ -60,6 +60,13 @@
 		<?php
 			}
 		?>
+		<?php if($records[0]->description!=''){
+		?>
+		<div id=description>
+			<?php echo $records[0]->description; ?>
+		</div>
+		<?php
+		} ?>
 	</div>
 	
 	<div id=bottom>
@@ -125,7 +132,7 @@
 		}else{
 			clearInterval(handle);
 			if (lave == 0) {
-				tb_show('请填入您的个人信息','info.php?height=300&width=300');
+				tb_show('请填入您的个人信息','info.php?height=300&width=400&modal=true');
 			}else{
 				alert("时间到了！进入下一题");
 				$("#answer_form").submit();
