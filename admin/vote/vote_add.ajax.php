@@ -72,7 +72,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>投票类型：</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select  id="vote_type" name="vote[vote_type]">
 					<option value="word_vote" <?php if("word_vote"==$vote_type){?>selected="selected"<?php }?>>文字投票</option>
 					<option value="image_vote" <?php if("image_vote"==$vote_type){?>selected="selected"<?php }?>>图片投票</option>
