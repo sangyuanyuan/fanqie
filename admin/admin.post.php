@@ -33,9 +33,9 @@ if ($_POST["type"]=="shopdel")
 {
 	$StrSql='delete from smg_shop where id='.$_POST["id"]; 
 	$Record = $db->execute($StrSql);
-	$StrSql='delete from smg_shop_signup where tg_id='.$_POST["tgid"]; 
+	$StrSql='delete from smg_shop_signup where tg_id='.$_POST["id"]; 
 	$Record = $db->execute($StrSql);
-	$StrSql='delete from smg_shop_comment where tg_id='.$_POST["tgid"]; 
+	$StrSql='delete from smg_comment where resource_id='.$_POST["id"].' and resource_type="shop"'; 
 	$Record = $db->execute($StrSql);
 	echo "OK";
 }
