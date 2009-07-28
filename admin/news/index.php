@@ -2,7 +2,8 @@
 	require_once('../../frame.php');
 
 	$title = urldecode($_REQUEST['title']);
-	$tags = urldecode($_REQUEST['flag']);
+	$flag = urldecode($_REQUEST['flag']);
+
 	$user = judge_role('admin');	
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
 	
@@ -21,7 +22,7 @@
 	if($dept_id!=''){
 		array_push($c, "dept_id=$dept_id");
 	}
-	if($tags){
+	if($flag){
 		array_push($c, "tags='$tags'");
 	}
 	if($is_adopt!=''){
@@ -72,7 +73,7 @@
 				$tags = get_config('g_news_tags');
 				foreach ($tags as $v) {
 					echo "<option value='{$v}'"; 
-					if($v == $tags)
+					if($v == $flag)
 					echo " selected='selected'";
 					
 					echo ">$v</option>";
