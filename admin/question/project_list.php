@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once('../../frame.php');
 	$project = new table_class('smg_problem');
 	$key = $_REQUEST['key'];

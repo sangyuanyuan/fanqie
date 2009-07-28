@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once('../../frame.php');
 	$id = $_REQUEST['id'];
 	$project = new table_class('smg_problem');
