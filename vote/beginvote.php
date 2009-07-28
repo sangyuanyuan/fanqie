@@ -19,23 +19,22 @@
 	<div id=answer>
 		<div id=left>
 			<div id=title>
-				<div id=backup><a target="_blank" href="#">＜＜返回上一页</a></div>
+				<div id=backup><a target="_blank" href="/">返回首页</a></div>
 			</div>
 			<div id=content>
 				<div id=head>
-					<div class=title2><span>精彩投票</span></div>
-					<div class=title2><span>最新投票</span></div>
+					<div class=title2><span><a href="vote_list.php">最新投票</a></span></div>
 					<div class=title1><span>发起投票</span></div>
 					<div id=line></div>
 				</div>
 				<form id="vote" action="beginvote.post.php" method="post">
 				<div id=question>
-					<div id=wz>为哪款手机而烦恼？给宝宝起一个什么名字？今年生日怎么过？那就发动所有好友投票帮你决定吧！你也可以用“投票”来做其他方面的小调查</div>
+					<div id=wz></div>
 					<div id=top>
-						投票主题：<input type="text"  name="vote[name]" class="required" style="width:250px; border:1px solid #000000;">　　<span id=add_description style="cursor:pointer;">添加详细投票说明</span><br><br>	
-						能选几项：<input type="text"  name="vote[max_item_count]" class="required number" style="width:250px; border:1px solid #000000;">
-						<div id=description style="margin-top:10px; display:none;">
-							答题说明：<textarea name="vote[description]" style="width:280px; border:1px solid #000000;"></textarea>
+						投票主题：<input type="text" id="vote_name"  name="vote[name]" class="required" style="width:250px; border:1px solid #000000;"><br><br>	
+						能选几项：<input type="text"  name="vote[max_item_count]" value="1" class="required number" style="width:250px; border:1px solid #000000;">(1:为单选)
+						<div id=description style="margin-top:10px; ">
+							答题说明：<textarea name="vote[description]"  class="required" id="vote_description" style="width:280px; border:1px solid #000000;"></textarea>
 						</div>
 					</div>
 					
@@ -66,10 +65,7 @@
 				$(this).parent().remove();
 			})
 		});
-		
-		$("#add_description").click(function(){
-			$("#description").show();
-			$("#description").children().attr('class','required');
-		});
+			
+	
 	})
 </script>

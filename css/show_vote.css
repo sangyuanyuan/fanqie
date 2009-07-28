@@ -1,0 +1,8 @@
+body {
+	
+}
+#answer{width:995px; margin:0 auto; line-height:15px;}
+#left{width:650px; margin-top:10px; padding-bottom:10px; border:1px solid #D8DFEA; float:left; display:inline;}
+.vote_items_box{text-align:center;width:450px;}
+.vote_title{font-weight:bold;font-size:14px;margin-top:5px;}
+

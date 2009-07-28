@@ -1,8 +1,5 @@
 ﻿<?php
-	require "../frame.php";
-	
-	var_dump($_POST);
-	
+	require "../frame.php";	
 	$vote = new table_class('smg_vote');
 	$vote -> update_attributes($_POST['vote'],false);
 	$vote ->vote_type = 'word_vote';
