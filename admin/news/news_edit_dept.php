@@ -106,12 +106,21 @@
 			<td>视频</td>
 			<td align="left" id="td_video">			
 				视频<input type="file" name="video_src" id="video_src">　	
+				<?php 
+				if($news->video_src){
+						echo "<a href=\"{$news->video_src}\" target=\"_blank\">查看</a>";
+					}
+				?>
 				缩略图<input type="file" name="video_pic" id="video_pic">　
+				<?php					
+					if($news->video_photo_src){
+						echo "<a href=\"{$news->video_photo_src}\" target=\"_blank\">查看</a>";
+					}
+				?>
 				<input type="checkbox" id="ch_low_quality" <?php if($news->low_quality) echo ' checked="checked"';?>>低清
 				<input type="hidden" name="news[low_quality]" id="hidden_low_quality" value="<?php echo $news->low_quality?>">
 			</td>
 		</tr>
-		<!--
 		<tr id=newsshow3 class="normal_news tr3">
 			<td>投票</td>
 			<td align="left" id="td_vote">
@@ -125,13 +134,12 @@
 				<?php
 					}else{
 				?>
-				<a href="add_vote.php?width=600&height=400" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>	
+				<a href="add_vote.php?width=600&height=400&dept_id=<?php echo $dept_id;?>" class="thickbox" id="a_vote_id" style="color:blue;">关联投票</a>	
 				<?php	
 					} 
 				?>	
 			</td>
 		</tr>
-		-->
 		<tr id=newsshow3  class="normal_news tr3">
 			<td>所属专题</td>
 			<td align="left" id="td_subject">

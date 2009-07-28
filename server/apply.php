@@ -124,7 +124,7 @@
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　选择图片</div>
 		<div class=t_r>
-			<input type="file" name="image" id="image" class="required">
+			<input type="file" name="image" id="image" class="required"><input type="hidden" name="MAX_FILE_SIZE" value="1097152">
 		</div>
 	</div>
 	<div class=t>

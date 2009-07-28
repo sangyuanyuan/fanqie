@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 	require "../frame.php";
 	
 	$news = new table_class('smg_news');
