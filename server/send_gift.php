@@ -3,11 +3,11 @@ if($_REQUEST['hide_retdiv']){
   	echo "<div id=retdiv>";
   }
 ?>
-<h2><?php echo "赠送礼物给{$_REQUEST['nickname']}";?></h2>
+<div id=sendname><?php echo "赠送礼物给{$_REQUEST['nickname']}";?></div>
 <div id="msg_box">
-	您的大名:<input type="text" id="name">	
+	您的大名<input type="text" id="name">	
 	<div>
-		您的祝福:<textarea id="tcontent"></textarea><button id="submit">发送</button><button id="cancel">取消</button>
+		您的祝福<textarea id="tcontent"></textarea><button id="submit">发送</button><button id="cancel">取消</button>
 	</div>
 </div>
 <div id="right_div">
