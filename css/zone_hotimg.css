@@ -8,6 +8,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #l_t{width:677px; height:23px; padding-top:5px; padding-left:30px; background:url('/images/zone/hotimg_l.jpg') no-repeat; font-size:14px; font-weight:bold; line-height:20px; float:left; display:inline;}
 #l_b{width:707px; padding-bottom:10px; background:#FFF9E6; float:left; display:inline;}
 #l_b .box{width:340px; margin-top:12px;  margin-left:10px; text-align:center;  float:left; display:inline;}
+#l_b .box .pic{width:300px; height:200px; padding:1px; border:1px solid #cccccc; float:left; display:inline;}
 #l_b .box img{width:300px; height:200px;}
 #l_b .box .title{width:340px; height:30px; font-size:14px; line-height:20px; text-align:center;  float:left; display:inline;}
 #l_b .box .title a{ color:#DE4900; text-decoration:none;}
