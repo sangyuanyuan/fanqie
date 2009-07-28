@@ -54,8 +54,8 @@
 	$table_change += array('</p>'=>'');
 	$title = strtr($news->title,$table_change);
 	$short_title =  strtr($news->short_title,$table_change);
-	$description =  strtr($news->description,$table_change);
-	$content =  strtr($news->content,$table_change);
+	//$description =  strtr($news->description,$table_change);
+	//$content =  strtr($news->content,$table_change);
 	$news->title = $title;
 	$news->short_title = $short_title;
 	$news->description = $description;
