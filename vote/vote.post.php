@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require_once('../frame.php');
 	$vote_item_id=$_REQUEST['item_id'];
 	$ip=getenv('REMOTE_ADDR');

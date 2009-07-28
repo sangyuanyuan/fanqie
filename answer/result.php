@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require_once('../frame.php');
 	$id = $_REQUEST['id'];
 	$r_record = new table_class('smg_question_record');
@@ -43,10 +43,14 @@
 					<div class=b_word>
 						答题正确率：<font color="#FF9900">
 						<?php
-							$tot = $r_record->point*10;
+							$tot = $r_record->point/$r_record->s_point;
 							if($r_record->question_count!=0){
-								$tot = $tot/$r_record->question_count;
-								$tot = substr($tot, 0, 2).'%';
+								$tot = 100*$tot/$r_record->question_count;
+								if($tot!=100){
+									$tot = substr($tot, 0, 2).'%';
+								}else{
+									$tot = '100%';
+								}
 							}else{
 								$tot = '0%';
 							}

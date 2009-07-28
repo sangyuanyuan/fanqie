@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require_once('../frame.php');
 	$problem_id = $_REQUEST['id'];
 	$number = isset($_POST['number'])?$_POST['number']:'1';
@@ -51,7 +51,7 @@
 			$items = $db->query($sql);
 			$count = count($items);
 			$answer = '';
-			if($type=='check'){
+			if($type!='judge'){
 				for($i=0;$i<$count;$i++){
 		?>
 		<div class="question_option">
@@ -63,7 +63,7 @@
 		</div>
 		<?php
 				}
-			}elseif($type=='judge'){
+			}else{
 		?>
 		<div class="question_option">
 			<input class=radio type="radio" name="judge" value="1">正确
@@ -75,23 +75,7 @@
 			<input class=radio type="radio" name="judge" value="0">不正确
 		</div>
 		<?php 
-			}else{
-				for($i=0;$i<$count;$i++){
-		?>
-		<div class="question_option">
-			<input class=radio type="radio" name="judge" value="<?php echo $items[$i]->id;?>">
-			<?php 
-				echo num_to_ABC($i).$items[$i]->name;
-				if($items[$i]->attribute==1)$answer = $items[$i]->id;
-			?>
-		</div>
-		<?php
-				}
 			}
-		?>
-		
-		<?php
-			
 		?>
 	</div>
 	
