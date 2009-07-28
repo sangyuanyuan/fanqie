@@ -65,8 +65,7 @@
 				<td>题目类型</td>
 				<td align="left" >
 					　<select id="problemtype" name="post[type]">
-						<option value="radio" <?php if('radio'==$record[0]->type){?>selected="selected"<?php }?> >单选题</option>
-						<option value="check" <?php if('check'==$record[0]->type){?>selected="selected"<?php }?> >多选题</option> 
+						<option value="check" <?php if('check'==$record[0]->type){?>selected="selected"<?php }?> >选择题</option> 
 						<option value="judge" <?php if('judge'==$record[0]->type){?>selected="selected"<?php }?> >是非题</option>
 					</select>
 				</td>

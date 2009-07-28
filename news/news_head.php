@@ -87,7 +87,7 @@
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
 			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<?php if(count($about)>0||count($about)>0){?>
-			<div class=abouttitle><div style="float:left; display:inline;">更多关于“</div><div style="height:20px; line-height:20px; overflow:hidden; text-decoration:underline; float:left; display:inline"><?php echo mb_substr(strip_tags($record[0]->short_title),0,36);?></div><div style="float:left; display:inline;">”的新闻</div></div>
+			<div class=abouttitle>更多关于“<?php echo mb_substr(strip_tags($record[0]->short_title),0,36,"utf-8");?>”的新闻</div>
 			<div class=aboutcontent style="padding-bottom:10px;">
 				<div class=title>相关链接</div>
 					<?php for($i=0;$i<count($about);$i++){

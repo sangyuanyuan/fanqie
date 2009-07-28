@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require_once('../frame.php');
 	$id = $_REQUEST['id'];
 	$sql = 'select id,title,nick_name from smg_question where id>='.$id.' and is_adopt=1 order by create_time limit 2';

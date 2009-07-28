@@ -62,8 +62,7 @@
 				<td>题目类型</td>
 				<td align="left" >
 					<select id="problemtype" name="post[type]">
-						<option value="radio">单选题</option>
-						<option value="check">多选题</option>
+						<option value="check">选择题</option>
 						<option value="judge">是非题</option>
 					</select>
 				</td>

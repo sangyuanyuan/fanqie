@@ -53,6 +53,9 @@
 		$("#newskey4").change(function(){
 			newskey();
 		})
+		$(".menu1").click(function(){
+			$(".menu2").css("display","inline");
+		})
 
 })
 		function newskey()
