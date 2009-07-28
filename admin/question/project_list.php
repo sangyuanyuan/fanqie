@@ -42,10 +42,8 @@
 		<tr class="tr3" id="<?php echo $record[$i]->id;?>">
 			<td><a href="question_list.php?id=<?php echo $record[$i]->id;?>"><?php echo $record[$i]->name;?></a></td>
 			<td><?php
-					 if($record[$i]->type=="radio"){
-						echo "单选题";
-					 }elseif($record[$i]->type=="check"){
-					 	echo "多选题";
+					 if($record[$i]->type=="check"){
+					 	echo "选择题";
 					 }elseif($record[$i]->type=="judge"){
 					 	echo "是非题";
 					 }

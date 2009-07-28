@@ -11,7 +11,7 @@ body {
 
 #middle{width:636px; margin-left:150px; padding-bottom:20px; border:2px solid #F2F2F2; float:left; display:inline; }
 #middle #num{font-size:16px; padding-top:20px; padding-left:15px; font-weight:bold; color:#D5273E; line-height:20px; float:left; display:inline;}
-#middle #question_title{width:580px; padding-right:20px; padding-top:20px; font-size:15px; font-weight:bold; color:#D5273E; line-height:20px; float:left; display:inline;}
+#middle #question_title{width:570px; padding-right:20px; padding-top:20px; font-size:15px; font-weight:bold; color:#D5273E; line-height:20px; word-break:break-all; float:left; display:inline;}
 #middle .question_option{width:500px; height:20px; margin-top:10px; margin-left:30px; line-height:20px; float:left; display:inline;}
 
 #bottom{width:950px; padding-top:5px; float:left; display:inline;}
