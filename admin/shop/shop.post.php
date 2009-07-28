@@ -1,8 +1,11 @@
 <?php
 	require_once "../../frame.php";
 	$shop= new table_class("smg_shop");
-	$shop->find($_POST['tgid']);
-	
+	$shop->echo_sql = true;
+	if($_POST['tgid']!="")
+	{
+		$shop->find($_POST['tgid']);
+	}
 	//如果在编辑的情况下没有上传文件则不进入文件上传的过程
 	if($_POST['type']!=="edit"||$_FILES['upfile1']['name']!=null){
 		$upload = new upload_file_class();
@@ -16,14 +19,8 @@
 			}
 			$video->photourl = "/upload/images/" .$img;
 		}
-		
-		
-
 	}
 	if($_POST['shop']["priority"]==null){$shop->update_attribute("priority","100");}
 	$shop->update_attributes($_POST['shop']);
-	
-	redirect('shoplist.php?id='.$_POST['tg_id']);
-	
-	
+	redirect('shopindex.php');	
 ?>
