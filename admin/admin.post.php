@@ -27,11 +27,10 @@ if ($_POST["type"]=="deltg")
 	$strsql='delete from smg_tg_signup where id='.$_POST['id']; 
 	$Record = $db->execute($strsql);
 	echo "OK";
-
 }
 if ($_POST["type"]=="shopdel")
 {
-	$StrSql='delete from smg_shop where id='.$_POST["id"]; 
+	$StrSql='delete from smg_shop where id='.$_POST["id"];
 	$Record = $db->execute($StrSql);
 	$StrSql='delete from smg_shop_signup where tg_id='.$_POST["id"]; 
 	$Record = $db->execute($StrSql);
