@@ -52,7 +52,7 @@
 		</tr>
 		<?php
 			$category = new table_class("smg_category");
-			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'platform,priority'),20);
+			$record = $category->paginate("all",array('conditions' => 'category_type="'.$type.'"','order' => 'platform,parent_id,priority'),20);
 			$count_record = count($record);
 			$record2 = $category->find("all",array('conditions' => 'category_type="'.$type.'"','order' => 'priority'));
 			$count_record2 = count($record2);
