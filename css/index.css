@@ -176,6 +176,14 @@ p{margin:0px; padding:0px;}
 #b_t_l{width:525px; height:188px; background:url(/images/index/bg_b_t_l.jpg) no-repeat; float:left; display:inline;}
 
 #b_t_r{width:470px; height:188px; background:url(/images/index/bg_b_t_r.jpg) no-repeat; float:right; display:inline;}
+#b_t_r .m_box{width:205px; height:140px; margin-left:140px; margin-top:40px; float:left; display:inline;}
+#b_t_r .top_title{width:190px; height:30px; margin-top:5px; margin-left:12px; line-height:30px; font-weight:bolder; font-size:16px; overflow:hidden; float:left; display:inline;}
+#b_t_r .top_title a{color:#ED4254; text-decoration:none;}
+#b_t_r .bottom_title{width:190px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;}
+#b_t_r .bottom_title a{color:#000000; text-decoration:none;}
+#b_t_r .r_box{width:120px; height:140px; margin-top:40px; float:left; display:inline; }
+#b_t_r .r_box #begin_question{width:73px; height:22px; margin-left:15px; margin-top:6px; float:left; display:inline;}
+#b_t_r .r_box #question{width:106px; height:88px; margin-top:20px; float:left; display:inline;}
 
 #b_b_l{width:315px; height:145px; background:url(/images/index/bg_b_b_l.jpg) no-repeat; float:left; display:inline;}
 

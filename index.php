@@ -560,7 +560,7 @@
   		<!-- start middle_left_bottom !-->
  			<div id=m_l_b>
  				<div id=title>博 客</div>
- 				<a href="/blog/" id=more target=_blank></a>
+ 				<a href="/zone/" id=more target=_blank></a>
  				<?
   				$sql = 'select i.id as img_id,i.src,c.id as cid from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="首页博客" and c.platform="zone" order by i.priority asc limit 1';
 					$record_blog=$db -> query($sql);	
@@ -705,7 +705,25 @@
  
       <!-- start bottom_top_right !-->
  			<div id=b_t_r>
-
+				<div class=m_box>
+					<?php  
+						$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
+						$record = $db->query($sql);
+						$count = count($record);
+					?>
+					<div class="top_title"><a href="/answer/answer.php?id=<?php echo $record[0]->id; ?>" title="<?php echo $record[0]->title; ?>" target=_blank><?php echo $record[0]->title; ?></a></div>
+					<?php 
+						for($i=1;$i<$count;$i++){
+					?>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/answer.php?id=<?php echo $record[$i]->id ?>" title="<?php echo $record[$i]->title; ?>" target=_blank><?php echo $record[$i]->title ?></a></li></div>
+					<?php
+						}
+					?>
+				</div>
+				<div class=r_box>
+					<div id=begin_question><a href="/answer/question.php" target="_blank"><img border=0 src="/images/index/begin_question.jpg"></a></div>
+					<div id=question><a href="/answer/answerlist.php" target="_blank"><img border=0 src="/images/index/question.jpg"></a></div>
+				</div>
  			</div>
  			<!-- end !-->	 
     	

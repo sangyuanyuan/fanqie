@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -答题列表</title>
+	<title>>SMG-番茄网-服务-答题列表</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','answer.css','answer_right.css');
 	?>
