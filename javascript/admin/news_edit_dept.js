@@ -41,6 +41,10 @@ $(function(){
 		//var oEditor = FCKeditorAPI.GetInstance('news[short_title]') ;
 		//var short_title = remove_hmtl_tag(oEditor.GetHTML());
 		var short_title= $('#news_short_title').val();
+		if($('#news_keywords').val()==''){
+			alert("请输入关键字!");
+			return false;
+		}
 		if(short_title==""){
 			alert("请输入短标题！");
 			return false;

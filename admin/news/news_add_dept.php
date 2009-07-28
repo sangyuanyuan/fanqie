@@ -79,7 +79,7 @@
 		<tr class=tr3>
 			<td>关键词</td>
 			<td align="left">
-				<input type="text" size="20" name=news[keywords]>(空格分隔)
+				<input type="text" size="20" id="news_keywords"  name=news[keywords]>(空格分隔)
 		</tr>		
 		<tr class=tr3>
 			<td>优先级</td>

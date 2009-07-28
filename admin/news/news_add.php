@@ -123,7 +123,7 @@
 				}
 				?>
 				</select>　　/　　
-				<input type="text" size="20" name=news[keywords]>(空格分隔)　　/　　
+				<input type="text" size="20" id="news_keywords"  name=news[keywords]>(空格分隔)　　/　　
 				<input type="text" size="10" name=news[priority] class="number">(0~100)</td>
 		</tr>		
 		

@@ -8,12 +8,12 @@
 	$point = isset($_POST['point'])?$_POST['point']:'0';
 	if(isset($_POST['lave'])){
 		$lave = $_POST['lave'];
-		$q_count = $_POST['count'];
+		$q_count = $_POST['count']+1;
 	}else{
 		$sql = 'select count(*) as count from smg_question where is_adopt=1 and id>'.$id.' order by create_time';
 		$record = $db->query($sql);
 		$lave = $record[0]->count;
-		$q_count = $record[0]->count;
+		$q_count = 1;
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
