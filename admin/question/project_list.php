@@ -31,8 +31,6 @@
 			<td colspan="5" width="795">　　　<a href="project_add.php" style="color:#0000FF">发布项目</a>
 			<span style="margin-left:20px; font-size:13px"><input id="search_text1" type="text" value="<? echo $key;?>"></span>
 			<input type="button" value="搜索项目" id="project_search" style="border:1px solid #0000ff; height:21px">
-			<span style="margin-left:50px; font-size:13px"><input id="search_text2" type="text"></span>
-			<input type="button" value="搜索题目" id="question_search" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
 		<tr class="tr2">
@@ -90,19 +88,10 @@
 				window.location.href="?key="+$("#search_text1").attr('value');
 	});
 	
-	$("#question_search").click(function(){
-				window.location.href="question_list.php?key="+$("#search_text2").attr('value');
-	});
-	
 	$('#search_text1').keydown(function(e){
 		if(e.keyCode == 13){
 			window.location.href="?key="+$("#search_text1").attr('value');
 		}
 	});
 	
-	$('#search_text2').keydown(function(e){
-		if(e.keyCode == 13){
-			window.location.href="question_list.php?key="+$("#search_text2").attr('value');	
-		}
-	});
 </script>
