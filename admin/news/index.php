@@ -2,6 +2,7 @@
 	require_once('../../frame.php');
 
 	$title = urldecode($_REQUEST['title']);
+	$flag = urldecode($_REQUEST['flag']);
 
 	$user = judge_role('admin');	
 	$category_id = $_REQUEST['category'] ? $_REQUEST['category'] : -1;
@@ -20,6 +21,9 @@
 	}
 	if($dept_id!=''){
 		array_push($c, "dept_id=$dept_id");
+	}
+	if($flag){
+		array_push($c, "tags='$tags'");
 	}
 	if($is_adopt!=''){
 		array_push($c, "is_adopt=$is_adopt");
@@ -62,6 +66,19 @@
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
+				</select>
+				<select id="news_tag">
+					<option value="">选择标签</option>
+				<?php
+				$tags = get_config('g_news_tags');
+				foreach ($tags as $v) {
+					echo "<option value='{$v}'"; 
+					if($v == $flag)
+					echo " selected='selected'";
+					
+					echo ">$v</option>";
+				}
+				?>
 				</select>
 				<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
 				<input type="hidden" value="<?php echo $category_id;?>" id="category">
@@ -142,7 +159,7 @@
 				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category=&adopt="+$("#adopt").attr('value');				
 			}
 			if(category_id != -1){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
 			}
 		
 		});
