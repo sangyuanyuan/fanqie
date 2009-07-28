@@ -6,6 +6,7 @@
 	$marry->update_attributes($_POST['marry'],false);
 	$marry->birthday = $_POST['year'].'-'.$_POST['month'].'-'.$_POST['day'];
 	if($_FILES['image']['name']!=''){
+		$smg_image = new smg_images_class();
 		$upload = new upload_file_class();
 		$upload->save_dir = "/upload/images/";
 		$img = $upload->handle('image','filter_pic');
