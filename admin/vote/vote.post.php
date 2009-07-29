@@ -1,6 +1,6 @@
 <?php
 	require_once "../../frame.php";
-	//var_dump($_POST);
+	#var_dump($_POST);
 	
 	if("del"==$_POST['post_type'])
 	{
@@ -30,7 +30,19 @@
 		$table_change += array('</p>'=>'');
 		$title = strtr($_POST['title'],$table_change);
 		$vote->name = $title;
-		$vote->update_attributes($_POST['vote']);
+		$vote->update_attributes($_POST['vote'],false);
+		if($_POST['started_at']){
+			$vote->started_at = $_POST['started_at'];
+		}else{
+			$vote->started_at = null;
+		}
+		if($_POST['ended_at']){
+			$vote->ended_at = $_POST['ended_at'];
+			
+		}else{
+			$vote->ended_at = null;
+		}
+		$vote->save();
 		
 		for($i=1;$i<=$_POST['vote_item_count'];$i++){
 			if($_POST['deleted'.$i]=='false'){

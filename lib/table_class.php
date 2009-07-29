@@ -265,6 +265,7 @@ class table_class{
 		$first = true;
 		$sqltail ="";
 		foreach ($this->fields as $k => $v){
+			
 			if(strtolower($k) == 'id') continue;
 			if ($first) {
 				$sqlstr .= $k;
@@ -322,7 +323,12 @@ class table_class{
 		*/
 		$tmp = array();
 		foreach ($this->changed_fields as $key) {
-			 $tmp[] = $key ."='" .$this->$key ."'";
+			 
+			 if(is_null($this->$key)){
+			 	$tmp[] = $key ."=NULL";
+			 }else{
+			 	$tmp[] = $key ."='" .$this->$key ."'";
+			 }
 		}
 		$sqlstr .= implode(',',$tmp);
 		$sqlstr .= " where id=" .$this->fields['id'];

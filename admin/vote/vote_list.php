@@ -69,7 +69,7 @@
 				
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
-					<td><?php echo $record[$i]->name;?></td>
+					<td><a href="/vote/vote.php?vote_id=<?php echo $record[$i]->id;?>" target="_blank"><?php echo $record[$i]->name;?></a></td>
 					<td><?php echo $limit_name;?></td>
 					<td><?php echo $record[$i]->max_vote_count;?></td>
 					<td><?php echo $vote_name;?></td>
