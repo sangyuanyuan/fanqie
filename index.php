@@ -96,7 +96,7 @@
  				<div class=list id=list1>
  					<ul>
  						<?php for($i=0; $i<count($record_star); $i++){?>
- 						<li><a href="/show/show.php?id=<?php echo $record_star[$i]->img_id ?>" target=_blank><?php echo $record_star[$i]->title ?></a></li>
+ 						<li><a href="/show/show.php?id=<?php echo $record_star[$i]->img_id ?>" target=_blank><?php echo strip_tags($record_star[$i]->title) ?></a></li>
  						<? }?>
  					</ul>		
  				</div>  			 			
@@ -111,7 +111,7 @@
  				<div class=list id=list3>
  					<ul>
  						<?php for($i=0; $i<count($record_ad); $i++){?>
- 						<li><a href="/show/show.php?id=<?php echo $record_ad[$i]->img_id ?>" target=_blank><?php echo $record_ad[$i]->title ?></a></li>
+ 						<li><a href="/show/show.php?id=<?php echo $record_ad[$i]->img_id ?>" target=_blank><?php echo strip_tags($record_ad[$i]->title) ?></a></li>
  						<? }?>
  					</ul>		
  				</div>
