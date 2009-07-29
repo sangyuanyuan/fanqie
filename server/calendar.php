@@ -80,9 +80,9 @@
 	<div class="l">
     		<div id="title"></div>
      	  <div id="menu">
-     	  	<div id="menu2"><a href="birthday.php" target=_blank>我的生日</a></div>	
+     	  	<div id="menu2"><a href="birthday.php">我的生日</a></div>	
     	  	<div id="menu1">日历</div>
-     	  	<div id="menu2"><a href="today.php" target=_blank>今日寿星</a></div>	
+     	  	<div id="menu2"><a href="today.php">今日寿星</a></div>	
      	  	<div id=date>TODAY <?php echo date("Y-m-d");?></div>
      	  </div>
         <div id="month">
