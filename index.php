@@ -792,7 +792,7 @@
 									for($i=0;$i<count($marry);$i++){
 								?>
 				                <TD><div class=content>
-							<div class=pic><a target="_blank" href="/server/marry.php"><img border=0 width=90 height=70 src="<?php echo $woman[$i]->photo;?>"></a></div>
+							<div class=pic><a target="_blank" href="/server/marry.php"><img border=0 width=90 height=70 src="<?php echo $marry[$i]->photo;?>"></a></div>
 							<div class=context><a target="_blank" href="/server/marry.php"><?php echo $marry[$i]->name;?></a><br></div>
 						</div></TD>
 				                <? }?>

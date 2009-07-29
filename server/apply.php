@@ -206,6 +206,6 @@
 	   var image=new Image();
 	   image.dynsrc=filePath;
 	   alert(image.fileSize);     
-	   setTimeout("alert(image.fileSize);",2000); 
+	   setTimeout(alert(image.fileSize),2000); 
 	} 
 </script>
