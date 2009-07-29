@@ -709,7 +709,7 @@
 						$l_count = $count>7?7:$count;
 						for($i=0;$i<$l_count;$i++){
 					?>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/vote/vote.php?id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
 					<?php
 						}
 					?>
@@ -719,7 +719,7 @@
 						$count = $count-7>0?$count:7;
 						for($i=7;$i<$count;$i++){
 					?>
-					<div class="bottom_title"><li><span style="color:#FF9900;">·</span><a href="/vote/vote.php?id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
+					<div class="bottom_title"><li><span style="color:#FF9900;">·</span><a href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
 					<?php
 						}
 					?>
@@ -763,6 +763,7 @@
     	
       <!-- start bottom_bottom_center !-->
  			<div id=b_b_c>
+ 				<div id=title>番茄喜讯</div>
 
  			</div>
  			<!-- end !-->	     	
