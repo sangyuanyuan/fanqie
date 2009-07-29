@@ -778,7 +778,43 @@
       <!-- start bottom_bottom_center !-->
  			<div id=b_b_c>
  				<div id=title>番茄喜讯</div>
-
+				<DIV id=Layer5 style=" margin-top:40px; margin-left:10px; ">
+				      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo7 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php
+									$marry=$db->query('select photo,name from smg_marry order by id desc limit 5');
+									for($i=0;$i<count($marry);$i++){
+								?>
+				                <TD><div class=content>
+							<div class=pic><a target="_blank" href="/server/marry.php"><img border=0 width=90 height=70 src="<?php echo $woman[$i]->photo;?>"></a></div>
+							<div class=context><a target="_blank" href="/server/marry.php"><?php echo $marry[$i]->name;?></a><br></div>
+						</div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id=demo8 vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo8.innerHTML=demo7.innerHTML
+											function Marquee(){
+											if(demo8.offsetWidth-demo6.scrollLeft<=0)
+											demo6.scrollLeft-=demo7.offsetWidth
+											else{
+											demo6.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo6.onmouseover=function() {clearInterval(MyMar)}
+											demo6.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
+				</DIV>
  			</div>
  			<!-- end !-->	     	
     
