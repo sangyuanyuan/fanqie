@@ -26,7 +26,7 @@
 			$vote = new table_class("smg_vote");
 			$c[] = "is_sub_vote=0";
 			if($_REQUEST['dept_id']){
-				$c[] = "dept_id";
+				$c[] = "dept_id=".$_REQUEST['dept_id'];
 			}
 			if($key!=''){
 				$c[] = 'name  like "%'.trim($key).'%"';				
