@@ -159,53 +159,47 @@
 <? require_once('../inc/bottom.inc.php');?>
 </body>
 </html>
-
+<img id="test" src="about:blank">
 <script>
-	$("#button_submit").click(function(){
-		if($("#sex").attr('value')=='0'){
-			alert('请选择性别！');
-			return false;
-		}
-		if($("#year").attr('value')=='0'){
-			alert('请选择生日！');
-			return false;
-		}
-		if($("#month").attr('value')=='0'){
-			alert('请选择生日！');
-			return false;
-		}
-		if($("#day").attr('value')=='0'){
-			alert('请选择生日！');
-			return false;
-		}
-		if($("#height").attr('value')=='0'){
-			alert('请选择身高！');
-			return false;
-		}
+	$(function(){
 		
-		if($("#blood").attr('value')=='0'){
-			alert('请选择血型！');
-			return false;
-		}
+		$("#button_submit").click(function(){
+			if($("#sex").attr('value')=='0'){
+				alert('请选择性别！');
+				return false;
+			}
+			if($("#year").attr('value')=='0'){
+				alert('请选择生日！');
+				return false;
+			}
+			if($("#month").attr('value')=='0'){
+				alert('请选择生日！');
+				return false;
+			}
+			if($("#day").attr('value')=='0'){
+				alert('请选择生日！');
+				return false;
+			}
+			if($("#height").attr('value')=='0'){
+				alert('请选择身高！');
+				return false;
+			}
+			
+			if($("#blood").attr('value')=='0'){
+				alert('请选择血型！');
+				return false;
+			}
+			
+			if($("#zodiac").attr('value')=='0'){
+				alert('请选择生肖！');
+				return false;
+			}
+			
+			
+			$("#marry").submit();
+		});
 		
-		if($("#zodiac").attr('value')=='0'){
-			alert('请选择生肖！');
-			return false;
-		}
-		
-		
-		$("#marry").submit();
 	});
 	
-	$("#image").change(function(){
-		getFileSize($(this).val());
-	})
 	
-	function getFileSize(filePath)        
-	{        
-	   var image=new Image();
-	   image.dynsrc=filePath;
-	   alert(image.fileSize);     
-	   setTimeout(alert(image.fileSize),2000); 
-	} 
 </script>

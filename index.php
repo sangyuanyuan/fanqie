@@ -96,7 +96,7 @@
  				<div class=list id=list1>
  					<ul>
  						<?php for($i=0; $i<count($record_star); $i++){?>
- 						<li><a href="/show/show.php?id=<?php echo $record_star[$i]->img_id ?>" target=_blank><?php echo $record_star[$i]->title ?></a></li>
+ 						<li><a href="/show/show.php?id=<?php echo $record_star[$i]->img_id ?>" target=_blank><?php echo strip_tags($record_star[$i]->title) ?></a></li>
  						<? }?>
  					</ul>		
  				</div>  			 			
@@ -111,7 +111,7 @@
  				<div class=list id=list3>
  					<ul>
  						<?php for($i=0; $i<count($record_ad); $i++){?>
- 						<li><a href="/show/show.php?id=<?php echo $record_ad[$i]->img_id ?>" target=_blank><?php echo $record_ad[$i]->title ?></a></li>
+ 						<li><a href="/show/show.php?id=<?php echo $record_ad[$i]->img_id ?>" target=_blank><?php echo strip_tags($record_ad[$i]->title) ?></a></li>
  						<? }?>
  					</ul>		
  				</div>
@@ -771,7 +771,26 @@
     <div id=p2>
       <!-- start bottom_bottom_left !-->
  			<div id=b_b_l>
-
+ 				<div id=title>生日祝福</div>
+				<div id="box_body">
+	 				<marquee direction="up" scrollamount="1" height="100" width="300" onmouseover=this.stop() onmouseout=this.start()  >
+	 				<?php
+						$today = date("m-d");
+						$sql = 'select t1.nickname,t1.gender,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.date("m-d").'" and t1.hide_birthday=0';
+						$records = $db->query($sql);
+						$count = count($records);
+						for($i=0;$i<$count;$i++){
+					?>
+					<div class=box>
+						<div class=sex><?php if($records[$i]->gender=='男'){?><img src="/images/index/birthday_boy.jpg"><?php }else{?><img src="/images/index/birthday_girl.jpg"><?php } ?></div>
+						<div class=name ><?php echo $records[$i]->nickname; ?><span title="<?php echo  $records[$i]->name; ?>" style="color:#727272">[所属部门]</span></div>
+						<div class=sun><a href="/server/today.php" target="_blank"><img src="/images/index/birthday_sun.jpg" border=0 ></a></div>
+					</div>
+					<?php
+						}
+					?>
+					</marquee>
+				</div>
  			</div>
  			<!-- end !-->	     	
     	
@@ -820,7 +839,22 @@
     
       <!-- start bottom_bottom_right !-->
  			<div id=b_b_r>
-
+				<div id=title>在线杂志</div>
+				<?php  
+					$sql = 'select t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 2';
+					$records = $db->query($sql);
+					$count = count($records);
+					for($i=0;$i<$count;$i++){
+				?>
+				<div class=box>
+					<div class=pic><img src="<?php echo $records[$i]->src;?>" border=0 width=66 height=90></div>
+					<div class=title><?php echo $records[$i]->title;?></div>
+					<div class=description><?php echo $records[$i]->description;?></div>
+					<div class=button><a href="<?php echo $records[$i]->url;?>" target="_blank"><img src="/images/index/magazine.jpg" border=0></a></div>
+				</div>
+				<?php
+					}
+				?>
  			</div>
  			<!-- end !-->	 
 
