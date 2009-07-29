@@ -37,7 +37,7 @@
 			<?php 
 			foreach ($birthday as $v) {?>
 				<div class="list_item" nickname="<?php echo $v->nickname;?>" loginname="<?php echo $v->loginname;?>">
-					<b><?php echo "$v->nickname";?></b> [<span style="color:#AED5A2"><?php echo $v->name;?></span>]<a href="send_gift.php?width=600&height=400&nickname=<?php echo $v->nickname;?>&loginname=<?php echo $v->loginname;?>" class="thickbox"><img src="/images/server/gift.gif" border=0 title="送他/她礼物" class="send_gift_img"></a>
+					<b><?php echo "$v->nickname";?></b> [<span style="color:#AED5A2"><?php echo $v->name;?></span>]<a href="send_gift.php?width=600&height=400&nickname=<?php echo urlencode($v->nickname);?>&loginname=<?php echo $v->loginname;?>" class="thickbox"><img src="/images/server/gift.gif" border=0 title="送他/她礼物" class="send_gift_img"></a>
 				</div>
 			<?php }
 			?>

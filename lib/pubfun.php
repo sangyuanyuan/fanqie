@@ -217,9 +217,7 @@ function paginate($url="",$ajax_dom=null,$page_var="page")
 	<?php	
 	//产生所有页面链接
 	for($i=1;$i<=$pagecount;$i++)
-	{  
-		
-	?>
+	{?>
 		<option <?php if($pageindex== $i) echo 'selected="selected"';?> value="<?php echo $i;?>"><?php echo $i;?></option>
 	 <?php	
 	}
@@ -229,7 +227,14 @@ function paginate($url="",$ajax_dom=null,$page_var="page")
 			function jumppage(urlprex,pageindex)
 			{
 				var surl=urlprex+pageindex;
-				window.location.href=surl;
+				<?php
+				if($ajax_dom){ ?>
+					$('#<?php echo $ajax_dom;?>').load(surl);
+				<?php  }else{ ?>
+					window.location.href=surl;
+				<?php }
+				?>	
+				
 			} 
 	</script>
 	

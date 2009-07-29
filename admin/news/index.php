@@ -23,7 +23,7 @@
 		array_push($c, "dept_id=$dept_id");
 	}
 	if($flag){
-		array_push($c, "tags='$tags'");
+		array_push($c, "tags='$flag'");
 	}
 	if($is_adopt!=''){
 		array_push($c, "is_adopt=$is_adopt");
@@ -162,6 +162,9 @@
 				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
 			}
 		
+		});
+		$('#news_tag').change(function(){
+			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
 		});
 		var all_selected = false;
 		$('#select_all').click(function(){
