@@ -25,7 +25,7 @@
 	<div class="l">
     		<div id="title"></div>
      	  <div id="menu">
-     	  	<div id="menu2"><a href="birthday.php" target=_blank>我的生日</a></div>	
+     	  	<div id="menu2"><a href="birthday.php">我的生日</a></div>	
     	  	<div id="menu2"><a href="calendar.php">日历</a></div>
      	  	<div id="menu1">今日寿星</div>	
      	  	<div id=date>TODAY <?php echo date("Y-m-d");?></div>

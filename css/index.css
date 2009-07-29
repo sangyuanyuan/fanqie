@@ -195,6 +195,7 @@ p{margin:0px; padding:0px;}
 #b_b_l{width:315px; height:145px; background:url(/images/index/bg_b_b_l.jpg) no-repeat; float:left; display:inline;}
 
 #b_b_c{width:312px; height:145px; background:url(/images/index/bg_b_b_c.jpg) no-repeat; float:left; display:inline;}
+#b_b_c #title{width:120px; height:20px; margin-top:9px; margin-left:30px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
 
 #b_b_r{width:365px; height:145px; background:url(/images/index/bg_b_b_r.jpg) no-repeat; float:right; display:inline;}
 
