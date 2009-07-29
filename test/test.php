@@ -18,13 +18,13 @@
 		<?php js_include_tag('pubfun');
 			
 		?>
+		<div>
+			<input id="test" type="text" disabled="false">
+		</div>
 		<link href="test.css" rel="stylesheet" type="text/css">
 	</head>
 	<?php 
-	$vote->find(355);
-	$vote->display();
-	$vote->find(350);
-	#$vote->display(array('submit_src' => '/images/btn/btn1.jpg','show_sub_title' => false));
+
 
 	?>
 	<body>		
@@ -37,13 +37,6 @@ function str_length(str){
 }
 
 $(function(){
-	$('#test').bind('click',{'fuck':'fuck'},function(e){
-		e.preventDefault();
-		alert(e.data.fuck);
-		//window.location.href = "?tags=" + $('input:first').val();
-	});
-	$(window).unload(function(){
-		alert('unload');
-	});
+	$('#test').attr('disabled',false);
 });
 </script>
