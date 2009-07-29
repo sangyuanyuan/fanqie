@@ -222,7 +222,7 @@
 		$dept_id = get_dept_info($dept_name)->id;
 		$category_id = dept_category_id_by_name($category_name,$dept_name,$type);
 		if($table_name!='smg_link'){
-			$sql = 'select * from '.$table_name.' where is_dept_adopt=1 and dept_category_id='.$category_id.' order by dept_priority';
+			$sql = 'select * from '.$table_name.' where is_dept_adopt=1 and dept_category_id='.$category_id.' and dept_id='.$dept_id.' order by dept_priority';
 		}else{
 			$sql = 'select * from '.$table_name.' where category_id='.$category_id.' order by priority';
 		}
@@ -244,9 +244,9 @@
 		return $news;
 	}
 	
-	function get_dept_list($table,$dept_cate_id) {
+	function get_dept_list($table,$dept_cate_id,$dept_id){
 		$db = get_db();
-		$sql ='SELECT t1.*,t2.name as category_name FROM '.$table.' t1,smg_category_dept t2 where t1.is_dept_adopt=1 and t1.dept_category_id=t2.id and t1.dept_category_id='.$dept_cate_id;
+		$sql ='SELECT t1.*,t2.name as category_name FROM '.$table.' t1,smg_category_dept t2 where t1.is_dept_adopt=1 and t1.dept_id='.$dept_id.' and t1.dept_category_id=t2.id and t1.dept_category_id='.$dept_cate_id;
 		$list = $db->paginate($sql,25);
 		close_db();
 		return $list;
