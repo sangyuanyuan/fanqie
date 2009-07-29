@@ -5,9 +5,11 @@
 	
 	$title = $_REQUEST['title'];
 	$is_adopt = $_REQUEST['adopt'];
-	$category_id = $_REQUEST['$category'];
+	$category_id = $_REQUEST['category'];
 	
+	$sql = 'select * from smg_category where category_type="zongcai"';
 	$db = get_db();
+	$category = $db->query($sql);
 	$sql = 'select t1.* from smg_news t1 join smg_category t2 on t1.category_id=t2.id where t2.category_type="zongcai"';
 	
 	
@@ -17,10 +19,10 @@
 	if($category_id!=''){
 		$sql = $sql.' and t1.category_id='.$category_id;
 	}
-	if($title){
-		$sql = $sql.' and t1.title like '%".trim($title)."%' or short_title like '%".trim($title)."%' or keywords like '%".trim($title)."%' or description like '%".trim($title)."%'"';
+	if($title!=''){
+		$sql = $sql.' and t1.title like "%'.trim($title).'%" or short_title like "%'.trim($title).'%" or keywords like "%'.trim($title).'%" or description like "%'.trim($title).'%"';
 	}
-	
+	echo $sql;
 	$record = $db->query($sql);
 ?>
 
@@ -42,19 +44,19 @@
 		<tr class="tr1">
 			<td colspan="6">
 				　<a href="news_add.php" style="margin-right:80px">添加新闻</a>
-				搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>">
-				<select id=dept style="width:100px" class="select_new">
+				搜索　<input id=zc_title type="text" value="<? echo $_REQUEST['title']?>">
+				<select id=category style="width:100px" class="zongcai_search">
 					<option value="">所属类别</option>
-					<?php for($i=0;$i<count($rows_dept);$i++){?>
-					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
+					<?php for($i=0;$i<count($category);$i++){?>
+					<option value="<?php echo $category[$i]->id; ?>" <?php if($category[$i]->id==$_REQUEST['category']){?>selected="selected"<? }?>><?php echo $category[$i]->name;?></option>
 					<? }?>
 				</select>
-				<select id=adopt style="width:100px" class="select_new">
+				<select id=adopt style="width:100px" class="zongcai_search">
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
 				</select>
-				<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
+				<input type="button" value="搜索" id="zc_zongcai" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
 		<tr class="tr2">
@@ -72,7 +74,7 @@
 					<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $record[$i]->id;?>"></td>
 					<td><?php echo $record[$i]->short_title;?></td>
 					<td>
-						<a href="?dept=<?php echo $record[$i]->dept_id;?>" style="color:#0000FF"><?php echo get_dept_info($record[$i]->dept_id)->name;?></a>
+						<a href="?category=<?php echo $record[$i]->category_id;?>" style="color:#0000FF"><?php echo category_name_by_id($record[$i]->category_id);?></a>
 					</td>
 					<td>
 						<?php echo $record[$i]->created_at; ?>
@@ -94,7 +96,7 @@
 			//--------------------
 		?>
 		<tr class="tr3">
-			<td colspan=6><button id="select_all">全选</button> <button id="button_delete">删除/退回</button> <?php paginate();?>　<button id=clear_priority>清空优先级</button>　<button id=edit_priority>编辑优先级</button></td>
+			<td colspan=6> <?php paginate();?>　<button id=clear_priority>清空优先级</button>　<button id=edit_priority>编辑优先级</button></td>
 		</tr>
 		<input type="hidden" id="db_talbe" value="smg_news">
 
@@ -103,30 +105,16 @@
 </html>
 
 <script>
-	$("#search").click(function(){
-			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
+	$("#zc_zongcai").click(function(){
+			window.location.href="?title="+$("#zc_title").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 	});
 	
-	$(".select").change(function(){
-		window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
+	$(".zongcai_search").change(function(){
+		window.location.href="?title="+$("#zc_title").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 	});
-	$('#title').keydown(function(e){
+	$('#zc_title').keydown(function(e){
 			if(e.keyCode == 13){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
+				window.location.href="?title="+$("#zc_title").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
 			}
-	});
-	$(function(){
-		var all_selected = false;
-		$('#select_all').click(function(){
-			all_selected = !all_selected;
-			$('input:checkbox').attr('checked',all_selected);
-		});
-		$('#button_delete').click(function(){
-			if (confirm('确定删除/退回选中新闻?')) {
-				$.post('delete_news.php', $('input:checkbox').serializeArray(), function(data){
-					window.location.reload();
-				});
-			}
-		});
 	});
 </script>

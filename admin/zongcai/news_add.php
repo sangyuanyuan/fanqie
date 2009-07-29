@@ -56,6 +56,11 @@
 			<td>优先级</td>
 			<td align="left">
 				<input type="text" size="10" name=news[dept_priority] class="number">(0~100)</td>
+		</tr>
+		<tr class=tr3>
+			<td>链接</td>
+			<td align="left">
+				<input type="text" size="20"  name=news[target_url]>(填写则跳转到链接页面)
 		</tr>	
 		<tr class="normal_news tr4">
 			<td>其他选项</td>

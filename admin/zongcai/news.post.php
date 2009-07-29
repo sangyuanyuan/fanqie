@@ -33,6 +33,9 @@
 	
 	$news->is_adopt = 1;
 	
+	if($_POST['news']['target_url']!=''){
+		$news->news_type=2;
+	}
 		
 	if($news_id == 0){
 		//insert news
