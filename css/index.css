@@ -193,6 +193,12 @@ p{margin:0px; padding:0px;}
 #b_t_r .r_box #question{width:106px; height:88px; margin-top:20px; float:left; display:inline;}
 
 #b_b_l{width:315px; height:145px; background:url(/images/index/bg_b_b_l.jpg) no-repeat; float:left; display:inline;}
+#b_b_l #title{width:220px; height:20px; margin-top:9px; margin-left:30px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
+#b_b_l #box_body{width:307px; margin-left:8px; margin-top:10px; float:left; display:inline;}
+#b_b_l .box{width:150px; height:25px; float:left; display:inline;}
+#b_b_l .box .sex{width:17px; height:17px; margin-top:2px; float:left; display:inline;}
+#b_b_l .box .name{width:100px; height:20px; margin-left:3px; line-height:20px; float:left; display:inline;}
+#b_b_l .box .sun{width:24px; height:19px; float:left; display:inline;}
 
 #b_b_c{width:312px; height:145px; background:url(/images/index/bg_b_b_c.jpg) no-repeat; float:left; display:inline;}
 #b_b_c #title{width:120px; height:20px; margin-top:9px; margin-left:30px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
