@@ -15,7 +15,7 @@
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
+		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n left join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);
 		if($record[0]->news_type==2)
 		{

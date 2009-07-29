@@ -78,8 +78,10 @@
 							$url = "/$platform/news/news_head.php?id={$record[$i]->id}";
 						}else if($platform == 'show'){
 							$url = "/$platform/article.php?id={$record[$i]->id}";
-						}else{
+						}else if ($platform){
 							$url="/$platform/news/news.php?id={$record[$i]->id}";
+						}else{
+							$url="/news/news/news.php?id={$record[$i]->id}";
 						}
 					?>
 					<td><a href="<?php echo $url;?>" target="_blank"><?php echo strip_tags($record[$i]->short_title);?></a></td>

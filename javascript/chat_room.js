@@ -33,6 +33,9 @@ $(function(){
 	$('#clear').click(function(){
 		$('#chat_content_box').html('');
 	});
+	if(chat_status != 'connecting' && chat_status != 'connected'){
+		$('#ajax_result').load('chat_room.post.php',{'op':'click_button'});
+	}
 	toggle_button();
 	setInterval('refresh()',5000);
 	
@@ -43,7 +46,7 @@ function refresh(){
 }
 
 function refresh_waiter(count){
-	$('#waiter').html('共有:' + count + ' 正在聊天');
+	$('#waiter').html('共有:' + count + ' 位聊友在线');
 }
 
 function add_chat(content,type){
