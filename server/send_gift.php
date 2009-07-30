@@ -11,16 +11,10 @@ if($_REQUEST['hide_retdiv']){
 	</div>
 </div>
 <div id="right_div">
-		<div id="gift_box">
+		<div id="gift_box" style="border-top:1px solid #666666;padding-top:5px;margin-top:5px;">
 			<?php
-			if ($handle = opendir('../images/server/gifts')) {
-			    while (false !== ($file = readdir($handle))) {
-			        if ($file != "." && $file != "..") {
-			            echo "<div class=\"gift\"><img src=\"/images/server/gifts/$file\" border=0>　　<input type=\"radio\" name=\"gift\"></div>";
-			        }
-			    }
-			    closedir($handle);
-			}
+			include "gift_category.php";
+			
 			?>
 		</div>
 	</div>
