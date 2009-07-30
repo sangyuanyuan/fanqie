@@ -78,7 +78,7 @@
 						<div class=title><div class=t1>最新动态</div><a href="/news/newslist.php?id=<?php echo $category_id; ?>">more</a></div>
 						<div id=alist style="width:550px; border-right:1px solid #ffffff; border-bottom:1px solid #ffffff; border-left:1px solid #ffffff;">
 							<?php 
-								$sql = 'select title,short_title,created_at from smg_news where category_id='.$category_id.' and is_adopt=1 order by priority,created_at desc limit 5';
+								$sql = 'select id,title,short_title,created_at from smg_news where category_id='.$category_id.' and is_adopt=1 order by priority,created_at desc limit 5';
 								$record = $db->query($sql);
 								$count = count($record);
 								for($i=0;$i<$count;$i++){
@@ -87,7 +87,12 @@
 								<div style="margin-top:5px; margin-right:10px; float:right; display:inline;"><?php echo $record[$i]->created_at; ?></div>
 							<? }?>
 						</div>	
-						<?php 
+						<?php
+							$sql = 'select * from smg_zongcai_vote order by id desc limit 1';
+							$vote = $db->query($sql);
+							$sql = 'select t1.name,t1.id,t1.program_type from smg_zongcai_item t1,smg_zongcai_vote_item t2 where t1.id=t2.item_id and t2.vote_id='.$vote[0]->id;
+							$item = $db->query($sql);
+							$count = count($item);
 							for($i=1;$i<=4;$i++){
 						?>
 						<div class=title>
@@ -98,7 +103,15 @@
 						</div>
 						<div class=content>
 							<?php
-								
+								if($i==1){
+									
+								}
+								for($j=0;$j<$count;$j++){
+									
+							?>
+							
+							<?php
+								}
 							?>
 						</div>						
 					<? }?>	

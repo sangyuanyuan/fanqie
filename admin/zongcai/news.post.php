@@ -33,7 +33,7 @@
 	$news->is_adopt = 1;
 	
 	if($_POST['news']['target_url']!=''){
-		$news->news_type=2;
+		$news->news_type=3;
 	}
 		
 	if($news_id == 0){
