@@ -20,9 +20,8 @@
 		$sql = $sql.' and t1.category_id='.$category_id;
 	}
 	if($title!=''){
-		$sql = $sql.' and t1.title like "%'.trim($title).'%" or short_title like "%'.trim($title).'%" or keywords like "%'.trim($title).'%" or description like "%'.trim($title).'%"';
+		$sql = $sql.' and (t1.title like "%'.trim($title).'%" or t1.short_title like "%'.trim($title).'%" or t1.keywords like "%'.trim($title).'%" or t1.description like "%'.trim($title).'%")';
 	}
-	echo $sql;
 	$record = $db->query($sql);
 ?>
 
@@ -85,7 +84,7 @@
 						<?php if($record[$i]->is_adopt=="0"){?>
 							<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span>
 						<?php }?>
-						<a href="news_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>
+						<a href="news_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a>
 						<a href="/admin/comment/comment.php?id=<?php echo $record[$i]->id;?>&type=news" style="color:#000000; text-decoration:none">评论</a>
 						<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $record[$i]->id;?>">删除</span>
 						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:40px;">
