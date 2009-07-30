@@ -30,7 +30,7 @@
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　部门</div>
 		<div class=t_r>
 			<select id=select name="show[dept_id]">
-				<option>请选择</option>
+				<option value="0">请选择</option>
 				<?php 
 				$sql="SELECT * FROM smg_dept";
 				$db = get_db();
@@ -115,6 +115,12 @@
 				}
 			}
 		}
+		
+		if($("#select").val()==0){
+			alert("请选择部门！");
+			return false;
+		}
+		
 		$("#show").submit();
 	});
 </script>
