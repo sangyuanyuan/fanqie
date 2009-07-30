@@ -41,35 +41,36 @@
 <body>
 	<table width="795" border="0">
 		<tr class=tr1>
-			<td colspan="5" width="795">　<a href="picture_add.php?" style="color:#0000FF">发布图片</a> 　　　
-			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>"><select id=category style="width:100px" class="select_new">
-				<option value="">所属类别</option>
-				<?php for($i=0;$i<count($category);$i++){?>
-				<option value="<?php echo $category[$i]->id; ?>" <?php if($category[$i]->id==$_REQUEST['category']){?>selected="selected"<? }?>><?php echo $category[$i]->name;?></option>
-				<? }?>
-			</select><select id=adopt style="width:100px" class="select">
-				<option value="">发布状况</option>
-				<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
-				<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
-			</select><input type="button" value="搜索" id="search" style="border:1px solid #0000ff; height:21px">
+			<td colspan="5" width="795">　<a href="picture_add.php" style="color:#0000FF">发布图片</a> 　　　
+			搜索　<input id=zc_title type="text" value="<? echo $_REQUEST['title']?>"><select id=category style="width:100px" class="zongcai_search">
+					<option value="">所属类别</option>
+					<?php for($i=0;$i<count($category);$i++){?>
+					<option value="<?php echo $category[$i]->id; ?>" <?php if($category[$i]->id==$_REQUEST['category']){?>selected="selected"<? }?>><?php echo $category[$i]->name;?></option>
+					<? }?>
+				</select><select id=adopt style="width:100px" class="zongcai_search">
+					<option value="">发布状况</option>
+					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
+					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
+				</select>
+				<input type="button" value="搜索" id="zc_zongcai" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
 	</table>
 	<div class="div_box">
 		<?php for($i=0;$i<count($images);$i++){?>
 		<div class=v_box id="<?php echo $images[$i]->id;?>">
-			<a href="<?php echo $images[$i]->url;?>" target="_blank"><img src="<?php echo $images[$i]->src_path('small');?>" width="170" height="70" border="0"></a>
-			<div class=content><a href="<?php echo $images[$i]->url;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $images[$i]->title;?></a></div>
+			<a href="/show/show.php?id=<?php echo $images[$i]->id; ?>" target="_blank"><img src="<?php echo $images[$i]->src;?>" width="170" height="70" border="0"></a>
+			<div class=content><a href="/show/show.php?id=<?php echo $images[$i]->id; ?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $images[$i]->title;?></a></div>
 			<div class=content>
 				<a href="?category=<?php echo $images[$i]->category_id;?>" style="color:#0000FF">
-					<a href="?category=<?php echo $images[$i]->category_id;?>" style="color:#0000FF"><?php echo $category->find($images[$i]->category_id)->name; ?></a>
+					<a href="?category=<?php echo $images[$i]->category_id;?>" style="color:#0000FF"><?php echo category_name_by_id($images[$i]->category_id); ?></a>
 				</a>
 			</div>
 			<div class=content style="height:20px">
 				<?php if($images[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $images[$i]->id;?>">撤消</span><? }?>
 				<?php if($images[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $images[$i]->id;?>">发布</span><? }?>
-				<a href="/admin/picture/picture_edit.php?id=<?php echo $images[$i]->id;?>&type=总裁奖" style="color:#000000; text-decoration:none">编辑</a> 
-				<span style="cursor:pointer" class="del" name="<?php echo $images[$i]->id;?>">删除</span>
+				<a href="picture_edit.php?id=<?php echo $images[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
+				<span style="cursor:pointer; color:#FF0000;" class="del" name="<?php echo $images[$i]->id;?>">删除</span>
 				<a href="/admin/comment/comment.php?id=<?php echo $images[$i]->id;?>&type=picture" style="color:#000000; text-decoration:none">评论</a>
 				<input type="text" class="priority" name="<?php echo $images[$i]->id;?>" value="<?php if($images[$i]->priority!=100){echo $images[$i]->priority;}?>" style="width:40px;">
 				<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $images[$i]->id;?>" style="width:40px;">	
@@ -89,19 +90,17 @@
 </html>
 
 <script>
-		$("#search").click(function(){
-				window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
-			
-		});
-		
-		$("#title_new").keypress(function(event){
-				if(event.keyCode==13){
-					window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
-				}
-		});
-		
-		$(".select").change(function(){
-				window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
-		});
+	$("#zc_zongcai").click(function(){
+			window.location.href="?title="+$("#zc_title").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+	});
+	
+	$(".zongcai_search").change(function(){
+		window.location.href="?title="+$("#zc_title").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+	});
+	$('#zc_title').keydown(function(e){
+			if(e.keyCode == 13){
+				window.location.href="?title="+$("#zc_title").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			}
+	});
 </script>
 
