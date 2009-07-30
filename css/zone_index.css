@@ -47,7 +47,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #t_c_t_t #pic{width:100px; height:65px; padding:1px; border:1px solid #cccccc; cursor:pointer; float:left; display:inline;}
 #t_c_t_t #left{width:100px; margin-top:10px; margin-left:10px; line-height:15px; float:left; display:inline;}
 #t_c_t_t #right{width:270px; margin-top:6px; margin-right:5px; float:right; display:inline;}
-#t_c_t_t #right .content{width:270px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#t_c_t_t #right .content{width:270px; height:19px; line-height:19px; overflow:hidden; float:left; display:inline;}
 #t_c_t_t #right .content a{color:#000000; text-decoration:none;}
 #t_c_t_b{width:355px; height:60px; margin-top:5px;  margin-left:20px; float:left; display:inline;}
 #t_c_t_b .t_c_t_b_content{width:355px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
