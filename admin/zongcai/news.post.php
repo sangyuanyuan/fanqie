@@ -1,6 +1,5 @@
 <?php 
 	require "../../frame.php";
-	var_dump($_POST);
 	$news_id = $_POST['id'] ? $_POST['id'] : 0;
 	$news = new table_class('smg_news');
 	if($news_id!=0){
@@ -51,33 +50,11 @@
 		if($_POST['news']['forbbide_copy']==''){
 			$news->forbbide_copy=0;
 		}
-		
 		$news->last_edited_at = date("Y-m-d H:i:s");
-		if($news->category_id == '') $news->category_id = 0;
-		if($news->dept_category_id == '') $news->dept_category_id = 0;
 		$news->save();
-		if($_POST['delete_subject'] == 1){	
-				$sql = "delete from smg_subject_items where category_type='news' and resource_id={$news->id}";
-				$db = get_db();
-				$db->execute($sql);
-			if($_POST['subject_id']){
-				$category_item = new table_class('smg_subject_items');
-				$category_item->find('all',array('conditions' => 'category_type="news" and resource_id='.$news_id));
-				$category_item->category_type = 'news';
-				$category_item->resource_id = $news->id;
-				$category_item->subject_id = $_POST['subject_id'];
-				$category_item->category_id = $_POST['subject_category_id'];
-				$category_item->save();
-			}
-		}else if($_POST['delete_subject'] == 2){
-				$sql = "delete from smg_subject_items where category_type='news' and  resource_id={$news->id}";
-				$db = get_db();
-				$db->execute($sql);
-		}
-		
 	}
 
-	//redirect('news_list.php?category='.$news->category_id);
+	redirect('zongcai_news.php?category='.$news->category_id);
 
 	#var_dump($news);
 	

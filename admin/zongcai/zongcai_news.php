@@ -7,10 +7,10 @@
 	$is_adopt = $_REQUEST['adopt'];
 	$category_id = $_REQUEST['category'];
 	
-	$sql = 'select * from smg_category where category_type="zongcai"';
+	$sql = 'select * from smg_category where category_type="zongcai" order by priority,last_edited_at desc';
 	$db = get_db();
 	$category = $db->query($sql);
-	$sql = 'select t1.* from smg_news t1 join smg_category t2 on t1.category_id=t2.id where t2.category_type="zongcai"';
+	$sql = 'select t1.* from smg_news t1 join smg_category t2 on t1.category_id=t2.id where t2.category_type="zongcai" order by priority,last_edited_at desc';
 	
 	
 	if($is_adopt!=''){

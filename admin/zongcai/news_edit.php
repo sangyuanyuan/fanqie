@@ -3,8 +3,7 @@
 	$role = judge_role();
 	$id = $_REQUEST['id'];
 	$news = new table_class('smg_news');
-	$news -> find('id');
-	alert($id);
+	$news->find($id);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -82,6 +81,7 @@
 			<td colspan="2" width="795" align="center"><input id="submit" type="submit" value="发布新闻"></td>
 		</tr>	
 	</table>
+	<input type="hidden" name="id" value="<?php echo $id; ?>">
 	</form>
 </body>
 </html>
