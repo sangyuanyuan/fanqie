@@ -17,7 +17,7 @@
 		exit;
 	}
 	
-	if($vote->started_at > now() || $vote->ended_at < now()){
+	if(($vote->started_at && $vote->started_at > now()) || ($vote->ended_at && $vote->ended_at < now())){
 		alert('该投票已过期或还未开始!');
 		redirect($_SERVER['HTTP_REFERER']);
 		exit;

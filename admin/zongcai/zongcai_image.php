@@ -1,29 +1,29 @@
 <?php
+	#var_dump($_REQUEST);
 	require_once('../../frame.php');
-	//require_role("admin");
-	$type = $_REQUEST['type'];
-	$conditions = null;
-	if($_REQUEST['title']!=""){
-		$conditions[] = 'title  like "%'.trim($_REQUEST['title']).'%"';
-	}
-	if($_REQUEST['dept']!=""){
-		$conditions[] = "dept_id=".$_REQUEST['dept'];
-	}
-	if($_REQUEST['adopt']!=""){
-		$conditions[] = "is_adopt=".$_REQUEST['adopt'];
-	}
-	$conditions[] = 'is_recommend=1';
+	$user = judge_role('admin');	
 	
-	$image = new smg_images_class();
-	//var_dump($conditions);
-	if($conditions!=null){
-		$conditions = implode(' and ',$conditions);
-		$images = $image->paginate("all",array('conditions' => $conditions,'order' => 'priority'),12);
-	}else{
-		$images = $image->paginate("all",array('order' => 'priority'),12);
+	$title = $_REQUEST['title'];
+	$is_adopt = $_REQUEST['adopt'];
+	$category_id = $_REQUEST['category'];
+	
+	$sql = 'select * from smg_category where category_type="zongcai" and description="image"';
+	$db = get_db();
+	$category = $db->query($sql);
+	$sql = 'select t1.* from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t2.category_type="zongcai" and t2.description="image"';
+	
+	
+	if($is_adopt!=''){
+		$sql = $sql.' and t1.is_adopt='.$is_adopt;
 	}
-	$dept = new table_class("smg_dept");
-	$rows_dept = $dept->find("all");
+	if($category_id!=''){
+		$sql = $sql.' and t1.category_id='.$category_id;
+	}
+	if($title!=''){
+		$sql = $sql.' and (t1.title like "%'.trim($title).'%" or t1.keywords like "%'.trim($title).'%" or t1.description like "%'.trim($title).'%")';
+	}
+	$sql = $sql.' order by priority,created_at desc';
+	$images = $db->query($sql);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -41,20 +41,17 @@
 <body>
 	<table width="795" border="0">
 		<tr class=tr1>
-			<td colspan="5" width="795">　　　<a href="/admin/picture/picture_add.php?type=总裁奖" style="color:#0000FF">发布图片</a>　　　　　　
-			搜索　<input id=title_new type="text" value="<? echo $_REQUEST['title']?>">
-			<select id=dept style="width:100px" class="select">
-				<option value="">发表部门</option>
-				<?php for($i=0;$i<count($rows_dept);$i++){?>
-				<option value="<?php echo $rows_dept[$i]->id;?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
+			<td colspan="5" width="795">　<a href="picture_add.php?" style="color:#0000FF">发布图片</a> 　　　
+			搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>"><select id=category style="width:100px" class="select_new">
+				<option value="">所属类别</option>
+				<?php for($i=0;$i<count($category);$i++){?>
+				<option value="<?php echo $category[$i]->id; ?>" <?php if($category[$i]->id==$_REQUEST['category']){?>selected="selected"<? }?>><?php echo $category[$i]->name;?></option>
 				<? }?>
-			</select>
-			<select id=adopt style="width:100px" class="select">
+			</select><select id=adopt style="width:100px" class="select">
 				<option value="">发布状况</option>
 				<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 				<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
-			</select>
-			<input type="button" value="搜索" id="search" style="border:1px solid #0000ff; height:21px">
+			</select><input type="button" value="搜索" id="search" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
 	</table>
@@ -63,8 +60,11 @@
 		<div class=v_box id="<?php echo $images[$i]->id;?>">
 			<a href="<?php echo $images[$i]->url;?>" target="_blank"><img src="<?php echo $images[$i]->src_path('small');?>" width="170" height="70" border="0"></a>
 			<div class=content><a href="<?php echo $images[$i]->url;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $images[$i]->title;?></a></div>
-			<div class=content><a href="?dept=<?php echo $images[$i]->dept_id;?>" style="color:#0000FF"><?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->id==$images[$i]->dept_id){echo $rows_dept[$j]->name;}}?></a></div>
-			<div class=content>总裁奖</div>
+			<div class=content>
+				<a href="?category=<?php echo $images[$i]->category_id;?>" style="color:#0000FF">
+					<a href="?category=<?php echo $images[$i]->category_id;?>" style="color:#0000FF"><?php echo $category->find($images[$i]->category_id)->name; ?></a>
+				</a>
+			</div>
 			<div class=content style="height:20px">
 				<?php if($images[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $images[$i]->id;?>">撤消</span><? }?>
 				<?php if($images[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $images[$i]->id;?>">发布</span><? }?>

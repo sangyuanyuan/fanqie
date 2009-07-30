@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once "../frame.php";
 	$zongcai_item = new table_class('smg_zongcai_item');
 	$zongcai_item->find($_POST['id']);

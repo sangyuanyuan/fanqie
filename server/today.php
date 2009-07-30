@@ -18,14 +18,14 @@
 	js_include_tag('service/calendar','thickbox');
 	$db = get_db();
 	$today = date('m-d');
-	$birthday = $db->query("select a.nickname,a.loginname,b.name from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='$today' order by a.org_id");
+	$birthday = $db->query("select a.nickname,a.loginname,b.name from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='$today' and hide_birthday!=1  order by a.org_id");
 //	echo "select a.nickname,a.loginname,b.name from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='$today' order by a.org_id";
 ?>
 <div id=ibody>
 	<div class="l">
     		<div id="title"></div>
      	  <div id="menu">
-     	  	<div id="menu2"><a href="birthday.php" target=_blank>我的生日</a></div>	
+     	  	<div id="menu2"><a href="birthday.php">我的生日</a></div>	
     	  	<div id="menu2"><a href="calendar.php">日历</a></div>
      	  	<div id="menu1">今日寿星</div>	
      	  	<div id=date>TODAY <?php echo date("Y-m-d");?></div>
@@ -37,7 +37,7 @@
 			<?php 
 			foreach ($birthday as $v) {?>
 				<div class="list_item" nickname="<?php echo $v->nickname;?>" loginname="<?php echo $v->loginname;?>">
-					<b><?php echo "$v->nickname";?></b> [<span style="color:#AED5A2"><?php echo $v->name;?></span>]<a href="send_gift.php?width=600&height=400&nickname=<?php echo $v->nickname;?>&loginname=<?php echo $v->loginname;?>" class="thickbox"><img src="/images/server/gift.gif" border=0 title="送他/她礼物" class="send_gift_img"></a>
+					<b><?php echo "$v->nickname";?></b> [<span style="color:#AED5A2"><?php echo $v->name;?></span>]<a href="send_gift.php?width=600&height=400&nickname=<?php echo urlencode($v->nickname);?>&loginname=<?php echo $v->loginname;?>" class="thickbox"><img src="/images/server/gift.gif" border=0 title="送他/她礼物" class="send_gift_img"></a>
 				</div>
 			<?php }
 			?>

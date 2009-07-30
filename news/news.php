@@ -15,7 +15,7 @@
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
+		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n left join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);
 		if($record[0]->news_type==2)
 		{
@@ -163,7 +163,17 @@
 		</div>
 	</div>
 	<div id=ibody_right>
-		<div id=r_t><a target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
+		<div id=r_t>
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="298" height="88" id="FLVPlayer">
+			 <param name="movie" value="/flash/news.swf" />
+			 <param name="salign" value="lt" />
+			 <param name="quality" value="high" />
+			 <param name="wmode" value="opaque" />
+			 <param name="scale" value="noscale" />
+			 <param name="FlashVars" value="&image=<?php echo $_REQUEST['photo'] ?>&file=<?php echo $_REQUEST['video'] ?>&displayheight=167&autostart=false" />
+			 <embed src="/flash/news.swf" flashvars="&image=<?php echo $_REQUEST['photo']?>&file=<?php echo $_REQUEST['video'] ?>&displayheight=167&autostart=false" quality="high" scale="noscale" width="298" height="88" name="FLVPlayer" wmode="opaque" salign="LT" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+			</object>		
+		</div>
 		<?php
 		if($record[0]->related_videos!=""){
 		$keys = explode(',',$record[0]->related_videos);

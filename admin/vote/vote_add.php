@@ -78,16 +78,16 @@
 		</tr>
 		<tr class=tr3>
 			<td>开始日期：</td>
-			<td align="left"><input type="text" class="date_jquery required" name="vote[started_at]" id="start"></td>
+			<td align="left"><input type="text" class="date_jquery" name="started_at" id="start"></td>
 		</tr>
 		<tr class=tr3>
 			<td>截止日期：</td>
-			<td align="left"><input type="text"  class="date_jquery required" name="vote[ended_at]" id="end"></td>
+			<td align="left"><input type="text"  class="date_jquery" name="ended_at" id="end"></td>
 		</tr>
 		<tr class=tr3 id="item">
 			<td>投票项目：</td>
 			<td align="left" id="single">
-				标题<input type="text" name="vote_item1[title]" id="first_item" style="width:100px" class="required">
+				标题<input type="text" name="vote_item1[title]" id="first_item" style="width:300px" class="required">
 				<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
 				<input name="item_image1" type="file" class="item_image" style="display:none;">
 				<a id="add_item" value="1" style="cursor:pointer;">继续添加</a>

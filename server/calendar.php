@@ -71,6 +71,14 @@
 	#foreach ($items as $v) {
 	#	$birthday[intval($v->bday)] .= "[{$v->nickname}]";
 	#}
+	if(empty($add_month)){
+		$today_index = date('j');
+		$today_birthday = $db->query("select nickname, loginname from smg_user_real where birthday_short='" .date('m-d') ."' and  hide_birthday!=1");
+		
+		foreach ($today_birthday as $v) {
+			$today_string .= $v->nickname ."<br>";
+		}
+	}
 	$items = $db->query("select count(birthday_short) as icount,substring(birthday_short,4,2) as bday from smg_user_real where birthday_short like '$m%' and hide_birthday!=1 group by birthday_short order by birthday_short");
 	foreach ($items as $v) {
 		$birthday[intval($v->bday)] .= " [{$v->icount}] 人生日";
@@ -80,9 +88,9 @@
 	<div class="l">
     		<div id="title"></div>
      	  <div id="menu">
-     	  	<div id="menu2"><a href="birthday.php" target=_blank>我的生日</a></div>	
+     	  	<div id="menu2"><a href="birthday.php">我的生日</a></div>	
     	  	<div id="menu1">日历</div>
-     	  	<div id="menu2"><a href="today.php" target=_blank>今日寿星</a></div>	
+     	  	<div id="menu2"><a href="today.php">今日寿星</a></div>	
      	  	<div id=date>TODAY <?php echo date("Y-m-d");?></div>
      	  </div>
         <div id="month">
@@ -108,7 +116,15 @@
 			?>			
            	<div class="bg<?php echo $j;?>" id="<?php echo $c_day;?>">
            		<div class="day_title"><?php if($c_day >0 && $c_day <=$date_num) echo $c_day;?></div>
-				<div class="day_content"><a href="send_gift_day.php?width=600&height=400&date=<?php echo $m .'-' .sprintf('%02d',$c_day);?>" class="thickbox"><?php echo $birthday[$c_day];?></a></div>
+				<?php 
+				if(empty($add_month) && $c_day == $today_index){ ?>
+					<div class="day_content_today"><a href="send_gift_day.php?width=600&height=400&date=<?php echo $m .'-' .sprintf('%02d',$c_day);?>" class="thickbox"><marquee behavior="scroll" scrollamount=2 direction="up" style="width:90px; height:80px; text-align:center;"><?php echo $today_string;?></marquee></a></div>
+				<?php }
+				else if(empty($add_month) && ($c_day == $today_index+1 || $c_day == $today_index+2)){ ?>
+					<div class="day_content"><a style="color:red;" href="send_gift_day.php?width=600&height=400&date=<?php echo $m .'-' .sprintf('%02d',$c_day);?>" class="thickbox"><?php echo $birthday[$c_day];?></a></div>
+				<?php }else { ?>
+					<div class="day_content"><a href="send_gift_day.php?width=600&height=400&date=<?php echo $m .'-' .sprintf('%02d',$c_day);?>" class="thickbox"><?php echo $birthday[$c_day];?></a></div>
+				<?php } ?>
 			</div>    
      	   <? 
 		   }}?>

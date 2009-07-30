@@ -20,7 +20,7 @@
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="4">　<input type="text" name="loginname" id="loginname"> <button id="submit">添加管理员</button><div id="retdiv"></div></td>
+			<td colspan="4">　工号:<input type="text" name="loginname" id="loginname"> <button id="submit">添加管理员</button><div id="retdiv"></div></td>
 		</tr>
 		<tr class="tr2">
 			<td width="300">用户名</td><td width="300">昵称</td><td width="195">操作</td>

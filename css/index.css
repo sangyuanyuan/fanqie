@@ -37,7 +37,7 @@ p{margin:0px; padding:0px;}
 #t_l_b .list_tlb li a{color:#000000; text-decoration:none;}
 
 #t_r_t{width:685px; height:79px; background:url(/images/index/bg_t_r_t.jpg) no-repeat; float:left; display:inline;}
-#t_r_t #title{width:650px; height:30px; margin-top:10px; margin-left:5px; text-align:center; font-size:28px; font-weight:bold; color:#CC0000; line-height:30px; overflow:hidden; float:left; display:inline;}
+#t_r_t #title{width:650px; height:40px; margin-top:2px; margin-left:5px; text-align:center; font-size:28px; font-weight:bold; color:#CC0000; line-height:40px; overflow:hidden; float:left; display:inline;}
 #t_r_t #title a{color:#CC0000; text-decoration:none;}
 #t_r_t #content{width:650px; height:20px; margin-top:10px; margin-left:5px; text-align:center; font-size:14px; line-height:20px; overflow:hidden; float:left; display:inline;}
 #t_r_t #content a{color:#000000; text-decoration:none;}
@@ -174,8 +174,8 @@ p{margin:0px; padding:0px;}
 #ibody_bottom #p2{width:995px; margin-top:2px; float:left; display:inline;}
 
 #b_t_l{width:525px; height:188px; background:url(/images/index/bg_b_t_l.jpg) no-repeat; float:left; display:inline;}
-#b_t_l .l_box{width:180px; height:140px; margin-left:145px; margin-top:50px; float:left; display:inline; }
-#b_t_l .r_box{width:170px; height:100px; margin-top:50px; margin-left:5px; float:left; display:inline; }
+#b_t_l .l_box{width:180px; height:140px; margin-left:145px; margin-top:45px; float:left; display:inline; }
+#b_t_l .r_box{width:170px; height:100px; margin-top:45px; margin-left:5px; float:left; display:inline; }
 #b_t_l .bottom_title{width:170px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;}
 #b_t_l .bottom_title li{width:170px; padding:0px; margin:0px; float:left; display:inline;}
 #b_t_l .bottom_title a{color:#000000; text-decoration:none;}
@@ -193,8 +193,25 @@ p{margin:0px; padding:0px;}
 #b_t_r .r_box #question{width:106px; height:88px; margin-top:20px; float:left; display:inline;}
 
 #b_b_l{width:315px; height:145px; background:url(/images/index/bg_b_b_l.jpg) no-repeat; float:left; display:inline;}
+#b_b_l #title{width:220px; height:20px; margin-top:9px; margin-left:30px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
+#b_b_l #box_body{width:307px; margin-left:8px; margin-top:10px; float:left; display:inline;}
+#b_b_l .box{width:150px; height:25px; float:left; display:inline;}
+#b_b_l .box .sex{width:17px; height:17px; margin-top:2px; float:left; display:inline;}
+#b_b_l .box .name{width:100px; height:20px; margin-left:3px; line-height:20px; float:left; display:inline;}
+#b_b_l .box .sun{width:24px; height:19px; float:left; display:inline;}
 
 #b_b_c{width:312px; height:145px; background:url(/images/index/bg_b_b_c.jpg) no-repeat; float:left; display:inline;}
+#b_b_c #title{width:120px; height:20px; margin-top:9px; margin-left:30px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
+#b_b_c .content{width:110px; height:100px; overflow:hidden; float:left; display:inline;}
+#b_b_c .content .pic{width:90px; height:70px; padding:4px; border:1px solid #EBDCCB; float:left; display:inline;}
+#b_b_c .content .context{width:100px; height:20px; line-height:18px; text-align:center; overflow:hidden; float:left; display:inline;}
+#b_b_c .content .context a{color:#FF0000; text-decoration:none;}
 
 #b_b_r{width:365px; height:145px; background:url(/images/index/bg_b_b_r.jpg) no-repeat; float:right; display:inline;}
+#b_b_r #title{width:320px; height:20px; margin-top:9px; margin-left:30px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
+#b_b_r .box{width:173px; height:100px; margin-top:10px; margin-left:7px; float:left; display:inline;}
+#b_b_r .box .pic{width:66px; height:90px; float:left; display:inline;}
+#b_b_r .box .title{width:100px; height:20px; margin-left:5px; line-height:20px; overflow:hidden; color:#869C2D; float:left; display:inline;}
+#b_b_r .box .description{width:102px; height:45px; margin-left:5px; line-height:15px; overflow:hidden; color:#869C2D; float:left; display:inline;}
+#b_b_r .box .button{width:61px; height:19px; margin-top:7px; margin-left:15px; float:left; display:inline;}
 
