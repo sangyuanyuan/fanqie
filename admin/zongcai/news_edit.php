@@ -36,7 +36,7 @@
 				<select name="news[category_id]">
 					<?php 
 						$db = get_db();
-						$sql = 'select name,id from smg_category where category_type="zongcai"';
+						$sql = 'select name,id from smg_category where category_type="zongcai" and description="news"';
 						$records = $db->query($sql);
 						$count = count($records);
 						for($i=0;$i<$count;$i++){
