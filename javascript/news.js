@@ -3,8 +3,7 @@
 		$.post('/news/news_update.post.php',{'newsid':$("#newsid").attr('value')},function(data){
 				
 			}
-		)
-		
+		)	
 		
 		$(".show_vote").click(function(){
 			var vote_id=$(this).prev().prev().attr("value");

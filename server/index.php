@@ -28,14 +28,14 @@
 			$bz=$db->query('select * from smg_shopdp where id not in ('.$bt1.') limit '.$bznum);
 		}
 		$gj=$db->query('SELECT s.id,s.title,s.last_edited_at,s.platform,d.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="番茄工具" and c.category_type="news" inner join smg_dept d on s.dept_id=d.id order by s.priority asc, s.last_edited_at desc limit 9');
-		$nbxx=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="内部信息" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
-  		$yczh=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="演出展会" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
-  		$xptj=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="新片推荐" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
-		$msys=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="美食养生" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
-		$gwmd=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="购物摩登" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
-		$tyyl=$db->query('SELECT s.id,s.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="体育娱乐" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
+		$nbxx=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="内部信息" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
+  		$yczh=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="演出展会" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
+  		$xptj=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="新片推荐" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
+		$msys=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="美食养生" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
+		$gwmd=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="购物摩登" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
+		$tyyl=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="体育娱乐" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
 		$tk=$db->query('select id,name from smg_problem order by create_time desc limit 7');
-		$tp=$db->query('SELECT * FROM smg_vote s where vote_type<>"more_type" and vote_type<>"image_vote" and is_sub_vote=0 order by created_at desc');
+		$tp=$db->query('SELECT id,name FROM smg_vote s order by created_at desc limit 12');
 		$man=$db->query('select name,birthday,height,education,photo,school from smg_marry where sex="man" order by id desc limit 5');
 		$woman=$db->query('select name,birthday,height,education,photo,school from smg_marry where sex="woman" order by id desc limit 5');
   ?>
@@ -55,7 +55,7 @@
 				for ($i=0;$i<5;$i++)
 				{
 					$picsurl10[]=$pics[$i]->src;
-					$picslink10[]=$pics[$i]->url;
+					$picslink10[]='/fqtg/fqtglist.php';
 					$picstext10[]=$pics[$i]->title;
 				}
 				?>
@@ -88,11 +88,11 @@
 				</script>
 			</div>
 			<div id=t_l_t_r>
-				<a target="_blank" href="<?php echo $pics[5]->url;?>"><img src="<?php echo $pics[5]->src;?>"></a>
+				<a target="_blank" href="/fqtg/fqtglist.php"><img src="<?php echo $pics[5]->src;?>"></a>
 				<?php for($i=0;$i<4;$i++){?>
 					<div class="content">·<a target="_blank" href="/fqtg/fqtg.php?id=<?php echo $tg[$i]->id;?>"><?php echo $tg[$i]->title; ?></a></div>
 				<?php } ?>
-				<a target="_blank" href="<?php echo $pics[6]->url;?>"><img src="<?php echo $pics[6]->src;?>"></a>
+				<a target="_blank" href="/fqtg/fqtglist.php"><img src="<?php echo $pics[6]->src;?>"></a>
 			</div>
 			<div id="gd">
 				<MARQUEE scrollAmount=1 scrollDelay=10 behavior=scroll width="100%" height="20" style="line-height:20px;">
@@ -167,6 +167,7 @@
 			</div>
 		</div>
 		<div id=t_r_t>
+			<div id="sr"><a target="_blank" href="/server/today.php">生日祝福</a></div>
 			<div id=brithday>
 				<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="100%" style="line-height:24px;">
 					<?php
@@ -358,19 +359,21 @@
 			</div>
 		</div>
 		<div id=b_r>
-			<div id=left>
 				<div id="tp">投票</div>
-				<div id=vote>
-					<?php $vote = new smg_vote_class();
-					$vote->find($tp[0]->id);
-					$vote->display(array("target"=>"_blank"));?>
+				<div id=top>
+					<?php for($i=0;$i<count($tp);$i++){?>
+					<div class=vote>
+						<div class="pic"><img border=0 src="/images/server/index_vote_pic.gif"></div><div class="lj"><a target="_blank" href="/vote/vote.php?vote_id=<?php echo $tp[$i]->id;?>"><?php echo $tp[$i]->name;?></a></div>
+					</div>
+					<?php }?>
 				</div>
-			</div>
-			<div id=right>
-				<?php for($i=0;$i<count($tp);$i++){?>
-					<div class=content>·<a target="_blank" href="/vote/vote.php"><?php echo delhtml($tp[$i]->name);?></a></div>
-				<?php } ?>
-			</div>
+				<div id=bottom>
+					<div id=left><img border=0 src="/images/server/index_r_b_b.jpg"></div>
+					<div id=right>
+						<div id=r_top><div class="cl"><a target="_blank" href="/vote/vote_list.php">最新投票</a></div></div>
+						<div id=r_bottom><div class="cl"><a target="_blank" href="/vote/beginvote.php">发起投票</a></div></div>
+					</div>
+				</div>
 		</div>
 	</div>
 </div>
