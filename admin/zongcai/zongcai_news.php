@@ -53,7 +53,8 @@
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
-				</select><input type="button" value="搜索" id="zc_zongcai" style="border:1px solid #0000ff; height:21px">
+				</select>
+				<input type="button" value="搜索" id="zc_zongcai" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
 		<tr class="tr2">

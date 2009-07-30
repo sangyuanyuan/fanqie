@@ -1,30 +1,29 @@
 <?php
+	#var_dump($_REQUEST);
 	require_once('../../frame.php');
-	judge_role('admin');
+	$user = judge_role('admin');	
 	
-	$conditions = null;
-	if($_REQUEST['title']!=""){
-		$conditions[] = 'title  like "%'.trim($_REQUEST['title']).'%"';
-	}
-	if($_REQUEST['dept']!=""){
-		$conditions[] = "dept_id=".$_REQUEST['dept'];
-	}
-	if($_REQUEST['adopt']!=""){
-		$conditions[] = "is_adopt=".$_REQUEST['adopt'];
-	}
-	$conditions[] = 'is_recommend=1';
+	$title = $_REQUEST['title'];
+	$is_adopt = $_REQUEST['adopt'];
+	$category_id = $_REQUEST['category'];
 	
-	$video = new table_class('smg_video');
+	$sql = 'select * from smg_category where category_type="zongcai" and description="video"';
+	$db = get_db();
+	$category = $db->query($sql);
+	$sql = 'select t1.* from smg_video t1 join smg_category t2 on t1.category_id=t2.id where t2.category_type="zongcai" and t2.description="video"';
 	
-	if($conditions!=null){
-		$conditions = implode(' and ',$conditions);
-		$video_rows = $video->paginate("all",array('conditions' => $conditions,'order' => 'priority'),12);
-	}else{
-		$video_rows = $video->paginate("all",array('order' => 'priority'),12);
+	
+	if($is_adopt!=''){
+		$sql = $sql.' and t1.is_adopt='.$is_adopt;
 	}
-	$dept = new table_class("smg_dept");
-	$rows_dept = $dept->find("all");
-	
+	if($category_id!=''){
+		$sql = $sql.' and t1.category_id='.$category_id;
+	}
+	if($title!=''){
+		$sql = $sql.' and (t1.title like "%'.trim($title).'%" or t1.keywords like "%'.trim($title).'%" or t1.description like "%'.trim($title).'%")';
+	}
+	$sql = $sql.' order by priority,created_at desc';
+	$video = $db->query($sql);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -41,39 +40,40 @@
 </head>
 <body>
 	<table width="795" border="0">
-		<tr class="tr1">
-			<td colspan="5" width="795">　　　<a href="/admin/video/video_add.php?type=总裁奖" style="color:#0000FF">发布视频</a>　　　　　　
-			搜索　<input id=title_new type="text" value="<? echo $_REQUEST['title']?>">
-			<select id=dept style="width:100px" class="select">
-				<option value="">发表部门</option>
-				<?php for($i=0;$i<count($rows_dept);$i++){?>
-				<option value="<?php echo $rows_dept[$i]->id;?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
-				<? }?>
-			</select>
-			<select id=adopt style="width:100px" class="select">
-				<option value="">发布状况</option>
-				<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
-				<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
-			</select>
-			<input type="button" value="搜索" id="search" style="border:1px solid #0000ff; height:21px">
+		<tr class=tr1>
+			<td colspan="5" width="795">　<a href="video_add.php" style="color:#0000FF">发布视频</a> 　　　
+			搜索　<input id=zc_title type="text" value="<? echo $_REQUEST['title']?>"><select id=category style="width:100px" class="zongcai_search">
+					<option value="">所属类别</option>
+					<?php for($i=0;$i<count($category);$i++){?>
+					<option value="<?php echo $category[$i]->id; ?>" <?php if($category[$i]->id==$_REQUEST['category']){?>selected="selected"<? }?>><?php echo $category[$i]->name;?></option>
+					<? }?>
+				</select><select id=adopt style="width:100px" class="zongcai_search">
+					<option value="">发布状况</option>
+					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
+					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
+				</select>
+				<input type="button" value="搜索" id="zc_zongcai" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
 	</table>
 	<div class="div_box">
-		<?php for($i=0;$i<count($video_rows);$i++){?>
-		<div class=v_box id="<?php echo $video_rows[$i]->id;?>">
-			<a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank"><img src="<?php echo $video_rows[$i]->photo_url;?>" width="170" height="70" border="0"></a>
-			<div class=content><a href="/video/video.php?id=<?php echo $video_rows[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $video_rows[$i]->title;?></a></div>
-			<div class=content><a href="?dept=<?php echo $video_rows[$i]->dept_id;?>" style="color:#0000FF"><?php for($j=0;$j<count($rows_dept);$j++){if($rows_dept[$j]->id==$video_rows[$i]->dept_id){echo $rows_dept[$j]->name;}}?></a></div>
-			<div class=content>总裁奖</div>
+		<?php for($i=0;$i<count($video);$i++){?>
+		<div class=v_box id="<?php echo $video[$i]->id;?>">
+			<a href="/show/video.php?id=<?php echo $video[$i]->id; ?>" target="_blank"><img src="<?php echo $video[$i]->photo_url;?>" width="170" height="70" border="0"></a>
+			<div class=content><a href="/show/video.php?id=<?php echo $video[$i]->id; ?>" target="_blank" style="color:#000000; text-decoration:none"><?php echo $video[$i]->title;?></a></div>
+			<div class=content>
+				<a href="?category=<?php echo $video[$i]->category_id;?>" style="color:#0000FF">
+					<a href="?category=<?php echo $video[$i]->category_id;?>" style="color:#0000FF"><?php echo category_name_by_id($video[$i]->category_id); ?></a>
+				</a>
+			</div>
 			<div class=content style="height:20px">
-				<?php if($video_rows[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $video_rows[$i]->id;?>">撤消</span><? }?>
-				<?php if($video_rows[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $video_rows[$i]->id;?>">发布</span><? }?>
-				<a href="/admin/video/video_edit.php?id=<?php echo $video_rows[$i]->id;?>&type=总裁奖" style="color:#000000; text-decoration:none">编辑</a> 
-				<span style="cursor:pointer" class="del" name="<?php echo $video_rows[$i]->id;?>">删除</span>
-				<a href="/admin/comment/comment.php?id=<?php echo $video_rows[$i]->id;?>&type=video" style="color:#000000; text-decoration:none">评论</a>
-				<input type="text" class="priority" name="<?php echo $video_rows[$i]->id;?>" value="<?php if($video_rows[$i]->priority!=100){echo $video_rows[$i]->priority;}?>" style="width:40px;">
-				<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $video_rows[$i]->id;?>" style="width:40px;">	
+				<?php if($video[$i]->is_adopt=="1"){?><span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $video[$i]->id;?>">撤消</span><? }?>
+				<?php if($video[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $video[$i]->id;?>">发布</span><? }?>
+				<a href="video_edit.php?id=<?php echo $video[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
+				<span style="cursor:pointer; color:#FF0000;" class="del" name="<?php echo $video[$i]->id;?>">删除</span>
+				<a href="/admin/comment/comment.php?id=<?php echo $video[$i]->id;?>&type=video" style="color:#000000; text-decoration:none">评论</a>
+				<input type="text" class="priority" name="<?php echo $video[$i]->id;?>" value="<?php if($video[$i]->priority!=100){echo $video[$i]->priority;}?>" style="width:40px;">
+				<input type="hidden" id="priorityh<? echo $p;?>" value="<?php echo $video[$i]->id;?>" style="width:40px;">	
 			</div>
 		</div>
 		<?php }?>
@@ -84,27 +84,23 @@
 				<td><?php paginate();?> <button id="edit_priority">编辑优先级</button> <button id="clear_priority">清空优先级</button></td>
 			</tr>
 		</table>
-	<div>
+	</div>
 	<input type="hidden" id="db_talbe" value="smg_video">
 </body>
 </html>
 
-
 <script>
-		$("#search").click(function(){
-				window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
-			
-		});
-		
-		$("#title_new").keypress(function(event){
-				if(event.keyCode==13){
-					window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
-				}
-		});
-		
-		$(".select").change(function(){
-				window.location.href="?title="+$("#title_new").attr('value')+"&dept="+$("#dept").attr('value')+"&adopt="+$("#adopt").attr('value');
-		});
+	$("#zc_zongcai").click(function(){
+			window.location.href="?title="+$("#zc_title").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+	});
+	
+	$(".zongcai_search").change(function(){
+		window.location.href="?title="+$("#zc_title").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+	});
+	$('#zc_title').keydown(function(e){
+			if(e.keyCode == 13){
+				window.location.href="?title="+$("#zc_title").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
+			}
+	});
 </script>
-
 

@@ -31,7 +31,7 @@
 				
 				<div class=content>
 					<div class=radio><input type="radio" class=woman name="woman_choose" value="<?php echo $records[$i]->id; ?>"></div>
-					<div class=pic><img src="<?php echo $records[$i]->photo;?>" width="102" height="142" border="0"></div>
+					<div class=pic><a href="<?php echo $records[$i]->photo;?>"><img src="<?php echo $records[$i]->photo;?>" width="102" height="142" border="0"></a></div>
 					<div class=info>
 					姓名：<?php echo $records[$i]->name; ?>&nbsp;
 					出生年份：<?php echo substr($records[$i]->birthday, 0, 4); ?><br>
@@ -78,7 +78,7 @@
 				?>
 				<div class=content>
 					<div class=radio><input type="radio" class=man name="man_choose" value="<?php echo $records[$i]->id;?>"></div>
-					<div class=pic><img src="<?php echo $records[$i]->photo;?>" width="102" height="142" border="0"></div>
+					<div class=pic><a href="<?php echo $records[$i]->photo;?>"><img src="<?php echo $records[$i]->photo;?>" width="102" height="142" border="0"></a></div>
 					<div class=info>
 					姓名：<?php echo $records[$i]->name; ?>&nbsp;
 					出生年份：<?php echo substr($records[$i]->birthday, 0, 4); ?><br>
