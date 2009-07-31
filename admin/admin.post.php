@@ -53,4 +53,17 @@ if ($_POST["type"]=="shoppub")
 	echo "OK";
 
 }
+if($_POST["type"]=="addleaderuser")
+{
+	$userid=$db->query('select id from smg_user where name="'.$_POST['userid'].'"');
+	$StrSql='insert into smg_leader_role(user_id,rights,createtime) value ('.$userid[0]->id.',"'.$_POST['right'].'",now())'; 
+	$Record = $db->execute($StrSql);
+	echo "OK";
+}
+if($_POST["type"]=="delleaderuser")
+{
+	$StrSql='delete from smg_leader_role where id='.$_POST['id']; 
+	$Record = $db->execute($StrSql);
+	echo "OK";
+}
 ?>

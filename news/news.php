@@ -237,7 +237,7 @@
 			<div class=b_t_title1 param=3 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat">精彩视频</div>
 			<div class="b_t" id="b_t_1" style="display:none;">
 				<? 
-					$sql="SELECT tid,subject FROM bbs_posts where subject<>'' order by pid desc limit 10";
+					$sql="SELECT tid,subject FROM bbs_posts where first=1 order by pid desc limit 10";
 					$bbs=$db->query($sql);
 					for($i=0;$i<count($bbs);$i++){
 				?>
