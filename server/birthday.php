@@ -32,7 +32,7 @@
   
         <div id="context">
 			<?php
-				$sql = 'select * from smg_birthday_gift where reciever="'.$user_id.'"';
+				$sql = 'select * from smg_birthday_gift where reciever="'.$user_id.'" order by id desc';
 				$records = $db->paginate($sql,9);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
@@ -43,7 +43,7 @@
 					<div class=giver><?php echo $records[$i]->sender; ?></div>
 					赠送我&nbsp;<font color=#FF0000 style="font-weight:bolder;">生日礼物</font>
 				</div>
-				<div class=picture><img src="<?php echo $records[$i]->gift_src;?>" border=0 width=55 height=55></div>
+				<div class=picture><a href="<?php echo $records[$i]->gift_src;?>" target=_blank><img src="<?php echo $records[$i]->gift_src;?>" border=0 width=55 height=55></a></div>
 				<div class=info>一份</div>
 				<div class=message><?php echo $records[$i]->message; ?></div>
 				<div class=date><?php echo substr($records[$i]->created_at, 0, 16); ?></div>
