@@ -36,8 +36,9 @@ if($_REQUEST['hide_retdiv']){
 				return false;
 			}
 			var src = $('input:checked').prev().prev().prev().attr('src');
+			var gift_name = $('input:checked').attr('gift_name');
 
-			$.post('send_gift.post.php',{'gift[reciever]':'<?php echo $_REQUEST["loginname"];?>','gift[sender]':sender,'gift[message]':tcontent,'gift[gift_src]':src},function(data){
+			$.post('send_gift.post.php',{'gift[reciever]':'<?php echo $_REQUEST["loginname"];?>','gift[sender]':sender,'gift[message]':tcontent,'gift[gift_src]':src,'gift[name]':gift_name},function(data){
 				alert(data);
 				$('#tcontent').val('');
 			});

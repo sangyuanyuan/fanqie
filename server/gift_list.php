@@ -12,7 +12,7 @@ for ($i=0;$i<count($record);$i++){
 <div class="gift" style="width:130px; height:150px; text-align:center; float:left; display:inline;">
 	<img src="<?php echo $record[$i]->img_src ?>" border=0 style="width:120px; height:100px; cursor:pointer;"><br>
 	<?php echo $record[$i]->gname ?><br>
-	<input type="radio" name="gift" >
+	<input type="radio" name="gift" gift_name="<?php echo $record[$i]->gname;?>">
 </div>
 <?
 }
