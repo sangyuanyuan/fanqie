@@ -34,6 +34,8 @@
 	
 	if($_POST['news']['target_url']!=''){
 		$news->news_type=3;
+	}else{
+		$news->news_type=1;
 	}
 		
 	if($news_id == 0){

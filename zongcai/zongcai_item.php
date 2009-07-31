@@ -76,7 +76,7 @@
 					<td colspan="3" align="left"><input class="required" type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="upfile" id="upfile"  type="file" style="width:325px;">可上传节目主创人员工作照片</td>
 				</tr>							
 				<tr height="35px;">
-					<td colspan="4" align="center"><button value='submit'>提交</button></td>
+					<td colspan="4" align="center"><button type="submit" value='submit'>提交</button></td>
 				</tr>							
 			</table>
 			<div style="margin-left: 30px; margin-top: 5px;font-size:14px;">
