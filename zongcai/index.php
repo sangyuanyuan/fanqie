@@ -69,7 +69,7 @@
 						  show_video_player(190,120,$record[0]->photo_url,$record[0]->video_url);
 						?>
 					</div>
-					<div id=bottom><div id=his>获奖节目</div><div id=more><a href="/video/videolist2.php?id=10">更多</a></div></div>
+					<div id=bottom><div id=his>获奖节目</div><div id=more><a href="list.php?id=<?php echo category_id_by_name('获奖节目','zongcai');?>&type=video">更多</a></div></div>
 				</div>
 			</div>
 			
@@ -242,11 +242,11 @@
 					<?php paginate('',null,'comment');?>
 				</div>
 				<form id="comment_form" method="post" action="/pub/pub.post.php">
-					<div id=subject_comment>用户：<input type="text" name="post[nick_name]"/><br /><div id=comment>评论：</div><textarea  name="post[comment]"></textarea></div>
+					<div id=subject_comment>用户：<input type="text" id="nick_name" name="post[nick_name]"/><br /><div id=comment>评论：</div><textarea id=comment_text name="post[comment]"></textarea></div>
 					<input type="hidden" name="post[resource_id]" value="0">
 					<input type="hidden" name="post[resource_type]" value="zongcai">
 					<input type="hidden" name="type" value="comment">
-					<button id=btn type="submit">评　论</button>
+					<button id=btn type="button">评　论</button>
 				</form>
 			</div>
 		</div>
@@ -291,6 +291,18 @@
 		
 		$(".view").click(function(){
 			window.location.href = 'vote_view.php?vote_id='+$("#vote_id").val()+'&type='+$(this).attr('name');
+		})
+		
+		$("#btn").click(function(){
+			if($("#nick_name").val().length>80){
+				alert("昵称长度太长！");
+				return false;
+			}
+			if($("#comment_text").val()==""){
+				alert("请输入评论内容！");
+				return false;
+			}
+			$("#comment_form").submit();
 		})
 	});
 </script>

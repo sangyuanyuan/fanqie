@@ -2,6 +2,7 @@
 	require_once('../frame.php');
 	$db = get_db();
 	$id = $_REQUEST['id'];
+	$type = $_REQUEST['type'];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,7 +18,11 @@
 <body>
 	<?php
 		$name = category_name_by_id($id);
-		$sql = 'select id,title,short_title,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by priority,created_at desc';
+		if($type=='video'){
+			$sql = 'select id,title,created_at from smg_video where is_adopt=1 and category_id='.$id.' order by priority,created_at desc';
+		}else{
+			$sql = 'select id,title,short_title,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by priority,created_at desc';
+		}
 		$programlist = $db->paginate($sql,15);
 	?>
 	<div id=subject_body>
@@ -30,7 +35,15 @@
 				<div id=alist style="width:540px; margin-top:10px; margin-left:15px;">
 					<? for($i=0;$i<count($programlist);$i++){?>
 						<div style="width:370px; margin-top:5px; margin-left:10px; color:#7B3200; text-decoration:none; float:left; dispaly:inline;overflow:hidden;">
-							 <a href="/news/news.php?id=<?php echo $programlist[$i]->id;?>" target="_blank" title="<?php echo $programlist[$i]->title;?>"><?php echo $programlist[$i]->short_title;?></a> <?php echo $programlist[$i]->created_at;?>
+							 <?php if($type=='video'){
+							 ?>
+							  <a href="/show/video.php?id=<?php echo $programlist[$i]->id;?>" target="_blank" title="<?php echo $programlist[$i]->title;?>"><?php echo $programlist[$i]->title;?></a> <?php echo $programlist[$i]->created_at;?>
+							 <?
+							 }else{
+							 ?>
+							  <a href="/news/news.php?id=<?php echo $programlist[$i]->id;?>" target="_blank" title="<?php echo $programlist[$i]->title;?>"><?php echo $programlist[$i]->short_title;?></a> <?php echo $programlist[$i]->created_at;?>
+							 <?php
+							 } ?>
 						</div>
 					<? }?>
 				</div>
@@ -105,7 +118,7 @@
 					<?php paginate('',null,'comment');?>
 				</div>
 				<form id="comment_form" method="post" action="/pub/pub.post.php">
-					<div id=subject_comment>用户：<input type="text" name="post[nick_name]"/><br /><div id=comment>评论：</div><textarea  name="post[comment]"></textarea></div>
+					<div id=subject_comment>用户：<input type="text" id=nick_name name="post[nick_name]"/><br /><div id=comment>评论：</div><textarea id=comment_text name="post[comment]"></textarea></div>
 					<input type="hidden" name="post[resource_id]" value="0">
 					<input type="hidden" name="post[resource_type]" value="zongcai">
 					<input type="hidden" name="type" value="comment">
@@ -119,3 +132,17 @@
 	</div>
 </body>
 </html>
+
+<script>
+	$("#btn").click(function(){
+		if($("#nick_name").val().length>80){
+			alert("昵称长度太长！");
+			return false;
+		}
+		if($("#comment_text").val()==""){
+			alert("请输入评论内容！");
+			return false;
+		}
+		$("#comment_form").submit();
+	})
+</script>
