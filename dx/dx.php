@@ -1,64 +1,56 @@
-﻿<?php
-	require_once('../frame.php');
-	$id=$_REQUEST['id'];
-	$tags=urldecode($_REQUEST['tags']);
-	if(($id==""||$id==null)&&($tags==""||$tags==null)){die('没有找到网页');}
-?>
+﻿<?php require_once('../frame.php'); ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
-	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-新闻-新闻列表页面</title>
-	<? 	
-		css_include_tag('news_news_list','top','bottom');
+	<meta http-equiv=Content-Language content=zh-CN>
+	<title>SMG -短信</title>
+	<?php css_include_tag('smg','top','bottom'); 
+		$db=get_db();
 		use_jquery();
-		js_include_once_tag('news_list');
-		$db = get_db();
-		if($id!=""&&$id!=null)
-		{
-			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
-		}
-		else if($tags!=""&&$tags!=null)
-		{
-			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."'";
-		}
-		else
-		{
-				$sql="select title,platform,id,last_edited_at,category_id from smg_news where is_adopt=1 order by last_edited_at desc";
-		}
-		
-		$record=$db->paginate($sql,30);		
-  ?>
-	
+		js_include_once_tag('dx');
+	?>
+
 </head>
 <body>
-<? require_once('../inc/top.inc.html');?>
-<div id=ibody>
-	<div id=ibody_left>
-		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><?php if($id!=""||$id!=null){ ?><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a><?php } else if($tags!=""||$tags!=null){?><a href="news_list.php?tags=<? echo $tags;?>"></a><?php echo $tags;?><?php } else{ ?><a href="news_list.php">所有新闻</a><? }?>
+<? include('../inc/top.inc.html');
+  $phone=$_REQUEST['mobile'];
+  $yanzheng=$_REQUEST['yanzheng'];
+ 	$rand1=rand(0,9);
+	$rand2=rand(0,9);
+	$rand3=rand(0,9);
+	$rand4=rand(0,9);
+	$rand5=rand(0,9);
+	$rand6=rand(0,9);
+	$rand=$rand1.$rand2.$rand3.$rand4.$rand5.$rand6;
+?>
+<div id=bodys>
+ <div id=n_left style="width:680px;">
+		<div id=content4>
+			<form name="dx" id="dx" method="post" action="dx.post.php">
+			<table style="margin-left:150px;">
+				<tr>
+					<td colspan="2" align="center" style="color:red; font-size:20px; font-weight:bold;" >手机订阅</td>
+				</tr>
+				<tr>
+					<td align="center">手机号码：</td>
+					<td><input id=mobile name=mobile type="text" maxlength=11 value="<? echo $phone;?>" ><a id="check" name="<?php echo $rand;?>" style="margin-left:10px; color:blue; cursor: pointer;" target="_blank">获取验证码</a>
+					</td>
+				</tr>
+			<tr>
+				<td align="center">验证码：<input type="hidden" id=yanzheng name=yanzheng value="<? echo $yanzheng;?>"></td>
+				<td><input id=yz name=yz type="text" maxlength=6 >（退订时，无需填写验证码！）</td>
+			</tr>
+			<tr>
+				<td></td><td><input type="button" id="zhuce"  name="<?php echo $yanzheng;?>" value="订阅" /><input type="button" id="zhuxiao" value="退订" /><input type="hidden" id="utype" name="utype" ></td>
+			</tr>
+		</table>
 		</div>
-		<div id=l_b>
-			<?php for($i=0;$i<count($record);$i++){ ?>
-				<div class=l_b_l>
-					<?php if($record[$i]->category_id==1||$record[$i]->category_id==2){ ?>
-					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
-					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
-				</div>
-				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
-			<?php }else{?>
-			<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
-					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
-				</div>
-				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
-			<?php }} ?>
-			<div id=page><?php paginate('');?></div>
-		</div>
-	</div>
-	<div id=ibody_right>
-		<div id=r_t><a target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
-		<div id=r_m>
+   </form>
+  </div>
+
+ <div id=ibody_right>
+ 	<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
 			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
@@ -92,7 +84,7 @@
 			<div class=b_t_title1 param=3 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat">精彩视频</div>
 			<div class="b_t" id="b_t_1" style="display:none;">
 				<? 
-					$sql="SELECT tid,subject FROM bbs_posts where first=1 order by pid desc limit 10";
+					$sql="SELECT tid,subject FROM bbs_posts where subject<>'' order by pid desc limit 10";
 					$bbs=$db->query($sql);
 					for($i=0;$i<count($bbs);$i++){
 				?>
@@ -185,4 +177,3 @@ order by b.allcounts desc) tb order by a1 desc limit 10";
 
 </body>
 </html>
-

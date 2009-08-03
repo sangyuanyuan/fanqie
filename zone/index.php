@@ -36,15 +36,15 @@
 		$gg=$db->query($sql);
 		$sql="select * from smg_comment where resource_type='zone' order by created_at desc limit 4";
 		$comment=$db->query($sql);
-		$sql="SELECT tid,subject FROM bbs_posts where subject<>'' order by pid desc limit 10";
+		$sql="SELECT tid,subject FROM bbs_posts where first=1 order by pid desc limit 10";
 		$bbs=$db->query($sql);
 		$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by itemid desc limit 10";
 		$blog=$db->query($sql);
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='劲爆热图' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 6";
 		$jbrt=$db->query($sql);
-		$sql="SELECT count(*) as num,p.author,m.uid FROM bbs_posts p inner join bbs_members m on p.author=m.username and p.author<>'' and p.subject<>'' group by author order by num desc limit 15";
+		$sql="SELECT count(*) as num,p.author,m.uid FROM bbs_posts p inner join bbs_members m on p.author=m.username and p.author<>'' and p.first=1 group by author order by num desc limit 15";
 		$bbsph=$db->query($sql);
-		$sql="SELECT count(*) as num,subject,tid FROM bbs_posts where subject<>'' group by tid order by num desc limit 10";
+		$sql="SELECT count(*) as num,subject,tid FROM bbs_posts where first=1 group by tid order by num desc limit 10";
 		$bbstophot=$db->query($sql);
 		$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by viewnum desc limit 10";
 		$blogph=$db->query($sql);

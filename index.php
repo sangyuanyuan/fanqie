@@ -309,14 +309,22 @@
  							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>								
+ 						<div style="width:128px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
+ 							<img src="/images/1.jpg" width="125px; height:20px;">
+ 							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[0]->platform."/news/news.php?id=".$record_import_a[0]->id ?>" target="_blank"><?php echo $record_import_c[0]->short_title ?></a>
+ 						</div>
+ 						
+ 						
+ 						<!--
  						<div class=space></div>
+
    					<ul>
  						 <?php for($i=0; $i<3; $i++){?>
  							<li><div><a href="<?php echo "/".$record_import_c[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_c[$i]->short_title ?></a></div><div><?php show_img($record_import_c[$i]->image_flag,18,17)?><?php show_video($record_import_c[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>							
-						
 						<div class=space></div>
+						-->
    					<ul>
  						 <?php for($i=18; $i<21; $i++){?>
  							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>

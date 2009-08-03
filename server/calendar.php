@@ -67,6 +67,7 @@
 	$w = date('w',$first_day);
 	$date_num = date('t',$date);//$_REQUEST['check_date'] ? date('t',$_REQUEST['check_date']) : date('t');
 	$db = get_db();
+	$db->echo_sql = true;
 	#$items = $db->query("select *,substring(birthday_short,4,2) as bday from smg_user_real where birthday_short like '$m%' and hide_birthday!=1 order by birthday_short");
 	#foreach ($items as $v) {
 	#	$birthday[intval($v->bday)] .= "[{$v->nickname}]";
@@ -74,7 +75,6 @@
 	if(empty($add_month)){
 		$today_index = date('j');
 		$today_birthday = $db->query("select nickname, loginname from smg_user_real where birthday_short='" .date('m-d') ."' and  hide_birthday!=1");
-		
 		foreach ($today_birthday as $v) {
 			$today_string .= $v->nickname ."<br>";
 		}

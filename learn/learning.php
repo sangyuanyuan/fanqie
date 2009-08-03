@@ -1,116 +1,111 @@
+锘�<?php
+	require_once('../frame.php');
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -学习园地</title>
-	<link href="/css/smg.css" rel="stylesheet" type="text/css">
+	<title>SMG -瀛︿範鍥湴</title>
+	<?php css_include_tag('smg','bottom'); 
+		$db=get_db();
+	?>
 </head>
 <body>
-	<?php	
-	include('../inc/top.inc.html');
-	require_once('../inc/define.inc.php');
-	require_once('../libraries/sqlrecordsmanager.php');
-	
-	$sqlmanager = new SqlRecordsManager();
-		
-	?>
 	<div id=le_body>
 		<div id=le_left>
 			<? 
-			$zbtj = $sqlmanager->GetRecords('select * from smg_news where isadopt = 1 and main_cate_id =' .$zhongbangtuijian_id .' order by priority asc,pubdate desc',1,6);
-			for($i=1;$i < 3 && $i<count($zbtj);$i++){?>
+			$zbtj = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="閲嶇鎺ㄨ崘" and c.category_type="news" order by click_count desc limit 6');
+			for($i=0;$i < 2 && $i<count($zbtj);$i++){?>
 			<div class=top>
 				<a href="/news/news.php?id=<?php echo $zbtj[$i]->id;?>"><?php echo $zbtj[$i]->title;?></a>
-				<div class=clickrate>点击率：<?php echo $zbtj[$i]->clickcount;?></div>
+				<div class=clickrate>鐐瑰嚮鐜囷細<?php echo $zbtj[$i]->click_count;?></div>
 			</div>
 			<? }?>
-			<? for($i=3;$i<count($zbtj);$i++){?>
+			<? for($i=2;$i<count($zbtj);$i++){?>
 			<div class=middle>
 				<a href="/news/news.php?id=<?php echo $zbtj[$i]->id;?>"><?php echo $zbtj[$i]->title;?></a>
 			</div>
 			<? }?>
 			<div class=middle>
-				<div id=more><a href="/news/newslist.php?id=<?php echo $zhongbangtuijian_id;?>">更多...</a></div>
+				<div id=more><a target="_blank" href="/<?php echo $zbtj[0]->c.platform;?>/news/news_list.php?id=<?php echo $zbtj[0]->cid;?>">鏇村...</a></div>
 			</div>
 			<div id=bottom>
-				<a href="">生活这点事</a><a href="">博客</a><a href="">论坛</a>
+				<a target="_blank" href="/server/">鐢熸椿杩欑偣浜�</a><a target="_blank" href="/zone/">鍗氬</a><a target="_blank" href="/zone/">璁哄潧</a>
 			</div>
 		</div>
 		<div id=le_right>
 			<div id=top>
 			  <?php
-			  //获得重磅推荐的图片
+			  //鑾峰緱閲嶇鎺ㄨ崘鐨勫浘鐗�
 			  if ($zbtj[0]->isphotonews)
 			  {
-			  	$pic = $zbtj[0]->photourl;
+			  	$pic = $zbtj[0]->photo_src;
 			  }else 
 			  {
-			  	$pics = $sqlmanager->GetRecords('select * from smg_photo where isadopt = 1 and main_cate_id=' .$zhongbangtuijian_pic_id .' order by priority asc, createtime desc',1,1);
-			  	$pic = $pics[0]->photourl;
+			  	$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt = 1 and c.name="閲嶇鎺ㄨ崘" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
+			  	$pic = $pics[0]->src;
 			  }
 			  ?>
-				<a href="/news/news.php?id=<?php echo $zbtj[0]->id;?>"><?php echo $zbtj[0]->title;?></a>
-				<div id=left><img width=90 height=94 src="<?php echo $pic;?>" /><a href="/news/news-4.php?id=<?php echo $zbtj[0]->id;?>">[点击查询详情]</a></div>
+				<a target="_blank" href="/<?php echo $zbtj[0]->platform;?>/news/news.php?id=<?php echo $zbtj[0]->id;?>"><?php echo $zbtj[0]->title;?></a>
+				<div id=left><img width=90 height=94 src="<?php echo $pic;?>" /><a target="_blank" href="/<?php echo $zbtj[0]->platform; ?>/news/news.php?id=<?php echo $zbtj[0]->id;?>">[鐐瑰嚮鏌ヨ璇︽儏]</a></div>
 				<div id=right><?php echo $zbtj[0]->description;?></div>
 			</div>
 			<div id=bottom>
 				<div id=left>
-					<div id=top>			
-						<div id=more><a href="/video/videolist2.php?id=<?php echo $peixunziliaodaguan_video_id;?>">更多...</a></div>
+					<div id=top>
 						<?php
-						$pxzldg = $sqlmanager->GetRecords('select * from smg_video where isadopt=1 and main_cate_id = ' .$peixunziliaodaguan_video_id .' order by priority asc, createtime desc',1,7);
-						?>
-						<div id=l><img width=80 height=94 src="<?php echo $pxzldg[0]->photourl;?>" /><a href="/video/video-1.php?id=<?php echo $pxzldg[0]->id;?>"><?php echo $pxzldg[0]->title;?></a></div>
+						$pxzldg = $db->query('select v.id,v.title,v.photo_url,v.video_url,c.platform,c.id as cid from smg_video v inner join smg_category c on v.category_id=c.id and v.is_adopt=1 and c.name ="鍩硅璧勬枡澶ц" and c.category_type="video" order by v.priority asc, v.created_at desc limit 7');
+						?>		
+						<div id=more><a target="_blank" href="/show/list.php?type=video&id=<?php echo $pxzldg[0]->cid; ?>">鏇村...</a></div>
+						<div id=l><img width=80 height=94 src="<?php echo $pxzldg[0]->photo_url;?>" /><a href="/<?php echo $pxzldg[0]->platform; ?>/show/video.php?id=<?php echo $pxzldg[0]->id;?>"><?php echo $pxzldg[0]->title;?></a></div>
 						<? 						
 						for($i=1;$i<=6 && count($pxzldg);$i++){?>
-						<div class=r ><a style="height:18px;line-height:20px;" href="/video/video-1.php?id=<?php echo $pxzldg[$i]->id;?>"><?php echo $pxzldg[$i]->title;?></a></div>
+						<div class=r ><a target="_blank" style="height:18px; line-height:20px;" href="/<?php echo $pxzldg[$i]->platform; ?>/video/video.php?id=<?php echo $pxzldg[$i]->id;?>"><?php echo $pxzldg[$i]->title;?></a></div>
 						<? }?>
 					</div>
 					<div id=bottom>
-						<div id=more><a href="/news/newslist.php?id=<?php echo $anlifenxiang_id;?>">更多...</a></div>
+						<?php $pxalfx = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="鍩硅妗堜緥鍒嗕韩" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 7'); ?>
+						<div id=more><a target="_blank" href="/<?php echo $pxalfx[0]->platform; ?>/news/news_list.php?id=<?php echo $pxalfx[0]->cid;?>">鏇村...</a></div>
 						<?php
-						//获得图片
-						
-						$pxalfx = $sqlmanager->GetRecords('select * from smg_news where isadopt=1 and main_cate_id = ' .$anlifenxiang_id .' order by priority asc, pubdate desc',1,7);
-						if ($pxalfx[0]->isphotonews) {
-							$pic = $pxalfx[0]->photourl;
+						//鑾峰緱鍥剧墖
+						if ($pxalfx[0]->is_photo_news==1) {
+							$pic = $pxalfx[0]->photo_src;
 							if($pic=="")
 							{
 								$pic='/images/pic/px2.jpg';
 							}
 						}else 
 						{
-							$pics = $sqlmanager->GetRecords('select * from smg_photo where isadopt = 1 and main_cate_id=' .$peixunanlifenxiang_pic_id .' order by priority asc, createtime desc',1,1);
-							$pic = $pics[0]->photourl;
+							$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.is_adopt = 1 and c.name="鍩硅妗堜緥鍒嗕韩" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
+							$pic = $pics[0]->src;
 							if($pic=="")
 							{
 								$pic='/images/pic/px2.jpg';
 							}
 						}
 						?>
-						<div id=l><img width=80 height=94 src="<?php echo $pic;?>" /><a href="/news/news-4.php?id=<?php echo $pxalfx[0]->id;?>"><?php echo $pxalfx[0]->title;?></a></div>
+						<div id=l><img width=80 height=94 src="<?php echo $pic;?>" /><a href="/<?php echo $pxalfx[0]->platform; ?>/news/news.php?id=<?php echo $pxalfx[0]->id;?>"><?php echo $pxalfx[0]->title;?></a></div>
 						<? for($i=1;$i<=6 && count($pxalfx);$i++){?>
-						<div class=r><a href="/news/news-4.php?id=<?php echo $pxalfx[$i]->id;?>"><?php echo $pxalfx[$i]->title;?></a></div>
+							<div class=r><a target="_blank" href="/<?php echo $pxalfx[$i]->platform; ?>/news/news.php?id=<?php echo $pxalfx[$i]->id;?>"><?php echo $pxalfx[$i]->title;?></a></div>
 						<? }?>
 					</div>
 				</div>
 				<div id=right>
 					<div id=shang>
-						<div id=more><a href="/news/newslist.php?id=<?php echo $dushuyuebao_id;?>">更多...</a></div>
+						<?php $dsyb = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="璇讳功闃呮姤" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 7'); ?>
+						<div id=more><a target="_blank" href="/<?php echo $dsyb[0]->platform; ?>/news/news_list.php?id=<?php echo $dsyb[0]->cid;?>">鏇村...</a></div>
 						<?php
-						
-						$dsyb = $sqlmanager->GetRecords('select * from smg_news where isadopt=1 and main_cate_id = ' .$dushuyuebao_id .' order by priority asc, pubdate desc',1,7);
-						if($dsyb[0]->isphotonews)
+						if($dsyb[0]->is_photo_news==1)
 						{
-							$pic =$dsyb[0]->photourl;
+							$pic =$dsyb[0]->photo_src;
 							if($pic=="")
 							{
 								$pic='/images/pic/read.jpg';
 							}
 						}else {
-							$pics = $sqlmanager->GetRecords('select * from smg_photo where isadopt = 1 and main_cate_id=' .$dushuyuebao_pic_id .' order by priority asc, createtime desc',1,1);
-							$pic = $pics[0]->photourl;
+							$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.is_adopt = 1 and c.name="璇讳功闃呮姤" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
+							$pic = $pics[0]->src;
 							if($pic=="")
 							{
 								$pic='/images/pic/read.jpg';
@@ -118,25 +113,24 @@
 						}
 				
 						?>
-						<div id=l><img width=80 height=94 src="<?php echo $pic;?>" /><a href="/news/news-4.php?id=<?php echo $dsyb[0]->id;?>"><?php echo $dsyb[0]->title;?></a></div>
+						<div id=l><img width=80 height=94 src="<?php echo $pic;?>" /><a target="_blank" href="/<?php echo $dsyb[0]->platform;?>/news/news.php?id=<?php echo $dsyb[0]->id;?>"><?php echo $dsyb[0]->title;?></a></div>
 						<? for($i=1;$i < count($dsyb);$i++){?>
-						<div class=r><a href="/news/news-4.php?id=<?php echo $dsyb[$i]->id;?>"><?php echo $dsyb[$i]->title; ?> </a></div>
+						<div class=r><a target="_blank" href="/<?php echo $dsyb[$i]->platform;?>/news/news.php?id=<?php echo $dsyb[$i]->id;?>"><?php echo $dsyb[$i]->title; ?> </a></div>
 						<? }?>
 					</div>
+					<?php $yyys = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="褰遍煶鑹烘湳" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 7');?>
 					<div id=xia>
-						<div id=more><a href="/news/newslist.php?id=<?php echo $yingyinyishu_id;?>">更多...</a></div>
+						<div id=more><a href="/<?php echo $yyys[0]->platform;?>/news/news_list.php?id=<?php echo $yyys[0]->cid;?>">鏇村...</a></div>
 						<?php
-						
-						$yyys = $sqlmanager->GetRecords('select * from smg_news where isadopt=1 and main_cate_id = ' .$yingyinyishu_id .' order by priority asc, pubdate desc',1,7);
 						if ($yyys[0]->isphotonews) {
-							$pic = $yyys[0]->photourl;
+							$pic = $yyys[0]->photo_url;
 							if($pic=="")
 							{
 								$pic='/images/pic/ys.jpg';
 							}
 						}else {
-							$pics = $sqlmanager->GetRecords('select * from smg_photo where isadopt = 1 and main_cate_id=' .$yingyinyishu_pic_id .' order by priority asc, createtime desc',1,1);
-							$pic = $pics[0]->photourl;
+							$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.is_adopt = 1 and c.name="璇讳功闃呮姤" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
+							$pic = $pics[0]->src;
 							if($pic=="")
 							{
 								$pic='/images/pic/ys.jpg';
@@ -146,13 +140,14 @@
 						<div id=l><img width=80 height=94 src="<?php echo $pic;?>" /><a href="/news/news.php?id=<?php echo $yyys[0]->id;?>"><?php echo $yyys[0]->title;?></a></div>
 						<? 
 						for($i=1;$i<count($yyys);$i++){?>
-						<div class=r><a href="/news/news-4.php?id=<?php echo $yyys[$i]->id;?>"><?php echo $yyys[$i]->title;?></a></div>
+						<div class=r><a target="_blank" href="/<?php echo $yyys[$i]->platform ?>/news/news.php?id=<?php echo $yyys[$i]->id;?>"><?php echo $yyys[$i]->title;?></a></div>
 						<? }?>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<? include('../inc/bottom.inc.html');?>
+	<? require_once('../inc/bottom.inc.php');?>
 </body>
 </html>
+

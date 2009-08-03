@@ -96,6 +96,18 @@
 				}
 			)
 		});
+		$("#addleaderuser").click(function(){
+			$.post('/admin/admin.post.php',{'userid':$("#loginname").attr('value'),'right':$("select[name='rights'] option[selected]").val(),'type':'addleaderuser'},function(data){
+				 if(data=="OK")
+				  location.reload();
+			})
+		});
+		$("#delleaderuser").click(function(){
+			$.post('/admin/admin.post.php',{'id':$(this).attr('name'),'type':'delleaderuser'},function(data){
+				 if(data=="OK")
+				  location.reload();
+			})
+		});
 
 })
 		function newskey()
