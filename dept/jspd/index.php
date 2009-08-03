@@ -147,14 +147,7 @@ include("inc/topbar.inc.php");
                   	 for($i=0;$i<$count;$i++){?>
                     <a target="_blank" href="yhdjs.php" class="yel">・
                     <? 
-                    	if(strlen($records[$i]->title)>30)
-	              				{
-	              					echo substr($records[$i]->title,0,30).'...';
-	              				}
-	              				else 
-	              				{
-	              					echo $records[$i]->title;
-	              				}
+	              		echo $records[$i]->title;
                     ?>
                     </a><br /> 
                     <? }?>

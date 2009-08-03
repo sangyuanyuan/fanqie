@@ -1,0 +1,16 @@
+body {font-family:ËÎÌו; font-size:12px; color:#000;  margin:0px;}
+.co_title{width:450px; height:24px; margin-top:10px; padding-left:15px; padding-top:5px; background:url(/images/bg/contact_title_bg.jpg) repeat-x; font-size:14px; font-weight:bold; color:#666666; float:left; display:inline;}
+#co_top{width:450px; float:left; display:inline;}
+#co_top .co_content{width:450px; font-size:15px; margin-top:5px; border:1px solid #DADADC; float:left; display:inline;}
+#co_top .co_content .name{height:15px; margin-top:5px; margin-left:20px; color:#0070B0; float:left; display:inline;}
+#co_top .co_content .name A{height:15px; color:#0070B0; text-decoration:none; float:left; display:inline;}
+#co_top .co_content .name A:hover{text-decoration:underline;}
+#co_top .co_content .time{width:120px; height:15px; margin-top:5px; margin-right:20px; font-size:12px; color:#0070B0; float:right; display:inline;}
+#co_top .co_content .content{width:450px; margin-top:5px; margin-left:20px; overflow:hidden; float:left; display:inline;}
+#co_top #page{width:450px; height:12px; margin-top:5px; text-align:center; float:left; display:inline;}
+#co_top #page A{margin-left:5px;; color:#000000; text-decoration:none;}
+#co_top #page A:hover{text-decoration:underline;}
+#co_bottom{width:450px; margin-top:20px; float:left; display:inline;}
+#co_bottom #content{width:450px; height:190px; float:left; display:inline;}
+#co_bottom #content #right{width:450px; height:150px; margin-top:15px; margin-right:10px; color:#787878; float:right; display:inline;}
+#co_bottom #content #right button{width:58px; height:28px; margin-top:5px; margin-left:70px; background:url(/images/bg/contact_btn_bg.jpg) no-repeat; border:none; float:left; display:inline;}
