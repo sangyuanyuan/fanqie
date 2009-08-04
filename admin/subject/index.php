@@ -24,7 +24,7 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td>专题名称</td><td width="200">发布时间</td><td width="120">操作</td>
+			<td>专题名称</td><td width="200">发布时间</td><td width="220">操作</td>
 		</tr>
 		<?php
 			$db = get_db();
@@ -37,6 +37,8 @@
 					<td><?php echo $record[$i]->created_at;?></td>
 					<td>
 						<a href="subject_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a>
+						<a href="subject_category.php?id=<?php echo $record[$i]->id;?>">分类管理</a>
+						<a href="subject_content.php?id=<?php echo $record[$i]->id;?>">内容管理</a>
 						<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer;">删除</a>
 					</td>
 				</tr>

@@ -4,7 +4,7 @@
 	$op = $_POST['op'];
 	$chat_id = $_COOKIE['smg_chat_id'];
 	$db = get_db();
-	$sql = "select count(*) as online_count from smg_chat_room_online where expire_at < now()";
+	$sql = "select count(*) as online_count from smg_chat_room_online where expire_at > now()";
 	$db->query($sql);
 	$db->move_first();
 	$online_count = $db->field_by_name('online_count');
@@ -41,7 +41,7 @@
 		case 'refresh':
 			$today = substr(now(), 0,10);
 			$expire_date = date('Y-m-d H:i:s',strtotime('1 hour'));
-			$sql = "insert into smg_chat_room_online (chat_id, expire_at) values ('$chat_id','$expire_date') ON DUPLICATE key update expire_at = '$expire_date'";
+			$sql = "insert into smg_chat_room_online (chat_id, expire_at) values ('$chat_id',now() + INTERVAL 1 HOUR) ON DUPLICATE key update expire_at = now() + INTERVAL 1 HOUR";
 			$db->execute($sql);
 			$msgs = $db->query("select * from smg_chat_message where reciever='$chat_id' and created_at >='$today'");
 			if(is_array($msgs)){
@@ -52,7 +52,7 @@
 				$str = '';
 				foreach ($msgs as $v) {
 					if($v->msg_type=='chat'){
-						$str .= "add_chat('{$v->content}','h');";
+						$str .= "add_chat('{$v->content}','h','{$v->sender_gender}');";
 					}else if($v->msg_type=='connect'){
 						$str .= "add_chat('已经有一位聊友进入','s');";
 						$_SESSION['remote_id'] = $v->content;
@@ -68,7 +68,7 @@
 			
 			break;	
 		case 'chat':
-			send_message($chat_id, $_SESSION['remote_id'], $_POST['content'], 'chat');
+			send_message($chat_id, $_SESSION['remote_id'], $_POST['content'], 'chat',$_COOKIE['smg_chat_gender']);
 			break;	
 		default:
 			;
@@ -80,11 +80,15 @@
 		@SetCookie('smg_chat_status',$value,time()+3600,'/');
 	}
 	
-	function send_message($sender,$reciever,$content,$type){
+	function send_message($sender,$reciever,$content,$type,$send_gender){
 		$content = mysql_escape_string($content);
-		$now = now();
 		$db = get_db();		
-		$db->execute("insert into smg_chat_message(sender,reciever,content,msg_type,created_at) values('$sender','$reciever','$content','$type','$now')");			
+		if($send_gender){
+			$db->execute("insert into smg_chat_message(sender,reciever,content,msg_type,created_at,sender_gender) values('$sender','$reciever','$content','$type',now(),'$send_gender')");			
+		}else{
+			$db->execute("insert into smg_chat_message(sender,reciever,content,msg_type,created_at) values('$sender','$reciever','$content','$type',now())");			
+		}
+		
 	}
 ?>
 <script>
