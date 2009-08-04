@@ -38,7 +38,7 @@
 					<td>
 						<a href="subject_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a>
 						<a href="subject_category.php?id=<?php echo $record[$i]->id;?>">分类管理</a>
-						<a href="subject_content.php?id=<?php echo $record[$i]->id;?>">内容管理</a>
+						<a href="subject_content.php?subject_id=<?php echo $record[$i]->id;?>">内容管理</a>
 						<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer;">删除</a>
 					</td>
 				</tr>

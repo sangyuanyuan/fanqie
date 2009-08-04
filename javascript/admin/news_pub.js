@@ -4,7 +4,7 @@
 var category_count = 0;
 
 $(function(){
-$('#td_newstype input').click(function(){
+	$('#td_newstype input').click(function(){
 		toggle_news_type();
 	});
 	
