@@ -49,7 +49,7 @@ function refresh_waiter(count){
 	$('#waiter').html('共有: <span style="color:red;">' + count + '</span> 位聊友在线');
 }
 
-function add_chat(content,type){
+function add_chat(content,type,gender){
 	var name ='';
 	if(type=='i'){
 		name = '【我】说:';
@@ -58,7 +58,10 @@ function add_chat(content,type){
 				 + '<span class="chat_record_content">' + content +'</span>'
 				 + '</div></div>';
 	}else if(type=='h'){
-		name = '【陌生人】说:';
+		if(gender){
+			gender = '<img src="/images/zone/' + gender + '.gif">';
+		}
+		name = gender + '【陌生人】说:';
 		var str = '<div class="chat_record">'
 				 + '<div class="chat_record_title"><span>'+ '</span><b>' + name +'</b>'
 				 + '<span class="chat_record_content">' + content +'</span>'

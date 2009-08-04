@@ -29,8 +29,8 @@
 		</div>
 		<div style="text-align:center">
 			<form method="get" action="chat_room.php">
-				<input type="radio" name="gender" value="male" <?php if($gender == 'male') echo 'checked="checked"';?>>我是男同志
-				<input type="radio" name="gender" value="female" <?php if($gender == 'female') echo 'checked="checked"';?>>我是女同志
+				<input type="radio" name="gender" value="boy" <?php if($gender == 'boy') echo 'checked="checked"';?>>我是男同志
+				<input type="radio" name="gender" value="girl" <?php if($gender == 'girl') echo 'checked="checked"';?>>我是女同志
 				<input type="submit" id="submit_start" value="开始聊天">
 			</form>
 		</div>

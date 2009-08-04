@@ -34,7 +34,7 @@
 			<button id="clear">清屏</button>
 	</div>
 </div>
-<div id="ajax_result"></div>
+<div id="ajax_result" style="display:none;"></div>
 <? require_once('../inc/bottom.inc.php');?>
 </body>
 </html>

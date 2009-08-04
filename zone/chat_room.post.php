@@ -52,7 +52,7 @@
 				$str = '';
 				foreach ($msgs as $v) {
 					if($v->msg_type=='chat'){
-						$str .= "add_chat('{$v->content}','h');";
+						$str .= "add_chat('{$v->content}','h','{$v->sender_gender}');";
 					}else if($v->msg_type=='connect'){
 						$str .= "add_chat('已经有一位聊友进入','s');";
 						$_SESSION['remote_id'] = $v->content;
@@ -68,7 +68,7 @@
 			
 			break;	
 		case 'chat':
-			send_message($chat_id, $_SESSION['remote_id'], $_POST['content'], 'chat');
+			send_message($chat_id, $_SESSION['remote_id'], $_POST['content'], 'chat',$_COOKIE['smg_chat_gender']);
 			break;	
 		default:
 			;
@@ -80,11 +80,15 @@
 		@SetCookie('smg_chat_status',$value,time()+3600,'/');
 	}
 	
-	function send_message($sender,$reciever,$content,$type){
+	function send_message($sender,$reciever,$content,$type,$send_gender){
 		$content = mysql_escape_string($content);
-		$now = now();
 		$db = get_db();		
-		$db->execute("insert into smg_chat_message(sender,reciever,content,msg_type,created_at) values('$sender','$reciever','$content','$type','$now')");			
+		if($send_gender){
+			$db->execute("insert into smg_chat_message(sender,reciever,content,msg_type,created_at,sender_gender) values('$sender','$reciever','$content','$type',now(),'$send_gender')");			
+		}else{
+			$db->execute("insert into smg_chat_message(sender,reciever,content,msg_type,created_at) values('$sender','$reciever','$content','$type',now())");			
+		}
+		
 	}
 ?>
 <script>
