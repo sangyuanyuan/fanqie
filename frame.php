@@ -216,13 +216,26 @@
 		}
 	}
 	
+	function dept_category_name_by_id($id) {
+		global $_dept_category;
+		if(empty($_dept_category)){
+			$dept_category = new table_class('smg_category_dept');
+			$_dept_category = $dept_category->find('all');
+		}
+		foreach ($_dept_category as $v) {
+			if($v->id == $id){
+				return $v->name;
+			};
+		}
+	}
+	
 	
 	function show_content($table_name='smg_news',$type='news',$dept_name='',$category_name='',$limit=''){
 		$db = get_db();		
 		$dept_id = get_dept_info($dept_name)->id;
 		$category_id = dept_category_id_by_name($category_name,$dept_name,$type);
 		if($table_name!='smg_link'){
-			$sql = 'select * from '.$table_name.' where is_dept_adopt=1 and dept_category_id='.$category_id.' and dept_id='.$dept_id.' order by dept_priority';
+			$sql = 'select * from '.$table_name.' where is_dept_adopt=1 and dept_category_id='.$category_id.' and dept_id='.$dept_id.' order by dept_priority,created_at desc';
 		}else{
 			$sql = 'select * from '.$table_name.' where category_id='.$category_id.' order by priority';
 		}

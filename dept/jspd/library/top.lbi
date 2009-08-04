@@ -1,0 +1,67 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import url("../top.css");
+.add {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.ss {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.link1 {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 18px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+-->
+</style>
+<table width="100" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td bgcolor="#00A9EE" class="addr">&nbsp;&nbsp;<span class="add">http://172.27.203.81:8080/</span></td>
+        <td width="501" height="19" align="right" bgcolor="#00A9EE" class="ss">2008年11月25日 周二 </td>
+        <td width="21" bgcolor="#00A9EE">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="427"><img src="../images/dc-index_02.jpg" alt="" width="427" height="138" class="link1"></td>
+        <td colspan="2" background="../images/dc-index_03.jpg"><table width="523" height="95" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td align="right" valign="bottom">&nbsp;</td>
+              <td height="56" align="right" valign="bottom">&nbsp;</td>
+              <td align="center" valign="bottom">&nbsp;</td>
+              <td align="center" valign="bottom">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="282" height="39" align="right" valign="bottom">&nbsp;</td>
+              <td width="133" height="39" align="right" valign="middle" bgcolor="#005AA6"><input name="textfield" type="text" class="bbb" size="20"></td>
+              <td width="96" height="39" align="center" valign="middle" bgcolor="#005AA6"><img src="../images/search.jpg" width="63" height="23"></td>
+              <td width="12" height="39" align="center" valign="bottom">&nbsp;</td>
+            </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="34" colspan="3" valign="bottom" background="../images/menu.jpg"><table width="930" height="26" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="107">&nbsp;</td>
+              <td width="76" class="whi"><a href="../dc-index.html" class="link1">首页</a></td>
+              <td width="82" class="link1"><a href="../xwlb.html" class="link1">新闻联播</a> </td>
+              <td width="75" class="link1"><a href="../dyzy.html" class="link1">第一资源</a> </td>
+              <td width="75" class="link1"><a href="../hhxx.html" class="link1">好好学习</a></td>
+              <td width="75" class="link1"><a href="../wmzl.html" class="link1">文明之旅</a></td>
+              <td width="75" class="link1"> <a href="../djsk.html" class="link1">党建时空</a> </td>
+              <td width="75" class="link1"><a href="../jsdr.html" class="link1">纪实达人</a></td>
+              <td width="75" class="link1"><a href="../yhdjs.html" class="link1">有话大家说</a></td>
+              <td width="75" class="link1"> <a href="bbs" class="link1">温情一刻</a></td>
+              <td width="140" class="link1"> <a href="bbs" class="link1">现磨咖啡</a></td>
+            </tr>
+        </table></td>
+      </tr>
+</table>
