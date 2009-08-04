@@ -26,8 +26,8 @@
 		<div id=l_b>
 			<?php for($i=0;$i<=7;$i++){?>
 			<div class=box>
-				<a href="<?php echo $record[$i]->url ?>" target=_blank><img src="<?php echo $record[$i]->src?>" border=0></a>
-				<div class="title"><a href="<?php echo $record[$i]->url ?>" target=_blank><?php echo $record[$i]->title?></a></div>
+				<div class=pic><a href="<?php echo $record[$i]->url ?>" target="_blank"><img src="<?php echo $record[$i]->src?>" border=0></a></div>
+				<div class="title"><a href="<?php echo $record[$i]->url ?>" target="_blank"><?php echo $record[$i]->title?></a></div>
 			</div>
 			<? }?>
 		</div>

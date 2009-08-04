@@ -96,7 +96,7 @@
  				<div class=list id=list1>
  					<ul>
  						<?php for($i=0; $i<count($record_star); $i++){?>
- 						<li><a href="/show/show.php?id=<?php echo $record_star[$i]->img_id ?>" target=_blank><?php echo $record_star[$i]->title ?></a></li>
+ 						<li><a href="/show/show.php?id=<?php echo $record_star[$i]->img_id ?>" target=_blank><?php echo strip_tags($record_star[$i]->title) ?></a></li>
  						<? }?>
  					</ul>		
  				</div>  			 			
@@ -111,7 +111,7 @@
  				<div class=list id=list3>
  					<ul>
  						<?php for($i=0; $i<count($record_ad); $i++){?>
- 						<li><a href="/show/show.php?id=<?php echo $record_ad[$i]->img_id ?>" target=_blank><?php echo $record_ad[$i]->title ?></a></li>
+ 						<li><a href="/show/show.php?id=<?php echo $record_ad[$i]->img_id ?>" target=_blank><?php echo strip_tags($record_ad[$i]->title) ?></a></li>
  						<? }?>
  					</ul>		
  				</div>
@@ -162,7 +162,7 @@
  				<div class=list_tlb id=list_tlb1 style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_marrow); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_marrow[$i]->platform ?>/news/news.php?id=<?php echo $record_marrow[$i]->id ?>" target=_blank><?php echo $record_marrow[$i]->short_title ?></a></li>
+ 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_marrow[$i]->platform ?>/news/news.php?id=<?php echo $record_marrow[$i]->id ?>" target=_blank><?php echo strip_tags($record_marrow[$i]->short_title); ?></a></li>
  						<? }?>
  				  </ul>
  				</div>
@@ -183,11 +183,11 @@
 		<div id=p2>
  			<!-- start top_right_top !-->
   		<?php
-				$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.platform="news" order by n.priority asc limit 1';
+				$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.platform="news" order by n.priority asc,n.created_at desc limit 1';
 				$record_head=$db -> query($sql);
 			?>
 			<div id=t_r_t>
- 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a></div>
+ 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a><?php echo show_video($record_head[0]->video_flag,40,35)?></div>
  				<a href="/news/news_list.php?id=<?php echo $record_head[0]->cid; ?>" id=btn target=_blank></a>
  				<div id=content>
  				<?php
@@ -219,11 +219,11 @@
  			<!-- start top_right_center_top !-->
  			<div id=t_r_c_t>
  				<?php
-					$sql = 'select n.*,n.id as news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.platform="news" order by n.priority asc limit 2 ';
+					$sql = 'select n.*,n.id as news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.platform="news" order by n.priority asc,n.created_at desc limit 2 ';
 					$record_head=$db -> query($sql);
 					for($j=0;$j<=1;$j++){
 				?>
- 				<div class=title><a href="<?php echo "/".$record_head[$j]->platform."/news/news_head.php?id=".$record_head[$j]->news_id ?>" target="_blank"><?php echo $record_head[$j]->short_title ?></a></div>
+ 				<div class=title><a href="<?php echo "/".$record_head[$j]->platform."/news/news_head.php?id=".$record_head[$j]->news_id ?>" target="_blank"><?php echo $record_head[$j]->short_title ?></a><?php echo show_img($record_head[$j]->image_flag,22,20)?></div>
 				<div class=content>
  				<?php
  					if($record_head[$j]->sub_headline==1)
@@ -235,13 +235,20 @@
  							$sub_news_str=explode(",",$record_head[$j]->sub_news_id); 
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
 
-							for($i=0;$i<=$sub_news_str_num;$i++)
+							for($i=0;$i<3;$i++)
 							{
 									$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
 									echo '[<a href="'.$record_sub_news[0]->platform.'/news/news_head.php?id='.$record_sub_news[0]->news_id.'" target=_blank>'.$record_sub_news[0]->short_title.'</a>]';
 							}		
-
+							echo "<br>";
+							for($i=3;$i<=$sub_news_str_num;$i++)
+							{
+								  if($i>5){break;}
+									$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id=".$sub_news_str[$i];
+									$record_sub_news = $db -> query($sql);
+									echo '[<a href="'.$record_sub_news[0]->platform.'/news/news_head.php?id='.$record_sub_news[0]->news_id.'" target=_blank>'.$record_sub_news[0]->short_title.'</a>]';
+							}		
 					}	
 				?>					
 				</div>
@@ -254,16 +261,18 @@
  			<div id=t_r_c_m>
  				<div id=title></div>
   			<?php
-					$sql = 'select n.short_title,c.platform,n.id  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.platform="news" order by n.priority asc limit 1 ';
+					$sql = 'select n.short_title,c.platform,n.id  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.platform="news" order by n.priority asc,n.created_at desc limit 1 ';
 					$record_import=$db -> query($sql);
 				?>				
 				<div id=content1><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a></div>
  				<a href="" id=btn ></a>
  				<?php
-					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" order by n.priority asc limit 41';
+					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" order by n.priority asc,n.created_at desc limit 41';
 					$record_import_a=$db -> query($sql);
 					$sql = 'select n.photo_src, c.platform,n.id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news" order by n.priority asc limit 6';
 					$record_import_b=$db -> query($sql);
+					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-专" and c.platform="news" order by n.priority asc,n.created_at desc limit 41';
+					$record_import_c=$db -> query($sql);
 				?>	
  				<div id=box>
  					<div id=l>
@@ -300,9 +309,22 @@
  							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
              <? }?>
  						</ul>								
+ 						<div style="width:128px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
+ 							<img src="/images/1.jpg" width="125px; height:20px;">
+ 							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[0]->platform."/news/news.php?id=".$record_import_a[0]->id ?>" target="_blank"><?php echo $record_import_c[0]->short_title ?></a>
+ 						</div>
+ 						
+ 						
+ 						<!--
  						<div class=space></div>
-						<a href="<?php echo "/".$record_import_b[2]->platform."/news/news.php?id=".$record_import_b[2]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[2]->photo_src ?>" border=0 ></a><a href="<?php echo "/".$record_import_b[3]->platform."/news/news.php?id=".$record_import_b[3]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[3]->photo_src ?>" border=0 ></a>
- 						<div class=space></div>
+
+   					<ul>
+ 						 <?php for($i=0; $i<3; $i++){?>
+ 							<li><div><a href="<?php echo "/".$record_import_c[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_c[$i]->short_title ?></a></div><div><?php show_img($record_import_c[$i]->image_flag,18,17)?><?php show_video($record_import_c[$i]->video_flag,18,17)?></div></li>
+             <? }?>
+ 						</ul>							
+						<div class=space></div>
+						-->
    					<ul>
  						 <?php for($i=18; $i<21; $i++){?>
  							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
@@ -317,8 +339,8 @@
  					</div>	 
  					
  					<div id=r>
-						<a href="<?php echo "/".$record_import_b[4]->platform."/news/news.php?id=".$record_import_b[4]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[4]->photo_src ?>" border=0 ></a>
-						<a href="<?php echo "/".$record_import_b[5]->platform."/news/news.php?id=".$record_import_b[5]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[5]->photo_src ?>" border=0 ></a>
+						<a href="<?php echo "/".$record_import_b[2]->platform."/news/news.php?id=".$record_import_b[2]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[2]->photo_src ?>" border=0 ></a>
+						<a href="<?php echo "/".$record_import_b[3]->platform."/news/news.php?id=".$record_import_b[3]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[3]->photo_src ?>" border=0 ></a>
     				<ul>
  						 <?php for($i=26; $i<28; $i++){?>
  							<li><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_a[$i]->short_title ?></a></div><div><?php show_img($record_import_a[$i]->image_flag,18,17)?><?php show_video($record_import_a[$i]->video_flag,18,17)?></div></li>
@@ -560,7 +582,7 @@
   		<!-- start middle_left_bottom !-->
  			<div id=m_l_b>
  				<div id=title>博 客</div>
- 				<a href="/blog/" id=more target=_blank></a>
+ 				<a href="/zone/" id=more target=_blank></a>
  				<?
   				$sql = 'select i.id as img_id,i.src,c.id as cid from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="首页博客" and c.platform="zone" order by i.priority asc limit 1';
 					$record_blog=$db -> query($sql);	
@@ -601,7 +623,7 @@
 	  			<a href="/show/show.php?id=<?php echo $record_show[0]->img_id?>" target=_blank><img src="<?php echo $record_show[0]->src ?>" border=0></a>
   				<ul>
   					<?php for($i=1;$i<6;$i++){?>
-  					<li><a href="/show/show.php?id=<?php echo $record_show[$i]->img_id?>" target=_blank><?php echo $record_show[$i]->title?></a></li>
+  					<li><a href="/show/show.php?id=<?php echo $record_show[$i]->img_id?>" target=_blank><?php echo strip_tags($record_show[$i]->title)?></a></li>
   					<? }?>
    				</ul>
   			</div>
@@ -699,13 +721,57 @@
     <div id=p1>
       <!-- start bottom_top_left !-->
  			<div id=b_t_l>
-
+ 				<?php  
+					$sql = 'select id,name from smg_vote where is_adopt=1 order by created_at desc limit 12';
+					$record = $db->query($sql);
+					$count = count($record);
+				?>
+				<div class=l_box>
+					<?php
+						$l_count = $count>7?7:$count;
+						for($i=0;$i<$l_count;$i++){
+					?>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
+					<?php
+						}
+					?>
+				</div>
+				<div class=r_box>
+					<?php
+						$count = $count-7>0?$count:7;
+						for($i=7;$i<$count;$i++){
+					?>
+					<div class="bottom_title"><li><span style="color:#FF9900;">·</span><a href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
+					<?php
+						}
+					?>
+				</div>
+				<div id=vote><a href="/vote/vote_list.php" target="_blank"><img border=0 src="/images/index/vote.jpg"></a></div>
+				<div id=begin_vote><a href="/vote/beginvote.php" target="_blank"><img border=0 src="/images/index/begin_vote.jpg"></a></div>
  			</div>
  			<!-- end !-->	      	
  
       <!-- start bottom_top_right !-->
  			<div id=b_t_r>
-
+				<div class=m_box>
+					<?php  
+						$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
+						$record = $db->query($sql);
+						$count = count($record);
+					?>
+					<div class="top_title"><a href="/answer/answer.php?id=<?php echo $record[0]->id; ?>" title="<?php echo $record[0]->title; ?>" target=_blank><?php echo $record[0]->title; ?></a></div>
+					<?php 
+						for($i=1;$i<$count;$i++){
+					?>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/answer.php?id=<?php echo $record[$i]->id ?>" title="<?php echo $record[$i]->title; ?>" target=_blank><?php echo $record[$i]->title ?></a></li></div>
+					<?php
+						}
+					?>
+				</div>
+				<div class=r_box>
+					<div id=begin_question><a href="/answer/question.php" target="_blank"><img border=0 src="/images/index/begin_question.jpg"></a></div>
+					<div id=question><a href="/answer/answerlist.php" target="_blank"><img border=0 src="/images/index/question.jpg"></a></div>
+				</div>
  			</div>
  			<!-- end !-->	 
     	
@@ -713,19 +779,90 @@
     <div id=p2>
       <!-- start bottom_bottom_left !-->
  			<div id=b_b_l>
-
+ 				<div id=title>生日祝福</div>
+				<div id="box_body">
+	 				<marquee direction="up" scrollamount="1" height="100" width="300" onmouseover=this.stop() onmouseout=this.start()  >
+	 				<?php
+						$today = date("m-d");
+						$sql = 'select t1.nickname,t1.gender,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.date("m-d").'" and t1.hide_birthday=0';
+						$records = $db->query($sql);
+						$count = count($records);
+						for($i=0;$i<$count;$i++){
+					?>
+					<div class=box>
+						<div class=sex><?php if($records[$i]->gender=='男'){?><img src="/images/index/birthday_boy.jpg"><?php }else{?><img src="/images/index/birthday_girl.jpg"><?php } ?></div>
+						<div class=name ><?php echo $records[$i]->nickname; ?><span title="<?php echo  $records[$i]->name; ?>" style="color:#727272">[所属部门]</span></div>
+						<div class=sun><a href="/server/today.php" target="_blank"><img src="/images/index/birthday_sun.jpg" border=0 ></a></div>
+					</div>
+					<?php
+						}
+					?>
+					</marquee>
+				</div>
  			</div>
  			<!-- end !-->	     	
     	
       <!-- start bottom_bottom_center !-->
  			<div id=b_b_c>
-
+ 				<div id=title>番茄喜讯</div>
+				<DIV id=Layer5 style=" margin-top:40px; margin-left:10px; ">
+				      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo7 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php
+									$marry=$db->query('select photo,name from smg_marry order by id desc limit 5');
+									for($i=0;$i<count($marry);$i++){
+								?>
+				                <TD><div class=content>
+							<div class=pic><a target="_blank" href="/server/marry.php"><img border=0 width=90 height=70 src="<?php echo $marry[$i]->photo;?>"></a></div>
+							<div class=context><a target="_blank" href="/server/marry.php"><?php echo $marry[$i]->name;?></a><br></div>
+						</div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id=demo8 vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo8.innerHTML=demo7.innerHTML
+											function Marquee(){
+											if(demo8.offsetWidth-demo6.scrollLeft<=0)
+											demo6.scrollLeft-=demo7.offsetWidth
+											else{
+											demo6.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo6.onmouseover=function() {clearInterval(MyMar)}
+											demo6.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
+				</DIV>
  			</div>
  			<!-- end !-->	     	
     
       <!-- start bottom_bottom_right !-->
  			<div id=b_b_r>
-
+				<div id=title>在线杂志</div>
+				<?php  
+					$sql = 'select t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 2';
+					$records = $db->query($sql);
+					$count = count($records);
+					for($i=0;$i<$count;$i++){
+				?>
+				<div class=box>
+					<div class=pic><img src="<?php echo $records[$i]->src;?>" border=0 width=66 height=90></div>
+					<div class=title><?php echo $records[$i]->title;?></div>
+					<div class=description><?php echo $records[$i]->description;?></div>
+					<div class=button><a href="<?php echo $records[$i]->url;?>" target="_blank"><img src="/images/index/magazine.jpg" border=0></a></div>
+				</div>
+				<?php
+					}
+				?>
  			</div>
  			<!-- end !-->	 
 

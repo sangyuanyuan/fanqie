@@ -33,6 +33,9 @@ $(function(){
 	$('#clear').click(function(){
 		$('#chat_content_box').html('');
 	});
+	if(chat_status != 'connecting' && chat_status != 'connected'){
+		$('#ajax_result').load('chat_room.post.php',{'op':'click_button'});
+	}
 	toggle_button();
 	setInterval('refresh()',5000);
 	
@@ -43,10 +46,10 @@ function refresh(){
 }
 
 function refresh_waiter(count){
-	$('#waiter').html('共有:' + count + ' 正在聊天');
+	$('#waiter').html('共有: <span style="color:red;">' + count + '</span> 位聊友在线');
 }
 
-function add_chat(content,type){
+function add_chat(content,type,gender){
 	var name ='';
 	if(type=='i'){
 		name = '【我】说:';
@@ -55,7 +58,10 @@ function add_chat(content,type){
 				 + '<span class="chat_record_content">' + content +'</span>'
 				 + '</div></div>';
 	}else if(type=='h'){
-		name = '【陌生人】说:';
+		if(gender){
+			gender = '<img src="/images/zone/' + gender + '.gif">';
+		}
+		name = gender + '【陌生人】说:';
 		var str = '<div class="chat_record">'
 				 + '<div class="chat_record_title"><span>'+ '</span><b>' + name +'</b>'
 				 + '<span class="chat_record_content">' + content +'</span>'
@@ -81,7 +87,7 @@ function toggle_button(){
 		$('#submit').attr('disabled',true);
 	}else if(chat_status == 'connected'){
 		$('#connect_msg').html('已经有一位聊友进入');
-		$('#find_chater').html('聊友已离开');
+		$('#find_chater').html('离开聊友');
 		$('#submit').attr('disabled',false);
 	}
 	$('#chat_content_box').scrollTop(10000);

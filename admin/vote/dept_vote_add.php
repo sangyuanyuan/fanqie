@@ -32,7 +32,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
-			<td align="left"><input type="text" name="vote[description]"></td>
+			<td align="left"><textarea cols=70  name="vote[description]"></textarea></td>
 		</tr>
 		<tr class=tr3>
 			<td>添加图片：</td>
@@ -78,11 +78,11 @@
 		</tr>
 		<tr class=tr3>
 			<td>开始日期：</td>
-			<td align="left"><input type="text" class="date_jquery required" name="vote[started_at]" id="start"></td>
+			<td align="left"><input type="text" class="date_jquery" name="started_at" id="start"></td>
 		</tr>
 		<tr class=tr3>
 			<td>截止日期：</td>
-			<td align="left"><input type="text"  class="date_jquery required" name="vote[ended_at]" id="end"></td>
+			<td align="left"><input type="text"  class="date_jquery" name="ended_at" id="end"></td>
 		</tr>
 		<tr class=tr3 id="item">
 			<td>投票项目：</td>

@@ -9,7 +9,7 @@
 	<title>SMG-番茄网-投票结果显示</title>
 	<?php css_include_tag('top','bottom'); ?>
 </head>
-<body>
+<body style="line-height:0;">
 <?php require_once('../inc/top.inc.html');
 	$db = get_db();
 	$vote = new table_class('smg_vote');
@@ -41,6 +41,7 @@
 <?php 
    for($j=0;$j < $vote_len; $j++){
 ?>
+<div style="width:995px; margin:0 auto">
 <table align="center"  border="0" bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
 		<td colspan="4" align="center">
@@ -86,6 +87,7 @@
 	}
 	?>
 </table>
+</div>
 <?php
    }
    ?>

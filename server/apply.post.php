@@ -19,5 +19,5 @@
 	}
 	$marry->save();
 	
-	redirect('marry.php');
+	//redirect('marry.php');
 ?>

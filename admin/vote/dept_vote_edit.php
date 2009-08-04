@@ -53,7 +53,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
-			<td align="left"><input type="text" name="vote[description]" value="<?php echo $vote_record[0]->description;?>"></td>
+			<td align="left"><textarea cols=70 name="vote[description]"><?php echo $vote_record[0]->description;?></textarea></td>
 		</tr>
 		<tr class=tr3>
 			<td>添加图片：</td>
@@ -96,11 +96,11 @@
 		</tr>
 		<tr class=tr3>
 			<td>开始日期：</td>
-			<td align="left"><input type="text" class="date_jquery required" name="vote[started_at]" id="start" value="<?php echo substr($vote_record[0]->started_at,0,10);?>"></td>
+			<td align="left"><input type="text" class="date_jquery" name="started_at" id="start" value="<?php echo substr($vote_record[0]->started_at,0,10);?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>截止日期：</td>
-			<td align="left"><input type="text"  class="date_jquery required" name="vote[ended_at]" id="end" value="<?php echo substr($vote_record[0]->ended_at,0,10);?>"></td>
+			<td align="left"><input type="text"  class="date_jquery" name="ended_at" id="end" value="<?php echo substr($vote_record[0]->ended_at,0,10);?>"></td>
 		</tr>
 		<?php if($vote_type=="word_vote"){?>
 			<tr class=tr3>

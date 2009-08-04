@@ -32,7 +32,7 @@ $(function() {
 		$("#add_item").click(function(){
 			num++;
 			$("#vote_item_count").attr('value',num);
-			$("#list").append("<tr class=tr3 id='tr"+num+"' name='new_item'><td>投票项目：</td><td align='left'>标题<input type='text' name='vote_item"+num+"[title]' style='width:100px;' class='required'>&nbsp;<input type='hidden' name='MAX_FILE_SIZE' value='2097152'><input name='item_image"+num+"' type='file' class='"+empty+"' style='display:"+display+";'><a class='del_item' style='cursor:pointer;'>删除</a><input type='hidden' name='deleted"+num+"' id='deleted"+num+"' value='false'></td></tr>");
+			$("#list").append("<tr class=tr3 id='tr"+num+"' name='new_item'><td>投票项目：</td><td align='left'>标题<input type='text' name='vote_item"+num+"[title]' style='width:300px;' class='required'>&nbsp;<input type='hidden' name='MAX_FILE_SIZE' value='2097152'><input name='item_image"+num+"' type='file' class='"+empty+"' style='display:"+display+";'><a class='del_item' style='cursor:pointer;'>删除</a><input type='hidden' name='deleted"+num+"' id='deleted"+num+"' value='false'></td></tr>");
 			$(".del_item").click(function(){
 				$(this).prev().attr('class','');
 				$(this).prev().prev().prev().attr('class','');

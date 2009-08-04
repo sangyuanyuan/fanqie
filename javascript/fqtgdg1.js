@@ -1,23 +1,29 @@
-$(document).ready(function(){
+﻿$(document).ready(function(){
 		$("#content11").click(function()
 		{
-				var buyname=$("#buyname").attr['value'];
-				var spname=$("#spname").attr['value'];
-				var num=$("#num").attr['value'];
-				var mobile=$("#phone").attr['value'];
-				var address=$("#address").attr['value'];
-				var maxnum=$("#tg_maxnum").attr['value'];
-				var nownum=$("#tg_count").attr['value'];
-				if(buyname==""){alert("�û�������Ϊ�գ�");return false;}
-				if(spname==""){alert("��Ʒ��Ʋ���Ϊ�գ�");return false;}
-				if(mobile==""){alert("jϵ��ʽ����Ϊ�գ�");return false;}
-				if(address==""){alert("�ͻ��ַ����Ϊ�գ�");return false;}
-				if(num==""){alert("������Ϊ�գ�");return false;}
-				if(maxnum!="")
-				{
-					if((parseInt(num)+parseInt(nownum))>maxnum){alert("�Բ������㣡");return false;}
-				}
-				document.fqtg.submit();			
+			var buyname=$("#buyname").attr('value');
+			var spname=$("#spname").attr('value');
+			var num=$("#num").attr('value');
+			var mobile=$("#phone").attr('value');
+			var address=$("#address").attr('value');
+			var maxnum=$("#tg_maxnum").attr('value');
+			var nownum=$("#tg_count").attr('value');
+			if(buyname==""){alert("用户名不能为空！");return false;}
+			if(spname==""){alert("商品名称不能为空！");return false;}
+			if(mobile==""){alert("联系方式不能为空！");return false;}
+			if(address==""){alert("送货地址不能为空！");return false;}
+			if(num==""){alert("订购数量不能为空！");return false;}
+			if(parseInt(num)!=num)
+			{
+				alert('请正确输入订购数量！（请用阿拉伯数字）');
+				return false;
+			}
+
+			if(maxnum!="")
+			{
+				if((parseInt(num)+parseInt(nownum))>maxnum){alert("存货不足！");return false;}
+			}
+			document.fqtg.submit();			
 		})
 		
 		$(".lq").click(function(){

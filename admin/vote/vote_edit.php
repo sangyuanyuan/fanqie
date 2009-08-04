@@ -53,7 +53,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
-			<td align="left"><textarea value="<?php echo $vote_record[0]->description;?>" name="vote[description]"><?php echo $vote_record[0]->description;?></textarea></td>
+			<td align="left"><textarea cols=70 name="vote[description]"><?php echo $vote_record[0]->description;?></textarea></td>
 		</tr>
 		<tr class=tr3>
 			<td>添加图片：</td>
@@ -96,17 +96,17 @@
 		</tr>
 		<tr class=tr3>
 			<td>开始日期：</td>
-			<td align="left"><input type="text" class="date_jquery required" name="vote[started_at]" id="start" value="<?php echo substr($vote_record[0]->started_at,0,10);?>"></td>
+			<td align="left"><input type="text" class="date_jquery" name="started_at" id="start" value="<?php echo substr($vote_record[0]->started_at,0,10);?>"></td>
 		</tr>
 		<tr class=tr3>
 			<td>截止日期：</td>
-			<td align="left"><input type="text"  class="date_jquery required" name="vote[ended_at]" id="end" value="<?php echo substr($vote_record[0]->ended_at,0,10);?>"></td>
+			<td align="left"><input type="text"  class="date_jquery" name="ended_at" id="end" value="<?php echo substr($vote_record[0]->ended_at,0,10);?>"></td>
 		</tr>
 		<?php if($vote_type=="word_vote"){?>
 			<tr class=tr3>
 				<td>投票项目：</td>
 				<td align="left">
-					<input type="text" name="vote_item1[title]" id="first_item" style="width:100px" class="required" value="<?php echo $vote_item_record[0]->title?>">
+					<input type="text" name="vote_item1[title]" id="first_item" style="width:300px" class="required" value="<?php echo $vote_item_record[0]->title?>">
 					<a id="add_item" value="1" style="cursor:pointer;">继续添加</a>
 					<input type="hidden" name="deleted1" value="false">
 					<input type="hidden" name="vote_item1_id" value="<?php echo $vote_item_record[0]->id;?>">
@@ -116,7 +116,7 @@
 				<tr class=tr3>
 					<td>投票项目：</td>
 					<td align="left">
-						<input type="text" name="vote_item<?php echo $k;?>[title]" style="width:100px;" class="required" value="<?php echo $vote_item_record[$k-1]->title;?>">
+						<input type="text" name="vote_item<?php echo $k;?>[title]" style="width:300px;" class="required" value="<?php echo $vote_item_record[$k-1]->title;?>">
 						<a class='del_item' name="<?php echo $vote_item_record[$k-1]->id;?>" style='cursor:pointer;'>删除</a>
 						<input type="hidden" name="deleted<?php echo $k;?>" id="deleted<?php echo $k;?>" value="false">
 						<input type="hidden" name="vote_item<?php echo $k;?>_id" value="<?php echo $vote_item_record[$k-1]->id;?>">

@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -投票</title>
+	<title>SMG-番茄网-服务-投票</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','show_vote.css','vote_right.css');
 		$vote_id = $_REQUEST['vote_id'];
@@ -25,7 +25,7 @@
 	?>
 	<div id=answer>
 		<div id=left>
-			<div style="width:100%;text-align:center;float:left;line-height:25px;"><h2><?php echo $vote->name;?></h2></div>
+			<div style="width:100%;text-align:center;padding-top:20px;float:left;line-height:25px;"><h2><?php echo $vote->name;?></h2></div>
 			<div id="vote_container_box" style="width:100%;float:left;text-align:center">
 				<?php $vote->display(array('show_title' => false));?>
 			</div>		

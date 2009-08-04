@@ -19,7 +19,7 @@
 		<div id=part1>
 			<div id=nav style="width:360px;">欢迎 <?php echo $_COOKIE['smg_user_nickname']; ?></div>
 			<div id=title>番茄网后台管理系统</div>
-			<div id=index><a href="/index.php" target="_blank"><?php echo get_dept_info($_COOKIE['smg_user_dept'])->name;?></a></div>
+			<div id=index style="color:#0000FF"><?php echo get_dept_info($_COOKIE['smg_user_dept'])->name;?></div>
 		</div>
 		<div id=part2>
 				<?php

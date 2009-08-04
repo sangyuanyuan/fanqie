@@ -652,7 +652,7 @@ body {font-family:����; font-size:12px; color:#000;  margin:0px; line-he
 #s_right .content .name A{color:#0070B0; font-size:12px;}
 
 /* learning*/
-#le_body{width:914px; height:728px; margin:0 auto; margin-top:10px; background:url(/images/bg/learning_bg.jpg) no-repeat;}
+#le_body{width:914px; height:728px; margin:0 auto; line-height:14px; margin-top:10px; background:url(/images/bg/learning_bg.jpg) no-repeat;}
 
 #le_left{width:240px; height:500px; margin-top:180px; float:left; display:inline;}
 #le_left #shang{width:240px; height:317px; float:left; display:inline}
@@ -671,27 +671,27 @@ body {font-family:����; font-size:12px; color:#000;  margin:0px; line-he
 #le_left #bottom A:hover{text-decoration:underline;}
 
 #le_right{width:630px; height:500px; margin-top:115px; margin-left:10px; float:right; display:inline;}
-#le_right #top{width:590px; height:152px; margin-right:10px;  float:right; display:inline;}
+#le_right #top{width:590px; height:152px; margin-right:10px; line-height:25px;  float:right; display:inline;}
 #le_right #top A{width:355px; height:30px; margin-left:190px; font-size:18px; font-weight:bold; color:#0674C1; text-decoration:none; float:left; display:inline;}
 #le_right #top A:hover{text-decoration:underline;}
 #le_right #top #left{width:90px; height:114px; margin-top:10px; margin-left:45px; float:left; display:inline;}
 #le_right #top #left A{width:90px; height:12px; margin-top:5px; margin-left:0px; font-size:12px; font-weight:normal; float:left; display:inline;}
 #le_right #top #left A:hover{text-decoration:underline;}
 #le_right #top #right{width:395px; height:97px; margin-left:5px; line-height:24px; text-indent:20px; color:#7E7A77; float:left; display:inline;}
-#le_right #bottom{width:625px; height:550px; float:left; display:inline;}
+#le_right #bottom{width:625px; height:550px; line-height:14px; float:left; display:inline;}
 #le_right #bottom #left{width:290px; height:420px; margin-top:10px; float:left; display:inline;}
-#le_right #bottom #left #top{width:290px; height:208px; float:left; display:inline;}
-#le_right #bottom #left #top	A{width:100px; font-size:12px; font-weight:normal; color:#FF6600; float:left; display:inline;}
-#le_right #bottom #left #top	A:hover{text-decoration:underline;}
+#le_right #bottom #left #top{width:290px; height:208px; overflow:hidden; float:left; display:inline;}
+#le_right #bottom #left #top A{width:100px; height:28px; font-size:12px; font-weight:normal; color:#FF6600; overflow:hidden; float:left; display:inline;}
+#le_right #bottom #left #top A:hover{text-decoration:underline;}
 #le_right #bottom #left #top #more{height:30px; text-align:right; float:right; display:inline;}
 #le_right #bottom #left #top #more A{text-decoration:none; margin-top:5px; float:right; display:inline;}
 #le_right #bottom #left #top #more A:hover{text-decoration:underline;}
 #le_right #bottom #left #top #l{width:80px; height:132px; margin-top:10px; border:1px solid #D7D9D8; background:#ffffff; float:left; display:inline;}
 #le_right #bottom #left #top #l A{width:75px; height:28px; margin-top:2px; margin-left:0px; float:left; display:inline;}
-#le_right #bottom #left #top .r{width:150px; height:12px; margin-top:10px; margin-left:5px; padding-left:15px; background:url(/images/arrow/arrow1.gif) no-repeat; float:left; display:inline;}
+#le_right #bottom #left #top .r{width:150px; height:12px; margin-top:7px; margin-left:5px; padding-left:15px; background:url(/images/arrow/arrow1.gif) no-repeat; float:left; display:inline;}
 #le_right #bottom #left #top .r A{width:150px; height:12px; margin-top:-2px;  margin-left:0px; overflow:hidden; float:left; display:inline;}
 #le_right #bottom #left #bottom{width:300px; height:208px; margin-top:10px; float:left; display:inline;}
-#le_right #bottom #left #bottom	A{width:125px; font-size:12px; font-weight:normal; color:#0674C1; float:left; display:inline;}
+#le_right #bottom #left #bottom	A{width:125px; height:28px; font-size:12px; font-weight:normal; color:#0674C1; overflow:hidden; float:left; display:inline;}
 #le_right #bottom #left #bottom	A:hover{text-decoration:underline;}
 #le_right #bottom #left #bottom #more{width:280px; height:30px; margin-right:10px; text-align:right; float:right; display:inline;}
 #le_right #bottom #left #bottom #more A{text-decoration:none; margin-top:5px; float:right; display:inline}
@@ -699,32 +699,32 @@ body {font-family:����; font-size:12px; color:#000;  margin:0px; line-he
 #le_right #bottom #left #bottom #l{width:80px; height:132px; margin-top:10px; border:1px solid #D7D9D8; background:#ffffff; float:left; display:inline;}
 #le_right #bottom #left #bottom #l A{width:75px; height:28px; text-decoration:none; margin-top:5px; float:left; display:inline;}
 #le_right #bottom #left #bottom #l A:hover{text-decoration:underline;}
-#le_right #bottom #left #bottom .r{width:150px; height:12px; margin-top:12px; margin-left:5px; padding-left:15px; background:url(/images/arrow/arrow1.gif) no-repeat; float:left; display:inline;}
-#le_right #bottom #left #bottom .r A{width:150px; height:13px; margin-left:0px; text-decoration:none; overflow:hidden;}
+#le_right #bottom #left #bottom .r{width:150px; height:12px; margin-top:10px; line-height:12px; margin-left:5px; padding-left:15px; background:url(/images/arrow/arrow1.gif) no-repeat; float:left; display:inline;}
+#le_right #bottom #left #bottom .r A{width:150px; height:12px; margin-left:0px; text-decoration:none; overflow:hidden;}
 #le_right #bottom #left #bottom .r A:hover{text-decoration:underline;}
-#le_right #bottom #right{width:285px; height:420px; margin-top:10px; margin-left:25px; float:left; display:inline;}
-#le_right #bottom #right #shang{width:280px; height:208px; float:left; display:inline;}
+#le_right #bottom #right{width:285px; height:420px; margin-top:10px; margin-left:25px; line-height:14px; float:left; display:inline;}
+#le_right #bottom #right #shang{width:280px; height:208px; overflow:hidden; float:left; display:inline;}
 #le_right #bottom #right #shang	A{width:100px; height:14px; font-size:12px; padding-top:2px; font-weight:normal; overflow:hidden; color:#CC33CC; float:left; display:inline;}
 #le_right #bottom #right #shang	A:hover{text-decoration:underline;}
-#le_right #bottom #right #shang #more{width:50px; height:30px; padding-left:200px; margin-top:18px; float:left; display:inline;}
+#le_right #bottom #right #shang #more{width:50px; height:30px; padding-left:200px; margin-top:10px; float:left; display:inline;}
 #le_right #bottom #right #shang #more A{text-decoration:none;}
 #le_right #bottom #right #shang #more A:hover{text-decoration:underline;}
 #le_right #bottom #right #shang #l{width:80px; height:137px; margin-top:5px; border:1px solid #D7D9D8; background:#ffffff; overflow:hidden;  float:left; display:inline;}
 #le_right #bottom #right #shang #l A{width:78px; height:28px; margin-left:0px; margin-top:2px; text-decoration:none; overflow:hidden; float:left; display:inline;}
 #le_right #bottom #right #shang #l A:hover{text-decoration:underline;}
-#le_right #bottom #right #shang .r{width:150px; height:12px; margin-top:10px; margin-bottom:2px; margin-left:5px; padding-left:15px; background:url(/images/arrow/arrow1.gif) no-repeat; float:left; display:inline;}
-#le_right #bottom #right #shang .r A{width:150px; margin-top:-2px; margin-left:0px; text-decoration:none; float:left; display:inline;}
+#le_right #bottom #right #shang .r{width:150px; height:18px; margin-top:5px; margin-bottom:2px; margin-left:5px; padding-left:15px; background:url(/images/arrow/arrow1.gif) no-repeat; float:left; display:inline;}
+#le_right #bottom #right #shang .r A{width:150px; margin-left:0px; text-decoration:none; float:left; display:inline;}
 #le_right #bottom #right #shang .r A:hover{text-decoration:underline;}
 #le_right #bottom #right #xia{width:285px; height:208px; margin-top:10px; float:left; display:inline;}
 #le_right #bottom #right #xia	A{width:125px; font-size:12px; font-weight:normal; color:#118E99; float:left; display:inline;}
 #le_right #bottom #right #xia	A:hover{text-decoration:underline;}
-#le_right #bottom #right #xia #more{width:250px; height:30px; margin-top:18px; float:right; display:inline;}
+#le_right #bottom #right #xia #more{width:250px; height:30px; margin-top:10px; float:right; display:inline;}
 #le_right #bottom #right #xia #more A{width:50px; text-decoration:none; padding-left:150px; float:left; display:inline;}
 #le_right #bottom #right #xia #more A:hover{text-decoration:underline;}
 #le_right #bottom #right #xia #l{width:80px; height:137px; border:1px solid #D7D9D8; background:#ffffff; overflow:hidden; float:left; display:inline;}
 #le_right #bottom #right #xia #l A{width:78px; height:28px; margin-left:0px; margin-top:2px; text-decoration:none; overflow:hidden; float:left; display:inline;}
 #le_right #bottom #right #xia #l A:hover{text-decoration:underline;}
-#le_right #bottom #right #xia .r{width:150px; height:12px; margin-top:10px; margin-left:5px; padding-left:15px; background:url(/images/arrow/arrow1.gif) no-repeat; float:left; display:inline;}
+#le_right #bottom #right #xia .r{width:150px; height:18px; margin-top:5px; margin-left:5px; padding-left:15px; background:url(/images/arrow/arrow1.gif) no-repeat; float:left; display:inline;}
 #le_right #bottom #right #xia .r A{width:150px; height:12px;  margin-left:0px; text-decoration:none; overflow:hidden;  float:left; display:inline;}
 #le_right #bottom #right #xia .r A:hover{text-decoration:underline;}
 

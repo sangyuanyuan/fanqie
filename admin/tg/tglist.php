@@ -20,15 +20,23 @@ $count=$db->query($total);
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -团购后台</title>
-	<link href="/css/admin.css" rel="stylesheet" type="text/css">
-	<script language=javascript src="admin.js"></script>
+	<?php css_include_tag('admin','top','bottom');
+		use_jquery();
+		js_include_once_tag('admin'); ?>
 </head>
 <body style="background:#E1F0F7">
 	<table width="795" border="0">
-		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td colspan="9" width="795">　　　搜索　<input id=newskey1 type="text" value="<? echo $key1?>" onKeyPress="newskeypress()">
-			<input id=newskey2 type="hidden"><input id=newskey3 type="hidden"><input id=newskey4 type="hidden" value="<? echo $id?>">
-			<input type="button" value="搜索" style="border:1px solid #0000ff; height:21px" onClick="newskey()">
+		tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+			<td colspan="5" width="795">　　　　
+			搜索　<input id=newskey1 type="text" value="<? echo $key1?>" >
+				  <input id=newskey2 type="hidden">
+				  <input id=newskey3 type="hidden">
+			<select id=newskey4 style="width:100px">
+				<option value="">发布状况</option>
+				<option value="1" <? if($key4=="1"){?>selected="selected"<? }?>>已发布</option>
+				<option value="0" <? if($key4=="0"){?>selected="selected"<? }?>>未发布</option>
+			</select>
+			<input id="searchinput" type="button" value="搜索" style="border:1px solid #0000ff; height:21px" >
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
@@ -44,7 +52,7 @@ $count=$db->query($total);
 			<td><? echo $rows[$i]->createtime;?></td>
 			<td><? echo $rows[$i]->address;?></td>
 			<td><? echo $rows[$i]->remark;?></td>
-			<td><a href="#" onclick="deltg(<? echo $rows['id'];?>)">删除</a></td>
+			<td><span style="color:blue; text-decoration:underline;" name="<? echo $rows['id'];?>">删除</span></td>
 		</tr>
 		<? }?>
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" >

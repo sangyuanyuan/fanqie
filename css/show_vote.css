@@ -1,5 +1,5 @@
 body {
-	
+	line-height:0;
 }
 #answer{width:995px; margin:0 auto; line-height:15px;}
 #left{width:650px; margin-top:10px; padding-bottom:10px; border:1px solid #D8DFEA; float:left; display:inline;}

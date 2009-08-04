@@ -22,8 +22,8 @@
 		<? for($i=0;$i<count($news);$i++){?>
 		<div class=context>
 			<div class=cl>
-				<img width=160 height=105 src="<? echo $news[$i]->photourl;?>" /><br>
-				<a href="/fqtg/fqtg.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>		
+				<a target="_blank" href="/fqtg/fqtg.php?id=<? echo $news[$i]->id;?>"><img border=0 width=160 height=105 src="<? echo $news[$i]->photourl;?>" /></a><br>
+				<a target="_blank" href="/fqtg/fqtg.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>		
 		</div>
 		<? }?>
 	</div>

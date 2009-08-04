@@ -9,10 +9,12 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 
 #l_t{width:350px; height:22px; padding-top:3px;  padding-left:30px; font-size:13px; font-weight:bold; line-height:20px; background:url('/images/zone/blog_l_t.jpg') no-repeat; float:left; display:inline;}
 .l{width:380px; height:168px; background:url('/images/zone/blog_l.jpg') no-repeat;float:left; display:inline;}
-.l .name{width:300px; height:30px; margin-top:5px; margin-left:10px; font-size:16px; font-weight:bold; line-height:25px; float:left; display:inline;}
+.l .name{width:360px; height:30px;  margin-top:5px; margin-left:10px; font-size:16px; font-weight:bold; line-height:25px; float:left; display:inline;}
 .l .name a{color:#ff0000;}
-.l .context{width:360px; height:120px; margin-left:10px; text-indent:24px; line-height:20px; font-size:12px;  overflow:hidden; float:left; display:inline;}
-.l .context a{color:#6d6d6d; text-decoration:none;}
+.l .pic{width:80px; height:70px; padding:3px; margin-left:10px; border:2px solid #efefef; float:left; display:inline;}
+.l .subject{width:260px; height:20px; margin-left:10px; line-height:20px; overflow:hidden; float:left; display:inline;}
+.l .subject a{font-size:14px; color:#0000ff; text-decoration:none;}
+.l .context{width:260px; height:100px; margin-left:10px; text-indent:24px; line-height:20px; font-size:12px;  overflow:hidden; float:left; display:inline;}
 
 
 #c_t{width:310px; height:379px; background:#FFFAE7;  float:left; display:inline;}

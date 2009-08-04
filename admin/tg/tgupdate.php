@@ -42,8 +42,8 @@ $rows=$db->query($strsql);
 		<tr align="center" bgcolor="#f9f9f9" height="25px; " style="font-size:12px">
 			<td width="100">结束时间</td><td width="695" align="left"><input type="text" id="endtime"  name="endtime"  value="<? echo $rows[0]->endtime;?>"  onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'starttime\')}',maxDate:'2020-10-01 12:00:00'})" class="Wdate" style="width:150px"/></td>
 		</tr>
-		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left"><input name="upfile" id="upfile" type="file" value="<? echo $rows['photourl'];?>">(请上传200x160大小的图片，格式支持jpg、gif、png) <input type="hidden" name="MAX_FILE_SIZE1" value="2097152"></td>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 style="font-size:12px;" >
+			<td>选择图片</td><td align="left"><input name="upfile" id="upfile" type="file">(请上传200x160大小的图片，格式支持jpg、gif、png) <input type="hidden" name="MAX_FILE_SIZE1" value="2097152"><?php if($rows[0]->photourl!=""){ ?><a style="color:blue;" target="_blank" href="<?php echo $rows[0]->photourl;?>">查看已上传图片</a><?php } ?></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1 style="font-size:12px">
 			<td>内　容</td><td align="left"><?php show_fckeditor('content','Admin',true,"280",$rows[0]->content,"98%");?></td>

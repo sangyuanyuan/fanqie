@@ -32,7 +32,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>描述：</td>
-			<td align="left"><textarea name="vote[description]"></textarea></td>
+			<td align="left"><textarea cols=70 name="vote[description]"></textarea></td>
 		</tr>
 		<tr class=tr3>
 			<td>添加图片：</td>
@@ -40,7 +40,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>所属类别：</td>
-			<td align="left"  class="newsselect">
+			<td align="left">
 				<select  name="vote[category_id]">
 					<?php for($i=0;$i<$count;$i++){?>
 					<option value="<?php echo $category_menu[$i]->id;?>"><?php echo $category_menu[$i]->name;?></option>
@@ -50,7 +50,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>投票类型：</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select id=select_vote_type name="vote[vote_type]">
 					<option value="word_vote">文字投票</option>
 					<option value="image_vote">图片投票</option>
@@ -60,7 +60,7 @@
 		</tr>
 		<tr class=tr3>
 			<td>控制方式：</td>
-			<td align="left" class="newsselect">
+			<td align="left">
 				<select id=select_limit_type name="vote[limit_type]">
 					<option value="user_id">工号登录</option>
 					<option value="ip">IP控制</option>
@@ -78,16 +78,16 @@
 		</tr>
 		<tr class=tr3>
 			<td>开始日期：</td>
-			<td align="left"><input type="text" class="date_jquery required" name="vote[started_at]" id="start"></td>
+			<td align="left"><input type="text" class="date_jquery" name="started_at" id="start"></td>
 		</tr>
 		<tr class=tr3>
 			<td>截止日期：</td>
-			<td align="left"><input type="text"  class="date_jquery required" name="vote[ended_at]" id="end"></td>
+			<td align="left"><input type="text"  class="date_jquery" name="ended_at" id="end"></td>
 		</tr>
 		<tr class=tr3 id="item">
 			<td>投票项目：</td>
 			<td align="left" id="single">
-				标题<input type="text" name="vote_item1[title]" id="first_item" style="width:100px" class="required">
+				标题<input type="text" name="vote_item1[title]" id="first_item" style="width:300px" class="required">
 				<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
 				<input name="item_image1" type="file" class="item_image" style="display:none;">
 				<a id="add_item" value="1" style="cursor:pointer;">继续添加</a>

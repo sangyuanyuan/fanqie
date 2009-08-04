@@ -44,16 +44,16 @@
 				<div class=l_b_l>
 					<?php if($record[$i]->category_id==1||$record[$i]->category_id==2){ ?>
 					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
-					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo get_fck_content($record[$i]->title);?></a></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
 			<?php }else{?>
 			<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
-					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo get_fck_content($record[$i]->title);?></a></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
 			<?php }} ?>
-			<div id=page><?php paginate('news_list.php?id='.$id);?></div>
+			<div id=page><?php paginate('');?></div>
 		</div>
 	</div>
 	<div id=ibody_right>
@@ -92,7 +92,7 @@
 			<div class=b_t_title1 param=3 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat">精彩视频</div>
 			<div class="b_t" id="b_t_1" style="display:none;">
 				<? 
-					$sql="SELECT tid,subject FROM bbs_posts where subject<>'' order by pid desc limit 10";
+					$sql="SELECT tid,subject FROM bbs_posts where first=1 order by pid desc limit 10";
 					$bbs=$db->query($sql);
 					for($i=0;$i<count($bbs);$i++){
 				?>

@@ -91,7 +91,7 @@ require_once('../frame.php');
    
     <div id=content8>
     		<div id=left>发表评论</div>
-    		<div id=right><a href="/comment/comment.php" target="_blank" style="text-decoration:none;color:#000;">更多评论>> </a></div>
+    		<div id=right></div>
     </div>
     <form id="comment" method="post" action="/pub/pub.post.php">
     	 <input type="hidden" id="tgid" name="tgid" value="<?php echo $actid; ?>">

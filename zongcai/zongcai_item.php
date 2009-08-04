@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 	require_once('../frame.php');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -76,7 +76,7 @@
 					<td colspan="3" align="left"><input class="required" type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="upfile" id="upfile"  type="file" style="width:325px;">可上传节目主创人员工作照片</td>
 				</tr>							
 				<tr height="35px;">
-					<td colspan="4" align="center"><button value='submit'>提交</button></td>
+					<td colspan="4" align="center"><button type="submit" value='submit'>提交</button></td>
 				</tr>							
 			</table>
 			<div style="margin-left: 30px; margin-top: 5px;font-size:14px;">
