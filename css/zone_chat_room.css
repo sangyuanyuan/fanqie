@@ -15,3 +15,5 @@ p{margin:0px; padding:0px;}
 button{width:100px; margin-left:5px; float:left;  display:inline;}
 #search_chater{font-size:xx-large;}
 .chat_record{margin-left:20px;margin-top:5px;}
+#waiter{width:160px;margin-top:5px;margin-left:140px; line-height:20px;float:left;}
+#intro{margin-top:5px;line-height:20px;display:inline;float:right;margin-right:5px;}

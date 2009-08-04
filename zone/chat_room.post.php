@@ -4,7 +4,7 @@
 	$op = $_POST['op'];
 	$chat_id = $_COOKIE['smg_chat_id'];
 	$db = get_db();
-	$sql = "select count(*) as online_count from smg_chat_room_online where expire_at < now()";
+	$sql = "select count(*) as online_count from smg_chat_room_online where expire_at > now()";
 	$db->query($sql);
 	$db->move_first();
 	$online_count = $db->field_by_name('online_count');
@@ -41,7 +41,7 @@
 		case 'refresh':
 			$today = substr(now(), 0,10);
 			$expire_date = date('Y-m-d H:i:s',strtotime('1 hour'));
-			$sql = "insert into smg_chat_room_online (chat_id, expire_at) values ('$chat_id','$expire_date') ON DUPLICATE key update expire_at = '$expire_date'";
+			$sql = "insert into smg_chat_room_online (chat_id, expire_at) values ('$chat_id',now() + INTERVAL 1 HOUR) ON DUPLICATE key update expire_at = now() + INTERVAL 1 HOUR";
 			$db->execute($sql);
 			$msgs = $db->query("select * from smg_chat_message where reciever='$chat_id' and created_at >='$today'");
 			if(is_array($msgs)){

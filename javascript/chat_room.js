@@ -46,7 +46,7 @@ function refresh(){
 }
 
 function refresh_waiter(count){
-	$('#waiter').html('共有:' + count + ' 位聊友在线');
+	$('#waiter').html('共有: <span style="color:red;">' + count + '</span> 位聊友在线');
 }
 
 function add_chat(content,type){
@@ -84,7 +84,7 @@ function toggle_button(){
 		$('#submit').attr('disabled',true);
 	}else if(chat_status == 'connected'){
 		$('#connect_msg').html('已经有一位聊友进入');
-		$('#find_chater').html('聊友已离开');
+		$('#find_chater').html('离开聊友');
 		$('#submit').attr('disabled',false);
 	}
 	$('#chat_content_box').scrollTop(10000);

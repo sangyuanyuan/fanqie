@@ -21,7 +21,7 @@
 <body>
 <? require_once('../inc/top.inc.html');	?>
 <div id="ibody">
-	<div id="t"><span id="waiter"></span></div>
+	<div id="t"><div id="waiter"></div><div id="intro">1:寻找陌生人  2:系统配对成功 3:输入聊天内容,发送键发送 4:断开,重新寻找</div></div>
 	<div id="chat_content_box"></div>
 	<div id="tool_box">
 			<div id="connect_msg">&nbsp;</div>
