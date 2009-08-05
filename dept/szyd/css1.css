@@ -1,0 +1,63 @@
+@charset "gb2312";
+/* CSS Document */
+
+body{
+margin:0;
+padding:0;
+width:100%;
+height:100%;}
+
+.main{
+ width:971px;
+ height:747px;
+ margin-left:auto;
+ margin-right:auto;
+}
+
+.top{
+	width:971px;
+	height:159px;
+	background:url(pic/1.jpg) no-repeat;
+}
+
+.nav{
+width:971px;
+height:64px;}
+
+.submain{
+width:971px;
+background:#029EC6;
+}
+
+.sub_l{
+float:left;
+height:449px;
+width:172px;
+background:#029EC6;}
+
+.sub_right{
+margin-left:172px;
+width:799px;
+background:#029EC6;}
+
+.siteinfo{
+height:73px;
+width:971px;
+background:url(pic2/siteinfo.png) no-repeat;}
+
+.btn{
+width:134px;
+height:28px;
+display:block;
+margin-left:auto;
+margin-right:auto;
+margin-top:50px;}
+
+.btn1{
+width:134px;
+height:28px;
+display:block;
+margin-left:auto;
+margin-right:auto;
+margin-top:5px;
+}
