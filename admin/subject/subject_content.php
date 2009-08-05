@@ -8,13 +8,16 @@
 	$db = get_db();
 	switch ($content_type) {
 		case 'news':
-			$items = $db->query("select b.*,a.category_id as subject_category, a.priority as subject_priority from smg_subject_items a left join smg_news b on a.resource_id=b.id where a.category_type='news'");;
+			$items = $db->query("select b.*,a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name from smg_subject_items a left join smg_news b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id where a.category_type='news' and a.subject_id=$subject_id");;
+			$categories = $db->query("select * from smg_subject_category where subject_id=$subject_id and category_type='news'");
 		break;
 		case 'video':
-			$items = $db->query("select b.*,a.category_id as subject_category, a.priority as subject_priority from smg_subject_items a left join smg_video b on a.resource_id=b.id where a.category_type='video'");;
+			$items = $db->query("select b.*,a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name  from smg_subject_items a left join smg_video b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id  where a.category_type='video' and a.subject_id=$subject_id");;
+			$categories = $db->query("select * from smg_subject_category where subject_id=$subject_id and category_type='video'");
 		break;
 		case 'photo':
-			$items = $db->query("select b.*,a.category_id as subject_category, a.priority as subject_priority from smg_subject_items a left join smg_images b on a.resource_id=b.id where a.category_type='photo'");;
+			$items = $db->query("select b.*,a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name  from smg_subject_items a left join smg_images b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id  where a.category_type='photo' and a.subject_id=$subject_id");;
+			$categories = $db->query("select * from smg_subject_category where subject_id=$subject_id and category_type='photo'");
 		break;
 		default:
 			;
@@ -78,9 +81,6 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub','smg_category_class');
-		$category = new smg_category_class('news');
-		$category->echo_jsdata();		
 	?>
 </head>
 
@@ -88,10 +88,23 @@
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
 			<td colspan="6">
-				　<a href="news_add.php">添加<?php echo $content_type;?></a>
+				<select id="content_type">
+					<option value="news" <?php if($_REQUEST['content_type'] == 'news') echo ' selected="selected"';?>>新闻</option>
+					<option value="video"<?php if($_REQUEST['content_type'] == 'video') echo ' selected="selected"';?>>视频</option>
+					<option value="photo"<?php if($_REQUEST['content_type'] == 'photo') echo ' selected="selected"';?>>图片</option>
+				</select>　
+				<a href="<?php echo $content_type;?>_edit.php?subject_id=<?php echo $subject_id;?>">添加<?php echo conver_type($content_type);?></a>
 				　　　搜索　<input id=title type="text" value="<? echo $title;?>">
 				
-				<span id="span_category"></span><select id=adopt style="width:100px" class="select_new">
+				<select id="sel_category">
+					<option value=-1>请选择</option>
+					<?php
+					for($i=0;$i < count($categories);$i++){ ?>
+					<option value="<?php echo $categories[$i]->id;?>" <?php if($_REQUEST['category_id'] == $categories[$i]->id) echo 'selected="selected"';?>><?php echo $categories[$i]->name;?></option>
+					<?php }					
+					?>
+				</select>
+				<select id=adopt style="width:100px" class="select_new">
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
@@ -103,40 +116,38 @@
 		</tr>
 		<tr class="tr2">
 
-			<td width="220">标题</td><td width="100">所属类别</td><td width="120">发布时间</td><td width="200">操作</td>
+			<td></td><td width="220">标题</td><td width="100">所属类别</td><td width="120">发布时间</td><td width="200">操作</td>
 		</tr>
 		<?php
 			//--------------------
+			
 			for($i=0;$i<count($items);$i++){
 		?>
 				<tr class=tr3 id=<?php echo $items[$i]->id;?> >
-					<?php 
-						$var_name = $items[$i]->dept_id != 7 ? "back_news[]" : "delete_news[]";
-					?>
 					<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $items[$i]->id;?>"></td>					
-					<td><a href="<?php echo $url;?>" target="_blank"><?php echo strip_tags($items[$i]->short_title);?></a></td>
+					<td><a href="<?php echo $url;?>" target="_blank"><?php echo strip_tags($items[$i]->title);?></a></td>
 					<td>
 						<a href="?category=<?php echo $record[$i]->category_id;?>" style="color:#0000FF">
-							<?php echo $category->find($record[$i]->category_id)->name; ?>
+							<?php echo $items[$i]->category_name; ?>
 						</a>
 					</td>
 					<td>
-						<?php echo $record[$i]->created_at; ?>
+						<?php echo $items[$i]->created_at; ?>
 					</td>								
-					<td><?php if($record[$i]->is_adopt=="1"){?>
-							<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>
+					<td><?php if($items[$i]->is_adopt=="1"){?>
+							<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $items[$i]->id;?>">撤消</span>
 						<?php }?>
 						<?php if($record[$i]->is_adopt=="0"){?>
-							<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span>
+							<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $items[$i]->id;?>">发布</span>
 						<?php }?>
-						<a href="news_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>
+						<a href="<?php echo $content_type;?>_edit.php?subject_id=<?php echo $subject_id;?>&item_id=<?php echo $items[$i]->item_id;?>&id=<?php echo $items[$i]->id;?>" class="edit" name="<?php echo $items[$i]->id;?>" style="cursor:pointer">编辑</a>
 						<a href="/admin/comment/comment.php?id=<?php echo $record[$i]->id;?>&type=news" style="color:#000000; text-decoration:none">评论</a>
 						<?php if($record[$i]->dept_id!="7"){?>
-							<span style="cursor:pointer;color:#FF0000" class="return" name="<?php echo $record[$i]->id;?>">退回</span>
+							<span style="cursor:pointer;color:#FF0000" class="return" name="<?php echo $items[$i]->id;?>">退回</span>
 						<?php }else{?>
-							<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $record[$i]->id;?>">删除</span>
+							<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $items[$i]->id;?>">删除</span>
 						<?php }?>
-						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:40px;">
+						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$items[$i]->priority){echo $items[$i]->priority;};?>" style="width:40px;">
 					</td>
 				</tr>
 		<?php
@@ -153,33 +164,15 @@
 </html>
 
 <script>
-	
+	function do_search(){
+		var key = encodeURI($('#title').val());
+		var content_type = $('#content_type').val();
+		var category_id = $('#sel_category').val();
+		window.location.href="subject_content.php?subject_id=<?php echo $subject_id;?>&content_type="+content_type+"&category_id=" + category_id;
+	}
 	$(function(){
-		category.display_select('category_select',$('#span_category'),<?php echo $category_id;?>,'',function(id){
-			$('#category').val(id);
-			category_id = $('.category_select:last').val();
-			if(id==-1){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category=&adopt="+$("#adopt").attr('value');				
-			}
-			if(category_id != -1){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
-			}
-		
+		$('#content_type').change(function(){
+			do_search();
 		});
-		$('#news_tag').change(function(){
-			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
-		});
-		var all_selected = false;
-		$('#select_all').click(function(){
-			all_selected = !all_selected;
-			$('input:checkbox').attr('checked',all_selected);
-		});
-		$('#button_delete').click(function(){
-			if (confirm('确定删除/退回选中新闻?')) {
-				$.post('delete_news.php', $('input:checkbox').serializeArray(), function(data){
-					window.location.reload();
-				});
-			}
-		});	
 	});
 </script>
