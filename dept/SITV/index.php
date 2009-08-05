@@ -240,7 +240,7 @@ ul {
           	for($i=0;$i<($count<4?$count:4);$i++){
 				//获得首页图片切换的相关信息
 					$picsurl1[]=$records[$i]->photo_src;
-					$picslink1[]='content.php?id='.$newslist1->items[$i]->id;
+					$picslink1[]='content.php?id='.$records[$i]->id;
 					$picstext1[]=$records[$i]->title;
 				}
 				?>
@@ -300,7 +300,7 @@ ul {
           	for($i=0;$i<($count<4?$count:4);$i++){
 				//获得首页图片切换的相关信息
 					$picsurl2[]=$records[$i]->photo_src;
-					$picslink2[]='content.php?id='.$newslist2->items[$i]->id;
+					$picslink2[]='content.php?id='.$records[$i]->id;
 					$picstext2[]=$records[$i]->title;
 				}
 				?>
