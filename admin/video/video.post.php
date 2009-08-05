@@ -43,8 +43,8 @@
 	$title = strtr($_POST['title'],$table_change);
 	$video->title = $title;
 	$video->publisher = $_COOKIE['smg_user_nickname'];
-	if($_POST['video']["priority"]==null){$video->update_attribute("priority","100");}
-	if($_POST['video']["commentable"]==null){$video->update_attribute("commentable","");}
+	if($_POST['video']["priority"]==null){$video->priority=100;}
+	if($_POST['video']["commentable"]==null){$video->commentable=0;}
 	$video->publisher = $_COOKIE['smg_user_nickname'];
 	$video->update_attributes($_POST['video']);
 	
