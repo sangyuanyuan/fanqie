@@ -12,7 +12,7 @@ $(document).ready(function(){
 	$("#zhuce").click(function(){
 		var mobile=$("#mobile").attr("value");
 		var yanzheng=$(this).attr("name");
-		var yanzhengma=$("#yanzheng").attr("value");
+		var yanzhengma=$("#yz").attr("value");
 		$("#utype").attr("value","zhuce");
 		if(mobile==""){alert("联系方式不能为空");return false;}
 		if(mobile.length!=11){alert("手机号码不正确");return false;}

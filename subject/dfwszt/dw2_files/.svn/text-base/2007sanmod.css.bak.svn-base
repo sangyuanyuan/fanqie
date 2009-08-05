@@ -1,0 +1,96 @@
+body {font-family:ËÎÌו; font-size:12px; background:url(/images/bg/subject_body_bg.jpg) repeat-y; color:#000000;  margin:0px;}
+
+.mainnav A:link {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 180%; TEXT-DECORATION: none
+}
+.mainnav A:visited {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 180%; TEXT-DECORATION: none
+}
+.mainnav A:hover {
+	FONT-SIZE: 12px; COLOR: #5c5c5c; LINE-HEIGHT: 180%; TEXT-DECORATION: none
+}
+.mainnav2 A:link {
+	FONT-SIZE: 14px; COLOR: #000000; LINE-HEIGHT: 180%; TEXT-DECORATION: none
+}
+.mainnav2 A:visited {
+	FONT-SIZE: 14px; COLOR: #000000; LINE-HEIGHT: 180%; TEXT-DECORATION: none
+}
+.mainnav2 A:hover {
+	FONT-SIZE: 14px; COLOR: #5c5c5c; LINE-HEIGHT: 180%; TEXT-DECORATION: none
+}
+.lan {
+	FONT-WEIGHT: bold; COLOR: #0066ff
+}
+.lan A:link {
+	FONT-WEIGHT: bold; COLOR: #0066ff; TEXT-DECORATION: none
+}
+.lan A:visited {
+	FONT-WEIGHT: bold; COLOR: #0066ff; TEXT-DECORATION: none
+}
+TD {
+	FONT-SIZE: 12px; LINE-HEIGHT: 120%
+}
+H1 {
+	FONT-WEIGHT: bolder; FONT-SIZE: 24px; LINE-HEIGHT: 150%
+}
+.p12 {
+	FONT-SIZE: 12px; LINE-HEIGHT: 120%
+}
+.p14 {
+	FONT-SIZE: 14px; LINE-HEIGHT: 150%
+}
+.p24 {
+	FONT-SIZE: 18px; COLOR: red; LINE-HEIGHT: 120%
+}
+.p24 A:link {
+	COLOR: red; TEXT-DECORATION: none
+}
+.p24 A:hover {
+	COLOR: red
+}
+.p24 A:visited {
+	COLOR: red; TEXT-DECORATION: none
+}
+.bai {
+	FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 120%
+}
+.bai A:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.bai A:hover {
+	COLOR: #ffffff
+}
+.bai A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+BODY {
+	MARGIN: 0px
+}
+
+
+
+ #s_left{width:216px; height:400px; margin-top:5px; margin-left:5px; padding:5px; overflow:hidden; float:left; display:inline;}
+ #s_left a{width:216px; height:20px; line-height:20px; text-decoration:none; overflow:hidden; float:left; display:inline;}
+
+#s_right{width:200px; height:400px; margin-top:5px; color:#000; padding:5px; overflow:hidden; float:left; display:inline;}
+#s_right .title{width:200px; height:20px; margin-top:10px; padding-top:7px; padding-left:12px; font-weight:bold; color:#000; background:url(/images/bg/zt_right.jpg) no-repeat; float:left; display:inline;}
+#s_right .title A{margin-right:10px; color:#000; text-decoration:none; float:right; display:inline;}
+#s_right .title A:hover{color:#AA0000; text-decoration:underline;}
+#s_right #subject_comment{width:200px; margin-top:5px; margin-left:5px; float:left; display:inline;}
+#s_right #subject_comment A{width:100px; margin-left:25px; text-decoration:none; font-weight:bold; float:left; display:inline;}
+#s_right #subject_comment A:hover{text-decoration:underline;}
+#s_right #subject_comment #comment{margin-top:5px; float:left; display:inline;}
+#s_right #subject_comment textarea{width:180px; height:145px; margin-top:5px; float:left; display:inline;}
+#btn{width:62px; height:21px; margin-top:10px; margin-left:50px;  text-align:text; color:#ffffff; border:none; background:url(/images/bg/subject_button_bg.jpg) no-repeat; float:left; display:inline;}
+
+.title1{width:200px; height:20px; background:orange;padding-left:10px; padding-top:5px; font-size:15px; font-weight:bold; color:red}
+.index_title{width:450px; height:27px; padding-top:10px; padding-left:100px; margin-top:10px; margin-left:6px; font-weight:bold; font-size:16px; color:#F2E275; background:url(/images/index.jpg) 0 -25px no-repeat; text-align:left; float:left; display:inline;}

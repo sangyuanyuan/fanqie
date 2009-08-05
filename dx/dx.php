@@ -16,6 +16,8 @@
 <? include('../inc/top.inc.html');
   $phone=$_REQUEST['mobile'];
   $yanzheng=$_REQUEST['yanzheng'];
+  if($yanzheng=="")
+  {
  	$rand1=rand(0,9);
 	$rand2=rand(0,9);
 	$rand3=rand(0,9);
@@ -23,6 +25,7 @@
 	$rand5=rand(0,9);
 	$rand6=rand(0,9);
 	$rand=$rand1.$rand2.$rand3.$rand4.$rand5.$rand6;
+  }
 ?>
 <div id=bodys>
  <div id=n_left style="width:680px;">

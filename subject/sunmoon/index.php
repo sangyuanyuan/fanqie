@@ -1,240 +1,386 @@
-<?
-	require_once('../libraries/tablemanager.class.php');
-  require_once('../libraries/sqlrecordsmanager.php');
-  require_once('../inc/pubfun.inc.php');
-  $sqlmanager = new SqlRecordsManager();
-  $pageindex = isset($_REQUEST['pageindex']) ? $_REQUEST['pageindex']: 1;
-	$deptsort=$sqlmanager->GetRecords('SELECT sum(s.clickcount) as djl,d.name FROM smg_news s right join smg_dept d on s.dept_id=d.id where main_cate_id in (63,64,65,66,67,68,69,70,71,72,73,74) group by s.dept_id order by djl desc',1,10);
+ï»¿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML><HEAD><TITLE>æ—¥å…¨é£Ÿä¸“é¢˜</TITLE>
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<META content="" name=keywords>
+<META http-equiv=refresh content=null>
+<LINK href="dw2_files/2007sanmod.css" type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.5730.13" name=GENERATOR>
+<STYLE type=text/css>
+.STYLE3 {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px
+}
+.STYLE7 {
+	COLOR: #336633
+}
+.STYLE10 {
+	COLOR: #cc6666
+}
+.STYLE11 {
+	COLOR: #0000ff
+}
+.STYLE12 {
+	COLOR: #9900cc
+}
+.STYLE13 {
+	COLOR: #ff0000
+}
+.STYLE14 {
+	COLOR: #993333
+}
+.style8{
+	width:135px; height:76px; line-height:20px; overflow:hidden; float:left; display:inline;
+}
+.style8 a{
+	font-size:12px;
+}
+</STYLE>
+<script language="JavaScript">
+var startTime = new Date();
+var EndTime=new Date('2009/07/22 07:30:00');
+function GetRTime(){
+	var NowTime = new Date();
+	var nMS =EndTime - NowTime.getTime();
+	var nD =Math.floor(nMS/(1000 * 60 * 60 * 24));
+	var nH=Math.floor(nMS/(1000*60*60)) % 24;
+	var nM=Math.floor(nMS/(1000*60)) % 60;
+	var nS=Math.floor(nMS/1000) % 60;
+	document.getElementById("RemainD").innerHTML="0";
+	document.getElementById("RemainH").innerHTML="0";
+	document.getElementById("RemainM").innerHTML="0";
+	document.getElementById("RemainS").innerHTML="0";
+	if(nD==0&&nH==0&&nM==0&&nS==0)
+	{
+		window.location.href="#";
+	}
+	else
+	{
+		setTimeout("GetRTime()",1000);
+	}
+}
+window.onload=GetRTime;
 
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
-	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -µ³½¨ĞÂÎÅÁĞ±í</title>
-	<link href="/css/dj.css" rel="stylesheet" type="text/css">
-	<script language="javascript" src="/js/smg.js"></script>
-	<script type="text/javascript" language="javascript">
-		var dept_id = RequestCookies("smg_dept","");
-		AddSiteClickcount(dept_id);
-	</script>
+</script>
+
+<style type="text/css">
+<!--
+#lovexin12,#lovexin14{
+   width:116px;
+   height:271px;
+}
+html,body{
+  }
+#mm{
+  }
+-->
+</style>
 </head>
-<body>
-	<div id=bodys>
-			
-		<? include('inc/djtop.inc.php');?>
-					<div id=right>
-						<div class=gd style="background:url(/images/bg/hdjy.jpg) no-repeat;">
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=72 and isadopt=1 order by priority asc, pubdate desc',1,6);?>
-							<DIV id=Layer5>
-				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
-				      <TABLE cellSpacing=0 cellPadding=0 border=0>
-				        <TBODY>
-				        <TR>
-				          <TD id=demo1 vAlign=top align=middle>
-				            <TABLE cellSpacing=0 cellPadding=2 border=0>
-				              <TBODY>
-				              <TR align=middle>
-				              	<? for($i=0;$i<count($news);$i++){?>
-				                <TD><a target="_blank" href="djlist.php?id=72"><img border=0 width=130 height=90 src="<? echo $news[$i]->photourl; ?>"></a></TD>
-				                <? }?>
-				              </TR></TBODY></TABLE></TD>
-				          			<TD id=demo2 vAlign=top></TD></TR></TBODY></TABLE></DIV>
-								      <SCRIPT>
-												var speed=30//ËÙ¶ÈÊıÖµÔ½´óËÙ¶ÈÔ½Âı
-												demo2.innerHTML=demo1.innerHTML
-												function Marquee(){
-												if(demo2.offsetWidth-demo.scrollLeft<=0)
-												demo.scrollLeft-=demo1.offsetWidth
-												else{
-												demo.scrollLeft++
-												}
-												}
-												var MyMar=setInterval(Marquee,speed)
-												demo.onmouseover=function() {clearInterval(MyMar)}
-												demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
-												</SCRIPT>
-								</DIV>
-						</div>
-						<div class=title>Áìµ¼½²»°<div class=more><a target="_blank" href="djlist.php?id=63">¸ü¶à</a></div></div>
-						<div class=title>²½Öè°²ÅÅ<div class=more><a target="_blank" href="djlist.php?id=67">¸ü¶à</a></div></div>
-						<div style="width:350px; float:left; display:inline;">
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=63 and isadopt=1 order by priority asc, pubdate desc',1,6);
-									$photourl="";
-									for($i=0;$i<count($news);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$news[$i]->photourl;	
-									 }
-									}
-							?>
-							<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-							
-								<? 	
-								for($i=0;$i<count($news);$i++){?>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-							
-						</div>
 
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=67 and isadopt=1 order by priority asc, pubdate desc',1,6); 
-								$photourl="";
-									for($i=0;$i<count($news);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$news[$i]->photourl;	
-									 }
-									}
-							?>
-							<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-							
-								<?
-								for($i=0;$i<count($news);$i++){?>
-									<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-							
-						<div class=bg>
-							<div class=title style="margin-left:10px;">ÎÄ¼şÕª±à<div class=more><a target="_blank" href="djlist.php?id=68">¸ü¶à</a></div></div>
-							<div class=title style="margin-left:10px;">¾­Ñé½éÉÜ<div class=more><a target="_blank" href="djlist.php?id=69">¸ü¶à</a></div></div>
-							<div style="width:350px; float:left; display:inline;">
-								<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=68 and isadopt=1 order by priority asc, pubdate desc',1,6);
-									$photourl="";
-									for($i=0;$i<count($news);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$news[$i]->photourl;	
-									 }
-									}
-								?>
-								<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-									
-										<? 	
-										for($i=0;$i<count($news);$i++){?>
-										<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-										<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-										<? }?>
-									
-							</div>
-						<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=69 and isadopt=1 order by priority asc, pubdate desc',1,6); 
-								$photourl="";
-									for($i=0;$i<count($news);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$news[$i]->photourl;	
-									 }
-									}
-						?>
-						<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-						
-							<?
-							for($i=0;$i<count($news);$i++){?>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
+</HEAD>
+<BODY >
+
+<? 
+		require_once('../../frame.php');
+		$db = get_db();		
+		$newslist = $db->query('select * from smg_comment where resource_type="sunmoon" order by created_at desc');	
+?>
+	
+<TABLE cellSpacing=0 cellPadding=0 width=770 border=0>
+  <TBODY>
+  	
+  <TR>
+    <TD width=630 height=1></TD></TR></TBODY></TABLE>
+
+<TABLE bgColor=#e9f2d9 cellSpacing=0 cellPadding=0 width=770 align=center border=0>
+
+  <TBODY>
+  <TR>
+    <TD valign="top" >
+    	<div style="width:748px; height:80px; padding-left:18px; padding-top:120px; background:url('sunmoon.jpg')"><strong style="font-size:20px; color:red; font-weight:bold;" id="RemainD"></strong><strong style="margin-left:40px; font-size:20px; color:red; font-weight:bold;" id="RemainH"></strong><strong style="margin-left:40px; font-size:20px; color:red; font-weight:bold;" id="RemainM"></strong><strong style="margin-left:30px; font-size:20px; color:red; font-weight:bold;" id="RemainS"></strong></div></TD>
+    </TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=770 align=center border=0 >
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=25% bgColor=#e9f2d9 >
+      <TABLE width="100%" border=0>
+        <TBODY>
+       
+        <TR>
+          <TD>
+            <TABLE width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD>
+                  <TABLE width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><div class=title1>èŠ‚ç›®æŠ¢å…ˆçœ‹</div></TD></TR>
+                    <TR>
+                      <TD>
+                      	<div id=s_left>
+	                      <? 
+						  	$video=$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="èŠ‚ç›®æŠ¢å…ˆçœ‹" order by n.priority asc, n.created_at desc limit 4');
+						  	show_video_player(200,150,$video[0]->photo_url,$video[0]->video_url);
+						  ?>
+						  <? for($i=0;$i<count($video);$i++){?>
+						  <a target="_blank" href="/show/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a>
+						  <? }?>
+							</div>	
+                      </TD></TR></TBODY></TABLE></TD></TR>
+             <TR>
+                <TD>
+                  <TABLE width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                     <TD><div class=title1>ç­”é¢˜èµ¢è§‚æµ‹é•œ</div></TD></TR>
+                    <TR>
+                      <TD height=50>
+                      	<div style="width:200px; color:red;">å¿«æ¥å‚ä¸ç­”é¢˜èµ¢è§‚æµ‹é•œï¼åªè¦æ‚¨ç­”å¯¹5é“é€‰æ‹©é¢˜ï¼Œå°±èƒ½è·å¾—ç”µè§†æ–°é—»ä¸­å¿ƒå’Œç•ªèŒ„ç½‘ç‰¹åˆ«åˆ¶ä½œçš„æ—¥å…¨é£Ÿè§‚æµ‹é•œä¸€å‰¯ï¼Œæ•°é‡æœ‰é™ï¼Œå¿«æ¥å‚åŠ ï¼ç­”æ¡ˆåœ¨ã€ŠèŠ‚ç›®æŠ¢å…ˆçœ‹ã€‹è§†é¢‘çŸ­ç‰‡ä¸­æ‰¾å“¦ï¼</div>
+                      	<button id=btn1 style="margin-left:10px;">ç‚¹å‡»ç­”é¢˜</button>
+                      	<button id=btn2 onclick="window.location.href='dwph.php';" style="margin-left:10px;">æŸ¥çœ‹æ’è¡Œ</button>
+                      </TD></TR></TBODY></TABLE></TD></TR> 
+              
+              <TR>
+                <TD>
+                  <TABLE width="100%" border=0>
+                    <TBODY>
+                    	
+                    <TR>
+                      <TD><div class=title1>ç•™è¨€èµ¢è§‚æµ‹é•œ</div></TD></TR>
+                    <TR>
+                    	<TR>
+                      <TD><marquee height="150" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+						<? for($i=0; $i<count($newslist); $i++){?>
+						<div style="width:200px; margin-bottom:10px; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->commenter;?></span>è¯´ï¼š<? echo $newslist[$i]->content;?></div>
+						<? }?>
+				</marquee></TD></TR>
+                      <TD>
+                      	<div id=s_right>
+						<div class="title">ç•™è¨€</div>
+						<form name="commentform" method="post" action="/pub/pub.post.php">
+						<div id=subject_comment>æ˜µç§°ï¼š<input type="text" name="post[nick_name]" id="commenter"/><br /><div id=comment>å†…å®¹ï¼š</div><textarea id="commentcontent" name="post[comment]"></textarea></div>
+						<input type="hidden" id="resource_type" name="post[resource_type]" value="sunmoon">
+						<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
+						<input type="hidden" name="type" value="comment">
+						<button id=btn type="submit">å‘ã€€è¡¨</button>
+						</form>
+						</div>
+                      	</TD></TR></TBODY></TABLE></TD></TR> 
+            </TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top align=middle width=75% bgColor=#ffffcc>
+      <TABLE width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD height=86>
+            <TABLE height=210 width="100%" border=0>
+              <TBODY>
+              <TR>
+              	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="æ–°é—»åŠæ—¶æŠ¥" inner join smg_subject s on c.subject_id=s.id and s.name="æ—¥å…¨é£Ÿä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 8');?>
+                <TD colSpan=2 class=index_title>æ–°é—»åŠæ—¶æŠ¥ã€€ã€€ã€€<a target="_blank" href="/news/news_list.php?type=sunmoon&id=<?php echo $news[0]->cid; ?>">æ›´å¤š</a></TD></TR>
+              <TR>
+                <TD width="20%" height=153>
+                	
+                  <DIV ><? for($i=0;$i<count($news);$i++){if($news[$i]->photo_src!=""){?><IMG height=140 src="<? echo $news[$i]->photo_src;?>" width=150 border=0 style="margin-left:5px; "><? break;}}?></DIV></TD>
+                <TD width="80%">
+                  <TABLE width="100%" border=0 align=left>
+                    <TBODY>
+                    <TR align=left>
+                      <TD width="50%">
+                      	<? for($i=0;$i<4;$i++){?>
+                        	<P class=STYLE3><A target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>" target="_blank"><? echo $news[$i]->short_title;?></A></P>
+						<? }?>
+					  </TD>
+                      <TD valign=top class=STYLE3 width="50%">
+                        <DIV align=left>
+                        	<? for($i=4;$i<8;$i++){?>
+								<P class=STYLE3><A target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>" target="_blank"><? echo $news[$i]->short_title;?></A></P>
 							<? }?>
-						
-						</div>
-						<div class=gd style="background:url(/images/bg/wwjt.jpg) no-repeat;">
-							<? $news1 = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=73 and isadopt=1 order by priority asc, pubdate desc');?>
-							<DIV id=Layer6>
-				      <DIV id=demo3 style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
-				      <TABLE cellSpacing=0 cellPadding=0 border=0>
-				        <TBODY>
-				        <TR>
-				          <TD id=demo4 vAlign=top align=middle>
-				            <TABLE cellSpacing=0 cellPadding=2 border=0>
-				              <TBODY>
-				              <TR align=middle>
-				              	<? for($i=0;$i<count($news1);$i++){?>
-				                <TD><a target="_blank" href="djlist2.php"><? if($news1[$i]->photourl!=""){?><img border=0 width=130 height=90 src="<? echo $news1[$i]->photourl;?>"><? }?></a></TD>
-				                <? }?>
-				              </TR></TBODY></TABLE></TD>
-				          			<TD id=demo5 vAlign=top></TD></TR></TBODY></TABLE></DIV>
-								      <SCRIPT>
-												var speed1=30//ËÙ¶ÈÊıÖµÔ½´óËÙ¶ÈÔ½Âı
-												demo5.innerHTML=demo4.innerHTML
-												function Marquee1(){
-												if(demo5.offsetWidth-demo3.scrollLeft<=0)
-													demo3.scrollLeft-=demo4.offsetWidth
-												else{
-													demo3.scrollLeft++
-													}
-												}
-												var MyMar1=setInterval(Marquee1,speed1)
-												demo3.onmouseover=function() {clearInterval(MyMar1)}
-												demo3.onmouseout=function() {MyMar1=setInterval(Marquee1,speed1)}
-												</SCRIPT>
-								</DIV>
-						</div>
-						<div class=bg>
-							<div class=title style="margin-left:10px;">Ñ§Ï°×ÊÁÏ<div class=more><a target="_blank" href="djlist.php?id=70">¸ü¶à</a></div></div>
-							<div class=title style="margin-left:10px;">Èı·ÖÖÓÂÛÌ³<div class=more><a target="_blank" href="djlist2.php">¸ü¶à</a></div></div>
-							
-							<div style="width:350px; float:left; display:inline;">
-								<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=70 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
-								
-									<? for($i=0;$i<count($news);$i++){?>
-									<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-									<? if($i<2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-									<? }?>
-								
-							</div>
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=71 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
-							
-								<? for($i=0;$i<count($news);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-							<div class=title style="margin-left:10px;">¼´Öª¼´¸Ä<div class=more><a target="_blank" href="djlist.php?id=87">¸ü¶à</a></div></div>
-							<div class=title style="margin-left:10px;">Èı·ÖÖÓ´ğÌâ</div>
-							<div style="width:350px; height:90px; float:left; display:inline;">
-								<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=87 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
-									<? for($i=0;$i<count($news);$i++){?>
-									<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-									<? }?>
-							</div>
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=80 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
-							
-								<? for($i=0;$i<count($news);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-						</div>
-						<div class=bg>
-						<div id=contenttitle style="margin-left:8px;">Õ÷ÇóÒâ¼û</div>
-							<? 
-							$comments = $sqlmanager->GetRecords('select * from smg_dj_comment where news_id=0 order by createtime desc',$pageindex,5);
-							for($i=0;$i<count($comments);$i++){?>
-								<div class=content7>
-									<div class=name><a href="#"><?php echo $comments[$i]->commenter; ?></a></div>	
-									<div class=time><?php echo $comments[$i]->createtime; ?></div>	
-									<div class=context><?php echo strfck($comments[$i]->content); ?></div>	
-								</div>
-								<? }?>						
-							  <div class="pageurl">
-							     <? PrintPageUrl('/djnews/djnews.php',$pageindex,$sqlmanager->pagecount);?>
-							  </div>
-							<form name="commentform" method="post" action="/djnews/djcreatecomment.php">
-							   <div id=content9>
-								   ÓÃ»§£º<input type="text" value="" id="commenter" name="commenter">   	
-							   </div>
-							   <div id=content10>
-								  <div id=plleft>Òâ¼û£º</div><textarea id="commentcontent" name="comment"></textarea>
-							   </div>   
-							   <div id=content11 onClick="return PostComment();"></div>
-							   <input type="hidden" value="<? echo count($data,COUNT_RECURSIVE);?>">
-			<input type="hidden" value="<? echo count($deptname);?>">
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<? include('inc/djbottom.inc.php');?>
-</div>
-</body>
-</html>
+						</DIV></TD></TR>
+           			</TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+     <TR>
+          <TD>
+          	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="æ—¥é£Ÿå…¨æ­ç§˜" inner join smg_subject s on c.subject_id=s.id and s.name="æ—¥å…¨é£Ÿä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 4');?>
+            <TABLE height=68 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD class=index_title>æ—¥é£Ÿå…¨æ­ç§˜ã€€ã€€ã€€<a target="_blank" href="/news/news_list.php?type=sunmmon&id=<?php echo $news[0]->cid; ?>">æ›´å¤š</a></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD height=17>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD width="52%" height=121 rowSpan=2>
+                              <DIV align=center><A 
+                              href="/news/news.php?id=<? echo $news[0]->id;?>" 
+                              target="_blank"><IMG height=106  
+                              src="<? echo $news[0]->photo_src;?>" 
+                              width=106 border=0></A></DIV></TD>
+                            <TD class=STYLE3 width="48%">
+                              <DIV align=left><A style="color:#010156; font-weight:bold;"
+                              href="/news/news.php?id=<? echo $news[0]->id?>" 
+                              target="_blank"><? echo $news[0]->short_title;?></A></DIV></TD></TR>
+                          <TR>
+                            <TD>
+                              <DIV class=style8 align=left><A  style="font-size:12px;"
+                              href="/news/news.php?id=<? echo $news[0]->id?>"
+                              target="_blank"><? echo $news[0]->description;?></A></DIV></TD></TR></TBODY></TABLE></TD>
+                      <TD height=17>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD width="52%" height=121 rowSpan=2>
+                              <DIV align=center><A 
+                              href="/news/news.php?id=<? echo $news[1]->id;?>" 
+                              target="_blank"><IMG height=106  
+                              src="<? echo $news[1]->photo_src;?>" 
+                              width=106 border=0></A></DIV></TD>
+                            <TD class=STYLE3 width="48%">
+                              <DIV align=left><A style="color:#010156; font-weight:bold;"
+                              href="/news/news.php?id=<? echo $news[1]->id;?>" 
+                              target="_blank"><? echo $news[1]->short_title;?></A></DIV></TD></TR>
+                          <TR>
+                            <TD>
+                              <DIV class=style8 align=left><A style="font-size:12px;"
+                              href="/news/news.php?id=<? echo $news[1]->id;?>" 
+                              target="_blank"><? echo $news[1]->description;?></A></DIV></TD></TR></TBODY></TABLE></TD></TR>
+                    <TR>
+                      <TD width="55%">
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD width="52%" height=121 rowSpan=2>
+                              <DIV align=center><A 
+                              href="/news/news.php?id=<? echo $news[2]->id;?>" 
+                              target="_blank"><IMG height=106 
+                              src="<? echo $news[2]->photo_src;?>" 
+                              width=106 border=0></A></DIV></TD>
+                            <TD class=STYLE3 width="48%">
+                              <DIV align=left><A style="color:#010156; font-weight:bold;"
+                              href="/news/news.php?id=<? echo $news[2]->id;?>" 
+                              target="_blank"><? echo $news[2]->short_title;?></A></DIV></TD></TR>
+                          <TR>
+                            <TD>
+                              <DIV class=style8 align=left><A style="font-size:12px;"
+                              href="/news/news.php?id=<? echo $news[2]->id;?>" 
+                              target="_blank"><? echo $news[2]->description;?></A></DIV></TD></TR></TBODY></TABLE></TD>
+                      <TD width="45%">
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD width="52%" height=121 rowSpan=2>
+                              <DIV align=center><A 
+                              href="/news/news.php?id=<? echo $news[3]->id;?>"
+                              target="_blank"><IMG height=106  
+                              src="<? echo $news[3]->photo_src;?>" 
+                              width=106 border=0></A></DIV></TD>
+                            <TD class=STYLE3 width="48%">
+                              <DIV align=left><A style="color:#010156; font-weight:bold;"
+                              href="/news/news.php?id=<? echo $news[3]->id;?>" 
+                              target="_blank"><? echo $news[3]->short_title;?></A></DIV></TD></TR>
+                          <TR>
+                            <TD>
+                              <DIV class=style8 align=left>
+                              	<A style="font-size:12px;" href="/news/news.php?id=<? echo $news[3]->id;?>" target="_blank">
+									<? echo $news[3]->description;?>
+								</A>
+							 </DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR> 
+   		
+     <TR>
+     	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="æ„Ÿå—æ—¥å…¨é£Ÿ" inner join smg_subject s on c.subject_id=s.id and s.name="æ—¥å…¨é£Ÿä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 6');?>
+          <TD ><div style="padding-top:5px;" class=index_title>æ„Ÿå—æ—¥å…¨é£Ÿã€€ã€€ã€€<a target="_blank" href="/news/news_list.php?type=sunmoon&id=<?php echo $news[0]->cid; ?>">æ›´å¤š</a></div></TD></TR>
+            <TABLE width="100%" border=0>
+              <TBODY>
+              <TR valign="top">
+                <TD width="25%" height=100>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[0]->id;?>" 
+                  target="_blank"><IMG height=100  
+                  src="<? echo $news[0]->photo_src;?>" 
+                  width=160 border=0></A></DIV></TD>
+                <TD width="25%" height=100>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[1]->id;?>" 
+                  target="_blank"><IMG height=100  
+                  src="<? echo $news[1]->photo_src;?>" 
+                  width=160 border=0></A></DIV></TD>
+                <TD width="25%" height=100>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[2]->id;?>" 
+                  target="_blank"><IMG height=100  
+                  src="<? echo $news[2]->photo_src;?>" 
+                  width=160 border=0></A></DIV></TD></TR>
+              <TR valign="top">
+                <TD height=20>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[0]->id;?>" 
+                  target="_blank"><? echo $news[0]->short_title;?></A></DIV></TD>
+                <TD height=20>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[1]->id;?>" 
+                  target="_blank"><? echo $news[1]->short_title;?></A></DIV></TD>
+                <TD height=20>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[2]->id;?>" 
+                  target="_blank"><? echo $news[2]->short_title;?></A></DIV></TD></TR>
+				 <TR valign="top">
+                <TD width="25%" height=100>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[3]->id;?>" 
+                  target="_blank"><IMG height=100  
+                  src="<? echo $news[3]->photo_src;?>" 
+                  width=160 border=0></A></DIV></TD>
+                <TD width="25%" height=100>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[4]->id;?>" 
+                  target="_blank"><IMG height=100  
+                  src="<? echo $news[4]->photo_src;?>" 
+                  width=160 border=0></A></DIV></TD>
+                <TD width="25%" height=100>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[5]->id;?>" 
+                  target="_blank"><IMG height=100  
+                  src="<? echo $news[5]->photo_src;?>" 
+                  width=160 border=0></A></DIV></TD></TR>
+              <TR valign="top">
+                <TD height=20>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[3]->id;?>" 
+                  target="_blank"><? echo $news[3]->short_title;?></A></DIV></TD>
+                <TD height=20>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[4]->id;?>" 
+                  target="_blank"><? echo $news[4]->short_title;?></A></DIV></TD>
+                <TD height=20>
+                  <DIV align=center><A 
+                  href="/news/news.php?id=<? echo $news[5]->id;?>" 
+                  target="_blank"><? echo $news[5]->short_title;?></A></DIV></TD></TR>		  
+		</TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
 
+      <TABLE cellSpacing=0 cellPadding=0 width=1000 align=center border=0>
+        <TBODY>
+        <TR></TR></TBODY>
+      <TABLE width=1000 border=0>
+        <TBODY>
+        <TR></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=770 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD><IMG height=129 
+            src="botton.jpg" width=770 
+            border=0></TD>
+</TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!--mark (  enorth_down ) parse begin-->
+<STYLE type=text/css>TD {
+	FONT-SIZE: 12px;
+}
+</STYLE>
+
+</TABLE>
+<div id="mm">
+</div>
+<SCRIPT language=javascript 
+src="dw2_files/sta_collection.js"></SCRIPT>
+	
+</BODY></HTML>

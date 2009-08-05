@@ -1,0 +1,45 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0426)http://googleads.g.doubleclick.net/pagead/ads -->
+<HTML><HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<STYLE>A:link {
+	COLOR: #ffffff
+}
+A:visited {
+	COLOR: #ffffff
+}
+A:hover {
+	COLOR: #ffffff
+}
+A:active {
+	COLOR: #ffffff
+}
+</STYLE>
+
+<SCRIPT><!--
+function ss(w,id) {window.status = w;a = document.getElementById(id);if (a) {bi = a.href.indexOf("&nm="); if (bi < 1) {a.href += "&nm=1";return true;}c = a.href.substring(0, bi+4); d = a.href.substring(bi+4, a.href.length);ei = d.indexOf("&");if (ei < 0) {f = d;r = '';} else {f = d.substring(0, ei);r = d.substring(ei, d.length); }var g = parseInt(f);  g++;a.href= c+g+r; }return true;}function st(id) {var a = document.getElementById(id);if (a) {a.myt = (new Date()).getTime();}}function su(id) {var a = document.getElementById(id);var b = (new Date()).getTime();if (a && a.myt && b) {var t = b - a.myt;var bi = a.href.indexOf("&clkt=");if (bi > 0) {var c = a.href.substring(0, bi+6); var d = a.href.substring(bi+6, a.href.length);var ei = d.indexOf("&");var r = '';if (ei >= 0)r = d.substring(ei, d.length);a.href = c + t + r; } else {a.href += "&clkt=" + t;}}return true;}function cs(){window.status='';} function jcc(a) {pha=document.getElementById(a); nc=pha.href.indexOf('&jca='); if(nc>=1) return; jca=(614)+(6818)-(8); if (a=='aw0') {jca+=(-6274);} else {jca=0;} phb=pha.href+'&jca='+jca; pha.href=phb;} function ha(a){  su(a); jcc(a); }function ca(a) {  su(a); jcc(a); window.open(document.getElementById(a).href);}function ga(o,e) {if (document.getElementById) {a=o.id.substring(1);p="";r="";g=e.target;if (g) {t=g.id;f=g.parentNode;if (f) {p=f.id;h=f.parentNode;if (h)r=h.id;}} else {h=e.srcElement;f=h.parentNode;if (f)p=f.id;t=h.id;}if (t==a||p==a||r==a)return true;su(a); jcc(a); window.open(document.getElementById(a).href);}}
+//-->
+</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.6001.18702"></HEAD>
+<BODY leftMargin=0 topMargin=0 marginheight="0" marginwidth="0"><A id=aw0 
+onfocus="ss('键连至 www.shycmr.com','aw0')" 
+onmouseover="return ss('键连至 www.shycmr.com','aw0')" onmouseout=cs() 
+onmousedown="st('aw0')" onclick="ha('aw0')" 
+href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=B8Rta_LsHSr7lH5fuvgOV0syUDJTqx4sBrIaVnQvAjbcBsJFyEAEYASDV6dUROABQz56cxf7_____AWCd0dSBsAWyARBkdWFud3UuOHdpc2guY29tugEJNzI4eDkwX2FzyAEC2gEYaHR0cDovL2R1YW53dS44d2lzaC5jb20vqQKH8of63K2DPsgC0s2NCqgDAcgDBegDpgXoA-EE9QMAAAAE&amp;num=1&amp;sig=AGiWqtyMjkcP-3600GdVTFCUEHyb50hGhw&amp;client=ca-pub-6629440442603157&amp;adurl=http://www.shycmr.com/default.htm" 
+target=_blank><IMG border=0 src="ads_files/imgad.gif" width=728 height=79></A>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width=728 bgColor=#336699 
+  height=11><TBODY>
+  <TR>
+    <TD align=left><FONT style="LINE-HEIGHT: 8px; FONT-SIZE: 9px" 
+      color=#ffffff face=arial,sans-serif>&nbsp;<A 
+      onfocus="ss('键连至 www.shycmr.com','aw0')" 
+      onmouseover="return ss('键连至 www.shycmr.com','aw0')" onmouseout=cs() 
+      onmousedown="st('aw0')" onclick="ha('aw0')" 
+      href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=B8Rta_LsHSr7lH5fuvgOV0syUDJTqx4sBrIaVnQvAjbcBsJFyEAEYASDV6dUROABQz56cxf7_____AWCd0dSBsAWyARBkdWFud3UuOHdpc2guY29tugEJNzI4eDkwX2FzyAEC2gEYaHR0cDovL2R1YW53dS44d2lzaC5jb20vqQKH8of63K2DPsgC0s2NCqgDAcgDBegDpgXoA-EE9QMAAAAE&amp;num=1&amp;sig=AGiWqtyMjkcP-3600GdVTFCUEHyb50hGhw&amp;client=ca-pub-6629440442603157&amp;adurl=http://www.shycmr.com/default.htm" 
+      target=_blank>http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=B8Rta_LsHSr7lH5fuvgOV0syUDJTqx4sBrIaVnQvAjbcBsJFyEAEYASDV6dUROABQz56cxf7_____AWCd0dSBsAWyARBkdWFud3UuOHdpc2guY29tugEJNzI4eDkwX2FzyAEC2gEYaHR0cDovL2R1YW53dS44d2lzaC5jb20vqQKH8of63K2DPsgC0s2NCqgDAcgDBegDpgXoA-EE9QMAAAAE&amp;num=1&amp;sig=AGiWqtyMjkcP-3600GdVTFCUEHyb50hGhw&amp;client=ca-pub-6629440442603157&amp;adurl=http://www.shycmr.com/default.htm</A></FONT></TD>
+    <TD align=right><FONT style="LINE-HEIGHT: 13px; FONT-SIZE: 9px" 
+      color=#ffffff face=arial,sans-serif><A 
+      href="http://services.google.com/feedback/abg?url=http://duanwu.8wish.com/&amp;hl=zh-CN&amp;client=ca-pub-6629440442603157&amp;adU=www.shycmr.com&amp;adT=ImageAd&amp;done=1" 
+      target=_blank>意见反馈 - Google 
+提供的广告</A>&nbsp;</FONT></TD></TR></TBODY></TABLE></BODY></HTML>
