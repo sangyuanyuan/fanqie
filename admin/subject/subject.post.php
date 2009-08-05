@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once "../../frame.php";
 	$subject = new table_class('smg_subject');
 	$subject->update_attributes($_POST['subject'],false);

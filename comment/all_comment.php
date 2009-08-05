@@ -12,7 +12,6 @@
 		use_jquery();
 		js_include_once_tag("all_comment");
 		$db = get_db();
-	
   ?>
 	
 </head>

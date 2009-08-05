@@ -1,240 +1,208 @@
-<?
-	require_once('../libraries/tablemanager.class.php');
-  require_once('../libraries/sqlrecordsmanager.php');
-  require_once('../inc/pubfun.inc.php');
-  $sqlmanager = new SqlRecordsManager();
-  $pageindex = isset($_REQUEST['pageindex']) ? $_REQUEST['pageindex']: 1;
-	$deptsort=$sqlmanager->GetRecords('SELECT sum(s.clickcount) as djl,d.name FROM smg_news s right join smg_dept d on s.dept_id=d.id where main_cate_id in (63,64,65,66,67,68,69,70,71,72,73,74) group by s.dept_id order by djl desc',1,10);
-
+锘�<?php require_once('../../frame.php');
+	$db=get_db();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
-	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -党建新闻列表</title>
-	<link href="/css/dj.css" rel="stylesheet" type="text/css">
-	<script language="javascript" src="/js/smg.js"></script>
-	<script type="text/javascript" language="javascript">
-		var dept_id = RequestCookies("smg_dept","");
-		AddSiteClickcount(dept_id);
-	</script>
-</head>
-<body>
-	<div id=bodys>
-			
-		<? include('inc/djtop.inc.php');?>
-					<div id=right>
-						<div class=gd style="background:url(/images/bg/hdjy.jpg) no-repeat;">
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=72 and isadopt=1 order by priority asc, pubdate desc',1,6);?>
-							<DIV id=Layer5>
-				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
-				      <TABLE cellSpacing=0 cellPadding=0 border=0>
-				        <TBODY>
-				        <TR>
-				          <TD id=demo1 vAlign=top align=middle>
-				            <TABLE cellSpacing=0 cellPadding=2 border=0>
-				              <TBODY>
-				              <TR align=middle>
-				              	<? for($i=0;$i<count($news);$i++){?>
-				                <TD><a target="_blank" href="djlist.php?id=72"><img border=0 width=130 height=90 src="<? echo $news[$i]->photourl; ?>"></a></TD>
-				                <? }?>
-				              </TR></TBODY></TABLE></TD>
-				          			<TD id=demo2 vAlign=top></TD></TR></TBODY></TABLE></DIV>
-								      <SCRIPT>
-												var speed=30//速度数值越大速度越慢
-												demo2.innerHTML=demo1.innerHTML
-												function Marquee(){
-												if(demo2.offsetWidth-demo.scrollLeft<=0)
-												demo.scrollLeft-=demo1.offsetWidth
-												else{
-												demo.scrollLeft++
-												}
-												}
-												var MyMar=setInterval(Marquee,speed)
-												demo.onmouseover=function() {clearInterval(MyMar)}
-												demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
-												</SCRIPT>
-								</DIV>
-						</div>
-						<div class=title>领导讲话<div class=more><a target="_blank" href="djlist.php?id=63">更多</a></div></div>
-						<div class=title>步骤安排<div class=more><a target="_blank" href="djlist.php?id=67">更多</a></div></div>
-						<div style="width:350px; float:left; display:inline;">
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=63 and isadopt=1 order by priority asc, pubdate desc',1,6);
-									$photourl="";
-									for($i=0;$i<count($news);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$news[$i]->photourl;	
-									 }
-									}
-							?>
-							<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-							
-								<? 	
-								for($i=0;$i<count($news);$i++){?>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-							
-						</div>
+<HEAD>
+	<TITLE>楹﹀厹涓撻</TITLE>
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="css/index.css" type=text/css rel=stylesheet>
+<style type="text/css">
+<!--
+#lovexin12,#lovexin14{
+   width:116px;
+   height:271px;
+}
+html,body{
+  }
+#mm{
+  }
+-->
 
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=67 and isadopt=1 order by priority asc, pubdate desc',1,6); 
-								$photourl="";
-									for($i=0;$i<count($news);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$news[$i]->photourl;	
-									 }
-									}
-							?>
-							<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-							
-								<?
-								for($i=0;$i<count($news);$i++){?>
-									<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-							
-						<div class=bg>
-							<div class=title style="margin-left:10px;">文件摘编<div class=more><a target="_blank" href="djlist.php?id=68">更多</a></div></div>
-							<div class=title style="margin-left:10px;">经验介绍<div class=more><a target="_blank" href="djlist.php?id=69">更多</a></div></div>
-							<div style="width:350px; float:left; display:inline;">
-								<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=68 and isadopt=1 order by priority asc, pubdate desc',1,6);
-									$photourl="";
-									for($i=0;$i<count($news);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$news[$i]->photourl;	
-									 }
-									}
-								?>
-								<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-									
-										<? 	
-										for($i=0;$i<count($news);$i++){?>
-										<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-										<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-										<? }?>
-									
-							</div>
-						<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=69 and isadopt=1 order by priority asc, pubdate desc',1,6); 
-								$photourl="";
-									for($i=0;$i<count($news);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$news[$i]->photourl;	
-									 }
-									}
-						?>
-						<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-						
-							<?
-							for($i=0;$i<count($news);$i++){?>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-							<? }?>
-						
-						</div>
-						<div class=gd style="background:url(/images/bg/wwjt.jpg) no-repeat;">
-							<? $news1 = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=73 and isadopt=1 order by priority asc, pubdate desc');?>
-							<DIV id=Layer6>
-				      <DIV id=demo3 style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
-				      <TABLE cellSpacing=0 cellPadding=0 border=0>
-				        <TBODY>
-				        <TR>
-				          <TD id=demo4 vAlign=top align=middle>
-				            <TABLE cellSpacing=0 cellPadding=2 border=0>
-				              <TBODY>
-				              <TR align=middle>
-				              	<? for($i=0;$i<count($news1);$i++){?>
-				                <TD><a target="_blank" href="djlist2.php"><? if($news1[$i]->photourl!=""){?><img border=0 width=130 height=90 src="<? echo $news1[$i]->photourl;?>"><? }?></a></TD>
-				                <? }?>
-				              </TR></TBODY></TABLE></TD>
-				          			<TD id=demo5 vAlign=top></TD></TR></TBODY></TABLE></DIV>
-								      <SCRIPT>
-												var speed1=30//速度数值越大速度越慢
-												demo5.innerHTML=demo4.innerHTML
-												function Marquee1(){
-												if(demo5.offsetWidth-demo3.scrollLeft<=0)
-													demo3.scrollLeft-=demo4.offsetWidth
-												else{
-													demo3.scrollLeft++
-													}
-												}
-												var MyMar1=setInterval(Marquee1,speed1)
-												demo3.onmouseover=function() {clearInterval(MyMar1)}
-												demo3.onmouseout=function() {MyMar1=setInterval(Marquee1,speed1)}
-												</SCRIPT>
-								</DIV>
-						</div>
-						<div class=bg>
-							<div class=title style="margin-left:10px;">学习资料<div class=more><a target="_blank" href="djlist.php?id=70">更多</a></div></div>
-							<div class=title style="margin-left:10px;">三分钟论坛<div class=more><a target="_blank" href="djlist2.php">更多</a></div></div>
-							
-							<div style="width:350px; float:left; display:inline;">
-								<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=70 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
-								
-									<? for($i=0;$i<count($news);$i++){?>
-									<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-									<? if($i<2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-									<? }?>
-								
-							</div>
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=71 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
-							
-								<? for($i=0;$i<count($news);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-							<div class=title style="margin-left:10px;">即知即改<div class=more><a target="_blank" href="djlist.php?id=87">更多</a></div></div>
-							<div class=title style="margin-left:10px;">三分钟答题</div>
-							<div style="width:350px; height:90px; float:left; display:inline;">
-								<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=87 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
-									<? for($i=0;$i<count($news);$i++){?>
-									<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-									<? }?>
-							</div>
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=80 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
-							
-								<? for($i=0;$i<count($news);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
-								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-						</div>
-						<div class=bg>
-						<div id=contenttitle style="margin-left:8px;">征求意见</div>
-							<? 
-							$comments = $sqlmanager->GetRecords('select * from smg_dj_comment where news_id=0 order by createtime desc',$pageindex,5);
-							for($i=0;$i<count($comments);$i++){?>
-								<div class=content7>
-									<div class=name><a href="#"><?php echo $comments[$i]->commenter; ?></a></div>	
-									<div class=time><?php echo $comments[$i]->createtime; ?></div>	
-									<div class=context><?php echo strfck($comments[$i]->content); ?></div>	
-								</div>
-								<? }?>						
-							  <div class="pageurl">
-							     <? PrintPageUrl('/djnews/djnews.php',$pageindex,$sqlmanager->pagecount);?>
-							  </div>
-							<form name="commentform" method="post" action="/djnews/djcreatecomment.php">
-							   <div id=content9>
-								   用户：<input type="text" value="" id="commenter" name="commenter">   	
-							   </div>
-							   <div id=content10>
-								  <div id=plleft>意见：</div><textarea id="commentcontent" name="comment"></textarea>
-							   </div>   
-							   <div id=content11 onClick="return PostComment();"></div>
-							   <input type="hidden" value="<? echo count($data,COUNT_RECURSIVE);?>">
-			<input type="hidden" value="<? echo count($deptname);?>">
-							</form>
-						</div>
-					</div>
-				</div>
+ul,li{margin:0px; padding:0px;list-style:none;}
+.sqBorder {width:700px; height:80px; padding:10px; }
+.scroll_div {width:700px; height:80px; margin:0 auto; overflow: hidden; white-space: nowrap;}
+.scroll_div img{width:98px;height:80px; border: 0; margin: auto 8px;}
+#scroll_begin, #scroll_end, #scroll_begin ul, #scroll_end ul, #scroll_begin ul li, #scroll_end ul li{display:inline;}/*璁剧疆ul鍜宭i妯帓*/
+</style>
+</HEAD>
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width=770 align=center border=0>
+
+  <TBODY>
+  <TR>
+    <TD><IMG height=140 src="css/logotop.jpg" width=770></TD>
+    </TR></TBODY></TABLE>
+<div style="width:770px; background:url(css/bg2.jpg) repeat-x; margin:0 auto; margin-bottom:50px;">
+<TABLE style="background:url(css/bg2.jpg)" cellSpacing=0 cellPadding=0 width=770 align=center border=0 >
+  <tr valign=top>
+  	<td id="show_video" width=330>
+  		<div style="margin-top:15px; margin-left:25px; float:left;display:inline;">
+	  		<?php
+				  $video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="楹﹀厹瑙嗛" inner join smg_subject s on c.subject_id=s.id and s.name="楹﹀厹涓撻" order by n.priority asc, n.created_at desc limit 3');
+				  show_video_player(305,203,$video[0]->photourl,$video[0]->videourl);
+				  for($i=1;$i<count($video);$i++){
+			?>
+			<div style="width:305px; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" href="/video/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
+			<? }?>
+		</div>
+  	</td>
+  	<? $news=$db->query('select n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="鎴戞槸楹﹀厹" inner join smg_subject s on c.subject_id=s.id and s.name="楹﹀厹涓撻" order by n.priority asc, n.last_edited_at desc limit 1');?>
+  	<td valign=top align="right" width=440 id="i_am_mcdull">
+  		<div class=index_title></div>
+		<div style="width:405px; height:220px; margin-top:5px; margin-left:25px; font-size:16px; overflow:hidden; color:#ec805a; background:url(css/box1.jpg); float:left; display:inline;">
+			<div style="width:200px; height:220px; margin-top:5px; overflow:hidden; line-height:20px; font-weight:bold; margin-left:10px; word-break:break-all; float:left; display:inline;">
+				<a target="_blank" style="TEXT-DECORATION: none" href="/news/news.php?id=<? echo $news[0]->id;?>"><? echo $news[0]->description;?></a>
 			</div>
 		</div>
-		<? include('inc/djbottom.inc.php');?>
+  	</td>
+  </tr>
+  <tr valign=top>
+  	<td align=left colspan=2 id="mcdull_picture">
+  		<div class=title2></div>
+  		<div style="width:98%; height:80px; float:left; display:inline;">
+			<?php
+				$photo = $db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="楹﹀厹鍥剧墖娆ｈ祻" inner join smg_subject s on c.subject_id=s.id and s.name="楹﹀厹涓撻" order by n.priority asc,n.created_at desc limit 7');
+	        ?>
+	        <script type="text/javascript"> 
+						function ScrollImgLeft(){
+							var speed=20
+							var scroll_begin = document.getElementById("scroll_begin");
+							var scroll_end = document.getElementById("scroll_end");
+							var scroll_div = document.getElementById("scroll_div");
+							scroll_end.innerHTML=scroll_begin.innerHTML
+							  function Marquee(){
+							    if(scroll_end.offsetWidth-scroll_div.scrollLeft<=0)
+							      scroll_div.scrollLeft-=scroll_begin.offsetWidth
+							    else
+							      scroll_div.scrollLeft++
+							  }
+							var MyMar=setInterval(Marquee,speed)
+							  scroll_div.onmouseover=function() {clearInterval(MyMar)}
+							  scroll_div.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+						}		
+					</script> 
+	        <div style="text-align:center">
+					  <div class="sqBorder">
+					  <!--#####婊氬姩鍖哄煙#####-->
+					    <div id="scroll_div" class="scroll_div">
+					      <div id="scroll_begin">
+					        <ul>
+					        	<? for($i=0;$i<count($photo);$i++){?>
+					          <li><a href="<? echo $photo[$i]->url;?>"><img width=75 height=75 src="<? echo $photo[$i]->src;?>"  /></a></li>
+					          <? }?>
+					        </ul>
+					      </div>
+					      <div id="scroll_end"></div>
+					    </div>
+					  <!--#####婊氬姩鍖哄煙#####-->
+					  </div>
+					  <script type="text/javascript">ScrollImgLeft();</script>
+					</div>
+		</div>
+  	</td>
+  </tr>
+</table>
+<table  cellSpacing=0 cellPadding=0 width=770 align=center border=0>
+  <tr>
+  	<td id="mail_to_mcdull" width=200>
+  		<div style="width:200px; height:305px; margin-left:22px; margin-top:5px; background:url(css/tomcdull.jpg); padding-top:45px;">
+			<? $newslist=$db->query('select * from smg_comment where resource_type="mcdull" order by created_at desc');?>
+	  		<marquee height="300" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+					<? for($i=0; $i<count($newslist); $i++){?>
+						<div style="width:100%; margin-left:10px; margin-bottom:10px; overflow:hidden; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->nick_name;?></span>璇达細<a style="text-decoration:none; color:#000000;" target="_blank" href="/news/news.php?id=16825"><? echo $newslist[$i]->comment;?></a></div>
+					<? }?>
+			</marquee>
+		</div>
+		<div id=s_right name="comment_to_mcdull">
+			<form name="commentform" method="post" action="/pub/pub.post.php">
+				<div id=subject_comment>鏄电О锛�<input type="text" name="post[nick_name]" id="commenter"/><br />
+				<div id=comment>鍐呭锛�</div><textarea id="commentcontent" name="post[comment]"></textarea></div>
+				<input type="hidden" name="type" value="comment">
+				<input type="hidden" id="resource_type" name="post[resource_type]" value="mcdull">
+				<button id=btn type="submit">鍙戙��琛�</button>
+			</form>
+		</div>
+  	</td>
+  	<td valign=top>
+  		<table>
+  			<tr>
+  				<td id="mcdull_news">
+  					<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="楹﹀厹鏂伴椈" inner join smg_subject s on c.subject_id=s.id and s.name="楹﹀厹涓撻" order by n.priority asc, n.last_edited_at desc limit 10');?>
+			  		<div id=title3></div>
+			  		<div id="box1">
+								<? for($i=0; $i<count($news); $i++){?>
+									<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
+								<? }?>
+			     	</div>
+					<div id="pic_box">
+						<?php
+							for ($i=0;$i<7;$i++)
+							{
+								$picsurl[]=$news[$i]->photo_src;
+								$picslink[]="/news/news.php?id=".$news[$i]->id;
+								$picstext[]=$news[$i]->short_title;
+							}
+						?>
+						<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+						<div id="focus_01"></div> 
+						<script type="text/javascript"> 
+							var pic_width=210; //鍥剧墖瀹藉害
+							var pic_height=180; //鍥剧墖楂樺害
+							var pics="<?php echo implode(',',$picsurl);?>";
+							var mylinks="<?php echo implode(',',$picslink);?>";
+							
+							var texts="<?php echo implode(',',$picstext);?>";
+			 
+							var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "210", "210", "6","#FFFFFF");
+							picflash.addParam('wmode','opaque');
+							picflash.addVariable("picurl",pics);
+							picflash.addVariable("piclink",mylinks);
+							picflash.addVariable("pictext",texts);				
+							picflash.addVariable("pictime","5");
+							picflash.addVariable("borderwidth","210");
+							picflash.addVariable("borderheight","210");
+							picflash.addVariable("borderw","false");
+							picflash.addVariable("buttondisplay","true");
+							picflash.addVariable("textheight","20");
+							picflash.addVariable("textcolor","#FF0000");	
+							picflash.addVariable("pic_width",pic_width);
+							picflash.addVariable("pic_height",pic_height);
+							
+							picflash.write("focus_01");				
+						</script>
+			     	</div>
+  				</td>
+  			</tr>
+  			<tr>
+  				<td id="mcdull_information">
+  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="楹﹀厹璧勬枡棣�" inner join smg_subject s on c.subject_id=s.id and s.name="楹﹀厹涓撻" order by n.priority asc, n.last_edited_at desc limit 7')?>
+  					<div id=title4></div>
+  					<div id="box2">
+				  		<? for($i=0; $i<count($news); $i++){?>
+							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
+						<? }?>
+			        </div>	
+			  	</td>
+  			</tr>
+			<tr>
+  				<td id="mcdull_download">
+  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="楹﹀厹涓嬭浇鍖�" inner join smg_subject s on c.subject_id=s.id and s.name="楹﹀厹涓撻" order by n.priority asc, n.last_edited_at desc limit 7');?>
+  					<div id=title5></div>
+  					<div id="box3">
+				  		<? for($i=0; $i<count($news); $i++){?>
+							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
+						<? }?>
+			        </div>	
+			  	</td>
+  			</tr>
+  		</table>
+  	</td>
+  </tr>
+</table>
+</div>
+<div id="mm">
 </div>
 </body>
 </html>
-
+	

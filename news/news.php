@@ -89,8 +89,7 @@
 			<div class=abouttitle>更多关于“<?php echo mb_substr(strip_tags($record[0]->short_title),0,36,"utf-8");?>”的新闻</div>
 			<div class=aboutcontent style="padding-bottom:10px;">
 				<div class=title>相关链接</div>
-					<?php for($i=0;$i<count($about);$i++){
-					?>
+					<?php for($i=0;$i<count($about);$i++){?>
 				<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
 							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
