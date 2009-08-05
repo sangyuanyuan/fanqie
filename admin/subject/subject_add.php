@@ -5,24 +5,22 @@
 		<title>添加专题</title>
 		<?php
 			require_once('../../frame.php');
-			#css_include_tag("subject.css","contextmenu/jquery.contextmenu","thickbox");			
 			use_jquery();
 			validate_form('form_add_subject');
-			#js_include_tag('tooltip','jquery.contextmenu','admin/subject_add','thickbox');
 		?>
 	</head>
 	<body>
 		<form method="post" name="add_subject" id="form_add_subject" action="subject.post.php">
 			<div id="top_info">
 				<p>
-					<label for="subject_name">专题名称:</label><input type="text" name="subject[name]" id="subject_name" class="requiered">					
+					<label for="subject_name">专题名称:</label><input type="text" name="subject[name]" id="subject_name" class="required">					
 				</p>
 				<p>
-					<label for="subject_identity">专题标识:</label><input type="text" name="subject[identity]" id="subject_identity">					
+					<label for="subject_identity">专题标识:</label><input type="text" name="subject[identity]" id="subject_identity" class="required">					
 				</p>
 				<p>
 					<label>专题模板:</label>
-					<select name="subject[templet_name]" id="templet_type">
+					<select name="subject[templet_name]" id="templet_type"  class="required">
 						<option value="templet1" selected="selected">专题模板1</option>
 						<option value="templet2" >专题模板2</option>
 						<option value="templet3" >专题模板3</option>	
