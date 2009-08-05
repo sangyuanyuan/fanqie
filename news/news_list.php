@@ -2,6 +2,7 @@
 	require_once('../frame.php');
 	$id=$_REQUEST['id'];
 	$tags=urldecode($_REQUEST['tags']);
+	$type=$_REQUEST['type'];
 	if(($id==""||$id==null)&&($tags==""||$tags==null)){die('没有找到网页');}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -15,7 +16,7 @@
 		use_jquery();
 		js_include_once_tag('news_list');
 		$db = get_db();
-		if($id!=""&&$id!=null)
+		if($id!=""&&$id!=null&&$type=="")
 		{
 			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
 		}
@@ -23,9 +24,13 @@
 		{
 			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."'";
 		}
-		else
+		else if($id!=""&&$type!="")
 		{
-				$sql="select title,platform,id,last_edited_at,category_id from smg_news where is_adopt=1 order by last_edited_at desc";
+			$sql="select n.id,n.title,n.last_edited_at,c.name as cname from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type='news' and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.id=".id." inner join smg_subject s on c.subject_id=s.id and s.identity='".$type."' order by n.priority asc, n.last_edited_at desc";
+		}
+		else 
+		{
+			$sql="select title,platform,id,last_edited_at,category_id from smg_news where is_adopt=1 order by last_edited_at desc";	
 		}
 		
 		$record=$db->paginate($sql,30);		

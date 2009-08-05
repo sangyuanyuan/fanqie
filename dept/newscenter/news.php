@@ -22,13 +22,13 @@
 		$news = get_dept_news($news_id);
 		if($news[0]->news_type==3)//url链接类新闻
 		{
-			redirect($news->target_url);
+			redirect($news[0]->target_url);
 			exit;
 		}
 		//文件新闻
 		if($news[0]->news_type==2)
 		{
-			redirect($news->file_name);
+			redirect($news[0]->file_name);
 			exit; 	
 		}
 	?>
@@ -71,7 +71,7 @@
 			<div class="box3">
 				用户：<input type="text" id="commenter" name="commenter"><br>
 	        	评论：<textarea id="comment_content" name="comment" cols="60" rows="5"></textarea></br>
-	        	<input type="submit" name="Submit" id="submit_comment" value="发表">
+	        	<input type="submit" name="Submit"  id="submit_comment" value="发表">
 				<input type="hidden" id="resource_id" value="<?php echo $news_id;?>">
 				<input type="hidden" id="resource_type" value="news">
 			</div>
