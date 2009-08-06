@@ -128,7 +128,6 @@
 									}
 								}else{
 									$sql = 'select * from smg_zongcai_vote_record where vote_id='.$vote[0]->id.' and type="'.$type.'" and ip="'.$ip.'"';
-									echo $sql;
 									$v_r = $db->query($sql);
 									if(isset($v_r)){
 										$has_vote = 1;
