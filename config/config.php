@@ -2,9 +2,9 @@
 /*
  * system config file
  */
- $debug_tag = true;
+ $debug_tag = false;
 
- $use_localhost = true;
+ $use_localhost = false;
 
  
  /*
@@ -12,6 +12,7 @@
   */
  
 
+ $db_server_name = '172.27.203.82';
 
  if($use_localhost == true){
  	$db_server_name = 'localhost';
@@ -29,8 +30,9 @@
  $db_user_name_bak = 'root';
  $db_password_bak = '';
  $db_code_bak = 'utf8';
-
- #$g_db_log_file = 'e:\log_file.txt';
- $g_news_tags = array('小编加精','公告','业务','群团');
+ 
+ $g_news_tags = array('小编加精','公告','业务','群团','历史头条','小编推荐','生活');
  $g_video_tags = array('视频推荐');
+
+ $g_ucenter_ip = 'http://172.27.203.83:8080';
 ?>

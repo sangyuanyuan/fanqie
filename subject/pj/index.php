@@ -32,7 +32,7 @@
 	COLOR: #993333
 }
 .style8{
-	width:135px; height:112px; line-height:20px; overflow:hidden; float:left; display:inline;
+	width:135px; height:121px; line-height:20px; overflow:hidden; float:left; display:inline;
 }
 .style8 a{
 	font-size:12px;
@@ -99,7 +99,7 @@ html,body{
                       <TD>
                       	<div id=s_left>
 	                      <? 
-						  	$video=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选规则" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 4');
+						  	$video=$db->query('select n.id,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选规则" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 4');
 						  ?>
 						  <? for($i=0;$i<count($video);$i++){?>
 						  <a target="_blank" href="/news/news.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a>
@@ -139,7 +139,7 @@ html,body{
         <TBODY>
         <TR>
           <TD height=86>
-          	<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="最新简讯" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 8');?>
+          	<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选简讯" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 8');?>
             <TABLE height=210 width="100%" border=0>
               <TBODY>
               <TR>
@@ -336,9 +336,9 @@ html,body{
           <TD ><div style="padding-top:5px;" class=index_title>番茄果农排行　　　<a target="_blank" href="/news/newslist.php?id=115"></a></div></TD></TR>
  			<? 
 			$strsql1='select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
-(select count(dept_id) as allcounts,dept_id from smg_news where is_recommend=1  '.$sql.'  group by dept_id) b on a.id=b.dept_id left join  (select count(dept_id) as counts,dept_id from smg_news where is_adopt=1  '.$sql.' group by dept_id) c on b.dept_id = c.dept_id
-left join (select count(dept_id) as p1allcounts,dept_id from smg_images where is_recommend=1  '.$sql2.'  group by dept_id) p1 on a.id=p1.dept_id left join  (select count(dept_id) as p2counts,dept_id from smg_images where is_adopt=1 '.$sql2.'  group by dept_id) p2 on p1.dept_id = p2.dept_id
-left join (select count(dept_id) as v1allcounts,dept_id from smg_video where is_recommend=1  '.$sql2.'  group by dept_id) v1 on a.id=v1.dept_id left join  (select count(dept_id) as v2counts,dept_id from smg_video where is_adopt=1  '.$sql2.' group by dept_id) v2 on v1.dept_id = v2.dept_id
+(select count(dept_id) as allcounts,dept_id from smg_news n where is_recommend=1  '.$sql.'  group by dept_id) b on a.id=b.dept_id left join  (select count(dept_id) as counts,dept_id from smg_news n where is_adopt=1  '.$sql.' group by dept_id) c on b.dept_id = c.dept_id
+left join (select count(dept_id) as p1allcounts,dept_id from smg_images n where is_recommend=1  '.$sql2.'  group by dept_id) p1 on a.id=p1.dept_id left join  (select count(dept_id) as p2counts,dept_id from smg_images n where is_adopt=1 '.$sql2.'  group by dept_id) p2 on p1.dept_id = p2.dept_id
+left join (select count(dept_id) as v1allcounts,dept_id from smg_video n where is_recommend=1  '.$sql2.'  group by dept_id) v1 on a.id=v1.dept_id left join  (select count(dept_id) as v2counts,dept_id from smg_video n where is_adopt=1  '.$sql2.' group by dept_id) v2 on v1.dept_id = v2.dept_id
 order by b.allcounts desc) tb order by a1 desc';
 $clickcount=$db->query($strsql1);
 ?>
@@ -365,8 +365,6 @@ $clickcount=$db->query($strsql1);
 								<tr><td colspan=2 align="right"><a href="ph.php?id=1">更多</a></td></tr>
 							</table>
 						</td>
-					  </TR>
-					  <TR  valign="top">
 					  	<td>
 					  		<table >
 		                		<tr>

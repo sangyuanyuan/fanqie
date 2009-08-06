@@ -19,7 +19,7 @@ p{margin:0px; padding:0px;}
 #t_l_t #menu{width:246px; height:20px; margin-left:24px; background:#000000; float:left; display:inline;}
 #t_l_t #menu .item{width:82px; height:17px; padding-top:3px; line-height:15px;  color:#ffffff; text-align:center; cursor:pointer; float:left; display:inline;}
 #t_l_t .content_tlt{width:271px; height:183px; margin-top:8px; line-height:15px;  margin-left:14px; float:left; display:none;}
-#t_l_t .content_tlt iframe{margin-top:1px; margin-left:24px; float:left; display:inline;}
+#t_l_t .content_tlt iframe{margin-top:1px; margin-left:19px; float:left; display:inline;}
 #t_l_t .list{width:265px; height:80px; margin-top:15px; margin-left:18px;float:left; display:none;}
 #t_l_t .list li{width:245px; height:19px; padding-left:17px; font-size:13px; text-align:left; line-height:17px; overflow:hidden; cursor:pointer; background:url(/images/icon/arrow1.gif) no-repeat 0 3px; float:left; display:inline;}
 #t_l_t .list li a{color:#000000; text-decoration:none;}
