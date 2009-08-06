@@ -128,7 +128,6 @@
 									}
 								}else{
 									$sql = 'select * from smg_zongcai_vote_record where vote_id='.$vote[0]->id.' and type="'.$type.'" and ip="'.$ip.'"';
-									echo $sql;
 									$v_r = $db->query($sql);
 									if(isset($v_r)){
 										$has_vote = 1;
@@ -268,10 +267,6 @@
 			}
 			if(n_time>e_time){
 				alert('投票已过期！');
-				return false;
-			}
-			if($(this).prev().val()==1){
-				alert('你已经投过票了');
 				return false;
 			}
 			var item = $('input[name='+$(this).attr('name')+'][checked]').val();
