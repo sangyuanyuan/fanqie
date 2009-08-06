@@ -48,9 +48,13 @@
 		$upload = new upload_file_class();
 		$upload->save_dir = '/upload/video/';
 		$upload_name = $upload->handle('video_src','filter_video');
-		$news->video_src = '/upload/video/' .$upload_name;
-		$news->video_photo_src = '/upload/video/' .$upload->handle('video_pic','filter_pic');
+		$news->video_src = '/upload/video/' .$upload_name;		
 		$news->video_flag = 1;		
+	}
+	if($_FILES['video_pic']['name'] != ''){
+		$upload = new upload_file_class();
+		$upload->save_dir = '/upload/video/';
+		$news->video_photo_src = '/upload/video/' .$upload->handle('video_pic','filter_pic');
 	}
 	
 	if($_FILES['file_name']['name'] != ''){

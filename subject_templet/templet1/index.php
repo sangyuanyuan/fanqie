@@ -1,33 +1,26 @@
 <?
-	require_once('../libraries/tablemanager.class.php');
-  require_once('../libraries/sqlrecordsmanager.php');
-  require_once('../inc/pubfun.inc.php');
-  $sqlmanager = new SqlRecordsManager();
-  $pageindex = isset($_REQUEST['pageindex']) ? $_REQUEST['pageindex']: 1;
-	$deptsort=$sqlmanager->GetRecords('SELECT sum(s.clickcount) as djl,d.name FROM smg_news s right join smg_dept d on s.dept_id=d.id where main_cate_id in (63,64,65,66,67,68,69,70,71,72,73,74) group by s.dept_id order by djl desc',1,10);
+	require_once('../../frame.php');
+  $db = get_db();
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -µ³½¨ĞÂÎÅÁĞ±í</title>
-	<link href="/css/dj.css" rel="stylesheet" type="text/css">
-	<script language="javascript" src="/js/smg.js"></script>
-	<script type="text/javascript" language="javascript">
-		var dept_id = RequestCookies("smg_dept","");
-		AddSiteClickcount(dept_id);
-	</script>
+	<title>SMG -å…šå»ºæ–°é—»åˆ—è¡¨</title>
+	<?php css_include_tag('subject_templete/templet1');
+		use_jquery();
+		js_include_once_tag('dj');
+	?>
 </head>
 <body>
-	<div id=bodys>
-			
+	<div id=bodys>			
 		<? include('inc/djtop.inc.php');?>
 					<div id=right>
-						<div class=gd style="background:url(/images/bg/hdjy.jpg) no-repeat;">
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=72 and isadopt=1 order by priority asc, pubdate desc',1,6);?>
-							<DIV id=Layer5>
+						<div class=gd style="background:url(/images/bg/hdjy.jpg) no-repeat;border:1px solid">
+							<? $news = $db->query('select n.photo_src,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="æ´»åŠ¨å‰ªå½±" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc,n.last_edited_at desc limit 6');?>
+					<DIV id=Layer5>
 				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
@@ -37,107 +30,103 @@
 				              <TBODY>
 				              <TR align=middle>
 				              	<? for($i=0;$i<count($news);$i++){?>
-				                <TD><a target="_blank" href="djlist.php?id=72"><img border=0 width=130 height=90 src="<? echo $news[$i]->photourl; ?>"></a></TD>
+				                <TD><a target="_blank" href="djlist.php?id=<?php echo $news[0]->cid; ?>"><img border=0 width=130 height=90 src="<? echo $news[$i]->photo_src; ?>"></a></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
 				          			<TD id=demo2 vAlign=top></TD></TR></TBODY></TABLE></DIV>
 								      <SCRIPT>
-												var speed=30//ËÙ¶ÈÊıÖµÔ½´óËÙ¶ÈÔ½Âı
-												demo2.innerHTML=demo1.innerHTML
-												function Marquee(){
-												if(demo2.offsetWidth-demo.scrollLeft<=0)
-												demo.scrollLeft-=demo1.offsetWidth
-												else{
-												demo.scrollLeft++
-												}
-												}
-												var MyMar=setInterval(Marquee,speed)
-												demo.onmouseover=function() {clearInterval(MyMar)}
-												demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
-												</SCRIPT>
+										var speed=30//é€Ÿåº¦æ•°å€¼è¶Šå¤§é€Ÿåº¦è¶Šæ…¢
+										demo2.innerHTML=demo1.innerHTML
+										function Marquee(){
+										if(demo2.offsetWidth-demo.scrollLeft<=0)
+										demo.scrollLeft-=demo1.offsetWidth
+										else{
+										demo.scrollLeft++
+										}
+										}
+										var MyMar=setInterval(Marquee,speed)
+										demo.onmouseover=function() {clearInterval(MyMar)}
+										demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+									 </SCRIPT>
 								</DIV>
 						</div>
-						<div class=title>Áìµ¼½²»°<div class=more><a target="_blank" href="djlist.php?id=63">¸ü¶à</a></div></div>
-						<div class=title>²½Öè°²ÅÅ<div class=more><a target="_blank" href="djlist.php?id=67">¸ü¶à</a></div></div>
+						<div class=title>é¢†å¯¼è®²è¯<div class=more><a target="_blank" href="djlist.php?id=<?php echo $ldjh[0]->cid;?>">æ›´å¤š</a></div></div>
+						<div class=title>æ­¥éª¤å®‰æ’<div class=more><a target="_blank" href="djlist.php?id=<?php echo $bzap[0]->cid;?>">æ›´å¤š</a></div></div>
 						<div style="width:350px; float:left; display:inline;">
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=63 and isadopt=1 order by priority asc, pubdate desc',1,6);
-									$photourl="";
-									for($i=0;$i<count($news);$i++){
+							<? 		$photourl="";
+									for($i=0;$i<count($ldjh);$i++){
 									 if($photourl=="")
 									 {
-									 	$photourl=$news[$i]->photourl;	
+									 	$photourl=$ldjh[$i]->photo_src;	
 									 }
 									}
 							?>
 							<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
 							
 								<? 	
-								for($i=0;$i<count($news);$i++){?>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+								for($i=0;$i<count($ldjh);$i++){?>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">ã€€<a target="_blank" href="djcontent.php?id=<? echo $ldjh[$i]->id;?>"><? echo $ldjh[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							
 						</div>
-
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=67 and isadopt=1 order by priority asc, pubdate desc',1,6); 
+							<?
 								$photourl="";
-									for($i=0;$i<count($news);$i++){
+									for($i=0;$i<count($bzap);$i++){
 									 if($photourl=="")
 									 {
-									 	$photourl=$news[$i]->photourl;	
+									 	$photourl=$bzap[$i]->photo_src;	
 									 }
 									}
 							?>
 							<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
 							
 								<?
-								for($i=0;$i<count($news);$i++){?>
-									<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+								for($i=0;$i<count($news1);$i++){?>
+									<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">ã€€<a target="_blank" href="djcontent.php?id=<? echo $bzap[$i]->id;?>"><? echo $bzap[$i]->short_title;?></a></div>
 									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							
 						<div class=bg>
-							<div class=title style="margin-left:10px;">ÎÄ¼şÕª±à<div class=more><a target="_blank" href="djlist.php?id=68">¸ü¶à</a></div></div>
-							<div class=title style="margin-left:10px;">¾­Ñé½éÉÜ<div class=more><a target="_blank" href="djlist.php?id=69">¸ü¶à</a></div></div>
+							<div class=title style="margin-left:10px;">æ–‡ä»¶æ‘˜ç¼–<div class=more><a target="_blank" href="djlist.php?id=<?php echo $wjzb[0]->cid;?>">æ›´å¤š</a></div></div>
+							<div class=title style="margin-left:10px;">ç»éªŒä»‹ç»<div class=more><a target="_blank" href="djlist.php?id=<?php echo $jyjs[0]->cid;?>">æ›´å¤š</a></div></div>
 							<div style="width:350px; float:left; display:inline;">
-								<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=68 and isadopt=1 order by priority asc, pubdate desc',1,6);
-									$photourl="";
-									for($i=0;$i<count($news);$i++){
+								<?	$photourl="";
+									for($i=0;$i<count($wjzb);$i++){
 									 if($photourl=="")
 									 {
-									 	$photourl=$news[$i]->photourl;	
+									 	$photourl=$wjzb[$i]->photo_src;	
 									 }
 									}
 								?>
 								<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
 									
 										<? 	
-										for($i=0;$i<count($news);$i++){?>
-										<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+										for($i=0;$i<count($wjzb);$i++){?>
+										<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">ã€€<a target="_blank" href="djcontent.php?id=<? echo $wjzb[$i]->id;?>"><? echo $wjzb[$i]->short_title;?></a></div>
 										<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 										<? }?>
 									
 							</div>
-						<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=69 and isadopt=1 order by priority asc, pubdate desc',1,6); 
-								$photourl="";
-									for($i=0;$i<count($news);$i++){
+						<? 	$photourl="";
+									for($i=0;$i<count($jyjs);$i++){
 									 if($photourl=="")
 									 {
-									 	$photourl=$news[$i]->photourl;	
+									 	$photourl=$jyjs[$i]->photo_src;	
 									 }
 									}
 						?>
 						<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
 						
 							<?
-							for($i=0;$i<count($news);$i++){?>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+							for($i=0;$i<count($jyjs);$i++){?>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">ã€€<a target="_blank" href="djcontent.php?id=<? echo $jyjs[$i]->id;?>"><? echo $jyjs[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 							<? }?>
 						
 						</div>
 						<div class=gd style="background:url(/images/bg/wwjt.jpg) no-repeat;">
-							<? $news1 = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=73 and isadopt=1 order by priority asc, pubdate desc');?>
+							<? $news1 = $db->query('select n.photo_src from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="æˆ‘ä¸ºé›†å›¢çŒ®ä¸€è®¡" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc');?>
 							<DIV id=Layer6>
 				      <DIV id=demo3 style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
@@ -148,12 +137,12 @@
 				              <TBODY>
 				              <TR align=middle>
 				              	<? for($i=0;$i<count($news1);$i++){?>
-				                <TD><a target="_blank" href="djlist2.php"><? if($news1[$i]->photourl!=""){?><img border=0 width=130 height=90 src="<? echo $news1[$i]->photourl;?>"><? }?></a></TD>
+				                <TD><a target="_blank" href="djlist2.php"><?php if($news1[$i]->photo_src!=""){?><img border=0 width=130 height=90 src="<? echo $news1[$i]->photo_src;?>"><? }?></a></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
 				          			<TD id=demo5 vAlign=top></TD></TR></TBODY></TABLE></DIV>
 								      <SCRIPT>
-												var speed1=30//ËÙ¶ÈÊıÖµÔ½´óËÙ¶ÈÔ½Âı
+												var speed1=30//é€Ÿåº¦æ•°å€¼è¶Šå¤§é€Ÿåº¦è¶Šæ…¢
 												demo5.innerHTML=demo4.innerHTML
 												function Marquee1(){
 												if(demo5.offsetWidth-demo3.scrollLeft<=0)
@@ -169,72 +158,71 @@
 								</DIV>
 						</div>
 						<div class=bg>
-							<div class=title style="margin-left:10px;">Ñ§Ï°×ÊÁÏ<div class=more><a target="_blank" href="djlist.php?id=70">¸ü¶à</a></div></div>
-							<div class=title style="margin-left:10px;">Èı·ÖÖÓÂÛÌ³<div class=more><a target="_blank" href="djlist2.php">¸ü¶à</a></div></div>
+							<div class=title style="margin-left:10px;">å­¦ä¹ èµ„æ–™<div class=more><a target="_blank" href="djlist.php?id=<?php echo $xxzl[0]->cid;?>">æ›´å¤š</a></div></div>
+							<div class=title style="margin-left:10px;">ä¸‰åˆ†é’Ÿè®ºå›<div class=more><a target="_blank" href="djlist2.php">æ›´å¤š</a></div></div>
 							
-							<div style="width:350px; float:left; display:inline;">
-								<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=70 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
-								
-									<? for($i=0;$i<count($news);$i++){?>
-									<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+							<div style="width:350px; float:left; display:inline;">							
+									<? for($i=0;$i<count($xxzl);$i++){?>
+									<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">ã€€<a target="_blank" href="djcontent.php?id=<? echo $xxzl[$i]->id;?>"><? echo $xxzl[$i]->short_title;?></a></div>
 									<? if($i<2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 									<? }?>
 								
 							</div>
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=71 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
+							<? $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="ä¸‰åˆ†é’Ÿè®ºå›" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 6'); ?>
 							
 								<? for($i=0;$i<count($news);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">ã€€<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-							<div class=title style="margin-left:10px;">¼´Öª¼´¸Ä<div class=more><a target="_blank" href="djlist.php?id=87">¸ü¶à</a></div></div>
-							<div class=title style="margin-left:10px;">Èı·ÖÖÓ´ğÌâ</div>
+								<? }
+								$news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="å³çŸ¥å³æ”¹" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 6')
+								?>	
+							<div class=title style="margin-left:10px;">å³çŸ¥å³æ”¹<div class=more><a target="_blank" href="djlist.php?id=<?php echo $news[0]->cid;?>">æ›´å¤š</a></div></div>
+							<div class=title style="margin-left:10px;">ä¸‰åˆ†é’Ÿç­”é¢˜</div>
 							<div style="width:350px; height:90px; float:left; display:inline;">
-								<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=87 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
 									<? for($i=0;$i<count($news);$i++){?>
-									<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+									<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">ã€€<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
 									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 									<? }?>
 							</div>
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=80 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
-							
+							<? $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="ä¸‰åˆ†é’Ÿç­”é¢˜" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 6'); ?>
 								<? for($i=0;$i<count($news);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">ã€€<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 						</div>
 						<div class=bg>
-						<div id=contenttitle style="margin-left:8px;">Õ÷ÇóÒâ¼û</div>
+						<div id=contenttitle style="margin-left:8px;">å¾æ±‚æ„è§</div>
 							<? 
-							$comments = $sqlmanager->GetRecords('select * from smg_dj_comment where news_id=0 order by createtime desc',$pageindex,5);
+							$comments = $db->paginate('select * from smg_comment where resource_type="djnews" order by created_at desc');
 							for($i=0;$i<count($comments);$i++){?>
 								<div class=content7>
-									<div class=name><a href="#"><?php echo $comments[$i]->commenter; ?></a></div>	
-									<div class=time><?php echo $comments[$i]->createtime; ?></div>	
-									<div class=context><?php echo strfck($comments[$i]->content); ?></div>	
+									<div class=name><a href="#"><?php echo $comments[$i]->nick_name; ?></a></div>	
+									<div class=time><?php echo $comments[$i]->created_at; ?></div>	
+									<div class=context><?php echo strfck($comments[$i]->comment); ?></div>	
 								</div>
 								<? }?>						
 							  <div class="pageurl">
-							     <? PrintPageUrl('/djnews/djnews.php',$pageindex,$sqlmanager->pagecount);?>
+							     <? paginate('');?>
 							  </div>
-							<form name="commentform" method="post" action="/djnews/djcreatecomment.php">
+							<form name="commentform" id="commentform" method="post" action="/pub/pub.post.php">
 							   <div id=content9>
-								   ÓÃ»§£º<input type="text" value="" id="commenter" name="commenter">   	
+								   ç”¨æˆ·ï¼š<input type="text" value="" id="commenter" name="post[nick_name]">   	
 							   </div>
 							   <div id=content10>
-								  <div id=plleft>Òâ¼û£º</div><textarea id="commentcontent" name="comment"></textarea>
+								  <div id=plleft>æ„è§ï¼š</div><textarea id="commentcontent" name="post[comment]"></textarea>
 							   </div>   
-							   <div id=content11 onClick="return PostComment();"></div>
+							   <div id=content11></div>
+							   	<input type="hidden" id="resource_type" name="post[resource_type]" value="djnews">
+								<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
+								<input type="hidden" name="type" value="comment">
 							   <input type="hidden" value="<? echo count($data,COUNT_RECURSIVE);?>">
-			<input type="hidden" value="<? echo count($deptname);?>">
+								<input type="hidden" value="<? echo count($deptname);?>">
 							</form>
 						</div>
 					</div>
+					<? include('inc/djbottom.inc.php');?>
 				</div>
-			</div>
-		</div>
-		<? include('inc/djbottom.inc.php');?>
-</div>
+
 </body>
 </html>
 

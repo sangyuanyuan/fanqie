@@ -12,6 +12,7 @@
   */
  
 
+
  if($use_localhost == true){
  	$db_server_name = 'localhost';
  }else{
