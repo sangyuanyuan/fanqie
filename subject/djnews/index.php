@@ -194,7 +194,7 @@
 						<div class=bg>
 						<div id=contenttitle style="margin-left:8px;">征求意见</div>
 							<? 
-							$comments = $db->paginate('select * from smg_comment where resource_type="djnews" order by created_at desc');
+							$comments = $db->paginate('select * from smg_comment where resource_type="dj" order by created_at desc');
 							for($i=0;$i<count($comments);$i++){?>
 								<div class=content7>
 									<div class=name><a href="#"><?php echo $comments[$i]->nick_name; ?></a></div>	
