@@ -34,11 +34,6 @@
 	COLOR: #993333
 }
 </STYLE>
-<script language="javascript" src="/js/smg.js"></script>
-<script language="javascript">
-	var dept_id = RequestCookies("smg_dept","");
-	AddSiteClickcount(dept_id);	
-</script>
 <style type="text/css">
 <!--
 #lovexin12,#lovexin14{
