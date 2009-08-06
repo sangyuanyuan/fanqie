@@ -18,7 +18,7 @@
 					<div class=title style="margin-top:5px;">滚动FLASH</div>
 					<div class=content style="width:191px; border:none;">
 						<?php	   
-								$pics = $db->query('select n.src,n.url,n.short_title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="滚动FLASH" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc,n.created_at desc limit 6');
+								$pics = $db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="滚动FLASH" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc,n.created_at desc limit 6');
 								$picsurl = array();
 								$picslink = array();
 								$picstext = array();
@@ -58,7 +58,7 @@
 							</script>	
 					</div>
 					<div class=title>
-						<? $news=$sqlmanager->GetRecords('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="创新需求" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
+						<? $news=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="创新需求" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
 						<div class=t1>创新需求</div>
 						<a target="_blank" href="/news/news_list.php?type=liangjian&id=<?php echo $news[0]->cid;?>">more</a>
 					</div>
@@ -68,7 +68,7 @@
 							<a target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a>
 						<? }?>
 					</div>
-					<? $news=$sqlmanager->GetRecords('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="亮剑视野" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
+					<? $news=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="亮剑视野" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
 					<div class=title>
 						<div class=t1>亮剑视野</div><a href="/news/news_list.php?type=liangjian&id=<?php echo $news[0]->cid;?>">more</a>
 					</div>
@@ -78,7 +78,7 @@
 							<a href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a>
 						<? }?>
 					</div>
-					<? $news=$sqlmanager->GetRecords('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="创新经验讲座" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
+					<? $news=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="创新经验讲座" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
 					<div class=title>
 						<div class=t1>创新经验讲座</div><a href="/news/news_list.php?type=liangjian&id=<?php echo $news[0]->cid;?>">more</a>
 					</div>
@@ -87,7 +87,7 @@
 							<a href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a>
 						<? }?>
 					</div>
-					<? $news=$sqlmanager->GetRecords('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="亮剑征集令" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
+					<? $news=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="亮剑征集令" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
 					<div class=title>
 						<div class=t1>亮剑征集令</div><a href="/news/news_list.php?type=liangjian&id=<?php echo $news[0]->cid;?>">more</a>
 					</div>
@@ -98,7 +98,7 @@
 					</div>
 				</div>
 				<div id=subject_contenta style="width:550px; padding-top:20px;">
-					<? $news=$sqlmanager->GetRecords('select n.title,n.content from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="亮剑" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 1');?>
+					<? $news=$db->query('select n.title,n.content from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="亮剑" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 1');?>
 				<div id=alist style="width:540px; margin-top:10px; margin-left:15px;">
 					<div id=content2><?php echo delhtml($news[0]->title);?></div>
 					<div id=content4><?php echo get_fck_content($news[0]->content);?></div>
@@ -113,7 +113,7 @@
 			<div class=subject_title>发表评论<div id=more></div></div>
 		`	<div id=context>
 				<?php
-				$comments = $sqlmanager->paginate('select * from smg_comment where resource_type="liangjian" order by created_at desc',5);
+				$comments = $db->paginate('select * from smg_comment where resource_type="liangjian" order by created_at desc',5);
 				for($i=0;$i<count($comments);$i++){?>
 				<div class=comment>	
 					<div class=title><div style="float:left; display:inline;"><? echo $comments[$i]->nick_name;?></div><div style="margin-right:50px; float:right; display:inline"><? echo $comments[$i]->created_at;?></div></div>
