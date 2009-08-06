@@ -115,7 +115,7 @@
 		  	</div>
 			<div class=r_b>
 			<?php
-				$sql="select t1.* from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.publisher is not null and t2.platform='show' order by t1.priority asc,t1.created_at desc";
+				$sql="select t1.* from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.platform='show' order by t1.priority asc,t1.created_at desc";
 				$records = $db->paginate($sql,16);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
@@ -123,7 +123,7 @@
 				<div class=content>
 					<div class=pic><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=75 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=title><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=publisher>作者：<?php if($records[$i]->publisher!=''){echo $records[$i]->publisher;}else{echo get_dept_info($records[$i]->dept_id)->name;}?></div>
+					<div class=publisher>作者：<?php echo $records[$i]->publisher!=''?$records[$i]->publisher:(get_dept_info($records[$i]->dept_id)->name!=''?get_dept_info($records[$i]->dept_id)->name:'匿名用户');?></div>
 					<div class=keywords><?php echo $records[$i]->created_at;?></div>
 					<div class=keywords>点击：<?php echo $records[$i]->click_count;?>次</div>
 				</div>
