@@ -194,7 +194,7 @@
 						<div class=bg>
 						<div id=contenttitle style="margin-left:8px;">征求意见</div>
 							<? 
-							$comments = $db->paginate('select * from smg_comment where resource_type="djnews" order by created_at desc');
+							$comments = $db->paginate('select * from smg_comment where resource_type="dj" order by created_at desc',5);
 							for($i=0;$i<count($comments);$i++){?>
 								<div class=content7>
 									<div class=name><a href="#"><?php echo $comments[$i]->nick_name; ?></a></div>	
@@ -213,7 +213,7 @@
 								  <div id=plleft>意见：</div><textarea id="commentcontent" name="post[comment]"></textarea>
 							   </div>   
 							   <div id=content11></div>
-							   	<input type="hidden" id="resource_type" name="post[resource_type]" value="djnews">
+							   	<input type="hidden" id="resource_type" name="post[resource_type]" value="dj">
 								<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
 								<input type="hidden" name="type" value="comment">
 							   <input type="hidden" value="<? echo count($data,COUNT_RECURSIVE);?>">
