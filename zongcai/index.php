@@ -118,13 +118,7 @@
 								        $type = 'broadcast_self';
 								        break;
 								}
-
-								for($j=0;$j<$count;$j++){
-									if($item[$j]->program_type==$type){
-							?>
-							<input type="radio" class="<?php echo $type; ?>" name="<?php echo $type; ?>" value="<?php echo $item[$j]->id;?>">
-							<a style="color:#000000;text-decoration:none;" href="show_item.php?id=<?php echo $item[$j]->id; ?>"><?php echo $item[$j]->name; ?></a><br>
-							<?php 
+								
 								$ip = getenv('REMOTE_ADDR');
 								if($ip=="172.27.4.80"||$ip=="172.25.201.88"||$ip=="172.28.10.33"){
 									if($_COOKIE[$type]==$vote[0]->id){
@@ -141,7 +135,12 @@
 										$has_vote = 0;
 									}
 								}
+
+								for($j=0;$j<$count;$j++){
+									if($item[$j]->program_type==$type){
 							?>
+							<input type="radio" class="<?php echo $type; ?>" name="<?php echo $type; ?>" value="<?php echo $item[$j]->id;?>">
+							<a style="color:#000000;text-decoration:none;" href="show_item.php?id=<?php echo $item[$j]->id; ?>"><?php echo $item[$j]->name; ?></a><br>
 							<?php
 									}
 								}
@@ -270,10 +269,10 @@
 				alert('投票已过期！');
 				return false;
 			}
-			//if($(this).prev().val()==1){
-			//	alert('你已经投过票了');
-			//	return false;
-			//}
+			if($(this).prev().val()==1){
+				alert('你已经投过票了');
+				return false;
+			}
 			var item = $('input[name='+$(this).attr('name')+'][checked]').val();
 			if(item==undefined){
 				alert('请选择一个选项后再进行投票！');
