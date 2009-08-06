@@ -1,0 +1,100 @@
+/* ����index*/
+body {font-family:����; font-size:12px; background:#4B4B4B; text-align:center; margin:0px;}
+ul,ul li{padding:0px;margin:0px;list-style:none;}
+#east_body{width:1004px; height:546px; margin:0 auto; margin-top:10px; font-size:12px;}
+#east_title{width:868px; height:30px; margin-left:68px; background:#414449; float:left; display:inline;}
+#east_title #move{width:330px; height:24px;  padding-top:5px; margin-top:3px; margin-left:10px;  color:#ffffff; float:left; display:inline;}
+#east_title #move A{margin-left:10px; color:#ffffff; text-decoration:none; float:left; display:inline;}
+#east_title #move A:hover{text-decoration:underline;}
+#east_title #login{height:20px; margin-top:5px; margin-right:10px; color:#8C8C8C; float:right; display:inline;}
+#east_title #login A{margin-left:10px; color:#8C8C8C; text-decoration:none;}
+#east_title #login A:hover{text-decoration:underline;}
+#east_logo{width:868px; height:72px; margin-top:5px; margin-left:68px; background:url(/images/inner/logo_bg.jpg) repeat-x; float:left; display:inline;}
+#east_content{width:868px; height:361px; margin-left:68px; float:left; display:inline;}
+#east_content #top{width:868px; background:url(/images/inner/content_title_bg.jpg) repeat-x; float:left; display:inline;}
+#east_content #top .title{width:70px; margin-top:7px;  float:left; display:inline;}
+#east_content #top .title A{margin-left:10px; color:#8C8C8C; text-decoration:none;}
+#east_content #top .title A:hover{color:#AA0000; text-decoration:underline;}
+#east_content #top #search{height:23px; margin-left:660px; padding-top:3px; color:#A5A5A5; background:url(/images/inner/search_bg.jpg) no-repeat; float:left; display:inline;}
+#east_content #top #search input{width:107px; height:20px; margin-left:15px;}
+#east_content #top #search button{color:#8C8C8C; border:none; background:#48474D;}
+#east_content #context{width:866px; height:361px; margin-top:-5px; margin-left:1px; background:url(/images/inner/innerindex_bg.jpg) no-repeat; float:left; display:inline;}
+#east_content #context #top{width:836px; height:265px; margin-top:10px; margin-left:15px; background:none; float:left; display:inline;}
+#east_content #context #top #left{width:246px; height:262px; float:left; display:inline;}
+#east_content #context #top #left #title1{width:50px; height:14px; padding-top:5px;  color:#6A6A6A; background:url(/images/inner/tdli03.gif) no-repeat; float:left; display:inline;}
+#east_content #context #top #left .title2{width:58px; height:16px; padding-top:3px; padding-left:5px; color:#979797; background:url(/images/inner/tdli03_2.gif) no-repeat; float:left; display:inline;}
+#east_content #context #top #left .content1{width:246px; height:245px; background:url(/images/inner/index_left_bg.jpg) no-repeat; float:left; display:inline;}
+#east_content #context #top #left .content1 A{width:226px; height:12px; margin-top:10px; margin-left:10px; color:#8C8C8C; overflow:hidden; text-decoration:none; text-align:left; float:left; display:inline;}
+#east_content #context #top #left .content1 A:hover{color:#AA0000; text-decoration:underline;}
+#east_content #context #top #left .content1 #top1{width:246px; height:80px; margin-top:10px; float:left; display:inline;}
+#east_content #context #top #left .content1 #top1 #left{width:70px; height:72px; margin-left:10px; float:left; display:inline;}
+#east_content #context #top #left .content1 #top1 #right{width:130px; height:72px; line-height:25px; overflow:hidden; float:left; display:inline;}
+#east_content #context #top #left .content1 #top1 #right A{height:25px; color:#000000; overflow:hidden; text-decoration:none;}
+#east_content #context #top #left .content1 #top1 #right A:hover{text-decoration:underline;}
+#east_content #context #top #left .content1 #bottom{width:246px; height:80px; font-size:11px; float:left; display:inline;}
+#east_content #context #top #left .content1 #bottom .more{width:60px; height:13px; margin-top:3px; margin-right:5px; float:right; display:inline;}
+#east_content #context #top #left .content1 .bottom2{width:246px; height:160px; font-size:11px; float:left; display:inline;}
+#east_content #context #top #left .content1 .bottom2 .more2{width:60px; height:13px; margin-right:5px; float:right; display:inline;}
+#east_content #context #top #center{width:378px; height:250px; margin-top:18px; margin-left:15px; float:left; display:inline;}
+#east_content #context #top #right1{width:176px; height:260px; margin-top:6px; margin-left:15px; background:url(/images/inner/index_right_blog_bg.jpg) no-repeat; float:left; display:inline;}
+#east_content #context #top #right1 #title{width:160px; height:15px; margin-top:3px; margin-left:13px; text-align:left; float:left; display:inline;}
+#east_content #context #top #right1 #content1{width:156px; height:220px; margin-top:10px; margin-left:10px; float:left; display:inline;}
+#east_content #context #top #right1 #content1 .pic{width:140px; height:43px; margin-top:10px; margin-left:8px;}
+#east_content #context #bottom1{width:836px; height:70px; margin-top:10px; margin-left:15px; float:left; display:inline;}
+
+/* innernews*/
+#east_content #context #news_left{width:635px; height:265px; margin-top:10px; margin-left:15px; background:url(/images/inner/innernews_bg.jpg) no-repeat; float:left; display:inline;}
+#east_content #context #news_left #title{width:620px; margin-left:15px; margin-top:5px; color:#6B6B6B; float:left; display:inline;}
+#east_content #context #news_left #left{width:404px; height:200px; margin-left:5px; margin-top:13px; float:left; display:inline;}
+#east_content #context #news_left #left #title{width:396px; color:#6A6A6A; font-weight:bold; float:left; display:inline;}
+#east_content #context #news_left #left #content{width:580px; height:190px; margin-top:20px; margin-left:30px; color:#6A6A6A; font-size:11px; line-height:24px; text-indent:24px; overflow-y:scroll; overflow-x:hidden; text-align:left; float:left; display:inline;}
+#east_content #context #news_left #right{width:164px; height:158px; margin-top:53px; margin-right:15px; float:right; display:inline;}
+#east_content #context #news_right{width:210px; height:265px; margin-top:5px; float:left; display:inline;}
+#east_content #context #news_right #top{width:190px; height:135px; margin-left:10px; float:left; display:inline;}
+#east_content #context #news_right #bottom{width:185px; height:120px; margin-top:5px; margin-left:10px; float:left; display:inline;}
+#east_content #context #news_right #bottom #title1{width:55px; height:14px; padding-top:5px; padding-left:5px; color:#6A6A6A; background:url(/images/inner/tdli03.gif) no-repeat; float:left; display:inline;}
+#east_content #context #news_right #bottom .title2{width:55px; height:16px; margin-left:1px; padding-top:3px; padding-left:5px; color:#979797; background:url(/images/inner/tdli03_2.gif) no-repeat; float:left; display:inline;}
+#east_content #context #news_right #bottom .content{width:180px; height:100px; background:url(/images/inner/newsright_bg.jpg) no-repeat; float:left; display:inline;}
+#east_content #context #news_right #bottom .content A{width:170px; height:13px; margin-top:8px; margin-left:18px; color:#818181; text-decoration:none; overflow:hidden; text-align:left; float:left; display:inline;}
+#east_content #context #news_right #bottom .content A:hover{color:#AA0000; text-decoration:underline;}
+
+/* innernewslist*/
+#east_content #context #news_leftlist{width:630px; height:260px; margin-top:10px; margin-left:15px; background:url(/images/inner/newslist_bg.jpg) no-repeat; text-align:left; float:left; display:inline;}
+#east_content #context #news_leftlist #title{width:620px; margin-left:7px; margin-top:5px; color:#6B6B6B; float:left; display:inline;}
+#east_content #context #news_leftlist #content{width:582px; height:228px; margin-top:10px; margin-left:15px; overflow:hidden; float:left; display:inline;}
+#east_content #context #news_leftlist #content #newslisttop{width:582px; height:200px; float:left; display:inline;}
+#east_content #context #news_leftlist #content #newslisttop #left{width:270px; height:166px; margin-left:10px; float:left; display:inline;}
+#east_content #context #news_leftlist #content #newslisttop #left A{width:270px; height:13px; margin-top:13px; color:#8B8B8B; text-decoration:none; overflow:hidden; float:left; display:inline;}
+#east_content #context #news_leftlist #content #newslisttop #left A:hover{text-decoration:underline;}
+#east_content #context #news_leftlist #content #newslisttop #right{width:270px; height:166px; margin-left:30px; float:left; display:inline;}
+#east_content #context #news_leftlist #content #newslisttop #right A{width:270px; height:13px; margin-top:13px; color:#8B8B8B; text-decoration:none; overflow:hidden; text-align:left; float:left; display:inline;}
+#east_content #context #news_leftlist #content #newslisttop #right A:hover{text-decoration:underline;}
+#east_content #context #news_leftlist #content #newslistbottom{height:18px; margin-left:160px; float:left; display:inline;}
+#east_content #context #news_leftlist #content #newslistbottom A{margin-left:10px; color:#8A8A8A; text-decoration:none; float:left; display:inline;}
+#east_content #context #news_leftlist #content #newslistbottom A:hover{text-decoration:underline;}
+#east_bottom{width:866px; height:56px; margin-left:69px; background:url(/images/inner/bottombg.jpg) no-repeat; float:left; display:inline;}
+#east_bottom #assistant{margin-top:15px; margin-right:45px; color:#6A6A6A; float:right; display:inline;}
+#east_bottom #assistant A{margin-left:10px; margin-right:10px; color:#6A6A6A; text-decoration:none;}
+#east_bottom #wz{width:866px; margin-top:-5px; margin-left:70px; color:#A6A6A8; text-align:left; float:left; display:inline;}
+
+
+
+
+
+
+
+
+
+#container{width:700px; position:absolute; left:188px; top:117px;}
+
+#menu{height:36px;}
+#menu li{margin-left:5px; text-align:center; float:left;cursor:pointer;}
+#menu li A{width:70px; margin-top:5px; margin-left:5px; color:#8C8C8C; text-decoration:none; float:left; display:inline;}
+#menu li A:hover{background:#AA0000; text-decoration:underline;}
+
+
+.mymenu{background:#393945;}
+.mymenu li{width:70px; height:15px; text-align:center; line-height:15px; margin-top:5px; margin-left:5px;}
+.mymenu li A{width:70px; color:#8C8C8C; text-decoration:none; float:left; display:inline;}
+.mymenu li A:hover{background:#AA0000; text-decoration:underline;}
+

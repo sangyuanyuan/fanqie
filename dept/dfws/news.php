@@ -1,54 +1,59 @@
-<? require_once('../inc/department.inc.php');?>
+<?php
+	 require_once('../../frame.php');
+	 $n = $_COOKIE['smg_user_nickname'];
+	 $id = $_REQUEST['id'];
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
 	<link href="/css/department.css" rel="stylesheet" type="text/css">
-	<script language="javascript" src="/js/smg.js"></script>
-	<script type="text/javascript" src="../js/prototype-1.6.0.2.js"></script>
-	<script type="text/javascript" src="../js/menu.js"></script>
-	
+	<?php
+		css_include_tag('department');
+		js_include_tag('prototype-1.6.0.2','menu');
+	?>
 </head>
 <body>
 	
 	<div id=east_body>
 		<div id=east_title>
 			<div id=move>
-			<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="100%"><span style="float:left; display:inline">¹ö¶¯ĞÂÎÅ£º</span>
-			<? for($i=0;$i<$news-itemcount;$i++){?>
-				<a href="/dfws/news.php?id=<? echo $news->items[$i]->id;?>">
-				<? echo $news->items[$i]->title; ?>
-				</a>
-			<? }?>
-			</MARQUEE>
+				<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="100%"><span style="float:left; display:inline">æ»šåŠ¨æ–°é—»ï¼š</span>
+				<? for($i=0;$i<count($news);$i++){?>
+					<a href="news.php?id=<? echo $news[$i]->id;?>">
+					<? echo $news[$i]->title; ?>
+					</a>
+				<? }?>
+				</MARQUEE>
+			</div>
+			<div id=login>
+				<span id=login1><a href="/login/login.php">ç™»å½•</a></span>
+				<span id=login2></span>
+				<span id="login3"><a href="/login/user.post.php?user_type=logout">é€€å‡º</a></span>
+				<span id=login4 style="display:none"><a href="" id=login_admin>åå°ç®¡ç†</a></span>
+			</div>
 		</div>
-	</div>
 		<div id=east_logo><img src="/images/inner/logo.gif"></div>
 		<div id=east_content>
 			<div id=top>
-				<div id=search><input type="text" />¡¡¡¡|<button onclick="searchnews('search')">ËÑË÷</button></div>
+				<div id=search><input type="text" />ã€€ã€€|<button onclick="searchnews('search')">æœç´¢</button></div>
 			</div>
 			<div id=context>
 				<div id=news_left>
-					<? 
-              		$news=getnews();
-              		if($news->newstype==3)//urlÁ´½ÓÀàĞÂÎÅ
-								  {
-								  	redirecturl($news->linkurl);
-								  	CloseDB();
-								  	exit;
-								  }
-								  //ÎÄ¼şĞÂÎÅ
-								  if($news->newstype==2)
-								  {
-								   	redirecturl($news->filepath ."/" .$news->filename);
-								  	CloseDB();
-								  	exit; 	
-								  }
-              	?>
-					<div id=title><? echo $news->categoryname;?></div>
+					<?php
+						$news = new table_class('smg_news');
+						$news -> find($id);
+						$news->click_count = $news->click_count+1;
+						$news -> save();
+						if($news->news_type==2){
+							redirect($news->file_name);
+						}elseif($news->news_type==3){
+							redirect($news->target_url);
+						};
+					?>
+					<div id=title><?php echo dept_category_name_by_id($news->dept_category_id);?></div>
 					<div id=left>
 						<div id=title><? echo $news->title;?></div>
 						<div id=content><? echo $news->content?></div>
@@ -56,58 +61,103 @@
 				</div>
 				<div id=news_right>	
 					<div id=top>
-					<?php 
-						$video = load_module('pos_newsvideo',1);
-						  ShowMediaPlay(190,135,$video->items[0]->photourl,$video->items[0]->videourl);
-						?>
-					</div>
-					<?  
-						$newslist=load_module('pos_indexleft2',4);
-						$report=getcategoryreport();
+					<?php
+						$video = show_content('smg_video','video','ä¸œæ–¹å«è§†','å­é¡µè§†é¢‘','1');
+						show_video_player(190,135,$video[0]->photo_url,$video[0]->video_url);
 					?>
-					<div id=bottom><div onMouseOver="ChangeDepartTab('1')" id=title1>ÈÈÃÅ²©¿Í</div><div id=title2 onMouseOver="ChangeDepartTab('2')" class=title2><? echo $newslist->categoryname;?></div><div id=title3 onMouseOver="ChangeDepartTab('3')" class=title2>Êı¾İÍ³¼Æ</div>
+					</div>
+					<?php
+						$newslist1=show_content('smg_news','news','ä¸œæ–¹å«è§†','å¸¸ç”¨è¡¨æ ¼','2');
+						$newslist2=show_content('smg_news','news','ä¸œæ–¹å«è§†','æ•°æ®ç»Ÿè®¡','2');
+					?>
+					<div id=bottom><div onMouseOver="ChangeDepartTab('1')" id=title1>çƒ­é—¨åšå®¢</div><div id=title2 onMouseOver="ChangeDepartTab('2')" class=title2>å¸¸ç”¨è¡¨æ ¼</div><div id=title3 onMouseOver="ChangeDepartTab('3')" class=title2>æ•°æ®ç»Ÿè®¡</div>
 						
 						<div id=a1 class=content></div>
-						<div id=a2 style="display:none;" class=content><? for($i=0;$i<$newslist->itemcount;$i++){?><a href="<? echo $newslist->items[$i]->linkurl;?>">¡¤ <?  echo $newslist->items[$i]->title;?></a><? }?></div>
+						<div id=a2 style="display:none;" class=content>
+							<? for($i=0;$i<count($newslist1);$i++){?><a href="news.php?id=<? echo $newslist1[$i]->id;?>">ãƒ» <?  echo $newslist1[$i]->title;?></a><? }?>
+						</div>
 						<div id=a3 style="display:none;" class=content>
-						<? for($i=0;$i<4;$i++){?><a href="#">
-						<div style="float:left; display:inline;"><? echo $report->items[$i]->name;?></div>
-						<div style=" margin-right:20px; float:right; display:inline;">
-						<? echo $report->items[$i]->clickcount;?></div>
-						 <? }?>
+							<? for($i=0;$i<count($newslist2);$i++){?><a href="news.php?id=<? echo $newslist2[$i]->id;?>">ãƒ» <?  echo $newslist2[$i]->title;?></a><? }?>
 						</div>
 					</div>
 				</div>
-				<? $photo=load_module('pos_indexbottompic',3)?>
-				<div id=bottom1><img width=253 height=63 style="float:left; display:inline" src="<? echo $photo->items[0]->photourl; ?>"><img width=378 height=63 style=" float:left; display:inline;" src="<? echo $photo->items[1]->photourl; ?>"><img width=181 height=64 style=" float:left; display:inline" src="<? echo $photo->items[2]->photourl; ?>"></div>
+				<? $photo=show_content('smg_images','picture','ä¸œæ–¹å«è§†','åº•éƒ¨å›¾ç‰‡','3')?>
+				<div id=bottom1><img width=253 height=63 style="float:left; display:inline" src="<? echo $photo[0]->src; ?>"><img width=378 height=63 style=" float:left; display:inline;" src="<? echo $photo[1]->src; ?>"><!--<a href="mailto:sitv@dragontv.cn">--><img border=0 width=181 height=63 style=" float:left; display:inline" src="<? echo $photo[2]->src; ?>"><!--</a>--></div>
 			</div>	
 		</div>
 		<div id=east_bottom>
-			<div id=assistant><a href="">ÉèÎªÊ×Ò³</a>|<a href="">ÊÕ²Ø±¾Õ¾</a>|<a href="">ÁªÏµÎÒÃÇ</a></div>
-			<div id=wz>ÉÏº£¶«·½ÎÀÊÓ °æÈ¨ËùÓĞ .°æÈ¨ËùÓĞ All Right Reserved Copyright ? 2003-2008</div>
+			<div id=assistant><a href="">è®¾ä¸ºé¦–é¡µ</a>|<a href="">æ”¶è—æœ¬ç«™</a>|<a href="">è”ç³»æˆ‘ä»¬</a></div>
+			<div id=wz>ä¸Šæµ·ä¸œæ–¹å«è§† ç‰ˆæƒæ‰€æœ‰ .ç‰ˆæƒæ‰€æœ‰ All Right Reserved Copyright ? 2003-2008</div>
 		</div>		
 	</div>
+	<input type="hidden" id="nick_name" value="<?php echo $n;?>">
 	
 	
-	
-	
-
-	<?
-
-   require_once("../modules/mod_menu/mod_class_menu.php");
-   $menu = new menu("mymenu");
-   //print_r($menu);
-   $tree = $sqlmanager->GetRecords('select * from smg_menu_item');
-   //$menu->addItem($tree[$i]->id,$tree[$i]->displayname,$tree[$i]->parent_id,$tree[$i]->url);
-   for($i=0;$i<count($tree);$i++)
-   {
-		$menu->addItem($tree[$i]->id,$tree[$i]->displayname,$tree[$i]->parent_id,$tree[$i]->url);
-	 }
-	$menu->initial();   
-?>
-
+	<script type="text/javascript">
+			if(window.attachEvent){
+				window.attachEvent("onload",winLoad);
+			}else if(window.addEventListener){
+				window.addEventListener("load",winLoad,false);
+			}else{
+				window.onload = winLoad;
+			}  
+			
+			function winLoad(){	
+				var menu = new Menu("mymenu");
+										var mymenu_item1 = new MenuItem($("mymenu_item1"));
+						menu.addItem(mymenu_item1);
+												var mymenu_item2 = new MenuItem($("mymenu_item2"));
+						menu.addItem(mymenu_item2);
+												var mymenu_item3 = new MenuItem($("mymenu_item3"));
+						menu.addItem(mymenu_item3);
+												var mymenu_item4 = new MenuItem($("mymenu_item4"));
+						menu.addItem(mymenu_item4);
+												var mymenu_item5 = new MenuItem($("mymenu_item5"));
+						menu.addItem(mymenu_item5);
+												var mymenu_item6 = new MenuItem($("mymenu_item6"));
+						menu.addItem(mymenu_item6);
+												var mymenu_item7 = new MenuItem($("mymenu_item7"));
+						menu.addItem(mymenu_item7);
+												var mymenu_item8 = new MenuItem(createLinkElement("åŠå…¬å®¤","newslist.php?id=13","_blank"));
+						mymenu_item4.addItem(mymenu_item8);
+												var mymenu_item9 = new MenuItem(createLinkElement("æ€»ç¼–å®¤","newslist.php?id=14","_blank"));
+						mymenu_item4.addItem(mymenu_item9);
+												var mymenu_item10 = new MenuItem(createLinkElement("äººåŠ›èµ„æº","newslist.php?id=15","_blank"));
+						mymenu_item4.addItem(mymenu_item10);
+												var mymenu_item11 = new MenuItem(createLinkElement("è½åœ°åŠ","newslist.php?id=16","_blank"));
+						mymenu_item4.addItem(mymenu_item11);
+												var mymenu_item12 = new MenuItem(createLinkElement("æ¨å¹¿éƒ¨","newslist.php?id=17","_blank"));
+						mymenu_item4.addItem(mymenu_item12);
+												var mymenu_item13 = new MenuItem(createLinkElement("èŠ‚ç›®éƒ¨","newslist.php?id=18","_blank"));
+						mymenu_item4.addItem(mymenu_item13);
+												var mymenu_item14 = new MenuItem(createLinkElement("é¡¹ç›®éƒ¨","newslist.php?id=19","_blank"));
+						mymenu_item4.addItem(mymenu_item14);
+												var mymenu_item15 = new MenuItem(createLinkElement("é¢‘é“ç½‘ç«™","newslist.php?id=20","_blank"));
+						mymenu_item4.addItem(mymenu_item15);
+												var mymenu_item16 = new MenuItem(createLinkElement("å…±äº«èµ„è®¯","newslist.php?id=21","_blank"));
+						mymenu_item5.addItem(mymenu_item16);
+												var mymenu_item17 = new MenuItem(createItemElement("å®ç”¨èµ„è®¯"));
+						mymenu_item5.addItem(mymenu_item17);						
+												var mymenu_item18 = new MenuItem(createLinkElement("é¾™è§†é£é‡‡","newslist.php?id=23","_blank"));
+						mymenu_item5.addItem(mymenu_item18);
+												var mymenu_item19 = new MenuItem(createLinkElement("é€šè®¯å½•","newslist.php?id=24","_blank"));
+						mymenu_item17.addItem(mymenu_item19);
+												var mymenu_item20 = new MenuItem(createLinkElement("å¸¸ç”¨è¡¨æ ¼","newslist.php?id=25","_blank"));
+						mymenu_item17.addItem(mymenu_item20);
+										menu.render();	
+			}
+		</script>    
+		
 <div id=container>
-			<? $menu->displaymenu();?>		
+
+			<ul id="menu">		<li id="mymenu_item1"> <a href="javascript:void(0);">é¦–é¡µ</a></li>		
+				<li id="mymenu_item2"> <a href="javascript:void(0);">ä»Šæ—¥å¿…è¯»</a></li>		
+				<li id="mymenu_item3"> <a href="javascript:void(0);">ç‰¹åˆ«ç­–åˆ’</a></li>		
+				<li id="mymenu_item4"> <a href="newslist.php?id=6">éƒ¨é—¨åŠ¨æ€</a></li>		
+				<li id="mymenu_item5"> <a href="newslist.php?id=7">é¾™è§†éƒ¨è½</a></li>		
+				<li id="mymenu_item6"> <a href="javascript:void(0);">BLOG</a></li>		
+				<li id="mymenu_item7"> <a href="javascript:void(0);">BBS</a></li>		
+		</ul>		
 	</div>
 
 	
@@ -115,11 +165,21 @@
 </body>
 </html>
 <script language="javascript">
-document.getElementById('mymenu_item1').innerHTML='<a href="/dfws/">Ê× Ò³</a>';
-document.getElementById('mymenu_item2').innerHTML='<a href="/dfws/newslist.php?id=4">½ñÈÕ±Ø¶Á</a>';
-document.getElementById('mymenu_item3').innerHTML='<a href="/dfws/newslist.php?id=8">ÌØ±ğ²ß»®</a>';
-document.getElementById('mymenu_item4').innerHTML='<a href="/dfws/newslist.php?id=9">²¿ÃÅ¶¯Ì¬</a>';
-document.getElementById('mymenu_item5').innerHTML='<a href="/dfws/newslist.php?id=10">ÁúÊÓ²¿Âä</a>';
+document.getElementById('mymenu_item1').innerHTML='<a href="index.php">é¦– é¡µ</a>';
+document.getElementById('mymenu_item2').innerHTML='<a href="newslist.php?id=4">ä»Šæ—¥å¿…è¯»</a>';
+document.getElementById('mymenu_item3').innerHTML='<a href="newslist.php?id=8">ç‰¹åˆ«ç­–åˆ’</a>';
+document.getElementById('mymenu_item4').innerHTML='<a href="newslist.php?id=9">éƒ¨é—¨åŠ¨æ€</a>';
+document.getElementById('mymenu_item5').innerHTML='<a href="newslist.php?id=10">é¾™è§†éƒ¨è½</a>';
 document.getElementById('mymenu_item6').innerHTML='<a href="#">BLOG</a>';
 document.getElementById('mymenu_item7').innerHTML='<a href="/bbs/forumdisplay.php?fid=32">BBS</a>';
+	var smg_username = $('nick_name').value;
+	//var smg_admin = RequestCookies("smg_admin","");
+	if(smg_username!="")
+	{
+		document.getElementById("login1").style.display="none";
+		document.getElementById("login2").innerHTML="ã€€æ¬¢è¿æ‚¨ã€€"+smg_username;
+		document.getElementById("login3").style.display="inline";
+		document.getElementById("login4").style.display="inline";
+		document.getElementById("login_admin").href="/admin/admin.php";
+	}
 </script>

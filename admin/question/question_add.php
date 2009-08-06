@@ -22,7 +22,7 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">题　目</td>
-			<td align="left"><?php show_fckeditor('title','Title',true,"80");?></td>
+			<td align="left"><input type="text" name="question[title]" class="required"></td>
 		</tr>
 		<?php if($project_type=='judge'){?>
 		<tr class="tr3">
@@ -86,12 +86,6 @@
 		});
 		
 		$("#sub").click(function(){
-			var oEditor = FCKeditorAPI.GetInstance('title') ;
-			var title = oEditor.GetHTML();
-			if(title==""){
-				alert("请输入标题！");
-				return false;
-			}
 			$("input[type=checkbox]").each(function(){
 				if($(this).attr('checked'))flag=$(this).attr('checked');
 			});
