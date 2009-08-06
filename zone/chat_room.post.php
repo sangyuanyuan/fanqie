@@ -16,7 +16,7 @@
 				//start to connect sb
 				$remote = $db->query("select * from smg_chat_queue where chat_id !='$chat_id' order by id asc limit 1");
 				if(count($remote) <= 0){
-					$sql = "insert into smg_chat_queue (chat_id) select '$chat_id' from dual where not exists(select * from smg_chat_queue where chat_id= '$chat_id');";
+					$sql = "insert into smg_chat_queue (chat_id,created_at) select '$chat_id',NOW() from dual where not exists(select * from smg_chat_queue where chat_id= '$chat_id');";
 					$db->execute($sql);
 					set_status('connecting');
 					unset($_SESSION['remote_id']);
