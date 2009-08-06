@@ -4,10 +4,12 @@
 	$op = $_POST['op'];
 	$chat_id = $_COOKIE['smg_chat_id'];
 	$db = get_db();
+	$db->execute("delete from smg_chat_queue where created_at < DATE_SUB(now(),INTERVAL  30 MINUTE)");
 	$sql = "select count(*) as online_count from smg_chat_room_online where expire_at > now()";
 	$db->query($sql);
 	$db->move_first();
 	$online_count = $db->field_by_name('online_count');
+
 	switch ($op) {
 		case 'click_button':
 			if(empty($status)){
