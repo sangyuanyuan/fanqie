@@ -15,6 +15,7 @@
 			$scroll_type = $this->scroll_type;
 			$subject_id = $this->subject_id;
 			$category_id = $this->category_id;
+			$title = $this->name;
 			$db = get_db();
 			switch ($this->category_type) {
 				case 'news':					

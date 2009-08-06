@@ -12,12 +12,12 @@ for ($i=0;$i<count($record);$i++){
 <div class="gift" style="width:130px; height:150px; text-align:center; float:left; display:inline;">
 	<img src="<?php echo $record[$i]->img_src ?>" border=0 style="width:120px; height:100px; cursor:pointer;"><br>
 	<?php echo $record[$i]->gname ?><br>
-	<input type="radio" name="gift" gift_name="<?php echo $record[$i]->gname;?>">
+	<input type="checkbox" name="gift" value="<?php echo $record[$i]->id;?>">
 </div>
 <?
 }
 ?>
-
+<div style="clear:both;"><button id="button_ok">确定</button></div>
 <script>
 	$(function(){
 		$('.a_gift_category').click(function(e){
@@ -25,7 +25,27 @@ for ($i=0;$i<count($record);$i++){
 			$('#gift_box').load($(this).attr('href'));
 		});
 		$('.gift img').click(function(){
-			$(this).next('input').attr('checked',true);
+			$(this).parent().find('input').attr('checked',!$(this).parent().find('input').attr('checked'));
+			if($(this).parent().find('input').attr('checked')){
+				if(jQuery.inArray($(this).parent().find('input').val(),gift_ids)==-1){
+					gift_ids.push($(this).parent().find('input').val());
+				}
+			}
 		});
+		$('input:checkbox').click(function(){
+			
+			if($(this).attr('checked')){
+				
+				if(jQuery.inArray($(this).val(),gift_ids)==-1){
+					gift_ids.push($(this).val());
+				}
+			}
+				
+		});
+		
+		$('#button_ok').click(function(){
+			tb_remove();
+		});
+		
 	});
 </script>
