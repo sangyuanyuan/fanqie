@@ -12,7 +12,7 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		#js_include_tag('vote_list','admin_pub');
+		js_include_tag('admin_pub');
 	?>
 </head>
 <body>
@@ -30,7 +30,7 @@
 			$record = $db->paginate($sql);
 			for($i=0;$i<count($record);$i++){
 		?>
-				<tr class=tr3>
+				<tr class=tr3 id="<?php echo $record[$i]->id;?>">
 					<td><?php echo $record[$i]->name;?></td>
 					<td><img width=50 heigth=50 src="<?php echo $record[$i]->img_src;?>" border=0></td>
 					<td>
