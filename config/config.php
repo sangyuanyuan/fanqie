@@ -32,7 +32,7 @@
  $db_code_bak = 'utf8';
  
  $g_news_tags = array('小编加精','公告','业务','群团','历史头条','小编推荐','生活');
- $g_video_tags = array('视频推荐');
+ $g_video_tags = array('视频推荐','视频首页顶部');
 
  $g_ucenter_ip = 'http://172.27.203.83:8080';
 ?>
