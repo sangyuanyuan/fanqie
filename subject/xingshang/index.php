@@ -97,7 +97,7 @@ html,body{
                   <TABLE width="100%" border=0>
                     <TBODY>
                     <TR>
-                     <TD><div class=title1>星光璀璨<a style="color:#F2E275;" target="_blank" href="xslist.php?id=<?php $news[0]->id;?>">更多</a></div></TD></TR>
+                     <TD><div class=title1>星光璀璨<a style="color:#F2E275;" target="_blank" href="xslist.php?id=<?php $news[0]->cid;?>">更多</a></div></TD></TR>
                     <TR>
                       <TD height=50>
                       	
