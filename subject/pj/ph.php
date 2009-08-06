@@ -13,9 +13,9 @@
 <body>
 <?
   $id=$_REQUEST['id'];
-  $sql1=' and (pubdate >="2009-01-01 00:00:00" and pubdate<="2009-03-31 23:59:59" )';
-  $sql2=' and (createtime >="2009-01-01 00:00:00" and createtime<="2009-03-31 23:59:59" )';	
-	include('../inc/top.inc.html');
+  $sql1=' and (created_at >="2009-01-01 00:00:00" and created_at<="2009-03-31 23:59:59" )';
+  $sql2=' and (created_at >="2009-01-01 00:00:00" and created_at<="2009-03-31 23:59:59" )';	
+	include('../../inc/top.inc.html');
 	if($id==1)
 	{
 		$strsql1='select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
@@ -50,7 +50,7 @@
    </div>
 </div>
 </div>
-<? include('../inc/bottom.inc.html');
+<? include('../../inc/bottom.inc.html');
 ?>	
 </body>
 </html>
