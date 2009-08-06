@@ -92,7 +92,7 @@ BODY {
 #s_right #subject_comment textarea{width:180px; height:100px; margin-top:5px; float:left; display:inline;}
 #btn{width:62px; height:21px; margin-top:10px; margin-left:50px;  text-align:text; color:#ffffff; border:none; background:url(/images/bg/subject_button_bg.jpg) no-repeat; float:left; display:inline;}
 
-.title1{width:195px; height:20px; background:url(/dfwszt/title1.jpg) no-repeat; margin-top:10px; margin-left:10px; padding-left:22px; padding-top:5px; font-size:15px; font-weight:bold; color:red}
+.title1{width:195px; height:20px; background:url(/subject/dfwszt/title1.jpg) no-repeat; margin-top:10px; margin-left:10px; padding-left:22px; padding-top:5px; font-size:15px; font-weight:bold; color:red}
 .title1 a{margin-left:80px; font-size:12px; color:#F2E275;}
 .index_title{width:470px; height:25px; padding-top:6px; padding-left:50px; margin-top:5px; margin-left:10px; font-weight:bold; font-size:16px; color:#F2E275; background:url(/subject/dfwszt/index_title.jpg) no-repeat; text-align:left; float:left; display:inline;}
 .index_title a{margin-left:265px; font-size:12px; color:#F2E275;}
