@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id=subject_body >
-		<div id=subject_logo ></div>
+		<div id=subject_logo></div>
 		<div id=subject_content1>
 		<div id=bottom>				
 			<div id=right >
