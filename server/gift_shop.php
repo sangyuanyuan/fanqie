@@ -34,8 +34,11 @@ function cs_DoFSCommand(command, args) {
 	var csObj = isInternetExplorer ? document.all.cs : document.cs;
     	if (command == "show")    
     	{    
-        	alert(args);   
-    	} 
+			tb_show('购买礼物','gift_list.php?width=600&height=400&cid='+args);    
+    	}else if(command == 'checkout'){
+			checkout();
+		} 
+		
 }
 // Internet Explorer 的挂钩
 if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigator.userAgent.indexOf("Windows") != -1 && navigator.userAgent.indexOf("Windows 3.1") == -1) {
@@ -58,7 +61,11 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
         	<a href="#" id=test>test</a>
 			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" id="cs" width="640" height="520" align="middle">
 				<param name="allowScriptAccess" value="sameDomain" />
-				<param name="movie" value="cs.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffcccc" /><embed src="cs.swf" quality="high" bgcolor="#ffcccc" width="640" height="520" swLiveConnect=true id="cs" name="cs" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+			   	<param name="wmode" value="opaque"> 
+				<param name="movie" value="cs.swf" />
+				<param name="quality" value="high" />
+				<param name="bgcolor" value="#ffcccc" />
+				<embed src="cs.swf" quality="high" bgcolor="#ffcccc" width="640" height="520" swLiveConnect=true id="cs" name="cs" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 			</object>
         </div>
         

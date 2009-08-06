@@ -1,8 +1,13 @@
 <?
 include "../frame.php";
 $db = get_db();
-
-$sql = "select g.*,g.id as gid,g.name as gname,c.name as cname from smg_gift g left join smg_gift_category c on g.category_id=c.id where g.category_id=".$_REQUEST['cid'];;
+$db->query("select id from smg_gift_category where name='{$_REQUEST['cid']}'");
+if($db->move_first()){
+	$cid = $db->field_by_index(0);
+}else{
+	$cid = 0;
+}
+$sql = "select g.*,g.id as gid,g.name as gname,c.name as cname from smg_gift g left join smg_gift_category c on g.category_id=c.id where g.category_id=".$cid;
 $record = $db->query($sql);
 ?>
 <div><a href="gift_category.php" style="color:#000;text-decoration:none;" class="a_gift_category"><b>礼品商店</b></a>  > <?php echo $record[0]->cname?></div>
