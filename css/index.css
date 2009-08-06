@@ -118,8 +118,9 @@ p{margin:0px; padding:0px;}
 #m_l_t #more{width:28px; height:7px; margin-top:12px; margin-right:25px; background:url(/images/index/more2.gif) no-repeat; float:right; display:inline;}
 #m_l_t img{width:106px; height:106px; margin-top:42px; margin-left:15px; padding:1px; border:1px solid #dedede; float:left; display:inline;}
 #m_l_t #content_mlt{width:160px; height:110px; margin-top:25px; margin-left:5px; float:left; display:inline;}
-#m_l_t #content_mlt li{width:158px; height:17px; overflow:hidden; line-height:16px; float:left; display:inline;}
-#m_l_t #content_mlt li a{color:#000000; text-decoration:none;}
+#m_l_t #content_mlt li{width:158px; height:25px; overflow:hidden; line-height:25px; float:left; display:inline;}
+#m_l_t #content_mlt li a{color:#FF6600; font-weight:bold; font-size:14px; text-decoration:none;}
+#m_l_t #content_mlt #descriptions{width:100px; height:50px; background:#123456; float:left; display:inline;}
 
 #m_l_b{width:299px; height:182px; background:url(/images/index/bg_m_l_b.jpg) no-repeat; float:left; display:inline;}
 #m_l_b #title{width:200px; height:20px; margin-top:9px; margin-left:30px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}

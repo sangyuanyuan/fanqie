@@ -151,7 +151,7 @@
 
  			<!-- start top_left_bottom !-->
  			<?php
-				$sql = 'select n.id,n.short_title,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.tags="小编加精"  order by n.last_edited_at desc limit 10';
+				$sql = 'select n.id,n.short_title,n.title,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.tags="小编加精"  order by n.last_edited_at desc limit 10';
 				$record_marrow=$db -> query($sql);
 				$sql = 'select n.id,n.short_title,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.platform="server" order by n.priority asc limit 10';
 				$record_quick=$db -> query($sql);
@@ -162,7 +162,7 @@
  				<div class=list_tlb id=list_tlb1 style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_marrow); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_marrow[$i]->platform ?>/news/news.php?id=<?php echo $record_marrow[$i]->id ?>" target=_blank><?php echo strip_tags($record_marrow[$i]->short_title); ?></a></li>
+ 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_marrow[$i]->platform ?>/news/news.php?id=<?php echo $record_marrow[$i]->id ?>" target=_blank><?php echo strip_tags($record_marrow[$i]->title); ?></a></li>
  						<? }?>
  				  </ul>
  				</div>
@@ -562,19 +562,15 @@
     <div id=p1>
   		<!-- start middle_left_top !-->
   		<?php
- 					$sql = 'select n.id as news_id,n.photo_src,n.short_title,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目点评" and c.platform="show" order by n.priority asc limit 6';
+ 					$sql = 'select n.id as news_id,n.description,n.short_title,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目点评" and c.platform="show" order by n.priority asc,n.created_at desc limit 1';
 					$record_program=$db -> query($sql);
 			?>	
 			<div id=m_l_t>
  				<a href="/show/list.php?type=news&id=<?php echo $record_program[0]->cid ?>"  target=_blank id=more></a>
  				<img src="/images/index/program.jpg">
 				<div id=content_mlt>
-					<ul>
-						<li style="line-height:25px; height:25px"><a href="/show/article.php?id=<?php echo $record_program[0]->news_id ?>" target=_blank style="color:#FF6600; font-weight:bold; font-size:14px;"><?php echo $record_program[0]->short_title ?></a></li>
-						<?php for($i=1;$i<6;$i++){ ?>
-						<li><a href="/show/article.php?id=<?php echo $record_program[$i]->news_id ?>" target=_blank><?php echo $record_program[$i]->short_title ?></a></li>
-						<? }?>
-					</ul>
+					<li><a href="/show/article.php?id=<?php echo $record_program[0]->news_id ?>" target=_blank><?php echo $record_program[0]->short_title ?></a></li>
+					<div id=descriptions>123123</div>
  				</div>
  			</div>
  			<!-- end !-->	   	
@@ -609,10 +605,10 @@
     	
   		<!-- start middle_center_top !-->
   		<?php
-  				$sql = 'select i.id as img_id,i.title,i.src,c.id as cid from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.platform="show"  and src<>"" order by i.created_at desc limit 6';
+  				$sql = 'select i.id as img_id,i.title,i.src,c.id as cid from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="我行我秀" and c.platform="show" order by i.priority asc,i.created_at desc limit 6';
 					$record_show=$db -> query($sql);
 
- 					$sql = 'select n.id as news_id,n.short_title,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="部门比拼" and c.platform="show" order by n.priority asc limit 5';
+ 					$sql = 'select n.id as news_id,n.short_title,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="部门比拼" and c.platform="show" order by n.priority asc, n.created_at desc limit 5';
 					$record_dept=$db -> query($sql);
   		?>
  			<div id=m_c_t>
