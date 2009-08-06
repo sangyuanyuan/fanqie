@@ -279,7 +279,7 @@
 				$count = count($records);
 			?>
 			<div class="c_title">
- 	 	 		<div class=title_l>番茄视频</div>
+ 	 	 		<div class=title_l>番茄视听</div>
 				<div class=title_r><a target="_blank" href="video_index.php">More..</a></div>
 			</div>
 			<div class="c_context">
@@ -300,7 +300,7 @@
  	 	 <div class=box>
  	 	 	<?php 
 				$category_id = category_id_by_name('节目点评');
-				$sql='select id,title,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
+				$sql='select id,title,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by priority,last_edited_at desc limit 11';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=r_title>
@@ -323,7 +323,7 @@
 		  <div class=box>
  	 	 	<?php 
 				$category_id = category_id_by_name('部门比拼');
-				$sql='select id,title,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
+				$sql='select id,title,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by priority,last_edited_at desc limit 11';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=r_title>
@@ -346,7 +346,7 @@
 		  <div class=box>
  	 	 	<?php 
 				$category_id = category_id_by_name('台前幕后');
-				$sql='select id,title,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by last_edited_at desc limit 11';
+				$sql='select id,title,short_title,last_edited_at from smg_news where is_adopt=1 and category_id='.$category_id.' order by priority,last_edited_at desc limit 11';
 				$star=$db->query($sql);
 			?>
  	 	 	<div class=r_title>
