@@ -1,7 +1,7 @@
 <?php
 	require_once('../../frame.php');
 	$zongcai_item = new table_class('smg_zongcai_item');
-	$record = $zongcai_item->paginate('all',array('order' => 'create_time asc'),18);
+	$record = $zongcai_item->paginate('all',array('order' => 'create_time desc'),18);
 	$count = count($record);
 ?>
 
