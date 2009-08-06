@@ -32,7 +32,7 @@
 	COLOR: #993333
 }
 .style8{
-	width:135px; height:112px; line-height:20px; overflow:hidden; float:left; display:inline;
+	width:135px; height:121px; line-height:20px; overflow:hidden; float:left; display:inline;
 }
 .style8 a{
 	font-size:12px;
