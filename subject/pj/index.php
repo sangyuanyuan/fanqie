@@ -401,7 +401,7 @@ $clickcount=$db->query($strsql1);
         <TBODY>
         <TR>
           <TD><IMG height=129 
-            src="botton.jpg" width=770 
+            src="bottom.jpg" width=770 
             border=0></TD>
 </TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!--mark (  enorth_down ) parse begin-->
 <STYLE type=text/css>TD {

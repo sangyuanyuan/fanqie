@@ -223,9 +223,9 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 							$picstext10 = array();
 							for ($i=0;$i<count($photo);$i++)
 							{
-								$picsurl10[]=$photo[$i]->url;
-								$picslink10[]=$photo[$i]->src;
-								$picstext10[]=$photo[$i]->short_title;
+								$picsurl10[]=$photo[$i]->src;
+								$picslink10[]=$photo[$i]->url;
+								$picstext10[]=$photo[$i]->title;
 							}
 							?>
 							<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
