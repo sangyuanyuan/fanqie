@@ -65,7 +65,7 @@
 					
 					<div class=content>
 						<? for($i=0; $i<count($news);$i++){?>
-							<a target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a>
+							<div style="width:189px; height:20px; overflow:hidden; float:left; display:inline;"><a target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 						<? }?>
 					</div>
 					<? $news=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="亮剑视野" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
@@ -75,7 +75,7 @@
 					
 					<div class=content>
 						<? for($i=0;$i<count($news);$i++){?>
-							<a href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a>
+							<div style="width:189px; height:20px; overflow:hidden; float:left; display:inline;"><a href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 						<? }?>
 					</div>
 					<? $news=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="创新经验讲座" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
@@ -84,7 +84,7 @@
 					</div>
 					<div class=content>
 						<? for($i=0;$i<count($news);$i++){?>
-							<a href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a>
+							<div style="width:189px; height:20px; overflow:hidden; float:left; display:inline;"><a href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 						<? }?>
 					</div>
 					<? $news=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="亮剑征集令" inner join smg_subject s on c.subject_id=s.id and s.name="亮剑专题" order by n.priority asc, n.last_edited_at desc limit 5');?>
@@ -93,7 +93,7 @@
 					</div>
 					<div class=content>
 						<? for($i=0;$i<count($news);$i++){?>
-							<a href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a>
+							<div style="width:189px; height:20px; overflow:hidden; float:left; display:inline;"><a href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 						<? }?>
 					</div>
 				</div>
