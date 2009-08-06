@@ -29,7 +29,7 @@
 								<li><a href="" target=_blank></a></li>
 					 	</ul>
 				<ul>
-								<li><b><a href="/news.php" target=_blank>新闻</a></b></li>
+								<li><b><a href="/news/news_list.php" target=_blank>新闻</a></b></li>
 								<li><a href="" target=_blank>视频</a></li>
 								<li><a href="http://172.27.203.88/smgparty/" target=_blank>党建</a></li>
 								<li><a href="/subject/subject_list.php" target=_blank>专题</a></li>
@@ -69,7 +69,7 @@
 								<li><a href="/server/marry.php" target=_blank>婚介</a></li>
 					 	</ul>
 			  <div id=weather>
-			<iframe src="index_weather.php" width=135px height=22px scrolling="no" frameborder="0"></iframe>
+			<iframe src="/index_weather.php" width=135px height=22px scrolling="no" frameborder="0"></iframe>
 	  </div>	
 	  <span id=deptbtn onclick='$("#deptcontent").show();'></span>	  
 	  <div id=search>
@@ -164,30 +164,7 @@
  					<div class=item id=item3 param="3" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">番茄广告</div>
 				</div>	
   			<div class=content_tlt id=content1>
-					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-					<div id="focus_01"></div> 
-					<script type="text/javascript"> 
-					var pic_width1=271; //图片宽度
-					var pic_height1=183; //图片高度
-					var pics1="/upload/photo/20090805aZBvbq.jpg,/upload/photo/20090622NefVqM.jpg,/upload/photo/20090626KVfdZk.jpg,/upload/photo/20090630YyLbtt.jpg";
-					var mylinks1="/show/article.php?id=855,/show/article.php?id=782,/show/article.php?id=784,/show/article.php?id=787";
-					var texts1="麦兜团队——我们收获的不仅是快乐,想象使广播更精彩,获将新闻的采访后记,年轻的力量——ICS团委";
- 	
-					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
-					picflash.addParam('wmode','opaque');
-					picflash.addVariable("picurl",pics1);
-					picflash.addVariable("piclink",mylinks1);
-					picflash.addVariable("pictext",texts1);				
-					picflash.addVariable("pictime","5");
-					picflash.addVariable("borderwidth","271");
-					picflash.addVariable("borderheight","183");
-					picflash.addVariable("borderw","false");
-					picflash.addVariable("buttondisplay","true");
-					picflash.addVariable("textheight","15");				
-					picflash.addVariable("pic_width",pic_width1);
-					picflash.addVariable("pic_height",pic_height1);
-					picflash.write("focus_01");				
-					</script>		
+					<a href="/show/article.php?id=855" target=_blank><img src="/upload/photo/20090805aZBvbq.jpg" width=270px; height=180px; border=0></a>
   		  </div>
  				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg);display:inline;">
  					<iframe id=video_src src="index_video.php?photo=&video=" width=235px height=182px scrolling="no" frameborder="0"></iframe>
@@ -198,9 +175,9 @@
 					<script type="text/javascript"> 
 					var pic_width1=271; //图片宽度
 					var pic_height1=183; //图片高度
-					var pics1="/upload/photo/20090805yyUdVW.jpg,/upload/photo/20090727wCJjgk.jpg,/upload/photo/20081211YewSBq.jpg,/upload/photo/20081211fCCbGW.jpg";
-					var mylinks1="/show/show.php?id=857,/show/show.php?id=838,/show/show.php?id=513,/show/show.php?id=516";
-					var texts1="SMG青年志愿者火热招募中,我是大明星：番茄网一季度评选揭晓,DAN是什么,《时尚感觉》时尚30年的文化断想";
+					var pics1="/upload/photo/20090805yyUdVW.jpg,/upload/photo/20090727wCJjgk.jpg,/upload/photo/20090805stfOHW.jpg,/upload/photo/20090804fkTcFH.jpg";
+					var mylinks1="/show/show.php?id=857,/show/show.php?id=838,/show/show.php?id=856,/show/show.php?id=853";
+					var texts1="SMG青年志愿者火热招募中,我是大明星：番茄网一季度评选揭晓,“亮剑”创新沙龙预告,《外滩》开机新闻发布会";
  	
 					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
@@ -222,9 +199,9 @@
  				<div class=list id=list1>
  					<ul>
  						 						<li><a href="/show/show.php?id=855" target=_blank>麦兜团队——我们收获的不仅是快乐</a></li>
- 						 						<li><a href="/show/show.php?id=782" target=_blank>想象使广播更精彩</a></li>
- 						 						<li><a href="/show/show.php?id=784" target=_blank>获将新闻的采访后记</a></li>
- 						 						<li><a href="/show/show.php?id=787" target=_blank>年轻的力量——ICS团委</a></li>
+ 						 						<li><a href="/show/show.php?id=852" target=_blank>《车游天下》——“得奖专业户”的快乐与艰辛</a></li>
+ 						 						<li><a href="/show/show.php?id=845" target=_blank>80、90后烹制“人气美食－快乐餐桌”</a></li>
+ 						 						<li><a href="/show/show.php?id=836" target=_blank>我想说的</a></li>
  						 					</ul>		
  				</div>  			 			
   			<div class=list id=list2  style="display:inline;">
@@ -239,8 +216,8 @@
  					<ul>
  						 						<li><a href="/show/show.php?id=857" target=_blank>SMG青年志愿者火热招募中</a></li>
  						 						<li><a href="/show/show.php?id=838" target=_blank>我是大明星：番茄网一季度评选揭晓</a></li>
- 						 						<li><a href="/show/show.php?id=513" target=_blank>DAN是什么</a></li>
- 						 						<li><a href="/show/show.php?id=516" target=_blank>《时尚感觉》时尚30年的文化断想</a></li>
+ 						 						<li><a href="/show/show.php?id=856" target=_blank>“亮剑”创新沙龙预告</a></li>
+ 						 						<li><a href="/show/show.php?id=853" target=_blank>《外滩》开机新闻发布会</a></li>
  						 					</ul>		
  				</div>
  			</div>
@@ -259,16 +236,16 @@
  				</div>
  				<div class=list_tlm id=list_tlm2 style="display:inline;">
  					<ul>
- 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19444" target=_blank>麦兜生发新梦想</a></li>
- 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=16119" target=_blank>2009斯诺克上海大师杯</a></li>
- 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19279" target=_blank>《麦兜响当当》套票预售火爆</a></li>
- 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=14587" target=_blank>SMG&TVB合拍剧《摘星之旅》动态</a></li>
- 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19291" target=_blank>《麦兜》首周末票房大热</a></li>
- 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=15213" target=_blank>《刁蛮娇妻苏小妹》探班记</a></li>
- 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19643" target=_blank>《蜗居》收视不断走高</a></li>
- 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=16163" target=_blank>影视剧中心探班《加油，优雅！》</a></li>
- 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19282" target=_blank>《十月围城》拍摄进入尾声</a></li>
- 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=14592" target=_blank>《喜羊羊》获“美猴奖”最佳配音奖</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19281" target=_blank>《加油！优雅》录制主题曲</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=14588" target=_blank>《男生贾里新传》宣发进行中</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19300" target=_blank>《蜗居》冷幽默调侃房奴故事</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=15605" target=_blank>《男生贾里新传》六一登陆</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19652" target=_blank>《十月围城》——新主流商业片</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=16891" target=_blank>《铁军之花》6月15日开机</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=13990" target=_blank>集团首部全额投资剧开门红</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19283" target=_blank>《上海，上海》剧组探班</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=14650" target=_blank>影视中心推出<世博星语></a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19428" target=_blank>“麦兜”教我们的那些事</a></li>
  						 				  </ul>
  				</div>
  			</div>
@@ -281,6 +258,12 @@
  				<div class=btn_tlb param=2 style="background:url(/images/index/btn3.jpg) no-repeat">新闻速读</div>
  				<div class=list_tlb id=list_tlb1 style="display:inline;">
  					<ul>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19633" target=_blank>LOVE RADIO四周岁(视频)</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19321" target=_blank>视频：外语频道慰问海警支队官兵</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19593" target=_blank>36期总裁奖揭晓 &ldquo;新老娘舅&rdquo;拔得头筹</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19170" target=_blank>沪苏战略携手 跨地域合作NGB</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19438" target=_blank>《加油，优雅！》8月3日登陆东方卫视</a></li>
+ 						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19168" target=_blank>开心网CEO程炳皓来东方宽频调研</a></li>
  						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19638" target=_blank>咱能不能不麻烦凤凰卫视</a></li>
  						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19634" target=_blank>五星体育东方卫视8月8日10小时大直播</a></li>
  						 						<li><span style="color:#CCCCCC">·</span><a href="/news/news/news.php?id=19511" target=_blank>卑书记、黎总为新人作培训</a></li>
@@ -434,12 +417,12 @@
  					
  				<div id=content_marguee>
  					<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="100%" style="line-height:24px;">
- 													<a href="/news/news/news.php?id=2169" target=_blank>你是“传媒青年才俊”吗?</a>　
-													<a href="/news/news/news.php?id=14409" target=_blank>4月你设备使用违规没？</a>　
-													<a href="/news/news/news.php?id=6578" target=_blank>广电外墙大修，注意进出安全</a>　
-													<a href="/news/news/news.php?id=19132" target=_blank>09年7月节目技术质量排名</a>　
-													<a href="/news/news/news.php?id=618" target=_blank>电视新闻中心节目创新方案征集</a>　
-													<a href="/news/news/news.php?id=10575" target=_blank>09年2月份合同执行情况汇总</a>　
+ 													<a href="/news/news/news.php?id=13531" target=_blank>番茄网新增一卡通系统链接</a>　
+													<a href="/news/news/news.php?id=1850" target=_blank>内网改版给您带来不便请谅解！</a>　
+													<a href="/news/news/news.php?id=3986" target=_blank>东视花苑改造开工</a>　
+													<a href="/news/news/news.php?id=102" target=_blank>集团内公共区域信息发布新规定</a>　
+													<a href="/news/news/news.php?id=6741" target=_blank>警惕：近年各地宿舍火灾事故</a>　
+													<a href="/news/news/news.php?id=9315" target=_blank>计算机技术与软件职称考试</a>　
 						 					</MARQUEE>	
  				</div>
  			</div>
@@ -462,22 +445,21 @@
 						<ul>
 							<li><a href="/server/news/news.php?id=19605" target=_blank>《东方红》9月底登陆全国卫视 </a></li>
 							<li><a href="/server/news/news.php?id=19617" target=_blank>《新少林寺》投资两亿 </a></li>
-							<li><a href="/server/news/news.php?id=3998" target=_blank>湖南卫视对《舞者》进行肢解?</a></li>
+							<li><a href="/server/news/news.php?id=14362" target=_blank>威尔逊：IPO干涸时期即将结束</a></li>
 						</ul>	
 					</div>	
 					<div id=box2>
 						<ul>
-							<li>·<a href="/server/news/news.php?id=10041" target=_blank>教育部：规范台标不具有强制性</a></li>
-							<li>·<a href="/server/news/news.php?id=15531" target=_blank>倪萍复出主持贵州卫视晚会 </a></li>
-							<li>·<a href="/server/news/news.php?id=3836" target=_blank>分众传媒Q3净利5135万美元</a></li>
-							<li>·<a href="/server/news/news.php?id=9879" target=_blank>《中国日报美国版》创刊出版 </a></li>
+							<li>·<a href="/server/news/news.php?id=1468" target=_blank>多伦多电影节首映58部影片</a></li>
+							<li>·<a href="/server/news/news.php?id=6707" target=_blank>天极腾讯共建数码家庭频道</a></li>
+							<li>·<a href="/server/news/news.php?id=15045" target=_blank>河北广播新闻联盟成立 </a></li>
+							<li>·<a href="/server/news/news.php?id=14131" target=_blank>天津:成立实体公司定制节目 </a></li>
 						</ul>						
 					</div>
  			</div>
  			<!-- end !-->
 		
 		</div>
-		
 		<div id=p4>
  			<!-- start top_right_right_top !-->
  			<div id=t_r_r_t>
@@ -546,8 +528,8 @@
 						<ul>
 														<li>·<a href="/server/news/news.php?id=19564" target=_blank>常见的四种错误吃鱼法</a></li>
 														<li>·<a href="/server/news/news.php?id=19491" target=_blank>欧莱雅洗发水到货！</a></li>
-														<li>·<a href="/server/news/news.php?id=19197" target=_blank>GUCCI钱夹法国代购</a></li>
 														<li>·<a href="/server/news/news.php?id=19275" target=_blank>“芝麻街”音像出售（有赠品）</a></li>
+														<li>·<a href="/server/news/news.php?id=19197" target=_blank>GUCCI钱夹法国代购</a></li>
 													</ul>
 					</div> 				
  				</div>
@@ -555,26 +537,26 @@
  				<div class=content_trrt id=content_trrt3 style="display:none;">
  					<div class=box>
 						<ul>
-														<li>·<a href="/zone/news/news.php?id=4737" target=_blank>浅谈安徽电视台的节目创新方向</a></li>
-														<li>·<a href="/zone/news/news.php?id=1622" target=_blank>江苏台周莉：成长比成功更重要</a></li>
-														<li>·<a href="/zone/news/news.php?id=3611" target=_blank>李敖重出电视江湖 嘴巴更尖锐</a></li>
-														<li>·<a href="/zone/news/news.php?id=3051" target=_blank>金融风暴对传媒的影响及对策初探</a></li>
+														<li>·<a href="/zone/news/news.php?id=1738" target=_blank>《赢在中国》输在哪里？</a></li>
+														<li>·<a href="/zone/news/news.php?id=679" target=_blank>我国数字高清电视的现状及发展</a></li>
+														<li>·<a href="/zone/news/news.php?id=18745" target=_blank>"为世博中国馆取名"网络征集</a></li>
+														<li>·<a href="/zone/news/news.php?id=3297" target=_blank>周鸿铎：思想解放催生传媒经济学</a></li>
 													</ul>
 					</div>
 					<div class=box>
 						<ul>
-														<li>·<a href="/zone/news/news.php?id=12740" target=_blank>《潜伏》PK《团长》</a></li>
-														<li>·<a href="/zone/news/news.php?id=2552" target=_blank>扫描2006—2007年长篇电视剧</a></li>
-														<li>·<a href="/zone/news/news.php?id=8710" target=_blank>看不明白的新闻标题</a></li>
-														<li>·<a href="/zone/news/news.php?id=1487" target=_blank>开心网还能开心多久?</a></li>
+														<li>·<a href="/zone/news/news.php?id=273" target=_blank>手机电视国标争议延续，消费者难抉择</a></li>
+														<li>·<a href="/zone/news/news.php?id=15437" target=_blank>建议集团搞足球联赛</a></li>
+														<li>·<a href="/zone/news/news.php?id=2811" target=_blank>"李小龙"制片：斯皮尔伯格也会穿帮</a></li>
+														<li>·<a href="/zone/news/news.php?id=11266" target=_blank>“大师”、“泰斗”不要随便称</a></li>
 													</ul>
 					</div>
 					<div class=box>
 						<ul>
-														<li>·<a href="/zone/news/news.php?id=457" target=_blank>从《福娃奥运漫游记》看国产动漫的成功之道</a></li>
-														<li>·<a href="/zone/news/news.php?id=2241" target=_blank>总局为何要剪掉《剑蝶》部分镜头？</a></li>
-														<li>·<a href="/zone/news/news.php?id=6437" target=_blank>尹明华：传媒发展的文化理解</a></li>
-														<li>·<a href="/zone/news/news.php?id=923" target=_blank>网络盗播奥运会开幕式惊人</a></li>
+														<li>·<a href="/zone/news/news.php?id=2373" target=_blank>网络院线市场空间引发传媒界热议</a></li>
+														<li>·<a href="/zone/news/news.php?id=7666" target=_blank>广播影视: 扩大内需的重点</a></li>
+														<li>·<a href="/zone/news/news.php?id=2089" target=_blank>"威客"：  知识传播的高速公路?</a></li>
+														<li>·<a href="/zone/news/news.php?id=1031" target=_blank>几大通讯社奥运开幕式报道分析</a></li>
 													</ul>
 					</div> 	 				
  				</div>
@@ -582,7 +564,6 @@
  				
  			</div>
  			<!-- end !-->			
-			
  			<!-- start top_right_right_middle !-->
  				 		
 			<div id=t_r_r_m>
@@ -658,7 +639,7 @@
 				</div>
 
  			</div>
- 			<!-- end !-->				
+ 			<!-- end !-->					
 		</div>
 				
  </div>
@@ -671,8 +652,8 @@
  				<a href="/show/list.php?type=news&id=37"  target=_blank id=more></a>
  				<img src="/images/index/program.jpg">
 				<div id=content_mlt>
-					<li><a href="/show/article.php?id=19680" target=_blank>提前半小时有利有弊</a></li>
-					<div id=descriptions>123123</div>
+					<div id=t><a href="/show/article.php?id=19680" target=_blank>提前半小时有利有弊</a></div>
+					<div id=c><p>　　几年前，一次偶然的调换电视频道，使我家每晚的电视频道真的&ldquo;锁定&rdquo;在东方卫视。主要原因是：这个频道节目的编排更加注重新闻性，能原汁原味地反映新闻要素。</p></div>
  				</div>
  			</div>
  			<!-- end !-->	   	
@@ -743,7 +724,7 @@
  				</div>
  				
  				<div class=box>
-   				  				<img src="">
+   				  				<img src="/upload/images/2MtjT3z9Hu.jpg">
   				<div id=context1>
   					<a href="/zone/dialog.php?id=42" target=_blank>对话:"麦兜"团队</a>
   				</div>

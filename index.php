@@ -24,11 +24,11 @@
  		<div id=p1>
  			<!-- start top_left_top !-->
  			<?php
-				$sql = 'select i.id as img_id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="每日之星" and c.platform="show" order by i.priority asc limit 4';
+				$sql = 'select i.id as img_id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="每日之星" and c.platform="show" order by i.priority asc,i.created_at desc limit 4';
 				$record_star=$db -> query($sql);
 				$sql = 'select n.short_title, c.platform,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="视频新闻" and c.platform="news" order by n.priority asc limit 4';
 				$record_video=$db -> query($sql);
-				$sql = 'select i.id as img_id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.platform="show" order by i.priority asc limit 4';
+				$sql = 'select i.id as img_id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.platform="show" order by i.priority asc,i.created_at desc limit 4';
 				$record_ad=$db -> query($sql);
   		?>
  			<div id=t_l_t>
@@ -38,30 +38,7 @@
  					<div class=item id=item3 param="3" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">番茄广告</div>
 				</div>	
   			<div class=content_tlt id=content1>
-					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-					<div id="focus_01"></div> 
-					<script type="text/javascript"> 
-					var pic_width1=271; //图片宽度
-					var pic_height1=183; //图片高度
-					var pics1="<?php echo $record_star[0]->src.",".$record_star[1]->src.",".$record_star[2]->src.",".$record_star[3]->src ?>";
-					var mylinks1="<?php echo "/show/article.php?id=".$record_star[0]->img_id.",/show/article.php?id=".$record_star[1]->img_id.",/show/article.php?id=".$record_star[2]->img_id.",/show/article.php?id=".$record_star[3]->img_id; ?>";
-					var texts1=<?php echo '"',flash_str_replace($record_star[0]->title).",".flash_str_replace($record_star[1]->title).",".flash_str_replace($record_star[2]->title).",".flash_str_replace($record_star[3]->title).'"'; ?>;
- 	
-					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
-					picflash.addParam('wmode','opaque');
-					picflash.addVariable("picurl",pics1);
-					picflash.addVariable("piclink",mylinks1);
-					picflash.addVariable("pictext",texts1);				
-					picflash.addVariable("pictime","5");
-					picflash.addVariable("borderwidth","271");
-					picflash.addVariable("borderheight","183");
-					picflash.addVariable("borderw","false");
-					picflash.addVariable("buttondisplay","true");
-					picflash.addVariable("textheight","15");				
-					picflash.addVariable("pic_width",pic_width1);
-					picflash.addVariable("pic_height",pic_height1);
-					picflash.write("focus_01");				
-					</script>		
+					<a href="/show/article.php?id=<?php echo $record_star[0]->img_id?>" target=_blank><img src="<?php echo $record_star[0]->src?>" width=270px; height=180px; border=0></a>
   		  </div>
  				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg);display:inline;">
  					<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=235px height=182px scrolling="no" frameborder="0"></iframe>
@@ -417,7 +394,6 @@
  			<!-- end !-->
 		
 		</div>
-		
 		<div id=p4>
  			<!-- start top_right_right_top !-->
  			<div id=t_r_r_t>
@@ -498,7 +474,6 @@
  				
  			</div>
  			<!-- end !-->			
-			
  			<!-- start top_right_right_middle !-->
  			<?php
  					$sql = 'select n.short_title, n.id as news_id, c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news" and n.priority<100 order by n.priority asc';
@@ -553,7 +528,7 @@
 				</div>
 
  			</div>
- 			<!-- end !-->				
+ 			<!-- end !-->					
 		</div>
 				
  </div>
@@ -569,8 +544,8 @@
  				<a href="/show/list.php?type=news&id=<?php echo $record_program[0]->cid ?>"  target=_blank id=more></a>
  				<img src="/images/index/program.jpg">
 				<div id=content_mlt>
-					<li><a href="/show/article.php?id=<?php echo $record_program[0]->news_id ?>" target=_blank><?php echo $record_program[0]->short_title ?></a></li>
-					<div id=descriptions>123123</div>
+					<div id=t><a href="/show/article.php?id=<?php echo $record_program[0]->news_id ?>" target=_blank><?php echo $record_program[0]->short_title ?></a></div>
+					<div id=c><?php echo $record_program[0]->description ?></div>
  				</div>
  			</div>
  			<!-- end !-->	   	
