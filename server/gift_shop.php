@@ -34,7 +34,7 @@ function cs_DoFSCommand(command, args) {
 	var csObj = isInternetExplorer ? document.all.cs : document.cs;
     	if (command == "show")    
     	{    
-			tb_show('购买礼物','gift_list.php?width=600&height=400&cid='+args);    
+			tb_show('购买礼物','gift_list.php?width=600&height=400&cid='+ encodeURI(args));    
     	}else if(command == 'checkout'){
 			checkout();
 		} 

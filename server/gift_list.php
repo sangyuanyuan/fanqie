@@ -1,7 +1,8 @@
 <?
 include "../frame.php";
 $db = get_db();
-$db->query("select id from smg_gift_category where name='{$_REQUEST['cid']}'");
+$cate_name = urldecode($_REQUEST['cid']);
+$db->query("select id from smg_gift_category where name='{$cate_name}'");
 if($db->move_first()){
 	$cid = $db->field_by_index(0);
 }else{
