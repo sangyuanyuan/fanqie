@@ -23,7 +23,7 @@
 		left join (select count(dept_id) as p1allcounts,dept_id from smg_images where is_recommend=1  '.$sql2.'  group by dept_id) p1 on a.id=p1.dept_id left join  (select count(dept_id) as p2counts,dept_id from smg_images where is_adopt=1 '.$sql2.'  group by dept_id) p2 on p1.dept_id = p2.dept_id
 		left join (select count(dept_id) as v1allcounts,dept_id from smg_video where is_recommend=1  '.$sql2.'  group by dept_id) v1 on a.id=v1.dept_id left join  (select count(dept_id) as v2counts,dept_id from smg_video where is_adopt=1  '.$sql2.' group by dept_id) v2 on v1.dept_id = v2.dept_id
 		order by b.allcounts desc) tb order by a1 desc';
-		$clickcount=$db->paginate($strsql,20);	
+		$clickcount=$db->paginate($strsql,20);
 	}
 	else{
 		$strsql='select * from smg_dept order by clickcount2 desc';
@@ -36,13 +36,13 @@
 
 <div style="width:450px; margin-left:200px;line-height:20px; margin-top:30px; margin-bottom:10px; padding:10px; float:left; display:inline">
 	<span style="color:red; font-size:16px; font-weight:bold;">排行榜：</span><br>
-	<? if($id==1){ ?>
-	<div style="width:400px; margin-top:5px; <? if($i< 3 && $pageindex==1){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $clickcount[$i]->name;?></div>
-	<div style="margin-top:5px; <? if($i< 3 && $pageindex==1){?>color:red; font-weight:bold;<? }?> margin-right:20px;float:right; display:inline;"><? echo $clickcount[$i]->a1;?></div>
-	<? } else{?>
-		<div style="width:400px; margin-top:5px; <? if($i< 3 && $pageindex==1){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $fwcount[$i]->name;?></div>
-		<div style="margin-top:5px; <? if($i< 3 && $pageindex==1){?>color:red; font-weight:bold;<? }?> margin-right:20px;float:right; display:inline;"><? echo $fwcount[$i]->clickcount2;?></div>
-	<? }?>
+	<? if($id==1){for($i=0;$i<count($clickcount);$i++){ ?>
+	<div style="width:400px; margin-top:5px; <? if($i< 3){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $clickcount[$i]->name;?></div>
+	<div style="margin-top:5px; <? if($i< 3){?>color:red; font-weight:bold;<? }?> margin-right:20px;float:right; display:inline;"><? echo $clickcount[$i]->a1;?></div>
+	<? }} else{ for($i=0;$i<count($fwcount);$i++){?>
+		<div style="width:400px; margin-top:5px; <? if($i< 3){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $fwcount[$i]->name;?></div>
+		<div style="margin-top:5px; <? if($i< 3){?>color:red; font-weight:bold;<? }?> margin-right:20px;float:right; display:inline;"><? echo $fwcount[$i]->clickcount2;?></div>
+	<? }}?>
 	<div class="pageurl">
          <?php 
 	          echo paginate("");   
