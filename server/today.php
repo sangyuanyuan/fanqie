@@ -30,6 +30,7 @@
      	  	<div id="menu2"><a href="birthday.php">我的生日</a></div>	
     	  	<div id="menu2"><a href="calendar.php">日历</a></div>
      	  	<div id="menu1">今日寿星</div>	
+			<div id="menu2"><a href="send_gift_list.php">送礼列表</a></div>
      	  	<div id=date>TODAY <?php echo $date;?></div>
      	  </div>        
         <div id="context">
