@@ -678,7 +678,7 @@
     <div id=p3>
       <!-- start middle_right_top !-->
       <?
-       	$sql = 'select v.title,v.photo_url, v.id as video_id, c.id as cid from smg_video v left join smg_category c on v.category_id=c.id where v.is_adopt=1 and c.name="佳片共赏" and c.platform="show" order by v.priority asc limit 6';
+       	$sql = 'select v.title,v.photo_url, v.id as video_id, c.id as cid from smg_video v left join smg_category c on v.category_id=c.id where v.is_adopt=1 and c.name="佳片共赏" and c.platform="show" order by v.priority asc,v.created_at desc limit 6';
 				$record_video=$db -> query($sql);
 			?>
  			<div id=m_r_t>
