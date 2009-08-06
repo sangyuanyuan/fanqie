@@ -5,7 +5,6 @@ Thumbs.db
 upload/*
 *.flv
 ~*
-config/config.php
 *.bak
 *.png
 bbs/*
