@@ -20,12 +20,10 @@
 		
 		if($record[0]->news_type==2)
 		{
-			alert('OK');exit;
 			redirect($record[0]->file_name);
 		}
 		else if($record[0]->news_type==3)
-		{
-			
+		{	
 			redirect($record[0]->target_url);
 		}
 		if($record[0]->related_news!="")
