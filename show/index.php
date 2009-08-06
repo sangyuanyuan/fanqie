@@ -92,7 +92,7 @@
      <!-- start left_middle !-->
  	 	 <div id=l_m>
  	 	 	<?php 
-				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.photo_url from smg_video t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and t1.is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5;';
+				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.photo_url from smg_video t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and year(t1.created_at)=year("'.date("Y-m-d").'") and t1.is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5';
 				$spphb=$db->query($sql);
 				$sql = 'SELECT t1.publisher,t1.dept_id,count(t1.title) as num FROM smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.is_adopt=1 and t1.publisher!="admin" and t2.platform="show" group by t1.publisher limit 5';
 				$bk=$db->query($sql);
@@ -155,7 +155,7 @@
 				<?php } ?>
 			</div>
 			<?php 
-				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5;';
+				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and year(t1.created_at)=year("'.date("Y-m-d").'") and is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5;';
 				$wxwxph=$db->query($sql);
 				$sql = 'SELECT t1.publisher,t1.dept_id,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.publisher!="admin" and t1.is_adopt=1 and t2.platform="show" group by t1.publisher limit 5';
 				$sy=$db->query($sql);
@@ -252,8 +252,9 @@
  	 </div>	 
  	 
  	 <div id=ibody_center>
- 	 	<?php 
-			$sql = "select t1.id,t1.src,t1.title,t1.publisher from smg_images t1,smg_category t2 where t1.is_adopt=1 and t1.publisher is not null and t1.src is not null and t1.category_id=t2.id and t2.platform='show' order by t1.priority asc,t1.created_at desc limit 6";
+ 	 	<?php
+			$category_id = category_id_by_name('我行我秀','picture');
+			$sql = "select id,src,title,publisher,dept_id from smg_images where category_id=".$category_id." and is_adopt=1 order by priority,created_at desc limit 6";
 			$records = $db->query($sql);
 			$count = count($records);
 		?>
@@ -268,12 +269,12 @@
 				<div class=c_content>
 					<div class=pic><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=90 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=title><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=publisher>作者：<?php echo $records[$i]->publisher?></div>
+					<div class=publisher>作者：<?php echo $records[$i]->publisher!=''?$records[$i]->publisher:(get_dept_info($records[$i]->dept_id)->name!=''?get_dept_info($records[$i]->dept_id)->name:'匿名用户');?></div>
 				</div>	
 				<?php } ?>		
 			</div>
 			<?php 
-				$sql="select t1.id,t1.photo_url,t1.title,t1.publisher from smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.publisher is not null and t2.platform='show' order by t1.priority asc,t1.created_at desc limit 4";
+				$sql="select t1.id,t1.photo_url,t1.title,t1.publisher,dept_id from smg_video t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.platform='show' order by t1.priority asc,t1.created_at desc limit 4";
 				$records = $db->query($sql);
 				$count = count($records);
 			?>
@@ -286,7 +287,7 @@
 				<div class=c_content>
 					<div class=pic ><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=90 src="<?php echo $records[$i]->photo_url?>"></a></div>
 					<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=publisher>博客：<?php echo $records[$i]->publisher?></div>
+					<div class=publisher>博客：<?php echo $records[$i]->publisher!=''?$records[$i]->publisher:(get_dept_info($records[$i]->dept_id)->name!=''?get_dept_info($records[$i]->dept_id)->name:'匿名用户');?></div>
 				</div>	
 				<?php } ?>		
 			</div>

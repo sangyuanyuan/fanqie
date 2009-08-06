@@ -26,7 +26,7 @@ $count=$db->query($total);
 </head>
 <body style="background:#E1F0F7">
 	<table width="795" border="0">
-		tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
+		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
 			<td colspan="5" width="795">　　　　
 			搜索　<input id=newskey1 type="text" value="<? echo $key1?>" >
 				  <input id=newskey2 type="hidden">

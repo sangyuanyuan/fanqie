@@ -26,24 +26,30 @@
 		}
 	}elseif($id!=''){
 		$title = category_name_by_id($id);
-		switch($type){
-			case 'video':
-				$l_sql = 'select title,id,created_at from smg_video where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
-				$l_title = 'title';
-				$link = 'video.php?id=';
-				break;
-			case 'news':
-				$l_sql = 'select title,short_title,id,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
-				$l_title = 'short_title';
-				$link = 'article.php?id=';
-				break;
-			case 'image':
-				$l_sql = 'select title,id,created_at from smg_images where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
-				$l_title = 'title';
-				$link = 'show.php?id=';
-				break;
-			default:
-				break;
+		if($title=="每日之星"){
+			$l_sql = 'select title,short_title,id,created_at,photo_src from smg_news where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+			$l_title = 'short_title';
+			$link = 'article.php?id=';
+		}else{
+			switch($type){
+				case 'video':
+					$l_sql = 'select title,id,created_at from smg_video where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+					$l_title = 'title';
+					$link = 'video.php?id=';
+					break;
+				case 'news':
+					$l_sql = 'select title,short_title,id,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+					$l_title = 'short_title';
+					$link = 'article.php?id=';
+					break;
+				case 'image':
+					$l_sql = 'select title,id,created_at from smg_images where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+					$l_title = 'title';
+					$link = 'show.php?id=';
+					break;
+				default:
+					break;
+			}
 		}
 	}else{
 		switch($type){
@@ -142,7 +148,7 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$sql = 'select id,photo_url,title,click_count from smg_video where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.photo_url from smg_video t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and year(t1.created_at)=year("'.date("Y-m-d").'") and t1.is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>视频排行榜</div></div>
@@ -162,7 +168,7 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$sql = 'select id,src,title,click_count from smg_images where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and  year(t1.created_at)=year("'.date("Y-m-d").'") and is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>我行我秀排行榜</div></div>
@@ -190,6 +196,21 @@
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
 			?>
+			<?php if($title=="每日之星"){?>
+			<div class=content>
+				<div class=pic>
+					<img src="<?php echo $records[$i]->photo_src ?>" width="140" height="80" border=0>
+				</div>
+				<div class=left style="width:310px;">
+					<a href="<?php if($type!='magazine'){echo $link.$records[$i]->id;}else{echo $records[$i]->online_url;}?>" target="_blank" title="<?php echo strip_tags($records[$i]->$l_title);?>"><?php echo strip_tags($records[$i]->$l_title);?></a>
+				</div>
+				<div class=right>
+					<?php if($type!='magazine'){echo $records[$i]->created_at;}else{echo $records[$i]->create_time;}?>
+				</div>
+			</div>
+			<?php	
+			}else{
+			?>
 			<div class=content>
 				<div class=left>
 					<a href="<?php if($type!='magazine'){echo $link.$records[$i]->id;}else{echo $records[$i]->online_url;}?>" target="_blank" title="<?php echo strip_tags($records[$i]->$l_title);?>"><?php echo strip_tags($records[$i]->$l_title);?></a>
@@ -198,6 +219,8 @@
 					<?php if($type!='magazine'){echo $records[$i]->created_at;}else{echo $records[$i]->create_time;}?>
 				</div>
 			</div>
+			<?php
+			} ?>
 			<?php } }?>
 			<div id=paginate><?php paginate();?></div>
 		</div>

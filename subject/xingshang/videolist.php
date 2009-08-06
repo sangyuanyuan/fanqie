@@ -1,4 +1,7 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+﻿<?php require_once('../../frame.php');
+$db=get_db();
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <HEAD>
 	<TITLE>星尚专题</TITLE>
@@ -46,13 +49,6 @@ html,body{
 </style>
 </HEAD>
 <BODY style="background:url('beijing.jpg');">
-
-<? 
-		require_once('../libraries/sqlrecordsmanager.php');
-		require_once('../inc/pubfun.inc.php');
-		require_once('../modules/mod_vote/mod_class_define.php');		
-		$sqlmanager = new SqlRecordsManager();		
-?>
 	
 <TABLE cellSpacing=0 cellPadding=0 width=770 border=0>
   <TBODY>
@@ -73,10 +69,10 @@ html,body{
     <TD vAlign=center bgColor=#e9f2d9>
     	<? 
     		$id=$_REQUEST['id'];
-    	$video=$sqlmanager->GetRecords('select * from smg_video where isadopt=1 and main_cate_id='.$id.' order by priority asc,createtime desc');
+    	$video=$sqlmanager->GetRecords('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.category_id='.$id.' and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.created_at desc');
     		for($i=0;$i<count($video);$i++){
     	?>
-    	<div style="width:115px; height:170px; margin-top:10px; padding-bottom:10px; margin-left:32px;  float:left; display:inline;"><a target="_blank" href="/video/video.php?id=<? echo $video[$i]->id;?>"><img border=0 width=115 height=115 src="<? echo $video[$i]->photourl;?>"><br><? echo $video[$i]->title;?></a></div>
+    	<div style="width:115px; height:170px; margin-top:10px; padding-bottom:10px; margin-left:32px;  float:left; display:inline;"><a target="_blank" href="/video/video.php?id=<? echo $video[$i]->id;?>"><img border=0 width=115 height=115 src="<? echo $video[$i]->photo_url;?>"><br><? echo $video[$i]->title;?></a></div>
     	<? }?>
       </TD></TR></TBODY></TABLE>
       <!--mark (  enorth_down ) parse begin-->

@@ -131,9 +131,9 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   					<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜新闻" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by n.priority asc, n.last_edited_at desc limit 10');?>
 			  		<div id=title3></div>
 			  		<div id="box1">
-								<? for($i=0; $i<count($news); $i++){?>
-									<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
-								<? }?>
+						<? for($i=0; $i<count($news); $i++){?>
+							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
+						<? }?>
 			     	</div>
 					<div id="pic_box">
 						<?php

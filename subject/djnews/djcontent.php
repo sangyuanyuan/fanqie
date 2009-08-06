@@ -1,5 +1,5 @@
 ﻿<?
-  require_once('../frame.php');
+  require_once('../../frame.php');
   $db=get_db();
   if($_REQUEST['id']==''){die('没有找到网页');}
   $news=$db->query('select id,title,content,news_type,target_url,file_name from smg_news n where id='.$_REQUEST['id']);

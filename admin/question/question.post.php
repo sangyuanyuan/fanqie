@@ -23,10 +23,6 @@
 			$project_id = $_POST['question']['problem_id'];
 		}
 			
-		$table_change = array('<p>'=>'');
-		$table_change += array('</p>'=>'');
-		$title = strtr($_POST['title'],$table_change);
-		$question->title = $title;
 		$question->update_attributes($_POST['question']);
 		
 		$question_item = new table_class('smg_question_item');

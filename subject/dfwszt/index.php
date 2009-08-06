@@ -34,11 +34,6 @@
 	COLOR: #993333
 }
 </STYLE>
-<script language="javascript" src="/js/smg.js"></script>
-<script language="javascript">
-	var dept_id = RequestCookies("smg_dept","");
-	AddSiteClickcount(dept_id);	
-</script>
 <style type="text/css">
 <!--
 #lovexin12,#lovexin14{
@@ -222,7 +217,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   			<tr>
   				<td valign=top>
   					<div style="margin-top:10px; margin-left:10px;">
-						<? $photo = $sqlmanager->GetRecords('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="东方发展观" inner join smg_subject s on c.subject_id=s.id and s.name="东方卫视改版专题" order by n.priority asc,n.created_at desc limit 8');
+						<? $photo = $db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="东方发展观" inner join smg_subject s on c.subject_id=s.id and s.name="东方卫视改版专题" order by n.priority asc,n.created_at desc limit 8');
 							$picsurl10 = array();
 							$picslink10 = array();
 							$picstext10 = array();
