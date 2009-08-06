@@ -115,7 +115,8 @@
 		  	</div>
 			<div class=r_b>
 			<?php
-				$sql="select t1.* from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.platform='show' order by t1.priority asc,t1.created_at desc";
+				$category_id = category_id_by_name('我行我秀','picture');
+				$sql="select id,publisher,dept_id,src,title click_count from smg_images where category_id=".$category_id." and is_adopt=1 order by priority.,created_at desc";
 				$records = $db->paginate($sql,16);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
