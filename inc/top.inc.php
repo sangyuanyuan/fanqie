@@ -9,8 +9,8 @@
 
 <div id=nav1>
 	<div id=box>	
-   	<img src="/images/top/sms.jpg">
-		<div id=context><a href="http://172.27.203.88/emailfront/emailfront.htm" target="_blank">企业邮箱</a> <a href="#">新节目</a> <a href="#">直播</a> <a href="#">联系我们</a> <span onclick="javascript:document.getElementById('toolcontent').style.display='inline'">常用办公软件</span></div>		
+   	<a href="/dx/dx.php" target="_blank"><img src="/images/top/sms.jpg" border=0></a>
+		<div id=context><a href="http://172.27.203.88/emailfront/emailfront.htm" target="_blank">企业邮箱</a> <a href="#">新节目</a> <a href="#">直播</a> <a href="/contact/contact.php" target="_blank">联系我们</a> <span onclick="javascript:document.getElementById('toolcontent').style.display='inline'">常用办公软件</span></div>		
 	</div>	
 </div>
 <div id=nav2>
@@ -24,7 +24,7 @@
 	 	</ul>
 		<?php }?>
 	  <div id=weather>
-			<iframe src="index_weather.php" width=135px height=22px scrolling="no" frameborder="0"></iframe>
+			<iframe src="/index_weather.php" width=135px height=22px scrolling="no" frameborder="0"></iframe>
 	  </div>	
 	  <span id=deptbtn onclick='$("#deptcontent").show();'></span>	  
 	  <div id=search>

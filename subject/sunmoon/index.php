@@ -198,7 +198,7 @@ html,body{
            			</TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
      <TR>
           <TD>
-          	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="日食全揭秘" inner join smg_subject s on c.subject_id=s.id and s.name="日全食专题" order by n.priority asc, n.last_edited_at desc limit 4');?>
+          	<?php $news = $db->query('select n.description,n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="日食全揭秘" inner join smg_subject s on c.subject_id=s.id and s.name="日全食专题" order by n.priority asc, n.last_edited_at desc limit 4');?>
             <TABLE height=68 width="100%" border=0>
               <TBODY>
               <TR>

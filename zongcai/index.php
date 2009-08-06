@@ -227,8 +227,8 @@
 			<div id=context>
 				
 				<?php
-					$sql = 'select nick_name,comment,created_at from smg_comment where resource_type="zongcai" and resource_id=0';
-					$coment_record = $db->paginate($sql,10,'comment');
+					$sql = 'select nick_name,comment,created_at from smg_comment where resource_type="zongcai" and resource_id=0 order by id desc';
+					$coment_record = $db->paginate($sql,5,'comment');
 					$icount = count($coment_record);
 					for($i=0;$i<$icount;$i++){
 				?>

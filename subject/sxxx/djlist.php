@@ -1,5 +1,5 @@
 ﻿<?
-require_once('../frame.php');
+require_once('../../frame.php');
   if($_REQUEST['id']==''){die('没有找到网页');}
   $db=get_db();
   $listid=$_REQUEST['id'];
