@@ -142,7 +142,7 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$sql = 'select id,photo_url,title,click_count from smg_video where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.photo_url from smg_video t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and year(t1.created_at)=year("'.date("Y-m-d").'") and t1.is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>视频排行榜</div></div>
@@ -162,8 +162,7 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$sql = 'select id,src,title,click_count from smg_images where month(created_at)=month("'.date("Y-m-d").'") and year(created_at)=year("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
-				echo $sql;
+				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and and year(t1.created_at)=year("'.date("Y-m-d").'") is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>我行我秀排行榜</div></div>
