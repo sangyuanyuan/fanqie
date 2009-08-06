@@ -62,7 +62,7 @@ $xxzl = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_n
 								<? }?>			
 							<div class=more><a target="_blank" href="/video/videolist2.php?id=14">更多>></a></div>
 							<div class=title>三项学习教育</div>
-							<a href="/sxjy/"><img border=0 style="margin-left:10px; margin-top:5px;" width="205" height="58" src="images/sxxx.jpg"></a>
+							<a href="/subjec/sxxx/"><img border=0 style="margin-left:10px; margin-top:5px;" width="205" height="58" src="images/sxxx.jpg"></a>
 							<div class=title>信息简报</div>						
 								<? 
 																for($i=0;$i<count($xxjb);$i++){
