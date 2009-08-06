@@ -224,7 +224,7 @@
 					for($j=0;$j<=1;$j++){
 				?>
  				<div class=title><a href="<?php echo "/".$record_head[$j]->platform."/news/news_head.php?id=".$record_head[$j]->news_id ?>" target="_blank"><?php echo $record_head[$j]->short_title ?></a><?php echo show_img($record_head[$j]->image_flag,22,20)?></div>
-				<div class=content>
+				<div class=content <? if($record_head[$j]->sub_headline==1){ echo 'style="text-align:left; text-indent:24px; "';} ?>>
  				<?php
  					if($record_head[$j]->sub_headline==1)
  					{ 
@@ -269,7 +269,7 @@
  				<?php
 					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" order by n.priority asc,n.created_at desc limit 41';
 					$record_import_a=$db -> query($sql);
-					$sql = 'select n.photo_src, c.platform,n.id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news" order by n.priority asc limit 6';
+					$sql = 'select n.photo_src, c.platform,n.id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news" order by n.priority asc,n.created_at desc limit 6';
 					$record_import_b=$db -> query($sql);
 					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-专" and c.platform="news" order by n.priority asc,n.created_at desc limit 41';
 					$record_import_c=$db -> query($sql);
@@ -678,11 +678,11 @@
     <div id=p3>
       <!-- start middle_right_top !-->
       <?
-       	$sql = 'select v.title,v.photo_url, v.id as video_id, c.id as cid from smg_video v left join smg_category c on v.category_id=c.id where v.is_adopt=1 and c.name="番茄视听" and c.platform="show" order by v.priority asc limit 6';
+       	$sql = 'select v.title,v.photo_url, v.id as video_id, c.id as cid from smg_video v left join smg_category c on v.category_id=c.id where v.is_adopt=1 and c.name="佳片共赏" and c.platform="show" order by v.priority asc limit 6';
 				$record_video=$db -> query($sql);
 			?>
  			<div id=m_r_t>
- 				<a href="/blog/" id=more target=_blank></a>
+ 				<a href="/show/video_index.php" id=more target=_blank></a>
 				<div id=content_mrt>
   					<li><a href="/show/video.php?id=<?php echo $record_video[0]->video_id ?>" style="color:#F0474E; font-size:14px; font-weight:bold" target=_blank><?php echo $record_video[$i]->title?></a></li>
 					<?php for($i=1;$i<6;$i++){?>

@@ -4,7 +4,7 @@
  */
  $debug_tag = true;
 
- $use_localhost = true;
+ $use_localhost = false;
 
  
  /*
@@ -13,6 +13,13 @@
  
 
  $db_server_name = '172.27.203.82';
+
+ if($use_localhost == true){
+ 	$db_server_name = 'localhost';
+ }else{
+ 	$db_server_name = '172.27.203.82';
+ }
+
  $db_database_name = 'smg_new';
  $db_user_name = 'root';
  $db_password = 'xunao';
