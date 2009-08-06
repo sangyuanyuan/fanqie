@@ -1,10 +1,10 @@
+config/config.php
 .project
 Thumbs.db
 .tmp_*
 upload/*
 *.flv
 ~*
-config/config.php
 *.bak
 *.png
 bbs/*

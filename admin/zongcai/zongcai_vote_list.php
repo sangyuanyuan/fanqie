@@ -25,7 +25,7 @@
 		</tr>
 		<?php
 			$db = get_db();
-			$sql = 'select * from smg_zongcai_item where id in(select item_id from smg_zongcai_vote_item where vote_id = '.$id.') order by program_type,priority';
+			$sql = 'select * from smg_zongcai_item where id in(select item_id from smg_zongcai_vote_item where vote_id = '.$id.') order by program_type,priority,create_time desc';
 			//echo $sql;
 			$record = $db->query($sql);
 			$i = 0;
