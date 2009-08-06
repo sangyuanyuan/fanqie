@@ -24,7 +24,7 @@
 			</tr>
 			<tr class="tr3">
 				<td width="100">项目名称</td>
-				<td width="695" align="left"><?php show_fckeditor('title','Title',true,"80");?></td>
+				<td width="695" align="left"><input type="text" name="post[name]" class="required" ></td>
 			</tr>
 			<tr class="tr3">
 				<td width="100">添加图片</td>
@@ -90,12 +90,4 @@
 	);
 	//日历框函数
 	
-	$("#submit").click(function(){
-		var oEditor = FCKeditorAPI.GetInstance('title') ;
-		var title = oEditor.GetHTML();
-		if(title==""){
-			alert("请输入标题！");
-			return false;
-		}
-	});
 </script>

@@ -26,7 +26,7 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">题　目</td>
-			<td align="left"><?php show_fckeditor('title','Title',true,"80",$question->title);?></td>
+			<td align="left"><input type="text" name="question[title]" value="<?php echo $question->title;?>" class="required"></td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">昵　称</td>
@@ -92,13 +92,6 @@
 		});
 		
 		$("#submit").click(function(){
-			var oEditor = FCKeditorAPI.GetInstance('title') ;
-			var title = oEditor.GetHTML();
-			if(title==""){
-				alert("请输入标题！");
-				return false;
-			}
-			
 			$("input[type=checkbox]").each(function(){
 				if($(this).attr('checked'))flag=$(this).attr('checked');
 			});

@@ -39,10 +39,6 @@
 		}else{
 			$project->end_time = $_POST['end_time'];
 		}
-		$table_change = array('<p>'=>'');
-		$table_change += array('</p>'=>'');
-		$title = strtr($_POST['title'],$table_change);
-		$project->name = $title;
 		$project->update_attributes($_POST['post']);
 		
 		redirect('project_list.php');
