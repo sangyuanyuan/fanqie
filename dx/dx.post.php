@@ -25,13 +25,13 @@
 	{
 		echo "<script LANGUAGE=\"Javascript\">"; 
 		echo "location.href='http://222.68.17.193:8080/qxt/jbs.jsp?phone=".$mobile."&content=".$yz."&sign=3';";
-		echo "alert('注销成功！');";
+		echo "alert('退订成功！');";
 		echo "location.href='/dx/dx.php';";
 		echo "</script>";
 		if($count[0]->num>0)
 	  {
 			$StrSql='delete from smg_dx where phone="'.$mobile.'"';
-			$db = execute($StrSql);
+			$db->execute($StrSql);
 		}
 		else
 		{
