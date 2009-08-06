@@ -25,12 +25,12 @@
 	<div id="t"><span id="waiter"></span></div>
 	<div id="chat_content_box">
 		<div style="width:700px;font-size:16px;margin-left:140px;margin-top:10px;">
-			欢迎您进入番茄网匿名聊天室!请选择您的性别后，点击‘<span style="color:red;"><b>开始聊天</b></span>’后，系统就会随机抽选一个在线的用户成为你的聊天搭档，并为你构建一个<span style="color:red;"><b>一对一</b></span>的二人聊天室，在这里，当然你不会知道对方的名字、部门、年龄，所有的信息被的红‘<span style="color:red;"><b>陌生人</b></span>’一词代替，对方也许是个小孩子，也许是个老头，也许是个美女，也许是个逃犯，也许是个明星，除了在接下来的坦诚的聊天中外你无从得知。陌生的人，形形色色的身份，在这样一个陌生的虚拟世界，尽情的聊天。 
+			欢迎您进入番茄网匿名聊天室!请选择您的性别后，点击‘<span style="color:red;"><b>开始聊天</b></span>’后，系统就会随机抽选一个在线的用户成为你的聊天搭档，并为你构建一个<span style="color:red;"><b>一对一</b></span>的二人聊天室，在这里，当然你不会知道对方的名字、部门、年龄，所有的信息被的红‘<span style="color:red;"><b>陌生人</b></span>’一词代替，对方也许就坐在你对面的同事，也许是个美女，也许是个明星，除了在接下来的坦诚的聊天中外你无从得知。陌生的人，形形色色的身份，在这样一个陌生的虚拟世界，尽情的聊天。 
 		</div>
 		<div style="text-align:center">
 			<form method="get" action="chat_room.php">
-				<input type="radio" name="gender" value="boy" <?php if($gender == 'boy') echo 'checked="checked"';?>>我是男同志
-				<input type="radio" name="gender" value="girl" <?php if($gender == 'girl') echo 'checked="checked"';?>>我是女同志
+				<input type="radio" name="gender" value="boy" <?php if($gender == 'boy') echo 'checked="checked"';?>>男
+				<input type="radio" name="gender" value="girl" <?php if($gender == 'girl') echo 'checked="checked"';?>>女
 				<input type="submit" id="submit_start" value="开始聊天">
 			</form>
 		</div>

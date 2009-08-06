@@ -99,7 +99,7 @@ html,body{
                       <TD>
                       	<div id=s_left>
 	                      <? 
-						  	$video=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选规则" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 4');
+						  	$video=$db->query('select n.id,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选规则" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 4');
 						  ?>
 						  <? for($i=0;$i<count($video);$i++){?>
 						  <a target="_blank" href="/news/news.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a>
@@ -139,7 +139,7 @@ html,body{
         <TBODY>
         <TR>
           <TD height=86>
-          	<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="最新简讯" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 8');?>
+          	<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选简讯" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 8');?>
             <TABLE height=210 width="100%" border=0>
               <TBODY>
               <TR>
@@ -365,8 +365,6 @@ $clickcount=$db->query($strsql1);
 								<tr><td colspan=2 align="right"><a href="ph.php?id=1">更多</a></td></tr>
 							</table>
 						</td>
-					  </TR>
-					  <TR  valign="top">
 					  	<td>
 					  		<table >
 		                		<tr>
