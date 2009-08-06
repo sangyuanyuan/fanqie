@@ -127,6 +127,7 @@
 	 	<div id=r_t>
 	 		<?php 
 				$category_id = category_id_by_name('视频首页顶部图','video');
+				alert($category_id);
 				$sql = 'select * from smg_video where category_id='.$category_id.' and is_adopt=1  order by priority asc,created_at desc limit 4';
 				$records = $db->query($sql);
 			?>

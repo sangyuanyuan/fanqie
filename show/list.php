@@ -162,7 +162,8 @@
      <!-- start left_bottom !-->
  	 	 <div class=l_b>
  	 	 	<?php 
-				$sql = 'select id,src,title,click_count from smg_images where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select id,src,title,click_count from smg_images where month(created_at)=month("'.date("Y-m-d").'") and year(created_at)=year("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				echo $sql;
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>我行我秀排行榜</div></div>
