@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" language="javascript" src="/javascript/jquery-1.3.2.min.js"></script><script type="text/javascript" language="javascript" src="/javascript/jquery.cookie.js"></script><script type="text/javascript" language="javascript" src="/javascript/pubfun.js"></script>
+<script type="text/javascript" language="javascript" src="/javascript/jquery-1.3.2.min.js"></script><script type="text/javascript" language="javascript" src="/javascript/jquery.cookie.js"></script><script type="text/javascript" language="javascript" src="/javascript/pubfun.js"></script>
 <div id=nav1>
 	<div id=box>	
    	<img src="/images/top/sms.jpg">
@@ -22,7 +22,7 @@
 								<li><b><a href="/news.php" target=_blank>新闻</a></b></li>
 								<li><a href="" target=_blank>视频</a></li>
 								<li><a href="http://172.27.203.88/smgparty/" target=_blank>党建</a></li>
-								<li><a href="" target=_blank>专题</a></li>
+								<li><a href="/subject/subject_list.php" target=_blank>专题</a></li>
 								<li><b><a href="/news/news_sub.php" target=_blank>报料</a></b></li>
 								<li><a href="" target=_blank>业务</a></li>
 								<li><a href="" target=_blank>排行</a></li>
@@ -31,7 +31,7 @@
 				<ul>
 								<li><b><a href="/bbs/" target=_blank>论坛</a></b></li>
 								<li><a href="/zone/dialog_list.php" target=_blank>对话</a></li>
-								<li><a href="/zone/chat_room.php" target=_blank>聊天</a></li>
+								<li><a href="/zone/chat_entry.php" target=_blank>聊天</a></li>
 								<li><a href="/zone/hotimg.php" target=_blank>热图</a></li>
 								<li><b><a href="/zone/" target=_blank>博客</a></b></li>
 								<li><a href="/zone/blog.php?type=91" target=_blank>工作</a></li>
@@ -41,10 +41,10 @@
 				<ul>
 								<li><b><a href="/show/" target=_blank>展示</a></b></li>
 								<li><a href="/show/show_index.php" target=_blank>摄影</a></li>
-								<li><a href="" target=_blank>宝宝</a></li>
+								<li><a href="/show/list.php?type=image&id=41" target=_blank>宝宝</a></li>
 								<li><a href="/show/video_index.php" target=_blank>音频</a></li>
 								<li><b><a href="/show/video_index.php" target=_blank>视频</a></b></li>
-								<li><a href="/show/" target=_blank>杂志</a></li>
+								<li><a href="/show/list.php?type=image&id=73" target=_blank>杂志</a></li>
 								<li><a href="/show/list.php?id=24&type=news" target=_blank>明星</a></li>
 								<li><a href="/show/list.php?id=39&type=news" target=_blank>幕后</a></li>
 					 	</ul>
@@ -59,8 +59,7 @@
 								<li><a href="/server/marry.php" target=_blank>婚介</a></li>
 					 	</ul>
 			  <div id=weather>
-	  	<img src="/images/weather/1.gif">
-	  	<div id=context>多云 20℃～32℃</div>
+			<iframe src="index_weather.php" width=135px height=22px scrolling="no" frameborder="0"></iframe>
 	  </div>	
 	  <span id=deptbtn onclick='$("#deptcontent").show();'></span>	  
 	  <div id=search>
@@ -72,9 +71,9 @@
 		</form>
  						
    		<div id=hot>
-   			   			<a href="/search/?key=%E6%9C%9D%E9%B2%9C&search_type=smg_news" target=_blank>朝鲜</a>　
    			   			<a href="/search/?key=%E9%BA%A6%E5%85%9C&search_type=smg_news" target=_blank>麦兜</a>　
-   			   			<a href="/search/?key=123&search_type=smg_news" target=_blank>123</a>　
+   			   			<a href="/search/?key=%E9%BA%A6%E5%85%9C%E5%93%8D%E5%BD%93%E5%BD%93&search_type=smg_news" target=_blank>麦兜响当当</a>　
+   			   			<a href="/search/?key=%E6%80%BB%E8%A3%81%E5%A5%96&search_type=smg_news" target=_blank>总裁奖</a>　
    			   		</div>
    	</div>
 		<div id=login>
@@ -109,6 +108,22 @@
 <div id=dept>
 	<div id=deptbox>
 		<div id=deptcontent>
+							
+							<div class=depts><a href="http://172.27.203.83:8080/dept/shss" target="_blank">生活时尚</a></div>
+							
+							<div class=depts><a href="http://172.27.203.83:8080/dept/jspd" target="_blank">纪实频道</a></div>
+							
+							<div class=depts><a href="http://172.27.203.83:8080/dept/szyd" target="_blank">文广移动</a></div>
+							
+							<div class=depts><a href="http://172.27.203.83:8080/dept/fwb" target="_blank">法务部</a></div>
+							
+							<div class=depts><a href="http://172.27.203.83:8080/dept/sitv" target="_blank">文广互动</a></div>
+							
+							<div class=depts><a href="http://172.27.203.83:8080/dept/dwsw" target="_blank">对外事务</a></div>
+							
+							<div class=depts><a href="http://172.27.203.83:8080/dept/jswmb" target="_blank">精神文明办</a></div>
+							
+							<div class=depts><a href="http://172.27.203.83:8080/dept/dfws" target="_blank">东方卫视</a></div>
 							
 							<div class=depts><a href="http://172.27.203.83:8080/dept/newscenter" target="_blank">电视新闻中心</a></div>
 						</div>

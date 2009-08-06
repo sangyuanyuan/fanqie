@@ -3,7 +3,7 @@ require_once('../frame.php');
 parse_str($_SERVER['QUERY_STRING']);
 $db=get_db();
 $sql="";
-if($key1<>""){$sql=' and u.loginname like "%'.$key1.'%" ';}
+if($key1<>""){$sql=' and u.name like "%'.$key1.'%" ';}
 $strsql='select s.*,u.name ,u.nick_name from smg_leader_role s left join smg_user u on s.user_id=u.id where 1=1'.$sql.' order by createtime desc';
 $rows=$db->paginate($strsql,20);
 ?>

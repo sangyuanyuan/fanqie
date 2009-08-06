@@ -67,7 +67,6 @@
 	$w = date('w',$first_day);
 	$date_num = date('t',$date);//$_REQUEST['check_date'] ? date('t',$_REQUEST['check_date']) : date('t');
 	$db = get_db();
-	$db->echo_sql = true;
 	#$items = $db->query("select *,substring(birthday_short,4,2) as bday from smg_user_real where birthday_short like '$m%' and hide_birthday!=1 order by birthday_short");
 	#foreach ($items as $v) {
 	#	$birthday[intval($v->bday)] .= "[{$v->nickname}]";
@@ -118,12 +117,12 @@
            		<div class="day_title"><?php if($c_day >0 && $c_day <=$date_num) echo $c_day;?></div>
 				<?php 
 				if(empty($add_month) && $c_day == $today_index){ ?>
-					<div class="day_content_today"><a href="send_gift_day.php?width=600&height=400&date=<?php echo $m .'-' .sprintf('%02d',$c_day);?>" class="thickbox"><marquee behavior="scroll" scrollamount=2 direction="up" style="width:90px; height:80px; text-align:center;"><?php echo $today_string;?></marquee></a></div>
+					<div class="day_content_today"><a href="today.php?date=<?php echo $y. '-' .$m .'-' .sprintf('%02d',$c_day);?>"><marquee behavior="scroll" scrollamount=2 direction="up" style="width:90px; height:80px; text-align:center;"><?php echo $today_string;?></marquee></a></div>
 				<?php }
 				else if(empty($add_month) && ($c_day == $today_index+1 || $c_day == $today_index+2)){ ?>
-					<div class="day_content"><a style="color:red;" href="send_gift_day.php?width=600&height=400&date=<?php echo $m .'-' .sprintf('%02d',$c_day);?>" class="thickbox"><?php echo $birthday[$c_day];?></a></div>
+					<div class="day_content"><a style="color:red;" href="today.php?date=<?php echo $y. '-' .$m .'-' .sprintf('%02d',$c_day);?>"><?php echo $birthday[$c_day];?></a></div>
 				<?php }else { ?>
-					<div class="day_content"><a href="send_gift_day.php?width=600&height=400&date=<?php echo $m .'-' .sprintf('%02d',$c_day);?>" class="thickbox"><?php echo $birthday[$c_day];?></a></div>
+					<div class="day_content"><a href="today.php?date=<?php echo $y. '-' .$m .'-' .sprintf('%02d',$c_day);?>" ><?php echo $birthday[$c_day];?></a></div>
 				<?php } ?>
 			</div>    
      	   <? 

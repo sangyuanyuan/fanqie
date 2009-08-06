@@ -1,23 +1,56 @@
-<?php
-if($_REQUEST['hide_retdiv']){
-  	echo "<div id=retdiv>";
-  }
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+	<meta http-equiv=Content-Language content=zh-cn>
+	<title>SMG-番茄网-服务-生日日历</title>
+	<? 	
+	 	include "../frame.php";
+		css_include_tag('server_calendar','top','bottom','thickbox');
+		use_jquery();
+  ?>
+	
+</head>
+<body>
+<? require_once('../inc/top.inc.html');
+	js_include_tag('service/calendar','thickbox');
+	$db = get_db();
+	$gift_ids = $_REQUEST['gift_ids'];
+	if(!$gift_ids){
+		alert('系统错误');
+		redirect('calendar.php');
+		exit;
+	}
+	$gifts = $db->query("select * from smg_gift where id in ($gift_ids)");
 ?>
-<div id=sendname><?php echo "赠送礼物给{$_REQUEST['nickname']}";?></div>
-<div id="msg_box">
-	您的大名<input type="text" id="name">	
-	<div>
-		您的祝福<textarea id="tcontent"></textarea><button id="submit">发送</button><button id="cancel">取消</button>
-	</div>
+<div id=ibody>
+	<div class="l">
+    		<div id="title"></div>
+			<div id=sendname><?php echo "赠送礼物给{$_SESSION['smg_gift_nickname']}";?></div>
+			<div id="msg_box">
+				您的大名<input type="text" id="name">	
+				<div>
+					您的祝福<textarea id="tcontent"></textarea><button id="submit">发送</button><button id="cancel">取消</button>
+				</div>
+			</div>
+			<div id="right_div">				
+					<div id="gift_box" style="border-top:1px solid #666666;padding-top:5px;margin-top:5px;">
+						<div>已选礼物</div>
+						<?php
+						foreach ($gifts as $v) {
+							echo "<div class=\"gift_item\">{$v->name} <img src=\"{$v->img_src}\"></div> ";
+						}
+						
+						?>
+					</div>
+				</div>
 </div>
-<div id="right_div">
-		<div id="gift_box" style="border-top:1px solid #666666;padding-top:5px;margin-top:5px;">
-			<?php
-			include "gift_category.php";
-			
-			?>
-		</div>
-	</div>
+  <div class="r"></div>
+</div>
+<? require_once('../inc/bottom.inc.php');?>
+
+</body>
+</html>				
 <script>
 	$(function(){
 		$('#submit').click(function(){
@@ -30,27 +63,13 @@ if($_REQUEST['hide_retdiv']){
 			if(tcontent == ''){
 				alert('请填写您的祝福!');
 				return false;
-			}
-			if($('input:checked').length <= 0){
-				alert('请选择礼物');
-				return false;
-			}
-			var src = $('input:checked').prev().prev().prev().attr('src');
-			var gift_name = $('input:checked').attr('gift_name');
+			}					
 
-			$.post('send_gift.post.php',{'gift[reciever]':'<?php echo $_REQUEST["loginname"];?>','gift[sender]':sender,'gift[message]':tcontent,'gift[gift_src]':src,'gift[name]':gift_name},function(data){
-				alert(data);
-				$('#tcontent').val('');
+			$.post('send_gift.post.php',{'gift_ids':'<?php echo $_REQUEST["gift_ids"];?>','gift[sender]':sender,'gift[message]':tcontent},function(data){
+				alert('赠送礼物成功!');
+				window.location.href = 'today.php';
 			});
-		});
-		
-		$('#cancel').click(function(){
-			if($('#retdiv').length <= 0){
-				tb_remove();
-				return false;
-			}
-			$('#retdiv').load('send_gift_day.php',{'date':'<?php echo $_REQUEST["date"];?>','hide_retdiv':true});
-		});
+		});		
 	});
 </script>
 <?php 

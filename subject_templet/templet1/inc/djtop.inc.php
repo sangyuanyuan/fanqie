@@ -1,32 +1,41 @@
-<div id=logo></div>
-		<div id=title><div class="cl"><a target="_blank" href="djnews.php">Ê×Ò³</a></div><div class="cl"><a target="_blank" href="djlist.php?id=63">Áìµ¼½²»°</a></div><div class="cl"><a target="_blank" href="djlist.php?id=70">Ñ§Ï°×ÊÁÏ</a></div><div class="cl"><a target="_blank" href="djlist.php?id=67">²½Öè°²ÅÅ</a></div><div class="cl"><a target="_blank" href="djlist.php?id=64">×îĞÂ¶¯Ì¬</a></div><div class="cl"><a target="_blank" href="djlist.php?id=66">ĞÅÏ¢¼ò±¨</a></div><div class="cl"><a target="_blank" href="djlist.php?id=68">ÎÄ¼şÕª±à</a></div><div class="cl"><a target="_blank" href="djlist2.php">ÎÒÎª¼¯ÍÅÏ×Ò»¼Æ</a></div><div class="cl"><a target="_blank" href="djlist.php?id=69">¾­Ñé½éÉÜ</a></div><div class="cl"><a target="_blank" href="/sxjy/">ÈıÏîÑ§Ï°½ÌÓı</a></div></div>
+ï»¿<div id=logo></div>
+<?php
+$deptsort = $db->query('SELECT sum(s.click_count) as djl,d.name FROM smg_subject_items i inner join smg_subject sb on i.subject_id=sb.id and sb.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" inner join smg_news s on i.resource_id=s.id inner join smg_dept d on s.dept_id=d.id  group by s.dept_id order by djl desc limit 10');
+$xxjb = $db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="ä¿¡æ¯ç®€æŠ¥" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 7');
+$zxdt = $db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="æœ€æ–°åŠ¨æ€" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 6');
+$ldjh = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="é¢†å¯¼è®²è¯" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 6');
+$bzap = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="æ­¥éª¤å®‰æ’" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 6');
+$wjzb = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="æ–‡ä»¶æ‘˜ç¼–" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 6');
+$jyjs = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="ç»éªŒä»‹ç»" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 6');
+$xxzl = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="å­¦ä¹ èµ„æ–™" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.last_edited_at desc limit 6');
+?>
+
+		<div id=title><div class="cl"><a target="_blank" href="djnews.php">é¦–é¡µ</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $ldjh[0]->cid; ?>">é¢†å¯¼è®²è¯</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $xxzl[0]->cid;?>">å­¦ä¹ èµ„æ–™</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php $bzap[0]->cid ?>">æ­¥éª¤å®‰æ’</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $zxdt[0]->cid;?>">æœ€æ–°åŠ¨æ€</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $xxjb[0]->cid;?>">ä¿¡æ¯ç®€æŠ¥</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php $wjzb[0]->cid; ?>">æ–‡ä»¶æ‘˜ç¼–</a></div><div class="cl"><a target="_blank" href="djlist2.php">æˆ‘ä¸ºé›†å›¢çŒ®ä¸€è®¡</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $jyjs[0]->cid;?>">ç»éªŒä»‹ç»</a></div><div class="cl"><a target="_blank" href="/sxjy/">ä¸‰é¡¹å­¦ä¹ æ•™è‚²</a></div></div>
 		<div style="width:1002px; background:#F9B628;">
 			<div id=content>
 				<div id=context>
 					<div id=left>
 						<div id=content>
-							<div class=title>×îĞÂ¶¯Ì¬</div>	
-								<? 
-								$news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=64 and isadopt=1 order by priority asc, pubdate desc',1,7);
-								
-								for($i=0;$i<count($news);$i++){
-									if($news[$i]->newstype==3)//urlÁ´½ÓÀàĞÂÎÅ
+							<div class=title>æœ€æ–°åŠ¨æ€</div>	
+								<? 								
+								for($i=0;$i<count($zxdt);$i++){
+									if($zxdt[$i]->news_type==3)//urlé“¾æ¥ç±»æ–°é—»
 								  {
-								  	redirecturl($news[$i]->linkurl);
+								  	redirect($zxdt[$i]->target_url);
 								  	CloseDB();
 								  	exit;
 								  }
-								  //ÎÄ¼şĞÂÎÅ
-								  if($news[$i]->newstype==2)
+								  //æ–‡ä»¶æ–°é—»
+								  if($zxdt[$i]->news_type==2)
 								  {
 								  	//echo $news->newstpe;
-								   	redirecturl($news[$i]->filepath ."/" .$news[$i]->filename);
+								   	redirect($zxdt[$i]->file_name);
 								  	CloseDB();
 								  	exit; 	
 								  }
 								?>
 									
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">ã€€<a target="_blank" href="djcontent.php?id=<? echo $zxdt[$i]->id;?>"><? echo $zxdt[$i]->short_title;?></a></div>
 								<? if($i<2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							
@@ -42,53 +51,51 @@
 									</a>
 								</div>
 							</div>
-							<div class=more><a target="_blank" href="djlist.php?id=64">¸ü¶à>></a></div>
-							<div class=title>»î¶¯ÊÓÆµ</div>
-							
+							<div class=more><a target="_blank" href="djlist.php?id=<?php $zxdt[0]->cid;?>">æ›´å¤š>></a></div>
+							<div class=title>æ´»åŠ¨è§†é¢‘</div>
 								<? 
-								$video = $sqlmanager->GetRecords('select * from smg_video where main_cate_id=14 and isadopt=1 order by priority asc, createtime desc',1,3);?>
-								<div style="width:200px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><? ShowMediaPlay(200,230,$video[0]->photourl,$video[0]->videourl);?></div>
+								$video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="æ´»åŠ¨è§†é¢‘" inner join smg_subject s on c.subject_id=s.id and s.name="å­¦ä¹ å®è·µæ´»åŠ¨ä¸“é¢˜" order by n.priority asc, n.created_at desc limit 3');?>
+								<div style="width:200px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><? show_video_player(200,230,$video[0]->photo_url,$video[0]->video_url);?></div>
 									<? 	
 								for($i=1;$i<count($video);$i++){?>
-								<div style="width:200px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">¡¡<a target="_blank" href="/video/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
+								<div style="width:200px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">ã€€<a target="_blank" href="/show/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
 								<? }?>			
-							<div class=more><a target="_blank" href="/video/videolist2.php?id=14">¸ü¶à>></a></div>
-							<div class=title>ÈıÏîÑ§Ï°½ÌÓı</div>
+							<div class=more><a target="_blank" href="/video/videolist2.php?id=14">æ›´å¤š>></a></div>
+							<div class=title>ä¸‰é¡¹å­¦ä¹ æ•™è‚²</div>
 							<a href="/sxjy/"><img border=0 style="margin-left:10px; margin-top:5px;" width="205" height="58" src="images/sxxx.jpg"></a>
-							<div class=title>ĞÅÏ¢¼ò±¨</div>						
+							<div class=title>ä¿¡æ¯ç®€æŠ¥</div>						
 								<? 
-								$news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=66 and isadopt=1 order by priority asc, pubdate desc',1,7);
-								for($i=0;$i<count($news);$i++){
-									if($news[$i]->newstype==3)//urlÁ´½ÓÀàĞÂÎÅ
+																for($i=0;$i<count($xxjb);$i++){
+									if($xxjb[$i]->news_type==3)//urlé“¾æ¥ç±»æ–°é—»
 								  {
-								  	redirecturl($news[$i]->linkurl);
+								  	redirect($xxjb[$i]->target_url);
 								  	CloseDB();
 								  	exit;
 								  }
-								  //ÎÄ¼şĞÂÎÅ
-								  if($news[$i]->newstype==2)
+								  //æ–‡ä»¶æ–°é—»
+								  if($xxjb[$i]->news_type==2)
 								  {
 								  	//echo $news->newstpe;
-								   	redirecturl($news[$i]->filepath ."/" .$news[$i]->filename);
+								   	redirect($xxjb[$i]->file_name);
 								  	CloseDB();
 								  	exit; 	
 								  }			
 								?>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><a target="_blank" href="djcontent.php?id=<? echo $xxjb[$i]->id;?>"><? echo $xxjb[$i]->short_title;?></a></div>
 								<? if($i<2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
-								<div class=more><a target="_blank" href="djlist.php?id=66">¸ü¶à>></a></div>
-							<div class=title>×¨Ìâ·ÃÎÊÅÅĞĞ°ñ</div>	
+								<div class=more><a target="_blank" href="djlist.php?id=<?php echo $xxjb[0]->cid;?>">æ›´å¤š>></a></div>
+							<div class=title>ä¸“é¢˜è®¿é—®æ’è¡Œæ¦œ</div>	
 								<? 
 								for($i=0;$i<count($deptsort);$i++){?>
 								<div style="width:150px; height:15px; line-height:15px; margin-top:10px; margin-left:10px; <? if($i<3){?>color:red; font-weight:bold;<? }?> overflow:hidden; float:left; display:inline"><? echo $deptsort[$i]->name;?></div><div style="width:50px; margin-top:10px; margin-right:10px; text-align:right; <? if($i<3){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $deptsort[$i]->djl;?></div>
 								<? }?>
 							
 							<div id=lxfs>
-								SMGÑ§Ï°Êµ¼ù»î¶¯°ì¹«ÊÒ<br>
-								µØÖ·£ºÍşº£Â·298ºÅÉÏÊÓ´óÏÃ¸±Â¥18Â¥<br>
-								´«Õæ£º<span style="color:#EB6100; font-weight:bold;">62561664</span>¡¡ÓÊ±à£º200041<br>
-								µç×ÓÓÊÏä£ºkxfzg@smg.sh.cn
+								SMGå­¦ä¹ å®è·µæ´»åŠ¨åŠå…¬å®¤<br>
+								åœ°å€ï¼šå¨æµ·è·¯298å·ä¸Šè§†å¤§å¦å‰¯æ¥¼18æ¥¼<br>
+								ä¼ çœŸï¼š<span style="color:#EB6100; font-weight:bold;">62561664</span>ã€€é‚®ç¼–ï¼š200041<br>
+								ç”µå­é‚®ç®±ï¼škxfzg@smg.sh.cn
 							</div>
 						</div>
 					</div>

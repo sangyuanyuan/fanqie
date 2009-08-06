@@ -1,4 +1,4 @@
-﻿<? 
+<? 
 	require_once('../frame.php');
 	$nav = new table_class("smg_nav");
 	$nav = $nav->find("all",array('order' => 'id asc'));
@@ -24,8 +24,7 @@
 	 	</ul>
 		<?php }?>
 	  <div id=weather>
-	  	<img src="/images/weather/1.gif">
-	  	<div id=context>多云 20℃～32℃</div>
+			<iframe src="index_weather.php" width=135px height=22px scrolling="no" frameborder="0"></iframe>
 	  </div>	
 	  <span id=deptbtn onclick='$("#deptcontent").show();'></span>	  
 	  <div id=search>
