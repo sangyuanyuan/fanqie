@@ -19,7 +19,7 @@
 		<? include('inc/djtop.inc.php');?>
 					<div id=right>
 						<div class=gd style="background:url(/images/bg/sxxx_hdjy.jpg) no-repeat;">
-							<? $news = $sqlmanager->GetRecords('select n.photo_src,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动剪影" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by n.priority asc,n.last_edited_at desc limit 6');?>
+							<? $news = $db->query('select n.photo_src,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动剪影" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by n.priority asc,n.last_edited_at desc limit 6');?>
 							<DIV id=Layer5>
 				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
@@ -188,10 +188,10 @@
 									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 									<? }?>
 							</div>
-							<? $news = $sqlmanager->GetRecords('select * from smg_news where main_cate_id=139 and isadopt=1 order by priority asc, pubdate desc',1,6); ?>
+							<? $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="答题竞赛" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by n.priority asc, n.last_edited_at desc limit 6'); ?>
 							
 								<? for($i=0;$i<count($news);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->shorttitle;?></a></div>
+								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 						</div>

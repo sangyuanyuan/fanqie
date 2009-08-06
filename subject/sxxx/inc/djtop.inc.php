@@ -27,7 +27,7 @@ $zsbd = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_n
 							<div class=title>活动视频</div>
 							
 								<? 
-								$video = $sqlmanager->GetRecords('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动视频" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by n.priority asc, n.created_at desc limit 3');?>
+								$video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动视频" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by n.priority asc, n.created_at desc limit 3');?>
 								<div style="width:200px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><? show_video_player(200,230,$video[0]->photourl,$video[0]->videourl);?></div>
 									<? 	
 								for($i=1;$i<count($video);$i++){?>
