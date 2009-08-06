@@ -269,6 +269,10 @@
 				alert('投票已过期！');
 				return false;
 			}
+			if($(this).prev().val()==1){
+				alert('你已经投过票了');
+				return false;
+			}
 			var item = $('input[name='+$(this).attr('name')+'][checked]').val();
 			if(item==undefined){
 				alert('请选择一个选项后再进行投票！');
