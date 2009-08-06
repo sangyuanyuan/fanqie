@@ -23,8 +23,8 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -党建新闻列表</title>
-	<?php css_include_tag('dj');?>
+	<title>SMG -三项学习教育内容页</title>
+	<?php css_include_tag('sxxx');?>
 </head>
 <body>
 	<div id=bodys>
@@ -35,7 +35,7 @@
 				<div style="width:680px; margin-top:10px; margin-left:10px; font-size:14px; float:left; display:inline;">
 				<?php echo get_fck_content($news[0]->content); ?>
 			</div>
-			<div id=content5><?php print_fck_pages($news[0]->content,"djcontent.php?id=".$_REQUEST['id']);?></div>
+			<div id=content5><?php print_fck_pages($news[0]->content,"djcontent.php?id=".$_REQUEST['id']);?></div> 
 			<? if($news[0]->is_commentable==1){?>
 			<div id=contenttitle style="margin-left:8px;">评论</div>
 			<? 
