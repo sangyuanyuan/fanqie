@@ -213,7 +213,7 @@
 								  <div id=plleft>意见：</div><textarea id="commentcontent" name="post[comment]"></textarea>
 							   </div>   
 							   <div id=content11></div>
-							   	<input type="hidden" id="resource_type" name="post[resource_type]" value="djnews">
+							   	<input type="hidden" id="resource_type" name="post[resource_type]" value="dj">
 								<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
 								<input type="hidden" name="type" value="comment">
 							   <input type="hidden" value="<? echo count($data,COUNT_RECURSIVE);?>">

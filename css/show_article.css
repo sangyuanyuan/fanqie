@@ -27,7 +27,7 @@ a{text-decoration:none;}
 #ibody_right .top .left{width:75px; height:14px; margin-left:12px; border-right:1px solid #dfdfdf; float:left; display:inline;}
 #ibody_right .top .more{width:50px; height:13px; font-size:13px; margin-top:1px; margin-left:520px; font-weight:normal; float:left; display:inline;}
 #ibody_right .top .more a{color:#FF6600;}
-#ibody_right .title{width:680px; height:30px; margin-top:10px; font-size:25px; font-weight:bolder; font-family:黑体; line-height:30px; text-align:center; float:left; display:inline;}
+#ibody_right .title{width:680px; margin-top:10px; font-size:25px; font-weight:bolder; font-family:黑体; line-height:30px; text-align:center; float:left; display:inline;}
 #ibody_right .a_title{width:560px; height:27px; margin-top:15px; margin-left:60px; text-align:center; font-size:12px; line-height:27px;  border-top:1px solid #dfdfdf; border-bottom:1px solid #dfdfdf; float:left; display:inline;}
 #ibody_right .content{width:640px; margin-top:15px; margin-left:20px; overflow:hidden; float:left; display:inline;}
 #ibody_right #page{width:680px; height:25px; line-height:25px; margin-top:10px; text-align:center; float:left; display:inline;}
