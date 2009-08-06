@@ -26,24 +26,30 @@
 		}
 	}elseif($id!=''){
 		$title = category_name_by_id($id);
-		switch($type){
-			case 'video':
-				$l_sql = 'select title,id,created_at from smg_video where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
-				$l_title = 'title';
-				$link = 'video.php?id=';
-				break;
-			case 'news':
-				$l_sql = 'select title,short_title,id,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
-				$l_title = 'short_title';
-				$link = 'article.php?id=';
-				break;
-			case 'image':
-				$l_sql = 'select title,id,created_at from smg_images where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
-				$l_title = 'title';
-				$link = 'show.php?id=';
-				break;
-			default:
-				break;
+		if($title=="每日之星"){
+			$l_sql = 'select title,short_title,id,created_at,photo_src from smg_news where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+			$l_title = 'short_title';
+			$link = 'article.php?id=';
+		}else{
+			switch($type){
+				case 'video':
+					$l_sql = 'select title,id,created_at from smg_video where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+					$l_title = 'title';
+					$link = 'video.php?id=';
+					break;
+				case 'news':
+					$l_sql = 'select title,short_title,id,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+					$l_title = 'short_title';
+					$link = 'article.php?id=';
+					break;
+				case 'image':
+					$l_sql = 'select title,id,created_at from smg_images where category_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
+					$l_title = 'title';
+					$link = 'show.php?id=';
+					break;
+				default:
+					break;
+			}
 		}
 	}else{
 		switch($type){
@@ -190,6 +196,21 @@
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
 			?>
+			<?php if($title=="每日之星"){?>
+			<div class=content>
+				<div class=pic>
+					<img src="<?php echo $records[$i]->photo_src ?>" width="140" height="80" border=0>
+				</div>
+				<div class=left style="width:310px;">
+					<a href="<?php if($type!='magazine'){echo $link.$records[$i]->id;}else{echo $records[$i]->online_url;}?>" target="_blank" title="<?php echo strip_tags($records[$i]->$l_title);?>"><?php echo strip_tags($records[$i]->$l_title);?></a>
+				</div>
+				<div class=right>
+					<?php if($type!='magazine'){echo $records[$i]->created_at;}else{echo $records[$i]->create_time;}?>
+				</div>
+			</div>
+			<?php	
+			}else{
+			?>
 			<div class=content>
 				<div class=left>
 					<a href="<?php if($type!='magazine'){echo $link.$records[$i]->id;}else{echo $records[$i]->online_url;}?>" target="_blank" title="<?php echo strip_tags($records[$i]->$l_title);?>"><?php echo strip_tags($records[$i]->$l_title);?></a>
@@ -198,6 +219,8 @@
 					<?php if($type!='magazine'){echo $records[$i]->created_at;}else{echo $records[$i]->create_time;}?>
 				</div>
 			</div>
+			<?php
+			} ?>
 			<?php } }?>
 			<div id=paginate><?php paginate();?></div>
 		</div>
