@@ -166,7 +166,7 @@ html,body{
            			</TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
      <TR>
           <TD>
-          	<? $news = $dv->query('select n.photo_src,n.content,n.id,n.short_title,n.description,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星级番茄果农" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 9');?>
+          	<? $news = $db->query('select n.photo_src,n.content,n.id,n.short_title,n.description,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星级番茄果农" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 9');?>
             <TABLE height=68 width="100%" border=0>
               <TBODY>
               <TR>
