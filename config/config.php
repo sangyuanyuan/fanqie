@@ -30,7 +30,7 @@
  $db_password_bak = '';
  $db_code_bak = 'utf8';
 
- $g_db_log_file = 'e:\log_file.txt';
+ #$g_db_log_file = 'e:\log_file.txt';
  $g_news_tags = array('小编加精','公告','业务','群团');
  $g_video_tags = array('视频推荐');
 ?>
