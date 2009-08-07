@@ -44,6 +44,10 @@
 			<td width="695" align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file" class="required">(png,jpg,gif)</td>
 		</tr>
 		<tr class="tr3">
+			<td width="100">上传图片2</td>
+			<td width="695" align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image2" id="image2" type="file">(png,jpg,gif)</td>
+		</tr>
+		<tr class="tr3">
 			<td width="100">上传视频</td>
 			<td width="695" align="left"><input type="hidden" name="MAX_FILE_SIZE" value="5000000000"><input name="video" id="video" type="file">(flv,wmv,wav,mp3,mp4,avi,rm)</td>
 		</tr>
