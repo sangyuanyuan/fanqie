@@ -11,11 +11,14 @@
 	<? 	
 		use_jquery();
 		css_include_tag('zone_dialog','top','bottom','thickbox');
-		js_include_tag('dialog/dialog','pubfun','thickbox');
+		js_include_tag('dialog/dialog','pubfun','thickbox','total.js');
 		
   ?>
 	
 </head>
+<script>
+	total("对话","zone");
+</script>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <?php 
