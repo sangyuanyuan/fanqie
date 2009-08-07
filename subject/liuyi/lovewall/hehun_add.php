@@ -1,12 +1,8 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<?php require_once('../../../frame.php'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=uft-8" />
 <title>番茄网爱墙</title>
-<script language="javascript" src="/js/smg.js"></script>
-<script language="javascript">
-	var dept_id = RequestCookies("smg_dept","");
-	AddSiteClickcount(dept_id);	
-</script>
 <style><!--@import url(inc/style.css);--></style>
 </head>
 <body>
@@ -19,7 +15,7 @@
 	<a href="index.php?id=1" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
     <a href="index.php?id=1">我的爱墙</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_add.php">我要许愿</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">福气排行 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="index.php">首页 </a> <img src="hehun_images/06.gif" width="16" height="16" /> <a href="http://u.hehun.org.cn">博客 </a> </div>
 <script type="text/javascript" src="inc/add.js"></script>
-<script type="text/javascript" src="/js/jquery.js"></script>
+<?php use_jquery(); ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="1" class="Add">
 	<form method="post" action="hehun_save.php" name="frmAdd" onsubmit="return chkAspk(this);">

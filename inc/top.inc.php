@@ -82,6 +82,8 @@
 				<?php for($i=0;$i<count($record);$i++){?>			
 							<div class=depts><a href="<?php echo $record[$i]->href?>" target="_blank"><?php echo $record[$i]->name?></a></div>
 				<? }?>
+							<div class=depts style="text-align:right; color:#FF0000; font-weight:bold; cursor:pointer; " onclick='$("#deptcontent").hide();'>关闭</div>
+
 		</div>
 	</div>
 </div>

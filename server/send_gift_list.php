@@ -33,16 +33,16 @@
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
-			<div class=box>
-				<div class=gift></div>
-				<div class=info>
+			<div class=box style="float:left;display:inline">
+				<div class=gift  style="float:left;display:inline"></div>
+				<div class=info  style="float:left;display:inline">
 					<div class=giver><?php echo $records[$i]->sender; ?></div>
 					赠送 <b><?php echo $records[$i]->nick_name;?></b>&nbsp;<font color=#FF0000 style="font-weight:bolder;">生日礼物</font>
 				</div>
-				<div class=picture><a href="<?php echo $records[$i]->gift_src;?>" target=_blank><img src="<?php echo $records[$i]->gift_src;?>" border=0 width=55 height=55></a></div>
-				<div class=info>一份</div>
-				<div class=message><?php echo $records[$i]->message; ?></div>
-				<div class=date><?php echo substr($records[$i]->created_at, 0, 16); ?></div>
+				<div class=picture  style="float:left;display:inline"><a href="<?php echo $records[$i]->gift_src;?>" target=_blank><img src="<?php echo $records[$i]->gift_src;?>" border=0 width=55 height=55></a></div>
+				<div class=info  style="float:left;display:inline">一份</div>
+				<div class=message style="float:left;display:inline"><?php echo $records[$i]->message; ?>　　　　　<?php echo substr($records[$i]->created_at, 0, 16); ?>
+				</div>
 			</div>
 			<?php } ?>
      		<div id=paginate><?php paginate();?></div>
