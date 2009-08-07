@@ -1,4 +1,4 @@
-body {font-family:ËÎÌו; font-size:12px; background:url(../top_bg.jpg) repeat; color:#000000;  margin:0px;}
+body {font-family:ËÎÌו; font-size:12px; background:url(/images/bg/subject_body_bg.jpg) repeat-y; color:#000000;  margin:0px;}
 
 .mainnav A:link {
 	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 180%; TEXT-DECORATION: none
@@ -81,7 +81,7 @@ BODY {
 #s_left{width:216px; margin-top:5px; padding:5px; overflow:hidden; float:left; display:inline;}
 #s_left a{width:200px; line-height:20px; text-decoration:none; overflow:hidden; float:left; display:inline;}
 
-#s_right{width:200px; height:300px; margin-top:5px; color:#000; padding:5px; overflow:hidden; float:left; display:inline;}
+#s_right{width:200px; margin-top:5px; color:#000; padding:5px; overflow:hidden; float:left; display:inline;}
 #s_right .title{width:200px; height:20px; margin-top:10px; padding-top:7px; padding-left:12px; font-weight:bold; color:#000; background:url(/images/bg/zt_right.jpg) no-repeat; float:left; display:inline;}
 #s_right .title A{margin-right:10px; color:#010156; text-decoration:none; float:right; display:inline;}
 #s_right .title A:hover{color:#010156; text-decoration:underline;}
@@ -89,12 +89,12 @@ BODY {
 #s_right #subject_comment A{width:100px; margin-left:25px; text-decoration:none; font-weight:bold; float:left; display:inline;}
 #s_right #subject_comment A:hover{text-decoration:underline;}
 #s_right #subject_comment #comment{margin-top:5px; float:left; display:inline;}
-#s_right #subject_comment textarea{width:180px; height:145px; margin-top:5px; float:left; display:inline;}
+#s_right #subject_comment textarea{width:180px; height:240px; margin-top:5px; float:left; display:inline;}
 #btn{width:62px; height:21px; margin-top:10px; margin-left:50px;  text-align:text; color:#ffffff; border:none; background:url(/images/bg/subject_button_bg.jpg) no-repeat; float:left; display:inline;}
 
-.title1{width:200px; height:20px; background:url(../left.jpg) no-repeat; padding-left:10px; padding-top:5px; font-size:15px; font-weight:bold; color:#010156;}
-.title1 a{margin-left:100px; font-size:12px; color:#010156;}
-.index_title{width:490px; height:27px;  padding-left:20px; margin-top:10px; margin-left:6px; font-weight:bold; font-size:16px; color:#010156; background:url(../right.jpg) no-repeat; text-align:left; float:left; display:inline;}
-.index_title a{margin-left:300px; font-size:12px; color:#010156;}
-.index_title1{width:770px; height:27px; padding-left:20px; margin-top:10px; margin-left:6px; font-weight:bold; font-size:16px; color:#010156; background:url(../right.jpg) no-repeat; text-align:left; float:left; display:inline;}
-.index_title1 a{margin-left:550px; font-size:12px; color:#010156;}
+.title1{width:200px; height:20px; background:orange; padding-left:10px; padding-top:5px; font-size:15px; font-weight:bold; color:#F2E275;}
+.title1 a{margin-left:100px; font-size:12px; color:#F2E275;}
+.index_title{width:450px; height:27px; padding-top:10px; padding-left:100px; margin-top:10px; margin-left:6px; font-weight:bold; font-size:16px; color:#F2E275; background:url(/images/index.jpg) 0 -25px no-repeat; text-align:left; float:left; display:inline;}
+.index_title a{margin-left:250px; font-size:12px; color:#F2E275;}
+.index_title1{width:770px; height:27px; padding-top:10px; padding-left:100px; margin-top:10px; margin-left:6px; font-weight:bold; font-size:16px; color:#F2E275; background:url(/images/index.jpg) 0 -25px no-repeat; text-align:left; float:left; display:inline;}
+.index_title1 a{margin-left:550px; font-size:12px; color:#F2E275;}

@@ -79,7 +79,7 @@ html,body{
   <TBODY>
   <TR>
     <TD valign="top" >
-    	<div style="width:806px; height:140px;  background:url('logo2.jpg') no-repeat"></div></TD>
+    	<div style="width:806px; height:140px;  background:url('logo2.jpg') no-repeat;"></div></TD>
     </TR></TBODY></TABLE>
 <TABLE cellSpacing=0 cellPadding=0 width=770 align=center border=0 >
   <TBODY>
