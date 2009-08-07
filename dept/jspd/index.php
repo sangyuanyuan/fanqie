@@ -224,7 +224,7 @@ include("inc/topbar.inc.php");
               </tr>
             </table></td>
             <td valign="top" align="center">
-            <table id="__01" width="418" height="1077" border="0" cellpadding="0" cellspacing="0">
+            <table id="__01" width="418" border="0" cellpadding="0" cellspacing="0">
               <tr>
               	<?php 
 					$record = show_content('smg_images','picture','纪实频道','indexphoto','4');
