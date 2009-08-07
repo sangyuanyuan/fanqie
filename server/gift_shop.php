@@ -58,7 +58,6 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
      	  	<div id=date>礼品商店</div>
      	  </div>        
         <div id="context">
-        	<a href="#" id=test>test</a>
 			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" id="cs" width="640" height="520" align="middle">
 				<param name="allowScriptAccess" value="sameDomain" />
 			   	<param name="wmode" value="opaque"> 
@@ -78,13 +77,6 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
 </html>
 <script>
 	var gift_ids = new Array();
-	$('#date').click(function(){
-		show_gift(3);
-	});
-	$('#test').click(function(e){
-		e.preventDefault();
-		checkout();
-	});
 	function show_gift(id){
 		tb_show('购买礼物','gift_list.php?width=600&height=400&cid='+id);
 	}

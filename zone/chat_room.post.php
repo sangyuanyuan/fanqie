@@ -4,17 +4,19 @@
 	$op = $_POST['op'];
 	$chat_id = $_COOKIE['smg_chat_id'];
 	$db = get_db();
+	$db->execute("delete from smg_chat_queue where created_at < DATE_SUB(now(),INTERVAL  30 MINUTE)");
 	$sql = "select count(*) as online_count from smg_chat_room_online where expire_at > now()";
 	$db->query($sql);
 	$db->move_first();
 	$online_count = $db->field_by_name('online_count');
+
 	switch ($op) {
 		case 'click_button':
 			if(empty($status)){
 				//start to connect sb
 				$remote = $db->query("select * from smg_chat_queue where chat_id !='$chat_id' order by id asc limit 1");
 				if(count($remote) <= 0){
-					$sql = "insert into smg_chat_queue (chat_id) select '$chat_id' from dual where not exists(select * from smg_chat_queue where chat_id= '$chat_id');";
+					$sql = "insert into smg_chat_queue (chat_id,created_at) select '$chat_id',NOW() from dual where not exists(select * from smg_chat_queue where chat_id= '$chat_id');";
 					$db->execute($sql);
 					set_status('connecting');
 					unset($_SESSION['remote_id']);
