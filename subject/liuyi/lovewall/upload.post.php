@@ -1,5 +1,6 @@
+﻿
 <body style="margin:0px; background:#f3f3f3; font-size:12px;"><form method="post" enctype="multipart/form-data" action="upload.post.php" name="upload_form" id="upload_form" target="upload_frame">
-					�Զ��壺<input name="upfile" id="upfile" type="file">��<input id="tijiao" style="height:20px;" type="submit" value="�ϴ�">(����ͼƬ��С50��50)
+					自定义：<input name="upfile" id="upfile" type="file">　<input id="tijiao" style="height:20px;" type="submit" value="上传">(建议图片大小50×50)
 </form></body>
 <? 
 	$error="0";
@@ -12,7 +13,7 @@
 	
 		if($error<>"0")
 		{	
-			echo '<script language=javascript>alert("ͼƬ������ѹ����500K�������ϴ���")</script>';
+			echo '<script language=javascript>alert("图片过大，请压缩到500K以内再上传！")</script>';
 			exit;
 		}
 	
@@ -21,7 +22,7 @@
 	
 			if($_FILES['upfile']['error']!=UPLOAD_ERR_OK||$_FILES['upfile']['error']!=UPLOAD_ERR_OK)
 			{
-				echo '<script language=javascript>alert("�ϴ�ʧ��2��")</script>';
+				echo '<script language=javascript>alert("上传失败2！")</script>';
 				exit;
 			}
 		
