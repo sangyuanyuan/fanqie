@@ -32,9 +32,9 @@
 			$category_count = count($category_record);
 			$vote = new table_class("smg_vote");
 			if($key!=''){
-				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0  and name  like "%'.trim($key).'%"','order' => 'created_at desc'),18);
+				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and category_id>0 and name  like "%'.trim($key).'%"','order' => 'created_at desc'),18);
 			}else{
-				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 ','order' => 'created_at desc'),18);
+				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and category_id>0 ','order' => 'created_at desc'),18);
 			}
 			$count_record = count($record);
 			//--------------------
