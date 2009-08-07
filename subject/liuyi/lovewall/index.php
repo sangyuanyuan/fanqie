@@ -10,6 +10,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>番茄网爱墙</title>
 <style><!--@import url(inc/style.css);--></style>
+<?php use_jquery();
+js_include_once_tag('total');
+?>
+<script>
+	total("专题-六一专题","other");
+</script>
 </head>
 <body>
 <div style="display:none;" id="aspk" onclick="Hide();"></div>

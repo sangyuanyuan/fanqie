@@ -10,6 +10,12 @@ $db = get_db();
 	<? 	
 		css_include_tag('smg','top','bottom');
 	?>
+		<?php use_jquery();
+js_include_once_tag('total');
+?>
+<script>
+	total("专题-端午专题","other");
+</script>
 </head>
 <body>
 <?

@@ -50,7 +50,7 @@
     ?>
  <?php if($record[0]->cplatform=="news"){?>
 <script>
-	total("<?php echo $record[0]->categoryname;?>","news");
+	total("<?php echo $record[0]->categoryname; ?>","news");
 </script>
 <?php }else if($record[0]->cplatform=="show"){ ?>
 <script>

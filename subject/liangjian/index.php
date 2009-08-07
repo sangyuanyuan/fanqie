@@ -8,6 +8,12 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -亮剑</title>
 	<?php css_include_tag('liangjian');?>
+	<?php use_jquery();
+js_include_once_tag('total');
+?>
+<script>
+	total("专题-亮剑专题","other");
+</script>
 </head>
 <body>
 	<div id=subject_body >

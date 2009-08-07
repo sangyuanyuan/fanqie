@@ -6,6 +6,7 @@
 	$vote->created_at = date("Y-m-d H:i:s");
 	$vote->limit_type = 'ip';
 	$vote->category_id = 0;
+	$vote->is_app=1;
 	$vote->save();
 	
 	if($_POST['item']){

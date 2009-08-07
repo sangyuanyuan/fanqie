@@ -7,7 +7,13 @@
 	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
-	<?php css_include_tag('smg','top','bottom'); ?>
+	<?php css_include_tag('smg','top','bottom'); 
+	use_jquery();
+ 	js_include_once_tag('total');
+	?>
+<script>
+	total("专题-评奖专题","other");
+</script>
 </head>
 <body>
 <?

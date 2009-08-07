@@ -9,6 +9,9 @@
 <META content="" name=keywords>
 <META http-equiv=refresh content=null>
 <LINK href="dw2_files/2007sanmod.css" type=text/css rel=stylesheet>
+<?php
+use_jquery();
+ js_include_once_tag('total');?>
 <META content="MSHTML 6.00.5730.13" name=GENERATOR>
 <STYLE type=text/css>
 .STYLE3 {
@@ -53,8 +56,9 @@ html,body{
   }
 -->
 </style>
-</head>
-
+<script>
+	total("专题-评奖专题","other");
+</script>
 </HEAD>
 <BODY >
 
