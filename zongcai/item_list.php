@@ -27,7 +27,7 @@
 						if($id!=''){
 							$sql = 'select t1.create_time,t1.name,t1.id,t1.url,t1.photo_url from smg_zongcai_item t1 join smg_zongcai_vote_item t2 on t1.id=t2.item_id where t2.vote_id='.$id;
 						}else{
-							$sql = 'select t1.create_time,t1.name,t1.id,t1.url,t1.photo_url from smg_zongcai_item t1,smg_zongcai_vote_item t2 where t1.id=t2.item_id or t1.state=2';
+							$sql = 'select t1.create_time,t1.name,t1.id,t1.url,t1.photo_url from smg_zongcai_item t1 join smg_zongcai_vote_item t2 on t1.id=t2.item_id order by vote_id,id desc';
 						}
 						
 						$programlist = $db->paginate($sql);
@@ -38,14 +38,14 @@
 						<?
 						if($programlist[$i]->photo_url != "" && $programlist[$i]->photo_url != null)
 						{?>
-							<a target="_blank" href="show_item.php?id=<? echo $programlist[$i]->id;?>"><img border=0 style="margin-left:10px; float:left; display:inline;" border=0 width=15 height=14 src="/images/subject/pic.jpg"></a>
+							<a target="_blank" href="show_item.php?id=<? echo $programlist[$i]->id;?>"><img border=0 style="margin-left:10px; float:left; display:inline;" border=0 width=15 height=14 src="/images/zongcai/pic.jpg"></a>
 							<?php
 						}
 						if($programlist[$i]->url != "" && $programlist[$i]->url != nul)
 						{
 						?>
 						<a target="_blank" href="<?php echo $programlist[$i]->url;?>">
-							<img  style="margin-left:10px; float:left; display:inline;" border=0 width=15 height=14 src="/images/icon/video.gif">
+							<img  style="margin-left:10px; float:left; display:inline;" border=0 width=15 height=14 src="/images/zongcai/video.gif">
 						</a>
 						<?
 						}
