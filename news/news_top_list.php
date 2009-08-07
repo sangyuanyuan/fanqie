@@ -6,14 +6,12 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-专题-专题列表页面</title>
+	<title>SMG-番茄网-新闻-新闻排行页面</title>
 	<? 	
 		css_include_tag('news_news_list','top','bottom');
 		use_jquery();
 		js_include_once_tag('news_list');
 		$db = get_db();
-		$sql="select * from smg_subject order by created_at desc";		
-		$record=$db->paginate($sql,30);
   ?>
 	
 </head>
@@ -22,22 +20,64 @@
 <div id=ibody>
 	<div id=ibody_left>
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">专题</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><?php if($id!=""||$id!=null){ ?><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a><?php } else if($tags!=""||$tags!=null){?><a href="news_list.php?tags=<? echo $tags;?>"></a><?php echo $tags;?><?php } else{ ?><a href="news_list.php">专题列表</a><? }?>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><?php if($id!=""||$id!=null){ ?><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a><?php } else if($tags!=""||$tags!=null){?><a href="news_list.php?tags=<? echo $tags;?>"></a><?php echo $tags;?><?php } else{ ?><a href="news_list.php">新闻排行</a><? }?>
 		</div>
 		<div id=l_b>
-			<?php for($i=0;$i<count($record);$i++){ ?>
+			<div class="top_title">本周TOP5</div>
+			<?php 
+				$sql = 'select id,title,platform,last_edited_at from smg_news where WEEK(NOW(),1) - WEEK(created_at,1) = 0 and year(now())=year(created_at) order by click_count desc limit 5';
+				$record = $db->query($sql);
+				for($i=0;$i<count($record);$i++){ ?>
 				<div class=l_b_l>
-					<?php if($record[$i]!="总裁奖"){ ?>
 					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
-					<div class=l_b_l_r><a target="_blank" href="/subject/<?php echo $record[$i]->identity;?>/"><?php echo $record[$i]->name;?></a></div>
-					<?php }else{?>
-					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
-					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->identity;?>/"><?php echo $record[$i]->name;?></a></div>
-					<?php } ?>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
-				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
-			<?php }?>
-			<div id=page><?php paginate('');?></div>
+				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+			<?php } ?>
+			<div class="top_title">上周TOP5</div>
+			<?php 
+				$sql = 'select id,title,platform,last_edited_at from smg_news where WEEK(NOW(),1) - WEEK(created_at,1) = 1 and year(now())=year(created_at) order by click_count desc limit 5';
+				$record = $db->query($sql);
+				for($i=0;$i<count($record);$i++){ ?>
+				<div class=l_b_l>
+					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
+				</div>
+				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+			<?php } ?>
+			<div class="top_title">本月TOP5</div>
+			<?php 
+				$sql = 'select id,title,platform,last_edited_at from smg_news where MONTH(NOW()) - MONTH(created_at) = 0 and year(now())=year(created_at) order by click_count desc limit 5';
+				$record = $db->query($sql);
+				for($i=0;$i<count($record);$i++){ ?>
+				<div class=l_b_l>
+					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
+				</div>
+				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+			<?php } ?>
+			<div class="top_title">上月TOP5</div>
+			<?php 
+				$sql = 'select id,title,platform,last_edited_at from smg_news where MONTH(NOW()) - MONTH(created_at) = 1 and year(now())=year(created_at) order by click_count desc limit 5';
+				$record = $db->query($sql);
+				for($i=0;$i<count($record);$i++){ ?>
+				<div class=l_b_l>
+					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
+				</div>
+				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+			<?php } ?>
+			<div class="top_title">历史TOP5</div>
+			<?php 
+				$sql = 'select id,title,platform,last_edited_at from smg_news order by click_count desc limit 5';
+				$record = $db->query($sql);
+				for($i=0;$i<count($record);$i++){ ?>
+				<div class=l_b_l>
+					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
+				</div>
+				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+			<?php } ?>
 		</div>
 	</div>
 	<div id=ibody_right>
@@ -166,6 +206,7 @@ order by b.allcounts desc) tb order by a1 desc limit 10";
 	</div>
 </div>
 <? require_once('../inc/bottom.inc.php');?>
+
 </body>
 </html>
 
