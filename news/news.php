@@ -49,7 +49,7 @@
   ?>
  <?php if($record[0]->cplatform=="news"){?>
 <script>
-	total("$(#categoryname).attr('value')","news");
+	total("<?php echo $record[0]->categoryname; ?>","news");
 </script>
 <?php }else if($record[0]->cplatform=="show"){ ?>
 <script>
@@ -57,19 +57,18 @@
 </script>
 <?php }else if($record[0]->cplatform=="server"){?>
 <script>
-	total("$(#categoryname).attr('value')","server");
+	total("<?php echo $record[0]->categoryname; ?>","server");
 </script>
 <?php }else if($record[0]->cplatform=="zone"){?>
 <script>
-	total("$(#categoryname).attr('value')","zone");
+	total("<?php echo $record[0]->categoryname; ?>","zone");
 </script>
 <?php }else{?>
 <script>
-	total("$(#categoryname).attr('value')","other");
+	total("<?php echo $record[0]->categoryname; ?>","other");
 </script>
 <?php } ?>
 </head>
-<input type="hidden" id="categoryname" value="<?php echo $catergoryname; ?>">
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
