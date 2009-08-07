@@ -23,6 +23,7 @@
 </form>
 <div style="text-align:center"><button id="save"  style="width:100px;">提交</button> <button id="cancel"  style="width:100px;">取消</button></div>
 <script>
+	total("对话","zone");
 	$(function(){
 		$('#save').click(function(){
 			var oeditor = FCKeditorAPI.GetInstance('fck_content') ;

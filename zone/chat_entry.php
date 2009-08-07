@@ -16,9 +16,12 @@
 	<?php 
 	css_include_tag('zone_chat_room','top','bottom');
 	use_jquery();
-	js_include_tag('pubfun.js','jquery.cookie.js');
+	js_include_tag('pubfun.js','jquery.cookie.js','total.js');
 	?>
 </head>
+<script>
+	total("聊天室","zone");
+</script>
 <body>
 <? require_once('../inc/top.inc.html');	?>
 <div id="ibody">

@@ -11,8 +11,12 @@ require_once('../frame.php');
 		use_jquery();
 		css_include_tag('login');
 		validate_form('login');
+		js_include_tag('total.js');
 	?>
 </head>
+<script>
+	total("登录","other");
+</script>
 <form name="login" id="login" action="user.post.php" method="post" style="width:100%; height:550px;background:url(/images/bg/admin_bg1.jpg) repeat-x;margin-top:0px;">
 <body>
 	<div id=main>
