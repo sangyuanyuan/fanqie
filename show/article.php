@@ -24,20 +24,35 @@
  <div id=ibody_left>
  	  <div class=l>
  	  		<?php $category_id = category_id_by_name('每日之星'); ?>
-			<div class=title><div class=left>每日之星排行榜</div><div class="more"><a target="_blank" href="list.php?id=<?php echo $category_id; ?>&type=news">更多>></a></div></div>
+			<div class=title><div name="mrzx" class=left1>每日之星排行榜|</div><div name="bm" class=left1 style="color:#999999">部门排行榜</div><div class="more"><a target="_blank" href="list.php?id=<?php echo $category_id; ?>&type=news">更多>></a></div></div>
 			<?php
 				$db = get_db();
-				$sql = 'select id,short_title,click_count,photo_src from smg_news where is_adopt=1 and category_id='.$category_id.' and photo_src!="" and click_count is not null order by click_count desc limit 5 ';
+				$sql = 'select id,short_title,flower,photo_src from smg_news where is_adopt=1 and category_id='.$category_id.' and photo_src!="" order by flower desc limit 5';
 				$records = $db->query($sql);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
-				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
+				<div class="content mrzx change" <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
 					<div class=middle><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_src?>"></a></div>
 					<div class=right>
 						<div class=top><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->short_title;?></a></div>
-						<div class=bottom><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>">被浏览了<?php echo $records[$i]->click_count ?>次</a></div>
+						<div class=bottom><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>">被投了<?php echo $records[$i]->flower ?>朵</a></div>
+					</div>
+				</div>
+			<? }?>
+			<?php
+				$db = get_db();
+				$sql = 'select dept_id,count(dept_id) as count from smg_news where is_adopt=1 and category_id='.$category_id.' group by dept_id order by count(dept_id) desc limit 5 ';
+				$records = $db->query($sql);
+				$count = count($records);
+				for($i=0;$i<$count;$i++){
+			?>
+				<div class="content bm change" style="display:none" <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
+					<div class=left><? echo $i+1;?></div>
+					<div class=right>
+						<div class=top><?php echo get_dept_info($records[$i]->dept_id)->name;?></div>
+						<div class=bottom>发表了<?php echo $records[$i]->count;?>篇文章</div>
 					</div>
 				</div>
 			<? }?>
@@ -45,7 +60,7 @@
  	  	
 		<div class=l>
 			<?php 
-				$sql = 'select * from smg_video where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select * from smg_video where TO_DAYS(NOW())-TO_DAYS(created_at) <= 30 and is_adopt=1 order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>视频排行榜</div></div>
@@ -62,7 +77,7 @@
 		</div>
 		<div class=l>
 			<?php 
-				$sql = 'select * from smg_images where month(created_at)=month("'.date("Y-m-d").'") and is_adopt=1 order by click_count desc limit 5;';
+				$sql = 'select * from smg_images where TO_DAYS(NOW())-TO_DAYS(created_at) <= 30 and is_adopt=1 order by click_count desc limit 5;';
 				$records = $db->query($sql);
 			?>
 			<div class=title><div class=left>我行我秀排行榜</div></div>
@@ -108,11 +123,7 @@
 		<div id=point>
 			<div id=flower name="<?php echo $id; ?>" title="点击赠送鲜花"></div>
 			<div id=point_r>
-				<?php
-					$sql = 'select count(*) as cou from smg_digg where diggtoid='.$id.' and file_type="article"';
-					$record = $db->query($sql);
-				?>
-				共有<?php echo $record[0]->cou;?>人给该文章赠送鲜花
+				共有<?php echo $news->flower;?>人给该文章赠送鲜花
 			</div>
 			<!--
 			<?php 
@@ -195,6 +206,14 @@
 
 <script>
 	$(function(){
+		
+		$(".left1").hover(function(){
+			$(".left1").css('color','#999999');
+			$(this).css('color','#000000');
+			$(".change").hide();
+			$("."+$(this).attr('name')).show();
+		})
+		
 		/*
 		$(".star").click(function(){
 			$.post("/pub/pub.post.php",{'type':'star','r_type':'news','id':$("#news_id").attr('value'),'value':$(this).attr('value')},function(data){
@@ -230,7 +249,7 @@
 		*/
 		
 		$("#flower").click(function(){
-			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).attr('name'),'digg_type':'article'},function(data){
+			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).attr('name'),'db_table':'smg_news','digg_type':'article'},function(data){
 				if(data!=''){
 					alert(data);
 				}else{
