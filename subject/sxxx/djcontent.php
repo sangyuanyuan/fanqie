@@ -45,8 +45,7 @@
 					<div class=name><a href="#"><?php echo $comments[$i]->nick_name; ?></a></div>	
 					<div class=time><?php echo $comments[$i]->created_at; ?></div>	
 					<div class=context><?php echo strfck($comments[$i]->comment); ?></div>	
-				</div>
-			
+				</div>			
 			<?php }	?>
 			  <div class="pageurl">
 			     <? paginate('');?>
