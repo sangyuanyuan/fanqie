@@ -103,6 +103,15 @@
 			<div id=page><?php print_fck_pages($news->content,'article.php?id='.$id); ?></div>
 		</div>
 		<div id=point>
+			<div id=flower name="<?php echo $id; ?>" title="点击赠送鲜花"></div>
+			<div id=point_r>
+				<?php
+					$sql = 'select count(*) as cou from smg_digg where diggtoid='.$id.' and file_type="article"';
+					$record = $db->query($sql);
+				?>
+				共有<?php echo $record[0]->cou;?>人给该文章赠送鲜花
+			</div>
+			<!--
 			<?php 
 				$sql = 'select avg(point) as a_point,count(point) as count from smg_star_point where type="news" and resource_id='.$id;
 				$record = $db->query($sql);
@@ -135,6 +144,7 @@
 			<?php } ?>
 			<div id=info>共<?php echo $count; ?>人评分[点击星星直接打分]</div>
 			<input type="hidden" id="y_star" value="<?php echo $s_point;?>">
+			-->
 		</div>
 		
 		<div id=comment>
@@ -182,6 +192,7 @@
 
 <script>
 	$(function(){
+		/*
 		$(".star").click(function(){
 			$.post("/pub/pub.post.php",{'type':'star','r_type':'news','id':$("#news_id").attr('value'),'value':$(this).attr('value')},function(data){
 				if(data!=""){
@@ -212,6 +223,17 @@
 					$(this).css('background','url("/images/show/star2.jpg") no-repeat');
 				}
 			})
+		});
+		*/
+		
+		$("#flower").click(function(){
+			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).attr('name'),'digg_type':'article'},function(data){
+				if(data!=''){
+					alert(data);
+				}else{
+					window.location.reload();
+				}
+			});
 		});
 		
 		display_fqbq('fqbq','post[comment]');
