@@ -10,7 +10,7 @@
 	<? 	
 		css_include_tag('zone_index','top','bottom');
 		use_jquery();
-		js_include_once_tag('zone');
+		js_include_once_tag('zone','total');
 		$db=get_db();
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='HOT讨论区' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
 		$tlqimg=$db->query($sql);	
@@ -55,7 +55,9 @@
 		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='博主真人秀' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
 		$blogsureimg=$db->query($sql);
   ?>
-	
+<script>
+	total("交流首页","zone");
+</script>	
 </head>
 <body>
 <? require_once('../inc/top.inc.html');?>

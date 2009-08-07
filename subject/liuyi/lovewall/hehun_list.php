@@ -2,11 +2,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>番茄网爱墙</title>
-<script language="javascript" src="/js/smg.js"></script>
-<script language="javascript">
-	var dept_id = RequestCookies("smg_dept","");
-	AddSiteClickcount(dept_id);	
-</script>
 <style><!--@import url(inc/style.css);--></style>
 </head>
 <body>

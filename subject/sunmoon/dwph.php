@@ -5,8 +5,7 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
 	<link href="/css/smg.css" rel="stylesheet" type="text/css">
-	<script src="/js/pubfun.js"></script>
-	<script language="javascript" src="/js/smg.js"></script> 
+<?php js_include_once_tag('total');?>
 	<script type="text/javascript" language="javascript">   
  
 function addEvent(obj,evtType,func,cap){   
@@ -131,13 +130,16 @@ function AdMove(id){
         if (y > H){diry = -1;y = H;kx=Math.sin(rad);ky=Math.cos(rad);}   
     }   
     this.Run=function(){   
-        var delay = 25;//ÒÆ¶¯ËÙ¶È   
+        var delay = 25;//ï¿½Æ¶ï¿½ï¿½Ù¶ï¿½   
         interval=setInterval(obj.CustomMethod,delay);   
         obj.onmouseover=function(){clearInterval(interval);}   
         obj.onmouseout=function(){interval=setInterval(obj.CustomMethod, delay);}   
     }   
 }
    
+</script>
+<script>
+	total("ä¸“é¢˜-æ—¥å…¨é£Ÿä¸“é¢˜","other");
 </script>	
 </head>
 <body>
@@ -154,10 +156,10 @@ function AdMove(id){
 <div id=bodys>
  <div id=n_left style="width:995px; margin-top:10px;">
  	<!--<div id="piao1"></div>   
-	<span id="piao2"><span style="cursor:hand; color:blue;" onclick="closepic()">¹Ø±Õ</span><br><a target="_blank" title="¶ËÎç½Ú" href="dw/dw2.php?id=1"><img width=120 height=120 alt="¶ËÎç½Ú" title="¶ËÎç½Ú" src="/images/pic/zz1.jpg" border="0" /><br>¡°¶ËÎç¡±ÀñÆ·ÒÑ·¢Íê</a></span>-->
- 	<div id=content2 style="width:800px; text-align:center;">ÈÕÈ«Ê³´ðÌâ</div>
+	<span id="piao2"><span style="cursor:hand; color:blue;" onclick="closepic()">ï¿½Ø±ï¿½</span><br><a target="_blank" title="ï¿½ï¿½ï¿½ï¿½ï¿½" href="dw/dw2.php?id=1"><img width=120 height=120 alt="ï¿½ï¿½ï¿½ï¿½ï¿½" title="ï¿½ï¿½ï¿½ï¿½ï¿½" src="/images/pic/zz1.jpg" border="0" /><br>ï¿½ï¿½ï¿½ï¿½ï¿½ç¡±ï¿½ï¿½Æ·ï¿½Ñ·ï¿½ï¿½ï¿½</a></span>-->
+ 	<div id=content2 style="width:800px; text-align:center;">ï¿½ï¿½È«Ê³ï¿½ï¿½ï¿½ï¿½</div>
 <div style="width:450px; margin-left:200px;line-height:20px; margin-top:30px; margin-bottom:10px; padding:10px; float:left; display:inline">
-	<span style="color:red; font-size:16px; font-weight:bold;">ÈÕÈ«Ê³ÅÅÐÐ°ñ£º</span><br>
+	<span style="color:red; font-size:16px; font-weight:bold;">ï¿½ï¿½È«Ê³ï¿½ï¿½ï¿½Ð°ï¿½</span><br>
 	<? 
 		$pageindex = isset($_REQUEST['pageindex']) ? $_REQUEST['pageindex']: 1;
 		$person=$sqlmanager->GetRecords('select * from smg_threetime where issue=101 order by score desc,createtime desc',$pageindex,20);
