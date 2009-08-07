@@ -25,8 +25,8 @@
 		$click_count=$db->paginate($strsql1,20);	
 	}
 	else{
-		$sql11=' and (n.pubdate >="2009-02-01 00:00:00" and n.pubdate<="2009-02-28 23:59:59" )';
-		$sql12=' and (n.createtime >="2009-02-01 00:00:00" and n.createtime<="2009-02-28 23:59:59" )';
+		$sql11=' and (n.created_at >="2009-02-01 00:00:00" and n.created_at<="2009-02-28 23:59:59" )';
+		$sql12=' and (n.created_at >="2009-02-01 00:00:00" and n.created_at<="2009-02-28 23:59:59" )';
 		$strsql="select a.*,sum(countnum) as num from (select d.name,sum(n.clickcount) as countnum from smg_dept d left join smg_news n on d.id=n.dept_id and d.id<>47 and is_recommend=1 ".$sql11." group by n.dept_id union select d.name,sum(n.clickcount) as countnum from smg_dept d left join smg_video n on d.id=n.dept_id and d.id<>47 and is_recommend=1 ".$sql12." group by n.dept_id) as a group by name order by num desc";
 		$fwcount=$db->paginate($strsql,20);
 	}
