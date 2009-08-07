@@ -9,8 +9,6 @@ $db = get_db();
 	<title>SMG -端午答题排行</title>
 	<? 	
 		css_include_tag('smg','top','bottom');
-		use_jquery();
-		js_include_once_tag('smg');
 	?>
 	<script type="text/javascript" language="javascript">   
  
@@ -147,7 +145,7 @@ function AdMove(id){
 </head>
 <body>
 <?
-	include('../inc/top.inc.html');
+	include('../../inc/top.inc.html');
 	$count=$sqlmanager->GetRecords('select count(*) as num from smg_question_record where point=180 and r_type="dw"');
 ?>
 <div id=bodys>
@@ -162,8 +160,8 @@ function AdMove(id){
 		for($i=0; $i< count($person); $i++)
 		{
 	?>
-	<div style="width:400px; margin-top:5px; <? if($i< 3 && $pageindex==1){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $person[$i]->username;?></div>
-	<div style="margin-top:5px; <? if($i< 3 && $pageindex==1){?>color:red; font-weight:bold;<? }?> margin-right:20px;float:right; display:inline;"><? echo $person[$i]->score;?></div>
+	<div style="width:400px; margin-top:5px; <? if($i< 3){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $person[$i]->username;?></div>
+	<div style="margin-top:5px; <? if($i< 3){?>color:red; font-weight:bold;<? }?> margin-right:20px;float:right; display:inline;"><? echo $person[$i]->score;?></div>
 	<? }?>
 	<div class="pageurl">
          <?php 
@@ -172,7 +170,7 @@ function AdMove(id){
    </div>
 </div>
 </div>
-<? include('../inc/bottom.inc.html');
+<? include('../../inc/bottom.inc.html');
 ?>	
 </body>
 </html>
