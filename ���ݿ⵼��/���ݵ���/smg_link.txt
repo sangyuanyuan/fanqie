@@ -1,1 +1,3 @@
 insert into smg_link(name,category_id,link,dept_id,target,priority) select name,dept_cate_id,link,dept_id,target,priority from smg.smg_dept_link
+
+insert into smg_comment(nick_name,comment,ip,resource_type) select commenter,content,ip,"zongcai" from smg.smg_subject_comment
