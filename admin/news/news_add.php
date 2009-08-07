@@ -139,7 +139,7 @@
 			<td>视频</td>
 			<td align="left" id="td_video">			
 				视频<input type="file" name="video_src" id="video_src">　
-				缩略图<input type="file" name="video_pic" id="video_pic">　
+				缩略图(705*500)<input type="file" name="video_pic" id="video_pic">　
 				<input type="checkbox" id="ch_low_quality">低清
 				<input type="hidden" name="news[low_quality]" id="hidden_low_quality" value="0">
 			</td>
