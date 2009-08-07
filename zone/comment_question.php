@@ -26,6 +26,7 @@
 </div>
 
 <script>
+	total("对话","zone");
 	$(function(){
 		display_fqbq('cq_emotion','fck_cq');
 		$('#cq_save').click(function(){
