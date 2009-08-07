@@ -138,6 +138,8 @@
 	<input type="hidden" name="picture[is_recommend]" id="recommend" value="<?php echo $picture_record[0]->is_recommend;?>">
 	<?php } ?>
 	<input type="hidden" name="special_type" value="<?php echo $type;?>">
+	<input type="hidden" name="picture[is_adopt]" value="1">
+	<input type="hidden" name="picture[is_dept_adopt]" value="1">
 	</form>
 </body>
 </html>
