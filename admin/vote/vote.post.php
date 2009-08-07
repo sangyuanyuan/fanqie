@@ -88,12 +88,12 @@
 			}
 		}
 		if($_POST['is_app']==1){
-			//redirect('approval.php');
+			redirect('approval.php');
 		}else if($_POST['is_app'] == 2){
 			redirect('dept_vote_list.php');
 		}
 		else{
-			//redirect('vote_list.php');
+			redirect('vote_list.php');
 		}
 		
 	}	
