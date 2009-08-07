@@ -6,6 +6,12 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -六一儿童节</title>
 	<? 	css_include_tag('smg','top','bottom');?>
+	<?php use_jquery();
+js_include_once_tag('total');
+?>
+<script>
+	total("专题-六一专题","other");
+</script>
 </head>
 <body>
 <? include('../../../inc/top.inc.html');
