@@ -61,7 +61,7 @@
 		<div id=l_b>
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="我要报料"){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
-			<?php if($record[0]->video_src!=""){
+			<?php if($record[0]->video_src!=""&&$record[0]->video_src!=null){
 					if($record[0]->low_quality==0){
 				?>
 			<div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
