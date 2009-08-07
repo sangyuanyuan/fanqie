@@ -11,7 +11,6 @@
 		$db->execute($sql);
 		echo $_POST['del_id'];
 	}else{
-		var_dump($_POST);
 		$vote = new table_class('smg_vote');
 		if($_POST['type']=='edit'){
 			$vote->find($_POST['vote_id']);
@@ -95,7 +94,7 @@
 			}
 		}
 		if($_POST['is_app']==1){
-			//redirect('approval.php');
+			redirect('approval.php');
 		}else if($_POST['is_app'] == 2){
 			redirect('dept_vote_list.php');
 		}
