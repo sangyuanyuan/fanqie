@@ -6,7 +6,12 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -店铺列表</title>
 	<?php css_include_tag('smg','top','bottom');
-		use_jquery(); ?>
+		use_jquery();
+		js_include_once_tag('total');
+	?>
+<script>
+	total("个人网店","server");
+</script>
 </head>
 <body>
 <? 

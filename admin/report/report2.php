@@ -52,7 +52,7 @@ $clickcount1=$db->paginate("select count,name from smg_total where datetime>='".
 	{
 		var start=$("#starttime").attr('value');
 		var end=$("#endtime").attr('value');
-		var type=$("#type").attr(value);
+		var type=$("#type").attr('value');
 		window.location.href="?type="+type+"&start="+start+"&end="+end;
 	}
 </script>

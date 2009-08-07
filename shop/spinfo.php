@@ -18,7 +18,7 @@ require_once('../frame.php');
 	<title>SMG -商品详细</title>
 	<?php css_include_tag('smg','top','bottom');
 		use_jquery(); 
-		js_include_once_tag('tg');
+		js_include_once_tag('tg','total');
 	?>
 </head>
 <body>
