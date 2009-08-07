@@ -10,8 +10,12 @@
 	<?php 
 		css_include_tag('top.css','bottom.css','answer.css','answer_right.css');
 		use_jquery();
+		js_include_tag('total');
 	?>
 </head>
+<script>
+	total("发起答题","server");	
+</script>
 <body>
 	<?php
 		require_once('../inc/top.inc.php');

@@ -10,8 +10,12 @@
 	<?php
 		use_jquery();
 		js_include_tag('dept_pub');
+		js_include_once_tag('total');
 	?>
 </head>
+<script>
+	total("新闻中心新闻","news");	
+</script>
 <body>
 <div id="center">
 <div id="bg">	

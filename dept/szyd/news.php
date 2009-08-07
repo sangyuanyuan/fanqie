@@ -8,6 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css1.css" type="text/css" />
 <title>内容页面</title>
+<?php 
+	js_include_once_tag('total');
+?>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
 <script type="text/javascript">
 <!--
@@ -35,7 +38,9 @@ function MM_swapImage() { //v3.0
 //-->
 </script>
 </head>
-
+<script>
+	total("文广移动新闻","news");	
+</script>
 <body onload="MM_preloadImages('pic2/btn_1_1.png','pic2/btn_2_1.png','pic2/btn_3_1.png')">
 <div  class="main">
 	<div class="top">

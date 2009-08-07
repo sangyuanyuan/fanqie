@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>传媒集团内网-fwb</title>
+<?php
+	js_include_once_tag('total');
+?>
 <style type="text/css">
 <!--
 body {
@@ -69,6 +72,9 @@ ul {
 -->
 </style>
 </head>
+<script>
+	total("法务部新闻","news");	
+</script>
 <body>
 <table width="780" border="0" align="center" cellpadding="5" cellspacing="0">
   <tr>

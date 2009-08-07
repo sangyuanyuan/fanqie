@@ -13,7 +13,7 @@
 	?>
 </head>
 <script>
-	total("答题","server");	
+	total("答题列表","server");	
 </script>
 <body>
 	<? require_once('../inc/top.inc.php');?>

@@ -8,13 +8,17 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG</title>
+	<title>东方卫视</title>
 	<link href="/css/department.css" rel="stylesheet" type="text/css">
 	<?php
 		css_include_tag('department');
 		js_include_tag('prototype-1.6.0.2','menu');
+		js_include_once_tag('total');
 	?>
 </head>
+<script>
+	total("东方卫视新闻","news");	
+</script>
 <body>
 	
 	<div id=east_body>

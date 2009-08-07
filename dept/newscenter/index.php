@@ -7,8 +7,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>新闻中心内网</title>
+	<?php 
+		js_include_once_tag('total');
+	?>
 	<link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
+<script>
+	total("新闻中心","news");	
+</script>
 <body>
 <div id="bg">	
 	<?php include("inc/topbar.inc.php");?>

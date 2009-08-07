@@ -10,7 +10,7 @@
 	<?php	
 		css_include_tag('server_marry','top','bottom');
 	    js_include_once_tag('total');
-  ?>
+    ?>
 	
 </head>
 <script>
