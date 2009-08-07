@@ -8,7 +8,11 @@
 	<?php
 		css_include_tag('smg','top','bottom');
 		use_jquery();
+		js_include_once_tag('total');
 	 ?>
+<script>
+	total("个人网店","server");
+</script>
 </head>
 <body>
 <? 

@@ -20,6 +20,9 @@ require_once('../frame.php');
 		use_jquery(); 
 		js_include_once_tag('tg','total');
 	?>
+<script>
+	total("个人网店","server");
+</script>
 </head>
 <body>
 
