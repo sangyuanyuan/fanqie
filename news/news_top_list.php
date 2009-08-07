@@ -25,7 +25,7 @@
 		<div id=l_b>
 			<div class="top_title">本周TOP5</div>
 			<?php 
-				$sql = 'select id,title,platform,last_edited_at,click_count from smg_news where year(created_at)=year("'.date("Y-m-d").'") and month(created_at)=month("'.date("Y-m-d").'") and week(created_at)=week("'.date("Y-m-d").'") order by click_count desc limit 5';
+				$sql = 'select id,title,platform,last_edited_at from smg_news where WEEK(NOW(),1) - WEEK(created_at,1) = 0 and year(now())=year(created_at) order by click_count desc limit 5';
 				$record = $db->query($sql);
 				for($i=0;$i<count($record);$i++){ ?>
 				<div class=l_b_l>
@@ -36,9 +36,8 @@
 			<?php } ?>
 			<div class="top_title">上周TOP5</div>
 			<?php 
-				$sql = 'select id,title,platform,last_edited_at from smg_news where year(created_at)=year("'.date("Y-m-d").'") and month(created_at)=month("'.date("Y-m-d").'") and week(created_at)=(week("'.date("Y-m-d").'")+1) order by click_count desc limit 5';
+				$sql = 'select id,title,platform,last_edited_at from smg_news where WEEK(NOW(),1) - WEEK(created_at,1) = 1 and year(now())=year(created_at) order by click_count desc limit 5';
 				$record = $db->query($sql);
-				alert($sql);
 				for($i=0;$i<count($record);$i++){ ?>
 				<div class=l_b_l>
 					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
@@ -47,8 +46,38 @@
 				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
 			<?php } ?>
 			<div class="top_title">本月TOP5</div>
+			<?php 
+				$sql = 'select id,title,platform,last_edited_at from smg_news where MONTH(NOW()) - MONTH(created_at) = 0 and year(now())=year(created_at) order by click_count desc limit 5';
+				$record = $db->query($sql);
+				for($i=0;$i<count($record);$i++){ ?>
+				<div class=l_b_l>
+					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
+				</div>
+				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+			<?php } ?>
 			<div class="top_title">上月TOP5</div>
+			<?php 
+				$sql = 'select id,title,platform,last_edited_at from smg_news where MONTH(NOW()) - MONTH(created_at) = 1 and year(now())=year(created_at) order by click_count desc limit 5';
+				$record = $db->query($sql);
+				for($i=0;$i<count($record);$i++){ ?>
+				<div class=l_b_l>
+					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
+				</div>
+				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+			<?php } ?>
 			<div class="top_title">历史TOP5</div>
+			<?php 
+				$sql = 'select id,title,platform,last_edited_at from smg_news order by click_count desc limit 5';
+				$record = $db->query($sql);
+				for($i=0;$i<count($record);$i++){ ?>
+				<div class=l_b_l>
+					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
+				</div>
+				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+			<?php } ?>
 		</div>
 	</div>
 	<div id=ibody_right>
