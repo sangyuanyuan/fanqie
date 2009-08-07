@@ -53,7 +53,7 @@
 </script>
 <?php }else if($record[0]->cplatform=="show"){ ?>
 <script>
-	total("$(#categoryname).attr('value')","show");
+	total("<?php echo $record[0]->categoryname; ?>","show");
 </script>
 <?php }else if($record[0]->cplatform=="server"){?>
 <script>
