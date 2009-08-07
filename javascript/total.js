@@ -1,11 +1,11 @@
 var showhttp = false;
 var PostDiv="abderraf123123";
-var Urls = "admin.post.php"
+var Urls = "/pub/total.post.php"
 var PostStr="";
 var HType="";
 
 if(window.XMLHttpRequest){showhttp = new XMLHttpRequest();if (showhttp.overrideMimeType) {showhttp.overrideMimeType('text/xml');}}	else if (window.ActiveXObject){try {showhttp = new ActiveXObject("Msxml2.XMLHTTP");} catch (e) {try {showhttp = new ActiveXObject("Microsoft.XMLHTTP");} catch (e) {}}}
-function Post(url,section,mvalue,rpost){	var mdata;		if (!showhttp) { window.alert("²»ÄÜ´´½¨XMLHttpRequest¶ÔÏóÊµÀı.");return false;	}		showhttp.open("POST", url, true);		showhttp.onreadystatechange = rpost;		showhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");		mdata = section+"="+mvalue;	showhttp.send(mdata);}
+function Post(url,section,mvalue,rpost){	var mdata;		if (!showhttp) { window.alert("ä¸èƒ½åˆ›å»ºXMLHttpRequestå¯¹è±¡å®ä¾‹.");return false;	}		showhttp.open("POST", url, true);		showhttp.onreadystatechange = rpost;		showhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");		mdata = section+"="+mvalue;	showhttp.send(mdata);}
 
 function total(param1,param2){PostStr=param1+PostDiv+param2;Post(Urls,"total",PostStr,rtotal);}
-function rtotal(){if (showhttp.readyState == 4) {if (showhttp.status == 200) {var result = showhttp.responseText; if(result=="OK"){window.location.reload();return false;}} else {alert("·şÎñÆ÷Ã¦£¬ÇëË¢ĞÂºóÖØÊÔ¡£");}}}
+function rtotal(){if (showhttp.readyState == 4) {if (showhttp.status == 200) {var result = showhttp.responseText; alert(result);} else {alert("æœåŠ¡å™¨å¿™ï¼Œè¯·åˆ·æ–°åé‡è¯•ã€‚");}}}

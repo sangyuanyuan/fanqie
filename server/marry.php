@@ -9,6 +9,7 @@
 	<title>SMG-番茄网-服务-婚庆</title>
 	<?php	
 		css_include_tag('server_marry','top','bottom');
+	  js_include_once_tag('total');
   ?>
 	
 </head>
@@ -381,4 +382,8 @@
 			});
 		});
 	})
+</script>
+<script>
+total("婚庆","zone");	
+	
 </script>
