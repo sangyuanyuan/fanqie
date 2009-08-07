@@ -13,9 +13,13 @@
 	<? 	
 		css_include_tag('server_calendar','top','bottom','thickbox');
 		use_jquery();
+		js_include_tag('total.js');
   ?>
 	
 </head>
+<script>
+	total("生日","server");
+</script>
 <body>
 <? require_once('../inc/top.inc.html');
 	js_include_tag('service/calendar','thickbox');

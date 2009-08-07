@@ -26,8 +26,11 @@ if(count($record) > 0)
 	<title>SMG</title>
 	<?php css_include_tag('smg','top','bottom');
 		use_jquery();
-		js_include_once_tag('shop');
+		js_include_once_tag('shop','total');
 	?>
+<script>
+	total("个人网店","server");
+</script>
 </head>
 <body >
 	 	<? include('../inc/top.inc.html');?>

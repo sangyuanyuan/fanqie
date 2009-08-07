@@ -21,6 +21,7 @@
 	
 </div>
 <script>
+	total("生日","server");
 	$(function(){
 		$('.send_gift_img').click(function(e){
 			e.preventDefault();

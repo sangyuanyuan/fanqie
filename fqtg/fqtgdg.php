@@ -20,8 +20,11 @@
 	<title>SMG团购 -<? echo $tg[0]->title;?></title>
 	<?php css_include_tag('smg','top','bottom');
 		use_jquery(); 
-		js_include_once_tag('fqtgdg1');
+		js_include_once_tag('fqtgdg1','total');
 	?>
+<script>
+	total("番茄团购","server");
+</script>
 </head>
 <body>
 <? 
