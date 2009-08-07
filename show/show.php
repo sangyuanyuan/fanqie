@@ -18,10 +18,12 @@
 	<?php
 		css_include_tag('show_show','top','bottom');
 		use_jquery();
-		js_include_tag('pubfun');
+		js_include_tag('pubfun','total');
   	?>
-	
 </head>
+<script>
+	total("图片内页","show");	
+</script>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>	

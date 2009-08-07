@@ -10,9 +10,13 @@
 	<?php
 		css_include_tag('show_show_index','top','bottom');
 		use_jquery();
+		js_include_tag('total');
   	?>
 	
 </head>
+<script>
+	total("摄影主页","show");	
+</script>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
