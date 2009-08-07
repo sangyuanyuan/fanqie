@@ -63,6 +63,17 @@
 			$dialog->photo_url = "/upload/images/" .$img;
 		}
 		
+		if($_FILES['image2']['name']!=null){
+			$upload = new upload_file_class();
+			$upload->save_dir = '/upload/images/';
+			$img = $upload->handle('image2','filter_pic');
+			if($img === false){
+					alert('上传文件失败 !');				
+					redirect('dialog_add.php');
+			}
+			$dialog->photo2_url = "/upload/images/" .$img;
+		}
+		
 		if($_FILES['video']['name']!=null){
 			$upload = new upload_file_class();
 			$upload->save_dir = "/upload/video/";
