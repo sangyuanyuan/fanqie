@@ -50,19 +50,19 @@
     ?>
  <?php if($record[0]->cplatform=="news"){?>
 <script>
-	total("新闻","news");
+	total("<?php echo $record[0]->categoryname; ?>","news");
 </script>
 <?php }else if($record[0]->cplatform=="show"){ ?>
 <script>
-	total("新闻","show");
+	total("<?php echo $record[0]->categoryname; ?>","show");
 </script>
 <?php }else if($record[0]->cplatform=="server"){?>
 <script>
-	total("新闻","server");
+	total("<?php echo $record[0]->categoryname; ?>","server");
 </script>
 <?php }else if($record[0]->cplatform=="zone"){?>
 <script>
-	total("新闻","zone");
+	total("<?php echo $record[0]->categoryname; ?>","zone");
 </script>
 <?php }else{?>
 <script>
