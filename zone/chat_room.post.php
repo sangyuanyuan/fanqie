@@ -5,7 +5,7 @@
 	$chat_id = $_COOKIE['smg_chat_id'];
 	$db = get_db();
 	$db->execute("delete from smg_chat_queue where created_at < DATE_SUB(now(),INTERVAL  30 MINUTE)");
-	$db->execute("delete from smg_chat_message where created_at < DATE_SUB(now(),INTERVAL  30 MINUTE)");
+	$db->execute("delete from smg_chat_message where created_at < DATE_SUB(now(),INTERVAL  2 MINUTE)");
 	$sql = "select count(*) as online_count from smg_chat_room_online where expire_at > now()";
 	$db->query($sql);
 	$db->move_first();

@@ -27,8 +27,13 @@
 		<div id=l_b>
 			<?php for($i=0;$i<count($record);$i++){ ?>
 				<div class=l_b_l>
+					<?php if($record[$i]!="总裁奖"){ ?>
 					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
 					<div class=l_b_l_r><a target="_blank" href="/subject/<?php echo $record[$i]->identity;?>/"><?php echo $record[$i]->name;?></a></div>
+					<?php }else{?>
+					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->identity;?>/"><?php echo $record[$i]->name;?></a></div>
+					<?php } ?>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
 			<?php }?>
