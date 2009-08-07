@@ -40,7 +40,7 @@
 	$record = $db->query($sql);
 	$count  = count($record);
 	for($i=0;$i<$count;$i++){
-		$sql = 'update smg_zongcai_item set state=2 where state=0 and name='.$record[$i]->name;
+		$sql = 'update smg_zongcai_item set state=2 where state=0 and name="'.$record[$i]->name.'"';
 		$db->execute($sql);
 	}
 ?>
