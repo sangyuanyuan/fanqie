@@ -114,6 +114,9 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image" id="image" type="file">(请上传小于2M的图片，格式支持jpg、gif、png) </td>
 		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
+			<td>选择图片2</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image2" id="image2" type="file">(请上传小于2M的图片，格式支持jpg、gif、png) </td>
+		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
 			<td>简短描述</td><td align="left"><textarea cols="76" rows="8" name="picture[description]" id="description"></textarea></td>
 		</tr>
@@ -144,6 +147,15 @@
 			alert("请输入标题！");
 			return false;
 		}
+		if($("#image2").val()!=''){
+			var upfile1 = $("#image2").val();
+			var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);
+			if(upload_file_extension.toLowerCase()!=".png"&&upload_file_extension.toLowerCase()!=".jpg"&&upload_file_extension.toLowerCase()!=".gif"){
+				alert("上传图片类型错误");
+				return false;
+			}
+		}
+		
 		if($("#image").val()!=''){
 			var upfile1 = $("#image").val();
 			var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);

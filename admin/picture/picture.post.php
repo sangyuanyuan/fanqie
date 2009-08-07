@@ -19,6 +19,18 @@
 		$smg_image->create_thumb('middle',50);
 		$smg_image->create_thumb('small',170,70);
 	}
+	if($_FILES['image2']['name']!=null){
+		$upload = new upload_file_class();
+		$upload->save_dir = "/upload/images/";
+		$img = $upload->handle('image2','filter_pic');
+		
+		
+		if($img === false){
+			alert('上传文件失败 !');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+		$smg_image->src2 = "/upload/images/" .$img;
+	}
 	$table_change = array('<p>'=>'');
 	$table_change += array('</p>'=>'');
 	$title = strtr($_POST['title'],$table_change);
