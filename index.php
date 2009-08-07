@@ -820,16 +820,16 @@
  			<div id=b_b_r>
 				<div id=title>在线杂志</div>
 				<?php  
-					$sql = 'select t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 2';
+					$sql = 'select t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 3';
 					$records = $db->query($sql);
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
 				?>
 				<div class=box>
-					<div class=pic><img src="<?php echo $records[$i]->src;?>" border=0 width=66 height=90></div>
-					<div class=title><?php echo $records[$i]->title;?></div>
+					<div class=pic><a href="<?php echo $records[$i]->url;?>" target="_blank" title="<?php echo $records[$i]->title;?>"><img src="<?php echo $records[$i]->src;?>" border=0 width=70 height=90></a></div>
+					<!--<div class=title><?php echo $records[$i]->title;?></div>
 					<div class=description><?php echo $records[$i]->description;?></div>
-					<div class=button><a href="<?php echo $records[$i]->url;?>" target="_blank"><img src="/images/index/magazine.jpg" border=0></a></div>
+					<div class=button><a href="<?php echo $records[$i]->url;?>" target="_blank"><img src="/images/index/magazine.jpg" border=0></a></div>-->
 				</div>
 				<?php
 					}
