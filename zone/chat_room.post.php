@@ -4,8 +4,13 @@
 	$op = $_POST['op'];
 	$chat_id = $_COOKIE['smg_chat_id'];
 	$db = get_db();
-	$db->execute("delete from smg_chat_queue where created_at < DATE_SUB(now(),INTERVAL  30 MINUTE)");
-	$db->execute("delete from smg_chat_message where created_at < DATE_SUB(now(),INTERVAL  2 MINUTE)");
+	$db->execute("delete from smg_chat_queue where created_at < DATE_SUB(now(),INTERVAL  1 MINUTE)");
+	$db->execute("delete from smg_chat_message where created_at < DATE_SUB(now(),INTERVAL  1 MINUTE)");
+	$sql = "insert into smg_chat_room_online (chat_id, expire_at) values ('$chat_id',now() + INTERVAL 1 MINUTE) ON DUPLICATE key update expire_at = now() + INTERVAL 1 MINUTE";
+	$db->execute($sql);	
+	if($status == 'connecting'){
+		$db->execute("update smg_chat_queue set created_at = now() + INTERVAL 1 MINUTE");
+	}
 	$sql = "select count(*) as online_count from smg_chat_room_online where expire_at > now()";
 	$db->query($sql);
 	$db->move_first();
@@ -16,7 +21,7 @@
 			if(empty($status)){
 				//start to connect sb
 				$remote = $db->query("select * from smg_chat_queue where chat_id !='$chat_id' order by id asc limit 1");
-				if(count($remote) <= 0){
+				if(!$remote || count($remote) <= 0){
 					$sql = "insert into smg_chat_queue (chat_id,created_at) select '$chat_id',NOW() from dual where not exists(select * from smg_chat_queue where chat_id= '$chat_id');";
 					$db->execute($sql);
 					set_status('connecting');
@@ -42,11 +47,7 @@
 			}			
 			break;
 		case 'refresh':
-			$today = substr(now(), 0,10);
-			$expire_date = date('Y-m-d H:i:s',strtotime('1 hour'));
-			$sql = "insert into smg_chat_room_online (chat_id, expire_at) values ('$chat_id',now() + INTERVAL 1 HOUR) ON DUPLICATE key update expire_at = now() + INTERVAL 1 HOUR";
-			$db->execute($sql);
-			$msgs = $db->query("select * from smg_chat_message where reciever='$chat_id' and created_at >='$today'");
+			$msgs = $db->query("select * from smg_chat_message where reciever='$chat_id'");
 			if(is_array($msgs)){
 				foreach ($msgs as $v) {
 					$ids[] = $v->id;;
