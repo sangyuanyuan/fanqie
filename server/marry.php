@@ -14,7 +14,7 @@
 	
 </head>
 <script>
-total("婚庆","server");	
+	total("婚庆","server");	
 </script>
 <body>
 <?php 

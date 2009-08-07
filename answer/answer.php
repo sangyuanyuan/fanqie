@@ -24,8 +24,12 @@
 	<title>SMG-番茄网-服务-答题</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','answer/answer','thickbox');
+		js_include_tag('total');
 	?>
 </head>
+<script>
+	total("答题","server");	
+</script>
 <?php
 	require_once('../inc/top.inc.php');
 	js_include_once_tag('thickbox');
