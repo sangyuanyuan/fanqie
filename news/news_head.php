@@ -252,7 +252,7 @@
 		<div id=r_b2>
 			<div class=b_head_title1 param=1>部门发表量</div>
 			<div class=b_head_title1 param=2 style="background:none; color:#000000;">部门点击排行榜</div>
-			<div id=b_b_1 class="b_b" style="display:none">
+			<div id=b_b_1 class="b_b" style="display:block">
 			<?php 
 			 $sql="select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
 (select count(dept_id) as allcounts,dept_id from smg_news where is_recommend=1  group by dept_id) b on a.id=b.dept_id left join  (select count(dept_id) as counts,dept_id from smg_news where is_adopt=1 group by dept_id) c on b.dept_id = c.dept_id
@@ -279,7 +279,7 @@ order by b.allcounts desc) tb order by a1 desc limit 10";
 			<? }?>
 			</div>
 			
-			<div id=b_b_2 class="b_b" style="display:block;">
+			<div id=b_b_2 class="b_b" style="display:none;">
 			<?php 
 			 $sql="select * from smg_dept order by click_count desc limit 10";
 			 $clickcount=$db->query($sql);
