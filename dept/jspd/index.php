@@ -238,8 +238,8 @@ include("inc/topbar.inc.php");
 				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
 				<div id="focus_02"></div> 
 				<script type="text/javascript"> 
-					var pic_width=200; 
-					var pic_height=150;
+					var pic_width=415; 
+					var pic_height=180;
 					var pics="<?php echo implode(',',$picsurl);?>";
 					var mylinks="<?php echo implode(',',$picslink);?>";
 					var texts="<?php echo implode(',',$picstext);?>";
