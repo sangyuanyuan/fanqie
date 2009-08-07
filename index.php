@@ -862,7 +862,8 @@
 				?>
 				<div class=box>
 					<div class=pic><a href="<?php echo $records[$i]->url;?>" target="_blank" title="<?php echo $records[$i]->title;?>"><img src="<?php echo $records[$i]->src;?>" border=0 width=70 height=90></a></div>
-					<!--<div class=title><?php echo $records[$i]->title;?></div>
+					<div class=title><?php echo $records[$i]->title;?></div>
+					<!--
 					<div class=description><?php echo $records[$i]->description;?></div>
 					<div class=button><a href="<?php echo $records[$i]->url;?>" target="_blank"><img src="/images/index/magazine.jpg" border=0></a></div>-->
 				</div>

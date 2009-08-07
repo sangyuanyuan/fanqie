@@ -4,7 +4,7 @@
  */
  $debug_tag = true;
 
- $use_localhost = false;
+ $use_localhost = true;
 
  
  /*
