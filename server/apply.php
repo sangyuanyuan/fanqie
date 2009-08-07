@@ -10,8 +10,12 @@
 	<?php
 		css_include_tag('news_sub','top','bottom');
 		use_jquery();
+		js_include_tag('total');
     ?>
 </head>
+<script>
+	total("婚庆报名","server");	
+</script>
 <body>
 <?php
 	require_once('../inc/top.inc.html');
