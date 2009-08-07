@@ -15,6 +15,7 @@ for ($i=0;$i<count($categories);$i++){ ?>
 }
 ?>
 <script>
+	total("生日","server");
 	$(function(){
 		$('.a_gift_list').click(function(e){
 			e.preventDefault();

@@ -9,9 +9,12 @@
 	
 	$db = get_db();
 	css_include_tag('top','bottom','search/search','jquery_ui');
-
+	js_include_tag('total.js');
 	?>
 </head>
+<script>
+	total("搜索","news");
+</script>
 <body>
 <?php include('../inc/top.inc.html');
 	use_jquery_ui();
