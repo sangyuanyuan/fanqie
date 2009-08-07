@@ -211,7 +211,7 @@
 		  	</div>
 			<div class=r_b_content>
 			<?php
-				$sql = 'select t1.id,t1.dept_id,t1.short_title,t1.publisher_id,t1.created_at,t1.click_count,t2.platform from smg_news t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.video_flag=1 and t1.video_photo_src!="" and t1.short_title!="" order by t1.priority asc, t1.created_at desc limit 4';
+				$sql = 'select t1.id,t1.dept_id,t1.short_title,t1.video_photo_src,t1.publisher_id,t1.created_at,t1.click_count,t2.platform from smg_news t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.video_flag=1 and t1.video_photo_src!="" and t1.short_title!="" order by t1.priority asc, t1.created_at desc limit 4';
 				$records = $db->query($sql);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
