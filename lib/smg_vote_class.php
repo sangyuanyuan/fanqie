@@ -72,6 +72,7 @@
 					</div>
 				<?php } ?>
 				</div>
+				<div id="description"><?php echo $this->description?></div>
 			</div>
 			<?php
 		}
