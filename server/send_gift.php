@@ -28,17 +28,16 @@
     		<div id="title"></div>
 			<div id=sendname><?php echo "赠送礼物给{$_SESSION['smg_gift_nickname']}";?></div>
 			<div id="msg_box">
-				您的大名<input type="text" id="name">	
+				　您的大名<input type="text" id="name">	
 				<div>
-					您的祝福<textarea id="tcontent"></textarea><button id="submit">发送</button><button id="cancel">取消</button>
+					　您的祝福<textarea id="tcontent"></textarea><button id="submit" style="width:100px; height:25px; line-height:13px;">发送祝福</button>
 				</div>
 			</div>
 			<div id="right_div">				
-					<div id="gift_box" style="border-top:1px solid #666666;padding-top:5px;margin-top:5px;">
-						<div>已选礼物</div>
+					<div id="gift_box" style="border-top:1px solid #666666; padding-top:5px;margin-top:5px;">
 						<?php
 						foreach ($gifts as $v) {
-							echo "<div class=\"gift_item\">{$v->name} <img src=\"{$v->img_src}\"></div> ";
+							echo "<div class=\"gift_item\" style='margin-left:10px; float:left; display:inline;'><img src=\"{$v->img_src}\" width=105px  height=60px>{$v->name} </div> ";
 						}
 						
 						?>
