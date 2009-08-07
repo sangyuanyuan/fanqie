@@ -7,10 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css.css" type="text/css" />
 <title>文广移动</title>
+<?php 
+	js_include_once_tag('total');
+?>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
 <script src="szyd.js" type="text/javascript"></script>
 </head>
-
+<script>
+	total("文广移动","news");	
+</script>
 <body class="body">
 <div class="body" >
 	<div class="main">

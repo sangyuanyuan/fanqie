@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>传媒集团内网-对外事务</title>
+<?php
+	js_include_once_tag('total');
+?>
 <style type="text/css">
 <!--
 body {
@@ -64,7 +67,9 @@ ul {
 -->
 </style>
 </head>
-
+<script>
+	total("对外事务新闻","news");	
+</script>
 <body>
 	<?
 		if(!isset($_REQUEST['id'])) die('非法新闻类型！');

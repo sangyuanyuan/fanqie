@@ -6,6 +6,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>精神文明办内网</title>
+	<?php 
+		js_include_once_tag('total');
+	?>
 	<link href="jswmb.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" language="javascript">   
  
@@ -140,6 +143,9 @@ function AdMove(id){
    
 </script>
 </head>
+<script>
+	total("精神文明办","news");	
+</script>
 <body>
 	<div id=jswm_body>
 		<div id="piao1"></div>   

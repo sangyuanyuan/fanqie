@@ -10,8 +10,12 @@
 	<?php
 		use_jquery();
 		js_include_tag('dept_pub');
+		js_include_once_tag('total');
 	?>
 </head>
+<script>
+	total("精神文明办新闻","news");	
+</script>
 <body>
 	<div id=jswm_body>
 		<?php	

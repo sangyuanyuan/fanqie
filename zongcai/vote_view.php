@@ -6,9 +6,15 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-投票结果显示</title>
-	<?php css_include_tag('top','bottom'); ?>
+	<title>SMG-番茄网-总裁奖投票结果显示</title>
+	<?php 
+		css_include_tag('top','bottom'); 
+		js_include_once_tag('total');
+	?>
 </head>
+<script>
+	total("总裁奖投票结果显示","news");	
+</script>
 <body style="line-height:0;">
 <?php require_once('../inc/top.inc.html');
 	$db = get_db();

@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>传媒集团内网-fwb</title>
+<?php
+	js_include_once_tag('total');
+?>
 <style type="text/css">
 <!--
 body {
@@ -68,6 +71,9 @@ ul {
 -->
 </style>
 </head>
+<script>
+	total("法务部新闻列表","news");	
+</script>
 <?php
 	if(!isset($_REQUEST['id'])) die('非法新闻类型！');
 	$listid = $_REQUEST['id'];

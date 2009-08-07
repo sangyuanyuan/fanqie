@@ -6,7 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>传媒集团内网-fwb</title>
-<?php use_jquery();?>
+<?php 
+	use_jquery();
+	js_include_once_tag('total');
+?>
 <link href="/fwb/lyb.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
@@ -70,6 +73,9 @@ ul {
 -->
 </style>
 </head>
+<script>
+	total("法务部留言板","news");	
+</script>
 <body>
 <table width="780" border="0" align="center" cellpadding="5" cellspacing="0">
   <tr>
