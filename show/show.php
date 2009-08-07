@@ -2,12 +2,6 @@
 	require_once('../frame.php');
 	$id = $_REQUEST['id'];
 	$image = new smg_images_class();
-	$image->find($id);
-	if($image->url!=''){
-		$image->click_count = $image->click_count+1;
-		$image->save();
-		redirect($image->url);
-	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,7 +19,14 @@
 	total("图片内页","show");	
 </script>
 <body>
-<? require_once('../inc/top.inc.html');?>
+<? require_once('../inc/top.inc.html');
+	$image->find($id);
+	if($image->url!=''){
+		$image->click_count = $image->click_count+1;
+		$image->save();
+		redirect($image->url);
+	}
+?>
 <div id=ibody>	
  <div id=ibody_left>
  	  	<div id=l_t>
