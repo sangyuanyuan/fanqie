@@ -15,7 +15,7 @@
 	<div id=le_body>
 		<div id=le_left>
 			<? 
-			$zbtj = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="重磅推荐" and c.category_type="news" order by click_count desc limit 6');
+			$zbtj = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="重磅推荐" and c.category_type="news" order by click_count desc limit 5');
 			for($i=0;$i < 2 && $i<count($zbtj);$i++){?>
 			<div class=top>
 				<a href="/news/news.php?id=<?php echo $zbtj[$i]->id;?>"><?php echo $zbtj[$i]->title;?></a>
