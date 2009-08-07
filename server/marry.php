@@ -13,6 +13,9 @@
   ?>
 	
 </head>
+<script>
+total("婚庆","server");	
+</script>
 <body>
 <?php 
 	require_once('../inc/top.inc.html');
@@ -382,8 +385,4 @@
 			});
 		});
 	})
-</script>
-<script>
-total("婚庆","zone");	
-	
 </script>

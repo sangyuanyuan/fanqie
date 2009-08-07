@@ -12,11 +12,13 @@
 	<? 	
 		css_include_tag('index','top','bottom');
 		use_jquery();
-	  js_include_once_tag('index');
+	  js_include_once_tag('index','total');
   ?>
 	
 </head>
-
+<script>
+total("首页","other");	
+</script>
 <body>
 <? require_once('inc/top.inc.html');?>
 <div id=ibody>
