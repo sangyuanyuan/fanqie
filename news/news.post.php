@@ -25,25 +25,26 @@
 	if ($news->priority == ""){
 		$news->priority = 100;
 	}
-	$news->is_adopt = 0;
+	$news->is_adopt = 0;	
 	if($_FILES['video_src']['name'] != ''){
 		$upload = new upload_file_class();
 		$upload->save_dir = '/upload/video/';
 		$upload_name = $upload->handle('video_src','filter_video');
-		$news->video_src = '/upload/video/' .$upload_name;
-		$news->video_photo_src = '/upload/video/' .$upload->handle('video_pic','filter_pic');
+		$news->video_src = '/upload/video/' .$upload_name;		
 		$news->video_flag = 1;		
+	}
+	if($_FILES['video_pic']['name'] != ''){
+		$upload = new upload_file_class();
+		$upload->save_dir = '/upload/video/';
+		$news->video_photo_src = '/upload/video/' .$upload->handle('video_pic','filter_pic');
 	}
 		
 	$table_change = array('<p>'=>'');
 	$table_change += array('</p>'=>'');
 	$title = strtr($news->title,$table_change);	
-	$description =  strtr($news->description,$table_change);
-	$content =  strtr($news->content,$table_change);
 	$news->title = $title;
 	$news->short_title =$news->title;
-	$news->description = $description;
-	$news->content = $content;
+
 	$news->publisher_id = strtr($news->publisher_id,$table_change);
 	$news->dept_id=strtr($news->dept_id,$table_change);
 	$news->isadopt='0';

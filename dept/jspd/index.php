@@ -226,41 +226,39 @@ include("inc/topbar.inc.php");
             <td valign="top" align="center">
             <table id="__01" width="418" height="1077" border="0" cellpadding="0" cellspacing="0">
               <tr>
-              <?php
-			  		$records = show_content('smg_images','picture','纪实频道','indexphoto',4);
-					for($i=0;$i<count($records);$i++){
-				//获得首页图片切换的相关信息
-					$picsurl1[]=$records[$i]->photo_src;
-					$picslink1[]='content.php?id='.$newslist1->items[$i]->id;
-					$picstext1[]=$records[$i]->title;
-				}
+              	<?php 
+					$record = show_content('smg_images','picture','纪实频道','indexphoto','4');
+					$count = count($record);
+					for($i=0;$i<$count;$i++){
+						$picsurl[]=$record[$i]->src;
+						$picslink[]='/show/show.php?id='.$record[$i]->id;
+						$picstext[]=$record[$i]->title;
+					}
 				?>
 				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-				<!-- 图片播放器开始 -->
 				<div id="focus_02"></div> 
 				<script type="text/javascript"> 
-				var pic_width1=200; //图片宽度
-				var pic_height1=150; //图片高度
-				var pics1="<?php echo implode(',',$picsurl1);?>";
-				var mylinks1="<?php echo implode(',',$picslink1);?>";
-				var texts1="<?php echo implode(',',$picstext1);?>";
+					var pic_width=415; 
+					var pic_height=180;
+					var pics="<?php echo implode(',',$picsurl);?>";
+					var mylinks="<?php echo implode(',',$picslink);?>";
+					var texts="<?php echo implode(',',$picstext);?>";
 				
-				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "200", "150", "6","#FFFFFF");
-				picflash.addParam('wmode','opaque');
-				picflash.addVariable("picurl",pics1);
-				picflash.addVariable("piclink",mylinks1);
-				picflash.addVariable("pictext",texts1);				
-				picflash.addVariable("pictime","5");
-				picflash.addVariable("borderwidth","200");
-				picflash.addVariable("borderheight","150");
-				picflash.addVariable("borderw","false");
-				picflash.addVariable("buttondisplay","true");
-				picflash.addVariable("textheight","0");				
-				picflash.addVariable("pic_width",pic_width1);
-				picflash.addVariable("pic_height",pic_height1);
-				
-				picflash.write("focus_02");				
-				</script>
+					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", pic_width, pic_height, "4","#FFFFFF");
+					picflash.addParam('wmode','opaque');
+					picflash.addVariable("picurl",pics);
+					picflash.addVariable("piclink",mylinks);
+					picflash.addVariable("pictext",texts);				
+					picflash.addVariable("pictime","5");
+					picflash.addVariable("borderwidth",pic_width);
+					picflash.addVariable("borderheight",pic_height);
+					picflash.addVariable("borderw","false");
+					picflash.addVariable("buttondisplay","true");
+					picflash.addVariable("textheight","15");				
+					picflash.addVariable("pic_width",pic_width);
+					picflash.addVariable("pic_height",pic_height);
+					picflash.write("focus_02");				
+				</script> 
                 </td>
               </tr>
               <tr>

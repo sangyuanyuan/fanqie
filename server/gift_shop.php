@@ -67,7 +67,7 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
 				<embed src="cs.swf" quality="high" bgcolor="#ffcccc" width="640" height="520" swLiveConnect=true id="cs" name="cs" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 			</object>
         </div>
-        
+        <div style="line-height:25px;margin-left:20px; margin-top:20px; font-size:larger;" id="gift_count">您还未购买任何礼物</div>
   </div>
   <div class="r"></div>
 </div>
@@ -84,6 +84,13 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
 		//alert(gift_ids.join(','));
 		if(confirm('您购买了' + gift_ids.length+'件礼物,结束购物吗?')){
 			document.location.href="send_gift.php?gift_ids="+gift_ids.join(',');
+		}
+	}
+	function refresh_gift_counts(){
+		if (gift_ids.length <=0 )	{
+			$('#gift_count').html('您还未购买任何礼物');
+		}else{
+			$('#gift_count').html('您已购买购买 '+gift_ids.length +' 件礼物');
 		}
 	}
 </script>
