@@ -4,7 +4,7 @@ body {
 #answer{width:995px; margin:0 auto; line-height:15px;}
 #left{width:650px; margin-top:10px; padding-bottom:10px; border:1px solid #D8DFEA; float:left; display:inline;}
 .vote_items_box{text-align:center;width:450px;}
-#pic{width:400px; margin:0 auto;}
+#pic{width:400px; height:300px; margin:0 auto; overflow:hidden; text-align:center;}
 .vote_title{font-weight:bold;font-size:14px;margin-top:5px;}
 .vote_item{width:500px; height:30px; line-height:30px; text-align:left; float:left; display:inline;}
 .vote_item .input_vote_item{wdith:450px; height:30px; padding:0; margin:0; text-align:left; line-height:30px; float:left; display:inline;}
