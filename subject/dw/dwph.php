@@ -146,9 +146,9 @@ function AdMove(id){
 <body>
 <?
 	include('../../inc/top.inc.html');
-	$count=$sqlmanager->GetRecords('select count(*) as num from smg_question_record where point=180 and r_type="dw"');
+	$count=$db->query('select count(*) as num from smg_question_record where point=180 and r_type="dw"');
 ?>
-<div id=bodys>
+<div id=bodys style="line-height:20px;">
  <div id=n_left style="width:995px; margin-top:10px;">
  	<!--<div id="piao1"></div>   
 	<span id="piao2"><span style="cursor:hand; color:blue;" onclick="closepic()">关闭</span><br><a target="_blank" title="端午节" href="dw/dw2.php?id=1"><img width=120 height=120 alt="端午节" title="端午节" src="/images/pic/zz1.jpg" border="0" /><br>“端午”礼品已发完</a></span>
