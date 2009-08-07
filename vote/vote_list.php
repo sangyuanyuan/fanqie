@@ -1,4 +1,4 @@
-﻿<?php
+﻿	<?php
     require_once('../frame.php');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -37,7 +37,7 @@
 					</div>
 					<div class=c>
 						<span><h3 style="display:inline;line-height:25px;"><?php echo strip_tags($vote[$i]->name);?></h3></span><span>　<a target="_blank" href="vote.php?vote_id=<?php echo $vote[$i]->id;?>">参与投票</a>　<a target="_blank" href="vote_show.php?vote_id=<?php echo $vote[$i]->id;?>">查看结果</a></span>
-						<div style="text-indent:15px;margin-top:5px;"><?php echo $vote[$i]->description;?></div>
+						<div style="text-indent:15px;margin-top:5px;"><?php echo $vote[$i]->description;?><?php if($vote[$i]->publisher!=''){echo "（发起人：".$vote[$i]->publisher.")";}?></div>
 					</div>
 					<div class=r>
 						
