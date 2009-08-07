@@ -7,11 +7,7 @@
 	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
-	<link href="/css/smg.css" rel="stylesheet" type="text/css">
-	<script src="/js/pubfun.js"></script>
-	<script language="javascript" src="/js/smg.js"></script>   
- 
-	
+	<?php css_include_tag('smg','top','bottom'); ?>   
 </head>
 <body>
 <?
