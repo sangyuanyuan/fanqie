@@ -67,7 +67,7 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
 				<embed src="cs.swf" quality="high" bgcolor="#ffcccc" width="640" height="520" swLiveConnect=true id="cs" name="cs" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 			</object>
         </div>
-        <div style="margin-left:20px; margin-top:20px; font-size:larger;" id="gift_count">您还未购买任何礼物</div>
+        <div style="line-height:25px;margin-left:20px; margin-top:20px; font-size:larger;" id="gift_count">您还未购买任何礼物</div>
   </div>
   <div class="r"></div>
 </div>
