@@ -7,6 +7,7 @@
 	<TITLE>麦兜专题</TITLE>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <LINK href="css/index.css" type=text/css rel=stylesheet>
+<?php js_include_once_tag('total');?>
 <style type="text/css">
 <!--
 #lovexin12,#lovexin14{
@@ -25,6 +26,9 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 .scroll_div img{width:98px;height:80px; border: 0; margin: auto 8px;}
 #scroll_begin, #scroll_end, #scroll_begin ul, #scroll_end ul, #scroll_begin ul li, #scroll_end ul li{display:inline;}/*设置ul和li横排*/
 </style>
+<script>
+	total("专题-麦兜专题","other");
+</script>
 </HEAD>
 <body>
 <TABLE cellSpacing=0 cellPadding=0 width=770 align=center border=0>

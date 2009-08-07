@@ -15,7 +15,7 @@
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub','total');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform, from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
+		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
 		$record=$db->query($sql);
 		
 		if($record[0]->news_type==2)
@@ -49,26 +49,27 @@
   ?>
  <?php if($record[0]->cplatform=="news"){?>
 <script>
-	total("<?php echo $record[0]->categoryname;?>","news");
+	total("$(#categoryname).attr('value')","news");
 </script>
 <?php }else if($record[0]->cplatform=="show"){ ?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","show");
+	total("$(#categoryname).attr('value')","show");
 </script>
 <?php }else if($record[0]->cplatform=="server"){?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","server");
+	total("$(#categoryname).attr('value')","server");
 </script>
 <?php }else if($record[0]->cplatform=="zone"){?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","zone");
+	total("$(#categoryname).attr('value')","zone");
 </script>
 <?php }else{?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","other");
+	total("$(#categoryname).attr('value')","other");
 </script>
 <?php } ?>
 </head>
+<input type="hidden" id="categoryname" value="<?php echo $catergoryname; ?>">
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
