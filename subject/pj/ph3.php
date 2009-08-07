@@ -1,4 +1,4 @@
-﻿<?php require_once('../../frame.php');
+<?php require_once('../../frame.php');
 	$db=get_db();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -16,8 +16,8 @@
 <body>
 <?
   $id=$_REQUEST['id'];
-  $sql1=' and (created_at >="2009-01-01 00:00:00" and created_at<="2009-03-31 23:59:59" )';
-  $sql2=' and (created_at >="2009-01-01 00:00:00" and created_at<="2009-03-31 23:59:59" )';	
+  $sql1=' and (created_at >="2009-03-01 00:00:00" and created_at<="2009-03-31 23:59:59" )';
+  $sql2=' and (created_at >="2009-03-01 00:00:00" and created_at<="2009-03-31 23:59:59" )';	
 	include('../../inc/top.inc.html');
 	if($id==1)
 	{
@@ -29,8 +29,8 @@
 		$click_count=$db->paginate($strsql1,20);	
 	}
 	else{
-		$sql11=' and (n.pubdate >="2009-01-01 00:00:00" and n.pubdate<="2009-03-31 23:59:59" )';
-		$sql12=' and (n.createtime >="2009-01-01 00:00:00" and n.createtime<="2009-03-31 23:59:59" )';
+		$sql11=' and (n.pubdate >="2009-03-01 00:00:00" and n.pubdate<="2009-03-31 23:59:59" )';
+		$sql12=' and (n.createtime >="2009-03-01 00:00:00" and n.createtime<="2009-03-31 23:59:59" )';
 		$strsql="select a.*,sum(countnum) as num from (select d.name,sum(n.clickcount) as countnum from smg_dept d left join smg_news n on d.id=n.dept_id and d.id<>47 and is_recommend=1 ".$sql11." group by n.dept_id union select d.name,sum(n.clickcount) as countnum from smg_dept d left join smg_video n on d.id=n.dept_id and d.id<>47 and is_recommend=1 ".$sql12." group by n.dept_id) as a group by name order by num desc";
 		$fwcount=$db->paginate($strsql,20);
 	}
