@@ -15,7 +15,7 @@
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub','total');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform, from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
+		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
 		$record=$db->query($sql);
 		
 		if($record[0]->news_type==2)
@@ -49,11 +49,11 @@
   ?>
  <?php if($record[0]->cplatform=="news"){?>
 <script>
-	total("<?php echo $record[0]->categoryname;?>","news");
+	total("<?php echo $record[0]->categoryname; ?>","news");
 </script>
 <?php }else if($record[0]->cplatform=="show"){ ?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","show");
+	total("$(#categoryname).attr('value')","show");
 </script>
 <?php }else if($record[0]->cplatform=="server"){?>
 <script>

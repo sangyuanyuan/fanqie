@@ -7,11 +7,16 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -六一快乐！</title>
-	<?php css_include_tag('smg','top','bottom');?>
+	<?php css_include_tag('smg','top','bottom');
+		js_include_once_tag('total');
+	?>
 	<STYLE type=text/css>
 		a{text-decoration:none;color:black}
 		img{border:0}
 	</STYLE>
+	<script>
+	total("专题-六一儿童专题","other");
+</script>
 </head>
 <body>
 <?php 
