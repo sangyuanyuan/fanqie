@@ -129,7 +129,7 @@
 	 <div id=ibody_right>
 	 	<div id=r_t>
 	 		<?php 
-				$sql = 'select * from smg_video where tags="视频首页顶部图" and is_adopt=1  order by priority asc,created_at desc limit 4';
+				$sql = 'select * from smg_video where tags="视频首页顶部" and is_adopt=1  order by priority asc,created_at desc limit 4';
 				$records = $db->query($sql);
 			?>
 		 	<div id=r_t_l>
