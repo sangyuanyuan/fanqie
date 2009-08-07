@@ -10,8 +10,11 @@
 	<? 	
 		css_include_tag('news_sub','top','bottom');
 		use_jquery();
+		js_include_once_tag('total');
   ?>
-	
+<script>
+	total("我要报料","news");
+</script>	
 </head>
 <body>
 <? require_once('../inc/top.inc.html');?>

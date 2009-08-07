@@ -13,9 +13,9 @@
 	<? 	
 		css_include_tag('news_news','top','bottom');
 		use_jquery();
-		js_include_once_tag('pubfun','news','pub');
+		js_include_once_tag('pubfun','news','pub','total');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
+		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform, from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
 		$record=$db->query($sql);
 		
 		if($record[0]->news_type==2)
@@ -47,7 +47,27 @@
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,(select count(*) from smg_digg cd where cd.diggtoid=d.diggtoid and cd.file_type='comment') as total,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by total desc limit 2";
 		$digg=$db->query($sql);
   ?>
-	
+ <?php if($record[0]->cplatform=="news"){?>
+<script>
+	total("<?php echo $record[0]->categoryname;?>","news");
+</script>
+<?php }else if($record[0]->cplatform=="show"){ ?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","show");
+</script>
+<?php }else if($record[0]->cplatform=="server"){?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","server");
+</script>
+<?php }else if($record[0]->cplatform=="zone"){?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","zone");
+</script>
+<?php }else{?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","other");
+</script>
+<?php } ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <? require_once('../inc/top.inc.html');?>

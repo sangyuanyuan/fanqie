@@ -11,7 +11,12 @@ require_once('../../frame.php');
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -三项学习新闻列表</title>
-	<?php css_include_tag('sxxx');?>
+	<?php css_include_tag('sxxx');
+		js_include_once_tag('total');
+	?>
+<script>
+	total("专题-三项学习教育","other");
+</script>
 </head>
 <body>
 	<div id=bodys>
