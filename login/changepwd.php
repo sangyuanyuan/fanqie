@@ -8,7 +8,14 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
 	<link href="/css/admin.css" rel="stylesheet" type="text/css">
+	<?php
+		use_jquery();
+		js_include_tag('total.js');		
+	?>
 </head>
+<script>
+	total("修改密码","other");
+</script>
 <body>
 <div id=admin_body1>
 		<div id=login  style="background:none">

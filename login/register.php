@@ -9,9 +9,13 @@
 	<title>SMG-用户注册</title>
 	<?php 
 		use_jquery();
+		js_include_tag('total.js');
 	?>
 	<link href="/css/admin.css" rel="stylesheet" type="text/css">
 </head>
+<script>
+	total("注册","other");
+</script>
 <form name="login" id="login" action="register.post.php" method="post" style="width:100%; height:550px;background:url(/images/bg/admin_bg1.jpg) repeat-x;margin-top:0px;">
 <body>
 	<div id=admin_body1>
