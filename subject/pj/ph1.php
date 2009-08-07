@@ -45,7 +45,7 @@
 	<? }?>
 	<? if($id==1){ 
 		
-	for($i=0;$i<count($clickcount);$i++){
+	for($i=0;$i<count($click_count);$i++){
 		?>
 	
 	<div style="width:400px; margin-top:5px; <? if($i< 3 && $pageindex==1){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $click_count[$i]->name;?></div>
