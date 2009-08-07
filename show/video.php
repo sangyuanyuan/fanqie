@@ -11,10 +11,12 @@
 	<?php
 		use_jquery();
 		css_include_tag('show_video','top','bottom');
-		js_include_tag('pubfun');
+		js_include_tag('pubfun','total');
  	?>
-	
 </head>
+<script>
+	total("视频内页","show");	
+</script>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>

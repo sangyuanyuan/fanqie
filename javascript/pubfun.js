@@ -45,7 +45,7 @@ function display_login(dom_id,admin){
 	}
 	var str = '';
 	if($.cookie('smg_user_nickname') == '' || !$.cookie('smg_user_nickname')){
-		str = '<div id=welcome><a href="#">注册</a>　<a href="/login/login.php">登录</a></div>';
+		str = '<div id=welcome><a href="/login/register.php">注册</a>　<a href="/login/login.php">登录</a></div>';
 	}else{
 		var str = '';
 		if(!admin){

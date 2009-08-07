@@ -89,7 +89,8 @@
      	  <div id="menu">
      	  	<div id="menu2"><a href="birthday.php">我的生日</a></div>	
     	  	<div id="menu1">日历</div>
-     	  	<div id="menu2"><a href="today.php">今日寿星</a></div>	
+     	  	<div id="menu2"><a href="today.php">今日寿星</a></div>
+			<div id="menu2"><a href="send_gift_list.php">送礼列表</a></div>	
      	  	<div id=date>TODAY <?php echo date("Y-m-d");?></div>
      	  </div>
         <div id="month">

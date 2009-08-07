@@ -4,6 +4,7 @@
 <META content="" name=keywords>
 <META http-equiv=refresh content=null>
 <LINK href="dw2_files/2007sanmod.css" type=text/css rel=stylesheet>
+<?php js_include_once_tag('total');?>
 <META content="MSHTML 6.00.5730.13" name=GENERATOR>
 <STYLE type=text/css>
 .STYLE3 {
@@ -74,14 +75,16 @@ html,body{
 -->
 </style>
 </head>
-
+<script>
+	total("专题-日全食专题","other");
+</script>
 </HEAD>
 <BODY >
 
 <? 
-		require_once('../../frame.php');
-		$db = get_db();		
-		$newslist = $db->query('select * from smg_comment where resource_type="sunmoon" order by created_at desc');	
+	require_once('../../frame.php');
+	$db = get_db();		
+	$newslist = $db->query('select * from smg_comment where resource_type="sunmoon" order by created_at desc');	
 ?>
 	
 <TABLE cellSpacing=0 cellPadding=0 width=770 border=0>
@@ -150,7 +153,7 @@ html,body{
                     	<TR>
                       <TD><marquee height="150" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 						<? for($i=0; $i<count($newslist); $i++){?>
-						<div style="width:200px; margin-bottom:10px; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->commenter;?></span>说：<? echo $newslist[$i]->content;?></div>
+						<div style="width:200px; margin-bottom:10px; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->nick_name;?></span>说：<? echo $newslist[$i]->comment;?></div>
 						<? }?>
 				</marquee></TD></TR>
                       <TD>
@@ -198,7 +201,7 @@ html,body{
            			</TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
      <TR>
           <TD>
-          	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="日食全揭秘" inner join smg_subject s on c.subject_id=s.id and s.name="日全食专题" order by n.priority asc, n.last_edited_at desc limit 4');?>
+          	<?php $news = $db->query('select n.description,n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="日食全揭秘" inner join smg_subject s on c.subject_id=s.id and s.name="日全食专题" order by n.priority asc, n.last_edited_at desc limit 4');?>
             <TABLE height=68 width="100%" border=0>
               <TBODY>
               <TR>

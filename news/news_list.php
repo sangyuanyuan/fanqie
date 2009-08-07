@@ -3,7 +3,6 @@
 	$id=$_REQUEST['id'];
 	$tags=urldecode($_REQUEST['tags']);
 	$type=$_REQUEST['type'];
-	if(($id==""||$id==null)&&($tags==""||$tags==null)){die('没有找到网页');}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,15 +13,15 @@
 	<? 	
 		css_include_tag('news_news_list','top','bottom');
 		use_jquery();
-		js_include_once_tag('news_list');
+		js_include_once_tag('news_list','total');
 		$db = get_db();
 		if($id!=""&&$id!=null&&$type=="")
 		{
-			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id;
+			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id." order by n.priority asc,n.last_edited_at desc";
 		}
 		else if($tags!=""&&$tags!=null)
 		{
-			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."'";
+			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."' order by n.last_edited_at desc";
 		}
 		else if($id!=""&&$type!="")
 		{
@@ -35,7 +34,9 @@
 		
 		$record=$db->paginate($sql,30);		
   ?>
-	
+<script>
+	total("新闻列表","news");
+</script>
 </head>
 <body>
 <? require_once('../inc/top.inc.html');?>

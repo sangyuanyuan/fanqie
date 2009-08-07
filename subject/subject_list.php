@@ -6,16 +6,18 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-新闻-新闻列表页面</title>
+	<title>SMG-番茄网-专题-专题列表页面</title>
 	<? 	
 		css_include_tag('news_news_list','top','bottom');
 		use_jquery();
-		js_include_once_tag('news_list');
+		js_include_once_tag('news_list','total');
 		$db = get_db();
 		$sql="select * from smg_subject order by created_at desc";		
 		$record=$db->paginate($sql,30);
   ?>
-	
+<script>
+	total("专题列表","other");
+</script>	
 </head>
 <body>
 <? require_once('../inc/top.inc.html');?>
@@ -27,8 +29,13 @@
 		<div id=l_b>
 			<?php for($i=0;$i<count($record);$i++){ ?>
 				<div class=l_b_l>
+					<?php if($record[$i]->name!="总裁奖专题"){?>
 					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
 					<div class=l_b_l_r><a target="_blank" href="/subject/<?php echo $record[$i]->identity;?>/"><?php echo $record[$i]->name;?></a></div>
+					<?php }else{?>
+					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->identity;?>/"><?php echo $record[$i]->name;?></a></div>
+					<?php } ?>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
 			<?php }?>

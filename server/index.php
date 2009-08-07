@@ -10,6 +10,7 @@
 	<? 	
 		css_include_tag('server_index','top','bottom');
 		use_jquery();
+		js_include_once_tag('total');
 		$db=get_db();
 		$pics = $db->query('SELECT * FROM smg_images s inner join smg_category c on s.category_id=c.id and c.name="番茄团购" and c.category_type="picture" order by s.priority asc, created_at desc limit 7');
 		$tg=$db->query('select id,photourl,title from smg_tg order by priority asc,createtime desc limit 7');
@@ -39,7 +40,9 @@
 		$man=$db->query('select name,birthday,height,education,photo,school from smg_marry where sex="man" order by id desc limit 5');
 		$woman=$db->query('select name,birthday,height,education,photo,school from smg_marry where sex="woman" order by id desc limit 5');
   ?>
-	
+<script>
+	total("服务首页","server");
+</script>	
 </head>
 <body>
 <? require_once('../inc/top.inc.html');?>

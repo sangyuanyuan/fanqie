@@ -3,7 +3,6 @@
   include("inc/number.php");
  	$hehun_class=hehun_convet($_POST["face"]);
  	$hehun_images=hehun_convet($_POST["icon"]);
- 	echo $_POST["icon"];
  	$hehun_head=hehun_convet($_POST["pick"]);
  	$hehun_sign=hehun_convet($_POST["send"]);
  	$hehun_lr=hehun_convet($_POST["info"]);

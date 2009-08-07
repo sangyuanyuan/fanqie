@@ -32,7 +32,8 @@
 					<div id=wz></div>
 					<div id=top>
 						投票题目：<input type="text" id="vote_name"  name="vote[name]" class="required" style="width:250px; border:1px solid #000000;"><br><br>	
-						能选几项：<input type="text"  name="vote[max_item_count]" value="1" class="required number" style="width:250px; border:1px solid #000000;">(1为单选,2以上为多选)
+						能选几项：<input type="text"  name="vote[max_item_count]" value="1" class="required number" style="width:250px; border:1px solid #000000;">(1为单选,2以上为多选)<br><br>
+						姓&nbsp&nbsp&nbsp&nbsp名：<input type="text"  name="vote[publisher]" value="<?php echo $_COOKIE['smg_user_nickname'];?>" class="required" style="width:250px; border:1px solid #000000;">
 						<div id=description style="margin-top:10px; ">
 							投票说明：<textarea name="vote[description]"  class="required" id="vote_description" style="width:280px; border:1px solid #000000;"></textarea>
 						</div>

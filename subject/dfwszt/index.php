@@ -78,13 +78,13 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 			</div>
   	</td>
   	<td valign=top height=200>
-  		<? $news=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="东方风范" inner join smg_subject s on c.subject_id=s.id and s.name="东方卫视改版专题" order by n.priority asc, n.last_edited_at desc limit 7')?>
+  		<? $news=$db->query('select n.photo_src,n.id,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="东方风范" inner join smg_subject s on c.subject_id=s.id and s.name="东方卫视改版专题" order by n.priority asc, n.last_edited_at desc limit 7')?>
   		<div class=index_title>东方风范<a target="_blank" href="/news/news_list.php?type=dfwszt&id=<?php echo $news[0]->cid;?>">更多</a></div>
 			  		<div style="width:50%; margin-top:10px; margin-left:10px; float:left; display:inline;">
 			  		<? for($i=0;$i<count($news);$i++){?>
 			      <DIV align=left style="width:100%; height:20px; margin-left:10px; line-height:20px; overflow:hidden; float:left; display:inline;"><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div><? }?></div>
 			      <DIV style="width:40%; margin-top:10px; margin-left:10px; float:left; display:inline;">
-			          <? for($i=0;$i<count($news);$i++){if($news[$i]->photourl!=""){?><A href="/news/news.php?id=<? echo $news[$i]->id;?>" target=_blank><IMG border=0 height=140 src="<? echo $news[$i]->photourl;?>" width=200 border=0 style="margin-left:5px;"></A><? break;}}?>
+			          <? for($i=0;$i<count($news);$i++){if($news[$i]->photo_src!=""){?><A href="/news/news.php?id=<? echo $news[$i]->id;?>" target=_blank><IMG border=0 height=140 src="<? echo $news[$i]->photo_src;?>" width=200 border=0 style="margin-left:5px;"></A><? break;}}?>
 			      </DIV>
   	</td>
   </tr>
@@ -223,9 +223,9 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 							$picstext10 = array();
 							for ($i=0;$i<count($photo);$i++)
 							{
-								$picsurl10[]=$photo[$i]->url;
-								$picslink10[]=$photo[$i]->src;
-								$picstext10[]=$photo[$i]->short_title;
+								$picsurl10[]=$photo[$i]->src;
+								$picslink10[]=$photo[$i]->url;
+								$picstext10[]=$photo[$i]->title;
 							}
 							?>
 							<script src="/flash/sohuflash_1.js" type="text/javascript"></script>

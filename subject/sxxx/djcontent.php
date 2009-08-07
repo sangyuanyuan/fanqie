@@ -24,7 +24,12 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -三项学习教育内容页</title>
-	<?php css_include_tag('sxxx');?>
+	<?php css_include_tag('sxxx');
+		js_include_once_tag('total');
+	?>
+<script>
+	total("专题-三项学习教育","other");
+</script>
 </head>
 <body>
 	<div id=bodys>
@@ -45,8 +50,7 @@
 					<div class=name><a href="#"><?php echo $comments[$i]->nick_name; ?></a></div>	
 					<div class=time><?php echo $comments[$i]->created_at; ?></div>	
 					<div class=context><?php echo strfck($comments[$i]->comment); ?></div>	
-				</div>
-			
+				</div>			
 			<?php }	?>
 			  <div class="pageurl">
 			     <? paginate('');?>

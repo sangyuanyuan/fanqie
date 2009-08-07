@@ -93,9 +93,12 @@
 		css_include_tag('top');
 		css_include_tag('bottom');
 		use_jquery();
+		js_include_tag('total');
   	?>
-	
 </head>
+<script>
+	total("列表","show");	
+</script>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>

@@ -8,7 +8,7 @@
 	<?php css_include_tag('smg','top','bottom'); 
 		$db=get_db();
 		use_jquery();
-		js_include_once_tag('dx');
+		js_include_once_tag('dx','news_list');
 	?>
 
 </head>

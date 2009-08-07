@@ -1,7 +1,8 @@
 <?
 include "../frame.php";
 $db = get_db();
-$db->query("select id from smg_gift_category where name='{$_REQUEST['cid']}'");
+$cate_name = urldecode($_REQUEST['cid']);
+$db->query("select id from smg_gift_category where name='{$cate_name}'");
 if($db->move_first()){
 	$cid = $db->field_by_index(0);
 }else{
@@ -25,30 +26,19 @@ for ($i=0;$i<count($record);$i++){
 <div style="clear:both;"><button id="button_ok">确定</button></div>
 <script>
 	$(function(){
-		$('.a_gift_category').click(function(e){
-			e.preventDefault();
-			$('#gift_box').load($(this).attr('href'));
-		});
 		$('.gift img').click(function(){
 			$(this).parent().find('input').attr('checked',!$(this).parent().find('input').attr('checked'));
-			if($(this).parent().find('input').attr('checked')){
-				if(jQuery.inArray($(this).parent().find('input').val(),gift_ids)==-1){
-					gift_ids.push($(this).parent().find('input').val());
-				}
-			}
 		});
-		$('input:checkbox').click(function(){
-			
-			if($(this).attr('checked')){
-				
+
+		
+		$('#button_ok').click(function(){
+			$('.gift').find('input:checked').each(function(){
+				gift_ids.push($(this).val());
 				if(jQuery.inArray($(this).val(),gift_ids)==-1){
 					gift_ids.push($(this).val());
 				}
-			}
-				
-		});
-		
-		$('#button_ok').click(function(){
+			});
+			refresh_gift_counts();
 			tb_remove();
 		});
 		

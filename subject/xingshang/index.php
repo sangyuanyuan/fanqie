@@ -10,6 +10,7 @@
 <META content="" name=keywords>
 <META http-equiv=refresh content=null>
 <LINK href="dw2_files/2007sanmod.css" type=text/css rel=stylesheet>
+<?php js_include_once_tag('total'); ?>
 <META content="MSHTML 6.00.5730.13" name=GENERATOR>
 <STYLE type=text/css>
 .STYLE3 {
@@ -46,6 +47,9 @@ html,body{
   }
 -->
 </style>
+<script>
+	total("专题-星尚","other");
+</script>
 </HEAD>
 <BODY style="background:url('beijing.jpg');">
 	
@@ -97,11 +101,11 @@ html,body{
                   <TABLE width="100%" border=0>
                     <TBODY>
                     <TR>
-                     <TD><div class=title1>星光璀璨<a style="color:#F2E275;" target="_blank" href="xslist.php?id=<?php $news[0]->id;?>">更多</a></div></TD></TR>
+                     <TD><div class=title1>星光璀璨<a style="color:#F2E275;" target="_blank" href="xslist.php?id=<?php echo $news[0]->cid;?>">更多</a></div></TD></TR>
                     <TR>
                       <TD height=50>
                       	
-                      	<div style="width:50px; float:left; display:inline;"><a target="_blank" href="xslist.php?id=<?php $news[0]->id;?>"><img width=50 height=60 border=0 src="<? echo $photo[0]->src;?>"></a></div>
+                      	<div style="width:50px; float:left; display:inline;"><a target="_blank" href="xslist.php?id=<?php echo $news[0]->id;?>"><img width=50 height=60 border=0 src="<? echo $photo[0]->src;?>"></a></div>
                       	<div style="width:150px; float:left; display:inline;">
                       		<? for($i=0;$i<count($news);$i++){?>
                       		<div style="width:150px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;">
@@ -150,7 +154,7 @@ html,body{
               <TR>
                 <TD width="20%" height=153>
                   <DIV align=left>
-                  	<? for($i=0;$i<count($news);$i++){if($news[$i]->photo_src!=""){?><A href="xs.php?id=<? echo $news[$i]->id;?>" target=_blank><IMG border=0 height=140 src="<? echo $news[$i]->photo_src;?>" width=150 border=0 style="margin-left:5px;"></A><? break;}}?>
+                  	<? for($i=0;$i<count($news);$i++){if($news[$i]->photo_src!=""){?><A href="xs.php?id=<?php echo $news[$i]->id;?>" target=_blank><IMG border=0 height=140 src="<? echo $news[$i]->photo_src;?>" width=150 border=0 style="margin-left:5px;"></A><? break;}}?>
                   	</DIV></TD>
                 <TD width="80%">
                   <TABLE width="100%" border=0 align=left>
@@ -164,7 +168,7 @@ html,body{
       <tr>
       	<td>
       		<table height=86 width=100% border=0>
-      			<? $video=$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星光点点" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.created_at desc limit 6');?>
+      			<? $video=$db->query('select n.id,n.title,n.photo_url,n.video_url,c.id as cid from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星光点点" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.created_at desc limit 6');?>
       			<tbody>
       				<tr>
       					<TD colSpan=2 class=index_title>星光点点</TD>
@@ -177,7 +181,7 @@ html,body{
 									<table cellpadding="2" cellspacing="0" border="0">
 									<tr align="center">
 									<? for($i=0;$i<count($video);$i++){?>
-										<td><a target="_blank" href="videolist.php?id=<?php echo $video[0]->cid;?>"><img border=0 height="86" src="<? echo $video[$i]->photo_url;?>" ></a></td>
+										<td><a target="_blank" href="/show/list.php?id=<?php echo $video[0]->cid;?>"><img border=0 height="86" src="<? echo $video[$i]->photo_url;?>" ></a></td>
 									<? }?>
 									</tr>
 									</table>

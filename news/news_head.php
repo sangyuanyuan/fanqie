@@ -13,9 +13,9 @@
 	<? 	
 		css_include_tag('news_news_head','top','bottom');
 		use_jquery();
-		js_include_once_tag('pubfun','news','pub');
+		js_include_once_tag('pubfun','news','pub','total');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
+		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);	
 		$about = array();
 		if($record[0]->related_news!="")
@@ -48,7 +48,27 @@
 			redirect($record[0]->target_url);
 		}
     ?>
-	
+ <?php if($record[0]->cplatform=="news"){?>
+<script>
+	total("<?php echo $record[0]->categoryname;?>","news");
+</script>
+<?php }else if($record[0]->cplatform=="show"){ ?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","show");
+</script>
+<?php }else if($record[0]->cplatform=="server"){?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","server");
+</script>
+<?php }else if($record[0]->cplatform=="zone"){?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","zone");
+</script>
+<?php }else{?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","other");
+</script>
+<?php } ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <? require_once('../inc/top.inc.html');?>
@@ -61,7 +81,7 @@
 		<div id=l_b>
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
 			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="我要报料"){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
-			<?php if($record[0]->video_src!=""){
+			<?php if($record[0]->video_src!=""&&$record[0]->video_src!=null){
 					if($record[0]->low_quality==0){
 				?>
 			<div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
@@ -84,6 +104,7 @@
 				</div>
 			<? }?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
+			<?php if($record[0]->categoryname=="我要报料"){?><div id=lc>此文系番茄网网友报料新闻，不代表番茄网的观点或立场。</div><?php } ?>
 			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<?php if(count($about)>0||count($about)>0){?>
 			<div class=abouttitle>更多关于“<?php echo mb_substr(strip_tags($record[0]->short_title),0,36,"utf-8");?>”的新闻</div>
@@ -216,7 +237,7 @@
 		<div class=r_b1>
 			<div class=title>历史头条</div>
 			<?php 
-			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='历史头条' order by n.priority asc,n.last_edited_at desc limit 8";
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='历史头条' order by n.last_edited_at desc limit 8";
 			 $morehead=$db->query($sql);
 			 for($i=0;$i<count($morehead);$i++){	 	
 			 ?>
@@ -251,7 +272,7 @@
 		<div id=r_b2>
 			<div class=b_head_title1 param=1>部门发表量</div>
 			<div class=b_head_title1 param=2 style="background:none; color:#000000;">部门点击排行榜</div>
-			<div id=b_b_1 class="b_b" style="display:none">
+			<div id=b_b_1 class="b_b" style="display:block">
 			<?php 
 			 $sql="select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
 (select count(dept_id) as allcounts,dept_id from smg_news where is_recommend=1  group by dept_id) b on a.id=b.dept_id left join  (select count(dept_id) as counts,dept_id from smg_news where is_adopt=1 group by dept_id) c on b.dept_id = c.dept_id
@@ -278,7 +299,7 @@ order by b.allcounts desc) tb order by a1 desc limit 10";
 			<? }?>
 			</div>
 			
-			<div id=b_b_2 class="b_b" style="display:block;">
+			<div id=b_b_2 class="b_b" style="display:none;">
 			<?php 
 			 $sql="select * from smg_dept order by click_count desc limit 10";
 			 $clickcount=$db->query($sql);

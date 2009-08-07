@@ -20,7 +20,7 @@
 		<div id=subject_logo>
 		</div>
 		<div class=subject_title>
-			<a href="/">网站首页</a>|<a href="list.php?id=<?php echo category_id_by_name('最新动态','zongcai');?>">最新动态</a>|<a href="item_list.php?id=<?php echo $vote[0]->id; ?>">候选作品</a>|<a href="item_list.php">历届参评节目</a>|<a href="list.php?id=<?php echo category_id_by_name('荣誉榜单','zongcai');?>">荣誉榜单</a>|<a href="list.php?id=<?php echo category_id_by_name('创新经验坛','zongcai');?>">创新经验坛</a>
+			<a target="_blank" href="/">网站首页</a>|<a target="_blank" href="list.php?id=<?php echo category_id_by_name('最新动态','zongcai');?>">最新动态</a>|<a target="_blank" href="item_list.php?id=<?php echo $vote[0]->id; ?>">候选作品</a>|<a target="_blank" href="item_list.php">历届参评节目</a>|<a target="_blank" href="list.php?id=<?php echo category_id_by_name('荣誉榜单','zongcai');?>">荣誉榜单</a>|<a target="_blank" href="list.php?id=<?php echo category_id_by_name('创新经验坛','zongcai');?>">创新经验坛</a>
 		</div>
 		<div id=subject_content1>
 			<div id=top>
@@ -118,13 +118,7 @@
 								        $type = 'broadcast_self';
 								        break;
 								}
-
-								for($j=0;$j<$count;$j++){
-									if($item[$j]->program_type==$type){
-							?>
-							<input type="radio" class="<?php echo $type; ?>" name="<?php echo $type; ?>" value="<?php echo $item[$j]->id;?>">
-							<a style="color:#000000;text-decoration:none;" href="show_item.php?id=<?php echo $item[$j]->id; ?>"><?php echo $item[$j]->name; ?></a><br>
-							<?php 
+								
 								$ip = getenv('REMOTE_ADDR');
 								if($ip=="172.27.4.80"||$ip=="172.25.201.88"||$ip=="172.28.10.33"){
 									if($_COOKIE[$type]==$vote[0]->id){
@@ -141,7 +135,12 @@
 										$has_vote = 0;
 									}
 								}
+
+								for($j=0;$j<$count;$j++){
+									if($item[$j]->program_type==$type){
 							?>
+							<input type="radio" class="<?php echo $type; ?>" name="<?php echo $type; ?>" value="<?php echo $item[$j]->id;?>">
+							<a style="color:#000000;text-decoration:none;" href="show_item.php?id=<?php echo $item[$j]->id; ?>"><?php echo $item[$j]->name; ?></a><br>
 							<?php
 									}
 								}
@@ -228,8 +227,8 @@
 			<div id=context>
 				
 				<?php
-					$sql = 'select nick_name,comment,created_at from smg_comment where resource_type="zongcai" and resource_id=0';
-					$coment_record = $db->paginate($sql,10,'comment');
+					$sql = 'select nick_name,comment,created_at from smg_comment where resource_type="zongcai" and resource_id=0 order by id desc';
+					$coment_record = $db->paginate($sql,5,'comment');
 					$icount = count($coment_record);
 					for($i=0;$i<$icount;$i++){
 				?>
@@ -270,10 +269,10 @@
 				alert('投票已过期！');
 				return false;
 			}
-			//if($(this).prev().val()==1){
-			//	alert('你已经投过票了');
-			//	return false;
-			//}
+			if($(this).prev().val()==1){
+				alert('你已经投过票了');
+				return false;
+			}
 			var item = $('input[name='+$(this).attr('name')+'][checked]').val();
 			if(item==undefined){
 				alert('请选择一个选项后再进行投票！');

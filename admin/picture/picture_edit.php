@@ -118,6 +118,9 @@
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
 			<td>选择图片</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE1" value="2097152"><input name="image" id="upfile" type="file">(请上传小于2M的图片，格式支持jpg、gif、png)<?php if($picture_record[0]->src!=''){?><a href="<?php echo $picture_record[0]->src;?>" target="_blank" style="color:#0000FF">点击查看图片</a><?php } ?></td>
 		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
+			<td>选择图片2</td><td align="left"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="image2" id="image2" type="file">(请上传小于2M的图片，格式支持jpg、gif、png)<?php if($picture_record[0]->src2!=''){?><a href="<?php echo $picture_record[0]->src2;?>" target="_blank" style="color:#0000FF">点击查看图片</a><?php } ?></td>
+		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1>
 			<td>简短描述</td><td align="left"><textarea cols="80" rows="8" name="picture[description]" class="required" ><?php echo $picture_record[0]->description;?></textarea></td>
 		</tr>
@@ -138,6 +141,8 @@
 	<input type="hidden" name="picture[is_recommend]" id="recommend" value="<?php echo $picture_record[0]->is_recommend;?>">
 	<?php } ?>
 	<input type="hidden" name="special_type" value="<?php echo $type;?>">
+	<input type="hidden" name="picture[is_adopt]" value="1">
+	<input type="hidden" name="picture[is_dept_adopt]" value="1">
 	</form>
 </body>
 </html>
@@ -150,6 +155,15 @@
 			alert("请输入标题！");
 			return false;
 		}
+		if($("#image2").val()!=''){
+			var upfile1 = $("#image2").val();
+			var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);
+			if(upload_file_extension.toLowerCase()!=".png"&&upload_file_extension.toLowerCase()!=".jpg"&&upload_file_extension.toLowerCase()!=".gif"){
+				alert("上传图片类型错误");
+				return false;
+			}
+		}
+		
 		if($("#upfile").val()!=''){
 			var upfile1 = $("#upfile").val();
 			var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);

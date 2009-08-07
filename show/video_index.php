@@ -10,9 +10,12 @@
 	<?php
 		css_include_tag('show_video_index','top','bottom');
 		use_jquery();
+		js_include_tag('total');
   	?>
-	
 </head>
+<script>
+	total("视频主页","show");	
+</script>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
@@ -126,7 +129,7 @@
 	 <div id=ibody_right>
 	 	<div id=r_t>
 	 		<?php 
-				$sql = 'select * from smg_video where tags="视频首页顶部图" and is_adopt=1  order by priority asc,created_at desc limit 4';
+				$sql = 'select * from smg_video where tags="视频首页顶部" and is_adopt=1  order by priority asc,created_at desc limit 4';
 				$records = $db->query($sql);
 			?>
 		 	<div id=r_t_l>
@@ -211,7 +214,7 @@
 		  	</div>
 			<div class=r_b_content>
 			<?php
-				$sql = 'select t1.id,t1.dept_id,t1.short_title,t1.publisher_id,t1.created_at,t1.click_count,t2.platform from smg_news t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.video_flag=1 and t1.video_photo_src!="" and t1.short_title!="" order by t1.priority asc, t1.created_at desc limit 4';
+				$sql = 'select t1.id,t1.dept_id,t1.short_title,t1.video_photo_src,t1.publisher_id,t1.created_at,t1.click_count,t2.platform from smg_news t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t1.video_flag=1 and t2.name="视频新闻" and t1.video_photo_src!="" and t1.short_title!="" order by t1.priority asc, t1.created_at desc limit 4';
 				$records = $db->query($sql);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){

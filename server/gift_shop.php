@@ -34,7 +34,7 @@ function cs_DoFSCommand(command, args) {
 	var csObj = isInternetExplorer ? document.all.cs : document.cs;
     	if (command == "show")    
     	{    
-			tb_show('购买礼物','gift_list.php?width=600&height=400&cid='+args);    
+			tb_show('购买礼物','gift_list.php?width=600&height=400&cid='+ encodeURI(args));    
     	}else if(command == 'checkout'){
 			checkout();
 		} 
@@ -58,7 +58,6 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
      	  	<div id=date>礼品商店</div>
      	  </div>        
         <div id="context">
-        	<a href="#" id=test>test</a>
 			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" id="cs" width="640" height="520" align="middle">
 				<param name="allowScriptAccess" value="sameDomain" />
 			   	<param name="wmode" value="opaque"> 
@@ -68,7 +67,7 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
 				<embed src="cs.swf" quality="high" bgcolor="#ffcccc" width="640" height="520" swLiveConnect=true id="cs" name="cs" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 			</object>
         </div>
-        
+        <div style="line-height:25px;margin-left:20px; margin-top:20px; font-size:larger;" id="gift_count">您还未购买任何礼物</div>
   </div>
   <div class="r"></div>
 </div>
@@ -78,13 +77,6 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
 </html>
 <script>
 	var gift_ids = new Array();
-	$('#date').click(function(){
-		show_gift(3);
-	});
-	$('#test').click(function(e){
-		e.preventDefault();
-		checkout();
-	});
 	function show_gift(id){
 		tb_show('购买礼物','gift_list.php?width=600&height=400&cid='+id);
 	}
@@ -92,6 +84,13 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
 		//alert(gift_ids.join(','));
 		if(confirm('您购买了' + gift_ids.length+'件礼物,结束购物吗?')){
 			document.location.href="send_gift.php?gift_ids="+gift_ids.join(',');
+		}
+	}
+	function refresh_gift_counts(){
+		if (gift_ids.length <=0 )	{
+			$('#gift_count').html('您还未购买任何礼物');
+		}else{
+			$('#gift_count').html('您已购买购买 '+gift_ids.length +' 件礼物');
 		}
 	}
 </script>
