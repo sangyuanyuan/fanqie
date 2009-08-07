@@ -13,9 +13,9 @@
 	<? 	
 		css_include_tag('news_news_head','top','bottom');
 		use_jquery();
-		js_include_once_tag('pubfun','news','pub');
+		js_include_once_tag('pubfun','news','pub','total');
 		$db = get_db();
-		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
+		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);	
 		$about = array();
 		if($record[0]->related_news!="")
@@ -48,7 +48,27 @@
 			redirect($record[0]->target_url);
 		}
     ?>
-	
+ <?php if($record[0]->cplatform=="news"){?>
+<script>
+	total("<?php echo $record[0]->categoryname;?>","news");
+</script>
+<?php }else if($record[0]->cplatform=="show"){ ?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","show");
+</script>
+<?php }else if($record[0]->cplatform=="server"){?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","server");
+</script>
+<?php }else if($record[0]->cplatform=="zone"){?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","zone");
+</script>
+<?php }else{?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","other");
+</script>
+<?php } ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <? require_once('../inc/top.inc.html');?>

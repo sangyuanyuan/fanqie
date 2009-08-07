@@ -10,6 +10,7 @@ $db=get_db();
 <META content="" name=keywords>
 <META http-equiv=refresh content=null>
 <LINK href="dw2_files/2007sanmod.css" type=text/css rel=stylesheet>
+<?php js_include_once_tag('total'); ?>
 <META content="MSHTML 6.00.5730.13" name=GENERATOR>
 <STYLE type=text/css>
 .STYLE3 {
@@ -47,6 +48,9 @@ html,body{
   }
 -->
 </style>
+<script>
+	total("专题-星尚","other");
+</script>
 </HEAD>
 <BODY style="background:url('beijing.jpg');">
 	

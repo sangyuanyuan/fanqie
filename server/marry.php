@@ -14,7 +14,11 @@
 	
 </head>
 <script>
+<<<<<<< HEAD:server/marry.php
+total("婚庆","server");	
+=======
 	total("婚庆","server");	
+>>>>>>> 2e2de592928ec1b823a14bbbe1c1861ff98236f4:server/marry.php
 </script>
 <body>
 <?php 
@@ -385,8 +389,4 @@
 			});
 		});
 	})
-</script>
-<script>
-total("婚庆","zone");	
-	
 </script>

@@ -13,7 +13,7 @@
 	<? 	
 		css_include_tag('news_news_list','top','bottom');
 		use_jquery();
-		js_include_once_tag('news_list');
+		js_include_once_tag('news_list','total');
 		$db = get_db();
 		if($id!=""&&$id!=null&&$type=="")
 		{
@@ -34,7 +34,9 @@
 		
 		$record=$db->paginate($sql,30);		
   ?>
-	
+<script>
+	total("新闻列表","news");
+</script>
 </head>
 <body>
 <? require_once('../inc/top.inc.html');?>

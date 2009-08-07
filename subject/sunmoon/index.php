@@ -4,6 +4,7 @@
 <META content="" name=keywords>
 <META http-equiv=refresh content=null>
 <LINK href="dw2_files/2007sanmod.css" type=text/css rel=stylesheet>
+<?php js_include_once_tag('total');?>
 <META content="MSHTML 6.00.5730.13" name=GENERATOR>
 <STYLE type=text/css>
 .STYLE3 {
@@ -74,14 +75,16 @@ html,body{
 -->
 </style>
 </head>
-
+<script>
+	total("专题-日全食专题","other");
+</script>
 </HEAD>
 <BODY >
 
 <? 
-		require_once('../../frame.php');
-		$db = get_db();		
-		$newslist = $db->query('select * from smg_comment where resource_type="sunmoon" order by created_at desc');	
+	require_once('../../frame.php');
+	$db = get_db();		
+	$newslist = $db->query('select * from smg_comment where resource_type="sunmoon" order by created_at desc');	
 ?>
 	
 <TABLE cellSpacing=0 cellPadding=0 width=770 border=0>

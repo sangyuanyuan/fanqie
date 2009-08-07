@@ -10,8 +10,11 @@
 	<title>SMG -三项教育首页</title>
 	<?php css_include_tag('sxxx');
 		use_jquery();
-		js_include_once_tag('dj');
+		js_include_once_tag('dj','total');
 	?>
+<script>
+	total("专题-三项学习教育","other");
+</script>
 </head>
 <body>
 	<div id=bodys>
