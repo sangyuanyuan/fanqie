@@ -7,6 +7,12 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <META http-equiv=refresh content=null>
 <LINK href="dw2_files/2007sanmod.css" type=text/css rel=stylesheet>
+	<?php use_jquery();
+js_include_once_tag('total');
+?>
+<script>
+	total("专题-端午专题","other");
+</script>
 <META content="MSHTML 6.00.5730.13" name=GENERATOR>
 <STYLE type=text/css>.STYLE3 {
 	FONT-WEIGHT: bold; FONT-SIZE: 14px

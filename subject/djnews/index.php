@@ -11,8 +11,11 @@
 	<title>SMG -党建新闻列表</title>
 	<?php css_include_tag('dj');
 		use_jquery();
-		js_include_once_tag('dj');
+		js_include_once_tag('dj','total');
 	?>
+	<script>
+	total("专题-学实专题","other");
+</script>
 </head>
 <body>
 	<div id=bodys>
