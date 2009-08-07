@@ -56,7 +56,7 @@
 					foreach ($this->vote_items as $v) {?>
 					<div class="vote_item" title="<?php echo $v->title;?>">
 						<?php
-						if($this->max_item_count > 1){ 
+						if($this->max_item_count > 1 || $this->max_item_count == 0){ 
 							if($this->vote_type == 'image_vote'){?>
 							<img src="<?php echo $v->photo_url;?>">	<div style="clear:both"></div>
 						<?php	}
@@ -72,6 +72,7 @@
 					</div>
 				<?php } ?>
 				</div>
+				<div id="description"><?php echo $this->description?></div>
 			</div>
 			<?php
 		}
@@ -149,7 +150,7 @@
 				var max_item = $(item_box).attr('max-item');
 				if(max_item != undefined){
 					var select_count = $(this).parent().parent().find('input:checked').length;
-					if(max_item < select_count){
+					if(max_item > 0 && max_item < select_count){
 						alert('投票:' + $(item_box).attr('vote_name') + ' 最多只能选择 ' + max_item +' 个选项');
 						return false;
 					}
@@ -167,7 +168,7 @@
 					var max_item = $(this).attr('max-item');
 					if(max_item != undefined){
 						var select_count = $(this).find('input:checked').length;
-						if(max_item < select_count){
+						if(max_item > 0 && max_item < select_count){
 							alert('投票:' + $(this).attr('vote_name') + ' 最多只能选择 ' + max_item +' 个选项');
 							result = false;
 							return false;

@@ -10,7 +10,7 @@
 	$vote_id = intval($_POST['vote_id']);
 	$table = new table_class('smg_vote');
 	$vote = $table->find($vote_id);
-	$vote->max_vote_count = intval($vote->max_vote_count) > 0 ? $vote->max_vote_count : 1;
+	$vote->max_vote_count = intval($vote->max_vote_count) > 0 ? $vote->max_vote_count : 10000;
 	if($vote === false){
 		alert('非法操作!');
 		redirect($_SERVER['HTTP_REFERER']);

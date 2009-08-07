@@ -13,11 +13,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css2.css" type="text/css" />
 <title>新闻列表</title>
+<?php 
+	js_include_once_tag('total');
+?>
 <script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
 
 </head>
-
+<script>
+	total("文广移动新闻列表","news");	
+</script>
 <body >
 <div  class="main">
 	<div class="top">

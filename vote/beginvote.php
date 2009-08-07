@@ -9,8 +9,12 @@
 	<title>SMG-番茄网-服务-发起投票</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','vote.css','vote_right.css');
+		js_include_tag('total');
 	?>
 </head>
+<script>
+	total("发起投票","server");	
+</script>
 <body>
 	<?php 
 		require_once('../inc/top.inc.php');

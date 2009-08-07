@@ -6,8 +6,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>精神文明办内网</title>
+	<?php 
+		js_include_once_tag('total');
+	?>
 	<link href="jswmb.css" rel="stylesheet" type="text/css">
 </head>
+<script>
+	total("精神文明办关于我们","news");	
+</script>
 <body>
 	<div id=jswm_body>
 		

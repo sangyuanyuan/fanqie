@@ -26,6 +26,7 @@ js_include_once_tag('jquery.cookie');
 	</form>	
 </div>
 <script>
+	total("对话","zone");
 $(function(){
 	$("#submit").click(function()
 	{

@@ -9,12 +9,15 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG  -总裁奖</title>
+	<title>SMG-番茄网-总裁投票</title>
 	<?php 
 		css_include_tag('zongcai');
-		validate_form("sing_up");
+		js_include_once_tag('total');
 	?>
 </head>
+<script>
+	total("总裁投票","news");	
+</script>
 <body>
 	<div id=subject_body>
 		<div id=subject_logo></div>

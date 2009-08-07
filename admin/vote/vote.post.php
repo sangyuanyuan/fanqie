@@ -42,6 +42,12 @@
 		}else{
 			$vote->ended_at = null;
 		}
+		if($_POST['vote']['max_vote_count']==''){
+			$vote->max_vote_count=0;
+		}
+		if($_POST['vote']['max_item_count']==''){
+			$vote->max_item_count=0;
+		}
 		$vote->save();
 		
 		for($i=1;$i<=$_POST['vote_item_count'];$i++){

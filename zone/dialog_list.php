@@ -9,12 +9,15 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-交流-对话列表</title>
 	<? 	
-		css_include_tag('zone_dialog_list','top','bottom','thickbox');
+		css_include_tag('zone_dialog_list','top','bottom','thickbox','total.js');
 		use_jquery();
 		js_include_tag('thickbox');
   ?>
 	
 </head>
+<script>
+	total("对话","zone");
+</script>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>

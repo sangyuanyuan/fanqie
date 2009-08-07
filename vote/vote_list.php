@@ -1,4 +1,4 @@
-﻿<?php
+﻿	<?php
     require_once('../frame.php');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -9,12 +9,16 @@
 	<title>SMG-番茄网-服务-投票列表</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','vote.css','vote_right.css');
+		js_include_tag('total');
 	?>
 </head>
+<script>
+	total("投票列表","server");	
+</script>
 <body>
 	<? require_once('../inc/top.inc.php');
 		$db = get_db();
-		$vote = $db->paginate('select * from smg_vote where is_sub_vote =0 and is_adopt=1 order by id desc',5);	
+		$vote = $db->paginate('select * from smg_vote where is_sub_vote =0 and is_adopt=1 order by id desc',10);	
 		$vote_count = count($vote);	
 	?>
 	<div id=answer>
@@ -37,7 +41,7 @@
 					</div>
 					<div class=c>
 						<span><h3 style="display:inline;line-height:25px;"><?php echo strip_tags($vote[$i]->name);?></h3></span><span>　<a target="_blank" href="vote.php?vote_id=<?php echo $vote[$i]->id;?>">参与投票</a>　<a target="_blank" href="vote_show.php?vote_id=<?php echo $vote[$i]->id;?>">查看结果</a></span>
-						<div style="text-indent:15px;margin-top:5px;"><?php echo $vote[$i]->description;?></div>
+						<div style="text-indent:15px;margin-top:5px;"><?php echo $vote[$i]->description;?><?php if($vote[$i]->publisher!=''){echo "（发起人：".$vote[$i]->publisher.")";}?></div>
 					</div>
 					<div class=r>
 						

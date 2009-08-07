@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>传媒集团内网-SITV</title>
+<?php 
+	js_include_once_tag('total');
+?>s
 <style type="text/css">
 <!--
 body {
@@ -79,7 +82,9 @@ ul {
 -->
 </style>
 </head>
-
+<script>
+	total("文广传媒新闻","news");	
+</script>
 <body>
 	<?
 		if(!isset($_REQUEST['id'])) die('非法新闻类型！');

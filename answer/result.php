@@ -13,9 +13,13 @@
 	<title>>SMG-番茄网-服务-结果</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','answer','answer_right');
+		js_include_tag('total');
 	?>
 </head>
-
+<script>
+	total("结果","server");	
+</script>
+<body>
 <?php
 	require_once('../inc/top.inc.php');
 ?>

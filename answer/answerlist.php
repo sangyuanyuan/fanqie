@@ -9,8 +9,12 @@
 	<title>SMG-番茄网-服务-答题列表</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','answer.css','answer_right.css');
+		js_include_tag('total');
 	?>
 </head>
+<script>
+	total("答题列表","server");	
+</script>
 <body>
 	<? require_once('../inc/top.inc.php');?>
 	<div id=answer>

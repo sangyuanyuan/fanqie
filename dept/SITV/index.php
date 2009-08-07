@@ -8,6 +8,9 @@
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta http-equiv=Content-Language content=zh-CN>
 <title>传媒集团内网-SITV</title>
+<?php 
+	js_include_once_tag('total');
+?>
 <script language="javascript" src="sitv.js"></script>
 <style type="text/css">
 <!--
@@ -77,7 +80,9 @@ ul {
 -->
 </style>
 </head>
-
+<script>
+	total("文广传媒","news");	
+</script>
 <body>
 <table  width="950"  align="center" cellpadding="0" cellspacing="0">
   <tr>

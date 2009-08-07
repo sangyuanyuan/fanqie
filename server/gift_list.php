@@ -25,6 +25,7 @@ for ($i=0;$i<count($record);$i++){
 ?>
 <div style="clear:both;"><button id="button_ok">确定</button></div>
 <script>
+	total("生日","server");
 	$(function(){
 		$('.gift img').click(function(){
 			$(this).parent().find('input').attr('checked',!$(this).parent().find('input').attr('checked'));

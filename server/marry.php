@@ -10,15 +10,11 @@
 	<?php	
 		css_include_tag('server_marry','top','bottom');
 	    js_include_once_tag('total');
-  ?>
+    ?>
 	
 </head>
 <script>
-<<<<<<< HEAD:server/marry.php
-total("婚庆","server");	
-=======
 	total("婚庆","server");	
->>>>>>> 2e2de592928ec1b823a14bbbe1c1861ff98236f4:server/marry.php
 </script>
 <body>
 <?php 

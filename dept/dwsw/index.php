@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>传媒集团内网-对外事务</title>
+<?php
+	js_include_once_tag('total');
+?>
 <style type="text/css">
 <!--
 body {
@@ -64,7 +67,9 @@ li
 -->
 </style>
 </head>
-
+<script>
+	total("对外事务","news");	
+</script>
 <body>
 <table width="950" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>

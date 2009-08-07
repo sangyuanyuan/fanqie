@@ -5,7 +5,10 @@
 <head>
 <title>传承文化 传播知识 传达真实的力量</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<?php use_jquery();?>
+<?php 
+	use_jquery();
+	js_include_once_tag('total');
+?>
 <style type="text/css">
 <!--
 @import url("nw.css");
@@ -20,6 +23,9 @@ body {
 -->
 </style>
 </head>
+<script>
+	total("纪实频道有话大家说","news");	
+</script>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <!-- ImageReady Slices (内网-ge.psd) -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0">

@@ -9,6 +9,7 @@
 	<title>SMG-番茄网-服务-投票</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','show_vote.css','vote_right.css');
+		js_include_tag('total');
 		$vote_id = $_REQUEST['vote_id'];
 		if(intval($vote_id)<=0){
 			alert('找不到相应投票!');
@@ -19,6 +20,9 @@
 		
 	?>
 </head>
+<script>
+	total("投票","server");	
+</script>
 <body>
 	<? require_once('../inc/top.inc.php');
 		$db = get_db();
@@ -27,6 +31,7 @@
 		<div id=left>
 			<div style="width:100%;text-align:center;padding-top:20px;float:left;line-height:25px;"><h2><?php echo $vote->name;?></h2></div>
 			<div id="vote_container_box" style="width:100%;float:left;text-align:center">
+			<div id=pic><?php if($vote->photo_url!=''){?><img border=0 src="<?php echo $vote->photo_url; ?>"><?php } ?></div>
 				<?php $vote->display(array('show_title' => false));?>
 			</div>		
 		</div>

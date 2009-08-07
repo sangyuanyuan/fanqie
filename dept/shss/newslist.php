@@ -12,6 +12,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>时尚传媒内网</title>
+<?php 
+	js_include_once_tag('total');
+?>
 <style type="text/css">
 <!--
 body {
@@ -31,6 +34,9 @@ a{
 }
 -->
 </style></head>
+<script>
+	total("时尚传媒新闻列表","news");	
+</script>
 <body >
 <table width="980" border="0" cellpadding="0" cellspacing="0">
   <tr>
