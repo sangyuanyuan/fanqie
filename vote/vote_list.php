@@ -18,7 +18,7 @@
 <body>
 	<? require_once('../inc/top.inc.php');
 		$db = get_db();
-		$vote = $db->paginate('select * from smg_vote where is_sub_vote =0 and is_adopt=1 order by id desc',5);	
+		$vote = $db->paginate('select * from smg_vote where is_sub_vote =0 and is_adopt=1 order by id desc',10);	
 		$vote_count = count($vote);	
 	?>
 	<div id=answer>
