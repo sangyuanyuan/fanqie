@@ -2,13 +2,16 @@
     require_once('../frame.php');
 	$id = $_REQUEST['id'];
 	$first_id = isset($_POST['first_id'])?$_POST['first_id']:$id;
-	if($first_id!=''){
-		$sql = 'select id,title,nick_name,description from smg_question where id>='.$id.' and id!='.$first_id.' and is_adopt=1 order by create_time limit 2';
-	}else{
-		$sql = 'select id,title,nick_name,description from smg_question where id>='.$id.' and is_adopt=1 order by create_time limit 2';
-	}
 	$db = get_db();
-	$records = $db->query($sql);
+	if($first_id!=$id){
+		if($id!=''){
+			$sql = 'select id,title,nick_name,description from smg_question where id>='.$id.' and id!='.$first_id.' and is_adopt=1 order by create_time limit 2';
+		}else{
+			$sql = 'select id,title,nick_name,description from smg_question where id!='.$first_id.' and is_adopt=1 order by create_time limit 2';
+		}
+	}else{
+		$sql = 'select id,title,nick_name,description from smg_question where id='.$id.' order by create_time';
+	}
 	$number = isset($_POST['number'])?$_POST['number']:'1';
 	$point = isset($_POST['point'])?$_POST['point']:'0';
 	if(isset($_POST['lave'])){	
