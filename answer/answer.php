@@ -1,7 +1,7 @@
 ﻿<?php
     require_once('../frame.php');
 	$id = $_REQUEST['id'];
-	$first_id = $_POST['first_id'];
+	$first_id = isset($_POST['first_id'])?$_POST['first_id']:$id;
 	if($first_id!=''){
 		$sql = 'select id,title,nick_name,description from smg_question where id>='.$id.' and id!='.$first_id.' and is_adopt=1 order by create_time limit 2';
 	}else{
@@ -88,6 +88,7 @@
 
 <input type="hidden" name="number" value="<?php echo $number+1;?>">
 <input type="hidden" name="lave" value="<?php echo $lave-1;?>">
+<input type="hidden" name="first_id" value="<?php echo $first_id;?>">
 <input type="hidden" name="point" id="r_point" value="<?php echo $point;?>">
 <input type="hidden" name="record[nick_name]" id="nick_name">
 <input type="hidden" name="record[phone]" id="phone">
