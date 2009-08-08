@@ -8,7 +8,7 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-投票结果显示</title>
 	<?php 
-		css_include_tag('top','bottom'); 
+		css_include_tag('top','bottom','vote_right.css'); 
 		js_include_tag('total');
 	?>
 </head>
@@ -42,12 +42,13 @@
 	}
 	$vote_len = count($name);
 ?>
-<div id=ibody style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px; display:inline">
-<div style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px;"><b><?php echo $vote_name;?></b>投票结果:<span style="color:#FF0000;"></span></div>
+<div id=ibody style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px;">
+<div style="width:600px; margin-top:10px; font-size:15px; text-align:center; line-height:20px; float:left; display:inline"><b><?php echo $vote_name;?></b><br>投票结果:<span style="color:#FF0000;"></span></div>
 <?php 
    for($j=0;$j < $vote_len; $j++){
 ?>
-<div style="width:995px; margin:0 auto">
+<?php include('../inc/vote_right.inc.php');?>
+<div style="width:600px; float:left; display:inline;">
 <table align="center"  border="0" bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
 		<td colspan="4" align="center">
@@ -97,6 +98,17 @@
 <?php
    }
    ?>
+<div style="width:600px; height:200px;  float:left; display:inline;">
+评论框	
+</div>
+<? for($i=1;$i<=10;$i++){?>
+<div style="width:570px; padding:15px; margin-top:3px; color:#333;  text-align:left; background:#efefef; float:left; display:inline;">
+盛志峰　2009-10-10 10:10:10<br>
+　　sasdfjasfjaslfjasl fwuru我我iorwqru撒旦发生纠纷啊师傅考虑啊师傅玩日欧欺骗入侵我啊师傅就啊萨拉附件 
+
+</div>
+<? }?>
+
 </div>
 
 <? require_once('../inc/bottom.inc.php');?>
