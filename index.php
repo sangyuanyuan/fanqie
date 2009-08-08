@@ -445,7 +445,7 @@ total("首页","other");
  				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;">快乐番茄</div>
  				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;">讨论区</div>
  					<?php
- 						$sql = 'select * from smg_tg where isadopt=1 order by createtime desc limit 3';
+ 						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
 						$record_tg=$db -> query($sql);		
 					?>	
  				<div class=content_trrt id=content_trrt1>
@@ -675,10 +675,10 @@ total("首页","other");
  				
  				<div class=box>
    				<?php
- 						$sql = 'select * from smg_dialog where is_adopt=1 order by create_time desc limit 3';
+ 						$sql = 'select * from smg_dialog where is_adopt=1 order by create_time desc limit 4';
 						$record=$db -> query($sql);
   				?>
-  				<img src="<?php echo $record[0]->photo_url ?>">
+  				<a href="/zone/dialog.php?id=<?php echo $record[0]->id ?>" target=_blank><img src="<?php echo $record[0]->photo_url ?>" border=0></a>
   				<div id=context1>
   					<a href="/zone/dialog.php?id=<?php echo $record[0]->id ?>" target=_blank><?php echo $record[0]->title ?></a>
   				</div>
@@ -688,6 +688,7 @@ total("首页","other");
   				<div id=context3>
   					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[1]->id ?>" target=_blank><?php echo $record[1]->title ?></a></li>
   					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[2]->id ?>" target=_blank><?php echo $record[2]->title ?></a></li>
+  					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[2]->id ?>" target=_blank><?php echo $record[3]->title ?></a></li>
   				</div>
  				</div>
  			</div>

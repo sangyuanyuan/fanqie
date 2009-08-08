@@ -9,14 +9,14 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-交流-对话列表</title>
 	<? 	
-		css_include_tag('zone_dialog_list','top','bottom','thickbox','total.js');
+		css_include_tag('zone_dialog_list','top','bottom','thickbox');
 		use_jquery();
-		js_include_tag('thickbox');
+		js_include_tag('thickbox','total.js');
   ?>
 	
 </head>
 <script>
-	total("对话","zone");
+	total("对话列表","zone");
 </script>
 <body>
 <? require_once('../inc/top.inc.html');?>
@@ -33,11 +33,11 @@
 				<div class=title><a href="dialog.php?id=<?php echo $record[$i]->id?>" target=_blank><?php echo $record[$i]->title ?></a></div>
 				<div class=date><?php echo $record[$i]->create_time ?></div>
 				<?php if($record[$i]->video_url==""){ ?>
-				<img src="<?php echo $record[$i]->photo_url ?>">
+					<a href="dialog.php?id=<?php echo $record[$i]->id?>" target=_blank><img src="<?php echo $record[$i]->photo_url ?>" border=0></a>
 				<?php }else{?>
 						<div class=video><?php show_video_player('250','130',$record[$i]->photo_url,$record[$i]->video_url,$autostart = "false");?></div>
 				<?php }?>
-				<div class=content><?php echo $record[$i]->content ?></div>
+				<div class=content><?php echo strip_tags($record[$i]->content) ?></div>
 			</div>
 		<?php } ?>
 
