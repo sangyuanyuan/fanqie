@@ -147,7 +147,7 @@ include("inc/topbar.inc.php");
                   <td class="yel">
                   <?php
                   		$db = get_db();
-                  		$sql = 'select * from smg_comment where resource_type="yhdjs" order by created_at';
+                  		$sql = 'select * from smg_comment where resource_type="yhdjs" order by created_at limit 6';
 						$records = $db->query($sql);
 						$count = count($records);
                   	 for($i=0;$i<$count;$i++){?>
