@@ -8,6 +8,7 @@
 <title>传媒集团内网-对外事务</title>
 <?php
 	js_include_once_tag('total');
+	use_jquery();
 ?>
 <style type="text/css">
 <!--
@@ -98,7 +99,7 @@ li
 	      <input type="text" name="search" id="search" />
 	    </label>
     </td>
-    <td width="84" background="/images/dwsw/menu.gif"><input type="image" name="imageField" id="imageField" OnClick="searchnews('search')" src="/images/dwsw/search.gif" /></td>
+    <td width="84" background="/images/dwsw/menu.gif"><input type="image" name="imageField" id="dept_search" src="/images/dwsw/search.gif" /></td>
   </tr>
 </table>
 <table width="950" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
@@ -472,3 +473,12 @@ li
 </table>
 </body>
 </html>
+
+<script>
+	$(function(){
+		
+		$("#dept_search").click(function(){
+			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
+		})
+	});
+</script>

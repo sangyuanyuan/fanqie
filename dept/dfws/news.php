@@ -122,31 +122,31 @@
 						menu.addItem(mymenu_item6);
 												var mymenu_item7 = new MenuItem($("mymenu_item7"));
 						menu.addItem(mymenu_item7);
-												var mymenu_item8 = new MenuItem(createLinkElement("办公室","newslist.php?id=13","_blank"));
+												var mymenu_item8 = new MenuItem(createLinkElement("办公室","newslist.php?id=28","_blank"));
 						mymenu_item4.addItem(mymenu_item8);
-												var mymenu_item9 = new MenuItem(createLinkElement("总编室","newslist.php?id=14","_blank"));
+												var mymenu_item9 = new MenuItem(createLinkElement("总编室","newslist.php?id=29","_blank"));
 						mymenu_item4.addItem(mymenu_item9);
-												var mymenu_item10 = new MenuItem(createLinkElement("人力资源","newslist.php?id=15","_blank"));
+												var mymenu_item10 = new MenuItem(createLinkElement("人力资源","newslist.php?id=30","_blank"));
 						mymenu_item4.addItem(mymenu_item10);
-												var mymenu_item11 = new MenuItem(createLinkElement("落地办","newslist.php?id=16","_blank"));
+												var mymenu_item11 = new MenuItem(createLinkElement("落地办","newslist.php?id=31","_blank"));
 						mymenu_item4.addItem(mymenu_item11);
-												var mymenu_item12 = new MenuItem(createLinkElement("推广部","newslist.php?id=17","_blank"));
+												var mymenu_item12 = new MenuItem(createLinkElement("推广部","newslist.php?id=32","_blank"));
 						mymenu_item4.addItem(mymenu_item12);
-												var mymenu_item13 = new MenuItem(createLinkElement("节目部","newslist.php?id=18","_blank"));
+												var mymenu_item13 = new MenuItem(createLinkElement("节目部","newslist.php?id=33","_blank"));
 						mymenu_item4.addItem(mymenu_item13);
-												var mymenu_item14 = new MenuItem(createLinkElement("项目部","newslist.php?id=19","_blank"));
+												var mymenu_item14 = new MenuItem(createLinkElement("项目部","newslist.php?id=34","_blank"));
 						mymenu_item4.addItem(mymenu_item14);
-												var mymenu_item15 = new MenuItem(createLinkElement("频道网站","newslist.php?id=20","_blank"));
+												var mymenu_item15 = new MenuItem(createLinkElement("频道网站","newslist.php?id=35","_blank"));
 						mymenu_item4.addItem(mymenu_item15);
-												var mymenu_item16 = new MenuItem(createLinkElement("共享资讯","newslist.php?id=21","_blank"));
+												var mymenu_item16 = new MenuItem(createLinkElement("共享资讯","newslist.php?id=36","_blank"));
 						mymenu_item5.addItem(mymenu_item16);
 												var mymenu_item17 = new MenuItem(createItemElement("实用资讯"));
 						mymenu_item5.addItem(mymenu_item17);						
-												var mymenu_item18 = new MenuItem(createLinkElement("龙视风采","newslist.php?id=23","_blank"));
+												var mymenu_item18 = new MenuItem(createLinkElement("龙视风采","newslist.php?id=38","_blank"));
 						mymenu_item5.addItem(mymenu_item18);
-												var mymenu_item19 = new MenuItem(createLinkElement("通讯录","newslist.php?id=24","_blank"));
+												var mymenu_item19 = new MenuItem(createLinkElement("通讯录","newslist.php?id=39","_blank"));
 						mymenu_item17.addItem(mymenu_item19);
-												var mymenu_item20 = new MenuItem(createLinkElement("常用表格","newslist.php?id=25","_blank"));
+												var mymenu_item20 = new MenuItem(createLinkElement("常用表格","newslist.php?id=40","_blank"));
 						mymenu_item17.addItem(mymenu_item20);
 										menu.render();	
 			}
@@ -157,8 +157,8 @@
 			<ul id="menu">		<li id="mymenu_item1"> <a href="javascript:void(0);">首页</a></li>		
 				<li id="mymenu_item2"> <a href="javascript:void(0);">今日必读</a></li>		
 				<li id="mymenu_item3"> <a href="javascript:void(0);">特别策划</a></li>		
-				<li id="mymenu_item4"> <a href="newslist.php?id=6">部门动态</a></li>		
-				<li id="mymenu_item5"> <a href="newslist.php?id=7">龙视部落</a></li>		
+				<li id="mymenu_item4"> <a href="newslist.php?id=24">部门动态</a></li>		
+				<li id="mymenu_item5"> <a href="newslist.php?id=25">龙视部落</a></li>		
 				<li id="mymenu_item6"> <a href="javascript:void(0);">BLOG</a></li>		
 				<li id="mymenu_item7"> <a href="javascript:void(0);">BBS</a></li>		
 		</ul>		
@@ -170,10 +170,10 @@
 </html>
 <script language="javascript">
 document.getElementById('mymenu_item1').innerHTML='<a href="index.php">首 页</a>';
-document.getElementById('mymenu_item2').innerHTML='<a href="newslist.php?id=4">今日必读</a>';
-document.getElementById('mymenu_item3').innerHTML='<a href="newslist.php?id=8">特别策划</a>';
-document.getElementById('mymenu_item4').innerHTML='<a href="newslist.php?id=9">部门动态</a>';
-document.getElementById('mymenu_item5').innerHTML='<a href="newslist.php?id=10">龙视部落</a>';
+document.getElementById('mymenu_item2').innerHTML='<a href="newslist.php?id=22">今日必读</a>';
+document.getElementById('mymenu_item3').innerHTML='<a href="newslist.php?id=23">特别策划</a>';
+document.getElementById('mymenu_item4').innerHTML='<a href="newslist.php?id=24">部门动态</a>';
+document.getElementById('mymenu_item5').innerHTML='<a href="newslist.php?id=25">龙视部落</a>';
 document.getElementById('mymenu_item6').innerHTML='<a href="#">BLOG</a>';
 document.getElementById('mymenu_item7').innerHTML='<a href="/bbs/forumdisplay.php?fid=32">BBS</a>';
 	var smg_username = $('nick_name').value;

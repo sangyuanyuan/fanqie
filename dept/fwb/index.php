@@ -8,6 +8,7 @@
 <title>传媒集团内网-fwb</title>
 <?php
 	js_include_once_tag('total');
+	use_jquery();
 ?>
 <style type="text/css">
 <!--
@@ -108,7 +109,7 @@ ul {
       <table  width="211" border="0" cellspacing="0" cellpadding="15">
         <tr>
         	 <?php
-					$records = show_content('smg_news','news','法务部','典型案例','6');
+					$records = show_content('smg_news','news','法务部','以案论法','6');
 					$count = count($records);
              ?>
           <td valign="top"  bgcolor="#2e81c3" style=font-size:12px;line-height:140%;color:white><? for($i=0;$i<$count;$i++){?><a target="_blank" style="color:white;" href="/fwb/content.php?id=<? echo $records[$i]->id;?>">&middot;<? echo $records[$i]->title; ?></a><br><? }?></td>
@@ -284,7 +285,7 @@ ul {
           <td width="112" bgcolor="#dfdfdf"><label>
               <input name="textfield" type="text" id="search" name="search" size="16" />
           </label></td>
-          <td width="64" bgcolor="#dfdfdf"><input type="submit" OnClick="searchnews('search')" name="button" id="button" value="搜索" /></td>
+          <td width="64" bgcolor="#dfdfdf"><input type="submit" name="button" id="dept_search" value="搜索" /></td>
         </tr>
     </table>
       <table width="216" border="0" cellspacing="0" cellpadding="0">
@@ -341,3 +342,13 @@ ul {
 </table>
 </body>
 </html>
+
+
+<script>
+	$(function(){
+		
+		$("#dept_search").click(function(){
+			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
+		})
+	});
+</script>
