@@ -330,7 +330,17 @@ ul {
     </table>
       <table width="216" border="0" cellspacing="0" cellpadding="15">
         <tr>
-          <td><? for($i=0;$i< $report->itemcount;$i++){?><div><div style="color:white; float:left; display:inline;">&middot;<? echo $report->items[$i]->name;?></div><div style="color:white; float:right; display:inline;"><? echo $report->items[$i]->clickcount;?></div></div><br><? }?></td>
+          <td><?php 
+		  		$db = get_db();
+				$sql = 'select sum(a.click_count) as click_count, b.name from smg_news a left join smg_category_dept b on a.dept_category_id=b.id where a.dept_id=1 and a.dept_category_id >0  group by a.dept_category_id order by click_count desc';
+				$record = $db->query($sql);
+				$count = count($record);
+		  		for($i=0;$i<$count;$i++){?>
+			  <div>
+				  <div style="color:white; float:left; display:inline;">&middot;<? echo $record[$i]->name;?></div>
+				  <div style="color:white; float:right; display:inline;"><? echo $record[$i]->click_count;?></div>
+			  </div><br><? }?>
+		  </td>
         </tr>
     </table></td>
   </tr>
