@@ -329,7 +329,7 @@ include("inc/topbar.inc.php");
                     <td width="22" height="24">&nbsp;</td>
                      <?php
 											
-							$records = show_content('smg_news','news','纪实频道','纪实达人','8');
+							$records = show_content('smg_news','news','纪实频道','小编手记','8');
 							$count = count($records);
                   		?>
                     <td width="204" valign="bottom" class="m-m">纪实达人</td>
@@ -352,7 +352,7 @@ include("inc/topbar.inc.php");
                   </table></td>
               </tr>
               <tr>
-                <td><a target="_blank" href="newslist.php?id=<?php echo dept_category_id_by_name('纪实达人','纪实频道','news');?>"><img src="images/med_07.jpg" alt="" width="418" height="33" border="0" ></a></td>
+                <td><a target="_blank" href="newslist.php?id=<?php echo $records[0]->dept_category_id;?>"><img src="images/med_07.jpg" alt="" width="418" height="33" border="0" ></a></td>
               </tr>
               <tr>
                 <td height="41" background="images/med_08.jpg"><table width="226" height="24" border="0" cellpadding="0" cellspacing="0">
