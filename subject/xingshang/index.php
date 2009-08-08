@@ -181,7 +181,7 @@ html,body{
 									<table cellpadding="2" cellspacing="0" border="0">
 									<tr align="center">
 									<? for($i=0;$i<count($video);$i++){?>
-										<td><a target="_blank" href="/show/list.php?id=<?php echo $video[0]->cid;?>"><img border=0 height="86" src="<? echo $video[$i]->photo_url;?>" ></a></td>
+										<td><a target="_blank" href="/show/video.php?id=<?php echo $video[0]->id;?>"><img border=0 height="86" src="<? echo $video[$i]->photo_url;?>" ></a></td>
 									<? }?>
 									</tr>
 									</table>
@@ -244,10 +244,10 @@ html,body{
                      </TR>
                </TBODY></TABLE></TD></TR> 
    		<? $news=$db->query('select n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我们的星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.last_edited_at desc limit 6');
-   			$photo=$db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我们的星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc,n.created_at desc limit 8');
+   			$photo=$db->query('select n.id,n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我们的星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc,n.created_at desc limit 8');
    		?>
      <TR>
-          <TD height=226 class=index_title>我们的星尚<a style="color:#F2E275;" target="_blank" style="margin-left:280px;" href="xslist.php?id=<?php echo $news[0]->cid;?>">更多</a></TD></TR>
+          <TD height=226 class=index_title>我们的星尚</TD></TR>
             <TABLE width="100%" border=0>
               <TBODY>
               	<tr>
@@ -255,12 +255,12 @@ html,body{
               	</tr>
               	<tr>
               		<? for($i=0; $i< 4;$i++){?>
-              			<td width="25%" height=100><a target="_blank" href="xslist.php?id=<?php echo $photo[$i]->cid; ?>"><img border=0 width=120 height=100 src="<? echo $photo[$i]->src;?>"></a></td>
+              			<td width="25%" height=100><a target="_blank" href="/show/show.php?id=<?php echo $photo[$i]->id; ?>"><img border=0 width=120 height=100 src="<? echo $photo[$i]->src;?>"></a></td>
               		<? }?>
               	</tr>
               	<tr>
               		<? for($i=4; $i< 8;$i++){?>
-              			<td width="25%" height=100><a target="_blank" href="xslist.php?id=<?php echo $photo[$i]->cid; ?>"><img border=0 width=120 height=100 src="<? echo $photo[$i]->src;?>"></a></td>
+              			<td width="25%" height=100><a target="_blank" href="/show/show.php?id=<?php echo $photo[$i]->id; ?>"><img border=0 width=120 height=100 src="<? echo $photo[$i]->src;?>"></a></td>
               		<? }?>
               	</tr>
               <TR>

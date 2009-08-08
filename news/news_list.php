@@ -25,7 +25,7 @@
 		}
 		else if($id!=""&&$type!="")
 		{
-			$sql="select n.id,n.title,n.created_at,c.name as cname from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type='news' and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.id=".id." inner join smg_subject s on c.subject_id=s.id and s.identity='".$type."' order by n.priority asc, n.created_at desc";
+			$sql="select n.id,n.title,n.created_at,n.category_id,n.platform,c.name as cname from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type='news' and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.id=".$id." inner join smg_subject s on c.subject_id=s.id and s.identity='".$type."' order by n.priority asc, n.created_at desc";
 		}
 		else 
 		{
