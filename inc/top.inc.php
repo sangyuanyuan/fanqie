@@ -73,7 +73,7 @@
 </div>
 
 <?php
- 	$sql = 'select * from smg_dept_list s order by priority desc';
+ 	$sql = 'select * from smg_dept_list s order by priority asc';
 	$record=$db -> query($sql);		
 ?>	
 <div id=dept>

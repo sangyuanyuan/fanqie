@@ -58,7 +58,7 @@
 			?>
 			<div class=content_c id=content_c1 <?php if($_REQUEST['type']<>91){echo 'style="display:none;"';  }?> >
 				<?php  for($i=0;$i<17;$i++){?>
-					<li>[<a href="/blog/?uid-<?php echo $record[$i]->uid?>" target=_blank><?php echo $record[$i]->spacename ?></a>] <a href="/blog/?uid-<?php echo $record[$i]->uid?>-action-viewspace-itemid-<?php echo $record[$i]->itemid?> " target=_blank><?php echo $record[$i]->subject ?></a></li>
+					<li>[<a href="/blog/?uid-<?php echo $record[$i]->uid?>" target=_blank><?php echo $record[$i]->spacename ?></a>] <a href="/blog/?uid-<?php echo $record[$i]->uid?>-action-viewspace-itemid-<?php echo $record[$i]->itemid?> " target=_blank  target=_blank title="<?php echo $record[$i]->subject ?>"><?php echo $record[$i]->subject ?></a></li>
 				<? }?>
 			</div>
 			<?php
@@ -67,7 +67,7 @@
 			?>
 			<div class=content_c id=content_c2 <?php if($_REQUEST['type']<>90){echo 'style="display:none;"';  }?> >
 				<?php  for($i=0;$i<17;$i++){?>
-					<li>[<a href="/blog/?uid-<?php echo $record[$i]->uid?>" target=_blank><?php echo $record[$i]->spacename ?></a>] <a href="/blog/?uid-<?php echo $record[$i]->uid?>-action-viewspace-itemid-<?php echo $record[$i]->itemid?> " target=_blank><?php echo $record[$i]->subject ?></a></li>
+					<li>[<a href="/blog/?uid-<?php echo $record[$i]->uid?>" target=_blank><?php echo $record[$i]->spacename ?></a>] <a href="/blog/?uid-<?php echo $record[$i]->uid?>-action-viewspace-itemid-<?php echo $record[$i]->itemid?> " target=_blank  target=_blank title="<?php echo $record[$i]->subject ?>"><?php echo $record[$i]->subject ?></a></li>
 				<? }?>
 			</div>
 			<?php
@@ -76,7 +76,7 @@
 			?>
 			<div class=content_c id=content_c3 <?php if($_REQUEST['type']<>92){echo 'style="display:none;"';  }?> >
 				<?php  for($i=0;$i<17;$i++){?>
-					<li>[<a href="/blog/?uid-<?php echo $record[$i]->uid?>" target=_blank><?php echo $record[$i]->spacename ?></a>] <a href="/blog/?uid-<?php echo $record[$i]->uid?>-action-viewspace-itemid-<?php echo $record[$i]->itemid?> " target=_blank><?php echo $record[$i]->subject ?></a></li>
+					<li>[<a href="/blog/?uid-<?php echo $record[$i]->uid?>" target=_blank><?php echo $record[$i]->spacename ?></a>] <a href="/blog/?uid-<?php echo $record[$i]->uid?>-action-viewspace-itemid-<?php echo $record[$i]->itemid?> " target=_blank title="<?php echo $record[$i]->subject ?>"><?php echo $record[$i]->subject ?></a></li>
 				<? }?>
 			</div>
 		
@@ -104,7 +104,7 @@
   			$sql = 'select i.id as img_id,i.src,i.title,i.url from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="HOT讨论区" and c.platform="zone" order by i.priority asc limit 2';
 				$record=$db -> query($sql);	
 			?>
-			<a href="<?php echo $record[0]->url?>" target=_blank><img src="<?php echo $record[0]->src?>" width="125" height="72" border=0 style="margin-left:8px;"></a><a href="<?php echo $record[0]->url?>" target=_blank><img src="<?php echo $record[1]->src?>" width="125" height="72" border=0 style="margin-left:8px;"></a>
+			<a href="<?php echo $record[0]->url?>" target=_blank><img src="<?php echo $record[0]->src?>" width="125" height="72" border=0 style="margin-left:8px;"></a><a href="<?php echo $record[1]->url?>" target=_blank><img src="<?php echo $record[1]->src?>" width="125" height="72" border=0 style="margin-left:8px;"></a>
 			<?php
 				$sql = 'select n.id as news_id,n.short_title, c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="讨论区" and c.platform="zone" order by n.priority asc limit 7';
 				$record=$db -> query($sql);
@@ -121,7 +121,7 @@
   			$sql = 'select i.id as img_id,i.src,i.title,i.url from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="观点视角" and c.platform="zone" order by i.priority asc limit 2';
 				$record=$db -> query($sql);	
 			?>
-			<a href="<?php echo $record[0]->url?>" target=_blank><img src="<?php echo $record[0]->src?>" width="125" height="72" border=0 style="margin-left:8px;"></a><a href="<?php echo $record[0]->url?>" target=_blank><img src="<?php echo $record[1]->src?>" width="125" height="72" border=0 style="margin-left:8px;"></a>
+			<a href="<?php echo $record[0]->url?>" target=_blank><img src="<?php echo $record[0]->src?>" width="125" height="72" border=0 style="margin-left:8px;"></a><a href="<?php echo $record[1]->url?>" target=_blank><img src="<?php echo $record[1]->src?>" width="125" height="72" border=0 style="margin-left:8px;"></a>
 
 			<?php
 				$sql = 'select n.id as news_id,n.short_title, c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="观点视角" and c.platform="zone" order by n.priority asc limit 7';

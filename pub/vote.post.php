@@ -64,6 +64,9 @@
 	
 	$sql = 'update smg_vote_item set vote_count = vote_count + 1 where id in (' . implode(',',$item_ids) .')';
 	$db->execute($sql);
+	$nick_name = $_COOKIE['smg_user_nickname'] ? $_COOKIE['smg_user_nickname'] : '游客';
+	$sql = "insert into smg_vote_user_list (nick_name,vote_id,vote_name,created_at) values ('$nick_name','{$vote->id}','{$vote->name}',NOW())";
+	$db->execute($sql);
 	alert('投票成功,感谢您的参与!');
 	redirect('/vote/vote_show.php?vote_id=' .$vote->id);
 ?>

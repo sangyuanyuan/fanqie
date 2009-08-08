@@ -111,7 +111,7 @@
 		<div id=t_c>
 			<div id=t_c_t>
 				<div id=title1>博客</div>
-				<div id=title2><div class=title2_l>观点视角</div><div class=title2_r><a target="_blank" href="/<?php echo $gdsj[0]->platform; ?>/news/news_list.php?id=<?php echo $gdsj[0]->cid;?>">more</a></div></div>
+				<div id=title2><div class=title2_l>观点视角</div><div class=title2_r><a target="_blank" href="/news/news_list.php?id=<?php echo $gdsj[0]->cid;?>">more</a></div></div>
 				<div id=t_c_t_t>
 					<div id=left>
 						<a target="_blank" href="<?php echo $gdsjimg[0]->url;?>"><div id=pic><img border=0 width=100 height=65 src="<?php echo $gdsjimg[0]->src;?>"></div><div style="width:100px; margin-top:5px; height:15px; text-align:center; text-decoration:none; color:#FF9900; overflow:hidden; cursor:pointer; float:left; display:inline;"><?php echo delhtml($gdsjimg[0]->title);?></div></a>
@@ -130,7 +130,7 @@
 			</div>
 			<div id=t_c_m>
 				<div id=title1>博客</div>
-				<div id=title2><div class=title2_l>分享生活</div><div class=title2_r><a target="_blank" href="/<?php echo $fxsh[0]->platform; ?>/news/news_list.php?id=<?php echo $fxsh[0]->cid;?>">more</a></div></div>
+				<div id=title2><div class=title2_l>分享生活</div><div class=title2_r><a target="_blank" href="/news/news_list.php?id=<?php echo $fxsh[0]->cid;?>">more</a></div></div>
 				<div id=t_c_m_t>
 					<div id=left><a target="_blank" href="<?php echo $fxshimg[0]->url;?>"><div id=pic><img border=0 width=100 height=65 src="<?php echo $fxshimg[0]->src;?>"></div><div style="width:100px; text-align:center; margin-top:5px; height:15px; overflow:hidden; text-decoration:none; color:#FF9900; cursor:pointer; float:left; display:inline;"><?php echo delhtml($fxshimg[0]->title);?></div></a></div>
 					<div id=right>
@@ -171,7 +171,7 @@
 				<div id=title><img src="/images/show/show_index_l_t.jpg"><img src="/images/zone/gg.jpg"></div>
 				<div id=content><?php echo get_fck_content($gg[0]->description);?></div>
 			</div>
-			<div id=chat><a target="_blank" href="/zone/chat_room.php"><img border=0 src="/images/zone/index_chat.jpg"></a></div>
+			<div id=chat><a target="_blank" href="/zone/chat_entry.php"><img border=0 src="/images/zone/index_chat.jpg"></a></div>
 			<div class=t_r_m>
 				<div class=t_r_m_top><img src="/images/zone/index_blog.jpg"></div>
 				<div class=t_r_m_title1 param=1 style="font-weight:bold; color:#FF4700; cursor:pointer;">最新博文</div><div param=2 class=t_r_m_title1 style="cursor:pointer;">最热博文</div>
