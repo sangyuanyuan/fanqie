@@ -69,5 +69,7 @@ $zsbd = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_n
 								分机：<span style="color:#EB6100; font-weight:bold;">5271</span>　邮编：200041<br>
 								
 							</div>
+							<div class=title>相关链接</div>
+							<a style="margin-top:10px; float:left; display:inline;" target="_blank" href="http://www.xinhuanet.com/zgjx/"><img border=0 src="zgjxsxjy.jpg"></a>
 						</div>
 					</div>
