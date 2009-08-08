@@ -44,12 +44,12 @@
 			?>
 			
 			<?php if($count==1){?>
-				<a href="/show/show.php?id=<?php echo $record_ad[0]->img_id?>" target=_blank><img src="<?php echo $record_ad[0]->src?>" width=286px; height=187px; border=0></a>
+				<a href="/show/show.php?id=<?php echo $record_ad[0]->img_id?>" target=_blank><img src="<?php echo $record_ad[0]->src?>" width=289px; height=187px; border=0></a>
 			<? }else{?>
 				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
 				<div id="focus_02"></div> 
 				<script type="text/javascript"> 
-				var pic_width1=287; //图片宽度
+				var pic_width1=290; //图片宽度
 				var pic_height1=190; //图片高度
 				var pics="<?php echo implode(',',$picsurl);?>";
 				var mylinks="<?php echo implode(',',$picslink);?>";
