@@ -12,6 +12,7 @@
 	}else{
 		$sql = 'select id,title,nick_name,description from smg_question where id='.$id.' order by create_time';
 	}
+	$records = $db->query($sql);
 	$number = isset($_POST['number'])?$_POST['number']:'1';
 	$point = isset($_POST['point'])?$_POST['point']:'0';
 	if(isset($_POST['lave'])){	
@@ -56,7 +57,7 @@
 		<div id="question_title"><?php echo $records[0]->title; ?>(10分)</div>
 		
 		<?php
-			$sql = 'select id,name,attribute from smg_question_item where question_id='.$id;
+			$sql = 'select id,name,attribute from smg_question_item where question_id='.$records[0]->id;
 			$items = $db->query($sql);
 			$count = count($items);
 			$answer = '';

@@ -8,7 +8,8 @@
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta http-equiv=Content-Language content=zh-CN>
 <title>传媒集团内网-SITV</title>
-<?php 
+<?php
+	use_jquery();
 	js_include_once_tag('total');
 ?>
 <script language="javascript" src="sitv.js"></script>
@@ -195,13 +196,18 @@ ul {
         </tr>
         <tr>
           <td>
-          	<? //$report=getcategoryreport();?>
+          	<?php 
+				$db = get_db();
+				$sql = 'select sum(a.click_count) as click_count, b.name from smg_news a left join smg_category_dept b on a.dept_category_id=b.id where a.dept_id=3 and a.dept_category_id >0  group by a.dept_category_id order by click_count desc';
+				$record = $db->query($sql);
+				$count = count($record);
+			?>
           	<ul>
-          		<? //for($i=0;$i< $report->itemcount;$i++){?>
-            <div><div style="float:left; display:inline;"><? //echo $report->items[$i]->name;?></div><div style="float:right; display:inline;"><? //echo $report->items[$i]->clickcount;?></div></div><br>
-            <? //}?>
+          		<? for($i=0;$i<$count;$i++){?>
+            <div><div style="float:left; display:inline;"><? echo $record[$i]->name;?></div><div style="float:right; display:inline;"><? echo $record[$i]->click_count;?></div></div><br>
+            <? }?>
           </ul><br>
-          <span style="margin-left:20px;"><input type="text" name="search" id="search" />　<button style="width:63px; height:23px; border:none; background:url('images/search.gif')" OnClick="searchnews('search')"></button></span>
+          <span style="margin-left:20px;"><input type="text" name="search" id="search" />　<button style="width:63px; height:23px; border:none; background:url('images/search.gif')" id="dept_search"></button></span>
           <p align="right">&nbsp;</p></td>
         </tr>
     </table></td>
@@ -464,3 +470,13 @@ ul {
 <noscript><img alt="" src="http://172.27.203.80:8080/pphlogger/pphlogger.php?id=yang&st=img"></noscript>
 </body>
 </html>
+
+<script type="text/javascript">     
+
+$(function(){
+		
+		$("#dept_search").click(function(){
+			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
+		})
+	});
+</script>

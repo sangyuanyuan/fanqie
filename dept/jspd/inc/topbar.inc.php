@@ -26,8 +26,8 @@
 
 <table width="100" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td bgcolor="#00A9EE" class="addr">&nbsp;&nbsp;<a target="_blank" href="http://172.27.203.81:8080/"><span class="add">http://172.27.203.81:8080/</span></a></td>
-        <td width="501" height="19" align="right" bgcolor="#00A9EE" class="ss"><? echo strftime('%Y年%m月%d日') ?> </td>
+        <td bgcolor="#00A9EE" class="addr">&nbsp;&nbsp;<a target="_blank" href="http://172.27.203.83:8080/"><span class="add">http://172.27.203.83:8080/</span></a></td>
+        <td width="501" height="19" align="right" bgcolor="#00A9EE" class="ss"><? echo strftime("%Y年").strftime("%m月").strftime("%d日") ?> </td>
         <td width="21" bgcolor="#00A9EE">&nbsp;</td>
       </tr>
       <tr>

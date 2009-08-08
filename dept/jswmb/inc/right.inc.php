@@ -19,10 +19,13 @@
 			<div class=content style="text-align:center;"><a target="_blank" href="/jswmb/newslist.php?id=<?php echo dept_category_id_by_name('绿番茄','精神文明办','news');?>"><img width=100 height=85 border=0 src="/images/pic/greentomato.gif"></a></div>
 			<div class=content>
 				<div id=tj>访问统计</div>
-				<? //$report=getcategoryreport();
-					// for($i=0;$i< 4;$i++){?>
-					<div class=content style="width:200px; height:118px; line-height:20px; padding-left:16px; background:#FF3366; float:left; display:inline; "><div style="width:100px; height:20px; margin-top:10px; float:left; display:inline; "><? echo $report->items[$i]->name;?></div><div style="width:50px; height:20px; margin-top:10px; float:left; display:inline; margin-left:40px; text-align:right;"><? echo $report->items[$i]->clickcount;?></div></div>
-				<?// }?>
+				<?php
+				 	$db = get_db();
+					$sql = 'select sum(a.click_count) as click_count, b.name from smg_news a left join smg_category_dept b on a.dept_category_id=b.id where a.dept_id=53 and a.dept_category_id >0  group by a.dept_category_id order by click_count desc';
+					$record = $db->query($sql);
+					for($i=0;$i<4;$i++){?>
+					<div class=content style="width:200px; line-height:20px; padding-left:16px; background:#FF3366; float:left; display:inline; "><div style="width:100px; height:20px; margin-top:10px; float:left; display:inline; "><? echo $record[$i]->name;?></div><div style="width:50px; height:20px; margin-top:10px; float:left; display:inline; margin-left:40px; text-align:right;"><? echo $record[$i]->click_count;?></div></div>
+				<? }?>
 			</div>
 			<div class=title2><img src="images/sj2.jpg">文明链接<img style="margin-left:120px;" src="images/right_titlepic.jpg">
 				<div style="width:216px; height:15px; margin-top:10px; margin-left:-17px; padding-left:10px;  border-bottom:1px dashed #ffffff; float:left; display:inline;">

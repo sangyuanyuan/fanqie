@@ -56,10 +56,14 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 								</div>
               </div>
               <div  class="count">
-              	 <? //$report=getcategoryreport();
-              	  //for($i=0;$i< $report->itemcount;$i++){?>
-		            	<div><div style="margin-left:10px; float:left; display:inline;"><? echo $report->items[$i]->name;?></div><div style="margin-right:10px; float:right; display:inline;"><? echo $report->items[$i]->clickcount;?></div></div><br>
-		            <? //}?>
+              	<?php 
+					$db = get_db();
+					$sql = 'select sum(a.click_count) as click_count, b.name from smg_news a left join smg_category_dept b on a.dept_category_id=b.id where a.dept_id=3 and a.dept_category_id >0  group by a.dept_category_id order by click_count desc';
+					$record = $db->query($sql);
+					$count = count($record);
+              	    for($i=0;$i<5;$i++){?>
+		            	<div><div style="margin-left:10px; float:left; display:inline;"><? echo $record[$i]->name;?></div><div style="margin-right:10px; float:right; display:inline;"><? echo $record[$i]->click_count;?></div></div><br>
+		            <? }?>
              </div> 
           </DIV>
         	
