@@ -5,6 +5,7 @@
 	$record = $db->query($sql);
 	for($i=0;$i<$record;$i++){
 		$sql = 'update smg_news set dept_category_id='.$record[$i]->dept_category_id.' where dept_id='.$record[$i]->dept_id.' and title="'.$record[$i]->title.'" and created_at='.$record[$i]->created_at;
+		echo $sql;
 		$db->execute($sql);
 	}
 ?>
