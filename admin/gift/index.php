@@ -22,17 +22,16 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td>礼物商店名称</td><td width="200">封面图片</td><td width="120">操作</td>
+			<td>礼物商店名称</td><td width="120">操作</td>
 		</tr>
 		<?php
 			$db = get_db();
 			$sql = "select * from smg_gift_category order by id desc";
-			$record = $db->paginate($sql);
+			$record = $db->paginate($sql,20);
 			for($i=0;$i<count($record);$i++){
 		?>
 				<tr class=tr3 id="<?php echo $record[$i]->id;?>">
 					<td><?php echo $record[$i]->name;?></td>
-					<td><img width=50 heigth=50 src="<?php echo $record[$i]->img_src;?>" border=0></td>
 					<td>
 						<a href="gift_category_edit.php?category_id=<?php echo $record[$i]->id;?>">编辑</a>
 						<a href="gift_list.php?category_id=<?php echo $record[$i]->id;?>">礼物管理</a>
