@@ -73,7 +73,7 @@
 			<? }?>
  	  	</div>
 		<div class=l_m>
-			<div class=title><div class=left>用户排行榜</div></div>
+			<div class=title><div class=left1>用户排行榜|</div><div class=left1 name="dept" style="color:#999999">部门排行榜</div></div>
 			<?php
 				$sql = 'SELECT t1.publisher,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.is_adopt=1 and t1.publisher!="admin" and t2.platform="show" group by t1.publisher limit 5';
 				$records = $db->query($sql);
@@ -84,6 +84,21 @@
 					<div class=left><? echo $i+1;?></div>
 					<div class=right>
 						<div class=top><a target="_blank" href="list.php?publisher=<?php echo urlencode($records[$i]->publisher);?>"><?php echo $records[$i]->publisher; ?></a></div>
+						<div class=bottom>发布了<?php echo $records[$i]->num; ?>张图片！</div>
+					</div>
+				</div>
+			<? }?>
+			<?php
+				$db = get_db();
+				$sql = 'SELECT t3.name,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id join smg_dept t3 on t1.dept_id=t3.id where t1.is_adopt=1 and t2.platform="show" group by t1.dept_id order by num desc limit 5';
+				$records = $db->query($sql);
+				$count = count($records);
+				for($i=0;$i<$count;$i++){
+			?>
+				<div class="content dept change" style="display:none;" <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
+					<div class=left><? echo $i+1;?></div>
+					<div class=right>
+						<div class=top><?php echo $records[$i]->name;?></div>
 						<div class=bottom>发布了<?php echo $records[$i]->num; ?>张图片！</div>
 					</div>
 				</div>
@@ -267,6 +282,13 @@
 					alert(data);
 				}
 			});
+		})
+		
+		$(".left1").hover(function(){
+			$(".left1").css('color','#999999');
+			$(this).css('color','#000000');
+			$(".change").hide();
+			$("."+$(this).attr('name')).show();
 		})
 		
 		$("[class*=tag]").click(function(){
