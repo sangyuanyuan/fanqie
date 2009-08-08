@@ -310,7 +310,7 @@ piao2.SetDirection(1,1)
 $(function(){
 		
 		$("#dept_search").click(function(){
-			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
+			window.location.href='/search/?key='+encodeURI($("#textfield").val())+'&search_type=smg_news';
 		})
 	});
 </script>

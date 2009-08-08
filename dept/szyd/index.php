@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css.css" type="text/css" />
 <title>文广移动</title>
 <?php 
+	use_jquery();
 	js_include_once_tag('total');
 ?>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
@@ -38,7 +39,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
             		<div style="width:200px; height:20px; margin-left:10px; float:left; display:inline;"><img width=14 height=14 src="pic/icon.jpg"><a style="color:green; font-size:12px;" target="_blank" href="http://222.68.17.238:5208/wenguang/">实时交通体验网站</a></div>
               </div>
               <div  class="rearch">
-              	<input name="search" id="search" type="text" style="margin-top:10px;"> <img OnClick="searchnews('search')" style="margin-top:2px; display:inline;" src="pic/searchbutton.gif">
+              	<input name="search" id="search" type="text" style="margin-top:10px;"> <img OnClick="searchnews('search')" id="dept_search" style="margin-top:2px; display:inline;" src="pic/searchbutton.gif">
               </div>
               <div  class="link">
               	<?php
@@ -173,3 +174,13 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 </div>
 </body>
 </html>
+
+<script type="text/javascript">     
+
+$(function(){
+		
+		$("#dept_search").click(function(){
+			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
+		})
+	});
+</script>

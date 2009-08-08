@@ -12,7 +12,7 @@
 					show_video_player(216,230,$records[0]->photo_url,$records[0]->video_url);
 				?>	
 		</div>
-		<div id=search><div id=content><input type="text" name="textfield" id="search" /><input type="button" id=dept_search  value="搜索"></div></div>
+		<div id=search><div id=content><input type="text" name="textfield" id="textfield" /><input type="button" id="dept_search" OnClick="searchnews('textfield')" value="搜索"></div></div>
 			<div class=title1><img src="images/sj2.jpg" style="margin-left:16px; "> 关于我们</div>
 			<div class=content style="width:200px; padding-left:16px; background:#FF3366;"><a style="margin-top:10px;" target="_blank" href="about_us.php">・关于我们</a></div>
 			<div class=title1><img src="images/sj2.jpg" style="margin-left:16px; "> 绿番茄</div>
