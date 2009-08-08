@@ -336,10 +336,10 @@ ul {
 				$record = $db->query($sql);
 				$count = count($record);
 		  		for($i=0;$i<$count;$i++){?>
-			  <div>
-				  <div style="color:white; float:left; display:inline;">&middot;<? echo $record[$i]->name;?></div>
-				  <div style="color:white; float:right; display:inline;"><? echo $record[$i]->click_count;?></div>
-			  </div><br><? }?>
+			  <div style="width:200px; float:left; display:inlne">
+				  <div style="color:white; float:left; display:inline;">&middot;<?php echo $record[$i]->name;?></div>
+				  <div style="color:white; float:right; display:inline;"><?php echo $record[$i]->click_count;?></div>
+			  </div><? }?>
 		  </td>
         </tr>
     </table></td>
