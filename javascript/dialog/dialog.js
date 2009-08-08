@@ -1,6 +1,22 @@
 /**
  * @author sauger
  */
+function str_length(str){
+	//return   str.replace(/[^\x00-\xff]/g,"**").length;
+	 var i;   
+    var len;   
+    len = 0;   
+    for (i=0;i<str.length;i++)   
+    {   
+        if (str.charCodeAt >255) len+=2; else len++;   
+    }   
+    return len;  
+}
+
+ function remove_hmtl_tag(str) 
+{ 
+ 	return str.replace(/<\/?.+?>/g,"");//去掉所有的html标记 
+}
 $(function(){
 	display_fqbq('div_q_emotion','fck_question_content');
 	display_fqbq('comment_emotion','fck_comment_content');
@@ -17,7 +33,8 @@ $(function(){
 			alert('请输入问题内容!');
 			return;
 		};
-		if(question.length > 200){
+		
+		if(str_length(remove_hmtl_tag(question)) > 200){
 			alert('提问内容请不要超过100个汉字');
 			return false;
 		}
@@ -39,7 +56,7 @@ $(function(){
 			alert('请输入评论内容!');
 			return;
 		}else{
-			if(content.length > 200){
+			if(str_length(remove_hmtl_tag(content)) > 200){
 				alert('评论内容请不要超过100个汉字');
 				return false;
 			}

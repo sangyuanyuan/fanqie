@@ -9,6 +9,7 @@
 	}
 	if($comment->id <= 0){
 		$comment->created_at = date("Y-m-d H:i:s");
+		$comment->ip = $_SERVER['REMOTE_ADDR'];
 	}
 	if($comment->save()){
 		echo $comment->id;
