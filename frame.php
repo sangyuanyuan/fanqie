@@ -236,6 +236,8 @@
 		$category_id = dept_category_id_by_name($category_name,$dept_name,$type);
 		if($table_name!='smg_link'){
 			$sql = 'select * from '.$table_name.' where is_dept_adopt=1 and dept_category_id='.$category_id.' and dept_id='.$dept_id.' order by dept_priority,created_at desc';
+		}elseif($table_name!='smg_news'){
+			$sql = 'select title,short_title,id,photo_src,description from smg_news where category_id='.$category_id.' order by priority';
 		}else{
 			$sql = 'select * from '.$table_name.' where category_id='.$category_id.' order by priority';
 		}
