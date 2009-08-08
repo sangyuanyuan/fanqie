@@ -234,7 +234,6 @@
 		$db = get_db();		
 		if($table_name=='smg_link'){
 			$sql = 'select t1.* from '.$table_name.' t1 left join smg_category_dept t2 on t1.category_id=t2.id left join smg_dept t3 on t2.dept_id=t3.id where t2.name="'.$category_name.'" and t3.name="'.$dept_name.'" order by t1.priority';
-			$sql = 'select * from '.$table_name.' where category_id='.$category_id.' order by priority';
 		}elseif($table_name=='smg_news'){
 			$sql = 'select t1.title,t1.short_title,t1.id,t1.photo_src,t1.created_at,t1.description from '.$table_name.' t1 left join smg_category_dept t2 on t1.dept_category_id=t2.id left join smg_dept t3 on t2.dept_id=t3.id where t2.name="'.$category_name.'" and t3.name="'.$dept_name.'" order by t1.dept_priority,t1.created_at desc';
 		}else{
