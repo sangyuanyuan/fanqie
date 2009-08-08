@@ -15,13 +15,16 @@
 	$records = $db->query($sql);
 	$number = isset($_POST['number'])?$_POST['number']:'1';
 	$point = isset($_POST['point'])?$_POST['point']:'0';
+	$is_right = isset($_POST['is_right'])?$_POST['is_right']:'2';
+	$answer = isset($_POST['answer'])?$_POST['answer']:'';
+	
 	if(isset($_POST['lave'])){	
 		$lave = $_POST['lave'];
 		$q_count = $_POST['count']+1;
 	}else{
 		$sql = 'select count(*) as count from smg_question where is_adopt=1 order by create_time';
 		$record = $db->query($sql);
-		$lave = $record[0]->count;
+		$lave = $record[0]->count-1;
 		$q_count = 1;
 	}
 ?>
@@ -48,7 +51,15 @@
 <div id=ibody>
 
 	<div id="time">30</div>
-	
+	<div id="right_answer">
+		<?php
+			if($is_right==1){
+				echo "恭喜你答对了！";
+			}elseif($is_right==0){
+				echo "很遗憾，你答错了，正确的答案是：".$answer."！";
+			}
+		?>
+	</div>
 	<div id="point">
 		<?php echo $point;?>
 	</div>
@@ -67,7 +78,10 @@
 			<input class=checkbox type="checkbox" name="<?php echo $items[$i]->id;?>">
 			<?php 
 				echo num_to_ABC($i).$items[$i]->name;
-				if($items[$i]->attribute==1)$answer = $answer.$items[$i]->id;
+				if($items[$i]->attribute==1){
+					$answer = $answer.$items[$i]->id;
+					$answer_name = $answer_name.$items[$i]->name;
+				}
 			?>
 		</div>
 		<?php
@@ -93,6 +107,8 @@
 <input type="hidden" name="number" value="<?php echo $number+1;?>">
 <input type="hidden" name="lave" value="<?php echo $lave-1;?>">
 <input type="hidden" name="first_id" value="<?php echo $first_id;?>">
+<input type="hidden" name="answer" value="<?php echo $answer_name;?>">
+<input type="hidden" name="is_right" id="is_right" value="0">
 <input type="hidden" name="point" id="r_point" value="<?php echo $point;?>">
 <input type="hidden" name="record[nick_name]" id="nick_name">
 <input type="hidden" name="record[phone]" id="phone">
@@ -119,6 +135,7 @@
 		});
 		if (answer == r_answer){
 			$("#r_point").attr('value', parseInt($("#r_point").attr('value'))+10);
+			$("#is_right").attr('value','1');
 		}
 		if(lave==0){
 			tb_show('请填入您的个人信息','info.php?height=300&width=400&modal=true');

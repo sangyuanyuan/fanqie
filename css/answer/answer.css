@@ -8,7 +8,8 @@ body {
 
 #a_top{width:636px; margin:0 auto; text-align:center; overflow:hidden; }
 #time{width:50px; height:45px; margin-top:20px; margin-left:150px; line-height:15px; font-size:15px; padding-top:22px; text-align:center; background:url(/images/answer/bg3.jpg) no-repeat; float:left; display:inline;}
-#point{width:76px; height:35px; margin-top:40px; margin-left:500px; padding-top:10px; padding-left:40px; line-height:15px; background:url(/images/answer/bg2.jpg) no-repeat; float:left; display:inline;}
+#right_answer{width:450px; height:15px;  margin-top:30px; margin-left:50px; font-size:15px; line-height:20px; color:#FF0000; font-weight:bolder; float:left; display:inline;}
+#point{width:76px; height:35px; margin-top:40px; padding-top:10px; padding-left:40px; line-height:15px; background:url(/images/answer/bg2.jpg) no-repeat; float:left; display:inline;}
 
 #middle{width:636px; margin-left:150px; padding-bottom:20px; border:2px solid #F2F2F2; float:left; display:inline; }
 #middle #num{font-size:16px; padding-top:20px; padding-left:15px; font-weight:bold; color:#D5273E; line-height:20px; float:left; display:inline;}
