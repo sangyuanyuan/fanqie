@@ -94,7 +94,7 @@
 			</div>
 			
 			<?php 
-			if($record[0]->vote_id!=""||$record[0]->vote_id!=0){?>
+			if($record[0]->vote_id!=""&&$record[0]->vote_id!=0){?>
 				
 				<div class=vote>
 				<?php 

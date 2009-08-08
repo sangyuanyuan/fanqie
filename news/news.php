@@ -93,7 +93,7 @@
 				<?php echo get_fck_content($record[0]->content);?>
 			</div>
 			<?php 
-			if($record[0]->vote_id!=""||$record[0]->vote_id!=0){?>	
+			if($record[0]->vote_id!=""&&$record[0]->vote_id!=0){?>	
 				<div class=vote>
 				<?php 
 						$vote = new smg_vote_class();
