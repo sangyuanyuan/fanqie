@@ -38,6 +38,7 @@
 	$db = get_db();
 	$vote_record = new table_class('smg_vote_item_record');	
 	$judged = $limit ? false : true;
+	$nick_name = $_COOKIE['smg_user_nickname'] ? $_COOKIE['smg_user_nickname'] : '游客';
 	foreach ($_POST['vote_class'] as $k => $v) {
 		if(!$judged){		
 			$sql = "select count(distinct created_at) from smg_vote_item_record where vote_id={$k} " . ' and '.$limit;
@@ -57,6 +58,7 @@
 			$vote_record->ip = $_SERVER['REMOTE_ADDR'];
 			$vote_record->user_id = $_COOKIE['smg_userid'];
 			$vote_record->created_at = now();
+			$vote_record->nick_name = $nick_name;
 			$vote_record->save();	
 			$item_ids[] = $value;			
 		}
@@ -64,7 +66,6 @@
 	
 	$sql = 'update smg_vote_item set vote_count = vote_count + 1 where id in (' . implode(',',$item_ids) .')';
 	$db->execute($sql);
-	$nick_name = $_COOKIE['smg_user_nickname'] ? $_COOKIE['smg_user_nickname'] : '游客';
 	$sql = "insert into smg_vote_user_list (nick_name,vote_id,vote_name,created_at) values ('$nick_name','{$vote->id}','{$vote->name}',NOW())";
 	$db->execute($sql);
 	alert('投票成功,感谢您的参与!');
