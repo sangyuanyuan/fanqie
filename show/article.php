@@ -24,7 +24,7 @@
  <div id=ibody_left>
  	  <div class=l>
  	  		<?php $category_id = category_id_by_name('每日之星'); ?>
-			<div class=title><div name="mrzx" class=left1>每日之星排行榜|</div><div name="bm" class=left1 style="color:#999999">部门排行榜</div><div class="more"><a target="_blank" href="list.php?id=<?php echo $category_id; ?>&type=news">更多>></a></div></div>
+			<div class=title1><div name="mrzx" class=left1>每日之星排行榜|</div><div name="bm" class=left1 style="color:#999999">部门排行榜</div><div class="more"><a target="_blank" href="list.php?id=<?php echo $category_id; ?>&type=news">更多>></a></div></div>
 			<?php
 				$db = get_db();
 				$sql = 'select id,short_title,flower,photo_src from smg_news where is_adopt=1 and category_id='.$category_id.' and photo_src!="" order by flower desc limit 5';

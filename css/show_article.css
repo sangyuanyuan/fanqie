@@ -9,9 +9,13 @@ a{text-decoration:none;}
 #ibody_right{width:680px;  background:url('/images/show/star_r.jpg') no-repeat; float:right; display:inline;}
 
 .l{width:290px; margin-top:11px; border:1px solid #dfdfdf; float:left; display:inline;}
-.l .title{ height:20px; padding:10px; color:#141414; font-weight:bold; font-size:15px; border-bottom:1px solid #DFDFDF; float:left; display:inline;}
-.l .title .left1{ cursor:pointer; float:left; display:inline; line-height:15px;} 
-.l .title .left2{cursor:pointer; color:#999999; float:left; display:inline; line-height:15px;} 
+.l .title1{ height:20px; padding:10px; color:#141414; font-weight:bold; font-size:15px; border-bottom:1px solid #DFDFDF; float:left; display:inline;}
+.l .title1 .left1{ cursor:pointer; float:left; display:inline; line-height:15px;} 
+.l .title1 .left2{cursor:pointer; color:#999999; float:left; display:inline; line-height:15px;} 
+.l .title1 .more{width:50px; margin-top:2px; font-size:12px; float:right; display:inline;}
+.l .title1 .more a{color:#FF6600; line-height:15px;}
+.l .title{width:270px; height:20px; padding:10px; color:#141414; font-weight:bold; font-size:15px; border-bottom:1px solid #DFDFDF; float:left; display:inline;}
+.l .title .left{ cursor:pointer; float:left; display:inline; line-height:15px;} 
 .l .title .more{width:50px; margin-top:2px; font-size:12px; float:right; display:inline;}
 .l .title .more a{color:#FF6600; line-height:15px;}
 .l .content{width:270px; margin-left:10px; padding-bottom:10px; border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
