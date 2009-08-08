@@ -37,7 +37,7 @@
 					<div class=middle><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_src?>"></a></div>
 					<div class=right>
 						<div class=top><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->short_title;?></a></div>
-						<div class=bottom><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>">被投了<?php echo $records[$i]->flower ?>朵</a></div>
+						<div class=bottom><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>">共得到<?php echo $records[$i]->flower ?>束鲜花</a></div>
 					</div>
 				</div>
 			<? }?>
@@ -52,7 +52,7 @@
 					<div class=left><? echo $i+1;?></div>
 					<div class=right>
 						<div class=top><?php echo get_dept_info($records[$i]->dept_id)->name;?></div>
-						<div class=bottom>发表了<?php echo $records[$i]->count;?>篇文章</div>
+						<div class=bottom>共推荐<?php echo $records[$i]->count;?>位明星</div>
 					</div>
 				</div>
 			<? }?>
