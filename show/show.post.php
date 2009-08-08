@@ -51,6 +51,6 @@
 		$video->created_at = date("Y-m-d H:i:s");
 		$video->save();
 	}
-	alert("上传成功！请等待管理员审批！");
+	alert("上传成功！谢谢！");
 	redirect($_SERVER['HTTP_REFERER']);
 ?>
