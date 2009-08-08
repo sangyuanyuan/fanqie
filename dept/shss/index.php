@@ -96,9 +96,13 @@ a{
                 </table></td>
               <td width="31">&nbsp;</td>
               <td width="222" height="285" valign="top" background="images/bg2.gif" style=line-height:140%><table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
-              	<? $news = show_content('smg_news','news','生活时尚频道','重要通知',1);?>
+              	<?php 
+					$news = show_content('smg_news','news','生活时尚频道','重要通知',1);
+					$news2 = new table_class('smg_news');
+					$news2->find($news[0]->id);
+				?>
                 <tr>
-                  <td><span style="text-indent:24px;"><? echo strip_tags($news[0]->content);?></span></td>
+                  <td><span style="text-indent:24px;"><? echo strip_tags($news2->content);?></span></td>
                 </tr>
               </table></td>
               <td width="12">&nbsp;</td>
