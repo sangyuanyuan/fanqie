@@ -6,8 +6,12 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -番茄团购列表</title>
 	<?php css_include_tag('smg','top','bottom');
-		use_jquery(); ?>
-
+		use_jquery();
+		js_include_once_tag('total');
+	?>
+<script>
+	total("番茄团购","server");
+</script>
 </head>
 <body>
 <? 

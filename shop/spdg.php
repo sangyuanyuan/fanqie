@@ -18,7 +18,10 @@
 	<title>SMG网店 -<? echo $tg[0]->title;?></title>
 	<?php css_include_tag('smg','top','bottom');
 		use_jquery();
-		js_include_once_tag('spdg'); ?>
+		js_include_once_tag('spdg','total'); ?>
+<script>
+	total("个人网店","server");
+</script>
 </head>
 <body>
 <? require_once('../inc/top.inc.html');	?>
