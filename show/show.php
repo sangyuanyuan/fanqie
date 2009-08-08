@@ -32,6 +32,7 @@
  	  	<div id=l_t>
 	 	  	<a target="_blank" href="show_sub.php?type=image"><img border=0 src="/images/show/show_l_t.jpg" width="290"></a>
 			<?php 
+				$db = get_db();
 				$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.priority=0 and i.is_adopt=1 and c.name="番茄广告" and c.platform="show" order by i.priority asc,i.created_at desc limit 4';
 				$record_ad=$db -> query($sql);
 				$count = count($record_ad);
