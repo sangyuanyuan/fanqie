@@ -27,7 +27,7 @@
 		}else{
 			$sql = 'select id,title,short_title,created_at from smg_news where category_id='.$id.' and is_adopt=1 order by priority,created_at desc';
 		}
-		$programlist = $db->paginate($sql,15);
+		$programlist = $db->paginate($sql,20);
 	?>
 	<div id=subject_body>
 		<div id=subject_logo></div>
