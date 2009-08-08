@@ -15,7 +15,7 @@
 		$lave = $_POST['lave'];
 		$q_count = $_POST['count']+1;
 	}else{
-		$sql = 'select count(*) as count from smg_question where is_adopt=1 and id>'.$id.' order by create_time';
+		$sql = 'select count(*) as count from smg_question where is_adopt=1 order by create_time';
 		$record = $db->query($sql);
 		$lave = $record[0]->count;
 		$q_count = 1;
