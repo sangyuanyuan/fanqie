@@ -99,10 +99,11 @@
 <?php
    }
    ?>
-<div style="width:460px; height:200px;margin-top:10px; text-align:left;  float:left; display:inline;">
-	<div><label for="nick_name">昵称:</label><input type="text" id="nick_name" value="<?php echo $_COOKIE['smg_user_nickname'];?>"> <button id="submit">发表评论</button></div>
-	<?php show_fckeditor('fck_content','Title',false,100,'',450);?>	
+<div style="width:600px; height:200px;margin-top:10px; text-align:left;  float:left; display:inline;">
+	<div><label for="nick_name">昵称:</label><input type="text" id="nick_name" value="<?php echo $_COOKIE['smg_user_nickname'];?>">
+	<?php show_fckeditor('fck_content','Title',false,100,'',600);?>	
 	<div id="emotion"></div>
+	<div style="width:600px;text-align:center;margin-top:5px;"> <button id="submit">发表评论</button></div></div>
 </div>
 <?php
 $db = get_db();
@@ -114,7 +115,7 @@ for($i=0;$i<count($comments);$i++){?>
 	　　<?php echo $comments[$i]->comment;?>
 	</div>
 	<? }?>
-	<div style="width:570px; padding:15px; margin-top:3px; color:#333;  text-align:left; background:#efefef; float:left; display:inline;">
+	<div style="width:570px; padding:15px; margin-top:3px; color:#333;  text-align:left;  float:left; display:inline;">
 	<?php echo paginate();?>
 	</div>
 </div>
