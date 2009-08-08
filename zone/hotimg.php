@@ -11,9 +11,13 @@
 	<? 	
 		css_include_tag('zone_hotimg','top','bottom');
 		use_jquery();
+		js_include_tag('total.js');
   ?>
 	
 </head>
+<script>
+	total("热图","zone");
+</script>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>

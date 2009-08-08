@@ -93,40 +93,40 @@
 	
 	<div id="center">
 		<div id="flash">
-			<?php
-      			$records = show_content('smg_images','picture','电视新闻中心','flash','4');
-				$count = count($records);
-      			for ($i=0;$i<$count;$i++)
-				{
-					$picsurl[]=$records[$i]->src;
-					$picslink[]=$records[$i]->url;
+			<?php 
+				$record = show_content('smg_images','picture','电视新闻中心','flash','4');
+				$count = count($record);
+				alert($count);
+				for($i=0;$i<$count;$i++){
+					$picsurl[]=$record[$i]->src;
+					$picslink[]='/show/show.php?id='.$record[$i]->id;
+					$picstext[]=$record[$i]->title;
 				}
-     		 ?>
-              
-    	<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-				<!-- 图片播放器开始 -->
-				<div id="focus_01"></div> 
-				<script type="text/javascript"> 
-				var pic_width=443; //图片宽度
-				var pic_height=200; //图片高度
+			?>
+			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+			<div id="focus_02"></div> 
+			<script type="text/javascript"> 
+				var pic_width=443; 
+				var pic_height=200;
 				var pics="<?php echo implode(',',$picsurl);?>";
 				var mylinks="<?php echo implode(',',$picslink);?>";
- 
-				var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "443", "200", "6","#FFFFFF");
+				var texts="<?php echo implode(',',$picstext);?>";
+			
+				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", pic_width, pic_height, "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');
 				picflash.addVariable("picurl",pics);
-				picflash.addVariable("piclink",mylinks);				
+				picflash.addVariable("piclink",mylinks);
+				picflash.addVariable("pictext",texts);				
 				picflash.addVariable("pictime","5");
-				picflash.addVariable("borderwidth","443");
-				picflash.addVariable("borderheight","200");
+				picflash.addVariable("borderwidth",pic_width);
+				picflash.addVariable("borderheight",pic_height);
 				picflash.addVariable("borderw","false");
 				picflash.addVariable("buttondisplay","true");
-				picflash.addVariable("textheight","0");				
+				picflash.addVariable("textheight","15");				
 				picflash.addVariable("pic_width",pic_width);
 				picflash.addVariable("pic_height",pic_height);
-				
-				picflash.write("focus_01");				
-				</script> 	
+				picflash.write("focus_02");				
+			</script> 
 		</div>
 		<div class="normaltitle2">
 			<?php
@@ -283,7 +283,7 @@
 		</div>
 		<div class="normaltitle3">
 			<?php
-				$records = show_content('smg_news','news','电视新闻中心','资料交流','10');
+				$records = show_content('smg_news','news','电视新闻中心','资料交流','8');
 				$count = count($records);
       		?>
 			资料交流

@@ -504,9 +504,20 @@ function show_img($state,$width,$height)
 	if($state==1){echo '<img src="/images/index/pic.gif" width='.$width.'  height='.$height.' >';}
 }
 
+function show_img2($state)
+{
+	if($state==1){echo '<img src="/images/index/pic2.gif" width=16  height=16 >';}
+}
+
+
 function show_video($state,$width,$height)
 {
 	if($state==1){echo '<img src="/images/index/video.gif" width='.$width.'  height='.$height.' >';}
+}
+
+function show_video2($state)
+{
+	if($state==1){echo '<img src="/images/index/video2.gif" width=16  height=16 >';}
 }
 
 function search_keywords($id,$key,$table_name='smg_news',$about='',$page_count = 10, $order=''){

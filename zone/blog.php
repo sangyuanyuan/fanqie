@@ -21,9 +21,12 @@
 	<? 	
 		css_include_tag('zone_blog','top','bottom');
 		use_jquery();
+		js_include_tag('total.js');
   ?>
-	
 </head>
+<script>
+	total("博文","zone");
+</script>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
