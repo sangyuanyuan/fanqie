@@ -846,7 +846,6 @@ total("首页","other");
 										var demo8 = document.getElementById('demo8');  
 								      	$(document).ready(function(){
 											var speed=30//速度数值越大速度越慢
-											
 											demo8.innerHTML=demo7.innerHTML
 											function Marquee(){
 											if(demo8.offsetWidth-demo6.scrollLeft<=0)
