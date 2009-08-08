@@ -52,38 +52,6 @@
 				</div>
 			</div>
 			<div id=t_r>
-				<div id=ad>
-					<?php
-						$db = get_db();
-						$sql = 'select i.id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
-						$record_ad=$db -> query($sql);
-					?>
-					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-					<div id="focus_02"></div> 
-					<script type="text/javascript"> 
-						var pic_width1=395; 
-						var pic_height1=260; 
-						var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
-						var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
-						var texts1=<?php echo '"',flash_str_replace($record_ad[0]->title).",".flash_str_replace($record_ad[1]->title).",".flash_str_replace($record_ad[2]->title).",".flash_str_replace($record_ad[3]->title).'"'; ?>;
-			
-						var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "395", "260", "4","#FFFFFF");
-						picflash.addParam('wmode','opaque');
-						picflash.addVariable("picurl",pics1);
-						picflash.addVariable("piclink",mylinks1);
-						picflash.addVariable("pictext",texts1);				
-						picflash.addVariable("pictime","5");
-						picflash.addVariable("borderwidth","395");
-						picflash.addVariable("borderheight","260");
-						picflash.addVariable("borderw","false");
-						picflash.addVariable("buttondisplay","true");
-						picflash.addVariable("textheight","15");				
-						picflash.addVariable("pic_width",pic_width1);
-						picflash.addVariable("pic_height",pic_height1);
-						picflash.write("focus_02");				
-					</script> 
-				</div>
-				<div id="up_pic"><a href="show_sub.php?type=video" target="_blank" ><img src="/images/show/video_up2.jpg" width="395" height="144" border=0></a></div>
 			</div>
 	  </div>
 	 	<div id=ibody_left>
@@ -146,6 +114,7 @@
 		  </div>
 			
 		<div id=ibody_right>
+			<div id="up_pic"><a href="show_sub.php?type=video" target="_blank" ><img src="/images/show/video_up2.jpg" width="390" height="130" border=0></a></div>
 					<?php 
 						$db = get_db();
 						$sql = 'select * from smg_video where is_adopt=1 and publisher="'.$video->publisher.'" and id!='.$id.' limit 6';

@@ -22,12 +22,12 @@ $rows=$db->paginate($strsql,20);
 	<title>SMG -团购后台</title>
 	<?php css_include_tag('admin','top','bottom');
 		use_jquery();
-		js_include_once_tag('admin');?>
+		js_include_once_tag('admin','admin_pub');?>
 </head>
 <body style="background:#E1F0F7">
 	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td colspan="5" width="795">　　　<a href="tginsert.php" style="color:#0000FF">发布团购</a>　　　　　　
+			<td colspan="6" width="795">　　　<a href="tginsert.php" style="color:#0000FF">发布团购</a>　　　　　　
 			搜索　<input id=newskey1 type="text" value="<? echo $key1?>" >
 				  <input id=newskey2 type="hidden">
 				  <input id=newskey3 type="hidden">
@@ -40,10 +40,11 @@ $rows=$db->paginate($strsql,20);
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td width="225">标题</td><td width="130">开始时间</td><td width="130">结束时间</td><td width="100">团购情况</td><td width="210">操作</td>
+			<td width="55">删/退</td><td width="225">标题</td><td width="130">开始时间</td><td width="130">结束时间</td><td width="100">团购情况</td><td width="210">操作</td>
 		</tr>
 		<? for($i=0;$i<count($rows);$i++){?>
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" >
+			<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $record[$i]->id;?>"></td>
 			<td><a style="color:#000000; text-decoration:none" target="_blank" href="/fqtg/fqtg.php?id=<? echo $rows[$i]->id;?>"><? echo $rows[$i]->title;?></td>
 			<td><? echo $rows[$i]->starttime;?></td>
 			<td><? echo $rows[$i]->endtime;?></td>
@@ -52,15 +53,14 @@ $rows=$db->paginate($strsql,20);
 				<? if($rows[$i]->isadopt=="0"){?><span class="tgpub" style="color:#0000FF;cursor:pointer">发布</span><input type="hidden" value="<?php echo $rows[$i]->id;?>"><? }?>
 				 <a href="tgupdate.php?id=<? echo $rows[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
 				 <span style="cursor:pointer" class="tgdel">删除</span><input type="hidden" value="<?php echo $rows[$i]->id;?>">
+				<input type="text" class="priority"  name="<?php echo $rows[$i]->id;?>"  value="<?php if('100'!=$rows[$i]->priority){echo $rows[$i]->priority;};?>" style="width:40px;">
 			</td>
 		</tr>
 		<?  }?>
-		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;" align="center">
-			<td colspan="5" width="800" class="pages">
-				<?php paginate();?>
-			</td>
+		<tr class="tr3">
+			<td colspan=6><button id="select_all">全选</button><button id="button_delete">删除/退回</button><?php paginate();?><button id=clear_priority>清空优先级</button><button id=edit_priority>编辑优先级</button></td>
 		</tr>
-	
+		<input type="hidden" id="db_talbe" value="smg_tg">
 	</table>
 </body>
 </html>
