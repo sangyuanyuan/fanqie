@@ -1,35 +1,35 @@
 <?php
 	require_once('../frame.php');
 	$db = get_db();
-	$sql = 'select * from smg_category_dept where category_type="link" and ord_id is not null';
-	$record = $db->query($sql);
-	$count  = count($record);
-	for($i=0;$i<$count;$i++){
-		$sql = 'update smg_link set category_id='.$record[$i]->id.' where category_id='.$record[$i]->ord_id;
-		$db->execute($sql);
-	}
-	$sql = 'select * from smg_category_dept where category_type="news" ord_id is not null';
+	//$sql = 'select * from smg_category_dept where category_type="link" and ord_id is not null';
+	//$record = $db->query($sql);
+	//$count  = count($record);
+	//for($i=0;$i<$count;$i++){
+	//	$sql = 'update smg_link set category_id='.$record[$i]->id.' where category_id='.$record[$i]->ord_id;
+	//	$db->execute($sql);
+	//}
+	$sql = 'select * from smg_category_dept where category_type="news" and ord_id is not null';
 	$record = $db->query($sql);
 	$count  = count($record);
 	for($i=0;$i<$count;$i++){
 		$sql = 'update smg_news set dept_category_id='.$record[$i]->id.' where dept_category_id='.$record[$i]->ord_id;
 		$db->execute($sql);
 	}
-	$sql = 'select * from smg_category_dept where category_type="picture" ord_id is not null';
+	$sql = 'select * from smg_category_dept where category_type="picture" and ord_id is not null';
 	$record = $db->query($sql);
 	$count  = count($record);
 	for($i=0;$i<$count;$i++){
 		$sql = 'update smg_images set dept_category_id='.$record[$i]->id.' where dept_category_id='.$record[$i]->ord_id;
 		$db->execute($sql);
 	}
-	$sql = 'select * from smg_category_dept where category_type="video" ord_id is not null';
+	$sql = 'select * from smg_category_dept where category_type="video" and ord_id is not null';
 	$record = $db->query($sql);
 	$count  = count($record);
 	for($i=0;$i<$count;$i++){
 		$sql = 'update smg_video set dept_category_id='.$record[$i]->id.' where dept_category_id='.$record[$i]->ord_id;
 		$db->execute($sql);
 	}
-	$sql = 'select * from smg_category_dept where category_type="vote" ord_id is not null';
+	$sql = 'select * from smg_category_dept where category_type="vote" and ord_id is not null';
 	$record = $db->query($sql);
 	$count  = count($record);
 	for($i=0;$i<$count;$i++){
