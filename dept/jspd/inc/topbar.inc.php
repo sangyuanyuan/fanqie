@@ -42,7 +42,7 @@
             <tr>
               <td width="282" height="39" align="right" valign="bottom">&nbsp;</td>
               <td width="133" height="39" align="right" valign="middle" bgcolor="#005AA6"><input name="search" id="search" type="text" class="bbb" size="20"></td>
-              <td width="96" height="39" align="center" valign="middle" bgcolor="#005AA6"><img src="images/search.jpg" OnClick="searchnews('search')" width="63" height="23"></td>
+              <td width="96" height="39" align="center" valign="middle" bgcolor="#005AA6"><img src="images/search.jpg" id="dept_search" width="63" height="23"></td>
               <td width="12" height="39" align="center" valign="bottom">&nbsp;</td>
             </tr>
         </table></td>
