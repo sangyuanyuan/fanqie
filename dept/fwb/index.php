@@ -8,6 +8,7 @@
 <title>传媒集团内网-fwb</title>
 <?php
 	js_include_once_tag('total');
+	use_jquery();
 ?>
 <style type="text/css">
 <!--
@@ -284,7 +285,7 @@ ul {
           <td width="112" bgcolor="#dfdfdf"><label>
               <input name="textfield" type="text" id="search" name="search" size="16" />
           </label></td>
-          <td width="64" bgcolor="#dfdfdf"><input type="submit" OnClick="searchnews('search')" name="button" id="button" value="搜索" /></td>
+          <td width="64" bgcolor="#dfdfdf"><input type="submit" name="button" id="dept_search" value="搜索" /></td>
         </tr>
     </table>
       <table width="216" border="0" cellspacing="0" cellpadding="0">
@@ -341,3 +342,13 @@ ul {
 </table>
 </body>
 </html>
+
+
+<script>
+	$(function(){
+		
+		$("#dept_search").click(function(){
+			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
+		})
+	});
+</script>

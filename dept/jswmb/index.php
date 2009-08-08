@@ -7,6 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>精神文明办内网</title>
 	<?php 
+		use_jquery();
 		js_include_once_tag('total');
 	?>
 	<link href="jswmb.css" rel="stylesheet" type="text/css">
@@ -303,5 +304,13 @@ piao1.Run();
 var piao2=new AdMove("piao2");   
 piao2.Run();   
 piao2.SetLocation(50,100)   
-piao2.SetDirection(1,1)  
+piao2.SetDirection(1,1)
+
+
+$(function(){
+		
+		$("#dept_search").click(function(){
+			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
+		})
+	});
 </script>
