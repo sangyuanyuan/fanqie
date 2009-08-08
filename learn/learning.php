@@ -38,7 +38,7 @@
 			<div id=top>
 			  <?php
 			  //获得重磅推荐的图片
-			  if ($zbtj[0]->isphotonews)
+			  if ($zbtj[0]->is_photo_news)
 			  {
 			  	$pic = $zbtj[0]->photo_src;
 			  }else 
@@ -58,10 +58,10 @@
 						$pxzldg = $db->query('select v.id,v.title,v.photo_url,v.video_url,c.platform,c.id as cid from smg_video v inner join smg_category c on v.category_id=c.id and v.is_adopt=1 and c.name ="培训资料大观" and c.category_type="video" order by v.priority asc, v.created_at desc limit 7');
 						?>		
 						<div id=more><a target="_blank" href="/show/list.php?type=video&id=<?php echo $pxzldg[0]->cid; ?>">更多...</a></div>
-						<div id=l><img width=80 height=94 src="<?php echo $pxzldg[0]->photo_url;?>" /><a href="/<?php echo $pxzldg[0]->platform; ?>/show/video.php?id=<?php echo $pxzldg[0]->id;?>"><?php echo $pxzldg[0]->title;?></a></div>
+						<div id=l><img width=80 height=94 src="<?php echo $pxzldg[0]->photo_url;?>" /><a href="/show/video.php?id=<?php echo $pxzldg[0]->id;?>"><?php echo $pxzldg[0]->title;?></a></div>
 						<? 						
 						for($i=1;$i<=6 && count($pxzldg);$i++){?>
-						<div class=r ><a target="_blank" style="height:18px; line-height:20px;" href="/<?php echo $pxzldg[$i]->platform; ?>/video/video.php?id=<?php echo $pxzldg[$i]->id;?>"><?php echo $pxzldg[$i]->title;?></a></div>
+						<div class=r ><a target="_blank" style="height:18px; line-height:20px;" href="/show/video.php?id=<?php echo $pxzldg[$i]->id;?>"><?php echo $pxzldg[$i]->title;?></a></div>
 						<? }?>
 					</div>
 					<div id=bottom>
