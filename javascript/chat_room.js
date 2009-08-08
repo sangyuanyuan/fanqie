@@ -61,10 +61,10 @@ function add_chat(content,type,gender){
 		if(gender){
 			gender = '<img src="/images/zone/' + gender + '.gif">';
 		}
-		name = gender + '【陌生人】说:';
+		name = gender + '【<span style="color:blue;">陌生人</span>】说:';
 		var str = '<div class="chat_record">'
 				 + '<div class="chat_record_title"><span>'+ '</span><b>' + name +'</b>'
-				 + '<span class="chat_record_content">' + content +'</span>'
+				 + '<span class="chat_record_content" style="color:blue;">' + content +'</span>'
 				 + '</div></div>';
 	}else if(type == 's'){
 		name = '系统消息:';

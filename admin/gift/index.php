@@ -18,11 +18,11 @@
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="8">　<a style="margin-right:50px" href="gift_category_edit.php">添加礼物商店</a>			
+			<td colspan="2">　<a style="margin-right:50px" href="gift_category_edit.php">添加礼物商店</a>			
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td>礼物商店名称</td><td width="120">操作</td>
+			<td  width="600">礼物商店名称</td><td width="195">操作</td>
 		</tr>
 		<?php
 			$db = get_db();

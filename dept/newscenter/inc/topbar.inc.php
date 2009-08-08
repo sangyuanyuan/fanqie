@@ -3,7 +3,7 @@
 <div id="top">
 	<div id="search">
 		<input type="text" name="textfield" id="textfield" />
-		<input type="button" OnClick="searchnews('textfield')" value="内容搜索">
+		<input type="button" id=dept_search value="内容搜索">
 	</div>
 </div>
 

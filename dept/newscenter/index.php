@@ -8,6 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>新闻中心内网</title>
 	<?php 
+		use_jquery();
 		js_include_once_tag('total');
 	?>
 	<link href="css/main.css" rel="stylesheet" type="text/css">
@@ -96,7 +97,6 @@
 			<?php 
 				$record = show_content('smg_images','picture','电视新闻中心','flash','4');
 				$count = count($record);
-				alert($count);
 				for($i=0;$i<$count;$i++){
 					$picsurl[]=$record[$i]->src;
 					$picslink[]='/show/show.php?id='.$record[$i]->id;
@@ -337,3 +337,12 @@
 </div>		
 </body>
 </html>
+
+<script type="text/javascript">     
+$(function(){
+		
+		$("#dept_search").click(function(){
+			window.location.href='/search/?key='+encodeURI($("#textfield").val())+'&search_type=smg_news';
+		})
+	});
+</script>

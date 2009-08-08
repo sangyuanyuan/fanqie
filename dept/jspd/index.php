@@ -568,5 +568,9 @@ include("inc/topbar.inc.php");
 			$(".hide").hide();
 			$("."+$(this).attr('name')).show();
 		});
+		
+		$("#dept_search").click(function(){
+			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
+		})
 	});
 </script>
