@@ -471,7 +471,7 @@ include("inc/topbar.inc.php");
                 <td height="31" background="images/rig_05.jpg"><table width="226" height="20" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                   <?php
-                  		$records = show_content('smg_news','news','纪实频道','群团乐趣','1');
+                  		$records = show_content('smg_news','news','纪实频道','群团乐趣','8');
 						$count = count($records);
                   ?>
                     <td width="37" height="20">&nbsp;</td>
@@ -497,9 +497,7 @@ include("inc/topbar.inc.php");
                     <tr>
                       <td class="whi">
                       		<?php 
-								$records = show_content('smg_news','news','纪实频道','文明采风','7');
-								$count = count($records);
-								for($i=0;$i<$count;$i++) {
+								for($i=1;$i<$count;$i++) {
 							?>
 								<a target="_blank" href="news.php?id=<? echo$records[$i]->id;?>" title="<?php echo $records[$i]->title;?>" class="whi short">・<? echo $records[$i]->short_title;?></a><br/>
 							<?php 
