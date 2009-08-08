@@ -9,13 +9,13 @@ li{margin:0px; list-style-type:none;}
 #ibody_left a{ text-decoration:none;}
 #ibody_right{width:380px; padding-bottom:20px;  float:right; display:inline;}
 
-#t_c{width:537px; margin-top:20px; margin-left:23px; float:left; display:inline;}
+#t_c{width:537px; margin-top:20px; margin-left:223px; float:left; display:inline;}
 #t_c .video{ float:left; display:inline;}
 #t_c .video #error{ font-size:20px; font-weight:bolder; color:#FF0000}
 #t_c .digg{width:537px; margin-top:10px; float:left; display:inline;}
 #t_c .digg #flower{width:40px; height:25px; margin-left:100px; padding-left:55px; padding-top:4px; font-size:15px; color:#FF0000; font-weight:bolder; background:url('/images/show/flower.jpg'); cursor:pointer; float:left; display:inline;}
 #t_c .digg #tomato{width:40px; height:25px; margin-left:90px; padding-left:55px; padding-top:4px; font-size:15px; color:#999999; font-weight:bolder; background:url('/images/show/tomato.jpg'); cursor:pointer; float:left; display:inline;}
-#t_r{width:395px; margin-top:20px; margin-left:20px; float:left; display:inline;}
+#t_r{margin-top:20px; margin-left:20px; float:left; display:inline;}
 #t_r #up_pic{margin-top:10px; float:left; display:inline;}
 #t_r #ad{ float:left; display:inline;}
 
@@ -75,3 +75,5 @@ li{margin:0px; list-style-type:none;}
 #r_b .content .title{width:100px; height:30px; margin-top:5px; line-height:15px; font-size:13px; text-align:center; overflow:hidden; }
 #r_b .content .title a{color:#0093BB;}
 
+
+#up_pic{margin-top:10px; float:left; display:inline;}
