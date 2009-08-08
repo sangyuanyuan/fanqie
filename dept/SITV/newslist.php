@@ -216,7 +216,7 @@ ul {
 			$db = get_db();
 			$link_id = dept_category_id_by_name('我们的链接','文广互动','link');
 			$link_id2 = dept_category_id_by_name('关于我们','文广互动','link');
-          	if($listid!=$link_id||$listid!=$link_id2)
+          	if($listid!=$link_id&&$listid!=$link_id2)
           	{
           		$newslist = $db->query('select * from smg_news where is_dept_adopt=1 and dept_category_id='.$listid.'  order by dept_priority asc , created_at desc');
           	}
