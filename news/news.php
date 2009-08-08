@@ -131,7 +131,7 @@
 				 for($i=0;$i<count($digg);$i++){ ?>
 					<div class=content>	
 						<div class=title1>
-							<div style="width:110px; margin-left:118px; float:left; display:inline;">
+							<div style="width:110px; height:20px; margin-left:118px; overflow:hidden; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
@@ -148,7 +148,7 @@
 				  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
 						<div class=title>
-							<div style="width:230px; margin-top:10px; margin-left:10px; line-height:20px; float:left; display:inline;">
+							<div style="width:230px; height:20px; margin-top:10px; margin-left:10px; overflow:hidden; line-height:20px; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">

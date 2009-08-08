@@ -50,10 +50,8 @@
 		$blogph=$db->query($sql);
 		$sql="SELECT uid,spacename FROM blog_userspaces b order by viewnum desc limit 15";
 		$bloghotspace=$db->query($sql);
-		$sql="select n.id,n.short_title,n.title,n.platform,n.content from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='博主真人秀' and c.category_type='news' order by n.priority asc,n.created_at desc limit 1";
+		$sql="select n.photo_src,n.id,n.short_title,n.title,c.platform,n.description from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='博主秀' and c.category_type='news' order by n.priority asc,n.created_at desc limit 7";
 		$blogsure=$db->query($sql);
-		$sql="select src,url,title from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name='博主真人秀' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
-		$blogsureimg=$db->query($sql);
   ?>
 <script>
 	total("交流首页","zone");
@@ -213,9 +211,19 @@
 			<?php } ?>
 		</div>
 		<div id=b_c>
-			<div id=title>博主真人秀</div>
-			<div id=b_c_l><div id=pic><a target="_blank" href="<?php echo $blogsureimg[0]->url; ?>"><img src="<?php echo $blogsureimg[0]->src;?>"></a></div><div id=pictitle><a target="_blank" href="<?php echo $blogsureimg[0]->url;?>"><?php echo $blogsureimg[0]->title;?></a></div></div>
-			<div id=b_c_r><div id=b_c_r_title><?php echo $blogsure[0]->short_title; ?></div><div id=b_c_r_content><?php echo $blogsure[0]->content;?></div></div>
+			<div id=title>博主秀</div>
+			<div id=b_c_l><div id=pic><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><img border=0 src="<?php echo $blogsure[0]->photo_src;?>"></a></div></div>
+			<div id=b_c_r><div id=b_c_r_title><?php echo $blogsure[0]->short_title; ?></div><div id=b_c_r_content><?php echo $blogsure[0]->description;?></div></div>
+			<div id=b_c_b_l>
+				<?php for($i=1;$i<4;$i++){ ?>
+					<div class=content><a href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
+				<?php } ?>
+			</div>
+			<div id=b_c_b_r>
+				<?php for($i=4;$i<count($blogsure);$i++){ ?>
+					<div class=content><a href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
+				<?php } ?>
+			</div>
 		</div>
 		<div class=b_r>
 			<div class="title">热门博主列表</div>
