@@ -31,7 +31,7 @@
 			if($key!=''){
 				$c[] = 'name  like "%'.trim($key).'%"';				
 			}
-			$record = $vote->paginate("all",array('conditions' => implode(' and ',$c),'order' => 'created_at desc'),18);
+			$record = $vote->paginate("all",array('conditions' => implode(' and ',$c),'order' => 'created_at desc'),10);
 			$count_record = count($record);
 			//--------------------
 			for($i=0;$i<$count_record;$i++){
