@@ -63,35 +63,45 @@
 				</div>
 			</div>
 			<div class=l_m2>
-			<?php
-				$db = get_db();
-				$sql = 'select i.id,i.title,i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.category_type="picture" order by i.priority asc limit 4';
+			<?php 
+				$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.priority=0 and i.is_adopt=1 and c.name="番茄广告" and c.platform="show" order by i.priority asc,i.created_at desc limit 4';
 				$record_ad=$db -> query($sql);
+				$count = count($record_ad);
+				for($i=0;$i<$count;$i++){
+					$picsurl[]=$record_ad[$i]->src;
+					$picslink[]='/show/show.php?id='.$record_ad[$i]->id;
+					$picstext[]=flash_str_replace($record_ad[$i]->title);
+				}
 			?>
-			<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-			<div id="focus_02"></div> 
-			<script type="text/javascript"> 
-				var pic_width1=287; 
-				var pic_height1=190; 
-				var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
-				var mylinks1="<?php echo "show.php?id=".$record_ad[0]->id.",show.php?id=".$record_ad[1]->id.",show.php?id=".$record_ad[2]->id.",show.php?id=".$record_ad[3]->id ?>";
-				var texts1=<?php echo '"',flash_str_replace($record_ad[0]->title).",".flash_str_replace($record_ad[1]->title).",".flash_str_replace($record_ad[2]->title).",".flash_str_replace($record_ad[3]->title).'"'; ?>;
-	
-				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "287", "190", "4","#FFFFFF");
+			
+			<?php if($count==1){?>
+				<a href="/show/show.php?id=<?php echo $record_ad[0]->img_id?>" target=_blank><img src="<?php echo $record_ad[0]->src?>" width=286px; height=187px; border=0></a>
+			<? }else{?>
+				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+				<div id="focus_02"></div> 
+				<script type="text/javascript"> 
+				var pic_width1=287; //图片宽度
+				var pic_height1=190; //图片高度
+				var pics="<?php echo implode(',',$picsurl);?>";
+				var mylinks="<?php echo implode(',',$picslink);?>";
+				var texts="<?php echo implode(',',$picstext);?>";
+				
+				var picflash = new sohuFlash("/flash/focus.swf", "focus_02", pic_width1, pic_height1, "4","#FFFFFF");
 				picflash.addParam('wmode','opaque');
-				picflash.addVariable("picurl",pics1);
-				picflash.addVariable("piclink",mylinks1);
-				picflash.addVariable("pictext",texts1);				
+				picflash.addVariable("picurl",pics);
+				picflash.addVariable("piclink",mylinks);
+				picflash.addVariable("pictext",texts);				
 				picflash.addVariable("pictime","5");
-				picflash.addVariable("borderwidth","287");
-				picflash.addVariable("borderheight","190");
+				picflash.addVariable("borderwidth",pic_width1);
+				picflash.addVariable("borderheight",pic_height1);
 				picflash.addVariable("borderw","false");
 				picflash.addVariable("buttondisplay","true");
 				picflash.addVariable("textheight","15");				
 				picflash.addVariable("pic_width",pic_width1);
 				picflash.addVariable("pic_height",pic_height1);
 				picflash.write("focus_02");				
-			</script> 
+				</script>		
+			<? }?>
 			</div>
 		  	<div class=l_m>
 				<div class=title><div class=left1 name="user">用户排行榜|</div><div class=left1 name="dept" style="color:#999999">部门排行榜</div></div>
