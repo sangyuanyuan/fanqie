@@ -11,7 +11,7 @@ if($db->move_first()){
 $sql = "select g.*,g.id as gid,g.name as gname,c.name as cname from smg_gift g left join smg_gift_category c on g.category_id=c.id where g.category_id=".$cid;
 $record = $db->query($sql);
 ?>
-<div><a href="gift_category.php" style="color:#000;text-decoration:none;" class="a_gift_category"><b>礼品商店</b></a>  > <?php echo $record[0]->cname?></div>
+<div><a href="gift_category.php" style="color:#000;text-decoration:none;" class="a_gift_category" id="a_gift_category"><b>礼品商店</b></a>  > <?php echo $record[0]->cname?></div>
 <?php
 for ($i=0;$i<count($record);$i++){
 ?>
@@ -31,7 +31,10 @@ for ($i=0;$i<count($record);$i++){
 			$(this).parent().find('input').attr('checked',!$(this).parent().find('input').attr('checked'));
 		});
 
-		
+		$('#a_gift_category').click(function(e){
+			e.preventDefault();
+			tb_remove();
+		});
 		$('#button_ok').click(function(){
 			$('.gift').find('input:checked').each(function(){
 				gift_ids.push($(this).val());
