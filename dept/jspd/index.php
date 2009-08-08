@@ -570,7 +570,7 @@ include("inc/topbar.inc.php");
 		});
 		
 		$("#dept_search").click(function(){
-			window.location.href='/search/?key='+URLencode($("#search").val())+'&search_type=smg_news';
+			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
 		})
 	});
 </script>
