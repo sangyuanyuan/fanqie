@@ -46,7 +46,7 @@
 			<div id=context>
 				<div id=top>
 					<div id=left>
-					<? 
+					<?php
 						$newslist=show_content('smg_news','news','东方卫视','新闻','7');
 						$newslist1=show_content('smg_news','news','东方卫视','常用表格','10');
 						$newslist2=show_content('smg_news','news','东方卫视','数据统计','10');
