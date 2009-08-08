@@ -11,12 +11,23 @@
 		css_include_tag('top.css','bottom.css','show_vote.css','vote_right.css');
 		js_include_tag('total');
 		$vote_id = $_REQUEST['vote_id'];
-		if(intval($vote_id)<=0){
+		$prev_id = $_REQUEST['prev_id'];
+		if(intval($vote_id)<=0 && intval($prev_id) <=0){
 			alert('找不到相应投票!');
 			redirect('/vote/vote_list.php');
 		}
 		$vote = new smg_vote_class();
-		$vote = $vote->find($vote_id);
+		if($vote_id){
+			$vote = $vote->find($vote_id);
+		}else if($prev_id){
+			$vote = $vote->find('first',array('conditions'=>"id > $prev_id",'order' => 'id asc'));
+			if(!$vote){
+				alert('找不到更多的投票');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+			$vote_id = $vote->id;
+		}
+		
 		
 	?>
 </head>
@@ -32,8 +43,9 @@
 			<div style="width:100%;text-align:center;padding-top:20px;float:left;line-height:25px;"><h2><?php echo $vote->name;?></h2></div>
 			<div id="vote_container_box" style="width:100%;float:left;text-align:center">
 			<div id=pic><?php if($vote->photo_url!=''){?><img border=0 src="<?php echo $vote->photo_url; ?>"><?php } ?></div>
-				<?php $vote->display(array('show_title' => false));?>
-			</div>		
+				<?php $vote->display(array('show_title' => false,'target'=>'_blank'));?>
+			</div>
+			<div style="text-align:right;padding-right:20px;padding-top:20px;"><a href="vote.php?prev_id=<?php echo $vote_id;?>" style="font-size:15px;">进入下个投票</a></div>		
 		</div>
 		
 		<?php include('../inc/vote_right.inc.php');?>
