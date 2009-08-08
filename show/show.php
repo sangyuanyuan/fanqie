@@ -73,14 +73,14 @@
 			<? }?>
  	  	</div>
 		<div class=l_m>
-			<div class=title><div class=left1>用户排行榜|</div><div class=left1 name="dept" style="color:#999999">部门排行榜</div></div>
+			<div class=title><div name="user" class=left1>用户排行榜|</div><div class=left1 name="dept" style="color:#999999">部门排行榜</div></div>
 			<?php
 				$sql = 'SELECT t1.publisher,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.is_adopt=1 and t1.publisher!="admin" and t2.platform="show" group by t1.publisher limit 5';
 				$records = $db->query($sql);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
-				<div class=content <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
+				<div class="content user change" <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
 					<div class=right>
 						<div class=top><a target="_blank" href="list.php?publisher=<?php echo urlencode($records[$i]->publisher);?>"><?php echo $records[$i]->publisher; ?></a></div>
