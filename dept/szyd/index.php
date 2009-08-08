@@ -34,8 +34,12 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
   <DIV  ID="MAIN_1">
         	<DIV  ID="left_c">
             	<div class="left_1" >
-            		<? $newslist=show_content('smg_news','news','上海文广数字移动传播有限公司','公司简介','1');?>
-            		<div style="width:200px; height:160px; margin-top:20px; overflow:hidden; margin-left:10px; font-size:12px; line-height:18px; text-indent:24px; float:left; display:inline;"><a target="_blank" style="font-size:12px;" title="<? echo strip_tags($newslist[0]->content);?>" href="news1.php?id=<? echo $newslist[0]->id;?>"><? echo strip_tags($newslist[0]->content);?></a></div>
+            		<?php 
+						$newslist=show_content('smg_news','news','上海文广数字移动传播有限公司','公司简介','1');
+						$news = new table_class('smg_news');
+						$news->find($newslist[0]->id);
+					?>
+            		<div style="width:200px; height:160px; margin-top:20px; overflow:hidden; margin-left:10px; font-size:12px; line-height:18px; text-indent:24px; float:left; display:inline;"><a target="_blank" style="font-size:12px;" title="<? echo strip_tags($news->content);?>" href="news1.php?id=<? echo $news->id;?>"><? echo strip_tags($news->content);?></a></div>
             		<div style="width:200px; height:20px; margin-left:10px; float:left; display:inline;"><img width=14 height=14 src="pic/icon.jpg"><a style="color:green; font-size:12px;" target="_blank" href="http://222.68.17.238:5208/wenguang/">实时交通体验网站</a></div>
               </div>
               <div  class="rearch">
