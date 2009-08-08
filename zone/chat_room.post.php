@@ -27,13 +27,14 @@
 					$db->execute($sql);
 					set_status('connecting');
 					unset($_SESSION['remote_id']);
+					echo "<script>add_chat('聊友自动寻找中,请稍后!','s');</script>";
 				}else{
 					$db->execute('delete from smg_chat_queue where id=' .$remote[0]->id);
 					$now = now();
 					set_status('connected');
 					send_message('system', $remote[0]->chat_id, $chat_id, 'connect');
 					$_SESSION['remote_id'] = $remote[0]->chat_id;
-					echo "<script>add_chat('匹配成功!','s');</script>";
+					echo "<script>add_chat('聊友已配对,您可以开始聊天!','s');</script>";
 				}
 			}else if($status == 'connecting'){
 				//cancel connect
@@ -42,7 +43,7 @@
 			}else if($status == 'connected'){
 				send_message('system', $_SESSION['remote_id'], $chat_id, 'disconnect');
 				set_status('');
-				echo "<script>add_chat('链接已断开!','s');</script>";
+				echo "<script>add_chat('聊友已离开,请点击[寻找陌生人],获得新的聊友!','s');</script>";
 				unset($_SESSION['remote_id']);
 			}			
 			break;
@@ -58,11 +59,11 @@
 					if($v->msg_type=='chat'){
 						$str .= "add_chat('{$v->content}','h','{$v->sender_gender}');";
 					}else if($v->msg_type=='connect'){
-						$str .= "add_chat('已经有一位聊友进入','s');";
+						$str .= "add_chat('聊友已配对,您可以开始聊天','s');";
 						$_SESSION['remote_id'] = $v->content;
 						set_status('connected');
 					}else if($v->msg_type == 'disconnect'){
-						$str .= "add_chat('聊友已离开','s');";
+						$str .= "add_chat('聊友已离开,请点击[寻找陌生人],获得新的聊友!','s');";
 						unset($_SESSION['remote_id']);
 						set_status('');						
 					}
@@ -73,7 +74,7 @@
 			if($status == 'connected'){
 				$rcount = $db->query("select count(*) from smg_chat_room_online where chat_id='{$_SESSION['remote_id']}'");				
 				if($rcount[0]->field_by_index(0)==0){
-					$str = "add_chat('聊友已离开','s');";
+					$str = "add_chat('聊友已离开,请点击[寻找陌生人],获得新的聊友!','s');";
 					unset($_SESSION['remote_id']);
 					set_status('');	
 					echo "<script>$str</script>";
