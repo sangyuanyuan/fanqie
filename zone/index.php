@@ -50,7 +50,7 @@
 		$blogph=$db->query($sql);
 		$sql="SELECT uid,spacename FROM blog_userspaces b order by viewnum desc limit 15";
 		$bloghotspace=$db->query($sql);
-		$sql="select n.photo_src,n.id,n.short_title,n.title,c.platform,n.description from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='博主秀' and c.category_type='news' order by n.priority asc,n.created_at desc limit 7";
+		$sql="select n.photo_src,n.id,n.short_title,n.title,c.platform,n.content from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='博主秀' and c.category_type='news' order by n.priority asc,n.created_at desc limit 7";
 		$blogsure=$db->query($sql);
   ?>
 <script>
@@ -213,7 +213,7 @@
 		<div id=b_c>
 			<div id=title>博主秀</div>
 			<div id=b_c_l><div id=pic><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><img border=0 src="<?php echo $blogsure[0]->photo_src;?>"></a></div></div>
-			<div id=b_c_r><div id=b_c_r_title><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><?php echo $blogsure[0]->short_title;?></a></div><div id=b_c_r_content><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><?php echo $blogsure[0]->description;?></a></div></div>
+			<div id=b_c_r><div id=b_c_r_title><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><?php echo $blogsure[0]->short_title;?></a></div><div id=b_c_r_content><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><?php echo delhtml($blogsure[0]->content);?></a></div></div>
 			<div id=b_c_b_l>
 				<?php for($i=1;$i<4;$i++){ ?>
 					<div class=content><a target="_blank" href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
