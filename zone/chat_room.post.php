@@ -5,9 +5,10 @@
 	$chat_id = $_COOKIE['smg_chat_id'];
 	$db = get_db();
 	$db->execute("delete from smg_chat_queue where created_at < DATE_SUB(now(),INTERVAL  1 MINUTE)");
-	$db->execute("delete from smg_chat_message where created_at < DATE_SUB(now(),INTERVAL  1 MINUTE)");
+	$db->execute("delete from smg_chat_message where created_at < DATE_SUB(now(),INTERVAL  1 MINUTE)");	
 	$sql = "insert into smg_chat_room_online (chat_id, expire_at) values ('$chat_id',now() + INTERVAL 1 MINUTE) ON DUPLICATE key update expire_at = now() + INTERVAL 1 MINUTE";
 	$db->execute($sql);	
+	$db->execute("delete from smg_chat_room_online where expire_at < NOW()");
 	if($status == 'connecting'){
 		$db->execute("update smg_chat_queue set created_at = now() + INTERVAL 1 MINUTE");
 	}
@@ -29,7 +30,6 @@
 				}else{
 					$db->execute('delete from smg_chat_queue where id=' .$remote[0]->id);
 					$now = now();
-					#$db->execute("insert into smg_chat_connected (chater1, chater2, created_at) values ('{$remote[0]->chat_id}','$chat_id','{$now}')");
 					set_status('connected');
 					send_message('system', $remote[0]->chat_id, $chat_id, 'connect');
 					$_SESSION['remote_id'] = $remote[0]->chat_id;
@@ -69,7 +69,18 @@
 				}
 				echo "<script>$str</script>";
 			}
-			
+			//jude where remote is logoff
+			if($status == 'connected'){
+				$rcount = $db->query("select count(*) from smg_chat_room_online where chat_id='{$_SESSION['remote_id']}'");				
+				if($rcount[0]->field_by_index(0)==0){
+					$str = "add_chat('聊友已离开','s');";
+					unset($_SESSION['remote_id']);
+					set_status('');	
+					echo "<script>$str</script>";
+					#send_message('system', $chat_id, $_SESSION['remote_id'], 'disconnect');
+					#send_message($chat_id, $_SESSION['remote_id'], '', 'disconnect',$_COOKIE['smg_chat_gender']);
+				}
+			}
 			break;	
 		case 'chat':
 			send_message($chat_id, $_SESSION['remote_id'], $_POST['content'], 'chat',$_COOKIE['smg_chat_gender']);
