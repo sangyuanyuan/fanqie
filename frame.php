@@ -237,7 +237,7 @@
 		if($table_name=='smg_link'){
 			$sql = 'select * from '.$table_name.' where category_id='.$category_id.' order by priority';
 		}elseif($table_name=='smg_news'){
-			$sql = 'select title,short_title,id,photo_src,description from smg_news where dept_category_id='.$category_id.' and dept_id='.$dept_id.' order by dept_priority,created_at desc';
+			$sql = 'select title,short_title,id,photo_src,description,created_at from smg_news where dept_category_id='.$category_id.' and dept_id='.$dept_id.' order by dept_priority,created_at desc';
 		}else{
 			$sql = 'select * from '.$table_name.' where is_dept_adopt=1 and dept_category_id='.$category_id.' and dept_id='.$dept_id.' order by dept_priority,created_at desc';
 		}
