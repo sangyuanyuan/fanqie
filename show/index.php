@@ -46,7 +46,7 @@
 			
 			<?php if($count==1){?>
 				<a href="/show/show.php?id=<?php echo $record_ad[0]->img_id?>" target=_blank>
-					<img src="<?php echo $record_ad[0]->src?>" width=589px; height=209px; border=0>
+					<img src="<?php echo $record_ad[0]->src?>" width=589; height=209; border=0>
 				</a>
 			<? }else{?>
 				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
