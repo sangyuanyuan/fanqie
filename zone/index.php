@@ -50,7 +50,7 @@
 		$blogph=$db->query($sql);
 		$sql="SELECT uid,spacename FROM blog_userspaces b order by viewnum desc limit 15";
 		$bloghotspace=$db->query($sql);
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='博主真人秀' and c.category_type='news' order by n.priority asc,n.created_at desc limit 1";
+		$sql="select n.id,n.short_title,n.title,n.platform,n.content from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='博主真人秀' and c.category_type='news' order by n.priority asc,n.created_at desc limit 1";
 		$blogsure=$db->query($sql);
 		$sql="select src,url,title from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name='博主真人秀' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
 		$blogsureimg=$db->query($sql);
@@ -205,7 +205,7 @@
 	<div id=ibody_middle></div>
 	<div id=ibody_bottom>
 		<div id=b_l>
-			<div id=title>劲爆热图</div>
+			<div id=title>劲爆热图</div><div id="more"><a target="_blank" href="/zone/hotimg.php">more</a></div>
 			<?php for($i=0;$i<count($jbrt);$i++){?>
 				<div class="content">
 					<a target="_blank" href="<?php echo $jbrt[$i]->url;?>"><img border=0 width=132 height=90 src="<?php echo $jbrt[$i]->src;?>"><br><span style="color:#000000;"><?php echo $jbrt[$i]->title;?></span></a>
@@ -215,7 +215,7 @@
 		<div id=b_c>
 			<div id=title>博主真人秀</div>
 			<div id=b_c_l><div id=pic><a target="_blank" href="<?php echo $blogsureimg[0]->url; ?>"><img src="<?php echo $blogsureimg[0]->src;?>"></a></div><div id=pictitle><a target="_blank" href="<?php echo $blogsureimg[0]->url;?>"><?php echo $blogsureimg[0]->title;?></a></div></div>
-			<div id=b_c_r><div id=b_c_r_title><?php echo $blogsure[0]->short_title; ?></div><div id=b_c_r_content><?php echo $blogsure[0]->description;?></div></div>
+			<div id=b_c_r><div id=b_c_r_title><?php echo $blogsure[0]->short_title; ?></div><div id=b_c_r_content><?php echo $blogsure[0]->content;?></div></div>
 		</div>
 		<div class=b_r>
 			<div class="title">热门博主列表</div>

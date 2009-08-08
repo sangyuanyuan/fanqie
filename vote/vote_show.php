@@ -98,14 +98,18 @@
 <?php
    }
    ?>
-<div style="width:600px; height:200px;  float:left; display:inline;">
-评论框	
+<div style="width:460px; height:200px;margin-left:90px;margin-top:10px; text-align:left;  float:left; display:inline;">
+	<div><label for="nick_name">昵称:</label><input type="text" id="nick_name" value="<?php echo $_COOKIE['smg_user_nickname'];?>"> <button id="submit">发表评论</button></div>
+	<?php show_fckeditor('fck_content','Title',false,100,'',450);?>	
 </div>
-<? for($i=1;$i<=10;$i++){?>
-<div style="width:570px; padding:15px; margin-top:3px; color:#333;  text-align:left; background:#efefef; float:left; display:inline;">
-盛志峰　2009-10-10 10:10:10<br>
-　　sasdfjasfjaslfjasl fwuru我我iorwqru撒旦发生纠纷啊师傅考虑啊师傅玩日欧欺骗入侵我啊师傅就啊萨拉附件 
+<?php
+$db = get_db();
+$comments = $db->paginate("select * from smg_comment where resource_type='vote' and resource_id={$vote->id} order by id desc"); 
 
+for($i=0;$i<count($comments);$i++){?>
+<div style="width:570px; padding:15px; margin-top:3px; color:#333;  text-align:left; background:#efefef; float:left; display:inline;">
+<?php echo "{$comments[$i]->nick_name} {$comments[$i]->created_at}";?><br>
+　　<?php echo $comments[$i]->comment;?>
 </div>
 <? }?>
 
@@ -115,3 +119,22 @@
 
 </body>
 </html>
+<script>
+	$(function(){
+		$('#submit').click(function(){
+			var nick_name = $('#nick_name').val();
+			if( nick_name== ''){
+				alert('请输入昵称!');
+				return false;
+			}
+			var oEditor = FCKeditorAPI.GetInstance('fck_content') ;
+			var content = oEditor.GetHTML();
+			if(content == ''){
+				alert('请输入评论内容!');
+				return false;
+			}
+			var id = <?php echo $vote->id;?>;
+			$.post('/pub/comment.post.php',{'comment[resource_type]':'vote','comment[resource_id]':id,'comment[nick_name]':nick_name,'comment[comment]':content},function(data){window.location.reload();});
+		});
+	});
+</script>
