@@ -8,8 +8,9 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-投票结果显示</title>
 	<?php 
-		css_include_tag('top','bottom','vote_right.css'); 
-		js_include_tag('total');
+		css_include_tag('top','bottom','vote_right.css','thickbox'); 
+		use_jquery();
+		js_include_tag('total','thickbox','pubfun');
 	?>
 </head>
 <script>
@@ -49,7 +50,7 @@
 ?>
 <?php include('../inc/vote_right.inc.php');?>
 <div style="width:600px; float:left; display:inline;">
-<table align="center"  border="0" bgcolor="#CCCCCC" cellspacing=1>
+<table align="left"  border="0" width=600 bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
 		<td colspan="4" align="center">
 			<?php echo $name[$j];?>
@@ -82,12 +83,12 @@
 		</td>
 		<td bgcolor="#FFFFFF" align=left>
 			<?php 
-				$count = ($total_count[$j] >0) ? ($vote_items[$j][$i]->vote_count /$total_count[$j]) : 0;
+				$count = ($total_count[$j] >0) ? ($vote_items[$j][$i]->vote_count /$total_count[$j]) : 0; 
 				echo sprintf("%.2f",$count * 100) .'%';?>
 				<div style="background:url('/images/votebg.gif') repeat-x; height:9px;width:<?php echo ceil($count * 100)*3;?>px;"></div>
 		</td>
 	  <td bgcolor="#FFFFFF">
-	  	<?php echo $vote_items[$j][$i]->vote_count;?>
+	  	<?php echo $vote_items[$j][$i]->vote_count; if($vote_items[$j][$i]->vote_count >0){?>(<a href="view_user_list.php?width=600&height=340&item_id=<?php echo $vote_items[$j][$i]->id;?>" class="thickbox" title="投票明细">查看详细</a>)<?php } ?>
 	  </td>
 	</tr>
 	<?php	
@@ -98,21 +99,25 @@
 <?php
    }
    ?>
-<div style="width:460px; height:200px;margin-left:90px;margin-top:10px; text-align:left;  float:left; display:inline;">
-	<div><label for="nick_name">昵称:</label><input type="text" id="nick_name" value="<?php echo $_COOKIE['smg_user_nickname'];?>"> <button id="submit">发表评论</button></div>
-	<?php show_fckeditor('fck_content','Title',false,100,'',450);?>	
+<div style="width:600px; height:200px;margin-top:10px; text-align:left;  float:left; display:inline;">
+	<div><label for="nick_name">昵称:</label><input type="text" id="nick_name" value="<?php echo $_COOKIE['smg_user_nickname'];?>">
+	<?php show_fckeditor('fck_content','Title',false,100,'',600);?>	
+	<div id="emotion"></div>
+	<div style="width:600px;text-align:center;margin-top:5px;"> <button id="submit">发表评论</button></div></div>
 </div>
 <?php
 $db = get_db();
-$comments = $db->paginate("select * from smg_comment where resource_type='vote' and resource_id={$vote->id} order by id desc"); 
+$comments = $db->paginate("select * from smg_comment where resource_type='vote' and resource_id={$vote->id} order by id desc",5); 
 
 for($i=0;$i<count($comments);$i++){?>
-<div style="width:570px; padding:15px; margin-top:3px; color:#333;  text-align:left; background:#efefef; float:left; display:inline;">
-<?php echo "{$comments[$i]->nick_name} {$comments[$i]->created_at}";?><br>
-　　<?php echo $comments[$i]->comment;?>
-</div>
-<? }?>
-
+	<div style="width:570px; padding:15px; margin-top:3px; color:#333;  text-align:left; background:#efefef; float:left; display:inline;">
+	<?php echo "{$comments[$i]->nick_name} {$comments[$i]->created_at}";?><br>
+	　　<?php echo $comments[$i]->comment;?>
+	</div>
+	<? }?>
+	<div style="width:570px; padding:15px; margin-top:3px; color:#333;  text-align:left;  float:left; display:inline;">
+	<?php echo paginate();?>
+	</div>
 </div>
 
 <? require_once('../inc/bottom.inc.php');?>
@@ -135,6 +140,8 @@ for($i=0;$i<count($comments);$i++){?>
 			}
 			var id = <?php echo $vote->id;?>;
 			$.post('/pub/comment.post.php',{'comment[resource_type]':'vote','comment[resource_id]':id,'comment[nick_name]':nick_name,'comment[comment]':content},function(data){window.location.reload();});
+			
 		});
+		display_fqbq('emotion','fck_content');
 	});
 </script>
