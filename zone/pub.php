@@ -27,7 +27,7 @@
 		$str = "<div class=\"comment_list_item\"><span class=\"comment_list_writer\">{$item->nick_name}:</span>";
 		$str .= "<span class=\"comment_list_content\">";
 		if($item->reserve){
-			$str .= "<div class=\"comment_question\"><span style=\"color:#0000FF;\"><b>问题:</b></span>{$item->reserve}</div>";
+			$str .= "<div class=\"comment_question\"><span style=\"color:#EFEFEF;\"><b>问题:</b></span>{$item->reserve}</div>";
 		}		
 		$str .="{$item->comment}</span><div class=\"comment_list_time\">{$item->created_at}</div></div>";
 		echo $str;
