@@ -96,6 +96,7 @@
 			<?php 
 				$record = show_content('smg_images','picture','电视新闻中心','flash','4');
 				$count = count($record);
+				alert($count);
 				for($i=0;$i<$count;$i++){
 					$picsurl[]=$record[$i]->src;
 					$picslink[]='/show/show.php?id='.$record[$i]->id;
