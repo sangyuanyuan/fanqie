@@ -336,7 +336,7 @@ ul {
 				$record = $db->query($sql);
 				$count = count($record);
 		  		for($i=0;$i<$count;$i++){?>
-			  <div style="width:200px; float:left; display:inlne">
+			  <div style="width:180px; float:left; display:inlne">
 				  <div style="color:white; float:left; display:inline;">&middot;<?php echo $record[$i]->name;?></div>
 				  <div style="color:white; float:right; display:inline;"><?php echo $record[$i]->click_count;?></div>
 			  </div><? }?>
