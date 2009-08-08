@@ -117,11 +117,11 @@
      <!-- start left_middle !-->
  	 	 <div id=l_m>
  	 	 	<?php 
-				$sql = 'select i.id as img_id,i.title,i.src2,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.priority=0 and i.is_adopt=1 and c.name="番茄广告" and c.platform="show" order by i.priority asc,i.created_at desc limit 4';
+				$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.priority=0 and i.is_adopt=1 and c.name="番茄广告" and c.platform="show" order by i.priority asc,i.created_at desc limit 4';
 				$record_ad=$db -> query($sql);
 				$count = count($record_ad);
 				for($i=0;$i<$count;$i++){
-					$picsurl[]=$record_ad[$i]->src2;
+					$picsurl[]=$record_ad[$i]->src;
 					$picslink[]='/show/show.php?id='.$record_ad[$i]->id;
 					$picstext[]=flash_str_replace($record_ad[$i]->title);
 				}
