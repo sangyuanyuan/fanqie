@@ -1,7 +1,12 @@
 ﻿<?php
     require_once('../frame.php');
 	$id = $_REQUEST['id'];
-	$sql = 'select id,title,nick_name,description from smg_question where id>='.$id.' and is_adopt=1 order by create_time limit 2';
+	$first_id = $_POST['first_id'];
+	if($first_id!=''){
+		$sql = 'select id,title,nick_name,description from smg_question where id>='.$id.' and id!='.$first_id.' and is_adopt=1 order by create_time limit 2';
+	}else{
+		$sql = 'select id,title,nick_name,description from smg_question where id>='.$id.' and is_adopt=1 order by create_time limit 2';
+	}
 	$db = get_db();
 	$records = $db->query($sql);
 	$number = isset($_POST['number'])?$_POST['number']:'1';
