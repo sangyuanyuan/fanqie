@@ -48,7 +48,8 @@
 	<div id="a_top"><img src="<?php echo $problem[0]->photo_url?>"></div>
 	
 	<div id="time"><?php echo $problem[0]->limit_time;?></div>
-	
+	<div id="right_answer">
+	</div>
 	<div id="point">
 		<?php echo $point;?>
 	</div>
