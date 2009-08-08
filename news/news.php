@@ -28,19 +28,19 @@
 		}
 		if($record[0]->related_news!="")
 		{
-			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"n.priority asc,last_edited_at desc");
+			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"n.priority asc,n.created_at desc");
 			$about = $about1;
 			if(count($about1)<10)
 			{
 				if($record[0]->keywords!=""){
-					$a2=search_keywords($id,$record[0]->keywords,'smg_news',$about1,10-count($about1),"n.priority asc,last_edited_at desc");
+					$a2=search_keywords($id,$record[0]->keywords,'smg_news',$about1,10-count($about1),"n.priority asc,n.created_at desc");
 					$about = array_merge($about, $a2);
 				}
 			}
 		}
 		else{
 			
-			$about=search_keywords($id,$record[0]->keywords,'smg_news',$record,10,"n.priority asc,last_edited_at desc");
+			$about=search_keywords($id,$record[0]->keywords,'smg_news',$record,10,"n.priority asc,n.created_at desc");
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
@@ -80,7 +80,7 @@
 		<div id=l_b>
 			<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
-			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="我要报料"){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
+			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="我要报料"){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->n.created_at;?></div>
 			<?php if($record[0]->video_src!=""&&$record[0]->video_src!=null){
 					if($record[0]->low_quality==0){
 				?>
@@ -112,11 +112,11 @@
 				<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
 							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->n.created_at; ?>)</span>
 							</a>
 						<?php }else{?>
 							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->n.created_at; ?>)</span>
 							</a>
 						<?php }?>
 					</div>		
@@ -224,7 +224,7 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,n.created_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
