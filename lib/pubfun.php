@@ -537,7 +537,7 @@ function search_keywords($id,$key,$table_name='smg_news',$about='',$page_count =
 	array_push($d,"n.is_adopt=1");
 	$d = implode(' and ',$d);
 	$c = implode(' OR ' ,$c);
-	$sql = "select n.title,n.id,n.last_edited_at,n.category_id,n.platform from " .$table_name ." n inner join smg_category c on n.category_id=c.id and ".$d." and (".$c.")";
+	$sql = "select n.title,n.id,n.created_at,n.category_id,n.platform from " .$table_name ." n inner join smg_category c on n.category_id=c.id and ".$d." and (".$c.")";
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}
@@ -553,7 +553,7 @@ function search_keywords($id,$key,$table_name='smg_news',$about='',$page_count =
 function search_newsid($id,$key,$table_name='smg_news',$page_count = 10, $order=''){
 	$table = new table_class($table_name);
 
-	$sql = "select n.title,n.id,n.last_edited_at,n.category_id,n.platform from " . $table_name ." n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.id<>".$id." and n.id in (".$key.")";
+	$sql = "select n.title,n.id,n.created_at,n.category_id,n.platform from " . $table_name ." n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.id<>".$id." and n.id in (".$key.")";
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}
