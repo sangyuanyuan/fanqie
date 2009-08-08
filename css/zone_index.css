@@ -103,10 +103,10 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #b_c #b_c_r{width:120px; height:110px; margin-top:20px; margin-left:10px; float:left; display:inline;}
 #b_c #b_c_r #b_c_r_title{width:140px; height:20px; font-size:16px; font-weight:bold; color:#333333; line-height:20px; overflow:hidden; float:left; display:inline;}
 #b_c #b_c_r #b_c_r_content{width:140px; height:80px; margin-top:10px; line-height:20px; overflow:hidden; float:left; display:inline;}
-#b_c .content{width:156px; height:20px; overflow:hidden; float:left; display:inline;}
+#b_c .content{width:144px; height:20px; line-height:20px; margin-top:5px; overflow:hidden; float:left; display:inline;}
 #b_c .content a{color:#000000; text-decoration:none;}
-#b_c #b_c_b_l{width:160px; height:60px; overflow:hidden; float:left; display:inline;}
-#b_c #b_c_b_r{width:160px; height:60px; overflow:hidden; float:right; display:inline;}
+#b_c #b_c_b_l{width:150px; margin-top:10px; margin-left:16px; overflow:hidden; float:left; display:inline;}
+#b_c #b_c_b_r{width:150px; margin-top:10px; overflow:hidden; float:right; display:inline;}
 .b_r{width:185px; height:132px; background:url('/images/zone/index_b_r.jpg') no-repeat; float:right; display:inline;}
 .b_r .title{width:170px; height:20px; margin-top:7px; margin-left:5px; line-height:20px; color:#ffffff; font-size:16px; font-weight:bold; float:left; display:inline;}
 .b_r .content{width:165px; height:100px; margin-left:10px; overflow:hidden; float:left; display:inline;}

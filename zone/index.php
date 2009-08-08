@@ -213,15 +213,15 @@
 		<div id=b_c>
 			<div id=title>博主秀</div>
 			<div id=b_c_l><div id=pic><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><img border=0 src="<?php echo $blogsure[0]->photo_src;?>"></a></div></div>
-			<div id=b_c_r><div id=b_c_r_title><?php echo $blogsure[0]->short_title; ?></div><div id=b_c_r_content><?php echo $blogsure[0]->description;?></div></div>
+			<div id=b_c_r><div id=b_c_r_title><?php echo $blogsure[0]->short_title;?></div><div id=b_c_r_content><?php echo $blogsure[0]->description;?></div></div>
 			<div id=b_c_b_l>
 				<?php for($i=1;$i<4;$i++){ ?>
-					<div class=content><a href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
+					<div class=content><a target="_blank" href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
 				<?php } ?>
 			</div>
 			<div id=b_c_b_r>
 				<?php for($i=4;$i<count($blogsure);$i++){ ?>
-					<div class=content><a href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
+					<div class=content><a target="_blank" href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
 				<?php } ?>
 			</div>
 		</div>
