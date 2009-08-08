@@ -17,19 +17,19 @@
 		$db = get_db();
 		if($id!=""&&$id!=null&&$type=="")
 		{
-			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id." order by n.priority asc,n.last_edited_at desc";
+			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id." order by n.priority asc,n.created_at desc";
 		}
 		else if($tags!=""&&$tags!=null)
 		{
-			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."' order by n.last_edited_at desc";
+			$sql="select n.title,c.platform,n.id,n.created_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.tags='".$tags."' order by n.created_at desc";
 		}
 		else if($id!=""&&$type!="")
 		{
-			$sql="select n.id,n.title,n.last_edited_at,c.name as cname from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type='news' and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.id=".id." inner join smg_subject s on c.subject_id=s.id and s.identity='".$type."' order by n.priority asc, n.last_edited_at desc";
+			$sql="select n.id,n.title,n.created_at,c.name as cname from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type='news' and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.id=".id." inner join smg_subject s on c.subject_id=s.id and s.identity='".$type."' order by n.priority asc, n.created_at desc";
 		}
 		else 
 		{
-			$sql="select title,platform,id,last_edited_at,category_id from smg_news where is_adopt=1 order by last_edited_at desc";	
+			$sql="select title,platform,id,created_at,category_id from smg_news where is_adopt=1 order by created_at desc";	
 		}
 		
 		$record=$db->paginate($sql,30);		
@@ -52,12 +52,12 @@
 					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
 					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
-				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
 			<?php }else{?>
 			<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
 					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
-				<div class=l_b_r><?php echo $record[$i]->last_edited_at; ?></div>
+				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
 			<?php }} ?>
 			<div id=page><?php paginate('');?></div>
 		</div>
@@ -67,7 +67,7 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and tags='小编推荐' order by n.priority asc,created_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
