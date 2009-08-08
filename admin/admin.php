@@ -15,9 +15,12 @@
 	<?php	
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('jquery.cookie.js', 'pubfun');
+		js_include_tag('jquery.cookie.js', 'pubfun','total');
   ?>
 </head>
+<script>
+total("后台","other");	
+</script>
 <body style="background:url(/images/admin/bg.jpg) repeat-x;">
 	<div id=admin_body>
 		<div id=part1>
