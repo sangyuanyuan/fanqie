@@ -14,7 +14,7 @@ a{text-decoration:none;}
 .l .title1 .left2{cursor:pointer; color:#999999; float:left; display:inline; line-height:15px;} 
 .l .title1 .more{width:50px; margin-top:2px; font-size:12px; float:right; display:inline;}
 .l .title1 .more a{color:#FF6600; line-height:15px;}
-.l .title{ height:20px; padding:10px; color:#141414; font-weight:bold; font-size:15px; border-bottom:1px solid #DFDFDF; float:left; display:inline;}
+.l .title{width:270px; height:20px; padding:10px; color:#141414; font-weight:bold; font-size:15px; border-bottom:1px solid #DFDFDF; float:left; display:inline;}
 .l .title .left{ cursor:pointer; float:left; display:inline; line-height:15px;} 
 .l .title .more{width:50px; margin-top:2px; font-size:12px; float:right; display:inline;}
 .l .title .more a{color:#FF6600; line-height:15px;}
