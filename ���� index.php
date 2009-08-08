@@ -44,11 +44,10 @@ total("首页","other");
 					<a href="/show/show.php?id=<?php echo $record_star[0]->img_id?>" target=_blank><img src="<?php echo $record_star[0]->src?>" width=270px; height=180px; border=0></a>
 				<? }else{?>
 					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-					<div id="focus_01"></div> 
+					<div id="focus_02"></div> 
 					<script type="text/javascript"> 
 					var pic_width1=271; //图片宽度
 					var pic_height1=183; //图片高度
-					
 					<?php 
 						$pics1=$record_star[0]->src;
 						$mylinks1="/show/show.php?id=".$record_star[0]->img_id;
@@ -60,8 +59,8 @@ total("首页","other");
 					?>
 					var pics1=<?php echo '"',$pics1,'"'?>;
 					var mylinks1=<?php echo '"',$mylinks1,'"'?>;
-					var texts1=<?php echo '"',$texts1,'"'?>;			
-					 	
+					var texts1=<?php echo '"',$texts1,'"'?>;
+ 	
 					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
 					picflash.addVariable("picurl",pics1);
@@ -75,7 +74,7 @@ total("首页","other");
 					picflash.addVariable("textheight","15");				
 					picflash.addVariable("pic_width",pic_width1);
 					picflash.addVariable("pic_height",pic_height1);
-					picflash.write("focus_01");				
+					picflash.write("focus_02");				
 					</script>	
 					
 				<? }?>	
@@ -93,20 +92,11 @@ total("首页","other");
 					var pic_width1=271; //图片宽度
 					var pic_height1=183; //图片高度
 					
-					<?php 
-						$pics1=$record_ad[0]->src;
-						$mylinks1="/show/show.php?id=".$record_ad[0]->img_id;
-						$texts1=flash_str_replace($record_ad[0]->title);
-						if($record_ad[1]->ipriority==0){$pics1=$pics1.",".$record_ad[1]->src;$mylinks1=$mylinks1.","."/show/show.php?id=".$record_ad[1]->img_id;$texts1=$texts1.",".flash_str_replace($record_ad[1]->title);}
-						if($record_ad[2]->ipriority==0){$pics1=$pics1.",".$record_ad[2]->src;$mylinks1=$mylinks1.","."/show/show.php?id=".$record_ad[2]->img_id;$texts1=$texts1.",".flash_str_replace($record_ad[2]->title);}
-						if($record_ad[3]->ipriority==0){$pics1=$pics1.",".$record_ad[3]->src;$mylinks1=$mylinks1.","."/show/show.php?id=".$record_ad[3]->img_id;$texts1=$texts1.",".flash_str_replace($record_ad[3]->title);}
-						
-					?>
-					var pics1=<?php echo '"',$pics1,'"'?>;
-					var mylinks1=<?php echo '"',$mylinks1,'"'?>;
-					var texts1=<?php echo '"',$texts1,'"'?>;			
-								
-					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "271", "183", "4","#FFFFFF");
+					var pics1="<?php echo $record_ad[0]->src.",".$record_ad[1]->src.",".$record_ad[2]->src.",".$record_ad[3]->src ?>";
+					var mylinks1="<?php echo "/show/show.php?id=".$record_ad[0]->img_id.",/show/show.php?id=".$record_ad[1]->img_id.",/show/show.php?id=".$record_ad[2]->img_id.",/show/show.php?id=".$record_ad[3]->img_id; ?>";
+					var texts1=<?php echo '"'.flash_str_replace($record_ad[0]->title).",".flash_str_replace($record_ad[1]->title).",".flash_str_replace($record_ad[2]->title).",".flash_str_replace($record_ad[3]->title).'"' ?>;
+			
+					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
 					picflash.addVariable("picurl",pics1);
 					picflash.addVariable("piclink",mylinks1);
@@ -301,7 +291,7 @@ total("首页","other");
 					$record_import_a=$db -> query($sql);
 					$sql = 'select n.photo_src, c.platform,n.id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news" order by n.priority asc,n.created_at desc limit 6';
 					$record_import_b=$db -> query($sql);
-					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-专" and c.platform="news" order by n.priority asc,n.created_at desc limit 2';
+					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-专" and c.platform="news" order by n.priority asc,n.created_at desc limit 41';
 					$record_import_c=$db -> query($sql);
 				?>	
  				<div id=box>
@@ -340,10 +330,21 @@ total("首页","other");
              <? }?>
  						</ul>								
  						<div style="width:128px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
- 							<a href="/subject/sxxx/" target=_blank><img src="/images/1.jpg" width="125px; height:20px;" border=0></a>
- 							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[0]->platform."/news/news.php?id=".$record_import_c[0]->id ?>" target="_blank"><?php echo $record_import_c[0]->short_title ?></a>
+ 							<img src="/images/1.jpg" width="125px; height:20px;">
+ 							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[0]->platform."/news/news.php?id=".$record_import_a[0]->id ?>" target="_blank"><?php echo $record_import_c[0]->short_title ?></a>
  						</div>
- 			
+ 						
+ 						
+ 						<!--
+ 						<div class=space></div>
+
+   					<ul>
+ 						 <?php for($i=0; $i<3; $i++){?>
+ 							<li><div><a href="<?php echo "/".$record_import_c[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank"><?php echo $record_import_c[$i]->short_title ?></a></div><div><?php show_img($record_import_c[$i]->image_flag,18,17)?><?php show_video($record_import_c[$i]->video_flag,18,17)?></div></li>
+             <? }?>
+ 						</ul>							
+						<div class=space></div>
+						-->
    					<ul>
  						 <?php for($i=18; $i<21; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
@@ -358,30 +359,28 @@ total("首页","other");
  					</div>	 
  					
  					<div id=r>
- 						<div style="width:128px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
- 							<a href="/subject/djnews/" target=_blank><img src="/images/2.jpg" width="125px; height:20px;" border=0></a>
- 							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[1]->platform."/news/news.php?id=".$record_import_c[1]->id ?>" target="_blank"><?php echo $record_import_c[1]->short_title ?></a>
- 						</div>
-     				<ul>
- 						 <?php for($i=26; $i<27; $i++){?>
+						<a href="<?php echo "/".$record_import_b[2]->platform."/news/news.php?id=".$record_import_b[2]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[2]->photo_src ?>" border=0 ></a>
+						<a href="<?php echo "/".$record_import_b[3]->platform."/news/news.php?id=".$record_import_b[3]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[3]->photo_src ?>" border=0 ></a>
+    				<ul>
+ 						 <?php for($i=26; $i<28; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>
      				<ul>
- 						 <?php for($i=27; $i<30; $i++){?>
+ 						 <?php for($i=28; $i<31; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>
       			<ul>
- 						 <?php for($i=30; $i<33; $i++){?>
+ 						 <?php for($i=31; $i<34; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>												
       			<ul>
- 						 <?php for($i=33; $i<38; $i++){?>
+ 						 <?php for($i=34; $i<39; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	
