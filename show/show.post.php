@@ -15,8 +15,6 @@
 				redirect($_SERVER['HTTP_REFERER']);
 			}
 			$image->src = "/upload/images/" .$img;
-			$image->create_thumb('middle',50);
-			$image->create_thumb('small',170,70);
 		}
 		$image->category_id=category_id_by_name('我要上传','picture');
 		$image->commentable = 'on';
@@ -53,6 +51,6 @@
 		$video->created_at = date("Y-m-d H:i:s");
 		$video->save();
 	}
-	alert("上传成功！谢谢！");
+	alert("上传成功！请等待管理员审批！");
 	redirect($_SERVER['HTTP_REFERER']);
 ?>

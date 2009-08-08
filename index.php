@@ -839,10 +839,14 @@ total("首页","other");
 						</div></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
-				          			<TD id=demo8 vAlign=top></TD></TR></TBODY></TABLE></DIV>
+				          			<TD id="demo8" vAlign=top></TD></TR></TBODY></TABLE></DIV>
 								      <SCRIPT>
+								        var demo6 = document.getElementById('demo6');
+										var demo7 = document.getElementById('demo7');
+										var demo8 = document.getElementById('demo8');  
 								      	$(document).ready(function(){
 											var speed=30//速度数值越大速度越慢
+											
 											demo8.innerHTML=demo7.innerHTML
 											function Marquee(){
 											if(demo8.offsetWidth-demo6.scrollLeft<=0)
