@@ -107,6 +107,8 @@
 <input type="hidden" name="number" value="<?php echo $number+1;?>">
 <input type="hidden" name="lave" value="<?php echo $lave-1;?>">
 <input type="hidden" name="first_id" value="<?php echo $first_id;?>">
+<input type="hidden" name="r_id" value="0">
+<input type="hidden" name="r_type" value="wydt">
 <input type="hidden" name="answer" value="<?php echo $answer_name;?>">
 <input type="hidden" name="is_right" id="is_right" value="0">
 <input type="hidden" name="point" id="r_point" value="<?php echo $point;?>">

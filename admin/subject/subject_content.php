@@ -6,6 +6,8 @@
 	$content_type= $_REQUEST['content_type'] ? $_REQUEST['content_type'] : 'news';
 	require_once('../../frame.php');	
 	$db = get_db();
+	$subject = new table_class('smg_subject');
+	$subject = $subject->find($subject_id);
 	$title = urldecode($_REQUEST['title']);
 	$user = judge_role('admin');	
 	$category_id = $_REQUEST['category_id'] ? $_REQUEST['category_id'] : -1;
@@ -30,14 +32,17 @@
 		case 'news':
 			$items = $db->paginate("select b.*,a.is_adopt as adopt, a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name from smg_subject_items a left join smg_news b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id where a.category_type='news' and $conditions order by subject_priority asc, b.created_at desc",20);;
 			$categories = $db->query("select * from smg_subject_category where subject_id=$subject_id and category_type='news'");
+			$title_name = 'short_title';
 		break;
 		case 'video':
 			$items = $db->paginate("select b.*,a.is_adopt as adopt,a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name  from smg_subject_items a left join smg_video b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id  where a.category_type='video' and $conditions order by subject_priority asc, b.created_at desc",20);;
 			$categories = $db->query("select * from smg_subject_category where subject_id=$subject_id and category_type='video'");
+			$title_name = 'title';
 		break;
 		case 'photo':
 			$items = $db->paginate("select b.*,a.is_adopt as adopt,a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name  from smg_subject_items a left join smg_images b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id  where a.category_type='photo' and $conditions order by subject_priority asc, b.created_at desc",20);;
 			$categories = $db->query("select * from smg_subject_category where subject_id=$subject_id and category_type='photo'");
+			$title_name = 'title';
 		break;
 		default:
 			;
@@ -115,10 +120,11 @@
 			//--------------------
 			
 			for($i=0;$i<count($items);$i++){
+				$url = "/subject/{$subject->identity}/{$content_type}.php?id={$items[$i]->id}";
 		?>
 				<tr class=tr3 id=<?php echo $items[$i]->item_id;?> >
 					<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $items[$i]->id;?>"></td>					
-					<td><a href="<?php echo $url;?>" target="_blank"><?php echo strip_tags($items[$i]->title);?></a></td>
+					<td><a href="<?php echo $url;?>" target="_blank"><?php echo strip_tags($items[$i]->$title_name);?></a></td>
 					<td>
 						<a href="?category=<?php echo $record[$i]->category_id;?>" style="color:#0000FF">
 							<?php echo $items[$i]->category_name; ?>
