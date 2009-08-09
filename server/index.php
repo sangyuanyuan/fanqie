@@ -122,8 +122,9 @@
 								      <SCRIPT>
 								      	$(document).ready(function(){
 											var speed=30//速度数值越大速度越慢
-											var demo = document.getElementById('demo6');
-											var demo2 = document.getElementById('demo7');
+											var demo = document.getElementById('demo');
+											var demo1 = document.getElementById('demo1');
+											var demo2 = document.getElementById('demo2');
 											demo2.innerHTML=demo1.innerHTML
 											function Marquee(){
 											if(demo2.offsetWidth-demo.scrollLeft<=0)
@@ -308,9 +309,9 @@
 								      <SCRIPT>
 								      	$(document).ready(function(){
 											var speed=30//速度数值越大速度越慢
-											var demo3 = document.getElementById('demo6');
-											var demo4 = document.getElementById('demo7');
-											var demo5 = document.getElementById('demo8');  
+											var demo3 = document.getElementById('demo3');
+											var demo4 = document.getElementById('demo4');
+											var demo5 = document.getElementById('demo5');  
 											demo5.innerHTML=demo4.innerHTML
 											function Marquee(){
 											if(demo5.offsetWidth-demo3.scrollLeft<=0)
