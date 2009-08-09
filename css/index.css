@@ -26,12 +26,14 @@ p{margin:0px; padding:0px;}
 
 #t_l_m{width:297px; height:253px; background:url(/images/index/bg_t_l_m.jpg) no-repeat; float:left; display:inline;}
 #t_l_m .btn_tlm{width:83px; height:19px; margin-left:44px; padding-top:12px; line-height:15px; font-weight:bold; text-align:center; color:#ffffff; cursor:pointer; float:left; display:inline;}
+#t_l_m .btn_tlm a{color:#ffffff; text-decoration:none;}
 #t_l_m .list_tlm{width:260px; height:200px; margin-top:10px; margin-left:18px;  float:left; display:none;}
 #t_l_m .list_tlm li{width:245px; height:19px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; float:left; display:inline;}
 #t_l_m .list_tlm li a{color:#000000; text-decoration:none;}
 
 #t_l_b{width:305px; height:260px; background:url(/images/index/bg_t_l_b.jpg) no-repeat; float:left; display:inline;}
 #t_l_b .btn_tlb{width:83px; height:31px; margin-top:6px; margin-left:44px; padding-top:12px; line-height:15px; font-weight:bold; text-align:center; color:#ffffff; cursor:pointer;  float:left; display:inline;}
+#t_l_b .btn_tlb a{color:#ffffff; text-decoration:none;}
 #t_l_b .list_tlb{width:260px; height:200px; margin-top:3px; margin-left:18px;  float:left; display:none;}
 #t_l_b .list_tlb li{width:245px; height:19px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; float:left; display:inline;}
 #t_l_b .list_tlb li a{color:#000000; text-decoration:none;}
@@ -51,7 +53,7 @@ p{margin:0px; padding:0px;}
 
 #t_r_c_m{width:467px; height:381px; background:url(/images/index/bg_t_r_c_m.jpg) no-repeat; overflow:hidden; float:left; display:inline;}
 #t_r_c_m #title{width:86px; height:33px; margin-top:5px; background:url(/images/index/title1.gif) no-repeat; float:left; display:inline;}
-#t_r_c_m #content1{width:310px; height:20px; margin-top:12px; font-size:14px; font-weight:bold; color:#FF6600; line-height:15px; text-align:center; float:left; display:inline;}
+#t_r_c_m #content1{width:310px; height:20px; margin-top:12px; font-size:14px; font-weight:bold; color:#FF6600; line-height:20px; text-align:center; float:left; display:inline;}
 #t_r_c_m #content1 a{color:#FF6600; text-decoration:none;}
 #t_r_c_m #btn{width:57px; height:23px; margin-top:6px; margin-left:3px; background:url(/images/index/btn6.gif) no-repeat; float:left; display:inline;}
 #t_r_c_m #box{width:446px; height:303px;  margin-top:3px; margin-left:10px; float:left; display:inline;}
