@@ -116,6 +116,7 @@
 <script language="javascript"> 
 	var answer = '';
 	var r_answer = $("#answer").val();
+	alert(r_answer);
 	var point = 0;
 	if($("#limit_time").attr('value')!=''){
 		var second = $("#limit_time").attr('value');
