@@ -24,7 +24,9 @@
 	 	</ul>
 		<?php }?>
 	  <div id=weather>
+	  <!--
 			<iframe src="/index_weather.php" width=135px height=22px scrolling="no" frameborder="0"></iframe>
+		!-->25℃～28℃ 大雨
 	  </div>	
 	  <span id=deptbtn onclick='$("#deptcontent").show();'></span>	  
 	  <div id=search>
