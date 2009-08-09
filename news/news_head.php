@@ -39,14 +39,6 @@
 		$comment=$db->paginate($sql,5);
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,(select count(*) from smg_digg cd where cd.diggtoid=d.diggtoid and cd.file_type='comment') as total,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by total desc limit 2";
 		$digg=$db->query($sql);
-		if($record[0]->news_type==2)
-		{
-			redirect($record[0]->file_name);
-		}
-		else if($record[0]->news_type==3)
-		{
-			redirect($record[0]->target_url);
-		}
     ?>
  <?php if($record[0]->cplatform=="news"){?>
 <script>
@@ -71,7 +63,16 @@
 <?php } ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
-<? require_once('../inc/top.inc.html');?>
+<? 
+if($record[0]->news_type==2)
+{
+	redirect($record[0]->file_name);
+}
+else if($record[0]->news_type==3)
+{
+	redirect($record[0]->target_url);
+}
+require_once('../inc/top.inc.html');?>
 <div id=ibody>
 	<div id=ibody_left>
 		<input type="hidden" id="newsid" value="<?php echo $id;?>">

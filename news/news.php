@@ -18,14 +18,6 @@
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
 		$record=$db->query($sql);
 		
-		if($record[0]->news_type==2)
-		{
-			redirect($record[0]->file_name);
-		}
-		else if($record[0]->news_type==3)
-		{	
-			redirect($record[0]->target_url);
-		}
 		if($record[0]->related_news!="")
 		{
 			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"n.priority asc,n.created_at desc");
@@ -70,7 +62,17 @@
 <?php } ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
-<? require_once('../inc/top.inc.html');?>
+<?php
+if($record[0]->news_type==2)
+{
+	redirect($record[0]->file_name);
+}
+else if($record[0]->news_type==3)
+{	
+	redirect($record[0]->target_url);
+}	
+require_once('../inc/top.inc.html');
+?>
 <div id=ibody>
 	<input type="hidden" id="newsid" value="<?php echo $id;?>">
 	<div id=ibody_left>
