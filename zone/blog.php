@@ -82,7 +82,7 @@
 		
 		</div>
 		<div id=c_b>
-			<div id=title>劲酷热图</div>	
+			<div id=title><a href="/zone/hotimg.php" target=_blank>劲酷热图</a></div>	
 			<?php
   			$sql = 'select i.id as img_id,i.src,i.title,i.url from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="劲爆热图" and c.platform="zone" order by i.priority asc limit 3';
 				$record=$db -> query($sql);	
@@ -136,17 +136,18 @@
 			
 		</div>
 		<div id=r>
-			<div class=r_title>博主真人秀</div>
+			<div class=r_title>博主秀</div>
  			<?php
-  			$sql = 'select i.src,i.title,i.url,i.description from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="博主真人秀" and c.platform="zone" order by i.priority asc limit 1';
+  			$sql = 'select n.id,n.content,n.short_title,c.platform,n.photo_src  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="博主秀" and c.platform="zone" order by n.priority asc,n.created_at desc limit 6';
 				$record=$db -> query($sql);	
 			?>
 			<div class=content3>
-				<a href="<?php echo $record[0]->url?>" target=_blank><img src="<?php echo $record[0]->src?>" border=0></a>
-				<div id=title><a href="<?php echo $record[0]->url?>" target=_blank><?php echo $record[0]->title?></a></div>
-				<div id=description>
-					<?php echo $record[0]->description ?>
-				</div>
+				<a href="<?php echo "/".$record[0]->platform."/news/news.php?id=".$record[0]->id ?>" target=_blank><img src="<?php echo $record[0]->photo_src?>" border=0></a>
+				<div id=title><a href="<?php echo "/".$record[0]->platform."/news/news.php?id=".$record[0]->id ?>" target=_blank><?php echo $record[0]->short_title?></a></div>
+				<div id=description><a href="<?php echo "/".$record[0]->platform."/news/news.php?id=".$record[0]->id ?>" target=_blank><?php echo strip_tags($record[0]->content); ?></a></div>
+				<?php for($i=1;$i<=5;$i++){?>
+				<div class=box><a href="<?php echo "/".$record[$i]->platform."/news/news.php?id=".$record[$i]->id ?>" target=_blank><?php echo $record[$i]->short_title?></a></div>
+				<? }?>
 			</div>
 		</div>
 				
