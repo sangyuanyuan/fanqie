@@ -272,6 +272,11 @@
 				alert("请输入评论内容！");
 				return false;
 			}
+			
+			if(comment.length > 1500){
+				alert('评论内容太长,请联系管理员');
+				return false;
+			}
 			$("#comment_form").submit();
 		});
 	});
