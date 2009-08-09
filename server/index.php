@@ -122,7 +122,7 @@
 								      <SCRIPT>
 								      	$(document).ready(function(){
 											var speed=30//速度数值越大速度越慢
-											var demo1 = document.getElementById('demo6');
+											var demo = document.getElementById('demo6');
 											var demo2 = document.getElementById('demo7');
 											demo2.innerHTML=demo1.innerHTML
 											function Marquee(){
