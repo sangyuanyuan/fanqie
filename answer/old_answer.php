@@ -101,6 +101,8 @@
 <input type="hidden" name="limit_time" id="limit_time" value="<?php echo $problem[0]->limit_time;?>">
 <input type="hidden" name="point_value" id="point_value" value="<?php echo $problem[0]->point;?>">
 <input type="hidden" name="number" value="<?php echo $number+1;?>">
+<input type="hidden" name="r_id" value="<?php echo $problem_id; ?>">
+<input type="hidden" name="r_type" value="<?php echo $problem[0]->name;?>">
 <input type="hidden" name="lave" value="<?php echo $lave-1;?>">
 <input type="hidden" name="point" id="r_point" value="<?php echo $point;?>">
 <input type="hidden" name="record[nick_name]" id="nick_name">
