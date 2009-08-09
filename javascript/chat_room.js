@@ -26,6 +26,10 @@ $(function(){
 			return false;
 		}
 		content = content.replace(/<\/?p>/gi,"");
+		if(content.length > 1500){
+				alert('内容太长,请分次发送');
+				return false;
+		}
 		add_chat(content,'i');
 		oEditor.SetHTML('');
 		$('#ajax_result').load('chat_room.post.php',{'op':'chat','content':content});	
