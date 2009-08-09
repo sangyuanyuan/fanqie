@@ -1,4 +1,4 @@
-var time=5000;
+var time=200000;
 setTimeout("a1()",time);
 
 function a1()
