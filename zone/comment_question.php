@@ -41,6 +41,10 @@
 				alert('请输入评论内容!');
 				return false;
 			};
+			if(content.length > 1500){
+				alert('评论内容过长,请不要超过1500个字符');
+				return false;
+			}
 			$('#cq_comment').val(content);
 			$.post('/pub/comment.post.php',$('#form_comment_q').serializeArray(),function(data){
 				if(data > 0){
