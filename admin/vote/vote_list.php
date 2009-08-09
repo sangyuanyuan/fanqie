@@ -32,9 +32,9 @@
 			$category_count = count($category_record);
 			$vote = new table_class("smg_vote");
 			if($key!=''){
-				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and category_id>0 and name  like "%'.trim($key).'%"','order' => 'created_at desc'),18);
+				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and category_id>0 and name  like "%'.trim($key).'%"','order' => 'priority,created_at desc'),15);
 			}else{
-				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and category_id>0 ','order' => 'created_at desc'),18);
+				$record = $vote->paginate("all",array('conditions' => 'is_sub_vote=0 and category_id>0 ','order' => 'priority,created_at desc'),15);
 			}
 			$count_record = count($record);
 			//--------------------
@@ -81,6 +81,7 @@
 						<?php if($record[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span><? }?>
 						<a href="vote_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a>
 						<a class="del_vote" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer;">删除</a>
+						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:20px;">
 					</td>
 				</tr>
 		<?php
@@ -91,7 +92,7 @@
 	<div class="div_box">
 		<table width="795" border="0">
 			<tr colspan="5" class=tr3>
-				<td><?php paginate();?></td>
+				<td><?php paginate();?><button id=clear_priority>清空优先级</button>　<button id=edit_priority>编辑优先级</button></td>
 			</tr>
 		</table>
 	</div>
