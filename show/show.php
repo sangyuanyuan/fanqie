@@ -24,7 +24,7 @@
 	if($image->url!=''){
 		$image->click_count = $image->click_count+1;
 		$image->save();
-		if(strpos($image->url,basename($_SERVER['PHP_SELF']))||strpos($image->url,'id='.$id)){
+		if(strpos($image->url,basename($_SERVER['PHP_SELF']))&&strpos($image->url,'id='.$id)){
 			alert('对不起，链接出错了！请联系管理员!');
 		}else{
 			redirect($image->url);

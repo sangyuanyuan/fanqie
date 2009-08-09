@@ -30,7 +30,7 @@
 						$video->click_count = $video->click_count+1;
 						$video->save();
 						if($video->online_url!=''){
-							if(strpos($video->online_url,basename($_SERVER['PHP_SELF']))||strpos($video->online_url,'id='.$id)){
+							if(strpos($video->online_url,basename($_SERVER['PHP_SELF']))&&strpos($video->online_url,'id='.$id)){
 								alert('对不起，链接出错了！请联系管理员!');
 							}else{
 								redirect($video->online_url);

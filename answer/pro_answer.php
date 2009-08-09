@@ -5,6 +5,7 @@
 	$number = isset($_POST['number'])?$_POST['number']:'1';
 	$point = isset($_POST['point'])?$_POST['point']:'0';
 	$db = get_db();
+	$rand_question = $_POST['rand_question'];
 	$sql = 'select * from smg_problem where id='.$problem_id;
 	$problem = $db->query($sql);
 	$type = $problem[0]->type;
