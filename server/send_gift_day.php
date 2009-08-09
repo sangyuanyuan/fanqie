@@ -2,7 +2,7 @@
   include "../frame.php";
   $db = get_db();
   $date = $_REQUEST['date'];
-  $birthday = $db->query("select a.nickname,a.loginname,b.name from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='$date' and  hide_birthday!=1  order by a.org_id");
+  $birthday = $db->query("select a.nickname,a.loginname,b.name from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='$date' and and state=3  hide_birthday!=1  order by a.org_id");
   if(!$_REQUEST['hide_retdiv']){
   	echo "<div id=retdiv>";
   }
