@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     require_once('../frame.php');
 	
 	$problem_id = $_REQUEST['id'];
@@ -42,7 +42,7 @@
 	js_include_once_tag('thickbox');
 ?>
 
-<form id="answer_form" method="POST" action="pro_answer.php?id=<?php echo $problem_id; ?>" >
+<form id="answer_form" method="POST" action="old_answer.php?id=<?php echo $problem_id; ?>" >
 <div id=ibody>
 
 	<div id="a_top"><img src="<?php echo $problem[0]->photo_url?>"></div>
