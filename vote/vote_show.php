@@ -138,6 +138,10 @@ for($i=0;$i<count($comments);$i++){?>
 				alert('请输入评论内容!');
 				return false;
 			}
+			if(content.length > 1500){
+				alert('评论内容太长,请控制长度');
+				return false;
+			}
 			var id = <?php echo $vote->id;?>;
 			$.post('/pub/comment.post.php',{'comment[resource_type]':'vote','comment[resource_id]':id,'comment[nick_name]':nick_name,'comment[comment]':content},function(data){window.location.reload();});
 			
