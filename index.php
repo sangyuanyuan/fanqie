@@ -181,7 +181,7 @@ total("首页","other");
 
  			<!-- start top_left_bottom !-->
  			<?php
-				$sql = 'select n.id,n.short_title,n.title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.tags="小编加精"  order by priority asc,n.last_edited_at desc limit 10';
+				$sql = 'select n.id,n.short_title,n.title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.tags="小编加精"  order by n.priority asc,n.last_edited_at desc limit 10';
 				$record_marrow=$db -> query($sql);
 				$sql = 'select n.id,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.platform="server" order by n.priority asc,n.created_at desc limit 10';
 				$record_quick=$db -> query($sql);
