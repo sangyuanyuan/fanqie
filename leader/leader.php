@@ -21,7 +21,7 @@
 	<div id=bodys>
 		<div id=l_left>
 			<?php
-			$depts = $db->query('select * from smg_dept order by priority asc');
+			$depts = $db->query('select * from smg_dept order by priority asc,id asc');
 			 
 			for($i=0;$i<count($depts);$i++)
 			{
@@ -40,12 +40,21 @@
 				<div class=content>
 					<? 
 					//获得部门领导
-					$deptleaders = $db->query('select * from smg_leader where dept_id=' .$dept->id .' order by priority asc');
+					$deptleaders = $db->query('select * from smg_leader where dept_id=' .$deptid .' order by priority asc');
 					for($i=0;$i<2 && $i<count($deptleaders);$i++){?>
 					<div class=context>
 						<div class=pic><img width=84 height=113 border=0 src="<?php echo $deptleaders[$i]->photourl;?>" /></div>
 						<div class=name><?php echo $deptleaders[$i]->name;?></a></div>
 						<div class=identity><?php echo $deptleaders[$i]->description;?></div>		
+					</div>
+					<? }?>
+				</div>
+				<div class=content>
+					<? for($i=2;$i<count($deptleaders);$i++){?>
+					<div class=context>
+						<div class=pic><a href="/leader/writeletter.php?leaderid=<?php echo $deptleaders[$i]->id;?>" target="_blank"><img width=84 height=113 border=0 src="<?php echo $deptleaders[$i]->photourl;?>" /></a></div>
+						<div class=name><a href="/leader/writeletter.php?leaderid=<?php echo $deptleaders[$i]->id;?>" target="_blank"><?php echo $deptleaders[$i]->name;?></a></div>
+						<div class=identity><a href="/leader/writeletter.php?leaderid=<?php echo $deptleaders[$i]->id;?>" target="_blank"><?php echo $deptleaders[$i]->description;?></a></div>		
 					</div>
 					<? }?>
 				</div>
