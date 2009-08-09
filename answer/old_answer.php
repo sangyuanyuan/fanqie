@@ -8,14 +8,14 @@
 	$sql = 'select * from smg_problem where id='.$problem_id;
 	$problem = $db->query($sql);
 	$type = $problem[0]->type;
-	$sql = 'select id,title,nick_name from smg_question where problem_id='.$problem_id.' order by create_time limit '.($number-1).',1';
+	$sql = 'select id,title,nick_name from smg_question where old_problem_id='.$problem_id.' order by create_time limit '.($number-1).',1';
 	$records = $db->query($sql);
 	if(isset($_POST['lave'])){
 		$lave = $_POST['lave'];
 		$q_count = $_POST['count']+1;
 		$t_count = $_POST['t_count'];
 	}else{
-		$sql = 'select count(*) as count from smg_question where problem_id='.$problem_id.' order by create_time';
+		$sql = 'select count(*) as count from smg_question where old_problem_id='.$problem_id.' order by create_time';
 		$record = $db->query($sql);
 		$t_count = $record[0]->count;
 		$lave = $record[0]->count-1;
