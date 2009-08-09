@@ -127,7 +127,7 @@
 					<?php echo $coment_record[$i]->comment;?>
 				</div>
 				<? }?>
-				<div id=new_page>
+				<div class=new_page>
 					<?php paginate('',null,'comment');?>
 				</div>
 				<form id="comment_form" method="post" action="/pub/pub.post.php">
