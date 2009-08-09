@@ -6,6 +6,8 @@
 	$content_type= $_REQUEST['content_type'] ? $_REQUEST['content_type'] : 'news';
 	require_once('../../frame.php');	
 	$db = get_db();
+	$subject = new table_class('smg_subject');
+	$subject = $subject->find($subject_id);
 	$title = urldecode($_REQUEST['title']);
 	$user = judge_role('admin');	
 	$category_id = $_REQUEST['category_id'] ? $_REQUEST['category_id'] : -1;
@@ -118,6 +120,7 @@
 			//--------------------
 			
 			for($i=0;$i<count($items);$i++){
+				$url = "/subject/{$subject->identity}/{$content_type}.php?id={$items[$i]->id}";
 		?>
 				<tr class=tr3 id=<?php echo $items[$i]->item_id;?> >
 					<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $items[$i]->id;?>"></td>					
