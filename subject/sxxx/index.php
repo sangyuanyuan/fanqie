@@ -33,7 +33,7 @@
 				              <TBODY>
 				              <TR align=middle>
 				              	<? for($i=0;$i<count($news);$i++){?>
-				                <TD><a target="_blank" href="djlist.php?id=<?php echo cid; ?>"><img border=0 width=130 height=90 src="<? echo $news[$i]->photo_src; ?>"></a></TD>
+				                <TD><a target="_blank" href="djlist.php?id=<?php echo $news[0]->cid; ?>"><img border=0 width=130 height=90 src="<? echo $news[$i]->photo_src; ?>"></a></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
 				          			<TD id=demo2 vAlign=top></TD></TR></TBODY></TABLE></DIV>

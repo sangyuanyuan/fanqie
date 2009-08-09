@@ -4,7 +4,9 @@ insert into smg_comment(nick_name,comment,ip,resource_type) select commenter,con
 
 insert into smg_news_debug(dept_id,dept_category_id,title,created_at) select dept_id,dept_category_id,title,created_at from smg_news where dept_category_id!=0
 
-select * from smg_news where title like "%纪实频道获传媒十佳好人好事%"
+select * from smg_news where title like "%毛贻飞与我集团劳动争议及人身损害赔偿纠纷案%"
 
 
 insert into smg_comment(nick_name,title,comment,ip,resource_type) select commenter,title,content,ip,"yhdjs" from smg.smg_dept_comment
+
+update smg_images set publisher="" where publisher="总编室" and dept_id!=7
