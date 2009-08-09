@@ -117,7 +117,7 @@ html,body{
                       <TD><div class=title1>新闻列表</div></TD></TR>
                     <TR>
                       <TD>
-                      <? $news=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="新闻列表" inner join smg_subject s on c.subject_id=s.id and s.name="端午专题" order by n.priority asc, n.last_edited_at desc limit 20');?>
+                      <? $news=$db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="新闻列表" inner join smg_subject s on c.subject_id=s.id and s.name="端午专题" order by i.priority asc, n.created_at desc limit 20');?>
 						<div id=s_left>
 						<? for($i=0; $i<count($news); $i++){
 								if($i==0){	?>

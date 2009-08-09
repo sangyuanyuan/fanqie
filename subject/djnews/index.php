@@ -23,7 +23,7 @@
 		<? include('inc/djtop.inc.php');?>
 					<div id=right>
 						<div class=gd style="background:url(/images/bg/hdjy.jpg) no-repeat;">
-							<? $news = $db->query('select n.photo_src,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动剪影" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by n.priority asc,n.last_edited_at desc limit 6');?>
+							<? $news = $db->query('select n.photo_src,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动剪影" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by i.priority asc,n.created_at desc limit 6');?>
 					<DIV id=Layer5>
 				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
@@ -130,7 +130,7 @@
 						
 						</div>
 						<div class=gd style="background:url(/images/bg/wwjt.jpg) no-repeat;">
-							<? $news1 = $db->query('select n.photo_src from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我为集团献一计" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by n.priority asc, n.last_edited_at desc');?>
+							<? $news1 = $db->query('select n.photo_src from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我为集团献一计" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by i.priority asc, n.created_at desc');?>
 							<DIV id=Layer6>
 				      <DIV id=demo3 style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
@@ -172,13 +172,13 @@
 									<? }?>
 								
 							</div>
-							<? $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="三分钟论坛" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by n.priority asc, n.last_edited_at desc limit 6'); ?>
+							<? $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="三分钟论坛" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by i.priority asc, n.created_at desc limit 6'); ?>
 							
 								<? for($i=0;$i<count($news);$i++){?>
 								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }
-								$news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="即知即改" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by n.priority asc, n.last_edited_at desc limit 6')
+								$news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="即知即改" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by i.priority asc, n.created_at desc limit 6')
 								?>	
 							<div class=title style="margin-left:10px;">即知即改<div class=more><a target="_blank" href="djlist.php?id=<?php echo $news[0]->cid;?>">更多</a></div></div>
 							<div class=title style="margin-left:10px;">三分钟答题</div>
@@ -188,7 +188,7 @@
 									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 									<? }?>
 							</div>
-							<? $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="三分钟答题" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by n.priority asc, n.last_edited_at desc limit 6'); ?>
+							<? $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="三分钟答题" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by i.priority asc, n.created_at desc limit 6'); ?>
 								<? for($i=0;$i<count($news);$i++){?>
 								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
