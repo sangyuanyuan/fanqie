@@ -8,7 +8,23 @@
 		$(".show_vote").click(function(){
 			var vote_id=$(this).prev().prev().attr("value");
 			window.open("/vote/vote_show.php?vote_id="+vote_id);
-		})
+		});
+		
+		$("#comment_sub").click(function(){
+			var oEditor = FCKeditorAPI.GetInstance('post[comment]');
+			var content = oEditor.GetHTML();
+			alert(content.length);
+			if(content==""){
+				alert('评论内容不能为空！');
+				return false;
+			}
+			if(content.length>1500)
+			{
+				alert('评论内容过长请分次评论！');
+				return false;
+			}
+			document.subcomment.submit();
+		});
 		
 		$(".flower").click(function(){
 			var flowernum=$(this).next().next().html();

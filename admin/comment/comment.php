@@ -43,9 +43,9 @@
 		<?php
 			$comment = new table_class("smg_comment");
 			if($conditions!=null){
-				$record = $comment->paginate("all",array('conditions' => $conditions,'order' => 'created_at'),18);
+				$record = $comment->paginate("all",array('conditions' => $conditions,'order' => 'created_at desc'),18);
 			}else{
-				$record = $comment->paginate("all",array('conditions' => 'resource_type="'.$type.'" and resource_id="'.$id.'"','order' => 'created_at'),18);	
+				$record = $comment->paginate("all",array('conditions' => 'resource_type="'.$type.'" and resource_id="'.$id.'"','order' => 'created_at desc'),18);	
 			}
 			$count_record = count($record);
 			//--------------------

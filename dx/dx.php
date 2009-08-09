@@ -8,9 +8,11 @@
 	<?php css_include_tag('smg','top','bottom'); 
 		$db=get_db();
 		use_jquery();
-		js_include_once_tag('dx','news_list');
+		js_include_once_tag('dx','news_list','total');
 	?>
-
+<script>
+	total("短信","other");
+</script>
 </head>
 <body>
 <? include('../inc/top.inc.html');

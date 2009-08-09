@@ -12,27 +12,27 @@
 		use_jquery();
 		js_include_once_tag('zone','total');
 		$db=get_db();
-		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='HOT讨论区' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
+		$sql="select src,url,title from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name='HOT讨论区' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
 		$tlqimg=$db->query($sql);	
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='讨论区' and c.category_type='news' order by n.priority asc,n.created_at desc limit 11";
+		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='讨论区' and c.category_type='news' order by n.priority asc,n.created_at desc limit 11";
 		$record=$db->query($sql);	
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='上班这点事' and c.category_type='news' order by n.priority asc,n.created_at desc limit 12";
+		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='上班这点事' and c.category_type='news' order by n.priority asc,n.id desc limit 12";
 		$sbzds=$db->query($sql);	
-		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='上班这点事' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 2";
+		$sql="select src,url,title from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name='上班这点事' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 2";
 		$sbzdsimg=$db->query($sql);
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='生活大杂烩' and c.category_type='news' order by n.priority asc,n.created_at desc limit 12";
+		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='生活大杂烩' and c.category_type='news' order by n.priority asc,n.created_at desc limit 12";
 		$shdzh=$db->query($sql);
-		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='生活大杂烩' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 2";
+		$sql="select src,url,title from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name='生活大杂烩' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 2";
 		$shdzhimg=$db->query($sql);
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description,c.id as cid from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='观点视角' and c.category_type='news' order by n.priority asc,n.created_at desc limit 8";
+		$sql="select n.id,n.short_title,n.title,n.platform,n.description,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='观点视角' and c.category_type='news' order by n.priority asc,n.created_at desc limit 8";
 		$gdsj=$db->query($sql);
-		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='观点视角' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
+		$sql="select src,url,title from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name='观点视角' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
 		$gdsjimg=$db->query($sql);
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description,c.id as cid from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='分享生活' and c.category_type='news' order by n.priority asc,n.created_at desc limit 11";
+		$sql="select n.id,n.short_title,n.title,n.platform,n.description,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='分享生活' and c.category_type='news' order by n.priority asc,n.created_at desc limit 11";
 		$fxsh=$db->query($sql);
-		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='分享生活' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
+		$sql="select src,url,title from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name='分享生活' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
 		$fxshimg=$db->query($sql);
-		$sql="select n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='交流公告' and c.category_type='news' order by n.priority asc,n.created_at desc limit 1";
+		$sql="select n.description from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='交流公告' and c.category_type='news' order by n.priority asc,n.created_at desc limit 1";
 		$gg=$db->query($sql);
 		$sql="select * from smg_comment where resource_type='zone' order by created_at desc limit 4";
 		$comment=$db->query($sql);
@@ -40,9 +40,9 @@
 		$bbs=$db->query($sql);
 		$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by itemid desc limit 10";
 		$blog=$db->query($sql);
-		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='劲爆热图' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 6";
+		$sql="select src,url,title from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name='劲爆热图' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 6";
 		$jbrt=$db->query($sql);
-		$sql="SELECT count(*) as num,p.author,m.uid FROM bbs_posts p inner join bbs_members m on p.author=m.username and p.author<>'' and p.first=1 group by author order by num desc limit 15";
+		$sql="SELECT count(*) as num,p.author,m.uid FROM bbs_posts p left join bbs_members m on p.author=m.username and p.author<>'' and p.first=1 group by author order by num desc limit 15";
 		$bbsph=$db->query($sql);
 		$sql="SELECT count(*) as num,subject,tid FROM bbs_posts where first=1 group by tid order by num desc limit 10";
 		$bbstophot=$db->query($sql);
@@ -50,10 +50,8 @@
 		$blogph=$db->query($sql);
 		$sql="SELECT uid,spacename FROM blog_userspaces b order by viewnum desc limit 15";
 		$bloghotspace=$db->query($sql);
-		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and c.name='博主真人秀' and c.category_type='news' order by n.priority asc,n.created_at desc limit 1";
+		$sql="select n.photo_src,n.id,n.short_title,n.title,c.platform,n.content from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='博主秀' and c.category_type='news' order by n.priority asc,n.created_at desc limit 7";
 		$blogsure=$db->query($sql);
-		$sql="select src,url,title from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt=1 and c.name='博主真人秀' and c.category_type='picture' order by i.priority asc,i.created_at desc limit 1";
-		$blogsureimg=$db->query($sql);
   ?>
 <script>
 	total("交流首页","zone");
@@ -111,7 +109,7 @@
 		<div id=t_c>
 			<div id=t_c_t>
 				<div id=title1>博客</div>
-				<div id=title2><div class=title2_l>观点视角</div><div class=title2_r><a target="_blank" href="/<?php echo $gdsj[0]->platform; ?>/news/news_list.php?id=<?php echo $gdsj[0]->cid;?>">more</a></div></div>
+				<div id=title2><div class=title2_l>观点视角</div><div class=title2_r><a target="_blank" href="/news/news_list.php?id=<?php echo $gdsj[0]->cid;?>">more</a></div></div>
 				<div id=t_c_t_t>
 					<div id=left>
 						<a target="_blank" href="<?php echo $gdsjimg[0]->url;?>"><div id=pic><img border=0 width=100 height=65 src="<?php echo $gdsjimg[0]->src;?>"></div><div style="width:100px; margin-top:5px; height:15px; text-align:center; text-decoration:none; color:#FF9900; overflow:hidden; cursor:pointer; float:left; display:inline;"><?php echo delhtml($gdsjimg[0]->title);?></div></a>
@@ -130,7 +128,7 @@
 			</div>
 			<div id=t_c_m>
 				<div id=title1>博客</div>
-				<div id=title2><div class=title2_l>分享生活</div><div class=title2_r><a target="_blank" href="/<?php echo $fxsh[0]->platform; ?>/news/news_list.php?id=<?php echo $fxsh[0]->cid;?>">more</a></div></div>
+				<div id=title2><div class=title2_l>分享生活</div><div class=title2_r><a target="_blank" href="/news/news_list.php?id=<?php echo $fxsh[0]->cid;?>">more</a></div></div>
 				<div id=t_c_m_t>
 					<div id=left><a target="_blank" href="<?php echo $fxshimg[0]->url;?>"><div id=pic><img border=0 width=100 height=65 src="<?php echo $fxshimg[0]->src;?>"></div><div style="width:100px; text-align:center; margin-top:5px; height:15px; overflow:hidden; text-decoration:none; color:#FF9900; cursor:pointer; float:left; display:inline;"><?php echo delhtml($fxshimg[0]->title);?></div></a></div>
 					<div id=right>
@@ -171,7 +169,7 @@
 				<div id=title><img src="/images/show/show_index_l_t.jpg"><img src="/images/zone/gg.jpg"></div>
 				<div id=content><?php echo get_fck_content($gg[0]->description);?></div>
 			</div>
-			<div id=chat><a target="_blank" href="/zone/chat_room.php"><img border=0 src="/images/zone/index_chat.jpg"></a></div>
+			<div id=chat><a target="_blank" href="/zone/chat_entry.php"><img border=0 src="/images/zone/index_chat.jpg"></a></div>
 			<div class=t_r_m>
 				<div class=t_r_m_top><img src="/images/zone/index_blog.jpg"></div>
 				<div class=t_r_m_title1 param=1 style="font-weight:bold; color:#FF4700; cursor:pointer;">最新博文</div><div param=2 class=t_r_m_title1 style="cursor:pointer;">最热博文</div>
@@ -205,7 +203,7 @@
 	<div id=ibody_middle></div>
 	<div id=ibody_bottom>
 		<div id=b_l>
-			<div id=title>劲爆热图</div>
+			<div id=title>劲爆热图</div><div id="more"><a target="_blank" href="/zone/hotimg.php">more</a></div>
 			<?php for($i=0;$i<count($jbrt);$i++){?>
 				<div class="content">
 					<a target="_blank" href="<?php echo $jbrt[$i]->url;?>"><img border=0 width=132 height=90 src="<?php echo $jbrt[$i]->src;?>"><br><span style="color:#000000;"><?php echo $jbrt[$i]->title;?></span></a>
@@ -213,9 +211,19 @@
 			<?php } ?>
 		</div>
 		<div id=b_c>
-			<div id=title>博主真人秀</div>
-			<div id=b_c_l><div id=pic><a target="_blank" href="<?php echo $blogsureimg[0]->url; ?>"><img src="<?php echo $blogsureimg[0]->src;?>"></a></div><div id=pictitle><a target="_blank" href="<?php echo $blogsureimg[0]->url;?>"><?php echo $blogsureimg[0]->title;?></a></div></div>
-			<div id=b_c_r><div id=b_c_r_title><?php echo $blogsure[0]->short_title; ?></div><div id=b_c_r_content><?php echo $blogsure[0]->description;?></div></div>
+			<div id=title>博主秀</div>
+			<div id=b_c_l><div id=pic><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><img border=0 src="<?php echo $blogsure[0]->photo_src;?>"></a></div></div>
+			<div id=b_c_r><div id=b_c_r_title><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><?php echo $blogsure[0]->short_title;?></a></div><div id=b_c_r_content><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><?php echo delhtml($blogsure[0]->content);?></a></div></div>
+			<div id=b_c_b_l>
+				<?php for($i=1;$i<4;$i++){ ?>
+					<div class=content><a target="_blank" href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
+				<?php } ?>
+			</div>
+			<div id=b_c_b_r>
+				<?php for($i=4;$i<count($blogsure);$i++){ ?>
+					<div class=content><a target="_blank" href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
+				<?php } ?>
+			</div>
 		</div>
 		<div class=b_r>
 			<div class="title">热门博主列表</div>

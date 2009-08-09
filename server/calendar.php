@@ -77,12 +77,12 @@
 	#}
 	if(empty($add_month)){
 		$today_index = date('j');
-		$today_birthday = $db->query("select nickname, loginname from smg_user_real where birthday_short='" .date('m-d') ."' and  hide_birthday!=1");
+		$today_birthday = $db->query("select nickname, loginname from smg_user_real where birthday_short='" .date('m-d') ."' and state=3 and  hide_birthday!=1");
 		foreach ($today_birthday as $v) {
 			$today_string .= $v->nickname ."<br>";
 		}
 	}
-	$items = $db->query("select count(birthday_short) as icount,substring(birthday_short,4,2) as bday from smg_user_real where birthday_short like '$m%' and hide_birthday!=1 group by birthday_short order by birthday_short");
+	$items = $db->query("select count(birthday_short) as icount,substring(birthday_short,4,2) as bday from smg_user_real where birthday_short like '$m%' and state=3 and hide_birthday!=1 group by birthday_short order by birthday_short");
 	foreach ($items as $v) {
 		$birthday[intval($v->bday)] .= " [{$v->icount}] 人生日";
 	}

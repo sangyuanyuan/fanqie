@@ -412,8 +412,13 @@ a{
         <td background="images/rbg1.gif"><br />
           <table width="80%" border="0" align="center" cellpadding="5" cellspacing="0">
             <tr>
-        			<? //$report=getcategoryreport();?>
-		          <td><? for($i=0;$i< $report->itemcount;$i++){?><div><div style="float:left; display:inline;">&middot;<? echo $report[$i]->name;?></div><div style="float:right; display:inline;"><? echo $report[$i]->clickcount;?></div></div><br><? }?></td>
+        			<?php 
+						$db = get_db();
+						$sql = 'select sum(a.click_count) as click_count, b.name from smg_news a left join smg_category_dept b on a.dept_category_id=b.id where a.dept_id=15 and a.dept_category_id >0  group by a.dept_category_id order by click_count desc';
+						$record = $db->query($sql);
+						$count = count($record);
+					?>
+		          <td><? for($i=0;$i<$count;$i++){?><div style="width:250px; float:left;"><div style="float:left; display:inline;">&middot;<? echo $record[$i]->name;?></div><div style="float:right; display:inline;"><? echo $record[$i]->click_count;?></div></div><br><? }?></td>
 		        </tr>
           </table>
           <br /></td>

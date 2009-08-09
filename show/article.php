@@ -24,7 +24,7 @@
  <div id=ibody_left>
  	  <div class=l>
  	  		<?php $category_id = category_id_by_name('每日之星'); ?>
-			<div class=title><div name="mrzx" class=left1>每日之星排行榜|</div><div name="bm" class=left1 style="color:#999999">部门排行榜</div><div class="more"><a target="_blank" href="list.php?id=<?php echo $category_id; ?>&type=news">更多>></a></div></div>
+			<div class=title1><div name="mrzx" class=left1>每日之星排行榜|</div><div name="bm" class=left1 style="color:#999999">部门排行榜</div><div class="more"><a target="_blank" href="list.php?id=<?php echo $category_id; ?>&type=news">更多>></a></div></div>
 			<?php
 				$db = get_db();
 				$sql = 'select id,short_title,flower,photo_src from smg_news where is_adopt=1 and category_id='.$category_id.' and photo_src!="" order by flower desc limit 5';
@@ -103,7 +103,11 @@
 			if($news->news_type==2){
 				redirect($news->file_name);
 			}elseif($news->news_type==3){
-				redirect($news->target_url);
+				if(strpos($news->target_url,basename($_SERVER['PHP_SELF']))&&strpos($news->target_url,'id='.$id)){
+					alert('对不起，链接出错了！请联系管理员!');
+				}else{
+					redirect($news->target_url);
+				}
 			}
 		?>
 		<div class=top>
@@ -270,6 +274,11 @@
 			}
 			if(comment==""){
 				alert("请输入评论内容！");
+				return false;
+			}
+			
+			if(comment.length > 1500){
+				alert('评论内容太长,请联系管理员');
 				return false;
 			}
 			$("#comment_form").submit();

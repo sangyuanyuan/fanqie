@@ -18,29 +18,21 @@
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
 		$record=$db->query($sql);
 		
-		if($record[0]->news_type==2)
-		{
-			redirect($record[0]->file_name);
-		}
-		else if($record[0]->news_type==3)
-		{	
-			redirect($record[0]->target_url);
-		}
 		if($record[0]->related_news!="")
 		{
-			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"n.priority asc,last_edited_at desc");
+			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"n.priority asc,n.created_at desc");
 			$about = $about1;
 			if(count($about1)<10)
 			{
 				if($record[0]->keywords!=""){
-					$a2=search_keywords($id,$record[0]->keywords,'smg_news',$about1,10-count($about1),"n.priority asc,last_edited_at desc");
+					$a2=search_keywords($id,$record[0]->keywords,'smg_news',$about1,10-count($about1),"n.priority asc,n.created_at desc");
 					$about = array_merge($about, $a2);
 				}
 			}
 		}
 		else{
 			
-			$about=search_keywords($id,$record[0]->keywords,'smg_news',$record,10,"n.priority asc,last_edited_at desc");
+			$about=search_keywords($id,$record[0]->keywords,'smg_news',$record,10,"n.priority asc,n.created_at desc");
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
@@ -70,7 +62,22 @@
 <?php } ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
-<? require_once('../inc/top.inc.html');?>
+<?php
+if($record[0]->news_type==2)
+{
+	redirect($record[0]->file_name);
+}
+else if($record[0]->news_type==3)
+{
+	if(strpos($record[0]->target_url,basename($_SERVER['PHP_SELF']))&&strpos($record[0]->target_url,'id='.$id)){
+		alert('对不起，链接出错了！请联系管理员!');
+	}
+	else{
+		redirect($record[0]->target_url);
+	}
+}	
+require_once('../inc/top.inc.html');
+?>
 <div id=ibody>
 	<input type="hidden" id="newsid" value="<?php echo $id;?>">
 	<div id=ibody_left>
@@ -80,7 +87,7 @@
 		<div id=l_b>
 			<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
-			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="我要报料"){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->last_edited_at;?></div>
+			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="我要报料"){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->created_at;?></div>
 			<?php if($record[0]->video_src!=""&&$record[0]->video_src!=null){
 					if($record[0]->low_quality==0){
 				?>
@@ -93,7 +100,7 @@
 				<?php echo get_fck_content($record[0]->content);?>
 			</div>
 			<?php 
-			if($record[0]->vote_id!=""){?>	
+			if($record[0]->vote_id!=""&&$record[0]->vote_id!=0){?>	
 				<div class=vote>
 				<?php 
 						$vote = new smg_vote_class();
@@ -103,6 +110,7 @@
 			<? }?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
 			<?php if($record[0]->categoryname=="我要报料"){?><div id=lc>此文系番茄网网友报料新闻，不代表番茄网的观点或立场。</div><?php } ?>
+			<div id=wybl><a style="margin-left:20px;" target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
 			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<?php if(count($about)>0||count($about)>0){?>
 			<div class=abouttitle>更多关于“<?php echo mb_substr(strip_tags($record[0]->short_title),0,36,"utf-8");?>”的新闻</div>
@@ -112,11 +120,11 @@
 				<div class=content>
 						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
 							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->created_at; ?>)</span>
 							</a>
 						<?php }else{?>
 							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->last_edited_at; ?>)</span>
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->created_at; ?>)</span>
 							</a>
 						<?php }?>
 					</div>		
@@ -131,7 +139,7 @@
 				 for($i=0;$i<count($digg);$i++){ ?>
 					<div class=content>	
 						<div class=title1>
-							<div style="width:110px; margin-left:118px; float:left; display:inline;">
+							<div style="width:110px; height:20px; margin-left:118px; overflow:hidden; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
@@ -148,7 +156,7 @@
 				  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
 						<div class=title>
-							<div style="width:230px; margin-top:10px; margin-left:10px; line-height:20px; float:left; display:inline;">
+							<div style="width:230px; height:20px; margin-top:10px; margin-left:10px; overflow:hidden; line-height:20px; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
@@ -164,7 +172,7 @@
 			</div>
 			<div class=page><?php paginate('');?></div>
 			<?php }?>
-			<form method="post" action="/pub/pub.post.php">
+			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent style="padding-bottom:10px;">
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论<?php if(count($totalcoment)>0){ ?>　　<a style="color:#1862A3" target="_blank" href="/comment/comment_list.php?id=<?php echo $id;?>&type=news">查看更多评论</a><?php }?>　　<a style="color:#1862A3" target="_blank" href="/comment/all_comment.php">查看所有评论</a></div>
@@ -177,7 +185,7 @@
 				<div id=fqbq>
 					
 				</div>
-				<button type="submit">提交评论</button>
+				<button id="comment_sub" >提交评论</button>
 			</div>
 			</form>
 			<?php } ?>
@@ -224,7 +232,7 @@
 		<div id=r_m>
 			<div id=title>小编推荐</div>
 			<?php 
-			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,last_edited_at desc limit 8";
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='小编推荐' order by n.priority asc,n.created_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>

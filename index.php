@@ -153,14 +153,14 @@ total("首页","other");
 
  			<!-- start top_left_middle !-->
   		<?php
-				$sql = 'select n.id,n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.platform="news" order by n.priority asc,n.created_at desc limit 10';
+				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.platform="news" order by n.priority asc,n.created_at desc limit 10';
 				$record_subject=$db -> query($sql);
-				$sql = 'select n.id,n.short_title,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.platform="news" order by n.priority asc,n.created_at desc limit 10';
+				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.platform="news" order by n.priority asc,n.created_at desc limit 10';
 				$record_out=$db -> query($sql);
   		?>
   		<div id=t_l_m>
- 				<div class=btn_tlm param=1 style="background:url(/images/index/btn3.jpg) no-repeat">专题新闻</div>
- 				<div class=btn_tlm param=2 style="background:url(/images/index/btn4.jpg) no-repeat">对外出击</div>
+ 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_subject[0]->cid?>" target=_blank>专题新闻</a></div>
+ 				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
  				<div class=list_tlm id=list_tlm1>
  					<ul>
  						<?php for($i=0; $i<count($record_subject); $i++){?>
@@ -181,14 +181,14 @@ total("首页","other");
 
  			<!-- start top_left_bottom !-->
  			<?php
-				$sql = 'select n.id,n.short_title,n.title,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.tags="小编加精"  order by n.last_edited_at desc limit 10';
+				$sql = 'select n.id,n.short_title,n.title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.tags="小编加精"  order by n.last_edited_at desc limit 10';
 				$record_marrow=$db -> query($sql);
-				$sql = 'select n.id,n.short_title,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.platform="server" order by n.priority asc,n.created_at desc limit 10';
+				$sql = 'select n.id,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.platform="server" order by n.priority asc,n.created_at desc limit 10';
 				$record_quick=$db -> query($sql);
 			?>
 			<div id=t_l_b>
- 				<div class=btn_tlb param=1 style="background:url(/images/index/btn4.jpg) no-repeat">小编加精</div>
- 				<div class=btn_tlb param=2 style="background:url(/images/index/btn3.jpg) no-repeat">新闻速读</div>
+ 				<div class=btn_tlb param=1 id=btn_tlb_1 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?tags=%E5%B0%8F%E7%BC%96%E5%8A%A0%E7%B2%BE" target=_blank>小编加精</a></div>
+ 				<div class=btn_tlb param=2 id=btn_tlb_2  style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_quick[0]->cid?>" target=_blank>新闻速读</a></div>
  				<div class=list_tlb id=list_tlb1 style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_marrow); $i++){?>
@@ -297,7 +297,13 @@ total("首页","other");
 				<div id=content1><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a></div>
  				<a href="" id=btn ></a>
  				<?php
-					$sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" order by n.priority asc,n.created_at desc limit 41';
+ 				
+					$sql = 'select * from smg_news_show;';
+					$record=$db -> query($sql); 				
+ 					if($record[0]->days==0)
+ 					{	$sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" order by n.priority asc,n.created_at desc limit 41';	}
+ 					else
+ 					{ 	$sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" and TO_DAYS(NOW())-TO_DAYS(n.created_at) <= '.$record[0]->days.'  order by n.click_count desc,n.created_at desc limit 41';}
 					$record_import_a=$db -> query($sql);
 					$sql = 'select n.photo_src, c.platform,n.id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news" order by n.priority asc,n.created_at desc limit 6';
 					$record_import_b=$db -> query($sql);
@@ -340,8 +346,8 @@ total("首页","other");
              <? }?>
  						</ul>								
  						<div style="width:128px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
- 							<img src="/images/1.jpg" width="125px; height:20px;">
- 							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[0]->platform."/news/news.php?id=".$record_import_a[0]->id ?>" target="_blank"><?php echo $record_import_c[0]->short_title ?></a>
+ 							<a href="/subject/sxxx/" target=_blank><img src="/images/1.jpg" width="125px; height:20px;" border=0></a>
+ 							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[0]->platform."/news/news.php?id=".$record_import_c[0]->id ?>" target="_blank"><?php echo $record_import_c[0]->short_title ?></a>
  						</div>
  			
    					<ul>
@@ -359,8 +365,8 @@ total("首页","other");
  					
  					<div id=r>
  						<div style="width:128px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
- 							<img src="/images/2.jpg" width="125px; height:20px;">
- 							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[1]->platform."/news/news.php?id=".$record_import_a[1]->id ?>" target="_blank"><?php echo $record_import_c[1]->short_title ?></a>
+ 							<a href="/subject/djnews/" target=_blank><img src="/images/2.jpg" width="125px; height:20px;" border=0></a>
+ 							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[1]->platform."/news/news.php?id=".$record_import_c[1]->id ?>" target="_blank"><?php echo $record_import_c[1]->short_title ?></a>
  						</div>
      				<ul>
  						 <?php for($i=26; $i<27; $i++){?>
@@ -389,7 +395,7 @@ total("首页","other");
  				</div>
  				<div id=title2></div>
  				<?php
-					$sql = 'select n.short_title, c.platform,n.id as news_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="广而告之" and c.platform="news" order by n.priority asc limit 6';
+					$sql = 'select n.short_title, c.platform,n.id as news_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="广而告之" and c.platform="news" order by n.priority asc,n.created_at desc limit 6';
 					$record_marguee=$db -> query($sql);
 				?>	
  				<div id=content_marguee>
@@ -445,7 +451,7 @@ total("首页","other");
  				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;">快乐番茄</div>
  				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;">讨论区</div>
  					<?php
- 						$sql = 'select * from smg_tg where isadopt=1 order by createtime desc limit 3';
+ 						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
 						$record_tg=$db -> query($sql);		
 					?>	
  				<div class=content_trrt id=content_trrt1>
@@ -675,10 +681,10 @@ total("首页","other");
  				
  				<div class=box>
    				<?php
- 						$sql = 'select * from smg_dialog where is_adopt=1 order by create_time desc limit 3';
+ 						$sql = 'select * from smg_dialog where is_adopt=1 order by create_time desc limit 4';
 						$record=$db -> query($sql);
   				?>
-  				<img src="<?php echo $record[0]->photo_url ?>">
+  				<a href="/zone/dialog.php?id=<?php echo $record[0]->id ?>" target=_blank><img src="<?php echo $record[0]->photo_url ?>" border=0></a>
   				<div id=context1>
   					<a href="/zone/dialog.php?id=<?php echo $record[0]->id ?>" target=_blank><?php echo $record[0]->title ?></a>
   				</div>
@@ -688,6 +694,7 @@ total("首页","other");
   				<div id=context3>
   					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[1]->id ?>" target=_blank><?php echo $record[1]->title ?></a></li>
   					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[2]->id ?>" target=_blank><?php echo $record[2]->title ?></a></li>
+  					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[2]->id ?>" target=_blank><?php echo $record[3]->title ?></a></li>
   				</div>
  				</div>
  			</div>
@@ -803,7 +810,7 @@ total("首页","other");
 	 				<marquee direction="up" scrollamount="1" height="100" width="300" onmouseover=this.stop() onmouseout=this.start()  >
 	 				<?php
 						$today = date("m-d");
-						$sql = 'select t1.nickname,t1.gender,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.date("m-d").'" and t1.hide_birthday=0';
+						$sql = 'select t1.nickname,t1.gender,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.date("m-d").'" and t1.hide_birthday=0 and t1.state=3';
 						$records = $db->query($sql);
 						$count = count($records);
 						for($i=0;$i<$count;$i++){
@@ -839,8 +846,11 @@ total("首页","other");
 						</div></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
-				          			<TD id=demo8 vAlign=top></TD></TR></TBODY></TABLE></DIV>
+				          			<TD id="demo8" vAlign=top></TD></TR></TBODY></TABLE></DIV>
 								      <SCRIPT>
+								        var demo6 = document.getElementById('demo6');
+										var demo7 = document.getElementById('demo7');
+										var demo8 = document.getElementById('demo8');  
 								      	$(document).ready(function(){
 											var speed=30//速度数值越大速度越慢
 											demo8.innerHTML=demo7.innerHTML

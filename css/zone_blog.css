@@ -29,6 +29,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 
 #c_b{width:310px; height:630px; margin-top:10px; background:#FFFAE7; float:left; display:inline;}
 #c_b #title{width:280px; height:24px; padding-top:4px; padding-left:30px; font-size:13px; font-weight:bold; line-height:20px; background:url('/images/zone/blog_c_b.jpg') no-repeat; float:left; display:inline;}
+#c_b #title a{color:#000000; text-decoration:none;}
 #c_b .box{width:300px; margin-top:12px;  margin-left:5px; text-align:center;  float:left; display:inline;}
 #c_b .box img{width:250px; height:150px;}
 #c_b .box .title{width:300px; height:30px; font-size:14px; line-height:20px; text-align:center;  float:left; display:inline;}
@@ -42,9 +43,12 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 .content2{width:250px; height:20px; overflow:hidden; margin-top:3px; margin-left:8px; line-height:20px; float:left; display:inline;}
 .content2 a{color:#333333; text-decoration:none;}
 .content3{width:263px; height:238px; background:#ffffff; overflow:hidden; margin-left:5px; line-height:20px; float:left; display:inline;}
-.content3 img{width:140px; height:100px; margin-top:10px; margin-left:10px; float:left; display:inline;}
-.content3 #title{width:100px; margin-top:30px; text-align:center; overflow:hidden; margin-left:5px; line-height:20px; float:left; display:inline;}
-.content3 #title a{font-size:20px; font-weight:bold; color:#0000ff;}
-.content3 #description{width:242px; height:115px; margin-top:5px; margin-left:10px; background:#efefef; float:left; display:inline;}
+.content3 img{width:130px; height:90px; margin-top:10px; margin-left:10px; margin-bottom:10px; float:left; display:inline;}
+.content3 #title{width:100px; margin-top:10px; text-align:center; overflow:hidden; margin-left:5px; line-height:20px; float:left; display:inline;}
+.content3 #title a{font-size:15px; font-weight:bold; color:#000000; text-decoration:none;}
+.content3 #description{width:115px; height:60px; margin-top:3px; margin-left:5px; line-height:20px; overflow:hidden; float:left; display:inline;}
+.content3 #description a{color:#666666; text-decoration:none;}
+.content3 .box{width:227px; height:25px; margin-left:10px; padding-left:15px; background:#efefef; float:left; display:inline;}
+.content3 .box a{color:#000000; text-decoration:none;}
 
 #r_dialog{width:274px; height:149px; background:url('/images/zone/blog_r_dialog.jpg') no-repeat; float:right; display:inline;}

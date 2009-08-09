@@ -316,4 +316,23 @@
 	function echo_fqbq($container,$insert_container) {
 		
 	}
+	
+	
+	function getcategoryreport($sorttype="DESC")
+	{
+		global $deptinfo;
+		$sql = 'select e.name,ifnull(bb.clickcount,0) as clickcount from smg_category_dept e left join (select sum(click_count) as clickcount from (select ifnull(a.clickcount,0) as clickcount from smg_news a left join smg_category_dept b on a.dept_category_id = b.id where a.dept_id = '.$deptinfo[0]->id .' and a.dept_cate_id > 0) aa group by top_id) bb on e.id = bb.top_id where e.dept_id = '.$deptinfo[0]->id .' and e.level=1 order by clickcount ' .$sorttype;
+		//echo $sql;
+		$sqlmanager = new SqlRecordsManager();
+		$result = new moduleresult();
+		$items = $sqlmanager->GetRecords($sql);
+		if ($items === false) {
+				$result->itemcount =0;
+				$result->items = null;
+				return $result;
+			}
+			$result->items = $items;
+			$result->itemcount = !$result ? 0 : count($result->items);	
+		return $result;
+	}
 ?>

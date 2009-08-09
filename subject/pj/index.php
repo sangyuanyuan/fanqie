@@ -106,7 +106,7 @@ html,body{
                       <TD>
                       	<div id=s_left>
 	                      <? 
-						  	$video=$db->query('select n.photo_src,n.id,n.short_title,n.description,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选规则" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 4');
+						  	$video=$db->query('select n.photo_src,n.id,n.short_title,n.description,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选规则" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by i.priority asc, n.created_at desc limit 4');
 						  ?>
 						  <? for($i=0;$i<count($video);$i++){?>
 						  <a target="_blank" href="/news/news.php?id=<? echo $video[$i]->id;?>"><? echo get_fck_content($video[$i]->description);?></a>
@@ -147,7 +147,7 @@ html,body{
                   <TABLE width="100%" border=0>
                     <TBODY>
                     	<tr>
-                    		<? $xxnc=$db->query('select n.photo_src,n.id,n.short_title,n.description,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选规则" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc'); ?>
+                    		<? $xxnc=$db->query('select n.photo_src,n.id,n.short_title,n.description,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选规则" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by i.priority asc, n.created_at desc'); ?>
                     		<td><a target="_blank" href="/news/news_list.php?id=<? echo $xxnc[0]->cid;?>"><img border=0 src="leftbottom.jpg"></a></td>
                     	</tr>
                    </TBODY></TABLE>
@@ -161,7 +161,7 @@ html,body{
             <TABLE height=210 width="100%" border=0>
               <TBODY>
               <TR>
-              	<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.description,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选简讯" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 8');?>
+              	<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.description,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选简讯" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by i.priority asc, n.created_at desc limit 8');?>
                 <TD colSpan=2 class=index_title>最新简讯　　　<a target="_blank" href="/news/news_list.php?type=pj&id=<?php echo $news[0]->cid;?>">更多</a></TD></TR>
                 	
               <TR>
@@ -182,7 +182,7 @@ html,body{
             <TABLE width="100%" border=0>
               <TBODY>
               <TR>
-              	<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.description,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星级番茄果农" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by n.priority asc, n.last_edited_at desc limit 9');?>
+              	<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.description,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星级番茄果农" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by i.priority asc, n.created_at desc limit 9');?>
                 <TD class="index_title">星级番茄果农　　　<a target="_blank" href="/news/news_list.php?type=pj&id=<?php echo $news[0]->cid;?>">更多</a></TD></TR>
               <TR>
                 <TD>

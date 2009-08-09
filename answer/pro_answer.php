@@ -5,20 +5,37 @@
 	$number = isset($_POST['number'])?$_POST['number']:'1';
 	$point = isset($_POST['point'])?$_POST['point']:'0';
 	$db = get_db();
+	$rand_question = $_POST['rand_question'];
+	$this_question_id = $_POST['this_question_id'];
 	$sql = 'select * from smg_problem where id='.$problem_id;
 	$problem = $db->query($sql);
 	$type = $problem[0]->type;
-	$sql = 'select id,title,nick_name from smg_question where problem_id='.$problem_id.' order by create_time limit '.($number-1).',1';
+	if($number==1){
+		$sql = 'select id,title,nick_name from smg_question where problem_id='.$problem_id.' order by rand() limit 100';
+	}else{
+		$sql = 'select id,title,nick_name from smg_question where id='.$this_question_id;
+	}
 	$records = $db->query($sql);
+	if($rand_question==''){
+		$rand_question = $records[0]->id;
+		for($i=1;$i<count($records);$i++){
+			$rand_question = $rand_question.','.$records[$i]->id;
+		}
+		$rand = explode(",",$rand_question);
+ 		$this_question_id = $rand[$number];
+	}else{
+		$rand = explode(",",$rand_question);
+		$this_question_id = $rand[$number];
+	}
 	if(isset($_POST['lave'])){
 		$lave = $_POST['lave'];
 		$q_count = $_POST['count']+1;
 		$t_count = $_POST['t_count'];
 	}else{
-		$sql = 'select count(*) as count from smg_question where problem_id='.$problem_id.' order by create_time';
+		$sql = 'select id from smg_question where problem_id='.$problem_id.' order by create_time limit 100';
 		$record = $db->query($sql);
-		$t_count = $record[0]->count;
-		$lave = $record[0]->count-1;
+		$t_count = count($record);
+		$lave = count($record)-1;
 		$q_count = 1;
 	}
 ?>
@@ -27,7 +44,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>>SMG-番茄网-服务-答题</title>
+	<title>SMG-番茄网-服务-答题</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','answer/answer','thickbox');
 		js_include_tag('total');
@@ -45,14 +62,15 @@
 <form id="answer_form" method="POST" action="pro_answer.php?id=<?php echo $problem_id; ?>" >
 <div id=ibody>
 
-	<div id="a_top"><img src="<?php echo $problem[0]->photo_url?>"></div>
+	<div id="a_top"><?php if($problem[0]->photo_url!=''){?><img src="<?php echo $problem[0]->photo_url?>"><?php } ?></div>
 	
 	<div id="time"><?php echo $problem[0]->limit_time;?></div>
-	
+	<div id="right_answer">
+	</div>
 	<div id="point">
 		<?php echo $point;?>
 	</div>
-	<div id="middle">	
+	<div id="middle">
 		<div id=num><?php echo $number;?>.</div>
 		<div id="question_title"><?php echo $records[0]->title; ?>(<?php if($problem[0]->point!=''){echo $problem[0]->point;}else{echo '10';}?>分)</div>
 		
@@ -97,6 +115,8 @@
 </div>
 
 <input type="hidden" id="answer" value="<?php echo $answer; ?>">
+<input type="hidden" name="rand_question" value="<?php echo $rand_question; ?>">
+<input type="hidden" name="this_question_id" value="<?php echo $this_question_id; ?>">
 <input type="hidden" name="limit_time" id="limit_time" value="<?php echo $problem[0]->limit_time;?>">
 <input type="hidden" name="point_value" id="point_value" value="<?php echo $problem[0]->point;?>">
 <input type="hidden" name="number" value="<?php echo $number+1;?>">

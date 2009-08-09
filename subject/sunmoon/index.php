@@ -122,7 +122,7 @@ html,body{
                       <TD>
                       	<div id=s_left>
 	                      <? 
-						  	$video=$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="节目抢先看" order by n.priority asc, n.created_at desc limit 4');
+						  	$video=$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="节目抢先看" order by i.priority asc, n.created_at desc limit 4');
 						  	show_video_player(200,150,$video[0]->photo_url,$video[0]->video_url);
 						  ?>
 						  <? for($i=0;$i<count($video);$i++){?>
@@ -178,7 +178,7 @@ html,body{
             <TABLE height=210 width="100%" border=0>
               <TBODY>
               <TR>
-              	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="新闻及时报" inner join smg_subject s on c.subject_id=s.id and s.name="日全食专题" order by n.priority asc, n.last_edited_at desc limit 8');?>
+              	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="新闻及时报" inner join smg_subject s on c.subject_id=s.id and s.name="日全食专题" order by i.priority asc, n.created_at desc limit 8');?>
                 <TD colSpan=2 class=index_title>新闻及时报　　　<a target="_blank" href="/news/news_list.php?type=sunmoon&id=<?php echo $news[0]->cid; ?>">更多</a></TD></TR>
               <TR>
                 <TD width="20%" height=153>
@@ -202,7 +202,7 @@ html,body{
            			</TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
      <TR>
           <TD>
-          	<?php $news = $db->query('select n.description,n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="日食全揭秘" inner join smg_subject s on c.subject_id=s.id and s.name="日全食专题" order by n.priority asc, n.last_edited_at desc limit 4');?>
+          	<?php $news = $db->query('select n.description,n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="日食全揭秘" inner join smg_subject s on c.subject_id=s.id and s.name="日全食专题" order by i.priority asc, n.created_at desc limit 4');?>
             <TABLE height=68 width="100%" border=0>
               <TBODY>
               <TR>
@@ -293,7 +293,7 @@ html,body{
 							 </DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR> 
    		
      <TR>
-     	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="感受日全食" inner join smg_subject s on c.subject_id=s.id and s.name="日全食专题" order by n.priority asc, n.last_edited_at desc limit 6');?>
+     	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="感受日全食" inner join smg_subject s on c.subject_id=s.id and s.name="日全食专题" order by i.priority asc, n.created_at desc limit 6');?>
           <TD ><div style="padding-top:5px;" class=index_title>感受日全食　　　<a target="_blank" href="/news/news_list.php?type=sunmoon&id=<?php echo $news[0]->cid; ?>">更多</a></div></TD></TR>
             <TABLE width="100%" border=0>
               <TBODY>

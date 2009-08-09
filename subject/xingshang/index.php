@@ -79,8 +79,8 @@ html,body{
               <TR>
                 <TD>
                   <TABLE width="100%" border=0>
-                  	<? $news=$db->query('select n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星尚简介" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.last_edited_at desc limit 1');
-                  		$photo=$db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星尚简介" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc,n.created_at desc limit 1');
+                  	<? $news=$db->query('select n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星尚简介" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc, n.created_at desc limit 1');
+                  		$photo=$db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星尚简介" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc,n.created_at desc limit 1');
                   	?>
                     <TBODY>
                     <TR>
@@ -95,8 +95,8 @@ html,body{
              <TR>
                 <TD>
                 	<? 
-                	$news=$db->query('select n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星光璀璨" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.last_edited_at desc limit 3');
-                	$photo=$db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星光璀璨" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc,n.created_at desc limit 1');
+                	$news=$db->query('select n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星光璀璨" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc, n.created_at desc limit 3');
+                	$photo=$db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星光璀璨" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc,n.created_at desc limit 1');
                 	?>
                   <TABLE width="100%" border=0>
                     <TBODY>
@@ -146,7 +146,7 @@ html,body{
         <TBODY>
         <TR>
           <TD height=86>
-          	<? $news=$db->query('select n.description,n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="大展星途" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.last_edited_at desc limit 7');?>
+          	<? $news=$db->query('select n.description,n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="大展星途" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc, n.created_at desc limit 7');?>
             <TABLE height=210 width="100%" border=0>
               <TBODY>
               <TR>
@@ -168,7 +168,7 @@ html,body{
       <tr>
       	<td>
       		<table height=86 width=100% border=0>
-      			<? $video=$db->query('select n.id,n.title,n.photo_url,n.video_url,c.id as cid from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星光点点" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.created_at desc limit 6');?>
+      			<? $video=$db->query('select n.id,n.title,n.photo_url,n.video_url,c.id as cid from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星光点点" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc, n.created_at desc limit 6');?>
       			<tbody>
       				<tr>
       					<TD colSpan=2 class=index_title>星光点点</TD>
@@ -213,8 +213,8 @@ html,body{
      <TR>
           <TD>
           	<? 
-          		$news=$db->query('select n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="聚焦星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.last_edited_at desc limit 12');
-          		$photo=$db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="聚焦星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc,n.created_at desc limit 1');
+          		$news=$db->query('select n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="聚焦星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc, n.created_at desc limit 12');
+          		$photo=$db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="聚焦星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc,n.created_at desc limit 1');
           	?>
             <TABLE height=68 width="100%" border=0>
               <TBODY>
@@ -243,8 +243,8 @@ html,body{
                           </TBODY></TABLE></TD>
                      </TR>
                </TBODY></TABLE></TD></TR> 
-   		<? $news=$db->query('select n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我们的星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.last_edited_at desc limit 6');
-   			$photo=$db->query('select n.id,n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我们的星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc,n.created_at desc limit 8');
+   		<? $news=$db->query('select n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我们的星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc, n.created_at desc limit 6');
+   			$photo=$db->query('select n.id,n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我们的星尚" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc,n.created_at desc limit 8');
    		?>
      <TR>
           <TD height=226 class=index_title>我们的星尚</TD></TR>
@@ -274,7 +274,7 @@ html,body{
                 		<? }?></td>
                </TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY>
                </TABLE>
-               <? $photo=$db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星尚精品" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc,n.created_at desc limit 8');?>
+               <? $photo=$db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="星尚精品" inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc,n.created_at desc limit 8');?>
 <TABLE align=center valign=top width=778 border=0>
         <TBODY>
         <TR> <td  class=index_title1>星尚精品</td></TR></TBODY></TABLE>

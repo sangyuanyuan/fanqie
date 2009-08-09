@@ -6,8 +6,8 @@ $start=$_REQUEST['start'];
 $end=$_REQUEST['end'];
 if($start==""){$start=date('Y-m-d').' 00:00:00';}else{$start=$_REQUEST['start'].' 00:00:00';}
 if($end==""){$end=date('Y-m-d').' 23:59:59';}else{$end=$_REQUEST['end'].' 23:59:59';}
-$clickcount=$db->query("select sum(count) as totalcount from smg_total where datetime>='".$start."' and datetime<='".$end."'");
-$clickcount1=$db->query("select sum(count) as totalcount from smg_total where datetime>='".$start."' and datetime<='".$end."' group by platform");
+$clickcount=$db->query("select sum(count) as totalcount from smg_total where platform<>'' and datetime>='".$start."' and datetime<='".$end."'");
+$clickcount1=$db->query("select sum(count) as totalcount from smg_total where platform<>'' and datetime>='".$start."' and datetime<='".$end."' group by platform");
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
