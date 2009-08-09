@@ -28,15 +28,15 @@
 	$conditions = implode(' and ' ,$c);
 	switch ($content_type) {
 		case 'news':
-			$items = $db->paginate("select b.*,a.is_adopt as adopt, a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name from smg_subject_items a left join smg_news b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id where a.category_type='news' and $conditions",20);;
+			$items = $db->paginate("select b.*,a.is_adopt as adopt, a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name from smg_subject_items a left join smg_news b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id where a.category_type='news' and $conditions order by a.priority asc b.created_at desc",20);;
 			$categories = $db->query("select * from smg_subject_category where subject_id=$subject_id and category_type='news'");
 		break;
 		case 'video':
-			$items = $db->paginate("select b.*,a.is_adopt as adopt,a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name  from smg_subject_items a left join smg_video b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id  where a.category_type='video' and $conditions",20);;
+			$items = $db->paginate("select b.*,a.is_adopt as adopt,a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name  from smg_subject_items a left join smg_video b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id  where a.category_type='video' and $conditions order by a.priority asc b.created_at desc",20);;
 			$categories = $db->query("select * from smg_subject_category where subject_id=$subject_id and category_type='video'");
 		break;
 		case 'photo':
-			$items = $db->paginate("select b.*,a.is_adopt as adopt,a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name  from smg_subject_items a left join smg_images b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id  where a.category_type='photo' and $conditions",20);;
+			$items = $db->paginate("select b.*,a.is_adopt as adopt,a.category_id as subject_category, a.priority as subject_priority, a.id as item_id, c.name as category_name  from smg_subject_items a left join smg_images b on a.resource_id=b.id left join smg_subject_category c on c.id=a.category_id  where a.category_type='photo' and $conditions order by a.priority asc b.created_at desc",20);;
 			$categories = $db->query("select * from smg_subject_category where subject_id=$subject_id and category_type='photo'");
 		break;
 		default:
