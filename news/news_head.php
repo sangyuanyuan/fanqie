@@ -166,7 +166,7 @@
 			</div>
 			<div class=page><?php paginate('');?></div>
 			<?php }?>
-			<form method="post" action="/pub/pub.post.php">
+			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent style="padding-bottom:10px;">
 				<div class=title style="background:#ffffff;">现有<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>人对本文进行了评论<?php if(count($totalcoment)>0){ ?>　　<a style="color:#1862A3" target="_blank" href="/comment/comment_list.php?id=<?php echo $id;?>&type=news">查看更多评论</a><?php } ?>　　<a style="color:#1862A3;" target="_blank" href="/comment/all_comment.php">查看所有评论</a></div>
@@ -179,7 +179,7 @@
 				<div id=fqbq>
 					
 				</div>
-				<button type="submit">提交评论</button>
+				<button id="comment_sub" type="submit">提交评论</button>
 			</div>
 			</form>
 			<?php }?>
