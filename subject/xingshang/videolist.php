@@ -73,7 +73,7 @@ html,body{
     <TD vAlign=center bgColor=#e9f2d9>
     	<? 
     		$id=$_REQUEST['id'];
-    	$video=$sqlmanager->GetRecords('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.category_id='.$id.' and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by n.priority asc, n.created_at desc');
+    	$video=$sqlmanager->GetRecords('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.category_id='.$id.' and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id inner join smg_subject s on c.subject_id=s.id and s.name="星尚专题" order by i.priority asc, n.created_at desc');
     		for($i=0;$i<count($video);$i++){
     	?>
     	<div style="width:115px; height:170px; margin-top:10px; padding-bottom:10px; margin-left:32px;  float:left; display:inline;"><a target="_blank" href="/video/video.php?id=<? echo $video[$i]->id;?>"><img border=0 width=115 height=115 src="<? echo $video[$i]->photo_url;?>"><br><? echo $video[$i]->title;?></a></div>
