@@ -38,7 +38,7 @@
 				</div>
 			</div>
 			<div id="right_div">				
-					<div id="gift_box" style="border-top:1px solid #666666; padding-top:5px;margin-top:5px;">
+					<div id="gift_box" style="padding-top:5px;margin-top:5px;">
 						<?php
 						foreach ($gifts as $v) {
 							echo "<div class=\"gift_item\" style='margin-left:10px; float:left; display:inline;'><img src=\"{$v->img_src}\" width=105px  height=60px>{$v->name} </div> ";

@@ -153,9 +153,9 @@ total("首页","other");
 
  			<!-- start top_left_middle !-->
   		<?php
-				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.platform="news" order by n.priority asc,n.created_at desc limit 10';
+				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
 				$record_subject=$db -> query($sql);
-				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.platform="news" order by n.priority asc,n.created_at desc limit 10';
+				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
 				$record_out=$db -> query($sql);
   		?>
   		<div id=t_l_m>
@@ -181,9 +181,9 @@ total("首页","other");
 
  			<!-- start top_left_bottom !-->
  			<?php
-				$sql = 'select n.id,n.short_title,n.title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.tags="小编加精"  order by n.priority asc,n.created_at desc limit 10';
+				$sql = 'select n.id,n.short_title,n.title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.tags="小编加精"   and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
 				$record_marrow=$db -> query($sql);
-				$sql = 'select n.id,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.platform="server" order by n.priority asc,n.created_at desc limit 10';
+				$sql = 'select n.id,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
 				$record_quick=$db -> query($sql);
 			?>
 			<div id=t_l_b>
@@ -213,7 +213,7 @@ total("首页","other");
 		<div id=p2>
  			<!-- start top_right_top !-->
   		<?php
-				$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.platform="news" order by n.priority asc,n.created_at desc limit 1';
+				$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 1';
 				$record_head=$db -> query($sql);
 			?>
 			<div id=t_r_t>
@@ -249,7 +249,7 @@ total("首页","other");
  			<!-- start top_right_center_top !-->
  			<div id=t_r_c_t>
  				<?php
-					$sql = 'select n.*,n.id as news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.platform="news" order by n.priority asc,n.created_at desc limit 2 ';
+					$sql = 'select n.*,n.id as news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2 ';
 					$record_head=$db -> query($sql);
 					for($j=0;$j<=1;$j++){
 				?>
@@ -291,7 +291,7 @@ total("首页","other");
  			<div id=t_r_c_m>
  				<div id=title></div>
   			<?php
-					$sql = 'select n.short_title,c.platform,n.id  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.platform="news" order by n.priority asc,n.created_at desc limit 1 ';
+					$sql = 'select n.short_title,c.platform,n.id  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 1 ';
 					$record_import=$db -> query($sql);
 				?>				
 				<div id=content1><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a></div>
@@ -301,13 +301,13 @@ total("首页","other");
 					$sql = 'select * from smg_news_show;';
 					$record=$db -> query($sql); 				
  					if($record[0]->days==0)
- 					{	$sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" order by n.priority asc,n.created_at desc limit 41';	}
+ 					{	$sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 41';	}
  					else
  					{ 	$sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" and TO_DAYS(NOW())-TO_DAYS(n.created_at) <= '.$record[0]->days.'  order by n.click_count desc,n.created_at desc limit 41';}
 					$record_import_a=$db -> query($sql);
-					$sql = 'select n.photo_src, c.platform,n.id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news" order by n.priority asc,n.created_at desc limit 6';
+					$sql = 'select n.photo_src, c.platform,n.id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
 					$record_import_b=$db -> query($sql);
-					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-专" and c.platform="news" order by n.priority asc,n.created_at desc limit 2';
+					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-专" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2';
 					$record_import_c=$db -> query($sql);
 				?>	
  				<div id=box>
@@ -395,7 +395,7 @@ total("首页","other");
  				</div>
  				<div id=title2></div>
  				<?php
-					$sql = 'select n.short_title, c.platform,n.id as news_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="广而告之" and c.platform="news" order by n.priority asc,n.created_at desc limit 6';
+					$sql = 'select n.short_title, c.platform,n.id as news_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="广而告之" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
 					$record_marguee=$db -> query($sql);
 				?>	
  				<div id=content_marguee>
@@ -418,7 +418,7 @@ total("首页","other");
 
  			<!-- start top_right_center_bottom_right !-->
   		<?php
-				$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server" order by n.priority asc,n.created_at desc limit 8';
+				$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 8';
 				$record_industry=$db -> query($sql);
 			?>
 			<div id=t_r_c_b_r>
@@ -526,7 +526,7 @@ total("首页","other");
  			<!-- end !-->			
  			<!-- start top_right_right_middle !-->
  			<?php
- 					$sql = 'select n.short_title, n.id as news_id, c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news" order by n.priority asc,n.created_at desc';
+ 					$sql = 'select n.short_title, n.id as news_id, c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
 					$record_baoliao=$db -> query($sql);		
 			?>	 		
 			<div id=t_r_r_m>
@@ -587,7 +587,7 @@ total("首页","other");
     <div id=p1>
   		<!-- start middle_left_top !-->
   		<?php
- 					$sql = 'select n.id as news_id,n.description,n.short_title,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目点评" and c.platform="show" order by n.priority asc,n.created_at desc limit 6';
+ 					$sql = 'select n.id as news_id,n.description,n.short_title,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目点评" and c.platform="show"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
 					$record_program=$db -> query($sql);
 			?>	
 			<div id=m_l_t>
@@ -612,7 +612,7 @@ total("首页","other");
 				?>
  				<a href="/show/show.php?id=<?php echo $record_blog[0]->img_id ?>" target=_blank><img src="<?php echo $record_blog[0]->src ?>" border=0></a>
  				<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="博客" and c.platform="zone" order by n.priority asc,n.created_at desc limit 5';
+ 					$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="博客" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 5';
 					$record_blog=$db -> query($sql);		
 				?>	 
 				<div id=content_mlb>
@@ -635,7 +635,7 @@ total("首页","other");
   				$sql = 'select i.id as img_id,i.title,i.src,c.id as cid from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="我行我秀" and c.platform="show" order by i.priority asc,i.created_at desc limit 6';
 					$record_show=$db -> query($sql);
 
- 					$sql = 'select n.id as news_id,n.short_title,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="部门比拼" and c.platform="show" order by n.priority asc, n.created_at desc limit 5';
+ 					$sql = 'select n.id as news_id,n.short_title,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="部门比拼" and c.platform="show"  and is_recommend=1 order by n.priority asc, n.created_at desc limit 5';
 					$record_dept=$db -> query($sql);
   		?>
  			<div id=m_c_t>
@@ -667,7 +667,7 @@ total("首页","other");
  				<a href="/zone/dialog_list.php" id=more2 target=_blank></a>
  				<div class=box>
    				<?php
- 						$sql = 'select n.id as news_id,n.short_title,n.tags,c.platform,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄专栏" and c.platform="zone" order by n.priority asc,n.created_at desc limit 5';
+ 						$sql = 'select n.id as news_id,n.short_title,n.tags,c.platform,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄专栏" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 5';
 						$record=$db -> query($sql);
   				?> 		
   				<ul>
@@ -712,7 +712,7 @@ total("首页","other");
 				<div id=content_mrt>
   					<li><a href="/show/video.php?id=<?php echo $record_video[0]->video_id ?>" style="color:#F0474E; font-size:14px; font-weight:bold" target=_blank><?php echo $record_video[0]->title?></a></li>
 					<?php for($i=1;$i<6;$i++){?>
-  					<li><span style="color:#FF9900">·</span><a href="/show/video.php?id=<?php echo $record_video[0]->video_id ?>" target=_blank><?php echo $record_video[$i]->title?></a></li>
+  					<li><span style="color:#FF9900">·</span><a href="/show/video.php?id=<?php echo $record_video[$i]->video_id ?>" target=_blank><?php echo $record_video[$i]->title?></a></li>
 					<? }?>
 				
 				</div>
