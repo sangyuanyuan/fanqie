@@ -6,20 +6,35 @@
 	$point = isset($_POST['point'])?$_POST['point']:'0';
 	$db = get_db();
 	$rand_question = $_POST['rand_question'];
+	$this_question_id = $_POST['this_question_id'];
 	$sql = 'select * from smg_problem where id='.$problem_id;
 	$problem = $db->query($sql);
 	$type = $problem[0]->type;
-	$sql = 'select id,title,nick_name from smg_question where problem_id='.$problem_id.' order by create_time limit '.($number-1).',1';
+	if($number==1){
+		$sql = 'select id,title,nick_name from smg_question where problem_id='.$problem_id.' order by rand() limit 100';
+	}else{
+		$sql = 'select id,title,nick_name from smg_question where id='.$this_question_id;
+	}
 	$records = $db->query($sql);
+	$rand_question = $records[0]->id;
+	if($rand_question=''){
+		for($i=1;$i<count($records);$i++){
+			$rand_question = $rand_question.','.$records[$i]->id;
+		}
+		$rand = explode(",",$rand_question);
+		$this_question_id = $rand[$number];
+	}else{
+		$this_question_id = $rand[$number];
+	}
 	if(isset($_POST['lave'])){
 		$lave = $_POST['lave'];
 		$q_count = $_POST['count']+1;
 		$t_count = $_POST['t_count'];
 	}else{
-		$sql = 'select count(*) as count from smg_question where problem_id='.$problem_id.' order by create_time';
+		$sql = 'select id from smg_question where problem_id='.$problem_id.' order by create_time limit 100';
 		$record = $db->query($sql);
-		$t_count = $record[0]->count;
-		$lave = $record[0]->count-1;
+		$t_count = count($record);
+		$lave = count($record)-1;
 		$q_count = 1;
 	}
 ?>
@@ -99,6 +114,8 @@
 </div>
 
 <input type="hidden" id="answer" value="<?php echo $answer; ?>">
+<input type="hidden" name="rand_question" value="<?php echo $rand_question; ?>">
+<input type="hidden" name="this_question_id" value="<?php echo $this_question_id; ?>">
 <input type="hidden" name="limit_time" id="limit_time" value="<?php echo $problem[0]->limit_time;?>">
 <input type="hidden" name="point_value" id="point_value" value="<?php echo $problem[0]->point;?>">
 <input type="hidden" name="number" value="<?php echo $number+1;?>">
