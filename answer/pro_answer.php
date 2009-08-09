@@ -31,10 +31,10 @@
 		$q_count = $_POST['count']+1;
 		$t_count = $_POST['t_count'];
 	}else{
-		$sql = 'select count(*) as count from smg_question where problem_id='.$problem_id.' order by create_time limit 100';
+		$sql = 'select id from smg_question where problem_id='.$problem_id.' order by create_time limit 100';
 		$record = $db->query($sql);
-		$t_count = $record[0]->count;
-		$lave = $record[0]->count-1;
+		$t_count = count($record);
+		$lave = count($record)-1;
 		$q_count = 1;
 	}
 ?>
