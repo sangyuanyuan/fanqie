@@ -275,7 +275,7 @@
 			<div id=t_r_answer_b>
 				<div id=t_r_answer_b_l>
 					<?php for($i=1;$i<count($tk);$i++){ ?>
-						<div class=content><a target="_blank" href="/answer/pro_answer.php?id=<?php echo $tk[$i]->id;?>"><?php echo delhtml($tk[$i]->name); ?></a></div>
+						<div class=content><a target="_blank" href="/answer/old_answer.php?id=<?php echo $tk[$i]->id;?>"><?php echo delhtml($tk[$i]->name); ?></a></div>
 					<?php } ?>
 				</div>
 				<div id=t_r_answer_b_r>发起答题</div>

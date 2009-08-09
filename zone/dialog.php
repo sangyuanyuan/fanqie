@@ -36,14 +36,13 @@
 	$leaders = $leaders->find('all',array('conditions' => "dialog_id = $dialog->id"));
 ?>
 <div id=ibody>
-	<div id=ibody_top><img src="<?php echo $dialog->photo_url;?>"></div>
+	<div id=ibody_top><img src="<?php echo $dialog->photo2_url;?>"></div>
 	<div id=ibody_middle>
-		<a href="dialog_list.php" target=_blank id="dialog_more">往期</a>
+		<a href="dialog_list.php" target=_blank id="dialog_more">往期对话</a>
 		<div id="dialog_titles"><?php echo $dialog->title;?></div>
 		<div id="dialog_desc"><?php echo $dialog->content;?></div>
 		<div id="dialog_leader" calss="border">
-			对话嘉宾:<?php echo $leaders[0]->name; if(count($leaders)>1) echo " 等 ";?><br>
-			时间:<?php echo $dialog->start_time ." ~ " .$dialog->end_time; ?>
+			对话嘉宾:<br><?php for($i=0;$i<count($leaders);$i++){ echo $leaders[$i]->name.'　';} ?>
 		</div>
 	</div>
 	<div id=ibody_bottom>
@@ -123,6 +122,7 @@
 		</div>
 		<div id=b_r>
 			<div id=b_r_t>
+				<b>我要评论</b><br>
 				<input id="comment_writer" type="text" style="margin-bottom:5px;">
 				<?php show_fckeditor('fck_comment_content','Title',false,70,'',278);?>
 				<div id="comment_emotion"></div>

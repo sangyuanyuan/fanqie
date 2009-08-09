@@ -103,7 +103,11 @@
 			if($news->news_type==2){
 				redirect($news->file_name);
 			}elseif($news->news_type==3){
-				redirect($news->target_url);
+				if(strpos($news->target_url,basename($_SERVER['PHP_SELF']))&&strpos($news->target_url,'id='.$id)){
+					alert('对不起，链接出错了！请联系管理员!');
+				}else{
+					redirect($news->target_url);
+				}
 			}
 		?>
 		<div class=top>

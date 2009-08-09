@@ -20,9 +20,12 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 .content2{width:250px; height:20px; overflow:hidden; margin-top:3px; margin-left:8px; line-height:20px; float:left; display:inline;}
 .content2 a{color:#333333; text-decoration:none;}
 .content3{width:263px; height:238px; background:#ffffff; overflow:hidden; margin-left:5px; line-height:20px; float:left; display:inline;}
-.content3 img{width:140px; height:100px; margin-top:10px; margin-left:10px; float:left; display:inline;}
-.content3 #title{width:100px; margin-top:30px; text-align:center; overflow:hidden; margin-left:5px; line-height:20px; float:left; display:inline;}
-.content3 #title a{font-size:20px; font-weight:bold; color:#0000ff;}
-.content3 #description{width:242px; height:115px; margin-top:5px; margin-left:10px; background:#efefef; float:left; display:inline;}
+.content3 img{width:130px; height:90px; margin-top:10px; margin-left:10px; margin-bottom:10px; float:left; display:inline;}
+.content3 #title{width:100px; margin-top:10px; text-align:center; overflow:hidden; margin-left:5px; line-height:20px; float:left; display:inline;}
+.content3 #title a{font-size:15px; font-weight:bold; color:#000000; text-decoration:none;}
+.content3 #description{width:115px; height:60px; margin-top:3px; margin-left:5px; line-height:20px; overflow:hidden; float:left; display:inline;}
+.content3 #description a{color:#666666; text-decoration:none;}
+.content3 .box{width:227px; height:25px; margin-left:10px; padding-left:15px; background:#efefef; float:left; display:inline;}
+.content3 .box a{color:#000000; text-decoration:none;}
 
 #r_dialog{width:274px; height:149px; background:url('/images/zone/blog_r_dialog.jpg') no-repeat; float:right; display:inline;}
