@@ -21,7 +21,7 @@
 	<div id=bodys>
 		<div id=l_left>
 			<?php
-			$depts = $db->query('select * from smg_dept order by priority asc');
+			$depts = $db->query('select * from smg_dept order by priority asc,id asc');
 			 
 			for($i=0;$i<count($depts);$i++)
 			{
