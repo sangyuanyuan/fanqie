@@ -16,7 +16,7 @@ js_include_once_tag('total');
 <body>
 <? include('../../../inc/top.inc.html');
   $db = get_db();
-  $babylist1 =$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="番茄宝宝秀" inner join smg_subject s on c.subject_id=s.id and s.name="六一儿童节专题" order by n.priority asc, n.created_at desc');
+  $babylist1 =$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="番茄宝宝秀" inner join smg_subject s on c.subject_id=s.id and s.name="六一儿童节专题" order by i.priority asc, n.created_at desc');
 ?>
 <div id=bodys>
  	<div id=baby>

@@ -43,7 +43,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   	<td id="show_video" width=330>
   		<div style="margin-top:15px; margin-left:25px; float:left;display:inline;">
 	  		<?php
-				  $video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜视频" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by n.priority asc, n.created_at desc limit 3');
+				  $video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜视频" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.created_at desc limit 3');
 				  show_video_player(305,203,$video[0]->photourl,$video[0]->videourl);
 				  for($i=1;$i<count($video);$i++){
 			?>
@@ -51,7 +51,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 			<? }?>
 		</div>
   	</td>
-  	<? $news=$db->query('select n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我是麦兜" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by n.priority asc, n.last_edited_at desc limit 1');?>
+  	<? $news=$db->query('select n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我是麦兜" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
   	<td valign=top align="right" width=440 id="i_am_mcdull">
   		<div class=index_title></div>
 		<div style="width:405px; height:220px; margin-top:5px; margin-left:25px; font-size:16px; overflow:hidden; color:#ec805a; background:url(css/box1.jpg); float:left; display:inline;">
@@ -66,7 +66,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   		<div class=title2></div>
   		<div style="width:98%; height:80px; float:left; display:inline;">
 			<?php
-				$photo = $db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜图片欣赏" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by n.priority asc,n.created_at desc limit 7');
+				$photo = $db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜图片欣赏" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc,n.created_at desc limit 7');
 	        ?>
 	        <script type="text/javascript"> 
 						function ScrollImgLeft(){
@@ -132,7 +132,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   		<table>
   			<tr>
   				<td id="mcdull_news">
-  					<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜新闻" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by n.priority asc, n.last_edited_at desc limit 10');?>
+  					<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜新闻" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 10');?>
 			  		<div id=title3></div>
 			  		<div id="box1">
 						<? for($i=0; $i<count($news); $i++){?>
@@ -180,7 +180,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   			</tr>
   			<tr>
   				<td id="mcdull_information">
-  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜资料馆" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by n.priority asc, n.last_edited_at desc limit 7')?>
+  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜资料馆" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 7')?>
   					<div id=title4></div>
   					<div id="box2">
 				  		<? for($i=0; $i<count($news); $i++){?>
@@ -191,7 +191,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   			</tr>
 			<tr>
   				<td id="mcdull_download">
-  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜下载区" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by n.priority asc, n.last_edited_at desc limit 7');?>
+  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜下载区" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 7');?>
   					<div id=title5></div>
   					<div id="box3">
 				  		<? for($i=0; $i<count($news); $i++){?>
