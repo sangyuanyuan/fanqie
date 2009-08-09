@@ -281,7 +281,7 @@
 						<div class=content><a target="_blank" href="/answer/old_answer.php?id=<?php echo $tk[$i]->id;?>"><?php echo delhtml($tk[$i]->name); ?></a></div>
 					<?php } ?>
 				</div>
-				<div id=t_r_answer_b_r>发起答题</div>
+				<div id=t_r_answer_b_r><a style="color:#ffffff; text-decoration:none;" target="_blank" href="/answer/question.php">发起答题</a></div>
 			</div>
 		</div>
 	</div>
@@ -393,10 +393,3 @@
 
 </body>
 </html>
-<script>
-	$(document).ready(function(){
-		$('#t_r_answer_b_r').click(function(){
-			window.location.href="/answer/question.php";
-		})
-	})
-</script>
