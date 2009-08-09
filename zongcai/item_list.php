@@ -34,7 +34,7 @@
 							$sql = 'select t1.create_time,t1.name,t1.id,t1.url,t1.photo_url from smg_zongcai_item t1 join smg_zongcai_vote_item t2 on t1.id=t2.item_id order by vote_id,id desc';
 						}
 						
-						$programlist = $db->paginate($sql,20);
+						$programlist = $db->paginate($sql,50);
 						for($i=0;$i<count($programlist);$i++){
 					?>
 						<div style="width:370px; margin-top:5px; margin-left:10px; color:#7B3200; text-decoration:none; float:left; dispaly:inline;overflow:hidden;">
@@ -118,7 +118,7 @@
 				
 				<?php
 					$sql = 'select nick_name,comment,created_at from smg_comment where resource_type="zongcai" and resource_id=0';
-					$coment_record = $db->paginate($sql,10,'comment');
+					$coment_record = $db->paginate($sql,5,'comment');
 					$icount = count($coment_record);
 					for($i=0;$i<$icount;$i++){
 				?>
