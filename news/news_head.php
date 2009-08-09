@@ -70,7 +70,12 @@ if($record[0]->news_type==2)
 }
 else if($record[0]->news_type==3)
 {
-	redirect($record[0]->target_url);
+	if(strpos($record[0]->target_url,basename($_SERVER['PHP_SELF']))||strpos($record[0]->target_url,'id='.$id)){
+		alert('对不起，链接出错了！请联系管理员!');
+	}
+	else{
+		redirect($record[0]->target_url);
+	}
 }
 require_once('../inc/top.inc.html');?>
 <div id=ibody>
