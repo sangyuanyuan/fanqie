@@ -45,7 +45,7 @@
 <form id="answer_form" method="POST" action="old_answer.php?id=<?php echo $problem_id; ?>" >
 <div id=ibody>
 
-	<div id="a_top"><img src="<?php echo $problem[0]->photo_url?>"></div>
+	<div id="a_top"><?php if($problem[0]->photo_url!=''){?><img src="<?php echo $problem[0]->photo_url?>"><?php } ?></div>
 	
 	<div id="time"><?php echo $problem[0]->limit_time;?></div>
 	<div id="right_answer">
