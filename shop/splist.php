@@ -46,7 +46,7 @@
 		
 	</div>
 	<div id=fqtglistcount_page>
-       <?php paginate("/shop/splist.php"); ?>
+       <?php paginate(""); ?>
 	</div>
 </div>
 <? include('../inc/bottom.inc.html');?>	
