@@ -63,14 +63,19 @@
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <?php
+alert(basename($_SERVER['PHP_SELF']));
 if($record[0]->news_type==2)
 {
 	redirect($record[0]->file_name);
 }
 else if($record[0]->news_type==3)
 {
-	alert($_SERVER['PHP_SELF']);
-	redirect($record[0]->target_url);
+	if(strpos($record[0]->target_url,basename($_SERVER['PHP_SELF']))||strpos($record[0]->target_url,'id='.$id)){
+		alert('对不起，链接出错了！请联系管理员!');
+	}
+	else{
+		redirect($record[0]->target_url);
+	}
 }	
 require_once('../inc/top.inc.html');
 ?>
