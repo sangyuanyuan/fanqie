@@ -76,10 +76,16 @@
 				return false;
 			}
 			var oEditor = FCKeditorAPI.GetInstance('news[content]');
-			if(oEditor.GetHTML()==''){
+			var content = oEditor.GetHTML();
+			if(content ==''){
 				alert('请填写新闻内容!');
 				return false;
 			}
+			if(content.length > 10000){
+				alert('新闻内容太长,请联系管理员');
+				return false;
+			}
+			
 			if($("#video_pic").val()!=""){
 				var upfile1 = $("#video_pic").val();
 				var upload_file_extension=upfile1.substring(upfile1.length-4,upfile1.length);
