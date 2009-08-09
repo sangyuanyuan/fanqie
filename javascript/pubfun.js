@@ -57,6 +57,7 @@ function display_login(dom_id,admin){
 		if (!admin) {
 			str += '　<a href="/home/?uid=' + $.cookie('smg_uid') + '" target=_blank>番茄家园</a>';
 		}		
+			str += '　<a href="/blog/?' + $.cookie('smg_uid') + '" target=_blank>个人博客</a>';
 		if($.cookie('smg_user_dept') == 7){
 			str += '　<a href="/admin/admin.php">后台管理</a>';
 		}else if($.cookie('smg_user_dept') > 0){
