@@ -68,7 +68,8 @@ if($record[0]->news_type==2)
 	redirect($record[0]->file_name);
 }
 else if($record[0]->news_type==3)
-{	
+{
+	alert($_SERVER['PHP_SELF']);
 	redirect($record[0]->target_url);
 }	
 require_once('../inc/top.inc.html');
