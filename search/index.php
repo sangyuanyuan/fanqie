@@ -57,6 +57,7 @@
 			<?php
 				if($_REQUEST['search_type']){
 					$dept_id = intval($_REQUEST['dept_id']);
+					$c[] = "is_adopt=1";
 					if($dept_id > 0){
 						$c[] = 'dept_id=' .$dept_id;
 					}
