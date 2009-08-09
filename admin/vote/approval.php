@@ -47,6 +47,7 @@
 						<?php if($record[$i]->is_adopt=="0"){?><span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span><? }?>
 						<a href="approval_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a>
 						<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer;">删除</a>
+						<input type="text" class="priority"  name="<?php echo $record[$i]->id;?>"  value="<?php if('100'!=$record[$i]->priority){echo $record[$i]->priority;};?>" style="width:20px;">
 					</td>
 				</tr>
 		<?php
@@ -57,7 +58,7 @@
 	<div class="div_box">
 		<table width="795" border="0">
 			<tr colspan="5" class=tr3>
-				<td><?php paginate();?></td>
+				<td><?php paginate();?><button id=clear_priority>清空优先级</button>　<button id=edit_priority>编辑优先级</button></td>
 			</tr>
 		</table>
 	</div>
