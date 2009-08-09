@@ -1241,7 +1241,7 @@ body {font-family:����; font-size:12px; color:#000;  margin:0px; line-he
 #fqtglist{width:968px; height:20px; margin-top:10px; padding-left:30px; line-height:15px; color:#0070B0; border-bottom:1px dotted #B0B0B0; background:url(/images/arrow/arrow1.gif) 10px 3px no-repeat; float:left; display:inline;}
 #fqtglist A{color:#0070B0;}
 #fqtglistcount{width:998px; margin-top:10px; background:#F1F1F1; float:left; display:inline;}
-#fqtglistcount .context{width:160px; margin-top:15px; padding-bottom:5px; margin-left:35px; overflow:hidden; float:left; display:inline;}
+#fqtglistcount .context{width:160px; height:160px; margin-top:15px; padding-bottom:5px; margin-left:35px; overflow:hidden; float:left; display:inline;}
 #fqtglistcount .context .cl{width:160px; float:left; display:inline;}
 #fqtglistcount .context .cl A{line-height:30px; color:#000000; text-decoration:none; float:left; display:inline;}
 #fqtglistcount .context .cl A:hover{text-decoration:underline;}
