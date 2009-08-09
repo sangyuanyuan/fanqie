@@ -43,18 +43,9 @@
 					$deptleaders = $db->query('select * from smg_leader where dept_id=' .$dept->id .' order by priority asc');
 					for($i=0;$i<2 && $i<count($deptleaders);$i++){?>
 					<div class=context>
-						<div class=pic><a href="/leader/writeletter.php?leaderid=<?php echo $deptleaders[$i]->id;?>" target="_blank"><img width=84 height=113 border=0 src="<?php echo $deptleaders[$i]->photourl;?>" /></a></div>
-						<div class=name><a href="/leader/writeletter.php?leaderid=<?php echo $deptleaders[$i]->id;?>" target="_blank"><?php echo $deptleaders[$i]->name;?></a></div>
-						<div class=identity><a href="/leader/writeletter.php?leaderid=<?php echo $deptleaders[$i]->id;?>" target="_blank"><?php echo $deptleaders[$i]->description;?></a></div>		
-					</div>
-					<? }?>
-				</div>
-				<div class=content>
-					<? for($i=2;$i<count($deptleaders);$i++){?>
-					<div class=context>
-						<div class=pic><a href="/leader/writeletter.php?leaderid=<?php echo $deptleaders[$i]->id;?>" target="_blank"><img width=84 height=113 border=0 src="<?php echo $deptleaders[$i]->photourl;?>" /></a></div>
-						<div class=name><a href="/leader/writeletter.php?leaderid=<?php echo $deptleaders[$i]->id;?>" target="_blank"><?php echo $deptleaders[$i]->name;?></a></div>
-						<div class=identity><a href="/leader/writeletter.php?leaderid=<?php echo $deptleaders[$i]->id;?>" target="_blank"><?php echo $deptleaders[$i]->description;?></a></div>		
+						<div class=pic><img width=84 height=113 border=0 src="<?php echo $deptleaders[$i]->photourl;?>" /></div>
+						<div class=name><?php echo $deptleaders[$i]->name;?></a></div>
+						<div class=identity><?php echo $deptleaders[$i]->description;?></div>		
 					</div>
 					<? }?>
 				</div>
@@ -63,13 +54,6 @@
 				<div class=title>部门介绍</div>
 				<div class=content><?php echo $dept->description;?></div>
 			</div>
-		</div>
-		<div id=l_right>
-			<div class=title>信箱须知</div>
-			<div id=top>为了集团更好发展，为了集团更美好的明天，欢迎各位同仁积极建言献策。</div>
-			<? for($i=1;$i<=4;$i++){?>
-			<div class=bottom><div class=bt>功能：</div>是SMG员工向集团领导提出意见或建议的重要渠道，更有效地实现领导和员工们的双向沟通。</div>
-			<? }?>
 		</div>
 	</div>
 	<? include('../inc/bottom.inc.html');?>
