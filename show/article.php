@@ -4,10 +4,17 @@
 	$news = new table_class('smg_news');
 	$news -> find($id);
 	$category_name = category_name_by_id($news->category_id);
-	if($_COOKIE['article.php'.date("Y-m-d").$id]==''){
-		SetCookie('article.php'.date("Y-m-d").$id,'1',mktime(0,0,0,1,1,2020),'/');
+	$y2k = mktime(0,0,0,1,1,2020); 
+	$cookie_name = 'article_'.date("Y-m-d").'_'.$id;
+	if($_COOKIE[$cookie_name]==''){
+		SetCookie($cookie_name,'1',$y2k,'/');
 	}else{
-		SetCookie('article.php'.date("Y-m-d").$id,$_COOKIE['article.php'.date("Y-m-d").$id]+1,mktime(0,0,0,1,1,2020),'/');
+		$cookie = $_COOKIE[$cookie_name]+1;
+		SetCookie($cookie_name,$cookie,$y2k,'/');
+	}
+	if($_COOKIE[$cookie_name]<200){
+		$news->click_count = $news->click_count+1;
+		$news -> save();
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -23,9 +30,15 @@
   	?>
 	
 </head>
+<?php 
+	if($_COOKIE[$cookie_name]<200){
+?>
 <script>
 	total("<?php echo $category_name;?>","show");	
 </script>
+<?php
+	}
+?>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>	
@@ -104,8 +117,6 @@
  </div>
  <div id=ibody_right>
 	  	<?php
-			$news->click_count = $news->click_count+1;
-			$news -> save();
 			if($news->news_type==2){
 				redirect($news->file_name);
 			}elseif($news->news_type==3){

@@ -4,6 +4,18 @@
 	$image = new smg_images_class();
 	$image->find($id);
 	$category_name = category_name_by_id($image->category_id);
+	$y2k = mktime(0,0,0,1,1,2020); 
+	$cookie_name = 'show_'.date("Y-m-d").'_'.$id;
+	if($_COOKIE[$cookie_name]==''){
+		SetCookie($cookie_name,'1',$y2k,'/');
+	}else{
+		$cookie = $_COOKIE[$cookie_name]+1;
+		SetCookie($cookie_name,$cookie,$y2k,'/');
+	}
+	if($_COOKIE[$cookie_name]<200){
+		$image->click_count = $image->click_count+1;
+		$image -> save();
+	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,14 +29,18 @@
 		js_include_tag('pubfun','total');
   	?>
 </head>
+<?php 
+	if($_COOKIE[$cookie_name]<200){
+?>
 <script>
 	total("<?php echo $category_name;?>","show");	
 </script>
+<?php
+	}
+?>
 <body>
 <? require_once('../inc/top.inc.html');
 	if($image->url!=''){
-		$image->click_count = $image->click_count+1;
-		$image->save();
 		if(strpos($image->url,basename($_SERVER['PHP_SELF']))&&strpos($image->url,'id='.$id)){
 			alert('对不起，链接出错了！请联系管理员!');
 		}else{
@@ -138,8 +154,6 @@
 	    	<?php if($image->src==''){?>
 			对不起！你所访问的图片链接有错误，请与管理员联系
 			<?php }else{
-				$image->click_count = $image->click_count+1;
-				$image->save();	
 			?>
 		  	<div id="image">
 			  	<a target="_blank" href="<?php echo $image->src;?>">
