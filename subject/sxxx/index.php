@@ -83,7 +83,6 @@
 									 if($photourl=="")
 									 {
 									 	$photourl=$zxdt[$i]->photo_src;
-										break;	
 									 }
 									}
 							?>
