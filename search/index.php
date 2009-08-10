@@ -74,7 +74,7 @@
 						$c[] = "created_at <='" .$end_time ."'";
 					}
 					if($c) 	$conditions = implode(' and ' ,$c);
-					$items = search_content($_REQUEST['key'],$_REQUEST['search_type'],$conditions,20);
+					$items = search_content($_REQUEST['key'],$_REQUEST['search_type'],$conditions,20,'id desc');
 				}
 				if($items){
 					if($_REQUEST['search_type'] == 'smg_news'){
