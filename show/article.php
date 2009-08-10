@@ -4,6 +4,11 @@
 	$news = new table_class('smg_news');
 	$news -> find($id);
 	$category_name = category_name_by_id($news->category_id);
+	if($_COOKIE['article.php'.date("Y-m-d").$id]==''){
+		SetCookie('article.php'.date("Y-m-d").$id,'1',mktime(0,0,0,1,1,2020),'/');
+	}else{
+		SetCookie('article.php'.date("Y-m-d").$id,$_COOKIE['article.php'.date("Y-m-d").$id]+1,mktime(0,0,0,1,1,2020),'/');
+	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
