@@ -9,11 +9,6 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<script type="text/javascript">
-			function goToAnchor() {
-			window.location.href = "#pinglun";
-			}
-	</script>
 	<title>SMG-番茄网-新闻-新闻头条</title>
 	<? 	
 		css_include_tag('news_news_head','top','bottom');

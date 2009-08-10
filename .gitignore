@@ -1,4 +1,7 @@
 config/config.php
+index.html
+inc/top.inc.html
+inc/bottom.inc.html
 .project
 Thumbs.db
 .tmp_*
