@@ -109,7 +109,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
                 
               <div class="center_pic">
               	<? 
-              		$photolist = show_content('smg_images','picture','上海文广数字移动传播有限公司','首页图片','5');
+              		$photolist = show_content('smg_images','picture','上海文广数字移动传播有限公司','首页图片','2');
 					$count = count($photolist);
 					for ($i=0;$i<$count;$i++)
 					{
