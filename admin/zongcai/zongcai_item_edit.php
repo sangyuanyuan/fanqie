@@ -44,7 +44,7 @@
 					<td >*主创人员</td>
 					<td><input type="text" class="required" name=post[author] value="<?php echo $record[0]->author;?>"></td>
 					<td>*联系方式（手机）</td>
-					<td><input type="text" class="required number" name=post[mobile] value="<?php echo $record[0]->mobile;?>"></td>
+					<td><input type="text" class="required" name=post[mobile] value="<?php echo $record[0]->mobile;?>"></td>
 				</tr>
 				<tr height="25px;">
 					<td >*播出栏目</td>
