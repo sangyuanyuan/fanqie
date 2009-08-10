@@ -36,12 +36,13 @@
 				$records = $db->paginate($sql,9);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
+					$nick_name = $records[$i]->nick_name ? $records[$i]->nick_name : $records[$i]->reciever;
 			?>
 			<div class=box style="float:left;display:inline">
 				<div class=gift  style="float:left;display:inline"></div>
 				<div class=info  style="float:left;display:inline">
 					<div class=giver><?php echo $records[$i]->sender; ?></div>
-					赠送 <b><?php echo $records[$i]->nick_name;?></b>&nbsp;<font color=#FF0000 style="font-weight:bolder;">生日礼物</font>
+					赠送 <b><?php echo $nick_name;?></b>&nbsp;<font color=#FF0000 style="font-weight:bolder;">生日礼物</font>
 				</div>
 				<div class=picture  style="float:left;display:inline"><a href="<?php echo $records[$i]->gift_src;?>" target=_blank><img src="<?php echo $records[$i]->gift_src;?>" border=0 width=55 height=55></a></div>
 				<div class=info  style="float:left;display:inline">一份</div>
