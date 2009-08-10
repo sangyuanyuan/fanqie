@@ -528,11 +528,12 @@ total("首页","other");
  			<!-- end !-->			
  			<!-- start top_right_right_middle !-->
  			<?php
- 					$sql = 'select n.short_title, n.id as news_id, c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
+ 					$sql = 'select n.short_title, n.id as news_id, c.platform,c.id as c_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
 					$record_baoliao=$db -> query($sql);		
 			?>	 		
 			<div id=t_r_r_m>
  				<a href="/news/news_sub.php" id=btn target=_blank></a>
+				<div class=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record_baoliao[0]->c_id; ?>">More</a></div>
 				<div id=content_trrm>
 					<?php for($i=0;$i<12;$i++){?><a href="/<?php echo $record_baoliao[$i]->platform?>/news/news.php?id=<?php echo $record_baoliao[$i]->news_id?>" target=_blank><span style="color:#ff0000">·</span><?php echo $record_baoliao[$i]->short_title ?></a> <? }?>				
 					</div>
