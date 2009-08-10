@@ -39,7 +39,7 @@
 		<?php for($i=0;$i<6;$i++){ ?>
 			<div class=l>
 				<div class=name><a href="/blog/?uid-<?php echo $record[$i]->uid?>" target=_blank><?php echo $record[$i]->spacename ?></a></div>
-				<img src="http://172.27.203.83:8080/ucenter/avatar.php?uid=<?php echo $record[$i]->uid ?>" class=pic />
+				<img src="/ucenter/avatar.php?uid=<?php echo $record[$i]->uid ?>" class=pic />
 				<div class=subject><a href="/blog/?uid-<?php echo $record[$i]->uid?>-action-viewspace-itemid-<?php echo $record[$i]->itemid?> " target=_blank><?php echo strip_tags($record[$i]->subject) ?></a></div>
 				<div class=context><?php echo delhtml($record[$i]->message) ?></div>
 			</div>
