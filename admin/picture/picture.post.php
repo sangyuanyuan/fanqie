@@ -35,12 +35,8 @@
 	$table_change += array('</p>'=>'');
 	$title = strtr($_POST['title'],$table_change);
 	$smg_image->title = $title;
-	if($_POST['id']==''){
-		$smg_image->publisher = $_COOKIE['smg_user_nickname'];
-	}
 	if($_POST['picture']["priority"]==null){$smg_image->update_attribute("priority","100");}
 	if($_POST['picture']["commentable"]==null){$smg_image->update_attribute("commentable","");}
-	$smg_image->publisher = $_COOKIE['smg_user_nickname'];
 	$smg_image->update_attributes($_POST['picture']);
 	if($_POST['special_type']==""){
 		if($smg_image->category_id!=''){

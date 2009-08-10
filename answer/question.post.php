@@ -24,6 +24,6 @@
 		}
 	}
 	
-	alert('谢谢参与！请耐心等待管理员审批！');
-	redirect('question.php');
+	alert('上传成功！谢谢参与！');
+	redirect('answerlist.php');
 ?>

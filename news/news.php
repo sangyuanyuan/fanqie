@@ -18,11 +18,6 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<?php if($_REQUEST['page']){ ?>
-	<script type="text/javascript">
-			window.location.href = "#pinglun";
-	</script>
-	<? }?>
 	<title>SMG-番茄网-新闻-普通子页</title>
 	<? 	
 		css_include_tag('news_news','top','bottom');
@@ -58,6 +53,14 @@
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,(select count(*) from smg_digg cd where cd.diggtoid=d.diggtoid and cd.file_type='comment') as total,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by total desc limit 2";
 		$digg=$db->query($sql);
   ?>
+  <?php if($_REQUEST['page']){ ?>
+	<script type="text/javascript">
+		$(function(){
+			//window.location.href = "#pinglun";
+			$("#commenter")[0].focus();
+		})	
+	</script>
+	<? }?>
  <?php
   if($cookie<=200){
   if($record[0]->cplatform=="news"){?>
@@ -131,27 +134,6 @@ require_once('../inc/top.inc.html');
 			<? }?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
 			<?php if($record[0]->categoryname=="我要报料"){?><div id=lc>此文系番茄网网友报料新闻，不代表番茄网的观点或立场。</div><?php } ?>
-			<div id=wybl><a style="margin-left:20px;" target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
-			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
-			<?php if(count($about)>0||count($about)>0){?>
-			<div class=abouttitle>更多关于“<?php echo mb_substr(strip_tags($record[0]->short_title),0,36,"utf-8");?>”的新闻</div>
-			<div class=aboutcontent style="padding-bottom:10px;">
-				<div class=title>相关链接</div>
-					<?php for($i=0;$i<count($about);$i++){?>
-				<div class=content>
-						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->created_at; ?>)</span>
-							</a>
-						<?php }else{?>
-							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->created_at; ?>)</span>
-							</a>
-						<?php }?>
-					</div>		
-				<?php }?>		
-			</div>
-			<?php } ?>
 			<div style="float:left; display:inline;"><a id="pinglun" name="pinglun">&nbsp;</a></div>
 			<?php if($record[0]->is_commentable==1){ 
 				
@@ -211,6 +193,28 @@ require_once('../inc/top.inc.html');
 			</div>
 			</form>
 			<?php } ?>
+			<div id=wybl><a style="margin-left:20px;" target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
+			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
+			<?php if(count($about)>0||count($about)>0){?>
+			<div class=abouttitle>更多关于“<?php echo mb_substr(strip_tags($record[0]->short_title),0,36,"utf-8");?>”的新闻</div>
+			<div class=aboutcontent style="padding-bottom:10px;">
+				<div class=title>相关链接</div>
+					<?php for($i=0;$i<count($about);$i++){?>
+				<div class=content>
+						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
+							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->created_at; ?>)</span>
+							</a>
+						<?php }else{?>
+							·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->created_at; ?>)</span>
+							</a>
+						<?php }?>
+					</div>		
+				<?php }?>		
+			</div>
+			<?php } ?>
+			
 		</div>
 	</div>
 	<div id=ibody_right>
