@@ -12,7 +12,7 @@
  	js_include_once_tag('total');
 	?>
 <script>
-	total("专题-评奖专题","other");
+	total("专题-评奖专题","news");
 </script>
 </head>
 <body>
