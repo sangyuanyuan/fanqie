@@ -1,10 +1,8 @@
 ﻿	$(document).ready(function(){
 		display_fqbq('fqbq','post[comment]');
-		$.post('/news/news_update.post.php',{'newsid':$("#newsid").attr('value')},function(data){
-				
-			}
-		)	
-		
+		$.post('/news/news_update.post.php',{'newsid':$("#newsid").attr('value')},function(data){		
+		});
+
 		$(".show_vote").click(function(){
 			var vote_id=$(this).prev().prev().attr("value");
 			window.open("/vote/vote_show.php?vote_id="+vote_id);

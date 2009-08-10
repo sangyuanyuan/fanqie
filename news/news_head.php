@@ -9,11 +9,11 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
+	<?php if($_REQUEST['page']){ ?>
 	<script type="text/javascript">
-			function goToAnchor() {
 			window.location.href = "#pinglun";
-			}
 	</script>
+	<? }?>
 	<title>SMG-番茄网-新闻-新闻头条</title>
 	<? 	
 		css_include_tag('news_news_head','top','bottom');
@@ -67,7 +67,7 @@
 </script>
 <?php } ?>
 </head>
-<body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?> onload="goToAnchor();" >
+<body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <? 
 if($record[0]->news_type==2)
 {
@@ -191,7 +191,7 @@ require_once('../inc/top.inc.html');?>
 				<div id=fqbq>
 					
 				</div>
-				<button id="comment_sub" type="submit">提交评论</button>
+				<button id="comment_sub">提交评论</button>
 			</div>
 			</form>
 			<?php }?>

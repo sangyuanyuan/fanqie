@@ -3,12 +3,49 @@
 	use_jquery();
 ?>
 <a href="#" id="test">test</a>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<div>231231231232</div>
+<a id="anchor" name="anchor"></a>
 <script>
 	$(function(){
 		$('#test').click(function(e){
 			e.preventDefault();
 			alert('ok');
 		});
-		$('#test').click();
+		$(window).load(function(){
+			alert('ok');
+			window.location.href="#anchor";
+		});
 	});
 </script>
