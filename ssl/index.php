@@ -11,6 +11,9 @@
 	<?php css_include_tag('news_news','top','bottom');
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub','total'); ?>
+	<script>
+		total("番茄工具","server");
+	</script>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <?php
