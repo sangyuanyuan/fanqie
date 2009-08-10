@@ -6,10 +6,13 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
 	<?php 
-		css_include_tag('top.css','bottom.css');
+		css_include_tag('top.css','bottom.css','answer/index');
 		js_include_tag('total');
 	?>
 </head>
+<script>
+	total("答题进入页","server");	
+</script>
 <body>
 <?php
 	require_once('../inc/top.inc.php');
@@ -25,7 +28,7 @@
 	4、	部门积分按以下规则累计：满分问卷部门加5分，优秀问卷（80分以上含）部门加3分，及格问卷（60分-70分）部门加1分<br><br>
 	<br><br>
 
-<div style="width:998px; text-align:center; float:left; display:inline;"><img style="cursor:pointer;" onclick="show()" src="/images/pic/start.jpg"><input type="hidden" name="userid" id="userid" value="<?php echo $cookieuserid; ?>"></div>
+<div style="width:998px; text-align:center; float:left; display:inline;"><a href="/answer/pro_answer.php?id=26"><img src="/images/pic/start.jpg" border=0></a></div>
 <div style="width:450px; margin-top:30px; margin-bottom:10px; padding:10px;float:left;display:inline">
 	<span style="color:red; font-size:16px; font-weight:bold;">个人排行榜：</span><br>
 	<?php
