@@ -30,7 +30,7 @@
 		<? for($i=0;$i<$count;$i++)
 		{?>
 		<tr class="tr3" id="<?php echo $record[$i]->id;?>">
-			<td><? echo $record[$i]->name;?></a></td>
+			<td><a href="/zongcai/show_item.php?id=<?php echo $record[$i]->id; ?>" target="_blank"><? echo $record[$i]->name;?></a></td>
 			<td><? echo $record[$i]->uploader;?></td>
 			<td><select name="program_type" class="select_type" title="<?php echo $record[$i]->id;?>">
 					<option value="tv_recommend" <?php if($record[$i]->program_type=="tv_recommend"){?>selected="selected"<?php }?>>电视推荐节目投票</option>
