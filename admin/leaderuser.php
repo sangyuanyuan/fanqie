@@ -4,7 +4,7 @@ parse_str($_SERVER['QUERY_STRING']);
 $db=get_db();
 $sql="";
 if($key1<>""){$sql=' and u.name like "%'.$key1.'%" ';}
-$strsql='select s.*,u.name ,u.nick_name from smg_leader_role s left join smg_user u on s.user_id=u.id where 1=1'.$sql.' order by createtime desc';
+$strsql='select s.*,u.loginname ,u.nickname from smg_leader_role s left join smg_user_real u on s.user_id=u.id where 1=1'.$sql.' order by createtime desc';
 $rows=$db->paginate($strsql,20);
 ?>
 
@@ -35,8 +35,8 @@ $rows=$db->paginate($strsql,20);
 		</tr>
 		<? for($i=0;$i<count($rows);$i++){?>
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" >
-			<td><? echo $rows[$i]->name;?></td>
-			<td><? echo $rows[$i]->nick_name;?></td>
+			<td><? echo $rows[$i]->loginname;?></td>
+			<td><? echo $rows[$i]->nickname;?></td>
 			<td><? echo $rows[$i]->rights;?></td>
 			<td><? echo $rows[$i]->createtime;?></td>
 			<td><span style="cursor:pointer" id="delleaderuser" name="<?php echo $rows[$i]->id;?>">删除</span></td>

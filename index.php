@@ -32,14 +32,16 @@ total("首页","other");
 				$record_video=$db -> query($sql);
 				$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.platform="show" order by i.priority asc,i.created_at desc limit 4';
 				$record_ad=$db -> query($sql);
+				$sql = 'select name from smg_image_show';
+				$record_inline = $db->query($sql);
   		?>
  			<div id=t_l_t>
  				<div id=menu>
- 					<div class=item id=item1 param="1" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">每日之星</div>
-  				<div class=item id=item2 param="2" style="background:url(/images/index/btn1.jpg)">视频新闻</div>
- 					<div class=item id=item3 param="3" style="background:url(/images/index/btn2.jpg);color:#9f9f9f;">番茄广告</div>
+ 					<div class=item id=item1 param="1" <?php if($record_inline[0]->name=='mrzx'){?>style="background:url(/images/index/btn1.jpg)"<?php }else{?>style="background:url(/images/index/btn2.jpg);color:#9f9f9f;"<?php }?>>每日之星</div>
+  				<div class=item id=item2 param="2" <?php if($record_inline[0]->name=='spxw'){?>style="background:url(/images/index/btn1.jpg)"<?php }else{?>style="background:url(/images/index/btn2.jpg);color:#9f9f9f;"<?php }?>>视频新闻</div>
+ 					<div class=item id=item3 param="3" <?php if($record_inline[0]->name=='fqgg'){?>style="background:url(/images/index/btn1.jpg)"<?php }else{?>style="background:url(/images/index/btn2.jpg);color:#9f9f9f;"<?php }?>>番茄广告</div>
 				</div>	
-  			<div class=content_tlt id=content1>
+  			<div class=content_tlt id=content1 <?php if($record_inline[0]->name=='mrzx'){?>style="display:inline"<?php }?>>
 				<?php if($record_star[1]->ipriority<>0){?>
 					<a href="/show/show.php?id=<?php echo $record_star[0]->img_id?>" target=_blank><img src="<?php echo $record_star[0]->src?>" width=270px; height=180px; border=0></a>
 				<? }else{?>
@@ -80,10 +82,10 @@ total("首页","other");
 					
 				<? }?>	
   		  </div>
- 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg);display:inline;">
+ 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg);" <?php if($record_inline[0]->name=='spxw'){?>style="display:inline"<?php }?>>
  					<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=235px height=182px scrolling="no" frameborder="0"></iframe>
  				</div>
-  			<div class=content_tlt id=content3>
+  			<div class=content_tlt id=content3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
 				<?php if($record_ad[1]->ipriority<>0){?>
 					<a href="/show/show.php?id=<?php echo $record_ad[0]->img_id?>" target=_blank><img src="<?php echo $record_ad[0]->src?>" width=270px; height=180px; border=0></a>
 				<? }else{?>
@@ -123,14 +125,14 @@ total("首页","other");
 					</script>		
 				<? }?>
   			</div>
- 				<div class=list id=list1>
+ 				<div class=list id=list <?php if($record_inline[0]->name=='mrzx'){?>style="display:inline"<?php }?>>
  					<ul>
  						<?php for($i=0; $i<count($record_star); $i++){?>
  						<li><a href="/show/show.php?id=<?php echo $record_star[$i]->img_id ?>" target=_blank><?php echo strip_tags($record_star[$i]->title) ?></a></li>
  						<? }?>
  					</ul>		
  				</div>  			 			
-  			<div class=list id=list2  style="display:inline;">
+  			<div class=list id=list2  <?php if($record_inline[0]->name=='spxw'){?>style="display:inline"<?php }?>>
  					<ul>
  						<li class=video style="color:#2C345B; font-weight:bold; background:url(/images/icon/arrow2.gif) no-repeat 0 3px" param1=<?php echo $record_video[0]->video_photo_src ?> param2=<?php echo $record_video[0]->video_src ?>><?php echo $record_video[0]->short_title ?></li>
  						<li class=video param1=<?php echo $record_video[1]->video_photo_src ?> param2=<?php echo $record_video[1]->video_src ?>><?php echo $record_video[1]->short_title ?></li>
@@ -138,7 +140,7 @@ total("首页","other");
  						<li class=video param1=<?php echo $record_video[3]->video_photo_src ?> param2=<?php echo $record_video[3]->video_src ?>><?php echo $record_video[3]->short_title ?></li>
  					</ul>	
  				</div>
- 				<div class=list id=list3>
+ 				<div class=list id=list3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
  					<ul>
  						<?php for($i=0; $i<count($record_ad); $i++){?>
  						<li><a href="/show/show.php?id=<?php echo $record_ad[$i]->img_id ?>" target=_blank><?php echo strip_tags($record_ad[$i]->title) ?></a></li>

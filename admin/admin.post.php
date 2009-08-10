@@ -55,7 +55,7 @@ if ($_POST["type"]=="shoppub")
 }
 if($_POST["type"]=="addleaderuser")
 {
-	$userid=$db->query('select id from smg_user where name="'.$_POST['userid'].'"');
+	$userid=$db->query('select id from smg_user_real where name="'.$_POST['userid'].'"');
 	$StrSql='insert into smg_leader_role(user_id,rights,createtime) value ('.$userid[0]->id.',"'.$_POST['right'].'",now())'; 
 	$Record = $db->execute($StrSql);
 	echo "OK";
