@@ -125,7 +125,7 @@ total("首页","other");
 					</script>		
 				<? }?>
   			</div>
- 				<div class=list id=list <?php if($record_inline[0]->name=='mrzx'){?>style="display:inline"<?php }?>>
+ 				<div class=list id=list1 <?php if($record_inline[0]->name=='mrzx'){?>style="display:inline"<?php }?>>
  					<ul>
  						<?php for($i=0; $i<count($record_star); $i++){?>
  						<li><a href="/show/show.php?id=<?php echo $record_star[$i]->img_id ?>" target=_blank><?php echo strip_tags($record_star[$i]->title) ?></a></li>
