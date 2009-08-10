@@ -71,7 +71,7 @@
 					</div>
 				</div>
 				<div id=right>
-					<?php for($i=1;$i< count($record);$i++){ ?>
+					<?php for($i=0;$i< count($record);$i++){ ?>
 						<div class="content">
 							<?php if($i==1){?>
 							<img src="/images/icon/arrow2.gif">
