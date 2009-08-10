@@ -1,7 +1,7 @@
-﻿<? 
+﻿<?
+$cookie=isset($_SESSION['smg_userid'])? $_SESSION['smg_userid'] : 0;
 require_once('../frame.php');
 $db=get_db();
-$cookie=isset($_COOKIE['smg_userid'])? $_COOKIE['smg_userid'] : 0;
 if($cookie==0)
 {
 	echo '<script language=javascript>window.location.href="/admin/leaderindex.php";</script>';
