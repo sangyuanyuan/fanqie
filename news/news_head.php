@@ -159,7 +159,7 @@ require_once('../inc/top.inc.html');?>
 			<div id=comment>
 				<?php if(count($digg)>0){
 				 for($i=0;$i<count($digg);$i++){ ?>
-					<div class=content>	
+					<!--<div class=content>	
 						<div class=title1>
 							<div style="width:110px; height:20px; margin-left:118px; overflow:hidden; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->nick_name;?></span>
@@ -172,7 +172,7 @@ require_once('../inc/top.inc.html');?>
 						<div class=context>
 								<?php  echo strfck($digg[$i]->comment);?>
 							</div>	
-					</div>
+					</div>-->
 				<?php }}
 				
 				  for($i=0;$i<count($comment);$i++){ ?>

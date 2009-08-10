@@ -1,3 +1,3 @@
 <?php
-    include('/show/show.php');
+    include('../../show/show.php');
 ?>
