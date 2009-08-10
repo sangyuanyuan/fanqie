@@ -9,6 +9,11 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
+	<?php if($_REQUEST['page']){ ?>
+	<script type="text/javascript">
+			window.location.href = "#pinglun";
+	</script>
+	<? }?>
 	<title>SMG-番茄网-新闻-新闻头条</title>
 	<? 	
 		css_include_tag('news_news_head','top','bottom');

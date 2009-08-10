@@ -2,7 +2,7 @@
 		display_fqbq('fqbq','post[comment]');
 		$.post('/news/news_update.post.php',{'newsid':$("#newsid").attr('value')},function(data){		
 		});
-		window.location.href = "#pinglun";
+		
 		
 		$(".show_vote").click(function(){
 			var vote_id=$(this).prev().prev().attr("value");
