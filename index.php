@@ -694,7 +694,7 @@ total("首页","other");
   				<div id=context3>
   					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[1]->id ?>" target=_blank><?php echo $record[1]->title ?></a></li>
   					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[2]->id ?>" target=_blank><?php echo $record[2]->title ?></a></li>
-  					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[2]->id ?>" target=_blank><?php echo $record[3]->title ?></a></li>
+  					<li><span style="color:#FF9900">·</span><a href="/zone/dialog.php?id=<?php echo $record[3]->id ?>" target=_blank><?php echo $record[3]->title ?></a></li>
   				</div>
  				</div>
  			</div>
