@@ -9,6 +9,11 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
+	<script type="text/javascript">
+			function goToAnchor() {
+			location.href = "#pinglun";
+			}
+	</script>
 	<title>SMG-番茄网-新闻-新闻头条</title>
 	<? 	
 		css_include_tag('news_news_head','top','bottom');
@@ -62,7 +67,7 @@
 </script>
 <?php } ?>
 </head>
-<body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
+<body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?> onload="goToAnchor();" >
 <? 
 if($record[0]->news_type==2)
 {
@@ -133,6 +138,7 @@ require_once('../inc/top.inc.html');?>
 				<?php }?>		
 			</div>
 			<?php } ?>
+			<div style="float:left; display:inline;"><a id="pinglun" name="pinglun">&nbsp;</a></div>
 			<?php if($record[0]->is_commentable==1){ if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
