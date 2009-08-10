@@ -106,7 +106,7 @@
 					<div id="div_answer_list_innerbox">
 						<?php
 							$db = get_db();
-							$sql = 'select a.*,b.id as qid, b.content as  qcontent, b.writer, b.create_time as qcreate_time from smg_dialog_answer a left join smg_dialog_question b on a.question_id=b.id';
+							$sql = 'select a.*,b.id as qid, b.content as  qcontent, b.writer, b.create_time as qcreate_time,c.nickname as leader_name from smg_dialog_answer a left join smg_dialog_question b on a.question_id=b.id left join smg_user_real c on a.leader_id = c.id';
 							$sql .= ' where a.dialog_id=' .$dialog->id;
 							$answers = $db->query($sql);
 							$answer_count = $answers ? count($answers) : 0;

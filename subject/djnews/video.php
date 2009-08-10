@@ -1,3 +1,3 @@
 <?php
-    include('/show/video.php');
+    include('../../show/video.php');
 ?>
