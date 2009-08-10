@@ -13,7 +13,7 @@
 </head>
 <?
   $lasturl = isset($_REQUEST['lasturl']) ? $_REQUEST['lasturl'] : $_SERVER['HTTP_REFERER'];
-  if(!isset($lasturl)) $lasturl = "/";
+  if(!isset($lasturl)) $lasturl = "/admin.php";
 ?>
 <form name="login" id="login" action="leaderchecklogin.php" method="post" style="width:100%; height:550px;background:url(/images/bg/admin_bg1.jpg) repeat-x;margin-top:0px;">
 <body>
