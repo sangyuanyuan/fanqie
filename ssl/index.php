@@ -150,10 +150,10 @@ require_once('../inc/top.inc.html');
 			<? }?>
 		</div>
 		<? }?>
-		<div id=r_m>
-			<div id=title>小编推荐</div>
+		<div class=r_m>
+			<div class=title>小编推荐</div>
 			<?php 
-			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and tags='小编推荐' order by n.priority asc,n.created_at desc limit 8";
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and tags='小编推荐' order by n.priority asc,n.created_at desc limit 8";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){	 	
 			 ?>
@@ -178,13 +178,26 @@ require_once('../inc/top.inc.html');
 				</div>
 			<?php }?>
 		</div>
+		<div class=r_m>
+			<div class=title>精彩视频</div>
+			 <?php 
+			 $sql="select id,title from smg_video where is_adopt=1 order by priority asc,created_at desc limit 10";
+			 $jcsp=$db->query($sql);
+			 for($i=0;$i<count($jcsp);$i++){	 	
+			 ?>
+			 	<div class="r_content">
+			 		<ul>
+						<li>·<a target="_blank" href="/show/video.php?id=<?php echo $jcsp[$i]->id;?>"><?php echo strfck($jcsp[$i]->title); ?></a></li>
+					</ul>			
+				</div>
+			<? }?>
+		</div>
 		<div id=r_b_t>
-			<div class=b_t_title1 param=1>论坛新帖</div>
+			<div class=b_t_title1 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat" param=1>论坛新帖</div>
 			<div class=b_t_title1 param=2>博客新帖</div>
-			<div class=b_t_title1 param=3 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat">精彩视频</div>
-			<div class="b_t" id="b_t_1" style="display:none;">
+			<div class="b_t" id="b_t_1" style="display:block;">
 				<? 
-					$sql="SELECT tid,subject FROM bbs_posts where first=1 order by pid desc limit 10";
+					$sql="SELECT tid,subject FROM bbs_posts where first=1 order by pid desc limit 5";
 					$bbs=$db->query($sql);
 					for($i=0;$i<count($bbs);$i++){
 				?>
@@ -197,7 +210,7 @@ require_once('../inc/top.inc.html');
 			</div>
 			<div class=b_t id="b_t_2" style="display:none;">
 				<? 
-					$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by itemid desc limit 10";
+					$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by itemid desc limit 5";
 					$blog=$db->query($sql);
 					for($i=0;$i<count($blog);$i++){
 				?>
@@ -207,19 +220,6 @@ require_once('../inc/top.inc.html');
 					</ul>
 				</div>
 				<? }?>
-			</div>
-			<div class=b_t id="b_t_3" style="display:inline;">
-			<?php 
-			 $sql="select id,title from smg_video where is_adopt=1 order by priority asc,created_at desc limit 10";
-			 $jcsp=$db->query($sql);
-			 for($i=0;$i<count($jcsp);$i++){	 	
-			 ?>
-			 	<div class="r_content">
-			 		<ul>
-						<li>·<a target="_blank" href="/show/video.php?id=<?php echo $jcsp[$i]->id;?>"><?php echo strfck($jcsp[$i]->title); ?></a></li>
-					</ul>			
-				</div>
-			<? }?>
 			</div>
 		</div>
 		<div id=r_b_b>
@@ -277,3 +277,4 @@ order by b.allcounts desc) tb order by a1 desc limit 10";
 
 </body>
 </html>
+
