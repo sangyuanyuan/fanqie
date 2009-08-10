@@ -61,7 +61,7 @@ $xxzl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 								for($i=1;$i<count($video);$i++){?>
 								<div style="width:200px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/show/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
 								<? }?>			
-							<div class=more><a target="_blank" href="/video/videolist2.php?id=14">更多>></a></div>
+							<div class=more><a target="_blank" href="video_list.php?id=<?php echo cid; ?>">更多>></a></div>
 							<div class=title>三项学习教育</div>
 							<a href="/subjec/sxxx/"><img border=0 style="margin-left:10px; margin-top:5px;" width="205" height="58" src="images/sxxx.jpg"></a>
 							<div class=title>信息简报</div>						
