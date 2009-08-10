@@ -17,7 +17,7 @@
 ?>
 <form name="login" id="login" action="leaderchecklogin.php" method="post" style="width:100%; height:550px;background:url(/images/bg/admin_bg1.jpg) repeat-x;margin-top:0px;">
 <body>
-	<div id=admin_body1>
+	<div id=main>
 		<div id=login  style="background:none">
 			<div id=title>SMG集团领导日程安排表登录    </div>
 			<span style="color:#FF0000"> <? echo $_REQUEST['errorstr'];?></span>
