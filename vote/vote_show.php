@@ -103,7 +103,7 @@
 	<div><label for="nick_name">昵称:</label><input type="text" id="nick_name" value="<?php echo $_COOKIE['smg_user_nickname'];?>">
 	<?php show_fckeditor('fck_content','Title',false,100,'',600);?>	
 	<div id="emotion"></div>
-	<div style="width:600px;text-align:center;margin-top:5px;"> <button id="submit">发表评论</button></div></div>
+	<div style="width:600px;text-align:center;margin-top:5px;"> <button id="submit">发表评论</button><button id="add_vote">发起投票</button></div></div>
 </div>
 <?php
 $db = get_db();
@@ -145,6 +145,9 @@ for($i=0;$i<count($comments);$i++){?>
 			var id = <?php echo $vote->id;?>;
 			$.post('/pub/comment.post.php',{'comment[resource_type]':'vote','comment[resource_id]':id,'comment[nick_name]':nick_name,'comment[comment]':content},function(data){window.location.reload();});
 			
+		});
+		$('#add_vote').click(function(){
+			window.location.href = "/vote/beginvote.php";
 		});
 		display_fqbq('emotion','fck_content');
 	});
