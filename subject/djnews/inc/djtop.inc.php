@@ -54,7 +54,7 @@ $xxzl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 							<div class=more><a target="_blank" href="djlist.php?id=<?php $zxdt[0]->cid;?>">更多>></a></div>
 							<div class=title>活动视频</div>
 								<? 
-								$video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动视频" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by i.priority asc, n.created_at desc limit 3');?>
+								$video = $db->query('select n.id,n.title,n.photo_url,n.video_url,c.id=cid from smg_video n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="活动视频" and i.category_type="news" and i.is_adopt=1 and c.name="学习实践活动专题" order by i.priority asc, n.created_at desc limit 3');?>
 								<div style="width:200px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><? show_video_player(200,230,$video[0]->photo_url,$video[0]->video_url);?></div>
 									<? 	
 								for($i=1;$i<count($video);$i++){?>
