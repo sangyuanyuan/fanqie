@@ -22,7 +22,7 @@ ul{margin:0; padding:0}
 
 #center{width:443px; height:968px; margin-left:11px; float:left; display:inline; border:0px solid black;}
 #center #flash{width:441px; height:200px; margin-top:6px; border:0px solid black; float:left; display:inline; }
-#center #show{width:443px; height:114px; margin-top:6px; float:left; display:inline; background:url(/dept/newscenter/images/showbg.jpg); }
+#center #show{width:443px; height:114px; margin-top:6px; float:left; display:inline; background:url(/dept/newscenter/images/showbg.jpg) no-repeat; }
 #center #show #photo{width:322px; height:93px; margin-top:10px; margin-left:110px; float:left; display:inline; border:0px solid black;}
 #center #show .photo_all{width:80px; height:93px; border:0px solid black; float:left; display:inline; font-size:15px; text-align:center}
 #center #show .photo_all a{text-decoration:none; color:black;}
