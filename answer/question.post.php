@@ -7,6 +7,7 @@
 	$question -> update_attributes($_POST['question'],false);
 	$question->create_time = date("Y-m-d H:i:s");
 	$question->problem_id = 0;
+	$question->is_adopt = 1;
 	$question->save();
 	
 	if($_POST['item']){
