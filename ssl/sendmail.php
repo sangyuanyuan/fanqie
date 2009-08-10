@@ -1,38 +1,38 @@
 <?php 
-//ÎÄ±¾ÄÚÈİ 
+//ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ 
 $text = $_POST['text']; 
-//±êÌâ 
+//ï¿½ï¿½ï¿½ï¿½ 
 $subject = $_POST['subject']; 
-//·¢ËÍÕß 
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 $from = $_POST['from']; 
-//½ÓÊÜÕß 
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 $to = 'wangbinsheng@smg.sh.cn'; 
-//¸½¼ş 
+//ï¿½ï¿½ï¿½ï¿½ 
 $file = $_FILES['upload_file']['tmp_name'];
-// ¶¨Òå·Ö½çÏß 
+// ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ 
 $boundary = uniqid( ""); 
 $headers = "Content-type:multipart/mixed; boundary=\"$boundary\"\r\n";
 $headers .= "From:$from\r\n"; 
-//È·¶¨ÉÏ´«ÎÄ¼şµÄMIMEÀàĞÍ 
+//È·ï¿½ï¿½ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½MIMEï¿½ï¿½ï¿½ï¿½ 
 if($_FILES['upload_file']['type']) 
 $mimeType = $_FILES['upload_file']['type']; 
 else 
 $mimeType ="application/unknown"; 
-//ÎÄ¼şÃû 
+//ï¿½Ä¼ï¿½ï¿½ï¿½ 
 $fileName = $_FILES['upload_file']['name'];
 
 
-// ´ò¿ªÎÄ¼ş 
+// ï¿½ï¿½ï¿½Ä¼ï¿½ 
 $fp = fopen($file, "r"); 
-// °ÑÕû¸öÎÄ¼ş¶ÁÈëÒ»¸ö±äÁ¿ 
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ 
 $read = fread($fp, filesize($file));
-//ÎÒÃÇÓÃbase64·½·¨°ÑËü±àÂë 
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½base64ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 $read = base64_encode($read);
 
-//°ÑÕâ¸ö³¤×Ö·û´®ÇĞ³ÉÓÉÃ¿ĞĞ76¸ö×Ö·û×é³ÉµÄĞ¡¿é 
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Ğ³ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½76ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Éµï¿½Ğ¡ï¿½ï¿½ 
 $read = chunk_split($read);
 
-//ÏÖÔÚÎÒÃÇ¿ÉÒÔ½¨Á¢ÓÊ¼şµÄÖ÷Ìå  
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½Ô½ï¿½bï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
 $body = "--$boundary
 Content-type: text/plain; charset=iso-8859-1
 Content-transfer-encoding: 8bit
@@ -45,14 +45,14 @@ Content-transfer-encoding: base64
 $read
 --$boundary--";
 
-//·¢ËÍÓÊ¼ş 
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ 
 if(mail($to,$subject,$body,$headers)){
-	echo '<script language=javascript>alert("·¢ËÍ³É¹¦£¡")</script>';
+	echo '<script language=javascript>alert("ï¿½ï¿½ï¿½Í³å‘é€æˆåŠŸï¼")</script>';
 	echo '<script language=javascript>window.location.href="index.php";</script>';
 }
 else
 {
-	echo '<script language=javascript>alert("·¢ËÍÊ§°Ü£¡")</script>';
+	echo '<script language=javascript>alert("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½å‘é€å¤±è´¥ï¼")</script>';
 	echo '<script language=javascript>window.location.href="index.php";</script>';
 }
 ?> 
