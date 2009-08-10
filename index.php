@@ -457,7 +457,7 @@ total("首页","other");
  				<div class=content_trrt id=content_trrt1>
 					<?php for($i=0;$i<3;$i++){?>
 					<div class=box>
-						<a href="/fqtg/fqtg.php?id=<?php echo $record_tg[$i]->id?>" target=_blank><img src="<?php echo $record_tg[$i]->photourl ?>" target=_blank border=0></a>
+						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl ?>" target=_blank border=0></a>
 						<ul>
 							<li style="height:18px; overflow:hidden;"><a href="/fqtg/fqtg.php?id=<?php echo $record_tg[$i]->id?>" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
 							<li style="height:36px; line-height:18px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
