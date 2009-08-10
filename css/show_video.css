@@ -1,18 +1,18 @@
-body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; background:#000000; color:#000000;}
 ul{margin:0px; padding:0px;}
 li{margin:0px; list-style-type:none;}
 
-#ibody{width:995px; margin:0 auto; margin-top:10px; line-height:20px;}
+#ibody{width:980px; margin:0 auto; margin-top:10px; line-height:20px;}
 
-#ibody_top{width:995px; height:500px;  background:url('/images/show/show_video_t.jpg') no-repeat; float:left; display:inline;}
+#ibody_top{width:980px; height:580px; margin-top:10px; background:url('/images/show/video_bg.jpg') no-repeat; float:left; display:inline;}
 #ibody_left{width:590px; margin-top:10px; padding-bottom:20px; float:left; display:inline;}
 #ibody_left a{ text-decoration:none;}
 #ibody_right{width:380px; padding-bottom:20px;  float:right; display:inline;}
 
-#t_c{width:537px; margin-top:20px; margin-left:223px; float:left; display:inline;}
+#t_c{width:537px; margin-top:65px; margin-left:223px; float:left; display:inline;}
 #t_c .video{ float:left; display:inline;}
 #t_c .video #error{ font-size:20px; font-weight:bolder; color:#FF0000}
-#t_c .digg{width:537px; margin-top:10px; float:left; display:inline;}
+#t_c .digg{width:537px; margin-top:50px; float:left; display:inline;}
 #t_c .digg #flower{width:40px; height:25px; margin-left:100px; padding-left:55px; padding-top:4px; font-size:15px; color:#FF0000; font-weight:bolder; background:url('/images/show/flower.jpg'); cursor:pointer; float:left; display:inline;}
 #t_c .digg #tomato{width:40px; height:25px; margin-left:90px; padding-left:55px; padding-top:4px; font-size:15px; color:#999999; font-weight:bolder; background:url('/images/show/tomato.jpg'); cursor:pointer; float:left; display:inline;}
 #t_r{margin-top:20px; margin-left:20px; float:left; display:inline;}

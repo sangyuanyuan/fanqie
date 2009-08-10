@@ -10,10 +10,12 @@
 	<? 	
 		css_include_tag('all_comment','top','bottom');
 		use_jquery();
-		js_include_once_tag("all_comment");
+		js_include_once_tag("all_comment","total");
 		$db = get_db();
   ?>
-	
+<script>
+	total("所有评论","news");
+</script>
 </head>
 <body>
 <? require_once('../inc/top.inc.html');?>

@@ -141,7 +141,7 @@
 					<?php } ?>
 				</div>
 			</div>
-			<div id=t_c_b>
+			<div id=t_c_b><div id="more"><a target="_blank" href="/comment/comment.php?type=zone&id=">more</a></div>
 				<?php for($i=0;$i<count($comment);$i++){ ?>
 					<div class=comment>
 						<div class="top">

@@ -10,12 +10,14 @@
 	<? 	
 		css_include_tag('comment_list','top','bottom');
 		use_jquery();
-		js_include_once_tag("comment_list");
+		js_include_once_tag("comment_list","total");
 		$db = get_db();
-		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='".$_REQUEST["type"]."' and resource_id=".$_REQUEST["id"]." order by created_at desc";
+		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='".$_REQUEST["type"]."' and resource_id='".$_REQUEST["id"]."' order by created_at desc";
 		$comment=$db->paginate($sql,10);	
   ?>
-	
+<script>
+	total("更多评论","news");
+</script>
 </head>
 <body>
 <? require_once('../inc/top.inc.html');?>
