@@ -8,13 +8,12 @@ if($cookie==0)
 	exit;
 }
 $sqlstr='select * from smg_leader_role where user_id='.$cookie;
-alert($sqlstr);
 $rights=$db->query($sqlstr);
 $numrows=count($rights);
 if($numrows==0)
 {
 	alert("对不起！您无权查看此页面！");
-	echo '<script language=javascript>window.location.href="/admin/leaderindex.php";</script>';
+	//echo '<script language=javascript>window.location.href="/admin/leaderindex.php";</script>';
 	exit;	
 }
 $rq=$_REQUEST['date'];
