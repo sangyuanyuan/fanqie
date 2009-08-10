@@ -41,7 +41,7 @@
 	<div style="width:400px; <? if($i< 3){?>color:red; font-weight:bold;<? }?>float:left; display:inline;"><? echo $record[$i]->nick_name;?></div>
 	<div style="<? if($i< 3){?>color:red; font-weight:bold;<? }?> margin-right:20px;float:right; display:inline;"><? echo $record[$i]->point;?></div>
 	<? }?>
-	<br><a style="margin-right:10px; float:right;" href="threetimeph1.php?type=person">更多</a>
+	<br>
 </div>
 <div style="width:450px; margin-top:30px; margin-bottom:10px; padding:10px;float:left;display:inline">
 	<span style="color:red; font-size:16px; font-weight:bold;">部门排行榜：</span><br>
@@ -54,7 +54,7 @@
 		<div style="width:400px; <? if($i< 3){?>color:red; font-weight:bold;<? }?>float:left; display:inline;"><? echo $record[$i]->name;?></div>
 		<div style="<? if($i< 3){?>color:red; font-weight:bold;<? }?> margin-right:10px;float:right; display:inline;"><? echo $record[$i]->dscore;?></div>
 		<? }?>
-		<br><a style="margin-right:10px; float:right;" href="threetimeph1.php?type=dept">更多</a>
+		<br>
 </div>
 
 <div style="width:450px; margin-top:30px; margin-bottom:10px; padding:10px;float:left;display:inline">
@@ -68,7 +68,7 @@
 		<div style="width:400px; <? if($i< 3){?>color:red; font-weight:bold;<? }?>float:left; display:inline;"><? echo $record[$i]->name;?></div>
 		<div style="<? if($i< 3){?>color:red; font-weight:bold;<? }?> margin-right:20px;float:right; display:inline;"><? echo $record[$i]->peonum;?></div>
 		<? }?>
-		<br><a style="margin-right:10px; float:right;" href="threetimeph1.php?type=person2">更多</a>
+		<br>
 </div>
 </div>
 </div>
