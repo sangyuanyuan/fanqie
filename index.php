@@ -457,7 +457,7 @@ total("首页","other");
  				<div class=content_trrt id=content_trrt1>
 					<?php for($i=0;$i<3;$i++){?>
 					<div class=box>
-						<a href="/fqtg/fqtg.php?id=<?php echo $record_tg[$i]->id?>" target=_blank><img src="<?php echo $record_tg[$i]->photourl ?>" target=_blank border=0></a>
+						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl ?>" target=_blank border=0></a>
 						<ul>
 							<li style="height:18px; overflow:hidden;"><a href="/fqtg/fqtg.php?id=<?php echo $record_tg[$i]->id?>" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
 							<li style="height:36px; line-height:18px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
@@ -729,7 +729,7 @@ total("首页","other");
 				?>	 
 				<div id=content_mrb>
 					<ul>
-						<li style="font-weight:bold; font-size:15px; line-height:25px; height:25px;"><a href="/<?php echo $record_blog[0]->platform ?>/news/news.php?id=<?php echo $record_blog[0]->news_id ?>" target=_blank style="color:#121212;"><?php echo $record_blog[0]->short_title ?></a></li>
+						<li style="font-weight:bold; font-size:15px; line-height:25px; height:25px;"><a href="/<?php echo $record_blog[0]->platform ?>/news/news.php?id=<?php echo $record_blog[0]->news_id ?>" target=_blank style="color:#FF9900;"><?php echo $record_blog[0]->short_title ?></a></li>
 						<?php for($i=1;$i<6;$i++){ ?>
 						<li><a href="/<?php echo $record_blog[$i]->platform ?>/news/news.php?id=<?php echo $record_blog[$i]->news_id ?>" target=_blank>·<?php echo $record_blog[$i]->short_title ?></a></li>
 						<? }?>

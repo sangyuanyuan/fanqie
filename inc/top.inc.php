@@ -41,10 +41,11 @@
 				$record=$db -> query($sql);		
 			?>			
    		<div id=hot>
-   			<?php for($i=0;$i<3;$i++){?>
+   			<?php for($i=0;$i<2;$i++){?>
    			<a href="/search/?key=<?php echo urlencode($record[$i]->search_key)?>&search_type=smg_news" target=_blank><?php echo $record[$i]->search_key ?></a>　
    			<? }?>
    		</div>
+		<div id=zongcai><a href='/zongcai/' target="_blank">总裁奖</a></div>
    	</div>
 		<div id=login>
 			<div id=welcome>			<img src="/images/top/person.jpg">
