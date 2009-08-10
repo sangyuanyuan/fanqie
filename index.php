@@ -48,7 +48,7 @@ total("首页","other");
 					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
 					<div id="focus_01"></div> 
 					<script type="text/javascript"> 
-					var pic_width1=271; //图片宽度
+					var pic_width1=256; //图片宽度
 					var pic_height1=183; //图片高度
 					
 					<?php 
@@ -64,13 +64,13 @@ total("首页","other");
 					var mylinks1=<?php echo '"',$mylinks1,'"'?>;
 					var texts1=<?php echo '"',$texts1,'"'?>;			
 					 	
-					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
+					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "256", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
 					picflash.addVariable("picurl",pics1);
 					picflash.addVariable("piclink",mylinks1);
 					picflash.addVariable("pictext",texts1);				
 					picflash.addVariable("pictime","5");
-					picflash.addVariable("borderwidth","271");
+					picflash.addVariable("borderwidth","256");
 					picflash.addVariable("borderheight","183");
 					picflash.addVariable("borderw","false");
 					picflash.addVariable("buttondisplay","true");
@@ -82,7 +82,7 @@ total("首页","other");
 					
 				<? }?>	
   		  </div>
- 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg);" <?php if($record_inline[0]->name=='spxw'){?>style="display:inline"<?php }?>>
+ 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg) no-repeat;" <?php if($record_inline[0]->name=='spxw'){?>style="display:inline"<?php }?>>
  					<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=235px height=182px scrolling="no" frameborder="0"></iframe>
  				</div>
   			<div class=content_tlt id=content3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
@@ -92,7 +92,7 @@ total("首页","other");
 					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
 					<div id="focus_02"></div> 
 					<script type="text/javascript"> 
-					var pic_width1=271; //图片宽度
+					var pic_width1=256; //图片宽度
 					var pic_height1=183; //图片高度
 					
 					<?php 
@@ -108,13 +108,13 @@ total("首页","other");
 					var mylinks1=<?php echo '"',$mylinks1,'"'?>;
 					var texts1=<?php echo '"',$texts1,'"'?>;			
 								
-					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "271", "183", "4","#FFFFFF");
+					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "256", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
 					picflash.addVariable("picurl",pics1);
 					picflash.addVariable("piclink",mylinks1);
 					picflash.addVariable("pictext",texts1);				
 					picflash.addVariable("pictime","5");
-					picflash.addVariable("borderwidth","271");
+					picflash.addVariable("borderwidth","256");
 					picflash.addVariable("borderheight","183");
 					picflash.addVariable("borderw","false");
 					picflash.addVariable("buttondisplay","true");
