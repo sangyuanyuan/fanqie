@@ -14,7 +14,7 @@
 		
 		if($img === false){
 			alert('上传文件失败 !');
-			redirect('zongcai_post.php');
+			redirect('zongcai_item.php');
 		}
 		$zongcai_item->photo_url = "/upload/images/" .$img;
 	}
@@ -26,7 +26,7 @@
 	if($_POST['type']=='admin_edit'){
 		redirect('/admin/zongcai/zongcai_item_list.php');
 	}else{
-		redirect('/zongcai');
+		redirect('/zongcai/');
 	}
 	
 	
