@@ -15,7 +15,7 @@
 	function echo_dialog_answer($item,$index,$dialog_id){
 		$master_ids = get_master_ids($dialog_id);
 		echo "<div class=\"answer_question\"><span class=\"answer_question_index\"><b>$index.问题:</b></span>{$item->qcontent} <span class=\"question_time\"> {$item->writer} {$item->qcreate_time}</span></div>";
-		echo "<div class=\"answer_answer\">{$item->content}  <span class=\"question_time\">$item->create_time</span>";
+		echo "<div class=\"answer_answer\"><span style=\"color:red;\">{$item->leader_name}:</span>{$item->content}  <span class=\"question_time\">$item->create_time</span>";
 		if(in_array($_COOKIE['smg_username'], $master_ids)){
 			echo ' <span class="span_a" onclick="edit_answer(' .$item->qid.','.$item->id .')">编辑</span>';
 			echo ' <span class="span_a" onclick="delete_answer(' .$item->id .')">删除</span>';
