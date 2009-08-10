@@ -14,7 +14,7 @@
 		js_include_once_tag('dj','total');
 	?>
 	<script>
-	total("专题-学实专题","other");
+	total("专题-学实专题","news");
 </script>
 </head>
 <body>
