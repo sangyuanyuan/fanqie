@@ -19,6 +19,6 @@
 		}
 	}
 	
-	alert('谢谢参与！请等待管理员审批！');
-	redirect('beginvote.php');
+	alert('上传成功！谢谢参与！');
+	redirect('vote_list.php');
 ?>
