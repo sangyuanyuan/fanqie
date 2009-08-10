@@ -1,11 +1,9 @@
 ﻿<?
- 	require_once('../frame.php');
+ 	require_once('../../frame.php');
   	if(!isset($_REQUEST['lasturl'])){
 	}
 	$lasturl = $_REQUEST['lasturl'];
 	
-  include('uc_client/config.inc.php');
-include('uc_client/client.php');
 if($_POST['user_type']=="login")
 {
 	$login_text = $_POST['login_text'];
