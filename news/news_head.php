@@ -3,6 +3,15 @@
 	$id=$_REQUEST['id'];
 	if($id==""||$id==null){die('没有找到网页');}
 	$cookie= (isset($_COOKIE['vote_user'])) ? $_COOKIE['vote_user'] : 0;
+	$cookie=isset($_COOKIE['news_head_'.date('Y-m-d').$id]) ? $_COOKIE['news_'.date('Y-m-d').$id] : 0;
+	if($cookie==0)
+	{
+		@SetCookie('news_head_'.date('Y-m-d').$id,1);
+	}
+	else
+	{
+		@SetCookie('news_head_'.date('Y-m-d').$id,$cookie+1);
+	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -20,6 +29,11 @@
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub','total');
 		$db = get_db();
+		if($cookie<=200)
+		{
+			$sql="update smg_news set click_count=click_count+1 where id=".$id;
+			$db->execute($sql);
+		}
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);	
 		$about = array();
@@ -45,7 +59,9 @@
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,(select count(*) from smg_digg cd where cd.diggtoid=d.diggtoid and cd.file_type='comment') as total,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by total desc limit 2";
 		$digg=$db->query($sql);
     ?>
- <?php if($record[0]->cplatform=="news"){?>
+ <?php 
+ if($cookie<=200){
+ if($record[0]->cplatform=="news"){?>
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","news");
 </script>
@@ -65,7 +81,7 @@
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","other");
 </script>
-<?php } ?>
+<?php }} ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <? 

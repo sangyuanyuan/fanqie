@@ -14,7 +14,7 @@
 		js_include_once_tag('total');
 	?>
 <script>
-	total("专题-三项学习教育","other");
+	total("专题-三项学习教育","news");
 </script>
 </head>
 <body>

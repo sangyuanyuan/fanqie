@@ -57,7 +57,7 @@ html,body{
 -->
 </style>
 <script>
-	total("专题-评奖专题","other");
+	total("专题-评奖专题","news");
 </script>
 </HEAD>
 <BODY >
