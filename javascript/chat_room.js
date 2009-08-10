@@ -10,10 +10,10 @@ $(function(){
 			$('#connect_msg').html('已取消寻找陌生人');
 		}else if(chat_status =='connected'){
 			$('#find_chater').html('取消寻找');
-			$('#connect_msg').html('聊友自动寻找中,请稍后...');
+			$('#connect_msg').html('聊友自动寻找中,请稍候...');
 		}else{
 			$('#find_chater').html('取消寻找');
-			$('#connect_msg').html('聊友自动寻找中,请稍后...');
+			$('#connect_msg').html('聊友自动寻找中,请稍候...');
 		}
 		$('#ajax_result').load('chat_room.post.php',{'op':'click_button'});
 	});
@@ -86,7 +86,7 @@ function toggle_button(){
 		$('#connect_msg').html('');
 		$('#submit').attr('disabled',true);
 	}else if(chat_status == 'connecting'){
-		$('#connect_msg').html('聊友自动寻找中,请稍后...');
+		$('#connect_msg').html('聊友自动寻找中,请稍候...');
 		$('#find_chater').html('取消寻找');
 		$('#submit').attr('disabled',true);
 	}else if(chat_status == 'connected'){
