@@ -167,7 +167,7 @@
 								</DIV>
 						</div>-->
 						<div class=bg>
-							<div class=title style="margin-left:10px;">案例分析<div class=more><a target="_blank" href="djlist.php?id=<?php echo $alfx[0]->cid;?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;">案例警示<div class=more><a target="_blank" href="djlist.php?id=<?php echo $alfx[0]->cid;?>">更多</a></div></div>
 							<div class=title style="margin-left:10px;">媒体评论<div class=more><a target="_blank" href="djlist.php?id=<?php echo $mtpl[0]->cid;?>">更多</a></div></div>	
 							<div style="width:350px; height:120px; float:left; display:inline;">
 								<? 
