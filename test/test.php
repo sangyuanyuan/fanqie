@@ -2,7 +2,7 @@
 	include "../frame.php";
 	use_jquery();
 ?>
-<a href="#" id="test">test</a>
+
 <div>231231231232</div>
 <div>231231231232</div>
 <div>231231231232</div>
@@ -36,7 +36,9 @@
 <div>231231231232</div>
 <div>231231231232</div>
 <div>231231231232</div>
-<a id="anchor" name="anchor"></a>
+<div style="line-height:0px;">
+<input type="text" id="test" style="height:1px;"></input>
+</div>
 <script>
 	$(function(){
 		$('#test').click(function(e){
@@ -45,7 +47,8 @@
 		});
 		$(window).load(function(){
 			alert('ok');
-			window.location.href="#anchor";
+			$('#test')[0].focus();
+			//window.location.href="#anchor";
 		});
 	});
 </script>

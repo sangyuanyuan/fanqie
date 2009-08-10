@@ -10,4 +10,4 @@ select * from smg_news where title like "%毛贻飞与我集团劳动争议及人身损害赔偿纠
 insert into smg_comment(nick_name,title,comment,ip,resource_type) select commenter,title,content,ip,"yhdjs" from smg.smg_dept_comment
 
 update smg_images set publisher="" where publisher="总编室" and dept_id!=7
-insert into smg_question_record(nick_name,dept_id,photo,created_at,point,deppt_score,s_point,question_count,r_type) select username,deptid,photo,createtime,score,deptscore,1,100,'btjd' from smg.smg_threetime where id>15473
+insert into smg_question_record(nick_name,dept_id,phone,created_at,point,deppt_score,s_point,question_count,r_type) select username,deptid,phone,createtime,score,deptscore,1,100,'btjd' from smg.smg_threetime where id>15473
