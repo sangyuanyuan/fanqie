@@ -22,7 +22,7 @@
 		<? include('inc/djtop.inc.php');?>
 					<div id=right>
 						<div class=gd style="background:url(/images/bg/sxxx_hdjy.jpg) no-repeat;">
-							<? $news = $db->query('select n.photo_src,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动剪影" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by i.priority asc,n.created_at desc limit 6');?>
+							<? $news = $db->query('select n.photo_src,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动剪影" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by i.priority asc,n.created_at desc limit 6');?>
 							<DIV id=Layer5>
 				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
@@ -133,7 +133,7 @@
 						
 						</div>
 						<!--<div class=gd style="background:url(/images/bg/sxxx_wwjt.jpg) no-repeat;">
-							<? $news1 = $db->query('select n.photo_src from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我为集团献一计" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by i.priority asc, n.last_edited_at desc');?>
+							<? $news1 = $db->query('select n.photo_src from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我为集团献一计" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by i.priority asc, n.last_edited_at desc');?>
 							<DIV id=Layer6>
 				      <DIV id=demo3 style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
@@ -214,7 +214,7 @@
 									<input type="hidden" value="<? echo count($deptname);?>">
 								</form>
 							</div>
-							<? $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我的博客" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by i.priority asc, n.last_edited_at desc limit 6'); ?>
+							<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="我的博客" order by i.priority asc, n.created_at desc'); ?>
 							
 								<? for($i=0;$i<count($news);$i++){?>
 								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
