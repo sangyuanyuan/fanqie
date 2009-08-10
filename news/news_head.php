@@ -11,7 +11,7 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<script type="text/javascript">
 			function goToAnchor() {
-			location.href = "#pinglun";
+			window.location.href = "#pinglun";
 			}
 	</script>
 	<title>SMG-番茄网-新闻-新闻头条</title>
