@@ -3,7 +3,7 @@
   if($_REQUEST['id']==''){die('没有找到网页');}
   $db=get_db();
   $listid=$_REQUEST['id'];
-  $newslist=$db->paginate('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="学习实践活动专题" and i.category_type="news" and i.is_adopt=1 and c.id='.$listid.' order by i.priority asc, n.created_at desc',20)
+  $newslist=$db->paginate('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="学习实践活动专题" and i.category_type="news" and i.is_adopt=1 and c.id='.$listid.' order by i.priority asc, n.created_at desc',20)
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
