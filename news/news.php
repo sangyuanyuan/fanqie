@@ -66,7 +66,7 @@
 </script>
 <?php } ?>
 </head>
-<body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?> onload="goToAnchor();">
+<body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <?php
 if($record[0]->news_type==2)
 {
