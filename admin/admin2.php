@@ -22,7 +22,7 @@ total("部门后台","other");
 		<div id=part1>
 			<div id=nav style="width:360px;">欢迎 <?php echo $_COOKIE['smg_user_nickname']; ?></div>
 			<div id=title>番茄网后台管理系统</div>
-			<div id=index style="color:#0000FF"><?php echo get_dept_info($_COOKIE['smg_user_dept'])->name;?></div>
+			<div id=index style="color:#0000FF"><?php echo get_dept_info($_COOKIE['smg_user_dept'])->name;?>&nbsp;<a target="_blank" href="/">主页</a></div>
 		</div>
 		<div id=part2>
 				<?php
