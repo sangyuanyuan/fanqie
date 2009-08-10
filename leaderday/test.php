@@ -1,7 +1,6 @@
 ﻿<?
 $cookie=isset($_SESSION['smg_userid'])? $_SESSION['smg_userid'] : 0;
 require_once('../frame.php');
-alert ($cookie);
 $db=get_db();
 if($cookie==0)
 {
@@ -9,7 +8,6 @@ if($cookie==0)
 	exit;
 }
 $sqlstr='select * from smg_leader_role where user_id='.$cookie;
-alert($sqlstr);
 $rights=$db->query($sqlstr);
 $numrows=count($rights);
 if($numrows==0)
