@@ -13,7 +13,6 @@
 		$("#comment_sub").click(function(){
 			var oEditor = FCKeditorAPI.GetInstance('post[comment]');
 			var content = oEditor.GetHTML();
-			alert(content.length);
 			if(content==""){
 				alert('评论内容不能为空！');
 				return false;

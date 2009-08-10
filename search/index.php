@@ -27,7 +27,7 @@
 	$category->echo_jsdata('image_category');
 
 ?>	
-<div id="ibody">
+<div id="ibody" style="line-height:20px;">
 		<div id="search_box">
 			<form id="search_form" method="get" action="">
 				<br>

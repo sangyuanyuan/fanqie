@@ -53,7 +53,7 @@ function display_login(dom_id,admin){
 		}
 		
 		str +='<div id=welcome>欢迎您：<span style="font-weight:bold;">';
-		str += $.cookie('smg_user_nickname') +'</span>　<a href="#">修改密码</a>';
+		str += $.cookie('smg_user_nickname') +'</span>';
 		if (!admin) {
 			str += '　<a href="/home/?uid=' + $.cookie('smg_uid') + '" target=_blank>番茄家园</a>';
 		}		

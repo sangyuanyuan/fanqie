@@ -56,8 +56,7 @@
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
 			<td colspan="6">
-				　<a href="news_add.php">添加新闻</a>
-				　　　搜索　<input id=title type="text" value="<? echo $title;?>"><select id=dept style="width:100px" class="select_new">
+				　<a href="news_add.php">添加新闻</a>　搜索　<input id=title type="text" value="<? echo $title;?>"><select id=dept style="width:100px" class="select_new">
 					<option value="">发表部门</option>
 					<?php for($i=0;$i<count($rows_dept);$i++){?>
 					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
@@ -66,8 +65,7 @@
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
-				</select>
-				<select id="news_tag">
+				</select><select id="news_tag">
 					<option value="">选择标签</option>
 				<?php
 				$tags = get_config('g_news_tags');
