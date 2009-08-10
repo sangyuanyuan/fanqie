@@ -186,7 +186,7 @@ require_once('../inc/top.inc.html');?>
 				<div id=fqbq>
 					
 				</div>
-				<button id="comment_sub" type="submit">提交评论</button>
+				<button id="comment_sub">提交评论</button>
 			</div>
 			</form>
 			<?php }?>
