@@ -28,7 +28,7 @@
 			$bznum=10-count($shopph);
 			$bz=$db->query('select * from smg_shopdp where id not in ('.$bt1.') limit '.$bznum);
 		}
-		$gj=$db->query('SELECT s.id,s.title,s.last_edited_at,s.platform,d.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="番茄工具" and c.category_type="news" inner join smg_dept d on s.dept_id=d.id order by s.priority asc, s.last_edited_at desc limit 9');
+		$gj=$db->query('SELECT s.id,s.title,s.last_edited_at,c.platform,d.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="番茄工具" and c.category_type="news" inner join smg_dept d on s.dept_id=d.id order by s.priority asc, s.last_edited_at desc limit 9');
 		$nbxx=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="内部信息" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
   		$yczh=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="演出展会" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
   		$xptj=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="新片推荐" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
