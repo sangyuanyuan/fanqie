@@ -76,7 +76,7 @@
 				</tr>							
 				<tr height="25px;">
 					<td>*主创人员工作照片</td>
-					<td colspan="3" align="left"><?php if($record[0]->photo_url!=''){?><img src="<?php echo $record[0]->photo_url?>" width=50 height=50 border=0><?php} ?><input  type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="upfile" id="upfile"  type="file" style="width:325px;">可上传节目主创人员工作照片</td>
+					<td colspan="3" align="left"><?php if($record[0]->photo_url!=''){?><img src="<?php echo $record[0]->photo_url?>" width=50 height=50 border=0><?php } ?><input  type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="upfile" id="upfile"  type="file" style="width:325px;">可上传节目主创人员工作照片</td>
 				</tr>							
 				<tr height="35px;">
 					<td colspan="4" align="center"><button type="submit" value='submit'>提交</button></td>
