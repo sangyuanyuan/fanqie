@@ -23,7 +23,7 @@
 		<div id=subject_logo></div>
 		<div class=subject_title><a href="/" style="color:#FFFFFF;text-decoration:none"> 首页</a> >　<a href="/zongcai/index.php" style="color:#FFFFFF;text-decoration:none">总裁奖</a>  > 填写参评推荐表</div>
 		<div id=subject_contenta style="padding-bottom:30px; padding-top:20px;">
-			<table width="700px;" border="2" align="center" bordercolor="#000000">
+			<table width="700px;" border="2" align="left" bordercolor="#000000">
 				<tr height="25px;">
 					<td width="100px">节目类型</td>
 					<td width="600px" colspan="3" align="left">
