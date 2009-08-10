@@ -18,11 +18,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<?php if($_REQUEST['page']){ ?>
-	<script type="text/javascript">
-			window.location.href = "#pinglun";
-	</script>
-	<? }?>
+	
 	<title>SMG-番茄网-新闻-新闻头条</title>
 	<? 	
 		css_include_tag('news_news_head','top','bottom');
@@ -59,6 +55,14 @@
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,(select count(*) from smg_digg cd where cd.diggtoid=d.diggtoid and cd.file_type='comment') as total,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by total desc limit 2";
 		$digg=$db->query($sql);
     ?>
+	<?php if($_REQUEST['page']){ ?>
+	<script type="text/javascript">
+		$(function(){
+			//window.location.href = "#pinglun";
+			$("#commenter")[0].focus();
+		})	
+	</script>
+	<? }?>
  <?php 
  if($cookie<=200){
  if($record[0]->cplatform=="news"){?>
