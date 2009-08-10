@@ -1,3 +1,3 @@
 <?php
-    include('/news/news.php');
+    include('../../news/news.php');
 ?>
