@@ -167,6 +167,25 @@
 								</DIV>
 						</div>-->
 						<div class=bg>
+							<div class=title style="margin-left:10px;">案例分析<div class=more><a target="_blank" href="djlist.php?id=<?php echo $alfx[0]->cid;?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;">媒体评论<div class=more><a target="_blank" href="djlist.php?id=<?php echo $mtpl[0]->cid;?>">更多</a></div></div>	
+							<div style="width:350px; height:120px; float:left; display:inline;">
+								<? 
+									for($i=0;$i<count($alfx);$i++){?>
+									<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline">
+										<img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $alfx[$i]->id;?>"><? echo $alfx[$i]->short_title;?></a>
+									</div>
+									<? if($i<2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div>
+									<? }}?>
+								
+							</div>
+							<div style="width:330px; height:120px; float:right; display:inline">
+							<? 
+							 for($i=0;$i<count($mtpl);$i++){?>
+								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $mtpl[$i]->id;?>"><? echo $mtpl[$i]->short_title;?></a></div>
+								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
+								<? }?>
+							</div>
 							<div class=title style="margin-left:10px;">专题讲座<div class=more><a target="_blank" href="djlist.php?id=<?php echo $ztjz[0]->cid;?>">更多</a></div></div>
 							<div class=title style="margin-left:10px;">规章制度<div class=more><a target="_blank" href="djlist2.php">更多</a></div></div>	
 							<div style="width:350px; height:120px; float:left; display:inline;">
@@ -181,8 +200,8 @@
 							</div>
 							<div style="width:330px; height:120px; float:right; display:inline">
 							<? 
-							 for($i=0;$i<count($ztjz);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $ztjz[$i]->id;?>"><? echo $ztjz[$i]->short_title;?></a></div>
+							 for($i=0;$i<count($gzzd);$i++){?>
+								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $gzzd[$i]->id;?>"><? echo $gzzd[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							</div>
