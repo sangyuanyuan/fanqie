@@ -1,13 +1,15 @@
-﻿<? 
+﻿<?
+$cookie=isset($_SESSION['smg_userid'])? $_SESSION['smg_userid'] : 0;
 require_once('../frame.php');
+alert ($cookie);
 $db=get_db();
-$cookie=isset($_COOKIE['smg_userid'])? $_COOKIE['smg_userid'] : 0;
 if($cookie==0)
 {
 	echo '<script language=javascript>window.location.href="/admin/leaderindex.php";</script>';
 	exit;
 }
 $sqlstr='select * from smg_leader_role where user_id='.$cookie;
+alert($sqlstr);
 $rights=$db->query($sqlstr);
 $numrows=count($rights);
 if($numrows==0)

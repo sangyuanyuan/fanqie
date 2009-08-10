@@ -1,9 +1,10 @@
 ﻿<?
- 	require_once('../../frame.php');
+ 	require_once('../frame.php');
   	if(!isset($_REQUEST['lasturl'])){
 	}
 	$lasturl = $_REQUEST['lasturl'];
-	
+include('../login/uc_client/config.inc.php');
+include('../login/uc_client/client.php');
 if($_POST['user_type']=="login")
 {
 	$login_text = $_POST['login_text'];
@@ -11,7 +12,6 @@ if($_POST['user_type']=="login")
 
 	$db = get_db();
 	$sql = 'select * from smg_user where name="'.$login_text.'" and password="'.$password_text.'"';
-	alert ($sql);
 	$login_info = $db->query($sql);
 	$login_info_num = $db->record_count;
 	if($login_info === false){
@@ -39,7 +39,8 @@ if($_POST['user_type']=="login")
 		@SetCookie('smg_user_nickname',$nick_name,$y2k,'/');
 		@setcookie('smg_role', $login_info[0]->role_name,$y2k,'/');
 		session_start(); 
-		$_SESSION["smg_role"] = $login_info[0]->role_name;	
+		$_SESSION["smg_role"] = $login_info[0]->role_name;
+		$_SESSION["smg_userid"]= $login_info[0]->smg_real_id;
 		if($_SESSION['smg_role'] == 'admin'){
 			@SetCookie('smg_user_dept',7,$y2k,'/');
 		}
@@ -67,7 +68,7 @@ if($_POST['user_type']=="login")
 		echo $error;
 	}else{
 		if($error == 'ok'){
-			redirect($last_url);
+			redirect('/leaderday/test.php','js');
 		}else{
 			alert($error);
 			redirect('/admin/leaderindex.php','js');
