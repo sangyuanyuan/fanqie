@@ -11,7 +11,7 @@
 		js_include_once_tag('dx','news_list','total');
 	?>
 <script>
-	total("短信","other");
+	total("短信","news");
 </script>
 </head>
 <body>

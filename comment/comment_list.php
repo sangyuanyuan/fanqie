@@ -12,7 +12,7 @@
 		use_jquery();
 		js_include_once_tag("comment_list");
 		$db = get_db();
-		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='".$_REQUEST["type"]."' and resource_id=".$_REQUEST["id"]." order by created_at desc";
+		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='".$_REQUEST["type"]."' and resource_id='".$_REQUEST["id"]."' order by created_at desc";
 		$comment=$db->paginate($sql,10);	
   ?>
 	
