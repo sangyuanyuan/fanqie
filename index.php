@@ -729,7 +729,7 @@ total("首页","other");
 				?>	 
 				<div id=content_mrb>
 					<ul>
-						<li style="font-weight:bold; font-size:15px; line-height:25px; height:25px;"><a href="/<?php echo $record_blog[0]->platform ?>/news/news.php?id=<?php echo $record_blog[0]->news_id ?>" target=_blank style="color:#121212;"><?php echo $record_blog[0]->short_title ?></a></li>
+						<li style="font-weight:bold; font-size:15px; line-height:25px; height:25px;"><a href="/<?php echo $record_blog[0]->platform ?>/news/news.php?id=<?php echo $record_blog[0]->news_id ?>" target=_blank style="color:#FF9900;"><?php echo $record_blog[0]->short_title ?></a></li>
 						<?php for($i=1;$i<6;$i++){ ?>
 						<li><a href="/<?php echo $record_blog[$i]->platform ?>/news/news.php?id=<?php echo $record_blog[$i]->news_id ?>" target=_blank>·<?php echo $record_blog[$i]->short_title ?></a></li>
 						<? }?>
