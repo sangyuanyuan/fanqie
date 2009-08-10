@@ -1,7 +1,7 @@
-﻿<? 
-include('../frame.php');
+﻿<?
+$cookie=isset($_SESSION['smg_userid'])? $_SESSION['smg_userid'] : 0;
+require_once('../frame.php');
 $db=get_db();
-$cookie=isset($_COOKIE['smg_userid'])? $_COOKIE['smg_userid'] : 0;
 if($cookie==0)
 {
 	echo '<script language=javascript>window.location.href="/admin/leaderindex.php";</script>';
@@ -13,7 +13,7 @@ $numrows=count($rights);
 if($numrows==0)
 {
 	alert("对不起！您无权查看此页面！");
-	echo '<script language=javascript>window.location.href="/admin/leaderindex.php";</script>';
+	//echo '<script language=javascript>window.location.href="/admin/leaderindex.php";</script>';
 	exit;	
 }
 $rq=$_REQUEST['date'];

@@ -9,7 +9,7 @@
 	<title>SMG-番茄网-总裁奖报名</title>
 	<?php 
 		css_include_tag('zongcai');
-		validate_form("sing_up");
+		use_jquery();
 		js_include_once_tag('total');
 	?>
 </head>
@@ -26,8 +26,8 @@
 				<tr height="25px;">
 					<td width="100px">*节目类型</td>
 					<td width="600px" colspan="3" align="left">
-						<select  name=post[program_type] class="required" style="height:22px;width:253px;background:#ffffcc;">
-							<option></option>
+						<select  name=post[program_type] id="program_type"  style="height:22px;width:253px;background:#ffffcc;">
+							<option value=''></option>
 							<option value="tv_recommend">电视推荐节目投票</option>
 							<option value="tv_self">电视自荐节目投票</option>
 							<option value="broadcast_recommend">广播推荐节目投票</option>
@@ -37,50 +37,50 @@
 				</tr>
 				<tr height="25px;">
 					<td width="100px">*节目名称</td>
-					<td width="250px"><input type="text" class="required" name=post[name]></td>
+					<td width="250px"><input type="text" id="name" name=post[name]></td>
 					<td width="100px">节目音/视频链接</td>
 					<td width="250px"><input type="text" name=post[url]></td>
 				</tr>
 				<tr height="25px;">
 					<td >*主创人员</td>
-					<td><input type="text" class="required" name=post[author]></td>
+					<td><input type="text" id=author name=post[author]></td>
 					<td>*联系方式（手机）</td>
-					<td><input type="text" class="required number" name=post[mobile]></td>
+					<td><input type="text" id="mobile" name=post[mobile]></td>
 				</tr>
 				<tr height="25px;">
 					<td >*播出栏目</td>
-					<td><input type="text" class="required" name=post[broadcast_name]></td>
+					<td><input type="text" id="broadcast_name" name=post[broadcast_name]></td>
 					<td>*节目长度</td>
-					<td><input type="text" class="required" name=post[program_length]></td>
+					<td><input type="text" id="program_length" name=post[program_length]></td>
 				</tr>							
 				<tr height="25px;">
 					<td >*播出单位</td>
-					<td><input type="text" class="required" name=post[broadcast_unit]></td>
+					<td><input type="text" id="broadcast_unit" name=post[broadcast_unit]></td>
 					<td>*播出日期及时间</td>
-					<td><input type="text" class="required" name=post[broadcast_date]></td>
+					<td><input type="text" id="broadcast_date" name=post[broadcast_date]></td>
 				</tr>							
 				<tr height="100px;">
 					<td >*推荐理由</td>
-					<td colspan="3"><textarea class="required" name=post[reason]></textarea></td>
+					<td colspan="3"><textarea id="reason" name=post[reason]></textarea></td>
 				</tr>							
 				<tr height="100px;">
 					<td >*采编/创作过程</td>
-					<td colspan="3"><textarea class="required" name=post[progress]></textarea></td>
+					<td colspan="3"><textarea id="progress" name=post[progress]></textarea></td>
 				</tr>							
 				<tr height="100px;">
 					<td >*节目影响</td>
-					<td colspan="3"><textarea class="required" name=post[effect]></textarea></td>
+					<td colspan="3"><textarea id="effect" name=post[effect]></textarea></td>
 				</tr>							
 				<tr>
 					<td >*推荐单位/自荐人姓名</td>
-					<td colspan="3"><input type="text" class="required" name=post[uploader] /></td>
+					<td colspan="3"><input type="text" id="uploader" name=post[uploader] /></td>
 				</tr>							
 				<tr height="25px;">
 					<td>*主创人员工作照片</td>
 					<td colspan="3" align="left"><input name="upfile" id="upfile"  type="file" style="width:325px;">可上传节目主创人员工作照片</td>
 				</tr>							
 				<tr height="35px;">
-					<td colspan="4" align="center"><button type="submit" value='submit'>提交</button></td>
+					<td colspan="4" align="center"><button type="submit" id='submit' value='submit'>提交</button></td>
 				</tr>							
 			</table>
 			<div style="margin-left: 30px; margin-top: 5px;font-size:14px;">
@@ -98,3 +98,58 @@
 	</div>
 </body>
 </html>
+
+<script>
+	$(function(){
+		$('#submit').click(function(){
+			if($('#name').val()==''){
+				alert('请输入节目名称！');
+				return false;
+			}
+			if($('#program_type').val()==''){
+				alert('请选择节目类型！');
+				return false;
+			}
+			if($('#author').val()==''){
+				alert('请输入主创人员！');
+				return false;
+			}
+			if($('#mobile').val()==''){
+				alert('请输入联系方式！');
+				return false;
+			}
+			if($('#broadcast_name').val()==''){
+				alert('请输入播出栏目！');
+				return false;
+			}
+			if($('#program_length').val()==''){
+				alert('请输入节目长度！');
+				return false;
+			}
+			if($('#broadcast_unit').val()==''){
+				alert('请输入播出单位！');
+				return false;
+			}
+			if($('#broadcast_date').val()==''){
+				alert('请输入播出日期及时间！');
+				return false;
+			}
+			if($('#reason').val()==''){
+				alert('请输入推荐理由！');
+				return false;
+			}
+			if($('#progress').val()==''){
+				alert('请输入采编/创作过程！');
+				return false;
+			}
+			if($('#effect').val()==''){
+				alert('请输入节目影响！');
+				return false;
+			}
+			if($('#uploader').val()==''){
+				alert('请输入推荐单位/自荐人姓名！');
+				return false;
+			}
+		})
+	})
+</script>
