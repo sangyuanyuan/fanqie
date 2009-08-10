@@ -8,6 +8,7 @@ if($cookie==0)
 	exit;
 }
 $sqlstr='select * from smg_leader_role where user_id='.$cookie;
+alert($sqlstr);
 $rights=$db->query($sqlstr);
 $numrows=count($rights);
 if($numrows==0)
