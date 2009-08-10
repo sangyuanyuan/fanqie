@@ -1,5 +1,5 @@
 ﻿<? 
-include('../frame.php');
+require_once('../frame.php');
 $db=get_db();
 $cookie=isset($_COOKIE['smg_userid'])? $_COOKIE['smg_userid'] : 0;
 if($cookie==0)

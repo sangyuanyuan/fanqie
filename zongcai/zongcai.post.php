@@ -26,6 +26,7 @@
 	if($_POST['type']=='admin_edit'){
 		redirect('/admin/zongcai/zongcai_item_list.php');
 	}else{
+		alert("上传成功！");
 		redirect('/zongcai/');
 	}
 	

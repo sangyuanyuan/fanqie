@@ -24,7 +24,6 @@ function display_fqbq(container,insert_container,is_fck){
 	str += '<img src="/images/fqbq/19.gif" border=0 style="cursor:pointer">';
 	str += '<img src="/images/fqbq/20.gif" border=0 style="cursor:pointer">';
 	str += '<img src="/images/fqbq/21.gif" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/22.gif" border=0 style="cursor:pointer">';
 	
 	$('#' + container).html(str);
 	$('#' + container + ' img').click(function(){
