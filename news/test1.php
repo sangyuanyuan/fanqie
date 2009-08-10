@@ -1,31 +1,31 @@
 <?php
 	require_once('../frame.php');
 	$id=$_REQUEST['id'];
-	//$id =14621;
-	if($id==""||$id==null){die('æ²¡æœ‰æ‰¾åˆ°ç½‘é¡µ');}
-	$cookie=isset($_COOKIE['news_'.date('Y-m-d').$id]) ? $_COOKIE['news_'.date('Y-m-d').$id] : 0;
+	if($id==""||$id==null){die('Ã»ÓĞÕÒµ½ÍøÒ³');}
+	$cookie= (isset($_COOKIE['vote_user'])) ? $_COOKIE['vote_user'] : 0;
+	$cookie=isset($_COOKIE['news_head_'.date('Y-m-d').$id]) ? $_COOKIE['news_'.date('Y-m-d').$id] : 0;
 	if($cookie==0)
 	{
-		@SetCookie('news_'.date('Y-m-d').$id,1);
+		@SetCookie('news_head_'.date('Y-m-d').$id,1);
 	}
 	else
 	{
-		@SetCookie('news_'.date('Y-m-d').$id,$cookie+1);
+		@SetCookie('news_head_'.date('Y-m-d').$id,$cookie+1);
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<?php if($_REQUEST['page']){ ?>
 	<script type="text/javascript">
 			window.location.href = "#pinglun";
 	</script>
 	<? }?>
-	<title>SMG-ç•ªèŒ„ç½‘-æ–°é—»-æ™®é€šå­é¡µ</title>
+	<title>SMG-·¬ÇÑÍø-ĞÂÎÅ-ĞÂÎÅÍ·Ìõ</title>
 	<? 	
-		css_include_tag('news_news','top','bottom');
+		css_include_tag('news_news_head','top','bottom');
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub','total');
 		$db = get_db();
@@ -34,11 +34,11 @@
 			$sql="update smg_news set click_count=click_count+1 where id=".$id;
 			$db->execute($sql);
 		}
-		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
-		$record=$db->query($sql);
-		
+		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
+		$record=$db->query($sql);	
+		$about = array();
 		if($record[0]->related_news!="")
-		{
+		{	
 			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"n.priority asc,n.created_at desc");
 			$about = $about1;
 			if(count($about1)<10)
@@ -48,19 +48,20 @@
 					$about = array_merge($about, $a2);
 				}
 			}
+			
 		}
 		else{
 			
-			$about=search_keywords($id,$record[0]->keywords,'smg_news',$record,10,"n.priority asc,n.created_at desc");
+			$about=search_keywords($id,$record[0]->keywords,'smg_news',$record,10,"n.priority asc,created_at desc");
 		}
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->paginate($sql,5);
 		$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,(select count(*) from smg_digg cd where cd.diggtoid=d.diggtoid and cd.file_type='comment') as total,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by total desc limit 2";
 		$digg=$db->query($sql);
-  ?>
- <?php
-  if($cookie<=200){
-  if($record[0]->cplatform=="news"){?>
+    ?>
+ <?php 
+ if($cookie<=200){
+ if($record[0]->cplatform=="news"){?>
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","news");
 </script>
@@ -83,7 +84,7 @@
 <?php }} ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
-<?php
+<? 
 if($record[0]->news_type==2)
 {
 	redirect($record[0]->file_name);
@@ -91,50 +92,70 @@ if($record[0]->news_type==2)
 else if($record[0]->news_type==3)
 {
 	if(strpos($record[0]->target_url,basename($_SERVER['PHP_SELF']))&&strpos($record[0]->target_url,'id='.$id)){
-		alert('å¯¹ä¸èµ·ï¼Œé“¾æ¥å‡ºé”™äº†ï¼è¯·è”ç³»ç®¡ç†å‘˜!');
+		alert('¶Ô²»Æğ£¬Á´½Ó³ö´íÁË£¡ÇëÁªÏµ¹ÜÀíÔ±!');
 	}
 	else{
 		redirect($record[0]->target_url);
 	}
-}	
-require_once('../inc/top.inc.html');
-?>
+}
+require_once('../inc/top.inc.html');?>
 <div id=ibody>
-	<input type="hidden" id="newsid" value="<?php echo $id;?>">
 	<div id=ibody_left>
+		<input type="hidden" id="newsid" value="<?php echo $id;?>">
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">ã€€ã€€<a href="/">é¦–é¡µ</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">æ–°é—»</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="/news/news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
+			<img src="/images/news/news_l_t_icon.jpg">¡¡¡¡<a href="/">Ê×Ò³</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">ĞÂÎÅ</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span> <a href="/news/news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
 		</div>
 		<div id=l_b>
-			<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
-			<div id=comefrom>æ¥æºï¼š<?php echo $record[0]->deptname;?>ã€€<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="æˆ‘è¦æŠ¥æ–™"){?>ä½œè€…ï¼š<?php echo $record[0]->publisher_id;} ?>ã€€æµè§ˆæ¬¡æ•°ï¼š<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>ã€€æ—¶é—´ï¼š<?php echo $record[0]->created_at;?></div>
+			<div id=comefrom>À´Ô´£º<?php echo $record[0]->deptname;?>¡¡<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="ÎÒÒª±¨ÁÏ"){?>×÷Õß£º<?php echo $record[0]->publisher_id;} ?>¡¡ä¯ÀÀ´ÎÊı£º<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>¡¡Ê±¼ä£º<?php echo $record[0]->created_at;?></div>
 			<?php if($record[0]->video_src!=""&&$record[0]->video_src!=null){
 					if($record[0]->low_quality==0){
 				?>
-				<div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+			<div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
 			<?php }else
 			{?>
-			 	<div id=video><?php show_video_player('265','218',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+				<div id=video><?php show_video_player('265','218',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
 			<?php }} ?>
 			<div id=content>
 				<?php echo get_fck_content($record[0]->content);?>
 			</div>
+			
 			<?php 
-			if($record[0]->vote_id!=""&&$record[0]->vote_id!=0){?>	
+			if($record[0]->vote_id!=""&&$record[0]->vote_id!=0){?>
+				
 				<div class=vote>
 				<?php 
 						$vote = new smg_vote_class();
 						$vote->find($record[0]->vote_id);
 						$vote->display(array("target"=>"_blank",'submit_src'=>'/images/news/news_vote_button.jpg','view_src'=>'/images/news/news_view_button.jpg')); ?>
-				</div>	
+				</div>
 			<? }?>
-			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
-			<?php if($record[0]->categoryname=="æˆ‘è¦æŠ¥æ–™"){?><div id=lc>æ­¤æ–‡ç³»ç•ªèŒ„ç½‘ç½‘å‹æŠ¥æ–™æ–°é—»ï¼Œä¸ä»£è¡¨ç•ªèŒ„ç½‘çš„è§‚ç‚¹æˆ–ç«‹åœºã€‚</div><?php } ?>
+			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
+			<?php if($record[0]->categoryname=="ÎÒÒª±¨ÁÏ"){?><div id=lc>´ËÎÄÏµ·¬ÇÑÍøÍøÓÑ±¨ÁÏĞÂÎÅ£¬²»´ú±í·¬ÇÑÍøµÄ¹Ûµã»òÁ¢³¡¡£</div><?php } ?>
+			<div id=wybl><a style="margin-left:20px;" target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
+			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">²é¿´¸ü¶àĞÂÎÅ>></a></div>
+			<?php if(count($about)>0||count($about)>0){?>
+			<div class=abouttitle>¸ü¶à¹ØÓÚ¡°<?php echo mb_substr(strip_tags($record[0]->short_title),0,36,"utf-8");?>¡±µÄĞÂÎÅ</div>
+			<div class=aboutcontent style="padding-bottom:10px;">
+				<div class=title>Ïà¹ØÁ´½Ó</div>
+					<?php for($i=0;$i<count($about);$i++){
+					?>
+				<div class=content>
+						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
+							¡¤<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->created_at; ?>)</span>
+							</a>
+						<?php }else{?>
+							¡¤<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
+								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->created_at; ?>)</span>
+							</a>
+						<?php }?>
+					</div>		
+				<?php }?>		
+			</div>
+			<?php } ?>
 			<div style="float:left; display:inline;"><a id="pinglun" name="pinglun">&nbsp;</a></div>
-			<?php if($record[0]->is_commentable==1){ 
-				
-				if(count($comment)>0){?>
+			<?php if($record[0]->is_commentable==1){ if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
 				 for($i=0;$i<count($digg);$i++){ ?>
@@ -144,7 +165,7 @@ require_once('../inc/top.inc.html');
 								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; height:30px; float:left; display:inline;"><img title="é€é²œèŠ±" class="flower" src="/images/news/news_flower.jpg" style="float:left; display:inline;"><input type="hidden" value="<?php echo $digg[$i]->id;?>" style="none"><div id="hidden_flower" style="width:65px; height:12px; margin-left:3px; margin-top:8px; color:#FF0000; font-weight:bold; float:left; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img title="æ‰”ç•ªèŒ„" class="tomato" style="float:left; display:inline" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->id;?>" style="none"><div style="width:60px; height:15px; margin-top:8px; color:#FF0000; font-weight:bold; float:left; display:inline"><?php echo $digg[$i]->tomatonum;?></div></div>
+								<div style="width:220px; height:30px; float:left; display:inline;"><img title="ËÍÏÊ»¨" class="flower" src="/images/news/news_flower.jpg" style="float:left; display:inline;"><input type="hidden" value="<?php echo $digg[$i]->id;?>" style="none"><div id="hidden_flower" style="width:65px; height:12px; margin-left:3px; margin-top:8px; color:#FF0000; font-weight:bold; float:left; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img title="ÈÓ·¬ÇÑ" class="tomato" style="float:left; display:inline" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->id;?>" style="none"><div style="width:60px; height:15px; margin-top:8px; color:#FF0000; font-weight:bold; float:left; display:inline"><?php echo $digg[$i]->tomatonum;?></div></div>
 								<div style="width:140px; line-height:20px;  color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
 							</div>
 						</div>
@@ -157,11 +178,11 @@ require_once('../inc/top.inc.html');
 				  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
 						<div class=title>
-							<div style="width:230px; height:20px; margin-top:10px; margin-left:10px; overflow:hidden; line-height:20px; float:left; display:inline;">
+							<div style="width:230px; height:20px; margin-top:10px; margin-left:10px; line-height:20px; overflow:hidden; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; float:left; display:inline;"><img title="é€é²œèŠ±" class="flower" src="/images/news/news_flower.jpg" style="float:left; display:inline;"><input type="hidden" value="<?php echo $comment[$i]->id;?>" style="none"><div id="hidden_flower" style="width:65px; height:12px; margin-left:3px; margin-top:15px; line-height:15px; color:#FF0000; font-weight:bold; float:left; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img title="æ‰”ç•ªèŒ„" class="tomato" style="float:left; display:inline" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>" style="none"><div style="width:60px; height:15px; margin-top:15px; line-height:15px; color:#FF0000; font-weight:bold; float:left; display:inline"><?php echo $comment[$i]->tomatonum;?></div></div>ã€€
+								<div style="width:220px; float:left; display:inline;"><img title="ËÍÏÊ»¨" class="flower" src="/images/news/news_flower.jpg" style="float:left; display:inline;"><input type="hidden" value="<?php echo $comment[$i]->id;?>" style="none"><div id="hidden_flower" style="width:65px; height:12px; margin-left:3px; margin-top:15px; line-height:15px; color:#FF0000; font-weight:bold; float:left; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img title="ÈÓ·¬ÇÑ" class="tomato" style="float:left; display:inline" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->id;?>" style="none"><div style="width:60px; height:15px; margin-top:15px; line-height:15px; color:#FF0000; font-weight:bold; float:left; display:inline"><?php echo $comment[$i]->tomatonum;?></div></div>¡¡
 								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
 							</div>
 						</div>
@@ -174,9 +195,9 @@ require_once('../inc/top.inc.html');
 			<div class=page><?php paginate('');?></div>
 			<?php }?>
 			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
-			<div class=abouttitle>å‘è¡¨è¯„è®º</div>
+			<div class=abouttitle>·¢±íÆÀÂÛ</div>
 			<div class=aboutcontent style="padding-bottom:10px;">
-				<div class=title style="background:#ffffff;">ç°æœ‰<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>äººå¯¹æœ¬æ–‡è¿›è¡Œäº†è¯„è®º<?php if(count($totalcoment)>0){ ?>ã€€ã€€<a style="color:#1862A3" target="_blank" href="/comment/comment_list.php?id=<?php echo $id;?>&type=news">æŸ¥çœ‹æ›´å¤šè¯„è®º</a><?php }?>ã€€ã€€<a style="color:#1862A3" target="_blank" href="/comment/all_comment.php">æŸ¥çœ‹æ‰€æœ‰è¯„è®º</a></div>
+				<div class=title style="background:#ffffff;">ÏÖÓĞ<span style="color:#FF5800;"><?php $totalcoment=$db->query("select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc"); echo count($totalcoment);?></span>ÈË¶Ô±¾ÎÄ½øĞĞÁËÆÀÂÛ<?php if(count($totalcoment)>0){ ?>¡¡¡¡<a style="color:#1862A3" target="_blank" href="/comment/comment_list.php?id=<?php echo $id;?>&type=news">²é¿´¸ü¶àÆÀÂÛ</a><?php } ?>¡¡¡¡<a style="color:#1862A3;" target="_blank" href="/comment/all_comment.php">²é¿´ËùÓĞÆÀÂÛ</a></div>
 				<input type="text" id="commenter" name="post[nick_name]">
 				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">
 				<input type="hidden" id="resource_type" name="post[resource_type]" value="news">
@@ -186,36 +207,15 @@ require_once('../inc/top.inc.html');
 				<div id=fqbq>
 					
 				</div>
-				<button id="comment_sub" >æäº¤è¯„è®º</button>
+				<button id="comment_sub">Ìá½»ÆÀÂÛ</button>
 			</div>
 			</form>
-			<?php } ?>
-			<div id=wybl><a style="margin-left:20px;" target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
-			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">æŸ¥çœ‹æ›´å¤šæ–°é—»>></a></div>
-			<?php if(count($about)>0||count($about)>0){?>
-			<div class=abouttitle>æ›´å¤šå…³äºâ€œ<?php echo mb_substr(strip_tags($record[0]->short_title),0,36,"utf-8");?>â€çš„æ–°é—»</div>
-			<div class=aboutcontent style="padding-bottom:10px;">
-				<div class=title>ç›¸å…³é“¾æ¥</div>
-					<?php for($i=0;$i<count($about);$i++){?>
-				<div class=content>
-						<?php if($about[$i]->category_id=="1"||$about[$i]->category_id=="2"){ ?>
-							Â·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news_head.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->created_at; ?>)</span>
-							</a>
-						<?php }else{?>
-							Â·<a target="_blank" href="/<?php echo $about[$i]->platform ?>/news/news.php?id=<?php echo $about[$i]->id; ?>">
-								<?php echo delhtml($about[$i]->title); ?>  <span style="color:#838383">(<?php echo $about[$i]->created_at; ?>)</span>
-							</a>
-						<?php }?>
-					</div>		
-				<?php }?>		
-			</div>
-			<?php } ?>
-			
+			<?php }?>
 		</div>
 	</div>
+	
 	<div id=ibody_right>
-		<div id=r_t>
+		<div id=r_t style="margin-bottom:15px;">
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="298" height="88" id="FLVPlayer">
 			 <param name="movie" value="/flash/news.swf" />
 			 <param name="salign" value="lt" />
@@ -231,103 +231,77 @@ require_once('../inc/top.inc.html');
 		$keys = explode(',',$record[0]->related_videos);
 		$sql="select photo_url,video_url from smg_video where id=".$keys[0];
 		$r_video=$db->query($sql);
-		 if($record[0]->video_src==""){?>
+		 if($record[0]->video_src==""){
+		 	if($record[0]->low_quality==0){
+			?>
 			<div class=r_video><?php show_video_player('298','240',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
-		<?php } ?>
+		<?php }
+			else
+			{?>
+				<div class=r_video><?php show_video_player('150','120',$r_video[0]->photo_url,$r_video[0]->video_url);?></div>
+			<?php }
+		} ?>
 		<div id=r_m>
 			<?php 
-			 for($i=0;$i<count($keys);$i++){
-			 	$sql="select id,title from smg_video where id in (".$keys[$i].")";
+			 for($i=0;$i< count($keys);$i++){
+			 	$sql="select id,title from smg_video where id=".$keys[$i];
 			 	$videolist=$db->query($sql);
 			 ?> 
 			 	<div class="r_content">
-			 		<?php if($i<3){?>
+			 		<?php  if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
 			 			<div class=cl1><a target="_blank" href="/show/video.php?id=<?php echo $videolist[0]->id;?>"><?php echo delhtml($videolist[0]->title);?></a></div>
 					<?php }else{?>
-						<div class=pic2><?php if($i<9){ echo "0".($i+1);}else{ echo $i+1;}?></div>
+						<div class=pic2>
+							<?php if($i<9){
+								 echo "0".($i+1);
+								 }else{ echo $i+1;}?>
+						</div>
 						<div class=cl2><a target="_blank" href="/show/video.php?id=<?php echo $videolist[0]->id;?>"><?php echo delhtml($videolist[0]->title);?></a></div>
 					<?php }?>				
 				</div>
 			<? }?>
 		</div>
-		<? }?>
-		<div id=r_m>
-			<div id=title>å°ç¼–æ¨è</div>
+		<?php }?>
+		<div class=r_b1>
+			<div class=title>ÀúÊ·Í·Ìõ</div>
 			<?php 
-			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on n.category_id=c.id and is_adopt=1 and n.id<>".$id." and tags='å°ç¼–æ¨è' order by n.priority asc,n.created_at desc limit 8";
-			 $xbjj=$db->query($sql);
-			 for($i=0;$i<count($xbjj);$i++){	 	
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='ÀúÊ·Í·Ìõ' order by n.created_at desc limit 8";
+			 $morehead=$db->query($sql);
+			 for($i=0;$i<count($morehead);$i++){	 	
 			 ?>
 			 	<div class="r_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 		<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
-						<div class=cl1><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
-					<?php }else
-					{?>
-						<div class=cl1><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
-					<?php }
-					}else{
-						?>
-						<div class=pic2>0<?php echo $i+1;?></div>
-						<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
-						<div class=cl2><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+			 			<div class=cl1><a target="_blank" href="/<?php echo $morehead[$i]->platform;?>/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
 					<?php }else{?>
-						<div class=cl2><a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
-					<?php }
-					}?>				
-				</div>
-			<?php }?>
-		</div>
-		<div id=r_b_t>
-			<div class=b_t_title1 param=1>è®ºå›æ–°å¸–</div>
-			<div class=b_t_title1 param=2>åšå®¢æ–°å¸–</div>
-			<div class=b_t_title1 param=3 style="background:url(/images/news/news_r_b_t_title2.jpg) no-repeat">ç²¾å½©è§†é¢‘</div>
-			<div class="b_t" id="b_t_1" style="display:none;">
-				<? 
-					$sql="SELECT tid,subject FROM bbs_posts where first=1 order by pid desc limit 10";
-					$bbs=$db->query($sql);
-					for($i=0;$i<count($bbs);$i++){
-				?>
-				<div class="r_content">
-					<ul>
-			 			<li>Â·<a target="_blank" href="/bbs/viewthread.php?tid=<?php echo $bbs[$i]->tid;?>"><?php echo $bbs[$i]->subject; ?></a></li>
-					</ul>		
-				</div>
-				<? }?>
-			</div>
-			<div class=b_t id="b_t_2" style="display:none;">
-				<? 
-					$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by itemid desc limit 10";
-					$blog=$db->query($sql);
-					for($i=0;$i<count($blog);$i++){
-				?>
-				<div class="r_content">
-					<ul>
-			 			<li>Â·<a target="_blank" href="/blog/?uid-<?php echo $blog[$i]->uid;?>-action-viewspace-itemid-<?php echo $blog[$i]->itemid;?>"><?php echo $blog[$i]->subject; ?></a></li>		
-					</ul>
-				</div>
-				<? }?>
-			</div>
-			<div class=b_t id="b_t_3" style="display:inline;">
-			<?php 
-			 $sql="select id,title from smg_video where is_adopt=1 order by priority asc,created_at desc limit 10";
-			 $jcsp=$db->query($sql);
-			 for($i=0;$i<count($jcsp);$i++){	 	
-			 ?>
-			 	<div class="r_content">
-			 		<ul>
-						<li>Â·<a target="_blank" href="/show/video.php?id=<?php echo $jcsp[$i]->id;?>"><?php echo strfck($jcsp[$i]->title); ?></a></li>
-					</ul>			
+						<div class=pic2>0<?php echo $i+1;?></div>
+						<div class=cl2><a target="_blank" href="/<?php echo $morehead[$i]->platform;?>/news/news_head.php?id=<?php echo $morehead[$i]->id;?>"><?php echo delhtml($morehead[$i]->short_title);?></a></div>
+					<?php }?>				
 				</div>
 			<? }?>
-			</div>
 		</div>
-		<div id=r_b_b>
-			<div class=b_b_title1 style="font-weight:bold; color:#000000; text-decoration:none;" param=1>éƒ¨é—¨å‘è¡¨é‡</div>
-			<div class=b_b_title1 param=2 style="color:#C2130E; text-decoration:underline; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">éƒ¨é—¨ç‚¹å‡»æ’è¡Œæ¦œ</div>
-			<div id="b_b_1" class="b_b" style="display:none">
+		<div class=r_b1>
+			<div class=title>Ğ¡±à¼Ó¾«</div>
+			<?php 
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='Ğ¡±à¼Ó¾«' order by n.priority asc,n.created_at desc limit 10";
+			 $xbjj=$db->query($sql);
+			 for($i=0;$i<count($xbjj);$i++){
+			 ?>
+			 	<div class="r_content">
+			 		<?php if($xbjj[$i]->category_id==1||$xbjj[$i]->category_id==2){ ?>
+						<div class=cl1>¡¤<a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news_head.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+					<?php }else
+					{?>
+						<div class=cl1>¡¤<a target="_blank" href="/<?php echo $xbjj[$i]->platform;?>/news/news.php?id=<?php echo $xbjj[$i]->id;?>"><?php echo delhtml($xbjj[$i]->short_title);?></a></div>
+					<?php }?>				
+				</div>
+			<? }?>
+		</div>
+		<div id=r_b2>
+			<div class=b_head_title1 param=1>²¿ÃÅ·¢±íÁ¿</div>
+			<div class=b_head_title1 param=2 style="background:none; color:#000000;">²¿ÃÅµã»÷ÅÅĞĞ°ñ</div>
+			<div id=b_b_1 class="b_b" style="display:block">
 			<?php 
 			 $sql="select *,(n1+v1+p1) as a1,(n2+v2+p2) as a2  from (select a.name,ifnull(b.allcounts,0) as n1,ifnull(c.counts,0) as n2,ifnull(p1allcounts,0) as p1,ifnull(p2counts,0) as p2,ifnull(v1allcounts,0) as v1,ifnull(v2counts,0) as v2 from smg_dept a left join
 (select count(dept_id) as allcounts,dept_id from smg_news where is_recommend=1  group by dept_id) b on a.id=b.dept_id left join  (select count(dept_id) as counts,dept_id from smg_news where is_adopt=1 group by dept_id) c on b.dept_id = c.dept_id
@@ -354,7 +328,7 @@ order by b.allcounts desc) tb order by a1 desc limit 10";
 			<? }?>
 			</div>
 			
-			<div id=b_b_2 class="b_b" style="display:block;">
+			<div id=b_b_2 class="b_b" style="display:none;">
 			<?php 
 			 $sql="select * from smg_dept order by click_count desc limit 10";
 			 $clickcount=$db->query($sql);
