@@ -2,6 +2,8 @@
 	require_once('../frame.php');
 	$id = $_REQUEST['id'];
 	$image = new smg_images_class();
+	$image->find($id);
+	$category_name = category_name_by_id($image->category_id);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,11 +18,10 @@
   	?>
 </head>
 <script>
-	total("图片内页","show");	
+	total("<?php echo $category_name;?>","show");	
 </script>
 <body>
 <? require_once('../inc/top.inc.html');
-	$image->find($id);
 	if($image->url!=''){
 		$image->click_count = $image->click_count+1;
 		$image->save();

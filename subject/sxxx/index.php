@@ -22,7 +22,10 @@
 		<? include('inc/djtop.inc.php');?>
 					<div id=right>
 						<div class=gd style="background:url(/images/bg/sxxx_hdjy.jpg) no-repeat;">
-							<? $news = $db->query('select n.photo_src,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动剪影" inner join smg_subject s on c.subject_id=s.id and s.name="三项学习教育专题" order by i.priority asc,n.created_at desc limit 6');?>
+						
+							<? 
+							$news = $db->query('select n.photo_src,i.category_id as cid from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at desc limit 6');
+							?>
 							<DIV id=Layer5>
 				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
@@ -80,7 +83,6 @@
 									 if($photourl=="")
 									 {
 									 	$photourl=$zxdt[$i]->photo_src;
-										break;	
 									 }
 									}
 							?>
