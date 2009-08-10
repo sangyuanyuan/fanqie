@@ -3,28 +3,28 @@
  */
 function display_fqbq(container,insert_container,is_fck){
 	var str = '';
-	str += '<img src="/images/fqbq/1.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/2.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/3.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/4.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/5.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/6.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/7.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/8.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/9.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/10.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/11.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/12.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/13.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/14.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/15.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/16.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/17.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/18.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/19.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/20.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/21.jpg" border=0 style="cursor:pointer">';
-	str += '<img src="/images/fqbq/22.jpg" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/1.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/2.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/3.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/4.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/5.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/6.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/7.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/8.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/9.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/10.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/11.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/12.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/13.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/14.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/15.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/16.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/17.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/18.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/19.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/20.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/21.gif" border=0 style="cursor:pointer">';
+	str += '<img src="/images/fqbq/22.gif" border=0 style="cursor:pointer">';
 	
 	$('#' + container).html(str);
 	$('#' + container + ' img').click(function(){
