@@ -157,7 +157,7 @@
 			?>
 		  	<div id="image">
 			  	<a target="_blank" href="<?php echo $image->src;?>">
-			  		<img border=0 src="<?php echo $image->src?>" width="100%" height="100%">
+			  		<img border=0 src="<?php echo $image->src?>" width="670" height="420">
 				</a>
 			</div>
 			<div class=digg>

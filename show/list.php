@@ -213,7 +213,7 @@
 			<?php if($title=="每日之星"){?>
 			<div class=content>
 				<div class=pic>
-					<img src="<?php echo $records[$i]->photo_src ?>" width="140" height="80" border=0>
+					<a href="<?php if($type!='magazine'){echo $link.$records[$i]->id;}else{echo $records[$i]->online_url;}?>" target="_blank" title="<?php echo strip_tags($records[$i]->$l_title);?>"><img src="<?php echo $records[$i]->photo_src ?>" width="140" height="80" border=0></a>
 				</div>
 				<div class=left style="width:310px;">
 					<a href="<?php if($type!='magazine'){echo $link.$records[$i]->id;}else{echo $records[$i]->online_url;}?>" target="_blank" title="<?php echo strip_tags($records[$i]->$l_title);?>"><?php echo strip_tags($records[$i]->$l_title);?></a>
