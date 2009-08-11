@@ -633,4 +633,11 @@ function showShort($str,$len)
 	  $tempstr .= "..."; //要以什么结尾,修改这里就可以.
 	return $tempstr; 
 }
+
+function news_date($created_at,$days)
+{
+	if(date('Y-m-d H:i:s',strtotime("-36 hour")) > $created_at&&$days==0)
+	{ echo 'style="color:#666666"';}
+
+}
 ?>

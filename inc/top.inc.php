@@ -19,7 +19,7 @@
 		<?php for($j=0;$j<5;$j++){?>
 		<ul>
 				<?php	for($i=8*$j;$i<8*($j+1);$i++)	{ ?>
-				<li><?php if($i%4==0){?><b><?php }?><a href="<?php echo $nav[$i]->href;?>" target=_blank><?php echo $nav[$i]->name;?></a><?php if($i%4==0){?></b><?php }?></li>
+				<li><?php if($i%4==0){?><b><?php }?><a href="<?php echo $nav[$i]->href;?>"><?php echo $nav[$i]->name;?></a><?php if($i%4==0){?></b><?php }?></li>
 				<?php	}?>
 	 	</ul>
 		<?php }?>

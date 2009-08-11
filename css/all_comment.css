@@ -17,11 +17,11 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #l_b .comment img{margin-top:5px; cursor:pointer;}
 #l_b .page{width:660px; height:20px; margin-top:10px; padding-bottom:10px; text-align:center; line-height:20px;  float:left; display:inline;}
 #r_t{width:298px; height:82px; background:url('/images/news/news_head_r_t.jpg') no-repeat; float:right; display:inline;}
-#r_m{with:298px; margin-top:10px; padding-bottom:10px; border:1px solid #D1E3F4; float:right; display:inline;}
-#r_m #title{width:288px; height:24px; padding-left:10px; line-height:24px; font-weight:bold; background:url('/images/news/news_r_title_bg.jpg') repeat-x; border-bottom:1px solid #D1E3F4; float:right; display:inline;}
+.r_m{with:298px; margin-top:10px; padding-bottom:10px; border:1px solid #D1E3F4; float:right; display:inline;}
+.r_m .title{width:288px; height:24px; padding-left:10px; line-height:24px; font-weight:bold; background:url('/images/news/news_r_title_bg.jpg') repeat-x; border-bottom:1px solid #D1E3F4; float:right; display:inline;}
 #r_b_t{width:298px; margin-top:10px; padding-bottom:10px; border:1px solid #D1E3F4; float:right; display:inline;}
 #r_b_t{width:298px; margin-top:10px; padding-bottom:10px; border:1px solid #D1E3F4; float:right; display:inline;}
-#r_b_t .b_t_title1{width:99px; height:30px; background:url('/images/news/news_r_title_bg.jpg') repeat-x; font-weight:bold; line-height:30px; text-align:center; font-size:14px; cursor:pointer; float:left; display:inline;}
+#r_b_t .b_t_title1{width:149px; height:30px; background:url('/images/news/news_r_title_bg.jpg') repeat-x; font-weight:bold; line-height:30px; text-align:center; font-size:14px; cursor:pointer; float:left; display:inline;}
 #r_b_b{width:298px; margin-top:10px; padding-bottom:10px; border:1px solid #D1E3F4; float:right; display:inline;}
 #r_b_b .b_b_title1{width:149px; height:30px; background:url('/images/news/news_r_title_bg.jpg') repeat-x; line-height:30px; text-align:center; font-size:14px; cursor:pointer; float:left; display:inline;}
 .r_content{width:276px; height:14px; margin-top:7px;  margin-left:10px; float:left; display:inline;}
