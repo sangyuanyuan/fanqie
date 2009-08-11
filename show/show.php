@@ -156,16 +156,13 @@
 			<?php }else{
 			?>
 		  	<div id="image">
-		  		<table height=100% width=100%>
-		  			<tr valign="middle" align="center">
-		  				<td>
-						  	<a  href="<?php echo $image->src;?>">
-						  		<img id="show_image" border=0 src="<?php echo $image->src?>">
-							</a>
-						</td>
-					</tr>
-				</table>
+		  		<div id=image_border>
+				  	<a href="<?php echo $image->src;?>" >
+				  		<img border=0 src="<?php echo $image->src?>" style="margin-bottom:-2px; padding:0;" width=670>
+					</a>
+				</div>
 			</div>
+			
 			<div class=digg>
 				<div id="flower" title="送鲜花">
 					<?php echo $image->flower;?>
@@ -268,17 +265,6 @@
 
 <script>
 	$(function(){
-		var test_image = new Image();
-		test_image.src = <?php echo $image->src;?>;
-		var height = test_image.height/420;
-		var width = test_image.width/670;
-		if(height>width){
-			$("#show_image").attr('height','420');
-		}else if(width>height){
-			$("#show_image").attr('width','670');
-		}
-		
-		
 		var flower_num = $("#hidden_flower").attr('value');
 		var tomato_num = $("#hidden_tomato").attr('value');
 		
