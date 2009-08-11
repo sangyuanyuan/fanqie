@@ -61,7 +61,7 @@
 					<?php for($i=0;$i<count($rows_dept);$i++){?>
 					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
 					<? }?>
-				</select><span id="span_category"></span><select id=adopt style="width:100px" class="select_new">
+				</select><span id="span_category"></span><select id=adopt class="select_new">
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
