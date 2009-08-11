@@ -47,10 +47,12 @@
 				<?php } ?>
 			</select>
 			<span id="category"></span>
-			　时间　<input type="text" name="start_time" disable="disableed" class="date_jquery" value="<?php echo $_REQUEST['start_time'];?>"  style="width:100px;">
-		　-　<input type="text" name="end_time" class="date_jquery" value="<?php echo $_REQUEST['end_time'];?>"  style="width:100px;">
-			 　<input type="submit" id="submit" style="width:100px; height:22px;" value="搜索">
-			<input type="hidden" name="category_id" id="category_id" value="<?php echo $_REQUEST['category_id'];?>">
+			　时间　<input type="text" name="start_time" disable="disableed" class="date_jquery" value="<?php echo $_REQUEST['start_time'];?>"  style="width:80px;">
+		　-　<input type="text" name="end_time" class="date_jquery" value="<?php echo $_REQUEST['end_time'];?>"  style="width:80px;">
+			<input type="checkbox" name="full_text" id="full_text" value="1" <?php if($_REQUEST['full_text']) echo 'checked="checked"'; ?>>全文检索
+			<input type="submit" id="submit" style="width:100px; height:22px;" value="搜索">
+			
+			<input type="hidden" style="display:none;" name="category_id" id="category_id" value="<?php echo $_REQUEST['category_id'];?>">
 			</form>
 		</div>
 		<div id="search_result">
@@ -74,7 +76,7 @@
 						$c[] = "created_at <='" .$end_time ."'";
 					}
 					if($c) 	$conditions = implode(' and ' ,$c);
-					$items = search_content($_REQUEST['key'],$_REQUEST['search_type'],$conditions,20,'id desc');
+					$items = search_content($_REQUEST['key'],$_REQUEST['search_type'],$conditions,20,'id desc',$_REQUEST['full_text']);
 				}
 				if($items){
 					if($_REQUEST['search_type'] == 'smg_news'){
