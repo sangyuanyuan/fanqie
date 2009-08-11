@@ -6,7 +6,7 @@
 	$datetime2=date('Y-m-d')." 23:59:59";
 	list($name,$platform) = split ($PostDiv, $_POST["total"]);
 
-
+	if($name==""||$platform==""){exit;}
 	
 	$strsql='select * from smg_total where platform="'.$platform.'" and name="'.$name.'" and datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
 	$record=$db -> query($strsql);
