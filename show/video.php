@@ -137,7 +137,7 @@
 		  </div>
 			
 		<div id=ibody_right>
-			<div id="up_pic"><a href="show_sub.php?type=video" target="_blank" ><img src="/images/show/video_up2.jpg" width="390" height="130" border=0></a></div>
+			<div id="up_pic"><a href="show_sub.php?type=video"  ><img src="/images/show/video_up2.jpg" width="390" height="130" border=0></a></div>
 					<?php 
 						$db = get_db();
 						$sql = 'select * from smg_video where is_adopt=1 and publisher="'.$video->publisher.'" and id!='.$id.' limit 6';
@@ -152,12 +152,12 @@
 					<div class=content>
 						<div class=box>
 							<div class=photo>
-								<a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>">
+								<a  href="video.php?id=<?php echo $records[$i]->id;?>">
 									<img src="<?php echo $records[$i]->photo_url;?>" width="90" height="56" border=0>
 								</a>
 							</div>
 						</div>
-						<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
+						<div class=title><a  href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
 					</div>
 					<?
 						}
@@ -189,12 +189,12 @@
 					<div class=content>
 						<div class=box>
 							<div class=photo>
-								<a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>">
+								<a  href="video.php?id=<?php echo $records[$i]->id;?>">
 									<img src="<?php echo $records[$i]->photo_url;?>" width="90" height="56" border=0>
 								</a>
 							</div>
 						</div>
-						<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
+						<div class=title><a  href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
 					</div>
 					<?php
 						}
@@ -208,12 +208,12 @@
 					<div class=content>
 						<div class=box>
 							<div class=photo>
-								<a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>">
+								<a  href="video.php?id=<?php echo $records[$i]->id;?>">
 									<img src="<?php echo $records[$i]->photo_url;?>" width="90" height="56" border=0>
 								</a>
 							</div>
 						</div>
-						<div class=title><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
+						<div class=title><a  href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
 					</div>
 					<?php }
 						}
