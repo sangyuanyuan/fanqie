@@ -52,7 +52,9 @@ $(function(){
 			$(this).css('background','url(/images/index/btn4.jpg) no-repeat');
 			$(".list_tlm").hide();
 			var num=$(this).attr('param');
+			$("#list_tlm"+num).css('margin-left','18px');
 			$("#list_tlm"+num).show();
+			
 
 	});	
 	

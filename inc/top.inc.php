@@ -11,6 +11,7 @@
 	<div id=box>	
    	<a href="/dx/dx.php" target="_blank"><img src="/images/top/sms.jpg" border=0></a>
 		<div id=context><a href="http://172.27.203.88/emailfront/emailfront.htm" target="_blank">企业邮箱</a> <a href="#">新节目</a> <a href="#">直播</a> <a href="/contact/contact.php" target="_blank">联系我们</a> <span onclick="javascript:document.getElementById('toolcontent').style.display='inline'">常用办公软件</span></div>		
+		<a id=home href="/home/" target="_blank"><img src="/images/top/jiayuan.gif" border=0></a>
 	</div>	
 </div>
 <div id=nav2>
@@ -19,7 +20,7 @@
 		<?php for($j=0;$j<5;$j++){?>
 		<ul>
 				<?php	for($i=8*$j;$i<8*($j+1);$i++)	{ ?>
-				<li><?php if($i%4==0){?><b><?php }?><a href="<?php echo $nav[$i]->href;?>" target=_blank><?php echo $nav[$i]->name;?></a><?php if($i%4==0){?></b><?php }?></li>
+				<li><?php if($i%4==0){?><b><?php }?><a href="<?php echo $nav[$i]->href;?>"><?php echo $nav[$i]->name;?></a><?php if($i%4==0){?></b><?php }?></li>
 				<?php	}?>
 	 	</ul>
 		<?php }?>
@@ -34,7 +35,7 @@
 	   		<input type="text" name="key"></input>
 	   		<button id=button1></button>
 	   		<button id=button2></button>
-			<input type="hidden" name="search_type" id="search_type_hidden" value="smg_news">
+			<input type="hidden" name="search_type" id="search_type_hidden" value="smg_news" style="display:none">
 		</form>
  			<?php
  				$sql = 'select search_key,count(search_key) as icount from smg_search_keys where TO_DAYS(NOW())-TO_DAYS(created_at) <= 30 group by search_key order by icount desc limit 6';

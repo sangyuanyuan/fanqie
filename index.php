@@ -48,7 +48,7 @@ total("首页","other");
 					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
 					<div id="focus_01"></div> 
 					<script type="text/javascript"> 
-					var pic_width1=271; //图片宽度
+					var pic_width1=256; //图片宽度
 					var pic_height1=183; //图片高度
 					
 					<?php 
@@ -64,13 +64,13 @@ total("首页","other");
 					var mylinks1=<?php echo '"',$mylinks1,'"'?>;
 					var texts1=<?php echo '"',$texts1,'"'?>;			
 					 	
-					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "271", "183", "4","#FFFFFF");
+					var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "256", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
 					picflash.addVariable("picurl",pics1);
 					picflash.addVariable("piclink",mylinks1);
 					picflash.addVariable("pictext",texts1);				
 					picflash.addVariable("pictime","5");
-					picflash.addVariable("borderwidth","271");
+					picflash.addVariable("borderwidth","256");
 					picflash.addVariable("borderheight","183");
 					picflash.addVariable("borderw","false");
 					picflash.addVariable("buttondisplay","true");
@@ -82,7 +82,7 @@ total("首页","other");
 					
 				<? }?>	
   		  </div>
- 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg);" <?php if($record_inline[0]->name=='spxw'){?>style="display:inline"<?php }?>>
+ 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg) no-repeat;" <?php if($record_inline[0]->name=='spxw'){?>style="display:inline"<?php }?>>
  					<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=235px height=182px scrolling="no" frameborder="0"></iframe>
  				</div>
   			<div class=content_tlt id=content3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
@@ -92,7 +92,7 @@ total("首页","other");
 					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
 					<div id="focus_02"></div> 
 					<script type="text/javascript"> 
-					var pic_width1=271; //图片宽度
+					var pic_width1=256; //图片宽度
 					var pic_height1=183; //图片高度
 					
 					<?php 
@@ -108,13 +108,13 @@ total("首页","other");
 					var mylinks1=<?php echo '"',$mylinks1,'"'?>;
 					var texts1=<?php echo '"',$texts1,'"'?>;			
 								
-					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "271", "183", "4","#FFFFFF");
+					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "256", "183", "4","#FFFFFF");
 					picflash.addParam('wmode','opaque');
 					picflash.addVariable("picurl",pics1);
 					picflash.addVariable("piclink",mylinks1);
 					picflash.addVariable("pictext",texts1);				
 					picflash.addVariable("pictime","5");
-					picflash.addVariable("borderwidth","271");
+					picflash.addVariable("borderwidth","256");
 					picflash.addVariable("borderheight","183");
 					picflash.addVariable("borderw","false");
 					picflash.addVariable("buttondisplay","true");
@@ -255,8 +255,8 @@ total("首页","other");
 					$record_head=$db -> query($sql);
 					for($j=0;$j<=1;$j++){
 				?>
- 				<div class=title><a href="<?php echo "/".$record_head[$j]->platform."/news/news_head.php?id=".$record_head[$j]->news_id ?>" target="_blank"><?php echo $record_head[$j]->short_title ?></a><?php echo show_img($record_head[$j]->image_flag,22,20)?></div>
-				<div class=content <? if($record_head[$j]->sub_headline==1){ echo 'style="text-align:left; text-indent:24px; "';} ?>>
+ 				<div class=title><a href="<?php echo "/".$record_head[$j]->platform."/news/news_head.php?id=".$record_head[$j]->news_id ?>" target="_blank"><?php echo $record_head[$j]->short_title ?></a><?php echo show_video($record_head[$j]->video_flag,22,20)?><?php echo show_img($record_head[$j]->image_flag,22,20)?></div>
+				<div class=content>
  				<?php
  					if($record_head[$j]->sub_headline==1)
  					{ 
@@ -267,12 +267,13 @@ total("首页","other");
  							$sub_news_str=explode(",",$record_head[$j]->sub_news_id); 
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
 
-							for($i=0;$i<3;$i++)
+							for($i=0;$i<6;$i++)
 							{
 									$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
 									echo '[<a href="'.$record_sub_news[0]->platform.'/news/news_head.php?id='.$record_sub_news[0]->news_id.'" target=_blank>'.$record_sub_news[0]->short_title.'</a>]';
 							}		
+							/*
 							echo "<br>";
 							for($i=3;$i<=$sub_news_str_num;$i++)
 							{
@@ -280,7 +281,8 @@ total("首页","other");
 									$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
 									echo '[<a href="'.$record_sub_news[0]->platform.'/news/news_head.php?id='.$record_sub_news[0]->news_id.'" target=_blank>'.$record_sub_news[0]->short_title.'</a>]';
-							}		
+							}	
+							*/	
 					}	
 				?>					
 				</div>
@@ -291,44 +293,47 @@ total("首页","other");
 			
  			<!-- start top_right_center_middle !-->
  			<div id=t_r_c_m>
- 				<div id=title></div>
+ 				<a href="/news/news_list.php?id=23" target="_blank" id=title></a>
   			<?php
 					$sql = 'select n.short_title,c.platform,n.id  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 1 ';
 					$record_import=$db -> query($sql);
-				?>				
+					
+				?>		
 				<div id=content1><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a></div>
  				<a href="" id=btn ></a>
  				<?php
- 				
+
 					$sql = 'select * from smg_news_show;';
 					$record=$db -> query($sql); 				
+					$days=$record[0]->days;
  					if($record[0]->days==0)
- 					{	$sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 41';	}
+ 					{	$sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag,n.created_at from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 41';	}
  					else
- 					{ 	$sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" and TO_DAYS(NOW())-TO_DAYS(n.created_at) <= '.$record[0]->days.'  order by n.click_count desc,n.created_at desc limit 41';}
+ 					{ $sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag,n.created_at from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" and TO_DAYS(NOW())-TO_DAYS(n.created_at) <= '.$record[0]->days.'  order by n.click_count desc,n.created_at desc limit 41';}
 					$record_import_a=$db -> query($sql);
 					$sql = 'select n.photo_src, c.platform,n.id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
 					$record_import_b=$db -> query($sql);
 					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-专" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2';
 					$record_import_c=$db -> query($sql);
+					
 				?>	
  				<div id=box>
  					<div id=l>
  						<ul>
  						 <?php for($i=0; $i<5; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>
  						<div class=space></div>
   					<ul>
  						 <?php for($i=5; $i<8; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>
  						<div class=space></div>
   					<ul>
  						 <?php for($i=8; $i<11; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>
  						<div class=space></div>
@@ -336,7 +341,7 @@ total("首页","other");
 						<a href="<?php echo "/".$record_import_b[1]->platform."/news/news.php?id=".$record_import_b[1]->id ?>" target="_blank"><img class=imgs src="<?php echo $record_import_b[1]->photo_src ?>" border=0 ></a>
   					<ul>
  						 <?php for($i=11; $i<13; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>						
  					</div>	
@@ -344,7 +349,7 @@ total("首页","other");
  					<div id=c>
    					<ul>
  						 <?php for($i=13; $i<18; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>								
  						<div style="width:128px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
@@ -354,13 +359,13 @@ total("首页","other");
  			
    					<ul>
  						 <?php for($i=18; $i<21; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>			
  						<div class=space></div>
    					<ul>
  						 <?php for($i=21; $i<26; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	
  					</div>	 
@@ -372,34 +377,34 @@ total("首页","other");
  						</div>
      				<ul>
  						 <?php for($i=26; $i<27; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>
      				<ul>
  						 <?php for($i=27; $i<30; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>
       			<ul>
  						 <?php for($i=30; $i<33; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>												
       			<ul>
  						 <?php for($i=33; $i<38; $i++){?>
- 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
+ 							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo $record_import_a[$i]->title?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	
  					</div>	 				
  				</div>
- 				<div id=title2></div>
  				<?php
-					$sql = 'select n.short_title, c.platform,n.id as news_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="广而告之" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
+					$sql = 'select n.short_title, c.platform,n.id as news_id,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="广而告之" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
 					$record_marguee=$db -> query($sql);
-				?>	
+				?>
+				<a href="/news/news_list.php?id=<?php echo $record_marguee[0]->cid?>" target="_blank" id=title2></a>
  				<div id=content_marguee>
  					<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="100%" style="line-height:24px;">
  						<?php for($i=0; $i<6; $i++){?>
@@ -648,7 +653,7 @@ total("首页","other");
   			<div id=box1>
 	  			<a href="/show/show.php?id=<?php echo $record_show[0]->img_id?>" target=_blank><img src="<?php echo $record_show[0]->src ?>" border=0></a>
   				<ul>
-  					<?php for($i=1;$i<6;$i++){?>
+  					<?php for($i=0;$i<5;$i++){?>
   					<li><a href="/show/show.php?id=<?php echo $record_show[$i]->img_id?>" target=_blank><?php echo strip_tags($record_show[$i]->title)?></a></li>
   					<? }?>
    				</ul>

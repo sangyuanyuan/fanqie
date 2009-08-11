@@ -33,7 +33,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #l_b .aboutcontent .content a{color:#000000; text-decoration:none;}
 #l_b .aboutcontent input{width:340px; height:16px; margin-left:14px; border:1px solid #CDCDCD; float:left;}
 #l_b .aboutcontent #fqbq{width:615px; margin-top:5px; margin-left:14px; float:left; display:inline;}
-#l_b .aboutcontent button{margin-top:10px; margin-right:15px; border:1px solid #cccccc; background:#ffffff; line-height:20px; float:right; display:inline;}
+#l_b .aboutcontent button{margin-top:10px; margin-right:15px; border:1px solid #000000; background:#ffffff; line-height:20px; float:right; display:inline;}
 #l_b #comment{width:643px; margin-top:10px; margin-left:20px; border:1px solid #DDDDDD; border-bottom:none; background:#ffffff; float:left; display:inline;}
 #l_b #comment .content{width:643px; border-bottom:1px solid #dddddd; float:left; display:inline;}
 #l_b #comment .content .title1{width:633px; height:30px; margin-top:5px; margin-left:10px; line-height:30px; background:url('/images/news/news_comment_title.jpg') no-repeat; float:left; display:inline;}

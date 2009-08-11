@@ -68,7 +68,15 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
           </DIV>
         	
         	<div class="right_c" >
-            	<div  class="pic"><img class="pic" src="pic2/flower.jpg"/></div>
+        		<div  class="pic">
+            		<? $news=show_content('smg_news','news','上海文广数字移动传播有限公司','温馨一隅');?>
+            		<MARQUEE scrollAmount=1 scrollDelay=60 behavior=scroll  width="100%">
+            			<? for($i=0;$i<count($news);$i++){?>
+            			<a target="_blank" href="news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a>
+            			<? }?>
+            		</marquee>
+            		<a href="_blank" href="newslist.php?id=145"><img border=0 src="pic2/flower.jpg" width=212 height=160></a>
+            	</div>
                 <div class="share" >
                  <div  class="share_top">分享家园</div>
                  <div  class="r_border">

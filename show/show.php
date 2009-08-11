@@ -51,7 +51,7 @@
 <div id=ibody>	
  <div id=ibody_left>
  	  	<div id=l_t>
-	 	  	<a target="_blank" href="show_sub.php?type=image"><img border=0 src="/images/show/show_l_t.jpg" width="290"></a>
+	 	  	<a href="show_sub.php?type=image"><img border=0 src="/images/show/show_l_t.jpg" width="290"></a>
 			<?php 
 				$db = get_db();
 				$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.priority=0 and i.is_adopt=1 and c.name="番茄广告" and c.platform="show" order by i.priority asc,i.created_at desc limit 4';
@@ -96,7 +96,7 @@
 		<div class=l_m>
 			<div class=title><div name="user" class=left1>用户排行榜|</div><div class=left1 name="dept" style="color:#999999">部门排行榜</div></div>
 			<?php
-				$sql = 'SELECT t1.publisher,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.is_adopt=1 and t1.publisher!="admin" and t2.platform="show" group by t1.publisher limit 5';
+				$sql = 'SELECT t1.publisher,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.is_adopt=1 and t1.publisher!="admin" and t2.platform="show" group by t1.publisher order by num desc limit 5';
 				$records = $db->query($sql);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
@@ -104,7 +104,7 @@
 				<div class="content user change" <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="list.php?publisher=<?php echo urlencode($records[$i]->publisher);?>"><?php echo $records[$i]->publisher; ?></a></div>
+						<div class=top><a  href="list.php?publisher=<?php echo urlencode($records[$i]->publisher);?>&type=image"><?php echo $records[$i]->publisher; ?></a></div>
 						<div class=bottom>发布了<?php echo $records[$i]->num; ?>张图片！</div>
 					</div>
 				</div>
@@ -144,7 +144,7 @@
 				}
 				for($i=0;$i<count($c);$i++){
 			?>
-			<a class="tag<?php echo rand(1, 6);?>" target="_blank" href="/search/?key=<?php echo urlencode($c[$i]);?>&search_type=smg_images"><?php echo $c[$i];?></a>
+			<a class="tag<?php echo rand(1, 6);?>"  href="/search/?key=<?php echo urlencode($c[$i]);?>&search_type=smg_images"><?php echo $c[$i];?></a>
 			<?php } ?>
 			</div>
 		</div>
@@ -156,10 +156,13 @@
 			<?php }else{
 			?>
 		  	<div id="image">
-			  	<a target="_blank" href="<?php echo $image->src;?>">
-			  		<img border=0 src="<?php echo $image->src?>" width="670" height="420">
-				</a>
+		  		<div id=image_border>
+				  	<a href="<?php echo $image->src;?>" >
+				  		<img border=0 src="<?php echo $image->src?>" style="margin-bottom:-2px; padding:0;" width=670>
+					</a>
+				</div>
 			</div>
+			
 			<div class=digg>
 				<div id="flower" title="送鲜花">
 					<?php echo $image->flower;?>
@@ -244,7 +247,7 @@
 					$count = count($records);
 					for($i=0;$i<$count;$i++){ 
 				?>
-					<div class=pic><a target="_blank" title="<?php echo $records[$i]->title; ?>" href="show.php?id=<?php echo $records[$i]->id;?>"><img width=145 height=105 border=0 src="<?php echo $records[$i]->src_path('small');?>"></a></div>
+					<div class=pic><a  title="<?php echo $records[$i]->title; ?>" href="show.php?id=<?php echo $records[$i]->id;?>"><img width=145 height=105 border=0 src="<?php echo $records[$i]->src_path('small');?>"></a></div>
 				<?php }?>
 			</div>
 		</div>
@@ -317,5 +320,7 @@
 		$("[class*=tag]").click(function(){
 			//window.location.href="list.php?tag="+$(this).html();
 		})
+		
+		
 	});
 </script>
