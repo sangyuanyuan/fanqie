@@ -251,7 +251,7 @@ total("首页","other");
  			<!-- start top_right_center_top !-->
  			<div id=t_r_c_t>
  				<?php
-					$sql = 'select n.*,n.id as news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2 ';
+					$sql = 'select n.*,n.id as news_id,n.sub_news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2 ';
 					$record_head=$db -> query($sql);
 					for($j=0;$j<=1;$j++){
 				?>
@@ -264,14 +264,14 @@ total("首页","other");
  					}
  					if($record_head[$j]->sub_headline<>1&&$record_head[$j]->sub_headline<>""&&$record_head[$j]->sub_news_id<>"")
  					{
- 							$sub_news_str=explode(",",$record_head[$j]->sub_news_id); 
-				  		$sub_news_str_num=sizeof($sub_news_str)-1;
+ 							$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id in (".$record_head[$j]->sub_news_id.")";
+							$record_sub_news = $db -> query($sql);
+ 						
 
-							for($i=0;$i<=$sub_news_str_num;$i++)
+							for($i=0;$i<count($record_sub_news);$i++)
 							{
-									$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id=".$sub_news_str[$i];
-									$record_sub_news = $db -> query($sql);
-									echo '[<a href="'.$record_sub_news[0]->platform.'/news/news_head.php?id='.$record_sub_news[0]->news_id.'" target=_blank>'.$record_sub_news[0]->short_title.'</a>]';
+
+									echo '[<a href="'.$record_sub_news[$i]->platform.'/news/news_head.php?id='.$record_sub_news[$i]->news_id.'" target=_blank>'.$record_sub_news[$i]->short_title.'</a>]';
 							}		
 							/*
 							echo "<br>";
