@@ -45,7 +45,7 @@
  <div id=ibody_left>
  	  <div class=l>
  	  		<?php $category_id = category_id_by_name('每日之星'); ?>
-			<div class=title1><div name="mrzx" class=left1>每日之星排行榜|</div><div name="bm" class=left1 style="color:#999999">部门排行榜</div><div class="more"><a target="_blank" href="list.php?id=<?php echo $category_id; ?>&type=news">更多>></a></div></div>
+			<div class=title1><div name="mrzx" class=left1>每日之星排行榜|</div><div name="bm" class=left1 style="color:#999999">部门排行榜</div><div class="more"><a  href="list.php?id=<?php echo $category_id; ?>&type=news">更多>></a></div></div>
 			<?php
 				$db = get_db();
 				$sql = 'select id,short_title,flower,photo_src from smg_news where is_adopt=1 and category_id='.$category_id.' and photo_src!="" order by flower desc limit 5';
@@ -55,10 +55,10 @@
 			?>
 				<div class="content mrzx change" <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
-					<div class=middle><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_src?>"></a></div>
+					<div class=middle><a  href="article.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_src?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->short_title;?></a></div>
-						<div class=bottom><a target="_blank" href="article.php?id=<?php echo $records[$i]->id;?>">共得到<?php echo $records[$i]->flower ?>束鲜花</a></div>
+						<div class=top><a  href="article.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->short_title;?></a></div>
+						<div class=bottom><a  href="article.php?id=<?php echo $records[$i]->id;?>">共得到<?php echo $records[$i]->flower ?>束鲜花</a></div>
 					</div>
 				</div>
 			<? }?>
@@ -88,10 +88,10 @@
 			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
-					<div class=middle><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_url?>"></a></div>
+					<div class=middle><a  href="video.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_url?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->title;?></a></div>
-						<div class=bottom><a target="_blank" href="video.php?id=<?php echo $records[$i]->id;?>">被播放了<?php echo $records[$i]->click_count ?>次</a></div>
+						<div class=top><a  href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->title;?></a></div>
+						<div class=bottom><a  href="video.php?id=<?php echo $records[$i]->id;?>">被播放了<?php echo $records[$i]->click_count ?>次</a></div>
 					</div>
 				</div>
 			<? }?>
@@ -105,10 +105,10 @@
 			<?php for($i=0;$i<5;$i++){?>
 				<div class=content <?php if($i==4){?>style="border-bottom:none;"<?php }?>>
 					<div class=left><? echo $i+1;?></div>
-					<div class=middle><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->src?>"></a></div>
+					<div class=middle><a  href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=right>
-						<div class=top><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->title;?></a></div>
-						<div class=bottom><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>">被点击了<?php echo $records[$i]->click_count;?>次</a></div>
+						<div class=top><a  href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->title;?></a></div>
+						<div class=bottom><a  href="show.php?id=<?php echo $records[$i]->id;?>">被点击了<?php echo $records[$i]->click_count;?>次</a></div>
 					</div>
 				</div>
 			<? }?>
