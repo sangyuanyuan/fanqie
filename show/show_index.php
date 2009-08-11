@@ -115,7 +115,7 @@
 					<div class="content user change" <?php if($i==$count-1){?>style="border-bottom:none;"<?php }?>>
 						<div class=left><? echo $i+1;?></div>
 						<div class=right>
-							<div class=top><a href="list.php?publisher=<?php echo urlencode($records[$i]->publisher);?>&type=image" target="_blank"><?php echo $records[$i]->publisher;		?></a></div>
+							<div class=top><a href="list.php?publisher=<?php echo urlencode($records[$i]->publisher);?>&type=image" target="_blank"><?php echo $records[$i]->publisher;?></a></div>
 							<div class=bottom>发布了<?php echo $records[$i]->num; ?>张图片！</div>
 						</div>
 					</div>

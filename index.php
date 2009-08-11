@@ -256,7 +256,7 @@ total("首页","other");
 					for($j=0;$j<=1;$j++){
 				?>
  				<div class=title><a href="<?php echo "/".$record_head[$j]->platform."/news/news_head.php?id=".$record_head[$j]->news_id ?>" target="_blank"><?php echo $record_head[$j]->short_title ?></a><?php echo show_img($record_head[$j]->image_flag,22,20)?></div>
-				<div class=content <? if($record_head[$j]->sub_headline==1){ echo 'style="text-align:left; text-indent:24px; "';} ?>>
+				<div class=content>
  				<?php
  					if($record_head[$j]->sub_headline==1)
  					{ 
@@ -653,7 +653,7 @@ total("首页","other");
   			<div id=box1>
 	  			<a href="/show/show.php?id=<?php echo $record_show[0]->img_id?>" target=_blank><img src="<?php echo $record_show[0]->src ?>" border=0></a>
   				<ul>
-  					<?php for($i=1;$i<6;$i++){?>
+  					<?php for($i=0;$i<5;$i++){?>
   					<li><a href="/show/show.php?id=<?php echo $record_show[$i]->img_id?>" target=_blank><?php echo strip_tags($record_show[$i]->title)?></a></li>
   					<? }?>
    				</ul>
