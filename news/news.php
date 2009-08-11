@@ -186,10 +186,8 @@ require_once('../inc/top.inc.html');
 				<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
 				<input type="hidden" name="type" value="comment">
 				<div style="margin-top:5px; margin-left:13px; float:left; display:inline;"><?php show_fckeditor('post[comment]','Title',false,'75','','617');?></div>
-				<div id=fqbq>
-					
-				</div>
-				<button id="comment_sub" >提交评论</button>
+				<div id=fqbq></div>
+				<button style="margin-top:10px; margin-right:15px; border:1px solid #cccccc; background:#ffffff; line-height:20px; float:right; display:inline;" id="comment_sub" >提交评论</button>
 			</div>
 			</form>
 			<?php } ?>
