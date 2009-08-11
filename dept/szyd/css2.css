@@ -9,7 +9,6 @@ height:100%;}
 
 .main{
  width:971px;
- height:747px;
  margin-left:auto;
  margin-right:auto;
 }
@@ -26,26 +25,26 @@ height:64px;}
 
 .submain{
 width:971px;
-height:449px;
-background:url(pic2/list_bg.png) no-repeat;
 }
 
 .sub_l{
 float:left;
-height:449px;
 width:172px;
 background:url(pic2/sub_l.png) no-repeat;}
 
 .sub_right{
 margin-left:172px;
-height:449px;
 width:799px;
 background:url(pic2/sub_r.png) no-repeat;}
 
 .siteinfo{
-height:73px;
+margin-top:1px;
+margin-left:auto;
+margin-right:auto;
 width:971px;
-background:url(pic2/siteinfo.png) no-repeat;}
+height:108px;
+background:url(pic/siteinfo.png);
+}
 
 .btn{
 width:134px;
