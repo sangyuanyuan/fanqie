@@ -52,7 +52,7 @@ $count=$db->query($total);
 			<td><? echo $rows[$i]->createtime;?></td>
 			<td><? echo $rows[$i]->address;?></td>
 			<td><? echo $rows[$i]->remark;?></td>
-			<td><span style="color:blue; text-decoration:underline;" name="<? echo $rows['id'];?>">删除</span></td>
+			<td><span class="deltg" style="cursor:pointer; color:blue; text-decoration:underline;" name="<? echo $rows[$i]->id;?>">删除</span></td>
 		</tr>
 		<? }?>
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" >
