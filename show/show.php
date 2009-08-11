@@ -156,9 +156,15 @@
 			<?php }else{
 			?>
 		  	<div id="image">
-			  	<a  href="<?php echo $image->src;?>">
-			  		<img border=0 src="<?php echo $image->src?>" width="670" height="420">
-				</a>
+		  		<table height=100% width=100%>
+		  			<tr valign="middle" align="center">
+		  				<td>
+						  	<a  href="<?php echo $image->src;?>">
+						  		<img id="show_image" border=0 src="<?php echo $image->src?>">
+							</a>
+						</td>
+					</tr>
+				</table>
 			</div>
 			<div class=digg>
 				<div id="flower" title="送鲜花">
@@ -262,6 +268,17 @@
 
 <script>
 	$(function(){
+		var test_image = new Image();
+		test_image.src = <?php echo $image->src;?>;
+		var height = test_image.height/420;
+		var width = test_image.width/670;
+		if(height>width){
+			$("#show_image").attr('height','420');
+		}else if(width>height){
+			$("#show_image").attr('width','670');
+		}
+		
+		
 		var flower_num = $("#hidden_flower").attr('value');
 		var tomato_num = $("#hidden_tomato").attr('value');
 		
@@ -317,5 +334,7 @@
 		$("[class*=tag]").click(function(){
 			//window.location.href="list.php?tag="+$(this).html();
 		})
+		
+		
 	});
 </script>

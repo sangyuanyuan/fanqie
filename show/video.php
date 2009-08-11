@@ -213,7 +213,7 @@
 								</a>
 							</div>
 						</div>
-						<div class=title><a  href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
+						<div class=title><a href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
 					</div>
 					<?php }
 						}
