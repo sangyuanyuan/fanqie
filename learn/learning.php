@@ -9,7 +9,11 @@
 	<title>SMG -学习园地</title>
 	<?php css_include_tag('smg','bottom'); 
 		$db=get_db();
+		js_include_once_tag('total');
 	?>
+<script>
+	total("东方传媒学院","server");
+</script>
 </head>
 <body>
 	<div id=le_body>
