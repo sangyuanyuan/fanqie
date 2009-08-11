@@ -267,7 +267,7 @@ total("首页","other");
  							$sub_news_str=explode(",",$record_head[$j]->sub_news_id); 
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
 
-							for($i=0;$i<6;$i++)
+							for($i=0;$i<=$sub_news_str_num;$i++)
 							{
 									$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
