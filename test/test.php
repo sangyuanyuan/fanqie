@@ -1,54 +1,9 @@
 <?php
 	include "../frame.php";
 	use_jquery();
+	echo basename(dirname(__FILE__));
 ?>
-
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div>231231231232</div>
-<div style="line-height:0px;">
-<input type="text" id="test" style="height:1px;"></input>
-</div>
 <script>
 	$(function(){
-		$('#test').click(function(e){
-			e.preventDefault();
-			alert('ok');
-		});
-		$(window).load(function(){
-			alert('ok');
-			$('#test')[0].focus();
-			//window.location.href="#anchor";
-		});
 	});
 </script>

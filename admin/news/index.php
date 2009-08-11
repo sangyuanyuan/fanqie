@@ -29,7 +29,7 @@
 		array_push($c, "is_adopt=$is_adopt");
 	}
 	if($title){
-		$record = search_content($title,'smg_news',implode(' and ', $c),20,'priority asc,id desc');
+		$record = search_content($title,'smg_news',implode(' and ', $c),20,'priority asc,id desc',$_REQUEST['full_text']);
 	}else{
 		$news = new table_class('smg_news');
 		$record = $news->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'priority asc,id desc'),20);
@@ -56,12 +56,12 @@
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
 			<td colspan="6">
-				　<a href="news_add.php">添加新闻</a>　搜索　<input id=title type="text" value="<? echo $title;?>"><select id=dept style="width:100px" class="select_new">
+				　<a href="news_add.php">添加新闻</a>　搜索　<input id=title1 type="text" value="<? echo $title;?>"><select id=dept style="width:100px" class="select_new">
 					<option value="">发表部门</option>
 					<?php for($i=0;$i<count($rows_dept);$i++){?>
 					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
 					<? }?>
-				</select><span id="span_category"></span><select id=adopt style="width:100px" class="select_new">
+				</select><span id="span_category"></span><select id=adopt1 class="select_new">
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
@@ -78,7 +78,8 @@
 				}
 				?>
 				</select>
-				<input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
+				<input type="checkbox" name="full_text" id="full_text" value=1 <?php if($_REQUEST['full_text']) echo 'checked="checked"'; ?>><span style="font-size:11px;">全文检索</span>
+				<input type="button" value="搜索" id="search_new1" style="border:1px solid #0000ff; height:21px">
 				<input type="hidden" value="<?php echo $category_id;?>" id="category">
 			</td>
 		</tr>
@@ -154,15 +155,17 @@
 			$('#category').val(id);
 			category_id = $('.category_select:last').val();
 			if(id==-1){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category=&adopt="+$("#adopt").attr('value');				
+				//window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category=&adopt="+$("#adopt").attr('value');				
 			}
 			if(category_id != -1){
-				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
+				//window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
 			}
+			send_search();
 		
 		});
 		$('#news_tag').change(function(){
-			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
+			//window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
+			send_search();
 		});
 		var all_selected = false;
 		$('#select_all').click(function(){
@@ -176,21 +179,25 @@
 				});
 			}
 		});
-		//$("#search_new").click(function(){
-				//window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-		//		send_search();
-		//});
 		
-		//$(".select_new").change(function(){
-		//		window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-		//});		
-		//function send_search(){
-		//	window.location.href="?title="+encodeURI($("#title").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value');
-		//}
-		//$('#title').keydown(function(e){
-		//	if(e.keyCode == 13){
-		//		send_search();
-		//	}
-		//});
+		$('#search_new1').click(function(){
+			send_search();
+		});
+		$('#adopt1').change(function(){
+			send_search();
+		});
+		$('#title1').keypress(function(e){
+			if(e.keyCode == 13){
+				send_search();
+			}
+		});
+		
+		function send_search(){
+			var href ="?title="+$("#title1").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt1").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
+			if($('#full_text').attr('checked')){
+				href = href + "&full_text=1";
+			}
+			window.location.href = href;
+		}	
 	});
 </script>
