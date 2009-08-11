@@ -28,18 +28,18 @@ $success=0;
 			$result->state =0;
 			$result->createtime=date('Y-m-d');
 			$result->save();
-			$strsql='select * from smg_user where loginname="'.$_POST['updatepwd']['userid'].'"';
+			$strsql='select * from smg_user where name="'.$_POST['updatepwd']['userid'].'"';
 			if($db->query($strsql))
 				$id=$db->field_by_name('id');
 			$strsql='update smg_user set password="'.$_POST['updatepwd']['admin_password1'].'" where id='.$id;
 			if($db->execute($strsql))
 				alert("密码更新成功！");
-			//redirect('changepwd.php');
+			redirect('changepwd.php');
 		}
 		else 
 		{
 			alert("更新密码失败！");
-			//redirect('changepwd.php');
+			redirect('changepwd.php');
 		}
 		
 	}
@@ -54,18 +54,20 @@ $success=0;
 			$result->state =1;
 			$result->createtime=date('Y-m-d');
 			$result->save();
-			$strsql='select * from smg_user where loginname="'.$_POST['updatepwd']['userid'].'"';
+			$strsql='select * from smg_user where name="'.$_POST['updatepwd']['userid'].'"';
 			if($db->query($strsql))
+			{
 				$id=$db->field_by_name('id');
+			}
 			$strsql='update smg_user set password="Password@1" where id='.$id;
 			if($db->execute($strsql))
 				alert("密码重置成功！");
-			//redirect('resetpwd.php');
+			redirect('resetpwd.php');
 		}
 		else 
 		{
 			alert("更新密码失败！");
-			//redirect('resetpwd.php');
+			redirect('resetpwd.php');
 		}
 	}
 //redirect('/');

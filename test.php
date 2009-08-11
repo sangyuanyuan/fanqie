@@ -16,6 +16,8 @@
 	  echo urlencode(iconv('utf-8','gbk','常用表格'));
 	  echo ('<br>');
 	  echo urlencode(iconv('utf-8','gbk','常用申请表'));
+	  echo ('<br>');
+	  echo urlencode(iconv('utf-8','gbk','常用表格下载'));
   ?>
 
 </head>
