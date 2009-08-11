@@ -13,8 +13,13 @@
 		css_include_tag('index','top','bottom');
 		use_jquery();
 	  js_include_once_tag('index');
+	  echo urlencode(iconv('utf-8','gbk','常用表格'));
+	  echo ('<br>');
+	  echo urlencode(iconv('utf-8','gbk','常用申请表'));
+	  echo ('<br>');
+	  echo urlencode(iconv('utf-8','gbk','常用表格下载'));
   ?>
-	
+
 </head>
 
 <body style="line-height:20px;">
