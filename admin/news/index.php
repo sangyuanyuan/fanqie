@@ -61,7 +61,7 @@
 					<?php for($i=0;$i<count($rows_dept);$i++){?>
 					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
 					<? }?>
-				</select><span id="span_category"></span><select id=adopt class="select_new">
+				</select><span id="span_category"></span><select id=adopt1 class="select_new">
 					<option value="">发布状况</option>
 					<option value="1" <? if($_REQUEST['adopt']=="1"){?>selected="selected"<? }?>>已发布</option>
 					<option value="0" <? if($_REQUEST['adopt']=="0"){?>selected="selected"<? }?>>未发布</option>
@@ -183,6 +183,9 @@
 		$('#search_new1').click(function(){
 			send_search();
 		});
+		$('#adopt1').change(function(){
+			send_search();
+		});
 		$('#title1').keypress(function(e){
 			if(e.keyCode == 13){
 				send_search();
@@ -190,7 +193,7 @@
 		});
 		
 		function send_search(){
-			var href ="?title="+$("#title1").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
+			var href ="?title="+$("#title1").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt1").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
 			if($('#full_text').attr('checked')){
 				href = href + "&full_text=1";
 			}
