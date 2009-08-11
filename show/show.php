@@ -158,7 +158,7 @@
 		  	<div id="image">
 		  		<div id=image_border>
 				  	<a href="<?php echo $image->src;?>" >
-				  		<img border=0 src="<?php echo $image->src?>" style="margin-bottom:-2px; padding:0;" width=670>
+				  		<img border=0 src="<?php echo $image->src?>" style=" padding:0; float:left; display:inline" width=670>
 					</a>
 				</div>
 			</div>
