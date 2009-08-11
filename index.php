@@ -653,7 +653,7 @@ total("首页","other");
   			<div id=box1>
 	  			<a href="/show/show.php?id=<?php echo $record_show[0]->img_id?>" target=_blank><img src="<?php echo $record_show[0]->src ?>" border=0></a>
   				<ul>
-  					<?php for($i=1;$i<6;$i++){?>
+  					<?php for($i=0;$i<5;$i++){?>
   					<li><a href="/show/show.php?id=<?php echo $record_show[$i]->img_id?>" target=_blank><?php echo strip_tags($record_show[$i]->title)?></a></li>
   					<? }?>
    				</ul>
