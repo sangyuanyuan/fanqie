@@ -34,7 +34,7 @@
 	   		<input type="text" name="key"></input>
 	   		<button id=button1></button>
 	   		<button id=button2></button>
-			<input type="hidden" name="search_type" id="search_type_hidden" value="smg_news">
+			<input type="hidden" name="search_type" id="search_type_hidden" value="smg_news" style="display:none">
 		</form>
  			<?php
  				$sql = 'select search_key,count(search_key) as icount from smg_search_keys where TO_DAYS(NOW())-TO_DAYS(created_at) <= 30 group by search_key order by icount desc limit 6';
