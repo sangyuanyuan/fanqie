@@ -7,8 +7,9 @@
 </head>
 <? 
 	require_once("../../frame.php");
-	js_include_tag("defalut","admin.js");
-	css_include_tag('admin');
+	js_include_tag("total");
+	css_include_tag('login');
+	validate_form('change');
 	$cookie= (isset($_COOKIE['smg_userid'])) ? $_COOKIE['smg_userid'] : 0;
 	if($cookie==0)
 	{
@@ -16,18 +17,21 @@
 		redirect("/login/");
 	}
 ?>
+<script>
+	total("修改密码","other");	
+</script>
 <body>
-<div id=admin_body1>
+<div id=main>
 		<div id=login  style="background:none">
 			<div id=title>SMG修改密码    </div>
 			<span style="color:#FF0000"> <? echo $_REQUEST['errorstr'];?></span>
 			<div id=box style="border:1px solid #0066FF; background:#CBEBFA">
-	<form name="change" action="updatepwd.post.php">
-	<div id=name style="margin-top:15px;" >工　　号：　<input type="text" name="userid" id="updatepwd[userid]" style="width:140px; height:17px;"></div>
-   <div id=pwd >原密　码：　<input type="password" id="admin_password" name="updatepwd[admin_password]" style="width:140px; height:17px;">
+	<form name="change" method="post" action="updatepwd.post.php">
+	<div id=name style="margin-top:15px;" >工　　号：　<input type="text" name="userid" id="updatepwd[userid]" style="width:140px; height:17px;" class="required"></div>
+   <div id=pwd >原密　码：　<input type="password" id="admin_password" name="updatepwd[admin_password]" style="width:140px; height:17px;" class="required">
    </div>
-   <div id=pwd>新密　码：　<input type="password" id="admin_password1" name="updatepwd[admin_password1]" style="width:140px; height:17px;"></div>
-   <div id=pwd>重复密码：　<input type="password" id="repwd" name="repwd" style="width:140px; height:17px;"></div>
+   <div id=pwd>新密　码：　<input type="password" id="admin_password1" name="updatepwd[admin_password1]" style="width:140px; height:17px;" class="required"></div>
+   <div id=pwd>重复密码：　<input type="password" id="repwd" name="repwd" style="width:140px; height:17px;" class=”required” equalTo=”#admin_password1”></div>
    <div id=btn><button id="submit">提交</button></div>
    <input type="hidden" name="updatepwd[username]" id="username" value="<?php echo $cookie;?>">
    <input type="hidden" id="subtype" name="updatepwd[subtype]" value="updatepwd">

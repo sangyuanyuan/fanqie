@@ -1,5 +1,5 @@
 <?
-require_once('../framework/framework.php');
+require_once('../../frame.php');
  function reset_password($userid, $oldpwd, $newpwd, $type, $operatorid=null){
   	$operatorid = is_null($operatorid) ? $userid : $operatorid;
   	$client = new SoapClient("http://172.27.203.49/ssov1.0/changepassword.asmx?WSDL");
@@ -8,8 +8,8 @@ require_once('../framework/framework.php');
 	return  $result->Result;
   }
  
-$result=new smg_updatepwd();
-$db = get_object('db');
+$result=new table_class('smg_updatepwd');
+$db = get_db();
 $success=0;
 	if($_POST['updatepwd']['subtype']=="updatepwd")
 	{
@@ -33,10 +33,12 @@ $success=0;
 			$strsql='update smg_user set password="'.$_POST['updatepwd']['admin_password1'].'" where id='.$id;
 			if($db->execute($strsql))
 				alert("密码更新成功！");
+			//redirect('changepwd.php');
 		}
 		else 
 		{
 			alert("更新密码失败！");
+			//redirect('changepwd.php');
 		}
 		
 	}
@@ -57,14 +59,13 @@ $success=0;
 			$strsql='update smg_user set password="Password@1" where id='.$id;
 			if($db->execute($strsql))
 				alert("密码重置成功！");
+			//redirect('resetpwd.php');
 		}
 		else 
 		{
 			alert("更新密码失败！");
+			//redirect('resetpwd.php');
 		}
-	}	
-close_db();
-redirect('/login/');
-
-exit;
+	}
+//redirect('/');
 ?>
