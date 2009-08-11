@@ -13,7 +13,7 @@
 	if($cookie==0)
 	{
 		alert("请登录以后再进入重置密码页面!");
-		redirect("/admin/");
+		redirect("/login/");
 	}
 ?>
 <body>
@@ -22,15 +22,15 @@
 			<div id=title>SMG修改密码    </div>
 			<span style="color:#FF0000"> <? echo $_REQUEST['errorstr'];?></span>
 			<div id=box style="border:1px solid #0066FF; background:#CBEBFA">
-	<form name="change" action="/admin/updatepwd.post.php">
-	<div id=name style="margin-top:15px;" >工　　号：　<input type="text" name="loginame" id="loginname" style="width:140px; height:17px;"></div>
-   <div id=pwd >原密　码：　<input type="password" id="oldpwd" name="oldpwd" style="width:140px; height:17px;">
+	<form name="change" action="updatepwd.post.php">
+	<div id=name style="margin-top:15px;" >工　　号：　<input type="text" name="userid" id="updatepwd[userid]" style="width:140px; height:17px;"></div>
+   <div id=pwd >原密　码：　<input type="password" id="admin_password" name="updatepwd[admin_password]" style="width:140px; height:17px;">
    </div>
-   <div id=pwd>新密　码：　<input type="password" id="newpwd" name="newpwd" style="width:140px; height:17px;"></div>
-   <div id=pwd>重复密码：　<input type="password" id="renewpwd" name="renewpwd" style="width:140px; height:17px;"></div>
+   <div id=pwd>新密　码：　<input type="password" id="admin_password1" name="updatepwd[admin_password1]" style="width:140px; height:17px;"></div>
+   <div id=pwd>重复密码：　<input type="password" id="repwd" name="repwd" style="width:140px; height:17px;"></div>
    <div id=btn><button id="submit">提交</button></div>
-   <input type="hidden" name="username" id="username" value="<?php echo $cookie;?>">
-   <input type="hidden" id="subtype" name="subtype" value="updatepwd">
+   <input type="hidden" name="updatepwd[username]" id="username" value="<?php echo $cookie;?>">
+   <input type="hidden" id="subtype" name="updatepwd[subtype]" value="updatepwd">
 	<div id=zhu>“番茄网”密码修改指南：<br>· 工号×××××××××。<br>· 默认口令为“Password@1”（P大写）</div>	
 	</div>
 			

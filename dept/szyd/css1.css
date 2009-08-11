@@ -9,9 +9,9 @@ height:100%;}
 
 .main{
  width:971px;
+ height:747px;
  margin-left:auto;
  margin-right:auto;
-
 }
 
 .top{
@@ -22,49 +22,28 @@ height:100%;}
 
 .nav{
 width:971px;
-height:64px;
-background:#E1F0F7;
-}
+height:64px;}
 
 .submain{
 width:971px;
-background:url(pic/container_bg.jpg) repeat-x;
-margin:auto;
-float:left;
-display:inline;
+background:#029EC6;
 }
 
 .sub_l{
 float:left;
-display:inline;
+height:449px;
 width:172px;
-background:url(pic/nav_hr.jpg) repeat-y right top;
-margin-top:15px;
-}
+background:#029EC6;}
 
 .sub_right{
-margin-right:20px;
-float:right;
-display:inline;
-width:760px;
-margin-top:20px;
-}
-.sub_right a{ 
- font-family:Arial, Helvetica, sans-serif;
- font-size:14px;
- color:#000;
-			  line-height:130%;}
+margin-left:172px;
+width:790px;
+background:#029EC6;}
 
 .siteinfo{
-margin-top:1px;
-margin-left:auto;
-margin-right:auto;
+height:73px;
 width:971px;
-height:108px;
-background:url(pic/siteinfo.png);
-float:left;
-display:inline;
-}
+background:url(pic2/siteinfo.png) no-repeat;}
 
 .btn{
 width:134px;
@@ -72,7 +51,7 @@ height:28px;
 display:block;
 margin-left:auto;
 margin-right:auto;
-margin-top:5px;}
+margin-top:50px;}
 
 .btn1{
 width:134px;
