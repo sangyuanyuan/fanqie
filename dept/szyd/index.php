@@ -86,6 +86,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
       							?>
       							<div class="right_content">・<a target="_blank" href="news.php?id=<? echo $newslist[$i]->id;?>" title="<?php echo $newslist[$i]->title;?>" ><?php echo $newslist[$i]->short_title;?></a></div>
       							<?php }?>
+						<div class="more"><a href="newslist.php?id=<?php echo $newslist[0]->dept_category_id; ?>">More</a></div>
                  	</div>
             	  </div>
                 <div class="share" >
