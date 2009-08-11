@@ -29,10 +29,10 @@
 		array_push($c, "is_adopt=$is_adopt");
 	}
 	if($title){
-		$record = search_content($title,'smg_news',implode(' and ', $c),20,'priority asc,id desc',$_REQUEST['full_text']);
+		$record = search_content($title,'smg_news',implode(' and ', $c),20,'priority asc,created_at desc',$_REQUEST['full_text']);
 	}else{
 		$news = new table_class('smg_news');
-		$record = $news->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'priority asc,id desc'),20);
+		$record = $news->paginate('all',array('conditions' => implode(' and ', $c),'order' => 'priority asc,created_at desc'),20);
 	}
 	
 ?>
