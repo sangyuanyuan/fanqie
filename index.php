@@ -163,7 +163,7 @@ total("首页","other");
   		<div id=t_l_m>
  				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_subject[0]->cid?>" target=_blank>专题新闻</a></div>
  				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
- 				<div class=list_tlm id=list_tlm1>
+ 				<div class=list_tlm id=list_tlm1 >
  					<ul>
  						<?php for($i=0; $i<count($record_subject); $i++){?>
  						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_subject[$i]->platform ?>/news/news.php?id=<?php echo $record_subject[$i]->id ?>" target=_blank><?php echo $record_subject[$i]->short_title ?></a></li>
