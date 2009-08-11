@@ -1,0 +1,153 @@
+TD {
+	FONT-SIZE: 12px;
+	FONT-FAMILY: Tahoma;
+	line-height: 120%;
+}
+.title {
+	FONT-WEIGHT: bolder; FONT-SIZE: 14px
+}
+.comm {
+	FONT-SIZE: 24px
+}
+.button {
+	FONT-SIZE: 10px
+}
+.copyriht {
+	FONT-SIZE: 9px; FONT-FAMILY: "Tahoma"
+}
+A:hover {
+	COLOR: #ff0000;
+	text-decoration: underline;
+}
+BODY {
+	FONT-SIZE: 12px; FONT-FAMILY: Tahoma}
+.bg {
+	FONT-SIZE: 12px; BACKGROUND-COLOR: #f6f6f6
+}
+INPUT {
+	FONT-SIZE: 9pt;
+		
+}
+.br {
+	LINE-HEIGHT: 80%
+}
+.toma {
+	FONT-SIZE: 9px; FONT-FAMILY: "Tahoma"
+}
+.table-line {
+	BORDER-COLLAPSE: collapse
+}
+.td-title-color {
+	FONT-WEIGHT: bold; BACKGROUND-COLOR: #e7e7e7
+}
+.td-body-color {
+	BACKGROUND-COLOR: #f7f7f7
+}
+.pad-left {
+	PADDING-LEFT: 20px
+}
+.px12 {
+	FONT-SIZE: 12px
+}
+.menu-td-bargain {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px
+}
+.td-border-all {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; BORDER-LEFT: 1px solid; BORDER-BOTTOM: 1px solid
+}
+A.aa:link {
+	COLOR: #000000;
+	TEXT-DECORATION: none;
+	padding: 5px 8px;
+}
+A.aa:visited {
+	COLOR: #000000;
+	TEXT-DECORATION: none;
+	padding: 5px 8px;
+
+}
+A.aa:hover {
+	COLOR: #FF0000;
+	TEXT-DECORATION: none;
+	padding: 5px 8px;
+	border: 1px #6CBDD5;
+}
+.td-menu {
+	BORDER-RIGHT: #848284 2px solid; BORDER-TOP: #d6d3ce 2px solid; BORDER-LEFT: #d6d3ce 2px solid; BORDER-BOTTOM: #848284 2px solid
+}
+.lh {
+	LINE-HEIGHT: 160%
+}
+.td-menu-color {
+	background-color: #D5DEC7;
+	padding-left: 20px;
+
+}
+.td1 {
+	line-height: 180%;
+}
+a {
+	color: #000000;
+	text-decoration: none;
+}
+.ad_list {
+	background-color: #FFFFFF;
+	border: 1px solid #FF0000;
+	margin: 0px;
+	padding: 2px;
+}
+.blueboard {
+	background-color: #FBFBFF;
+	border: 1px solid #3EA3F4;
+}
+.logo {
+	height: 56px;
+	width: 250px;
+	background-attachment: fixed;
+	background-image: url(logo.jpg);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+.titlebigs {
+	font-weight: bold;
+	color: #000000;
+	font-size: 14px;
+	height:25px;
+}
+.fontred {
+	color: #FF0000;
+}
+.logintext
+{
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Tahoma;
+	FONT-SIZE: 11px;
+	BORDER-STYLE: solid;
+	BORDER-COLOR: #888888;
+	BORDER-WIDTH: 1px;
+	WIDTH: 123px;
+	PADDING: 3px 2px 2px 2px;
+	MARGIN: 0px;
+	BACKGROUND: URL(../images/icon_user.gif) no-repeat;
+	BACKGROUND-POSITION: 1px 1px;
+	BACKGROUND-COLOR: #FFFFFF;
+	PADDING-LEFT: 18px;
+	VERTICAL-ALIGN: middle;
+}
+.loginpass
+{
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Tahoma;
+	FONT-SIZE: 11px;
+	BORDER-STYLE: solid;
+	BORDER-COLOR: #888888;
+	BORDER-WIDTH: 1px;
+	WIDTH: 123px;
+	PADDING: 3px 2px 2px 2px;
+	MARGIN: 0px;
+	BACKGROUND: URL(../images/icon_lock.gif) no-repeat;
+	BACKGROUND-POSITION: 1px 1px;
+	BACKGROUND-COLOR: #FFFFFF;
+	PADDING-LEFT: 18px;
+	VERTICAL-ALIGN: middle;
+}

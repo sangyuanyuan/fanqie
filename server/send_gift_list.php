@@ -44,7 +44,7 @@
 					<div class=giver><?php echo $records[$i]->sender; ?></div>
 					赠送 <b><?php echo $nick_name;?></b>&nbsp;<font color=#FF0000 style="font-weight:bolder;">生日礼物</font>
 				</div>
-				<div class=picture  style="float:left;display:inline"><a href="<?php echo $records[$i]->gift_src;?>" target=_blank><img src="<?php echo $records[$i]->gift_src;?>" border=0 width=55 height=55></a></div>
+				<div class=picture  style="float:left;display:inline"><a href="<?php echo $records[$i]->gift_src;?>"><img src="<?php echo $records[$i]->gift_src;?>" border=0 width=55 height=55></a></div>
 				<div class=info  style="float:left;display:inline">一份</div>
 				<div class=message style="float:left;display:inline"><?php echo $records[$i]->message; ?>　　　　　<?php echo substr($records[$i]->created_at, 0, 16); ?>
 				</div>
