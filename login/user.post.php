@@ -23,11 +23,14 @@ if($_POST['user_type']=="login")
 		}else{
 			//login sucessful
 			$user = new table_class('smg_user');
+			if($user->find_by_name($login_text)){
+				$user = $user[0];
+			};
 			$user->name = $login_text;
 			$user->password = $password_text;
-			$user->role_name = 'member';
+			#$user->role_name = 'member';
 			$user->nick_name = $login_text;
-			$user->register_type = 'nick_name';
+			#$user->register_type = 'nick_name';
 			$user->save();
 			@SetCookie('smg_username',$login_text,$y2k,'/');
 			@SetCookie('smg_userid','',$y2k,'/');

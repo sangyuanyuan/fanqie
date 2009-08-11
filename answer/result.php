@@ -10,7 +10,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>>SMG-番茄网-服务-结果</title>
+	<title>>SMG-番茄网-服务-答题结果页</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','answer','answer_right');
 		js_include_tag('total');

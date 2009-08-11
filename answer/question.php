@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG-番茄网-服务-发起答题</title>
+	<title>SMG-番茄网-服务-答题发起</title>
 	<?php 
 		css_include_tag('top.css','bottom.css','answer.css','answer_right.css');
 		use_jquery();
