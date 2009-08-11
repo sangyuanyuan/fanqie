@@ -171,7 +171,7 @@
 			<?php 
 				$sql = 'select t1.id,t1.description,t1.click_count,t1.title,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where month(t1.created_at)=month("'.date("Y-m-d").'") and year(t1.created_at)=year("'.date("Y-m-d").'") and is_adopt=1 and t2.platform="show" order by t1.click_count desc limit 5;';
 				$wxwxph=$db->query($sql);
-				$sql = 'SELECT t1.publisher,t1.dept_id,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.publisher!="admin" and t1.is_adopt=1 and t2.platform="show" group by t1.publisher limit 5';
+				$sql = 'SELECT t1.publisher,t1.dept_id,count(t1.title) as num FROM smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.publisher!="" and t1.publisher!="admin" and t1.is_adopt=1 and t2.platform="show" group by t1.publisher order by num desc limit 5';
 				$sy=$db->query($sql);
 			?>
 			<div class=l_title>
