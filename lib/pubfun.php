@@ -216,10 +216,9 @@ function paginate($url="",$ajax_dom=null,$page_var="page")
   当前第<select name="pageselect" id="pageselect" onChange="jumppage('<?php echo $url ."&" .$page_var ."="; ?>',this.options[this.options.selectedIndex].value);">
 	<?php	
 	//产生所有页面链接
-	for($i=1;$i<=$pagecount;$i++)
-	{?>
-		<option <?php if($pageindex== $i) echo 'selected="selected"';?> value="<?php echo $i;?>"><?php echo $i;?></option>
-	 <?php	
+	for($i=1;$i<=$pagecount;$i++){ ?>
+		<option <?php if($pageindex== $i) echo 'selected="selected"';?> value="<?php echo $i;?>" ><?php echo $i;?></option>
+		<?php	
 	}
 	?>
 	</select>页　共<?php echo $pagecount;?>页
@@ -396,9 +395,10 @@ function copy_dir($source, $destination, $child=1){
 	return true; 
 } 
 
-function search_content($key,$table_name='smg_news',$conditions=null,$page_count = 10, $order=''){
+function search_content($key,$table_name='smg_news',$conditions=null,$page_count = 10, $order='',$full_text=false){
 	$db = get_db();
 	$key = str_replace('　', ' ', $key);
+	$key = str_replace(',', ' ', $key);
 	$keys = explode(' ',$key);
 	if($keys){
 		$now = now();
@@ -413,11 +413,13 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	foreach ($keys as $v) {
 		array_push($c, "title like '%$v%'");
 		array_push($c, "keywords like '%$v%'");
-		array_push($c, "description like '%$v%'");
+	 	if($full_text){array_push($c, "description like '%$v%'");}
 		if($table_name == 'smg_news'){
-			array_push($c, "tags like '%$v%'");
 			array_push($c, "short_title like '%$v%'");
-			array_push($c, "content like '%$v%'");
+			array_push($c, "tags like '%$v%'");	
+			if($full_text){						
+				array_push($c, "content like '%$v%'");
+			}			
 		}else if($table_name == 'smg_video'){
 			array_push($c, "tags like '%$v%'");
 		}

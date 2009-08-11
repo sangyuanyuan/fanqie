@@ -60,6 +60,7 @@
 				<option value="-1">请选择</option>
 				<option value="1"<?php if($_REQUEST['filter_checked']) echo ' selected="selected"';?>>已选择子头条</option>
 			</select>
+			<input type="checkbox" name="full_text" id="full_text" value=1 <?php if($_REQUEST['full_text']) echo 'checked="checked"'; ?>><span style="font-size:11px;">全文检索</span>
 			<input type="button" value="搜索" id="subject_search" style="border:1px solid #0000ff; height:21px">
 			</td>
 		</tr>
@@ -69,7 +70,7 @@
 		<?php
 			$subject = new table_class("smg_news");
 
-			$items = search_content($key,'smg_news',$conditions,10);
+			$items = search_content($key,'smg_news',$conditions,10,'priority asc,id desc',$_REQUEST['full_text']);
 			$count_record = count($items);			
 			//--------------------		
 			for($i=0;$i<$count_record;$i++)	{
@@ -158,8 +159,10 @@
 					url += '&filter_checked=' + sub_headlines.join(',');
 				}else{
 					url += '&filter_checked=0,0';
-				}
-				
+				}				
+			}
+			if($('#full_text').attr('checked')){
+				url = url + "&full_text=1";
 			}
 			$('#result_box').load(url,{'show_div':'0'});			
 		}
