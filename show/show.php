@@ -134,9 +134,9 @@
 				$c = array();
 				for($i=0;$i<count($records);$i++){
 					$keywords = explode(',', $records[$i]->keywords);
-					if(count($keywords)==0)$keywords = explode('，', $records[$i]->keywords);
-					if(count($keywords)==0)$keywords = explode('　', $records[$i]->keywords);
-					if(count($keywords)==0)$keywords = explode(' ', $records[$i]->keywords);
+					if(count($keywords)==1)$keywords = explode('，', $records[$i]->keywords);
+					if(count($keywords)==1)$keywords = explode('　', $records[$i]->keywords);
+					if(count($keywords)==1)$keywords = explode(' ', $records[$i]->keywords);
 					for($j=0;$j<count($keywords);$j++){
 						if(!in_array($keywords[$j],$c))array_push($c,$keywords[$j]);
 					}

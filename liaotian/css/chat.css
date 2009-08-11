@@ -1,0 +1,106 @@
+#header{
+		background-color: #BBE0EB;
+		border: 1px solid #6CBDD5;
+		FONT-FAMILY: "Tahoma";
+		height:50px;
+		font-weight: bold
+		font-size: 14px;
+		padding: 10px 400px;
+}
+#body{
+		background-color: #FFFFFF;
+		border: 0px solid #0066CC;
+		FONT-FAMILY: "Tahoma";
+		color:#99FFFF;
+		height:450px;
+}
+#left{
+		background-color: #009999;
+		border: 1px solid #009999;
+		height:450px;
+		width:200px;
+		position : absolute ; top : 65px ; 
+		right : 11px;
+		
+}
+#user_info{
+		background-color: #336699;
+		border: 1px solid #336699;
+		height:150px;
+		width:201px;
+		position : absolute ; top : 300px ; 
+		right : -1px;
+}
+
+#foot{
+		background-color: #BBE0EB;
+		border: 1px solid #009999;
+		height:50px;
+		}
+#copyriht {
+	
+	FONT-SIZE: 9px; FONT-FAMILY: "Tahoma";
+	text-align: center;
+	)
+#font{
+		font-weight: bolder;
+		font-size: 14px;
+}
+ul,li{
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+.title{
+		font-size: 14px;
+		color:#990000;
+}
+
+#Screen {
+    position:absolute;
+    z-index: 9998;
+    top: 0px;
+    left: 0px;
+    background: #000000;
+    filter: alpha(Opacity=50);
+	display:none;
+}
+#Message {
+    position: absolute;
+    z-index: 9999;
+	margin-left:340px;
+	margin-top:180px; 
+	width:300px;
+	display:none;
+    
+}
+#on_line{
+			color:#0033FF;
+}
+
+u{
+	COLOR: #000000;
+	TEXT-DECORATION: none;
+	padding: 5px 8px;
+}
+#mess_box{
+		font-size: 14px;
+		font-weight: bold;
+		color: #FF6666;
+	}
+
+.s14{font-size: 16px;}
+.fcolor{		
+		font-size: 14px;
+		font-weight: bold;
+		color: #FF6666;}
+.info{color: #c0c0c0;}
+input{border: 1px #4260BF solid;}
+select{border: 1px #4260BF solid;}
+input.button{font-weight: bold;	background-color: white;color: #4260BF;}
+a{	
+	COLOR: #ff0000;
+	text-decoration: underline;}
+
+		
+		

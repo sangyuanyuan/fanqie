@@ -10,7 +10,7 @@
 <div id=nav1>
 	<div id=box>	
    	<a href="/dx/dx.php" target="_blank"><img src="/images/top/sms.jpg" border=0></a>
-		<div id=context><a href="http://172.27.203.88/emailfront/emailfront.htm" target="_blank">企业邮箱</a> <a href="#">新节目</a> <a href="#">直播</a> <a href="/contact/contact.php" target="_blank">联系我们</a> <span onclick="javascript:document.getElementById('toolcontent').style.display='inline'">常用办公软件</span></div>		
+		<div id=context><a href="/zone/" target="_blank" style="color:#ff0000;font-weight:bold">番茄个性版</a>　　<a href="http://172.27.203.88/emailfront/emailfront.htm" target="_blank">企业邮箱</a> <a href="#">新节目</a> <a href="#">直播</a> <a href="/contact/contact.php" target="_blank">联系我们</a> <span onclick="javascript:document.getElementById('toolcontent').style.display='inline'">常用办公软件</span></div>		
 		<a id=home href="/home/" target="_blank"><img src="/images/top/jiayuan.gif" border=0></a>
 	</div>	
 </div>
