@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en" />
+<meta name="GENERATOR" content="Zend Studio" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="./css/chat.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="./javascript/chat.js"></script>
+<title>THChat聊天室</title>
+</head>
+<body onload="$();getmess();" onmouseover="self.status='Chat';return true" bgcolor="#FFFFFF" text="#000000" link="#FF9966" vlink="#FF9966" alink="#FFCC99">
+<div id="header">THChat聊天室</div>
+<div id="body">
+<div id="font"><ul><li><div id="mess_box" align="left" style="width:98%; height:360px; overflow:auto;"><center> <br>服务器连接中......</center></div></li></ul></div>
+<div align="center" id="left"><ul><li>--on_line--</li></ul><div id="on_line"></div>
+<div id="user_info">加载登陆信息........</div>
+</div>
+</div>
+<div id="foot">
+<div>
+<span class="fcolor">我　　对:
+      <input name="mtowho" type="text" class="fcolor" id="mtowho" value="所有人" size="10" readonly="readonly"/>
+      <select name="mfont" id="mfont" class="fcolor">
+		  <option value="0" selected="selected">一般</option>
+		  <option value="1">粗体</option>
+		  <option value="2">斜体</option>
+     </select>
+     <select name="mfcolor" id="mfcolor" size="1" class="fcolor" style="width:60px;">
+      <option value="#FFFFFF" style="background-color:#FFFFFF"></option>
+      <option value="#000000" style="background-color:#000000" selected="selected"></option>
+      <option value="#0000FF" style="background-color:#0000FF"></option>
+      <option value="#00FF00" style="background-color:#00FF00"></option>
+      <option value="#FF0000" style="background-color:#FF0000"></option>
+      <option value="#FF00FF" style="background-color:#FF00FF"></option>
+      <option value="#9900FF" style="background-color:#9900FF"></option>
+      <option value="#FFFF00" style="background-color:#FFFF00"></option>
+      <option value="#330000" style="background-color:#330000"></option>
+      <option value="#6600FF" style="background-color:#6600FF"></option>
+      <option value="#663333" style="background-color:#663333"></option>
+      <option value="#CCCCCC" style="background-color:#CCCCCC"></option>
+    </select>
+    <select name="elist" id="elist" class="fcolor">
+      <option selected="selected" value="0.gif">不用表情</option>
+      <option value="14.gif">微笑</option>
+      <option value="1.gif">撇嘴</option>
+      <option value="2.gif">色</option>
+      <option value="3.gif">PHP</option>
+      <option value="4.gif">得意</option>
+      <option value="5.gif">流泪</option>
+      <option value="6.gif">害羞</option>
+      <option value="7.gif">闭嘴</option>
+      <option value="8.gif">睡</option>
+      <option value="9.gif">大哭</option>
+      <option value="10.gif">尴尬</option>
+      <option value="11.gif">发怒</option>
+      <option value="12.gif">调皮</option>
+      <option value="13.gif">呲牙</option>
+      <option value="0.gif">惊讶</option>
+    </select>
+</span>
+</div>
+<span class="fcolor">发送消息:</span>
+<input id="mess" type="text" size="75" maxlength="90" onkeydown="if(event.keyCode==13 ) SendMess();"/>
+<input type="button" name="submit" value="Enter" class="button" onclick="SendMess();" />
+<span class="fcolor"><a href='./LoginOut.php?do=out'>退出</a></span>
+</div>
+</div>
+<div id='copyriht'>Copyright www.lampuser.com</div>
+</body>
+</html>
