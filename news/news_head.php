@@ -289,7 +289,7 @@ require_once('../inc/top.inc.html');?>
 		<div class=r_b1>
 			<div class=title>小编加精</div>
 			<?php 
-			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n inner join smg_category c on c.id=n.category_id and n.is_adopt=1 and n.id<>".$id." and n.tags='小编加精' order by n.priority asc,n.created_at desc limit 10";
+			 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n left join smg_category c on c.id=n.category_id where n.is_adopt=1 and n.id<>".$id." and n.tags='小编加精' order by n.priority asc,n.created_at desc limit 10";
 			 $xbjj=$db->query($sql);
 			 for($i=0;$i<count($xbjj);$i++){
 			 ?>
