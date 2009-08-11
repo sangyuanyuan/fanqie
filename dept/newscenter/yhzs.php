@@ -1,3 +1,6 @@
+<?php
+	 require_once('../../frame.php');
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -5,15 +8,21 @@
 <link href="css/yhzs.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script language="javascript" src="/js/smg.js"></script>
+<?php
+	use_jquery();
+	js_include_tag('dept_pub');
+	js_include_once_tag('total');
+?>
 </head>
+<script>
+	total("新闻中心","news");	
+</script>
 <body>
 <div id="center">
 	<div id="bg">
 	<?php 
-	require_once('../inc/department.inc.php');
 	include("inc/topbar.inc.php");
 	include("inc/leftbar.inc.php");
-	$newslist=getnewslist();
 	?>
 	<div id="content">
 		<div class="titlebox">

@@ -294,7 +294,7 @@ function AC_GetArgs(args, ext, srcParamName, classid, mimeType){
 function goplay(url)
 {
  var n="\n";
- var ss='<html><head><title>æ’­æ”¾çª—å£</title></head><body topmargin="0" leftmargin="0">'+n
+ var ss='<html><head><title>²¥·Å´°¿Ú</title></head><body topmargin="0" leftmargin="0">'+n
 +'<object classid="clsid:6BF52A52-394A-11D3-B153-00C04F79FAA6" id="WindowsMediaPlayer1" width="100%"height="100%">'+n
 +' <param name="URL" value="'+url+'">'+n
 +' <param name="rate" value="1">'+n

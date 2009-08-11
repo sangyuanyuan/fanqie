@@ -56,24 +56,26 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 </noscript>
   </div>
     <div class="submain">
-    		<div class="sub_l">
-        
+    	<div class="sub_l">
+        	<div class="btn"><a href="newslist2.php?id=132" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image1','','pic2/btn_ly_on_03.jpg',1)"><img src="pic2/btn_ly_03.jpg" name="Image1" width="134" height="28" border="0" id="Image1" /></a></div>
+        	<div class="btn1"><a href="photolist.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image2','','pic2/btn_ly_on_06.jpg',1)"><img src="pic2/btn_ly_06.jpg" name="Image2" width="134" height="28" border="0" id="Image2" /></a></div>
+        	<div class="btn1"><a href="videolist.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','pic2/btn_ly_on_08.jpg',1)"><img src="pic2/btn_ly_08.jpg" name="Image3" width="134" height="28" border="0" id="Image3" /></a></div>
         </div>
         <div class="sub_right">
-        	<div style="width:750px; margin-top:10px; font-size:14px; padding-left:10px; border-bottom:1px solid #ffffff; color:#ffffff; margin-left:10px; float:left; display:inline;">相册</div>
+        	<div style="width:750px; margin-top:10px; font-size:14px; padding-left:10px; border-bottom:1px solid #000000; color:#000000; margin-left:10px; float:left; display:inline;">相册</div>
 	        	<?php $photolist = show_content('smg_images','picture','上海文广数字移动传播有限公司','影音相册','4');
         	  	  for($i=0;$i<count($photolist);$i++) {
 			    ?>
-	        	<div style="width:146px; height:150px; margin:15px; margin-top:30px; margin-right:30px; color:#ffffff; text-align:center; float:left; display:inline">
-					<img width=146 height=128 src="<?php echo $photolist[$i]->src;?>">
+	        	<div style="width:146px; height:150px; margin:15px; margin-top:30px; margin-right:30px; color:#000000; text-align:center; float:left; display:inline">
+					<img width="146" height="128" src="<?php echo $photolist[$i]->src;?>">
 					<div style="width:120px; font-size:15px; text-align:center"><?php echo $photolist[$i]->title;?></div>
 				</div>
 	        	<? }?>
-	        	<div style="width:750px; margin-top:10px; font-size:14px; padding-left:10px; border-bottom:1px solid #ffffff; color:#ffffff; margin-left:10px; float:left; display:inline;">影集</div>
+	        	<div style="width:750px; margin-top:10px; font-size:14px; padding-left:10px; border-bottom:1px solid #000000; color:#000000; margin-left:10px; float:left; display:inline;">影集</div>
 	        	<?php $videolist = show_content('smg_video','video','上海文广数字移动传播有限公司','影音合集','4');
         	  	  for($i=0;$i<count($videolist);$i++) {
 			    ?>
-	        	<div style="width:146px; height:150px; margin:15px; margin-top:30px; margin-right:30px; color:#ffffff; text-align:center; float:left; display:inline">
+	        	<div style="width:146px; height:150px; margin:15px; margin-top:30px; margin-right:30px; color:#000000; text-align:center; float:left; display:inline">
 					<img width=146 height=128 src="<?php echo $videolist[$i]->photo_url;?>" style="cursor: hand;" onclick="goplay('<? echo $videolist[$i]->video_url;?>')">
 					<div style="width:120px; font-size:15px; text-align:center" style="cursor: hand;" onclick="goplay('<? echo $videolist[$i]->video_url;?>')"><?php echo $videolist[$i]->title;?></div>
 				</div>

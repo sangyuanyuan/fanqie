@@ -60,7 +60,7 @@
 						$var_name = $record[$i]->dept_id != 7 ? "back_news[]" : "delete_news[]";
 					?>
 					<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $record[$i]->id;?>"></td>
-					<td><?php echo $record[$i]->short_title;?></td>
+					<td><a href='/news/news/news.php?id=<?php echo $record[$i]->id;?>' target="_blank"><?php echo strip_tags($record[$i]->short_title);?></a></td>
 					<td>
 						<a href="?dept=<?php echo $record[$i]->dept_id;?>" style="color:#0000FF"><?php echo get_dept_info($record[$i]->dept_id)->name;?></a>
 					</td>

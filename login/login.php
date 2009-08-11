@@ -25,7 +25,7 @@ require_once('../frame.php');
 			<span style="color:#FF0000"> <? echo $_REQUEST['errorstr'];?></span>
 			<div id=box style="border:1px solid #0066FF">
 				<div id=name>用户名　　<input type="text" id=login_text name=login_text style="width:145px; height:17px;" class="required"></div>
-				<div id=pwd>密　码　　<input type="password" id=password_text name=password_text style="width:145px; height:17px;" class="required"></div>
+				<div id=pwd>密　码　　<input type="password" id=password_text name=password_text style="width:145px; height:17px;"></div>
 				<div id=btn><input type="checkbox" id=nickname >昵称　　<a href="register.php" style="color:#000000; text-decoration:none">注册</a>　　<input type="submit" value="登录" class="botton"></div>	
 				<input type="hidden" name="lasturl" value="<?php echo $lasturl;?>">
 				<input type="hidden" name="user_type" value="login">

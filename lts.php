@@ -1,10 +1,5 @@
 ﻿<?php
-/**
-* 黑夜路人简易聊天室
-* 作者: heiyeluren <heiyeluren_at_163.com>
-* 创建: 2005-8-10 22:42
-* 修改: 2005-8-11 23:25
-*/
+
 
 error_reporting(7);
 /**
@@ -68,7 +63,7 @@ if (!isset($_GET['action']))
 {
 if (!session_is_registered('username'))
 {
-echo " <p><h3 align=center>[ ".CHAT_NAME." ] &copy; 2005</h3></p>
+echo " <p><h3 align=center>[ ".CHAT_NAME." ]</h3></p>
    <p align=center>
    <form action=".SCRIPT."?action=login method=post>
    呢称: <input type=text size=25 maxlength=30 name=login_user>
@@ -97,9 +92,9 @@ if ($action=="chat")
 {
 $online_sum = get_online_sum();
 echo "<head><title>[ ".CHAT_NAME." ]</title></head><center>
-<body bgcolor=#C4BFB9 style='font-size:12px;'>
+<body bgcolor=#C4BFB9 style='font-size:12px;' onload=\"onload()\">
    <div style='border:1px solid #999966; width:802px;height:450'>
-<iframe src='".SCRIPT."?action=show'
+<iframe id=show_win src='".SCRIPT."?action=show'
 name=show_win width=800 height=450 scrolling=auto frameborder=0></iframe>
 </div><br>
    <marquee width=70% scrollamount=2> ".AD_MSG." </marquee>&nbsp;&nbsp; 
@@ -160,7 +155,7 @@ header("location:".SCRIPT."?action=say");
 //显示聊天记录
 if ($action=="show")
 {
-echo "<body style='font-size:12px' onload='scrollit()'>";
+echo "<body style='font-size:12px' >";
 echo "<META HTTP-EQUIV=REFRESH 
 CONTENT='".REF_TIME.";URL=".SCRIPT."?action=show'>";
 if (file_exists(CHAT_NOTE)) {
@@ -182,6 +177,11 @@ header("location:".SCRIPT);
 /* 基本函数 */
 
 //保存聊天记录函数
+
+
+	
+
+
 function save_chat($msg, $user, $color)
 {
 if (!$fp = fopen(CHAT_NOTE, "a+")) {
@@ -237,4 +237,23 @@ $cip = "unknown";
 }
 return $cip;
 }
+
+
+
 ?>
+<script language="javascript">
+	function onload(){
+		alert('p');
+		if(document.getElementById("iframe_show"))
+{
+	alert('ok');
+document.getElementById("show").body.scroll = 10000;
+}
+	}
+document.getElementById("iframe_show").body.scroll = 10000;
+if(document.getElementById("show_win"))
+{
+	alert('ok');
+document.getElementById("show_win").body.scroll = 10000;
+}
+</script>
