@@ -743,10 +743,6 @@ total("首页","other");
 						<? }?>
 					</ul>
  				</div>
-
-
-
-
  			</div>
  			<!-- end !-->	    
     </div> 	
@@ -890,7 +886,6 @@ total("首页","other");
 				<div class=box>
 					<div class=pic><a href="/show/show.php?id=<?php echo $records[$i]->i_id;?>" target="_blank" title="<?php echo $records[$i]->title;?>"><img src="<?php echo $records[$i]->src;?>" border=0 width=70 height=90></a></div>
 					<div class=title><?php echo $records[$i]->title;?></div>
-
 				</div>
 				<?php
 					}

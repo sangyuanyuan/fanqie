@@ -27,11 +27,8 @@
 				<div id=zhu>“番茄网”重置密码指南：<br>· 输入需要修改员工工号×××××××××。<br>· 输入联系方式</div>	
 			</div>
 			</form>	
-		</div>
-		
+		</div>		
 	</div>	
-	
-	
 </body>
 </form>
 </html>
