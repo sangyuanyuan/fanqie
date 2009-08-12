@@ -32,7 +32,7 @@
 			<div id=title><img src="/images/pic/answer_right.gif">热门答题</div>
 			<div class=content>
 				<?php 
-					$sql = 'select nick_name,point from smg_question_record where r_type="wydt" and TO_DAYS(NOW())-TO_DAYS(created_at) <= 7 order by point desc limit 5';
+					$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 10';
 					$records = $db->query($sql);
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
