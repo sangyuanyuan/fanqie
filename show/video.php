@@ -3,7 +3,8 @@
 	$id = $_REQUEST['id'];
 	$video = new table_class('smg_video');
 	$video->find($id);
-	$category_name = category_name_by_id($video->category_id);
+	$category = new table_class('smg_category');
+	$category->find($video->category_id);
 	$y2k = mktime(0,0,0,1,1,2020); 
 	$cookie_name = 'video_'.date("Y-m-d").'_'.$id;
 	if($_COOKIE[$cookie_name]==''){
@@ -33,7 +34,7 @@
 	if($_COOKIE[$cookie_name]<200){
 ?>
 <script>
-	total("<?php echo $category_name;?>","show");	
+	total("<?php echo $category->name;?>","<?php echo $category->platform;?>");	
 </script>
 <?php
 	}
