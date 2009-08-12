@@ -263,7 +263,7 @@
 				if(data!=''){
 					alert(data);
 				}else{
-					total("<?php echo $category->name;?>","<?php echo $category->platform;?>");	
+					total("<?php echo $category->name;?>digg","<?php echo $category->platform;?>");	
 				}
 			});
 		});
@@ -276,7 +276,7 @@
 				if(data!=''){
 					alert(data);
 				}else{
-					total("<?php echo $category->name;?>","<?php echo $category->platform;?>");	
+					total("<?php echo $category->name;?>digg","<?php echo $category->platform;?>");	
 				}
 			});
 		})

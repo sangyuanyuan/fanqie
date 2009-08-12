@@ -24,7 +24,7 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-展示-每日之星</title>
 	<?php
-		css_include_tag('show_article','top','bottom');
+		css_include_tag('show_article','top','bottom','thickbox');
 		use_jquery();
 		js_include_tag('pubfun','total');
   	?>
@@ -40,7 +40,10 @@
 	}
 ?>
 <body>
-<? require_once('../inc/top.inc.html');?>
+<?php 
+	require_once('../inc/top.inc.html');
+	js_include_once_tag('thickbox');
+?>
 <div id=ibody>	
  <div id=ibody_left>
  	  <div class=l>
@@ -145,10 +148,15 @@
 			<?php echo get_fck_content($news->content); ?>
 			<div id=page><?php print_fck_pages($news->content,'article.php?id='.$id); ?></div>
 		</div>
+		<?php if($category_name=='每日之星'){ ?>
 		<div id=point>
 			<div id=flower name="<?php echo $id; ?>" title="点击赠送鲜花"></div>
 			<div id=point_r>
-				共有<?php echo $news->flower;?>人给该文章赠送鲜花
+				<?php if($news->description!=''){?>
+				领导祝福：<?php echo $news->description;?><br>
+				<?php }?>
+				共有<?php echo $news->flower;?>人给该赠送鲜花<br><br>
+				<font size=5 color=#ff0000>点击鲜花送花送祝福！</font>
 			</div>
 			<!--
 			<?php 
@@ -185,8 +193,22 @@
 			<input type="hidden" id="y_star" value="<?php echo $s_point;?>">
 			-->
 		</div>
-		
+		<?php }?>
 		<div id=comment>
+			<?php 
+				$comment = new table_class('smg_comment');
+				$records = $comment->find('all',array('conditions' => 'resource_type="artcle_flower" and resource_id='.$id));
+				$count = count($records);
+				for($i=0;$i<$count;$i++){
+			?>
+				<div class=content>
+					<div class=r>
+						<div class=t>同事祝福：</div>
+						<div class=b><?php echo $records[$i]->nick_name;?>说：<?php echo $records[$i]->comment?></div>
+					</div>
+				</div>
+			<?php }?>
+			
 			<?php 
 				$comment = new table_class('smg_comment');
 				$records = $comment->find('all',array('conditions' => 'resource_type="news" and resource_id='.$id));
@@ -279,7 +301,7 @@
 				if(data!=''){
 					alert(data);
 				}else{
-					window.location.reload();
+					tb_show('送鲜花送祝福','flower.php?height=300&width=300&modal=true&id=<?php echo $id; ?>');
 				}
 			});
 		});
