@@ -50,7 +50,7 @@
 				</div>
 				<div class=picture><a href="<?php echo $records[$i]->gift_src;?>"><img src="<?php echo $records[$i]->gift_src;?>" border=0 width=55 height=55></a></div>
 				<div class=info>一份</div>
-				<div class=message><?php echo $records[$i]->message; ?> (<a href="gift_shop.php?nickname=<?php echo urlencode($records[$i]->sender);?>&loginname=<?php echo urlencode($records[$i]->sender);?>">回赠</a>)</div>
+				<div class=message><?php echo $records[$i]->message; ?> (<a href="gift_shop.php?nickname=<?php echo urlencode($records[$i]->sender);?>&loginname=<?php echo urlencode($records[$i]->sender);?>&send_type=1">回赠</a>)</div>
 				<div class=date><?php echo substr($records[$i]->created_at, 0, 16); ?></div>
 			</div>
 			<?php } ?>
