@@ -752,7 +752,7 @@ total("首页","other");
       <!-- start bottom_top_left !-->
  			<div id=b_t_l>
  				<?php  
-					$sql = 'select id,name from smg_vote where is_sub_vote =0 and is_adopt=1 and category_id!=119 order by created_at desc limit 12';
+					$sql = 'select id,name from smg_vote where is_sub_vote =0 and is_adopt=1 and (category_id=0 or category_id=11) order by created_at desc limit 12';
 					$record = $db->query($sql);
 					$count = count($record);
 				?>
