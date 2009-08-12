@@ -20,7 +20,7 @@
 		if($vote_id){
 			$vote = $vote->find($vote_id);
 		}else if($prev_id){
-			$vote = $vote->find('first',array('conditions'=>"id < $prev_id and is_sub_vote =0 and is_adopt=1",'order' => 'id desc'));
+			$vote = $vote->find('first',array('conditions'=>"id < $prev_id and is_sub_vote =0 and and category_id!=119 is_adopt=1",'order' => 'id desc'));
 			if(!$vote){
 				alert('找不到更多的投票');
 				redirect($_SERVER['HTTP_REFERER']);
