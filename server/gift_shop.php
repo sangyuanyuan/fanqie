@@ -86,6 +86,10 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
 	}
 	function checkout(){
 		//alert(gift_ids.join(','));
+		if(gift_ids.length <= 0){
+			alert('您还未选购任何礼物!请选购礼物!');
+			return false;
+		}
 		if(confirm('您购买了' + gift_ids.length+'件礼物,结束购物吗?')){
 			document.location.href="send_gift.php?gift_ids="+gift_ids.join(',');
 		}

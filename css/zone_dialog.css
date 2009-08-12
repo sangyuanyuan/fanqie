@@ -29,7 +29,7 @@ p{margin:0px; padding:0px;}
 #dialog_titles{width:550px; height:30px; margin-left:200px; margin-top:5px; text-align:center; font-size:25px; font-weight:bold; color:#ff0000; line-height:30px; text-decoration:none; float:left; display:inline;}
 #dialog_desc{width:785px; height:90px; margin-top:10px; padding:5px; margin-left:10px; font-size:15px; line-height:20px; overflow:hidden; float:left; display:inline; }
 #dialog_leader{width:160px; height:90px; margin-top:10px; margin-right:5px; line-height:20px; padding:5px; color:#C02500; float:right; display:inline;}
-#div_question{width:585px; height:240px; margin-top:5px; overflow-x:hidden; overflow-y:scroll; float:left; display:inline;}
+#div_question{font-size:14px;width:585px; height:240px; margin-top:5px; overflow-x:hidden; overflow-y:scroll; float:left; display:inline;}
 #div_leader{width:115px; height:238px; margin-top:6px; margin-left:3px; border:1px solid #808080; overflow-y:auto; overflow-x:hidden; float:left; display:inline;}
 #div_online_leader{width:100px; border-bottom:solid 1px; margin-left:2px;}
 .question_list0{width:545px; margin:5px;margin-left:15px;}
@@ -46,7 +46,7 @@ p{margin:0px; padding:0px;}
 
 #answer_title{ margin-left:15px; margin-top:10px;width:680px; height:19px; background:url('/images/zone/dialog_q_title.jpg') no-repeat; float:left; }
 #div_answer_list{ width:685px; height:800px; margin-left:10px; margin-top:5px; padding-bottom:5px; overflow-y:scroll; overflow-x:hidden; border:solid 3px #FFDB86; float:left; display:inline;}
-#div_answer_list_innerbox{width:660px;margin-left:5px;margin-top:5px;border:#CCCCCC solid 1px;min-height:680px;}
+#div_answer_list_innerbox{font-size:14px;width:660px;margin-left:5px;margin-top:5px;border:#CCCCCC solid 1px;min-height:680px;}
 .answer_question{width:630px; margin-bottom:5px; padding:15px; background-color:#FFF2E1; word-break:break-all; float:left; display:inline;}
 .answer_question_index{color:#0000FF;}
 .answer_answer{width:630px; padding:15px; padding-top:5px; float:left; display:inline;}
