@@ -466,9 +466,10 @@ total("首页","other");
 					<div class=box>
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl ?>" target=_blank border=0></a>
 						<ul>
-							<li style="height:18px; overflow:hidden;"><a href="/fqtg/fqtg.php?id=<?php echo $record_tg[$i]->id?>" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
-							<li style="height:36px; line-height:18px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
-							<li style="color:#BD0A01">番茄价：<?php echo $record_tg[$i]->price ?></li>
+							<li style="overflow:hidden;"><a href="/fqtg/fqtg.php?id=<?php echo $record_tg[$i]->id?>" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
+							<li style="height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
+							<li style="height:18px; line-height:18px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $record_tg[$i]->marketprice ?></li>
+							<li style="height:18px; line-height:18px; color:#ff0000">番茄价：<?php echo $record_tg[$i]->price ?></li>
 						</ul>
 					</div>
 					<? }?>
