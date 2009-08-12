@@ -103,9 +103,9 @@ if($_POST['uptype']=="tgupdate")
 			{
 				if($_POST['maxnum']!="")
 				{
-					$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",maxnum="'.$_POST['maxnum'].'",photourl="/upload/photo/'.$uploadfilenameall.'",issendfq='.$_POST['sendfq'].',price='.$_POST['price'].',market='.$_POST['marketprice'].' where id='.$_POST['tgid'];
+					$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",maxnum="'.$_POST['maxnum'].'",photourl="/upload/photo/'.$uploadfilenameall.'",issendfq='.$_POST['sendfq'].',price='.$_POST['price'].',marketprice='.$_POST['marketprice'].' where id='.$_POST['tgid'];
 				}else{
-					$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",photourl="/upload/photo/'.$uploadfilenameall.'",maxnum=null,issendfq='.$_POST['sendfq'].',price='.$_POST['price'].',market='.$_POST['marketprice'].' where id='.$_POST['tgid'];
+					$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",photourl="/upload/photo/'.$uploadfilenameall.'",maxnum=null,issendfq='.$_POST['sendfq'].',price='.$_POST['price'].',marketprice='.$_POST['marketprice'].' where id='.$_POST['tgid'];
 				}
 				$Record = $db->execute($strsql);
 			}else
