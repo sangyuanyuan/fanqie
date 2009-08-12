@@ -29,5 +29,16 @@
 				</div>
 				<?php } ?>
 			</div>
-			<div id=title><img src="/images/pic/answer_right.gif">热门投票</div>
+			<div id=title><img src="/images/pic/answer_right.gif">热门答题</div>
+			<div class=content style="padding-top:10px;">
+				<?php 
+					$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 10';
+					$records = $db->query($sql);
+					$count = count($records);
+					for($i=0;$i<$count;$i++){
+				?>
+					<div class=content1 ><a target="_blank" href="/answer/answer.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
+				<?php } ?>
+			</div>
+			
 </div>

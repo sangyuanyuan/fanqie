@@ -155,7 +155,7 @@
 				<?php if($news->description!=''){?>
 				领导祝福：<?php echo $news->description;?><br>
 				<?php }?>
-				共有<?php echo $news->flower;?>人给该赠送鲜花<br><br>
+				共有<?php echo $news->flower;?>人给该明星赠送鲜花<br><br>
 				<font size=5 color=#ff0000>点击鲜花送花送祝福！</font>
 			</div>
 			<!--
@@ -197,13 +197,13 @@
 		<div id=comment>
 			<?php 
 				$comment = new table_class('smg_comment');
-				$records = $comment->find('all',array('conditions' => 'resource_type="artcle_flower" and resource_id='.$id));
+				$records = $comment->find('all',array('conditions' => 'resource_type="artcle_flower" and resource_id='.$id,'order' => 'created_at desc'));
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
 				<div class=content>
 					<div class=r>
-						<div class=t>同事祝福：</div>
+						<div class=t style="color:#ff0000">同事祝福：</div>
 						<div class=b><?php echo $records[$i]->nick_name;?>说：<?php echo $records[$i]->comment?></div>
 					</div>
 				</div>
@@ -301,7 +301,7 @@
 				if(data!=''){
 					alert(data);
 				}else{
-					tb_show('送鲜花送祝福','flower.php?height=300&width=300&modal=true&id=<?php echo $id; ?>');
+					tb_show('送鲜花送祝福','flower.php?height=300&width=300&modal=false&id=<?php echo $id; ?>');
 				}
 			});
 		});

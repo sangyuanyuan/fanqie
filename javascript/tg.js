@@ -1,7 +1,7 @@
 	$(document).ready(function(){
 		
 		$("#content11").click(function(){
-			if($('#commenter').attr('value').length()>100)
+			if($('#commenter').attr('value').length>100)
 			{
 				alert("用户名太长！");
 				return false;

@@ -15,6 +15,7 @@
 		$sender = urldecode($_REQUEST['sender']);
 		$reciever = urldecode($_REQUEST['reciever']);
 		$send_date = $_REQUEST['send_date'];
+		$send_type = $_REQUEST['send_type'];
   ?>
 	
 </head>
@@ -39,18 +40,19 @@
 				if($sender==''){
 					$sql = "select a.* ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name where reciever='{$reciever}' order by id desc";
 				}else{
-					$sql = "select a.* ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name where sender='{$sender}' and reciever='{$reciever}' and created_at='{$send_date}' order by id desc";
+					$sql = "select a.* ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name where sender='{$sender}' and reciever='{$reciever}' and created_at='{$send_date}' and send_type={$send_type} order by id desc";
 				}
 				$records = $db->paginate($sql,9);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 					$nick_name = $records[$i]->nick_name ? $records[$i]->nick_name : $records[$i]->reciever;
+					$send_type_string = $records[$i]->send_type == 1 ? '回赠' : '赠送';
 			?>
 			<div class=box style="float:left;display:inline">
 				<div class=gift  style="float:left;display:inline"></div>
 				<div class=info  style="float:left;display:inline">
 					<div class=giver><?php echo $records[$i]->sender; ?></div>
-					赠送 <b><?php echo $nick_name;?></b>&nbsp;<font color=#FF0000 style="font-weight:bolder;">生日礼物</font>
+					<?php echo $send_type_string;?> <b><?php echo $nick_name;?></b>&nbsp;<font color=#FF0000 style="font-weight:bolder;">生日礼物</font>
 				</div>
 				<div class=picture  style="float:left;display:inline"><a href="<?php echo $records[$i]->gift_src;?>"><img src="<?php echo $records[$i]->gift_src;?>" border=0 width=55 height=55></a></div>
 				<div class=info  style="float:left;display:inline">一份</div>
