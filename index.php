@@ -28,7 +28,7 @@ total("首页","other");
  			<?php
 				$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="每日之星" and c.platform="show" order by i.priority asc,i.created_at desc limit 4';
 				$record_star=$db -> query($sql);
-				$sql = 'select n.short_title, c.platform,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="视频新闻" and c.platform="news" order by n.priority asc limit 4';
+				$sql = 'select n.short_title, c.platform,n.video_photo_src,n.video_src from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="视频新闻" and c.platform="news" order by n.priority asc,created_at desc limit 4';
 				$record_video=$db -> query($sql);
 				$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="番茄广告" and c.platform="show" order by i.priority asc,i.created_at desc limit 4';
 				$record_ad=$db -> query($sql);
@@ -352,7 +352,7 @@ total("首页","other");
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo strip_tags($record_import_a[$i]->title)?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>								
- 						<div style="width:128px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
+ 						<div style="width:138px; height:52px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
  							<a href="/subject/sxxx/" target=_blank><img src="/images/1.jpg" width="125px; height:20px;" border=0></a>
  							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[0]->platform."/news/news.php?id=".$record_import_c[0]->id ?>" target="_blank"><?php echo $record_import_c[0]->short_title ?></a>
  						</div>
@@ -371,7 +371,7 @@ total("首页","other");
  					</div>	 
  					
  					<div id=r>
- 						<div style="width:128px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
+ 						<div style="width:138px; height:53px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
  							<a href="/subject/djnews/" target=_blank><img src="/images/2.jpg" width="125px; height:20px;" border=0></a>
  							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[1]->platform."/news/news.php?id=".$record_import_c[1]->id ?>" target="_blank"><?php echo $record_import_c[1]->short_title ?></a>
  						</div>
@@ -743,10 +743,6 @@ total("首页","other");
 						<? }?>
 					</ul>
  				</div>
-
-
-
-
  			</div>
  			<!-- end !-->	    
     </div> 	
@@ -756,7 +752,7 @@ total("首页","other");
       <!-- start bottom_top_left !-->
  			<div id=b_t_l>
  				<?php  
-					$sql = 'select id,name from smg_vote where is_adopt=1 order by created_at desc limit 12';
+					$sql = 'select id,name from smg_vote where is_sub_vote =0 and is_adopt=1 and (category_id=0 or category_id=11) order by created_at desc limit 12';
 					$record = $db->query($sql);
 					$count = count($record);
 				?>
@@ -890,7 +886,6 @@ total("首页","other");
 				<div class=box>
 					<div class=pic><a href="/show/show.php?id=<?php echo $records[$i]->i_id;?>" target="_blank" title="<?php echo $records[$i]->title;?>"><img src="<?php echo $records[$i]->src;?>" border=0 width=70 height=90></a></div>
 					<div class=title><?php echo $records[$i]->title;?></div>
-
 				</div>
 				<?php
 					}

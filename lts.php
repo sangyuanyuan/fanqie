@@ -93,7 +93,7 @@ if ($action=="chat")
 $online_sum = get_online_sum();
 echo "<head><title>[ ".CHAT_NAME." ]</title></head><center>
 <body bgcolor=#C4BFB9 style='font-size:12px;' onload=\"onload()\">
-   <div style='border:1px solid #999966; width:802px;height:450'>
+   <div id=fuck style='border:1px solid #999966; width:802px;height:450'>
 <iframe id=show_win src='".SCRIPT."?action=show'
 name=show_win width=800 height=450 scrolling=auto frameborder=0></iframe>
 </div><br>
@@ -109,7 +109,7 @@ if ($action=="say")
 {
 echo "<head><title>[ ".CHAT_NAME." ]</title></head><center>
 <body bgcolor=#C4BFB9 style='font-size:12px;'>
-<form action=".SCRIPT."?action=save method=post name=chat
+<form id=form1 action=".SCRIPT."?action=save method=post name=chat
 onSubmit='return check()'>
 [".$_SESSION['username']."]说:<input type=text size=80
 maxlength=500 name=chatmsg style=' background-color:#99CC99;
@@ -241,19 +241,7 @@ return $cip;
 
 
 ?>
-<script language="javascript">
-	function onload(){
-		alert('p');
-		if(document.getElementById("iframe_show"))
-{
-	alert('ok');
-document.getElementById("show").body.scroll = 10000;
-}
-	}
-document.getElementById("iframe_show").body.scroll = 10000;
-if(document.getElementById("show_win"))
-{
-	alert('ok');
-document.getElementById("show_win").body.scroll = 10000;
-}
+<script>
+  //alert('fucnt');
+  //alert(document.getElementById('fuck'));
 </script>

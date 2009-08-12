@@ -127,12 +127,13 @@
 	</table>
 	<input type="hidden" name="picture[created_at]"  value="<?php echo date("Y-m-d H:i:s")?>">
 	<input type="hidden" name="url" id=url  value="<?php echo $url;?>">
-	<input type="hidden" name="picture[is_adopt]" value="1">
 	<input type="hidden" name="picture[is_dept_adopt]" value="1">
 	<?php if($role=='admin'){?>
 	<input type="hidden" name="picture[is_recommend]" id="recommend" value="1">
+	<input type="hidden" name="picture[is_adopt]" value="1">
 	<?php }else{ ?>
 	<input type="hidden" name="picture[is_recommend]" id="recommend" value="0">
+	<input type="hidden" name="picture[is_adopt]" value="0">
 	<?php } ?>
 	<input type="hidden" name="special_type" value="<?php echo $type;?>">
 	</form>
