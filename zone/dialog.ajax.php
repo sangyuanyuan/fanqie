@@ -46,6 +46,7 @@
 			}else{
 				$alert_str = '回复失败!';
 			}
+			exit;
 			break;
 		case 'edit_answer':
 			$tanswer = new table_class('smg_dialog_answer');
