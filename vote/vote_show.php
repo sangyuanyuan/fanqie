@@ -143,7 +143,7 @@ for($i=0;$i<count($comments);$i++){?>
 				return false;
 			}
 			var id = <?php echo $vote->id;?>;
-			$.post('/pub/comment.post.php',{'comment[resource_type]':'vote','comment[resource_id]':id,'comment[nick_name]':nick_name,'comment[comment]':content},function(data){window.location.reload();});
+			$.post('/pub/comment.post.php',{'comment[resource_type]':'vote','comment[resource_id]':id,'comment[nick_name]':nick_name,'comment[comment]':content},function(data){window.location.href="vote_show.php?vote_id=<?php echo $_REQUEST['vote_id'];?>";});
 			
 		});
 		$('#add_vote').click(function(){
