@@ -9,6 +9,7 @@
 		css_include_tag('server_calendar','top','bottom','thickbox');
 		use_jquery();
 		js_include_tag('total.js');
+		$send_type = $_REQUEST['send_type'] ? $_REQUEST['send_type'] : 0;
   ?>
 	
 </head>
@@ -32,7 +33,7 @@
     		<div id="title"></div>
 			<div id=sendname><?php echo "赠送礼物给{$_SESSION['smg_gift_nickname']}";?></div>
 			<div id="msg_box">
-				　您的大名<input type="text" id="name">	
+				　您的大名<input type="text" id="name" value="<?php echo $_COOKIE['smg_user_nickname'];?>">	
 				<div>
 					　您的祝福<textarea id="tcontent"></textarea><button id="submit" style="width:100px; height:25px; line-height:13px;">发送祝福</button>
 				</div>
@@ -67,8 +68,8 @@
 				alert('请填写您的祝福!');
 				return false;
 			}					
-
-			$.post('send_gift.post.php',{'gift_ids':'<?php echo $_REQUEST["gift_ids"];?>','gift[sender]':sender,'gift[message]':tcontent},function(data){
+			var send_type = <?php echo $send_type;?>;
+			$.post('send_gift.post.php',{'gift_ids':'<?php echo $_REQUEST["gift_ids"];?>','gift[sender]':sender,'gift[message]':tcontent,'gift[send_type]':send_type},function(data){
 				alert('赠送礼物成功!');
 				window.location.href = 'today.php';
 			});

@@ -2,6 +2,7 @@
 	require_once('../frame.php');
 	$today = $_REQUEST['date'] ? $_REQUEST['date'] : date('m-d');
 	session_start();
+	$send_type = $_REQUEST['send_type'] ? $_REQUEST['send_type'] : 0;
 	if($_REQUEST['nickname']){
 		$_SESSION['smg_gift_nickname'] = $_REQUEST['nickname'];
 	}
@@ -91,7 +92,7 @@ if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigat
 			return false;
 		}
 		if(confirm('您购买了' + gift_ids.length+'件礼物,结束购物吗?')){
-			document.location.href="send_gift.php?gift_ids="+gift_ids.join(',');
+			document.location.href="send_gift.php?gift_ids="+gift_ids.join(',') + '&send_type=<?php echo $send_type ;?>';
 		}
 	}
 	function refresh_gift_counts(){
