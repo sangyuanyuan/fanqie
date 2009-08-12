@@ -155,7 +155,7 @@
 				<?php if($news->description!=''){?>
 				领导祝福：<?php echo $news->description;?><br>
 				<?php }?>
-				共有<?php echo $news->flower;?>人给该赠送鲜花<br><br>
+				共有<?php echo $news->flower;?>人给该明星赠送鲜花<br><br>
 				<font size=5 color=#ff0000>点击鲜花送花送祝福！</font>
 			</div>
 			<!--
@@ -301,7 +301,7 @@
 				if(data!=''){
 					alert(data);
 				}else{
-					tb_show('送鲜花送祝福','flower.php?height=300&width=300&modal=true&id=<?php echo $id; ?>');
+					tb_show('送鲜花送祝福','flower.php?height=300&width=300&modal=false&id=<?php echo $id; ?>');
 				}
 			});
 		});
