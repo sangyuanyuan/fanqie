@@ -475,7 +475,7 @@ total("首页","other");
 					<? }?>
  				</div>
  				<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc limit 12';
+ 					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 12';
 					$record_happy=$db -> query($sql);		
 				?>	
  				<div class=content_trrt id=content_trrt2 style="display:none;">
@@ -502,7 +502,7 @@ total("首页","other");
 					</div> 				
  				</div>
  				<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="讨论区" and c.platform="zone" order by n.priority asc limit 12';
+ 					$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="讨论区" and c.platform="zone" order by n.priority asc,n.created_at desc limit 12';
 					$record_discuss=$db -> query($sql);		
 				?>	
  				<div class=content_trrt id=content_trrt3 style="display:none;">
