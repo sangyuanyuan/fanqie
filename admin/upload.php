@@ -126,7 +126,7 @@ if($_POST['uptype']=="tgupdate")
 			
 	}
 
-	echo '<script language=javascript>window.location.href="tg/tg.php";</script>';
+	//echo '<script language=javascript>window.location.href="tg/tg.php";</script>';
 }
 
 
