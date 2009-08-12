@@ -352,7 +352,7 @@ total("首页","other");
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" title=<?php echo strip_tags($record_import_a[$i]->title)?>><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>								
- 						<div style="width:138px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
+ 						<div style="width:138px; height:52px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
  							<a href="/subject/sxxx/" target=_blank><img src="/images/1.jpg" width="125px; height:20px;" border=0></a>
  							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[0]->platform."/news/news.php?id=".$record_import_c[0]->id ?>" target="_blank"><?php echo $record_import_c[0]->short_title ?></a>
  						</div>
@@ -371,7 +371,7 @@ total("首页","other");
  					</div>	 
  					
  					<div id=r>
- 						<div style="width:138px; height:49px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
+ 						<div style="width:138px; height:53px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
  							<a href="/subject/djnews/" target=_blank><img src="/images/2.jpg" width="125px; height:20px;" border=0></a>
  							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[1]->platform."/news/news.php?id=".$record_import_c[1]->id ?>" target="_blank"><?php echo $record_import_c[1]->short_title ?></a>
  						</div>
@@ -878,7 +878,7 @@ total("首页","other");
  			<div id=b_b_r>
 				<div id=title>在线杂志</div>
 				<?php  
-					$sql = 'select t1.id as i_id,t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 3';
+					$sql = 'select t1.id as i_id,t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 1';
 					$records = $db->query($sql);
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
@@ -891,6 +891,31 @@ total("首页","other");
 					}
 				?>
  			</div>
+			<div id=b_b_r_r>
+				<div id=title>生活指南</div>
+				<table width="240" align="left">
+						<tr>	
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.ddmap.com/">丁丁地图</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank"  href="http://222.68.17.238:5208/wenguang/index.html">实时交通路况查询</a></td>
+						</tr>
+						<tr>	
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://meishi.enjoyoung.cn/">人气美食</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.shjtaq.com/zwfg/dzjc_new.asp">上海交通违章查询</a></td>
+						</tr>
+						<tr>	
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.qunar.com/">机票折扣查询</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.51fanli.com/">返利网</a></td>
+						</tr>
+						<tr>	
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.soku.net/huoche/TrainStation/381.Html">火车时刻表</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.feeyo.com/flightsearch.htm">航班时刻查询</a></td>
+						</tr>
+						<script type="text/javascript" src="http://hq.sinajs.cn/list=s_sh000001,s_sz399001" charset="utf-8"></script>
+						<script type="text/javascript"> 
+							var elements=hq_str_s_sh000001.split(","); 
+							document.write("<tr align='center'><td>上证指数:"+elements[1]+"</td><td>");
+							elements=hq_str_s_sz399001.split(",");
+							document.write("深圳成指:"+elements[1]+"</td></tr>");
+						</script>
+				</table>
+				
+			</div>
  			<!-- end !-->	 
 
     </div>

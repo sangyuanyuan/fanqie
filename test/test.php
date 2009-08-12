@@ -6,8 +6,10 @@
 ?>
 
 <a href="<?php echo $url;?>">test</a>
+<div id="ret"></div>
 
 <script>
 	$(function(){
+		$('#ret').load('test.php');
 	});
 </script>
