@@ -58,7 +58,7 @@ p{margin:0px; padding:0px;}
 #t_r_c_m #content1 a{color:#FF6600; text-decoration:none;}
 #t_r_c_m #btn{width:57px; height:23px; margin-top:6px; margin-left:3px; background:url(/images/index/btn6.gif) no-repeat; float:left; display:inline;}
 #t_r_c_m #box{width:484px; height:330px;  margin-top:3px; margin-left:8px;  float:left; display:inline;}
-#t_r_c_m #box li{width:158px; height:18px; padding-left:12px; font-size:12px; line-height:16px; overflow:hidden; background:url(/images/icon/arrow1.gif) no-repeat 0 3px; float:left; display:inline;}
+#t_r_c_m #box li{width:144px; height:18px; padding-left:12px; font-size:12px; line-height:16px; overflow:hidden; background:url(/images/icon/arrow1.gif) no-repeat 0 3px; float:left; display:inline;}
 #t_r_c_m #box li a{color:#000000; text-decoration:none;}
 #t_r_c_m #box li div{height:17px; float:left; display:inline;}
 #t_r_c_m #box .space{width:140px; height:8px; background:#F1F3F2; line-height:8px; font-size:0px; float:left; display:inline;}
@@ -90,10 +90,10 @@ p{margin:0px; padding:0px;}
 #t_r_r_t .menu_trrt{width:65px; height:18px; padding-top:5px; line-height:15px; text-align:center; color:#666666; cursor:pointer; float:left; display:inline;}
 #t_r_r_t .menu_trrt a{color:#666666; text-decoration:none;}
 #t_r_r_t .content_trrt{width:180px; height:260px; margin-top:10px; margin-left:18px; line-height:20px;  float:left; display:inline;}
-#t_r_r_t .content_trrt .box{width:165px; height:82px; margin-bottom:6px;  line-height:20px; overflow:hidden;  float:left; display:inline;}
+#t_r_r_t .content_trrt .box{width:175px; height:78px;  margin-bottom:12px;  line-height:20px; overflow:hidden;  float:left; display:inline;}
 
-#t_r_r_t #content_trrt1 .box li{width:80px; height:16px; line-height:16px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
-#t_r_r_t #content_trrt1 .box img{width:75px; height:75px; padding:2px; border:1px solid #efefef; float:right; display:inline;}
+#t_r_r_t #content_trrt1 .box li{width:95px; height:16px; line-height:16px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
+#t_r_r_t #content_trrt1 .box img{width:75px; height:75px; float:right; display:inline;}
 #t_r_r_t #content_trrt2 .box li{width:160px; height:20px; line-height:18px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
 #t_r_r_t #content_trrt3 .box li{width:160px; height:20px; line-height:18px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
 #t_r_r_t #content_trrt1 .box li a{color:#5F5F5F; text-decoration:none;}
