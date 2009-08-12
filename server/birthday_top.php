@@ -40,7 +40,7 @@
 					$nick_name = $records[$i]->nick_name ? $records[$i]->nick_name : $records[$i]->reciever;
 					$sender = urlencode($records[$i]->sender);
 					$reciever = urlencode($records[$i]->reciever);					
-					$url = "send_gift_list_detail.php?sender={$sender}&reciever={$reciever}&send_date={$records[$i]->created_at}"
+					$url = "send_gift_list_detail.php?reciever={$reciever}"
 			?>
 			<div class=box style="float:left;display:inline">
 				<div class=gift  style="float:left;display:inline"></div>
@@ -49,7 +49,7 @@
 					<b><?php echo $nick_name;?></b>&nbsp;<font color=#FF0000 style="font-weight:bolder;">收到生日礼物</font>
 				</div>
 				
-				<div class=info  style="float:left;display:inline"><?php echo $records[$i]->icount;?> 份</div>
+				<div class=info  style="float:left;display:inline"><?php echo $records[$i]->icount;?> 份(<a href="<?php echo $url;?>" target="_blank">查看详细</a>)</div>
 			</div>
 			<?php } ?>
      		<div id=paginate><?php paginate();?></div>

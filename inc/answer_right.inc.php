@@ -1,4 +1,4 @@
-<div id=right>
+	<div id=right>
 			<div id=title><img src="/images/pic/answer_right.gif">排行榜</div>
 			<div class=t>个人排行榜</div>
 			<div class=content>
@@ -29,4 +29,5 @@
 				</div>
 				<?php } ?>
 			</div>
+			<div id=title><img src="/images/pic/answer_right.gif">热门投票</div>
 </div>

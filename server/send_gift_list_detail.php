@@ -36,7 +36,11 @@
   
         <div id="context">
 			<?php
-				$sql = "select a.* ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name where sender='{$sender}' and reciever='{$reciever}' and created_at='{$send_date}' order by id desc";
+				if($sender==''){
+					$sql = "select a.* ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name where reciever='{$reciever}' order by id desc";
+				}else{
+					$sql = "select a.* ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name where sender='{$sender}' and reciever='{$reciever}' and created_at='{$send_date}' order by id desc";
+				}
 				$records = $db->paginate($sql,9);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
