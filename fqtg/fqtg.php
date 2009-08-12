@@ -2,6 +2,7 @@
 require_once('../frame.php');
 	$actid = $_REQUEST['id'];
 	$db=get_db();
+	$cookie=(isset($_COOKIE['smg_username'])) ? $_COOKIE['smg_username'] : 0;
 	if($actid==""){die ('没有找到网页');}
 	$StrSql='update smg_tg set clickcount=clickcount+1 where id='.$actid;
 	$Record = $db->execute($StrSql);
