@@ -197,13 +197,13 @@
 		<div id=comment>
 			<?php 
 				$comment = new table_class('smg_comment');
-				$records = $comment->find('all',array('conditions' => 'resource_type="artcle_flower" and resource_id='.$id));
+				$records = $comment->find('all',array('conditions' => 'resource_type="artcle_flower" and resource_id='.$id,'order' => 'created_at desc'));
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 			?>
 				<div class=content>
 					<div class=r>
-						<div class=t>同事祝福：</div>
+						<div class=t style="color:#ff0000">同事祝福：</div>
 						<div class=b><?php echo $records[$i]->nick_name;?>说：<?php echo $records[$i]->comment?></div>
 					</div>
 				</div>
