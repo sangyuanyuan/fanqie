@@ -31,6 +31,9 @@ $rows=$db->query($strsql);
 			<td align="left">是否送到番茄网</td><td><input type="checkbox" id="issendfq" name="issendfq" onclick="tgcheck()" <? if($rows[0]->issendfq==1){?>checked="checked"<? }?>><input type="hidden" id="sendfq" name="sendfq" value="1"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-size:12px">
+			<td width="100">市场价格</td><td width="695" align="left"><input type="text" size="50" name=marketprice id=marketprice value="<?php echo $rows[0]->marketprice;?>">元</td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-size:12px">
 			<td width="100">价格</td><td width="695" align="left"><input type="text" size="50" name=price id=price value="<?php echo $rows[0]->price;?>">元</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-size:12px">
