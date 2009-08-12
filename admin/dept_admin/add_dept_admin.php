@@ -1,6 +1,6 @@
 <?php
 	include "../../frame.php";
-	$role = $_REQUEST['dept_id'] == 7 ? 'admin' : 'dept_admin';
+	$role = $_REQUEST['dept_id'] == 7 || $_REQUEST['dept_id'] == 47 ? 'admin' : 'dept_admin';
 	if($_POST['name']){
 		$sql = "select * from smg_user where name='{$_POST['name']}'";
 		$db = get_db();
