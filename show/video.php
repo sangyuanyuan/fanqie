@@ -262,6 +262,8 @@
 			$.post("/pub/pub.post.php",{'type':'flower','id':$("#video_id").attr('value'),'db_table':'smg_video','digg_type':'video'},function(data){
 				if(data!=''){
 					alert(data);
+				}else{
+					total("<?php echo $category->name;?>","<?php echo $category->platform;?>");	
 				}
 			});
 		});
@@ -273,6 +275,8 @@
 			$.post("/pub/pub.post.php",{'type':'tomato','id':$("#video_id").attr('value'),'db_table':'smg_video','digg_type':'video'},function(data){
 				if(data!=''){
 					alert(data);
+				}else{
+					total("<?php echo $category->name;?>","<?php echo $category->platform;?>");	
 				}
 			});
 		})

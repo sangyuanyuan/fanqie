@@ -743,10 +743,6 @@ total("首页","other");
 						<? }?>
 					</ul>
  				</div>
-
-
-
-
  			</div>
  			<!-- end !-->	    
     </div> 	
@@ -756,7 +752,7 @@ total("首页","other");
       <!-- start bottom_top_left !-->
  			<div id=b_t_l>
  				<?php  
-					$sql = 'select id,name from smg_vote where is_adopt=1 order by created_at desc limit 12';
+					$sql = 'select id,name from smg_vote where is_sub_vote =0 and is_adopt=1 and (category_id=0 or category_id=11) order by created_at desc limit 12';
 					$record = $db->query($sql);
 					$count = count($record);
 				?>
@@ -890,7 +886,6 @@ total("首页","other");
 				<div class=box>
 					<div class=pic><a href="/show/show.php?id=<?php echo $records[$i]->i_id;?>" target="_blank" title="<?php echo $records[$i]->title;?>"><img src="<?php echo $records[$i]->src;?>" border=0 width=70 height=90></a></div>
 					<div class=title><?php echo $records[$i]->title;?></div>
-
 				</div>
 				<?php
 					}

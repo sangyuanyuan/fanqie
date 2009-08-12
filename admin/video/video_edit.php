@@ -155,13 +155,14 @@
 	<input type="hidden" name="url" id=url value="<?php echo $url;?>">
 	<?php if($role=='admin'){
 	?>
+	<input type="hidden" name="video[is_adopt]" value="1">
 	<input type="hidden" name="video[is_recommend]" id="recommend" value="1">
 	<?php }elseif($role=='dept_admin'){
 	?>
+	<input type="hidden" name="video[is_adopt]" value="0">
 	<input type="hidden" name="video[is_recommend]" id="recommend" value="<?php echo $video_record[0]->is_recommend;?>">
 	<?php } ?>
 	<input type="hidden" name="special_type" value="<?php echo $type;?>">
-	<input type="hidden" name="video[is_adopt]" value="1">
 	<input type="hidden" name="video[is_dept_adopt]" value="1">
 	</form>
 </body>
