@@ -82,7 +82,7 @@ total("首页","other");
 					
 				<? }?>	
   		  </div>
- 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg) no-repeat;" <?php if($record_inline[0]->name=='spxw'){?>style="display:inline"<?php }?>>
+ 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg) no-repeat;<?php if($record_inline[0]->name=='spxw'){?> display:inline"<?php }?>>
  					<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=235px height=182px scrolling="no" frameborder="0"></iframe>
  				</div>
   			<div class=content_tlt id=content3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
