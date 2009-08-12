@@ -37,10 +37,12 @@
 			var starttime=$("#starttime").attr('value');
 			var endtime=$("#endtime").attr('value');
 			var price=$("#price").attr("value");
+			var marketprice=$("#marketprice").attr("value");
 			if(title==""){alert("标题不能为空");return false;}
 			if(starttime==""){alert("开始时间不能为空");return false;}
 			if(endtime==""){alert("结束时间不能为空");return false;}
 			if(price==""){alert("价格不能为空");return false;}
+			if(marketprice==""){alert("市场价格不能为空");return false;}
 			var uptype=$("#uptype").attr("value");
 			if(uptype!="tgupdate")
 			{
