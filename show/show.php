@@ -296,6 +296,8 @@
 			$.post("/pub/pub.post.php",{'type':'flower','id':$("#image_id").attr('value'),'db_table':'smg_images','digg_type':'picture'},function(data){
 				if(data!=''){
 					alert(data);
+				}else{
+					total("<?php echo $category->name;?>","<?php echo $category->platform;?>");	
 				}
 			});
 		});
@@ -307,6 +309,8 @@
 			$.post("/pub/pub.post.php",{'type':'tomato','id':$("#image_id").attr('value'),'db_table':'smg_images','digg_type':'picture'},function(data){
 				if(data!=''){
 					alert(data);
+				}else{
+					total("<?php echo $category->name;?>","<?php echo $category->platform;?>");	
 				}
 			});
 		})
