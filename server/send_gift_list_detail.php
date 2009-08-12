@@ -12,6 +12,9 @@
 		css_include_tag('server_birthday','top','bottom');
 		use_jquery();
 		js_include_tag('total.js');
+		$sender = urldecode($_REQUEST['sender']);
+		$reciever = urldecode($_REQUEST['reciever']);
+		$send_date = $_REQUEST['send_date'];
   ?>
 	
 </head>
@@ -32,26 +35,21 @@
   
         <div id="context">
 			<?php
-				$sql = "select sender,reciever,created_at,count(*) as icount ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name group by sender,reciever,created_at order by a.id desc";
+				$sql = "select a.* ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name where sender='{$sender}' and reciever='{$reciever}' and created_at='{$send_date}' order by id desc";
 				$records = $db->paginate($sql,9);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
 					$nick_name = $records[$i]->nick_name ? $records[$i]->nick_name : $records[$i]->reciever;
-					$sender = urlencode($records[$i]->sender);
-					$reciever = urlencode($records[$i]->reciever);					
-					$url = "send_gift_list_detail.php?sender={$sender}&reciever={$reciever}&send_date={$records[$i]->created_at}"
 			?>
 			<div class=box style="float:left;display:inline">
 				<div class=gift  style="float:left;display:inline"></div>
-				<a>
 				<div class=info  style="float:left;display:inline">
 					<div class=giver><?php echo $records[$i]->sender; ?></div>
 					赠送 <b><?php echo $nick_name;?></b>&nbsp;<font color=#FF0000 style="font-weight:bolder;">生日礼物</font>
 				</div>
-				
-				<div class=info  style="float:left;display:inline"><?php echo $records[$i]->icount;?> 份</div>
-				<div class=message style="float:left;display:inline">　　　　　<?php echo substr($records[$i]->created_at, 0, 16); ?>
-				 (<a href="<?php echo $url;?>" target="_blank">查看详细</a>)
+				<div class=picture  style="float:left;display:inline"><a href="<?php echo $records[$i]->gift_src;?>"><img src="<?php echo $records[$i]->gift_src;?>" border=0 width=55 height=55></a></div>
+				<div class=info  style="float:left;display:inline">一份</div>
+				<div class=message style="float:left;display:inline"><?php echo $records[$i]->message; ?>　　　　　<?php echo substr($records[$i]->created_at, 0, 16); ?>
 				</div>
 			</div>
 			<?php } ?>
