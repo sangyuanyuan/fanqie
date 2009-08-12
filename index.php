@@ -892,13 +892,29 @@ total("首页","other");
 				?>
  			</div>
 			<div id=b_b_r_r>
-				<script type="text/javascript" src="http://hq.sinajs.cn/list=s_sh000001,s_sz399001" charset="utf-8"></script>
-					<script type="text/javascript"> 
-					var elements=hq_str_s_sh000001.split(","); 
-					document.write("上证指数:"+elements[1]+"　");
-					elements=hq_str_s_sz399001.split(",");
-					document.write("深圳成指:"+elements[1]);
-					</script>
+				<div id=title>生活指南</div>
+				<table width="240" align="left">
+						<tr>	
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.ddmap.com/">丁丁地图</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank"  href="http://222.68.17.238:5208/wenguang/index.html">实时交通路况查询</a></td>
+						</tr>
+						<tr>	
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://meishi.enjoyoung.cn/">人气美食</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.shjtaq.com/zwfg/dzjc_new.asp">上海交通违章查询</a></td>
+						</tr>
+						<tr>	
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.qunar.com/">机票折扣查询</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.51fanli.com/">返利网</a></td>
+						</tr>
+						<tr>	
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.soku.net/huoche/TrainStation/381.Html">火车时刻表</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.feeyo.com/flightsearch.htm">航班时刻查询</a></td>
+						</tr>
+						<script type="text/javascript" src="http://hq.sinajs.cn/list=s_sh000001,s_sz399001" charset="utf-8"></script>
+						<script type="text/javascript"> 
+							var elements=hq_str_s_sh000001.split(","); 
+							document.write("<tr align='center'><td>上证指数:"+elements[1]+"</td><td>");
+							elements=hq_str_s_sz399001.split(",");
+							document.write("深圳成指:"+elements[1]+"</td></tr>");
+						</script>
+				</table>
+				
 			</div>
  			<!-- end !-->	 
 

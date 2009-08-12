@@ -213,7 +213,7 @@ p{margin:0px; padding:0px;}
 #b_b_c .content .context{width:100px; height:20px; line-height:18px; text-align:center; overflow:hidden; float:left; display:inline;}
 #b_b_c .content .context a{color:#FF0000; text-decoration:none;}
 
-#b_b_r{width:112px; height:145px; background:url(/images/index/bg_b_b_r.jpg) no-repeat; margin-left:10px; float:left; display:inline;}
+#b_b_r{width:112px; height:145px; background:url(/images/index/bg_b_b_r.jpg) no-repeat; margin-left:5px; float:left; display:inline;}
 #b_b_r #title{width:85px; height:20px; margin-top:9px; margin-left:25px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
 #b_b_r .box{width:100px; height:100px; margin-top:10px; margin-left:5px; float:left; display:inline;}
 #b_b_r .box .pic{width:70px; height:90px; float:left; display:inline;}
@@ -222,6 +222,6 @@ p{margin:0px; padding:0px;}
 #b_b_r .box .description{width:50px; height:45px; margin-left:4px; line-height:15px; overflow:hidden; color:#869C2D; float:left; display:inline;}
 #b_b_r .box .button{width:50px; height:19px; margin-top:7px; margin-left:4px; float:left; display:inline;}
 
-#b_b_r_r{width:230px; height:140px; margin-left:10px; line-height:20px; float:left; display:inline;}
-
-
+#b_b_r_r{width:243px; height:145px; margin-left:5px; background:url(/images/index/bg_b_b_r_r.jpg) no-repeat; line-height:20px; float:left; display:inline;}
+#b_b_r_r #title{width:200px; height:20px; margin-top:9px; margin-bottom:8px; margin-left:25px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
+#b_b_r_r a{line-height:16px; margin-left:5px;}

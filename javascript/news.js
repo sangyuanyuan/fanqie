@@ -26,9 +26,9 @@
 			$(this).next().next().html(flowernum);
 			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).next().attr('value'),'db_table':'smg_comment','digg_type':'comment'},function(data){			
 				if(data!=''){
-
 				}
 			});
+			total('新闻DIGG','news');
 		});
 		
 		$(".tomato").click(function(){
@@ -39,6 +39,7 @@
 				if(data!=''){
 				}
 			});
+			total('新闻DIGG','news');
 		})
 		
 		$(".b_t_title1").mouseover(function(){		
