@@ -878,7 +878,7 @@ total("首页","other");
  			<div id=b_b_r>
 				<div id=title>在线杂志</div>
 				<?php  
-					$sql = 'select t1.id as i_id,t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 3';
+					$sql = 'select t1.id as i_id,t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 1';
 					$records = $db->query($sql);
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
@@ -891,6 +891,15 @@ total("首页","other");
 					}
 				?>
  			</div>
+			<div id=b_b_r_r>
+				<script type="text/javascript" src="http://hq.sinajs.cn/list=s_sh000001,s_sz399001" charset="utf-8"></script>
+					<script type="text/javascript"> 
+					var elements=hq_str_s_sh000001.split(","); 
+					document.write("上证指数:"+elements[1]+"　");
+					elements=hq_str_s_sz399001.split(",");
+					document.write("深圳成指:"+elements[1]);
+					</script>
+			</div>
  			<!-- end !-->	 
 
     </div>
