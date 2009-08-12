@@ -27,13 +27,13 @@
 			<div id="menu2"><a href="birthday.php">我的生日</a></div>	
      		<div id="menu2"><a href="calendar.php">日历</a></div>
 			<div id="menu2"><a href="today.php">今日寿星</a></div>			
-			<div id="menu1">送礼列表</div>
-			<div id="menu2"><a href="birthday_top.php">寿星排行</a></div>		
+			<div id="menu2"><a href="send_gift_list.php">送礼列表</a></div>
+			<div id="menu1">寿星排行</div>		
      	</div>
   
         <div id="context">
 			<?php
-				$sql = "select sender,reciever,created_at,count(*) as icount ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name group by sender,reciever,created_at order by a.id desc";
+				$sql = "select reciever,count(*) as icount ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name group by reciever order by icount desc";
 				$records = $db->paginate($sql,9);
 				$count = count($records);
 				for($i=0;$i<$count;$i++){
@@ -46,14 +46,10 @@
 				<div class=gift  style="float:left;display:inline"></div>
 				<a>
 				<div class=info  style="float:left;display:inline">
-					<div class=giver><?php echo $records[$i]->sender; ?></div>
-					赠送 <b><?php echo $nick_name;?></b>&nbsp;<font color=#FF0000 style="font-weight:bolder;">生日礼物</font>
+					<b><?php echo $nick_name;?></b>&nbsp;<font color=#FF0000 style="font-weight:bolder;">收到生日礼物</font>
 				</div>
 				
 				<div class=info  style="float:left;display:inline"><?php echo $records[$i]->icount;?> 份</div>
-				<div class=message style="float:left;display:inline">　　　　　<?php echo substr($records[$i]->created_at, 0, 16); ?>
-				 (<a href="<?php echo $url;?>" target="_blank">查看详细</a>)
-				</div>
 			</div>
 			<?php } ?>
      		<div id=paginate><?php paginate();?></div>
