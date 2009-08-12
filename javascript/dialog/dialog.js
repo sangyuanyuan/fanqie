@@ -74,6 +74,18 @@ $(function(){
 			$('#ajax_ret').load('dialog.ajax.php?' + query_str,{'dialog_id':dialog_id});
 		});
 	});
+	$('#div_question').add($('#div_question').children()).hover(function(){
+		scroll_question = false;
+	});
+	$('#div_answer_list').add($('#div_answer_list').children()).add($('#div_answer_list').children().children()).hover(function(){
+		scroll_answer = false;
+	});
+	$('#div_question').mouseout(function(){
+		scroll_question = true;				
+	});
+	$('#div_answer_list').mouseout(function(){
+		scroll_answer = true;
+	});
 	//tb_init('.comment_href');
 	scroll_buttom();
 	setInterval('refresh_data()',10000);
@@ -113,9 +125,13 @@ function edit_answer(qid, id){
 function show_comment_box(id){
 	tb_show('评论问题','comment_question.php?height=310&width=661&question_id=' + id,false);
 }
-
+var scroll_question = true;
+var scroll_answer = true;
 function scroll_buttom(){
+	if(scroll_question)
 	$('#div_question').scrollTop(10000);
+	if(scroll_answer)
 	$('#div_answer_list').scrollTop(10000);
+	
 	//$('#comment_list_box').scrollTop(10000);
 }
