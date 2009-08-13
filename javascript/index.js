@@ -37,13 +37,13 @@ $(function(){
 			var video_item=$(this).attr('id');
 			$(".item").css('background','url(/images/index/btn2.jpg) no-repeat');
 			$(".item").css('color','#9f9f9f');
-			$(".content_tlt").hide();
-			$(".list").hide();
+			$(".content_tlt").css('display','none');
+			$(".list").css('display','none');
 			$(this).css('background','url(/images/index/btn1.jpg) no-repeat');
 			$(this).css('color','#ffffff');
 			var num=$(this).attr('param');
-			$("#content"+num).show();
-			$("#list"+num).show();
+			$("#content"+num).css('display','inline');
+			$("#list"+num).css('display','inline');
 	});
 	
 	$(".btn_tlm").mouseover(function(){
@@ -72,11 +72,11 @@ $(function(){
 			$(".menu_trrt").css('font-weight','normal');
 			$(this).css('background','url(/images/index/btn7.jpg) no-repeat');
 			$(this).css('font-weight','bold');
-			$(".content_trrt").hide();
+			$(".content_trrt").css('display','none');
 			var num=$(this).attr('param');
 			$(".content_trrt").css("float","right");
 			$(".content_trrt").css("margin-right","8px");
-			$("#content_trrt"+num).show();
+			$("#content_trrt"+num).css('display','inline');
 
 	});	
 
@@ -86,9 +86,9 @@ $(function(){
 			$(".menu_trrb").css('font-weight','normal');
 			$(this).css('background','url(/images/index/btn7.jpg) no-repeat');
 			$(this).css('font-weight','bold');
-			$(".content_trrb").hide();
+			$(".content_trrb").css('display','none');
 			var num=$(this).attr('param');
-			$("#content_trrb"+num).show();
+			$("#content_trrb"+num).css('display','inline');
 
 	});	
 
