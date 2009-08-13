@@ -122,7 +122,7 @@
 <input type="hidden" name="number" value="<?php echo $number+1;?>">
 <input type="hidden" name="lave" value="<?php echo $lave-1;?>">
 <input type="hidden" name="r_id" value="<?php echo $problem_id;?>">
-<input type="hidden" name="r_type" value="btjd">
+<input type="hidden" name="r_type" value="<?php if($id==26){echo 'btjd';}else{echo 'wydt';};?>">
 <input type="hidden" name="point" id="r_point" value="<?php echo $point;?>">
 <input type="hidden" name="record[nick_name]" id="nick_name">
 <input type="hidden" name="record[phone]" id="phone">
