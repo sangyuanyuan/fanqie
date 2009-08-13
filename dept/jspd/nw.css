@@ -117,6 +117,6 @@ a:link {
 	text-decoration: none;
 }
 
-.short2{width:200px; height:20px; overflow:hidden; float:left; display:inline;}
-.short{width:220px; height:20px; overflow:hidden; float:left; display:inline;}
-.long{width:280px; height:20px; overflow:hidden; float:left; display:inline;}
+.short2{width:190px; height:20px; margin-left:10px; overflow:hidden; float:left; display:inline;}
+.short{width:210px; height:20px; margin-left:10px;  overflow:hidden; float:left; display:inline;}
+.long{width:270px; height:20px; margin-left:10px;  overflow:hidden; float:left; display:inline;}
