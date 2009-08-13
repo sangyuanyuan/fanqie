@@ -27,6 +27,8 @@
 		$rand = explode(",",$rand_question);
 		$this_question_id = $rand[$number];
 	}
+	$is_right = isset($_POST['is_right'])?$_POST['is_right']:'2';
+	$answer = isset($_POST['answer'])?$_POST['answer']:'';
 	if(isset($_POST['lave'])){
 		$lave = $_POST['lave'];
 		$q_count = $_POST['count']+1;
@@ -66,6 +68,13 @@
 	
 	<div id="time"><?php echo $problem[0]->limit_time;?></div>
 	<div id="right_answer">
+		<?php
+			if($is_right==1){
+				echo "恭喜你答对了！";
+			}elseif($is_right==0){
+				echo "很遗憾，你答错了，正确的答案是：".$answer."！";
+			}
+		?>
 	</div>
 	<div id="point">
 		<?php echo $point;?>
@@ -86,7 +95,10 @@
 			<input class=checkbox type="checkbox" name="<?php echo $items[$i]->id;?>">
 			<?php 
 				echo num_to_ABC($i).$items[$i]->name;
-				if($items[$i]->attribute==1)$answer = $answer.$items[$i]->id;
+				if($items[$i]->attribute==1){
+					$answer = $answer.$items[$i]->id;
+					$answer_name = $answer_name.$items[$i]->name;
+				}
 			?>
 		</div>
 		<?php
@@ -115,6 +127,8 @@
 </div>
 
 <input type="hidden" id="answer" value="<?php echo $answer; ?>">
+<input type="hidden" name="answer" value="<?php echo $answer_name;?>">
+<input type="hidden" name="is_right" id="is_right" value="0">
 <input type="hidden" name="rand_question" value="<?php echo $rand_question; ?>">
 <input type="hidden" name="this_question_id" value="<?php echo $this_question_id; ?>">
 <input type="hidden" name="limit_time" id="limit_time" value="<?php echo $problem[0]->limit_time;?>">
@@ -122,7 +136,7 @@
 <input type="hidden" name="number" value="<?php echo $number+1;?>">
 <input type="hidden" name="lave" value="<?php echo $lave-1;?>">
 <input type="hidden" name="r_id" value="<?php echo $problem_id;?>">
-<input type="hidden" name="r_type" value="btjd">
+<input type="hidden" name="r_type" value="<?php if($id==26){echo 'btjd';}else{echo 'wydt';};?>">
 <input type="hidden" name="point" id="r_point" value="<?php echo $point;?>">
 <input type="hidden" name="record[nick_name]" id="nick_name">
 <input type="hidden" name="record[phone]" id="phone">
@@ -158,6 +172,7 @@
 		});
 		if (answer == r_answer){
 			$("#r_point").attr('value', parseInt($("#r_point").attr('value'))+add_point);
+			$("#is_right").attr('value','1');
 		}
 		if(lave==0){
 			tb_show('请填入您的个人信息','info.php?height=300&width=400&modal=true');

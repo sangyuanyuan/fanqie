@@ -35,7 +35,7 @@
 		$msys=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="美食养生" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
 		$gwmd=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="购物摩登" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
 		$tyyl=$db->query('SELECT s.id,c.platform,s.photo_src,s.short_title,c.name FROM smg_news s inner join smg_category c on s.category_id=c.id and c.name="体育娱乐" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 2');
-		$tk=$db->query('select id,name from smg_problem order by create_time desc limit 7');
+		$tk=$db->query('select id,name from smg_problem where is_adopt=0 order by create_time desc limit 7');
 		$tp=$db->query('SELECT id,name FROM smg_vote s order by created_at desc limit 12');
 		$man=$db->query('select name,birthday,height,education,photo,school from smg_marry where sex="man" order by id desc limit 5');
 		$woman=$db->query('select name,birthday,height,education,photo,school from smg_marry where sex="woman" order by id desc limit 5');
@@ -269,10 +269,10 @@
 			<div id=t_r_answer_t>
 				<div id=pic><img src="/images/server/index_dt.jpg"></div>
 				<div id=content>
-					<div id="title"><?php echo $tk[0]->name;?></div>
+					<div id="title">百题竞答</div>
 				</div>
 				<div id=dt>
-					<a target="_blank" href="/answer/pro_answer.php?id=<?php echo $tk[0]->id;?>"><img border=0 src="/images/server/index_start_dt.jpg"></a>
+					<a target="_blank" href="/answer/pro_answer.php?id=26"><img border=0 src="/images/server/index_start_dt.jpg"></a>
 				</div>
 			</div>
 			<div id=t_r_answer_b>
