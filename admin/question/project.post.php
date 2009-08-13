@@ -12,7 +12,6 @@
 		close_db();
 		echo $_POST['del_id'];
 	}else{
-		//var_dump($_POST);
 		$project = new table_class('smg_problem');
 		if(""!=$_POST['id']){
 			$project->find($_POST['id']);
@@ -28,7 +27,7 @@
 			}
 			$project->photo_url = "/upload/images/" .$img;
 		}
-		
+		$project->update_attributes($_POST['post'],false);
 		if($_POST['start_time']==""){
 			$project->start_time = "00-00-00";
 		}else{
@@ -39,7 +38,7 @@
 		}else{
 			$project->end_time = $_POST['end_time'];
 		}
-		$project->update_attributes($_POST['post']);
+		$project->save();
 		
 		redirect('project_list.php');
 	}
