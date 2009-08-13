@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>传承文化 传播知识 传达真实的力量</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php 
 	use_jquery();
 	js_include_once_tag('total');
