@@ -56,7 +56,7 @@
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
 			<td colspan="6">
-				　<a href="news_add.php">添加新闻</a>　搜索　<input id=title1 type="text" value="<? echo $title;?>"><select id=dept style="width:100px" class="select_new">
+				　<a href="news_add.php">添加新闻</a>　搜索　<input id=title1 type="text" value="<? echo $title;?>"><select id=dept style="width:100px">
 					<option value="">发表部门</option>
 					<?php for($i=0;$i<count($rows_dept);$i++){?>
 					<option value="<?php echo $rows_dept[$i]->id; ?>" <?php if($rows_dept[$i]->id==$_REQUEST['dept']){?>selected="selected"<? }?>><?php echo $rows_dept[$i]->name;?></option>
@@ -183,7 +183,7 @@
 		$('#search_new1').click(function(){
 			send_search();
 		});
-		$('#adopt1').change(function(){
+		$('#adopt1,#dept').change(function(){
 			send_search();
 		});
 		$('#title1').keypress(function(e){
