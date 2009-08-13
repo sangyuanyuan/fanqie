@@ -12,6 +12,7 @@
 	js_include_once_tag('total');
 ?>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 <!--
 function MM_swapImgRestore() { //v3.0
@@ -58,6 +59,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
   </div>
     <div class="submain">
     		<?php
+				$db=get_db();
 				$news = new table_class('smg_news');
 				$news -> find($id);
 				$news->click_count = $news->click_count+1;
@@ -68,16 +70,42 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 					redirect($news->target_url);
 				};
 			?>
-    		<div class="sub_l">
-        
-        </div>
-        <div class="sub_right">
-        	<? echo $news->content?>
-        </div>
+        <div class="sub_right" style=" width:970px; margin:auto; margin-top:20px;">
+        	<? echo get_fck_content($news->content);
+				$rows=$db->query('select * from smg_comment where resource_id='.$id);
+			?>
+		<? for($i=0;$i<count($rows);$i++){?>
+        	<div style="width:760px; height:20px; margin-top:10px; margin-left:50px; line-height:15px; color:#000000;  text-align:right; border-bottom:1px dashed #000000; float:left; display:inline;"><? echo $rows[$i]->created_at;?>　　<? echo $rows[$i]->nick_name;?></div>
+  			<div style="width:760px; margin-top:10px; margin-left:100px; line-height:15px; border-bottom:2px solid #000000; color:#000000; float:left; display:inline;"><? echo $rows[$i]->comment;?></div>
+  		<? }?>
+  			
+  		</div>
+	</div>
+  		<div style="width:970px; height:33px; padding-top:5px; padding-left:10px; margin-top:10px;  font-size:12px; font-weight:bold; line-height:15px; color:#ffffff; background:url(pic/lyb_bg.jpg) repeat-x; float:left; display:inline;">发表评论</div>
+  			<form name="commentform" method="post" action="/pub/pub.post.php">
+	  			<div style="width:970px; margin-left:40px; padding-top:5px; padding-left:10px; margin-top:10px;  font-size:12px; font-weight:bold; line-height:15px; float:left; display:inline;">
+	  				<table>
+	  					<tr>	
+	  						<td>用　户：</td>
+	  						<td align="left"><input type="text" id="commenter" name="post[nick_name]" ></td>
+	  					</tr>
+	  					<tr>
+	  						<td>内　容：</td>
+	  						<td><TEXTAREA name="post[comment]" cols="30" rows="8" id="commentcontent"></TEXTAREA></td>
+	  					</tr>
+	  					<tr>
+	  						<td><input type="hidden" name="post[resource_id]" value="<?php echo $id; ?>"></td>
+							<input type="hidden" id="resource_type" name="post[resource_type]" value="news">
+							<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
+	  						<td align="right"><BUTTON type="submit">提交</BUTTON></td>
+	  					</tr>
+	  				</table>
+	  			</div>
+  			</form>
+  			</div>
     </div>
     <div class="siteinfo">
     </div>
-
 </div>
 </body>
 </html>
