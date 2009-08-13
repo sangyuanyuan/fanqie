@@ -2,7 +2,8 @@
 	 require_once('../../frame.php');
 ?>
 
-<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
@@ -30,6 +31,7 @@ A:visited{
 	color: #FFFFFF;
 	text-decoration: none;
 }
+
 -->
 </style>
 </head>
@@ -87,7 +89,7 @@ include("inc/topbar.inc.php");
                 </table></td>
               </tr>
             <tr>
-              <td height="137" align="center" valign="top" background="images/left_02.jpg">
+              <td height="137" align="left" valign="top" background="images/left_02.jpg">
               <table width="246" border="0" cellspacing="0" cellpadding="0">
                 <tr valign="top">
                   <td height="143"  class="blue">
@@ -119,7 +121,7 @@ include("inc/topbar.inc.php");
                 </table></td>
               </tr>
             <tr>
-              <td height="205" align="center" valign="top" background="images/left_04.jpg"><table width="246" border="0" cellspacing="0" cellpadding="0">
+              <td height="205" align="left" valign="top" background="images/left_04.jpg"><table width="246" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td class="green">
                    <? for($i=0;$i<$count;$i++)
@@ -143,7 +145,7 @@ include("inc/topbar.inc.php");
                 </table></td>
               </tr>
             <tr>
-              <td height="168" align="center" background="images/left_06.jpg"><table width="246" border="0" cellspacing="0" cellpadding="0">
+              <td height="168" align="left" background="images/left_06.jpg"><table width="246" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td class="yel">
                   <?php
@@ -178,7 +180,7 @@ include("inc/topbar.inc.php");
                 </table></td>
               </tr>
             <tr>
-              <td height="175" align="center" background="images/left_09.jpg"><table width="225" border="0" cellspacing="0" cellpadding="0">
+              <td height="175" align="left" background="images/left_09.jpg"><table width="225" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <?php  
 						$sql = 'select id,name from smg_vote where is_adopt=1 order by created_at desc limit 8';
@@ -210,7 +212,7 @@ include("inc/topbar.inc.php");
                 </table></td>
               </tr>
             <tr>
-              <td height="165" align="center" background="images/left_11.jpg"><table width="246" border="0" cellspacing="0" cellpadding="0">
+              <td height="165" align="left" background="images/left_11.jpg"><table width="246" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td valign="top" class="gry"> 	
                   	<?php
@@ -230,7 +232,7 @@ include("inc/topbar.inc.php");
               <td height="14"><img src="images/left_12.jpg" width="255" height="14" alt=""></td>
               </tr>
             </table></td>
-            <td valign="top" align="center">
+            <td valign="top" align="left">
             <table id="__01" width="418" border="0" cellpadding="0" cellspacing="0">
               <tr>
               	<?php 
@@ -283,7 +285,7 @@ include("inc/topbar.inc.php");
                   </table></td>
               </tr>
               <tr>
-                <td height="170" align="center" valign="top" background="images/med_03.jpg">
+                <td height="170" align="left" valign="top" background="images/med_03.jpg">
                 	<table width="405" border="0" cellspacing="0" cellpadding="0">
 	                  <tr>        						
 	                    <td class="gre-nr" valign="top">
@@ -338,7 +340,7 @@ include("inc/topbar.inc.php");
                   </table></td>
               </tr>
               <tr valign="top">
-                <td height="167" align="center" background="images/med_06.jpg"><table width="405" border="0" cellspacing="0" cellpadding="0">
+                <td height="167" align="left" background="images/med_06.jpg"><table width="405" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td class="gre-nr">
                     		<?php for($i=0;$i<$count;$i++){?>
@@ -368,7 +370,7 @@ include("inc/topbar.inc.php");
                   </table></td>
               </tr>
               <tr>
-                <td height="167" align="center" valign="top" background="images/med_09.jpg"><table width="405" border="0" cellspacing="0" cellpadding="0">
+                <td height="167" align="left" valign="top" background="images/med_09.jpg"><table width="405" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td class="gre-nr">
                     	<?php for($i=0;$i<$count;$i++){?>
@@ -398,7 +400,7 @@ include("inc/topbar.inc.php");
                   </table></td>
               </tr>
               <tr>
-                <td height="133" align="center" background="images/med_12.jpg"><table width="404" height="20" border="0" cellpadding="0" cellspacing="0">
+                <td height="133" align="left" background="images/med_12.jpg"><table width="404" height="20" border="0" cellpadding="0" cellspacing="0">
                   <tr>        
                  		<td colspan="3">
                  			<marquee height="133" onmouseover=this.stop() onmouseout=this.start() >
@@ -425,7 +427,7 @@ include("inc/topbar.inc.php");
                   </table></td>
               </tr>
               <tr>
-                <td width="271" height="340" align="center" valign="top" background="images/rig_02.jpg"><table width="251" height="92" border="0" cellpadding="0" cellspacing="0">
+                <td width="271" height="340" align="left" valign="top" background="images/rig_02.jpg"><table width="251" height="92" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td colspan="2" class="m-t">
                     	<?php
@@ -445,7 +447,7 @@ include("inc/topbar.inc.php");
 						$count = count($records);
 					?>
                       <td width="146" height="20" class="m-t">[私房推荐]</td>
-                      <td width="114" rowspan="2" align="center"><img src="<? echo $records[0]->photo_src;?>" width="80" height="80"></td>
+                      <td width="114" rowspan="2" align="left"><img src="<? echo $records[0]->photo_src;?>" width="80" height="80"></td>
                     </tr>
                     <tr>
                       <td class="nr-d"><a target="_blank" href="news.php?id=<? echo $records[0]->id;?>" class="nr-d"><? echo $records[0]->title; ?></a></td>
@@ -481,11 +483,11 @@ include("inc/topbar.inc.php");
                   </table></td>
               </tr>
               <tr>
-                <td height="250" align="center" valign="top" background="images/rig_06.jpg"><table width="251" height="92" border="0" cellpadding="0" cellspacing="0">
+                <td height="250" align="left" valign="top" background="images/rig_06.jpg"><table width="251" height="92" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td width="146" height="25" class="m-t">[群团乐趣]</td>
                     
-                    <td width="114" rowspan="2" align="center"><img src="<? echo $records[0]->photo_src; ?>" width="80" height="80"></td>
+                    <td width="114" rowspan="2" align="left"><img src="<? echo $records[0]->photo_src; ?>" width="80" height="80"></td>
                   </tr>
                   <tr>
                     <td class="nr-d"><a target="_blank" href="news.php?id=<? echo $records[0]->id;?>" class="whi"><? echo $records[0]->title;?></a></td>
@@ -523,10 +525,10 @@ include("inc/topbar.inc.php");
                   </table></td>
               </tr>
               <tr>
-                <td height="250" align="center" valign="top" background="images/rig_08.jpg"><table width="251" height="92" border="0" cellpadding="0" cellspacing="0">
+                <td height="250" align="left" valign="top" background="images/rig_08.jpg"><table width="251" height="92" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                   	<td width="146" height="25" class="m-t">&nbsp;</td>
-                    <td width="114" rowspan="2" align="center"><img src="<?php echo $records[0]->photo_src;?>" width="80" height="80"></td>
+                    <td width="114" rowspan="2" align="left"><img src="<?php echo $records[0]->photo_src;?>" width="80" height="80"></td>
                   </tr>
                   <tr>
                     <td class="nr-d"><a target="_blank" href="news.php?id=<?php echo $records[0]->id;?>" class="whi"><?php echo $records[0]->title;?></a></td>
@@ -550,7 +552,7 @@ include("inc/topbar.inc.php");
               </table></td>
         </tr>
         <tr>
-          <td height="101" colspan="3" align="center" valign="middle" background="images/di.jpg" class="nr-d">上海文广新闻传媒集团  纪实频道 版权所有<br>
+          <td height="101" colspan="3" align="left" valign="middle" background="images/di.jpg" class="nr-d">上海文广新闻传媒集团  纪实频道 版权所有<br>
             建议 1024X768 浏览效果最佳</td>
         </tr>
     </table></td></tr>
