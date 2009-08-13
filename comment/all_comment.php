@@ -200,21 +200,21 @@
 			
 			<div id=b_b_2 class="b_b" style="display:block;">
 			<?php 
-			 $sql="select * from smg_dept order by click_count desc limit 10";
+			 $sql="select * from smg_djl_count limit 10";
 			 $clickcount=$db->query($sql);
-			 $total=$db->query("select sum(click_count) as total from smg_dept");
+			 $total=$db->query("select sum(num) as total from smg_djl_count");
 			 for($i=0;$i<count($clickcount);$i++){	 	
 			 ?>
 			 	<div class="r_b2_content">
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><?php echo delhtml($clickcount[$i]->name);?></div><div class=percentage><?php $count=$clickcount[$i]->click_count/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+			 			<div class=cl1><?php echo delhtml($clickcount[$i]->name);?></div><div class=percentage><?php $count=$clickcount[$i]->num/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }else{?>
 						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
-						<div class=cl2><?php echo delhtml($clickcount[$i]->name);?></div><div class=percentage><?php $count=$clickcount[$i]->click_count/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+						<div class=cl2><?php echo delhtml($clickcount[$i]->name);?></div><div class=percentage><?php $count=$clickcount[$i]->num/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }?>				
 				</div>
-			 <? }?>
+			 <? }?>s
 			 </div>
 		</div>
 	</div>
