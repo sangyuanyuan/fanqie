@@ -193,7 +193,7 @@
 		});
 		
 		function send_search(){
-			var href ="?title="+$("#title1").attr('value')+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt1").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
+			var href ="?title="+encodeURI($("#title1").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt1").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
 			if($('#full_text').attr('checked')){
 				href = href + "&full_text=1";
 			}
