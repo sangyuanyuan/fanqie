@@ -205,7 +205,7 @@
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							</div>
-							<div class=title style="margin-left:10px;">我的承诺<div class=more><a target="_blank" href="djlist.php?id=<?php echo $zsbd[0]->cid;?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;">我的承诺</div>
 							<div class=title style="margin-left:10px;">我的博客</div>
 							<div style="width:350px; height:90px; float:left; display:inline;">
 								<? 
