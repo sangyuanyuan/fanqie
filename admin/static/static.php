@@ -92,7 +92,7 @@ if($type=="report")
 
 }
 
-if($type=="weather")
+if($type=="weather"||$type="index")
 {
 	$full_path='http://qixiang.xixik.com/call/5/58362.htm';
 	$fcontent="";
