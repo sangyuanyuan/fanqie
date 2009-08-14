@@ -6,11 +6,11 @@
 	$cookie=isset($_COOKIE['news_'.date('Y-m-d').$id]) ? $_COOKIE['news_'.date('Y-m-d').$id] : 0;
 	if($cookie==0)
 	{
-		@SetCookie('news_'.date('Y-m-d').$id,1);
+		setcookie('news_'.date('Y-m-d').$id,1);
 	}
 	else
 	{
-		@SetCookie('news_'.date('Y-m-d').$id,$cookie+1);
+		setcookie('news_'.date('Y-m-d').$id,$cookie+1);
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -57,6 +57,7 @@
 	</script>
 	<? }?>
  <?php
+ alert($cookie);
   if($cookie<=200){
   if($record[0]->cplatform=="news"){?>
 <script>
