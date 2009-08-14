@@ -12,7 +12,7 @@
 	<? 	
 		css_include_tag('index','top','bottom');
 		use_jquery();
-	  js_include_once_tag('index','total');
+	  js_include_once_tag('total','index');
   ?>
 	
 </head>
@@ -134,10 +134,10 @@ total("首页","other");
  				</div>  			 			
   			<div class=list id=list2  <?php if($record_inline[0]->name=='spxw'){?>style="display:inline"<?php }?>>
  					<ul>
- 						<li class=video style="color:#2C345B; font-weight:bold; background:url(/images/icon/arrow2.gif) no-repeat 0 3px" param1=<?php echo $record_video[0]->video_photo_src ?> param2=<?php echo $record_video[0]->video_src ?>><?php echo $record_video[0]->short_title ?></li>
- 						<li class=video param1=<?php echo $record_video[1]->video_photo_src ?> param2=<?php echo $record_video[1]->video_src ?>><?php echo $record_video[1]->short_title ?></li>
- 						<li class=video param1=<?php echo $record_video[2]->video_photo_src ?> param2=<?php echo $record_video[2]->video_src ?>><?php echo $record_video[2]->short_title ?></li>
- 						<li class=video param1=<?php echo $record_video[3]->video_photo_src ?> param2=<?php echo $record_video[3]->video_src ?>><?php echo $record_video[3]->short_title ?></li>
+ 						<li class=video style="color:#2C345B; font-weight:bold; background:url(/images/icon/arrow2.gif) no-repeat 0 3px" param1=<?php echo $record_video[0]->video_photo_src ?> param2=<?php echo $record_video[0]->video_src ?> ><?php echo $record_video[0]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[1]->video_photo_src ?> param2=<?php echo $record_video[1]->video_src ?> ><?php echo $record_video[1]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[2]->video_photo_src ?> param2=<?php echo $record_video[2]->video_src ?> ><?php echo $record_video[2]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[3]->video_photo_src ?> param2=<?php echo $record_video[3]->video_src ?> ><?php echo $record_video[3]->short_title ?></li>
  					</ul>	
  				</div>
  				<div class=list id=list3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
