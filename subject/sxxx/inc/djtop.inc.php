@@ -72,6 +72,6 @@ $mtpl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 								
 							</div>
 							<div class=title>相关链接</div>
-							<a style="margin-top:10px; float:left; display:inline;" target="_blank" href="http://www.xinhuanet.com/zgjx/"><img border=0 src="zgjxsxjy.jpg"></a>
+							<a style="margin-top:10px; float:left; display:inline;" target="_blank" href="http://www.xinhuanet.com/zgjx/"><img width=225 border=0 src="zgjxsxjy.jpg"></a>
 						</div>
 					</div>
