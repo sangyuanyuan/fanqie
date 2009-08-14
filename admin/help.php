@@ -21,6 +21,18 @@ require_once('../frame.php');
 		<tr height="20" align="center">
 			<td>swf格式文件转换视频格式文件工具</td><td><a href='/tools/swf-video.rar'>下载</a></td>
 		</tr>
+		<tr height="20" align="center">
+			<td>番茄网后台帮助文档</td><td><a href='/tools/manager.doc'>下载</a></td>
+		</tr>
+		<tr height="20" align="center">
+			<td>论坛帮助文档</td><td><a href='/tools/Discuz! 7.0.0.chm'>下载</a></td>
+		</tr>
+		<tr height="20" align="center">
+			<td>博客帮助文档</td><td><a href='/tools/SupeSite&X-Space.chm'>下载</a></td>
+		</tr>
+		<tr height="20" align="center">
+			<td>家园帮助文档</td><td><a href='/tools/UCHome 1.5.chm'>下载</a></td>
+		</tr>
 	</table>
 </body>
 </html>
