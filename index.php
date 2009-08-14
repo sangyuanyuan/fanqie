@@ -82,7 +82,7 @@ total("首页","other");
 					
 				<? }?>	
   		  </div>
- 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg) no-repeat;<?php if($record_inline[0]->name=='spxw'){?> display:inline"<?php }?>>
+ 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg) no-repeat;<?php if($record_inline[0]->name=='spxw'){?> display:inline;<?php }?>">
  					<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=235px height=182px scrolling="no" frameborder="0"></iframe>
  				</div>
   			<div class=content_tlt id=content3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
@@ -219,7 +219,7 @@ total("首页","other");
 				$record_head=$db -> query($sql);
 			?>
 			<div id=t_r_t>
- 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a><?php echo show_video($record_head[0]->video_flag,40,35)?></div>
+ 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a><?php echo show_video($record_head[0]->video_flag,40,35)?><?php echo show_img($record_head[0]->image_flag,40,35)?></div>
  				<a href="/news/news_list.php?id=<?php echo $record_head[0]->cid; ?>" id=btn target=_blank></a>
  				<div id=content>
  				<?php
@@ -786,15 +786,16 @@ total("首页","other");
  			<div id=b_t_r>
 				<div class=m_box>
 					<?php  
-						$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
+						$sql = 'select id,title from smg_question where is_adopt=1 and problem_id=27 order by create_time desc limit 6';
 						$record = $db->query($sql);
 						$count = count($record);
 					?>
-					<div class="top_title"><a href="/answer/answer.php?id=<?php echo $record[0]->id; ?>" title="<?php echo $record[0]->title; ?>" target=_blank><?php echo $record[0]->title; ?></a></div>
+					<div class="top_title"><a href="/answer/pro_answer.php?id=27"  target=_blank>脑筋急转弯第一期</a></div>
 					<?php 
 						for($i=1;$i<$count;$i++){
 					?>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/answer.php?id=<?php echo $record[$i]->id ?>" title="<?php echo $record[$i]->title; ?>" target=_blank><?php echo $record[$i]->title ?></a></li></div>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=27" title="脑筋急转弯第一期" target=_blank><?php echo $record[$i]->title ?></a></li></div>
+					<!--<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/answer.php?id=<?php echo $record[$i]->id ?>" title="<?php echo $record[$i]->title; ?>" target=_blank><?php echo $record[$i]->title ?></a></li></div>-->
 					<?php
 						}
 					?>
