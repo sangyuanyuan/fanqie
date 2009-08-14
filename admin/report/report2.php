@@ -25,7 +25,7 @@ $clickcount1=$db->paginate("select sum(count) as count,name from smg_total where
 <div style="margin:20px 0 0 20px">
 	<input type="hidden" id="type" value="<?php echo $type;?>">
 	开始：<input type="text" id="starttime"  value="<? echo $_REQUEST['start'];?>" onfocus="WdatePicker()" style="width:150px"/>　　
-	结束：<input type="text" id="endtime"   value="<? echo $_REQUEST['end'];?>"  onfocus="WdatePicker()"  style="width:150px"/>　　
+	结束：<input type="text" id="endtime"   value="<? echo $_REQUEST['end'];?>"  onfocus="WdatePicker()"  style="width:150px"/>
 	<a href="#" onClick="cx()" style="color:#0033FF">确定</a><br />
 </div>
 	<table border=1 style="margin-top:15px; background:#ffffff; " width="100%">
