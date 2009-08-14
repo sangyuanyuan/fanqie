@@ -187,7 +187,7 @@
 								<? }?>
 							</div>
 							<div class=title style="margin-left:10px;">专题讲座<div class=more><a target="_blank" href="djlist.php?id=<?php echo $ztjz[0]->cid;?>">更多</a></div></div>
-							<div class=title style="margin-left:10px;">规章制度<div class=more><a target="_blank" href="djlist2.php">更多</a></div></div>	
+							<div class=title style="margin-left:10px;">规章制度<div class=more><a target="_blank" href="djlist.php?id=<?php echo $gzzd[0]->cid;?>">更多</a></div></div>	
 							<div style="width:350px; height:120px; float:left; display:inline;">
 								<? 
 									for($i=0;$i<count($ztjz);$i++){?>
