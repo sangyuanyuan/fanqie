@@ -92,6 +92,36 @@ if($type=="report")
 
 }
 
+if($type=="weather")
+{
+	$full_path='http://qixiang.xixik.com/call/5/58362.htm';
+	$fcontent="";
+	$fp= fopen($full_path,'r');
+	while(!feof($fp))
+	{
+  		$fcontent=$fcontent.fgets($fp,4096);
+	}
+	fclose($fp);
+	$fcontent=StrChar($fcontent);
+	$fcontent = strstr($fcontent, '<div class="temperature">');
+	$fcontent=strip_tags($fcontent);
+	$fcontent=str_replace('详细&raquo;','',$fcontent);
+	$fcontent=str_replace('℃～','!@#$%^&*()',$fcontent);
+	$fcontent=str_replace('℃','℃ ',$fcontent);
+	$fcontent=str_replace('!@#$%^&*()','℃～',$fcontent);
+	$fcontent = '<meta http-equiv=Content-Type content="text/html; charset=utf-8">'.$fcontent;
+	$fcontent = '<body style="margin:0; background:#CD3301;  color:#ffffff;  font-size:12px; text-align:center">'.$fcontent;
+	$fcontent = $fcontent.'</body>';
+	
+	$filename='../../index_weather.html';
+	$handle=fopen($filename,"wt");
+	
+	fwrite($handle,$fcontent);
+	fclose($handle);
+  echo "天气预报静态执行成功<br>";
+
+}
+
 
 
 
