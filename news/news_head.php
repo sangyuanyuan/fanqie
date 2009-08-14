@@ -3,14 +3,14 @@
 	$id=$_REQUEST['id'];
 	if($id==""||$id==null){die('没有找到网页');}
 	$cookie= (isset($_COOKIE['vote_user'])) ? $_COOKIE['vote_user'] : 0;
-	$cookie=isset($_COOKIE['news_head_'.date('Y-m-d').$id]) ? $_COOKIE['news_'.date('Y-m-d').$id] : 0;
-	if($cookie==0)
+	$cookie1=isset($_COOKIE['news_head_'.date('Y-m-d').$id]) ? $_COOKIE['news_head_'.date('Y-m-d').$id] : 0;
+	if($cookie1==0)
 	{
-		@SetCookie('news_head_'.date('Y-m-d').$id,1);
+		setcookie('news_head_'.date('Y-m-d').$id,1);
 	}
 	else
 	{
-		@SetCookie('news_head_'.date('Y-m-d').$id,$cookie+1);
+		setcookie('news_head_'.date('Y-m-d').$id,$cookie1+1);
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -25,11 +25,6 @@
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub','total');
 		$db = get_db();
-		if($cookie<=200)
-		{
-			$sql="update smg_news set click_count=click_count+1 where id=".$id;
-			$db->execute($sql);
-		}
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);	
 		$about = array();
@@ -64,7 +59,7 @@
 	</script>
 	<? }?>
  <?php 
- if($cookie<=200){
+ if($cookie1<=200){
  if($record[0]->cplatform=="news"){?>
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","news");
@@ -85,7 +80,10 @@
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","other");
 </script>
-<?php }} ?>
+<?php }
+$sql="update smg_news set click_count=click_count+1 where id=".$id;
+$db->execute($sql);
+} ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <? 

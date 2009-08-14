@@ -52,7 +52,7 @@ $xxzl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 									</a>
 								</div>
 							</div>
-							<div class=more><a target="_blank" href="djlist.php?id=<?php $zxdt[0]->cid;?>">更多>></a></div>
+							<div class=more><a target="_blank" href="djlist.php?id=<?php echo $zxdt[0]->cid;?>">更多>></a></div>
 							<div class=title>活动视频</div>
 								<? 
 								$video = $db->query('select n.id,n.title,n.photo_url,n.video_url,i.category_id as cid from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="活动视频" and i.category_type="video" and i.is_adopt=1 and c.name="学习实践活动专题" order by i.priority asc, n.created_at desc limit 3');?>
@@ -63,7 +63,7 @@ $xxzl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 								<? }?>			
 							<div class=more><a target="_blank" href="video_list.php?id=<?php echo cid; ?>">更多>></a></div>
 							<div class=title>三项学习教育</div>
-							<a href="/subjec/sxxx/"><img border=0 style="margin-left:10px; margin-top:5px;" width="205" height="58" src="images/sxxx.jpg"></a>
+							<a href="/subject/sxxx/"><img border=0 style="margin-left:10px; margin-top:5px;" width="205" height="58" src="images/sxxx.jpg"></a>
 							<div class=title>信息简报</div>						
 								<? 
 									for($i=0;$i<count($xxjb);$i++){

@@ -11,21 +11,21 @@ $gzzd = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 $alfx = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="案例警示" order by i.priority asc, n.created_at desc limit 6');
 $mtpl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="媒体评论" order by i.priority asc, n.created_at desc limit 6');
 ?>		
-		<div id=title><div class="cl"><a target="_blank" href="index.php">首页</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $jdls[0]->cid; ?>">经典论述</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php $zxdt[0]->cid; ?>">最新动态</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $ldjh[0]->cid; ?>">领导讲话</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $xxxd[0]->cid; ?>">学习心得</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $xxjb[0]->cid;?>">信息简报</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $ztjz[0]->cid;?>">专题讲座</a></div><div class="cl"><a target="_blank" href="djlist2.php">我为集团献一计</a></div><div class="cl"></div><div class="cl"><a target="_blank" href="/djnews/djnews.php">学实活动</a></div></div>
+		<div id=title><div class="cl"><a target="_blank" href="index.php">首页</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $jdls[0]->cid; ?>">经典论述</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php $zxdt[0]->cid; ?>">最新动态</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $ldjh[0]->cid; ?>">领导讲话</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $xxxd[0]->cid; ?>">学习心得</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $xxjb[0]->cid;?>">信息简报</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $ztjz[0]->cid;?>">专题讲座</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $alfx[0]->cid; ?>">案例警示</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $mtpl[0]->cid; ?>">媒体评论</a></div><div class="cl"><a target="_blank" href="/djnews/djnews.php">学实活动</a></div></div>
 		<div style="width:1002px; background:#F9B628;">
 			<div id=content>
 				<div id=context>
 					<div id=left>
 						<div id=content>
 							<div class=title>学实活动</div>			
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/djnews/djnews.php?id=1">领导讲话</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/djnews/djnews.php?id=1">步骤安排</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/djnews/djnews.php?id=1">最新动态</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/djnews/djnews.php?id=1">文件摘编</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/djnews/djnews.php?id=1">学习资料</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/djnews/djnews.php?id=1">三分钟论坛</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/djnews/djnews.php?id=1">即知即改</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/djnews/djnews.php?id=1">三分钟答题</a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=53">领导讲话</a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=54">步骤安排</a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=50">最新动态</a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=55">文件摘编</a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=67">学习资料</a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist2.php">三分钟论坛</a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=69">即知即改</a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djnews.php?id=1">三分钟答题</a></div>
 							<div class=title>活动视频</div>
 							
 								<? 
@@ -33,7 +33,7 @@ $mtpl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 								<div style="width:200px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><? show_video_player(200,230,$video[0]->photo_url,$video[0]->video_url);?></div>
 									<? 	
 								for($i=1;$i<count($video);$i++){?>
-								<div style="width:200px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/video/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
+								<div style="width:200px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/show/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
 								<? }?>			
 							<div class=more><a target="_blank" href="video_list.php?id=<?php echo $video[0]->cid ?>">更多>></a></div>
 							
@@ -72,6 +72,6 @@ $mtpl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 								
 							</div>
 							<div class=title>相关链接</div>
-							<a style="margin-top:10px; float:left; display:inline;" target="_blank" href="http://www.xinhuanet.com/zgjx/"><img border=0 src="zgjxsxjy.jpg"></a>
+							<a style="margin-top:10px; float:left; display:inline;" target="_blank" href="http://www.xinhuanet.com/zgjx/"><img width=225 border=0 src="zgjxsxjy.jpg"></a>
 						</div>
 					</div>
