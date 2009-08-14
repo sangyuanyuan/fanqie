@@ -22,7 +22,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-展示-每日之星</title>
+	<title>SMG-番茄网-展示-<?php echo $category_name;?></title>
 	<?php
 		css_include_tag('show_article','top','bottom','thickbox');
 		use_jquery();
