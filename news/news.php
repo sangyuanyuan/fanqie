@@ -57,7 +57,6 @@
 	</script>
 	<? }?>
  <?php
- alert($cookie);
   if($cookie<=200){
   if($record[0]->cplatform=="news"){?>
 <script>
