@@ -25,11 +25,6 @@
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub','total');
 		$db = get_db();
-		if($cookie<=200)
-		{
-			$sql="update smg_news set click_count=click_count+1 where id=".$id;
-			$db->execute($sql);
-		}
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
 		$record=$db->query($sql);	
 		$about = array();
@@ -85,7 +80,10 @@
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","other");
 </script>
-<?php }} ?>
+<?php }
+$sql="update smg_news set click_count=click_count+1 where id=".$id;
+$db->execute($sql);
+} ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <? 
