@@ -3,14 +3,14 @@
 	$id=$_REQUEST['id'];
 	if($id==""||$id==null){die('没有找到网页');}
 	$cookie= (isset($_COOKIE['vote_user'])) ? $_COOKIE['vote_user'] : 0;
-	$cookie=isset($_COOKIE['news_head_'.date('Y-m-d').$id]) ? $_COOKIE['news_'.date('Y-m-d').$id] : 0;
-	if($cookie==0)
+	$cookie1=isset($_COOKIE['news_head_'.date('Y-m-d').$id]) ? $_COOKIE['news_head_'.date('Y-m-d').$id] : 0;
+	if($cookie1==0)
 	{
-		@SetCookie('news_head_'.date('Y-m-d').$id,1);
+		setcookie('news_head_'.date('Y-m-d').$id,1);
 	}
 	else
 	{
-		@SetCookie('news_head_'.date('Y-m-d').$id,$cookie+1);
+		setcookie('news_head_'.date('Y-m-d').$id,$cookie1+1);
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -59,7 +59,7 @@
 	</script>
 	<? }?>
  <?php 
- if($cookie<=200){
+ if($cookie1<=200){
  if($record[0]->cplatform=="news"){?>
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","news");
