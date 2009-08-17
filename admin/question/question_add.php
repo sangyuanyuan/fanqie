@@ -76,7 +76,7 @@
 		var num = 2;
 		$("#add_item").click(function(){
 			num++;
-			$(this).parent().parent().next().after('<tr class="tr3" ><td>答案选项</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><input type="checkbox" class="check" name="item'+num+'[attribute]"><a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
+			$(this).parent().parent().next().after('<tr class="tr3" ><td>答案选项</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><input type="checkbox" class="check" name="check'+num+'"><a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
 			$("#num").attr('value',num);
 			$(".del_item").click(function(){
 				$(this).parent().parent().remove();
