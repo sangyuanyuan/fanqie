@@ -44,9 +44,13 @@
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　标题</div>
 		<div class=t_r><input id="news_title" type="text" name="news[title]"></div>
 	</div>
+	<div class=t>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　手机</div>
+		<div class=t_r><input id="news_phone" type="text" name="news[phone]" value="<?php echo $_COOKIE['smg_news_phone'];?>"></div>
+	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　内容</div>
-		<div id=m_r><?php show_fckeditor('news[content]','Admin',true,"270","","750");?></div>
+		<div id=m_r><?php show_fckeditor('news[content]','Admin',true,"230","","750");?></div>
 	</div>
 	<div class=title>视频上传(可选)</div>
 	<div id=b>

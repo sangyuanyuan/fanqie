@@ -100,7 +100,8 @@ $(function(){
 
 $(function(){
 	$(".video").click(function()
-	{
+	{	
+		total("视频新闻","news");	
 		$(".video").css('background','url(/images/icon/arrow1.gif) no-repeat 0 3px');
 		$(".video").css('color','#000000');
 		$(".video").css('font-weight','normal');		
