@@ -8,7 +8,6 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<? 	
 		css_include_tag('index');
-	  js_include_once_tag('total');
   ?>
 </head>
 

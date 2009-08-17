@@ -100,7 +100,7 @@ $(function(){
 
 $(function(){
 	$(".video").click(function()
-	{	
+	{
 		total("视频新闻","news");	
 		$(".video").css('background','url(/images/icon/arrow1.gif) no-repeat 0 3px');
 		$(".video").css('color','#000000');
@@ -109,6 +109,7 @@ $(function(){
 		$(this).css('color','#2C345B');		
 		$(this).css('font-weight','bold');	
 		video_src($(this).attr('param1'),$(this).attr('param2'));
+
 	})	
 	
 	

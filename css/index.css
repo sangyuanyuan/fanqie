@@ -16,7 +16,7 @@ p{margin:0px; padding:0px;}
 #ibody_top #p4{width:215px; margin-top:8px; overflow:hidden; float:right; display:inline;}
 
 #t_l_t{width:272px; height:315px; background:url(/images/index/bg_t_l_t.jpg) no-repeat; float:left; display:inline;}
-#t_l_t #menu{width:246px; height:20px; margin-left:13px; background:#000000; float:left; display:inline;}
+#t_l_t #menu{width:246px; height:20px; margin-left:13px;  float:left; display:inline;}
 #t_l_t #menu .item{width:82px; height:17px; padding-top:3px; line-height:17px; color:#ffffff; text-align:center; cursor:pointer; float:left; display:inline;}
 #t_l_t .content_tlt{width:260px; height:183px; margin-top:8px; line-height:15px;  margin-left:8px; overflow:hidden; float:left; display:none;}
 #t_l_t .content_tlt iframe{margin-top:1px; margin-left:11px; float:left; display:inline;}
