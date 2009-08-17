@@ -14,7 +14,6 @@
 
  $db_server_name = '172.27.203.80';
 
-
  $db_database_name = 'smg_new';
  $db_user_name = 'root';
  $db_password = 'xunao';
