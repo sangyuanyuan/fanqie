@@ -47,7 +47,7 @@
    			<a href="/search/?key=<?php echo urlencode($record[$i]->search_key)?>&search_type=smg_news" target=_blank><?php echo $record[$i]->search_key ?></a>　
    			<? }?>
    		</div>
-		<div id=zongcai><a href='/zongcai/' target="_blank">总裁奖</a></div>
+		<div id=zongcai><a href='/zongcai/' target="_blank"><img border=0 src="/images/pic/zongcaijiang.gif"></a></div>
    	</div>
 		<div id=login>
 			<div id=welcome>			<img src="/images/top/person.jpg">

@@ -1,9 +1,12 @@
+锘�<?php
+	 require_once('../../frame.php');
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css1.css" type="text/css" />
-<title>新闻列表</title>
+<title>鏂伴椈鍒楄〃</title>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
 <script src="Scripts/SpryMenuBar.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -32,35 +35,10 @@ function MM_swapImage() { //v3.0
 //-->
 </script>
 <? 
-include('../inc/db.inc.php');
-ConnectDB();
 $dept_cate_id=$_REQUEST['id'];
-$page=$_REQUEST['page'];
-$strsql='SELECT * FROM smg_news s where isdeptadopt=1 and dept_id=46 and dept_cate_id='.$dept_cate_id;
-$record=mysql_query($strsql) or die ("select error1");
-$record_num=mysql_num_rows($record);
-
-	
-	$page_size=30;
-	$rs_num=$record_num;
-	if( $rs_num>0 ){
-   		if( $rs_num < $page_size ){ $page_count = 1; }               
-   		if( $rs_num % $page_size ){                                  
-       		$page_count = (int)($rs_num / $page_size) + 1;           
-   		}else{
-       		$page_count = $rs_num / $page_size;                      
-  		}
-	}
-	else{
-   		$page_count = 0;
-	}
-
-	if ($page=="")  {$page=1;}
-	if ($page>$page_count)  {$page=$page_count;}
-	if ($page==0)  {$page=1;}
-	if ($page<0)  {$page=1;}
-$strsql='SELECT * FROM smg_news s where isdeptadopt=1 and dept_id=46 and dept_cate_id='.$dept_cate_id.' order by pubdate desc limit '.($page-1)*$page_size.','.($page_size+($page-1)*$page_size);
-$record=mysql_query($strsql) or die ("select error2");
+$db=get_db();
+$strsql='SELECT * FROM smg_news s where is_dept_adopt=1 and dept_id=46 and dept_category_id='.$dept_cate_id;
+$rows=$db->paginate($strsql);
 ?>
 <body onload="MM_preloadImages('pic2/btn_1_1.png','pic2/btn_2_1.png','pic2/btn_3_1.png')">
 <div  class="main">
@@ -79,27 +57,16 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
   </div>
     <div class="submain">
     	<div class="sub_l">
-        <div class="btn"><a href="newslist1.php?id=145" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image1','','pic2/btn_jx_on_03.jpg',1)"><img src="pic2/btn_jx_03.jpg" name="Image1" width="134" height="28" border="0" id="Image1" /></a></div>
-        <div class="btn1"><a href="newslist1.php?id=146" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image2','','pic2/btn_jx_on_06.jpg',1)"><img src="pic2/btn_jx_06.jpg" name="Image2" width="134" height="28" border="0" id="Image2" /></a></div>
-        <div class="btn1"><a href="newslist1.php?id=147" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','pic2/btn_jx_on_08.jpg'',1)"><img src="pic2/btn_jx_08.jpg" name="Image3" width="134" height="28" border="0" id="Image3" /></a></div>
-        <div class="btn1"><a href="newslist1.php?id=148" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','pic2/btn_jx_on_10.jpg'',1)"><img src="pic2/btn_jx_10.jpg" name="Image4" width="134" height="28" border="0" id="Image4" /></a></div>
+        <div class="btn"><a href="newslist1.php?id=<?php echo dept_category_id_by_name('娓╅Θ涓�闅�','涓婃捣鏂囧箍鏁板瓧绉诲姩浼犳挱鏈夐檺鍏徃','news');?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image1','','pic2/btn_jx_on_03.jpg',1)"><img src="pic2/btn_jx_03.jpg" name="Image1" width="134" height="28" border="0" id="Image1" /></a></div>
+        <div class="btn1"><a href="newslist1.php?id=<?php echo dept_category_id_by_name('鍒嗕韩瀹跺洯','涓婃捣鏂囧箍鏁板瓧绉诲姩浼犳挱鏈夐檺鍏徃','news');?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image2','','pic2/btn_jx_on_06.jpg',1)"><img src="pic2/btn_jx_06.jpg" name="Image2" width="134" height="28" border="0" id="Image2" /></a></div>
+        <div class="btn1"><a href="newslist1.php?id=<?php echo dept_category_id_by_name('瀛︽棤姝㈠','涓婃捣鏂囧箍鏁板瓧绉诲姩浼犳挱鏈夐檺鍏徃','news');?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','pic2/btn_jx_on_08.jpg'',1)"><img src="pic2/btn_jx_08.jpg" name="Image3" width="134" height="28" border="0" id="Image3" /></a></div>
+        <div class="btn1"><a href="newslist1.php?id=<?php echo dept_category_id_by_name('浣跨敤涓嬭浇','涓婃捣鏂囧箍鏁板瓧绉诲姩浼犳挱鏈夐檺鍏徃','news');?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','pic2/btn_jx_on_10.jpg'',1)"><img src="pic2/btn_jx_10.jpg" name="Image4" width="134" height="28" border="0" id="Image4" /></a></div>
        </div>
         <div class="sub_right">
-        <? while($rows=mysql_fetch_array($record)){?>
-	  			<div style="width:500px; height:20px; line-height:20px; padding:5px; float:left; display:inline;"><a style="text-decoration:none;" href="news.php?id=<? echo $rows['id'];?>"><? echo $rows['shorttitle'];?></a></div>
+        <? for($i=0;$i<count($rows);$i++){?>
+	  			<div style="width:500px; height:20px; line-height:20px; padding:5px; float:left; display:inline;"><a style="text-decoration:none;" href="news.php?id=<? echo $rows[$i]->id;?>"><? echo $rows[$i]->short_title;?></a></div>
 			  	<? }?><br><br>
-			  	<a href="?page=1">首页</a> 
-						<a href="?id=<? echo $dept_cate_id?>&page=<? echo $page-1?>">上一页</a> 
-						<a href="?id=<? echo $dept_cate_id?>&page=<? echo $page+1?>">下一页</a> 
-						<a href="?id=<? echo $dept_cate_id?>&page=<? echo $page_count?>">末页</a> 
-						共<? echo $rs_num?>条记录 
-						第<? echo $page?>页/共<? echo $page_count?>页
-						<select id=newyearpage onChange="newyearpage()">
-							<? for($i=1;$i<=$page_count;$i++){?>
-							<option <? if($page==$i){?>selected="selected"<? }?> value="<? echo $i;?>">第<? echo $i;?>页</option>
-							<? }?>
-						</select>
-						<input type="hidden" id=page value=<? echo $page;?>>
+			  	<?php paginate('');?>
         </div>
     </div>
     <div class="siteinfo">
