@@ -10,11 +10,14 @@
 	<? 	
 		css_include_tag('news_news_list','top','bottom');
 		use_jquery();
-		js_include_once_tag('news_list');
+		js_include_once_tag('news_list','total');
 		$db = get_db();
   ?>
 	
 </head>
+<script>
+	total("新闻排行","news");
+</script>
 <body>
 <? require_once('../inc/top.inc.html');?>
 <div id=ibody>
