@@ -130,7 +130,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 									$picstext10 = array();
 									for ($i=0;$i<count($photolist);$i++)
 									{
-										$picsurl10[]=$photolist[$i]->photo_src;
+										$picsurl10[]=$photolist[$i]->src;
 										$picslink10[]=$photolist[$i]->url;
 										$picstext10[]=$photolist[$i]->title;
 									}
