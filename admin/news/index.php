@@ -123,7 +123,7 @@
 							<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>
 						<?php }?>
 						<?php if($record[$i]->is_adopt=="0"){?>
-							<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span>
+							<span style="color:#0000FF;cursor:pointer" class="publish" param="<?php echo $record[$i]->phone;?>" name="<?php echo $record[$i]->id;?>">发布</span>
 						<?php }?>
 						<a href="news_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>
 						<a href="/admin/comment/comment.php?id=<?php echo $record[$i]->id;?>&type=news" style="color:#000000; text-decoration:none">评论</a>
@@ -139,6 +139,7 @@
 			}
 			//--------------------
 		?>
+		<div id="senddx" style="display:none;"></div>
 		<tr class="tr3">
 			<td colspan=6><button id="select_all">全选</button><button id="button_delete">删除/退回</button><?php paginate();?><button id=clear_priority>清空优先级</button><button id=edit_priority>编辑优先级</button></td>
 		</tr>
