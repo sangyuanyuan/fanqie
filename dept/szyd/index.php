@@ -169,7 +169,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
               <div  class="center_nr">
      	         	<?php
 					$newslist=show_content('smg_news','news','上海文广数字移动传播有限公司','最新动态','5');
-       				  	for($i=0;$i<count(newslist);$i++) {
+       				  	for($i=0;$i<count($newslist);$i++) {
       					?>
       					<div class="center_content">·<a target="_blank" href="news.php?id=<? echo $newslist[$i]->id;?>" ><?php echo $newslist[$i]->short_title;?></a></div><div class="con_time"><?php echo $newslist[$i]->created_at;?></div>
       					<?php }?>
