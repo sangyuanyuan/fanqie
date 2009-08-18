@@ -39,7 +39,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
             		<?php
 		$newslist = show_content('smg_news','news','上海文广数字移动传播有限公司','公司简介','1');
 	?>
-            		<div style="width:200px; height:165px; margin-top:20px; margin-left:10px; font-size:12px; line-height:18px; text-indent:24px; float:left; display:inline;"><? echo cut_str(delhtml($newslist[0]->content),0,134)."...";?><a target="_blank" style="font-size:12px;" href="news1.php?id=<? echo $newslist[0]->id;?>">[点击详细]</a></div>
+            		<div style="width:200px; height:165px; margin-top:20px; margin-left:10px; font-size:12px; line-height:18px; text-indent:24px; float:left; display:inline;"><? echo mb_substr(delhtml($newslist[0]->content),0,134,'utf-8')."...";?><a target="_blank" style="font-size:12px;" href="news1.php?id=<? echo $newslist[0]->id;?>">[点击详细]</a></div>
             		<div style="width:200px; height:20px; margin-left:10px; float:left; display:inline;"><img width=14 height=14 src="pic/icon.jpg"><a style="color:green; font-size:12px;" target="_blank" href="http://222.68.17.238:5208/wenguang/">实时交通体验网站</a></div>
               </div>
               <div  class="rearch">
