@@ -6,7 +6,7 @@ $(document).ready(function(){
 		if(mobile==""){alert("手机号码不能为空！");return false;}
 		if(mobile.length !=11){alert("手机号码不正确！");return false;}
 		if(mobile.substring(0,2)!='13' && mobile.substring(0,2)!='15' && mobile.substring(0,2)!='18'){alert("手机号码不正确"); return false;}
-		alert('获取成功，请稍候！');
+		alert('获取成功，验证码会发送到您手机上，请稍候！');
 		location.href='http://222.68.17.193:8080/qxt/jbs.jsp?phone='+mobile+'&content='+yanzheng+'&sign=1';	
 		location.href='/dx/dx.php?mobile='+mobile+'&yanzheng='+yanzheng;
 	});
