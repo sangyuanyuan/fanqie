@@ -1,6 +1,5 @@
-<?php
+﻿<?php
 	 require_once('../../frame.php');
-	 $id = $_REQUEST['id'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,11 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css1.css" type="text/css" />
 <title>内容页面</title>
-<?php 
-	js_include_once_tag('total');
-?>
+<script language="javascript" src="/js/smg.js"></script>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
-
+<script src="Scripts/SpryMenuBar.js" type="text/javascript"></script>
 <script type="text/javascript">
 <!--
 function MM_swapImgRestore() { //v3.0
@@ -39,11 +36,18 @@ function MM_swapImage() { //v3.0
 //-->
 </script>
 </head>
-<script>
-	total("文广移动新闻","news");	
-</script>
+
 <body onload="MM_preloadImages('pic2/btn_1_1.png','pic2/btn_2_1.png','pic2/btn_3_1.png')">
 <div  class="main">
+<?		
+$newsid = $_REQUEST['id'];
+$db=get_db();
+$strsql='update smg_news set click_count=click_count+1 where id='.$newsid;
+$db->execute($strsql);
+$strsql='SELECT * FROM smg_comment s where resource_id='.$newsid.' order by created_at desc';
+$rows=$db->paginate($strsql,'5');
+
+?>
 	<div class="top">
 	 
     </div>
@@ -58,29 +62,31 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 </noscript>
   </div>
     <div class="submain">
-    		<?php
-				$db=get_db();
-				$news = new table_class('smg_news');
-				$news -> find($id);
-				$news->click_count = $news->click_count+1;
-				$news -> save();
-				if($news->news_type==2){
-					redirect($news->file_name);
-				}elseif($news->news_type==3){
-					redirect($news->target_url);
-				};
-			?>
-        <div class="sub_right" style=" width:970px; margin:auto; margin-top:20px;">
-        	<? echo get_fck_content($news->content);
-				$rows=$db->query('select * from smg_comment where resource_id='.$id);
-			?>
-		<? for($i=0;$i<count($rows);$i++){?>
-        	<div style="width:760px; height:20px; margin-top:10px; margin-left:50px; line-height:15px; color:#000000;  text-align:right; border-bottom:1px dashed #000000; float:left; display:inline;"><? echo $rows[$i]->created_at;?>　　<? echo $rows[$i]->nick_name;?></div>
+    	<? 
+      		$news=$db->query('select * from smg_news where id='.$newsid);
+      	  if($news[0]->news_type==3)//url链接类新闻
+		  {
+		  	redirect($news[0]->target_url);
+		  	CloseDB();
+		  	exit;
+		  }
+				  //文件新闻
+		  if($news[0]->news_type==2)
+		  {
+		   	redirect($news[0]->file_name);
+		  	CloseDB();
+		  	exit; 	
+		  }
+				  
+      ?>
+    	<div style="width:760px; margin-left:100px;">
+        	<? echo get_fck_content($news[0]->content);?><br>
+        	 <? for($i=0;$i<count($rows);$i++){?>
+  			<div style="width:760px; height:20px; margin-top:10px; margin-left:50px; line-height:15px; color:#000000;  text-align:right; border-bottom:1px dashed #000000; float:left; display:inline;"><? echo $rows[$i]->created_at;?>　　<? echo $rows[$i]->nick_name;?></div>
   			<div style="width:760px; margin-top:10px; margin-left:100px; line-height:15px; border-bottom:2px solid #000000; color:#000000; float:left; display:inline;"><? echo $rows[$i]->comment;?></div>
   		<? }?>
   			
   		</div>
-	</div>
   		<div style="width:970px; height:33px; padding-top:5px; padding-left:10px; margin-top:10px;  font-size:12px; font-weight:bold; line-height:15px; color:#ffffff; background:url(pic/lyb_bg.jpg) repeat-x; float:left; display:inline;">发表评论</div>
   			<form name="commentform" method="post" action="/pub/pub.post.php">
 	  			<div style="width:970px; margin-left:40px; padding-top:5px; padding-left:10px; margin-top:10px;  font-size:12px; font-weight:bold; line-height:15px; float:left; display:inline;">
@@ -94,9 +100,11 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 	  						<td><TEXTAREA name="post[comment]" cols="30" rows="8" id="commentcontent"></TEXTAREA></td>
 	  					</tr>
 	  					<tr>
-	  						<td><input type="hidden" name="post[resource_id]" value="<?php echo $id; ?>"></td>
+	  						<td><input type="hidden" name="post[resource_id]" value="<?php echo $newsid; ?>">
 							<input type="hidden" id="resource_type" name="post[resource_type]" value="news">
 							<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
+							<input type="hidden" name="type" value="comment">
+							</td>
 	  						<td align="right"><BUTTON type="submit">提交</BUTTON></td>
 	  					</tr>
 	  				</table>
@@ -106,6 +114,13 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
     </div>
     <div class="siteinfo">
     </div>
+
 </div>
+<script type="text/javascript">
+<!--
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+//-->
+</script>
 </body>
 </html>
+
