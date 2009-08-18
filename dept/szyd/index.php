@@ -39,7 +39,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
             		<?php
 		$newslist = show_content('smg_news','news','上海文广数字移动传播有限公司','公司简介','1');
 	?>
-            		<div style="width:200px; height:165px; margin-top:20px; margin-left:10px; font-size:12px; line-height:18px; text-indent:24px; float:left; display:inline;"><? echo cut_str(delhtml($newslist->items[0]->content),0,134)."...";?><a target="_blank" style="font-size:12px;" href="news1.php?id=<? echo $newslist->items[0]->id;?>">[点击详细]</a></div>
+            		<div style="width:200px; height:165px; margin-top:20px; margin-left:10px; font-size:12px; line-height:18px; text-indent:24px; float:left; display:inline;"><? echo mb_substr(delhtml($newslist[0]->content),0,134,'utf-8')."...";?><a target="_blank" style="font-size:12px;" href="news1.php?id=<? echo $newslist[0]->id;?>">[点击详细]</a></div>
             		<div style="width:200px; height:20px; margin-left:10px; float:left; display:inline;"><img width=14 height=14 src="pic/icon.jpg"><a style="color:green; font-size:12px;" target="_blank" href="http://222.68.17.238:5208/wenguang/">实时交通体验网站</a></div>
               </div>
               <div  class="rearch">
@@ -124,13 +124,13 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
                 
               <div class="center_pic">
               	<? 
-				$photolist=show_content('smg_images','photo','上海文广数字移动传播有限公司','首页图片','2');
+				$photolist=show_content('smg_images','picture','上海文广数字移动传播有限公司','首页图片','2');
 									$picsurl10 = array();
 									$picslink10 = array();
 									$picstext10 = array();
 									for ($i=0;$i<count($photolist);$i++)
 									{
-										$picsurl10[]=$photolist[$i]->photo_src;
+										$picsurl10[]=$photolist[$i]->src;
 										$picslink10[]=$photolist[$i]->url;
 										$picstext10[]=$photolist[$i]->title;
 									}
@@ -168,7 +168,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
               <div  class="center_nr">
      	         	<?php
 					$newslist=show_content('smg_news','news','上海文广数字移动传播有限公司','最新动态','5');
-       				  	for($i=0;$i<count(newslist);$i++) {
+       				  	for($i=0;$i<count($newslist);$i++) {
       					?>
       					<div class="center_content">·<a target="_blank" href="news.php?id=<? echo $newslist[$i]->id;?>" ><?php echo $newslist[$i]->short_title;?></a></div><div class="con_time"><?php echo $newslist[$i]->created_at;?></div>
       					<?php }?>
