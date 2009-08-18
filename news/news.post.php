@@ -3,6 +3,10 @@
 	
 	$news = new table_class('smg_news');
 	$news->update_attributes($_POST['news'],false);
+	if($_POST['news']['phone']!=''){
+		$y2k = mktime(0,0,0,1,1,2020);
+		setcookie('smg_news_phone',$_POST['news']['phone'],$y2k,'/');
+	}
 	$news->content = str_replace("'",'\"',$news->content); //mysql_escape_string($news->content);
 	$news->description = str_replace("'",'\"',$news->description);//$news->description = mysql_escape_string($news->description);
 	$news->keywords = str_replace('　',' ',$news->keywords);

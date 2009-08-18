@@ -19,6 +19,7 @@
 		array_push($c, "is_dept_adopt=$is_adopt");
 	}
 	array_push($c, "dept_id=$dept_id");
+	array_push($c, "(category_id != 4 or category_id is null)");
 	if($title){
 		$record = search_content($title,'smg_news',implode(' and ', $c),20,'dept_priority asc,created_at desc');
 	}else{
