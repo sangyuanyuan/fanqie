@@ -1,6 +1,5 @@
-<?php
+﻿<?php
 	 require_once('../../frame.php');
-	 $id = $_REQUEST['id'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css1.css" type="text/css" />
 <title>新闻列表</title>
-<?php 
-	js_include_once_tag('total');
-?>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<script src="Scripts/SpryMenuBar.js" type="text/javascript"></script>
 <script type="text/javascript">
 <!--
 function MM_swapImgRestore() { //v3.0
@@ -38,9 +35,12 @@ function MM_swapImage() { //v3.0
 //-->
 </script>
 </head>
-<script>
-	total("文广移动新闻列表","news");	
-</script>
+<?		
+$newsid = $_REQUEST['id'];
+$db=get_db();
+$strsql='update smg_news set click_count=click_count+1 where id='.$newsid;
+$db->execute($strsql);
+?>
 <body onload="MM_preloadImages('pic2/btn_1_1.png','pic2/btn_2_1.png','pic2/btn_3_1.png')">
 <div  class="main">
 	<div class="top">
@@ -58,27 +58,29 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
   </div>
     <div class="submain">
     	<div class="sub_l">
-    		<? $newslist=show_content('smg_news','news','上海文广数字移动传播有限公司','公司简介','1');?>
+    		<? $newslist = show_content('smg_news','news','上海文广数字移动传播有限公司','公司简介','1'); ?>
         <div class="btn"><a href="news1.php?id=<? echo $newslist[0]->id;?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image1','','pic2/btn_1_1.png',1)"><img src="pic2/btn_1.png" name="Image1" width="134" height="28" border="0" id="Image1" /></a></div>
-        <? $newslist=show_content('smg_news','news','上海文广数字移动传播有限公司','产品展示','1');?>
-        <div  class="btn1"><a href="news1.php?id=<? echo $newslist[0]->id;?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image2','','pic2/btn_2_1.png',1)"><img src="pic2/btn_2.png" name="Image2" width="134" height="28" border="0" id="Image2" /></a></div>
-        <? $newslist=show_content('smg_news','news','上海文广数字移动传播有限公司','工作团队','1');?>
+        <? $newslist = show_content('smg_news','news','上海文广数字移动传播有限公司','产品展示','1'); ?>
+        <div class="btn1"><a href="news1.php?id=<? echo $newslist[0]->id;?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image2','','pic2/btn_2_1.png',1)"><img src="pic2/btn_2.png" name="Image2" width="134" height="28" border="0" id="Image2" /></a></div>
+        <? $newslist = show_content('smg_news','news','上海文广数字移动传播有限公司','工作团队','1');?>
         <div class="btn1"><a href="news1.php?id=<? echo $newslist[0]->id;?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','pic2/btn_3_1.png',1)"><img src="pic2/btn_3.png" name="Image3" width="134" height="28" border="0" id="Image3" /></a></div>
         </div>
         <div class="sub_right">
-        		<?php
-					$news = new table_class('smg_news');
-					$news -> find($id);
-					$news->click_count = $news->click_count+1;
-					$news -> save();
-					if($news->news_type==2){
-						redirect($news->file_name);
-					}elseif($news->news_type==3){
-						redirect($news->target_url);
-					};
-					echo $news->content;
-				?>
-				   
+        	<? 
+      		$news=$db->query('select * from smg_news where id='.$newsid);
+      		if($news[0]->news_type==3)
+				  {
+				  	redirect($news[0]->target_url);
+				  	CloseDB();
+				  	exit;
+				  }
+				  if($news[0]->news_type==2)
+				  {
+				   	redirect($news[0]->file_name);
+				  	CloseDB();
+				  	exit; 	
+				  }
+				   echo get_fck_content($news->content);?>
         </div>
     </div>
     <div class="siteinfo">

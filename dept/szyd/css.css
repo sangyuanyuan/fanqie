@@ -5,9 +5,10 @@ body{
 margin:0;
 padding:0;
 width:100%;
-height:100%;}
+height:100%;
+}
 
-a{text-decoration:none; color:#0487AF;}
+a{text-decoration:none; color:#0487AF; font-weight:normal;}
 
 .main{
  witdh:971px;
@@ -88,8 +89,8 @@ margin-top:21px;
 
 .pic{
 width:212px;
-height:188px;}
-
+height:188px;
+}
 .share{
  width:227px;
  height:144px;
@@ -156,11 +157,11 @@ background:url(pic/index_lm_bg.png) repeat-x;}
 	width:140px; height;20px;
 	margin-top:3px;
 	float:left; display:inline;
-	font-size:12px; font-weight:bold; 
+	font-size:12px; 
 }
 
 .more{
-	margin-right:17px; margin-top:3px;
+	margin-right:17px;
 	float:right; display:inline; 
 	font-size:15px;
 }
@@ -170,8 +171,6 @@ background:url(pic/index_lm_bg.png) repeat-x;}
 	height:107px;
 	padding-top:3px; padding-left:5px;
 	background:url(pic/index_c_nr.png) no-repeat;
-	float:left;
-	display:inline;
 }
 .center_nr li{width:350px;}
 

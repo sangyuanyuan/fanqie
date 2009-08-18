@@ -1,34 +1,30 @@
-<?php
+﻿<?php
 	 require_once('../../frame.php');
-	 $id = $_REQUEST['id'];
-	 $name = dept_category_name_by_id($id);
-	 $sql = 'select * from smg_news where dept_category_id='.$id.' and is_dept_adopt=1 order by dept_priority,created_at desc';
-	 $db = get_db();
-	 $record = $db->paginate($sql,25);
-	 $count = count($record);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css2.css" type="text/css" />
+<link rel="stylesheet" href="css.css" type="text/css" />
 <title>新闻列表</title>
-<?php 
-	js_include_once_tag('total');
-?>
 <script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
 
 </head>
-<script>
-	total("文广移动新闻列表","news");	
-</script>
+
 <body >
+<? 
+$dept_cate_id=$_REQUEST['id'];
+$db=get_db();
+$strsql='SELECT * FROM smg_news s where is_dept_adopt=1 and dept_id=46 and dept_category_id='.$dept_cate_id;
+$rows=$db->query($strsql,10);
+?>
 <div  class="main">
 	<div class="top">
 	 
     </div>
-  <div class="nav">    
+  <div class="nav">
     <script type="text/javascript">
 AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','971','height','64','src','nav','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','nav' ); //end AC code
 </script><noscript><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="971" height="64">
@@ -39,15 +35,48 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 </noscript>
   </div>
   <div class="submain">
-  	  	<?php for($i=0;$i<$count;$i++){?>
-  			<div style="width:789px; height:20px; margin-top:10px; margin-left:110px; line-height:20px;  float:left; display:inline;"><a style="text-decoration:none; color:#ffffff;" href="news.php?id=<? echo $record[$i]->id;?>"><? echo $record[$i]->short_title;?></a></div>
-  		<?php }?>
-		<div style="width:900px; height:30px; text-align:center; float:left; display:inline;"><?php paginate();?></div>
+  	<div style="width:250px; float:left; display:inline;">
+  	<div style="width:206px; height:48px; margin-top:16px; margin-left:11px; background-image:url(pic/search.png); padding-left:10px; float:left; display:inline;">
+      <input name="search" id="search" type="text" style="margin-top:10px;"> <img OnClick="searchnews('search')" style="margin-top:2px; display:inline;" src="pic/searchbutton.gif">
+   	</div>
+	<div style="width:227px; height:114px; margin-top:16px; margin-left:15px; float:left; display:inline;">
+       <div  class="share_top">特快专递</div>
+       <div  class="r_border">
+       	<form id="addform" name="addform" action="szyd.post.php" method="post">
+		      <table width="212" border="0" cellspacing="0" cellpadding="0">
+		        <tr>
+		          <td align="center">发件人：</td><td><input style="width:130px; height:12px;" type="text" id="from" name="from"></td>
+		        </tr>
+		        <tr>
+		          <td align="center">标　题：</td><td><input style="width:130px; height:12px;" type="text" id="subject" name="subject"></td>
+		        </tr>
+		        <tr>
+		          <td align="center">内　容：</td><td><textarea style="width:130px;"  id="message" name="message" rows="2"></textarea></td>
+		        </tr>
+		        <tr>
+		          <td></td><td><input type="button" onclick="checkform()" value="发送"></td>
+		        </tr>	 
+		      </table>
+		     </form>
+      </div>
+  	 </div>
+	</div>
+   	<div style="width:490px; margin-top:10px; margin-left:10px;  float:left; display:inline;">
+	  	<? for($i=0;$i<count($rows);$i++){?>
+	  			<div style="width:500px; height:20px; line-height:20px; padding:5px; float:left; display:inline;"><a style="text-decoration:none;" href="news.php?id=<? echo $rows[$i]->id;?>"><? echo $rows[0]->short_title;?></a></div>
+	  	<? }?><br><br>
+	  	<?php paginate('');?>
   	</div>
-    <div class="siteinfo">
-    </div>
+  	
+  </div>
+  <div class="siteinfo">
+  </div>
 
 </div>
-
+<script type="text/javascript">
+<!--
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+//-->
+</script>
 </body>
 </html>

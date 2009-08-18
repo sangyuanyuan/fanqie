@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	 require_once('../../frame.php');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -6,14 +6,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css2.css" type="text/css" />
-<title>你我同话</title>
-<?php use_jquery();?>
+<title>新闻列表</title>
 <script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
 
 </head>
 
 <body >
+<? 
+$dept_cate_id=$_REQUEST['id'];
+$db=get_db();
+$strsql='SELECT * FROM smg_comment where resource_type="lyb" order by created_at desc';
+$rows=$db->paginate($strsql);
+
+?>
 <div  class="main">
 	<div class="top">
 	 
@@ -28,52 +34,36 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
       </object>
 </noscript>
   </div>
-  <div class="submain">
-  	  	<?php
-			$db = get_db();
-			$sql = 'select * from smg_comment where resource_type="nwth" order by created_at desc';
-			$record = $db->paginate($sql,10);
-			$count = count($record);
-			for($i=0;$i<$count;$i++){
-		?>
-  			<div style="width:680px; height:20px; margin-top:10px; margin-left:110px; line-height:15px; color:#ffffff; text-align:right; border-bottom:1px dashed #ffffff; float:left; display:inline;"><? echo $record[$i]->created_at;?>　　<? echo  $record[$i]->nick_name;?></div>
-  			<div style="width:680px; margin-top:10px; margin-left:110px; line-height:15px; border-bottom:2px solid #ffffff; color:#ffffff; float:left; display:inline;"><? echo  $record[$i]->comment;?></div>
+  <div class="submain" style="background:#029EC6;">
+  	<div class="sub_l">
+    		<div class="btn"><a href="lyb.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image1','','pic2/btn_ys_on_03.jpg',1)"><img src="pic2/btn_ys_03.jpg" name="Image1" width="134" height="28" border="0" id="Image1" /></a></div>
+        <div class="btn1"><a href="mailto:zhgl@51dab.cn" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image2','','pic2/btn_ys_on_06.jpg',1)"><img src="pic2/btn_ys_06.jpg" name="Image2" width="134" height="28" border="0" id="Image2" /></a></div>
+    </div>
+    <div class="sub_right">
+  	  <? for($i=0;$i<count($rows);$i++){?>
+  			<div style="width:680px; height:20px; margin-top:10px; margin-left:50px; line-height:15px; color:#ffffff; text-align:right; border-bottom:1px dashed #ffffff; float:left; display:inline;"><? echo $rows[$i]->created_at;?>　　<? echo $rows[$i]->nick_name;?></div>
+  			<div style="width:680px; margin-top:10px; margin-left:50px; line-height:15px; border-bottom:2px solid #ffffff; color:#ffffff; float:left; display:inline;"><? echo $rows[$i]->content;?></div>
   		<? }?>
-		<div style="width:900px; height:30px; text-align:center; float:left; display:inline;"><?php paginate();?></div>
-			<form action="/pub/pub.post.php" method="post">
-  			<div style="width:680px; height:33px; padding-top:5px; padding-left:10px; margin-top:10px; margin-left:110px; font-size:12px; font-weight:bold; line-height:15px; color:#ffffff; background:url(pic/lyb_bg.jpg) repeat-x; float:left; display:inline;">给我们留言</div>
-  			<div style="width:680px; padding-top:5px; padding-left:10px; margin-top:10px; margin-left:110px; font-size:12px; font-weight:bold; line-height:15px; color:#ffffff; text-align:center; float:left; display:inline;">
-				<table>
-					<tr>
-						<td>发件人：</td>
-						<td align="left"><input type="text" id="commenter" name="post[nick_name]" ></td>
-					</tr>
-  					<tr>
-  						<td>内　容：</td>
-						<td><TEXTAREA id="commentcontent" name="post[comment]" cols="30" rows="8" ></TEXTAREA></td></tr><tr><td><input type="hidden" id="titleid" name="titleid"></td>
-						<input type="hidden" name="post[resource_type]" value="nwth">
-						<input type="hidden" name="type" value="comment">
-						<td align="right"><BUTTON id="submit" type="submit" >提交</BUTTON></td>
-					</tr>
-				</table>
-			</div>
-			</form>
+  			<div style="width:680px; height:33px; padding-top:5px; padding-left:10px; margin-top:10px; margin-left:50px; font-size:12px; font-weight:bold; line-height:15px; color:#ffffff; background:url(pic/lyb_bg.jpg) repeat-x; float:left; display:inline;">给我们留言</div>
+  			<div style="width:680px; margin-left:40px; padding-top:5px; padding-left:10px; margin-top:10px;  font-size:12px; font-weight:bold; line-height:15px; color:#ffffff; float:left; display:inline;"><table><tr><td>发件人：</td><td align="left"><input type="text" id="writer" name="post[nick_name]" ></td></tr>
+  			<tr><td>内　容：</td>
+			<td><TEXTAREA name="post[comment]" cols="30" rows="8" id="lettercontent"></TEXTAREA></td></tr>
+			<tr><td><input type="hidden" id="resource_type" name="post[resource_type]" value="lyb">
+			<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
+			<input type="hidden" name="type" value="comment">
+			</td>
+			<td align="right">
+				<BUTTON type="submit">提交</BUTTON></td></tr></table></div>
+  			</div>
   	</div>
     <div class="siteinfo">
     </div>
 
 </div>
-
+<script type="text/javascript">
+<!--
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+//-->
+</script>
 </body>
 </html>
-
-<script>
-	$(function(){
-		$("#submit").click(function(){
-			if($("#commentcontent").val()==""){
-				alert('评论内容不能为空！');
-				return false;
-			}
-		});
-	});
-</script>

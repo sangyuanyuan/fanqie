@@ -8,12 +8,9 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<? 	
 		css_include_tag('index');
-	  js_include_once_tag('total');
   ?>
 </head>
-<script>
-total("视频新闻","news");	
-</script>
+
 <body>
 <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="235" height="182" id="FLVPlayer">
  <param name="movie" value="/flash/mediaplayer.swf" />

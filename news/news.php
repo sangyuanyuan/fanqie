@@ -109,16 +109,16 @@ require_once('../inc/top.inc.html');
 		<div id=l_b>
 			<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
-			<div id=comefrom>来源：<?php echo $record[0]->deptname;?>　<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="我要报料"){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->created_at;?></div>
-			<?php if($record[0]->video_src!=""&&$record[0]->video_src!=null){
+			<div id=comefrom><?php if($record[0]->categoryname!="我要报料"){?>来源：<?php echo $record[0]->deptname;}?>　<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="我要报料"){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->created_at;?></div>
+			<div id=content>
+				<?php if($record[0]->video_src!=""&&$record[0]->video_src!=null){
 					if($record[0]->low_quality==0){
 				?>
-				<div id=video><?php show_video_player('529','435',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
-			<?php }else
-			{?>
-			 	<div id=video><?php show_video_player('265','218',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
-			<?php }} ?>
-			<div id=content>
+				<div id=video><?php show_video_player('400','300',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+				<?php }else
+				{?>
+				 	<div id=video><?php show_video_player('200','150',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+				<?php }} ?>
 				<?php echo get_fck_content($record[0]->content);?>
 			</div>
 			<?php 

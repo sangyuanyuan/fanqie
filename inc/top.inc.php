@@ -26,7 +26,9 @@
 	 	</ul>
 		<?php }?>
 	  <div id=weather>
-			<iframe src="/index_weather.html" width=135px height=22px scrolling="no" frameborder="0"></iframe>
+	  <!--
+			<iframe src="/index_weather.php" width=135px height=22px scrolling="no" frameborder="0"></iframe>
+		!-->25℃～28℃ 大雨
 	  </div>	
 	  <span id=deptbtn onclick='$("#deptcontent").show();'></span>	  
 	  <div id=search>
@@ -45,7 +47,7 @@
    			<a href="/search/?key=<?php echo urlencode($record[$i]->search_key)?>&search_type=smg_news" target=_blank><?php echo $record[$i]->search_key ?></a>　
    			<? }?>
    		</div>
-		<div id=zongcai><a href='/zongcai/' target="_blank">总裁奖</a></div>
+		<div id=zongcai><a href='/zongcai/' target="_blank"><img border=0 style="width:44px; height:13px; margin-top:0px; background:none;" src="/images/pic/zongcaijiang.gif"></a></div>
    	</div>
 		<div id=login>
 			<div id=welcome>			<img src="/images/top/person.jpg">

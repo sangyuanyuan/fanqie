@@ -13,7 +13,7 @@
 		$question_item = new table_class('smg_question_item');
 		$question_item->delete($_POST['del_id']);
 	}else{
-		//var_dump($_POST);
+		#var_dump($_POST);
 		
 		$question = new table_class('smg_question');
 		if(''!=$_POST['question_id']){

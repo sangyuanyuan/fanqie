@@ -166,14 +166,14 @@ total("首页","other");
  				<div class=list_tlm id=list_tlm1 >
  					<ul>
  						<?php for($i=0; $i<count($record_subject); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_subject[$i]->platform ?>/news/news.php?id=<?php echo $record_subject[$i]->id ?>" target=_blank><?php echo $record_subject[$i]->short_title ?></a></li>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo $record_subject[$i]->short_title; ?>" href="/<?php echo $record_subject[$i]->platform ?>/news/news.php?id=<?php echo $record_subject[$i]->id ?>" target=_blank><?php echo $record_subject[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
  						<? }?>
  				  </ul>
  				</div>
  				<div class=list_tlm id=list_tlm2 style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_out); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_out[$i]->platform ?>/news/news.php?id=<?php echo $record_out[$i]->id ?>" target=_blank><?php echo $record_out[$i]->short_title ?></a></li>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo $record_out[$i]->short_title; ?>" href="/<?php echo $record_out[$i]->platform ?>/news/news.php?id=<?php echo $record_out[$i]->id ?>" target=_blank><?php echo $record_out[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
  						<? }?>
  				  </ul>
  				</div>
@@ -194,14 +194,14 @@ total("首页","other");
  				<div class=list_tlb id=list_tlb1 style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_marrow); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_marrow[$i]->platform ?>/news/news.php?id=<?php echo $record_marrow[$i]->id ?>" target=_blank><?php echo strip_tags($record_marrow[$i]->title); ?></a></li>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo $record_marrow[$i]->short_title;?>" href="/<?php echo $record_marrow[$i]->platform ?>/news/news.php?id=<?php echo $record_marrow[$i]->id ?>" target=_blank><?php echo strip_tags($record_marrow[$i]->short_title); ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
  						<? }?>
  				  </ul>
  				</div>
  				<div class=list_tlb id=list_tlb2>
  					<ul>
  						<?php for($i=0; $i<count($record_quick); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_quick[$i]->platform ?>/news/news.php?id=<?php echo $record_quick[$i]->id ?>" target=_blank><?php echo $record_quick[$i]->short_title ?></a></li>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo $record_quick[$i]->short_title;?>" href="/<?php echo $record_quick[$i]->platform ?>/news/news.php?id=<?php echo $record_quick[$i]->id ?>" target=_blank><?php echo $record_quick[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
  						<? }?>
  				  </ul>
  				</div>
@@ -548,7 +548,7 @@ total("首页","other");
 
  			<!-- start top_right_right_bottom !-->
  			<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 30 order by n.click_count desc limit 10';
+ 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 order by n.click_count desc limit 10';
 					$record_news=$db -> query($sql);	
 					$sql='select uid,itemid,subject from blog_spaceitems order by itemid desc limit 10';
 					$record_blog=$db -> query($sql);	
@@ -790,10 +790,12 @@ total("首页","other");
 						$record = $db->query($sql);
 						$count = count($record);
 					?>
-					<div class="top_title"><a href="/answer/pro_answer.php?id=28"  target=_blank>脑筋急转弯第二期</a></div>
+					<div class="top_title"><a href="/answer/pro_answer.php?id=31"  target=_blank>脑筋急转弯第四期</a></div>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=29"  target=_blank>脑筋急转弯第三期</a></li></div>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=28"  target=_blank>脑筋急转弯第二期</a></li></div>
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=27"  target=_blank>脑筋急转弯第一期</a></li></div>
 					<?php 
-						for($i=2;$i<$count;$i++){
+						for($i=4;$i<$count;$i++){
 					?>
 					<!--<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=27" title="脑筋急转弯第一期" target=_blank><?php echo $record[$i]->title ?></a></li></div>-->
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/answer.php?id=<?php echo $record[$i]->id ?>" title="<?php echo $record[$i]->title; ?>" target=_blank><?php echo $record[$i]->title ?></a></li></div>
