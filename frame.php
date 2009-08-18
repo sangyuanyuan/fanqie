@@ -318,7 +318,6 @@
 	}
 	
 	
-	
 	function getcategoryreport($sorttype="DESC")
 	{
 		global $deptinfo;
