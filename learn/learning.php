@@ -70,7 +70,7 @@
 						<? }?>
 					</div>
 					<div id=bottom>
-						<?php $pxalfx = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="培训案例分享" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 7'); ?>
+						<?php $pxalfx = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid,is_photo_news from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="培训案例分享" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 7'); ?>
 						<div id=more><a target="_blank" href="/<?php echo $pxalfx[0]->platform; ?>/news/news_list.php?id=<?php echo $pxalfx[0]->cid;?>">更多...</a></div>
 						<?php
 						//获得图片
@@ -98,7 +98,7 @@
 				</div>
 				<div id=right>
 					<div id=shang>
-						<?php $dsyb = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="读书阅报" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 7'); ?>
+						<?php $dsyb = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid,is_photo_news from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="读书阅报" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 7'); ?>
 						<div id=more><a target="_blank" href="/<?php echo $dsyb[0]->platform; ?>/news/news_list.php?id=<?php echo $dsyb[0]->cid;?>">更多...</a></div>
 						<?php
 						if($dsyb[0]->is_photo_news==1)
@@ -123,7 +123,7 @@
 						<div class=r><a target="_blank" href="/<?php echo $dsyb[$i]->platform;?>/news/news.php?id=<?php echo $dsyb[$i]->id;?>"><?php echo $dsyb[$i]->title; ?> </a></div>
 						<? }?>
 					</div>
-					<?php $yyys = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="影音艺术" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 7');?>
+					<?php $yyys = $db->query('select s.id,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid,is_photo_news from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="影音艺术" and c.category_type="news" order by s.priority asc,s.last_edited_at desc limit 7');?>
 					<div id=xia>
 						<div id=more><a href="/<?php echo $yyys[0]->platform;?>/news/news_list.php?id=<?php echo $yyys[0]->cid;?>">更多...</a></div>
 						<?php

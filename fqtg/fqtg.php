@@ -4,8 +4,6 @@ require_once('../frame.php');
 	$db=get_db();
 	$cookie=(isset($_COOKIE['smg_username'])) ? $_COOKIE['smg_username'] : 0;
 	if($actid==""){die ('没有找到网页');}
-	$StrSql='update smg_tg set clickcount=clickcount+1 where id='.$actid;
-	$Record = $db->execute($StrSql);
 	$news=$db->query('SELECT * FROM smg_tg where id='.$actid);
 	$countnews=$db->query('SELECT count(*) as total,sum(num) as zs FROM smg_tg_signup where tg_id='.$actid);
 	$comments=$db->paginate('select * from smg_comment where resource_id='.$actid.' and resource_type="tg" order by created_at desc', 5);
@@ -34,7 +32,9 @@ require_once('../frame.php');
  		<div id=content3>开始时间: <? echo $news[0]->starttime;?>  结束时间：<? echo $news[0]->endtime;?>  浏览量：<? echo $news[0]->clickcount;?></div>
 		<div id=content4>
 			<span style="font-size:14px; font-weight:bold; color:red;">小番茄郑重承诺：番茄团购的宗旨就是为大家服务！团购的商品都是直接跟供应商联系，我们会尽力为大家争取到最低价格，在团购过程中番茄网绝不加价从中赚取利益！请大家监督！如果员工有什么渠道可以为大家提供产品团购，也欢迎联系我们！</span><br>
-			<? 
+			<?php
+			$StrSql='update smg_tg set clickcount=clickcount+1 where id='.$actid;
+			$Record = $db->execute($StrSql); 
 			$start_date=date("Y-m-d H:i:s");
 			$start_date_year = substr($start_date,0,4);
 			$start_date_month = substr($start_date,5,2);

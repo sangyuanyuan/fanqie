@@ -123,7 +123,7 @@
 							<span style="color:#FF0000;cursor:pointer" class="revocation" name="<?php echo $record[$i]->id;?>">撤消</span>
 						<?php }?>
 						<?php if($record[$i]->is_adopt=="0"){?>
-							<span style="color:#0000FF;cursor:pointer" class="publish" name="<?php echo $record[$i]->id;?>">发布</span>
+							<span style="color:#0000FF;cursor:pointer" class="publish" param="<?php echo $record[$i]->phone;?>" name="<?php echo $record[$i]->id;?>">发布</span>
 						<?php }?>
 						<a href="news_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>
 						<a href="/admin/comment/comment.php?id=<?php echo $record[$i]->id;?>&type=news" style="color:#000000; text-decoration:none">评论</a>
@@ -139,6 +139,7 @@
 			}
 			//--------------------
 		?>
+		<div id="senddx" style="display:none;"></div>
 		<tr class="tr3">
 			<td colspan=6><button id="select_all">全选</button><button id="button_delete">删除/退回</button><?php paginate();?><button id=clear_priority>清空优先级</button><button id=edit_priority>编辑优先级</button></td>
 		</tr>
@@ -191,7 +192,13 @@
 				send_search();
 			}
 		});
-		
+		var content = "<?php echo urlencode(iconv('UTF-8','GB2312','您的报料新闻已通过审批！')); ?>";
+		$(".publish").click(function(){
+			if($(this).attr("param")!="")
+			{
+				$("#senddx").load("http://222.68.17.193:8080/qxt/jbs.jsp?phone="+$(this).attr("param")+"&content="+content+"&sign=1");
+			}
+		});
 		function send_search(){
 			var href ="?title="+encodeURI($("#title1").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt1").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
 			if($('#full_text').attr('checked')){

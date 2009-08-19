@@ -12,7 +12,7 @@
 	<? 	
 		css_include_tag('index','top','bottom');
 		use_jquery();
-	  js_include_once_tag('total','index');
+	  js_include_once_tag('index','total');
   ?>
 	
 </head>
@@ -134,10 +134,10 @@ total("首页","other");
  				</div>  			 			
   			<div class=list id=list2  <?php if($record_inline[0]->name=='spxw'){?>style="display:inline"<?php }?>>
  					<ul>
- 						<li class=video style="color:#2C345B; font-weight:bold; background:url(/images/icon/arrow2.gif) no-repeat 0 3px" param1=<?php echo $record_video[0]->video_photo_src ?> param2=<?php echo $record_video[0]->video_src ?> ><?php echo $record_video[0]->short_title ?></li>
- 						<li class=video param1=<?php echo $record_video[1]->video_photo_src ?> param2=<?php echo $record_video[1]->video_src ?> ><?php echo $record_video[1]->short_title ?></li>
- 						<li class=video param1=<?php echo $record_video[2]->video_photo_src ?> param2=<?php echo $record_video[2]->video_src ?> ><?php echo $record_video[2]->short_title ?></li>
- 						<li class=video param1=<?php echo $record_video[3]->video_photo_src ?> param2=<?php echo $record_video[3]->video_src ?> ><?php echo $record_video[3]->short_title ?></li>
+ 						<li class=video style="color:#2C345B; font-weight:bold; background:url(/images/icon/arrow2.gif) no-repeat 0 3px" param1=<?php echo $record_video[0]->video_photo_src ?> param2=<?php echo $record_video[0]->video_src ?>><?php echo $record_video[0]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[1]->video_photo_src ?> param2=<?php echo $record_video[1]->video_src ?>><?php echo $record_video[1]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[2]->video_photo_src ?> param2=<?php echo $record_video[2]->video_src ?>><?php echo $record_video[2]->short_title ?></li>
+ 						<li class=video param1=<?php echo $record_video[3]->video_photo_src ?> param2=<?php echo $record_video[3]->video_src ?>><?php echo $record_video[3]->short_title ?></li>
  					</ul>	
  				</div>
  				<div class=list id=list3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
@@ -166,14 +166,18 @@ total("首页","other");
  				<div class=list_tlm id=list_tlm1 >
  					<ul>
  						<?php for($i=0; $i<count($record_subject); $i++){?>
+<<<<<<< HEAD:index.php
  						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_subject[$i]->platform ?>/news/news.php?id=<?php echo $record_subject[$i]->id ?>" target=_blank><?php echo $record_subject[$i]->short_title ?></a><?php if($i<3){?><img border=0 src="/images/pic/new.gif"><?php }?></li>
+=======
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_subject[$i]->short_title); ?>" href="/<?php echo $record_subject[$i]->platform ?>/news/news.php?id=<?php echo $record_subject[$i]->id ?>" target=_blank><?php echo $record_subject[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
+>>>>>>> f225db24ccca6822b594672330237a0b02aa392c:index.php
  						<? }?>
  				  </ul>
  				</div>
  				<div class=list_tlm id=list_tlm2 style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_out); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><a <?php if($i<3){?>style='color:#ff0000'<?php }?> href="/<?php echo $record_out[$i]->platform ?>/news/news.php?id=<?php echo $record_out[$i]->id ?>" target=_blank><?php echo $record_out[$i]->short_title ?></a></li>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_out[$i]->short_title); ?>" href="/<?php echo $record_out[$i]->platform ?>/news/news.php?id=<?php echo $record_out[$i]->id ?>" target=_blank><?php echo $record_out[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
  						<? }?>
  				  </ul>
  				</div>
@@ -194,14 +198,14 @@ total("首页","other");
  				<div class=list_tlb id=list_tlb1 style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_marrow); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><a <?php if($i<3){?>style='color:#ff0000'<?php }?> href="/<?php echo $record_marrow[$i]->platform ?>/news/news.php?id=<?php echo $record_marrow[$i]->id ?>" target=_blank><?php echo strip_tags($record_marrow[$i]->title); ?></a></li>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_marrow[$i]->short_title);?>" href="/<?php echo $record_marrow[$i]->platform ?>/news/news.php?id=<?php echo $record_marrow[$i]->id ?>" target=_blank><?php echo strip_tags($record_marrow[$i]->short_title); ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
  						<? }?>
  				  </ul>
  				</div>
  				<div class=list_tlb id=list_tlb2>
  					<ul>
  						<?php for($i=0; $i<count($record_quick); $i++){?>
- 						<li><span style="color:#CCCCCC">·</span><a <?php if($i<3){?>style='color:#ff0000'<?php }?> href="/<?php echo $record_quick[$i]->platform ?>/news/news.php?id=<?php echo $record_quick[$i]->id ?>" target=_blank><?php echo $record_quick[$i]->short_title ?></a></li>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_quick[$i]->short_title);?>" href="/<?php echo $record_quick[$i]->platform ?>/news/news.php?id=<?php echo $record_quick[$i]->id ?>" target=_blank><?php echo $record_quick[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
  						<? }?>
  				  </ul>
  				</div>
@@ -266,8 +270,6 @@ total("首页","other");
  					{
  							$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id in (".$record_head[$j]->sub_news_id.")";
 							$record_sub_news = $db -> query($sql);
- 						
-
 							for($i=0;$i<count($record_sub_news);$i++)
 							{
 
@@ -548,7 +550,7 @@ total("首页","other");
 
  			<!-- start top_right_right_bottom !-->
  			<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 30 order by n.click_count desc limit 10';
+ 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 order by n.click_count desc limit 10';
 					$record_news=$db -> query($sql);	
 					$sql='select uid,itemid,subject from blog_spaceitems order by itemid desc limit 10';
 					$record_blog=$db -> query($sql);	
@@ -786,15 +788,17 @@ total("首页","other");
  			<div id=b_t_r>
 				<div class=m_box>
 					<?php  
-						$sql = 'select id,title from smg_question where problem_id=30 order by create_time desc limit 6';
+						$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
 						$record = $db->query($sql);
 						$count = count($record);
 					?>
-					<div class="top_title"><a href="/answer/pro_answer.php?id=30"  target=_blank>脑筋急转弯第三期</a></div>
+					<div class="top_title"><a href="/answer/pro_answer.php?id=32"  target=_blank>脑筋急转弯第五期</a></div>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=31"  target=_blank>脑筋急转弯第四期</a></li></div>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=30"  target=_blank>脑筋急转弯第三期</a></li></div>
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=28"  target=_blank>脑筋急转弯第二期</a></li></div>
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=27"  target=_blank>脑筋急转弯第一期</a></li></div>
 					<?php 
-						for($i=3;$i<$count;$i++){
+						for($i=5;$i<$count;$i++){
 					?>
 					<!--<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=27" title="脑筋急转弯第一期" target=_blank><?php echo $record[$i]->title ?></a></li></div>-->
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/answer.php?id=<?php echo $record[$i]->id ?>" title="<?php echo $record[$i]->title; ?>" target=_blank><?php echo $record[$i]->title ?></a></li></div>

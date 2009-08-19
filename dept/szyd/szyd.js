@@ -1,7 +1,7 @@
 function checkform() { 
 if(addform.from.value != '') { 
 if(!Isyx(addform.from.value)){ 
-alert("璇疯緭鍏ユ纭殑閭鍦板潃!") 
+alert("请输入正确的邮箱地址!") 
 addform.from.focus(); 
 return false; 
 }
@@ -12,7 +12,7 @@ else
 }
 else
 {
-	alert('鍙戜欢浜洪偖绠变笉鑳戒负绌猴紒');
+	alert('发件人邮箱不能为空！');
 	addform.from.focus(); 
 	return false;
 }

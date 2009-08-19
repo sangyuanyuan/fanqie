@@ -46,7 +46,8 @@
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　手机</div>
-		<div class=t_r><input id="news_phone" type="text" name="news[phone]" value="<?php echo $_COOKIE['smg_news_phone'];?>"></div>
+		<div class=t_r><input id="news_phone" type="text" name="news[phone]" value="<?php echo $_COOKIE['smg_news_phone'];?>">(请输入手机长号码)</div>
+		<div id="senddx" style="display:none;"></div>
 	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　内容</div>
@@ -75,6 +76,11 @@
 <script>
 	$(function(){
 		$('#button_submit').click(function(){
+			if($("#news_phone").val!="")
+			{
+				var content = "<?php echo urlencode(iconv('UTF-8','GB2312','您的报料新闻已成功提交，请等待审批！')); ?>";
+				$("#senddx").load("http://222.68.17.193:8080/qxt/jbs.jsp?phone="+$(this).attr("param")+"&content="+content+"&sign=1");	
+			}
 			if($('#news_title').val() == ''){
 				alert('请填写新闻标题!');
 				return false;
