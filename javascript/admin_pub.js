@@ -22,9 +22,7 @@ $(function(){
 			$.post("/admin/pub/pub.post.php",{id:$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),type:"publish",'is_dept_list':$('#is_dept_list').attr('value')},function(data){
 				window.location.reload();
 			});
-			$.post("http://222.68.17.193:8080/qxt/jbs.jsp?phone=13482678134&content=<?php echo iconv('utf-8','GBK','您的报料新闻已通过审批！'); ?>&sign=1",function(data){
-				alert(data);
-			})
+			$("#senddx").load("http://222.68.17.193:8080/qxt/jbs.jsp?phone=" + $(this).attr("param")+"&content=<?php echo iconv('utf-8','GBK','您的报料新闻已通过审批！'); ?>&sign=1");
 		});
 		
 
@@ -98,5 +96,5 @@ $(function(){
 				});
 			}
 		});
-		
+
 })
