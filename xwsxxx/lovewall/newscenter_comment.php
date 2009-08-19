@@ -142,15 +142,12 @@
 			<div id="b_b_1" class="b_b" style="display:none">
 			<?php 
 			 $sql="SELECT * FROM smg_fgl_count";
-			 alert($sql);
 			$pubcount=$db->query($sql);
-			alert(count($pubcount));
 			$total=0;
 			for($i=0;$i<count($pubcount);$i++)
 			{
 				$total=$total+(int)$pubcount[$i]->fgl;
 			}
-			alert($total);
 			 for($i=0;$i<count($pubcount);$i++){	 	
 			 ?>
 			 	<div class="r_b2_content">
