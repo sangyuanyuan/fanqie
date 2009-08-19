@@ -148,7 +148,7 @@
 		
 	}
 	
-	redirect('index.php?category='.$_POST['news']['category_id']);
+	#redirect('index.php?category='.$_POST['news']['category_id']);
 	#var_dump($news);
 	
 ?>

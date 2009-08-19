@@ -4,6 +4,7 @@
 $(function(){
 	
 	$('#news_add').submit(function(){
+		alert('waht');
 		var video_array = new Array('flv','wmv','wav','mp3','mp4','avi','rm');
 		var pic_array = new Array('jpg','png','bmp','gif','icon');
 		if($('#video_src').val() != ''){
@@ -39,6 +40,7 @@ $(function(){
 		}	
 		var oEditor = FCKeditorAPI.GetInstance('news[short_title]') ;
 		var short_title = remove_hmtl_tag(oEditor.GetHTML());
+		alert(short_title);
 		if(short_title==""){
 			alert("请输入短标题！");
 			return false;
