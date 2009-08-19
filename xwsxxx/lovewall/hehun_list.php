@@ -18,8 +18,8 @@ js_include_once_tag('total');
 	<div id="banner">番茄网爱墙</div>
 </div>
 <div id="menu">
-	<a href="http://www.hehun.org.cn/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
-    <a href="index.php">我的爱墙</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_add.php">我要许愿</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">福气排行 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="index.php">首页 </a> <img src="hehun_images/06.gif" width="16" height="16" /> <a href="/blog/">博客 </a> </div>
+<a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
+    <a href="index.php?id=1">首页</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">人气排行榜 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a></div>
 <table width="100%" border="0" cellpadding="0" cellspacing="1" class="List">
 	<tr>
 		<th>爱墙编号</th>

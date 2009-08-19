@@ -14,12 +14,10 @@ js_include_once_tag('total');
 <body>
 <div style="display:none;" id="aspk" onclick="Hide();"></div>
 <div id="header">
-	<span style="float:left;"></span>
-	<div id="banner">番茄网爱墙</div>
 </div>
 <div id="menu">
-	<a href="index.php?id=1" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
-    <a href="index.php?id=1">我的爱墙</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_add.php">我要许愿</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">福气排行 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="index.php">首页 </a> <img src="hehun_images/06.gif" width="16" height="16" /> <a href="http://u.hehun.org.cn">博客 </a> </div>
+	<a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
+    <a href="index.php?id=1">首页</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">人气排行榜 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a></div>
 <script type="text/javascript" src="inc/add.js"></script>
 
 
@@ -29,8 +27,8 @@ js_include_once_tag('total');
 		<input type="hidden" name="face" value="0" />
 		<input type="hidden" name="icon" value="0" />			
 	<tr>
-		<td class="td"> ↓↓↓ 我们将永久保存您的字条 </td>
-		<td colspan="2" class="td"> ↓↓↓ 番茄网爱墙祝福您 </td>
+		<td class="td"> ↓↓↓ 我们将永久保存您的推荐 </td>
+		<td colspan="2" class="td"></td>
 	</tr>
 	<tr>
 		<td rowspan="6" class="Peview">
@@ -40,7 +38,7 @@ js_include_once_tag('total');
 				<p class="Sign"><span class="red">感谢您的支持!</span></p>
 			</div>
 			<div id="Peview" class="Face0">
-				<p class="Num">字条预览：<img src="hehun_images/close.gif" alt="关闭" /></p>
+				<p class="Num">推荐预览：<img src="hehun_images/close.gif" alt="关闭" /></p>
 				<p class="Detail"><img src="hehun_images/icon0.gif" alt="aspk" width="50" height="50" id="IconImg" /><span class="Head" id="Head"></span><br /><span id="AreaText"></span></p>
 				<p class="Sign" id="Sign">匿名</p>
 				<p class="Date"><script type="text/javascript">getTime();</script></p>
@@ -100,11 +98,6 @@ js_include_once_tag('total');
 	</form>
 </table>
 <div id="footer">
-	<h1>
-		<a href="index.php" title="爱墙">首页</a> - 
-		<a href="hehun_add.php" title="贴字条">贴字条</a> - 
-		<a href="hehun_list.php" title="字条列表">字条列表</a>
-	</h1>
 </div>
 
 </body>
