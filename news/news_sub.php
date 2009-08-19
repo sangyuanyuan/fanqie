@@ -76,11 +76,7 @@
 <script>
 	$(function(){
 		$('#button_submit').click(function(){
-			if($("#news_phone").val!="")
-			{
-				var content = "<?php echo urlencode(iconv('UTF-8','GB2312','您的报料新闻已成功提交，请等待审批！')); ?>";
-				$("#senddx").load("http://222.68.17.193:8080/qxt/jbs.jsp?phone="+$(this).attr("param")+"&content="+content+"&sign=1");	
-			}
+			
 			if($('#news_title').val() == ''){
 				alert('请填写新闻标题!');
 				return false;

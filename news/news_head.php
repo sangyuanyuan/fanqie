@@ -302,8 +302,8 @@ require_once('../inc/top.inc.html');?>
 			<? }?>
 		</div>
 		<div id=r_b2>
-			<div class=b_head_title1 param=1>部门发表量</div>
-			<div class=b_head_title1 param=2 style="background:none; color:#000000;">部门点击排行榜</div>
+			<div class=b_head_title1 param=1>本月部门发表量</div>
+			<div class=b_head_title1 param=2 style="background:none; color:#000000;">本月点击排行榜</div>
 			<div id=b_b_1 class="b_b" style="display:block">
 			<?php 
 			 $sql="SELECT * FROM smg_fgl_count";
