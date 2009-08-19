@@ -762,7 +762,7 @@ total("首页","other");
 						$l_count = $count>7?7:$count;
 						for($i=0;$i<$l_count;$i++){
 					?>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a <?php if($i<3){?>style="color:#ff0000"<?php }?> href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
 					<?php
 						}
 					?>
