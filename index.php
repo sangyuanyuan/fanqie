@@ -166,11 +166,7 @@ total("首页","other");
  				<div class=list_tlm id=list_tlm1 >
  					<ul>
  						<?php for($i=0; $i<count($record_subject); $i++){?>
-<<<<<<< HEAD:index.php
- 						<li><span style="color:#CCCCCC">·</span><a href="/<?php echo $record_subject[$i]->platform ?>/news/news.php?id=<?php echo $record_subject[$i]->id ?>" target=_blank><?php echo $record_subject[$i]->short_title ?></a><?php if($i<3){?><img border=0 src="/images/pic/new.gif"><?php }?></li>
-=======
  						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_subject[$i]->short_title); ?>" href="/<?php echo $record_subject[$i]->platform ?>/news/news.php?id=<?php echo $record_subject[$i]->id ?>" target=_blank><?php echo $record_subject[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
->>>>>>> f225db24ccca6822b594672330237a0b02aa392c:index.php
  						<? }?>
  				  </ul>
  				</div>
