@@ -25,5 +25,5 @@ die("<script>alert('发送人内容过长，请返回重填！');history.back();
 }
 $sql = "INSERT INTO centernews_love (hehun_class,hehun_images,hehun_head,hehun_sign,hehun_lr,hehun_date,ip) VALUES ($hehun_class,'$hehun_images','$hehun_head','$hehun_sign','$hehun_lr','$today','$ip')";   //构造sql语句
 $result = mysql_query($sql);
-echo '<SCRIPT language=JavaScript>alert("您的祝福已发出！")</SCRIPT><meta http-equiv="refresh" content="0;URL=index.php">'; exit;
+echo '<SCRIPT language=JavaScript>alert("您的推荐已发出！")</SCRIPT><meta http-equiv="refresh" content="0;URL=index.php">'; exit;
 ?>

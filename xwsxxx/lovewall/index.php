@@ -22,20 +22,22 @@ js_include_once_tag('total');
 </div><div id="menu">
 	<?php $lovewall_ip=$HTTP_COOKIE_VARS["lovewall"];?>
 	<a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
-    <a href="index.php?id=1">首页</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">人气排行榜 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a></div>
+    <a href="index.php">首页</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php?id=2">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php?id=1">人气排行榜 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a></div>
 <div id="main">
 	<script type="text/javascript" src="inc/index.js"></script>
 <?php 
 include("inc/coon.php");
-$lovewall_id=$_REQUEST['id'];
-if($lovewall_id!=""&&$lovewall_ip!=""){
+$lovewall_name=$_REQUEST['name'];
+if($lovewall_ip!=""){
 	$result=mysql_query("select * from centernews_love where ip='".$lovewall_ip."' order by hehun_id");
 }else{
-	$result=mysql_query("select * from centernews_love order by hehun_id");
+	$result=mysql_query("select * from centernews_love where hehun_sign='".$lovewall_name."' order by hehun_id");
 }
+$db=get_db();
 $num=mysql_numrows($result); 
 for ($i=0;$i<$num;$i++) { 
 $hehun_id=mysql_result($result,$i,"hehun_id");
+$commentnum=$db->query("select count(*) as num from smg_comment where resource_id=".$hehun_id." and resource_type='newscenter_sxxx'");
 $hehun_class=mysql_result($result,$i,"hehun_class"); 
 $hehun_images=mysql_result($result,$i,"hehun_images"); 
 $hehun_head=mysql_result($result,$i,"hehun_head");
@@ -50,7 +52,7 @@ $left=rand(81,625)
 <p class="Num">被推荐人：<?=$hehun_head?><img src="hehun_images/close.gif" alt="关闭" onclick="Close(<?=$hehun_id?>)" /></p><p class="Detail"><img width=50 height=50 alt="" src="<?=$hehun_images?>" /><span class="Head"><?=$hehun_head?></span><br /><?=$hehun_lr?></p><p class="Sign"><table class="Sign"width="95%"  border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td><div align="left"><a href="zf.php?id=<?=$hehun_id?>" title="我要献花">我要献花：<?=$hehun_cs?>次</a></div></td>
-    <td><div align="left"><a href="newscenter_comment.php?id=<?php echo $hehun_id;?>" title="我要评论">我要评论：<?=$hehun_cs?>次</a></div></td>
+    <td><div align="left"><a href="newscenter_comment.php?type=newscenter_sxxx&id=<?php echo $hehun_id;?>" title="我要评论">我要评论：<?=$commentnum[0]->num;?>次</a></div></td>
     <td><div align="right"><?=$hehun_sign?></div></td>
   </tr>
 </table></p><p class="Date"><?=$hehun_date?></p></div>	
