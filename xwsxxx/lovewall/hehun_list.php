@@ -82,6 +82,7 @@ if($type==1)
 	<td><?=$num?></td>
 </tr> 
 <?}
+}
 ?>
 <tr>
 <td colspan="5" class="ListP">
