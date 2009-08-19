@@ -13,7 +13,7 @@ a:hover{text-decoration:underline;}
 #menu .input{margin-bottom:4px;padding:3px;background:url(../hehun_images/bg_input.gif) no-repeat; border:1px solid #70B817;}
 #footer{background:url(../hehun_images/bg_bottom.jpg) repeat-x;padding-top:95px;font-size:10px;text-align:center;}
 
-#main{height:800px;background:url(../main_bg.jpg);}
+#main{height:800px;background:url(../main_bg.jpg) no-repeat; width:100%;}
 #main #shout{float:right;padding:2px;FILTER:glow(color=#ffffff,strength=8);}
 #aspk{filter:alpha(Opacity=35);opacity:0.35;background:#000;position:absolute;}
 
