@@ -12,8 +12,12 @@
 	}
 	$table_change = array('http://172.27.203.81:8080'=>'');
 	$parent_name = strtr($parent_name,$table_change);
-	
-	$title = strtr($_POST['title'],$table_change);
+	if($name=='论坛'){
+		$parent_name='/bbs/';
+	}
+	if($name=='博客'){
+		$parent_name='/blog/';
+	}
 	
 
 	if($name==""||$platform==""){exit;}
