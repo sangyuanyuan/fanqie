@@ -63,7 +63,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 	</div>
    	<div style="width:490px; margin-top:10px; margin-left:10px;  float:left; display:inline;">
 	  	<? for($i=0;$i<count($rows);$i++){?>
-	  			<div style="width:500px; height:20px; line-height:20px; padding:5px; float:left; display:inline;"><a style="text-decoration:none;" href="news.php?id=<? echo $rows[$i]->id;?>"><? echo $rows[0]->short_title;?></a></div>
+	  			<div style="width:500px; height:20px; line-height:20px; padding:5px; float:left; display:inline;"><a style="text-decoration:none;" href="news.php?id=<? echo $rows[$i]->id;?>"><? echo $rows[$i]->short_title;?></a></div>
 	  	<? }?><br><br>
 	  	<?php paginate('');?>
   	</div>
