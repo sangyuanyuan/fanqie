@@ -126,7 +126,7 @@
 					<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $items[$i]->id;?>"></td>					
 					<td><a href="<?php echo $url;?>" target="_blank"><?php echo strip_tags($items[$i]->$title_name);?></a></td>
 					<td>
-						<a href="?category=<?php echo $record[$i]->category_id;?>" style="color:#0000FF">
+						<a href="?category_id=<?php echo $items[$i]->subject_category;?>&subject_id=<?php echo $subject_id; ?>" style="color:#0000FF">
 							<?php echo $items[$i]->category_name; ?>
 						</a>
 					</td>

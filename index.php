@@ -219,7 +219,7 @@ total("首页","other");
 				$record_head=$db -> query($sql);
 			?>
 			<div id=t_r_t>
- 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a><?php echo show_video($record_head[0]->video_flag,40,35)?><?php echo show_img($record_head[0]->image_flag,40,35)?></div>
+ 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a><?php echo show_video($record_head[0]->video_flag,40,35);?><?php echo show_img($record_head[0]->image_flag,40,35)?></div>
  				<a href="/news/news_list.php?id=<?php echo $record_head[0]->cid; ?>" id=btn target=_blank></a>
  				<div id=content>
  				<?php
@@ -454,7 +454,11 @@ total("首页","other");
  			<div id=t_r_r_t>
  				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn8.jpg) no-repeat; "><a href="/fqtg/fqtglist.php" target=_blank>我要团购</a></div>
  				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;">快乐番茄</div>
+<<<<<<< HEAD:index.php
+ 				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;">番茄百家</div>
+=======
  				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold; margin-left:5px;">番茄百家</div>
+>>>>>>> 0cafc2dcfe4a53aa856a96267ad625a7d33f1376:index.php
  					<?php
  						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
 						$record_tg=$db -> query($sql);		
@@ -642,7 +646,11 @@ total("首页","other");
 				?>	 
 				<div id=content_mlb>
 					<ul>
+<<<<<<< HEAD:index.php
+						<li style="color:#121212;; font-weight:bold; font-size:13px; line-height:25px; height:25px;"><a href="/<?php echo $record_blog[0]->platform ?>/news/news.php?id=<?php echo $record_blog[0]->news_id ?>" target=_blank><?php echo $record_blog[0]->short_title ?></a></li>
+=======
 						<li style="color:#FF9900; font-weight:bold; font-size:13px; line-height:25px; height:25px;"><a style="color:#FF9900" href="/<?php echo $record_blog[0]->platform ?>/news/news.php?id=<?php echo $record_blog[0]->news_id ?>" target=_blank><?php echo $record_blog[0]->short_title ?></a></li>
+>>>>>>> 0cafc2dcfe4a53aa856a96267ad625a7d33f1376:index.php
 						<?php for($i=1;$i<5;$i++){ ?>
 						<li><a href="/<?php echo $record_blog[$i]->platform ?>/news/news.php?id=<?php echo $record_blog[$i]->news_id ?>" target=_blank>·<?php echo $record_blog[$i]->short_title ?></a></li>
 						<? }?>
@@ -696,9 +704,14 @@ total("首页","other");
 						$record=$db -> query($sql);
   				?> 		
   				<ul>
+<<<<<<< HEAD:index.php
+  					<?php for($i=0;$i<=4;$i++){?>
+  					<li><font color="#000000">【<?php echo $record[$i]->tags ?>】</font><a href="/<?php echo $record[$i]->platform?>/news/news.php?id=<?php echo $record[$i]->news_id?>" target=_blank><?php if($i<1){ ?><span style="color:red; font-weight:bold;"><?php echo $record[$i]->short_title?><?php if($i<1){ ?></span></span></a></li>
+=======
   					<li><font color="#000000">【<?php echo $record[0]->tags ?>】</font><a style="color:#ff0000; font-weight:bold;" href="/<?php echo $record[0]->platform?>/news/news.php?id=<?php echo $record[0]->news_id?>" target=_blank><?php echo $record[0]->short_title?></a></li>
   					<?php for($i=1;$i<=4;$i++){?>
   					<li><font color="#000000">【<?php echo $record[$i]->tags ?>】</font><a href="/<?php echo $record[$i]->platform?>/news/news.php?id=<?php echo $record[$i]->news_id?>" target=_blank><?php echo $record[$i]->short_title?></a></li>
+>>>>>>> 0cafc2dcfe4a53aa856a96267ad625a7d33f1376:index.php
   					<? }?>
  					</ul>	
   				
