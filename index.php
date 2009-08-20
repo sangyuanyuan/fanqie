@@ -149,34 +149,18 @@ total("首页","other");
  				</div>
  			</div>
  			<!-- end !-->
-
-
-
-
+			
  			<!-- start top_left_middle !-->
   		<?php
-				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
-				$record_subject=$db -> query($sql);
-				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
-				$record_out=$db -> query($sql);
-  		?>
-  		<div id=t_l_m>
- 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_subject[0]->cid?>" target=_blank>专题新闻</a></div>
- 				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
- 				<div class=list_tlm id=list_tlm1 >
- 					<ul>
- 						<?php for($i=0; $i<count($record_subject); $i++){?>
- 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_subject[$i]->short_title); ?>" href="/<?php echo $record_subject[$i]->platform ?>/news/news.php?id=<?php echo $record_subject[$i]->id ?>" target=_blank><?php echo $record_subject[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
- 						<? }?>
- 				  </ul>
- 				</div>
- 				<div class=list_tlm id=list_tlm2 style="display:inline;">
- 					<ul>
- 						<?php for($i=0; $i<count($record_out); $i++){?>
- 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_out[$i]->short_title); ?>" href="/<?php echo $record_out[$i]->platform ?>/news/news.php?id=<?php echo $record_out[$i]->id ?>" target=_blank><?php echo $record_out[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
- 						<? }?>
- 				  </ul>
- 				</div>
+ 					$sql = 'select n.short_title, n.id as news_id, c.platform,c.id as c_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
+					$record_baoliao=$db -> query($sql);		
+			?>	 		
+			<div id=t_l_m>
+ 				<a href="/news/news_sub.php" id=btn target=_blank></a>
+				<div class=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record_baoliao[0]->c_id; ?>">More</a></div>
+				<div id=content_trrm>
+					<?php for($i=0;$i<12;$i++){?><a href="/<?php echo $record_baoliao[$i]->platform?>/news/news.php?id=<?php echo $record_baoliao[$i]->news_id?>" target=_blank><span style="color:#ff0000">·</span><?php echo $record_baoliao[$i]->short_title ?></a> <? }?>				
+					</div>
  			</div>
  			<!-- end !-->
 
@@ -464,7 +448,7 @@ total("首页","other");
 					<div class=box>
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl ?>" target=_blank border=0></a>
 						<ul>
-							<li style="overflow:hidden;"><a href="/fqtg/fqtg.php?id=<?php echo $record_tg[$i]->id?>" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
+							<li style="overflow:hidden;"><a href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
 							<li style="height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
 							<li style="height:18px; line-height:18px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $record_tg[$i]->marketprice ?></li>
 							<li style="height:18px; line-height:18px; color:#ff0000">番茄价：<?php echo $record_tg[$i]->price ?></li>
@@ -550,15 +534,28 @@ total("首页","other");
  			<!-- end !-->			
  			<!-- start top_right_right_middle !-->
  			<?php
- 					$sql = 'select n.short_title, n.id as news_id, c.platform,c.id as c_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
-					$record_baoliao=$db -> query($sql);		
-			?>	 		
-			<div id=t_r_r_m>
- 				<a href="/news/news_sub.php" id=btn target=_blank></a>
-				<div class=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record_baoliao[0]->c_id; ?>">More</a></div>
-				<div id=content_trrm>
-					<?php for($i=0;$i<12;$i++){?><a href="/<?php echo $record_baoliao[$i]->platform?>/news/news.php?id=<?php echo $record_baoliao[$i]->news_id?>" target=_blank><span style="color:#ff0000">·</span><?php echo $record_baoliao[$i]->short_title ?></a> <? }?>				
-					</div>
+				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="专题新闻" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
+				$record_subject=$db -> query($sql);
+				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
+				$record_out=$db -> query($sql);
+  		?>
+  		<div id=t_r_r_m>
+ 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_subject[0]->cid?>" target=_blank>专题新闻</a></div>
+ 				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
+ 				<div class=list_tlm id=list_tlm1 >
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_subject); $i++){?>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_subject[$i]->short_title); ?>" href="/<?php echo $record_subject[$i]->platform ?>/news/news.php?id=<?php echo $record_subject[$i]->id ?>" target=_blank><?php echo $record_subject[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
+ 				<div class=list_tlm id=list_tlm2 style="display:inline;">
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_out); $i++){?>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_out[$i]->short_title); ?>" href="/<?php echo $record_out[$i]->platform ?>/news/news.php?id=<?php echo $record_out[$i]->id ?>" target=_blank><?php echo $record_out[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
  			</div>
  			<!-- end !-->						
 
