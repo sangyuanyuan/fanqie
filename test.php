@@ -1,35 +1,20 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
-	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-首页</title>
-</head>
-<body>
-	<div id="test">
-		<div style="width:100px;height:100px;border:1px solid;float:left;"></div>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		v
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>
-		sdflsjdflj<br>sdflsjdflj<br>
-		sdflsjdflj<br>sdflsjdflj<br>
-		
-		sdflsjdflj<br>sdflsjdflj<br>sdflsjdflj<br>sdflsjdflj<br>sdflsjdflj<br>
-	</div>
-</body>
-</html>
+<?php
+	include "frame.php";
+	use_jquery();
+	
+	$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=13817499668&content=" .iconv('utf-8','gbk','您爆料的新闻已通过审批') ."&sign=1";
+	echo $url;
+?>
+
+<a href="<?php echo $url;?>" id=test>test</a>
+<div id="ret"></div>
+<iframe id="iframe" width=200 height=200 src="#"></iframe>
+
+<script>
+	$(function(){
+		$('#test').click(function(e){
+			e.preventDefault();
+			$('#iframe').attr('src','<?php echo $url;?>');
+		});
+	});
+</script>
