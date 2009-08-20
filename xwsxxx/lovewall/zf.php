@@ -17,5 +17,5 @@ $hehun_cs=mysql_result($result,0,"hehun_cs");
 $hehun_cs=$hehun_cs+1;
 $query="UPDATE centernews_love  SET hehun_cs='$hehun_cs' where hehun_id='$id'";
 $result = mysql_query($query);
-echo '<SCRIPT language=JavaScript>alert("您的推荐已发出！")</SCRIPT><meta http-equiv="refresh" content="0;URL=index.php">'; exit;
+echo '<SCRIPT language=JavaScript>alert("献花成功！")</SCRIPT><meta http-equiv="refresh" content="0;URL=index.php">'; exit;
 ?>

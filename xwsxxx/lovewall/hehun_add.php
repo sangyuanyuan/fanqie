@@ -1,4 +1,4 @@
-﻿<?php require_once('../../../frame.php'); ?>
+﻿<?php require_once('../../frame.php'); ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=uft-8" />
@@ -11,7 +11,7 @@ js_include_once_tag('total');
 	total("专题-六一专题","other");
 </script>
 </head>
-<body>
+<body style="background:url(../bottom_bg.gif);">
 <div style="display:none;" id="aspk" onclick="Hide();"></div>
 <div id="header">
 </div>
@@ -25,7 +25,7 @@ js_include_once_tag('total');
 	<form method="post" action="hehun_save.php" name="frmAdd" onsubmit="return chkAspk(this);">
 		<input type="hidden" name="cmd" value="add" />
 		<input type="hidden" name="face" value="0" />
-		<input type="hidden" name="icon" value="0" />			
+		<input type="hidden" name="icon" value="0" />		
 	<tr>
 		<td class="td"> ↓↓↓ 我们将永久保存您的推荐 </td>
 		<td colspan="2" class="td"></td>
