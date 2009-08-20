@@ -901,7 +901,6 @@ total("首页","other");
       <!-- start bottom_bottom_right !-->
  			<div id=b_b_r>
 				<div id=title>在线杂志</div>
-				<DIV id=Layer5>
 				      <DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
@@ -942,7 +941,6 @@ total("首页","other");
 											demo9.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
 										})
 									</SCRIPT>
-				</DIV>
  			</div>
 			<div id=b_b_r_r>
 				<div id=title>生活指南</div>
