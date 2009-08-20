@@ -1,15 +1,20 @@
 <?php
 	include "../frame.php";
 	use_jquery();
-	echo basename(dirname(__FILE__));
-	$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=13817499668&content=" .iconv('utf-8','gbk','测试') ."&sign=1";
+	
+	$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=13817499668&content=" .iconv('utf-8','gbk','您爆料的新闻已通过审批') ."&sign=1";
+	echo $url;
 ?>
 
-<a href="<?php echo $url;?>">test</a>
+<a href="<?php echo $url;?>" id=test>test</a>
 <div id="ret"></div>
+<iframe id="iframe" width=0 height=0 src="#"></iframe>
 
 <script>
 	$(function(){
-		$('#ret').load('test.php');
+		$('#test').click(function(e){
+			e.preventDefault();
+			$('#iframe').attr('src','<?php echo $url;?>');
+		});
 	});
 </script>
