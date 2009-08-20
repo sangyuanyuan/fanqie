@@ -8,7 +8,7 @@ $type=$_REQUEST['type'];
 if($start==""){$start=date('Y-m-d').' 00:00:00';}else{$start=$_REQUEST['start'].' 00:00:00';}
 if($end==""){$end=date('Y-m-d').' 23:59:59';}else{$end=$_REQUEST['end'].' 23:59:59';}
 $clickcount=$db->query("select sum(count) as totalcount from smg_total where datetime>='".$start."' and datetime<='".$end."' and platform='".$type."'");
-$clickcount1=$db->paginate("select sum(count) as count,name from smg_total where datetime>='".$start."' and datetime<='".$end."' and platform='".$type."' group by name order by count desc",20);
+$clickcount1=$db->paginate("select sum(count) as count,parentname from smg_total where datetime>='".$start."' and datetime<='".$end."' and platform='".$type."' group by parentname order by count desc",20);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -26,19 +26,19 @@ $clickcount1=$db->paginate("select sum(count) as count,name from smg_total where
 	<input type="hidden" id="type" value="<?php echo $type;?>">
 	开始：<input type="text" id="starttime"  value="<? echo $_REQUEST['start'];?>" onfocus="WdatePicker()" style="width:150px"/>　　
 	结束：<input type="text" id="endtime"   value="<? echo $_REQUEST['end'];?>"  onfocus="WdatePicker()"  style="width:150px"/>
-	<a href="#" onClick="cx()" style="color:#0033FF">确定</a><a style="margin-left:10px;" href="report3.php?type=<?php echo $type;?>">分页面统计</a><br />
+	<a href="#" onClick="cx()" style="color:#0033FF">确定</a><a style="margin-left:10px;" href="report2.php?type=<?php echo $type;?>">分类别统计</a><br />
 </div>
 	<table border=1 style="margin-top:15px; background:#ffffff; " width="100%">
 		<tr align="center"><td><?php echo $start;?></td><td><?php echo $end; ?></td></tr>
 		<tr height="20" align="center">
-			<td width="40%">平台</td><td width="40%">点击量</td>
+			<td width="40%">页面</td><td width="40%">点击量</td>
 		</tr>
 		<tr height="20" align="center" style="color:red; font-weight:blod;">
 			<td>总点击量</td><td>　<?php echo $clickcount[0]->totalcount; ?></td>
 		</tr>
 		<?php for($i=0;$i<count($clickcount1);$i++){?>
 		<tr height="20" align="center">
-			<td><?php echo $clickcount1[$i]->name;?></td><td>　<?php echo $clickcount1[$i]->count; ?></td>
+			<td><?php echo $clickcount1[$i]->parentname;?></td><td>　<?php echo $clickcount1[$i]->count; ?></td>
 		</tr>
 		<?php } ?>
 		<tr height="20" align="center">
