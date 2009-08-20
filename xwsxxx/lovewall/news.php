@@ -41,7 +41,7 @@ require_once('../../inc/top.inc.html');
 				<?php echo $record[0]->hehun_lr;?>
 			</div>
 			<div style="float:left; display:inline;"><a id="pinglun" name="pinglun">&nbsp;</a></div>
-			<?php if($record[0]->is_commentable==1){ 
+			<?php
 				
 				if(count($comment)>0){?>
 			<div id=comment>
@@ -78,7 +78,6 @@ require_once('../../inc/top.inc.html');
 							<?php echo strfck($comment[$i]->comment);?>
 						</div>
 					</div>
-				<?php }?>		
 			</div>
 			<div class=page><?php paginate('');?></div>
 			<?php }?>
