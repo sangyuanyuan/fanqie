@@ -4,7 +4,6 @@
 $(function(){
 	
 	$('#news_add').submit(function(){
-		alert('waht');
 		var video_array = new Array('flv','wmv','wav','mp3','mp4','avi','rm');
 		var pic_array = new Array('jpg','png','bmp','gif','icon');
 		if($('#video_src').val() != ''){
