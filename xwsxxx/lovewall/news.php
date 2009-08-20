@@ -16,7 +16,6 @@
 		$sql="select * from centernews_love where hehun_id=".$id;
 		$record=$db->query($sql);
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='newscenter_sxxx' and resource_id=".$id." order by created_at desc";
-		alert($sql);
 		$comment=$db->paginate($sql,5);
   ?>
 
@@ -41,29 +40,8 @@ require_once('../../inc/top.inc.html');
 				<?php echo $record[0]->hehun_lr;?>
 			</div>
 			<div style="float:left; display:inline;"><a id="pinglun" name="pinglun">&nbsp;</a></div>
-			<?php
-				
-				if(count($comment)>0){?>
 			<div id=comment>
-				<?php if(count($digg)>0){
-				 for($i=0;$i<count($digg);$i++){ ?>
-					<!--<div class=content>	
-						<div class=title1>
-							<div style="width:110px; height:20px; margin-left:118px; overflow:hidden; float:left; display:inline;">
-								<span style="color:#FF0000; text-decoration:underline;"><? echo $digg[$i]->nick_name;?></span>
-							</div>
-							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; height:30px; float:left; display:inline;"><img title="送鲜花" class="flower" src="/images/news/news_flower.jpg" style="float:left; display:inline;"><input type="hidden" value="<?php echo $digg[$i]->id;?>" style="none"><div id="hidden_flower" style="width:65px; height:12px; margin-left:3px; margin-top:8px; color:#FF0000; font-weight:bold; float:left; display:inline;"><?php echo $digg[$i]->flowernum;?></div><img title="扔番茄" class="tomato" style="float:left; display:inline" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $digg[$i]->id;?>" style="none"><div style="width:60px; height:15px; margin-top:8px; color:#FF0000; font-weight:bold; float:left; display:inline"><?php echo $digg[$i]->tomatonum;?></div></div>
-								<div style="width:140px; line-height:20px;  color:#FF0000; float:right; display:inline;"><?php echo $digg[$i]->created_at; ?></div>
-							</div>
-						</div>
-						<div class=context>
-								<?php  echo strfck($digg[$i]->comment);?>
-							</div>	
-					</div>-->
-				<?php }}
-				
-				  for($i=0;$i<count($comment);$i++){ ?>
+				  <?php for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
 						<div class=title>
 							<div style="width:230px; height:20px; margin-top:10px; margin-left:10px; overflow:hidden; line-height:20px; float:left; display:inline;">
@@ -78,9 +56,9 @@ require_once('../../inc/top.inc.html');
 							<?php echo strfck($comment[$i]->comment);?>
 						</div>
 					</div>
+				<?php }?>		
 			</div>
 			<div class=page><?php paginate('');?></div>
-			<?php }?>
 			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent style="padding-bottom:10px;">
@@ -95,7 +73,6 @@ require_once('../../inc/top.inc.html');
 				<button style="margin-top:10px; margin-right:15px; border:1px solid #cccccc; background:#ffffff; line-height:20px; float:right; display:inline;" id="comment_sub" >提交评论</button>
 			</div>
 			</form>
-			<?php } ?>
 			
 			
 		</div>
