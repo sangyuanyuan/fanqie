@@ -17,7 +17,10 @@ function strCounter(field){
 		field.value = field.value.substring(0,1000);
 	else{
 		document.getElementById("Char").innerHTML = 1000 - field.value.length;
-		document.getElementById("AreaText").innerHTML = field.value;
+		if(field.value.length >= 70)
+		{
+			document.getElementById("AreaText").innerHTML = field.value;
+		}
 	}
 }
 function getTime(){
