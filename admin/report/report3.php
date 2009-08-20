@@ -9,7 +9,6 @@ if($start==""){$start=date('Y-m-d').' 00:00:00';}else{$start=$_REQUEST['start'].
 if($end==""){$end=date('Y-m-d').' 23:59:59';}else{$end=$_REQUEST['end'].' 23:59:59';}
 $clickcount=$db->query("select sum(count) as totalcount from smg_total where datetime>='".$start."' and datetime<='".$end."' and platform='".$type."'");
 $clickcount1=$db->paginate("select sum(count) as count,parentname from smg_total where datetime>='".$start."' and datetime<='".$end."' and platform='".$type."' group by parentname order by count desc",20);
-echo "select sum(count) as count,parentname from smg_total where datetime>='".$start."' and datetime<='".$end."' and platform='".$type."' group by parentname order by count desc";
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
