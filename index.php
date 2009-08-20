@@ -901,19 +901,48 @@ total("首页","other");
       <!-- start bottom_bottom_right !-->
  			<div id=b_b_r>
 				<div id=title>在线杂志</div>
-				<?php  
-					$sql = 'select t1.id as i_id,t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 1';
-					$records = $db->query($sql);
-					$count = count($records);
-					for($i=0;$i<$count;$i++){
-				?>
-				<div class=box>
-					<div class=pic><a href="/show/show.php?id=<?php echo $records[$i]->i_id;?>" target="_blank" title="<?php echo $records[$i]->title;?>"><img src="<?php echo $records[$i]->src;?>" border=0 width=70 height=90></a></div>
-					<div class=title><?php echo $records[$i]->title;?></div>
-				</div>
-				<?php
-					}
-				?>
+				<DIV id=Layer5>
+				      <DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo10 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php  
+									$sql = 'select t1.id as i_id,t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 3';
+									$records = $db->query($sql);
+									$count = count($records);
+									for($i=0;$i<$count;$i++){
+								?>
+				                <TD><div class=box>
+										<div class=pic><a href="/show/show.php?id=<?php echo $records[$i]->i_id;?>" target="_blank" title="<?php echo $records[$i]->title;?>"><img src="<?php echo $records[$i]->src;?>" border=0 width=70 height=90></a></div>
+										<div class=title><?php echo $records[$i]->title;?></div>
+									</div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id="demo11" vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								        var demo9 = document.getElementById('demo9');
+										var demo10 = document.getElementById('demo10');
+										var demo11 = document.getElementById('demo11');  
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo11.innerHTML=demo10.innerHTML
+											function Marquee(){
+											if(demo11.offsetWidth-demo9.scrollLeft<=0)
+											demo9.scrollLeft-=demo10.offsetWidth
+											else{
+											demo9.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo9.onmouseover=function() {clearInterval(MyMar)}
+											demo9.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
+				</DIV>
  			</div>
 			<div id=b_b_r_r>
 				<div id=title>生活指南</div>
