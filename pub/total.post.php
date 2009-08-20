@@ -18,6 +18,9 @@
 	if($name=='博客'){
 		$parent_name='/blog/';
 	}
+	if($name=='新闻DIGG'){
+		$parent_name='/news/news_digg.post.php';
+	}
 	
 
 	if($name==""||$platform==""){exit;}
