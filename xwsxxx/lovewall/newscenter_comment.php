@@ -17,7 +17,7 @@
 		$comment=$db->paginate($sql,10);	
   ?>
 <script>
-	total("电视新闻中心三项学习教育","news");
+	total("电视新闻中心三项学习教育","other");
 </script>
 </head>
 <body>

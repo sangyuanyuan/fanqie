@@ -14,7 +14,7 @@
 		js_include_once_tag('dj','total');
 	?>
 	<script>
-	total("专题-学实专题","other");
+	total("专题-学实专题","news");
 </script>
 <META content="MSHTML 6.00.5730.13" name=GENERATOR>
 <STYLE type=text/css>
