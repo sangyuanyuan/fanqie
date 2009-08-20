@@ -8,7 +8,7 @@
 js_include_once_tag('total');
 ?>
 <script>
-	total("专题-六一专题","other");
+	total("新闻中心三项学习教育","other");
 </script>
 </head>
 <body style="background:url(../bottom_bg.gif);">

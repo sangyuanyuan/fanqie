@@ -16,7 +16,9 @@ $mtpl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 			<div id=content>
 				<div id=context>
 					<div id=left>
+						<a target="_blank" href="sxxx_blog.php"><img style="margin-top:5px; margin-left:1px;" border=0 src="images/hdsq-1.jpg"></a>
 						<div id=content>
+							
 							<div class=title>学实活动</div>			
 								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=53">领导讲话</a></div>
 								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=54">步骤安排</a></div>
