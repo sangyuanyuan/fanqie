@@ -3,15 +3,16 @@
 	$id=$_REQUEST['id'];
 	//$id =14621;
 	if($id==""||$id==null){die('没有找到网页');}
-	$cookie=isset($_COOKIE['news_'.date('Y-m-d').$id]) ? $_COOKIE['news_'.date('Y-m-d').$id] : 0;
-	if($cookie==0)
+	$cookie= (isset($_COOKIE['vote_user'])) ? $_COOKIE['vote_user'] : 0;
+	/*$cookie1=isset($_COOKIE['news_'.date('Y-m-d').$id]) ? $_COOKIE['news_'.date('Y-m-d').$id] : 0;
+	if($cookie1==0)
 	{
 		setcookie('news_'.date('Y-m-d').$id,1);
 	}
 	else
 	{
-		setcookie('news_'.date('Y-m-d').$id,$cookie+1);
-	}
+		setcookie('news_'.date('Y-m-d').$id,$cookie1+1);
+	}*/
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -57,7 +58,7 @@
 	</script>
 	<? }?>
  <?php
-  if($cookie<=200){
+  //if($cookie1<=200){
   if($record[0]->cplatform=="news"){?>
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","news");
@@ -79,9 +80,8 @@
 	total("<?php echo $record[0]->categoryname; ?>","other");
 </script>
 <?php }
-$sql="update smg_news set click_count=click_count+1 where id=".$id;
-$db->execute($sql);
-} ?>
+
+//} ?>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
 <?php
@@ -106,6 +106,8 @@ require_once('../inc/top.inc.html');
 		<div id=l_t>
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="/news/news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
 		</div>
+		<?php $sql="update smg_news set click_count=click_count+1 where id=".$id;
+$db->execute($sql); ?>
 		<div id=l_b>
 			<input type="hidden" id="user_id" value="<?php echo $cookie;?>">
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
