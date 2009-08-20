@@ -452,14 +452,18 @@ total("首页","other");
 		<div id=p4>
  			<!-- start top_right_right_top !-->
  			<div id=t_r_r_t>
- 				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold;"><a href="/fqtg/fqtglist.php" target=_blank>我要团购</a></div>
+ 				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn8.jpg) no-repeat; "><a href="/fqtg/fqtglist.php" target=_blank>我要团购</a></div>
  				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;">快乐番茄</div>
+<<<<<<< HEAD:index.php
  				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;">番茄百家</div>
+=======
+ 				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold; margin-left:5px;">番茄百家</div>
+>>>>>>> 0cafc2dcfe4a53aa856a96267ad625a7d33f1376:index.php
  					<?php
  						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
 						$record_tg=$db -> query($sql);		
 					?>	
- 				<div class=content_trrt id=content_trrt1>
+ 				<div class=content_trrt id=content_trrt1 style="display:none;">
 					<?php for($i=0;$i<3;$i++){?>
 					<div class=box>
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl ?>" target=_blank border=0></a>
@@ -499,28 +503,46 @@ total("首页","other");
 						</ul>
 					</div> 				
  				</div>
- 				<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="讨论区" and c.platform="zone" order by n.priority asc,n.created_at desc limit 12';
-					$record_discuss=$db -> query($sql);		
-				?>	
- 				<div class=content_trrt id=content_trrt3 style="display:none;">
+ 				<div class=content_trrt id=content_trrt3 >
  					<div class=box>
 						<ul>
-							<?php for($i=0;$i<4;$i++){?>
+							<?php
+								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="讨论区" and c.platform="zone" order by n.priority asc,n.created_at desc limit 2';
+								$record_discuss=$db -> query($sql);	
+								for($i=0;$i<2;$i++){?>
+							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
+							<? }?>
+							<?php 
+								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="上班这点事" and c.platform="zone" order by n.priority asc,n.created_at desc limit 2';
+								$record_discuss=$db -> query($sql);	
+								for($i=0;$i<2;$i++){?>
 							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
 							<? }?>
 						</ul>
 					</div>
 					<div class=box>
 						<ul>
-							<?php for($i=4;$i<8;$i++){?>
+							<?php
+								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="生活大杂烩" and c.platform="zone" order by n.priority asc,n.created_at desc limit 2';
+								$record_discuss=$db -> query($sql);	
+								for($i=0;$i<2;$i++){?>
+							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
+							<? }?>
+							<?php 
+								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="观点视角" and c.platform="zone" order by n.priority asc,n.created_at desc limit 3';
+								$record_discuss=$db -> query($sql);	
+								for($i=0;$i<2;$i++){?>
 							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
 							<? }?>
 						</ul>
 					</div>
 					<div class=box>
 						<ul>
-							<?php for($i=8;$i<12;$i++){?>
+							<li>·<a href="/<?php echo $record_discuss[2]->platform?>/news/news.php?id=<?php echo $record_discuss[2]->news_id?>" target=_blank><?php echo $record_discuss[2]->short_title ?></a></li>
+							<?php
+								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="分享生活" and c.platform="zone" order by n.priority asc,n.created_at desc limit 3';
+								$record_discuss=$db -> query($sql);	
+								for($i=0;$i<3;$i++){?>
 							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
 							<? }?>
 						</ul>
@@ -624,7 +646,11 @@ total("首页","other");
 				?>	 
 				<div id=content_mlb>
 					<ul>
+<<<<<<< HEAD:index.php
 						<li style="color:#121212;; font-weight:bold; font-size:13px; line-height:25px; height:25px;"><a href="/<?php echo $record_blog[0]->platform ?>/news/news.php?id=<?php echo $record_blog[0]->news_id ?>" target=_blank><?php echo $record_blog[0]->short_title ?></a></li>
+=======
+						<li style="color:#FF9900; font-weight:bold; font-size:13px; line-height:25px; height:25px;"><a style="color:#FF9900" href="/<?php echo $record_blog[0]->platform ?>/news/news.php?id=<?php echo $record_blog[0]->news_id ?>" target=_blank><?php echo $record_blog[0]->short_title ?></a></li>
+>>>>>>> 0cafc2dcfe4a53aa856a96267ad625a7d33f1376:index.php
 						<?php for($i=1;$i<5;$i++){ ?>
 						<li><a href="/<?php echo $record_blog[$i]->platform ?>/news/news.php?id=<?php echo $record_blog[$i]->news_id ?>" target=_blank>·<?php echo $record_blog[$i]->short_title ?></a></li>
 						<? }?>
@@ -678,8 +704,14 @@ total("首页","other");
 						$record=$db -> query($sql);
   				?> 		
   				<ul>
+<<<<<<< HEAD:index.php
   					<?php for($i=0;$i<=4;$i++){?>
   					<li><font color="#000000">【<?php echo $record[$i]->tags ?>】</font><a href="/<?php echo $record[$i]->platform?>/news/news.php?id=<?php echo $record[$i]->news_id?>" target=_blank><?php if($i<1){ ?><span style="color:red; font-weight:bold;"><?php echo $record[$i]->short_title?><?php if($i<1){ ?></span></span></a></li>
+=======
+  					<li><font color="#000000">【<?php echo $record[0]->tags ?>】</font><a style="color:#ff0000; font-weight:bold;" href="/<?php echo $record[0]->platform?>/news/news.php?id=<?php echo $record[0]->news_id?>" target=_blank><?php echo $record[0]->short_title?></a></li>
+  					<?php for($i=1;$i<=4;$i++){?>
+  					<li><font color="#000000">【<?php echo $record[$i]->tags ?>】</font><a href="/<?php echo $record[$i]->platform?>/news/news.php?id=<?php echo $record[$i]->news_id?>" target=_blank><?php echo $record[$i]->short_title?></a></li>
+>>>>>>> 0cafc2dcfe4a53aa856a96267ad625a7d33f1376:index.php
   					<? }?>
  					</ul>	
   				
@@ -788,13 +820,14 @@ total("首页","other");
 						$record = $db->query($sql);
 						$count = count($record);
 					?>
-					<div class="top_title"><a href="/answer/pro_answer.php?id=32"  target=_blank>脑筋急转弯第五期</a></div>
+					<div class="top_title"><a href="/answer/pro_answer.php?id=29"  target=_blank>咬文嚼字第一期</a></div>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=32"  target=_blank>脑筋急转弯第五期</a></li></div>
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=31"  target=_blank>脑筋急转弯第四期</a></li></div>
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=30"  target=_blank>脑筋急转弯第三期</a></li></div>
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=28"  target=_blank>脑筋急转弯第二期</a></li></div>
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=27"  target=_blank>脑筋急转弯第一期</a></li></div>
 					<?php 
-						for($i=5;$i<$count;$i++){
+						for($i=6;$i<$count;$i++){
 					?>
 					<!--<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=27" title="脑筋急转弯第一期" target=_blank><?php echo $record[$i]->title ?></a></li></div>-->
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/answer.php?id=<?php echo $record[$i]->id ?>" title="<?php echo $record[$i]->title; ?>" target=_blank><?php echo $record[$i]->title ?></a></li></div>
