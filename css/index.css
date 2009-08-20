@@ -115,8 +115,8 @@ p{margin:0px; padding:0px;}
 #t_r_r_m #content_trrm a:hover{color:#656565; text-decoration:underline;}
 #t_r_r_m .btn_tlm{width:83px; height:19px; margin-left:10px; padding-top:12px; line-height:15px; font-weight:bold; text-align:center; color:#ffffff; cursor:pointer; float:left; display:inline;}
 #t_r_r_m .btn_tlm a{color:#ffffff; text-decoration:none;}
-#t_r_r_m .list_tlm{width:175px; height:135px; margin-top:10px; margin-left:5px; overflow:hidden; float:left; display:none;}
-#t_r_r_m .list_tlm li{width:175px; height:19px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; float:left; display:inline;}
+#t_r_r_m .list_tlm{width:170px; height:135px; margin-top:10px; margin-left:5px; overflow:hidden; float:left; display:none;}
+#t_r_r_m .list_tlm li{width:170px; height:19px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; float:left; display:inline;}
 #t_r_r_m .list_tlm li a{ color:#000000; text-decoration:none;}
  
 #t_r_r_b{width:215px; height:225px; background:url(/images/index/bg_t_r_r_b.jpg) no-repeat; float:right; display:inline;}

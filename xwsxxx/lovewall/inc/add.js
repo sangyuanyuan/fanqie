@@ -13,10 +13,10 @@ function InputName(OriInput, GoalArea){
 	document.getElementById(GoalArea).innerHTML = OriInput.value;
 }
 function strCounter(field){
-	if (field.value.length > 70)
-		field.value = field.value.substring(0,70);
+	if (field.value.length > 1000)
+		field.value = field.value.substring(0,1000);
 	else{
-		document.getElementById("Char").innerHTML = 70 - field.value.length;
+		document.getElementById("Char").innerHTML = 1000 - field.value.length;
 		document.getElementById("AreaText").innerHTML = field.value;
 	}
 }

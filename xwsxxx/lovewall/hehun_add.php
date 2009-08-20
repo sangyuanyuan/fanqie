@@ -17,7 +17,7 @@ js_include_once_tag('total');
 </div>
 <div id="menu">
 	<a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
-    <a href="index.php?id=1">首页</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">人气排行榜 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a></div>
+    <a href="index.php">首页</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">人气排行榜 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a></div>
 <script type="text/javascript" src="inc/add.js"></script>
 
 
@@ -54,7 +54,7 @@ js_include_once_tag('total');
 	<tr>
 		<th>字条内容：</th>
 		<td>
-			<textarea name="info" cols="70" rows="4" onkeyup="strCounter(this);" onchange="strCounter(this);"></textarea> <span class="red">*</span>还剩<span class="red" id="Char"> 70 </span>字
+			<textarea name="info" cols="70" rows="4" onkeyup="strCounter(this);" onchange="strCounter(this);"></textarea> <span class="red">*</span>还剩<span class="red" id="Char"> 1000 </span>字
 		</td>		
 	</tr>
 	<tr>
