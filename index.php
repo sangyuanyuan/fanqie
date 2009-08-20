@@ -452,14 +452,14 @@ total("首页","other");
 		<div id=p4>
  			<!-- start top_right_right_top !-->
  			<div id=t_r_r_t>
- 				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn8.jpg) no-repeat; "><a href="/fqtg/fqtglist.php" target=_blank>我要团购</a></div>
+ 				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold;"><a href="/fqtg/fqtglist.php" target=_blank>我要团购</a></div>
  				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;">快乐番茄</div>
- 				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold; margin-left:5px;">番茄百家</div>
+ 				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px; color:#ff0000">番茄百家</div>
  					<?php
  						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
 						$record_tg=$db -> query($sql);		
 					?>	
- 				<div class=content_trrt id=content_trrt1 style="display:none;">
+ 				<div class=content_trrt id=content_trrt1 >
 					<?php for($i=0;$i<3;$i++){?>
 					<div class=box>
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl ?>" target=_blank border=0></a>
@@ -499,7 +499,7 @@ total("首页","other");
 						</ul>
 					</div> 				
  				</div>
- 				<div class=content_trrt id=content_trrt3 >
+ 				<div class=content_trrt id=content_trrt3 style="display:none;">
  					<div class=box>
 						<ul>
 							<?php
@@ -901,7 +901,6 @@ total("首页","other");
       <!-- start bottom_bottom_right !-->
  			<div id=b_b_r>
 				<div id=title>在线杂志</div>
-				<DIV id=Layer5>
 				      <DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
@@ -942,7 +941,6 @@ total("首页","other");
 											demo9.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
 										})
 									</SCRIPT>
-				</DIV>
  			</div>
 			<div id=b_b_r_r>
 				<div id=title>生活指南</div>
