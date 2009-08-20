@@ -5,10 +5,18 @@
 	$datetime1=date('Y-m-d')." 00:00:00";
 	$datetime2=date('Y-m-d')." 23:59:59";
 	list($name,$platform) = split ($PostDiv, $_POST["total"]);
-	if(strpos(basename($_SERVER['HTTP_REFERER']),'?')){
-		$parent_name = substr(basename($_SERVER['HTTP_REFERER']), 0, strpos(basename($_SERVER['HTTP_REFERER']),'?'));
+	if(strpos($_SERVER['HTTP_REFERER'],'?')){
+		$parent_name = substr($_SERVER['HTTP_REFERER'], 0, strpos($_SERVER['HTTP_REFERER'],'?'));
 	}else{
-		$parent_name = basename($_SERVER['HTTP_REFERER']);
+		$parent_name = $_SERVER['HTTP_REFERER'];
+	}
+	$table_change = array('http://172.27.203.81:8080'=>'');
+	$parent_name = strtr($parent_name,$table_change);
+	if($name=='论坛'){
+		$parent_name='/bbs/';
+	}
+	if($name=='博客'){
+		$parent_name='/blog/';
 	}
 	
 
