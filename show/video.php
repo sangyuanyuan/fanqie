@@ -5,18 +5,18 @@
 	$video->find($id);
 	$category = new table_class('smg_category');
 	$category->find($video->category_id);
-	$y2k = mktime(0,0,0,1,1,2020); 
-	$cookie_name = 'video_'.date("Y-m-d").'_'.$id;
-	if($_COOKIE[$cookie_name]==''){
-		SetCookie($cookie_name,'1',$y2k,'/');
-	}else{
-		$cookie = $_COOKIE[$cookie_name]+1;
-		SetCookie($cookie_name,$cookie,$y2k,'/');
-	}
-	if($_COOKIE[$cookie_name]<200){
+	//$y2k = mktime(0,0,0,1,1,2020); 
+	//$cookie_name = 'video_'.date("Y-m-d").'_'.$id;
+	//if($_COOKIE[$cookie_name]==''){
+	//	SetCookie($cookie_name,'1',$y2k,'/');
+	//}else{
+	//	$cookie = $_COOKIE[$cookie_name]+1;
+	//	SetCookie($cookie_name,$cookie,$y2k,'/');
+	//}
+	//if($_COOKIE[$cookie_name]<200){
 		$video->click_count = $video->click_count+1;
 		$video -> save();
-	}
+	//}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
