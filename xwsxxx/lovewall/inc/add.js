@@ -14,7 +14,7 @@ function InputName(OriInput, GoalArea){
 }
 function strCounter(field){
 	if (field.value.length > 70)
-		field.value = field.value.substring(0, 70);
+		field.value = field.value.substring(0,70);
 	else{
 		document.getElementById("Char").innerHTML = 70 - field.value.length;
 		document.getElementById("AreaText").innerHTML = field.value;
