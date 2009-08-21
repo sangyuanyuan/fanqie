@@ -48,7 +48,7 @@ if($type==1)
 }
 else if($type==2)
 {
-	$result=mysql_query("select hehun_head,count(*) as num from centernews_love group by hehun_head order by num  DESC limit $start,$limit");
+	$result=mysql_query("select hehun_id,hehun_head,count(*) as num from centernews_love group by hehun_head order by num  DESC limit $start,$limit");
 }
 $num=mysql_numrows($result); 
 for ($i=0;$i<$num;$i++) {
@@ -78,11 +78,12 @@ $hehun_cs=mysql_result($result,$i,"hehun_cs");
 
 <?
 }else if($type==2){
+	$hehun_id=mysql_result($result,$i,"hehun_id");
 	$hehun_head=mysql_result($result,$i,"hehun_head");
 	$num=mysql_result($result,$i,"num");?>
 <tr class="tr">
 	<td><?=$hehun_head?></a></td>
-	<td><?=$num?></td>
+	<td align="center"><a href="index.php?id=<?=$hehun_id ?>"><?=$num?></a></td>
 </tr> 
 <?}
 }
