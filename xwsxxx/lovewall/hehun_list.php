@@ -52,7 +52,7 @@ else if($type==2)
 }
 $num=mysql_numrows($result); 
 for ($i=0;$i<$num;$i++) {
-$top =rand(110,418);
+$top =rand(300,500);
 $left=rand(81,625);
 if($type==1)
 {

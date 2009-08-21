@@ -45,15 +45,15 @@ $hehun_sign=mysql_result($result,$i,"hehun_sign");
 $hehun_lr=mysql_result($result,$i,"hehun_lr");
 $hehun_date=mysql_result($result,$i,"hehun_date");
 $hehun_cs=mysql_result($result,$i,"hehun_cs");
-$top =rand(150,418);
+$top =rand(300,500);
 $left=rand(81,625)
 ?>
 <div id="Layer<?=$hehun_id?>" class="Face<?=$hehun_class?>" style="top:<?=$top?>px;left:<?=$left?>px;z-index:1" onmousedown="Move(this,event)" ondblclick="Show(1)">
 <p class="Num">被推荐人：<?=$hehun_head?><img src="hehun_images/close.gif" alt="关闭" onclick="Close(<?=$hehun_id?>)" /></p><p class="Detail"><img width=50 height=50 alt="" src="<?=$hehun_images?>" />
 	<span class="Head"><?=$hehun_head?></span><br /><a target="_blank" href="news.php?id=<?=$hehun_id; ?>"><?=$hehun_lr?></p><p class="Sign"><table class="Sign"width="95%"  border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td><div align="left"><a href="zf.php?id=<?=$hehun_id?>" title="我要献花">我要献花：<?=$hehun_cs?>次</a></div></td>
-    <td><div align="left">我要评论：<?=$commentnum[0]->num;?>次</div></td>
+    <td><div align="left"><a href="zf.php?id=<?=$hehun_id;?>" title="我要献花">我要献花：<?=$hehun_cs?>次</a></div></td>
+    <td><div align="left"><a href="news.php?id=<?=$hehun_id;?>">我要评论：<?=$commentnum[0]->num;?>次</div></td>
     <td><div align="right"><?=$hehun_sign?></div></td>
   </tr>
 </table></p><p class="Date"><?=$hehun_date?></p></div>	
