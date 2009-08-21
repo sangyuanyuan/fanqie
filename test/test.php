@@ -1,8 +1,8 @@
 <?php
-	include "frame.php";
+	include "../frame.php";
 	use_jquery();
 	
-	$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=13817499668&content=" .iconv('utf-8','gbk','您爆料的新闻已通过审批') ."&sign=1";
+	$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=13817499668&content=" .urlencode(iconv('utf-8','gbk','您爆料的新闻已通过审批')) ."&sign=1";
 	echo $url;
 ?>
 
