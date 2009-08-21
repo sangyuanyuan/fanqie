@@ -82,7 +82,7 @@ total("首页","other");
 					
 				<? }?>	
   		  </div>
- 				<div class=content_tlt id=content2 style="background:url(/images/index/bg_flash.jpg) no-repeat;<?php if($record_inline[0]->name=='spxw'){?> display:inline;<?php }?>">
+ 				<div class=content_tlt id=content2 <?php if($record_inline[0]->name=='spxw'){?>style="display:inline;"<?php }?>>
  					<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=235px height=182px scrolling="no" frameborder="0"></iframe>
  				</div>
   			<div class=content_tlt id=content3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
@@ -800,21 +800,16 @@ total("首页","other");
  			<div id=b_t_r>
 				<div class=m_box>
 					<?php  
-						$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
+						//$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
+						$sql = 'select id,name from smg_problem where is_adopt=1 order by create_time desc limit 6';
 						$record = $db->query($sql);
 						$count = count($record);
 					?>
-					<div class="top_title"><a href="/answer/pro_answer.php?id=29"  target=_blank>咬文嚼字第一期</a></div>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=32"  target=_blank>脑筋急转弯第五期</a></li></div>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=31"  target=_blank>脑筋急转弯第四期</a></li></div>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=30"  target=_blank>脑筋急转弯第三期</a></li></div>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=28"  target=_blank>脑筋急转弯第二期</a></li></div>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=27"  target=_blank>脑筋急转弯第一期</a></li></div>
+					<div class="top_title"><a href="/answer/pro_answer.php?id=<?php echo $record[0]->id;?>"  target=_blank><?php echo $record[0]->name;?></a></div>
 					<?php 
-						for($i=6;$i<$count;$i++){
+						for($i=1;$i<$count;$i++){
 					?>
-					<!--<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=27" title="脑筋急转弯第一期" target=_blank><?php echo $record[$i]->title ?></a></li></div>-->
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/answer.php?id=<?php echo $record[$i]->id ?>" title="<?php echo $record[$i]->title; ?>" target=_blank><?php echo $record[$i]->title ?></a></li></div>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id==<?php echo $record[$i]->id;?>"  target=_blank><?php echo $record[$i]->name;?></a></li></div>
 					<?php
 						}
 					?>

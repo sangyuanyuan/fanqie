@@ -25,7 +25,7 @@
 
 	if($name==""||$platform==""){exit;}
 	
-	$strsql='select * from smg_total where platform="'.$platform.'" and name="'.$name.'" and datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
+	$strsql='select * from smg_total where platform="'.$platform.'" and parentname="'.$parent_name.'" and name="'.$name.'" and datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
 	$record=$db -> query($strsql);
 	if(count($record)==0)
 	{

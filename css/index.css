@@ -21,6 +21,7 @@ p{margin:0px; padding:0px;}
 #t_l_t .content_tlt{width:260px; height:183px; margin-top:8px; line-height:15px;  margin-left:8px; overflow:hidden; float:left; display:none;}
 #t_l_t .content_tlt iframe{margin-top:1px; margin-left:11px; float:left; display:inline;}
 #t_l_t .content_tlt img{width:256px; height:185px;}
+#t_l_t #content2{background:url(/images/index/bg_flash.jpg) no-repeat;}
 #t_l_t .list{width:237px; height:80px; margin-top:15px; margin-left:18px; overflow:hidden; float:left; display:none;}
 #t_l_t .list li{width:245px; height:19px; padding-left:17px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; cursor:pointer; background:url(/images/icon/arrow1.gif) no-repeat 0 3px; float:left; display:inline;}
 #t_l_t .list li a{color:#000000; text-decoration:none;}
