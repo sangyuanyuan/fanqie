@@ -45,7 +45,7 @@ $hehun_sign=mysql_result($result,$i,"hehun_sign");
 $hehun_lr=mysql_result($result,$i,"hehun_lr");
 $hehun_date=mysql_result($result,$i,"hehun_date");
 $hehun_cs=mysql_result($result,$i,"hehun_cs");
-$top =rand(110,418);
+$top =rand(150,418);
 $left=rand(81,625)
 ?>
 <div id="Layer<?=$hehun_id?>" class="Face<?=$hehun_class?>" style="top:<?=$top?>px;left:<?=$left?>px;z-index:1" onmousedown="Move(this,event)" ondblclick="Show(1)">
