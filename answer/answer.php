@@ -5,12 +5,12 @@
 	$db = get_db();
 	if($first_id!=$id){
 		if($id!=''){
-			$sql = 'select id,title,nick_name,description from smg_question where id<='.$id.' and id!='.$first_id.' and is_adopt=1 order by create_time desc limit 2';
+			$sql = 'select id,title,nick_name,description from smg_question where id<='.$id.' and id!='.$first_id.' and is_adopt=1 order by id desc limit 2';
 		}else{
-			$sql = 'select id,title,nick_name,description from smg_question where id!='.$first_id.' and is_adopt=1 order by create_time desc limit 2';
+			$sql = 'select id,title,nick_name,description from smg_question where id!='.$first_id.' and is_adopt=1 order by id desc limit 2';
 		}
 	}else{
-		$sql = 'select id,title,nick_name,description from smg_question where id='.$id.' order by create_time';
+		$sql = 'select id,title,nick_name,description from smg_question where id='.$id;
 	}
 	$records = $db->query($sql);
 	$number = isset($_POST['number'])?$_POST['number']:'1';
