@@ -493,12 +493,11 @@ total("首页","other");
 							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
 							<? }?>
 							<?php 
-								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="上班这点事" and c.platform="zone" order by n.priority asc,n.created_at desc limit 1';
-								$record_discuss=$db -> query($sql);	?>
+								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="上班这点事" and c.platform="zone" order by n.priority asc,n.created_at desc limit 2';
+								$record_discuss=$db -> query($sql);	
+								for($i=0;$i<2;$i++){?>
 							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
-							<?php $sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="生活大杂烩" and c.platform="zone" order by n.priority asc,n.created_at desc limit 1';
-								$record_discuss=$db -> query($sql); ?>
-								<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
+							<? }?>
 						</ul>
 					</div>
 					<div class=box>

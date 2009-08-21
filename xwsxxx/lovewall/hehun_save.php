@@ -17,7 +17,7 @@ die("<script>alert('输入错误，请返回重填！');history.back();</script>
 if(!ereg("[0-9-]",$hehun_images)){
 die("<script>alert('输入错误，请返回重填！');history.back();</script>");
 }
-if(strlen($hehun_head)>16 || strlen($hehun_sign)>16){
+if(strlen($hehun_head)>255 || strlen($hehun_sign)>255){
 die("<script>alert('发送人或祝福人姓名过长，请返回重填！');history.back();</script>");
 }
 if(strlen($hehun_lr)>3000){
