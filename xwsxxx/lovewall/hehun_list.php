@@ -68,7 +68,7 @@ if($type==1)
 {
 ?>
 <tr class="tr">
-	<td>><?=$hehun_lr?></a></td>
+	<td>><?=$hehun_lr?></td>
 	<td><?=$hehun_sign?></td>
 	<td><?=$hehun_head?></td>
 	<td><?=$hehun_cs?></td>
@@ -77,6 +77,7 @@ if($type==1)
 
 <?
 }else if($type==2){
+	$hehun_head=mysql_result($result,$i,"hehun_head");
 	$num=mysql_result($result,$i,"num");?>
 <tr class="tr">
 	<td><?=$hehun_head?></a></td>
