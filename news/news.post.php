@@ -64,12 +64,6 @@
 		$news->save();			
 	}
 	alert("上传成功！请等待管理员审批！谢谢！");
-	if($_POST['news']['phone']!="")
-	{
-		$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=".$_POST['news']['phone']."&content=" .urlencode(iconv('utf-8','gbk','感谢您的报料，您的稿件已经成功上传并进入审核阶段！')) ."&sign=1";
-		$fp = fopen($url,'r') ;
-		fclose($fp);
-	}
 	redirect('news_sub.php');
 	#var_dump($news);
 ?>
