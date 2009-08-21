@@ -127,7 +127,7 @@
 						<?php }?>
 						<a href="news_edit.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>
 						<a href="/admin/comment/comment.php?id=<?php echo $record[$i]->id;?>&type=news" style="color:#000000; text-decoration:none">评论</a>
-						<?php if($record[$i]->dept_id!="7"){?>
+						<?php if($record[$i]->dept_id!="7"&&$record[$i]->category_id!=4){?>
 							<span style="cursor:pointer;color:#FF0000" class="return" name="<?php echo $record[$i]->id;?>">退回</span>
 						<?php }else{?>
 							<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $record[$i]->id;?>">删除</span>
