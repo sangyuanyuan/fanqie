@@ -6,6 +6,7 @@
 <style><!--@import url(inc/style.css);--></style>
 <?php use_jquery();
 js_include_once_tag('total');
+$type=$_REQUEST['id'];
 ?>
 <script>
 	total("专题-六一专题","other");
@@ -38,7 +39,6 @@ js_include_once_tag('total');
 include("inc/coon.php");
 $limit=10;
 $start=$_GET["start"];
-$type=$_REQUEST['type'];
 if(empty($start)) $start=0; 
 $result=mysql_query("select * from centernews_love"); 
 $num_max=mysql_numrows($result); 
@@ -52,6 +52,10 @@ else if($type==2)
 }
 $num=mysql_numrows($result); 
 for ($i=0;$i<$num;$i++) {
+$top =rand(110,418);
+$left=rand(81,625);
+if($type==1)
+{
 $hehun_id=mysql_result($result,$i,"hehun_id");
 $hehun_class=mysql_result($result,$i,"hehun_class"); 
 $hehun_images=mysql_result($result,$i,"hehun_images"); 
@@ -61,13 +65,11 @@ $hehun_lr=mysql_result($result,$i,"hehun_lr");
 $hehun_date=mysql_result($result,$i,"hehun_date");
 $hehun_cs=mysql_result($result,$i,"hehun_cs");
 
-$top =rand(110,418);
-$left=rand(81,625);
-if($type==1)
-{
+
+
 ?>
 <tr class="tr">
-	<td>><?=$hehun_lr?></a></td>
+	<td>><?=$hehun_lr?></td>
 	<td><?=$hehun_sign?></td>
 	<td><?=$hehun_head?></td>
 	<td><?=$hehun_cs?></td>
@@ -76,6 +78,7 @@ if($type==1)
 
 <?
 }else if($type==2){
+	$hehun_head=mysql_result($result,$i,"hehun_head");
 	$num=mysql_result($result,$i,"num");?>
 <tr class="tr">
 	<td><?=$hehun_head?></a></td>
