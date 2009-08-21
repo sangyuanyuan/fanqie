@@ -52,6 +52,10 @@ else if($type==2)
 }
 $num=mysql_numrows($result); 
 for ($i=0;$i<$num;$i++) {
+$top =rand(110,418);
+$left=rand(81,625);
+if($type==1)
+{
 $hehun_id=mysql_result($result,$i,"hehun_id");
 $hehun_class=mysql_result($result,$i,"hehun_class"); 
 $hehun_images=mysql_result($result,$i,"hehun_images"); 
@@ -61,10 +65,8 @@ $hehun_lr=mysql_result($result,$i,"hehun_lr");
 $hehun_date=mysql_result($result,$i,"hehun_date");
 $hehun_cs=mysql_result($result,$i,"hehun_cs");
 
-$top =rand(110,418);
-$left=rand(81,625);
-if($type==1)
-{
+
+
 ?>
 <tr class="tr">
 	<td>><?=$hehun_lr?></td>
