@@ -21,7 +21,7 @@ table{background:url(../bottom_bg.gif);border-bottom:1px solid #fff;}
 tr{background:#red;}
 .tr{background:#fff;}
 
-.List th{font-weight:normal;background:#70b817;text-align:center;padding:8px;border:1px solid #fff;}
+.List th{font-weight:normal;background:#E5005B;text-align:center;padding:8px;border:1px solid #fff;}
 .List td{padding:8px;}
 .ListA{width:10%;font-size:10px;color:#70b817;text-align:center;}
 .ListB{width:55%;text-align:left;word-break:break-all;}

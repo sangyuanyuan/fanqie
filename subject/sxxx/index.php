@@ -198,7 +198,7 @@
 									<? }}?>
 								
 							</div>
-							<div style="width:330px; height:120px; float:right; display:inline">
+							<div style="width:330px; float:right; display:inline">
 							<? 
 							 for($i=0;$i<count($gzzd);$i++){?>
 								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $gzzd[$i]->id;?>"><? echo $gzzd[$i]->short_title;?></a></div>
@@ -207,7 +207,7 @@
 							</div>
 							<div class=title style="margin-left:10px;">我的承诺</div>
 							<div class=title style="margin-left:10px;">我的博客</div>
-							<div style="width:350px; height:90px; float:left; display:inline;">
+							<div style="width:350px; float:left; display:inline;">
 								<? 
 								$comments = $db->paginate('select * from smg_comment where resource_type="sxxx" order by created_at desc',5);
 								for($i=0;$i<count($comments);$i++){?>

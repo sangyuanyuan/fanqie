@@ -20,7 +20,7 @@ $type=$_REQUEST['id'];
 </div>
 <div id="menu">
 <a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
-    <a href="index.php">首页</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">人气排行榜 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a></div>
+    <a href="index.php">首页</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php?id=2">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php?id=1">人气排行榜 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a></div>
 <table width="100%" border="0" cellpadding="0" cellspacing="1" class="List">
 	<tr>
 		<?php if($type==1){?>
@@ -52,7 +52,7 @@ else if($type==2)
 }
 $num=mysql_numrows($result); 
 for ($i=0;$i<$num;$i++) {
-$top =rand(110,418);
+$top =rand(300,500);
 $left=rand(81,625);
 if($type==1)
 {

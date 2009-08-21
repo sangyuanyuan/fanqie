@@ -46,7 +46,7 @@
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　手机</div>
-		<div class=t_r><input id="news_phone" type="text" name="news[phone]" value="<?php echo $_COOKIE['smg_news_phone'];?>">(请输入手机长号码)</div>
+		<div class=t_r><input id="news_phone" type="text" name="news[phone]" value="<?php echo $_COOKIE['smg_news_phone'];?>">(请输入手机长号码,一旦此稿件发布我们将第一时间短信通知您)</div>
 		<div id="senddx" style="display:none;"></div>
 	</div>
 	<div id=m>
