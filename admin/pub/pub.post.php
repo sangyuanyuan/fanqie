@@ -84,9 +84,10 @@
 				$post->update_attribute("is_adopt","1");
 				$db = get_db();
 				$phone=$db->query("select phone from smg_news where id=".$_POST['id']);
+				
 				if($phone[0]->phone!="")
 				{
-					$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=".$phone[0]->phone."&content=" .urlencode(iconv('utf-8','gbk','¸ĞĞ»ÄúµÄ±¨ÁÏ£¬ÄúµÄ¸å¼şÒÑ¾­ÔÚ·¬ÇÑÍø¡°ÍøÓÑ±¨ÁÏ¡±À¸Ä¿·¢²¼£¬»¶Ó­²éÔÄ£¡')) ."&sign=1";
+					$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=".$phone[0]->phone."&content=" .urlencode(iconv('utf-8','gbk','æ„Ÿè°¢æ‚¨çš„æŠ¥æ–™ï¼Œæ‚¨çš„ç¨¿ä»¶å·²ç»åœ¨ç•ªèŒ„ç½‘â€œç½‘å‹æŠ¥æ–™â€æ ç›®å‘å¸ƒï¼Œæ¬¢è¿æŸ¥é˜…ï¼')) ."&sign=1";
 					$fp = fopen($url,'r') ;
 					fclose($fp);
 				}
