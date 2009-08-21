@@ -120,7 +120,7 @@
               <td height="41" background="images/left_08.jpg"><table width="226" height="18" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                 	 <?php  
-						$records = show_content('smg_news','news','纪实频道','文明采风','10');
+						$records = show_content('smg_news','news','纪实频道','群团乐趣','10');
 						$count = count($records);
 					 ?>
                   <td width="31" height="18">&nbsp;</td>
