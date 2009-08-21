@@ -29,6 +29,12 @@
      </TD></TR></TBODY></TABLE></DIV>
 <DIV id=menu>
 <UL>
+	<li><a href="/blog/?action-category-catid-104" target="_blank">学习心得</a></li>
+	<li><a href="/blog/?action-category-catid-105" target="_blank">工作体会</a></li>
+	<li><a href="/blog/?action-category-catid-106" target="_blank">个人书评</a></li>
+	<li><a href="/blog/?action-category-catid-107" target="_blank">新闻观点</a></li>
+	<li><a href="/blog/?action-category-catid-108" target="_blank">行业动向</a></li>
+	<li><a href="/blog/?action-category-catid-109" target="_blank">我与海宝同行</a></li>
   </UL></DIV>
 <DIV class="content topcontent">
 <DIV class=mainarea>
@@ -45,7 +51,7 @@
 			$typeadd = $type == 'real' ? '_real' : '';
 			return $dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).$typeadd."_avatar_$size.jpg";
 		}
-		$sql = 'select t1.uid,t1.username,sum(t1.viewnum) as num from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 group by t1.uid order by num';
+		$sql = 'select t1.uid,t1.username,sum(t1.viewnum) as num from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 group by t1.uid order by num desc';
 		$record = $db->query($sql);
 		$count = count($record);
 		for($i=0;$i<$count;$i++){
@@ -55,7 +61,7 @@
 	?>
 	<div class=box>
 		<div class=pic>
-			<a href="/blog/?uid-<?php echo $record[$i]->uid?>"><img src="<?php echo $avatar;?>" width=100 height=100></a>
+			<a href="/blog/?uid-<?php echo $record[$i]->uid?>"><img src="<?php echo $avatar;?>" width=60 height=60></a>
 		</div>
 		<div class=name>
 			<a href="/blog/?uid-<?php echo $record[$i]->uid?>"><?php echo $record[$i]->username;?></a>
@@ -74,18 +80,42 @@
 <DIV class=side>
 <DIV class="block blockG">
 <H1>三项教育</H1>
+<div style="width:290px; float:left; display:inline; background:#F1F6F5">
+<div class=right_title>博客点击量</div>
+<div class=right_box>
 <UL class=msgtitlelist>
 	<?php
 		 for($i=0;$i<$count;$i++){
 	?>
 	<LI>
-		<a href="/blog/?uid-<?php echo $record[$i]->uid?>"><?php echo $record[$i]->username;?>的博客</a>
-		<span style="margin-right:50px; color:#656d77; float:right;">点击量：<?php echo $record[$i]->num;?></span>
+		<span style="width:150px; float:left; display:inline"><a href="/blog/?uid-<?php echo $record[$i]->uid?>"><?php echo $record[$i]->username;?>的博客</a></span>
+		<span style="margin-left:20px; color:#656d77; float:left; display:inline">点击量：<?php echo $record[$i]->num;?></span>
 	</LI>
 	<?php
 		 }
 	?>
-</UL></DIV><!--月度关注热点--></DIV></DIV><!-- /Content --><!-- Footer -->
+</UL>
+</div>
+<div class=right_title>博文点击量</div>
+<div class=right_box>
+<UL class=msgtitlelist>
+	<?php
+		$sql = 'select t1.uid,t1.subject,t1.itemid,t1.viewnum from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 order by t1.viewnum desc limit 10';
+		$record = $db->query($sql);
+		$count = count($record);
+		for($i=0;$i<$count;$i++){
+	?>
+	<LI>
+		<span style="width:150px; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[0]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
+		<span style="margin-left:20px; color:#656d77; float:left; display:inline">点击量：<?php echo $record[$i]->viewnum;?></span>
+	</LI>
+	<?php
+		 }
+	?>
+</UL>
+</div>
+</div>
+</DIV><!--月度关注热点--></DIV></DIV><!-- /Content --><!-- Footer -->
 <DIV id=footerlink class=content> </DIV></DIV>
 <DIV id=footer>
 </DIV><!-- /Footer --></BODY></HTML>

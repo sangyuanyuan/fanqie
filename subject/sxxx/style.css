@@ -963,6 +963,8 @@ H1#articletitle {
 }
 
 .box{ margin-left:10px; margin-top:10px; float:left; display:inline;}
-.box .pic{width:100px; height:100px; float:left; display:inline;}
-.box .name{width:300px; height:20px; margin-left:20px; line-height:20px; font-size:15px; float:left; display:inline;}
-.box .title{width:400px; height:20px; margin-left:20px; margin-top:15px; overflow:hidden; line-height:20px; font-size:15px; float:left; display:inline;}}
+.box .pic{width:60px; height:60px; float:left; display:inline;}
+.box .name{width:300px; height:20px; margin-left:10px; line-height:20px; font-size:15px; float:left; display:inline;}
+.box .title{width:400px; height:20px; margin-left:10px; overflow:hidden; line-height:20px; font-size:15px; float:left; display:inline;}
+.right_title{width:200px; margin-left:10px; margin-top:10px;  float:left; display:inline;}
+.right_box{float:left; display:inline;}
