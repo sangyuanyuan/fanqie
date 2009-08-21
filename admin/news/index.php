@@ -173,8 +173,8 @@
 			all_selected = !all_selected;
 			$('input:checkbox').attr('checked',all_selected);
 		});
-		var content=urlencode(iconv('utf-8','gbk','感谢您的报料，您的稿件已经在番茄网“网友报料”栏目发布，欢迎查阅！'));
-		$("#senddx").attr('scr',"http://222.68.17.193:8080/qxt/jbs.jsp?phone=" + $(this).attr("param")+"&content="+content+"&sign=1");
+		//var content=urlencode(iconv('utf-8','gbk','感谢您的报料，您的稿件已经在番茄网“网友报料”栏目发布，欢迎查阅！'));
+		//$("#senddx").attr('scr',"http://222.68.17.193:8080/qxt/jbs.jsp?phone=" + $(this).attr("param")+"&content="+content+"&sign=1");
 		$('#button_delete').click(function(){
 			if (confirm('确定删除/退回选中新闻?')) {
 				$.post('delete_news.php', $('input:checkbox').serializeArray(), function(data){
