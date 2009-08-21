@@ -20,7 +20,7 @@ die("<script>alert('输入错误，请返回重填！');history.back();</script>
 if(strlen($hehun_head)>16 || strlen($hehun_sign)>16){
 die("<script>alert('发送人或祝福人姓名过长，请返回重填！');history.back();</script>");
 }
-if(strlen($hehun_lr)>140){
+if(strlen($hehun_lr)>3000){
 die("<script>alert('发送人内容过长，请返回重填！');history.back();</script>");
 }
 $sql = "INSERT INTO centernews_love (hehun_class,hehun_images,hehun_head,hehun_sign,hehun_lr,hehun_date,ip) VALUES ($hehun_class,'$hehun_images','$hehun_head','$hehun_sign','$hehun_lr','$today','$ip')";   //构造sql语句
