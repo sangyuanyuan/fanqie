@@ -39,7 +39,6 @@ $type=$_REQUEST['id'];
 include("inc/coon.php");
 $limit=10;
 $start=$_GET["start"];
-$type=$_REQUEST['type'];
 if(empty($start)) $start=0; 
 $result=mysql_query("select * from centernews_love"); 
 $num_max=mysql_numrows($result); 
