@@ -76,19 +76,25 @@
 							<?php if($i==0){?>
 							<img src="/images/icon/arrow2.gif">
 							<a style="color:#2C345B; font-weight:bold;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->short_title); ?></a>
-							<?php }else{?>
+							<?php }elseif($i==1||$i==2){?>
 							<img src="/images/icon/arrow1.gif">
-							<a style="color:#000000;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->short_title); ?>
+							<a style=color:#2C345B;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->short_title); ?>
 							</a>
-							<?php } ?>
+							<?php }else{
+							?>
+							<img src="/images/icon/arrow1.gif">
+							<a style=color:#000000;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->short_title); ?>
+							</a>
+							<?php
+							} ?>
 						</div>
 					<?php } ?>
 				</div>
 			</div>
 			<div class=t_l_b>
 				<div class=t_l_b_t><div class="title">BBS</div><div class="title_right">【上班这点事】</div></div>
-				<div class=t_l_b_l><?php for($i=0;$i< count($sbzds);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->short_title); ?></a></div><?php }?> </div>
-				<div class=t_l_b_r><?php for($i=0;$i< count($sbzdsimg);$i++){ ?><div class=content><a target="_blank" href="<?php echo $sbzdsimg[$i]->url;?>"><div class=t_l_b_pic><img border=0 width=113 height=81 src="<?php echo $sbzdsimg[$i]->src; ?>"></div><div style="width:113px; height:18px; margin-top:5px; cursor:pointer; text-decoration:none; color:red; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($sbzdsimg[$i]->title);?></div></a></div><?php } ?></div>
+				<div class=t_l_b_l><?php for($i=0;$i< count($sbzds);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a <?php if($i<2){?>style="color:#ff0000;"<?php }?> target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->short_title); ?></a></div><?php }?> </div>
+				<div class=t_l_b_r><?php for($i=0;$i< count($sbzdsimg);$i++){ ?><div class=content><a  target="_blank" href="<?php echo $sbzdsimg[$i]->url;?>"><div class=t_l_b_pic><img border=0 width=113 height=81 src="<?php echo $sbzdsimg[$i]->src; ?>"></div><div style="width:113px; height:18px; margin-top:5px; cursor:pointer; text-decoration:none; color:red; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($sbzdsimg[$i]->title);?></div></a></div><?php } ?></div>
 			</div>
 			<div class=t_l_b>
 				<div class=t_l_b_t><div class="title">BBS</div><div class="title_right">【生活大杂烩】</div></div>
@@ -101,7 +107,7 @@
 				</div>
 				<div class=t_l_b_r1>
 					<?php for($i=0;$i< count($shdzh);$i++){ ?>
-						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" href="/<?php echo $shdzh[$i]->platform;?>/news/news.php?id=<?php echo $shdzh[$i]->id; ?>"><?php echo delhtml($shdzh[$i]->title); ?></a></div>
+						<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i<2){?>style="color:#ff0000;"<?php }?> href="/<?php echo $shdzh[$i]->platform;?>/news/news.php?id=<?php echo $shdzh[$i]->id; ?>"><?php echo delhtml($shdzh[$i]->title); ?></a></div>
 					<?php } ?>
 				</div>
 			</div>
@@ -116,7 +122,7 @@
 					</div>
 					<div id=right>
 						<?php for($i=0;$i<5;$i++){ ?>
-							<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $gdsj[$i]->platform; ?>/news/news.php?id=<?php echo $gdsj[$i]->id; ?>"><?php echo delhtml($gdsj[$i]->title);?></a></div>
+							<div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> <?php if($i<3){?>style="color:#2C345B;"<?php }?> href="/<?php echo $gdsj[$i]->platform; ?>/news/news.php?id=<?php echo $gdsj[$i]->id; ?>"><?php echo delhtml($gdsj[$i]->title);?></a></div>
 						<?php }?>
 					</div>
 				</div>
@@ -132,7 +138,7 @@
 				<div id=t_c_m_t>
 					<div id=left><a target="_blank" href="<?php echo $fxshimg[0]->url;?>"><div id=pic><img border=0 width=100 height=65 src="<?php echo $fxshimg[0]->src;?>"></div><div style="width:100px; text-align:center; margin-top:5px; height:15px; overflow:hidden; text-decoration:none; color:#FF9900; cursor:pointer; float:left; display:inline;"><?php echo delhtml($fxshimg[0]->title);?></div></a></div>
 					<div id=right>
-						<?php for($i=0;$i<5;$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div><?php }?>
+						<?php for($i=0;$i<5;$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a target="_blank" <?php if($i==0){?>style="color:#2C345B; font-weight:bold;"<?php } ?> <?php if($i<3){?>style="color:#2C345B;"<?php }?> href="/<?php echo $fxsh[$i]->platform; ?>/news/news.php?id=<?php echo $fxsh[$i]->id; ?>"><?php echo delhtml($fxsh[$i]->title);?></a></div><?php }?>
 					</div>
 				</div>
 				<div id=t_c_m_b>
