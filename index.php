@@ -493,30 +493,36 @@ total("首页","other");
 							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
 							<? }?>
 							<?php 
-								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="上班这点事" and c.platform="zone" order by n.priority asc,n.created_at desc limit 1';
-								$record_discuss=$db -> query($sql);?>
-							<li>·<a href="/<?php echo $record_discuss[0]->platform?>/news/news.php?id=<?php echo $record_discuss[0]->news_id?>" target=_blank><?php echo $record_discuss[0]->short_title ?></a></li>
-							<?php $sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="生活大杂烩" and c.platform="zone" order by n.priority asc,n.created_at desc limit 1';
-								$record_discuss=$db -> query($sql); ?>
-								<li>·<a href="/<?php echo $record_discuss[0]->platform?>/news/news.php?id=<?php echo $record_discuss[0]->news_id?>" target=_blank><?php echo $record_discuss[0]->short_title ?></a></li>
-						</ul>
-					</div>
-					<div class=box>
-						<ul>
-							<?php 
-								$sql = 'SELECT * FROM home_blog order by dateline desc limit 4';
+								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="上班这点事" and c.platform="zone" order by n.priority asc,n.created_at desc limit 2';
 								$record_discuss=$db -> query($sql);	
-								for($i=0;$i<4;$i++){?>
-							<li>·<a href="/home/space.php?uid=<?php echo $record_discuss[$i]->uid;?>&do=blog&id=<?php echo $record_discuss[$i]->blogid;?>" target=_blank><?php echo $record_discuss[$i]->subject;?></a></li>
+								for($i=0;$i<2;$i++){?>
+							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
 							<? }?>
 						</ul>
 					</div>
 					<div class=box>
 						<ul>
 							<?php
-								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="分享生活" and c.platform="zone" order by n.priority asc,n.created_at desc limit 4';
+								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="生活大杂烩" and c.platform="zone" order by n.priority asc,n.created_at desc limit 2';
 								$record_discuss=$db -> query($sql);	
-								for($i=0;$i<4;$i++){?>
+								for($i=0;$i<2;$i++){?>
+							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
+							<? }?>
+							<?php 
+								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="观点视角" and c.platform="zone" order by n.priority asc,n.created_at desc limit 3';
+								$record_discuss=$db -> query($sql);	
+								for($i=0;$i<2;$i++){?>
+							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
+							<? }?>
+						</ul>
+					</div>
+					<div class=box>
+						<ul>
+							<li>·<a href="/<?php echo $record_discuss[2]->platform?>/news/news.php?id=<?php echo $record_discuss[2]->news_id?>" target=_blank><?php echo $record_discuss[2]->short_title ?></a></li>
+							<?php
+								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="分享生活" and c.platform="zone" order by n.priority asc,n.created_at desc limit 3';
+								$record_discuss=$db -> query($sql);	
+								for($i=0;$i<3;$i++){?>
 							<li>·<a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
 							<? }?>
 						</ul>
