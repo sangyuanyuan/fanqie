@@ -513,7 +513,6 @@ total("首页","other");
 					</div>
 					<div class=box>
 						<ul>
-							<li>·<a href="/<?php echo $record_discuss[2]->platform?>/news/news.php?id=<?php echo $record_discuss[2]->news_id?>" target=_blank><?php echo $record_discuss[2]->short_title ?></a></li>
 							<?php
 								$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="分享生活" and c.platform="zone" order by n.priority asc,n.created_at desc limit 4';
 								$record_discuss=$db -> query($sql);	
