@@ -6,6 +6,7 @@
 <style><!--@import url(inc/style.css);--></style>
 <?php use_jquery();
 js_include_once_tag('total');
+$type=$_REQUEST['id'];
 ?>
 <script>
 	total("专题-六一专题","other");
