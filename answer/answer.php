@@ -40,7 +40,7 @@
 	?>
 </head>
 <script>
-	total("网友答题","server");	
+	total("答题","server");	
 </script>
 <?php
 	require_once('../inc/top.inc.php');
