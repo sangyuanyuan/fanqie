@@ -56,7 +56,7 @@ $left=rand(81,625)
     <td><div align="left"><a href="news.php?id=<?=$hehun_id;?>">我要评论：<?=$commentnum[0]->num;?>次</div></td>
     <td><div align="right"><?=$hehun_sign?></div></td>
   </tr>
-</table></p><p class="Date"><?=$hehun_date?></p></div>	
+</table></p><p class="Date"><?=$hehun_date?></p></div>
 <?php
 }
 ?>
