@@ -8,7 +8,7 @@
 
 <a href="<?php echo $url;?>" id=test>test</a>
 <div id="ret"></div>
-<iframe id="iframe" width=200 height=200 src="#"></iframe>
+<iframe id="iframe" width=0 height=0 src="#"></iframe>
 
 <script>
 	$(function(){
