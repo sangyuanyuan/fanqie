@@ -86,7 +86,7 @@
 				$phone=$db->query("select phone from smg_news where id=".$_POST['id']);
 				if($phone[0]->phone!="")
 				{
-					$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=".$phone[0]->phone."&content=" .urlencode(iconv('utf-8','gbk','感谢您的报料，您的稿件已经在番茄网“网友报料”栏目发布，欢迎查阅!')) ."&sign=1";
+					$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=".$phone[0]->phone."&content=" .urlencode(iconv('utf-8','gbk','感谢您的报料，您的稿件已经在番茄网“网友报料”栏目发布，欢迎查阅！')) ."&sign=1";
 					$fp = fopen($url,'r') ;
 					fclose($fp);
 				}

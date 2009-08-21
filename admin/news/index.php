@@ -192,13 +192,6 @@
 				send_search();
 			}
 		});
-		var content = "<?php echo urlencode(iconv('UTF-8','GB2312','您的报料新闻已通过审批！')); ?>";
-		$(".publish").click(function(){
-			if($(this).attr("param")!="")
-			{
-				$("#senddx").attr('src',"http://222.68.17.193:8080/qxt/jbs.jsp?phone="+$(this).attr("param")+"&content="+content+"&sign=1");
-			}
-		});
 		function send_search(){
 			var href ="?title="+encodeURI($("#title1").attr('value'))+"&dept="+$("#dept").attr('value')+"&category="+$("#category").attr('value')+"&adopt="+$("#adopt1").attr('value')+'&flag=' + encodeURI($('#news_tag').val());
 			if($('#full_text').attr('checked')){
