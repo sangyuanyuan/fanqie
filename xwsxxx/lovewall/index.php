@@ -18,20 +18,22 @@ js_include_once_tag('total');
 </script>
 </head>
 <body>
-<div id="header">
-</div><div id="menu">
-	<?php $lovewall_ip=$HTTP_COOKIE_VARS["lovewall"];?>
+<div id="header"><a style="width:50px; height:20px; font-size:13px; line-height:20px; margin-top:228px; margin-left:670px; color:yellow; font-weight:bold; float:left; display:inline;" target="_blank" href="http://172.27.203.81:8080/news/news/news.php?id=21591">评论>></a></div>
+<div id="menu">
 	<a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
     <a href="index.php">首页</a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php?id=2">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php?id=1">人气排行榜 </a></div>
 <div id="main">
 	<script type="text/javascript" src="inc/index.js"></script>
 <?php 
 include("inc/coon.php");
-$lovewall_name=$_REQUEST['name'];
-if($lovewall_ip!=""){
-	$result=mysql_query("select * from centernews_love where ip='".$lovewall_ip."' order by hehun_id");
-}else{
-	$result=mysql_query("select * from centernews_love where hehun_sign='".$lovewall_name."' order by hehun_id");
+$sxxx_head=$_REQUEST['head'];
+if($sxxx_head!="")
+{
+	$result=mysql_query("select * from centernews_love where hehun_head='".$sxxx_head."' order by hehun_id");
+}
+else
+{
+	$result=mysql_query("select * from centernews_love order by hehun_id");
 }
 $db=get_db();
 $num=mysql_numrows($result); 
@@ -49,7 +51,8 @@ $top =rand(300,500);
 $left=rand(81,625)
 ?>
 <div id="Layer<?=$hehun_id?>" class="Face<?=$hehun_class?>" style="top:<?=$top?>px;left:<?=$left?>px;z-index:1" onmousedown="Move(this,event)" ondblclick="Show(1)">
-<p class="Num">被推荐人：<?=$hehun_head?><img src="hehun_images/close.gif" alt="关闭" onclick="Close(<?=$hehun_id?>)" /></p><p class="Detail"><img width=50 height=50 alt="" src="<?=$hehun_images?>" />
+<div class="Num">被推荐人：<?=$hehun_head;?><img src="hehun_images/close.gif" alt="关闭" onclick="Close(<?=$hehun_id?>)" /></div>
+<p class="Detail"><img width=50 height=50 alt="" src="<?=$hehun_images;?>" />
 	<span class="Head"><?=$hehun_head?></span><br /><a target="_blank" href="news.php?id=<?=$hehun_id; ?>"><?=$hehun_lr?></p><p class="Sign"><table class="Sign"width="95%"  border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td><div align="left"><a href="zf.php?id=<?=$hehun_id;?>" title="我要献花">我要献花：<?=$hehun_cs?>次</a></div></td>

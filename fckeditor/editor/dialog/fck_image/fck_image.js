@@ -474,6 +474,9 @@ function OnUploadCompleted( errorNumber, fileUrl, fileName, customMsg )
 		case 500 :
 			alert( 'The connector is disabled' ) ;
 			break ;
+		case 204 :
+       		alert( "您的图片大小超过了限制!请将图片压缩并重新上传." );
+			return;
 		default :
 			alert( 'Error on file upload. Error number: ' + errorNumber ) ;
 			return ;

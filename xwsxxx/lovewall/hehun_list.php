@@ -50,7 +50,7 @@ else if($type==2)
 {
 	$result=mysql_query("select hehun_id,hehun_head,count(*) as num from centernews_love group by hehun_head order by num  DESC limit $start,$limit");
 }
-$num=mysql_numrows($result); 
+$num=mysql_numrows($result);
 for ($i=0;$i<$num;$i++) {
 $top =rand(300,500);
 $left=rand(81,625);
@@ -65,8 +65,6 @@ $hehun_lr=mysql_result($result,$i,"hehun_lr");
 $hehun_date=mysql_result($result,$i,"hehun_date");
 $hehun_cs=mysql_result($result,$i,"hehun_cs");
 
-
-
 ?>
 <tr class="tr">
 	<td>><?=$hehun_lr?></td>
@@ -80,10 +78,10 @@ $hehun_cs=mysql_result($result,$i,"hehun_cs");
 }else if($type==2){
 	$hehun_id=mysql_result($result,$i,"hehun_id");
 	$hehun_head=mysql_result($result,$i,"hehun_head");
-	$num=mysql_result($result,$i,"num");?>
+	$count_num=mysql_result($result,$i,"num");?>
 <tr class="tr">
 	<td><?=$hehun_head?></a></td>
-	<td align="center"><a href="index.php?id=<?=$hehun_id ?>"><?=$num?></a></td>
+	<td align="center"><?=$count_num?>(<a href="index.php?head=<?=$hehun_head ?>">查看</a>)</td>
 </tr> 
 <?}
 }

@@ -262,6 +262,21 @@ function FileUpload( $resourceType, $currentFolder, $sCommand )
 	else
 		$sErrorNumber = '202' ;
 
+	if ( isset( $Config['MaxImageSize'] ) )
+
+       {
+
+              $iFileSize = round( $oFile['size'] / 1024 );       
+
+              if($iFileSize > $Config['MaxImageSize'] ) 
+
+              {
+
+                     $sErrorNumber = '204' ;     
+
+              }
+
+       }
 
 	$sFileUrl = CombinePaths( GetResourceTypePath( $resourceType, $sCommand ) , $currentFolder ) ;
 	$sFileUrl = CombinePaths( $sFileUrl, $sFileName ) ;

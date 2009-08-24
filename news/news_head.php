@@ -20,7 +20,8 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	
 	<title>SMG-番茄网-新闻-新闻头条</title>
-	<? 	
+	<? 
+		$string = 'http://' .$_SERVER[HTTP_HOST].$_SERVER['PHP_SELF'].'?id='.$id;
 		css_include_tag('news_news_head','top','bottom');
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub','total');
@@ -45,19 +46,40 @@
 			
 			$about=search_keywords($id,$record[0]->keywords,'smg_news',$record,10,"n.priority asc,created_at desc");
 		}
-		$sql="select *,(select count(id) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
-		$comment=$db->paginate($sql,5);
+		$page=$_REQUEST['page'];
+		$page_size=10;
+		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
+		$comment=$db->query($sql);
+		$rs_num=count($comment);
+		if( $rs_num > 0 ){
+	   		if( $rs_num < $page_size ){ $page_count = 1; }               
+	   		if( $rs_num % $page_size ){                                  
+	       		$page_count = (int)($rs_num / $page_size) + 2;           
+	   		}else{
+	       		$page_count = $rs_num / $page_size + 2;                      
+	  		}
+		}
+		else{
+	   		$page_count = 0;
+		}
+		if ($page=="")  {$page=1;}
+		if ($page > $page_count)  {$page=$page_count;}
+		if ($page==0)  {$page=1;}
+		if ($page<0)  {$page=1;}
+		if($page==1||$page==""){
+			$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc limit 5";
+			$comment=$db->query($sql);
+		}
+		else
+		{
+			
+			$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc limit ".(((int)$page-2)*$page_size+5).",".$page_size;
+			$comment=$db->query($sql);
+			
+		}
 		//$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,(select count(*) from smg_digg cd where cd.diggtoid=d.diggtoid and cd.file_type='comment') as total,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by total desc limit 2";
 		//$digg=$db->query($sql);
     ?>
-	<?php if($_REQUEST['page']){ ?>
-	<script type="text/javascript">
-		$(function(){
-			//window.location.href = "#pinglun";
-			$("#commenter")[0].focus();
-		})	
-	</script>
-	<? }?>
  <?php 
  //if($cookie1<=200){
  if($record[0]->cplatform=="news"){?>
@@ -103,39 +125,41 @@ require_once('../inc/top.inc.html');?>
 	<div id=ibody_left>
 		<input type="hidden" id="newsid" value="<?php echo $id;?>">
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span> <a href="/news/news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="newslist.php">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span> <a href="/news/news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
 		</div>
 		<?php $sql="update smg_news set click_count=click_count+1 where id=".$id;
 $db->execute($sql); ?>
 		<div id=l_b>
 			<div id=title><?php echo delhtml($record[0]->title);?></div>
 			<div id=comefrom><?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="我要报料"){?>作者：<?php echo $record[0]->publisher_id;}else{?>来源：<?php echo $record[0]->deptname;?>　<?php } ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->created_at;?></div>
+			<?php if($page==1||$page=="")
+			{?>
 			<div id=content>
 				<?php if($record[0]->video_src!=""&&$record[0]->video_src!=null){
 					if($record[0]->low_quality==0){
 				?>
-			<div id=video><?php show_video_player('400','300',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
-			<?php }else
-			{?>
-				<div id=video><?php show_video_player('200','150',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
-			<?php }} ?>
+				<div id=video><?php show_video_player('400','300',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+				<?php }else
+				{?>
+				 	<div id=video><?php show_video_player('200','150',$record[0]->video_photo_src,$record[0]->video_src); ?></div>
+				<?php }} ?>
 				<?php echo get_fck_content($record[0]->content);?>
 			</div>
-			
 			<?php 
-			if($record[0]->vote_id!=""&&$record[0]->vote_id!=0){?>
-				
+			if($record[0]->vote_id!=""&&$record[0]->vote_id!=0){?>	
 				<div class=vote>
 				<?php 
 						$vote = new smg_vote_class();
 						$vote->find($record[0]->vote_id);
 						$vote->display(array("target"=>"_blank",'submit_src'=>'/images/news/news_vote_button.jpg','view_src'=>'/images/news/news_view_button.jpg')); ?>
-				</div>
+				</div>	
 			<? }?>
-			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"news_head.php?id=".$id); ?></div>
+			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
 			<?php if($record[0]->categoryname=="我要报料"){?><div id=lc>此文系番茄网网友报料新闻，不代表番茄网的观点或立场。</div><?php } ?>
-			<div style="float:left; display:inline;"><a id="pinglun" name="pinglun">&nbsp;</a></div>
-			<?php if($record[0]->is_commentable==1){ if(count($comment)>0){?>
+			<?php } ?>
+			<?php if($record[0]->is_commentable==1){ 
+				
+				if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
 				 for($i=0;$i<count($digg);$i++){ ?>
@@ -158,7 +182,7 @@ $db->execute($sql); ?>
 				  for($i=0;$i<count($comment);$i++){ ?>
 					<div class=content>	
 						<div class=title>
-							<div style="width:230px; height:20px; margin-top:10px; margin-left:10px; line-height:20px; overflow:hidden; float:left; display:inline;">
+							<div style="width:230px; height:20px; margin-top:10px; margin-left:10px; overflow:hidden; line-height:20px; float:left; display:inline;">
 								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
 							</div>
 							<div style="width:370px; float:right; display:inline;">
@@ -172,7 +196,67 @@ $db->execute($sql); ?>
 					</div>
 				<?php }?>		
 			</div>
-			<div class=page><?php paginate('');?></div>
+			<div class=page>
+	<?php 
+	if($rs_num >5)
+	{
+	if ($page == 1 || $page ==null || $page == "")
+	{?>
+	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page+1;?>">[下页]</a></span> 
+	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page_count-1; ?>">[尾页]</a></span>
+	<?php	
+	}
+	if ($page < $page_count && $page > 1 )
+	{?>
+	  <span><a class="paginate_link" href="<?php echo $string;?>&page=1">[首页]</a></span> 
+	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page-1;?>">[上页]</a></span>			
+	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page+1;?>">[下页]</a></span> 
+	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page_count-1; ?>">[尾页]</a></span>		
+	 <?php
+	}
+	if ($page == $page_count)
+	{?>
+	  <span><a class="paginate_link" href="<?php echo $string;?>&page=1">[首页]</a></span> 
+	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page-1;?>">[上页]</a></span>		
+	<?php	
+	}
+	?>共找到<?php echo $rs_num; ?>条记录　
+  当前第<select name="pageselect" id="pageselect" onChange="jumppage('<?php echo $string."&page="; ?>',this.options[this.options.selectedIndex].value);">
+	<?php	
+	//产生所有页面链接
+	for($i=1;$i<=$page_count;$i++){ ?>
+		<option <?php if($page== $i) echo 'selected="selected"';?> value="<?php echo $i;?>" ><?php echo $i;?></option>
+		<?php	
+	}
+	?>
+	</select>页　共<?php echo $page_count-1;?>页
+	<script>
+			function jumppage(urlprex,pageindex)
+			{
+				var surl=urlprex+pageindex;
+				<?php
+				if($ajax_dom){ ?>
+					$('#<?php echo $ajax_dom;?>').load(surl);
+				<?php  }else{ ?>
+					window.location.href=surl;
+				<?php }
+				?>	
+				
+			} 
+	</script>
+	
+	<?php
+	if(!empty($ajax_dom)){
+		?>
+		<script>
+			$(".paginate_link").click(function(e){
+				e.preventDefault();
+				$("#<?php echo $ajax_dom;?>").load($(this).attr('href'));
+			});
+		</script>
+		<?php
+	}}?>
+			</div>
 			<?php }?>
 			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
