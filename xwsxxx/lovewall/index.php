@@ -28,6 +28,7 @@ js_include_once_tag('total');
 <?php 
 include("inc/coon.php");
 $lovewall_name=$_REQUEST['name'];
+$
 if($lovewall_ip!=""){
 	$result=mysql_query("select * from centernews_love where ip='".$lovewall_ip."' order by hehun_id");
 }else{
