@@ -17,6 +17,7 @@ $mtpl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 				<div id=context>
 					<div id=left>
 						<a target="_blank" href="sxxx_blog.php"><img style="margin-top:5px; margin-left:1px;" border=0 src="images/hdsq-1.jpg"></a>
+						<div style="margin-right:10px; font-size:14px; font-weight:bold; float:right; display:inline;"><a target="_blank" href="kbsm.doc">开博说明</a>　<a target="_blank" href="/login/login.php">我要开博</a></div>
 						<div id=content>
 							
 							<div class=title>学实活动</div>			
