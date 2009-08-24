@@ -776,7 +776,7 @@ total("首页","other");
 						$l_count = $count>7?7:$count;
 						for($i=0;$i<$l_count;$i++){
 					?>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a <?php if($i<3){?>style="color:#ff0000"<?php }?> href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a <?php if($i<3){?>style="color:#ff0000"<?php }?> href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title='<?php echo strip_tags($record[$i]->name); ?>' target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
 					<?php
 						}
 					?>
@@ -831,9 +831,9 @@ total("首页","other");
 						$sql = 'select count(t1.reciever) as count,t2.nick_name from smg_birthday_gift t1 join smg_user t2 on t1.reciever=t2.name group by t1.reciever order by count desc limit 3';
 						$record_birthday = $db->query($sql);
 					?>
-					NO1.<?php echo $record_birthday[0]->nick_name;?>&nbsp<?php echo $record_birthday[0]->count?>份&nbsp
-					NO2.<?php echo $record_birthday[1]->nick_name;?>&nbsp<?php echo $record_birthday[1]->count?>份&nbsp
-					NO3.<?php echo $record_birthday[2]->nick_name;?>&nbsp<?php echo $record_birthday[2]->count?>份
+					NO1.<?php echo $record_birthday[0]->nick_name;?>&nbsp;<?php echo $record_birthday[0]->count?>份&nbsp;
+					NO2.<?php echo $record_birthday[1]->nick_name;?>&nbsp;<?php echo $record_birthday[1]->count?>份&nbsp;
+					NO3.<?php echo $record_birthday[2]->nick_name;?>&nbsp;<?php echo $record_birthday[2]->count?>份
 				</div>
 				<div id="box_body">
 	 				<marquee direction="up" scrollamount="1" height="80" width="300" onmouseover=this.stop() onmouseout=this.start()  >
