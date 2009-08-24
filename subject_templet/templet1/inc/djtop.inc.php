@@ -1,5 +1,8 @@
 ﻿<div id=logo></div>
 <?php
+include_once("../../admin/subject/subject_module_class.php");
+$modules = new smg_subject_module_class();
+$modules = $modules->find('all',array('conditions' => "subject_id = 24 and pos_name='pos1'",'order' => "priority asc,id desc"));
 $deptsort = $db->query('SELECT sum(s.click_count) as djl,d.name FROM smg_subject_items i inner join smg_subject sb on i.subject_id=sb.id and sb.name="学习实践活动专题" inner join smg_news s on i.resource_id=s.id inner join smg_dept d on s.dept_id=d.id  group by s.dept_id order by djl desc limit 10');
 $xxjb = $db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="信息简报" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by n.priority asc, n.last_edited_at desc limit 7');
 $zxdt = $db->query('select n.id,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="最新动态" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by n.priority asc, n.last_edited_at desc limit 6');
@@ -16,6 +19,11 @@ $xxzl = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_n
 				<div id=context>
 					<div id=left>
 						<div id=content>
+							<?php 
+							for($i=0;$i<count($modules);$i++)
+							$modules[$i]->display();
+							
+							?>
 							<div class=title>最新动态</div>	
 								<? 								
 								for($i=0;$i<count($zxdt);$i++){
