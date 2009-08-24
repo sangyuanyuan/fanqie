@@ -18,8 +18,8 @@ js_include_once_tag('total');
 </script>
 </head>
 <body>
-<div id="header">
-</div><div id="menu">
+<div id="header"><a target="_blank" href="">评论>></a></div>
+<div id="menu">
 	<?php $lovewall_ip=$HTTP_COOKIE_VARS["lovewall"];?>
 	<a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
     <a href="index.php">首页</a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php?id=2">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php?id=1">人气排行榜 </a></div>
