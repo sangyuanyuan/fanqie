@@ -173,6 +173,7 @@
 			all_selected = !all_selected;
 			$('input:checkbox').attr('checked',all_selected);
 		});
+
 		$('#button_delete').click(function(){
 			if (confirm('确定删除/退回选中新闻?')) {
 				$.post('delete_news.php', $('input:checkbox').serializeArray(), function(data){
