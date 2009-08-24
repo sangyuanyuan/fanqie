@@ -437,8 +437,8 @@ total("首页","other");
  			<!-- start top_right_right_top !-->
  			<div id=t_r_r_t>
  				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold;"><a href="/fqtg/fqtglist.php" target=_blank>我要团购</a></div>
- 				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;">快乐番茄</div>
- 				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px; color:#ff0000">番茄百家</div>
+ 				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;"><a href="/news/news_list.php?id=30" target=_blank>快乐番茄</a></div>
+ 				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px; color:#ff0000"><a href="/zone/" target=_blank>番茄百家</a></div>
  					<?php
  						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
 						$record_tg=$db -> query($sql);		
@@ -569,9 +569,9 @@ total("首页","other");
 					$record_bbs=$db -> query($sql);	
 			?>	 
  			<div id=t_r_r_b>
- 				<div class=menu_trrb id=menu_trrb1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; margin-left:9px; font-weight:bold;">新闻排行</div>
- 				<div class=menu_trrb id=menu_trrb2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;">最新博文</div>
- 				<div class=menu_trrb id=menu_trrb3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;">最新热帖</div>
+ 				<div class=menu_trrb id=menu_trrb1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; margin-left:9px; font-weight:bold;"><a href="/news/news_top_list.php" target="_blank">新闻排行</a></div>
+ 				<div class=menu_trrb id=menu_trrb2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;"><a href="/zone/" target="_blank">最新博文</a></div>
+ 				<div class=menu_trrb id=menu_trrb3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;"><a href="/zone/" target="_blank">最新热帖</a></div>
 				<div id=number>
 					<?php for($i=1;$i<=10;$i++){?>
 					<img src="/images/number/<?php echo $i?>.jpg">
@@ -826,8 +826,17 @@ total("首页","other");
       <!-- start bottom_bottom_left !-->
  			<div id=b_b_l>
  				<div id=title>生日祝福</div>
+				<div id=gift_list>
+					<?php
+						$sql = 'select count(t1.reciever) as count,t2.nick_name from smg_birthday_gift t1 join smg_user t2 on t1.reciever=t2.name group by t1.reciever order by count desc limit 3';
+						$record_birthday = $db->query($sql);
+					?>
+					NO1.<?php echo $record_birthday[0]->nick_name;?>&nbsp<?php echo $record_birthday[0]->count?>份&nbsp
+					NO2.<?php echo $record_birthday[1]->nick_name;?>&nbsp<?php echo $record_birthday[1]->count?>份&nbsp
+					NO3.<?php echo $record_birthday[2]->nick_name;?>&nbsp<?php echo $record_birthday[2]->count?>份
+				</div>
 				<div id="box_body">
-	 				<marquee direction="up" scrollamount="1" height="100" width="300" onmouseover=this.stop() onmouseout=this.start()  >
+	 				<marquee direction="up" scrollamount="1" height="80" width="300" onmouseover=this.stop() onmouseout=this.start()  >
 	 				<?php
 						$today = date("m-d");
 						$sql = 'select t1.nickname,t1.gender,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.date("m-d").'" and t1.hide_birthday=0 and t1.state=3';
