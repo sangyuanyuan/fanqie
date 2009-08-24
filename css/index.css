@@ -215,7 +215,7 @@ p{margin:0px; padding:0px;}
 
 #b_b_l{width:315px; height:145px; background:url(/images/index/bg_b_b_l.jpg) no-repeat; float:left; display:inline;}
 #b_b_l #title{width:220px; height:20px; margin-top:9px; margin-left:30px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
-#b_b_l #gift_list{width:300px; height:20px; color:#ff0000; padding-left:5px; line-height:20px; margin-left:3px; margin-top:5px; float:left; display:inline;}
+#b_b_l #gift_list{width:300px; height:15px; color:#ff0000; padding-left:5px; line-height:15px; margin-left:3px; margin-top:5px; float:left; display:inline;}
 #b_b_l #box_body{width:307px; margin-left:8px; margin-top:10px; line-height:25px; float:left; display:inline; }
 #b_b_l #box_body a{color:#000000; text-decoration:none;}
 #b_b_l .box{width:150px; height:25px; float:left; display:inline;}
