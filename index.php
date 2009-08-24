@@ -438,7 +438,7 @@ total("首页","other");
  			<div id=t_r_r_t>
  				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold;"><a href="/fqtg/fqtglist.php" target=_blank>我要团购</a></div>
  				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;"><a href="/news/news_list.php?id=30" target=_blank>快乐番茄</a></div>
- 				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px; color:#ff0000"><a href="/zone/" target=_blank>番茄百家</a></div>
+ 				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;" ><a style="color:#ff0000" href="/zone/" target=_blank>番茄百家</a></div>
  					<?php
  						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
 						$record_tg=$db -> query($sql);		
