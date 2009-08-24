@@ -83,7 +83,7 @@ $hehun_cs=mysql_result($result,$i,"hehun_cs");
 	$num=mysql_result($result,$i,"num");?>
 <tr class="tr">
 	<td><?=$hehun_head?></a></td>
-	<td align="center"><a href="index.php?id=<?=$hehun_id ?>"><?=$num?></a></td>
+	<td align="center"><a href="index.php?head=<?=$hehun_head ?>"><?=$num?></a></td>
 </tr> 
 <?}
 }
