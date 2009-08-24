@@ -18,20 +18,21 @@ js_include_once_tag('total');
 </script>
 </head>
 <body>
-<div id="header"><a target="_blank" href="">评论>></a></div>
+<div id="header"><a style="width:50px; height:20px; font-size:13px; line-height:20px; margin-top:228px; margin-left:670px; color:yellow; font-weight:bold; float:left; display:inline;" target="_blank" href="http://172.27.203.81:8080/news/news/news.php?id=21591">评论>></a></div>
 <div id="menu">
-	<?php $lovewall_ip=$HTTP_COOKIE_VARS["lovewall"];?>
 	<a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
     <a href="index.php">首页</a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="hehun_add.php">我要推荐 </a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_list.php?id=2">推荐排行榜</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php?id=1">人气排行榜 </a></div>
 <div id="main">
 	<script type="text/javascript" src="inc/index.js"></script>
 <?php 
 include("inc/coon.php");
-$lovewall_name=$_REQUEST['name'];
 $sxxx_head=$_REQUEST['head'];
-if($lovewall_ip!=""&&$sxxx_head!=""){
-	$result=mysql_query("select * from centernews_love where ip='".$lovewall_ip."' and hehun_head='".$sxxx_head."' order by hehun_id");
-}else{
+if($sxxx_head!="")
+{
+	$result=mysql_query("select * from centernews_love where hehun_head='".$sxxx_head."' order by hehun_id");
+}
+else
+{
 	$result=mysql_query("select * from centernews_love order by hehun_id");
 }
 $db=get_db();
