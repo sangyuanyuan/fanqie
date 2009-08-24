@@ -69,11 +69,14 @@
 	<div id="time"><?php echo $problem[0]->limit_time;?></div>
 	<div id="right_answer">
 		<?php
-			if($is_right==1){
+			if($problem_id!=26){
+				if($is_right==1){
 				echo "恭喜你答对了！";
-			}elseif($is_right==0){
-				echo "很遗憾，你答错了，正确的答案是：".$answer."！";
+				}elseif($is_right==0){
+					echo "很遗憾，你答错了，正确的答案是：".$answer."！";
+				}
 			}
+			
 		?>
 	</div>
 	<div id="point">
