@@ -800,16 +800,18 @@ total("首页","other");
  			<div id=b_t_r>
 				<div class=m_box>
 					<?php  
-						//$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
-						$sql = 'select id,name from smg_problem where is_adopt=1 order by create_time desc limit 6';
+						$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
+						//$sql = 'select id,name from smg_problem where is_adopt=1 order by create_time desc limit 6';
 						$record = $db->query($sql);
 						$count = count($record);
 					?>
-					<div class="top_title"><a href="/answer/pro_answer.php?id=<?php echo $record[0]->id;?>"  target=_blank><?php echo $record[0]->name;?></a></div>
+					<!--<div class="top_title"><a href="/answer/pro_answer.php?id=<?php echo $record[0]->id;?>"  target=_blank><?php echo $record[0]->name;?></a></div>!-->
+					<div class="top_title"><a href="/answer/answer.php?id=<?php echo $record[0]->id;?>"  target=_blank><?php echo $record[0]->title;?></a></div>
 					<?php 
 						for($i=1;$i<$count;$i++){
 					?>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id==<?php echo $record[$i]->id;?>"  target=_blank><?php echo $record[$i]->name;?></a></li></div>
+					<!--<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/pro_answer.php?id=<?php echo $record[$i]->id;?>"  target=_blank><?php echo $record[$i]->name;?></a></li></div>!-->
+					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/answer.php?id=<?php echo $record[$i]->id;?>"  target=_blank><?php echo $record[$i]->title;?></a></li></div>
 					<?php
 						}
 					?>
