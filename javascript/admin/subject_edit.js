@@ -32,7 +32,7 @@ var menu2 = [
 ];
 
 function delete_module(ob){
-	var cate_id = $(ob).find('input:eq(1)').attr('value');
+	var cate_id = $(ob).attr('id');
 	if(cate_id > 0){
 		$.post('subject_item_delete.php',{'id':cate_id},function(data){
 			if(data != 'ok'){
@@ -59,7 +59,6 @@ function add_subject_item(ob){ //,cate_id,name,cate_type,desc,limit,donot_show,i
 			},
 			receive: function(event, ui) {
 				//$(ui.item).find("input:eq(6)").attr('value',$(this).attr('id'));		
-				alert($(this).sortable('toArray').join());
 				jQuery.post('save_priority.post.php',{'ids':$(this).sortable('toArray').join(),'pos':$(this).attr('id')});
 			}
 		});
