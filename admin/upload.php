@@ -41,11 +41,11 @@ if($_POST['uptype']=="tginsert")
 		{
 			if($_POST['maxnum']!="")
 			{
-				$StrSql='insert into smg_tg (title,content,starttime,endtime,priority,createtime,isadopt,issendfq,maxnum,photourl,price,marketprice) values ("'.$_POST['title'].'","'.$_POST['content'].'","'.$_POST['starttime'].'","'.$_POST['endtime'].'",'.$priority.',now(),0,'.$_POST['sendfq'].','.$_POST['maxnum'].',"/upload/photo/'.$uploadfilenameall.'",'.$_POST['price'].','.$_POST['marketprice'].')';
+				$StrSql='insert into smg_tg (title,content,starttime,endtime,priority,createtime,isadopt,issendfq,maxnum,photourl,price,marketprice) values ("'.$_POST['title'].'","'.$_POST['content'].'","'.$_POST['starttime'].'","'.$_POST['endtime'].'",'.$priority.',now(),0,'.$_POST['sendfq'].','.$_POST['maxnum'].',"/upload/photo/'.$uploadfilenameall.'","'.$_POST['price'].'","'.$_POST['marketprice'].'")';
 			}
 			else
 			{
-				$StrSql='insert into smg_tg (title,content,starttime,endtime,priority,createtime,isadopt,issendfq,photourl,price,marketprice) values ("'.$_POST['title'].'","'.$_POST['content'].'","'.$_POST['starttime'].'","'.$_POST['endtime'].'",'.$priority.',now(),0,'.$_POST['sendfq'].',"/upload/photo/'.$uploadfilenameall.'",'.$_POST['price'].','.$_POST['marketprice'].')';
+				$StrSql='insert into smg_tg (title,content,starttime,endtime,priority,createtime,isadopt,issendfq,photourl,price,marketprice) values ("'.$_POST['title'].'","'.$_POST['content'].'","'.$_POST['starttime'].'","'.$_POST['endtime'].'",'.$priority.',now(),0,'.$_POST['sendfq'].',"/upload/photo/'.$uploadfilenameall.'","'.$_POST['price'].'","'.$_POST['marketprice'].'")';
 			}
 			$Record = $db->execute($StrSql);
 		}
@@ -103,9 +103,9 @@ if($_POST['uptype']=="tgupdate")
 			{
 				if($_POST['maxnum']!="")
 				{
-					$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",maxnum="'.$_POST['maxnum'].'",photourl="/upload/photo/'.$uploadfilenameall.'",issendfq='.$_POST['sendfq'].',price='.$_POST['price'].',marketprice='.$_POST['marketprice'].' where id='.$_POST['tgid'];
+					$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",maxnum="'.$_POST['maxnum'].'",photourl="/upload/photo/'.$uploadfilenameall.'",issendfq='.$_POST['sendfq'].',price="'.$_POST['price'].'",marketprice="'.$_POST['marketprice'].'" where id='.$_POST['tgid'];
 				}else{
-					$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",photourl="/upload/photo/'.$uploadfilenameall.'",maxnum=null,issendfq='.$_POST['sendfq'].',price='.$_POST['price'].',marketprice='.$_POST['marketprice'].' where id='.$_POST['tgid'];
+					$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",photourl="/upload/photo/'.$uploadfilenameall.'",maxnum=null,issendfq='.$_POST['sendfq'].',price="'.$_POST['price'].'",marketprice="'.$_POST['marketprice'].'" where id='.$_POST['tgid'];
 				}
 				$Record = $db->execute($strsql);
 			}else
@@ -118,9 +118,9 @@ if($_POST['uptype']=="tgupdate")
 	}else{
 		if($_POST['maxnum']!="")
 		{
-			$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",maxnum="'.$_POST['maxnum'].'",issendfq='.$_POST['sendfq'].',price='.$_POST['price'].',marketprice='.$_POST['marketprice'].' where id='.$_POST['tgid'];
+			$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",maxnum="'.$_POST['maxnum'].'",issendfq='.$_POST['sendfq'].',price="'.$_POST['price'].'",marketprice="'.$_POST['marketprice'].'" where id='.$_POST['tgid'];
 		}else{
-			$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",maxnum=null,issendfq='.$_POST['sendfq'].',price='.$_POST['price'].',marketprice='.$_POST['marketprice'].' where id='.$_POST['tgid'];
+			$strsql='update smg_tg set title="'.$_POST['title'].'",content="'.$_POST['content'].'",priority="'.$priority.'",starttime="'.$_POST['starttime'].'",endtime="'.$_POST['endtime'].'",maxnum=null,issendfq='.$_POST['sendfq'].',price="'.$_POST['price'].'",marketprice="'.$_POST['marketprice'].'" where id='.$_POST['tgid'];
 		}
 		$Record = $db->execute($strsql);
 			
