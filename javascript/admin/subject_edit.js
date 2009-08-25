@@ -54,9 +54,13 @@ function add_subject_item(ob){ //,cate_id,name,cate_type,desc,limit,donot_show,i
 		$('.subject_pos').sortable({
 			connectWith: '.subject_pos',
 			stop: function(event, ui) {
+				//$(this).sortable('disable');
+				jQuery.post('save_priority.post.php',{'ids':$(this).sortable('toArray').join(),'pos':$(this).attr('id')});
 			},
 			receive: function(event, ui) {
-				$(ui.item).find("input:eq(6)").attr('value',$(this).attr('id'));		
+				//$(ui.item).find("input:eq(6)").attr('value',$(this).attr('id'));		
+				alert($(this).sortable('toArray').join());
+				jQuery.post('save_priority.post.php',{'ids':$(this).sortable('toArray').join(),'pos':$(this).attr('id')});
 			}
 		});
 	});

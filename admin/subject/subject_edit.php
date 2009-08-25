@@ -42,7 +42,7 @@
 				</p>
 				<p>
 					<input type="hidden" name="subject[id]" value="<?php echo $subject_id;?>">
-					<input type="submit" value="提交">					
+					<input type="submit" value="提交">			
 				</p>
 			</div>
 			<div id="layout" class="bder">
