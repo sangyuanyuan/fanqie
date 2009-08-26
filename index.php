@@ -801,8 +801,8 @@ total("首页","other");
  			<div id=b_t_r>
 				<div class=m_box>
 					<?php  
-						//$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
-						$sql = 'select id,name from smg_problem where is_adopt=1 order by create_time desc limit 6';
+						$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
+						//$sql = 'select id,name from smg_problem where is_adopt=1 order by create_time desc limit 6';
 						$record = $db->query($sql);
 						$count = count($record);
 					?>
