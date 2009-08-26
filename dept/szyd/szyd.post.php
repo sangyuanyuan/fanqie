@@ -1,11 +1,11 @@
-<?php
+ï»¿<?php
 /* recipients */
 $to="zhgl@51dab.cn"; // note the comma
 $from=$_POST['from'];
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 $target_url=$_POST['target_url'];
-mail($to,$subject,$message,"From: ".$from."\r\nReply-To: ".$from."\r\n");
-echo '<script language=javascript>alert("ÓÊ¼ş·¢ËÍ³É¹¦£¡")</script>';
+mail($to,$subject,iconv('utf-8','gb2312',$message),"From: ".$from."\r\nReply-To: ".$from."\r\n");
+echo '<script language=javascript>alert("é‚®ä»¶å‘é€æˆåŠŸï¼")</script>';
 echo '<script language=javascript>window.location.href="'.$target_url.'";</script>';
 ?> 
