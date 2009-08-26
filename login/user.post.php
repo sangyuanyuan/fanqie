@@ -101,7 +101,7 @@ if($_POST['user_type']=="login")
 			}else{
 				$last_url = '/';
 			}
-			#redirect($last_url);
+			redirect($last_url);
 		}else{
 			alert($error);
 			redirect('/login/login.php','js');
