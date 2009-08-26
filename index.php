@@ -954,7 +954,7 @@ total("首页","other");
 							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://meishi.enjoyoung.cn/">人气美食</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.shjtaq.com/zwfg/dzjc_new.asp">上海交通违章查询</a></td>
 						</tr>
 						<tr>	
-							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.qunar.com/">机票折扣查询</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.51fanli.com/">返利网</a></td>
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.qunar.com/">机票折扣查询</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://jujia.enjoyoung.cn/xingshangportal/main/main.do">星尚居家</a></td>
 						</tr>
 						<tr style="border-bottom:dashed 1px #999999">
 							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.soku.net/huoche/TrainStation/381.Html">火车时刻表</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.feeyo.com/flightsearch.htm">航班时刻查询</a></td>
