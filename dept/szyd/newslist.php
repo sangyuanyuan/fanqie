@@ -35,11 +35,19 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 </noscript>
   </div>
   <div class="submain">
-  	<div style="width:250px; float:left; display:inline;">
+  	<div style="width:220px; float:left; display:inline;">
   	<div style="width:206px; height:48px; margin-top:16px; margin-left:11px; background-image:url(pic/search.png); padding-left:10px; float:left; display:inline;">
       <input name="search" id="search" type="text" style="margin-top:10px;"> <img OnClick="searchnews('search')" style="margin-top:2px; display:inline;" src="pic/searchbutton.gif">
    	</div>
-	<div style="width:227px; height:114px; margin-top:16px; margin-left:15px; float:left; display:inline;">
+	
+	</div>
+   	<div style="width:490px; margin-top:10px; margin-left:10px; float:left; display:inline;">
+	  	<? for($i=0;$i<count($rows);$i++){?>
+	  			<div style="width:500px; height:20px; line-height:20px; padding:5px; float:left; display:inline;"><a style="text-decoration:none;" href="news.php?id=<? echo $rows[$i]->id;?>"><? echo $rows[$i]->short_title;?></a></div>
+	  	<? }?><br><br>
+	  	<?php paginate('');?>
+  	</div>
+  	<div style="width:210px; height:114px; margin-top:16px; float:right; display:inline;">
        <div  class="share_top">特快专递</div>
        <div  class="r_border">
        	<form id="addform" name="addform" action="szyd.post.php" method="post">
@@ -60,14 +68,6 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 		     </form>
       </div>
   	 </div>
-	</div>
-   	<div style="width:490px; margin-top:10px; margin-left:10px;  float:left; display:inline;">
-	  	<? for($i=0;$i<count($rows);$i++){?>
-	  			<div style="width:500px; height:20px; line-height:20px; padding:5px; float:left; display:inline;"><a style="text-decoration:none;" href="news.php?id=<? echo $rows[$i]->id;?>"><? echo $rows[$i]->short_title;?></a></div>
-	  	<? }?><br><br>
-	  	<?php paginate('');?>
-  	</div>
-  	
   </div>
   <div class="siteinfo">
   </div>
