@@ -1,7 +1,7 @@
 <?php
 
 $filter_pic = array('jpg','png','bmp','gif','icon');
-$filter_video = array('flv','wmv','wav','mp3','mp4','avi','rm');
+$filter_video = array('flv','wmv','wav','mp3','mp4','avi','rm','wma');
 
 class upload_file_class
 {
