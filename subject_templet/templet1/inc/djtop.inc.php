@@ -24,51 +24,7 @@ $xxzl = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_n
 							$modules[$i]->display();
 							
 							?>
-							<div class=title>最新动态</div>	
-								<? 								
-								for($i=0;$i<count($zxdt);$i++){
-									if($zxdt[$i]->news_type==3)//url链接类新闻
-								  {
-								  	redirect($zxdt[$i]->target_url);
-								  	CloseDB();
-								  	exit;
-								  }
-								  //文件新闻
-								  if($zxdt[$i]->news_type==2)
-								  {
-								  	//echo $news->newstpe;
-								   	redirect($zxdt[$i]->file_name);
-								  	CloseDB();
-								  	exit; 	
-								  }
-								?>
-									
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $zxdt[$i]->id;?>"><? echo $zxdt[$i]->short_title;?></a></div>
-								<? if($i<2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-							
-							<div class=tp>
-								<div class=pic>
-									<a target="_blank" target="_blank" href="djcontent.php?id=<? echo $news[0]->id;?>">
-										<img border=0 width=90 height=70 src="<? if($news[0]->photourl!=""){echo $news[0]->photourl;}else {echo '/images/logo.jpg';}?>">
-									</a>
-								</div>
-								<div class=pic>
-									<a target="_blank" target="_blank" href="djcontent.php?id=<? echo $news[1]->id;?>">
-										<img border=0 width=90 height=70 src="<? if($news[1]->photourl!=""){echo $news[1]->photourl;}else {echo '/images/logo.jpg';}?>">
-									</a>
-								</div>
-							</div>
-							<div class=more><a target="_blank" href="djlist.php?id=<?php $zxdt[0]->cid;?>">更多>></a></div>
-							<div class=title>活动视频</div>
-								<? 
-								$video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动视频" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by n.priority asc, n.created_at desc limit 3');?>
-								<div style="width:200px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><? show_video_player(200,230,$video[0]->photo_url,$video[0]->video_url);?></div>
-									<? 	
-								for($i=1;$i<count($video);$i++){?>
-								<div style="width:200px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/show/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
-								<? }?>			
-							<div class=more><a target="_blank" href="/video/videolist2.php?id=14">更多>></a></div>
+						
 							<div class=title>三项学习教育</div>
 							<a href="/sxjy/"><img border=0 style="margin-left:10px; margin-top:5px;" width="205" height="58" src="images/sxxx.jpg"></a>
 							<div class=title>信息简报</div>						
