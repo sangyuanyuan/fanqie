@@ -10,7 +10,7 @@
 <title>新闻列表</title>
 <script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
-
+<script src="szyd.js" type="text/javascript"></script>
 </head>
 
 <body >
@@ -61,6 +61,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 		        <tr>
 		          <td align="center">内　容：</td><td><textarea style="width:130px;"  id="message" name="message" rows="2"></textarea></td>
 		        </tr>
+		        <input type="hidden" id="target_url" name="target_url" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
 		        <tr>
 		          <td></td><td><input type="button" onclick="checkform()" value="发送"></td>
 		        </tr>	 
@@ -77,11 +78,13 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 <!--
 var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
 //-->
+</script>
+</body>
+</html>
+<script>
 	$(function(){
 		$("#dept_search").click(function(){
 			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
 		})
 	});
 </script>
-</body>
-</html>

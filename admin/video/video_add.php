@@ -180,7 +180,7 @@
 		if($("#video").val()!=''){
 			var upfile2 = $("#video").val();
 			upload_file_extension=upfile2.substring(upfile2.length-4,upfile2.length);
-			if(upload_file_extension.toLowerCase()!=".flv"&&upload_file_extension.toLowerCase()!=".wmv"&&upload_file_extension.toLowerCase()!=".wav"&&upload_file_extension.toLowerCase()!=".mp3"&&upload_file_extension.toLowerCase()!=".mp4"&&upload_file_extension.toLowerCase()!=".avi"){
+			if(upload_file_extension.toLowerCase()!=".flv"&&upload_file_extension.toLowerCase()!=".wmv"&&upload_file_extension.toLowerCase()!=".wav"&&upload_file_extension.toLowerCase()!=".mp3"&&upload_file_extension.toLowerCase()!=".mp4"&&upload_file_extension.toLowerCase()!=".avi"&&upload_file_extension.toLowerCase()!=".wma"){
 				upload_file_extension=upfile2.substring(upfile2.length-3,upfile2.length);
 				if(upload_file_extension.toLowerCase()!=".rm"){
 					alert("上传视频类型错误");
