@@ -109,6 +109,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 				        <tr>
 				          <td align="center">内　容：</td><td><textarea style="width:130px;"  id="message" name="message" rows="2"></textarea></td>
 				        </tr>
+								<input type="hidden" id="target_url" name="target_url" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
 				        <tr>
 				          <td></td><td><input type="button" onclick="checkform()" value="发送"></td>
 				        </tr>

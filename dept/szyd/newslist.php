@@ -10,7 +10,7 @@
 <title>新闻列表</title>
 <script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
-
+<script src="szyd.js" type="text/javascript"></script>
 </head>
 
 <body >
@@ -77,11 +77,13 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 <!--
 var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
 //-->
+</script>
+</body>
+</html>
+<script>
 	$(function(){
 		$("#dept_search").click(function(){
 			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
 		})
 	});
 </script>
-</body>
-</html>
