@@ -19,6 +19,7 @@
 
  // Initialise the graph
  $Test = new pChart(400,400);
+ $Test->reportWarnings("GD");
  $Test->setFontProperties("Fonts/zhunyuan.ttf",8);
  $Test->drawFilledRoundedRectangle(7,7,393,393,5,240,240,240);
  $Test->drawRoundedRectangle(5,5,395,395,5,230,230,230);
