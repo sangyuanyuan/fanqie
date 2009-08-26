@@ -37,7 +37,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
   <div class="submain">
   	<div style="width:220px; float:left; display:inline;">
   	<div style="width:206px; height:48px; margin-top:16px; margin-left:11px; background-image:url(pic/search.png); padding-left:10px; float:left; display:inline;">
-      <input name="search" id="search" type="text" style="margin-top:10px;"> <img OnClick="searchnews('search')" style="margin-top:2px; display:inline;" src="pic/searchbutton.gif">
+      <input name="search" id="search" type="text" style="margin-top:10px;"> <img id="dept_search"  style="margin-top:2px; display:inline;" src="pic/searchbutton.gif">
    	</div>
 	
 	</div>
@@ -77,6 +77,11 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 <!--
 var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
 //-->
+	$(function(){
+		$("#dept_search").click(function(){
+			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
+		})
+	});
 </script>
 </body>
 </html>
