@@ -279,10 +279,11 @@ total("首页","other");
   			<?php
 					$sql = 'select n.short_title,c.platform,n.id  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 1 ';
 					$record_import=$db -> query($sql);
-					
+					$sql='select * from smg_zhibo_ctrl';
+					$zhibo=$db->query($sql);
 				?>		
 				<div id=content1><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a></div>
- 				<a href="" id=btn ></a>
+ 				<a href="mms://172.27.202.23:5765/broadcast" <?php if($zhibo[0]->state==1){ ?>style="background:url('images/index/zb.gif');"<?php } ?> id=btn ></a>
  				<?php
 
 					$sql = 'select * from smg_news_show;';
@@ -800,8 +801,8 @@ total("首页","other");
  			<div id=b_t_r>
 				<div class=m_box>
 					<?php  
-						//$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
-						$sql = 'select id,name from smg_problem where is_adopt=1 order by create_time desc limit 6';
+						$sql = 'select id,title from smg_question where is_adopt=1 order by create_time desc limit 6';
+						//$sql = 'select id,name from smg_problem where is_adopt=1 order by create_time desc limit 6';
 						$record = $db->query($sql);
 						$count = count($record);
 					?>
