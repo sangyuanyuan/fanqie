@@ -14,7 +14,6 @@
 			$news->video_photo_src = '/upload/video/' .$upload->handle('video_pic','filter_pic');
 			$news->video_flag = 1;		
 		}
-		
 		if($_FILES['file_name']['name'] != ''){
 			$upload = new upload_file_class();
 			$upload->save_dir = '/upload/file/';
@@ -65,6 +64,21 @@
 			$upload->save_dir = '/upload/file/';
 			$upload_name = $upload->handle('file_name');
 			$news->file_name = '/upload/file/' .$upload_name;	
+		}
+		$pos = strpos(strtolower($news->content), '<img ');
+		if($pos !== false){
+			$pos_end = strpos(strtolower($news->content), '>',$pos);
+			$imgstr = substr($news->content, $pos,$pos_end -$pos +1);
+			#alert($pos_end .';'.$imgstr);
+			$imgstr = str_replace('\"', '"', $imgstr);
+			$pos = strpos($imgstr, 'src="');
+			$pos_end = strpos($imgstr, '"',$pos + 5);
+			$src = substr($imgstr, $pos+5,$pos_end - $pos - 5);
+			$news->photo_src = $src;
+			$news->is_photo_news = 1;
+		}else{
+			$news->is_photo_news = 0;
+			$news->photo_src = "";
 		}
 		$news->save();
 		$item = new table_class('smg_subject_items');
