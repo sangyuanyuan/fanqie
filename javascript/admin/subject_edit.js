@@ -17,7 +17,7 @@ var menu2 = [
 			}},
 			{'编辑该模块':function(menuItem,menu){
 				
-				tb_show('编辑','subject_module_edit.php?height=300&width=400&pos_name=' + $(this).parent().attr('id') + '&subject_id=' + $('#hidden_id').attr('value') + '&id=' + $(this).attr('id'),false)
+				tb_show('编辑','subject_module_edit.php?height=350&width=400&pos_name=' + $(this).parent().attr('id') + '&subject_id=' + $('#hidden_id').attr('value') + '&id=' + $(this).attr('id'),false)
 			}},
 			$.contextMenu.separator,
 			{'关联内容':function(menuItem,menu){
