@@ -28,7 +28,7 @@
 		<div id=l_b>
 			<div class="top_title">本周TOP5</div>
 			<?php 
-				$sql = 'select id,title,platform,last_edited_at from smg_news where WEEK(NOW(),1) - WEEK(created_at,1) = 0 and year(now())=year(created_at) order by click_count desc limit 5';
+				$sql = 'select id,title,platform,last_edited_at from smg_news where WEEK(NOW(),1) - WEEK(created_at,1) = 0 and year(now())=year(created_at) and is_adopt=1 order by click_count desc limit 5';
 				$record = $db->query($sql);
 				for($i=0;$i<count($record);$i++){ ?>
 				<div class=l_b_l>
@@ -39,7 +39,7 @@
 			<?php } ?>
 			<div class="top_title">上周TOP5</div>
 			<?php 
-				$sql = 'select id,title,platform,last_edited_at from smg_news where WEEK(NOW(),1) - WEEK(created_at,1) = 1 and year(now())=year(created_at) order by click_count desc limit 5';
+				$sql = 'select id,title,platform,last_edited_at from smg_news where WEEK(NOW(),1) - WEEK(created_at,1) = 1 and year(now())=year(created_at) and is_adopt=1 order by click_count desc limit 5';
 				$record = $db->query($sql);
 				for($i=0;$i<count($record);$i++){ ?>
 				<div class=l_b_l>
@@ -50,7 +50,7 @@
 			<?php } ?>
 			<div class="top_title">本月TOP5</div>
 			<?php 
-				$sql = 'select id,title,platform,last_edited_at from smg_news where MONTH(NOW()) - MONTH(created_at) = 0 and year(now())=year(created_at) order by click_count desc limit 5';
+				$sql = 'select id,title,platform,last_edited_at from smg_news where MONTH(NOW()) - MONTH(created_at) = 0 and year(now())=year(created_at) and is_adopt=1 order by click_count desc limit 5';
 				$record = $db->query($sql);
 				for($i=0;$i<count($record);$i++){ ?>
 				<div class=l_b_l>
@@ -61,7 +61,7 @@
 			<?php } ?>
 			<div class="top_title">上月TOP5</div>
 			<?php 
-				$sql = 'select id,title,platform,last_edited_at from smg_news where MONTH(NOW()) - MONTH(created_at) = 1 and year(now())=year(created_at) order by click_count desc limit 5';
+				$sql = 'select id,title,platform,last_edited_at from smg_news where MONTH(NOW()) - MONTH(created_at) = 1 and year(now())=year(created_at) and is_adopt=1 order by click_count desc limit 5';
 				$record = $db->query($sql);
 				for($i=0;$i<count($record);$i++){ ?>
 				<div class=l_b_l>
