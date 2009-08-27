@@ -211,7 +211,7 @@
 							?>
 							<div id=content5>
 								<?php for($i=0;$i<count($pic);$i++){ ?>
-									<div class="pics"><a target="_blank" href="djcontent.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=130 height=90 src="<?php echo $pic[$i]->photo_src; ?>"></div>
+									<div class="pics"><a target="_blank" href="djcontent.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=130 height=90 src="<?php echo $pic[$i]->photo_src; ?>"><br><?php echo $pic[$i]->short_title; ?></a></div>
 								<?php } ?>
 							</div>
 							<div class=title style="margin-left:10px;">我的承诺</div>
