@@ -18,7 +18,7 @@
  $DataSet->SetSerieName("Tested computer","Serie2");
 
  // Initialise the graph
- $Test = new pChart(400,400);
+ $Test = new pChart(375,375);
  $Test->setFontProperties("Fonts/zhunyuan.ttf",8);
  $Test->drawFilledRoundedRectangle(7,7,393,393,5,240,240,240);
  $Test->drawRoundedRectangle(5,5,395,395,5,230,230,230);
@@ -33,6 +33,7 @@
  // Finish the graph
  $Test->drawLegend(15,15,$DataSet->GetDataDescription(),255,255,255);
  $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
- $Test->drawTitle(0,22,"什么",50,50,50,400);
+ $Test->drawTitle(0,22,"雷达图",50,50,50,400);
  $Test->Render("example8.jpg");
+ return('/pchart/example8.jpg');
 ?>
