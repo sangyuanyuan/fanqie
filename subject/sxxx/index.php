@@ -206,7 +206,7 @@
 								<? }?>
 							</div>
 							<div id=contenttitle>图片新闻</div>
-							<?php $sql="select n.* from smg_news n left join smg_subject_items i on n.id=i.resource_id where n.photo_src<>'' and n.is_adopt=1 and i.subject_id=24 order by priority asc,created_at desc limit 10"; 
+							<?php $sql="select n.* from smg_news n left join smg_subject_items i on n.id=i.resource_id where n.photo_src<>'' and n.is_adopt=1 and i.subject_id=24 order by priority asc,created_at desc limit 15"; 
 								$pic=$db->query($sql);
 							?>
 							<div id=content5>
