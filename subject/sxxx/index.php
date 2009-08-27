@@ -56,8 +56,8 @@
 												</SCRIPT>
 								</DIV>
 						</div>
-						<div class=title>经典论述<div class=more><a target="_blank" href="djlist.php?id=<?php echo $jdls[0]->cid; ?>">更多</a></div></div>
-						<div class=title>最新动态<div class=more><a target="_blank" href="djlist.php?id=<?php echo $zxdt[0]->cid; ?>">更多</a></div></div>
+						<div class=title><div class=left>经典论述</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $jdls[0]->cid; ?>">更多</a></div></div>
+						<div class=title><div class=left>最新动态</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $zxdt[0]->cid; ?>">更多</a></div></div>
 						<div style="width:350px; float:left; display:inline;">
 							<? 
 									$photourl="";
@@ -95,8 +95,8 @@
 								<? }?>
 							
 						<div class=bg>
-							<div class=title style="margin-left:10px;">领导讲话<div class=more><a target="_blank" href="djlist.php?id=<?php echo $ldjh[0]->cid; ?>">更多</a></div></div>
-							<div class=title style="margin-left:10px;">学习心得<div class=more><a target="_blank" href="djlist.php?id=<?php echo $xxxd[0]->cid; ?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;"><div class=left>领导讲话</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $ldjh[0]->cid; ?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;"><div class=left>学习心得</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $xxxd[0]->cid; ?>">更多</a></div></div>
 							<div style="width:350px; float:left; display:inline;">
 								<? 
 									$photourl="";
@@ -167,8 +167,8 @@
 								</DIV>
 						</div>-->
 						<div class=bg>
-							<div class=title style="margin-left:10px;">案例警示<div class=more><a target="_blank" href="djlist.php?id=<?php echo $alfx[0]->cid;?>">更多</a></div></div>
-							<div class=title style="margin-left:10px;">媒体评论<div class=more><a target="_blank" href="djlist.php?id=<?php echo $mtpl[0]->cid;?>">更多</a></div></div>	
+							<div class=title style="margin-left:10px;"><div class=left>案例警示</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $alfx[0]->cid;?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;"><div class=left>媒体评论</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $mtpl[0]->cid;?>">更多</a></div></div>	
 							<div style="width:350px; height:120px; float:left; display:inline;">
 								<? 
 									for($i=0;$i<count($alfx);$i++){?>
@@ -186,8 +186,8 @@
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							</div>
-							<div class=title style="margin-left:10px;">专题讲座<div class=more><a target="_blank" href="djlist.php?id=<?php echo $ztjz[0]->cid;?>">更多</a></div></div>
-							<div class=title style="margin-left:10px;">规章制度<div class=more><a target="_blank" href="djlist.php?id=<?php echo $gzzd[0]->cid;?>">更多</a></div></div>	
+							<div class=title style="margin-left:10px;"><div class=left>专题讲座</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $ztjz[0]->cid;?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;"><div class=left>规章制度</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $gzzd[0]->cid;?>">更多</a></div></div>	
 							<div style="width:350px; height:120px; float:left; display:inline;">
 								<? 
 									for($i=0;$i<count($ztjz);$i++){?>

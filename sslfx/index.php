@@ -56,8 +56,14 @@
 						</form> 	
 					</div>
 			</div>
+			<?php $sql="select * from smg_news where " ?>
 			<div class=r_title><div style="float:left; display:inline;">收视率相关文献</div><div class=more>更多</div></div>
-			<div id=r_content1></div>
+			<div id=r_content1>
+				<div class="r_content_every">
+					<div class=title><span style="color:#ff9900; font-weight:bold;">【节目】</span></div>
+					<div class=content></div>
+				</div>
+			</div>
 		</div>
 	</div>
 <?php require_once('../inc/bottom.inc.php');?>

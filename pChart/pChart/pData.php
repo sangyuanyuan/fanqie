@@ -72,6 +72,7 @@
          $buffer = fgets($handle, 4096);
          $buffer = str_replace(chr(10),"",$buffer);
          $buffer = str_replace(chr(13),"",$buffer);
+		 $buffer = iconv('gbk','utf-8',$buffer);
          $Values = split($Delimiter,$buffer);
 
          if ( $buffer != "" )
