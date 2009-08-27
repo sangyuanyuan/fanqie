@@ -56,6 +56,17 @@
 					$item= $table->find('first',array('conditions' => "subject_id=" .$subject_id ." and category_id=" .$category_id,'order' => 'priority asc, id desc'));
 					$items = $db->query('select * from smg_images where id=' .$item->resource_id);
 				break;
+				case 'photolist':
+					$subject_items = $db->query("select t.resource_id from smg_subject_items t where t.category_id = {$category_id} and t.is_adopt =1 and subject_id = $subject_id order by priority asc,id desc limit $record_limit");
+					if($subject_items){
+						$icount = count($subject_items);
+						for($i=0;$i <$icount; $i++){
+							$ids[] = $subject_items[$i]->resource_id;
+						}
+						$ids = implode(',',$ids);
+						$items  = $db->query("select b.*, a.priority as apriority from smg_subject_items a left join smg_images b on a.resource_id = b.id where resource_id in ($ids) order by apriority asc, id desc");	
+					}					
+				break;
 				default:
 					;
 				break;
