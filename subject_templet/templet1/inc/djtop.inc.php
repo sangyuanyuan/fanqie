@@ -25,30 +25,6 @@ $xxzl = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_n
 							
 							?>
 						
-							<div class=title>三项学习教育</div>
-							<a href="/sxjy/"><img border=0 style="margin-left:10px; margin-top:5px;" width="205" height="58" src="images/sxxx.jpg"></a>
-							<div class=title>信息简报</div>						
-								<? 
-																for($i=0;$i<count($xxjb);$i++){
-									if($xxjb[$i]->news_type==3)//url链接类新闻
-								  {
-								  	redirect($xxjb[$i]->target_url);
-								  	CloseDB();
-								  	exit;
-								  }
-								  //文件新闻
-								  if($xxjb[$i]->news_type==2)
-								  {
-								  	//echo $news->newstpe;
-								   	redirect($xxjb[$i]->file_name);
-								  	CloseDB();
-								  	exit; 	
-								  }			
-								?>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><a target="_blank" href="djcontent.php?id=<? echo $xxjb[$i]->id;?>"><? echo $xxjb[$i]->short_title;?></a></div>
-								<? if($i<2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-								<? }?>
-								<div class=more><a target="_blank" href="djlist.php?id=<?php echo $xxjb[0]->cid;?>">更多>></a></div>
 							<div class=title>专题访问排行榜</div>	
 								<? 
 								for($i=0;$i<count($deptsort);$i++){?>

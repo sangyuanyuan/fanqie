@@ -60,6 +60,9 @@
 	</p>
 	<p id="height_p">
 		<label for="height">高度:</label><input type="text" name="module[height]" id="height" value="">像素
+	</p>
+	<p id="bg_p">
+		<label for="bg">背景:</label><input type="text" name="module[background]" id="bg" value="">
 	</p>	
 	<p id="limit_p">
 		<label for="limit">条数:</label><input type="text" name="module[record_limit]" id="limit" value="">	
