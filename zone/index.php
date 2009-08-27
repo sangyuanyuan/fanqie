@@ -75,15 +75,15 @@
 						<div class="content">
 							<?php if($i==0){?>
 							<img src="/images/icon/arrow2.gif">
-							<a style="color:#2C345B; font-weight:bold;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->short_title); ?></a>
+							<a style="color:#2C345B; font-weight:bold;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title); ?></a>
 							<?php }elseif($i==1||$i==2){?>
 							<img src="/images/icon/arrow1.gif">
-							<a style=color:#2C345B;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->short_title); ?>
+							<a style=color:#2C345B;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title); ?>
 							</a>
 							<?php }else{
 							?>
 							<img src="/images/icon/arrow1.gif">
-							<a style=color:#000000;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->short_title); ?>
+							<a style=color:#000000;" target="_blank" href="/<?php echo $record[$i]->platform; ?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title); ?>
 							</a>
 							<?php
 							} ?>
@@ -93,7 +93,7 @@
 			</div>
 			<div class=t_l_b>
 				<div class=t_l_b_t><div class="title">BBS</div><div class="title_right">【上班这点事】</div></div>
-				<div class=t_l_b_l><?php for($i=0;$i< count($sbzds);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a <?php if($i<2){?>style="color:#ff0000;"<?php }?> target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->short_title); ?></a></div><?php }?> </div>
+				<div class=t_l_b_l><?php for($i=0;$i< count($sbzds);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a <?php if($i<2){?>style="color:#ff0000;"<?php }?> target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->title); ?></a></div><?php }?> </div>
 				<div class=t_l_b_r><?php for($i=0;$i< count($sbzdsimg);$i++){ ?><div class=content><a  target="_blank" href="<?php echo $sbzdsimg[$i]->url;?>"><div class=t_l_b_pic><img border=0 width=113 height=81 src="<?php echo $sbzdsimg[$i]->src; ?>"></div><div style="width:113px; height:18px; margin-top:5px; cursor:pointer; text-decoration:none; color:red; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($sbzdsimg[$i]->title);?></div></a></div><?php } ?></div>
 			</div>
 			<div class=t_l_b>
@@ -219,15 +219,15 @@
 		<div id=b_c>
 			<div id=title>博主秀</div>
 			<div id=b_c_l><div id=pic><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><img border=0 src="<?php echo $blogsure[0]->photo_src;?>"></a></div></div>
-			<div id=b_c_r><div id=b_c_r_title><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><?php echo $blogsure[0]->short_title;?></a></div><div id=b_c_r_content><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><?php echo delhtml($blogsure[0]->content);?></a></div></div>
+			<div id=b_c_r><div id=b_c_r_title><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><?php echo $blogsure[0]->title;?></a></div><div id=b_c_r_content><a target="_blank" href="/<?php echo $blogsure[0]->platform; ?>/news/news.php?id=<?php echo $blogsure[0]->id; ?>"><?php echo delhtml($blogsure[0]->content);?></a></div></div>
 			<div id=b_c_b_l>
 				<?php for($i=1;$i<4;$i++){ ?>
-					<div class=content><a target="_blank" href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
+					<div class=content><a target="_blank" href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->title;?></a></div>
 				<?php } ?>
 			</div>
 			<div id=b_c_b_r>
 				<?php for($i=4;$i<count($blogsure);$i++){ ?>
-					<div class=content><a target="_blank" href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->short_title;?></a></div>
+					<div class=content><a target="_blank" href="/<?php echo $blogsure[$i]->platform;?>/news/news.php?id=<?php echo $blogsure[$i]->id; ?>"><?php echo $blogsure[$i]->title;?></a></div>
 				<?php } ?>
 			</div>
 		</div>
