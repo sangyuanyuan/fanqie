@@ -205,6 +205,15 @@
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							</div>
+							<div id=contenttitle>图片新闻</div>
+							<?php $sql="select n.* from smg_news n left join smg_subject_items i on n.id=i.resource_id where n.photo_src<>'' and n.is_adopt=1 and i.subject_id=24 order by priority asc,created_at desc"; 
+								$pic=$db->query($sql);
+							?>
+							<div id=content5>
+								<?php for($i=0;$i<count($pic);$i++){ ?>
+									<div class="pic"><a target="_blank" href="djcontent.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=130 height=90 src="<?php echo $pic[$i]->photo_src; ?>"></div>
+								<?php } ?>
+							</div>
 							<div class=title style="margin-left:10px;">我的承诺</div>
 							<div class=title style="margin-left:10px;">我的博客</div>
 							<div style="width:350px; float:left; display:inline;">
