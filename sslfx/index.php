@@ -4,17 +4,26 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<?php css_include_tag('sslfx','top','bottom'); 
-	
+	<?php css_include_tag('sslfx','top','bottom');
+	use_jquery();
+	js_include_once_tag('sslfx','total');	
 	$db=get_db();
 	?>
+<script>
+	total("收视率分析","server");
+</script>
 </head>
 <body>
 	<?php require_once('../inc/top.inc.html'); ?>
 	<div id=ibody>
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
-			<div class=l_content><img param="/pChart/Sample/rader.cvs" width=375 height=375 id="rader"></div>
+			<input id="url" type="hidden" value="Sample/rader.csv">
+			<script>
+				$.post("/pChart/Example8.php",{'url':$("#url").attr("value")},function(data){
+				});
+			</script>
+			<div class=l_content><img id="rader" src="/pChart/example8.jpg"></div>
 			<div class=l_title></div>
 			<div class=l_content>
 				<select id="pd">
@@ -31,10 +40,20 @@
 					<option value="7">星期日</option>
 				</select>
 				<input type="button" id="pdcx" value="查询">
-				<img style="margin-top:10px;" width="375" height="375" id="foldline">
+				<input id="url1" type="hidden" value="Sample/foldline.csv">
+				<script>
+					$.post("/pChart/Example9.php",{'url':$("#url1").attr("value")},function(data){
+					});
+				</script>
+				<img id="foldline" width="375" height="375" src="/pChart/example9.jpg">
 			</div>
 			<div class=l_title>预测节目收视率跟踪</div>
-			<div class=l_content><img width="375" height="375" id="foldincom"></div>
+			<input id="url2" type="hidden" value="Sample/foldincom.csv">
+			<script>
+					$.post("/pChart/Example12.php",{'url':$("#url2").attr("value")},function(data){
+					});
+			</script>
+			<div class=l_content><img width="375" height="375" id="foldincom" src="/pChart/example12.jpg"></div>
 			<div style="width:395px; border:1px solid #DC7638; border-top:none; float:left; display:inline;"><div class=l_pro1>节目1</div><div class=l_pro2>节目2</div><div class=l_pro2>节目3</div></div>
 		</div>
 		<div id=ibody_right>
@@ -68,7 +87,7 @@
 			<div id=r_content1>
 				<?php for($i=0;$i<count($news);$i++){ ?>
 				<div class="r_content_every">
-					<div class=title><span style="color:#ff9900; font-weight:bold;">【节目】<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->cid;?>"><?php echo $news[$i]->title;?></a></span></div>
+					<div class=title><span style="color:#ff9900; font-weight:bold;">【节目】<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->cid;?>"><?php echo get_fck_content($news[$i]->title);?></a></span></div>
 					<div class=content><a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[0]->content);?></div>
 				</div>
 				<?php } ?>
