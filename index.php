@@ -562,7 +562,7 @@ total("首页","other");
 
  			<!-- start top_right_right_bottom !-->
  			<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 and is_adopt=1 order by n.click_count desc limit 10';
+ 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 and n.is_adopt=1 order by n.click_count desc limit 10';
 					$record_news=$db -> query($sql);	
 					$sql='select uid,itemid,subject from blog_spaceitems order by itemid desc limit 10';
 					$record_blog=$db -> query($sql);	
