@@ -26,7 +26,7 @@
 	 	</ul>
 		<?php }?>
 	  <div id=weather>
-			<iframe src="/index_weather.php" width=135px height=22px scrolling="no" frameborder="0"></iframe>
+			<iframe src="/index_weather.html" width=135px height=22px scrolling="no" frameborder="0"></iframe>
 	  </div>	
 	  <span id=deptbtn onclick='$("#deptcontent").show();'></span>	  
 	  <div id=search>
