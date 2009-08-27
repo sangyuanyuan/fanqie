@@ -14,7 +14,7 @@
 	<div id=ibody>
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
-			<div class=l_content><img width=375 height=375 id="rader"></div>
+			<div class=l_content><img param="/pChart/Sample/rader.cvs" width=375 height=375 id="rader"></div>
 			<div class=l_title></div>
 			<div class=l_content>
 				<select id="pd">
@@ -31,11 +31,11 @@
 					<option value="7">星期日</option>
 				</select>
 				<input type="button" id="pdcx" value="查询">
-				<img width="375" height="375" id="foldline">
+				<img style="margin-top:10px;" width="375" height="375" id="foldline">
 			</div>
 			<div class=l_title>预测节目收视率跟踪</div>
 			<div class=l_content><img width="375" height="375" id="foldincom"></div>
-			<div class=l_pro1>节目1</div><div class=l_pro2>节目2</div><div class=l_pro2>节目3</div>
+			<div style="width:395px; border:1px solid #DC7638; border-top:none; float:left; display:inline;"><div class=l_pro1>节目1</div><div class=l_pro2>节目2</div><div class=l_pro2>节目3</div></div>
 		</div>
 		<div id=ibody_right>
 			<div class=r_title>收视率预测系统使用说明</div>
@@ -68,7 +68,7 @@
 			<div id=r_content1>
 				<?php for($i=0;$i<count($news);$i++){ ?>
 				<div class="r_content_every">
-					<div class=title><span style="color:#ff9900; font-weight:bold;">【节目】<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo $news[$i]->title;?></a></span></div>
+					<div class=title><span style="color:#ff9900; font-weight:bold;">【节目】<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->cid;?>"><?php echo $news[$i]->title;?></a></span></div>
 					<div class=content><a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[0]->content);?></div>
 				</div>
 				<?php } ?>
