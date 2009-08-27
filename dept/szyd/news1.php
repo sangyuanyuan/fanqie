@@ -37,9 +37,7 @@ function MM_swapImage() { //v3.0
 </head>
 <?		
 $newsid = $_REQUEST['id'];
-$db=get_db();
-$strsql='update smg_news set click_count=click_count+1 where id='.$newsid;
-$db->execute($strsql);
+
 ?>
 <body onload="MM_preloadImages('pic2/btn_1_1.png','pic2/btn_2_1.png','pic2/btn_3_1.png')">
 <div  class="main">
@@ -66,7 +64,10 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
         <div class="btn1"><a href="news1.php?id=<? echo $newslist[0]->id;?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','pic2/btn_3_1.png',1)"><img src="pic2/btn_3.png" name="Image3" width="134" height="28" border="0" id="Image3" /></a></div>
         </div>
         <div class="sub_right">
-        	<? 
+        	<?
+        	$db=get_db();
+					$strsql='update smg_news set click_count=click_count+1 where id='.$newsid;
+					$db->execute($strsql);
       		$news=$db->query('select * from smg_news where id='.$newsid);
       		if($news[0]->news_type==3)
 				  {
@@ -80,7 +81,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 				  	CloseDB();
 				  	exit; 	
 				  }
-				   echo get_fck_content($news->content);?>
+				   echo get_fck_content($news[0]->content);?>
         </div>
     </div>
     <div class="siteinfo">

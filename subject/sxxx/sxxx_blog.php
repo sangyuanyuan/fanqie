@@ -21,20 +21,20 @@
 <TABLE id=headertab border=0 cellSpacing=0 cellPadding=0>
   <TBODY>
   <TR>
-    <TD id=logo><A href="http://172.27.203.81:8080/blog/"><IMG 
-      style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" 
-      alt=smg 
-      src="images/logo.jpg"></A> </TD>
+    <TD id=logo><embed src="sxxx.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="970" height="150"></embed></TD>
     <TD id=topmenu>
      </TD></TR></TBODY></TABLE></DIV>
 <DIV id=menu>
 <UL>
+	<li><a href="/subject/sxxx/index.php" target="_blank">三项教育首页</a></li>
 	<li><a href="/blog/?action-category-catid-104" target="_blank">学习心得</a></li>
 	<li><a href="/blog/?action-category-catid-105" target="_blank">工作体会</a></li>
 	<li><a href="/blog/?action-category-catid-106" target="_blank">个人书评</a></li>
 	<li><a href="/blog/?action-category-catid-107" target="_blank">新闻观点</a></li>
 	<li><a href="/blog/?action-category-catid-108" target="_blank">行业动向</a></li>
 	<li><a href="/blog/?action-category-catid-109" target="_blank">我与海宝同行</a></li>
+	<li><a href="/login/login.php" target="_blank">我要开博</a></li>
+	<li><a target="_blank" href="kbsm.doc">开博说明</a></li>
   </UL></DIV>
 <DIV class="content topcontent">
 <DIV class=mainarea>
@@ -79,7 +79,7 @@
 </DIV></DIV>
 <DIV class=side>
 <DIV class="block blockG">
-<H1>三项教育</H1>
+<H1>三项学习教育</H1>
 <div style="width:290px; float:left; display:inline; background:#F1F6F5">
 <div class=right_title>博客点击量</div>
 <div class=right_box>

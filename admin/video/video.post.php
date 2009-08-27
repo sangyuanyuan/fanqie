@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once "../../frame.php";
 	$video = new table_class("smg_video");
 	if($_POST['id']!=''){

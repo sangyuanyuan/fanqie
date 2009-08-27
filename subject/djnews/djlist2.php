@@ -29,7 +29,7 @@
 				<? }?>
 				<div class="pageurl">
 		         <?php 
-			          echo paginate('','threeminbbs'); 
+			          echo paginate('','','threeminbbs'); 
 		         ?>
 	      		</div>
 				<div id=contenttitle>我为集团献一计</div>
@@ -38,7 +38,7 @@
 				<? }?>
 				<div class="pageurl">
 		         <?php 
-			          echo paginate('','ideaforsmg'); 
+			          echo paginate('','','ideaforsmg'); 
 		         ?>
 			</div>
 		</div>

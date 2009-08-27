@@ -77,21 +77,12 @@ require_once('../frame.php');
     
     <?php }
      //显示评论页数链接
-     if($sqlmanager->pagecount > 1)
-     {
     ?>
       <div class="pageurl">
          <?php 
-	         if($fck_pageindex=="")
-	          echo paginate("/fqtg/fqtg.php?id=" .$actid); 
-           else
-           	echo paginate("/fqtg/fqtg.php?id=" .$actid."&fck_pageindex=".$_REQUEST['fck_pageindex']);  
+           	echo paginate('');
          ?>
       </div>
-    <?php
-  	}
-  	//显示评论页面链接完成
-    ?>
    
     <div id=content8>
     		<div id=left>发表评论</div>

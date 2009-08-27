@@ -10,7 +10,7 @@
 <title>新闻列表</title>
 <script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
-
+<script src="szyd.js" type="text/javascript"></script>
 </head>
 
 <body >
@@ -35,11 +35,19 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 </noscript>
   </div>
   <div class="submain">
-  	<div style="width:250px; float:left; display:inline;">
+  	<div style="width:220px; float:left; display:inline;">
   	<div style="width:206px; height:48px; margin-top:16px; margin-left:11px; background-image:url(pic/search.png); padding-left:10px; float:left; display:inline;">
-      <input name="search" id="search" type="text" style="margin-top:10px;"> <img OnClick="searchnews('search')" style="margin-top:2px; display:inline;" src="pic/searchbutton.gif">
+      <input name="search" id="search" type="text" style="margin-top:10px;"> <img id="dept_search"  style="margin-top:2px; display:inline;" src="pic/searchbutton.gif">
    	</div>
-	<div style="width:227px; height:114px; margin-top:16px; margin-left:15px; float:left; display:inline;">
+	
+	</div>
+   	<div style="width:490px; margin-top:10px; margin-left:10px; float:left; display:inline;">
+	  	<? for($i=0;$i<count($rows);$i++){?>
+	  			<div style="width:500px; height:20px; line-height:20px; padding:5px; float:left; display:inline;"><a style="text-decoration:none;" href="news.php?id=<? echo $rows[$i]->id;?>"><? echo $rows[$i]->short_title;?></a></div>
+	  	<? }?><br><br>
+	  	<?php paginate('');?>
+  	</div>
+  	<div style="width:210px; height:114px; margin-top:16px; float:right; display:inline;">
        <div  class="share_top">特快专递</div>
        <div  class="r_border">
        	<form id="addform" name="addform" action="szyd.post.php" method="post">
@@ -53,6 +61,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 		        <tr>
 		          <td align="center">内　容：</td><td><textarea style="width:130px;"  id="message" name="message" rows="2"></textarea></td>
 		        </tr>
+		        <input type="hidden" id="target_url" name="target_url" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
 		        <tr>
 		          <td></td><td><input type="button" onclick="checkform()" value="发送"></td>
 		        </tr>	 
@@ -60,14 +69,6 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 		     </form>
       </div>
   	 </div>
-	</div>
-   	<div style="width:490px; margin-top:10px; margin-left:10px;  float:left; display:inline;">
-	  	<? for($i=0;$i<count($rows);$i++){?>
-	  			<div style="width:500px; height:20px; line-height:20px; padding:5px; float:left; display:inline;"><a style="text-decoration:none;" href="news.php?id=<? echo $rows[$i]->id;?>"><? echo $rows[$i]->short_title;?></a></div>
-	  	<? }?><br><br>
-	  	<?php paginate('');?>
-  	</div>
-  	
   </div>
   <div class="siteinfo">
   </div>
@@ -80,3 +81,10 @@ var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenu
 </script>
 </body>
 </html>
+<script>
+	$(function(){
+		$("#dept_search").click(function(){
+			window.location.href='/search/?key='+encodeURI($("#search").val())+'&search_type=smg_news';
+		})
+	});
+</script>

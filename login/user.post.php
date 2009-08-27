@@ -18,8 +18,8 @@ if($_POST['user_type']=="login")
 	{
 		//login from ucenter
 		$ret = uc_user_login($login_text , $password_text);
-		if($ret[0]<=0 ){
-			$error = "用户名或密码不对";
+		if($ret[0]<= 0 ){
+			$error = "用户名或密码不对";		
 		}else{
 			//login sucessful
 			$user = new table_class('smg_user');
@@ -68,7 +68,11 @@ if($_POST['user_type']=="login")
 		$ret = uc_user_login($login_text,$password_text);
 		if($ret[0] == -1)
 		{//not exist!
-			uc_user_register($login_text,$password_text,$login_text ."@smg.com");
+			$reg = uc_user_register($login_text,$password_text,$login_text ."@smg.com");
+			if($reg >0 ){
+				$sql = "insert into bbs_members (uid,username,password,gender,regip) values ('" .$reg ."','" .$login_text ."','" .$password_text ."','0','" .getenv('REMOTE_ADDR') ."')";
+				$db->execute($sql);
+			}			
 		}elseif ($ret[0] == -2)
 		{//password wrong
 			uc_user_edit($login_text,"",$password_text,$login_text ."@smg.com",1);
