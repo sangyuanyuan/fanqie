@@ -28,7 +28,7 @@ a{text-decoration:none; color:#434343;}
 #content #context #right #contenttitle{width:670px;  height:27px; margin-top:5px; margin-left:3px; padding-top:8px; padding-left:14px; font-size:18px; color:#ffffff; font-weight:bold; background:url(/images/bg/sxxx_title_bg.jpg) repeat-x; float:left; display:inline;}
 #content #content5{width:690px; height:15px; margin-left:5px; text-align:center; color:#0071B5; float:left;display:inline}
 #content #content5 A{color:#0071B5;}
-#content #content5 .pics{width:130px; height:110px; margin-top:10px; margin-left:10px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#content #content5 .pics{width:130px; height:110px; margin-top:10px; margin-left:8px; line-height:20px; overflow:hidden; float:left; display:inline;}
 #content #content5 .pics a{color:#000000;}
 #content .content7{width:330px; margin-top:10px; margin-left:10px; padding-bottom:10px; border:1px solid #DEDBDE; background:#ffffff;  float:left; display:inline;}
 #content .content7 .name{width:150px; height:20px; margin-top:5px; margin-left:15px; float:left; display:inline;}
