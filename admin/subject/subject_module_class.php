@@ -51,6 +51,11 @@
 						$items  = $db->query("select b.*, a.priority as apriority from smg_subject_items a left join smg_video b on a.resource_id = b.id where resource_id in ($ids) order by apriority asc, id desc");	
 					}					
 				break;
+				case 'photo':					
+					$table = new table_class('smg_subject_items');
+					$item= $table->find('first',array('conditions' => "subject_id=" .$subject_id ." and category_id=" .$category_id,'order' => 'priority asc, id desc'));
+					$items = $db->query('select * from smg_images where id=' .$item->resource_id);
+				break;
 				default:
 					;
 				break;
