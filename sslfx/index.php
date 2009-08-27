@@ -4,14 +4,17 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<?php css_include_tag('sslfx','top','bottom'); ?>
+	<?php css_include_tag('sslfx','top','bottom'); 
+	
+	$db=get_db();
+	?>
 </head>
 <body>
 	<?php require_once('../inc/top.inc.html'); ?>
 	<div id=ibody>
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
-			<div class=l_content></div>
+			<div class=l_content><img width=375 height=375 id="rader"></div>
 			<div class=l_title></div>
 			<div class=l_content>
 				<select id="pd">
@@ -27,9 +30,11 @@
 					<option value="6">星期六</option>
 					<option value="7">星期日</option>
 				</select>
+				<input type="button" id="pdcx" value="查询">
+				<img width="375" height="375" id="foldline">
 			</div>
 			<div class=l_title>预测节目收视率跟踪</div>
-			<div class=l_content></div>
+			<div class=l_content><img width="375" height="375" id="foldincom"></div>
 			<div class=l_pro1>节目1</div><div class=l_pro2>节目2</div><div class=l_pro2>节目3</div>
 		</div>
 		<div id=ibody_right>
@@ -56,13 +61,17 @@
 						</form> 	
 					</div>
 			</div>
-			<?php $sql="select * from smg_news where " ?>
-			<div class=r_title><div style="float:left; display:inline;">收视率相关文献</div><div class=more>更多</div></div>
+			<?php $sql="select n.title,n.id,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' order by n.priority asc, n.created_at desc limit 5";
+				$news=$db->query($sql);
+			?>
+			<div class=r_title><div style="float:left; display:inline;">收视率相关文献</div><div class=more><a href="/server/news/news_list.php?id=">更多</div></div>
 			<div id=r_content1>
+				<?php for($i=0;$i<count($news);$i++){ ?>
 				<div class="r_content_every">
-					<div class=title><span style="color:#ff9900; font-weight:bold;">【节目】</span></div>
-					<div class=content></div>
+					<div class=title><span style="color:#ff9900; font-weight:bold;">【节目】<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo $news[$i]->title;?></a></span></div>
+					<div class=content><a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[0]->content);?></div>
 				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</div>
