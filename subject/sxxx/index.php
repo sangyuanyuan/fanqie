@@ -89,7 +89,7 @@
 							<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
 							
 								<?
-								for($i=0;$i<count($news);$i++){?>
+								for($i=0;$i<6;$i++){?>
 									<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $zxdt[$i]->id;?>"><? echo $zxdt[$i]->short_title;?></a></div>
 									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
@@ -128,7 +128,7 @@
 						<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
 						
 							<?
-							for($i=0;$i<count($xxxd);$i++){?>
+							for($i=0;$i<6;$i++){?>
 								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $xxxd[$i]->id;?>"><? echo $xxxd[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 							<? }?>
