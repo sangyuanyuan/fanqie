@@ -36,7 +36,7 @@
 				              <TBODY>
 				              <TR align=middle>
 				              	<? for($i=0;$i<count($news);$i++){?>
-				                <TD><a target="_blank" href="djlist.php?id=<?php echo $news[0]->cid; ?>"><img border=0 width=108 height=100 src="<? echo $news[$i]->photo_src; ?>"></a></TD>
+				                <TD><a target="_blank" href="content.php?id=<?php echo $news[0]->cid; ?>"><img border=0 width=108 height=100 src="<? echo $news[$i]->photo_src; ?>"></a></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
 				          			<TD id=demo2 vAlign=top></TD></TR></TBODY></TABLE></DIV>
@@ -60,37 +60,46 @@
       </div>
       <div id="right_pic">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        	<?php $news = show_content('smg_news','news','电视新闻中心','项目总结','10');?>
           <tr>
             <td width="33"><img src="images/hjmd2.gif" width="33" /></td>
-            <td width="670" align="center" bgcolor=#FFFFCC>&middot;咬文嚼字（第二期）&middot;脑筋急转弯（第五期）&middot;脑筋急转弯（第四期）&middot;咬文嚼字（第一期）<BR>&middot;咬文嚼字（第二期）&middot;脑筋急转弯（第五期）&middot;脑筋急转弯（第四期）&middot;咬文嚼字（第一期）</td>
+            <td width="670" align="center" bgcolor=#FFFFCC>
+            	<?php for($i=0;$i<count($news);$i++){ ?>
+            		&middot;咬文嚼字（第二期）
+            	<?php } ?>
+            </td>
           </tr>
         </table>
       </div>
 
 <div class="right_title">网上讲评</div>
+
       <div class="right_cnt">
         <table width="660" border="0" cellspacing="3" cellpadding="1">
+        	<?php $news = show_content('smg_news','news','电视新闻中心','好新闻讲评','10');?>
           <tr>
-            <td width="50%" colspan="2"><img src="images/hxwjp.gif" width="155" height="32" /></td>
+            <td width="50%" colspan="2"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','好新闻讲评','news');?>"><img src="images/hxwjp.gif" border=0 width="155" height="32" /></a></td>
             <td><img src="images/xmzj.gif" width="155" height="32" /></td>
           </tr>
+          
           <tr>
-            <td width="25%" align="left" valign="top">1月份好新闻 讲评<br />
-              2月份好新闻 讲评<br />
-              3月份好新闻 讲评<br />
-              4月份好新闻 讲评<br />
-            5月份好新闻 讲评</td>
-            <td width="25%" align="left" valign="top">1月份好新闻 讲评<br />
-              2月份好新闻 讲评<br />
-              3月份好新闻 讲评<br />
-              4月份好新闻 讲评<br />
-            5月份好新闻 讲评</td>
-            <td align="left" valign="top">&middot;《加油！优雅》受墨西哥驻华大使称赞<br />
-&middot;SMG打造红色偶像剧《新四军女兵》<br />
-&middot;《新四军女兵》邀京沪媒体探班<br />
-&middot;&ldquo;喜羊羊&rdquo;续写中国动画传奇<br />
-&middot;《加油！优雅》情节有看点<br />
-&middot;《新四军女兵》革命很&ldquo;青春&rdquo;<br />
+            <td width="25%" align="left" valign="top">
+            	<?php for($i=0;$i<4;$i++){ ?>
+            		<a target="_blank" href="content.php?id=<?php echo $news[$i]->id;?>"><?php echo $news[$i]->short_title; ?></a><br />
+              <?php } ?>
+            	<a target="_blank" href="content.php?id=<?php echo $news[4]->id; ?>"><?php echo $news[4]->short_title; ?></a>
+            </td>
+            <td width="25%" align="left" valign="top">
+            	<?php for($i=4;$i<9;$i++){ ?>
+            		<a target="_blank" href="content.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title; ?></a><br />
+              <?php } ?>
+            	<a target="_blank" href="content.php?id=<?php echo $news[9]->id; ?>"><?php echo $news[9]->short_title; ?></a>
+            </td>
+            
+            <td align="left" valign="top">
+            	<?php for($i=0;$i<count($news);$i++){ ?>
+            	&middot;<a target="_blank" href="content.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title; ?></a><br />
+            	<?php } ?>
 &middot;《小娘惹》收视爆棚</td>
           </tr>
         </table>
