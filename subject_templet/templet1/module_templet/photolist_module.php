@@ -8,9 +8,9 @@
 		$photo_height = isset($element_height)?$element_height:120;
 		for($i=0;$i<count($items);$i++){
 	?>
-	<div style="width:<?php echo $photo_width;?> text-align:center; float:left; display:inline;">
-			<a style="float:left;display:inline;" href="/show/show.php?id=<?php echo $items[$i]->id;?>"><img width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>" src="<?php echo $items[$i]->src?>"></a>
-			<a style="float:left;display:inline;" href="/show/show.php?id=<?php echo $items[$i]->id;?>"><?php echo $items[$i]->title;?></a>
+	<div style="width:<?php echo $photo_width;?>px; text-align:center; float:left; display:inline;">
+			<a href="/show/show.php?id=<?php echo $items[$i]->id;?>"><img width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>" src="<?php echo $items[$i]->src?>"></a>
+			<a href="/show/show.php?id=<?php echo $items[$i]->id;?>"><?php echo $items[$i]->title;?></a>
 	</div>
 	<?php
 		}
