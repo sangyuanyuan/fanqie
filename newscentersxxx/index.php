@@ -176,7 +176,7 @@
         <br />
         </div>
         <div class="left_cnt">
-          <p><a target="_blank" href=""><img border=0 src="images/rk.gif" width="205" height="62" /></a></p>
+          <p><a target="_blank" href="/bbs/forumdisplay.php?fid=71"><img border=0 src="images/rk.gif" width="205" height="62" /></a></p>
           <p>&nbsp;</p>
         </div>
 <div class="left_title">相关链接</div>
