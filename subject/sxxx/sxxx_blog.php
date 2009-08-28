@@ -50,8 +50,8 @@
 			$typeadd = $type == 'real' ? '_real' : '';
 			return $dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).$typeadd."_avatar_$size.jpg";
 		}
-		$sql = 'select t1.uid,t1.username,sum(t1.viewnum) as num from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 group by t1.uid order by num desc';
-		$record = $db->paginate($sql);
+		$sql = 'select t1.uid,t1.username,sum(t1.viewnum) as num from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 or t2.catid=93 group by t1.uid order by num desc';
+		$record = $db->paginate($sql,10);
 		$count = count($record);
 		for($i=0;$i<$count;$i++){
 			$avatar = '/ucenter/data/avatar/'.get_avatar($record[$i]->uid, 'middle', '_real');
@@ -75,8 +75,9 @@
 	<?php
 		}
 	?>
+	<div style="width:650px; line-height:20px; text-align:center; float:left; display:inline;"><?php paginate('');?></div>
 </DIV>
-<div style="width:677px; text-align:center; float:left; display:inline;"><?php paginate('');?></div>
+
 </DIV>
 <DIV class=side>
 <DIV class="block blockG">
