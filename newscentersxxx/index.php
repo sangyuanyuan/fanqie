@@ -79,7 +79,7 @@
         	<?php $news = show_content('smg_news','news','电视新闻中心','好新闻讲评','10');?>
           <tr>
             <td width="50%" colspan="2"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','好新闻讲评','news');?>"><img src="images/hxwjp.gif" border=0 width="155" height="32" /></a></td>
-            <td><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','项目总结','news');?><img src="images/xmzj.gif" width="155" height="32" /></a></td>
+            <td><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','项目总结','news');?>"><img border=0 src="images/xmzj.gif" width="155" height="32" /></a></td>
           </tr>
           
           <tr>
@@ -163,7 +163,7 @@
         <?php $news = show_content('smg_news','news','电视新闻中心','三项活动教育简介','1');?>
         <div class="left_cnt">
           <p><br />
-            <a target="blank" href="content.php?id=<?php echo $news[0]->id; ?>"><?php echo $news[0]->description; ?></p>
+            <a target="blank" href="content.php?id=<?php echo $news[0]->id; ?>"><?php echo get_fck_content($news[0]->description); ?></p>
           <p><br />
           </p>
         </div>
