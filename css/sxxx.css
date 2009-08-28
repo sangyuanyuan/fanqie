@@ -26,7 +26,7 @@ a{text-decoration:none; color:#434343;}
 #content #context #right .pic{width:98px; height:90px; margin-top:5px; margin-left:15px; padding:4px; border:1px solid #A9A9A9; background:#ffffff; float:left; display:inline;}
 #content #context #right .bg{width:690px; margin-top:5px; margin-left:5px; padding-bottom:10px; background:#FEFEE4; float:left; display:inline;}
 #content #context #right #contenttitle{width:670px;  height:27px; margin-top:5px; margin-left:3px; padding-top:8px; padding-left:14px; font-size:18px; color:#ffffff; font-weight:bold; background:url(/images/bg/sxxx_title_bg.jpg) repeat-x; float:left; display:inline;}
-#content #content5{width:690px; height:15px; margin-left:5px; text-align:center; color:#0071B5; float:left;display:inline}
+#content #content5{width:690px; margin-left:5px; text-align:center; color:#0071B5; float:left;display:inline}
 #content #content5 A{color:#0071B5;}
 #content #content5 .pics{width:130px; height:110px; margin-top:10px; margin-left:5px; line-height:20px; overflow:hidden; float:left; display:inline;}
 #content #content5 .pics a{color:#000000;}

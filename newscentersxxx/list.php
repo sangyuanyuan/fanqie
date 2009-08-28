@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新闻中心三项教育</title>
+<link href="main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="head">
+  <div id="headtitle"><img src="images/title.jpg" width="1000" height="145" /></div>
+</div>
+<div id="menu">
+  <div id="menubg"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="">专题论坛</a></div>
+</div>
+<div id="content">
+  <div id="bodybg">
+  	<?php $sql="select n.id,n.title,d.name from smg_news left join smg_category_dept d on n.dept_category_id=d.id where d.id=".$_REQUEST['id'];
+  		$db=get_db(); 
+  		$newslist=$db->query($sql);	
+  	?>
+    <div id="right_body">
+      <div class="right_title">学片学人</div>
+      <div class="right_cnt">
+<div id="maintext">
+	<?php for($i=0;$i<count($newslist);$i++){ ?>
+	&middot;<a target="_blank" href="content.php?id=<?php echo $newslist[$i]->id; ?>"><?php echo $newslist[$i]->title ?></a><br />
+	<?php } ?>
+<br />
+</div>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+    <div id="left_body">
+      <div id="left_gray">
+      	<?php $video = show_content('smg_video','video','电视新闻中心','最新视频','3');?>
+        <div class="left_title">最新视频</div>
+        <div class="left_cnt">
+          <p><? show_video_player(220,150,$video[0]->photo_url,$video[0]->video_url);?></p>
+          <p>&middot;<?php echo $video[1]->title; ?><br />
+            &middot;<?php echo $video[2]->title; ?>
+          </p>
+          <p align=right><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('最新视频','电视新闻中心','video');?>">更多...</a></p>
+        </div>
+        <div class="left_title">三项活动教育简介</div>
+        <?php $news = show_content('smg_news','news','电视新闻中心','三项活动教育简介','1');?>
+        <div class="left_cnt">
+          <p><br />
+            <a target="blank" href="content.php?id=<?php echo $news[0]->id; ?>"><?php echo $news[0]->description; ?></p>
+          <p><br />
+          </p>
+        </div>
+        <div class="left_title">辅导材料</div>
+        <?php $news = show_content('smg_news','news','电视新闻中心','辅导材料','10');?>
+        <div class="left_cnt"><br />
+        	<?php for($i=0;$i<count($news);$i++){ ?>
+          &middot;<a target="_blank" href="content.php?id=<?php echo $news[0]->id; ?>"><?php echo $news[$i]->short_title; ?></a><br />
+          <?php } ?>
+        <br />
+        </div>
+        <div class="left_cnt">
+          <p><a target="_blank" href=""><img border=0 src="images/rk.gif" width="205" height="62" /></a></p>
+          <p>&nbsp;</p>
+        </div>
+<div class="left_title">相关链接</div>
+        <div class="left_cnt">
+          <p><br />
+            &middot;<a target="_blank" href="/subject/sxxx/">集团三项教育网</a><br />
+            &middot;中国记协网三项教育<br />
+            &middot;人民网三项教育专题</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="bottom">
+  <p><br />
+    上海文广新闻传媒集团 电视新闻中心 三项教育学习项目组</p>
+  <p>&nbsp;</p>
+</div>
+</body>
+</html>
