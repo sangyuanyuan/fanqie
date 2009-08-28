@@ -51,7 +51,7 @@
 			return $dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).$typeadd."_avatar_$size.jpg";
 		}
 		$sql = 'select t1.uid,t1.username,sum(t1.viewnum) as num from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 group by t1.uid order by num desc';
-		$record = $db->query($sql);
+		$record = $db->paginate($sql);
 		$count = count($record);
 		for($i=0;$i<$count;$i++){
 			$avatar = '/ucenter/data/avatar/'.get_avatar($record[$i]->uid, 'middle', '_real');
@@ -75,7 +75,9 @@
 	<?php
 		}
 	?>
-</DIV></DIV>
+</DIV>
+<div style="width:677px; text-align:center; float:left; display:inline;"><?php paginate('');?></div>
+</DIV>
 <DIV class=side>
 <DIV class="block blockG">
 <H1>三项学习教育</H1>
@@ -105,7 +107,7 @@
 		for($i=0;$i<$count;$i++){
 	?>
 	<LI>
-		<span style="width:150px; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[0]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
+		<span style="width:150px; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[$i]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
 		<span style="margin-left:20px; color:#656d77; float:left; display:inline">点击量：<?php echo $record[$i]->viewnum;?></span>
 	</LI>
 	<?php
