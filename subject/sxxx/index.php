@@ -179,7 +179,7 @@
 									<? }}?>
 								
 							</div>
-							<div style="width:330px; height:120px; float:right; display:inline">
+							<div style="width:330px; height:120px; margin-right:10px; float:right; display:inline">
 							<? 
 							 for($i=0;$i<count($mtpl);$i++){?>
 								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $mtpl[$i]->id;?>"><? echo $mtpl[$i]->short_title;?></a></div>
@@ -198,7 +198,7 @@
 									<? }}?>
 								
 							</div>
-							<div style="width:330px; float:right; display:inline">
+							<div style="width:330px; margin-right:10px; float:right; display:inline">
 							<? 
 							 for($i=0;$i<count($gzzd);$i++){?>
 								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $gzzd[$i]->id;?>"><? echo $gzzd[$i]->short_title;?></a></div>
@@ -216,7 +216,7 @@
 							</div>
 							<div class=title style="margin-left:10px;">我的承诺</div>
 							<div class=title style="margin-left:10px;">我的博客</div>
-							<div style="width:350px; float:left; display:inline;">
+							<div style="width:350px; overflow:hidden; float:left; display:inline;">
 								<? 
 								$comments = $db->paginate('select * from smg_comment where resource_type="sxxx" order by created_at desc',5);
 								for($i=0;$i<count($comments);$i++){?>
@@ -244,12 +244,13 @@
 									<input type="hidden" value="<? echo count($deptname);?>">
 								</form>
 							</div>
-							<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="我的博客" order by i.priority asc, n.created_at desc'); ?>
-							
+							<? $sql = 'select t1.uid,t1.subject,t1.itemid,t1.viewnum from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 order by t1.viewnum desc limit 10';
+						$news = $db->query($sql); ?>
+							<div style="width:330px; margin-right:10px; float:right; display:inline;">
 								<? for($i=0;$i<count($news);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
-								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
+								<div style="width:320px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="/blog/index.php?uid-<?php echo $news[$i]->uid;?>-action-viewspace-itemid-<?php echo $news[$i]->itemid;?>"><?php echo $news[$i]->subject;?></a></div>
 								<? }?>
+							</div>
 						</div>
 						
 					</div>
