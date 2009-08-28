@@ -14,7 +14,7 @@
   <div id="headtitle"><img src="images/title.jpg" width="1000" height="145" /></div>
 </div>
 <div id="menu">
-  <div id="menubg"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="">专题论坛</a></div>
+  <div id="menubg"><a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="">专题论坛</a></div>
 </div>
 <div id="content">
   <div id="bodybg">
@@ -60,12 +60,12 @@
       </div>
       <div id="right_pic">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        	<?php $news = show_content('smg_news','news','电视新闻中心','项目总结','10');?>
+        	<?php $news = show_content('smg_news','news','电视新闻中心','获奖名单','5');?>
           <tr>
             <td width="33"><img src="images/hjmd2.gif" width="33" /></td>
             <td width="670" align="center" bgcolor=#FFFFCC>
             	<?php for($i=0;$i<count($news);$i++){ ?>
-            		&middot;咬文嚼字（第二期）
+            		&middot;<a href="content.php?id=<?php echo $news[$i]->id;?>"><?php echo $news[$i]->short_title; ?></a>　
             	<?php } ?>
             </td>
           </tr>
@@ -79,7 +79,7 @@
         	<?php $news = show_content('smg_news','news','电视新闻中心','好新闻讲评','10');?>
           <tr>
             <td width="50%" colspan="2"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','好新闻讲评','news');?>"><img src="images/hxwjp.gif" border=0 width="155" height="32" /></a></td>
-            <td><img src="images/xmzj.gif" width="155" height="32" /></td>
+            <td><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','项目总结','news');?><img src="images/xmzj.gif" width="155" height="32" /></a></td>
           </tr>
           
           <tr>
@@ -95,12 +95,12 @@
               <?php } ?>
             	<a target="_blank" href="content.php?id=<?php echo $news[9]->id; ?>"><?php echo $news[9]->short_title; ?></a>
             </td>
-            
+            <?php $news = show_content('smg_news','news','电视新闻中心','项目总结','7');?>
             <td align="left" valign="top">
-            	<?php for($i=0;$i<count($news);$i++){ ?>
-            	&middot;<a target="_blank" href="content.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title; ?></a><br />
+            	<?php for($i=0;$i<6;$i++){ ?>
+            		&middot;<a target="_blank" href="content.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title; ?></a><br />
             	<?php } ?>
-&middot;《小娘惹》收视爆棚</td>
+							&middot;<a target="_blank" href="content.php?id=<?php echo $news[6]->id; ?>"><?php echo $news[6]->short_title; ?></a></td>
           </tr>
         </table>
       </div>
@@ -141,7 +141,12 @@
         </table>
       </div>
       <div class="right_title">新人训练营</div>
-      <div class="right_cnt"><img src="images/pic.jpg" width="108" height="100" hspace="10" vspace="10" /><img src="images/pic.jpg" width="108" height="100" hspace="10" vspace="10" /><img src="images/pic.jpg" width="108" height="100" hspace="10" vspace="10" /><img src="images/pic.jpg" width="108" height="100" hspace="10" vspace="10" /><img src="images/pic.jpg" width="108" height="100" hspace="10" vspace="10" /></div>
+      <?php $news = show_content('smg_news','news','电视新闻中心','新人训练营','10');?>
+      <div class="right_cnt">
+      	<?php for($i=0;$i<count($news);$i++){ ?>
+      		<a target="_blank" href="content.php?id=<?php echo $news[$i]->id;?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>" width="108" height="100" hspace="10" vspace="10" /></a>
+      	<?php } ?>
+      	</div>
     </div>
     <div id="left_body">
       <div id="left_gray">
@@ -178,8 +183,8 @@
         <div class="left_cnt">
           <p><br />
             &middot;<a target="_blank" href="/subject/sxxx/">集团三项教育网</a><br />
-            &middot;中国记协网三项教育<br />
-            &middot;人民网三项教育专题</p>
+            &middot;<a target="_blank" href="http://www.xinhuanet.com/zgjx/sxxxjyhd/">中国记协网三项教育</a><br />
+            &middot;<a target="_blank" href="http://www.people.com.cn/GB/14677/22114/32867/">人民网三项教育专题</a></p>
           <p>&nbsp;</p>
         </div>
       </div>

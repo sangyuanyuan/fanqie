@@ -96,6 +96,9 @@ body,td,th {
 	line-height: 140%;
 	text-align: left;
 }
+.left_cnt  a{
+	color:#000000;
+}
 #left_gray {
 	background-color: #e5e5e5;
 	padding: 5px;
@@ -146,6 +149,17 @@ body,td,th {
 	color: #FF9;
 }
 #maintext {
+	font-size: 14px;
+	line-height: 150%;
+	color: #666;
+	width: 680px;
+	padding-top: 15px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	text-align: left;
+}
+.maintext1 {
 	font-size: 14px;
 	line-height: 150%;
 	color: #666;

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php
+	 require_once('../frame.php');
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,16 +14,16 @@
   <div id="headtitle"><img src="images/title.jpg" width="1000" height="145" /></div>
 </div>
 <div id="menu">
-  <div id="menubg"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="">专题论坛</a></div>
+  <div id="menubg"><a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="">专题论坛</a></div>
 </div>
 <div id="content">
   <div id="bodybg">
   	<?php $sql="select n.id,n.title,d.name from smg_news left join smg_category_dept d on n.dept_category_id=d.id where d.id=".$_REQUEST['id'];
   		$db=get_db(); 
-  		$newslist=$db->query($sql);	
+  		$newslist=$db->paginate($sql,10);	
   	?>
     <div id="right_body">
-      <div class="right_title">学片学人</div>
+      <div class="right_title"><?php echo $newslist[0]->name; ?></div>
       <div class="right_cnt">
 <div id="maintext">
 	<?php for($i=0;$i<count($newslist);$i++){ ?>
@@ -28,7 +31,7 @@
 	<?php } ?>
 <br />
 </div>
-        <p>&nbsp;</p>
+        <div style="text-align:center; float:left; display:inline;"><?php paginate(''); ?></div>
       </div>
     </div>
     <div id="left_body">
@@ -66,8 +69,8 @@
         <div class="left_cnt">
           <p><br />
             &middot;<a target="_blank" href="/subject/sxxx/">集团三项教育网</a><br />
-            &middot;中国记协网三项教育<br />
-            &middot;人民网三项教育专题</p>
+            &middot;<a target="_blank" href="http://www.xinhuanet.com/zgjx/sxxxjyhd/">中国记协网三项教育</a><br />
+            &middot;<a target="_blank" href="http://www.people.com.cn/GB/14677/22114/32867/">人民网三项教育专题</a></p>
           <p>&nbsp;</p>
         </div>
       </div>
