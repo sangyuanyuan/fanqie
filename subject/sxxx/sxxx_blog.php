@@ -10,8 +10,7 @@
 ?>
 <META content="text/html; charset=utf-8" http-equiv=Content-Type>
 <META name=keywords content="三项教育,日志 ">
-<META name=description content="三项教育,日志 "><LINK rel=stylesheet type=text/css href="style.css">
-<META name=GENERATOR content="MSHTML 8.00.6001.18812"></HEAD>
+<META name=description content="三项教育,日志 "><LINK rel=stylesheet type=text/css href="style.css"></HEAD>
 <script>
 	total("专题-三项学习教育","news");
 </script>
@@ -81,7 +80,7 @@
 <DIV class="block blockG">
 <H1>三项学习教育</H1>
 <div style="width:290px; float:left; display:inline; background:#F1F6F5">
-<div class=right_title>博客点击量</div>
+<div class=right_title style="width:290px; float:left; display:inline;">博客点击量</div>
 <div class=right_box>
 <UL class=msgtitlelist>
 	<?php
