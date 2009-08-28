@@ -95,7 +95,7 @@
 	?>
 </UL>
 </div>
-<div class=right_title>博文点击量</div>
+<div class=right_title style="width:290px; float:left; display:inline;">博文点击量</div>
 <div class=right_box>
 <UL class=msgtitlelist>
 	<?php
