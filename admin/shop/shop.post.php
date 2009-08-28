@@ -16,7 +16,7 @@
 				alert('上传图片失败 !');
 				redirect('shopinsert.php');
 			}
-			$video->photourl = "/upload/images/" .$img;
+			$shop->photourl = "/upload/images/" .$img;
 		}
 	}
 	if($_POST['shop']["priority"]==null){$shop->update_attribute("priority","100");}

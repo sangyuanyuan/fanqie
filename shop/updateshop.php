@@ -13,11 +13,10 @@ if($cookie=='')
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
-	<link href="/css/smg.css" rel="stylesheet" type="text/css">
-	
+	<?php css_include_tag('smg','top','bottom');?>
 	<script src="/js/pubfun.js"></script>
 	<script language="javascript" src="/js/smg.js"></script>
 	<script language="javascript" src="shop.js"></script>
@@ -46,7 +45,7 @@ if($cookie=='')
 		<tr align="center" bgcolor="#f9f9f9" height="290px;" id=newsshow2>
 			<td>店铺简介</td><td align="left">
 			
-			<input type="hidden" id="content" name="content" value="" style="display:none" /><input type="hidden" id="content___Config" value="" style="display:none" /><iframe id="content___Frame" src="/admin/FCKeditor/editor/fckeditor.html?InstanceName=content&amp;Toolbar=Default" width="98%" height="280" frameborder="0" scrolling="no"></iframe>
+			<input type="hidden" id="content" name="content" value="" style="display:none" /><input type="hidden" id="content___Config" value="" style="display:none" /><iframe id="content___Frame" src="/fckeditor/editor/fckeditor.html?InstanceName=content&amp;Toolbar=Default" width="98%" height="280" frameborder="0" scrolling="no"></iframe>
 			</td>
 		</tr>
 		<tr>

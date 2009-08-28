@@ -11,9 +11,7 @@ if($_POST['type']=='insert')
 		if(strtolower($extension[(count($extension)-1)])!="jpg"&&strtolower($extension[(count($extension)-1)])!="gif"&&strtolower($extension[(count($extension)-1)])!="png"){$error="1"; }
 		if($_FILES['upfile']['error']!=UPLOAD_ERR_OK){$error="1"; }
 		if($_FILES['upfile']['size']>=1048576){$error="1"; }
-		if($error<>"0")
-		{	
-			alert("图片太大！");
+				if($error<>"0"){
 			alert("上传失败1！");
 			exit;
 		}
@@ -39,10 +37,8 @@ if($_POST['type']=='insert')
 			exit;
 		}
 	}
-	ConnectDB();
 		$StrSql='insert into smg_shopdp (name,username,shopurl,createtime) values ("'.$_POST['dpname'].'","'.$_POST['creater'].'","'.$upfilepathnameall.'",now())';
 		$db = $db->execute($StrSql);
-	CloseDB();
 	
 	alert("提交成功！");
 	echo '<script language=javascript>window.location.href="/shop/shoplist.php";</script>';
@@ -87,7 +83,6 @@ if($_POST['type']=='update')
 			exit;
 		}
 	}
-	ConnectDB();
 	  if(!empty($upfilepathnameall))
 	  {
 			$StrSql="update  smg_shopdp set name='".$_POST['dpname']."',shopurl='".$upfilepathnameall."', remark='" .$_POST['content'] ."' where id=" .$_POST['shopid'] ;
@@ -95,8 +90,7 @@ if($_POST['type']=='update')
 		{
 			$StrSql="update  smg_shopdp set name='".$_POST['dpname']."', remark='" .$_POST['content'] ."' where id=" .$_POST['shopid'] ;
 		}
-		$Record = mysql_query($StrSql) or die ("update error". mysql_error());
-	CloseDB();
+		$Record = $db->execute($StrSql);
 	
 	alert("更新成功！");
 	echo '<script language=javascript>window.location.href="/shop/splist.php?id='.$_POST['shopid'] .'";</script>';
