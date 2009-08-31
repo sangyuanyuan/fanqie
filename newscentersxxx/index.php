@@ -78,8 +78,8 @@
         <table width="660" border="0" cellspacing="3" cellpadding="1">
         	<?php $news = show_content('smg_news','news','电视新闻中心','好新闻讲评','10');?>
           <tr>
-            <td width="50%" colspan="2"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','好新闻讲评','news');?>"><img src="images/hxwjp.gif" border=0 width="155" height="32" /></a></td>
-            <td><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('学片学人','项目总结','news');?>"><img border=0 src="images/xmzj.gif" width="155" height="32" /></a></td>
+            <td width="50%" colspan="2"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('好新闻讲评','电视新闻中心','news');?>"><img src="images/hxwjp.gif" border=0 width="155" height="32" /></a></td>
+            <td><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('项目总结','电视新闻中心','news');?>"><img border=0 src="images/xmzj.gif" width="155" height="32" /></a></td>
           </tr>
           
           <tr>
@@ -104,7 +104,7 @@
           </tr>
         </table>
       </div>
-      <div class="right_title">业务探讨</div>
+      <div class="right_title"><div style="float:left; display:inline;">业务探讨</div><div style="margin-right:30px; float:right; display:inline;"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">更多>></a></div></div>
       <?php $news = show_content('smg_news','news','电视新闻中心','业务探讨','14');?>
       <div class="right_cnt">
         <table width="660" border="0" cellspacing="3" cellpadding="1">
@@ -122,7 +122,7 @@
           </tr>
         </table>
       </div>
-      <div class="right_title">主持心得</div>
+      <div class="right_title"><div style="float:left; display:inline;">主持心得</div><div style="margin-right:30px; float:right; display:inline;"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">更多>></a></div></div>
       <?php $news = show_content('smg_news','news','电视新闻中心','主持心得','14');?>
       <div class="right_cnt">
         <table width="660" border="0" cellspacing="3" cellpadding="1">
@@ -140,7 +140,7 @@
           </tr>
         </table>
       </div>
-      <div class="right_title">新人训练营</div>
+      <div class="right_title"><div style="float:left; display:inline;">新人训练营</div><div style="margin-right:30px; float:right; display:inline;"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">更多>></a></div></div>
       <?php $news = show_content('smg_news','news','电视新闻中心','新人训练营','10');?>
       <div class="right_cnt">
       	<?php for($i=0;$i<count($news);$i++){ ?>
