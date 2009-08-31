@@ -115,7 +115,7 @@
               <?php } ?>
             &middot;<a target="_blank" href="content.php?id=<?php echo $news[6]->id; ?>"><?php echo $news[6]->short_title; ?></td>
             <td align="left" valign="top">
-            	<?php for($i=7;$i< 14;$i++){ ?>
+            	<?php for($i=7;$i< 13;$i++){ ?>
             		&middot;<a target="_blank" href="content.php?id=<?php echo $news[$i]->id;?>"><?php echo $news[$i]->short_title; ?></a><br />
 							<?php } ?>
 							&middot;<a target="_blank" href="content.php?id=<?php echo $news[13]->id; ?>"><?php echo $news[13]->short_title; ?></a></td>
