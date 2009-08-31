@@ -106,6 +106,7 @@
 	$(document).ready(function(){
 		alert($("#url").attr("value"));
 		$.post("/pChart/Example8.php",{'url':$("#url").attr("value")},function(data){
+			alert(data);
 		});
 		$("#pdcx").click(function(){
 			if($("#pd").val()==0)
@@ -121,6 +122,7 @@
 			else
 			{
 					$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
+						alert(data);
 						if(data=='OK')
 						{
 							location.reload();
