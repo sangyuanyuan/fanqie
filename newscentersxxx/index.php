@@ -171,7 +171,7 @@
         <?php $news = show_content('smg_news','news','电视新闻中心','辅导材料','10');?>
         <div class="left_cnt"><br />
         	<?php for($i=0;$i<count($news);$i++){ ?>
-          &middot;<a target="_blank" href="content.php?id=<?php echo $news[0]->id; ?>"><?php echo $news[$i]->short_title; ?></a><br />
+          <a target="_blank" href="content.php?id=<?php echo $news[0]->id; ?>">&middot;<?php echo $news[$i]->short_title; ?></a><br />
           <?php } ?>
         <br />
         </div>

@@ -31,7 +31,7 @@
 	<?php } ?>
 <br />
 </div>
-        <div style="text-align:center; float:left; display:inline;"><?php paginate(''); ?></div>
+        <div style="width:693px; text-align:center; float:left; display:inline;"><?php paginate(''); ?></div>
       </div>
     </div>
     <div id="left_body">
