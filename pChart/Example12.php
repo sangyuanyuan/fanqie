@@ -38,4 +38,5 @@
  $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
  $Test->drawTitle(50,22,"柱形图",50,50,50,585);
  $Test->Render("example12.jpg");
+ echo 'OK';
 ?>
