@@ -5,9 +5,9 @@
   $ratings->item_id = $_POST['item_id'];
   if($_FILES['file_name']['name']!=null){
   	$upload = new upload_file_class();
-	$upload->save_dir = '/upload/file/';
+	$upload->save_dir = '/pChart/Sample/';
 	$upload_name = $upload->handle('file_name');
-	$ratings->file_path = '/upload/file/' .$upload_name;
+	$ratings->file_path = 'Sample/' .$upload_name;
 	$ratings->save();
   }
   redirect('index.php');
