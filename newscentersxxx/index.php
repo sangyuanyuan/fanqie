@@ -89,11 +89,11 @@
               <?php } ?>
             	<a target="_blank" href="content.php?id=<?php echo $news[4]->id; ?>"><?php echo $news[4]->short_title; ?></a>
             </td>
-            <td width="10%" align="right" valign="top">
+            <td width="10%" align="center" valign="top">
             	<?php 
-            	$db=get_db();  	
-            	for($i=0;$i<5;$i++){
-            	$news1=$db->query('select * from smg_news where short_title="'.$news[$i]->short_title.'讲评"');
+            		$db=get_db();  	
+	            	for($i=0;$i<5;$i++){
+	            	$news1=$db->query('select id from smg_news where short_title="'.$news[$i]->short_title.'讲评"');
             	?>
             		<a target="_blank" href="content.php?id=<?php echo $news1[0]->id; ?>">讲评</a><br />
               <?php } ?>
