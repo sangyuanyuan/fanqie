@@ -14,15 +14,14 @@
 </script>
 </head>
 <body>
-	<?php require_once('../inc/top.inc.html'); ?>
+	<?php require_once('../inc/top.inc.html'); 
+	$sql="select r.* from smg_ratings r left join smg_report_item i on i.id=r.item_id where i.name='收视率和收视份额分析' order by r.id desc";
+	$rader=$db->query($sql);
+	?>
 	<div id=ibody>
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
-			<input id="url" type="hidden" value="Sample/rader.csv">
-			<script>
-				$.post("/pChart/Example8.php",{'url':$("#url").attr("value")},function(data){
-				});
-			</script>
+			<input id="url" type="hidden" value="<?php echo $rader[0]->file_path; ?>">
 			<div class=l_content><img id="rader" src="/pChart/example8.jpg"></div>
 		</div>
 		<div id=ibody_right>
@@ -62,38 +61,85 @@
 				<?php } ?>
 			</div>
 		</div>
+		<?php $sql="select * from smg_report_item where is_dept=0";
+			$name=$db->query($sql);
+		 ?>
 		<div class=b_title></div>
 			<div class=b_content>
 				<select id="pd">
 					<option value="0">请选择</option>
+					<?php for($i=0;$i<count($name);$i++){ ?>
+						<option value="<?php echo $name[$i]->id; ?>"><?php echo $name[$i]->name; ?></option>
+						<?php } ?>
 				</select>
+				<?php $rq=date('Y-m-d'); 
+					$date=aweek($rq,1);
+				?>
 				<select id="xq">
 					<option value="0">请选择</option>
-					<option value="1">星期一</option>
-					<option value="2">星期二</option>
-					<option value="3">星期三</option>
-					<option value="4">星期四</option>
-					<option value="5">星期五</option>
-					<option value="6">星期六</option>
-					<option value="7">星期日</option>
+					<option value="<?php echo $date[0]; ?>">星期一</option>
+					<option value="<?php echo $date[1]; ?>">星期二</option>
+					<option value="<?php echo $date[2]; ?>">星期三</option>
+					<option value="<?php echo $date[3]; ?>">星期四</option>
+					<option value="<?php echo $date[4]; ?>">星期五</option>
+					<option value="<?php echo $date[5]; ?>">星期六</option>
+					<option value="<?php echo $date[6]; ?>">星期日</option>
 				</select>
 				<input type="button" id="pdcx" value="查询">
-				<input id="url1" type="hidden" value="Sample/foldline.csv">
-				<script>
-					$.post("/pChart/Example9.php",{'url':$("#url1").attr("value")},function(data){
-					});
-				</script>
 				<img id="foldline" width="970" src="/pChart/example9.jpg">
 			</div>
+			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
+				$prom=$db->query($sql);
+			?>
 			<div class=b_title>预测节目收视率跟踪</div>
-			<input id="url2" type="hidden" value="Sample/foldincom.csv">
-			<script>
-					$.post("/pChart/Example12.php",{'url':$("#url2").attr("value")},function(data){
-					});
-			</script>
 			<div class=b_content><img width="970" id="foldincom" src="/pChart/example12.jpg"></div>
-			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;"><div class=b_pro1>节目1</div><div class=b_pro2>节目2</div><div class=b_pro2>节目3</div><div class=b_pro2>节目4</div><div class=b_pro2>节目5</div></div>
+			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
+				<?php for($i=1;$i<count($prom);$i++){ ?>
+					<div param="<?php echo $prom[0]->id; ?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
+				<?php } ?>
+				</div>
 	</div>
 <?php require_once('../inc/bottom.inc.php');?>
 </body>
 </html>
+<script>
+	$(document).ready(function(){
+		alert($("#url").attr("value"));
+		$.post("/pChart/Example8.php",{'url':$("#url").attr("value")},function(data){
+			alert(data);
+		});
+		$("#pdcx").click(function(){
+			if($("#pd").val()==0)
+			{
+				alert('请选择一个频道');
+				return false;	
+			}
+			else if($("#xq").val()==0)
+			{
+				alert('请选择一个日期');
+				return false;
+			}
+			else
+			{
+					$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
+						alert(data);
+						if(data=='OK')
+						{
+							location.reload();
+						}
+					});
+			}
+		});
+		$(".b_pro1").mouseover(function(){		
+			$(".b_pro1").css("background","#FFCC00");
+			$(".b_pro1").css("color","#ffffff");
+			$(".b_pro1").css("width","199px");
+			$(this).css("width","197px");
+			$(this).css("background","#FF9900");
+			$(this).css("color","#000000");
+			$.post("/pChart/Example9.php",{'id':$(this).attr('param')},function(data){
+					$("#foldincom").attr("src",data);
+			});
+		})
+	})
+</script>

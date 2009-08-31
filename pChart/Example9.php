@@ -6,10 +6,13 @@
  // Standard inclusions   
  include("pChart/pData.php");
  include("pChart/pChart.php");
-
+ include("../frame.php");
+ $db=get_db();
+ $sql="select * from smg_ratings where item_id=".$_POST['id']." and date='".$_POST['date']." 00:00:00' order by id desc";
+ $file=$db->query($sql);
  // Dataset definition 
  $DataSet = new pData;
- $DataSet->ImportFromCSV($_POST['url'],",",array(1,2,3),FALSE,0); 
+ $DataSet->ImportFromCSV($file[0]->file_path,",",array(1,2,3),FALSE,0); 
  $DataSet->AddAllSeries();
  $DataSet->SetAbsciseLabelSerie(); 
  $DataSet->SetSerieName("四岁以上所有人","Serie1");
@@ -44,4 +47,5 @@
  $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
  $Test->drawTitle(50,22,"折线图",50,50,50,585);
  $Test->Render("example9.jpg");
+ echo 'OK';
 ?>
