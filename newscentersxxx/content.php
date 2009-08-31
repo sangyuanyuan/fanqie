@@ -18,7 +18,7 @@
 </div>
 <div id="content">
   <div id="bodybg">
-  	<?php $sql="select n.*,d.name from smg_news left join smg_category_dept d on n.dept_category_id=d.id where n.id=".$_REQUEST['id'];
+  	<?php $sql="select n.*,d.name from smg_news n left join smg_category_dept d on n.dept_category_id=d.id where n.id=".$_REQUEST['id'];
   		$db=get_db();
   		$news=$db->query($sql);
   		if($news[0]->news_type==2)
