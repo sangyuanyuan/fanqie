@@ -24,37 +24,6 @@
 				});
 			</script>
 			<div class=l_content><img id="rader" src="/pChart/example8.jpg"></div>
-			<div class=l_title></div>
-			<div class=l_content>
-				<select id="pd">
-					<option value="0">请选择</option>
-				</select>
-				<select id="xq">
-					<option value="0">请选择</option>
-					<option value="1">星期一</option>
-					<option value="2">星期二</option>
-					<option value="3">星期三</option>
-					<option value="4">星期四</option>
-					<option value="5">星期五</option>
-					<option value="6">星期六</option>
-					<option value="7">星期日</option>
-				</select>
-				<input type="button" id="pdcx" value="查询">
-				<input id="url1" type="hidden" value="Sample/foldline.csv">
-				<script>
-					$.post("/pChart/Example9.php",{'url':$("#url1").attr("value")},function(data){
-					});
-				</script>
-				<img id="foldline" width="375" height="375" src="/pChart/example9.jpg">
-			</div>
-			<div class=l_title>预测节目收视率跟踪</div>
-			<input id="url2" type="hidden" value="Sample/foldincom.csv">
-			<script>
-					$.post("/pChart/Example12.php",{'url':$("#url2").attr("value")},function(data){
-					});
-			</script>
-			<div class=l_content><img width="375" height="375" id="foldincom" src="/pChart/example12.jpg"></div>
-			<div style="width:395px; border:1px solid #DC7638; border-top:none; float:left; display:inline;"><div class=l_pro1>节目1</div><div class=l_pro2>节目2</div><div class=l_pro2>节目3</div></div>
 		</div>
 		<div id=ibody_right>
 			<div class=r_title>收视率预测系统使用说明</div>
@@ -93,6 +62,37 @@
 				<?php } ?>
 			</div>
 		</div>
+		<div class=b_title></div>
+			<div class=b_content>
+				<select id="pd">
+					<option value="0">请选择</option>
+				</select>
+				<select id="xq">
+					<option value="0">请选择</option>
+					<option value="1">星期一</option>
+					<option value="2">星期二</option>
+					<option value="3">星期三</option>
+					<option value="4">星期四</option>
+					<option value="5">星期五</option>
+					<option value="6">星期六</option>
+					<option value="7">星期日</option>
+				</select>
+				<input type="button" id="pdcx" value="查询">
+				<input id="url1" type="hidden" value="Sample/foldline.csv">
+				<script>
+					$.post("/pChart/Example9.php",{'url':$("#url1").attr("value")},function(data){
+					});
+				</script>
+				<img id="foldline" width="900" src="/pChart/example9.jpg">
+			</div>
+			<div class=b_title>预测节目收视率跟踪</div>
+			<input id="url2" type="hidden" value="Sample/foldincom.csv">
+			<script>
+					$.post("/pChart/Example12.php",{'url':$("#url2").attr("value")},function(data){
+					});
+			</script>
+			<div class=b_content><img width="900" id="foldincom" src="/pChart/example12.jpg"></div>
+			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;"><div class=b_pro1>节目1</div><div class=b_pro2>节目2</div><div class=b_pro2>节目3</div><div class=b_pro2>节目4</div><div class=b_pro2>节目5</div></div>
 	</div>
 <?php require_once('../inc/bottom.inc.php');?>
 </body>
