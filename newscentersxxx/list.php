@@ -20,7 +20,7 @@
   <div id="bodybg">
   	<?php $sql="select n.id,n.title,d.name from smg_news n left join smg_category_dept d on n.dept_category_id=d.id where d.id=".$_REQUEST['id'];
   		$db=get_db(); 
-  		$newslist=$db->paginate($sql,10);	
+  		$newslist=$db->paginate($sql,30);	
   	?>
     <div id="right_body">
       <div class="right_title"><?php echo $newslist[0]->name; ?></div>
