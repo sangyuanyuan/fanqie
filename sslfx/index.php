@@ -104,6 +104,7 @@
 </html>
 <script>
 	$(document).ready(function(){
+		alert($("#url").attr("value"));
 		$.post("/pChart/Example8.php",{'url':$("#url").attr("value")},function(data){
 		});
 		$("#pdcx").click(function(){
