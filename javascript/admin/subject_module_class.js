@@ -92,6 +92,7 @@ function subject_module_class(){
 				$('#eheight_p').hide();
 				$('#ewidth_p').hide();
 				$('#scroll_type_p').show();
+				$('#show_pic_p').show();
 				break;
 			case 'news':
 				$('#limit_p').hide();
@@ -100,6 +101,7 @@ function subject_module_class(){
 				$('#ewidth_p label').html('新闻宽度:');
 				$('#ewidth_p').show();
 				$('#scroll_type_p').hide();
+				$('#show_pic_p').hide();
 				break;				
 			case 'photolist':
 				$('#limit_p').show();
@@ -108,6 +110,7 @@ function subject_module_class(){
 				$('#ewidth_p label').html('图片宽度:');
 				$('#ewidth_p').show();
 				$('#scroll_type_p').show();
+				$('#show_pic_p').hide();
 				break;
 			case 'photo':
 				$('#limit_p').hide();
@@ -116,12 +119,14 @@ function subject_module_class(){
 				$('#ewidth_p label').html('图片宽度:');
 				$('#ewidth_p').show();
 				$('#scroll_type_p').hide();
+				$('#show_pic_p').hide();
 				break;	
 			case 'videolist':
 				$('#limit_p').show();
 				$('#eheight_p').hide();
 				$('#ewidth_p').hide();
 				$('#scroll_type_p').show();
+				$('#show_pic_p').hide();
 				break;
 			case 'video':
 				$('#limit_p').hide();
@@ -130,6 +135,7 @@ function subject_module_class(){
 				$('#ewidth_p label').html('视频宽度:');
 				$('#ewidth_p').show();
 				$('#scroll_type_p').hide();
+				$('#show_pic_p').hide();
 				break;								
 		}
 	}

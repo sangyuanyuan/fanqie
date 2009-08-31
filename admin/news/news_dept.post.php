@@ -98,9 +98,6 @@
 		if($_POST['news']['forbbide_copy']==''){
 			$news->forbbide_copy=0;
 		}
-		if($_POST['news']['is_adopt']==''){
-			$news->is_adopt=0;
-		}
 		$news->last_edited_at = date("Y-m-d H:i:s");
 		if($news->category_id == '') $news->category_id = 0;
 		if($news->dept_category_id == '') $news->dept_category_id = 0;
