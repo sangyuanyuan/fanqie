@@ -94,10 +94,11 @@
 	<div class=more><a target="_blank" href="news_list.php?id=<?php echo $category_id;?>">更多>></a></div>
 	<?php }?>
 </div>
-<?php		
+<?php
 	}else{
 ?>
 <div class=title><?php echo $name;?><div class=new_more><a target="_blank" href="news_list.php?id=<?php echo $category_id;?>">更多</a></div></div>
+
 <?php
 	}
 ?>

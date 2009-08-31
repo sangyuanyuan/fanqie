@@ -28,6 +28,10 @@
 			<td width=645 align="left"><input type="checkbox" name="check"></td>
 		</tr>
 		<tr class=tr3>
+			<td width=150>是否显示到首页：</td>
+			<td width=645 align="left"><input type="checkbox" name="check1"></td>
+		</tr>
+		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
 	</form>

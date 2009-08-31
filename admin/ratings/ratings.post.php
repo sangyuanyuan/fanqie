@@ -11,6 +11,11 @@
 	  }else{
 	  	$item->is_dept = 0;
 	  }
+	  if($_POST['check1']!=''){
+	  	$item->is_show = 1;
+	  }else{
+	  	$item->is_show = 0;
+	  }
 	  $item->save();
   }
   redirect('index.php');
