@@ -22,8 +22,8 @@
   		$sql="select * from smg_category_dept where parent_id=".$_REQUEST['id'];
   		$db=get_db(); 
   		$catelist=$db->query($sql);
-  		$news1=$db->paginate('select title,id from smg_news where dept_category_id='.$catelist[0]->id,10,"news1");
-  		$news2=$db->paginate('select title,id from smg_news where dept_category_id='.$catelist[0]->id,10,"news2");
+  		$news1=$db->paginate('select title,id from smg_news where dept_category_id='.$catelist[0]->id,15,"news1");
+  		$news2=$db->paginate('select title,id from smg_news where dept_category_id='.$catelist[0]->id,15,"news2");
   	?>
     <div id="right_body">
       <div class="right_title"><?php echo $newslist[0]->name; ?></div>

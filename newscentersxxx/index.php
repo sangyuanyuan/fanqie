@@ -76,31 +76,34 @@
 
       <div class="right_cnt">
         <table width="660" border="0" cellspacing="3" cellpadding="1">
-        	<?php $news = show_content('smg_news','news','电视新闻中心','好新闻讲评','10');?>
+        	<?php $news = show_content('smg_news','news','电视新闻中心','好新闻讲评','5');?>
           <tr>
             <td width="50%" colspan="2"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('好新闻讲评','电视新闻中心','news');?>"><img src="images/hxwjp.gif" border=0 width="155" height="32" /></a></td>
             <td><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('项目总结','电视新闻中心','news');?>"><img border=0 src="images/xmzj.gif" width="155" height="32" /></a></td>
           </tr>
           
           <tr>
-            <td width="25%" align="left" valign="top">
+            <td width="40%" align="left" valign="top">
             	<?php for($i=0;$i<4;$i++){ ?>
             		<a target="_blank" href="content.php?id=<?php echo $news[$i]->id;?>"><?php echo $news[$i]->short_title; ?></a><br />
               <?php } ?>
             	<a target="_blank" href="content.php?id=<?php echo $news[4]->id; ?>"><?php echo $news[4]->short_title; ?></a>
             </td>
-            <td width="25%" align="left" valign="top">
-            	<?php for($i=4;$i<9;$i++){ ?>
-            		<a target="_blank" href="content.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title; ?></a><br />
+            <td width="10%" align="center" valign="top">
+            	<?php 
+            		$db=get_db();  	
+	            	for($i=0;$i<5;$i++){
+	            	$news1=$db->query('select id from smg_news where short_title="'.$news[$i]->short_title.'讲评"');
+            	?>
+            		<a target="_blank" href="content.php?id=<?php echo $news1[0]->id; ?>">讲评</a><br />
               <?php } ?>
-            	<a target="_blank" href="content.php?id=<?php echo $news[9]->id; ?>"><?php echo $news[9]->short_title; ?></a>
             </td>
             <?php $news = show_content('smg_news','news','电视新闻中心','项目总结','7');?>
             <td align="left" valign="top">
-            	<?php for($i=0;$i<6;$i++){ ?>
+            	<?php for($i=0;$i<4;$i++){ ?>
             		&middot;<a target="_blank" href="content.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title; ?></a><br />
             	<?php } ?>
-							&middot;<a target="_blank" href="content.php?id=<?php echo $news[6]->id; ?>"><?php echo $news[6]->short_title; ?></a></td>
+							&middot;<a target="_blank" href="content.php?id=<?php echo $news[4]->id; ?>"><?php echo $news[4]->short_title; ?></a></td>
           </tr>
         </table>
       </div>

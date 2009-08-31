@@ -122,7 +122,6 @@
 			else
 			{
 					$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
-						alert(data);
 						if(data=='OK')
 						{
 							location.reload();
