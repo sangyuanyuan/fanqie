@@ -17,7 +17,7 @@ a{text-decoration:none; color:#434343;}
 #content #context #left #content .more{width:40px;margin-top:5px; margin-right:20px; float:right; display:inline;}
 #content #context #left #lxfs{width:181px; height:81px; margin-top:5px; margin-left:14px; padding-top:30px; padding-left:15px; background:url(/images/bg/lxfs.jpg) no-repeat; float:left; display:inline;}
 #content #context #right{width:700px; border:1px solid #A9A9A9; margin-top:7px; padding-bottom:7px; margin-right:7px; background:#ffffff; overflow:hidden; float:right; display:inline;}
-#content #context #right .gd{width:666px; height:109px; margin-top:7px; border-top:1px solid #A9A9A9; border-bottom:1px solid #A9A9A9; padding-left:34px; float:left; display:inline;}
+#content #context #right .gd{width:400px; margin-top:7px; border-top:1px solid #A9A9A9; border-bottom:1px solid #A9A9A9; background:url(djgd_bg.jpg) no-repeat; padding-left:34px; float:left; display:inline;}
 #content #context #right .gd img{margin-top:10px; margin-left:10px;}
 #content #context #right .title{width:320px; height:27px; margin-top:15px; margin-left:15px; padding-top:8px; padding-left:14px; font-size:18px; color:#922F05; font-weight:bold; background:url(/images/bg/djindex_title.jpg) no-repeat; float:left; display:inline;}
 #content #context #right .title .more{width:30px; font-size:12px; padding-left:10px; margin-right:10px; margin-top:-15px; background:url(/images/pic/djpic.jpg) no-repeat; float:right; display:inline;}

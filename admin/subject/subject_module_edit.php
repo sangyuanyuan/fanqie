@@ -61,9 +61,6 @@
 	<p id="height_p">
 		<label for="height">高度:</label><input type="text" name="module[height]" id="height" value="">像素
 	</p>
-	<p id="bg_p">
-		<label for="bg">背景:</label><input type="text" name="module[background]" id="bg" value="">
-	</p>	
 	<p id="limit_p">
 		<label for="limit">条数:</label><input type="text" name="module[record_limit]" id="limit" value="">	
 	</p>
@@ -72,6 +69,20 @@
 	</p>
 	<p id="ewidth_p">
 		<label for="ewidth">元素高度:</label><input type="text" name="module[element_width]" id="ewidth" value="">	
+	</p>
+	<p id="show_pic_p">
+		<label for="show_pic">显示新闻图片:</label>
+		<select name="module[show_pic]" id="show_pic">
+			<option value="0">不显示</option>
+			<option value="1">显示</option>
+		</select>	
+	</p>
+	<p id="show_title_p">
+		<label for="show_pic">显示title:</label>
+		<select name="module[show_title]" id="show_title">
+			<option value="0">不显示</option>
+			<option value="1">显示</option>
+		</select>	
 	</p>	
 	<p id="scroll_type_p">
 		<label>滚动类型:</label>

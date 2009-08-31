@@ -1,3 +1,6 @@
+<?php 
+	if($pos_name=="pos1"){
+?>
 <?php if($name!=''){?>
 <div class=title><?php echo $name;?></div>
 <?php }?>
@@ -14,3 +17,53 @@
 	<?php
 	}?>
 </div>
+<?php
+	}elseif($pos_name=="pos2"||$pos_name=="pos5"||$pos_name=="pos8"){
+?>
+<div class=gd <?php if($name!=''){?>style="background:url(/images/bg/djgd_bg.jpg) no-repeat;"<?php }?>>
+	<?php if($name!=''){?>
+	<div style="float:left;display:inline;">
+	<table height=109 width=21>
+		<tr valign="middle">
+			<td>
+				<div class=right_title><?php echo $name;?></div>
+			</td>
+		</tr>
+	</table>
+	</div>
+	<div style="width:650px; float:left; display:inline">
+		<?php
+		$photo_width = isset($elment_width)?$elment_width:660;
+		$photo_height = isset($element_height)?$element_height:106;
+		?>
+		<?php if($items[0]->url!=''){?>
+		<a href="<?php echo $items[0]->url;?>" target="_blank"><img src="<?php echo $items[0]->src;?>" width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>"></a>
+		<?php }else{
+		?>
+		<img src="<?php echo $items[0]->src;?>" width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>">
+		<?php
+		}?>
+	</div>
+	<?php }else{
+	?>
+	<div style="width:690px; float:left; display:inline">
+		<?php
+		$photo_width = isset($elment_width)?$elment_width:690;
+		$photo_height = isset($element_height)?$element_height:106;
+		?>
+		<?php if($items[0]->url!=''){?>
+		<a href="<?php echo $items[0]->url;?>" target="_blank"><img src="<?php echo $items[0]->src;?>" width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>"></a>
+		<?php }else{
+		?>
+		<img src="<?php echo $items[0]->src;?>" width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>">
+		<?php
+		}?>
+	</div>
+	<?php }?>
+</div>
+<?php		
+	}else{
+?>
+<?php
+	}
+?>
