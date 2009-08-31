@@ -100,10 +100,10 @@
             </td>
             <?php $news = show_content('smg_news','news','电视新闻中心','项目总结','7');?>
             <td align="left" valign="top">
-            	<?php for($i=0;$i<6;$i++){ ?>
+            	<?php for($i=0;$i<4;$i++){ ?>
             		&middot;<a target="_blank" href="content.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title; ?></a><br />
             	<?php } ?>
-							&middot;<a target="_blank" href="content.php?id=<?php echo $news[6]->id; ?>"><?php echo $news[6]->short_title; ?></a></td>
+							&middot;<a target="_blank" href="content.php?id=<?php echo $news[4]->id; ?>"><?php echo $news[4]->short_title; ?></a></td>
           </tr>
         </table>
       </div>
