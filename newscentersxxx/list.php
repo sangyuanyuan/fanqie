@@ -18,7 +18,7 @@
 </div>
 <div id="content">
   <div id="bodybg">
-  	<?php $sql="select n.id,n.title,d.name from smg_news left join smg_category_dept d on n.dept_category_id=d.id where d.id=".$_REQUEST['id'];
+  	<?php $sql="select n.id,n.title,d.name from smg_news n left join smg_category_dept d on n.dept_category_id=d.id where d.id=".$_REQUEST['id'];
   		$db=get_db(); 
   		$newslist=$db->paginate($sql,10);	
   	?>
@@ -31,7 +31,7 @@
 	<?php } ?>
 <br />
 </div>
-        <div style="text-align:center; float:left; display:inline;"><?php paginate(''); ?></div>
+        <div style="width:693px; text-align:center; float:left; display:inline;"><?php paginate(''); ?></div>
       </div>
     </div>
     <div id="left_body">

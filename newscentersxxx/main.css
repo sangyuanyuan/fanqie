@@ -140,6 +140,9 @@ body,td,th {
 	padding: 5px;
 	width: 693px;
 }
+.right_cnt a{
+	color:#000000;
+}
 #bottom {
 	text-align: center;
 	width: 100%;

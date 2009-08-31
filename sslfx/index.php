@@ -49,10 +49,10 @@
 						</form> 	
 					</div>
 			</div>
-			<?php $sql="select n.title,n.id,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' order by n.priority asc, n.created_at desc limit 5";
+			<?php $sql="select n.title,n.id,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' order by n.priority asc, n.created_at desc limit 2";
 				$news=$db->query($sql);
 			?>
-			<div class=r_title><div style="float:left; display:inline;">收视率相关文献</div><div class=more><a href="/server/news/news_list.php?id=">更多</div></div>
+			<div class=r_title><div style="float:left; display:inline;">收视率相关文献</div><div class=more><a href="/server/news/news_list.php?id=<?php echo $news[0]->cid;?>>">更多</a></div></div>
 			<div id=r_content1>
 				<?php for($i=0;$i<count($news);$i++){ ?>
 				<div class="r_content_every">
@@ -83,7 +83,7 @@
 					$.post("/pChart/Example9.php",{'url':$("#url1").attr("value")},function(data){
 					});
 				</script>
-				<img id="foldline" width="900" src="/pChart/example9.jpg">
+				<img id="foldline" width="970" src="/pChart/example9.jpg">
 			</div>
 			<div class=b_title>预测节目收视率跟踪</div>
 			<input id="url2" type="hidden" value="Sample/foldincom.csv">
@@ -91,7 +91,7 @@
 					$.post("/pChart/Example12.php",{'url':$("#url2").attr("value")},function(data){
 					});
 			</script>
-			<div class=b_content><img width="900" id="foldincom" src="/pChart/example12.jpg"></div>
+			<div class=b_content><img width="970" id="foldincom" src="/pChart/example12.jpg"></div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;"><div class=b_pro1>节目1</div><div class=b_pro2>节目2</div><div class=b_pro2>节目3</div><div class=b_pro2>节目4</div><div class=b_pro2>节目5</div></div>
 	</div>
 <?php require_once('../inc/bottom.inc.php');?>
