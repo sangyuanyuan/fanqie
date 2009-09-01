@@ -437,14 +437,14 @@ total("首页","other");
 		<div id=p4>
  			<!-- start top_right_right_top !-->
  			<div id=t_r_r_t>
- 				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; "><a style="color:#ff0000" href="http://172.27.203.88/pg/" target=_blank>总编室工作</a></div>
- 				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; font-weight:bold; margin-left:6px;"><a href="/news/news_list.php?id=30" target=_blank>快乐番茄</a></div>
+ 				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold;"><a style="color:#ff0000" href="http://172.27.203.88/pg/" target=_blank>总编室工作</a></div>
+ 				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat;  margin-left:6px;"><a href="/news/news_list.php?id=30" target=_blank>快乐番茄</a></div>
  				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;" ><a style="color:#ff0000" href="/zone/" target=_blank>番茄百家</a></div>
  				<?php
  					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 12';
 					$record_happy=$db -> query($sql);		
 				?>		
- 				<div class=content_trrt id=content_trrt1 style="display:none;">
+ 				<div class=content_trrt id=content_trrt1 >
 					<div class=box>
 						<ul>
 							<li>·<a href="/search/?key=%E5%AE%A1%E7%89%87%E6%84%8F%E8%A7%81&search_type=smg_news" target="_blank">审片意见</a></li>
@@ -477,7 +477,7 @@ total("首页","other");
  					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 12';
 					$record_happy=$db -> query($sql);		
 				?>	
- 				<div class=content_trrt id=content_trrt2 >
+ 				<div class=content_trrt id=content_trrt2 style="display:none;">
  					<div class=box>
 						<ul>
 							<?php for($i=0;$i<4;$i++){?>
