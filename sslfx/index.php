@@ -94,7 +94,7 @@
 			<div class=b_title>预测节目收视率跟踪</div>
 			<div class=b_content><img width="970" id="foldincom" src="/pChart/example12.jpg"></div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
-				<?php for($i=1;$i<count($prom);$i++){ ?>
+				<?php for($i=0;$i<count($prom);$i++){ ?>
 					<div param="<?php echo $prom[0]->id; ?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
 				<?php } ?>
 				</div>
@@ -104,9 +104,7 @@
 </html>
 <script>
 	$(document).ready(function(){
-		alert($("#url").attr("value"));
 		$.post("/pChart/Example8.php",{'url':$("#url").attr("value")},function(data){
-			alert(data);
 		});
 		$("#pdcx").click(function(){
 			if($("#pd").val()==0)

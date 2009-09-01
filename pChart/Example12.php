@@ -9,7 +9,7 @@
 
  // Dataset definition 
  $DataSet = new pData;
- $DataSet->ImportFromCSV($_POST['url'],",",array(1,2),true,0); 
+ $DataSet->ImportFromCSV('Sample/foldincom.csv',",",array(1,2),flase,0); 
  $DataSet->AddAllSeries();
  $DataSet->SetAbsciseLabelSerie(); 
  $DataSet->SetSerieName("预测月度平均收视率%","Serie1");
@@ -30,9 +30,7 @@
  $Test->drawTreshold(0,143,55,72,TRUE,TRUE);
 
  // Draw the bar graph
- $Test->drawBarGraph($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,80);
- $Test->drawLineGraph(4.291,'置信区间'));
- $Test->drawLineGraph(8.719,'置信区间'));
+ $Test->drawBarGraph($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,80);
 
  // Finish the graph
  $Test->setFontProperties("Fonts/zhunyuan.ttf",8);
