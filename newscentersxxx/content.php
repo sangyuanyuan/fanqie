@@ -18,8 +18,11 @@
 </div>
 <div id="content">
   <div id="bodybg">
-  	<?php $sql="select n.*,d.name from smg_news n left join smg_category_dept d on n.dept_category_id=d.id where n.id=".$_REQUEST['id'];
+  	<?php 
   		$db=get_db();
+  		$sql="update smg_news set click_count=click_count+1 where id=".$_REQUEST['id'];
+  		$db->execute($sql);
+  		$sql="select n.*,d.name from smg_news n left join smg_category_dept d on n.dept_category_id=d.id where n.id=".$_REQUEST['id'];
   		$news=$db->query($sql);
   		if($news[0]->news_type==2)
 			{
