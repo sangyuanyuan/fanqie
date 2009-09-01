@@ -9,14 +9,15 @@
 
  // Dataset definition 
  $DataSet = new pData;
- $DataSet->ImportFromCSV('Sample/foldincom.csv',",",array(1,2),flase,0); 
+ $DataSet->ImportFromCSV('Sample/foldincom.csv',",",array(1,2),false,0); 
  $DataSet->AddAllSeries();
  $DataSet->SetAbsciseLabelSerie(); 
  $DataSet->SetSerieName("预测月度平均收视率%","Serie1");
  $DataSet->SetSerieName("实际月度平均收视率%","Serie2");
+
  
  // Initialise the graph
- $Test = new pChart(700,230);
+ $Test = new pChart(750,230);
  $Test->setFontProperties("Fonts/zhunyuan.ttf",8);
  $Test->setGraphArea(50,30,680,200);
  $Test->drawFilledRoundedRectangle(7,7,693,223,5,240,240,240);
@@ -30,13 +31,23 @@
  $Test->drawTreshold(0,143,55,72,TRUE,TRUE);
 
  // Draw the bar graph
- $Test->drawBarGraph($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,80);
+ $Test->drawBarGraph($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,80);
+ 
+ $DataSet1 = new pData;
+ $DataSet1->ImportFromCSV('Sample/foldincom.csv',",",array(3,4),false,0); 
+ $DataSet1->AddAllSeries();
+ $DataSet1->SetAbsciseLabelSerie(); 
+ $DataSet1->SetSerieName("置信区间","Serie1");
+
+ $Test->drawLineGraph($DataSet1->GetData(),$DataSet1->GetDataDescription());
+ $Test->drawPlotGraph($DataSet1->GetData(),$DataSet1->GetDataDescription(),3,2,255,255,255);
 
  // Finish the graph
- $Test->setFontProperties("Fonts/zhunyuan.ttf",8);
- $Test->drawLegend(550,$DataSet->GetDataDescription(),255,255,255);
+ $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
+ $Test->drawLegend(596,150,$DataSet->GetDataDescription(),255,255,255);
  $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
  $Test->drawTitle(50,22,"柱形图",50,50,50,585);
  $Test->Render("example12.jpg");
- echo 'OK';
+ 
+ echo "OK";
 ?>

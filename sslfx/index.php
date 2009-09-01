@@ -32,15 +32,12 @@
 					<form method=post name=sndml action=sendmail.php ENCTYPE="multipart/form-data"> 
 						<table> 
 						<tr ><td>发送者：</td> 
-						<td><input type=text name=from ></td> 
-						</tr> 
-						<tr ><td>主题：</td> 
-						<td><input type=text name=subject ></td> 
+						<td><input type=text name=from ></td>
+						<td>主题：</td> 
+						<td><input type=text name=subject ></td>
 						</tr> 
 						<tr ><td>附件：</td> 
-						<td><input type=file name=upload_file></td> 
-						</tr> 
-						<tr><td>&nbsp</td> 
+						<td><input type=file name=upload_file></td> <td>&nbsp</td> 
 						<td><input type="submit" value="发送"> 
 						</td> 
 						</tr> 
