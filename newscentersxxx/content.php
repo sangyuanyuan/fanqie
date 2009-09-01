@@ -43,7 +43,7 @@
       <div class="right_cnt">
 <div id="maintext">
 <h1><?php echo $news[0]->title; ?></h1>
-<h2>发布时间 <?php echo $news[0]->created_at; ?> 阅读资数 <?php echo $news[0]->click_count; ?></h2>
+<h2>发布时间 <?php echo $news[0]->created_at; ?> 阅读次数 <?php echo $news[0]->click_count; ?></h2>
 <?php echo get_fck_content($news[0]->content); ?>
   <br />
 </div>
