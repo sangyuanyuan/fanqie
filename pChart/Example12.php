@@ -9,11 +9,12 @@
 
  // Dataset definition 
  $DataSet = new pData;
- $DataSet->ImportFromCSV($_POST['url'],",",array(1),FALSE,0); 
+ $DataSet->ImportFromCSV($_POST['url'],",",array(1,2),true,0); 
  $DataSet->AddAllSeries();
  $DataSet->SetAbsciseLabelSerie(); 
- $DataSet->SetSerieName("收视率%","Serie1");
-
+ $DataSet->SetSerieName("预测月度平均收视率%","Serie1");
+ $DataSet->SetSerieName("实际月度平均收视率%","Serie2");
+ 
  // Initialise the graph
  $Test = new pChart(700,230);
  $Test->setFontProperties("Fonts/zhunyuan.ttf",8);
@@ -30,7 +31,8 @@
 
  // Draw the bar graph
  $Test->drawBarGraph($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,80);
-
+ $Test->drawLineGraph(4.291,'置信区间'));
+ $Test->drawLineGraph(8.719,'置信区间'));
 
  // Finish the graph
  $Test->setFontProperties("Fonts/zhunyuan.ttf",8);
