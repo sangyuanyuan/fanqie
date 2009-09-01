@@ -437,20 +437,36 @@ total("首页","other");
 		<div id=p4>
  			<!-- start top_right_right_top !-->
  			<div id=t_r_r_t>
- 				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; "><a href="/fqtg/fqtglist.php" target=_blank>总编室工作</a></div>
- 				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; font-weight:bold; margin-left:6px;"><a href="/news/news_list.php?id=30" target=_blank>快乐番茄</a></div>
+ 				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold;"><a style="color:#ff0000" href="http://172.27.203.88/pg/" target=_blank>总编室工作</a></div>
+ 				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat;  margin-left:6px;"><a href="/news/news_list.php?id=30" target=_blank>快乐番茄</a></div>
  				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;" ><a style="color:#ff0000" href="/zone/" target=_blank>番茄百家</a></div>
  				<?php
  					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 12';
-					$record_happy=$db -> query($sql);		
+					$record_happy=$db -> query($sql);	
 				?>		
- 				<div class=content_trrt id=content_trrt1 style="display:none;">
+ 				<div class=content_trrt id=content_trrt1 >
 					<div class=box>
 						<ul>
-							<li>·<a href="/search/?key=%E5%AE%A1%E7%89%87%E6%84%8F%E8%A7%81&search_type=smg_news" target="_blank">审片意见</a></li>
-							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=宣传动态" target="_blank">每日宣传动态</a></li>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','审片纪要'));?>" target="_blank">审片纪要</a></li>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','宣传动态'));?>" target="_blank">每日宣传动态</a></li>
 							<li>·<a href="/zongcai/" target="_blank">总裁奖</a></li>
 							<li>·<a href="http://172.27.201.40/xtsb/login.aspx" target="_blank">选题申报</a></li>
+						</ul>
+					</div>
+					<div class=box>
+						<ul>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','宣传提示'));?>" target="_blank">收听收视快报</a></li>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','联席会议'));?>" target="_blank">联席会议</a></li>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','管理规定'));?>" target="_blank">管理规定</a></li>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','对外宣传'));?>" target="_blank">对外宣传</a></li>
+						</ul>
+					</div>
+					<div class=box>
+						<ul>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','播音主持业务指导'));?>" target="_blank">播音主持业务指导</a></li>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','差错通报'));?>" target="_blank">差错通报</a></li>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','常用表格下载'));?>" target="_blank">常用表格下载</a></li>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','学习交流'));?>" target="_blank">学习交流</a></li>
 						</ul>
 					</div>
 							<!--<?php for($i=0;$i<4;$i++){?>
@@ -477,7 +493,7 @@ total("首页","other");
  					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 12';
 					$record_happy=$db -> query($sql);		
 				?>	
- 				<div class=content_trrt id=content_trrt2 >
+ 				<div class=content_trrt id=content_trrt2 style="display:none;">
  					<div class=box>
 						<ul>
 							<?php for($i=0;$i<4;$i++){?>
