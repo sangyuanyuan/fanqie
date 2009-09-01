@@ -100,7 +100,7 @@
 </script>
 <?php }else{?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","other");
+	total("<?php echo $record[0]->categoryname; ?>","news");
 </script>
 <?php }
 //} ?>

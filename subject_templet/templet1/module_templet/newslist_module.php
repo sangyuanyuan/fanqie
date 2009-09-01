@@ -97,11 +97,13 @@
 <?php
 	}else{
 ?>
+<?php if($name!=''){?>
 <div class=title><?php echo $name;?><div class=new_more><a target="_blank" href="news_list.php?id=<?php echo $category_id;?>">更多</a></div></div>
+<?php }?>
 <?php 
 	if($show_pic==1){
 ?>
-<div style="width:350px; float:left; display:inline;">
+<div style="width:350px; <?php if($height!=''){?>height:<?php echo $height;?>px;<?php }?> float:left; display:inline;">
 	<?php
 		$photourl="";
 		for($i=0;$i<count($items);$i++){
