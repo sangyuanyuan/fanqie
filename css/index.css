@@ -99,7 +99,7 @@ p{margin:0px; padding:0px;}
 #t_r_r_t .content_trrt{width:180px; height:260px; margin-top:10px; margin-left:18px; line-height:20px;  float:left; display:inline;}
 #t_r_r_t .content_trrt .box{width:175px; height:78px;  margin-bottom:12px;  line-height:20px; overflow:hidden;  float:left; display:inline;}
 
-#t_r_r_t #content_trrt1 .box li{width:95px; height:16px; line-height:16px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
+#t_r_r_t #content_trrt1 .box li{width:160px; height:20px; line-height:18px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
 #t_r_r_t #content_trrt1 .box img{width:75px; height:75px; float:right; display:inline;}
 #t_r_r_t #content_trrt2 .box li{width:160px; height:20px; line-height:18px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
 #t_r_r_t #content_trrt3 .box li{width:160px; height:20px; line-height:18px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
@@ -116,8 +116,8 @@ p{margin:0px; padding:0px;}
 #t_r_r_m #content_trrm a:hover{color:#656565; text-decoration:underline;}
 #t_r_r_m .btn_tlm{width:83px; height:19px; margin-left:10px; padding-top:12px; line-height:15px; font-weight:bold; text-align:center; color:#ffffff; cursor:pointer; float:left; display:inline;}
 #t_r_r_m .btn_tlm a{color:#ffffff; text-decoration:none;}
-#t_r_r_m .list_tlm{width:169px; height:135px; margin-top:10px; margin-left:5px; overflow:hidden; float:left; display:none;}
-#t_r_r_m .list_tlm li{width:169px; height:19px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; float:left; display:inline;}
+#t_r_r_m .list_tlm{width:200px; height:135px; margin-top:10px; margin-left:5px; overflow:hidden; float:left; display:none;}
+#t_r_r_m .list_tlm li{width:200px; height:19px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; float:left; display:inline;}
 #t_r_r_m .list_tlm li a{ color:#000000; text-decoration:none;}
  
 #t_r_r_b{width:215px; height:225px; background:url(/images/index/bg_t_r_r_b.jpg) no-repeat; float:right; display:inline;}

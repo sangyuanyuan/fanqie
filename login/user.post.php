@@ -75,7 +75,7 @@ if($_POST['user_type']=="login")
 			}			
 		}elseif ($ret[0] == -2)
 		{//password wrong
-			uc_user_edit($login_text,"",$password_text,$login_text ."@smg.com",1);
+			alert(uc_user_edit($login_text,"",$password_text,$login_text ."@smg.com",1));
 		}
 		
 		if($ret[0]>0)

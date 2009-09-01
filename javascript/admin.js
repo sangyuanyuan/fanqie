@@ -96,7 +96,6 @@
 		});
 		$("#addleaderuser").click(function(){
 			$.post('/admin/admin.post.php',{'userid':$("#loginname").attr('value'),'right':$("#rights").val(),'type':'addleaderuser'},function(data){
-				alert(data);
 				 if(data=="OK")
 				  location.reload();
 			})

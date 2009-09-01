@@ -58,7 +58,7 @@ if($_POST["type"]=="addleaderuser")
 	$userid=$db->query('select id from smg_user_real where loginname="'.$_POST['userid'].'"');
 	$StrSql='insert into smg_leader_role(user_id,rights,createtime) value ('.$userid[0]->id.',"'.$_POST['right'].'",now())'; 
 	$Record = $db->execute($StrSql);
-	echo $StrSql;
+	echo "OK";
 }
 if($_POST["type"]=="delleaderuser")
 {

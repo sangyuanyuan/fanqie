@@ -33,7 +33,10 @@
 </head>
 <body>
 	<div id=bodys>
-		<? include('inc/djtop.inc.php');?>
+		<? include('inc/djtop.inc.php');
+			$sql="update smg_news set click_count=click_count+1 where id=".$_REQUEST['id'];
+  		$db->execute($sql);
+		?>
 		<div id=right>
 			<div class=bg>
 				<div id=contenttitle><? echo $news[0]->title;?></div>

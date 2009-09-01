@@ -10,8 +10,7 @@
 ?>
 <META content="text/html; charset=utf-8" http-equiv=Content-Type>
 <META name=keywords content="三项教育,日志 ">
-<META name=description content="三项教育,日志 "><LINK rel=stylesheet type=text/css href="style.css">
-<META name=GENERATOR content="MSHTML 8.00.6001.18812"></HEAD>
+<META name=description content="三项教育,日志 "><LINK rel=stylesheet type=text/css href="style.css"></HEAD>
 <script>
 	total("专题-三项学习教育","news");
 </script>
@@ -51,8 +50,8 @@
 			$typeadd = $type == 'real' ? '_real' : '';
 			return $dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).$typeadd."_avatar_$size.jpg";
 		}
-		$sql = 'select t1.uid,t1.username,sum(t1.viewnum) as num from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 group by t1.uid order by num desc';
-		$record = $db->query($sql);
+		$sql = 'select t1.uid,t1.username,sum(t1.viewnum) as num from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 or t2.catid=93 group by t1.uid order by num desc';
+		$record = $db->paginate($sql,10);
 		$count = count($record);
 		for($i=0;$i<$count;$i++){
 			$avatar = '/ucenter/data/avatar/'.get_avatar($record[$i]->uid, 'middle', '_real');
@@ -76,12 +75,15 @@
 	<?php
 		}
 	?>
-</DIV></DIV>
+	<div style="width:650px; line-height:20px; text-align:center; float:left; display:inline;"><?php paginate('');?></div>
+</DIV>
+
+</DIV>
 <DIV class=side>
 <DIV class="block blockG">
 <H1>三项学习教育</H1>
 <div style="width:290px; float:left; display:inline; background:#F1F6F5">
-<div class=right_title>博客点击量</div>
+<div class=right_title style="width:290px; float:left; display:inline;">博客点击量</div>
 <div class=right_box>
 <UL class=msgtitlelist>
 	<?php
@@ -96,7 +98,7 @@
 	?>
 </UL>
 </div>
-<div class=right_title>博文点击量</div>
+<div class=right_title style="width:290px; float:left; display:inline;">博文点击量</div>
 <div class=right_box>
 <UL class=msgtitlelist>
 	<?php
@@ -106,7 +108,7 @@
 		for($i=0;$i<$count;$i++){
 	?>
 	<LI>
-		<span style="width:150px; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[0]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
+		<span style="width:150px; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[$i]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
 		<span style="margin-left:20px; color:#656d77; float:left; display:inline">点击量：<?php echo $record[$i]->viewnum;?></span>
 	</LI>
 	<?php

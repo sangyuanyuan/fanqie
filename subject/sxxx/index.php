@@ -56,8 +56,8 @@
 												</SCRIPT>
 								</DIV>
 						</div>
-						<div class=title>经典论述<div class=more><a target="_blank" href="djlist.php?id=<?php echo $jdls[0]->cid; ?>">更多</a></div></div>
-						<div class=title>最新动态<div class=more><a target="_blank" href="djlist.php?id=<?php echo $zxdt[0]->cid; ?>">更多</a></div></div>
+						<div class=title><div class=left>经典论述</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $jdls[0]->cid; ?>">更多</a></div></div>
+						<div class=title><div class=left>最新动态</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $zxdt[0]->cid; ?>">更多</a></div></div>
 						<div style="width:350px; float:left; display:inline;">
 							<? 
 									$photourl="";
@@ -89,14 +89,14 @@
 							<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
 							
 								<?
-								for($i=0;$i<count($news);$i++){?>
+								for($i=0;$i<6;$i++){?>
 									<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $zxdt[$i]->id;?>"><? echo $zxdt[$i]->short_title;?></a></div>
 									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							
 						<div class=bg>
-							<div class=title style="margin-left:10px;">领导讲话<div class=more><a target="_blank" href="djlist.php?id=<?php echo $ldjh[0]->cid; ?>">更多</a></div></div>
-							<div class=title style="margin-left:10px;">学习心得<div class=more><a target="_blank" href="djlist.php?id=<?php echo $xxxd[0]->cid; ?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;"><div class=left>领导讲话</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $ldjh[0]->cid; ?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;"><div class=left>学习心得</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $xxxd[0]->cid; ?>">更多</a></div></div>
 							<div style="width:350px; float:left; display:inline;">
 								<? 
 									$photourl="";
@@ -128,7 +128,7 @@
 						<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
 						
 							<?
-							for($i=0;$i<count($xxxd);$i++){?>
+							for($i=0;$i<6;$i++){?>
 								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $xxxd[$i]->id;?>"><? echo $xxxd[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 							<? }?>
@@ -167,8 +167,8 @@
 								</DIV>
 						</div>-->
 						<div class=bg>
-							<div class=title style="margin-left:10px;">案例警示<div class=more><a target="_blank" href="djlist.php?id=<?php echo $alfx[0]->cid;?>">更多</a></div></div>
-							<div class=title style="margin-left:10px;">媒体评论<div class=more><a target="_blank" href="djlist.php?id=<?php echo $mtpl[0]->cid;?>">更多</a></div></div>	
+							<div class=title style="margin-left:10px;"><div class=left>案例警示</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $alfx[0]->cid;?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;"><div class=left>媒体评论</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $mtpl[0]->cid;?>">更多</a></div></div>	
 							<div style="width:350px; height:120px; float:left; display:inline;">
 								<? 
 									for($i=0;$i<count($alfx);$i++){?>
@@ -179,15 +179,15 @@
 									<? }}?>
 								
 							</div>
-							<div style="width:330px; height:120px; float:right; display:inline">
+							<div style="width:330px; height:120px; margin-right:10px; float:right; display:inline">
 							<? 
 							 for($i=0;$i<count($mtpl);$i++){?>
 								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $mtpl[$i]->id;?>"><? echo $mtpl[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							</div>
-							<div class=title style="margin-left:10px;">专题讲座<div class=more><a target="_blank" href="djlist.php?id=<?php echo $ztjz[0]->cid;?>">更多</a></div></div>
-							<div class=title style="margin-left:10px;">规章制度<div class=more><a target="_blank" href="djlist.php?id=<?php echo $gzzd[0]->cid;?>">更多</a></div></div>	
+							<div class=title style="margin-left:10px;"><div class=left>专题讲座</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $ztjz[0]->cid;?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;"><div class=left>规章制度</div><div class=more><a target="_blank" href="djlist.php?id=<?php echo $gzzd[0]->cid;?>">更多</a></div></div>	
 							<div style="width:350px; height:120px; float:left; display:inline;">
 								<? 
 									for($i=0;$i<count($ztjz);$i++){?>
@@ -198,16 +198,25 @@
 									<? }}?>
 								
 							</div>
-							<div style="width:330px; float:right; display:inline">
+							<div style="width:330px; margin-right:10px; float:right; display:inline">
 							<? 
 							 for($i=0;$i<count($gzzd);$i++){?>
 								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $gzzd[$i]->id;?>"><? echo $gzzd[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							</div>
+							<div id=contenttitle>图片新闻</div>
+							<?php $sql="select n.* from smg_news n left join smg_subject_items i on n.id=i.resource_id where n.photo_src<>'' and n.is_adopt=1 and i.subject_id=24 order by priority asc,created_at desc limit 15"; 
+								$pic=$db->query($sql);
+							?>
+							<div id=content5>
+								<?php for($i=0;$i<count($pic);$i++){ ?>
+									<div class="pics"><a target="_blank" href="djcontent.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=130 height=90 src="<?php echo $pic[$i]->photo_src; ?>"><br><?php echo $pic[$i]->short_title; ?></a></div>
+								<?php } ?>
+							</div>
 							<div class=title style="margin-left:10px;">我的承诺</div>
 							<div class=title style="margin-left:10px;">我的博客</div>
-							<div style="width:350px; float:left; display:inline;">
+							<div style="width:350px; overflow:hidden; float:left; display:inline;">
 								<? 
 								$comments = $db->paginate('select * from smg_comment where resource_type="sxxx" order by created_at desc',5);
 								for($i=0;$i<count($comments);$i++){?>
@@ -235,12 +244,13 @@
 									<input type="hidden" value="<? echo count($deptname);?>">
 								</form>
 							</div>
-							<? $news = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="我的博客" order by i.priority asc, n.created_at desc'); ?>
-							
+							<? $sql = 'select t1.uid,t1.subject,t1.itemid,t1.viewnum from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 order by t1.viewnum desc limit 10';
+						$news = $db->query($sql); ?>
+							<div style="width:330px; margin-right:10px; float:right; display:inline;">
 								<? for($i=0;$i<count($news);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="djcontent.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
-								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
+								<div style="width:320px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="/blog/index.php?uid-<?php echo $news[$i]->uid;?>-action-viewspace-itemid-<?php echo $news[$i]->itemid;?>"><?php echo $news[$i]->subject;?></a></div>
 								<? }?>
+							</div>
 						</div>
 						
 					</div>
