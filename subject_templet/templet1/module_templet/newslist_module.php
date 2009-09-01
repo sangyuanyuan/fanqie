@@ -98,6 +98,42 @@
 	}else{
 ?>
 <div class=title><?php echo $name;?><div class=new_more><a target="_blank" href="news_list.php?id=<?php echo $category_id;?>">更多</a></div></div>
+<?php 
+	if($show_pic==1){
+?>
+<div style="width:350px; float:left; display:inline;">
+	<?php
+		$photourl="";
+		for($i=0;$i<count($items);$i++){
+			if($photourl==""){
+			 	$photourl=$items[$i]->photo_src;
+			}
+		}
+	?>
+	<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
+	
+		<? 	
+		for($i=0;$i<count($items);$i++){?>
+		<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="news.php?id=<? echo $items[$i]->id;?>"><? echo $items[$i]->short_title;?></a></div>
+		<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
+		<? }?>
+	
+</div>
+<?php
+	}else{
+?>
+<div style="width:350px; float:left; display:inline;">
+	
+		<?php
+		for($i=0;$i<count($items);$i++){?>
+		<div style="width:305px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="news.php?id=<? echo $items[$i]->id;?>"><? echo $items[$i]->short_title;?></a></div>
+		<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
+		<? }?>
+	
+</div>
+<?php
+	}
+?>
 
 <?php
 	}

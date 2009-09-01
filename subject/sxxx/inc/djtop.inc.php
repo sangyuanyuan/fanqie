@@ -62,7 +62,7 @@ $mtpl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 								<? if($i<2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 								<div class=more><a target="_blank" href="djlist.php?id=<?php echo $xxjb[0]->cid;?>">更多>></a></div>
-							<div class=title>专题访问排行榜</div>	
+							<div class=title>点击新闻访问排行榜</div>	
 								<? 
 								for($i=0;$i<count($deptsort);$i++){?>
 								<div style="width:150px; height:15px; line-height:15px; margin-top:10px; margin-left:10px; <? if($i<3){?>color:red; font-weight:bold;<? }?> overflow:hidden; float:left; display:inline"><? echo $deptsort[$i]->name;?></div><div style="width:50px; margin-top:10px; margin-right:10px; text-align:right; <? if($i<3){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $deptsort[$i]->djl;?></div>
