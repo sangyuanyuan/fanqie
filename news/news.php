@@ -117,7 +117,7 @@
 </script>
 <?php }else{?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","other");
+	total("部门或专题","news");
 </script>
 <?php }
 

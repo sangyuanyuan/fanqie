@@ -23,11 +23,11 @@
 	}
 	
 
-	if($name==""||$platform==""){exit;}
+	if($name==""&&$platform==""){exit;}
 	
 	$strsql='select * from smg_total where platform="'.$platform.'" and parentname="'.$parent_name.'" and name="'.$name.'" and datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
 	$record=$db -> query($strsql);
-	if(count($record)==0)
+	if(!$record || count($record)==0)
 	{
 		$strsql='insert into smg_total (platform,name,datetime,count,parentname) values("'.$platform.'","'.$name.'",now(),1,"'.$parent_name.'")'; 
 		$record = $db->execute($strsql);
