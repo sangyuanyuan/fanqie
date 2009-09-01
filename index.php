@@ -458,7 +458,7 @@ total("首页","other");
 							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','宣传提示'));?>" target="_blank">收听收视快报</a></li>
 							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','联席会议'));?>" target="_blank">联席会议</a></li>
 							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','管理规定'));?>" target="_blank">管理规定</a></li>
-							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','对外宣传'));?>" target="_blank">对外宣传</a></li>
+							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','评奖专栏'));?>" target="_blank">评奖专栏</a></li>
 						</ul>
 					</div>
 					<div class=box>
