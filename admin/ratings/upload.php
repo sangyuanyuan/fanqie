@@ -27,6 +27,16 @@
 			<td align="left"><input type="file" class="required" size="50" name=file_name></td>
 		</tr>
 		<tr class=tr3>
+			<td>生成图类型：</td>
+			<td align="left">
+				<select id="image">
+					<option value="rader">雷达图</option>
+					<option value="foldline">折线图</option>
+					<option value="foldincome">柱形图</option>
+				</select>
+			</td>
+		</tr>
+		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
 		<input type="hidden" name="item_id" value="<?php echo $item_id;?>">

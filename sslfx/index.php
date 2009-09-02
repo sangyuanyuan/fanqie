@@ -15,14 +15,22 @@
 </head>
 <body>
 	<?php require_once('../inc/top.inc.html'); 
-	$sql="select r.* from smg_ratings r left join smg_report_item i on i.id=r.item_id where i.name='收视率和收视份额分析' order by r.id desc";
-	$rader=$db->query($sql);
+	$sql="select * from smg_report_item where is_dept=0";
+	$name=$db->query($sql);
 	?>
 	<div id=ibody>
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
-			<input id="url" type="hidden" value="<?php echo $rader[0]->file_path; ?>">
-			<div class=l_content><img id="rader" src="/pChart/example8.jpg"></div>
+			<div class=l_content>
+				<select id="raderpd">
+					<option value="0">请选择</option>
+					<?php for($i=0;$i<count($name);$i++){ ?>
+						<option value="<?php echo $name[$i]->id; ?>"><?php echo $name[$i]->name; ?></option>
+						<?php } ?>
+				</select>
+				<input type="button" id="radercx" value="查询">
+				<iframe id="raderimg"><img id="rader" src="/pChart/example8.jpg"></iframe>
+			</div>
 		</div>
 		<div id=ibody_right>
 			<div class=r_title>收视率预测系统使用说明</div>
@@ -58,9 +66,7 @@
 				<?php } ?>
 			</div>
 		</div>
-		<?php $sql="select * from smg_report_item where is_dept=0";
-			$name=$db->query($sql);
-		 ?>
+		
 		<div class=b_title></div>
 			<div class=b_content>
 				<select id="pd">
@@ -74,7 +80,7 @@
 				?>
 				<select id="xq">
 					<option value="0">请选择</option>
-					<option value="<?php echo $date[0]; ?>-<?php echo $date[4];?>">星期一~星期五</option>
+					<option value="<?php echo $date[0]; ?> - <?php echo $date[4];?>">星期一~星期五</option>
 					<option value="<?php echo $date[5]; ?>">星期六</option>
 					<option value="<?php echo $date[6]; ?>">星期日</option>
 				</select>
@@ -98,8 +104,15 @@
 </html>
 <script>
 	$(document).ready(function(){
-		$.post("/pChart/Example8.php",{'url':$("#url").attr("value")},function(data){
+		$("#radercx").click(function(){
+			$.post("/pChart/Example8.php",{'id':$("#raderpd").val()},function(data){
+				if(data=="OK")
+				{
+					$("#raderimg").reload();
+				}
+			})
 		});
+		
 		$("#pdcx").click(function(){
 			if($("#pd").val()==0)
 			{
@@ -112,6 +125,8 @@
 				return false;
 			}
 			else
+			{
+				alert('进来了！');
 					$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
 						alert(data);
 						if(data=='OK')
