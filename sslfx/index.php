@@ -29,8 +29,9 @@
 						<?php } ?>
 				</select>
 				<input type="button" id="radercx" value="查询">
-				<iframe id="raderimg"><img id="rader" src="/pChart/example8.jpg"></iframe>
+				<iframe style="width:395px; height:395px;" id="raderimg"><img src="rader.html" width="100%" height="100%"></iframe>
 			</div>
+			
 		</div>
 		<div id=ibody_right>
 			<div class=r_title>收视率预测系统使用说明</div>
@@ -86,13 +87,13 @@
 				</select>
 				<input type="button" id="pdcx" value="查询">
 				<input style="border:0px;" type="text" readonly="true">
-				<iframe id="imagefoldline"><img id="foldline" width="970" src="/pChart/example9.jpg"></iframe>
+				<iframe style="width:970px;" id="imagefoldline"><img id="foldline" width="970" src="/pChart/example9.jpg"></iframe>
 			</div>
 			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
 				$prom=$db->query($sql);
 			?>
 			<div class=b_title>预测节目收视率跟踪</div>
-			<div class=b_content><iframe id="imagefoldincom"><img width="970" id="foldincom" src="/pChart/example12.jpg"></div>
+			<div class=b_content><iframe style="width:970px;" id="imagefoldincom"><img width="970" id="foldincom" src="/pChart/example12.jpg"></div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
 				<?php for($i=0;$i<count($prom);$i++){ ?>
 					<div param="<?php echo $prom[0]->id; ?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
@@ -126,14 +127,13 @@
 			}
 			else
 			{
-				alert('进来了！');
-					$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
-						alert(data);
-						if(data=='OK')
-						{
-							$("#imagefoldline").reload();
-						}
-					});
+				$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
+					alert(data);
+					if(data=='OK')
+					{
+						$("#imagefoldline").reload();
+					}
+				});
 			}
 		});
 		$(".b_pro1").mouseover(function(){		
@@ -148,7 +148,7 @@
 				{
 					$("#imagefoldincom").reload();
 				}
-			});
-		})
+			})
+		});
 	})
 </script>

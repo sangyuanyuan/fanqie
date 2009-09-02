@@ -55,7 +55,7 @@
 		$count = count($record);
 		for($i=0;$i<$count;$i++){
 			$avatar = '/ucenter/data/avatar/'.get_avatar($record[$i]->uid, 'middle', '_real');
-			$sql = 'select t1.subject,t1.itemid from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 and uid='.$record[$i]->uid.' limit 2';
+			$sql = 'select t1.subject,t1.itemid from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 and uid='.$record[$i]->uid.' order by t1.lastpost desc limit 2';
 			$records = $db->query($sql);
 	?>
 	<div class=box>
@@ -108,7 +108,7 @@
 		for($i=0;$i<$count;$i++){
 	?>
 	<LI>
-		<span style="width:150px; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[$i]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
+		<span style="width:150px; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $record[$i]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
 		<span style="margin-left:20px; color:#656d77; float:left; display:inline">点击量：<?php echo $record[$i]->viewnum;?></span>
 	</LI>
 	<?php

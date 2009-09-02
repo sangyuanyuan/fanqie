@@ -72,7 +72,7 @@
         </table>
       </div>
 
-<div class="right_title">网上讲评</div>
+<div class="right_title"><div style="float:left; display:inline;">网上讲评</div><div style="margin-right:30px; float:right; display:inline;"><a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">更多>></a></div></div>
 
       <div class="right_cnt">
         <table width="660" border="0" cellspacing="3" cellpadding="1">
