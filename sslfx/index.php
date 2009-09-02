@@ -22,14 +22,14 @@
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
 			<div class=l_content>
-				<select id="raderpd">
+				<select style="margin-left:10px;" id="raderpd">
 					<option value="0">请选择</option>
 					<?php for($i=0;$i<count($name);$i++){ ?>
 						<option value="<?php echo $name[$i]->id; ?>"><?php echo $name[$i]->name; ?></option>
 						<?php } ?>
 				</select>
 				<input type="button" id="radercx" value="查询">
-				<iframe style="width:395px; height:395px;" id="raderimg"><img src="rader.html" width="100%" height="100%"></iframe>
+				<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="rader.html"></iframe>
 			</div>
 			
 		</div>
@@ -87,13 +87,13 @@
 				</select>
 				<input type="button" id="pdcx" value="查询">
 				<input style="border:0px;" type="text" readonly="true">
-				<iframe style="width:970px;" id="imagefoldline"><img id="foldline" width="970" src="/pChart/example9.jpg"></iframe>
+				<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="foldline.html"></iframe>
 			</div>
 			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
 				$prom=$db->query($sql);
 			?>
 			<div class=b_title>预测节目收视率跟踪</div>
-			<div class=b_content><iframe style="width:970px;" id="imagefoldincom"><img width="970" id="foldincom" src="/pChart/example12.jpg"></div>
+			<div class=b_content><iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldincom" src="foldincome.html"></iframe></div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
 				<?php for($i=0;$i<count($prom);$i++){ ?>
 					<div param="<?php echo $prom[0]->id; ?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
@@ -109,7 +109,7 @@
 			$.post("/pChart/Example8.php",{'id':$("#raderpd").val()},function(data){
 				if(data=="OK")
 				{
-					$("#raderimg").reload();
+					$("#raderimg").window.location.reload();
 				}
 			})
 		});
@@ -131,7 +131,7 @@
 					alert(data);
 					if(data=='OK')
 					{
-						$("#imagefoldline").reload();
+						$("#imagefoldline").window.location.reload();
 					}
 				});
 			}
@@ -146,7 +146,7 @@
 			$.post("/pChart/Example9.php",{'id':$(this).attr('param')},function(data){
 				if(data=="OK")
 				{
-					$("#imagefoldincom").reload();
+					$("#imagefoldincom").window.location.reload();
 				}
 			})
 		});
