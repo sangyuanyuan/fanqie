@@ -62,7 +62,7 @@
 				<?php for($i=0;$i<count($news);$i++){ ?>
 				<div class="r_content_every">
 					<div class=title><span style="color:#ff9900; font-weight:bold;">【节目】<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->cid;?>"><?php echo get_fck_content($news[$i]->title);?></a></span></div>
-					<div class=content><a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[0]->content);?></div>
+					<div class=content><a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[0]->content);?></a></div>
 				</div>
 				<?php } ?>
 			</div>

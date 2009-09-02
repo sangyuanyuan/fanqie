@@ -19,7 +19,14 @@
 <div id="content">
   <div id="bodybg">
   	<?php 
+  	if($_REQUEST['id']!=184)
+  	{
   		$sql="select * from smg_category_dept where parent_id=".$_REQUEST['id'];
+  	}
+  	else
+  	{
+  		$sql="select * from smg_category_dept where parent_id=".$_REQUEST['id']." and id<>196";
+  	}
   		$db=get_db(); 
   		$catelist=$db->query($sql);
   		$news1=$db->paginate('select title,id from smg_news where dept_category_id='.$catelist[0]->id,15,"news1");
