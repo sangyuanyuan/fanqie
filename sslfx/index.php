@@ -15,7 +15,7 @@
 </head>
 <body>
 	<?php require_once('../inc/top.inc.html'); 
-	$sql="select * from smg_report_item where is_dept=0";
+	$sql="select i.* from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader'";
 	$name=$db->query($sql);
 	?>
 	<div id=ibody>
@@ -70,6 +70,8 @@
 		
 		<div class=b_title></div>
 			<div class=b_content>
+				<?php $sql="select i.* from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline'";
+	$name=$db->query($sql);?>
 				<select id="pd">
 					<option value="0">请选择</option>
 					<?php for($i=0;$i<count($name);$i++){ ?>
