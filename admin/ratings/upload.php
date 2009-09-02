@@ -29,7 +29,7 @@
 		<tr class=tr3>
 			<td>生成图类型：</td>
 			<td align="left">
-				<select id="image">
+				<select id="image" name="image">
 					<option value="rader">雷达图</option>
 					<option value="foldline">折线图</option>
 					<option value="foldincome">柱形图</option>
