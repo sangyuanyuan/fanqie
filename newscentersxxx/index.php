@@ -64,6 +64,7 @@
           <tr>
             <td width="33"><img src="images/hjmd2.gif" width="33" /></td>
             <td width="670" align="center" bgcolor=#FFFFCC>
+            	
             	<?php for($i=0;$i<count($news);$i++){ ?>
             		&middot;<a style="color:#000000;" href="content.php?id=<?php echo $news[$i]->id;?>"><?php echo $news[$i]->short_title; ?></a>　
             	<?php } ?>
