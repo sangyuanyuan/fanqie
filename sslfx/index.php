@@ -74,18 +74,19 @@
 				?>
 				<select id="xq">
 					<option value="0">请选择</option>
-					<option value="<?php echo (String)$date[0]-(String)$date[4]; ?>">星期一~星期五</option>
+					<option value="<?php echo $date[0]; ?>-<?php echo $date[4];?>">星期一~星期五</option>
 					<option value="<?php echo $date[5]; ?>">星期六</option>
 					<option value="<?php echo $date[6]; ?>">星期日</option>
 				</select>
 				<input type="button" id="pdcx" value="查询">
-				<img id="foldline" width="970" src="/pChart/example9.jpg">
+				<input style="border:0px;" type="text" readonly="true">
+				<iframe id="imagefoldline"><img id="foldline" width="970" src="/pChart/example9.jpg"></iframe>
 			</div>
 			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
 				$prom=$db->query($sql);
 			?>
 			<div class=b_title>预测节目收视率跟踪</div>
-			<div class=b_content><img width="970" id="foldincom" src="/pChart/example12.jpg"></div>
+			<div class=b_content><iframe id="imagefoldincom"><img width="970" id="foldincom" src="/pChart/example12.jpg"></div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
 				<?php for($i=0;$i<count($prom);$i++){ ?>
 					<div param="<?php echo $prom[0]->id; ?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
@@ -107,18 +108,15 @@
 			}
 			else if($("#xq").val()==0)
 			{
-				alert($("#xq").val());
 				alert('请选择一个日期');
 				return false;
 			}
 			else
-			{
-				alert($("#xq").val());
 					$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
 						alert(data);
 						if(data=='OK')
 						{
-							location.reload();
+							$("#imagefoldline").reload();
 						}
 					});
 			}
@@ -131,7 +129,10 @@
 			$(this).css("background","#FF9900");
 			$(this).css("color","#000000");
 			$.post("/pChart/Example9.php",{'id':$(this).attr('param')},function(data){
-					$("#foldincom").attr("src",data);
+				if(data=="OK")
+				{
+					$("#imagefoldincom").reload();
+				}
 			});
 		})
 	})

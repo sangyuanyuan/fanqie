@@ -9,7 +9,6 @@
 
  // Dataset definition 
  $DataSet = new pData;
- $DataSet1 = new pData;
  $DataSet->ImportFromCSV('Sample/foldincom.csv',",",array(1,2),false,0); 
  $DataSet->AddAllSeries();
  $DataSet->SetAbsciseLabelSerie(); 
@@ -33,8 +32,6 @@
 
  // Draw the bar graph
  $Test->drawBarGraph($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,80);
- $Test->drawLineGraph($DataSet1->GetData(),$DataSet1->GetDataDescription(),'Serie3');
- $Test->drawPlotGraph($DataSet1->GetData(),$DataSet1->GetDataDescription(),3,2,255,255,255);
  
  $Test->drawGrid(4,TRUE,230,230,230,50);
 

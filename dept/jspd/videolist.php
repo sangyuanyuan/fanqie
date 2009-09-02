@@ -96,9 +96,9 @@ body {
                   <? 
                   for($i=0;$i<$count;$i++){?>
                   <tr>
-                    <td height="30"><a href="video.php?id=<? echo $record[$i]->id;?>" title="<? echo $record[$i]->title;?>">・<? echo $record[$i]->title;?></a></td>  
-                    <td align="center"><? echo $record[$i]->click_count;?></td>
-                    <td align="center"><? echo $record[$i]->created_at;?></td>
+                    <td align="left" height="30"><a href="video.php?id=<? echo $record[$i]->id;?>" title="<? echo $record[$i]->title;?>">・<? echo $record[$i]->title;?></a></td>  
+                    <td align="left"><? echo $record[$i]->click_count;?></td>
+                    <td align="left"><? echo $record[$i]->created_at;?></td>
                   </tr>
                   <? }?>
                   

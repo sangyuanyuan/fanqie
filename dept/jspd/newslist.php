@@ -89,15 +89,15 @@ body {
                   </tr>
                   <?php
 				  	$db = get_db();
-					$strsql='SELECT * FROM smg_news s where is_dept_adopt=1 and dept_category_id='.$dept_cate_id;
+					$strsql='SELECT * FROM smg_news s where is_dept_adopt=1 and dept_category_id='.$dept_cate_id." order by priority asc,created_at desc";
 					$record=$db->paginate($strsql,30);
 					$count  = count($record);
 				  	for($i=0;$i<$count;$i++){
 				  ?>
                   <tr>
-                    <td height="30"><a href="news.php?id=<?php echo $record[$i]->id;?>" title="<?php echo $record[$i]->title;?>">・<?php echo $record[$i]->short_title;?></a></td>  
-                    <td align="center"><? echo $record[$i]->click_count;?></td>
-                    <td align="center"><? echo $record[$i]->last_edited_at;?></td>
+                    <td align="left" height="30"><a href="news.php?id=<?php echo $record[$i]->id;?>" title="<?php echo $record[$i]->title;?>">・<?php echo $record[$i]->short_title;?></a></td>  
+                    <td align="left"><? echo $record[$i]->click_count;?></td>
+                    <td align="left"><? echo $record[$i]->last_edited_at;?></td>
                   </tr>
                   <? }?>
                 </table></td>

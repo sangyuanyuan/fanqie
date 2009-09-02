@@ -33,7 +33,7 @@ body {
 <!-- ImageReady Slices (内网-ge.psd) -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td height="204" align="left"><!-- #BeginLibraryItem "/Library/top.lbi" -->
+    <td height="204" align="center"><!-- #BeginLibraryItem "/Library/top.lbi" -->
 <style type="text/css">
 <!--
 @import url("../top.css");
