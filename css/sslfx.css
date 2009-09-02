@@ -15,7 +15,7 @@
 .r_content_every{width:593px; height:96px; background:url('/images/bg/sslfx_r_content_bg.jpg') repeat-x; float:left; display:inline;}
 .r_content_every .title{width:570px; height:20px; line-height:20px; margin-top:5px; margin-left:10px; float:left; display:inline;}
 .r_content_every .title a{color:#000000; text-decoration:none;}
-.r_content_every .content{width:570px; height:70px; line-height:20px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline;}
+.r_content_every .content{width:570px; height:65px; line-height:20px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline;}
 .r_content_every .content a{color:#000000; text-decoration:none;}
 .b_title{width:985px; height:22px; margin-top:10px; padding-top:5px; padding-left:10px; color:#ffffff; font-weight:bold; font-size:16px; line-height:20px; background:url('/images/ssl/b_title_bg.jpg') no-repeat; float:left; display:inline;}
 .b_content{width:973px; padding:10px; line-height:20px; border:1px solid #DC7638; border-top:none; float:left; display:inline;}

@@ -437,15 +437,15 @@ total("首页","other");
 		<div id=p4>
  			<!-- start top_right_right_top !-->
  			<div id=t_r_r_t>
- 				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold;"><a style="color:#ff0000" href="http://172.27.203.88/pg/" target=_blank>总编室工作</a></div>
+ 				<div class=menu_trrt id=menu_trrt1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; font-weight:bold;"><a style="color:#ff0000" href="/fqtg/fqtglist.php" target=_blank>我要团购</a></div>
  				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat;  margin-left:6px;"><a href="/news/news_list.php?id=30" target=_blank>快乐番茄</a></div>
  				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;" ><a style="color:#ff0000" href="/zone/" target=_blank>番茄百家</a></div>
  				<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 12';
-					$record_happy=$db -> query($sql);	
-				?>		
+ 						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
+						$record_tg=$db -> query($sql);		
+					?>
  				<div class=content_trrt id=content_trrt1 >
-					<div class=box>
+					<!--<div class=box>
 						<ul>
 							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','审片纪要'));?>" target="_blank">审片纪要</a></li>
 							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','宣传动态'));?>" target="_blank">每日宣传动态</a></li>
@@ -468,26 +468,20 @@ total("首页","other");
 							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','常用表格下载'));?>" target="_blank">常用表格下载</a></li>
 							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','学习交流'));?>" target="_blank">学习交流</a></li>
 						</ul>
-					</div>
-							<!--<?php for($i=0;$i<4;$i++){?>
-							<li>·<a href="/<?php echo $record_happy[$i]->platform?>/news/news.php?id=<?php echo $record_happy[$i]->news_id?>" target=_blank><?php echo $record_happy[$i]->short_title ?></a></li>
-							<? }?>
-						</ul>
-					</div>
+					</div>-->
+					<?php for($i=0;$i<3;$i++){?>
 					<div class=box>
+						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
 						<ul>
-							<?php for($i=4;$i<8;$i++){?>
-							<li>·<a href="/<?php echo $record_happy[$i]->platform?>/news/news.php?id=<?php echo $record_happy[$i]->news_id?>" target=_blank><?php echo $record_happy[$i]->short_title ?></a></li>
-							<? }?>
+							<li style="width:95px; overflow:hidden;"><a href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
+							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $record_tg[$i]->marketprice ?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $record_tg[$i]->price ?></li>
 						</ul>
 					</div>
-					<div class=box>
-						<ul>
-							<?php for($i=8;$i<12;$i++){?>
-							<li>·<a href="/<?php echo $record_happy[$i]->platform?>/news/news.php?id=<?php echo $record_happy[$i]->news_id?>" target=_blank><?php echo $record_happy[$i]->short_title ?></a></li>
-							<? }?>
-						</ul>
-					</div> --> 		
+					<? }?>
+ 				</div>
+				
  				</div>
  				<?php
  					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 12';

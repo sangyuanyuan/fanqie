@@ -88,7 +88,7 @@
 					<option value="<?php echo $date[6]; ?>">星期日</option>
 				</select>
 				<input type="button" id="pdcx" value="查询">
-				<input id="riqi" style="border:0px;" type="text" readonly="true">
+				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
 				<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="/pChart/example9.jpg"></iframe>
 			</div>
 			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
@@ -109,10 +109,7 @@
 	$(document).ready(function(){
 		$("#radercx").click(function(){
 			$.post("/pChart/Example8.php",{'id':$("#raderpd").val()},function(data){
-				if(data=="OK")
-				{
 					$("#raderimg").window.location.reload();
-				}
 			})
 		});
 		
@@ -131,10 +128,7 @@
 			{
 				$("#riqi").attr('value',$("#xq").val());
 				$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
-					if(data=='OK')
-					{
 						$("#imagefoldline").window.location.reload();
-					}
 				});
 			}
 		});
@@ -146,10 +140,7 @@
 			$(this).css("background","#FF9900");
 			$(this).css("color","#000000");
 			$.post("/pChart/Example9.php",{'id':$(this).attr('param')},function(data){
-				if(data=="OK")
-				{
 					$("#imagefoldincom").window.location.reload();
-				}
 			})
 		});
 	})

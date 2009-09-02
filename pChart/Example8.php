@@ -12,7 +12,7 @@
  $rader=$db->query($sql);
  if($rader[0]->file_path=="")
  {
- 	alert('对不起该时间段没有收视率分析报告！');
+ 	alert('对不起该时间段没有收视率分析报告');
  	redirect('/sslfx/');
  }
  // Dataset definition 
@@ -41,5 +41,5 @@
  $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
  $Test->drawTitle(0,22,"雷达图",50,50,50,400);
  $Test->Render("example8.jpg");
- echo "OK";
+ echo 0;
 ?>
