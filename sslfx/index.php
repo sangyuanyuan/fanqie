@@ -74,11 +74,7 @@
 				?>
 				<select id="xq">
 					<option value="0">请选择</option>
-					<option value="<?php echo $date[0]; ?>">星期一</option>
-					<option value="<?php echo $date[1]; ?>">星期二</option>
-					<option value="<?php echo $date[2]; ?>">星期三</option>
-					<option value="<?php echo $date[3]; ?>">星期四</option>
-					<option value="<?php echo $date[4]; ?>">星期五</option>
+					<option value="<?php echo (String)$date[0]-(String)$date[4]; ?>">星期一~星期五</option>
 					<option value="<?php echo $date[5]; ?>">星期六</option>
 					<option value="<?php echo $date[6]; ?>">星期日</option>
 				</select>
@@ -111,12 +107,15 @@
 			}
 			else if($("#xq").val()==0)
 			{
+				alert($("#xq").val());
 				alert('请选择一个日期');
 				return false;
 			}
 			else
 			{
+				alert($("#xq").val());
 					$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
+						alert(data);
 						if(data=='OK')
 						{
 							location.reload();
