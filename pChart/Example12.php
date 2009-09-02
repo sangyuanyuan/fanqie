@@ -9,6 +9,7 @@
 
  // Dataset definition 
  $DataSet = new pData;
+ $DataSet1 = new pData;
  $DataSet->ImportFromCSV('Sample/foldincom.csv',",",array(1,2),false,0); 
  $DataSet->AddAllSeries();
  $DataSet->SetAbsciseLabelSerie(); 
@@ -25,22 +26,17 @@
  $Test->drawGraphArea(255,255,255,TRUE);
  $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,150,150,150,TRUE,0,2,TRUE);
  $Test->drawGrid(4,TRUE,230,230,230,50);
-
+ 
  // Draw the 0 line
  $Test->setFontProperties("Fonts/zhunyuan.ttf",6);
  $Test->drawTreshold(0,143,55,72,TRUE,TRUE);
 
  // Draw the bar graph
  $Test->drawBarGraph($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,80);
- 
- $DataSet1 = new pData;
- $DataSet1->ImportFromCSV('Sample/foldincom.csv',",",array(3,4),false,0); 
- $DataSet1->AddAllSeries();
- $DataSet1->SetAbsciseLabelSerie(); 
- $DataSet1->SetSerieName("置信区间","Serie1");
-
- $Test->drawLineGraph($DataSet1->GetData(),$DataSet1->GetDataDescription());
+ $Test->drawLineGraph($DataSet1->GetData(),$DataSet1->GetDataDescription(),'Serie3');
  $Test->drawPlotGraph($DataSet1->GetData(),$DataSet1->GetDataDescription(),3,2,255,255,255);
+ 
+ $Test->drawGrid(4,TRUE,230,230,230,50);
 
  // Finish the graph
  $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
