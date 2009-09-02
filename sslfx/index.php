@@ -29,7 +29,7 @@
 						<?php } ?>
 				</select>
 				<input type="button" id="radercx" value="查询">
-				<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="rader.html"></iframe>
+				<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>
 			</div>
 			
 		</div>
@@ -89,13 +89,13 @@
 				</select>
 				<input type="button" id="pdcx" value="查询">
 				<input id="riqi" style="border:0px;" type="text" readonly="true">
-				<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="foldline.html"></iframe>
+				<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="/pChart/example9.jpg"></iframe>
 			</div>
 			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
 				$prom=$db->query($sql);
 			?>
 			<div class=b_title>预测节目收视率跟踪</div>
-			<div class=b_content><iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldincom" src="foldincome.html"></iframe></div>
+			<div class=b_content><iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldincom" src="/pChart/example12.jpg"></iframe></div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
 				<?php for($i=0;$i<count($prom);$i++){ ?>
 					<div param="<?php echo $prom[0]->id; ?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
