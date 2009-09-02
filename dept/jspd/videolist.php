@@ -77,7 +77,7 @@ body {
               <?php
 			  	$dept_cate_id = dept_category_id_by_name('好好学习','纪实频道','video');
              	$db = get_db();
-				$strsql='SELECT * FROM smg_video s where is_dept_adopt=1 and dept_category_id='.$dept_cate_id;
+				$strsql='SELECT * FROM smg_video s where is_dept_adopt=1 and dept_category_id='.$dept_cate_id." order by priority asc,created_at desc";
 				$record=$db->paginate($strsql,30);
 				$count  = count($record);
               ?>
