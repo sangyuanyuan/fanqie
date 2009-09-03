@@ -36,8 +36,9 @@
       <div class="right_title"><?php echo $catelist[0]->name; ?></div>
       <div class="right_cnt">
 <div class="maintext1">
-	<?php for($i=0;$i<count($news1);$i++){ ?>
-		<span style="float:left; display:inline;">&middot;<a target="_blank" href="content.php?id=<?php echo $news1[$i]->id; ?>"><?php echo $news1[$i]->title; ?></a></span><span style="float:right; display:inline;"><?php echo $news2[$i]->created_at; ?></span><br />
+	<?php for($i=0;$i<count($news1);$i++){ if($_REQUEST['id']==184){$newsjp=$db->query('select id from smg_news where short_title="'.$news1[$i]->short_title.'讲评"');}?>
+		
+		<span style="float:left; display:inline;">&middot;<a target="_blank" href="content.php?id=<?php echo $news1[$i]->id; ?>"><?php echo $news1[$i]->title; ?></a>　<?php if($_REQUEST['id']==184){?><a target="_blank" href="content.php?id=<?php echo $newsjp[0]->id;?>"><?php echo $newsjp[0]->short_title; ?></a><?php } ?></span><span style="float:right; display:inline;"><?php echo $news2[$i]->created_at; ?></span><br />
 	<?php } ?>
 <br />
 </div>
