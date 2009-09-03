@@ -94,7 +94,7 @@
 				<input type="button" id="pdcx" value="查询">
 				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
 				<!--<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>-->
-				<div style="width:970px; height:350px;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings where imagetype='foldline' order by id desc limit 1"); ?><img width=950 src="<?php echo $foldline[0]->file_path; ?>"></div>
+				<div style="width:970px;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings where imagetype='foldline' order by id desc limit 1"); ?><img width=950 src="<?php echo $foldline[0]->file_path; ?>"></div>
 				
 			</div>
 			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
@@ -102,11 +102,11 @@
 			?>
 			<div class=b_title>预测节目收视率跟踪</div>
 			<div class=b_content>
-				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:inline;" id="imagefoldincom0"><img width=970 src="<?php echo $prom[0]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom1"><img width=970 src="<?php echo $prom[1]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom2"><img width=970 src="<?php echo $prom[2]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom3"><img width=970 src="<?php echo $prom[3]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom4"><img width=970 src="<?php echo $prom[4]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; float:left; display:inline;" id="imagefoldincom0"><img width=970 src="<?php echo $prom[0]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; float:left; display:none;" id="imagefoldincom1"><img width=970 src="<?php echo $prom[1]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; float:left; display:none;" id="imagefoldincom2"><img width=970 src="<?php echo $prom[2]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; float:left; display:none;" id="imagefoldincom3"><img width=970 src="<?php echo $prom[3]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; float:left; display:none;" id="imagefoldincom4"><img width=970 src="<?php echo $prom[4]->file_path;?>"></div>
 			</div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
 				<?php for($i=0;$i<count($prom);$i++){ ?>
