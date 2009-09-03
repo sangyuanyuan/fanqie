@@ -94,30 +94,30 @@ include('inc/topbar.inc.php');
                   </tr>
                   <? for($i=0;$i<$count;$i++)
                   {?>
-                  <tr> 
+                  <tr valign="middle"> 
                     <td height="30"><img src="<? echo $records[$i]->photo_src;?>" width="80" height="80"></td>
-                    <td ><div style="width:390px; height:85px; font-weight:12px; overflow:hidden;"><a target="blank" href="news.php?id=<? echo $records[$i]->id;?>"><? echo $records[$i]->title; echo $records[$i]->description;?></a></div></td>
-                    <td align="center"><? echo $records[$i]->click_count;?></td>
-                    <td align="center"><? echo $records[$i]->created_at;?></td>
+                    <td align="left"><div style="width:390px; height:85px; font-weight:12px; overflow:hidden;"><a target="blank" href="news.php?id=<? echo $records[$i]->id;?>"><? echo $records[$i]->title; echo $records[$i]->description;?></a></div></td>
+                    <td align="left"><? echo $records[$i]->click_count;?></td>
+                    <td align="left"><? echo $records[$i]->created_at;?></td>
                   </tr>              
                   <tr>
                     <td height="22">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
                   </tr>
                   <? }?>
                    <tr>
                     <td height="30">&nbsp;</td>
                     <td align="left">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
-                    <td align="center"><a href="newslist.php?id=<?php echo dept_category_id_by_name('圈内资深','纪实频道','news');?>"><img src="images/more.jpg" width="86" height="33" border="0"></a></td>
+                    <td align="left">&nbsp;</td>
+                    <td align="left"><a href="newslist.php?id=<?php echo dept_category_id_by_name('圈内资深','纪实频道','news');?>"><img src="images/more.jpg" width="86" height="33" border="0"></a></td>
                   </tr>
                   <tr>
                   	<td height="30">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
                   </tr>
                   <!--小编手记开始-->
                    <?php
@@ -127,29 +127,29 @@ include('inc/topbar.inc.php');
                   <tr>
                     <td height="38" background="images/tt-bg.jpg"><span style="color:red; font-size:14px; font-weight:bold;">☆小编手记</span></td>
                     <td align="left" background="images/tt-bg.jpg">&nbsp;</td>
-                    <td align="center" background="images/tt-bg.jpg">&nbsp;</td>
-                    <td align="center" background="images/tt-bg.jpg">&nbsp;</td>
+                    <td align="left" background="images/tt-bg.jpg">&nbsp;</td>
+                    <td align="left" background="images/tt-bg.jpg">&nbsp;</td>
                   </tr>
                   <? for($i=0;$i<$count;$i++)
                   {?>
-                  <tr> 
+                  <tr valign="middle"> 
                     <td height="30"><img src="<? echo $records[$i]->photo_src;?>" width="80" height="80"></td>
-                    <td ><div style="width:390px; height:85px; font-weight:12px; overflow:hidden;"><a target="blank" href="news.php?id=<? echo $records[$i]->id;?>"><? echo $records[$i]->title; echo $records[$i]->description;?></a></div></td>
-                    <td align="center"><? echo $records[$i]->click_count;?></td>
-                    <td align="center"><? echo $records[$i]->created_at;?></td>
+                    <td align="left"><div style="width:390px; height:85px; font-weight:12px; overflow:hidden;"><a target="blank" href="news.php?id=<? echo $records[$i]->id;?>"><? echo $records[$i]->title; echo $records[$i]->description;?></a></div></td>
+                    <td align="left"><? echo $records[$i]->click_count;?></td>
+                    <td align="left"><? echo $records[$i]->created_at;?></td>
                   </tr>                
                   <? }?>
                    <tr>
                     <td height="30">&nbsp;</td>
                     <td align="left">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
-                    <td align="center"><a href="newslist.php?id=<?php echo dept_category_id_by_name('小编手记','纪实频道','news');?>"><img src="images/more.jpg" width="86" height="33" border="0"></a></td>
+                    <td align="left">&nbsp;</td>
+                    <td align="left"><a href="newslist.php?id=<?php echo dept_category_id_by_name('小编手记','纪实频道','news');?>"><img src="images/more.jpg" width="86" height="33" border="0"></a></td>
                   </tr>
                   <tr>
                   	<td height="30">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
                   </tr>
                <!-- MY SHOW开始 -->
              	  <?php
@@ -159,23 +159,23 @@ include('inc/topbar.inc.php');
                   <tr>
                     <td height="38" background="images/tt-bg.jpg"><span style="color:red; font-size:14px; font-weight:bold;">☆My Show</span></td>
                     <td align="left" background="images/tt-bg.jpg">&nbsp;</td>
-                    <td align="center" background="images/tt-bg.jpg">&nbsp;</td>
-                    <td align="center" background="images/tt-bg.jpg">&nbsp;</td>
+                    <td align="left" background="images/tt-bg.jpg">&nbsp;</td>
+                    <td align="left" background="images/tt-bg.jpg">&nbsp;</td>
                   </tr>
                   <? for($i=0;$i<$count;$i++)
                   {?>
-                  <tr> 
+                  <tr valign="middle"> 
                     <td height="30"><img src="<? echo $records[$i]->photo_src;?>" width="80" height="80"></td>
-                    <td ><div style="width:390px; height:85px; font-weight:12px; overflow:hidden;"><a target="blank" href="news.php?id=<? echo $records[$i]->id;?>"><? echo $records[$i]->title; echo $records[$i]->description;?></a></div></td>
-                    <td align="center"><? echo $records[$i]->click_count;?></td>
-                    <td align="center"><? echo $records[$i]->created_at;?></td>
+                    <td align="left"><div style="width:390px; height:85px; font-weight:12px; overflow:hidden;"><a target="blank" href="news.php?id=<? echo $records[$i]->id;?>"><? echo $records[$i]->title; echo $records[$i]->description;?></a></div></td>
+                    <td align="left"><? echo $records[$i]->click_count;?></td>
+                    <td align="left"><? echo $records[$i]->created_at;?></td>
                   </tr>              
                   <? }?>
                    <tr>
                     <td height="30">&nbsp;</td>
                     <td align="left">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
-                    <td align="center"><a href="newslist.php?id=<?php echo dept_category_id_by_name('My Show','纪实频道','news');?>"><img src="images/more.jpg" width="86" height="33" border="0"></a></td>
+                    <td align="left">&nbsp;</td>
+                    <td align="left"><a href="newslist.php?id=<?php echo dept_category_id_by_name('My Show','纪实频道','news');?>"><img src="images/more.jpg" width="86" height="33" border="0"></a></td>
                   </tr>
             </table></td>
         </tr>

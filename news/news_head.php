@@ -105,7 +105,7 @@
 <?php }
 //} ?>
 </head>
-<body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
+<body <?php if($record[0]->forbbide_copy == 1){ ?> oncontextmenu="return false" ondragstart="return false" onselectstart ="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()" <?php }?>>
 <? 
 if($record[0]->news_type==2)
 {
@@ -278,7 +278,7 @@ $db->execute($sql); ?>
 			<div id=wybl><a style="margin-left:20px;"  href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>
 			<div id=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record[0]->cid;?>">查看更多新闻>></a></div>
 			<?php if(count($about)>0||count($about)>0){?>
-			<div class=abouttitle>更多关于“<?php echo mb_substr(strip_tags($record[0]->short_title),0,36,"utf-8");?>”的新闻</div>
+			<div class=abouttitle>更多关于“<?php echo mb_substr(strip_tags($record[0]->short_title),0,36,"utf-8");?>"的新闻</div>
 			<div class=aboutcontent style="padding-bottom:10px;">
 				<div class=title>相关链接</div>
 					<?php for($i=0;$i<count($about);$i++){

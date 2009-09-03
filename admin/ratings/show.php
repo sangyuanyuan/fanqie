@@ -28,7 +28,7 @@
 			for($i=0;$i<$count_record;$i++){
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
-					<td><?php echo substr($record[$i]->date, 0, 10);?></td>
+					<td><?php echo $record[$i]->date;?></td>
 					<td><?php echo $record[$i]->file_path;?></td>
 					<td><a href='<?php echo $record[$i]->file_path;?>'>下载</a></td>
 				</tr>

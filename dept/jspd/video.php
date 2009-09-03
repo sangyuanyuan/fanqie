@@ -89,13 +89,13 @@ body {
                 <td height="20">&nbsp;</td>
               </tr>
               <tr>
-                <td width="680" align="center" valign="top"><table width="670" border="0" cellspacing="0" cellpadding="0">
+                <td width="680" align="left" valign="top"><table width="670" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="391" height="39" background="images/tt-bg.jpg" class="btt">&nbsp;<strong>☆</strong>最新视频</td>
-                    <td width="279" rowspan="9" align="center" valign="top" class="btt">
+                    <td width="279" rowspan="9" align="left" valign="top" class="btt">
                     <table width="90%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td align="center" background="images/tt-bg.jpg" bgcolor="#CCCCCC" class="btt"><strong>☆</strong>最新视频</td>
+                        <td align="left" background="images/tt-bg.jpg" bgcolor="#CCCCCC" class="btt"><strong>☆</strong>最新视频</td>
                         <td height="39" background="images/tt-bg.jpg" bgcolor="#CCCCCC" class="wz">&nbsp;</td>
                       </tr>
                       <?php
@@ -105,7 +105,7 @@ body {
                       	{
                       ?>
                       <tr>
-                        <td width="38%" align="center"><img src="<? echo $records[$i]->photo_url;?>" width="80" height="80"></td>
+                        <td width="38%" align="left"><img src="<? echo $records[$i]->photo_url;?>" width="80" height="80"></td>
                         <td width="62%" class="wz"><a target="_blank" href="video.php?id=<? echo $records[$i]->id;?>"><? echo $records[$i]->title;?></a></td>
                       </tr>
                       <? }?>
@@ -124,12 +124,12 @@ body {
 							$records = show_content('smg_news','news','纪实频道','私房推荐','4');
 							$count = count($records);
 						?>
-                          <td align="center" background="images/tt-bg.jpg" bgcolor="#CCCCCC" class="btt"><strong>☆</strong>私房推荐</td>
+                          <td align="left" background="images/tt-bg.jpg" bgcolor="#CCCCCC" class="btt"><strong>☆</strong>私房推荐</td>
                           <td height="39" background="images/tt-bg.jpg" bgcolor="#CCCCCC" class="wz"></td>
                         </tr>
                          <? for($i=0;$i<$count;$i++){?>
                         <tr>
-                          <td width="38%" align="center"><img src="<? echo $records[$i]->photo_src;?>" width="80" height="80"></td>
+                          <td width="38%" align="left"><img src="<? echo $records[$i]->photo_src;?>" width="80" height="80"></td>
                           <td width="62%" class="wz"><a href="news.php?id=<? echo $records[$i]->id;?>"><span class="m-m"><? echo $records[$i]->title;?></span></a>
                             <span style="height:40px; overflow:hidden;"><? echo $records[$i]->description;?></span></td>
                            
@@ -204,12 +204,12 @@ body {
                 <br></td>
               </tr>
               <tr>
-                <td width="680" height="78" align="center">&nbsp;</td>
+                <td width="680" height="78" align="left">&nbsp;</td>
               </tr>
           </table></td>
         </tr>
         <tr>
-          <td height="101" colspan="2" align="center" valign="middle" background="images/di.jpg" class="nr-d">|<A href="https://172.27.203.81:8080" target="_blank" class="whi" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://172.27.203.81:8080');return(false);"> 设为主页</A>|<A href="mailto:dc@smg.cn" class="whi"> 联系我们</A> |<br>
+          <td height="101" colspan="2" align="left" valign="middle" background="images/di.jpg" class="nr-d">|<A href="https://172.27.203.81:8080" target="_blank" class="whi" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://172.27.203.81:8080');return(false);"> 设为主页</A>|<A href="mailto:dc@smg.cn" class="whi"> 联系我们</A> |<br>
             上海文广新闻传媒集团  纪实频道 版权所有 <br>
             Copyright 2009 SMG DOCUMENTARY CHANNEL All Rights Reserved<br>
             建议 1024X768 浏览效果最佳</td>

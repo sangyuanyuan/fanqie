@@ -94,14 +94,14 @@ include("inc/topbar.inc.php");
               </tr>
               
               <tr>
-                <td width="695" height="792" align="center" valign="top"><DIV class="btd" id="content2">
+                <td width="695" height="792" align="left" valign="top"><DIV class="btd" id="content2">
                   <table width="650" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td align="center" class="btd"><? echo $news->title;?></td>
                     </tr>
                     <tr>
                       <td><DIV style="text-align:center;" class="wz" id="div2"> 浏览次数：<? echo $news->click_count;?> 时间： <? echo $news->last_edited_at;?></DIV>
-                        <DIV id="div3">
+                        <DIV id="div3" style="margin-left:10px; float:left; display:inline;">
                          <?php echo get_fck_content($news->content); ?>
                         </DIV><div style="text-align:center;"><?php print_fck_pages($news->content,'news.php?id='.$id); ?></div></td>
                     </tr>
@@ -111,7 +111,7 @@ include("inc/topbar.inc.php");
                   <DIV id="content4"></DIV></td>
               </tr>
               <tr>
-                <td width="695" height="63" align="center"><table width="650" border="0" cellspacing="0" cellpadding="0">
+                <td width="695" height="63" align="left"><table width="650" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td height="30" align="right" class="wz"><a href="/news/newslist.php?id=66"> 更多新闻</a></td>
                   </tr>
@@ -129,16 +129,14 @@ include("inc/topbar.inc.php");
                     echo  '<span style="margin-left:10px; color:#000000;">'.$records[$i]->comment.'</span>';?>
                   </td></tr><tr><td height=5 ></td></tr><? }?>
                     <?php paginate();?>
-                   
-                   
                   <tr>
-                    <td height="38" background="images/tt-bg.jpg" class="btt"><strong>☆</strong>发表评论</td>
+                    <td height="38" background="images/tt-bg.jpg" class="btt">&nbsp;&nbsp;<strong>☆</strong>发表评论</td>
                   </tr>
                   <tr>
-                    <td>
+                    <td style="margin-left:10px; float:left; display:inline;">
                     	<form id="comment_form" method="post" action="/pub/pub.post.php">
-                    		用户：<input type="text" value="" id="commenter" name="post[nick_name]"><br>
-                     		评论：<textarea id="commentcontent" name="post[comment]" cols="60" rows="5"></textarea>
+                    	&nbsp;&nbsp;用户：<input type="text" value="" id="commenter" name="post[nick_name]"><br>
+                     	&nbsp;&nbsp;评论：<textarea id="commentcontent" name="post[comment]" cols="60" rows="5"></textarea>
 							<input type="hidden" name="post[resource_id]" value="<?php echo $id;?>">
 							<input type="hidden" name="post[resource_type]" value="news">
 							<input type="hidden" name="type" value="comment">
@@ -147,23 +145,23 @@ include("inc/topbar.inc.php");
                   </tr>
                   <tr>
                     <td>
-                      <input type="submit" name="Submit" id="submit_comment" value="发表">
+                     &nbsp;&nbsp;<input type="submit" name="Submit" id="submit_comment" value="发表">
                     </form>                    </td>
                   </tr>
                   <tr>
                     <td>&nbsp;</td>
                   </tr>
                   <tr>
-                    <td height="38" background="images/tt-bg.jpg" class="btt"><strong>☆</strong>更多关于纪实频道新闻</td>
+                    <td height="38" align="left" background="images/tt-bg.jpg" class="btt">&nbsp;&nbsp;<strong>☆</strong>更多关于纪实频道新闻</td>
                   </tr>
                   <tr>
-                    <td>
+							<td align="left" style="margin-left:10px; float:left; display:inline;">
                     	<?php
 							$more = search_content('纪实频道','smg_news','is_adopt=1',5,'priority asc,created_at desc');
                     		for($i=0;$i<5;$i++)
                     		{
                     	?>
-                    	<div class="wz">・<a href="/news/news.php?id=<? echo $more[$i]->id;?>" target="_blank"><? echo $more[$i]->short_title;?></a> <? echo $more[$i]->created_at;?> </div>
+                    	<div class="wz" style="width:100%; margin-left:10px; float:left; display:inline;">・<a href="/news/news.php?id=<? echo $more[$i]->id;?>" target="_blank"><? echo $more[$i]->short_title;?></a> <? echo $more[$i]->created_at;?> </div>
                     	<? }?>
                       </td>
                   </tr>

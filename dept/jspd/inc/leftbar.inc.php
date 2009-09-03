@@ -35,7 +35,7 @@
                 </table></td>
               </tr>
               <tr>
-              <td height="45" valign="top" background="images/left_03.jpg"><table width="226" height="35" border="0" cellpadding="0" cellspacing="0">
+              <td height="45" align="left" valign="top" background="images/left_03.jpg"><table width="226" height="35" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <?php
 				  	$records = show_content('smg_video','video','纪实频道','好好学习','4');
@@ -47,14 +47,14 @@
               </table></td>
               </tr>
             <tr>
-              <td height="165" align="center" background="images/left_11.jpg"><table width="234" height="92" border="0" cellpadding="0" cellspacing="0">
+              <td height="165" align="left" background="images/left_11.jpg"><table width="234" height="92" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td  width="248" colspan="2" class="m-t">
                   <?php
                   	show_video_player(248,148,$records[0]->photo_url,$records[0]->video_url);
                   	for($i=1;$i<$count;$i++)
                   	{?>
-                  		<a style="width:248px; margin-top:15px; float:left; display:inline;" href="video.php?id=<? echo $records[$i]->id;?>">
+                  		<a style="width:248px; margin-top:15px; margin-left:10px; float:left; display:inline;" href="video.php?id=<? echo $records[$i]->id;?>">
                   	<?php echo $records[$i]->title;?></a><br>
                   	<?}
                   ?>
@@ -66,7 +66,7 @@
             
                
             <tr>
-              <td height="37" background="images/left_05.jpg"><table width="226" height="18" border="0" cellpadding="0" cellspacing="0">
+              <td align="left" height="37" background="images/left_05.jpg"><table width="226" height="18" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                 	<?php
 						$records = show_content('smg_news','news','纪实频道','麻辣头条','8');
@@ -78,7 +78,7 @@
                 </table></td>
               </tr>
             <tr>
-              <td height="168" align="center" background="images/left_06.jpg"><table width="246" border="0" cellspacing="0" cellpadding="0">
+              <td height="168" align="left" background="images/left_06.jpg"><table width="246" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td class="yel"> <?
                    for($i=0;$i<$count;$i++){?>
@@ -88,7 +88,7 @@
                 </table></td>
               </tr>
            <tr>
-              <td height="45" valign="top" background="images/left_03.jpg">
+              <td align="left" height="45" valign="top" background="images/left_03.jpg">
               <table width="226" height="35" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="31" height="35">&nbsp;</td>
@@ -101,7 +101,7 @@
                 </table></td>
               </tr>
             <tr>
-              <td height="205" align="center" valign="top" background="images/left_04.jpg"><table width="246" border="0" cellspacing="0" cellpadding="0">
+              <td height="205" align="left" valign="top" background="images/left_04.jpg"><table width="246" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td class="green">
                    <? for($i=0;$i<$count;$i++)
@@ -117,7 +117,7 @@
                 </table></td>
               </tr>
             <tr>
-              <td height="41" background="images/left_08.jpg"><table width="226" height="18" border="0" cellpadding="0" cellspacing="0">
+              <td align="left" height="41" background="images/left_08.jpg"><table width="226" height="18" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                 	 <?php  
 						$records = show_content('smg_news','news','纪实频道','群团乐趣','10');
@@ -130,7 +130,7 @@
                 </table></td>
               </tr>
             <tr valign="top">
-              <td height="175" align="center" background="images/left_09.jpg"><table width="251" border="0" cellspacing="0" cellpadding="0">
+              <td height="175" align="left" background="images/left_09.jpg"><table width="251" border="0" cellspacing="0" cellpadding="0">
                 <tr>
          
                   <td class="green">

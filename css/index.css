@@ -49,8 +49,10 @@ p{margin:0px; padding:0px;}
 #t_r_t{width:710px; height:79px; background:url(/images/index/bg_t_r_t.jpg) no-repeat; float:left; display:inline;}
 #t_r_t #title{width:675px; height:40px; margin-top:2px; margin-left:5px; text-align:center; font-size:28px; font-weight:bold; color:#CC0000; line-height:40px; overflow:hidden; float:left; display:inline;}
 #t_r_t #title a{color:#CC0000; text-decoration:none;}
-#t_r_t #content{width:675px; height:20px; margin-top:10px; margin-left:5px; text-align:center; font-size:14px; line-height:20px; overflow:hidden; float:left; display:inline;}
-#t_r_t #content a{color:#000000; text-decoration:none;}
+/*#t_r_t #content{width:675px; height:20px; margin-top:10px; margin-left:5px; text-align:center; font-size:14px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#t_r_t #content a{color:#000000; text-decoration:none;}*/
+#t_r_t #content{width:675px; height:30px; margin-left:5px; text-align:center; font-size:28px; line-height:30px; color:#CC0000; font-weight:bold; overflow:hidden; float:left; display:inline;}
+#t_r_t #content a{color:#CC0000; text-decoration:none;}
 #t_r_t #btn{width:22px; height:75px; margin-top:2px; margin-right:2px; background:url(/images/index/btn5.jpg) no-repeat; float:right; display:inline}
 
 #t_r_c_t{width:492px; height:133px; background:url(/images/index/bg_t_r_c_t.jpg) no-repeat; float:left; display:inline;}
@@ -87,10 +89,10 @@ p{margin:0px; padding:0px;}
 #t_r_c_b_r #more{width:31px; height:7px; margin-top:15px; margin-right:20px; background:url(/images/index/more1.gif) no-repeat; float:right; display:inline;}
 #t_r_c_b_r #box1{width:271px; height:55px;  margin-top:5px;  float:left; display:inline;}
 #t_r_c_b_r #box1 img{width:65px; height:50px; margin-left:10px; float:left; display:inline}
-#t_r_c_b_r #box1 li{width:130px; height:18px; margin-left:8px; font-size:12px; line-height:18px; color:#666666; overflow:hidden; float:left; display:inline;}
+#t_r_c_b_r #box1 li{width:180px; height:18px; margin-left:8px; font-size:12px; line-height:18px; color:#666666; overflow:hidden; float:left; display:inline;}
 #t_r_c_b_r #box1 li a{color:#666666; text-decoration:none;}
 #t_r_c_b_r #box2{width:271px; height:75px; margin-top:5px;  float:left; display:inline;}
-#t_r_c_b_r #box2 li{width:200px; height:18px; margin-left:12px; font-size:12px; line-height:18px; color:#666666; overflow:hidden; float:left; display:inline;}
+#t_r_c_b_r #box2 li{width:250px; height:18px; margin-left:12px; font-size:12px; line-height:18px; color:#666666; overflow:hidden; float:left; display:inline;}
 #t_r_c_b_r #box2 li a{color:#666666; text-decoration:none;}
 
 #t_r_r_t{width:206px; height:310px; background:url(/images/index/bg_t_r_r_t.jpg) no-repeat; overflow:hidden; float:right; display:inline;}

@@ -263,7 +263,7 @@ include("inc/topbar.inc.php");
 					picflash.addVariable("borderheight",pic_height);
 					picflash.addVariable("borderw","false");
 					picflash.addVariable("buttondisplay","true");
-					picflash.addVariable("textheight","15");				
+					picflash.addVariable("textheight","0");				
 					picflash.addVariable("pic_width",pic_width);
 					picflash.addVariable("pic_height",pic_height);
 					picflash.write("focus_02");				

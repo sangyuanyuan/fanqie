@@ -64,15 +64,16 @@
           <tr>
             <td width="33"><img src="images/hjmd2.gif" width="33" /></td>
             <td width="670" align="center" bgcolor=#FFFFCC>
+            	
             	<?php for($i=0;$i<count($news);$i++){ ?>
-            		&middot;<a href="content.php?id=<?php echo $news[$i]->id;?>"><?php echo $news[$i]->short_title; ?></a>　
+            		&middot;<a target="_blank" style="color:#000000;" href="content.php?id=<?php echo $news[$i]->id;?>"><?php echo $news[$i]->short_title; ?></a>　
             	<?php } ?>
             </td>
           </tr>
         </table>
       </div>
 
-<div class="right_title">网上讲评</div>
+<div class="right_title"><div style="float:left; display:inline;">网上讲评</div><div style="margin-right:30px; float:right; display:inline;"><a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">更多>></a></div></div>
 
       <div class="right_cnt">
         <table width="660" border="0" cellspacing="3" cellpadding="1">
@@ -157,10 +158,10 @@
         <div class="left_title">最新视频</div>
         <div class="left_cnt">
           <p><? show_video_player(220,150,$video[0]->photo_url,$video[0]->video_url);?></p>
-          <p>&middot;<?php echo $video[1]->title; ?><br />
-            &middot;<?php echo $video[2]->title; ?>
+          <p>&middot;<a target="_blank" href="/show/video.php?id=<?php echo $video[0]->id;?>"><?php echo $video[0]->title; ?></a><br />
+            &middot;<a target="_blank" href="/show/video.php?id=<?php echo $video[1]->id;?>"><?php echo $video[1]->title; ?></a>
           </p>
-          <p align=right><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('最新视频','电视新闻中心','video');?>">更多...</a></p>
+          <p align=right><a target="_blank" href="videolist.php?id=<?php echo dept_category_id_by_name('最新视频','电视新闻中心','video');?>">更多...</a></p>
         </div>
         <div class="left_title">三项活动教育简介</div>
         <?php $news = show_content('smg_news','news','电视新闻中心','三项活动教育简介','1');?>

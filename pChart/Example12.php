@@ -6,17 +6,21 @@
  // Standard inclusions   
  include("pChart/pData.php");
  include("pChart/pChart.php");
-
+ include("../frame.php");
+ $db=get_db();
+ $sql="select * from smg_ratings where item_id=".$_POST['id']." and date='".$_POST['date']."' and imagetype='foldincome' order by id desc";
+ $file=$db->query($sql);
  // Dataset definition 
  $DataSet = new pData;
- $DataSet->ImportFromCSV('Sample/foldincom.csv',",",array(1,2),flase,0); 
+ $DataSet->ImportFromCSV('Sample/foldincom.csv',",",array(1,2),false,0); 
  $DataSet->AddAllSeries();
  $DataSet->SetAbsciseLabelSerie(); 
  $DataSet->SetSerieName("预测月度平均收视率%","Serie1");
  $DataSet->SetSerieName("实际月度平均收视率%","Serie2");
+
  
  // Initialise the graph
- $Test = new pChart(700,230);
+ $Test = new pChart(750,230);
  $Test->setFontProperties("Fonts/zhunyuan.ttf",8);
  $Test->setGraphArea(50,30,680,200);
  $Test->drawFilledRoundedRectangle(7,7,693,223,5,240,240,240);
@@ -24,19 +28,21 @@
  $Test->drawGraphArea(255,255,255,TRUE);
  $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,150,150,150,TRUE,0,2,TRUE);
  $Test->drawGrid(4,TRUE,230,230,230,50);
-
+ 
  // Draw the 0 line
  $Test->setFontProperties("Fonts/zhunyuan.ttf",6);
  $Test->drawTreshold(0,143,55,72,TRUE,TRUE);
 
  // Draw the bar graph
- $Test->drawBarGraph($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,80);
+ $Test->drawBarGraph($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,80);
+ 
+ $Test->drawGrid(4,TRUE,230,230,230,50);
 
  // Finish the graph
- $Test->setFontProperties("Fonts/zhunyuan.ttf",8);
- $Test->drawLegend(550,$DataSet->GetDataDescription(),255,255,255);
+ $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
+ $Test->drawLegend(596,150,$DataSet->GetDataDescription(),255,255,255);
  $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
  $Test->drawTitle(50,22,"柱形图",50,50,50,585);
  $Test->Render("example12.jpg");
- echo 'OK';
+ echo "OK";
 ?>
