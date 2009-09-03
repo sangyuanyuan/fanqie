@@ -25,7 +25,7 @@
  $DataSet->SetSerieName("男","Serie2");
  $DataSet->SetSerieName("女","Serie3");
  // Initialise the graph
- $Test = new pChart(700,230);
+ $Test = new pChart(900,230);
  $Test->setFontProperties("Fonts/zhunyuan.ttf",8);
  $Test->setGraphArea(50,30,585,200);
  $Test->drawFilledRoundedRectangle(7,7,693,223,5,240,240,240);

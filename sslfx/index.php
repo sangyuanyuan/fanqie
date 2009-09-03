@@ -37,6 +37,9 @@
 		<div id=ibody_right>
 			<div class=r_title>收视率预测系统使用说明</div>
 			<div id=r_content>
+				<div style="width:560px; margin:10px; overflow:hidden; float:left; display:inline;"><?php $news=$db->query('select content from smg_news where id=22505'); 
+				 echo get_fck_content($news[0]->content);
+				?></div>
 				<div class=table><a style="color:#FF0000;" href="预测节目信息登记表.xls">预测节目信息登记表</a></div><div class=table><a style="color:#FF0000;" href="新节目审片信息登记表.doc">新节目审片信息登记表</a></div>
 				<div style=" margin-top:10px; margin-left:10px; font-size:15px; line-height:25px; float:left; display:inline;">
 					<form method=post name=sndml action=sendmail.php ENCTYPE="multipart/form-data"> 
