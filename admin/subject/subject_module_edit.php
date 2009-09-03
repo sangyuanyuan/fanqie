@@ -53,8 +53,8 @@
 		<label>内容类别:</label>
 		<select name="module[category_id]" id="category_id">
 			<? foreach ($category as $v) {?>
-				<option value="<?php echo $v->id;?>"><?php echo $v->name;?></option>
-			<?php }?>			
+				<option value="<?php echo $v->id;?>" ><?php echo $v->name;?></option>
+			<?php }?>
 		</select>	
 		<span id="span_quick_add"><a href="#" style="color:blue;" id="a_quick_add">快速添加</a></span>
 	</p>
@@ -123,7 +123,11 @@
 		str = '';
 		jQuery.each(category,function(i){
 			if(this[2] == category_type){
-				str += '<option value=' + this[0] + '>' + this[1] + '</option>';
+				if(this[0]==module.category_id){
+					str += '<option selected="selected"  value=' + this[0] + '>' + this[1] + '</option>';
+				}else{
+					str += '<option  value=' + this[0] + '>' + this[1] + '</option>';
+				}
 			}			
 		});
 		$('#category_id').html(str);

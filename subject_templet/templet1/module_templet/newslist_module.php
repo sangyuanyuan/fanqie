@@ -116,7 +116,7 @@
 	
 		<? 	
 		for($i=0;$i<count($items);$i++){?>
-		<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="news.php?id=<? echo $items[$i]->id;?>"><? echo $items[$i]->short_title;?></a></div>
+		<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:5px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="news.php?id=<? echo $items[$i]->id;?>"><? echo $items[$i]->short_title;?></a></div>
 		<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 		<? }?>
 	
@@ -124,19 +124,38 @@
 <?php
 	}else{
 ?>
-<div style="width:350px; float:left; display:inline;">
-	
+<div style="width:350px; <?php if($height!=''){?>height:<?php echo $height;?>px;<?php }?> float:left; display:inline;">
+	<?php 
+	if($scroll_type!=0){
+	switch($scroll_type){
+		case 1:
+			$direction="left";
+			break;
+		case 2:
+			$direction="up";
+			break;
+		case 3:
+			$direction="right";
+			break;
+		case 4:
+			$direction="down";
+			break;
+	}
+	?>
+	<marquee direction="<?php echo $direction;?>" <?php if($height!=''){?>height="<?php echo $height;?>"<?php }?> scrollamount="2" behavior="scroll" onmousemove=this.stop() onmouseout=this.start()>
+	<?php }?>
 		<?php
 		for($i=0;$i<count($items);$i++){?>
-		<div style="width:305px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="news.php?id=<? echo $items[$i]->id;?>"><? echo $items[$i]->short_title;?></a></div>
+		<div style="width:305px; height:15px; line-height:15px; margin-top:5px; margin-left:5px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="news.php?id=<? echo $items[$i]->id;?>"><? echo $items[$i]->short_title;?></a></div>
 		<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 		<? }?>
-	
+	<?php if($scroll_type!=0){?>
+	</marquee>
+	<?php }?>
 </div>
 <?php
 	}
 ?>
-
 <?php
 	}
 ?>

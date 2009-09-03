@@ -81,7 +81,10 @@ function subject_module_class(){
 			break;	
 		case 'video':
 			return '[视频展示]';
-			break;					
+			break;
+		case 'commet':
+			return '[专题评论]('+limit+'条)';
+			break;				
 	}
 }
 	this.refresh_p = function(){
@@ -136,7 +139,14 @@ function subject_module_class(){
 				$('#ewidth_p').show();
 				$('#scroll_type_p').hide();
 				$('#show_pic_p').hide();
-				break;								
+				break;
+			case 'commet':
+				$('#limit_p').show();
+				$('#eheight_p').hide();
+				$('#ewidth_p').hide();
+				$('#scroll_type_p').show();
+				$('#show_pic_p').hide();
+				break;										
 		}
 	}
 };

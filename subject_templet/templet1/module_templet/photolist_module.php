@@ -95,6 +95,49 @@
 <?php		
 	}else{
 ?>
+<?php if($name!=''){?>
+<div class=title><?php echo $name;?></div>
+<?php }?>
+<div style="width:350px; <?php if($height!=''){?>height:<?php echo $height;?>px;<?php }?> float:left; display:inline;">
+	<?php
+		$photo_width = isset($elment_width)?$elment_width:100;
+		$photo_height = isset($element_height)?$element_height:80;
+	?>
+	<div style="width:<?php echo isset($elment_width)?$elment_width:325;?>px; height:<?php echo isset($element_height)?$element_height:100;?>px; margin-left:15px; margin-top:5px; overflow:hidden; float:left; display:inline">
+	<?php 
+		if($scroll_type!=0){
+		switch($scroll_type){
+			case 1:
+				$direction="left";
+				break;
+			case 2:
+				$direction="up";
+				break;
+			case 3:
+				$direction="right";
+				break;
+			case 4:
+				$direction="down";
+				break;
+		}
+	?>
+	<marquee direction="<?php echo $direction;?>" behavior="scroll" onmousemove=this.stop() onmouseout=this.start()>
+	<?php }?>
+		<?php
+			for($i=0;$i<count($items);$i++){
+		?>
+		<div style="width:<?php echo $photo_width;?>px; margin-left:5px; margin-top:4px; text-align:center; float:left; display:inline;">
+				<a href="/show/show.php?id=<?php echo $items[$i]->id;?>"><img width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>" src="<?php echo $items[$i]->src?>"></a>
+				<a href="/show/show.php?id=<?php echo $items[$i]->id;?>"><?php echo $items[$i]->title;?></a>
+		</div>
+		<?php
+			}
+		?>
+	<?php if($scroll_type!=0){?>
+	</marquee>
+	<?php }?>
+	</div>
+</div>
 <?php
 	}
 ?>

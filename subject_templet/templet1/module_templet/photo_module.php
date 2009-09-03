@@ -64,6 +64,24 @@
 <?php		
 	}else{
 ?>
+<?php if($name!=''){?>
+<div class=title><?php echo $name;?></div>
+<?php }?>
+<div style="width:350px; <?php if($height!=''){?>height:<?php echo $height;?>px;<?php }?> float:left; display:inline;">
+	<?php
+		$photo_width = isset($elment_width)?$elment_width:325;
+		$photo_height = isset($element_height)?$element_height:100;
+	?>
+	<div style="width:<?php echo isset($elment_width)?$elment_width:325;?>px; height:<?php echo isset($element_height)?$element_height:100;?>px; margin-left:15px; margin-top:5px; overflow:hidden; float:left; display:inline">
+		<?php if($items[0]->url!=''){?>
+		<a href="<?php echo $items[0]->url;?>" target="_blank"><img src="<?php echo $items[0]->src;?>" width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>"></a>
+		<?php }else{
+		?>
+		<img src="<?php echo $items[0]->src;?>" width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>">
+		<?php
+		}?>
+	</div>
+</div>
 <?php
 	}
 ?>
