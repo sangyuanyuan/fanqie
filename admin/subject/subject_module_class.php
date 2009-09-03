@@ -69,6 +69,17 @@
 						$items  = $db->query("select b.*, a.priority as apriority from smg_subject_items a left join smg_images b on a.resource_id = b.id where resource_id in ($ids) order by apriority asc, id desc");	
 					}					
 				break;
+				case 'commet':
+					$subject_items = $db->query("select t.resource_id from smg_subject_items t where t.category_type ='commet' and subject_id = $subject_id order by priority asc,id desc limit $record_limit");
+					if($subject_items){
+						$icount = count($subject_items);
+						for($i=0;$i <$icount; $i++){
+							$ids[] = $subject_items[$i]->resource_id;
+						}
+						$ids = implode(',',$ids);
+						$items  = $db->query("select b.*, a.priority as apriority from smg_subject_items a left join smg_comment b on a.resource_id = b.id where a.resource_id in ($ids) order by apriority asc, id desc");	
+					}					
+				break;
 				default:
 					;
 				break;
