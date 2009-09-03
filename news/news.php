@@ -123,7 +123,7 @@
 
 //} ?>
 </head>
-<body <?php if($record[0]->forbbide_copy == 1){ ?>onselectstart="return false" <?php }?>>
+<body <?php if($record[0]->forbbide_copy == 1){ ?> oncontextmenu="return false" ondragstart="return false" onselectstart ="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()" <?php }?>>
 <?php
 if($record[0]->news_type==2)
 {
