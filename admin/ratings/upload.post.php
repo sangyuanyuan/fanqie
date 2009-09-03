@@ -8,7 +8,7 @@
 	}
 	else
 	{
-		$datetime=$date[0]." - ".$date[4];	
+		$datetime=$date[0]."-".$date[4];	
 	}
   $ratings->date = $datetime;
   $ratings->item_id = $_POST['item_id'];

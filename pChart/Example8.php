@@ -10,11 +10,12 @@
  $db=get_db();
  $sql="select * from smg_ratings where imagetype='rader' and item_id=".$_POST['id']." order by id desc";
  $rader=$db->query($sql);
- if($rader[0]->file_path=="")
+  if($file[0]->file_path=="")
  {
- 	alert('对不起该时间段没有收视率分析报告');
- 	redirect('/sslfx/');
- }
+ 	echo "none";
+ 	//alert('对不起该时间段没有收视率分析报告！');
+ 	//redirect('/sslfx/');
+ }else{
  // Dataset definition 
  $DataSet = new pData;
  $DataSet->ImportFromCSV($rader[0]->file_path,",",array(1,2),FALSE,0); 
@@ -41,5 +42,6 @@
  $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
  $Test->drawTitle(0,22,"雷达图",50,50,50,400);
  $Test->Render("example8.jpg");
- echo 0;
+ echo '<img src="/pChart/example8.jpg">';
+}
 ?>

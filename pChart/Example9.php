@@ -8,13 +8,14 @@
  include("pChart/pChart.php");
  include("../frame.php");
  $db=get_db();
- $sql="select * from smg_ratings where item_id=".$_POST['id']." and imagetype='foldline' order by id desc";
+ $sql="select * from smg_ratings where item_id=".$_POST['id']." and date='".$_POST['date']."' and imagetype='foldline' order by id desc limit 1";
  $file=$db->query($sql);
  if($file[0]->file_path=="")
  {
- 	alert('对不起该时间段没有收视率分析报告！');
- 	redirect('/sslfx/');
- }
+ 	echo "none";
+ 	//alert('对不起该时间段没有收视率分析报告！');
+ 	//redirect('/sslfx/');
+ }else{
  // Dataset definition 
  $DataSet = new pData;
  $DataSet->ImportFromCSV($file[0]->file_path,",",array(1,2,3),FALSE,0); 
@@ -52,5 +53,6 @@
  $Test->setFontProperties("Fonts/zhunyuan.ttf",10);
  $Test->drawTitle(50,22,"折线图",50,50,50,585);
  $Test->Render("example9.jpg");
- echo 'OK';
+ echo '<img src="/pChart/example9.jpg">';
+}
 ?>

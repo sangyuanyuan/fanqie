@@ -29,7 +29,8 @@
 						<?php } ?>
 				</select>
 				<input type="button" id="radercx" value="查询">
-				<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>
+				<!--<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>-->
+				<div style="width:395px; height:395px; float:left; display:inline;" id="raderimg"><img src="/pChart/example8.jpg"></div>
 			</div>
 			
 		</div>
@@ -83,22 +84,30 @@
 				?>
 				<select id="xq">
 					<option value="0">请选择</option>
-					<option value="<?php echo $date[0]; ?> - <?php echo $date[4];?>">星期一~星期五</option>
+					<option value="<?php echo $date[0]; ?>-<?php echo $date[4];?>">星期一~星期五</option>
 					<option value="<?php echo $date[5]; ?>">星期六</option>
 					<option value="<?php echo $date[6]; ?>">星期日</option>
 				</select>
 				<input type="button" id="pdcx" value="查询">
 				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
-				<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>
+				<!--<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>-->
+				<div style="width:970px; height:350px;" id="imagefoldline"><img src="/pChart/example9.jpg"></div>
+				
 			</div>
 			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
 				$prom=$db->query($sql);
 			?>
 			<div class=b_title>预测节目收视率跟踪</div>
-			<div class=b_content><iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldincom" src="/pChart/example12.jpg"></iframe></div>
+			<div class=b_content>
+				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:inline;" id="imagefoldincom0"><img src="/pChart/<?php echo $prom[0]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom1"><img src="/pChart/<?php echo $prom[1]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom2"><img src="/pChart/<?php echo $prom[2]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom3"><img src="/pChart/<?php echo $prom[3]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom4"><img src="/pChart/<?php echo $prom[4]->file_path;?>"></div>
+			</div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
 				<?php for($i=0;$i<count($prom);$i++){ ?>
-					<div param="<?php echo $prom[0]->id; ?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
+					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
 				<?php } ?>
 				</div>
 	</div>
@@ -109,7 +118,7 @@
 	$(document).ready(function(){
 		$("#radercx").click(function(){
 			$.post("/pChart/Example8.php",{'id':$("#raderpd").val()},function(data){
-					$("#raderimg").window.location.reload();
+					$("#raderimg").html(data);
 			})
 		});
 		
@@ -127,8 +136,9 @@
 			else
 			{
 				$("#riqi").attr('value',$("#xq").val());
+				var now=new Date();
 				$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
-						$("#imagefoldline").window.location.reload();
+						$("#imagefoldline").html(data);
 				});
 			}
 		});
@@ -139,9 +149,8 @@
 			$(this).css("width","197px");
 			$(this).css("background","#FF9900");
 			$(this).css("color","#000000");
-			$.post("/pChart/Example9.php",{'id':$(this).attr('param')},function(data){
-					$("#imagefoldincom").window.location.reload();
-			})
+			$(".imagefoldincom").css("display","none");
+			$("#imagefoldincom"+$(this).attr("param")).css("display","inline");
 		});
 	})
 </script>
