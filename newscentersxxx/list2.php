@@ -29,8 +29,8 @@
   	}
   		$db=get_db(); 
   		$catelist=$db->query($sql);
-  		$news1=$db->paginate('select title,id,created_at from smg_news where dept_category_id='.$catelist[0]->id.' order by priority asc,created_at desc',15,"news1");
-  		$news2=$db->paginate('select title,id,created_at from smg_news where dept_category_id='.$catelist[1]->id.' order by priority asc,created_at desc',15,"news2");
+  		$news1=$db->paginate('select title,id,created_at,short_title from smg_news where dept_category_id='.$catelist[0]->id.' order by priority asc,created_at desc',15,"news1");
+  		$news2=$db->paginate('select title,id,created_at,short_title from smg_news where dept_category_id='.$catelist[1]->id.' order by priority asc,created_at desc',15,"news2");
   	?>
     <div id="right_body">
       <div class="right_title"><?php echo $catelist[0]->name; ?></div>
