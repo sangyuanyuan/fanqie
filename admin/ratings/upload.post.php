@@ -78,7 +78,9 @@
 	
 	 // Set labels
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
-	
+		$Test->setLabel($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie1","6","四岁以上所有人",221,230,174);
+ 		$Test->setLabel($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie2","6","男",239,233,195);
+ 		$Test->setLabel($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie3","6","女",239,233,195);
 	 // Finish the graph
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
 	  $Test->drawLegend(600,30,$DataSet->GetDataDescription(),255,255,255);
