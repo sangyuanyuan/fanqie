@@ -29,15 +29,15 @@
   	}
   		$db=get_db(); 
   		$catelist=$db->query($sql);
-  		$news1=$db->paginate('select title,id from smg_news where dept_category_id='.$catelist[0]->id.' order by priority asc,created_at desc',15,"news1");
-  		$news2=$db->paginate('select title,id from smg_news where dept_category_id='.$catelist[1]->id.' order by priority asc,created_at desc',15,"news2");
+  		$news1=$db->paginate('select title,id,created_at from smg_news where dept_category_id='.$catelist[0]->id.' order by priority asc,created_at desc',15,"news1");
+  		$news2=$db->paginate('select title,id,created_at from smg_news where dept_category_id='.$catelist[1]->id.' order by priority asc,created_at desc',15,"news2");
   	?>
     <div id="right_body">
       <div class="right_title"><?php echo $catelist[0]->name; ?></div>
       <div class="right_cnt">
 <div class="maintext1">
 	<?php for($i=0;$i<count($news1);$i++){ ?>
-		&middot;<a target="_blank" href="content.php?id=<?php echo $news1[$i]->id; ?>"><?php echo $news1[$i]->title; ?></a><br />
+		<span style="float:left; display:inline;">&middot;<a target="_blank" href="content.php?id=<?php echo $news1[$i]->id; ?>"><?php echo $news1[$i]->title; ?></a></span><span style="float:right; display:inline;"><?php echo $news2[$i]->created_at; ?></span><br />
 	<?php } ?>
 <br />
 </div>
@@ -45,7 +45,7 @@
      <div class="right_title"><?php echo $catelist[1]->name; ?></div>
     <div class="maintext1">
 	<?php for($i=0;$i<count($news2);$i++){ ?>
-		&middot;<a target="_blank" href="content.php?id=<?php echo $news2[$i]->id; ?>"><?php echo $news2[$i]->title; ?></a><br />
+		<span style="float:left; display:inline;">&middot;<a target="_blank" href="content.php?id=<?php echo $news2[$i]->id; ?>"><?php echo $news2[$i]->title; ?></a></span><span style="float:right; display:inline;"><?php echo $news2[$i]->created_at; ?></span><br />
 	<?php } ?>
 <br />
 </div>
@@ -58,10 +58,10 @@
         <div class="left_title">最新视频</div>
         <div class="left_cnt">
           <p><? show_video_player(220,150,$video[0]->photo_url,$video[0]->video_url);?></p>
-          <p>&middot;<?php echo $video[1]->title; ?><br />
-            &middot;<?php echo $video[2]->title; ?>
+          <p>&middot;<a target="_blank" href="/show/video.php?id=<?php echo $video[0]->id;?>"><?php echo $video[0]->title; ?></a><br />
+            &middot;<a target="_blank" href="/show/video.php?id=<?php echo $video[1]->id;?>"><?php echo $video[1]->title; ?></a>
           </p>
-          <p align=right><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('最新视频','电视新闻中心','video');?>">更多...</a></p>
+          <p align=right><a target="_blank" href="videolist.php?id=<?php echo dept_category_id_by_name('最新视频','电视新闻中心','video');?>">更多...</a></p>
         </div>
         <div class="left_title">三项活动教育简介</div>
         <?php $news = show_content('smg_news','news','电视新闻中心','三项活动教育简介','1');?>

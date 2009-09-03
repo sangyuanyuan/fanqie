@@ -14,52 +14,36 @@
   <div id="headtitle"><img src="images/title.jpg" width="1000" height="145" /></div>
 </div>
 <div id="menu">
- <div id="menubg"><a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="">专题论坛</a></div>
+  <div id="menubg"><a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="">专题论坛</a></div>
 </div>
 <div id="content">
   <div id="bodybg">
-  	<?php 
-  		$db=get_db();
-  		$sql="update smg_news set click_count=click_count+1 where id=".$_REQUEST['id'];
-  		$db->execute($sql);
-  		$sql="select n.*,d.name from smg_news n left join smg_category_dept d on n.dept_category_id=d.id where n.id=".$_REQUEST['id'];
-  		$news=$db->query($sql);
-  		if($news[0]->news_type==2)
-			{
-				redirect($news[0]->file_name);
-			}
-			else if($news[0]->news_type==3)
-			{
-				if(strpos($news[0]->target_url,basename($_SERVER['PHP_SELF']))&&strpos($news[0]->target_url,'id='.$id)){
-					alert('对不起，链接出错了！请联系管理员!');
-				}
-				else{
-					redirect($news[0]->target_url);
-				}
-			}	
+  	<?php $sql="select n.id,n.title,n.created_at,d.name from smg_video n left join smg_category_dept d on n.dept_category_id=d.id where d.id=".$_REQUEST['id']." order by n.priority asc,created_at desc";
+  		$db=get_db(); 
+  		$newslist=$db->paginate($sql,30);	
   	?>
     <div id="right_body">
-      <div class="right_title"><?php $news[0]->name; ?></div>
+      <div class="right_title"><?php echo $newslist[0]->name; ?></div>
       <div class="right_cnt">
 <div id="maintext">
-<h1><?php echo $news[0]->title; ?></h1>
-<h2>发布时间 <?php echo $news[0]->created_at; ?> 阅读次数 <?php echo $news[0]->click_count; ?></h2>
-<?php echo get_fck_content($news[0]->content); ?>
-  <br />
+	<?php for($i=0;$i<count($newslist);$i++){ ?>
+		<span style="float:left; display:inline;">&middot;<a target="_blank" href="content.php?id=<?php echo $newslist[$i]->id; ?>"><?php echo $newslist[$i]->title ?></a></span><span style="float:right; display:inline;"><?php echo $newslist[$i]->created_at; ?></span><br />
+	<?php } ?>
+<br />
 </div>
-        <p>&nbsp;</p>
+        <div style="width:693px; text-align:center; float:left; display:inline;"><?php paginate(''); ?></div>
       </div>
     </div>
-   <div id="left_body">
+    <div id="left_body">
       <div id="left_gray">
       	<?php $video = show_content('smg_video','video','电视新闻中心','最新视频','3');?>
         <div class="left_title">最新视频</div>
         <div class="left_cnt">
           <p><? show_video_player(220,150,$video[0]->photo_url,$video[0]->video_url);?></p>
-          <p>&middot;<a target="_blank" href="/show/video.php?id=<?php echo $video[0]->id;?>"><?php echo $video[0]->title; ?></a><br />
-            &middot;<a target="_blank" href="/show/video.php?id=<?php echo $video[1]->id;?>"><?php echo $video[1]->title; ?></a>
+          <p>&middot;<?php echo $video[0]->title; ?><br />
+            &middot;<?php echo $video[1]->title; ?>
           </p>
-          <p align=right><a target="_blank" href="videolist.php?id=<?php echo dept_category_id_by_name('最新视频','电视新闻中心','video');?>">更多...</a></p>
+          <p align=right><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('最新视频','电视新闻中心','video');?>">更多...</a></p>
         </div>
         <div class="left_title">三项活动教育简介</div>
         <?php $news = show_content('smg_news','news','电视新闻中心','三项活动教育简介','1');?>
