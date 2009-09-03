@@ -17,6 +17,6 @@
  	//redirect('/sslfx/');
  }else{
  // Dataset definition 
- echo $file[0]->file_path;
+ echo '<img src='.$file[0]->file_path.'>';
 }
 ?>
