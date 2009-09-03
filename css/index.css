@@ -49,8 +49,10 @@ p{margin:0px; padding:0px;}
 #t_r_t{width:710px; height:79px; background:url(/images/index/bg_t_r_t.jpg) no-repeat; float:left; display:inline;}
 #t_r_t #title{width:675px; height:40px; margin-top:2px; margin-left:5px; text-align:center; font-size:28px; font-weight:bold; color:#CC0000; line-height:40px; overflow:hidden; float:left; display:inline;}
 #t_r_t #title a{color:#CC0000; text-decoration:none;}
-#t_r_t #content{width:675px; height:20px; margin-top:10px; margin-left:5px; text-align:center; font-size:14px; line-height:20px; overflow:hidden; float:left; display:inline;}
-#t_r_t #content a{color:#000000; text-decoration:none;}
+/*#t_r_t #content{width:675px; height:20px; margin-top:10px; margin-left:5px; text-align:center; font-size:14px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#t_r_t #content a{color:#000000; text-decoration:none;}*/
+#t_r_t #content{width:675px; height:30px; margin-left:5px; text-align:center; font-size:28px; line-height:30px; color:#CC0000; font-weight:bold; overflow:hidden; float:left; display:inline;}
+#t_r_t #content a{color:#CC0000; text-decoration:none;}
 #t_r_t #btn{width:22px; height:75px; margin-top:2px; margin-right:2px; background:url(/images/index/btn5.jpg) no-repeat; float:right; display:inline}
 
 #t_r_c_t{width:492px; height:133px; background:url(/images/index/bg_t_r_c_t.jpg) no-repeat; float:left; display:inline;}
