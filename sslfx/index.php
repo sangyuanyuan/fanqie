@@ -102,11 +102,11 @@
 			?>
 			<div class=b_title>预测节目收视率跟踪</div>
 			<div class=b_content>
-				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:inline;" id="imagefoldincom0"><img src="/pChart/<?php echo $prom[0]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom1"><img src="/pChart/<?php echo $prom[1]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom2"><img src="/pChart/<?php echo $prom[2]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom3"><img src="/pChart/<?php echo $prom[3]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom4"><img src="/pChart/<?php echo $prom[4]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:inline;" id="imagefoldincom0"><img src="<?php echo $prom[0]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom1"><img src="<?php echo $prom[1]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom2"><img src="<?php echo $prom[2]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom3"><img src="<?php echo $prom[3]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; height:350px; float:left; display:none;" id="imagefoldincom4"><img src="<?php echo $prom[4]->file_path;?>"></div>
 			</div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
 				<?php for($i=0;$i<count($prom);$i++){ ?>
