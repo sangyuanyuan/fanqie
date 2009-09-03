@@ -59,7 +59,7 @@
 	  $DataSet->SetSerieName("男","Serie2");
 	  $DataSet->SetSerieName("女","Serie3");
 	  // Initialise the graph
-	  $Test = new pChart(900,230);
+	  $Test = new pChart(950,230);
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
 	  $Test->setGraphArea(50,30,585,200);
 	  $Test->drawFilledRoundedRectangle(7,7,693,223,5,240,240,240);
@@ -78,9 +78,8 @@
 	
 	 // Set labels
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
-		$Test->setLabel($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie1","6","四岁以上所有人",221,230,174);
- 		$Test->setLabel($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie2","6","男",239,233,195);
- 		$Test->setLabel($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie3","6","女",239,233,195);
+		$Test->setLabel($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie1","2","time",221,230,174);
+ 		$Test->setLabel($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie2","6","time",239,233,195);
 	 // Finish the graph
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
 	  $Test->drawLegend(600,30,$DataSet->GetDataDescription(),255,255,255);
