@@ -30,10 +30,10 @@
   		$db=get_db(); 
   		$catelist=$db->query($sql);
   		$news1=$db->paginate('select title,id from smg_news where dept_category_id='.$catelist[0]->id,15,"news1");
-  		$news2=$db->paginate('select title,id from smg_news where dept_category_id='.$catelist[0]->id,15,"news2");
+  		$news2=$db->paginate('select title,id from smg_news where dept_category_id='.$catelist[1]->id,15,"news2");
   	?>
     <div id="right_body">
-      <div class="right_title"><?php echo $newslist[0]->name; ?></div>
+      <div class="right_title"><?php echo $catelist[0]->name; ?></div>
       <div class="right_cnt">
 <div class="maintext1">
 	<?php for($i=0;$i<count($news1);$i++){ ?>
@@ -41,15 +41,15 @@
 	<?php } ?>
 <br />
 </div>
-        <div style="margin-bottom:10px; text-align:center; float:left; display:inline;"><?php paginate('','',"news1"); ?></div>
-     <div class="right_title"><?php echo $newslist[0]->name; ?></div>
+        <div style="width:100%; margin-bottom:10px; text-align:center; float:left; display:inline;"><?php paginate('','',"news1"); ?></div>
+     <div class="right_title"><?php echo $catelist[1]->name; ?></div>
     <div class="maintext1">
 	<?php for($i=0;$i<count($news2);$i++){ ?>
 		&middot;<a target="_blank" href="content.php?id=<?php echo $news2[$i]->id; ?>"><?php echo $news2[$i]->title; ?></a><br />
 	<?php } ?>
 <br />
 </div>
-        <div style="text-align:center; float:left; display:inline;"><?php paginate('','',"news2"); ?></div>
+        <div style="width:100%; text-align:center; float:left; display:inline;"><?php paginate('','',"news2"); ?></div>
       </div>
     </div>
     <div id="left_body">
