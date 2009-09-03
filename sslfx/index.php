@@ -15,7 +15,7 @@
 </head>
 <body>
 	<?php require_once('../inc/top.inc.html'); 
-	$sql="select i.*,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader'";
+	$sql="select i.*,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' order by id desc";
 	$name=$db->query($sql);
 	?>
 	<div id=ibody>
@@ -30,7 +30,7 @@
 				</select>
 				<input type="button" id="radercx" value="查询">
 				<!--<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>-->
-				<div style="width:395px; height:395px; float:left; display:inline;" id="raderimg"><img src="<?php echo $name->file_path; ?>"></div>
+				<div style="width:395px; height:395px; float:left; display:inline;" id="raderimg"><img src="<?php echo $name[0]->file_path; ?>"></div>
 			</div>
 			
 		</div>
