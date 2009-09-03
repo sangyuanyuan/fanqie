@@ -12,18 +12,6 @@
 	{
 		$datetime=$date[0]."-".$date[4];	
 	}
-	if($_POST['image']=='rader')
-	{
-		$image="À×´ïÍ¼";	
-	}
-	else if($_POST['image']=='foldline')
-	{
-		$image="ÕÛÏßÍ¼";	
-	}
-	else
-	{
-		$image="ÖùÐÎÍ¼";
-	}
   $ratings->date = $datetime;
   $ratings->item_id = $_POST['item_id'];
   if($_FILES['file_name']['name']!=null){

@@ -30,14 +30,14 @@
 				</select>
 				<input type="button" id="radercx" value="查询">
 				<!--<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>-->
-				<div style="width:395px; height:395px; float:left; display:inline;" id="raderimg"><img src="<?php echo $name[0]->file_path; ?>"></div>
+				<div style="width:375px; height:400px; margin-top:10px; margin-left:10px; float:left; display:inline;" id="raderimg"><img src="<?php echo $name[0]->file_path; ?>"></div>
 			</div>
 			
 		</div>
 		<div id=ibody_right>
 			<div class=r_title>收视率预测系统使用说明</div>
 			<div id=r_content>
-				<div style="width:560px; margin:10px; overflow:hidden; float:left; display:inline;"><?php $news=$db->query('select content from smg_news where id=22505'); 
+				<div style="width:560px; margin-top:10px; margin-left:10px; overflow:hidden; float:left; display:inline;"><?php $news=$db->query('select content from smg_news where id=22505'); 
 				 echo get_fck_content($news[0]->content);
 				?></div>
 				<div class=table><a style="color:#FF0000;" href="预测节目信息登记表.xls">预测节目信息登记表</a></div><div class=table><a style="color:#FF0000;" href="新节目审片信息登记表.doc">新节目审片信息登记表</a></div>
