@@ -9,7 +9,6 @@
  include("../frame.php");
  $db=get_db();
  $sql="select * from smg_ratings where imagetype='rader' and item_id=".$_POST['id']." order by id desc";
- echo $sql;
  $rader=$db->query($sql);
   if($file[0]->file_path=="")
  {
