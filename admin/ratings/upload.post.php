@@ -103,7 +103,7 @@
 	}
 	else
 	{
-		$ratings->file_path = "/pChart/Sample/".$upload_name.".jpg";
+		$ratings->file_path = "/pChart/Sample/".$upload_name;
 		$ratings->imagetype = $_POST['image'];
 		$ratings->save();
 	}
