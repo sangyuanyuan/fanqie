@@ -198,7 +198,7 @@
 
    function SetSerieName($Name,$SerieName="Serie1")
     {
-     $this->DataDescription["Description"][$SerieName] = $Name;
+     $this->DataDescription["Description"][$SerieName] = iconv('gbk','utf-8',$Name);
     }
 
    function SetXAxisName($Name="X Axis")
