@@ -89,7 +89,7 @@
 				</select>
 				<input type="button" id="pdcx" value="查询">
 				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
-				<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="/pChart/example9.jpg"></iframe>
+				<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>
 			</div>
 			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
 				$prom=$db->query($sql);

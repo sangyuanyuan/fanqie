@@ -18,7 +18,7 @@
 </div>
 <div id="content">
   <div id="bodybg">
-  	<?php $sql="select n.id,n.title,d.name from smg_news n left join smg_category_dept d on n.dept_category_id=d.id where d.id=".$_REQUEST['id'];
+  	<?php $sql="select n.id,n.title,d.name from smg_news n left join smg_category_dept d on n.dept_category_id=d.id where d.id=".$_REQUEST['id'].' order by priority asc,created_at desc';
   		$db=get_db(); 
   		$newslist=$db->paginate($sql,30);	
   	?>
