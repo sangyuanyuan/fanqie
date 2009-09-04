@@ -144,6 +144,11 @@
 			浏览次数：<font color=#C2130E><?php echo $news->click_count; ?></font>&nbsp;
 			时间：<?php echo $news->created_at; ?>
 		</div>
+		<?php if($news->video_flag==1){?>
+		<div style="width:400px; height:300px; float:left; margin-top:10px; margin-left:140px; display:inline;">
+			<?php show_video_player('400','300',$news->video_photo_src,$news->video_src,$autostart = "false");?>
+		</div>
+		<?php }?>
 		<div class=content>
 			<?php echo get_fck_content($news->content); ?>
 			<div id=page><?php print_fck_pages($news->content,'article.php?id='.$id); ?></div>
