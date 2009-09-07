@@ -84,7 +84,7 @@
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
 	  $Test->drawLegend(850,30,$DataSet->GetDataDescription(),255,255,255);
 	  $Test->setFontProperties("../../Fonts/zhunyuan.ttf",10);
-	  $Test->drawTitle(50,22,"ÕÛÏßÍ¼",50,50,50,585);
+	  $Test->drawTitle(50,22,"ÕÛÏßÍ¼",50,50,50,835);
 	  $Test->Render("../../upload/ratings/".$upload_name.".jpg");
 	  $ratings->file_path = "/upload/ratings/".$upload_name.".jpg";
 		$ratings->imagetype = $_POST['image'];
