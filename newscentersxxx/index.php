@@ -60,7 +60,7 @@
       </div>
       <div id="right_pic">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        	<?php $news = show_content('smg_news','news','电视新闻中心','获奖名单','5');?>
+        	<?php $news = show_content('smg_news','news','电视新闻中心','获奖名单','6');?>
           <tr>
             <td width="33"><img src="images/hjmd2.gif" width="33" /></td>
             <td width="670" align="center" bgcolor=#FFFFCC>
