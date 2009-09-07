@@ -61,7 +61,7 @@
 	  // Initialise the graph
 	  $Test = new pChart(950,230);
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
-	  $Test->setGraphArea(50,30,585,200);
+	  $Test->setGraphArea(50,30,835,200);
 	  $Test->drawFilledRoundedRectangle(7,7,943,223,5,240,240,240);
 	  $Test->drawRoundedRectangle(5,5,943,225,5,230,230,230);
 	  $Test->drawGraphArea(255,255,255,TRUE);
