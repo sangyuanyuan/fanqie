@@ -30,7 +30,7 @@
 				</select>
 				<input type="button" id="radercx" value="查询">
 				<!--<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>-->
-				<div style="width:375px; height:400px; margin-top:10px; margin-left:10px; float:left; display:inline;" id="raderimg"><img src="<?php echo $name[0]->file_path; ?>"></div>
+				<div style="width:375px; height:363px; margin-top:10px; margin-left:10px; float:left; display:inline;" id="raderimg"><img src="<?php echo $name[0]->file_path; ?>"></div>
 			</div>
 			
 		</div>
@@ -58,20 +58,20 @@
 						</form> 	
 					</div>
 			</div>
-			<?php $sql="select n.title,n.id,n.content,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 2";
+			
+		</div>
+		<?php $sql="select n.title,n.id,n.content,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 2";
 				$news=$db->query($sql);
 			?>
-			<div class=r_title><div style="float:left; display:inline;">收视率相关文献</div><div class=more><a href="/news/news_list.php?id=<?php echo $news[0]->cid;?>">更多</a></div></div>
-			<div id=r_content1>
+			<div class=b_title><div style="float:left; display:inline;">收视率相关文献</div><div class=more><a href="/news/news_list.php?id=<?php echo $news[0]->cid;?>">更多</a></div></div>
+			<div id=b_content>
 				<?php for($i=0;$i<count($news);$i++){ ?>
-				<div class="r_content_every">
+				<div class="b_content_every">
 					<div class=title><span style="color:#ff9900; font-weight:bold;">【节目】<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[$i]->title);?></a></span></div>
 					<div class=content><a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[$i]->content);?></a></div>
 				</div>
 				<?php } ?>
 			</div>
-		</div>
-		
 		<div class=b_title></div>
 			<div class=b_content>
 				<?php $sql="select distinct(i.name),i.id from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' order by i.id desc";
