@@ -94,7 +94,7 @@
 				<input type="button" id="pdcx" value="查询">
 				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
 				<!--<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>-->
-				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings where imagetype='foldline' order by id desc limit 1"); ?><img style="border:1px solid #000000;" src="<?php echo $foldline[0]->file_path; ?>"></div>
+				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings where imagetype='foldline' order by id desc limit 1"); ?><img src="<?php echo $foldline[0]->file_path; ?>"></div>
 				
 			</div>
 			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
