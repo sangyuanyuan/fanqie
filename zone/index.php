@@ -147,29 +147,48 @@
 					<?php } ?>
 				</div>
 			</div>
-			<div id=t_c_b><div id="more"><a target="_blank" href="/comment/zone_list.php?type=zone">more</a></div>
-				<?php for($i=0;$i<count($comment);$i++){ ?>
-					<div class=comment>
-						<div class="top">
-							<div style="width:290px; height:20px; color:#378EC4; overflow:hidden; float:left; display:inline;"><?php echo $comment[$i]->nick_name;?></div>
-							<div style="width:60px; margin-left:5px; color:#D2D4C6; float:left; display:inline;"><?php echo substr($comment[$i]->created_at,0,10); ?></div>
+			<div id=t_c_b><div id="more"><a target="_blank" href="/home/index.php">more</a></div>
+				<?php $feedlist = array();
+					$value = $db->query("SELECT * FROM home_feed WHERE friend='0' and icon<>'post' ORDER BY dateline DESC LIMIT 0,10");
+				?>
+					<div id="MarqueePro" style="width:365px; margin-top:10px; margin-left:10px; text-align:center; line-height:20px; overflow:hidden; height:230px;">
+					<div id="MarqueePro1">
+						<table>
+							<tbody>
+								<?php for($i=0;$i<count($value);$i++){ ?>
+								<tr>
+									<!--{loop $feedlist $value}-->
+										<td><a target="_blank" href="/home/index.php"><?php echo $value[$i]->username."　".str_replace('{actor}','',get_fck_content($value[$i]->title_template));?></a></td>
+									<!--{/loop}-->
+								</tr>
+								<?php } ?>
+							</tbody>
+						</table>
 						</div>
-						<div class="bottom">
-							<?php echo delhtml($comment[$i]->comment); ?>
+						<div id="MarqueePro2"></div>
 						</div>
-					</div>
-				<?php } ?>
-				<form method="post" action="/pub/pub.post.php">
-					<div id="subcomment">
-						<input type="text" id="commenter" name="post[nick_name]">
-						<textarea id="comment" name="post[comment]"></textarea>
-						<input type="hidden" id="resource_type" name="post[resource_type]" value="zone">
-						<input type="hidden" name="type" value="comment">
-						<button id="hf" type="submit">记录</button>
-					</div>
-				</form>
+						<script type="text/javascript">
+						<!--
+						var speed = 60;
+						var MarqueePro = document.getElementById("MarqueePro");
+						var MarqueePro1 = document.getElementById("MarqueePro1");
+						var MarqueePro2 = document.getElementById("MarqueePro2");
+						MarqueePro2.innerHTML = MarqueePro1.innerHTML
+						function Marquee(){
+						if(MarqueePro2.offsetTop - MarqueePro.scrollTop <= 0){
+						MarqueePro.scrollTop -= MarqueePro1.offsetHeight;
+						}
+						else{
+						MarqueePro.scrollTop++;
+						}
+						}
+						var MyMar = setInterval(Marquee,speed);
+						MarqueePro.onmouseover = function() {clearInterval(MyMar)}
+						MarqueePro.onmouseout = function() {MyMar = setInterval(Marquee,speed)} 
+						//-->
+						</script>
+				</div>
 			</div>
-		</div>
 		<div id=t_r>
 			<div id=t_r_t>
 				<div id=title><img src="/images/show/show_index_l_t.jpg"><img src="/images/zone/gg.jpg"></div>
