@@ -27,7 +27,7 @@
             <td width="670" align="center"><span class="right_cnt">
             	<?php $news = show_content('smg_news','news','电视新闻中心','先进人物','10');?>
             	<DIV id=Layer5>
-				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
+				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 660px; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
 				        <TR>
