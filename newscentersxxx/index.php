@@ -14,7 +14,7 @@
   <div id="headtitle"><img src="images/title.jpg" width="1000" height="145" /></div>
 </div>
 <div id="menu">
-  <div id="menubg"><a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="">专题论坛</a></div>
+  <div id="menubg"><a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="/bbs/forumdisplay.php?fid=71">专题论坛</a></div>
 </div>
 <div id="content">
   <div id="bodybg">
@@ -27,7 +27,7 @@
             <td width="670" align="center"><span class="right_cnt">
             	<?php $news = show_content('smg_news','news','电视新闻中心','先进人物','10');?>
             	<DIV id=Layer5>
-				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
+				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 660px; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
 				        <TR>
@@ -36,7 +36,7 @@
 				              <TBODY>
 				              <TR align=middle>
 				              	<? for($i=0;$i<count($news);$i++){?>
-				                <TD><a target="_blank" href="content.php?id=<?php echo $news[0]->cid; ?>"><img border=0 width=108 height=100 src="<? echo $news[$i]->photo_src; ?>"></a></TD>
+				                <TD><a target="_blank" href="content.php?id=<?php echo $news[$i]->id; ?>"><img border=0 width=108 height=100 src="<? echo $news[$i]->photo_src; ?>"></a></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
 				          			<TD id=demo2 vAlign=top></TD></TR></TBODY></TABLE></DIV>
@@ -60,7 +60,7 @@
       </div>
       <div id="right_pic">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        	<?php $news = show_content('smg_news','news','电视新闻中心','获奖名单','5');?>
+        	<?php $news = show_content('smg_news','news','电视新闻中心','获奖名单','6');?>
           <tr>
             <td width="33"><img src="images/hjmd2.gif" width="33" /></td>
             <td width="670" align="center" bgcolor=#FFFFCC>
@@ -175,7 +175,7 @@
         <?php $news = show_content('smg_news','news','电视新闻中心','辅导材料','10');?>
         <div class="left_cnt"><br />
         	<?php for($i=0;$i<count($news);$i++){ ?>
-          <a target="_blank" href="content.php?id=<?php echo $news[0]->id; ?>">&middot;<?php echo $news[$i]->short_title; ?></a><br />
+          <a target="_blank" href="content.php?id=<?php echo $news[$i]->id; ?>">&middot;<?php echo $news[$i]->short_title; ?></a><br />
           <?php } ?>
         <br />
         </div>

@@ -28,7 +28,7 @@
 		$DataSet->SetSerieName("收视率%","Serie1");   
 		$DataSet->SetSerieName("市场份额%","Serie2");  
 		// Initialise the graph
-		$Test = new pChart(375,400);
+		$Test = new pChart(375,300);
 		$Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
 		$Test->drawFilledRoundedRectangle(7,7,393,393,5,240,240,240);
 		$Test->drawRoundedRectangle(5,5,395,395,5,230,230,230);
@@ -61,9 +61,9 @@
 	  // Initialise the graph
 	  $Test = new pChart(950,230);
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
-	  $Test->setGraphArea(50,30,585,200);
-	  $Test->drawFilledRoundedRectangle(7,7,693,223,5,240,240,240);
-	  $Test->drawRoundedRectangle(5,5,695,225,5,230,230,230);
+	  $Test->setGraphArea(50,30,835,200);
+	  $Test->drawFilledRoundedRectangle(7,7,943,223,5,240,240,240);
+	  $Test->drawRoundedRectangle(5,5,943,225,5,230,230,230);
 	  $Test->drawGraphArea(255,255,255,TRUE);
 	  $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,150,150,150,TRUE,0,2);
 	  $Test->drawGrid(4,TRUE,230,230,230,50);
@@ -82,9 +82,9 @@
  		$Test->setLabel($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie2","6","time",239,233,195);
 	 // Finish the graph
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
-	  $Test->drawLegend(600,30,$DataSet->GetDataDescription(),255,255,255);
+	  $Test->drawLegend(850,30,$DataSet->GetDataDescription(),255,255,255);
 	  $Test->setFontProperties("../../Fonts/zhunyuan.ttf",10);
-	  $Test->drawTitle(50,22,"折线图",50,50,50,585);
+	  $Test->drawTitle(50,22,"折线图",50,50,50,835);
 	  $Test->Render("../../upload/ratings/".$upload_name.".jpg");
 	  $ratings->file_path = "/upload/ratings/".$upload_name.".jpg";
 		$ratings->imagetype = $_POST['image'];

@@ -14,7 +14,7 @@
   <div id="headtitle"><img src="images/title.jpg" width="1000" height="145" /></div>
 </div>
 <div id="menu">
-  <div id="menubg"><a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="">专题论坛</a></div>
+  <div id="menubg"><a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('学片学人','电视新闻中心','news');?>">学片学人</a> | <a target="_blank" href="list2.php?id=<?php echo dept_category_id_by_name('网上讲评','电视新闻中心','news');?>">网上讲评</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('业务探讨','电视新闻中心','news');?>">业务探讨</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">主持心得</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">新人训练营</a> | <a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('辅导材料','电视新闻中心','news');?>">辅导材料</a> | <a target="_blank" href="/bbs/forumdisplay.php?fid=71">专题论坛</a></div>
 </div>
 <div id="content">
   <div id="bodybg">
@@ -38,7 +38,7 @@
 <div class="maintext1">
 	<?php for($i=0;$i<count($news1);$i++){ if($_REQUEST['id']==184){$newsjp=$db->query('select id from smg_news where short_title="'.$news1[$i]->short_title.'讲评"');}?>
 		
-		<span style="float:left; display:inline;">&middot;<a target="_blank" href="content.php?id=<?php echo $news1[$i]->id; ?>"><?php echo $news1[$i]->title; ?></a>　<?php if($_REQUEST['id']==184){?><a target="_blank" href="content.php?id=<?php echo $newsjp[0]->id;?>">讲评</a><?php } ?></span><span style="float:right; display:inline;"><?php echo $news2[$i]->created_at; ?></span><br />
+		<span style="float:left; display:inline;">&middot;<a target="_blank" href="content.php?id=<?php echo $news1[$i]->id; ?>"><?php echo $news1[$i]->title; ?></a>　<?php if($_REQUEST['id']==184){?><a target="_blank" href="content.php?id=<?php echo $newsjp[0]->id;?>">讲评</a><?php } ?></span><span style="float:right; display:inline;"><?php echo $news1[$i]->created_at; ?></span><br />
 	<?php } ?>
 <br />
 </div>
