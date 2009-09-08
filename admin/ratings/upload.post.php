@@ -28,13 +28,13 @@
 		$DataSet->SetSerieName("收视率%","Serie1");   
 		$DataSet->SetSerieName("市场份额%","Serie2");  
 		// Initialise the graph
-		$Test = new pChart(375,300);
+		$Test = new pChart(375,330);
 		$Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
 		$Test->drawFilledRoundedRectangle(7,7,393,393,5,240,240,240);
 		$Test->drawRoundedRectangle(5,5,395,395,5,230,230,230);
-		$Test->setGraphArea(30,30,350,350);
-		$Test->drawFilledRoundedRectangle(30,30,350,350,5,255,255,255);
-		$Test->drawRoundedRectangle(30,30,350,350,5,220,220,220);
+		$Test->setGraphArea(30,30,350,310);
+		$Test->drawFilledRoundedRectangle(30,30,350,310,5,255,255,255);
+		$Test->drawRoundedRectangle(30,30,350,310,5,220,220,220);
 		
 		// Draw the radar graph
 		$Test->drawRadarAxis($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,20,120,120,120,230,230,230);

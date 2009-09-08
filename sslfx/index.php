@@ -15,7 +15,7 @@
 </head>
 <body>
 	<?php require_once('../inc/top.inc.html'); 
-	$sql="select distinct(i.name),i.id,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' order by i.id desc";
+	$sql="select distinct(i.name),i.id,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' group by i.name order by i.id desc";
 	$name=$db->query($sql);
 	?>
 	<div id=ibody>
