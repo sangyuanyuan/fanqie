@@ -149,10 +149,11 @@
 			{
 				$.post("rq.post.php",{'rq':$("#xq").val()},function(data){
 						$("#riqi").attr("value",data);
+							$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#riqi").val()},function(data){
+									$("#imagefoldline").html(data);
+							});
 					});
-				$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#riqi").val()},function(data){
-						$("#imagefoldline").html(data);
-				});
+			
 			}
 		});
 		$(".b_pro1").mouseover(function(){
