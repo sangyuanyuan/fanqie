@@ -4,17 +4,19 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<?php css_include_tag('sslfx','top','bottom');
-	use_jquery();
-	js_include_once_tag('sslfx','total');	
-	$db=get_db();
-	?>
+	<?php
+		css_include_tag('sslfx','top','bottom');
+	 js_include_once_tag('total');	 ?>
 <script>
 	total("收视率分析","server");
 </script>
 </head>
 <body>
 	<?php require_once('../inc/top.inc.html'); 
+	css_include_tag('jquery_ui');
+	use_jquery_ui();
+	
+	$db=get_db();
 	$sql="select distinct(i.name),i.id,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' group by i.name order by i.id desc";
 	$name=$db->query($sql);
 	?>
@@ -74,7 +76,7 @@
 			</div>
 		<div class=b_title></div>
 			<div class=b_content>
-				<?php $sql="select distinct(i.name),i.id from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' order by i.id desc";
+				<?php $sql="select distinct(i.name),i.id from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' group by i.name order by i.id desc";
 	$name=$db->query($sql);?>
 				<select id="pd">
 					<option value="0">请选择</option>
@@ -85,28 +87,23 @@
 				<?php $rq=date('Y-m-d'); 
 					$date=aweek($rq,1);
 				?>
-				<select id="xq">
-					<option value="0">请选择</option>
-					<option value="<?php echo $date[0]; ?>-<?php echo $date[4];?>">星期一~星期五</option>
-					<option value="<?php echo $date[5]; ?>">星期六</option>
-					<option value="<?php echo $date[6]; ?>">星期日</option>
-				</select>
+				<input type="text" class="date_jquery required" id="xq" name="date">
 				<input type="button" id="pdcx" value="查询">
 				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
 				<!--<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>-->
 				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings where imagetype='foldline' order by id desc limit 1"); ?><img src="<?php echo $foldline[0]->file_path; ?>"></div>
 				
 			</div>
-			<?php $sql="select r.*,i.name from smg_ratings r left join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by i.id desc";
+			<?php $sql="select a.* from (select r.*,i.name from smg_ratings r right join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by r.id desc) as a group by name order by id desc";
 				$prom=$db->query($sql);
 			?>
 			<div class=b_title>预测节目收视率跟踪</div>
 			<div class=b_content>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldincom0"><img width=800 src="<?php echo $prom[0]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom1"><img width=800 src="<?php echo $prom[1]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom2"><img width=800 src="<?php echo $prom[2]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom3"><img width=800 src="<?php echo $prom[3]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom4"><img width=800 src="<?php echo $prom[4]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldincom0"><img width=800 height=350 src="<?php echo $prom[0]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom1"><img width=800 height=350 src="<?php echo $prom[1]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom2"><img width=800 height=350 src="<?php echo $prom[2]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom3"><img width=800 height=350 src="<?php echo $prom[3]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom4"><img width=800 height=350 src="<?php echo $prom[4]->file_path;?>"></div>
 			</div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
 				<?php for($i=0;$i<count($prom);$i++){ ?>
@@ -119,6 +116,15 @@
 </html>
 <script>
 	$(document).ready(function(){
+		$(".date_jquery").datepicker(
+			{
+				monthNames:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+				dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+				dayNamesMin:["日","一","二","三","四","五","六"],
+				dayNamesShort:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+				dateFormat: 'yy-mm-dd'
+			}
+		);
 		$("#radercx").click(function(){
 			$.post("/pChart/Example8.php",{'id':$("#raderpd").val()},function(data){
 					$("#raderimg").html(data);
@@ -138,14 +144,15 @@
 			}
 			else
 			{
-				$("#riqi").attr('value',$("#xq").val());
-				var now=new Date();
-				$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#xq").val()},function(data){
+				$.post("rq.post.php",{'rq':$("#xq").val()},function(data){
+						$("#riqi").attr("value",data);
+					});
+				$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#riqi").val()},function(data){
 						$("#imagefoldline").html(data);
 				});
 			}
 		});
-		$(".b_pro1").mouseover(function(){		
+		$(".b_pro1").mouseover(function(){
 			$(".b_pro1").css("background","#FFCC00");
 			$(".b_pro1").css("color","#ffffff");
 			$(".b_pro1").css("width","199px");

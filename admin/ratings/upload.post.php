@@ -38,7 +38,7 @@
 		
 		// Draw the radar graph
 		$Test->drawRadarAxis($DataSet->GetData(),$DataSet->GetDataDescription(),TRUE,20,120,120,120,230,230,230);
-		$Test->drawFilledRadar($DataSet->GetData(),$DataSet->GetDataDescription(),50,20);
+		$Test->drawFilledRadar($DataSet->GetData(),$DataSet->GetDataDescription(),40,20);
 		
 		// Finish the graph
 		$Test->drawLegend(15,15,$DataSet->GetDataDescription(),255,255,255);
