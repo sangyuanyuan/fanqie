@@ -18,6 +18,6 @@
 }
 else
 {
-	echo '<img width=950 src='.$rader[0]->file_path.'>';	
+	echo '<img width=375 src='.$rader[0]->file_path.'>';	
 }
 ?>
