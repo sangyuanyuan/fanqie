@@ -37,6 +37,7 @@
 			}
 		?>
 	</table>
+	<input type="hidden" id="db_talbe" value="smg_report_item">
 	<table width="795" border="0">
 		<tr colspan="5" class=tr3>
 			<td><?php paginate();?> </td>
