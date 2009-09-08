@@ -27,7 +27,7 @@
       <div class="right_cnt">
 <div id="maintext">
 	<?php for($i=0;$i<count($newslist);$i++){ ?>
-		<span style="float:left; display:inline;">&middot;<a target="_blank" href="content.php?id=<?php echo $newslist[$i]->id; ?>"><?php echo $newslist[$i]->title ?></a></span><span style="float:right; display:inline;"><?php echo $newslist[$i]->created_at; ?></span><br />
+		<span style="float:left; display:inline;">&middot;<a target="_blank" href="/show/video.php?id=<?php echo $newslist[$i]->id; ?>"><?php echo $newslist[$i]->title ?></a></span><span style="float:right; display:inline;"><?php echo $newslist[$i]->created_at; ?></span><br />
 	<?php } ?>
 <br />
 </div>
