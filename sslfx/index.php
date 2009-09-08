@@ -31,8 +31,11 @@
 						<?php } ?>
 				</select>
 				<input type="button" id="radercx" value="查询">
+				<?php $sql="select * from smg_ratings where imagetype='rader' and item_id=1 order by id desc";
+					$rader=$db->query($sql);
+				?>
 				<!--<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>-->
-				<div style="width:375px; height:363px; margin-top:10px; margin-left:10px; float:left; display:inline;" id="raderimg"><img src="<?php echo $name[0]->file_path; ?>"></div>
+				<div style="width:375px; height:363px; margin-top:10px; margin-left:10px; float:left; display:inline;" id="raderimg"><img src="<?php echo $rader[0]->file_path; ?>"></div>
 			</div>
 			
 		</div>
