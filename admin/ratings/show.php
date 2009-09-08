@@ -30,12 +30,15 @@
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->date;?></td>
 					<td><?php echo $record[$i]->file_path;?></td>
-					<td><a href='<?php echo $record[$i]->file_path;?>'>下载</a></td>
+					<td><a href='<?php echo $record[$i]->file_path;?>'>下载</a>
+						<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a>
+					</td>
 				</tr>
 		<?php
 			}
 		?>
 	</table>
+	<input type="hidden" id="db_talbe" value="smg_ratings">
 	<table width="795" border="0">
 		<tr colspan="5" class=tr3>
 			<td><?php paginate();?> </td>
