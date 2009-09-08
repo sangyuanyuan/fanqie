@@ -23,7 +23,7 @@
 		</tr>
 		<?php
 			$db = get_db();
-			$record = $db->paginate('select * from smg_ratings where item_id='.$item_id.' order by date desc',20);
+			$record = $db->paginate('select * from smg_ratings where item_id='.$item_id.' order by id desc',20);
 			$count_record = count($record);
 			for($i=0;$i<$count_record;$i++){
 		?>
