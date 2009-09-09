@@ -31,7 +31,7 @@
 						<?php } ?>
 				</select>
 				<input type="button" id="radercx" value="查询">
-				<?php $sql="select r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' and i.name='上海电视台新闻综合频道'  order by i.id desc";
+				<?php $sql="select i.id,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' and i.name='上海电视台新闻综合频道'  order by r.id desc";
 					$rader=$db->query($sql);
 				?>
 				<!--<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>-->
