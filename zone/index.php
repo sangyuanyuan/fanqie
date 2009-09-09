@@ -158,7 +158,7 @@
 								<?php for($i=0;$i<count($value);$i++){ ?>
 								<tr>
 									<!--{loop $feedlist $value}-->
-										<td><a target="_blank" href="/home/index.php"><?php echo $value[$i]->username."　".str_replace('{actor}','',get_fck_content($value[$i]->title_template));?></a></td>
+										<td><script language="javascript" type="text/javascript" src="http://127.0.0.1/home/js.php?id=3"></script></td>
 									<!--{/loop}-->
 								</tr>
 								<?php } ?>

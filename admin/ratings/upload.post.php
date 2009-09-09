@@ -59,10 +59,10 @@
 	  $DataSet->SetSerieName("ÄÐ","Serie2");
 	  $DataSet->SetSerieName("Å®","Serie3");
 	  // Initialise the graph
-	  $Test = new pChart(950,230);
+	  $Test = new pChart(950,300);
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
-	  $Test->setGraphArea(50,30,835,200);
-	  $Test->drawFilledRoundedRectangle(7,7,943,223,5,240,240,240);
+	  $Test->setGraphArea(50,30,835,270);
+	  $Test->drawFilledRoundedRectangle(7,7,943,297,5,240,240,240);
 	  $Test->drawRoundedRectangle(5,5,943,225,5,230,230,230);
 	  $Test->drawGraphArea(255,255,255,TRUE);
 	  $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,150,150,150,TRUE,0,2);

@@ -24,8 +24,11 @@
 		$string = 'http://' .$_SERVER[HTTP_HOST].$_SERVER['PHP_SELF'].'?id='.$id;
 		css_include_tag('news_news','top','bottom');
 		use_jquery();
-		js_include_once_tag('pubfun','news','pub','total');
-		$db = get_db();
+		js_include_once_tag('pubfun','news','pub','total');?>
+		<script>
+			total("普通新闻","test");
+		</script>
+		<?php $db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
 		$record=$db->query($sql);
 		if($record[0]->related_news!="")
