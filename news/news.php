@@ -100,7 +100,7 @@
 		//$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,(select count(*) from smg_digg cd where cd.diggtoid=d.diggtoid and cd.file_type='comment') as total,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by total desc limit 2";
 		//$digg=$db->query($sql);
   ?>
- <?php
+<!-- <?php
   //if($cookie1<=200){
   if($record[0]->cplatform=="news"){?>
 <script>
@@ -124,7 +124,7 @@
 </script>
 <?php }
 
-//} ?>
+//} ?>-->
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?> oncontextmenu="return false" ondragstart="return false" onselectstart ="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()" <?php }?>>
 <?php
