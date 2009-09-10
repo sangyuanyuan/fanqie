@@ -3,8 +3,12 @@
  	include("../../pChart/pChart/pChart.php");
   require_once('../../frame.php');
   $ratings = new table_class('smg_ratings');
-	$date=aweek($_POST['date'],1);
-	if($_POST['date']==$date[5]||$_POST['date']==$date[6])
+  $w   =   date( "w ",   strtotime($_POST['date']));
+  if($w!=0)
+  {
+		$date=aweek($_POST['date'],1);
+	}
+	if($_POST['date']==$date[5]||$w==0)
 	{
 		$datetime=$_POST['date'];	
 	}
