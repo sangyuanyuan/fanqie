@@ -148,7 +148,7 @@
 				</div>
 			</div>
 			<div id=t_c_b><div id="more"><a target="_blank" href="/home/index.php">more</a></div>
-					<div id="MarqueePro" style="width:365px; margin-top:10px; margin-left:10px; text-align:center; line-height:20px; overflow:hidden; height:230px;">
+					<div id="MarqueePro" style="width:365px; margin-top:10px; margin-left:10px; text-align:left; line-height:20px; overflow:hidden; height:230px;">
 					<div id="MarqueePro1">
 						<table>
 							<tbody>
