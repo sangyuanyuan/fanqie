@@ -104,6 +104,11 @@
 				</select>
 				<?php $rq=$db->query('select date from smg_ratings order by id desc');
 				$rq=substr($rq[0]->date,0,10);
+				$w   =   date( "w ",strtotime($rq));
+				if($w==0)
+				{
+					$rq=date("Y-m-d",strtotime($rq.' -1 day'));	
+				}
 				$date=aweek($rq,1);
 				?>
 				<select id="rq">
