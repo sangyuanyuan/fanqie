@@ -102,7 +102,8 @@
 						<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){ ?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
 						<?php } ?>
 				</select>
-				<?php $rq=date("Y-m-d",mktime(date("m",time()),date("d",time())-7,date("Y",time())));
+				<?php $rq=date("Y-m-d H:i:s",mktime(date("H",time()),date("i",time()),date("s",time()),date("m",time()),date("d",time())-7,date("Y",time())));
+				$rq=substr($rq,0,10);
 					$date=aweek($rq,1);
 				?>
 				<input type="text" class="date_jquery required" id="xq" name="date" value="<?php echo $date[5]; ?>">
