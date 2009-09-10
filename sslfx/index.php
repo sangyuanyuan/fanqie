@@ -146,17 +146,16 @@
 				alert('请选择一个频道');
 				return false;	
 			}
-			else if($("#xq").val()==0)
+			else if($("#rq").val()==0)
 			{
 				alert('请选择一个日期');
 				return false;
 			}
 			else{
 						$("#riqi").attr("value",$("#rq").val());
-							$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#rq").val()},function(data){
-									$("#imagefoldline").html(data);
-							});
-					});
+						$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#rq").val()},function(data){
+								$("#imagefoldline").html(data);
+						});
 			
 			}
 		});
