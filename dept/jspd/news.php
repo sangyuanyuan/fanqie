@@ -101,7 +101,7 @@ include("inc/topbar.inc.php");
                     </tr>
                     <tr>
                       <td><DIV style="text-align:center;" class="wz" id="div2"> 浏览次数：<? echo $news->click_count;?> 时间： <? echo $news->last_edited_at;?></DIV>
-                        <DIV id="div3" style="margin-left:10px; float:left; display:inline;">
+                        <DIV id="div3" style="font-size:13px; line-height:20px; margin-top:10px; margin-left:10px; float:left; display:inline;">
                          <?php echo get_fck_content($news->content); ?>
                         </DIV><div style="text-align:center;"><?php print_fck_pages($news->content,'news.php?id='.$id); ?></div></td>
                     </tr>
