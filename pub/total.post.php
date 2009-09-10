@@ -37,6 +37,5 @@
 		$strsql='update smg_total set count=count+1 where parentname="'.$parent_name.'" and platform="'.$platform.'" and name="'.$name.'" and datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
 		$record = $db->execute($strsql);		
 	}
-	echo $strsql;
 	
 ?>

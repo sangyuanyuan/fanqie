@@ -129,7 +129,7 @@
 ?>
  <script>
 			total("普通新闻","test");
-		</script>
+	</script>
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?> oncontextmenu="return false" ondragstart="return false" onselectstart ="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()" <?php }?>>
 <?php

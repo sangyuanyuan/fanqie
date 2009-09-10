@@ -95,18 +95,22 @@
 			</div>
 		<div class=b_title>18:00~24:00每十分钟收视率趋势图</div>
 			<div class=b_content>
-				<?php $sql="select distinct(i.name),i.id from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' group by i.name order by i.id desc";
+				<?php $sql="select distinct(i.name),i.id,r.date from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' group by i.name order by i.id desc";
 	$name=$db->query($sql);?>
 				<select id="pd">
 					<?php for($i=0;$i<count($name);$i++){ ?>
 						<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){ ?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
 						<?php } ?>
 				</select>
-				<?php $rq=date("Y-m-d H:i:s",mktime(date("H",time()),date("i",time()),date("s",time()),date("m",time()),date("d",time())-7,date("Y",time())));
-				$rq=substr($rq,0,10);
+				<?php $rq=$db->query('select date from smg_ratings order by id desc');
+				$rq=substr($rq[0]->date,0,10);
 					$date=aweek($rq,1);
 				?>
-				<input type="text" class="date_jquery required" id="xq" name="date" value="<?php echo $date[5]; ?>">
+				<select>
+					<option value="<?php echo $date[0]."-".$date[4]; ?>">周一~周五</option>
+					<option value="<?php echo $date[5];?>" selected=selected >周六</option>
+					<option value="<?php echo $date[6];?>">周日</option>
+				</select>
 				<input type="button" id="pdcx" value="查询">
 				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
 				<!--<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>-->
