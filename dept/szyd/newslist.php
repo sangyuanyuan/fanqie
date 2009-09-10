@@ -17,7 +17,7 @@
 <? 
 $dept_cate_id=$_REQUEST['id'];
 $db=get_db();
-$strsql='SELECT * FROM smg_news s where is_dept_adopt=1 and dept_id=46 and dept_category_id='.$dept_cate_id;
+$strsql='SELECT * FROM smg_news s where is_dept_adopt=1 and dept_id=46 and dept_category_id='.$dept_cate_id." order by created_at desc";
 $rows=$db->query($strsql,10);
 ?>
 <div  class="main">

@@ -80,6 +80,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 				  
       ?>
     	<div style="width:760px; margin-left:100px;">
+    		<div style="width:760px; text-align:center; font-size:18px; font-weight:bold; float:left; display:inline;"><?php echo delhtml($news[0]->title); ?></div>
         	<? echo get_fck_content($news[0]->content);?><br>
         	 <? for($i=0;$i<count($rows);$i++){?>
   			<div style="width:760px; height:20px; margin-top:10px; margin-left:50px; line-height:15px; color:#000000;  text-align:right; border-bottom:1px dashed #000000; float:left; display:inline;"><? echo $rows[$i]->created_at;?>　　<? echo $rows[$i]->nick_name;?></div>
