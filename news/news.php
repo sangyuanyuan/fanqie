@@ -27,7 +27,9 @@
 		js_include_once_tag('pubfun','news','pub','total');
 		
 	?>
-		
+		<script>
+			total("普通新闻","test");
+	</script>
 		<?php 
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
@@ -127,9 +129,7 @@
 
 //} 
 ?>
- <script>
-			total("普通新闻","test");
-	</script>
+ 
 </head>
 <body <?php if($record[0]->forbbide_copy == 1){ ?> oncontextmenu="return false" ondragstart="return false" onselectstart ="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()" <?php }?>>
 <?php

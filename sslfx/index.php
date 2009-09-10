@@ -104,7 +104,8 @@
 				</select>
 				<?php $rq=$db->query('select date from smg_ratings order by id desc');
 				$rq=substr($rq[0]->date,0,10);
-					$date=aweek($rq,1);
+				alert($rq);
+				$date=aweek($rq,1);
 				?>
 				<select id="rq">
 					<option value="<?php echo $date[0]."-".$date[4]; ?>">周一~周五</option>
