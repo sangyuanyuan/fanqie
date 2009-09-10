@@ -102,7 +102,7 @@
 						<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){ ?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
 						<?php } ?>
 				</select>
-				<?php $rq=$db->query('select date from smg_ratings order by id desc');
+				<?php $rq=$db->query('select date from smg_ratings where imagetype="foldline" order by id desc');
 				$rq=substr($rq[0]->date,0,10);
 				$w   =   date( "w ",strtotime($rq));
 				if($w==0)
