@@ -106,7 +106,7 @@
 				$rq=substr($rq[0]->date,0,10);
 					$date=aweek($rq,1);
 				?>
-				<select>
+				<select id="riqi">
 					<option value="<?php echo $date[0]."-".$date[4]; ?>">周一~周五</option>
 					<option value="<?php echo $date[5];?>" selected=selected >周六</option>
 					<option value="<?php echo $date[6];?>">周日</option>
@@ -151,10 +151,8 @@
 				alert('请选择一个日期');
 				return false;
 			}
-			else
-			{
-				$.post("rq.post.php",{'rq':$("#xq").val()},function(data){
-						$("#riqi").attr("value",data);
+			else{
+						$("#rq").attr("value",$("#riqi").val());
 							$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#riqi").val()},function(data){
 									$("#imagefoldline").html(data);
 							});
