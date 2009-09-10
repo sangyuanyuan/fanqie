@@ -6,8 +6,8 @@ $start=$_REQUEST['start'];
 $end=$_REQUEST['end'];
 if($start==""){$start=date('Y-m-d').' 00:00:00';}else{$start=$_REQUEST['start'].' 00:00:00';}
 if($end==""){$end=date('Y-m-d').' 23:59:59';}else{$end=$_REQUEST['end'].' 23:59:59';}
-$clickcount=$db->query("select sum(count) as totalcount from smg_total where platform<>'' and platform<>'test' and datetime>='".$start."' and datetime<='".$end."'");
-$clickcount1=$db->query("select sum(count) as totalcount from smg_total where platform<>'' and platform<>'test' and datetime>='".$start."' and datetime<='".$end."' group by platform");
+$clickcount=$db->query("select sum(count) as totalcount from smg_total where platform<>'' and datetime>='".$start."' and datetime<='".$end."'");
+$clickcount1=$db->query("select sum(count) as totalcount from smg_total where platform<>'' and datetime>='".$start."' and datetime<='".$end."' group by platform");
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -44,7 +44,7 @@ $clickcount1=$db->query("select sum(count) as totalcount from smg_total where pl
 			<td>展示</td><td>　<?php echo $clickcount1[3]->totalcount; ?></td>
 		</tr>
 		<tr height="20" align="center">
-			<td>交流</td><td>　<?php echo $clickcount1[4]->totalcount; ?></td>
+			<td>交流</td><td>　<?php echo $clickcount1[5]->totalcount; ?></td>
 		</tr>
 		<tr height="20" align="center">
 			<td>其他</td><td>　<?php echo $clickcount1[1]->totalcount; ?></td>
