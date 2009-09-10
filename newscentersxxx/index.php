@@ -148,7 +148,7 @@
       <?php $news = show_content('smg_news','news','电视新闻中心','新人训练营','10');?>
       <div class="right_cnt">
       	<?php for($i=0;$i<count($news);$i++){ ?>
-      		<a target="_blank" href="content.php?id=<?php echo $news[$i]->id;?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>" width="108" height="100" hspace="10" vspace="10" /></a>
+      		<a target="_blank" href="content.php?id=<?php echo $news[$i]->id;?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>" width="108" height="150" hspace="10" vspace="10" /></a>
       	<?php } ?>
       	</div>
     </div>
