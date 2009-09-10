@@ -21,13 +21,13 @@
 	$name=$db->query($sql);
 	?>
 	<div id=ibody>
+		<div style="width:995px; font-weight:bold; text-align:center; float:left; display:inline;"><h1>电视节目收视率预测</h1></div>
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
 			<div class=l_content>
 				<select style="margin-left:10px;" id="raderpd">
-					<option value="0">请选择</option>
 					<?php for($i=0;$i<count($name);$i++){ ?>
-						<option value="<?php echo $name[$i]->id; ?>"><?php echo $name[$i]->name; ?></option>
+						<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
 						<?php } ?>
 				</select>
 				<input type="button" id="radercx" value="查询">
@@ -65,6 +65,22 @@
 			</div>
 			
 		</div>
+		<?php $sql="select a.* from (select r.*,i.name from smg_ratings r right join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by r.id desc) as a group by name order by id desc limit 5";
+				$prom=$db->query($sql);
+			?>
+		<div class=b_title>预测节目收视率跟踪</div>
+			<div class=b_content>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldincom0"><img width=800 height=300 src="<?php echo $prom[0]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom1"><img width=800 height=300 src="<?php echo $prom[1]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom2"><img width=800 height=300 src="<?php echo $prom[2]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom3"><img width=800 height=300 src="<?php echo $prom[3]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom4"><img width=800 height=300 src="<?php echo $prom[4]->file_path;?>"></div>
+			</div>
+			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
+				<?php for($i=0;$i<count($prom);$i++){ ?>
+					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
+				<?php } ?>
+				</div>
 		<?php $sql="select n.title,n.id,n.content,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 2";
 				$news=$db->query($sql);
 			?>
@@ -82,37 +98,22 @@
 				<?php $sql="select distinct(i.name),i.id from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' group by i.name order by i.id desc";
 	$name=$db->query($sql);?>
 				<select id="pd">
-					<option value="0">请选择</option>
 					<?php for($i=0;$i<count($name);$i++){ ?>
-						<option value="<?php echo $name[$i]->id; ?>"><?php echo $name[$i]->name; ?></option>
+						<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){ ?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
 						<?php } ?>
 				</select>
-				<?php $rq=date('Y-m-d'); 
+				<?php $rq=date("Y-m-d",mktime(date("m",time()),date("d",time())-7,date("Y",time())));
 					$date=aweek($rq,1);
 				?>
-				<input type="text" class="date_jquery required" id="xq" name="date">
+				<input type="text" class="date_jquery required" id="xq" name="date" value="<?php echo $date[5]; ?>">
 				<input type="button" id="pdcx" value="查询">
 				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
 				<!--<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>-->
-				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings where imagetype='foldline' order by id desc limit 1"); ?><img src="<?php echo $foldline[0]->file_path; ?>"></div>
+				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings r left join smg_report_item i on r.item_id=i.id where r.imagetype='foldline' and i.name='上海电视台新闻综合频道' and r.date='".$date[5]."' order by r.id desc limit 1"); ?><img src="<?php echo $foldline[0]->file_path; ?>"></div>
 				
 			</div>
-			<?php $sql="select a.* from (select r.*,i.name from smg_ratings r right join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by r.id desc) as a group by name order by id desc limit 5";
-				$prom=$db->query($sql);
-			?>
-			<div class=b_title>预测节目收视率跟踪</div>
-			<div class=b_content>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldincom0"><img width=800 height=350 src="<?php echo $prom[0]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom1"><img width=800 height=350 src="<?php echo $prom[1]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom2"><img width=800 height=350 src="<?php echo $prom[2]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom3"><img width=800 height=350 src="<?php echo $prom[3]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom4"><img width=800 height=350 src="<?php echo $prom[4]->file_path;?>"></div>
-			</div>
-			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
-				<?php for($i=0;$i<count($prom);$i++){ ?>
-					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
-				<?php } ?>
-				</div>
+			
+		
 	</div>
 <?php require_once('../inc/bottom.inc.php');?>
 </body>
