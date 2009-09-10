@@ -93,7 +93,7 @@
 				</div>
 				<?php } ?>
 			</div>
-		<div class=b_title></div>
+		<div class=b_title>18:00~24:00每十分钟收视率趋势图</div>
 			<div class=b_content>
 				<?php $sql="select distinct(i.name),i.id from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' group by i.name order by i.id desc";
 	$name=$db->query($sql);?>
