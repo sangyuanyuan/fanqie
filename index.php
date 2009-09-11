@@ -927,8 +927,8 @@ total("首页","other");
     	<div id=b_b_c_c>
     		<div id=title>番茄工具</div>
     		<a target="_blank" href="/news/news_list?id=64"><img width="146" height="60" border=0 style="margin-top:10px; margin-left:2px;" src="/images/index/gj_logo.jpg"></a>
-    		<div class=content><a target="_blank" src="/sslfx/">节目收视率预测工具</a></div>
-    		<div class=content><a target="_blank" src="/server/news/news.php?id=12302">员工自助系统</a></div>
+    		<div class=content><a target="_blank" href="/sslfx/">节目收视率预测工具</a></div>
+    		<div class=content><a target="_blank" href="/server/news/news.php?id=12302">员工自助系统</a></div>
    	 	</div>
       <!-- start bottom_bottom_right !-->
  			<div id=b_b_r>
