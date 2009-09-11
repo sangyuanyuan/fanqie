@@ -6,8 +6,8 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<style>
 		html { overflow-x:hidden; }
-		table{width:550px; float:left; display:inline;}
-		tr{width:550px; float:left; display:inline;}
+		table{width:590px; float:left; display:inline;}
+		tr{width:590px; float:left; display:inline;}
 		td{width:12.5%;}
 	</style>
 </head>
