@@ -926,9 +926,11 @@ total("首页","other");
  			<!-- end !-->	     	
     	<div id=b_b_c_c>
     		<div id=title>番茄工具</div>
-    		<a target="_blank" href="/news/news_list?id=64"><img width="146" height="60" border=0 style="margin-top:10px; margin-left:2px;" src="/images/index/gj_logo.jpg"></a>
     		<div class=content><a target="_blank" href="/sslfx/">节目收视率预测工具</a></div>
     		<div class=content><a target="_blank" href="/server/news/news.php?id=12302">员工自助系统</a></div>
+    		<div class=content><a target="_blank" href="/server/news/news.php?id=12312">人力资源部常用表格</a></div>
+    		<div class=content><a target="_blank" href="/server/news/news.php?id=12310">办公室常用表格</a></div>
+    		<div class=content><a target="_blank" href="/server/news/news.php?id=12314">工会常用表格</a></div>
    	 	</div>
       <!-- start bottom_bottom_right !-->
  			<div id=b_b_r>
