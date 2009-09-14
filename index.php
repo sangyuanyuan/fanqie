@@ -584,20 +584,20 @@ total("首页","other");
 					<div id="focus_10"></div> 
 					<script type="text/javascript"> 
 						var pic_width=190; //图片宽度
-						var pic_height=115; //图片高度
+						var pic_height=135; //图片高度
 						var pics10="<?php echo implode(',',$picsurl10);?>";
 						var mylinks10="<?php echo implode(',',$picslink10);?>";
 						
 						var texts10="<?php echo implode(',',$picstext10);?>";
 		 
-						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "190", "115", "6","#FFFFFF");
+						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "190", "135", "6","#FFFFFF");
 						picflash.addParam('wmode','opaque');
 						picflash.addVariable("picurl",pics10);
 						picflash.addVariable("piclink",mylinks10);
 						picflash.addVariable("pictext",texts10);				
 						picflash.addVariable("pictime","5");
 						picflash.addVariable("borderwidth","190");
-						picflash.addVariable("borderheight","115");
+						picflash.addVariable("borderheight","135");
 						picflash.addVariable("borderw","false");
 						picflash.addVariable("buttondisplay","true");
 						picflash.addVariable("textheight","20");
