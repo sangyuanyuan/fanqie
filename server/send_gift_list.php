@@ -28,7 +28,8 @@
      		<div id="menu2"><a href="calendar.php">日历</a></div>
 			<div id="menu2"><a href="today.php">今日寿星</a></div>			
 			<div id="menu1">送礼列表</div>
-			<div id="menu2"><a href="birthday_top.php">寿星排行</a></div>		
+			<div id="menu2"><a href="birthday_top.php">寿星排行</a></div>	
+			<div id="menu2"><a href="birthday_search.php">寿星查询</a></div>	
      	</div>
   
         <div id="context">
