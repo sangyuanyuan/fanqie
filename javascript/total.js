@@ -14,8 +14,6 @@ function rtotal()
         if (showhttp.status == 200) { 
  		   		var result = showhttp.responseText;
         } else {
-        	alert(showhttp.status);
-            alert("服务器忙，请刷新后重试。");
           }
     }
 }
