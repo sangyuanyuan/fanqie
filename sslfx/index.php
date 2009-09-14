@@ -21,7 +21,7 @@
 	$name=$db->query($sql);
 	?>
 	<div id=ibody>
-		<div style="width:995px; font-weight:bold; text-align:center; float:left; display:inline;"><h1>电视节目收视率预测</h1></div>
+		<div style="width:995px; font-weight:bold; text-align:center; float:left; display:inline;"><h1>收视率分析及预测工具</h1></div>
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
 			<div class=l_content>
