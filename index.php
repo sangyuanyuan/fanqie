@@ -298,7 +298,7 @@ total("首页","other");
  					else
  					{ $sql = 'select n.short_title,n.title,c.platform,n.id,n.image_flag,n.video_flag,n.created_at from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-普" and c.platform="news" and TO_DAYS(NOW())-TO_DAYS(n.created_at) <= '.$record[0]->days.'  order by n.click_count desc,n.created_at desc limit 46';}
 					$record_import_a=$db -> query($sql);
-					$sql = 'select n.photo_src,c.platform,n.id,n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
+					$sql = 'select n.photo_src,c.platform,c.id as cid,n.id,n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
 					$record_import_b=$db -> query($sql);
 					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-专" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2';
 					$record_import_c=$db -> query($sql);
@@ -566,7 +566,7 @@ total("首页","other");
 				$record_out=$db -> query($sql);
   		?>
   		<div id=t_r_r_m>
- 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_subject[0]->cid?>" target=_blank>有图为证</a></div>
+ 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $$record_import_b[0]->cid?>" target=_blank>有图为证</a></div>
  				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
  				<div class=list_tlm id=list_tlm1 >
  					<?php 
