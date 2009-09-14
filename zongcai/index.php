@@ -277,8 +277,10 @@
 				alert('你已经投过票了');
 				return false;
 			}
-			var item = $('input[name='+$(this).attr('name')+'][checked]').val();
-			if(item==undefined){
+			alert($(this).attr('name'));
+			var item = $('input[name='+$(this).attr('name')+']').attr('checked');
+			alert(item);
+			if(item==false){
 				alert('请选择一个选项后再进行投票！');
 			}else{
 				$.post('vote.post.php',{'vote_id':$("#vote_id").val(),'item_id':item,'type':$(this).attr('name')},function(data){
