@@ -114,7 +114,7 @@
 					<option value="<?php echo $date[5];?>" selected=selected >周六</option>
 					<option value="<?php echo $date[6];?>">周日</option>
 				</select>
-				<input type="button" id="pdcx" value="查询">
+				<input type="button" id="pdcx" value="查询"> <a style="text-decoration:none; color:#000000;" target="_blank" href="list.php">历史数据</a>
 				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
 				<!--<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>-->
 				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings r left join smg_report_item i on r.item_id=i.id where r.imagetype='foldline' and i.name='上海电视台新闻综合频道' and r.date='".$date[5]."' order by r.id desc limit 1"); ?><img src="<?php echo $foldline[0]->file_path; ?>"></div>
