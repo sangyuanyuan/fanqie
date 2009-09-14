@@ -161,7 +161,7 @@ total("首页","other");
 				<div id=content_trrm>
 					<ul>
 						<?php for($i=0;$i< 11;$i++){?>
-							<li><a href="/<?php echo $record_baoliao[$i]->platform?>/news/news.php?id=<?php echo $record_baoliao[$i]->news_id?>" target=_blank><span style="color:#ff0000">·</span><?php echo $record_baoliao[$i]->short_title ?></a></li>
+							<li><a title=<?php echo $record_baoliao[$i]->short_title; ?> href="/<?php echo $record_baoliao[$i]->platform;?>/news/news.php?id=<?php echo $record_baoliao[$i]->news_id?>" target=_blank><span style="color:#ff0000">·</span><?php echo $record_baoliao[$i]->short_title ?></a></li>
 						<? }?>
 					</ul>		
 				</div>
