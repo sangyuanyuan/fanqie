@@ -12,7 +12,6 @@ function a1()
 			$("#btn_tlb_1").css('background','url(/images/index/btn4.jpg) no-repeat');
 			$(".list_tlb").css('display','none');
 			$("#list_tlb1").css('display','inline');
-			setTimeout("a2()",time);
 }
 
 function a2()

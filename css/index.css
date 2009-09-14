@@ -26,7 +26,7 @@ p{margin:0px; padding:0px;}
 #t_l_t .list li{width:245px; height:19px; padding-left:17px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; cursor:pointer; background:url(/images/icon/arrow1.gif) no-repeat 0 3px; float:left; display:inline;}
 #t_l_t .list li a{color:#000000; text-decoration:none;}
 
-#t_l_m{width:272px; height:253px; background:url(/images/index/bg_t_r_r_m.jpg) no-repeat; float:left; display:inline;}
+#t_l_m{width:272px; height:292px; background:url(/images/index/bg_t_r_r_m.jpg) no-repeat; float:left; display:inline;}
 #t_l_m .btn_tlm{width:83px; height:19px; margin-left:34px; padding-top:12px; line-height:15px; font-weight:bold; text-align:center; color:#ffffff; cursor:pointer; float:left; display:inline;}
 #t_l_m .btn_tlm a{color:#ffffff; text-decoration:none;}
 #t_l_m .list_tlm{width:240px; height:200px; margin-top:10px; margin-left:18px; overflow:hidden; float:left; display:none;}
@@ -35,11 +35,12 @@ p{margin:0px; padding:0px;}
 #t_l_m #btn{width:75px; height:24px; margin-top:50px; margin-left:10px; background:url(/images/index/btn9.jpg) no-repeat; float:left; display:inline;}
 #t_l_m .more{ margin-left:150px; margin-top:10px; line-height:15px; float:left; display:inline;}
 #t_l_m .more a{color:#FF0000; text-decoration:none;}
-#t_l_m #content_trrm{width:230px; height:150px; overflow:hidden; margin-top:10px; margin-left:20px; color:#656565; line-height:19px; float:left; display:inline;}
-#t_l_m #content_trrm a{color:#656565; text-decoration:none;}
-#t_l_m #content_trrm a:hover{color:#656565; text-decoration:underline;}
+#t_l_m #content_trrm{width:230px; height:190px; overflow:hidden; margin-top:10px; margin-left:20px; color:#656565; line-height:19px; float:left; display:inline;}
+#t_l_m #content_trrm li{width:225px; height:17px; overflow:hidden; float:left; display:inline;}
+#t_l_m #content_trrm li a{color:#656565; text-decoration:none;}
+#t_l_m #content_trrm li a:hover{color:#656565; text-decoration:underline;}
 
-#t_l_b{width:280px; height:260px; background:url(/images/index/bg_t_l_b.jpg) no-repeat; float:left; display:inline;}
+#t_l_b{width:280px; height:230px; background:url(/images/index/bg_t_l_b.jpg) no-repeat; float:left; display:inline;}
 #t_l_b .btn_tlb{width:83px; height:31px; margin-top:6px; margin-left:34px; padding-top:12px; line-height:15px; font-weight:bold; text-align:center; color:#ffffff; cursor:pointer;  float:left; display:inline;}
 #t_l_b .btn_tlb a{color:#ffffff; text-decoration:none;}
 #t_l_b .list_tlb{width:240px; height:200px; margin-top:3px; margin-left:18px; overflow:hidden;  float:left; display:none;}
@@ -118,8 +119,8 @@ p{margin:0px; padding:0px;}
 #t_r_r_m #content_trrm a:hover{color:#656565; text-decoration:underline;}
 #t_r_r_m .btn_tlm{width:83px; height:19px; margin-left:10px; padding-top:12px; line-height:15px; font-weight:bold; text-align:center; color:#ffffff; cursor:pointer; float:left; display:inline;}
 #t_r_r_m .btn_tlm a{color:#ffffff; text-decoration:none;}
-#t_r_r_m .list_tlm{width:200px; height:135px; margin-top:10px; margin-left:5px; overflow:hidden; float:left; display:none;}
-#t_r_r_m .list_tlm li{width:200px; height:19px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; float:left; display:inline;}
+#t_r_r_m .list_tlm{width:195px; height:135px; margin-top:10px; margin-left:8px; overflow:hidden; float:left; display:none;}
+#t_r_r_m .list_tlm li{width:195px; height:19px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; float:left; display:inline;}
 #t_r_r_m .list_tlm li a{ color:#000000; text-decoration:none;}
  
 #t_r_r_b{width:215px; height:225px; background:url(/images/index/bg_t_r_r_b.jpg) no-repeat; float:right; display:inline;}
