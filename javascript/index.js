@@ -1,5 +1,3 @@
-var time=20000;
-setTimeout("a1()",time);
 
 function a1()
 {
@@ -25,7 +23,6 @@ function a2()
 			$("#btn_tlb_2").css('background','url(/images/index/btn4.jpg) no-repeat');
 			$(".list_tlb").css('display','none');
 			$("#list_tlb2").css('display','inline');
-			setTimeout("a1()",time);
 }
 
 
