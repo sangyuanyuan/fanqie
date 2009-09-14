@@ -38,5 +38,4 @@
 		$record = $db->execute($strsql);		
 	}
 	
-	
 ?>

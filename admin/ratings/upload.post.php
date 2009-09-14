@@ -3,8 +3,12 @@
  	include("../../pChart/pChart/pChart.php");
   require_once('../../frame.php');
   $ratings = new table_class('smg_ratings');
-	$date=aweek($_POST['date'],1);
-	if($_POST['date']==$date[5]||$_POST['date']==$date[6])
+  $w   =   date( "w ",   strtotime($_POST['date']));
+  if($w!=0)
+  {
+		$date=aweek($_POST['date'],1);
+	}
+	if($_POST['date']==$date[5]||$w==0)
 	{
 		$datetime=$_POST['date'];	
 	}
@@ -30,8 +34,8 @@
 		// Initialise the graph
 		$Test = new pChart(375,330);
 		$Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
-		$Test->drawFilledRoundedRectangle(7,7,393,393,5,240,240,240);
-		$Test->drawRoundedRectangle(5,5,395,395,5,230,230,230);
+		$Test->drawFilledRoundedRectangle(7,7,393,310,5,240,240,240);
+		$Test->drawRoundedRectangle(5,5,395,310,5,230,230,230);
 		$Test->setGraphArea(30,30,350,310);
 		$Test->drawFilledRoundedRectangle(30,30,350,310,5,255,255,255);
 		$Test->drawRoundedRectangle(30,30,350,310,5,220,220,220);
@@ -59,10 +63,10 @@
 	  $DataSet->SetSerieName("ÄÐ","Serie2");
 	  $DataSet->SetSerieName("Å®","Serie3");
 	  // Initialise the graph
-	  $Test = new pChart(950,230);
+	  $Test = new pChart(950,300);
 	  $Test->setFontProperties("../../pChart/Fonts/zhunyuan.ttf",8);
-	  $Test->setGraphArea(50,30,835,200);
-	  $Test->drawFilledRoundedRectangle(7,7,943,223,5,240,240,240);
+	  $Test->setGraphArea(50,30,835,270);
+	  $Test->drawFilledRoundedRectangle(7,7,943,297,5,240,240,240);
 	  $Test->drawRoundedRectangle(5,5,943,225,5,230,230,230);
 	  $Test->drawGraphArea(255,255,255,TRUE);
 	  $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,150,150,150,TRUE,0,2);

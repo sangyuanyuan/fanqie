@@ -144,11 +144,11 @@
           </tr>
         </table>
       </div>
-      <div class="right_title"><div style="float:left; display:inline;">新人训练营</div><div style="margin-right:30px; float:right; display:inline;"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('主持心得','电视新闻中心','news');?>">更多>></a></div></div>
-      <?php $news = show_content('smg_news','news','电视新闻中心','新人训练营','10');?>
+      <div class="right_title"><div style="float:left; display:inline;">新人训练营</div><div style="margin-right:30px; float:right; display:inline;"><a target="_blank" href="list.php?id=<?php echo dept_category_id_by_name('新人训练营','电视新闻中心','news');?>">更多>></a></div></div>
+      <?php $news = show_content('smg_news','news','电视新闻中心','新人训练营','12');?>
       <div class="right_cnt">
       	<?php for($i=0;$i<count($news);$i++){ ?>
-      		<a target="_blank" href="content.php?id=<?php echo $news[$i]->id;?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>" width="108" height="100" hspace="10" vspace="10" /></a>
+      		<a target="_blank" href="content.php?id=<?php echo $news[$i]->id;?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>" width="90" height="126" hspace="10" vspace="10" /></a>
       	<?php } ?>
       	</div>
     </div>

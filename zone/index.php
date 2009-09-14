@@ -148,20 +148,13 @@
 				</div>
 			</div>
 			<div id=t_c_b><div id="more"><a target="_blank" href="/home/index.php">more</a></div>
-				<?php $feedlist = array();
-					$value = $db->query("SELECT * FROM home_feed WHERE friend='0' and icon<>'post' ORDER BY dateline DESC LIMIT 0,10");
-				?>
-					<div id="MarqueePro" style="width:365px; margin-top:10px; margin-left:10px; text-align:center; line-height:20px; overflow:hidden; height:230px;">
+					<div id="MarqueePro" style="width:365px; margin-top:10px; margin-left:10px; text-align:left; line-height:15px; overflow:hidden; height:230px;">
 					<div id="MarqueePro1">
 						<table>
 							<tbody>
-								<?php for($i=0;$i<count($value);$i++){ ?>
 								<tr>
-									<!--{loop $feedlist $value}-->
-										<td><a target="_blank" href="/home/index.php"><?php echo $value[$i]->username."　".str_replace('{actor}','',get_fck_content($value[$i]->title_template));?></a></td>
-									<!--{/loop}-->
+										<td><script language="javascript" type="text/javascript" src="http://172.27.203.81:8080/home/js.php?id=3"></script></td>
 								</tr>
-								<?php } ?>
 							</tbody>
 						</table>
 						</div>

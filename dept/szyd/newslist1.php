@@ -37,7 +37,7 @@ function MM_swapImage() { //v3.0
 <? 
 $dept_cate_id=$_REQUEST['id'];
 $db=get_db();
-$strsql='SELECT * FROM smg_news s where is_dept_adopt=1 and dept_id=46 and dept_category_id='.$dept_cate_id;
+$strsql='SELECT * FROM smg_news s where is_dept_adopt=1 and dept_id=46 and dept_category_id='.$dept_cate_id." order by created_at desc";
 $rows=$db->paginate($strsql);
 ?>
 <body onload="MM_preloadImages('pic2/btn_1_1.png','pic2/btn_2_1.png','pic2/btn_3_1.png')">

@@ -24,11 +24,40 @@
 		$string = 'http://' .$_SERVER[HTTP_HOST].$_SERVER['PHP_SELF'].'?id='.$id;
 		css_include_tag('news_news_head','top','bottom');
 		use_jquery();
-		js_include_once_tag('pubfun','news','pub','total');
-		$db = get_db();
+		js_include_once_tag('pubfun','news','pub','total');?>
+		<script>
+			total("头条新闻","test");
+		</script>
+		<?php $db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
-		$record=$db->query($sql);	
-		$about = array();
+		$record=$db->query($sql); 
+ //if($cookie1<=200){
+ if($record[0]->cplatform=="news"){?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","news");
+</script>
+<?php }else if($record[0]->cplatform=="show"){ ?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","show");
+</script>
+<?php }else if($record[0]->cplatform=="server"){?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","server");
+</script>
+<?php }else if($record[0]->cplatform=="zone"){?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","zone");
+</script>
+<?php }else{?>
+<script>
+	total("<?php echo $record[0]->categoryname; ?>","news");
+</script>
+<?php }
+//} 
+?>
+</head>
+<?php 
+$about = array();
 		if($record[0]->related_news!="")
 		{	
 			$about1=search_newsid($id,$record[0]->related_news,"smg_news",10,"n.priority asc,n.created_at desc");
@@ -79,32 +108,7 @@
 		}
 		//$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,(select count(*) from smg_digg cd where cd.diggtoid=d.diggtoid and cd.file_type='comment') as total,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by total desc limit 2";
 		//$digg=$db->query($sql);
-    ?>
- <?php 
- //if($cookie1<=200){
- if($record[0]->cplatform=="news"){?>
-<script>
-	total("<?php echo $record[0]->categoryname; ?>","news");
-</script>
-<?php }else if($record[0]->cplatform=="show"){ ?>
-<script>
-	total("<?php echo $record[0]->categoryname; ?>","show");
-</script>
-<?php }else if($record[0]->cplatform=="server"){?>
-<script>
-	total("<?php echo $record[0]->categoryname; ?>","server");
-</script>
-<?php }else if($record[0]->cplatform=="zone"){?>
-<script>
-	total("<?php echo $record[0]->categoryname; ?>","zone");
-</script>
-<?php }else{?>
-<script>
-	total("<?php echo $record[0]->categoryname; ?>","news");
-</script>
-<?php }
-//} ?>
-</head>
+?>
 <body <?php if($record[0]->forbbide_copy == 1){ ?> oncontextmenu="return false" ondragstart="return false" onselectstart ="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()" <?php }?>>
 <? 
 if($record[0]->news_type==2)

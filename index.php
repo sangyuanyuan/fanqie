@@ -882,7 +882,7 @@ total("首页","other");
       <!-- start bottom_bottom_center !-->
  			<div id=b_b_c>
  				<div id=title>番茄喜讯</div>
-				<DIV id=Layer5 style=" margin-top:40px; margin-left:10px; ">
+				<DIV id=Layer5 style="margin-left:10px; ">
 				      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
@@ -924,7 +924,14 @@ total("首页","other");
 				</DIV>
  			</div>
  			<!-- end !-->	     	
-    
+    	<div id=b_b_c_c>
+    		<div id=title><div style="width:20px; height:20px; float:left; display:inline;"><img src="/images/index/fqgjlogo.gif"></div><div style="width:80px; height:20px; margin-top:3px; margin-left:3px; float:left; display:inline;">番茄工具</div></div>
+    		<div class=content><a style="color:red; font-weight:bold;" target="_blank" href="/sslfx/">节目收视率预测工具</a></div>
+    		<div class=content><a target="_blank" href="/server/news/news.php?id=12302">员工自助系统</a></div>
+    		<div class=content><a target="_blank" href="/server/news/news.php?id=12312">人力资源部常用表格</a></div>
+    		<div class=content><a target="_blank" href="/server/news/news.php?id=12310">办公室常用表格</a></div>
+    		<div class=content><a target="_blank" href="/server/news/news.php?id=12314">工会常用表格</a></div>
+   	 	</div>
       <!-- start bottom_bottom_right !-->
  			<div id=b_b_r>
 				<div id=title>在线杂志</div>

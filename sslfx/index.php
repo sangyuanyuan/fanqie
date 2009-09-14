@@ -21,27 +21,28 @@
 	$name=$db->query($sql);
 	?>
 	<div id=ibody>
+		<div style="width:995px; font-weight:bold; text-align:center; float:left; display:inline;"><h1>电视节目收视率预测</h1></div>
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
 			<div class=l_content>
 				<select style="margin-left:10px;" id="raderpd">
-					<option value="0">请选择</option>
 					<?php for($i=0;$i<count($name);$i++){ ?>
-						<option value="<?php echo $name[$i]->id; ?>"><?php echo $name[$i]->name; ?></option>
+						<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
 						<?php } ?>
 				</select>
 				<input type="button" id="radercx" value="查询">
+				<?php $sql="select i.id,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' and i.name='上海电视台新闻综合频道'  order by r.id desc";
+					$rader=$db->query($sql);
+				?>
 				<!--<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>-->
-				<div style="width:375px; height:363px; margin-top:10px; margin-left:10px; float:left; display:inline;" id="raderimg"><img src="<?php echo $name[0]->file_path; ?>"></div>
+				<div style="width:375px; height:363px; margin-top:10px; margin-left:10px; float:left; display:inline;" id="raderimg"><img src="<?php echo $rader[0]->file_path; ?>"></div>
 			</div>
 			
 		</div>
 		<div id=ibody_right>
 			<div class=r_title>收视率预测系统使用说明</div>
 			<div id=r_content>
-				<div style="width:560px; margin-top:10px; margin-left:10px; overflow:hidden; float:left; display:inline;"><?php $news=$db->query('select content from smg_news where id=22505'); 
-				 echo get_fck_content($news[0]->content);
-				?></div>
+				<iframe FRAMEBORDER=0 style="width:590px; height:264px; margin-top:10px; overflow:hidden; float:left; display:inline;" src="sslfxframe.php"></iframe>
 				<div class=table><a style="color:#FF0000;" href="预测节目信息登记表.xls">预测节目信息登记表</a></div><div class=table><a style="color:#FF0000;" href="新节目审片信息登记表.doc">新节目审片信息登记表</a></div>
 				<div style=" margin-top:10px; margin-left:10px; font-size:15px; line-height:25px; float:left; display:inline;">
 					<form method=post name=sndml action=sendmail.php ENCTYPE="multipart/form-data"> 
@@ -62,6 +63,22 @@
 			</div>
 			
 		</div>
+		<?php $sql="select a.* from (select r.*,i.name from smg_ratings r right join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by r.id desc) as a group by name order by id desc limit 5";
+				$prom=$db->query($sql);
+			?>
+		<div class=b_title>预测节目收视率跟踪</div>
+			<div class=b_content>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldincom0"><img width=800 height=300 src="<?php echo $prom[0]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom1"><img width=800 height=300 src="<?php echo $prom[1]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom2"><img width=800 height=300 src="<?php echo $prom[2]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom3"><img width=800 height=300 src="<?php echo $prom[3]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom4"><img width=800 height=300 src="<?php echo $prom[4]->file_path;?>"></div>
+			</div>
+			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
+				<?php for($i=0;$i<count($prom);$i++){ ?>
+					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
+				<?php } ?>
+				</div>
 		<?php $sql="select n.title,n.id,n.content,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 2";
 				$news=$db->query($sql);
 			?>
@@ -74,42 +91,37 @@
 				</div>
 				<?php } ?>
 			</div>
-		<div class=b_title></div>
+		<div class=b_title>18:00~24:00每十分钟收视率曲线图</div>
 			<div class=b_content>
-				<?php $sql="select distinct(i.name),i.id from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' group by i.name order by i.id desc";
+				<?php $sql="select distinct(i.name),i.id,r.date from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' group by i.name order by i.id desc";
 	$name=$db->query($sql);?>
 				<select id="pd">
-					<option value="0">请选择</option>
 					<?php for($i=0;$i<count($name);$i++){ ?>
-						<option value="<?php echo $name[$i]->id; ?>"><?php echo $name[$i]->name; ?></option>
+						<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){ ?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
 						<?php } ?>
 				</select>
-				<?php $rq=date('Y-m-d'); 
-					$date=aweek($rq,1);
+				<?php $rq=$db->query('select date from smg_ratings where imagetype="foldline" order by id desc');
+				$rq=substr($rq[0]->date,0,10);
+				$w   =   date( "w ",strtotime($rq));
+				if($w==0)
+				{
+					$rq=date("Y-m-d",strtotime($rq.' -1 day'));	
+				}
+				$date=aweek($rq,1);
 				?>
-				<input type="text" class="date_jquery required" id="xq" name="date">
+				<select id="rq">
+					<option value="<?php echo $date[0]."-".$date[4]; ?>">周一~周五</option>
+					<option value="<?php echo $date[5];?>" selected=selected >周六</option>
+					<option value="<?php echo $date[6];?>">周日</option>
+				</select>
 				<input type="button" id="pdcx" value="查询">
 				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
 				<!--<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>-->
-				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings where imagetype='foldline' order by id desc limit 1"); ?><img src="<?php echo $foldline[0]->file_path; ?>"></div>
+				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings r left join smg_report_item i on r.item_id=i.id where r.imagetype='foldline' and i.name='上海电视台新闻综合频道' and r.date='".$date[5]."' order by r.id desc limit 1"); ?><img src="<?php echo $foldline[0]->file_path; ?>"></div>
 				
 			</div>
-			<?php $sql="select a.* from (select r.*,i.name from smg_ratings r right join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by r.id desc) as a group by name order by id desc";
-				$prom=$db->query($sql);
-			?>
-			<div class=b_title>预测节目收视率跟踪</div>
-			<div class=b_content>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldincom0"><img width=800 height=350 src="<?php echo $prom[0]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom1"><img width=800 height=350 src="<?php echo $prom[1]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom2"><img width=800 height=350 src="<?php echo $prom[2]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom3"><img width=800 height=350 src="<?php echo $prom[3]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom4"><img width=800 height=350 src="<?php echo $prom[4]->file_path;?>"></div>
-			</div>
-			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
-				<?php for($i=0;$i<count($prom);$i++){ ?>
-					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
-				<?php } ?>
-				</div>
+			
+		
 	</div>
 <?php require_once('../inc/bottom.inc.php');?>
 </body>
@@ -137,19 +149,17 @@
 				alert('请选择一个频道');
 				return false;	
 			}
-			else if($("#xq").val()==0)
+			else if($("#rq").val()==0)
 			{
 				alert('请选择一个日期');
 				return false;
 			}
-			else
-			{
-				$.post("rq.post.php",{'rq':$("#xq").val()},function(data){
-						$("#riqi").attr("value",data);
-					});
-				$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#riqi").val()},function(data){
-						$("#imagefoldline").html(data);
-				});
+			else{
+						$("#riqi").attr("value",$("#rq").val());
+						$.post("/pChart/Example9.php",{'id':$("#pd").val(),'date':$("#rq").val()},function(data){
+								$("#imagefoldline").html(data);
+						});
+			
 			}
 		});
 		$(".b_pro1").mouseover(function(){
