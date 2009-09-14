@@ -33,6 +33,7 @@
 			<div id="menu2"><a href="today.php">今日寿星</a></div>			
 			<div id="menu1">送礼列表</div>
 			<div id="menu2"><a href="birthday_top.php">寿星排行</a></div>	
+			<div id="menu2"><a href="birthday_search.php">寿星查询</a></div>
      	</div>
   
         <div id="context">
@@ -44,6 +45,7 @@
 				}
 				$records = $db->paginate($sql,9);
 				$count = count($records);
+				if($count!=0){
 				for($i=0;$i<$count;$i++){
 					$nick_name = $records[$i]->nick_name ? $records[$i]->nick_name : $records[$i]->reciever;
 					$send_type_string = $records[$i]->send_type == 1 ? '回赠' : '赠送';
@@ -61,6 +63,9 @@
 			</div>
 			<?php } ?>
      		<div id=paginate><?php paginate();?></div>
+			<?php }else{?>
+				该用户还没收到礼物
+			<?php }?>
         </div>
         
   </div>
