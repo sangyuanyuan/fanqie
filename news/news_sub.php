@@ -42,7 +42,7 @@
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　标题</div>
-		<div class=t_r><input id="news_title" type="text" name="news[title]"></div>
+		<div class=t_r><input id="news_title" type="text" name="news[title]">(首页只显示17个字标题)</div>
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　手机</div>

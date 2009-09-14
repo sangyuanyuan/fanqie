@@ -35,7 +35,7 @@ p{margin:0px; padding:0px;}
 #t_l_m #btn{width:75px; height:24px; margin-top:50px; margin-left:10px; background:url(/images/index/btn9.jpg) no-repeat; float:left; display:inline;}
 #t_l_m .more{ margin-left:150px; margin-top:10px; line-height:15px; float:left; display:inline;}
 #t_l_m .more a{color:#FF0000; text-decoration:none;}
-#t_l_m #content_trrm{width:230px; height:170px; overflow:hidden; margin-top:30px; margin-left:20px; color:#656565; line-height:19px; float:left; display:inline;}
+#t_l_m #content_trrm{width:230px; height:190px; overflow:hidden; margin-top:10px; margin-left:20px; color:#656565; line-height:19px; float:left; display:inline;}
 #t_l_m #content_trrm li{width:225px; height:17px; overflow:hidden; float:left; display:inline;}
 #t_l_m #content_trrm li a{color:#656565; text-decoration:none;}
 #t_l_m #content_trrm li a:hover{color:#656565; text-decoration:underline;}
