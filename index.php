@@ -573,7 +573,7 @@ total("首页","other");
 	 					$picsurl10 = array();
 						$picslink10 = array();
 						$picstext10 = array();
-						for ($i=0;$i<1;$i++)
+						for ($i=0;$i<2;$i++)
 						{
 							$picsurl10[]=$record_import_b[$i]->photo_src;
 							$picslink10[]='/'.$record_import_b[$i]->platform.'/news/news.php?id='.$record_import_b[$i]->id;;
