@@ -277,15 +277,12 @@
 				alert('你已经投过票了');
 				return false;
 			}
-			alert($(this).attr('name'));
 			var item = $('input[name='+$(this).attr('name')+']').attr('checked');
-			alert(item);
 			if(item==false){
 				alert('请选择一个选项后再进行投票！');
 			}else{
 				$.post('vote.post.php',{'vote_id':$("#vote_id").val(),'item_id':item,'type':$(this).attr('name')},function(data){
 					if(data==''){
-						alert('投票成功！');
 						window.location.reload();
 					}else{
 						alert(data);

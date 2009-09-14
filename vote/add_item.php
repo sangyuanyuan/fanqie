@@ -3,7 +3,7 @@
 	$id = $_REQUEST['id'];
 ?>
 
-<form action="vote_item.post.php" method="post" id='vote_from'>
+<form action="vote_item.post.php" method="post" id='vote_add_item'>
 	请输入一个选项：<input type="text" name="title" id="item"><br><br>
 	<button type="submit" id="button">提交</button>
 	<input type="hidden" name="vote_id" value="<?php echo $id;?>">
@@ -16,7 +16,7 @@
 				alert('请输入选项内容！');
 				return false;
 			}else{
-				$("#vote_from").submit();
+				$("#vote_add_item").submit();
 			}
 			
 		})
