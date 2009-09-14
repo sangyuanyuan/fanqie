@@ -566,8 +566,8 @@ total("首页","other");
 				$record_out=$db -> query($sql);
   		?>
   		<div id=t_r_r_m>
- 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_import_b[0]->cid?>" target=_blank>有图为证</a></div>
- 				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
+ 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_import_b[0]->cid?>" target=_blank>有图为证</a></div>
+ 				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
  				<div class=list_tlm id=list_tlm1 style="display:inline;">
  					<?php 
 	 					$picsurl10 = array();
