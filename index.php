@@ -566,9 +566,9 @@ total("首页","other");
 				$record_out=$db -> query($sql);
   		?>
   		<div id=t_r_r_m>
- 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_import_b[0]->cid?>" target=_blank>有图为证</a></div>
- 				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
- 				<div class=list_tlm id=list_tlm1 >
+ 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_import_b[0]->cid?>" target=_blank>有图为证</a></div>
+ 				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
+ 				<div class=list_tlm id=list_tlm1 style="display:inline;">
  					<?php 
 	 					$picsurl10 = array();
 						$picslink10 = array();
@@ -608,7 +608,7 @@ total("首页","other");
 						picflash.write("focus_10");				
 					</script>
  				</div>
- 				<div class=list_tlm id=list_tlm2 style="display:inline;">
+ 				<div class=list_tlm id=list_tlm2>
  					<ul>
  						<?php for($i=0; $i<count($record_out); $i++){?>
  						<li><div style="width:200px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_out[$i]->short_title); ?>" href="/<?php echo $record_out[$i]->platform ?>/news/news.php?id=<?php echo $record_out[$i]->id ?>" target=_blank><?php echo $record_out[$i]->short_title ?></a></div></li>
