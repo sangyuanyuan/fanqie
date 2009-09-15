@@ -26,10 +26,10 @@
 		<?php $sql="select n.title from smg_news n left join smg_category c on n.category_id=c.id where c.name='收视率分析滚动更新' order by n.created_at desc";
 			$news=$db->query($sql);
 		 ?>
-		<div style="width:995px; height:20px; line-height:20px; text-align:center; float:left; display:inline;">
+		<!--<div style="width:995px; height:20px; line-height:20px; text-align:center; float:left; display:inline;">
 			<marquee scrollAmount="3" onmouseover=stop() onmouseout=start()>
 			<?php for($i=0;$i<count($news);$i++){echo "　　".get_fck_content($news[$i]->title);}?>
-		</marquee></div>
+		</marquee></div>-->
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
 			<div class=l_content>
