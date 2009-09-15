@@ -6,6 +6,7 @@
   }
   if($_POST['name']!=''){
   	$item->name = $_POST['name'];
+	$item->dept_id = $_POST['dept_id'];
 	  if($_POST['check']!=''){
 	  	$item->is_dept = 1;
 	  }else{
