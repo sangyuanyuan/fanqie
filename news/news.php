@@ -28,7 +28,7 @@
 		
 	?>
 		<script>
-			total("普通新闻","test");
+			total1("普通新闻","test");
 	</script>
 		<?php 
 		$db = get_db();

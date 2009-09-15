@@ -44,7 +44,7 @@ include('../../frame.php');
 </td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
-			<td>选择图片</td><td align="left"><input name="upfile1" id="upfile1" type="file">(请上传200x160大小的图片，格式支持jpg、gif、png) <input type="hidden" name="MAX_FILE_SIZE1" value="2097152"></td>
+			<td>选择图片</td><td align="left"><input name="upfile1" id="upfile1" type="file">(请上传200x160大小的图片，格式支持jpg、gif、png) <input type="hidden" name="MAX_FILE_SIZE1" value="150000"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="150px;" id=newsshow1 style="font-size:12px">
 			<td>内　容</td><td align="left"><?php show_fckeditor('content','Admin',true,"280","","98%");?></td>
