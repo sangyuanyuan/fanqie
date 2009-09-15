@@ -24,9 +24,9 @@
 		$string = 'http://' .$_SERVER[HTTP_HOST].$_SERVER['PHP_SELF'].'?id='.$id;
 		css_include_tag('news_news_head','top','bottom');
 		use_jquery();
-		js_include_once_tag('pubfun','news','pub','total');?>
+		js_include_once_tag('pubfun','news','pub','total','total1');?>
 		<script>
-			total("头条新闻","test");
+			total1("头条新闻","test");
 		</script>
 		<?php $db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n inner join smg_category c on n.category_id=c.id inner join smg_dept d on n.dept_id=d.id and n.id=".$id;
