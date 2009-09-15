@@ -88,7 +88,7 @@
 					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
 				<?php } ?>
 			</div>
-		<div class=b_title><div style="float:left; display:inline;">番茄跟踪T Tracking</div><div style="margin-right:10px; float:right; display:inline;"></div></div>	
+		<!--<div class=b_title><div style="float:left; display:inline;">番茄跟踪T Tracking</div><div style="margin-right:10px; float:right; display:inline;"></div></div>	
 			<div class=b_content>
 				<?php $sql="select content from smg_news where title='上海东方卫视波动说明' order by created_at desc";
 					$news=$db->query($sql);
@@ -265,7 +265,7 @@
 					<div param="3" class=b_b_pro1>上海电视台生活时尚频道</div>
 					<div param="4" class=b_b_pro1>上海电视台新闻综合频道</div>
 					<div param="5" class=b_b_pro1>上海东方电视台娱乐频道</div>
-			</div>
+			</div>-->
 		<?php $sql="select n.title,n.id,n.content,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 2";
 				$news=$db->query($sql);
 			?>
