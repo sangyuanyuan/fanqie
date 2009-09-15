@@ -410,26 +410,26 @@ total("首页","other");
 
  			<!-- start top_right_center_bottom_right !-->
   		<?php
-				$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 8';
+				$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 5';
 				$record_industry=$db -> query($sql);
 			?>
 			<div id=t_r_c_b_r>
 					<div id=title></div>
-					<a href="/news/news_list.php?id=<?php echo $record_industry[0]->cid?>" id=more target=_blank></a>
+					<a href="/news/news_list.php?id=64" id=more target=_blank></a>
 					<div id=box1>
-						<a href="/<?php echo $record_industry[0]->platform?>/news/news.php?id=<?php echo $record_industry[0]->news_id?>" target=_blank><img src="<?php echo $record_industry[0]->photo_src ?>" border=0></a>
 						<ul>
-							<li><a href="/<?php echo $record_industry[1]->platform?>/news/news.php?id=<?php echo $record_industry[1]->news_id?>" target=_blank><?php echo $record_industry[1]->short_title ?></a></li>
-							<li><a href="/<?php echo $record_industry[2]->platform?>/news/news.php?id=<?php echo $record_industry[2]->news_id?>" target=_blank><?php echo $record_industry[2]->short_title ?></a></li>
-							<li><a href="/<?php echo $record_industry[3]->platform?>/news/news.php?id=<?php echo $record_industry[3]->news_id?>" target=_blank><?php echo $record_industry[3]->short_title ?></a></li>
+							<li>·<a style="color:red; font-weight:bold;" target="_blank" href="/sslfx/">电视节目收视定量分析工具</a></li>
+							<li>·<a target="_blank" href="/server/news/news.php?id=12302">员工自助系统</a></a></li>
+							<li>·<a target="_blank" href="/server/news/news.php?id=12312">人力资源部常用表格</a></a></li>
+							
 						</ul>	
-					</div>	
+					</div>
 					<div id=box2>
 						<ul>
-							<li>·<a href="/<?php echo $record_industry[3]->platform?>/news/news.php?id=<?php echo $record_industry[4]->news_id?>" target=_blank><?php echo $record_industry[4]->short_title ?></a></li>
-							<li>·<a href="/<?php echo $record_industry[3]->platform?>/news/news.php?id=<?php echo $record_industry[5]->news_id?>" target=_blank><?php echo $record_industry[5]->short_title ?></a></li>
-							<li>·<a href="/<?php echo $record_industry[3]->platform?>/news/news.php?id=<?php echo $record_industry[6]->news_id?>" target=_blank><?php echo $record_industry[6]->short_title ?></a></li>
-							<li>·<a href="/<?php echo $record_industry[3]->platform?>/news/news.php?id=<?php echo $record_industry[7]->news_id?>" target=_blank><?php echo $record_industry[7]->short_title ?></a></li>
+							<li>·<a target="_blank" href="/server/news/news.php?id=12314">工会常用表格</a></li>
+							<li>·<a target="_blank" href="/server/news/news.php?id=12310">办公室常用表格</a></li>
+							<li>·<a href="/server/news/news.php?id=12301" target=_blank>因私出国（境）人员请假表 </a></li>
+							<li>·<a href="/server/news/news.php?id=12304" target=_blank>员工年休假申请表年休假工资报酬核发审批表</a></li>
 						</ul>						
 					</div>
  			</div>
@@ -958,12 +958,14 @@ total("首页","other");
  			</div>
  			<!-- end !-->	     	
     	<div id=b_b_c_c>
-    		<div id=title><div style="width:20px; height:20px; float:left; display:inline;"><img src="/images/index/fqgjlogo.gif"></div><div style="width:80px; height:20px; margin-top:3px; margin-left:3px; float:left; display:inline;">番茄工具</div></div>
-    		<div class=content><a style="color:red; font-weight:bold;" target="_blank" href="/sslfx/">收视率分析及预测工具</a></div>
-    		<div class=content><a target="_blank" href="/server/news/news.php?id=12302">员工自助系统</a></div>
-    		<div class=content><a target="_blank" href="/server/news/news.php?id=12312">人力资源部常用表格</a></div>
-    		<div class=content><a target="_blank" href="/server/news/news.php?id=12310">办公室常用表格</a></div>
-    		<div class=content><a target="_blank" href="/server/news/news.php?id=12314">工会常用表格</a></div>
+    		<div id=title><div style="width:20px; height:20px; float:left; display:inline;"><img src="/images/index/fqgjlogo.gif"></div><div style="width:80px; height:20px; margin-top:3px; margin-left:3px; float:left; display:inline;">业界动态</div></div>
+    		<?php for($i=0;$i<count($record_industry);$i++){ ?>
+    			<div class=content>
+    				<a <?php if($i==0){?>style="color:red; font-weight:bold;"<?php }?> target="_blank" href="/<?php echo $record_industry[$i]->platform; ?>/news/news.php?id=<?php echo $record_industry[$i]->id;?>">
+    					<?php echo $record_industry[$i]->short_title; ?>
+    				</a>
+    			</div>
+   	 		<?php } ?>
    	 	</div>
       <!-- start bottom_bottom_right !-->
  			<div id=b_b_r>
