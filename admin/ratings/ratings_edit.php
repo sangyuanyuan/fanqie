@@ -27,6 +27,31 @@
 			<td width=645 align="left"><input type="text" name="name" value="<?php echo $item->name;?>" class="required"></td>
 		</tr>
 		<tr class=tr3>
+			<td width=150>所属频道：</td>
+			<td width=645 align="left">
+				<select name="dept_id">
+					<option value=0 <?php if($item->dept_id==0){?>selected="selected"<?php }?>>
+						不是节目
+					</option>
+					<option value=12 <?php if($item->dept_id==12){?>selected="selected"<?php }?>>
+						上海东方卫视
+					</option>
+					<option value=21 <?php if($item->dept_id==21){?>selected="selected"<?php }?>>
+						上海电视台电视剧频道
+					</option>
+					<option value=22 <?php if($item->dept_id==22){?>selected="selected"<?php }?>>
+						上海电视台生活时尚频道
+					</option>
+					<option value=19 <?php if($item->dept_id==19){?>selected="selected"<?php }?>>
+						上海电视台新闻综合频道
+					</option>
+					<option value=16 <?php if($item->dept_id==16){?>selected="selected"<?php }?>>
+						上海东方电视台娱乐频道
+					</option>
+				</select>
+			</td>
+		</tr>
+		<tr class=tr3>
 			<td width=150>是否是节目：</td>
 			<td width=645 align="left"><input type="checkbox" <?php if($item->is_dept==1){?>checked="checked"<?php }?> name="check"></td>
 		</tr>
