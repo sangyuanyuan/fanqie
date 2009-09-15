@@ -25,7 +25,10 @@
 		css_include_tag('news_news','top','bottom');
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub','total','total1');
-		
+		$db = get_db();
+		$sql = 'update smg_total2 set count=count+1';
+		$db->execute($sql);
+		close_db();
 	?>
 		<script>
 			total1("普通新闻","test");
