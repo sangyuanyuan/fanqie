@@ -417,18 +417,32 @@ $db->execute($sql); ?>
 			
 			<div id=b_b_2 class="b_b" style="display:none;">
 			<?php 
-			 $sql="select * from smg_djl_count limit 10";
+			 $sql="select * from smg_djl_count";
 			 $clickcount=$db->query($sql);
+			 for($i=0;$i<count($clickcount);$i++)
+			 {
+			 	if($clickcount[$i]->name!="集团办公室"&&$clickcount[$i]->name!="传媒人报")
+			 	{
+			 			$click[]=array((int)$clickcount[$i]->num,$clickcount[$i]->name);
+			 	}
+			 	else if($clickcount[$i]->name=="集团办公室")
+			 	{
+			 			$cmrb=$db->query("select num from smg_djl_count where name='传媒人报'");
+			 			$jtbgs=(int)$clickcount[$i]->num+(int)$cmrb[0]->num;
+			 			$click[]=array($jtbgs,$clickcount[$i]->name);
+			 	}
+			 }
+			 $click=array2sort($click,0,'d');
 			 $total=$db->query("select sum(num) as total from smg_djl_count");
-			 for($i=0;$i<count($clickcount);$i++){	 	
+			 for($i=0;$i<10;$i++){	 	
 			 ?>
 			 	<div class="r_b2_content">
-			 		<?php if($i<3){?>
+			 		<?php if($i< 3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><?php echo delhtml($clickcount[$i]->name);?></div><div class=percentage><?php $count=$clickcount[$i]->num/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+			 			<div class=cl1><?php echo delhtml($click[$i][1]);?></div><div class=percentage><?php $count=$click[$i][0]/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }else{?>
 						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
-						<div class=cl2><?php echo delhtml($clickcount[$i]->name);?></div><div class=percentage><?php $count=$clickcount[$i]->num/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+						<div class=cl2><?php echo delhtml($click[$i][1]);?></div><div class=percentage><?php $count=$click[$i][0]/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }?>				
 				</div>
 			 <? }?>
