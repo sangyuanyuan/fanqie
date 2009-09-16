@@ -28,7 +28,7 @@
 		$datetime1=date('Y-m-d')." 00:00:00";
 		$datetime2=date('Y-m-d')." 23:59:59";
 		$db = get_db();
-		$strsql='select * from smg_total2 where datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
+		$strsql='select * from smg_total2 where name="news" and datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
 		$record=$db -> query($strsql);
 		if(!$record || count($record)==0)
 		{
