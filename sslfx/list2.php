@@ -22,10 +22,7 @@
 		{
 			$nowmonth=$_REQUEST['time'];
 		}
-		if($_REQUEST['type']!="")
-		{
-			$sql1=$sql1." and r.imagetype='".$_REQUEST['type']."'";
-		}
+		$sql1=$sql1." and r.imagetype='foldincome'";
 		$sql="select r.file_path,i.name,r.imagetype,r.date from smg_ratings r left join smg_report_item i on r.item_id=i.id where date like '".$nowmonth."%'".$sql1." order by r.id desc";
 		$record=$db->paginate($sql,30);		
   ?>
@@ -39,10 +36,10 @@
 	<div id=ibody_left>
 		<div id=l_b>
 			<div style="margin-top:10px; margin-left:10px; float:left; display:inline;">
-				<?php $sql="SELECT * FROM smg_report_item s where is_dept<>1";
+				<?php $sql="SELECT * FROM smg_report_item s where is_dept=1 and dept_id=0";
 					$item=$db->query($sql);
 				?>
-				频道：<select id="reportitem">
+				节目：<select id="reportitem">
 					<option value="0">请选择</option>
 					<?php for($i=0;$i<count($item);$i++){ ?>
 						<option value="<?php echo $item[$i]->id; ?>" <?php if($item[$i]->id==$_REQUEST['reportitem']){?>selected=selected<?php } ?>><?php echo $item[$i]->name;?></option>
@@ -55,12 +52,6 @@
 					<?php for($i=0;$i<count($time);$i++){ ?>
 						<option value="<?php echo $time[$i]->date; ?>" <?php if($nowmonth==$time[$i]->date){?>selected=selected<?php }?>><?php echo $time[$i]->date;?></option>
 					<?php } ?>
-				</select>
-				类型：<select id="type">
-						<option value="0">请选择</option>
-						<option value="rader" <?php if($_REQUEST['type']=="rader"){?>selected=selected<?php } ?>>雷达图</option>
-						<option value="foldline" <?php if($_REQUEST['type']=="foldline"){?>selected=selected<?php } ?>>折线图</option>
-				</select>
 				<input type="button" id="cx" value="查询">
 			</div>
 			<?php for($i=0;$i<count($record);$i++){ ?>
@@ -207,25 +198,21 @@
 				{
 					reportitem=$("#reportitem").val();	
 				}
-				if($("#type").val()!=0)
-				{
-						type1=$("#type").val();
-				}
 				if(reportitem!=""&&type1!="")
 				{
-					window.location.href="list.php?time="+$("#time").val()+"&reportitem="+reportitem+"&type="+type1;
+					window.location.href="list2.php?time="+$("#time").val()+"&reportitem="+reportitem+"&type="+type1;
 				}
 				else if(reportitem!=""&&type1=="")
 				{
-					window.location.href="list.php?time="+$("#time").val()+"&reportitem="+reportitem;
+					window.location.href="list2.php?time="+$("#time").val()+"&reportitem="+reportitem;
 				}
 				else if(reportitem==""&&type1!="")
 				{
-					window.location.href="list.php?time="+$("#time").val()+"&type="+type1;
+					window.location.href="list2.php?time="+$("#time").val()+"&type="+type1;
 				}
 				else
 				{
-					window.location.href="list.php?time="+$("#time").val();
+					window.location.href="list2.php?time="+$("#time").val();
 				}
 		})
 	})

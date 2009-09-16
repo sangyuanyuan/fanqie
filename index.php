@@ -175,10 +175,13 @@ total("首页","other");
 				$record_marrow=$db -> query($sql);
 				$sql = 'select n.id,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 8';
 				$record_quick=$db -> query($sql);
+				$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 8';
+				$record_industry=$db -> query($sql);
 			?>
 			<div id=t_l_b>
- 				<div class=btn_tlb param=1 id=btn_tlb_1 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?tags=%E5%B0%8F%E7%BC%96%E5%8A%A0%E7%B2%BE" target=_blank>小编加精</a></div>
- 				<div class=btn_tlb param=2 id=btn_tlb_2  style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_quick[0]->cid?>" target=_blank>新闻速读</a></div>
+ 				<div class=btn_tlb param=1 id=btn_tlb_1 style="background:url(/images/index/btn4-1.jpg) no-repeat"><a href="/news/news_list.php?tags=%E5%B0%8F%E7%BC%96%E5%8A%A0%E7%B2%BE" target=_blank>小编加精</a></div>
+ 				<div class=btn_tlb param=2 id=btn_tlb_2  style="background:url(/images/index/btn3-1.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_quick[0]->cid?>" target=_blank>新闻速读</a></div>
+ 				<div class=btn_tlb param=3 id=btn_tlb_3  style="background:url(/images/index/btn3-1.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_quick[0]->cid?>" target=_blank>业界动态</a></div>
  				<div class=list_tlb id=list_tlb1 style="display:inline;">
  					<ul>
  						<?php for($i=0; $i<count($record_marrow); $i++){?>
@@ -193,7 +196,13 @@ total("首页","other");
  						<? }?>
  				  </ul>
  				</div>
-
+				<div class=list_tlb id=list_tlb3>
+ 					<ul>
+ 						<?php for($i=0; $i<count($record_industry); $i++){?>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_industry[$i]->short_title);?>" href="/<?php echo $record_industry[$i]->platform ?>/news/news.php?id=<?php echo $record_industry[$i]->id ?>" target=_blank><?php echo $record_industry[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
+ 						<? }?>
+ 				  </ul>
+ 				</div>
 
  			</div>
  			<!-- end !-->
@@ -409,10 +418,7 @@ total("首页","other");
 
 
  			<!-- start top_right_center_bottom_right !-->
-  		<?php
-				$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 5';
-				$record_industry=$db -> query($sql);
-			?>
+  		
 			<div id=t_r_c_b_r>
 					<div id=title></div>
 					<a href="/news/news_list.php?id=64" id=more target=_blank></a>
@@ -956,17 +962,7 @@ total("首页","other");
 									</SCRIPT>
 				</DIV>
  			</div>
- 			<!-- end !-->	     	
-    	<div id=b_b_c_c>
-    		<div id=title><div style="width:20px; height:20px; float:left; display:inline;"><img src="/images/index/fqgjlogo.gif"></div><div style="width:80px; height:20px; margin-top:3px; margin-left:3px; float:left; display:inline;">业界动态</div></div>
-    		<?php for($i=0;$i<count($record_industry);$i++){ ?>
-    			<div class=content>
-    				<a <?php if($i==0){?>style="color:red; font-weight:bold;"<?php }?> target="_blank" href="/<?php echo $record_industry[$i]->platform; ?>/news/news.php?id=<?php echo $record_industry[$i]->id;?>">
-    					<?php echo $record_industry[$i]->short_title; ?>
-    				</a>
-    			</div>
-   	 		<?php } ?>
-   	 	</div>
+ 			<!-- end !-->	
       <!-- start bottom_bottom_right !-->
  			<div id=b_b_r>
 				<div id=title>在线杂志</div>

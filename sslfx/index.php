@@ -4,6 +4,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
+	<title>电视节目收视定量分析工具</title>
 	<?php
 		css_include_tag('sslfx','top','bottom');
 	 js_include_once_tag('total');	 ?>
@@ -21,7 +22,14 @@
 	$name=$db->query($sql);
 	?>
 	<div id=ibody>
-		<div style="width:995px; font-weight:bold; text-align:center; float:left; display:inline;"><h1>收视率分析及预测工具</h1></div>
+		<div style="width:995px; font-weight:bold; text-align:center; float:left; display:inline;"><h1>电视节目收视定量分析工具</h1></div>
+		<?php $sql="select n.title from smg_news n left join smg_category c on n.category_id=c.id where c.name='收视率分析滚动更新' order by n.created_at desc";
+			$news=$db->query($sql);
+		 ?>
+		<!--<div style="width:995px; height:20px; line-height:20px; text-align:center; float:left; display:inline;">
+			<marquee scrollAmount="3" onmouseover=stop() onmouseout=start()>
+			<?php for($i=0;$i<count($news);$i++){echo "　　".get_fck_content($news[$i]->title);}?>
+		</marquee></div>-->
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
 			<div class=l_content>
@@ -31,6 +39,7 @@
 						<?php } ?>
 				</select>
 				<input type="button" id="radercx" value="查询">
+				<a style="color:#000000; text-decoration:none;" href="list.php">历史数据</a>
 				<?php $sql="select i.id,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' and i.name='上海电视台新闻综合频道'  order by r.id desc";
 					$rader=$db->query($sql);
 				?>
@@ -66,7 +75,7 @@
 		<?php $sql="select a.* from (select r.*,i.name from smg_ratings r right join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by r.id desc) as a group by name order by id desc limit 5";
 				$prom=$db->query($sql);
 			?>
-		<div class=b_title>预测节目收视率跟踪</div>
+			<div class=b_title><div style="float:left; display:inline;">预测节目收视率跟踪</div><div style="margin-right:10px; float:right; display:inline;"><a style="color:#ffffff; font-size:12px; text-decoration:none;" href="list2.php">历史数据</a></div></div>
 			<div class=b_content>
 				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldincom0"><img width=800 height=300 src="<?php echo $prom[0]->file_path;?>"></div>
 				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom1"><img width=800 height=300 src="<?php echo $prom[1]->file_path;?>"></div>
@@ -78,7 +87,8 @@
 				<?php for($i=0;$i<count($prom);$i++){ ?>
 					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
 				<?php } ?>
-				</div>
+			</div>
+	
 		<?php $sql="select n.title,n.id,n.content,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 2";
 				$news=$db->query($sql);
 			?>
@@ -116,11 +126,10 @@
 				</select>
 				<input type="button" id="pdcx" value="查询"> <a style="text-decoration:none; color:#000000;" target="_blank" href="list.php">历史数据</a>
 				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
-				<!--<iframe style="width:970px; height:350px;" frameborder="no" scrolling=no id="imagefoldline" src="<?php echo $showtime=date("Y-m-d H:i:s");?> "></iframe>-->
-				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings r left join smg_report_item i on r.item_id=i.id where r.imagetype='foldline' and i.name='上海电视台新闻综合频道' and r.date='".$date[5]."' order by r.id desc limit 1"); ?><img src="<?php echo $foldline[0]->file_path; ?>"></div>
+				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings r left join smg_report_item i on r.item_id=i.id where r.imagetype='foldline' and i.name='上海电视台新闻综合频道' and r.date='".$date[5]."' order by r.id desc limit 1"); ?>
+					<img src="<?php echo $foldline[0]->file_path; ?>">
+				</div>
 			</div>
-			
-		
 	</div>
 <?php require_once('../inc/bottom.inc.php');?>
 </body>
@@ -170,6 +179,16 @@
 			$(this).css("color","#000000");
 			$(".imagefoldincom").css("display","none");
 			$("#imagefoldincom"+$(this).attr("param")).css("display","inline");
+		});
+		$(".b_b_pro1").mouseover(function(){
+			$(".b_b_pro1").css("background","#FFCC00");
+			$(".b_b_pro1").css("color","#ffffff");
+			$(".b_b_pro1").css("width","199px");
+			$(this).css("width","197px");
+			$(this).css("background","#FF9900");
+			$(this).css("color","#000000");
+			$(".bpro").css("display","none");
+			$("#bpro"+$(this).attr("param")).css("display","inline");
 		});
 	})
 </script>
