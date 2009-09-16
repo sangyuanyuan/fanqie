@@ -69,7 +69,7 @@
 				if(count($record2)==0){
 					echo "查无此人";
 				}else{
-					echo $record2[0]->nickname."还没有收到礼物,".$record2[0]->nickname."的生日是".substr($record2[0]->birthday, 0, 10);
+					echo $record2[0]->nickname."还没有收到礼物,".$record2[0]->nickname."的生日是".substr($record2[0]->birthday, 5, 5);
 				}
 			?>
 			<?php }?>
