@@ -37,7 +37,7 @@
 		}
 		else
 		{
-			$strsql='update smg_total2 set count=count+1 where datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
+			$strsql='update smg_total2 set count=count+1 where name="news_head" and datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
 			$record = $db->execute($strsql);
 		}
 		
