@@ -31,12 +31,15 @@
 </script>
 </head>
 <body>
-<? require_once('../inc/top.inc.html');?>
+<? require_once('../inc/top.inc.html');
+	css_include_tag('jquery_ui');
+	use_jquery_ui();
+?>
 <div id=ibody>
 	<div id=ibody_left>
 		<div id=l_b>
 			<div style="margin-top:10px; margin-left:10px; float:left; display:inline;">
-				<?php $sql="SELECT * FROM smg_report_item s where is_dept=1 and dept_id=".$_REQUEST['itemid'];
+				<?php $sql="SELECT * FROM smg_report_item s where dept_id=".$_REQUEST['itemid'];
 					$item=$db->query($sql);
 				?>
 				节目：<select id="reportitem">
@@ -45,7 +48,7 @@
 						<option value="<?php echo $item[$i]->id; ?>" <?php if($item[$i]->id==$_REQUEST['reportitem']){?>selected=selected<?php } ?>><?php echo $item[$i]->name;?></option>
 					<?php } ?>
 				</select>
-				时间：<input type="text" class="date_jquery required" name="date" id="time" value="<?php echo $_REQUEST['time'];?>">
+				时间：<input type="text" class="date_jquery" name="date" id="time" value="<?php echo $_REQUEST['time'];?>">
 				<input type="button" id="cx" value="查询">
 			</div>
 			<?php for($i=0;$i<count($record);$i++){ ?>

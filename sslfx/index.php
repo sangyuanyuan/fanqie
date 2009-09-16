@@ -7,6 +7,7 @@
 	<title>电视节目收视定量分析工具</title>
 	<?php
 		css_include_tag('sslfx','top','bottom');
+		use_jquery();
 	 js_include_once_tag('total');	 ?>
 <script>
 	total("收视率分析","server");
