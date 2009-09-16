@@ -7,7 +7,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-服务-礼物列表</title>
+	<title>SMG-番茄网-服务-寿星查询</title>
 	<? 	
 		css_include_tag('server_birthday','top','bottom');
 		use_jquery();
