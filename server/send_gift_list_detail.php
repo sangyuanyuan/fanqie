@@ -63,8 +63,15 @@
 			</div>
 			<?php } ?>
      		<div id=paginate><?php paginate();?></div>
-			<?php }else{?>
-				该用户还没收到礼物
+			<?php }else{
+				$sql = 'select nickname,birthday from smg_user_real where loginname="'.$reciever.'"';
+				$record2 = $db->query($sql);
+				if(count($record2)==0){
+					echo "查无此人";
+				}else{
+					echo $record2[0]->nickname."还没有收到礼物,".$record2[0]->nickname."的生日是".substr($record2[0]->birthday, 0, 10);
+				}
+			?>
 			<?php }?>
         </div>
         
