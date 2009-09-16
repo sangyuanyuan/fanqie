@@ -25,40 +25,71 @@
 		css_include_tag('news_news','top','bottom');
 		use_jquery();
 		js_include_once_tag('pubfun','news','pub','total','total1');
+		$datetime1=date('Y-m-d')." 00:00:00";
+		$datetime2=date('Y-m-d')." 23:59:59";
 		$db = get_db();
-		$sql = 'update smg_total2 set count=count+1';
-		$db->execute($sql);
+		$strsql='select * from smg_total2 where datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
+		$record=$db -> query($strsql);
+		if(!$record || count($record)==0)
+		{
+			$strsql='insert into smg_total2 (platform,name,datetime,count,parentname) values("news","news",now(),1,"news")'; 
+			$record = $db->execute($strsql);
+		}
+		else
+		{
+			$strsql='update smg_total2 set count=count+1 where datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
+			$record = $db->execute($strsql);
+		}
+		
 		close_db();
 	?>
-		<script>
-			total1("普通新闻","test");
-	</script>
+		
 		<?php 
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
 		$record=$db->query($sql);
+		if($record[0]->cplatform=="news"||$record[0]->cplatform=="show"||$record[0]->cplatform=="server"||$record[0]->cplatform=="zone"){
+			$platform = $record[0]->cplatform;
+			$name = $record[0]->categoryname;
+		}else{
+			$platform = 'news';
+			$name = '部门或专题';
+		}
+		$strsql='select * from smg_total where platform="'.$platform.'" and parentname="'.$_SERVER['PHP_SELF'].'" and name="'.$name.'" and datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
+		$record1=$db -> query($strsql);
+		if(!$record1 || count($record1)==0)
+		{
+			$strsql='insert into smg_total (platform,name,datetime,count,parentname) values("'.$platform.'","'.$name.'",now(),1,"'.$_SERVER['PHP_SELF'].'")'; 
+			$db->execute($strsql);
+		}
+		else
+		{
+			$strsql='update smg_total set count=count+1 where parentname="'.$_SERVER['PHP_SELF'].'" and platform="'.$platform.'" and name="'.$name.'" and datetime>="'.$datetime1.'" and datetime<="'.$datetime2.'"'; 
+			$db->execute($strsql);		
+		}
+		
   //if($cookie1<=200){
-  if($record[0]->cplatform=="news"){?>
+  //if($record[0]->cplatform=="news"){?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","news");
+	//total("<?php echo $record[0]->categoryname; ?>","news");
 </script>
-<?php }else if($record[0]->cplatform=="show"){ ?>
+<?php //}else if($record[0]->cplatform=="show"){ ?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","show");
+	//total("<?php echo $record[0]->categoryname; ?>","show");
 </script>
-<?php }else if($record[0]->cplatform=="server"){?>
+<?php //}else if($record[0]->cplatform=="server"){?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","server");
+	//total("<?php echo $record[0]->categoryname; ?>","server");
 </script>
-<?php }else if($record[0]->cplatform=="zone"){?>
+<?php// }else if($record[0]->cplatform=="zone"){?>
 <script>
-	total("<?php echo $record[0]->categoryname; ?>","zone");
+	//total("<?php echo $record[0]->categoryname; ?>","zone");
 </script>
-<?php }else{?>
+<?php// }else{?>
 <script>
-	total("部门或专题","news");
+	//total("部门或专题","news");
 </script>
-<?php }
+<?php //}
 
 //} 
 ?>
