@@ -30,27 +30,24 @@
 		$db->execute($sql);
 		close_db();
 	?>
-		<script>
-			total1("普通新闻","test");
-	</script>
 		<?php 
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
 		$record=$db->query($sql);
-  //if($cookie1<=200){
-  if($record[0]->cplatform=="news"){?>
+		$cplatform=$record[0]->cplatform;
+  if($cplatform=="news"){?>
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","news");
 </script>
-<?php }else if($record[0]->cplatform=="show"){ ?>
+<?php }else if($cplatform=="show"){ ?>
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","show");
 </script>
-<?php }else if($record[0]->cplatform=="server"){?>
+<?php }else if($cplatform=="server"){?>
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","server");
 </script>
-<?php }else if($record[0]->cplatform=="zone"){?>
+<?php }else if($cplatform=="zone"){?>
 <script>
 	total("<?php echo $record[0]->categoryname; ?>","zone");
 </script>
@@ -59,8 +56,6 @@
 	total("部门或专题","news");
 </script>
 <?php }
-
-//} 
 ?>
 </head>
 	<? if($record[0]->related_news!="")

@@ -54,8 +54,8 @@ $(function(){
 	
 	$(".btn_tlb").mouseover(function(){
 			
-			$(".btn_tlb").css('background','url(/images/index/btn3.jpg) no-repeat');
-			$(this).css('background','url(/images/index/btn4.jpg) no-repeat');
+			$(".btn_tlb").css('background','url(/images/index/btn3-1.jpg) no-repeat');
+			$(this).css('background','url(/images/index/btn4-1.jpg) no-repeat');
 			$(".list_tlb").css('display','none');
 			var num=$(this).attr('param');
 			$("#list_tlb"+num).css('display','inline');
