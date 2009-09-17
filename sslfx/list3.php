@@ -13,17 +13,15 @@
 		js_include_once_tag('news_list','total');
 		$db = get_db();
 		$sql1="";
-		$nowmonth=date('Y')."-".date('m');
 		if($_REQUEST['reportitem']!="")
 		{
 			$sql1=$sql1." and r.item_id=".$_REQUEST['reportitem'];
 		}
 		if($_REQUEST['time']!="")
 		{
-			$nowmonth=$_REQUEST['time'];
+			$nowmonth=$_REQUEST['time']." 00:00:00";
 		}
-		$sql1=$sql1." and r.imagetype='foldincome'";
-		$sql="select i.name,r.value from smg_rating_value r left join smg_report_item i on r.item_id=i.id where date like '".$nowmonth."%'".$sql1." order by r.id desc";
+		$sql="select i.name,r.value from smg_rating_value r left join smg_report_item i on r.item_id=i.id where date = '".$nowmonth."'".$sql1." order by r.id desc";
 		$record=$db->paginate($sql,30);		
   ?>
 <script>
@@ -54,7 +52,10 @@
 			<?php for($i=0;$i<count($record);$i++){ ?>
 			<div class=l_b_l>
 						<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
-						<div class=l_b_l_r><?php echo $record[$i]->name."　　　　".$record[$i]->value; ?></div>
+						<div class=l_b_l_r>
+							<div style="float:left; display:inline;"><?php echo $record[$i]->name; ?></div>
+							<div style="float:right; display:inline"><?php echo $record[$i]->value; ?></div>
+						</div>
 			</div>
 			<div class=l_b_r><?php echo $record[$i]->date; ?></div>
 			<?php }?>
@@ -153,7 +154,7 @@
 			 		<?php if($i<3){?>
 			 			<div class=pic1>0<?php echo $i+1;?></div>
 			 			<div class=cl1><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->fgl/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
-					<?php }else{?>u
+					<?php }else{?>
 						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
 						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->fgl/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
 					<?php }?>				
@@ -201,8 +202,7 @@
 </body>
 </html>
 <script>
-	$(document).ready(function(){
-		$(".date_jquery").datepicker(
+	$(".date_jquery").datepicker(
 			{
 				monthNames:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
 				dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
@@ -211,6 +211,7 @@
 				dateFormat: 'yy-mm-dd'
 			}
 		);
+	$(document).ready(function(){
 		$("#cx").click(function(){
 				var reportitem="";
 				var type1="";
@@ -220,20 +221,20 @@
 				}
 				if(reportitem!=""&&type1!="")
 				{
-					window.location.href="list2.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&reportitem="+reportitem+"&type="+type1;
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&reportitem="+reportitem+"&type="+type1;
 				}
 				else if(reportitem!=""&&type1=="")
 				{
-					window.location.href="list2.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&reportitem="+reportitem;
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&reportitem="+reportitem;
 				}
 				else if(reportitem==""&&type1!="")
 				{
-					window.location.href="list2.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&type="+type1;
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&type="+type1;
 				}
 				else
 				{
-					window.location.href="list2.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val();
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val();
 				}
 		})
-	})
+	});
 </script>

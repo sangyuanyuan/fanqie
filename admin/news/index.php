@@ -46,10 +46,13 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub','smg_category_class');
+		js_include_tag('admin_pub','smg_category_class','total');
 		$category = new smg_category_class('news');
 		$category->echo_jsdata();		
 	?>
+	<script>
+			total("后台","other");
+	</script>
 </head>
 
 <body>
