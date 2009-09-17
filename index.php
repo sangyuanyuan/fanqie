@@ -161,7 +161,7 @@ total("首页","other");
 				<div id=content_trrm>
 					<ul>
 						<?php for($i=0;$i< 12;$i++){?>
-							<li><a title='<?php echo $record_baoliao[$i]->short_title; ?>' href="/<?php echo $record_baoliao[$i]->platform;?>/news/news.php?id=<?php echo $record_baoliao[$i]->news_id?>" target=_blank><span style="color:#ff0000">·</span><?php echo $record_baoliao[$i]->short_title ?></a></li>
+							<li><a title='<?php echo delhtml($record_baoliao[$i]->short_title); ?>' href="/<?php echo $record_baoliao[$i]->platform;?>/news/news.php?id=<?php echo $record_baoliao[$i]->news_id?>" target=_blank><span style="color:#ff0000">·</span><?php echo $record_baoliao[$i]->short_title ?></a></li>
 						<? }?>
 					</ul>		
 				</div>
@@ -583,7 +583,7 @@ total("首页","other");
 						{
 							$picsurl10[]=$record_import_b[$i]->photo_src;
 							$picslink10[]='/'.$record_import_b[$i]->platform.'/news/news.php?id='.$record_import_b[$i]->id;;
-							$picstext10[]=$record_import_b[$i]->short_title;
+							$picstext10[]=get_fck_content($record_import_b[$i]->short_title);
 						}
 					?>
  					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
