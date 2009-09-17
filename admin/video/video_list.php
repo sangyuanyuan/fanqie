@@ -7,7 +7,7 @@
 	$dept_id = $_REQUEST['dept'];
 	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
-	$sql = 'select * from smg_dept';
+	$sql = 'SELECT * FROM smg_dept s order by convert(name USING gbk);';
 	$rows_dept = $db->query($sql);
 	$c = array();
 	if($category_id > 0){
