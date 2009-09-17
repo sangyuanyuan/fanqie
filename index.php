@@ -583,7 +583,7 @@ total("首页","other");
 						{
 							$picsurl10[]=$record_import_b[$i]->photo_src;
 							$picslink10[]='/'.$record_import_b[$i]->platform.'/news/news.php?id='.$record_import_b[$i]->id;;
-							$picstext10[]=get_fck_content($record_import_b[$i]->short_title);
+							$picstext10[]= delhtml($record_import_b[$i]->short_title);
 						}
 					?>
  					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
