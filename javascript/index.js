@@ -106,7 +106,11 @@ $(function(){
 		$(this).css('font-weight','bold');	
 		video_src($(this).attr('param1'),$(this).attr('param2'));
 
-	})	
+	})
+	
+	$('#item1').click(function(){
+		window.location.href="http://172.27.203.81:8080/show/list.php?id=24&type=news"
+	});
 	
 	
 });
