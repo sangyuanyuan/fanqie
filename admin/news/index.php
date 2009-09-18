@@ -13,7 +13,7 @@
 	$dept_id = $_REQUEST['dept'];
 	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
-	$sql = 'select * from smg_dept order by code';
+	$sql = 'SELECT * FROM smg_dept order by convert(name USING gbk);';
 	$rows_dept = $db->query($sql);
 	$c = array('is_recommend=1');
 	if($category_id > 0){
@@ -46,10 +46,13 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub','smg_category_class');
+		js_include_tag('admin_pub','smg_category_class','total');
 		$category = new smg_category_class('news');
 		$category->echo_jsdata();		
 	?>
+	<script>
+			total("后台","other");
+	</script>
 </head>
 
 <body>

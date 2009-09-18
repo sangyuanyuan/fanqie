@@ -13,17 +13,15 @@
 		js_include_once_tag('news_list','total');
 		$db = get_db();
 		$sql1="";
-		$nowmonth=date('Y')."-".date('m');
 		if($_REQUEST['reportitem']!="")
 		{
 			$sql1=$sql1." and r.item_id=".$_REQUEST['reportitem'];
 		}
 		if($_REQUEST['time']!="")
 		{
-			$nowmonth=$_REQUEST['time'];
+			$nowmonth=$_REQUEST['time']." 00:00:00";
 		}
-		$sql1=$sql1." and r.imagetype='foldincome'";
-		$sql="select r.file_path,i.name,r.imagetype,r.date from smg_ratings r left join smg_report_item i on r.item_id=i.id where date like '".$nowmonth."%'".$sql1." order by r.id desc";
+		$sql="select i.name,r.value from smg_rating_value r left join smg_report_item i on r.item_id=i.id where date = '".$nowmonth."'".$sql1." order by r.id desc";
 		$record=$db->paginate($sql,30);		
   ?>
 <script>
@@ -31,12 +29,15 @@
 </script>
 </head>
 <body>
-<? require_once('../inc/top.inc.html');?>
+<? require_once('../inc/top.inc.html');
+	css_include_tag('jquery_ui');
+	use_jquery_ui();
+?>
 <div id=ibody>
 	<div id=ibody_left>
 		<div id=l_b>
 			<div style="margin-top:10px; margin-left:10px; float:left; display:inline;">
-				<?php $sql="SELECT * FROM smg_report_item s where is_dept=1 and dept_id=0";
+				<?php $sql="SELECT * FROM smg_report_item s where dept_id=".$_REQUEST['itemid'];
 					$item=$db->query($sql);
 				?>
 				节目：<select id="reportitem">
@@ -45,20 +46,16 @@
 						<option value="<?php echo $item[$i]->id; ?>" <?php if($item[$i]->id==$_REQUEST['reportitem']){?>selected=selected<?php } ?>><?php echo $item[$i]->name;?></option>
 					<?php } ?>
 				</select>
-				<?php $sql="select distinct(substring(date,1,7)) as date from smg_ratings";
-					$time=$db->query($sql);
-				 ?>
-				年月：<select id="time">
-					<?php for($i=0;$i<count($time);$i++){ ?>
-						<option value="<?php echo $time[$i]->date; ?>" <?php if($nowmonth==$time[$i]->date){?>selected=selected<?php }?>><?php echo $time[$i]->date;?></option>
-					<?php } ?>
-				</select>
+				时间：<input type="text" class="date_jquery" name="date" id="time" value="<?php echo $_REQUEST['time'];?>">
 				<input type="button" id="cx" value="查询">
 			</div>
 			<?php for($i=0;$i<count($record);$i++){ ?>
 			<div class=l_b_l>
 						<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
-						<div class=l_b_l_r><a target="_blank" href="<?php echo $record[$i]->file_path;?>"><?php echo delhtml($record[$i]->name);if($record[$i]->imagetype=="rader"){echo "雷达图";}else if($record[$i]->imagetype=="foldline"){echo "折线图";}else if($record[$i]->imagetype=="foldincome"){echo "柱形图";}?></a></div>
+						<div class=l_b_l_r>
+							<div style="float:left; display:inline;"><?php echo $record[$i]->name; ?></div>
+							<div style="float:right; display:inline"><?php echo $record[$i]->value; ?></div>
+						</div>
 			</div>
 			<div class=l_b_r><?php echo $record[$i]->date; ?></div>
 			<?php }?>
@@ -205,6 +202,15 @@
 </body>
 </html>
 <script>
+	$(".date_jquery").datepicker(
+			{
+				monthNames:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+				dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+				dayNamesMin:["日","一","二","三","四","五","六"],
+				dayNamesShort:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+				dateFormat: 'yy-mm-dd'
+			}
+		);
 	$(document).ready(function(){
 		$("#cx").click(function(){
 				var reportitem="";
@@ -215,20 +221,20 @@
 				}
 				if(reportitem!=""&&type1!="")
 				{
-					window.location.href="list2.php?time="+$("#time").val()+"&reportitem="+reportitem+"&type="+type1;
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&reportitem="+reportitem+"&type="+type1;
 				}
 				else if(reportitem!=""&&type1=="")
 				{
-					window.location.href="list2.php?time="+$("#time").val()+"&reportitem="+reportitem;
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&reportitem="+reportitem;
 				}
 				else if(reportitem==""&&type1!="")
 				{
-					window.location.href="list2.php?time="+$("#time").val()+"&type="+type1;
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&type="+type1;
 				}
 				else
 				{
-					window.location.href="list2.php?time="+$("#time").val();
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val();
 				}
 		})
-	})
+	});
 </script>
