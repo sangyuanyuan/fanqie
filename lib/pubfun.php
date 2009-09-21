@@ -429,7 +429,8 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 		$c = $conditions . ' and (' .$c .')';
 	}
 	
-	$sql = 'select * from ' . $table_name ." where 1=1 and " .$c;
+	$sql = 'select * from ' . $table_name ." where 1=1 and ".$c;
+	alert($sql);
 	if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}

@@ -199,7 +199,7 @@ total("首页","other");
 				<div class=list_tlb id=list_tlb3>
  					<ul>
  						<?php for($i=0; $i<count($record_industry); $i++){?>
- 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_industry[$i]->short_title);?>" href="/<?php echo $record_industry[$i]->platform ?>/news/news.php?id=<?php echo $record_industry[$i]->id ?>" target=_blank><?php echo $record_industry[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
+ 						<li><div style="width:185px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_industry[$i]->short_title);?>" href="/<?php echo $record_industry[$i]->platform ?>/news/news.php?id=<?php echo $record_industry[$i]->news_id ?>" target=_blank><?php echo $record_industry[$i]->short_title ?></a></div><?php if($i<3){?><div style="width:40px; height:20px; line-height:20px; float:right; display:inline;"><img src="/images/pic/new.gif"></div><?php } ?></li>
  						<? }?>
  				  </ul>
  				</div>

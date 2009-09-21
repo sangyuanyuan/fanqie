@@ -22,4 +22,5 @@
 .b_title .more a{color:#ffffff; text-decoration:none;}
 .b_content{width:973px; padding:10px; border:1px solid #DC7638; border-top:none; float:left; display:inline;}
 .b_pro1{width:199px; height:24px; line-height:24px; color:#ffffff; text-align:center; background:#FFCC00; float:left; display:inline;}
-.b_b_pro1{width:199px; height:24px; line-height:24px; color:#ffffff; text-align:center; background:#FFCC00; float:left; display:inline;}
+.b_b_pro1{width:199px; height:24px; line-height:24px;  text-align:center; background:#FFCC00; float:left; display:inline;}
+.b_b_pro1 a{color:#ffffff; text-decoration:none;}
