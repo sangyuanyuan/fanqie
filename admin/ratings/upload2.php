@@ -27,6 +27,20 @@
 			<td align="left"><input type="text" class="required" size="50" name=value></td>
 		</tr>
 		<tr class=tr3>
+			<td>输入差值：</td>
+			<td align="left"><input type="text" class="required" size="50" name=value2></td>
+		</tr>
+		<tr class=tr3>
+			<td>选择比较：</td>
+			<td align="left">
+				<select name="value3">
+					<option value="up">上升</option>
+					<option value="down">下降</option>
+					<option value="equal">持平</option>
+				</select>
+			</td>
+		</tr>
+		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
 		<input type="hidden" name="item_id" value="<?php echo $item_id;?>">

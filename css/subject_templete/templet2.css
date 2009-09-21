@@ -1,5 +1,15 @@
-#bodys{width:1002px; margin:0 auto; margin-top:10px;}
-#logo{width:950px; height:150px; margin-left:1px; background:url(/images/templet2/top.jpg) no-repeat; float:left; display:inline;}
-#menu{width:900px; height:31px; margin-left:1px; padding-left:50px; background:url(/images/templet2/menu.jpg) no-repeat; float:left; display:inline;}
+#bodys{width:950px; margin:0 auto; margin-top:10px;}
+#logo{width:950px; height:150px; background:url(/images/templet2/top.jpg) no-repeat; float:left; display:inline;}
+#menu{width:900px; height:31px; padding-left:50px; background:url(/images/templet2/menu.jpg) no-repeat; float:left; display:inline;}
 #menu .cl{width:75px; height:15px; line-height:15px; margin-top:8px; text-align:center; border-left:1px solid #ffffff; overflow:hidden; float:left; display:inline;}
 #menu .cl a{font-size:12px; color:#ffffff; overflow:hidden; text-decoration:none;}
+
+#top{width:950px; margin-top:10px; float:left; display:inline;}
+#top #left{width:320px; float:left; display:inline;}
+#top #left #l1{width:318px; height:240px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #left #l2{width:318px; height:340px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #left #l3{width:318px; height:180px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #left .title{width:318px; height:25px; background:url(/images/templet2/ltitle.jpg) no-repeat; float:left; display:inline;}
+#top #center{width:360px; margin-left:10px; float:left; display:inline;}
+#top #center #c1{width:360px; height:78px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #center #c2{width:360px; height:150px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
