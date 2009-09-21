@@ -27,10 +27,10 @@
 		<?php $sql="select n.title from smg_news n left join smg_category c on n.category_id=c.id where c.name='收视率分析滚动更新' order by n.created_at desc";
 			$news=$db->query($sql);
 		 ?>
-		<!--<div style="width:995px; height:20px; line-height:20px; text-align:center; float:left; display:inline;">
+		<div style="width:995px; height:20px; line-height:20px; text-align:center; float:left; display:inline;">
 			<marquee scrollAmount="3" onmouseover=stop() onmouseout=start()>
 			<?php for($i=0;$i<count($news);$i++){echo "　　".get_fck_content($news[$i]->title);}?>
-		</marquee></div>-->
+		</marquee></div>
 		<div id=ibody_left>
 			<div class=l_title>SMG收视率和收视份额分析</div>
 			<div class=l_content>
@@ -89,7 +89,199 @@
 					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
 				<?php } ?>
 			</div>
-	
+		<div class=b_title><div style="float:left; display:inline;">番茄跟踪T Tracking</div><div style="margin-right:10px; float:right; display:inline;"></div></div>	
+			<div class=b_content>
+				<?php $sql="select content from smg_news where title='上海东方卫视波动说明' order by created_at desc";
+					$news=$db->query($sql);
+					$sql="select id,name from smg_report_item where dept_id=12";
+					$dfws=$db->query($sql);	
+				?>
+				<div class="bpro" id="bpro1">
+					<div style="width:800px;  line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;">
+						<?php for($i=0;$i<4;$i++){ ?>
+						<div style="width:200px; float:left; display:inline;">
+										<div style="width:60px; float:left; display:inline;">节目名称</div><div style="width:70px; float:left; display:inline;">本期收视率</div><div style="width:60px; float:left; display:inline;">与上期差额</div>
+							</div>
+							<?php } ?>
+						<?php for($i=0;$i<count($dfws);$i++){ 
+								$sql="select value from smg_rating_value where item_id=".$dfws[$i]->id." order by date desc,id desc limit 2";
+								$record=$db->query($sql);
+								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
+							?>
+							
+							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
+								<div style="width:60px; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" target="_blank" href="list3.php?itemid=12&reportitem=<?php echo $dfws[$i]->id;?>"><?php echo $dfws[$i]->name;?></a></div>
+								<div style="width:70px; float:left; display:inline;">
+									<?php echo $record[0]->value;?> 
+								</div>
+								<div style="width:60px; float:left; display:inline;">
+									<?php if($recordvalue >0){?>
+									<span style="color:red;"><?php echo $recordvalue; ?> ↑</span>
+									<?php }else if($recordvalue<0){?>
+										<span style="color:green;"><?php echo $recordvalue;?> ↓</span>
+									<?php }else if($recordvalue==0){?>
+										<span style="color:#000000;"><?php echo $recordvalue;?> →</span>
+									<?php } ?>
+								</div>
+							</div>
+						<?php } ?>
+					</div>
+					<div style="width:193px;  float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div></div>
+				<?php $sql="select content from smg_news where title='上海电视台电视剧频道波动说明' order by created_at desc";
+					$news=$db->query($sql);	
+					$sql="select id,name from smg_report_item where dept_id=21";
+					$dsj=$db->query($sql);	
+				?>
+				<div class="bpro" id="bpro2" style="display:none;">
+					<div style="width:800px;  line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;">
+						<?php for($i=0;$i<4;$i++){ ?>
+						<div style="width:200px; float:left; display:inline;">
+										<div style="width:60px; float:left; display:inline;">节目名称</div><div style="width:70px; float:left; display:inline;">本期收视率</div><div style="width:60px; float:left; display:inline;">与上期差额</div>
+							</div>
+							<?php } ?>
+						<?php for($i=0;$i<count($dsj);$i++){ 
+								$sql="select value from smg_rating_value where item_id=".$dsj[$i]->id." order by date desc,id desc limit 2";
+								$record=$db->query($sql);
+								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
+							?>
+							
+							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
+								<div style="width:60px; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" target="_blank" href="list3.php?itemid=21&reportitem=<?php echo $dsj[$i]->id;?>"><?php echo $dsj[$i]->name;?></a></div>
+								<div style="width:70px; float:left; display:inline;">
+									<?php echo $record[0]->value;?> 
+								</div>
+								<div style="width:60px; float:left; display:inline;">
+									<?php if($recordvalue >0){?>
+									<span style="color:red;"><?php echo $recordvalue; ?> ↑</span>
+									<?php }else if($recordvalue<0){?>
+										<span style="color:green;"><?php echo $recordvalue;?> ↓</span>
+									<?php }else if($recordvalue==0){?>
+										<span style="color:#000000;"><?php echo $recordvalue;?> →</span>
+									<?php } ?>
+								</div>
+							</div>
+						<?php } ?>
+					</div>
+					<div style="width:193px; float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div></div>
+				<?php $sql="select content from smg_news where title='上海电视台生活时尚频道波动说明' order by created_at desc";
+					$news=$db->query($sql);
+					$sql="select id,name from smg_report_item where dept_id=22";
+					$shss=$db->query($sql);
+				?>
+				<div class="bpro" id="bpro3" style="display:none;">
+					<div style="width:800px;  line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;">
+						<?php for($i=0;$i<4;$i++){ ?>
+						<div style="width:200px; float:left; display:inline;">
+										<div style="width:60px; float:left; display:inline;">节目名称</div><div style="width:70px; float:left; display:inline;">本期收视率</div><div style="width:60px; float:left; display:inline;">与上期差额</div>
+							</div>
+							<?php } ?>
+						<?php for($i=0;$i<count($shss);$i++){ 
+								$sql="select value from smg_rating_value where item_id=".$shss[$i]->id." order by date desc,id desc limit 2";
+								$record=$db->query($sql);
+								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
+							?>
+							
+							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
+								<div style="width:60px; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" target="_blank" href="list3.php?itemid=22&reportitem=<?php echo $shss[$i]->id;?>"><?php echo $shss[$i]->name;?></a></div>
+								<div style="width:70px; float:left; display:inline;">
+									<?php echo $record[0]->value;?> 
+								</div>
+								<div style="width:60px; float:left; display:inline;">
+									<?php if($recordvalue >0){?>
+									<span style="color:red;"><?php echo $recordvalue; ?> ↑</span>
+									<?php }else if($recordvalue<0){?>
+										<span style="color:green;"><?php echo $recordvalue;?> ↓</span>
+									<?php }else if($recordvalue==0){?>
+										<span style="color:#000000;"><?php echo $recordvalue;?> →</span>
+									<?php } ?>
+								</div>
+							</div>
+						<?php } ?>
+					</div>
+					<div style="width:193px; float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div>
+				</div>
+				<?php $sql="select content from smg_news where title='上海电视台新闻综合频道波动说明' order by created_at desc";
+					$news=$db->query($sql);
+					$sql="select id,name from smg_report_item where dept_id=19";
+					$newscenter=$db->query($sql);
+				?>
+				<div class="bpro" id="bpro4" style="display:none;">
+					<div style="width:800px;  line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;">
+						<?php for($i=0;$i<4;$i++){ ?>
+						<div style="width:200px; float:left; display:inline;">
+										<div style="width:60px; float:left; display:inline;">节目名称</div><div style="width:70px; float:left; display:inline;">本期收视率</div><div style="width:60px; float:left; display:inline;">与上期差额</div>
+							</div>
+							<?php } ?>
+						<?php for($i=0;$i<count($newscenter);$i++){ 
+								$sql="select value from smg_rating_value where item_id=".$newscenter[$i]->id." order by date desc,id desc limit 2";
+								$record=$db->query($sql);
+								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
+							?>
+							
+							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
+								<div style="width:60px; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" target="_blank" href="list3.php?itemid=19&reportitem=<?php echo $newscenter[$i]->id;?>"><?php echo $newscenter[$i]->name;?></a></div>
+								<div style="width:70px; float:left; display:inline;">
+									<?php echo $record[0]->value;?> 
+								</div>
+								<div style="width:60px; float:left; display:inline;">
+									<?php if($recordvalue >0){?>
+									<span style="color:red;"><?php echo $recordvalue; ?> ↑</span>
+									<?php }else if($recordvalue<0){?>
+										<span style="color:green;"><?php echo $recordvalue;?> ↓</span>
+									<?php }else if($recordvalue==0){?>
+										<span style="color:#000000;"><?php echo $recordvalue;?> →</span>
+									<?php } ?>
+								</div>
+							</div>
+						<?php } ?>
+					</div>
+					<div style="width:193px; float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div>
+				</div>
+				<?php $sql="select content from smg_news where title='上海东方电视台娱乐频道波动说明' order by created_at desc";
+					$news=$db->query($sql);
+					$sql="select id,name from smg_report_item where dept_id=16";
+					$yl=$db->query($sql);
+				?>
+				<div class="bpro" id="bpro5" style="display:none;">
+					<div style="width:800px;  line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;">
+						<?php for($i=0;$i<4;$i++){ ?>
+						<div style="width:200px; float:left; display:inline;">
+										<div style="width:60px; float:left; display:inline;">节目名称</div><div style="width:70px; float:left; display:inline;">本期收视率</div><div style="width:60px; float:left; display:inline;">与上期差额</div>
+							</div>
+							<?php } ?>
+						<?php for($i=0;$i<count($yl);$i++){ 
+								$sql="select value from smg_rating_value where item_id=".$yl[$i]->id." order by date desc,id desc limit 2";
+								$record=$db->query($sql);
+								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
+							?>
+							
+							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
+								<div style="width:60px; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" target="_blank" href="list3.php?itemid=16&reportitem=<?php echo $yl[$i]->id;?>"><?php echo $yl[$i]->name;?></a></div>
+								<div style="width:70px; float:left; display:inline;">
+									<?php echo $record[0]->value;?> 
+								</div>
+								<div style="width:60px; float:left; display:inline;">
+									<?php if($recordvalue >0){?>
+									<span style="color:red;"><?php echo $recordvalue; ?> ↑</span>
+									<?php }else if($recordvalue<0){?>
+										<span style="color:green;"><?php echo $recordvalue;?> ↓</span>
+									<?php }else if($recordvalue==0){?>
+										<span style="color:#000000;"><?php echo $recordvalue;?> →</span>
+									<?php } ?>
+								</div>
+							</div>
+						<?php } ?>
+					</div>
+					<div style="width:193px; float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div>
+				</div>
+			</div>
+			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
+					<div param="1" class=b_b_pro1 style="width:197px; background:#FF9900;"><a style="color:#000000" class="b_b_pro1a" id="b_b_pro11" target="_blank" href="list3.php?itemid=12">上海东方卫视</a></div>
+					<div param="2" class=b_b_pro1><a class="b_b_pro1a" id="b_b_pro12" target="_blank" href="list3.php?itemid=21">上海电视台电视剧频道</a></div>
+					<div param="3" class=b_b_pro1><a class="b_b_pro1a" id="b_b_pro13" target="_blank" href="list3.php?itemid=22">上海电视台生活时尚频道</a></div>
+					<div param="4" class=b_b_pro1><a class="b_b_pro1a" id="b_b_pro14" target="_blank" href="list3.php?itemid=19">上海电视台新闻综合频道</a></div>
+					<div param="5" class=b_b_pro1><a class="b_b_pro1a" id="b_b_pro15" target="_blank" href="list3.php?itemid=16">上海东方电视台娱乐频道</a></div>
+			</div>
 		<?php $sql="select n.title,n.id,n.content,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 2";
 				$news=$db->query($sql);
 			?>
@@ -183,11 +375,11 @@
 		});
 		$(".b_b_pro1").mouseover(function(){
 			$(".b_b_pro1").css("background","#FFCC00");
-			$(".b_b_pro1").css("color","#ffffff");
+			$(".b_b_pro1a").css("color","#ffffff");
 			$(".b_b_pro1").css("width","199px");
 			$(this).css("width","197px");
 			$(this).css("background","#FF9900");
-			$(this).css("color","#000000");
+			$("#b_b_pro1"+$(this).attr("param")).css("color","#000000");
 			$(".bpro").css("display","none");
 			$("#bpro"+$(this).attr("param")).css("display","inline");
 		});
