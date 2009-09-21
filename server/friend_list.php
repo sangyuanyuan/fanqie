@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once('../frame.php');
 	$date = $_REQUEST['date'] ? $_REQUEST['date'] : date('Y-m-d');
 	$today = substr($date, 5);
@@ -9,7 +9,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-服务-生日日历</title>
+	<title>SMG-番茄网-服务-好友列表</title>
 	<? 	
 		css_include_tag('server_calendar','top','bottom','thickbox');
 		use_jquery();
@@ -23,8 +23,14 @@
 <body>
 <? require_once('../inc/top.inc.html');
 	js_include_tag('service/calendar','thickbox');
+	$cookie=isset($_COOKIE['smg_username']) ? $_COOKIE['smg_username'] : "";
+	if($cookie=="")
+	{
+		alert('请先登录再查看您的好友！');
+		redirect('/login/login.php');
+	}
 	$db = get_db();
-	$birthday = $db->query("select a.nickname,a.loginname,b.name from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='$today' and state=3 and hide_birthday!=1  order by a.org_id");
+	$birthday = $db->query("select a.nickname,a.loginname,b.name from smg_friends f left join smg_user_real a on f.friend_name=a.loginname left join smg_org_dept b on a.org_id = b.orgid  where f.my_name='".$cookie."' and state=3 and hide_birthday!=1  order by a.org_id");
 //	echo "select a.nickname,a.loginname,b.name from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='$today' order by a.org_id";
 ?>
 <div id=ibody>
