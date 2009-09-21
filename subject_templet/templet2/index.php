@@ -15,8 +15,20 @@
 <body>
 	<div id=bodys>
 		<?php include('top.inc.php');?>
-		<div id=right>
-			
+		<div id=top>
+			<div id=left>
+				<div id=l1></div>
+				<div id=l2>
+					<div class=title></div>
+				</div>
+				<div id=l3>
+					<div class=title></div>
+				</div>
+			</div>
+			<div id=center>
+				<div id=c1></div>
+				<div id=c2></div>
+			</div>
 		</div>
 		<? //include('inc/djbottom.inc.php');?>
 	</div>
