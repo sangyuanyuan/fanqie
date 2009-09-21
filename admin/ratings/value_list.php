@@ -10,6 +10,7 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>smg</title>
 	<?php
+		css_include_tag('admin');
 		validate_form("category_form");
 	?>
 </head>
