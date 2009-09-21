@@ -89,7 +89,6 @@
 					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
 				<?php } ?>
 			</div>
-<<<<<<< HEAD:sslfx/index.php
 		<div class=b_title><div style="float:left; display:inline;">番茄跟踪T Tracking</div><div style="margin-right:10px; float:right; display:inline;"></div></div>	
 			<div class=b_content>
 				<?php $sql="select content from smg_news where title='上海东方卫视波动说明' order by created_at desc";
