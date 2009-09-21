@@ -38,7 +38,7 @@ li{margin:0px; list-style-type:none;}
 #r .content .left a{color:#000000; text-decoration:none; font-size:12px; line-height:12px;}
 #r .content .right{width:150px; height:25x; margin-left:50px; color:#A9A9A9; float:left; display:inline;}
 
-#paginate{ margin-left:200px; margin-top:50px;}
+#paginate{ margin-left:200px; margin-top:50px; float:left; display:inline;}
 #paginate a{color:#000000;}
 
 

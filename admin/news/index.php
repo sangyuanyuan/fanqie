@@ -13,7 +13,7 @@
 	$dept_id = $_REQUEST['dept'];
 	$is_adopt = $_REQUEST['adopt'];
 	$db = get_db();
-	$sql = 'select * from smg_dept order by code';
+	$sql = 'SELECT * FROM smg_dept order by convert(name USING gbk);';
 	$rows_dept = $db->query($sql);
 	$c = array('is_recommend=1');
 	if($category_id > 0){

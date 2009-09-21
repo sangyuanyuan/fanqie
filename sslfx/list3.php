@@ -19,9 +19,9 @@
 		}
 		if($_REQUEST['time']!="")
 		{
-			$sql1=$sql1." date='".$_REQUEST['time']." 00:00:00'";
+			$nowmonth=$_REQUEST['time']." 00:00:00";
 		}
-		$sql="select i.name,r.value,r.date from smg_rating_value r left join smg_report_item i on r.item_id=i.id where 1=1".$sql1." order by r.id desc";
+		$sql="select i.name,r.value from smg_rating_value r left join smg_report_item i on r.item_id=i.id where date = '".$nowmonth."'".$sql1." order by r.id desc";
 		$record=$db->paginate($sql,30);		
   ?>
 <script>
@@ -54,7 +54,7 @@
 						<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
 						<div class=l_b_l_r>
 							<div style="float:left; display:inline;"><?php echo $record[$i]->name; ?></div>
-							<div style="margin-right:100px; float:right; display:inline"><?php echo $record[$i]->value; ?></div>
+							<div style="float:right; display:inline"><?php echo $record[$i]->value; ?></div>
 						</div>
 			</div>
 			<div class=l_b_r><?php echo $record[$i]->date; ?></div>
@@ -136,7 +136,64 @@
 				<? }?>
 			</div>
 		</div>
-		
+		<div id=r_b_b>
+			<div class=b_b_title1 style="font-weight:bold; color:#000000; text-decoration:none;" param=1>本月部门发表量</div>
+			<div class=b_b_title1 param=2 style="color:#C2130E; text-decoration:underline; background:url('/images/news/news_r_b_b_title1.jpg') no-repeat;">本月点击排行榜</div>
+			<div id="b_b_1" class="b_b" style="display:none">
+			<?php 
+			 $sql="SELECT * FROM smg_fgl_count";
+			$pubcount=$db->query($sql);
+			$total=0;
+			for($i=0;$i<count($pubcount);$i++)
+			{
+				$total=$total+(int)$pubcount[$i]->fgl;
+			}
+			 for($i=0;$i<count($pubcount);$i++){	 	
+			 ?>
+			 	<div class="r_b2_content">
+			 		<?php if($i<3){?>
+			 			<div class=pic1>0<?php echo $i+1;?></div>
+			 			<div class=cl1><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->fgl/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+					<?php }else{?>
+						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
+						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->fgl/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+					<?php }?>				
+				</div>
+			<? }?>
+			</div>
+			
+			<div id=b_b_2 class="b_b" style="display:block;">
+			<?php 
+			 $sql="select * from smg_djl_count";
+			 $clickcount=$db->query($sql);
+			 for($i=0;$i<count($clickcount);$i++)
+			 {
+			 	if($clickcount[$i]->name!="集团办公室"&&$clickcount[$i]->name!="传媒人报")
+			 	{
+			 			$click[]=array((int)$clickcount[$i]->num,$clickcount[$i]->name);
+			 	}
+			 	else if($clickcount[$i]->name=="集团办公室")
+			 	{
+			 			$cmrb=$db->query("select num from smg_djl_count where name='传媒人报'");
+			 			$jtbgs=(int)$clickcount[$i]->num+(int)$cmrb[0]->num;
+			 			$click[]=array($jtbgs,$clickcount[$i]->name);
+			 	}
+			 }
+			 $click=array2sort($click,0,'d');
+			 $total=$db->query("select sum(num) as total from smg_djl_count");
+			 for($i=0;$i<10;$i++){	 	
+			 ?>
+			 	<div class="r_b2_content">
+			 		<?php if($i< 3){?>
+			 			<div class=pic1>0<?php echo $i+1;?></div>
+			 			<div class=cl1><?php echo delhtml($click[$i][1]);?></div><div class=percentage><?php $count=$click[$i][0]/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+					<?php }else{?>
+						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
+						<div class=cl2><?php echo delhtml($click[$i][1]);?></div><div class=percentage><?php $count=$click[$i][0]/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+					<?php }?>				
+				</div>
+			 <? }?>
+			 </div>
 		</div>
 	</div>
 </div>
@@ -157,30 +214,26 @@
 	$(document).ready(function(){
 		$("#cx").click(function(){
 				var reportitem="";
-				var time="";
+				var type1="";
 				if($("#reportitem").val()!=0)
 				{
 					reportitem=$("#reportitem").val();	
 				}
-				if($("#time").val()!="")
+				if(reportitem!=""&&type1!="")
 				{
-					time=$("#time").val();
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&reportitem="+reportitem+"&type="+type1;
 				}
-				if(reportitem!=""&&time!="")
+				else if(reportitem!=""&&type1=="")
 				{
-					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+time+"&reportitem="+reportitem;
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&reportitem="+reportitem;
 				}
-				else if(reportitem!=""&&time=="")
+				else if(reportitem==""&&type1!="")
 				{
-					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&reportitem="+reportitem;
-				}
-				else if(reportitem==""&&time!="")
-				{
-					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+time;
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&type="+type1;
 				}
 				else
 				{
-					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>";
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val();
 				}
 		})
 	});
