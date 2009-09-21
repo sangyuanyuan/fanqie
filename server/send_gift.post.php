@@ -6,6 +6,11 @@ $gift->update_attributes($_POST['gift'],false);
 $gift->reciever = $_SESSION['smg_gift_loginname'];
 $db = get_db();
 $gifts = $db->query("select * from smg_gift where id in({$_POST['gift_ids']})");
+$cookie=isset($_COOKIE['smg_user_nickname'])? $_COOKIE['smg_user_nickname']:0;
+if($cookie!=0)
+{
+		
+}
 
 foreach ($gifts as $v) {
 	$gift->id=0;

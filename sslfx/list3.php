@@ -19,9 +19,9 @@
 		}
 		if($_REQUEST['time']!="")
 		{
-			$nowmonth=$_REQUEST['time']." 00:00:00";
+			$sql1=$sql1." date='".$_REQUEST['time']." 00:00:00'";
 		}
-		$sql="select i.name,r.value from smg_rating_value r left join smg_report_item i on r.item_id=i.id where date = '".$nowmonth."'".$sql1." order by r.id desc";
+		$sql="select i.name,r.value,r.date from smg_rating_value r left join smg_report_item i on r.item_id=i.id where 1=1".$sql1." order by r.id desc";
 		$record=$db->paginate($sql,30);		
   ?>
 <script>
@@ -54,6 +54,7 @@
 						<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
 						<div class=l_b_l_r>
 							<div style="float:left; display:inline;"><?php echo $record[$i]->name; ?></div>
+							<div style="margin-right:100px; float:right; display:inline"><?php echo $record[$i]->value; ?></div>
 							<div style="float:right; display:inline"><?php echo $record[$i]->value; ?></div>
 						</div>
 			</div>
@@ -214,27 +215,32 @@
 	$(document).ready(function(){
 		$("#cx").click(function(){
 				var reportitem="";
-				var type1="";
+				var time="";
 				if($("#reportitem").val()!=0)
 				{
 					reportitem=$("#reportitem").val();	
 				}
-				if(reportitem!=""&&type1!="")
+				if($("#time").val()!="")
 				{
-					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&reportitem="+reportitem+"&type="+type1;
+					time=$("#time").val();
 				}
-				else if(reportitem!=""&&type1=="")
+				if(reportitem!=""&&time!="")
 				{
-					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&reportitem="+reportitem;
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+time+"&reportitem="+reportitem;
 				}
-				else if(reportitem==""&&type1!="")
+				else if(reportitem!=""&&time=="")
 				{
-					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val()+"&type="+type1;
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&reportitem="+reportitem;
+				}
+				else if(reportitem==""&&time!="")
+				{
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+time;
 				}
 				else
 				{
-					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>&time="+$("#time").val();
+					window.location.href="list3.php?itemid=<?php echo $_REQUEST['itemid']; ?>";
 				}
+
 		})
 	});
 </script>
