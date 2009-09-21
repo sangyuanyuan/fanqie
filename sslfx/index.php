@@ -89,7 +89,7 @@
 					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
 				<?php } ?>
 			</div>
-		<div class=b_title><div style="float:left; display:inline;">番茄跟踪T Tracking</div><div style="margin-right:10px; float:right; display:inline;"></div></div>	
+		<div class=b_title><div style="float:left; display:inline;">番茄跟踪T Tracking　　　<?php echo date('Y-m-d');$date=date("Y-m-d H:i:s",mktime(0,0,0,date("m"),date("d")-1,date("Y")));?></div><div style="margin-right:10px; float:right; display:inline;"></div></div>	
 			<div class=b_content>
 				<?php $sql="select content from smg_news where title='上海东方卫视波动说明' order by created_at desc";
 					$news=$db->query($sql);
@@ -104,7 +104,7 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($dfws);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$dfws[$i]->id." order by date desc,id desc limit 2";
+								$sql="select value from smg_rating_value where item_id=".$dfws[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
 								$record=$db->query($sql);
 								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
 							?>
@@ -140,7 +140,7 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($dsj);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$dsj[$i]->id." order by date desc,id desc limit 2";
+								$sql="select value from smg_rating_value where item_id=".$dsj[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
 								$record=$db->query($sql);
 								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
 							?>
@@ -176,7 +176,7 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($shss);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$shss[$i]->id." order by date desc,id desc limit 2";
+								$sql="select value from smg_rating_value where item_id=".$shss[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
 								$record=$db->query($sql);
 								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
 							?>
@@ -213,7 +213,7 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($newscenter);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$newscenter[$i]->id." order by date desc,id desc limit 2";
+								$sql="select value from smg_rating_value where item_id=".$newscenter[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
 								$record=$db->query($sql);
 								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
 							?>
@@ -250,7 +250,7 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($yl);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$yl[$i]->id." order by date desc,id desc limit 2";
+								$sql="select value from smg_rating_value where item_id=".$yl[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
 								$record=$db->query($sql);
 								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
 							?>
