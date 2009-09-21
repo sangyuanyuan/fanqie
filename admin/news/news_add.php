@@ -21,9 +21,12 @@
 		css_include_tag('admin','thickbox');
 		use_jquery();
 		validate_form("news_add");
-		js_include_tag('smg_category_class.js','admin/news_pub', 'admin/news_add','thickbox');
+		js_include_tag('smg_category_class.js','admin/news_pub', 'admin/news_add','thickbox','total');
 		
 	?>
+	<script>
+			total("后台","other");
+	</script>
 </head>
 <?php 
 //initialize the categroy;
