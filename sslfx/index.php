@@ -282,9 +282,6 @@
 					<div param="4" class=b_b_pro1><a class="b_b_pro1a" id="b_b_pro14" target="_blank" href="list3.php?itemid=19">上海电视台新闻综合频道</a></div>
 					<div param="5" class=b_b_pro1><a class="b_b_pro1a" id="b_b_pro15" target="_blank" href="list3.php?itemid=16">上海东方电视台娱乐频道</a></div>
 			</div>
-=======
-	
->>>>>>> be426c79a882fa8c4322568375be52d489fbc570:sslfx/index.php
 		<?php $sql="select n.title,n.id,n.content,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 2";
 				$news=$db->query($sql);
 			?>
