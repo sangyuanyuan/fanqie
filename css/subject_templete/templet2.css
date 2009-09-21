@@ -1,0 +1,5 @@
+#bodys{width:1002px; margin:0 auto; margin-top:10px;}
+#logo{width:950px; height:150px; margin-left:1px; background:url(/images/templet2/top.jpg) no-repeat; float:left; display:inline;}
+#menu{width:900px; height:31px; margin-left:1px; padding-left:50px; background:url(/images/templet2/menu.jpg) no-repeat; float:left; display:inline;}
+#menu .cl{width:75px; height:15px; line-height:15px; margin-top:8px; text-align:center; border-left:1px solid #ffffff; overflow:hidden; float:left; display:inline;}
+#menu .cl a{font-size:12px; color:#ffffff; overflow:hidden; text-decoration:none;}

@@ -15,7 +15,9 @@
 		$zongcai_vote->save();
 	}else{
 		$zongcai_vote = new table_class('smg_zongcai_vote');
-		$zongcai_vote->find($_POST['id']);
+		if($_POST['id']!=''){
+			$zongcai_vote->find($_POST['id']);
+		}
 		$zongcai_vote->start_time = $_POST['start_time'];
 		$zongcai_vote->end_time = $_POST['end_time'];
 		$zongcai_vote->save();
