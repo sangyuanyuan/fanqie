@@ -148,6 +148,6 @@ $Config['FileTypesAbsolutePath']['Media']= ($Config['UserFilesAbsolutePath'] == 
 $Config['QuickUploadPath']['Media']		= $Config['UserFilesPath'] ;
 $Config['QuickUploadAbsolutePath']['Media']= $Config['UserFilesAbsolutePath'] ;
 
-$Config['MaxImageSize']                 = '1000';//(kb)
+$Config['MaxImageSize']                 = '2000';//(kb)
 
 ?>
