@@ -422,19 +422,14 @@ total("首页","other");
 					<div id=title></div>
 					<a href="/news/news_list.php?id=64" id=more target=_blank></a>
 					<div id=box1>
+						<a target="_blank" href="/sslfx/"><img border=0 src="/images/index/rating_logo.jpg"></a>
+					</div>
+					<div id=box2>
 						<ul>
 							<li>·<a style="color:red; font-weight:bold;" target="_blank" href="/sslfx/">电视节目收视定量分析工具</a></li>
 							<li>·<a target="_blank" href="/server/news/news.php?id=12302">员工自助系统</a></a></li>
 							<li>·<a target="_blank" href="/server/news/news.php?id=12312">人力资源部常用表格</a></a></li>
-							
-						</ul>	
-					</div>
-					<div id=box2>
-						<ul>
-							<li>·<a target="_blank" href="/server/news/news.php?id=12314">工会常用表格</a></li>
 							<li>·<a target="_blank" href="/server/news/news.php?id=12310">办公室常用表格</a></li>
-							<li>·<a href="/server/news/news.php?id=12301" target=_blank>因私出国（境）人员请假表 </a></li>
-							<li>·<a href="/server/news/news.php?id=12304" target=_blank>员工年休假申请表年休假工资报酬核发审批表</a></li>
 						</ul>						
 					</div>
  			</div>
