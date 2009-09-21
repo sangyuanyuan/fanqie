@@ -1,16 +1,17 @@
 <?php
 include "../frame.php";
-
+$db = get_db();
+$gifts = $db->query("select * from smg_gift where id in({$_POST['gift_ids']})");
+$cookie=isset($_COOKIE['smg_username']) ? $_COOKIE['smg_username'] : "";
+if($cookie!="")
+{	 
+	 $friend=$db->execute("insert into smg_friends(my_name,friend_name) value ('".$_SESSION['smg_gift_loginname']."','".$cookie."')");
+}
+close_db();
 $gift = new table_class('smg_birthday_gift');
 $gift->update_attributes($_POST['gift'],false);
 $gift->reciever = $_SESSION['smg_gift_loginname'];
-$db = get_db();
-$gifts = $db->query("select * from smg_gift where id in({$_POST['gift_ids']})");
-$cookie=isset($_COOKIE['smg_user_nickname'])? $_COOKIE['smg_user_nickname']:0;
-if($cookie!=0)
-{
-	 $friend=$db->query("insert into smg_friends(my_name,friend_name) value ('".$_SESSION['smg_gift_loginname']."','".$cookie."')");
-}
+
 
 foreach ($gifts as $v) {
 	$gift->id=0;
@@ -26,5 +27,6 @@ foreach ($gifts as $v) {
 #}else{
 #	echo '礼物赠送失败!';
 #}
+
 
 ?>

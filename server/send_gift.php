@@ -70,7 +70,7 @@
 			}					
 			var send_type = <?php echo $send_type;?>;
 			$.post('send_gift.post.php',{'gift_ids':'<?php echo $_REQUEST["gift_ids"];?>','gift[sender]':sender,'gift[message]':tcontent,'gift[send_type]':send_type},function(data){
-				alert('赠送礼物成功!');
+				alert(data);
 				window.location.href = 'today.php';
 			});
 		});		
