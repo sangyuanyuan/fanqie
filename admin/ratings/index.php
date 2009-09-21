@@ -31,7 +31,7 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->name;?></td>
-					<td><a href="upload2.php?item_id=<?php echo $record[$i]->id;?>">上传值</a>　<a href="upload.php?item_id=<?php echo $record[$i]->id;?>">上传收视率</a>　<a href="ratings_edit.php?id=<?php echo $record[$i]->id;?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a>　<a href="show.php?item_id=<?php echo $record[$i]->id;?>">查看</a></td>
+					<td><a href="value_list.php?item_id=<?php echo $record[$i]->id;?>">查询值</a>　<a href="upload2.php?item_id=<?php echo $record[$i]->id;?>">上传值</a>　<a href="upload.php?item_id=<?php echo $record[$i]->id;?>">上传收视率</a>　<a href="ratings_edit.php?id=<?php echo $record[$i]->id;?>" target="admin_iframe">编辑</a>　<a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a>　<a href="show.php?item_id=<?php echo $record[$i]->id;?>">查看</a></td>
 				</tr>
 		<?php
 			}
