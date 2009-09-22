@@ -38,7 +38,7 @@
     		<div id="title"><div id=date>TODAY <?php echo $date;?></div></div>
      	  <div id="menu">
      	  	<div id="menu2"><a href="birthday.php">我的生日</a></div>
-     	  	<div id="menu1"><a href="friend_list.php">我的好友</a></div>
+     	  	<div id="menu1">我的好友</div>
     	  	<div id="menu2"><a href="calendar.php">日历</a></div>
      	  	<div id="menu2"><a href="today.php">今日寿星</a></div>	
 			<div id="menu2"><a href="send_gift_list.php">送礼列表</a></div>
