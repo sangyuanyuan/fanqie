@@ -8,7 +8,7 @@
 		html { overflow-x:hidden; }
 	</style>
 </head>
-<body>
+<body style="font-size:12px;"> 
 <?php $db=get_db(); 
 $news=$db->query('select content from smg_news where id=22505');  
 echo get_fck_content($news[0]->content);?>
