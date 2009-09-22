@@ -93,7 +93,7 @@
 			<div class=b_content>
 				<?php $sql="select content from smg_news where title='上海东方卫视波动说明' order by created_at desc";
 					$news=$db->query($sql);
-					$sql="select l.id,l.name from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=12 and v.date='".$date."'";
+					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=12 and v.date='".$date."'";
 					$dfws=$db->query($sql);	
 				?>
 				<div class="bpro" id="bpro1">
@@ -104,7 +104,7 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($dfws);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$dfws[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
+								$sql="select value,value2,value3 from smg_rating_value where item_id=".$dfws[$i]->id." and date='".$date."' order by date desc,id desc limit 1";
 								$record=$db->query($sql);
 							?>
 							
