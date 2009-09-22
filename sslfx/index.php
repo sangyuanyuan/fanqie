@@ -128,7 +128,7 @@
 					<div style="width:193px;  float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div></div>
 				<?php $sql="select content from smg_news where title='上海电视台电视剧频道波动说明' order by created_at desc";
 					$news=$db->query($sql);	
-					$sql="select l.id,l.name from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=21 and v.date='".$date."'";
+					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=21 and v.date='".$date."'";
 					$dsj=$db->query($sql);	
 				?>
 				<div class="bpro" id="bpro2" style="display:none;">
@@ -163,7 +163,7 @@
 					<div style="width:193px; float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div></div>
 				<?php $sql="select content from smg_news where title='上海电视台生活时尚频道波动说明' order by created_at desc";
 					$news=$db->query($sql);
-					$sql="select l.id,l.name from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=22 and v.date='".$date."'";
+					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=22 and v.date='".$date."'";
 					$shss=$db->query($sql);
 				?>
 				<div class="bpro" id="bpro3" style="display:none;">
@@ -199,7 +199,7 @@
 				</div>
 				<?php $sql="select content from smg_news where title='上海电视台新闻综合频道波动说明' order by created_at desc";
 					$news=$db->query($sql);
-					$sql="select l.id,l.name from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=19 and v.date='".$date."'";
+					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=19 and v.date='".$date."'";
 					$newscenter=$db->query($sql);
 				?>
 				<div class="bpro" id="bpro4" style="display:none;">
@@ -235,7 +235,7 @@
 				</div>
 				<?php $sql="select content from smg_news where title='上海东方电视台娱乐频道波动说明' order by created_at desc";
 					$news=$db->query($sql);
-					$sql="select l.id,l.name from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=16 and v.date='".$date."'";
+					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=16 and v.date='".$date."'";
 					$yl=$db->query($sql);
 				?>
 				<div class="bpro" id="bpro5" style="display:none;">
