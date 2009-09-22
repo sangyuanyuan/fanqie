@@ -55,7 +55,6 @@
 						<div class=l_b_l_r>
 							<div style="float:left; display:inline;"><?php echo $record[$i]->name; ?></div>
 							<div style="margin-right:100px; float:right; display:inline"><?php echo $record[$i]->value; ?></div>
-							<div style="float:right; display:inline"><?php echo $record[$i]->value; ?></div>
 						</div>
 			</div>
 			<div class=l_b_r><?php echo $record[$i]->date; ?></div>
