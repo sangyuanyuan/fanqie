@@ -11,6 +11,7 @@ p{margin:0px; padding:0px;}
 .l #title{width:751px; height:111px; background:url(/images/server/calendar_1.jpg) no-repeat; float:left;  display:inline;}
 .l #menu{width:730px; height:31px; margin-left:20px; border-bottom:1px solid #D8DFEA; float:left; display:inline;}
 .l #menu1{width:90px; height:25px; padding-top:5px; margin-left:2px; text-align:center; font-size:16px; line-height:20px; border:1px solid #666666; border-bottom:1px solid #ffffff; float:left; display:inline;}
+.l #menu1 a{color:#000000; text-decoration:none;}
 .l #menu2{width:90px; height:25px; padding-top:5px; margin-left:2px; text-align:center; font-size:16px; line-height:20px; background:#f3f3f3; border:1px solid #666666;  border-bottom:none; float:left; display:inline;}
 .l #menu2 a{color:#000000; text-decoration:none;}
 .l #date{width:240px; height:25px; margin-top:50px; text-align:center; font-size:20px; font-weight:bold; line-height:20px; float:right; display:inline;}
