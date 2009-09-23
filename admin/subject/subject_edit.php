@@ -46,6 +46,9 @@
 				</p>
 			</div>
 			<div id="layout" class="bder">
+				<?php
+					if($subject->templet_name == "1"){
+				?>
 				<div id="menu" class="bder">menu</div>
 				<div id="pos1" class="bder subject_pos">left</div>
 				<div id="right_box" class="bder">
@@ -59,6 +62,21 @@
 					<div style="clear:both"></div>
 					<div id="pos8" class="bder subject_pos">bottom</div>
 				</div>
+				<?php
+					}elseif($subject->templet_name == "2"){
+				?>
+				<div id="sub2_tl" class="bder subject_pos">left</div>
+				<div id="sub2_tc" class="bder subject_pos">center</div>
+				<div id="sub2_tr" class="bder subject_pos">right</div>
+				<div id="sub2_m" class="bder subject_pos">middle</div>
+				<div id="sub2_bl" class="bder subject_pos">left</div>
+				<div id="sub2_br" class="bder subject_pos">right</div>
+				<?php
+					}else{
+				?>
+				<?php
+					}
+				?>
 			</div>
 			<input type="hidden" name="id" id="hidden_id" value="<?php echo $subject->id;?>">
 		</form>
@@ -93,9 +111,15 @@
 				module.pos_name = '<?php echo $item->pos_name;?>';
 				manager.items.push(module);
 				module.display_info(true);
-			<?
+			<?php
 				}
 			}
 		?>
+		
+		$("#templet_type").change(function(){
+			$.post("templet"+$("#templet_type").val()+".php",{},function(date){
+				$("#layout").html(date);
+			})
+		})
 	});
 </script>

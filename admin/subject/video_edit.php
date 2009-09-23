@@ -82,6 +82,7 @@
 		</tr>	
 	</table>
 	<input type="hidden" name="id" value="<?php echo $id;?>">
+	<input type="hidden" id="v_u" value="<?php if($video->video_url!=''){echo 1;}?>">
 	<input type="hidden" name="video[is_recommend]" id="recommend" value="1">
 	<input type="hidden" name="item_id" value="<?php echo $_REQUEST['item_id'];?>">
 	<input type="hidden" name="item[subject_id]" value="<?php echo $subject_id;?>">
@@ -123,9 +124,11 @@
 					}
 				}
 			}else{
-				if($("#online").val()==''){
-					alert('请上传一个视频或者输入在线视频地址！');
-					return false;
+				if($("#v_u").val()==""){
+					if($("#online").val()==''){
+						alert('请上传一个视频或者输入在线视频地址！');
+						return false;
+					}
 				}
 			}
 			

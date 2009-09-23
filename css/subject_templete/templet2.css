@@ -26,3 +26,9 @@
 #middle .mbox{width:948px; height:190px; border:1px solid #ACCEE9; float:left; display:inline;}
 #middle .mbox2{width:948px; height:190px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
 #middle .title{width:948px; height:25px; background:url(/images/templet2/mtitle.jpg) no-repeat; float:left; display:inline;}
+
+#bottom{width:950px; margin-top:10px; padding-bottom:20px; float:left; display:inline;}
+#bottom .title{width:950px; height:26px; background:url(/images/templet2/btitle.jpg) no-repeat; float:left; display:inline;}
+#bottom #bleft{width:470px; float:left; display:inline;}
+#bottom #bright{width:470px; margin-left:10px; float:left; display:inline;}
+#bottom .box{width:468px; height:163px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
