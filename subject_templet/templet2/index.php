@@ -17,13 +17,13 @@
 		<?php include('top.inc.php');?>
 		<div id=top>
 			<div id=left>
-				<div id=l1></div>
-				<div id=l2>
-					<div class=title></div>
-				</div>
-				<div id=l3>
-					<div class=title></div>
-				</div>
+				<?php 
+					include_once("../../admin/subject/subject_module_class.php");
+					$modules = new smg_subject_module_class();
+					$modules = $modules->find('all',array('conditions' => "subject_id = 24 and pos_name='sub2_tl'",'order' => "priority asc,id desc"));
+					for($i=0;$i<count($modules);$i++)
+					$modules[$i]->display();
+				?>
 			</div>
 			<div id=center>
 				<div id=c1></div>
@@ -60,6 +60,18 @@
 			</div>
 			<div class=mbox2>
 				<div class=title></div>
+			</div>
+		</div>
+		
+		<div id=bottom>
+			<div class=title></div>
+			<div id=bleft>
+				<div class=box></div>
+				<div class=box></div>
+			</div>
+			<div id=bright>
+				<div class=box></div>
+				<div class=box></div>
 			</div>
 		</div>
 		<? //include('inc/djbottom.inc.php');?>
