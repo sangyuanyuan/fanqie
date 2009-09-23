@@ -8,8 +8,21 @@
 #top #left{width:320px; float:left; display:inline;}
 #top #left #l1{width:318px; height:240px; border:1px solid #ACCEE9; float:left; display:inline;}
 #top #left #l2{width:318px; height:340px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
-#top #left #l3{width:318px; height:180px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #left #l3{width:318px; height:174px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
 #top #left .title{width:318px; height:25px; background:url(/images/templet2/ltitle.jpg) no-repeat; float:left; display:inline;}
 #top #center{width:360px; margin-left:10px; float:left; display:inline;}
-#top #center #c1{width:360px; height:78px; border:1px solid #ACCEE9; float:left; display:inline;}
-#top #center #c2{width:360px; height:150px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #center #c1{width:358px; height:78px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #center #c2{width:358px; height:150px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #center #c3{width:360px; height:155px; margin-top:10px; border-top:1px solid #ACCEE9; float:left; display:inline;}
+#top #center .c4{width:360px; height:175px; margin-top:10px; border-top:1px solid #ACCEE9; float:left; display:inline;}
+#top #center .title{width:360px; height:25px; background:url(/images/templet2/ctitle.jpg) no-repeat; float:left; display:inline;}
+#top #right{width:250px; margin-left:10px; float:left; display:inline;}
+#top #right #r1{width:248px; height:240px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #right #r2{width:248px; height:154px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #right .r3{width:248px; height:174px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #right .title{width:248px; height:25px; background:url(/images/templet2/rtitle.jpg) no-repeat; float:left; display:inline;}
+
+#middle{width:950px; margin-top:10px; float:left; display:inline;}
+#middle .mbox{width:948px; height:190px; border:1px solid #ACCEE9; float:left; display:inline;}
+#middle .mbox2{width:948px; height:190px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
+#middle .title{width:948px; height:25px; background:url(/images/templet2/mtitle.jpg) no-repeat; float:left; display:inline;}

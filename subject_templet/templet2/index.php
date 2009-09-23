@@ -28,6 +28,38 @@
 			<div id=center>
 				<div id=c1></div>
 				<div id=c2></div>
+				<div id=c3>
+					<div class=title></div>
+				</div>
+				<div class=c4>
+					<div class=title></div>
+				</div>
+				<div class=c4>
+					<div class=title></div>
+				</div>
+			</div>
+			<div id=right>
+				<div id=r1>
+					<div class=title></div>
+				</div>
+				<div id=r2>
+					<div class=title></div>
+				</div>
+				<div class=r3>
+					<div class=title></div>
+				</div>
+				<div class=r3>
+					<div class=title></div>
+				</div>
+			</div>
+		</div>
+		
+		<div id=middle>
+			<div class=mbox>
+				<div class=title></div>
+			</div>
+			<div class=mbox2>
+				<div class=title></div>
 			</div>
 		</div>
 		<? //include('inc/djbottom.inc.php');?>
