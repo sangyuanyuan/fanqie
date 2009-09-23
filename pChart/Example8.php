@@ -4,8 +4,6 @@
  */
 
  // Standard inclusions
- include("pChart/pData.php");
- include("pChart/pChart.php");
  include("../frame.php");
  $db=get_db();
  $sql="select * from smg_ratings where imagetype='rader' and item_id=".$_POST['id']." order by id desc";

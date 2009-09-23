@@ -61,8 +61,19 @@ function display_login(dom_id,admin){
 			str += '　<a href="/admin/admin.php">后台管理</a>';
 		}else if($.cookie('smg_user_dept') > 0){
 			str += '　<a href="/admin/admin2.php">后台管理</a>';
-		}		
-		str += '　<a href="/login/user.post.php?user_type=logout">退出</a></div>';
+		}
+		var num1=parseInt($('#birthday1').val());
+		var num2=parseInt($('#birthday2').val());
+		str += '　<a href="/login/user.post.php?user_type=logout">退出</a></div><div style="width:50px; margin-top:15px; overflow:hidden; margin-right:10px; float:right; display:inline;">';
+		if(num1>0)
+		{
+			str +='　<a href="/server/send_gift_list_detail.php?reciever="'+$.cookie('smg_username')+'><img style="background:none; width:48px; height:14px; margin-top:-19px;" border=0 src="/images/top/srtx.gif" /></a>'	
+		}
+		else if(num2>0)
+		{
+			str +='　<a href="/server/friend_list.php"><img style="background:none; width:48px; height:14px;  margin-top:-19px;" border=0 src="/images/top/srtx.gif" /></a>'	
+		}
+		str += '</div>'
 	}
 	$('#' + dom_id).html(str);
 }

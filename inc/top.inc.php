@@ -1,4 +1,4 @@
-<? 
+﻿<? 
 	require_once('../frame.php');
 	$nav = new table_class("smg_nav");
 	$nav = $nav->find("all",array('order' => 'id asc'));
@@ -46,12 +46,24 @@
    			<? //}?>
    			<a href='/zongcai/' target="_blank">总裁奖</a>
    		</div>
-		<div id=zongcai><a href='/search/?key=<?php echo urlencode('审片意见')?>&search_type=smg_news' target="_blank"><img border=0 style="width:56px; height:13px; margin-top:0px; margin-left:5px; background:none;" src="/images/pic/spyj.gif"></a></div>
+		<div id=zongcai><a href='/search/?key=<?php echo urlencode('审片意见')?>&search_type=smg_news' target="_blank"><img border=0 style="width:56px; height:13px; margin-top:0px; background:none;" src="/images/pic/spyj.gif"></a></div>
    	</div>
+   	<?php 
+   				$cookie=isset($_COOKIE['smg_username']) ? $_COOKIE['smg_username'] : "";
+   				if($cookie!="")
+   				{
+	   				$sql="SELECT count(*) as num FROM smg_birthday_gift where DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(created_at) and reciever='".$cookie."'";
+	   				$birthday1=$db->query($sql);
+	   				$endtime=date("m-d",mktime(date("H",time()),date("i",time()),date("s",time()),date("m",time()),date("d",time())+7,date("Y",time())));
+	   				$sql="select count(*) as num from smg_friends f left join smg_user_real a on f.friend_name=a.loginname where Date_format(a.birthday,'%m-%d')>='".date('m-d')."' and Date_format(a.birthday,'%m-%d')<='".$endtime."' and f.my_name='".$cookie."'";
+	   				$birthday2=$db->query($sql);
+   				}
+   				
+   	?>
+   	<input type="hidden" id="birthday1" value="<?php echo $birthday1[0]->num; ?>"><input type="hidden" id="birthday2" value="<?php echo $birthday2[0]->num; ?>">
 		<div id=login>
-			<div id=welcome>			<img src="/images/top/person.jpg">
-欢迎您：<span style="font-weight:bold;">admin</span>　<a href="#">修改密码</a>　<a href="#">后台管理</a>　<a href="#">退出</a>
-			</div>
+			<div id=welcome>	<img src="/images/top/person.jpg">欢迎您：<span style="font-weight:bold;">admin</span>　<a href="#">修改密码</a>　<a href="#">后台管理</a>　<a href="#">退出</a> <?php if($cookie!==""){ if((int)$birthday1[0]->num > 0||(int)$birthday2[0]->num > 0){ ?><a href="/server/friend_list.php"><?php }} ?>
+</div>
 		</div>
 	</div>
 </div>

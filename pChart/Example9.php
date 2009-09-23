@@ -3,9 +3,7 @@
      Example9 : Showing how to use labels
  */
 
- // Standard inclusions   
- include("pChart/pData.php");
- include("pChart/pChart.php");
+ // Standard inclusions
  include("../frame.php");
  $db=get_db();
  $sql="select * from smg_ratings where item_id=".$_POST['id']." and date='".$_POST['date']."' and imagetype='foldline' order by id desc limit 1";
