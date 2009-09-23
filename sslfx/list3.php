@@ -21,7 +21,7 @@
 		{
 			$sql1=$sql1." date='".$_REQUEST['time']." 00:00:00'";
 		}
-		$sql="select i.name,r.value,r.date from smg_rating_value r left join smg_report_item i on r.item_id=i.id where 1=1".$sql1." order by r.id desc";
+		$sql="select a.* from (select r.date,i.name,r.value from smg_rating_value r left join smg_report_item i on r.item_id=i.id where 1=1".$sql1." order by r.id desc) as a group by date";
 		$record=$db->paginate($sql,30);		
   ?>
 <script>
@@ -55,7 +55,6 @@
 						<div class=l_b_l_r>
 							<div style="float:left; display:inline;"><?php echo $record[$i]->name; ?></div>
 							<div style="margin-right:100px; float:right; display:inline"><?php echo $record[$i]->value; ?></div>
-							<div style="float:right; display:inline"><?php echo $record[$i]->value; ?></div>
 						</div>
 			</div>
 			<div class=l_b_r><?php echo $record[$i]->date; ?></div>

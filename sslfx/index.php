@@ -93,7 +93,7 @@
 			<div class=b_content>
 				<?php $sql="select content from smg_news where title='上海东方卫视波动说明' order by created_at desc";
 					$news=$db->query($sql);
-					$sql="select id,name from smg_report_item where dept_id=12";
+					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=12 and v.date='".$date."'";
 					$dfws=$db->query($sql);	
 				?>
 				<div class="bpro" id="bpro1">
@@ -104,9 +104,8 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($dfws);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$dfws[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
+								$sql="select value,value2,value3 from smg_rating_value where item_id=".$dfws[$i]->id." and date='".$date."' order by date desc,id desc limit 1";
 								$record=$db->query($sql);
-								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
 							?>
 							
 							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
@@ -115,12 +114,12 @@
 									<?php echo $record[0]->value;?> 
 								</div>
 								<div style="width:60px; float:left; display:inline;">
-									<?php if($recordvalue >0){?>
-									<span style="color:red;"><?php echo $recordvalue; ?> ↑</span>
-									<?php }else if($recordvalue<0){?>
-										<span style="color:green;"><?php echo $recordvalue;?> ↓</span>
-									<?php }else if($recordvalue==0){?>
-										<span style="color:#000000;"><?php echo $recordvalue;?> →</span>
+									<?php if($record[0]->value3 =="up"){?>
+									<span style="color:red;"><?php echo $record[0]->value2; ?> ↑</span>
+									<?php }else if($record[0]->value3 =="down"){?>
+										<span style="color:green;"><?php echo $record[0]->value2;?> ↓</span>
+									<?php }else {?>
+										<span style="color:#000000;"><?php echo $record[0]->value2;?> →</span>
 									<?php } ?>
 								</div>
 							</div>
@@ -129,7 +128,7 @@
 					<div style="width:193px;  float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div></div>
 				<?php $sql="select content from smg_news where title='上海电视台电视剧频道波动说明' order by created_at desc";
 					$news=$db->query($sql);	
-					$sql="select id,name from smg_report_item where dept_id=21";
+					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=21 and v.date='".$date."'";
 					$dsj=$db->query($sql);	
 				?>
 				<div class="bpro" id="bpro2" style="display:none;">
@@ -140,9 +139,8 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($dsj);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$dsj[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
+								$sql="select value,value2,value3 from smg_rating_value where item_id=".$dsj[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
 								$record=$db->query($sql);
-								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
 							?>
 							
 							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
@@ -151,12 +149,12 @@
 									<?php echo $record[0]->value;?> 
 								</div>
 								<div style="width:60px; float:left; display:inline;">
-									<?php if($recordvalue >0){?>
-									<span style="color:red;"><?php echo $recordvalue; ?> ↑</span>
-									<?php }else if($recordvalue<0){?>
-										<span style="color:green;"><?php echo $recordvalue;?> ↓</span>
-									<?php }else if($recordvalue==0){?>
-										<span style="color:#000000;"><?php echo $recordvalue;?> →</span>
+									<?php if($record[0]->value3 =="up"){?>
+									<span style="color:red;"><?php echo $record[0]->value2; ?> ↑</span>
+									<?php }else if($record[0]->value3 =="down"){?>
+										<span style="color:green;"><?php echo $record[0]->value2;?> ↓</span>
+									<?php }else {?>
+										<span style="color:#000000;"><?php echo $record[0]->value2;?> →</span>
 									<?php } ?>
 								</div>
 							</div>
@@ -165,7 +163,7 @@
 					<div style="width:193px; float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div></div>
 				<?php $sql="select content from smg_news where title='上海电视台生活时尚频道波动说明' order by created_at desc";
 					$news=$db->query($sql);
-					$sql="select id,name from smg_report_item where dept_id=22";
+					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=22 and v.date='".$date."'";
 					$shss=$db->query($sql);
 				?>
 				<div class="bpro" id="bpro3" style="display:none;">
@@ -176,9 +174,8 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($shss);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$shss[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
+								$sql="select value,value2,value3 from smg_rating_value where item_id=".$shss[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
 								$record=$db->query($sql);
-								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
 							?>
 							
 							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
@@ -187,12 +184,12 @@
 									<?php echo $record[0]->value;?> 
 								</div>
 								<div style="width:60px; float:left; display:inline;">
-									<?php if($recordvalue >0){?>
-									<span style="color:red;"><?php echo $recordvalue; ?> ↑</span>
-									<?php }else if($recordvalue<0){?>
-										<span style="color:green;"><?php echo $recordvalue;?> ↓</span>
-									<?php }else if($recordvalue==0){?>
-										<span style="color:#000000;"><?php echo $recordvalue;?> →</span>
+									<?php if($record[0]->value3 =="up"){?>
+									<span style="color:red;"><?php echo $record[0]->value2; ?> ↑</span>
+									<?php }else if($record[0]->value3 =="down"){?>
+										<span style="color:green;"><?php echo $record[0]->value2;?> ↓</span>
+									<?php }else {?>
+										<span style="color:#000000;"><?php echo $record[0]->value2;?> →</span>
 									<?php } ?>
 								</div>
 							</div>
@@ -202,7 +199,7 @@
 				</div>
 				<?php $sql="select content from smg_news where title='上海电视台新闻综合频道波动说明' order by created_at desc";
 					$news=$db->query($sql);
-					$sql="select id,name from smg_report_item where dept_id=19";
+					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=19 and v.date='".$date."'";
 					$newscenter=$db->query($sql);
 				?>
 				<div class="bpro" id="bpro4" style="display:none;">
@@ -213,9 +210,8 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($newscenter);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$newscenter[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
+								$sql="select value,value2,value3 from smg_rating_value where item_id=".$newscenter[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
 								$record=$db->query($sql);
-								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
 							?>
 							
 							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
@@ -224,12 +220,12 @@
 									<?php echo $record[0]->value;?> 
 								</div>
 								<div style="width:60px; float:left; display:inline;">
-									<?php if($recordvalue >0){?>
-									<span style="color:red;"><?php echo $recordvalue; ?> ↑</span>
-									<?php }else if($recordvalue<0){?>
-										<span style="color:green;"><?php echo $recordvalue;?> ↓</span>
-									<?php }else if($recordvalue==0){?>
-										<span style="color:#000000;"><?php echo $recordvalue;?> →</span>
+									<?php if($record[0]->value3 =="up"){?>
+									<span style="color:red;"><?php echo $record[0]->value2; ?> ↑</span>
+									<?php }else if($record[0]->value3 =="down"){?>
+										<span style="color:green;"><?php echo $record[0]->value2;?> ↓</span>
+									<?php }else {?>
+										<span style="color:#000000;"><?php echo $record[0]->value2;?> →</span>
 									<?php } ?>
 								</div>
 							</div>
@@ -239,7 +235,7 @@
 				</div>
 				<?php $sql="select content from smg_news where title='上海东方电视台娱乐频道波动说明' order by created_at desc";
 					$news=$db->query($sql);
-					$sql="select id,name from smg_report_item where dept_id=16";
+					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=16 and v.date='".$date."'";
 					$yl=$db->query($sql);
 				?>
 				<div class="bpro" id="bpro5" style="display:none;">
@@ -250,9 +246,8 @@
 							</div>
 							<?php } ?>
 						<?php for($i=0;$i<count($yl);$i++){ 
-								$sql="select value from smg_rating_value where item_id=".$yl[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
+								$sql="select value,value2,value3 from smg_rating_value where item_id=".$yl[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
 								$record=$db->query($sql);
-								$recordvalue=(float)($record[0]->value)-(float)($record[1]->value);
 							?>
 							
 							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
@@ -261,12 +256,12 @@
 									<?php echo $record[0]->value;?> 
 								</div>
 								<div style="width:60px; float:left; display:inline;">
-									<?php if($recordvalue >0){?>
-									<span style="color:red;"><?php echo $recordvalue; ?> ↑</span>
-									<?php }else if($recordvalue<0){?>
-										<span style="color:green;"><?php echo $recordvalue;?> ↓</span>
-									<?php }else if($recordvalue==0){?>
-										<span style="color:#000000;"><?php echo $recordvalue;?> →</span>
+									<?php if($record[0]->value3 =="up"){?>
+									<span style="color:red;"><?php echo $record[0]->value2; ?> ↑</span>
+									<?php }else if($record[0]->value3 =="down"){?>
+										<span style="color:green;"><?php echo $record[0]->value2;?> ↓</span>
+									<?php }else {?>
+										<span style="color:#000000;"><?php echo $record[0]->value2;?> →</span>
 									<?php } ?>
 								</div>
 							</div>

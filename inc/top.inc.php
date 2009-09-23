@@ -41,11 +41,12 @@
 				$record=$db -> query($sql);		
 			?>			
    		<div id=hot>
-   			<?php for($i=0;$i<2;$i++){?>
-   			<a href="/search/?key=<?php echo urlencode($record[$i]->search_key)?>&search_type=smg_news" target=_blank><?php echo $record[$i]->search_key ?></a>　
-   			<? }?>
+   			<?php //for($i=0;$i<1;$i++){?>
+   			<a href="/search/?key=<?php echo urlencode($record[0]->search_key)?>&search_type=smg_news" target=_blank><?php echo $record[0]->search_key ?></a>　
+   			<? //}?>
+   			<a href='/zongcai/' target="_blank">总裁奖</a>
    		</div>
-		<div id=zongcai><a href='/zongcai/' target="_blank"><img border=0 style="width:44px; height:13px; margin-top:0px; background:none;" src="/images/pic/zongcaijiang.gif"></a></div>
+		<div id=zongcai><a href='/search/?key=<?php echo urlencode('审片意见')?>&search_type=smg_news' target="_blank"><img border=0 style="width:56px; height:13px; margin-top:0px; margin-left:5px; background:none;" src="/images/pic/spyj.gif"></a></div>
    	</div>
 		<div id=login>
 			<div id=welcome>			<img src="/images/top/person.jpg">

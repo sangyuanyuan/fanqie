@@ -7,8 +7,8 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 
 .l #title{width:751px; height:111px; background:url(/images/server/calendar_1.jpg) no-repeat; float:left;  display:inline;}
 .l #menu{width:730px; height:31px; margin-left:20px; border-bottom:1px solid #D8DFEA; float:left; display:inline;}
-.l #menu1{width:110px; height:25px; padding-top:5px; text-align:center; font-size:16px; line-height:20px; border:1px solid #666666; border-bottom:1px solid #ffffff; float:left; display:inline;}
-.l #menu2{width:110px; height:25px; padding-top:5px; margin-left:2px; text-align:center; font-size:16px; line-height:20px; background:#f3f3f3; border:1px solid #666666;  border-bottom:none; float:left; display:inline;}
+.l #menu1{width:90px; height:25px; padding-top:5px; text-align:center; font-size:16px; line-height:20px; border:1px solid #666666; border-bottom:1px solid #ffffff; float:left; display:inline;}
+.l #menu2{width:90px; height:25px; padding-top:5px; margin-left:2px; text-align:center; font-size:16px; line-height:20px; background:#f3f3f3; border:1px solid #666666;  border-bottom:none; float:left; display:inline;}
 .l #menu2 a{ text-decoration:none;color:#000;}
 .l #contrl{width:120px; height:25px; margin-right:10px; margin-top:50px; cursor:pointer; line-height:25px; font-size:14px; color:#666666; font-weight:bolder; float:right; display:inline;}
 .l #date{width:240px; height:25px; margin-top:50px; text-align:center; font-size:20px; font-weight:bold; line-height:20px; float:right; display:inline;}
