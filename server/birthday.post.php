@@ -14,10 +14,9 @@
 		for($i=0;$i<count($record);$i++){
 			if(strlen($record[$i]->loginname)==8){
 				redirect('send_gift_list_detail.php?reciever='.$record[$i]->loginname);
-			}else{
-				redirect('send_gift_list_detail.php?reciever=none');
 			}
 		}
+		redirect('send_gift_list_detail.php?reciever=none');
 	 }elseif($_POST['type']=='number'){
 	 	redirect('send_gift_list_detail.php?reciever='.$_POST['search']);
 	 }
