@@ -15,6 +15,13 @@ body {margin:0px; font-family:宋体; font-size:12px; color:#000000;}
 #l_b .l_b_l_r a{font-size:14px; color:#000000; text-decoration:none; }
 #l_b .l_b_r{width:140px; height:20px; margin-top:10px; font-size:12px; color:#999999; line-height:20px; float:right; display:inline;}
 #l_b #page{width:648px; margin-top:10px; margin-left:10px; line-height:20px; text-align:center; float:left; display:inline;}
+#l_b .abtitle{width:300px; height:23px; margin-top:10px; margin-left:9px; padding-top:10px; padding-left:30px; font-size:14px; font-weight:bold; background:url(/images/news/ablist.jpg) no-repeat; float:left; display:inline;}
+#l_b .abtitle .left{float:left; display:inline;}
+#l_b .abtitle .more{margin-top:3px; margin-right:10px; float:right; display:inline;}
+#l_b .abtitle .more a{color:#000000; font-size:12px; font-weight:bold; text-decoration:none;}
+#l_b .content{width:327px; height:105px; border:1px solid #D7D7D7; border-top:none; line-height:20px; margin-left:10px; overflow:hidden; float:left; display:inline;}
+#l_b .content .cl{width:307px; height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline;}
+#l_b .content .cl a{color:#000000; text-decoration:none;}
 #r_t{width:298px; height:82px; background:url('/images/news/news_head_r_t.jpg') no-repeat; float:right; display:inline;}
 .r_m{with:298px; margin-top:10px; padding-bottom:10px; border:1px solid #D1E3F4; float:right; display:inline;}
 .r_m .title{width:288px; height:24px; padding-left:10px; line-height:24px; font-weight:bold; background:url('/images/news/news_r_title_bg.jpg') repeat-x; border-bottom:1px solid #D1E3F4; float:right; display:inline;}
