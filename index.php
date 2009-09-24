@@ -329,7 +329,7 @@ total("首页","other");
              <? }?>
  						</ul>
  						<div style="width:138px; height:52px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
- 							<a href="<?php echo "/news/news_list.php?id=".$record_import_d[0]->cid; ?>" target=_blank><img src="/images/4.jpg" width="125" border=0></a>
+ 							<a href="/news/abld_list.php" target=_blank><img src="/images/4.jpg" width="125" border=0></a>
  							<a style="width:120px; height:15px; margin-left:9px; line-height:15px; text-decoration:none; color:#000000; overflow:hidden; float:left; display:inline;" href="<?php echo "/news/news/news.php?id=".$record_import_d[0]->id ?>" target="_blank"><?php echo $record_import_d[0]->short_title; ?></a>
  						</div>
  						<div class=space></div>
