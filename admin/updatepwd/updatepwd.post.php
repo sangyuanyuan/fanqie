@@ -18,7 +18,6 @@ $success=0;
 			alert("请登录以后再进入重置密码页面!");
 			redirect('/login/');
 		}
-		var_dump($_POST['updatepwd']);
 		$success=reset_password($_POST['updatepwd']['userid'], $_POST['updatepwd']['admin_password'], $_POST['updatepwd']['admin_password1'], 0);
 		if($success==0)
 		{
@@ -45,7 +44,6 @@ $success=0;
 	}
 	if($_POST['updatepwd']['subtype']=="resetpwd")
 	{
-		echo $_POST['updatepwd[userid]'];
 		$success=reset_password($_POST['updatepwd']['userid'],'Password@1','Password@1',1,$_POST['updatepwd']['username']);
 		if($success==0)
 		{

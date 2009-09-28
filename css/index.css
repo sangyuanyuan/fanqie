@@ -4,6 +4,7 @@ li{margin:0px; list-style-type:none;}
 p{margin:0px; padding:0px;}
 
 #ibody{width:995px; margin:0 auto;}
+#container{width:995px; margin:0 auto; margin-top:42px; position:absolute;}
 
 #ibody_top{width:995px; height:838px; float:left; display:inline;}
 #ibody_line{width:995px; height:37px; background:url(/images/index/line.jpg); float:left; display:inline;}
@@ -247,3 +248,4 @@ p{margin:0px; padding:0px;}
 #b_b_r_r{width:243px; height:145px; margin-left:5px; background:url(/images/index/bg_b_b_r_r.jpg) no-repeat; line-height:20px; float:left; display:inline;}
 #b_b_r_r #title{width:200px; height:20px; margin-top:9px; margin-bottom:8px; margin-left:25px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
 #b_b_r_r a{color:#000000; text-decoration:none; line-height:14px; margin-left:5px;}
+

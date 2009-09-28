@@ -19,8 +19,19 @@
 <script>
 total("首页","other");	
 </script>
-<body>
+<script>
+	window.onload = aa;
+  window.onresize = aa;
+  function aa() {
+	  var getE = document.getElementById('container');
+	  var getBody = document.getElementById('body');
+	  getE.style.left = (getBody.clientWidth - getE.offsetWidth)/2 + "px";
+	}
+</script>
+<body id="body">
+<div id="container"><img src="images/top/index1111.jpg"></div>
 <? require_once('inc/top.inc.html');?>
+
 <div id=ibody>
  <div id=ibody_top>
  		<div id=p1>
