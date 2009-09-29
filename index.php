@@ -12,12 +12,12 @@
 	<? 	
 		css_include_tag('index','top','bottom');
 		use_jquery();
-	  js_include_once_tag('index','total');
+	  js_include_once_tag('index','total','fd');
   ?>
 	
 </head>
 <script>
-total("首页","other");	
+total("首页","other");
 </script>
 <script>
 	window.onload = aa;
@@ -426,7 +426,25 @@ total("首页","other");
  				<iframe src="index_report.html" frameborder=0 scrolling="no" ></iframe>
  			</div>
  			<!-- end !-->
-
+ 			<?php 
+ 				$today=date("Y-m-d",time())." 23:59:59";
+ 				$lastyesterday=date("Y-m-d",strtotime("-2 day"))." 00:00:00";
+ 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='视听观察周刊' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
+ 				$stgc=$db->query($sql);
+ 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='节目观察周刊' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
+ 				$jmgc=$db->query($sql);
+ 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='传媒观察周刊' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
+ 				$cmgc=$db->query($sql);
+ 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='发展研究专报' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
+ 				$fzyjzb=$db->query($sql);
+ 			?>
+			<div id=t_r_c_b_c>
+				<div id="title"></div>
+				<div class="cl"><a target="_blank" <?php if((int)$stgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=133">视听观察周刊</a></div>
+				<div class="cl"><a target="_blank" <?php if((int)$jmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=134">节目观察周刊</a></div>
+				<div class="cl"><a target="_blank" <?php if((int)$cmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=135">传媒观察周刊</a></div>
+				<div class="cl"><a target="_blank" <?php if((int)$fzyjzb[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=136">发展研究专报</a></div>
+			</div>
 
  			<!-- start top_right_center_bottom_right !-->
   		
@@ -1051,3 +1069,10 @@ total("首页","other");
 
 </body>
 </html>
+<script>
+	var MSG1 = new CLASS_MSN_MESSAGE("aa",300,210,"重要通知：","通知",'各位员工：<br>　根据集团反恐工作要求，为确保集团播出安全、行政安全，进一步加强集团的内部安全管理工作，集团在上视大院威海路、青海路门卫入口处安装了门禁刷卡系统，二00九年十月一日（周三）正式启用，集团员工及车辆随车人员必须凭"一卡通"入内。请员工直觉主动刷卡入内<br>　　　　谢谢您的配合<br>　　　　　　　　　上海文广新闻传媒集团办公室<br>　　　　　　　　　　二00九年九月二十九日');  
+    MSG1.rect(null,null,null,screen.height-50); 
+    MSG1.speed = 100; 
+    MSG1.step  = 20;  
+    MSG1.show();
+</script>
