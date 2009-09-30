@@ -19,7 +19,7 @@
 <script>
 total("首页","other");
 </script>
-<script>
+<!--<script>
 	window.onload = aa;
   window.onresize = aa;
   function aa() {
@@ -27,9 +27,8 @@ total("首页","other");
 	  var getBody = document.getElementById('body');
 	  getE.style.left = (getBody.clientWidth - getE.offsetWidth)/2 + "px";
 	}
-</script>
+</script>-->
 <body id="body">
-<div id="container"><img src="images/top/index1111.jpg"></div>
 <? require_once('inc/top.inc.html');?>
 
 <div id=ibody>
@@ -439,7 +438,7 @@ total("首页","other");
  				$fzyjzb=$db->query($sql);
  			?>
 			<div id=t_r_c_b_c>
-				<div id="title"></div>
+				<div id="title"><img src="/images/index/fzyjbb.jpg"></div>
 				<div class="cl"><a target="_blank" <?php if((int)$stgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=133">视听观察周刊</a></div>
 				<div class="cl"><a target="_blank" <?php if((int)$jmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=134">节目观察周刊</a></div>
 				<div class="cl"><a target="_blank" <?php if((int)$cmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=135">传媒观察周刊</a></div>
