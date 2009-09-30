@@ -10,7 +10,7 @@ li{margin:0px; list-style-type:none;}
 #nav1 #context span{color:#999999; cursor:pointer;}
 #nav1 #home{width:51px; height:11px; margin-top:3px; margin-right:35px; float:right; display:inline;}
 
-#nav2{margin-top:10px; width:100%; line-height:20px; height:103px; float:left; display:inline;}
+#nav2{margin-top:10px; width:100%; line-height:20px; height:180px; float:left; display:inline;}
 #nav2 #box{width:995px; height:180px; background:url('/images/top/index1111.jpg') no-repeat; margin:0 auto;}
 #nav2 #logo{width:162px; height:45px; margin-top:85px; margin-left:10px; /*background:url(/images/top/logo.jpg) no-repeat;*/ float:left; display:inline;}
 #nav2 ul{width:130px; padding:0px; margin-top:88px; margin-right:6px; padding:0px; border-right:1px dashed #ffffff; float:left; display:inline;}
