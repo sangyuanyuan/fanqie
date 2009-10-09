@@ -7,7 +7,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-新闻-新闻列表页面</title>
+	<title>SMG-番茄网-新闻-专题新闻列表页面</title>
 	<? 	
 		css_include_tag('news_news_list','top','bottom');
 		use_jquery();
