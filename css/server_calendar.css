@@ -32,10 +32,10 @@ p{margin:0px; padding:0px;}
 .day_content_today a{color:#ff0000; font-weight:bold; font-size:14px;}
 
 
-#send_gift_day{width:600px;height:400px; float:left;  display:inline;}
-#send_gift_day #left_div{width:600px; float:left;  display:inline;}
+#send_gift_day{width:650px;height:400px; float:left;  display:inline;}
+#send_gift_day #left_div{width:650px; float:left;  display:inline;}
 #send_gift_day #right_div{width:500px; float:left; display:inline;}
-.list_item{width:295px; margin-left:5px; float:left; display:inline;}
+.list_item{width:320px; margin-left:5px; float:left; display:inline;}
 .gift{width:70px; float:left; display:inline}
 
 #dates{width:100%; height:25px; text-align:center; line-height:25px; font-size:18px; font-weight:bold; color:#ff0000;  margin:0 auto;}
