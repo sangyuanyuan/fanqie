@@ -924,7 +924,7 @@ total("首页","other");
 					NO3.<?php echo $record_birthday[2]->nick_name;?>&nbsp;<?php echo $record_birthday[2]->count?>份
 				</div>
 				<div id="box_body">
-	 				<marquee direction="up" scrollamount="1" height="80" width="300" onmouseover=this.stop() onmouseout=this.start()  >
+	 				<marquee direction="up" scrollamount="1" height="62" width="300" onmouseover=this.stop() onmouseout=this.start()  >
 	 				<?php
 						$today = date("m-d");
 						$sql = 'select t1.nickname,t1.gender,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.date("m-d").'" and t1.hide_birthday=0 and t1.state=3';
