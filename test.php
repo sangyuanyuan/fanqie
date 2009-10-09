@@ -1,5 +1,7 @@
 <?php
 require_once('frame.php');
- echo urlencode(iconv('utf-8','gbk','Ðû´«¶¯Ì¬'));
- alert(date("m-d",mktime(date("H",time()),date("i",time()),date("s",time()),date("m",time()),date("d",time())+7,date("Y",time()))));
+$today=date("Y-m-d",time())." 00:00:00";
+$thirdday=date("Y-m-d",strtotime("+2 day"))." 23:59:59";
+echo $today."<br>";
+echo $thirdday;
 ?>

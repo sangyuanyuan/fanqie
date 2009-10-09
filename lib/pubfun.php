@@ -410,6 +410,8 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	}
 	$table = new table_class($table_name);	
 	$c = array();
+	$d=array();
+	$e=array();
 	foreach ($keys as $v) {
 		array_push($c, "title like '%$v%'");
 		array_push($c, "keywords like '%$v%'");
@@ -424,17 +426,73 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 			array_push($c, "tags like '%$v%'");
 		}
 	}
+	foreach ($keys as $v) {
+		
+	 	if($full_text){array_push($d, "description like '%$v%'");}
+		if($table_name == 'smg_news'){
+			
+			if($full_text){
+				array_push($d, "(title like '%$v%' or keywords like '%$v%' or short_title like '%$v%' or tags like '%$v%' or content like '%$v%')");				
+			}
+			else
+			{
+				array_push($d, "(title like '%$v%' or keywords like '%$v%' or short_title like '%$v%' or tags like '%$v%')");		
+			}
+		}else if($table_name == 'smg_video'){
+			array_push($d, "(title like '%$v%' or keywords like '%$v%' or tags like '%$v%')");	
+		}
+	}
+	$d = implode(' and ' ,$d);
+	if($conditions){
+		$d = $conditions . ' and (' .$d .')';
+	}
+	$sql1 = 'select a.* from (select * from ' . $table_name ." where 1=1 and ".$d;
+	if($order)
+	{
+		$sql1 = $sql1 . ' order  by ' .$order;
+	}
+	$sql1=$sql1.') as a';
+	$content1=$db->query($sql1);
+	for($i=0;$i<count($content1);$i++)
+	{
+		array_push($e,"id<>".$content1[$i]->id);	
+	}
+	if(count($content1)>0)
+	{
+		$e = implode(' and ' ,$e);
+	}
+	else
+	{
+		$e='';
+	}
 	$c = implode(' OR ' ,$c);
 	if($conditions){
 		$c = $conditions . ' and (' .$c .')';
 	}
-	
-	$sql = 'select * from ' . $table_name ." where 1=1 and ".$c;
-	alert($sql);
-	if ($order){
-		$sql = $sql . ' order  by ' .$order;
+	if($e!='')
+	{
+		$sql2 = 'select b.* from (select * from ' . $table_name ." where 1=1 and ".$e.' and '.$c;
 	}
-	
+	else
+	{
+		$sql2 = 'select b.* from (select * from ' . $table_name ." where 1=1 and ".$c;	
+	}
+	if($order)
+	{
+		$sql2 = $sql2 . ' order  by ' .$order;
+	}
+	$sql2=$sql2.') as b';
+	if(count($content1)>0)
+	{
+		$sql=$sql1." union ".$sql2;
+	}
+	else
+	{
+		$sql=$sql2;	
+	}
+	/*if ($order){
+		$sql = $sql . ' order  by ' .$order;
+	}*/
 	if($page_count > 0){
 		return $db->paginate($sql,$page_count);	
 	}else{
@@ -442,6 +500,7 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	}
 		
 }
+
 function delhtml($str){   //清除HTML标签
 $st=-1; //开始
 $et=-1; //结束
@@ -537,7 +596,7 @@ function search_keywords($id,$key,$table_name='smg_news',$about='',$page_count =
 	{
 		array_push($d,"n.id<>".$about[$i]->id);	
 	}
-	array_push($d,"n.is_adopt=1");
+	array_push($d," n.is_adopt=1");
 	$d = implode(' and ',$d);
 	$c = implode(' OR ' ,$c);
 	$sql = "select n.title,n.id,n.created_at,n.category_id,c.platform from " .$table_name ." n left join smg_category c on n.category_id=c.id where ".$d." and (".$c.")";

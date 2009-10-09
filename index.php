@@ -12,15 +12,25 @@
 	<? 	
 		css_include_tag('index','top','bottom');
 		use_jquery();
-	  js_include_once_tag('index','total');
+	  js_include_once_tag('index','total','fd');
   ?>
 	
 </head>
 <script>
-total("首页","other");	
+total("首页","other");
 </script>
-<body>
+<!--<script>
+	window.onload = aa;
+  window.onresize = aa;
+  function aa() {
+	  var getE = document.getElementById('container');
+	  var getBody = document.getElementById('body');
+	  getE.style.left = (getBody.clientWidth - getE.offsetWidth)/2 + "px";
+	}
+</script>-->
+<body id="body">
 <? require_once('inc/top.inc.html');?>
+
 <div id=ibody>
  <div id=ibody_top>
  		<div id=p1>
@@ -329,7 +339,7 @@ total("首页","other");
              <? }?>
  						</ul>
  						<div style="width:138px; height:52px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
- 							<a href="<?php echo "/news/news_list.php?id=".$record_import_d[0]->cid ?>" target=_blank><img src="/images/4.jpg" width="125" border=0></a>
+ 							<a href="/news/abld_list.php" target=_blank><img src="/images/4.jpg" width="125" border=0></a>
  							<a style="width:120px; height:15px; margin-left:9px; line-height:15px; text-decoration:none; color:#000000; overflow:hidden; float:left; display:inline;" href="<?php echo "/news/news/news.php?id=".$record_import_d[0]->id ?>" target="_blank"><?php echo $record_import_d[0]->short_title; ?></a>
  						</div>
  						<div class=space></div>
@@ -415,7 +425,25 @@ total("首页","other");
  				<iframe src="index_report.html" frameborder=0 scrolling="no" ></iframe>
  			</div>
  			<!-- end !-->
-
+ 			<?php 
+ 				$today=date("Y-m-d",time())." 23:59:59";
+ 				$lastyesterday=date("Y-m-d",strtotime("-2 day"))." 00:00:00";
+ 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='视听观察周刊' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
+ 				$stgc=$db->query($sql);
+ 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='节目观察周刊' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
+ 				$jmgc=$db->query($sql);
+ 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='传媒观察周刊' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
+ 				$cmgc=$db->query($sql);
+ 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='发展研究专报' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
+ 				$fzyjzb=$db->query($sql);
+ 			?>
+			<div id=t_r_c_b_c>
+				<div id="title"><img src="/images/index/fzyjbb.jpg"></div>
+				<div class="cl"><a target="_blank" <?php if((int)$stgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=133">视听观察周刊</a></div>
+				<div class="cl"><a target="_blank" <?php if((int)$jmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=134">节目观察周刊</a></div>
+				<div class="cl"><a target="_blank" <?php if((int)$cmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=135">传媒观察周刊</a></div>
+				<div class="cl"><a target="_blank" <?php if((int)$fzyjzb[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=136">发展研究专报</a></div>
+			</div>
 
  			<!-- start top_right_center_bottom_right !-->
   		
@@ -896,7 +924,7 @@ total("首页","other");
 					NO3.<?php echo $record_birthday[2]->nick_name;?>&nbsp;<?php echo $record_birthday[2]->count?>份
 				</div>
 				<div id="box_body">
-	 				<marquee direction="up" scrollamount="1" height="80" width="300" onmouseover=this.stop() onmouseout=this.start()  >
+	 				<marquee direction="up" scrollamount="1" height="62" width="300" onmouseover=this.stop() onmouseout=this.start()  >
 	 				<?php
 						$today = date("m-d");
 						$sql = 'select t1.nickname,t1.gender,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.date("m-d").'" and t1.hide_birthday=0 and t1.state=3';
@@ -1040,3 +1068,10 @@ total("首页","other");
 
 </body>
 </html>
+<script>
+	var MSG1 = new CLASS_MSN_MESSAGE("aa",300,210,"重要通知：","通知",'各位员工：<br>　根据集团反恐工作要求，为确保集团播出安全、行政安全，进一步加强集团的内部安全管理工作，集团在上视大院威海路、青海路门卫入口处安装了门禁刷卡系统，二00九年十月一日（周三）正式启用，集团员工及车辆随车人员必须凭"一卡通"入内。请员工直觉主动刷卡入内<br>　　　　谢谢您的配合<br>　　　　　　　　　上海文广新闻传媒集团办公室<br>　　　　　　　　　　二00九年九月二十九日');  
+    MSG1.rect(null,null,null,screen.height-50); 
+    MSG1.speed = 100; 
+    MSG1.step  = 20;  
+    MSG1.show();
+</script>
