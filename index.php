@@ -1034,7 +1034,7 @@ total("首页","other");
 				<div id=title>生活指南</div>
 				<table width="240" align="left">
 						<tr>	
-							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.ddmap.com/">丁丁地图</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank"  href="http://222.68.17.238:5208/wenguang/index.html">实时交通路况查询</a></td>
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.ddmap.com/">丁丁地图</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank"  href="http://www.ddtong.cn/">实时交通路况查询</a></td>
 						</tr>
 						<tr>	
 							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://meishi.enjoyoung.cn/">人气美食</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.shjtaq.com/zwfg/dzjc_new.asp">上海交通违章查询</a></td>
