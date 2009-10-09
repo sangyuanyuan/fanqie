@@ -6,16 +6,23 @@
 
 #top{width:950px; margin-top:10px; float:left; display:inline;}
 #top #left{width:320px; float:left; display:inline;}
-#top #left #l1{width:318px; height:240px; border:1px solid #ACCEE9; float:left; display:inline;}
-#top #left #l2{width:318px; height:340px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
-#top #left #l3{width:318px; height:174px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
-#top #left .title{width:318px; height:25px; background:url(/images/templet2/ltitle.jpg) no-repeat; float:left; display:inline;}
+#top #left .pic_box{width:305px; height:90px; float:left; display:inline; }
+#top #left .pic_box .pic{width:74px; height:74px; float:left; display:inline;}
+#top #left .pic_box .title{width:220px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#top #left .l{width:318px; height:240px; margin-bottom:10px; border:1px solid #ACCEE9; float:left; display:inline;}
+#top #left .li_context{width:315px; height:15px; margin-top:8px; margin-left:5px; font-size:14px; line-height:15px; overflow:hidden; float:left; display:inline;}
+#top #left .li_context a{color:#1F41C6; margin-left:5px;}
+#top #left .title{width:318px; height:25px; color:#2446B2; padding-left:40px; line-height:25px; font-size:15px; background:url(/images/templet2/ltitle.jpg) no-repeat; float:left; display:inline;}
+#top #left .more{ margin-right:50px; float:right; display:inline;}
+#top .more a{color:#2446B2; font-size:14px; text-decoration:none;}
 #top #center{width:360px; margin-left:10px; float:left; display:inline;}
-#top #center #c1{width:358px; height:78px; border:1px solid #ACCEE9; float:left; display:inline;}
-#top #center #c2{width:358px; height:150px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
-#top #center #c3{width:360px; height:155px; margin-top:10px; border-top:1px solid #ACCEE9; float:left; display:inline;}
-#top #center .c4{width:360px; height:175px; margin-top:10px; border-top:1px solid #ACCEE9; float:left; display:inline;}
-#top #center .title{width:360px; height:25px; background:url(/images/templet2/ctitle.jpg) no-repeat; float:left; display:inline;}
+#top #center .c{width:358px; height:240px; margin-bottom:10px; border-top:1px solid #ACCEE9; float:left; display:inline;}
+#top #center .li_context2{width:355px; height:20px; margin-top:18px; margin-bottom:10px; margin-left:5px; font-size:20px; line-height:20px; font-weight:bolder; overflow:hidden; float:left; display:inline;}
+#top #center .li_context2 a{color:#1F41C6; margin-left:5px; text-decoration:none;}
+#top #center .li_context{width:355px; height:15px; margin-top:8px; margin-left:5px; font-size:14px; line-height:15px; overflow:hidden; float:left; display:inline;}
+#top #center .li_context a{color:#1F41C6; margin-left:5px;}
+#top #center .more{ margin-right:10px; float:right; display:inline;}
+#top #center .title{width:318px; height:25px; color:#2446B2; padding-left:40px; line-height:25px; font-size:15px; background:url(/images/templet2/ctitle.jpg) no-repeat; float:left; display:inline;}
 #top #right{width:250px; margin-left:10px; float:left; display:inline;}
 #top #right #r1{width:248px; height:240px; border:1px solid #ACCEE9; float:left; display:inline;}
 #top #right #r2{width:248px; height:154px; margin-top:10px; border:1px solid #ACCEE9; float:left; display:inline;}
