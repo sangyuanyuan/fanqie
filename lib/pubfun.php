@@ -467,11 +467,11 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	}
 	$c = implode(' OR ' ,$c);
 	if($conditions){
-		$c = ' and '.$conditions . ' and (' .$c .')';
+		$c = $conditions . ' and (' .$c .')';
 	}
 	if($e!='')
 	{
-		$sql2 = 'select b.* from (select * from ' . $table_name ." where 1=1 and ".$e.$c;
+		$sql2 = 'select b.* from (select * from ' . $table_name ." where 1=1 and ".$e.' and '.$c;
 	}
 	else
 	{
