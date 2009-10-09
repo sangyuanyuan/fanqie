@@ -26,17 +26,12 @@
 				?>
 			</div>
 			<div id=center>
-				<div id=c1></div>
-				<div id=c2></div>
-				<div id=c3>
-					<div class=title></div>
-				</div>
-				<div class=c4>
-					<div class=title></div>
-				</div>
-				<div class=c4>
-					<div class=title></div>
-				</div>
+				<?php
+					$modules = new smg_subject_module_class();
+					$modules = $modules->find('all',array('conditions' => "subject_id = 24 and pos_name='sub2_tc'",'order' => "priority asc,id desc"));
+					for($i=0;$i<count($modules);$i++)
+					$modules[$i]->display();
+				?>
 			</div>
 			<div id=right>
 				<div id=r1>
