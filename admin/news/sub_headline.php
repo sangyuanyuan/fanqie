@@ -164,7 +164,6 @@
 			if($('#full_text').attr('checked')){
 				url = url + "&full_text=1";
 			}
-			alert(url);
 			$('#result_box').load(url,{'show_div':'0'});
 		}
 		category.display_select('news_category',$('#span_category_select'),<?php echo $filter_category;?>,'',function(){send_search();});
