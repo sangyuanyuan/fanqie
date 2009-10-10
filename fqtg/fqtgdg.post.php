@@ -1,10 +1,8 @@
 ﻿<?
 require_once('../frame.php');
 $db=get_db();
-$user_id=$_COOKIE['smg_user_id'];
-$nickname=$db->query('select nickname from smg_user_real where id='.$user_id);
 $cookie="";
-$cookie=$nickname[0]->nickname;
+$cookie=$_COOKIE['smg_user_nickname'];
 
 if($_POST['tg_id']!=64)
 {
