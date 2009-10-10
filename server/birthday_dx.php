@@ -13,5 +13,5 @@
 	}
 	alert('发送成功！');
   //print_r($comment);
-  
+  redirect('/admin/admin.php');
 ?>
