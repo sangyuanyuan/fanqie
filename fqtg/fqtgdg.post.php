@@ -16,12 +16,12 @@ else
 	{
 		alert('请登录后再订购');
 		redirect('/admin/admin.php');
+		exit;
 	}
 	$StrSql='insert into smg_tg_signup(tg_id,name,spname,num,phone,address,createtime,remark) values (64,"'.$cookie.'","免费徽菜抵用券",1,"'.$_POST['phone'].'","'.$_POST['address'].'",now(),"'.$_POST['remark'].'")';
 	$Record = $db->execute($StrSql);
 	alert("订购成功！");
 }
-
 redirect('/fqtg/fqtgdg.php?id='.$_POST['tg_id']);
 exit;
 ?>

@@ -14,7 +14,16 @@
 </head>
 <body>
 	<div id="fbody">
-		<div id="bmrs">88888</div>
+		<div id=ftop>
+			<div id="bmrs">88888</div>
+		</div>
+		<div style="width:1000px; height:20px; float:left; display:inline"></div>
+		<div id="video">
+			<div id="video_content">
+				<iframe id=video_src src="video.php?photo=<?php echo $record_video[0]->video_photo_src;?>&video=<?php echo $record_video[0]->video_src;?>" width=422 height=317 scrolling="no" frameborder="0"></iframe>
+			</div>
+		</div>
+		<div class="video_img"></div>
 	</div>
 </body>
 </html>
