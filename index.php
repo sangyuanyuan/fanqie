@@ -1068,10 +1068,10 @@ total("首页","other");
 
 </body>
 </html>
-<script>
+<!--<script>
 	var MSG1 = new CLASS_MSN_MESSAGE("aa",300,210,"重要通知：","通知",'各位员工：<br>　根据集团反恐工作要求，为确保集团播出安全、行政安全，进一步加强集团的内部安全管理工作，集团在上视大院威海路、青海路门卫入口处安装了门禁刷卡系统，二00九年十月一日（周三）正式启用，集团员工及车辆随车人员必须凭"一卡通"入内。请员工直觉主动刷卡入内<br>　　　　谢谢您的配合<br>　　　　　　　　　上海文广新闻传媒集团办公室<br>　　　　　　　　　　二00九年九月二十九日');  
     MSG1.rect(null,null,null,screen.height-50); 
     MSG1.speed = 100; 
     MSG1.step  = 20;  
     MSG1.show();
-</script>
+</script>-->
