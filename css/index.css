@@ -4,7 +4,7 @@ li{margin:0px; list-style-type:none;}
 p{margin:0px; padding:0px;}
 
 #ibody{width:995px; margin:0 auto;}
-#container{width:995px; margin:0 auto; margin-top:42px; position:absolute;}
+#container{width:995px; margin:0 auto; margin-top:10px;}
 
 #ibody_top{width:995px; height:838px; float:left; display:inline;}
 #ibody_line{width:995px; height:37px; background:url(/images/index/line.jpg); float:left; display:inline;}
