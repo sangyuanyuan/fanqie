@@ -62,25 +62,6 @@
 					$modules[$i]->display();
 				?>
 			</div>
-			<div class=bg>
-				<?php 
-					$modules = new smg_subject_module_class();
-					$modules = $modules->find('all',array('conditions' => "subject_id = 25 and pos_name='pos8'",'order' => "priority asc,id desc"));
-					for($i=0;$i<count($modules);$i++)
-					$modules[$i]->display();
-				?>
-				<form name="commentform" id="commentform" method="post" action="inc/comment.post.php">
-				   <div id=content9>
-					   用户：<input type="text" value="" id="commenter" name="post[nick_name]">   	
-				   </div>
-				   <div id=content10>
-					  <div id=plleft>意见：</div><textarea id="commentcontent" name="post[comment]"></textarea>
-				   </div>   
-				   <div id=content11></div>
-				   	<input type="hidden"  name="post[resource_type]" value="djnews">
-					<input type="hidden"  name="subject_id" value="25">
-				</form>
-			</div>
 		</div>
 		<? include('inc/djbottom.inc.php');?>
 	</div>
