@@ -5,7 +5,11 @@ $gifts = $db->query("select * from smg_gift where id in({$_POST['gift_ids']})");
 $cookie=isset($_COOKIE['smg_username']) ? $_COOKIE['smg_username'] : "";
 if($cookie!="")
 {	 
+	$count=$db->query('select count(*) as num from smg_friends where my_name="'.$_SESSION['smg_gift_loginname'].'" and friend_name="'.$cookie.'"');
+	if((int)$count[0]->num==0)
+	{
 	 $friend=$db->execute("insert into smg_friends(my_name,friend_name) value ('".$_SESSION['smg_gift_loginname']."','".$cookie."')");
+	}
 }
 close_db();
 $gift = new table_class('smg_birthday_gift');
