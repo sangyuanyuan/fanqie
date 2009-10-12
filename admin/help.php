@@ -19,6 +19,9 @@ require_once('../frame.php');
 			<td>windowsmoviemaker</td><td><a href='/tools/windowsmoviemake.rar'>下载</a></td>
 		</tr>
 		<tr height="20" align="center">
+			<td>格式工厂</td><td><a href='/tools/FormatFactory180.rar'>下载</a></td>
+		</tr>
+		<tr height="20" align="center">
 			<td>视频格式文件转换flv格式文件工具</td><td><a href='/tools/video-flv.rar'>下载</a></td>
 		</tr>
 		<tr height="20" align="center">

@@ -27,10 +27,29 @@
 				</div>
 			</div>
 		</div>
-		<div id=video_r>
+		<div id="video_right">
 			<?php for($i=0;$i<3;$i++){ ?>
-				<div class="video_img"></div>
+				<div class=video_r>
+						<div class="video_img">
+							<div class="video_image"><img border=0 src="images/style.jpg"></div>
+						</div>	
+						<div class="video_vote"><div class="title">视频1</div><div class="vote"><a target="_blank" href="">投票</a></div></div>
+				</div>
 			<?php } ?>
+		</div>
+		<div id=t_r>
+			<div id=t_r_title>
+				<div id="title">视频内容</div>
+				<div id=more><a target="_blank" href="">历史视频>></a></div>
+			</div>
+			<div id=t_r_b>
+				<div id=content>
+					<div id="left"><a target="_blank" href=""><img src="images/style2.jpg"></a></div>
+					<div id="right">
+						<div id="title">哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
