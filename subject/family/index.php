@@ -46,11 +46,28 @@
 				<div id=content>
 					<div id="left"><a target="_blank" href=""><img src="images/style2.jpg"></a></div>
 					<div id="right">
-						<div id="title">哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
+						<div id="title"><a target="_blank" href="">哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈</a></div>
+						<div id=context><a target="_blank" href=""><?php echo mb_substr(strip_tags($record[0]->content),0,15,"utf-8")."...";?></a></div>
+						<div id="tp"><a href="">投票</a></div>
 					</div>
 				</div>
+				<?php for($i=0;$i<4;$i++){ ?>
+				<div class=content>
+					<div class=content_l>
+						<a target="_blank" href=""><img src="images/style3.jpg"></a>	
+					</div>
+					<div class=content_c>
+						<div class=title><a target="_blank" href="">哇哈哈哈哈哈哈哈哈哈</a></div>
+						<div class=context><a target="_blank" href=""><?php echo mb_substr(strip_tags($record[0]->content),0,15,"utf-8")."...";?></a></div>
+					</div>
+					<div class=content_r>
+						<a href="">投票</a>	
+					</div>
+				</div>
+				<?php } ?>
 			</div>
 		</div>
+		<div id="video_b"></div>
 	</div>
 </body>
 </html>

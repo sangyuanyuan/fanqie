@@ -24,5 +24,20 @@
 #t_r_b #content #left{width:123px; height:94px; float:left; display:inline;}
 #t_r_b #content #left img{width:123px; height:94px; border:0px; float:left; display:inline;}
 #t_r_b #content #right{width:90px; height:94px; margin-left:5px; float:left; display:inline;}
-#t_r_b #content #right #title{width:90px; height:20px; line-height:20px; text-align:center; color:#000000; font-weight:bold; overflow:hidden; float:left; display:inline;}
+#t_r_b #content #right #title{width:90px; height:20px; line-height:20px; text-align:center;  overflow:hidden; float:left; display:inline;}
+#t_r_b #content #right #title a{color:#000000; font-weight:bold; text-decoration:none;}
 #t_r_b #content #right #context{width:90px; height:60px; line-height:20px; float:left; display:inline;}
+#t_r_b #content #right #context a{text-decoration:none;}
+#t_r_b #content #right #tp{width:40px; height:20px; margin-left:25px; float:left; display:inline;}
+#t_r_b #content #right #tp a{color:red; font-weight:bold; text-decoration:none;}
+#t_r_b .content{width:220px;height:48px; margin-top:5px; margin-left:5px; float:left; display:inline;}
+#t_r_b .content_l{width:54px; height:41px; float:left; display:inline;}
+#t_r_b .content_l img{width:54px; height:41px; border:0px; float:left; display:inline;}
+#t_r_b .content_c{width:108px; height:40px; overflow:hidden; float:left; display:inline;}
+#t_r_b .content_c .title{width:108px; height:20px; margin-left:5px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#t_r_b .content_c .title a{color:#000000; font-weight:bold; text-decoration:none;}
+#t_r_b .content_c .context{width:108px; height:20px; margin-left:5px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#t_r_b .content_c .context a{color:#000000; text-decoration:none;}
+#t_r_b .content_r{width:30px; height:20px; margin-left:10px; line-height:20px; float:right; display:inline;}
+#t_r_b .content_r a{color:red; font-weight:bold; text-decoration:none;}
+#video_b{width:1000px; height:686px; background:url('../images/bottom_bg.jpg') no-repeat; float:left; display:inline;}
