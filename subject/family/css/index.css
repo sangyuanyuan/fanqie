@@ -2,6 +2,9 @@
 #fbody{width:1000px; height:1200px; background:url('../images/bg.jpg') no-repeat; margin:0 auto;}
 #ftop{width:1000px; float:left; display:inline;}
 #bmrs{width:70px; height:20px; margin-top:127px; margin-left:142px; line-height:20px; color:red; font-size:16px; font-weight:bold; text-align:center; float:left; display:inline;}
-#video{width:450px; height:345px; margin-left:48px; background:url('../images/video_bg.jpg') no-repeat; float:left; display:inline;}
-#video_content{width:422px; height:317px; margin:14px; float:left; display:inline;}
-.video_img{width:208px; height:109px; margin-left:10px; background:url('../images/video_img.jpg') no-repeat; float:left; display:inline;}
+#video_l{width:450px; margin-top:10px; margin-left:48px; float:left; display:inline;}
+#video_l #video{width:450px; height:345px; z-Index:1; background:url('../images/video_bg.jpg') no-repeat; position:absolute;}
+#video_l #video_content{width:422px; height:317px; margin:14px; float:left; display:inline;}
+#video_l #light{width:318px; height:358px; z-Index:2; border:1px solid #00000; background:url('../images/deng.gif') no-repeat; position:absolute;}
+#video_r{width:208px; float:left; display:inline;}
+.video_img{width:208px; height:109px; margin-top:10px; margin-left:10px; background:url('../images/video_img.jpg') no-repeat; float:left; display:inline;}

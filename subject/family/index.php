@@ -17,13 +17,21 @@
 		<div id=ftop>
 			<div id="bmrs">88888</div>
 		</div>
-		<div style="width:1000px; height:20px; float:left; display:inline"></div>
-		<div id="video">
-			<div id="video_content">
-				<iframe id=video_src src="video.php?photo=<?php echo $record_video[0]->video_photo_src;?>&video=<?php echo $record_video[0]->video_src;?>" width=422 height=317 scrolling="no" frameborder="0"></iframe>
+		<div style="width:1000px; height:10px; float:left; display:inline"></div>
+		<div id="video_l">
+			<div id=light></div>
+			<div id="video">
+				
+				<div id="video_content">
+					<iframe id=video_src src="video.php?photo=<?php echo $record_video[0]->video_photo_src;?>&video=<?php echo $record_video[0]->video_src;?>" width=422 height=317 scrolling="no" frameborder="0"></iframe>
+				</div>
 			</div>
 		</div>
-		<div class="video_img"></div>
+		<div id=video_r>
+			<?php for($i=0;$i<3;$i++){ ?>
+				<div class="video_img"></div>
+			<?php } ?>
+		</div>
 	</div>
 </body>
 </html>
