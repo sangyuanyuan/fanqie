@@ -1,4 +1,43 @@
 ﻿body {margin:0px; font-family:宋体; font-size:12px; color:#000000;}
 #fbody{width:1000px; height:1200px; background:url('../images/bg.jpg') no-repeat; margin:0 auto;}
+#ftop{width:1000px; float:left; display:inline;}
 #bmrs{width:70px; height:20px; margin-top:127px; margin-left:142px; line-height:20px; color:red; font-size:16px; font-weight:bold; text-align:center; float:left; display:inline;}
-#video{width:450px; height:345px; float:left; display:inline;}
+#video_l{width:450px; margin-top:9px; margin-left:48px; float:left; display:inline;}
+#video_l #video{width:450px; height:345px; z-Index:1; background:url('../images/video_bg.jpg') no-repeat; position:absolute;}
+#video_l #video_content{width:422px; height:317px; margin:14px; float:left; display:inline;}
+#video_l #light{width:450px; height:358px; z-Index:2; background:url('../images/deng.gif') no-repeat; position:absolute;}
+#video_right{width:208px; float:left; display:inline;}
+.video_r{width:208px; height:109px; margin-top:9px; margin-left:20px; float:left; display:inline;}
+.video_r .video_img{width:208px; height:109px; background:url('../images/video_img.jpg') no-repeat; z-index:1; position:absolute;}
+.video_r .video_img .video_image{width:130px; height:100px; margin-top:5px; margin-left:40px; float:left; display:inline;}
+.video_r .video_vote{width:200px; height:20px; margin-left:4px; margin-top:84px; background:#4E4E4E; z-index:2; position:absolute; filter:alpha(opacity=50);}
+.video_r .video_vote .title{width:150px; height:20px; margin-left:10px; font-weight:bold; color:#ffffff; line-height:20px; float:left; display:inline;}
+.video_r .video_vote .vote{width:40px; height:20px; line-height:20px; float:right; display:inline;}
+.video_r .video_vote .vote a{color:red; font-weight:bold; text-decoration:none;}
+#t_r{width:227px; margin-top:10px; margin-right:25px; float:right; display:inline;}
+#t_r_title{width:227px; height:30px; background:url('../images/top5.jpg') no-repeat; float:left; display:inline;}
+#t_r_title #title{width:60px; height:30px; margin-left:60px; line-height:30px; font-size:14px; font-weight:bold; color:#666666; float:left; display:inline;}
+#t_r_title #more{width:75px; height:30px; line-height:30px; float:right; display:inline;}
+#t_r_title #more a{font-size:12px; color:#000000; font-weight:bold; text-decoration:none;}
+#t_r_b{width:227px; height:316px; background:url('../images/top5_bg.jpg') no-repeat; float:left; display:inline;}
+#t_r_b #content{width:220px; height:94px; margin-top:5px; margin-left:4px; float:left; display:inline;}
+#t_r_b #content #left{width:123px; height:94px; float:left; display:inline;}
+#t_r_b #content #left img{width:123px; height:94px; border:0px; float:left; display:inline;}
+#t_r_b #content #right{width:90px; height:94px; margin-left:5px; float:left; display:inline;}
+#t_r_b #content #right #title{width:90px; height:20px; line-height:20px; text-align:center;  overflow:hidden; float:left; display:inline;}
+#t_r_b #content #right #title a{color:#000000; font-weight:bold; text-decoration:none;}
+#t_r_b #content #right #context{width:90px; height:60px; line-height:20px; float:left; display:inline;}
+#t_r_b #content #right #context a{text-decoration:none;}
+#t_r_b #content #right #tp{width:40px; height:20px; margin-left:25px; float:left; display:inline;}
+#t_r_b #content #right #tp a{color:red; font-weight:bold; text-decoration:none;}
+#t_r_b .content{width:220px;height:48px; margin-top:5px; margin-left:5px; float:left; display:inline;}
+#t_r_b .content_l{width:54px; height:41px; float:left; display:inline;}
+#t_r_b .content_l img{width:54px; height:41px; border:0px; float:left; display:inline;}
+#t_r_b .content_c{width:108px; height:40px; overflow:hidden; float:left; display:inline;}
+#t_r_b .content_c .title{width:108px; height:20px; margin-left:5px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#t_r_b .content_c .title a{color:#000000; font-weight:bold; text-decoration:none;}
+#t_r_b .content_c .context{width:108px; height:20px; margin-left:5px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#t_r_b .content_c .context a{color:#000000; text-decoration:none;}
+#t_r_b .content_r{width:30px; height:20px; margin-left:10px; line-height:20px; float:right; display:inline;}
+#t_r_b .content_r a{color:red; font-weight:bold; text-decoration:none;}
+#video_b{width:1000px; height:686px; background:url('../images/bottom_bg.jpg') no-repeat; float:left; display:inline;}

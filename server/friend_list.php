@@ -52,7 +52,7 @@
 			<div id="left_div">
 			<?php 
 			foreach ($birthday as $v) {?>
-				<div class="list_item" nickname="<?php echo $v->nickname;?>" loginname="<?php echo $v->loginname;?>">
+				<div class="list_item" style="width:320px;" nickname="<?php echo $v->nickname;?>" loginname="<?php echo $v->loginname;?>">
 					<b><?php echo "$v->nickname";?></b> [<span style="color:#AED5A2"><?php echo $v->name;?></span>]　[<?php echo substr($v->birthday,5,5);?>]　<a href="gift_shop.php?nickname=<?php echo urlencode($v->nickname);?>&loginname=<?php echo $v->loginname;?>"><img src="/images/server/gift.gif" border=0 title="送他/她礼物" class="send_gift_img"></a>
 				</div>
 			<?php }

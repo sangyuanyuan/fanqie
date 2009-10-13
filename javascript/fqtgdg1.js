@@ -8,15 +8,19 @@
 			var address=$("#address").attr('value');
 			var maxnum=$("#tg_maxnum").attr('value');
 			var nownum=$("#tg_count").attr('value');
-			if(buyname==""){alert("用户名不能为空！");return false;}
-			if(spname==""){alert("商品名称不能为空！");return false;}
-			if(mobile==""){alert("联系方式不能为空！");return false;}
-			if(address==""){alert("送货地址不能为空！");return false;}
-			if(num==""){alert("订购数量不能为空！");return false;}
-			if(parseInt(num)!=num)
+			var tgid=$("#tg_id").attr('value');
+			if(tgid!=64)
 			{
-				alert('请正确输入订购数量！（请用阿拉伯数字）');
-				return false;
+				if(buyname==""){alert("用户名不能为空！");return false;}
+				if(spname==""){alert("商品名称不能为空！");return false;}
+				if(mobile==""){alert("联系方式不能为空！");return false;}
+				if(address==""){alert("送货地址不能为空！");return false;}
+				if(num==""){alert("订购数量不能为空！");return false;}
+				if(parseInt(num)!=num)
+				{
+					alert('请正确输入订购数量！（请用阿拉伯数字）');
+					return false;
+				}
 			}
 
 			if(maxnum!="")

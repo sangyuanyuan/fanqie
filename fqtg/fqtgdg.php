@@ -29,12 +29,14 @@
 <body>
 <? 
 	include('../inc/top.inc.html');
-	
+	$sql="SELECT count(*) as num FROM smg_tg_signup where tg_id=46 and name='".$_COOKIE['smg_user_nickname']."'";
+	$num=$db->query($sql);
 ?>
 <div id=bodys>
 <div id=nyf_left>
  		<div id=content1><a href="/">首页</a>　>　<? echo $tg[0]->title;?></div>
 		<div style="width:650px; height:20px; margin-top:12px; overflow:hidden; float:left; display:inline;">
+			
 	 		<div style="width:100px; height:20px; margin-left:10px;  text-align:center; float:left; display:inline;">姓名</div>
 	    <div style="width:250px; height:20px; margin-left:10px;  text-align:center; overflow:hidden; float:left; display:inline;">商品名称</div>
 			<div style="width:30px; height:20px; margin-left:10px; text-align:center; float:left; display:inline;">数量</div>
@@ -60,6 +62,8 @@
        		?>
        <div id=content9>
        	<hr>
+       	<?php if($id!=64)
+				{?>
        	 用户姓名：<input type="text" id="buyname" name="buyname"><br>
        	 您的部门：<select id="deptid" name="deptid">
 					<? for($i=0;$i<count($dept);$i++){?>
@@ -67,7 +71,8 @@
 					<? }?>
 				</select><br>
        	 商品名称：<input type="text" id="spname" name="spname"><br>
-       	 商品数量：<input type="text" id="num" name="num"><span style="color:red;">只要填数字</span><br>  	 
+       	 商品数量：<input type="text" id="num" name="num"><span style="color:red;">只要填数字</span><br>
+       	 <?php } ?>  	 
     	   联系方式：<input type="text" id="phone" name="phone"><br>
     	   <? if($tg[0]->issendfq==0){?>送货地址：<input type="text" id="address" name="address"><? } else {?><input type="hidden" id="address" name="address" value="威海路298号26楼总编室番茄网"><? }?><br> 
     	   其他备注：<textarea id="remark" name="remark" rows="10"></textarea>
@@ -75,8 +80,9 @@
     	   <input type="hidden" id="tg_maxnum" name="tg_maxnum" value="<? echo $tg[0]->maxnum;?>">
     	   <input type="hidden" id="tg_count" name="tg_count" value="<? echo $count[0]->total;?>">
        </div> 
-       
+       <?php if((int)$num[0]->num==0){ ?>
        <div id=content11>订　购</div>
+       <?php } ?>
        	<? 
       		}
        	}
@@ -85,6 +91,8 @@
        	?>
        	<div id=content9>
        	<hr>
+       		<?php if($id!=64)
+				{?>
        	 用户姓名：<input type="text" id="buyname" name="buyname"><br>
        	 您的部门：<select id="deptid" name="deptid">
 								<? for($i=0;$i<count($dept);$i++){?>
@@ -92,16 +100,18 @@
 								<? }?>
 							</select><br>
        	 商品名称：<input type="text" id="spname" name="spname"><br>
-       	 商品数量：<input type="text" id="num" name="num"><span style="color:red;">只要填数字</span><br>  	 
+       	 商品数量：<input type="text" id="num" name="num"><span style="color:red;">只要填数字</span><br> 
+       	 <?php } ?>  	 
     	   联系方式：<input type="text" id="phone" name="phone"><br>
     	   <? if($tg[0]->issendfq==0){?>送货地址：<input type="text" id="address" name="address"><? } else {?><input type="hidden" id="address" name="address" value="威海路298号26楼总编室番茄网"><? }?><br> 
     	   其他备注：<textarea id="remark" name="remark" rows="10"></textarea>
     	   <input type="hidden" id="tg_id" name="tg_id" value="<? echo $id;?>">
     	   <input type="hidden" id="tg_maxnum" name="tg_maxnum" value="<? echo $tg[0]->maxnum;?>">
     	   <input type="hidden" id="tg_count" name="tg_count" value="<? echo $count[0]->total;?>">
-       </div> 
-       	<div id=content11 >订　购</div><? }?>
-       	<? }?>
+       </div>
+       <?php if((int)$num[0]->num==0){ ?>
+       	<div id=content11 >订　购</div>
+       	<? }}}?>
       </form>
  </div>
 
