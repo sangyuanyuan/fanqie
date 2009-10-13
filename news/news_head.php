@@ -342,7 +342,7 @@ $db->execute($sql); ?>
 	
 	<div id=ibody_right>
 		<div id=r_t style="margin-bottom:15px;">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="298" height="88" id="FLVPlayer">
+			<!--<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="298" height="88" id="FLVPlayer">
 			 <param name="movie" value="/flash/news.swf" />
 			 <param name="salign" value="lt" />
 			 <param name="quality" value="high" />
@@ -350,7 +350,8 @@ $db->execute($sql); ?>
 			 <param name="scale" value="noscale" />
 			 <param name="FlashVars" value="&image=<?php echo $_REQUEST['photo'] ?>&file=<?php echo $_REQUEST['video'] ?>&displayheight=167&autostart=false" />
 			 <embed src="/flash/news.swf" flashvars="&image=<?php echo $_REQUEST['photo']?>&file=<?php echo $_REQUEST['video'] ?>&displayheight=167&autostart=false" quality="high" scale="noscale" width="298" height="88" name="FLVPlayer" wmode="opaque" salign="LT" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-			</object>		
+			</object>-->
+			<a target="_blank" href="http://www.bbtv.cn"><img border=0 src="/images/pic/bbtv.jpg"></a>		
 		</div>
 		<?php
 		if($record[0]->related_videos!=""){
