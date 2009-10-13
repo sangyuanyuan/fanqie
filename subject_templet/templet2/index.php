@@ -34,18 +34,12 @@
 				?>
 			</div>
 			<div id=right>
-				<div id=r1>
-					<div class=title></div>
-				</div>
-				<div id=r2>
-					<div class=title></div>
-				</div>
-				<div class=r3>
-					<div class=title></div>
-				</div>
-				<div class=r3>
-					<div class=title></div>
-				</div>
+				<?php
+					$modules = new smg_subject_module_class();
+					$modules = $modules->find('all',array('conditions' => "subject_id = 24 and pos_name='sub2_tr'",'order' => "priority asc,id desc"));
+					for($i=0;$i<count($modules);$i++)
+					$modules[$i]->display();
+				?>
 			</div>
 		</div>
 		

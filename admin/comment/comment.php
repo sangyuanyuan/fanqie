@@ -55,7 +55,7 @@
 					<td><?php echo $record[$i]->nick_name;?></td>
 					<td><?php echo $record[$i]->comment;?></td>
 					<td><?php echo $record[$i]->created_at;?></td>
-					<td><a class="del" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a><a class="edit"  style="color:#000000; text-decoration:none; margin-left:10px; cursor:pointer">编辑</a></td>
+					<td><a class="del_comment" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a><a class="edit"  style="color:#000000; text-decoration:none; margin-left:10px; cursor:pointer">编辑</a></td>
 				</tr>
 		<?php
 			}
@@ -93,6 +93,18 @@
 				if(event.keyCode==13){
 					window.location.href="?key1="+$("#user_name").attr('value')+"&key2="+$("#comment").attr('value')+"&type="+$("#r_type").val()+"&id="+$("#r_id").val();
 				}
+		});
+		$(".del_comment").click(function(){
+			if(!window.confirm("确定要删除吗"))
+			{
+				return false;
+			}
+			else
+			{
+				$.post("comment.post.php",{'comment_id':$(this).attr('name'),'news_id':$("#r_id").val(),'post_type':'del'},function(data){
+					$("#"+data).remove();
+				});
+			}
 		});
 	})
 </script>
