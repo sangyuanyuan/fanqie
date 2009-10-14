@@ -49,7 +49,7 @@
 	<table height=109 width=21>
 		<tr valign="middle">
 			<td>
-				<div class=right_title><?php echo $name;?></div>
+				<div class=right_title><a target="_blank" href="photo_list.php?id=<?php echo $category_id;?>"><?php echo $name;?></a></div>
 			</td>
 		</tr>
 	</table>
