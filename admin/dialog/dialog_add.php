@@ -53,7 +53,7 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">对话者工号</td>
-			<td width="695" align="left"><input type="text" size="50" name=leader_id1 class="required"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="learder_image1" id="learder_image1" type="file">
+			<td width="695" align="left"><input type="text" size="50" id="master_ids" name=leader_id1 class="required"><input type="hidden" name="MAX_FILE_SIZE" value="2097152"><input name="learder_image1" id="learder_image1" type="file">
 				<span style="cursor:pointer; color:#0033CC; text-decoration:underline" class="check_user" id="leader">检查对话者工号</span>
 			</td>
 		</tr>
@@ -94,6 +94,11 @@
 		var title = oEditor.GetHTML();
 		if(title==""){
 			alert("请输入标题！");
+			return false;
+		}
+		var master_ids = $("#master_ids").val();
+		if(master_ids.indexOf(",")!=-1||master_ids.indexOf("，")!=-1){
+			alert("不要有逗号！");
 			return false;
 		}
 	});
