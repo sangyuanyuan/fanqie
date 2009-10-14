@@ -51,8 +51,19 @@
 			<div id=b_l_b>
 				<div id="div_question">
 					<?php
-					  	$questions = new table_class('smg_dialog_question');
-					  	$questions = $questions->find('all',array('conditions' => "dialog_id={$dialog->id}"));
+						$db=get_db();
+						$answered= $db->query('select question_id from smg_dialog_answer where dialog_id='.$dialog->id);
+						$c=array();
+						for($i=0;$i<count($answered);$i++)
+						{
+							array_push($c,"id<>".$answered[$i]->question_id);	
+						}
+						if(count($answered)>0)
+						{
+							$c = implode(' and ' ,$c);
+							$c=' and '.$c;
+						}
+				  	$questions = $db->query('select * from smg_dialog_question where dialog_id='.$dialog->id.$c);
 						$len = count($questions);						
 						for ($i=0;$i < $len; $i++) {
 							echo_dialog_question($questions[$i],$i + 1,intval($_REQUEST['id']));
@@ -154,7 +165,7 @@
 				for($i=0;$i<4;$i++){
 				?>
 				<div class=b_r_b2>
-					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><img border=0 width=128 height=82 src="<?php echo $latest_dialogs[$i]->photo_url;?>">
+					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><img border=0 width=125 height=82 src="<?php echo $latest_dialogs[$i]->photo_url;?>">
 					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><?php echo $latest_dialogs[$i]->title;?></a>	
 				</div>
 			<?php }?>
