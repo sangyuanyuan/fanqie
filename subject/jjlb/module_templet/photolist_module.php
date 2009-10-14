@@ -127,7 +127,7 @@
 			for($i=0;$i<count($items);$i++){
 		?>
 		<div style="width:<?php echo $photo_width;?>px; margin-left:5px; margin-top:4px; text-align:center; float:left; display:inline;">
-				<a href="/show/show.php?id=<?php echo $items[$i]->id;?>"><img width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>" src="<?php echo $items[$i]->src?>"></a>
+				<a title="点击左侧标题进入列表页" href="/show/show.php?id=<?php echo $items[$i]->id;?>"><img width="<?php echo $photo_width;?>" height="<?php echo $photo_height;?>" src="<?php echo $items[$i]->src?>"></a>
 				<a href="/show/show.php?id=<?php echo $items[$i]->id;?>"><?php echo $items[$i]->title;?></a>
 		</div>
 		<?php
