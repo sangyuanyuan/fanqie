@@ -4,6 +4,7 @@ li{margin:0px; list-style-type:none;}
 
 #nav1{width:100%; height:24px; border-bottom:1px solid #E6E6E6; background:#f7f7f7; margin:0 auto;}
 #nav1 #box{width:990px; height:24px; text-align:right; margin:0 auto;}
+#nav1 iframe{text-align:center; float:left; display:inline;}
 #nav1 img{margin-top:3px; margin-left:5px; float:right; display:inline;}
 #nav1 #context{line-height:24px; float:right; display:inline;}
 #nav1 #context a{color:#999999; text-decoration:none;}
