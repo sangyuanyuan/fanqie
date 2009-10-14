@@ -73,7 +73,7 @@
 			break;
 	}
 	?>
-	<marquee direction="<?php echo $direction;?>" behavior="scroll" onmousemove=this.stop() onmouseout=this.start()>
+	<marquee direction="<?php echo $direction;?>" height=85 behavior="scroll" onmousemove=this.stop() onmouseout=this.start()>
 	<?php }?>
 	<?php
 		$photo_width = isset($elment_width)?$elment_width:150;
