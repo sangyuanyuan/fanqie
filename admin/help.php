@@ -16,6 +16,9 @@ require_once('../frame.php');
 			<td width="40%">名称</td><td width="40%">操作</td>
 		</tr>
 		<tr height="20" align="center">
+			<td>Premiere</td><td><a href='/tools/Premiere_Pro.rar'>下载</a></td>
+		</tr>
+		<tr height="20" align="center">
 			<td>windowsmoviemaker</td><td><a href='/tools/windowsmoviemake.rar'>下载</a></td>
 		</tr>
 		<tr height="20" align="center">
