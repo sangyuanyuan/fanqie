@@ -342,7 +342,7 @@ $db->execute($sql); ?>
 	
 	<div id=ibody_right>
 		<div id=r_t style="margin-bottom:15px;">
-			<?php $bbtv=$db->query('select filename from smg_news where dept_category_id=198 and is_dept_adopt=1 order by priority asc,created_at desc'); ?>
+			<?php $bbtv=$db->query('select file_name from smg_news where dept_category_id=198 and is_dept_adopt=1 order by priority asc,created_at desc'); ?>
 			<!--<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="298" height="88" id="FLVPlayer">
 			 <param name="movie" value="/flash/news.swf" />
 			 <param name="salign" value="lt" />
