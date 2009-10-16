@@ -342,7 +342,7 @@ $db->execute($sql); ?>
 	
 	<div id=ibody_right>
 		<div id=r_t style="margin-bottom:15px;">
-			<?php $bbtv=$db->query('select filename from smg_news where dept_category_id=198 and is_dept_adopt=1 order by priority asc,created_at desc'); ?>
+			<!--<?php $bbtv=$db->query('select filename from smg_news where dept_category_id=198 and is_dept_adopt=1 order by priority asc,created_at desc'); ?>
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="298" height="88" id="FLVPlayer">
 			 <param name="movie" value="<?php echo $bbtv[0]->filename; ?>" />
 			 <param name="salign" value="lt" />
@@ -351,9 +351,9 @@ $db->execute($sql); ?>
 			 <param name="scale" value="noscale" />
 			 <param name="FlashVars" value="displayheight=167&autostart=false" />
 			 <embed src="<?php echo $bbtv[0]->filename; ?>" flashvars="displayheight=167&autostart=false" quality="high" scale="noscale" width="298" height="88" name="FLVPlayer" wmode="opaque" salign="LT" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-			</object>
-			<!--<?php $bbtv=$db->query('select src from smg_images where dept_category_id=197 and is_dept_adopt=1 order by priority asc,created_at desc'); ?>
-			<a target="_blank" href="http://www.bbtv.cn"><img border=0 src="<?php echo $bbtv[0]->src; ?>"></a>-->	
+			</object>-->
+			<?php $bbtv=$db->query('select src from smg_images where dept_category_id=197 and is_dept_adopt=1 order by priority asc,created_at desc'); ?>
+			<a target="_blank" href="http://www.bbtv.cn"><img border=0 src="<?php echo $bbtv[0]->src; ?>"></a>	
 		</div>
 		<?php
 		if($record[0]->related_videos!=""){
