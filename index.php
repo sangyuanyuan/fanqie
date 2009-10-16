@@ -1036,8 +1036,9 @@ total("首页","other");
 						<tr>	
 							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.ddmap.com/">丁丁地图</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank"  href="http://www.ddtong.cn/">实时交通路况查询</a></td>
 						</tr>
-						<tr>	
-							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://meishi.enjoyoung.cn/">人气美食</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.shjtaq.com/zwfg/dzjc_new.asp">上海交通违章查询</a></td>
+						<tr>
+							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://meishi.enjoyoung.cn/">人气美食</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://218.242.133.83:8080/">公交卡查询系统</a></td>
+							<!--<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://meishi.enjoyoung.cn/">人气美食</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.shjtaq.com/zwfg/dzjc_new.asp">上海交通违章查询</a></td>-->
 						</tr>
 						<tr>	
 							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.qunar.com/">机票折扣查询</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://jujia.enjoyoung.cn/xingshangportal/main/main.do">星尚居家</a></td>
