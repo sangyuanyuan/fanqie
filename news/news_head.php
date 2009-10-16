@@ -352,7 +352,7 @@ $db->execute($sql); ?>
 			 <param name="FlashVars" value="&image=<?php echo $_REQUEST['photo'] ?>&file=<?php echo $_REQUEST['video'] ?>&displayheight=167&autostart=false" />
 			 <embed src="/flash/news.swf" flashvars="&image=<?php echo $_REQUEST['photo']?>&file=<?php echo $_REQUEST['video'] ?>&displayheight=167&autostart=false" quality="high" scale="noscale" width="298" height="88" name="FLVPlayer" wmode="opaque" salign="LT" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 			</object>-->
-			<embed src="<?php echo $bbtv[0]->filename; ?>" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="298" height="88">
+			<embed src="<?php echo $bbtv[0]->file_name; ?>" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="298" height="88">
 			<!--<?php $bbtv=$db->query('select src from smg_images where dept_category_id=197 order by priority asc,created_at desc'); ?>
 			<a target="_blank" href="http://www.bbtv.cn"><img border=0 src="<?php echo $bbtv[0]->src; ?>"></a>-->
 		</div>
