@@ -411,7 +411,6 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	$table = new table_class($table_name);	
 	$c = array();
 	$d=array();
-	$e=array();
 	foreach ($keys as $v) {
 		array_push($c, "title like '%$v%'");
 		array_push($c, "keywords like '%$v%'");
@@ -446,7 +445,7 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	if($conditions){
 		$d = $conditions . ' and (' .$d .')';
 	}
-	$sql1 = 'select a.* from (select * from ' . $table_name ." where 1=1 and ".$d;
+	$sql1 = 'select a.id,a.short_title,a.dept_id,a.category_id,a.created_at from (select * from ' . $table_name ." where 1=1 and ".$d;
 	if($order)
 	{
 		$sql1 = $sql1 . ' order  by ' .$order;
@@ -455,15 +454,7 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	$content1=$db->query($sql1);
 	for($i=0;$i<count($content1);$i++)
 	{
-		array_push($e,"id<>".$content1[$i]->id);	
-	}
-	if(count($content1)>0)
-	{
-		$e = implode(' and ' ,$e);
-	}
-	else
-	{
-		$e='';
+		$notid[]=$content1[$i]->id;
 	}
 	$c = implode(' OR ' ,$c);
 	if($conditions){
@@ -471,11 +462,11 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	}
 	if($e!='')
 	{
-		$sql2 = 'select b.* from (select * from ' . $table_name ." where 1=1 and ".$e.' and '.$c;
+		$sql2 = 'select b.id,b.short_title,b.dept_id,b.category_id,b.created_at from (select * from ' . $table_name ." where 1=1 and id not in (".$notid.') and '.$c;
 	}
 	else
 	{
-		$sql2 = 'select b.* from (select * from ' . $table_name ." where 1=1 and ".$c;	
+		$sql2 = 'select b.id,b.short_title,b.dept_id,b.category_id,b.created_at from (select * from ' . $table_name ." where 1=1 and ".$c;	
 	}
 	if($order)
 	{
