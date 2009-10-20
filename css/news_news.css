@@ -22,7 +22,7 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 #l_b .vote .btn{width:590px; height:24px; margin-bottom:10px; margin-left:5px; float:left; display:inline}
 #l_b .vote button{width:60px; height:24px; margin-top:10px; margin-left:10px; border:0px; color:#ffffff; background:url('/images/news/news_vote_button.jpg') no-repeat;}
 #l_b .vote .vote_main_title{width:590px; height:20px; margin-bottom:10px; font-size:18px; font-weight:bold; color:#000000; line-height:20px; float:left; display:inline;}
-#l_b .vote .vote_title{width:590px; height:18px; margin-top:5px; margin-bottom:5px; font-size:14px; font-weight:bold; float:left; display:inline;}
+#l_b .vote .vote_title{width:590px; margin-top:5px; margin-bottom:5px; font-size:14px; font-weight:bold; float:left; display:inline;}
 #l_b .vote .vote_item{width:590px; margin-bottom:5px; line-height:20px; float:left; display:inline;}
 #l_b .vote .vote_item img{width:200px; height:200px;}
 #l_b .vote .vote_button_box{width:590px; margin-top:10px; float:left; display:inline;}
