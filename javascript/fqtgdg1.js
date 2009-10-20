@@ -9,7 +9,7 @@
 			var maxnum=$("#tg_maxnum").attr('value');
 			var nownum=$("#tg_count").attr('value');
 			var tgid=$("#tg_id").attr('value');
-			if(tgid!=64)
+			if(tgid!=71)
 			{
 				if(buyname==""){alert("用户名不能为空！");return false;}
 				if(spname==""){alert("商品名称不能为空！");return false;}
