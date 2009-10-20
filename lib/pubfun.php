@@ -445,7 +445,7 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	if($conditions){
 		$d = $conditions . ' and (' .$d .')';
 	}
-	$sql1 = 'select a.id,a.short_title,a.dept_id,a.category_id,a.created_at from (select * from ' . $table_name ." where 1=1 and ".$d;
+	$sql1 = 'select a.id,a.short_title,a.title,a.dept_id,a.category_id,a.created_at from (select * from ' . $table_name ." where 1=1 and ".$d;
 	if($order)
 	{
 		$sql1 = $sql1 . ' order  by ' .$order;
@@ -462,11 +462,11 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	}
 	if($e!='')
 	{
-		$sql2 = 'select b.id,b.short_title,b.dept_id,b.category_id,b.created_at from (select * from ' . $table_name ." where 1=1 and id not in (".$notid.') and '.$c;
+		$sql2 = 'select b.id,b.title,b.short_title,b.dept_id,b.category_id,b.created_at from (select * from ' . $table_name ." where 1=1 and id not in (".$notid.') and '.$c;
 	}
 	else
 	{
-		$sql2 = 'select b.id,b.short_title,b.dept_id,b.category_id,b.created_at from (select * from ' . $table_name ." where 1=1 and ".$c;	
+		$sql2 = 'select b.id,b.title,b.short_title,b.dept_id,b.category_id,b.created_at from (select * from ' . $table_name ." where 1=1 and ".$c;	
 	}
 	if($order)
 	{

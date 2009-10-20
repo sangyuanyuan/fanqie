@@ -44,23 +44,31 @@
 		</div>
 		
 		<div id=middle>
-			<div class=mbox>
-				<div class=title></div>
-			</div>
-			<div class=mbox2>
-				<div class=title></div>
-			</div>
+			<?php
+				$modules = new smg_subject_module_class();
+				$modules = $modules->find('all',array('conditions' => "subject_id = 24 and pos_name='sub2_m'",'order' => "priority asc,id desc"));
+				for($i=0;$i<count($modules);$i++)
+				$modules[$i]->display();
+			?>
 		</div>
 		
 		<div id=bottom>
 			<div class=title></div>
 			<div id=bleft>
-				<div class=box></div>
-				<div class=box></div>
+				<?php
+					$modules = new smg_subject_module_class();
+					$modules = $modules->find('all',array('conditions' => "subject_id = 24 and pos_name='sub2_bl'",'order' => "priority asc,id desc"));
+					for($i=0;$i<count($modules);$i++)
+					$modules[$i]->display();
+				?>
 			</div>
 			<div id=bright>
-				<div class=box></div>
-				<div class=box></div>
+				<?php
+					$modules = new smg_subject_module_class();
+					$modules = $modules->find('all',array('conditions' => "subject_id = 24 and pos_name='sub2_br'",'order' => "priority asc,id desc"));
+					for($i=0;$i<count($modules);$i++)
+					$modules[$i]->display();
+				?>
 			</div>
 		</div>
 		<? //include('inc/djbottom.inc.php');?>
