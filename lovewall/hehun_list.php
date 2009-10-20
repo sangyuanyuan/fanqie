@@ -22,8 +22,8 @@ js_include_once_tag('total');
     <a href="index.php?id=1">我的期许</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_add.php">我要期许</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">福气排行 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="index.php">首页 </a> <img src="hehun_images/06.gif" width="16" height="16" /> <a href="/blog/" target="_blank">博客 </a> </div>
 <table width="100%" border="0" cellpadding="0" cellspacing="1" class="List">
 	<tr>
-		<th>爱墙编号</th>
-		<th>爱墙内容</th>
+		<th>期许编号</th>
+		<th>期许内容</th>
 		<th>发送人</th>
 		<th>接收人</th>
 		<th>日期</th>
