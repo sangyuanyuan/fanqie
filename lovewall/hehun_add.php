@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=uft-8" />
-<title>制播分离期许</title>
+<title>上海广播电视台、上海东方传媒（集团）有限公司期许</title>
 <style><!--@import url(inc/style.css);--></style>
 <?php use_jquery();
 js_include_once_tag('total');
@@ -15,7 +15,7 @@ js_include_once_tag('total');
 <div style="display:none;" id="aspk" onclick="Hide();"></div>
 <div id="header">
 	<span style="float:left;"></span>
-	<div id="banner">制播分离期许</div>
+	<div id="banner">上海广播电视台、上海东方传媒（集团）有限公司期许</div>
 </div>
 <div id="menu">
 <a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
