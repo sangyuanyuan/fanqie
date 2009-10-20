@@ -153,7 +153,7 @@
 						for($i=0;$i<$count;$i++) {
 							if($records[$i]->photo_src != ""){
 				?>
-				<img border="0" src="<? echo $records[$i]->photo_src;?>" width="100" height="120">
+				<img border="0" src="<? echo $records[$i]->photo_src;?>" width="100" height="150">
 				<?php
 						break;}
 					}
@@ -185,7 +185,7 @@
 						for($i=0;$i<$count;$i++) {
 							if($records[$i]->photo_src != ""){
 				?>
-				<img border="0" src="<? echo $records[$i]->photo_src;?>" width="100" height="120">
+				<img border="0" src="<? echo $records[$i]->photo_src;?>" width="100" height="150">
 				<?php
 						break;}
 					}
@@ -217,7 +217,7 @@
 						for($i=0;$i<$count;$i++) {
 							if($records[$i]->photo_src != ""){
 				?>
-				<img border="0" src="<? echo $records[$i]->photo_src;?>" width="100" height="120">
+				<img border="0" src="<? echo $records[$i]->photo_src;?>" width="100" height="150">
 				<?php
 						break;}
 					}
