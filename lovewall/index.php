@@ -1,5 +1,5 @@
 ﻿<?php
-require_once('../../../frame.php');
+require_once('../frame.php');
 		if($HTTP_COOKIE_VARS["lovewall"]==""){
 		SetCookie("lovewall",$_SERVER["SERVER_ADDR"]); 
 		}

@@ -1,4 +1,4 @@
-﻿<?php require_once('../../../frame.php');?>
+﻿<?php require_once('../frame.php');?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -8,7 +8,7 @@
 js_include_once_tag('total');
 ?>
 <script>
-	total("专题-六一专题","other");
+	total("制播分离期许","news");
 </script>
 </head>
 <body>
@@ -34,10 +34,10 @@ include("inc/coon.php");
 $limit=10;
 $start=$_GET["start"];
 if(empty($start)) $start=0; 
-$result=mysql_query("select * from hehun_love"); 
+$result=mysql_query("select * from smg_qx"); 
 $num_max=mysql_numrows($result); 
 
-$result=mysql_query("select * from hehun_love order by hehun_cs  DESC limit $start,$limit"); 
+$result=mysql_query("select * from smg_qx order by hehun_cs  DESC limit $start,$limit"); 
 $num=mysql_numrows($result); 
 for ($i=0;$i<$num;$i++) { 
 $hehun_id=mysql_result($result,$i,"hehun_id");
