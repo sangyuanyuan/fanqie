@@ -62,7 +62,7 @@
        		?>
        <div id=content9>
        	<hr>
-       	<?php if($id!=64)
+       	<?php if($id!=71)
 				{?>
        	 用户姓名：<input type="text" id="buyname" name="buyname"><br>
        	 您的部门：<select id="deptid" name="deptid">
@@ -91,7 +91,7 @@
        	?>
        	<div id=content9>
        	<hr>
-       		<?php if($id!=64)
+       		<?php if($id!=71)
 				{?>
        	 用户姓名：<input type="text" id="buyname" name="buyname"><br>
        	 您的部门：<select id="deptid" name="deptid">
