@@ -4,7 +4,7 @@ $db=get_db();
 $cookie="";
 $cookie=$_COOKIE['smg_user_nickname'];
 
-if($_POST['tg_id']!=64)
+if($_POST['tg_id']!=71)
 {
 	$sql="select maxnum from smg_tg where id=".$_POST['tg_id'];
 	$maxnum=$db->query($sql);
@@ -34,7 +34,7 @@ else
 		redirect('/admin/admin.php');
 		exit;
 	}
-	$StrSql='insert into smg_tg_signup(tg_id,name,spname,num,phone,address,createtime,remark) values (64,"'.$cookie.'","免费徽菜抵用券",1,"'.$_POST['phone'].'","'.$_POST['address'].'",now(),"'.$_POST['remark'].'")';
+	$StrSql='insert into smg_tg_signup(tg_id,name,spname,num,phone,address,createtime,remark) values (71,"'.$cookie.'","东方风云榜票",2,"'.$_POST['phone'].'","'.$_POST['address'].'",now(),"'.$_POST['remark'].'")';
 	$Record = $db->execute($StrSql);
 	alert("订购成功！");
 }
