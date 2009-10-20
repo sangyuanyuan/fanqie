@@ -143,7 +143,7 @@
 				?>
 				<li><a title="<?php echo $records[$i]->title;?>" href="news.php?id=<? echo $records[$i]->id;?>" target="_blank" class="blue">
 					<?php 
-	          			echo $records[$i]->short_title;
+	          			echo $records[$i]->title;
 		       		?>
 				</a></li>
 				<?php } ?>
@@ -175,7 +175,7 @@
 				?>
 				<li><a title="<?php echo $records[$i]->title;?>" href="news.php?id=<? echo $records[$i]->id;?>" target="_blank" class="blue">
 					<?php 
-	          			echo $records[$i]->short_title;
+	          			echo $records[$i]->title;
 		       		?>
 				</a></li>
 				<?php } ?>
@@ -207,7 +207,7 @@
 				?>
 				<li><a title="<?php echo $records[$i]->title;?>" href="news.php?id=<? echo $records[$i]->id;?>" target="_blank" class="blue">
 					<?php 
-	          			echo $records[$i]->short_title;
+	          			echo $records[$i]->title;
 		       		?>
 				</a></li>
 				<?php } ?>
@@ -230,7 +230,7 @@
 					$records = show_content('smg_images','picture','电视新闻中心','我型我秀',10);
 					$count = count($records);
 	      		?>
-	      <marquee height="133" onmouseover=this.stop() onmouseout=this.start() scrollamount=3>
+	      <marquee height="100" onmouseover=this.stop() onmouseout=this.start() scrollamount=3>
 	 				<?php for($i=0;$i<$count;$i++){?>  
 	 				<div class="photo_all">       					
 	 					<a target="_blank" href="/show/show.php?id=<? echo $records[$i]->id;?>" style="float:left; display:inline; "><img border="0" src="<? echo $records[$i]->src;?>" width="70" height="70" ></a>
@@ -251,7 +251,7 @@
 				<marquee height="153" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 				<?php
 					$db = get_db();
-					$sql = 'select t1.nickname,t1.gender,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.date("m-d").'" and t1.hide_birthday=0';
+					$sql = 'select t1.nickname,t1.gender,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.date("m-d").'" and t1.hide_birthday=0 and t2.parentid="ORGA007526"';
 					$birthday = $db->query($sql);
 					for($i=0;$i< count($birthday);$i++) {
 				?>
