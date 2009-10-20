@@ -186,6 +186,25 @@
 ?>
 <div class=mbox>
 	<div class=title><?php echo $name;?><span class=more><a href="photo_list.php?id=<?php echo $category_id;?>">更多>></a></span></div>
+	<?php 
+		if($scroll_type!=0){
+		switch($scroll_type){
+			case 1:
+				$direction="left";
+				break;
+			case 2:
+				$direction="up";
+				break;
+			case 3:
+				$direction="right";
+				break;
+			case 4:
+				$direction="down";
+				break;
+		}
+	?>
+	<marquee direction="<?php echo $direction;?>" behavior="scroll">
+	<?php }?>
 	<?php
 		for ($i=0;$i<count($items);$i++){
 	?>
@@ -194,6 +213,9 @@
 		<a href="/show/show.php?id=<?php echo $items[$i]->id;?>"><?php echo $items[$i]->title;?></a>
 	</div>
 	<?php } ?>
+	<?php if($scroll_type!=0){?>
+	</marquee>
+	<?php }?>
 </div>
 <?php
 }else{
