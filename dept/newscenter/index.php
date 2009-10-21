@@ -19,7 +19,7 @@
 <body>
 <div id="bg">	
 	<?php include("inc/topbar.inc.php");?>
-	
+	<div style="width:950px; height:138px; float:left; display:inline"><img src="/images/三项学习横幅.jpg" border=0></div>
 	<div id="left">
 		<div class="normaltitle1">
 			<?php
