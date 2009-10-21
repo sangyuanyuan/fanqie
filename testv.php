@@ -1,6 +1,6 @@
 <body>
 <OBJECT   id=MediaPlayer1   codeBase=http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701standby=Loading   type=application/x-oleobject   height=230   width=288   classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6   VIEWASTEXT> 
-				<PARAM   NAME= "URL"   VALUE= "/intro.wmv"> 
+				<PARAM   NAME= "URL"   VALUE= "mms://172.27.202.23:5765/broadcast"> 
 				<PARAM   NAME= "playCount"   VALUE= "1"> 
 				<PARAM   NAME= "autoStart"   VALUE= "false"> 
 				<PARAM   NAME= "invokeURLs"   VALUE= "false">
