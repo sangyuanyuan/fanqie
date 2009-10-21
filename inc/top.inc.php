@@ -16,8 +16,11 @@
 		<a id=home href="/home/" target="_blank"><img src="/images/top/jiayuan.gif" border=0></a>
 	</div>
 </div>
+<div id=nimg><img src="/images/pic/zbfl.jpg"></div>
 <div id=nav2>
+	
 	<div id=box>
+		
 		<div id=logo></div>
 		<?php for($j=0;$j<5;$j++){?>
 		<ul>
