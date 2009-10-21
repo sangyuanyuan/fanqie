@@ -30,7 +30,7 @@ js_include_once_tag('total');
 		<input type="hidden" name="icon" value="0" />			
 	<tr>
 		<td class="td"> ↓↓↓ 我们将永久保存您的字条 </td>
-		<td colspan="2" class="td"> ↓↓↓ 制播分离期许 </td>
+		<td colspan="2" class="td"> ↓↓↓ 上海广播电视台、上海东方传媒（集团）有限公司期许 </td>
 	</tr>
 	<tr>
 		<td rowspan="6" class="Peview">
