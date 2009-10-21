@@ -48,7 +48,7 @@ require_once('../frame.php');
 			$days=round(($end_time-$start_time)/3600/24);
 			if($days >=0){?>离团购截至时间还有：<span style="color:red; font-weight:bold;"><? echo $days; ?></span>天<? }else{?>团购已截止！<? }?><br>共有
 				<a href="/fqtg/fqtgdg.php?id=<? echo $actid;?>" style="color:red; font-weight:bold; text-decoration:none;"><? echo $countnews[0]->total;?></a>位用户订购。订购商品<a href="/fqtg/fqtgdg.php?id=<? echo $actid;?>" style="color:red; font-weight:bold; text-decoration:none;"><? echo $countnews[0]->zs;?></a>件<br>
-					<? if($news[0]->maxnum!=""){?>限量订购<? echo $news[0]->maxnum;?>,已经订购<? echo $countnews[0]->zs;?>,剩余<? echo ((int)$news[0]->maxnum-(int)$countnews[0]->zs); }?>
+					<? if($news[0]->maxnum!=""){?>限量订购<span style="color:red; font-weight:bold;"><? echo $news[0]->maxnum;?></span>,已经订购<span style="color:red; font-weight:bold;"><? echo $countnews[0]->zs;?></span>,剩余<? echo ((int)$news[0]->maxnum-(int)$countnews[0]->zs); }?>
 				<?php echo get_fck_content($news[0]->content);?></div>
 		<div style="width:976px; margin-top:10px; margin-left:10px; text-align:center; font-size:15px; line-height:25px; float:left; display:inline;"><?php print_fck_pages($news[0]->content,"/fgtg/fgtg.php?id=".$id);?></div>
     <div id=content5>
