@@ -1,17 +1,38 @@
 ﻿<?php
   require_once('../frame.php');
   $db = get_db();
-  $sql="select distinct(u.loginname),u.tel_phone from smg_birthday_gift g left join smg_user_real u on g.reciever=u.loginname where g.created_at>='".date('Y-m-d')." 00:00:00' and g.created_at<='".date('Y-m-d')." 23:59:59'";
-  $phone=$db->query($sql);
+  $today = substr(date('Y-m-d'), 5);
+  
+	$sql1="select distinct(org_id),tel_phone from smg_user_real where duty like '%科长%' and org_id in (select b.orgid from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='$today' and state=3 and hide_birthday!=1  order by a.org_id)";
+	$phone=$db->query($sql1);
 	for($i=0;$i<count($phone);$i++)
 	{
-	  $sql="SELECT count(*) as num FROM smg_birthday_gift where created_at>='".date('Y-m-d')." 00:00:00' and created_at <='".date('Y-m-d')." 23:59:59' and reciever='".$phone[$i]->loginname."'";
-	  $num=$db->query($sql);
-	  $url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=".$phone[$i]->tel_phone."&content=".urlencode(iconv('utf-8','gbk','您今天收到了'.$num[0]->num.'份生日礼物。请到番茄网查收！')) ."&sign=1";
-		$fp = fopen($url,'r') ;
-		fclose($fp);
+		if(substr($phone[$i]->tel_phone,0,2)=="13"||substr($phone[$i]->tel_phone,0,2)=="15")
+		{
+			$sql="select a.nickname from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='".$today."' and state=3 and hide_birthday!=1 and a.org_id='".$phone[$i]->org_id."' order by a.org_id";
+	  	$name=$db->query($sql);
+			$nickname=array();
+	  	for($j=0;$j<count($name);$j++)
+	  	{
+	  		$nickname[]=$name[$j]->nickname;	
+	  	}
+	  	$realname=implode(',',$nickname);
+		  $url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=".$phone[$i]->tel_phone."&content=".urlencode(iconv('utf-8','gbk','您的同事:'.$realname.'今天过生日。记得上番茄网送礼物哦！')) ."&sign=1";
+			$fp = fopen($url,'r') ;
+			fclose($fp);
+		}
+		else
+		{
+			
+		}
 	}
 	alert('发送成功！');
   //print_r($comment);
-  redirect('/admin/admin.php');
+  //redirect('/server/today.php');
 ?>
+<script>
+function CloseWindow_Click()
+{
+     window.close();
+}
+</script>
