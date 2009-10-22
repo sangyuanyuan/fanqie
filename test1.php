@@ -17,6 +17,6 @@
 				<PARAM   NAME= "EnableContextMenu"   VALUE= "true">			
 				<embed src="/upload ideo/QsUYdq0Izl.wmv" align="baseline" border="0" width="285" height="265" type="application/x-mplayer2"pluginspage="" name="MediaPlayer1" showcontrols="1" showpositioncontrols="0" showaudiocontrols="1" showtracker="1" showdisplay="0" showstatusbar="1" autosize="0" showgotobar="0" showcaptioning="0" autostart="false" autorewind="0" animationatstart="0" transparentatstart="0" allowscan="1" enablecontextmenu="1" clicktoplay="0" defaultframe="datawindow" invokeurls="0"></embed> 
 			</OBJECT> 		
-		<?php echo urlencode(iconv('utf-8','gbk','第198期（一版·要闻）')); ?>
+		<?php echo urlencode(iconv('utf-8','gbk','第一期刊')); ?>
 </body>
 

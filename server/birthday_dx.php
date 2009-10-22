@@ -28,11 +28,6 @@
 	}
 	alert('发送成功！');
   //print_r($comment);
+  echo "<script>window.close();</script>"
   //redirect('/server/today.php');
 ?>
-<script>
-function CloseWindow_Click()
-{
-     window.close();
-}
-</script>
