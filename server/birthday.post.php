@@ -1,4 +1,4 @@
-<?php
+﻿<?php
      require_once "../frame.php";
 	 
 	 $db = get_db();
@@ -19,5 +19,7 @@
 		redirect('send_gift_list_detail.php?reciever=none');
 	 }elseif($_POST['type']=='number'){
 	 	redirect('send_gift_list_detail.php?reciever='.$_POST['search']);
+	 }else{
+	 	redirect('birthday_search.php?key='.$_POST['search']);
 	 }
 ?>

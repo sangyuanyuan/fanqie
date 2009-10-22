@@ -40,15 +40,20 @@
         <div id="context">
 			<?php
 				if($sender==''){
-					$sql = "select a.* ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name where reciever='{$reciever}' order by id desc";
+					$sql = "select a.* ,b.nickname,b.birthday_short from smg_birthday_gift a left join smg_user_real b on a.reciever = b.loginname where reciever='{$reciever}' order by id desc";
 				}else{
 					$sql = "select a.* ,b.nick_name from smg_birthday_gift a left join smg_user b on a.reciever = b.name where sender='{$sender}' and reciever='{$reciever}' and created_at='{$send_date}' and send_type={$send_type} order by id desc";
 				}
 				$records = $db->paginate($sql,9);
 				$count = count($records);
 				if($count!=0){
+			?>
+			<?php if($sender==''){?>
+			<div id=user_birthday><?php echo $records[0]->nickname."生日:".$records[0]->birthday_short;?></div>
+			<?php }?>
+			<?php
 				for($i=0;$i<$count;$i++){
-					$nick_name = $records[$i]->nick_name ? $records[$i]->nick_name : $records[$i]->reciever;
+					$nick_name = $records[$i]->nickname ? $records[$i]->nickname : $records[$i]->reciever;
 					$send_type_string = $records[$i]->send_type == 1 ? '回赠' : '赠送';
 			?>
 			<div class=box style="float:left;display:inline">
@@ -65,12 +70,12 @@
 			<?php } ?>
      		<div id=paginate><?php paginate();?></div>
 			<?php }else{
-				$sql = 'select nickname,birthday from smg_user_real where loginname="'.$reciever.'"';
+				$sql = 'select nickname,birthday_short from smg_user_real where loginname="'.$reciever.'"';
 				$record2 = $db->query($sql);
 				if(count($record2)==0){
 					echo "查无此人";
 				}else{
-					echo $record2[0]->nickname."还没有收到礼物,".$record2[0]->nickname."的生日是".substr($record2[0]->birthday, 5, 5);
+					echo $record2[0]->nickname."还没有收到礼物,".$record2[0]->nickname."的生日是".$record2[0]->birthday_short;
 				}
 			?>
 			<?php }?>
@@ -86,8 +91,3 @@
 
 </body>
 </html>
-
-<script>
-	$(function(){		
-	});
-</script>

@@ -13,5 +13,27 @@
 	?>
 </head>
 <body>
+	<div style="width:987px; height:800px; margin:0 auto;">
+	<div id="ibody">
+		<div id="top_title"></div>
+		<div id="menu">
+			<div id="menu_box">
+				<div class="cl" style='border:0px;'><a target="_blank" href="djnews.php">首页首页</a></div>
+				<div class="cl"><a target="_blank" href="djnews.php">首页</a></div>
+				<div class="cl"><a target="_blank" href="djnews.php">首页</a></div>
+				<div class="cl"><a target="_blank" href="djnews.php">首页</a></div>
+				<div class="cl"><a target="_blank" href="djnews.php">首页</a></div>
+				<div class="cl"><a target="_blank" href="djnews.php">首页</a></div>
+				<div class="cl"><a target="_blank" href="djnews.php">首页</a></div>
+				<div class="cl"><a target="_blank" href="djnews.php">首页</a></div>
+				<div class="cl"><a target="_blank" href="djnews.php">首页</a></div>
+				<div class="cl"><a target="_blank" href="djnews.php">首页</a></div>
+			</div>
+		</div>
+		<div id="top">
+			
+		</div>
+	</div>
+	</div>
 </body>
 </html>
