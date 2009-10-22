@@ -2,6 +2,8 @@ body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#00
 
 #ibody{width:995px; height:830px; border:1px #D8DFEA solid; margin:0 auto; margin-top:15px;}
 
+#user_birthday{width:500px; height:15px; font-size:15px; margin-left:10px; float:left; display:inline;}
+
 .l{width:751px; float:left; display:inline;}
 .r{width:244px; height:784px; background:url(/images/server/calendar_2.jpg); float:left;  display:inline;}
 
