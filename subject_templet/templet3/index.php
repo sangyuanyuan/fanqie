@@ -31,7 +31,49 @@
 			</div>
 		</div>
 		<div id="top">
-			
+			<div id="left">
+				<div id="box_box">
+					<div class="box"></div>
+					<div class="title"></div>
+					<div class="box"></div>
+					<div class="title"></div>
+					<div class="box" style="height:180px;"></div>
+				</div>
+			</div>
+			<div id="center"></div>
+			<div id="right">
+				<div class="title">
+					<div class="title_box"></div>
+				</div>
+				<div class="box">
+					<div class="box_box"></div>
+				</div>
+				<div class="title">
+					<div class="title_box"></div>
+				</div>
+				<div class="box">
+					<div class="box_box"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="middle">
+			<div id="m_title"></div>
+			<div id="left">
+				<div id="top"></div>
+				<div id="bottom">
+					<div id="left"></div>
+					<div id="right"></div>
+				</div>
+			</div>
+			<div id="right"></div>
+		</div>
+		
+		<div id="bottom">
+			<div id="b_title"></div>
+			<div id="b_box">
+				<div id="left"></div>
+			</div>
 		</div>
 	</div>
 	</div>
