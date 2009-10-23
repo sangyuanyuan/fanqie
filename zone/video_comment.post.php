@@ -26,7 +26,7 @@
 	close_db();
 	for($i=0;$i<$count;$i++){
 ?>
-<div class="comment_box"><?php echo $record[$i]->nick_name."说：".$record[$i]->comment;?></div>
+<div class="comment_box"><span style="color:#FFFF00"><?php echo $record[$i]->nick_name?>说:</span><?php echo $record[$i]->comment;?></div>
 <?php
 	}
 ?>

@@ -1,3 +1,4 @@
+body{ background:#000000}
 #ibody{width:990px; height:1282px; margin:0 auto; background:url(/images/online.jpg);}
 
 #top_box{width:990px; height:455px; float:left; display:inline;}
@@ -21,6 +22,6 @@
 #middel_box #thread #thread_botton a{color:#000000; text-decoration:none;}
 
 #bottom_box{width:990px; height:500px; float:left; display:inline;}
-#bottom_box #video{width:630px; height:460px; margin-left:173px; margin-top:5px; float:left; display:inline;}
+#bottom_box #video{width:630px; height:420px; margin-left:173px; margin-top:45px; float:left; display:inline;}
 
 #TB_window{background:url(/images/v_c.jpg);}
