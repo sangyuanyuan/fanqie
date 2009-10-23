@@ -1,6 +1,6 @@
 <?php
 	$db = get_db();
-	$latest_votes = $db->query("select * from smg_vote where is_sub_vote = 0 and  is_adopt=1 order by id desc limit 10");
+	$latest_votes = $db->query("select * from smg_vote where is_sub_vote = 0 and  is_adopt=1 and category_id!=149 order by id desc limit 10");
 ?>
 <div id=right style="text-align:left;">
 			<div id=title><img src="/images/pic/answer_right.gif">热门投票</div>
