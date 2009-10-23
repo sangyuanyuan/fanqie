@@ -17,7 +17,7 @@
 	  		$nickname[]=$name[$j]->nickname;	
 	  	}
 	  	$realname=implode(',',$nickname);
-		  $url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=".$phone[$i]->tel_phone."&content=".urlencode(iconv('utf-8','gbk','您的同事:'.$realname.'今天过生日。记得上番茄网送礼物哦！')) ."&sign=1";
+		  $url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=".substr($phone[$i]->tel_phone)."&content=".urlencode(iconv('utf-8','gbk','您的同事:'.$realname.'今天过生日。记得上番茄网送礼物哦！')) ."&sign=1";
 			$fp = fopen($url,'r') ;
 			fclose($fp);
 		}
