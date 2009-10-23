@@ -91,7 +91,7 @@
 			<div id="video">
 				<?php
 					$video = new table_class('smg_video');
-					$video->find(1126);
+					$video->find(1146);
 					show_video_player('630','420',$video->photo_url,$video->video_url,$autostart = "false");
 				?>
 			</div>
