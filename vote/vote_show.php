@@ -45,10 +45,11 @@
 ?>
 <div id=ibody style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px;">
 <div style="width:600px; margin-top:10px; font-size:15px; text-align:center; line-height:20px; float:left; display:inline"><b><?php echo $vote_name;?></b><br>投票结果:<span style="color:#FF0000;"></span></div>
+<?php include('../inc/vote_right.inc.php');?>
 <?php 
    for($j=0;$j < $vote_len; $j++){
 ?>
-<?php include('../inc/vote_right.inc.php');?>
+
 <div style="width:600px; float:left; display:inline;">
 <table align="left"  border="0" width=600 bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
@@ -99,12 +100,14 @@
 <?php
    }
    ?>
+
 <div style="width:600px; height:200px;margin-top:10px; text-align:left;  float:left; display:inline;">
 	<div><label for="nick_name">昵称:</label><input type="text" id="nick_name" value="<?php echo $_COOKIE['smg_user_nickname'];?>">
 	<?php show_fckeditor('fck_content','Title',false,100,'',600);?>	
 	<div id="emotion"></div>
 	<div style="width:600px;text-align:center;margin-top:5px;"> <button id="submit">发表评论</button><button id="add_vote">发起投票</button></div></div>
 </div>
+
 <?php
 $db = get_db();
 $comments = $db->paginate("select * from smg_comment where resource_type='vote' and resource_id={$vote->id} order by id desc",5); 
@@ -118,7 +121,9 @@ for($i=0;$i<count($comments);$i++){?>
 	<div style="width:570px; padding:15px; margin-top:3px; color:#333;  text-align:left;  float:left; display:inline;">
 	<?php echo paginate();?>
 	</div>
+
 </div>
+
 
 <? require_once('../inc/bottom.inc.php');?>
 
