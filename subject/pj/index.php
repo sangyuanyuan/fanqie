@@ -170,8 +170,8 @@ html,body{
                     <TBODY>
                     <TR align=center>
                       <TD>
-                        	<P class=STYLE3><A style="font-weight:bold; font-size:14px;" href="/news/news-96.php?id=<? echo $news[0]->id;?>" target=_blank><? echo $news[0]->title;?></A>
-                        	<A style="text-align:left; float:left; display:inline;" href="/news/news-96.php?id=<? echo $news[0]->id;?>" target=_blank><? echo get_fck_content($news[0]->description);?></A></P>
+                        	<P class=STYLE3><A style="font-weight:bold; font-size:14px;" href="/news/news.php?id=<? echo $news[0]->id;?>" target=_blank><? echo $news[0]->title;?></A>
+                        	<A style="text-align:left; float:left; display:inline;" href="/news/news.php?id=<? echo $news[0]->id;?>" target=_blank><? echo get_fck_content($news[0]->description);?></A></P>
 					  </TD>
                     </TR>
            			</TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
