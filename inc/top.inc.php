@@ -16,7 +16,7 @@
 		<a id=home href="/home/" target="_blank"><img src="/images/top/jiayuan.gif" border=0></a>
 	</div>
 </div>
-<div id=nimg><a href="http://172.27.203.88/media/default.asp"><img border=0  src="/images/pic/3.jpg"></a></div>
+<div id=nimg><a href="http://172.27.203.88/media/default.asp"><img border=0 src="/images/pic/3.jpg"></a></div>
 <div id=nav2>
 	
 	<div id=box>
