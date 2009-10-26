@@ -17,7 +17,7 @@
 <body>
 <?
   $id=$_REQUEST['id'];
-  $sql1=' and (created_at >="2009-03-01 00:00:00" and created_at<="2009-03-31 23:59:59" )';
+  $sql1=' and (created_at >="2009-06-01 00:00:00" and created_at<="2009-06-30 23:59:59" )';
 	include('../../inc/top.inc.html');
 	if($id==1)
 	{
@@ -29,7 +29,7 @@ order by b.allcounts desc) tb order by a1 desc) s';
 		$click_count=$db->paginate($strsql1,20);	
 	}
 	else{
-		$sql11=' and (n.created_at >="2009-03-01 00:00:00" and n.created_at<="2009-03-31 23:59:59" )';
+		$sql11=' and (n.created_at >="2009-06-01 00:00:00" and n.created_at<="2009-06-30 23:59:59" )';
 		$strsql="select a.*,sum(countnum) as num from (select d.name,sum(n.click_count) as countnum from smg_dept d left join smg_news n on d.id=n.dept_id where is_recommend=1 ".$sql11." group by n.dept_id union select d.name,sum(n.click_count) as countnum from smg_dept d left join smg_video n on d.id=n.dept_id where is_recommend=1 ".$sql11." group by n.dept_id union select d.name,sum(n.click_count) as countnum from smg_dept d left join smg_images n on d.id=n.dept_id where is_recommend=1 ".$sql11." group by n.dept_id) as a group by name order by num desc";
 		$fwcount=$db->paginate($strsql,20);
 	}
@@ -38,13 +38,13 @@ order by b.allcounts desc) tb order by a1 desc) s';
 <div id=bodys>
  <div id=n_left style="width:995px; margin-top:10px; padding-top:10px;">
  	<? if($id==1){?>
- 	<a href="ph1.php?id=1">一月发稿量排行榜</a> <a href="ph2.php?id=1">二月发稿量排行榜</a> <a href="ph3.php?id=1">三月发稿量排行榜</a>
+ 	<a href="ph4.php?id=1">四月发稿量排行榜</a> <a href="ph5.php?id=1">五月发稿量排行榜</a> <a href="ph6.php?id=1">六月发稿量排行榜</a>
  	<? }else{?>
- 		<a href="ph1.php?id=2">一月点击量排行榜</a> <a href="ph2.php?id=2">二月点击量排行榜</a> <a href="ph3.php?id=2">三月点击量排行榜</a>
+ 		<a href="ph4.php?id=2">四月点击量排行榜</a> <a href="ph5.php?id=2">五月点击量排行榜</a> <a href="ph6.php?id=2">六月点击量排行榜</a>
  	<? }?>
 <div style="width:450px; margin-left:200px;line-height:20px; margin-top:30px; margin-bottom:10px; padding:10px; float:left; display:inline">
-	<? if($id==1){ ?><span style="width:450px; font-size:20px; font-weight:bold; text-align:center; line-height:25px; float:left;">一季度发稿量排行榜</span><br><br><span style="color:red; font-size:16px; font-weight:bold;">排行榜：</span><br><? } else{?>
-	<span style="width:450px; font-size:20px; font-weight:bold; text-align:center; line-height:25px; float:left;">一季度点击量排行榜</span><br><br><span style="color:red; font-size:16px; font-weight:bold;">排行榜：</span><br>
+	<? if($id==1){ ?><span style="width:450px; font-size:20px; font-weight:bold; text-align:center; line-height:25px; float:left;">二季度发稿量排行榜</span><br><br><span style="color:red; font-size:16px; font-weight:bold;">排行榜：</span><br><? } else{?>
+	<span style="width:450px; font-size:20px; font-weight:bold; text-align:center; line-height:25px; float:left;">二季度点击量排行榜</span><br><br><span style="color:red; font-size:16px; font-weight:bold;">排行榜：</span><br>
 	<? }?>
 	<? if($id==1){ 
 		
