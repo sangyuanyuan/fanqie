@@ -49,7 +49,6 @@
 <?php 
    for($j=0;$j < $vote_len; $j++){
 ?>
-
 <div style="width:600px; float:left; display:inline;">
 <table align="left"  border="0" width=600 bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
