@@ -45,10 +45,10 @@
 ?>
 <div id=ibody style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px;">
 <div style="width:600px; margin-top:10px; font-size:15px; text-align:center; line-height:20px; float:left; display:inline"><b><?php echo $vote_name;?></b><br>投票结果:<span style="color:#FF0000;"></span></div>
+<?php include('../inc/vote_right.inc.php');?>
 <?php 
    for($j=0;$j < $vote_len; $j++){
 ?>
-<?php include('../inc/vote_right.inc.php');?>
 <div style="width:600px; float:left; display:inline;">
 <table align="left"  border="0" width=600 bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
