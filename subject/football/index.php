@@ -35,20 +35,17 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 
   <TBODY>
   <TR>
-    <TD><IMG height=140 src="css/logotop.jpg" width=770></TD>
+    <TD><IMG height=385 src="css/logotop1.jpg" width=770></TD>
     </TR></TBODY></TABLE>
 <div style="width:770px; background:url(css/bg2.jpg) repeat-x; margin:0 auto; margin-bottom:50px;">
 <TABLE style="background:url(css/bg2.jpg)" cellSpacing=0 cellPadding=0 width=770 align=center border=0 >
   <tr valign=top>
   	<td id="show_video" width=330>
-  		<div style="margin-top:15px; margin-left:25px; float:left;display:inline;">
+  		<div style="width:305px; margin-top:15px; margin-left:25px; float:left;display:inline;">
 	  		<?php
-				  $video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜视频" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.created_at desc limit 3');
-				  show_video_player(305,203,$video[0]->photourl,$video[0]->videourl);
-				  for($i=1;$i<count($video);$i++){
+				  $show = $db->query('select n.id,n.title,n.src from smg_images n inner join smg_category c on c.id=n.category_id and c.name="秀一秀" where n.is_adopt=1 order by n.priority asc limit 1');
 			?>
-			<div style="width:305px; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" href="/video/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
-			<? }?>
+			<div style="width:305px; height:300px; over-flow:hidden; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" href="/show/show.php?id=<? echo $show[0]->id;?>"><img src="<?php echo $show[0]->src;?>" border=0 width="300"></a></div>
 		</div>
   	</td>
   	<? $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="看一看" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
@@ -113,7 +110,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   <tr>
   	<td id="mail_to_mcdull" width=200>
   		<div style="width:200px; height:305px; margin-left:22px; margin-top:5px; background:url(css/tomcdull.jpg); padding-top:45px;">
-			<? $newslist=$db->query('select * from smg_comment where resource_type="mcdull" order by created_at desc');?>
+			<? $newslist=$db->query('select * from smg_comment where resource_type="football" order by created_at desc');?>
 	  		<marquee height="220" width="190" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 					<? for($i=0; $i<count($newslist); $i++){?>
 						<div style="width:180px; margin-left:10px; margin-bottom:10px; overflow:hidden; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->nick_name;?></span>说：<a style="text-decoration:none; color:#000000;" target="_blank" href="/news/news.php?id=16825"><? echo $newslist[$i]->comment;?></a></div>
@@ -125,7 +122,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 				<div id=subject_comment>昵称：<input type="text" name="post[nick_name]" id="commenter"/><br />
 				<div id=comment>内容：</div><textarea id="commentcontent" name="post[comment]"></textarea></div>
 				<input type="hidden" name="type" value="comment">
-				<input type="hidden" id="resource_type" name="post[resource_type]" value="mcdull">
+				<input type="hidden" id="resource_type" name="post[resource_type]" value="football">
 				<button id=btn type="submit">发　表</button>
 			</form>
 		</div>
@@ -141,6 +138,9 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
 						<? }?>
 			     	</div>
+					<div id="box3">
+						
+					</div>
   				</td>
   			</tr>
   			<tr>
@@ -148,9 +148,8 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜资料馆" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 7')?>
   					<div id=title4></div>
   					<div id="box2">
-				  		<? for($i=0; $i<count($news); $i++){?>
-							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
-						<? }?>
+				  		<embed src="/flash/football.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="500" height="300">
+ 						</embed>
 			        </div>	
 			  	</td>
   			</tr>
