@@ -16,7 +16,14 @@
 		<a id=home href="/home/" target="_blank"><img src="/images/top/jiayuan.gif" border=0></a>
 	</div>
 </div>
-<div id=nimg><a href="http://172.27.203.81:8080/news/news/news_head.php?id=25231"><img border=0 src="/images/pic/3.jpg"></a></div>
+<div id=nimg>
+	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,10,29,2009)); if($days>0){?>
+	<a href="http://172.27.203.81:8080/news/news/news_head.php?id=25231"><img border=0 src="/images/pic/<?php echo $days; ?>.jpg"></a>
+	<?php }else if($days==0){?>
+	<a href="http://172.27.203.81:8080/news/news/news_head.php?id=25231"><img border=0 src="/images/pic/cmrb.jpg"></a>
+	<?php }else { ?>
+	<? }?>
+</div>
 <div id=nav2>
 	
 	<div id=box>

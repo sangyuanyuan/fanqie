@@ -335,4 +335,18 @@
 			$result->itemcount = !$result ? 0 : count($result->items);	
 		return $result;
 	}
+	function daysInSpan($start,$end)
+		{
+		 $dayTicks=ticksInDay();
+		 return ($end-$start)/$dayTicks;
+		}
+		 
+		function ticksInDay()
+		{
+		 $today=getdate();
+		 $yesterday=mktime(0,0,0,$today[mon],$today[mday]-1,$today[year]);
+		 $today=mktime(0,0,0,$today[mon],$today[mday],$today[year]);
+		 return $today-$yesterday;
+		}
+
 ?>
