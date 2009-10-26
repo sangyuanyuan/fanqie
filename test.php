@@ -1,7 +1,11 @@
 <?php
 require_once('frame.php');
-$today=date("Y-m-d",time())." 00:00:00";
-$thirdday=date("Y-m-d",strtotime("+2 day"))." 23:59:59";
-echo $today."<br>";
-echo $thirdday;
+$db=get_db();
+$sql="select * from smg_user where password=''";
+$up=$db->query($sql);
+for($i=0;$i<count($up);$i++)
+{
+	$sql="update smg_user set password=(select distinct(password) from smg_user_real where loginname='".$up[$i]->name."') where name='".$up[$i]->name."'";
+	$db->execute($sql);	
+}
 ?>
