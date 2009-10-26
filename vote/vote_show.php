@@ -99,12 +99,14 @@
 <?php
    }
    ?>
+
 <div style="width:600px; height:200px;margin-top:10px; text-align:left;  float:left; display:inline;">
 	<div><label for="nick_name">昵称:</label><input type="text" id="nick_name" value="<?php echo $_COOKIE['smg_user_nickname'];?>">
 	<?php show_fckeditor('fck_content','Title',false,100,'',600);?>	
 	<div id="emotion"></div>
 	<div style="width:600px;text-align:center;margin-top:5px;"> <button id="submit">发表评论</button><button id="add_vote">发起投票</button></div></div>
 </div>
+
 <?php
 $db = get_db();
 $comments = $db->paginate("select * from smg_comment where resource_type='vote' and resource_id={$vote->id} order by id desc",5); 
@@ -118,7 +120,9 @@ for($i=0;$i<count($comments);$i++){?>
 	<div style="width:570px; padding:15px; margin-top:3px; color:#333;  text-align:left;  float:left; display:inline;">
 	<?php echo paginate();?>
 	</div>
+
 </div>
+
 
 <? require_once('../inc/bottom.inc.php');?>
 
