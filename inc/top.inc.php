@@ -5,6 +5,19 @@
 	$db = get_db();
 	use_jquery();
 	js_include_tag('jquery.cookie','pubfun');
+	function daysInSpan($start,$end)
+		{
+		 $dayTicks=ticksInDay();
+		 return ($end-$start)/$dayTicks;
+		}
+		 
+	function ticksInDay()
+	{
+	 $today=getdate();
+	 $yesterday=mktime(0,0,0,$today[mon],$today[mday]-1,$today[year]);
+	 $today=mktime(0,0,0,$today[mon],$today[mday],$today[year]);
+	 return $today-$yesterday;
+	}
 ?>
 
 <div id=nav1>
