@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <HEAD>
-	<TITLE>麦兜专题</TITLE>
+	<TITLE>SMG足球联赛</TITLE>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <LINK href="css/index.css" type=text/css rel=stylesheet>
 <?php js_include_once_tag('total');?>
@@ -27,7 +27,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 #scroll_begin, #scroll_end, #scroll_begin ul, #scroll_end ul, #scroll_begin ul li, #scroll_end ul li{display:inline;}/*设置ul和li横排*/
 </style>
 <script>
-	total("专题-麦兜专题","other");
+	total("专题-SMG足球联赛","other");
 </script>
 </HEAD>
 <body>
@@ -51,13 +51,15 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 			<? }?>
 		</div>
   	</td>
-  	<? $news=$db->query('select n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我是麦兜" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
+  	<? $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="看一看" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
   	<td valign=top align="right" width=440 id="i_am_mcdull">
   		<div class=index_title></div>
-		<div style="width:405px; height:220px; margin-top:5px; margin-left:25px; font-size:16px; overflow:hidden; color:#ec805a; background:url(css/box1.jpg); float:left; display:inline;">
-			<div style="width:200px; height:220px; margin-top:5px; overflow:hidden; line-height:20px; font-weight:bold; margin-left:10px; word-break:break-all; float:left; display:inline;">
-				<a target="_blank" style="TEXT-DECORATION: none" href="/news/news.php?id=<? echo $news[0]->id;?>"><? echo $news[0]->description;?></a>
-			</div>
+		<div style="width:405px; height:220px; margin-top:5px; margin-left:25px; font-size:16px; overflow:hidden; color:#ec805a; float:left; display:inline;">
+			<div id="box1">
+				<? for($i=0; $i<count($news); $i++){?>
+					<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
+				<? }?>
+	     	</div>
 		</div>
   	</td>
   </tr>
@@ -66,7 +68,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   		<div class=title2></div>
   		<div style="width:98%; height:80px; float:left; display:inline;">
 			<?php
-				$photo = $db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜图片欣赏" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc,n.created_at desc limit 7');
+				$photo = $db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="点一点" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');
 	        ?>
 	        <script type="text/javascript"> 
 						function ScrollImgLeft(){
@@ -93,7 +95,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 					      <div id="scroll_begin">
 					        <ul>
 					        	<? for($i=0;$i<count($photo);$i++){?>
-					          <li><a href="<? echo $photo[$i]->url;?>"><img width=75 height=75 src="<? echo $photo[$i]->src;?>"  /></a></li>
+					          <li><a href="/news/news.php?id=<? echo $photo[$i]->id;?>"><img width=75 height=75 src="<? echo $photo[$i]->photo_src;?>"  /></a></li>
 					          <? }?>
 					        </ul>
 					      </div>
@@ -112,9 +114,9 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   	<td id="mail_to_mcdull" width=200>
   		<div style="width:200px; height:305px; margin-left:22px; margin-top:5px; background:url(css/tomcdull.jpg); padding-top:45px;">
 			<? $newslist=$db->query('select * from smg_comment where resource_type="mcdull" order by created_at desc');?>
-	  		<marquee height="300" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+	  		<marquee height="220" width="190" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 					<? for($i=0; $i<count($newslist); $i++){?>
-						<div style="width:100%; margin-left:10px; margin-bottom:10px; overflow:hidden; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->nick_name;?></span>说：<a style="text-decoration:none; color:#000000;" target="_blank" href="/news/news.php?id=16825"><? echo $newslist[$i]->comment;?></a></div>
+						<div style="width:180px; margin-left:10px; margin-bottom:10px; overflow:hidden; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->nick_name;?></span>说：<a style="text-decoration:none; color:#000000;" target="_blank" href="/news/news.php?id=16825"><? echo $newslist[$i]->comment;?></a></div>
 					<? }?>
 			</marquee>
 		</div>
@@ -132,49 +134,12 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   		<table>
   			<tr>
   				<td id="mcdull_news">
-  					<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜新闻" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 10');?>
+  					<?php $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="查一查" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
 			  		<div id=title3></div>
 			  		<div id="box1">
 						<? for($i=0; $i<count($news); $i++){?>
 							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
 						<? }?>
-			     	</div>
-					<div id="pic_box">
-						<?php
-							for ($i=0;$i<7;$i++)
-							{
-								$picsurl[]=$news[$i]->photo_src;
-								$picslink[]="/news/news.php?id=".$news[$i]->id;
-								$picstext[]=$news[$i]->short_title;
-							}
-						?>
-						<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-						<div id="focus_01"></div> 
-						<script type="text/javascript"> 
-							var pic_width=210; //图片宽度
-							var pic_height=180; //图片高度
-							var pics="<?php echo implode(',',$picsurl);?>";
-							var mylinks="<?php echo implode(',',$picslink);?>";
-							
-							var texts="<?php echo implode(',',$picstext);?>";
-			 
-							var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "210", "210", "6","#FFFFFF");
-							picflash.addParam('wmode','opaque');
-							picflash.addVariable("picurl",pics);
-							picflash.addVariable("piclink",mylinks);
-							picflash.addVariable("pictext",texts);				
-							picflash.addVariable("pictime","5");
-							picflash.addVariable("borderwidth","210");
-							picflash.addVariable("borderheight","210");
-							picflash.addVariable("borderw","false");
-							picflash.addVariable("buttondisplay","true");
-							picflash.addVariable("textheight","20");
-							picflash.addVariable("textcolor","#FF0000");	
-							picflash.addVariable("pic_width",pic_width);
-							picflash.addVariable("pic_height",pic_height);
-							
-							picflash.write("focus_01");				
-						</script>
 			     	</div>
   				</td>
   			</tr>
