@@ -41,11 +41,12 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 <TABLE style="background:url(css/bg2.jpg)" cellSpacing=0 cellPadding=0 width=770 align=center border=0 >
   <tr valign=top>
   	<td id="show_video" width=330>
-  		<div style="width:305px; margin-top:15px; margin-left:25px; float:left;display:inline;">
+  		<div class=index_title2></div>
+  		<div style="width:305px; margin-top:15px; margin-left:20px; float:left;display:inline;">
 	  		<?php
 				  $show = $db->query('select n.id,n.title,n.src,n.category_id from smg_images n inner join smg_category c on c.id=n.category_id and c.name="秀一秀" where n.is_adopt=1 order by n.dept_priority asc limit 1');
 			?>
-			<div style="width:305px; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" href="/show/list.php?id=<? echo $show[0]->category_id;?>&type=image"><img src="<?php echo $show[0]->src;?>" border=0 width="300"></a></div>
+			<div style="width:305px; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" title="点击进入列表页" href="/show/list.php?id=<? echo $show[0]->category_id;?>&type=image"><img src="<?php echo $show[0]->src;?>" border=0 width="300"></a></div>
 		</div>
   	</td>
   	<? $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="看一看" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
@@ -149,10 +150,10 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   					<div id=title4></div>
   					<div id="box2">
   						<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="500" height="300">
-					      <param name=movie value="/flash/football.swf">
+					      <param name=movie value="/flash/football1.swf">
 					      <param name=quality value=high>
 					      <param name="wmode" value="transparent">
-					      <embed src="/flash/football.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="500" height="300" wmode="transparent"></embed>
+					      <embed src="/flash/football1.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="500" height="300" wmode="transparent"></embed>
 					    </object>
 
 			        </div>	
