@@ -152,7 +152,6 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 					      <param name=movie value="/flash/football.swf">
 					      <param name=quality value=high>
 					      <param name="wmode" value="transparent">
-					      <embed src="/flash/football.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="500" height="300" wmode="transparent"></embed>
 					    </object>
 
 			        </div>	
