@@ -481,7 +481,6 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	{
 		$sql=$sql2;	
 	}
-	echo $sql;
 	/*if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}*/
