@@ -63,6 +63,7 @@
 				<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
 					<div class=l_b_l_r><a target="_blank" href="/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
+				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
 				<?php }} ?>
 			<div id=page><?php paginate('');?></div>
 		</div>

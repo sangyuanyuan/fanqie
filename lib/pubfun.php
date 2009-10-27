@@ -460,7 +460,7 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	if($conditions){
 		$c = $conditions . ' and (' .$c .')';
 	}
-	if($e!='')
+	if(count($notid)>0)
 	{
 		$sql2 = 'select b.id,b.title,b.short_title,b.dept_id,b.category_id,b.created_at from (select * from ' . $table_name ." where 1=1 and id not in (".$notid.') and '.$c;
 	}
@@ -481,6 +481,7 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	{
 		$sql=$sql2;	
 	}
+	echo $sql;
 	/*if ($order){
 		$sql = $sql . ' order  by ' .$order;
 	}*/
