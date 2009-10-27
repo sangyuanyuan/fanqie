@@ -146,7 +146,7 @@ html,body{
                     <TBODY>
                     	<tr>
                     		<? $xxnc=$db->query('select n.photo_src,n.id,n.short_title,n.description,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="评选规则" inner join smg_subject s on c.subject_id=s.id and s.name="明星果农" order by i.priority asc, n.created_at desc'); ?>
-                    		<td><a target="_blank" href="/news/news_subject_list.php?id=<? echo $xxnc[0]->cid;?>"><img border=0 src="leftbottom.jpg"></a></td>
+                    		<td><a target="_blank" href="/news/news/news.php?id=18467"><img border=0 src="leftbottom.jpg"></a></td>
                     	</tr>
                    </TBODY></TABLE>
                       </TD></TR>
