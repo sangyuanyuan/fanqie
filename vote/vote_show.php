@@ -104,7 +104,7 @@
 	<div><label for="nick_name">昵称:</label><input type="text" id="nick_name" value="<?php echo $_COOKIE['smg_user_nickname'];?>">
 	<?php show_fckeditor('fck_content','Title',false,100,'',600);?>	
 	<div id="emotion"></div>
-	<div style="width:600px;text-align:center;margin-top:5px;"> <button id="submit">发表评论</button><button id="add_vote">发起投票</button></div></div>
+	<div style="width:600px;text-align:center; line-height:30px; margin-top:5px;"> <button id="submit">发表评论</button><button id="add_vote">发起投票</button></div></div>
 </div>
 
 <?php
