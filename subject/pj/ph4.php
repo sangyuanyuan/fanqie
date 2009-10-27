@@ -43,8 +43,8 @@ order by b.allcounts desc) tb order by a1 desc) s';
  		<a href="ph4.php?id=2">四月点击量排行榜</a> <a href="ph5.php?id=2">五月点击量排行榜</a> <a href="ph6.php?id=2">六月点击量排行榜</a>
  	<? }?>
 <div style="width:450px; margin-left:200px;line-height:20px; margin-top:30px; margin-bottom:10px; padding:10px; float:left; display:inline">
-	<? if($id==1){ ?><span style="width:450px; font-size:20px; font-weight:bold; text-align:center; line-height:25px; float:left;">二季度发稿量排行榜</span><br><br><span style="color:red; font-size:16px; font-weight:bold;">排行榜：</span><br><? } else{?>
-	<span style="width:450px; font-size:20px; font-weight:bold; text-align:center; line-height:25px; float:left;">二季度点击量排行榜</span><br><br><span style="color:red; font-size:16px; font-weight:bold;">排行榜：</span><br>
+	<? if($id==1){ ?><span style="width:450px; font-size:20px; font-weight:bold; text-align:center; line-height:25px; float:left;">四月发稿量排行榜</span><br><br><span style="color:red; font-size:16px; font-weight:bold;">排行榜：</span><br><? } else{?>
+	<span style="width:450px; font-size:20px; font-weight:bold; text-align:center; line-height:25px; float:left;">四月点击量排行榜</span><br><br><span style="color:red; font-size:16px; font-weight:bold;">排行榜：</span><br>
 	<? }?>
 	<? if($id==1){ 
 		

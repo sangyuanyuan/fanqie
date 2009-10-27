@@ -46,7 +46,8 @@
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><?php if($id!=""||$id!=null){ ?><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a><?php } else if($tags!=""||$tags!=null){?><a href="news_list.php?tags=<? echo $tags;?>"></a><?php echo $tags;?><?php } else{ ?><a href="news_list.php">所有新闻</a><? }?>
 		</div>
 		<div id=l_b>
-			<?php for($i=0;$i<count($record);$i++){ ?>
+			<?php for($i=0;$i<count($record);$i++){
+				if($type==""){ ?>
 				<div class=l_b_l>
 					<?php if($record[$i]->category_id==1||$record[$i]->category_id==2){ ?>
 					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
@@ -58,7 +59,11 @@
 					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
-			<?php }} ?>
+			<?php }}else{?>
+				<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
+				</div>
+				<?php }} ?>
 			<div id=page><?php paginate('');?></div>
 		</div>
 	</div>
