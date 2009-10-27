@@ -47,9 +47,9 @@
 		</div>
 		<div id=l_b>
 			<?php for($i=0;$i<count($record);$i++){
-				if($type==""){ ?>
+				?>
 				<div class=l_b_l>
-					<?php if($record[$i]->category_id==1||$record[$i]->category_id==2){ ?>
+					<?php if($type==""){  if($record[$i]->category_id==1||$record[$i]->category_id==2){ ?>
 					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
 					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
