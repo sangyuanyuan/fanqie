@@ -456,6 +456,7 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	{
 		$notid[]=$content1[$i]->id;
 	}
+	
 	$e=implode(',',$notid);
 	$c = implode(' OR ' ,$c);
 	if($conditions){
@@ -463,7 +464,7 @@ function search_content($key,$table_name='smg_news',$conditions=null,$page_count
 	}
 	if($e!="")
 	{
-		$sql2 = 'select b.id,b.title,b.short_title,b.dept_id,b.category_id,b.created_at from (select * from ' . $table_name .' where 1=1 and id not in ('.$e.') and '.$c;
+		$sql2 = 'select b.id,b.title,b.short_title,b.dept_id,b.category_id,b.created_at from (select * from ' . $table_name .' where 1=1 and id not in ('.$e.') and ('.$c.')';
 	}
 	else
 	{
