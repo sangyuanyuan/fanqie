@@ -359,7 +359,7 @@ html,body{
 					 </TR>
 					 <TR>
                       <TD colspan=2 height=30 align="LEFT">
-                       <span style="font-weight:bold; font-size:20px; line-height:20px; color:red;">注：1个大勋章=小勋章×5</span></TD>
+                       <span style="font-weight:bold; font-size:20px; line-height:20px; color:red;">注：<img src="xunzhang2.gif">=<img src="xunzhang.gif">×5</span></TD>
                      
 					 </TR>
 					 </TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR> 
