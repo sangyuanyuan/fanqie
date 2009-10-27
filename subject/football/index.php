@@ -43,9 +43,9 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   	<td id="show_video" width=330>
   		<div style="width:305px; margin-top:15px; margin-left:25px; float:left;display:inline;">
 	  		<?php
-				  $show = $db->query('select n.id,n.title,n.src from smg_images n inner join smg_category c on c.id=n.category_id and c.name="秀一秀" where n.is_adopt=1 order by n.priority asc limit 1');
+				  $show = $db->query('select n.id,n.title,n.src,n.category_id from smg_images n inner join smg_category c on c.id=n.category_id and c.name="秀一秀" where n.is_adopt=1 order by n.dept_priority asc limit 1');
 			?>
-			<div style="width:305px; height:300px; over-flow:hidden; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" href="/show/show.php?id=<? echo $show[0]->id;?>"><img src="<?php echo $show[0]->src;?>" border=0 width="300"></a></div>
+			<div style="width:305px; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" href="/show/list.php?id=<? echo $show[0]->category_id;?>&type=image"><img src="<?php echo $show[0]->src;?>" border=0 width="300"></a></div>
 		</div>
   	</td>
   	<? $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="看一看" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
