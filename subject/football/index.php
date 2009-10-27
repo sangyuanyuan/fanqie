@@ -65,7 +65,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   		<div class=title2></div>
   		<div style="width:98%; height:80px; float:left; display:inline;">
 			<?php
-				$photo = $db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="点一点" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 5');
+				$photo = $db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="点一点" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');
 	        ?>
 	        <script type="text/javascript"> 
 						function ScrollImgLeft(){
@@ -148,6 +148,12 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜资料馆" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 7')?>
   					<div id=title4></div>
   					<div id="box2">
+  						<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="500" height="300">
+					      <param name=movie value="/flash/football.swf">
+					      <param name=quality value=high>
+					      <param name="wmode" value="transparent">
+					      <embed src="/flash/football.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="500" height="300" wmode="transparent"></embed>
+					    </object>
 
 			        </div>	
 			  	</td>
