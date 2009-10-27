@@ -65,7 +65,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   		<div class=title2></div>
   		<div style="width:98%; height:80px; float:left; display:inline;">
 			<?php
-				$photo = $db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="点一点" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');
+				$photo = $db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="点一点" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 5');
 	        ?>
 	        <script type="text/javascript"> 
 						function ScrollImgLeft(){
