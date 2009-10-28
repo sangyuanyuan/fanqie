@@ -43,6 +43,6 @@ BODY {
 #box1 a{font-size:15px;}
 #box2{width:100%; height:300px; margin-top:10px; margin-left:10px; float:left; display:inline; overflow:hidden;}
 #box2 a{font-size:15px;}
-#box3{width:40%; height:100px; margin-top:10px; margin-left:10px; float:left; display:inline; overflow:hidden;}
+#box3{width:40%; margin-left:10px; float:left; display:inline; overflow:hidden;}
 #box3 a{font-size:15px;}
 #pic_box{width:38%;float:right;display��inline;}
