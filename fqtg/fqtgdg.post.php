@@ -8,7 +8,7 @@ $maxnum=$db->query($sql);
 $num=1000000;
 $sql="select * from smg_tg_signup where tg_id=".$_POST['tg_id'];
 $count=$db->query($sql);
-if($_POST['tg_id']!=71)
+if($_POST['tg_id']!=74)
 {
 	if($maxnum[0]->maxnum!="")
 	{
@@ -40,11 +40,11 @@ else
 	}
 	if(count($count)< $num)
 	{
-		$sql="select * from smg_tg_signup where tg_id=71 and name='".$cookie."'";
+		$sql="select * from smg_tg_signup where tg_id=74 and name='".$cookie."'";
 		$peson=$db->query($sql);
 		if(count($peson)==0)
 		{
-			$StrSql='insert into smg_tg_signup(tg_id,name,spname,num,phone,address,createtime,remark) values (71,"'.$cookie.'","东方风云榜票",2,"'.$_POST['phone'].'","'.$_POST['address'].'",now(),"'.$_POST['remark'].'")';
+			$StrSql='insert into smg_tg_signup(tg_id,name,spname,num,phone,address,createtime,remark) values (74,"'.$cookie.'","东方风云榜票",2,"'.$_POST['phone'].'","'.$_POST['address'].'",now(),"'.$_POST['remark'].'")';
 			$Record = $db->execute($StrSql);
 			alert("订购成功！");
 		}
