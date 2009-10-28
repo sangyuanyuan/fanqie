@@ -67,8 +67,8 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   <tr valign=top>
   	<td align=left colspan=2 id="mcdull_picture">
   		<div class=title2></div>
-  		<div style="width:98%; height:90px; float:left; display:inline;">
-		<DIV id=Layer5 style="margin-left:10px; float:left; display:inline;">
+  		<div style="width:100%; height:90px; float:left; display:inline;">
+		<DIV id=Layer5 style="margin-left:35px; float:left; display:inline;">
 				      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
