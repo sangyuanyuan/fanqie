@@ -40,7 +40,7 @@ else
 	}
 	if(count($count)< $num)
 	{
-		$sql="select * from smg_tg_signup where tg_id=71 and name='".$cookie."'";
+		$sql="select * from smg_tg_signup where tg_id=74 and name='".$cookie."'";
 		$peson=$db->query($sql);
 		if(count($peson)==0)
 		{
