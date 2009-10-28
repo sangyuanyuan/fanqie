@@ -40,16 +40,16 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   <TR>
     <TD><IMG height=385 src="css/logotop1.jpg" width=770></TD>
     </TR></TBODY></TABLE>
-<div style="width:770px; background:url(css/bg2.jpg) repeat-x; margin:0 auto; margin-bottom:50px;">
-<TABLE style="background:url(css/bg2.jpg)" cellSpacing=0 cellPadding=0 width=770 align=center border=0 >
+<div style="width:770px; background:#ffffff; margin:0 auto; margin-bottom:50px;">
+<TABLE style="background:#ffffff" cellSpacing=0 cellPadding=0 width=770 align=center border=0 >
   <tr valign=top>
   	<td id="show_video" width=330>
-  		<div class=index_title2></div>
+  		<?php
+			  $show = $db->query('select n.id,n.title,n.src,n.category_id from smg_images n inner join smg_category c on c.id=n.category_id and c.name="秀一秀" where n.is_adopt=1 order by n.dept_priority asc limit 1');
+		?>
+  		<div class=index_title2><div class="more"><a href="image_list.php?id=<? echo $show[0]->category_id;?>">更多</a></div></div>
   		<div style="width:305px; margin-top:15px; margin-left:20px; float:left;display:inline;">
-	  		<?php
-				  $show = $db->query('select n.id,n.title,n.src,n.category_id from smg_images n inner join smg_category c on c.id=n.category_id and c.name="秀一秀" where n.is_adopt=1 order by n.dept_priority asc limit 1');
-			?>
-			<div style="width:305px; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" title="点击进入列表页" href="/show/list.php?id=<? echo $show[0]->category_id;?>&type=image"><img src="<?php echo $show[0]->src;?>" border=0 width="300"></a></div>
+			<div style="width:305px; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" title="点击进入列表页" href="/show/show.php?id=<? echo $show[0]->id;?>"><img src="<?php echo $show[0]->src;?>" border=0 width="300"></a></div>
 		</div>
   	</td>
   	<? $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="看一看" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
@@ -83,7 +83,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 								?>
 				                <TD><div class=content>
 							<div class=pic><a target="_blank" href="/news/news.php?id=<? echo $marry[$i]->id;?>"><img border=0 width=100 height=70 src="<?php echo $marry[$i]->photo_src;?>"></a></div>
-							<div class=context><a target="_blank" href="/news/news.php?id=<? echo $marry[$i]->id;?>"><?php echo $marry[$i]->title;?></a><br></div>
+							<div class=context style="text-align:center"><a target="_blank" href="/news/news.php?id=<? echo $marry[$i]->id;?>"><?php echo $marry[$i]->title;?></a><br></div>
 						</div></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
