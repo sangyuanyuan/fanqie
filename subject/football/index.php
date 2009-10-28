@@ -49,7 +49,45 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 		?>
   		<div class=index_title2><div class="more"><a href="image_list.php?id=<? echo $show[0]->category_id;?>">更多</a></div></div>
   		<div style="width:305px; margin-top:15px; margin-left:20px; float:left;display:inline;">
-			<div style="width:305px; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" title="点击进入列表页" href="/show/show.php?id=<? echo $show[0]->id;?>"><img src="<?php echo $show[0]->src;?>" border=0 width="300"></a></div>
+			<?php 
+	$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.priority=0 and i.is_adopt=1 and c.name="秀一秀" order by i.priority asc,i.created_at desc limit 4';
+	$record_ad=$db -> query($sql);
+	$count = count($record_ad);
+	for($i=0;$i<$count;$i++){
+		$picsurl[]=$record_ad[$i]->src;
+		$picslink[]='/show/show.php?id='.$record_ad[$i]->id;
+		$picstext[]=flash_str_replace($record_ad[$i]->title);
+	}
+?>
+
+<?php if($count==1){?>
+	<a href="/show/show.php?id=<?php echo $record_ad[0]->img_id?>" target=_blank><img src="<?php echo $record_ad[0]->src?>" width=270px; height=180px; border=0></a>
+<? }else{?>
+	<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+	<div id="focus_02"></div> 
+	<script type="text/javascript"> 
+	var pic_width1=300; //图片宽度
+	var pic_height1=200; //图片高度
+	var pics="<?php echo implode(',',$picsurl);?>";
+	var mylinks="<?php echo implode(',',$picslink);?>";
+	var texts="<?php echo implode(',',$picstext);?>";
+	
+	var picflash = new sohuFlash("/flash/focus.swf", "focus_02", pic_width1, pic_height1, "4","#FFFFFF");
+	picflash.addParam('wmode','opaque');
+	picflash.addVariable("picurl",pics);
+	picflash.addVariable("piclink",mylinks);
+	picflash.addVariable("pictext",texts);
+	picflash.addVariable("pictime","5");
+	picflash.addVariable("borderwidth",pic_width1);
+	picflash.addVariable("borderheight",pic_height1);
+	picflash.addVariable("borderw","false");
+	picflash.addVariable("buttondisplay","true");
+	picflash.addVariable("textheight","15");
+	picflash.addVariable("pic_width",pic_width1);
+	picflash.addVariable("pic_height",pic_height1);
+	picflash.write("focus_02");
+	</script>
+<? }?>
 		</div>
   	</td>
   	<? $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="看一看" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
