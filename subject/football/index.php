@@ -140,7 +140,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 						<? }?>
 			     	</div>
 					<div id="box3">
-						
+						<a href="sub.php?type=show" target="_blank"><img border=0 src="css/sh.jpg"></a>
 					</div>
   				</td>
   			</tr>
