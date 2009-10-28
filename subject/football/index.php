@@ -153,9 +153,9 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 <table  cellSpacing=0 cellPadding=0 width=770 align=center border=0>
   <tr>
   	<td id="mail_to_mcdull" width=200>
-  		<div style="width:200px; height:305px; margin-left:22px; margin-top:5px; background:url(css/tomcdull.jpg); padding-top:45px;">
+  		<div style="width:200px; height:295px; margin-left:22px; background:url(css/tomcdull.jpg); padding-top:55px;">
 			<? $newslist=$db->query('select * from smg_comment where resource_type="football" order by created_at desc');?>
-	  		<marquee height="220" width="190" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+	  		<marquee height="210" width="190" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 					<? for($i=0; $i<count($newslist); $i++){?>
 						<div style="width:180px; margin-left:10px; margin-bottom:10px; overflow:hidden; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->nick_name;?></span>说：<a style="text-decoration:none; color:#000000;" target="_blank" href="/news/news.php?id=16825"><? echo $newslist[$i]->comment;?></a></div>
 					<? }?>
