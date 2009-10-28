@@ -7,7 +7,10 @@
 	<TITLE>SMG足球联赛</TITLE>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <LINK href="css/index.css" type=text/css rel=stylesheet>
-<?php js_include_once_tag('total');?>
+<?php 
+	js_include_once_tag('total');
+	use_jquery();
+?>
 <style type="text/css">
 <!--
 #lovexin12,#lovexin14{
@@ -64,45 +67,47 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   <tr valign=top>
   	<td align=left colspan=2 id="mcdull_picture">
   		<div class=title2></div>
-  		<div style="width:98%; height:80px; float:left; display:inline;">
-			<?php
-				$photo = $db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="点一点" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');
-	        ?>
-	        <script type="text/javascript"> 
-						function ScrollImgLeft(){
-							var speed=20
-							var scroll_begin = document.getElementById("scroll_begin");
-							var scroll_end = document.getElementById("scroll_end");
-							var scroll_div = document.getElementById("scroll_div");
-							scroll_end.innerHTML=scroll_begin.innerHTML
-							  function Marquee(){
-							    if(scroll_end.offsetWidth-scroll_div.scrollLeft<=0)
-							      scroll_div.scrollLeft-=scroll_begin.offsetWidth
-							    else
-							      scroll_div.scrollLeft++
-							  }
-							var MyMar=setInterval(Marquee,speed)
-							  scroll_div.onmouseover=function() {clearInterval(MyMar)}
-							  scroll_div.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
-						}		
-					</script> 
-	        <div style="text-align:center">
-					  <div class="sqBorder">
-					  <!--#####滚动区域#####-->
-					    <div id="scroll_div" class="scroll_div">
-					      <div id="scroll_begin">
-					        <ul>
-					        	<? for($i=0;$i<count($photo);$i++){?>
-					          <li><a href="/news/news.php?id=<? echo $photo[$i]->id;?>"><img width=75 height=75 src="<? echo $photo[$i]->photo_src;?>"  /></a></li>
-					          <? }?>
-					        </ul>
-					      </div>
-					      <div id="scroll_end"></div>
-					    </div>
-					  <!--#####滚动区域#####-->
-					  </div>
-					  <script type="text/javascript">ScrollImgLeft();</script>
-					</div>
+  		<div style="width:98%; height:90px; float:left; display:inline;">
+		<DIV id=Layer5 style="margin-left:10px; float:left; display:inline;">
+				      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo7 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php
+									$marry=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="点一点" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');
+									for($i=0;$i<count($marry);$i++){
+								?>
+				                <TD><div class=content>
+							<div class=pic><a target="_blank" href="/news/news.php?id=<? echo $marry[$i]->id;?>"><img border=0 width=100 height=70 src="<?php echo $marry[$i]->photo_src;?>"></a></div>
+							<div class=context><a target="_blank" href="/news/news.php?id=<? echo $marry[$i]->id;?>"><?php echo $marry[$i]->title;?></a><br></div>
+						</div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id="demo8" vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								        var demo6 = document.getElementById('demo6');
+										var demo7 = document.getElementById('demo7');
+										var demo8 = document.getElementById('demo8');  
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo8.innerHTML=demo7.innerHTML
+											function Marquee(){
+											if(demo8.offsetWidth-demo6.scrollLeft<=0)
+											demo6.scrollLeft-=demo7.offsetWidth
+											else{
+											demo6.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo6.onmouseover=function() {clearInterval(MyMar)}
+											demo6.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
+				</DIV>
 		</div>
   	</td>
   </tr>
