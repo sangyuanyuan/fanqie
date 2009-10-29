@@ -95,7 +95,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   	<? $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="看一看" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
   	<td valign=top align="right" width=430 id="i_am_mcdull">
   		<div style="width:430px; height:230px; float:left; display:inline;">
-  		<div class=index_title></div>
+  		<div class=index_title><div class="more" style="margin-right:25px;"><a href="/news/news_list.php?id=<? echo $news[0]->cid;?>">更多</a></div></div>
 		<div style="width:405px; height:220px; margin-top:5px; margin-left:25px; font-size:16px; overflow:hidden; color:#ec805a; float:left; display:inline;">
 			<div id="box1">
 				<? for($i=0; $i<count($news); $i++){?>
