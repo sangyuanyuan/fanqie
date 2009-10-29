@@ -7,7 +7,7 @@ a{text-decoration:none; color:black;}
 #admin_body1{width:100%; height:550px; background:url(/images/bg/admin_bg1.jpg) repeat-x; float:left; display:inline;}
 #login{width:274px; height:300px; margin:0 auto; margin-top:80px;}
 #login #title{width:180px; height:50px; text-align:center; font-weight:bold; font-size:25px; color:#ffffff; margin:0 auto;}
-#login #box{width:274px; margin-top:30px; background:url(/images/bg/admin_login.jpg) no-repeat; float:left: display:inline;}
+#login #box{width:274px; margin-top:30px; background:url(/images/bg/admin_login.jpg) no-repeat; float:left; display:inline;}
 #login #name{width:220px; height:25px; margin-top:50px; margin-left:20px; float:left: display:inline;}
 #login #pwd{width:220px; height:25px; margin-top:10px; margin-left:20px; float:left: display:inline;}
 #login #btn{width:220px; height:25px; margin-top:10px; margin-left:20px; text-align:center; float:left: display:inline;}
