@@ -304,6 +304,7 @@
 		$("#flower").click(function(){
 			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).attr('name'),'db_table':'smg_news','digg_type':'article'},function(data){
 				if(data!=''){
+					alert('111');
 					alert(data);
 				}else{
 					tb_show('送鲜花送祝福','flower.php?height=300&width=300&modal=false&id=<?php echo $id; ?>');

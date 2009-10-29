@@ -1,7 +1,6 @@
 <?php
 	require_once('../frame.php');
 	$ip=$_SERVER['REMOTE_ADDR'];
-	
    	if($_POST['type']=='comment'){
    		$comment = new table_class('smg_comment');
 		$comment ->update_attributes($_POST['post'],false);
