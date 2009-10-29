@@ -48,8 +48,46 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 			  $show = $db->query('select n.id,n.title,n.src,n.category_id from smg_images n inner join smg_category c on c.id=n.category_id and c.name="秀一秀" where n.is_adopt=1 order by n.dept_priority asc limit 1');
 		?>
   		<div class=index_title2><div class="more"><a href="image_list.php?id=<? echo $show[0]->category_id;?>">更多</a></div></div>
-  		<div style="width:305px; margin-top:15px; margin-left:20px; float:left;display:inline;">
-			<div style="width:305px; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" title="点击进入列表页" href="/show/show.php?id=<? echo $show[0]->id;?>"><img src="<?php echo $show[0]->src;?>" border=0 width="300"></a></div>
+  		<div style="width:305px; margin-top:15px; margin-left:25px; float:left;display:inline;">
+			<?php 
+	$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="秀一秀" order by i.dept_priority asc,i.created_at desc limit 4';
+	$record_ad=$db -> query($sql);
+	$count = count($record_ad);
+	for($i=0;$i<$count;$i++){
+		$picsurl[]=$record_ad[$i]->src;
+		$picslink[]='/show/show.php?id='.$record_ad[$i]->img_id;
+		$picstext[]=flash_str_replace($record_ad[$i]->title);
+	}
+?>
+
+<?php if($count==1){?>
+	<a href="/show/show.php?id=<?php echo $record_ad[0]->img_id?>" target=_blank><img src="<?php echo $record_ad[0]->src?>" width=270px; height=180px; border=0></a>
+<? }else{?>
+	<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+	<div id="focus_02"></div> 
+	<script type="text/javascript"> 
+	var pic_width1=300; //图片宽度
+	var pic_height1=200; //图片高度
+	var pics="<?php echo implode(',',$picsurl);?>";
+	var mylinks="<?php echo implode(',',$picslink);?>";
+	var texts="<?php echo implode(',',$picstext);?>";
+	
+	var picflash = new sohuFlash("/flash/focus.swf", "focus_02", pic_width1, pic_height1, "4","#FFFFFF");
+	picflash.addParam('wmode','opaque');
+	picflash.addVariable("picurl",pics);
+	picflash.addVariable("piclink",mylinks);
+	picflash.addVariable("pictext",texts);
+	picflash.addVariable("pictime","5");
+	picflash.addVariable("borderwidth",pic_width1);
+	picflash.addVariable("borderheight",pic_height1);
+	picflash.addVariable("borderw","false");
+	picflash.addVariable("buttondisplay","true");
+	picflash.addVariable("textheight","15");
+	picflash.addVariable("pic_width",pic_width1);
+	picflash.addVariable("pic_height",pic_height1);
+	picflash.write("focus_02");
+	</script>
+<? }?>
 		</div>
   	</td>
   	<? $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="看一看" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
@@ -68,8 +106,8 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   	<td align=left colspan=2 id="mcdull_picture">
   		<div class=title2></div>
   		<div style="width:100%; height:90px; float:left; display:inline;">
-		<DIV id=Layer5 style="margin-left:35px; float:left; display:inline;">
-				      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
+		<DIV id=Layer5 style="margin-left:35px; width:100%; float:left; display:inline;">
+				      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%; float:left; display:inline;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
 				        <TR>
@@ -115,9 +153,9 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 <table  cellSpacing=0 cellPadding=0 width=770 align=center border=0>
   <tr>
   	<td id="mail_to_mcdull" width=200>
-  		<div style="width:200px; height:305px; margin-left:22px; margin-top:5px; background:url(css/tomcdull.jpg); padding-top:45px;">
+  		<div style="width:200px; height:295px; margin-left:22px; background:url(css/tomcdull.jpg); padding-top:55px;">
 			<? $newslist=$db->query('select * from smg_comment where resource_type="football" order by created_at desc');?>
-	  		<marquee height="220" width="190" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+	  		<marquee height="210" width="190" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 					<? for($i=0; $i<count($newslist); $i++){?>
 						<div style="width:180px; margin-left:10px; margin-bottom:10px; overflow:hidden; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->nick_name;?></span>说：<a style="text-decoration:none; color:#000000;" target="_blank" href="/news/news.php?id=16825"><? echo $newslist[$i]->comment;?></a></div>
 					<? }?>
