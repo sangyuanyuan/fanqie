@@ -105,7 +105,7 @@
 	$(function(){
 		$(".change").hover(function(){
 			$(".change").css('color','black');
-			$(this).css('color','red');
+			$(this).css('color','#FFCC00');
 			$(".thread_show").hide();
 			$("#"+$(this).attr('name')).show();
 		})
