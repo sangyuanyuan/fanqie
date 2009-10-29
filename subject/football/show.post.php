@@ -16,7 +16,7 @@
 			}
 			$image->src = "/upload/images/" .$img;
 		}
-		$image->category_id=category_id_by_name('我要上传','picture');
+		$image->category_id=category_id_by_name('秀一秀','picture');
 		$image->commentable = 'on';
 		$image->priority = 100;
 		$image->is_recommend = 1;
