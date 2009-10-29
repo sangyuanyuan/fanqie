@@ -1,6 +1,6 @@
 <?php	
 	define(CURRENT_DIR, dirname(__FILE__) ."/");
-	define(ROOT_DIR_NONE, dirname(__FILE__));	
+	define(ROOT_DIR_NONE, dirname(__FILE__));
 	define(ROOT_DIR,CURRENT_DIR);
 	require('config/config.php');
 	require_once(CURRENT_DIR ."lib/pubfun.php");
@@ -8,7 +8,7 @@
 	require_once(CURRENT_DIR ."lib/table_class.php");
 	require_once(CURRENT_DIR ."lib/upload_file_class.php");
 	require_once CURRENT_DIR ."lib/image_handler_class.php";
-	require_once CURRENT_DIR ."lib/smg_images_class.php";	
+	require_once CURRENT_DIR ."lib/smg_images_class.php";
 	require_once CURRENT_DIR ."lib/smg_category_class.php";
 	require_once CURRENT_DIR ."lib/smg_vote_class.php";
 	
@@ -17,7 +17,7 @@
 		require_once($path);
 		global $$var;
 		return $$var;
-	}	
+	}
 	
 	function &get_db() {
 		global $g_db;
@@ -31,13 +31,12 @@
 		$password = get_config('db_password');
 		$code = get_config('db_code');
 		$note_emails = "chenlong@xun-ao.com, sunyoujie@xun-ao.com, shengzhifeng@xun-ao.com, zhanghao@xun-ao.com";
-		if($g_db->connect($servername,$dbname,$username,$password,$code)===false){			
+		if($g_db->connect($servername,$dbname,$username,$password,$code)===false){
 			$last_time = file_get_contents(dirname(__FILE__) .'/config/last_disconnect.txt');
 			
-			if($last_time == ''){				
+			if($last_time == ''){
 				write_to_file(dirname(__FILE__) .'/config/last_disconnect.txt',now(),'w');
 				@mail($note_emails,'数据库连接失败','主备数据库均无法连接，请立即检查'.$this->servername);
-				
 			}
 			$servername = get_config('db_server_name_bak');
 			$dbname = get_config('db_database_name_bak');
@@ -45,10 +44,9 @@
 			$password = get_config('db_password_bak');
 			$code = get_config('db_code_bak');
 			if($g_db->connect($servername,$dbname,$username,$password,$code)===false){
-				
 			}
-		};	
-		return $g_db;	
+		};
+		return $g_db;
 	}
 	
 	function get_dept_info($key){
@@ -70,10 +68,7 @@
 				}
 			}
 		}
-		
 	}
-
-	
 	function close_db() {
 		$db = &get_db();
 		$db->close();
@@ -100,7 +95,7 @@
 			$editor->Width = $width;
 		}
 		$editor->Create();
-	}	
+	}
 	
 	function validate_form($form_name) {
 		js_include_once_tag('jquery-1.3.2.min');
@@ -124,13 +119,12 @@
 	}
 	
 	function has_role($role_name){
-		if(!has_login()) return false; 
-		if($role_name == 'member') return true; 
+		if(!has_login()) return false;
+		if($role_name == 'member') return true;
 		if(is_role('admin')) return true;
 		if ($role_name == 'admin')  return false;
-		return $role_name == $_COOKIE['smg_role'];		
+		return $role_name == $_COOKIE['smg_role'];
 	}
-	
 	
 	function is_role($role_name){
 		return strtolower($_COOKIE['smg_role']) == strtolower($role_name) ? true : false;
@@ -231,7 +225,7 @@
 	
 	
 	function show_content($table_name='smg_news',$type='news',$dept_name='',$category_name='',$limit=''){
-		$db = get_db();		
+		$db = get_db();	
 		if($table_name=='smg_link'){
 			$sql = 'select t1.* from '.$table_name.' t1 left join smg_category_dept t2 on t1.category_id=t2.id left join smg_dept t3 on t2.dept_id=t3.id where t2.name="'.$category_name.'" and t2.category_type="'.$type.'" and t3.name="'.$dept_name.'" order by t1.priority';
 		}elseif($table_name=='smg_news'){
@@ -288,14 +282,14 @@
 		if (strtoupper(substr($file,-3)) == "MP3" || strtoupper(substr($file,-3)) == "WMV" || strtoupper(substr($file,-3)) == "WMA"  || strtoupper(substr($file,-3)) == "AVI" || strtoupper(substr($file,-3)) == "VYF")
 		{
 		?>
-			<OBJECT   id=MediaPlayer1   codeBase=http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701standby=Loading   type=application/x-oleobject   height=<?php echo $height;?>   width=<?php echo $width;?>   classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6   VIEWASTEXT> 
-				<PARAM   NAME= "URL"   VALUE= "<?php echo $file;?>"> 
-				<PARAM   NAME= "playCount"   VALUE= "1"> 
-				<PARAM   NAME= "autoStart"   VALUE= "<? echo $autostart;?>"> 
+			<OBJECT   id=MediaPlayer1   codeBase=http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701standby=Loading   type=application/x-oleobject   height=<?php echo $height;?>   width=<?php echo $width;?>   classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6   VIEWASTEXT>
+				<PARAM   NAME= "URL"   VALUE= "<?php echo $file;?>">
+				<PARAM   NAME= "playCount"   VALUE= "1">
+				<PARAM   NAME= "autoStart"   VALUE= "<? echo $autostart;?>">
 				<PARAM   NAME= "invokeURLs"   VALUE= "false">
-				<PARAM   NAME= "EnableContextMenu"   VALUE= "false">			
+				<PARAM   NAME= "EnableContextMenu"   VALUE= "false">	
 				<embed src="<?php echo $file;?>" align="baseline" border="0" width="<?php echo $width;?>" height="<?php echo $height;?>" type="application/x-mplayer2"pluginspage="" name="MediaPlayer1" showcontrols="1" showpositioncontrols="0" showaudiocontrols="1" showtracker="1" showdisplay="0" showstatusbar="1" autosize="0" showgotobar="0" showcaptioning="0" autostart="<? echo $autostart;?>" autorewind="0" animationatstart="0" transparentatstart="0" allowscan="1" enablecontextmenu="1" clicktoplay="0" defaultframe="datawindow" invokeurls="0"></embed> 
-			</OBJECT> 		
+			</OBJECT>
 		<?php
 			}else 
 			{
@@ -332,7 +326,7 @@
 				return $result;
 			}
 			$result->items = $items;
-			$result->itemcount = !$result ? 0 : count($result->items);	
+			$result->itemcount = !$result ? 0 : count($result->items);
 		return $result;
 	}
 	
