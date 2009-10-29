@@ -31,7 +31,7 @@
 						$count = count($record);
 						for($i=0;$i<$count;$i++){
 					?>
-					<div class="comment_box"><span style="color:#FFFF00"><?php echo $record[$i]->nick_name?>说:</span><?php echo $record[$i]->comment;?></div>
+					<div class="comment_box"><span style="color:#FFCC00"><?php echo $record[$i]->nick_name?>说:</span><?php echo $record[$i]->comment;?></div>
 					<?php
 						}
 					?>
