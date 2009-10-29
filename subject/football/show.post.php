@@ -17,6 +17,7 @@
 			$image->src = "/upload/images/" .$img;
 		}
 		$image->category_id=category_id_by_name('秀一秀','picture');
+		$image->dept_id=34;
 		$image->commentable = 'on';
 		$image->priority = 100;
 		$image->is_recommend = 1;

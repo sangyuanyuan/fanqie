@@ -51,7 +51,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   		<div class=index_title2><div class="more"><a href="image_list.php?id=<? echo $show[0]->category_id;?>">更多</a></div></div>
   		<div style="width:305px; margin-top:15px; margin-left:25px; float:left;display:inline;">
 			<?php 
-	$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="秀一秀" order by i.dept_priority asc,i.created_at desc limit 4';
+	$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.is_dept_adopt=1 and c.name="秀一秀" order by i.dept_priority asc,i.created_at desc limit 4';
 	$record_ad=$db -> query($sql);
 	$count = count($record_ad);
 	for($i=0;$i<$count;$i++){
