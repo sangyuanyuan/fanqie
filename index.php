@@ -19,6 +19,29 @@
 <script>
 total("首页","other");
 </script>
+<script language="JAVASCRIPT">
+     colors2 = new Array(7); 
+     colors2[0]="#313131";
+     colors2[1]="#333300";
+     colors2[2]="#665500";
+     colors2[3]="#997700";
+     colors2[4]="#CC9900";
+     colors2[5]="#FD9531";
+     colors2[6]="#FF0000";
+
+     var i=0;
+     function fLi2() {
+      if (i<7) {
+         line2.style.color = colors2[i];
+         i++;
+         timerID2 = setTimeout( "fLi2()", 100);
+       }
+       else {
+	       i=0;
+	       TimerID2=setTimeout("fLi2()",1000);
+       }
+      }
+ </script>
 <!--<script>
 	window.onload = aa;
   window.onresize = aa;
@@ -28,7 +51,7 @@ total("首页","other");
 	  getE.style.left = (getBody.clientWidth - getE.offsetWidth)/2 + "px";
 	}
 </script>-->
-<body id="body">
+<body id="body" onload="TimerID2=setTimeout('fLi2()',1000);">
 <? require_once('inc/top.inc.html');?>
 
 <div id=ibody>
@@ -1028,7 +1051,7 @@ total("首页","other");
 									</SCRIPT>
  			</div>
 			<div id=b_b_r_r>
-				<div id=title>生活指南　　　<a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://218.242.133.83:8080/">公交卡查询系统</a></div>
+				<div id=title>生活指南　　　<a id="line2" style="text-decoration:none; color:#000000; font-weight:bold;" target="_blank" href="http://218.242.133.83:8080/">公交卡查询系统</a></div>
 				<table width="240" align="left">
 						<tr>	
 							<td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.ddmap.com/">丁丁地图</a></td><td><a style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank"  href="http://www.ddtong.cn/">实时交通路况查询</a></td>
