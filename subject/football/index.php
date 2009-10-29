@@ -68,7 +68,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 	<div id="focus_02"></div> 
 	<script type="text/javascript"> 
 	var pic_width1=300; //图片宽度
-	var pic_height1=200; //图片高度
+	var pic_height1=180; //图片高度
 	var pics="<?php echo implode(',',$picsurl);?>";
 	var mylinks="<?php echo implode(',',$picslink);?>";
 	var texts="<?php echo implode(',',$picstext);?>";
