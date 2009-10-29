@@ -7,7 +7,7 @@ $(function(){
 			else
 			{
 				$.post("/admin/pub/pub.post.php",{'del_id':$(this).attr('name'),'db_table':$('#db_talbe').attr('value'),'post_type':'del'},function(data){
-					alert(date);
+					alert(data);
 					$("#"+data).remove();
 				});
 			}
