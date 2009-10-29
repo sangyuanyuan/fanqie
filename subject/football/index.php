@@ -43,10 +43,11 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 <div style="width:770px; background:#ffffff; margin:0 auto; margin-bottom:50px;">
 <TABLE style="background:#ffffff" cellSpacing=0 cellPadding=0 width=770 align=center border=0 >
   <tr valign=top>
-  	<td id="show_video" width=330>
+  	<td id="show_video" width=340>
   		<?php
 			  $show = $db->query('select n.id,n.title,n.src,n.category_id from smg_images n inner join smg_category c on c.id=n.category_id and c.name="秀一秀" where n.is_adopt=1 order by n.dept_priority asc limit 1');
 		?>
+		<div style="width:330px; height:250px; float:left; display:inline;">
   		<div class=index_title2><div class="more"><a href="image_list.php?id=<? echo $show[0]->category_id;?>">更多</a></div></div>
   		<div style="width:305px; margin-top:15px; margin-left:25px; float:left;display:inline;">
 			<?php 
@@ -89,9 +90,11 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 	</script>
 <? }?>
 		</div>
+		</div>
   	</td>
   	<? $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="看一看" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
-  	<td valign=top align="right" width=440 id="i_am_mcdull">
+  	<td valign=top align="right" width=430 id="i_am_mcdull">
+  		<div style="width:430px; height:230px; float:left; display:inline;">
   		<div class=index_title></div>
 		<div style="width:405px; height:220px; margin-top:5px; margin-left:25px; font-size:16px; overflow:hidden; color:#ec805a; float:left; display:inline;">
 			<div id="box1">
@@ -99,6 +102,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 					<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
 				<? }?>
 	     	</div>
+		</div>
 		</div>
   	</td>
   </tr>
@@ -116,7 +120,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 				              <TBODY>
 				              <TR align=left>
 				              	<?php
-									$marry=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="点一点" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');
+									$marry=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="点一点" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc');
 									for($i=0;$i<count($marry);$i++){
 								?>
 				                <TD><div class=content>
