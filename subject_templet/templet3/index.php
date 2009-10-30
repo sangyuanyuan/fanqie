@@ -33,27 +33,32 @@
 		<div id="top">
 			<div id="left">
 				<div id="box_box">
-					<div class="box"></div>
-					<div class="title"></div>
-					<div class="box"></div>
-					<div class="title"></div>
-					<div class="box" style="height:180px;"></div>
+					<?php 
+						include_once("../../admin/subject/subject_module_class.php");
+						$modules = new smg_subject_module_class();
+						$modules = $modules->find('all',array('conditions' => "subject_id = 24 and pos_name='sub3_tl'",'order' => "priority asc,id desc"));
+						for($i=0;$i<count($modules);$i++)
+						$modules[$i]->display();
+					?>
 				</div>
 			</div>
-			<div id="center"></div>
+			<div id="center">
+				<?php 
+						include_once("../../admin/subject/subject_module_class.php");
+						$modules = new smg_subject_module_class();
+						$modules = $modules->find('all',array('conditions' => "subject_id = 24 and pos_name='sub3_tc'",'order' => "priority asc,id desc"));
+						for($i=0;$i<count($modules);$i++)
+						$modules[$i]->display();
+					?>
+			</div>
 			<div id="right">
-				<div class="title">
-					<div class="title_box"></div>
-				</div>
-				<div class="box">
-					<div class="box_box"></div>
-				</div>
-				<div class="title">
-					<div class="title_box"></div>
-				</div>
-				<div class="box">
-					<div class="box_box"></div>
-				</div>
+				<?php 
+					include_once("../../admin/subject/subject_module_class.php");
+					$modules = new smg_subject_module_class();
+					$modules = $modules->find('all',array('conditions' => "subject_id = 24 and pos_name='sub3_tr'",'order' => "priority asc,id desc"));
+					for($i=0;$i<count($modules);$i++)
+					$modules[$i]->display();
+				?>
 			</div>
 		</div>
 		

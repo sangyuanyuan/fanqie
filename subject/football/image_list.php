@@ -28,7 +28,6 @@
 		$title ="秀一秀";
 		if($title=="秀一秀"){
 			$l_sql='select * from smg_images  where category_id='.$id.' and is_dept_adopt=1 order by dept_priority asc,created_at desc';
-			echo $l_sql;
 			$l_title = 'title';
 			$link = '/show/show.php?id=';
 		}else{
