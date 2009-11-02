@@ -17,13 +17,16 @@
 	<?php
 		require_once('../inc/top.inc.html');
 		js_include_once_tag('thickbox');
+		$db=get_db();
+		$pic="select i.src,i.id,i.src2 from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' order by i.priority asc,i.created_at desc";
+		$photo=$db->query($pic);
 	?>
 	<div id="ibody">
 		<div id="top_box"></div>
 		<div id="middel_box">
 			<div id=left>
-				<div id="left_pic1"></div>
-				<div id="left_pic2"></div>
+				<div id="left_pic1"><img src="<?php echo $photo[0]->src; ?>"></div>
+				<div id="left_pic2"><img src="<?php echo $photo[1]->src; ?>"></div>
 			</div>
 			<div id="comment">
 				<div id="comment_show">
@@ -91,8 +94,8 @@
 				<div id="thread_botton"><a style="color:#FFCC00;" class="change" name="quanzi" target="_blank" href="http://172.27.203.81:8080/home/space.php?do=mtag&tagid=8">圈子</a>|<a class="change" name="luntan" target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=70">论坛</a></div>
 			</div>
 			<div id=right>
-				<div id="right_pic1"></div>
-				<div id="right_pic2"></div>
+				<div id="right_pic1"><img src="<?php echo $photo[2]->src; ?>"></div>
+				<div id="right_pic2"><img src="<?php echo $photo[3]->src; ?>"></div>
 			</div>
 		</div>
 		<div id="bottom_box">
