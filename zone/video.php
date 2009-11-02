@@ -23,7 +23,7 @@
 		<div id="middel_box">
 			<div id="comment">
 				<div id="comment_show">
-					<marquee height="150" width="165" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+					<marquee height="100" width="150" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 					<?php
 						$db = get_db();
 						$sql = "select nick_name,comment from smg_comment where resource_type='zone_video' order by created_at desc";

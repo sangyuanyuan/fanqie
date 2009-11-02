@@ -18,7 +18,7 @@
 <? 
 	require_once('../../inc/top.inc.html');
 	$db = get_db();
-	$news=$db->query('SELECT * FROM smg_images where is_dept_adopt=1 and dept_category_id=140 order by created_at desc');
+	$news=$db->query('SELECT * FROM smg_images where is_dept_adopt=1 and category_id=151 order by created_at desc');
 ?>
 <div id=bodys>
 	<div id=fqtglist><a href="/">首页</a>　>　<a href="/subject/football/football_list.php">足球联赛图片列表</a></div>
