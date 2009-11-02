@@ -25,7 +25,7 @@
 		<iframe width="380" height="24" src="http://www.smgbb.tv/portal/fanqie.html" frameborder="no" border="0"></iframe>
    	<a href="/dx/dx.php" target="_blank"><img src="/images/top/sms.jpg" border=0></a>
 	<?php $xsb=$db->query('select id from smg_category where name="星尚榜"'); ?>
-		<div id=context><a target="_blank" href="/news/news_list.php?id=<?php echo $xsb[0]->id;?>" target="_blank" style="color:#ff0000;font-weight:bold">星尚榜</a> <a href="/zone/" target="_blank" style="color:#ff0000;font-weight:bold">番茄个性版</a> <a href="http://172.27.203.81:8080/news/news/news.php?id=25939" target="_blank" >防毒预警</a>　<a href="http://172.27.203.88/emailfront/emailfront.htm" target="_blank">企业邮箱</a> <a href="#">新节目</a> <a href="#">直播</a> <a href="/contact/contact.php" target="_blank">联系我们</a> <span onclick="javascript:document.getElementById('toolcontent').style.display='inline'">常用办公软件</span></div>		
+		<div id=context><a target="_blank" href="/news/news_list.php?id=<?php echo $xsb[0]->id;?>" target="_blank" style="color:#ff0000;font-weight:bold">星尚榜</a> <a href="/zone/" target="_blank" style="color:#ff0000;font-weight:bold">番茄个性版</a> <a id=line3 href="http://172.27.203.81:8080/news/news/news.php?id=25939" target="_blank" >防毒预警</a>　<a href="http://172.27.203.88/emailfront/emailfront.htm" target="_blank">企业邮箱</a> <a href="#">新节目</a> <a href="#">直播</a> <a href="/contact/contact.php" target="_blank">联系我们</a> <span onclick="javascript:document.getElementById('toolcontent').style.display='inline'">常用办公软件</span></div>		
 		<a id=home href="/home/" target="_blank"><img src="/images/top/jiayuan.gif" border=0></a>
 	</div>
 </div>
