@@ -181,7 +181,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   				<td id="mcdull_news">
   					<?php $news=$db->query('select n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_category c on c.id=n.category_id and c.name="查一查" where n.is_adopt=1 order by n.priority asc, n.last_edited_at desc limit 10');?>
 			  		<div id=title3></div>
-			  		<div id="box1">
+			  		<div id="box1" style="width:55%">
 						<? for($i=0; $i<count($news); $i++){?>
 							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
 						<? }?>
