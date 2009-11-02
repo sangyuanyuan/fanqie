@@ -48,7 +48,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 			  $show = $db->query('select n.id,n.title,n.src,n.category_id from smg_images n inner join smg_category c on c.id=n.category_id and c.name="秀一秀" where n.is_adopt=1 order by n.dept_priority asc limit 1');
 		?>
 		<div style="width:330px; height:250px; float:left; display:inline;">
-  		<div class=index_title2><div class="more"><a href="image_list.php?id=<? echo $show[0]->category_id;?>">更多</a></div></div>
+  		<div class=index_title2><div class="more"><a href="football_list.php">更多</a></div></div>
   		<div style="width:305px; margin-top:15px; margin-left:25px; float:left;display:inline;">
 			<?php 
 	$sql = 'select i.id as img_id,i.title,i.src,i.priority as ipriority from smg_images i left join smg_category c on i.category_id=c.id where i.is_dept_adopt=1 and c.name="秀一秀" order by i.dept_priority asc,i.created_at desc limit 4';
