@@ -21,6 +21,10 @@
 	<div id="ibody">
 		<div id="top_box"></div>
 		<div id="middel_box">
+			<div id=left>
+				<div id="left_pic1"></div>
+				<div id="left_pic2"></div>
+			</div>
 			<div id="comment">
 				<div id="comment_show">
 					<marquee height="100" width="150" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
@@ -58,33 +62,37 @@
 			</div>
 			
 			<div id="thread">
-				<div class="thread_show" style="display:none" id="quanzi">
+				<div class="thread_show" style="display:block" id="quanzi">
 					<?php
 						$db = get_db();
-						$sql = "select tid,subject,uid from home_thread where tagid=8 order by tid desc limit 8";
+						$sql = "select tid,subject,uid from home_thread where tagid=8 order by tid desc limit 6";
 						$record = $db->query($sql);
 						$count = count($record);
-						for($i=0;$i<$count;$i++){
+						for($i=0;$i< $count;$i++){
 					?>
 					<div class="thread_box"><a target="_blank" href="http://172.27.203.81:8080/home/space.php?uid=<?php echo $record[$i]->uid;?>&do=thread&id=<?php echo $record[$i]->tid;?>" title="<?php echo $record[$i]->subject;?>"><?php echo $record[$i]->subject;?></a></div>
 					<?php
 						}
 					?>
 				</div>
-				<div class="thread_show" id="luntan">
+				<div class="thread_show" style="display:none" id="luntan">
 					<?php
 						$db = get_db();
-						$sql = "select tid,subject from bbs_threads where fid=70 and authorid!=0 order by tid desc limit 8";
+						$sql = "select tid,subject from bbs_threads where fid=70 and authorid!=0 order by tid desc limit 6";
 						$record = $db->query($sql);
 						$count = count($record);
-						for($i=0;$i<$count;$i++){
+						for($i=0;$i< $count;$i++){
 					?>
 					<div class="thread_box"><a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=<?php echo $record[$i]->tid;?>" title="<?php echo $record[$i]->subject;?>"><?php echo $record[$i]->subject;?></a></div>
 					<?php
 						}
 					?>
 				</div>
-				<div id="thread_botton"><a class="change" name="quanzi" target="_blank" href="http://172.27.203.81:8080/home/space.php?do=mtag&tagid=8">圈子</a>|<a style="color:red;" class="change" name="luntan" target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=70">论坛</a></div>
+				<div id="thread_botton"><a style="color:#FFCC00;" class="change" name="quanzi" target="_blank" href="http://172.27.203.81:8080/home/space.php?do=mtag&tagid=8">圈子</a>|<a class="change" name="luntan" target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=70">论坛</a></div>
+			</div>
+			<div id=right>
+				<div id="right_pic1"></div>
+				<div id="right_pic2"></div>
 			</div>
 		</div>
 		<div id="bottom_box">
@@ -92,7 +100,7 @@
 				<?php
 					$video = new table_class('smg_video');
 					$video->find(1146);
-					show_video_player('630','420',$video->photo_url,$video->video_url,$autostart = "false");
+					show_video_player('493','300',$video->photo_url,$video->video_url,$autostart = "false");
 				?>
 			</div>
 		</div>
