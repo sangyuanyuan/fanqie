@@ -14,7 +14,7 @@
 	if($cookie==0)
 	{
 		alert("请登录以后再进入重置密码页面!");
-		redirect("/login/");
+		redirect("/login/login.php");
 	}
 ?>
 <script>
