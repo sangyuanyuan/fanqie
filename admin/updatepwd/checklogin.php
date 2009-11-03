@@ -1,7 +1,7 @@
 ﻿<?
 require_once('../../frame.php');
-include('/uc_client/config.inc.php');
-include('/uc_client/client.php');
+include('/login/uc_client/config.inc.php');
+include('/login/uc_client/client.php');
 if($_POST['user_type']=="login")
 {
 	$login_text = $_POST['login_text'];
