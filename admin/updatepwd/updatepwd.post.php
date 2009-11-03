@@ -1,4 +1,4 @@
-<?
+﻿<?
 require_once('../../frame.php');
  function reset_password($userid, $oldpwd, $newpwd, $type, $operatorid=null){
   	$operatorid = is_null($operatorid) ? $userid : $operatorid;
