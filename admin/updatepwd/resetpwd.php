@@ -7,7 +7,7 @@
 </head>
 <? 
 	require_once("../../frame.php");
-	css_include_tag("login");
+	css_include_tag('login');
 	js_include_tag("total");
 	validate_form('login');
 	$cookie= (isset($_COOKIE['smg_admin'])) ? $_COOKIE['smg_admin'] : 0;?>
