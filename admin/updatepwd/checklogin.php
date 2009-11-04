@@ -91,8 +91,9 @@ if($_POST['user_type']=="login")
 	if(is_ajax()){
 		echo $error;
 	}else{
+		alert($error);
 		if($error == 'ok'){
-			redirect('resetpwd.php');
+			redirect('resetpwd.php','js');
 		}else{
 			alert($error);
 			redirect('resetpwdlogin.php','js');

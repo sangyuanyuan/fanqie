@@ -40,6 +40,9 @@ $rows=$db->query($strsql);
 			<td width="100">最大数</td><td width="695" align="left"><input type="text" size="50" name=maxnum id=maxnum value="<? echo $rows[0]->maxnum;?>"></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-size:12px">
+			<td width="100">个人限买数</td><td width="695" align="left"><input type="text" size="50" name=personmax id=personmax value="<?php echo $rows[0]->personmax; ?>"></td>
+		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-size:12px">
 			<td width="100">开始时间</td><td width="695" align="left"><input type="text" id="starttime"  name="starttime"  value="<? echo $rows[0]->starttime;?>"  onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{\'2020-10-01 12:00:00\'}'})" class="Wdate" style="width:150px"/></td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px; " style="font-size:12px">
