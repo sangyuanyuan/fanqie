@@ -5,7 +5,13 @@
 				<div class=title><div class=name>姓名</div><div class=score>分数</div></div>
 				<?php 
 					$db = get_db();
-					$sql = 'select nick_name,point from smg_question_record where r_type="wydt" and r_id=36 order by point desc limit 10';
+					if($_REQUEST['id']!=36){ 
+						$sql = 'select nick_name,point from smg_question_record where r_type="wydt" order by point desc limit 5';
+					}
+					else
+					{
+						$sql = 'select nick_name,point from smg_question_record where r_type="wydt" and r_id=36 order by point desc limit 10';	
+					}
 					$records = $db->query($sql);
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
