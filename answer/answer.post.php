@@ -18,7 +18,13 @@
 		$question_record->dept_score = 3;
 	}
 	$question_record->save();
-	
-	redirect('result.php?id='.$question_record->id);
+	if($_POST['r_id']!="36")
+	{
+		redirect('result.php?id='.$question_record->id);
+	}
+	else
+	{
+		redirect('result_hd.php?id='.$_POST['r_id']);	
+	}
 	
 ?>

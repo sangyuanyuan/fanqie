@@ -5,7 +5,7 @@
 				<div class=title><div class=name>姓名</div><div class=score>分数</div></div>
 				<?php 
 					$db = get_db();
-					$sql = 'select nick_name,point from smg_question_record where r_type="wydt" order by point desc limit 5';
+					$sql = 'select nick_name,point from smg_question_record where r_type="wydt" and r_id=36 order by point desc limit 10';
 					$records = $db->query($sql);
 					$count = count($records);
 					for($i=0;$i<$count;$i++){
@@ -15,6 +15,7 @@
 				</div>
 				<?php } ?>
 			</div>
+			<?php if($_REQUEST['id']!=36){ ?>
 			<div class=t>个人每周排行榜</div>
 			<div class=content>
 				<div class=title><div class=name>姓名</div><div class=score>分数</div></div>
@@ -29,6 +30,7 @@
 				</div>
 				<?php } ?>
 			</div>
+			<?php } ?>
 			<div id=title><img src="/images/pic/answer_right.gif">热门答题</div>
 			<div class=content style="padding-top:10px;">
 				<?php 

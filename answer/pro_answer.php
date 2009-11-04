@@ -65,15 +65,17 @@
 <div id=ibody>
 
 	<div id="a_top"><?php if($problem[0]->photo_url!=''){?><img src="<?php echo $problem[0]->photo_url?>"><?php } ?></div>
-	
+	<?php if($problem_id==36&&$number==1){?>
+			<div style="width:636px; margin-left:150px; padding-bottom:10px; line-height:30px; font-size:25px; font-weight:bold; color:red; float:left; display:inline;">欢迎大家参加此次高清问卷调查,我们将邀请得分最高的前二十位“高清达人”参加番茄网举办首轮高清电影观摩会!!请您在答题后,留下您的联系方式,谢谢参与!</div>
+	<?php }?>
 	<div id="time"><?php echo $problem[0]->limit_time;?></div>
 	<div id="right_answer">
 		<?php
-			if($problem_id!=26){
+			if($problem_id!=26&&$problem_id!=36){
 				if($is_right==1){
 				echo "恭喜你答对了！";
 				}elseif($is_right==0){
-					echo "很遗憾，你答错了，正确的答案是：".$answer."！";
+						echo "很遗憾，你答错了，正确的答案是：".$answer."！";
 				}
 			}
 			
@@ -82,7 +84,9 @@
 	<div id="point">
 		<?php echo $point;?>
 	</div>
+	
 	<div id="middle">
+		
 		<div id=num><?php echo $number;?>.</div>
 		<div id="question_title"><?php echo $records[0]->title; ?>(<?php if($problem[0]->point!=''){echo $problem[0]->point;}else{echo '10';}?>分)</div>
 		

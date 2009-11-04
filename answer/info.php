@@ -1,7 +1,6 @@
 ﻿<?php
     require_once('../frame.php');
 ?>
-
 <div style="width:250px; margin-top:10px; float:left; display:inline;">请输入您的昵称：<input type="text" value="<?php echo $_COOKIE['smg_user_nickname'];?>" id="user_name"></div>
 <div style="width:250px; margin-top:10px; float:left; display:inline;">请输入您的电话：<input type="text" id="user_photo"></div>
 <div style="width:350px; margin-top:10px; float:left; display:inline;">
