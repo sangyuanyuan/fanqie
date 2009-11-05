@@ -1,32 +1,35 @@
-body{background:#000000;}
-.ibody{width:990px; margin:0 auto; background-image:url(/images/online.jpg);}
-#top_box{width:990px; height:355px; float:left; display:inline;}
-#middel_box{width:990px; height:200px; float:left; display:inline;}
-#middel_box #left{width:120px; margin-left:75px; float:left; display:inline;}
-#middel_box #left img{width:120px; height:75px; border:0px; float:left; display:inline;}
-#middel_box #left #left_pic1{width:120px; height:75px; margin-top:15px; float:left; display:inline;}
-#middel_box #left #left_pic2{width:120px; height:75px; margin-top:45px; float:left; display:inline;}
-#middel_box #comment{width:140px; height:160px; margin-left:45px; float:left; display:inline;}
-#middel_box #comment #comment_show{width:140px; height:130px; margin-top:10px; color:#ffffff; float:left; display:inline;}
-#middel_box #comment .comment_box{width:120px; line-height:15px; margin-left:15px; float:left; display:inline;}
-#middel_box #comment #comment_botton{width:150px; height:30px; font-size:15px; font-weight:bolder; text-align:center; float:left; display:inline;}
-#middel_box #comment #comment_botton a{color:#000000; text-decoration:none;}
-#middel_box #vote{width:140px; height:160px; margin-left:35px; float:left; display:inline;}
-#middel_box #vote #vote_show{width:140px; height:130px; margin-top:10px; color:#ffffff; float:left; display:inline;}
-#middel_box #vote .vote_box{width:135px; line-height:20px; height:20px; overflow:hidden; margin-left:15px; float:left; display:inline;}
-#middel_box #vote .vote_box a{color:#ffffff; text-decoration:none;}
-#middel_box #vote #vote_botton{width:150px; height:30px; font-size:15px; font-weight:bolder; text-align:center; float:left; display:inline;}
-#middel_box #thread{width:110px; height:160px; margin-left:40px; float:left; display:inline;}
-#middel_box #thread .thread_show{width:110px; height:130px; margin-top:10px; color:#ffffff; float:left; display:inline;}
-#middel_box #thread .thread_box{width:110px; line-height:20px; height:20px; overflow:hidden; margin-left:15px; float:left; display:inline;}
-#middel_box #thread .thread_box a{color:#ffffff; text-decoration:none;}
-#middel_box #thread #thread_botton{width:150px; height:30px; font-size:15px; font-weight:bolder; text-align:center; float:left; display:inline;}
-#middel_box #thread #thread_botton a{color:#000000; text-decoration:none;}
-#middel_box #right{width:120px; margin-right:70px; float:right;  display:inline;}
-#middel_box #right img{width:120px; height:75px; border:0px; float:left; display:inline;}
-#middel_box #right #right_pic1{width:120px; height:75px; margin-top:15px; float:left; display:inline;}
-#middel_box #right #right_pic2{width:120px; height:75px; margin-top:45px;float:left; display:inline;}
-#bottom_box{width:990px; height:500px; float:left; display:inline;}
-#bottom_box #video{width:493px; height:300px; margin-left:252px; margin-top:70px; float:left; display:inline;}
+body{background:#000000}
+#ibody{width:995px; height:1282px; margin:0 auto; background:url(/images/online.jpg);}
 
-#TB_window{background:url(/images/v_c.jpg) no-repeat;}
+#top_box{width:995px; height:455px; float:left; display:inline;}
+
+#middel_box{width:995px; height:300px; float:left; display:inline;}
+#middel_box #left{width:125px; margin-left:8px; float:left; display:inline;}
+#middel_box #left img{width:125px; height:80px;}
+#middel_box #left #left_pic1{width:125px; height:80px; float:left; display:inline;}
+#middel_box #left #left_pic2{width:125px; height:80px; margin-top:45px; float:left; display:inline;}
+#middel_box #comment{width:180px; height:210px; margin-left:34px; float:left; display:inline;}
+#middel_box #comment #comment_show{width:180px; height:170px; margin-top:10px; color:#ffffff; float:left; display:inline;}
+#middel_box #comment .comment_box{width:150px; line-height:15px; margin-left:15px; overflow:hidden; float:left; display:inline;}
+#middel_box #comment #comment_botton{width:171px; height:30px; font-size:15px; font-weight:bolder; text-align:center; float:left; display:inline;}
+#middel_box #comment #comment_botton a{color:#000000; text-decoration:none;}
+#middel_box #vote{width:175px; height:210px; margin-left:60px; float:left; display:inline;}
+#middel_box #vote #vote_show{width:175px; height:170px; margin-top:10px; color:#ffffff; float:left; display:inline;}
+#middel_box #vote .vote_box{width:145px; line-height:20px; height:20px; overflow:hidden; margin-left:15px; float:left; display:inline;}
+#middel_box #vote .vote_box a{color:#ffffff; text-decoration:none;}
+#middel_box #vote #vote_botton{width:175px; height:30px; font-size:15px; font-weight:bolder; text-align:center; float:left; display:inline;}
+#middel_box #thread{width:175px; height:210px; margin-left:67px; float:left; display:inline;}
+#middel_box #thread .thread_show{width:175px; height:170px; margin-top:10px; color:#ffffff; float:left; display:inline;}
+#middel_box #thread .thread_box{width:150px; height:20px; line-height:20px; overflow:hidden; margin-left:15px; float:left; display:inline;}
+#middel_box #thread .thread_box a{color:#ffffff; text-decoration:none;}
+#middel_box #thread #thread_botton{width:175px; height:30px; font-size:15px; font-weight:bolder; text-align:center; float:left; display:inline;}
+#middel_box #thread #thread_botton a{color:#000000; text-decoration:none;}
+#middel_box #right{width:125px; margin-right:12px; float:right; display:inline;}
+#middel_box #right img{width:125px; height:80px;}
+#middel_box #right #right_pic1{width:125px; height:80px; float:right; display:inline;}
+#middel_box #right #right_pic2{width:125px; height:80px; margin-top:45px; float:right; display:inline;}
+
+#bottom_box{width:995px; height:500px; float:left; display:inline;}
+#bottom_box #video{width:630px; height:420px; margin-left:173px; margin-top:45px; float:left; display:inline;}
+
+#TB_window{background:url(/images/v_c.jpg);}

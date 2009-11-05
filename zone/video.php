@@ -8,8 +8,7 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-交流-视频</title>
 	<?php
-		css_include_tag('top','bottom','thickbox');
-		css_include_tag('zone_video');
+		css_include_tag('top','bottom','thickbox','zone_video');
 		use_jquery();
  	?>
 </head>
@@ -21,7 +20,7 @@
 		$pic="select i.src,i.id,i.src2 from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' order by i.priority asc,i.created_at desc";
 		$photo=$db->query($pic);
 	?>
-	<div class="ibody">
+	<div id="ibody">
 		<div id="top_box"></div>
 		<div id="middel_box">
 			<div id=left>
@@ -30,7 +29,7 @@
 			</div>
 			<div id="comment">
 				<div id="comment_show">
-					<marquee height="100" width="150" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+					<marquee height="150" width="165" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 					<?php
 						$db = get_db();
 						$sql = "select nick_name,comment from smg_comment where resource_type='zone_video' order by created_at desc";
@@ -68,7 +67,7 @@
 				<div class="thread_show" style="display:block" id="quanzi">
 					<?php
 						$db = get_db();
-						$sql = "select tid,subject,uid from home_thread where tagid=8 order by tid desc limit 6";
+						$sql = "select tid,subject,uid from home_thread where tagid=8 order by tid desc limit 8";
 						$record = $db->query($sql);
 						$count = count($record);
 						for($i=0;$i< $count;$i++){
@@ -81,7 +80,7 @@
 				<div class="thread_show" style="display:none" id="luntan">
 					<?php
 						$db = get_db();
-						$sql = "select tid,subject from bbs_threads where fid=70 and authorid!=0 order by tid desc limit 6";
+						$sql = "select tid,subject from bbs_threads where fid=70 and authorid!=0 order by tid desc limit 8";
 						$record = $db->query($sql);
 						$count = count($record);
 						for($i=0;$i< $count;$i++){
@@ -103,7 +102,7 @@
 				<?php
 					$video = new table_class('smg_video');
 					$video->find(1146);
-					show_video_player('493','300',$video->photo_url,$video->video_url,$autostart = "false");
+					show_video_player('640','380',$video->photo_url,$video->video_url,$autostart = "false");
 				?>
 			</div>
 		</div>
