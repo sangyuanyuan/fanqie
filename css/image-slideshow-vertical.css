@@ -46,9 +46,9 @@
 		height: /**/400px;
 		
 		/* CSS HACK */
-		width: 124px;	/* IE 5.x - 120 px + 2 px for borders and 2px for padding*/
-		width/* */:/**/120px;	/* Other browsers */
-		width: /**/120px;
+		width: 100px;	/* IE 5.x - 120 px + 2 px for borders and 2px for padding*/
+		width/* */:/**/100px;	/* Other browsers */
+		width: /**/100px;
 				
 		border:1px solid #000;	/* Black border */		
 		padding:1px;	/* A little space between the black border and the content inside */
