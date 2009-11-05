@@ -2,6 +2,7 @@
 parse_str($_SERVER['QUERY_STRING']);
 include('../frame.php');
 $cookie=(isset($_COOKIE['smg_username']))? $_COOKIE['smg_username'] : '';
+alert($cookie);
 if($cookie=='')
 {
 	alert('请登录以后再操作！');
@@ -9,7 +10,7 @@ if($cookie=='')
 	exit;
 }
 $db = get_db();
-$sqlstr="select count(*) as num from smg_shopdp where username='".$cookie."'";
+$sqlstr="select * from smg_shopdp where username='".$cookie."'";
 $record=get_db($sqlstr);
 if(count($record) > 0)
 {
