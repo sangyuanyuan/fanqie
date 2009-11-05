@@ -25,8 +25,8 @@
 		<div id="top_box"></div>
 		<div id="middel_box">
 			<div id=left>
-				<div id="left_pic1"><img src="<?php echo $photo[0]->src; ?>"></div>
-				<div id="left_pic2"><img src="<?php echo $photo[1]->src; ?>"></div>
+				<div id="left_pic1"><a target="_blank" href="images.php"><img border=0 src="<?php echo $photo[0]->src; ?>"></a></div>
+				<div id="left_pic2"><a target="_blank" href="images.php"><img border=0 src="<?php echo $photo[1]->src; ?>"></a></div>
 			</div>
 			<div id="comment">
 				<div id="comment_show">
@@ -94,8 +94,8 @@
 				<div id="thread_botton"><a style="color:#FFCC00;" class="change" name="quanzi" target="_blank" href="http://172.27.203.81:8080/home/space.php?do=mtag&tagid=8">圈子</a>|<a class="change" name="luntan" target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=70">论坛</a></div>
 			</div>
 			<div id=right>
-				<div id="right_pic1"><img src="<?php echo $photo[2]->src; ?>"></div>
-				<div id="right_pic2"><img src="<?php echo $photo[3]->src; ?>"></div>
+				<div id="right_pic1"><a target="_blank" href="images.php"><img border=0 src="<?php echo $photo[2]->src; ?>"></a></div>
+				<div id="right_pic2"><a target="_blank" href="images.php"><img border=0 src="<?php echo $photo[3]->src; ?>"></a></div>
 			</div>
 		</div>
 		<div id="bottom_box">
