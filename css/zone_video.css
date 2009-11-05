@@ -1,5 +1,5 @@
 body{background:#000000;}
-#ibody{width:990px; margin:0 auto; background:url(/images/online.jpg) no-repeat;}
+#ibody{width:990px; margin:0 auto; background:url(/images/online.jpg);}
 #top_box{width:990px; height:355px; float:left; display:inline;}
 #middel_box{width:990px; height:200px; float:left; display:inline;}
 #middel_box #left{width:120px; margin-left:75px; float:left; display:inline;}
