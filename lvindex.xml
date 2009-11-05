@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<document>
+  <item>
+		<image>images/01.jpg</image>
+	<smallimage>images/s1.jpg</smallimage>
+		<video>http://172.27.203.81:8080/</video>
+		<captionlines>4</captionlines>
+		<headline>levelup欢迎您！</headline>
+		<caption><a href="http://www.mybbss.com/" target="_blank"></a></caption>
+		<photocaption>2008年度最佳游戏评选中奖者名单揭晓 </photocaption>
+	</item>
+	<item>
+		<image>images/02.jpg</image>
+	<smallimage>images/s2.jpg</smallimage>
+		<video>http://172.27.203.81:8080/</video>
+		<captionlines>4</captionlines>
+		<headline>levelup欢迎您！</headline>
+		<caption><a href="http://www.mybbss.com/" target="_blank"></a></caption>
+		<photocaption>CES09：微软阐述不要BD的三大理由</photocaption>
+	</item>
+  <item>
+		<image>images/03.jpg</image>
+	<smallimage>images/s3.jpg</smallimage>
+		<video>http://172.27.203.81:8080/</video>
+		<captionlines>4</captionlines>
+		<headline>levelup欢迎您！</headline>
+		<caption><a href="http://www.mybbss.com/" target="_blank"></a></caption>
+		<photocaption>《FFVII ACC》三个版本3月同时上市</photocaption>
+	</item>
+ 	<item>
+		<image>images/04.jpg</image>
+	<smallimage>images/s4.jpg</smallimage>
+		<video>http://172.27.203.81:8080/</video>
+		<captionlines>4</captionlines>
+		<headline>levelup欢迎您！</headline>
+		<caption><a href="http://www.mybbss.com/" target="_blank"></a></caption>
+		<photocaption>levelup一周要闻回顾(01.05—01.11) </photocaption>
+	</item>
+	<item>
+		<image>images/05.jpg</image>
+	<smallimage>images/s5.jpg</smallimage>
+		<video>http://172.27.203.81:8080/</video>
+		<captionlines>4</captionlines>
+		<headline>levelup欢迎您！</headline>
+		<caption><a href="http://www.mybbss.com/" target="_blank"></a></caption>
+		<photocaption>CES09：《小小大星球》累计销量130万</photocaption>
+	</item></document>

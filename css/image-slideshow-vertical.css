@@ -1,0 +1,89 @@
+	body{
+		margin:0px; font-family:ËÎÌו; font-size:12px; line-height:0px; color:#ffffff;
+	}
+	#slideshowvertical{
+		width:995px; margin:0 auto; margin-top:10px; background:#000000;	/* Total width of slideshow */
+
+
+	}
+	
+	#previewPane{
+		border:1px solid #000;
+		margin-right:2px;
+		line-height:20px;	
+		text-align:center;
+		vertical-align:middle;
+		padding-top:15px;
+		color:#ffffff;
+		
+		/* CSS HACK */
+		height: 435px;	/* IE 5.x */
+		height/* */:/**/435px;	/* Other browsers */
+		height: /**/435px;
+		
+		width:865px;		
+		float:left;
+				
+	}
+	#waitMessage{
+		display:none;
+		position:absolute;
+		left:200px;
+		top:150px;
+		background-color:#000000;
+		border:3px double #ffffff;
+		padding:4px;
+		color:#ffffff;
+		font-size:0.9em;
+		font-family:arial;	
+	}	
+	#galleryContainer{	/* Big Div surrounding up image, list of images and down image */
+		float:left;	/* Floating */
+		
+		/* CSS HACK */
+		height: 454px;	/* IE 5.x - 120 px + 2 px for borders and 2px for padding*/
+		height/* */:/**/400px;	/* Other browsers */
+		height: /**/400px;
+		
+		/* CSS HACK */
+		width: 124px;	/* IE 5.x - 120 px + 2 px for borders and 2px for padding*/
+		width/* */:/**/120px;	/* Other browsers */
+		width: /**/120px;
+				
+		border:1px solid #000;	/* Black border */		
+		padding:1px;	/* A little space between the black border and the content inside */
+		
+	}
+	#galleryContainer #arrow_down{	/* Arrow down image */
+		height:35px;
+	}
+	#galleryContainer #arrow_up{
+		height:35px;	/* Arrow up image */
+	}
+	
+	#theImages{	/* DIV where the images are located */
+		position:relative;
+		overflow:hidden;
+		background:#ffffff;
+		height:380px;	/* Height of boxes for the images */
+	}
+	#theImages div{	
+		position:relative;	/* Don't change this */
+		height:1500px;	/* Higher than total height of thumbnails */
+		
+	}
+	#theImages img{
+		border:0px;	/* No border */
+		filter:alpha(opacity=50);	/* Transparency - IE */
+		opacity:0.5; /* Transparency - Firefox */
+		padding-top:1px;	/* Space between images */
+	}
+	#previewPane #largeImageCaption{	/* CSS styling of image caption below large image */
+		font-style:italic;
+		text-align:center;
+		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;	/* Font to use */
+		font-size:0.9em;
+	}
+	#theImages .imageCaption{
+		display:none;
+	}
