@@ -17,11 +17,11 @@
 		color:#ffffff;
 		
 		/* CSS HACK */
-		height: 500px;	/* IE 5.x */
-		height/* */:/**/500px;	/* Other browsers */
-		height: /**/500px;
+		height: 520px;	/* IE 5.x */
+		height/* */:/**/520px;	/* Other browsers */
+		height: /**/520px;
 		
-		width:865px;		
+		width:860px;		
 		float:left;
 				
 	}
@@ -65,7 +65,7 @@
 		position:relative;
 		overflow:hidden;
 		background:#ffffff;
-		height:443px;	/* Height of boxes for the images */
+		height:463px;	/* Height of boxes for the images */
 	}
 	#theImages div{	
 		position:relative;	/* Don't change this */
