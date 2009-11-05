@@ -26,7 +26,7 @@
 	<div id="previewPane">
 		<img src="<?php echo $image[0]->src2; ?>">	
 		<span id="waitMessage">Loading image. Please wait</span>
-		<div id="largeImageCaption"><?php echo $image[0]->title; ?></div>
+		<div id="largeImageCaption"><?php echo get_fck_content($image[0]->title); ?></div>
 	</div>
 	<div id="galleryContainer">
 		<div id="arrow_up"><img src="images/arrow-up.gif" id="arrow_up_image"></div>
@@ -37,7 +37,7 @@
 					<a href="#" onclick="showPreview('<?php echo $image[$i]->src2; ?>','<?php echo $i+1; ?>');return false"><img src="<?php echo $image[$i]->src; ?>"></a>
 				<?php } ?>	
 				<?php for($i=0;$i<count($image);$i++){ ?>
-					<div class="imageCaption"><?php echo $image[$i]->title; ?></div>
+					<div class="imageCaption"><?php echo get_fck_content($image[$i]->title); ?></div>
 				<?php } ?>	
 						
 			<div id="slideEnd"></div>
