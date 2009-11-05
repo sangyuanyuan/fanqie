@@ -20,7 +20,7 @@
 <div id="slideshowvertical">
 	<?php 
 		$db=get_db();
-		$sql="select * from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报'";
+		$sql="select * from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' order by i.created_at desc";
 		$image=$db->query($sql);
 	?>
 	<div id="previewPane">

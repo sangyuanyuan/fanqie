@@ -1,8 +1,8 @@
 	body{
-		margin:0px; font-family:ËÎÌו; font-size:12px; line-height:0px; color:#ffffff;
+		margin:0px; font-family:ËÎÌו; font-size:12px; line-height:0px; color:#ffffff; background:#000000;
 	}
 	#slideshowvertical{
-		width:995px; margin:0 auto; margin-top:10px; background:#000000;	/* Total width of slideshow */
+		width:995px; margin:0 auto;	/* Total width of slideshow */
 
 
 	}
@@ -17,9 +17,9 @@
 		color:#ffffff;
 		
 		/* CSS HACK */
-		height: 435px;	/* IE 5.x */
-		height/* */:/**/435px;	/* Other browsers */
-		height: /**/435px;
+		height: 500px;	/* IE 5.x */
+		height/* */:/**/500px;	/* Other browsers */
+		height: /**/500px;
 		
 		width:865px;		
 		float:left;
@@ -65,7 +65,7 @@
 		position:relative;
 		overflow:hidden;
 		background:#ffffff;
-		height:380px;	/* Height of boxes for the images */
+		height:443px;	/* Height of boxes for the images */
 	}
 	#theImages div{	
 		position:relative;	/* Don't change this */
