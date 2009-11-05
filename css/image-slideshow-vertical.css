@@ -2,7 +2,7 @@
 		margin:0px; font-family:ËÎÌו; font-size:12px; line-height:0px; color:#ffffff; background:#000000;
 	}
 	#slideshowvertical{
-		width:995px; margin:0 auto;	/* Total width of slideshow */
+		width:995px; margin:0 auto; background:url(/images/piconline.jpg) no-repeat;	/* Total width of slideshow */
 
 
 	}
@@ -65,7 +65,7 @@
 		position:relative;
 		overflow:hidden;
 		background:#ffffff;
-		height:463px;	/* Height of boxes for the images */
+		height:447px;	/* Height of boxes for the images */
 	}
 	#theImages div{	
 		position:relative;	/* Don't change this */
