@@ -21,7 +21,7 @@
 		$pic="select i.src,i.id,i.src2 from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' order by i.priority asc,i.created_at desc";
 		$photo=$db->query($pic);
 	?>
-	<div id="ibody">
+	<div class="ibody">
 		<div id="top_box"></div>
 		<div id="middel_box">
 			<div id=left>
