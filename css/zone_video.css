@@ -1,5 +1,5 @@
 body{background:#000000;}
-#ibody{width:990px; margin:0 auto; background:url(/images/online.jpg);}
+#ibody{width:990px; margin:0 auto; background:url(/images/online.jpg) no-repeat;}
 #top_box{width:990px; height:355px; float:left; display:inline;}
 #middel_box{width:990px; height:200px; float:left; display:inline;}
 #middel_box #left{width:120px; margin-left:75px; float:left; display:inline;}
@@ -29,4 +29,4 @@ body{background:#000000;}
 #bottom_box{width:990px; height:500px; float:left; display:inline;}
 #bottom_box #video{width:493px; height:300px; margin-left:252px; margin-top:70px; float:left; display:inline;}
 
-#TB_window{background:url(/images/v_c.jpg);}
+#TB_window{background:url(/images/v_c.jpg) no-repeat;}
