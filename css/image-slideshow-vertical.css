@@ -46,9 +46,9 @@
 		height: /**/400px;
 		
 		/* CSS HACK */
-		width: 120px;	/* IE 5.x - 120 px + 2 px for borders and 2px for padding*/
-		width/* */:/**/120px;	/* Other browsers */
-		width: /**/120px;
+		width: 140px;	/* IE 5.x - 120 px + 2 px for borders and 2px for padding*/
+		width/* */:/**/140px;	/* Other browsers */
+		width: /**/140px;
 				
 		border:1px solid #000;	/* Black border */		
 		padding:1px;	/* A little space between the black border and the content inside */
@@ -73,7 +73,7 @@
 		
 	}
 	#theImages img{
-		width:120px;
+		width:140px;
 		border:0px;	/* No border */
 		filter:alpha(opacity=50);	/* Transparency - IE */
 		opacity:0.5; /* Transparency - Firefox */
