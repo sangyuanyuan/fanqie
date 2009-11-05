@@ -2,7 +2,6 @@
 parse_str($_SERVER['QUERY_STRING']);
 include('../frame.php');
 $cookie=(isset($_COOKIE['smg_username']))? $_COOKIE['smg_username'] : '';
-alert($cookie);
 if($cookie=='')
 {
 	alert('请登录以后再操作！');
