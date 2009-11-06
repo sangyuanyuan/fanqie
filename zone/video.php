@@ -100,14 +100,14 @@
 		<div id="bottom_box">
 			<div id="video">
 				<?php
-					$video = $db->query('select * from smg_video v left join smg_category c on v.category_id=c.id where c.category_type="video" and c.name="高清" and v.is_adopt=1 order by priority asc,created_at desc');
+					$video = $db->query('select * from smg_video v left join smg_category c on v.category_id=c.id where c.category_type="video" and c.name="高清" and v.is_adopt=1 order by v.priority asc,created_at desc');
 					if(count($video)>0)
 					{
 						show_video_player('640','380',$video[0]->photo_url,$video[0]->video_url,$autostart = "false");
 					}
 					else
 					{
-						$pic = $db->query('select * from smg_images v left join smg_category c on v.category_id=c.id where c.category_type="picture" and c.name="高清预告" and v.is_adopt=1 order by priority asc,created_at desc');
+						$pic = $db->query('select * from smg_images v left join smg_category c on v.category_id=c.id where c.category_type="picture" and c.name="高清预告" and v.is_adopt=1 order by v.priority asc,created_at desc');
 				?>
 				<img width=640 height=380 src="<?php echo $pic[0]->src; ?>">
 				<?php } ?>
