@@ -30,7 +30,7 @@ body{background:#000000}
 #middel_box #right #right_pic2{width:125px; height:80px; margin-top:45px; float:right; display:inline;}
 
 #bottom_box{width:995px; height:500px; float:left; display:inline;}
-#bottom_box #yg{width:630px; height:20px; font-size:18px; font-weight:bold; color:#ffffff; overflow:hidden; float:left; display:inline}
-#bottom_box #video{width:630px; height:420px; margin-left:180px; margin-top:50px; float:left; display:inline;}
+#bottom_box #yg{width:610px; height:22px; margin-top:20px; margin-left:190px; line-height:22px; font-size:18px; font-weight:bold; color:#ffffff; overflow:hidden; float:left; display:inline}
+#bottom_box #video{width:630px; height:420px; margin-left:180px; margin-top:10px; float:left; display:inline;}
 
 #TB_window{background:url(/images/v_c.jpg);}

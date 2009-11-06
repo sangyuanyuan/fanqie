@@ -98,7 +98,14 @@
 			</div>
 		</div>
 		<div id="bottom_box">
-			<div id=yg></div>
+			<div id=yg>
+				<marquee height="25" width="610"  scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+					<?php 
+						$news = $db->query('select title,target_url from smg_news v left join smg_category c on v.category_id=c.id where c.category_type="news" and c.name="高清预告" and v.is_adopt=1 order by v.priority asc,created_at desc');
+						echo $news[0]->title;
+					?>
+				</marquee>
+			</div>
 			<div id="video">
 				<?php
 					$video = $db->query('select * from smg_video v left join smg_category c on v.category_id=c.id where c.category_type="video" and c.name="高清" and v.is_adopt=1 order by v.priority asc,created_at desc');
@@ -108,9 +115,8 @@
 					}
 					else
 					{
-						$pic = $db->query('select * from smg_images v left join smg_category c on v.category_id=c.id where c.category_type="picture" and c.name="高清预告" and v.is_adopt=1 order by v.priority asc,created_at desc');
 				?>
-				<embed src="http://player.youku.com/player.php/sid/XNzk2MjQ0NjA=/v.swf" quality="high" width="630" height="375" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>
+				<embed src="<?php echo $news[0]->target_url; ?>" quality="high" width="630" height="375" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>
 				<?php } ?>
 			</div>
 		</div>
