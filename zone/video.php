@@ -99,16 +99,20 @@
 		</div>
 		<div id="bottom_box">
 			<div id=yg>
-				<marquee height="25" width="610"  scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
-					<?php 
-						$news = $db->query('select title,target_url from smg_news v left join smg_category c on v.category_id=c.id where c.category_type="news" and c.name="高清预告" and v.is_adopt=1 order by v.priority asc,created_at desc');
-						echo $news[0]->title;
-					?>
-				</marquee>
+				<?php $video = $db->query('select * from smg_video v left join smg_category c on v.category_id=c.id where c.category_type="video" and c.name="高清" and v.is_adopt=1 order by v.priority asc,created_at desc');
+					if(count($video)==0)
+					{
+				 ?>
+					<marquee height="25" width="610"  scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+						<?php 
+							$news = $db->query('select title,target_url from smg_news v left join smg_category c on v.category_id=c.id where c.category_type="news" and c.name="高清预告" and v.is_adopt=1 order by v.priority asc,created_at desc');
+							echo $news[0]->title;
+						?>
+					</marquee>
+				<?php } ?>
 			</div>
 			<div id="video">
 				<?php
-					$video = $db->query('select * from smg_video v left join smg_category c on v.category_id=c.id where c.category_type="video" and c.name="高清" and v.is_adopt=1 order by v.priority asc,created_at desc');
 					if(count($video)>0)
 					{
 						show_video_player('630','375',$video[0]->photo_url,$video[0]->video_url,$autostart = "false");
