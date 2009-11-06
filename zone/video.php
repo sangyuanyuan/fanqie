@@ -21,7 +21,18 @@
 		$photo=$db->query($pic);
 	?>
 	<div id="ibody">
-		<div id="top_box"></div>
+		<div id="top_box">
+			<div id="bbs">
+				<?php 
+					$sql="select tid,subject from bbs_threads where fid=72 and authorid!=0 order by tid desc limit 4";
+					$record=$db->query($sql);
+					for($i=0;$i<count($record);$i++)
+					{
+				 ?>
+				<div class="context"><a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=<?php echo $record[$i]->tid;?>" title="<?php echo $record[$i]->subject;?>"><span style="font-weight:bold;">☉</span><?php echo $record[$i]->subject;?></a></div>
+				<?php } ?>
+			</div>
+		</div>
 		<div id="middel_box">
 			<div id=left>
 				<div id="left_pic1"><a target="_blank" href="images.php?id=<?php echo $photo[0]->id; ?>"><img border=0 src="<?php echo $photo[0]->src; ?>"></a></div>
@@ -90,7 +101,7 @@
 						}
 					?>
 				</div>
-				<div id="thread_botton"><a style="color:#FFCC00;" class="change" name="quanzi" target="_blank" href="http://172.27.203.81:8080/home/space.php?do=mtag&tagid=8">圈子</a>|<a class="change" name="luntan" target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=70">论坛</a></div>
+				<div id="thread_botton"><a style="color:#FFCC00;" class="change" name="quanzi" target="_blank" href="http://172.27.203.81:8080/home/space.php?do=mtag&tagid=8">社区</a>|<a class="change" name="luntan" target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=70">论坛</a></div>
 			</div>
 			<div id=right>
 				<div id="right_pic1"><a target="_blank" href="images.php?id=<?php echo $photo[2]->id; ?>"><img border=0 src="<?php echo $photo[2]->src; ?>"></a></div>

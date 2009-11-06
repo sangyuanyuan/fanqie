@@ -2,7 +2,9 @@ body{background:#000000}
 #ibody{width:995px; height:1282px; margin:0 auto; background:url(/images/online.jpg);}
 
 #top_box{width:995px; height:455px; float:left; display:inline;}
-
+#top_box #bbs{width:195px; height:80px; margin-top:305px; margin-left:405px; overflow:hidden; float:left; display:inline}
+#top_box #bbs .context{width:195px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;}
+#top_box #bbs .context a{color:#ffffff; text-decoration:none;}
 #middel_box{width:995px; height:300px; float:left; display:inline;}
 #middel_box #left{width:125px; margin-left:8px; float:left; display:inline;}
 #middel_box #left img{width:125px; height:80px;}
