@@ -24,8 +24,8 @@
 		<div id="top_box"></div>
 		<div id="middel_box">
 			<div id=left>
-				<div id="left_pic1"><a target="_blank" href="images.php"><img border=0 src="<?php echo $photo[0]->src; ?>"></a></div>
-				<div id="left_pic2"><a target="_blank" href="images.php"><img border=0 src="<?php echo $photo[1]->src; ?>"></a></div>
+				<div id="left_pic1"><a target="_blank" href="images.php?id=<?php echo $photo[0]->id; ?>"><img border=0 src="<?php echo $photo[0]->src; ?>"></a></div>
+				<div id="left_pic2"><a target="_blank" href="images.php?id=<?php echo $photo[1]->id; ?>"><img border=0 src="<?php echo $photo[1]->src; ?>"></a></div>
 			</div>
 			<div id="comment">
 				<div id="comment_show">
@@ -93,17 +93,24 @@
 				<div id="thread_botton"><a style="color:#FFCC00;" class="change" name="quanzi" target="_blank" href="http://172.27.203.81:8080/home/space.php?do=mtag&tagid=8">圈子</a>|<a class="change" name="luntan" target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=70">论坛</a></div>
 			</div>
 			<div id=right>
-				<div id="right_pic1"><a target="_blank" href="images.php"><img border=0 src="<?php echo $photo[2]->src; ?>"></a></div>
-				<div id="right_pic2"><a target="_blank" href="images.php"><img border=0 src="<?php echo $photo[3]->src; ?>"></a></div>
+				<div id="right_pic1"><a target="_blank" href="images.php?id=<?php echo $photo[2]->id; ?>"><img border=0 src="<?php echo $photo[2]->src; ?>"></a></div>
+				<div id="right_pic2"><a target="_blank" href="images.php?id=<?php echo $photo[3]->id; ?>"><img border=0 src="<?php echo $photo[3]->src; ?>"></a></div>
 			</div>
 		</div>
 		<div id="bottom_box">
 			<div id="video">
 				<?php
-					$video = new table_class('smg_video');
-					$video->find(1146);
-					show_video_player('640','380',$video->photo_url,$video->video_url,$autostart = "false");
+					$video = $db->query('select * from smg_video v left join smg_category c on v.category_id=c.id where c.category_type="video" and c.name="高清" and v.is_adopt=1 order by priority asc,created_at desc');
+					if(count($video)>0)
+					{
+						show_video_player('640','380',$video[0]->photo_url,$video[0]->video_url,$autostart = "false");
+					}
+					else
+					{
+						$pic = $db->query('select * from smg_images v left join smg_category c on v.category_id=c.id where c.category_type="picture" and c.name="高清预告" and v.is_adopt=1 order by priority asc,created_at desc');
 				?>
+				<img width=640 height=380 src="<?php echo $pic[0]->src; ?>">
+				<?php } ?>
 			</div>
 		</div>
 	</div>

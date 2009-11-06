@@ -22,11 +22,16 @@
 		$db=get_db();
 		$sql="select * from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' order by i.created_at desc";
 		$image=$db->query($sql);
+		if($_REQUEST['id']!="")
+		{
+			$sql="select * from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' and i.id=".$_REQUEST['id'];
+			$imagebig=$db->query($sql);	
+		}
 	?>
 	<div id="previewPane">
-		<img src="<?php echo $image[0]->src2; ?>">	
+		<img <?php if($_REQUEST['id']==""){ ?>src="<?php echo $image[0]->src2; ?>"<?php }else{ ?>src="<?php echo $imagebig[0]->src2; ?><?php } ?>">	
 		<span id="waitMessage">Loading image. Please wait</span>
-		<div id="largeImageCaption"><?php echo get_fck_content($image[0]->title); ?></div>
+		<div id="largeImageCaption"><?php if($_REQUEST['id']==""){ echo get_fck_content($image[0]->title); }else{  echo get_fck_content($imagebig[0]->title); } ?></div>
 	</div>
 	<div id="galleryContainer">
 		<div id="arrow_up"><img src="images/arrow-up.gif" id="arrow_up_image"></div>
