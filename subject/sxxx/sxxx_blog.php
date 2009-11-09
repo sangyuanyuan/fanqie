@@ -98,18 +98,18 @@
 	?>
 </UL>
 </div>
-<div class=right_title style="width:290px; float:left; display:inline;">博文点击量</div>
+<div class=right_title style="width:290px; float:left; display:inline;">最新博文</div>
 <div class=right_box>
 <UL class=msgtitlelist>
 	<?php
-		$sql = 'select t1.uid,t1.subject,t1.itemid,t1.viewnum from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 order by t1.viewnum desc limit 10';
+		$sql = 'select t1.uid,t1.subject,t1.itemid,t1.viewnum from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 order by t1.dateline desc limit 15';
 		$record = $db->query($sql);
 		$count = count($record);
 		for($i=0;$i<$count;$i++){
 	?>
 	<LI>
-		<span style="width:150px; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $record[$i]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
-		<span style="margin-left:20px; color:#656d77; float:left; display:inline">点击量：<?php echo $record[$i]->viewnum;?></span>
+		<span style="width:290px; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $record[$i]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
+		<!--<span style="margin-left:20px; color:#656d77; float:left; display:inline">点击量：<?php echo $record[$i]->viewnum;?></span>-->
 	</LI>
 	<?php
 		 }

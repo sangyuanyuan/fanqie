@@ -244,7 +244,7 @@
 									<input type="hidden" value="<? echo count($deptname);?>">
 								</form>
 							</div>
-							<? $sql = 'select t1.uid,t1.subject,t1.itemid,t1.viewnum from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 order by t1.viewnum desc limit 10';
+							<? $sql = 'select t1.uid,t1.subject,t1.itemid,t1.viewnum from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 order by t1.dateline desc limit 10';
 						$news = $db->query($sql); ?>
 							<div style="width:330px; margin-right:10px; float:right; display:inline;">
 								<? for($i=0;$i<count($news);$i++){?>
