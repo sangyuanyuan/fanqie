@@ -108,8 +108,8 @@
 		for($i=0;$i<$count;$i++){
 	?>
 	<LI>
-		<span style="width:290px; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $record[$i]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
-		<!--<span style="margin-left:20px; color:#656d77; float:left; display:inline">点击量：<?php echo $record[$i]->viewnum;?></span>-->
+		<span style="width:150px; overflow:hidden; float:left; display:inline"><a title=<?php echo $record[$i]->subject;?> href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $record[$i]->itemid;?>"><?php echo $record[$i]->subject;?></a></span>
+		<span style="margin-left:20px; color:#656d77; float:left; display:inline">点击量：<?php echo $record[$i]->viewnum;?></span>
 	</LI>
 	<?php
 		 }
