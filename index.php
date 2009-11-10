@@ -760,7 +760,7 @@ total("首页","other");
 						$record=$db -> query($sql);
   				?> 	
 					<ul>
-						<li style="color:#FF9900; font-weight:bold; font-size:13px; line-height:25px; height:25px;"><font color="#FF9900;">[<?php echo $record[0]->tags ?>]</font><a style="color:#FF9900" href="/<?php echo $record[0]->platform?>/news/news.php?id=<?php echo $record[0]->news_id;?>" target=_blank><?php echo $record[0]->short_title;?></a></li>
+						<li style="color:#FF9900; font-size:13px; line-height:25px; height:25px;"><font color="#FF9900;">[<?php echo $record[0]->tags ?>]</font><a style="color:#FF9900; font-weight:bold;" href="/<?php echo $record[0]->platform?>/news/news.php?id=<?php echo $record[0]->news_id;?>" target=_blank><?php echo $record[0]->short_title;?></a></li>
 						<?php for($i=1;$i<6;$i++){ ?>
 						<li><font color="#000000">[<?php echo $record[$i]->tags ?>]</font><a href="/<?php echo $record[$i]->platform?>/news/news.php?id=<?php echo $record[$i]->news_id;?>" target=_blank><?php echo $record[$i]->short_title;?></a></li>
 						<? }?>
