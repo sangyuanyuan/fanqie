@@ -823,7 +823,7 @@ total("首页","other");
 						$sql = "select tid,subject from bbs_threads where fid=70 and authorid!=0 order by tid desc limit 2";
 						$bbsvideo = $db->query($sql);
   				?>
-  				<a href="/show/show.php?id=<?php echo $photo[0]->img_id;?>" target=_blank><img style="width:60px; height:96px;" src="<?php echo $photo[0]->src ?>" border=0></a>
+  				<a href="<?php echo $photo[0]->url;?>" target=_blank><img style="width:60px; height:96px;" src="<?php echo $photo[0]->src; ?>" border=0></a>
   				<ul>
   					<li><a style="color:#ff0000; font-weight:bold;" href="/vote/vote.php?vote_id=<?php echo $vote[0]->id;?>" target=_blank><?php echo $vote[0]->name;?></a></li>
   					<li><a href="/home/space.php?uid=<?php echo $qz[0]->uid;?>&do=thread&id=<?php echo $qz[0]->tid;?>" target=_blank><?php echo $qz[0]->subject;?></a></li>
