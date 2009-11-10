@@ -111,18 +111,32 @@
 	</div>
 </div>
 
-<?php
- 	$sql = 'select * from smg_dept_list s order by priority asc';
-	$record=$db -> query($sql);		
-?>	
+
 <div id=dept>
 	<div id=deptbox>
 		<div id=deptcontent>
-				<?php for($i=0;$i<count($record);$i++){?>			
-							<div class=depts><a href="<?php echo $record[$i]->href?>" target="_blank"><?php echo $record[$i]->name?></a></div>
+			<div id=top>
+				<div class=title>上海广播电视台</div>
+				<?php
+				 	 $sql = 'select * from smg_dept_list s where property=1 order by priority asc';
+					 $record=$db -> query($sql);		
+					 for($i=0;$i<count($record);$i++){
+				?>			
+					<div class=depts><a href="<?php echo $record[$i]->href;?>" target="_blank"><?php echo $record[$i]->name?></a></div>
 				<? }?>
-							<div class=depts style="text-align:right; color:#FF0000; font-weight:bold; cursor:pointer; " onclick='$("#deptcontent").hide();'>关闭</div>
-
+			</div>
+			<div id=bottom>
+				<div class=title>上海东方传媒集团有限公司</div>
+				<?php
+				 	 $sql = 'select * from smg_dept_list s where property=2 order by priority asc';
+					 $record=$db -> query($sql);		
+					 for($i=0;$i<count($record);$i++){
+				?>			
+					<div class=depts><a href="<?php echo $record[$i]->href;?>" target="_blank"><?php echo $record[$i]->name?></a></div>
+				<? }?>
+				<div class=depts style="text-align:right; color:#FF0000; font-weight:bold; cursor:pointer; " onclick='$("#deptcontent").hide();'>关闭</div>
+			</div>
+			
 		</div>
 	</div>
 </div>

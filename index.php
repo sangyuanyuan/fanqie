@@ -737,23 +737,35 @@ total("首页","other");
  			<div id=m_l_b>
  				<div id=title>博 客</div>
  				<a href="/zone/" id=more target=_blank></a>
- 				<?
+ 				<!--<?
   				$sql = 'select i.id as img_id,i.src,c.id as cid from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name="首页博客" and c.platform="zone" order by i.priority asc limit 1';
 					$record_blog=$db -> query($sql);	
 				?>
- 				<a href="/show/show.php?id=<?php echo $record_blog[0]->img_id ?>" target=_blank><img src="<?php echo $record_blog[0]->src ?>" border=0></a>
+ 				<a href="/show/show.php?id=<?php echo $record_blog[0]->img_id ?>" target=_blank><img src="<?php echo $record_blog[0]->src ?>" border=0></a>-->
  				<?php
  					$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="博客" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 5';
 					$record_blog=$db -> query($sql);		
 				?>	 
-				<div id=content_mlb>
+				<div class=content_mlb>
 					<ul>
 						<li style="color:#FF9900; font-weight:bold; font-size:13px; line-height:25px; height:25px;"><a style="color:#FF9900" href="/<?php echo $record_blog[0]->platform ?>/news/news.php?id=<?php echo $record_blog[0]->news_id ?>" target=_blank><?php echo $record_blog[0]->short_title ?></a></li>
 						<?php for($i=1;$i<5;$i++){ ?>
 						<li><a href="/<?php echo $record_blog[$i]->platform ?>/news/news.php?id=<?php echo $record_blog[$i]->news_id ?>" target=_blank>·<?php echo $record_blog[$i]->short_title ?></a></li>
 						<? }?>
 					</ul>
- 				</div> 				
+ 				</div>
+ 				<div class=content_mlb>
+ 					<?php
+ 						$sql = 'select n.id as news_id,n.short_title,n.tags,c.platform,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄专栏" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 5';
+						$record=$db -> query($sql);
+  				?> 	
+					<ul>
+						<li style="color:#FF9900; font-weight:bold; font-size:13px; line-height:25px; height:25px;"><font color="#000000">【<?php echo $record[0]->tags ?>】</font><a href="/<?php echo $record[0]->platform?>/news/news.php?id=<?php echo $record[0]->news_id;?>" target=_blank><?php echo $record[0]->short_title;?></a></li>
+						<?php for($i=1;$i<5;$i++){ ?>
+						<li><font color="#000000">【<?php echo $record[$i]->tags ?>】</font><a style="color:#000000;" href="/<?php echo $record[$i]->platform?>/news/news.php?id=<?php echo $record[$i]->news_id;?>" target=_blank><?php echo $record[$i]->short_title;?></a></li>
+						<? }?>
+					</ul>
+ 				</div>			
  			</div>
  			<!-- end !-->	     
     
@@ -794,18 +806,30 @@ total("首页","other");
     	
   		<!-- start middle_center_top !-->
  			<div id=m_c_b>
- 				<a href="/news/news_list.php?id=45" id=more1 target=_blank></a>
+ 				<a href="/zone/video.php" id=more1 target=_blank></a>
  				<a href="/zone/dialog_list.php" id=more2 target=_blank></a>
  				<div class=box>
    				<?php
  						$sql = 'select n.id as news_id,n.short_title,n.tags,c.platform,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄专栏" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 5';
 						$record=$db -> query($sql);
-  				?> 		
+						$pic="select i.src,i.id,i.src2 from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影首页海报' order by i.priority asc,i.created_at desc";
+						$photo=$db->query($pic);
+						$sql = "select name,id from smg_vote where category_id=149 and is_adopt=1 and id=248 order by priority asc,created_at desc";
+						$vote = $db->query($sql);
+						$sql = "select tid,subject,uid from home_thread where tagid=8 order by tid desc limit 1";
+						$qz = $db->query($sql);
+						$sql="select tid,subject from bbs_threads where fid=72 and authorid!=0 order by tid desc limit 1";
+						$bbs=$db->query($sql);
+						$sql = "select tid,subject from bbs_threads where fid=70 and authorid!=0 order by tid desc limit 2";
+						$bbsvideo = $db->query($sql);
+  				?>
+  				<a href="/show/show.php?id=<?php echo $photo[0]->img_id;?>" target=_blank><img style="width:70px; height:96px;" src="<?php echo $photo[0]->src ?>" border=0></a>
   				<ul>
-  					<li><font color="#000000">【<?php echo $record[0]->tags ?>】</font><a style="color:#ff0000; font-weight:bold;" href="/<?php echo $record[0]->platform?>/news/news.php?id=<?php echo $record[0]->news_id?>" target=_blank><?php echo $record[0]->short_title?></a></li>
-  					<?php for($i=1;$i<=4;$i++){?>
-  					<li><font color="#000000">【<?php echo $record[$i]->tags ?>】</font><a href="/<?php echo $record[$i]->platform?>/news/news.php?id=<?php echo $record[$i]->news_id?>" target=_blank><?php echo $record[$i]->short_title?></a></li>
-  					<? }?>
+  					<li><a style="color:#ff0000; font-weight:bold;" href="/vote/vote.php?vote_id=<?php echo $vote[0]->id;?>" target=_blank><?php echo $vote[0]->name;?></a></li>
+  					<li><a style="color:#ff0000; font-weight:bold;" href="/home/space.php?uid=<?php echo $qz[0]->uid;?>&do=thread&id=<?php echo $qz[0]->tid;?>" target=_blank><?php echo $qz[0]->subject;?></a></li>
+  					<li><a style="color:#ff0000; font-weight:bold;" href="/bbs/viewthread.php?tid=<?php echo $bbs[0]->tid;?>" target=_blank><?php echo $bbs[0]->subject;?></a></li>
+  					<li><a style="color:#ff0000; font-weight:bold;" href="/bbs/viewthread.php?tid=<?php echo $bbsvideo[0]->tid;?>" target=_blank><?php echo $bbsvideo[0]->subject;?></a></li>
+  					<li><a style="color:#ff0000; font-weight:bold;" href="/bbs/viewthread.php?tid=<?php echo $bbsvideo[1]->tid;?>" target=_blank><?php echo $bbsvideo[1]->subject;?></a></li>
  					</ul>	
   				
   							
