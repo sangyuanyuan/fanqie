@@ -812,7 +812,7 @@ total("首页","other");
    				<?php
  						$sql = 'select n.id as news_id,n.short_title,n.tags,c.platform,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄专栏" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 5';
 						$record=$db -> query($sql);
-						$pic="select i.src,i.id,i.src2 from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影首页海报' order by i.priority asc,i.created_at desc";
+						$pic="select i.src,i.id,i.src2,i.url from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影首页海报' order by i.priority asc,i.created_at desc";
 						$photo=$db->query($pic);
 						$sql = "select name,id from smg_vote where category_id=149 and is_adopt=1 and id=248 order by priority asc,created_at desc";
 						$vote = $db->query($sql);
