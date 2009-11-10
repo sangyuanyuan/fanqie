@@ -34,6 +34,10 @@
 			<td align="left"><input type="text" name="post[priority]" id="priority" class="required number"></td>
 		</tr>
 		<tr class=tr3>
+			<td>归属：</td>
+			<td align="left"><select name="post[property]" id="property"><option value="1">上海广播电视台</option><option value="2">上海东方传媒集团有限公司</option></select></td>
+		</tr>
+		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
 		<input type="hidden" name="db_table" value="smg_dept_list">

@@ -10,7 +10,7 @@
 					}
 					else
 					{
-						$sql = 'select nick_name,point from smg_question_record where r_type="wydt" and r_id=36 order by point desc limit 10';	
+						$sql = 'select nick_name,point from smg_question_record where r_type="wydt" and r_id=-1 order by point desc limit 10';	
 					}
 					$records = $db->query($sql);
 					$count = count($records);
