@@ -460,14 +460,15 @@ $db->execute($sql); ?>
 			 $clickcount=$db->query($sql);
 			 for($i=0;$i<count($clickcount);$i++)
 			 {
-			 	if($clickcount[$i]->name!="集团办公室"&&$clickcount[$i]->name!="传媒人报")
+			 	if($clickcount[$i]->name!="集团办公室"&&$clickcount[$i]->name!="传媒人报"&&$clickcount[$i]->name="精神文明办")
 			 	{
 			 			$click[]=array((int)$clickcount[$i]->num,$clickcount[$i]->name);
 			 	}
 			 	else if($clickcount[$i]->name=="集团办公室")
 			 	{
 			 			$cmrb=$db->query("select num from smg_djl_count where name='传媒人报'");
-			 			$jtbgs=(int)$clickcount[$i]->num+(int)$cmrb[0]->num;
+			 			$jswmb=$db->query("select num from smg_djl_count where name='精神文明办'");
+			 			$jtbgs=(int)$clickcount[$i]->num+(int)$cmrb[0]->num+(int)$jswmb[0]->num;
 			 			$click[]=array($jtbgs,$clickcount[$i]->name);
 			 	}
 			 }

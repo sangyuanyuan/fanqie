@@ -1,6 +1,6 @@
 ﻿<div id=logo><embed src="sxxx.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="150"></embed></div>
 <?php
-$deptsort = $db->query('SELECT sum(s.click_count) as djl,d.name FROM smg_subject_items i inner join smg_subject sb on i.subject_id=sb.id and sb.name="三项学习教育专题" inner join smg_news s on i.resource_id=s.id inner join smg_dept d on s.dept_id=d.id  group by s.dept_id order by djl desc limit 10');
+$deptsort = $db->query('SELECT sum(s.click_count) as djl,d.name FROM smg_subject_items i inner join smg_subject sb on i.subject_id=sb.id and sb.name="三项学习教育专题" inner join smg_news s on i.resource_id=s.id inner join smg_dept d on s.dept_id=d.id  group by s.dept_id order by djl desc limit 8');
 $xxjb = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="信息简报" order by i.priority asc, n.created_at desc limit 7');
 $zxdt = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="最新动态" order by i.priority asc, n.created_at desc');
 $jdls = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="经典论述" order by i.priority asc, n.created_at desc limit 6');
@@ -19,7 +19,7 @@ $mtpl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 						<a target="_blank" href="sxxx_blog.php"><img style="margin-top:5px; margin-left:1px;" border=0 src="images/hdsq-1.jpg"></a>
 						<div style="margin-right:10px; font-size:14px; font-weight:bold; float:right; display:inline;"><a target="_blank" href="kbsm.doc">开博说明</a>　<a target="_blank" href="/login/login.php">我要开博</a></div>
 						<div id=content>
-							
+							<a style="margin-top:10px; float:left; display:inline;" target="_blank" href="/newscentersxxx/"><img width=225 border=0 src="newscentersxxx.jpg"></a>
 							<div class=title>学实活动</div>			
 								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=53">领导讲话</a></div>
 								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=54">步骤安排</a></div>
