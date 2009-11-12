@@ -11,15 +11,19 @@
 		css_include_tag('top','bottom','thickbox','zone_video');
 		use_jquery();
  	?>
+ 	
 </head>
 <body>
 	<?php
 		require_once('../inc/top.inc.html');
-		js_include_once_tag('thickbox');
+		js_include_once_tag('thickbox','total');
 		$db=get_db();
 		$pic="select i.src,i.id,i.src2 from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' order by i.priority asc,i.created_at desc";
 		$photo=$db->query($pic);
 	?>
+	<script>
+total("高清视频","zone");
+</script>
 	<div id="ibody">
 		<div id="top_box">
 			<div id="bbs">
