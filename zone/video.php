@@ -139,7 +139,7 @@
 				<?php }else{ ?>
 				<embed src="<?php echo $news[0]->target_url; ?>" quality="high" width="630" height="375" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>
 				<?php } ?>
-				<div style="width:630px; margin-top:13px; line-height:20px; color:#ffffff; font-size:18px; font-weight:bold; text-align:center; float:left; display:inline;">双击视频进入全屏模式</div>
+				<div style="width:630px; height:20px; margin-top:13px; line-height:20px; color:#ffffff; font-size:18px; font-weight:bold; text-align:center; float:left; display:inline;">双击视频进入全屏模式</div>
 			</div>
 			
 		</div>
