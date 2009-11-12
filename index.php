@@ -821,7 +821,7 @@ total("首页","other");
 						$photo=$db->query($pic);
 						$sql = "select name,id from smg_vote where category_id=149 and is_adopt=1 and id=248 order by priority asc,created_at desc";
 						$vote = $db->query($sql);
-						$sql = "select tid,subject,uid from home_thread where tagid=8 order by tid desc limit 1";
+						$sql = "select tid,subject,uid from home_thread where tagid=8 order by tid desc limit 4";
 						$qz = $db->query($sql);
 						$sql="select tid,subject from bbs_threads where fid=72 and authorid!=0 order by tid desc limit 1";
 						$bbs=$db->query($sql);
@@ -831,10 +831,12 @@ total("首页","other");
   				<a href="<?php echo $photo[0]->url;?>" target=_blank><img style="width:60px; height:96px;" src="<?php echo $photo[0]->src; ?>" border=0></a>
   				<ul>
   					<li><a style="color:#ff0000; font-weight:bold;" href="/vote/vote.php?vote_id=<?php echo $vote[0]->id;?>" target=_blank><?php echo $vote[0]->name;?></a></li>
-  					<li><a href="/home/space.php?uid=<?php echo $qz[0]->uid;?>&do=thread&id=<?php echo $qz[0]->tid;?>" target=_blank><?php echo $qz[0]->subject;?></a></li>
-  					<li><a href="/bbs/viewthread.php?tid=<?php echo $bbs[0]->tid;?>" target=_blank><?php echo $bbs[0]->subject;?></a></li>
+  					<?php for($i=0;$i<count($qz);$i++){ ?>
+  						<li><a href="/home/space.php?uid=<?php echo $qz[$i]->uid;?>&do=thread&id=<?php echo $qz[$i]->tid;?>" target=_blank><?php echo $qz[$i]->subject;?></a></li>
+  					<?php } ?>
+  					<!--<li><a href="/bbs/viewthread.php?tid=<?php echo $bbs[0]->tid;?>" target=_blank><?php echo $bbs[0]->subject;?></a></li>
   					<li><a href="/bbs/viewthread.php?tid=<?php echo $bbsvideo[0]->tid;?>" target=_blank><?php echo $bbsvideo[0]->subject;?></a></li>
-  					<li><a href="/bbs/viewthread.php?tid=<?php echo $bbsvideo[1]->tid;?>" target=_blank><?php echo $bbsvideo[1]->subject;?></a></li>
+  					<li><a href="/bbs/viewthread.php?tid=<?php echo $bbsvideo[1]->tid;?>" target=_blank><?php echo $bbsvideo[1]->subject;?></a></li>-->
  					</ul>	
   				
   							
