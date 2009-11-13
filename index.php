@@ -464,30 +464,34 @@ total("首页","other");
  				$fzyjzb=$db->query($sql);
  			?>
 			<div id=t_r_c_b_c>
-				<a target="_blank" href="/news/newscenter_list.php"><img border="0" src="/images/newscenterlogo.jpg"></a>
 				<div id="title"><img src="/images/index/fzyjbb.jpg"></div>
 				<div class="cl"><a target="_blank" <?php if((int)$stgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=133">视听观察周刊</a></div>
 				<div class="cl"><a target="_blank" <?php if((int)$jmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=134">节目观察周刊</a></div>
 				<div class="cl"><a target="_blank" <?php if((int)$cmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=135">传媒观察周刊</a></div>
 				<div class="cl"><a target="_blank" <?php if((int)$fzyjzb[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=136">发展研究专报</a></div>
 			</div>
+			
 
  			<!-- start top_right_center_bottom_right !-->
   		
 			<div id=t_r_c_b_r>
-					<div id=title></div>
-					<a href="/news/news_list.php?id=64" id=more target=_blank></a>
-					<div id=box1>
-						<a target="_blank" href="/sslfx/"><img border=0 src="/images/index/rating_logo.jpg"></a>
+				<a target="_blank" href="/news/newscenter_list.php"><img border="0" src="/images/newscenterlogo.jpg"></a>
+					<!--<div id=title></div>
+					<a href="/news/news_list.php?id=64" id=more target=_blank></a>-->
+					<div id=box1 style="margin-top:10px;">
+						<a target="_blank" href="/sslfx/"><img border=0 src="/images/index/rating_logo.jpg"></a><br>
+						<ul>
+							<li><a style="margin-top:5px; margin-right:5px; color:red; font-weight:bold; text-decoration:none;" target="_blank" href="/news/news_list.php?id=64">更多番茄工具</a></li>
+						</ul>
 					</div>
-					<div id=box2>
+					<!--<div id=box2>
 						<ul>
 							<li>·<a style="color:red; font-weight:bold;" target="_blank" href="/sslfx/">电视节目收视定量分析工具</a></li>
-							<li>·<a target="_blank" href="/server/news/news.php?id=12302">员工自助系统</a></a></li>
-							<li>·<a target="_blank" href="/server/news/news.php?id=12312">人力资源部常用表格</a></a></li>
+							<li>·<a target="_blank" href="/server/news/news.php?id=12302">员工自助系统</a></li>
+							<li>·<a target="_blank" href="/server/news/news.php?id=12312">人力资源部常用表格</a></li>
 							<li>·<a target="_blank" href="/server/news/news.php?id=12310">办公室常用表格</a></li>
 						</ul>						
-					</div>
+					</div>-->
  			</div>
  			<!-- end !-->
 		
