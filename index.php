@@ -1050,7 +1050,7 @@ total("首页","other");
 				              <TBODY>
 				              <TR align=left>
 				              	<?php  
-									$sql = 'select t1.id as i_id,t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc limit 3';
+									$sql = 'select t1.id as i_id,t1.title,t1.description,t1.url,t1.src from smg_images t1 join smg_category t2 on t1.category_id=t2.id where t1.is_adopt=1 and t2.name="在线杂志" and t2.category_type="picture" order by created_at desc';
 									$records = $db->query($sql);
 									$count = count($records);
 									for($i=0;$i<$count;$i++){
