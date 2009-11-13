@@ -460,7 +460,7 @@ $db->execute($sql); ?>
 			 $clickcount=$db->query($sql);
 			 for($i=0;$i<count($clickcount);$i++)
 			 {
-			 	if($clickcount[$i]->name!="集团办公室"&&$clickcount[$i]->name!="传媒人报"&&$clickcount[$i]->name="精神文明办")
+			 	if($clickcount[$i]->name!="集团办公室"&&$clickcount[$i]->name!="传媒人报"&&$clickcount[$i]->name!="精神文明办")
 			 	{
 			 			$click[]=array((int)$clickcount[$i]->num,$clickcount[$i]->name);
 			 	}
