@@ -10,7 +10,7 @@
 		js_include_once_tag('total');
 	?>
 <script>
-	total("番茄团购","server");
+	total("电视新闻中心电子杂志","news");
 </script>
 </head>
 <body>
