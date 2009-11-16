@@ -29,7 +29,7 @@
 		<tr class="tr3" >
 			<td>选项</td>
 			<td align="left">
-			<input type="text" name="item<?php echo $i;?>[name]" class="required"><a class="thickbox" param="<?php echo $i;?>" title="测试结果" href="xlcs_result.php?height=255&width=320">测试结果</a>　<a class="thickbox" title="关联下一题" param="<?php echo $i;?>" href="xlcs_child.php?height=600&width=400">关联下一题</a>
+			<input type="text" name="item<?php echo $i;?>[name]" class="required"><textarea id="item<?php echo $i; ?>[content]"></textarea><a class="thickbox" param="<?php echo $i;?>" title="测试结果" href="xlcs_result.php?height=255&width=320">测试结果</a>　<a class="thickbox" title="关联下一题" param="<?php echo $i;?>" href="xlcs_child.php?height=600&width=400">关联下一题</a>
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
 			<?php }?>
