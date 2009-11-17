@@ -828,7 +828,7 @@ total("首页","other");
 						$vote = $db->query($sql);
 						$sql = "select tid,subject,uid from home_thread where tagid=8 order by tid desc limit 3";
 						$qz = $db->query($sql);
-						$sql="SELECT * FROM home_blog order by dateline desc";
+						$sql="SELECT * FROM home_blog order by dateline desc limit 1";
 						$homeblog=$db->query($sql);
 						$sql="select tid,subject from bbs_threads where fid=72 and authorid!=0 order by tid desc limit 1";
 						$bbs=$db->query($sql);
@@ -839,9 +839,9 @@ total("首页","other");
   				<ul>
   					<li><a style="color:#ff0000; font-weight:bold;" href="/vote/vote.php?vote_id=<?php echo $vote[0]->id;?>" target=_blank><?php echo $vote[0]->name;?></a></li>
   					<?php for($i=0;$i<count($qz);$i++){ ?>
-  						<li><a href="/home/space.php?uid=<?php echo $qz[$i]->uid;?>&do=blog&id=<?php echo $qz[$i]->tid;?>" target=_blank><?php echo $qz[$i]->subject;?></a></li>
+  						<li><a href="/home/space.php?uid=<?php echo $qz[$i]->uid;?>&do=thread&id=<?php echo $qz[$i]->tid;?>" target=_blank><?php echo $qz[$i]->subject;?></a></li>
   					<?php } ?>
-  					<li><a href="/home/space.php?uid=<?php echo $homeblog[$i]->uid;?>&do=thread&id=<?php echo $homeblog[$i]->blogid;?>" target=_blank><?php echo $homeblog[$i]->subject;?></a></li>
+  					<li><a href="/home/space.php?uid=<?php echo $homeblog[0]->uid;?>&do=blog&id=<?php echo $homeblog[0]->blogid;?>" target=_blank><?php echo $homeblog[0]->subject;?></a></li>
   					<!--<li><a href="/bbs/viewthread.php?tid=<?php echo $bbs[0]->tid;?>" target=_blank><?php echo $bbs[0]->subject;?></a></li>
   					<li><a href="/bbs/viewthread.php?tid=<?php echo $bbsvideo[0]->tid;?>" target=_blank><?php echo $bbsvideo[0]->subject;?></a></li>
   					<li><a href="/bbs/viewthread.php?tid=<?php echo $bbsvideo[1]->tid;?>" target=_blank><?php echo $bbsvideo[1]->subject;?></a></li>-->
