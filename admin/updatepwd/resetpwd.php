@@ -10,8 +10,8 @@
 	require_once("../../frame.php");
 	js_include_tag("total");
 	validate_form('login');
-	$cookie= (isset($_COOKIE['smg_role'])) ? $_COOKIE['smg_role'] : 0;
-	if($cookie==0)
+	$cookie= (isset($_COOKIE['smg_role'])) ? $_COOKIE['smg_role'] : "";
+	if($cookie=="")
 	{
 			redirect('resetpwdlogin.php','js');
 	}
