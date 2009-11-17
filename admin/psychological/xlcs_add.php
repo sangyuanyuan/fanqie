@@ -39,10 +39,11 @@
 				}
 		?>
 		<input type="hidden" name="item_num" id="num" value="2">
-		<input type="hidden" name="project_id" value="<?php echo $project_id;?>">
 		<tr class="tr3">
 			<td colspan="2" width="795" align="center"><button type="button" id="sub">发布题目</button></td>
 		</tr>
+		<input type="hidden" name="project_id" value="<?php echo $project_id;?>">
+		<input type="hidden" name="question[created_at]" value="<?php echo date("y-m-d");?>">
 	</table>
 	</form>
 </body>
