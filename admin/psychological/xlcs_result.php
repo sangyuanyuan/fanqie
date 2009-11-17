@@ -1,22 +1,25 @@
 ﻿<?php
-    require_once('../frame.php');
+    require_once('../../frame.php');
+    $id=$_REQUEST['id'];
 ?>
-<div style="width:280px; height:200px; float:left; display:inline;">
-<div style='width:280px; height:200px; line-height:15px; float:left; display:inline;'>
-	内容：<?php show_fckeditor('flower_comment','Admin',true,"200");?><br><br>
+<div style="width:300px; height:200px; float:left; display:inline;">
+<div style='width:300px; height:200px; line-height:20px; float:left; display:inline;'>
+	内容：<?php show_fckeditor('flower_comment','Title',true,"160","","300");?><br><br>
 	<button type="button" id="button"  style=" float:left; display:inline;">提交</button>
 </div>
 </div>
 <script>
 	$(function(){
 		$("#button").click(function(){
+			var parentwin=window.parent;
 			var oEditor = FCKeditorAPI.GetInstance('flower_comment');
 			var content = oEditor.GetHTML();
-			if($(content==''){
-				alert('请输入留言内容！');
+			var fckcomment=FCKeditorAPI.GetInstance('hidden_comment<?php echo $id;?>');
+			if(content==''){
+				alert('请输入内容！');
 				return false;
 			}
-			$("#hidden_flower_comment").attr("value",content);
+			fckcomment.SetHTML(content);
 			tb_remove();
 		})
 	})

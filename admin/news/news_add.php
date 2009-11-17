@@ -3,9 +3,7 @@
 	$role = judge_role();
 	$dept_id = $_REQUEST['dept_id'];
 	$type = $_REQUEST['type'];
-	
-	
-	
+
 	$dept = new table_class("smg_dept");
 	$rows_dept = $dept->find("all");
 	
