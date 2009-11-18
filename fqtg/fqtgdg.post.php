@@ -44,7 +44,8 @@ else
 		$peson=$db->query($sql);
 		if(count($peson)==0)
 		{
-			$StrSql='insert into smg_tg_signup(tg_id,name,spname,num,phone,address,createtime,remark) values ('.$_POST['id'].',"'.$cookie.'","'.$_POST['spname'].'",'.$maxnum[0]->personmax.',"'.$_POST['phone'].'","'.$_POST['address'].'",now(),"'.$_POST['remark'].'")';
+			$StrSql='insert into smg_tg_signup(tg_id,name,spname,num,phone,address,createtime,remark) values ('.$_POST['tg_id'].',"'.$cookie.'","'.$_POST['spname'].'",'.$maxnum[0]->personmax.',"'.$_POST['phone'].'","'.$_POST['address'].'",now(),"'.$_POST['remark'].'")';
+			echo $StrSql;
 			$Record = $db->execute($StrSql);
 			alert("订购成功！");
 		}
