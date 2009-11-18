@@ -20,11 +20,11 @@
 <div id="slideshowvertical">
 	<?php 
 		$db=get_db();
-		$sql="select * from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' order by i.created_at desc";
+		$sql="select * from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' and i.is_adopt=1 order by i.created_at desc";
 		$image=$db->query($sql);
 		if($_REQUEST['id']!="")
 		{
-			$sql="select * from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' and i.id=".$_REQUEST['id'];
+			$sql="select * from smg_images i left join smg_category c on i.category_id=c.id where c.category_type='picture' and c.name='高清电影海报' and i.is_adopt=1 and i.id=".$_REQUEST['id'];
 			$imagebig=$db->query($sql);	
 		}
 	?>
