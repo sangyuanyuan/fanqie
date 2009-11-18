@@ -163,7 +163,7 @@
 		else
 		{
 			$page_size=5;
-			$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc limit ".(((int)$page-1)*$page_size+5).",".$page_size;
+			$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc limit ".(((int)$page-1)*$page_size).",".$page_size;
 		}
 			$comment=$db->query($sql);
 			
@@ -291,12 +291,12 @@ $db->execute($sql); ?>
   当前第<select name="pageselect" id="pageselect" onChange="jumppage('<?php echo $string."&page="; ?>',this.options[this.options.selectedIndex].value);">
 	<?php	
 	//产生所有页面链接
-	for($i=1;$i<$page_count;$i++){ ?>
+	for($i=1;$i<=$page_count;$i++){ ?>
 		<option <?php if($page== $i) echo 'selected="selected"';?> value="<?php echo $i;?>" ><?php echo $i;?></option>
 		<?php	
 	}
 	?>
-	</select>页　共<?php echo $page_count-1;?>页
+	</select>页　共<?php echo $page_count;?>页
 	<script>
 			function jumppage(urlprex,pageindex)
 			{
