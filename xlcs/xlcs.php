@@ -48,7 +48,7 @@
 			for($i=0;$i<$count;$i++){
 		?>
 		<div class="question_option">
-			<input class=radio type="radio" name="<?php echo $items[$i]->id;?>">
+			<input class=radio type="radio" name="radio" value="<?php echo $items[$i]->id;?>">
 			<?php 
 				echo num_to_ABC($i).$items[$i]->name;
 			?>
@@ -75,7 +75,7 @@
 	
 	//handle = setInterval("timer()",1000); 
 	$('input:radio').click(function(){
-			$('#chosen_radio').attr('value',$(this).attr('name'));				
+			$('#chosen_radio').attr('value',$(this).attr('value'));				
 	});
 	$("#submit").click(function(){
 		//clearInterval(handle);

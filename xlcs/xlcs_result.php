@@ -26,6 +26,7 @@
 </head>
 	
 <body>
+<?php require_once('../inc/top.inc.php'); ?>
 <div id=ibody>
 	<div id=ibody_left>
 		<div id=l_t>
