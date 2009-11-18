@@ -1,10 +1,10 @@
 ﻿<?php
-    require_once('../frame.php');
+  require_once('../frame.php');
 	$id = $_REQUEST['id'];
 	$xlcs_id=$_REQUEST['xlcsid'];
 	if(($id==""||$id==null)&&($xlcs_id==""||$xlcs_id==null)){die('没有找到网页');}
 	$db = get_db();
-	if($question_id=="")
+	if($xlcs_id=="")
 	{
 		$sql = 'select id,title,content from smg_xlcs where project_id='.$id.' order by priority asc,created_at desc';
 	}
