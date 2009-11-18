@@ -284,7 +284,7 @@ $db->execute($sql); ?>
   当前第<select name="pageselect" id="pageselect" onChange="jumppage('<?php echo $string."&page="; ?>',this.options[this.options.selectedIndex].value);">
 	<?php	
 	//产生所有页面链接
-	for($i=1;$i<=$page_count;$i++){ ?>
+	for($i=1;$i<$page_count;$i++){ ?>
 		<option <?php if($page== $i) echo 'selected="selected"';?> value="<?php echo $i;?>" ><?php echo $i;?></option>
 		<?php	
 	}
