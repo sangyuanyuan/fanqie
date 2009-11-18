@@ -16,7 +16,7 @@
 			<td colspan="4">搜索 <input id="search_text" type="text" value="<? echo $key;?>"><input type="button" value="搜索" id="subject_search" style="border:1px solid #0000ff; height:21px"></td>
 		</tr>
 		<tr class="tr2">
-			<td width=50>选择</td><td width=350>专题名称</td><td width="100">新闻类别</td><td width="100">发布时间</td>
+			<td width=50>选择</td><td width=350>题目名称</td><td width="100">发布时间</td>
 		</tr>
 		<?php
 			$subject = new table_class("smg_xlcs");
@@ -33,7 +33,7 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><input type="radio" value="<?php echo $subjects[$i]->id;?>" name="subject" style="width:10px;"></td>
-					<td><?php echo $subjects[$i]->name;?></td>
+					<td><?php echo $subjects[$i]->title;?></td>
 					<td><?php echo substr($subjects[$i]->created_at, 0, 10);?></td>					
 				</tr>
 		<?php
@@ -47,7 +47,6 @@
 				<td colspan="4"><button id="save" style="width:150px;">确定</button><button id="cancel" style="width:150px;">关闭</button>
 						<input type="hidden" id="chosen_subject_id" value="">
 						<input type="hidden" id="chosen_subject_name" value="">
-						<input type="hidden" id="chosen_subject_category_id" value="">
 				</td>
 		</tr>
 	</table>
@@ -63,18 +62,16 @@
 			else
 			{
 				str = $('#chosen_subject_name').attr('value') + '<a href="#" id="delete_subject" style="color:blue">删除</a>';
-				$('#hidden_subject_id').val(subject_id);
-				$('#hidden_subject_category_id').val(subject_category_id);
-				$('#hidden_delete_subject').val('1');
+				$('#item2child_id').attr('value',subject_id);
 				//alert($('#chosen_subject_id').attr('value'));
-				$('#td_subject').html(str);
+				$('#td_xlcs<?php echo $id;?>').html(str);
 				tb_remove();
 				$('#delete_subject').click(function(e){
 					e.preventDefault();
-					str = '<a style="color:blue;" href="xlcs_child.php?width600&height=400&id=<?php echo $id;?>" class="thickbox" id="a_assign_subject">关联专题</a>';
-					$('#td_subject').html(str);
-					$('#hidden_delete_subject').val('2');				
-					tb_init('#a_assign_subject');	
+					str = '<input type="hidden" id="item<?php echo $id;?>[child_id]" name="item<?php echo $id;?>[child_id]"><a href="xlcs_child.php?width=500&height=400&id=<?php echo $id;?>" class="thickbox" id="child<?php echo $id;?>">关联下一题</a>';
+					$('#td_xlcs<?php echo $id;?>').html(str);			
+					tb_init('#child<?php echo $id;?>');	
+				});
 			}
 		});
 		$('#cancel').click(function(){
@@ -82,11 +79,7 @@
 		});	
 		$('input:radio').click(function(){
 			$('#chosen_subject_id').attr('value',$(this).attr('value'));
-			$('#chosen_subject_name').attr('value',$(this).parent().next('td').html());
-			$('#chosen_subject_category_id').attr('value','');						
-		});
-		$('.subject_category_select').change(function(){
-			$('#chosen_subject_category_id').attr('value',$(this).attr('value'));
+			$('#chosen_subject_name').attr('value',$(this).parent().next('td').html());					
 		});
 		$('#search_text').keydown(function(e){
 			if(e.keyCode == 13){

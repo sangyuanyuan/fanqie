@@ -28,8 +28,6 @@
 	$category->echo_jsdata();
 	$db = get_db();
 	$rows_dept = $db->query('select * from smg_dept');
-	
-	
 ?>
 <body style="background:#E1F0F7">
 	<form id="news_edit" enctype="multipart/form-data" action="news.post.php" method="post"> 

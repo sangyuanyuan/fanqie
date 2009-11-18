@@ -24,12 +24,16 @@
 			<td width="100">题　目</td>
 			<td align="left"><input type="text" name="xlcs[title]" class="required"></td>
 		</tr>
+		<tr class="tr3">
+			<td width="100">内　容</td>
+			<td align="left"><?php show_fckeditor('xlcs[content]','Admin',true,"256"); ?></td>
+		</tr>
 		<?php for($i=1;$i<=2;$i++){
 		?>
 		<tr class="tr3" >
-			<td>选项</td>
+			<td>选　项</td>
 			<td align="left">
-			<input type="text" name="item<?php echo $i;?>[name]" class="required"><div style="display:none;"><?php show_fckeditor('hidden_comment'.$i,'Title',false,"160","","300"); ?></div><a class="thickbox" title="测试结果" href="xlcs_result.php?height=270&width=350&id=<?php echo $i;?>">测试结果</a>　<a class="thickbox" title="关联下一题" href="xlcs_child.php?height=600&width=400?id=<?php echo $i;?>">关联下一题</a>
+			<input type="text" name="item<?php echo $i;?>[name]" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160","","300"); ?></div><a class="thickbox" title="测试结果" href="xlcs_result.php?height=270&width=350&id=<?php echo $i;?>">测试结果</a>　<input type="hidden" id="item<?php echo $i;?>child_id" name="item<?php echo $i;?>[child_id]"><span id="td_xlcs<?php echo $i;?>"><a id="child<?php echo $i;?>" class="thickbox" title="关联下一题" href="xlcs_child.php?height=500&width=600&id=<?php echo $i;?>">关联下一题</a></span>
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
 			<?php }?>
@@ -42,8 +46,8 @@
 		<tr class="tr3">
 			<td colspan="2" width="795" align="center"><button type="button" id="sub">发布题目</button></td>
 		</tr>
-		<input type="hidden" name="project_id" value="<?php echo $project_id;?>">
-		<input type="hidden" name="question[created_at]" value="<?php echo date("y-m-d");?>">
+		<input type="hidden" name="xlcs[project_id]" value="<?php echo $project_id;?>">
+		<input type="hidden" name="xlcs[created_at]" value="<?php echo date("y-m-d");?>">
 	</table>
 	</form>
 </body>
@@ -55,7 +59,7 @@
 		var num = 2;
 		$("#add_item").click(function(){
 			num++;
-			$(this).parent().parent().next().after('<tr class="tr3" ><td>选项</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("hidden_comment'+num+'","Title",false,"160","","300"); ?></div><a class="thickbox" title="测试结果" href="xlcs_result.php?height=255&width=320">测试结果</a>　<a class="thickbox" title="测试结果" href="xlcs_child.php?height=600&width=400">关联下一题</a>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
+			$(this).parent().parent().next().after('<tr class="tr3" ><td>选　项</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("hidden_comment'+num+'","Title",false,"160","","300"); ?></div><a class="thickbox" title="测试结果" href="xlcs_result.php?height=255&width=320&id='+num+'">测试结果</a>　<input type="hidden" id="item'+num+'child_id" name="item'+num+'[child_id]"><span id="td_xlcs<?php echo $i;?>"><a class="thickbox" title="关联下一题" href="xlcs_child.php?height=500&width=600&id='+num+'">关联下一题</a></span>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
 			$("#num").attr('value',num);
 			$(".del_item").click(function(){
 				$(this).parent().parent().remove();
@@ -63,7 +67,9 @@
 				$("#num").attr('value',num);
 			});
 		});
-		$(".thickbox")
+		$("#sub").click(function(){
+			$("#xlcs_add").submit();
+		});
 		
 	});	
 </script>

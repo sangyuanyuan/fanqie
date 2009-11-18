@@ -699,7 +699,7 @@ total("首页","other");
 				<div class=content_trrb id=content_trrb1 style="display:inline">
 					<ul>
 					<?php for($i=0;$i<10;$i++){?>
-						<li><a href="/<?php echo $record_news[$i]->platform ?>/news/news.php?id=<?php echo $record_news[$i]->news_id ?>"   <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo $record_news[$i]->short_title; ?></a></li>
+						<li><a href="/<?php echo $record_news[$i]->platform ?>/news/news.php?id=<?php echo $record_news[$i]->news_id ?>"   <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($record_news[$i]->short_title); ?></a></li>
 					<? }?>	
 					</ul>
 				</div>

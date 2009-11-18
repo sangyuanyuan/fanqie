@@ -14,7 +14,7 @@
 			var parentwin=window.parent;
 			var oEditor = FCKeditorAPI.GetInstance('flower_comment');
 			var content = oEditor.GetHTML();
-			var fckcomment=FCKeditorAPI.GetInstance('hidden_comment<?php echo $id;?>');
+			var fckcomment=FCKeditorAPI.GetInstance('item<?php echo $id;?>[content]');
 			if(content==''){
 				alert('请输入内容！');
 				return false;
