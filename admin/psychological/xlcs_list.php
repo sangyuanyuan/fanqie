@@ -5,10 +5,10 @@
 	if($project_id!=''){
 		if($key!=''){
 			$question = new table_class('smg_xlcs');
-			$records = $question->paginate('all',array('conditions' => 'project_id='.$project_id.' and title  like "%'.trim($key).'%"','order' => 'created_at desc'),18); 
+			$records = $question->paginate('all',array('conditions' => 'project_id='.$project_id.' and title  like "%'.trim($key).'%"','order' => 'priority asc,created_at desc'),18); 
 		}else{
 			$question = new table_class('smg_xlcs');
-			$records = $question->paginate('all',array('conditions' => 'project_id='.$project_id,'order' => 'created_at desc'),18); 
+			$records = $question->paginate('all',array('conditions' => 'project_id='.$project_id,'order' => 'priority asc,created_at desc'),18); 
 		}
 		$project = new table_class('smg_xlcs_subject');
 		$project->find($project_id);
@@ -32,6 +32,7 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
+		js_include_once_tag('admin_pub');
 	?>
 </head>
 <body style="background:#E1F0F7">
@@ -50,17 +51,23 @@
 		<?php 
 		} ?>
 		<tr class="tr2" style="font-weight:bold; font-size:13px;">
-			<td width="580">问题名称</td><td width="180">创建时间</td><td width="150">操作</td>
+			<td width="500">问题名称</td><td width="180">创建时间</td><td width="200">操作</td>
 		</tr>
 		<?php for($i=0;$i<$count;$i++){?>
 		<tr class="tr3" id="<?php echo $records[$i]->id;?>">
 			<td><?php echo $records[$i]->title;?></td>
 			<td><?php echo substr($records[$i]->created_at,0,10);?></td>
-			<td><span style="cursor:pointer" class="del" name="<?php echo $records[$i]->id;?>">删除</span>
-				<a href="xlcs_edit.php?id=<?php echo $records[$i]->id;?>">编辑</a>
+			<td><? if($records[$i]->is_adopt=="1"){?><span class="xlcscan" style="color:#FF0000;cursor:pointer">撤消</span><input type="hidden" value="<?php echo $records[$i]->id;?>"><? }?>
+				<? if($records[$i]->is_adopt=="0"){?><span class="xlcspub" style="color:#0000FF;cursor:pointer">发布</span><input type="hidden" value="<?php echo $records[$i]->id;?>"><? }?>
+				 <a href="xlcs_edit.php?id=<? echo $records[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
+				 <span style="cursor:pointer" class="xlcsdel">删除</span><input type="hidden" value="<?php echo $records[$i]->id;?>">
+				<input type="text" class="priority"  name="<?php echo $records[$i]->id;?>"  value="<?php if('100'!=$records[$i]->priority){echo $records[$i]->priority;};?>" style="width:40px;">
 			</td>
 		</tr>
 		<?  }?>
+		<tr class="tr3">
+			<td colspan=6><?php paginate();?><button id=clear_priority>清空优先级</button><button id=edit_priority>编辑优先级</button></td>
+		</tr>
 	</table>
 	<div class="div_box">
 		<table width="795" border="0">
@@ -94,4 +101,29 @@
 			window.location.href="xlcs_list.php?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
 		}
 	});
+	$(".xlcscan").click(function(){
+			$.post('xlcscz.post.php',{'id':$(this).next().attr('value'),'type':'xlcscan'},function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		});
+		$(".xlcspub").click(function(){
+			$.post('xlcscz.post.php',{
+				'id': $(this).next().attr('value'),
+				'type': 'xlcspub'
+			},function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		});
+		$(".xlcsdel").click(function(){
+			if(!window.confirm("确定要删除吗")){return false;};
+			$.post('xlcscz.post.php',{'id':$(this).next().attr('value'),'type':'xlcsdel'},function(data){
+				 if(data=="OK")
+				  location.reload();
+				}
+			)
+		});
 </script>

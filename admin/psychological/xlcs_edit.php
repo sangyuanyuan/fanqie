@@ -34,6 +34,10 @@
 			<td align="left"><input type="text" name="xlcs[title]" value="<?php echo $question->title;?>" class="required"></td>
 		</tr>
 		<tr class="tr3">
+			<td width="100">优先级</td>
+			<td align="left"><input type="text" name="xlcs[priority]" value="<?php echo $question->priority; ?>"></td>
+		</tr>
+		<tr class="tr3">
 			<td width="100">内　容</td>
 			<td align="left"><?php show_fckeditor('xlcs[content]','Admin',true,"256",$question->content); ?></td>
 		</tr>

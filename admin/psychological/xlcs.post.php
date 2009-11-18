@@ -22,6 +22,10 @@
 		}else{
 			$project_id = $_POST['xlcs']['project_id'];
 		}
+		if($_POST['xlcs']['priority']=="")
+		{
+			$_POST['xlcs']['priority']=100;	
+		}
 		$question->update_attributes($_POST['xlcs']);
 		
 		$question_item = new table_class('smg_xlcs_item');

@@ -25,6 +25,10 @@
 			<td align="left"><input type="text" name="xlcs[title]" class="required"></td>
 		</tr>
 		<tr class="tr3">
+			<td width="100">优先级</td>
+			<td align="left"><input type="text" name="xlcs[priority]"></td>
+		</tr>
+		<tr class="tr3">
 			<td width="100">内　容</td>
 			<td align="left"><?php show_fckeditor('xlcs[content]','Admin',true,"256"); ?></td>
 		</tr>
@@ -46,6 +50,7 @@
 		<tr class="tr3">
 			<td colspan="2" width="795" align="center"><button type="button" id="sub">发布题目</button></td>
 		</tr>
+		<input type="hidden" name="xlcs[is_adopt]" value="0">
 		<input type="hidden" name="xlcs[project_id]" value="<?php echo $project_id;?>">
 		<input type="hidden" name="xlcs[created_at]" value="<?php echo date("y-m-d");?>">
 	</table>
