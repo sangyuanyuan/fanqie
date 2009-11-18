@@ -57,7 +57,7 @@ if($_POST['uptype']=="tginsert")
 			$StrSql.=',"/upload/photo/'.$uploadfilenameall.'","'.$_POST['price'].'","'.$_POST['marketprice'].'"';
 			if($_POST['personmax']!="")
 			{
-				$StrSql+=','.$_POST['personmax'];
+				$StrSql.=','.$_POST['personmax'];
 			}
 			$StrSql.=')';
 			$Record = $db->execute($StrSql);

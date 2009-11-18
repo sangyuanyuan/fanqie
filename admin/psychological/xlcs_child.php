@@ -62,7 +62,7 @@
 			else
 			{
 				str = $('#chosen_subject_name').attr('value') + '<a href="#" id="delete_subject" style="color:blue">删除</a>';
-				$('#item2child_id').attr('value',subject_id);
+				$('#item<?php echo $id;?>child_id').attr('value',subject_id);
 				//alert($('#chosen_subject_id').attr('value'));
 				$('#td_xlcs<?php echo $id;?>').html(str);
 				tb_remove();

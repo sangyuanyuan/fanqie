@@ -1,0 +1,10 @@
+﻿body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+
+#ibody{width:995px; margin:0 auto; margin-top:10px;}
+
+#ibody_left{width:995px; float:left; display:inline;}
+
+#l_t{width:989px; height:20px; line-height:20px; margin-top:10px; margin-left:3px; border-bottom:1px dashed #DDDDDD; float:left; display:inline;}
+#l_t a{color:#B23200; text-decoration:none;}
+#l_b{width:993px; margin-top:10px; padding-bottom:10px; border:1px solid #DDDDDD;  float:left; display:inline;}
+#l_b #content{width:953px; margin-top:30px; margin-left:20px; line-height:20px; font-size:14px; overflow:hidden; float:left; display:inline;}
