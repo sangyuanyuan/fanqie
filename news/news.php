@@ -111,7 +111,7 @@
 			$about=search_keywords($id,$record[0]->keywords,'smg_news',$record,10,"n.priority asc,n.created_at desc");
 		}
 		$page=$_REQUEST['page'];
-		if($page==1||$page==""){
+		/*if($page==1||$page==""){
 			$page_size=5;
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->query($sql);
@@ -136,7 +136,7 @@
 			$comment=$db->query($sql);
 		}
 		else
-		{
+		{*/
 			$page_size=10;
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->query($sql);
@@ -156,10 +156,18 @@
 		if ($page > $page_count)  {$page=$page_count;}
 		if ($page==0)  {$page=1;}
 		if ($page<0)  {$page=1;}
+		if($page!=1)
+		{
 			$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc limit ".(((int)$page-2)*$page_size+5).",".$page_size;
+		}
+		else
+		{
+			$page_size=5;
+			$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc limit ".(((int)$page-1)*$page_size+5).",".$page_size;
+		}
 			$comment=$db->query($sql);
 			
-		}
+		//}
 		//$sql="select count(*) as flowernum,(select count(*) from smg_digg cd where cd.type='tomato' and cd.diggtoid=d.diggtoid and cd.file_type='comment') as tomatonum,(select count(*) from smg_digg cd where cd.diggtoid=d.diggtoid and cd.file_type='comment') as total,c.*,d.diggtoid from smg_digg d inner join smg_comment c on d.diggtoid=c.id and d.type='flower' and d.file_type='comment' and resource_type='news' and  c.resource_id=".$id." and d.file_type='comment' group by diggtoid order by total desc limit 2";
 		//$digg=$db->query($sql);
   ?>
@@ -218,7 +226,6 @@ $db->execute($sql); ?>
 			<?php if($record[0]->categoryname=="我要报料"){?><div id=lc>此文系番茄网网友报料新闻，不代表番茄网的观点或立场。</div><?php } ?>
 			<?php } ?>
 			<?php if($record[0]->is_commentable==1){ 
-				
 				if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
@@ -266,7 +273,7 @@ $db->execute($sql); ?>
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page_count-1; ?>">[尾页]</a></span>
 	<?php	
 	}
-	if ($page < $page_count && $page > 1 )
+	if ($page < $page_count-1 && $page > 1 )
 	{?>
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=1">[首页]</a></span> 
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page-1;?>">[上页]</a></span>			
@@ -274,7 +281,7 @@ $db->execute($sql); ?>
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page_count-1; ?>">[尾页]</a></span>		
 	 <?php
 	}
-	if ($page == $page_count)
+	if ($page == $page_count-1)
 	{?>
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=1">[首页]</a></span> 
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page-1;?>">[上页]</a></span>		
