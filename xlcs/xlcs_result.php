@@ -33,7 +33,7 @@
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a>
 		</div>
 		<div id=l_b>
-			<div id=content style="border:1px solid #000000;"><?php  echo get_fck_content($xlcs[0]->content);?></div>
+			<div id=content><?php  echo get_fck_content($xlcs[0]->content);?></div>
 		</div>
 			
 	</div>
