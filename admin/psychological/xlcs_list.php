@@ -68,7 +68,7 @@
 		<tr class="tr3">
 			<td colspan=6><?php paginate();?><button id=clear_priority>清空优先级</button><button id=edit_priority>编辑优先级</button></td>
 			<input type="hidden" id="is_dept_list" value="false">
-			<input type="hidden" id="db_talbe" value="smg_news">
+			<input type="hidden" id="db_talbe" value="smg_xlcs">
 		</tr>
 	</table>
 	<div class="div_box">
