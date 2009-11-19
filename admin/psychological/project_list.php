@@ -42,7 +42,7 @@
 				<span style="cursor:pointer" class="del_project" name="<?php echo $record[$i]->id;?>">删除</span>
 				<a href="project_edit.php?id=<?php echo $record[$i]->id;?>">编辑</a>
 				<a href="xlcs_add.php?id=<?php echo $record[$i]->id;?>" style="color:#000000; text-decoration:none">添加题目</a>
-				<a href="/xlcs/xlcs_answer.php?id=<?php echo $record[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none">预览</a>
+				<a href=/xlcs/xlcs.php?id=<?php echo $record[$i]->id;?>" target="_blank" style="color:#000000; text-decoration:none">预览</a>
 			</td>
 		</tr>
 		<?  }?>
