@@ -32,7 +32,7 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_once_tag('admin_pub');
+		js_include_once_tag('admin_pub','smg_category_class');
 	?>
 </head>
 <body style="background:#E1F0F7">
@@ -67,6 +67,8 @@
 		<?  }?>
 		<tr class="tr3">
 			<td colspan=6><?php paginate();?><button id=clear_priority>清空优先级</button><button id=edit_priority>编辑优先级</button></td>
+			<input type="hidden" id="is_dept_list" value="false">
+			<input type="hidden" id="db_talbe" value="smg_news">
 		</tr>
 	</table>
 	<div class="div_box">
