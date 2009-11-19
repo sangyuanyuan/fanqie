@@ -6,7 +6,7 @@
 	$db = get_db();
 	if($xlcs_id=="")
 	{
-		$sql = 'select id,title,content from smg_xlcs where project_id='.$id.' order by priority asc,created_at desc';
+		$sql = 'select id,title,content from smg_xlcs where project_id='.$id.' and is_adopt=1 order by priority asc,created_at desc';
 	}
 	else
 	{
