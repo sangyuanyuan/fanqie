@@ -64,7 +64,8 @@
 		var num = 2;
 		$("#add_item").click(function(){
 			num++;
-			$(this).parent().parent().next().after('<tr class="tr3" ><td>选　项</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("item'+num+'[content]","Title",false,"160","","300"); ?></div><a class="thickbox" title="测试结果" href="xlcs_result.php?height=255&width=320&id='+num+'">测试结果</a>　<input type="hidden" id="item'+num+'child_id" name="item'+num+'[child_id]"><span id="td_xlcs'+num+'"><a class="thickbox" title="关联下一题" href="xlcs_child.php?height=500&width=600&id='+num+'">关联下一题</a></span>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
+			$(this).parent().parent().next().after('<tr class="tr3" ><td>选　项</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("item'+num+'[content]","Title",false,"160","","300"); ?></div><a class="thickbox" id="csresult'+num+'" title="测试结果" href="xlcs_result.php?height=255&width=320&id='+num+'">测试结果</a>　<input type="hidden" id="item'+num+'child_id" name="item'+num+'[child_id]"><span id="td_xlcs'+num+'"><a class="thickbox" id="glnext'+num+'" title="关联下一题" href="xlcs_child.php?height=500&width=600&id='+num+'">关联下一题</a></span>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
+			tb_init('csresult'+num,'glnext'+num);
 			$("#num").attr('value',num);
 			$(".del_item").click(function(){
 				$(this).parent().parent().remove();
