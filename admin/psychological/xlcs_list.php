@@ -38,7 +38,7 @@
 <body style="background:#E1F0F7">
 	<table width="795" border="0">
 		<tr class="tr1">
-			<td colspan="4" width="795">　　　<a href="xlcs_add.php" style="color:#0000FF">发布心理测试题</a>
+			<td colspan="4" width="795">　　　<a href="xlcs_add.php?id=<?php echo $project_id;?>" style="color:#0000FF">发布心理测试题</a>
 				<span style="margin-left:50px; font-size:13px"><input id="search_text2" type="text"></span>
 			<input type="button" value="搜索题目" id="question_search" style="border:1px solid #0000ff; height:21px">
 			</td>
