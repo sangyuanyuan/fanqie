@@ -9,7 +9,7 @@
 #l_t a{color:#B23200; text-decoration:none;}
 #l_b{width:678px; margin-top:10px; padding-bottom:10px; border:1px solid #DDDDDD; float:left; display:inline;}
 #l_b .l_b_l{width:660px; margin-top:10px; margin-left:9px; border-bottom:1px dashed #000000; overflow:hidden; float:left; display:inline;}
-#l_b .l_b_l_r{width:660px; height:22px; text-align:center; line-height:22px; overflow:hidden; float:right; display:inline;}
+#l_b .l_b_l_r{width:660px; height:40px; text-align:center; line-height:22px; overflow:hidden; float:right; display:inline;}
 #l_b .l_b_l_r a{font-size:18px; font-weight:bold; color:red; text-decoration:none;}
 #l_b .l_b_l_b{width:660px; margin-left:19px; text-align:center; line-height:18px; float:left; display:inline;}
 #l_b .l_b_l_b a{font-size:12px; color:#000000; text-decoration:none;}

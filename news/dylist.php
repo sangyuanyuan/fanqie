@@ -12,7 +12,7 @@
 		use_jquery();
 		js_include_once_tag('news_list','total');
 		$db = get_db();
-		$sql="select n.short_title,n.title,c.platform,n.id,n.sub_headline,n.sub_news_id,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=157 order by n.priority asc,n.created_at desc";
+		$sql="select n.short_title,n.title,c.platform,n.id,n.sub_headline,n.sub_news_id,n.category_id,n.click_count,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=157 order by n.priority asc,n.created_at desc";
 		$record=$db->paginate($sql,30);		
   ?>
 <script>
@@ -33,7 +33,7 @@
 			<?php for($i=0;$i<count($record);$i++){
 				?>
 				<div class=l_b_l>
-					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo '<span style="font-size:14px;">('.delhtml($record[$i]->short_title).')</span>'.delhtml($record[$i]->title);?></a></div>
+					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo '<span style="font-size:14px;">('.delhtml($record[$i]->short_title).')</span>'.delhtml($record[$i]->title);?></a><br><span style="font-size:12px;">点击量：<?php echo $record[$i]->click_count; ?></span></div>
 					<div class=l_b_l_b>
 						<?php
 		 					if($record[$i]->sub_headline==1)
