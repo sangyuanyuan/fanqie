@@ -7,5 +7,5 @@
 #l_t{width:989px; height:20px; line-height:20px; margin-top:10px; margin-left:3px; border-bottom:1px dashed #DDDDDD; float:left; display:inline;}
 #l_t a{color:#B23200; text-decoration:none;}
 #l_b{width:993px; margin-top:10px; padding-bottom:10px; border:1px solid #DDDDDD;  float:left; display:inline;}
-#l_b #title{width:953px; margin-top:30px; line-height:25px; font-size:20px; color:red; text-align:center; font-weight:bold; overflow:hidden; float:left; display:inline;}
+#l_b #title{width:953px; height:25px; margin-top:30px; line-height:25px; font-size:20px; color:red; text-align:center; font-weight:bold; overflow:hidden; float:left; display:inline;}
 #l_b #content{width:953px; margin-top:10px; margin-left:20px; line-height:20px; font-size:14px; overflow:hidden; float:left; display:inline;}
