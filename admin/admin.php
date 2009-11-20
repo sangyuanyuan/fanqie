@@ -11,7 +11,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>yuxiao</title>
+	<title>smg</title>
 	<?php	
 		css_include_tag('admin');
 		use_jquery();
