@@ -115,12 +115,12 @@ $about = array();
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->query($sql);
 		$rs_num=count($comment);
-		if( $rs_num > 0 ){
-	   		if( $rs_num < $page_size ){ $page_count = 1; }               
-	   		if( $rs_num % $page_size ){                                  
+		if( ($rs_num-5) > 0 ){
+	   		if( ($rs_num-5) < $page_size ){ $page_count = 2; }               
+	   		if( ($rs_num-5) % $page_size ){                                  
 	       		$page_count = (int)($rs_num / $page_size) + 2;           
 	   		}else{
-	       		$page_count = $rs_num / $page_size + 2;                      
+	       		$page_count = $rs_num / $page_size + 1;                      
 	  		}
 		}
 		else{
@@ -252,7 +252,7 @@ $db->execute($sql); ?>
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page_count-1; ?>">[尾页]</a></span>		
 	 <?php
 	}
-	if ($page == $page_count-1)
+	if ($page == $page_count)
 	{?>
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=1">[首页]</a></span> 
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page-1;?>">[上页]</a></span>		
@@ -262,12 +262,12 @@ $db->execute($sql); ?>
   当前第<select name="pageselect" id="pageselect" onChange="jumppage('<?php echo $string."&page="; ?>',this.options[this.options.selectedIndex].value);">
 	<?php	
 	//产生所有页面链接
-	for($i=1;$i<$page_count;$i++){ ?>
+	for($i=1;$i<=$page_count;$i++){ ?>
 		<option <?php if($page== $i) echo 'selected="selected"';?> value="<?php echo $i;?>" ><?php echo $i;?></option>
 		<?php	
 	}
 	?>
-	</select>页　共<?php echo $page_count-1;?>页
+	</select>页　共<?php echo $page_count;?>页
 	<script>
 			function jumppage(urlprex,pageindex)
 			{
