@@ -75,4 +75,11 @@
 		<? include('inc/djbottom.inc.php');?>
 </body>
 </html>
-
+<script>
+	$(document).ready(function(){
+		$('#content11').click(function(){
+			commentform.submit();
+		});
+	}
+	
+</script>
