@@ -2,7 +2,7 @@
   require_once('../../frame.php');
   $db=get_db();
   if($_REQUEST['id']==''){die('没有找到网页');}
-  $news=$db->query('select id,title,content,news_type,target_url,file_name,is_recommend from smg_news n where id='.$_REQUEST['id']);
+  $news=$db->query('select id,title,content,news_type,target_url,file_name,is_commentable from smg_news n where id='.$_REQUEST['id']);
   if($news[0]->news_type==3)//url链接类新闻
   {
   	redirect($news[0]->target_url);
@@ -44,7 +44,7 @@
 				<?php echo get_fck_content($news[0]->content); ?>
 			</div>
 			<div id=content5><?php print_fck_pages($news[0]->content,"djcontent.php?id=".$_REQUEST['id']);?></div> 
-			<? if($news[0]->is_recommend==1){?>
+			<? if($news[0]->is_commentable==1){?>
 			<div id=contenttitle style="margin-left:8px;">评论</div>
 			<? 
 			$comments = $db->paginate('select * from smg_comment where resource_id='.$news[0]->id.' and resource_type="news" order by created_at desc',5);
