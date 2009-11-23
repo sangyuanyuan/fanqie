@@ -62,6 +62,7 @@
 			  </div>
 			<form name="commentform" id="commentform" method="post" action="/pub/pub.post.php">
 				 <input type="hidden" name="post[resource_id]" id="newsid" value="<?php echo $news[0]->id;?>">
+				 <input type="hidden" name="type" id="type" value="comment">
 			   <div id=content9>
 				   用户：<input type="text" value="" id="commenter" name="post[nick_name]">   	
 			   </div>
@@ -80,7 +81,7 @@
 <script>
 	$(document).ready(function(){
 		$('#content11').click(function(){
-			commentform.submit();
+			document.commentform.submit();
 		});
 	});
 	
