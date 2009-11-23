@@ -80,6 +80,6 @@
 		$('#content11').click(function(){
 			commentform.submit();
 		});
-	}
+	});
 	
 </script>
