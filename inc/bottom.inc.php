@@ -11,6 +11,7 @@
 						<a href="http://172.27.203.88/stvmis/login.asp" target="_blank">新闻来源系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.47/login/smglogin.jsp" target="_blank">管理信息平台</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.16:8088/zb/" target="_blank">节目信息管理系统</a><span style="margin-left:10px;">|</span>
+						<a href="http://172.27.203.16:8188/book/" target="_blank">SMG图书管理系统 </a><span style="margin-left:10px;">|</span>
 						<a href="http://172.28.10.31/" target="_blank">广播节目检索系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.88/assetsmanage/ReadNews.asp?NewsID=1206&BigClassName=动态公告&SmallClassName=动态公告&SpecialID=0" target="_blank">集团固定资产管理信息系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.18.1.59/ehr/" target="_blank">员工自助系统</a><span style="margin-left:10px;">|</span>
