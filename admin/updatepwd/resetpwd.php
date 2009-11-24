@@ -28,7 +28,7 @@
 				<div id=name style="margin-top:15px;" >工　　号：　<input type="text" name="updatepwd[userid]" style="width:140px; height:17px;" class="required"></div>
 				<div id=pwd >联系方式：　<input style="width:140px; height:17px;" type="text" name="updatepwd[phone]" class="required"></div>
 				<div id=btn><button type="submit">重置密码</button></div>
-				<input type="hidden" name="updatepwd[subtype]" value="resetpwd">
+				<input type="hidden" name="subtype" value="resetpwd">
 				<div id=zhu>“番茄网”重置密码指南：<br>· 输入需要修改员工工号×××××××××。<br>· 输入联系方式</div>	
 			</div>
 		</form>	
