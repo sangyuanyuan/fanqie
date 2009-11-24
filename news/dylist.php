@@ -27,7 +27,7 @@
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><?php if($id!=""||$id!=null){ ?><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a><?php } else if($tags!=""||$tags!=null){?><a href="news_list.php?tags=<? echo $tags;?>"></a><?php echo $tags;?><?php } else{ ?><a href="news_list.php">所有新闻</a><? }?>
 		</div>
 		<div id=l_b>
-			<div style="width:660px; height:23px; padding-top:7px; padding-left:20px; background:url(/images/news/bg.jpg) no-repeat; font-size:16px; font-weight:bold; float:left; display:inline;">改革发展调研</div>
+			<div class="title" style="margin-top:0px;">改革发展调研</div>
 			<div style="width:670px; background:#cccccc; padding-top:7px; padding-left:10px; margin-bottom:20px; font-size:14px; font-weight:bold; float:left; display:inline;"><span style="color:red">小编提示：</span>10月21日，上海广播电视台、上海东方传媒集团有限公司揭牌。这标志着上海广播电视改革发展迈入了新的历史征程。处于这样一个特殊时期，我们广电人应该有何作为？我们要如何加强广播电视台的管理职能，壮大广播电视事业？如何激发内部活力，打造未来在中国乃至国际具有广泛影响的大型骨干文化企业和让我们民族引以为骄傲的传媒品牌？
 围绕这些主题，上海广播电视台台长黎瑞刚将于近期陆续前往各个部门开展调研活动，每次调研的讲话稿以及相关内容都将刊登在番茄网“改革发展调研”专区，敬请关注！</div>
 			<?php for($i=0;$i<count($record);$i++){
@@ -56,6 +56,16 @@
 					</div>
 				</div>
 			<?php } ?>
+			<div id=bbs>
+				<div class="title">发展研究论坛</div>
+				<?php $sql="SELECT subject,tid FROM bbs_threads where fid=75 order by dateline limit 5";
+						$bbs=$db->query($sql);
+						for($i=0;$i<count($bbs);$i++)
+						{
+				 ?>
+				 	<div class=thread><a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=<?php echo $bbs[$i]->tid; ?>"><?php echo $bbs[$i]->subject; ?></a></div>
+				 <?php } ?>
+			</div>
 			<div id=page><?php paginate('');?></div>
 		</div>
 	</div>
