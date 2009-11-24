@@ -68,5 +68,5 @@ $success=0;
 			redirect('resetpwd.php');
 		}
 	}
-//redirect('/');
+redirect('/');
 ?>
