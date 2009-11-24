@@ -32,9 +32,9 @@
    </div>
    <div id=pwd>新密　码：　<input type="password" id="admin_password1" name="updatepwd[admin_password1]" style="width:140px; height:17px;" class="required"></div>
    <div id=pwd>重复密码：　<input type="password" id="repwd" name="repwd" style="width:140px; height:17px;" class=”required” equalTo=”#admin_password1”></div>
-   <div id=btn><button id="submit">提交</button></div>
+   <div id=btn><input id="submit" type="submit" value="提交"></div>
    <input type="hidden" name="updatepwd[username]" id="username" value="<?php echo $cookie;?>">
-   <input type="hidden" id="subtype" name="updatepwd[subtype]" value="updatepwd">
+   <input type="hidden" id="subtype" name="subtype" value="updatepwd">
 	<div id=zhu>“番茄网”密码修改指南：<br>· 工号×××××××××。<br>· 默认口令为“Password@1”（P大写）</div>	
 	</div>
 			
