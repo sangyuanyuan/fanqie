@@ -1,6 +1,10 @@
 ﻿<?php
 	require_once('../../frame.php');
-	$project_id = $_REQUEST['id'];
+	$id = $_REQUEST['id'];
+	$project = new table_class('smg_fhtg');
+	$record = $project->find('all',array('conditions' => 'id='.$id));
+	$question_item = new table_class('smg_fhtg_item');
+	$records = $question_item->find('all',array('conditions' => 'xlcs_id='.$id));
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,7 +22,7 @@
 	<form id="fhtg_add" name="fhtg_add" action="fhtg.post.php" enctype="multipart/form-data" method="post"> 
 	<table width="795" border="0" style="font-size:12px;">
 		<tr class="tr2">
-			<td colspan="2" width="795">　　添加复合团购</td>
+			<td colspan="2" width="795">　　复合团购编辑</td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">名　称</td>
@@ -30,12 +34,12 @@
 		</tr>
 		<tr class="tr3">
 			<td>开始时间</td>
-			<td align="left" ><input type="text" name="start_at" id="start"  class="date_jquery">
+			<td align="left" ><input type="text" name="start_at" id="start"  class="date_jquery" value="<?php if(substr($record[0]->start_at,0,10)!='0000-00-00'){echo substr($record[0]->start_time,0,10);}?>">
 			</td>
 		</tr>	
 		<tr class="tr3">
 			<td>结束时间</td>
-			<td align="left" ><input type="text" name="end_at" id="end"  class="date_jquery">
+			<td align="left" ><input type="text" name="end_at" id="end"  class="date_jquery" value="<?php if(substr($record[0]->end_at,0,10)!='0000-00-00'){echo substr($record[0]->end_at,0,10);}?>">
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
@@ -43,7 +47,7 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">内　容</td>
-			<td align="left"><?php show_fckeditor('fhtg[content]','Admin',true,"256"); ?></td>
+			<td align="left"><?php show_fckeditor('fhtg[content]','Admin',true,"256",$); ?></td>
 		</tr>
 		<?php for($i=1;$i<=2;$i++){
 		?>

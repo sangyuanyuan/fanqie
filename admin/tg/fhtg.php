@@ -2,7 +2,7 @@
 	require_once('../../frame.php');
 	$key = $_REQUEST['key'];
 	if($key!=''){
-		$question = new table_class('smg_xlcs');
+		$question = new table_class('smg_fhtg');
 		$records = $question->paginate('all',array('conditions' => 'title  like "%'.trim($key).'%" and project_id='.$project_id,18)); 
 	}
 	$count = count($records);
@@ -24,7 +24,7 @@
 <body style="background:#E1F0F7">
 	<table width="795" border="0">
 		<tr class="tr1">
-			<td colspan="4" width="795">　　　<a href="xlcs_add.php?id=<?php echo $project_id;?>" style="color:#0000FF">发布复合团购</a>
+			<td colspan="4" width="795">　　　<a href="fhtg_add.php?id=<?php echo $project_id;?>" style="color:#0000FF">发布复合团购</a>
 				<span style="margin-left:50px; font-size:13px"><input id="search_text2" type="text"></span>
 			<input type="button" value="搜索复合团购" id="question_search" style="border:1px solid #0000ff; height:21px">
 			</td>
@@ -42,7 +42,7 @@
 			<td><?php echo substr($records[$i]->created_at,0,10);?></td>
 			<td><? if($records[$i]->is_adopt=="1"){?><span class="xlcscan" style="color:#FF0000;cursor:pointer">撤消</span><input type="hidden" value="<?php echo $records[$i]->id;?>"><? }?>
 				<? if($records[$i]->is_adopt=="0"){?><span class="xlcspub" style="color:#0000FF;cursor:pointer">发布</span><input type="hidden" value="<?php echo $records[$i]->id;?>"><? }?>
-				 <a href="xlcs_edit.php?id=<? echo $records[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
+				 <a href="fhtg_edit.php?id=<? echo $records[$i]->id;?>" style="color:#000000; text-decoration:none">编辑</a> 
 				 <span style="cursor:pointer" class="xlcsdel">删除</span><input type="hidden" value="<?php echo $records[$i]->id;?>">
 				<input type="text" class="priority"  name="<?php echo $records[$i]->id;?>"  value="<?php if('100'!=$records[$i]->priority){echo $records[$i]->priority;};?>" style="width:40px;">
 			</td>
@@ -71,30 +71,30 @@
 			}
 			else
 			{
-				$.post("xlcs.post.php",{'del_id':$(this).attr('name'),'post_type':'del'},function(data){
+				$.post("fhtg.post.php",{'del_id':$(this).attr('name'),'post_type':'del'},function(data){
 					$("#"+data).remove();
 				});
 			}
 	});
 	
 	$("#question_search").click(function(){
-				window.location.href="xlcs_list.php?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
+				window.location.href="fhtg.php?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
 	});
 	
 	$('#search_text2').keydown(function(e){
 		if(e.keyCode == 13){
-			window.location.href="xlcs_list.php?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
+			window.location.href="fhtg.php?<?php if($project_id!='')echo 'id='.$project_id.'&';?>key="+$("#search_text2").attr('value');
 		}
 	});
 	$(".xlcscan").click(function(){
-			$.post('xlcscz.post.php',{'id':$(this).next().attr('value'),'type':'xlcscan'},function(data){
+			$.post('fhtgcz.post.php',{'id':$(this).next().attr('value'),'type':'xlcscan'},function(data){
 				 if(data=="OK")
 				  location.reload();
 				}
 			)
 		});
 		$(".xlcspub").click(function(){
-			$.post('xlcscz.post.php',{
+			$.post('fhtgcz.post.php',{
 				'id': $(this).next().attr('value'),
 				'type': 'xlcspub'
 			},function(data){
@@ -105,7 +105,7 @@
 		});
 		$(".xlcsdel").click(function(){
 			if(!window.confirm("确定要删除吗")){return false;};
-			$.post('xlcscz.post.php',{'id':$(this).next().attr('value'),'type':'xlcsdel'},function(data){
+			$.post('fhtgcz.post.php',{'id':$(this).next().attr('value'),'type':'xlcsdel'},function(data){
 				 if(data=="OK")
 				  location.reload();
 				}
