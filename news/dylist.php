@@ -65,13 +65,7 @@
 						{
 				 ?>
 				 	<div class=thread><a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=<?php echo $bbs[$i]->tid; ?>"><?php echo $bbs[$i]->subject; ?></a></div><div class="author"><?php echo $bbs[$i]->author; ?></div><div class="date"><?php echo Format_Date($bbs[$i]->lastpost); ?></div>
-				 	<?php $sql="select message from bbs_posts where tid=".$bbs[$i]->tid." and first=0 order by dateline desc limit 1";
-				 			$lastpost=$db->query($sql);
-				 			if(count($lastpost)>0)
-				 		{
-				 	?>
-				 	<div class=lastpost><?php echo $lastpost[0]->message; ?></div>
-				 <?php }} ?>
+				 <?php } ?>
 			</div>
 			<div id=page><?php paginate('');?></div>
 		</div>
