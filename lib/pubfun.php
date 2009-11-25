@@ -724,6 +724,11 @@ function news_date($created_at,$days)
         }
     }
     return $a;
-}  
+}
 
+	function   Format_Date($Str)   
+  {   
+	  $DateTime   =   Date("Y年m月d日 H时i分s秒",$Str);   
+	  return   $DateTime;   
+  }
 ?>
