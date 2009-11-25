@@ -57,7 +57,7 @@
 				</div>
 			<?php } ?>
 			<div id=bbs>
-				<div class="title">发展研究论坛</div>
+				<div class="title"><div style="width:600px; float:left; display:inline;">发展研究论坛</div><div class=more><a target="_blank" href="/bbs/forumdisplay.php?fid=75">更多>></a></div></div>
 				<?php $sql="SELECT subject,tid FROM bbs_threads where fid=75 order by dateline limit 5";
 						$bbs=$db->query($sql);
 						for($i=0;$i<count($bbs);$i++)

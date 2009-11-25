@@ -9,7 +9,8 @@
 #l_t a{color:#B23200; text-decoration:none;}
 #l_b{width:678px; margin-top:10px; padding-bottom:10px; border:1px solid #DDDDDD; float:left; display:inline;}
 #l_b .title{width:660px; height:23px; margin-top:10px; padding-top:7px; padding-left:20px; background:url(/images/news/bg.jpg) no-repeat; font-size:16px; font-weight:bold; float:left; display:inline;}
-#l_b .title a{font-size:16px; font-weight:bold; text-decoration:none;}
+#l_b .title .more{width:60px; margin-top:3px; float:right; display:inline;}
+#l_b .title .more a{font-size:12px; font-weight:normal; color:#000000; text-decoration:none;}
 #l_b .l_b_l{width:660px; margin-top:10px; margin-left:9px; border-bottom:1px dashed #000000; overflow:hidden; float:left; display:inline;}
 #l_b .l_b_l_r{width:660px; height:40px; text-align:center; line-height:22px; overflow:hidden; float:right; display:inline;}
 #l_b .l_b_l_r a{font-size:18px; font-weight:bold; color:red; text-decoration:none;}
