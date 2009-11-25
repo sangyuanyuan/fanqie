@@ -60,11 +60,11 @@
 				<div class="title"><div style="width:600px; float:left; display:inline;">在线调研BBS</div><div class=more><a target="_blank" href="/bbs/forumdisplay.php?fid=75">更多>></a></div></div>
 				<?php $sql="SELECT subject,tid,lastpost,author FROM bbs_threads where fid=75 order by lastpost desc limit 5";
 						$bbs=$db->query($sql);?>
-						<div class=thread style="margin-top:10px; text-align:center; font-weight:bold;">标题</a></div><div class="author" style="margin-top:10px; font-size:14px; font-weight:bold;">作者</div><div class="date" style="margin-top:10px; font-size:14px; font-weight:bold;">最后回复时间</div>
+						<div class=thread style="margin-top:10px; text-align:center; font-weight:bold;">标题</a></div><div class="image"></div><div class="author" style="margin-top:10px; font-size:14px; font-weight:bold;">作者</div><div class="date" style="margin-top:10px; font-size:14px; font-weight:bold;">最后回复时间</div>
 					<?	for($i=0;$i<count($bbs);$i++)
 						{
 				 ?>
-				 	<div class=thread><a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=<?php echo $bbs[$i]->tid; ?>"><?php echo $bbs[$i]->subject; ?></a></div><div class="author"><?php echo $bbs[$i]->author; ?></div><div class="date"><?php echo Format_Date($bbs[$i]->lastpost); ?></div>
+				 	<div class=thread><a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=<?php echo $bbs[$i]->tid; ?>"><?php echo $bbs[$i]->subject; ?></a></div><div class="image"><?php if($i<2){ ?><img src="/images/pic/new.gif"><?php } ?></div><div class="author"><?php echo $bbs[$i]->author; ?></div><div class="date"><?php echo Format_Date($bbs[$i]->lastpost); ?></div>
 				 <?php } ?>
 			</div>
 			<div id=page><?php paginate('');?></div>

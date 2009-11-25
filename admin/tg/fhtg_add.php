@@ -15,7 +15,7 @@
 	?>
 </head>
 <body style="background:#E1F0F7">
-	<form id="fhtg_add" name="fhtg_add" action="fhtg.post.php" method="post"> 
+	<form id="fhtg_add" name="fhtg_add" action="fhtg.post.php" enctype="multipart/form-data" method="post"> 
 	<table width="795" border="0" style="font-size:12px;">
 		<tr class="tr2">
 			<td colspan="2" width="795">　　添加题目</td>
@@ -38,6 +38,9 @@
 			<td align="left" ><input type="text" name="end_at" id="end"  class="date_jquery">若不填则长期有效
 			</td>
 		</tr>
+		<tr align="center" bgcolor="#f9f9f9" height="25px;" id=newsshow3 >
+			<td>选择图片</td><td align="left"><input name="image" id="image" type="file">(请上传200x160大小的图片，格式支持jpg、gif、png) <input type="hidden" name="MAX_FILE_SIZE1" value="150000"></td>
+		</tr>
 		<tr class="tr3">
 			<td width="100">内　容</td>
 			<td align="left"><?php show_fckeditor('fhtg[content]','Admin',true,"256"); ?></td>
@@ -47,7 +50,7 @@
 		<tr class="tr3" >
 			<td>选　项</td>
 			<td align="left">
-			<input type="text" name="item<?php echo $i;?>[name]" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160","","300"); ?></div><a class="thickbox" title="复合团购内容" href="xlcs_result.php?height=270&width=350&id=<?php echo $i;?>">复合团购内容</a>
+			<input type="text" name="item<?php echo $i;?>[name]" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160","","300"); ?></div><input type="hidden" id="item<?php echo $i;?>num" name="item<?php echo $i;?>[num]"><a class="thickbox" title="团购内容" href="xlcs_result.php?height=270&width=350&id=<?php echo $i;?>">团购内容</a>
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
 			<?php }?>
@@ -73,7 +76,7 @@
 		var num = 2;
 		$("#add_item").click(function(){
 			num++;
-			$(this).parent().parent().next().after('<tr class="tr3" ><td>选　项</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("item'+num+'[content]","Title",false,"160","","300"); ?></div><a class="thickbox" id="csresult'+num+'" title="测试结果" href="xlcs_result.php?height=270&width=350&id='+num+'">测试结果</a>　<input type="hidden" id="item'+num+'child_id" name="item'+num+'[child_id]"><span id="td_xlcs'+num+'"><a class="thickbox" id="glnext'+num+'" title="关联下一题" href="xlcs_child.php?height=500&width=600&id='+num+'">关联下一题</a></span>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
+			$(this).parent().parent().next().after('<tr class="tr3" ><td>团　购</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("item'+num+'[content]","Title",false,"160","","300"); ?></div><a class="thickbox" id="csresult'+num+'" title="团购内容" href="xlcs_result.php?height=270&width=350&id='+num+'">团购内容</a>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
 			tb_init('#csresult'+num,'#glnext'+num);
 			$("#num").attr('value',num);
 			$(".del_item").click(function(){
@@ -85,6 +88,14 @@
 		$("#sub").click(function(){
 			$("#xlcs_add").submit();
 		});
-		
-	});	
+	});
+	$(".date_jquery").datepicker(
+		{
+			monthNames:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+			dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+			dayNamesMin:["日","一","二","三","四","五","六"],
+			dayNamesShort:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+			dateFormat: 'yy-mm-dd'
+		}
+	);
 </script>
