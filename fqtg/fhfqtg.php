@@ -5,7 +5,7 @@ require_once('../frame.php');
 	$cookie=(isset($_COOKIE['smg_username'])) ? $_COOKIE['smg_username'] : 0;
 	if($actid==""){die ('没有找到网页');}
 	$news=$db->query('SELECT * FROM smg_fhtg where id='.$actid);
-	$comments=$db->paginate('select * from smg_comment where resource_id='.$actid.' and resource_type="tg" order by created_at desc', 5);
+	$comments=$db->paginate('select * from smg_comment where resource_id='.$actid.' and resource_type="fhtg" order by created_at desc', 5);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47,10 +47,11 @@ require_once('../frame.php');
 			$days=round(($end_time-$start_time)/3600/24);
 			if($days >=0){?>离团购截至时间还有：<span style="color:red; font-weight:bold;"><? echo $days; ?></span>天<? }else{?>团购已截止！<? }?><br>
 			<?php 
+			echo get_fck_content($news[$i]->content);
 			$news1=$db->query('select * from smg_fhtg_item where fhtg_id='.$actid);
 			for($i=0;$i<count($news1);$i++)
 			{
-			$countnews=$db->query('SELECT count(*) as total,sum(num) as zs FROM smg_tg_signup where fhtg_id='.$news1[$i]->id);?>
+			$countnews=$db->query('SELECT count(*) as total,sum(num) as zs FROM smg_tg_signup where fhtg_id='.$news1[$i]->id);?><br>
 				共有
 				<span style="color:red; font-weight:bold; text-decoration:none;"><? echo $countnews[0]->total;?></span>位用户订购。订购商品<span style="color:red; font-weight:bold; text-decoration:none;"><? echo $countnews[0]->zs;?></span>件<br>
 					<? if($news1[$i]->maxnum!=""){?>限量订购<span style="color:red; font-weight:bold;"><? echo $news1[$i]->maxnum;?></span>,已经订购<span style="color:red; font-weight:bold;"><? echo $countnews[0]->zs;?></span>,剩余<? echo ((int)$news1[$i]->maxnum-(int)$countnews[0]->zs); }?>
@@ -98,7 +99,7 @@ require_once('../frame.php');
        <div id=content9>
     	   用户：<input type="text" value="" id="commenter" name="post[nick_name]">  
 		   <input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $actid;?>">
-			<input type="hidden" id="resource_type" name="post[resource_type]" value="tg">
+			<input type="hidden" id="resource_type" name="post[resource_type]" value="fhtg">
 			<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
 			<input type="hidden" name="type" value="comment">
 			<input type="hidden" id="username" value="<?php echo $cookie; ?>">

@@ -45,7 +45,7 @@
 <h1><?php echo $news[0]->title; ?></h1>
 <h2>发布时间 <?php echo $news[0]->created_at; ?> 阅读次数 <?php echo $news[0]->click_count; ?></h2>
 <?php echo get_fck_content($news[0]->content); ?>
-  <br />
+  <div id=page><?php echo print_fck_pages($news[0]->content); ?></div>
 </div>
         <p>&nbsp;</p>
       </div>
