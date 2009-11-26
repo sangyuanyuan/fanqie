@@ -63,7 +63,7 @@
 				if(data=='OK')
 				{
 					alert('订购成功！');
-					tb_remove();		
+					location.reload();		
 				}	
 				else
 				{
