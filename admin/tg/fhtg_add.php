@@ -1,6 +1,5 @@
 ﻿<?php
 	require_once('../../frame.php');
-	$project_id = $_REQUEST['id'];
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,10 +7,10 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
 	<?php
-		css_include_tag('admin','thickbox');
-		use_jquery();
+		css_include_tag('admin','thickbox','jquery_ui');
+		use_jquery_ui();
 		validate_form("fhtg_add");
-		js_include_once_tag('total','thickbox','My97DatePicker/WdatePicker.js');
+		js_include_once_tag('total','thickbox');
 	?>
 </head>
 <body style="background:#E1F0F7">
@@ -50,7 +49,7 @@
 		<tr class="tr3" >
 			<td>商　品</td>
 			<td align="left">
-			<input type="text" name="item<?php echo $i;?>[name]" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160","","300"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=270&width=350&id=<?php echo $i;?>">团购内容</a>
+			<input type="text" name="item<?php echo $i;?>[name]" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Admin',false,"160"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=330&width=645&id=<?php echo $i;?>">团购内容</a>
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
 			<?php }?>
@@ -64,7 +63,7 @@
 			<td colspan="2" width="795" align="center"><button type="button" id="sub">发布复合团购</button></td>
 		</tr>
 		<input type="hidden" name="fhtg[is_adopt]" value="0">
-		<input type="hidden" name="fhtg[created_at]" value="<?php echo date("y-m-d");?>">
+		<input type="hidden" name="fhtg[created_at]" value="<?php echo date("Y-m-d");?>">
 	</table>
 	</form>
 </body>
@@ -76,7 +75,7 @@
 		var num = 2;
 		$("#add_item").click(function(){
 			num++;
-			$(this).parent().parent().next().after('<tr class="tr3" ><td>商　品</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("item'+num+'[content]","Title",false,"160","","300"); ?></div><input type="hidden" id="item'+num+'maxnum" name="item'+num+'[maxnum]" /><a class="thickbox" id="csresult'+num+'" title="团购内容" href="fhtg_result.php?height=270&width=350&id='+num+'">团购内容</a>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
+			$(this).parent().parent().next().after('<tr class="tr3" ><td>商　品</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("item'+num+'[content]","Admin",false,"160"); ?></div><input type="hidden" id="item'+num+'maxnum" name="item'+num+'[maxnum]" /><a class="thickbox" id="csresult'+num+'" title="团购内容" href="fhtg_result.php?height=330&width=645&id='+num+'">团购内容</a>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
 			tb_init('#csresult'+num,'#glnext'+num);
 			$("#num").attr('value',num);
 			$(".del_item").click(function(){
@@ -86,7 +85,7 @@
 			});
 		});
 		$("#sub").click(function(){
-			$("#xlcs_add").submit();
+			$("#fhtg_add").submit();
 		});
 	});
 	$(".date_jquery").datepicker(

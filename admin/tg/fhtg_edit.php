@@ -4,7 +4,8 @@
 	$project = new table_class('smg_fhtg');
 	$record = $project->find('all',array('conditions' => 'id='.$id));
 	$question_item = new table_class('smg_fhtg_item');
-	$records = $question_item->find('all',array('conditions' => 'xlcs_id='.$id));
+	$records = $question_item->find('all',array('conditions' => 'fhtg_id='.$id));
+	$count = count($records);
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,8 +13,8 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
 	<?php
-		css_include_tag('admin','thickbox');
-		use_jquery();
+		css_include_tag('admin','thickbox','jquery_ui');
+		use_jquery_ui();
 		validate_form("fhtg_add");
 		js_include_once_tag('total','thickbox','My97DatePicker/WdatePicker.js');
 	?>
@@ -26,11 +27,11 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">名　称</td>
-			<td align="left"><input type="text" name="fhtg[title]" class="required"></td>
+			<td align="left"><input type="text" name="fhtg[title]" class="required" value="<?php echo $record[0]->title; ?>"></td>
 		</tr>
 		<tr class="tr3">
 			<td width="100">优先级</td>
-			<td align="left"><input type="text" name="fhtg[priority]"></td>
+			<td align="left"><input type="text" name="fhtg[priority]" value="<?php echo $record[0]->priority; ?>"></td>
 		</tr>
 		<tr class="tr3">
 			<td>开始时间</td>
@@ -47,21 +48,33 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">内　容</td>
-			<td align="left"><?php show_fckeditor('fhtg[content]','Admin',true,"256",$); ?></td>
+			<td align="left"><?php show_fckeditor('fhtg[content]','Admin',true,"256",$records[0]->content); ?></td>
 		</tr>
 		<?php for($i=1;$i<=2;$i++){
 		?>
 		<tr class="tr3" >
 			<td>商　品</td>
 			<td align="left">
-			<input type="text" name="item<?php echo $i;?>[name]" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160","","300"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=270&width=350&id=<?php echo $i;?>">团购内容</a>
+			<input type="text" name="item<?php echo $i;?>[name]" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160","","300"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" value="<?php echo $records[$i-1]->maxnum;?>" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=330&width=645&tgid=<?php echo $records[$i-1]->id;?>">团购内容</a>
+			<input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
 			<?php }?>
 		　	</td>
 		</tr>
 		<?php
-				}
+				}if($count>2){for($i=3;$i<=$count;$i++){
+		?>
+		<tr class="tr3" >
+			<td>商　品</td>
+			<td align="left">
+			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160",$records[$i-1]->content,"300"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" value="<?php echo $records[$i-1]->maxnum;?>" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=330&width=645&tgid=<?php echo $records[$i-1]->id;?>">团购内容</a>　
+			  <a class="del_item"  name="<?php echo $records[$i-1]->id;?>" style="cursor:pointer;">删除</a>
+			 <input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
+		　	</td>
+		</tr>
+		<?php 
+				}}
 		?>
 		<input type="hidden" name="item_num" id="num" value="2">
 		<tr class="tr3">
@@ -80,7 +93,7 @@
 		var num = 2;
 		$("#add_item").click(function(){
 			num++;
-			$(this).parent().parent().next().after('<tr class="tr3" ><td>商　品</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("item'+num+'[content]","Title",false,"160","","300"); ?></div><input type="hidden" id="item'+num+'maxnum" name="item'+num+'[maxnum]" /><a class="thickbox" id="csresult'+num+'" title="团购内容" href="fhtg_result.php?height=270&width=350&id='+num+'">团购内容</a>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
+			$(this).parent().parent().next().after('<tr class="tr3" ><td>商　品</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("item'+num+'[content]","Title",false,"160","","300"); ?></div><input type="hidden" id="item'+num+'maxnum" name="item'+num+'[maxnum]" /><a class="thickbox" id="csresult'+num+'" title="团购内容" href="fhtg_result.php?height=330&width=645&id='+num+'">团购内容</a>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
 			tb_init('#csresult'+num,'#glnext'+num);
 			$("#num").attr('value',num);
 			$(".del_item").click(function(){

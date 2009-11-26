@@ -1,11 +1,18 @@
 ﻿<?php
     require_once('../../frame.php');
     $id=$_REQUEST['id'];
+    $tgid=$_REQUEST['tgid'];
+    $db=get_db();
+    if($tgid!="")
+    {
+    	$sql="select maxnum,content from smg_fhtg where id=".$tgid;
+    	$tg=$db->query($sql);
+    }
 ?>
-<div style="width:300px; height:200px; float:left; display:inline;">
-<div style='width:300px; height:200px; line-height:20px; float:left; display:inline;'>
-	数量：<input type="text" id="maxnum" name="maxnum">
-	内容：<?php show_fckeditor('flower_comment','Title',true,"160","","300");?><br><br>
+<div style="width:600px; height:300px; float:left; display:inline;">
+<div style='width:600px; height:300px; line-height:20px; float:left; display:inline;'>
+	数量：<input type="text" id="maxnum" name="maxnum" <?php if($tgid!=""){ ?>value="<?php echo $tg[0]->maxnum; ?>"<? }?>><br>
+	内容：<?php if($tgid==""){ show_fckeditor('flower_comment','Admin',true,"160");}else{ show_fckeditor('flower_comment','Admin',true,"160",$tg[0]->content);}?><br><br>
 	<button type="button" id="button"  style=" float:left; display:inline;">提交</button>
 </div>
 </div>

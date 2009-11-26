@@ -29,7 +29,7 @@
 		$question->update_attributes($_POST['xlcs']);
 		
 		$question_item = new table_class('smg_xlcs_item');
-		$question_item->question_id = $question->id;
+		$question_item->xlcs_id = $question->id;
 		if($_POST['item_num']==1){
 			$question_item->update_attributes($_POST['item']);
 		}else{

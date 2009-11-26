@@ -17,7 +17,7 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
 	<?php
-		css_include_tag('admin','thickbox');
+		css_include_tag('admin','thickbox','jquery_ui');
 		use_jquery();
 		validate_form("question_add");
 		js_include_once_tag('total','thickbox','My97DatePicker/WdatePicker.js');

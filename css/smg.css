@@ -1208,6 +1208,7 @@ body {font-family:����; font-size:12px; color:#000;  margin:0px; line-he
 #nyf_left #content10 #left{float:left; display:inline;}
 #nyf_left #content10 textarea{width:400px; height:100px; float:left; display:inline;}
 #nyf_left #content11{width:44px; height:18px; margin-top:3px; margin-left:85px; padding-top:2px; padding-left:3px; color:#ffffff; cursor:pointer; font-weight:bold; background:url(/images/btn/btnvow.jpg) no-repeat; float:left; display:inline;}
+#nyf_left #content12{width:44px; height:18px; margin-top:3px; margin-left:85px; padding-top:2px; padding-left:3px; color:#ffffff; cursor:pointer; font-weight:bold; background:url(/images/btn/btnvow.jpg) no-repeat; float:left; display:inline;}
 
 /*flash*/
 #fl_left{width:720px; padding-bottom:20px; border:1px solid #DEDBDE; background:#F7F7F7; overflow:hidden; float:left; display:inline;}
