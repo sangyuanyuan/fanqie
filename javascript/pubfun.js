@@ -63,7 +63,7 @@ function display_login(dom_id,admin){
 			str += '　<a href="/admin/admin2.php">后台管理</a>';
 		}else if($.cookie('smg_role')=='1000')
 		{
-			str += '　<a href="/admin/updatepwd/resetpwd.php">后台管理</a>';
+			str += '　<a href="/admin/updatepwd/resetpwd.php">重置密码</a>';
 		}
 		var num1=parseInt($('#birthday1').val());
 		var num2=parseInt($('#birthday2').val());
