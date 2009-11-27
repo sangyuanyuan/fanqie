@@ -13,7 +13,7 @@
 	$cookie= (isset($_COOKIE['smg_userid'])) ? $_COOKIE['smg_userid'] : 0;
 	if($cookie==0)
 	{
-		alert("请登录以后再进入重置密码页面!");
+		alert("请登录以后再进入修改密码页面!");
 		redirect("/login/login.php");
 	}
 ?>

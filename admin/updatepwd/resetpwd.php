@@ -11,9 +11,10 @@
 	js_include_tag("total");
 	validate_form('login');
 	$cookie= (isset($_COOKIE['smg_role'])) ? $_COOKIE['smg_role'] : "";
-	if($cookie=="")
+	if($cookie==""||$cookie!="1000")
 	{
-			redirect('resetpwdlogin.php','js');
+		alert("请登录以后再进入重置密码页面!");
+		redirect('resetpwdlogin.php','js');
 	}
 ?>
 <script>
