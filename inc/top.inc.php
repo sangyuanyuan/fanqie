@@ -34,7 +34,7 @@
 	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009)); if($days>=0){?>
 	<a href="/subject/football/"><img border=0 src="/images/pic/<?php echo $days; ?>.jpg"></a>
 	<?php }else { ?>
-	<a href="/subject/football/"><img border=0 src="/images/pic/footballfinish.jpg"></a>
+	<!--<a href="/subject/football/"><img border=0 src="/images/pic/footballfinish.jpg"></a>-->
 	<? }?>
 </div>
 <div id=nav2>
