@@ -18,7 +18,101 @@
 </head>
 <body>
 	<div id=ibody>
-		
+		<div id=ileft><a href="">电视新闻中心党委</a></div>
+		<div id=icenter_l><a href="">专职组织员</a></div>
+		<div class=ispace></div>
+		<div id=icenter_r>
+			<div id="context">
+				<a href="">职能部门党支部</a>
+			</div>
+			<div class="content">
+				<a href="">采访一部党支部</a>
+			</div>
+			<div class="content">
+				<a href="">采访二部党支部</a>
+			</div>
+			<div class="content" style="margin-top:155px;">
+				<a href="">国内国际部党支部</a>
+			</div>
+			<div class="content">
+				<a href="">上视编播部党支部</a>
+			</div>
+			<div class="content">
+				<a href="">卫视编播部党支部</a>
+			</div>
+			<div class="content" style="margin-top:155px;">
+				<a href="">评论部党支部</a>
+			</div>
+			<div class="content">
+				<a href="">栏目部党支部</a>
+			</div>
+			<div class="content" style="margin-top:155px;">
+				<a href="">制作部第一党支部</a>
+			</div>
+			<div class="content">
+				<a href="">制作部第二党支部</a>
+			</div>
+			<div class="content" style="margin-top:155px;">
+				<a href="">新进大学生</a>
+			</div>
+		</div>
+		<div id="iright">
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+			<div class=content>
+				<div class=context><a href="">正式党员</a></div>
+				<div class=context><a href="">预备党员</a></div>
+				<div class=context><a href="">入党积极分子</a></div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
