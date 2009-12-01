@@ -56,7 +56,7 @@
 		<tr class="tr3" >
 			<td>商　品</td>
 			<td align="left">
-			<input type="text" name="item<?php echo $i;?>[name]" class="required" value="<?php echo $records[$i-1]->name;?>"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160","","300"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" value="<?php echo $records[$i-1]->maxnum;?>" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=330&width=645&tgid=<?php echo $records[$i-1]->id;?>">团购内容</a>
+			<input type="text" name="item<?php echo $i;?>[name]" class="required" value="<?php echo $records[$i-1]->name;?>"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160","","300"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" value="<?php echo $records[$i-1]->maxnum;?>" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=330&width=645&id=<?php echo $i;?>&tgid=<?php echo $records[$i-1]->id;?>">团购内容</a>
 			<input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
@@ -69,7 +69,7 @@
 		<tr class="tr3" >
 			<td>商　品</td>
 			<td align="left">
-			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160",$records[$i-1]->content,"300"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" value="<?php echo $records[$i-1]->maxnum;?>" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=330&width=645&tgid=<?php echo $records[$i-1]->id;?>">团购内容</a>　
+			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160",$records[$i-1]->content,"300"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" value="<?php echo $records[$i-1]->maxnum;?>" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=330&width=645&id=<?php echo $i;?>&tgid=<?php echo $records[$i-1]->id;?>">团购内容</a>　
 			  <a class="del_item"  name="<?php echo $records[$i-1]->id;?>" style="cursor:pointer;">删除</a>
 			 <input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
 		　	</td>
