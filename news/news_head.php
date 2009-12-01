@@ -163,7 +163,7 @@ require_once('../inc/top.inc.html');?>
 	<div id=ibody_left>
 		<input type="hidden" id="newsid" value="<?php echo $id;?>">
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="news_list.php">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span> <a href="/news/news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="news_list.php">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span> <?php if($record[0]->cid!=157){ ?><a href="/news/news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a><? }else{?><a href="/news/dylist.php">改革发展调研</a><?php } ?>
 		</div>
 		<?php $sql="update smg_news set click_count=click_count+1 where id=".$id;
 $db->execute($sql); ?>
