@@ -96,7 +96,7 @@
 		$("#add_item").click(function(){
 			num++;
 			$(this).parent().parent().next().after('<tr class="tr3" ><td>商　品</td><td align="left"><input type="text" name="item'+num+'[name]" class="required"><div style="display:none;"><?php show_fckeditor("item'+num+'[content]","Title",false,"160","","300"); ?></div><input type="hidden" id="item'+num+'maxnum" name="item'+num+'[maxnum]" /><a class="thickbox" id="csresult'+num+'" title="团购内容" href="fhtg_result.php?height=330&width=645&id='+num+'">团购内容</a>　<a class="del_item" id='+num+' style="cursor:pointer;">删除</a></td></tr>');
-			tb_init('#csresult'+num,'#glnext'+num);
+			tb_init('#csresult'+num);
 			$("#num").attr('value',num);
 			$(".del_item").click(function(){
 				$(this).parent().parent().remove();
