@@ -47,7 +47,7 @@ require_once('../frame.php');
 			$days=round(($end_time-$start_time)/3600/24);
 			if($days >=0){?>离团购截至时间还有：<span style="color:red; font-weight:bold;"><? echo $days; ?></span>天<? }else{?>团购已截止！<? }?><br>
 			<?php 
-			echo get_fck_content($news[$i]->content);
+			echo get_fck_content($news[0]->content);
 			$news1=$db->query('select * from smg_fhtg_item where fhtg_id='.$actid);
 			for($i=0;$i<count($news1);$i++)
 			{
