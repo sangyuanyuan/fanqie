@@ -3,8 +3,9 @@
 	$id = $_REQUEST['id'];
 	$project = new table_class('smg_fhtg');
 	$record = $project->find('all',array('conditions' => 'id='.$id));
-	$question_item = new table_class('smg_fhtg_item');
-	$records = $question_item->find('all',array('conditions' => 'fhtg_id='.$id));
+	$db=get_db();
+	//$question_item = new table_class('smg_fhtg_item');
+	$records = $db->query('select * from smg_fhtg_item where fhtg_id='.$id);
 	$count = count($records);
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,7 +56,7 @@
 		<tr class="tr3" >
 			<td>商　品</td>
 			<td align="left">
-			<input type="text" name="item<?php echo $i;?>[name]" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160","","300"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" value="<?php echo $records[$i-1]->maxnum;?>" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=330&width=645&tgid=<?php echo $records[$i-1]->id;?>">团购内容</a>
+			<input type="text" name="item<?php echo $i;?>[name]" class="required" value="<?php echo $records[$i-1]->name;?>"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160","","300"); ?></div><input type="hidden" id="item<?php echo $i;?>maxnum" name="item<?php echo $i;?>[maxnum]" value="<?php echo $records[$i-1]->maxnum;?>" /><a class="thickbox" title="团购内容" href="fhtg_result.php?height=330&width=645&tgid=<?php echo $records[$i-1]->id;?>">团购内容</a>
 			<input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
 			<?php if($i==1){?>
 			<button type="button"  id="add_item">继续添加</button>
@@ -63,7 +64,7 @@
 		　	</td>
 		</tr>
 		<?php
-				}if($count>2){for($i=3;$i<=$count;$i++){
+				}if($count > 2){for($i=3;$i<=$count;$i++){
 		?>
 		<tr class="tr3" >
 			<td>商　品</td>

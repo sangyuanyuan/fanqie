@@ -5,7 +5,7 @@
     $db=get_db();
     if($tgid!="")
     {
-    	$sql="select maxnum,content from smg_fhtg where id=".$tgid;
+    	$sql="select maxnum,content from smg_fhtg_item where id=".$tgid;
     	$tg=$db->query($sql);
     }
 ?>
