@@ -49,7 +49,7 @@
 		</tr>
 		<tr class="tr3">
 			<td width="100">内　容</td>
-			<td align="left"><?php show_fckeditor('fhtg[content]','Admin',true,"256",$records[0]->content); ?></td>
+			<td align="left"><?php show_fckeditor('fhtg[content]','Admin',true,"256",$record[0]->content); ?></td>
 		</tr>
 		<?php for($i=1;$i<=2;$i++){
 		?>
