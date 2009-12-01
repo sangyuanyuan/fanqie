@@ -79,7 +79,7 @@
 		?>
 		<input type="hidden" name="item_num" id="num" value="2">
 		<tr class="tr3">
-			<td colspan="2" width="795" align="center"><button type="button" id="sub">发布复合团购</button></td>
+			<td colspan="2" width="795" align="center"><button type="submit" id="sub" >发布复合团购</button></td>
 		</tr>
 		<input type="hidden" name="fhtg[is_adopt]" value="0">
 		<input type="hidden" name="fhtg[created_at]" value="<?php echo date("y-m-d");?>">
@@ -102,9 +102,6 @@
 				num--;
 				$("#num").attr('value',num);
 			});
-		});
-		$("#sub").click(function(){
-			$("#xlcs_add").submit();
 		});
 	});
 	$(".date_jquery").datepicker(
