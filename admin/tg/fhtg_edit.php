@@ -36,7 +36,7 @@
 		</tr>
 		<tr class="tr3">
 			<td>开始时间</td>
-			<td align="left" ><input type="text" name="start_at" id="start"  class="date_jquery" value="<?php if(substr($record[0]->start_at,0,10)!='0000-00-00'){echo substr($record[0]->start_time,0,10);}?>">
+			<td align="left" ><input type="text" name="start_at" id="start"  class="date_jquery" value="<?php if(substr($record[0]->start_at,0,10)!='0000-00-00'){echo substr($record[0]->start_at,0,10);}?>">
 			</td>
 		</tr>	
 		<tr class="tr3">
