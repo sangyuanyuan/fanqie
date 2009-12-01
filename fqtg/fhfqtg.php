@@ -71,9 +71,7 @@ require_once('../frame.php');
 					<?php } ?>　
 					<a class="thickbox" href="fhtg_result.php?height=400&width=670&id=<?php echo $news1[$i]->id; ?>">查看订购情况</a></div>
 			<?php } ?>
-		</div>
-		
-   
+		</div><br><br>
     <? for($i=0;$i<count($comments);$i++){?>
     <div class=content7>
     	<div class=name><a href="#"><?php echo $comments[$i]->nick_name; ?></a></div>	
