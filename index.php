@@ -961,14 +961,19 @@ total("首页","other");
 						$xlcs=$db->query($sql);
 						$count = count($record);
 					?>
-					<div class="top_title"><a href="/answer/answer.php?id=<?php echo $record[0]->id;?>"  target=_blank><?php echo $record[0]->title;?></a></div>
+					<div class="top_title"><a href="/xlcs/xlcs.php?xlcsid=<?php echo $xlcs[0]->id;?>"  target=_blank>心理测试：<?php echo $xlcs[0]->title;?></a></div>
 					
 					<?php
-						for($i=0;$i<count($xlcs);$i++)
+						for($i=1;$i<count($xlcs);$i++)
 						{?>
 					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/xlcs/xlcs.php?xlcsid=<?php echo $xlcs[$i]->id;?>"  target=_blank>心理测试：<?php echo $xlcs[$i]->title;?></a></li></div>
 					 <?php } ?>
-						
+						<? //for($i=1;$i<$count;$i++){
+					?>
+					<!--<div class="bottom_title"><li><span style="color:#FF9900">·</span><a href="/answer/answer.php?id=<?php echo $record[$i]->id;?>"  target=_blank><?php echo $record[$i]->title;?></a></li></div>-->
+					<?php
+						//}
+					?>
 				</div>
 				<div class=r_box>
 					<div id=begin_question><a href="/answer/question.php" target="_blank"><img border=0 src="/images/index/begin_question.jpg"></a></div>
