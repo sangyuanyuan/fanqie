@@ -81,8 +81,9 @@
 		<tr class="tr3">
 			<td colspan="2" width="795" align="center"><button type="submit" id="sub" >发布复合团购</button></td>
 		</tr>
-		<input type="hidden" name="fhtg[is_adopt]" value="0">
+		<input type="hidden" name="fhtg[is_adopt]" value="1">
 		<input type="hidden" name="fhtg[created_at]" value="<?php echo date("y-m-d");?>">
+		<input type="hidden" name="id" value="<?php echo $id; ?>">
 	</table>
 	</form>
 </body>
