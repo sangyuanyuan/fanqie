@@ -48,7 +48,7 @@
 		<tr class="tr3" >
 			<td>答案选项</td>
 			<td align="left">
-			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160",$records[$i-1]->content,"300"); ?></div><a class="thickbox" title="测试结果" href="xlcs_result.php?height=270&width=350&id=<?php echo $i;?>">测试结果</a>　
+			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160",$records[$i-1]->content,"300"); ?></div><a class="thickbox" title="测试结果" href="xlcs_result.php?height=270&width=350&resultid=<?php echo $records[$i-1]->id;?>&id=<?php echo $i; ?>">测试结果</a>　
 			<input type="hidden" id="item<?php echo $i;?>child_id" name="item<?php echo $i;?>[child_id]" value="<?php echo $records[$i-1]->child_id; ?>"><span id="td_xlcs<?php echo $i;?>"><a id="child<?php echo $i;?>" class="thickbox" title="关联下一题" href="xlcs_child.php?height=500&width=600&id=<?php echo $i;?>">关联下一题</a></span>
 			<input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
 			<?php if($i==1){?>
@@ -63,7 +63,7 @@
 		<tr class="tr3" >
 			<td>答案选项</td>
 			<td align="left">
-			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160",$records[$i-1]->content,"300"); ?></div><a class="thickbox" title="测试结果" href="xlcs_result.php?height=270&width=350&id=<?php echo $i;?>">测试结果</a>　
+			<input type="text" name="item<?php echo $i;?>[name]" value="<?php echo $records[$i-1]->name;?>" class="required"><div style="display:none;"><?php show_fckeditor('item'.$i.'[content]','Title',false,"160",$records[$i-1]->content,"300"); ?></div><a class="thickbox" title="测试结果" href="xlcs_result.php?height=270&width=350&resultid=<?php echo $records[$i-1]->id;?>&id=<?php echo $i;?>">测试结果</a>　
 			<input type="hidden" id="item<?php echo $i;?>[child_id]" name="item<?php echo $i;?>[child_id]" value="<?php echo $records[$i-1]->child_id; ?>"><span id="td_xlcs<?php echo $i;?>"><a id="child<?php echo $i;?>" class="thickbox" title="关联下一题" href="xlcs_child.php?height=500&width=600&id=<?php echo $i;?>">关联下一题</a></span>
 			  <a class="del_item"  name="<?php echo $records[$i-1]->id;?>" style="cursor:pointer;">删除</a>
 			 <input type="hidden" name="item<?php echo $i;?>_id" value="<?php echo $records[$i-1]->id;?>">
