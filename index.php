@@ -509,7 +509,9 @@ total("首页","other");
  				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;" ><a style="color:#ff0000" href="/zone/" target=_blank>番茄百家</a></div>
  				<?php
  						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
-						$record_tg=$db -> query($sql);		
+						$record_tg=$db -> query($sql);
+						$sql="select * from smg_fhtg where is_adopt=1 order by priority asc,created_at desc limit 1";
+						$fhtg=$db->query($sql);
 					?>
  				<div class=content_trrt id=content_trrt1 >
 					<!--<div class=box>
@@ -536,6 +538,7 @@ total("首页","other");
 							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','学习交流'));?>" target="_blank">学习交流</a></li>
 						</ul>
 					</div>-->
+					<?php if(count($fhtg)==0){ ?>
 					<?php for($i=0;$i<3;$i++){?>
 					<div class=box>
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
@@ -546,7 +549,27 @@ total("首页","other");
 							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $record_tg[$i]->price ?></li>
 						</ul>
 					</div>
-					<? }?>
+					<? }}else{?>
+					<div class=box>
+						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $fhtg[0]->src; ?>" target=_blank border=0></a>
+						<ul>
+							<li style="width:95px; overflow:hidden;"><a href="/fqtg/fqtglist.php" target=_blank><?php echo $fhtg[0]->title ?></a></li>
+							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($fhtg[0]->content);?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $fhtg[0]->marketprice ?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $fhtg[0]->price ?></li>
+						</ul>
+					</div>
+					<?php for($i=0;$i<2;$i++){?>
+					<div class=box>
+						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
+						<ul>
+							<li style="width:95px; overflow:hidden;"><a href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
+							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $record_tg[$i]->marketprice ?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $record_tg[$i]->price ?></li>
+						</ul>
+					</div>
+					<?php }}?>
  				</div>
 				
  				<?php
