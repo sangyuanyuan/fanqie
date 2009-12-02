@@ -116,52 +116,139 @@
 					$news=$db->query($sql);
 		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=211 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=213 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
+				<?php $sql="select id from smg_news where dept_category_id=218 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=219 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=220 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
+				<?php $sql="select id from smg_news where dept_category_id=223 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=224 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=225 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
+				<?php $sql="select id from smg_news where dept_category_id=228 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=229 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=230 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
+				<?php $sql="select id from smg_news where dept_category_id=233 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=234 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=235 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
+				<?php $sql="select id from smg_news where dept_category_id=238 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=239 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=240 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
+				<?php $sql="select id from smg_news where dept_category_id=243 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=244 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=245 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
+				<?php $sql="select id from smg_news where dept_category_id=248 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=249 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=250 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
+					<?php $sql="select id from smg_news where dept_category_id=253 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+					<?php $sql="select id from smg_news where dept_category_id=254 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+					<?php $sql="select id from smg_news where dept_category_id=255 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
+					<?php $sql="select id from smg_news where dept_category_id=259 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=260 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=261 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 		</div>
