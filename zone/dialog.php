@@ -132,7 +132,7 @@
 			</div>
 		</div>
 		<div id=b_r>
-			<div id=b_r_t>
+			<!--<div id=b_r_t>
 				<b>我要评论</b><br>
 				<input id="comment_writer" type="text" style="margin-bottom:5px;">
 				<?php show_fckeditor('fck_comment_content','Title',false,70,'',278);?>
@@ -156,13 +156,13 @@
 				}				
 				?>
 				</div>
-			</div>
+			</div>-->
 			<a href="dialog_collection.php?width=400&height=250" class="thickbox" id=b_r_b1></a>
 			<div id=b_r_title2><a href="dialog_list.php" target=_blank>往期对话</a></div>
 			<?php 
 				$db = get_db();
-				$latest_dialogs = $db->query('select * from smg_dialog where id !=' .$dialog->id .' order by id desc limit 4');
-				for($i=0;$i<4;$i++){
+				$latest_dialogs = $db->query('select * from smg_dialog where id !=' .$dialog->id .' order by id desc limit 10');
+				for($i=0;$i<count($latest_dialogs);$i++){
 				?>
 				<div class=b_r_b2>
 					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><img border=0 width=125 height=82 src="<?php echo $latest_dialogs[$i]->photo_url;?>">
