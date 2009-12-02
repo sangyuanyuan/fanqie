@@ -11,6 +11,7 @@
 	<? 
 		use_jquery();
 		js_include_once_tag('total1');
+		$db=get_db();
 	?>
 	<script>
 		total("电视新闻中心三项教育","other");
@@ -18,99 +19,150 @@
 </head>
 <body>
 	<div id=ibody>
-		<div id=ileft><a href="">电视新闻中心党委</a></div>
-		<div id=icenter_l><a href="">专职组织员</a></div>
+		<?php $sql="select id from smg_news where dept_category_id=202 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
+		<div id=ileft><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">电视新闻中心党委</a></div>
+		<?php $sql="select id from smg_news where dept_category_id=203 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
+		<div id=icenter_l><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">专职组织员</a></div>
 		<div class=ispace></div>
 		<div id=icenter_r>
+			<?php $sql="select id from smg_news where dept_category_id=205 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div id="context">
-				<a href="">职能部门党支部</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">职能部门党支部</a>
 			</div>
+			<?php $sql="select id from smg_news where dept_category_id=212 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div class="content">
-				<a href="">采访一部党支部</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">采访一部党支部</a>
 			</div>
+			<?php $sql="select id from smg_news where dept_category_id=216 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div class="content">
-				<a href="">采访二部党支部</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">采访二部党支部</a>
 			</div>
+			<?php $sql="select id from smg_news where dept_category_id=222 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div class="content" style="margin-top:155px;">
-				<a href="">国内国际部党支部</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">国内国际部党支部</a>
 			</div>
+			<?php $sql="select id from smg_news where dept_category_id=227 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div class="content">
-				<a href="">上视编播部党支部</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">上视编播部党支部</a>
 			</div>
+			<?php $sql="select id from smg_news where dept_category_id=232 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div class="content">
-				<a href="">卫视编播部党支部</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">卫视编播部党支部</a>
 			</div>
+			<?php $sql="select id from smg_news where dept_category_id=237 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div class="content" style="margin-top:155px;">
-				<a href="">评论部党支部</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">评论部党支部</a>
 			</div>
+			<?php $sql="select id from smg_news where dept_category_id=242 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div class="content">
-				<a href="">栏目部党支部</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">栏目部党支部</a>
 			</div>
+			<?php $sql="select id from smg_news where dept_category_id=247 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div class="content" style="margin-top:155px;">
-				<a href="">制作部第一党支部</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">制作部第一党支部</a>
 			</div>
+			<?php $sql="select id from smg_news where dept_category_id=252 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div class="content">
-				<a href="">制作部第二党支部</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">制作部第二党支部</a>
 			</div>
+			<?php $sql="select id from smg_news where dept_category_id=258 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
 			<div class="content" style="margin-top:155px;">
-				<a href="">新进大学生</a>
+				<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">新进大学生</a>
 			</div>
 		</div>
 		<div id="iright">
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=206 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=207 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=208 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<?php $sql="select id from smg_news where dept_category_id=210 and is_dept_adopt=1 order by dept_priority asc, created_at desc";
+					$news=$db->query($sql);
+		 ?>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 			<div class=content>
-				<div class=context><a href="">正式党员</a></div>
-				<div class=context><a href="">预备党员</a></div>
-				<div class=context><a href="">入党积极分子</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">正式党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">预备党员</a></div>
+				<div class=context><a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>">入党积极分子</a></div>
 			</div>
 		</div>
 	</div>
