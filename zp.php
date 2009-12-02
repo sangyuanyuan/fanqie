@@ -3,7 +3,7 @@
 <head>
 </head>
 <body style="width:995px; margin:0 auto; background:black;">
-<div style="width:995px; margin-bottom:20px; color:#FFFFFF; font-weight:bold; font-size:20px; text-align:center; float:left; display:inline;">smg足球联赛冠军竞猜抽奖活动</div>
+<div style="width:995px; margin-bottom:20px; color:#FFFFFF; font-weight:bold; font-size:30px; text-align:center; float:left; display:inline;">smg足球联赛冠军竞猜抽奖活动</div>
 <embed src="zp.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="995" height="650"></embed>
 </body>
 </html>
