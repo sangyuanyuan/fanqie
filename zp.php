@@ -3,6 +3,7 @@
 <head>
 </head>
 <body style="width:995px; margin:0 auto; background:black;">
+	<h1>smg足球联赛冠军竞猜抽奖活动</h1><br>
 <embed src="zp.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="995" height="650"></embed>
 </body>
 </html>
