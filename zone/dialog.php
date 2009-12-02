@@ -157,11 +157,11 @@
 				?>
 				</div>
 			</div>-->
-			<a href="dialog_collection.php?width=400&height=250" class="thickbox" id=b_r_b1></a>
+			<a style="margin-top:0px;" href="dialog_collection.php?width=400&height=250" class="thickbox" id=b_r_b1></a>
 			<div id=b_r_title2><a href="dialog_list.php" target=_blank>往期对话</a></div>
 			<?php 
 				$db = get_db();
-				$latest_dialogs = $db->query('select * from smg_dialog where id !=' .$dialog->id .' order by id desc limit 10');
+				$latest_dialogs = $db->query('select * from smg_dialog where id !=' .$dialog->id .' order by id desc limit 8');
 				for($i=0;$i<count($latest_dialogs);$i++){
 				?>
 				<div class=b_r_b2>
@@ -169,7 +169,24 @@
 					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><?php echo $latest_dialogs[$i]->title;?></a>	
 				</div>
 			<?php }?>
+			<div id=b_r_title1 style="margin-top:5px;"><div style=" margin-top:4px; margin-left:35px; font-size:larger;"><b>评论列表</b></div></div>
+			<div id=b_r_m>
+				<div id="comment_list_box">
+				<?php 
+				$dialog_comment = new table_class('smg_comment');
+				$dialog_comment = $dialog_comment->find('all',array('conditions' => "resource_type='dialog' and resource_id={$dialog->id}", 'order' => 'id desc'));
+				if($dialog_comment){
+					foreach ($dialog_comment as $v) {				
+						echo_dialog_comment($v);
+					}
+					$last_comment_id = $dialog_comment[0]->id;
+				}else{
+					$last_comment_id = 0;
+				}				
+				?>
+				</div>
 		</div>
+		
 	</div>
 </div>
 <form id="div_hidden">
