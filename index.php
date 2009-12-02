@@ -868,7 +868,7 @@ total("首页","other");
   				<ul>
   					<!--<li><a style="color:#ff0000; font-weight:bold;" href="/vote/vote.php?vote_id=<?php echo $vote[0]->id;?>" target=_blank><?php echo $vote[0]->name;?></a></li>-->
   					<?php for($i=0;$i<count($qz);$i++){ ?>
-  						<li><a href="/home/space.php?uid=<?php echo $qz[$i]->uid;?>&do=thread&id=<?php echo $qz[$i]->tid;?>" target=_blank><?php echo $qz[$i]->subject;?></a></li>
+  						<li><a <?php if($i<1){ ?>style="color:#ff0000; font-weight:bold;"<?php } ?> href="/home/space.php?uid=<?php echo $qz[$i]->uid;?>&do=thread&id=<?php echo $qz[$i]->tid;?>" target=_blank><?php echo $qz[$i]->subject;?></a></li>
   					<?php } ?>
   					<li><a href="/home/space.php?uid=<?php echo $homeblog[0]->uid;?>&do=blog&id=<?php echo $homeblog[0]->blogid;?>" target=_blank><?php echo $homeblog[0]->subject;?></a></li>
   					<!--<li><a href="/bbs/viewthread.php?tid=<?php echo $bbs[0]->tid;?>" target=_blank><?php echo $bbs[0]->subject;?></a></li>
