@@ -70,7 +70,7 @@
    			<? //}?>
    			<a href='/zongcai/' target="_blank">总裁奖</a>
    		</div>
-		<div id=zongcai><a target="_blank" href="/subject/football/"><img border=0 style="width:56px; height:13px; margin-top:0px; background:none;" src="/images/pic/football.gif"></a></div>
+		<div id=zongcai><!--<a target="_blank" href="/subject/football/"><img border=0 style="width:56px; height:13px; margin-top:0px; background:none;" src="/images/pic/football.gif"></a>--></div>
    	</div>
    	<?php 
    				$cookie=isset($_COOKIE['smg_username']) ? $_COOKIE['smg_username'] : "";
