@@ -7,4 +7,4 @@
 #right .content .name{float:left; display:inline;}
 #right .content .score{float:right; display:inline;}
 #right .content .content1{width:260px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline; }
-#right .content .content1 a{color:#000000; text-decoration:none;}
+#right .content .content1 a{zcolor:#000000; text-decoration:none;}

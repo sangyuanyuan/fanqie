@@ -129,4 +129,8 @@
 			<?php }?>
 		</div>
 	</div>
-<?php } ?>
+<?php }elseif($pos_name=="sub3_mt"){
+?>
+
+<?php
+} ?>
