@@ -225,7 +225,7 @@ $db->execute($sql); ?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
 			<?php if($record[0]->categoryname=="我要报料"){?><div id=lc>此文系番茄网网友报料新闻，不代表番茄网的观点或立场。</div><?php } ?>
 			<?php } ?>
-			<?php if($record[0]->is_commentable==1){ 
+			<?php  
 				if(count($comment)>0){?>
 			<div id=comment>
 				<?php if(count($digg)>0){
@@ -324,7 +324,9 @@ $db->execute($sql); ?>
 		<?php
 	}}?>
 			</div>
-			<?php }?>
+			<?php }
+				if($record[0]->is_commentable==1){
+			?>
 			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 			<div class=abouttitle>发表评论</div>
 			<div class=aboutcontent style="padding-bottom:10px;">

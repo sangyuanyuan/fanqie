@@ -16,6 +16,9 @@ require_once('../frame.php');
 			<td width="40%">名称</td><td width="40%">操作</td>
 		</tr>
 		<tr height="20" align="center">
+			<td>premiere使用说明（视频讲解）</td><td><a target="_blank" href='http://design.yesky.com/premiere_pro/'>查看</a></td>
+		</tr>
+		<tr height="20" align="center">
 			<td>Premiere</td><td><a href='/tools/Premiere_Pro.rar'>下载</a></td>
 		</tr>
 		<tr height="20" align="center">

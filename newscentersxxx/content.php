@@ -7,6 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>新闻中心三项教育</title>
 <link href="main.css" rel="stylesheet" type="text/css" />
+<? 
+	use_jquery();
+	js_include_once_tag('total1');
+?>
+<script>
+	total("电视新闻中心三项教育","other");
+</script>
 </head>
 
 <body>
@@ -45,7 +52,7 @@
 <h1><?php echo $news[0]->title; ?></h1>
 <h2>发布时间 <?php echo $news[0]->created_at; ?> 阅读次数 <?php echo $news[0]->click_count; ?></h2>
 <?php echo get_fck_content($news[0]->content); ?>
-  <br />
+  <div id=page><?php echo print_fck_pages($news[0]->content); ?></div>
 </div>
         <p>&nbsp;</p>
       </div>

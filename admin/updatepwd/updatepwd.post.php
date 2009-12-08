@@ -11,7 +11,7 @@ require_once('../../frame.php');
 $result=new table_class('smg_updatepwd');
 $db = get_db();
 $success=0;
-	if($_POST['updatepwd']['subtype']=="updatepwd")
+	if($_POST['subtype']=="updatepwd")
 	{
 		if($_POST['updatepwd']['username']==0)
 		{
@@ -42,7 +42,7 @@ $success=0;
 		}
 		
 	}
-	if($_POST['updatepwd']['subtype']=="resetpwd")
+	if($_POST['subtype']=="resetpwd")
 	{
 		$success=reset_password($_POST['updatepwd']['userid'],'Password@1','Password@1',1,$_POST['updatepwd']['username']);
 		if($success==0)
@@ -68,5 +68,5 @@ $success=0;
 			redirect('resetpwd.php');
 		}
 	}
-//redirect('/');
+redirect('/');
 ?>

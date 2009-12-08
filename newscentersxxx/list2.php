@@ -7,6 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>新闻中心三项教育</title>
 <link href="main.css" rel="stylesheet" type="text/css" />
+<? 
+	use_jquery();
+	js_include_once_tag('total1');
+?>
+<script>
+	total("电视新闻中心三项教育","other");
+</script>
 </head>
 
 <body>

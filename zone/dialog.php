@@ -105,7 +105,17 @@
 					{
 				?>		
 						<div id=video>
-							<?php show_video_player('537','414',$dialog->photo_url,$dialog->video_url,$autostart = "false") ?>
+							<!--<OBJECT   id=MediaPlayer1   codeBase=http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701standby=Loading   type=application/x-oleobject   height=414   width=537   classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6   VIEWASTEXT> 
+								<PARAM   NAME= "URL"   VALUE= "mms://172.27.202.23:5765/broadcast"> 
+								<PARAM   NAME= "playCount"   VALUE= "1"> 
+								<PARAM   NAME= "autoStart"   VALUE= "true"> 
+								<PARAM   NAME= "invokeURLs"   VALUE= "false">
+								<PARAM   NAME= "uiMode"   VALUE= "Full">
+								<PARAM   NAME= "EnableContextMenu"   VALUE= "true">			
+								<embed src="mms://172.27.202.23:5765/broadcast" align="baseline" border="0" width="537" height="414" type="application/x-mplayer2"pluginspage="" name="MediaPlayer1" showcontrols="1" showpositioncontrols="0" showaudiocontrols="1" showtracker="1" showdisplay="0" showstatusbar="1" autosize="0" showgotobar="0" showcaptioning="0" autostart="false" autorewind="0" animationatstart="0" transparentatstart="0" allowscan="1" enablecontextmenu="1" clicktoplay="0" defaultframe="datawindow" invokeurls="0"></embed> 
+							</OBJECT>-->
+							<?php show_video_player('537','414',$dialog->photo_url,$dialog->video_url,$autostart = "false");
+							?>		
 						</div>
 					
 				<?
@@ -132,7 +142,7 @@
 			</div>
 		</div>
 		<div id=b_r>
-			<div id=b_r_t>
+			<!--<div id=b_r_t>
 				<b>我要评论</b><br>
 				<input id="comment_writer" type="text" style="margin-bottom:5px;">
 				<?php show_fckeditor('fck_comment_content','Title',false,70,'',278);?>
@@ -156,20 +166,37 @@
 				}				
 				?>
 				</div>
-			</div>
-			<a href="dialog_collection.php?width=400&height=250" class="thickbox" id=b_r_b1></a>
+			</div>-->
+			<a style="margin-top:0px;" href="dialog_collection.php?width=400&height=250" class="thickbox" id=b_r_b1></a>
 			<div id=b_r_title2><a href="dialog_list.php" target=_blank>往期对话</a></div>
 			<?php 
 				$db = get_db();
-				$latest_dialogs = $db->query('select * from smg_dialog where id !=' .$dialog->id .' order by id desc limit 4');
-				for($i=0;$i<4;$i++){
+				$latest_dialogs = $db->query('select * from smg_dialog where id !=' .$dialog->id .' order by id desc limit 8');
+				for($i=0;$i<count($latest_dialogs);$i++){
 				?>
 				<div class=b_r_b2>
 					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><img border=0 width=125 height=82 src="<?php echo $latest_dialogs[$i]->photo_url;?>">
 					<a target="_blank" href="dialog.php?id=<?php echo $latest_dialogs[$i]->id;?>"><?php echo $latest_dialogs[$i]->title;?></a>	
 				</div>
 			<?php }?>
+			<div id=b_r_title1 style="margin-top:5px;"><div style=" margin-top:4px; margin-left:35px; font-size:larger;"><b>评论列表</b></div></div>
+			<div id=b_r_m>
+				<div id="comment_list_box">
+				<?php 
+				$dialog_comment = new table_class('smg_comment');
+				$dialog_comment = $dialog_comment->find('all',array('conditions' => "resource_type='dialog' and resource_id={$dialog->id}", 'order' => 'id desc'));
+				if($dialog_comment){
+					foreach ($dialog_comment as $v) {				
+						echo_dialog_comment($v);
+					}
+					$last_comment_id = $dialog_comment[0]->id;
+				}else{
+					$last_comment_id = 0;
+				}				
+				?>
+				</div>
 		</div>
+		
 	</div>
 </div>
 <form id="div_hidden">

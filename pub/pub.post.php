@@ -13,7 +13,7 @@
 		}
 		$comment->ip=$ip;
 		$comment -> save();
-		redirect($_SERVER['HTTP_REFERER']);
+		redirect($_SERVER['HTTP_REFERER']);		
    	}elseif($_POST['type']=='flower'){
    		if($_POST['db_table']!=''){
    			$table = new table_class($_POST['db_table']);

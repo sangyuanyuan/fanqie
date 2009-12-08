@@ -2,7 +2,7 @@
   require_once('../../frame.php');
   $db=get_db();
   if($_REQUEST['id']==''){die('没有找到网页');}
-  $news=$db->query('select id,title,content,news_type,target_url,file_name from smg_news n where id='.$_REQUEST['id']);
+  $news=$db->query('select id,title,content,news_type,target_url,file_name,is_commentable from smg_news n where id='.$_REQUEST['id']);
   if($news[0]->news_type==3)//url链接类新闻
   {
   	redirect($news[0]->target_url);
@@ -24,7 +24,9 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -三项学习教育内容页</title>
-	<?php css_include_tag('sxxx');
+	<?php 
+		use_jquery();
+		css_include_tag('sxxx');
 		js_include_once_tag('total');
 	?>
 <script>
@@ -60,6 +62,7 @@
 			  </div>
 			<form name="commentform" id="commentform" method="post" action="/pub/pub.post.php">
 				 <input type="hidden" name="post[resource_id]" id="newsid" value="<?php echo $news[0]->id;?>">
+				 <input type="hidden" name="type" id="type" value="comment">
 			   <div id=content9>
 				   用户：<input type="text" value="" id="commenter" name="post[nick_name]">   	
 			   </div>
@@ -75,4 +78,11 @@
 		<? include('inc/djbottom.inc.php');?>
 </body>
 </html>
-
+<script>
+	$(document).ready(function(){
+		$('#content11').click(function(){
+			document.commentform.submit();
+		});
+	});
+	
+</script>

@@ -214,39 +214,17 @@
 									<div class="pics"><a target="_blank" href="djcontent.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=130 height=90 src="<?php echo $pic[$i]->photo_src; ?>"><br><?php echo $pic[$i]->short_title; ?></a></div>
 								<?php } ?>
 							</div>
-							<div class=title style="margin-left:10px;">我的承诺</div>
+							<div class=title style="margin-left:10px;">三分钟答题</div>
 							<div class=title style="margin-left:10px;">我的博客</div>
 							<div style="width:350px; overflow:hidden; float:left; display:inline;">
-								<? 
-								$comments = $db->paginate('select * from smg_comment where resource_type="sxxx" order by created_at desc',5);
-								for($i=0;$i<count($comments);$i++){?>
-									<div class=content7>
-										<div class=name><a href="#"><?php echo $comments[$i]->nick_name; ?></a></div>	
-										<div class=time><?php echo $comments[$i]->created_at; ?></div>	
-										<div class=context><?php echo strfck($comments[$i]->comment); ?></div>	
-									</div>
-									<? }?>						
-								  <div class="pageurl">
-								     <? paginate('');?>
-								  </div>
-								<form name="commentform" id="commentform" method="post" action="/pub/pub.post.php">
-								   <div id=content9>
-									   用户：<input type="text" value="" id="commenter" name="post[nick_name]">   	
-								   </div>
-								   <div id=content10>
-									  <div id=plleft>承诺：</div><textarea id="commentcontent" name="post[comment]"></textarea>
-								   </div>   
-								   <div id=content11></div>
-								   	<input type="hidden" id="resource_type" name="post[resource_type]" value="sxxx">
-									<input type="hidden" id="target_url" name="post[target_url]" value="<?php  $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
-									<input type="hidden" name="type" value="comment">
-								   <input type="hidden" value="<? echo count($data,COUNT_RECURSIVE);?>">
-									<input type="hidden" value="<? echo count($deptname);?>">
-								</form>
+							<?php $question=$db->query('select id,name from smg_problem where category_id=160 and is_adopt=1 order by create_time desc'); ?>
+								<? for($i=0;$i<count($question);$i++){?>
+									<div style="width:320px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="/answer/pro_answer.php?id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->name;?></a></div>
+								<? }?>
 							</div>
 							<? $sql = 'select t1.uid,t1.subject,t1.itemid,t1.viewnum from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 order by t1.dateline desc limit 10';
 						$news = $db->query($sql); ?>
-							<div style="width:330px; margin-right:10px; float:right; display:inline;">
+							<div style="width:330px; height:200px; margin-right:10px; float:right; display:inline;">
 								<? for($i=0;$i<count($news);$i++){?>
 								<div style="width:320px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a <? if($i<1){?>style="color:red; font-weight:bold;"<? }?> target="_blank" href="/blog/index.php?uid-<?php echo $news[$i]->uid;?>-action-viewspace-itemid-<?php echo $news[$i]->itemid;?>"><?php echo $news[$i]->subject;?></a></div>
 								<? }?>

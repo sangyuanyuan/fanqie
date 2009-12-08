@@ -29,9 +29,7 @@
 				<div id=pwd >邮　箱　　<input type="text" id=admin_email name=email style="width:145px; height:17px;" value="<?php echo urldecode($_REQUEST['email']);?>"></div>
 				<div id=btn><input type="submit" value="注册" id="button_register" class="btn"></div>	
 				<input type="hidden" name="lasturl" value="<?php echo $lasturl;?>">
-				<div id=zhu>“番茄网”注册指南：<br>・ 工号注册×××××××××。</div>	
 			</div>
-			
 		</div>
 	</div>
 	

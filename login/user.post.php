@@ -45,7 +45,7 @@ if($_POST['user_type']=="login")
 	else
 	{
 		$y2k = mktime(0,0,0,1,1,2020); 
-		if ($login_info[0]->register_type == "user_id")
+		if ($login_info[0]->register_type == "user_id"&&$login_info[0]->role_name!="1000")
 		{
 			$sql = 'select * from smg_user_real where id='.$login_info[0]->smg_real_id;
 			$login_info2 = $db->query($sql);

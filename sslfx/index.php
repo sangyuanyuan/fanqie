@@ -280,11 +280,11 @@
 		<?php $sql="select n.title,n.id,n.content,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 2";
 				$news=$db->query($sql);
 			?>
-			<div class=b_title><div style="float:left; display:inline;">收视率相关文献</div><div class=more><a href="/news/news_list.php?id=<?php echo $news[0]->cid;?>">更多</a></div></div>
+			<div class=b_title><div style="float:left; display:inline;">相关文献</div><div class=more><a href="/news/news_list.php?id=<?php echo $news[0]->cid;?>">更多</a></div></div>
 			<div id=b_content>
 				<?php for($i=0;$i<count($news);$i++){ ?>
 				<div class="b_content_every">
-					<div class=title><span style="color:#ff9900; font-weight:bold;">【节目】<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[$i]->title);?></a></span></div>
+					<div class=title><span style="color:#ff9900; font-weight:bold;">【题目】<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[$i]->title);?></a></span></div>
 					<div class=content><a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[$i]->content);?></a></div>
 				</div>
 				<?php } ?>
