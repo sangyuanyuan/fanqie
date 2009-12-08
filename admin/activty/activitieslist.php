@@ -67,7 +67,7 @@ js_include_tag('admin','total'); ?>
 			<td><? echo $record[$i]->loginname;?></td>
 			<td><? echo $record[$i]->name;?></td>
 			<td><? echo $record[$i]->dname;?></td>
-			<td><? echo $record[$i]->sex;?></td>
+			<td><? if($record[$i]->sex==1){echo '男';}else if($record[$i]->sex==0){echo '女';}?></td>
 			<td><? echo $record[$i]->age;?></td>
 			<td><? echo $record[$i]->mobile;?></td>
 			<td><? echo $record[$i]->createtime;?></td>
