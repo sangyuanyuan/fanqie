@@ -66,4 +66,13 @@ if($_POST["type"]=="delleaderuser")
 	$Record = $db->execute($StrSql);
 	echo "OK";
 }
+
+if ($_POST["type"]=="delactivitier")
+{
+	$PostStr = $_POST["delactivitier"];
+	$strsql='delete from smg_activities_signup where id='.$_POST['id']; 
+	$Record = $db->execute($strsql) or die ("delete error");
+	echo "OK";
+
+}
 ?>

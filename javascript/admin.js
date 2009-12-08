@@ -106,6 +106,13 @@
 				  location.reload();
 			})
 		});
+		
+		$(".delactivitier").click(function(){
+			$.post('/admin/admin.post.php',{'id':$(this).attr('param'),'type':'delactivitier'},function(data){
+				 if(data=="OK")
+				  location.reload();
+			})
+		});
 
 })
 		function newskey()
