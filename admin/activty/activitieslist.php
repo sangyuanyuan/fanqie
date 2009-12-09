@@ -8,7 +8,8 @@ if($key1<>""){$sql=' and a.name like "%'.$key1.'%" ';}
 if($id==""){$id=$key4;}
 
 $strsql='select a.* from smg_activities_signup a where 1=1'.$sql;
-$record=$db->query($strsql) or die ("select error1");
+echo $strsql;
+$record=$db->query($strsql);
 $record_num=count($record);
 
 	
@@ -33,7 +34,7 @@ $record_num=count($record);
 
 
 $strsql='select a.*,d.name as dname from smg_activities_signup a left join smg_dept d on a.dept_id=d.id where 1=1'.$sql.' order by a.createtime desc limit '.($page-1)*$page_size.','.$page_size;
-$record=$db->query($strsql) or die ("select error2");
+$record=$db->query($strsql);
 
 
 ?>
