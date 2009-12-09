@@ -60,11 +60,10 @@ js_include_tag('admin','total'); ?>
 			</td>
 		</tr>
 		<tr align="center" bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td>工号</td><td>姓名</td><td>部门</td><td>性别</td><td>年龄</td><td>手机号</td><td>报名时间</td><td>操作</td>
+			<td>姓名</td><td>部门</td><td>性别</td><td>年龄</td><td>手机号</td><td>报名时间</td><td>操作</td>
 		</tr>
 		<? for($i=0;$i<count($record);$i++){?>
 		<tr align="center" bgcolor="#f9f9f9" height="22px;" >
-			<td><? echo $record[$i]->loginname;?></td>
 			<td><? echo $record[$i]->name;?></td>
 			<td><? echo $record[$i]->dname;?></td>
 			<td><? if($record[$i]->sex==1){echo '男';}else if($record[$i]->sex==0){echo '女';}?></td>
