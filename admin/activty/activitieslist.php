@@ -8,7 +8,6 @@ if($key1<>""){$sql=' and a.name like "%'.$key1.'%" ';}
 if($id==""){$id=$key4;}
 
 $strsql='select a.* from smg_activities_signup a where 1=1'.$sql;
-echo $strsql;
 $record=$db->query($strsql);
 $record_num=count($record);
 
