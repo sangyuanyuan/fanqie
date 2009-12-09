@@ -51,7 +51,7 @@
 						<td align="left"><input id="age" name="age" type="text" />岁</td>
 					</tr>
 					<tr>
-						<td>联系方式：</td>
+						<td>联系电话：</td>
 						<td align="left"><input id="phone" name="phone" type="text" /></td>
 					</tr>
 					<tr>

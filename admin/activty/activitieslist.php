@@ -54,7 +54,7 @@ js_include_tag('admin','total'); ?>
 <body style="background:#E1F0F7">
 	<table width="795" border="0">
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;">
-			<td colspan="8" width="795">　　　搜索　<input id=newskey1 type="text" value="<? echo $key1?>" onKeyPress="newskeypress()">
+			<td colspan="7" width="795">　　　搜索　<input id=newskey1 type="text" value="<? echo $key1?>" onKeyPress="newskeypress()">
 			<input id=newskey2 type="hidden"><input id=newskey3 type="hidden"><input id=newskey4 type="hidden" value="<? echo $id?>">
 			<input type="button" value="搜索" style="border:1px solid #0000ff; height:21px" onClick="newskey()">
 			</td>
@@ -74,7 +74,7 @@ js_include_tag('admin','total'); ?>
 		</tr>
 		<? }?>
 		<tr bgcolor="#f9f9f9" height="25px;" style="font-weight:bold; font-size:13px;" align="center">
-			<td colspan="8" width="800" class="pages">
+			<td colspan="7" width="800" class="pages">
 				<a href="?key1=<? echo $key1?>&key2=<? echo $key2?>&key3=<? echo $key3?>&key4=<? echo $id?>&page=1">首页</a> 
 				<a href="?key1=<? echo $key1?>&key2=<? echo $key2?>&key3=<? echo $key3?>&key4=<? echo $id?>&page=<? echo $page-1?>">上一页</a> 
 				<a href="?key1=<? echo $key1?>&key2=<? echo $key2?>&key3=<? echo $key3?>&key4=<? echo $id?>&page=<? echo $page+1?>">下一页</a> 
