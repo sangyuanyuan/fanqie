@@ -7,11 +7,16 @@
 	<title>SMG -献血报名</title>
 	<link href="/css/smg.css" rel="stylesheet" type="text/css">
 	<script language="javascript" src="activity.js"></script>
+	<?php require_once('../frame.php');
+		use_jquery();
+		js_include_once_tag('total'); ?>
+	<script>
+		total("献血报名","news");
+	</script>
 </head>
 <body>
 	<? 
 		$cookie=(isset($_COOKIE['smg_userid'])) ? $_COOKIE['smg_userid'] : 0;
-		require_once('../frame.php');
 		$db=get_db();
 		$dept=$db->query('select * from smg_dept order by id');
 	?>
@@ -57,7 +62,7 @@
 					<tr>
 						<td align="left"><input id="xb" name="xb" type="hidden" /><input type="hidden" id="userid" name="userid" value="<? echo $cookie;?>"></td>
 					</tr>
-					<tr><td></td><td><button OnClick="signuppost()">提　交</button></td><td  align="center"><button type="reset">重　置</button></td></tr>
+					<tr><td></td><td><button OnClick="signuppost()">提　交</button></td><td  align="center"><a href="list.php">查看报名情况</a></td></tr>
 					<tr></tr>
 				</table>
 				</form>
