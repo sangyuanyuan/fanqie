@@ -18,7 +18,7 @@
 	<? 
 		$cookie=(isset($_COOKIE['smg_userid'])) ? $_COOKIE['smg_userid'] : 0;
 		$db=get_db();
-		$dept=$db->paginate('select a.name as realname,d.name from smg_activities_signup a left join smg_dept d on a.dept_id=d.id order by a.id',20);
+		$dept=$db->paginate('select a.name as realname,d.name from smg_activities_signup a left join smg_dept d on a.dept_id=d.id order by a.id desc',20);
 		require_once('../inc/top.inc.html');
 	?>
 	
