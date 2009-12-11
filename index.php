@@ -512,8 +512,6 @@ total("首页","other");
 						$record_tg=$db -> query($sql);
 						$sql="select * from smg_fhtg where is_adopt=1 order by priority asc,created_at desc limit 1";
 						$fhtg=$db->query($sql);
-						$count=count($fhtg);
-						$count=0;
 					?>
  				<div class=content_trrt id=content_trrt1 >
 					<!--<div class=box>
@@ -540,7 +538,7 @@ total("首页","other");
 							<li>·<a href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','学习交流'));?>" target="_blank">学习交流</a></li>
 						</ul>
 					</div>-->
-					<?php if($count==0){ ?>
+					<?php if(count($fhtg)==0){ ?>
 					<?php for($i=0;$i<3;$i++){?>
 					<div class=box>
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
