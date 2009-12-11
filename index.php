@@ -331,7 +331,7 @@ total("首页","other");
 					$zhibo=$db->query($sql);
 				?>		
 				<div id=content1><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a></div>
- 				<?php if($zhibo[0]->state==1){ ?><a href="mms://172.27.202.23:5765/broadcast" id=btn ></a><?php } ?>
+ 				<?php if($zhibo[0]->state==1){ ?><a href="mms://172.27.202.23:5765/broadcast" id=btn ></a><?php } else{?><a href="/news/news/news.php?id=28775"><img border=0 style="margin-top:13px;" src="/images/pic/xx.gif"></a><?php } ?>
  				<?php
 
 					$sql = 'select * from smg_news_show;';
