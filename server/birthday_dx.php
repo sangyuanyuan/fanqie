@@ -3,7 +3,7 @@
   $db = get_db();
   $today = substr(date('Y-m-d'), 5);
   
-	$sql1="select distinct(org_id),tel_phone from smg_user_real where duty like '%科长%' and org_id in (select b.orgid from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='$today' and state=3 and hide_birthday!=1  order by a.org_id)";
+	$sql1="select tel_phone from smg_user_real where (duty like '%主任%' or duty like '%党委书记%') and org_id in (select distinct(b.center_id) from smg_user_real a left join smg_org_dept b on a.org_id = b.orgid where birthday_short='$today' and state=3 and hide_birthday!=1  order by a.org_id)";
 	$phone=$db->query($sql1);
 	for($i=0;$i<count($phone);$i++)
 	{
