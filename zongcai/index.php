@@ -24,7 +24,7 @@
 		<div id=subject_logo>
 		</div>
 		<div class=subject_title>
-			<a target="_blank" href="/">网站首页</a>|<a target="_blank" href="list.php?id=<?php echo category_id_by_name('最新动态','zongcai');?>">最新动态</a>|<a target="_blank" href="item_list.php?id=<?php echo $vote[0]->id; ?>">候选作品</a>|<a target="_blank" href="item_list.php">历届参评节目</a>|<a target="_blank" href="list.php?id=<?php echo category_id_by_name('荣誉榜单','zongcai');?>">荣誉榜单</a>|<a target="_blank" href="list.php?id=<?php echo category_id_by_name('创新经验坛','zongcai');?>">创新经验坛</a>
+			<a target="_blank" href="/">网站首页</a>|<a target="_blank" href="list.php?id=<?php echo category_id_by_name('最新动态','zongcai');?>">最新动态</a>|<a target="_blank" href="item_list.php?id=<?php echo $vote[0]->id; ?>">候选作品</a>|<a target="_blank" href="item_list.php">历届参评节目</a>|<a target="_blank" href="list.php?id=<?php echo category_id_by_name('荣誉榜单','zongcai');?>">荣誉榜单</a>|<a target="_blank" href="list.php?id=<?php echo category_id_by_name('创新经验坛','zongcai');?>">创新经验坛</a>|<a target="_blank" href="list.php?id=<?php echo category_id_by_name('历届节目点评','zongcai');?>">历届节目点评</a>
 		</div>
 		<div id=subject_content1>
 			<div id=top>
