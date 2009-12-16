@@ -6,6 +6,7 @@ body {font-family:宋体; font-size:12px; background:url(/images/bg/subject_body
 .subject_title A:hover{color:#AA0000; text-decoration:underline;}
 .subject_title #more{height:37px; margin-left:600px; font-size:11px; display:inline;}
 #subject_content1{width:770px; background:url(/images/bg/subject_content_bg.jpg) repeat-y; float:left; display:inline;}
+#subject_content1 .vote_title{width:550px; height:20px; margin-top:10px; margin-bottom:10px; font-size:16px; line-height:20px; text-align:center; color:#000000; font-weight:bold; float:left; display:inline;}
 #subject_content1 #top{width:770px; height:160px; float:left; display:inline}
 #subject_content1 #top #left{width:190px; height:140px; margin-top:10px; margin-left:10px; float:left; display:inline;}
 #subject_content1 #top #middle{width:350px; height:138px; margin-top:10px; margin-left:10px; border-top:1px dotted #000000; border-bottom:1px dotted #000000; overflow:hidden; float:left; display:inline;}
