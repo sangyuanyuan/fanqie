@@ -54,17 +54,17 @@ function display_login(dom_id,admin){
 		str +='<div id=welcome>欢迎您：<span style="font-weight:bold;">';
 		str += $.cookie('smg_user_nickname') +'</span>';
 		if (!admin) {
-			str +='　<a href="/login/changepwd.php" target="_blank">修改密码</a>' 
-			str += '　<a href="/home/?uid=' + $.cookie('smg_uid') + '" target=_blank>番茄家园</a>';
+			str +=' <a href="/login/changepwd.php" target="_blank">修改密码</a>' 
+			str += ' <a href="/home/?uid=' + $.cookie('smg_uid') + '" target=_blank>番茄家园</a>';
 		}		
-			str += '　<a href="/blog/?' + $.cookie('smg_uid') + '" target=_blank>个人博客</a>';
+			str += ' <a href="/blog/?' + $.cookie('smg_uid') + '" target=_blank>个人博客</a>';
 		if($.cookie('smg_user_dept') == 7){
-			str += '　<a href="/admin/admin.php">后台管理</a>';
+			str += ' <a href="/admin/admin.php">后台管理</a>';
 		}else if($.cookie('smg_user_dept') > 0){
-			str += '　<a href="/admin/admin2.php">后台管理</a>';
+			str += ' <a href="/admin/admin2.php">后台管理</a>';
 		}else if($.cookie('smg_role')=='1000')
 		{
-			str += '　<a href="/admin/updatepwd/resetpwd.php">重置密码</a>';
+			str += ' <a href="/admin/updatepwd/resetpwd.php">重置密码</a>';
 		}
 		var num1=parseInt($('#birthday1').val());
 		var num2=parseInt($('#birthday2').val());

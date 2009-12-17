@@ -86,7 +86,7 @@
    	?>
    	<input type="hidden" id="birthday1" style="display:none" value="<?php echo $birthday1[0]->num; ?>"><input type="hidden" style="display:none" id="birthday2" value="<?php echo $birthday2[0]->num; ?>">
 		<div id=login>
-			<div id=welcome>	<img src="/images/top/person.jpg">欢迎您：<span style="font-weight:bold;">admin</span>　<a href="#">修改密码</a>　<a href="#">后台管理</a>　<a href="#">退出</a> <?php if($cookie!==""){ if((int)$birthday1[0]->num > 0||(int)$birthday2[0]->num > 0){ ?><a href="/server/friend_list.php"></a><?php }} ?>
+			<div id=welcome>	<img src="/images/top/person.jpg">欢迎您：<span style="font-weight:bold;">admin</span> <a href="#">修改密码</a> <a href="#">后台管理</a> <a href="#">退出</a> <?php if($cookie!==""){ if((int)$birthday1[0]->num > 0||(int)$birthday2[0]->num > 0){ ?><a href="/server/friend_list.php"></a><?php }} ?>
 </div>
 		</div>
 	</div>
