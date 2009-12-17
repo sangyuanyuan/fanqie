@@ -1,5 +1,5 @@
 ﻿<?php 
-	require "../frame.php";
+	require "../../frame.php";
 	
 	$images = new table_class('smg_images');
 	$images->update_attributes($_POST['images'],false);

@@ -67,7 +67,7 @@ js_include_once_tag('total','gd');?>
 				for($i=0;$i<count($news);$i++)
 				{
 			 ?>
-				<div class=cl><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a></div>
+				<div class=cl>·<a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a></div>
 			<?php } ?>
 		</div>
 	</div>
@@ -127,13 +127,13 @@ js_include_once_tag('total','gd');?>
 </body>
 </html>
 <script>
-	/*$(".cl").click(function()
+	$(".cl").click(function()
 	{
 		video_src($(this).attr('param'));
 	});
 	function video_src(vid)
 	{
 		$("#video_src").attr('src','index_video.php?id='+vid);
-	}*/
+	}
 </script>
 	

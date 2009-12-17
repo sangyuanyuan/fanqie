@@ -17,13 +17,13 @@
 </script>	
 </head>
 <body>
-<? require_once('../inc/top.inc.html');?>
+<? require_once('../../inc/top.inc.html');?>
 <div id=ibody>
 	<form id="news_add" name="news_add" enctype="multipart/form-data" action="xyy2.post.php" method="post">
 	<div class=title>狼羊群</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　姓名</div>
-		<div class=t_r><input type="text" name="images[publisher_id]" value="<?php echo $_COOKIE['smg_user_nickname'];?>"></div>
+		<div class=t_r><input type="text" name="images[publisher]" value="<?php echo $_COOKIE['smg_user_nickname'];?>"></div>
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　照片</div>
@@ -31,7 +31,7 @@
 	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　留言</div>
-		<div id=m_r><textarea name="images[description]" style="width:750px; height:230px;"></textarea></div>
+		<div id=m_r><textarea id="description" name="images[description]" style="width:750px; height:420px;"></textarea></div>
 	</div>
 	<div id=b_button>
 			<input type="hidden" name="images[parent_id]" value="<?php echo $_REQUEST['id']; ?>">
@@ -39,7 +39,7 @@
 	</div>
 	</form>
 </div>
-<? require_once('../inc/bottom.inc.php');?>
+<? require_once('../../inc/bottom.inc.php');?>
 
 </body>
 </html>
@@ -51,8 +51,7 @@
 				alert('请填写姓名!');
 				return false;
 			}
-			var oEditor = FCKeditorAPI.GetInstance('news[content]');
-			var content = oEditor.GetHTML();
+			var content = $('#description').val();
 			if(content ==''){
 				alert('请填写留言!');
 				return false;
