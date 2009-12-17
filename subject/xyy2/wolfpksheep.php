@@ -23,30 +23,12 @@
 <div id=ibody>
 	<div id=ibody_top>
 		<div id=t_t></div>
-		<div id=t_l>
-			<div class=wybm><a href="images_sub.php?id=1" target="_blank"><img src="/images/joinwolf.gif" border=0></a></div>
-			<div class=box>
-				<?php 
-					$db = get_db();
-					$sql = 'select * from smg_marry where sex="woman" order by id desc';
-					$records = $db->paginate($sql,4,'left');
-					$count = count($records);
-					for($i=0;$i<$count;$i++){
-				?>
-				
-				<div class=content>
-					<div class=radio><input type="radio" class=woman name="woman_choose" value="<?php echo $records[$i]->id; ?>"></div>
-					<div class=pic><a href="<?php echo $records[$i]->photo;?>"><img src="<?php echo $records[$i]->photo;?>" width="102" height="142" border="0"></a></div>
-					<div class=info>
-					姓名：<?php echo $records[$i]->name; ?><br>
-					留言：<span title="<?php echo $records[$i]->request; ?>"><?php echo $records[$i]->request; ?></span>
-					</div>
-				</div>
-				<?php } ?>
-			</div>
+		<div class=wybm><a href="images_sub.php?id=1" target="_blank"><img src="/images/joinwolf.gif" border=0></a></div><div id="pk"><img src="/images/pk.gif"></div><div class=wybm><a href="images_sub.php?id=2" target="_blank"><img src="/images/joinsheep.gif" border=0></a></div>
+		<div class=group>
+			
 		</div>
-		<div id=t_r>
-			<div class=wybm><a href="images_sub.php?id=2" target="_blank"><img src="/images/joinsheep.gif" border=0></a></div>
+		<div class=group>
+			
 			<div class=box>
 				<?php 
 					$db = get_db();
