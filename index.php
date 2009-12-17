@@ -666,7 +666,7 @@ total("首页","other");
 						for ($i=0;$i<2;$i++)
 						{
 							$picsurl10[]=$record_import_b[$i]->photo_src;
-							$picslink10[]='/'.$record_import_b[$i]->platform.'/news/news.php?id='.$record_import_b[$i]->id;;
+							$picslink10[]='/'.$record_import_b[$i]->platform.'/news/news.php?id='.$record_import_b[$i]->id;
 							$picstext10[]= delhtml($record_import_b[$i]->short_title);
 						}
 					?>

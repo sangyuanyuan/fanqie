@@ -7,7 +7,8 @@
 	<TITLE>喜羊羊2</TITLE>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <LINK href="css/index.css" type=text/css rel=stylesheet>
-<?php js_include_once_tag('total');?>
+<?php use_jquery(); 
+js_include_once_tag('total','gd');?>
 <script>
 	total("专题-喜羊羊2","other");
 	var startTime = new Date();
@@ -71,19 +72,68 @@
 		</div>
 	</div>
 	<div id=iright>
-		<div id=top></div>	
+		<?php $news=$db->query('select id,title from smg_news where category_id=167 and is_adopt=1 order by priority asc,created_at desc'); ?>
+		<div id=top>
+			<DIV id=a style="OVERFLOW: hidden; WIDTH: 260px; height:180px;">
+				<div id=a1>
+					<?php
+						for($i=0;$i<count($news);$i++){
+					?>
+		        <div class="cl"><a target="_blank" href="/news/news_list.php?id=166"><?php echo $news[$i]->title; ?></a></div>
+		      <? }?>
+		    </div>
+		    <div id="a2"></div>
+			</DIV>
+		  <SCRIPT>
+		    boxmove("a","a1","a2",1); 
+			</SCRIPT>	
+		</div>
+		<div id=bottom>
+			<?php 
+						$record_import_b=$db->query('select * from smg_images where category_id=166 and is_adopt=1 order by priority asc,created_at desc');
+	 					$picsurl10 = array();
+						$picslink10 = array();
+						$picstext10 = array();
+						for ($i=0;$i<count($record_import_b);$i++)
+						{
+							$picsurl10[]=$record_import_b[$i]->src;
+							$picslink10[]='images_list.php';
+						}
+					?>
+ 					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+					<div id="focus_10"></div> 
+					<script type="text/javascript"> 
+						var pic_width=280; //图片宽度
+						var pic_height=170; //图片高度
+						var pics10="<?php echo implode(',',$picsurl10);?>";
+		 				var mylinks10="<?php echo implode(',',$picslink10);?>";
+						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "280", "170", "6","#FFFFFF");
+						picflash.addParam('wmode','opaque');
+						picflash.addVariable("picurl",pics10);
+						picflash.addVariable("piclink",mylinks10);		
+						picflash.addVariable("pictime","5");
+						picflash.addVariable("borderwidth","280");
+						picflash.addVariable("borderheight","170");
+						picflash.addVariable("borderw","false");
+						picflash.addVariable("buttondisplay","flase");
+						picflash.addVariable("pic_width",pic_width);
+						picflash.addVariable("pic_height",pic_height);
+						
+						picflash.write("focus_10");				
+					</script>	
+		</div>
 	</div>
 </div>
 </body>
 </html>
 <script>
-	$(".cl").click(function()
+	/*$(".cl").click(function()
 	{
 		video_src($(this).attr('param'));
 	});
 	function video_src(vid)
 	{
 		$("#video_src").attr('src','index_video.php?id='+vid);
-	}
+	}*/
 </script>
 	

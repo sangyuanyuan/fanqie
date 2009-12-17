@@ -2,6 +2,7 @@
 #ibody{width:1021px; height:647px; background:url('../images/xyy2.jpg') no-repeat; margin:0 auto;}
 #ileft{width:319px; height:378px; margin-top:231px; margin-left:18px; float:left; display:inline;}
 #icenter{width:362px; height:378px; margin-top:231px; margin-left:10px; float:left; display:inline;}
+#iright{width:280px; height:378px; margin-top:70px; margin-right:20px; float:right; display:inline;}
 
 .day{width:76px; height:50px; margin-top:115px; margin-right:115px; font-size:48px; text-align:center; font-weight:bold; color:red; float:right; display:inline;}
 #ileft #top{width:309px; height:238px; margin:5px; float:left; display:inline;}
@@ -11,6 +12,11 @@
 #icenter #top #title{width:332px; height:20px; margin-top:20px; margin-left:10px; line-height:20px; overflow:hidden; float:left; display:inline;}
 #icenter #top #title a{font-size:18px; font-weight:bold; color:#D2150F; text-decoration:none;}
 #icenter #top #content{width:352px; height:80px; line-height:20px; float:left; display:inline;}
-#icenter #top #content a{font-size:16px; font-weight:bold; color:#D2150F; text-decoration:none;}
+#icenter #top #content a{font-size:16px; font-weight:bold; color:#000000; text-decoration:none;}
 #icenter #bottom{width:352px; height:238px; margin:5px; float:left; display:inline;}
 #icenter #bottom .cl{width:352px; height:20px; line-height:20px; float:left; display:inline;}
+#icenter #bottom .cl a{color:#000000; text-decoration:none;}
+#iright #top{width:280px; height:180px; margin-top:5px; text-align:center; float:left; display:inline;}
+#iright #top .cl{width:260px; height:20px; line-height:20px; float:left; display:inline;}
+#iright #top .cl a{color:#000000; text-decoration:none;}
+#iright #bottom{width:280px; height:170px; margin-top:9px; float:left; display:inline;}
