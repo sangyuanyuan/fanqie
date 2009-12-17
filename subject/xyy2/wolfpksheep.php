@@ -29,24 +29,6 @@
 		</div>
 		<div class=group>
 			
-			<div class=box>
-				<?php 
-					$db = get_db();
-					$sql = 'select * from smg_marry where sex="man" order by id desc';
-					$records = $db->paginate($sql,4,'right');
-					$count = count($records);
-					for($i=0;$i<$count;$i++){
-				?>
-				<div class=content>
-					<div class=radio><input type="radio" class=man name="man_choose" value="<?php echo $records[$i]->id;?>"></div>
-					<div class=pic><a href="<?php echo $records[$i]->photo;?>"><img src="<?php echo $records[$i]->photo;?>" width="102" height="142" border="0"></a></div>
-					<div class=info>
-					姓名：<?php echo $records[$i]->name; ?><br>
-					留言：<span title="<?php echo $records[$i]->request; ?>"><?php echo $records[$i]->request; ?></span>
-					</div>
-				</div>
-				<?php } ?>
-			</div>
 		</div>
 	</div>
 	<div id=ibody_middle>

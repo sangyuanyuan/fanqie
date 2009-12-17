@@ -44,7 +44,7 @@ js_include_once_tag('total','gd');?>
 			$video=$db->query('select id,title from smg_video where category_id=163 order by priority asc,created_at desc limit 6');
 		?>
 		<div id=top>
-			<iframe id=video_src src="index_video.php?id=<?php echo $video[0]->id; ?>" width=309 height=238 scrolling="no" frameborder="0"></iframe>	
+			<iframe id=video_src src="index_video.php?id=<?php echo $video[0]->id; ?>" width=305 height=220 scrolling="no" frameborder="0"></iframe>	
 		</div>
 		<div id=bottom>
 			<?php for($i=1;$i<count($video);$i++){ ?>
@@ -74,7 +74,7 @@ js_include_once_tag('total','gd');?>
 	<div id=iright>
 		<?php $news=$db->query('select id,title from smg_news where category_id=167 and is_adopt=1 order by priority asc,created_at desc'); ?>
 		<div id=top>
-			<DIV id=a style="OVERFLOW: hidden; WIDTH: 260px; height:180px;">
+			<DIV id=a style="OVERFLOW: hidden; WIDTH: 250px; height:170px;">
 				<div id=a1>
 					<?php
 						for($i=0;$i<count($news);$i++){
@@ -103,17 +103,17 @@ js_include_once_tag('total','gd');?>
  					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
 					<div id="focus_10"></div> 
 					<script type="text/javascript"> 
-						var pic_width=280; //图片宽度
-						var pic_height=170; //图片高度
+						var pic_width=262; //图片宽度
+						var pic_height=180; //图片高度
 						var pics10="<?php echo implode(',',$picsurl10);?>";
 		 				var mylinks10="<?php echo implode(',',$picslink10);?>";
-						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "280", "170", "6","#FFFFFF");
+						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "262", "180", "6","#FFFFFF");
 						picflash.addParam('wmode','opaque');
 						picflash.addVariable("picurl",pics10);
 						picflash.addVariable("piclink",mylinks10);		
 						picflash.addVariable("pictime","5");
-						picflash.addVariable("borderwidth","280");
-						picflash.addVariable("borderheight","170");
+						picflash.addVariable("borderwidth","262");
+						picflash.addVariable("borderheight","180");
 						picflash.addVariable("borderw","false");
 						picflash.addVariable("buttondisplay","flase");
 						picflash.addVariable("pic_width",pic_width);
