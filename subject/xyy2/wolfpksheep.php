@@ -25,15 +25,15 @@
 		<div id=t_t></div>
 		<div class=wybm><a href="images_sub.php?id=1" target="_blank"><img src="/images/joinwolf.gif" border=0></a></div><div id="pk"><img src="/images/pk.gif"></div><div class=wybm><a href="images_sub.php?id=2" target="_blank"><img src="/images/joinsheep.gif" border=0></a></div>
 		<div class=group>
-			
+			<iframe src="frame.php?id=1" frameborder="0" width=497 height=706></iframe>
 		</div>
 		<div class=group>
-			
+			<iframe src="frame.php?id=2" frameborder="0" width=497 height=706></iframe>
 		</div>
 	</div>
 	<div id=ibody_middle>
 		<div id=m_bottom>
-			<div id=paginate><?php paginate('',null,'comment');?></div>
+			<div id=paginate><?php paginate();?></div>
 			<div id=comment>
 				留 言 人：<input type=text id="pulisher" maxlength="10"><br>
 				留言内容：<textarea  style="width:535px; height:105px;" id="comment_content"></textarea>

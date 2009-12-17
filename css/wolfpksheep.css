@@ -13,8 +13,9 @@
 
 
 .content{height:148px; margin-left:15px; padding-top:10px; float:left; display:inline;}
-.content .pic{width:102px; height:102px; float:left; display:inline;}
-.content .info{width:250px; height:102px; padding-left:10px; line-height:15px; overflow:hidden; float:left; display:inline;}
+.content .pic{width:102px; height:102px; margin-left:20px; float:left; display:inline;}
+.content .info{width:250px; height:78px; padding-left:10px; line-height:15px; overflow:hidden; float:left; display:inline;}
+.content .flower{width:100px; height:24px; margin-right:20px; float:right; display:inline;}
 
 .b_l{width:600px; margin-left:20px; margin-top:35px; font-size:15px; float:left; display:inline;}
 .b_l .b_title{width:600px; height:40px; line-height:20px; float:left; display:inline;}

@@ -1,5 +1,5 @@
 ﻿<?php
-	require_once('frame.php');
+	require_once('../../frame.php');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,12 +7,11 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<? 	
-		css_include_tag('index');
+		css_include_tag('wolfpksheep');
   ?>
 </head>
 
-<body>
-<div class=box>
+<body style="background:url('images/XINGXING<?php echo $_REQUEST['id']; ?>.gif') repeat;">
 	<?php 
 		$db = get_db();
 		$sql = 'select * from smg_images where category_id=168 and is_adopt=1 and parent_id='.$_REQUEST['id'].' order by priority asc,created_at desc';
@@ -27,8 +26,8 @@
 		姓名：<?php echo $records[$i]->publisher; ?><br>
 		留言：<span><?php echo $records[$i]->description; ?></span>
 		</div>
+		<div class="flower"><img class="digg" src="images/flower<?php echo $_REQUEST['id']; ?>.gif'"><span><?php echo $records[$i]->flower;?></span>朵</div>
 	</div>
 	<?php } ?>
-</div>
 </body>
 </html>
