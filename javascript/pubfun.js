@@ -55,7 +55,6 @@ function display_login(dom_id,admin){
 		str += $.cookie('smg_user_nickname') +'</span>';
 		if (!admin) {
 			str +=' <a href="/login/changepwd.php" target="_blank">修改密码</a>' 
-			str += ' <a href="/home/?uid=' + $.cookie('smg_uid') + '" target=_blank>番茄家园</a>';
 		}		
 			str += ' <a href="/blog/?' + $.cookie('smg_uid') + '" target=_blank>个人博客</a>';
 		if($.cookie('smg_user_dept') == 7){
@@ -71,11 +70,11 @@ function display_login(dom_id,admin){
 		str += '　<a href="/login/user.post.php?user_type=logout">退出</a></div><div style="width:50px; margin-top:15px; overflow:hidden; margin-right:10px; float:right; display:inline;">';
 		if(num1>0)
 		{
-			str +='　<a href="/server/send_gift_list_detail.php?reciever="'+$.cookie('smg_username')+'><img style="background:none; width:48px; height:14px; margin-top:-19px;" border=0 src="/images/top/srtx.gif" /></a>'	
+			str +=' <a href="/server/send_gift_list_detail.php?reciever="'+$.cookie('smg_username')+'><img style="background:none; width:48px; height:14px; margin-top:-19px;" border=0 src="/images/top/srtx.gif" /></a>'	
 		}
 		else if(num2>0)
 		{
-			str +='　<a href="/server/friend_list.php"><img style="background:none; width:48px; height:14px;  margin-top:-19px;" border=0 src="/images/top/srtx.gif" /></a>'	
+			str +=' <a href="/server/friend_list.php"><img style="background:none; width:48px; height:14px;  margin-top:-19px;" border=0 src="/images/top/srtx.gif" /></a>'	
 		}
 		str += '</div>'
 	}
