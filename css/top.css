@@ -30,7 +30,7 @@ li{margin:0px; list-style-type:none;}
 #nav2 #zongcai{margin-top:5px; float:left; display:inline;}
 #nav2 #login{float:left; display:inline;}
 #nav2 img{width:20px; height:25px; margin-top:10px; background:url(/images/top/person.jpg) no-repeat; float:left; display:inline;}
-#nav2 #welcome{width:320px; margin-top:15px; margin-left:5px; text-align:center; color:#ffffff; float:left; display:inline;}
+#nav2 #welcome{width:340px; margin-top:15px; margin-left:5px; text-align:center; color:#ffffff; float:left; display:inline;}
 #nav2 #welcome a{color:#ffffff; text-decoration:none;}
 
 #tool{width:100%; position:absolute; line-height:20px; left:0px; top:25px;}
