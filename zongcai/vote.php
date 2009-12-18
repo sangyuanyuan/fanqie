@@ -40,7 +40,7 @@
 						<div class=t1>票选规则</div>
 					</div>
 					<div class=content>
-						<div style="width:175px; margin-left:5px; margin-top:10px; font-size:14px; float:left; display:inline;">　　临近岁末，“总裁奖”年度评选开始啦！番茄网发动番茄网友以今冬最火爆的激情点燃“总裁奖”2009最热烈的火焰！投票选取“年度最具影响力”“最具创新力”节目，根据投票产生前20名推荐成为年度入围节目，由台领导确定最终年度大奖！
+						<div style="width:175px; margin-left:5px; margin-top:10px; font-size:14px; font-weight:bold; float:left; display:inline;">　　临近岁末，“总裁奖”年度评选开始啦！番茄网发动番茄网友以今冬最火爆的激情点燃“总裁奖”2009最热烈的火焰！投票选取“年度最具影响力”“最具创新力”节目，根据投票产生前20名推荐成为年度入围节目，由台领导确定最终年度大奖！
 							<br><br>投票规则：<br><br>
 							1、	为保证各位网友投票的真实、有效，请先以工号登陆。<br>
 							2、	每位网友的投票控制在20个节目以内（不分广播、电视）。<br>
