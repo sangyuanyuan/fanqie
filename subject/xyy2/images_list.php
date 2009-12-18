@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -番茄团购列表</title>
+	<title>SMG -喜羊羊与灰太郎之虎虎生威</title>
 	<?php css_include_tag('xyy2','top','bottom');
 		use_jquery();
 		js_include_once_tag('total');
