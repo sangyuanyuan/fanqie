@@ -67,11 +67,12 @@
 				<div id=right>
 					<div id=top>
 						<?php
-						  $category_id = category_id_by_name('总裁视频','zongcai');
+						  /*$category_id = category_id_by_name('总裁视频','zongcai');
 						  $sql = 'select photo_url,video_url from smg_video where category_id='.$category_id.' and is_adopt=1 order by priority,created_at desc';
 						  $record = $db->query($sql);
-						  show_video_player(190,120,$record[0]->photo_url,$record[0]->video_url);
+						  show_video_player(190,120,$record[0]->photo_url,$record[0]->video_url);*/
 						?>
+						<a href="vote.php"><img border=0 src="/images/zongcai/tp.jpg"></a>
 					</div>
 					<div id=bottom><div id=his>获奖节目</div><div id=more><a href="list.php?id=<?php echo category_id_by_name('获奖节目','zongcai');?>&type=video">更多</a></div></div>
 				</div>

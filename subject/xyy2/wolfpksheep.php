@@ -9,8 +9,9 @@
 	<title>SMG-番茄网-狼羊PK</title>
 	<?php	
 		css_include_tag('wolfpksheep','top','bottom');
-	    js_include_once_tag('total');
-    ?>
+		use_jquery();
+	  js_include_once_tag('total','pubfun','pub');
+  ?>
 	
 </head>
 <script>
@@ -25,22 +26,43 @@
 		<div id=t_t></div>
 		<div class=wybm><a href="images_sub.php?id=1" target="_blank"><img src="/images/joinwolf.gif" border=0></a></div><div id="pk"><img src="/images/pk.gif"></div><div class=wybm><a href="images_sub.php?id=2" target="_blank"><img src="/images/joinsheep.gif" border=0></a></div>
 		<div class=group>
-			<iframe src="frame.php?id=1" frameborder="0" width=497 height=706></iframe>
+			<iframe src="iframe.php?id=1" frameborder="0" width=497 height=706></iframe>
 		</div>
 		<div class=group>
-			<iframe src="frame.php?id=2" frameborder="0" width=497 height=706></iframe>
+			<iframe src="iframe.php?id=2" frameborder="0" width=497 height=706></iframe>
 		</div>
 	</div>
 	<div id=ibody_middle>
-		<div id=m_bottom>
-			<div id=paginate><?php paginate();?></div>
-			<div id=comment>
-				留 言 人：<input type=text id="pulisher" maxlength="10"><br>
-				留言内容：<textarea  style="width:535px; height:105px;" id="comment_content"></textarea>
+		<?php $sql="select * from smg_comment where resource_type='wolfpksheep' order by created_at desc"; 
+				$comment=$db->query($sql);
+		?>
+		<div id=comment>
+			<div class=content>	
+				<div class=title>
+					<div style="width:230px; height:20px; margin-top:10px; margin-left:10px; overflow:hidden; line-height:20px; float:left; display:inline;">
+						<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
+					</div>
+					<div style="float:right; display:inline;">
+						<div style="width:140px; line-height:20px; color:#FF0000;"><?php echo $comment[$i]->created_at; ?></div>
+					</div>
+				</div>
+				<div class=context>
+					<?php echo strfck($comment[$i]->comment);?>
+				</div>
 			</div>
-			<div id=qhx></div>
+			<div id=paginate><?php paginate();?></div>
+			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
+				<div class=aboutcontent>
+					<input type="hidden" id="resource_type" name="post[resource_type]" value="wolfpksheep">
+					<input type="hidden" id="target_url" name="post[target_url]" value="<?php $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
+					<input type="hidden" name="type" value="comment">
+					留 言 人：<input type="text" id="commenter" name="post[nick_name]"><br>
+					留言内容：<?php show_fckeditor('post[comment]','Title',false,'75','','617');?><br>
+					<div id=fqbq></div>
+					<button style="margin-top:10px; margin-left:15px; border:1px solid #cccccc; line-height:20px; float:left; display:inline;" id="comment_sub" >发表留言</button>
+				</div>
+			</form>
 		</div>
-		
 	</div>
 	
 </div>
@@ -51,86 +73,6 @@
 
 <script>
 	$(function(){
-		
-		$("#qhx").click(function(){
-			var man = 0;
-			var woman = 0;
-			$(".man").each(function(){
-				if($(this).attr('checked')==true){
-					man = $(this).val();
-				}
-			})
-			$(".woman").each(function(){
-				if($(this).attr('checked')==true){
-					woman = $(this).val();
-				}
-			})
-			if(man == 0){
-				alert('请选择一个男生');
-			}else if(woman == 0){
-				alert('请选择一个女生');
-			}else if($("#pulisher").val()==""){
-				alert('请输入您的昵称');
-			}else if($("#comment_content").val()==""){
-				alert('请输入评论内容');
-			}else{
-				if($("#pulisher").val().length>10){
-					alert("昵称长度太长！");
-					return false;
-				}
-				$.post("marry.post.php",{'boy_id':man,'girl_id':woman,'nick_name':$("#pulisher").val(),'comment':$("#comment_content").val(),'type':'marry'},function(data){
-					if(data==''){
-						window.location.reload();
-					}else{
-						alert(data);
-					}
-				});
-			}
-		})
-		
-		
-		$("#xmpd").click(function(){
-			var name1 = $(this).prev().prev().attr('value');
-			var name2 = $(this).prev().attr('value');
-			if(name1.length>10||name.length>10){
-				alert("名字太长");
-				return false;
-			}
-			$.post("marry.post.php",{'boy_name':name1,'girl_name':name2,'type':'name'},function(data){
-				$("#boy_name").html(name1);
-				$("#girl_name").html(name2);
-				$("#name_result").html(data);
-			});
-		});
-		
-		$("#xzpd").click(function(){
-			var name1 = $(this).prev().prev().attr('value');
-			var name2 = $(this).prev().attr('value');
-			$.post("marry.post.php",{'boy':name1,'girl':name2,'type':'star'},function(data){
-				$("#boy_star").html(name1+"座");
-				$("#girl_star").html(name2+"座");
-				$("#star_result").html(data);
-			});
-		});
-		
-		$("#sxpd").click(function(){
-			var name1 = $(this).prev().prev().attr('value');
-			var name2 = $(this).prev().attr('value');
-			$.post("marry.post.php",{'boy':name1,'girl':name2,'type':'lunar'},function(data){
-				$("#boy_lunar").html(name1);
-				$("#girl_lunar").html(name2);
-				$("#lunar_result").html(data);
-			});
-		});
-		
-		$("#xxpd").click(function(){
-			var name1 = $(this).prev().prev().attr('value');
-			var name2 = $(this).prev().attr('value');
-			$.post("marry.post.php",{'boy':name1,'girl':name2,'type':'blood'},function(data){
-				$("#boy_blood").html(name1);
-				$("#girl_blood").html(name2);
-				$("#blood_result").html(data);
-			});
-		});
+		display_fqbq('fqbq','post[comment]');
 	})
 </script>

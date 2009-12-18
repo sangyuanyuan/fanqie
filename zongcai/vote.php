@@ -35,8 +35,19 @@
 						$vote->find(281);
 						$vote->display(array("target"=>"_blank")); ?>
 				</div>
-				
 				<div id=right>
+					<div class=title>
+						<div class=t1>票选规则</div>
+					</div>
+					<div class=content>
+						<div style="width:175px; margin-left:5px; margin-top:10px; float:left; display:inline;">　　临近岁末，“总裁奖”年度评选开始啦！番茄网发动番茄网友以今冬最火爆的激情点燃“总裁奖”2009最热烈的火焰！投票选取“年度最具影响力”“最具创新力”节目，根据投票产生前20名推荐成为年度入围节目，由台领导确定最终年度大奖！
+							<br><br>投票规则：<br><br>
+							1、	为保证各位网友投票的真实、有效，请先以工号登陆。<br>
+							2、	每位网友的投票控制在20个节目以内（不分广播、电视）。<br>
+							3、	候选节目范围是2008年12月-2009年11月共53期，97个节目。（2009年12月获奖节目将参与明年评选）<br>
+							4、	投票时间：2009年12月21日9：00-12月31日17：00。</div>
+
+					</div>
 					<div class=title>
 						<div class=t1>评论</div>
 					</div>

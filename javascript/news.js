@@ -24,7 +24,7 @@
 			var flowernum=$(this).next().next().html();
 			flowernum=parseInt(flowernum)+1;
 			$(this).next().next().html(flowernum);
-			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).next().attr('value'),'db_table':'smg_comment','digg_type':'comment'},function(data){			
+			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).next().attr('value'),'db_table':'smg_images','digg_type':'comment'},function(data){			
 				if(data!=''){
 				}
 			});

@@ -15,12 +15,13 @@
 		$comment -> save();
 		redirect($_SERVER['HTTP_REFERER']);		
    	}elseif($_POST['type']=='flower'){
-   		if($_POST['db_table']!=''){
-   			$table = new table_class($_POST['db_table']);
+   		echo 'coming';
+   	if($_POST['db_table']!=''){
+   		$table = new table_class($_POST['db_table']);
 			$table->find($_POST['id']);
 			$table->update_attribute('flower',$table->flower+1);
-   		}
-   		$ip=getenv('REMOTE_ADDR');
+   	}
+   	$ip=getenv('REMOTE_ADDR');
 		$type = 'flower';
 		$file_type = $_POST['digg_type'];
 		$diggtoid = $_POST['id'];
