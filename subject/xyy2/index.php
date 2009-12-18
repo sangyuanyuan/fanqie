@@ -79,7 +79,7 @@ js_include_once_tag('total','gd');?>
 					<?php
 						for($i=0;$i<count($news);$i++){
 					?>
-		        <div class="cl"><a target="_blank" href="/news/news_list.php?id=166"><?php echo $news[$i]->title; ?></a></div>
+		        <div class="cl"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->title; ?></a></div>
 		      <? }?>
 		    </div>
 		    <div id="a2"></div>
