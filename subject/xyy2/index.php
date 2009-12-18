@@ -41,7 +41,7 @@ js_include_once_tag('total','gd');?>
 	<div id="ileft">
 		<?php 
 			$db=get_db();
-			$video=$db->query('select id,title from smg_video where category_id=163 order by priority asc,created_at desc limit 6');
+			$video=$db->query('select id,title from smg_video where category_id=163 and is_adopt=1 order by priority asc,created_at desc limit 6');
 		?>
 		<div id=top>
 			<iframe id=video_src src="index_video.php?id=<?php echo $video[0]->id; ?>" width=305 height=220 scrolling="no" frameborder="0"></iframe>	
