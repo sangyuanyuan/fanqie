@@ -33,8 +33,10 @@
 		</div>
 	</div>
 	<div id=ibody_middle>
-		<?php $sql="select * from smg_comment where resource_type='wolfpksheep' order by created_at desc"; 
-				$comment=$db->query($sql);
+		<?php
+			$db=get_db(); 
+			$sql="select * from smg_comment where resource_type='wolfpksheep' order by created_at desc"; 
+			$comment=$db->query($sql);
 		?>
 		<div id=comment>
 			<div class=content>	
@@ -59,7 +61,7 @@
 					留 言 人：<input type="text" id="commenter" name="post[nick_name]"><br>
 					留言内容：<?php show_fckeditor('post[comment]','Title',false,'75','','617');?><br>
 					<div id=fqbq></div>
-					<button style="margin-top:10px; margin-left:15px; border:1px solid #cccccc; line-height:20px; float:left; display:inline;" id="comment_sub" >发表留言</button>
+					<input type="submit" style="margin-left:50px;" id="comment_sub" value="发表留言">
 				</div>
 			</form>
 		</div>
