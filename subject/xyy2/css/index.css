@@ -9,7 +9,7 @@
 #ileft #bottom{width:290px; height:112px; margin-top:30px; margin-left:10px; float:left; display:inline;}
 #ileft #bottom .cl{width:300px; height:20px; line-height:20px; cursor:pointer; float:left; display:inline;}
 #icenter #top{width:344px; height:116px; font-family:黑体; margin:5px; float:left; display:inline;}
-#icenter #top #title{width:324px; height:20px; margin-top:20px; margin-left:10px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#icenter #top #title{width:324px; height:22px; margin-top:20px; margin-left:10px; line-height:22px; text-align:center; overflow:hidden; float:left; display:inline;}
 #icenter #top #title a{font-size:18px; font-weight:bold; color:#D2150F; text-decoration:none;}
 #icenter #top #content{width:344px; height:80px; line-height:20px; float:left; display:inline;}
 #icenter #top #content a{font-size:16px; font-weight:bold; color:#000000; text-decoration:none;}
