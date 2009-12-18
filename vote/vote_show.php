@@ -52,7 +52,7 @@
 <div style="width:600px; float:left; display:inline;">
 <table align="left"  border="0" width=600 bgcolor="#CCCCCC" cellspacing=1>
 	<tr bgcolor="#CCCCCC" >
-		<td colspan="4" align="center">
+		<td <?php if($_REQUEST['vote_id']!=281){ ?>colspan="4"<?php }else{?>colspan="3"<?php } ?> align="center">
 			<?php echo $name[$j];?>
 		</td>
 	</tr>
@@ -66,9 +66,11 @@
 		<td bgcolor="#FFFFFF" width=300>
 			比例
 		</td>
-		<td bgcolor="#FFFFFF">
-			票数(共<?php echo $total_count[$j];?>票)
-		</td>
+		<?php if($_REQUEST['vote_id']!=281){ ?>
+			<td bgcolor="#FFFFFF">
+				票数(共<?php echo $total_count[$j];?>票)
+			</td>
+		<?php } ?>
 	</tr>
   <?php
     for($i=0;$i<$len[$j];$i++)
