@@ -1,5 +1,5 @@
 ﻿function boxmove(d1,d2,d3,e,obj){ 
-  var speed=30; 
+  var speed=40; 
   var demo=document.getElementById(d1);  
   var demo1=document.getElementById(d2);  
   var demo2=document.getElementById(d3); 
