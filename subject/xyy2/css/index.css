@@ -4,7 +4,7 @@
 #icenter{width:354px; height:370px; margin-top:240px; margin-left:13px;  float:left; display:inline;}
 #iright{width:272px; height:370px; margin-top:70px; margin-right:12px; float:right; display:inline;}
 
-.day{width:76px; height:50px; margin-top:115px; margin-right:115px; font-family:幼圆; font-size:48px; text-align:center; font-weight:bold; color:red; float:right; display:inline;}
+.day{width:76px; height:50px; margin-top:115px; margin-right:115px; font-family:黑体; font-size:48px; text-align:center; font-weight:bold; color:red; float:right; display:inline;}
 #ileft #top{width:300px; height:220px; margin:5px;  float:left; display:inline;}
 #ileft #bottom{width:300px; height:112px; margin-top:17px; margin-left:5px; float:left; display:inline;}
 #ileft #bottom .cl{width:300px; height:20px; line-height:20px; cursor:pointer; float:left; display:inline;}
