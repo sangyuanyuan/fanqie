@@ -79,7 +79,7 @@ js_include_once_tag('total','gd');?>
 					<?php
 						for($i=0;$i<count($news);$i++){
 					?>
-		        <div class="cl"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->short_title); ?></a></div>
+		        <div class="cl"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a></div>
 		      <? }?>
 		    </div>
 		    <div id="a2"></div>
