@@ -32,7 +32,7 @@ total("首页","other");
      var i=0;
      function fLi2() {
       if (i<7) {
-         line2.style.color = colors2[i];
+         //line2.style.color = colors2[i];
          line3.style.color = colors2[i];
          i++;
          timerID2 = setTimeout( "fLi2()", 100);

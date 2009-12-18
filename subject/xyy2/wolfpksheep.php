@@ -36,12 +36,13 @@
 		<?php
 			$db=get_db(); 
 			$sql="select * from smg_comment where resource_type='wolfpksheep' order by created_at desc"; 
-			$comment=$db->query($sql);
+			$comment=$db->paginate($sql,5);
 		?>
 		<div id=comment>
+			<?php for($i=0;$i<count($comment);$i++){ ?>
 			<div class=content>	
 				<div class=title>
-					<div style="width:230px; height:20px; margin-top:10px; margin-left:10px; overflow:hidden; line-height:20px; float:left; display:inline;">
+					<div style="width:230px; height:20px; margin-left:10px; overflow:hidden; line-height:20px; float:left; display:inline;">
 						<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
 					</div>
 					<div style="float:right; display:inline;">
@@ -52,7 +53,8 @@
 					<?php echo strfck($comment[$i]->comment);?>
 				</div>
 			</div>
-			<div id=paginate><?php paginate();?></div>
+			<?php } ?>
+			<div class=page><?php paginate();?></div>
 			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 				<div class=aboutcontent>
 					<input type="hidden" id="resource_type" name="post[resource_type]" value="wolfpksheep">
@@ -61,7 +63,7 @@
 					留 言 人：<input type="text" id="commenter" name="post[nick_name]"><br>
 					留言内容：<?php show_fckeditor('post[comment]','Title',false,'75','','617');?><br>
 					<div id=fqbq></div>
-					<input type="submit" style="margin-left:50px;" id="comment_sub" value="发表留言">
+					<input type="submit" style="margin-left:50px;" value="发表留言">
 				</div>
 			</form>
 		</div>
