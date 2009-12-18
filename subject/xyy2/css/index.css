@@ -14,7 +14,7 @@
 #icenter #top #content{width:344px; height:80px; line-height:20px; float:left; display:inline;}
 #icenter #top #content a{font-size:16px; font-weight:bold; color:#000000; text-decoration:none;}
 #icenter #bottom{width:344px; height:230px; margin:5px;  float:left; display:inline;}
-#icenter #bottom .cl{width:344px; height:20px; line-height:20px; float:left; display:inline;}
+#icenter #bottom .cl{width:320px; height:20px; margin-left:7px; line-height:20px; float:left; display:inline;}
 #icenter #bottom .cl a{color:#000000; text-decoration:none;}
 #iright #top{width:272px; height:170px; margin-top:5px; text-align:center; float:left; display:inline;}
 #iright #top .cl{width:250px; height:20px; line-height:20px; float:left; display:inline;}

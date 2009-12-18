@@ -47,7 +47,7 @@ js_include_once_tag('total','gd');?>
 			<iframe id=video_src src="index_video.php?id=<?php echo $video[0]->id; ?>" width=305 height=220 scrolling="no" frameborder="0"></iframe>	
 		</div>
 		<div id=bottom>
-			<?php for($i=1;$i<count($video);$i++){ ?>
+			<?php for($i=0;$i<count($video);$i++){ ?>
 				<div class=cl param=<?php echo $video[$i]->id;?>><?php echo $video[$i]->title;?></div>
 			<?php } ?>
 		</div>	
@@ -67,7 +67,7 @@ js_include_once_tag('total','gd');?>
 				for($i=0;$i<count($news);$i++)
 				{
 			 ?>
-				<div class=cl>·<a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a></div>
+				<div class=cl><span style="color:red;">·</span><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a></div>
 			<?php } ?>
 		</div>
 	</div>
@@ -109,7 +109,7 @@ js_include_once_tag('total','gd');?>
 		 				var mylinks10="<?php echo implode(',',$picslink10);?>";
 						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "262", "180", "6","#FFFFFF");
 						picflash.addParam('wmode','opaque');
-						picflash.addVariable("picurl",pics10);
+						picflash.addVariable("picurl",pics10);
 						picflash.addVariable("piclink",mylinks10);		
 						picflash.addVariable("pictime","5");
 						picflash.addVariable("borderwidth","262");
