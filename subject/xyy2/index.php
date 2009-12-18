@@ -115,7 +115,7 @@ js_include_once_tag('total','gd');?>
 						picflash.addVariable("borderwidth","262");
 						picflash.addVariable("borderheight","180");
 						picflash.addVariable("borderw","false");
-						picflash.addVariable("buttondisplay","flase");
+						picflash.addVariable("buttondisplay","false");
 						picflash.addVariable("pic_width",pic_width);
 						picflash.addVariable("pic_height",pic_height);
 						
