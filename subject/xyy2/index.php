@@ -104,16 +104,16 @@ js_include_once_tag('total','gd');?>
 					<div id="focus_10"></div> 
 					<script type="text/javascript"> 
 						var pic_width=262; //图片宽度
-						var pic_height=180; //图片高度
+						var pic_height=175; //图片高度
 						var pics10="<?php echo implode(',',$picsurl10);?>";
 		 				var mylinks10="<?php echo implode(',',$picslink10);?>";
-						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "262", "180", "6","#FFFFFF");
+						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "262", "175", "6","#FFFFFF");
 						picflash.addParam('wmode','opaque');
 						picflash.addVariable("picurl",pics10);
 						picflash.addVariable("piclink",mylinks10);		
 						picflash.addVariable("pictime","5");
 						picflash.addVariable("borderwidth","262");
-						picflash.addVariable("borderheight","180");
+						picflash.addVariable("borderheight","175");
 						picflash.addVariable("borderw","false");
 						picflash.addVariable("buttondisplay","false");
 						picflash.addVariable("textheight","0");
