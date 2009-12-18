@@ -72,14 +72,14 @@ js_include_once_tag('total','gd');?>
 		</div>
 	</div>
 	<div id=iright>
-		<?php $news=$db->query('select id,title from smg_news where category_id=167 and is_adopt=1 order by priority asc,created_at desc'); ?>
+		<?php $news=$db->query('select id,title,short_title from smg_news where category_id=167 and is_adopt=1 order by priority asc,created_at desc'); ?>
 		<div id=top>
 			<DIV id=a style="OVERFLOW: hidden; WIDTH: 250px; height:170px;">
 				<div id=a1>
 					<?php
 						for($i=0;$i<count($news);$i++){
 					?>
-		        <div class="cl"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a></div>
+		        <div class="cl"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->short_title); ?></a></div>
 		      <? }?>
 		    </div>
 		    <div id="a2"></div>
