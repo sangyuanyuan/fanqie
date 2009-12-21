@@ -15,7 +15,7 @@
 	
 </head>
 <script>
-	total("婚庆","server");	
+	total("狼羊PK","server");	
 </script>
 <body>
 <?php 
