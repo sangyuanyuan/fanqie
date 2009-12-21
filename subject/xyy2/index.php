@@ -7,41 +7,34 @@
 	<TITLE>喜羊羊2</TITLE>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <LINK href="css/index.css" type=text/css rel=stylesheet>
-<?php use_jquery(); 
-js_include_once_tag('total','gd');?>
+<?php 
+	use_jquery(); 
+	js_include_once_tag('total','gd');
+	function daysInSpan($start,$end)
+		{
+		 $dayTicks=ticksInDay();
+		 return ($end-$start)/$dayTicks;
+		}
+		 
+	function ticksInDay()
+	{
+	 $today=getdate();
+	 $yesterday=mktime(0,0,0,$today[mon],$today[mday]-1,$today[year]);
+	 $today=mktime(0,0,0,$today[mon],$today[mday],$today[year]);
+	 return $today-$yesterday;
+	}
+?>
 <script>
 	total("专题-喜羊羊2","other");
-	var startTime = new Date();
-	var EndTime=new Date('2010/01/29 00:00:00');
-	function GetRTime(){
-		var NowTime = new Date();
-		var nMS =EndTime - NowTime.getTime();
-		var nD =Math.floor(nMS/(1000 * 60 * 60 * 24));
-		if(nD<=0)
-		{
-			nD=0;	
-		}
-		document.getElementById("RemainD").innerHTML=nD;
-		
-		if(nD==0&&nH==0&&nM==0&&nS==0)
-		{
-			window.location.href="#";
-		}
-		else
-		{
-			setTimeout("GetRTime()",1000);
-		}
-	}
-	window.onload=GetRTime;
 </script>
 </HEAD>
 <body>
 <div id="ibody">
-	<div class="day" id="RemainD"></div>
+	<div class="day" id="RemainD"><?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,01,29,2010)); if(($days-1) >=1){?><img src="images/<?php echo ($days-1).'.gif';?>"><?php } ?></div>
 	<div id="ileft">
 		<?php 
 			$db=get_db();
-			$video=$db->query('select id,title from smg_video where category_id=163 and is_adopt=1 order by priority asc,created_at desc limit 6');
+			$video=$db->query('select id,title from smg_video where category_id=163 and is_adopt=1 order by priority asc,created_at desc limit 4');
 		?>
 		<div id=top>
 			<iframe id=video_src src="index_video.php?id=<?php echo $video[0]->id; ?>" width=305 height=220 scrolling="no" frameborder="0"></iframe>	
@@ -62,8 +55,16 @@ js_include_once_tag('total','gd');?>
 				<a target="_blank" href="/news/news/news_head.php?id=<?php echo $news_head[0]->id; ?>"><?php echo mb_substr(strip_tags($news_head[0]->description),0,84,"utf-8").'...';?></a>
 			</div>
 		</div>
-		<div id=bottom>
+		<div id=middle>
 			<?php $news=$db->query('select id,title from smg_news where category_id=165 and is_adopt=1 order by priority asc,created_at desc limit 5');
+				for($i=0;$i<count($news);$i++)
+				{
+			 ?>
+				<div class=cl><span style="color:red;">·</span><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a>　<img src="/images/new.gif"></div>
+			<?php } ?>
+		</div>
+		<div id=bottom>
+			<?php $news=$db->query('select id,title from smg_news where category_id=169 and is_adopt=1 order by priority asc,created_at desc limit 3');
 				for($i=0;$i<count($news);$i++)
 				{
 			 ?>
@@ -74,7 +75,7 @@ js_include_once_tag('total','gd');?>
 	<div id=iright>
 		<?php $news=$db->query('select content from smg_news where category_id=167 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
 		<div id=top>
-			<DIV id=a style="OVERFLOW: hidden; WIDTH: 250px; height:170px;">
+			<DIV id=a style="OVERFLOW: hidden; WIDTH: 250px; height:150px;">
 				<div id=a1>
 					<?php
 						for($i=0;$i<count($news);$i++){
@@ -104,16 +105,16 @@ js_include_once_tag('total','gd');?>
 					<div id="focus_10"></div> 
 					<script type="text/javascript"> 
 						var pic_width=262; //图片宽度
-						var pic_height=175; //图片高度
+						var pic_height=140; //图片高度
 						var pics10="<?php echo implode(',',$picsurl10);?>";
 		 				var mylinks10="<?php echo implode(',',$picslink10);?>";
-						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "262", "175", "6","#FFFFFF");
+						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "262", "140", "6","#FFFFFF");
 						picflash.addParam('wmode','opaque');
 						picflash.addVariable("picurl",pics10);
 						picflash.addVariable("piclink",mylinks10);		
 						picflash.addVariable("pictime","5");
 						picflash.addVariable("borderwidth","262");
-						picflash.addVariable("borderheight","175");
+						picflash.addVariable("borderheight","140");
 						picflash.addVariable("borderw","false");
 						picflash.addVariable("buttondisplay","false");
 						picflash.addVariable("textheight","0");

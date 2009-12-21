@@ -4,19 +4,22 @@
 #icenter{width:354px; height:370px; margin-top:240px; margin-left:13px;  float:left; display:inline;}
 #iright{width:272px; height:370px; margin-top:70px; margin-right:12px; float:right; display:inline;}
 
-.day{width:76px; height:50px; margin-top:115px; margin-right:115px; font-family:华康海报体W12(P); font-size:48px; text-align:center; font-weight:bold; color:red; float:right; display:inline;}
+.day{width:74px; height:70px; margin-top:100px; margin-right:115px; text-align:center; font-weight:bold; color:red; float:right; display:inline;}
 #ileft #top{width:300px; height:220px; margin:5px;  float:left; display:inline;}
-#ileft #bottom{width:290px; height:112px; margin-top:30px; margin-left:10px; float:left; display:inline;}
+#ileft #bottom{width:290px; height:80px; margin-top:55px; margin-left:10px; float:left; display:inline;}
 #ileft #bottom .cl{width:300px; height:20px; line-height:20px; cursor:pointer; float:left; display:inline;}
 #icenter #top{width:344px; height:116px; font-family:黑体; margin:5px; float:left; display:inline;}
 #icenter #top #title{width:324px; height:22px; margin-top:20px; margin-left:10px; line-height:22px; text-align:center; overflow:hidden; float:left; display:inline;}
 #icenter #top #title a{font-size:20px; font-weight:bold; color:#D2150F; text-decoration:none;}
 #icenter #top #content{width:344px; height:80px; line-height:20px; float:left; display:inline;}
 #icenter #top #content a{font-size:16px; font-weight:bold; color:#000000; text-decoration:none;}
-#icenter #bottom{width:344px; height:230px; margin:5px;  float:left; display:inline;}
+#icenter #middle{width:344px; height:130px; margin-left:5px; float:left; display:inline;}
+#icenter #middle .cl{width:320px; height:20px; margin-left:7px; line-height:20px; float:left; display:inline;}
+#icenter #middle .cl a{color:#000000; text-decoration:none;}
+#icenter #bottom{width:344px; height:60px; margin-top:30px; margin-left:5px;  float:left; display:inline;}
 #icenter #bottom .cl{width:320px; height:20px; margin-left:7px; line-height:20px; float:left; display:inline;}
 #icenter #bottom .cl a{color:#000000; text-decoration:none;}
-#iright #top{width:266px; height:165px; margin-top:10px; margin-left:5px; text-align:left; float:left; display:inline;}
+#iright #top{width:266px; height:140px; margin-top:30px; margin-left:5px; text-align:left; float:left; display:inline;}
 #iright #top .cl{width:250px; margin-left:6px; line-height:15px; float:left; display:inline;}
 #iright #top .cl a{color:#000000; text-decoration:none;}
-#iright #bottom{width:262px; height:175px; margin-top:10px; margin-left:3px; float:left; display:inline;}
+#iright #bottom{width:262px; height:140px; margin-top:40px; margin-left:3px; float:left; display:inline;}
