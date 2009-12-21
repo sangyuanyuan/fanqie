@@ -27,7 +27,7 @@
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　照片</div>
-		<div class=t_r><input type="file" name="video_pic" id="video_pic">(png,jpg,gif)</div>
+		<div class=t_r><input type="file" name="video_pic" id="video_pic">200*200(png,jpg,gif)</div>
 	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　留言</div>

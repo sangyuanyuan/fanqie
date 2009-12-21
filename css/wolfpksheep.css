@@ -12,9 +12,9 @@
 .group{width:497px; height:706px; float:left; display:inline;}
 
 #iframe{width:497px; float:left; display:inline;}
-#iframe .content{height:148px; margin-left:15px; padding-top:10px; float:left; display:inline;}
-#iframe .content .pic{width:102px; height:102px; margin-left:20px; float:left; display:inline;}
-#iframe .content .info{width:250px; height:78px; padding-left:10px; line-height:15px; overflow:hidden; float:left; display:inline;}
+#iframe .content{height:200px; margin-left:15px; padding-top:10px; float:left; display:inline;}
+#iframe .content .pic{width:200px; height:200px; margin-left:10px; float:left; display:inline;}
+#iframe .content .info{width:250px; height:200px; padding-left:10px; line-height:15px; overflow:hidden; float:left; display:inline;}
 #iframe .content .flower{width:100px; height:24px; margin-right:20px; float:right; display:inline;}
 
 #ibody_middle #comment{width:973px; margin-top:10px; margin-left:10px; padding-bottom:10px; border:1px solid #DDDDDD; float:left; display:inline;}

@@ -24,7 +24,7 @@
 	?>
 
 	<div class=content>
-		<div class=pic><a target="_blank" href="/show/show.php?id=<?php echo $records[$i]->id; ?>"><img src="<?php echo $records[$i]->src;?>" width="102" height="102" border="0"></a></div>
+		<div class=pic><a target="_blank" href="/show/show.php?id=<?php echo $records[$i]->id; ?>"><img src="<?php echo $records[$i]->src;?>" width="200" height="200" border="0"></a></div>
 		<div class=info>
 		姓名：<?php echo $records[$i]->publisher; ?><br>
 		留言：<span><?php echo $records[$i]->description; ?></span>
