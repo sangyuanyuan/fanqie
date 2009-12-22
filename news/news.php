@@ -439,7 +439,7 @@ $db->execute($sql); ?>
 		<div class=r_m>
 			<div class=title>精彩视频</div>
 			 <?php 
-			 $sql="select id,title from smg_video where is_adopt=1 order by priority asc,created_at desc limit 10";
+			 $sql="select id,title from smg_video where is_adopt=1 and category_id=36 order by priority asc,created_at desc limit 10";
 			 $jcsp=$db->query($sql);
 			 for($i=0;$i<count($jcsp);$i++){	 	
 			 ?>
