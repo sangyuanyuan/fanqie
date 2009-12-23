@@ -16,6 +16,7 @@
  <param name="movie" value="/flash/mediaplayer.swf" />
  <param name="salign" value="lt" />
  <param name="quality" value="high" />
+ <PARAM   NAME= "autoStart"   VALUE= "true"> 
  <param name="wmode" value="opaque" />
  <param name="scale" value="noscale" />
  <param name="allowfullscreen" value="true" />
