@@ -27,10 +27,9 @@
 ?>
 <script>
 	total("专题-喜羊羊2","other");
-	 colors2 = new Array(3); 
+	 colors2 = new Array(2); 
 	 colors2[0]="#FF0000";
-	 colors2[1]="#006699";
-	 colors2[2]="#FF00CC";
+	 colors2[1]="#FF00CC";
 	
 	 var i=0;
 	 function fLi2() {
