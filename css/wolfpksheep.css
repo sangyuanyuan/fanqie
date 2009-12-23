@@ -6,16 +6,16 @@
 #ibody_middle{width:995px; height:531px; margin-top:10px; float:left; display:inline;}
 #ibody_bottom{width:995px; float:left; display:inline;}
 
-.wybm{width:400px; margin-top:10px; text-align:center; float:left; display:inline;}
+.wybm{width:400px; margin-top:10px; line-height:20px; text-align:center; float:left; display:inline;}
 #pk{width:185px; margin-top:80px; text-align:center; float:left; display:inline;}
-#t_t{width:995px; height:267px; background:url('/images/wolfandsheep_top.jpg') no-repeat; float:left; display:inline;}
+#t_t{width:995px; height:267px; float:left; display:inline;}
 .group{width:497px; height:706px; float:left; display:inline;}
 
 #iframe{width:497px; float:left; display:inline;}
-#iframe .content{height:200px; margin-left:15px; padding-top:10px; float:left; display:inline;}
-#iframe .content .pic{width:200px; height:200px; margin-left:10px; float:left; display:inline;}
-#iframe .content .info{width:250px; height:200px; padding-left:10px; line-height:15px; overflow:hidden; float:left; display:inline;}
-#iframe .content .flower{width:100px; height:24px; margin-right:20px; float:right; display:inline;}
+#iframe .content{height:170px; margin-left:15px; margin-top:10px; float:left; display:inline;}
+#iframe .content .pic{width:150px; height:170px; margin-left:10px; float:left; display:inline;}
+#iframe .content .info{width:250px; height:104px; margin-top:10px; margin-left:10px; font-size:16px; font-weight:bold; line-height:18px; overflow:hidden; float:left; display:inline;}
+#iframe .content .flower{width:100px; height:30px; margin-right:20px; cursor:pointer; float:right; display:inline;}
 
 #ibody_middle #comment{width:973px; margin-top:10px; margin-left:10px; padding-bottom:10px; border:1px solid #DDDDDD; float:left; display:inline;}
 #ibody_middle #comment .content{width:953px; margin-top:5px; margin-left:10px; border:1px solid #cccccc; float:left; display:inline;}

@@ -23,8 +23,25 @@
 ?>
 <div id=ibody>
 	<div id=ibody_top>
-		<div id=t_t></div>
-		<div class=wybm><a href="images_sub.php?id=1" target="_blank"><img src="/images/joinwolf.gif" border=0></a></div><div id="pk"><img src="/images/pk.gif"></div><div class=wybm><a href="images_sub.php?id=2" target="_blank"><img src="/images/joinsheep.gif" border=0></a></div>
+		<div id=t_t><a target="_blank" href="index.php"><img width="995" height="267" border=0 src="/images/wolfandsheep_top.jpg"></a></div>
+		<?php 
+		$db=get_db();
+		$wolfpksheep= $db->query("select * from smg_images where category_id=168 and is_adopt=1 order by priority asc,created_at desc");
+		$wolf=$db->query("select * from smg_images where category_id=168 and is_adopt=1 and parent_id=1 order by priority asc,created_at desc");
+		$sheep=$db->query("select * from smg_images where category_id=168 and is_adopt=1 and parent_id=2 order by priority asc,created_at desc");
+		$count=sprintf('%.2f',count($wolf)/count($wolfpksheep));
+		$count1=sprintf('%.2f',count($sheep)/count($wolfpksheep));
+		?>
+		<div class=wybm>
+			<div style="width:70px; margin-top:10px; margin-left:40px; font-size:16px; line-height:20px; font-weight:bold; float:left; display:inline;">支持率：</div><div style="margin-top:15px; background:url('/images/votebg.gif') repeat-x; height:12px; width:<?php echo ceil($count * 100)*2;?>px; float:left; display:inline;"></div><div style=" height:12px; margin-left:10px; font-size:16px; margin-top:10px; line-height:20px; float:left; display:inline;"><?php echo ($count*100)."%"; ?></div>
+			<a href="images_sub.php?id=1" target="_blank"><img src="/images/joinwolf.gif" border=0></a><br>		
+		</div>
+		<div id="pk"><img src="/images/pk.gif"></div>
+		<div class=wybm>
+			<div style="width:70px; margin-top:10px; margin-left:40px; font-size:16px; line-height:20px; font-weight:bold; float:left; display:inline;">支持率：</div><div style="margin-top:15px; background:url('/images/votebg.gif') repeat-x; height:12px; width:<?php echo ceil($count1 * 100)*2;?>px; float:left; display:inline;"></div><div style=" height:12px; margin-left:10px; font-size:16px; margin-top:10px; line-height:20px; float:left; display:inline;"><?php echo ($count1*100)."%"; ?></div>
+			<a href="images_sub.php?id=2" target="_blank"><img src="/images/joinsheep.gif" border=0></a><br>
+			
+		</div>
 		<div class=group>
 			<iframe src="iframe.php?id=1" frameborder="0" width=497 height=706></iframe>
 		</div>
@@ -34,7 +51,7 @@
 	</div>
 	<div id=ibody_middle>
 		<?php
-			$db=get_db(); 
+			
 			$sql="select * from smg_comment where resource_type='wolfpksheep' order by created_at desc"; 
 			$comment=$db->paginate($sql,5);
 		?>

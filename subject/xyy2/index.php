@@ -23,12 +23,31 @@
 	 $today=mktime(0,0,0,$today[mon],$today[mday],$today[year]);
 	 return $today-$yesterday;
 	}
+	
 ?>
 <script>
 	total("专题-喜羊羊2","other");
+	 colors2 = new Array(3); 
+	 colors2[0]="#FF0000";
+	 colors2[1]="#006699";
+	 colors2[2]="#FF00CC";
+	
+	 var i=0;
+	 function fLi2() {
+	  if (i<7) {
+	     //line2.style.color = colors2[i];
+	     line3.style.color = colors2[i];
+	     i++;
+	     timerID2 = setTimeout( "fLi2()", 200);
+	   }
+	   else {
+	     i=0;
+	     TimerID2=setTimeout("fLi2()",500);
+	   }
+	  }
 </script>
 </HEAD>
-<body>
+<body onload="TimerID2=setTimeout('fLi2()',1000);">
 <div id="ibody">
 	<div class="day" id="RemainD"><?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,01,29,2010)); if(($days-1) >=1){?><img src="images/<?php echo ($days-1).'.gif';?>"><?php } ?></div>
 	<div id="ileft">
@@ -49,10 +68,10 @@
 		<?php $news_head=$db->query('select id,title,description from smg_news where category_id=164 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
 		<div id=top>
 			<div id=title>
-				<a target="_blank" href="/news/news/news_head.php?id=<?php echo $news_head[0]->id; ?>"><?php echo $news_head[0]->title;?></a>
+				<a id=line3 target="_blank" href="/news/news/news_head.php?id=<?php echo $news_head[0]->id; ?>"><?php echo get_fck_content($news_head[0]->title);?></a>
 			</div>
 			<div id=content>
-				<a target="_blank" href="/news/news/news_head.php?id=<?php echo $news_head[0]->id; ?>"><?php echo mb_substr(strip_tags($news_head[0]->description),0,84,"utf-8").'...';?></a>
+				<a target="_blank" href="/news/news/news_head.php?id=<?php echo $news_head[0]->id; ?>"><?php echo mb_substr(strip_tags(get_fck_content($news_head[0]->description)),0,120,"utf-8").'...';?></a>
 			</div>
 		</div>
 		<div id=middle>
@@ -60,7 +79,7 @@
 				for($i=0;$i<count($news);$i++)
 				{
 			 ?>
-				<div class=cl><span style="color:red;">·</span><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a>　<img src="/images/new.gif"></div>
+				<div class=cl><span style="color:red;">·</span><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a>　<?php if($i<2){ ?><img src="/images/new.gif"><?php } ?></div>
 			<?php } ?>
 		</div>
 		<div id=bottom>
@@ -68,7 +87,7 @@
 				for($i=0;$i<count($news);$i++)
 				{
 			 ?>
-				<div class=cl><span style="color:red;">·</span><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a>　<img src="/images/new.gif"></div>
+				<div class=cl><span style="color:red;">·</span><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo get_fck_content($news[$i]->title); ?></a>　<?php if($i<1){ ?><img src="/images/new.gif"><?php } ?></div>
 			<?php } ?>
 		</div>
 	</div>

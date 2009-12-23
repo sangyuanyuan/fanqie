@@ -13,6 +13,6 @@
   ?>
 </head>
 <body>
-<?php show_video_player('305','220',$record[0]->photo_url,$record[0]->video_url); ?>
+<?php show_video_player('305','220',$record[0]->photo_url,$record[0]->video_url,'true'); ?>
 </body>
 </html>

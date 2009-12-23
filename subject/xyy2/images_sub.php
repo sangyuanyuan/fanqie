@@ -23,7 +23,11 @@
 	<div class=title>狼羊群</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　姓名</div>
-		<div class=t_r><input type="text" name="images[publisher]" value="<?php echo $_COOKIE['smg_user_nickname'];?>"></div>
+		<div class=t_r><input type="text" id="news_title" name="images[publisher]" value="<?php echo $_COOKIE['smg_user_nickname'];?>"></div>
+	</div>
+	<div class=t>
+		<div class=l><img src="/images/news/news_sub_icon.jpg">　联系方式</div>
+		<div class=t_r><input type="text" id="news_phone" name="images[title]"></div>
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　照片</div>
@@ -49,6 +53,10 @@
 			
 			if($('#news_title').val() == ''){
 				alert('请填写姓名!');
+				return false;
+			}
+			if($('#news_phone').val() == ''){
+				alert('请填写联系方式!');
 				return false;
 			}
 			var content = $('#description').val();

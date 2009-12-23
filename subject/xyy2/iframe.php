@@ -24,12 +24,12 @@
 	?>
 
 	<div class=content>
-		<div class=pic><a target="_blank" href="<?php echo $records[$i]->src; ?>"><img src="<?php echo $records[$i]->src;?>" width="200" height="200" border="0"></a></div>
+		<div class=pic><a target="_blank" href="<?php echo $records[$i]->src; ?>"><img src="<?php echo $records[$i]->src;?>" width="150" height="170" border="0"></a></div>
 		<div class=info>
-		姓名：<?php echo $records[$i]->publisher; ?><br>
-		留言：<span><?php echo $records[$i]->description; ?></span>
+		<div style="width:60px; float:left; display:inline;">姓名：</div><div style="width:190px; height:20px; overflow:hidden; float:right; display:inline;"><?php echo $records[$i]->publisher; ?></div>
+		<div style="width:60px; float:left; display:inline;">留言：</div><div style="width:190px; height:100px; overflow:hidden; float:right; display:inline;"><?php echo $records[$i]->description; ?></div>
 		</div>
-		<div class="flower"><div class="digg" param="<?php echo $records[$i]->id;?>" style="width:23px; height:24px; float:left; display:inline;"><img src="images/flower<?php echo $_REQUEST['id']; ?>.gif"></div><div style="width:70px; height:24px; font-size:16px; font-weight:bold; line-height:24px; <?php if($_REQUEST['id']==1){ ?>color:#60C9FE;<?php }else if($_REQUEST['id']==2){ ?>color:#FF85C2;<?php } ?> float:right; display:inline;"><?php echo $records[$i]->flower;?>朵</div></div>
+		<div class="flower"><div class="digg" param="<?php echo $records[$i]->id;?>" style="width:29px; height:30px; float:left; display:inline;"><img src="images/flower<?php echo $_REQUEST['id']; ?>.gif"></div><div style="width:70px; height:30px; font-size:16px; font-weight:bold; line-height:30px; <?php if($_REQUEST['id']==1){ ?>color:#60C9FE;<?php }else if($_REQUEST['id']==2){ ?>color:#FF85C2;<?php } ?> float:right; display:inline;"><?php echo $records[$i]->flower;?>朵</div></div>
 	</div>
 	<?php } ?>
 </div>

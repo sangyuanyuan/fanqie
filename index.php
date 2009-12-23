@@ -250,6 +250,33 @@ total("首页","other");
 				$record_head=$db -> query($sql);
 			?>
 			<div id=t_r_t>
+				<div id=left><a target="_blank" href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>"><img border=0 src="images/xyy2_logo.gif"></a></div>
+				<div id=right>
+	 				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a><?php echo show_video($record_head[0]->video_flag,40,35)?><?php echo show_img($record_head[0]->image_flag,40,35)?></div>
+	 				<a href="/news/news_list.php?id=<?php echo $record_head[0]->cid; ?>" id=btn target=_blank></a>
+	 				<div id=content>
+	 				<?php
+		 					if($record_head[0]->sub_headline==1)
+		 					{ 
+		 							echo $record_head[0]->news_description; 
+		 					}
+		 					if($record_head[0]->sub_headline<>1&&$record_head[0]->sub_headline<>""&&$record_head[0]->sub_news_id<>"")
+		 					{
+		 							$sub_news_str=explode(",",$record_head[0]->sub_news_id); 
+						  		$sub_news_str_num=sizeof($sub_news_str)-1;
+									for($i=0;$i<=$sub_news_str_num;$i++)
+									{
+											$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id=".$sub_news_str[$i];
+											$record_sub_news = $db -> query($sql);
+											echo '[<a href="'.$record_sub_news[0]->platform.'/news/news_head.php?id='.$record_sub_news[0]->news_id.'" target=_blank>'.$record_sub_news[0]->short_title.'</a>]';
+									}		
+		
+							}	
+						?>
+	 				</div>
+ 				</div>
+			</div>
+			<!--<div id=t_r_t>
  				<div id=title><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a><?php echo show_video($record_head[0]->video_flag,40,35)?><?php echo show_img($record_head[0]->image_flag,40,35)?></div>
  				<a href="/news/news_list.php?id=<?php echo $record_head[0]->cid; ?>" id=btn target=_blank></a>
  				<div id=content>
@@ -274,7 +301,7 @@ total("首页","other");
 				?>
  				</div>
 
- 			</div>
+ 			</div>-->
  			<!-- end !-->
 		</div>
 
