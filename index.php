@@ -579,6 +579,15 @@ total("首页","other");
 					<? }}else{?>
 					<?php for($i=0;$i<2;$i++){?>
 					<div class=box>
+						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $fhtg[0]->src; ?>" target=_blank border=0></a>
+						<ul>
+							<li style="width:95px; overflow:hidden;"><a href="/fqtg/fqtglist.php" target=_blank><?php echo $fhtg[0]->title ?></a></li>
+							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($fhtg[0]->content);?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $fhtg[0]->marketprice ?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $fhtg[0]->price ?></li>
+						</ul>
+					</div>
+					<div class=box>
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
 						<ul>
 							<li style="width:95px; overflow:hidden;"><a href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
@@ -588,15 +597,7 @@ total("首页","other");
 						</ul>
 					</div>
 					<?php }?>
-					<div class=box>
-						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $fhtg[0]->src; ?>" target=_blank border=0></a>
-						<ul>
-							<li style="width:95px; overflow:hidden;"><a href="/fqtg/fqtglist.php" target=_blank><?php echo $fhtg[0]->title ?></a></li>
-							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($fhtg[0]->content);?></li>
-							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $fhtg[0]->marketprice ?></li>
-							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $fhtg[0]->price ?></li>
-						</ul>
-					</div>
+					
 					<?php }?>
  				</div>
 				
