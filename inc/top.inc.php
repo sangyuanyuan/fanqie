@@ -30,7 +30,7 @@
 		<a id=home href="/home/" target="_blank"><img src="/images/top/jiayuan.gif" border=0></a>
 	</div>
 </div>
-<div id=nimg>
+<div id=nimg1>
 	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
 	<a href="/zongcai/vote.php"><img border=0 src="/images/zcj.jpg"></a>
 </div>
