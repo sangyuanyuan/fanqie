@@ -63,6 +63,7 @@
 							$c = implode(' and ' ,$c);
 							$c=' and '.$c;
 						}
+						var_dump($c);
 				  	$questions = $db->query('select * from smg_dialog_question where dialog_id='.$dialog->id.$c);
 						$len = count($questions);						
 						for ($i=0;$i < $len; $i++) {

@@ -577,7 +577,6 @@ total("首页","other");
 						</ul>
 					</div>
 					<? }}else{?>
-					<?php for($i=0;$i<2;$i++){?>
 					<div class=box>
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $fhtg[0]->src; ?>" target=_blank border=0></a>
 						<ul>
@@ -587,6 +586,7 @@ total("首页","other");
 							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $fhtg[0]->price ?></li>
 						</ul>
 					</div>
+					<?php for($i=0;$i<2;$i++){?>
 					<div class=box>
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
 						<ul>
