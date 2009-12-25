@@ -288,7 +288,7 @@ total("首页","other");
 						for($j=0;$j<=1;$j++){
 					?>
 	 				<div class=title><a href="<?php echo "/".$record_head[$j]->platform."/news/news_head.php?id=".$record_head[$j]->news_id ?>" target="_blank"><?php echo $record_head[$j]->short_title ?></a><?php echo show_video($record_head[$j]->video_flag,22,20)?><?php echo show_img($record_head[$j]->image_flag,22,20)?></div>
-					<div class=content <?php if($j==0){?>style="border-bottom:2px dashed #E6E6E6;"<?php }?>>
+					<div class=content>
 	 				<?php
 	 					if($record_head[$j]->sub_headline==1)
 	 					{ 
