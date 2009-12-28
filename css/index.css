@@ -56,16 +56,16 @@ p{margin:0px; padding:0px;}
 #t_r_t #btn{width:22px; height:75px; margin-top:2px; margin-right:2px; background:url(/images/index/btn5.jpg) no-repeat; float:right; display:inline}
 
 #t_r_c_t{width:492px; height:133px; background:url(/images/index/bg_t_r_c_t.jpg) no-repeat; float:left; display:inline;}
-#t_r_c_t #left{width:110px; height:110px; margin-top:5px; margin-left:10px; float:left; display:inline;}
+/*#t_r_c_t #left{width:110px; height:110px; margin-top:7px; margin-left:10px; float:left; display:inline;}
 #t_r_c_t #right{width:350px; height:110px; margin-right:10px;  float:right; display:inline;}
 #t_r_c_t #right .title{width:350px; height:22px; margin-top:13px; text-align:center; line-height:20px; overflow:hidden; float:left; display:inline;}
 #t_r_c_t #right .title a{color:#2F466F; font-size:16px; font-weight:bold; text-decoration:none;}
 #t_r_c_t #right .content{width:350px; height:19px; text-align:center; line-height:18px; overflow:hidden; float:left; display:inline;}
-#t_r_c_t #right .content a{font-size:12px; color:#5F5F5F; text-decoration:none;}
-/*#t_r_c_t .title{width:472px; height:22px; margin-top:13px; margin-left:10px; text-align:center; font-size:16px; font-weight:bold; color:#2F466F; line-height:20px; overflow:hidden; float:left; display:inline;}
+#t_r_c_t #right .content a{font-size:12px; color:#5F5F5F; text-decoration:none;}*/
+#t_r_c_t .title{width:472px; height:22px; margin-top:13px; margin-left:10px; text-align:center; font-size:16px; font-weight:bold; color:#2F466F; line-height:20px; overflow:hidden; float:left; display:inline;}
 #t_r_c_t .title a{color:#2F466F; text-decoration:none;}
 #t_r_c_t .content{width:455px; height:19px; margin-left:20px; text-align:center; font-size:12px; color:#5F5F5F; line-height:18px; overflow:hidden; float:left; display:inline;}
-#t_r_c_t .content a{color:#5F5F5F; text-decoration:none;}*/
+#t_r_c_t .content a{color:#5F5F5F; text-decoration:none;}
 
 #t_r_c_m{width:492px; height:406px; background:url(/images/index/bg_t_r_c_m.jpg) no-repeat; overflow:hidden; float:left; display:inline;}
 #t_r_c_m #title{width:86px; height:33px; margin-top:5px; background:url(/images/index/title1.gif) no-repeat; float:left; display:inline;}

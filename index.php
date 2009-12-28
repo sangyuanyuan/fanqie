@@ -280,7 +280,7 @@ total("首页","other");
 
 		<div id=p3>
  			<!-- start top_right_center_top !-->
- 			<div id=t_r_c_t>
+ 			<!--<div id=t_r_c_t>
  				<div id=left><a target="_blank" href="subject/xyy2/"><img border=0 src="images/xyy2_logo.gif"></a></div>
  				<div id=right><?php
 						$sql = 'select n.*,n.id as news_id,n.sub_news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2 ';
@@ -318,8 +318,8 @@ total("首页","other");
 					</div>
 					
 					<? }?>
- 			</div>
- 			<!--<div id=t_r_c_t>
+ 			</div>-->
+ 			<div id=t_r_c_t>
 	 				<?php
 						$sql = 'select n.*,n.id as news_id,n.sub_news_id,n.description as news_description,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小头条" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2 ';
 						$record_head=$db -> query($sql);
@@ -355,7 +355,7 @@ total("首页","other");
 					?>					
 					</div>
 					
-					<? }?>-->
+					<? }?>
  			</div>
  			<!-- end !-->
 			
