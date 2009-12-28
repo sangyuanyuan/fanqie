@@ -67,7 +67,7 @@
    			<? //}?>
    			<a href='/zongcai/' target="_blank">总裁奖</a>
    		</div>
-		<div id=zongcai><!--<a target="_blank" href="/news/news/news.php?id=28922"><img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/zq.gif"></a>--></div>
+			<div id=zongcai><a target="_blank" href="/subject/xyy2/"><img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/xyy2.gif"></a></div>
    	</div>
    	<?php 
    				$cookie=isset($_COOKIE['smg_username']) ? $_COOKIE['smg_username'] : "";
