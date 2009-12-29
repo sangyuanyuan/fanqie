@@ -610,7 +610,7 @@ total("首页","other");
 					<?php }?>
 					
 					<?php }?>
-					<a target="_blank" href="subject/xyy2/"><img border=0 width=180 height=122 src="images/xyy2.jpg"></a>
+					<a target="_blank" href="subject/xyy2/"><img border=0 width=180 height=122 src="images/xyy2_2.jpg"></a>
  				</div>
 				
  				<?php
