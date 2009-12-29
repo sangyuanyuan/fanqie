@@ -71,7 +71,7 @@ $(function(){
 			$(".content_trrt").css('display','none');
 			var num=$(this).attr('param');
 			$(".content_trrt").css("float","right");
-			$(".content_trrt").css("margin-right","8px");
+			$(".content_trrt").css("margin-right","13px");
 			$("#content_trrt"+num).css('display','inline');
 
 	});	
