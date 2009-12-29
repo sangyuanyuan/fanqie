@@ -73,7 +73,7 @@ require_once('../frame.php');
 					if(strtotime(date("Y-m-d H:i:s")) < strtotime($news[0]->end_at)&&($maxnum > $zs)){?>
 						<a class="thickbox" href="fhtgdg.php?height=400&width=500&id=<?php echo $news1[$i]->id; ?>">订购</a>
 					<?php } ?>　
-				<a class="thickbox" href="fhtg_result.php?height=400&width=670&id=<?php echo $news1[$i]->id; ?>">查看订购情况</a></div><br><br>
+				<a class="thickbox" href="fhtg_result.php?height=400&width=900&id=<?php echo $news1[$i]->id; ?>">查看订购情况</a></div><br><br>
 			<?php } ?>
 		</div>
     <? for($i=0;$i<count($comments);$i++){?>

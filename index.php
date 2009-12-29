@@ -43,7 +43,7 @@ total("首页","other");
        }
       }
  </script>
-<!--<script>
+<script>
 	window.onload = aa;
   window.onresize = aa;
   function aa() {
@@ -51,7 +51,7 @@ total("首页","other");
 	  var getBody = document.getElementById('body');
 	  getE.style.left = (getBody.clientWidth - getE.offsetWidth)/2 + "px";
 	}
-</script>-->
+</script>
 <body id="body" onload="TimerID2=setTimeout('fLi2()',1000);">
 <? require_once('inc/top.inc.html');?>
 
@@ -1216,10 +1216,10 @@ total("首页","other");
 
 </body>
 </html>
-<!--<script>
-	var MSG1 = new CLASS_MSN_MESSAGE("aa",300,210,"重要通知：","通知",'各位员工：<br>　根据集团反恐工作要求，为确保集团播出安全、行政安全，进一步加强集团的内部安全管理工作，集团在上视大院威海路、青海路门卫入口处安装了门禁刷卡系统，二00九年十月一日（周三）正式启用，集团员工及车辆随车人员必须凭"一卡通"入内。请员工直觉主动刷卡入内<br>　　　　谢谢您的配合<br>　　　　　　　　　上海文广新闻传媒集团办公室<br>　　　　　　　　　　二00九年九月二十九日');  
+<script>
+	var MSG1 = new CLASS_MSN_MESSAGE("aa",300,210,"重要通知：","通知",'各位同仁：<br>　因2009年12月30日上视大院有重要活动，届时请员工私家车不要驶入大院。请12月29日停在大院的员工私家车在当日21：00之前驶离大院。<br>　　　　敬请各位员工支持配合。<br>　　　　　　　　　上海文广新闻传媒集团办公室<br>　　　　　　　　　　二00九年十二月二十九日');  
     MSG1.rect(null,null,null,screen.height-50); 
     MSG1.speed = 100; 
     MSG1.step  = 20;  
     MSG1.show();
-</script>-->
+</script>
