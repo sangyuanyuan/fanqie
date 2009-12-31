@@ -16,7 +16,9 @@
 						<a href="http://172.27.203.88/zc/" target="_blank">集团固定资产管理信息系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.18.1.59/ehr/" target="_blank">员工自助系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.86/webservice/auth.php" target="_blank">广告管理系统</a><span style="margin-left:10px;">|</span>
-						<a href="http://172.27.203.88/adv" target="_blank">广告经营中心内网</a><span style="margin-left:10px;">|</span><a target="_blank" href="#">帮助</a><span style="margin-left:10px;">|</span><a href="https://172.27.203.81:8080" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://172.27.203.81:8080');return(false);">设为主页</a><span style="margin-left:10px;">|</span><a href="/contact/contact.php">联系我们</a>　<span style="font-weight:normal;">值班电话：[上视] 1000(分机)</span>
+						<a href="http://172.27.203.88/adv" target="_blank">广告经营中心内网</a><span style="margin-left:10px;">|</span>
+						<a href="http://172.28.10.41/usp/" target="_blank">SMG在线电子图书库</a><span style="margin-left:10px;">|</span>
+						<a target="_blank" href="#">帮助</a><span style="margin-left:10px;">|</span><a href="https://172.27.203.81:8080" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://172.27.203.81:8080');return(false);">设为主页</a><span style="margin-left:10px;">|</span><a href="/contact/contact.php">联系我们</a>　<span style="font-weight:normal;">值班电话：[上视] 1000(分机)</span>
 				</div>
 				<div id=bottom>地址：上海市南京西路 651号/威海路298号 邮编：200041 电话：8621-62565899转各部<br />上海广播电视台、上海东方传媒（集团）有限公司 版权所有 Copyright 2008 SMG All Rights Reserved</div>
 			</div>
