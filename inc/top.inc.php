@@ -32,7 +32,7 @@
 </div>
 <div id=nimg1>
 	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
-	<a href="/zongcai/vote.php"><img border=0 src="/images/zcj.jpg"></a>
+	<img border=0 src="/images/yuan.jpg">
 </div>
 <div id=nav2>
 	
@@ -47,7 +47,7 @@
 	 	</ul>
 		<?php }?>
 	  <div id=weather>
-			<iframe src="/index_weather.html" width=135px height=22px scrolling="no" frameborder="0"></iframe>
+			<!--<iframe src="/index_weather.html" width=135px height=22px scrolling="no" frameborder="0"></iframe>-->
 	  </div>
 	  <span id=deptbtn onclick='$("#deptcontent").show();'></span>
 	  <div id=search>
@@ -83,8 +83,7 @@
    	?>
    	<input type="hidden" id="birthday1" style="display:none" value="<?php echo $birthday1[0]->num; ?>"><input type="hidden" style="display:none" id="birthday2" value="<?php echo $birthday2[0]->num; ?>">
 		<div id=login>
-			<div id=welcome> <img src="/images/top/person.jpg">欢迎您：<span style="font-weight:bold;">admin</span> <a href="#">修改密码</a> <a href="#">后台管理</a> <a href="#">退出</a> <?php if($cookie!==""){ if((int)$birthday1[0]->num > 0||(int)$birthday2[0]->num > 0){ ?><a href="/server/friend_list.php"></a><?php }} ?>
-</div>
+			
 		</div>
 	</div>
 </div>

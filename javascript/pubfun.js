@@ -48,13 +48,13 @@ function display_login(dom_id,admin){
 	}else{
 		var str = '';
 		if(!admin){
-			str = '<img src="/images/top/person.jpg">';
+			str = '<img src="/images/top/person1.jpg">';
 		}
 		
 		str +='<div id=welcome>欢迎您：<span style="font-weight:bold;">';
 		str += $.cookie('smg_user_nickname') +'</span>';
 		if (!admin) {
-			str +=' <a href="/login/changepwd.php" target="_blank">修改密码</a>' 
+			str +=' <a href="/login/changepwd.php" target="_blank">修改密码</a>';
 		}		
 			str += ' <a href="/blog/?' + $.cookie('smg_uid') + '" target=_blank>个人博客</a>';
 		if($.cookie('smg_user_dept') == 7){
@@ -67,16 +67,17 @@ function display_login(dom_id,admin){
 		}
 		var num1=parseInt($('#birthday1').val());
 		var num2=parseInt($('#birthday2').val());
-		str += '　<a href="/login/user.post.php?user_type=logout">退出</a></div><div style="width:50px; margin-top:15px; overflow:hidden; margin-right:10px; float:right; display:inline;">';
+		str += ' <a href="/login/user.post.php?user_type=logout">退出</a></div>';
+		/*str	+='<div style="width:50px; margin-top:15px; overflow:hidden; float:right; display:inline;">';
 		if(num1>0)
 		{
-			str +=' <a href="/server/send_gift_list_detail.php?reciever="'+$.cookie('smg_username')+'><img style="background:none; width:48px; height:14px; margin-top:-19px;" border=0 src="/images/top/srtx.gif" /></a>'	
+			str +=' <a href="/server/send_gift_list_detail.php?reciever="'+$.cookie('smg_username')+'><img style="background:none; width:50px; height:14px; margin-top:-19px;" border=0 src="/images/top/srtx.gif" /></a>'	
 		}
 		else if(num2>0)
 		{
-			str +=' <a href="/server/friend_list.php"><img style="background:none; width:48px; height:14px;  margin-top:-19px;" border=0 src="/images/top/srtx.gif" /></a>'	
+			str +=' <a href="/server/friend_list.php"><img style="background:none; width:50px; height:14px;  margin-top:-19px;" border=0 src="/images/top/srtx.gif" /></a>'	
 		}
-		str += '</div>'
+		str += '</div>'*/
 	}
 	$('#' + dom_id).html(str);
 }
