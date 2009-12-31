@@ -48,7 +48,7 @@
 </HEAD>
 <body onload="TimerID2=setTimeout('fLi2()',1000);">
 <div id="ibody">
-	<div class="day" id="RemainD"><?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,01,29,2010)); if(($days-1) >=1){?><img src="images/<?php echo ($days-1).'.gif';?>"><?php } ?></div>
+	<div class="day" id="RemainD"><?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,01,29,2010)); if(($days)>=1){?><img src="images/<?php echo $days.'.gif';?>"><?php } ?></div>
 	<div id="ileft">
 		<?php 
 			$db=get_db();
