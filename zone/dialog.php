@@ -53,6 +53,7 @@
 					<?php
 						$db=get_db();
 						$answered= $db->query('select question_id from smg_dialog_answer where dialog_id='.$dialog->id);
+						
 						if(count($answered)>0)
 						{
 							$c=array();
@@ -69,7 +70,14 @@
 						{
 							$c = implode(' and ' ,$c);
 						}
-				  	$questions = $db->query('select * from smg_dialog_question where dialog_id='.$dialog->id.$c);
+						if(count($c)>0)
+						{
+					  	$questions = $db->query('select * from smg_dialog_question where dialog_id='.$dialog->id.' and '.$c);
+					  }
+					  else
+					  {
+					  	$questions = $db->query('select * from smg_dialog_question where dialog_id='.$dialog->id);
+					  }
 						$len = count($questions);						
 						for ($i=0;$i < $len; $i++) {
 							echo_dialog_question($questions[$i],$i + 1,intval($_REQUEST['id']));
