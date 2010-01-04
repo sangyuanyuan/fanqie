@@ -1,0 +1,11 @@
+body {
+	line-height:0;
+}
+#answer{width:995px; margin:0 auto; line-height:15px;}
+#left{width:993px; margin-top:10px; padding-bottom:10px; border:1px solid #D8DFEA; float:left; display:inline;}
+.vote_items_box{text-align:center; width:995px;}
+#pic{width:400px; margin:0 auto; overflow:hidden; text-align:center;}
+.vote_title{font-weight:bold;font-size:14px;margin-top:5px;}
+.vote_item{width:400px; line-height:15px; padding:0; margin-top:10px; margin-left:50px; text-align:left; float:left; display:inline;}
+.vote_item .input_vote_item{wdith:400px; padding:0; line-height:30px; float:left; display:inline;}
+#description{width:400px; margin-left:100px; margin-top:20px; padding-bottom:10px; text-align:left; float:left; display:inline; }
