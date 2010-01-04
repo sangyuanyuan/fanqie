@@ -39,7 +39,7 @@
 			<div style="width:100%;text-align:center;padding-top:20px;float:left;line-height:25px;"><h2><?php echo $vote->name;?></h2><?php if($vote->publisher!=''){echo '发起人：'.$vote->publisher;}?></div>
 			
 			<div id="vote_container_box" style="width:100%;float:left;text-align:center">
-			<div id=pic><?php if($vote->photo_url!=''){?><img height=183 border=0 src="<?php echo $vote->photo_url; ?>"><?php } ?></div>
+				<div id=pic><?php if($vote->photo_url!=''){?><img height=183 border=0 src="<?php echo $vote->photo_url; ?>"><?php } ?></div>
 				<?php $vote->display(array('show_title' => false,'target'=>'_blank'));?>
 			</div>
 		</div>
