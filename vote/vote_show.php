@@ -66,7 +66,7 @@
 		<td bgcolor="#FFFFFF" width=300>
 			比例
 		</td>
-		<?php if($_REQUEST['vote_id']!=281){ ?>
+		<?php if($_REQUEST['vote_id']!=281&&$_REQUEST['vote_id']!=286){ ?>
 			<td bgcolor="#FFFFFF">
 				票数(共<?php echo $total_count[$j];?>票)
 			</td>
@@ -89,7 +89,7 @@
 				echo sprintf("%.2f",$count * 100) .'%';?>
 				<div style="background:url('/images/votebg.gif') repeat-x; height:9px;width:<?php echo ceil($count * 100)*3;?>px;"></div>
 		</td>
-		<?php if($_REQUEST['vote_id']!=281){ ?>
+		<?php if($_REQUEST['vote_id']!=281&&$_REQUEST['vote_id']!=286){ ?>
 		  <td bgcolor="#FFFFFF">
 		  	<?php echo $vote_items[$j][$i]->vote_count; if($vote_items[$j][$i]->vote_count >0){?>(<a href="view_user_list.php?width=600&height=340&item_id=<?php echo $vote_items[$j][$i]->id;?>" class="thickbox" title="投票明细">查看详细</a>)<?php } ?>
 		  </td>
