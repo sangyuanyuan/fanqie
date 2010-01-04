@@ -60,14 +60,14 @@
 							if($this->vote_type == 'image_vote'){
 								if($v->base_id!=""){
 								?>
-							<a target="_blank" href="/show/show.php?id=<?php echo $v->base_id;?>"><?php } ?><img src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>	<div style="clear:both"></div>
+							<a target="_blank" href="/show/show.php?id=<?php echo $v->base_id;?>"><?php } ?><img border=0 src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>	<div style="clear:both"></div>
 						<?php	}
 						?>
 						<input class="input_vote_item" type="checkbox" name="vote_class[<?php echo $this->id;?>][]" value="<?php echo $v->id;?>">
 						<?php }else{ if($this->vote_type == 'image_vote'){
 								if($v->base_id!=""){
 							?>
-							<a target="_blank" href="/show/show.php?id=<?php echo $v->base_id;?>"><?php } ?><img src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>	<div style="clear:both"></div>
+							<a target="_blank" href="/show/show.php?id=<?php echo $v->base_id;?>"><?php } ?><img border=0 src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>	<div style="clear:both"></div>
 						<?php	} ?>
 						<input class="input_vote_item" type="radio" name="vote_class[<?php echo $this->id;?>][]" value="<?php echo $v->id;?>">	
 						<?php }
