@@ -369,7 +369,7 @@ total("首页","other");
 					$zhibo=$db->query($sql);
 				?>		
 				<div id=content1><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a></div>
- 				<?php if($zhibo[0]->state==1){ ?><a href="mms://172.27.202.23:5765/broadcast" id=btn ></a><?php } else{?><a target="_blank" style="margin-top:10px; margin-left:10px; font-weight:bold; line-height:20px; color:red; text-decoration:underline; float:left; display:inline;" href="/news/news/news.php?id=28775">献血报名</a><?php } ?>
+ 				<?php if($zhibo[0]->state==1){ ?><a href="mms://172.27.202.23:5765/broadcast" id=btn ></a><?php } else{?><!--<a target="_blank" style="margin-top:10px; margin-left:10px; font-weight:bold; line-height:20px; color:red; text-decoration:underline; float:left; display:inline;" href="/news/news/news.php?id=28775">献血报名</a>--><?php } ?>
  				<?php
 
 					$sql = 'select * from smg_news_show;';
@@ -577,8 +577,8 @@ total("首页","other");
 						</ul>
 					</div>-->
 					<?php if(count($fhtg)==0){ ?>
-					<?php for($i=0;$i<3;$i++){?>
-					<div class=box>
+					<?php for($i=0;$i<2;$i++){?>
+					<div class=box style="margin-bottom:5px;">
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
 						<ul>
 							<li style="width:95px; overflow:hidden;"><a href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
