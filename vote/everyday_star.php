@@ -8,7 +8,7 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG-番茄网-每日之星投票</title>
 	<?php 
-		css_include_tag('top.css','bottom.css','everyday_star.css','vote_right.css','thickbox');
+		css_include_tag('top.css','bottom.css','everyday_star.css','thickbox');
 		js_include_tag('total');
 		$vote_id = 286;
 		$vote = new smg_vote_class();
@@ -27,7 +27,7 @@
 	?>
 </head>
 <script>
-	total("每日投票","show");	
+	total("每日之星投票","show");	
 </script>
 <body>
 	<? require_once('../inc/top.inc.php');
