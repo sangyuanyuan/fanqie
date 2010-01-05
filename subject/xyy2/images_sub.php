@@ -35,7 +35,7 @@
 	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　留言</div>
-		<div id=m_r><textarea id="description" name="images[description]" style="width:750px; height:420px;"></textarea></div>
+		<div id=m_r><textarea id="description" name="images[description]" style="width:750px; height:400px;"></textarea></div>
 	</div>
 	<div id=b_button>
 			<input type="hidden" name="images[parent_id]" value="<?php echo $_REQUEST['id']; ?>">
