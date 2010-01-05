@@ -54,7 +54,7 @@ function display_login(dom_id,admin){
 		str +='<div id=welcome>欢迎您：<span style="font-weight:bold;">';
 		str += $.cookie('smg_user_nickname') +'</span>';
 		if (!admin) {
-			str +=' <a href="/login/changepwd.php" target="_blank">修改密码</a>';
+			str +=' <a href="/admin/updatepwd/changepwd.php" target="_blank">修改密码</a>';
 		}		
 			str += ' <a href="/blog/?' + $.cookie('smg_uid') + '" target=_blank>个人博客</a>';
 		if($.cookie('smg_user_dept') == 7){
