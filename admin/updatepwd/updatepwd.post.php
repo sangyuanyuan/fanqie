@@ -5,7 +5,7 @@ require_once('../../frame.php');
   	$client = new SoapClient("http://172.27.203.49/ssov1.0/changepassword.asmx?WSDL");
   	$ChangePasswordRequest = array("ApplicationId" => "2018", "TimeStamp" => "288701749051598","ChangeType" => $type,"UserId" => $userid, "OldPassword" => $oldpwd,"NewPassword" => $newpwd,"OperatorId" => $operatorid);
   	$result = $client->ChangePassword( $ChangePasswordRequest);
-	return  $result->Result;
+		return  $result->Result;
   }
  
 $result=new table_class('smg_updatepwd');
