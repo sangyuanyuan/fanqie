@@ -48,7 +48,7 @@ function display_login(dom_id,admin){
 	}else{
 		var str = '';
 		if(!admin){
-			str = '<img src="/images/top/person1.jpg">';
+			str = '<img src="/images/top/person.jpg">';
 		}
 		
 		str +='<div id=welcome>欢迎您：<span style="font-weight:bold;">';
