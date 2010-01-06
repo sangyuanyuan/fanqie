@@ -548,7 +548,7 @@ total("首页","other");
  				<?php
  						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
 						$record_tg=$db -> query($sql);
-						$sql="select * from smg_fhtg where is_adopt=1 order by priority asc,created_at desc limit 1";
+						$sql="select * from smg_fhtg where is_adopt=1 and show_index=1 order by priority asc,created_at desc limit 1";
 						$fhtg=$db->query($sql);
 					?>
  				<div class=content_trrt id=content_trrt1 >

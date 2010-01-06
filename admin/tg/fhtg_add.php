@@ -89,7 +89,7 @@
 			});
 		});
 		$('#is_show').change(function(){
-			if(this.attr('checked'))
+			if($(this).attr('checked'))
 			{
 				$('#show_index').val(1);
 			}

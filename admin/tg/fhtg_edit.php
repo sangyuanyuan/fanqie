@@ -35,7 +35,8 @@
 			<td align="left"><input type="text" name="fhtg[priority]" value="<?php echo $record[0]->priority; ?>"></td>
 		</tr>
 		<tr class="tr3">
-			<td>是否在首页显示</td><td align="left">　<input type="checkbox" name=is_show id=is_show></td>
+			<td>是否在首页显示</td>
+			<td align="left"><input type="checkbox" <?php if($record[0]->show_index==1){ ?>checked=checked<?php } ?> name="is_show" id="is_show"></td>
 		</tr>
 		<tr class="tr3">
 			<td>开始时间</td>
@@ -109,7 +110,7 @@
 			});
 		});
 		$('#is_show').change(function(){
-			if(this.attr('checked'))
+			if($(this).attr('checked'))
 			{
 				$('#show_index').val(1);
 			}
