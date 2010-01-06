@@ -35,6 +35,9 @@
 			<td align="left"><input type="text" name="fhtg[priority]" value="<?php echo $record[0]->priority; ?>"></td>
 		</tr>
 		<tr class="tr3">
+			<td>是否在首页显示</td><td align="left">　<input type="checkbox" name=is_show id=is_show></td>
+		</tr>
+		<tr class="tr3">
 			<td>开始时间</td>
 			<td align="left" ><input type="text" name="start_at" id="start"  class="date_jquery" value="<?php if(substr($record[0]->start_at,0,10)!='0000-00-00'){echo substr($record[0]->start_at,0,10);}?>">
 			</td>
@@ -83,6 +86,7 @@
 		</tr>
 		<input type="hidden" name="fhtg[is_adopt]" value="1">
 		<input type="hidden" name="fhtg[created_at]" value="<?php echo date("y-m-d");?>">
+		<input type="hidden" id="show_index" name="fhtg[show_index]" value="0">
 		<input type="hidden" name="id" value="<?php echo $id; ?>">
 	</table>
 	</form>
@@ -103,6 +107,16 @@
 				num--;
 				$("#num").attr('value',num);
 			});
+		});
+		$('#is_show').change(function(){
+			if(this.attr('checked'))
+			{
+				$('#show_index').val(1);
+			}
+			else
+			{
+				$('#show_index').val(0);
+			}
 		});
 	});
 	$(".date_jquery").datepicker(

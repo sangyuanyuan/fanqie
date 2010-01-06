@@ -28,6 +28,9 @@
 			<td align="left"><input type="text" name="fhtg[priority]"></td>
 		</tr>
 		<tr class="tr3">
+			<td>是否在首页显示</td><td align="left">　<input type="checkbox" name=is_show id=is_show></td>
+		</tr>
+		<tr class="tr3">
 			<td>开始时间</td>
 			<td align="left" ><input type="text" name="start_at" id="start"  class="date_jquery">
 			</td>
@@ -63,6 +66,7 @@
 			<td colspan="2" width="795" align="center"><button type="submit" id="sub">发布复合团购</button></td>
 		</tr>
 		<input type="hidden" name="fhtg[is_adopt]" value="0">
+		<input type="hidden" id="show_index" name="fhtg[show_index]" value="0">
 		<input type="hidden" name="fhtg[created_at]" value="<?php echo date("Y-m-d");?>">
 	</table>
 	</form>
@@ -83,6 +87,16 @@
 				num--;
 				$("#num").attr('value',num);
 			});
+		});
+		$('#is_show').change(function(){
+			if(this.attr('checked'))
+			{
+				$('#show_index').val(1);
+			}
+			else
+			{
+				$('#show_index').val(0);
+			}
 		});
 	});
 	$(".date_jquery").datepicker(
