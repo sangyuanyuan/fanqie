@@ -32,7 +32,7 @@
 </div>
 <div id=nimg1>
 	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
-	<img border=0 src="/images/yuan.jpg">
+	<!--<img border=0 src="/images/yuan.jpg">-->
 </div>
 <div id=nav2>
 	
@@ -47,7 +47,7 @@
 	 	</ul>
 		<?php }?>
 	  <div id=weather>
-			<!--<iframe src="/index_weather.html" width=135px height=22px scrolling="no" frameborder="0"></iframe>-->
+			<iframe src="/index_weather.html" width=135px height=22px scrolling="no" frameborder="0"></iframe>
 	  </div>
 	  <span id=deptbtn onclick='$("#deptcontent").show();'></span>
 	  <div id=search>
