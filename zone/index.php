@@ -36,7 +36,7 @@
 		$gg=$db->query($sql);
 		$sql="select * from smg_comment where resource_type='zone' order by created_at desc limit 4";
 		$comment=$db->query($sql);
-		$sql="SELECT tid,subject FROM bbs_posts where first=1 order by pid desc limit 10";
+		$sql="SELECT tid,subject FROM bbs_posts where first=1 and fid<>79 order by pid desc limit 10";
 		$bbs=$db->query($sql);
 		$sql="SELECT uid,itemid,subject FROM blog_spaceitems order by itemid desc limit 10";
 		$blog=$db->query($sql);
