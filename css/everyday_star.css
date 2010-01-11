@@ -4,8 +4,24 @@ body {
 #answer{width:995px; margin:0 auto; line-height:15px;}
 #left{width:993px; margin-top:10px; padding-bottom:10px; border:1px solid #D8DFEA; float:left; display:inline;}
 .vote_items_box{text-align:center; width:995px;}
+.vote_items_box img{width:256px; height:183px; border:0px;}
 #pic{width:300px; margin:0 auto; overflow:hidden; text-align:center;}
 .vote_title{font-weight:bold;font-size:14px;margin-top:5px;}
 .vote_item{width:300px; height:230px; line-height:15px; padding:0; margin-top:10px; margin-left:22px; text-align:center; float:left; display:inline;}
 #description{width:300px; margin-left:100px; margin-top:20px; padding-bottom:10px; text-align:left; float:left; display:inline; }
 .vote_item a{color:#000000; text-decoration:none;}
+.comment_title{width:220px; height:30px; line-height:30px; font-size:14px; background:url('/images/news/news_r_title_bg.jpg') repeat-x;  border-top:1px solid #DDDDDD; text-align:center; float:left; display:inline;}
+.comment{width:995px; margin-left:10px; border:1px solid #DDDDDD; border-top:none; border-bottom:none; background:#ffffff; float:left; display:inline;}
+.comment .content{width:995px;; border-bottom:1px solid #dddddd; float:left; display:inline;}
+.comment .content .title1{width:985px; height:30px; margin-top:5px; margin-left:10px; line-height:30px; background:url('/images/news/news_comment_title.jpg') no-repeat; float:left; display:inline;}
+.comment .content .title2{width:985px; height:30px; margin-top:5px; margin-left:10px; line-height:30px; float:left; display:inline;}
+.comment .content .context{width:970px; margin-top:10px; margin-left:10px; padding-bottom:5px; line-height:20px; float:left; display:inline;}
+.comment img{margin-top:5px; cursor:pointer;}
+.page{width:995px; height:20px; margin-top:10px; padding-bottom:10px; text-align:center; line-height:20px;  float:left; display:inline;}
+.aboutcontent{width:954px; margin-top:5px; margin-left:20px; float:left; display:inline;}
+.aboutcontent .title{width:934px; height:26px; margin-top:10px;  margin-left:10px; margin-bottom:10px; padding-left:10px; line-height:26px; font-size:12px; color:#000000; text-align:left; background:#CCCCCC; float:left; display:inline;}
+.aboutcontent .content{width:944px; height:20px; margin-left:10px; line-height:20px; overflow:hidden; float:left; display:inline;}
+.aboutcontent .content a{color:#000000; font-size:14px; text-decoration:none;}
+.aboutcontent input{width:340px; height:16px; margin-left:14px; float:left; display:inline;}
+.aboutcontent #fqbq{width:924px; margin-top:5px; margin-left:14px; float:left; display:inline;}
+.aboutcontent button{margin-top:10px; margin-right:15px; border:1px solid #cccccc; background:#ffffff; line-height:20px; float:right; display:inline;}
