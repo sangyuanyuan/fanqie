@@ -44,7 +44,7 @@
 	$vote_len = count($name);
 ?>
 <div id=ibody style="width:995px; margin:0 auto; text-align:center; margin-top:10px; line-height:20px;">
-<div style="width:600px; margin-top:10px; font-size:15px; text-align:center; line-height:20px; float:left; display:inline"><b><?php echo $vote_name;?></b><br>投票结果:<span style="color:#FF0000;"></span></div>
+<div style="width:600px; margin-top:10px; font-size:15px; text-align:center; line-height:20px; float:left; display:inline"><?php if($_REQUEST['vote_id']!=286){ ?><b><?php echo $vote_name;?></b><br><?php } ?>投票结果:<span style="color:#FF0000;"></span></div>
 <?php include('../inc/vote_right.inc.php');?>
 <?php 
    for($j=0;$j < $vote_len; $j++){
