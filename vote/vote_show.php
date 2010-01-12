@@ -13,9 +13,15 @@
 		js_include_tag('total','thickbox','pubfun');
 	?>
 </head>
+<?php if($_REQUEST['vote_id']!=286){ ?>
 <script>
 	total("投票结果显示","server");	
 </script>
+<?php }else{ ?>
+<script>
+	total("每日之星投票结果","show");	
+</script>
+<?php } ?>
 <body style="line-height:0;">
 <?php require_once('../inc/top.inc.html');
 	$db = get_db();
@@ -66,7 +72,7 @@
 		<td bgcolor="#FFFFFF" width=300>
 			比例
 		</td>
-		<?php if($_REQUEST['vote_id']!=281&&$_REQUEST['vote_id']!=286){ ?>
+		<?php if($_REQUEST['vote_id']!=281){ ?>
 			<td bgcolor="#FFFFFF">
 				票数(共<?php echo $total_count[$j];?>票)
 			</td>
