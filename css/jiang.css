@@ -1,0 +1,37 @@
+﻿body {font-family:宋体; font-size:12px; color:#434343;  margin:0px;}
+#bodys{width:1002px; margin:0 auto; margin-top:10px; padding-bottom:10px; background:#94632E;}
+#logo{width:1002px; height:229px; background:url(/subject/jiang/images/jiang.gif) no-repeat; float:left; display:inline;}
+#ibody_left{width:290px; margin-left:5px; float:left; display:inline;}
+#ibody_center{width:400px; height:595px; margin-left:6px; background:#F6EDD8; float:left; display:inline;}
+#ibody_right{width:290px; height:595px; margin-right:5px; background:url(/subject/jiang/images/r_bg.jpg) repeat-x; float:right; display:inline;}
+#l_t{width:290px; height:380px; background:url('/subject/jiang/images/l_t_bg.jpg') repeat-x; float:left; display:inline;}
+#l_t img{width:270px; height:360px; margin:10px; float:left; display:inline;}
+#l_b{width:290px; height:208px; margin-top:5px; background:#C89B36; float:left; display:inline;}
+#l_b #title{width:270px; height:20px; margin-top:10px; margin-left:10px; line-height:20px; font-size:14px; font-weight:bold; filter:DropShadow(Color=#ffffff,Direction=135,offx=1,offy=1); float:left; display:inline;}
+#l_b #content{width:270px; height:160px; margin:10px; line-height:20px; background:#D8AB55; float:left; display:inline;}
+#l_b #content .cl{width:250px; height:20px; overflow:hidden; float:left; display:inline;}
+#l_b #content .cl a{color:#000000; text-decoration:none;}
+#c_title{width:400px; height:26px; margin-top:13px; text-align:center; line-height:26px; font-size:20px; color:#94632E; font-weight:bold; float:left; display:inline;}
+#line{width:400px; height:16px; background:url(/subject/jiang/images/line.jpg) no-repeat; float:left; display:inline;}
+#c_title .list{width:380px; height:20px; margin-left:10px; float:left; display:inline;}
+#r_t{width:280px; margin-left:5px; float:left; display:inline;}
+.r_title{width:280px; height:20px; margin-top:5px; line-height:20px; font-size:14px; font-weight:bold; filter:DropShadow(Color=#ffffff,Direction=135,offx=1,offy=1); float:left; display:inline;}
+#r_t #content{width:278px; height:146px; border:1px solid #ffffff; float:left; display:inline;}
+.vote_box{width:270px; height:106px; margin-top:10px; margin-left:10px; float:left; display:inline;}
+.vote_button_box{width:270px; height:20px; margin-left:10px; float:left; display:inline;}
+#r_b{width:280px; margin-top:15px; margin-left:5px; float:left; display:inline;}
+#r_b #content{width:278px; height:371px; border:1px solid #ffffff; float:left; display:inline;}
+#r_b #content #c_top{width:270px; height:230px; margin-top:10px; margin-left:4px; float:left; display:inline;}
+#r_b #content #c_bottom{width:270px; height:70px; margin-top:10px; margin-left:4px; float:left; display:inline;}
+.dh{width:1002px; height:58px; margin-top:10px; float:left; display:inline;}
+.newsphoto{width:320px; height:100px; margin-left:10px; background:#FFFAF2; float:left; display:inline;}
+.newsphoto .pleft{width:160px; height:90px; margin:5px; float:left; display:inline;}
+.newsphoto .pright{width:145px; height:90px; margin-top:5px; margin-right:5px; overflow:hidden; float:right; display:inline;}
+.newsphoto .pright a{color:#000000; text-decoration:none;}
+.newsphoto .pright .title{width:145px; height:20px; line-height:20px; overflow:hidden; float:right; display:inline;}
+.newsphoto .pright .title a{font-weight:bold;}
+.newsphoto .pright .context{width:145px; height:70px; line-height:22px; font-weight:bold; overflow:hidden; float:right; display:inline;}
+.photo{width:160px; height:160px; margin-left:16px; float:left; display:inline;}
+#bottom{width:982px; margin-left:10px; padding-bottom:10px; background:#C1B297; float:left; display:inline;}
+#bottom #title{width:972px; height:20px; padding-top:10px; font-size:14px; padding-left:10px; color:#C89B36; background:url(/subject/jiang/images/b_title_bg.jpg) no-repeat; float:left; display:inline;}
+#bottom #content{width:942px; margin-top:10px; margin-left:20px; text-align:center; float:left; display:inline;}
