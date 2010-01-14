@@ -53,9 +53,12 @@
 				<div id=content>
 					<?php 
 						$vote=$db->query('select id from smg_vote where category_id=177 order by priority asc,created_at desc limit 1');
-						$vote = new smg_vote_class();
-						$vote->find($vote[0]->id);
-						$vote->display(); ?>	
+						if($vote[0]->id!="")
+						{
+							$vote = new smg_vote_class();
+							$vote->find($vote[0]->id);
+							$vote->display();
+						} ?>	
 				</div>
 			</div>
 			<div id=r_b>
