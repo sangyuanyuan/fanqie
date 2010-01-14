@@ -13,7 +13,8 @@
 #l_b #content .cl a{color:#000000; text-decoration:none;}
 #c_title{width:400px; height:26px; margin-top:13px; text-align:center; line-height:26px; font-size:20px; color:#94632E; font-weight:bold; float:left; display:inline;}
 #line{width:400px; height:16px; background:url(/subject/jiang/images/line.jpg) no-repeat; float:left; display:inline;}
-#c_title .list{width:380px; height:20px; margin-left:10px; float:left; display:inline;}
+#c_title .list{width:380px; height:20px; margin-left:10px; line-height:20px; float:left; display:inline;}
+#c_title .list a{color:#000000; text-decoration:none;}
 #r_t{width:280px; margin-left:5px; float:left; display:inline;}
 .r_title{width:280px; height:20px; margin-top:5px; line-height:20px; font-size:14px; font-weight:bold; filter:DropShadow(Color=#ffffff,Direction=135,offx=1,offy=1); float:left; display:inline;}
 #r_t #content{width:278px; height:146px; border:1px solid #ffffff; float:left; display:inline;}
