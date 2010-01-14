@@ -44,7 +44,7 @@
 				for($i=0;$i<count($news);$i++)
 				{
 			?>	
-				<div class="list">·<a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title);?></a></div>
+				<div class="c_list">·<a style="" target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title);?></a></div>
 			<?php } ?>
 		</div>
 		<div id=ibody_right>
