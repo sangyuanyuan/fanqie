@@ -32,7 +32,7 @@
 						for($i=0;$i<count($news);$i++)
 						{
 					?>
-					<div class="cl"><img src="/subject/jiang/images/news_list_icon.jpg"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title; ?></a></div>
+					<div class="cl"><img src="/subject/jiang/images/news_list_icon.jpg"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->short_title); ?></a></div>
 					<?php } ?>
 				</div>	
 			</div>
