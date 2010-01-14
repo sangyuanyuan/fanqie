@@ -104,7 +104,7 @@
 				{
 			?>	
 		<div class=photo>
-			<img width=200 height=200 src="<?php echo $photo[$i]->src;?>">
+			<a target="_blank" href="<?php echo $photo[$i]->src;?>"><img border=0 width=200 height=200 src="<?php echo $photo[$i]->src;?>"></a>
 		</div>
 		<?php } ?>
 		<div id=bottom>
