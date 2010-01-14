@@ -32,7 +32,7 @@
 .newsphoto .pright .title{width:145px; height:20px; line-height:20px; overflow:hidden; float:right; display:inline;}
 .newsphoto .pright .title a{font-weight:bold;}
 .newsphoto .pright .context{width:145px; height:70px; line-height:22px; font-weight:bold; overflow:hidden; float:right; display:inline;}
-.photo{width:160px; height:160px; margin-left:16px; float:left; display:inline;}
+.photo{width:160px; height:160px; margin-left:5px; float:left; display:inline;}
 #bottom{width:982px; margin-left:10px; padding-bottom:10px; background:#C1B297; float:left; display:inline;}
 #bottom #title{width:972px; height:20px; padding-top:10px; font-size:14px; padding-left:10px; color:#C89B36; background:url(/subject/jiang/images/b_title_bg.jpg) no-repeat; float:left; display:inline;}
 #bottom #content{width:942px; margin-top:10px; margin-left:20px; text-align:center; float:left; display:inline;}
