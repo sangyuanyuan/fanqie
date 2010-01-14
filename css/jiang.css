@@ -25,7 +25,7 @@
 #r_b #content #c_top{width:270px; height:230px; margin-top:10px; margin-left:4px; float:left; display:inline;}
 #r_b #content #c_bottom{width:270px; height:70px; margin-top:10px; margin-left:4px; float:left; display:inline;}
 .dh{width:1002px; height:58px; margin-top:10px; float:left; display:inline;}
-.newsphoto{width:320px; height:100px; margin-left:10px; background:#FFFAF2; float:left; display:inline;}
+.newsphoto{width:320px; height:100px; margin-top:10px; margin-left:10px; background:#FFFAF2; float:left; display:inline;}
 .newsphoto .pleft{width:160px; height:90px; margin:5px; float:left; display:inline;}
 .newsphoto .pright{width:145px; height:90px; margin-top:5px; margin-right:5px; overflow:hidden; float:right; display:inline;}
 .newsphoto .pright a{color:#000000; text-decoration:none;}
