@@ -53,12 +53,10 @@
 				<div id=content>
 					<?php 
 						$vote=$db->query('select id from smg_vote where category_id=177 order by priority asc,created_at desc limit 1');
-						if($vote[0]->id!="")
-						{
 							$vote = new smg_vote_class();
-							$vote->find($vote[0]->id);
+							$vote->find(291);
 							$vote->display();
-						} ?>	
+						 ?>	
 				</div>
 			</div>
 			<div id=r_b>
@@ -111,7 +109,7 @@
 		<?php } ?>
 		<div id=bottom>
 			<?php $news=$db->query('select id,content from smg_news where id=31301'); ?>
-			<div id=title>2009年其他大奖</div>
+			<div id=title>2009年重要奖获奖结果</div>
 			<div id=content><?php echo $news[0]->content;?></div>
 		</div>
 	</div>
