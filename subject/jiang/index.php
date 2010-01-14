@@ -52,9 +52,10 @@
 				<div class=r_title>投票调查</div>	
 				<div id=content>
 					<?php 
-						/*$vote = new smg_vote_class();
-						$vote->find();
-						$vote->display();*/ ?>	
+						$vote=$db->query('select id from smg_vote where category_id=177 order by priority asc,created_at desc limit 1');
+						$vote = new smg_vote_class();
+						$vote->find($vote[0]->id);
+						$vote->display(); ?>	
 				</div>
 			</div>
 			<div id=r_b>
