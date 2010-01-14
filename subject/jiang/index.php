@@ -95,7 +95,7 @@
 				<a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id;?>"><img border=0 width=160 height=90 src="<?php echo $news[$i]->photo_src; ?>"></a>
 			</div>
 			<div class=pright>
-				<div class=title><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo $news[$i]->short_title; ?></a></div>
+				<div class=title><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo delhtml($news[$i]->short_title); ?></a></div>
 				<div class=context><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo mb_substr(strip_tags($news[$i]->description),0,23,"utf-8")."......";?>[详细]</a></div>	
 			</div>
 		</div>
