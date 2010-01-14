@@ -106,7 +106,7 @@
 				{
 			?>	
 		<div class=photo>
-			<img width=160 height=160 src="<?php echo $photo[$i]->src;?>">
+			<img width=200 height=200 src="<?php echo $photo[$i]->src;?>">
 		</div>
 		<?php } ?>
 		<div id=bottom>
