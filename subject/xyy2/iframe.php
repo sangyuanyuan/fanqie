@@ -45,7 +45,7 @@
 				if(data!=''){
 				}
 			});
-			total('图片DIGG','news');
+			//total('图片DIGG','news');
 		});
 	});
 </script>
