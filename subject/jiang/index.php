@@ -23,7 +23,7 @@
 		<div id=ibody_left>
 			<?php $photo=$db->query('select src from smg_images where category_id=176 and is_adopt=1 order by priority asc,created_at desc'); ?>
 			<div id=l_t>
-				<img src="<?php echo $photo[0]->src; ?>">	
+				<img width=270 height=280 src="<?php echo $photo[0]->src; ?>">	
 			</div>
 			<div id=l_b>
 				<div id=title>最新动态</div>
@@ -64,7 +64,7 @@
 				<div id=content>
 					<?php $news=$db->query('select nick_name,comment from smg_comment where resource_type="firstjiang" order by created_at desc'); ?>
 					<div id=c_top>
-						<marquee direction=up behavior="scroll" SCROLLDELAY="200" height=230 width=270 >
+						<marquee direction=up behavior="scroll" SCROLLDELAY="200" height=70 width=270 >
 							<?php for($i=0;$i<count($news);$i++){ ?>
 							<span style="font-weight:bold;"><?php echo $news[$i]->nick_name; ?></span>:<?php echo $news[$i]->comment; ?><br>
 							<?php } ?>
@@ -108,10 +108,22 @@
 		</div>
 		<?php } ?>
 		<div id=bottom>
-			<?php $news=$db->query('select id,content from smg_news where id=31301'); ?>
+			<?php $news=$db->query('select id,short_title from smg_news where category_id=178 and is_adopt=1 order by priority asc,created_at desc'); ?>
 			<div id=title>2009年重要奖获奖结果</div>
-			<div id=content><?php echo $news[0]->content;?></div>
+			<div id=content>
+				<?php for($i=0;$i<count($news);$i++){ ?>
+					<button param="<?php echo $news[$i]->id ?>" class="btn"><?php echo delhtml($news[$i]->short_title); ?></button>
+				<?php } ?>
+			</div>
 		</div>
 	</div>
 </body>
 </html>
+<script>
+	$(document).ready(function(){
+		$('.btn').click(function(){
+			var num=$(this).attr("param");
+			window.open("http://172.27.203.81:8080/news/news/news.php?id="+num);
+		});
+	});
+</script>
