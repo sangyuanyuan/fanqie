@@ -77,7 +77,7 @@ total("首页","other");
 				</div>	
   			<div class=content_tlt id=content1 <?php if($record_inline[0]->name=='mrzx'){?>style="display:inline"<?php }?>>
 				<?php if($record_star[1]->ipriority<>0){?>
-					<a href="/show/show.php?id=<?php echo $record_star[0]->img_id?>" target=_blank><img src="<?php echo $record_star[0]->src?>" width=270px; height=180px; border=0></a>
+					<a href="/show/show.php?id=<?php echo $record_star[0]->img_id?>" target=_blank><img src="<?php echo $record_star[0]->src?>" width=270; height=180; border=0></a>
 				<? }else{?>
 					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
 					<div id="focus_01"></div> 
