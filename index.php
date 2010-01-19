@@ -43,7 +43,7 @@ total("首页","other");
        }
       }
  </script>
-<!--<script>
+<script>
 	window.onload = aa;
   window.onresize = aa;
   function aa() {
@@ -51,7 +51,7 @@ total("首页","other");
 	  var getBody = document.getElementById('body');
 	  getE.style.left = (getBody.clientWidth - getE.offsetWidth)/2 + "px";
 	}
-</script>-->
+</script>
 <body id="body" onload="TimerID2=setTimeout('fLi2()',1000);">
 <? require_once('inc/top.inc.html');?>
 
@@ -1215,10 +1215,10 @@ total("首页","other");
 
 </body>
 </html>
-<!--<script>
-	var MSG1 = new CLASS_MSN_MESSAGE("aa",300,210,"重要通知：","通知",'各位同仁：<br>　因2009年12月30日上视大院有重要活动，届时请员工私家车不要驶入大院。请12月29日停在大院的员工私家车在当日21：00之前驶离大院。<br>　　　　敬请各位员工支持配合。<br>　　　　　　　　　上海文广新闻传媒集团办公室<br>　　　　　　　　　　二00九年十二月二十九日');  
+<script>
+	var MSG1 = new CLASS_MSN_MESSAGE("aa",300,140,"重要通知：","通知",'首届上海广播电视台、SMG年度颁奖盛典改为1月20日（周三）18：45开始，请相互转告、保持关注！<br>　　　　　　　　　　　　　总编室<br>　　　　　　　　　　二零一零年一月十九日');  
     MSG1.rect(null,null,null,screen.height-50); 
     MSG1.speed = 100; 
     MSG1.step  = 20;  
     MSG1.show();
-</script>-->
+</script>
