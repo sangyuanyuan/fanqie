@@ -14,7 +14,7 @@
 		js_include_once_tag('total','firstjiang');
 	?>
 	<script>
-	total("专题-首届上海广播电视台、SMG年度颁奖盛典","other");
+	total("专题-首届上海广播电视台、SMG年度颁奖盛典","news");
 </script>
 </head>
 <body>
