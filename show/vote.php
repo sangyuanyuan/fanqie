@@ -23,7 +23,8 @@
 <div id=bodys>
 	<div id=fqtglist><a href="/">首页</a>　>　<a href="#">获奖人</a></div>
 	<div id=fqtglistcount>
-		<?php for($i=0;$i<count($news);$i++){?>
+		<div style="width:995px; color:red; line-height:25px; font-size:18px; font-weight:bold; text-align:center; float:left; display:inline;"><span style="font-size:20px;">首届上海广播电视台、上海东方传媒集团有限公司颁奖</span><br>获奖人物英雄榜</div>
+		<?php for($i=0;$i<5;$i++){?>
 		<div class=context>
 			<div class=cl>
 				<div class=cl_top>
@@ -41,7 +42,122 @@
 							<?php } ?>
 						</marquee>
 				</div>
-			<hr style="color:red;">
+			
+			</div>		
+		</div>
+		<? }?>
+		<div class="line"></div>
+		<?php for($i=5;$i<10;$i++){?>
+		<div class=context>
+			<div class=cl>
+				<div class=cl_top>
+					<a target="_blank" href="<? echo $news[$i]->src;?>"><img border=0 width=187 height=150 src="<? echo $news[$i]->src;?>" /></a><br>
+					<a target="_blank" href="<? echo $news[$i]->src;?>"><? echo $news[$i]->title;?></a>
+				</div>
+				<div class=flower name="<?php echo $news[$i]->id; ?>"></div>
+				<?php $comment=$db->query('select * from smg_comment where resource_type="vote_flower" and resource_id='.$news[$i]->id.' order by created_at desc');?>
+				<div style="width:187px; height:20px; float:left; display:inline;">共有<?php echo $news[$i]->flower; ?>人赠送鲜花</div>
+				
+				<div class="comment">
+					<marquee direction=up behavior="scroll" SCROLLDELAY="200" height=100 width=175 style="margin-left:5px;">
+							<?php  for($j=0;$j<count($comment);$j++){ ?>
+							<span style="font-weight:bold;"><?php echo $comment[$j]->nick_name; ?></span>:<?php echo $comment[$j]->comment; ?><br>
+							<?php } ?>
+						</marquee>
+				</div>
+			
+			</div>		
+		</div>
+		<? }?>
+		<div class="line"></div>
+		<?php for($i=10;$i<15;$i++){?>
+		<div class=context>
+			<div class=cl>
+				<div class=cl_top>
+					<a target="_blank" href="<? echo $news[$i]->src;?>"><img border=0 width=187 height=150 src="<? echo $news[$i]->src;?>" /></a><br>
+					<a target="_blank" href="<? echo $news[$i]->src;?>"><? echo $news[$i]->title;?></a>
+				</div>
+				<div class=flower name="<?php echo $news[$i]->id; ?>"></div>
+				<?php $comment=$db->query('select * from smg_comment where resource_type="vote_flower" and resource_id='.$news[$i]->id.' order by created_at desc');?>
+				<div style="width:187px; height:20px; float:left; display:inline;">共有<?php echo $news[$i]->flower; ?>人赠送鲜花</div>
+				
+				<div class="comment">
+					<marquee direction=up behavior="scroll" SCROLLDELAY="200" height=100 width=175 style="margin-left:5px;">
+							<?php  for($j=0;$j<count($comment);$j++){ ?>
+							<span style="font-weight:bold;"><?php echo $comment[$j]->nick_name; ?></span>:<?php echo $comment[$j]->comment; ?><br>
+							<?php } ?>
+						</marquee>
+				</div>
+			
+			</div>		
+		</div>
+		<? }?>
+		<div class="line"></div>
+		<?php for($i=15;$i<20;$i++){?>
+		<div class=context>
+			<div class=cl>
+				<div class=cl_top>
+					<a target="_blank" href="<? echo $news[$i]->src;?>"><img border=0 width=187 height=150 src="<? echo $news[$i]->src;?>" /></a><br>
+					<a target="_blank" href="<? echo $news[$i]->src;?>"><? echo $news[$i]->title;?></a>
+				</div>
+				<div class=flower name="<?php echo $news[$i]->id; ?>"></div>
+				<?php $comment=$db->query('select * from smg_comment where resource_type="vote_flower" and resource_id='.$news[$i]->id.' order by created_at desc');?>
+				<div style="width:187px; height:20px; float:left; display:inline;">共有<?php echo $news[$i]->flower; ?>人赠送鲜花</div>
+				
+				<div class="comment">
+					<marquee direction=up behavior="scroll" SCROLLDELAY="200" height=100 width=175 style="margin-left:5px;">
+							<?php  for($j=0;$j<count($comment);$j++){ ?>
+							<span style="font-weight:bold;"><?php echo $comment[$j]->nick_name; ?></span>:<?php echo $comment[$j]->comment; ?><br>
+							<?php } ?>
+						</marquee>
+				</div>
+			
+			</div>		
+		</div>
+		<? }?>
+		<div class="line"></div>
+		<?php for($i=20;$i<25;$i++){?>
+		<div class=context>
+			<div class=cl>
+				<div class=cl_top>
+					<a target="_blank" href="<? echo $news[$i]->src;?>"><img border=0 width=187 height=150 src="<? echo $news[$i]->src;?>" /></a><br>
+					<a target="_blank" href="<? echo $news[$i]->src;?>"><? echo $news[$i]->title;?></a>
+				</div>
+				<div class=flower name="<?php echo $news[$i]->id; ?>"></div>
+				<?php $comment=$db->query('select * from smg_comment where resource_type="vote_flower" and resource_id='.$news[$i]->id.' order by created_at desc');?>
+				<div style="width:187px; height:20px; float:left; display:inline;">共有<?php echo $news[$i]->flower; ?>人赠送鲜花</div>
+				
+				<div class="comment">
+					<marquee direction=up behavior="scroll" SCROLLDELAY="200" height=100 width=175 style="margin-left:5px;">
+							<?php  for($j=0;$j<count($comment);$j++){ ?>
+							<span style="font-weight:bold;"><?php echo $comment[$j]->nick_name; ?></span>:<?php echo $comment[$j]->comment; ?><br>
+							<?php } ?>
+						</marquee>
+				</div>
+			
+			</div>		
+		</div>
+		<? }?>
+		<div class="line"></div>
+		<?php for($i=25;$i<30;$i++){?>
+		<div class=context>
+			<div class=cl>
+				<div class=cl_top>
+					<a target="_blank" href="<? echo $news[$i]->src;?>"><img border=0 width=187 height=150 src="<? echo $news[$i]->src;?>" /></a><br>
+					<a target="_blank" href="<? echo $news[$i]->src;?>"><? echo $news[$i]->title;?></a>
+				</div>
+				<div class=flower name="<?php echo $news[$i]->id; ?>"></div>
+				<?php $comment=$db->query('select * from smg_comment where resource_type="vote_flower" and resource_id='.$news[$i]->id.' order by created_at desc');?>
+				<div style="width:187px; height:20px; float:left; display:inline;">共有<?php echo $news[$i]->flower; ?>人赠送鲜花</div>
+				
+				<div class="comment">
+					<marquee direction=up behavior="scroll" SCROLLDELAY="200" height=100 width=175 style="margin-left:5px;">
+							<?php  for($j=0;$j<count($comment);$j++){ ?>
+							<span style="font-weight:bold;"><?php echo $comment[$j]->nick_name; ?></span>:<?php echo $comment[$j]->comment; ?><br>
+							<?php } ?>
+						</marquee>
+				</div>
+			
 			</div>		
 		</div>
 		<? }?>
