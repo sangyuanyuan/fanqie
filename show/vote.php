@@ -41,6 +41,7 @@
 							<?php } ?>
 						</marquee>
 				</div>
+			<hr style="color:red;">
 			</div>		
 		</div>
 		<? }?>

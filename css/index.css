@@ -27,7 +27,7 @@ p{margin:0px; padding:0px;}
 #t_l_t .list li{width:245px; height:19px; padding-left:17px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; cursor:pointer; background:url(/images/icon/arrow1.gif) no-repeat 0 3px; float:left; display:inline;}
 #t_l_t .list li a{color:#000000; text-decoration:none;}
 
-#t_l_m{width:272px; height:292px; background:url(/images/index/bg_t_r_r_m.jpg) no-repeat; float:left; display:inline;}
+#t_l_m{width:272px; height:292px; background:url(/images/index/bg_t_r_r_m1.jpg) no-repeat; float:left; display:inline;}
 #t_l_m .btn_tlm{width:83px; height:19px; margin-left:34px; padding-top:12px; line-height:15px; font-weight:bold; text-align:center; color:#ffffff; cursor:pointer; float:left; display:inline;}
 #t_l_m .btn_tlm a{color:#ffffff; text-decoration:none;}
 #t_l_m .list_tlm{width:240px; height:200px; margin-top:10px; margin-left:18px; overflow:hidden; float:left; display:none;}
