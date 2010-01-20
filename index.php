@@ -43,7 +43,7 @@ total("首页","other");
        }
       }
  </script>
-<script>
+<!--<script>
 	window.onload = aa;
   window.onresize = aa;
   function aa() {
@@ -51,7 +51,7 @@ total("首页","other");
 	  var getBody = document.getElementById('body');
 	  getE.style.left = (getBody.clientWidth - getE.offsetWidth)/2 + "px";
 	}
-</script>
+</script>-->
 <body id="body" onload="TimerID2=setTimeout('fLi2()',1000);">
 <? require_once('inc/top.inc.html');?>
 
@@ -1215,10 +1215,10 @@ total("首页","other");
 
 </body>
 </html>
-<script>
+<!--<script>
 	var MSG1 = new CLASS_MSN_MESSAGE("aa",300,140,"重要通知：","通知",'首届上海广播电视台、SMG年度颁奖盛典改为1月20日（周三）18：45开始，请相互转告、保持关注！<br>　　　　　　　　　　　　　总编室<br>　　　　　　　　　　二零一零年一月十九日');  
     MSG1.rect(null,null,null,screen.height-50); 
     MSG1.speed = 100; 
     MSG1.step  = 20;  
     MSG1.show();
-</script>
+</script>-->
