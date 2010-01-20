@@ -62,7 +62,7 @@
 					<div class=middle><a  href="article.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=40 height=40 src="<?php echo $records[$i]->photo_src?>"></a></div>
 					<div class=right>
 						<div class=top><a  href="article.php?id=<?php echo $records[$i]->id;?>"><?php echo $records[$i]->short_title;?></a></div>
-						<div class=bottom><a  href="article.php?id=<?php echo $records[$i]->id;?>">共得到<?php echo $records[$i]->flower ?>束鲜花</a></div>
+						<div class=bottom><a  href="article.php?id=<?php echo $records[$i]->id;?>">共得到<?php echo $records[$i]->flower; ?>束鲜花</a></div>
 					</div>
 				</div>
 			<? }?>

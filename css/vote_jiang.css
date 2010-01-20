@@ -1,0 +1,13 @@
+﻿body {font-family:宋体; font-size:12px; color:#000; line-height:0px; margin:0px;}
+#bodys{width:995px; margin:0 auto; margin-top:10px; line-height:20px;}
+#fqtglist{width:995px; height:20px; margin-top:10px; padding-left:30px; line-height:15px; color:#0070B0; border-bottom:1px dotted #B0B0B0; background:url(/images/arrow/arrow1.gif) 10px 3px no-repeat; float:left; display:inline;}
+#fqtglist A{color:#0070B0;}
+#fqtglistcount{width:995px; margin-top:10px; float:left; display:inline;}
+#fqtglistcount .context{width:187px; margin-top:15px; margin-left:10px; overflow:hidden; float:left; display:inline;}
+#fqtglistcount .context .cl{width:187px; line-height:30px; float:left; display:inline;}
+#fqtglistcount .context .cl .cl_top{width:187px; height:250px; float:left; display:inline;}
+#fqtglistcount .context .cl A{color:#000000; text-decoration:none; float:left; display:inline;}
+#fqtglistcount .context .cl A:hover{text-decoration:underline;}
+
+.flower{width:187px; height:120px; cursor:pointer; background:url('/images/show/votehua.jpg') no-repeat; float:left; display:inline;}
+.comment{width:185px; height:100px; border:1px solid #cccccc; line-height:20px; float:left; display:inline;}
