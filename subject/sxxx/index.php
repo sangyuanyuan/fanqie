@@ -72,7 +72,7 @@
 							
 								<? 	
 								for($i=0;$i<count($jdls);$i++){?>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $jdls[$i]->id;?>"><? echo $jdls[$i]->short_title;?></a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $jdls[$i]->id;?>"><? echo delhtml($jdls[$i]->short_title);?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div>
 								<?php } }?>	
 						</div>
@@ -90,7 +90,7 @@
 							
 								<?
 								for($i=0;$i<6;$i++){?>
-									<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $zxdt[$i]->id;?>"><? echo $zxdt[$i]->short_title;?></a></div>
+									<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $zxdt[$i]->id;?>"><? echo delhtml($zxdt[$i]->short_title);?></a></div>
 									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							
@@ -111,7 +111,7 @@
 									
 										<? 	
 										for($i=0;$i<count($ldjh);$i++){?>
-										<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<?php echo $ldjh[$i]->id;?>"><?php echo $ldjh[$i]->short_title;?></a></div>
+										<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<?php echo $ldjh[$i]->id;?>"><?php echo delhtml($ldjh[$i]->short_title);?></a></div>
 										<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 										<? }?>
 									
@@ -129,7 +129,7 @@
 						
 							<?
 							for($i=0;$i<6;$i++){?>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $xxxd[$i]->id;?>"><? echo $xxxd[$i]->short_title;?></a></div>
+								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $xxxd[$i]->id;?>"><? echo delhtml($xxxd[$i]->short_title);?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 							<? }?>
 						
@@ -182,7 +182,7 @@
 							<div style="width:330px; height:120px; margin-right:10px; float:right; display:inline">
 							<? 
 							 for($i=0;$i<count($mtpl);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $mtpl[$i]->id;?>"><? echo $mtpl[$i]->short_title;?></a></div>
+								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $mtpl[$i]->id;?>"><? echo delhtml($mtpl[$i]->short_title);?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							</div>
@@ -201,7 +201,7 @@
 							<div style="width:330px; margin-right:10px; float:right; display:inline">
 							<? 
 							 for($i=0;$i<count($gzzd);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $gzzd[$i]->id;?>"><? echo $gzzd[$i]->short_title;?></a></div>
+								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $gzzd[$i]->id;?>"><? echo delhtml($gzzd[$i]->short_title);?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							</div>
