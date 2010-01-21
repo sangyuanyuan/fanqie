@@ -21,15 +21,7 @@ $mtpl = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_u
 						<div id=content>
 							<a style="margin-top:10px; float:left; display:inline;" target="_blank" href="/show/vote.php"><img width=225 border=0 src="hero.jpg"></a>
 							<a style="margin-top:10px; float:left; display:inline;" target="_blank" href="/newscentersxxx/"><img width=225 border=0 src="newscentersxxx.jpg"></a>
-							<div class=title>学实活动</div>			
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=53">领导讲话</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=54">步骤安排</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=50">最新动态</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=55">文件摘编</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=67">学习资料</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist2.php">三分钟论坛</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djlist.php?id=69">即知即改</a></div>
-								<div style="width:170px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/subject/djnews/djnews.php?id=1">三分钟答题</a></div>
+							<div class=title><a href="/subject/djnews/">学实活动</a></div>
 							<div class=title>活动视频</div>
 							
 								<? 
