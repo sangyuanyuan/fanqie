@@ -23,7 +23,7 @@
 ?>
 <div id=ibody>
 	<div id=ibody_top>
-		<div id=t_t><a target="_blank" href="index.php"><img width="995" height="267" border=0 src="/images/wolfandsheep_top.jpg"></a></div>
+		<div style="width:995px; margin-bottom:20px; line-height:30px; font-size:25px; color:red; font-weight:bold; text-align:center; float:left; display:inline;">狼羊PK结果揭晓<br><span style="font-size:20px;">请获奖的筒子和参与的筒子们来上视26楼番茄网领取奖品</span></div>
 		<?php 
 		$db=get_db();
 		$wolf=$db->query("select * from smg_images where id=4763 order by priority asc,created_at desc");
@@ -35,6 +35,7 @@
 				<div style="width:60px; float:left; display:inline;">留言：</div><div style="width:430px; height:740px; overflow:hidden; float:right; display:inline;"><?php echo get_fck_content($wolf[0]->description); ?></div>
 			</div>
 		</div>
+		<div style="width:995px; text-align:center; float:left; display:inline;"><img src="/images/pkend.gif"></div>
 	</div>
 	<div id=ibody_middle>
 		<?php
