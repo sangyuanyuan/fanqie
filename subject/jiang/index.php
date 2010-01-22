@@ -40,7 +40,7 @@
 		<div id=ibody_center>
 			<div id=c_title>首届上海广播电视台、SMG年度颁奖盛典</div>
 			<div id=line></div>
-			<?php $news=$db->query('select id,title from smg_news where category_id=171 and is_adopt=1 order by priority asc,created_at desc limit 23'); 
+			<?php $news=$db->query('select id,title from smg_news where category_id=171 and is_adopt=1 order by priority asc,created_at desc limit 14'); 
 				for($i=0;$i<count($news);$i++)
 				{
 			?>	
