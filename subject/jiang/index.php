@@ -23,7 +23,7 @@
 		<div id=ibody_left>
 			<?php $photo=$db->query('select * from smg_video where id=1305'); ?>
 			<div id=l_t>
-				<?php show_video_player('290','300',$photo[0]->video_photo_src,$photo[0]->video_src); ?>
+				<?php show_video_player('290','300',$photo[0]->photo_url,$photo[0]->video_url); ?>
 			</div>
 			<div id=l_b>
 				<div id=title>投票调查</div>
