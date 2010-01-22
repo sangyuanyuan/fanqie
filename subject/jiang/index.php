@@ -21,26 +21,26 @@
 	<div id=bodys>
 		<div id=logo></div>
 		<div id=ibody_left>
-			<?php $photo=$db->query('select src from smg_images where category_id=176 and is_adopt=1 order by priority asc,created_at desc'); ?>
+			<?php $photo=$db->query('select * from smg_video where id=1305'); ?>
 			<div id=l_t>
-				<img width=270 height=280 src="<?php echo $photo[0]->src; ?>">	
+				<?php show_video_player('290','300',$photo[0]->video_photo_src,$photo[0]->video_src); ?>
 			</div>
 			<div id=l_b>
-				<div id=title>最新动态</div>
+				<div id=title>投票调查</div>
 				<div id=content>
-					<?php $news=$db->query('select id,short_title from smg_news where category_id=174 and is_adopt=1 order by priority asc,created_at desc limit 8'); 
-						for($i=0;$i<count($news);$i++)
-						{
-					?>
-					<div class="cl"><img src="/subject/jiang/images/news_list_icon.jpg"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->short_title); ?></a></div>
-					<?php } ?>
+					<?php 
+						$vote=$db->query('select id from smg_vote where category_id=177 order by priority asc,created_at desc limit 1');
+							$vote = new smg_vote_class();
+							$vote->find(291);
+							$vote->display();
+						 ?>	
 				</div>	
 			</div>
 		</div>
 		<div id=ibody_center>
 			<div id=c_title>首届上海广播电视台、SMG年度颁奖盛典</div>
 			<div id=line></div>
-			<?php $news=$db->query('select id,title from smg_news where category_id=171 and is_adopt=1 order by priority asc,created_at desc limit 27'); 
+			<?php $news=$db->query('select id,title from smg_news where category_id=171 and is_adopt=1 order by priority asc,created_at desc limit 23'); 
 				for($i=0;$i<count($news);$i++)
 				{
 			?>	
@@ -49,14 +49,9 @@
 		</div>
 		<div id=ibody_right>
 			<div id=r_t>
-				<div class=r_title>投票调查</div>	
+				<div class=r_title>获奖名单</div>	
 				<div id=content>
-					<?php 
-						$vote=$db->query('select id from smg_vote where category_id=177 order by priority asc,created_at desc limit 1');
-							$vote = new smg_vote_class();
-							$vote->find(291);
-							$vote->display();
-						 ?>	
+					<a target="_blank" href="/show/vote.php"><img border=0 width="270" height="190" src="/upload/images/qMBTY0FRCj.jpg"></a>
 				</div>
 			</div>
 			<div id=r_b>
@@ -64,7 +59,7 @@
 				<div id=content>
 					<?php $news=$db->query('select nick_name,comment from smg_comment where resource_type="firstjiang" order by created_at desc'); ?>
 					<div id=c_top>
-						<marquee direction=up behavior="scroll" SCROLLDELAY="200" height=70 width=270 >
+						<marquee direction=up behavior="scroll" SCROLLDELAY="200" height=100 width=270 >
 							<?php for($i=0;$i<count($news);$i++){ ?>
 							<span style="font-weight:bold;"><?php echo $news[$i]->nick_name; ?></span>:<?php echo $news[$i]->comment; ?><br>
 							<?php } ?>
