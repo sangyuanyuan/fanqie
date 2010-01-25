@@ -59,8 +59,13 @@
 						if($this->max_item_count > 1 || $this->max_item_count == 0){ 
 							if($this->vote_type == 'image_vote'){
 								if($v->base_id!=""){
+									if($v->vote_id!=293){
 								?>
-							<a target="_blank" href="/show/article.php?id=<?php echo $v->base_id;?>"><?php } ?><img border=0 src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>	<div style="clear:both"></div>
+							<a target="_blank" href="/show/article.php?id=<?php echo $v->base_id;?>">
+							<?php }else{?>
+							<a target="_blank" href="/news/news/news.php?id=<?php echo $v->base_id;?>">	
+							<?php }} ?>
+								<img border=0 src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>	<div style="clear:both"></div>
 						<?php	}
 						?>
 						<input class="input_vote_item" type="checkbox" name="vote_class[<?php echo $this->id;?>][]" value="<?php echo $v->id;?>">
@@ -79,7 +84,7 @@
 							if($v->vote_id!=293){
 							?>
 							<a target="_blank" href="/show/article.php?id=<?php echo $v->base_id;?>">
-							<?php }else{ alert($v->vote_id);?>
+							<?php }else{?>
 							<a target="_blank" href="/news/news/news.php?id=<?php echo $v->base_id;?>">	
 							<?php }} ?><?php echo $v->title;?><?php if($v->base_id!=""){ ?></a><?php }?>
 					</div>
