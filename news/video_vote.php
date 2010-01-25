@@ -33,7 +33,6 @@
 				<?php $vote->display(array('show_title' => false,'target'=>'_blank'));?>
 			</div>
 		</div>
-	</div>
 	<?php $sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='video_vote' order by created_at desc";
 		$news=$db->paginate($sql,10); ?>
 		<div class="comment">
