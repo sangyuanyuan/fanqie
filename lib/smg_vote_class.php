@@ -59,41 +59,23 @@
 						if($this->max_item_count > 1 || $this->max_item_count == 0){ 
 							if($this->vote_type == 'image_vote'){
 								if($v->base_id!=""){
-									if($v->vote_id!=293)
-									{
 								?>
 							<a target="_blank" href="/show/article.php?id=<?php echo $v->base_id;?>"><?php } ?><img border=0 src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>	<div style="clear:both"></div>
 						<?php	}
-								else{?>
-							<a target="_blank" href="/news/news/news.php?id=<?php echo $v->base_id;?>"><?php } ?><img border=0 src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>	<div style="clear:both"></div>
-							<?php }
-						}
 						?>
 						<input class="input_vote_item" type="checkbox" name="vote_class[<?php echo $this->id;?>][]" value="<?php echo $v->id;?>">
 						<?php }else{ if($this->vote_type == 'image_vote'){
 								if($v->base_id!=""){
-									if($v->vote_id!=293)
-									{
 							?>
 							<a target="_blank" href="/show/article.php?id=<?php echo $v->base_id;?>"><?php } ?><img border=0 src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>	<div style="clear:both"></div>
-						<?php	}
-								else{?>
-							<a target="_blank" href="/news/news/news.php?id=<?php echo $v->base_id;?>"><?php } ?><img border=0 src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>	<div style="clear:both"></div>
-							<?php }
-						?>
+						<?php	} ?>
 						<input class="input_vote_item" type="radio" name="vote_class[<?php echo $this->id;?>][]" value="<?php echo $v->id;?>">	
 						<?php }
-							if($v->base_id!=""){
-									if($v->vote_id!=293)
-									{
+						if($v->base_id!=""){
 							?>
 							<a target="_blank" href="/show/article.php?id=<?php echo $v->base_id;?>"><?php } ?><?php echo $v->title;?><?php if($v->base_id!=""){ ?></a><?php }?>
-				<?php	}
-								else{?>
-							<a target="_blank" href="/news/news/news.php?id=<?php echo $v->base_id;?>"><?php } ?><img border=0 src="<?php echo $v->photo_url;?>"><?php if($v->base_id!=""){ ?></a><?php }?>
-							<?php }
-						}
-						?>
+					</div>
+				<?php } ?>
 				</div>
 				<div id="description"><?php echo $this->description?></div>
 			</div>
