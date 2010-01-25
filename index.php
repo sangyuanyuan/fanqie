@@ -609,7 +609,7 @@ total("首页","other");
 						</ul>
 					</div>
 					<?php }?>
-					<a target="_blank" href="subject/xyy2/wolfpksheep.php"><img border=0 width=180 height=122 src="images/xyy2.gif"></a>
+					<a target="_blank" href="subject/xyy2/pkend.php"><img border=0 width=180 height=122 src="images/xyy2.gif"></a>
  				</div>
 				
  				<?php
