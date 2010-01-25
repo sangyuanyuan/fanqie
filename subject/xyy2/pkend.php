@@ -29,13 +29,7 @@
 		$wolf=$db->query("select * from smg_images where id=4763 order by priority asc,created_at desc");
 		?>
 		<div style="width:995px; float:left; display:inline;">
-			<div style="width:497px; height:746px; float:left; display:inline;"><a target="_blank" href="<?php echo $wolf[0]->src; ?>"><img border=0 width=497 height=746 src="<?php echo $wolf[0]->src; ?>"></a></div>
-			<div style="width:490px; height:746px; margin-left:8px; line-height:20px; float:left; display:inline;">
-				<div style="width:60px; float:left; display:inline;">姓名：</div><div style="width:430px; height:20px;  overflow:hidden; float:right; display:inline;"><?php echo $wolf[0]->publisher; ?></div>
-				<div style="width:60px; float:left; display:inline;">留言：</div><div style="width:430px; line-height:20px; overflow:hidden; float:right; display:inline;"><?php echo get_fck_content($wolf[0]->description); ?></div>
-				<div style="width:60px; float:left; display:inline;"><img src="images/flower1.gif"></div><div style="width:430px; overflow:hidden; float:right; display:inline;"><?php echo $wolf[0]->flower.'朵';?></div>
-				<div style="width:490px; margin-top:30px; line-height:30px; color:red; font-size:28px; font-weight:bold; text-align:center; float:left; display:inline;">第一名</div>
-			</div>
+			<img src="/subject/xyy2/images/no1.jpg">
 		</div>
 		<div style="width:995px; text-align:center; float:left; display:inline;"><img src="/images/pkend.gif"></div>
 	</div>
