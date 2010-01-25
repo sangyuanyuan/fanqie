@@ -78,7 +78,7 @@
 				</div>
 			</div>
 		</div>
-		<div class=dh><img src="images/dh1.gif"></div>
+		<div class=dh style="background:url(images/dh1.gif) no-repeat;"><div class=more><a target="_blank" href="image_list.php?category_id=172">更多>></a></div></div>
 		<?php $news=$db->query('select id,short_title,description,photo_src from smg_news where category_id=172 and is_adopt=1 order by priority asc,created_at desc limit 12'); 
 				for($i=0;$i<count($news);$i++)
 				{
@@ -93,7 +93,7 @@
 			</div>
 		</div>
 		<?php } ?>
-		<div class=dh><img src="images/dh2.gif"></div>
+		<div class=dh style="background:url(images/dh2.gif) no-repeat;"><div class=more><a target="_blank" href="image_list.php?category_id=173">更多>></a></div></div>
 		<?php $photo=$db->query('select id,src from smg_images where category_id=173 and is_adopt=1 order by priority asc,created_at desc limit 20'); 
 				for($i=0;$i<count($photo);$i++)
 				{

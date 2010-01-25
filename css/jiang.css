@@ -24,10 +24,12 @@
 #r_b #content #c_top{width:270px; height:100px; margin-top:10px; margin-left:4px; float:left; display:inline;}
 #r_b #content #c_bottom{width:270px; height:60px; margin-top:10px; margin-left:4px; float:left; display:inline;}
 .dh{width:1002px; height:58px; margin-top:10px; float:left; display:inline;}
+.dh .more{width:70px; margin-top:15px; line-height:20px; font-size:14px; font-weight:bold; float:right; display:inline;}
+.dh .more a{color:#ffffff; text-decoration:none;}
 .newsphoto{width:320px; height:100px; margin-top:10px; margin-left:10px; background:#FFFAF2; float:left; display:inline;}
 .newsphoto .pleft{width:160px; height:90px; margin:5px; float:left; display:inline;}
 .newsphoto .pright{width:145px; height:90px; margin-top:5px; margin-right:5px; overflow:hidden; float:right; display:inline;}
-.newsphoto .pright a{color:#000000; text-decoration:none;}
+.newsphoto .pright a{color:#000000; }
 .newsphoto .pright .title{width:145px; height:20px; line-height:20px; overflow:hidden; float:right; display:inline;}
 .newsphoto .pright .title a{font-weight:bold;}
 .newsphoto .pright .context{width:145px; height:70px; line-height:22px; font-weight:bold; overflow:hidden; float:right; display:inline;}
