@@ -24,7 +24,7 @@
 			var flowernum=$(this).next().next().html();
 			flowernum=parseInt(flowernum)+1;
 			$(this).next().next().html(flowernum);
-			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).next().attr('value'),'db_table':'smg_images','digg_type':'comment'},function(data){			
+			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).next().attr('value'),'db_table':'','digg_type':'comment'},function(data){			
 				if(data!=''){
 				}
 			});
@@ -35,7 +35,7 @@
 			var tomatonum=$(this).next().next().html();
 			tomatonum=parseInt(tomatonum)+1;
 			$(this).next().next().html(tomatonum);
-			$.post("/pub/pub.post.php",{'type':'tomato','id':$(this).next().attr('value'),'db_table':'smg_coment','digg_type':'comment'},function(data){
+			$.post("/pub/pub.post.php",{'type':'tomato','id':$(this).next().attr('value'),'db_table':'','digg_type':'comment'},function(data){
 				if(data!=''){
 				}
 			});
