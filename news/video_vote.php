@@ -37,7 +37,7 @@
 	?>
 	<div id=answer>
 		<div id=left>
-			<div style="width:980px; text-align:center; margin-top:10px; margin-left:15px; line-height:22px; float:left; display:inline;"><?php echo get_fck_content($vote->name);?></div>
+			<div style="width:980px; margin-top:10px; margin-left:15px; line-height:22px; float:left; display:inline;"><?php echo get_fck_content($vote->name);?></div>
 			
 			<div id="vote_container_box" style="width:100%; overflow:hidden; float:left;text-align:center">
 				<div id=pic><?php if($vote->photo_url!=''){?><img border=0 src="<?php echo $vote->photo_url; ?>"><?php } ?></div>
