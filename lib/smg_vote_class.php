@@ -77,6 +77,7 @@
 						<?php }
 						if($v->base_id!=""){
 							if($v->vote_id!=293){
+								alert($v->vote_id);
 							?>
 							<a target="_blank" href="/show/article.php?id=<?php echo $v->base_id;?>">
 							<?php }else{?>
