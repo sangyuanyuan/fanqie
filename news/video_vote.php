@@ -57,7 +57,7 @@
 	<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 			<div class=aboutcontent style="padding-bottom:10px;">
 				<div style="width:500px; float:left; display:inline;"><div style="width:50px; float:left; display:inline;">姓名：</div><input type="text" id="commenter" name="post[nick_name]"></div>
-				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">
+				<input type="hidden" id="resource_id" name="post[resource_id]" value="0">
 				<input type="hidden" id="resource_type" name="post[resource_type]" value="video_vote">
 				<input type="hidden" id="target_url" name="post[target_url]" value="<?php $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
 				<input type="hidden" name="type" value="comment">
