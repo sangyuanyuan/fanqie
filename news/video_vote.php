@@ -27,7 +27,7 @@
 	<div id=answer>
 		<div id=left>
 			<div style="width:980px; font-size:20px; font-weight:bold; color:red; text-align:center; margin-top:10px; margin-left:15px; line-height:22px; float:left; display:inline;"><?php echo delhtml($vote->name);?></div>
-<div style="width:980px; font-size:12px; font-weight:bold; color:red; margin-top:10px; margin-left:15px; line-height:18px; float:left; display:inline;">
+<div style="width:980px; font-size:14px; font-weight:bold; color:red; margin-top:10px; margin-left:15px; line-height:18px; float:left; display:inline;">
 	@_@“大眼番茄09最佳视频新闻奖”评选活动开始了！ 在过去的一年中，各部门发来了很多制作精良、有吸引力的视频新闻，视频新闻相比文字新闻制作更加耗时耗力，但也往往更受网友欢迎，在2009年，网友筒子们有哪些印象深刻的视频新闻？<br>
    番茄网特别举行“大眼番茄09最佳视频新闻奖”评选活动，请大家不要吝啬点击手中的小鼠标，为心目中的“09最佳视频新闻”投上一票吧！(点击图片可看原文和视频)<br>
 活动办法：<br>
