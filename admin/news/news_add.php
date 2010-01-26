@@ -139,7 +139,7 @@
 		<tr id=newsshow3  class="normal_news tr4">
 			<td>视频</td>
 			<td align="left" id="td_video">			
-				视频<input type="file" name="video_src" id="video_src">　
+				视频<input type="file" name="video_src" id="video_src"><br>
 				缩略图(705*500)<input type="file" name="video_pic" id="video_pic">(只支持JPG/GIF格式)　
 				<input type="checkbox" id="ch_low_quality">低清
 				<input type="hidden" name="news[low_quality]" id="hidden_low_quality" value="0">

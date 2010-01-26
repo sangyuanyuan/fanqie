@@ -128,8 +128,8 @@
 				if($news->video_src){
 						echo "<a href=\"{$news->video_src}\" target=\"_blank\">查看</a>";
 					}
-				?>
-				缩略图<input type="file" name="video_pic" id="video_pic" value="<?php echo $news->video_photo_src?>">
+				?><br>
+				缩略图<input type="file" name="video_pic" id="video_pic" value="<?php echo $news->video_photo_src?>">(只支持JPG/GIF格式)
 				<?php					
 					if($news->video_photo_src){
 						echo "　<a href=\"{$news->video_photo_src}\" target=\"_blank\">查看</a>";
