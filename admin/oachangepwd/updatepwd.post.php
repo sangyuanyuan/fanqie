@@ -14,7 +14,6 @@ $success=0;
 	$success=reset_password($_POST['updatepwd']['userid'], $_POST['updatepwd']['admin_password'], $_POST['updatepwd']['admin_password1'], 0);
 	if($success==0)
 	{
-		
 		$result->update_attributes($_POST['updatepwd']);
 		$result->updateuserid=$cookie;
 		$result->state =0;
