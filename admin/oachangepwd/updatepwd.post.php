@@ -11,11 +11,6 @@ require_once('../../frame.php');
 $result=new table_class('smg_updatepwd');
 $db = get_db();
 $success=0;
-	if($_POST['updatepwd']['username']==0)
-	{
-		alert("请登录以后再进入重置密码页面!");
-		redirect('/login/');
-	}
 	$success=reset_password($_POST['updatepwd']['userid'], $_POST['updatepwd']['admin_password'], $_POST['updatepwd']['admin_password1'], 0);
 	if($success==0)
 	{
