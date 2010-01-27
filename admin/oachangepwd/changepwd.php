@@ -25,7 +25,7 @@
 			<span style="color:#FF0000"> <? echo $_REQUEST['errorstr'];?></span>
 			<div id=box style="border:1px solid #0066FF; background:#CBEBFA">
 	<form name="change" method="post" action="updatepwd.post.php">
-	<div id=name style="margin-top:15px;" >工　　号：　<input type="text" id="userid" name="updatepwd[userid]" style="width:140px; height:17px; border:0px;" value="<?php echo $_REQUEST['usercode']; ?>" readonly="true"></div>
+	<div id=name style="margin-top:15px;" >工　　号：　<input type="text" id="userid" name="updatepwd[userid]" style="width:140px; height:17px; border:0px; background:#CBEBFA;" value="<?php echo $_REQUEST['usercode']; ?>" readonly="true"></div>
    <div id=pwd >原密　码：　<input type="password" id="admin_password" name="updatepwd[admin_password]" style="width:140px; height:17px;" class="required">
    </div>
    <div id=pwd>新密　码：　<input type="password" id="admin_password1" name="updatepwd[admin_password1]" style="width:140px; height:17px;" class="required"></div>
@@ -33,7 +33,7 @@
    <div id=btn><input id="submit" type="submit" value="提交"></div>
    <input type="hidden" name="updatepwd[username]" id="username" value="<?php echo $cookie;?>">
    <input type="hidden" id="subtype" name="subtype" value="updatepwd">
-	<div id=zhu></div>	
+	<!--<div id=zhu></div>-->
 	</div>
 			
 	</div>
