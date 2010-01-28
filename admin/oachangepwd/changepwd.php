@@ -33,7 +33,7 @@
    <div id=btn><input id="submit" type="submit" value="提交"></div>
    <input type="hidden" name="updatepwd[username]" id="username" value="<?php echo $cookie;?>">
    <input type="hidden" id="subtype" name="subtype" value="updatepwd">
-	 <div id=zhu><div style="width:264px; height:60px; margin:5px; overflow:hidden; float:left; display:inline;">工作在线的工号和密码与登录机器的帐号和密码以及番茄网的帐号与密码相同，若改动，将同时改动番茄网和登录机器的帐号与密码</div></div>
+	 <div id=zhu><div style="width:264px; height:50px; margin:5px; overflow:hidden; float:left; display:inline;">工作在线的工号和密码与登录机器的帐号和密码以及番茄网的帐号与密码相同，若改动，将同时改动番茄网和登录机器的帐号与密码</div></div>
 	</div>
 			
 	</div>
