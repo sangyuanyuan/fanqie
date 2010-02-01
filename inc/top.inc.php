@@ -32,7 +32,7 @@
 </div>
 <div id=nimg1>
 	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
-	<a target="_blank" href="/show/video.php?id=1322"><img border=0 src="/images/top.gif"></a>
+	<!--<a target="_blank" href="/show/video.php?id=1322"><img border=0 src="/images/top.gif"></a>-->
 </div>
 <div id=nav2>
 	
