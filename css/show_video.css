@@ -44,7 +44,7 @@ li{margin:0px; list-style-type:none;}
 #l_b .content{width:550px; padding-bottom:5px; font-size:13px; margin-left:10px; border-top:1px solid #dddddd; color:#666666; float:left; display:inline;}
 #l_b .content .nick_name{width:auto; height:20px; margin-left:10px; margin-top:10px; color:#0093BB; font-size:13px; overflow:hidden; line-height:20px; float:left; display:inline;}
 #l_b .content .time{width:300px; height:20px; margin-top:10px; margin-left:10px; color:#666666; font-size:13px; overflow:hidden; line-height:20px; float:left; display:inline;}
-#l_b .content .comment{width:500px; margin-left:10px; margin-top:5px; word-wrap:break-word; color:#000000; font-size:13px; line-height:15px; float:left; display:inline;}
+#l_b .content .comment{width:500px; margin-left:10px; margin-top:5px; word-wrap:break-word; color:#000000; font-size:13px; line-height:15px; overflow:hidden; float:left; display:inline;}
 #l_b #backtop{width:570px; text-align:right; float:left; display:inline;}
 #l_b #backtop a{color:#ffffff; text-decoration:none;}
 #l_b #comment_box{width:550px; padding-bottom:10px; margin-left:10px; margin-top:20px; background:#ffffff; float:left; display:inline;}
