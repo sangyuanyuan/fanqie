@@ -273,7 +273,7 @@ $db->execute($sql); ?>
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page_count-1; ?>">[尾页]</a></span>
 	<?php	
 	}
-	if ($page < $page_count-1 && $page > 1 )
+	if ($page < $page_count && $page > 1 )
 	{?>
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=1">[首页]</a></span> 
 	  <span><a class="paginate_link" href="<?php echo $string;?>&page=<?php echo $page-1;?>">[上页]</a></span>			
