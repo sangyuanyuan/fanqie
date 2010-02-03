@@ -1,2 +1,19 @@
 ﻿body{background:#000000; font-size:12px; font-family:宋体;}
 #ibody{width:995px; height:790px; margin:0 auto; background:url(/images/wxh_bg.jpg) no-repeat;}
+#ileft{width:408px; margin-left:130px; float:left; display:inline;}
+#iright{width:276px; margin-right:135px; float:right; display:inline;}
+#itop{width:995px; height:130px; float:left; display:inline;}
+#ibottom{width:995px; height:168px; margin-top:38px; float:left; display:inline;}
+#l_t{height:20px; margin-top:18px; line-height:20px; float:right; display:inline;}
+#l_t a{color:#ffffff; font-size:18px; font-weight:bold; text-decoration:none;}
+#l_video{width:408px; height:270px; margin-top:35px; margin-left:5px; float:left; display:inline;}
+.r_content{width:274px; height:160px; margin-top:15px; float:left; display:inline;}
+.r_content .title{width:274px; height:28px; line-height:28px; text-align:center; color:#CC6600; font-size:24px; font-weight:bold; float:left; display:inline;}
+.r_content .title a{color:#CC6600; font-size:24px; font-weight:bold; text-decoration:none;}
+.r_content .content{width:250px; height:80px; margin-top:25px; margin-left:12px; line-height:20px; color:#ffffff; float:left; display:inline;}
+.r_content .content .cl{width:250px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
+.r_content .content .cl a{color:#ffffff; text-decoration:none;}
+.b_content{width:108px; height:168px; margin-left:15px; float:left; display:inline;}
+.b_content .b_t{width:108px; height:90px; margin-top:5px; float:left; display:inline;}
+.b_content .b_b{width:108px; height:56px; margin-top:10px; line-height:18px; float:left; display:inline;}
+.b_content .b_b a{color:#ffffff; text-decoration:none;}
