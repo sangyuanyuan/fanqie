@@ -69,7 +69,7 @@ li{margin:0px; list-style-type:none;}
 #r_b .title{width:300px; height:20px; line-height:15px; font-size:15px; float:left; display:inline;}
 #r_b .more{height:20px; line-height:15px; font-size:15px; float:right; display:inline; }
 #r_b .more a{color:#FF6600; text-decoration:none;}
-#r_b .content{width:100px; height:100px; margin:8px; overflow:hidden; float:left; display:inline;}
+#r_b .content{width:100px; height:100px; margin:8px; float:left; display:inline;}
 #r_b .content .box{width:100px; height:66px; background:#ffffff; border:1px solid #CCCCCC; float:left; display:inline;}
 #r_b .content .box .photo{width:90px; height:56px; margin:5px; float:left; display:inline;}
 #r_b .content .title{width:100px; height:30px; margin-top:5px; line-height:15px; font-size:13px; text-align:center; overflow:hidden; }
