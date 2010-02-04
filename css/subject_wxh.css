@@ -11,7 +11,7 @@
 .r_content .title{width:274px; height:28px; line-height:28px; text-align:center; color:#CC6600; font-size:24px; font-weight:bold; float:left; display:inline;}
 .r_content .title a{color:#CC6600; font-size:24px; font-weight:bold; text-decoration:none;}
 .r_content .content{width:250px; height:130px; margin-left:12px; line-height:20px; color:#ffffff; overflow:hidden; float:left; display:inline;}
-.r_content .content .cl{width:250px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
+.r_content .content .cl{width:250px; height:20px; line-height:20px; float:left; display:inline;}
 .r_content .content .cl a{color:#ffffff; text-decoration:none;}
 .vote_box{width:250px; height:125px; margin-top:5px; float:left; display:inline;}
 .vote_button_box{width:250px; height:20px; float:left; display:inline;}
