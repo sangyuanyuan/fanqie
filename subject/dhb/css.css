@@ -1,0 +1,39 @@
+body{margin:0px; background-image:url(背景.jpg); }
+ul{list-style:none; margin:0; padding:0; }
+li{list-style-type:none; }
+
+a:link{color:#CF2C31; text-decoration:none; }
+a:visited{color:#CF2C31; text-decoration:none; }
+a.toplink:link{font-size:12px; color:#000000; }
+a.toplink:visited{font-size:12px; color:#000000; }
+a.title:link{font-size:18px; font-weight:bold; text-align:center; font-family:黑体; }
+a.title:visited{font-size:18px; font-weight:bold; text-align:center; font-family:黑体; }
+a.important:link{font-size:12px; color:#CF2C31;text-align:center; text-decoration:underline; }
+a.important:visited{font-size:12px; color:#CF2C31;text-align:center; text-decoration:underline; }
+a.nor:link{font-size:12px; color:#000000; text-align:center; text-decoration:underline; }
+a.nor:visited{font-size:12px; color:#000000; text-align:center; text-decoration:underline; }
+
+.important{}
+.nor{}
+.title{}
+.tent{font-size:12px; line-height:25px; text-align:center; }
+.ltent{font-size:12px; margin-left:4px; line-height:13px;}
+.textarea{width:204px; height:18px; border-color:#A49E90; border-style:solid; border-width:1px; }
+.botton{width:36px; height:20px; margin-top:2px; background-color:#FFFFFF; border-color:#A49E90; border-style:solid; border-width:1px; }
+.table{padding:3px; border-width:1px; border-top-style:dotted; border-bottom-style:dotted; }
+.wicker{height:26px; background-image:url(横条.jpg); background-repeat:repeat; }
+.mark{font-size:12px; list-style-position:inside; list-style-type:square; line-height:20px; }
+.picture{width:928px; height:150px; padding:8px 10px;}
+.imgPlace{margin:2px 16px; float:left; display:inline; } 
+
+
+#ibody{width:950px; margin:0 auto;}
+#top3{width:950px; height:200px; background-image:url(top3.jpg); float:left; display:inline; }
+#top4{width:950px; height:35px; background-image:url(横条1.jpg); background-repeat:no-repeat; float:left; display:inline; }
+#top5{width:950px; height:240px; margin-top:8px; float:left; display:inline; }
+#top5-left{width:318px; height:240px; background:#FFFFFF; background-image:url(left.jpg); background-position:center; background-repeat:no-repeat; float:left; display:inline; }
+#top5-center{width:358px; height:240px; margin-left:12px; background:#FFFFFF; float:left; display:inline; }
+#top5-right{width:250px; height:240px; margin-left:12px; float:left; display:inline; }
+#righttop{width:250px; height:80px; background:#FFFFFF; float:left; display:inline; }
+#rightbottom{width:250px; height:148px; margin-top:12px; background:#FFFFFF; float:left; display:inline; }
+#top6{width:950px; margin-top:8px; background:#FFFFFF; float:left; display:inline; }

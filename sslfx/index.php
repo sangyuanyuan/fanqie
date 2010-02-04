@@ -78,11 +78,11 @@
 			?>
 			<div class=b_title><div style="float:left; display:inline;">预测节目收视率跟踪</div><div style="margin-right:10px; float:right; display:inline;"><a style="color:#ffffff; font-size:12px; text-decoration:none;" href="list2.php">历史数据</a></div></div>
 			<div class=b_content>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldincom0"><img width=800 height=500 src="<?php echo $prom[0]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom1"><img width=800 height=500 src="<?php echo $prom[1]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom2"><img width=800 height=500 src="<?php echo $prom[2]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom3"><img width=800 height=500 src="<?php echo $prom[3]->file_path;?>"></div>
-				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom4"><img width=800 height=500 src="<?php echo $prom[4]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldincom0"><img width=800 height=400 src="<?php echo $prom[0]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom1"><img width=800 height=400 src="<?php echo $prom[1]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom2"><img width=800 height=400 src="<?php echo $prom[2]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom3"><img width=800 height=400 src="<?php echo $prom[3]->file_path;?>"></div>
+				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom4"><img width=800 height=400 src="<?php echo $prom[4]->file_path;?>"></div>
 			</div>
 			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
 				<?php for($i=0;$i<count($prom);$i++){ ?>
