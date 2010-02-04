@@ -13,7 +13,7 @@
 .r_content .content{width:250px; height:130px; margin-left:12px; line-height:20px; color:#ffffff; overflow:hidden; float:left; display:inline;}
 .r_content .content .cl{width:250px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
 .r_content .content .cl a{color:#ffffff; text-decoration:none;}
-.vote_box{width:250px; height:106px; margin-top:10px; margin-left:10px; float:left; display:inline;}
+.vote_box{width:250px; height:130px; margin-top:5px; margin-left:10px; float:left; display:inline;}
 .vote_button_box{width:250px; height:20px; margin-left:10px; float:left; display:inline;}
 #b_t{width:995px; height:168px; margin-top:38px; float:left; display:inline;}
 #b_b{width:995px; height:168px; margin-top:10px; float:left; display:inline;}
