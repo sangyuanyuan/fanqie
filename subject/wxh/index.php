@@ -54,7 +54,7 @@ total("务虚会专题","other");
 						$vote=$db->query('select id from smg_vote where category_id=181 order by priority asc,created_at desc limit 1');
 							$vote = new smg_vote_class();
 							$vote->find(298);
-							$vote->display();
+							$vote->display(true,true,'target');
 						 ?>	
 				</div>
 			</div>
