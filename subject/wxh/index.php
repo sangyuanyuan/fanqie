@@ -50,28 +50,65 @@ total("务虚会专题","other");
 			<div class=r_content style="margin-top:20px;">
 				<div class=title>投票</div>
 				<div class=content>
-						<?php $vote=$db->query('select * from smg_vote where category_id=181 and is_adopt=1 order by priority asc,created_at desc limit 4');
-							for($i=0;$i<count($vote);$i++)
-							{
-						?>
-						<div class=cl><a href="/vote/vote.php?vote_id=<?php echo $vote[$i]->id;?>"><?php echo $vote[$i]->name;?></a></div>
-						<?php } ?>
+						<?php 
+						$vote=$db->query('select id from smg_vote where category_id=181 order by priority asc,created_at desc limit 1');
+						if(count($vote)>0)
+						{
+							$vote = new smg_vote_class();
+							$vote->find($vote[0]->id);
+							$vote->display();
+						}
+						 ?>	
 				</div>
 			</div>
 		</div>
 		<div id=ibottom>
-			<?php $pic=$db->query('select src from smg_images where category_id=182 and is_adopt=1 order by priority asc,created_at desc limit 6');
-			for($i=0;$i<count($pic);$i++)
-			{
-			?>
-			<div class="b_content" <?php if($i==0){ ?>style="margin-left:130px;"<?php } ?>>
-				<div class="b_t">
-					<a target="_blank" href="<?php echo $pic[$i]->src; ?>"><img width=108 height=90 src="<?php echo $pic[$i]->src; ?>"></a>	
+			<div id=b_t>
+				<?php $pic=$db->query('select id,title,photo_src,flower from smg_news where category_id=185 and is_adopt=1 order by priority asc,created_at desc limit 14');
+				for($i=0;$i<6;$i++)
+				{
+				?>
+				<div class="b_content" <?php if($i==0){ ?>style="margin-left:133px;"<?php } ?>>
+					<div class="b_c_t">
+						<a target="_blank" href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=108 height=90 src="<?php echo $pic[$i]->photo_src; ?>"></a>	
+					</div>
+					<div class="b_c_b">
+						<div class=b_c_b_t><a href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><?php echo delhtml($pic[$i]->title); ?></a></div>
+						<div class=b_c_b_b><div class=b_c_b_wz><?php echo $pic[$i]->flower; ?></div><div class=b_c_b_pic name="<?php echo $pic[$i]->id; ?>"><img class="flower" src="/images/wxh_flower.gif"></div></div>
+					</div>
 				</div>
-				<div class="b_b"></div>
+				<?php } ?>
 			</div>
-			<?php } ?>
+			<div id=b_b>
+				<? for($i=6;$i<14;$i++)
+				{
+				?>
+				<div class="b_content" <?php if($i==6){ ?>style="margin-left:10px;"<?php } ?>>
+					<div class="b_c_t">
+						<a target="_blank" href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=108 height=90 src="<?php echo $pic[$i]->photo_src; ?>"></a>	
+					</div>
+					<div class="b_c_b">
+						<div class=b_c_b_t><a href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><?php echo delhtml($pic[$i]->title); ?></a></div>
+						<div class=b_c_b_b><div class=b_c_b_wz><?php echo $pic[$i]->flower; ?></div><div class=b_c_b_pic name="<?php echo $pic[$i]->id; ?>"><img class="flower"   src="/images/wxh_flower.gif"></div></div>
+					</div>
+				</div>
+				<?php } ?>
+			</div>
 		</div>
 	</div>
 </body>
 </html>
+<script>
+$(document).ready(function(){
+	$(".b_c_b_pic").click(function(){
+			var flowernum=$(this).prev().html();
+			flowernum=parseInt(flowernum)+1;
+			$(this).prev().html(flowernum);
+			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).attr('name'),'db_table':'smg_news','digg_type':'wxh'},function(data){			
+				if(data!=''){
+				}
+			});
+			total('新闻DIGG','news');
+		});
+	});
+</script>
