@@ -38,7 +38,7 @@
 <DIV class="content topcontent">
 <DIV class=mainarea>
 <P id=nav>您的位置：<A href="http://172.27.203.81:8080/blog/">smg</A>  &gt;&gt; 三项教育博客 </P><!--根分类最新日志列表--><!--论坛资源列表-->
-<div style="width:665px; color:#000000; overflow:hidden; float:left; display:inline;"><span style="font-size:16px; font-weight:bold;">近期主题： 迎世博，我们媒体的作为</span><br>世博方案、世博城市巡访、世博气氛的营造、世博志愿者。。。。。<br>我们带大家体验世博之旅，我们是世博会又一道亮丽风景。</div>
+<div style="width:665px; color:#38A4E4; font-size:14px; text-align:center; overflow:hidden; float:left; display:inline;"><span style="font-size:18px; font-weight:bold;">近期主题： 迎世博，我们媒体的作为</span><br>世博方案、世博城市巡访、世博气氛的营造、世博志愿者。。。。。<br>我们带大家体验世博之旅，我们是世博会又一道亮丽风景。</div>
 <DIV class=blockcategorylist>
 	<?php 
 		function get_avatar($uid, $size = 'middle', $type = '') {
