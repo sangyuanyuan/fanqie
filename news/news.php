@@ -144,10 +144,8 @@
 		if( ($rs_num-5) > 0 ){
 	   		if( ($rs_num-5) < $page_size ){ $page_count = 2; }               
 	   		if( ($rs_num-5) % $page_size ){                                  
-	       		$page_count = (int)($rs_num / $page_size) + 2;           
-	   		}else{
-	       		$page_count = (int)($rs_num / $page_size) + 1;                      
-	  		}
+	       		$page_count = (int)($rs_num / $page_size) + 1;           
+	   		}
 		}
 		else{
 	   		$page_count = 0;
