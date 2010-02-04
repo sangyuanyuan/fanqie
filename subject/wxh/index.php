@@ -35,7 +35,7 @@ total("务虚会专题","other");
 			<div class=r_content>
 				<div class=title><a class="thickbox" title="请发表留言" href="video_comment.php?height=255&width=320">留言</a></div>
 				<div class=content>
-					<marquee height="80" width="250" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+					<marquee height="100" width="250" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 							<?php 
 								$db=get_db(); 
 								$comment=$db->query('select * from smg_comment where resource_type="wxh" order by created_at desc limit 4');
