@@ -70,7 +70,7 @@ total("务虚会专题","other");
 				?>
 				<div class="b_content" <?php if($i==0){ ?>style="margin-left:133px;"<?php } ?>>
 					<div class="b_c_t">
-						<a target="_blank" href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=108 height=90 src="<?php echo $pic[$i]->photo_src; ?>"></a>	
+						<a target="_blank" href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=70 height=90 src="<?php echo $pic[$i]->photo_src; ?>"></a>	
 					</div>
 					<div class="b_c_b">
 						<div class=b_c_b_t><a href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><?php echo delhtml($pic[$i]->title); ?></a></div>
@@ -80,12 +80,12 @@ total("务虚会专题","other");
 				<?php } ?>
 			</div>
 			<div id=b_b>
-				<? for($i=6;$i<14;$i++)
+				<? for($i=6;$i<count($pic);$i++)
 				{
 				?>
 				<div class="b_content" <?php if($i==6){ ?>style="margin-left:10px;"<?php } ?>>
 					<div class="b_c_t">
-						<a target="_blank" href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=108 height=90 src="<?php echo $pic[$i]->photo_src; ?>"></a>	
+						<a target="_blank" href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=70 height=90 src="<?php echo $pic[$i]->photo_src; ?>"></a>	
 					</div>
 					<div class="b_c_b">
 						<div class=b_c_b_t><a href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><?php echo delhtml($pic[$i]->title); ?></a></div>
