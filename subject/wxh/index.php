@@ -45,6 +45,7 @@ total("务虚会专题","other");
 								} 
 							?>
 					</marquee><br>
+					<button class="thickbox" href="video_comment.php?height=255&width=320">发表评论</button><button id="find">查看</button>
 				</div>
 			</div>
 			<div class=r_content style="margin-top:20px;">
@@ -98,14 +99,17 @@ total("务虚会专题","other");
 <script>
 $(document).ready(function(){
 	$(".b_c_b_pic").click(function(){
-			var flowernum=$(this).prev().html();
-			flowernum=parseInt(flowernum)+1;
-			$(this).prev().html(flowernum);
-			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).attr('name'),'db_table':'smg_news','digg_type':'wxh'},function(data){			
-				if(data!=''){
-				}
-			});
-			total('新闻DIGG','news');
+		var flowernum=$(this).prev().html();
+		flowernum=parseInt(flowernum)+1;
+		$(this).prev().html(flowernum);
+		$.post("/pub/pub.post.php",{'type':'flower','id':$(this).attr('name'),'db_table':'smg_news','digg_type':'wxh'},function(data){			
+			if(data!=''){
+			}
 		});
+		total('新闻DIGG','news');
 	});
+	$('#find').click(function(){
+		window.open('comment_list.php?type=wxh');
+	});	
+});
 </script>
