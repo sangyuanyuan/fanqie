@@ -66,11 +66,11 @@
 		<div class=name>
 			<a href="/blog/?uid-<?php echo $record[$i]->uid?>"><?php echo $record[$i]->username;?></a>
 		</div>
-		<div class=title>
-			<a href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[0]->itemid;?>"><?php echo $records[0]->subject;?></a>
+		<div class=title >
+			<a style="color:#000000;" href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[0]->itemid;?>"><?php echo $records[0]->subject;?></a>
 		</div>
-		<div class=title>
-			<a href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[1]->itemid;?>"><?php echo $records[1]->subject;?></a>
+		<div class=title >
+			<a style="color:#000000;" href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[1]->itemid;?>"><?php echo $records[1]->subject;?></a>
 		</div>
 	</div>
 	<?php
