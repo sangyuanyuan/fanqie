@@ -6,7 +6,7 @@
 	<title>SMG-番茄网-专题-务虚会</title>
 	<?php
 		require_once('../../frame.php');
-		css_include_tag('subject_wxh','thickbox');
+		css_include_tag('subject_wxh','thickbox1');
 		use_jquery();
 		js_include_once_tag('thickbox','total');
 	?>
