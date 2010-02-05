@@ -92,6 +92,7 @@ total("务虚会专题","other");
 				</div>
 				<?php } ?>
 			</div>
+			<input id="session" type="hidden" value="<?php echo $_SESSION['smg_role']; ?>">
 		</div>
 	</div>
 </body>
@@ -99,14 +100,19 @@ total("务虚会专题","other");
 <script>
 $(document).ready(function(){
 	$(".b_c_b_pic").click(function(){
-		var flowernum=$(this).prev().html();
-		flowernum=parseInt(flowernum)+1;
-		$(this).prev().html(flowernum);
-		$.post("/pub/pub.post.php",{'type':'flower','id':$(this).attr('name'),'db_table':'smg_news','digg_type':'wxh'},function(data){			
-			if(data!=''){
-			}
-		});
-		total('新闻DIGG','news');
+		if($('#session').val()=="")
+		{
+			alert('请登陆以后进行操作！');
+			window.location.href="/login/login.php";
+		}
+		else{
+			var flowernum=$(this).prev().html();
+			flowernum=parseInt(flowernum)+1;
+			$(this).prev().html(flowernum);
+			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).attr('name'),'db_table':'smg_news','digg_type':'wxh','sendtype':'wxh'},function(data){
+			});
+			total('新闻DIGG','news');
+		}
 	});
 	$('#find').click(function(){
 		window.open('comment_list.php?type=wxh');
