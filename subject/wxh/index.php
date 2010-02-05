@@ -45,7 +45,6 @@ total("务虚会专题","other");
 								} 
 							?>
 					</marquee><br>
-					<button class="thickbox"></button>
 				</div>
 			</div>
 			<div class=r_content style="margin-top:20px;">
