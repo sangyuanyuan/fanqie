@@ -38,13 +38,14 @@ total("务虚会专题","other");
 					<marquee height="100" width="250" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 							<?php 
 								$db=get_db(); 
-								$comment=$db->query('select * from smg_comment where resource_type="wxh" order by created_at desc limit 4');
+								$comment=$db->query('select * from smg_comment where resource_type="wxh" order by created_at desc');
 								for($i=0;$i<count($comment);$i++)
 								{
 									echo $comment[$i]->nick_name.':'.$comment[$i]->comment.'<br>';
 								} 
 							?>
-					</marquee>
+					</marquee><br>
+					<button class="thickbox"></button>
 				</div>
 			</div>
 			<div class=r_content style="margin-top:20px;">
