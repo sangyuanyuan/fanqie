@@ -33,7 +33,8 @@
 <div id=nimg1>
 	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
 	<!--<a target="_blank" href="/news/news/news_head.php?id=32903"><img border=0 src="/images/dfws.jpg"></a>-->
-	<a target="_blank" href="/subject/wxh/"><img border=0 src="/images/wxh.jpg"></a>
+	<!--<a target="_blank" href="/subject/wxh/"><img border=0 src="/images/wxh.jpg"></a>-->
+	<img src="/images/yc.jpg">
 </div>
 <div id=nav2>
 	
