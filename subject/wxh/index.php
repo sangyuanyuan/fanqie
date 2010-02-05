@@ -18,7 +18,7 @@ total("务虚会专题","other");
 	<div id=ibody>
 		<div id=itop></div>
 		<div id=ileft>
-				<div id=l_t><a target="_blank" href="#">议程</a></div>
+				<div id=l_t><a target="_blank" href="/news/news/news.php?id=33271">议程</a></div>
 				<div id=l_video>
 					<OBJECT   id=MediaPlayer1   codeBase=http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701standby=Loading   type=application/x-oleobject   height=270   width=408   classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6   VIEWASTEXT> 
 						<PARAM   NAME= "URL"   VALUE= "mms://172.27.202.23:5765/broadcast"> 
