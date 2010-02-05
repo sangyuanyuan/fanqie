@@ -100,19 +100,14 @@ total("务虚会专题","other");
 <script>
 $(document).ready(function(){
 	$(".b_c_b_pic").click(function(){
-		if($('#session').val()=="")
-		{
-			alert('请登陆以后进行操作！');
-			window.location.href="/login/login.php";
-		}
-		else{
-			var flowernum=$(this).prev().html();
+		 alert('赠送鲜花已截止，谢谢参与！');
+			/*var flowernum=$(this).prev().html();
 			flowernum=parseInt(flowernum)+1;
 			$(this).prev().html(flowernum);
 			$.post("/pub/pub.post.php",{'type':'flower','id':$(this).attr('name'),'db_table':'smg_news','digg_type':'wxh','sendtype':'wxh'},function(data){
 			});
-			total('新闻DIGG','news');
-		}
+			total('新闻DIGG','news');*/
+		
 	});
 	$('#find').click(function(){
 		window.open('comment_list.php?type=wxh');
