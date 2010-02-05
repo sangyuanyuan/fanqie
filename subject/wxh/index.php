@@ -45,7 +45,7 @@ total("务虚会专题","other");
 								} 
 							?>
 					</marquee><br>
-					<button class="thickbox" href="video_comment.php?height=255&width=320">发表评论</button><button id="find">查看</button>
+					<button id="fb" name="video_comment.php?height=255&width=320">发表评论</button><button id="find">查看</button>
 				</div>
 			</div>
 			<div class=r_content style="margin-top:20px;">
@@ -111,5 +111,8 @@ $(document).ready(function(){
 	$('#find').click(function(){
 		window.open('comment_list.php?type=wxh');
 	});	
+	$('#fb').click(function(){
+		tb_show(null,$(this).attr('name'),null);	
+	})
 });
 </script>
