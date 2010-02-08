@@ -1,89 +1,214 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+ï»¿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link href="css.css" rel="stylesheet" type="text/css">
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+	<meta http-equiv=Content-Language content=zh-cn>
+	<title>SMG-ä¸“é¢˜-åäººç¾¤æ˜Ÿ</title>
+  <link href="css.css" rel="stylesheet" type="text/css">
+  <?php 
+  	require_once('../../frame.php');
+  	use_jquery();
+  	js_include_once_tag('total');
+  ?>
+	<script>
+		total("2010ç¾¤æ˜Ÿæ–°æ˜¥å¤§è”æ¬¢","other");
+	</script>
 </head>
 <body>
-<div id=ibody>	
+<div id=ibody>
+	<?php $db=get_db(); ?>
 	<div id=top3></div>
 	<div id=top4></div>
 	<div id=top5>
-		<div id="top5-left"></div>
-		<div id="top5-center">		
-			<div >	
+		<div id="top5-left">
+			<div id="t5_l_t">
+				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+				<div id="focus_02"></div> 
+					<script type="text/javascript"> 
+					var pic_width1=318; //å›¾ç‰‡å®½åº¦
+					var pic_height1=200; //å›¾ç‰‡é«˜åº¦
+					
+					<?php
+						$gd=$db->query('select * from smg_news where category_id=188 and is_adopt=1 order by priority asc,created_at desc;');
+						for($i=0;$i<count($gd);$i++){
+							$picsurl[]=$gd[$i]->photo_src;
+							$picslink[]='/news/news/news.php?id='.$gd[$i]->id;
+							$picstext[]=$gd[$i]->short_title;
+						}
+					?>
+					var pics1=<?php echo '"',$picsurl,'"'?>;
+					var mylinks1=<?php echo '"',$picslink,'"'?>;
+					var texts1=<?php echo '"',$picstext,'"'?>;			
+								
+					var picflash = new sohuFlash("/flash/focus.swf", "focus_02", "318", "200", "4","#FFFFFF");
+					picflash.addParam('wmode','opaque');
+					picflash.addVariable("picurl",pics1);
+					picflash.addVariable("piclink",mylinks1);
+					picflash.addVariable("pictext",texts1);				
+					picflash.addVariable("pictime","5");
+					picflash.addVariable("borderwidth","318");
+					picflash.addVariable("borderheight","200");
+					picflash.addVariable("borderw","false");
+					picflash.addVariable("buttondisplay","true");
+					picflash.addVariable("textheight","15");				
+					picflash.addVariable("pic_width",pic_width1);
+					picflash.addVariable("pic_height",pic_height1);
+					picflash.write("focus_02");				
+					</script>
+			</div>
+			<?php $video=$db->query("select * from smg_video where category_id=187 and is_adopt=1 order by priority asc,created_at desc"); ?>
+			<div id="t5_l_b"><?php show_video_player('318','225',$video[0]->photo_url,$video[0]->video_url); ?></div>
+		</div>
+		<div id="top5-center">	
+			<?php $record=$db->query('select * from smg_news where category_id=183 and is_adopt=1 order by priority asc,created_at desc');
+				for($i=0;$i<count($record);$i++)
+				{
+			?>	
+			<div class="table">	
 				<ul class="tent">
-					<li><a href="" class="title">Ì·Ğ£³¤µ±¡°²ÆÉñ¡±</a><a href="" class="title">³¬¼¶·ÛË¿ÇÀ·­ÏÖ³¡</a></li>
-					<li><a href="" class="important">[¹ö¶¯ĞÂÎÅ]</a><img src="video.jpg"></img><a href="" class="nor">[ÊÓÆµ¼¯]</a> <a href=" class="nor">[¾«ÃÀÍ¼¼¯]</a> <a href=""class="nor">[ÍøÓÑÁôÑÔ]</a></li>
-					<li><a href="" class="nor">[³ÉÁú£ºÑİĞ¡Æ·ÒªÈÃÖÜÁ¢²¨·â¿Ú]</a> <a href="" class="nor">[³ÉÁúĞ¯´ø¹¦·òÎäÏÀĞ¡Æ·ºØËê]</a></li>
-					<li><a href="" class="nor">[ÁõÇ«³Â»ÛÁÕÖÆÔìÀËÂş]</a> <a href="" class="nor">[ÁõÇ«Ê×³ªº£ÅÉ´ºÍí]</a> <a href=""class="nor">[½ğÂíË«Ó°µÛºØËê]</a></li>
-					<li><a href="" class="nor">[ÖÜÁ¢²¨£ºÎÒ×¼±¸ºÃ·şÎñÈ«¹ú]</a> <a href="" class="nor">[Ó¡¶È±¦À³ÎëµÇÂ¼º£ÅÉ´ºÍí]</a></li>
+					<li><a href="" class="title"><?php echo mb_substr(strip_tags($record[$i]->content),0,54,"utf-8")."......";?><a href="" class="important">è¯¦ç»†</a></li>
 				</ul>
 			</div>
-			<div class="table">
+			<?php } ?>
+			
+		</div>
+		<div id="top5-right">
+			<div class=content>
+				<div class=wicker>
+					<div class=title>èŠ‚ç›®ä¿¡æ¯</div>	
+				</div>
+				<div style="margin-top:5px; margin-left:4px;">
+					<ul>
+						<li class="mark">2010å¹´2æœˆ14æ—¥ æ­£æœˆåˆä¸€ 19:30</li>
+						<li class="mark">æ’­å‡º:ä¸œæ–¹å«è§† æ–°æµªç½‘ SMGBBå®˜æ–¹ç½‘ç«™</li>
+					</ul>
+				</div>
+			</div>
+			<div class=content style="margin-top:10px;">
+				<div class=wicker>
+					<div class=title>æŠ•ç¥¨</div>
+				</div>
+				<div style="margin-top:5px; margin-left:4px;">
+					<?php 
+						$vote = new smg_vote_class();
+						$vote->find(298);
+						$vote->display();
+					?>	
+				</div>
+			</div>
+			<div class=content style="margin-top:10px;">
+				<div class=wicker>
+					<div class=title>ä¸»é¢˜æ›²</div>
+				</div>
+				<div style="margin-top:5px; margin-left:4px;">
+					
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div id=top6>
+		<div class=wicker>
+			<div class=title>å½•åˆ¶å›¾ç‰‡</div>	
+		</div>
+		<div class="picture">
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="title">ÖÜÁ¢²¨Ïò³ÉÁúÑ§ÒÕ ½«º£ÅÉĞ¡Æ·¼á³Öµ½µ×</a></li>
-					<li>ÒÔ¡°º£ÅÉÇå¿Ú¡±ÔÚ2009Äê»ğËÙ×ßºìµÄÖÜÁ¢²¨£¬´Ë´Î²»½öµ£µ±¡°¶«·½</li>
-					<li>´ºÍí¡±¼Î±öÖ÷³Ö£¬¸üÊÇÏÖ³¡¡°°İÊ¦¡±£¬ÓÃ¡°º£ÅÉÇå¿Ú¡±¶ÀÓĞµÄÓÄ</li>
-					<li>Ä¬¡¢Ú¶Ğ³¡¢Óë³ÉÁú´ó¸ç¡°µ÷Ù©´îµµ¡±¡£ÖÜÁ¢²¨ÔÚÏÖ³¡Ì¹ÑÔ¡­¡­<a href="" class="important">ÏêÏ¸</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 		</div>
-		<div id="top5-right">
-			<div id=righttop>
-				<div class=wicker></div>
-				<div style="margin-top:5px; margin-left:4px;">
-					<ul>
-						<li class="mark">2010Äê2ÔÂ14ÈÕ ÕıÔÂ³õÒ» 19:30</li>
-						<li class="mark">²¥³ö:¶«·½ÎÀÊÓ ĞÂÀËÍø SMGBB¹Ù·½ÍøÕ¾</li>
-					</ul>
-				</div>
+		<div class="picture">
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
 			</div>
-			<div id=rightbottom>
-				<div class=wicker></div>
-				<div>
-					<ul class="ltent">
-						<li class="tent">¸Ï¿ì±¨Ãû,½«ÓĞ»ú»áÓëÃ÷ĞÇÍ¬Ì¨<a href=""class="nor">[½øÈë]</a></li>
-						<li>×¢²áĞÕÃû£º</li>
-						<li><input type="text" name="ĞÕÃû" class="textarea"></li>
-						<li>ÊÖ»ú£º</li>
-						<li><input type="text" name="ÊÖ»ú" class="textarea"></li>
-						<li><input type="button" name="Ìá½»" value="Ìá½»" class="botton"></li>
-					</ul>
-				</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
 	<div id=top6>
-		<div class=wicker></div>
+		<div class=wicker>
+			<div class=title>èŠ±çµ®ç…§ç‰‡</div>
+		</div>
 		<div class="picture">
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 		</div>
@@ -91,31 +216,68 @@
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id=top6>
+		<div class=wicker>
+			<div class=title>æ˜æ˜Ÿå®šå¦†ç…§</div>	
+		</div>
+		<div class="picture">
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
+				</ul>
+			</div>
+			<div class="imgPlace">
+				<img width=170 height=120 src="example.jpg"></img>
+				<ul class="tent">
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 		</div>
@@ -123,31 +285,31 @@
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 			<div class="imgPlace">
 				<img width=170 height=120 src="example.jpg"></img>
 				<ul class="tent">
-					<li><a href="" class="nor">³ÉÁú</a></li>
+					<li><a href="" class="nor">æˆé¾™</a></li>
 				</ul>
 			</div>
 		</div>
