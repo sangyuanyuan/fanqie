@@ -753,7 +753,7 @@ total("首页","other");
 					$record_news=$db -> query($sql);
 					$sql='select uid,itemid,subject from blog_spaceitems order by itemid desc limit 10';
 					$record_blog=$db -> query($sql);
-					$sql="select tid,subject from bbs_posts where first=1 and fid<>79 order by pid desc limit10";
+					$sql="select tid,subject from bbs_posts where first=1 and fid<>79 order by pid desc limit 10";
 					$record_bbs=$db -> query($sql);	
 			?>	 
  			<div id=t_r_r_b>
