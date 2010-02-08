@@ -749,11 +749,11 @@ total("首页","other");
 
  			<!-- start top_right_right_bottom !-->
  			<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 and n.is_adopt=1 order by n.click_count desc limit 8';
+ 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 and n.is_adopt=1 order by n.click_count desc limit 10';
 					$record_news=$db -> query($sql);
-					$sql='select uid,itemid,subject from blog_spaceitems order by itemid desc limit 8';
+					$sql='select uid,itemid,subject from blog_spaceitems order by itemid desc limit 10';
 					$record_blog=$db -> query($sql);
-					$sql="select tid,subject from bbs_posts where first=1 and fid<>79 order by pid desc limit 8";
+					$sql="select tid,subject from bbs_posts where first=1 and fid<>79 order by pid desc limit10";
 					$record_bbs=$db -> query($sql);	
 			?>	 
  			<div id=t_r_r_b>
@@ -761,7 +761,7 @@ total("首页","other");
  				<div class=menu_trrb id=menu_trrb2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;"><a href="/zone/" target="_blank">最新博文</a></div>
  				<div class=menu_trrb id=menu_trrb3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;"><a href="/zone/" target="_blank">最新热帖</a></div>
 				<div id=number>
-					<?php for($i=1;$i<=8;$i++){?>
+					<?php for($i=1;$i<=10;$i++){?>
 					<img src="/images/number/<?php echo $i;?>.jpg">
 					<? }?>
 				</div>
