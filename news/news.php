@@ -48,7 +48,7 @@
 		$db = get_db();
 		$sql="select n.*,c.id as cid,c.name as categoryname,d.name as deptname,c.platform as cplatform from smg_news n left join smg_category c on n.category_id=c.id left join smg_dept d on n.dept_id=d.id where n.id=".$id;
 		$record=$db->query($sql);
-		/*if($record[0]->category_id==185)
+		if($record[0]->category_id==185)
 		{
 			$cookieuser= (isset($_COOKIE['smg_userid'])) ? $_COOKIE['smg_userid'] : 0;
 			if($cookieuser)
@@ -64,10 +64,10 @@
 			}
 			else
 			{
-				$sql="insert into smg_news_ctrl(user_id,show_news_id,created_at) value('".$cookieuser."',".$id.",now());"
+				$sql="insert into smg_news_ctrl(user_id,show_news_id,created_at) value('".$cookieuser."',".$id.",now())";
 				$db->execute($sql);	
 			}
-		}*/
+		}
 		if($record[0]->cplatform=="news"||$record[0]->cplatform=="show"||$record[0]->cplatform=="server"||$record[0]->cplatform=="zone"){
 			$platform = $record[0]->cplatform;
 			$name = $record[0]->categoryname;
