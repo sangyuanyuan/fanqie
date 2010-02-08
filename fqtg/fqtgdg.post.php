@@ -14,8 +14,8 @@ if($maxnum[0]->personmax=="")
 	{
 		$num=(int)$maxnum[0]->maxnum;
 	}
-	
-	if(count($count)< $num)
+	$postnum=(int)$_POST['num'];
+	if((count($count)+$postnum)<=$num)
 	{
 		$StrSql='insert into smg_tg_signup(tg_id,name,spname,num,phone,address,createtime,remark,dept_id) values ('.$_POST['tg_id'].',"'.$_POST['buyname'].'","'.$_POST['spname'].'",'.$_POST['num'].',"'.$_POST['phone'].'","'.$_POST['address'].'",now(),"'.$_POST['remark'].'",'.$_POST['deptid'].')';
 		$Record = $db->execute($StrSql);
