@@ -135,7 +135,7 @@ p{margin:0px; padding:0px;}
 #t_r_r_m .list_tlm li{width:195px; height:19px; font-size:13px; text-align:left; line-height:18px; overflow:hidden; float:left; display:inline;}
 #t_r_r_m .list_tlm li a{ color:#000000; text-decoration:none;}
  
-#t_r_r_b{width:215px; height:195px; background:url(/images/index/bg_t_r_r_b.jpg) no-repeat; float:right; display:inline;}
+#t_r_r_b{width:215px; height:225px; background:url(/images/index/bg_t_r_r_b.jpg) no-repeat; float:right; display:inline;}
 #t_r_r_b .menu_trrb{width:65px; height:18px; padding-top:5px; line-height:15px; text-align:center; color:#666666; cursor:pointer; float:left; display:inline;}
 #t_r_r_b .menu_trrb a{color:#666666; text-decoration:none;}
 #t_r_r_b #number{width:9px; margin-top:10px; margin-left:18px;  float:left; display:inline;}
