@@ -577,8 +577,8 @@ total("首页","other");
 						</ul>
 					</div>-->
 					<?php if(count($fhtg)==0){ ?>
-					<?php for($i=0;$i<4;$i++){?>
-					<div class=box style="margin-bottom:5px;">
+					<?php for($i=0;$i<3;$i++){?>
+					<div class=box style="margin-bottom:10px;">
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
 						<ul>
 							<li style="width:95px; overflow:hidden;"><a href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
@@ -588,7 +588,7 @@ total("首页","other");
 						</ul>
 					</div>
 					<? }}else{?>
-					<?php for($i=0;$i<3;$i++){?>
+					<?php for($i=0;$i<2;$i++){?>
 					<div class=box style="margin-bottom:5px;">
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
 						<ul>
