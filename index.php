@@ -577,7 +577,7 @@ total("首页","other");
 						</ul>
 					</div>-->
 					<?php if(count($fhtg)==0){ ?>
-					<?php for($i=0;$i<2;$i++){?>
+					<?php for($i=0;$i<4;$i++){?>
 					<div class=box style="margin-bottom:5px;">
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
 						<ul>
@@ -598,7 +598,8 @@ total("首页","other");
 							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $record_tg[$i]->price ?></li>
 						</ul>
 					</div>
-					<?php }?>
+					<?php }
+					for($i=0;$i<3;$i++){?>
 					<div class=box style="margin-bottom:5px;">
 						<a href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $fhtg[0]->src; ?>" target=_blank border=0></a>
 						<ul>
@@ -608,8 +609,8 @@ total("首页","other");
 							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $fhtg[0]->price ?></li>
 						</ul>
 					</div>
-					<?php }?>
-					<a target="_blank" href="subject/xyy2/pkend.php"><img border=0 width=180 height=122 src="images/xyy2.gif"></a>
+					<?php }}?>
+					<!--<a target="_blank" href="subject/xyy2/pkend.php"><img border=0 width=180 height=122 src="images/xyy2.gif"></a>-->
  				</div>
 				
  				<?php
