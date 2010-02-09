@@ -363,12 +363,12 @@ total("首页","other");
  			<div id=t_r_c_m>
  				<a href="/news/news_list.php?id=23" target="_blank" id=title></a>
   			<?php
-					$sql = 'select n.short_title,c.platform,n.id  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 1 ';
+					$sql = 'select n.short_title,c.platform,n.id  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2 ';
 					$record_import=$db -> query($sql);
 					$sql='select * from smg_zhibo_ctrl';
 					$zhibo=$db->query($sql);
 				?>		
-				<div id=content1><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a></div>
+				<div id=content1><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a>　　<a href="<?php echo "/".$record_import[1]->platform."/news/news.php?id=".$record_import[1]->id ?>" target="_blank"><?php echo $record_import[1]->short_title; ?></a></div>
  				<?php if($zhibo[0]->state==1){ ?><a href="mms://172.27.202.23:5765/broadcast" id=btn ></a><?php } else{?><!--<a target="_blank" style="margin-top:10px; margin-left:10px; font-weight:bold; line-height:20px; color:red; text-decoration:underline; float:left; display:inline;" href="/news/news/news.php?id=28775">献血报名</a>--><?php } ?>
  				<?php
 
