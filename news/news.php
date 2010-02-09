@@ -51,7 +51,7 @@
 		if($record[0]->category_id==185)
 		{
 			$cookieuser= (isset($_COOKIE['smg_userid'])) ? $_COOKIE['smg_userid'] : 0;
-			if($cookieuser)
+			if($cookieuser==0)
 			{
 				alert('请登陆以后再浏览新闻！');
 				redirect('/login/login.php','js');
