@@ -115,6 +115,13 @@ $about = array();
 		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc";
 		$comment=$db->query($sql);
 		$rs_num=count($comment);
+		if($rs_num <= 5){
+			$page_count = 0;
+		}else{
+			$page_count = 1+ ceil(($rs_num - 5) / $page_size);
+		}
+		
+		/*
 		if( ($rs_num-5) > 0 ){
 	   		if( ($rs_num-5) < $page_size ){ $page_count = 2; }               
 	   		if( ($rs_num-5) % $page_size ){                                  
@@ -126,13 +133,14 @@ $about = array();
 		else{
 	   		$page_count = 0;
 		}
+		*/
 		if ($page=="")  {$page=1;}
 		if ($page > $page_count)  {$page=$page_count;}
-		if ($page==0)  {$page=1;}
-		if ($page<0)  {$page=1;}
-		if($page!=1)
+		//if ($page==0)  {$page=1;}
+		if ($page <= 0)  {$page=1;}
+		if($page > 1)
 		{
-			$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc limit ".(((int)$page-2)*$page_size+5).",".$page_size;
+			$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='news' and resource_id=".$id." order by created_at desc limit ".(((int)$page-1)*$page_size - 5).",".$page_size;
 		}
 		else
 		{
