@@ -69,7 +69,7 @@
 				$count = count($record_ad);
 				for($i=0;$i<$count;$i++){
 					$picsurl[]=$record_ad[$i]->src;
-					$picslink[]='/show/show.php?id='.$record_ad[$i]->id;
+					$picslink[]='/show/show.php?id='.$record_ad[$i]->img_id;
 					$picstext[]=flash_str_replace($record_ad[$i]->title);
 				}
 			?>
