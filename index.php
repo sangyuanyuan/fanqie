@@ -705,7 +705,7 @@ total("首页","other");
  				</div>
 				
  				<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 13';
+ 					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 12';
 					$record_happy=$db -> query($sql);		
 				?>	
  				<div class=content_trrt id=content_trrt2 style="display:none;">
@@ -769,7 +769,7 @@ total("首页","other");
 							<!--<li >·<a href="/<?php echo $record_discuss[2]->platform?>/news/news.php?id=<?php echo $record_discuss[2]->news_id?>" target=_blank><?php echo $record_discuss[2]->short_title ?></a></li>-->
 							<?php
 								//$sql = 'select n.short_title,n.id as news_id,c.platform  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="分享生活" and c.platform="zone" order by n.priority asc,n.created_at desc limit 3';
-								$sql='select n.id as news_id,n.short_title,n.tags,c.platform,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄专栏" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 5';
+								$sql='select n.id as news_id,n.short_title,n.tags,c.platform,c.name from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄专栏" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 4';
 								$record_discuss=$db -> query($sql);	
 								for($i=0;$i<count($record_discuss);$i++){?>
 							<li >·<font color="#000000">[<?php echo $record_discuss[$i]->tags ?>]</font><a href="/<?php echo $record_discuss[$i]->platform?>/news/news.php?id=<?php echo $record_discuss[$i]->news_id?>" target=_blank><?php echo $record_discuss[$i]->short_title ?></a></li>
