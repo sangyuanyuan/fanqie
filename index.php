@@ -360,7 +360,7 @@ total("首页","other");
  			<!-- end !-->
 			
  			<!-- start top_right_center_middle !-->
- 			<div id=t_r_c_m>
+ 			<div id=t_r_c_m >
  				<a href="/news/news_list.php?id=23" target="_blank" id=title></a>
   			<?php
 					$sql = 'select n.short_title,c.platform,n.id  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-头" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2 ';
