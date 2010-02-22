@@ -5,6 +5,7 @@
 						<a href="http://172.28.2.112:2000/" target="_blank">新华社</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.206.36:8080/" target="_blank">一卡通设备资源管理系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.125" target="_blank">办公自动化系统</a><span style="margin-left:10px;">|</span>
+						<a href="http://oa.smg.cn" target="_blank">公文系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.88/waishi/" target="_blank">外事管理系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.41/test/login.php" target="_blank">奖金分配系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.88/smgit/pro_select.htm" target="_blank">串联单查询</a><span style="margin-left:10px;">|</span>
