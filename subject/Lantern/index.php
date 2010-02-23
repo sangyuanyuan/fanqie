@@ -132,11 +132,11 @@ html,body{
                   <TABLE width="100%" border=0>
                     <TBODY>
                     <TR>
-                     <TD><div class=title1>答题送礼品</div></TD></TR>
+                     <TD><div class=title1>猜灯谜送礼品</div></TD></TR>
                     <TR>
                       <TD height=50>
-                      	<div style="width:200px; ">答题有礼</div>
-                      	<button id=btn1 onclick="window.location.href='/answer/pro_answer.php?id=48';" style="margin-left:10px;">点击答题</button>
+                      	<div style="width:200px; ">猜灯谜有礼</div>
+                      	<button id=btn1 onclick="window.location.href='/answer/pro_answer.php?id=48';" style="margin-left:10px;">点击猜灯谜</button>
                       	<button id=btn2 onclick="window.location.href='yxph.php';" style="margin-left:10px;">查看排行</button>
                       </TD></TR></TBODY></TABLE></TD></TR> 
               
