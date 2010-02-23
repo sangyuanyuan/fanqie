@@ -60,7 +60,7 @@
 						}
 						else
 						{
-							$c="";	
+							$c="1=1";	
 						}
 						for($i=0;$i<count($answered);$i++)
 						{
@@ -70,7 +70,7 @@
 						{
 							$c = implode(' and ' ,$c);
 						}
-						if(count($c)>0)
+						if(sizeof($c)>0)
 						{
 					  	$questions = $db->query('select * from smg_dialog_question where dialog_id='.$dialog->id.' and '.$c);
 					  }
