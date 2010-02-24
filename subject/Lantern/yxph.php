@@ -31,8 +31,8 @@ js_include_once_tag('total');
 		for($i=0; $i< count($person); $i++)
 		{
 	?>
-	<div style="width:400px; margin-top:5px; <? if($i< 3){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $person[$i]->username;?></div>
-	<div style="margin-top:5px; <? if($i< 3){?>color:red; font-weight:bold;<? }?> margin-right:20px;float:right; display:inline;"><? echo $person[$i]->score;?></div>
+	<div style="width:400px; margin-top:5px; <? if($i< 3){?>color:red; font-weight:bold;<? }?> float:left; display:inline;"><? echo $person[$i]->nick_name;?></div>
+	<div style="margin-top:5px; <? if($i< 3){?>color:red; font-weight:bold;<? }?> margin-right:20px;float:right; display:inline;"><? echo $person[$i]->point;?></div>
 	<? }?>
 	<div class="pageurl">
          <?php 
