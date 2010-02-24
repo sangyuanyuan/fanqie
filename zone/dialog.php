@@ -53,7 +53,7 @@
 					<?php
 						$db=get_db();
 						$answered= $db->query('select question_id from smg_dialog_answer where dialog_id='.$dialog->id);
-						
+						alert(count($ansered));
 						if(count($answered)>0)
 						{
 							$c=array();

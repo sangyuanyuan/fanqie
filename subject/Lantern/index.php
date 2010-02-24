@@ -101,19 +101,19 @@ html,body{
 <TABLE cellSpacing=0 cellPadding=0 width=770 align=center border=0 >
   <TBODY>
   <TR>
-    <TD vAlign=top width=25% bgColor=#e9f2d9 s>
-      <TABLE width="100%" border=0>
+    <TD vAlign=top width=25%  bgColor=#e9f2d9 >
+      <TABLE  width="100%" border=0>
         <TBODY>
        
         <TR>
-          <TD height=81>
+          <TD vAlign=top height="100%" >
             <TABLE width="100%" border=0>
               <TBODY>
               <TR>
                 <TD>
-                  <TABLE width="100%" border=0>
+                  <TABLE vAlign=top width="100%" border=0>
                     <TBODY>
-                    <TR>
+                    <TR vAlign=top>
                       <TD><div class=title1>新闻列表</div></TD></TR>
                     <TR>
                       <TD>
@@ -121,9 +121,9 @@ html,body{
 						<div id=s_left>
 						<? for($i=0; $i<count($news); $i++){
 								if($i==0){	?>
-						<a target="_blank" href="/news/news.php?id=<? echo $news[$i]->id?>" style="color:red; font-weight:bold;"><? echo $news[$i]->short_title;?></a>
+						<a target="_blank" href="/news/news.php?id=<? echo $news[$i]->id?>" style="color:red; font-weight:bold;"><? echo delhtml($news[$i]->short_title);?></a>
 						<?php }else{?>
-							<a target="_blank" href="/news/news.php?id=<? echo $news[$i]->id?>"><? echo $news[$i]->short_title;?></a>
+							<a target="_blank" href="/news/news.php?id=<? echo $news[$i]->id?>"><? echo delhtml($news[$i]->short_title);?></a>
 						<?} }?>
 						</div>	
                       </TD></TR></TBODY></TABLE></TD></TR>
@@ -134,39 +134,20 @@ html,body{
                     <TR>
                      <TD><div class=title1>猜灯谜送礼品</div></TD></TR>
                     <TR>
-                      <TD height=50>
-                      	<div style="width:200px; ">猜灯谜有礼</div>
-                      	<button id=btn1 onclick="window.location.href='/answer/pro_answer.php?id=48';" style="margin-left:10px;">点击猜灯谜</button>
-                      	<button id=btn2 onclick="window.location.href='yxph.php';" style="margin-left:10px;">查看排行</button>
+                      <TD>
+                      	<div style="width:200px; line-height:20px; margin-bottom:10px; color:red; font-size:14px; font-weight:bold;">猜灯谜有礼,请来上视26楼番茄网领取新年台历</div>
+                      	<?php $sql = 'select id,title from smg_question where problem_id=48 order by create_time desc';
+ 								$record = $db->query($sql); 
+ 								for($i=0;$i<count($record);$i++)
+ 								{
+ 								?>
+                    <div style="width:200px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" href="/answer/pro_answer.php?id=48"><?php echo $record[$i]->title; ?></a></div>
+                <?php } ?>
+                      	<button id=btn1 onclick="window.location.href='/answer/pro_answer.php?id=48';" style="margin-top:10px; margin-left:10px;">点击猜灯谜</button>
+                      	<button id=btn2 onclick="window.location.href='yxph.php';" style="margin-top:10px; margin-left:10px;">查看排行</button>
                       </TD></TR></TBODY></TABLE></TD></TR> 
               
-              <TR>
-                <TD>
-                  <TABLE width="100%" border=0>
-                    <TBODY>
-                    	
-                    <TR>
-                      <TD><div class=title1>说说你的元宵情缘</div></TD></TR>
-                    <TR>
-                    	<TR>
-                      <TD height=146><marquee height="200" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
-											<? for($i=0; $i<count($newslist); $i++){?>
-											<div style="width:200px; margin-bottom:10px; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->nick_name;?></span>说：<? echo $newslist[$i]->comment;?></div>
-											<? }?>
-				</marquee></TD></TR>
-                      <TD>
-                      	<div id=s_right>
-							<div class="title">元宵节祝福</div>
-							<form name="commentform" method="post" action="/pub/pub.post.php">
-								<div id=subject_comment>昵称：<input type="text" name="post[nick_name]" id="commenter"/><br />
-								<div id=comment>内容：</div><textarea id="commentcontent" name="post[comment]"></textarea></div>
-								<input type="hidden" name="type" value="comment">
-								<input type="hidden" id="resource_type" name="post[resource_type]" value="yx">
-								<button id=btn type="submit">发　表</button>
-							</form>
-						</div>
-                      	</TD></TR></TBODY></TABLE></TD></TR> 
-            </TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+              </TBODY></TABLE></TD>
     <TD vAlign=top align=middle width=75% bgColor=#ffffcc>
       <TABLE width="100%" border=0>
         <TBODY>
