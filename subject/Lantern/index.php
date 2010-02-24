@@ -58,8 +58,8 @@ document.getElementById("lovexin14").style.top=parseInt(document.getElementById
 lastScrollY=lastScrollY+percent; 
 //alert(lastScrollY);
 }
-suspendcode12="<DIV id=\"lovexin12\" style='left:2px;POSITION:absolute;TOP:120px;'><img src='left.jpg'></div>"
-suspendcode14="<DIV id=\"lovexin14\" style='right:2px;POSITION:absolute;TOP:120px;'><img src='right.jpg'></div>"
+suspendcode12="<DIV id=\"lovexin12\" style='left:2px;POSITION:absolute;TOP:100px;'><img src='left.jpg'><br><span onclick='yc()' style='color:blue; cursor:pointer;'>关闭</span></div>"
+suspendcode14="<DIV id=\"lovexin14\" style='right:2px;POSITION:absolute;TOP:100px;'><img src='right.jpg'><br><span onclick='yc()' style='color:blue; cursor:pointer;'>关闭</span></div>"
 document.write(suspendcode12); 
 document.write(suspendcode14); 
 window.setInterval("heartBeat()",1);
@@ -153,11 +153,15 @@ html,body{
         <TBODY>
         <TR>
           <TD height=86>
-            <TABLE height=210 width="100%" border=0>
+            <TABLE width="100%" border=0>
               <TBODY>
               <TR>
                 <TD colSpan=2 class=index_title>元宵节传说</TD></TR>
               <TR>
+            </tbody></table>
+            <table width=100% border=0>
+            	<tbody>
+            		<tr>
                 <TD width="20%" height=153>
                   <DIV align=left><A 
                   href="/news/news/news.php?id=42145" 
@@ -352,5 +356,11 @@ width=266></TD>
 </div>
 <SCRIPT language=javascript 
 src="dw2_files/sta_collection.js"></SCRIPT>
-	
+<script language="JavaScript" type="text/javascript">
+	function yc()
+	{
+		document.getElementById("lovexin12").style.display='none';
+		document.getElementById("lovexin14").style.display='none';
+	}
+</script>
 </BODY></HTML>
