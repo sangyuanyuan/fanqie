@@ -8,7 +8,7 @@
 						<a href="http://oa.smg.cn" target="_blank">公文系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.88/waishi/" target="_blank">外事管理系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.41/test/login.php" target="_blank">奖金分配系统</a><span style="margin-left:10px;">|</span>
-						<a href="http://172.27.203.88/smgit/pro_select.htm" target="_blank">串联单查询</a><span style="margin-left:10px;">|</span>
+						<a href="http://172.27.203.88/chuanliandan/pro_select.htm" target="_blank">串联单查询</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.88/stvmis/login.asp" target="_blank">新闻来源系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.47/login/smglogin.jsp" target="_blank">管理信息平台</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.16:8088/zb/" target="_blank">节目信息管理系统</a><span style="margin-left:10px;">|</span>
