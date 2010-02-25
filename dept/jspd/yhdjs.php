@@ -82,14 +82,12 @@ body {
                     <td align="center">&nbsp;</td>
                     <td align="center">&nbsp;</td>
                     <td align="center">&nbsp;</td>
-                    <td align="center">&nbsp;</td>
                   </tr>
                   <tr>
-                    <td width="20%" align="center"><a href="mailto:yingqiming@stv.sh.cn"><img src="images/ld-y.jpg" alt="给应启明写邮件" width="122" height="155" border="0"></a></td>
-                    <td width="20%" align="center"><a href="mailto:xueyafei@stv.sh.cn"><img src="images/ld-x.jpg" alt="给薛亚非写邮件" width="122" height="155" border="0"></a></td>
-                    <td width="20%" align="center"><a href="mailto:chenqi@stv.sh.cn"><img src="images/ld-c.jpg" alt="给陈琪写邮件" width="122" height="155" border="0"></a></td>
-                    <td width="20%" align="center"><a href="mailto:wqs1121@sina.com.cn"><img src="images/ld-w.jpg" alt="给汪求实写邮件" width="122" height="155" border="0"></a></td>
-                    <td width="20%" align="center"><a href="mailto:whyfriday@yahoo.com.cn"><img src="images/ld-g.jpg" alt="给干超写邮件" width="122" height="155" border="0"></a></td>
+                    <td width="25%" align="center"><a href="mailto:yingqiming@stv.sh.cn"><img src="images/ld-y.jpg" alt="给应启明写邮件" width="122" height="155" border="0"></a></td>
+                    <td width="25%" align="center"><a href="mailto:xueyafei@stv.sh.cn"><img src="images/ld-x.jpg" alt="给薛亚非写邮件" width="122" height="155" border="0"></a></td>
+                    <td width="25%" align="center"><a href="mailto:wqs1121@sina.com.cn"><img src="images/ld-w.jpg" alt="给汪求实写邮件" width="122" height="155" border="0"></a></td>
+                    <td width="25%" align="center"><a href="mailto:whyfriday@yahoo.com.cn"><img src="images/ld-g.jpg" alt="给干超写邮件" width="122" height="155" border="0"></a></td>
                   </tr>
                   <tr>
                     <td height="40" align="center" class="grr"><input name="radiobutton" type="radio" onclick="sayto('应启明')" value="radiobutton" >
@@ -100,10 +98,6 @@ body {
                       纪实频道
                       总支书记<br>
                     	薛亚非</span></td>
-                    <td align="center"><span class="grr">
-                      <input type="radio" name="radiobutton" onclick="sayto('陈琪')" value="radiobutton">
-                      纪实频道 副总监 <br>
-											陈琪 </span></td>
                     <td align="center"><span class="grr">
                       <input type="radio" name="radiobutton" onclick="sayto('汪求实')" value="radiobutton">
                       纪实频道 副总监 <br> 
@@ -119,7 +113,6 @@ body {
                 			所有人
                 	</tr>
                   <tr>
-                    <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
