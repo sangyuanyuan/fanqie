@@ -99,7 +99,7 @@
 							<div class=tools><a href="http://172.27.203.88/waishi/" target="_blank">外事管理系统</a></div>
 							<div class=tools><a href="http://172.27.203.88/CBNBMS/login.aspx" target="_blank">SMG系统</a></div>
 							<div class=tools><a href="http://172.27.203.41/test/login.php" target="_blank">奖金发放系统</a></div>
-							<div class=tools><a href="http://172.27.203.88/smgit/pro_select.htm" target="_blank">串联单查询</a></div>
+							<div class=tools><a href="http://172.27.203.88/chuanliandan/pro_select.htm" target="_blank">串联单查询</a></div>
 							<div class=tools><a href="http://172.27.203.88/stvmis/login.asp" target="_blank">新闻来源系统</a></div>
 							<div class=tools><a href="http://172.27.203.47/login/smglogin.jsp" target="_blank">管理信息平台</a></div>
 							<div class=tools><a href="http://172.27.203.16:8088/zb/" target="_blank">节目信息管理系统</a></div>
