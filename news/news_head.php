@@ -200,7 +200,7 @@ $db->execute($sql); ?>
 						$vote->display(array("target"=>"_blank",'submit_src'=>'/images/news/news_vote_button.jpg','view_src'=>'/images/news/news_view_button.jpg')); ?>
 				</div>	
 			<? }?>
-			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
+			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news_head.php?id=".$id); ?></div>
 			<?php if($record[0]->categoryname=="我要报料"){?><div id=lc>此文系番茄网网友报料新闻，不代表番茄网的观点或立场。</div><?php } ?>
 			<?php } ?>
 			<?php 
@@ -242,7 +242,7 @@ $db->execute($sql); ?>
 				<?php }?>		
 			</div>
 			<div class=page>
-	<?php 
+	<?php
 	if($rs_num >5)
 	{
 	if ($page == 1 || $page ==null || $page == "")
