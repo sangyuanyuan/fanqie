@@ -65,7 +65,7 @@
 			?>			
    		<div id=hot>
    			<?php //for($i=0;$i<1;$i++){?>
-   				<a style="margin-top:0px;" href="http://qjdls.smgbb.cn" target=_blank><img width=50 height=20 border=0 src="/images/qj.gif"></a>
+   				<a href="http://qjdls.smgbb.cn" target=_blank><img style="margin-top:0px;" width=50 height=20 border=0 src="/images/qj.gif"></a>
    			<!--<a href="/search/?key=<?php echo urlencode($record[0]->search_key)?>&search_type=smg_news" target=_blank><?php echo $record[0]->search_key ?></a>-->　
    			<? //}?>
    			<a href='/zongcai/' target="_blank">总裁奖</a>
