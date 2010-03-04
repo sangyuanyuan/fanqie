@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <HEAD>
-	<TITLE>麦兜专题</TITLE>
+	<TITLE>三八妇女节专题</TITLE>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <LINK href="css/index.css" type=text/css rel=stylesheet>
 <?php use_jquery();
@@ -45,7 +45,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   	<td id="show_video" width=275>
   		<div style="margin-top:15px; margin-left:25px; float:left;display:inline;">
   		<?php
-			  $video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜视频" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.created_at desc limit 3');
+			  $video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="三八采访" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.created_at desc limit 3');
 			  show_video_player(275,203,$video[0]->photourl,$video[0]->videourl);
 			  for($i=1;$i<count($video);$i++){
 			?>
@@ -53,9 +53,9 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 			<? }?>
 		</div>
   	</td>
-  	<? $news=$db->query('select n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="我是麦兜" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
+  	<? $news=$db->query('select n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="领导寄语" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
   	<td valign=top align="right" width=470 id="i_am_mcdull">
-  		<div class=index_title></div>
+  		<div class=index_title>领 导 寄 语</div>
 			<div style="width:435px; height:220px; margin-top:5px; margin-left:25px; font-size:16px; overflow:hidden; color:#ec805a; float:left; display:inline;">
 				<div style="width:230px; height:220px; margin-top:5px; overflow:hidden; line-height:20px; font-weight:bold; margin-left:10px; word-break:break-all; float:left; display:inline;">
 					<a target="_blank" style="TEXT-DECORATION: none" href="/news/news.php?id=<? echo $news[0]->id;?>"><? echo $news[0]->description;?></a>
@@ -92,14 +92,14 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   		<table>
   			<tr>
   				<td id="mcdull_news">
-  						<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜新闻" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
-  					<div id=title3></div>
+  						<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="迎世博——传媒女性在行动" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
+  					<div id=title3>迎世博——传媒女性在行动</div>
   					<div id="pic_box">
 							<a href=""><img border=0 src="<?php $news[0]->photo_src; ?>"></a>
 			     	</div>
   					
 			  		<div id="box1">
-			  			
+			  			<a href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><?php echo $news[0]->description; ?></a>
 						<!--<? for($i=0; $i<count($news); $i++){?>
 							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
 						<? }?>-->
@@ -109,12 +109,11 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   			</tr>
   			<tr>
   				<td id="mcdull_information">
-  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜资料馆" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 1')?>
-  					<div id=title4></div>
+  					<div id=title4>精彩瞬间</div>
   					<div id="box2">
   						<div style="width:98%; height:180px; float:left; display:inline;">
 			<?php
-				$photo = $db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜图片欣赏" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc,n.created_at desc limit 7');
+				$photo = $db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="精彩瞬间" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc,n.created_at desc limit 7');
 	        ?>
 	        <script type="text/javascript"> 
 						function ScrollImgLeft(){
@@ -140,7 +139,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 					    <div id="scroll_div" class="scroll_div">
 					      <div id="scroll_begin">
 					        <ul>
-					        	<? for($i=0;$i<6;$i++){?>
+					        	<? for($i=0;$i<count($photo);$i++){?>
 					          <li style="margin-left:10px; margin-top:5px;"><a href="<? echo $photo[$i]->url;?>"><img width=170 height=170 src="<? echo $photo[$i]->src;?>"  /></a></li>
 					          <? }?>
 					        </ul>
@@ -160,13 +159,19 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   			</tr>
 			<tr>
   				<td id="mcdull_download">
-  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜下载区" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 2');?>
-  					<div id=title5></div>
+  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="光荣榜" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 2');?>
+  					<div id=title5>光荣榜</div><div id=title5>相关新闻</div>
   					<div id="box3">
 				  		<? for($i=0; $i<count($news); $i++){?>
 							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
 							<? }?>
-			       </div>	
+			       </div>
+			       <? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="相关新闻" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 2');?>
+			       <div id="box4">
+				  		<? for($i=0; $i<count($news); $i++){?>
+							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
+							<? }?>
+			       </div>
 			  	</td>
   			</tr>
   		</table>
