@@ -5,7 +5,7 @@
 	$db = get_db();
 	use_jquery();
 	js_include_tag('jquery.cookie','pubfun');
-	css_include_tag('top');
+	//css_include_tag('top');
 	function daysInSpan($start,$end)
 		{
 		 $dayTicks=ticksInDay();
@@ -33,14 +33,7 @@
 <div id=nimg1>
 	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
 	<!--<a target="_blank" href="/news/news/news_head.php?id=32903"><img border=0 src="/images/dfws.jpg"></a>-->
-	<div style="width:995px; height:116px; background:url('/images/top/lianghuibanner.jpg') no-repeat; float:left; display:inline;">
-		<div class=deptlogo>
-			<a target="_blank" href="http://172.27.203.81:8080/blog/?3312"><img border=0 src="/images/top/newscenter.gif"></a>
-		</div>
-		<div class=deptlogo>
-			<a target="_blank" href="http://172.27.203.81:8080/blog/?3312"><img border=0 src="/images/top/cbn.gif"></a>
-		</div>
-	</div>
+	<a target="_blank" href="http://172.27.203.81:8080/blog/?3312"><img border=0 src="/images/shanghailoianghui.jpg"></a>
 	<!--<img src="/images/2010.jpg">-->
 </div>
 <div id=nav2>

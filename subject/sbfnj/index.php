@@ -92,18 +92,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   		<table>
   			<tr>
   				<td id="mcdull_news">
-  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜资料馆" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 1')?>
-  					<div id=title4></div>
-  					<div id="box2">
-				  		<!--<? for($i=0; $i<count($news); $i++){?>
-								<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
-							<? }?>-->	
-			     	</div>
-  				</td>
-  			</tr>
-  			<tr>
-  				<td id="mcdull_information">
-  					<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜新闻" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
+  						<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜新闻" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
   					<div id=title3></div>
   					<div id="pic_box">
 							<a href=""><img border=0 src="<?php $news[0]->photo_src; ?>"></a>
@@ -114,6 +103,58 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 						<!--<? for($i=0; $i<count($news); $i++){?>
 							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
 						<? }?>-->
+			     	</div>
+  					
+  				</td>
+  			</tr>
+  			<tr>
+  				<td id="mcdull_information">
+  					<? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜资料馆" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.last_edited_at desc limit 1')?>
+  					<div id=title4></div>
+  					<div id="box2">
+  						<div style="width:98%; height:180px; float:left; display:inline;">
+			<?php
+				$photo = $db->query('select n.src,n.url,n.title,c.id as cid from smg_images n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="photo" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜图片欣赏" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc,n.created_at desc limit 7');
+	        ?>
+	        <script type="text/javascript"> 
+						function ScrollImgLeft(){
+							var speed=20
+							var scroll_begin = document.getElementById("scroll_begin");
+							var scroll_end = document.getElementById("scroll_end");
+							var scroll_div = document.getElementById("scroll_div");
+							scroll_end.innerHTML=scroll_begin.innerHTML
+							  function Marquee(){
+							    if(scroll_end.offsetWidth-scroll_div.scrollLeft<=0)
+							      scroll_div.scrollLeft-=scroll_begin.offsetWidth
+							    else
+							      scroll_div.scrollLeft++
+							  }
+							var MyMar=setInterval(Marquee,speed)
+							  scroll_div.onmouseover=function() {clearInterval(MyMar)}
+							  scroll_div.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+						}		
+					</script> 
+	        <div style="text-align:center">
+					  <div class="sqBorder">
+					  <!--#####滚动区域#####-->
+					    <div id="scroll_div" class="scroll_div">
+					      <div id="scroll_begin">
+					        <ul>
+					        	<? for($i=0;$i<6;$i++){?>
+					          <li style="margin-left:10px; margin-top:5px;"><a href="<? echo $photo[$i]->url;?>"><img width=170 height=170 src="<? echo $photo[$i]->src;?>"  /></a></li>
+					          <? }?>
+					        </ul>
+					      </div>
+					      <div id="scroll_end"></div>
+					    </div>
+					  <!--#####滚动区域#####-->
+					  </div>
+					  <script type="text/javascript">ScrollImgLeft();</script>
+					</div>
+		</div>
+				  		<!--<? for($i=0; $i<count($news); $i++){?>
+								<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
+							<? }?>-->	
 			     	</div>
 			  	</td>
   			</tr>
