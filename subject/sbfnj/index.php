@@ -57,10 +57,10 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   	<td valign=top align="right" width=445 id="i_am_mcdull">
   		<div class=index_title>领 导 寄 语</div>
 			<div style="width:430px; height:220px; margin-top:5px; margin-left:25px; float:left; display:inline;">
-				<div style="width:230px; height:220px; margin-top:5px; font-size:16px; overflow:hidden; line-height:20px; word-break:break-all; float:left; display:inline;">
+				<div style="width:230px; height:200px; margin-top:5px; font-size:16px; overflow:hidden; line-height:20px; word-break:break-all; float:left; display:inline;">
 					<a target="_blank" href="/news/news/news.php?id=<? echo $news[0]->id;?>"><? echo $news[0]->description;?></a>
 				</div>
-				<div style="width:180px; height:200px; margin-top:5px; float:right; display:inline;"><a href=""><img width=180 height=200 border=0 src=""></a></div>
+				<div style="width:180px; height:200px; margin-top:5px; float:right; display:inline;"><img width=180 height=200 border=0 src="css/2.jpg"></div>
 			</div>
   	</td>
   </tr>
@@ -95,7 +95,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   						<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="迎世博——传媒女性在行动" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
   					<div id=title3>迎世博——传媒女性在行动</div>
   					<div id="pic_box">
-							<a href=""><img border=0 src="<?php $news[0]->photo_src; ?>"></a>
+							<img border=0 src="css/1.jpg">
 			     	</div>
   					
 			  		<div id="box1">

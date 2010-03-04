@@ -170,7 +170,7 @@
 			{
 				location.href="http://172.27.203.81:8080/blog/?uid-3316";
 			}
-			else if(num==2)
+			else if(num==3)
 			{
 				location.href="http://172.27.203.81:8080/blog/?uid-48";
 			}
