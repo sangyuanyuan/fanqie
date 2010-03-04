@@ -54,13 +54,13 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 		</div>
   	</td>
   	<? $news=$db->query('select n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="领导寄语" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
-  	<td valign=top align="right" width=470 id="i_am_mcdull">
+  	<td valign=top align="right" width=445 id="i_am_mcdull">
   		<div class=index_title>领 导 寄 语</div>
-			<div style="width:435px; height:220px; margin-top:5px; margin-left:25px; font-size:16px; overflow:hidden; color:#ec805a; float:left; display:inline;">
-				<div style="width:230px; height:220px; margin-top:5px; overflow:hidden; line-height:20px; font-weight:bold; margin-left:10px; word-break:break-all; float:left; display:inline;">
+			<div style="width:430px; height:220px; margin-top:5px; margin-left:25px; font-size:16px; overflow:hidden; color:#ec805a; float:left; display:inline;">
+				<div style="width:230px; height:220px; margin-top:5px; overflow:hidden; line-height:20px; word-break:break-all; float:left; display:inline;">
 					<a target="_blank" style="TEXT-DECORATION: none" href="/news/news.php?id=<? echo $news[0]->id;?>"><? echo $news[0]->description;?></a>
 				</div>
-				<div style="width:180px; height:200px; margin-top:10px; float:left; display:inline;"><a href=""><img width=180 height=200 border=0 src=""></a></div>
+				<div style="width:180px; height:200px; margin-top:5px; float:right; display:inline;"><a href=""><img width=180 height=200 border=0 src=""></a></div>
 			</div>
   	</td>
   </tr>
@@ -163,13 +163,13 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   					<div id=title5>光荣榜</div><div id=title5>相关新闻</div>
   					<div id="box3">
 				  		<? for($i=0; $i<count($news); $i++){?>
-							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
+							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a target="_blank" href="/news/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
 							<? }?>
 			       </div>
 			       <? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="相关新闻" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 2');?>
 			       <div id="box4">
 				  		<? for($i=0; $i<count($news); $i++){?>
-							<div style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a style="font-weight:bold;" target="_blank" href="/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
+							<div style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a target="_blank" href="/news/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->title;?></a></div>
 							<? }?>
 			       </div>
 			  	</td>
