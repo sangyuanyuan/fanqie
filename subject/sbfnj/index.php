@@ -45,11 +45,11 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   	<td id="show_video" width=275>
   		<div style="margin-top:15px; margin-left:25px; float:left;display:inline;">
   		<?php
-			  $video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="三八采访" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.created_at desc limit 3');
+			  $video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="三八采访" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.created_at desc limit 2');
 			  show_video_player(275,203,$video[0]->photo_url,$video[0]->video_url);
-			  for($i=1;$i<count($video);$i++){
+			  for($i=0;$i<count($video);$i++){
 			?>
-			<div style="width:275px; font-weight:bold; margin-top:3px; font-size:15px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" href="/video/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
+			<div style="width:275px; margin-top:3px; font-size:12px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" href="/video/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
 			<? }?>
 		</div>
   	</td>
