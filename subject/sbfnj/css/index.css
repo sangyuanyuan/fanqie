@@ -1,0 +1,48 @@
+body {font-family:����; font-size:12px; background:url(bg.jpg); color:#000000;  margin:0px; padding:0px;}
+
+TD {
+	FONT-SIZE: 12px; LINE-HEIGHT: 120%
+}
+A:hover {
+	COLOR: #ec805a; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #ec805a; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #ec805a; TEXT-DECORATION: none
+}
+BODY {
+	MARGIN: 0px
+}
+
+
+
+
+
+#s_right{width:200px; height:193px; margin-left:10px; color:#000; padding:5px; overflow:hidden; float:left; display:inline;}
+#s_right .title{width:200px; height:20px; margin-top:10px; padding-top:7px; padding-left:12px; font-weight:bold; color:#000; background:url(/images/bg/zt_right.jpg) no-repeat; float:left; display:inline;}
+#s_right .title A{margin-right:10px; color:#000; text-decoration:none; float:right; display:inline;}
+#s_right .title A:hover{color:#AA0000; text-decoration:underline;}
+#s_right #subject_comment{width:200px; margin-top:5px; margin-left:5px; float:left; display:inline;}
+#s_right #subject_comment A{width:100px; margin-left:25px; text-decoration:none; font-weight:bold; float:left; display:inline;}
+#s_right #subject_comment A:hover{text-decoration:underline;}
+#s_right #subject_comment #comment{margin-top:5px; float:left; display:inline;}
+#s_right #subject_comment textarea{width:180px; height:100px; margin-top:5px; float:left; display:inline;}
+#btn{width:62px; height:21px; margin-top:10px; margin-left:50px;  text-align:text; color:#ffffff; border:none; background:url(/images/bg/subject_button_bg.jpg) no-repeat; float:left; display:inline;}
+
+
+.index_title{width:430px; height:34px; margin-top:5px; margin-left:25px; background:url(title1.jpg) no-repeat; float:left; display:inline;}
+.title2{width:780px; height:32px; margin-top:5px; background:url(title2.jpg) no-repeat; float:left; display:inline;}
+#title3{width:540px; height:32px; margin-top:5px;  margin-left:10px; margin-bottom:10px; background:url(title3.jpg) no-repeat; float:left; display:inline;}
+#title4{width:540px; height:32px; margin-top:5px;  margin-left:10px; background:url(title4.jpg) no-repeat; float:left; display:inline;}
+#title5{width:540px; height:32px; margin-top:5px;  margin-left:10px; background:url(title5.jpg) no-repeat; float:left; display:inline;}
+.index_title1{width:660px; height:27px; padding-top:5px; padding-left:100px; margin-top:10px; margin-left:6px; font-weight:bold; font-size:16px; color:#F2E275; background:url(/dfwszt/index_title1.jpg) no-repeat; text-align:left; float:left; display:inline;}
+.index_title1 a{margin-left:550px; font-size:12px; color:#F2E275;}
+#box1{width:55%; height:160px; line-height:20px; margin-top:10px; margin-left:10px; float:left; display:inline; overflow:hidden;}
+#box1 a{font-size:18px;}
+#box2{width:100%; height:120px; margin-top:10px; margin-left:10px; float:left; display:inline; overflow:hidden;}
+#box2 a{font-size:17px;}
+#box3{width:100%; height:100px; margin-top:10px; margin-left:10px; float:left; display:inline; overflow:hidden;}
+#box3 a{font-size:15px;}
+#pic_box{width:38%;float:right;display:inline;}
