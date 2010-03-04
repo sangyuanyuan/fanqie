@@ -33,7 +33,7 @@
 <div id=nimg1>
 	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
 	<!--<a target="_blank" href="/news/news/news_head.php?id=32903"><img border=0 src="/images/dfws.jpg"></a>-->
-	<div class=deptlogo style="margin-left:505px;"><a href="http://172.27.203.81:8080/blog/?3312">&nbsp;</a></div><div class=deptlogo style="margin-left:24px;"><a href="http://172.27.203.81:8080/blog/?uid-3316">&nbsp;</a></div><div class=deptlogo style="margin-left:23px;"><a href="http://172.27.203.81:8080/blog/?uid-48">&nbsp;</a></div>
+	<div class=deptlogo name="1" style="margin-left:505px;"></div><div class=deptlogo name="2" style="margin-left:24px;"></div><div class=deptlogo name="3" style="margin-left:23px;"></div>
 	<!--<img src="/images/2010.jpg">-->
 </div>
 <div id=nav2>
@@ -159,6 +159,21 @@
 			$('#top_search_form').attr('action','/search/');
 			$('#search_type_hidden').val('');
 			$('#top_search_form').submit();
+		});
+		$(".deptlogo").click(function(){
+			var num=$(this).attr('name');
+			if(num==1)
+			{
+				location.href="http://172.27.203.81:8080/blog/?3312";
+			}
+			else if(num==2)
+			{
+				location.href="http://172.27.203.81:8080/blog/?uid-3316";
+			}
+			else if(num==2)
+			{
+				location.href="http://172.27.203.81:8080/blog/?uid-48";
+			}
 		});
 	});
 </script>
