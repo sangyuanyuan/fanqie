@@ -9,7 +9,8 @@ li{margin:0px; list-style-type:none;}
 #nav1 #context a{color:#999999; text-decoration:none;}
 #nav1 #context span{color:#999999; cursor:pointer;}
 #nav1 #home{width:51px; height:11px; margin-top:3px; margin-right:5px; float:right; display:inline;}
-#nimg1{width:990px; text-align:center; margin:0 auto;}
+#nimg1{width:995px; text-align:center; margin:0 auto;}
+.deptlogo{width:144px; height:84px; margin-left:10px; float:left; display:inline;}
 #nav2{margin-top:2px; width:100%; line-height:20px; height:110px; float:left; display:inline;}
 #nav2 #box{width:995px; height:110px; background:url('/images/top/bg.jpg') no-repeat; margin:0 auto;}
 /*#nav2 #logo{width:162px; height:45px; margin-top:15px; margin-left:10px; background:url(/images/top/logo1.jpg) no-repeat; float:left; display:inline;}*/

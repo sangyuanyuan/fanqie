@@ -42,7 +42,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 <div style="width:770px; margin:0 auto; margin-bottom:50px;">
 <TABLE cellSpacing=0 cellPadding=0 width=770 align=center border=0 >
   <tr valign=top>
-  	<td id="show_video" width=330>
+  	<td id="show_video" width=275>
   		<div style="margin-top:15px; margin-left:25px; float:left;display:inline;">
   		<?php
 			  $video = $db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="麦兜视频" inner join smg_subject s on c.subject_id=s.id and s.name="麦兜专题" order by i.priority asc, n.created_at desc limit 3');
