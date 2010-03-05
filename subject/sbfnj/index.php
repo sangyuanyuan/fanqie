@@ -54,10 +54,10 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 		</div>
   	</td>
   	<? $news=$db->query('select n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="领导寄语" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
-  	<td valign=top align="right" width=445 id="i_am_mcdull">
+  	<td valign=top align="left" width=445 id="i_am_mcdull">
   		<div class=index_title>领 导 寄 语</div>
 			<div style="width:430px; height:220px; margin-top:5px; margin-left:25px; float:left; display:inline;">
-				<div style="width:230px; height:200px; margin-top:5px; font-size:16px; overflow:hidden; line-height:20px; word-break:break-all; float:left; display:inline;">
+				<div style="width:230px; height:200px; margin-top:5px; font-size:16px; overflow:hidden; line-height:20px; float:left; display:inline;">
 					<a target="_blank" href="/news/news/news.php?id=<? echo $news[0]->id;?>"><? echo $news[0]->description;?></a>
 				</div>
 				<div style="width:180px; height:200px; margin-top:5px; float:right; display:inline;"><img width=180 height=200 border=0 src="css/2.jpg"></div>
@@ -71,11 +71,11 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   <tr>
   	<td id="mail_to_mcdull" width=215>
   		<div id=title1>三八妇女节祝福</div>
-  		<div style="width:215px; height:305px; margin-left:10px; margin-top:5px; background:url(css/tomcdull.jpg); padding-top:45px;">
+  		<div style="width:204px; height:305px; margin-left:10px; margin-top:5px; background:url(css/tomcdull.jpg);  float:left; display:inline;">
 			<? $newslist=$db->query('select * from smg_comment where resource_type="sbfnj" order by created_at desc');?>
 	  		<marquee height="300" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 					<? for($i=0; $i<count($newslist); $i++){?>
-						<div style="width:100%; margin-left:10px; margin-bottom:10px; overflow:hidden; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->nick_name;?></span>说：<a style="text-decoration:none; color:#000000;" target="_blank" href="/news/news.php?id=16825"><? echo $newslist[$i]->comment;?></a></div>
+						<div style="width:192px; margin-left:5px; margin-bottom:10px; word-break:break-all; float:left; display:inline;"><span style="color:#0000FF;"><? echo $newslist[$i]->nick_name;?></span>说：<? echo $newslist[$i]->comment;?></div>
 					<? }?>
 			</marquee>
 		</div>
