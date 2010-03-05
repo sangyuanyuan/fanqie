@@ -96,7 +96,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
   						<?php $news=$db->query('select n.photo_src,n.id,n.title,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="迎世博——传媒女性在行动" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 1');?>
   					<div id=title3>迎世博——传媒女性在行动</div>
   					<div id="pic_box">
-							<img border=0 src="css/1.jpg">
+							<img width=208 height=208 border=0 src="css/1.jpg">
 			     	</div>
   					
 			  		<div id="box1">
