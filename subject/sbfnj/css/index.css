@@ -33,6 +33,7 @@ BODY {
 
 
 .index_title{width:430px; height:34px; margin-top:5px; margin-left:25px; padding-left:15px; font-size:18px; font-weight:bold; line-height:34px; background:#CC0033; text-align:left; float:left; display:inline;}
+#title1{width:200px; height:32px; margin-top:8px; margin-left:10px; padding-left:15px; font-size:18px; font-weight:bold; line-height:32px; background:#CC0033; float:left; display:inline;}
 .title2{width:765px; height:32px; margin-top:5px; padding-left:15px; font-size:18px; font-weight:bold; line-height:32px; background:#CC0033; float:left; display:inline;}
 #title3{width:535px; height:32px; margin-top:5px; padding-left:15px; font-size:18px; font-weight:bold; line-height:32px; margin-left:10px; margin-bottom:10px; background:#CC0033; float:left; display:inline;}
 #title4{width:535px; height:32px; margin-top:5px; padding-left:15px; font-size:18px; font-weight:bold; line-height:32px; margin-left:10px; background:#CC0033; float:left; display:inline;}

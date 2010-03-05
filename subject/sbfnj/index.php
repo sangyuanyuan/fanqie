@@ -70,6 +70,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 <table  cellSpacing=0 cellPadding=0 width=770 align=center border=0>
   <tr>
   	<td id="mail_to_mcdull" width=215>
+  		<div id=title1>三八妇女节祝福</div>
   		<div style="width:215px; height:305px; margin-left:10px; margin-top:5px; background:url(css/tomcdull.jpg); padding-top:45px;">
 			<? $newslist=$db->query('select * from smg_comment where resource_type="sbfnj" order by created_at desc');?>
 	  		<marquee height="300" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
