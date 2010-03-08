@@ -49,7 +49,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 			  show_video_player(275,203,$video[0]->photo_url,$video[0]->video_url);
 			  for($i=0;$i<count($video);$i++){
 			?>
-			<div style="width:275px; margin-top:3px; font-size:12px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" href="/video/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
+			<div style="width:275px; margin-top:3px; font-size:12px; margin-left:5px; line-height:20px; float:left; display:inline;"><a target="_blank" href="/show/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a></div>
 			<? }?>
 		</div>
   	</td>
@@ -167,7 +167,7 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 							<div align=left style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a target="_blank" href="/news/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 							<? }?>
 			       </div>
-			       <? $news=$db->query('select n.photo_src,n.id,n.description,n.title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="光荣榜" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 7');?>
+			       <? $news=$db->query('select n.photo_src,n.id,n.description,n.short_title,n.news_type,n.target_url,n.file_name,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="光荣榜" inner join smg_subject s on c.subject_id=s.id and s.name="三八妇女节专题" order by i.priority asc, n.last_edited_at desc limit 7');?>
 			       <div id="box4">
 				  		<? for($i=0; $i<count($news); $i++){?>
 							<div style="width:100%; height:20px; margin-left:15px; line-height:20px; overflow:hidden; float:left; display:inline;"><img src="/images/index/icon03.gif" /><a target="_blank" href="/news/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
