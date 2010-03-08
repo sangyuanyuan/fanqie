@@ -50,9 +50,9 @@ BODY {
 #box1 a{font-size:18px;}
 #box2{width:100%; height:120px; margin-top:10px; margin-left:10px; float:left; display:inline; overflow:hidden;}
 #box2 a{font-size:17px;}
-#box3{width:265px; height:100px; margin-top:10px; margin-left:10px; float:left; display:inline; overflow:hidden;}
+#box3{width:265px; margin-top:10px; margin-left:10px; float:left; display:inline; overflow:hidden;}
 #box3 a{font-size:15px;}
-#box4{width:265px; height:100px; margin-top:10px; float:right; display:inline; overflow:hidden;}
+#box4{width:265px; margin-top:10px; float:right; display:inline; overflow:hidden;}
 #box4 a{font-size:15px;}
 #pic_box{width:208px; height:208px; border:1px solid #000000; margin-left:10px; float:left;display:inline;}
 #pic_box img{width:208px; height:208px; float:left; display:inline;}
