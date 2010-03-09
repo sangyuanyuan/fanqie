@@ -33,7 +33,7 @@
 <div id=nimg1>
 	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
 	<!--<a target="_blank" href="/news/news/news_head.php?id=32903"><img border=0 src="/images/dfws.jpg"></a>-->
-	<div class=deptlogo name="1" style="margin-left:505px;"></div><div class=deptlogo name="2" style="margin-left:24px;"></div><div class=deptlogo name="3" style="margin-left:23px;"></div>
+	<div class=deptlogo name="1" style="margin-left:437px;"></div><div class=deptlogo name="2" style="margin-left:12px;"></div><div class=deptlogo name="3" style="margin-left:12px;"></div><div class=deptlogo name="4" style="margin-left:12px;"></div>
 </div>
 <div id=nav2>
 	
@@ -172,6 +172,10 @@
 			else if(num==3)
 			{
 				location.href="http://172.27.203.81:8080/blog/?uid-48";
+			}
+			else if(num==4)
+			{
+				location.href="http://172.27.203.81:8080/blog/?uid-3322";
 			}
 		});
 	});
