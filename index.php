@@ -12,12 +12,13 @@
 	<? 	
 		css_include_tag('index','top','bottom');
 		use_jquery();
-	  js_include_once_tag('index','total','fd');
+	  js_include_once_tag('index','total','fd','iptotal');
   ?>
 	
 </head>
 <script>
 total("首页","other");
+iptotal(<?php echo $_SERVER['REMOTE_ADDR'];?>)
 </script>
 <script language="JAVASCRIPT">
      colors2 = new Array(7); 
@@ -58,6 +59,7 @@ total("首页","other");
 <div id=ibody>
  <div id=ibody_top>
  		<div id=p1>
+ 			<input type="hidden" id="totalip" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>">
  			<!-- start top_left_top !-->
  			<?php
  			 	$db->execute('insert into smg_ip_total(ip,created_at) value ("'.$_SERVER['REMOTE_ADDR'].'",now())');
