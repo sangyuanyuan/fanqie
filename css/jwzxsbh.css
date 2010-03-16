@@ -47,5 +47,5 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 .r_b_r .r_b_r_title{width:96px; height:18px; line-height:18px; font-weight:bold; font-family:黑体; font-size:10px; overflow:hidden; float:left; display:inline;}
 .r_b_r .content{width:96px; height:123px; float:left; display:inline;}
 .r_b_r .content .context{width:81px; margin-top:10px; margin-left:7px; overflow:hidden; float:left; display:inline;}
-.r_b_r .content .cl{width:81px; height:15px; margin-left:7px; line-height:15px; overflow:hidden; float:left; display:inline;}
+.r_b_r .content .cl{width:81px; height:15px; line-height:15px; overflow:hidden; float:left; display:inline;}
 .r_b_r .content .cl a{color:#000000; text-decoration:none;}
