@@ -12,7 +12,7 @@
 		use_jquery();
 		js_include_once_tag('news_list','total');
 		$db = get_db();
-		$sql="select n.title,n.platform,n.id,n.created_at,n.category_id,c.category_id as cid from smg_news n inner join smg_subject_items c on n.category_id=c.resource_id where c.is_adopt=1 and c.category_id in (140,141,142,143,144,145,146,147,148) order by n.priority asc,n.created_at desc";
+		$sql="select n.title,n.platform,n.id,n.created_at,n.category_id,c.category_id as cid from smg_news n inner join smg_subject_items c on n.id=c.resource_id where c.is_adopt=1 and c.category_id in (140,141,142,143,144,145,146,147,148) order by n.priority asc,n.created_at desc";
 		$record=$db->paginate($sql,30);		
   ?>
 <script>
