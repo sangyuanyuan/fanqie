@@ -22,7 +22,7 @@
 		<div id=flash><embed src="4.swf" quality="high" width=801 height=100 type='application/x-shockwave-flash'></embed></div>
 		<div class=dh1 style="margin-left:55px;"><a target="_blank" href="/news/news_subject_list.php?id=139">重点关注</a></div>
 		<div class=dh2><a target="_blank" href="/news/news_subject_list.php?id=132">采风世博园</a></div>
-		<div class=dh1><a target="_blank" href="/news/news_subject_list.php?id=133">领导观察</a></div>
+		<div class=dh1><a target="_blank" href="/news/news_subject_list.php?id=133">领导视察</a></div>
 		<div class=dh1><a target="_blank" href="/news/news_subject_list.php?id=134">世博之星</a></div>
 		<div class=dh1><a target="_blank" href="/news/news_subject_list.php?id=135">IBC要闻</a></div>
 		<div class=dh1><a target="_blank" href="/news/news_subject_list.php?id=136">运营动态</a></div>
@@ -118,7 +118,7 @@
 			</div>
 			<div id=r_b_left>
 				<div class=r_b_l>
-					<?php $news = $db->query('select n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="领导观察" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 5'); ?>
+					<?php $news = $db->query('select n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="领导视察" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 5'); ?>
 					<div class=title>领导视察</div>
 					<div class=more><a target="_blank" href="/news/news_subject_list.php?id=133"><img border=0 src="images/more.jpg"></a></div>
 					<div class=content1>
