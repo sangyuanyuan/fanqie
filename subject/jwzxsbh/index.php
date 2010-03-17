@@ -176,7 +176,7 @@
 				<div class=r_b_r_c>
 					<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="IBC高清电视演播室" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 3'); ?>
 					<div class=r_b_r_content style="margin-left:0px;">
-						<div class=r_b_r_title>IBC高清电视演播室</div>
+						<div class=r_b_r_title>IBC高清演播室</div>
 						<div class=content>
 							<div class=context>
 								<a target="_blank" href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 width=81 height=56 src="<?php echo $news[0]->photo_src; ?>"></a><br>
@@ -188,7 +188,7 @@
 					</div>
 					<div class=r_b_r_content>
 						<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="世博轴HD透明演播室" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 3'); ?>
-						<div class=r_b_r_title>世博轴HD透明演播室</div>
+						<div class=r_b_r_title>世博轴透明演播室</div>
 						<div class=content>
 							<div class=context>
 								<a target="_blank" href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 width=81 height=56 src="<?php echo $news[0]->photo_src; ?>"></a><br>
@@ -200,7 +200,7 @@
 					</div>
 					<div class=r_b_r_content style="margin-left:3px;">
 						<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="IBC网络演播室" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 3'); ?>
-						<div class=r_b_r_title>IBC网络演播室</div>
+						<div class=r_b_r_title>　IBC网络演播室</div>
 						<div class=content>
 							<div class=context>
 								<a target="_blank" href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 width=81 height=56 src="<?php echo $news[0]->photo_src; ?>"></a><br>
@@ -239,7 +239,7 @@
 					</div>
 					<div class=r_b_r_content style="margin-left:3px;">
 						<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="SMG专用工作区" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 3'); ?>
-						<div class=r_b_r_title>SMG专用工作区</div>
+						<div class=r_b_r_title>　SMG专用工作区</div>
 						<div class=content>
 							<div class=context>
 								<a target="_blank" href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 width=81 height=56 src="<?php echo $news[0]->photo_src; ?>"></a><br>
@@ -278,7 +278,7 @@
 					</div>
 					<div class=r_b_r_content style="margin-left:3px;">
 						<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="高清转播系统" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 3'); ?>
-						<div class=r_b_r_title>高清转播系统</div>
+						<div class=r_b_r_title>　高清转播系统</div>
 						<div class=content>
 							<div class=context>
 								<a target="_blank" href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 width=81 height=56 src="<?php echo $news[0]->photo_src; ?>"></a><br>
