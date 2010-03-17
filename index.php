@@ -12,7 +12,7 @@
 	<? 	
 		css_include_tag('index','top','bottom');
 		use_jquery();
-	  js_include_once_tag('index','total','fd','iptotal');
+	  js_include_once_tag('index','total','fd');
   ?>
 	
 </head>
@@ -1315,9 +1315,7 @@ total("首页","other");
 
 </body>
 </html>
- <script>
- iptotal(1);
- </script>
+
 <!--<script>
 	var MSG1 = new CLASS_MSN_MESSAGE("aa",300,140,"重要通知：","通知",'首届上海广播电视台、SMG年度颁奖盛典改为1月20日（周三）18：45开始，请相互转告、保持关注！<br>　　　　　　　　　　　　　总编室<br>　　　　　　　　　　二零一零年一月十九日');  
     MSG1.rect(null,null,null,screen.height-50); 
