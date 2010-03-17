@@ -34,14 +34,15 @@ ul,li{margin:0px; padding:0px;list-style:none;}
 #r_t #gd{width:760px; height:86px; margin-top:2px; margin-left:3px; overflow:hidden; float:left; display:inline;}
 #r_b_left{width:434px; float:left; display:inline;}
 .r_b_l{width:434px; height:93px; margin-top:3px; font-family:宋体; float:left; display:inline;}
-.r_b_l .icon1{width:20px; height:10px; margin-top:10px; float:left; display:inline;}
+.r_b_l .icon1{width:20px; height:10px; margin-top:6px; float:left; display:inline;}
 .r_b_l .icon2{width:20px; height:5px; margin-top:14px; float:left; display:inline;}
 .r_b_l .icon3{width:20px; height:8px; margin-top:11px; float:left; display:inline;}
 .r_b_l .icon4{width:20px; height:3px; margin-top:14px; float:left; display:inline;}
-.r_b_l .content1{width:400px; margin-top:5px; margin-left:20px; float:left; display:inline;}
-.r_b_l .content2{width:400px; margin-top:6px; margin-left:20px; float:left; display:inline;}
-.r_b_l .content3{width:400px; margin-top:6px; margin-left:20px; float:left; display:inline;}
-.r_b_l .cl1{width:380px; height:15px; margin-top:6px; line-height:15px; overflow:hidden; float:right; display:inline;}
+.r_b_l .content1{width:400px; height:15px; margin-top:3px; margin-left:20px; float:left; display:inline;}
+.r_b_l .content2{width:400px; height:15px; margin-top:3px; margin-left:20px; float:left; display:inline;}
+.r_b_l .content3{width:400px; height:15px; margin-top:6px; margin-left:20px; float:left; display:inline;}
+.r_b_l .cl1{width:350px; height:15px; margin-top:6px; line-height:15px; overflow:hidden; float:left; display:inline;}
+.r_b_l .new{width:27px; height:10px; margin-top:6px; float:right; display:inline;}
 .r_b_l a{color:#000000; text-decoration:none;}
 .r_b_l .pic{width:71px; height:47px; margin-top:5px; float:left; display:inline;}
 .r_b_l .cl2{width:300px; height:14px; margin-left:20px; line-height:14px; overflow:hidden; float:left; display:inline;}
