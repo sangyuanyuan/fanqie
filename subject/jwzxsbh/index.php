@@ -118,17 +118,17 @@
 			</div>
 			<div id=r_b_left>
 				<div class=r_b_l>
-					<?php $news = $db->query('select n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="领导视察" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 5'); ?>
+					<?php $news = $db->query('select n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="领导视察" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 3'); ?>
 					<div class=title>领导视察</div>
 					<div class=more><a target="_blank" href="/news/news_subject_list.php?id=133"><img border=0 src="images/more.jpg"></a></div>
 					<div class=content1>
 						<?php for($i=0;$i<count($news);$i++){ ?>
-							<div class=cl1><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title); ?></a></div>
+							<div class=icon1><img border=0 src="images/icon1.jpg"></div><div class=cl1><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title); ?></a></div>
 						<?php } ?>
 					</div>
 				</div>
 				<div class=r_b_l>
-					<?php $news = $db->query('select n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="世博之星" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 5'); ?>
+					<?php $news = $db->query('select n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="世博之星" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 3'); ?>
 					<div class=title>世博之星</div>
 					<div class=more><a target="_blank" href="/news/news_subject_list.php?id=134"><img border=0 src="images/more.jpg"></a></div>
 					<div class=content3>
@@ -139,12 +139,12 @@
 					</div>
 				</div>
 				<div class=r_b_l>
-					<?php $news = $db->query('select n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="IBC要闻" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 5'); ?>
+					<?php $news = $db->query('select n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="IBC要闻" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 3'); ?>
 					<div class=title>IBC要闻</div>
 					<div class=more><a target="_blank" href="/news/news_subject_list.php?id=135"><img border=0 src="images/more.jpg"></a></div>
 					<div class=content2>
 						<?php for($i=0;$i<count($news);$i++){ ?>
-							<div class=cl1><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title); ?></a></div>
+							<div class=icon2><img border=0 src="images/icon2.jpg"></div><div class=cl1><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title); ?></a></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -154,7 +154,7 @@
 					<div class=more><a target="_blank" href="/news/news_subject_list.php?id=136"><img border=0 src="images/more.jpg"></a></div>
 					<div class=content2>
 						<?php for($i=0;$i<count($news);$i++){ ?>
-							<div class=cl1><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title); ?></a></div>
+							<div class=icon3><img border=0 src="images/icon3.jpg"></div><div class=cl1><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title); ?></a></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -164,7 +164,7 @@
 					<div class=more><a target="_blank" href="/news/news_subject_list.php?id=137"><img border=0 src="images/more.jpg"></a></div>
 					<div class=content2>
 						<?php for($i=0;$i<count($news);$i++){ ?>
-							<div class=cl1><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title); ?></a></div>
+							<div class=icon4><img border=0 src="images/icon4.jpg"></div><div class=cl1><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title); ?></a></div>
 						<?php } ?>
 					</div>
 				</div>
