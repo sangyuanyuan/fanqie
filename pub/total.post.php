@@ -21,6 +21,10 @@
 	if($name=='新闻DIGG'){
 		$parent_name='/news/news_digg.post.php';
 	}
+	if($name=="首页")
+	{
+		$db->execute('insert into smg_ip_total(ip,created_at) value ("'.$_SERVER['REMOTE_ADDR'].'",now())');	
+	}
 	
 
 	if($name==""&&$platform==""){exit;}
