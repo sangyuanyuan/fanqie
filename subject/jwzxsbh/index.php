@@ -161,7 +161,7 @@
 				<div class=r_b_l>
 					<?php $news = $db->query('select n.photo_src,n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="主题活动" inner join smg_subject s on c.subject_id=s.id and s.name="技术运营中心世博会专题" order by i.priority asc,n.created_at desc limit 5'); ?>
 					<div class=title>主题活动</div>
-					<div class=more><a target="_blank" href="/news/news_subject_list.php?id=137"><img border=0 src="images/more.jpg"></a></div><?php if($i==0){ ?><div class=new><img src="images/new.gif"></div><?php } ?>	z
+					<div class=more><a target="_blank" href="/news/news_subject_list.php?id=137"><img border=0 src="images/more.jpg"></a></div><?php if($i==0){ ?><div class=new><img src="images/new.gif"></div><?php } ?>
 					<?php for($i=0;$i<count($news);$i++){ ?>
 					<div class=content2>		
 							<div class=icon4><img border=0 src="images/icon4.jpg"></div><div class=cl1><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title); ?></a></div><?php if($i==0){ ?><div class=new><img src="images/new.gif"></div><?php } ?>							
