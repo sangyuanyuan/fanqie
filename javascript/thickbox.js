@@ -11,7 +11,7 @@ var tb_pathToImage = "/images/login/loadingAnimation.gif";
 
 //on page load call tb_init
 $(document).ready(function(){
-	tb_init('a.thickbox, area.thickbox, input.thickbox, button.thickbox');//pass where to apply thickbox
+	tb_init('a.thickbox, area.thickbox, input.thickbox, button.thickbox,');//pass where to apply thickbox
 	imgLoader = new Image();// preload image
 	imgLoader.src = tb_pathToImage;
 });
