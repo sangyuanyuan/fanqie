@@ -24,7 +24,7 @@
 		$string = 'http://' .$_SERVER[HTTP_HOST].$_SERVER['PHP_SELF'].'?id='.$id;
 		css_include_tag('news_news','top','bottom');
 		use_jquery();
-		js_include_once_tag('pubfun','news','pub','total','total1');
+		js_include_once_tag('pubfun','news','pub','total');
 		$datetime1=date('Y-m-d')." 00:00:00";
 		$datetime2=date('Y-m-d')." 23:59:59";
 		$db = get_db();
