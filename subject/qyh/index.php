@@ -17,11 +17,18 @@
 </script>
 </head>
 <body>
-	<div id=bodys>	
-		<? include('inc/top.inc.php');?>
-				
-		<? include('inc/djbottom.inc.php');?>
-</div>
+	<div id=ibody>	
+		<?php include('inc/top.inc.php');?>
+			<div id=qyh_index>
+				<div id=index_top>
+					<div class=index_t_title><a href="">风云英雄榜</a></div>
+					<div id=t_l_pic>
+						<a href=""><img border=0 src="images/one.jpg"></a>	
+					</div>
+				</div>
+			</div>
+		<?php include('inc/bottom.inc.php');?>
+	</div>
 </body>
 </html>
 

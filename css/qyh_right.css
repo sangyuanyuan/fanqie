@@ -1,0 +1,9 @@
+﻿#r_top{width:184px; height:147px; margin-left:1px; background:url('/subject/qyh/images/r_t.jpg') no-repeat; overflow:hidden; float:left; display:inline;}
+#r_top #wz{width:84px; height:30px; margin-top:65px; font-size:24px; line-height:30px; font-family:微软雅黑; font-weight:bold; color:#6a3909; float:right; display:inline;}
+.r_content{width:187px; height:288px; margin-top:10px; background:url('/subject/qyh/images/r_top.jpg') no-repeat; float:left; display:inline;}
+.r_content .r_c_title{width:170px; height:30px; margin-top:1px; line-height:30px; margin-left:8px; font-family:微软雅黑; color:#884800; font-weight:bold; float:left; display:inline;}
+.r_content .r_c_title a{color:#884800; font-size:14px; text-decoration:none;}
+.r_content .r_context{width:167px; height:240px; margin-top:9px; margin-left:10px; font-size:12px; float:left; display:inline;}
+.r_content .r_context a{color:#884800; text-decoration:none;}
+.r_content .r_context .cl{width:167px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
+.r_content .r_context .more{width:167px; height:20px; line-height:20px; text-align:right; overflow:hidden; float:right; display:inline;}

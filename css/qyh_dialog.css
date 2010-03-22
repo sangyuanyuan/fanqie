@@ -1,0 +1,23 @@
+﻿body{font-size:12px;  font-family:Arial,宋体; color:#000;  margin:0 auto; padding:0;}
+
+#ibody{width:1250px; height:1856px; background:url('/subject/qyh/images/qyh_bg.jpg') no-repeat; margin:0 auto;}
+#qyh_dialog{width:945px; height:1159px; margin-top:10px; margin-left:152px; background:url('/subject/qyh/images/content_bg.jpg') no-repeat;  float:left; display:inline;}
+#ileft{width:733px; margin-top:5px; margin-left:5px; float:left; display:inline;}
+#l_t{width:733px; height:310px; background:url('/subject/qyh/images/dialog_l_t.jpg') no-repeat; float:left; display:inline;}
+#l_t_title{width:650px; height:22px; margin-top:5px; margin-left:40px; font-size:18px; font-family:微软雅黑; color:#fbc43c; font-weight:bold; line-height:22px; float:left; display:inline;}
+#l_t_content_l{width:315px; height:254px; margin-top:30px; margin-left:15px; float:left; display:inline;}
+#l_t_content_r{width:314px; height:254px; margin-top:35px; margin-left:20px; float:left; display:inline;}
+#l_t_content_r #title{width:314px; height:22px; font-size:18px; line-height:22px; color:#75440a; font-family:微软雅黑; font-weight:bold; float:left; display:inline;}
+#l_t_content_r #content{width:314px; height:180px; margin-top:20px; line-height:20px; font-size:12px; overflow:hidden; float:left; display:inline;}
+#l_t_content_r #content a{color:#75440a; text-decoration:none;}
+#l_b{width:731px; height:742px; margin-top:10px; margin-left:1px; background:url('/subject/qyh/images/dialog_l_b.jpg') no-repeat; float:left; display:inline;}
+#l_b #title{width:650px; height:22px; margin-top:7px; margin-left:60px; font-size:18px; font-family:微软雅黑; color:#884800; font-weight:bold; line-height:22px; float:left; display:inline;}
+#l_b .content{width:671px; height:142px; margin-top:20px; margin-left:30px; float:left; display:inline;}
+#l_b .content .c_l{width:47px; height:33px; background:url('/subject/qyh/images/qa.jpg') no-repeat; float:left; display:inline;}
+#l_b .content .c_r{width:601px; height:142px; float:right; display:inline;}
+#l_b .content .c_r .c_r_title{width:601px; height:18px; margin-top:5px; font-size:14px; line-height:18px; overflow:hidden; color:#75440a; float:left; display:inline;}
+#l_b .content .c_r .c_r_title a{color:#75440a; text-decoration:none;}
+#l_b .content .c_r .c_r_content{width:601px; height:80px; margin-top:20px; font-size:14px; line-height:20px; overflow:hidden; color:#c27821; float:left; display:inline;}
+#l_b .content .c_r .c_r_content a{color:#c27821; text-decoration:none;}
+#l_b .l_dash{width:671px; height:1px; margin-left:30px; background:url('/subject/qyh/images/dialog_l_dash.jpg') no-repeat; overflow:hidden; float:left; display:inline;}
+#iright{width:187px; margin-top:5px; margin-right:10px; line-height:0px; float:right; display:inline;}
