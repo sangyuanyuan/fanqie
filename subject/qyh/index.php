@@ -28,18 +28,18 @@
 					<div class=t_r_pic>
 						<div class="t_r_picimg"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
 						<div class="t_r_picimg" style="margin-left:38px;"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
-						<div class="t_r_picimg" style="margin-left:32px;><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
+						<div class="t_r_picimg" style="margin-left:32px;"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
 						<div class="t_r_pictitle"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
 						<div class="t_r_pictitle" style="margin-left:38px;"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
-						<div class="t_r_pictitle" style="margin-left:32px;><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
+						<div class="t_r_pictitle" style="margin-left:32px;"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
 					</div>
 					<div class=t_r_pic>
 						<div class="t_r_picimg"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
 						<div class="t_r_picimg" style="margin-left:38px;"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
-						<div class="t_r_picimg" style="margin-left:32px;><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
+						<div class="t_r_picimg" style="margin-left:32px;"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
 						<div class="t_r_pictitle"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
 						<div class="t_r_pictitle" style="margin-left:38px;"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
-						<div class="t_r_pictitle" style="margin-left:32px;><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
+						<div class="t_r_pictitle" style="margin-left:32px;"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
 					</div>
 					<div class=index_t_title>群英汇介绍</div>
 					<div id=t_l_content><a target="_blank" href="">名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍人堂介绍名人堂介绍人堂介绍名人堂介绍</a></div>
