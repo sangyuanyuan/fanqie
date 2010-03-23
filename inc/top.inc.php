@@ -30,14 +30,18 @@
 		<a target="_blank" style="margin-right:5px; color:#0B0B8D; font-weight:bold; line-height:24px; text-decoration:none; float:right; display:inline;" href="http://172.27.203.81:8080/news/news/news.php?id=43221">SMG电子邮件帐号清理通知</a>
 	</div>
 </div>
-<div id=nimg1>
-	<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
-	<a target="_blank" href="http://172.27.203.81:8080/subject/jwzxsbh/"><img border=0 src="/images/top_banner.jpg"></a>
-	<!--<a target="_blank" href="/news/news/news_head.php?id=32903"><img border=0 src="/images/dfws.jpg"></a>-->
-	<!--<div class=deptlogo name="1" style="margin-left:450px;"></div><div class=deptlogo name="2" style="margin-left:9px;"></div><div class=deptlogo name="3" style="margin-left:10px;"></div><div class=deptlogo name="4" style="margin-left:9px;"></div><div class=deptlogo name="5" style="margin-left:9px;"></div>-->
-	<!--<embed wmode="transparent" src="/images/1.swf" quality="high" width=995 height=100 type='application/x-shockwave-flash'></embed>-->
+<div id=bannerimg>
+	<div id=nimg1>
+		<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
+		<a target="_blank" href="/subject/jwzxsbh/"><img width=497 height=100 border=0 src="/images/jszx.jpg"></a>
+		<!--<a target="_blank" href="/news/news/news_head.php?id=32903"><img border=0 src="/images/dfws.jpg"></a>-->
+		<!--<div class=deptlogo name="1" style="margin-left:450px;"></div><div class=deptlogo name="2" style="margin-left:9px;"></div><div class=deptlogo name="3" style="margin-left:10px;"></div><div class=deptlogo name="4" style="margin-left:9px;"></div><div class=deptlogo name="5" style="margin-left:9px;"></div>-->
+		<!--<embed wmode="transparent" src="/images/1.swf" quality="high" width=995 height=100 type='application/x-shockwave-flash'></embed>-->
+	</div>
+	<div id=nimg2>
+		<a target="_blank" href="/blog/?3366"><img width=497 height=100 border=0 src="/images/newscenter.jpg"></a>	
+	</div>
 </div>
-
 <div id=nav2>
 	
 	<div id=box>
