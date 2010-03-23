@@ -22,24 +22,25 @@
 			<div id=qyh_index>
 				<div id=index_top>
 					<div class=index_t_title>风云英雄榜</div>
+					<?php $news=$db->query('select short_title,photo_src,id where category_id=194 and is_adopt=1 order by priority asc,created_at desc'); ?>
 					<div id=t_l_pic>
-						<a target="_blank" href=""><img border=0 src="images/one.jpg"></a>	
+						<a target="_blank" href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 src="<?php echo $news[0]->photo_src; ?>"></a>	
 					</div>
 					<div class=t_r_pic>
-						<div class="t_r_picimg"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
-						<div class="t_r_picimg" style="margin-left:38px;"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
-						<div class="t_r_picimg" style="margin-left:32px;"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
-						<div class="t_r_pictitle"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
-						<div class="t_r_pictitle" style="margin-left:38px;"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
-						<div class="t_r_pictitle" style="margin-left:32px;"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
+						<div class="t_r_picimg"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[1]->id; ?>"><img border=0 src="<?php echo $news[1]->photo_src; ?>"></a></div>
+						<div class="t_r_picimg" style="margin-left:38px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[2]->id; ?>"><img border=0 src="<?php echo $news[2]->photo_src; ?>"></a></div>
+						<div class="t_r_picimg" style="margin-left:32px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[3]->id; ?>"><img border=0 src="<?php echo $news[3]->photo_src; ?>"></a></div>
+						<div class="t_r_pictitle"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[1]->id; ?>"><?php echo $news[1]->short_title; ?></a></div>
+						<div class="t_r_pictitle" style="margin-left:38px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[2]->id; ?>"><?php echo $news[2]->short_title; ?></a></div>
+						<div class="t_r_pictitle" style="margin-left:32px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[3]->id; ?>"><?php echo $news[3]->short_title; ?></a></div>
 					</div>
 					<div class=t_r_pic>
-						<div class="t_r_picimg"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
-						<div class="t_r_picimg" style="margin-left:38px;"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
-						<div class="t_r_picimg" style="margin-left:32px;"><a target="_blank" href=""><img border=0 src="images/two.jpg"></a></div>
-						<div class="t_r_pictitle"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
-						<div class="t_r_pictitle" style="margin-left:38px;"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
-						<div class="t_r_pictitle" style="margin-left:32px;"><a target="_blank" href="">长江韬奋奖 袁雷</a></div>
+						<div class="t_r_picimg"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[4]->id; ?>"><img border=0 src="images/two.jpg"></a></div>
+						<div class="t_r_picimg" style="margin-left:38px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[5]->id; ?>"><img border=0 src="images/two.jpg"></a></div>
+						<div class="t_r_picimg" style="margin-left:32px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[6]->id; ?>"><img border=0 src="images/two.jpg"></a></div>
+						<div class="t_r_pictitle"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[4]->id; ?>"><?php echo $news[4]->short_title; ?></a></div>
+						<div class="t_r_pictitle" style="margin-left:38px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[5]->id; ?>"><?php echo $news[5]->short_title; ?></a></div>
+						<div class="t_r_pictitle" style="margin-left:32px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[6]->id; ?>"><?php echo $news[6]->short_title; ?></a></div>
 					</div>
 					<div class=index_t_title>群英汇介绍</div>
 					<div id=t_l_content><a target="_blank" href="">名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍名人堂介绍人堂介绍名人堂介绍人堂介绍名人堂介绍</a></div>
