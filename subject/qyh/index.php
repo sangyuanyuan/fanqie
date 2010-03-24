@@ -48,8 +48,7 @@
 				</div>
 				<div id=index_mid_l>
 					<div id=title>心灵之光</div>
-					<?php 
-					<?php $news=$db->query('select photo_src,id,content,short_title from smg_news where category_id=196 and is_adopt=1 order by priority asc,created_at desc limit 6'); ?>
+					<?php $news=$db->query('select photo_src,id,content,short_title from smg_news where category_id=196 and is_adopt=1 order by priority asc,created_at desc limit 6');
 					for($i=0;$i<count($news);$i++){ ?>
 						<div class=m_l_content>
 							<div class=pic><a target="_blank" href=""><img border=0 src="<?php echo $news[$i]->photo_src; ?>"></a></div>
@@ -74,11 +73,11 @@
 						<div class=name><a href="">骆新</a></div>
 					</div>
 				</div>
-				<?php $pic=$db->query('select src,url from smg_images from smg_images where category_id=204 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
+				<?php $pic=$db->query('select src,url from smg_images where category_id=204 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
 				<div id=index_mid_r_b><a target="_blank" href="<?php echo $pic[0]->url; ?>"><img border=0 src="<?php echo $pic[0]->src; ?>"></a></div>
 				<div id=index_b1>
 					<div id=title>群英闪烁</div> 
-					<?php $pic=$db->query('select src,url from smg_images from smg_images where category_id=198 and is_adopt=1 order by priority asc,created_at desc limit 5');
+					<?php $pic=$db->query('select src,url from smg_images where category_id=198 and is_adopt=1 order by priority asc,created_at desc limit 5');
 					for($i=0;$i<count($pic);$i++){ ?>
 						<div class=pic><a target="_blank" href="<?php echo $pic[$i]->url; ?>"><img border=0 src="<?php echo $pic[$i]->src; ?>"></a></div>
 					<?php } ?>
