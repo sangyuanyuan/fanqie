@@ -35,9 +35,9 @@
 						<div class="t_r_pictitle" style="margin-left:32px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[3]->id; ?>"><?php echo $news[3]->short_title; ?></a></div>
 					</div>
 					<div class=t_r_pic>
-						<div class="t_r_picimg"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[4]->id; ?>"><img border=0 src="images/two.jpg"></a></div>
-						<div class="t_r_picimg" style="margin-left:38px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[5]->id; ?>"><img border=0 src="images/two.jpg"></a></div>
-						<div class="t_r_picimg" style="margin-left:32px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[6]->id; ?>"><img border=0 src="images/two.jpg"></a></div>
+						<div class="t_r_picimg"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[4]->id; ?>"><img border=0 src="<?php echo $news[4]->photo_src; ?>"></a></div>
+						<div class="t_r_picimg" style="margin-left:38px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[5]->id; ?>"><img border=0 src="<?php echo $news[5]->photo_src; ?>"></a></div>
+						<div class="t_r_picimg" style="margin-left:32px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[6]->id; ?>"><img border=0 src="<?php echo $news[6]->photo_src; ?>"></a></div>
 						<div class="t_r_pictitle"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[4]->id; ?>"><?php echo $news[4]->short_title; ?></a></div>
 						<div class="t_r_pictitle" style="margin-left:38px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[5]->id; ?>"><?php echo $news[5]->short_title; ?></a></div>
 						<div class="t_r_pictitle" style="margin-left:32px;"><a target="_blank" href="/news/news/news.php?id=<?php echo $news[6]->id; ?>"><?php echo $news[6]->short_title; ?></a></div>
