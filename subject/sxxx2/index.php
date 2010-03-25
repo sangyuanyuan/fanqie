@@ -41,21 +41,34 @@
 		<div class=cl><a target="_blank" href="#">学习热度</a></div>
 	</div>
 	<?php 
-  	$db=get_db();
   	$pic=$db->query('select n.photo_src,i.category_id as cid,n.id,n.short_title from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at');
-  	$fcontent = '<?xml version="1.0" encoding="utf-8" ?><URL>';  
+  	$doc=new DOMDocument("1.0","gb2312");  #声明文档类型   
+		$doc->formatOutput=true;               #设置可以输出操作   
+		  
+		#声明根节点，最好一个XML文件有个跟节点   
+		$root=$doc->createElement("URL");    #创建节点对象实体
+		$root=$doc->appendChild($root);      #把节点添加进来   
 		     
 		   for($i=0;$i<count($pic);$i++){  //循环生成节点，如果数据库调用出来就改这里
 		   
-		   $fcontent=$fcontent."<Image_Information><img_name>".mb_substr(strip_tags($pic[$i]->short_title),0,9,"utf-8")."</img_name>";
-		   $fcontent=$fcontent."<img_link>/news/news/news.php?id=".$pic[$i]->id."</img_link>";
-		   $fcontent=$fcontent."<thumb_image>".$pic[$i]->photo_src."</thumb_image></Image_Information>";
-	  }
-	  $fcontent = $fcontent."</URL>";
-	  $filename = 'imglink.xml';
-		$handle=fopen($filename,"wt");
-		fwrite($handle,$fcontent);
-		fclose($handle);
+		   
+		   $info=$doc->createElement("Image_Information");  #创建节点对象实体   
+		   $info=$root->appendChild($info);    #把节点添加到root节点的子节点   
+		            
+		        $name=$doc->createElement("img_name");    #创建节点对象实体          
+		        $name=$info->appendChild($name);   
+		          
+		        $sex=$doc->createElement("img_link");   
+		        $sex=$info->appendChild($sex);
+		        
+		        $thumb=$doc->createElement("thumb_image");   
+		        $thumb=$info->appendChild($thumb); 
+		          
+		        $name->appendChild($doc->createTextNode('"'.mb_substr(strip_tags($pic[0]->short_title),0,9,"utf-8").'"'));  #createTextNode创建内容的子节点，然后把内容添加到节点中来      
+		        $sex->appendChild($doc->createTextNode("/news/news/news.php?id=".$pic[$i]->id));
+		        $thumb->appendChild($doc->createTextNode('"'.$pic[$i]->photo_src.'"')); 
+	  }      
+	  $doc->save("imglink.xml"); 
 	?>
 	<div id=flash><embed src="gallery.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="256"></embed></div>
 	<div id=zxdt>

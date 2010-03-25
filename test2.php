@@ -1,6 +1,6 @@
 ﻿<?
 
-$doc=new DOMDocument("1.0","utf-8");  #声明文档类型   
+$doc=new DOMDocument("1.0","gb2312");  #声明文档类型   
 $doc->formatOutput=true;               #设置可以输出操作   
   
 #声明根节点，最好一个XML文件有个跟节点   
