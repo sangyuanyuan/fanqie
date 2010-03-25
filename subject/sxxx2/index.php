@@ -70,7 +70,7 @@
 	  }      
 	  $doc->save("imglink.xml"); 
 	?>
-	<div id=flash><embed src="gallery.swf" wmode="transparent" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="256"></embed></div>
+	<div id=flash><embed src="gallery.swf" wmode="transparent" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="200"></embed></div>
 	<div id=zxdt>
 		<div id=content>
 			<?php for($i=0;$i<3;$i++){ ?>
