@@ -731,4 +731,23 @@ function news_date($created_at,$days)
 	  $DateTime   =   Date("Y年m月d日 H时i分s秒",$Str);   
 	  return   $DateTime;   
   }
+  
+  function toxml()
+  {
+  	$db=get_db();
+  	$pic=$db->query('select n.photo_src,i.category_id as cid,n.id,n.short_title from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at');
+  	$fcontent = '<?xml version="1.0" encoding="utf-8" ?><URL>';  
+		     
+		   for($i=0;$i<count($pic);$i++){  //循环生成节点，如果数据库调用出来就改这里
+		   
+		   $fcontent=$fcontent."<Image_Information><img_name>".mb_substr(strip_tags($pic[$i]->short_title),0,9,"utf-8")."</img_name>";
+		   $fcontent=$fcontent."<img_link>/news/news/news.php?id=".$pic[$i]->id."</img_link>";
+		   $fcontent=$fcontent."<thumb_image>".$pic[$i]->photo_src."</thumb_image></Image_Information>";
+	  }
+	  $fcontent = $fcontent."</URL>";
+	  $filename = '../subject/sxxx2/imglink.xml';
+		$handle=fopen($filename,"wt");
+		fwrite($handle,$fcontent);
+		fclose($handle);
+  }
 ?>
