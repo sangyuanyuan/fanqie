@@ -64,9 +64,9 @@
 		        $thumb=$doc->createElement("thumb_image");   
 		        $thumb=$info->appendChild($thumb); 
 		          
-		        $name->appendChild($doc->createTextNode(''.mb_substr(strip_tags($pic[0]->short_title),0,9,"utf-8").''));  #createTextNode创建内容的子节点，然后把内容添加到节点中来      
+		        $name->appendChild($doc->createTextNode(mb_substr(strip_tags($pic[0]->short_title),0,9,"utf-8")));  #createTextNode创建内容的子节点，然后把内容添加到节点中来      
 		        $sex->appendChild($doc->createTextNode("/news/news/news.php?id=".$pic[$i]->id));
-		        $thumb->appendChild($doc->createTextNode('../..'.$pic[$i]->photo_src)); 
+		        $thumb->appendChild($doc->createTextNode($pic[$i]->photo_src)); 
 	  }      
 	  $doc->save("imglink.xml"); 
 	?>
