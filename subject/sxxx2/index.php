@@ -32,13 +32,13 @@
 		<div class=sx></div>
 		<div class=cl><a target="_blank" href="#">最新动态</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="#">学习热点</a></div>
+		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=99">学习热点</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="#">案例提示</a></div>
+		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=110">案例提示</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="#">规章制度</a></div>
+		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=104">规章制度</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="#">学习热度</a></div>
+		<div id=search><a target="_blank" href="#"><img border=0 src="/images/sxxx/search.gif"></a></div>
 	</div>
 	<?php 
   	$pic=$db->query('select n.photo_src,i.category_id as cid,n.id,n.short_title from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at');
@@ -71,15 +71,24 @@
 	  $doc->save("imglink.xml"); 
 	?>
 	<div id=flash><embed src="gallery.swf" wmode="transparent" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="256"></embed></div>
+	<?php $zxdt = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="最新动态" order by i.priority asc, n.created_at desc'); ?>
 	<div id=zxdt>
 		<div id=content>
-			<?php for($i=0;$i<3;$i++){ ?>
-				<div class=context>
-					<?php for($j=0;$j<3;$j++){ ?>
-						<div class=cl><a target="_blank" href="">·每日经济:小桔灯百万元图小桔灯百万万元图小桔灯</a></div>
-					<?php } ?>
-				</div>
-			<?php } ?>
+			<div class=context>
+				<?php  for($j=0;$j<3;$j++){ ?>
+					<div class=cl><a target="_blank" href="/news/news/news.php?id=<?php echo $zxdt[$j]->id; ?>">·<?php echo delhtml($zxdt[$j]->short_title); ?></a></div>
+				<?php } ?>
+			</div>
+			<div class=context>
+				<?php  for($j=3;$j<6;$j++){ ?>
+					<div class=cl><a target="_blank" href="/news/news/news.php?id=<?php echo $zxdt[$j]->id; ?>">·<?php echo delhtml($zxdt[$j]->short_title); ?></a></div>
+				<?php } ?>
+			</div>
+			<div class=context>
+				<?php  for($j=6;$j<9;$j++){ ?>
+					<div class=cl><a target="_blank" href="/news/news/news.php?id=<?php echo $zxdt[$j]->id; ?>">·<?php echo delhtml($zxdt[$j]->short_title); ?></a></div>
+				<?php } ?>
+			</div>
 		</div>	
 	</div>
 	<div id=i_m1>
@@ -135,19 +144,38 @@
 		<div id=c_r>
 			<div class=c_title1>
 				<div class=wz><img src="/images/sxxx/4.gif"></div>
-				<div class=more><a target="_blank" href="">more>></a></div>
 			</div>
 			<div id=c_r_l>
+				<?php  
+					function get_avatar($uid, $size = 'middle', $type = '') {
+						$size = in_array($size, array('big', 'middle', 'small')) ? $size : 'middle';
+						$uid = abs(intval($uid));
+						$uid = sprintf("%09d", $uid);
+						$dir1 = substr($uid, 0, 3);
+						$dir2 = substr($uid, 3, 2);
+						$dir3 = substr($uid, 5, 2);
+						$typeadd = $type == 'real' ? '_real' : '';
+						return $dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).$typeadd."_avatar_$size.jpg";
+					}
+					$sql = 'select t1.uid,t1.username,sum(t1.viewnum) as num from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 or t2.catid=93 group by t1.uid order by num desc';
+					$record = $db->paginate($sql,10);
+					$avatar = '/ucenter/data/avatar/'.get_avatar($record[0]->uid, 'middle', '_real');
+					$sql = 'select t1.subject,t1.itemid from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 and uid='.$record[0]->uid.' order by t1.lastpost desc limit 1';
+					$records = $db->query($sql);
+				?>
 				<div id=c_r_t_l>
-					<a target="_blank" href=""><img border=0 src="/images/sxxx/c_r_t_l.jpg" /></a>
+					<a target="_blank" href="/blog/?uid-<?php echo $record[0]->uid;?>"><img border=0 src="<?php echo $avatar;?>" /></a>
 				</div>
 				<div id=c_r_t_r>
-					<div id=c_r_t_r_title><a target="_blank" href="">提供捐助信息</a></div>
-					<div id=c_r_t_r_content><a target="_blank" href="">感谢各位朋友对于小桔灯活动的关注，友对于小桔灯活动的关注，如果您知道有学校需要帮助感谢各...</a></div>	
+					<div id=c_r_t_r_title><a target="_blank" href="/blog/?uid-<?php echo $record[0]->uid?>"><?php echo $record[0]->username; ?></a></div>
+					<div id=c_r_t_r_content><a target="_blank" href="/blog/index.php?uid-<?php echo $record[0]->uid;?>-action-viewspace-itemid-<?php echo $records[0]->itemid;?>"><?php echo $records[0]->subject; ?></a></div>	
 				</div>
 				<div id=c_r_b>
-					<?php for($i=0;$i<5;$i++){ ?>
-					<div class=cl><a target="_blank" href="">·网易:10万元图小桔灯百万万元图小桔灯百万</a></div>
+					<?php for($i=1;$i<6;$i++){
+							$sql = 'select t1.subject,t1.itemid from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 and uid='.$record[$i]->uid.' order by t1.lastpost desc limit 1';
+							$records = $db->query($sql);
+					?>
+					<div class=cl><a target="_blank" href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[0]->itemid;?>">·<?php echo $records[0]->subject ?></a></div>
 					<?php } ?>
 				</div>
 			</div>
@@ -162,42 +190,50 @@
 	<div id=ibottom>
 		<div id=i_b1>
 			<div class=b_title>
+				<?php $ldjh = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,n.description,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and (c.name="领导讲话" or c.name="经典论述") order by i.priority asc, n.created_at desc'); ?>
 				<div class=wz>学习热点</div>
-				<div class=more><a target="_blank" href="">more>></a></div>	
+				<div class=more><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $ldjh[0]->cid; ?>">more>></a></div>	
 			</div>
 			<div class=b_l>
-				<a target="_blank" href=""><img border=0 src="/images/sxxx/c_r_t_l.jpg" /></a>
+				<a target="_blank" href="/news/news/news.php?id=<?php echo $ldjh[0]->id; ?>"><img border=0 src="<?php echo $ldjh[0]->photo_src; ?>" /></a>
 			</div>
 			<div class=b_r>
-				<div class=b_r_title><a target="_blank" href="">提供捐助信息</a></div>
-				<div class=b_r_content><a target="_blank" href="">感谢各位朋友对于小桔灯活动的关注，如果您知道有学校需要帮助感谢各位朋友对于小桔灯活动的关注，如果您知道有学校需要帮助感谢各位朋友对于小桔灯活动的关注，如果您知道有学校需要帮助...</a></div>	
+				<div class=b_r_title><a target="_blank" href="/news/news/news.php?id=<?php echo $ldjh[0]->id; ?>"><?php echo delhtml($ldjh[0]->short_title); ?></a></div>
+				<div class=b_r_content><a target="_blank" href="/news/news/news.php?id=<?php echo $ldjh[0]->id; ?>"><?php echo delhtml($ldjh[0]->description); ?></a></div>	
 			</div>
-			<?php for($i=0;$i<5;$i++){ ?>
-			<div class=b_b><a target="_blank" href="">·网易:10万元图小桔灯百万万元图小桔灯百万</a></div>
+			<?php for($i=1;$i<6;$i++){ ?>
+			<div class=b_b><a target="_blank" href="/news/news/news.php?id=<?php echo $ldjh[$i]->id; ?>">·<?php echo delhtml($ldjh[$i]->short_title); ?></a></div>
 			<?php } ?>
 		</div>
 		<div id=i_b2>
+			<? $alfx = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="案例警示" order by i.priority asc, n.created_at desc');?>
 			<div class=b_title>
 				<div class=wz>案例提示</div>
-				<div class=more><a target="_blank" href="">more>></a></div>	
+				<div class=more><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $alfx[0]->cid; ?>">more>></a></div>	
 			</div>
 			<?php for($i=0;$i<11;$i++){ ?>
-			<div class=b_b><a target="_blank" href="">·网易:10万元图小桔灯百万万元图小桔灯百万</a></div>
+			<div class=b_b><a target="_blank" href="/news/news/news.php?id=<?php echo $alfx[$i]->id; ?>">·<?php echo delhtml($alfx[$i]->short_title); ?></a></div>
 			<?php } ?>
 		</div>
 		<div id=i_b3>
+			<?php $gzzd = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="规章制度" order by i.priority asc, n.created_at desc');?>
 			<div class=b_title>
 				<div class=wz>规章制度</div>
-				<div class=more><a target="_blank" href="">more>></a></div>	
+				<div class=more><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $gzzd[0]->cid; ?>">more>></a></div>	
 			</div>
 			<?php for($i=0;$i<11;$i++){ ?>
-			<div class=b_b><a target="_blank" href="">·网易:10万元图小桔灯百万万元图小桔灯百万</a></div>
+			<div class=b_b><a target="_blank" href="/news/news/news.php?id=<?php echo $gzzd[$i]->id; ?>">·<?php echo delhtml($gzzd[$i]->short_title); ?></a></div>
 			<?php } ?>
 		</div>
 		<div id=i_b4>
+			<?php $deptsort = $db->query('SELECT sum(s.click_count) as djl,d.name FROM smg_subject_items i inner join smg_subject sb on i.subject_id=sb.id and sb.name="三项学习教育专题" inner join smg_news s on i.resource_id=s.id inner join smg_dept d on s.dept_id=d.id  group by s.dept_id order by djl desc');?>
 			<div id=b_title1>
 				<div class=wz>学习热度</div>
 			</div>
+			<?php for($i=0;$i<11;$i++){ ?>
+				<div class=b_b_l <?php if($i<3){ ?>style="color:red;"<?php } ?>><? echo $deptsort[$i]->name;?></div>
+				<div class=b_b_r <?php if($i<3){ ?>style="color:red;"<?php } ?>><? echo $deptsort[$i]->djl;?></div>
+			<?php } ?>
 		</div>
 	</div>
 </div>

@@ -73,11 +73,11 @@
 						<div class=name><a href="">骆新</a></div>
 					</div>
 				</div>
-				<?php $pic=$db->query('select photo_src,id from smg_news where category_id=205 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
+				<?php $pic=$db->query('select photo_src,id from smg_news where category_id=204 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
 				<div id=index_mid_r_b><a target="_blank" href="/news/news/news.php<?php echo $pic[0]->id; ?>"><img border=0 src="<?php echo $pic[0]->photo_src; ?>"></a></div>
 				<div id=index_b1>
 					<div id=title>群英闪烁</div> 
-					<?php $pic=$db->query('select photo_src,id from smg_images where category_id=205 and is_adopt=1 order by priority asc,created_at desc limit 5');
+					<?php $pic=$db->query('select photo_src,id from smg_news where category_id=206 and is_adopt=1 order by priority asc,created_at desc limit 5');
 					for($i=0;$i<count($pic);$i++){ ?>
 						<div class=pic><a target="_blank" href="/news/news/news.php<?php echo $pic[0]->id; ?>"><img border=0 src="<?php echo $pic[$i]->photo_src; ?>"></a></div>
 					<?php } ?>
