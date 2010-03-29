@@ -53,7 +53,7 @@
 					for($i=0;$i<count($news);$i++){ ?>
 						<div class=m_l_content>
 							<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>"></a></div>
-							<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->short_title); ?></a><br><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php  delhtml($news[$i]->description);?></a></div>
+							<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->short_title)."<br>".delhtml($news[$i]->description); ?></a></div>
 							<div class=ly><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>">[欢迎留言]</a></div>
 						</div>
 					<?php } ?>
