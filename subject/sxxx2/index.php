@@ -20,7 +20,7 @@
 <div id=bodys>
 	<div id=logo><embed src="sxxx.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="150"></embed></div>
 	<div id=title>
-		<div class=cl><a target="_blank" href="#">首页</a></div>
+		<div class=cl><a target="_blank" href="/subject/sxxx2/">首页</a></div>
 		<div class=sx></div>
 		<div class=cl><a target="_blank" href="#">报告团</a></div>
 		<div class=sx></div>
@@ -30,7 +30,7 @@
 		<div class=sx></div>
 		<div class=cl><a target="_blank" href="#">交流班</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="#">最新动态</a></div>
+		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=100">最新动态</a></div>
 		<div class=sx></div>
 		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=99">学习热点</a></div>
 		<div class=sx></div>
@@ -38,7 +38,7 @@
 		<div class=sx></div>
 		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=104">规章制度</a></div>
 		<div class=sx></div>
-		<div id=search><a target="_blank" href="#"><img border=0 src="/images/sxxx/search.gif"></a></div>
+		<div id=search><a target="_blank" href="/search/?key=&search_type="><img border=0 src="/images/sxxx/search.gif"></a></div>
 	</div>
 	<?php 
   	$pic=$db->query('select n.photo_src,i.category_id as cid,n.id,n.short_title from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at');

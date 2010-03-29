@@ -33,7 +33,7 @@ if($_POST['user_type']=="login")
 			#$user->register_type = 'nick_name';
 			$user->save();
 			@SetCookie('smg_username',$login_text,$y2k,'/');
-			@SetCookie('smg_userid','',$y2k,'/');
+			@SetCookie('smg_userid',$user->id,$y2k,'/');
 			@SetCookie('smg_user_nickname',$login_text,$y2k,'/');
 			@setcookie('smg_role', 'member',$y2k,'/');
 			$error =  "ok";
@@ -117,6 +117,7 @@ if($_REQUEST['user_type']=="logout")
 		SetCookie('smg_username',"",$y2k,'/');
 		SetCookie('smg_user_nickname',"",$y2k,'/');
 		SetCookie('smg_userid',"",$y2k,'/');
+		SetCookie('smg_user_id',"",$y2k,'/');
 		SetCookie('smg_role',"",$y2k,'/');
 		$_SESSION["smg_role"]  = '';
 		echo uc_user_synlogout();

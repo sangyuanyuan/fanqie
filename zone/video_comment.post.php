@@ -15,7 +15,6 @@
 	$comment->created_at = date("Y-m-d H:i:s");
 	$comment->ip = $_SERVER['REMOTE_ADDR'];
 	$comment->save();
-	$db = get_db();
 ?>
 <marquee height="150" width="170" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 <?php
