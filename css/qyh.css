@@ -7,7 +7,7 @@
 #index_top .index_t_title a{color:#fbc43c; text-decoration:none;}
 #index_top #t_l_pic{width:410px; height:248px; margin-top:20px; margin-left:15px; background:url('/subject/qyh/images/index_t_l_pic.jpg') no-repeat;  position:relative; float:left; display:inline;}
 #index_top #t_l_pic img{width:394px; height:233px; margin-top:6px; margin-left:7px;}
-#index_top #fd{width:394px; height:40px; top:495px; left:190px;  background:#7f7f7f; filter:alpha(opacity=50); -moz-opacity:0.5; opacity:0.5; position:absolute;}
+#index_top #fd{width:394px; height:40px; top:495px; left:190px; font-size:20px; font-weight:bold; line-height:40px; text-align:center;  background:#7f7f7f; filter:alpha(opacity=50); -moz-opacity:0.5; opacity:0.5; position:absolute;}
 #index_top #fd a{color:#ffffff; text-decoration:none;}
 #index_top .t_r_pic{width:469px; height:115px; margin-top:20px; margin-right:15px; background:url('/subject/qyh/images/index_r_pic.jpg') no-repeat; float:right; display:inline;}
 #index_top .t_r_pic .t_r_picimg{width:128px; height:78px; margin-top:6px; margin-left:8px; float:left; display:inline;}
