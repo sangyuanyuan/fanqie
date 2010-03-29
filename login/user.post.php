@@ -33,7 +33,7 @@ if($_POST['user_type']=="login")
 			#$user->register_type = 'nick_name';
 			$user->save();
 			@SetCookie('smg_username',$login_text,$y2k,'/');
-			@SetCookie('smg_userid',$user->id,$y2k,'/');
+			@SetCookie('smg_userid',$userid,$y2k,'/');
 			@SetCookie('smg_user_nickname',$login_text,$y2k,'/');
 			@setcookie('smg_role', 'member',$y2k,'/');
 			$error =  "ok";
@@ -59,6 +59,7 @@ if($_POST['user_type']=="login")
 		@SetCookie('smg_userid',$login_info[0]->smg_real_id,$y2k,'/');
 		@SetCookie('smg_user_nickname',$nick_name,$y2k,'/');
 		@setcookie('smg_role', $login_info[0]->role_name,$y2k,'/');
+		@SetCookie('smg_user_id',$login_info[0]->id,$y2k,'/');
 		session_start(); 
 		$_SESSION["smg_role"] = $login_info[0]->role_name;	
 		if($_SESSION['smg_role'] == 'admin'){
@@ -117,7 +118,6 @@ if($_REQUEST['user_type']=="logout")
 		SetCookie('smg_username',"",$y2k,'/');
 		SetCookie('smg_user_nickname',"",$y2k,'/');
 		SetCookie('smg_userid',"",$y2k,'/');
-		SetCookie('smg_user_id',"",$y2k,'/');
 		SetCookie('smg_role',"",$y2k,'/');
 		$_SESSION["smg_role"]  = '';
 		echo uc_user_synlogout();

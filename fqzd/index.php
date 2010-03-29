@@ -31,7 +31,6 @@
 				{
 					$zd_question=$db->query('select * from zd_question where id='.$_REQUEST['id']);	
 				}
-				alert($_COOKIE['smg_userid']);
 			?>
 			<input type="hidden" name="user_id" id="uid" value="<?php echo $_COOKIE['smg_user_id']; ?>">
 			<div class=l_title>问题</div>
@@ -47,7 +46,7 @@
 			<div id=answer_name>姓名：　<input type="text" id="aname" name="aname" value="<?php echo $_COOKIE['smg_user_nickname']; ?>"></div>
 			<div id=answer_content>内容：　<textarea id="acontent" name="acontent"></textarea></div>
 			<input id="qid" type="hidden" value="<?php echo $zd_question[0]->id; ?>">
-			<div id=answer_sub><button id="answersub" name="answersub"></button></div>
+			<div id=answer_sub><button id="answersub" name="answersub"></button>　　<?php if($_COOKIE['smg_user_id']==""){ ?><a target="_blank" href="/login/login.php">登陆</a><?php } ?></div>
 		</div>
 		<?php 
 			$answer=$db->query('select a.* from zd_answer a left join smg_user u on a.publisher=u.id where question_id='.$zd_question[0]->id.' order by u.zd_score desc, a.created_at desc'); 
@@ -116,11 +115,7 @@
 	$(function(){
 		$(".addbtn").click(function(){
 			$.post('answer_info.post.php',{'type':$(this).attr('param'),'answer_id':$(this).attr('param1'),'user_id':$('#uid').val()},function(data){
-				if(data==''){
-					//window.location.reload();
-				}else{
 					alert(data);
-				}
 			});
 		});
 		$("#answersub").click(function(){

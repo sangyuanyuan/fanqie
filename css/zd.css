@@ -23,15 +23,15 @@
 .answer_result .a_add{width:647px; height:19px; margin-top:10px; margin-right:10px; line-height:19px; text-align:right; color:#666666; float:right; display:inline;}
 .answer_result .a_add button{width:79px; height:19px; margin-right:10px; border:0px; cursor:pointer;}
 
-#iright{width:271px; float:right; display:inline;}
+#iright{width:272px; float:right; display:inline;}
 #iright .r_title{width:200px; height:18px; margin-top:12px; margin-left:50px; font-size:14px; font-weight:bold; color:#ffffff; line-height:18px; float:left; display:inline;}
-#wdphb{width:271px; height:238px; margin-top:10px; background:url('/images/zd/question_ph_bg.jpg') no-repeat; float:left; display:inline;}
+#wdphb{width:272px; height:238px; margin-top:10px; background:url('/images/zd/question_ph_bg.jpg') no-repeat; float:left; display:inline;}
 #wdphb #content{width:251px; height:180px; margin-top:20px; margin-left:10px; float:left; display:inline;}
 #wdphb #content .cl{width:251px; height:20px; color:#000000; overflow:hidden; float:left; display:inline;}
 #wdphb #content .cl_l{width:150px; height:20px; text-align:center; line-height:20px; overflow:hidden; float:left; display:inline;}
 #wdphb #content .cl_r{width:101px; height:20px; text-align:center; line-height:20px; overflow:hidden; float:right; display:inline;}
-#newlist{width:271px; height:641px; margin-top:10px; background:url('/images/zd/new_question_list.jpg') no-repeat; float:left; display:inline;}
-#newlist #content{width:251px; height:600px; margin-top:20px; margin-left:10px; float:left; display:inline;}
-#newlist #content .cl{width:251px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#newlist{width:272px; height:641px; margin-top:10px; background:url('/images/zd/new_question_list.jpg') no-repeat; float:left; display:inline;}
+#newlist #content{width:252px; height:600px; margin-top:20px; margin-left:10px; float:left; display:inline;}
+#newlist #content .cl{width:252px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
 #newlist #content .cl a{color:#000000; text-decoration:none;}
 
