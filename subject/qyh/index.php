@@ -63,7 +63,7 @@
 						<div id=wz>对话群英</div>
 						<div id=more><a target="_blank" href="/bbs/forumdisplay.php?fid=81">>> 进入留言板</a></div>
 					</div>
-					<?php $dialog=$db->query('select * from smg_dialog where title like "%对话群英%" order by create_time desc limit 1'); ?>
+					<?php $dialog=$db->query('select * from smg_dialog where title like "%对话群英%" and is_adopt=1 order by create_time desc limit 1'); ?>
 					<div class=pic>
 						<a target="_blank" href="dialog.php?id=<?php echo $dialog[0]->id; ?>"><img border=0 src="<?php echo $dialog[0]->photo_url; ?>"></a>	
 					</div>

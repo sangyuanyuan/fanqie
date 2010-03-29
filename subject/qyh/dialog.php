@@ -24,7 +24,7 @@
 				<?php 
 				if($_REQUEST['id']=="")
 				{
-					$dialog=$db->query('select * from smg_dialog where title like "%对话群英%"  order by create_time desc limit 1');
+					$dialog=$db->query('select * from smg_dialog where title like "%对话群英%" and is_adopt=1 order by create_time desc limit 1');
 				}
 				else
 				{
