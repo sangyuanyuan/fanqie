@@ -49,11 +49,11 @@
 				</div>
 				<div id=index_mid_l>
 					<div id=title>心灵之光</div>
-					<?php $news=$db->query('select photo_src,id,content,short_title from smg_news where category_id=196 and is_adopt=1 order by priority asc,created_at desc limit 6');
+					<?php $news=$db->query('select photo_src,id,description,short_title from smg_news where category_id=196 and is_adopt=1 order by priority asc,created_at desc limit 6');
 					for($i=0;$i<count($news);$i++){ ?>
 						<div class=m_l_content>
-							<div class=pic><a target="_blank" href=""><img border=0 src="<?php echo $news[$i]->photo_src; ?>"></a></div>
-							<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->short_title); ?></a><br><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php  delhtml($news[$i]->content);?></a></div>
+							<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>"></a></div>
+							<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->short_title); ?></a><br><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php  delhtml($news[$i]->description);?></a></div>
 							<div class=ly><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>">[欢迎留言]</a></div>
 						</div>
 					<?php } ?>
