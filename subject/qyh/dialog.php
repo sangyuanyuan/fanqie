@@ -21,29 +21,46 @@
 		<?php include('inc/top.inc.php');?>
 		<div id=qyh_dialog>
 			<div id=ileft>
+				<?php 
+				if($_REQUEST['id']=="")
+				{
+					$dialog=$db->query('select * from smg_dialog where title like "%对话群英%" and is_adopt=1 order by create_time desc limit 1');
+				}
+				else
+				{
+					$dialog=$db->query('select * from smg_dialog where id='.$_REQUEST['id']);
+				}
+				?>
 				<div id=l_t>
 					<div id=l_t_title>对话群英</div>
 					<div id=l_t_content_l>
-						<?php  show_video_player('315','254',$record[0]->video_photo_src,$record[0]->video_src);?>
+						<?php  show_video_player('315','254',$dialog[0]->photo2_url,$dialog[0]->video_url);?>
 					</div>
 					<div id=l_t_content_r>
 						<div id=title>本期嘉宾介绍</div>
-						<div id=content><a target="_blank" href="">本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍本期嘉宾介绍</a></div>	
+						<div id=content><?php echo $dialog[0]->content; ?></div>	
 					</div>
 				</div>
 				<div id=l_b>
+					<?php
+					if(count($dialog)>0)
+					{ 
+					$qa=$db->paginate('select a.content,q.writer,q.content as qcontent from smg_dialog_answer a left join smg_dialog_question q on a.question_id=q.id where q.dialog_id='.$dialog[0]->id.' order by a.create_time desc',4); ?>
 					<div id=title>对话实录</div>
-					<?php for($i=0;$i<4;$i++){ ?>
+					<?php for($i=0;$i<count($qa);$i++){ ?>
 					<div class=content>
 						<div class=c_l></div>
 						<div class=c_r>
-							<div class=c_r_title>网友提问网友提问网友提问网友提问网友提问网友提问网友提问网友提问?</div>
-							<div class=c_r_content>嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答嘉宾回答</div>
+							<div class=c_r_title><?php echo $qa[$i]->writer.":".$qa[$i]->qcontent; ?></div>
+							<div class=c_r_content><?php echo $qa[$i]->content; ?></div>
 						</div>	
 					</div>
 					<div class=l_dash></div>
 					<?php } ?>
+					<div class=fy><?php paginate('');?></div>
+				<?php } ?>
 				</div>
+			
 			</div>
 			<?php $rightlist="dialog"; ?>
 			<div id=iright><?php include('inc/right.inc.php'); ?></div>
