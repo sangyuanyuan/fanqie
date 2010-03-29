@@ -12,12 +12,13 @@
 	</div>
 </div>-->
 <div class=r_content>
-	<div class=r_c_title>群英之声</div>
+	<?php $news=$db->query('select id,short_title from smg_news where category_id=196 and is_adopt=1 order by priority asc,created_at desc limit 6'); ?>
+	<div class=r_c_title>心灵之光</div>
 	<div class=r_context>
 		<?php for($i=0;$i<11;$i++){ ?>
-			<div class=cl><a href="">·全国长江韬奋奖</a></div>	
+			<div class=cl><a target="_blank" href="/shows/news/news.php?id=<?php echo $news[$i]->id; ?>">·<?php echo $news[$i]->short_title; ?></a></div>	
 		<?php } ?>
-		<div class=more><a href="">更多...</a></div>
+		<div class=more><a target="_blank" href="/news/news_list.php?id=196">更多...</a></div>
 	</div>
 </div>
 <!--<div class=r_content>
