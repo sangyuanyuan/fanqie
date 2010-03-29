@@ -68,8 +68,8 @@
 						<a target="_blank" href="dialog.php?id=<?php echo $dialog[0]->id; ?>"><img border=0 src="<?php echo $dialog[0]->photo_url; ?>"></a>	
 					</div>
 					<div id=dialogname>
-						<div class=name><a target="_blank" href="dialog.php?id=<?php echo $dialog[0]->id; ?>"><?php echo $dialog[0]->title; ?></a></div>
-						<div class=content><a target="_blank" href="dialog.php?id=<?php echo $dialog[0]->id; ?>"><?php echo $dialog[0]->content; ?></div>
+						<div class=name><a target="_blank" href="dialog.php?id=<?php echo $dialog[0]->id; ?>"><?php echo delhtml($dialog[0]->title); ?></a></div>
+						<div class=content><a target="_blank" href="dialog.php?id=<?php echo $dialog[0]->id; ?>">　　<?php echo delhtml($dialog[0]->content); ?></div>
 					</div>
 				</div>
 				<?php $pic=$db->query('select photo_src,id,title from smg_news where category_id=204 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
