@@ -70,7 +70,7 @@
 	  }      
 	  $doc->save("imglink.xml");
 	?>
-	<div id=flash><embed src="gallery.swf" wmode="transparent" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="256" wmode="transparent"></embed></div>
+	<div id=flash><embed src="gallery.swf" wmode="transparent" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="256" wmode="transparent" style="overflow:hidden;"></embed></div>
 	<?php $zxdt = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="最新动态" order by i.priority asc, n.created_at desc'); ?>
 	<div id=zxdt>
 		<div id=content>
