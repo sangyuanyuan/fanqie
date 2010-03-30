@@ -45,7 +45,7 @@
 					</div>
 					<?php $news=$db->query('select content,id from smg_news where category_id=195 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
 					<div class=index_t_title>群英汇介绍</div>
-					<div id=t_l_content><a target="_blank" href="/show/news/news.php?id=<?php $news[0]->id; ?>"><?php echo $news[0]->content; ?></a></div>
+					<div id=t_l_content>　　<a target="_blank" href="/show/news/news.php?id=<?php $news[0]->id; ?>"><?php echo $news[0]->content; ?></a></div>
 				</div>
 				<div id=index_mid_l>
 					<div id=title>心灵之光</div>
