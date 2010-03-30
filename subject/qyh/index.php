@@ -136,7 +136,7 @@
 					<div class=title>群英们的故事</div>
 					<?php  $news=$db->query('select photo_src,id,description,title from smg_news where category_id=200 and is_adopt=1 order by priority asc,created_at desc limit 5');?>
 					<div class=content_l>
-						<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>"></a></div>
+						<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 src="<?php echo $news[0]->photo_src; ?>"></a></div>
 						<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[0]->id; ?>"><?php echo $news[0]->description; ?></a></div>	
 					</div>
 					<div class=content_r>
