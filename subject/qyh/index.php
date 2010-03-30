@@ -109,7 +109,7 @@
 						<?php for($i=1;$i<count($news);$i++){ ?>
 						<div class=b_l_c>
 							<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>"></a></div>
-							<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->title; ?></a></div>
+							<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->description; ?></a></div>
 						</div>
 						<?php } ?>
 					</div>

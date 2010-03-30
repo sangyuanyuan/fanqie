@@ -8,9 +8,9 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG -三项教育首页</title>
-	<?php css_include_tag('sxxx2');
+	<?php css_include_tag('sxxx2','thickbox');
 		use_jquery();
-		js_include_once_tag('dj','total');
+		js_include_once_tag('thickbox','total');
 	?>
 <script>
 	total("专题-三项学习教育","news");
@@ -38,7 +38,7 @@
 		<div class=sx></div>
 		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=104">规章制度</a></div>
 		<div class=sx></div>
-		<div id=search><a target="_blank" href="/search/?key=&search_type="><img border=0 src="/images/sxxx/search.gif"></a></div>
+		<div id=search><a target="_blank" href="/search/?key=&search_type="><img border=0 src="/images/sxxx/search.gif" /></a></div>
 	</div>
 	<?php 
   	$pic=$db->query('select n.photo_src,i.category_id as cid,n.id,n.short_title from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at');
@@ -68,15 +68,17 @@
 		        $sex->appendChild($doc->createTextNode("http://172.27.203.81:8080/news/news/news.php?id=".$pic[$i]->id));
 		        $thumb->appendChild($doc->createTextNode($pic[$i]->photo_src)); 
 	  }      
-	  $doc->save("imglink.xml"); 
+	  $doc->save("imglink.xml");
 	?>
-	<div id=flash><embed src="gallery.swf" wmode="transparent" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="256"></embed></div>
+	<div id=flash><embed src="gallery.swf" wmode="transparent" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="256" wmode="transparent"></embed></div>
 	<?php $zxdt = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="最新动态" order by i.priority asc, n.created_at desc'); ?>
 	<div id=zxdt>
 		<div id=content>
 			<div class=context>
 				<?php  for($j=0;$j<3;$j++){ ?>
-					<div class=cl><a target="_blank" href="/news/news/news.php?id=<?php echo $zxdt[$j]->id; ?>">·<?php echo delhtml($zxdt[$j]->short_title); ?></a></div>
+					<div class=cl>
+						<a target="_blank" href="/news/news/news.php?id=<?php echo $zxdt[$j]->id; ?>"><?php echo "·".delhtml($zxdt[$j]->short_title); ?></a>
+					</div>
 				<?php } ?>
 			</div>
 			<div class=context>
@@ -131,15 +133,17 @@
 	</div>
 	<div id=i_m2>
 		<div id=c_l>
+			<?php $qa=$db->query("select q.id,q.title,q.content as qcontent,q.created_at,a.content from zd_answer a right join zd_question q on a.question_id=q.id order by q.created_at desc"); ?>
 			<div class=c_title1>
-				<div class=wz><img src="/images/sxxx/3.gif"></div>
-				<div class=more><a target="_blank" href="">more>></a></div>
+				<div class=wz><img src="/images/sxxx/3.gif" /></div>
 			</div>
-			<div id=q_title><a target="_blank" href="">提供捐助信息</a></div>
-			<div id=q_time>发布时间：</div>
-			<div id=q_content><a target="_blank" href="">提供捐助信息提供捐助信息提供捐助信息提供捐助信息</a></div>
+			<div id=q_title><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo $qa[0]->title; ?></a></div>
+			<div class=btn><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>">我要回答</a></div>
+			<div class=btn><a class="thickbox" href="/fqzd/question.php?height=255&width=320">我要提问</a></div>
+			<div id=q_time>发布时间：<?php echo $qa[0]->created_at; ?></div>
+			<div id=q_content><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo $qa[0]->qcontent; ?></a></div>
 			<div id=dash></div>
-			<div id=answer><a target="_blank" href="">提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息提供捐助信息</a></div>
+			<div id=answer><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo $qa[0]->content; ?></a></div>
 		</div>
 		<div id=c_r>
 			<div class=c_title1>
