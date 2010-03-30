@@ -134,10 +134,10 @@
 				              <TBODY>
 				              <TR align=left>
 				              	<?php  
-									$sql = 'select photo_src from smg_news where category_id=194 order by created_at desc';
+									$sql = 'select photo_src from smg_news where category_id=194 order by priority asc, created_at desc limit 9';
 									$records = $db->query($sql);
 									$count = count($records);
-									for($i=0;$i<$count;$i++){
+									for($i=1;$i<$count;$i++){
 								?>
 				                <TD>
 										<div class=cl><a target="_blank" href="/subject/qyh/"><img border=0 src="<?php echo $records[$i]->photo_src; ?>"></a></div></TD>
