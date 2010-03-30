@@ -134,7 +134,7 @@
 				              <TBODY>
 				              <TR align=left>
 				              	<?php  
-									$sql = 'select photo_src from smg_news where category_id=194 order by priority asc, created_at desc limit 9';
+									$sql = 'select photo_src from smg_news where category_id=194 order by priority asc, created_at desc limit 7';
 									$records = $db->query($sql);
 									$count = count($records);
 									for($i=1;$i<$count;$i++){
