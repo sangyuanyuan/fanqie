@@ -55,7 +55,7 @@
 						$answered= $db->query('select question_id from smg_dialog_answer where dialog_id='.$dialog->id);
 						if(count($answered)>0)
 						{
-							$c=array();
+							
 						}
 						else
 						{
@@ -63,6 +63,7 @@
 						}
 						if(count($answered)>0)
 						{
+							$c=array();
 							for($i=0;$i<count($answered);$i++)
 							{
 								array_push($c,"id<>".$answered[$i]->question_id);	
