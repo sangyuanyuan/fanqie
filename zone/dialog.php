@@ -61,15 +61,18 @@
 						{
 							$c="1=1";	
 						}
-						for($i=0;$i<count($answered);$i++)
+						if(count($answered)>0)
 						{
-							array_push($c,"id<>".$answered[$i]->question_id);	
+							for($i=0;$i<count($answered);$i++)
+							{
+								array_push($c,"id<>".$answered[$i]->question_id);	
+							}
 						}
 						if(count($answered)>1)
 						{
 							$c = implode(' and ' ,$c);
 						}
-						if(sizeof($c)>0)
+						if(count($answered)>0)
 						{
 					  	$questions = $db->query('select * from smg_dialog_question where dialog_id='.$dialog->id.' and '.$c);
 					  }

@@ -1,6 +1,5 @@
 ﻿<?
 	require_once('../../frame.php');
-  $db = get_db();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -41,7 +40,8 @@
 		<div id=search><a target="_blank" href="/search/?key=&search_type="><img border=0 src="/images/sxxx/search.gif" /></a></div>
 	</div>
 	<?php 
-  	$pic=$db->query('select n.photo_src,i.category_id as cid,n.id,n.short_title from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at');
+	 $db = get_db();
+  	$pic=$db->query('select n.photo_src,i.category_id as cid,n.id,n.short_title from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at desc');
   	$doc=new DOMDocument("1.0","gb2312");  #声明文档类型   
 		$doc->formatOutput=true;               #设置可以输出操作   
 		  
@@ -75,7 +75,7 @@
 	<div id=zxdt>
 		<div id=content>
 			<div class=context>
-				<?php  for($j=0;$j<3;$j++){ ?>
+				<?php for($j=0;$j<3;$j++){ ?>
 					<div class=cl>
 						<a target="_blank" href="/news/news/news.php?id=<?php echo $zxdt[$j]->id; ?>"><?php echo "·".delhtml($zxdt[$j]->short_title); ?></a>
 					</div>
@@ -100,7 +100,7 @@
 				<div class=more><a href="">more>></a></div>
 			</div>
 			<div id=video>
-				<?php show_video_player('253','200',$record[0]->video_photo_src,$record[0]->video_src); ?>	
+				<?php show_video_player('253','200',"",""); ?>	
 			</div>
 			<div id=c_l_title><a target="_blank" href="">福建原社区医生校门口砍杀</a></div>
 			<div id=c_l_content><a target="_blank" href="">感谢各位朋友对于小桔灯活动的关注，如果您位朋友对于小桔灯活动的关各位朋友对于小桔灯活动的关注，如果您注，如果您知道有学校需要帮助...</a></div>
@@ -126,7 +126,7 @@
 			<div id=dash></div>
 			<div id=c_r_b>
 				<?php for($i=0;$i<5;$i++){ ?>
-				<div class=cl><a target="_blank" href="">·新华网:小桔灯万元图小桔灯百万万元图小桔灯百万关注流注流注流动人口子女</a></div>
+				<div class=cl><a target="_blank" href="/subject/qyh/">·新华网:小桔灯万元图小桔灯百万万元图小桔灯百万关注流注流注流动人口子女</a></div>
 				<?php } ?>
 			</div>
 		</div>
@@ -183,10 +183,11 @@
 					<?php } ?>
 				</div>
 			</div>
+			<?php $bbs=$db->query('select subject,tid from bbs_threads where fid in (16,81) order by dateline desc limit 11'); ?>
 			<div id=sx_dash></div>
 			<div id=c_r_r>
-				<?php for($i=0;$i<11;$i++){ ?>
-				<div class=cl><a target="_blank" href="">·天天新报:青年作万元图小桔</a></div>
+				<?php for($i=0;$i<count($bbs);$i++){ ?>
+				<div class=cl><a target="_blank" href="/bbs/viewthread.php?tid=<?php echo $bbs[$i]->tid; ?>">·<?php echo $bbs[$i]->subject; ?></a></div>
 				<?php } ?>
 			</div>
 		</div>	
