@@ -78,11 +78,45 @@
 					<div id=wz><a target="_blank" href="/show/news/news.php?id=<?php echo $pic[0]->id; ?>"><?php echo $pic[0]->title; ?></a></div>	
 				</div>
 				<div id=index_b1>
-					<div id=title>群英闪烁</div> 
-					<?php $pic=$db->query('select photo_src,id from smg_news where category_id=206 and is_adopt=1 order by priority asc,created_at desc limit 5');
-					for($i=0;$i<count($pic);$i++){ ?>
-						<div class=pic><a target="_blank" href="/show/news/news.php<?php echo $pic[0]->id; ?>"><img border=0 src="<?php echo $pic[$i]->photo_src; ?>"></a></div>
-					<?php } ?>
+					<div id=title>群英闪烁</div>
+					<DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo10 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php  
+									$sql = 'select photo_src,id from smg_news where category_id=206 and is_adopt=1 order by priority asc,created_at desc';
+									$records = $db->query($sql);
+									$count = count($records);
+									for($i=1;$i<$count;$i++){
+								?>
+				                <TD>
+										<div class=pic><a target="_blank" href="/show/news/news.php<?php echo $pic[0]->id; ?>"><img border=0 src="<?php echo $pic[$i]->photo_src; ?>"></a></div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id="demo11" vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								        var demo9 = document.getElementById('demo9');
+										var demo10 = document.getElementById('demo10');
+										var demo11 = document.getElementById('demo11');  
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo11.innerHTML=demo10.innerHTML
+											function Marquee(){
+											if(demo11.offsetWidth-demo9.scrollLeft<=0)
+											demo9.scrollLeft-=demo10.offsetWidth
+											else{
+											demo9.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo9.onmouseover=function() {clearInterval(MyMar)}
+											demo9.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT> 
 					<div id=jiangxiang>
 						<div class=jx>
 							<div class=wz><a href="">长江韬奋奖</a></div>
