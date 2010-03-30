@@ -125,9 +125,44 @@
 			</div>
 			<div id=dash></div>
 			<div id=c_r_b>
-				<?php for($i=0;$i<5;$i++){ ?>
-				<div class=cl><a target="_blank" href="/subject/qyh/">·新华网:小桔灯万元图小桔灯百万万元图小桔灯百万关注流注流注流动人口子女</a></div>
-				<?php } ?>
+				<DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo10 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php  
+									$sql = 'select photo_src from smg_news where category_id=194 order by created_at desc';
+									$records = $db->query($sql);
+									$count = count($records);
+									for($i=0;$i<$count;$i++){
+								?>
+				                <TD>
+										<div class=cl><a target="_blank" href="/subject/qyh/"><img border=0 src="<?php echo $records[$i]->photo_src; ?>"></a></div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id="demo11" vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								        var demo9 = document.getElementById('demo9');
+										var demo10 = document.getElementById('demo10');
+										var demo11 = document.getElementById('demo11');  
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo11.innerHTML=demo10.innerHTML
+											function Marquee(){
+											if(demo11.offsetWidth-demo9.scrollLeft<=0)
+											demo9.scrollLeft-=demo10.offsetWidth
+											else{
+											demo9.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo9.onmouseover=function() {clearInterval(MyMar)}
+											demo9.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
 			</div>
 		</div>
 	</div>
