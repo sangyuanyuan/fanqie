@@ -1,6 +1,6 @@
 ﻿<?php require_once('../../frame.php'); ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
-<HTML><HEAD><TITLE>世博反恐专题</TITLE>
+<HTML><HEAD><TITLE>世博安全专题</TITLE>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <META content="" name=keywords>
 <META http-equiv=refresh content=null>
@@ -51,7 +51,7 @@ html,body{
 </style>
 </head>
 <script>
-	total("专题-世博反恐专题","other");
+	total("专题-世博安全专题","other");
 </script>
 </HEAD>
 <BODY >
@@ -91,12 +91,12 @@ html,body{
                   <TABLE width="100%" border=0>
                     <TBODY>
                     <TR>
-                      <TD><div class=title1>反恐视频宣传</div></TD></TR>
+                      <TD><div class=title1>安全视频宣传</div></TD></TR>
                     <TR>
                       <TD>
                       	<div class=s_left>
 	                      <? 
-						  	$video=$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="反恐视频宣传" order by i.priority asc, n.created_at desc limit 4');
+						  	$video=$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="安全视频宣传" order by i.priority asc, n.created_at desc limit 4');
 						  	show_video_player(200,150,$video[0]->photo_url,$video[0]->video_url);
 						  ?>
 						  <? for($i=0;$i<count($video);$i++){?>
@@ -109,10 +109,10 @@ html,body{
                   <TABLE width="100%" border=0>
                     <TBODY>
                     <TR>
-                     <TD><div class=title1>反恐小常识</div></TD></TR>
+                     <TD><div class=title1>安全小常识</div></TD></TR>
                     <TR>
                       <TD>
-                      	<?php $video=$db->query('select n.id,n.short_title from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="反恐小常识" order by i.priority asc, n.created_at desc limit 4'); ?>
+                      	<?php $video=$db->query('select n.id,n.short_title from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="安全小常识" order by i.priority asc, n.created_at desc limit 4'); ?>
                       	<div class=s_left>
                       	<? for($i=0;$i<count($video);$i++){?>
 												  <a target="_blank" href="/news/news/news.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->short_title;?></a>
@@ -126,7 +126,7 @@ html,body{
                     <TBODY>
                     	
                     <TR>
-                      <TD><div class=title1>反恐留言</div></TD></TR>
+                      <TD><div class=title1>安全留言</div></TD></TR>
                     <TR>
                     	<TR>
                       <TD><marquee height="150" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
@@ -155,8 +155,8 @@ html,body{
             <TABLE height=210 width="100%" border=0>
               <TBODY>
               <TR>
-              	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="国内外反恐信息" inner join smg_subject s on c.subject_id=s.id and s.name="世博反恐平台" order by i.priority asc, n.created_at desc limit 8');?>
-                <TD colSpan=2 class=index_title>国内外反恐工作信息<a target="_blank" href="/news/news_list.php?type=fk&id=<?php echo $news[0]->cid; ?>">更多</a></TD></TR>
+              	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="国内外安全信息" inner join smg_subject s on c.subject_id=s.id and s.name="世博安全平台" order by i.priority asc, n.created_at desc limit 8');?>
+                <TD colSpan=2 class=index_title>国内外安全工作信息<a target="_blank" href="/news/news_list.php?type=fk&id=<?php echo $news[0]->cid; ?>">更多</a></TD></TR>
               <TR>
                 <TD width="20%" height=153>
                 	
@@ -179,7 +179,7 @@ html,body{
            			</TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
      <TR>
           <TD>
-          	<?php $news = $db->query('select n.description,n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="集团内部资讯" inner join smg_subject s on c.subject_id=s.id and s.name="世博反恐平台" order by i.priority asc, n.created_at desc limit 4');?>
+          	<?php $news = $db->query('select n.description,n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="集团内部资讯" inner join smg_subject s on c.subject_id=s.id and s.name="世博安全平台" order by i.priority asc, n.created_at desc limit 4');?>
             <TABLE height=68 width="100%" border=0>
               <TBODY>
               <TR>
@@ -270,8 +270,8 @@ html,body{
 							 </DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR> 
    		
      <TR>
-     	<?php $news = $db->query('select n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="反恐工作文件、表格" inner join smg_subject s on c.subject_id=s.id and s.name="世博反恐平台" order by i.priority asc, n.created_at desc');?>
-          <TD ><div style="padding-top:5px;" class=index_title>反恐安全工作文件及相关表格<a target="_blank" style="margin-left:220px;" href="/news/news_list.php?type=fk&id=<?php echo $news[0]->cid; ?>">更多</a></div></TD></TR>
+     	<?php $news = $db->query('select n.id,n.title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="安全工作文件、表格" inner join smg_subject s on c.subject_id=s.id and s.name="世博安全平台" order by i.priority asc, n.created_at desc');?>
+          <TD ><div style="padding-top:5px;" class=index_title>安全工作文件及相关表格<a target="_blank" style="margin-left:220px;" href="/news/news_list.php?type=fk&id=<?php echo $news[0]->cid; ?>">更多</a></div></TD></TR>
           	<TABLE width="100%" align="center">
              <TBODY> 
              	<?php for($i=0;$i<count($news);$i++){ ?>
