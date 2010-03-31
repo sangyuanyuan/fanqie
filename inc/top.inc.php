@@ -5,7 +5,7 @@
 	$db = get_db();
 	use_jquery();
 	js_include_tag('jquery.cookie','pubfun');
-	//css_include_tag('top');
+	css_include_tag('top');
 	function daysInSpan($start,$end)
 		{
 		 $dayTicks=ticksInDay();
@@ -32,16 +32,34 @@
 </div>
 <div id=bannerimg>
 	<div id=nimg1>
-		<?php $days=daysInSpan(mktime(0,0,0,date('m'),date('d'),date('Y')),mktime(0,0,0,11,01,2009));?>
-		<a target="_blank" href="/subject/jwzxsbh/"><img width=497 height=100 border=0 src="/images/jszx.jpg"></a>
-		<!--<a target="_blank" href="/news/news/news_head.php?id=32903"><img border=0 src="/images/dfws.jpg"></a>-->
-		<!--<div class=deptlogo name="1" style="margin-left:450px;"></div><div class=deptlogo name="2" style="margin-left:9px;"></div><div class=deptlogo name="3" style="margin-left:10px;"></div><div class=deptlogo name="4" style="margin-left:9px;"></div><div class=deptlogo name="5" style="margin-left:9px;"></div>-->
-		<!--<embed wmode="transparent" src="/images/1.swf" quality="high" width=995 height=100 type='application/x-shockwave-flash'></embed>-->
+		<div class=deptlogo name=1></div>
+		<div class=deptlogo name=2></div>
+		<div class=deptlogo name=3></div>
+		<div class=deptlogo name=7></div>
+		<div class=deptlogo name=8></div>
+		<div class=deptlogo name=9></div>
 	</div>
 	<div id=nimg2>
-		<a target="_blank" href="/blog/?3366"><img width=497 height=100 border=0 src="/images/newscenter.jpg"></a>	
+		<div class=deptlogo name=4></div>
+		<div class=deptlogo name=5></div>
+		<div class=deptlogo name=6></div>
+		<div class=deptlogo name=10></div>
+		<div class=deptlogo name=11></div>
+		<div class=deptlogo name=12></div>
 	</div>
+	<div id=fd>
+		<div id=fd_l>
+			<a target="_blank" href="/subject/jwzxsbh/">技术保障信息平台</a>　<a target="_blank" href="http://192.168.61.247/">节目资源信息发布平台</a>　<a target="_blank" href="/subject/fk/">世博安全保障平台</a>
+		</div>
+		<?php $banner=$db->query('select * from smg_news where category_id=208 and is_adopt=1 order by priority asc,created_at desc limit 2'); ?>
+		<div id=fd_r>
+			<a target="_blank" href="/news/news/news.php?id=<?php echo $banner[0]->id; ?>"><?php echo $banner[0]->title; ?></a>　<a target="_blank" href="/news/news/news.php?id=<?php echo $banner[1]->id; ?>"><?php echo $banner[1]->title; ?></a>
+		</div>	
+	</div>
+	
 </div>
+
+
 <div id=nav2>
 	
 	<div id=box>
@@ -170,23 +188,51 @@
 			var num=$(this).attr('name');
 			if(num==1)
 			{
-				location.href="http://172.27.203.81:8080/blog/?3312";
+				location.href="http://172.27.203.81:8080/blog/?uid-3398";
 			}
 			else if(num==2)
 			{
-				location.href="http://172.27.203.81:8080/blog/?uid-3316";
+				location.href="http://172.27.203.81:8080/blog/?3366";
 			}
 			else if(num==3)
 			{
-				location.href="http://172.27.203.81:8080/blog/?uid-48";
+				location.href="http://172.27.203.81:8080/blog/index.php?uid-3367";
 			}
 			else if(num==4)
 			{
-				location.href="http://172.27.203.81:8080/blog/?uid-3322";
+				location.href="http://172.27.203.81:8080/blog/?uid-3370";
 			}
 			else if(num==5)
 			{
-				location.href="http://172.27.203.81:8080/blog/?uid-3327";
+				location.href="http://172.27.203.81:8080/blog/?uid-3394";
+			}
+			else if(num==6)
+			{
+				location.href="http://172.27.203.81:8080/blog/?3401";
+			}
+			else if(num==7)
+			{
+				location.href="http://172.27.203.81:8080/blog/?3385";
+			}
+			else if(num==8)
+			{
+				location.href="http://blog.sina.com.cn/rtsnews";
+			}
+			else if(num==9)
+			{
+				location.href="http://172.27.203.81:8080/blog/?3392";
+			}
+			else if(num==10)
+			{
+				location.href="http://172.27.203.81:8080/blog/?uid-3386";
+			}
+			else if(num==11)
+			{
+				location.href="http://172.27.203.81:8080/blog/?3399";
+			}
+			else if(num==12)
+			{
+				location.href="http://172.27.203.81:8080/blog/?3402";
 			}
 		});
 	});
