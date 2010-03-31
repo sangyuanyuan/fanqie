@@ -2,7 +2,7 @@
 	require_once('../frame.php');
 	$id = $_REQUEST['id'];
 	$type = $_REQUEST['type'];
-	$publisher = $_REQUEST['publisher'];
+	$publisher = iconv('gb2312','utf-8',$_REQUEST['publisher']);
 	if($publisher!=''){
 		$title = $publisher;
 		switch($type){
@@ -129,7 +129,7 @@
 			
 			<?php if($count==1){?>
 				<a href="/show/show.php?id=<?php echo $record_ad[0]->img_id?>" target=_blank>
-					<img src="<?php echo $record_ad[0]->src?>" width=275; height=177; border=0>
+					<img src="<?php echo $record_ad[0]->src;?>" width=275; height=177; border=0>
 				</a>
 			<? }else{?>
 				<script src="/flash/sohuflash_1.js" type="text/javascript"></script>

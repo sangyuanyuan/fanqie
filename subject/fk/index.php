@@ -293,7 +293,7 @@ html,body{
       <TABLE cellSpacing=0 cellPadding=0 width=770 align=center border=0>
         <TBODY>
         <TR>
-          <TD><IMG height=402 
+          <TD><IMG height=220 
             src="bottom.jpg" width=770 
             border=0></TD>
 </TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!--mark (  enorth_down ) parse begin-->
