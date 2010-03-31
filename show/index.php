@@ -283,7 +283,7 @@
 				<div class=c_content>
 					<div class=pic><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><img border=0 width=120 height=90 src="<?php echo $records[$i]->src?>"></a></div>
 					<div class=title><a target="_blank" href="show.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					<div class=publisher>作者：<?php if($records[$i]->publisher!=''){ ?><a target="_blank" href="list.php?publisher=<?php echo $records[$i]->publisher; ?>"><?php } ?><?php echo $records[$i]->publisher!=''?$records[$i]->publisher:(get_dept_info($records[$i]->dept_id)->name!=''?get_dept_info($records[$i]->dept_id)->name:'匿名用户');?><?php if($records[$i]->publisher!=''){ ?></a><?php } ?></div>
+					<div class=publisher>作者：<?php if($records[$i]->publisher!=''){ ?><a target="_blank" href="list.php?type=image&publisher=<?php echo $records[$i]->publisher; ?>"><?php } ?><?php echo $records[$i]->publisher!=''?$records[$i]->publisher:(get_dept_info($records[$i]->dept_id)->name!=''?get_dept_info($records[$i]->dept_id)->name:'匿名用户');?><?php if($records[$i]->publisher!=''){ ?></a><?php } ?></div>
 				</div>	
 				<?php } ?>		
 			</div>

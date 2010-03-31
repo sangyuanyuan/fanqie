@@ -2,7 +2,7 @@
 	require_once('../frame.php');
 	$id = $_REQUEST['id'];
 	$type = $_REQUEST['type'];
-	$publisher = iconv('gb2312','utf-8',$_REQUEST['publisher']);
+	$publisher = $_REQUEST['publisher'];
 	if($publisher!=''){
 		$title = $publisher;
 		switch($type){
