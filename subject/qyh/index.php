@@ -79,7 +79,7 @@
 				</div>
 				<div id=index_b1>
 					<div id=title>群英闪烁</div>
-					<DIV id=demo9 style=" margin-left:10px;OVERFLOW: hidden; WIDTH: 95%;">
+					<DIV id=demo9 style=" margin-left:15px;OVERFLOW: hidden; WIDTH: 95%;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
 				        <TR>
