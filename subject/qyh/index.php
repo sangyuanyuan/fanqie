@@ -21,7 +21,7 @@
 		<?php include('inc/top.inc.php');?>
 			<div id=qyh_index>
 				<div id=index_top>
-					<div class=index_t_title>风云英雄榜</div>
+					<div class=index_t_title>风云英雄榜</div><div class=more><a target="_blank" href="">more>></a></div>
 					<?php $news=$db->query('select short_title,photo_src,id from smg_news where category_id=194 and is_adopt=1 order by priority asc,created_at desc'); ?>
 					<div id=t_l_pic>
 						<a target="_blank" href="/show/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 src="<?php echo $news[0]->photo_src; ?>"></a>	
@@ -45,7 +45,7 @@
 					</div>
 					<?php $news=$db->query('select content,id from smg_news where category_id=195 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
 					<div class=index_t_title>群英汇介绍</div>
-					<div id=t_l_content>　　<a target="_blank" href="/show/news/news.php?id=<?php $news[0]->id; ?>"><?php echo $news[0]->content; ?></a></div>
+					<div id=t_l_content>　　<a target="_blank" href="/show/news/news.php?id=<?php $news[0]->id; ?>"><?php echo delhtml($news[0]->content); ?></a></div>
 				</div>
 				<div id=index_mid_l>
 					<div id=title>心灵之光</div>
@@ -133,7 +133,7 @@
 					</div>
 				</div>
 				<div class=index_b_l>
-					<div class=title>群英们的故事</div>
+					<div class=title>群英们的故事</div><div class=more><a target="_blank" href="">more>></a></div>
 					<?php  $news=$db->query('select photo_src,id,description,title from smg_news where category_id=200 and is_adopt=1 order by priority asc,created_at desc limit 5');?>
 					<div class=content_l>
 						<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 src="<?php echo $news[0]->photo_src; ?>"></a></div>
@@ -158,7 +158,7 @@
 					</div>
 				</div>
 				<div class=index_b_l>
-					<div class=title>群英们的足迹</div>
+					<div class=title>群英们的足迹</div><div class=more><a target="_blank" href="">more>></a></div>
 					<?php  $news=$db->query('select photo_src,id,description,title from smg_news where category_id=201 and is_adopt=1 order by priority asc,created_at desc limit 12');?>	
 						<div class=content_l>
 						<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 src="<?php echo $news[0]->photo_src; ?>"></a></div>
@@ -179,6 +179,7 @@
 					<?php  $news=$db->query('select photo_src,id,description,title from smg_news where category_id=203 and is_adopt=1 order by priority asc,created_at desc limit 12');?>
 					<div class=content>
 						<?php for($i=0;$i<count($news);$i++){ ?>
+						<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><img src="<?php echo $news[$i]->photo_src; ?>"></a></div>
 						<div class=cl><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>">·<?php echo $news[$i]->title; ?></a></div>
 						<?php } ?>
 					</div>
