@@ -146,7 +146,7 @@
 							<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->description; ?></a></div>
 						</div>
 						<?php } ?>
-					</div>
+					</div> 
 				</div>
 				<div class=index_b_r>
 					<div class=title>奖项介绍</div>
@@ -165,7 +165,7 @@
 						<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[0]->id; ?>"><?php echo $news[0]->description; ?></a></div>	
 					</div>
 					<div class=content_r>
-						<?php for($i=0;$i<6;$i++){ ?>
+						<?php for($i=1;$i<count($news);$i++){ ?>
 						<div class=b_l_c>
 							<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>"></a></div>
 							<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo delhtml($news[$i]->title)."<br>".delhtml($news[$i]->description); ?></a></div>
