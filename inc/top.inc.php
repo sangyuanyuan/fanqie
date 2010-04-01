@@ -49,7 +49,7 @@
 	</div>
 	<div id=fd>
 		<div id=fd_l>
-			<a target="_blank" href="/subject/jwzxsbh/">技术保障信息平台</a>　<a target="_blank" href="http://192.168.61.247/">节目资源信息发布平台</a>　<a target="_blank" href="#">世博安全保障平台<!--</a>-->
+			<a target="_blank" href="/subject/jwzxsbh/">技术保障信息平台</a>　<a target="_blank" href="http://192.168.61.247/">节目资源信息发布平台</a>　世博安全保障平台
 		</div>
 		<?php $banner=$db->query('select * from smg_news where category_id=208 and is_adopt=1 order by priority asc,created_at desc limit 2'); ?>
 		<div id=fd_r>

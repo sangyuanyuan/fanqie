@@ -14,7 +14,7 @@ li{margin:0px; list-style-type:none;}
 #nimg1{width:400px; margin-top:65px; text-align:center; float:left; display:inline;}
 #nimg2{width:400px; margin-top:68px; margin-right:8px; text-align:center; float:right; display:inline;}
 #fd{width:995px; height:30px; margin-top:30px; background:#666666; filter:alpha(opacity=50); -moz-opacity:0.5; opacity:0.5;  float:left; display:inline;}
-#fd_l{width:490px; height:30px; top:220px; left:0px; font-size:16px; font-family:微软雅黑 ; font-weight:bold; text-align:center; line-height:30px; position:absolute;}
+#fd_l{width:490px; height:30px; top:220px; left:0px; font-size:16px; font-family:微软雅黑 ; color:#ffffff; font-weight:bold; text-align:center; line-height:30px; position:absolute;}
 #fd_l a{color:#ffffff; text-decoration:none;}
 #fd_r{width:490px; height:30px; top:220px; right:0px; font-size:16px; font-family:微软雅黑 ; font-weight:bold; text-align:center; line-height:30px; position:absolute;}
 #fd_r a{color:#ffffff; text-decoration:none;}
