@@ -159,7 +159,7 @@
 				</div>
 				<div class=index_b_l>
 					<div class=title>群英们的足迹</div><div class=more><a target="_blank" href="/news/news_list.php?id=201"">more>></a></div>
-					<?php  $news=$db->query('select photo_scr,video_photo_src,id,description,title from smg_news where category_id=201 and is_adopt=1 order by priority asc,created_at desc limit 7');?>	
+					<?php  $news=$db->query('select photo_src,video_photo_src,id,description,title from smg_news where category_id=201 and is_adopt=1 order by priority asc,created_at desc limit 7');?>	
 						<div class=content_l>
 						<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 src="<?php if($news[0]->video_photo_src!=""){ echo $news[0]->video_photo_src;}else{ echo $news[0]->photo_src;} ?>"></a></div>
 						<div class=piccontent><a target="_blank" href="/show/news/news.php?id=<?php echo $news[0]->id; ?>"><?php echo $news[0]->description; ?></a></div>	
