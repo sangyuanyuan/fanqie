@@ -176,7 +176,7 @@
 				
 				<div class=index_b_r>
 					<div class=title>群英博客</div>
-					<?php  $news=$db->query('select photo_src,id,description,title from smg_news where category_id=203 and is_adopt=1 order by priority asc,created_at desc limit 4');?>
+					<?php  $news=$db->query('select photo_src,id,description,title from smg_news where category_id=203 and is_adopt=1 order by priority asc,created_at desc limit 3');?>
 					<div class=content>
 						<?php for($i=0;$i<count($news);$i++){ ?>
 						<div class=pic><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>"><img border=0 src="<?php echo $news[$i]->photo_src; ?>"></a></div>
