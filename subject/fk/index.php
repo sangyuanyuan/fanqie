@@ -96,7 +96,7 @@ html,body{
                       <TD>
                       	<div class=s_left>
 	                      <? 
-						  	$video=$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="video" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="安全视频宣传" order by i.priority asc, n.created_at desc limit 4');
+						  	$video=$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n where category_id=210 order by priority asc,created_at desc');
 						  	show_video_player(200,150,$video[0]->photo_url,$video[0]->video_url);
 						  ?>
 						  <? for($i=0;$i<count($video);$i++){?>
