@@ -153,7 +153,7 @@
 					<?php  $news=$db->query('select photo_src,id,description,title from smg_news where category_id=202 and is_adopt=1 order by priority asc,created_at desc limit 12');?>
 					<div class=content>
 						<?php for($i=0;$i<count($news);$i++){ ?>
-						<div class=cl><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>">·<?php echo $news[$i]->title; ?></a></div>
+						<div class=cl><a target="_blank" href="/show/news/news.php?id=<?php echo $news[$i]->id; ?>">·<?php echo delhtml($news[$i]->title); ?></a></div>
 						<?php } ?>
 					</div>
 				</div>
