@@ -168,7 +168,7 @@
 	</div>
 	<div id=i_m2>
 		<div id=c_l>
-			<?php $qa=$db->query("select q.id,q.title,q.content as qcontent,q.created_at,a.content from zd_answer a right join zd_question q on a.question_id=q.id order by q.created_at desc"); ?>
+			<?php $qa=$db->query("select q.id,q.title,q.content as qcontent,q.created_at,a.content from zd_answer a left join zd_question q on a.question_id=q.id order by q.created_at desc"); ?>
 			<div class=c_title1>
 				<div class=wz><img src="/images/sxxx/3.gif" /></div>
 			</div>
