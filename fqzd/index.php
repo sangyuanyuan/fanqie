@@ -44,7 +44,7 @@
 		</div>
 		<div id=answer>
 			<div id=answer_name>姓名：　<input type="text" id="aname" name="aname" value="<?php echo $_COOKIE['smg_user_nickname']; ?>"></div>
-			<div id=answer_content>内容：　<?php show_fckeditor('acontent','Admin',true,"180","","600");?></div>
+			<div id=answer_content>内容：　<?php show_fckeditor('acontent','Admin',true,"160","","600");?></div>
 			<input id="qid" type="hidden" value="<?php echo $zd_question[0]->id; ?>">
 			<div id=answer_sub><button id="answersub" name="answersub"></button>　　<?php if($_COOKIE['smg_user_id']==""){ ?><a target="_blank" href="/login/login.php">登陆</a><?php } ?></div>
 		</div>
