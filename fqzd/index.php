@@ -83,7 +83,7 @@
 	</div>
 	<div id=iright>
 		<div id=wdphb>
-			<?php $phb=$db->query('select * from smg_user order by zd_score desc limit 8'); ?>
+			<?php $phb=$db->query('select * from smg_user where id<>160 order by zd_score desc limit 8'); ?>
 			<div class=r_title>积分排行榜</div>
 			<div id=content>
 				<div class=cl>
