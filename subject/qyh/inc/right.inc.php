@@ -12,7 +12,7 @@
 	</div>
 </div>-->
 <div class=r_content style="margin-top:0px;">
-	<?php $news=$db->query('select id,short_title from smg_news where category_id=196 and is_adopt=1 order by priority asc,created_at desc limit 6'); ?>
+	<?php $news=$db->query('select id,short_title from smg_news where category_id=196 and is_adopt=1 order by priority asc,created_at desc limit 11'); ?>
 	<div class=r_c_title>心灵之光</div>
 	<div class=r_context>
 		<?php for($i=0;$i<11;$i++){ ?>
