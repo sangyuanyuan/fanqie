@@ -199,7 +199,7 @@
 					for($i=0;$i<count($question);$i++)
 					{
 				?>
-					<div class=q_content><a target="_blank" href="/fqzd/index.php?id=<?php echo $question[$i]->id; ?>">·<?php echo $question[$i]->content; ?></a></div>
+					<div class=q_content><a target="_blank" href="/fqzd/index.php?id=<?php echo $question[$i]->id; ?>">·<?php echo $question[$i]->title; ?></a></div>
 				<?php } ?>
 			</div>
 		</div>
