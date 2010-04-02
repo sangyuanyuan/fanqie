@@ -21,7 +21,7 @@ body {font-family:ËÎÌו; font-size:12px; color:#434343; background:#c8c8c8;  marg
 #i_m1{width:953px; height:260px; margin-top:10px; margin-left:23px; float:left; display:inline;}
 #i_m1 #c_l{width:468px; height:260px; background:url(/images/sxxx/c_bg.png) no-repeat; float:left; display:inline;}
 #i_m1 #c_l #video{width:253px; height:200px; margin-top:15px; margin-left:12px; float:left; display:inline;}
-#i_m1 #c_l #c_l_title{width:178px; height:18px; font-size:14px; margin-top:15px; margin-right:10px; font-weight:bold; color:#000000; line-height:18px; overflow:hidden; float:right; display:inline;}
+#i_m1 #c_l #c_l_title{width:178px; height:18px; font-size:14px; margin-top:20px; margin-right:10px; font-weight:bold; color:#000000; line-height:18px; overflow:hidden; float:right; display:inline;}
 #i_m1 #c_l #c_l_title a{color:#000000; text-decoration:none;}
 #i_m1 #c_l #c_l_content{width:178px; height:90px; margin-top:15px; margin-right:10px; line-height:18px; color:#333333; overflow:hidden; float:right; display:inline;}
 #i_m1 #c_l #c_l_content a{color:#333333; text-decoration:none;}
