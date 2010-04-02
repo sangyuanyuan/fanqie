@@ -54,7 +54,7 @@
 		?>
 			<div class=answer_result>
 			<div class=l_title>积分最高回答</div>
-			<div class=a_content><textarea style="border:0px;" readonly="readonly"><?php echo get_fck_content($answer[0]->content); ?></textarea></div>
+			<div class=a_content><?php echo get_fck_content($answer[0]->content); ?></div>
 			<div class=a_add>
 				<button style="background:url('/images/zd/add1.jpg') no-repeat;" class="addbtn" param="1" param1="<?php echo $answer[0]->id;?>"></button>
 				<button style="background:url('/images/zd/add5.jpg') no-repeat;" class="addbtn" param="5" param1="<?php echo $answer[0]->id; ?>"></button>
@@ -71,7 +71,7 @@
 		?>
 		<div class=answer_result>
 			<div class=l_title>其他回答</div>
-			<div class=a_content><textarea style="border:0px;" readonly="readonly"><?php echo get_fck_content($answer1[$i]->content); ?></textarea></div>
+			<div class=a_content><?php echo get_fck_content($answer1[$i]->content); ?></div>
 			<div class=a_add>
 				<button style="background:url('/images/zd/add1.jpg') no-repeat;" class="addbtn" param="1" param1="<?php echo  $answer1[$i]->id; ?>" ></button>
 				<button style="background:url('/images/zd/add5.jpg') no-repeat;" class="addbtn" param="5" param1="<?php echo  $answer1[$i]->id; ?>"></button>

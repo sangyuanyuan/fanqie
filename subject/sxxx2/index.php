@@ -186,7 +186,7 @@
 				
 				<div id=q_time>发布时间：<?php echo $qa[0]->created_at; ?></div>
 				<div id=dash></div>
-				<div id=answer><?php echo $qa[0]->publisher; ?><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo get_fck_content($qa[0]->content); ?></a></div>
+				<div class=answer><?php echo $qa[0]->publisher; ?><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo get_fck_content($qa[0]->content); ?></a></div>
 			</div>
 			<div id=q_r>
 				<div class=btn><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>">我要回答</a></div>
