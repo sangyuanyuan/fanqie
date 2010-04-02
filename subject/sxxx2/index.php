@@ -189,7 +189,7 @@
 				<?php $answer=$db->query('select * from zd_answer where question_id='.$qa[0]->id.' order by created_at desc limit 3');
 				for($i=0;$i<count($answer);$i++){	
 			 ?>
-					<div class=answer><span style="font-weight:bold;"><?php echo $answer[$i]->publisher; ?></span>:<a target="_blank" href="/fqzd/index.php?id=<?php echo $answer[$i]->id; ?>"><?php echo delhtml($answer[$i]->content); ?></a></div>
+					<div class=answer><span style="font-weight:bold;"><?php echo $answer[$i]->publisher; ?></span>:<a target="_blank" href="/fqzd/index.php?id=<?php echo $answer[$i]->id; ?>"><?php echo mb_substr(delhtml($answer[$i]->content),0,29,"utf-8").'...'; ?></a></div>
 				<?php } ?>
 			</div>
 			<div id=q_r>
