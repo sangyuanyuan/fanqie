@@ -182,10 +182,9 @@
 				<div class=wz><img src="/images/sxxx/3.gif" /></div>
 			</div>
 			<div id=q_l>
-				<div id=q_title><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo $qa[0]->title; ?></a></div>
+				<div id=q_title><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo $qa[0]->qcontent; ?></a></div>
 				
 				<div id=q_time>发布时间：<?php echo $qa[0]->created_at; ?></div>
-				<div id=q_content><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo $qa[0]->qcontent; ?></a></div>
 				<div id=dash></div>
 				<div id=answer><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo $qa[0]->content; ?></a></div>
 			</div>
@@ -196,7 +195,7 @@
 					for($i=0;$i<count($question);$i++)
 					{
 				?>
-					<div class=q_content><a target="_blank" href="/fqzd/index.php?id=<?php echo $question[$i]->id; ?>">·<?php echo $question[$i]->title; ?></a></div>
+					<div class=q_content><a target="_blank" href="/fqzd/index.php?id=<?php echo $question[$i]->id; ?>">·<?php echo $question[$i]->content; ?></a></div>
 				<?php } ?>
 			</div>
 		</div>
