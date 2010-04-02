@@ -5,7 +5,7 @@
 	$db = get_db();
 	use_jquery();
 	js_include_tag('jquery.cookie','pubfun');
-	//css_include_tag('top');
+	css_include_tag('top');
 	function daysInSpan($start,$end)
 		{
 		 $dayTicks=ticksInDay();
@@ -38,6 +38,8 @@
 		<div class=deptlogo name=7></div>
 		<div class=deptlogo name=8></div>
 		<div class=deptlogo name=9></div>
+		<div class=deptlogo name=13></div>
+		<div class=deptlogo name=14></div>
 	</div>
 	<div id=nimg2>
 		<div class=deptlogo name=4></div>
@@ -233,6 +235,14 @@
 			else if(num==12)
 			{
 				location.href="http://172.27.203.81:8080/blog/?3402";
+			}
+			else if(num==13)
+			{
+				location.href="http://172.27.203.81:8080/blog/?3405";
+			}
+			else if(num==14)
+			{
+				location.href="http://172.27.203.81:8080/blog/?uid-3406";
 			}
 		});
 	});

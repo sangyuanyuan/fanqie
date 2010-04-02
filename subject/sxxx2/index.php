@@ -58,7 +58,7 @@
 		        $name=$doc->createElement("img_name");    #创建节点对象实体          
 		        $name=$info->appendChild($name);   
 		          
-		        $sex=$doc->createElement("img_link");   
+		        $sex=$doc->createElement("img_link");
 		        $sex=$info->appendChild($sex);
 		        
 		        $thumb=$doc->createElement("thumb_image");   
