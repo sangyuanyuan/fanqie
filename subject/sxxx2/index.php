@@ -42,7 +42,7 @@
 	<?php 
 	 $db = get_db();
   	$pic=$db->query('select n.photo_src,i.category_id as cid,n.id,n.short_title from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at desc');
-  	$doc=new DOMDocument("1.0","gb2312");  #声明文档类型   
+  	$doc=new DOMDocument("1.0","UTF-8");  #声明文档类型   
 		$doc->formatOutput=true;               #设置可以输出操作   
 		  
 		#声明根节点，最好一个XML文件有个跟节点   
