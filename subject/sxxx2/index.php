@@ -134,7 +134,7 @@
 			</div>
 			<div id=dash></div>
 			<div id=c_r_b>
-				<DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 100%;">
+				<DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 99%;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
 				        <TR>
