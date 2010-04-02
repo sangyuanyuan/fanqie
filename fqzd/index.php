@@ -39,7 +39,7 @@
 			<div id=q_content><?php echo $zd_question[0]->content; ?></div>
 			<div id=q_publisher>提问者：<span style="color:#3333cc; text-decoration:underline;"><?php echo $zd_question[0]->publisher; ?></span></div>
 			<div id=l_t_b>
-				<div class=btn><a class=thickbox href="question.php?height=255&width=320">我要提问</a></div>
+				<div class=btn><a class=thickbox href="question.php?height=255&width=320">我要提问</a></div><?php if($_COOKIE['smg_user_id']==160){ ?><div class=btn><span id="show_index" style="cursor:pointer;">我要提问</span></div><?php } ?>
 			</div>
 		</div>
 		<div id=answer>
@@ -54,7 +54,7 @@
 		?>
 			<div class=answer_result>
 			<div class=l_title>积分最高回答</div>
-			<div class=a_content><?php echo get_fck_content($answer[0]->content); ?></div>
+			<div class=a_content><textarea style="border:0px;" readonly="readonly"><?php echo get_fck_content($answer[0]->content); ?></textarea></div>
 			<div class=a_add>
 				<button style="background:url('/images/zd/add1.jpg') no-repeat;" class="addbtn" param="1" param1="<?php echo $answer[0]->id;?>"></button>
 				<button style="background:url('/images/zd/add5.jpg') no-repeat;" class="addbtn" param="5" param1="<?php echo $answer[0]->id; ?>"></button>
@@ -71,7 +71,7 @@
 		?>
 		<div class=answer_result>
 			<div class=l_title>其他回答</div>
-			<div class=a_content><?php echo get_fck_content($answer1[$i]->content); ?></div>
+			<div class=a_content><textarea style="border:0px;" readonly="readonly"><?php echo get_fck_content($answer1[$i]->content); ?></textarea></div>
 			<div class=a_add>
 				<button style="background:url('/images/zd/add1.jpg') no-repeat;" class="addbtn" param="1" param1="<?php echo  $answer1[$i]->id; ?>" ></button>
 				<button style="background:url('/images/zd/add5.jpg') no-repeat;" class="addbtn" param="5" param1="<?php echo  $answer1[$i]->id; ?>"></button>
@@ -118,6 +118,7 @@
 					alert(data);
 			});
 		});
+		$("")
 		$("#answersub").click(function(){
 			var oEditor = FCKeditorAPI.GetInstance('acontent');
 			var content = oEditor.GetHTML();
@@ -136,7 +137,7 @@
 				{
 					alert('回答失败,请联系管理员查看原因!');	
 				}
-			})
-		})
-	})
+			});
+		});
+	});
 </script>
