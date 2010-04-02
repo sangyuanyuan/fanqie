@@ -5,7 +5,7 @@
 	$db = get_db();
 	use_jquery();
 	js_include_tag('jquery.cookie','pubfun');
-	css_include_tag('top');
+	//css_include_tag('top');
 	function daysInSpan($start,$end)
 		{
 		 $dayTicks=ticksInDay();
