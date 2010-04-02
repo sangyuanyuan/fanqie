@@ -34,7 +34,9 @@
 				<div id=l_t>
 					<div id=l_t_title>对话群英</div>
 					<div id=l_t_content_l>
-						<?php  show_video_player('315','254',$dialog[0]->photo2_url,$dialog[0]->video_url);?>
+						<?php  //show_video_player('315','254',$dialog[0]->photo2_url,$dialog[0]->video_url);
+						?>
+						<img width=315 height=254 src="<?php echo $dialog[0]->photo_url; ?>">
 					</div>
 					<div id=l_t_content_r>
 						<div id=title>本期嘉宾介绍</div>

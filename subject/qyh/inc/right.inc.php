@@ -1,8 +1,8 @@
 ﻿<?php if($rightstyle<>"list"){ ?>
-<div id=r_top><?php $pic=$db->query('select photo_src,id,short_title from smg_news where category_id=204 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?><a target="_blank" href="/show/news/news.php?id=<?php echo $pic[0]->id; ?>"><img border=0 src="<?php echo $pic[0]->photo_src; ?>"></a></div>
+<!--<div id=r_top><?php $pic=$db->query('select photo_src,id,short_title from smg_news where category_id=204 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?><a target="_blank" href="/show/news/news.php?id=<?php echo $pic[0]->id; ?>"><img border=0 src="<?php echo $pic[0]->photo_src; ?>"></a></div>
 <div id=wz><a target="_blank" href="/show/news/news.php?id=<?php echo $pic[0]->id; ?>"><?php echo $pic[0]->short_title; ?></a></div>
 <?php } ?>
-<!--<div class=r_content>
+<div class=r_content>
 	<div class=r_c_title>嘉宾回顾</div>
 	<div class=r_context>
 		<?php for($i=0;$i<11;$i++){ ?>
