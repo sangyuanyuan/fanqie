@@ -97,7 +97,7 @@
 		<div id=c_l>
 			<?php 
 				$bgt = $db->query('select n.video_photo_src,n.video_src,n.id,n.title,n.description,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="报告团" order by i.priority asc, n.created_at desc limit 4');
-				$xxyd=$db->query('select v.photo_url,v.video_url from smg_video v where v.category_id=106 order by priority asc, created_at desc limit 4');
+				$xxyd=$db->query('select v.photo_url,v.video_url,title,id from smg_video v where v.category_id=106 order by priority asc, created_at desc limit 4');
 			?>
 			<div class=c_title1>
 				<div class=wz><img src="/images/sxxx/1.gif"></div>
