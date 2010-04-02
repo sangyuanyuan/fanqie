@@ -21,11 +21,11 @@
 	<div id=title>
 		<div class=cl><a target="_blank" href="/subject/sxxx2/">首页</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="#">报告团</a></div>
+		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=160">报告团</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="#">群英连</a></div>
+		<div class=cl><a target="_blank" href="/subject/qyh/">群英连</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="#">学习营</a></div>
+		<div class=cl><a target="_blank" href="/fqzd/">学习营</a></div>
 		<div class=sx></div>
 		<div class=cl>交流班</div>
 		<div class=sx></div>
@@ -106,8 +106,8 @@
 			<div id=video>
 				<?php if($bgt[0]->video_src!=""){ show_video_player('253','200',$bgt[0]->video_photo_src,$bgt[0]->video_src);}else{ show_video_player('253','200',$xxyd[0]->photo_url,$xxyd[0]->video_url); } ?>	
 			</div>
-			<div id=c_l_title><a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>"><?php echo delhtml($bgt[0]->title); ?></a></div>
-			<div id=c_l_content><a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>"><?php echo delhtml($bgt[0]->description); ?></a></div>
+			<div id=c_l_title><!--<a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>">--><?php echo delhtml($bgt[0]->title); ?><!--</a>--></div>
+			<div id=c_l_content><!--<a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>">--><?php echo delhtml($bgt[0]->description); ?><!--</a>--></div>
 			<div id=dash></div>
 			<?php  for($i=1;$i<4;$i++){ 
 				if(count($bgt)==4){?>
