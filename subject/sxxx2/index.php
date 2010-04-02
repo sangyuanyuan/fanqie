@@ -177,7 +177,7 @@
 	</div>
 	<div id=i_m2>
 		<div id=c_l>
-			<?php $qa=$db->query("select q.id,q.title,q.content as qcontent,q.created_at,a.content,a.publisher from zd_answer a left join zd_question q on a.question_id=q.id order by q.created_at desc"); ?>
+			<?php $qa=$db->query("select q.id,q.title,q.content as qcontent,q.created_at,a.content,a.publisher from zd_answer a left join zd_question q on a.question_id=q.id where q.show_index=1 order by q.created_at desc"); ?>
 			<div class=c_title1>
 				<div class=wz><img src="/images/sxxx/3.gif" /></div>
 			</div>
@@ -186,7 +186,11 @@
 				
 				<div id=q_time>发布时间：<?php echo $qa[0]->created_at; ?></div>
 				<div id=dash></div>
-				<div class=answer><?php echo $qa[0]->publisher; ?><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo get_fck_content($qa[0]->content); ?></a></div>
+				<?php $answer=$db->query('select * from zd_answer where question_id='.$qa[0]->id.' order by created_at desc limit 3');
+				for($i=0;$i<count($answer);$i++){	
+			 ?>
+					<div class=answer><span style="font-weight:bold;"><?php echo $answer[$i]->publisher; ?></span>:<a target="_blank" href="/fqzd/index.php?id=<?php echo $answer[$i]->id; ?>"><?php echo get_fck_content($answer[$i]->content); ?></a></div>
+				<?php } ?>
 			</div>
 			<div id=q_r>
 				<div class=btn><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>">我要回答</a></div>

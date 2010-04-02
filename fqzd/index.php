@@ -39,7 +39,7 @@
 			<div id=q_content><?php echo $zd_question[0]->content; ?></div>
 			<div id=q_publisher>提问者：<span style="color:#3333cc; text-decoration:underline;"><?php echo $zd_question[0]->publisher; ?></span></div>
 			<div id=l_t_b>
-				<div class=btn><a class=thickbox href="question.php?height=255&width=320">我要提问</a></div><?php if($_COOKIE['smg_user_id']==160){ ?><div class=btn><span id="show_index" style="cursor:pointer;">我要提问</span></div><?php } ?>
+				<div class=btn><a class=thickbox href="question.php?height=255&width=320">我要提问</a></div><?php if($_COOKIE['smg_user_id']==160){ ?><div class=btn><span id="show_index" style="cursor:pointer;">首页显示</span></div><?php } ?>
 			</div>
 		</div>
 		<div id=answer>
