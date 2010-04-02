@@ -125,10 +125,10 @@
 							<div class=wz><a target="_blank" href="">优秀新闻工作者奖</a></div>
 						</div>	
 						<div class=jx>
-							<div class=wz><a target="_blank" href="">德艺双馨奖</a></div>
+							<div class=wz><a target="_blank" href="/show/news/news.php?id=45334">德艺双馨奖</a></div>
 						</div>	
 						<div class=jx>
-							<div class=wz><a target="_blank" href="">金话筒奖</a></div>
+							<div class=wz><a target="_blank" href="/show/news/news.php?id=45329">金话筒奖</a></div>
 						</div>
 					</div>
 				</div>
