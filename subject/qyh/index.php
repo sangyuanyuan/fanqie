@@ -72,7 +72,7 @@
 						<div class=content><a target="_blank" href="dialog.php?id=<?php echo $dialog[0]->id; ?>">　　<?php echo delhtml($dialog[0]->content); ?></div>
 					</div>
 				</div>
-				<?php $pic=$db->query('select photo_src,id,title from smg_news where category_id=198 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
+				<?php $pic=$db->query('select photo_src,id,title from smg_news where category_id=204 and is_adopt=1 order by priority asc,created_at desc limit 1'); ?>
 				<div id=index_mid_r_b>
 					<div id=pic><img src="<?php echo $pic[0]->photo_src; ?>"></div>
 					<div id=wz><a target="_blank" href="/show/news/news.php?id=<?php echo $pic[0]->id; ?>"><?php echo $pic[0]->title; ?></a></div>	
