@@ -27,7 +27,7 @@
 		<div class=sx></div>
 		<div class=cl><a target="_blank" href="#">学习营</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="#">交流班</a></div>
+		<div class=cl>交流班</div>
 		<div class=sx></div>
 		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=155">最新动态</a></div>
 		<div class=sx></div>
@@ -95,24 +95,32 @@
 	</div>
 	<div id=i_m1>
 		<div id=c_l>
+			<?php 
+				$bgt = $db->query('select n.video_photo_src,n.video_src,n.id,n.title,n.description,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="报告团" order by i.priority asc, n.created_at desc limit 4');
+				$xxyd=$db->query('select v.photo_url,v.video_url from smg_video v where v.category_id=106 order by priority asc, created_at desc limit 4');
+			?>
 			<div class=c_title1>
 				<div class=wz><img src="/images/sxxx/1.gif"></div>
-				<div class=more><a href="">more>></a></div>
+				<div class=more><a target="_blank" href="/news/subject_list.php?id=<?php echo $bgt[0]->cid; ?>">more>></a></div>
 			</div>
 			<div id=video>
-				<?php show_video_player('253','200',"",""); ?>	
+				<?php if($bgt[0]->video_src!=""){ show_video_player('253','200',$bgt[0]->video_photo_src,$bgt[0]->video_src);}else{ show_video_player('253','200',$xxyd[0]->photo_url,$xxyd[0]->video_url); } ?>	
 			</div>
-			<div id=c_l_title><a target="_blank" href="">福建原社区医生校门口砍杀</a></div>
-			<div id=c_l_content><a target="_blank" href="">感谢各位朋友对于小桔灯活动的关注，如果您位朋友对于小桔灯活动的关各位朋友对于小桔灯活动的关注，如果您注，如果您知道有学校需要帮助...</a></div>
+			<div id=c_l_title><a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>"><?php echo delhtml($bgt[0]->title); ?></a></div>
+			<div id=c_l_content><a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>"><?php echo delhtml($bgt[0]->description); ?></a></div>
 			<div id=dash></div>
-			<?php for($i=0;$i<3;$i++){ ?>
-				<div class=cjlj><a target="_blank" href="">每日经济:小桔灯百万元图小桔灯百万万元图小桔灯</a></div>
-			<?php } ?>
+			<?php  for($i=1;$i<3;$i++){ 
+				if(count($bgt)==4){?>
+				<div class=cjlj><a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[$i]->id; ?>"><?php echo delhtml($bgt[$i]->title); ?></a></div>
+			<?php }else{?>
+				<div class=cjlj><a target="_blank" href="/show/video.php?id=<?php echo $xxyd[$i]->id; ?>"><?php echo delhtml($xxyd[$i]->title); ?></a></div>
+			<?}
+			} ?>
 		</div>
 		<div id=c_r>
 			<div class=c_title1>
 				<div class=wz><img src="/images/sxxx/2.gif"></div>
-				<div class=more><a href="">more>></a></div>
+				<div class=more><a href="/subject/qyh/">more>></a></div>
 			</div>
 			<div id=c_r_t>
 				<div id=c_r_t_l>
