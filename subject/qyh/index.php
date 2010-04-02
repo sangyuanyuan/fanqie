@@ -88,7 +88,7 @@
 				              <TBODY>
 				              <TR align=left>
 				              	<?php  
-									$sql = 'select src from smg_images where category_id=198 and is_adopt=1 order by priority asc,created_at desc';
+									$sql = 'select src from smg_images where category_id=197 and is_adopt=1 order by priority asc,created_at desc';
 									$records = $db->query($sql);
 									$count = count($records);
 									for($i=1;$i<$count;$i++){
