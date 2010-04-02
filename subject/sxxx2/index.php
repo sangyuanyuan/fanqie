@@ -29,19 +29,19 @@
 		<div class=sx></div>
 		<div class=cl><a target="_blank" href="#">交流班</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=100">最新动态</a></div>
+		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=155">最新动态</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=99">学习热点</a></div>
+		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=156">学习热点</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=110">案例提示</a></div>
+		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=157">案例提示</a></div>
 		<div class=sx></div>
-		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=104">规章制度</a></div>
+		<div class=cl><a target="_blank" href="/news/news_subject_list.php?id=158">规章制度</a></div>
 		<div class=sx></div>
 		<div id=search><a target="_blank" href="/search/?key=&search_type="><img border=0 src="/images/sxxx/search.gif" /></a></div>
 	</div>
 	<?php 
 	 $db = get_db();
-  	$pic=$db->query('select n.photo_src,i.category_id as cid,n.id,n.short_title from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at desc');
+  	$pic=$db->query('select n.photo_src,i.category_id as cid,n.id,n.short_title from smg_news n left join smg_subject_items i on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="活动剪影" order by i.priority asc, n.created_at desc');
   	$doc=new DOMDocument("1.0","gb2312");  #声明文档类型   
 		$doc->formatOutput=true;               #设置可以输出操作   
 		  
@@ -71,7 +71,7 @@
 	  $doc->save("imglink.xml");
 	?>
 	<div id=flash><embed src="gallery.swf" wmode="transparent" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1000" height="256" wmode="transparent" style="overflow:hidden;"></embed></div>
-	<?php $zxdt = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="最新动态" order by i.priority asc, n.created_at desc'); ?>
+	<?php $zxdt = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="最新动态" order by i.priority asc, n.created_at desc'); ?>
 	<div id=zxdt>
 		<div id=content>
 			<div class=context>
@@ -230,7 +230,7 @@
 	<div id=ibottom>
 		<div id=i_b1>
 			<div class=b_title>
-				<?php $ldjh = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,n.description,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and (c.name="领导讲话" or c.name="经典论述") order by i.priority asc, n.created_at desc'); ?>
+				<?php $ldjh = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,n.description,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="学习热点" order by i.priority asc, n.created_at desc'); ?>
 				<div class=wz>学习热点</div>
 				<div class=more><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $ldjh[0]->cid; ?>">more>></a></div>	
 			</div>
@@ -246,7 +246,7 @@
 			<?php } ?>
 		</div>
 		<div id=i_b2>
-			<? $alfx = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="案例警示" order by i.priority asc, n.created_at desc');?>
+			<? $alfx = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="案例提示" order by i.priority asc, n.created_at desc');?>
 			<div class=b_title>
 				<div class=wz>案例提示</div>
 				<div class=more><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $alfx[0]->cid; ?>">more>></a></div>	
@@ -256,7 +256,7 @@
 			<?php } ?>
 		</div>
 		<div id=i_b3>
-			<?php $gzzd = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="规章制度" order by i.priority asc, n.created_at desc');?>
+			<?php $gzzd = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="规章制度" order by i.priority asc, n.created_at desc');?>
 			<div class=b_title>
 				<div class=wz>规章制度</div>
 				<div class=more><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $gzzd[0]->cid; ?>">more>></a></div>	
@@ -266,7 +266,7 @@
 			<?php } ?>
 		</div>
 		<div id=i_b4>
-			<?php $deptsort = $db->query('SELECT sum(s.click_count) as djl,d.name FROM smg_subject_items i inner join smg_subject sb on i.subject_id=sb.id and sb.name="三项学习教育专题" inner join smg_news s on i.resource_id=s.id inner join smg_dept d on s.dept_id=d.id  group by s.dept_id order by djl desc');?>
+			<?php $deptsort = $db->query('SELECT sum(s.click_count) as djl,d.name FROM smg_subject_items i inner join smg_subject sb on i.subject_id=sb.id and sb.name="新三项学习教育专题" inner join smg_news s on i.resource_id=s.id inner join smg_dept d on s.dept_id=d.id  group by s.dept_id order by djl desc');?>
 			<div id=b_title1>
 				<div class=wz>学习热度</div>
 			</div>
