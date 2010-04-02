@@ -122,13 +122,14 @@
 				<div class=wz><img src="/images/sxxx/2.gif"></div>
 				<div class=more><a href="/subject/qyh/">more>></a></div>
 			</div>
+			<?php  $qyh = $db->query('select * from smg_news where category_id=194 order by priority asc, created_at desc');?>
 			<div id=c_r_t>
 				<div id=c_r_t_l>
-					<a target="_blank" href=""><img border=0 src="/images/sxxx/c_r_t_l.jpg" /></a>
+					<a target="_blank" href="/news/news/news.php?id=<?php echo $qyh[0]->id; ?>"><img border=0 src="<?php echo $qyh[0]->photo_src; ?>" /></a>
 				</div>
 				<div id=c_r_t_r>
-					<div id=c_r_t_r_title><a target="_blank" href="">提供捐助信息</a></div>
-					<div id=c_r_t_r_content><a target="_blank" href="">感谢各位朋友对于小桔灯活动的关注，如果您知道有学校需要帮助感谢各位朋友对于小桔灯活动的关注，如果您知道有学校需要帮助感谢各位朋友对于小桔灯活动的关注，如果您知道有学校需要帮助...</a></div>	
+					<div id=c_r_t_r_title><a target="_blank" href="/news/news/news.php?id=<?php echo $qyh[0]->id; ?>"><?php echo delhtml($qyh[0]->title); ?></a></div>
+					<div id=c_r_t_r_content><a target="_blank" href="/news/news/news.php?id=<?php echo $qyh[0]->id; ?>"><?php echo $qyh[0]->description; ?></a></div>	
 				</div>
 			</div>
 			<div id=dash></div>
