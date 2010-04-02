@@ -44,7 +44,7 @@
 		</div>
 		<div id=answer>
 			<div id=answer_name>姓名：　<input type="text" id="aname" name="aname" value="<?php echo $_COOKIE['smg_user_nickname']; ?>"></div>
-			<div id=answer_content>内容：　<textarea id="acontent" name="acontent"></textarea></div>
+			<div id=answer_content>内容：　<?php show_fckeditor('acontent','Admin',true,"200","","600");?></div>
 			<input id="qid" type="hidden" value="<?php echo $zd_question[0]->id; ?>">
 			<div id=answer_sub><button id="answersub" name="answersub"></button>　　<?php if($_COOKIE['smg_user_id']==""){ ?><a target="_blank" href="/login/login.php">登陆</a><?php } ?></div>
 		</div>
@@ -54,7 +54,7 @@
 		?>
 			<div class=answer_result>
 			<div class=l_title>积分最高回答</div>
-			<div class=a_content><?php echo $answer[0]->content; ?></div>
+			<div class=a_content><?php echo get_fck_content($answer[0]->content); ?></div>
 			<div class=a_add>
 				<button style="background:url('/images/zd/add1.jpg') no-repeat;" class="addbtn" param="1" param1="<?php echo $answer[0]->id;?>"></button>
 				<button style="background:url('/images/zd/add5.jpg') no-repeat;" class="addbtn" param="5" param1="<?php echo $answer[0]->id; ?>"></button>
@@ -71,7 +71,7 @@
 		?>
 		<div class=answer_result>
 			<div class=l_title>其他回答</div>
-			<div class=a_content><?php echo $answer1[$i]->content; ?></div>
+			<div class=a_content><?php echo get_fck_content($answer1[$i]->content); ?></div>
 			<div class=a_add>
 				<button style="background:url('/images/zd/add1.jpg') no-repeat;" class="addbtn" param="1" param1="<?php echo  $answer1[$i]->id; ?>" ></button>
 				<button style="background:url('/images/zd/add5.jpg') no-repeat;" class="addbtn" param="5" param1="<?php echo  $answer1[$i]->id; ?>"></button>
@@ -119,12 +119,15 @@
 			});
 		});
 		$("#answersub").click(function(){
-			if($("#acontent").val()=="")
+			var oEditor = FCKeditorAPI.GetInstance('acontent');
+			var content = oEditor.GetHTML();
+			if(content=="")
 			{
 				alert('请输入回答内容！');
 				return false;	
 			}
-			$.post('answer.post.php',{'qid':$("#qid").val(),'name':$("#aname").val(),'acontent':$("#acontent").val()},function(data){
+			
+			$.post('answer.post.php',{'qid':$("#qid").val(),'name':$("#aname").val(),'acontent':content},function(data){
 				if(data=="OK")
 				{
 					window.location.reload();	

@@ -14,12 +14,12 @@
 #answer{width:673px; height:355px; margin-top:10px; background:url('/images/zd/answer_bg.jpg') no-repeat; float:left; display:inline;}
 #answer #answer_name{width:623px; height:21px; margin-top:60px; margin-left:25px; line-height:21px; float:left; display:inline;}
 #answer #answer_name input{width:292px; height:19px; border:1px solid #999999;}
-#answer #answer_content{width:623px; height:164px; margin-top:10px; margin-left:25px; float:left; display:inline;}
+#answer #answer_content{width:623px; height:164px; margin-top:10px; margin-left:25px; overflow:hidden; float:left; display:inline;}
 #answer #answer_content textarea{width:513px; height:162px; border:1px solid #999999;}
 #answer #answer_sub{width:400px; height:22px; margin-top:20px; margin-left:70px; float:left; display:inline;}
 #answer #answer_sub button{width:76px; height:22px; border:0px; cursor:pointer; background:url('/images/zd/submit_bg.jpg') no-repeat;}
 .answer_result{width:673px; height:310px; margin-top:10px; background:url('/images/zd/answer_result_bg.jpg') no-repeat; float:left; display:inline;}
-.answer_result .a_content{width:647px; height:200px; margin-top:30px; margin-left:10px; line-height:20px; color:#000000; float:left; display:inline;}
+.answer_result .a_content{width:647px; height:200px; margin-top:30px; margin-left:10px; line-height:20px; color:#000000; overflow:hidden; float:left; display:inline;}
 .answer_result .a_add{width:647px; height:19px; margin-top:10px; margin-right:10px; line-height:19px; text-align:right; color:#666666; float:right; display:inline;}
 .answer_result .a_add button{width:79px; height:19px; margin-right:10px; border:0px; cursor:pointer;}
 
