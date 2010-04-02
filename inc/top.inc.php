@@ -218,7 +218,7 @@
 			}
 			else if(num==8)
 			{
-				location.href="http://blog.sina.com.cn/rtsnews";
+				location.href="http://172.27.203.81:8080/home/space.php?uid=3408&do=blog&view=me";
 			}
 			else if(num==9)
 			{
