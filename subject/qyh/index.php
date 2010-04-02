@@ -94,7 +94,7 @@
 									for($i=1;$i<$count;$i++){
 								?>
 				                <TD>
-										<div class=pic><img border=0 src="<?php echo $records[$i]->src; ?>"></div></TD>
+										<div class=pic><a target="_blank" href="/news/news_list.php?id=194"><img border=0 src="<?php echo $records[$i]->src; ?>"></a></div></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
 				          			<TD id="demo11" vAlign=top></TD></TR></TBODY></TABLE></DIV>
