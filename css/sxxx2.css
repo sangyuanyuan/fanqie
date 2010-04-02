@@ -80,10 +80,10 @@ body {font-family:ËÎÌו; font-size:12px; color:#434343; background:#c8c8c8;  marg
 #ibottom .b_title .more a{color:#ffffff; text-decoration:none;}
 #ibottom .b_l{width:98px; height:88px; margin-bottom:15px; margin-left:15px; border:1px solid #cccccc; background:#ffffff; overflow:hidden; float:left; display:inline;}
 #ibottom .b_l img{width:90px; height:80px; margin:4px;}
-#ibottom .b_r{width:112px; margin-right:10px; float:right; display:inline;}
-#ibottom .b_r .b_r_title{width:112px; height:18px; font-size:12px; line-height:18px; font-weight:bold; overflow:hidden; float:left; display:inline;}
+#ibottom .b_r{width:115px; margin-right:10px; float:right; display:inline;}
+#ibottom .b_r .b_r_title{width:115px; height:18px; font-size:12px; line-height:18px; font-weight:bold; overflow:hidden; float:left; display:inline;}
 #ibottom .b_r .b_r_title a{color:#000000; text-decoration:none;}
-#ibottom .b_r .b_r_content{width:112px; height:68px; margin-top:5px; line-height:17px; overflow:hidden; float:left; display:inline;}
+#ibottom .b_r .b_r_content{width:115px; height:68px; margin-top:5px; line-height:17px; overflow:hidden; float:left; display:inline;}
 #ibottom .b_r .b_r_content a{color:#333333; text-decoration:none;}
 #ibottom .b_b{width:200px; height:18px; margin-left:15px; line-height:18px; overflow:hidden; float:left; display:inline;}
 #ibottom .b_b a{color:#666666; text-decoration:none;}
