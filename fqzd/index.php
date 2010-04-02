@@ -118,7 +118,11 @@
 					alert(data);
 			});
 		});
-		$("")
+		$("#show_index").click(function(){
+			$.post('showindex.post.php',{'id':$("#qid").val()},function(data){
+				alert(data);
+			});
+		})
 		$("#answersub").click(function(){
 			var oEditor = FCKeditorAPI.GetInstance('acontent');
 			var content = oEditor.GetHTML();
