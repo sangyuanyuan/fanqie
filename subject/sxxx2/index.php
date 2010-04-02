@@ -109,7 +109,7 @@
 			<div id=c_l_title><a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>"><?php echo delhtml($bgt[0]->title); ?></a></div>
 			<div id=c_l_content><a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>"><?php echo delhtml($bgt[0]->description); ?></a></div>
 			<div id=dash></div>
-			<?php  for($i=1;$i<3;$i++){ 
+			<?php  for($i=1;$i<4;$i++){ 
 				if(count($bgt)==4){?>
 				<div class=cjlj><a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[$i]->id; ?>"><?php echo delhtml($bgt[$i]->title); ?></a></div>
 			<?php }else{?>
