@@ -15,12 +15,13 @@
 				alert('请输入内容！');
 				return false;
 			}
-			$.post("question.post.php",{
+			$.post("/fqzd/question.post.php",{
 				qtitle:$("#qtitle").val(),
 				qcontent:$("#qcontent").val(),
 				smg_uid:$("#user_id").val()
 			},function(data){
 				tb_remove();
+				window.location.reload();
 			})
 		})
 	})
