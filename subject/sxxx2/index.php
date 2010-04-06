@@ -225,11 +225,11 @@
 					$records = $db->query($sql);
 				?>
 				<div id=c_r_t_l>
-					<a target="_blank" href="/blog/?uid-<?php echo $record[0]->uid;?>"><img border=0 src="/images/sxxx/blog.jpg" /></a>
+					<a target="_blank" href="/blog/?uid-2312"><img border=0 src="/images/sxxx/blog.jpg" /></a>
 				</div>
 				<div id=c_r_t_r>
-					<div id=c_r_t_r_title><a target="_blank" href="/blog/?uid-<?php echo $record[0]->uid?>"><?php echo $record[0]->username; ?></a></div>
-					<div id=c_r_t_r_content><a target="_blank" href="/blog/index.php?uid-<?php echo $record[0]->uid;?>-action-viewspace-itemid-<?php echo $records[0]->itemid;?>"><?php echo $records[0]->subject; ?></a></div>	
+					<div id=c_r_t_r_title><a target="_blank" href="/blog/?uid-2312">爱潜水的鱼</a></div>
+					<div id=c_r_t_r_content><a target="_blank" href="/blog/?uid-2312-action-viewspace-itemid-1054">"三项学习教育"活动心得体会</a></div>	
 				</div>
 				<div id=c_r_b>
 					<?php for($i=1;$i<6;$i++){
