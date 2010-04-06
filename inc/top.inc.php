@@ -31,7 +31,7 @@
 	</div>
 </div>
 <div id=bannerimg>
-	<div id=nimg1>
+	<!--<div id=nimg1>
 		<div class=deptlogo name=1></div>
 		<div class=deptlogo name=2></div>
 		<div class=deptlogo name=3></div>
@@ -57,8 +57,8 @@
 		<div id=fd_r>
 			<a target="_blank" href="/news/news/news.php?id=<?php echo $banner[0]->id; ?>"><?php echo $banner[0]->title; ?></a>　<a target="_blank" href="/news/news/news.php?id=<?php echo $banner[1]->id; ?>"><?php echo $banner[1]->title; ?></a>
 		</div>	
-	</div>
-	
+	</div>-->
+	<img src="/images/yuanlei.jpg">
 </div>
 
 

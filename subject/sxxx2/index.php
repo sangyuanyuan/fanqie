@@ -225,7 +225,7 @@
 					$records = $db->query($sql);
 				?>
 				<div id=c_r_t_l>
-					<a target="_blank" href="/blog/?uid-<?php echo $record[0]->uid;?>"><img border=0 src="<?php echo $avatar;?>" /></a>
+					<a target="_blank" href="/blog/?uid-<?php echo $record[0]->uid;?>"><img border=0 src="/images/sxxx/blog.jpg" /></a>
 				</div>
 				<div id=c_r_t_r>
 					<div id=c_r_t_r_title><a target="_blank" href="/blog/?uid-<?php echo $record[0]->uid?>"><?php echo $record[0]->username; ?></a></div>
@@ -233,10 +233,10 @@
 				</div>
 				<div id=c_r_b>
 					<?php for($i=1;$i<6;$i++){
-							$sql = 'select t1.subject,t1.itemid from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 and uid='.$record[$i]->uid.' order by t1.lastpost desc limit 1';
+							$sql = 'select t1.subject,t1.itemid,t1.username from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 and uid='.$record[$i]->uid.' order by t1.lastpost desc limit 1';
 							$records = $db->query($sql);
 					?>
-					<div class=cl><a target="_blank" href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[0]->itemid;?>">·<?php echo $records[0]->subject ?></a></div>
+					<div class=cl><a target="_blank" href="/blog/index.php?uid-<?php echo $record[$i]->uid;?>-action-viewspace-itemid-<?php echo $records[0]->itemid;?>">·<?php echo $records[0]->username."：".$records[0]->subject; ?></a></div>
 					<?php } ?>
 				</div>
 			</div>
