@@ -232,7 +232,7 @@
 					<div id=c_r_t_r_content><a target="_blank" href="/blog/?uid-2312-action-viewspace-itemid-1054">"三项学习教育"活动心得体会</a></div>	
 				</div>
 				<div id=c_r_b>
-					<?php for($i=1;$i<6;$i++){
+					<?php for($i=0;$i<5;$i++){
 							$sql = 'select t1.subject,t1.itemid,t1.username from blog_spaceitems t1 join blog_categories t2 on t1.catid=t2.catid where t2.upid=93 and uid='.$record[$i]->uid.' order by t1.lastpost desc limit 1';
 							$records = $db->query($sql);
 					?>
