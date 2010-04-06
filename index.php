@@ -527,7 +527,7 @@ total("首页","other");
              <? }?>
  						</ul>-->
 						<div style="width:138px; height:50px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
- 							<a href="/subject/sxxx/" target=_blank><img src="/images/1.jpg" width="125px; height:20px;" border=0></a>
+ 							<a href="/subject/sxxx2/" target=_blank><img src="/images/1.jpg" width="125px; height:20px;" border=0></a>
  							<a style="line-height:15px; text-decoration:none; color:#000000" href="<?php echo "/".$record_import_c[0]->platform."/news/news.php?id=".$record_import_c[0]->id ?>" target="_blank"><?php echo $record_import_c[0]->short_title ?></a>
  						</div>
  					</div>	 
