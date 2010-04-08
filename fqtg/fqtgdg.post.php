@@ -8,7 +8,7 @@ $maxnum=$db->query($sql);
 $num=1000000;
 $sql="select * from smg_tg_signup where tg_id=".$_POST['tg_id'];
 $count=$db->query($sql);
-if($maxnum[0]->personmax=="")
+if($maxnum[0]->personmax==""||$maxnum[0]->personmax==0)
 {
 	if($maxnum[0]->maxnum!="")
 	{

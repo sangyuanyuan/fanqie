@@ -91,7 +91,7 @@
        	?>
        	<div id=content9>
        	<hr>
-       		<?php if($tg[0]->personmax==""||$tg[0]->personmax==0)
+       		<?php if($tg[0]->personmax=="")
 				{?>
        	 用户姓名：<input type="text" id="buyname" name="buyname"><br>
        	 您的部门：<select id="deptid" name="deptid">
