@@ -96,11 +96,11 @@ html,body{
                       <TD>
                       	<div class=s_left>
 	                      <? 
-						  	$video=$db->query('select n.id,n.title,n.photo_url,n.video_url from smg_video n where category_id=210 order by priority asc,created_at desc');
-						  	show_video_player(200,150,$video[0]->photo_url,$video[0]->video_url);
+						  	$video=$db->query('select n.video_photo_src,n.video_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="安全视频宣传" inner join smg_subject s on c.subject_id=s.id and s.name="世博安全平台" order by i.priority asc, n.created_at desc');
+						  	show_video_player(200,150,$video[0]->video_photo_src,$video[0]->video_src);
 						  ?>
 						  <? for($i=0;$i<count($video);$i++){?>
-						  <a target="_blank" href="/show/video.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->title;?></a>
+						  <a target="_blank" href="/news/news/news.php?id=<? echo $video[$i]->id;?>"><? echo $video[$i]->short_title;?></a>
 						  <? }?>
 							</div>	
                       </TD></TR></TBODY></TABLE></TD></TR>
