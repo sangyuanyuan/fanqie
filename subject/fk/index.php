@@ -155,7 +155,7 @@ html,body{
             <TABLE height=210 width="100%" border=0>
               <TBODY>
               <TR>
-              	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="国内外安全信息" inner join smg_subject s on c.subject_id=s.id and s.name="世博安全平台" order by i.priority asc, n.created_at desc limit 8');?>
+              	<?php $news = $db->query('select n.photo_src,n.id,n.short_title,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and i.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="国内外安全信息" inner join smg_subject s on c.subject_id=s.id and s.name="世博安全平台" order by i.priority asc, n.created_at desc limit 8');?>
                 <TD colSpan=2 class=index_title>国内外安全工作信息<a target="_blank" href="/news/news_list.php?type=fk&id=<?php echo $news[0]->cid; ?>">更多</a></TD></TR>
               <TR>
                 <TD width="20%" height=153>
