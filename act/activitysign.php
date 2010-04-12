@@ -3,14 +3,14 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -献血报名</title>
+	<title>SMG -报名</title>
 	<link href="/css/smg.css" rel="stylesheet" type="text/css">
 	<script language="javascript" src="activity.js"></script>
 	<?php require_once('../frame.php');
 		use_jquery();
 		js_include_once_tag('total'); ?>
 	<script>
-		total("献血报名","news");
+		total("报名","news");
 	</script>
 </head>
 <body>
@@ -27,7 +27,7 @@
 				<form name="uploadfiles" id="uploadfiles" enctype="multipart/form-data" action="activity.post.php" method="post">	
 				<table align="center">
 					<tr>
-						<td></td><td><input id="activities_id" name="activities_id" type="hidden" value="0"></td>
+						<td></td><td><input id="activities_id" name="activities_id" type="hidden" value="2"></td>
 					</tr>
 					<tr>
 						<td>姓名：</td>
@@ -51,17 +51,13 @@
 						<td align="left"><input id="sex" name="sex" type="radio" checked="true"  value="1"/>男<input id="sex" name="sex" type="radio" value="0" />女</td>
 					</tr>
 					<tr>
-						<td>年龄：</td>
-						<td align="left"><input id="age" name="age" type="text" />岁</td>
-					</tr>
-					<tr>
 						<td>联系电话：</td>
-						<td align="left"><input id="phone" name="phone" type="text" /></td>
+						<td align="left"><input id="phone" name="phone" type="text" />(请留长号码)</td>
 					</tr>
 					<tr>
 						<td align="left"><input id="xb" name="xb" type="hidden" /><input type="hidden" id="userid" name="userid" value="<? echo $cookie;?>"></td>
 					</tr>
-					<tr><td></td><td><button OnClick="signuppost()">提　交</button></td><td  align="center"><a href="list.php">查看报名情况</a></td></tr>
+					<tr><td></td><td><button OnClick="signuppost()">提　交</button></td><td  align="center"><a href="list.php?id=2">查看报名情况</a></td></tr>
 					<tr></tr>
 				</table>
 				</form>
