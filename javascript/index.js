@@ -112,7 +112,7 @@ $(function(){
 		window.location.href="http://172.27.203.81:8080/show/list.php?id=24&type=news"
 	});
 	$('#wybl_btn').click(function(){
-		window.open('http://172.27.203.81:8080/news/news/news_sub.php');
+		window.open('http://172.27.203.81:8080/news/news_sub.php');
 	});
 	
 });

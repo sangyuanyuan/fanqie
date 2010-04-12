@@ -827,7 +827,7 @@ total("首页","other");
  						$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
 						$record_industry=$db -> query($sql);
  						 for($i=0; $i<count($record_industry); $i++){?>
- 						<li><div style="width:200px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_out[$i]->short_title); ?>" href="/<?php echo $record_industry[$i]->platform ?>/news/news.php?id=<?php echo $record_industry[$i]->id ?>" target=_blank><?php echo $record_industry[$i]->short_title ?></a></div></li>
+ 						<li><div style="width:200px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_out[$i]->short_title); ?>" href="/<?php echo $record_industry[$i]->platform ?>/news/news.php?id=<?php echo $record_industry[$i]->news_id ?>" target=_blank><?php echo $record_industry[$i]->short_title ?></a></div></li>
  						<? }?>
  				  </ul>
  				</div>
