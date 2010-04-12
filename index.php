@@ -187,7 +187,7 @@ total("首页","other");
 			
  			<!-- start top_left_middle !-->
   		<?php
- 					$sql = 'select n.short_title, n.id as news_id, n.photo_src, c.platform,c.id as c_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
+ 					$sql = 'select n.short_title, n.title，n.id as news_id, n.photo_src, c.platform,c.id as c_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
 					$record_baoliao=$db -> query($sql);		
 			?>	 		
 			<div id=t_l_m>
@@ -206,20 +206,20 @@ total("首页","other");
  								{
  									$wybl=$i;
  								 ?>
- 							<a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="<?php echo $record_baoliao[$i]->photo_src; ?>"></a>
+ 							<a target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="<?php echo $record_baoliao[$i]->photo_src; ?>"></a>
  							<?php break; }} ?>
  						</div>
  						<div id=c_r>
  							<?php for($i=0;$i<6;$i++){?>
- 								<div class=crcl><a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="images/index/redjiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a></div>
+ 								<div class=crcl><a target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="images/index/redjiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a></div>
  							<?php } ?>
  						</div>
- 						<div id=imgtitle><a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$wybl]->news_id; ?>"><?php echo $record_baoliao[$wybl]->short_title; ?></a></div>
+ 						<div id=imgtitle><a target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$wybl]->news_id; ?>"><?php echo $record_baoliao[$wybl]->short_title; ?></a></div>
  					</div>
  					<div id=content_b>
  						<?php for($i=6;$i<28;$i++){ ?>
  						<div class=cbcl>
- 								<a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="images/index/jiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a>	
+ 								<a target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="images/index/jiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a>	
  						</div>
  						<?php } ?>
  					</div>
