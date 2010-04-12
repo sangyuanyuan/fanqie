@@ -106,7 +106,7 @@
 				<?php if($bgt[0]->video_src!=""){ show_video_player('253','200',$bgt[0]->video_photo_src,$bgt[0]->video_src);}else{ show_video_player('253','200',$xxyd[0]->photo_url,$xxyd[0]->video_url); } ?>	
 			</div>
 			<div id=c_l_title><!--<a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>">--><?php echo delhtml($bgt[0]->title); ?><!--</a>--></div>
-			<div id=c_l_content><!--<a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>">--><?php echo $bgt[0]->description; ?><!--</a>--></div>
+			<div id=c_l_content><!--<a target="_blank" href="/news/news/news.php?id=<?php echo $bgt[0]->id; ?>">--><?php echo delhtml($bgt[0]->description;) ?><!--</a>--></div>
 			<div id=dash></div>
 			<?php  for($i=1;$i<4;$i++){ 
 				if(count($bgt)==4){?>

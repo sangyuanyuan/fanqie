@@ -187,19 +187,44 @@ total("首页","other");
 			
  			<!-- start top_left_middle !-->
   		<?php
- 					$sql = 'select n.short_title, n.id as news_id, c.platform,c.id as c_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
+ 					$sql = 'select n.short_title, n.id as news_id, n.photo_src, c.platform,c.id as c_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
 					$record_baoliao=$db -> query($sql);		
 			?>	 		
 			<div id=t_l_m>
- 				<a href="/news/news_sub.php" id=btn target=_blank></a>
-				<div class=more><a target="_blank" href="/news/news_list.php?id=<?php echo $record_baoliao[0]->c_id; ?>">More</a></div>
-				<div id=content_trrm>
-					<ul>
-						<?php for($i=0;$i< 12;$i++){?>
-							<li><a title='<?php echo delhtml($record_baoliao[$i]->short_title); ?>' href="/<?php echo $record_baoliao[$i]->platform;?>/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id?>" target=_blank><span style="color:#ff0000">·</span><?php echo $record_baoliao[$i]->short_title ?></a></li>
-						<? }?>
-					</ul>		
-				</div>
+ 				<div id=title>
+ 					<div id=title_l>最火报料</div>
+ 					<div id=title_r><button id=wybl_btn></button></div>
+ 				</div>
+ 				<div id=content>
+ 					<div id=content_t>
+ 						<div id=title>热议话题</div>
+ 						<div id=c_l>
+ 							<?php
+ 								$wybl=-1;
+ 							 for($i=0;$i<count($record_baoliao);$i++){
+ 								if($record_baoliao[$i]->photo_src!="")
+ 								{
+ 									$wybl=$i;
+ 								 ?>
+ 							<a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->id; ?>"><img border=0 src="<?php echo $record_baoliao[$i]->photo_src; ?>"></a>
+ 							<?php break; }} ?>
+ 						</div>
+ 						<div id=c_r>
+ 							<?php for($i=0;$i<6;$i++){?>
+ 								<div class=crcl><a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->id; ?>"><img border=0 src="images/index/redjiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a></div>
+ 							<?php } ?>
+ 						</div>
+ 						<div id=imgtitle><a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$wybl]->id; ?>"><?php echo $record_baoliao[$wybl]->short_title; ?></a></div>
+ 					</div>
+ 					<div id=content_b>
+ 						<?php for($i=6;$i<28;$i++){ ?>
+ 						<div class=cbcl>
+ 								<a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->id; ?>"><img border=0 src="images/index/jiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a>	
+ 						</div>
+ 						<?php } ?>
+ 					</div>
+ 				</div>
+			
  			</div>
  			<!-- end !-->
 
@@ -210,10 +235,8 @@ total("首页","other");
 				$record_marrow=$db -> query($sql);
 				$sql = 'select n.id,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="新闻速读" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 8';
 				$record_quick=$db -> query($sql);
-				$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 8';
-				$record_industry=$db -> query($sql);
 			?>
-			<div id=t_l_b>
+			<!--<div id=t_l_b>
  				<div class=btn_tlb param=1 id=btn_tlb_1 style="background:url(/images/index/btn4-1.jpg) no-repeat"><a href="/news/news_list.php?tags=%E5%B0%8F%E7%BC%96%E5%8A%A0%E7%B2%BE" target=_blank>小编加精</a></div>
  				<div class=btn_tlb param=2 id=btn_tlb_2  style="background:url(/images/index/btn3-1.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_quick[0]->cid?>" target=_blank>新闻速读</a></div>
  				<div class=btn_tlb param=3 id=btn_tlb_3  style="background:url(/images/index/btn3-1.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_quick[0]->cid?>" target=_blank>业界动态</a></div>
@@ -239,7 +262,7 @@ total("首页","other");
  				  </ul>
  				</div>
 
- 			</div>
+ 			</div>-->
  			<!-- end !-->
 
 		</div>
@@ -796,47 +819,17 @@ total("首页","other");
 				$record_out=$db -> query($sql);
   		?>
   		<div id=t_r_r_m>
- 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_import_b[0]->cid?>" target=_blank>有图为证</a></div>
+ 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_import_b[0]->cid?>" target=_blank>业界动态</a></div>
  				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
  				<div class=list_tlm id=list_tlm1 style="display:inline;">
- 					<?php 
-	 					$picsurl10 = array();
-						$picslink10 = array();
-						$picstext10 = array();
-						for ($i=0;$i<2;$i++)
-						{
-							$picsurl10[]=$record_import_b[$i]->photo_src;
-							$picslink10[]='/'.$record_import_b[$i]->platform.'/news/news.php?id='.$record_import_b[$i]->id;
-							$picstext10[]= delhtml($record_import_b[$i]->short_title);
-						}
-					?>
- 					<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-					<div id="focus_10"></div> 
-					<script type="text/javascript"> 
-						var pic_width=190; //图片宽度
-						var pic_height=135; //图片高度
-						var pics10="<?php echo implode(',',$picsurl10);?>";
-						var mylinks10="<?php echo implode(',',$picslink10);?>";
-						
-						var texts10="<?php echo implode(',',$picstext10);?>";
-		 
-						var picflash = new sohuFlash("/flash/focus.swf", "focus_10", "190", "135", "6","#FFFFFF");
-						picflash.addParam('wmode','opaque');
-						picflash.addVariable("picurl",pics10);
-						picflash.addVariable("piclink",mylinks10);
-						picflash.addVariable("pictext",texts10);				
-						picflash.addVariable("pictime","5");
-						picflash.addVariable("borderwidth","190");
-						picflash.addVariable("borderheight","135");
-						picflash.addVariable("borderw","false");
-						picflash.addVariable("buttondisplay","true");
-						picflash.addVariable("textheight","20");
-						picflash.addVariable("textcolor","#FF0000");	
-						picflash.addVariable("pic_width",pic_width);
-						picflash.addVariable("pic_height",pic_height);
-						
-						picflash.write("focus_10");				
-					</script>
+ 					<ul>
+ 						<?php
+ 						$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
+						$record_industry=$db -> query($sql);
+ 						 for($i=0; $i<count($record_industry); $i++){?>
+ 						<li><div style="width:200px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_out[$i]->short_title); ?>" href="/<?php echo $record_industry[$i]->platform ?>/news/news.php?id=<?php echo $record_industry[$i]->id ?>" target=_blank><?php echo $record_industry[$i]->short_title ?></a></div></li>
+ 						<? }?>
+ 				  </ul>
  				</div>
  				<div class=list_tlm id=list_tlm2>
  					<ul>
