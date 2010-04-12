@@ -206,20 +206,20 @@ total("首页","other");
  								{
  									$wybl=$i;
  								 ?>
- 							<a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->id; ?>"><img border=0 src="<?php echo $record_baoliao[$i]->photo_src; ?>"></a>
+ 							<a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="<?php echo $record_baoliao[$i]->photo_src; ?>"></a>
  							<?php break; }} ?>
  						</div>
  						<div id=c_r>
  							<?php for($i=0;$i<6;$i++){?>
- 								<div class=crcl><a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->id; ?>"><img border=0 src="images/index/redjiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a></div>
+ 								<div class=crcl><a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="images/index/redjiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a></div>
  							<?php } ?>
  						</div>
- 						<div id=imgtitle><a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$wybl]->id; ?>"><?php echo $record_baoliao[$wybl]->short_title; ?></a></div>
+ 						<div id=imgtitle><a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$wybl]->news_id; ?>"><?php echo $record_baoliao[$wybl]->short_title; ?></a></div>
  					</div>
  					<div id=content_b>
  						<?php for($i=6;$i<28;$i++){ ?>
  						<div class=cbcl>
- 								<a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->id; ?>"><img border=0 src="images/index/jiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a>	
+ 								<a target="_blank" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="images/index/jiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a>	
  						</div>
  						<?php } ?>
  					</div>
