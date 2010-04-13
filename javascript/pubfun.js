@@ -50,7 +50,6 @@ function display_login(dom_id,admin){
 		if(!admin){
 			str = '<img src="/images/top/person.jpg">';
 		}
-		
 		str +='<div id=welcome>欢迎您：<span style="font-weight:bold;">';
 		str += $.cookie('smg_user_nickname') +'</span>';
 		if (!admin) {
