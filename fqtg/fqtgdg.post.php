@@ -2,11 +2,13 @@
 require_once('../frame.php');
 $db=get_db();
 $cookie="";
+
 $cookie=$_COOKIE['smg_user_nickname'];
 $sql="select maxnum,personmax from smg_tg where id=".$_POST['tg_id'];
 $maxnum=$db->query($sql);
 $num=1000000;
-$sql="select * from smg_tg_signup where tg_id=".$_POST['tg_id'];
+$postnum=(int)$_POST['num'];
+$sql="select sum(num) as num from smg_tg_signup where tg_id=".$_POST['tg_id'];
 $count=$db->query($sql);
 if($maxnum[0]->personmax==""||$maxnum[0]->personmax==0)
 {
@@ -14,8 +16,8 @@ if($maxnum[0]->personmax==""||$maxnum[0]->personmax==0)
 	{
 		$num=(int)$maxnum[0]->maxnum;
 	}
-	$postnum=(int)$_POST['num'];
-	if((count($count)+$postnum)<=$num)
+	$total=(int)$count[0]->num+$postnum;
+	if($total<=$num)
 	{
 		$StrSql='insert into smg_tg_signup(tg_id,name,spname,num,phone,address,createtime,remark,dept_id) values ('.$_POST['tg_id'].',"'.$_POST['buyname'].'","'.$_POST['spname'].'",'.$_POST['num'].',"'.$_POST['phone'].'","'.$_POST['address'].'",now(),"'.$_POST['remark'].'",'.$_POST['deptid'].')';
 		$Record = $db->execute($StrSql);
