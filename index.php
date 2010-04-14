@@ -509,13 +509,13 @@ total("首页","other");
  						</ul>								
  						<div class=space></div>
  						<ul>
- 						 <?php for($i=14; $i<25; $i++){?>
+ 						 <?php for($i=14; $i<18; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div <?php  if($record_import_a[$i]->image_flag==1||$record_import_a[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($record_import_a[$i]->video_flag!=1){ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php }else{ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news_video.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php } ?><?php if($record_import_a[$i]->image_flag==0 && $record_import_a[$i]->video_flag==0){ ?>.<?php } ?><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>								
  						<div class=space></div>
  						<ul>
- 						 <?php for($i=25; $i<29; $i++){?>
+ 						 <?php for($i=18; $i<22; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div <?php  if($record_import_a[$i]->image_flag==1||$record_import_a[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($record_import_a[$i]->video_flag!=1){ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php }else{ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news_video.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php } ?><?php if($record_import_a[$i]->image_flag==0 && $record_import_a[$i]->video_flag==0){ ?>.<?php } ?><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>
@@ -545,19 +545,19 @@ total("首页","other");
  					
  					<div id=r>
  						<ul>
- 						 <?php for($i=29; $i<30; $i++){?>
+ 						 <?php for($i=22; $i<23; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div <?php  if($record_import_a[$i]->image_flag==1||$record_import_a[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($record_import_a[$i]->video_flag!=1){ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php }else{ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news_video.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php } ?><?php if($record_import_a[$i]->image_flag==0 && $record_import_a[$i]->video_flag==0){ ?>.<?php } ?><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>
  						<ul>
- 						 <?php for($i=30; $i<34; $i++){?>
+ 						 <?php for($i=23; $i<27; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div <?php  if($record_import_a[$i]->image_flag==1||$record_import_a[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($record_import_a[$i]->video_flag!=1){ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php }else{ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news_video.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php } ?><?php if($record_import_a[$i]->image_flag==0 && $record_import_a[$i]->video_flag==0){ ?>.<?php } ?><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	 						
  						<div class=space></div>
  						<ul>
- 						 <?php for($i=34; $i<38; $i++){?>
+ 						 <?php for($i=27; $i<31; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div <?php  if($record_import_a[$i]->image_flag==1||$record_import_a[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($record_import_a[$i]->video_flag!=1){ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php }else{ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news_video.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php } ?><?php if($record_import_a[$i]->image_flag==0 && $record_import_a[$i]->video_flag==0){ ?>.<?php } ?><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
  						</ul>	 						
