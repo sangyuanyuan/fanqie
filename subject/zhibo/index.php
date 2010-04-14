@@ -1,10 +1,11 @@
 ﻿<?php
 	require_once('../../frame.php');
-	$id = $_REQUEST['id'];
+	$id = 1427;
 	$video = new table_class('smg_video');
 	$video->find($id);
 	$category = new table_class('smg_category');
 	$category->find($video->category_id);
+
 	//$y2k = mktime(0,0,0,1,1,2020); 
 	//$cookie_name = 'video_'.date("Y-m-d").'_'.$id;
 	//if($_COOKIE[$cookie_name]==''){
@@ -23,88 +24,46 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-展示-视频子页</title>
+	<title>SMG-番茄网-直播专题</title>
 	<?php
 		use_jquery();
 		css_include_tag('show_video','top','bottom');
 		js_include_tag('pubfun','total');
  	?>
 </head>
-<?php 
-	if($_COOKIE[$cookie_name]<200){
-?>
 <script>
-	total("<?php echo $category->name;?>","<?php echo $category->platform;?>");	
+	total("<?php echo $category->name;?>","other");	
 </script>
-<?php
-	}
-?>
+
 <body>
-<? require_once('../inc/top.inc.html');?>
+<? require_once('../../inc/top.inc.html');?>
 <div id=ibody>
 	  <div id=ibody_top>
-	  		<div id=t_l></div>
+	  	<div id=t_l></div>
 			<div id=t_c>
 				<div class=video>
-					<?php 
-						if($video->online_url!=''){
-							if(strpos($video->online_url,basename($_SERVER['PHP_SELF']))&&strpos($video->online_url,'id='.$id)){
-								alert('对不起，链接出错了！请联系管理员!');
-							}else{
-								redirect($video->online_url);
-							}
-						}
-						if($video->video_url!=''){
-							show_video_player('537','414',$video->photo_url,$video->video_url,$autostart = "false");
-						}else{
-					?>
-					<div class=error>对不起，你所访问的视频链接不存在，请与管理员联系！</div>
-					<?
-						}
-					?>
+					<OBJECT   id=MediaPlayer1   codeBase=http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701standby=Loading   type=application/x-oleobject   height=414   width=537   classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6   VIEWASTEXT> 
+						<PARAM   NAME= "URL"   VALUE= "<?php echo $video->online_url; ?>"> 
+						<PARAM   NAME= "playCount"   VALUE= "1"> 
+						<PARAM   NAME= "autoStart"   VALUE= "true"> 
+						<PARAM   NAME= "invokeURLs"   VALUE= "false">
+						<PARAM   NAME= "uiMode"   VALUE= "Full">
+						<PARAM   NAME= "EnableContextMenu"   VALUE= "true">			
+						<embed src="<?php echo $video->online_url; ?>" align="baseline" border="0" width="537" height="414" type="application/x-mplayer2"pluginspage="" name="MediaPlayer1" showcontrols="1" showpositioncontrols="0" showaudiocontrols="1" showtracker="1" showdisplay="0" showstatusbar="1" autosize="0" showgotobar="0" showcaptioning="0" autostart="false" autorewind="0" animationatstart="0" transparentatstart="0" allowscan="1" enablecontextmenu="1" clicktoplay="0" defaultframe="datawindow" invokeurls="0"></embed> 
+					</OBJECT>
 				</div>
-				<div class=digg>
-					<div id="flower" title="送鲜花">
-						<?php echo $video->flower;?>
-						<input type="hidden" id="hidden_flower" value="<?php echo $video->flower!=''?$video->flower:0;?>">
-					</div>
-					<div id="tomato" title="丢番茄">
-						<?php echo $video->tomato;?>
-						<input type="hidden" id="hidden_tomato" value="<?php echo $video->tomato!=''?$video->tomato:0;?>">
-					</div>
-					<input type="hidden" id="video_id" value="<?php echo $id;?>">
-				</div>
+			
 			</div>
 			<div id=t_r>
 			</div>
 	  </div>
 	 	<div id=ibody_left>
-	 	  	<div id=l_t>
-	 	  		<div class=title>视频信息</div>
-				<div class=content><span></span>
-					<div class=top>
-						<div id=name>视频名称：<?php echo $video->title;?></div>
-					</div>
-					<div class=center>
-						<div class=left>
-							<div class=title>发布者：</div>
-							<div id=publisher><?php echo$video->publisher;?></div>
-						</div>
-						<div class=middle>
-							<div class=title>发布于：</div>
-							<div id=date><?php echo substr($video->created_at, 0, 10);?></div>
-						</div>
-						<div class=right>
-							<div class=title>该视频被播放：</div>
-							<div id=count><?php echo $video->click_count;?></div>
-						</div>
-					</div>
-					<div class=bottom>
-						<div class=title>视频简介：</div>
-						<div id=description><?php echo $video->description;?></div>
-					</div>
+	 	  <div id=l_t>
+	 	  	<div class=title style="font-weight:bold;">直播简介</div>
+				<div class=content>
+						<p style="margin-left:10px;"><?php echo $video->description; ?></p>
 				</div>
-	 	  	</div>
+	 	  </div>
 			<div id=l_b>
 				<?php 
 					$comment = new table_class('smg_comment');
@@ -113,7 +72,7 @@
 					$records = $comment->paginate('all',array('conditions' => 'resource_type="video" and resource_id='.$id,'order' => 'created_at desc'),10);
 					$count = count($records);
 				?>
-				<div class=title>网友评论（<?php echo $count2;?>）</div>
+				<div class=title style="font-weight:bold;">网友评论（<?php echo $count2;?>）</div>
 				<?php for($i=0;$i<$count;$i++){ ?>
 				<div class=content>
 					<div class=nick_name><?php echo $records[$i]->nick_name;?></div>
@@ -126,8 +85,8 @@
 					<form id="comment_form" action="/pub/pub.post.php" method="post">
 						<div class=title>发表评论</div>
 						<div id=commenter_box><input type="text" id="c_n_n" name="post[nick_name]">请输入昵称</div>
-						<input type="hidden" name="post[resource_id]" value="<?php echo $id;?>">
-						<input type="hidden" name="post[resource_type]" value="video">
+						<input type="hidden" name="post[qs]" value="1">
+						<input type="hidden" name="post[resource_type]" value="zhibo">
 						<input type="hidden" name="type" value="comment">
 						<div id="commit_fck"><?php show_fckeditor('post[comment]','Title',false,'75','','540');?></div>
 						<div id=fqbq></div>
@@ -138,91 +97,21 @@
 		  </div>
 			
 		<div id=ibody_right>
-					<?php 
-						$db = get_db();
-						$sql = 'select * from smg_video where is_adopt=1 and publisher="'.$video->publisher.'" and id!='.$id.' limit 6';
-						$records = $db->query($sql);
-						$count = count($records);
-					?>
-			  	<div id=r_t <?php if($count==0){?>style="display:none;"<?php } ?>>
-			  		<div class=title>更多该用户的视频</div>
-		  			<?php 
-						for($i=0;$i<$count;$i++) {
-					?>
-					<div class=content>
-						<div class=box>
-							<div class=photo>
-								<a  href="video.php?id=<?php echo $records[$i]->id;?>">
-									<img src="<?php echo $records[$i]->photo_url;?>" width="90" height="56" border=0>
-								</a>
-							</div>
-						</div>
-						<div class=title><a  href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					</div>
-					<?
-						}
-					?>
-			  	</div>
 				<div id=r_b>
 					<?php 
 						$db = get_db();
-						$keywords = explode(",", $video->keywords);
-						if(count($keywords==0))$keywords = explode("，", $video->keywords);
-						$key_count = count($keywords);
-						$sql = 'select * from smg_video where id!='.$id;
-						if($key_count>0){
-							if($keywords[0]!=''){
-								$sql = $sql.' and keywords like "%'.$keywords[0].'%"';
-							}
-							for($i=1;$i<$key_count;$i++){
-								$sql = $sql.' or keywords like "%'.$keywords[$i].'%"';
-							}
-						}
-						$sql = $sql." limit 12";
-						$records = $db->query($sql);
-						$count = count($records);
+						
 					?>
-					<div class=title>相关视频</div>
-			  		<?php 
-						for($i=0;$i<$count;$i++) {
-					?>
-					<div class=content>
-						<div class=box>
-							<div class=photo>
-								<a  href="video.php?id=<?php echo $records[$i]->id;?>">
-									<img src="<?php echo $records[$i]->photo_url;?>" width="90" height="56" border=0>
-								</a>
-							</div>
-						</div>
-						<div class=title><a  href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					</div>
-					<?php
-						}
-						if($count<12){
-							$count = 12-$count;
-							$sql = 'select * from smg_video where id!='.$id.' order by rand() limit '.$count;
-							$records = $db->query($sql);
-							$count = count($records);
-							for($i=0;$i<$count;$i++) {
-					?>
-					<div class=content>
-						<div class=box>
-							<div class=photo>
-								<a  href="video.php?id=<?php echo $records[$i]->id;?>">
-									<img src="<?php echo $records[$i]->photo_url;?>" width="90" height="56" border=0>
-								</a>
-							</div>
-						</div>
-						<div class=title><a href="video.php?id=<?php echo $records[$i]->id;?>"><?php echo strip_tags($records[$i]->title);?></a></div>
-					</div>
-					<?php }
-						}
-					?>
-			  	</div>
+					<div class=title style="font-weight:bold;">相关新闻</div>
+			  	<div class=pic><a target="_blank" href=""><img border=0 src=""></a></div>
+			  	<div class=piccontent><a target="_blank" href="">testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</a></div>
+			  	<?php for($i=0;$i<3;$i++){ ?>
+			  		<div class=piclist><a target="_blank" href="">test</a></div>
+			  	<?php } ?>
 		</div>
 		
 </div>
-<? require_once('../inc/bottom.inc.php');?>
+<? require_once('../../inc/bottom.inc.php');?>
 
 
 </body>
@@ -254,30 +143,5 @@
 			$("#comment_form").submit();
 		})
 		
-		$("#flower").click(function(){
-			flower_num++;
-			$("#hidden_flower").attr('value',flower_num);
-			$(this).html(flower_num);
-			$.post("/pub/pub.post.php",{'type':'flower','id':$("#video_id").attr('value'),'db_table':'smg_video','digg_type':'video'},function(data){
-				if(data!=''){
-					alert(data);
-				}else{
-					total("<?php echo $category->name;?>digg","<?php echo $category->platform;?>");	
-				}
-			});
-		});
-		
-		$("#tomato").click(function(){
-			tomato_num++;
-			$("#hidden_tomato").attr('value',tomato_num);
-			$(this).html(tomato_num);
-			$.post("/pub/pub.post.php",{'type':'tomato','id':$("#video_id").attr('value'),'db_table':'smg_video','digg_type':'video'},function(data){
-				if(data!=''){
-					alert(data);
-				}else{
-					total("<?php echo $category->name;?>digg","<?php echo $category->platform;?>");	
-				}
-			});
-		})
 	});
 </script>
