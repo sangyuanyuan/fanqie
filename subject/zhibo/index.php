@@ -106,7 +106,7 @@
 					<div class=title style="font-weight:bold;">相关新闻</div>
 			  	<div class=pic><a target="_blank" href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 src="<?php echo $news[0]->photo_src;?>"></a></div>
 			  	<div class=piccontent><a target="_blank" href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><?php echo $news[0]->description; ?></a></div>
-			  	<?php for($i=0;$i<3;$i++){ ?>
+			  	<?php for($i=1;$i<count($news);$i++){ ?>
 			  		<div class=piclist><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title;?></a></div>
 			  	<?php } ?>
 		</div>
