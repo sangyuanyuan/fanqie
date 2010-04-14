@@ -1,6 +1,7 @@
 ﻿<?php
 	require_once('../../frame.php');
 	$id = 1427;
+	$qs=1;
 	$video = new table_class('smg_video');
 	$video->find($id);
 	$category = new table_class('smg_category');
@@ -67,9 +68,9 @@
 			<div id=l_b>
 				<?php 
 					$comment = new table_class('smg_comment');
-					$records = $comment->find('all',array('conditions' => 'resource_type="video" and resource_id='.$id));
+					$records = $comment->find('all',array('conditions' => 'resource_type="video" and zbqs='.$qs));
 					$count2 = count($records);
-					$records = $comment->paginate('all',array('conditions' => 'resource_type="video" and resource_id='.$id,'order' => 'created_at desc'),10);
+					$records = $comment->paginate('all',array('conditions' => 'resource_type="video" and zbqs='.$qs,'order' => 'created_at desc'),10);
 					$count = count($records);
 				?>
 				<div class=title style="font-weight:bold;">网友评论（<?php echo $count2;?>）</div>
@@ -85,7 +86,7 @@
 					<form id="comment_form" action="/pub/pub.post.php" method="post">
 						<div class=title>发表评论</div>
 						<div id=commenter_box><input type="text" id="c_n_n" name="post[nick_name]">请输入昵称</div>
-						<input type="hidden" name="post[qs]" value="1">
+						<input type="hidden" name="post[zbqs]" value="1">
 						<input type="hidden" name="post[resource_type]" value="zhibo">
 						<input type="hidden" name="type" value="comment">
 						<div id="commit_fck"><?php show_fckeditor('post[comment]','Title',false,'75','','540');?></div>
@@ -100,13 +101,13 @@
 				<div id=r_b>
 					<?php 
 						$db = get_db();
-						
+						$news=$db->query('select * from smg_news where category_id=214 and is_adopt=1 order by priority asc ,created_at desc');
 					?>
 					<div class=title style="font-weight:bold;">相关新闻</div>
-			  	<div class=pic><a target="_blank" href=""><img border=0 src=""></a></div>
-			  	<div class=piccontent><a target="_blank" href="">testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</a></div>
+			  	<div class=pic><a target="_blank" href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><img border=0 src="<?php echo $news[0]->photo_src;?>"></a></div>
+			  	<div class=piccontent><a target="_blank" href="/news/news/news.php?id=<?php echo $news[0]->id; ?>"><?php echo $news[0]->description; ?></a></div>
 			  	<?php for($i=0;$i<3;$i++){ ?>
-			  		<div class=piclist><a target="_blank" href="">test</a></div>
+			  		<div class=piclist><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title;?></a></div>
 			  	<?php } ?>
 		</div>
 		
@@ -119,8 +120,6 @@
 
 <script>
 	$(function(){
-		var flower_num = $("#hidden_flower").attr('value');
-		var tomato_num = $("#hidden_tomato").attr('value');
 		
 		display_fqbq('fqbq','post[comment]');
 		
