@@ -40,7 +40,7 @@ li{margin:0px; list-style-type:none;}
 #l_t .content .top #name{width:550px; height:30px; margin-left:15px;line-height:25px;  float:left; display:inline; overflow:hidden;}
 
 #l_b{width:570px; margin-top:10px; padding-bottom:30px; background:#E8E7E3; border:10px solid #F37916; float:left; display:inline;}
-#l_b .title{width:530px; height:10px; padding:10px; line-height:15px; font-size:15px; font-family:黑体; float:left; display:inline;}
+#l_b .title{width:530px; height:10px; padding:10px; line-height:15px; font-size:15px;  float:left; display:inline;}
 #l_b .content{width:550px; padding-bottom:5px; font-size:13px; margin-left:10px; border-top:1px solid #dddddd; color:#666666; float:left; display:inline;}
 #l_b .content .nick_name{width:auto; height:20px; margin-left:10px; margin-top:10px; color:#0093BB; font-size:13px; overflow:hidden; line-height:20px; float:left; display:inline;}
 #l_b .content .time{width:300px; height:20px; margin-top:10px; margin-left:10px; color:#666666; font-size:13px; overflow:hidden; line-height:20px; float:left; display:inline;}
