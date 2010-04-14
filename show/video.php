@@ -138,7 +138,7 @@
 		  </div>
 			
 		<div id=ibody_right>
-			<div id="up_pic"><a href="show_sub.php?type=video"  ><img src="/images/show/video_up2.jpg" width="390" height="130" border=0></a></div>
+			<div id="up_pic"><a href="show_sub.php?type=video"  ><img src="/images/show/video_up2.jpg" width="370" height="130" border=0></a></div>
 					<?php 
 						$db = get_db();
 						$sql = 'select * from smg_video where is_adopt=1 and publisher="'.$video->publisher.'" and id!='.$id.' limit 6';
