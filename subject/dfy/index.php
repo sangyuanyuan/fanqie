@@ -110,7 +110,7 @@
 				人员将悉数到场，接受媒体访问，晚间19点还将参与影片首映典礼的
 				节目录制，前30位点击报名者将参与活动录制、与明星现场互动！
 			</div>
-			<div id=b_content3><a target="_blank" href="">点击此处报名！</a></div>
+			<div id=b_content3><a target="_blank" href="/fqtg/fqtg.php?id=141">点击此处报名！</a></div>
 		</div>
 	</div>
 </body>
