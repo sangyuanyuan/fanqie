@@ -394,7 +394,7 @@ total("首页","other");
 					$zb='select target_url from smg_news where category_id=209 and is_adopt=1 order by priority asc ,created_at desc limit 1'
 				?>		
 				<div id=content1 <?php if($zhibo[0]->state==0){ ?>style="width:350px;"<? }?>><a href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a>　<?php if($zhibo[0]->state==0){ ?><a href="<?php echo "/".$record_import[1]->platform."/news/news.php?id=".$record_import[1]->id ?>" target="_blank"><?php echo $record_import[1]->short_title; ?></a><?php } ?></div>
- 				<?php if($zhibo[0]->state==1){ ?><a href="<?php echo $zb[0]->target_url; ?>" id=btn ></a><?php } else{?><!--<a target="_blank" style="margin-top:10px; margin-left:10px; font-weight:bold; line-height:20px; color:red; text-decoration:underline; float:left; display:inline;" href="/news/news/news.php?id=28775">献血报名</a>--><?php } ?>
+ 				<?php if($zhibo[0]->state==1){ ?><a href="/subject/zhibo/" id=btn ></a><?php } else{?><!--<a target="_blank" style="margin-top:10px; margin-left:10px; font-weight:bold; line-height:20px; color:red; text-decoration:underline; float:left; display:inline;" href="/news/news/news.php?id=28775">献血报名</a>--><?php } ?>
  				<?php
 
 					$sql = 'select * from smg_news_show;';
