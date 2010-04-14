@@ -68,9 +68,9 @@
 			<div id=l_b>
 				<?php 
 					$comment = new table_class('smg_comment');
-					$records = $comment->find('all',array('conditions' => 'resource_type="video" and zbqs='.$qs));
+					$records = $comment->find('all',array('conditions' => 'resource_type="zhibo" and zbqs='.$qs));
 					$count2 = count($records);
-					$records = $comment->paginate('all',array('conditions' => 'resource_type="video" and zbqs='.$qs,'order' => 'created_at desc'),10);
+					$records = $comment->paginate('all',array('conditions' => 'resource_type="zhibo" and zbqs='.$qs,'order' => 'created_at desc'),10);
 					$count = count($records);
 				?>
 				<div class=title style="font-weight:bold;">网友评论（<?php echo $count2;?>）</div>
