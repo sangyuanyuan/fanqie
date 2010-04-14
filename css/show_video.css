@@ -23,7 +23,7 @@ li{margin:0px; list-style-type:none;}
 
 
 #l_t{width:570px; padding-bottom:10px; background:#E8E7E3; border:10px solid #F37916; float:left; display:inline;}
-#l_t .title{width:550px; height:10px; padding:10px; line-height:15px; font-size:15px; float:left; display:inline;}
+#l_t .title{width:550px; height:20px; padding:10px; line-height:20px; font-size:15px; float:left; display:inline;}
 #l_t .content{width:570px; font-size:13px; line-height:15px; color:#666666; float:left; display:inline;}
 #l_t .content .title{width:auto; height:auto; padding:0; margin-left:15px; font-size:13px; float:left; display:inline;}
 #l_t .content .bottom{width:570px; padding-bottom:10px; float:left; display:inline;}
@@ -66,7 +66,7 @@ li{margin:0px; list-style-type:none;}
 #r_t .content .title a{color:#0093BB;}
 
 #r_b{width:330px;  margin-top:10px; padding:10px; background:#E8E7E3; border:10px solid #F37916; overflow:hidden; float:left; display:inline;}
-#r_b .title{width:300px; height:20px; line-height:15px; font-size:15px; float:left; display:inline;}
+#r_b .title{width:300px; height:20px; line-height:20px; font-size:15px; float:left; display:inline;}
 #r_b .more{height:20px; line-height:15px; font-size:15px; float:right; display:inline; }
 #r_b .more a{color:#FF6600; text-decoration:none;}
 #r_b .content{width:100px; height:100px; margin:4px; overflow:hidden; float:left; display:inline;}
