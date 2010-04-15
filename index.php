@@ -630,10 +630,21 @@ total("首页","other");
  			<!-- start top_right_center_bottom_right !-->
   		
 			<div id=t_r_c_b_r>
+				<?php
+				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
+				$record_out=$db -> query($sql);
+				 ?>
+				<div class=box1 style="height:60px;">
+					<ul>
+						<?php for($i=0;$i<3;$i++){ ?>
+							<li><a style="margin-top:5px; margin-right:5px; font-weight:bold; text-decoration:none;" target="_blank" href="/server/news/news.php?id=<?php echo $record_out[$i]->id; ?>"><?php echo $record_out[$i]->short_title; ?></a></li>
+						<?php } ?>
+					</ul>
+				</div>
 				<a target="_blank" href="/news/newscenter_list.php"><img border="0" src="/images/newscenterlogo.jpg"></a>
 					<!--<div id=title></div>
 					<a href="/news/news_list.php?id=64" id=more target=_blank></a>-->
-					<div id=box1 style="margin-top:10px;">
+					<div class=box1 style="margin-top:10px;">
 						<a target="_blank" href="/sslfx/"><img border=0 src="/images/index/rating_logo.jpg"></a><br>
 						<ul>
 							<li><a style="margin-top:5px; margin-right:5px; color:red; font-weight:bold; text-decoration:none;" target="_blank" href="/news/news_list.php?id=64">更多番茄工具</a></li>
@@ -802,30 +813,25 @@ total("首页","other");
  			</div>
  			<!-- end !-->			
  			<!-- start top_right_right_middle !-->
- 			<?php
-				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="对外出击" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
-				$record_out=$db -> query($sql);
-  		?>
   		<div id=t_r_r_m>
- 				<div class=btn_tlm param=1 id=btn_tlm_1 style="background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_import_b[0]->cid?>" target=_blank>业界动态</a></div>
- 				<div class=btn_tlm param=2 id=btn_tlm_2 style="background:url(/images/index/btn3.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_out[0]->cid?>" target=_blank>对外出击</a></div>
+ 				<div class=btn_tlm param=1 id=btn_tlm_1 style="margin-left:60px;background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_import_b[0]->cid?>" target=_blank>番茄声音</a></div>
  				<div class=list_tlm id=list_tlm1 style="display:inline;">
  					<ul>
  						<?php
- 						$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
+ 						$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄声音" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc';
 						$record_industry=$db -> query($sql);
  						 for($i=0; $i<count($record_industry); $i++){?>
- 						<li><div style="width:200px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_out[$i]->short_title); ?>" href="/<?php echo $record_industry[$i]->platform ?>/news/news.php?id=<?php echo $record_industry[$i]->news_id ?>" target=_blank><?php echo $record_industry[$i]->short_title ?></a></div></li>
+ 						<li><div style="width:200px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_industry[$i]->short_title); ?>" href="/<?php echo $record_industry[$i]->platform ?>/news/news.php?id=<?php echo $record_industry[$i]->news_id ?>" target=_blank><?php echo $record_industry[$i]->short_title ?></a></div></li>
  						<? }?>
  				  </ul>
  				</div>
- 				<div class=list_tlm id=list_tlm2>
+ 				<!--<div class=list_tlm id=list_tlm2>
  					<ul>
  						<?php for($i=0; $i<count($record_out); $i++){?>
  						<li><div style="width:200px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_out[$i]->short_title); ?>" href="/<?php echo $record_out[$i]->platform ?>/news/news.php?id=<?php echo $record_out[$i]->id ?>" target=_blank><?php echo $record_out[$i]->short_title ?></a></div></li>
  						<? }?>
  				  </ul>
- 				</div>
+ 				</div>-->
  			</div>
  			<!-- end !-->						
 

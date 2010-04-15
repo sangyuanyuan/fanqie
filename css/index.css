@@ -111,10 +111,10 @@ p{margin:0px; padding:0px;}
 #t_r_c_b_r{width:195px; height:185px; margin-top:5px; margin-left:5px; background:url(/images/index/bg_t_r_c_b_r.jpg) no-repeat; float:left; display:inline;}
 #t_r_c_b_r #title{width:145px; height:33px; margin-top:5px; background:url(/images/index/title2.gif) no-repeat; float:left; display:inline;}
 #t_r_c_b_r #more{width:30px; height:7px; margin-top:15px; margin-right:20px; background:url(/images/index/more1.gif) no-repeat; float:right; display:inline;}
-#t_r_c_b_r #box1{width:195px; height:60px;  margin-top:5px;  float:left; display:inline;}
-#t_r_c_b_r #box1 img{width:175px; height:50px; margin-left:10px; float:left; display:inline}
-#t_r_c_b_r #box1 li{width:185px; height:18px; font-size:12px; line-height:18px; text-align:right; color:#666666; overflow:hidden; float:left; display:inline;}
-#t_r_c_b_r #box1 li a{color:red; text-decoration:none;}
+#t_r_c_b_r .box1{width:195px; height:60px;  margin-top:5px;  float:left; display:inline;}
+#t_r_c_b_r .box1 img{width:175px; height:50px; margin-left:10px; float:left; display:inline}
+#t_r_c_b_r .box1 li{width:185px; height:18px; font-size:12px; line-height:18px; text-align:right; color:#666666; overflow:hidden; float:left; display:inline;}
+#t_r_c_b_r .box1 li a{color:#666666; text-decoration:none;}
 #t_r_c_b_r #box2{width:195px; height:60px; margin-top:5px;  float:left; display:inline;}
 #t_r_c_b_r #box2 li{width:185px; height:18px; margin-left:5px; font-size:12px; line-height:18px; color:#666666; overflow:hidden; float:left; display:inline;}
 #t_r_c_b_r #box2 li a{color:#666666; text-decoration:none;}
