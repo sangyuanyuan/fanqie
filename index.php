@@ -632,7 +632,7 @@ total("首页","other");
 				<div class="cl"><a target="_blank" <?php if((int)$jmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=134">节目观察周刊</a></div>
 				<div class="cl"><a target="_blank" <?php if((int)$cmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=135">传媒观察周刊</a></div>
 				<div class="cl"><a target="_blank" <?php if((int)$fzyjzb[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=136">发展研究专报</a></div>
-				<a target="_blank" href="/news/newscenter_list.php" style="margin-top:5px;"><img width=90 height=30 src="images/34.jpg"></a>
+				<a target="_blank" href="/news/newscenter_list.php" style="margin-top:5px;"><img border=0 width=90 height=30 src="images/34.jpg"></a>
 			</div>
 			
 
