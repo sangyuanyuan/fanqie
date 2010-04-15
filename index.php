@@ -814,12 +814,14 @@ total("首页","other");
  			<!-- end !-->			
  			<!-- start top_right_right_middle !-->
   		<div id=t_r_r_m>
- 				<div class=btn_tlm param=1 id=btn_tlm_1 style="margin-left:60px;background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_import_b[0]->cid?>" target=_blank>番茄声音</a></div>
+  			<?php $sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄声音" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc';
+						$record_industry=$db -> query($sql); ?>
+ 				<div class=btn_tlm param=1 id=btn_tlm_1 style="margin-left:20px;background:url(/images/index/btn4.jpg) no-repeat"><a href="/news/news_list.php?id=<?php echo $record_industry[0]->cid?>" target=_blank>番茄声音</a></div>
+ 				<div class=btn_tlm id=btn_tlm_1 style="width:67px; height:19px; background:url(/images/index/btn4a.jpg) no-repeat"><a target="_blank" href="/bbs/forumdisplay.php?fid=16" target=_blank>发声音</a></div>
  				<div class=list_tlm id=list_tlm1 style="display:inline;">
  					<ul>
  						<?php
- 						$sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄声音" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc';
-						$record_industry=$db -> query($sql);
+ 						
  						 for($i=0; $i<count($record_industry); $i++){?>
  						<li><div style="width:200px; height:20px; line-height:20px; float:left; display:inline;"><span style="color:#CCCCCC">·</span><a title="<?php echo delhtml($record_industry[$i]->short_title); ?>" href="/<?php echo $record_industry[$i]->platform ?>/news/news.php?id=<?php echo $record_industry[$i]->news_id ?>" target=_blank><?php echo $record_industry[$i]->short_title ?></a></div></li>
  						<? }?>
