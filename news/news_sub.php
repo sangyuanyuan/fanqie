@@ -87,7 +87,7 @@
 				alert('请填写新闻内容!');
 				return false;
 			}
-			if(content.length > 10000){
+			if(content.length > 15000){
 				alert('新闻内容太长,请联系管理员');
 				return false;
 			}
