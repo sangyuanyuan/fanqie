@@ -544,6 +544,14 @@ total("首页","other");
  					</div>	 
  					
  					<div id=r>
+ 						<!--<?php $gt=$db->query('select short_title,id from smg_news where category_id=216 and is_adopt=1 order by priority asc,created_at desc limit 9') ?>
+ 						<div style="width:137px; height:170px; padding:3px; padding-left:4px; border:1px solid #ff0000; overflow:hidden; float:left; display:inline">
+ 								<a href="/news/news_list.php?id=216" target=_blank><img src="/images/index/greentomato.jpg" width="135" height="31" border=0></a>
+ 								<?php for($i=0;$i<count($gt);$i++){ ?>
+ 								<div style="width:137px; height:15px; line-height:15px; overflow:hidden; float:left; display:inline;"><a style="text-decoration:none; color:#000000" href="<?php echo "/news/news/news.php?id=".$gt[$i]->id ?>" target="_blank">test<?php echo delhtml($gt[$i]->short_title); ?></a></div>
+ 								<?php } ?>
+ 						</div>
+ 						<div class=space></div>-->
  						<ul>
  						 <?php for($i=22; $i<23; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div <?php  if($record_import_a[$i]->image_flag==1||$record_import_a[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($record_import_a[$i]->video_flag!=1){ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php }else{ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news_video.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php } ?><?php if($record_import_a[$i]->image_flag==0 && $record_import_a[$i]->video_flag==0){ ?>.<?php } ?><?php echo $record_import_a[$i]->short_title ?></a></div></li>
@@ -560,7 +568,7 @@ total("首页","other");
  						 <?php for($i=27; $i<31; $i++){?>
  							<li <?php if($record_import_a[$i]->image_flag||$record_import_a[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($record_import_a[$i]->image_flag)?><?php show_video2($record_import_a[$i]->video_flag)?></div><div <?php  if($record_import_a[$i]->image_flag==1||$record_import_a[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($record_import_a[$i]->video_flag!=1){ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php }else{ ?><a <? news_date($record_import_a[$i]->created_at,$days)?> href="<?php echo "/".$record_import_a[$i]->platform."/news/news_video.php?id=".$record_import_a[$i]->id ?>" target="_blank" ><?php } ?><?php if($record_import_a[$i]->image_flag==0 && $record_import_a[$i]->video_flag==0){ ?>.<?php } ?><?php echo $record_import_a[$i]->short_title ?></a></div></li>
              <? }?>
- 						</ul>	 						
+ 						</ul>						
  						<div class=space></div>
      				<!--<ul>
  						 <?php for($i=20; $i<24; $i++){?>
@@ -624,6 +632,7 @@ total("首页","other");
 				<div class="cl"><a target="_blank" <?php if((int)$jmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=134">节目观察周刊</a></div>
 				<div class="cl"><a target="_blank" <?php if((int)$cmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=135">传媒观察周刊</a></div>
 				<div class="cl"><a target="_blank" <?php if((int)$fzyjzb[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=136">发展研究专报</a></div>
+				<a target="_blank" href="/news/newscenter_list.php" style="margin-top:5px;"><img width=90 height=30 src="images/34.jpg"></a>
 			</div>
 			
 
@@ -634,17 +643,19 @@ total("首页","other");
 				$sql = 'select n.id,n.short_title,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
 				$record_out=$db -> query($sql);
 				 ?>
-				<div class=box1 style="height:60px;">
+				 <div id=title></div><div id=more><a target="_blank" href="/server/news/news_list.php?id=<?php echo $record_out[0]->cid; ?>"><img border=0 src="images/index/more1.gif"></a></div>
+				<div class=box1 style="height:60px; margin-top:10px;">
 					<ul>
-						<?php for($i=0;$i<3;$i++){ ?>
-							<li><a style="margin-top:5px; margin-right:5px; font-weight:bold; text-decoration:none;" target="_blank" href="/server/news/news.php?id=<?php echo $record_out[$i]->id; ?>"><?php echo $record_out[$i]->short_title; ?></a></li>
+						<marquee height="50" width=100% DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+						<?php for($i=0;$i<count($record_out);$i++){ ?>
+							<li><a style="margin-top:5px; margin-right:5px; text-decoration:none;" target="_blank" href="/server/news/news.php?id=<?php echo $record_out[$i]->id; ?>"><?php echo $record_out[$i]->short_title; ?></a></li>
 						<?php } ?>
+						</marquee>
 					</ul>
 				</div>
-				<a target="_blank" href="/news/newscenter_list.php"><img border="0" src="/images/newscenterlogo.jpg"></a>
 					<!--<div id=title></div>
 					<a href="/news/news_list.php?id=64" id=more target=_blank></a>-->
-					<div class=box1 style="margin-top:10px;">
+					<div class=box1 style="margin-top:5px;">
 						<a target="_blank" href="/sslfx/"><img border=0 src="/images/index/rating_logo.jpg"></a><br>
 						<ul>
 							<li><a style="margin-top:5px; margin-right:5px; color:red; font-weight:bold; text-decoration:none;" target="_blank" href="/news/news_list.php?id=64">更多番茄工具</a></li>
