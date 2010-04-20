@@ -18,7 +18,9 @@ a:hover{text-decoration:underline;}
 #main #btnqf a{color:#ffffff; line-height:39px; font-size:20px; font-weight:bold; text-decoration:none;}
 #main #gd{width:980px; height:35px; margin-top:40px; margin-left:11px; font-size:25px; line-height:35px; color:#ffffff; float:left; display:inline;}
 #aspk{filter:alpha(Opacity=35);opacity:0.35;background:#000;position:absolute;}
-
+p{/*内部滚动条*/
+width:980px;
+} 
 table{background:#70B817;border-bottom:1px solid #fff;}
 tr{background:#f3f3f3;}
 .tr{background:#fff;}

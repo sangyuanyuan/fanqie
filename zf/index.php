@@ -23,7 +23,33 @@ require_once('../frame.php');
 <div id="main">
 	<div id="btnqf" ><a class="thickbox" href="comment.php?height=255&width=320">我要祈福</a></div>
 	<?php $db=get_db();$comment=$db->query('select * from smg_comment where resource_type="zf" order by created_at desc'); ?>
-	<div id="gd"><marquee height="35" width="980" scrollamount="6" onmouseover=this.stop() onmouseout=this.start()><?php for($i=0;$i<count($comment);$i++){ echo $comment[$i]->nick_name.':'.$comment[$i]->comment.'　'; }?></marquee-</div>
+	<div id="gd">
+		<div id="demo" style="width:980px; overflow:hidden;">
+		<div id="indemo" style="float: left; width: 800%;">
+		<div id="demo1" style="float: left;">
+			<?php for($i=0;$i<count($comment);$i++){ echo $comment[$i]->nick_name.':'.$comment[$i]->comment.'　'; }?>
+		</div>
+		<div id="demo2" style="float: left;"></div>
+		</div>
+		</div>
+		
 </div>
 </body>
 </html>
+<script>
+var speed=10; //数字越大速度越慢
+var tab=document.getElementById("demo");
+var tab1=document.getElementById("demo1");
+var tab2=document.getElementById("demo2");
+tab2.innerHTML=tab1.innerHTML;
+function Marquee(){
+if(tab2.offsetWidth-tab.scrollLeft<=0)
+tab.scrollLeft-=tab1.offsetWidth
+else{
+tab.scrollLeft++;
+}
+}
+var MyMar=setInterval(Marquee,speed);
+tab.onmouseover=function() {clearInterval(MyMar)};
+tab.onmouseout=function() {MyMar=setInterval(Marquee,speed)};
+</script> 
