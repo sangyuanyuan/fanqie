@@ -12,7 +12,7 @@
   */
  
 
- $db_server_name = '127.0.0.1';
+ $db_server_name = '172.27.203.80';
 
  $db_database_name = 'smg_new';
  $db_user_name = 'root';
