@@ -5,7 +5,7 @@
 	$db = get_db();
 	use_jquery();
 	js_include_tag('jquery.cookie','pubfun');
-	//css_include_tag('top');
+	css_include_tag('top');
 	function daysInSpan($start,$end)
 		{
 		 $dayTicks=ticksInDay();
@@ -66,7 +66,7 @@
 <div id=bannerimg1>
 	
 	<div id=more><a target="_blank" href="/zf/index.php">我要祈福</a></div>
-	<div id=wz>共有<a id="qfrs" target="_blank" href="/zf/index.php"></a>人祈福</div>
+	<div id=wz>已有<a id="qfrs" target="_blank" href="/zf/index.php"></a>人祈福</div>
 </div>
 <?php } ?>
 <div id=nav2>
@@ -183,9 +183,9 @@
 <script>
 	display_login();
 	$(function(){
-		$.post("static.post.php",{'type':'top'},function(data){
+		$.post("inc/static.post.php",{'type':'top'},function(data){
 			$('#qfrs').html(data);
-		});
+	});
 		$('#button1').click(function(){
 			$('#top_search_form').attr('action','/search/?search_key=smg_news');
 			$('#search_type_hidden').val('smg_news');

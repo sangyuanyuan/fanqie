@@ -42,6 +42,7 @@ $(function(){
 			$("#list"+num).css('display','inline');
 	});
 	
+	
 	/*$(".btn_tlm").mouseover(function(){
 			
 			$(".btn_tlm").css('background','url(/images/index/btn3.jpg) no-repeat');
