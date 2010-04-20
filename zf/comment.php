@@ -23,6 +23,7 @@
 			},function(date){
 				$("#comment_show").html(date);
 				tb_remove();
+				window.location.reload();
 			})
 		})
 	})
