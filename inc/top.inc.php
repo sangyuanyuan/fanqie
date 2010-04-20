@@ -19,6 +19,7 @@
 	 $today=mktime(0,0,0,$today[mon],$today[mday],$today[year]);
 	 return $today-$yesterday;
 	}
+	$nowday=date('Y-m-d');
 ?>
 
 <div id=nav1>
@@ -29,6 +30,7 @@
 		<a id=home href="/home/" target="_blank"><img src="/images/top/jiayuan.gif" border=0></a>
 	</div>
 </div>
+<? if($nowday!="2010-04-21"){ ?>
 <div id=bannerimg>
 	<div id=nimg1>
 		<div class=deptlogo name=1></div>
@@ -60,8 +62,9 @@
 	</div>
 	<!--<img src="/images/yuanlei.jpg">-->
 </div>
-
-
+<?php }else{ ?>
+<div id=bannerimg1><img src="/images/ysdz.jpg"></div>
+<?php } ?>
 <div id=nav2>
 	
 	<div id=box>
