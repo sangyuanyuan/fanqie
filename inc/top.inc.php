@@ -183,6 +183,9 @@
 <script>
 	display_login();
 	$(function(){
+		$.post("static.post.php",{'type':'top'},function(data){
+			$('#qfrs').html(data);
+		});
 		$('#button1').click(function(){
 			$('#top_search_form').attr('action','/search/?search_key=smg_news');
 			$('#search_type_hidden').val('smg_news');
