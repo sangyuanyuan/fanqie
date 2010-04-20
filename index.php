@@ -284,14 +284,13 @@ total("首页","other");
  					}
  					if($record_head[0]->sub_headline<>1&&$record_head[0]->sub_headline<>""&&$record_head[0]->sub_news_id<>"")
  					{
- 							$sub_news_str=explode(",",$record_head[0]->sub_news_id); 
+ 							$sub_news_str=explode(",",$record_head[0]->sub_news_id);
 				  		$sub_news_str_num=sizeof($sub_news_str)-1;
-
 							for($i=0;$i<=$sub_news_str_num;$i++)
 							{
 									$sql="select n.*,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id where n.id=".$sub_news_str[$i];
 									$record_sub_news = $db -> query($sql);
-									echo '[<a href="'.$record_sub_news[$i]->platform.'/news/news_head.php?id='.$record_sub_news[$i]->news_id.'" target=_blank>'.$record_sub_news[$i]->short_title.'</a>]';
+									echo '[<a href="'.$record_sub_news[0]->platform.'/news/news_head.php?id='.$record_sub_news[0]->news_id.'" target=_blank>'.$record_sub_news[0]->short_title.'</a>]';
 							}		
 
 					}	
