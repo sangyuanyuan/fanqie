@@ -38,6 +38,11 @@ function display_fqbq(container,insert_container,is_fck){
 		}
 	});		
 }
+function zfrs()
+{
+	$.post("static.post.php",{},function(data){
+		});
+}
 function display_login(dom_id,admin){
 	if(!dom_id){
 		dom_id = 'login';

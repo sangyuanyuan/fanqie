@@ -5,7 +5,7 @@
 	$db = get_db();
 	use_jquery();
 	js_include_tag('jquery.cookie','pubfun');
-	//css_include_tag('top');
+	css_include_tag('top');
 	function daysInSpan($start,$end)
 		{
 		 $dayTicks=ticksInDay();
@@ -64,9 +64,12 @@
 </div>
 <?php }else{ ?>
 <div id=bannerimg1>
-	<?php $commment=$db->query('select count(*) as num from smg_comment where resource_type="zf" order by created_at desc'); ?>
-	<div id=more><a target="_blank" href="/zf/index.php">查看详情</a></div>
-	<div id=wz>共有<a target="_blank" href="/zf/index.php"><?php echo $commment[0]->num; ?></a>人祈福</div>
+	<?php $commment=$db->query('select * from smg_comment where resource_type="zf" order by created_at desc'); ?>
+	<div id=more><a target="_blank" href="/zf/index.php">我要祈福</a></div>
+	<div id=wz>共有<a target="_blank" href="/zf/index.php"><?php echo count($commment); ?></a>人祈福</div>
+	<script>
+		setTimeout('zfrs()',1000);	
+	</script>
 </div>
 <?php } ?>
 <div id=nav2>
