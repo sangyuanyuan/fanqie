@@ -892,7 +892,7 @@ total("首页","other");
 		</div>
 				
  </div>
- <div id=ibody_line></div>
+ <div id=ibody_line <?php if(date('Y-m-d')=="2010-04-21"){ ?>style="background:url('images/index/line1.jpg') no-repeat;"<?PHP } ?>></div>
  <div id=ibody_middle>
     <div id=p1>
   		<!-- start middle_left_top !-->
@@ -984,7 +984,7 @@ total("首页","other");
  			<!-- end !-->	      	
     	
   		<!-- start middle_center_top !-->
- 			<div id=m_c_b>
+ 			<div id=m_c_b <?php if(date('Y-m-d')=="2010-04-21"){ ?>style="background:url('images/index/bg_m_c_b1.jpg') no-repeat;"<?php } ?>>
  				<a href="/zone/video.php" id=more1 target=_blank></a>
  				<a href="/zone/dialog_list.php" id=more2 target=_blank></a>
  				<div class=box>
@@ -1082,7 +1082,7 @@ total("首页","other");
  <div id=ibody_bottom>
     <div id=p1>
       <!-- start bottom_top_left !-->
- 			<div id=b_t_l>
+ 			<div id=b_t_l <?php if(date('Y-m-d')=="2010-04-21"){ ?>style="background:url('images/index/bg_b_t_l1.jpg') no-repeat;"<?php } ?>>
  				<?php  
 					$sql = 'select id,name from smg_vote where is_sub_vote =0 and is_adopt=1 and (category_id=0 or category_id=11) order by created_at desc limit 12';
 					$record = $db->query($sql);
@@ -1114,7 +1114,7 @@ total("首页","other");
  			<!-- end !-->	      	
  
       <!-- start bottom_top_right !-->
- 			<div id=b_t_r>
+ 			<div id=b_t_r <?php if(date('Y-m-d')=="2010-04-21"){ ?>style="background:url('images/index/bg_b_t_r1.jpg') no-repeat;"<?php } ?>>
  				<div class=l_box>
  					<?php $sql = 'select id,title from smg_question where is_adopt=1 and problem_id<>39 order by create_time desc limit 6';
  								$record = $db->query($sql);
@@ -1150,7 +1150,7 @@ total("首页","other");
 				</div>
 				<div class=r_box>
 					<div id=begin_question><a href="/answer/question.php" target="_blank"><img border=0 src="/images/index/begin_question.jpg"></a></div>
-					<div id=question><a href="/answer/answerlist.php" target="_blank"><img border=0 src="/images/index/question.jpg"></a></div>
+					<div id=question><a href="/answer/answerlist.php" target="_blank"><img border=0 src="/images/index/question<?php if(date('Y-m-d')=='2010-04-21'){ ?>1<?php } ?>.jpg"></a></div>
 				</div>
  			</div>
  			<!-- end !-->	 

@@ -14,7 +14,7 @@
 	
 </head>
 <body style="margin:0; background:#CD3301">
-	<div id="weather_content" style="font-size:12px; margin-left:-24px; color:#ffffff; background:#CD3301; float:left; display:inline"></div>
+	<div id="weather_content" style="font-size:12px; margin-left:-24px; color:#ffffff; <?php if(date('Y-m-d')!='2010-04-21'){ ?>background:#CD3301;<?php }else{ ?>background:#666666;<?php } ?> float:left; display:inline"></div>
 	<script language="javascript">
 		weather.init("weather_content");
 	</script>

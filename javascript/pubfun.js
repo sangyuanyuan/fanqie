@@ -48,7 +48,15 @@ function display_login(dom_id,admin){
 	}else{
 		var str = '';
 		if(!admin){
-			str = '<img src="/images/top/person.jpg">';
+			var d = new Date();
+			var nowday=d.getYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+			if(nowday!="2010-4-21")
+			{
+				str = '<img src="/images/top/person.jpg">';
+			}
+			else{
+				str = '<img src="/images/top/person1.jpg">';	
+			}
 		}
 		str +='<div id=welcome>欢迎您：<span style="font-weight:bold;">';
 		str += $.cookie('smg_user_nickname') +'</span>';
