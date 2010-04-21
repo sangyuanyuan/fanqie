@@ -16,6 +16,9 @@
 #ibottom{width:911px; margin-top:100px; margin-left:8px; float:left; display:inline;}
 #ibottom #b_title{width:911px; height:32px; font-size:28px; line-height:32px; font-family:黑体 ; color:#f2ff91; float:left; display:inline;}
 #ibottom #b_content1{width:911px; margin-top:30px; line-height:25px; font-size:22px; font-family:黑体 ; color:#f2ff91; float:left; display:inline;}
-#ibottom #b_content2{width:839px; margin-top:30px; line-height:28px; font-size:25px; font-family:黑体 ; color:#f2ff91; float:right; display:inline;}
+#ibottom #b_content2{width:839px; margin-top:30px; line-height:28px; font-size:25px; font-family:黑体 ; color:#f2ff91; overflow:hidden; float:right; display:inline;}
+#ibottom #b_content2 .comment{width:839px; line-height:22px; font-size:20px; overflow:hidden; float:left; display:inline;}
+#ibottom #b_content2 .name{height:22px; line-height:22px;overflow:hidden; float:left; display:inline;}
+#ibottom #b_content2 .content{line-height:22px; float:left; display:inline;}
 #ibottom #b_content3{width:217px; margin-top:30px; line-height:28px; font-size:25px; font-family:黑体 ; float:right; display:inline;}
 #ibottom #b_content3 a{color:#f2ff91; text-decoration:none;}

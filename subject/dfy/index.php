@@ -104,9 +104,22 @@
 				都非常值得期待！
 			</div>
 			<div id=b_content2>
-				<input type="text" id="commenter" name="post[nick_name]">
-				<div id=fqbq></div>
-				<button style="margin-top:10px; margin-right:15px; border:1px solid #cccccc; background:#ffffff; line-height:20px; float:right; display:inline;" id="comment_sub" >提交留言</button>
+				<?php $db=get_db(); $comment=$db->query('select * from smg_comment where resource_type="dfy" order by created_at desc');?>
+					<marquee height="300" width="100%" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+						<?php	for($i=0;$i<count($comment);$i++){ ?>
+					 	<div class=comment>
+					 		<div class=name><?php echo $comment[$i]->nick_name.':';?></div>
+					 		<div class=content><?php echo $comment[$i]->comment;?></div>	
+					 	</div>
+					 <?php } ?>
+					</marquee>
+				<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
+					姓名：<input type="text" id="commenter" name="post[nick_name]"><br>
+					留言：<textarea name="post[comment]" style="width:500px; height:200px;"></textarea><br>
+					<input type="hidden" name="type" value="comment">
+					<input type="hidden" id="resource_type" name="post[resource_type]" value="dfy">
+					<button style="margin-top:10px; margin-left:75px; border:1px solid #cccccc; background:#ffffff; line-height:20px; float:left; display:inline;" id="comment_sub" >提交留言</button>
+				</form>
 			</div>
 			<div id=b_content3><a target="_blank" href="/fqtg/fqtg.php?id=141">点击此处报名！</a></div>
 		</div>
