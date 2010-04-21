@@ -67,9 +67,6 @@
 	<?php $commment=$db->query('select * from smg_comment where resource_type="zf" order by created_at desc'); ?>
 	<div id=more><a target="_blank" href="/zf/index.php">查看详情</a></div>
 	<div id=wz>共有<a target="_blank" href="/zf/index.php"><?php echo count($comment); ?></a>人祈福</div>
-	<script>
-		setTimeout('zfrs()',1000);	
-	</script>
 </div>
 <?php } ?>
 <div id=nav2>
