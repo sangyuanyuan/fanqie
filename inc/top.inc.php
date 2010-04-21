@@ -63,7 +63,11 @@
 	<!--<img src="/images/yuanlei.jpg">-->
 </div>
 <?php }else{ ?>
-<div id=bannerimg1><img src="/images/ysdz.jpg"></div>
+<div id=bannerimg1>
+	<?php $commment=$db->query('select * from smg_comment where resource_type="zf" order by created_at desc'); ?>
+	<div id=more><a target="_blank" href="/zf/index.php">查看详情</a></div>
+	<div id=wz>共有<a target="_blank" href="/zf/index.php"><?php echo count($comment); ?></a>人祈福</div>
+</div>
 <?php } ?>
 <div id=nav2>
 	
@@ -94,12 +98,12 @@
 			?>			
    		<div id=hot>
    			<?php //for($i=0;$i<1;$i++){?>
-   				<a href="http://qjdls.smgbb.cn" target=_blank><img style="width:50px; height:20px; margin-top:0px;" width=50 height=20 border=0 src="/images/qj.gif"></a>
+   				<?php if(date('Y-m-d')!="2010-04-21"){ ?><a href="http://qjdls.smgbb.cn" target=_blank><img style="width:50px; height:20px; margin-top:0px;" width=50 height=20 border=0 src="/images/qj.gif"></a><?php } ?>
    			<!--<a href="/search/?key=<?php echo urlencode($record[0]->search_key)?>&search_type=smg_news" target=_blank><?php echo $record[0]->search_key ?></a>-->　
    			<? //}?>
    			<a href='/zongcai/' target="_blank">总裁奖</a>
    		</div>
-			<div id=zongcai><a target="_blank" href="http://192.168.61.247/"><img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/world.gif"></a></div>
+			<div id=zongcai><?php if(date('Y-m-d')!="2010-04-21"){ ?><a target="_blank" href="http://192.168.61.247/"><img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/world.gif"></a><?php } ?></div>
    	</div>
    	<?php 
    				$cookie=isset($_COOKIE['smg_username']) ? $_COOKIE['smg_username'] : "";
