@@ -104,11 +104,9 @@
 				都非常值得期待！
 			</div>
 			<div id=b_content2>
-				发布会！<br>
-       	　　SMG年度巨制《东风雨》将于4月15日在广电4楼举行新闻发布会，
-				届时柳云龙、 范冰冰、李小冉、于荣光、曾江、刘璇、蒲巴甲等主创
-				人员将悉数到场，接受媒体访问，晚间19点还将参与影片首映典礼的
-				节目录制，前30位点击报名者将参与活动录制、与明星现场互动！
+				<input type="text" id="commenter" name="post[nick_name]">
+				<div id=fqbq></div>
+				<button style="margin-top:10px; margin-right:15px; border:1px solid #cccccc; background:#ffffff; line-height:20px; float:right; display:inline;" id="comment_sub" >提交留言</button>
 			</div>
 			<div id=b_content3><a target="_blank" href="/fqtg/fqtg.php?id=141">点击此处报名！</a></div>
 		</div>
