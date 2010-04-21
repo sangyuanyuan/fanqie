@@ -78,7 +78,7 @@
 	 	</ul>
 		<?php }?>
 	  <div id=weather>
-			<iframe src="/index_weather.html" width=135px height=22px scrolling="no" frameborder="0"></iframe>
+			<iframe src="/index_weather<?php if($nowday=="2010-04-21"){ ?>1<?php } ?>.html" width=135px height=22px scrolling="no" frameborder="0"></iframe>
 	  </div>
 	  <span id=deptbtn <?php if($nowday=="2010-04-21"){ ?>style="background:url('/images/top/dept1.jpg') no-repeat;"<?php } ?> onclick='$("#deptcontent").show();'></span>
 	  <div id=search>
