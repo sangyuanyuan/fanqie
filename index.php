@@ -8,7 +8,8 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>SMG-番茄网-首页</title>
-	<? 	
+	<? 
+		if(date('Y-m-d')=='2010-04-21'){ css_include_tag('index_filter'); }
 		css_include_tag('index','top','bottom');
 		use_jquery();
 	  js_include_once_tag('index','total','fd');
