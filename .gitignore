@@ -20,3 +20,4 @@ top.inc.html
 bottom.inc.html
 tools/*
 *.swf
+config/*
