@@ -10,7 +10,6 @@
 	<? 	
 		use_jquery();
 	  js_include_once_tag('weather');
-	  alert(date('Y-m-d'));
   ?>
 	
 </head>
