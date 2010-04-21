@@ -21,12 +21,7 @@ js_include_once_tag('total');
 <body>
 <div style="display:none;" id="aspk" onclick="Hide();"></div>
 <div id="header">
-	<span style="float:left;"></span>
-	<div id="banner">上海广播电视台、上海东方传媒（集团）有限公司期许</div>
-</div><div id="menu">
-	<?php $lovewall_ip=$HTTP_COOKIE_VARS["lovewall"];?>
-	<a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
-    <a href="index.php?id=2">我的祈福</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_add.php">我要祈福</a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="index.php">首页 </a></div>
+</div>
 <div id="main">
 	<script type="text/javascript" src="inc/index.js"></script>
 <?php 
