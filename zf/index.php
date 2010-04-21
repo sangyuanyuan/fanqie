@@ -24,12 +24,12 @@ require_once('../frame.php');
 	<div id="btnqf" ><a class="thickbox" href="comment.php?height=255&width=320">我要祈福</a></div>
 	<?php $db=get_db();$comment=$db->query('select * from smg_comment where resource_type="zf" order by created_at desc'); ?>
 	<div id="gd">
-		<div id="demo" style="width:980px; overflow:hidden;">
-		<div id="indemo" style="float: left; width: 800%;">
-		<div id="demo1" style="float: left;">
-			<?php for($i=0;$i<count($comment);$i++){ echo $comment[$i]->nick_name.':'.$comment[$i]->comment.'　'; }?>
+		<div id="demo" style="width:980px; height:35px; overflow:hidden;">
+		<div id="indemo" style="float:left; width:800%;">
+		<div id="demo1" style="float:left; height:35px; overflow:hidden; line-height:35px;">
+			<?php for($i=0;$i<count($comment);$i++){  echo $comment[$i]->nick_name.':'.$comment[$i]->comment.'　'; }?>
 		</div>
-		<div id="demo2" style="float: left;"></div>
+		<div id="demo2" style="float: left; height:35px; overflow:hidden; line-height:35px;"></div>
 		</div>
 		</div>
 		
