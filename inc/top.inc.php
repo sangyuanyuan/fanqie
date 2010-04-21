@@ -67,9 +67,9 @@
 <?php } ?>
 <div id=nav2>
 	
-	<div id=box <? if($nowday=="2010-04-21"){ ?>style="background:url('/images/top/bg2.jpg') no-repeat;"<?php } ?>>
+	<div id=box <? if($nowday=="2010-04-01"){ ?>style="background:url('/images/top/bg2.jpg') no-repeat;"<?php } ?>>
 		
-		<div id=logo <?php if(date('Y-m-d')=="2010-04-21"){ ?>style="background:url('/images/top/logo2.jpg') no-repeat;"<?php } ?>></div>
+		<div id=logo <?php if(date('Y-m-d')=="2010-04-01"){ ?>style="background:url('/images/top/logo2.jpg') no-repeat;"<?php } ?>></div>
 		<?php for($j=0;$j<5;$j++){?>
 		<ul>
 				<?php	for($i=8*$j;$i<8*($j+1);$i++)	{ ?>
@@ -78,14 +78,14 @@
 	 	</ul>
 		<?php }?>
 	  <div id=weather>
-			<iframe src="/index_weather<?php if($nowday=="2010-04-21"){ ?>1<?php } ?>.html" width=135px height=22px scrolling="no" frameborder="0"></iframe>
+			<iframe src="/index_weather<?php if($nowday=="2010-04-01"){ ?>1<?php } ?>.html" width=135px height=22px scrolling="no" frameborder="0"></iframe>
 	  </div>
-	  <span id=deptbtn <?php if($nowday=="2010-04-21"){ ?>style="background:url('/images/top/dept1.jpg') no-repeat;"<?php } ?> onclick='$("#deptcontent").show();'></span>
+	  <span id=deptbtn <?php if($nowday=="2010-04-01"){ ?>style="background:url('/images/top/dept1.jpg') no-repeat;"<?php } ?> onclick='$("#deptcontent").show();'></span>
 	  <div id=search>
 	  	<form id="top_search_form" method="get" action="/search/">
 	   		<input type="text" name="key"></input>
-	   		<button id=button1 <?php if($nowday=='2010-04-21'){ ?>style="background:url('/images/top/btn1_1.jpg') no-repeat;"<?php } ?>></button>
-	   		<button id=button2 <?php if($nowday=='2010-04-21'){ ?>style="background:url('/images/top/btn2_1.jpg') no-repeat;"<?php } ?>></button>
+	   		<button id=button1 <?php if($nowday=='2010-04-01'){ ?>style="background:url('/images/top/btn1_1.jpg') no-repeat;"<?php } ?>></button>
+	   		<button id=button2 <?php if($nowday=='2010-04-01'){ ?>style="background:url('/images/top/btn2_1.jpg') no-repeat;"<?php } ?>></button>
 			<input type="hidden" name="search_type" id="search_type_hidden" value="smg_news" style="display:none">
 		</form>
  			<?php

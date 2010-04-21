@@ -50,7 +50,7 @@ function display_login(dom_id,admin){
 		if(!admin){
 			var d = new Date();
 			var nowday=d.getYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
-			if(nowday!="2010-4-21")
+			if(nowday!="2010-4-01")
 			{
 				str = '<img src="/images/top/person.jpg">';
 			}
