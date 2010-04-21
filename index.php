@@ -54,7 +54,7 @@ total("首页","other");
 	}
 </script>-->
 <body id="body" onload="TimerID2=setTimeout('fLi2()',1000);">
-<? require_once('inc/top.inc.html');?>
+<? require_once('inc/top.inc.php');?>
 
 <div id=ibody>
  <div id=ibody_top>
