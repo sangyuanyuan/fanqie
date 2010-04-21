@@ -2,9 +2,9 @@
 /*
  * system config file
  */
- $debug_tag = true;
+ $debug_tag = false;
 
- $use_localhost = true;
+ $use_localhost = false;
 
  
  /*

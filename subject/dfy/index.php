@@ -9,7 +9,7 @@
 	<title>SMG - 东风雨</title>
 	<?php css_include_tag('subject_dfy');
 		use_jquery(); 
-		js_include_once_tag('total');
+		js_include_once_tag('total','news','pub');
 	?>
 <script>
 	total("东风雨专题","other");
