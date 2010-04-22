@@ -657,6 +657,7 @@ total("首页","other");
 				<div class="cl"><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  target="_blank" <?php if((int)$jmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=134">节目观察周刊</a></div>
 				<div class="cl"><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  target="_blank" <?php if((int)$cmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=135">传媒观察周刊</a></div>
 				<div class="cl"><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  target="_blank" <?php if((int)$fzyjzb[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=136">发展研究专报</a></div>
+				<div class="cl"><a target="_blank" href="/news/news_list.php?id=217">广电科技信息</a></div>
 				<a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  target="_blank" href="/news/newscenter_list.php" style="margin-top:5px;"><img border=0 width=90 height=30 src="images/34.jpg"></a>
 			</div>
 			
