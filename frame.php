@@ -65,7 +65,7 @@
 			$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone=13817499668&content=" .urlencode(iconv('utf-8','gbk','番茄网80数据库宕机了请检查！')) ."&sign=1";
 			$fp = fopen($url,'r') ;
 			fclose($fp);
-			@mail($note_emails,'数据库连接失败','主备数据库均无法连接，请立即检查'.$this->servername);
+			@mail($note_emails,'数据库连接失败','主备数据库无法连接，请立即检查'.$this->servername);
 			$last_time = file_get_contents(dirname(__FILE__) .'/config/last_disconnect.txt');
 			
 			if($last_time == ''){
