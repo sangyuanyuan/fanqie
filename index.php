@@ -1319,13 +1319,13 @@ total("首页","other");
 							<td><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.soku.net/huoche/TrainStation/381.Html">火车时刻表</a></td><td><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.feeyo.com/flightsearch.htm">航班时刻查询</a></td>
 						</tr>
 						<tr height=1><td height=1 colspan=2><div style="width:100%; line-height:0px; height:1px; border-bottom:dashed 1px #999999;"></div></td></tr>
-						<!--<script type="text/javascript" src="http://hq.sinajs.cn/list=s_sh000001,s_sz399001" charset="utf-8"></script>
+						<script type="text/javascript" src="http://hq.sinajs.cn/list=s_sh000001,s_sz399001" charset="utf-8"></script>
 						<script type="text/javascript"> 
 							var elements=hq_str_s_sh000001.split(","); 
-							document.write("<tr><td><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  target='_blank' href='http://finance.sina.com.cn/realstock/company/sh000001/nc.shtml'>上证指数:"+elements[1]+"</a></td><td>");
+							document.write("<tr><td><a target='_blank' href='http://finance.sina.com.cn/realstock/company/sh000001/nc.shtml'>上证指数:"+elements[1]+"</a></td><td>");
 							elements=hq_str_s_sz399001.split(",");
-							document.write("<a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  target='_blank' href='http://finance.sina.com.cn/realstock/company/sz399001/nc.shtml'>深圳成指:"+elements[1]+"</a></td></tr>");
-						</script>-->
+							document.write("<a target='_blank' href='http://finance.sina.com.cn/realstock/company/sz399001/nc.shtml'>深圳成指:"+elements[1]+"</a></td></tr>");
+						</script>
 				</table>
 				
 			</div>
