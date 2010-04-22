@@ -264,7 +264,7 @@ class database_row_item_class {
 	private function _connect()
   	{
   		
-  		$this->_db = mysql_connect($this->servername, $this->username, $this->password);
+  		$this->_db = @mysql_connect($this->servername, $this->username, $this->password);
   		if ($this->_db === FALSE)
   		{
   			$this->_debug_info('fail to establish db connection,' .$this->get_error());
