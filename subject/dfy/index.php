@@ -9,7 +9,7 @@
 	<title>SMG - 东风雨</title>
 	<?php css_include_tag('subject_dfy');
 		use_jquery(); 
-		js_include_once_tag('total','news','pub');
+		js_include_once_tag('total','pub');
 	?>
 <script>
 	total("东风雨专题","other");
@@ -115,14 +115,30 @@
 					</marquee>
 				<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 					姓名：<input type="text" id="commenter" name="post[nick_name]"><br>
-					留言：<textarea name="post[comment]" style="width:500px; height:200px;"></textarea><br>
+					留言：<textarea name="post[comment]" id="commentcontent" style="width:500px; height:200px;"></textarea><br>
 					<input type="hidden" name="type" value="comment">
 					<input type="hidden" id="resource_type" name="post[resource_type]" value="dfy">
 					<button style="margin-top:10px; margin-left:75px; border:1px solid #cccccc; background:#ffffff; line-height:20px; float:left; display:inline;" id="comment_sub" >提交留言</button>
 				</form>
 			</div>
-			<div id=b_content3><a target="_blank" href="/fqtg/fqtg.php?id=141">点击此处报名！</a></div>
 		</div>
 	</div>
 </body>
 </html>
+<script>
+$(document).ready(function(){
+	$("#comment_sub").click(function(){
+			var content = $('#commentcontent').val();
+			if(content==""){
+				alert('评论内容不能为空！');
+				return false;
+			}
+			if(content.length>1500)
+			{
+				alert('评论内容过长请分次评论！');
+				return false;
+			}
+			document.subcomment.submit();
+		});
+	});
+</script>
