@@ -40,7 +40,7 @@ else
 	{
 		$num=(int)$maxnum[0]->maxnum;
 	}
-	if(count($count)< $num)
+	if((int)$count[0]->num < $num)
 	{
 		$sql="select * from smg_tg_signup where tg_id=".$_POST['tg_id']." and name='".$cookie."'";
 		$peson=$db->query($sql);
