@@ -1,0 +1,126 @@
+﻿body{width:1000px; margin:0px auto;}
+#ibody{width:1000px; background:url(../image/smg_top_pg.jpg) repeat-x; float:left; display:inline;}
+
+#iibody{width:900px; margin-left:50px; background:#FFFFFF;  float:left; display:inline;}
+
+a{text-decoration: none; color:#000000;}
+#title_a{width:60px; height:20px; margin-left:11px; float:left; display:inline;}
+#title_b{width:60px; height:20px; margin-left:5px; float:left; display:inline;}
+#title_c{width:80px; height:20px; margin-left:15px;  float:left; display:inline;}
+#title_d{width:80px; height:20px; margin-left:15px;   float:left; display:inline;}
+#title_e{width:80px; height:20px;  margin-left:11px;  float:left; display:inline;}
+#title_f{width:80px; height:20px; margin-left:11px;   float:left; display:inline;}
+#title_g{width:100px; height:20px;  margin-left:10px; float:left; display:inline;}
+#title_k{width:100px; height:20px; margin-left:8px; float:left; display:inline;}
+#title_l{width:60px; height:20px; float:left; display:inline;}
+
+#top{width:900px; height:369px; background:url(../image/tt.jpg) no-repeat; float:left; display:inline;}
+#bottom{width:900px; height:58px; margin-top:10px; background:url(../image/pg_bottom.gif) repeat-x; float:left; display:inline;}
+#menu{width:800px; height:25px; font-weight:bold; font-size:14px; COLOR:#FFFFFF; margin-top:285px; margin-left:30px; float:left; displaY:inline;}
+#menu_b{width:750px; height:20px; color:#8D5000; font-size:14px; margin-left:10px; margin-top:33px;  float:left; display:inline;}
+#modile{width:900px; margin-top:20px; float:left; display:inline;}
+#left{width:670px;  float:left; display:inline;}
+#right{width:220px; float:right; display:inline;}
+#lefta{width:670px; eight:278px; float:left; display:inline;}
+#title_left{width:370px; height:278px; background:url(../image/pic.jpg) no-repeat; float:left; display:inline;}
+#title_hr{width:305px; height:15px;  margin-top:233px; margin-right:5px; font-weight:bold; font-size:14px;  text-align:right; float:right; display:inline;}
+#newsa{width:23px; height:9px; 	background:url(../image/news.gif) no-repeat; margin-top:10px; float:left; display:inline;}
+.title_w{width:260px; height:18px; margin-left:10px; margin-top:7px; font-weight:400; overflow:hidden; font-size:14px; float:left; display:inline;	}
+#w_hr{width:300px; height:1px; font-size:0px; line-height:0px; background:url(../image/dian_hrr.gif) repeat-x; float:left ; display:inline;}
+#title{width:280px; height:18px; margin-top:5px; margin-left:5px; margin-bottom:5px; font-size:16px; overflow:hidden;  font-weight:bold; color:#5A9720; float:left; display:inline;}
+#title_right{width:298px; height:278px; float:left; display:inline;}
+#title_buttom{width:70px; height:15px; margin-bottom:3px; margin-top:-17px; margin-right:5px; text-align:right; z-index:2; font-size:13px; float:right; display:inline;}
+
+
+
+#leftb{width:670px; height:263px; margin-top:10px;  float:left; display:inline;}
+.guanz{width:324px; height:260px; float:left; display:inline;}
+#zhong_top{width:324px; height:29px; text-align:right; font-size:12px; line-height:35px; background:url(../image/pg_red.jpg) no-repeat; float:left; display:inline;}
+#zhong_img_left{width:171PX; margin-top:3px; HEIGHT:117PX; BACKGROUND:URL(../image/img4.gif) no-repeat; float:left; display:inline;}
+#zhong_img_right_right{width:171PX; margin-top:3px; HEIGHT:117PX; BACKGROUND:URL(../image/img5.jpg) no-repeat; float:left; display:inline;}
+.zhong_img_right{width:150px; height:117px; float:left; display:inline;}
+.guanr{width:326px; height:260px; float:right; display:inline;}
+.zhong_title{width:144px; height:15px; margin-left:5px; color:#67A22A; font-weight:bold; font-size:14px; margin-top:3px; float:left; display:inline;}
+.zhong_c{width:142px; height:75px; overflow:hidden; word-wrap: break-word; word-break: normal; margin-left:5px; font-size:12px; margin-top:3px; line-height:18px; float:left; display:inline;}
+.zhong_bottom{width:145px; height:15px; text-align:right; margin-top:7px; font-size:12px; color:#67A22A; float:left; displaY:inline;}
+
+.content_z{width:300px; height:20px; margin-left:10px; margin-top:5px; float:left; display:inline;}
+.content_d{width:10px; height:13px; margin-top:2px; background:url(../image/dian_hr.gif) no-repeat; float:left; display:inline;}
+.content{width:270px; height:20px; margin-left:5px; line-height:22px; font-weight:300;  font-size:13px; float:left; display:inline;}
+.content_hr{width:300px; height:1px; font-size:0px;  line-height:0px; margin-left:10px; background:url(../image/dian_hrr.gif) repeat-x; float:left; display:inline;}
+#guanr_top{width:324px; height:29px; font-size:12px; line-height:35px; text-align:right; background:url(../image/pg_v.gif) no-repeat;  float:left; display:inline;}
+
+
+
+
+#leftc{width:670px; height:178px; float:left; display:inline;}
+#leftc_top{width:670px; height:29px; background:url(../image/img6.jpg) no-repeat; float:left; display:inline;}
+#leftc_middle{width:670px; height:150px; border-left:1px solid #C0C0C1; border-right:1px solid #C0C0C1; border-bottom:1px solid #C0C0C1; float:left; display:inline;}
+#m_m{width:666px; height:150px; float:left; display:inline;}
+
+
+
+#imga{width:150px; height:130px;  text-align:center; margin-left:10px; margin-top:13px; float:left; display:inline;}
+.imga_a{width:150px; height:20px;  overflow:hidden; font-size:13px; text-align:center; margin-top:5px; float:left; display:inline;}
+#imgb{width:150px; height:130px;  margin-left:15px; margin-top:13px; float:left; display:inline;}
+#imgc{width:150px; height:130px;  margin-left:15px; margin-top:13px; float:left; display:inline;}
+#imgd{width:150px; height:130px;  margin-left:15px; margin-top:13px; float:left; display:inline;}
+
+
+
+
+
+
+
+#leftd{width:670px;  height:263px; margin-top:10px;  float:left; display:inline;}
+#activities_top{width:324px; height:29px;  font-size:12px; line-height:35px; text-align:right; background:url(../image/green.jpg) no-repeat; float:left; display:inline;}
+#activities_img_left{width:171PX; margin-top:3px; HEIGHT:117PX; BACKGROUND:URL(../image/img4.gif) no-repeat; float:left; display:inline;}
+#activities_r_top{width:324px; height:29px; font-size:12px; line-height:35px; text-align:right; background:url(../image/green_b.jpg) no-repeat;  float:left; display:inline;}
+#activities_r_img{width:171PX; margin-top:3px; HEIGHT:117PX; BACKGROUND:URL(../image/img5.jpg) no-repeat; float:left; display:inline;}
+
+
+
+#r_new{width:220px; height:150px;  background:url(../image/r_a.jpg) no-repeat; float:left; display:inline;}
+#new_content{width:210px; height:20px; margin-top:5px; margin-left:5px; float:left; display:inline;}
+.new_d{width:4px; height:4px; font-size:0px; line-height:0px;  background:#3F3E3E; margin-left:5px; margin-top:7px; float:left; display:inline;}
+.new_con{width:190px; height:20px; margin-left:5px; font-size:12px; line-height:20px; overflow:hidden; float:left; display:inline;}
+.new_c{width:210px; height:20px;   margin-left:5px; float:left; display:inline;}
+#new_title{width:100px; height:25px; margin-left:25px; margin-top:10px; font-size:14px; color:#BD6F00; font-weight:bold;  float:left; display:inline;}
+
+
+
+#day{width:220px; height:216px; margin-top:5px; background:url(../image/daypg_.jpg) no-repeat; float:left; display:inline;}
+#day_title{width:100px; height:20px;  font-size:13px; margin-top:7px; font-weight:bold; margin-left:10px; color:#843000; float:left; display:inline;}
+.day_content{width:210px;  margin-top:20px; word-wrap: break-word; word-break: normal;  margin-left:5px; float:left; display:inline;}
+.new_cona{width:195px; font-size:12px; LINE-HEIGHT:18PX; letter-spacing:1PX; margin-left:5PX; font-weight:300; float:left; display:inline;}
+
+#ministry{width:220PX; HEIGHT:168PX; background:url(../image/m_pg.jpg) no-repeat; margin-top:5px; FLOAT:left; display:inline;}
+#m_title{width:200px; height:20px; margin-top:5px; margin-left:15px; font-weight:600; font-size:14px; color:#FFFFFF; float:left; display:inline;}
+#m_a{width:200px; height:35px; margin-top:15px; margin-left:10px; background:#B1D860; border:1px solid #A0CF4C; float:left; display:inline;}
+#m_imga{width:44px; height:34px; background:url(../image/pg1.gif) no-repeat; float:left; display:inline;}
+.ma{width:150px; height:24px; font-size:16px; letter-spacing:1px; font-weight:600; margin-left:5px; margin-top:10px; color:#FFFFFF; float:left; display:inline;}
+.m_div{width:200px; height:35px; margin-top:5px; margin-left:10px; background:#B1D860; border:1px solid #A0CF4C; float:left; display:inline; float:left; display:inline;}
+#m_img2{width:44px; height:34px; background:url(../image/pg3.gif) no-repeat; float:left; display:inline;}
+#m_img{width:44px; height:34px; background:url(../image/pg2.gif) no-repeat; float:left; display:inline;}
+
+
+#z_title{width:220px; height:29px; margin-top:5px; background:url(../image/pg4.gif) repeat-x; float:left; display:inline; }
+#zz_title{width:150px; height:20px; margin-left:10px; font-weight:600; font-size:14px; color:#FFFFFF; line-height:30px;  font-weight:600px; float:left; display:inline;}
+#zz_div{width:218px; margin-top:10px; border:1px solid #0B8AC9; float:left; display:inline;}
+.zz_content{width:195px; margin-left:10px; word-wrap: break-word; word-break: normal;  margin-top:10px; font-weight:400px; font-size:12px;   line-height:20px; float:left; display:inline;}
+.zz_name{width:50px; float:left; overflow:hidden; font-weight:bold; color:blue; letter-spacing:1px; display:inline;}
+
+
+
+#b_www{width:900px; height:30px; margin-top:10px; border:2px solid #EFEFEF; overflow:hidden; float:left; display:inline;}
+#lianjie{width:90px; height:20px;  margin-left:10px; margin-top:5px; font-weight:bold; font-size:14px; float:left; display:inline;}
+.lj_www{ margin-left:20px; margin-top:5px;  font-size:14px;  font-weight:400;  float:left; display:inline;}
+
+
+
+
+#texta{width:150px; height:30px; margin-left:20px; line-height:33px; text-align:left; COLOR:#FFFFFF; font-size:14px; font-weight:bold; float:Left; display:inline;}
+#textb{width:150px; height:30px; margin-left:20px; line-height:33px; text-align:left; COLOR:#FFFFFF; font-size:14px; font-weight:bold; float:Left; display:inline;}
+#textc{width:150px; height:30px; margin-left:20px; line-height:33px; text-align:left; COLOR:#FFFFFF; font-size:14px; font-weight:bold; float:Left; display:inline;}
+#texte{width:150px; height:30px; margin-left:20px; line-height:33px; text-align:left; COLOR:#FFFFFF; font-size:14px; font-weight:bold; float:Left; display:inline;}
+#textd{width:150px; height:30px; margin-left:20px; line-height:34px; text-align:left; COLOR:#FFFFFF; font-size:14px; font-weight:bold; float:Left; display:inline;}
