@@ -20,15 +20,15 @@
 			 <? require_once('inc/top.inc.php');?>
 	 			<div id="left">
 	 				<div id=content_content>
-	 					<div id=title></div>
-	 					<div id=comefrom>来源：　浏览次数：<span style="color:#C2130E"></span>　时间：</div>
+	 					<div id=title><?php echo $news[0]->title; ?></div>
+	 					<div id=comefrom>浏览次数：<?php echo $news[0]->click_count; ?><span style="color:#C2130E"></span>　时间：<?php echo $news[0]->created_at; ?></div>
 	 					<div id=content>
 	 						<?php if($news[0]->video_src!=""){ ?>
 	 							<div id=video>
 	 									<?php  show_video_player('400','300',$news[0]->video_photo_src,$news[0]->video_src);?>
 	 							</div>
 	 						<?php } ?>
-	 						<?php echo get_fck_content($record[0]->content);?>
+	 						<?php echo get_fck_content($news[0]->content);?>
 	 					</div>
 	 				</div>
 	 			</div>
