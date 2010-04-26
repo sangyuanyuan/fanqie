@@ -14,7 +14,7 @@
 <body>
 	<div id="ibody">
 		<div id="iibody">
-			 <? require_once('inc/top.inc.php');?>
+			 <? include('inc/top.inc.php');?>
 			 			<div id="left">
 			 							<div id="lefta">
 			 										<div id="title_left">
@@ -168,8 +168,8 @@
 			 							</div>
 			 							<div id="lefte"></div>
 			 			</div>
-			 			<? require_once('inc/right.inc.php');?>
-			 <? require_once('inc/bottom.inc.php');?>
+			 			<? include('inc/right.inc.php');?>
+			 <? include('inc/bottom.inc.php');?>
 		</div>
 	</div>
 </body>

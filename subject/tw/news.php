@@ -17,7 +17,7 @@
 <body>
 	<div id="ibody">
 		<div id="iibody">
-			 <? require_once('inc/top.inc.php');?>
+			 <? include('inc/top.inc.php');?>
 	 			<div id="left">
 	 				<div id=content_content>
 	 					<div id=title><?php echo $news[0]->title; ?></div>
@@ -32,8 +32,8 @@
 	 					</div>
 	 				</div>
 	 			</div>
-			 <? require_once('inc/right.inc.php');
-			  require_once('inc/bottom.inc.php');?>
+			 <? include('inc/right.inc.php');
+			  include('inc/bottom.inc.php');?>
 		</div>
 	</div>
 </body>
