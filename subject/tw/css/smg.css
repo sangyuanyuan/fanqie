@@ -29,7 +29,7 @@ a{text-decoration: none; color:#000000;}
 .title_w{width:260px; height:18px; margin-left:10px; margin-top:7px; font-weight:400; overflow:hidden; font-size:14px; float:left; display:inline;	}
 #w_hr{width:300px; height:1px; font-size:0px; line-height:0px; background:url(../image/dian_hrr.gif) repeat-x; float:left ; display:inline;}
 #title_right{width:298px; height:278px; float:left; display:inline;}
-#title_right #title_right_title{width:280px; height:18px; margin-top:5px; margin-left:5px; margin-bottom:5px; font-size:16px; overflow:hidden;  font-weight:bold; float:left; display:inline;}
+#title_right #title_right_title{width:280px; height:20px; margin-top:5px; margin-left:5px; margin-bottom:5px; font-size:18px; overflow:hidden;  font-weight:bold; float:left; display:inline;}
 #title_right #title_right_title a{color:#5A9720;}
 #title_buttom{width:70px; height:15px; margin-bottom:3px; margin-top:-17px; margin-right:5px; text-align:right; z-index:2; font-size:13px; float:right; display:inline;}
 
