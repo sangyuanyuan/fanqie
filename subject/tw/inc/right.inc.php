@@ -40,17 +40,17 @@
  	<DIV ID="z_title">
  			<div id="zz_title">志愿者心声</div>
  			<div id="zz_div">
- 				<div style="height:300px; float:left; display:inline;">
- 				<?php
- 					$comment=$db->query('select * from smg_comment where resource_type="zyzxs" order by created_at desc');
- 				 for($i=0;$i<count($comment);$i++){ ?>
- 				 	<marquee height="300" DIRECTION="up" onmouseover=this.stop() onmouseout=this.start()>
-	 					<div class="zz_content">
-	 								<div class="zz_name"><?php echo $comment[$i]->nick_name;?>:</div><?php echo $comment[$i]->comment; ?>
-	 					</div>
-	 				</marquee>
- 				<?php }?>
- 			</div>
+ 				<div style="width:"100%; height:300px; float:left; display:inline;">
+	 				<?php
+	 					$comment=$db->query('select * from smg_comment where resource_type="zyzxs" order by created_at desc');
+	 				 for($i=0;$i<count($comment);$i++){ ?>
+	 				 	<marquee height="300" DIRECTION="up" onmouseover=this.stop() onmouseout=this.start()>
+		 					<div class="zz_content">
+		 								<div class="zz_name"><?php echo $comment[$i]->nick_name;?>:</div><?php echo $comment[$i]->comment; ?>
+		 					</div>
+		 				</marquee>
+	 				<?php }?>
+ 				</div>
  				<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 	 				<input type="text" style="margin-top:10px; margin-left:10px;" id="commenter" name="post[nick_name]">
 	 				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">

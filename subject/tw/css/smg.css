@@ -25,6 +25,7 @@ a{text-decoration: none; color:#000000;}
 #lefta{width:670px; eight:278px; float:left; display:inline;}
 #title_left{width:360px; height:268px; margin-top:10px; margin-left:10px; float:left; display:inline;}
 #newsa{width:23px; height:9px; 	background:url(../image/news.gif) no-repeat; margin-top:10px; float:left; display:inline;}
+#head_desc{width:260px; height:90px; margin-top:7px; margin-left:10px; line-height:18px; overflow:hidden; float:left; display:inline;}
 .title_w{width:260px; height:18px; margin-left:10px; margin-top:7px; font-weight:400; overflow:hidden; font-size:14px; float:left; display:inline;	}
 #w_hr{width:300px; height:1px; font-size:0px; line-height:0px; background:url(../image/dian_hrr.gif) repeat-x; float:left ; display:inline;}
 #title_right{width:298px; height:278px; float:left; display:inline;}
@@ -105,7 +106,7 @@ a{text-decoration: none; color:#000000;}
 
 #z_title{width:220px; margin-top:5px; background:url(../image/pg4.gif) repeat-x; float:left; display:inline; }
 #zz_title{width:150px; height:20px; margin-left:10px; font-weight:600; font-size:14px; color:#FFFFFF; line-height:30px;  font-weight:600px; float:left; display:inline;}
-#zz_div{width:218px; height:500px; margin-top:10px; border:1px solid #0B8AC9; float:left; display:inline;}
+#zz_div{width:218px; margin-top:10px; border:1px solid #0B8AC9; float:left; display:inline;}
 .zz_content{width:195px; margin-left:10px; word-wrap: break-word; word-break: normal;  margin-top:10px; font-weight:400px; font-size:12px;   line-height:20px; float:left; display:inline;}
 .zz_name{width:50px; float:left; overflow:hidden; font-weight:bold; color:blue; letter-spacing:1px; display:inline;}
 

@@ -18,7 +18,7 @@
 			 			<div id="left">
 			 							<div id="lefta">
 			 										<div id="title_left">
-			 										<?php $sql = 'select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="首页头新闻" order by i.priority asc, n.created_at desc limit 11';
+			 										<?php $sql = 'select n.photo_src,n.id,n.short_title,n.description,n.news_type,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="首页头新闻" order by i.priority asc, n.created_at desc limit 6';
 														  $record_star=$db -> query($sql);
 														  $sql="select * from smg_news where id=46890";
 														  $news=$db->query($sql); 
@@ -29,7 +29,8 @@
 			 										<div id="title_right">
 			 												<div id="title_right_title"><a target="_blank" href="news.php?id=<?php echo $record_star[0]->id; ?>"><?php echo $record_star[0]->short_title; ?></a></div>
 			 												<div id="w_hr" ></div>
-			 												<?php for($i=1;$i<11; $i++){ ?>
+			 												<div id=head_desc><?php echo delhtml($record_star[0]->description); ?></div>
+			 												<?php for($i=1;$i<6; $i++){ ?>
 			 												<div class="title_w"><a target="_blank" href="news.php?id=<?php echo $record_star[$i]->id; ?>"><?php echo $record_star[$i]->short_title; ?></a></div><?php if($i==1){ ?><div id="newsa"></div><?php }?>
 			 												<?php }?>
 			 												<div id="title_buttom"><a target="_blank" href="list.php?id=175"><font style="color:#5A9720">>>&nbsp;更多</a></font></div>
@@ -38,13 +39,13 @@
 			 							<div id="leftb">
 			 										<div class="guanz">
 			 										<?php $sql = 'select n.photo_src,n.id,n.short_title,n.description,n.news_type,n.video_src,n.video_photo_src,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="重点关注" order by i.priority asc, n.created_at desc limit 6';
-														  $news=$db -> query($sql); 
+														  $news=$db->query($sql); 
 													?>
 			 												<div id="zhong_top"><div id="texta">重点关注</div><a target="_blank" href="list.php?id=162">更多 >></a></div>
 			 												<div id="zhong_img_left"><?php if($news[0]->video_src!=""){show_video_player('171','117',$news[0]->video_photo_src,$news[0]->video_src);}else{ echo '<a target="_blank" href="news.php?id='.$news[0]->id.'"><img width=171 height=117 border=0 src="'.$news[0]->photo_src.'"></a>';} ?></div>
 			 												<div class="zhong_img_right">
 			 														<div class="zhong_title"><?php echo $news[0]->short_title; ?></div>
-			 														<div class="zhong_c"><?php echo $news[0]->description; ?></div>
+			 														<div class="zhong_c"><?php echo delhtml($news[0]->description); ?></div>
 			 														<div class="zhong_bottom"><a target="_blank" href="news.php?id=<?php echo $news[0]->id; ?>"><font style="color:#67A22A;">查看全部</font></a></div>
 			 												</div>
 			 												<?php for($i=1; $i<5; $i++){ ?>
@@ -63,7 +64,7 @@
 			 													<div id="zhong_img_right_right"><?php if($news[0]->video_src!=""){show_video_player('171','117',$news[0]->video_photo_src,$news[0]->video_src);}else{ echo '<a target="_blank" href="news.php?id='.$news[0]->id.'"><img width=171 height=117 border=0 src="'.$news[0]->photo_src.'"></a>';} ?></div>
 			 												<div class="zhong_img_right">
 			 														<div class="zhong_title"><?php echo $news[0]->short_title; ?></div>
-			 														<div class="zhong_c"><?php echo $news[0]->description; ?></div>
+			 														<div class="zhong_c"><?php echo delhtml($news[0]->description); ?></div>
 			 														<div class="zhong_bottom"><a target="_blank" href="news.php?id=<?php echo $news[0]->id; ?>"><font style="color:#67A22A;">查看全部</font></a></div>
 			 												</div>
 			 												<?php for($i=1; $i<5; $i++){ ?>
@@ -134,7 +135,7 @@
 			 												<div id="activities_img_left"><?php if($news[0]->video_src!=""){show_video_player('171','117',$news[0]->video_photo_src,$news[0]->video_src);}else{ echo '<a target="_blank" href="news.php?id='.$news[0]->id.'"><img width=171 height=117 border=0 src="'.$news[0]->photo_src.'"></a>';} ?></div>
 			 												<div class="zhong_img_right">
 			 														<div class="zhong_title"><?php echo $news[0]->short_title; ?></div>
-			 														<div class="zhong_c"><?php echo $news[0]->description; ?></div>
+			 														<div class="zhong_c"><?php echo delhtml($news[0]->description); ?></div>
 			 														<div class="zhong_bottom"><a target="_blank" href="news.php?id=<?php echo $news[0]->id; ?>"><font style="color:#67A22A;">查看全部</font></a></div>
 			 												</div>
 			 												<?php for($i=1;$i<5;$i++){ ?>
@@ -153,7 +154,7 @@
 			 													<div id="activities_r_img"><?php if($news[0]->video_src!=""){show_video_player('171','117',$news[0]->video_photo_src,$news[0]->video_src);}else{ echo '<a target="_blank" href="news.php?id='.$news[0]->id.'"><img width=171 height=117 border=0 src="'.$news[0]->photo_src.'"></a>';} ?></div>
 			 												<div class="zhong_img_right">
 			 														<div class="zhong_title"><?php echo $news[0]->short_title; ?></div>
-			 														<div class="zhong_c"><?php echo $news[0]->description; ?></div>
+			 														<div class="zhong_c"><?php echo delhtml($news[0]->description); ?></div>
 			 														<div class="zhong_bottom"><a target="_blank" href="news.php?id=<?php echo $news[0]->id; ?>"><font style="color:#67A22A;">查看全部</font></a></div>
 			 												</div>
 			 												<?php for($i=1;$i<5;$i++){ ?>

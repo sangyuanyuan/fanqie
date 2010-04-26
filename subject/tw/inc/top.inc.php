@@ -13,6 +13,6 @@
 			 			<div id="title_g"><a target="_blank" href="../list.php?id=164"><font style="color:#ffffff">志愿者风采</font></a></div>
 			 			<div id="title_k"><a target="_blank" href="../list.php?id=170"><font style="color:#ffffff">志愿者心声</font></a></div>
 			 			<div id="title_l"><a target="_blank" href="../list.php?id=163"><font style="color:#ffffff">志愿星</font></a></div>
-			<div id="menu_b"><div id="menu_b_l">【<font style="color:red"><b>滚动新闻</b></font>】</div><div id="menu_b_r"><marquee width="100%" DIRECTION="left" onmouseover=this.stop() onmouseout=this.start()><?php for($i=0;$i<count($gdnews);$i++){ ?><a target="_blank" href="../news.php?id=<?php echo $gdnews[$i]->id; ?>"><?php echo delhtml($gdnews[$i]->short_title); ?></a><?php } ?></marquee></div></div>
+			<div id="menu_b"><div id="menu_b_l">【<font style="color:red"><b>滚动新闻</b></font>】</div><div id="menu_b_r"><marquee scrolldelay="90" width="100%" DIRECTION="left" onmouseover=this.stop() onmouseout=this.start()><?php for($i=0;$i<count($gdnews);$i++){ ?><a target="_blank" href="../news.php?id=<?php echo $gdnews[$i]->id; ?>"><?php echo delhtml($gdnews[$i]->short_title); ?></a><?php } ?></marquee></div></div>
  		</div>
 </div>
