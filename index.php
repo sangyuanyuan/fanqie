@@ -197,7 +197,7 @@ total("首页","other");
  				</div>
  				<div id=content>
  					<div id=content_t>
- 						<div id=title1>热议话题</div><div id=more><a target="_blank" href="news/news_list?id=<?php echo $record_baoliao[0]->c_id; ?>">more>></a></div>
+ 						<div id=title1>热议话题</div><div id=more><a target="_blank" href="news/news_list.php?id=<?php echo $record_baoliao[0]->c_id; ?>">more>></a></div>
  						
  						<div id=c_r>
  							<?php for($i=0;$i<7;$i++){?>
