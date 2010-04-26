@@ -30,12 +30,14 @@ p{margin:0px; padding:0px;}
 
 #t_l_m{width:271px; height:502px; background:url(/images/index/wybl_bg.jpg) no-repeat; float:left; display:inline;}
 #t_l_m #title{width:251px; height:30px; margin-top:10px; margin-left:10px; float:left; display:inline;}
-#t_l_m #title #title_l{width:106px; height:30px; line-height:30px; font-size:25px; font-weight:bold; float:left; display:inline;}
+#t_l_m #title #title_l{width:150px; height:30px; line-height:30px; font-size:25px; font-weight:bold; float:left; display:inline;}
 #t_l_m #title #title_r{width:77px; height:28px; margin-top:1px; float:right; display:inline;}
 #t_l_m #title #title_r button{width:77px; height:28px; border:0px; cursor:pointer; background:url(/images/index/wybl.jpg) no-repeat;}
 #t_l_m #content{width:261px; height:453px; margin-top:5px; margin-left:5px; background:url('/images/index/wyblcontent_bg.jpg') no-repeat; float:left; display:inline;}
 #t_l_m #content_t{width:261px; height:143px; overflow:hidden; float:left; display:inline;}
-#t_l_m #content_t #title{width:226px; height:30px; line-height:30px; padding-left:35px; font-size:20px; font-weight:bold; background:url('/images/index/fire.jpg') no-repeat; float:left; display:inline;}
+#t_l_m #content_t #title1{width:170px; height:30px; line-height:30px; padding-left:35px; font-size:20px; font-weight:bold; background:url('/images/index/fire.jpg') no-repeat; float:left; display:inline;}
+#t_l_m #content_t #more{width:50px; height:30px; line-height:30px; font-size:12px; font-weight:bold; float:right; display:inline;}
+#t_l_m #content_t #more a{color:#ff0000; text-decoration:none;}
 #t_l_m #content_t #c_l{width:66px; height:66px; margin-top:5px; margin-left:5px; border:1px solid #cccccc; overflow:hidden; float:left; display:inline;}
 #t_l_m #content_t #c_l img{width:64px; height:64px; margin:2px;}
 #t_l_m #content_t #imgtitle{width:66px; height:20px; margin-left:5px; line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;}

@@ -63,7 +63,7 @@
 			 fclose($handle);
 			if($servername == '172.27.203.80'){
 					send_sms('13482678134','无法连接数据库服务器80!');
-					send_sms('13764092296','无法连接数据库服务器80!');				
+					send_sms('13482678134','无法连接数据库服务器80!');				
 			}
 			@mail($note_emails,'数据库连接失败','主备数据库无法连接，请立即检查'.$this->servername);
 			$last_time = file_get_contents(dirname(__FILE__) .'/config/last_disconnect.txt');
