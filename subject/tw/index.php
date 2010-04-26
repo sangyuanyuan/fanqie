@@ -8,8 +8,10 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>smg</title>
-	<link href="css/smg.css" rel="stylesheet" type="text/css">
-	<?php use_jquery(); ?>
+	
+	<?php
+		css_include_tag('tw');
+	 use_jquery(); ?>
 </head>
 <body>
 	<div id="ibody">
