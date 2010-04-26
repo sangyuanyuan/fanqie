@@ -92,17 +92,6 @@
 			</div>
 		</div>
 		<div id=ibottom>
-			<div id=b_title><a name="#3"></a>赠票活动：</div>
-			<div id=b_content1>
-				　　SMG的年度大戏《东风雨》将于４月２１日起正式上映啦！这部斥资高达１亿
-				的谍战大片由柳云龙首次尝试自导自演。聚集了包括范冰冰、李小冉、于荣光、
-				曾江在内的一大批实力派的明星倾情加盟。<br>
-				　　讲述在二战时期各国谍报人员为了各自的信仰和使命，云集在上海这个看似奢
-				靡繁华、歌舞升平的孤岛上，展开的一场没有硝烟的暗战。<br>
-				　　片中不仅完美再现了当时“魔都”上海的恢宏场景，更请来好莱坞的御用特技
-				制作团队为影片制作了１５０多个数字特效，无论是影片故事性还是画面的可看性
-				都非常值得期待！
-			</div>
 			<div id=b_content2>
 				<?php $db=get_db(); $comment=$db->query('select * from smg_comment where resource_type="dfy" order by created_at desc');?>
 					<marquee height="300" width="100%" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>

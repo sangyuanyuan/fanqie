@@ -18,6 +18,8 @@ a{text-decoration: none; color:#000000;}
 #bottom{width:900px; height:58px; margin-top:10px; background:url(../image/pg_bottom.gif) repeat-x; float:left; display:inline;}
 #menu{width:800px; height:25px; font-weight:bold; font-size:14px; COLOR:#FFFFFF; margin-top:285px; margin-left:30px; float:left; displaY:inline;}
 #menu_b{width:750px; height:20px; color:#8D5000; font-size:14px; margin-left:10px; margin-top:33px;  float:left; display:inline;}
+#menu_b #menu_b_l{width:100px; height:20px; line-height:20px; float:left; display:inline;}
+#menu_b #menu_b_r{width:630px; height:20px; margin-left:5px; line-height:20px; float:left; display:inlin;}
 #left{width:670px; float:left; display:inline;}
 #right{width:220px; float:right; display:inline;}
 #lefta{width:670px; eight:278px; float:left; display:inline;}
@@ -25,8 +27,9 @@ a{text-decoration: none; color:#000000;}
 #newsa{width:23px; height:9px; 	background:url(../image/news.gif) no-repeat; margin-top:10px; float:left; display:inline;}
 .title_w{width:260px; height:18px; margin-left:10px; margin-top:7px; font-weight:400; overflow:hidden; font-size:14px; float:left; display:inline;	}
 #w_hr{width:300px; height:1px; font-size:0px; line-height:0px; background:url(../image/dian_hrr.gif) repeat-x; float:left ; display:inline;}
-#title{width:280px; height:18px; margin-top:5px; margin-left:5px; margin-bottom:5px; font-size:16px; overflow:hidden;  font-weight:bold; color:#5A9720; float:left; display:inline;}
 #title_right{width:298px; height:278px; float:left; display:inline;}
+#title_right #title_right_title{width:280px; height:18px; margin-top:5px; margin-left:5px; margin-bottom:5px; font-size:16px; overflow:hidden;  font-weight:bold; float:left; display:inline;}
+#title_right #title_right_title a{color:#5A9720;}
 #title_buttom{width:70px; height:15px; margin-bottom:3px; margin-top:-17px; margin-right:5px; text-align:right; z-index:2; font-size:13px; float:right; display:inline;}
 
 

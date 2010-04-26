@@ -17,7 +17,7 @@
 			 			<div id="left">
 			 							<div id="lefta">
 			 										<div id="title_left">
-			 										<?php $sql = 'select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="SMG世博青年志愿者" and i.category_type="news" and i.is_adopt=1 and c.name="首页头新闻" order by i.priority asc, n.created_at desc limit 11';
+			 										<?php $sql = 'select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="首页头新闻" order by i.priority asc, n.created_at desc limit 11';
 														  $record_star=$db -> query($sql);	 
 													?>
 			 												<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
@@ -60,7 +60,7 @@
 																</script>
 			 										</div>
 			 										<div id="title_right">
-			 												<div id="title" ><?php ?></div>
+			 												<div id="title_right_title"><a target="_blank" href="news.php?id=<?php echo $record_star[0]->id; ?>"><?php echo $record_star[0]->short_title; ?></a></div>
 			 												<div id="w_hr" ></div>
 			 												<?php for($i=1;$i<11; $i++){ ?>
 			 												<div class="title_w"><a target="_blank" href="">四大发生大幅啊事件发生负担阿桑</a></div><?php if($i==1){ ?><div id="newsa"></div><?php }?>
