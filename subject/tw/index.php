@@ -8,7 +8,8 @@
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>smg</title>
-	    <link href="css/smg.css" rel="stylesheet" type="text/css">
+	<link href="css/smg.css" rel="stylesheet" type="text/css">
+	<?php use_jquery(); ?>
 </head>
 <body>
 	<div id="ibody">
@@ -18,46 +19,12 @@
 			 							<div id="lefta">
 			 										<div id="title_left">
 			 										<?php $sql = 'select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="首页头新闻" order by i.priority asc, n.created_at desc limit 11';
-														  $record_star=$db -> query($sql); 
+														  $record_star=$db -> query($sql);
+														  $sql="select * from smg_news where id=46890";
+														  $news=$db->query($sql); 
+														  show_video_player('350','258',$news[0]->video_photo_src,$news[0]->video_src);
 													?>
-			 												<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
-																<div id="focus_01"></div> 
-																<script type="text/javascript"> 
-																var pic_width1=370; //图片宽度
-																var pic_height1=278; //图片高度
-																
-																<?php 
-																	$picsurl10 = array();
-																	$picslink10 = array();
-																	$picstext10 = array();
-																	for ($i=0;$i<4;$i++)
-																	{
-																		$picsurl10[]=$record_star[$i]->photo_src;
-																		$picslink10[]='news.php?id='.$record_star[$i]->id;
-																		$picstext10[]=$record_star[$i]->title;
-																	}
-																	
-																	
-																?>
-																var pics1=<?php echo '"',$pics10,'"'?>;
-																var mylinks1=<?php echo '"',$mylinks10,'"'?>;
-																var texts1=<?php echo '"',$texts10,'"'?>;			
-																 	
-																var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "370", "278", "4","#FFFFFF");
-																picflash.addParam('wmode','opaque');
-																picflash.addVariable("picurl",pics1);
-																picflash.addVariable("piclink",mylinks1);
-																picflash.addVariable("pictext",texts1);				
-																picflash.addVariable("pictime","5");
-																picflash.addVariable("borderwidth","370");
-																picflash.addVariable("borderheight","278");
-																picflash.addVariable("borderw","false");
-																picflash.addVariable("buttondisplay","true");
-																picflash.addVariable("textheight","15");				
-																picflash.addVariable("pic_width",pic_width1);
-																picflash.addVariable("pic_height",pic_height1);
-																picflash.write("focus_01");				
-																</script>
+			 												
 			 										</div>
 			 										<div id="title_right">
 			 												<div id="title_right_title"><a target="_blank" href="news.php?id=<?php echo $record_star[0]->id; ?>"><?php echo $record_star[0]->short_title; ?></a></div>
@@ -70,11 +37,11 @@
 			 							</div>
 			 							<div id="leftb">
 			 										<div class="guanz">
-			 										<?php $sql = 'select n.photo_src,n.id,n.short_title,n.description,n.news_type,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="重点关注" order by i.priority asc, n.created_at desc limit 6';
+			 										<?php $sql = 'select n.photo_src,n.id,n.short_title,n.description,n.news_type,n.video_src,n.video_photo_src,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="重点关注" order by i.priority asc, n.created_at desc limit 6';
 														  $news=$db -> query($sql); 
 													?>
 			 												<div id="zhong_top"><div id="texta">重点关注</div><a target="_blank" href="list.php?id=162">更多 >></a></div>
-			 												<div id="zhong_img_left"></div>
+			 												<div id="zhong_img_left"><?php if($news[0]->video_src!=""){show_video_player('171','117',$news[0]->video_photo_src,$news[0]->video_src);}else{ echo '<a target="_blank" href="news.php?id='.$news[0]->id.'"><img width=171 height=117 border=0 src="'.$news[0]->photo_src.'"></a>';} ?></div>
 			 												<div class="zhong_img_right">
 			 														<div class="zhong_title"><?php echo $news[0]->short_title; ?></div>
 			 														<div class="zhong_c"><?php echo $news[0]->description; ?></div>
@@ -93,7 +60,7 @@
 															  $news=$db -> query($sql); 
 														?>
 			 													<div id="guanr_top"><div id="textb">志愿星</div><a target="_blank" href="list.php?id=16">更多 >></a></div>
-			 													<div id="zhong_img_right_right"></div>
+			 													<div id="zhong_img_right_right"><?php if($news[0]->video_src!=""){show_video_player('171','117',$news[0]->video_photo_src,$news[0]->video_src);}else{ echo '<a target="_blank" href="news.php?id='.$news[0]->id.'"><img width=171 height=117 border=0 src="'.$news[0]->photo_src.'"></a>';} ?></div>
 			 												<div class="zhong_img_right">
 			 														<div class="zhong_title"><?php echo $news[0]->short_title; ?></div>
 			 														<div class="zhong_c"><?php echo $news[0]->description; ?></div>
@@ -112,23 +79,48 @@
 			 									<div id="leftc_top"><div id="textc">志愿者风采</div></div>
 			 									<div id="leftc_middle">
 			 										<div id="m_m">
-			 											
-			 													<div id="imga">
-			 															<img src="./image/img1.gif" style="width:150px; height:105px; border:1px solid #DADADA;  ">
-			 															<div class="imga_a">SADFSAFAS</div>
-			 													</div>
-			 													<div id="imgb">
-			 															<img src="./image/img3.gif" style="width:150px; height:105px;  border:1px solid #DADADA; ">
-			 															<div class="imga_a">SADFSAFAS</div>
-			 													</div>
-			 													<div id="imgc">
-			 															<img src="./image/img4.gif" style="width:150px; height:105px;  border:1px solid #DADADA; ">
-			 															<div class="imga_a">SADFSAFAS</div>
-			 													</div>
-			 													<div id="imgd">
-			 															<img src="./image/img5.jpg" style="width:150px; height:105px;  border:1px solid #DADADA; ">
-			 															<div class="imga_a">SADFSAFAS</div>
-			 													</div>
+			 												<DIV id=Layer5 style="margin-left:10px; ">
+													      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
+													      <TABLE cellSpacing=0 cellPadding=0 border=0>
+													        <TBODY>
+													        <TR>
+													          <TD id=demo7 vAlign=top align=middle>
+													            <TABLE cellSpacing=0 cellPadding=2 border=0>
+													              <TBODY>
+													              <TR align=left>
+																		<?php $sql = 'select n.photo_src,n.id,n.short_title,n.description,n.news_type,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="志愿者风采" order by i.priority asc, n.created_at desc';
+																				  $news=$db -> query($sql); 
+																		for($i=0;$i<count($news);$i++){
+																	?>
+													                <TD>
+																<div class="imga">
+			 															<img src="<?php echo $news[$i]->photo_src; ?>" style="width:150px; height:105px; border:1px solid #DADADA;  ">
+			 															<div class="imga_a"><?php echo $news[$i]->short_title; ?></div>
+															</div></TD>
+				               				 <? }?>
+				              				</TR></TBODY></TABLE></TD>
+				          			<TD id="demo8" vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								        var demo6 = document.getElementById('demo6');
+										var demo7 = document.getElementById('demo7');
+										var demo8 = document.getElementById('demo8');  
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo8.innerHTML=demo7.innerHTML
+											function Marquee(){
+											if(demo8.offsetWidth-demo6.scrollLeft<=0)
+											demo6.scrollLeft-=demo7.offsetWidth
+											else{
+											demo6.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo6.onmouseover=function() {clearInterval(MyMar)}
+											demo6.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
+				</DIV>
+			 													
 			 										</div>
 			 									</div>
 			 							</div>
@@ -139,7 +131,7 @@
 															  $news=$db -> query($sql); 
 														?>
 			 												<div id="activities_top"><div id="textd">活动介绍</div><a target="_blank" href="list.php?id=165">更多 >></a></div>
-			 												<div id="activities_img_left"></div>
+			 												<div id="activities_img_left"><?php if($news[0]->video_src!=""){show_video_player('171','117',$news[0]->video_photo_src,$news[0]->video_src);}else{ echo '<a target="_blank" href="news.php?id='.$news[0]->id.'"><img width=171 height=117 border=0 src="'.$news[0]->photo_src.'"></a>';} ?></div>
 			 												<div class="zhong_img_right">
 			 														<div class="zhong_title"><?php echo $news[0]->short_title; ?></div>
 			 														<div class="zhong_c"><?php echo $news[0]->description; ?></div>
@@ -158,9 +150,9 @@
 															  $news=$db -> query($sql); 
 														?>
 			 													<div id="activities_r_top"><div id="texte">基层撷音</div><a target="_blank" href="list.php?id=169">更多 >></a></div>
-			 													<div id="activities_r_img"></div>
+			 													<div id="activities_r_img"><?php if($news[0]->video_src!=""){show_video_player('171','117',$news[0]->video_photo_src,$news[0]->video_src);}else{ echo '<a target="_blank" href="news.php?id='.$news[0]->id.'"><img width=171 height=117 border=0 src="'.$news[0]->photo_src.'"></a>';} ?></div>
 			 												<div class="zhong_img_right">
-			 														<div class="zhong_title"><?php echo $news[0]->title; ?></div>
+			 														<div class="zhong_title"><?php echo $news[0]->short_title; ?></div>
 			 														<div class="zhong_c"><?php echo $news[0]->description; ?></div>
 			 														<div class="zhong_bottom"><a target="_blank" href="news.php?id=<?php echo $news[0]->id; ?>"><font style="color:#67A22A;">查看全部</font></a></div>
 			 												</div>

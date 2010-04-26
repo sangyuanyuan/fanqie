@@ -23,7 +23,7 @@ a{text-decoration: none; color:#000000;}
 #left{width:670px; float:left; display:inline;}
 #right{width:220px; float:right; display:inline;}
 #lefta{width:670px; eight:278px; float:left; display:inline;}
-#title_left{width:370px; height:278px; float:left; display:inline;}
+#title_left{width:360px; height:268px; margin-top:10px; margin-left:10px; float:left; display:inline;}
 #newsa{width:23px; height:9px; 	background:url(../image/news.gif) no-repeat; margin-top:10px; float:left; display:inline;}
 .title_w{width:260px; height:18px; margin-left:10px; margin-top:7px; font-weight:400; overflow:hidden; font-size:14px; float:left; display:inline;	}
 #w_hr{width:300px; height:1px; font-size:0px; line-height:0px; background:url(../image/dian_hrr.gif) repeat-x; float:left ; display:inline;}
@@ -37,13 +37,13 @@ a{text-decoration: none; color:#000000;}
 #leftb{width:670px; height:263px; margin-top:10px;  float:left; display:inline;}
 .guanz{width:324px; height:260px; float:left; display:inline;}
 #zhong_top{width:324px; height:29px; text-align:right; font-size:12px; line-height:35px; background:url(../image/pg_red.jpg) no-repeat; float:left; display:inline;}
-#zhong_img_left{width:171PX; margin-top:3px; HEIGHT:117PX; BACKGROUND:URL(../image/img4.gif) no-repeat; float:left; display:inline;}
-#zhong_img_right_right{width:171PX; margin-top:3px; HEIGHT:117PX; BACKGROUND:URL(../image/img5.jpg) no-repeat; float:left; display:inline;}
+#zhong_img_left{width:171PX; margin-top:3px; HEIGHT:117PX; float:left; display:inline;}
+#zhong_img_right_right{width:171px; margin-top:3px; HEIGHT:117px; float:left; display:inline;}
 .zhong_img_right{width:150px; height:117px; float:left; display:inline;}
 .guanr{width:326px; height:260px; float:right; display:inline;}
-.zhong_title{width:144px; height:15px; margin-left:5px; color:#67A22A; font-weight:bold; font-size:14px; margin-top:3px; float:left; display:inline;}
-.zhong_c{width:142px; height:75px; overflow:hidden; word-wrap: break-word; word-break: normal; margin-left:5px; font-size:12px; margin-top:3px; line-height:18px; float:left; display:inline;}
-.zhong_bottom{width:145px; height:15px; text-align:right; margin-top:7px; font-size:12px; color:#67A22A; float:left; displaY:inline;}
+.zhong_title{width:144px; height:15px; margin-left:5px; color:#67A22A; font-weight:bold; font-size:14px; margin-top:3px; overflow:hidden; float:left; display:inline;}
+.zhong_c{width:142px; height:75px;  word-wrap: break-word; word-break: normal; margin-left:5px; font-size:12px; margin-top:3px; line-height:18px; overflow:hidden; float:left; display:inline;}
+.zhong_bottom{width:145px; height:15px; text-align:right; margin-top:7px; font-size:12px; color:#67A22A; float:left; display:inline;}
 
 .content_z{width:300px; height:20px; margin-left:10px; margin-top:5px; float:left; display:inline;}
 .content_d{width:10px; height:13px; margin-top:2px; background:url(../image/dian_hr.gif) no-repeat; float:left; display:inline;}
@@ -61,11 +61,8 @@ a{text-decoration: none; color:#000000;}
 
 
 
-#imga{width:150px; height:130px;  text-align:center; margin-left:10px; margin-top:13px; float:left; display:inline;}
+.imga{width:150px; height:130px;  text-align:center; margin-left:15px; margin-top:13px; float:left; display:inline;}
 .imga_a{width:150px; height:20px;  overflow:hidden; font-size:13px; text-align:center; margin-top:5px; float:left; display:inline;}
-#imgb{width:150px; height:130px;  margin-left:15px; margin-top:13px; float:left; display:inline;}
-#imgc{width:150px; height:130px;  margin-left:15px; margin-top:13px; float:left; display:inline;}
-#imgd{width:150px; height:130px;  margin-left:15px; margin-top:13px; float:left; display:inline;}
 
 
 
@@ -75,9 +72,9 @@ a{text-decoration: none; color:#000000;}
 
 #leftd{width:670px;  height:263px; margin-top:10px;  float:left; display:inline;}
 #activities_top{width:324px; height:29px;  font-size:12px; line-height:35px; text-align:right; background:url(../image/green.jpg) no-repeat; float:left; display:inline;}
-#activities_img_left{width:171PX; margin-top:3px; HEIGHT:117PX; BACKGROUND:URL(../image/img4.gif) no-repeat; float:left; display:inline;}
+#activities_img_left{width:171PX; margin-top:3px; HEIGHT:117PX;  float:left; display:inline;}
 #activities_r_top{width:324px; height:29px; font-size:12px; line-height:35px; text-align:right; background:url(../image/green_b.jpg) no-repeat;  float:left; display:inline;}
-#activities_r_img{width:171PX; margin-top:3px; HEIGHT:117PX; BACKGROUND:URL(../image/img5.jpg) no-repeat; float:left; display:inline;}
+#activities_r_img{width:171PX; margin-top:3px; HEIGHT:117PX; no-repeat; float:left; display:inline;}
 
 
 
@@ -134,3 +131,5 @@ a{text-decoration: none; color:#000000;}
 #content_content #title{width:630px; margin-top:20px; margin-bottom:10px; line-height:35px; font-size:25px; font-weight:bold; text-align:center; color:#67A22A; float:left; display:inline;}
 #content_content #comefrom{width:600px; height:30px; margin-left:15px; line-height:30px; padding-top:4px; font-size:12px; border-top:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC; text-align:center;  float:left; display:inline;}
 #content_content #content{width:630px; overflow:hidden; float:left; display:inline;}
+#content_content #video{margin-top:5px; margin-right:5px; margin-bottom:5px; float:left; display:inline;}
+
