@@ -41,7 +41,7 @@
  			<div id="zz_title">志愿者心声</div>
  			<div id="zz_div">
  				<?php
- 					$comment=$db->query('select * from smg_comment where resource_type=zyzxs order by created_at desc');
+ 					$comment=$db->query('select * from smg_comment where resource_type="zyzxs" order by created_at desc');
  				 for($i=0;$i<count($comment);$i++){ ?>
  				 	<marquee height="300" DIRECTION="up" onmouseover=this.stop() onmouseout=this.start()>
 	 					<div class="zz_content">
