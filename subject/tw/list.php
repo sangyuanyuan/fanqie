@@ -28,7 +28,7 @@
 <body>
 	<div id="ibody">
 		<div id="iibody">
-			 <? require_once('/subject/tw/inc/top.inc.php');?>
+			 <? require_once('inc/top.inc.php');?>
 			 			<div id="left">
 			 			<?php for($i=0;$i<count($news);$i++){ ?>
 			 				<div class=list_content>
@@ -38,8 +38,8 @@
 			 			<?php } ?>
 			 			<div style="width:100%; height:20px; text-align:center; float:left; display:inline;"><?php paginate(); ?></div>
 			 			</div>
-			 <? require_once('/subject/tw/inc/right.inc.php');
-			  require_once('/subject/tw/inc/bottom.inc.php');?>
+			 <? require_once('inc/right.inc.php');
+			  require_once('inc/bottom.inc.php');?>
 		</div>
 	</div>
 </body>
