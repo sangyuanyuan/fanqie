@@ -103,7 +103,7 @@
    			<? //}?>
    			<a href='/zongcai/' target="_blank">总裁奖</a>
    		</div>
-			<div id=zongcai><?php if(date('Y-m-d')!="2010-04-21"){ ?><a target="_blank" href="http://192.168.61.247/"><img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/world.gif"></a><?php } ?></div>
+			<div id=zongcai><?php if(date('Y-m-d')!="2010-04-21"){ ?><a target="_blank" href="http://172.28.10.55/smg_sava/dongtai/temp/media-effect2.htm"><img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/world.jpg"></a><?php } ?></div>
    	</div>
    	<?php 
    				$cookie=isset($_COOKIE['smg_username']) ? $_COOKIE['smg_username'] : "";

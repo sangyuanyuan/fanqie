@@ -16,14 +16,8 @@
  	<div id="day">
  								<div id="day_title">今日值班</div>
  								<div class="day_content">
- 										<DIV class="new_d"></div>
- 										<div CLASS="new_cona">10:30-12:20 事件发 阿事件 发生负担 阿桑桑</div>	
- 										<DIV class="new_d"></div>
- 										<div CLASS="new_cona">10:30-12:20 事件发 阿事件 发生负担 阿桑桑</div>	
- 										<DIV class="new_d"></div>
- 										<div CLASS="new_cona">10:30-12:20 事件发 阿事件 发生负担 阿桑桑</div>	
- 										<DIV class="new_d"></div>
- 										<div CLASS="new_cona">10:30-12:20 事件发 阿事件 发生负担 阿桑桑</div>	
+ 										<?php $day=$db->query('select id,content from smg_news where id=46862');?>
+ 										<a target="_blank" href="../news.php?id=<?php echo $day[0]->id; ?>"><?php echo get_fck_content($day[0]->content);?></a>
  								</div>
  	</div>
  	<div id="ministry">

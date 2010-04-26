@@ -21,8 +21,7 @@ a{text-decoration: none; color:#000000;}
 #left{width:670px; float:left; display:inline;}
 #right{width:220px; float:right; display:inline;}
 #lefta{width:670px; eight:278px; float:left; display:inline;}
-#title_left{width:370px; height:278px; background:url(../image/pic.jpg) no-repeat; float:left; display:inline;}
-#title_hr{width:305px; height:15px;  margin-top:233px; margin-right:5px; font-weight:bold; font-size:14px;  text-align:right; float:right; display:inline;}
+#title_left{width:370px; height:278px; float:left; display:inline;}
 #newsa{width:23px; height:9px; 	background:url(../image/news.gif) no-repeat; margin-top:10px; float:left; display:inline;}
 .title_w{width:260px; height:18px; margin-left:10px; margin-top:7px; font-weight:400; overflow:hidden; font-size:14px; float:left; display:inline;	}
 #w_hr{width:300px; height:1px; font-size:0px; line-height:0px; background:url(../image/dian_hrr.gif) repeat-x; float:left ; display:inline;}
@@ -90,7 +89,7 @@ a{text-decoration: none; color:#000000;}
 
 #day{width:220px; height:216px; margin-top:5px; background:url(../image/daypg_.jpg) no-repeat; float:left; display:inline;}
 #day_title{width:100px; height:20px;  font-size:13px; margin-top:7px; font-weight:bold; margin-left:10px; color:#843000; float:left; display:inline;}
-.day_content{width:210px;  margin-top:20px; word-wrap: break-word; word-break: normal;  margin-left:5px; float:left; display:inline;}
+.day_content{width:210px; height:186px; word-wrap: break-word; word-break: normal;  margin-left:5px; overflow:hidden; float:left; display:inline;}
 .new_cona{width:195px; font-size:12px; LINE-HEIGHT:18PX; letter-spacing:1PX; margin-left:5PX; font-weight:300; float:left; display:inline;}
 
 #ministry{width:220PX; HEIGHT:168PX; background:url(../image/m_pg.jpg) no-repeat; margin-top:5px; FLOAT:left; display:inline;}

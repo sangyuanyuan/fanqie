@@ -17,11 +17,50 @@
 			 			<div id="left">
 			 							<div id="lefta">
 			 										<div id="title_left">
-			 												<div id="title_hr">
-			 												</div>
+			 										<?php $sql = 'select n.photo_src,n.id,n.short_title,n.news_type,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="SMG世博青年志愿者" and i.category_type="news" and i.is_adopt=1 and c.name="首页头新闻" order by i.priority asc, n.created_at desc limit 11';
+														  $record_star=$db -> query($sql);	 
+													?>
+			 												<script src="/flash/sohuflash_1.js" type="text/javascript"></script>
+																<div id="focus_01"></div> 
+																<script type="text/javascript"> 
+																var pic_width1=370; //图片宽度
+																var pic_height1=278; //图片高度
+																
+																<?php 
+																	$picsurl10 = array();
+																	$picslink10 = array();
+																	$picstext10 = array();
+																	for ($i=0;$i<4;$i++)
+																	{
+																		$picsurl10[]=$record_star[$i]->photo_src;
+																		$picslink10[]='news.php?id='.$record_star[$i]->id;
+																		$picstext10[]=$record_star[$i]->title;
+																	}
+																	
+																	
+																?>
+																var pics1=<?php echo '"',$pics10,'"'?>;
+																var mylinks1=<?php echo '"',$mylinks10,'"'?>;
+																var texts1=<?php echo '"',$texts10,'"'?>;			
+																 	
+																var picflash = new sohuFlash("/flash/focus.swf", "focus_01", "370", "278", "4","#FFFFFF");
+																picflash.addParam('wmode','opaque');
+																picflash.addVariable("picurl",pics1);
+																picflash.addVariable("piclink",mylinks1);
+																picflash.addVariable("pictext",texts1);				
+																picflash.addVariable("pictime","5");
+																picflash.addVariable("borderwidth","370");
+																picflash.addVariable("borderheight","278");
+																picflash.addVariable("borderw","false");
+																picflash.addVariable("buttondisplay","true");
+																picflash.addVariable("textheight","15");				
+																picflash.addVariable("pic_width",pic_width1);
+																picflash.addVariable("pic_height",pic_height1);
+																picflash.write("focus_01");				
+																</script>
 			 										</div>
 			 										<div id="title_right">
-			 												<div id="title" >文章爱上对方能刷卡的烦恼艾丝凡沙卡的烦恼艾丝凡沙卡的烦恼艾丝凡沙卡的烦恼艾丝凡沙发上萨芬AEF 标题</div>
+			 												<div id="title" ><?php ?></div>
 			 												<div id="w_hr" ></div>
 			 												<?php for($i=1;$i<11; $i++){ ?>
 			 												<div class="title_w"><a target="_blank" href="">四大发生大幅啊事件发生负担阿桑</a></div><?php if($i==1){ ?><div id="newsa"></div><?php }?>
