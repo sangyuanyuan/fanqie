@@ -60,7 +60,7 @@
 				 										<?php $sql = 'select n.photo_src,n.id,n.short_title,n.description,n.news_type,n.target_url,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="志愿星" order by i.priority asc, n.created_at desc limit 6';
 															  $news=$db -> query($sql); 
 														?>
-			 													<div id="guanr_top"><div id="textb">志愿星</div><a target="_blank" href="list.php?id=163">更多 >></a></div>
+			 													<div id="guanr_top"><div id="textb">志愿星</div><a target="_blank" href="list.php?id=16">更多 >></a></div>
 			 													<div id="zhong_img_right_right"><?php if($news[0]->video_src!=""){show_video_player('171','117',$news[0]->video_photo_src,$news[0]->video_src);}else{ echo '<a target="_blank" href="news.php?id='.$news[0]->id.'"><img width=171 height=117 border=0 src="'.$news[0]->photo_src.'"></a>';} ?></div>
 			 												<div class="zhong_img_right">
 			 														<div class="zhong_title"><?php echo $news[0]->short_title; ?></div>
