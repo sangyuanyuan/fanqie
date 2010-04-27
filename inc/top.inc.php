@@ -92,7 +92,7 @@
 			?>			
    		<div id=hot>
    			<?php //for($i=0;$i<1;$i++){?>
-   				<?php if(date('Y-m-d')!="2010-04-21"){ ?><a href="http://qjdls.smgbb.cn" target=_blank><img style="width:50px; height:20px; margin-top:0px;" width=50 height=20 border=0 src="/images/qj.gif"></a><?php } ?>
+   				<?php if(date('Y-m-d')!="2010-04-21"){ ?><!--<a href="http://qjdls.smgbb.cn" target=_blank><img style="width:50px; height:20px; margin-top:0px;" width=50 height=20 border=0 src="/images/qj.gif"></a>--><?php } ?>
    			<!--<a href="/search/?key=<?php echo urlencode($record[0]->search_key)?>&search_type=smg_news" target=_blank><?php echo $record[0]->search_key ?></a>-->　
    			<? //}?>
    			<a href='/zongcai/' target="_blank">总裁奖</a>

@@ -30,8 +30,7 @@
 		<a id=home href="/home/" target="_blank"><img src="/images/top/jiayuan.gif" border=0></a>
 	</div>
 </div>
-<? if($nowday!="2010-04-21"){ ?>
-<div id=bannerimg>
+<!--<div id=bannerimg>
 	<div id=nimg1>
 		<div class=deptlogo name=1></div>
 		<div class=deptlogo name=2></div>
@@ -60,13 +59,10 @@
 			<a target="_blank" href="/news/news/news.php?id=<?php echo $banner[0]->id; ?>"><?php echo $banner[0]->title; ?></a>　<a target="_blank" href="/news/news/news.php?id=<?php echo $banner[1]->id; ?>"><?php echo $banner[1]->title; ?></a>
 		</div>	
 	</div>
-	<!--<img src="/images/yuanlei.jpg">-->
-</div>
-<?php }else{ ?>
+</div>-->
 <div id=bannerimg1>
 <a target="_blank" href="/subject/tw/"><img border=0 src="/images/tw.jpg"></a>
 </div>
-<?php } ?>
 <div id=nav2>
 	
 	<div id=box <? if($nowday=="2010-04-01"){ ?>style="background:url('/images/top/bg2.jpg') no-repeat;"<?php } ?>>
