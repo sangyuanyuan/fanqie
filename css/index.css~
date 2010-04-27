@@ -13,7 +13,7 @@ p{margin:0px; padding:0px;}
 #ibody_bottom{width:995px; height:340px; float:left; display:inline;}
 
 #ibody_top #p1{width:285px; height:830px; margin-top:7px; overflow:hidden; float:left; display:inline;}
-#ibody_top #p2_top{width:710px; height:14px; line-height:14px; text-align:center; overflow:hidden; float:left; display:inline;}
+#ibody_top #p2_top{width:710px; height:14px; line-height:14px; overflow:hidden; float:left; display:inline;}
 #ibody_top #p2{width:710px; overflow:hidden; float:left; display:inline;}
 #ibody_top #p3{width:495px; margin-top:8px; overflow:hidden; float:left; display:inline;}
 #ibody_top #p4{width:215px; margin-top:8px; overflow:hidden; float:right; display:inline;}
