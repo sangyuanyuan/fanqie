@@ -26,25 +26,56 @@
  							<div id="m_title">服务信息</div>
  							<div id="m_a">
  										<div id="m_imga"></div>
- 										<div class="ma"><a target="_blank" href="">志愿者知识</a></div>
+ 										<div class="ma"><a target="_blank" href="../list.php?id=172">志愿者知识</a></div>
  							</div>
  							<div class="m_div">
  										<div id="m_img"></div>
- 										<div class="ma"><a target="_blank" href="">活动信息共享</a></div>
+ 										<div class="ma"><a target="_blank" href="../list.php?id=173">活动信息共享</a></div>
  							</div>
  							<div class="m_div">
  										<div id="m_img2"></div>
- 										<div class="ma"><a target="_blank" href="">下载区</a></div>
+ 										<div class="ma"><a target="_blank" href="../list.php?id=174">下载区</a></div>
  							</div>	
  	</div>
  	<DIV ID="z_title">
  			<div id="zz_title">志愿者心声</div>
  			<div id="zz_div">
- 				<?php for($i=0;$i<4;$i++){ ?>
- 					<div class="zz_content">
- 								<div class="zz_name">撒旦发:</div>撒旦发射点发撒旦发射点发撒旦发射点发撒旦发射点发撒旦发射点发撒旦发射点发撒旦发射点发撒旦发射点发
- 					</div>
- 				<?php }?>						 				
+ 				<div style="width:"100%; height:300px; float:left; display:inline;">
+	 				<?php
+	 					$comment=$db->query('select * from smg_comment where resource_type="zyzxs" order by created_at desc');
+	 				 for($i=0;$i<count($comment);$i++){ ?>
+	 				 	<marquee height="300" DIRECTION="up" onmouseover=this.stop() onmouseout=this.start()>
+		 					<div class="zz_content">
+		 								<div class="zz_name"><?php echo $comment[$i]->nick_name;?>:</div><?php echo $comment[$i]->comment; ?>
+		 					</div>
+		 				</marquee>
+	 				<?php }?>
+ 				</div>
+ 				<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
+	 				<input type="text" style="margin-top:10px; margin-left:10px;" id="commenter" name="post[nick_name]">
+	 				<input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $id;?>">
+					<input type="hidden" id="resource_type" name="post[resource_type]" value="zyzxs">
+					<input type="hidden" name="type" value="comment">
+					<textarea style="margin-left:10px;" name=post[comment] id=commentcontent></textarea>
+					<button style="margin-top:10px; margin-right:15px; border:1px solid #cccccc; background:#ffffff; line-height:20px; float:right; display:inline;" id="comment_sub" >提　交</button>
+				</form> 				
  			</div>
  	</DIV>
  </div>
+ <script>
+$(document).ready(function(){
+	$("#comment_sub").click(function(){
+			var content = $('#commentcontent').val();
+			if(content==""){
+				alert('评论内容不能为空！');
+				return false;
+			}
+			if(content.length>1500)
+			{
+				alert('评论内容过长请分次评论！');
+				return false;
+			}
+			document.subcomment.submit();
+		});
+	});
+</script>
