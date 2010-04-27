@@ -260,7 +260,7 @@ total("首页","other");
 $ds=$db->query('select description,content from smg_news where id=47027');
 $gb=$db->query('select description,content from smg_news where id=47028');
  ?>
-		<div id=p2_top><marquee scrollamount="2" behavior="alternate"><span style="color:#ff0000">宣传总值班</span>：上视大厦 （日）<?php echo delhtml($ss[0]->description); ?>（夜）<?php echo delhtml($ss[0]->content); ?>　东视大厦 （日）<?php echo delhtml($ds[0]->description); ?>（夜）<?php echo delhtml($ds[0]->content); ?>　广播大厦　<?php echo delhtml($gb[0]->content); ?></marquee></div>
+		<div id=p2_top><marquee scrollamount="2" behavior="alternate"><span style="color:#ff0000; font-weight:bold;">今日宣传总值班</span>：<span style="font-weight:bold;">上视大厦</span> （日）<?php echo delhtml($ss[0]->description); ?>（夜）<?php echo delhtml($ss[0]->content); ?>　<span style="font-weight:bold;">东视大厦</span> （日）<?php echo delhtml($ds[0]->description); ?>（夜）<?php echo delhtml($ds[0]->content); ?>　广播大厦　<?php echo delhtml($gb[0]->content); ?></marquee></div>
 		<div id=p2>
  			<!-- start top_right_top !-->
   		<?php
