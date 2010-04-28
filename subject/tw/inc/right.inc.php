@@ -18,7 +18,7 @@
  								<div class="day_content">
  									<marquee width=100% height=100% DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
  										<?php $day=$db->query('select id,content from smg_news where id=46862');?>
- 										<a target="_blank" href="../news.php?id=<?php echo $day[0]->id; ?>"><?php echo get_fck_content($day[0]->content);?></a>
+ 										<a target="_blank" href="news.php?id=<?php echo $day[0]->id; ?>"><?php echo get_fck_content($day[0]->content);?></a>
  									</marquee>
  								</div>
  	</div>
@@ -26,15 +26,15 @@
  							<div id="m_title">服务信息</div>
  							<div id="m_a">
  										<div id="m_imga"></div>
- 										<div class="ma"><a target="_blank" href="../list.php?id=172">志愿者知识</a></div>
+ 										<div class="ma"><a target="_blank" href="list.php?id=172">志愿者知识</a></div>
  							</div>
  							<div class="m_div">
  										<div id="m_img"></div>
- 										<div class="ma"><a target="_blank" href="../list.php?id=173">活动信息共享</a></div>
+ 										<div class="ma"><a target="_blank" href="list.php?id=173">活动信息共享</a></div>
  							</div>
  							<div class="m_div">
  										<div id="m_img2"></div>
- 										<div class="ma"><a target="_blank" href="../list.php?id=174">下载区</a></div>
+ 										<div class="ma"><a target="_blank" href="list.php?id=174">下载区</a></div>
  							</div>	
  	</div>
  	<DIV ID="z_title">
