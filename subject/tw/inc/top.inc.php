@@ -1,7 +1,7 @@
 <div id="top">
 	<?php
 	$db = get_db();
-	$gdnews = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="滚动新闻" order by i.priority asc, n.created_at desc');
+	$gdnews = $db->query('select n.photo_src,n.id,n.short_title,n.news_type,n.file_name,n.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.id=33 and i.category_type="news" and i.is_adopt=1 and c.name="滚动新闻" order by i.priority asc, n.created_at desc limit 8');
 ?>
  		<div id="menu">
 			 			<div id="title_a"><a target="_blank" href="index.php"><font style="color:#ffffff">首页</font></a></div>
