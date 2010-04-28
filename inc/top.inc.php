@@ -97,7 +97,7 @@
    			<? //}?>
    			<a href='/zongcai/' target="_blank">总裁奖</a>
    		</div>
-			<div id=zongcai><?php if(date('Y-m-d')!="2010-04-21"){ ?><a target="_blank" href="http://172.28.10.55/smg_sava/dongtai/temp/media-effect2.htm"><img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/world.jpg"></a><?php } ?></div>
+			<div id=zongcai><?php if(date('Y-m-d')!="2010-04-21"){ ?><a target="_blank" href="http://172.28.10.55/smg_sava/dongtai/temp/media-effect2.htm" style="font-size:12px; text-decoration:none; color:#ffffff;">世博资料创意<!--<img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/world.jpg">--></a><?php } ?></div>
    	</div>
    	<?php 
    				$cookie=isset($_COOKIE['smg_username']) ? $_COOKIE['smg_username'] : "";
@@ -175,6 +175,7 @@
 	</div>
 </div>
 <script>
+$(function(){
 	display_login();
 		$('#button1').click(function(){
 			$('#top_search_form').attr('action','/search/?search_key=smg_news');
