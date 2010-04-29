@@ -261,7 +261,7 @@ total("首页","other");
 $ds=$db->query('select description,content from smg_news where id=47027');
 $gb=$db->query('select description,content from smg_news where id=47028');
  ?>
-		<div id=p2_top><span style="color:#ff0000;">今日宣传值班</span>：上视大厦 （日）<?php echo delhtml($ss[0]->description); ?>（夜）<?php echo delhtml($ss[0]->content); ?>　东视大厦 （日）<?php echo delhtml($ds[0]->description); ?>（夜）<?php echo delhtml($ds[0]->content); ?>　广播大厦　<?php echo delhtml($gb[0]->content); ?>　　<a target="_blank" href="news/news/news.php?id=47297">宣传值班表</a>
+		<div id=p2_top><span style="color:#ff0000;">今日宣传值班</span>：上视大厦 （日）<?php echo delhtml($ss[0]->description); ?>（夜）<?php echo delhtml($ss[0]->content); ?>　东视大厦 （日）<?php echo delhtml($ds[0]->description); ?>（夜）<?php echo delhtml($ds[0]->content); ?>　广播大厦　<?php echo delhtml($gb[0]->content); ?>　　<a style="color:#ff0000;" target="_blank" href="news/news/news.php?id=47297">宣传值班表</a>
 			<!--<span style="color:#ff0000;">今日宣传值班</span>：上视大厦 <?php echo delhtml($ss[0]->description); ?>　东视大厦 <?php echo delhtml($ds[0]->description); ?>　广播大厦　<?php echo delhtml($gb[0]->description); ?>-->　
 		</div>
 		<div id=p2>
