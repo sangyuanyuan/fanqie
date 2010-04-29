@@ -73,7 +73,7 @@ total("首页","other");
  			<div id=t_l_t>
  				<div id=menu>
  					<div class=item id=item1 param="1" <?php if($record_inline[0]->name=='mrzx'){?>style="background:url(/images/index/btn1.jpg)"<?php }else{?>style="background:url(/images/index/btn2.jpg);color:#9f9f9f;"<?php }?>>每日之星</div>
-  				<div class=item id=item2 param="2" <?php if($record_inline[0]->name=='spxw'){?>style="background:url(/images/index/btn1.jpg)"<?php }else{?>style="background:url(/images/index/btn2.jpg);color:#9f9f9f;"<?php }?>>视频新闻</div>
+  					<div class=item id=item2 param="2" <?php if($record_inline[0]->name=='spxw'){?>style="background:url(/images/index/btn1.jpg)"<?php }else{?>style="background:url(/images/index/btn2.jpg);color:#9f9f9f;"<?php }?>>视频新闻</div>
  					<div class=item id=item3 param="3" <?php if($record_inline[0]->name=='fqgg'){?>style="background:url(/images/index/btn1.jpg)"<?php }else{?>style="background:url(/images/index/btn2.jpg);color:#9f9f9f;"<?php }?>>番茄广告</div>
 				</div>	
   			<div class=content_tlt id=content1 <?php if($record_inline[0]->name=='mrzx'){?>style="display:inline"<?php }?>>
@@ -118,7 +118,8 @@ total("首页","other");
 				<? }?>	
   		  </div>
  				<div class=content_tlt id=content2 <?php if($record_inline[0]->name=='spxw'){?>style="display:inline;"<?php }?>>
- 					<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=235px height=182px scrolling="no" frameborder="0"></iframe>
+ 					
+ 						<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=235px height=182px scrolling="no" frameborder="0"></iframe>
  				</div>
   			<div class=content_tlt id=content3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
 				<?php if($record_ad[1]->ipriority<>0){?>
@@ -260,8 +261,8 @@ total("首页","other");
 $ds=$db->query('select description,content from smg_news where id=47027');
 $gb=$db->query('select description,content from smg_news where id=47028');
  ?>
-		<div id=p2_top><!--<span style="color:#ff0000;">今日宣传值班</span>：上视大厦 （日）<?php echo delhtml($ss[0]->description); ?>（夜）<?php echo delhtml($ss[0]->content); ?>　东视大厦 （日）<?php echo delhtml($ds[0]->description); ?>（夜）<?php echo delhtml($ds[0]->content); ?>　广播大厦　<?php echo delhtml($gb[0]->content); ?>-->
-			<span style="color:#ff0000;">今日宣传值班</span>：上视大厦 <?php echo delhtml($ss[0]->description); ?>　东视大厦 <?php echo delhtml($ds[0]->description); ?>　广播大厦　<?php echo delhtml($gb[0]->description); ?>
+		<div id=p2_top><span style="color:#ff0000;">今日宣传值班</span>：上视大厦 （日）<?php echo delhtml($ss[0]->description); ?>（夜）<?php echo delhtml($ss[0]->content); ?>　东视大厦 （日）<?php echo delhtml($ds[0]->description); ?>（夜）<?php echo delhtml($ds[0]->content); ?>　广播大厦　<?php echo delhtml($gb[0]->content); ?>　　<a target="_blank" href="news/news/news.php?id=47297">宣传值班表</a>
+			<!--<span style="color:#ff0000;">今日宣传值班</span>：上视大厦 <?php echo delhtml($ss[0]->description); ?>　东视大厦 <?php echo delhtml($ds[0]->description); ?>　广播大厦　<?php echo delhtml($gb[0]->description); ?>-->　
 		</div>
 		<div id=p2>
  			<!-- start top_right_top !-->
@@ -400,8 +401,8 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 					$zhibo=$db->query($sql);
 					$zb='select target_url from smg_news where category_id=209 and is_adopt=1 order by priority asc ,created_at desc limit 1'
 				?>		
-				<div id=content1 <?php if($zhibo[0]->state==0){ ?>style="width:350px;"<? }?>><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a>　<?php if($zhibo[0]->state==0){ ?><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  href="<?php echo "/".$record_import[1]->platform."/news/news.php?id=".$record_import[1]->id ?>" target="_blank"><?php echo $record_import[1]->short_title; ?></a><?php } ?></div>
- 				<?php if($zhibo[0]->state==1){ ?><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  href="/subject/zhibo/" id=btn ></a><?php } else{?><!--<a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  target="_blank" style="margin-top:10px; margin-left:10px; font-weight:bold; line-height:20px; color:red; text-decoration:underline; float:left; display:inline;" href="/news/news/news.php?id=28775">献血报名</a>--><?php } ?>
+				<div id=content1 <?php if($zhibo[0]->state==0&&(date('Y-m-d')<"2010-04-30"||date('Y-m-d')>"2010-05-02")){ ?>style="width:350px;"<? }?>><?php $today=date('Y-m-d H-m-s'); if(($today>='2010-04-30 08:00:00'&&$today<='2010-04-30 21:00:00')||($today>='2010-05-01 08:00:00'&&$today<='2010-05-01 21:00:00')||($today>='2010-05-02 08:00:00'&&$today<='2010-05-02 21:00:00')){ ?><a target="_blank" href="mms://218.78.215.67/fanqie_dfws">“你好，世界！——世博开幕大直播”</a><?php }else{?><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  href="<?php echo "/".$record_import[0]->platform."/news/news.php?id=".$record_import[0]->id ?>" target="_blank"><?php echo $record_import[0]->short_title; ?></a>　<?php if($zhibo[0]->state==0){ ?><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  href="<?php echo "/".$record_import[1]->platform."/news/news.php?id=".$record_import[1]->id ?>" target="_blank"><?php echo $record_import[1]->short_title; ?></a><?php }} ?></div>
+ 				<?php if(($today>='2010-04-30 08:00:00'&&$today<='2010-04-30 21:00:00')||($today>='2010-05-01 08:00:00'&&$today<='2010-05-01 21:00:00')||($today>='2010-05-02 08:00:00'&&$today<='2010-05-02 21:00:00')){  ?><a target="_blank" href="mms://218.78.215.67/fanqie_dfws"><img style="margin-top:7px;" border=0 src="images/index/zb.gif" /></a><?php }if($zhibo[0]->state==1){ ?><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  href="/subject/zhibo/" id=btn ></a><?php } else{?><!--<a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  target="_blank" style="margin-top:10px; margin-left:10px; font-weight:bold; line-height:20px; color:red; text-decoration:underline; float:left; display:inline;" href="/news/news/news.php?id=28775">献血报名</a>--><?php } ?>
  				<?php
 
 					$sql = 'select * from smg_news_show;';
@@ -668,7 +669,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 				 <div id=title></div><div id=more><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  target="_blank" href="news/news_list.php?id=<?php echo $record_out[0]->cid; ?>"><img border=0 src="images/index/more1.gif"></a></div>
 				<div class=box1 style="height:60px; margin-top:10px;">
 					<ul>
-						<marquee height="50" width=100% DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+						<marquee height="50" width=100% DIRECTION="up" onmouseover=this.stop() onmouseout=this.start()>
 						<?php for($i=0;$i<count($record_out);$i++){ ?>
 							<li><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  style="margin-top:5px; margin-right:5px; text-decoration:none;" target="_blank" href="/server/news/news.php?id=<?php echo $record_out[$i]->id; ?>"><?php echo $record_out[$i]->short_title; ?></a></li>
 						<?php } ?>
