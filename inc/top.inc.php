@@ -95,7 +95,7 @@
    				<?php if(date('Y-m-d')!="2010-04-21"){ ?><!--<a href="http://qjdls.smgbb.cn" target=_blank><img style="width:50px; height:20px; margin-top:0px;" width=50 height=20 border=0 src="/images/qj.gif"></a>--><?php } ?>
    			<!--<a href="/search/?key=<?php echo urlencode($record[0]->search_key)?>&search_type=smg_news" target=_blank><?php echo $record[0]->search_key ?></a>-->　
    			<? //}?>
-   			<a href='/zongcai/' target="_blank">总裁奖</a>
+   			<a href='/zongcai/' target="_blank">总裁奖</a><a style="margin-left:5px;" href='/subject/tw/' target="_blank">世博志愿者</a>
    		</div>
 			<div id=zongcai><?php if(date('Y-m-d')!="2010-04-21"){ ?><a target="_blank" href="http://172.28.10.55/smg_sava/dongtai/temp/media-effect2.htm" style="font-size:12px; text-decoration:none; color:#ffffff;">世博资料创意<!--<img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/world.jpg">--></a><?php } ?></div>
    	</div>
