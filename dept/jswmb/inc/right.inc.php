@@ -1,11 +1,4 @@
 	<div id=right>	
-		<div>
-			<A href="http://www.expo2010china.com/">
-        <DIV style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(images/expo.jpg) ; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 215px; CURSOR: hand; PADDING-TOP: 0px; HEIGHT: 39px">
-           <DIV style="BORDER-TOP-WIDTH: 0px; margin-left:85px; margin-top:-3px; PADDING-RIGHT: 500; PADDING-LEFT: 0px; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 18px; BACKGROUND: #fffffd; LEFT: 87px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; VERTICAL-ALIGN: baseline; WIDTH: 30px; COLOR: #ff3535; PADDING-TOP: 0px; POSITION: relative; TOP: 13px; HEIGHT: 20px; BORDER-RIGHT-WIDTH: 0px">
-              <SCRIPT type=text/javascript>var nowDate=new Date();var expoDate=new Date();expoDate.setFullYear(2010,4,1);document.write((expoDate-nowDate)/(1000*3600*24));</SCRIPT>
-        </DIV></DIV></A>
-		</div>
 		<div style="display:inline;">
 				<?php
 					$records = show_content('smg_video','video','精神文明办','视频','1');
