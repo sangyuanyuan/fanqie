@@ -1,5 +1,5 @@
 	<div id=right>	
-		<div style="display:inline;">
+		<div style="margin-top:10px; display:inline;">
 				<?php
 					$records = show_content('smg_video','video','精神文明办','视频','1');
 					show_video_player(216,230,$records[0]->photo_url,$records[0]->video_url);
