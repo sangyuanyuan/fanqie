@@ -669,7 +669,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 				 <div id=title></div><div id=more><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  target="_blank" href="news/news_list.php?id=<?php echo $record_out[0]->cid; ?>"><img border=0 src="images/index/more1.gif"></a></div>
 				<div class=box1 style="height:60px; margin-top:10px;">
 					<ul>
-						<marquee height="50" width=100% DIRECTION="up" onmouseover=this.stop() onmouseout=this.start()>
+						<marquee height="50" width=100% DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 						<?php for($i=0;$i<count($record_out);$i++){ ?>
 							<li><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  style="margin-top:5px; margin-right:5px; text-decoration:none;" target="_blank" href="/server/news/news.php?id=<?php echo $record_out[$i]->id; ?>"><?php echo $record_out[$i]->short_title; ?></a></li>
 						<?php } ?>
@@ -873,11 +873,11 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 
  			<!-- start top_right_right_bottom !-->
  			<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 and n.is_adopt=1 order by n.click_count desc limit 10';
+ 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 and n.is_adopt=1 order by n.click_count desc limit 4';
 					$record_news=$db -> query($sql);
-					$sql='select uid,itemid,subject from blog_spaceitems order by itemid desc limit 10';
+					$sql='select uid,itemid,subject from blog_spaceitems order by itemid desc limit 4';
 					$record_blog=$db -> query($sql);
-					$sql="select tid,subject from bbs_posts where first=1 and fid<>79 order by pid desc limit 10";
+					$sql="select tid,subject from bbs_posts where first=1 and fid<>79 order by pid desc limit 4";
 					$record_bbs=$db -> query($sql);	
 			?>	 
  			<div id=t_r_r_b>
@@ -885,7 +885,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  				<div class=menu_trrb id=menu_trrb2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;"><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  href="/zone/" target="_blank">最新博文</a></div>
  				<div class=menu_trrb id=menu_trrb3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;"><a <?php if(date("Y-m-d")=="2010-04-21"){ ?>style="color:#000000;"<?php } ?>  href="/zone/" target="_blank">最新热帖</a></div>
 				<div id=number>
-					<?php for($i=1;$i<=10;$i++){?>
+					<?php for($i=1;$i<=4;$i++){?>
 					<img src="/images/number/<?php echo $i;?>.jpg">
 					<? }?>
 				</div>
@@ -910,7 +910,16 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 					<? }?>	
 					</ul>
 				</div>
-
+				<div id=dyz></div>
+				<div id=dyzcontent>
+					<?php $sql = 'select id,short_title from smg_news where category_id=218 and is_adopt=1 order by priority asc,created_at desc';
+					$dyz=$db -> query($sql); ?>
+					<marquee direction="up" scrollamount="2" height=100% width=100% onmouseover=this.stop() onmouseout=this.start()>
+						<?php for($i=0;$i<count($dyz);$i++){ ?>
+							<div class=cl><a target="_blank" href="/news/news/news.php?id=<?php echo $dyz[$i]->id; ?>"><?php echo $dyz[$i]->short_title; ?></a></div>
+						<?php } ?>
+					</marquee>
+				</div>
  			</div>
  			<!-- end !-->					
 		</div>

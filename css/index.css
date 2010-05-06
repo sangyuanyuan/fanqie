@@ -159,6 +159,10 @@ p{margin:0px; padding:0px;}
 #t_r_r_b .content_trrb{width:180px; margin-top:7px; margin-left:5px;  float:left; display:none;}
 #t_r_r_b .content_trrb li{width:160px; height:19px; line-height:17px; overflow:hidden; float:left; display:inline;}
 #t_r_r_b .content_trrb li a{color:#656565; text-decoration:none;}
+#t_r_r_b #dyz{width:213px; height:45px; margin-left:1px; background:url(/images/index/dyz.jpg) no-repeat; float:left; display:inline;}
+#t_r_r_b #dyzcontent{width:180px; height:66px; margin-top:4px; margin-left:20px; line-height:22px; overflow:hidden; float:left; display:inline;}
+#t_r_r_b #dyzcontent .dyzcl{width:180px; height:22px; line-height:22px; overflow:hidden; float:left; display:inline;}
+#t_r_r_b #dyzcontent .cl a{color:#656565; text-decoration:none;}
 
 #ibody_middle #p1{width:310px; margin-top:7px; float:left; display:inline;}
 #ibody_middle #p2{width:470px; margin-top:8px; float:left; display:inline;}
