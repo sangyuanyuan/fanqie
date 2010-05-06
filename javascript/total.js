@@ -15,8 +15,3 @@ function rtotal()
           }
     }
 }
-$(function(){
-	$.post("inc/static.post.php",{'type':'top'},function(data){
-			$('#qfrs').html(data);
-	});
-});

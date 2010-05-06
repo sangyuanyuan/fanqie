@@ -40,11 +40,11 @@
  	<DIV ID="z_title">
  			<div id="zz_title">志愿者心声</div>
  			<div id="zz_div">
- 				<div style="width:"100%; height:300px; float:left; display:inline;">
+ 				<div style="width:100%; height:300px; float:left; display:inline;">
 	 				<?php
 	 					$comment=$db->query('select * from smg_comment where resource_type="zyzxs" order by created_at desc');
 	 				  ?>
-	 				 	<marquee height="300" DIRECTION="up" onmouseover=this.stop() onmouseout=this.start()>
+	 				 	<marquee width=100% height="300" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 <? for($i=0;$i<count($comment);$i++){?>
 		 					<div class="zz_content">
 		 								<div class="zz_name"><?php echo $comment[$i]->nick_name;?>:</div><?php echo $comment[$i]->comment; ?>
