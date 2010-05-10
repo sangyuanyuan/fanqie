@@ -520,7 +520,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  						<?php $news=$db->query('select id,short_title from smg_news where is_adopt=1 and category_id in (129,130,131,132) order by priority asc,created_at desc limit 1'); ?>
 						<div style="width:138px; height:50px; margin-top:5px; margin-bottom:5px; padding:3px; text-align:center; border:1px solid #ff0000; float:left; display:inline">
  							<a href="/news/abld_list.php" target=_blank><img src="/images/4.jpg" width="125" border=0></a>
- 							<a style="color:#000000;"<?php } ?>  style="width:120px; height:15px; margin-left:9px; line-height:15px; text-decoration:none; color:#000000; overflow:hidden; float:left; display:inline;" href="<?php echo "/news/news/news.php?id=".$news[0]->id ?>" target="_blank"><?php echo $news[0]->short_title; ?></a>
+ 							<a style="color:#000000;" style="width:120px; height:15px; margin-left:9px; line-height:15px; text-decoration:none; color:#000000; overflow:hidden; float:left; display:inline;" href="<?php echo "/news/news/news.php?id=".$news[0]->id ?>" target="_blank"><?php echo $news[0]->short_title; ?></a>
  						</div>				
  					</div>	
  					
