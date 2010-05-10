@@ -61,9 +61,23 @@
 			 $handle=fopen($filename,"wt");
 			 fwrite($handle,$fcontent);
 			 fclose($handle);
+			 $full_path='http://'.$_SERVER['HTTP_HOST'].'/index.php';
+			 $fcontent="";
+			 $fp= fopen($full_path,'r');
+				while(!feof($fp))
+				{
+			  		$fcontent=$fcontent.fgets($fp,4096);
+				}
+				fclose($fp);
+				$fcontent=StrChar($fcontent);
+				$filename='index.html';
+				$handle=fopen($filename,"wt");
+				fwrite($handle,$fcontent);
+				fclose($handle);
 			if($servername == '172.27.203.80'){
-					send_sms('13482678134','无法连接数据库服务器80!');
-					send_sms('13764092296','无法连接数据库服务器80!');				
+					/*send_sms('13482678134','无法连接数据库服务器80!');
+					send_sms('13764092296','无法连接数据库服务器80!');*/
+								
 			}
 			@mail($note_emails,'数据库连接失败','主备数据库无法连接，请立即检查'.$this->servername);
 			$last_time = file_get_contents(dirname(__FILE__) .'/config/last_disconnect.txt');
@@ -79,11 +93,32 @@
 			$code = get_config('db_code_bak');
 			if($g_db->connect($servername,$dbname,$username,$password,$code)===false){
 				global $db_server_name;
-				$db_server_name = '172.27.203.82';
+				$servername = '172.27.203.82';
 			}
-		};
+		}
+		else
+		{
+			$g_db->query("show slave status");
+			$io_status =  $g_db->field_by_index(10);
+			$sql_status = $g_db->field_by_index(11);
+			$syn_status = $io_status=='Yes' && $sql_status == 'Yes';
+			$last_syn = file_get_contents(dirname(__FILE__) .'/config/last_dissyn.txt');
+			$date=date('Y-m-d');
+			$now=substr($last_syn,0,10);
+			if($syn_status === false){
+				if($now!=$date)
+				{
+					write_to_file(dirname(__FILE__) .'/config/last_dissyn.txt',now(),'w');
+					@mail($note_emails,'数据库同步失败','主备数据库均同步失败，请立即检查'.$this->servername);
+					send_sms('13482678134','82不同步啦，快找盛');
+					send_sms('13764092296','82不同步啦，快找盛');					
+				}
+			}	
+		}
+		
 		return $g_db;
 	}
+	
 	
 	function get_dept_info($key){
 		global $g_dept_infos;
