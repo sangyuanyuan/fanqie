@@ -910,7 +910,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 					<? }?>	
 					</ul>
 				</div>
-				<div id=dyz></div>
+				<div id=dyz><a target="_blank" href="news/news_list.php?id=218"><img border=0 src="images/index/dyz.jpg"></a></div>
 				<div id=dyzcontent>
 					<?php $sql = 'select id,short_title from smg_news where category_id=218 and is_adopt=1 order by priority asc,created_at desc';
 					$dyz=$db -> query($sql); ?>
