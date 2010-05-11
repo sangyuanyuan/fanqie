@@ -6,6 +6,8 @@ p{margin:0px; padding:0px;}
 #ibody{width:995px; margin:0 auto; margin-top:3px;line-height:20px;}
 
 #ibody_top{width:995px; float:left; display:inline;}
+#ibody_top .pic{width:200px; height:100px; overflow:hidden; float:left; display:inline;}
+#ibody_top .pic img{width:200px; height:100px;}
 #ibody_middle{width:995px; height:158px; margin-top:3px; background:url(/images/zone/dialog_m.jpg) no-repeat; float:left; display:inline;}
 #ibody_bottom{width:995px; margin-top:10px; float:left; display:inline;}
 

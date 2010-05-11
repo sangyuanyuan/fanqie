@@ -36,7 +36,54 @@
 	$leaders = $leaders->find('all',array('conditions' => "dialog_id = $dialog->id"));
 ?>
 <div id=ibody>
-	<div id=ibody_top><img src="<?php echo $dialog->photo2_url;?>"></div>
+	<?php if($_REQUEST['id']!=60){ ?>
+	<div id=ibody_top>
+		<img src="<?php echo $dialog->photo2_url;?>" />
+	</div>
+	<?php }
+	else{?>
+	<div id=ibody_top>
+		<DIV id=Layer5>
+				      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 100%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo7 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php
+									$marry=$db->query('select photo_src from smg_news where short_title like "%对话：梁秋实%" and category_id=122 and is_adopt=1 order by id desc limit 5');
+									for($i=0;$i<count($marry);$i++){
+								?>
+				                <TD>
+							<div class=pic><img border=0 src="<?php echo $marry[$i]->photo_src;?>"></a></div>
+						</TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id="demo8" vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								        var demo6 = document.getElementById('demo6');
+										var demo7 = document.getElementById('demo7');
+										var demo8 = document.getElementById('demo8');  
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo8.innerHTML=demo7.innerHTML
+											function Marquee(){
+											if(demo8.offsetWidth-demo6.scrollLeft<=0)
+											demo6.scrollLeft-=demo7.offsetWidth
+											else{
+											demo6.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo6.onmouseover=function() {clearInterval(MyMar)}
+											demo6.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
+				</DIV>
+			</div>
+			<?php }?>
 	<div id=ibody_middle>
 		<a href="dialog_list.php" target=_blank id="dialog_more">往期对话</a>
 		<div id="dialog_titles"><?php echo $dialog->title;?></div>
