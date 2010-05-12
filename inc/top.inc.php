@@ -196,7 +196,7 @@ $(function(){
 			}
 			else if(num==2)
 			{
-				location.href="http://172.27.203.81:8080/blog/?3366";
+				location.href="http://172.27.203.81:8080/newscenter/newscenter_blog.php";
 			}
 			else if(num==3)
 			{
