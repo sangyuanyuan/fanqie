@@ -54,7 +54,7 @@
 				              <TR align=left>
 				              	<?php
 				              	$db=get_db();
-									$marry=$db->query('select photo_src from smg_news where short_title like "%对话：梁秋实%" and category_id=122 and is_adopt=1 order by id desc');
+									$marry=$db->query('select photo_src from smg_news where short_title like "%对话：陶秋石%" and category_id=122 and is_adopt=1 order by id desc');
 									for($i=0;$i<count($marry);$i++){
 								?>
 				                <TD>
