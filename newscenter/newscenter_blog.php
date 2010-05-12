@@ -59,7 +59,7 @@
 						</div>
 						<div class=bg>
 							<div class=title>记者手记<div class=more><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-140">更多</a></div></div>
-							<div class=title>美丽新闻人<div class=more><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-141">更多</a></div></div>
+							<div class=title>美丽新闻人<div class=more><a target="_blank" href="/news/news_list.php?id=221">更多</a></div></div>
 							<div style="width:470px; float:left; display:inline;">
 								<?php $news=$db->query('select itemid,subject from blog_spaceitems where uid=3366 and itemtypeid=140 order by dateline desc limit 6') ?>
 								<div class=pic><img border=0 width=98 height=90 src="/images/newscenter/1.jpg"></div>
@@ -70,14 +70,13 @@
 									<? }?>
 								
 							</div>
-							<?php $news=$db->query('select itemid,subject from blog_spaceitems where uid=3366 and itemtypeid=141 order by dateline desc limit 6') ?>
+							<? $news = $db->query('select n.id,n.photo_src,n.short_title from smg_news n where n.category_id=221 and is_adopt=1 order by n.priority asc,n.created_at desc limit 6');?>
 								<div class=pic><img border=0 width=98 height=90 src="/images/newscenter/2.jpg"></div>
-								
-									<?
-									for($i=0;$i<count($news);$i++){?>
-										<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-viewspace-itemid-<? echo $news[$i]->itemid;?>"><? echo $news[$i]->subject;?></a></div>
-										<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
-									<? }?>
+							<?
+							for($i=0;$i<count($news);$i++){?>
+								<div style="width:290px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/news/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
+								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
+							<? }?>
 						</div>
 						<div class=bg>
 							<div class=title>节目推介<div class=more><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-142">更多</a></div></div>
@@ -87,7 +86,7 @@
 								<div class=pic><img border=0 width=98 height=90 src="/images/newscenter/3.jpg"></div>
 										<? 	
 										for($i=0;$i<count($news);$i++){?>
-										<div style="width:290px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-viewspace-itemid-<? echo $news[$i]->itemid;?>"><? echo $news[$i]->subject;?></a></div>
+										<div style="width:285px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-viewspace-itemid-<? echo $news[$i]->itemid;?>"><? echo $news[$i]->subject;?></a></div>
 										<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 										<? }?>
 									
