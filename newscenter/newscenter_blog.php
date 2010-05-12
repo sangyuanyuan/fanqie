@@ -20,13 +20,13 @@
 <body>
 	<div id=bodys>
 		<div id=logo></div>
-		<div id=title><div class="cl"><a target="_blank" href="index.php">首页</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $ldjh[0]->cid; ?>">领导讲话</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $xxzl[0]->cid;?>">学习资料</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php $bzap[0]->cid ?>">步骤安排</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $zxdt[0]->cid;?>">最新动态</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $xxjb[0]->cid;?>">信息简报</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php $wjzb[0]->cid; ?>">文件摘编</a></div><div class="cl"><a target="_blank" href="djlist2.php">我为集团献一计</a></div><div class="cl"><a target="_blank" href="djlist.php?id=<?php echo $jyjs[0]->cid;?>">经验介绍</a></div><div class="cl"><a target="_blank" href="/sxjy/">三项学习教育</a></div></div>
+		<div id=title><div class="cl"><a target="_blank" href="index.php">首页</a></div><div class="cl"><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-140">记者手记</a></div><div class="cl"><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-141">美丽新闻人</a></div><div class="cl"><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-142">节目推介</a></div><div class="cl"><a target="_blank" href="/news/news_list.php?id=220">世博行动</a></div></div>
 			<div style="width:1002px; background:#99CC33;">
 				<div id=content>
 					<div id=context>
 					<div id=right>
 						<div class=gd>
-							<? $news = $db->query('select n.photo_src,c.id as cid from smg_news n inner join smg_subject_items i on i.resource_id=n.id and i.category_type="news" and n.is_adopt=1 inner join smg_subject_category c on c.id=i.category_id and c.name="活动剪影" inner join smg_subject s on c.subject_id=s.id and s.name="学习实践活动专题" order by i.priority asc,n.created_at desc limit 6');?>
+							<? $news = $db->query('select n.id,n.photo_src,n.short_title from smg_news n where n.category_id=219 and is_adopt=1 order by i.priority asc,n.created_at desc');?>
 					<DIV id=Layer5>
 				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
@@ -37,7 +37,7 @@
 				              <TBODY>
 				              <TR align=middle>
 				              	<? for($i=0;$i<count($news);$i++){?>
-				                <TD><a target="_blank" href="djlist.php?id=<?php echo $news[0]->cid; ?>"><img border=0 width=130 height=90 src="<? echo $news[$i]->photo_src; ?>"></a></TD>
+				                <TD><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><img border=0 width=130 height=90 src="<? echo $news[$i]->photo_src; ?>"></a><br><a style="width:130px; height:20px; overflow:hidden; float:left; display:inline;" target="_blank" href=""><?php echo $news[$i]->short_title; ?></a></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
 				          			<TD id=demo2 vAlign=top></TD></TR></TBODY></TABLE></DIV>
@@ -57,84 +57,52 @@
 									 </SCRIPT>
 								</DIV>
 						</div>
-						<div class=title>领导讲话<div class=more><a target="_blank" href="djlist.php?id=<?php echo $ldjh[0]->cid;?>">更多</a></div></div>
-						<div class=title>步骤安排<div class=more><a target="_blank" href="djlist.php?id=<?php echo $bzap[0]->cid;?>">更多</a></div></div>
+						<div class=title>记者手记<div class=more><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-140">更多</a></div></div>
+						<div class=title>美丽新闻人<div class=more><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-141">更多</a></div></div>
 						<div style="width:475px; float:left; display:inline;">
-							<? 		$photourl="";
-									for($i=0;$i<count($ldjh);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$ldjh[$i]->photo_src;	
-									 }
-									}
-							?>
-							<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-							
+							<?php $news=$db->query('select itemid,subject from blog_spaceitems where uid=3366 and itemtypeid=140 order by dateline desc limit 6') ?>
+							<div class=pic><img border=0 width=98 height=90 src=""></div>
 								<? 	
-								for($i=0;$i<count($ldjh);$i++){?>
-								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $ldjh[$i]->id;?>"><? echo $ldjh[$i]->short_title;?></a></div>
+								for($i=0;$i<count($news);$i++){?>
+								<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-viewspace-itemid-<? echo $news[$i]->itemid;?>"><? echo $news[$i]->subject;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							
 						</div>
-							<?
-								$photourl="";
-									for($i=0;$i<count($bzap);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$bzap[$i]->photo_src;	
-									 }
-									}
-							?>
-							<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
+						<?php $news=$db->query('select itemid,subject from blog_spaceitems where uid=3366 and itemtypeid=141 order by dateline desc limit 6') ?>
+							<div class=pic><img border=0 width=98 height=90 src=""></div>
 							
 								<?
-								for($i=0;$i<count($bzap);$i++){?>
-									<div style="width:290px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $bzap[$i]->id;?>"><? echo $bzap[$i]->short_title;?></a></div>
+								for($i=0;$i<count($news);$i++){?>
+									<div style="width:290px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-viewspace-itemid-<? echo $news[$i]->itemid;?>"><? echo $news[$i]->subject;?></a></div>
 									<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 								<? }?>
 							
 						<div class=bg>
-							<div class=title style="margin-left:10px;">文件摘编<div class=more><a target="_blank" href="djlist.php?id=<?php echo $wjzb[0]->cid;?>">更多</a></div></div>
-							<div class=title style="margin-left:10px;">经验介绍<div class=more><a target="_blank" href="djlist.php?id=<?php echo $jyjs[0]->cid;?>">更多</a></div></div>
+							<div class=title style="margin-left:10px;">节目推介<div class=more><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-142">更多</a></div></div>
+							<div class=title style="margin-left:10px;">世博行动<div class=more><a target="_blank" href="/news/news_list.php?id=220">更多</a></div></div>
 							<div style="width:475px; float:left; display:inline;">
-								<?	$photourl="";
-									for($i=0;$i<count($wjzb);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$wjzb[$i]->photo_src;	
-									 }
-									}
-								?>
-								<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-									
+								<?php $news=$db->query('select itemid,subject from blog_spaceitems where uid=3366 and itemtypeid=142 order by dateline desc limit 6') ?>
+								<div class=pic><img border=0 width=98 height=90 src=""></div>
 										<? 	
-										for($i=0;$i<count($wjzb);$i++){?>
-										<div style="width:290px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $wjzb[$i]->id;?>"><? echo $wjzb[$i]->short_title;?></a></div>
+										for($i=0;$i<count($news);$i++){?>
+										<div style="width:290px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-viewspace-itemid-<? echo $news[$i]->itemid;?>"><? echo $news[$i]->subject;?></a></div>
 										<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 										<? }?>
 									
 							</div>
-						<? 	$photourl="";
-									for($i=0;$i<count($jyjs);$i++){
-									 if($photourl=="")
-									 {
-									 	$photourl=$jyjs[$i]->photo_src;	
-									 }
-									}
-						?>
-						<div class=pic><img border=0 width=98 height=90 src="<? if($photourl!=""){echo $photourl;}else {echo '/images/logo.jpg';}?>"></div>
-						
+							<? $news = $db->query('select n.id,n.photo_src,n.short_title from smg_news n where n.category_id=220 and is_adopt=1 order by i.priority asc,n.created_at desc');?>
+							<div class=pic><img border=0 width=98 height=90 src=""></div>
 							<?
-							for($i=0;$i<count($jyjs);$i++){?>
-								<div style="width:290px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="djcontent.php?id=<? echo $jyjs[$i]->id;?>"><? echo $jyjs[$i]->short_title;?></a></div>
+							for($i=0;$i<count($news);$i++){?>
+								<div style="width:290px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/news/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
 							<? }?>
 						
 						</div>
 						
 						<div class=bg>
-						<div id=contenttitle style="margin-left:8px;">征求意见</div>
+						<div id=contenttitle style="margin-left:8px;">网友留言</div>
 							<? 
 							$comments = $db->paginate('select * from smg_comment where resource_type="newscenter_blog" order by created_at desc',5);
 							for($i=0;$i<count($comments);$i++){?>
