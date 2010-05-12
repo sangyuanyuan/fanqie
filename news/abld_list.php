@@ -14,13 +14,13 @@
 		$db = get_db();
 		$sql="select id from smg_category where name='双月劳动竞赛'";
 		$ab=$db->query($sql);
-		$sql="select n.id,n.title,c.id as cid,c.name as cname from smg_news n left join smg_category c on n.category_id=c.id where c.name='竞赛要求' and c.category_type='news' and c.parent_id=".$ab[0]->id." order by n.priority asc, n.created_at desc limit 5";
+		$sql="select n.id,n.title,c.id as cid,c.name as cname from smg_news n left join smg_category c on n.category_id=c.id where c.name='竞赛要求' and c.category_type='news' and c.parent_id=".$ab[0]->id." and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 5";
 		$news1=$db->query($sql);
-		$sql="select n.id,n.title,c.id as cid,c.name as cname from smg_news n left join smg_category c on n.category_id=c.id where c.name='最新动态' and c.category_type='news' and c.parent_id=".$ab[0]->id." order by n.priority asc, n.created_at desc limit 5";
+		$sql="select n.id,n.title,c.id as cid,c.name as cname from smg_news n left join smg_category c on n.category_id=c.id where c.name='最新动态' and c.category_type='news' and c.parent_id=".$ab[0]->id." and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 5";
 		$news2=$db->query($sql);
-		$sql="select n.id,n.title,c.id as cid,c.name as cname from smg_news n left join smg_category c on n.category_id=c.id where c.name='响应计划' and c.category_type='news' and c.parent_id=".$ab[0]->id." order by n.priority asc, n.created_at desc limit 5";
+		$sql="select n.id,n.title,c.id as cid,c.name as cname from smg_news n left join smg_category c on n.category_id=c.id where c.name='响应计划' and c.category_type='news' and c.parent_id=".$ab[0]->id." and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 5";
 		$news3=$db->query($sql);
-		$sql="select n.id,n.title,c.id as cid,c.name as cname from smg_news n left join smg_category c on n.category_id=c.id where c.name='特色活动' and c.category_type='news' and c.parent_id=".$ab[0]->id." order by n.priority asc, n.created_at desc limit 5";
+		$sql="select n.id,n.title,c.id as cid,c.name as cname from smg_news n left join smg_category c on n.category_id=c.id where c.name='特色活动' and c.category_type='news' and c.parent_id=".$ab[0]->id." and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 5";
 		$news4=$db->query($sql);
   ?>
 <script>
