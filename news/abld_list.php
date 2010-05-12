@@ -12,7 +12,7 @@
 		use_jquery();
 		js_include_once_tag('news_list','total');
 		$db = get_db();
-		$sql="select id from smg_category where name='安播劳动竞赛'";
+		$sql="select id from smg_category where name='双月劳动竞赛'";
 		$ab=$db->query($sql);
 		$sql="select n.id,n.title,c.id as cid,c.name as cname from smg_news n left join smg_category c on n.category_id=c.id where c.name='竞赛要求' and c.category_type='news' and c.parent_id=".$ab[0]->id." order by n.priority asc, n.created_at desc limit 5";
 		$news1=$db->query($sql);
@@ -24,7 +24,7 @@
 		$news4=$db->query($sql);
   ?>
 <script>
-	total("安播劳动竞赛列表","news");
+	total("双月劳动竞赛列表","news");
 </script>
 </head>
 <body>
@@ -32,7 +32,7 @@
 <div id=ibody>
 	<div id=ibody_left>
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="abld_list.php">安播劳动竞赛</a>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="abld_list.php">双月劳动竞赛</a>
 		</div>
 		<div id=l_b style="border:none;">
 				<div class="abtitle"><div class="left">竞赛要求</div><div class="more"><a href="news_list.php?id=<?php echo $news1[0]->cid; ?>">更多</a></div></div>
