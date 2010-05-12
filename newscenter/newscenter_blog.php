@@ -37,7 +37,7 @@
 				              <TBODY>
 				              <TR align=middle>
 				              	<? for($i=0;$i<count($news);$i++){?>
-				                <TD><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><img border=0 width=130 height=90 src="<? echo $news[$i]->photo_src; ?>"></a><br><a style="width:130px; height:30px; line-height:15px; overflow:hidden; float:left; display:inline;" target="_blank" href=""><?php echo $news[$i]->short_title; ?></a></TD>
+				                <TD><a target="_blank" href="/news/news/news.php?id=<?php echo $news[$i]->id; ?>"><img border=0 width=130 height=90 src="<? echo $news[$i]->photo_src; ?>"></a><br><a style="width:130px; height:30px; line-height:15px; margin-bottom:10px; overflow:hidden; float:left; display:inline;" target="_blank" href=""><?php echo $news[$i]->short_title; ?></a></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
 				          			<TD id=demo2 vAlign=top></TD></TR></TBODY></TABLE></DIV>
