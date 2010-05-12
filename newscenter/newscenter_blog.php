@@ -26,7 +26,7 @@
 					<div id=context>
 					<div id=right>
 						<div class=gd>
-							<? $news = $db->query('select n.id,n.photo_src,n.short_title from smg_news n where n.category_id=219 and is_adopt=1 order by i.priority asc,n.created_at desc');?>
+							<? $news = $db->query('select n.id,n.photo_src,n.short_title from smg_news n where n.category_id=219 and is_adopt=1 order by n.priority asc,n.created_at desc');?>
 					<DIV id=Layer5>
 				      <DIV id=demo style="OVERFLOW: hidden; WIDTH: 100%; COLOR: #ffffff">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
@@ -92,7 +92,7 @@
 										<? }?>
 									
 							</div>
-							<? $news = $db->query('select n.id,n.photo_src,n.short_title from smg_news n where n.category_id=220 and is_adopt=1 order by i.priority asc,n.created_at desc');?>
+							<? $news = $db->query('select n.id,n.photo_src,n.short_title from smg_news n where n.category_id=220 and is_adopt=1 order by n.priority asc,n.created_at desc');?>
 							<div class=pic><img border=0 width=98 height=90 src="/images/newscenter/4.jpg"></div>
 							<?
 							for($i=0;$i<count($news);$i++){?>
