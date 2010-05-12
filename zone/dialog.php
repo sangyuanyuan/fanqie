@@ -36,7 +36,7 @@
 	$leaders = $leaders->find('all',array('conditions' => "dialog_id = $dialog->id"));
 ?>
 <div id=ibody>
-	<?php if($_REQUEST['id']!=60){ ?>
+	<?php if($_REQUEST['id']!=61){ ?>
 	<div id=ibody_top>
 		<img src="<?php echo $dialog->photo2_url;?>" />
 	</div>
