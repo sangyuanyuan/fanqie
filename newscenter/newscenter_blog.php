@@ -21,7 +21,7 @@
 	<div id=bodys>
 		<div id=logo></div>
 		<div id=title><div class="cl"><a target="_blank" href="index.php">首页</a></div><div class="cl"><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-140">记者手记</a></div><div class="cl"><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-141">美丽新闻人</a></div><div class="cl"><a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-spacelist-type-blog-itemtypeid-142">节目推介</a></div><div class="cl"><a target="_blank" href="/news/news_list.php?id=220">世博行动</a></div></div>
-			<div style="width:1002px; background:#99CC33;">
+			<div style="width:1002px; background:#339900;">
 				<div id=content>
 					<div id=context>
 					<div id=right>
