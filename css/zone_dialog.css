@@ -5,7 +5,7 @@ p{margin:0px; padding:0px;}
 
 #ibody{width:995px; margin:0 auto; margin-top:3px;line-height:20px;}
 
-#ibody_top{width:995px; float:left; display:inline;}
+#ibody_top{width:995px; margin-bottom:10px; float:left; display:inline;}
 #ibody_top .pic{width:200px; height:100px; margin-right:15px; overflow:hidden; float:left; display:inline;}
 #ibody_top .pic img{width:200px; height:150px;}
 #ibody_middle{width:995px; height:158px; margin-top:3px; background:url(/images/zone/dialog_m.jpg) no-repeat; float:left; display:inline;}
