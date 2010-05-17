@@ -20,8 +20,8 @@
 	}
 	
 	function send_sms($mobile,$content){
-			$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone={$mobile}&content=" .urlencode(iconv('utf-8','gbk',$content)) ."&sign=1";		
-			$fo = fopen($url,'r') ;
+			$url = "http://222.68.17.193:8080/qxt/jbs.jsp?phone={$mobile}&content=" .urlencode(iconv('utf-8','gbk',$content))."&sign=1";		
+			$fo = fopen($url,'r');
 			fclose($fo);
 	}
 	function &get_db() {
