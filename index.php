@@ -468,7 +468,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 		 				</div>
  					</div>
  					<div id=l>
- 						<div class=title>重要新闻</div>
+ 						<div class=title><a target="_blank" href="/news/news_list.php?id=222">重要新闻</a></div>
  						<div class=content>
 	 						<ul>
 	 						 <?php for($i=0; $i<count($record_import_a); $i++){?>
@@ -481,7 +481,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  					</div>	
  					
  					<div id=c>
- 						<div id=c_title>最新新闻</div>
+ 						<div id=c_title><a target="_blank" href="/news/news_list.php?id=223">最新新闻</a></div>
  						<div id=c_content>
 	 						<ul>
 	 						 <?php for($i=0; $i<count($record_import_a1); $i++){?>
@@ -492,7 +492,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  					</div>	 
  					
  					<div id=r>
- 						<div class=title>广而告之</div>
+ 						<div class=title><a target="_blank" href="/news/news_list.php?id=33">广而告之</a></div>
  						<?php
 							$sql = 'select n.short_title, c.platform,n.id as news_id,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="广而告之" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
 							$gegz=$db -> query($sql);
@@ -506,14 +506,14 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 		 						</ul>
 		 					</div>
 		 					<?php 
-							 $sql="select n.short_title,n.id,n.category_id,n.platform from smg_news n left join smg_category c on c.id=n.category_id where n.is_adopt=1 and n.tags='小编加精' order by n.priority asc,n.created_at desc limit 6";
+							 $sql='select n.short_title, c.platform, n.id as news_id,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小编视点" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
 							 $xbjj=$db->query($sql);
 							?>
-	 						<div class=title style="width:112px; margin-top:4px; background:url('/images/index/jt.jpg') no-repeat; border-top:1px dashed #666666; overflow:hidden;">小编加精</div>
+	 						<div class=title style="width:112px; margin-top:4px; background:url('/images/index/jt.jpg') no-repeat; border-top:1px dashed #666666; overflow:hidden;"><a target="_blank" href="/news/news_list.php?id=227">小编加精</a></div>
 	 						<div class=r_content_t>
 	 							<ul>
 		 						 <?php for($i=0; $i<count($xbjj); $i++){?>
-		 							<li <?php if($xbjj[$i]->image_flag||$xbjj[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($xbjj[$i]->image_flag)?><?php show_video2($xbjj[$i]->video_flag)?></div><div <?php  if($xbjj[$i]->image_flag==1||$xbjj[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($xbjj[$i]->video_flag!=1){ ?><a   <? news_date($xbjj[$i]->created_at,$days)?> href="<?php echo "/".$xbjj[$i]->platform."/news/news.php?id=".$xbjj[$i]->id ?>" target="_blank" ><?php }else{ ?><a   <? news_date($xbjj[$i]->created_at,$days)?> href="<?php echo "/".$xbjj[$i]->platform."/news/news_video.php?id=".$xbjj[$i]->id ?>" target="_blank" ><?php } ?><?php if($xbjj[$i]->image_flag==0 && $xbjj[$i]->video_flag==0){ ?>.<?php } ?><?php echo $xbjj[$i]->short_title ?></a></div></li>
+		 							<li <?php if($xbjj[$i]->image_flag||$xbjj[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($xbjj[$i]->image_flag)?><?php show_video2($xbjj[$i]->video_flag)?></div><div <?php  if($xbjj[$i]->image_flag==1||$xbjj[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($xbjj[$i]->video_flag!=1){ ?><a   <? news_date($xbjj[$i]->created_at,$days)?> href="<?php echo "/".$xbjj[$i]->platform."/news/news.php?id=".$xbjj[$i]->news_id ?>" target="_blank" ><?php }else{ ?><a   <? news_date($xbjj[$i]->created_at,$days)?> href="<?php echo "/".$xbjj[$i]->platform."/news/news_video.php?id=".$xbjj[$i]->news_id ?>" target="_blank" ><?php } ?><?php if($xbjj[$i]->image_flag==0 && $xbjj[$i]->video_flag==0){ ?>.<?php } ?><?php echo $xbjj[$i]->short_title ?></a></div></li>
 		             <? }?>
 		 						</ul>
 		 					</div>
