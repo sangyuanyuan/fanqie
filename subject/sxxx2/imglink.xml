@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="gb2312"?>
 <URL>
   <Image_Information>
+    <img_name>新闻栏目部参观世博</img_name>
+    <img_link>http://172.27.203.81:8080/news/news/news.php?id=47769</img_link>
+    <thumb_image></thumb_image>
+  </Image_Information>
+  <Image_Information>
+    <img_name>新闻中心摄像组业务</img_name>
+    <img_link>http://172.27.203.81:8080/news/news/news.php?id=46011</img_link>
+    <thumb_image>/upload/fck/FF39M8HUENcIBSEl6zKe.jpg</thumb_image>
+  </Image_Information>
+  <Image_Information>
+    <img_name>技术中心：转播一线</img_name>
+    <img_link>http://172.27.203.81:8080/news/news/news.php?id=45798</img_link>
+    <thumb_image>http://172.27.203.88/tech/images/news/8826-1.jpg</thumb_image>
+  </Image_Information>
+  <Image_Information>
+    <img_name>电视新闻制作部业务</img_name>
+    <img_link>http://172.27.203.81:8080/news/news/news.php?id=45734</img_link>
+    <thumb_image>/upload/fck/5KhAMHvzFNmHnhb7b9Nu.jpg</thumb_image>
+  </Image_Information>
+  <Image_Information>
+    <img_name>袁雷做客首期&amp;ld</img_name>
+    <img_link>http://172.27.203.81:8080/news/news/news.php?id=45534</img_link>
+    <thumb_image>/upload/fck/qpwpjZtabMLQUji7jbQZ.jpg</thumb_image>
+  </Image_Information>
+  <Image_Information>
     <img_name>摄像景观资料竞赛结</img_name>
     <img_link>http://172.27.203.81:8080/news/news/news.php?id=31894</img_link>
     <thumb_image>/upload/fck/hMgYcCVdU4sOIyC81uq1.jpg</thumb_image>
