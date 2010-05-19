@@ -102,7 +102,7 @@
 						</div>
 						<div class=bg>
 							<div class=title>宣传动态<div class=more><a target="_blank" href="/news/news_list.php?id=224">更多</a></div></div>
-							<div class=title>党员先锋</div>
+							<div class=title>党员先锋<div class=more><a target="_blank" href="/news/news_list.php?id=228">更多</a></div></div>
 							<div style="width:470px; float:left; display:inline;">
 								<?php $news=$db->query('select n.id,n.photo_src,n.short_title from smg_news n where n.category_id=224 and is_adopt=1 order by n.priority asc,n.created_at desc limit 6') ?>
 								<div class=pic><img border=0 width=98 height=90 src="/images/newscenter/5.jpg"></div>
