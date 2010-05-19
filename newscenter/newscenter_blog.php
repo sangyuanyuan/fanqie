@@ -108,7 +108,7 @@
 								<div class=pic><img border=0 width=98 height=90 src="/images/newscenter/5.jpg"></div>
 										<? 	
 										for($i=0;$i<count($news);$i++){?>
-										<div style="width:285px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="http://172.27.203.81:8080/blog/?uid-3366-action-viewspace-itemid-<? echo $news[$i]->itemid;?>"><? echo $news[$i]->subject;?></a></div>
+										<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/news/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 										<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div>
 										<? }}?>		
 							</div>	
