@@ -1145,7 +1145,7 @@ body {font-family:宋体; font-size:12px; color:#000;  margin:0px;}
 
 /*babyvote*/
 #baby{width:950px; margin-left:25px; padding-bottom:20px; background:#F7F7F7; overflow:hidden; float:left; display:inline;}
-#baby .pic{width:150px; height:260px; margin-top:20px; margin-left:33px;  border:1px solid #DEDBDE;  overflow:hidden; float:left; display:inline;}
+#baby .pic{width:150px; height:210px; margin-top:20px; margin-left:33px;  border:1px solid #DEDBDE;  overflow:hidden; float:left; display:inline;}
 #baby .pic .bh{width:150px; height:12px; text-align:center; overflow:hidden; float:left; display:inline;}
 #baby .pic .nd{width:150px; margin-top:3px; text-align:center; overflow:hidden; float:left; display:inline;}
 #baby .content7{width:900px; margin-top:10px; margin-left:40px; padding-bottom:10px; border:1px solid #DEDBDE; background:#ffffff;  float:left; display:inline;}
@@ -1184,7 +1184,8 @@ body {font-family:宋体; font-size:12px; color:#000;  margin:0px;}
 #baby #baby_left #content11{width:44px; height:18px; margin-top:3px; margin-left:75px; background:url(/images/btn/btn1.jpg) no-repeat; float:left; display:inline;}
 
 /*babyshow*/
-#baby .pic2{width:485px; height:500px; margin-top:20px; margin-left:9px;  border:1px solid #DEDBDE;  overflow:hidden; float:left; display:inline;}
+#baby .pic2{width:485px; margin-top:20px; margin-left:9px;  border:1px solid #DEDBDE;  overflow:hidden; float:left; display:inline;}
+#baby .pic2 img{width:450px; height:300px; margin-top:10px; margin-left:17px;}
 #baby .pic2 .bh{width:485px; height:12px; text-align:center; overflow:hidden; float:left; display:inline;}
 #baby .pic2 .nd{width:485px; margin-top:3px; text-align:center; overflow:hidden; float:left; display:inline;}
 

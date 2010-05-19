@@ -28,7 +28,7 @@
 		css_include_tag('show_show','top','bottom');
 		use_jquery();
 		js_include_tag('pubfun','total');
-  	?>
+  ?>
 </head>
 <?php 
 	//if($_COOKIE[$cookie_name]<200){
