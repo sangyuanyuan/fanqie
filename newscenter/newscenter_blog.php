@@ -102,7 +102,7 @@
 						</div>
 						<div class=bg>
 							<div class=title>宣传动态<div class=more><a target="_blank" href="/news/news_list.php?id=224">更多</a></div></div>
-							<div class=title style="background:none;"></div>
+							<div class=title>党员先锋</div>
 							<div style="width:470px; float:left; display:inline;">
 								<?php $news=$db->query('select n.id,n.photo_src,n.short_title from smg_news n where n.category_id=224 and is_adopt=1 order by n.priority asc,n.created_at desc limit 6') ?>
 								<div class=pic><img border=0 width=98 height=90 src="/images/newscenter/5.jpg"></div>
@@ -111,7 +111,14 @@
 										<div style="width:290px; height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/news/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
 										<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div>
 										<? }}?>		
-							</div>	
+							</div>
+							<? $news = $db->query('select n.id,n.photo_src,n.short_title from smg_news n where n.category_id=228 and is_adopt=1 order by n.priority asc,n.created_at desc limit 6');?>
+							<div class=pic><img border=0 width=98 height=90 src="/images/newscenter/6.jpg"></div>
+							<?
+							for($i=0;$i<count($news);$i++){?>
+								<div style="width:290px;height:15px; line-height:15px; margin-top:5px; margin-left:10px; overflow:hidden; float:left; display:inline"><img width=5 height=5 src="/images/icon/blacksqu.jpg">　<a target="_blank" href="/news/news/news.php?id=<? echo $news[$i]->id;?>"><? echo $news[$i]->short_title;?></a></div>
+								<? if($i< 2){?><div style="width:29px; height:15px; float:left; display:inline;"><img border=0 src="/images/pic/new.gif"></div><? }?>
+							<? }?>
 						</div>
 						
 						<div class=bg>
