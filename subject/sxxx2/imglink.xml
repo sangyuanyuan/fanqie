@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="gb2312"?>
 <URL>
   <Image_Information>
+    <img_name>电视新闻中心参与共</img_name>
+    <img_link>http://172.27.203.81:8080/news/news/news.php?id=48627</img_link>
+    <thumb_image>/upload/fck/2if8D3ORIPrro5td0KQZ.jpg</thumb_image>
+  </Image_Information>
+  <Image_Information>
     <img_name>新闻栏目部参观世博</img_name>
     <img_link>http://172.27.203.81:8080/news/news/news.php?id=47769</img_link>
     <thumb_image></thumb_image>

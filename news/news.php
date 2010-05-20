@@ -227,7 +227,14 @@ $db->execute($sql); ?>
 			<div id=comefrom><?php if($record[0]->categoryname!="我要报料"){?>来源：<?php echo $record[0]->deptname;}?>　<?php if($record[0]->publisher_id!=""&&$record[0]->categoryname=="我要报料"){?>作者：<?php echo $record[0]->publisher_id;} ?>　浏览次数：<span style="color:#C2130E"><?php echo $record[0]->click_count;?></span>　时间：<?php echo $record[0]->created_at;?></div>
 			<?php if($page==1||$page=="")
 			{?>
+			<?php $sy=$db->query('select category_id from smg_subject_items where resource_id='.$id); 
+						if(count($sy)>0 && $sy[0]->category_id==177)
+						{
+			?>
+			<div id=sy>小编提示：我们的身边总有许许多多默默奉献的“标兵”们，他们的事迹平凡却感人，值得我们好好学习。</div>
+			<?php } ?>
 			<div id=content>
+				
 				<?php if($record[0]->video_src!=""&&$record[0]->video_src!=null){
 					if($record[0]->low_quality==0){
 				?>

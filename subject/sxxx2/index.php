@@ -176,29 +176,25 @@
 	</div>
 	<div id=i_m2>
 		<div id=c_l>
-			<?php $qa=$db->query("select q.id,q.title,q.content as qcontent,q.created_at,a.content,a.publisher from zd_answer a left join zd_question q on a.question_id=q.id where q.show_index=1 order by q.created_at desc"); ?>
+			<? $xxy = $db->query('select n.photo_src,n.id,n.short_title,n.content,n.description,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="学习营" order by i.priority asc, n.created_at desc limit 5');?>
 			<div class=c_title1>
 				<div class=wz><img src="/images/sxxx/3.gif" /></div>
+				<div class=more><a target="_blank" href="/news/subject_list.php?id=<?php echo $xxy[0]->cid; ?>">more>></a></div>
 			</div>
 			<div id=q_l>
-				<div id=q_title><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo $qa[0]->qcontent; ?></a></div>
-				
-				<div id=q_time>发布时间：<?php echo $qa[0]->created_at; ?></div>
-				<div id=dash></div>
-				<?php $answer=$db->query('select * from zd_answer where question_id='.$qa[0]->id.' order by created_at desc limit 3');
-				for($i=0;$i<count($answer);$i++){	
-			 ?>
-					<div class=answer><span style="font-weight:bold;"><?php echo $answer[$i]->publisher; ?></span>:<a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>"><?php echo mb_substr(delhtml($answer[$i]->content),0,28,"utf-8").'……'; ?></a></div>
-				<?php } ?>
+				<a target="_blank" href="/news/news/news.php?id=<?php echo $xxy[0]->id; ?>"><img border=0 src="<?php echo $xxy[0]->photo_src; ?>"></a>
 			</div>
 			<div id=q_r>
-				<div class=btn><a target="_blank" href="/fqzd/index.php?id=<?php echo $qa[0]->id; ?>">我要回答</a></div>
-				<div class=btn><a class="thickbox" href="/fqzd/question.php?height=255&width=320">我要提问</a></div>
-				<?php $question=$db->query('select * from zd_question where id<>'.$qa[0]->id.' order by created_at desc limit 10'); 
-					for($i=0;$i<count($question);$i++)
-					{
-				?>
-					<div class=q_content><a target="_blank" href="/fqzd/index.php?id=<?php echo $question[$i]->id; ?>">·<?php echo $question[$i]->title; ?></a></div>
+				<a target="_blank" href="/news/news/news.php?id=<?php echo $xxy[0]->id; ?>"><?php echo delhtml($xxy[0]->content); ?></a>
+			</div>
+			<div class=q_b>
+				<?php for($i=1;$i<3;$i++){ ?>
+					<div class=content><a target="_blank" href="/news/news/news.php?id=<?php echo $xxy[$i]->id; ?>"><?php echo $xxy[$i]->short_title; ?></a></div>
+				<?php } ?>
+			</div>
+			<div class=q_b>
+				<?php for($i=3;$i<5;$i++){ ?>
+					<div class=content><a target="_blank" href="/news/news/news.php?id=<?php echo $xxy[$i]->id; ?>"><?php echo $xxy[$i]->short_title; ?></a></div>
 				<?php } ?>
 			</div>
 		</div>

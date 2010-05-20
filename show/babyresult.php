@@ -24,7 +24,7 @@
   $voteitem =$db->query('select * from smg_baby_itemvalue');
   $allcount=$db->query('select count(*) as num from smg_baby_voterecord');
 	$pageindex = isset($_REQUEST['pageindex']) ? $_REQUEST['pageindex']: 1;
-	$comments = $db->paginate('select * from smg_comment where resource_type="babyshow"',5);
+	$comments = $db->paginate('select * from smg_comment where resource_type="babyshow" order by created_at desc',5);
 ?>
 <div id=bodys>
  	<div id=baby>
@@ -53,9 +53,9 @@
  		<div id=baby_left> 
 	<? for($i=0;$i< count($comments);$i++){?>
     <div class=content7>
-    	<div class=name><a href="#"><?php echo $comments[$i]->commenter;?></a></div>	
-    	<div class=time><?php echo $comments[$i]->createtime;?></div>	
-    	<div class=context><?php echo strfck($comments[$i]->content);?></div>	
+    	<div class=name><a href="#"><?php echo $comments[$i]->nick_name;?></a></div>	
+    	<div class=time><?php echo $comments[$i]->created_at;?></div>	
+    	<div class=context><?php echo get_fck_content($comments[$i]->comment);?></div>	
     </div>
     
     <?php }?>
@@ -77,7 +77,8 @@
     	  <div id=left>ÆÀÂÛ£º</div><textarea id="commentcontent" name="post[comment]"></textarea>
        </div>
        <input type="hidden" id="resource_type" name="post[resource_type]" value="babyshow">
-       <div id=content11></div>
+       <input type="hidden" name="type" value="comment">
+       <div id=content11 style="cursor:pointer;"></div>
     </form>
   </div>
 </div>

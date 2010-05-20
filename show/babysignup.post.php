@@ -1,8 +1,15 @@
 ﻿<?
 	require_once('../frame.php');
+	$db=get_db();
 if($_POST['utype']=="babyvote")
 {
 	$news = new table_class('smg_baby_vote');
+	$parent_id = $_POST['baby']['parent_id'] ? $_POST['baby']['parent_id'] : 0;
+	if($parent_id!=0)
+	{
+		$news_id=$db->query('select id from smg_baby_vote where parent_id='.$parent_id);
+		$news->find($news_id[0]->id);	
+	}
 	$news->update_attributes($_POST['baby'],false);
 	if($_FILES['photourl']['name'] != ''){
 		$upload = new upload_file_class();
