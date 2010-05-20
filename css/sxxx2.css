@@ -61,7 +61,7 @@ body {font-family:ËÎÌו; font-size:12px; color:#434343; background:#c8c8c8;  marg
 #i_m2 #c_l #q_r .q_content a{color:#666666; text-decoration:none;}
 #i_m2 #c_l .q_b{width:205px; height:40px; margin-top:10px; margin-left:20px; float:left; display:inline;}
 #i_m2 #c_l .q_b .content{width:205px; height:20px; line-height:20px; font-weight:bold; overflow:hidden; float:left; display:inline;}
-#i_m2 #c_l .q_b .content a{color:#666666; text-decoration:none;}
+#i_m2 #c_l .q_b .content a{color:#000000; text-decoration:none;}
 
 #i_m2 #c_r{width:468px; height:260px; background:url(/images/sxxx/c_bg1.png) no-repeat; float:right; display:inline;}
 #i_m2 #c_r #c_r_l{width:250px; height:90px; margin-top:15px; margin-left:15px; float:left; display:inline;}
