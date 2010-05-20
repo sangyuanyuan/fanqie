@@ -1,9 +1,0 @@
-insert into dept_news(old_id,new_id,dept_id) select t1.id,t2.id,t1.dept_id from smg.smg_dept_category_news t1,smg_category_dept t2 where t2.category_type='news' and t1.name=t2.name and t1.dept_id=t2.dept_id
-
-insert into dept_link(old_id,new_id,dept_id) select t1.id,t2.id,t1.dept_id from smg.smg_dept_category_link t1,smg_category_dept t2 where t2.category_type='link' and t1.name=t2.name and t1.dept_id=t2.dept_id
-
-insert into dept_picture(old_id,new_id,dept_id) select t1.id,t2.id,t1.dept_id from smg.smg_dept_category_photo t1,smg_category_dept t2 where t2.category_type='picture' and t1.name=t2.name and t1.dept_id=t2.dept_id
-
-insert into dept_vote(old_id,new_id,dept_id) select t1.id,t2.id,t1.dept_id from smg.smg_dept_category_vote t1,smg_category_dept t2 where t2.category_type='vote' and t1.name=t2.name and t1.dept_id=t2.dept_id
-
-insert into dept_video(old_id,new_id,dept_id) select t1.id,t2.id,t1.dept_id from smg.smg_dept_category_video t1,smg_category_dept t2 where t2.category_type='video' and t1.name=t2.name and t1.dept_id=t2.dept_id

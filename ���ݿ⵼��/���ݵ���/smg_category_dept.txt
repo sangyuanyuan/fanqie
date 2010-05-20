@@ -1,5 +1,0 @@
-insert into smg_category_dept(name,category_type,parent_id,dept_id) select name,type,parent_id,dept_id from smg.smg_dept_category_link
-insert into smg_category_dept(name,category_type,parent_id,dept_id) select name,type,parent_id,dept_id from smg.smg_dept_category_news
-insert into smg_category_dept(name,category_type,parent_id,dept_id) select name,type,parent_id,dept_id from smg.smg_dept_category_photo
-insert into smg_category_dept(name,category_type,parent_id,dept_id) select name,type,parent_id,dept_id from smg.smg_dept_category_video
-insert into smg_category_dept(name,category_type,parent_id,dept_id) select name,type,parent_id,dept_id from smg.smg_dept_category_vote

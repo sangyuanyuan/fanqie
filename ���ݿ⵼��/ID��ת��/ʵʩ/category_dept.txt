@@ -1,5 +1,0 @@
-update smg_link t1 set t1.category_id=(select new_id from dept_link t2 where t2.old_id=t1.category_id)
-update smg_news t1 set t1.category_id=(select new_id from dept_news t2 where t2.old_id=t1.category_id)
-update smg_picture t1 set t1.category_id=(select new_id from dept_picture t2 where t2.old_id=t1.category_id)
-update smg_vote t1 set t1.category_id=(select new_id from dept_vote t2 where t2.old_id=t1.category_id)
-update smg_video t1 set t1.category_id=(select new_id from dept_video t2 where t2.old_id=t1.category_id)
