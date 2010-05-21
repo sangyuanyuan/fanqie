@@ -6,7 +6,7 @@ img{border:0;}
 a{color:#333;text-decoration:none;}
 a:hover{text-decoration:underline;}
 #header{background:url(../hehun_images/bg_top.jpg) repeat-x;height:73px;}
-#banner{float:left;margin:40px 20px 20px 160px;FILTER: glow(color=#f6f6ea,strength=3);}
+#banner{float:left;margin:40px 20px 20px 160px;/*FILTER: glow(color=#f6f6ea,strength=3);*/}
 #menu{background:url(../hehun_images/bg_search.gif) repeat-x;height:31px;border-top:2px solid #3D9A13;border-bottom:2px solid #3D9A13;padding:3px 0 0 5px;}
 #menu img{margin-right:5px;}
 #menu form{display:inline;}
