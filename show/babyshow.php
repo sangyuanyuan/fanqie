@@ -28,8 +28,8 @@
 ?>
 <div id=bodys>
  	<div id=baby>
- 		<?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><div style="width:450px; height:25px; margin-left:10px; font-size:20px; font-weight:bold; line-height:25px; float:left; display:inline;"><a target="_blank" href="babyitem.php">继续上传宝宝其他照片</a></div><?php } ?>
- 		<div id="zcl" style="width:450px; height:25px; margin-top:10px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; color:red; cursor:pointer; text-align:right; float:right; display:inline;">支持</div>
+ 		<?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><div style="width:450px; height:25px; margin-left:10px; font-size:20px; font-weight:bold; line-height:25px; float:left; display:inline;"><a style="color:#ff0000; text-decoration:none;" target="_blank" href="babyitem.php">继续上传宝宝其他照片</a></div><?php } ?>
+ 		<div id="zcl" style="width:450px; height:25px; margin-top:10px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; color:red; cursor:pointer; text-align:right; float:right; display:inline;">我要投给他/她</div>
  		<div class=pic2><img border=0 width=450 src="<? echo $babyshow1[0]->photourl;?>" /><div class=nd> <? echo $babyshow1[0]->babyname.'<br>'.$babyshow1[0]->content;?></div></div>
  		<? for($i=0;$i< count($babyshow);$i++){?>
  			<div class=pic2><img border=0 width=500 src="<? echo $babyshow[$i]->photourl;?>" /><div class=nd> <? echo $babyshow[$i]->babyname.'<br>'.$babyshow1[0]->content;?></div></div>
@@ -86,7 +86,8 @@ $(document).ready(function(){
 			document.commentform.submit();
 	});
 	$("#zcl").click(function(){
-			$.post("baby_zcl.post.php",{'id':$('#resource_id').val()},function(data){			
+			$.post("baby_zcl.post.php",{'id':$('#resource_id').val()},function(data){
+	
 				if(data=='OK'){
 					alert('支持成功！');
 				}
