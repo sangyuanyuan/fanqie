@@ -23,11 +23,12 @@
   
   if($_REQUEST['id']==''){die('没有找到此宝宝网页');}
   $babyshow = $db->query('select a.*,(select babyname from smg_baby_vote where id=a.babyid) as babyname from smg_baby_item a where a.babyid='.$_REQUEST['id']);
-  $babyshow1 = $db->query('select photourl,babyname,content from smg_baby_vote where id='.$_REQUEST['id']);
+  $babyshow1 = $db->query('select photourl,babyname,content,parent_id from smg_baby_vote where id='.$_REQUEST['id']);
   $comments = $db->paginate('select * from smg_comment where resource_type="babyshow" and resource_id='.$_REQUEST['id'].' order by created_at desc',5);
 ?>
 <div id=bodys>
  	<div id=baby>
+ 		<?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><div style="width:995px; height:25px; font-size:20px; font-weight:bold; line-height:25px; float:left; display:inline;"><a target="_blank" href="babyitem.php">继续上传宝宝其他照片</a></div><?php } ?>
  		<div class=pic2><img border=0 width=450 src="<? echo $babyshow1[0]->photourl;?>" /><div class=nd> <? echo $babyshow1[0]->babyname.'<br>'.$babyshow1[0]->content;?></div></div>
  		<? for($i=0;$i< count($babyshow);$i++){?>
  			<div class=pic2><img border=0 width=500 src="<? echo $babyshow[$i]->photourl;?>" /><div class=nd> <? echo $babyshow[$i]->babyname.'<br>'.$babyshow1[0]->content;?></div></div>

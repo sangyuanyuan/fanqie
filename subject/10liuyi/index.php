@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div id=bodys>
-		<div id=logo></div>
+		<div id=logo><img src="/images/10liuyi.jpg" /></div>
 		<div id=ibody>
 			<div id=sub><a target="_blank" href="/show/babysignup.php">我要报名</a></div>
 			<?php $baby=$db->query('select * from smg_baby_vote order by createtime desc');
