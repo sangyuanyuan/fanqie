@@ -29,7 +29,7 @@
 <div id=bodys>
  	<div id=baby>
  		<?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><div style="width:450px; height:25px; margin-left:10px; font-size:20px; font-weight:bold; line-height:25px; float:left; display:inline;"><a target="_blank" href="babyitem.php">继续上传宝宝其他照片</a></div><?php } ?>
- 		<div style="width:450px; height:25px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; float:right; display:inline;"><span id="zcl" style="color:red; cursor:pointer;">支持</span></div>
+ 		<div style="width:450px; height:25px; margin-top:10px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; text-align:right; float:right; display:inline;"><span id="zcl" style="color:red; cursor:pointer;">支持</span></div>
  		<div class=pic2><img border=0 width=450 src="<? echo $babyshow1[0]->photourl;?>" /><div class=nd> <? echo $babyshow1[0]->babyname.'<br>'.$babyshow1[0]->content;?></div></div>
  		<? for($i=0;$i< count($babyshow);$i++){?>
  			<div class=pic2><img border=0 width=500 src="<? echo $babyshow[$i]->photourl;?>" /><div class=nd> <? echo $babyshow[$i]->babyname.'<br>'.$babyshow1[0]->content;?></div></div>
