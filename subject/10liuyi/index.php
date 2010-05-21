@@ -20,7 +20,7 @@
 	<div id=bodys>
 		<div id=logo><img src="/images/10liuyi.jpg" /></div>
 		<div id=ibody>
-			<div class=sub><marquee scrollamount="5" onmouseover=this.stop() onmouseout=this.start()>转眼间，一年一度的儿童节又要到了！在此，全体番茄小编们祝SMG宝宝们节日快乐！</marquee></div>
+			<div class=sub style="text-align:center;">转眼间，一年一度的儿童节又要到了！在此，全体番茄小编们祝SMG宝宝们节日快乐！</div>
 			<div class=sub style="width:960px; background:url('/subject/liuyi/image/line.gif') repeat-x;"></div>
 			<div class=sub><a target="_blank" href="/show/babysignup.php">我要报名</a></div>
 			<?php $baby=$db->query('select * from smg_baby_vote order by createtime desc');
