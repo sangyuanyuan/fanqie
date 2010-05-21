@@ -15,11 +15,11 @@ js_include_once_tag('total');
 <div style="display:none;" id="aspk" onclick="Hide();"></div>
 <div id="header">
 	<span style="float:left;"></span>
-	<div id="banner">番茄网爱墙</div>
+	<div id="banner" style="font-size:20px; font-weight:bold; line-height:20px; color:#ff0000;">全体番茄小编们祝SMG宝宝们节日快乐！</div>
 </div>
 <div id="menu">
 	<a href="index.php?id=1" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
-    <a href="index.php?id=1">我的爱墙</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_add.php">我要许愿</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">福气排行 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="index.php">首页 </a> <img src="hehun_images/06.gif" width="16" height="16" /> <a href="http://u.hehun.org.cn">博客 </a> </div>
+    <a href="index.php?id=1">我的祝福</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_add.php">我要祝福</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">福气排行 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="index.php">首页 </a> <img src="hehun_images/06.gif" width="16" height="16" /> <a href="http://u.hehun.org.cn">博客 </a> </div>
 <script type="text/javascript" src="inc/add.js"></script>
 
 
