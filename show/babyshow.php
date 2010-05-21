@@ -71,6 +71,7 @@
 </body>
 </html>
 <script>
+$(document).ready(function(){
 	$("#content11").click(function(){
 			var content = $('#commentcontent').val();
 			if(content==""){
@@ -95,4 +96,5 @@
 				}
 			});
 		});
+	})
 </script>
