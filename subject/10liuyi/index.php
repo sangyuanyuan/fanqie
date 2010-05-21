@@ -20,13 +20,16 @@
 	<div id=bodys>
 		<div id=logo><img src="/images/10liuyi.jpg" /></div>
 		<div id=ibody>
-			<div id=sub><a target="_blank" href="/show/babysignup.php">我要报名</a></div>
+			<div class=sub><marquee></marquee></div>
+			<div class=sub style="width:960px; background:url('/subject/liuyi/image/line.gif') repeat-x;"></div>
+			<div class=sub><a target="_blank" href="/show/babysignup.php">我要报名</a></div>
 			<?php $baby=$db->query('select * from smg_baby_vote order by createtime desc');
 					for($i=0;$i<count($baby);$i++)
 					{	
 		 	?>
 				<div class=pic><a target="_blank" href="/show/baby_vote.php"><img src="<?php echo $baby[$i]->photourl; ?>"></a></div>
 			<?php } ?>
+			<div class=sub style="width:960px; background:url('/subject/liuyi/image/line.gif') repeat-x;"></div>
 			<div style="width:995px; height:582px; margin-top:30px; text-align:center; float:left; display:inline;">
 				<a target="_blank" href="/subject/liuyi/lovewall/index.php?id=1"><img border=0 src="/images/lovewall.jpg"></a>
 			</div>
