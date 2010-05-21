@@ -23,7 +23,7 @@
 			<div class=sub style="text-align:center;">转眼间，一年一度的儿童节又要到了！在此，全体番茄小编们祝SMG宝宝们节日快乐！</div>
 			<div class=sub style="width:960px; background:url('/subject/liuyi/image/line.gif') repeat-x;"></div>
 			<div class=sub style="width:960px; text-align:center; font-size:30px; line-height:35px;">家有宝宝秀出来</div>
-			<div class=sub style="width:960px; margin-top:10px; font-size:16px; color:#000000; line-height:20px;">作为SMG宝宝秀第二季，本季主题为“爸爸妈妈的宝宝”，即选拔与爸爸妈妈长的最像的可爱宝宝。同时，为了表达番茄网对SMG宝宝的祝福，凡是参加宝宝秀的宝宝们均会收到番茄网的儿童节礼物。欢迎广大网友踊跃参与。</div>
+			<div class=sub style="width:960px; text-indent:2em; margin-top:10px; font-size:16px; color:#000000; line-height:20px;">作为SMG宝宝秀第二季，本季主题为“爸爸妈妈的宝宝”，即选拔与爸爸妈妈长的最像的可爱宝宝。同时，为了表达番茄网对SMG宝宝的祝福，凡是参加宝宝秀的宝宝们均会收到番茄网的儿童节礼物。欢迎广大网友踊跃参与。</div>
 			<div class=sub><a target="_blank" href="/show/babysignup.php">我要参与</a></div>
 			<?php $baby=$db->query('select * from smg_baby_vote order by createtime desc');
 					for($i=0;$i<count($baby);$i++)
