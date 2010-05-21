@@ -56,7 +56,7 @@ if(count($record) > 0)
 			<td align="left"><input id="upfile" name="upfile" type="file" /></td>
 		</tr>
 		<tr  height="30px;">
-			<td colspan="2" width="795" align="center"><button id=createshop type="button">创建</button></td>
+			<td colspan="2" width="795" align="center"><button id=createshop type="button" onclick="check()">创建</button></td>
 		</tr>	
 	</table>
 			<input type="hidden" name="creater" value="<? echo $cookie;?>">
