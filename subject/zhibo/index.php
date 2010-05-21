@@ -43,9 +43,9 @@
 	  	<div id=t_l></div>
 			<div id=t_c>
 				<div class=video>
-					<OBJECT   id=MediaPlayer1   codeBase=http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701standby=Loading   type=application/x-oleobject   height=414   width=537   classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6   VIEWASTEXT> 
+					<OBJECT   id=MediaPlayer1  codeBase=http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701standby=Loading   type=application/x-oleobject   height=414   width=537   classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6   VIEWASTEXT> 
 						<PARAM   NAME= "URL"   VALUE= "<?php echo $video->online_url; ?>"> 
-						<PARAM   NAME= "playCount"   VALUE= "1"> 
+						<PARAM   NAME= "playCount"   VALUE= "200"> 
 						<PARAM   NAME= "autoStart"   VALUE= "true"> 
 						<PARAM   NAME= "invokeURLs"   VALUE= "false">
 						<PARAM   NAME= "uiMode"   VALUE= "Full">

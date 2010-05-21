@@ -2,28 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>上海广播电视台、上海东方传媒（集团）有限公司期许</title>
+<title>番茄网宝宝爱墙</title>
 <style><!--@import url(inc/style.css);--></style>
 <?php use_jquery();
 js_include_once_tag('total');
 ?>
 <script>
-	total("制播分离期许","news");
+	total("宝宝爱墙","show");
 </script>
 </head>
 <body>
 <div style="display:none;" id="aspk" onclick="Hide();"></div>
 <div id="header">
 	<span style="float:left;"></span>
-	<div id="banner">上海广播电视台、上海东方传媒（集团）有限公司期许</div>
+	<div id="banner">番茄网宝宝爱墙</div>
 </div>
 <div id="menu">
 <a href="/bbs" target="_blank"><img src="hehun_images/01.gif" width="27" height="17" /></a>
-    <a href="index.php?id=1">我的期许</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_add.php">我要期许</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">福气排行 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="index.php">首页 </a> <img src="hehun_images/06.gif" width="16" height="16" /> <a href="/blog/" target="_blank">博客 </a> </div>
+    <a href="index.php?id=1">我的许愿</a> <img src="hehun_images/02.gif" width="16" height="16" /><a href="hehun_add.php">我要许愿</a> <img src="hehun_images/03.gif" width="16" height="16" /> <a href="hehun_list.php">福气排行 </a> <img src="hehun_images/05.gif" width="15" height="12" /> <a href="index.php">首页 </a> <img src="hehun_images/06.gif" width="16" height="16" /> <a href="/blog/" target="_blank">博客 </a> </div>
 <table width="100%" border="0" cellpadding="0" cellspacing="1" class="List">
 	<tr>
-		<th>期许编号</th>
-		<th>期许内容</th>
+		<th>许愿编号</th>
+		<th>许愿内容</th>
 		<th>发送人</th>
 		<th>接收人</th>
 		<th>日期</th>
