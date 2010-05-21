@@ -28,7 +28,8 @@
 ?>
 <div id=bodys>
  	<div id=baby>
- 		<?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><div style="width:995px; height:25px; font-size:20px; font-weight:bold; line-height:25px; float:left; display:inline;"><a target="_blank" href="babyitem.php">继续上传宝宝其他照片</a></div><?php } ?>
+ 		<?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><div style="width:450px; height:25px; font-size:20px; font-weight:bold; line-height:25px; float:left; display:inline;"><a target="_blank" href="babyitem.php">继续上传宝宝其他照片</a></div><?php } ?>
+ 		<div style="width:450px; height:25px; font-size:20px; font-weight:bold; line-height:25px; float:left; display:inline;"><span id="zcl" style="color:red; cursor:pointer;">支持</span></div>
  		<div class=pic2><img border=0 width=450 src="<? echo $babyshow1[0]->photourl;?>" /><div class=nd> <? echo $babyshow1[0]->babyname.'<br>'.$babyshow1[0]->content;?></div></div>
  		<? for($i=0;$i< count($babyshow);$i++){?>
  			<div class=pic2><img border=0 width=500 src="<? echo $babyshow[$i]->photourl;?>" /><div class=nd> <? echo $babyshow[$i]->babyname.'<br>'.$babyshow1[0]->content;?></div></div>
@@ -59,7 +60,7 @@
     	  <div id=left>评论：</div><textarea id="commentcontent" name="post[comment]"></textarea>
        </div>
        <input type="hidden" id="resource_type" name="post[resource_type]" value="babyshow">
-       <input type="hidden" id="resource_type" name="post[resource_id]" value="<?php echo $_REQUEST['id']; ?>">
+       <input type="hidden" id="resource_id" name="post[resource_id]" value="<?php echo $_REQUEST['id']; ?>">
        <input type="hidden" name="type" value="comment">
        <div id=content11 style="cursor:pointer;"></div>
     </form>
@@ -82,5 +83,16 @@
 				return false;
 			}
 			document.commentform.submit();
-	});	
+	});
+	$("#zcl").click(function(){
+			$.post("baby_zcl.post.php",{'id':$('#resource_id').val()},function(data){			
+				if(data=='OK'){
+					alert('支持成功！');
+				}
+				else
+				{
+						
+				}
+			});
+		});
 </script>

@@ -29,7 +29,7 @@
 					for($i=0;$i<count($baby);$i++)
 					{	
 		 	?>
-				<div class=pic><a target="_blank" href="/show/baby_vote.php"><img src="<?php echo $baby[$i]->photourl; ?>"></a></div>
+				<div class=pic><a target="_blank" href="/show/babyshow.php?id=<?php echo $baby[$i]->id; ?>"><img src="<?php echo $baby[$i]->photourl; ?>"></a><br>最像爸妈的宝宝：<?php echo $baby[$i]->zcl; ?>票</div>
 			<?php } ?>
 			<div class=sub style="width:960px; background:url('/subject/liuyi/image/line.gif') repeat-x;"></div>
 			<div style="width:995px; height:582px; margin-top:30px; text-align:center; float:left; display:inline;">
