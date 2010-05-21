@@ -20,7 +20,7 @@
 	<div id=bodys>
 		<div id=logo><img src="/images/10liuyi.jpg" /></div>
 		<div id=ibody>
-			<div class=sub><marquee></marquee></div>
+			<div class=sub><marquee scrollamount="2" onmouseover=this.stop() onmouseout=this.start()></marquee></div>
 			<div class=sub style="width:960px; background:url('/subject/liuyi/image/line.gif') repeat-x;"></div>
 			<div class=sub><a target="_blank" href="/show/babysignup.php">我要报名</a></div>
 			<?php $baby=$db->query('select * from smg_baby_vote order by createtime desc');
