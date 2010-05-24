@@ -40,8 +40,8 @@
     	<div class=time><?php echo $comments[$i]->created_at;?></div>	
     	<div class=context><?php echo get_fck_content($comments[$i]->comment);?></div>	
     </div>
-    
-    <?php }?>
+     <?php }?>
+    <div style="width:450px; height:25px; margin-top:10px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; text-align:right; float:right; display:inline;"><a target="_blank" style="color:red; text-decoration:none;" href="babysignup.php">我要参与</a></div>
     <div class="pageurl">
        <?php 
           paginate(''); 
