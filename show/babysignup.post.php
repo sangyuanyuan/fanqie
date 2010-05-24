@@ -8,7 +8,10 @@ if($_POST['utype']=="babyvote")
 	if($parent_id!=0)
 	{
 		$news_id=$db->query('select id from smg_baby_vote where parent_id='.$parent_id);
-		$news->find($news_id[0]->id);	
+	}
+	if($news_id!="")
+	{
+		$news->find($news_id[0]->id);
 	}
 	$news->update_attributes($_POST['baby'],false);
 	if($_FILES['photourl']['name'] != ''){
@@ -20,7 +23,7 @@ if($_POST['utype']=="babyvote")
 	$news->content = str_replace("'",'\"',$news->content);
 	$news->save();
 	alert('报名成功！');
-	redirect('babyvote.php');
+	//redirect('/subject/10liuyi/index.php');
 }
 
 if($_POST['utype']=="babyitem")
