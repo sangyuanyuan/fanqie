@@ -32,6 +32,7 @@
 				<div class=pic><a target="_blank" href="/show/babyshow.php?id=<?php echo $baby[$i]->id; ?>"><img src="<?php echo $baby[$i]->photourl; ?>"></a><br>最像爸妈的宝宝：<span style="color:red; font-weight:bold;"><?php echo $baby[$i]->zcl; ?></span>票</div>
 			<?php } ?>
 			<div class=sub style="width:960px; background:url('/subject/liuyi/image/line.gif') repeat-x;"></div>
+			<div class=sub style="text-align:center; font-size:30px; line-height:35px;">SMG六一祝福板</div>
 			<div style="width:995px; height:400px; margin-top:30px; text-align:center; float:left; display:inline;">
 				<a target="_blank" href="/subject/liuyi/lovewall/index.php?id=1"><img border=0 src="/images/lovewall.jpg"></a>
 			</div>
