@@ -23,7 +23,7 @@ if($_POST['utype']=="babyvote")
 	$news->content = str_replace("'",'\"',$news->content);
 	$news->save();
 	alert('报名成功！');
-	//redirect('/subject/10liuyi/index.php');
+	redirect('/subject/10liuyi/index.php');
 }
 
 if($_POST['utype']=="babyitem")
