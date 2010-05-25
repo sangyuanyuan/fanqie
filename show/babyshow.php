@@ -41,7 +41,7 @@
     	<div class=context><?php echo get_fck_content($comments[$i]->comment);?></div>	
     </div>
      <?php }?>
-    <div style="width:450px; height:25px; margin-top:10px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; text-align:right; float:left; display:inline;"><a target="_blank" style="color:red; text-decoration:none;" href="/subject/10liuyi/index.php">返回专题首页</a></div>
+    <div style="width:450px; height:25px; margin-top:10px; margin-left:10px; font-size:20px; font-weight:bold; line-height:25px; text-align:left; float:left; display:inline;"><a target="_blank" style="color:red; text-decoration:none;" href="/subject/10liuyi/index.php">返回专题首页</a></div>
     <div style="width:450px; height:25px; margin-top:10px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; text-align:right; float:right; display:inline;"><a target="_blank" style="color:red; text-decoration:none;" href="babysignup.php">我要参与</a></div>
     <div class="pageurl">
        <?php 
