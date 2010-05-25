@@ -1,5 +1,7 @@
 ﻿<?php require_once('../frame.php');
-$db=get_db();
+	$db=get_db();
+	$id=$_REQUEST['id'];
+	$parentid=$db->query('select parent_id from smg_baby_vote where id='.$id);
  ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -35,7 +37,7 @@ $db=get_db();
 					</tr>
 					<tr>
 						<td>爸爸或妈妈工号：</td>
-						<td align="left"><input id="parent_id" name="baby[parent_id]" type="text" /></td>
+						<td align="left"><input id="parent_id" name="baby[parent_id]" type="text" value="<?php echo $parentid[0]->parent_id; ?>" /></td>
 					</tr>
 					<tr>
 						<td>部门：</td>

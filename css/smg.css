@@ -1184,10 +1184,10 @@ body {font-family:宋体; font-size:12px; color:#000;  margin:0px;}
 #baby #baby_left #content11{width:44px; height:18px; margin-top:3px; margin-left:75px; background:url(/images/btn/btn1.jpg) no-repeat; float:left; display:inline;}
 
 /*babyshow*/
-#baby .pic2{width:485px; margin-top:20px; margin-left:9px;  border:1px solid #DEDBDE;  overflow:hidden; float:left; display:inline;}
+#baby .pic2{width:450px; margin-top:20px; margin-left:9px;  border:1px solid #DEDBDE;  overflow:hidden; float:left; display:inline;}
 #baby .pic2 img{width:450px; height:300px; margin-top:10px; margin-left:17px;}
-#baby .pic2 .bh{width:485px; height:12px; text-align:center; overflow:hidden; float:left; display:inline;}
-#baby .pic2 .nd{width:485px; margin-top:3px; text-align:center; overflow:hidden; float:left; display:inline;}
+#baby .pic2 .bh{width:450px; height:12px; text-align:center; overflow:hidden; float:left; display:inline;}
+#baby .pic2 .nd{width:450px; margin-top:3px; text-align:center; overflow:hidden; float:left; display:inline;}
 
 /*nyf*/
 #nyf_left{width:680px; padding-bottom:20px; border:1px solid #DEDBDE; background:#F7F7F7; overflow:hidden; float:left; display:inline;}

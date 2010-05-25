@@ -113,7 +113,7 @@ $(function(){
 			$("#content_trrb"+num).css('display','inline');
 
 	});	
-if($(".menu_trrt").attr('param')==1)
+	if($(".menu_trrt").attr('param')==1)
 	{
 		setInterval('tg()',15000);
 	}	
