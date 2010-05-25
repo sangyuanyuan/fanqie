@@ -78,5 +78,4 @@ if($rq!="")
 				<div id=datepicker1></div>
 
 	</body>
-	<form name="download_file" id="download_file" target=
 </html>

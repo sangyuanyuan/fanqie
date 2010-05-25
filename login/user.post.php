@@ -19,13 +19,18 @@ if($_POST['user_type']=="login")
 		//login from ucenter
 		$ret = uc_user_login($login_text , $password_text);
 		if($ret[0]<= 0 ){
+			
 			$error = "用户名或密码不对";		
 		}else{
 			//login sucessful
 			$user = new table_class('smg_user');
 			if($user->find_by_name($login_text)){
-				$user = $user[0];
+				if(is_array($user)){
+					$user = $user[0];
+				}
+				
 			};
+			echo $login_text;
 			$user->name = $login_text;
 			$user->password = $password_text;
 			#$user->role_name = 'member';
@@ -38,6 +43,7 @@ if($_POST['user_type']=="login")
 			@setcookie('smg_role', 'member',$y2k,'/');
 			$error =  "ok";
 			@setcookie('smg_uid', $ret[0],$y2k,'/');
+			
 			echo (uc_user_synlogin($ret[0]));
 		}
 		

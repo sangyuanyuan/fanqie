@@ -35,6 +35,7 @@
 		$username = get_config('db_user_name');
 		$password = get_config('db_password');
 		$code = get_config('db_code');
+		
 		$note_emails = "chenlong@xun-ao.com, sunyoujie@xun-ao.com, shengzhifeng@xun-ao.com, zhanghao@xun-ao.com";
 		
 		if($g_db->connect($servername,$dbname,$username,$password,$code)===false){
@@ -99,21 +100,23 @@
 		else
 		{
 			$g_db->query("show slave status");
-			$io_status =  $g_db->field_by_index(10);
-			$sql_status = $g_db->field_by_index(11);
-			$syn_status = $io_status=='Yes' && $sql_status == 'Yes';
-			$last_syn = file_get_contents(dirname(__FILE__) .'/config/last_dissyn.txt');
-			$date=date('Y-m-d');
-			$now=substr($last_syn,0,10);
-			if($syn_status === false){
-				if($now!=$date)
-				{
-					send_sms('13482678134','82不同步啦，快找盛');
-					send_sms('13764092296','82不同步啦，快找盛');
-					write_to_file(dirname(__FILE__) .'/config/last_dissyn.txt',now(),'w');
-					@mail($note_emails,'数据库同步失败','主备数据库均同步失败，请立即检查'.$this->servername);				
-				}
-			}	
+			if ($g_db->record_count > 0){
+				$io_status =  $g_db->field_by_index(10);
+				$sql_status = $g_db->field_by_index(11);
+				$syn_status = $io_status=='Yes' && $sql_status == 'Yes';
+				$last_syn = file_get_contents(dirname(__FILE__) .'/config/last_dissyn.txt');
+				$date=date('Y-m-d');
+				$now=substr($last_syn,0,10);
+				if($syn_status === false){
+					if($now!=$date)
+					{
+						send_sms('13482678134','82不同步啦，快找盛');
+						send_sms('13764092296','82不同步啦，快找盛');
+						write_to_file(dirname(__FILE__) .'/config/last_dissyn.txt',now(),'w');
+						@mail($note_emails,'数据库同步失败','主备数据库均同步失败，请立即检查'.$this->servername);				
+					}
+				}	
+			}
 		}
 		
 		return $g_db;

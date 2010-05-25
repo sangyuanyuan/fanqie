@@ -33,6 +33,13 @@ if($type=="index")
 if($type=="top")
 {
 	$full_path='http://'.$_SERVER['HTTP_HOST'].'/inc/top.inc.php';
+	$fcontent = file_get_contents($full_path);
+	$filename='../../inc/top.inc.html';
+	$handle=fopen($filename,"wt");
+	fwrite($handle,$fcontent);
+	fclose($handle);
+	/*
+	$full_path='http://'.$_SERVER['HTTP_HOST'].'/inc/top.inc.php';
 	$fcontent="";
 	$fp= fopen($full_path,'r');
 	while(!feof($fp))
@@ -45,6 +52,7 @@ if($type=="top")
 	$handle=fopen($filename,"wt");
 	fwrite($handle,$fcontent);
 	fclose($handle);
+	*/
   echo "顶部静态执行成功<br>";
 
 }
