@@ -30,9 +30,9 @@
  	<div id=baby>
  		<?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><div style="width:450px; height:25px; margin-top:10px; margin-left:10px; font-size:20px; font-weight:bold; line-height:25px; float:left; display:inline;"><a style="color:#ff0000; text-decoration:none;" target="_blank" href="babyitem.php">继续上传</a></div><?php } ?>
  		<div id="zcl" style="width:450px; height:25px; margin-top:10px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; color:red; cursor:pointer; text-align:right; float:right; display:inline;">我要投给他/她</div>
- 		<div class=pic2><img border=0 width=450 src="<? echo $babyshow1[0]->photourl;?>" /><div class=nd> <? echo $babyshow1[0]->babyname.'<br>'.$babyshow1[0]->content;?></div><div class="nd"><a href="babysignup.php?id=<?php echo $_REQUEST['id']; ?>">编辑</a></div></div>
+ 		<div class=pic2><img border=0 width=450 src="<? echo $babyshow1[0]->photourl;?>" /><div class=nd> <? echo $babyshow1[0]->babyname.'<br>'.$babyshow1[0]->content;?></div><div class="nd"><?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><a href="babysignup.php?id=<?php echo $_REQUEST['id']; ?>">编辑</a></div><?php } ?></div>
  		<? for($i=0;$i< count($babyshow);$i++){?>
- 			<div class=pic2><img border=0 width=450 src="<? echo $babyshow[$i]->photourl;?>" /><div class=nd> <? echo $babyshow[$i]->babyname.'<br>'.$babyshow1[0]->content;?></div><div class="nd"><a href="babyitem.php?id=<?php echo $babyshow[$i]->id; ?>">编辑</a>　<span param="<?php echo $babyshow[$i]->id; ?>" id="babydel" style="color:blue; cursor:pointer; text-decoration:underline;">删除</span></div></div>
+ 			<div class=pic2><img border=0 width=450 src="<? echo $babyshow[$i]->photourl;?>" /><div class=nd> <? echo $babyshow[$i]->babyname.'<br>'.$babyshow1[0]->content;?></div><div class="nd"><?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><a href="babyitem.php?id=<?php echo $babyshow[$i]->id; ?>">编辑</a>　<span param="<?php echo $babyshow[$i]->id; ?>" id="babydel" style="color:blue; cursor:pointer; text-decoration:underline;">删除</span><?php } ?></div></div>
  		<?}?>
 	<? for($i=0;$i< count($comments);$i++){?>
     <div class=content7 style="width:900px; margin-left:20px;">

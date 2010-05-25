@@ -53,7 +53,8 @@ function tg()
 	setTimeout('tg3()',10000);	
 }
 
-$(function(){
+$(function(){
+	var tgid=1;
 	$(".item").mouseover(function(){
 			var video_item=$(this).attr('id');
 			$(".item").css('background','url(/images/index/btn2.jpg) no-repeat');
@@ -95,6 +96,7 @@ $(function(){
 			$(this).css('background','url(/images/index/btn7.jpg) no-repeat');
 			$(this).css('font-weight','bold');
 			$(".content_trrt").css('display','none');
+			tgid=$(this).attr('param');
 			var num=$(this).attr('param');
 			$(".content_trrt").css("float","right");
 			$(".content_trrt").css("margin-right","13px");
@@ -113,7 +115,7 @@ $(function(){
 			$("#content_trrb"+num).css('display','inline');
 
 	});	
-	if($(".menu_trrt").attr('param')==1)
+	if(tgid==1)
 	{
 		setInterval('tg()',15000);
 	}	
