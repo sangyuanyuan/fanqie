@@ -100,7 +100,7 @@
 			?>
 			<div class=c_title1>
 				<div class=wz><img src="/images/sxxx/1.gif"></div>
-				<div class=more><a target="_blank" href="/news/subject_list.php?id=<?php echo $bgt[0]->cid; ?>">more>></a></div>
+				<div class=more><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $bgt[0]->cid; ?>">more>></a></div>
 			</div>
 			<div id=video>
 				<?php if($bgt[0]->video_src!=""){ show_video_player('253','200',$bgt[0]->video_photo_src,$bgt[0]->video_src);}else{ show_video_player('253','200',$xxyd[0]->photo_url,$xxyd[0]->video_url); } ?>	
@@ -179,7 +179,7 @@
 			<? $xxy = $db->query('select n.photo_src,n.id,n.short_title,n.content,n.description,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="学习营" order by i.priority asc, n.created_at desc limit 5');?>
 			<div class=c_title1>
 				<div class=wz><img src="/images/sxxx/3.gif" /></div>
-				<div class=more><a target="_blank" href="/news/subject_list.php?id=<?php echo $xxy[0]->cid; ?>">more>></a></div>
+				<div class=more><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $xxy[0]->cid; ?>">more>></a></div>
 			</div>
 			<div id=q_l>
 				<a target="_blank" href="/news/news/news.php?id=<?php echo $xxy[0]->id; ?>"><img border=0 src="<?php echo $xxy[0]->photo_src; ?>"></a>

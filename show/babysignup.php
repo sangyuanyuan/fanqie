@@ -50,7 +50,7 @@ $db=get_db();
 					</tr>
 					<tr>
 						<td>宝宝参选照片：</td>
-						<td align="left"><input name="photourl" type="file"><br>（照片请上传450*300或等比例放大缩小尺寸照片，以免造成网页呈现变形）</td>
+						<td align="left"><input name="photourl" type="file"><br><span style="color:red;">（照片请上传450*300或等比例放大缩小尺寸照片，以免造成网页呈现变形）</span></td>
 					</tr>
 					<tr>
 						<td>参评简介：</td>

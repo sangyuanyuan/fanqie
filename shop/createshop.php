@@ -10,7 +10,7 @@ if($cookie=='')
 }
 $db = get_db();
 $sqlstr="select * from smg_shopdp where username='".$cookie."'";
-$record=get_db($sqlstr);
+$record=$db->query($sqlstr);
 if(count($record) > 0)
 {
 	alert("您已经拥有一家网店，请不要重复创建！");
@@ -48,7 +48,7 @@ if(count($record) > 0)
 		<tr align="center" bgcolor="#f9f9f9" height="290px;" id=newsshow2>
 			<td>店铺简介</td><td align="left">
 			
-			<input type="hidden" id="content" name="content" value="" style="display:none" /><input type="hidden" id="content___Config" value="" style="display:none" /><iframe id="content___Frame" src="/admin/FCKeditor/editor/fckeditor.html?InstanceName=content&amp;Toolbar=Default" width="98%" height="280" frameborder="0" scrolling="no"></iframe>
+			<?php show_fckeditor('news[content]','Admin',true,"265");?>
 			</td>
 		</tr>
 		<tr>
@@ -56,7 +56,7 @@ if(count($record) > 0)
 			<td align="left"><input id="upfile" name="upfile" type="file" /></td>
 		</tr>
 		<tr  height="30px;">
-			<td colspan="2" width="795" align="center"><button id=createshop type="button">创建</button></td>
+			<td colspan="2" width="795" align="center"><button id=createshop type="button" onclick="check()">创建</button></td>
 		</tr>	
 	</table>
 			<input type="hidden" name="creater" value="<? echo $cookie;?>">
@@ -65,7 +65,6 @@ if(count($record) > 0)
 	</div>
 </div>
 	<? include('../inc/bottom.inc.html');
-   CloseDB();
 ?>
 </body>
 </html>

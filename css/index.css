@@ -139,16 +139,18 @@ p{margin:0px; padding:0px;}
 /*#t_r_r_t{width:206px; height:340px; background:url(/images/index/bg_t_r_r_t2.jpg) no-repeat; overflow:hidden; float:right; display:inline;}*/
 #t_r_r_t .menu_trrt{width:65px; height:18px; padding-top:5px; line-height:15px; text-align:center; color:#666666; cursor:pointer; float:left; display:inline;}
 #t_r_r_t .menu_trrt a{color:#666666; text-decoration:none;}
-#t_r_r_t .content_trrt{width:180px; height:260px; margin-top:10px; margin-left:18px; line-height:20px;  float:left; display:inline;}
+#t_r_r_t .content_trrt{width:180px; height:260px; margin-top:10px; margin-left:18px; line-height:20px; overflow:hidden; float:left; display:inline;}
 /*#t_r_r_t .content_trrt{width:180px; height:290px; margin-top:10px; margin-left:13px; line-height:20px;  float:left; display:inline;}*/
 #t_r_r_t .content_trrt .box{width:175px; height:78px;  margin-bottom:12px;  line-height:20px; overflow:hidden;  float:left; display:inline;}
+#t_r_r_t .content_trrt .box li a{color:#5F5F5F; text-decoration:none;}
 #t_r_r_t #content_trrt1 .box li{width:175px; height:20px; line-height:18px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
 #t_r_r_t #content_trrt1 .box img{width:75px; height:75px; float:right; display:inline;}
+#t_r_r_t #content_trrt11 .box li{width:175px; height:20px; line-height:18px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
+#t_r_r_t #content_trrt11 .box img{width:75px; height:75px; float:right; display:inline;}
+#t_r_r_t #content_trrt12 .box li{width:175px; height:20px; line-height:18px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
+#t_r_r_t #content_trrt12 .box img{width:75px; height:75px; float:right; display:inline;}
 #t_r_r_t #content_trrt2 .box li{width:175px; height:20px; line-height:18px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
 #t_r_r_t #content_trrt3 .box li{width:175px; height:20px; line-height:18px; color:#5F5F5F; overflow:hidden; float:left; display:inline;}
-#t_r_r_t #content_trrt1 .box li a{color:#5F5F5F; text-decoration:none;}
-#t_r_r_t #content_trrt2 .box li a{color:#5F5F5F; text-decoration:none}
-#t_r_r_t #content_trrt3 .box li a{color:#5F5F5F; text-decoration:none;}
 
 #t_r_r_m{width:206px; height:185px; background:url(/images/index/bg_t_l_m.jpg) no-repeat; margin-bottom:10px; float:right; display:inline;}
 #t_r_r_m #btn{width:75px; height:24px; margin-top:33px; margin-left:10px; background:url(/images/index/btn9.jpg) no-repeat; float:left; display:inline;}
