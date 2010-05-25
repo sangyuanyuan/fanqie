@@ -46,7 +46,7 @@
 					</tr>
 					<tr>
 						<td>照片简介：</td>
-						<td align="left"><textarea name="baby[content]" maxlength="20"></textarea>(只显示20个字)<input type="hidden" id="babyid" name="baby[babyid]" value="<?php echo $baby[0]->id; ?>"></td>
+						<td align="left"><textarea name="baby[content]" maxlength="20"></textarea>(只显示20个字)<input type="hidden" id="babyid" name="baby[babyid]" value="<?php echo $baby[0]->id; ?>"><input type="hidden" id="babyitemid" name="baby[id]" value="<?php echo $_REQUEST['id']; ?>"></td>
 					</tr>
 					<tr><td></td><td><button style="margin-right:10px;" OnClick="signuppost1()">提　交</button><button type="reset">重　置</button></td></tr>
 				</table>

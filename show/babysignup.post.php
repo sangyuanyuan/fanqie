@@ -29,6 +29,11 @@ if($_POST['utype']=="babyvote")
 if($_POST['utype']=="babyitem")
 {
 	$news = new table_class('smg_baby_item');
+	$babyid=$_POST['baby']['babyid'];
+	if($babyid!="")
+	{
+		$news->find($babyid);
+	}
 	$news->update_attributes($_POST['baby'],false);
 	if($_FILES['photourl']['name'] != ''){
 		$upload = new upload_file_class();
