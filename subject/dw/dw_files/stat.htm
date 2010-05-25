@@ -11,7 +11,7 @@ function gc_cnzz(n){
 	var alen=arg.length;
 	var clen=document.cookie.length;
 	var i=0;
-	while(i<clen){
+	while(i < clen){
 	var j=i+alen;
 	if(document.cookie.substring(i,j)==arg) return gv_cnzz(j);
 	i=document.cookie.indexOf(" ",i)+1;
@@ -41,7 +41,7 @@ if(lt<1000000){rt=0;lt=0;}
 if(rt<1) rt=0;
 if(((now-lt)>500*86400)&&(lt>0)) rt++;
 data=data+'&repeatip='+cnzz_a+'&rtime='+rt+'&cnzz_eid='+escape(eid)+'&showp='+escape(screen.width+'x'+screen.height)+'&st='+st+'&sin='+escape(sin.substr(0,512))+'&res='+escape(res);
-document.write('<a href="http://www.cnzz.com/stat/website.php?web_id=1022767" target=_blank title="Õ¾³¤Í³¼Æ">Õ¾³¤Í³¼Æ</a>');
+document.write('<a href="http://www.cnzz.com/stat/website.php?web_id=1022767" target=_blank title="Õ¾ï¿½ï¿½Í³ï¿½ï¿½">Õ¾ï¿½ï¿½Í³ï¿½ï¿½</a>');
 document.write('<img src="http://b69.cnzz.com/stat.htm?id=1022767'+data+'" border=0 width=0 height=0>');
 var et=(86400-ed.getHours()*3600-ed.getMinutes()*60-ed.getSeconds());
 ed.setTime(now+1000*(et-ed.getTimezoneOffset()*60));

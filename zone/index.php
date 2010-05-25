@@ -12,6 +12,7 @@
 		use_jquery();
 		js_include_once_tag('zone','total');
 		$db=get_db();
+		
 		$sql="select src,url,title from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name='HOT讨论区' and c.category_type='picture' and is_recommend=1 order by i.priority asc,i.created_at desc limit 1";
 		$tlqimg=$db->query($sql);	
 		$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='讨论区' and c.category_type='news' and is_recommend=1 order by n.priority asc,n.created_at desc limit 10";

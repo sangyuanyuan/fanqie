@@ -3,7 +3,7 @@
 	$nav = new table_class("smg_nav");
 	$nav = $nav->find("all",array('order' => 'id asc'));
 	$db = get_db();
-	use_jquery();
+	use_jquery_ui();
 	js_include_tag('jquery.cookie','pubfun');
 	css_include_tag('top');
 	function daysInSpan($start,$end)

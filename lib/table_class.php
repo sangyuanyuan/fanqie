@@ -344,11 +344,11 @@ class table_class{
 		}
 	}
 
-	protected function __clone(){
+	function __clone(){
 		$this->_set_fields_default();
 	}
 
-	protected function __get($var){
+	function __get($var){
 		if(strtolower($var) == 'class_name'){
 			return $this->_tablename;
 		}
@@ -369,7 +369,7 @@ class table_class{
 		}
 	}
 
-	protected function __set($key, $value){
+	function __set($key, $value){
 		if (@array_key_exists($key,$this->fields)) {
 			if($value != '' && $value == $this->fields[$key]) return;
 			$this->fields[$key] = $value;			

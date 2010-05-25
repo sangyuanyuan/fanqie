@@ -21,3 +21,5 @@ bottom.inc.html
 tools/*
 *.swf
 config/*
+.buildpath
+.settings

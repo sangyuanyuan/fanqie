@@ -4,13 +4,41 @@
    	<a href="/dx/dx.php" target="_blank"><img src="/images/top/sms.jpg" border=0></a>
 				<div id=context><a target="_blank" href="/news/news_list.php?id=120" target="_blank" style="color:#ff0000;font-weight:bold">星尚榜</a> <a href="/zone/" target="_blank" style="color:#ff0000;font-weight:bold">番茄个性版</a> <a id=line3 style="font-weight:bold; color:#0B0B8D;" href="http://172.27.203.81:8080/news/news/news.php?id=25939" target="_blank" >电脑防毒软件升级</a>　<a href="http://172.27.203.88/emailfront/emailfront.htm" target="_blank">企业邮箱</a> <a href="#">新节目</a> <a href="#">直播</a> <a href="/contact/contact.php" target="_blank">联系我们</a> <span onclick="javascript:document.getElementById('toolcontent').style.display='inline'">常用办公软件</span></div>		
 		<a id=home href="/home/" target="_blank"><img src="/images/top/jiayuan.gif" border=0></a>
+		<a target="_blank" style="margin-right:5px; line-height:24px; color:#999999; text-decoration:none;" href="/news/news/news.php?id=47297">宣传值班表</a>
 	</div>
 </div>
-<div id=bannerimg1>
-	
-	<div id=more><a target="_blank" href="/zf/index.php">我要祈福</a></div>
-	<div id=wz>共有<a id="qfrs" target="_blank" href="/zf/index.php"></a>人祈福</div>
+<div id=bannerimg>
+	<div id=nimg1>
+		<div class=deptlogo name=1></div>
+		<div class=deptlogo name=2></div>
+		<div class=deptlogo name=3></div>
+		<div class=deptlogo name=7></div>
+		<div class=deptlogo name=8></div>
+		<div class=deptlogo name=9></div>
+		<div class=deptlogo name=13></div>
+		<div class=deptlogo name=14></div>
+		<div class=deptlogo name=15></div>
+	</div>
+	<div id=nimg2>
+		<div class=deptlogo name=4></div>
+		<div class=deptlogo name=5></div>
+		<div class=deptlogo name=6></div>
+		<div class=deptlogo name=10></div>
+		<div class=deptlogo name=11></div>
+		<div class=deptlogo name=12></div>
+	</div>
+	<div id=fd>
+		<div id=fd_l>
+			<a target="_blank" href="/subject/jwzxsbh/">技术保障信息平台</a>　<a target="_blank" href="http://192.168.61.247/">节目资源信息发布平台</a>　<a target="_blank" href="/subject/fk/">世博安全保障平台</a>
+		</div>
+				<div id=fd_r>
+			<a target="_blank" href="/news/news/news.php?id=45239">世博服务信息平台发布流程图</a>　<a target="_blank" href="/news/news/news.php?id=45240">世博服务信息平台联络架构图</a>
+		</div>	
+	</div>
 </div>
+<!--<div id=bannerimg1>
+<a target="_blank" href="/subject/tw/"><img border=0 src="/images/tw.jpg"></a>
+</div>-->
 <div id=nav2>
 	
 	<div id=box >
@@ -38,7 +66,7 @@
 					 	</ul>
 				<ul>
 								<li><b><a href="/bbs/">论坛</a></b></li>
-								<li><a href="/zone/dialog.php?id=58">对话</a></li>
+								<li><a href="http://172.27.203.81:8080/zone/dialog.php?id=61">对话</a></li>
 								<li><a href="/home/index.php">家园</a></li>
 								<li><a href="/zone/video.php">高清</a></li>
 								<li><b><a href="/zone/">博客</a></b></li>
@@ -79,10 +107,10 @@
 		</form>
  						
    		<div id=hot>
-   			   				   			<!--<a href="/search/?key=undefined&search_type=smg_news" target=_blank>undefined</a>-->　
-   			   			<a href='/zongcai/' target="_blank">总裁奖</a>
+   			   				<!--<a href="http://qjdls.smgbb.cn" target=_blank><img style="width:50px; height:20px; margin-top:0px;" width=50 height=20 border=0 src="/images/qj.gif"></a>-->   			<!--<a href="/search/?key=&search_type=smg_news" target=_blank></a>-->　
+   			   			<a href='/zongcai/' target="_blank">总裁奖</a><a style="margin-left:5px;" href='/subject/tw/' target="_blank">世博志愿者</a>
    		</div>
-			<div id=zongcai></div>
+			<div id=zongcai><a target="_blank" href="http://172.28.10.55/smg_sava/dongtai/temp/media-effect2.htm" style="font-size:12px; text-decoration:none; color:#ffffff;">世博资料创意<!--<img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/world.jpg">--></a></div>
    	</div>
    	   	<input type="hidden" id="birthday1" style="display:none" value=""><input type="hidden" style="display:none" id="birthday2" value="">
 		<div id=login>
@@ -379,11 +407,8 @@
 	</div>
 </div>
 <script>
+$(function(){
 	display_login();
-	$(function(){
-		$.post("static.post.php",{'type':'top'},function(data){
-			$('#qfrs').html(data);
-		});
 		$('#button1').click(function(){
 			$('#top_search_form').attr('action','/search/?search_key=smg_news');
 			$('#search_type_hidden').val('smg_news');
@@ -402,7 +427,7 @@
 			}
 			else if(num==2)
 			{
-				location.href="http://172.27.203.81:8080/blog/?3366";
+				location.href="http://172.27.203.81:8080/newscenter/newscenter_blog.php";
 			}
 			else if(num==3)
 			{

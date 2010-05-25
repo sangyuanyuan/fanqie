@@ -337,7 +337,7 @@ class database_row_item_class {
 		return $result;
 	}	
   	
-  	private function __get($var){
+  	function __get($var){
   		if (strtolower($var) == "affect_count"){
   			return mysql_affected_rows($this->_db);
   		}
