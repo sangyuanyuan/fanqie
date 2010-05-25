@@ -32,7 +32,7 @@
  		<div id="zcl" style="width:450px; height:25px; margin-top:10px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; color:red; cursor:pointer; text-align:right; float:right; display:inline;">我要投给他/她</div>
  		<div class=pic2><img border=0 width=450 src="<? echo $babyshow1[0]->photourl;?>" /><div class=nd> <? echo $babyshow1[0]->babyname.'<br>'.$babyshow1[0]->content;?></div><div class="nd"><?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><a href="babysignup.php?id=<?php echo $_REQUEST['id']; ?>">编辑</a></div><?php } ?></div>
  		<? for($i=0;$i< count($babyshow);$i++){?>
- 			<div class=pic2><img border=0 width=450 src="<? echo $babyshow[$i]->photourl;?>" /><div class=nd> <? echo $babyshow[$i]->babyname.'<br>'.$babyshow1[0]->content;?></div><div class="nd"><?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><a href="babyitem.php?id=<?php echo $babyshow[$i]->id; ?>">编辑</a>　<span param="<?php echo $babyshow[$i]->id; ?>" id="babydel" style="color:blue; cursor:pointer; text-decoration:underline;">删除</span><?php } ?></div></div>
+ 			<div class=pic2><img border=0 width=450 src="<? echo $babyshow[$i]->photourl;?>" /><div class=nd> <? echo $babyshow[$i]->babyname.'<br>'.$babyshow[$i]->content;?></div><div class="nd"><?php if($babyshow[$i]->parent_id==$_COOKIE['smg_username']){ ?><a href="babyitem.php?id=<?php echo $babyshow[$i]->id; ?>">编辑</a>　<span param="<?php echo $babyshow[$i]->id; ?>" id="babydel" style="color:blue; cursor:pointer; text-decoration:underline;">删除</span><?php } ?></div></div>
  		<?}?>
 	<? for($i=0;$i< count($comments);$i++){?>
     <div class=content7 style="width:900px; margin-left:20px;">
@@ -90,6 +90,7 @@ $(document).ready(function(){
 			$.post("baby_zcl.post.php",{'id':$('#resource_id').val()},function(data){
 				if(data=='OK'){
 					alert('支持成功！');
+					total("宝宝秀","show");	
 				}
 				else
 				{
@@ -101,6 +102,7 @@ $(document).ready(function(){
 		$.post("baby_del.post.php",{'id':$(this).attr('param')},function(data){
 			if(data=='OK'){
 				alert('删除成功！');
+				total("宝宝秀","show");	
 				location.reload();
 			}
 			else
