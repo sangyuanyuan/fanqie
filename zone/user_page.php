@@ -10,7 +10,7 @@
 	<? 	
 		css_include_tag('user_page','top','bottom');
 		use_jquery_ui();
-		js_include_once_tag('zone','total');
+		js_include_once_tag('zone_user_page','total');
 		$db=get_db();
   ?>
 <script>
@@ -18,7 +18,7 @@
 </script>	
 </head>
 <body>
-	<? require_once('../inc/top.inc.html');?>
+	<?php require_once('../inc/top.inc.html');?>
 	<div id="ibody">
 		<div id="top_container">添加内容</div>
 		<div id="left_container">
@@ -42,11 +42,33 @@
 			</div>
 		</div>
 		<div id="center_container">
-		
+			<div class="model_container">
+				<div class="tool">
+					<div class="model_name">dsf</div>
+					<div class="remove"></div>
+				</div>
+			</div>
+			<div class="model_container">
+				<div class="tool">
+					<div class="model_name">dsf</div>
+					<div class="remove"></div>
+				</div>
+			</div>
 		</div>
 		
 		<div id="right_container">
-		
+			<div class="model_container">
+				<div class="tool">
+					<div class="model_name">dsf</div>
+					<div class="remove"></div>
+				</div>
+			</div>
+			<div class="model_container">
+				<div class="tool">
+					<div class="model_name">dsf</div>
+					<div class="remove"></div>
+				</div>
+			</div>
 		</div>
 	</div>
 	
