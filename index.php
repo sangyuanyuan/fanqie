@@ -610,38 +610,14 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  				<div class=menu_trrt id=menu_trrt2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat;  margin-left:6px;"><a   href="/news/news_list.php?id=30" target=_blank>快乐番茄</a></div>
  				<div class=menu_trrt id=menu_trrt3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;" ><a   style="color:#ff0000" href="/zone/" target=_blank>番茄百家</a></div>
  				<?php
- 						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 3';
+ 						$sql = 'select * from smg_tg where isadopt=1 order by priority asc,createtime desc limit 9';
 						$record_tg=$db -> query($sql);
-						$sql="select * from smg_fhtg where is_adopt=1 and show_index=1 order by priority asc,created_at desc limit 1";
+						$sql="select * from smg_fhtg where is_adopt=1 and show_index=1 order by priority asc,created_at desc limit 3";
 						$fhtg=$db->query($sql);
 					?>
- 				<div class=content_trrt id=content_trrt1 >
-					<!--<div class=box>
-						<ul>
-							<li>·<a   href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','审片纪要'));?>" target="_blank">审片纪要</a></li>
-							<li>·<a   href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','宣传动态'));?>" target="_blank">每日宣传动态</a></li>
-							<li>·<a   href="/zongcai/" target="_blank">总裁奖</a></li>
-							<li>·<a   href="http://172.27.201.40/xtsb/login.aspx" target="_blank">选题申报</a></li>
-						</ul>
-					</div>
-					<div class=box>
-						<ul>
-							<li>·<a   href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','宣传提示'));?>" target="_blank">收听收视快报</a></li>
-							<li>·<a   href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','联席会议'));?>" target="_blank">联席会议</a></li>
-							<li>·<a   href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','管理规定'));?>" target="_blank">管理规定</a></li>
-							<li>·<a   href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','评奖专栏'));?>" target="_blank">评奖专栏</a></li>
-						</ul>
-					</div>
-					<div class=box>
-						<ul>
-							<li>·<a   href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','播音主持业务指导'));?>" target="_blank">播音主持业务指导</a></li>
-							<li>·<a   href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','差错通报'));?>" target="_blank">差错通报</a></li>
-							<li>·<a   href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','常用表格下载'));?>" target="_blank">常用表格下载</a></li>
-							<li>·<a   href="http://172.27.203.88/pg/BigClass.asp?BigClassName=<?php echo urlencode(iconv('utf-8','gbk','学习交流'));?>" target="_blank">学习交流</a></li>
-						</ul>
-					</div>-->
-					<?php if(count($fhtg)==0){ ?>
-					<?php for($i=0;$i<3;$i++){?>
+ 				<div class=content_trrt id=content_trrt1>
+					<?php if(count($fhtg)==0){ 
+						 for($i=0;$i<3;$i++){?>
 					<div class=box style="margin-bottom:10px;">
 						<a   href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
 						<ul>
@@ -670,6 +646,78 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($fhtg[0]->content);?></li>
 							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $fhtg[0]->marketprice ?></li>
 							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $fhtg[0]->price ?></li>
+						</ul>
+					</div>
+					<?php }?>
+					<!--<a   target="_blank" href="subject/xyy2/pkend.php"><img border=0 width=180 height=122 src="images/xyy2.gif"></a>-->
+ 				</div>
+ 				<div class=content_trrt id=content_trrt11 style="display:none;">
+					<?php if(count($fhtg)<2){ 
+						 for($i=3;$i<6;$i++){?>
+					<div class=box style="margin-bottom:10px;">
+						<a   href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
+						<ul>
+							<li style="width:95px; overflow:hidden;"><a   href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
+							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $record_tg[$i]->marketprice ?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $record_tg[$i]->price ?></li>
+						</ul>
+					</div>
+					<? }}else{?>
+					<?php for($i=2;$i<4;$i++){?>
+					<div class=box style="margin-bottom:5px;">
+						<a   href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
+						<ul>
+							<li style="width:95px; overflow:hidden;"><a   href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
+							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $record_tg[$i]->marketprice ?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $record_tg[$i]->price ?></li>
+						</ul>
+					</div>
+					<?php }?>
+					<div class=box style="margin-bottom:5px;">
+						<a   href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $fhtg[1]->src; ?>" target=_blank border=0></a>
+						<ul>
+							<li style="width:95px; overflow:hidden;"><a   href="/fqtg/fqtglist.php" target=_blank><?php echo $fhtg[1]->title ?></a></li>
+							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($fhtg[1]->content);?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $fhtg[1]->marketprice ?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $fhtg[1]->price ?></li>
+						</ul>
+					</div>
+					<?php }?>
+					<!--<a   target="_blank" href="subject/xyy2/pkend.php"><img border=0 width=180 height=122 src="images/xyy2.gif"></a>-->
+ 				</div>
+ 				<div class=content_trrt id=content_trrt12 style="display:none;">
+					<?php if(count($fhtg)<3){ 
+						 for($i=6;$i<9;$i++){?>
+					<div class=box style="margin-bottom:10px;">
+						<a   href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
+						<ul>
+							<li style="width:95px; overflow:hidden;"><a href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
+							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $record_tg[$i]->marketprice ?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $record_tg[$i]->price ?></li>
+						</ul>
+					</div>
+					<? }}else{?>
+					<?php for($i=4;$i<6;$i++){?>
+					<div class=box style="margin-bottom:5px;">
+						<a   href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
+						<ul>
+							<li style="width:95px; overflow:hidden;"><a   href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
+							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($record_tg[$i]->content);?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $record_tg[$i]->marketprice ?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $record_tg[$i]->price ?></li>
+						</ul>
+					</div>
+					<?php }?>
+					<div class=box style="margin-bottom:5px;">
+						<a   href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $fhtg[2]->src; ?>" target=_blank border=0></a>
+						<ul>
+							<li style="width:95px; overflow:hidden;"><a   href="/fqtg/fqtglist.php" target=_blank><?php echo $fhtg[2]->title ?></a></li>
+							<li style="width:95px; height:30px; line-height:15px; color:#A1A0A0; overflow:hidden;"><?php echo strip_tags($fhtg[2]->content);?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#BD0A01; text-decoration:line-through">市场价：<?php echo $fhtg[2]->marketprice ?></li>
+							<li style="width:95px; height:15px; line-height:15px; color:#ff0000">番茄价：<?php echo $fhtg[2]->price ?></li>
 						</ul>
 					</div>
 					<?php }?>
