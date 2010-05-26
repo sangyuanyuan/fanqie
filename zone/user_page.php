@@ -21,51 +21,59 @@
 	<?php require_once('../inc/top.inc.html');?>
 	<div id="ibody">
 		<div id="top_container">添加内容</div>
-		<div id="left_container">
+		<div id="left_container" class="sortable">
 			<div class="model_container">
 				<div class="tool">
-					<div class="model_name">dsf</div>
+					<div class="model_name">上班这点事</div>
+					<div class="remove"></div>
+				</div>
+				<div class="content">
+				<?php 
+					$sql="select n.id,n.short_title,n.title,n.platform,n.description from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name='上班这点事' and c.category_type='news' and is_recommend=1 order by n.priority asc,n.id desc limit 12";
+					$sbzds=$db->query($sql);
+					$sql="select src,url,title from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt=1 and c.name='上班这点事' and c.category_type='picture' and is_recommend=1 order by i.priority asc,i.created_at desc limit 2";
+					$sbzdsimg=$db->query($sql);
+				?>
+				</div>
+			</div>
+			<div class="model_container">
+				<div class="tool">
+					<div class="model_name">生活大杂烩</div>
 					<div class="remove"></div>
 				</div>
 			</div>
 			<div class="model_container">
 				<div class="tool">
-					<div class="model_name">dsf</div>
-					<div class="remove"></div>
-				</div>
-			</div>
-			<div class="model_container">
-				<div class="tool">
-					<div class="model_name">dsf</div>
+					<div class="model_name">观点视角</div>
 					<div class="remove"></div>
 				</div>
 			</div>
 		</div>
-		<div id="center_container">
+		<div id="center_container" class="sortable">
 			<div class="model_container">
 				<div class="tool">
-					<div class="model_name">dsf</div>
+					<div class="model_name">分享生活</div>
 					<div class="remove"></div>
 				</div>
 			</div>
 			<div class="model_container">
 				<div class="tool">
-					<div class="model_name">dsf</div>
+					<div class="model_name">番茄家园</div>
 					<div class="remove"></div>
 				</div>
 			</div>
 		</div>
 		
-		<div id="right_container">
+		<div id="right_container" class="sortable">
 			<div class="model_container">
 				<div class="tool">
-					<div class="model_name">dsf</div>
+					<div class="model_name">劲爆热图</div>
 					<div class="remove"></div>
 				</div>
 			</div>
 			<div class="model_container">
 				<div class="tool">
-					<div class="model_name">dsf</div>
+					<div class="model_name">博主秀</div>
 					<div class="remove"></div>
 				</div>
 			</div>
