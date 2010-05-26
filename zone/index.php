@@ -93,9 +93,30 @@
 				</div>
 			</div>
 			<div class=t_l_b>
-				<div class=t_l_b_t><div class="title">BBS</div><div class="title_right">【上班这点事】</div></div>
-				<div class=t_l_b_l><?php for($i=0;$i< count($sbzds);$i++){ ?><div class=content><span style="color:#cccccc;">·</span><a <?php if($i<2){?>style="color:#ff0000;"<?php }?> target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->title); ?></a></div><?php }?> </div>
-				<div class=t_l_b_r><?php for($i=0;$i< count($sbzdsimg);$i++){ ?><div class=content><a  target="_blank" href="<?php echo $sbzdsimg[$i]->url;?>"><div class=t_l_b_pic><img border=0 width=113 height=81 src="<?php echo $sbzdsimg[$i]->src; ?>"></div><div style="width:113px; height:18px; margin-top:5px; cursor:pointer; text-decoration:none; color:red; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($sbzdsimg[$i]->title);?></div></a></div><?php } ?></div>
+				<div class=t_l_b_t>
+					<div class="title">BBS</div>
+					<div class="title_right">【上班这点事】</div>
+				</div>
+				<div class=t_l_b_l>
+					<?php for($i=0;$i< count($sbzds);$i++){ ?>
+					<div class=content>
+						<span style="color:#cccccc;">·</span>
+						<a <?php if($i<2){?>style="color:#ff0000;"<?php }?> target="_blank" href="/<?php echo $sbzds[$i]->platform;?>/news/news.php?id=<?php echo $sbzds[$i]->id; ?>"><?php echo delhtml($sbzds[$i]->title); ?></a>
+					</div>
+					<?php }?> 
+				</div>
+				<div class=t_l_b_r>
+					<?php for($i=0;$i< count($sbzdsimg);$i++){ ?>
+					<div class=content>
+						<a  target="_blank" href="<?php echo $sbzdsimg[$i]->url;?>">
+							<div class=t_l_b_pic>
+								<img border=0 width=113 height=81 src="<?php echo $sbzdsimg[$i]->src; ?>">
+							</div>
+							<div style="width:113px; height:18px; margin-top:5px; cursor:pointer; text-decoration:none; color:red; overflow:hidden; float:left; display:inline;" ><?php echo delhtml($sbzdsimg[$i]->title);?></div>
+						</a>
+					</div>
+					<?php } ?>
+				</div>
 			</div>
 			<div class=t_l_b>
 				<div class=t_l_b_t><div class="title">BBS</div><div class="title_right">【生活大杂烩】</div></div>

@@ -1,3 +1,6 @@
 $(function() {
-		$("#left_container").sortable();
+	$(".sortable").sortable({
+		connectWith:'.sortable'
 	});
+
+});
