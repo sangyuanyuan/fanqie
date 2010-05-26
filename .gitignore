@@ -8,5 +8,5 @@ home
 login/uc_client
 ucenter
 inc/*.html
-config
+config/*.*
 *.swp
