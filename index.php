@@ -1036,39 +1036,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
     <div id=p1>
       <!-- start bottom_top_left !-->
  			<div id=b_t_l <?php if(date('Y-m-d')=="2010-04-01"){ ?>style="background:url('images/index/bg_b_t_l1.jpg') no-repeat;"<?php } ?>>
- 				<?php  
-					$sql = 'select id,name from smg_vote where is_sub_vote =0 and is_adopt=1 and (category_id=0 or category_id=11) order by created_at desc limit 12';
-					$record = $db->query($sql);
-					$count = count($record);
-				?>
 				<div class=l_box>
-					<?php
-						$l_count = $count>7?7:$count;
-						for($i=0;$i<$l_count;$i++){
-					?>
-					<div class="bottom_title"><li><span style="color:#FF9900">·</span><a   <?php if($i<3){?>style="color:#ff0000"<?php }?> href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title='<?php echo strip_tags($record[$i]->name); ?>' target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
-					<?php
-						}
-					?>
-				</div>
-				<div class=r_box>
-					<?php
-						$count = $count-7>0?$count:7;
-						for($i=7;$i<$count;$i++){
-					?>
-					<div class="bottom_title"><li><span style="color:#FF9900;">·</span><a   href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
-					<?php
-						}
-					?>
-				</div>
-				<div id=vote><a   href="/vote/vote_list.php" target="_blank"><img border=0 src="/images/index/vote.jpg"></a></div>
-				<div id=begin_vote><a   href="/vote/beginvote.php" target="_blank"><img border=0 src="/images/index/begin_vote.jpg"></a></div>
- 			</div>
- 			<!-- end !-->	      	
- 
-      <!-- start bottom_top_right !-->
- 			<div id=b_t_r <?php if(date('Y-m-d')=="2010-04-01"){ ?>style="background:url('images/index/bg_b_t_r1.jpg') no-repeat;"<?php } ?>>
- 				<div class=l_box>
  					<?php $sql = 'select id,title from smg_question where is_adopt=1 and problem_id<>39 order by create_time desc limit 6';
  								$record = $db->query($sql);
  					 ?>
@@ -1101,94 +1069,29 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 						//}
 					?>
 				</div>
+				<?php  
+					$sql = 'select id,name from smg_vote where is_sub_vote =0 and is_adopt=1 and (category_id=0 or category_id=11) order by created_at desc limit 6';
+					$record = $db->query($sql);
+					$count = count($record);
+				?>
 				<div class=r_box>
-					<div id=begin_question><a   href="/answer/question.php" target="_blank"><img border=0 src="/images/index/begin_question.jpg"></a></div>
-					<div id=question><a   href="/answer/answerlist.php" target="_blank"><img border=0 src="/images/index/question<?php if(date('Y-m-d')=='2010-04-01'){ ?>1<?php } ?>.jpg"></a></div>
-				</div>
- 			</div>
- 			<!-- end !-->	 
-    	
-    </div>
-    <div id=p2>
-      <!-- start bottom_bottom_left !-->
- 			<div id=b_b_l>
- 				<div id=title>生日祝福</div>
-				<div id=gift_list>
 					<?php
-						$sql = 'select count(t1.reciever) as count,t2.nick_name from smg_birthday_gift t1 join smg_user t2 on t1.reciever=t2.name group by t1.reciever order by count desc limit 3';
-						$record_birthday = $db->query($sql);
-					?>
-					NO1.<?php echo $record_birthday[0]->nick_name;?>&nbsp;<?php echo $record_birthday[0]->count?>份&nbsp;
-					NO2.<?php echo $record_birthday[1]->nick_name;?>&nbsp;<?php echo $record_birthday[1]->count?>份&nbsp;
-					NO3.<?php echo $record_birthday[2]->nick_name;?>&nbsp;<?php echo $record_birthday[2]->count?>份
-				</div>
-				<div id="box_body">
-	 				<marquee direction="up" scrollamount="1" height="62" width="300" onmouseover=this.stop() onmouseout=this.start()  >
-	 				<?php
-						$today = date("m-d");
-						$sql = 'select t1.nickname,t1.gender,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.date("m-d").'" and t1.hide_birthday=0 and t1.state=3';
-						$records = $db->query($sql);
-						$count = count($records);
 						for($i=0;$i<$count;$i++){
 					?>
-						<?php if($records[$i]->gender=='男'){?><img src="/images/index/birthday_boy.jpg"><?php }else{?><img src="/images/index/birthday_girl.jpg"><?php } ?><a   href="/server/today.php" target="_blank"><?php echo $records[$i]->nickname; ?><span style="color:#727272">[<?php echo  $records[$i]->name; ?>]</span></a><a   href="/server/today.php" target="_blank"><img src="/images/index/birthday_sun.jpg" border=0 ></a>　　
+					<div class="bottom_title"><li><span style="color:#FF9900;">·</span><a   href="/vote/vote.php?vote_id=<?php echo $record[$i]->id ?>" title="<?php echo strip_tags($record[$i]->name); ?>" target=_blank><?php echo strip_tags($record[$i]->name);?></a></li></div>
 					<?php
 						}
 					?>
-					</marquee>
 				</div>
+				<div id=vote><a href="/answer/question.php" target="_blank"><img border=0 src="/images/index/vote1.jpg"></a></div>
+				<div id=begin_vote><a href="/vote/beginvote.php" target="_blank"><img border=0 src="/images/index/begin_vote1.jpg"></a></div>
  			</div>
- 			<!-- end !-->	     	
-    	
-      <!-- start bottom_bottom_center !-->
- 			<div id=b_b_c>
- 				<div id=title>番茄喜讯</div>
-				<DIV id=Layer5 style="margin-left:10px; ">
-				      <DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
-				      <TABLE cellSpacing=0 cellPadding=0 border=0>
-				        <TBODY>
-				        <TR>
-				          <TD id=demo7 vAlign=top align=middle>
-				            <TABLE cellSpacing=0 cellPadding=2 border=0>
-				              <TBODY>
-				              <TR align=left>
-				              	<?php
-									$marry=$db->query('select photo,name from smg_marry order by id desc limit 5');
-									for($i=0;$i<count($marry);$i++){
-								?>
-				                <TD><div class=content>
-							<div class=pic><a   target="_blank" href="/server/marry.php"><img border=0 width=90 height=70 src="<?php echo $marry[$i]->photo;?>"></a></div>
-							<div class=context><a   target="_blank" href="/server/marry.php"><?php echo $marry[$i]->name;?></a><br></div>
-						</div></TD>
-				                <? }?>
-				              </TR></TBODY></TABLE></TD>
-				          			<TD id="demo8" vAlign=top></TD></TR></TBODY></TABLE></DIV>
-								      <SCRIPT>
-								        var demo6 = document.getElementById('demo6');
-										var demo7 = document.getElementById('demo7');
-										var demo8 = document.getElementById('demo8');  
-								      	$(document).ready(function(){
-											var speed=30//速度数值越大速度越慢
-											demo8.innerHTML=demo7.innerHTML
-											function Marquee(){
-											if(demo8.offsetWidth-demo6.scrollLeft<=0)
-											demo6.scrollLeft-=demo7.offsetWidth
-											else{
-											demo6.scrollLeft++
-											}
-											}
-											var MyMar=setInterval(Marquee,speed)
-											demo6.onmouseover=function() {clearInterval(MyMar)}
-											demo6.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
-										})
-									</SCRIPT>
-				</DIV>
- 			</div>
- 			<!-- end !-->	
-      <!-- start bottom_bottom_right !-->
- 			<div id=b_b_r>
-				<div id=title>在线杂志</div>
-				      <DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
+ 			<!-- end !-->	      	
+ 
+      <!-- start bottom_top_right !-->
+ 			<div id=b_t_r>
+ 				<div class=l_box>
+ 					<DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
 				        <TR>
@@ -1203,7 +1106,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 									for($i=0;$i<$count;$i++){
 								?>
 				                <TD><div class=box>
-										<div class=pic><a   href="/show/show.php?id=<?php echo $records[$i]->i_id;?>" target="_blank" title="<?php echo $records[$i]->title;?>"><img src="<?php echo $records[$i]->src;?>" border=0 width=70 height=90></a></div>
+										<div class=pic><a href="/show/show.php?id=<?php echo $records[$i]->i_id;?>" target="_blank" title="<?php echo $records[$i]->title;?>"><img src="<?php echo $records[$i]->src;?>" border=0 width=70 height=90></a></div>
 										<div class=title><?php echo $records[$i]->title;?></div>
 									</div></TD>
 				                <? }?>
@@ -1228,36 +1131,66 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 											demo9.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
 										})
 									</SCRIPT>
+									
+ 				</div>
+ 				<div class=r_box>
+	 				<table width="240" align="left">
+							<tr>	
+								<td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.ddmap.com/">丁丁地图</a></td><td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank"  href="http://www.ddtong.cn/">实时交通路况查询</a></td>
+							</tr>
+							<tr>
+								
+								<td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://meishi.enjoyoung.cn/">人气美食</a></td><td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.shjtaq.com/zwfg/dzjc_new.asp">上海交通违章查询</a></td>
+							</tr>
+							<tr>	
+								<td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.qunar.com/">机票折扣查询</a></td><td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://jujia.enjoyoung.cn/xingshangportal/main/main.do">星尚居家</a></td>
+							</tr>
+							<tr style="border-bottom:dashed 1px #999999">
+								<td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.soku.net/huoche/TrainStation/381.Html">火车时刻表</a></td><td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.feeyo.com/flightsearch.htm">航班时刻查询</a></td>
+							</tr>
+							<tr height=1><td height=1 colspan=2><div style="width:100%; line-height:0px; height:1px; border-bottom:dashed 1px #999999;"></div></td></tr>
+							<script type="text/javascript" src="http://hq.sinajs.cn/list=s_sh000001,s_sz399001" charset="utf-8"></script>
+							<script type="text/javascript"> 
+								var elements=hq_str_s_sh000001.split(","); 
+								document.write("<tr><td><a target='_blank' href='http://finance.sina.com.cn/realstock/company/sh000001/nc.shtml'>上证指数:"+elements[1]+"</a></td><td>");
+								elements=hq_str_s_sz399001.split(",");
+								document.write("<a target='_blank' href='http://finance.sina.com.cn/realstock/company/sz399001/nc.shtml'>深圳成指:"+elements[1]+"</a></td></tr>");
+							</script>
+					</table>
+				</div>
  			</div>
-			<div id=b_b_r_r>
-				<div id=title>生活指南　　　<!--<a   id="line2" style="text-decoration:none; color:#000000; font-weight:bold;" target="_blank" href="http://218.242.133.83:8080/">公交卡余额查询</a>--></div>
-				<table width="240" align="left">
-						<tr>	
-							<td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.ddmap.com/">丁丁地图</a></td><td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank"  href="http://www.ddtong.cn/">实时交通路况查询</a></td>
-						</tr>
-						<tr>
-							
-							<td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://meishi.enjoyoung.cn/">人气美食</a></td><td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.shjtaq.com/zwfg/dzjc_new.asp">上海交通违章查询</a></td>
-						</tr>
-						<tr>	
-							<td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.qunar.com/">机票折扣查询</a></td><td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://jujia.enjoyoung.cn/xingshangportal/main/main.do">星尚居家</a></td>
-						</tr>
-						<tr style="border-bottom:dashed 1px #999999">
-							<td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.soku.net/huoche/TrainStation/381.Html">火车时刻表</a></td><td><a   style="text-decoration:none; color:#000000; font-weight:normal;" target="_blank" href="http://www.feeyo.com/flightsearch.htm">航班时刻查询</a></td>
-						</tr>
-						<tr height=1><td height=1 colspan=2><div style="width:100%; line-height:0px; height:1px; border-bottom:dashed 1px #999999;"></div></td></tr>
-						<script type="text/javascript" src="http://hq.sinajs.cn/list=s_sh000001,s_sz399001" charset="utf-8"></script>
-						<script type="text/javascript"> 
-							var elements=hq_str_s_sh000001.split(","); 
-							document.write("<tr><td><a target='_blank' href='http://finance.sina.com.cn/realstock/company/sh000001/nc.shtml'>上证指数:"+elements[1]+"</a></td><td>");
-							elements=hq_str_s_sz399001.split(",");
-							document.write("<a target='_blank' href='http://finance.sina.com.cn/realstock/company/sz399001/nc.shtml'>深圳成指:"+elements[1]+"</a></td></tr>");
-						</script>
-				</table>
-				
-			</div>
  			<!-- end !-->	 
-
+    	
+    </div>
+			<div id=server_brithday>
+				<div id=title>生日祝福</div>
+				<?php
+						$today = date("m-d");
+						$sql = 'select t1.nickname,t1.gender,t1.loginname,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.$today.'" and t1.hide_birthday=0 and t1.state=3';
+						$records = $db->query($sql);
+						$count = count($records);
+						for($i=0;$i< $count;$i++){
+				?>
+				<div class=brithday_content id="brithday_content<?php echo $i; ?>" <?php if($i >0){ ?>style="display:none;"<?php } ?>>
+					<div class=photo><img src="" /></div>
+					<div class=brithdayinfo>
+						<div class=brithdayinfo_l>
+							<div class=title>生日提醒：</div>
+							<div class=l_content>今天是<a href="/server/today.php"><?php echo $records[$i]->nickname; ?></a>的生日（<?php echo $today; ?>）<br><a href="/server/today.php">送他/她生日礼物</a></div>
+						</div>
+						<?php $sql="select distinct(gift_src) from smg_birthday_gift where reciever='".$records[$i]->loginname."' order by created_at desc";
+						$gift=$db->query($sql); ?>
+						<div class=brithdayinfo_r>
+							<div class=title>已收到的礼物：</div>
+							<?php for($j=0;$j<count($gift);$j++){ ?>
+							<div class=pic><img src="<?php echo $gift[$j]->gift_src; ?>" /></div>
+							<?php } ?>
+						</div>	
+					</div>
+				</div>
+				<?php } ?>
+				<input id="countbirthday" type="hidden" value="<?php echo $count; ?>">
+			</div>
     </div>
  </div> 
  
