@@ -29,28 +29,19 @@ function tg1()
 {
 	$("#content_trrt10").css('display','inline');
 	$("#content_trrt11").css('display','none');
-	$("#content_trrt12").css('display','none');
 }
 
 function tg2()
 {
 	$("#content_trrt10").css('display','none');
 	$("#content_trrt11").css('display','inline');
-	$("#content_trrt12").css('display','none');
 }
 
-function tg3()
-{
-	$("#content_trrt10").css('display','none');
-	$("#content_trrt11").css('display','none');
-	$("#content_trrt12").css('display','inline');
-}
 
 function tg()
 {
 	tg1();
-	setTimeout('tg2()',5000);
-	setTimeout('tg3()',10000);	
+	setTimeout('tg2()',5000);	
 }
 
 $(function(){
@@ -122,7 +113,7 @@ $(function(){
 			$("#content_trrb"+num).css('display','inline');
 
 	});	
-	setInterval('tg()',15000);
+	setInterval('tg()',10000);
 
 		
 });
