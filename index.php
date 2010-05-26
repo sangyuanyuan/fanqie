@@ -570,15 +570,15 @@ $gb=$db->query('select description,content from smg_news where id=47028');
   		
 			<div id=t_r_c_b_r>
 				<?php
-				$sql = 'select n.id,n.short_title,n.category_id,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 10';
+				$sql = 'select n.id,n.short_title,n.category_id,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 20';
 				$record_out=$db -> query($sql);
 				 ?>
 				 <div id=title></div><div id=more><a   target="_blank" href="news/news_list.php?id=<?php echo $record_out[0]->cid; ?>"><img border=0 src="images/index/more1.gif"></a></div>
 				<div class=box1 style="height:60px; margin-top:10px;">
 					<ul>
-						<marquee height="50" width=100% DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+						<marquee height="50" width=100% DIRECTION="up" scrollamount="1" onmouseover=this.stop() onmouseout=this.start()>
 						<?php for($i=0;$i<count($record_out);$i++){ ?>
-							<li><a   style="margin-top:5px; margin-right:5px; text-decoration:none;" target="_blank" href="/server/news/news.php?id=<?php echo $record_out[$i]->id; ?>"><?php echo $record_out[$i]->short_title; ?></a></li>
+							<li><a  style="margin-top:5px; margin-right:5px; text-decoration:none;" target="_blank" href="/server/news/news.php?id=<?php echo $record_out[$i]->id; ?>"><?php echo $record_out[$i]->short_title; ?></a></li>
 						<?php } ?>
 						</marquee>
 					</ul>

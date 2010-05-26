@@ -29,7 +29,7 @@ if($_POST['utype']=="babyvote")
 if($_POST['utype']=="babyitem")
 {
 	$news = new table_class('smg_baby_item');
-	$babyid=$_POST['baby']['babyid'];
+	$babyid=$_POST['baby']['id'];
 	if($babyid!="")
 	{
 		$news->find($babyid);
