@@ -20,7 +20,7 @@
 		else
 		{
 			echo '<script language=javascript>alert("对不起！此时间段的日程安排还没上传！")</script>';
-			echo '<script language=javascript>window.location.href="test.php";</script>';
+			echo '<script language=javascript>window.location.href="dept_day.php";</script>';
 			exit;	
 		}
 		Header("Location: $url");
