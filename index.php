@@ -793,44 +793,41 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 
  			<!-- start top_right_right_bottom !-->
  			<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 and n.is_adopt=1 order by n.click_count desc limit 4';
+ 					$sql = 'select n.short_title,n.id as news_id,c.* from smg_news n left join smg_category c on n.category_id=c.id  where TO_DAYS(NOW())-TO_DAYS(n.last_edited_at) <= 7 and n.is_adopt=1 order by n.click_count desc limit 10';
 					$record_news=$db -> query($sql);
-					$sql='select uid,itemid,subject from blog_spaceitems order by itemid desc limit 4';
-					$record_blog=$db -> query($sql);
-					$sql="select tid,subject from bbs_posts where first=1 and fid<>79 order by pid desc limit 4";
-					$record_bbs=$db -> query($sql);	
+					$sql='select id,short_title,platform from smg_news where category_id=216 and is_adopt=1 order by priority asc,created_at desc limit 10';
+					$greentomato=$db -> query($sql);
+					$sql="select id,short_title,platform from smg_news where category_id=218 and is_adopt=1 order by priority asc,created_at desc limit 10";
+					$yyts=$db -> query($sql);	
 			?>	 
  			<div id=t_r_r_b>
- 				<div class=menu_trrb id=menu_trrb1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; margin-left:9px; font-weight:bold;"><a   href="/news/news_top_list.php" target="_blank">新闻排行</a></div>
- 				<div class=menu_trrb id=menu_trrb2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;"><a   href="/zone/" target="_blank">最新博文</a></div>
- 				<div class=menu_trrb id=menu_trrb3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;"><a   href="/zone/" target="_blank">最新热帖</a></div>
-				<div id=number>
-					<?php for($i=1;$i<=4;$i++){?>
-					<img src="/images/number/<?php echo $i;?>.jpg">
-					<? }?>
+ 				<div class=menu_trrb id=menu_trrb1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; margin-left:9px; font-weight:bold;"><a href="/news/news_list.php?id=216" target="_blank">绿番茄</a></div>
+ 				<div class=menu_trrb id=menu_trrb2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:6px;"><a   href="/news/news_list.php?id=218" target="_blank">语音提示</a></div>
+ 				<div class=menu_trrb id=menu_trrb3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;"><a   href="/news/news_top_list.php" target="_blank">新闻排行</a></div>
+				<div class=content_trrb id=content_trrb1>
+					<ul>
+					<?php for($i=0;$i<count($greentomato);$i++){?>
+						<li><a href="/<?php echo $greentomato[$i]->platform ?>/news/news.php?id=<?php echo $greentomato[$i]->news_id ?>" <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($greentomato[$i]->short_title); ?></a></li>
+					<? }?>	
+					</ul>
 				</div>
-				<div class=content_trrb id=content_trrb1 style="display:inline">
+				<div class=content_trrb id=content_trrb2 style="display:inline">
+					<ul>
+					<?php for($i=0;$i<count($yyts);$i++){?>
+						<li><a href="/<?php echo $yyts[$i]->platform ?>/news/news.php?id=<?php echo $yyts[$i]->news_id ?>"<?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($yyts[$i]->short_title); ?></a></li>
+					<? }?>	
+					</ul>
+				</div>
+
+				<div class=content_trrb id=content_trrb3>
+					
 					<ul>
 					<?php for($i=0;$i<count($record_news);$i++){?>
-						<li><a   href="/<?php echo $record_news[$i]->platform ?>/news/news.php?id=<?php echo $record_news[$i]->news_id ?>"   <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($record_news[$i]->short_title); ?></a></li>
+						<li style="padding-left:12px; background:url('/images/number/<?php echo $i+1; ?>.jpg') 0 3px no-repeat;"><a href="/<?php echo $record_news[$i]->platform ?>/news/news.php?id=<?php echo $record_news[$i]->news_id ?>"<?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($record_news[$i]->short_title); ?></a></li>
 					<? }?>	
 					</ul>
 				</div>
-				<div class=content_trrb id=content_trrb2>
-					<ul>
-					<?php for($i=0;$i<count($record_blog);$i++){?>
-						<li><a   href="/blog/?uid-<?php echo $record_blog[$i]->uid; ?>-action-viewspace-itemid-<?php echo $record_blog[$i]->itemid; ?>" <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo $record_blog[$i]->subject; ?></a></li>
-					<? }?>	
-					</ul>
-				</div>
-				<div class=content_trrb id=content_trrb3>
-					<ul>
-					<?php for($i=0;$i<count($record_bbs);$i++){?>
-						<li><a   href="/bbs/viewthread.php?tid=<?php echo $record_bbs[$i]->tid; ?>" <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo $record_bbs[$i]->subject; ?></a></li>
-					<? }?>	
-					</ul>
-				</div>
-				<div id=dyz><a target="_blank" href="news/news_list.php?id=218"><img border=0 src="images/index/dyz.jpg"></a></div>
+				<!--<div id=dyz><a target="_blank" href="news/news_list.php?id=218"><img border=0 src="images/index/dyz.jpg"></a></div>
 				<div id=dyzcontent>
 					<?php $sql = 'select id,short_title from smg_news where category_id=218 and is_adopt=1 order by priority asc,created_at desc';
 					$dyz=$db -> query($sql); ?>
@@ -839,7 +836,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 							<div class=cl><a target="_blank" href="/news/news/news.php?id=<?php echo $dyz[$i]->id; ?>"><?php echo $dyz[$i]->short_title; ?></a></div>
 						<?php } ?>
 					</marquee>
-				</div>
+				</div>-->
  			</div>
  			<!-- end !-->					
 		</div>

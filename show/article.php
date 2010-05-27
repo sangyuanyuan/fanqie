@@ -215,17 +215,17 @@
 			<?php }?>
 			
 			<?php 
-				$comment = new table_class('smg_comment');
-				$records = $comment->find('all',array('conditions' => 'resource_type="news" and resource_id='.$id));
-				$count2 = count($records);
-				$records = $comment->paginate('all',array('conditions' => 'resource_type="news" and resource_id='.$id,'order' => 'created_at desc'),10);
-				$count = count($records);
+				$record = $db->query('select * from smg_comment where resource_type="news" and resource_id='.$id);
+				$count2 = count($record);
+				
+				$comment = $db->paginate('select * from smg_comment where resource_type="news" and resource_id='.$id.' order by created_at desc',10);
+				$count = count($comment);
 				for($i=0;$i<$count;$i++){
 			?>
 				<div class=content>
 					<div class=r>
-						<div class=t><?php echo $records[$i]->nick_name?></div>
-						<div class=b><?php echo $records[$i]->comment?></div>
+						<div class=t><?php echo $comment[$i]->nick_name?></div>
+						<div class=b><?php echo $comment[$i]->comment?></div>
 					</div>
 				</div>
 			<?php }?>
@@ -234,15 +234,46 @@
 			<div id=comment_box <?php if($news->is_commentable!=1){?>style="display:none;"<?php } ?>>
 				<form id="comment_form" action="/pub/pub.post.php" method="post">
 					<div class=c_title>现在有<span style="color:#FF5800"><?php echo $count2;?></span>人发表评论</div>
-					<div id=commenter_box><input type="text" style="width:340px;" id="c_n_n" name="post[nick_name]"></div>
-					<input type="hidden" name="post[resource_id]" value="<?php echo $id;?>">
+					<div id=commenter_box><input type="text" style="width:170px;" id="c_n_n" name="post[nick_name]"></div>
+					<input type="hidden" name="post[resource_id]" id="resource_id" value="<?php echo $id;?>">
 					<input type="hidden" name="post[resource_type]" value="news">
 					<input type="hidden" name="type" value="comment">
-					<div id="commit_fck"><?php show_fckeditor('post[comment]','Title',false,'75','','650');?></div>
+					<div id="commit_fck"><?php show_fckeditor('post[comment]','Title',false,'75','','325');?></div>
 					<div id=fqbq></div>
 					<div id=submit_comment></div>
 				</form>
 			</div>
+		</div>
+		<div id=question>
+			<?php 
+				$question = $db->query('select * from smg_show_question where news_id='.$id.' order by created_at desc');
+				for($i=0;$i<count($question);$i++)
+				{
+			?>
+			<div class=content>
+					<div class=r>
+						<div class=t><?php echo $question[$i]->name;?></div><div class=replay><?php $cookie=$_COOKIE['smg_username']; $role=$db->query("select loginname from smg_user_real where dept_id=".$news->dept_id); if(count($role)>0||$cookie=='admin'){ if(in_array($cookie,$role)||$cookie=='admin'){ ?><span class="showquestionreplay" name="<?php echo $question[$i]->id; ?>">回答</span>　<span class="showquestiondel" name="<?php echo $question[$i]->id; ?>">删除</span><?php }} ?></div>
+						<div class=b><?php echo $question[$i]->content;?></div>
+					</div>
+					<?php 
+					$anwser = $db->query('select * from smg_show_answer where question_id='.$question[$i]->id.' order by created_at desc');
+					for($j=0;$j<count($anwser);$j++)
+					{
+				?>
+					<div class=answer>
+						答：<?php echo $anwser[$j]->content; ?>
+					</div>
+					<?php } ?>
+			</div>	
+			<?php } ?>
+			<div class=f_title style="width:320px;"><div id=f>发要提问</div></div>
+			<form id="showquestion" action="question.post.php" method="post">
+				<div class=c_title>现在有<span style="color:#FF5800"><?php echo $count2;?></span>人提问</div>
+				<div id=commenter_box><input type="text" style="width:170px;" id="c_n_n" name="post[name]"></div>
+				<input type="hidden" name="post[news_id]" value="<?php echo $id;?>">
+				<div id="commit_fck"><?php show_fckeditor('post[content]','Title',false,'75','','300');?></div>
+				<div id=submit_question></div>
+			</form>
 		</div>
  </div>
 
@@ -252,7 +283,6 @@
 	require_once('../inc/bottom.inc.php');
 ?>
 
-<input type="hidden" value="<?php echo $id; ?>" id="news_id">
 </body>
 </html>
 
@@ -311,6 +341,20 @@
 			});
 		});
 		
+		$(".showquestionreplay").click(function(){
+			tb_show('送鲜花送祝福','answer.php?height=250&width=300&id='+$(this).attr('name'));
+		});
+		
+		$(".showquestiondel").click(function(){
+			if(confirm('确定删除此问题吗？'))
+			{
+				$.post("answer.post.php",{'type':'del','id':$(this).attr('name')},function(data){
+					alert(data);
+					location.reload();
+				});
+			}
+		});
+		
 		display_fqbq('fqbq','post[comment]');
 		$("#fqbq").children().css('margin-left','5px');
 			
@@ -332,6 +376,11 @@
 			}
 			$("#comment_form").submit();
 		});
+		
+		$("#submit_question").click(function(){
+			$("#showquestion").submit();
+		});
+		
 	});
 	
 </script>

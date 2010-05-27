@@ -43,21 +43,34 @@ a{text-decoration:none;}
 #ibody_right #point #result{width:105px; height:75px; margin-left:50px; font-size:40px; font-weight:bolder; font-family:Arial; line-height:75px; float:left; display:inline;}
 #ibody_right #point .star{width:43px; height:38px; margin-top:18px; cursor:pointer; background:url('/images/show/star2.jpg') no-repeat; float:left; display:inline;}
 #ibody_right #point #info{width:200px; height:25px; margin-top:40px; margin-right:20px; color:#666666; font-size:12px; line-height:25px; float:right; display:inline;}
-#ibody_right #comment .content{width:660px; margin-left:10px; padding-bottom:10px; border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
+#ibody_right #comment{width:348px; float:left; display:inline;}
+#ibody_right #comment .content{width:330px; margin-left:10px; padding-bottom:10px; border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
 #ibody_right #comment .content .l{width:55px; height:52px; margin-top:10px; margin-left:10px; border:1px solid #CCCCCC; float:left; display:inline;}
 #ibody_right #comment .content .l img{margin:5px;}
-#ibody_right #comment .content .r{width:670px; margin-top:10px; margin-left:10px; float:left; display:inline;}
-#ibody_right #comment .content .r .t{width:670px; float:left; color:#FF6600; display:inline;}
-#ibody_right #comment .content .r .b{width:670px; word-wrap:break-word; float:left; display:inline;}
-#ibody_right #comment #paginate{width:330px; height:20px; line-height:20px; margin-top:20px; margin-left:10px; float:left; display:inline;}
+#ibody_right #comment .content .r{width:335px; margin-top:10px; margin-left:10px; float:left; display:inline;}
+#ibody_right #comment .content .r .t{width:335px; float:left; color:#FF6600; display:inline;}
+#ibody_right #comment .content .r .b{width:335px; word-wrap:break-word; float:left; display:inline;}
+#ibody_right #comment #paginate{width:165px; height:20px; line-height:20px; margin-top:20px; margin-left:10px; float:left; display:inline;}
 #ibody_right #comment #paginate a{color:#000000; text-decoration:none;}
-#ibody_right #comment #comment_box{width:678px; height:200px; margin-top:10px; border:1px solid #CDCDCD; float:left; display:inline;}
-#ibody_right #comment #comment_box #commit_fck{width:670px;  margin-left:10px; float:left; display:inline;}
-#ibody_right #comment #comment_box #fqbq{width:600px; margin-left:13px; float:left; display:inline;}
-#ibody_right #comment #comment_box #commenter_box{width:670px;  margin-left:11px; margin-top:10px; float:left; display:inline;}
+#ibody_right #comment #comment_box{width:339px; height:200px; margin-top:10px; padding-bottom:10px; border:1px solid #CDCDCD; float:left; display:inline;}
+#ibody_right #comment #comment_box #commit_fck{width:335px;  margin-left:10px; float:left; display:inline;}
+#ibody_right #comment #comment_box #fqbq{width:300px; margin-left:13px; float:left; display:inline;}
+#ibody_right #comment #comment_box #commenter_box{width:335px;  margin-left:11px; margin-top:10px; float:left; display:inline;}
 #ibody_right #comment #submit_comment{width:66px; height:19px; margin-top:10px; margin-right:20px; cursor:pointer; float:right; display:inline; background:url(/images/show/show_submit.jpg);}
-#ibody_right #comment #comment_box .c_title{width:480px; margin-left:7px; margin-top:13px; font-size:13px; float:left; display:inline; font-weight:normal;}
-#ibody_right #comment .f_title{width:680px; hbox #submeight:25px; background:url(/images/show/star_tbg.jpg); float:left; display:inline;}
-#ibody_right #comment .f_title #f{ margin-top:2px; margin-left:20px; font-size:15px; line-height:20px; color:#ffffff; font-weight:bolder; float:left; display:inline; }
+#ibody_right #comment #comment_box .c_title{width:240px; margin-left:7px; margin-top:13px; font-size:13px; float:left; display:inline; font-weight:normal;}
+#ibody_right .f_title{width:348px; height:25px; background:url(/images/show/star_tbg.jpg) repeat-x; float:left; display:inline;}
+#ibody_right .f_title #f{ margin-top:2px; margin-left:20px; font-size:15px; line-height:20px; color:#ffffff; font-weight:bolder; float:left; display:inline; }
+
+#ibody_right #question{width:320px; margin-right:10px; float:right; display:inline;}
+#ibody_right #question #submit_question{width:66px; height:19px; margin-top:10px; margin-right:20px; cursor:pointer; background:url(/images/show/show_submit.jpg); float:right; display:inline; }
+#ibody_right #question .content{width:310px; margin-left:10px; padding-bottom:10px; margin-bottom:10px; line-height:20px;  border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
+#ibody_right #question .content .r{width:305px; margin-top:10px; margin-left:10px; float:left; display:inline;}
+#ibody_right #question .content .r .t{width:200px; height:20px; color:#FF6600; overflow:hidden; float:left; display:inline;}
+#ibody_right #question .content .r .replay{width:100px; height:20px; text-align:center; margin-right:5px; overflow:hidden; float:right; display:inline;}
+#ibody_right #question .content .r .replay span{color:blue; text-decoration:underline; cursor:pointer;}
+#ibody_right #question .content .r .b{width:305px; word-wrap:break-word; float:left; display:inline;}
+#ibody_right #question .content .answer{width:295px; margin-top:10px; padding-top:5px; padding-left:10px; border-top:1px dotted #ff0000; float:left; display:inline;}
+
+
 
 .hover{background:url('/images/show/star3.jpg') no-repeat;}
