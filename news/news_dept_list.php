@@ -16,7 +16,7 @@
 		$record=$db->paginate($sql,30);		
   ?>
 <script>
-	total("新闻列表","news");
+	total("部门日程安排","server");
 </script>
 </head>
 <body>

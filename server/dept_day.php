@@ -34,9 +34,12 @@
 	<title>SMG</title>
 	<?php css_include_tag('jquery_ui');
 		use_jquery();
-		js_include_once_tag('jquery-ui-1.7.2.custom.min');
+		js_include_once_tag('jquery-ui-1.7.2.custom.min','total');
 		$id=$_REQUEST['id'];
 	?>
+	<script>
+		total("部门日程安排","server");
+	</script>
 	<script> 
 			$(function(){
 				$("#datepicker1").datepicker(
