@@ -10,7 +10,7 @@
 			$table_change += array('</p>'=>'');
 			$comment->comment = strtr($comment->comment,$table_change);
 		}
-		$comment->created_at = date("Y-m-d H-i-s");
+		$comment->created_at = date("Y-m-d H:i:s");
 		if($comment->nick_name==''){
 			$comment->nick_name = '匿名用户';
 		}

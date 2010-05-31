@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once('../frame.php');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -6,17 +6,17 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-评论列表页面</title>
+	<title>SMG-番茄网-新闻-专题新闻列表页面</title>
 	<? 	
-		css_include_tag('comment_list','top','bottom');
+		css_include_tag('news_news_list','top','bottom');
 		use_jquery();
-		js_include_once_tag("comment_list","total");
+		js_include_once_tag('news_list','total');
 		$db = get_db();
-		$sql="select *,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='flower' and file_type='comment') as flowernum,(select count(*) from smg_digg d where d.diggtoid=c.id and d.type='tomato' and file_type='comment') as tomatonum from smg_comment c where resource_type='".$_REQUEST["type"]."' and resource_id='".$_REQUEST["id"]."' order by created_at desc";
-		$comment=$db->paginate($sql,10);	
+		$sql="select * from smg_dept where is_function is null and id not in(30,32)";
+		$record=$db->paginate($sql,30);
   ?>
 <script>
-	total("更多评论","news");
+	total("部门日程安排","server");
 </script>
 </head>
 <body>
@@ -24,28 +24,19 @@
 <div id=ibody>
 	<div id=ibody_left>
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#"><?php if($_REQUEST[type]=="news"){ echo '新闻评论';}else if($_REQUEST[type]=="picture"){ echo "图片评论";}else if($_REQUEST[type]=="video"){ echo "视频评论";}else{echo "其他评论"}?></a>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="">部门日程安排</a>
 		</div>
 		<div id=l_b>
-			<div class=comment>
-			 <?php for($i=0;$i<count($comment);$i++){ ?>
-					<div class=content>	
-						<div class=title>
-							<div style="width:230px; margin-top:10px; margin-left:10px; line-height:20px; float:left; display:inline;">
-								<span style="color:#FF0000; text-decoration:underline;"><?php echo $comment[$i]->nick_name;?></span>
-							</div>
-							<div style="width:370px; float:right; display:inline;">
-								<div style="width:220px; float:left; display:inline;"><img title="送鲜花" class="flower" src="/images/news/news_flower.jpg" style="float:left; display:inline;"><input type="hidden" value="<?php echo $comment[$i]->diggtoid;?>" style="none"><div id="hidden_flower" style="width:50px; height:12px; margin-left:3px; margin-top:15px; line-height:15px; color:#FF0000; font-weight:bold; float:left; display:inline;"><?php echo $comment[$i]->flowernum;?></div><img title="扔番茄" class="tomato" style="float:left; display:inline" src="/images/news/news_tomato.jpg"><input type="hidden" value="<?php echo $comment[$i]->diggtoid;?>" style="none"><div style="width:50px; height:12px; margin-top:15px; margin-left:10px; line-height:15px; color:#FF0000; font-weight:bold; float:left; display:inline"><?php echo $comment[$i]->tomatonum;?></div></div>　
-								<div style="width:140px; line-height:20px; color:#FF0000; float:right; display:inline"><?php echo $comment[$i]->created_at; ?></div>
-							</div>
-						</div>
-						<div class=context>
-							<?php echo strfck($comment[$i]->comment);  ?>
-						</div>
-					</div>
-					<?php  }?><div class=page><?php paginate('comment_list.php?id='.$_REQUEST['id'].'&type='.$_REQUEST['type']);?></div>
-					</div>
+			<?php for($i=0;$i<count($record);$i++){ ?>
+				<div class=l_b_l>
+					
+			<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_r><a target="_blank" href="/server/dept_day.php?id=<?php echo $record[$i]->id;?>"><?php echo $record[$i]->name;?></a></div>
 				</div>
+				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
+			<?php } ?>
+			<div id=page><?php paginate('');?></div>
+		</div>
 	</div>
 	<div id=ibody_right>
 		<div id=r_t><a target="_blank" href="/news/news_sub.php"><img border=0 src="/images/news/news_head_r_t.jpg"></a></div>

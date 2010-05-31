@@ -171,7 +171,7 @@ p{margin:0px; padding:0px;}
 #t_r_r_b .menu_trrb a{color:#666666; text-decoration:none;}
 #t_r_r_b #number{width:9px; margin-top:10px; margin-left:18px;  float:left; display:inline;}
 #t_r_r_b #number img{width:9px; height:9px; margin-bottom:10px; float:left; display:inline;}
-#t_r_r_b .content_trrb{width:180px; margin-top:7px; margin-left:5px;  float:left; display:none;}
+#t_r_r_b .content_trrb{width:180px; margin-top:7px; margin-left:18px;  float:left; display:none;}
 #t_r_r_b .content_trrb li{width:160px; height:19px; line-height:17px; overflow:hidden; float:left; display:inline;}
 #t_r_r_b .content_trrb li a{color:#656565; text-decoration:none;}
 #t_r_r_b #dyz{width:213px; height:45px; margin-left:1px; float:left; display:inline;}
@@ -244,23 +244,30 @@ p{margin:0px; padding:0px;}
 #ibody_bottom #p1{width:995px; margin-top:2px; float:left; display:inline;}
 #ibody_bottom #p2{width:995px; margin-top:2px; float:left; display:inline;}
 
-#b_t_l{width:525px; height:188px; background:url(/images/index/bg_b_t_l.jpg) no-repeat; float:left; display:inline;}
-#b_t_l .l_box{width:180px; height:140px; margin-left:145px; margin-top:45px; float:left; display:inline; }
-#b_t_l .r_box{width:170px; height:100px; margin-top:45px; margin-left:5px; float:left; display:inline; }
+#b_t_l{width:525px; height:188px; background:url(/images/index/bg_b_t_l1.jpg) no-repeat; overflow:hidden; float:left; display:inline;}
+#b_t_l .l_box{width:170px; height:140px; margin-left:5px; margin-top:40px; float:left; display:inline; }
+#b_t_l .m_box{width:170px; height:140px; margin-top:40px; float:left; display:inline;}
+#b_t_l .r_box{width:170px; height:110px; margin-top:45px; margin-right:10px; float:right; display:inline; }
+#b_t_l .top_title{width:158px; height:30px; margin-left:12px; line-height:30px; font-weight:bolder; font-size:16px; overflow:hidden; float:left; display:inline;}
+#b_t_l .top_title a{color:#ED4254; text-decoration:none;}
 #b_t_l .bottom_title{width:170px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;}
 #b_t_l .bottom_title li{width:170px; padding:0px; margin:0px; float:left; display:inline;}
 #b_t_l .bottom_title a{color:#000000; text-decoration:none;}
 #b_t_l #vote{width:83px; height:23px; margin-left:5px; float:left; display:inline;}
 #b_t_l #begin_vote{width:83px; height:23px; margin-left:5px; float:left; display:inline;}
 
-#b_t_r{width:470px; height:188px; background:url(/images/index/bg_b_t_r.jpg) no-repeat; float:right; display:inline;}
-#b_t_r .l_box{width:175px; height:140px; margin-top:40px; float:left; display:inline;}
+#b_t_r{width:470px; height:188px; background:url(/images/index/bg_b_t_r1.jpg) no-repeat; overflow:hidden; float:right; display:inline;}
+#b_t_r .l_box{width:175px; height:140px; margin-top:45px; margin-left:10px; float:left; display:inline;}
+#b_t_r .l_box .pic{width:70px; height:90px; float:left; display:inline;}
+#b_t_r .l_box .pic img{border:3px solid #dddddd;}
+#b_t_r .l_box .title{width:70px; height:90px; margin-top:5px; margin-left:10px; line-height:15px; font-weight:bolder;  overflow:hidden; color:#869C2D; float:left; display:inline;}
 #b_t_r .m_box{width:175px; height:140px; margin-top:40px; float:left; display:inline;}
 #b_t_r .top_title{width:158px; height:30px; margin-top:5px; margin-left:12px; line-height:30px; font-weight:bolder; font-size:16px; overflow:hidden; float:left; display:inline;}
 #b_t_r .top_title a{color:#ED4254; text-decoration:none;}
 #b_t_r .bottom_title{width:170px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;}
 #b_t_r .bottom_title a{color:#000000; text-decoration:none;}
-#b_t_r .r_box{width:120px; height:140px; margin-top:40px; float:left; display:inline; }
+#b_t_r .r_box{width:240px; height:140px; line-height:20px; margin-top:40px; margin-left:10px; float:left; display:inline;}
+#b_t_r .r_box a{color:#000000; text-decoration:none;}
 #b_t_r .r_box #begin_question{width:73px; height:22px; margin-left:15px; margin-top:6px; float:left; display:inline;}
 #b_t_r .r_box #question{width:106px; height:88px; margin-top:20px; float:left; display:inline;}
 
@@ -296,3 +303,17 @@ p{margin:0px; padding:0px;}
 #b_b_r_r #title{width:200px; height:20px; margin-top:9px; margin-bottom:8px; margin-left:25px; color:#666666; font-weight:bold; line-height:20px; float:left; display:inline;}
 #b_b_r_r a{color:#000000; text-decoration:none; line-height:14px; margin-left:5px;}
 
+#server_brithday{width:988px; margin-left:2px; float:left; display:inline;}
+#server_brithday #title{width:968px; height:30px; padding-left:20px; line-height:30px; font-size:14px; color:#ffff00; font-weight:bold; background:url('/images/index/server_birthday.jpg') no-repeat; float:left; display:inline;}
+#server_brithday .brithday_content{width:984px; margin-left:1px; padding-bottom:10px; border:1px solid #cccccc; border-top:none; float:left; display:inline;}
+#server_brithday .brithday_content .photo{width:83px; height:84px; margin-top:10px; margin-left:10px; background:url('/images/index/brithday_photo.jpg') no-repeat; overflow:hidden; float:left; display:inline;}
+#server_brithday .brithday_content .photo img{width:63px; height:74px; margin-top:5px; margin-left:9px;}
+#server_brithday .brithday_content .brithdayinfo{width:880px; height:84px; margin-top:10px; margin-left:10px; border-left:1px dotted #cccccc; overflow:hidden; float:right; display:inline;}
+#server_brithday .brithday_content .brithdayinfo_l{width:220px; height:84px; margin-left:10px; float:left; display:inline;}
+#server_brithday .brithday_content .brithdayinfo_l .title{width:200px; height:20px; padding-left:20px; font-weight:bold; line-height:20px; background:url('/images/index/cake.jpg') no-repeat; float:left; display:inline;}
+#server_brithday .brithday_content .brithdayinfo_l .l_content{width:220px; height:60px; margin-top:4px; line-height:30px; float:left; display:inline;}
+#server_brithday .brithday_content .brithdayinfo_l .l_content a{color:#336699;}
+#server_brithday .brithday_content .brithdayinfo_r{width:620px; height:84px; margin-left:10px; overflow:hidden; float:left; display:inline;}
+#server_brithday .brithday_content .brithdayinfo_r .title{height:20px; line-height:20px; font-weight:bold; float:left; display:inline;}
+#server_brithday .brithday_content .brithdayinfo_r .pic{width:74px; height:84px; margin-left:14px; float:left; display:inline;}
+#server_brithday .brithday_content .brithdayinfo_r .pic img{width:74px; height:84px;}

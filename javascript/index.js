@@ -44,6 +44,21 @@ function tg()
 	setTimeout('tg2()',5000);	
 }
 
+function birthday(num)
+{
+	$(".brithday_content").css('display','none');
+	$("#brithday_content"+num).css('display','inline');
+}
+
+function xh(count)
+{
+	var i=0;
+	for(i;i<count;i++)
+	{
+		setTimeout('birthday('+i+')',10000*i);
+	}	
+}
+
 $(function(){
 	$(".item").mouseover(function(){
 			var video_item=$(this).attr('id');
@@ -112,10 +127,11 @@ $(function(){
 			var num=$(this).attr('param');
 			$("#content_trrb"+num).css('display','inline');
 
-	});	
+	});
 	setInterval('tg()',10000);
-
-		
+	var count=parseInt($("#countbirthday").val());
+	xh(count);
+	setInterval('xh('+count+')',10000*count+10000);	
 });
 
 
