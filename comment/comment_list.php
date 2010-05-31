@@ -24,7 +24,7 @@
 <div id=ibody>
 	<div id=ibody_left>
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#"><?php if($_REQUEST[type]=="news"){ echo '新闻评论';}else if($_REQUEST[type]=="picture"){ echo "图片评论";}else if($_REQUEST[type]=="video"){ echo "视频评论";}?></a>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#"><?php if($_REQUEST[type]=="news"){ echo '新闻评论';}else if($_REQUEST[type]=="picture"){ echo "图片评论";}else if($_REQUEST[type]=="video"){ echo "视频评论";}else{echo "其他评论"}?></a>
 		</div>
 		<div id=l_b>
 			<div class=comment>
