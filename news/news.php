@@ -233,6 +233,7 @@ $db->execute($sql); ?>
 			?>
 			<div class=sy>小编提示：我们的身边总有许许多多默默奉献的“标兵”们，他们的事迹平凡却感人，值得我们好好学习。</div>
 			<?php }
+			alert($record[0]->categoryname);
 						if($record[0]->categoryname=="绿番茄")
 						{
 			 ?>
