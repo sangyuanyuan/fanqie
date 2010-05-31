@@ -236,7 +236,7 @@ $db->execute($sql); ?>
 						if($record[0]->categoryname=="绿番茄")
 						{
 			 ?>
-			 <div class=sy>文章摘自上海市文化广播影视监测中心《上海声屏监测》</div>
+			 <div class=sy style="font-size:14px;">文章摘自上海市文化广播影视监测中心《上海声屏监测》</div>
 			<?php } ?>
 			<div id=content>
 				
