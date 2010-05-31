@@ -65,7 +65,7 @@
 				<?php } ?>
 			</div>
 		</div>
-		<?php $comment=$db->query('select * from smg_comment where resource_type="2010worldcup" and resource_id=-1 order by created_at desc'); ?>
+		<?php $comment=$db->query('select * from smg_comment where resource_type="2010worldcup" and resource_id=100000000 order by created_at desc'); ?>
 		<div id=comment>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/comment_title.jpg"></div>
@@ -165,7 +165,6 @@
 		});
 		
 		$("#submit").click(function(){
-			alert($("#contentcomment").val());
 			var content = $("#contentcomment").val();
 			if(content==""){
 				alert('评论内容不能为空！');
