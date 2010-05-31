@@ -231,7 +231,12 @@ $db->execute($sql); ?>
 						if(count($sy)>0 && $sy[0]->category_id==177)
 						{
 			?>
-			<div id=sy>小编提示：我们的身边总有许许多多默默奉献的“标兵”们，他们的事迹平凡却感人，值得我们好好学习。</div>
+			<div class=sy>小编提示：我们的身边总有许许多多默默奉献的“标兵”们，他们的事迹平凡却感人，值得我们好好学习。</div>
+			<?php }
+						if($record[0]->categoryname=="绿番茄")
+						{
+			 ?>
+			 <div class=sy>文章摘自上海市文化广播影视监测中心《上海声屏监测》</div>
 			<?php } ?>
 			<div id=content>
 				

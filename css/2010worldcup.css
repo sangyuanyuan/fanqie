@@ -4,8 +4,8 @@
 #logo{width:995px; height:210px; background:url('/images/worldcup/2010worldcup.jpg') no-repeat; margin:0 auto;}
 #video{width:463px; height:322px; margin-top:15px; margin-left:15px; overflow:hidden; float:left; display:inline;}
 #video_bottom{width:463px; height:92px; margin-top:5px; margin-left:15px; background:url('/images/worldcup/video_bottom_bg.jpg') repeat-x; float:left; display:inline;}
-#video_bottom .pic{width:113px; height:78px; margin-top:7px; margin-left:30px; cursor:pointer; float:left; display:inline;}
-#video_bottom .pic img{width:113px; height:78px;}
+#video_bottom .video_pic{width:113px; height:78px; margin-top:7px; margin-left:30px; cursor:pointer; float:left; display:inline;}
+#video_bottom .video_pic img{width:113px; height:78px;}
 #worldsoccer{width:477px; height:420px; margin-top:15px; margin-right:15px; background:#ffffff; float:right; display:inline;}
 #gg{width:965px; height:136px; margin-top:10px; margin-left:15px; float:left; display:inline;}
 #africa{width:477px; height:503px; margin-top:10px; margin-left:15px; background:#ffffff; float:left; display:inline;}
@@ -36,8 +36,10 @@
 #comment #commenter #submit{width:96px; height:22px; margin-top:5px; margin-right:5px; line-height:22px; background:#333333; text-align:center; color:#ffffff; float:right; display:inline;}
 
 #racecard #content{width:435px; height:125px; margin-top:10px; margin-left:21px; overflow-x:hidden; overflow-y:scroll; float:left; display:inline;}
+#racecard #content a{color:#000000; text-decoration:none;}
 
 #bottom #turnleft{width:12px; height:58px; margin-top:44px; margin-left:15px; background:url('/images/worldcup/turn_left.jpg') no-repeat; cursor:pointer; float:left; display:inline;}
 #bottom #turnright{width:12px; height:58px; margin-top:44px; margin-right:15px; background:url('/images/worldcup/turn_right.jpg') no-repeat; cursor:pointer; float:right; display:inline;}
-#bottom .content{width:910px; height:126px; margin-top:10px; float:left; display:inline;}
-#bottom .content .pic{width:175px; height:124px; margin-left:40px; border:1px solid #cccccc; float:left; display:inline;}
+#bottom .bottom_content{width:910px; height:126px; margin-top:10px; float:left; display:inline;}
+#bottom .bottom_content .pic{width:175px; height:124px; margin-left:40px; border:1px solid #cccccc; overflow:hidden; float:left; display:inline;}
+#bottom .bottom_content .pic img{width:165px; height:114px; margin:5px;}

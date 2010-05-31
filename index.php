@@ -807,14 +807,14 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 				<div class=content_trrb id=content_trrb1>
 					<ul>
 					<?php for($i=0;$i<count($greentomato);$i++){?>
-						<li><a href="/<?php echo $greentomato[$i]->platform ?>/news/news.php?id=<?php echo $greentomato[$i]->news_id ?>" <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($greentomato[$i]->short_title); ?></a></li>
+						<li><a href="/<?php echo $greentomato[$i]->platform; ?>/news/news.php?id=<?php echo $greentomato[$i]->id ?>" <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($greentomato[$i]->short_title); ?></a></li>
 					<? }?>	
 					</ul>
 				</div>
 				<div class=content_trrb id=content_trrb2 style="display:inline">
 					<ul>
 					<?php for($i=0;$i<count($yyts);$i++){?>
-						<li><a href="/<?php echo $yyts[$i]->platform ?>/news/news.php?id=<?php echo $yyts[$i]->news_id ?>"<?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($yyts[$i]->short_title); ?></a></li>
+						<li><a href="/<?php echo $yyts[$i]->platform ?>/news/news.php?id=<?php echo $yyts[$i]->id ?>"<?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($yyts[$i]->short_title); ?></a></li>
 					<? }?>	
 					</ul>
 				</div>
