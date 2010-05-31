@@ -32,7 +32,7 @@
 		<div id=worldsoccer>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/worldsoccer_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="/news/news_subject_list.phpid=<?php echo $worldsoccer[0]->cid; ?>">更多内容</a></div>	
+				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $worldsoccer[0]->cid; ?>">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><img border=0 src="<?php echo $worldsoccer[0]->photo_src; ?>"></a></div>
 			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><?php echo $worldsoccer[0]->content; ?></a></div>
@@ -55,16 +55,17 @@
 		<div id=africa>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/africa_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="/news/news_subject_list.phpid=<?php echo $africa[0]->cid; ?>">更多内容</a></div>	
+				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $africa[0]->cid; ?>">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><img border=0 src="<?php echo $africa[0]->photo_src; ?>"></a></div>
 			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><?php echo $africa[0]->content; ?></a></div>
 			<div class=news_content>
-				<?php for($i=1;$i<13;$i++){ ?>
+				<?php for($i=1;$i<14;$i++){ ?>
 					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[$i]->id; ?>"><?php echo $africa[$i]->title; ?></a></div>
 				<?php } ?>
 			</div>
 		</div>
+		<?php $comment=$db->query('select * from smg_comment where resource_type="2010worldcup" order by created_at desc'); ?>
 		<div id=comment>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/comment_title.jpg"></div>
@@ -73,16 +74,20 @@
 			<div id=content>
 				<?php for($i=0;$i<5;$i++){ ?>
 					<div class=context <?php if($i==0){ ?>style="border-top:none;"<?php } ?>>
-						<div class=name>评论者：robbin</div><div class=time>2010-05-28 15:11:00</div>
-						<div class=commentcontent>只有观念相同 才会惺惺相惜 迸发如此共鸣吼吼</div>
+						<div class=name>评论者：<?php echo $comment[$i]->nick_name; ?></div><div class=time><?php echo $comment[$i]->created_at; ?></div>
+						<div class=commentcontent><?php echo $comment[$i]->comment; ?></div>
 					</div>
 				<?php } ?>
 			</div>
-			<form>
+			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 				<div id=commenter>
-					<div id=name>昵称：<input type="text"></div>
-					<div id=commentcontent>内容：<textarea></textarea></div>
-					<div id=submit>发送留言</div>	
+					<div id=name>昵称：<input type="text" name="post[nick_name]"></div>
+					<div id=commentcontent>内容：<textarea id="commentcontent" name="post[comment]"></textarea></div>
+					<div id=submit>发送留言</div>
+					<input type="hidden" id="resource_id" name="post[resource_id]" value="-1">
+					<input type="hidden" id="resource_type" name="post[resource_type]" value="2010worldcup">
+					<input type="hidden" id="target_url" name="post[target_url]" value="<?php $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
+					<input type="hidden" name="type" value="comment">	
 				</div>
 			</form>
 		</div>
@@ -156,6 +161,20 @@
 				$(".bottom_content").css('display','none');
 				$("#bottom_content"+(num+1)).css('display','inline');
 			}
+		});
+		
+		$("#submit").click(function(){
+			var content = $("#commentcontent").val();
+			if(content==""){
+				alert('评论内容不能为空！');
+				return false;
+			}
+			if(content.length>1500)
+			{
+				alert('评论内容过长请分次评论！');
+				return false;
+			}
+			document.subcomment.submit();
 		});
 	});
 </script>
