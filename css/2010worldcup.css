@@ -32,7 +32,7 @@
 #comment #commenter #name{width:192px; height:18px; line-height:18px; float:left; display:inline;}
 #comment #commenter #name input{width:145px; height:18px;}
 #comment #commenter #commentcontent{width:192px; height:145px; margin-top:5px; float:left; display:inline;}
-#comment #commenter #commentcontent textarea{width:145px; height:150px;}
+#comment #commenter #commentcontent textarea{width:180px; height:150px;}
 #comment #commenter #submit{width:96px; height:22px; margin-top:5px; margin-right:5px; line-height:22px; background:#333333; text-align:center; color:#ffffff; cursor:pointer; float:right; display:inline;}
 
 #racecard #content{width:435px; height:125px; margin-top:10px; margin-left:21px; overflow-x:hidden; overflow-y:scroll; float:left; display:inline;}

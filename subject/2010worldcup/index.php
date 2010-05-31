@@ -65,11 +65,11 @@
 				<?php } ?>
 			</div>
 		</div>
-		<?php $comment=$db->query('select * from smg_comment where resource_type="2010worldcup" order by created_at desc'); ?>
+		<?php $comment=$db->query('select * from smg_comment where resource_type="2010worldcup" and resource_id=-1 order by created_at desc'); ?>
 		<div id=comment>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/comment_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="">更多留言</a></div>	
+				<div class="title_more"><a target="_blank" href="/comment/comment_list.php?id=100000000&type=2010worldcup">更多留言</a></div>	
 			</div>
 			<div id=content>
 				<?php for($i=0;$i<5;$i++){ ?>
@@ -82,9 +82,9 @@
 			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
 				<div id=commenter>
 					<div id=name>昵称：<input type="text" name="post[nick_name]"></div>
-					<div id=commentcontent>内容：<textarea id="commentcontent" name="post[comment]"></textarea></div>
+					<div id=commentcontent>内容：<textarea id="contentcomment" name="post[comment]"></textarea></div>
 					<div id=submit>发送留言</div>
-					<input type="hidden" id="resource_id" name="post[resource_id]" value="-1">
+					<input type="hidden" id="resource_id" name="post[resource_id]" value="100000000">
 					<input type="hidden" id="resource_type" name="post[resource_type]" value="2010worldcup">
 					<input type="hidden" id="target_url" name="post[target_url]" value="<?php $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
 					<input type="hidden" name="type" value="comment">	
@@ -148,6 +148,7 @@
 				$("#bottom_content"+(num-1)).css('display','inline');
 			}
 		});
+		
 		$("#turn_right").click(function(){
 			var num=$(this).next().attr('param');
 			var count=$("#hidden_content").val();
@@ -164,7 +165,8 @@
 		});
 		
 		$("#submit").click(function(){
-			var content = $("#commentcontent").val();
+			alert($("#contentcomment").val());
+			var content = $("#contentcomment").val();
 			if(content==""){
 				alert('评论内容不能为空！');
 				return false;
