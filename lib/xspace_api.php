@@ -5,7 +5,7 @@ class Bloger
 {
 	public static $_table_name = 'blog_userspaces';
 	public static $key_field = 'uid';
-	public static $baby_catid = 111;
+	public static $baby_catid = 110;
 	private static $_db;
 	private static $_fields = array('uid','username','spacename','viewnum','spaceblognum','spaceimagenum','spacefilenum','spacelinknum','spacevideonum','islock','isstar','spacemode','spacesize','credit');
 	public $fields = array();
@@ -121,8 +121,8 @@ class Bloger
 				$this->album = BlogAlbum::find(array('condition' => 'uid='.$this->uid ." and catid=" .self::$baby_catid));
 				if(!is_array($this->album)) $this->album = array();
 			}
-			
-			return $this->album[0];
+			$this->album = $this->album[0];
+			return $this->album;
 		}
 		return null;
 	}
@@ -292,11 +292,14 @@ class BlogImages
 			$result = self::_find(array('condition' => self::$key_field."={$uid}"));
 			if($result === false) return false;
 			if(!is_array($result)) return null;
-			$bloger = new self(self::$_table_name);
+			$item = new self(self::$_table_name);
 			foreach (self::$_fields as $field){
-				$bloger->$field = $result[0]->$field;
+				$item->$field = $result[0]->$field;
 			}
-			return $bloger;
+			echo $item->filepath;
+			$item->filepath = "/blog/attachments/".$item->filepath;
+			$item->thumbpath = "/blog/attachments/".$item->thumbpath;
+			return $item;
 		}else{
 			if(is_null($uid)) $uid = array();
 			$result = self::_find($uid);
@@ -309,6 +312,8 @@ class BlogImages
 				foreach (self::$_fields as $field){
 					$items[$i]->$field = $result[$i]->$field;
 				}
+				$items[$i]->filepath = "/blog/attachments/".$items[$i]->filepath;
+				$items[$i]->thumbpath = "/blog/attachments/".$items[$i]->thumbpath;
 			}
 			return $items;
 		}
@@ -386,6 +391,7 @@ class BlogAlbum
 	private static $_fields = array('itemid','uid','username','itemtypeid','subject','dateline','lastpost','viewnum','replynum','goodrate','badrate','haveattach','picid');
 	public $fields = array();
 	public $image = '';
+	public $imagenum=0;
 	private $images;
 	public function __construct($table_name='blog_spaceitems'){	
 		if($table_name){
@@ -412,6 +418,7 @@ class BlogAlbum
 				$bloger->$field = $result[0]->$field;
 			}
 			$bloger[0]->image = "/blog/attachments/".$bloger[0]->image;
+			$bloger[0]->imagenum = $bloger[0]->imagenum;
 			return $bloger;
 		}else{
 			if(is_null($uid)) $uid = array();
@@ -426,6 +433,7 @@ class BlogAlbum
 					$items[$i]->$field = $result[$i]->$field;
 				}
 				$items[$i]->image = "/blog/attachments/".$result[$i]->image;
+				$items[$i]->imagenum = $result[$i]->imagenum;
 			}
 			return $items;
 		}
@@ -453,7 +461,6 @@ class BlogAlbum
 				$sql .= " limit {$param['limit']}";	
 			}
 		}
-		echo $sql;
 		return self::$_db->query($sql);
 	}
 	
@@ -461,7 +468,7 @@ class BlogAlbum
 		foreach(self::$_fields as $val){
 			$sel_field[] .= "a." .$val;
 		}
-		return "select b.message,b.image,".implode(',',$sel_field) . " from " .self::$_table_name ." a left join blog_spaceimages b on a.itemid = b.itemid where type='image'";
+		return "select b.message,b.image,b.imagenum,".implode(',',$sel_field) . " from " .self::$_table_name ." a left join blog_spaceimages b on a.itemid = b.itemid where type='image'";
 	}
 	
 	public function __get($var){
@@ -481,6 +488,10 @@ class BlogAlbum
 			if($this->itemid){
 				return "/blog/?uid-{$this->uid}-action-viewspace-itemid-{$this->itemid}";
 			}
+		}
+		
+		if($var == 'edit_href'){
+			return "/blog/spacecp.php?action=spaceimages&op=edit&itemid={$this->itemid}";
 		}
 		
 		if($var == 'images'){
