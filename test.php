@@ -3,8 +3,13 @@
 	include 'lib/xspace_api.php';
 	include 'lib/ActiveRecord.php';
 	include 'inc/project_pubfun.php';
-	$bloger = Bloger::find(1);
-	var_dump($bloger->baby_album->images);
+	#$bloger = Bloger::find(1);
+	$ret = create_baby_album(1,'admin','create宝宝111','2010/06/1_201006011115141wlOf.jpg','message','127.0.0.1');
+	var_dump($ret);
+	#echo $bloger->articles[0]->subject;
+	#echo date('Y-m-d h:i:s',$bloger->articles[0]->lastpost);
+	#echo date('Y-m-d h:i:s',$bloger->baby_album->lastpost);
+	#var_dump($bloger->baby_album->images);
 	#var_dump($bloger->baby_album->imagenum);
 	#$bloger = new ActiveRecord('blog_spaceitems');
 	#var_dump($bloger->fields_defination);

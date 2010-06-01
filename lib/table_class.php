@@ -5,6 +5,7 @@
 require_once(dirname(__FILE__) .'/belongs_to_object_class.php');
 class table_class{
 	private $_tablename = "";
+	public $key_field = "id";
 	private $fields_type = array();
 	private $fields_name = array();
 	private $fields_default = array();
@@ -170,7 +171,7 @@ class table_class{
 
 	public function save(){
 
-		if(empty($this->fields['id']) || $this->fields['id'] <= 0){
+		if(empty($this->fields[$this->key_field]) || $this->fields[$this->key_field] <= 0){
 			//save net object
 			return $this->_save_new();
 		}else {
@@ -266,7 +267,7 @@ class table_class{
 		$sqltail ="";
 		foreach ($this->fields as $k => $v){
 			
-			if(strtolower($k) == 'id') continue;
+			if(strtolower($k) == $this->key_field) continue;
 			if ($first) {
 				$sqlstr .= $k;
 				if (is_null($v)) {
@@ -289,12 +290,13 @@ class table_class{
 		//debug_info($sqlstr);
 		$db = get_db();
 		$result = $db->execute($sqlstr);
-		if($result)	{$this->id = $db->last_insert_id;}
+		$var = $this->key_field;
+		if($result)	{$this->$var = $db->last_insert_id;}
 		return $result;
 	}
 
 	private function _update(){
-		if (intval($this->fields['id']) <= 0){
+		if (intval($this->fields[$this->key_field]) <= 0){
 			debug_info("invalid id!");
 			return false;
 		}
@@ -331,7 +333,7 @@ class table_class{
 			 }
 		}
 		$sqlstr .= implode(',',$tmp);
-		$sqlstr .= " where id=" .$this->fields['id'];
+		$sqlstr .= " where {$this->key_field}=" .$this->fields[$this->key_field];
 		$db = get_db();
 		$result = $db->execute($sqlstr);
 		$result = $result and  $result and $this->_save_belongs_to();
