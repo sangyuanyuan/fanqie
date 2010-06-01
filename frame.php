@@ -76,7 +76,7 @@
 				fwrite($handle,$fcontent);
 				fclose($handle);
 			if($servername == '172.27.203.80'){
-					send_sms('13482678134','无法连接数据库服务器80!');
+					send_sms('18930538812','无法连接数据库服务器80!');
 					send_sms('13764092296','无法连接数据库服务器80!');
 								
 			}
@@ -110,10 +110,10 @@
 				if($syn_status === false){
 					if($now!=$date)
 					{
-						send_sms('13482678134','82不同步啦，快找盛');
+						send_sms('18930538812','82不同步啦，快找盛');
 						send_sms('13764092296','82不同步啦，快找盛');
 						write_to_file(dirname(__FILE__) .'/config/last_dissyn.txt',now(),'w');
-						@mail($note_emails,'数据库同步失败','主备数据库均同步失败，请立即检查'.$this->servername);				
+						@mail($note_emails,'数据库同步失败','主备数据库均同步失败，请立即检查'.$this->servername);		
 					}
 				}	
 			}
