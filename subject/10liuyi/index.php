@@ -25,7 +25,7 @@
 			<div class=sub style="width:960px; text-align:center; font-size:30px; line-height:35px;">家有宝宝秀出来</div>
 			<div class=sub style="width:960px; text-indent:2em; margin-top:10px; font-size:16px; color:#000000; line-height:20px;">作为SMG宝宝秀第二季，本季主题为“爸爸妈妈的宝宝”，即选拔与爸爸妈妈长的最像的可爱宝宝。同时，为了表达番茄网对SMG宝宝的祝福，凡是参加宝宝秀的宝宝们均会收到番茄网的儿童节礼物，前五名将有特别好礼相送。欢迎广大网友踊跃参与（至少上传一张家长与宝宝的合照，<span style="color:#ff0000">用工号登陆番茄网可继续上传更多宝宝照片，相册删除功能已做好。</span>投票截止时间为2010年6月1日中午12点）</div>
 			<div class=sub style="margin-bottom:20px;"><a target="_blank" href="/show/babysignup.php">我要参与</a></div>
-			<?php $baby=$db->query('select * from smg_baby_vote order by createtime desc');
+			<?php $baby=$db->query('select * from smg_baby_vote order by zcl desc,createtime desc');
 					for($i=0;$i<count($baby);$i++)
 					{	
 		 	?>
