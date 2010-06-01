@@ -29,7 +29,7 @@
 ?>
 <div id=bodys>
  	<div id=baby>
- 		<div style="width:450px; height:25px; margin-top:10px; margin-left:10px; font-size:20px; font-weight:bold; line-height:25px; float:left; display:inline;"><a style="color:#ff0000; text-decoration:none;" target="_blank" href="babyitem.php"><?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?>继续上传</a><?php } ?></div>
+ 		<div style="width:450px; height:25px; margin-top:10px; margin-left:10px; font-size:20px; font-weight:bold; line-height:25px; float:left; display:inline;"><?php if($babyshow1[0]->parent_id==$_COOKIE['smg_username']){ ?><a style="color:#ff0000; text-decoration:none;" target="_blank" href="babyitem.php">继续上传</a><?php } ?></div>
  		<div id="zcl" style="width:450px; height:25px; margin-top:10px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; color:red; cursor:pointer; text-align:right; float:right; display:inline;">我要投给他/她</div>
  		<div class=pic2><img border=0 src="<? echo $babyshow1[0]->photourl;?>" /><div class=nd><? echo $babyshow1[0]->babyname.'<br>'.$babyshow1[0]->content;?></div><div class="nd"><?php if($babyshow1[0]->parent_id==$cookie){ ?><a href="babysignup.php?id=<?php echo $_REQUEST['id']; ?>">编辑</a><?php } ?></div></div>
  		<? for($i=0;$i< count($babyshow);$i++){?>
