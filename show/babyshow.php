@@ -35,6 +35,10 @@
  		<? for($i=0;$i< count($babyshow);$i++){?>
  			<div class=pic2><img border=0 src="<? echo $babyshow[$i]->photourl;?>" /><div class=nd><? echo $babyshow[$i]->babyname.'<br>'.$babyshow[$i]->content;?></div><div class="nd"><?php if($babyshow[$i]->parent_id==$cookie){ ?><a href="babyitem.php?id=<?php echo $babyshow[$i]->id; ?>">编辑</a>　<span param="<?php echo $babyshow[$i]->id; ?>" id="babydel" style="color:blue; cursor:pointer; text-decoration:underline;">删除</span><?php } ?></div></div>
  		<?}?>
+ 		<div style="width:910px; height:25px; margin-top:10px; margin-left:10px; float:left; display:inline;">
+		    <div style="width:450px; height:25px; font-size:20px; font-weight:bold; line-height:25px; text-align:left; float:left; display:inline;"><a target="_blank" style="color:red; text-decoration:none;" href="/subject/10liuyi/index.php">返回专题首页</a></div>
+		    <div style="width:450px; height:25px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; text-align:right; float:right; display:inline;"><a target="_blank" style="color:red; text-decoration:none;" href="babysignup.php">我要参与</a></div>
+	   </div>
 	<? for($i=0;$i< count($comments);$i++){?>
     <div class=content7 style="width:900px; margin-left:20px;">
     	<div class=name><a href="#"><?php echo $comments[$i]->nick_name;?></a></div>	
@@ -42,10 +46,7 @@
     	<div class=context><?php echo get_fck_content($comments[$i]->comment);?></div>	
     </div>
      <?php }?>
-	   <div style="width:910px; height:25px; margin-top:10px; margin-left:10px; float:left; display:inline;">
-		    <div style="width:450px; height:25px; font-size:20px; font-weight:bold; line-height:25px; text-align:left; float:left; display:inline;"><a target="_blank" style="color:red; text-decoration:none;" href="/subject/10liuyi/index.php">返回专题首页</a></div>
-		    <div style="width:450px; height:25px; margin-right:10px; font-size:20px; font-weight:bold; line-height:25px; text-align:right; float:right; display:inline;"><a target="_blank" style="color:red; text-decoration:none;" href="babysignup.php">我要参与</a></div>
-	   </div>
+	   
     <div class="pageurl">
        <?php 
           paginate(''); 
