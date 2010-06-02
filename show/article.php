@@ -267,7 +267,7 @@
 			</div>	
 			<?php } ?>
 			<div class=f_title style="width:320px;"><div id=f>发要提问</div></div>
-			<div class=comment_box>
+			<div class=comment_box style="width:320px;">
 				<form id="showquestion" action="question.post.php" method="post">
 					<div class=c_title>现在有<span style="color:#FF5800"><?php echo count($question);?></span>人提问</div>
 					<div class=commenter_box><input type="text" style="width:170px;" id="c_n_n" name="post[name]"></div>
