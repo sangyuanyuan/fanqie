@@ -61,7 +61,7 @@ a{text-decoration:none;}
 #ibody_right .f_title{width:348px; height:25px; background:url(/images/show/star_tbg.jpg) repeat-x; float:left; display:inline;}
 #ibody_right .f_title #f{ margin-top:2px; margin-left:20px; font-size:15px; line-height:20px; color:#ffffff; font-weight:bolder; float:left; display:inline; }
 
-#ibody_right #question{width:320px; margin-right:10px; float:right; display:inline;}
+#ibody_right #question{width:320px; margin-top:20px; margin-right:10px; float:right; display:inline;}
 #ibody_right #question #submit_question{width:66px; height:19px; margin-top:10px; margin-right:20px; cursor:pointer; background:url(/images/show/show_question.jpg); float:right; display:inline; }
 #ibody_right #question .content{width:310px; margin-left:10px; padding-bottom:10px; margin-bottom:10px; line-height:20px;  border-bottom:1px dashed #B7B7B7; float:left; display:inline;}
 #ibody_right #question .content .r{width:305px; margin-top:10px; margin-left:10px; float:left; display:inline;}
