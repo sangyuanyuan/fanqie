@@ -231,7 +231,7 @@
 			<?php }?>
 			<div id=paginate><?php paginate();?></div>
 			<div class=f_title <?php if($news->is_commentable!=1){?>style="display:none;"<?php } ?>><div id=f>发表评论</div></div>
-			<div id=comment_box <?php if($news->is_commentable!=1){?>style="display:none;"<?php } ?>>
+			<div class=comment_box <?php if($news->is_commentable!=1){?>style="display:none;"<?php } ?>>
 				<form id="comment_form" action="/pub/pub.post.php" method="post">
 					<div class=c_title>现在有<span style="color:#FF5800"><?php echo $count2;?></span>人发表评论</div>
 					<div class=commenter_box><input type="text" style="width:170px;" id="c_n_n" name="post[nick_name]"></div>
@@ -267,13 +267,15 @@
 			</div>	
 			<?php } ?>
 			<div class=f_title style="width:320px;"><div id=f>发要提问</div></div>
-			<form id="showquestion" action="question.post.php" method="post">
-				<div class=c_title>现在有<span style="color:#FF5800"><?php echo count($question);?></span>人提问</div>
-				<div class=commenter_box><input type="text" style="width:170px;" id="c_n_n" name="post[name]"></div>
-				<input type="hidden" name="post[news_id]" value="<?php echo $id;?>">
-				<div class="commit_fck"><?php show_fckeditor('post[content]','Title',false,'75','','300');?></div>
-				<div id=submit_question></div>
-			</form>
+			<div class=comment_box>
+				<form id="showquestion" action="question.post.php" method="post">
+					<div class=c_title>现在有<span style="color:#FF5800"><?php echo count($question);?></span>人提问</div>
+					<div class=commenter_box><input type="text" style="width:170px;" id="c_n_n" name="post[name]"></div>
+					<input type="hidden" name="post[news_id]" value="<?php echo $id;?>">
+					<div class="commit_fck"><?php show_fckeditor('post[content]','Title',false,'75','','300');?></div>
+					<div id=submit_question></div>
+				</form>
+			</div>
 		</div>
  </div>
 
