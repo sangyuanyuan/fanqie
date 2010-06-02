@@ -42,7 +42,7 @@
 	Message:<?php echo $bloger->baby_album->message;?>
 </p>
 <p>
-	封面图片:<img src="<?php echo $bloger->baby_album->image?>" />
+	封面图片:<img src="<?php echo $bloger->baby_album->image;?>" />
 </p>
 
 <?php 
