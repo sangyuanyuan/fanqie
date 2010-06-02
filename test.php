@@ -36,7 +36,7 @@
 	点击<a href="<?php echo $bloger->baby_album->href?>" target="_blank">这里</a>查看他的宝宝相册
 </p>
 <p>
-	点击<a href="<?php echo $bloger->baby_album->edit_href?>" target="_blank">这里</a>发布宝宝图片
+	点击<a href="<?php echo $bloger->baby_album->edit_href;?>" target="_blank">这里</a>发布宝宝图片
 </p>
 <p>
 	Message:<?php echo $bloger->baby_album->message;?>

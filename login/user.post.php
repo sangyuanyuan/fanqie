@@ -20,7 +20,7 @@ if($_POST['user_type']=="login")
 		$ret = uc_user_login($login_text , $password_text);
 		if($ret[0]<= 0 ){
 			
-			$error = "用户名或密码不对";		
+			$error = "error";		
 		}else{
 			//login sucessful
 			$user = new table_class('smg_user');
@@ -30,19 +30,19 @@ if($_POST['user_type']=="login")
 				}
 				
 			};
-			echo $login_text;
 			$user->name = $login_text;
 			$user->password = $password_text;
 			#$user->role_name = 'member';
 			$user->nick_name = $login_text;
 			#$user->register_type = 'nick_name';
 			$user->save();
+			
 			@SetCookie('smg_username',$login_text,$y2k,'/');
-			@SetCookie('smg_userid',$userid,$y2k,'/');
+			@SetCookie('smg_user_id',$user->id,$y2k,'/');
 			@SetCookie('smg_user_nickname',$login_text,$y2k,'/');
 			@setcookie('smg_role', 'member',$y2k,'/');
 			$error =  "ok";
-			@setcookie('smg_uid', $ret[0],$y2k,'/');
+			@setcookie('smg_uid',$ret[0],$y2k,'/');
 			
 			echo (uc_user_synlogin($ret[0]));
 		}

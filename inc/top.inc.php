@@ -7,11 +7,11 @@
 	js_include_tag('jquery.cookie','pubfun');
 	css_include_tag('top');
 	function daysInSpan($start,$end)
-		{
-		 $dayTicks=ticksInDay();
-		 return ($end-$start)/$dayTicks;
-		}
-		 
+	{
+	 $dayTicks=ticksInDay();
+	 return ($end-$start)/$dayTicks;
+	}
+	
 	function ticksInDay()
 	{
 	 $today=getdate();
