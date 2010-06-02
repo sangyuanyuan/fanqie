@@ -234,11 +234,11 @@
 			<div id=comment_box <?php if($news->is_commentable!=1){?>style="display:none;"<?php } ?>>
 				<form id="comment_form" action="/pub/pub.post.php" method="post">
 					<div class=c_title>现在有<span style="color:#FF5800"><?php echo $count2;?></span>人发表评论</div>
-					<div id=commenter_box><input type="text" style="width:170px;" id="c_n_n" name="post[nick_name]"></div>
+					<div class=commenter_box><input type="text" style="width:170px;" id="c_n_n" name="post[nick_name]"></div>
 					<input type="hidden" name="post[resource_id]" id="resource_id" value="<?php echo $id;?>">
 					<input type="hidden" name="post[resource_type]" value="news">
 					<input type="hidden" name="type" value="comment">
-					<div id="commit_fck"><?php show_fckeditor('post[comment]','Title',false,'75','','325');?></div>
+					<div class="commit_fck"><?php show_fckeditor('post[comment]','Title',false,'75','','325');?></div>
 					<div id=fqbq></div>
 					<div id=submit_comment></div>
 				</form>
@@ -269,9 +269,9 @@
 			<div class=f_title style="width:320px;"><div id=f>发要提问</div></div>
 			<form id="showquestion" action="question.post.php" method="post">
 				<div class=c_title>现在有<span style="color:#FF5800"><?php echo count($question);?></span>人提问</div>
-				<div id=commenter_box><input type="text" style="width:170px;" id="c_n_n" name="post[name]"></div>
+				<div class=commenter_box><input type="text" style="width:170px;" id="c_n_n" name="post[name]"></div>
 				<input type="hidden" name="post[news_id]" value="<?php echo $id;?>">
-				<div id="commit_fck"><?php show_fckeditor('post[content]','Title',false,'75','','300');?></div>
+				<div class="commit_fck"><?php show_fckeditor('post[content]','Title',false,'75','','300');?></div>
 				<div id=submit_question></div>
 			</form>
 		</div>
