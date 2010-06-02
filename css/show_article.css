@@ -52,12 +52,12 @@ a{text-decoration:none;}
 #ibody_right #comment .content .r .b{width:335px; word-wrap:break-word; float:left; display:inline;}
 #ibody_right #comment #paginate{width:165px; height:20px; line-height:20px; margin-top:20px; margin-left:10px; float:left; display:inline;}
 #ibody_right #comment #paginate a{color:#000000; text-decoration:none;}
-#ibody_right #comment .comment_box{width:339px; height:200px; margin-top:10px; padding-bottom:10px; border:1px solid #CDCDCD; float:left; display:inline;}
-#ibody_right #comment .comment_box .commit_fck{width:335px;  margin-left:10px; float:left; display:inline;}
-#ibody_right #comment .comment_box #fqbq{width:300px; margin-left:13px; float:left; display:inline;}
-#ibody_right #comment .comment_box .commenter_box{width:335px;  margin-left:11px; margin-top:10px; float:left; display:inline;}
+#ibody_right .comment_box{width:339px; height:200px; margin-top:10px; padding-bottom:10px; border:1px solid #CDCDCD; float:left; display:inline;}
+#ibody_right .comment_box .commit_fck{width:335px;  margin-left:10px; float:left; display:inline;}
+#ibody_right .comment_box #fqbq{width:300px; margin-left:13px; float:left; display:inline;}
+#ibody_right .comment_box .commenter_box{width:335px;  margin-left:11px; margin-top:10px; float:left; display:inline;}
 #ibody_right #comment #submit_comment{width:66px; height:19px; margin-top:10px; margin-right:20px; cursor:pointer; float:right; display:inline; background:url(/images/show/show_submit.jpg);}
-#ibody_right #comment #comment_box .c_title{width:240px; margin-left:7px; margin-top:13px; font-size:13px; float:left; display:inline; font-weight:normal;}
+#ibody_right .comment_box .c_title{width:240px; margin-left:7px; margin-top:13px; font-size:13px; float:left; display:inline; font-weight:normal;}
 #ibody_right .f_title{width:348px; height:25px; background:url(/images/show/star_tbg.jpg) repeat-x; float:left; display:inline;}
 #ibody_right .f_title #f{ margin-top:2px; margin-left:20px; font-size:15px; line-height:20px; color:#ffffff; font-weight:bolder; float:left; display:inline; }
 
