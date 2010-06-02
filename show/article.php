@@ -270,9 +270,9 @@
 			<div class=comment_box style="width:320px;">
 				<form id="showquestion" action="question.post.php" method="post">
 					<div class=c_title>现在有<span style="color:#FF5800"><?php echo count($question);?></span>人提问</div>
-					<div class=commenter_box style="width:305px;"><input type="text" style="width:170px;" id="c_n_n" name="post[name]"></div>
+					<div class=commenter_box style="width:300px;"><input type="text" style="width:170px;" id="c_n_n" name="post[name]"></div>
 					<input type="hidden" name="post[news_id]" value="<?php echo $id;?>">
-					<div class="commit_fck" style="width:305px; margin-left:5px;"><?php show_fckeditor('post[content]','Title',false,'75','','300');?></div>
+					<div class="commit_fck" style="width:300px; margin-left:5px;"><?php show_fckeditor('post[content]','Title',false,'75','','300');?></div>
 					<div id=submit_question></div>
 				</form>
 			</div>
