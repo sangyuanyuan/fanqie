@@ -52,7 +52,7 @@ a{text-decoration:none;}
 #ibody_right #comment .content .r .b{width:335px; word-wrap:break-word; float:left; display:inline;}
 #ibody_right #comment #paginate{width:165px; height:20px; line-height:20px; margin-top:20px; margin-left:10px; float:left; display:inline;}
 #ibody_right #comment #paginate a{color:#000000; text-decoration:none;}
-#ibody_right .comment_box{width:339px; height:200px; margin-top:10px; padding-bottom:10px; border:1px solid #CDCDCD; float:left; display:inline;}
+#ibody_right .comment_box{width:339px; margin-top:10px; padding-bottom:10px; border:1px solid #CDCDCD; float:left; display:inline;}
 #ibody_right .comment_box .commit_fck{width:335px;  margin-left:10px; float:left; display:inline;}
 #ibody_right .comment_box #fqbq{width:300px; margin-left:13px; float:left; display:inline;}
 #ibody_right .comment_box .commenter_box{width:335px;  margin-left:11px; margin-top:10px; float:left; display:inline;}
