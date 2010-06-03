@@ -1037,7 +1037,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  					<?php $sql = 'select id,title from smg_question where is_adopt=1 and problem_id<>39 order by create_time desc limit 5';
  								$record = $db->query($sql);
  					 ?>
- 					<div class="top_title"><a   href="/answer/pro_answer.php?id=49"  target=_blank>答题：端午答题</a></div>
+ 					<div class="top_title"><a   href="/answer/pro_answer.php?id=49"  target=_blank>答题：2010端午答题</a></div>
  					<?php for($i=0;$i<count($record);$i++)
 						{?>
 						<div class="bottom_title"><li><span style="color:#FF9900">·</span><a   href="/answer/pro_answer.php?id=49"  target=_blank>答题：<?php echo $record[$i]->title;?></a></li></div>
