@@ -1034,11 +1034,11 @@ $gb=$db->query('select description,content from smg_news where id=47028');
       <!-- start bottom_top_left !-->
  			<div id=b_t_l <?php if(date('Y-m-d')=="2010-04-01"){ ?>style="background:url('images/index/bg_b_t_l1.jpg') no-repeat;"<?php } ?>>
 				<div class=l_box>
- 					<?php $sql = 'select id,title from smg_question where is_adopt=1 and problem_id<>39 order by create_time desc limit 6';
+ 					<?php $sql = 'select id,title from smg_question where is_adopt=1 and problem_id<>39 order by create_time desc limit 5';
  								$record = $db->query($sql);
  					 ?>
- 					<div class="top_title"><a   href="/answer/answer.php?id=<?php echo $record[0]->id;?>"  target=_blank>答题：<?php echo $record[0]->title;?></a></div>
- 					<?php for($i=1;$i<count($record);$i++)
+ 					<div class="top_title"><a   href="/answer/pro_answer.php?id=49"  target=_blank>答题：端午答题</a></div>
+ 					<?php for($i=0;$i<count($record);$i++)
 						{?>
 						<div class="bottom_title"><li><span style="color:#FF9900">·</span><a   href="/answer/answer.php?id=<?php echo $record[$i]->id;?>"  target=_blank>答题：<?php echo $record[$i]->title;?></a></li></div>
 					 <?php } ?>
