@@ -410,15 +410,15 @@ class BlogAlbum
 		if(is_numeric($uid)){
 			$uid = intval($uid);
 			if($uid <= 0) return false;
-			$bloger = self::_find(array('condition' => self::$key_field."={$uid}"));
+			$result = self::_find(array('condition' => "a." .self::$key_field."={$uid}"));
 			if($result === false) return false;
 			if(!is_array($result)) return null;
 			$bloger = new self(self::$_table_name);
 			foreach (self::$_fields as $field){
 				$bloger->$field = $result[0]->$field;
 			}
-			$bloger[0]->image = "/blog/attachments/".$bloger[0]->image;
-			$bloger[0]->imagenum = $bloger[0]->imagenum;
+			$bloger->image = "/blog/attachments/".$result[0]->image;
+			$bloger->imagenum = $result[0]->imagenum;
 			return $bloger;
 		}else{
 			if(is_null($uid)) $uid = array();

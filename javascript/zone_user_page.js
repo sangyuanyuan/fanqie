@@ -17,11 +17,15 @@ $(function() {
 	});
 	
 	$('div.remove').live('click',function(){
-		if(!confirm("您确认要删除此模块嘛?")) return;
+		if(!confirm("您确认要删除此模块吗?")) return;
 		var model = $(this).parent().parent();
 		$.post('user_page.post.php?type=delete&id='+ model.attr('id'),function(){
 			model.remove();
 		});
 	});
 
+	$('#add_model').click(function(e){
+		e.preventDefault();
+		$.fn.colorbox({href:'add_model.php',width:'600px', height:'400px'});
+	});
 });

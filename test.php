@@ -1,11 +1,20 @@
-﻿<?php 
+<?php 
+	ob_start();
 	include 'frame.php';
-	include 'lib/xspace_api.php';
-	include 'lib/ActiveRecord.php';
-	include 'inc/project_pubfun.php';
+	#include 'lib/xspace_api.php';
+	#include 'lib/discuz_api.php';
+	include 'lib/uchome_api.php';
+	#include 'lib/ActiveRecord.php';
+	#include 'inc/project_pubfun.php';
+	$find_param['limit'] = 5;
+	$find_param['order'] = 'dateline desc';
+	$find_param['condition'] = "a.tagid=8";
+	$items = Uchomethread::find($find_param);
+	var_dump($items);					
 	#$bloger = Bloger::find(1);
-	$ret = create_baby_album(1,'admin','create宝宝111','2010/06/1_201006011115141wlOf.jpg','message','127.0.0.1');
-	var_dump($ret);
+	#$ret = create_baby_album(1,'admin','create宝宝111','2010/06/1_201006011115141wlOf.jpg','message','127.0.0.1');
+	#$ret = DiscuzThread::find(array('limit' => 5));
+	#var_dump($ret);
 	#echo $bloger->articles[0]->subject;
 	#echo date('Y-m-d h:i:s',$bloger->articles[0]->lastpost);
 	#echo date('Y-m-d h:i:s',$bloger->baby_album->lastpost);
