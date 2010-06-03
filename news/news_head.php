@@ -349,7 +349,67 @@ $db->execute($sql); ?>
 	</div>
 	
 	<div id=ibody_right>
-		<div id=r_t style="margin-bottom:15px;">
+		<div id=r_b2 style="margin-top:0px;">
+			<div class=b_head_title1 param=1>本月部门发表量</div>
+			<div class=b_head_title1 param=2 style="background:none; color:#000000;">本月点击排行榜</div>
+			<div id=b_b_1 class="b_b" style="display:block">
+			<?php 
+			 $sql="SELECT * FROM smg_fgl_count";
+			$pubcount=$db->query($sql);
+			$total=0;
+			for($i=0;$i<count($pubcount);$i++)
+			{
+				$total=$total+(int)$pubcount[$i]->fgl;
+			}
+			 for($i=0;$i<count($pubcount);$i++){	 	
+			 ?>
+			 	<div class="r_b2_content">
+			 		<?php if($i<3){?>
+			 			<div class=pic1>0<?php echo $i+1;?></div>
+			 			<div class=cl1><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->fgl/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+					<?php }else{?>
+						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
+						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->fgl/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+					<?php }?>				
+				</div>
+			<? }?>
+			</div>
+			
+			<div id=b_b_2 class="b_b" style="display:none;">
+			<?php 
+			 $sql="select * from smg_djl_count";
+			 $clickcount=$db->query($sql);
+			 for($i=0;$i<count($clickcount);$i++)
+			 {
+			 	if($clickcount[$i]->name!="集团办公室"&&$clickcount[$i]->name!="传媒人报"&&$clickcount[$i]->name!="精神文明办")
+			 	{
+			 			$click[]=array((int)$clickcount[$i]->num,$clickcount[$i]->name);
+			 	}
+			 	else if($clickcount[$i]->name=="集团办公室")
+			 	{
+			 			$cmrb=$db->query("select num from smg_djl_count where name='传媒人报'");
+			 			$jswmb=$db->query("select num from smg_djl_count where name='精神文明办'");
+			 			$jtbgs=(int)$clickcount[$i]->num+(int)$cmrb[0]->num+(int)$jswmb[0]->num;
+			 			$click[]=array($jtbgs,$clickcount[$i]->name);
+			 	}
+			 }
+			 $click=array2sort($click,0,'d');
+			 $total=$db->query("select sum(num) as total from smg_djl_count");
+			 for($i=0;$i<10;$i++){	 	
+			 ?>
+			 	<div class="r_b2_content">
+			 		<?php if($i< 3){?>
+			 			<div class=pic1>0<?php echo $i+1;?></div>
+			 			<div class=cl1><?php echo delhtml($click[$i][1]);?></div><div class=percentage><?php $count=$click[$i][0]/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+					<?php }else{?>
+						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
+						<div class=cl2><?php echo delhtml($click[$i][1]);?></div><div class=percentage><?php $count=$click[$i][0]/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
+					<?php }?>				
+				</div>
+			 <? }?>
+			 </div>
+		</div>
+		<div id=r_t style="margin-top:10px; margin-bottom:10px;">
 			<?php //$bbtv=$db->query('select file_name from smg_news where dept_category_id=198 and is_dept_adopt=1 order by priority asc,created_at desc'); ?>
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="298" height="88" id="FLVPlayer">
 			 <param name="movie" value="/flash/news.swf" />
@@ -436,66 +496,7 @@ $db->execute($sql); ?>
 				</div>
 			<? }?>
 		</div>
-		<div id=r_b2>
-			<div class=b_head_title1 param=1>本月部门发表量</div>
-			<div class=b_head_title1 param=2 style="background:none; color:#000000;">本月点击排行榜</div>
-			<div id=b_b_1 class="b_b" style="display:block">
-			<?php 
-			 $sql="SELECT * FROM smg_fgl_count";
-			$pubcount=$db->query($sql);
-			$total=0;
-			for($i=0;$i<count($pubcount);$i++)
-			{
-				$total=$total+(int)$pubcount[$i]->fgl;
-			}
-			 for($i=0;$i<count($pubcount);$i++){	 	
-			 ?>
-			 	<div class="r_b2_content">
-			 		<?php if($i<3){?>
-			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->fgl/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
-					<?php }else{?>
-						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
-						<div class=cl2><?php echo $pubcount[$i]->name;?></div><div class=percentage><?php $count=$pubcount[$i]->fgl/$total; echo sprintf("%.2f",$count * 100) .'%';?></div>
-					<?php }?>				
-				</div>
-			<? }?>
-			</div>
-			
-			<div id=b_b_2 class="b_b" style="display:none;">
-			<?php 
-			 $sql="select * from smg_djl_count";
-			 $clickcount=$db->query($sql);
-			 for($i=0;$i<count($clickcount);$i++)
-			 {
-			 	if($clickcount[$i]->name!="集团办公室"&&$clickcount[$i]->name!="传媒人报"&&$clickcount[$i]->name!="精神文明办")
-			 	{
-			 			$click[]=array((int)$clickcount[$i]->num,$clickcount[$i]->name);
-			 	}
-			 	else if($clickcount[$i]->name=="集团办公室")
-			 	{
-			 			$cmrb=$db->query("select num from smg_djl_count where name='传媒人报'");
-			 			$jswmb=$db->query("select num from smg_djl_count where name='精神文明办'");
-			 			$jtbgs=(int)$clickcount[$i]->num+(int)$cmrb[0]->num+(int)$jswmb[0]->num;
-			 			$click[]=array($jtbgs,$clickcount[$i]->name);
-			 	}
-			 }
-			 $click=array2sort($click,0,'d');
-			 $total=$db->query("select sum(num) as total from smg_djl_count");
-			 for($i=0;$i<10;$i++){	 	
-			 ?>
-			 	<div class="r_b2_content">
-			 		<?php if($i< 3){?>
-			 			<div class=pic1>0<?php echo $i+1;?></div>
-			 			<div class=cl1><?php echo delhtml($click[$i][1]);?></div><div class=percentage><?php $count=$click[$i][0]/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
-					<?php }else{?>
-						<div class=pic2><? if($i!=9){?>0<?php echo $i+1;?></a><?php }else {?><?php echo $i+1;?><?php }?></div>
-						<div class=cl2><?php echo delhtml($click[$i][1]);?></div><div class=percentage><?php $count=$click[$i][0]/$total[0]->total; echo sprintf("%.2f",$count * 100) .'%';?></div>
-					<?php }?>				
-				</div>
-			 <? }?>
-			 </div>
-		</div>
+		
 	</div>
 </div>
 <? require_once('../inc/bottom.inc.php');?>
