@@ -26,53 +26,24 @@
 			<iframe id=video_src src="video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=463 height=322 scrolling="no" frameborder="0"></iframe>	
 		</div>
 		<?php 
-				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 9';
-				$worldsoccer=$db -> query($sql);
+				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="赛程表" order by i.priority asc, n.created_at desc limit 1';
+				$racecard=$db -> query($sql);
 		?>
-		<div id=worldsoccer>
+		<div id=racecard>
 			<div class=title>
-				<div class="title_left"><img src="/images/worldcup/worldsoccer_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $worldsoccer[0]->cid; ?>">更多内容</a></div>	
+				<div class="title_left"><img src="/images/worldcup/racecard_title.jpg"></div>
+				<div class="title_more"></div>	
 			</div>
-			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><img border=0 src="<?php echo $worldsoccer[0]->photo_src; ?>"></a></div>
-			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><?php echo $worldsoccer[0]->content; ?></a></div>
-			<div class=news_content>
-				<?php for($i=1;$i<9;$i++){ ?>
-					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[$i]->id; ?>"><?php echo $worldsoccer[$i]->title; ?></a></div>
-				<?php } ?>
-			</div>
+			<div id=content><a target="_blank" href="/zone/news/news.php?id=<?php echo $racecard[0]->id; ?>"><?php echo $racecard[0]->content; ?></a></div>
 		</div>
-		<div id=video_bottom>
-			<?php for($i=1;$i<4;$i++){ ?>
-				<div class=video_pic param1=<?php echo $record_video[$i]->video_photo_src ?> param2=<?php echo $record_video[$i]->video_src ?>><img src="<?php echo $record_video[$i]->photo_src; ?>"></div>
-			<?php } ?>
-		</div>
-		<div id=gg><a href=""><img border=0 src="/images/worldcup/gg.jpg" /></div>
-		<?php 
-				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 13';
-				$africa=$db -> query($sql);
-		?>
-		<div id=africa>
-			<div class=title>
-				<div class="title_left"><img src="/images/worldcup/africa_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $africa[0]->cid; ?>">更多内容</a></div>	
-			</div>
-			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><img border=0 src="<?php echo $africa[0]->photo_src; ?>"></a></div>
-			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><?php echo $africa[0]->content; ?></a></div>
-			<div class=news_content>
-				<?php for($i=1;$i<14;$i++){ ?>
-					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[$i]->id; ?>"><?php echo $africa[$i]->title; ?></a></div>
-				<?php } ?>
-			</div>
-		</div>
-		<?php $comment=$db->query('select * from smg_comment where resource_type="2010worldcup" and resource_id=100000000 order by created_at desc'); ?>
+		<?php $comment=$db->query('select * from smg_comment where resource_type="2010worldcup" and resource_id=100000000 order by created_at desc limit 4'); ?>
 		<div id=comment>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/comment_title.jpg"></div>
 				<div class="title_more"><a target="_blank" href="/comment/comment_list.php?id=100000000&type=2010worldcup">更多留言</a></div>	
 			</div>
 			<div id=content>
-				<?php for($i=0;$i<5;$i++){ ?>
+				<?php for($i=0;$i<count($comment);$i++){ ?>
 					<div class=context <?php if($i==0){ ?>style="border-top:none;"<?php } ?>>
 						<div class=name>评论者：<?php echo $comment[$i]->nick_name; ?></div><div class=time><?php echo $comment[$i]->created_at; ?></div>
 						<div class=commentcontent><?php echo $comment[$i]->comment; ?></div>
@@ -91,17 +62,48 @@
 				</div>
 			</form>
 		</div>
-		<?php 
-				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="赛程表" order by i.priority asc, n.created_at desc limit 1';
-				$racecard=$db -> query($sql);
-		?>
-		<div id=racecard>
-			<div class=title>
-				<div class="title_left"><img src="/images/worldcup/racecard_title.jpg"></div>
-				<div class="title_more"></div>	
-			</div>
-			<div id=content><a target="_blank" href="/zone/news/news.php?id=<?php echo $racecard[0]->id; ?>"><?php echo $racecard[0]->content; ?></a></div>
+		<div id=video_bottom>
+			<?php for($i=1;$i<4;$i++){ ?>
+				<div class=video_pic param1=<?php echo $record_video[$i]->video_photo_src ?> param2=<?php echo $record_video[$i]->video_src ?>><img src="<?php echo $record_video[$i]->photo_src; ?>"></div>
+			<?php } ?>
 		</div>
+		<div id=gg><a href=""><img border=0 src="/images/worldcup/gg.jpg" /></div>
+		<?php 
+				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 15';
+				$africa=$db -> query($sql);
+		?>
+		<div id=africa>
+			<div class=title>
+				<div class="title_left"><img src="/images/worldcup/africa_title.jpg"></div>
+				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $africa[0]->cid; ?>">更多内容</a></div>	
+			</div>
+			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><img border=0 src="<?php echo $africa[0]->photo_src; ?>"></a></div>
+			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><?php echo $africa[0]->content; ?></a></div>
+			<div class=news_content>
+				<?php for($i=1;$i<14;$i++){ ?>
+					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[$i]->id; ?>"><?php echo $africa[$i]->title; ?></a></div>
+				<?php } ?>
+			</div>
+		</div>
+		<?php 
+				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 15';
+				$worldsoccer=$db -> query($sql);
+		?>
+		<div id=worldsoccer>
+			<div class=title>
+				<div class="title_left"><img src="/images/worldcup/worldsoccer_title.jpg"></div>
+				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $worldsoccer[0]->cid; ?>">更多内容</a></div>	
+			</div>
+			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><img border=0 src="<?php echo $worldsoccer[0]->photo_src; ?>"></a></div>
+			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><?php echo $worldsoccer[0]->content; ?></a></div>
+			<div class=news_content>
+				<?php for($i=1;$i<14;$i++){ ?>
+					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[$i]->id; ?>"><?php echo $worldsoccer[$i]->title; ?></a></div>
+				<?php } ?>
+			</div>
+		</div>
+		
+		
 		<div id=bottom>
 			<div id=turnleft></div>
 			<?php 
