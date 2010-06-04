@@ -6,12 +6,16 @@ body {margin:0px; font-family:宋体; font-size:12px; color:#000000;}
 #left_container{width:330px;float:left;}
 #center_container{width:330px;float:left;}
 #right_container{width:330px; margin-left:3px; float:left;}
+.sortable{padding-bottom:30px;}
 
 div.model_container{width:300px;margin-top:10px;  border:1px solid #F6F6F6;float:left;}
 div.model_container .tool{width:300; height:27px; background-color: #EFEFEF; cursor:move;}
 .tool .model_name{margin-left:5px;float:left;font-size:14px; line-height:27px; font-weight: bold;}
 .tool .remove{width:9px; height:9px; margin-top:9px;margin-right:5px; cursor:pointer; background: url("/images/zone/remove.jpg") no-repeat;float:right;}
-.model_container .content{width:290px; padding:0px 5px 5px 5px;float:left; overflow: hidden;}
+.model_container .content{width:290px; padding:0px 5px 5px 5px;float:left;}
 .model_container .content li{width:290px; margin-top:5px;overflow: hidden; line-height:20px; height:20px;}
 .content li a{text-decoration: none; color:black}
 .content li.top a{color:red;}
+
+	.ui-sortable-placeholder { border: 1px dotted red; visibility: visible !important;  }
+	.ui-sortable-placeholder * { visibility: hidden; }

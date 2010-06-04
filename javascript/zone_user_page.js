@@ -4,10 +4,24 @@ function debug(msg){
 function save_position(pos_name){
 	var pos = $('#'+pos_name);
 	$.post('user_page.post.php?' + pos.sortable('serialize') + "&pos_name="+pos_name + '&type=sort');
+	reset_size();
 }
+
+function reset_size(){
+	var maxheight = 0;
+	$(".sortable").each(function(){
+		if($(this).height() > maxheight){
+			maxheight = $(this).height();
+		}
+	});
+	
+	$(".sortable").css('height',maxheight);
+}
+
 $(function() {
 	$(".sortable").sortable({
 		connectWith:'.sortable',
+		dropOnEmpty: true,
 		stop:function(e,ui){
 			save_position($(this).attr('id'));
 		},
@@ -15,7 +29,6 @@ $(function() {
 			save_position($(this).attr('id'));
 		}
 	});
-	
 	$('div.remove').live('click',function(){
 		if(!confirm("您确认要删除此模块吗?")) return;
 		var model = $(this).parent().parent();
@@ -26,6 +39,7 @@ $(function() {
 
 	$('#add_model').click(function(e){
 		e.preventDefault();
-		$.fn.colorbox({href:'add_model.php',width:'600px', height:'400px'});
+		$.fn.colorbox({href:'add_model.php',width:'600px', height:'420px'});
 	});
+	reset_size();
 });

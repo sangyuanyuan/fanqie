@@ -1,3 +1,12 @@
+<style>
+<!--
+	.blog_img_container{width:100%; margin-top:10px;float:left;}
+	.blog_img_container .blog_img{float:left; border:2px #E6F0FB solid; clear:both;padding:3px;}
+	.blog_img img{width:100px;border:none;}
+	.blog_img_container .blog_img_msg{margin-left:10px; font-size:13px; line-height:20px;float:left;}
+	.blog_img_msg a{color:#2C629E; text-decoration: none;}
+-->
+</style>
 <?php 
 	if($params){
 		$params = explode('|',$params);
@@ -24,15 +33,6 @@
 	$class = $i<3 ? 'top' : 'normal';
 	$album = BlogAlbum::find($images[$i]->itemid);
 ?>
-<style>
-<!--
-	.blog_img_container{width:100%; margin-top:10px;float:left;}
-	.blog_img_container .blog_img{float:left; border:2px #E6F0FB solid; clear:both;padding:3px;}
-	.blog_img img{width:100px;border:none;}
-	.blog_img_container .blog_img_msg{margin-left:10px; font-size:13px; line-height:20px;float:left;}
-	.blog_img_msg a{color:#2C629E; text-decoration: none;}
--->
-</style>
 
 <div class="blog_img_container">
 	<div class="blog_img"><a href="<?php echo $album->href;?>" target="_blank"><?php echo "<img src='{$images[$i]->thumbpath}' />";?></a></div>

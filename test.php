@@ -1,6 +1,7 @@
 <?php 
 	ob_start();
 	include 'frame.php';
+	use_jquery_ui();
 	#include 'lib/xspace_api.php';
 	#include 'lib/discuz_api.php';
 	include 'lib/uchome_api.php';
@@ -9,8 +10,8 @@
 	$find_param['limit'] = 5;
 	$find_param['order'] = 'dateline desc';
 	$find_param['condition'] = "a.tagid=8";
-	$items = Uchomethread::find($find_param);
-	var_dump($items);					
+	#$items = Uchomethread::find($find_param);
+	#var_dump($items);					
 	#$bloger = Bloger::find(1);
 	#$ret = create_baby_album(1,'admin','create宝宝111','2010/06/1_201006011115141wlOf.jpg','message','127.0.0.1');
 	#$ret = DiscuzThread::find(array('limit' => 5));
@@ -34,32 +35,78 @@
 	#$test->test1();
 	#$bloger = new Bloger();
 	#var_dump($bloger->_table_name);
-?>
-<p>
-	欢迎您，<?php echo $bloger->username;?>
-</p>
-<p>
-	您的宝宝相册里共有<?php echo ( $bloger->baby_album->imagenum);?>张照片,被浏览过<?php echo $bloger->baby_album->viewnum;?>次,回复次数:<?php echo $bloger->baby_album->replynum?>
-</p>
-<p>
-	点击<a href="<?php echo $bloger->baby_album->href?>" target="_blank">这里</a>查看他的宝宝相册
-</p>
-<p>
-	点击<a href="<?php echo $bloger->baby_album->edit_href;?>" target="_blank">这里</a>发布宝宝图片
-</p>
-<p>
-	Message:<?php echo $bloger->baby_album->message;?>
-</p>
-<p>
-	封面图片:<img src="<?php echo $bloger->baby_album->image;?>" />
-</p>
-
-<?php 
-	for($i=0;$i< $bloger->baby_album->imagenum; $i++){ ?>
-	<p>
-		缩略图:<img src="<?php echo $bloger->baby_album->images[$i]->thumbpath?>" />
-		原图：<img src="<?php echo $bloger->baby_album->images[$i]->filepath?>" />
-	</p>	
-<?php 		
+	
+	function fgetcsv_reg(& $handle, $length = null, $d = ',', $e = '"') {
+		$d = preg_quote($d);
+		$e = preg_quote($e);
+		$_line = "";
+		$eof=false;
+		while ($eof != true) {
+			$_line .= (empty ($length) ? fgets($handle) : fgets($handle, $length));
+			$itemcnt = preg_match_all('/' . $e . '/', $_line, $dummy);
+			if ($itemcnt % 2 == 0)$eof = true;
+		}
+		$_csv_line = preg_replace('/(?: |[ ])?$/', $d, trim($_line));
+		$_csv_pattern = '/(' . $e . '[^' . $e . ']*(?:' . $e . $e . '[^' . $e . ']*)*' . $e . '|[^' . $d . ']*)' . $d . '/';
+		preg_match_all($_csv_pattern, $_csv_line, $_csv_matches);
+		$_csv_data = $_csv_matches[1];
+		for ($_csv_i = 0; $_csv_i < count($_csv_data); $_csv_i++) {
+			$_csv_data[$_csv_i] = preg_replace('/^' . $e . '(.*)' . $e . '$/s', '$1', $_csv_data[$_csv_i]);
+			$_csv_data[$_csv_i] = str_replace($e . $e, $e, $_csv_data[$_csv_i]);
+		}
+		return empty ($_line) ? false : $_csv_data;
 	}
 ?>
+
+<meta charset="UTF-8" />
+	
+	
+	
+	
+	
+	
+	
+	
+	<style type="text/css">
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+	#sortable li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 1.5em; }
+	html>body #sortable li { height: 1.5em; line-height: 1.2em; }
+	.ui-state-highlight { border:1px dashed; }
+	.ui-sortable-placeholder { border: 1px dotted red; visibility: visible !important; }
+	.ui-sortable-placeholder * { visibility: hidden; }
+	
+	</style>
+	<script type="text/javascript">
+	$(function() {
+		$("#sortable").sortable({
+		});
+		$("#sortable").disableSelection();
+	});
+	</script>
+
+
+<div class="demo">
+
+<ul id="sortable">
+	<li class="ui-state-default">Item 1</li>
+	<li class="ui-state-default">Item 2</li>
+	<li class="ui-state-default">Item 3</li>
+	<li class="ui-state-default">Item 4</li>
+	<li class="ui-state-default">Item 5</li>
+	<li class="ui-state-default">Item 6</li>
+	<li class="ui-state-default">Item 7</li>
+</ul>
+
+</div><!-- End demo -->
+
+<div class="demo-description">
+
+<p>
+	When dragging a sortable item to a new location, other items will make room
+	for the that item by shifting to allow white space between them. Pass a
+	class into the <code>placeholder</code> option to style that space to
+	be visible.  Use the boolean <code>forcePlaceholderSize</code> option
+	to set dimensions on the placeholder.
+</p>
+
+</div><!-- End demo-description -->

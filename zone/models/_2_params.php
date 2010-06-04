@@ -6,10 +6,12 @@
 			$category[$cat->upid][$cat->catid] = $cat->name;
 		}
 	?>
-	<span id="span_fid">图片分类：</span>
-	<select id="catid">
-		<option value="-1">所有分类</option>
-		<?php foreach($cats as $cat) {?>
-		<option  value=<?php echo $cat->catid?>><?php echo $cat->upid == 0 ? $cat->name : "--" .$cat->name;?></option>
-		<?php }?>
-	</select>
+	<div class="model_param">
+		<span id="span_fid">图片分类：</span>
+		<select id="catid">
+			<option value="-1">所有分类</option>
+			<?php foreach($cats as $cat) {?>
+			<option  value=<?php echo $cat->catid?>><?php echo $cat->upid == 0 ? $cat->name : "--" .$cat->name;?></option>
+			<?php }?>
+		</select>
+	</div>

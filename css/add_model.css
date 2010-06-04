@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+#add_model_container{width:500px; height:220px;padding:20px;}
+#add_model_msg{width:500px; line-height:20px;}
+#span_add_title{font-size:14px; color:#2C629E;}
+#add_model_content{margin-top:10px;border-top:2px dashed #999999; padding-top:20px;}
+.explain{color:#999999}
+select{width:120px;}
+#model_type{margin-top:20px;}
+#model_name{margin-top:20px;}
+.model_param{margin-top:20px;}
+#div_submit{width:500px;text-align: center; padding-top:5px;}
