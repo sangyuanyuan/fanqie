@@ -1169,7 +1169,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 						for($i=0;$i< $count;$i++){
 				?>
 				<div class=brithday_content id="brithday_content<?php echo $i; ?>" <?php if($i >0){ ?>style="display:none;"<?php } ?>>
-					<div class=photo><img src="" /></div>
+					<div class=photo><!--<img src="" />--></div>
 					<div class=brithdayinfo>
 						<div class=brithdayinfo_l>
 							<div class=title>生日提醒：</div>
