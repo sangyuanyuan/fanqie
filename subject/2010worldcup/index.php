@@ -36,32 +36,22 @@
 			</div>
 			<div id=content><a target="_blank" href="/zone/news/news.php?id=<?php echo $racecard[0]->id; ?>"><?php echo $racecard[0]->content; ?></a></div>
 		</div>
-		<?php $comment=$db->query('select * from smg_comment where resource_type="2010worldcup" and resource_id=100000000 order by created_at desc limit 4'); ?>
+		<?php $comment=$db->query('select * from smg_question where problem_id="50" order by create_time asc limit 8'); ?>
 		<div id=comment>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/comment_title.jpg"></div>
 				<div class="adidas"><img src="/images/worldcup/adidas.jpg"></div>
-				<div class="title_more"><a target="_blank" href="/comment/comment_list.php?id=100000000&type=2010worldcup">更多留言</a></div>	
+				<div class="title_more"></div>	
 			</div>
-			<div id=content>
+			<div style="width:100%; height:25px; line-height:25px; font-size:18px; color:#ff0000; text-align:center; float:left; display:inline;">参加活动的网友均有机会获得adidas精美小礼品</div>
+			<div id=content>	
 				<?php for($i=0;$i<count($comment);$i++){ ?>
 					<div class=context <?php if($i==0){ ?>style="border-top:none;"<?php } ?>>
-						<div class=name>评论者：<?php echo $comment[$i]->nick_name; ?></div><div class=time><?php echo $comment[$i]->created_at; ?></div>
-						<div class=commentcontent><?php echo $comment[$i]->comment; ?></div>
+						<div class=commentcontent><a target="_blank" href="/answer/pro_answer.php?id=<?php echo $comment[$i]->problem_id; ?>"><?php echo $comment[$i]->title; ?></a></div>
 					</div>
 				<?php } ?>
 			</div>
-			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
-				<div id=commenter>
-					<div id=name>昵称：<input type="text" name="post[nick_name]"></div>
-					<div id=commentcontent>内容：<textarea id="contentcomment" name="post[comment]"></textarea></div>
-					<div id=submit>发送留言</div>
-					<input type="hidden" id="resource_id" name="post[resource_id]" value="100000000">
-					<input type="hidden" id="resource_type" name="post[resource_type]" value="2010worldcup">
-					<input type="hidden" id="target_url" name="post[target_url]" value="<?php $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
-					<input type="hidden" name="type" value="comment">	
-				</div>
-			</form>
+			<div id=submit>我要答题</div>
 		</div>
 		<div id=video_bottom>
 			<DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
@@ -200,17 +190,7 @@
 		});
 		
 		$("#submit").click(function(){
-			var content = $("#contentcomment").val();
-			if(content==""){
-				alert('评论内容不能为空！');
-				return false;
-			}
-			if(content.length>1500)
-			{
-				alert('评论内容过长请分次评论！');
-				return false;
-			}
-			document.subcomment.submit();
+			window.open('/answer/pro_answer.php?id=50');
 		});
 	});
 </script>

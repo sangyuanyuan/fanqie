@@ -1,7 +1,7 @@
 ﻿<?php
     require_once('../frame.php');
 ?>
-<div style="width:250px; margin-top:10px; float:left; display:inline;">请输入您的昵称：<input type="text" value="<?php echo $_COOKIE['smg_user_nickname'];?>" id="user_name"></div>
+<div style="width:250px; margin-top:10px; float:left; display:inline;"><?php if($_REQUEST['id']!=50){ ?>请输入您的昵称<?php }else{ ?>请输入您的工号<?php } ?>：<input type="text" value="<?php echo $_COOKIE['smg_user_nickname'];?>" id="user_name"></div>
 <div style="width:250px; margin-top:10px; float:left; display:inline;">请输入您的电话：<input type="text" id="user_photo"></div>
 <div style="width:350px; margin-top:10px; float:left; display:inline;">
 	请选择您的部门：<select id="deptid">
