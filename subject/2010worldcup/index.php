@@ -131,7 +131,7 @@
 		<div id=bottom>
 			<div id=turnleft></div>
 			<?php 
-				$sql = 'select n.src,n.url from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="photo" and i.is_adopt=1 and c.name="精彩图片" order by i.priority asc, n.created_at desc';
+				$sql = 'select n.src,n.url from smg_subject_items i left join smg_images n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="photo" and i.is_adopt=1 and c.name="精彩图片" order by i.priority asc, n.created_at desc';
 				$photo=$db -> query($sql);
 				if(count($photo)%4==0)
 				{
