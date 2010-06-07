@@ -19,7 +19,7 @@
 <body>
 	<div id=logo></div>
 	<div id=ibody>
-		<?php $sql = 'select n.photo_url,n.video_url from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="video" and i.is_adopt=1 and c.name="南非世界杯视频" order by i.priority asc, n.created_at desc limit 4';
+		<?php $sql = 'select n.photo_url,n.video_url,n.title from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="video" and i.is_adopt=1 and c.name="南非世界杯视频" order by i.priority asc, n.created_at desc limit 4';
 				$record_video=$db -> query($sql);
 		?>
 		<div id=video>
@@ -65,7 +65,7 @@
 		</div>
 		<div id=video_bottom>
 			<?php for($i=1;$i<4;$i++){ ?>
-				<div class=video_pic param1=<?php echo $record_video[$i]->video_photo_src ?> param2=<?php echo $record_video[$i]->video_src ?>><img src="<?php echo $record_video[$i]->photo_src; ?>"></div>
+				<div class=video_pic param1=<?php echo $record_video[$i]->photo_url ?> param2=<?php echo $record_video[$i]->video_url ?>><img src="<?php echo $record_video[$i]->photo_url; ?>"><div class=pictitle><?php echo $record_video[$i]->title; ?></div></div>
 			<?php } ?>
 		</div>
 		<div id=gg><a href=""><img border=0 src="/images/worldcup/gg.jpg" /></div>
@@ -76,7 +76,7 @@
 		<div id=africa>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/africa_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $africa[0]->cid; ?>">更多内容</a></div>	
+				<div class="title_more"><a target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=86&page=1">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><img border=0 src="<?php echo $africa[0]->photo_src; ?>"></a></div>
 			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><?php echo $africa[0]->description; ?></a></div>
@@ -93,7 +93,7 @@
 		<div id=worldsoccer>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/worldsoccer_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $worldsoccer[0]->cid; ?>">更多内容</a></div>	
+				<div class="title_more"><a target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=86&page=1">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><img border=0 src="<?php echo $worldsoccer[0]->photo_src; ?>"></a></div>
 			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><?php echo $worldsoccer[0]->description; ?></a></div>
