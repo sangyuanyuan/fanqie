@@ -42,8 +42,7 @@
 	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　内容</div>
-		<div id=m_r><?php show_fckeditor('pop[content]','Admin',true,"230",$pop[0]->content,"750");?></div>
-		<input type="hidden" name="his[user]" value="<?php echo $cookie; ?>">
+		<div id=m_r><?php show_fckeditor('pop[content]','Admin',true,"230",delhtml($pop[0]->content),"750");?></div>
 	</div>
 	<div id=b_button>
 			<button id="button_submit">提　交</button>

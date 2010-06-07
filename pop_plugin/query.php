@@ -7,7 +7,7 @@ $db->query("SELECT group_concat(task_id SEPARATOR \",\") as ids FROM smg_pop_his
 if($db->field_by_name('ids')){
 	$read_ids = "(" . $db->field_by_name('ids')  .")";
 }
-$sql = "select id,width,height from smg_pop_task where created_at >='" .date('Y-m-d') ."'";
+$sql = "select id,width,height from smg_pop_task where is_adopt=1 and created_at >='" .date('Y-m-d') ."'";
 if($read_ids){
 	$sql .= " and id not in {$read_ids}";
 }
