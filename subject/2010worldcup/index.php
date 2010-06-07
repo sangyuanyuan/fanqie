@@ -19,11 +19,11 @@
 <body>
 	<div id=logo></div>
 	<div id=ibody>
-		<?php $sql = 'select n.video_photo_src,n.video_src from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="世界杯视频" order by i.priority asc, n.created_at desc limit 4';
+		<?php $sql = 'select n.photo_url,n.video_url from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="video" and i.is_adopt=1 and c.name="南非世界杯视频" order by i.priority asc, n.created_at desc limit 4';
 				$record_video=$db -> query($sql);
 		?>
 		<div id=video>
-			<iframe id=video_src src="video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=463 height=322 scrolling="no" frameborder="0"></iframe>	
+			<iframe id=video_src src="video.php?photo=<?php echo $record_video[0]->photo_url; ?>&video=<?php echo $record_video[0]->video_url; ?>" width=463 height=322 scrolling="no" frameborder="0"></iframe>	
 		</div>
 		<?php 
 				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="赛程表" order by i.priority asc, n.created_at desc limit 1';

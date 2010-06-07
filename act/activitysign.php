@@ -57,7 +57,7 @@
 					<tr>
 						<td align="left"><input id="xb" name="xb" type="hidden" /><input type="hidden" id="userid" name="userid" value="<? echo $cookie;?>"></td>
 					</tr>
-					<tr><td></td><td><button OnClick="signuppost()">提　交</button></td><td  align="center"><a href="list.php?id=<?php echo $_REQUEST['id']; ?>">查看报名情况</a></td></tr>
+					<tr><td></td><td><!--<button OnClick="signuppost()">提　交</button>--></td><td  align="center"><a href="list.php?id=<?php echo $_REQUEST['id']; ?>">查看报名情况</a></td></tr>
 					<tr></tr>
 				</table>
 				</form>

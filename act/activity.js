@@ -19,7 +19,7 @@
 				alert('对不起您的工号已领取过，请不要重复领取！');
 				return false;
 			}
-			else if(data==10)
+			else if(data==15)
 			{
 				alert('对不起此时间段的票已被抢定完，谢谢参与！');
 				return false;	

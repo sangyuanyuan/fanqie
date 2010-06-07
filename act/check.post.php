@@ -10,9 +10,9 @@
 	{
 		$error=1;	
 	}
-	else if(count($cknum)==10)
+	else if(count($cknum)==15)
 	{
-		$error=10;	
+		$error=15;	
 	}
 	else if(count($ckname)==0)
 	{
