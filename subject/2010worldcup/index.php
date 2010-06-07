@@ -144,7 +144,7 @@
 				for($i=0;$i<$count;$i++){
 			?>
 			<div class=bottom_content param=<?php echo $i; ?> id=bottom_content<?php echo $i;?> <?php if($i>0){ ?>style="display:none;"<?php } ?>>
-				<?php for($j=0;$j<4;$j++){ ?>
+				<?php for($j=(0+$i*4);$j<(4+$i*4);$j++){ ?>
 					<div class=pic><a target="_blank" href="<?php echo $photo[$j]->url; ?>"><img border=0 src="<?php echo $photo[$j]->src; ?>"></a></div>
 				<?php } ?>	
 			</div>
