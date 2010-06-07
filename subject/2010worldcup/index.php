@@ -19,7 +19,7 @@
 <body>
 	<div id=logo></div>
 	<div id=ibody>
-		<?php $sql = 'select n.photo_url,n.video_url,n.title from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="video" and i.is_adopt=1 and c.name="南非世界杯视频" order by i.priority asc, n.created_at desc limit 4';
+		<?php $sql = 'select n.photo_url,n.video_url,n.title from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="video" and i.is_adopt=1 and c.name="南非世界杯视频" order by i.priority asc, n.created_at desc';
 				$record_video=$db -> query($sql);
 		?>
 		<div id=video>
@@ -64,9 +64,41 @@
 			</form>
 		</div>
 		<div id=video_bottom>
-			<?php for($i=1;$i<4;$i++){ ?>
-				<div class=video_pic param1=<?php echo $record_video[$i]->photo_url ?> param2=<?php echo $record_video[$i]->video_url ?>><img src="<?php echo $record_video[$i]->photo_url; ?>"><div class=pictitle><?php echo $record_video[$i]->title; ?></div></div>
-			<?php } ?>
+			<DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo10 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php  
+									$count = count($record_video);
+									for($i=0;$i<$count;$i++){
+								?>
+				                <TD><div class=video_pic param1=<?php echo $record_video[$i]->photo_url ?> param2=<?php echo $record_video[$i]->video_url ?>><img src="<?php echo $record_video[$i]->photo_url; ?>"><div class=pictitle><?php echo $record_video[$i]->title; ?></div></div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id="demo11" vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								        var demo9 = document.getElementById('demo9');
+										var demo10 = document.getElementById('demo10');
+										var demo11 = document.getElementById('demo11');  
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo11.innerHTML=demo10.innerHTML
+											function Marquee(){
+											if(demo11.offsetWidth-demo9.scrollLeft<=0)
+											demo9.scrollLeft-=demo10.offsetWidth
+											else{
+											demo9.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo9.onmouseover=function() {clearInterval(MyMar)}
+											demo9.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
 		</div>
 		<div id=gg><a href=""><img border=0 src="/images/worldcup/gg.jpg" /></div>
 		<?php 
