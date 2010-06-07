@@ -32,6 +32,7 @@
 		<div id=racecard>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/racecard_title.jpg"></div>
+				
 				<div class="title_more"></div>	
 			</div>
 			<div id=content><a target="_blank" href="/zone/news/news.php?id=<?php echo $racecard[0]->id; ?>"><?php echo $racecard[0]->content; ?></a></div>
@@ -40,6 +41,7 @@
 		<div id=comment>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/comment_title.jpg"></div>
+				<div class="adidas"><img src="/images/worldcup/adidas.jpg"></div>
 				<div class="title_more"><a target="_blank" href="/comment/comment_list.php?id=100000000&type=2010worldcup">更多留言</a></div>	
 			</div>
 			<div id=content>
