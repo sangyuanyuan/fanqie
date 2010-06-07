@@ -69,7 +69,7 @@
 		</div>
 		<div id=gg><a href=""><img border=0 src="/images/worldcup/gg.jpg" /></div>
 		<?php 
-				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 15';
+				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 15';
 				$africa=$db -> query($sql);
 		?>
 		<div id=africa>
@@ -78,7 +78,7 @@
 				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $africa[0]->cid; ?>">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><img border=0 src="<?php echo $africa[0]->photo_src; ?>"></a></div>
-			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><?php echo $africa[0]->content; ?></a></div>
+			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><?php echo $africa[0]->description; ?></a></div>
 			<div class=news_content>
 				<?php for($i=1;$i<14;$i++){ ?>
 					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[$i]->id; ?>"><?php echo $africa[$i]->title; ?></a></div>
@@ -86,7 +86,7 @@
 			</div>
 		</div>
 		<?php 
-				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 15';
+				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 15';
 				$worldsoccer=$db -> query($sql);
 		?>
 		<div id=worldsoccer>
@@ -95,7 +95,7 @@
 				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $worldsoccer[0]->cid; ?>">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><img border=0 src="<?php echo $worldsoccer[0]->photo_src; ?>"></a></div>
-			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><?php echo $worldsoccer[0]->content; ?></a></div>
+			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><?php echo $worldsoccer[0]->description; ?></a></div>
 			<div class=news_content>
 				<?php for($i=1;$i<14;$i++){ ?>
 					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[$i]->id; ?>"><?php echo $worldsoccer[$i]->title; ?></a></div>
