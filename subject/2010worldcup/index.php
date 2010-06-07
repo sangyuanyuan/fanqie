@@ -131,7 +131,7 @@
 		<div id=bottom>
 			<div id=turnleft></div>
 			<?php 
-				$sql = 'select n.photo_src,n.id from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="精彩图片" order by i.priority asc, n.created_at desc';
+				$sql = 'select n.src,n.url from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="photo" and i.is_adopt=1 and c.name="精彩图片" order by i.priority asc, n.created_at desc';
 				$photo=$db -> query($sql);
 				if(count($photo)%4==0)
 				{
@@ -145,7 +145,7 @@
 			?>
 			<div class=bottom_content param=<?php echo $i; ?> id=bottom_content<?php echo $i;?> <?php if($i>0){ ?>style="display:none;"<?php } ?>>
 				<?php for($j=0;$j<4;$j++){ ?>
-					<div class=pic><a target="_blank" href="/zone/news/news.php?id=<?php echo $photo[$i]->id; ?>"><img border=0 src="<?php echo $photo[$i]->photo_src; ?>"></a></div>
+					<div class=pic><a target="_blank" href="<?php echo $photo[$j]->url; ?>"><img border=0 src="<?php echo $photo[$j]->src; ?>"></a></div>
 				<?php } ?>	
 			</div>
 			<?php } ?>
