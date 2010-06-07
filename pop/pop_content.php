@@ -7,7 +7,6 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -弹出框管理</title>
 </head>
 <body scroll="no">
 	<?php

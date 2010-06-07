@@ -15,7 +15,7 @@
 #bottom{width:965px; height:145px; margin-top:10px; margin-left:15px; background:url('/images/worldcup/bottom.jpg') no-repeat; float:left; display:inline;}
 .title{width:457px; height:43px; margin-left:10px; background:url('/images/worldcup/title_line.jpg') 0 42px no-repeat; float:left; display:inline;}
 .title .title_left{height:35px; margin-top:7px; overflow:hidden;  float:left; display:inline;}
-.title .adidas{height:42px; margin-left:60px; overflow:hidden; float:left; display:inline;}
+.title .adidas{height:42px; margin-left:140px; overflow:hidden; float:left; display:inline;}
 .title .title_more{height:18px; margin-top:17px; margin-right:10px; line-height:18px; font-size:14px; font-weight:bold; float:right; display:inline;}
 .title .title_more a{color:#000000; text-decoration:none;}
 .photo{width:188px; height:124px; margin-top:10px; margin-left:20px; border:1px solid #cccccc; overflow:hidden; float:left; display:inline;}

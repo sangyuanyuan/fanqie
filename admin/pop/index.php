@@ -13,7 +13,7 @@
 	<?php
 		css_include_tag('admin');
 		use_jquery();
-		js_include_tag('admin_pub',,'total');	
+		js_include_tag('admin_pub','total');	
 	?>
 	<script>
 			total("后台","other");
@@ -34,7 +34,7 @@
 					<td><input style="width:12px;" type="checkbox" name="delete_news[]" value="<?php echo $record[$i]->id;?>"></td>
 					<td><?php echo $record[$i]->user; ?></td>
 					<td>
-						<?php echo $record[$i]->content; ?>
+						<?php echo delhtml($record[$i]->content); ?>
 					</td>
 					<td>
 						<?php echo $record[$i]->created_at; ?>
