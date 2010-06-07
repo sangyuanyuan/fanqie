@@ -129,28 +129,46 @@
 		
 		
 		<div id=bottom>
-			<div id=turnleft></div>
 			<?php 
 				$sql = 'select n.src,n.url from smg_subject_items i left join smg_images n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="photo" and i.is_adopt=1 and c.name="精彩图片" order by i.priority asc, n.created_at desc';
 				$photo=$db -> query($sql);
-				if(count($photo)%4==0)
-				{
-					$count=count($photo)/4;	
-				}
-				else
-				{
-					$count=count($photo)/4 + 1;		
-				}
-				for($i=0;$i<$count;$i++){
 			?>
-			<div class=bottom_content param=<?php echo $i; ?> id=bottom_content<?php echo $i;?> <?php if($i>0){ ?>style="display:none;"<?php } ?>>
-				<?php for($j=(0+$i*4);$j<(4+$i*4);$j++){ ?>
-					<div class=pic><a target="_blank" href="<?php echo $photo[$j]->url; ?>"><img border=0 src="<?php echo $photo[$j]->src; ?>"></a></div>
-				<?php } ?>	
+			<div class=bottom_content >
+				<DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo7 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php 
+													for($i=0;$i<count($photo);$i++){
+												?>
+				                <TD><div class=pic><a target="_blank" href="<?php echo $photo[$i]->url; ?>"><img border=0 src="<?php echo $photo[$i]->src; ?>"></a></div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id="demo8" vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								        var demo6 = document.getElementById('demo6');
+										var demo7 = document.getElementById('demo7');
+										var demo8 = document.getElementById('demo8');  
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo8.innerHTML=demo7.innerHTML
+											function Marquee(){
+											if(demo8.offsetWidth-demo6.scrollLeft<=0)
+											demo6.scrollLeft-=demo7.offsetWidth
+											else{
+											demo6.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo6.onmouseover=function() {clearInterval(MyMar)}
+											demo6.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
 			</div>
-			<?php } ?>
-			<div id=turnright></div>
-			<input type="hidden" id="hidden_count" value="<?php echo $count; ?>" >
 		</div>
 	</div>
 </body>
