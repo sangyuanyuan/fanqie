@@ -71,7 +71,7 @@
 	<div id="time"><?php echo $problem[0]->limit_time;?></div>
 	<div id="right_answer">
 		<?php
-			if($problem_id!=26&&$problem_id!=36){
+			if($problem_id!=26&&$problem_id!=36&&$problem_id!=50){
 				if($is_right==1){
 				echo "恭喜你答对了！";
 				}elseif($is_right==0){
@@ -197,7 +197,7 @@
 		if (answer == r_answer){
 			$("#r_point").attr('value', parseInt($("#r_point").attr('value'))+add_point);
 		}
-		tb_show('请填入您的个人信息','info.php?height=300&width=400&modal=true');
+		tb_show('请填入您的个人信息','info.php?height=300&width=400&modal=true&id=50');
 	});
 
 	function timer(){

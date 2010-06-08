@@ -19,7 +19,7 @@
 <body>
 	<div id=logo></div>
 	<div id=ibody>
-		<?php $sql = 'select n.photo_url,n.video_url from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="video" and i.is_adopt=1 and c.name="南非世界杯视频" order by i.priority asc, n.created_at desc limit 4';
+		<?php $sql = 'select n.photo_url,n.video_url,n.title from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="video" and i.is_adopt=1 and c.name="南非世界杯视频" order by i.priority asc, n.created_at desc';
 				$record_video=$db -> query($sql);
 		?>
 		<div id=video>
@@ -32,53 +32,77 @@
 		<div id=racecard>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/racecard_title.jpg"></div>
-				<div class="title_more"></div>	
+				<div class="title_more"><a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=2793&extra=page%3D1">电视直播表</a></div>	
 			</div>
 			<div id=content><a target="_blank" href="/zone/news/news.php?id=<?php echo $racecard[0]->id; ?>"><?php echo $racecard[0]->content; ?></a></div>
 		</div>
-		<?php $comment=$db->query('select * from smg_comment where resource_type="2010worldcup" and resource_id=100000000 order by created_at desc limit 4'); ?>
+		<?php $comment=$db->query('select * from smg_question where problem_id="50" order by create_time asc limit 5'); ?>
 		<div id=comment>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/comment_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="/comment/comment_list.php?id=100000000&type=2010worldcup">更多留言</a></div>	
+				<div class="adidas"><img src="/images/worldcup/adidas.jpg"></div>
+				<div class="title_more"></div>	
 			</div>
-			<div id=content>
+			<div style="width:100%; height:25px; line-height:25px; font-size:18px; color:#ff0000; text-align:center; float:left; display:inline;">参加活动的网友均有机会获得adidas精美小礼品</div>
+			<div id=answer>世界杯答题第一期</div><div id=submit>我要答题</div>
+			<div id=content>	
 				<?php for($i=0;$i<count($comment);$i++){ ?>
 					<div class=context <?php if($i==0){ ?>style="border-top:none;"<?php } ?>>
-						<div class=name>评论者：<?php echo $comment[$i]->nick_name; ?></div><div class=time><?php echo $comment[$i]->created_at; ?></div>
-						<div class=commentcontent><?php echo $comment[$i]->comment; ?></div>
+						<div class=commentcontent><a target="_blank" href="/answer/pro_answer.php?id=<?php echo $comment[$i]->problem_id; ?>"><?php echo $comment[$i]->title; ?></a></div>
 					</div>
 				<?php } ?>
 			</div>
-			<form id="subcomment" name="subcomment" method="post" action="/pub/pub.post.php">
-				<div id=commenter>
-					<div id=name>昵称：<input type="text" name="post[nick_name]"></div>
-					<div id=commentcontent>内容：<textarea id="contentcomment" name="post[comment]"></textarea></div>
-					<div id=submit>发送留言</div>
-					<input type="hidden" id="resource_id" name="post[resource_id]" value="100000000">
-					<input type="hidden" id="resource_type" name="post[resource_type]" value="2010worldcup">
-					<input type="hidden" id="target_url" name="post[target_url]" value="<?php $string = 'http://' .$_SERVER[HTTP_HOST] .$_SERVER[REQUEST_URI]; echo $string;?>">
-					<input type="hidden" name="type" value="comment">	
-				</div>
-			</form>
+			
 		</div>
 		<div id=video_bottom>
-			<?php for($i=1;$i<4;$i++){ ?>
-				<div class=video_pic param1=<?php echo $record_video[$i]->video_photo_src ?> param2=<?php echo $record_video[$i]->video_src ?>><img src="<?php echo $record_video[$i]->photo_src; ?>"></div>
-			<?php } ?>
+			<DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo10 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php  
+									$count = count($record_video);
+									for($i=0;$i<$count;$i++){
+								?>
+				                <TD><div class=video_pic param1=<?php echo $record_video[$i]->photo_url ?> param2=<?php echo $record_video[$i]->video_url ?>><img src="<?php echo $record_video[$i]->photo_url; ?>"><div class=pictitle><?php echo $record_video[$i]->title; ?></div></div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id="demo11" vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								        var demo9 = document.getElementById('demo9');
+										var demo10 = document.getElementById('demo10');
+										var demo11 = document.getElementById('demo11');  
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo11.innerHTML=demo10.innerHTML
+											function Marquee(){
+											if(demo11.offsetWidth-demo9.scrollLeft<=0)
+											demo9.scrollLeft-=demo10.offsetWidth
+											else{
+											demo9.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo9.onmouseover=function() {clearInterval(MyMar)}
+											demo9.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
 		</div>
 		<div id=gg><a href=""><img border=0 src="/images/worldcup/gg.jpg" /></div>
 		<?php 
-				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 15';
+				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 15';
 				$africa=$db -> query($sql);
 		?>
 		<div id=africa>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/africa_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $africa[0]->cid; ?>">更多内容</a></div>	
+				<div class="title_more"><a target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=86&page=1">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><img border=0 src="<?php echo $africa[0]->photo_src; ?>"></a></div>
-			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><?php echo $africa[0]->content; ?></a></div>
+			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><?php echo $africa[0]->description; ?></a></div>
 			<div class=news_content>
 				<?php for($i=1;$i<14;$i++){ ?>
 					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[$i]->id; ?>"><?php echo $africa[$i]->title; ?></a></div>
@@ -86,16 +110,16 @@
 			</div>
 		</div>
 		<?php 
-				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 15';
+				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 15';
 				$worldsoccer=$db -> query($sql);
 		?>
 		<div id=worldsoccer>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/worldsoccer_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $worldsoccer[0]->cid; ?>">更多内容</a></div>	
+				<div class="title_more"><a target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=86&page=1">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><img border=0 src="<?php echo $worldsoccer[0]->photo_src; ?>"></a></div>
-			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><?php echo $worldsoccer[0]->content; ?></a></div>
+			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><?php echo $worldsoccer[0]->description; ?></a></div>
 			<div class=news_content>
 				<?php for($i=1;$i<14;$i++){ ?>
 					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[$i]->id; ?>"><?php echo $worldsoccer[$i]->title; ?></a></div>
@@ -105,28 +129,46 @@
 		
 		
 		<div id=bottom>
-			<div id=turnleft></div>
 			<?php 
-				$sql = 'select n.photo_src,n.id from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="精彩图片" order by i.priority asc, n.created_at desc';
+				$sql = 'select n.src,n.url from smg_subject_items i left join smg_images n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="photo" and i.is_adopt=1 and c.name="精彩图片" order by i.priority asc, n.created_at desc';
 				$photo=$db -> query($sql);
-				if(count($photo)%4==0)
-				{
-					$count=count($photo)/4;	
-				}
-				else
-				{
-					$count=count($photo)/4 + 1;		
-				}
-				for($i=0;$i<$count;$i++){
 			?>
-			<div class=bottom_content param=<?php echo $i; ?> id=bottom_content<?php echo $i;?> <?php if($i>0){ ?>style="display:none;"<?php } ?>>
-				<?php for($j=0;$j<4;$j++){ ?>
-					<div class=pic><a target="_blank" href="/zone/news/news.php?id=<?php echo $photo[$i]->id; ?>"><img border=0 src="<?php echo $photo[$i]->photo_src; ?>"></a></div>
-				<?php } ?>	
+			<div class=bottom_content >
+				<DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
+				      <TABLE cellSpacing=0 cellPadding=0 border=0>
+				        <TBODY>
+				        <TR>
+				          <TD id=demo7 vAlign=top align=middle>
+				            <TABLE cellSpacing=0 cellPadding=2 border=0>
+				              <TBODY>
+				              <TR align=left>
+				              	<?php 
+													for($i=0;$i<count($photo);$i++){
+												?>
+				                <TD><div class=pic><a target="_blank" href="<?php echo $photo[$i]->url; ?>"><img border=0 src="<?php echo $photo[$i]->src; ?>"></a></div></TD>
+				                <? }?>
+				              </TR></TBODY></TABLE></TD>
+				          			<TD id="demo8" vAlign=top></TD></TR></TBODY></TABLE></DIV>
+								      <SCRIPT>
+								        var demo6 = document.getElementById('demo6');
+										var demo7 = document.getElementById('demo7');
+										var demo8 = document.getElementById('demo8');  
+								      	$(document).ready(function(){
+											var speed=30//速度数值越大速度越慢
+											demo8.innerHTML=demo7.innerHTML
+											function Marquee(){
+											if(demo8.offsetWidth-demo6.scrollLeft<=0)
+											demo6.scrollLeft-=demo7.offsetWidth
+											else{
+											demo6.scrollLeft++
+											}
+											}
+											var MyMar=setInterval(Marquee,speed)
+											demo6.onmouseover=function() {clearInterval(MyMar)}
+											demo6.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+										})
+									</SCRIPT>
 			</div>
-			<?php } ?>
-			<div id=turnright></div>
-			<input type="hidden" id="hidden_count" value="<?php echo $count; ?>" >
 		</div>
 	</div>
 </body>
@@ -167,17 +209,7 @@
 		});
 		
 		$("#submit").click(function(){
-			var content = $("#contentcomment").val();
-			if(content==""){
-				alert('评论内容不能为空！');
-				return false;
-			}
-			if(content.length>1500)
-			{
-				alert('评论内容过长请分次评论！');
-				return false;
-			}
-			document.subcomment.submit();
+			window.open('/answer/pro_answer.php?id=50');
 		});
 	});
 </script>

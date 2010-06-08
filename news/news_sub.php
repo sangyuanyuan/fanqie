@@ -14,7 +14,7 @@
   ?>
 <script>
 	total("我要报料","news");
-</script>	
+</script>
 </head>
 <body>
 <? require_once('../inc/top.inc.html');?>
