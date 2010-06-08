@@ -26,7 +26,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-直播专题</title>
+	<title>SMG-番茄网-南非世界杯专题</title>
 	<?php
 		use_jquery();
 		css_include_tag('show_video','smg','top','bottom');
@@ -34,7 +34,7 @@
  	?>
 </head>
 <script>
-	total("<?php echo $category->name;?>","other");	
+	total("世界杯专题","other");	
 </script>
 
 <body>
