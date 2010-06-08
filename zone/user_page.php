@@ -32,7 +32,16 @@
 	<?php require_once('../inc/top.inc.html');
 	js_include_once_tag('colorbox','zone_user_page');?>
 	<div id="ibody">
-		<div id="top_container"><a href="#" id="add_model">添加内容</a></div>
+		<div id="top_container">
+			<div id=top_left>
+				<?php $tt=$db->query('select id,title from smg_news where category_id in(1,2) order by priority asc,created_at desc limit 3'); ?>
+				<marquee height=24 scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
+					<?php for($i=0;$i<count($tt);$i++){ ?>
+						<div class=content><a target="_blank" href="/news/news/news.php?id=<?php echo $tt[$i]->id; ?>"><?php echo delhtml($tt[$i]->title); ?></a></div>
+					<?php } ?>
+				</marquee></div>
+			<div id=top_right><a href="#" id="add_model">添加内容</a></div>
+		</div>
 		<div id="left_container" class="sortable">
 			<?php 
 				foreach ($items as $item){
