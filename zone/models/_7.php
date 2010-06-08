@@ -8,7 +8,7 @@
 				if(strpos($param,'order')===0){
 					$order = explode('=',$param);
 					$order = $order[1];
-				}else{
+					}else if(strpos($param,'background-color') === false){
 					$con[] = $param;									
 				}
 			}

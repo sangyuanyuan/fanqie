@@ -34,6 +34,18 @@
 				模块名称：<input type="text" id="input_model_name"/>
 				<span class="explain">(在您的E世界中显示的名称，必填)</span>			
 			</div>
+			<div id="bgcolor">
+				背景颜色：<span id="select_color" style="background-color: #EFEFEF"">　</span>　请选择：
+				<span class="color" style="background-color: #EFEFEF">　</span>
+				<span class="color" style="background-color: #ff6600">　</span>
+				<span class="color" style="background-color: #99ccff">　</span>
+				<span class="color" style="background-color: #003399">　</span>
+				<span class="color" style="background-color: #009966">　</span>
+				<span class="color" style="background-color: #cc99cc">　</span>
+				<span class="color" style="background-color: #666666">　</span>
+				<span class="color" style="background-color: #ff3333">　</span>
+				<input type="hidden" id="title_color" value="#EFEFEF"" />
+			</div>
 			<div id="div_param">
 			</div>
 			
@@ -48,6 +60,7 @@
 		var param = 'position=' + $('#sel_position').val();
 		param += '&model_id=' + $('#sel_model_type').val();
 		param += '&model_name=' + $('#input_model_name').val();
+		param += '&param[]=background-color:' + $('#title_color').val();
 		$('#div_param select').each(function(){
 			param += '&param[]='+ $(this).attr('id')+'='+$(this).val();
 		}); 

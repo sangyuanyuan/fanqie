@@ -5,9 +5,12 @@
 	}
 	function render_model($model){
 		$params = $model->params;
+		if(preg_match_all('/background-color:[^|]*/',$params,$m,PREG_PATTERN_ORDER)){
+			$color = $m[0][0];
+		}
 ?>
 		<div class="model_container" id="<?php echo "user_model_id_".$model->id; ?>">
-			<div class="tool">
+			<div class="tool" <?php if($color){ echo " style='{$color}'";}?>>
 				<div class="model_name"><?php echo $model->display_name;?></div>
 				<div class="remove" title="删除"></div>
 			</div>

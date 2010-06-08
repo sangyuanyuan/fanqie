@@ -7,9 +7,7 @@
 	include 'lib/uchome_api.php';
 	#include 'lib/ActiveRecord.php';
 	#include 'inc/project_pubfun.php';
-	$find_param['limit'] = 5;
-	$find_param['order'] = 'dateline desc';
-	$find_param['condition'] = "a.tagid=8";
+
 	#$items = Uchomethread::find($find_param);
 	#var_dump($items);					
 	#$bloger = Bloger::find(1);
@@ -35,27 +33,9 @@
 	#$test->test1();
 	#$bloger = new Bloger();
 	#var_dump($bloger->_table_name);
-	
-	function fgetcsv_reg(& $handle, $length = null, $d = ',', $e = '"') {
-		$d = preg_quote($d);
-		$e = preg_quote($e);
-		$_line = "";
-		$eof=false;
-		while ($eof != true) {
-			$_line .= (empty ($length) ? fgets($handle) : fgets($handle, $length));
-			$itemcnt = preg_match_all('/' . $e . '/', $_line, $dummy);
-			if ($itemcnt % 2 == 0)$eof = true;
-		}
-		$_csv_line = preg_replace('/(?: |[ ])?$/', $d, trim($_line));
-		$_csv_pattern = '/(' . $e . '[^' . $e . ']*(?:' . $e . $e . '[^' . $e . ']*)*' . $e . '|[^' . $d . ']*)' . $d . '/';
-		preg_match_all($_csv_pattern, $_csv_line, $_csv_matches);
-		$_csv_data = $_csv_matches[1];
-		for ($_csv_i = 0; $_csv_i < count($_csv_data); $_csv_i++) {
-			$_csv_data[$_csv_i] = preg_replace('/^' . $e . '(.*)' . $e . '$/s', '$1', $_csv_data[$_csv_i]);
-			$_csv_data[$_csv_i] = str_replace($e . $e, $e, $_csv_data[$_csv_i]);
-		}
-		return empty ($_line) ? false : $_csv_data;
-	}
+	$str = "sdfasd|color1:#123123";
+	preg_match_all('/color:[^|]*/',$str,$m,PREG_PATTERN_ORDER);
+	echo $m[0][0];
 ?>
 
 <meta charset="UTF-8" />

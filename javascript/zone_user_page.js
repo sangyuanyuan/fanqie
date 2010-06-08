@@ -39,7 +39,12 @@ $(function() {
 
 	$('#add_model').click(function(e){
 		e.preventDefault();
-		$.fn.colorbox({href:'add_model.php',width:'600px', height:'420px'});
+		$.fn.colorbox({href:'add_model.php',width:'600px', height:'440px'});
+	});
+	
+	$('.color').live('click',function(){
+		$('#select_color').css('background-color',$(this).css('background-color'));
+		$('#title_color').val($(this).css('background-color'));
 	});
 	reset_size();
 });
