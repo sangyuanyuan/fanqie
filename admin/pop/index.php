@@ -22,6 +22,11 @@
 
 <body>
 	<table width="795" border="0" id="list">
+		<tr class="tr1">
+			<td colspan="4">
+				　<a target="_top" href="/pop/index.php">添加弹出框</a>
+			</td>
+		</tr>
 		<tr class="tr2">
 
 			<td width="55">删除</td><td width="220">发表人</td><td width="100">发表内容</td><td width="120">发布时间</td><td width="200">操作</td>

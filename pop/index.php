@@ -34,11 +34,11 @@
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　高度</div>
-		<div class=t_r><input type="text" name="pop[height]" value="<?php echo $pop[0]->height; ?>"></div>
+		<div class=t_r><input type="text" id="height" name="pop[height]" value="<?php echo $pop[0]->height; ?>"></div>
 	</div>
 	<div class=t>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　宽度</div>
-		<div class=t_r><input id="news_title" type="text" name="pop[width]" value="<?php echo $pop[0]->width; ?>"></div>
+		<div class=t_r><input id="width" type="text" name="pop[width]" value="<?php echo $pop[0]->width; ?>"></div>
 	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　内容</div>
@@ -56,7 +56,49 @@
 <script>
 	$(function(){
 		$('#button_submit').click(function(){
-			document.news_add.submit();
+			if($("#height").val()==""||$("#height").val()=="")
+			{
+				alert('请输入高宽！');
+				return false;
+			}
+			if(IsInteger($("#height").val(),'+')&&IsInteger($('#width').val(),'+'))
+			{
+				document.news_add.submit();
+			}
+			else
+			{
+				alert('请正确输入高宽！');
+				return false;
+			}
 		});
 	});
+	function IsInteger(string,sign)
+	{ 
+		var integer;
+		if((sign!=null)&&(sign!='-')&&(sign!='+'))
+		{
+			alert('IsInter(string,sign)的参数出错： sign为null或"-"或"+"');
+			return false;
+		}
+		integer = parseInt(string);
+		if (isNaN(integer))
+		{
+			return false;
+		}
+		else if (integer.toString().length==string.length)
+		{
+			if ((sign==null) || (sign=='-' && integer<0) || (sign=='+' && integer>0))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
 </script>
