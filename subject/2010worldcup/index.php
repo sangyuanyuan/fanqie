@@ -134,7 +134,7 @@
 				$photo=$db -> query($sql);
 			?>
 			<div class=bottom_content >
-				<DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 95%;">
+				<DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 100%;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
 				        <TR>
