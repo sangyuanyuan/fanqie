@@ -63,7 +63,7 @@
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
 			<?php }else{?>
-			<div class=l_b_l_l></div>
+			<div class=l_b_l_l <?php if($iscream!=""){ ?>style="background:url('/images/cream.gif') no-repeat;"<?php } ?>></div>
 					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
