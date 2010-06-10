@@ -45,7 +45,7 @@ p{margin:0px; padding:0px;}
 #t_l_m #content_t #imgtitle a{color:#000000; text-decoration:none;}
 #t_l_m #content_t #c_r{width:251px; height:100px; margin-top:5px; margin-right:5px; float:right; display:inline;}
 #t_l_m #content_t #c_r .crcl{width:251px; height:14px; line-height:14px; overflow:hidden; float:left; display:inline;}
-#t_l_m #content_t #c_r .crcl a{color:red; font-weight:bold; text-decoration:none;}
+#t_l_m #content_t #c_r .crcl a{padding-left:5px; background:url('/images/index/redjiantou.jpg') 0 5 no-repeat; color:red; font-weight:bold; text-decoration:none;}
 #t_l_m #content_b{width:261px; height:308px; overflow:hidden; float:left; display:inline;}
 #t_l_m #content_b .cbcl{width:251px; height:14px; margin-left:5px; line-height:14px; overflow:hidden; float:left; display:inline;}
 #t_l_m #content_b .cbcl a{padding-left:5px; color:#666666; background:url('/images/index/jiantou.jpg') 0 5 no-repeat; text-decoration:none;}
