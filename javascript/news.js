@@ -40,7 +40,13 @@
 				}
 			});
 			total('新闻DIGG','news');
-		})
+		});
+		
+		$("#cream").click(function(){
+			$.post("/pub/pub.post.php",{'type':'cream','id':$(this).attr('param')},function(data){
+				location.reload();
+			});
+		});
 		
 		$(".b_t_title1").mouseover(function(){		
 			$(".b_t_title1").css("background","url(/images/news/news_r_title_bg.jpg) repeat-x");

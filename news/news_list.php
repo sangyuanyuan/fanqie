@@ -3,6 +3,7 @@
 	$id=$_REQUEST['id'];
 	$tags=urldecode($_REQUEST['tags']);
 	$type=$_REQUEST['type'];
+	$iscream=$_REQUEST['cream'];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -31,7 +32,10 @@
 		{
 			$sql="select title,platform,id,created_at,category_id from smg_news where is_adopt=1 order by created_at desc";	
 		}
-		
+		if($id==4&&$iscream!="")
+		{
+			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id." and n.cream>=50 order by n.priority asc,n.created_at desc";
+		}
 		$record=$db->paginate($sql,30);		
   ?>
 <script>
@@ -46,22 +50,20 @@
 			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><?php if($id!=""||$id!=null){ ?><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a><?php } else if($tags!=""||$tags!=null){?><a href="news_list.php?tags=<? echo $tags;?>"></a><?php echo $tags;?><?php } else{ ?><a href="news_list.php">所有新闻</a><? }?>
 		</div>
 		<div id=l_b>
-			<?php if($id==157)
+			<?php if($id==4)
 			{ ?>
-			<div style="width:660px; height:23px; padding-top:7px; padding-left:20px; background:url(/images/news/bg.jpg) no-repeat; font-size:16px; font-weight:bold; float:left; display:inline;">改革发展调研</div>
-			<div style="width:670px; background:#cccccc; padding-top:7px; padding-left:10px; margin-bottom:20px; font-size:14px; font-weight:bold; float:left; display:inline;"><span style="color:red">小编提示：</span>10月21日，上海广播电视台、上海东方传媒集团有限公司揭牌。这标志着上海广播电视改革发展迈入了新的历史征程。处于这样一个特殊时期，我们广电人应该有何作为？我们要如何加强广播电视台的管理职能，壮大广播电视事业？如何激发内部活力，打造未来在中国乃至国际具有广泛影响的大型骨干文化企业和让我们民族引以为骄傲的传媒品牌？
-围绕这些主题，上海广播电视台台长黎瑞刚将于近期陆续前往各个部门开展调研活动，每次调研的讲话稿以及相关内容都将刊登在番茄网“改革发展调研”专区，敬请关注！</div>
+			<div style="width:670px; padding-top:7px; padding-left:10px; margin-bottom:20px; font-size:14px; font-weight:bold; float:left; display:inline;"><a style="color:#000000" target="_blank" href="news_list.php?id=4&cream=cream">精华报料</a>　　<a style="color:#000000" target="_blank" href="news_list.php?id=4">全部报料</a></div>
 			<?php } ?>
 			<?php for($i=0;$i<count($record);$i++){
 				?>
 				<div class=l_b_l>
 					<?php if($type==""){  if($record[$i]->category_id==1||$record[$i]->category_id==2){ ?>
-					<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+					<div class=l_b_l_l></div>
 					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news_head.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
 			<?php }else{?>
-			<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+			<div class=l_b_l_l></div>
 					<div class=l_b_l_r><a target="_blank" href="/<?php echo $record[$i]->platform;?>/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
