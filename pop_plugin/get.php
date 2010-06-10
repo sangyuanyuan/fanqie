@@ -9,3 +9,4 @@ if($db->record_count <=0 ) die();
 $content = $db->field_by_name('content');
 $db->execute("insert into smg_pop_history (created_at,task_id,user) values (now(),{$id},'{$user}') ");
 echo $content;
+?>
