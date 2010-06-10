@@ -15,7 +15,7 @@
                 <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
                 	<?php for($i=0;$i<count($comment);$i++){ ?>
                   <tr>
-                    <td class="height180 txtLeft"><span class="bigblue b">张大中：</span><span class="gray">党员心声党员心声心声党员心声心声党员心声心声党员心声心声党员心声心声党员心声心声党员心声心声党员心声心声党员心声党员心声</span></td>
+                    <td class="height180 txtLeft"><span class="bigblue b"><?php echo $comment[$i]->nick_name; ?>：</span><span class="gray"><?php echo $comment[$i]->comment; ?></span></td>
                   </tr>
                   <tr>
                     <td><img src="images/listline.gif" width="494" height="4" /></td>
