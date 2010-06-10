@@ -32,7 +32,7 @@
 		<div id=racecard>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/racecard_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=2856&extra=">电视直播表</a></div>	
+				<div class="title_more"><a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=2856&extra=">世界杯视频资料库</a>　<a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=2856&extra=">电视直播表</a></div>	
 			</div>
 			<div id=content><a target="_blank" href="/zone/news/news.php?id=<?php echo $racecard[0]->id; ?>"><?php echo $racecard[0]->content; ?></a></div>
 		</div>
