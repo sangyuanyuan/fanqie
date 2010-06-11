@@ -26,6 +26,7 @@
 	$find_param['order'] = $order ? $order : ' dateline desc';
 	$find_param['condition'] = $con;
 	$find_param['limit'] = 5;
+	$find_param['group'] = 'itemid';
 	$images = BlogImages::find($find_param);
 	$len = count($images);
 ?>
