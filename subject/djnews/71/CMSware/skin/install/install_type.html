@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<title>[$version] 安装向导</title>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="Description" CONTENT="">
+</HEAD>
+<style type="text/css">
+<include: file="installstyle.css">
+</style>
+
+<script  type="text/javascript" language="javascript" src="html/title_fade.js"></script>
+<script src="html/functions.js" type="text/javascript" language="javascript"></script>
+<body bgcolor="" TOPMARGIN="0" LEFTMARGIN="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="80%" height="70" bgcolor="#2D66B5"><img src="html/images/install.gif" ></td>
+    <td><table width="100%" height="70" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td bgcolor="#2E68B8">&nbsp;</td>
+          <td bgcolor="#4D86D2">&nbsp;</td>
+          <td bgcolor="#739FDB">&nbsp;</td>
+          <td bgcolor="#9ABAE4">&nbsp;</td>
+          <td bgcolor="#C6D8F0">&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="20">&nbsp;</td>
+  </tr>
+</table>
+<form action="install.php" method="post" >
+  <table width="70%" border="0" align="center" cellpadding="8" cellspacing="0" class="fixline">
+    <tr> 
+      <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td align="center" bgcolor="#ececec"> 
+			
+			<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#2E68B8">
+                <tr> 
+                  <td   bgcolor="#2E68B8"><font color="#FFFFFF">&nbsp;请选择安装类型：</font></td>
+                </tr>
+                <tr> 
+                  <td bgcolor="#ececec">
+<INPUT TYPE="radio" NAME="installType" id="installType" value="typical" checked><label for="installType"><B>典型安装</B></label><BR>
+<BLOCKQUOTE>典型安装将默认安装新闻、下载、图片、产品、影视、供求、话题这6大模块，实现一次安装，即刻使用。初级用户无需自己创建内容模型、结点、修改模板，只需进行简单的后台操作，即可在短时间内将默认站点改为自己的需求。<BR>（初级用户强烈建议选择“典型安装”）</BLOCKQUOTE>
+<INPUT TYPE="radio" NAME="installType" value="simple" id="installType1"><label for="installType1"><B>精简安装</B></label><BR>
+<BLOCKQUOTE>精简安装将只安装CMSware的基础框架，高级用户可以基于此框架自由设计自己的网站结构。<BR>（适用于对CMSware比较熟悉的高级用户）</BLOCKQUOTE>
+</td>
+                  
+                </tr>
+				<tr>
+				<td bgcolor="#ececec">
+<if test="file_exists('../cwps')">
+<input type="radio" name="installCWPS" checked="checked" id="installcwps" value="1"><label for="installcwps"><B>同时安装CWPS</B></label>
+&nbsp;&nbsp;<input type="radio" name="installCWPS" id="noinstallcwps" value="0"><label for="noinstallcwps"><B>不要安装CWPS</B></label><BR>
+<else>
+<input type="radio" name="installCWPS" checked="checked" id="noinstallcwps" value="0"><label for="noinstallcwps"><B>不安装CWPS(因为无法检测到../cwps目录，所以无法自动同时安装)</B></label><BR>
+</if>
+<BLOCKQUOTE>CWPS是通行证会员系统模块，典型安装中默认模块的会员功能都需要CWPS。您可以自行独立安装CWPS，也可以在这里打勾同时安装，会安装到同一个数据库，表前缀不同。<BR>（初级用户强烈建议选择“同时安装”）</BLOCKQUOTE>				
+				</td>
+				</tr>
+                
+              </table></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td height="20">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td align="center"  ><input name="step" type="hidden" id="step" value="2"> 
+        <input name="Submit2" type="button" class="subbutton" value="上一步" onClick="javascript:history.go(-1);"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input name="Submit" type="submit" class="subbutton" value="下一步" > 
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

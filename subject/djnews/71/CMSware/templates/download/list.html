@@ -1,0 +1,102 @@
+<include file="header.html" />
+
+<div id="left">
+<include file="search_box.html"/>
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>其他类别下载Top10</h3>
+<ul>
+
+<!--调用下载系统模型(TableID=2)最热总点击前10条记录-->
+<CMS action="LIST" return="List"  where="co.TableID=2" orderby="Hits_Total" TableID="2" num="10" />
+<LOOP $List var=var key=key> 
+<li><a href=" [$var.URL] " target=_blank title=" [$var.SoftName] " >[@CsubStr($var.SoftName, 0, 16)] </a>
+<span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span> </li>
+</LOOP> 
+
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+
+
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>[$NodeInfo.Name]下载Top10</h3>
+<ul>
+
+<!--调用下载系统模型(TableID=2)最热总点击前10条记录-->
+<CMS action="LIST" return="List" NodeID="self" orderby="Hits_Total" TableID="2" num="10" />
+<LOOP $List var=var key=key> 
+<li><a href=" [$var.URL] " target=_blank title=" [$var.SoftName] " >[@CsubStr($var.SoftName, 0, 16)] </a>
+<span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span> </li>
+</LOOP> 
+
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+<include file="../copyright.html" />
+
+</div><!--left end-->
+
+<div id="right">
+
+<div class="box_l">
+<div class="box_l_t">&nbsp;</div>
+<div class="box_l_c">
+
+<div class="soft_sort">
+<ul>
+<li class="s1"><a href="#" title="按照软件名称进行排序">软件名称</a></li>
+<li class="s2"><a href="#" title="按照更新时间进行排序">更新时间</a></li>
+<li class="s3"><a href="#" title="按照软件大小进行排序">软件大小</a></li>
+<li class="s4"><a href="#" title="按照下载人气进行排序">下载人气</a></li>
+<li class="s5"><a href="#" title="按照软件评价进行排序">软件评价</a></li>
+</ul>
+</div>
+
+<div class="li_s">
+<CMS action="LIST" return="List" NodeID="self" TableID="2" Num="page-15" /> 
+<LOOP name="List" var="var" key="key" >
+
+<ul class="u1">
+<li class="s1"><h4><a href="[$var.URL]">[$var.SoftName]</a></h4></li>
+<li class="s2">[@date('Y-m-d',$var.PublishDate)]</li>
+<li class="s3">[$var.SoftSize]</li>
+<li class="s4">[$var.Hits_Total]</li>
+<li class="s5"><img alt="" src="[$Skin_Images]pale_blue_skin/images/star[$var.Star].gif" width="74" height="14" /></li>
+</ul>
+<div>[@CsubStr($var.Intro, 0, 80)]</div>
+<ul class="u2">
+<li class="s6"><span>语言界面：</span>[$var.Language]</li>
+<li class="s7"><span>软件类别：</span>[$var.SoftType]</li>
+<li class="s8"><span>运行平台：</span>[$var.Environment]</li>
+</ul>
+</LOOP>
+
+</div>
+<div class="list_page" align="right">
+<ul>
+<li>
+第 <FONT color="red"><B>[$PageInfo.CurrentPage]</B></FONT> 页,共 <B>[$PageInfo.TotalPage]</B> 页&nbsp;&nbsp; 共<B>[$PageInfo.TotalNum]</B>条记录&nbsp;&nbsp;
+							  
+[@list_page( $PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)] <BR>
+  </li>
+</ul>
+</div>
+</div>
+
+</div>
+<div class="box_l_b">&nbsp;</div>
+</div><span class="cls"></span>
+
+</div>
+<include  file="../footer.html" />
+</body> 
+</html>

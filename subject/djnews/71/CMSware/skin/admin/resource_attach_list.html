@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD> <META HTTP-EQUIV="Pragma" CONTENT="no-cache"> <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> <META HTTP-EQUIV="Expires" CONTENT="0"> 
+<TITLE>{lang:topic}</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]">
+
+
+</HEAD>
+<style>
+body,tr,td,select {
+	color: #000000;
+	font-size: 11px; font-family: Tahoma, Arial;
+	
+}
+
+div.imagespacer {
+	width: [$width];
+	height: 18;
+	text-align: left;			
+	float: left;
+	font: 10pt verdana;
+	margin: 0px;
+	overflow: hidden;
+}
+div.imageholder {
+	margin: 0px;
+	padding: 0px;
+	cursor: default;
+}
+
+div.titleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 100;
+	text-overflow: ellipsis;
+ 	white-space: nowrap;			
+}		
+
+</style>
+<script language="javascript">
+lastDiv = null;
+if('[$PATH]' == '/') {
+	var PATH = '';
+
+} else {
+	var PATH = '[$PATH]';
+
+}
+function divClick(theDiv ) 
+{
+	if (lastDiv) {
+		//lastDiv.style.border = "1 solid #CCCCCC";
+		lastDiv.style.background = "#FFFFFF";
+		lastDiv.style.color = "#000000"
+	}
+	lastDiv = theDiv;
+	//theDiv.style.border = "2 solid #316AC5";
+	theDiv.style.background = "#000066";
+	lastDiv.style.color = "#FFFFFF"
+ 	//document.getElementById("FileToDelete").value = filename;
+
+}
+
+function opendir(dirname)
+{	
+	PATH = PATH + '/' + dirname;
+	window.location = 'admin_select.php?sId=[$sId]&o=tpl_list_file&PATH=' + PATH
+}
+
+var message = '[$message]'
+switch(message) {
+	case '1':
+		alert("{lang:mkdir_ok}");
+		break;
+	case '2':
+		alert("{lang:mkdir_fail}");
+		break;
+
+}
+</script>	
+
+<body leftmargin="0" topmargin="0" >
+<loop name="List" key="key" var="var">
+ 
+	<div class="imagespacer" >			
+			<TABLE border="0" cellpadding="0" cellspacing="2">
+			<TR>
+				<TD width=16 height=16>
+
+<?php preg_match("/\.([a-zA-Z0-9]+)$/isU" ,$this->_tpl_vars['var']['Path'], $match); ?>
+ <IMG src="../html/images/icon/<?=$match[1]?>.gif" border=0  width="16" height="16">				
+
+</TD>
+				<TD>
+					<if test="$var.Title == ''">
+			<op exp=" $Name = $var.Name " />
+			<else>
+				<op exp=" $Name = $var.Title " />
+ 			</if>
+
+				<div class="titleholder" ondblclick=""  onclick="divClick(this);parent.document.form.fileName.value='[$var.Name]';parent.document.form.returnFileName.value='[$SYS_ENV.ResourcePath]/[$var.Path]'; " title="[$Name]" >
+				[$Name]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</div>
+				</TD>
+			</TR>
+			</TABLE>	
+	</div>
+ 
+
+</loop> 
+</body>
+</html>

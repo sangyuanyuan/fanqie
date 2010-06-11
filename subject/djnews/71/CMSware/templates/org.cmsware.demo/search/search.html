@@ -1,0 +1,271 @@
+<include file="header.html"/>
+<if test=" $TableID == 1 || $TableID == ''">
+<TABLE cellSpacing="3" cellPadding="0" width="98%" align="center"  border="0">
+<TR> <TD align="center">
+<fieldset class="search">
+  <FORM name="searchForm" action="[$PUBLISH_URL]search.php?o=search&TableID=1" method="post">
+	<legend><b>文章搜索</b></legend>
+
+ <table   border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td style="height:30px;">搜索关键字：</td>
+    <td><INPUT name="Keywords" id="Keywords" size="50"  ></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td style="padding-left:12px;height:22px;background:#DEDFD6;border-bottom:1px solid #c0c0B3;border-top:1px solid #c0c0B3;">搜索选项</td>
+  </tr>
+</table>
+
+<TABLE cellSpacing="1" cellPadding="4" width="100%" border="0">
+  <TBODY>
+    <TR> 
+      <TD>选择搜索字段</TD>
+      <TD>请选择分类</TD>
+    </TR>
+    <TR> 
+      <TD width="50%" > <SELECT name="Field">
+          <option value="Title" selected>标题&nbsp;&nbsp;&nbsp;&nbsp;</option>
+          <option value="Content">内容</option>
+        </SELECT></TD>
+      <TD rowSpan=3> <SELECT name="NodeID[]" size="6" multiple>
+          <loop name="NODE_LIST" var="var" key="key">
+					<if test="$var.PublishMode != 0 && $var.TableID == 1">
+                    <option value='[$var.NodeID]'  >[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+					</if>
+                </loop>
+        </SELECT> <BR> <INPUT type="checkbox"  value="1" name="Sub" CHECKED>
+        搜索子分类</TD>
+    </TR>
+    <TR> 
+      <TD>日期限制 </TD>
+    </TR>
+    <TR> 
+      <TD><SELECT name="Time">
+          <option value="30">最近一个月内发布的文章</option>
+          <option value="60">在两个月内发布的文章</option>
+          <option value="90">在三个月内发布的文章</option>
+          <option value="180">在半年内发布的文章</option>
+          <option value="360">一年内发布的文章</option>
+          <option value="0" selected>任何时间发布的文章</option>
+        </SELECT> </TD>
+    </TR>
+    <TR  > 
+      <TD colSpan="2"><CENTER><INPUT name="button" type="submit" class="button"  value=" 搜  索 " onClick="if(this.form.Keywords.value=='') {alert('请输入关键字');return false;}"> &nbsp;&nbsp;
+        <INPUT name="reset" type="reset" class="button" value=" 重  置 "></CENTER> </TD>
+    </TR>
+</TABLE> 
+        
+  </FORM>
+
+</fieldset>
+</TD></TR></table>
+ <BR>
+
+</if>
+<if test=" $TableID == 2 || $TableID == ''">
+
+<!--{{{软件搜索-->
+<TABLE cellSpacing="3" cellPadding="0" width="98%" align="center"  border="0">
+<TR> <TD align="center">
+<fieldset class="search">
+  <FORM name="searchForm" action="[$PUBLISH_URL]search.php?o=search&TableID=2" method="post">
+	<legend><b>软件搜索</b></legend>
+
+ <table   border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td style="height:30px;">搜索关键字：</td>
+    <td><INPUT name="Keywords" id="Keywords" size="50"  ></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td style="padding-left:12px;height:22px;background:#DEDFD6;border-bottom:1px solid #c0c0B3;border-top:1px solid #c0c0B3;">搜索选项</td>
+  </tr>
+</table>
+
+<TABLE cellSpacing="1" cellPadding="4" width="100%" border="0">
+  <TBODY>
+    <TR> 
+      <TD>选择搜索字段</TD>
+      <TD>请选择分类</TD>
+    </TR>
+    <TR> 
+      <TD width="50%" > <SELECT name="Field">
+          <option value="SoftName" selected>软件名称&nbsp;&nbsp;&nbsp;&nbsp;</option>
+          <option value="Intro">软件介绍</option>
+        </SELECT></TD>
+      <TD rowSpan=3> <SELECT name="NodeID[]" size="6" multiple>
+          <loop name="NODE_LIST" var="var" key="key">
+					<if test="$var.PublishMode != 0 && $var.TableID == 2">
+                    <option value='[$var.NodeID]'  >[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+					</if>
+                </loop>
+        </SELECT> <BR> <INPUT type="checkbox"  value="1" name="Sub" CHECKED>
+        搜索子分类</TD>
+    </TR>
+    <TR> 
+      <TD>日期限制 </TD>
+    </TR>
+    <TR> 
+      <TD><SELECT name="Time">
+          <option value="30">最近一个月内发布的文章</option>
+          <option value="60">在两个月内发布的文章</option>
+          <option value="90">在三个月内发布的文章</option>
+          <option value="180">在半年内发布的文章</option>
+          <option value="360">一年内发布的文章</option>
+          <option value="0" selected>任何时间发布的文章</option>
+        </SELECT> </TD>
+    </TR>
+    <TR  > 
+      <TD colSpan="2"><CENTER><INPUT name="button" type="submit" class="button"  value=" 搜  索 " onClick="if(this.form.Keywords.value=='') {alert('请输入关键字');return false;}"> &nbsp;&nbsp;
+        <INPUT name="reset" type="reset" class="button" value=" 重  置 "></CENTER> </TD>
+    </TR>
+</TABLE> 
+        
+  </FORM>
+
+</fieldset>
+</TD></TR></table>
+<BR>
+
+<!--}}}-->
+</if>
+
+<if test=" $TableID == 6 || $TableID == ''">
+<!--{{{图片搜索-->
+<TABLE cellSpacing="3" cellPadding="0" width="98%" align="center"  border="0">
+<TR> <TD align="center">
+<fieldset class="search">
+  <FORM name="searchForm" action="[$PUBLISH_URL]search.php?o=search&TableID=6" method="post">
+	<legend><b>图片搜索</b></legend>
+
+ <table   border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td style="height:30px;">搜索关键字：</td>
+    <td><INPUT name="Keywords" id="Keywords" size="50"  ></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td style="padding-left:12px;height:22px;background:#DEDFD6;border-bottom:1px solid #c0c0B3;border-top:1px solid #c0c0B3;">搜索选项</td>
+  </tr>
+</table>
+
+<TABLE cellSpacing="1" cellPadding="4" width="100%" border="0">
+  <TBODY>
+    <TR> 
+      <TD>选择搜索字段</TD>
+      <TD>请选择分类</TD>
+    </TR>
+    <TR> 
+      <TD width="50%" > <SELECT name="Field">
+          <option value="PhotoName" selected>图片名称&nbsp;&nbsp;&nbsp;&nbsp;</option>
+          <option value="PhotoIntro">图片介绍</option>
+        </SELECT></TD>
+      <TD rowSpan=3> <SELECT name="NodeID[]" size="6" multiple>
+          <loop name="NODE_LIST" var="var" key="key">
+					<if test="$var.PublishMode != 0 && $var.TableID == 6">
+                    <option value='[$var.NodeID]'  >[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+					</if>
+                </loop>
+        </SELECT> <BR> <INPUT type="checkbox"  value="1" name="Sub" CHECKED>
+        搜索子分类</TD>
+    </TR>
+    <TR> 
+      <TD>日期限制 </TD>
+    </TR>
+    <TR> 
+      <TD><SELECT name="Time">
+          <option value="30">最近一个月内发布的文章</option>
+          <option value="60">在两个月内发布的文章</option>
+          <option value="90">在三个月内发布的文章</option>
+          <option value="180">在半年内发布的文章</option>
+          <option value="360">一年内发布的文章</option>
+          <option value="0" selected>任何时间发布的文章</option>
+        </SELECT> </TD>
+    </TR>
+    <TR  > 
+      <TD colSpan="2"><CENTER><INPUT name="button" type="submit" class="button"  value=" 搜  索 " onClick="if(this.form.Keywords.value=='') {alert('请输入关键字');return false;}"> &nbsp;&nbsp;
+        <INPUT name="reset" type="reset" class="button" value=" 重  置 "></CENTER> </TD>
+    </TR>
+</TABLE> 
+        
+  </FORM>
+
+</fieldset>
+</TD></TR></table>
+<!--}}}-->
+</if>
+
+
+
+
+<if test=" $TableID == 3 || $TableID == ''">
+<!--{{{Flash搜索-->
+<TABLE cellSpacing="3" cellPadding="0" width="98%" align="center"  border="0">
+<TR> <TD align="center">
+<fieldset class="search">
+  <FORM name="searchForm" action="[$PUBLISH_URL]search.php?o=search&TableID=3" method="post">
+	<legend><b>Flash搜索</b></legend>
+
+ <table   border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td style="height:30px;">搜索关键字：</td>
+    <td><INPUT name="Keywords" id="Keywords" size="50"  ></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td style="padding-left:12px;height:22px;background:#DEDFD6;border-bottom:1px solid #c0c0B3;border-top:1px solid #c0c0B3;">搜索选项</td>
+  </tr>
+</table>
+
+<TABLE cellSpacing="1" cellPadding="4" width="100%" border="0">
+  <TBODY>
+    <TR> 
+      <TD>选择搜索字段</TD>
+      <TD>请选择分类</TD>
+    </TR>
+    <TR> 
+      <TD width="50%" > <SELECT name="Field">
+          <option value="Title" selected>Flash名称&nbsp;&nbsp;&nbsp;&nbsp;</option>
+          <option value="Author">Flash作者</option>
+          <option value="Intro">Flash介绍</option>
+        </SELECT></TD>
+      <TD rowSpan=3> <SELECT name="NodeID[]" size="6" multiple>
+          <loop name="NODE_LIST" var="var" key="key">
+					<if test="$var.PublishMode != 0 && $var.TableID == 3">
+                    <option value='[$var.NodeID]'  >[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+					</if>
+                </loop>
+        </SELECT> <BR> <INPUT type="checkbox"  value="1" name="Sub" CHECKED>
+        搜索子分类</TD>
+    </TR>
+    <TR> 
+      <TD>日期限制 </TD>
+    </TR>
+    <TR> 
+      <TD><SELECT name="Time">
+          <option value="30">最近一个月内发布的文章</option>
+          <option value="60">在两个月内发布的文章</option>
+          <option value="90">在三个月内发布的文章</option>
+          <option value="180">在半年内发布的文章</option>
+          <option value="360">一年内发布的文章</option>
+          <option value="0" selected>任何时间发布的文章</option>
+        </SELECT> </TD>
+    </TR>
+    <TR  > 
+      <TD colSpan="2"><CENTER><INPUT name="button" type="submit" class="button"  value=" 搜  索 " onClick="if(this.form.Keywords.value=='') {alert('请输入关键字');return false;}"> &nbsp;&nbsp;
+        <INPUT name="reset" type="reset" class="button" value=" 重  置 "></CENTER> </TD>
+    </TR>
+</TABLE> 
+        
+  </FORM>
+
+</fieldset>
+</TD></TR></table>
+<!--}}}-->
+</if>
+<include file="../footer.html"/>

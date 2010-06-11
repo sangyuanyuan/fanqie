@@ -1,0 +1,118 @@
+OAS:通行证系统的客户端接口
+-----------------------------
+
+用于CWPS通行证会员系统连接，执行登录、注册、退出等动作，并提供编程接口可获取会员信息。
+也用于和其它系统进行整合，本版本oas中提供了与Discuz,PHPWind,VBB的整合方法。
+
+
+本OAS调整了处理机制，相比较上一版本而言，效率有了显著的提高，上一版本中出现的同步登陆登出问题也得了很完善的解决，同时，如果你的网站中有多个应用系统需要整合，不再需要分别使用不同的OAS，所有的应用系统的整合，使用的OAS端都可以只有这一个，除非你的各个应用系统使用的主域名不一样，只要主域名相同，基于该主域名下的所有子域名都可共享本OAS的处理。
+本OAS将会逐渐支持更多的应用系统，使得各个应用系统同步登陆登出，实现用户信息共享！
+
+(如果是集成进CMSware2.85版本的OAS目录，就不需要做安装的工作，只需要修改配置文件即可)
+
+
+安装说明：
+1.将oas目录上传至你的服务器上的任何地方，目录名可任意修改，甚至可以给该目录专门指定一个二级域名。
+2.修改oas.config.php文件中的设置，注意该文件中的所有需要提供URL的地方，请勿必在最后跟上反斜杠"/"。
+3.$SYS_ENV['passport_key']值主要用来参与加密解密，可以设置为任意值，建议设置复杂一些，各个应用系统在跟共享OAS通信时都需要提供该值。
+4.$SYS_ENV['main_domain']值比较重要，如果你的主域名为cmsware.com,请将该值设为".cmsware.com",这样OAS所发送的COOKIE信息才会在你的整个主域名下的二级域名中生效
+5."应用程序配置"部份，可以根据自己的需要配置，比如你装有Discuz并希望整合Discuz就将Discuz项配好，其它项不用管。
+6.如果只是想使用此OAS作为登陆处理，而并不整合其它应用系统，比如，你想在某些自已写的.php文件，或者自己的网站页面中实现获取当前CWPS登陆用户信息，如果未登陆，则显示登陆注册按钮，如果登陆了，则显示当前登陆用户信息，那么你可以按照如下方法：
+在你需要的页面顶部，使用include命令将oas目录中的getuserinfo.php文件包含进来，此文件是直接有返回值的，所以可以类似这样处理:
+<?php
+$UserInfo = include_once("../../oas/getuserinfo.php");
+if(!is_array($UserInfo)) {
+	//当前用户未登陆，则处理显示登陆注册按钮或是直接跳转到OAS登陆处理过程
+} else {
+	echo "当前登陆用户的登陆信息为：<br />";
+	print_r($UserInfo);
+}
+?>
+在以上示例中，需要注意，显示登陆按钮时，按钮地址应为你的OAS登陆地址，而不能直接指向CWPS，是否跳转到CWPS登陆应该由OAS来处理判断，并且，登陆按钮地址中还必须指出，当登陆成功后将跳转的页面，也就是必须加入forward参数，forward参数最好通过rawurlencode()函数处理后再传递，例如：
+<?php echo "<a href='http://www.cmsware.com/oas/login.php?forward=".rawurlencode("http://www.cmsware.com")."'>登陆</a>"; ?>
+注册和退出按钮同样的道理：
+<?php echo "<a href='http://www.cmsware.com/oas/register.php?forward=".rawurlencode("http://www.cmsware.com")."'>注册</a>"; ?>
+<?php echo "<a href='http://www.cmsware.com/oas/logout.php?forward=".rawurlencode("http://www.cmsware.com")."'>退出</a>"; ?>
+
+应用系统整合:
+(在整合前，请事先记下在未整合前应用系统的默认登陆退出的URL地址，在整合过程中出现问题时，可以用应用系统的默认登陆进入应用系统自己的后台设置)
+1.Discuz整合:
+	a.(2.85版本内置OAS可以忽略此步操作)上传disucz目录中的discuz_check.php文件到你服务器上的oas目录中，将其跟oas.config.php等文件放在同一目录下。
+	b.设置$SYS_ENV['discuz']值为你的Discuz的真实访问URL。
+	c.登陆你的Discuz后台-扩展设置-通行证设置
+	d.启用通行证设为"是";
+	　应用程序URL地址设为OAS的地址，请勿遗漏最后的"/";
+	  通行证私有密匙设为oas.config.php文件中所设置的$SYS_ENV['passport_key']值相同值;
+	  验证字串有效期可参照DZ的说明，一般可以设为默认值3600
+	  应用程序注册地址：register.php?app=discuz
+	  应用程序登陆地址：login.php?app=discuz
+	  应用程序退出地址：logout.php?app=discuz
+	  积分同步选项，本版OAS不支持，所以设置为"不同步积分".
+	e.编辑你的Discuz安装目录中的include/common.inc.php文件，在文件最后?>之前，使用include_once语句将oas目录中的discuz_check.php文件包含进来
+	  本文件是用来实现自动登陆登出的，所有路径勿必要设置正确，否则，你的Discuz的同步登陆登机制将会不工作。
+	  可以用discuz的DISCUZ_ROOT常量来代替Discuz的安装根目录。
+	  如果不太知道怎么写路径的用户，可以参照以下是几个示例：
+	  示例一：
+		httpdoc/discuz/include/common.inc.php
+		httpdoc/oas/discuz_check.php
+	  在common.inc.php,包含语句应为：
+		include_once DISCUZ_ROOT."../oas/discuz_check.php";
+		
+	  示例二：
+		httpdoc/discuz/include/common.inc.php
+		oas/discuz_check.php
+	  在common.inc.php,包含语句应为：
+		include_once DISCUZ_ROOT."../../oas/discuz_check.php";
+
+	  示例三：
+		httpdoc/discuz/include/common.inc.php
+		httpdoc/discuz/oas/discuz_check.php
+	  在common.inc.php,包含语句应为：
+		include_once DISCUZ_ROOT."./oas/discuz_check.php";
+	f.将Discuz根目下的logging.php和register.php改名或直接删除，以防止用户直接在Discuz端注册，造成用户数据不统一;
+
+2.PHPwind整合：
+	a.(2.85版本内置OAS可以忽略此步操作)上传phpwind目录中的phpwind_check.php文件到你服务器上的oas目录中，将其跟oas.config.php等文件放在同一目录下。
+	b.设置$SYS_ENV['phpwind']值为你的PHPwind的真实访问URL。
+	c.登陆你的PHPwind后台-风格插件-插件中心,在"通行证"插件上点击"插件管理"
+	d.是否开启通行证高为"是"
+	  通行证私有密钥设为oas.config.php文件中所设置的$SYS_ENV['passport_key']值相同值;
+	  将该网站做为通行证的"客户端"
+	  通行证服务器地址设为OAS的地址，请勿遗漏最后的"/";
+	  通行证登录地址: login.php?app=phpwind
+	  通行证退出地址: logout.php?app=phpwind
+	  通行证注册地址: register.php?app=phpwind
+	  选择需要同步的积分,本版OAS不支持，所以请不要勾选任何
+	e.编辑你的PHPwind安装根目录下的global.php文件，在文件最后?>之前，使用include_once语句将oas目录中的phpwind_check.php文件包含进来
+	  本文件是用来实现自动登陆登出的，所有路径勿必要设置正确，否则，你的PHPwind的同步登陆登机制将会不工作。
+	  可以用PHPwind的R_P常量来代替PHPwind的安装根目录。
+	  如果不太知道怎么写路径的用户，可以参照上面Discuz的路径示例
+	f.继续编辑global.php文件，找到以下三行（大约在139行）	
+		$loginurl	= "$passport_serverurl/$passport_loginurl?forward=".rawurlencode($db_bbsurl);
+		$loginouturl= "$passport_serverurl/$passport_loginouturl&forward=".rawurlencode($db_bbsurl);
+		$regurl		= "$passport_serverurl/$passport_regurl?forward=".rawurlencode($db_bbsurl);
+	将其修改为以下三行：	
+		$loginurl	= "{$passport_serverurl}{$passport_loginurl}&forward=".rawurlencode($db_bbsurl);
+		$loginouturl= "{$passport_serverurl}{$passport_loginouturl}&forward=".rawurlencode($db_bbsurl);
+		$regurl		= "{$passport_serverurl}{$passport_regurl}&forward=".rawurlencode($db_bbsurl);
+	g.将PHPwind根目下的login.php和register.php改名或直接删除，以防止用户直接在PHPwind端注册，造成用户数据不统一
+	  在PHPwind的默认模板中，在未登陆状态时，页面默认会显示用户名登陆输入框或是浮动登陆框，请自行修改PHPwind的模板，将这些会出现直接登陆的地方全部去掉。
+
+3.VBB整合：
+	由于VBB论坛本身并未提供一个通用的通行证接口，为了实现整合VBB，使用了CMSWARE官方专门为VBB编写的一个接口文件，该接口文件在CMSWARE官方内部多种环境测试下均能良好运行，但是由于VBB论坛强大的自定义功能，所以我们不敢保证在某些特殊或者个性化VBB论坛环境下也能工作正常。
+	也正因为VBB论坛没有在底层提供通行证接口，所以相比较DZ和PW的整合来说，将会变得较为复杂，以下为VBB整合的过程。
+	a.编辑本OAS目录中的vbb子目录中的passport.php文件（vbb通行证接口），在其最上面部分有三个变量需要您自己填写，请自行修改。
+	b.将已修改好的passport.php文件上传至您的VBB论坛根目录，这样即实现了VBB通行证接口的部署，接下来是设置OAS端。
+	c.打开oas.config.php将$SYS_ENV['vbb']变量设置为你的VBB论坛的真实访问URL，别忘记最后的斜框。
+	d.如果一切设置皆正确，现在您应该通过http://{您的OAS自己的URL}login.php?app=vbb&forward={登陆成功后需要显示的页面}来登陆您的VBB论坛了，比如http://www.cmsware.com/oas/login.php?app=vbb&forward=http://vbb.cmsware.com/
+
+e.到此，VBB整合其实已经结束，但是您的VBB论坛现在的登陆退出注册这些按钮或者文字的链接URL仍然是指向VBB自己的登陆地址的，所以需要您自行修改VBB模板将出现这些链接的地方皆替换成为指向OAS的地址，并且将出现登陆表单的地方全部删除掉，至于需要在哪些模板中更改，根据不同的VBB模板而不同，请用户自己根据自己的模板修改，修改的方法请自行参阅VBB模板编辑帮助，以下为登陆注册退出的链接URL:
+	注册：http://{您的OAS自己的URL}register.php?app=vbb&forward={注册成功后需要显示的页面}
+	    比如：http://www.cmsware.com/oas/register.php?app=vbb&forward=http://vbb.cmsware.com/memberlist.php
+	登陆：http://{您的OAS自己的URL}login.php?app=vbb&forward={登陆成功后需要显示的页面}
+	    比如：http://www.cmsware.com/oas/login.php?app=vbb&forward=http://vbb.cmsware.com/usercp.php
+	退出：http://{您的OAS自己的URL}logout.php?app=vbb&forward={退出成功后需要显示的页面}
+	    比如：http://www.cmsware.com/oas/logout.php?app=vbb&forward=http://vbb.cmsware.com/
+	  
+	 
+	  

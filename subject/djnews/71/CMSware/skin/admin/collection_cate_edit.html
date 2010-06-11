@@ -1,0 +1,278 @@
+<include: file="header_init.html">
+<script language="JavaScript">
+function setAutoImport(mode)
+{
+	switch(mode) {
+		case 0 :
+			Layer_AutoImport.style.display = 'none';
+			break;
+		case 1 : 
+ 			Layer_AutoImport.style.display = '';
+			break;
+	}
+}
+</script>
+<form action='[$base_url]o=edit_submit&CateID=[$CateInfo.CateID]' method='post' enctype="multipart/form-data" name='clientform' id=clientform onSubmit='return cate_submit(this);'>
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+    <tr> 
+      <td colspan="2" class="table_header">{lang:topic} <a href="" target="_blank"><img src="../html/images/b_help.png" border=0></a></td>
+    </tr>
+
+    <tr > 
+      <td width="26%" class="table_td1">{lang:cate_name}:</td>
+      <td class="table_td2"> <INPUT name=data_Name id="data_Name" size=20  class='flat' value="[$CateInfo.Name]">&nbsp;&nbsp;<input type='button' name='submit' value='{lang:export}' tabindex='13' onclick="window.open('[$base_url]o=export&CateID=[$CateInfo.CateID]');">&nbsp;&nbsp;<input type='button' name='submit' value='{lang:import}' tabindex='13' onclick="UI_upload('[$base_url]o=import&CateID=[$CateInfo.CateID]');"></td>
+    </tr>
+    <tr id="makedir1"> 
+      <td class="table_td1"> {lang:content_model_inherit}:<INPUT TYPE="hidden" Name="TableID" value="[$CateInfo.TableID]"></td>
+      <td class="table_td2"> <select name="data_TableID" id="data_TableID"  class='flat' disabled>
+          <loop $tableInfo key=key var=var> <if  $CateInfo.TableID == $var.TableID > 
+          <option value="[$var.TableID]" selected>[$var.Name]</option>
+          <else> 
+          <option value="[$var.TableID]">[$var.Name]</option>
+          </if> </loop> </select> </td>
+    </tr>
+
+    <tr> 
+      <td colspan="2" class="table_header">{lang:target_url_rules}</td>
+    </tr>
+<tr > 
+      <td  class="table_td1">{lang:target_url}:</td>
+      <td class="table_td2"> <INPUT name="data_TargetURL" id="data_TargetURL" style="width=80%"  class='flat' value="[$CateInfo.TargetURL]">  <input type='button' name='submit' onclick="if(this.form.data_TargetURL.value != '' ) {window.open('[$base_url]o=go&url='+ this.form.data_TargetURL.value);}" value='Go' tabindex='13'>&nbsp;&nbsp;<input type='button' name='submit' onclick="if(this.form.data_TargetURL.value != '' && this.form.data_UrlFilterRule.value != '') {RuleTest();}" value='{lang:button_test}' tabindex='13'></td>
+</tr>
+<tr > 
+      <td  class="table_td1">{lang:target_url_area}:</td>
+      <td class="table_td2"> <textarea name="data_TargetURLArea" cols="70" rows="5" class="button" id="data_TargetURLArea">[$CateInfo.TargetURLArea]</textarea></td>
+</tr>
+
+<tr > 
+      <td  class="table_td1">{lang:url_filter_rule}:</td>
+      <td class="table_td2"><textarea name="data_UrlFilterRule" cols="70" rows="5" class="button" id="data_UrlFilterRule">[$CateInfo.UrlFilterRule]</textarea>
+</td>
+</tr>
+
+<tr > 
+      <td  class="table_td1">{lang:url_page_rule}:</td>
+      <td class="table_td2"><textarea name="data_UrlPageRule" cols="70" rows="5" class="button" id="data_UrlPageRule">[$CateInfo.UrlPageRule]</textarea>
+</td>
+</tr>
+
+<tr> 
+   <td colspan="2" class="table_header">{lang:content_rules}</td>
+</tr>
+<loop $tableFieldInfo key=key var=var >
+<if test="empty($var.EnableCollection)">
+<?php continue;?>
+</if>
+<tr > 
+      <td  class="table_td1">[$var.FieldTitle]:</td>
+      <td class="table_td2"><textarea name="rule_[$var.ContentFieldID]" cols="70" rows="5" class="button" id="rule_[$var.ContentFieldID]"><?php   echo htmlspecialchars($this->_tpl_vars["RulesInfo"]["{$this->_tpl_vars["var"]["ContentFieldID"]}"]);?></textarea>
+</td>
+</tr>
+</loop>
+<tr> 
+   <td colspan="2" class="table_header">{lang:collection_setting}</td>
+</tr>
+<tr  > 
+              <td class="table_td1">{lang:is_repeat_collection}:</td>
+              <td class="table_td2"> 
+				  <if $CateInfo.RepeatCollection == 1> 
+                  <input type="radio" name="data_RepeatCollection" value="1" id="smtp_auth1" checked >
+                  <label for="smtp_auth1"  >{lang::global:yes}</label>
+                  <input name="data_RepeatCollection" type="radio" value="0"  id="smtp_auth2" >
+                  <label for="smtp_auth2"  >{lang::global:no}</label>
+                  <else> 
+                  <input type="radio" name="data_RepeatCollection" value="1" id="smtp_auth1" >
+                  <label for="smtp_auth1"  >{lang::global:yes}</label>
+                  <input name="data_RepeatCollection" type="radio" value="0"  id="smtp_auth2" checked>
+                  <label for="smtp_auth2"  >{lang::global:no}</label>
+                  </if> 
+</td>
+</tr>
+
+<tr  > 
+              <td class="table_td1">{lang:hidden_imported}:</td>
+              <td class="table_td2">
+
+ <if $CateInfo.HiddenImported == 1> 
+                  <input type="radio" name="data_HiddenImported" value="1" id="smtp_auth3" checked >
+                  <label for="smtp_auth3"  >{lang::global:yes}</label>
+                  <input name="data_HiddenImported" type="radio" value="0"  id="smtp_auth5" >
+                  <label for="smtp_auth5"  >{lang::global:no}</label>
+                  <else> 
+                  <input type="radio" name="data_HiddenImported" value="1" id="smtp_auth3" >
+                  <label for="smtp_auth3"  >{lang::global:yes}</label>
+                  <input name="data_HiddenImported" type="radio" value="0"  id="smtp_auth5" checked>
+                  <label for="smtp_auth5"  >{lang::global:no}</label>
+                  </if> 
+</td>
+</tr>
+
+<tr  > 
+              <td class="table_td1">{lang:del_imported}:</td>
+              <td class="table_td2">
+
+ <if $CateInfo.DelAfterImport == 1> 
+                  <input type="radio" name="data_DelAfterImport" value="1" id="smtp_auth6" checked >
+                  <label for="smtp_auth6"  >{lang::global:yes}</label>
+                  <input name="data_DelAfterImport" type="radio" value="0"  id="smtp_auth7" >
+                  <label for="smtp_auth7"  >{lang::global:no}</label>
+                  <else> 
+                  <input type="radio" name="data_DelAfterImport" value="1" id="smtp_auth8" >
+                  <label for="smtp_auth8"  >{lang::global:yes}</label>
+                  <input name="data_DelAfterImport" type="radio" value="0"  id="smtp_auth9" checked>
+                  <label for="smtp_auth9"  >{lang::global:no}</label>
+                  </if> 
+</td>
+</tr>
+
+<tr  > 
+              <td class="table_td1">{lang:auto_import}:</td>
+              <td class="table_td2">
+
+ <if $CateInfo.AutoImport == 1> 
+                  <input type="radio" name="data_AutoImport" value="1" id="AutoImport1" checked onclick="setAutoImport(1);">
+                  <label for="AutoImport1"  >{lang::global:yes}</label>
+                  <input name="data_AutoImport" type="radio" value="0"  id="AutoImport2" onclick="setAutoImport(0);">
+                  <label for="AutoImport2"  >{lang::global:no}</label>
+                  <else> 
+                  <input type="radio" name="data_AutoImport" value="1" id="AutoImport1" onclick="setAutoImport(1);">
+                  <label for="AutoImport1"  >{lang::global:yes}</label>
+                  <input name="data_AutoImport" type="radio" value="0"  id="AutoImport2" checked onclick="setAutoImport(0);">
+                  <label for="AutoImport2"  >{lang::global:no}</label>
+                  </if> 
+</td>
+</tr>
+
+<tr  > 
+              <td class="table_td1">{lang:in_run_plan}:</td>
+              <td class="table_td2">
+
+ <if $CateInfo.InRunPlan == 1> 
+                  <input type="radio" name="data_InRunPlan" value="1" id="InRunPlan1" checked >
+                  <label for="InRunPlan1"  >{lang::global:yes}</label>
+                  <input name="data_InRunPlan" type="radio" value="0"  id="InRunPlan2" >
+                  <label for="InRunPlan2"  >{lang::global:no}</label>
+                  <else> 
+                  <input type="radio" name="data_InRunPlan" value="1" id="InRunPlan1" >
+                  <label for="InRunPlan1"  >{lang::global:yes}</label>
+                  <input name="data_InRunPlan" type="radio" value="0"  id="InRunPlan2" checked >
+                  <label for="InRunPlan2"  >{lang::global:no}</label>
+                  </if> 
+</td>
+</tr>
+
+
+
+<if $CateInfo.AutoImport == 1> 
+<tbody id="Layer_AutoImport" >
+<else>
+<tbody id="Layer_AutoImport" style="display:none">
+
+</if>
+<tr> 
+   <td colspan="2" class="table_header">{lang:auto_import_setting}</td>
+</tr>
+
+<tr class='tablelist'> 
+              <td class="table_td1">{lang:auto_import_NodeID}:</td>
+              <td class="table_td2"><select  name="TargetNodeID" id = "TargetNodeID">
+<loop $NODE_LIST var=var>
+ <if $var.TableID != $CateInfo.TableID >
+
+<elseif $CateInfo.NodeID == $var.NodeID >
+<option value="[$var.NodeID]" selected>[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+<else>
+<option value="[$var.NodeID]">[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+</if>
+
+ </loop></select>
+ 
+</td>
+</tr>
+
+<tr class='tablelist'> 
+              <td  class="table_td1">{lang:auto_import_SubNodeID}:</td>
+              <td class="table_td2">
+<select  name="SubTargetNodeID[]" id = "SubTargetNodeID"  size="10" multiple>
+<option value="" >{lang:null}</option>
+<loop $NODE_LIST var=var>
+ <if $var.TableID != $CateInfo.TableID >
+
+<elseif in_array(  $var.NodeID ,  $CateInfo.SubNodeIDs )>
+<option value="[$var.NodeID]" selected>[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+<else>
+<option value="[$var.NodeID]">[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+</if>
+
+ </loop>
+ </select>		          	  
+			  
+			  </td>
+</tr> 
+
+<tr class='tablelist'> 
+              <td  class="table_td1">{lang:auto_import_IndexNodeID}:</td>
+              <td class="table_td2">
+<select  name="IndexNodeID[]" id = "IndexNodeID"  size="10" multiple>
+<option value="" >{lang:null}</option>
+ <loop $NODE_LIST var=var>
+ <if $var.TableID != $CateInfo.TableID >
+
+<elseif in_array(  $var.NodeID ,  $CateInfo.IndexNodeIDs )>
+<option value="[$var.NodeID]" selected>[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+<else>
+<option value="[$var.NodeID]">[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+</if>
+
+ </loop>
+ </select>		          	  
+			  
+			  </td>
+</tr> 
+</tbody>
+
+      <td colspan="2" class="table_td2" align=center><input type='button' name='submit' onclick="RuleTest();" value='{lang:button_test}' tabindex='13'> &nbsp;&nbsp;&nbsp;&nbsp; <input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+  </table>
+</form>
+
+<script language='JavaScript'>
+
+function cate_submit(form)
+{
+	
+	//form.Submit();
+}					
+</script> 		
+<script language="JavaScript">
+function RuleTest()
+{	
+	document.testRule.TargetURL.value = document.clientform.data_TargetURL.value;
+	document.testRule.TargetURLArea.value = document.clientform.data_TargetURLArea.value;
+	document.testRule.UrlFilterRule.value = document.clientform.data_UrlFilterRule.value;
+	document.testRule.UrlPageRule.value = document.clientform.data_UrlPageRule.value;
+<loop $tableFieldInfo key=key var=var >
+<if test="empty($var.EnableCollection)">
+<?php continue;?>
+</if>
+	document.testRule.rule_[$var.ContentFieldID].value = document.clientform.rule_[$var.ContentFieldID].value;
+</loop>	
+	document.testRule.submit();
+}
+</script>
+<form name="testRule" method="post" action="admin_collection.php?sId=[$sId]&o=testRule" target="_blank">
+  <input type="hidden" name="TargetURL" value="">
+  <input type="hidden" name="TargetURLArea" value="">
+  <input type="hidden" name="UrlFilterRule" value="">
+  <input type="hidden" name="UrlPageRule" value="">
+<loop $tableFieldInfo key=key var=var >
+<if test="empty($var.EnableCollection)">
+<?php continue;?>
+</if>
+  <input type="hidden" name="rule_[$var.ContentFieldID]" value="">
+  <input type="hidden" name="title_[$var.ContentFieldID]" value="[$var.FieldTitle]">
+</loop>	
+
+</form>
+<include: file="footer.html">

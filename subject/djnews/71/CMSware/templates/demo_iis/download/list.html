@@ -1,0 +1,196 @@
+<include file="TplConfig.html">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$NodeInfo.Name] - [$SITE_NAME]</title>
+<link href="[$SKIN_URL]download/css/style.css" rel="stylesheet" type="text/css" />
+<!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<meta name="keywords" content="[$NodeInfo.Name],[$SITE_NAME]" />
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+<div class="news_nav"><!--#CW#--下载频道附加导航--#CW#-->
+	<CMS action="NODELIST" return="List" Type="set" NodeID="{$Index_NodeID}" /><!--#CW#根据TplConfig中设置的下载主结点ID号，生成导航#CW#-->
+	<loop name="List" var="var" key="key" start="1">
+	<a href="[$var.NodeURL]">[$var.NodeName]</a><if test="$key < count($List)"> | </if><!--#CW#如果已循环到最后一条，则不显示最后的|#CW#-->
+	</loop>
+</div>
+<div class="content">
+	<div class="left">
+        <!--#CW#---左边样式1--#CW#-->
+		<div class="topside01">
+			<div class="topside01_l">&nbsp;</div>
+			<div class="topside01_c">&nbsp;</div>
+			<div class="topside01_r">&nbsp;</div>
+		</div>
+        <!--#CW#--最新发布的--#CW#-->
+		<div class="center01">
+			<div class="focus"><a href="#">[$NodeInfo.Name]</a></div><div class="morefocuslink"></div>
+          	<div class="sonfocus" style="border-bottom:none;">
+            <CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="page-{$List_Num}" Order="{$List_OrderBy}" /> 
+            <loop name="List" var="var" key="key">
+            	<table width="100%" border="0" cellpadding="0" cellspacing="4" class="downlb">
+  				  	<tr>
+                    	<td width="78%"><a class="downlt" href="[$var.URL]">[$var.Title]</a>&nbsp;&nbsp;</td>
+           				<td width="12%">[@date('y-m-d',$var.PublishDate)]</td>
+          				<td width="10%">[$var.SoftSize]</td>
+  				  	</tr>
+                    <tr>
+                    	<td colspan="3">语言：<span class="downlc">[$var.Language]</span> 软件类型：<span class="downlc">[$var.SoftType]</span>界面预览：<if test="!empty($var.Photo)"><a href="[$var.Photo]" class="downlc">安装预览 </a><else>无预览&nbsp;&nbsp;</if>   推荐值：<span class="downlc">[$var.Star]</span>    共有<span class="downpn">[$var.CommentNum]</span>条评论 </td>
+                    </tr>
+                    <tr>
+                         <td colspan="3" class="downlbt">[@strip_tags(CsubStr($var.Intro,0,150))]</td>					
+                    </tr>
+                </table>
+            </loop>   
+            </div>
+		</div>
+            
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+        <!--#CW#--左边样式2--#CW#-->
+        <div class="topside02">
+			<div class="topside02_l">&nbsp;</div>
+			<div class="topside02_c">&nbsp;</div>
+			<div class="topside02_r">&nbsp;</div>
+		</div> 
+		<div class="center02" style="text-align:center">        
+页次：<font color=red><b>[$PageInfo.CurrentPage]</b></font>/<B>[$PageInfo.TotalPage]</B> 每页<B>[$List_Num]</B>共<B>[$PageInfo.TotalNum]</B> 分页：[@list_page( $PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)]
+		</div>
+		<div class="bottomside02">
+			<div class="bottomside02_l">&nbsp;</div>
+			<div class="bottomside02_c">&nbsp;</div>
+			<div class="bottomside02_r">&nbsp;</div>
+		</div>
+	</div>
+	<!--#CW#--右边列开始--#CW#-->
+	<div class="right">
+    	<!--#CW#--搜索BOX--#CW#-->
+		<include file="inc/search_box.html">
+        <!--#CW#--右边样式1--#CW#-->
+		<div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<!--#CW#--本类分类--#CW#-->
+       	  	<div class="photo_fous"><CMS action="NODE" return="NodeVar" NodeID="{$NodeInfo.ParentID}" />[$NodeVar.NodeName]小分类</div>
+           	<table width="225">
+            	<tr>
+               	<CMS action="NODELIST" return="NodeList" NodeID="{$NodeInfo.NodeID}" Type="brother" />
+                <loop name="NodeList" var="var" key="key" start="1">
+                	<td>·<a href="[$var.NodeURL]">[$var.NodeName]</a></td>
+					<if test="$key %3 == 0">
+                </tr>
+                <tr>
+                	</if>
+                	</loop>
+                </tr>
+          </table>
+		</div>
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+		<!--#CW#--右边样式1--#CW#-->
+		<div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<!--#CW#--本类热门--#CW#-->
+        	<div class="photo_fous">本类推荐</div>
+            <CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$List_LeftPink_Num}" where="{$List_LeftPink_where}" />
+            <loop name="List" key="key" var="var">
+            <a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,15)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+            </loop>
+		</div>
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+		<!--#CW#--右边样式2--#CW#-->
+        <div class="topside05">
+			<div class="topside05_l">&nbsp;</div>
+			<div class="topside05_c">&nbsp;</div>
+			<div class="topside05_r">&nbsp;</div>
+		</div>
+		<div class="center05">
+        	<!--#CW#--本类推荐--#CW#-->
+        	<div class="photo_fous">本类热门软件</div>
+
+             <CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$List_LeftHot_Num}" OrderBy="{$List_leftHot_OrderBy}" />
+
+            <loop name="List" var="var" key="key">
+
+			<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,15)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside05">
+
+			<div class="bottomside05_l">&nbsp;</div>
+
+			<div class="bottomside05_c">&nbsp;</div>
+
+			<div class="bottomside05_r">&nbsp;</div>
+
+		</div>
+
+        
+
+        <div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<!--#CW#--本类总点击排行--#CW#-->
+
+        	<div class="photo_fous">本类总点击排行</div>
+
+  			<CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$List_LeftHits_Total_Num}" OrderBy="{$List_LeftHits_Total_OrderBy}" />
+
+            <loop name="List" var="var" key="key">
+
+			<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,15)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+</div>
+<include file="../common/footer.html" />
+</body>
+
+</html>
+

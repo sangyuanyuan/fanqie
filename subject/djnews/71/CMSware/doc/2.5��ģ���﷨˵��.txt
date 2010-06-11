@@ -1,0 +1,96 @@
+2.5新模板语法说明
+
+从 Version 2.5 RC3 开始，CMSware开始采用新的XML类似的模板语法
+
+
+- New 新版模板语法，参见下面的说明。
+- New 新版模板语法新增OP语句，用于表达式的运算
+- New   系统管理设置 -> 发布管理单页显示记录、索结果单页显示记录、采集管理单页显示记录
+
+- Fixed 标题采集不到的文章不进行采集导入
+- Fixed 后台搜索出来的稿件可以“创建虚链接”“创建索引链接”
+- Notice 关于图片发布的问题，流程如下：用户上传图片，上传图片保存于资源目录resource/hxxx/hxx下，所以文章中图片链接为管理后台的链接，文章发布之时，文章中的图片才进行真正的发布（一篇文章的发布，包括静态页面的生成和文章图片的发布这2个基本过程），图片发布到节点资源发布PSN上面，文章中的图片地址也会自动替换为发布后的地址，所以，你要理解，图片会有2个以上的拷贝，发布后台resource里面有个（文章删除时候会自动删除，前提是图片引用关联为0），资源发布PSN上也有一个（文章取消发布时会自动删除）。
+
+
+
+
+[SQL]
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('CollectionPageNum', '15');
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('ContentPageNum', '15');
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('SearchPageNum', '15');
+
+[新模板语法]
+2.5RC3模板引擎新增新的模板调用语法（该模板语法为cmsware3.0的计划，现在提前加入进行过渡测试），同时完全兼容1.x/2.x模板语法
+
+CMS调用
+<CMS action="LIST" return="ListOne" where="(c.Title=='{$var.Title}' and c.Photo!='') or c.Hit>=10" NodeID="1"/>
+<CMS action="CONTENT" return="contentInfo" IndexID="{$var.IndexID}" /> 
+<CMS action="SQL" return="ListTwo" query="select * from cmsware_site where Disabled=0" /> 
+
+IF语句
+<if test="$a > $b && ($b>$e)">
+<elseif test="$c > $b || $a == 0" >
+<else> 
+</if>
+
+LOOP语句
+<loop name="List" var="var" key="key" >
+</loop> 
+
+
+OP操作语句：该语句为新增语句，用于表达式的运算
+格式：<op exp="要运算的表达式" />
+例子：
+<op exp="$var=$var+1" />
+<op exp="$var++"/>
+<op exp="$var=($var - 5)/10"/> 
+<op exp="$var=date()"/> 
+<op exp="$var=date('Y-m-d', $info.Time)"/>
+
+OP语句的功能非常强大，可以用来替换var语句进行复杂变量定义
+<var name="hello" value="world"/> 等同于<op exp="$hello='world'" />
+
+使用OP语句进行复杂变量定义：<op exp="$hello=Cstrsub($var.Content,1,10,'...').'New!'" />
+
+
+
+
+[新旧模板语法比较]
+
+   注：为了符合XML规范，新版本<CMS...>中的所有属性必须使用""进行闭合，同时将老版的<CMS...>..</CMS>闭合改为<CMS.../>闭合。
+
+   新版CMS调用:
+   <CMS action="LIST" return="ListOne" where="(c.Title=='{$var.Title}' and c.Photo!='') or c.Hit>=10" NodeID="1"/> 新版本的where调用支持变量引用判断,及复杂表达式
+   <CMS action="SQL" return="ListTwo" query="select * from cmsware_site where Disabled=0" /> 
+
+
+   老版CMS调用:
+   <CMS::LIST:ListOne  NodeID="1">
+   <where:  (c.Title=='{$var.Title}' and c.Photo!='') or c.Hit>=10 > 老版本的where调用不支持变量引用判断,及复杂表达式
+   ...
+   ..
+   .
+   </CMS>
+
+  
+   -------------------------------------------------------------
+   新版LOOP调用:
+   <loop name="List" var="var" key="key">
+   </loop> 
+   老版LOOP调用:
+   <loop $List var=var key=key>
+
+   -------------------------------------------------------------
+   新版IF调用:
+   <if test="$a > $b && ($b>$e)">
+   <elseif test="$c > $b || $a == 0" >
+   <else> 
+   </if>
+   老版IF调用:
+   <if $a > $b && ($b>$e)>
+   <elseif $c > $b || $a == 0 >
+   <else> 
+   </if>  
+
+
+

@@ -1,0 +1,360 @@
+<include: file="header_init.html">
+<BODY  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px" >
+<style>
+
+div.titleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 200;
+	text-overflow: ellipsis;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;			
+}		
+div.subtitleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	
+	text-overflow: ellipsis;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;			
+}
+div.timeholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 90;
+	text-overflow: ellipsis;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;			
+}	
+</style>
+<script language='JavaScript'>
+var doImage = doImage;
+var TType = TType;
+
+function mhHover(tbl, idx, cls)
+{
+	var t, d;
+	if (document.getElementById)
+		t = document.getElementById(tbl);
+	else
+		t = document.all(tbl);
+	if (t == null) return;
+	if (t.getElementsByTagName)
+		d = t.getElementsByTagName("TD");
+	else
+		d = t.all.tags("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}
+
+</script>
+<SCRIPT>
+var elo;
+var loadmenuok=false;
+var type = 'main';
+var NodeID = '[$NodeInfo.NodeID]';
+function initrightmenu(){
+	loadmenuok = true;
+}
+
+
+
+
+function addThread(url,TaskID) {
+	top.CrawlerTaskFrame.addThread(url , TaskID)
+	
+}
+
+function doing(action, IndexID) {
+	var returnValue;
+	switch(action) {
+		case 'restore':
+				returnValue = CMSware_send('[$base_url]' + 'o=restore&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID);
+				//alert(returnValue);
+				if(returnValue == '1') {
+					alert("{lang:restore_ok}");
+					document.location.reload();
+					return true;
+					
+				} else {
+					alert("{lang:restore_fail}");
+					document.location.reload();
+					return false;
+				
+				}			
+		
+			break;
+
+		case 'destroy':
+			if(confirm("{lang:confirm_del}")) {
+				returnValue = CMSware_send('[$base_url]' + 'o=destroy&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID);
+				//alert(returnValue);
+				if(returnValue == '1') {
+					alert("{lang:destroy_ok}");
+					document.location.reload();
+					return true;
+					
+				} else {
+					alert("{lang:destroy_fail}");
+					document.location.reload();
+					return false;
+				
+				}			
+		
+				
+			}
+			break;
+		case 'view':
+			var leftPos = (screen.availWidth-800) / 2
+			var topPos = (screen.availHeight-600) / 2 
+			 window.open('[$base_url]type=main&o=view&NodeID='+NodeID  + '&IndexID=' + IndexID,'','width=800,height=600,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+			break;
+		case 'display_record':
+			parent.mainFrame.location = "admin_publish.php?sId=[$sId]&o=recycle_bin&NodeID=" + NodeID + "&offset=" + document.documentlist.offset.value;
+			break;		
+
+	}
+	//sId=6891856b84ee23f2330ee8359cd3f60d&o=view&type=main&pId=41&cId=4
+}
+
+
+
+function rightMenu(pId, State, Type, Top,Pink) {
+	var toolMenu = new WebFXMenu;
+
+
+		toolMenu.add(new WebFXMenuItem('{lang::global:view}','javascript:doing("view","'+ pId +'")','{lang:view_doc}'));
+		toolMenu.add(new WebFXMenuItem('{lang:restore}','javascript:doing("restore","'+ pId +'")', '{lang:restore}'));
+		toolMenu.add(new WebFXMenuItem('{lang:destroy}','javascript:doing("destroy","'+ pId +'")','{lang:destroy}'));
+		
+
+
+	 
+	menudata.innerHTML = toolMenu 
+
+	elo=window.event.srcElement;
+	toolMenu.left = window.event.clientX;
+	toolMenu.top = window.event.clientY+document.body.scrollTop;
+	toolMenu.show();
+
+	//initrightmenu();
+
+}
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+<!--
+function CheckAll(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.name !='copy')       e.checked = form.chkall.checked; 
+   }
+  }
+
+//-->
+
+
+</script>
+<script>
+var mousemovecolor="#D4D4D4";
+var selectcolor ="#DDDDDD";
+var oldcolor;
+
+function GetRow(oElem)
+{
+	while (oElem)
+	{	//alert(oElem.tagName.toLowerCase())
+		if (oElem.tagName.toLowerCase() == "tr" || oElem.parentElement.tagName.toLowerCase() == "tbody") 
+		    return oElem;
+		if (oElem.tagName.toLowerCase() == "table" || oElem.tagName.toLowerCase() == "th") return false;
+		oElem = oElem.parentElement;
+	}
+}
+
+
+function selected()
+{	//alert(pid)
+
+	var trstyle = GetRow( window.event.srcElement );
+	var a;
+	if( !trstyle )
+		return false;
+
+	if( trstyle.style.backgroundColor.toLowerCase() == selectcolor.toLowerCase())
+	{
+		trstyle.style.backgroundColor = "";
+		a=eval("p_"+ trstyle.id);	
+		//alert(trstyle.id)
+		if (a!=null || a.checked) 
+			a.checked=false
+		oldcolor = "";
+	}
+	else
+	{		
+		trstyle.style.backgroundColor = selectcolor;
+		a=eval("p_"+ trstyle.id);
+		//alert(trstyle.id)
+		if (a!=null) 
+			a.checked=true
+		oldcolor = selectcolor;
+
+	
+	}
+}
+
+function going(form, o)
+{
+	document.documentlist.referer.value = document.location;
+
+	with(form) {
+		switch(o) {
+			case 'restore':
+				document.documentlist.referer.value = document.location;
+				document.documentlist.action = '[$base_url]' + '&multi=1&o=' + o + '&type=' + type +  '&NodeID=' + NodeID  ;
+				document.documentlist.submit();
+				break;
+			case 'destroy':
+				if(confirm("{lang:confirm_del}")) {
+					document.documentlist.referer.value = document.location;
+					document.documentlist.action = '[$base_url]' + '&multi=1&o=' + o + '&type=' + type +  '&NodeID=' + NodeID  ;
+					document.documentlist.submit();
+					break;
+				}
+					break;
+			case 'empty_recycle_bin':
+				if(confirm("{lang:confirm_empty_recycle_bin}")) {
+					document.documentlist.referer.value = document.location;
+					document.documentlist.action = '[$base_url]' + '&multi=1&o=' + o + '&type=' + type +  '&NodeID=' + NodeID  ;
+					document.documentlist.submit();
+					break;
+				}
+			
+		}
+	}
+}
+</script>
+<div id="menudata"></div>
+<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1"  class="table_border" >
+  <TBODY>
+  <form method="post" action="[$base_url]type=main&NodeID=[$NodeInfo.NodeID]" name="documentlist" >
+
+    <tr class="table_td2"> 
+      <td align="center" height=25></td>
+ <td align="center"><B>ID</B></td>	  
+<loop $DisplayItem key=key var=var>
+		<td align="center"><B>[$var.FieldTitle]</B></td>
+	  </loop>
+      <td align="center"><B>{lang:editor}</B></td>
+      <td align="center"><B>{lang::global:date}</B></td>
+      <td colspan="5" align="center"><B>{lang::global:execute_op}</B></td>
+ 
+       <td align="center" title="{lang:type}"><B>T</B></td>
+  </tr>
+
+
+<loop $pList key=key var=var>
+<!------onmouseover='this.style.backgroundColor="#FFFFFF"' 
+                    onmouseout='this.style.backgroundColor=""'------>
+    <tr class="table_td1" id="[$var.IndexID]" onmouseover='this.style.backgroundColor="#FFFFFF"' 
+                    onmouseout='this.style.backgroundColor=""'> 
+      <td noWrap > <input type='checkbox' name='pData[]' value='[$var.IndexID]' id="p_[$var.IndexID]" ></td>
+      <td align="center" noWrap   ><div class="subtitleholder">[$var.IndexID]</div></td>
+	 <loop $DisplayItem key=keyIn var=varIn>
+		<if $keyIn == 0>
+      <td   noWrap  style="cursor:hand" id="[$var.pId]">
+<table  border="0"  cellpadding="0" cellspacing="0"  >
+<tr>
+<td>
+	  <div class="titleholder">
+	 
+	 
+	  <A HREF="javascript:void(0);" onclick="doing('view','[$var.IndexID]')" class="o" style="cursor:hand"   oncontextmenu="rightMenu('[$var.IndexID]', '[$var.State]','[$var.Type]','[$var.Top]','[$var.Pink]');return false;" title="[$var.$varIn:FieldName]">[$var.$varIn:FieldName]</A>   
+	  </div>
+</td>
+<td>
+
+</td>
+</tr>
+</table>
+
+	  
+	  </td>
+
+		<else>
+      <td   noWrap   id="[$var.pId]"><div class="subtitleholder">&nbsp;&nbsp;[$var.$varIn:FieldName] </div></td>
+
+		</if>
+
+
+	 </loop>
+      <td align="center" noWrap  ><div class="subtitleholder" title="[$var.CreationUser]">[$var.CreationUser]</div></td>
+      <td align="center" noWrap ><div class="timeholder">[@date('Y-m-d H:i', $var.PublishDate)]</div></td>
+    
+	 <td colspan="5" align="center" noWrap>
+	    
+	  <A HREF="javascript:doing('restore','[$var.IndexID]')">{lang:restore}</A>
+	  
+	  <A HREF="javascript:doing('destroy','[$var.IndexID]')" >{lang::global:del}</A> 
+	 
+
+	  
+	  </td>
+<td align="center" width="28">
+<if $var.Type == 0 >
+<font color="#AAAAAA">{lang:link}</font>
+<elseif $var.Type == 1 >
+{lang:solid_link}
+<elseif $var.Type == 2 >
+<font color="#3366FF">{lang:index_link}</font>
+<elseif $var.Type == 3 >
+<font color="#669900">{lang:photo_link}</font>
+<elseif $var.Type == 4 >
+<font color="#FF9900">{lang:outer_link}</font>
+</if>
+</td>
+ </tr>
+</loop>
+
+    <tr class="Tablelistbg"> 
+      <td colspan="13" align="left" bgcolor="#F5F5F5"> <table border="0" align="center"  cellpadding="0" cellspacing="0" width="100%">
+          <tr> 
+            <td align=left> 
+            <input type="checkbox" name="chkall" value="on" onclick="CheckAll(this.form)" id="chkall"  > 
+              <label for="chkall" >{lang::global:select_all}</label>&nbsp;&nbsp;
+			               
+			 <select name="actionMap" id="actionMap" > 
+            <option value="destroy">{lang:destroy}</option>
+              <option value="restore">{lang:restore}</option>
+              <option value="empty_recycle_bin">{lang:empty_recycle_bin}</option>
+     
+
+			  </select>
+
+			  <input type="button" value="Go" class=button onclick="going(this.form,actionMap.options[actionMap.selectedIndex].value)"> 
+         
+            </td>
+
+			<td height="20" align="right" nowrap="nowrap"> <INPUT name="go_display" TYPE="button" value="{lang:display}" onclick="doing('display_record')" ></td>
+	  <td   height="20" nowrap="nowrap" align="right"  width=80> &nbsp;&nbsp;<INPUT TYPE="text" NAME="offset" size=1 value=[$offset]> {lang:display_record} 
+       
+   </td>
+
+          </tr>
+        </table></td>
+    </tr>
+	<INPUT TYPE="hidden" name="referer" value ="" >
+  </form>
+  <tr class="table_td1"> 
+    <td colspan="13" height=25 align=right>
+	[@sprintf(#lang:record#, $recordInfo.currentPage  , $recordInfo.pageNum, $recordInfo.offset, $recordInfo.from, $recordInfo.to, $recordInfo.recordNum )]
+	[$pagelist] &nbsp;&nbsp;&nbsp;&nbsp;</td>
+  </tr>
+  </tbody> 
+</table>
+
+<include: file="footer.html">

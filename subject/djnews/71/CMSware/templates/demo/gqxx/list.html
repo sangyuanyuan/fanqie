@@ -1,0 +1,88 @@
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$SITE_NAME] - [$NodeInfo.Name]</title><!--#CW#站点名称$SITE_NAME可在CMSWARE后台-系统管理-模板变量设置中设置,$NodeInfo.Name是本模板所在结点的结点名称#CW#-->
+<meta name="keywords" content="[$NodeInfo.Name],[$SITE_NAME]" />
+<link href="[$SKIN_URL]gqxx/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+
+<!--子导航-->
+<div class="news_nav">
+	<CMS action="NODELIST" return="List" Type="sub" NodeID="{$Gqxx_MainNodeID}" /><!--#CW#根据设置的导航结点ID号，生成导航#CW#-->
+	<loop name="List" var="var" key="key" start="1">
+	<a href="[$var.NodeURL]">[$var.NodeName]</a><if test="$key < count($List)"> | </if><!--#CW#如果已循环到最后一条，则不显示最后的|#CW#-->
+	</loop>
+</div>
+
+<div class="content">
+	<div class="left">
+        <!---左边样式1-->
+		<div class="topside01">
+			<div class="topside01_l">&nbsp;</div>
+			<div class="topside01_c">&nbsp;</div>
+			<div class="topside01_r">&nbsp;</div>
+		</div>
+		<div class="center01" id="newsfocus">
+
+			<div class="focus">[$NodeInfo.Name]-信息发布列表</div><div class="morefocuslink"></div>
+          	
+            <div class="sonfocus">
+			
+<CMS action="LIST" return="List" NodeID="self" Num="page-30" OrderBy="PublishDate"  order="DESC" />
+<LOOP name="List" var="var" key="key">
+<div id="xxfb_list"> 
+<div id="xxfb_list_l"><A title="[$var.Title]" href="[$var.URL]" target=_blank>[$var.Title]</A></div>
+<div id="xxfb_list_type">
+                <if test="$var.GqType != 1">
+				[求]
+				<else>
+				[供]
+				</if></div>
+<div id="xxfb_list_member">发布会员:[$var.UserName]</div>
+<div id="xxfb_list_r">[[@date('Y-m-d', $var.PublishDate)]]</div>
+</div>
+
+</LOOP>
+				
+  	  	    </div>
+			</div>
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+        <!--左边样式2-->
+        <div class="topside02">
+			<div class="topside02_l">&nbsp;</div>
+			<div class="topside02_c">&nbsp;</div>
+			<div class="topside02_r">&nbsp;</div>
+		</div> 
+		<div class="center02">
+       		<div class="xxfb_list_page">页次：
+<FONT color="red"><B>[$PageInfo.CurrentPage]</FONT>/<B>[$PageInfo.TotalPage]</B>&nbsp;&nbsp;每页<B>30</B>&nbsp;&nbsp;共<B>[$PageInfo.TotalNum]</B>&nbsp;&nbsp;
+							  分页：
+[@list_page( $PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)] </div>
+		</div>
+		<div class="bottomside02">
+			<div class="bottomside02_l">&nbsp;</div>
+			<div class="bottomside02_c">&nbsp;</div>
+			<div class="bottomside02_r">&nbsp;</div>
+		</div>
+	</div>
+
+	<!--右边列开始-->
+	<include file="right_list.html">
+	
+</div>
+
+<div class="content"></div>
+
+
+<include file="../common/footer.html" />
+</body>
+</html>

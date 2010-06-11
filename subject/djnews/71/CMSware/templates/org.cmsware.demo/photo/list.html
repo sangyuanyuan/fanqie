@@ -1,0 +1,101 @@
+<include file="header.html" />
+
+<div id="left">
+<include file="search_box.html"/>
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>其他类别点击Top10</h3>
+<ul>
+
+<!--调用下载系统模型(TableID=2)最热总点击前10条记录-->
+<CMS action="LIST" return="List"  where="co.TableID=6" orderby="Hits_Total" TableID="6" num="10" />
+<LOOP $List var=var key=key> 
+<li><a href=" [$var.URL] " target=_blank title=" [$var.PhotoName] " >[@CsubStr($var.PhotoName, 0, 16)] </a>
+<span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span> </li>
+</LOOP> 
+
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+
+
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>[$NodeInfo.Name]点击Top10</h3>
+<ul>
+
+<!--调用下载系统模型(TableID=2)最热总点击前10条记录-->
+<CMS action="LIST" return="List" NodeID="self" orderby="Hits_Total" TableID="6" num="10" />
+<LOOP $List var=var key=key> 
+<li><a href=" [$var.URL] " target=_blank title=" [$var.PhotoName] " >[@CsubStr($var.PhotoName, 0, 16)] </a>
+<span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span> </li>
+</LOOP> 
+
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+<include file="../copyright.html" />
+
+</div><!--left end-->
+
+<div id="right">
+
+<div class="box_l">
+<div class="box_l_t">&nbsp;</div>
+<div class="box_l_c">
+<h1>[$NodeInfo.Name]</h1>
+
+<CMS action="LIST" return="List"  NodeID="self"    TableID="6" num="page-12" /> 
+<table border="0" cellpadding="0" cellspacing="0"   >
+<tr><td>
+<loop name="List" key="key" var="var" start="1">
+<div class="imagespacer" >
+			<div class="imageholder" >
+			<A HREF="[$var.URL]"><img  alt="[$var.PhotoName]" src="[@AutoMini($var.PhotoURL, '160*120', $var)]"   style="MARGIN-LEFT:0px;MARGIN-TOP:0px;BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; BORDER-TOP-COLOR: #000000; BORDER-RIGHT-COLOR: #000000;border:1px" /></A> 
+			</div>
+
+			<div class="titleholder">
+ <A HREF="[$var.URL]" title="[$var.PhotoName]">[$var.PhotoName]</A>
+			</div>
+</div>
+
+<if test="$key%3 == 0">
+</td></tr>
+<tr><td>
+</if>
+
+</loop>
+</td></tr>
+</table>
+ 
+ 
+
+
+
+<div class="list_page" align="right">
+<ul>
+<li>
+第 <FONT color="red"><B>[$PageInfo.CurrentPage]</B></FONT> 页,共 <B>[$PageInfo.TotalPage]</B> 页&nbsp;&nbsp; 共<B>[$PageInfo.TotalNum]</B>条记录&nbsp;&nbsp;
+							  
+[@list_page( $PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)] <BR>
+  </li>
+</ul>
+</div>
+</div>
+
+</div>
+<div class="box_l_b">&nbsp;</div>
+</div><span class="cls"></span>
+
+</div>
+<include  file="../footer.html" />
+</body> 
+</html>

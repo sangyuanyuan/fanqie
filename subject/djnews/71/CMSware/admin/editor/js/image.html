@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>颜色</title>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Window-target" content="_top">
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+body{margin:0px;scrollbar-face-color: #B8B8B8; scrollbar-highlight-color: #F5F9FF; scrollbar-shadow-color: #828282; scrollbar-3dlight-color: #828282; scrollbar-arrow-color: #797979; scrollbar-track-color: #ECECEC; scrollbar-darkshadow-color: #ffffff}
+body,a,table,div,span,td,th,input,select{font:9pt;font-family: "宋体", Verdana, Arial, Helvetica, sans-serif;}
+.text{border:1 solid #aaaaaa;}
+.button{height:18;border:1 ridge #aaaaaa;background-color:aaaaaa;color:ffffff}
+</style>
+<body bgcolor=menu topmargin="0" leftmargin="0">
+
+</script>
+</head>
+<table border="1" cellspacing="0" cellpadding="0" width="260" align="center">
+  <tr><td>
+  <table id=ColorTable border="0" cellspacing="0" cellpadding="0" style='cursor:hand'
+>
+
+  </table>
+</td><td valign=bottom>
+  <table ID=GrayTable border="0" cellspacing="0" cellpadding="0" height=100% style='cursor:hand'
+
+>
+
+  </table>
+</td></tr>
+</table>
+<table border="1" cellspacing="10" cellpadding="0" width="260" align="center">
+  <tr><td rowspan="2" align="center">
+  <table ID=ShowColor border="0" cellspacing="0" cellpadding="0" width="80" height="30">
+     <tr><td></td></tr>
+  </table>
+<input class=text type=text size=7 ID=SelColor >
+<input class=text type=text size=7 ID=aa >
+  </td><td rowspan="2" width="80" style="line-height:16pt">
+基色: <span ID=RGB></span><br>
+亮度: <span ID=GRAY>120</span>
+  </td><td>
+<input class=button type=submit onclick='window.returnValue = (SelColor.value,aa.value);window.close();' value="确　定">
+  </td></tr>
+  <tr><td>
+<input class=button type=button onclick='window.close();' value="取　消">
+  </td></tr>
+</table>
+
+</body>
+</html>

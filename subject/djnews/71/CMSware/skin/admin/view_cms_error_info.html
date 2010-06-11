@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+<HEAD>
+<title>{lang:view_sys_error}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]" />
+<meta name="robots" content="noindex">		
+<link rel='stylesheet' type='text/css' href='../html/style.css' />
+<STYLE type=text/css>
+TD {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: "MS Shell Dlg"
+}
+.tab {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 12px; PADDING-BOTTOM: 1px; CURSOR: hand; PADDING-TOP: 5px; LETTER-SPACING: 1px
+}
+</STYLE>
+   <table border="0" cellspacing="0" cellpadding="0" width="100%"  align=center >
+   
+    <tr > 
+      <td    >[ <A HREF="javascript:document.location=document.location;">{lang::global:refresh}</A> ]
+	  </td>
+      </tr>
+ 
+    
+  </table>
+  
+   <table border="0" cellspacing="1" cellpadding="3" width="100%"  align=center class="table_border">
+   
+    <tr > 
+	  <form name="fo">
+      <td width="50" align="center" class="table_td1">
+	  <TEXTAREA id="log" name="log" style="width=600px;height:250px;">[@htmlspecialchars($output)]</TEXTAREA>
+	  
+	  </td>
+	  </form>
+      </tr>
+ 
+    
+  </table>
+ <include: file="footer.html">

@@ -1,0 +1,70 @@
+<script>
+/*window.onload = init;
+function init()
+{
+	document.bbsLoginForm.referer.value = document.location;
+	alert(document.bbsLoginForm.referer.value);
+}*/
+</script>
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h4>用户登陆</h4>
+<ul>
+<TABLE cellSpacing=3 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE height=40 cellSpacing=0 cellPadding=3 width="100%">
+              <FORM action="http://www.cmsware.com/bbs/index.php?act=Login&CODE=01" 
+              method="post" name="bbsLoginForm">
+              <TBODY>
+			<TR>
+                <TD align=middle >用户名</td><td><INPUT name="UserName" size=12> 
+                          
+                </TD>
+			</TR>
+			<TR>
+                <TD align=middle  >密码</td><td><INPUT name="PassWord" type="password" size=12> 
+                             
+                </TD>
+			</TR>
+<TR>
+                 <TD align=middle  >  </td><td><input class="button" type="submit" name="submit" value="登陆" /> 
+                             
+                </TD>
+			</TR>						  
+						  
+						  </FORM>
+              </TABLE></TD></TR>
+        </TABLE>
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+<!--{{{文章搜索-->
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h4>文章搜索</h4>
+<ul>
+<TABLE cellSpacing=3 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE height=40 cellSpacing=0 cellPadding=3 width="100%">
+              <FORM action="[$PUBLISH_URL]search.php?o=search&TableID=1" 
+              method=post>
+              <TBODY>
+              <TR>
+                <TD align=middle colSpan=2><INPUT name=Keywords id="Keywords" size=12> <INPUT type=submit value=搜索 name=submit  onClick="if(this.form.Keywords.value=='' || this.form.Keywords.value==' ') {alert('请输入关键字');return false;}">
+                          <input name="Field" type="hidden" id="field" value="Title"> <BR><A HREF="[$PUBLISH_URL]search.php?o=pro&TableID=1">高级搜索</A>
+                          </TD></TR></FORM>
+              </TABLE></TD></TR>
+        </TABLE>
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+<!--}}}-->

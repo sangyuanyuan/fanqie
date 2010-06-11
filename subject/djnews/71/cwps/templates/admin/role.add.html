@@ -1,0 +1,68 @@
+<include: file="header.html">
+<script language="JavaScript">
+function prepareSubmit() {
+		select_submit('roleForm', 'TargetOpIDs', 'OpIDs');
+ 
+		return true;
+}
+
+
+</script>
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="role.do">角色管理</A> -&gt; 新增记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form name="roleForm" action="role.do?o=add_submit" method='post' enctype="multipart/form-data" >
+    <tr> 
+      <td colspan="2" class="table_header">新增角色</td>
+    </tr>
+
+<tr>
+	<td class="table_td1">角色名称:</td>
+	<td class="table_td2">
+		<input name="RoleName" type='text' class='flat'  tabindex='8'>
+	</td>
+</tr>
+<tr>
+	<td class="table_td1">所属基础角色:</td>
+	<td class="table_td2">
+		<select name="RoleBaseUID" id="RoleBaseUID">
+		<option value="Administrator">Administrator</option>
+		<option value="User">User</option>
+		<option value="Guest">Guest</option>
+
+		</select>
+
+	</td>
+</tr>
+<tr>
+	<td class="table_td1">可用操作列表:</td>
+	<td class="table_td2">
+<table> <tr> <td>
+<select name="SrcOpIDs"  onDblClick="select_move_to(this.form, 'SrcOpIDs', 'TargetOpIDs')" size="10" style="width:100px;"><loop name="SrcOpIDs" var="var">
+<option value="[$var.value]">[$var.title]</option>
+</loop>
+</select>
+</td>
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcOpIDs', 'TargetOpIDs')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetOpIDs', 'SrcOpIDs')"><br><br><input type="button" value="全选" onClick="select_move_all_to(this.form, 'SrcOpIDs', 'TargetOpIDs')"><br><input type="button" value="全删" onClick="select_move_all_to(this.form, 'TargetOpIDs', 'SrcOpIDs')"></td><td><select name="TargetOpIDs" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetOpIDs', 'SrcOpIDs')"><loop name="TargetOpIDs" var="var"> <option value="[$var.value]" selected>[$var.title]</option>
+</loop>
+</select>
+<INPUT TYPE="hidden" name="OpIDs"></td>
+</tr></table>
+	</td>
+</tr>
+   
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13' onClick="return prepareSubmit();"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<include: file="footer.html">

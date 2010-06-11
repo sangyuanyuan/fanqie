@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+<HEAD>
+<title>[$cms_version]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]" />
+<meta name="robots" content="noindex">		
+<link rel='stylesheet' type='text/css' href='../html/style.css' />
+<SCRIPT src="ui.php?sId=[$sId]&o=functions.js" type=text/javascript></SCRIPT>
+<BODY     STYLE="margin:0pt;padding:0pt;border: 1px buttonhighlight;"  >
+
+<script language='JavaScript'>
+var doImage = doImage;
+var TType = TType;
+var popupWin=null;
+function mhHover(tbl, idx, cls)
+{
+	var t, d;
+	if (document.getElementById)
+		t = document.getElementById(tbl);
+	else
+		t = document.all(tbl);
+	if (t == null) return;
+	if (t.getElementsByTagName)
+		d = t.getElementsByTagName("TD");
+	else
+		d = t.all.tags("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}
+
+</script>
+
+
+<SCRIPT language=JavaScript>
+var TCID = '[$TCID]';
+function doing(action)
+{
+	switch(action) {
+		case 'new':
+			parent.location = 'admin_tpl.php?sId=[$sId]&o=editor_frameset&extra=add&PATH=[$PATH]';
+			break;
+		case 'save':
+			if(parent.mainFrame.o == 'add' && TCID == '') {
+
+				var arr = showMeDialog("admin_select.php?sId=[$sId]&o=tpl&tpl=/[@time('')].html","color","dialogWidth:428px;dialogHeight:266px;help:0;status:0;scroll:no");
+ 				if(arr == null || arr =='') {
+					return false;
+				}
+
+				myRe=/([^\s]*)(\/)([^\/.]*)(.)(\w*)/g;
+				myArray = myRe.exec(arr);
+
+				if(myArray == null || myArray[5] == null || myArray[5] == '') {
+					alert("{lang:error_no_file_suffix}"+"\n\n" + arr);
+					return doing('save');
+					 
+				}
+				//alert(myArray[0]);
+				//alert(myArray[1] + myArray[2]);
+ 				//alert(myArray[3] + myArray[4]+myArray[5]);
+				filename = arr;
+				//return true;
+				if(filename != null || filename=='') {
+					var oBao = new ActiveXObject("Microsoft.XMLHTTP");
+					var returnValue;
+
+
+					oBao.open("POST","admin_tpl.php?sId=[$sId]&NodeID=[$NodeID]&o=isFileExists&targetFile="+filename+"&PATH="+ parent.mainFrame.PATH ,false);
+					oBao.send();
+					returnValue = unescape(oBao.responseText);
+					if(returnValue == '2') {
+						alert("{lang:tpl_exists}");
+						return doing('save');
+
+					
+					} else {
+						parent.mainFrame.document.FM.targetFile.value = filename;
+						parent.mainFrame.document.FM.submit();
+					}
+					
+				}
+			
+			} else{
+				if(!confirm("{lang::global:confirm_save}")) return false;
+				parent.mainFrame.document.FM.submit();
+			
+			}
+
+			break;
+		case 'saveas':
+			parent.mainFrame.document.FM.submit();
+			break;
+		case 'show_colorcode':
+			window.open('show_colorcode.php?sId=[$sId]&TplUrl=<?php echo str_replace('../','systemplatespathisup',$GLOBALS["SYS_ENV"][templatePath]);?>[$PATH]/[$targetFile]&charset=[$charset]','','scrollbars=yes,width=780,height=580')
+			break;
+		case 'close':
+			parent.window.close();
+			break;
+			
+		
+	}
+}
+</script>
+<script>
+var mousemovecolor="#D4D4D4";
+var selectcolor ="#DDDDDD";
+var oldcolor;
+
+function GetRow(oElem)
+{
+	while (oElem)
+	{	//alert(oElem.tagName.toLowerCase())
+		if (oElem.tagName.toLowerCase() == "tr" || oElem.parentElement.tagName.toLowerCase() == "tbody") 
+		    return oElem;
+		if (oElem.tagName.toLowerCase() == "table" || oElem.tagName.toLowerCase() == "th") return false;
+		oElem = oElem.parentElement;
+	}
+}
+
+
+function selected()
+{	//alert(pid)
+
+	var trstyle = GetRow( window.event.srcElement );
+	var a;
+	if( !trstyle )
+		return false;
+
+	if( trstyle.style.backgroundColor.toLowerCase() == selectcolor.toLowerCase())
+	{
+		trstyle.style.backgroundColor = "";
+		a=eval("p_"+ trstyle.id);	
+		//alert(trstyle.id)
+		if (a!=null || a.checked) 
+			a.checked=false
+		oldcolor = "";
+	}
+	else
+	{		
+		trstyle.style.backgroundColor = selectcolor;
+		a=eval("p_"+ trstyle.id);
+		//alert(trstyle.id)
+		if (a!=null) 
+			a.checked=true
+		oldcolor = selectcolor;
+
+	
+	}
+}
+</script>
+<div id="menudata"></div>
+<div id="msviLocalToolbar">
+  <table cellpadding="0" cellspacing="2" width="100%" height="19" border="0">
+    <tr> 
+      <td class="lt0" height="30" nowrap="nowrap"  onmouseover="mhHover('msviLocalToolbar', 0, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 0, 'lt0')" onclick="doing('new')">{lang::global:new}</td>
+      <td><span class="ltsep">|</span></td>
+      <td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 2, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 2, 'lt0')" onclick="doing('save')">{lang::global:save}</td>
+       <td><span class="ltsep">|</span></td>
+         <!-- <td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 4, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 4, 'lt0')" onclick="doing('show_colorcode')">{lang:show_colorcode}</td>
+       <td><span class="ltsep">|</span></td>-->
+      <td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 4, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 4, 'lt0')" onclick="doing('close')">{lang::global:close}</td>
+
+      <td width="100%" align=right> 
+ 
+<td><td> </td>
+    </tr>
+  </table>
+</div>
+</body></html>

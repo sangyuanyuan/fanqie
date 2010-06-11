@@ -1,0 +1,19 @@
+<php>
+<if test="$Member.UserName !=''">
+欢迎你:[$Member.UserName] - <BR> 积分 [$Member.Credit] 点 <BR> 头衔: [$Member.GroupName]  <span class="smalltxt">[<a href="http://bbs.cmsware.net/index.php?act=Login&CODE=03">注销</a>]
+<else>
+<table width="100%"  border="0">
+<form method="post" action="[$BBS_URL]logging.php?action=login">
+  <tr>
+    <td>用户:</td>
+    <td><input type="text" name="username" size="10" maxlength="40" tabindex="1"></td>
+    <td>密码:</td>
+    <td><input type="password" name="password" size="10" tabindex="2"></td>
+    <td><input type="submit" name="loginsubmit" value="会员登录"></td>
+    <td>&nbsp; 
+      <input type="hidden"   name="cookietime" value="2592000">     <span class="smalltxt"><a href="[$BBS_URL]register.php">立即注册</a>&nbsp;<a href="[$BBS_URL]member.php?action=lostpasswd">取回密码</a></span></td>
+  </tr>
+  </form>
+</table>
+</if>
+</php>	  

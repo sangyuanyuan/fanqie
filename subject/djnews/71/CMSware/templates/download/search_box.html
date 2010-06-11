@@ -1,0 +1,26 @@
+<!--{{{软件搜索-->
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h4>软件搜索</h4>
+<ul>
+<TABLE cellSpacing=3 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE height=40 cellSpacing=0 cellPadding=3 width="100%">
+              <FORM action="[$PUBLISH_URL]search.php?o=search&TableID=2" 
+              method=post>
+              <TBODY>
+              <TR>
+                <TD align=middle colSpan=2><INPUT name=Keywords id="Keywords" size=12> <INPUT type=submit value=搜索 name=submit  onClick="if(this.form.Keywords.value=='' || this.form.Keywords.value==' ') {alert('请输入关键字');return false;}">
+                          <input name="Field" type="hidden" id="field" value="SoftName"> 
+						  <BR><A HREF="[$PUBLISH_URL]search.php?o=pro&TableID=2">高级搜索</A>
+                          </TD></TR></FORM>
+              </TABLE></TD></TR>
+        </TABLE>
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+<!--}}}-->

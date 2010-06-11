@@ -1,0 +1,69 @@
+<include file="inc_header.html">
+<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0" background="[$Skin_URL]images/bg.jpg">
+  <tr>
+    <td align="center"><table width="945" border="0" align="center" cellpadding="0" cellspacing="0" background="[$Skin_URL]images/index_071.jpg">
+      <tr>
+        <td><img src="[$Skin_URL]images/index_03.jpg" width="945" height="13" /></td>
+      </tr>
+    
+      <tr>
+        <td ><table width="90%" border="0" align="center" cellpadding="3" cellspacing="3">
+          <tr>
+            <td colspan="2" align="left">
+            	<table cellpadding="0" cellspacing="0" width="100%" align="left">
+                	<tr><td height="30">
+                    您的位置：
+<loop name="NodeInfo.Navigation" key="key" var="var" >
+<if test="$key == 0" >
+<A href=" [$var.URL] "> [$var.Name] </A> 
+<else>
+> <A href=" [$var.URL] "> [$var.Name] </A>
+</if> 
+</loop>
+<if test="$Title != ''">
+> [$Title] 
+</if></td></tr>
+                </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" align="left">
+            <if test="$NodeInfo.NodeID=='3'">
+            <img src="[$Skin_URL]images/xsqb.jpg" border="0"/>
+            <elseif test="$NodeInfo.NodeID=='4'">
+            <img src="[$Skin_URL]images/xcsb.png" border="0"/>
+            <elseif test="$NodeInfo.NodeID=='5'">
+            <img src="[$Skin_URL]images/fxsb.png" border="0"/>
+            <elseif test="$NodeInfo.NodeID=='6'">
+            <img src="[$Skin_URL]images/fwsb.png" border="0"/>
+            <elseif test="$NodeInfo.NodeID=='7'">
+            <img src="[$Skin_URL]images/cysb.png" border="0"/>
+            </if>
+            </td>
+            </tr>
+          <tr>
+            <td align="center"><table border="0" cellpadding="0" cellspacing="0" class="shdborder ">
+              <tr>
+                <td  align="center"><a href="[$Photo]"><img src="[$Photo]" width="400" height="300" /></a></td>
+                </tr>
+              </table></td>
+            <td width="53%" colspan="-1" align="center"><table width="404" border="0" cellspacing="0" cellpadding="0" background="[$Skin_URL]images/textbg.gif" height="306">
+              <tr>
+                <td valign="top"><div style="margin:20px;" class="font14px height180 txtLeft"><strong>[$Title]</strong><br />[@UTF8_Csubstr(strip_tags($var.Content),0,500)]</div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td height="40" colspan="2" align="center" class="font14px b"><a href="javascript:self.close()">〖关闭窗口〗</a></td>
+            </tr>
+          </table></td>
+        </tr>
+      <tr>
+        <td><img src="[$Skin_URL]images/index_331.jpg" width="945" height="12" /></td>
+      </tr>
+    </table>
+    <img src="[$Skin_URL]images/cpr.gif" width="945" height="63" /></td>
+  </tr>
+</table>
+</body>
+</html>

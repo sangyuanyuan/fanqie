@@ -1,0 +1,142 @@
+<include: file="header.html">
+<TABLE width="95%" border=0 align=center cellSpacing=0 cellPadding=0  >
+  <form name="default" method="post" action="[$base_url]o=index::comment_setting_submit" >
+    <TBODY>
+<TR>
+        <TD vAlign=top align=middle width="50%">
+		<TABLE cellspacing="1" cellpadding="4" width="100%"  border=0 class="table_border">
+            <TBODY>
+              <TR class="table_header" >
+                <TD height=25 colSpan=2 id=id2 ><strong>{lang:title}</strong></TD>
+              </TR> 
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_enableComment_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_enableComment_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.enableComment)">
+			<input type="radio" name="enableComment" value="${_LANG_SKIN['form_input_enableComment_value']}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		<else>
+			<input type="radio" name="enableComment" value="{$setting.enableComment}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		</if>
+	 		</TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_enableCommentApprove_title}:</strong>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.enableCommentApprove)">
+			<input type="radio" name="enableCommentApprove" value="${_LANG_SKIN['form_input_enableCommentApprove_value']}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		<else>
+			<input type="radio" name="enableCommentApprove" value="{$setting.enableCommentApprove}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		</if>
+	 		</TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_usernameMaxLength_title}:</strong>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.usernameMaxLength)">
+			<input name="usernameMaxLength" type="text" class="button" id="usernameMaxLength" value="${_LANG_SKIN['form_input_usernameMaxLength_value']}" size="40">
+		<else>
+			<input name="usernameMaxLength" type="text" class="button" id="usernameMaxLength" value="[@htmlspecialchars($setting.usernameMaxLength)]" size="40">
+		</if>
+ 	 		</TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_contentMinLength_title}:</strong>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.contentMinLength)">
+			<input name="contentMinLength" type="text" class="button" id="contentMinLength" value="${_LANG_SKIN['form_input_contentMinLength_value']}" size="40">
+		<else>
+			<input name="contentMinLength" type="text" class="button" id="contentMinLength" value="[@htmlspecialchars($setting.contentMinLength)]" size="40">
+		</if>
+ 	 		</TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_contentMaxLength_title}:</strong>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.contentMaxLength)">
+			<input name="contentMaxLength" type="text" class="button" id="contentMaxLength" value="${_LANG_SKIN['form_input_contentMaxLength_value']}" size="40">
+		<else>
+			<input name="contentMaxLength" type="text" class="button" id="contentMaxLength" value="[@htmlspecialchars($setting.contentMaxLength)]" size="40">
+		</if>
+ 	 		</TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_filterMode_title}:</strong>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.filterMode)">
+			<input type="radio" name="filterMode" value="${_LANG_SKIN['form_input_filterMode_value']}">
+				<option value="0">{lang:form_input_filterMode_option_1}</option><option value="1">{lang:form_input_filterMode_option_2}</option><option value="2">{lang:form_input_filterMode_option_3}</option>
+			</input>
+
+		<else>
+			<input type="radio" name="filterMode" value="{$setting.filterMode}">
+				<option value="0">{lang:form_input_filterMode_option_1}</option><option value="1">{lang:form_input_filterMode_option_2}</option><option value="2">{lang:form_input_filterMode_option_3}</option>
+			</input>
+
+		</if>
+	 		</TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_replaceWord_title}:</strong>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.replaceWord)">
+			<input name="replaceWord" type="text" class="button" id="replaceWord" value="${_LANG_SKIN['form_input_replaceWord_value']}" size="40">
+		<else>
+			<input name="replaceWord" type="text" class="button" id="replaceWord" value="[@htmlspecialchars($setting.replaceWord)]" size="40">
+		</if>
+ 	 		</TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_filterWords_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_filterWords_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.filterWords)">
+			<input name="filterWords" type="text" class="button" id="filterWords" value="${_LANG_SKIN['form_input_filterWords_value']}" size="40">
+		<else>
+			<input name="filterWords" type="text" class="button" id="filterWords" value="[@htmlspecialchars($setting.filterWords)]" size="40">
+		</if>
+ 	 		</TD>
+              </TR>
+ 
+					   
+		       
+ 
+              <TR class="table_td1"    > 
+                <TD height=30 colSpan=2 align=middle > <INPUT name="submit" type=submit value="{lang::global:submit_value}" class="button"> 
+                  &nbsp;&nbsp; <INPUT name="reset" type=reset value="{lang::global:reset_value}"  class="button"> 
+                </TD>
+              </TR>
+            </TBODY>
+          </TABLE></TD>
+      </TR></TBODY></form></TABLE>
+<include: file="footer.html"><!--Auto Generated By kTplBuilder 1.0 2006-03-18 17:20:18-->

@@ -1,0 +1,16 @@
+<CMS action="LIST" return="List"  TableID="1" num="10" />
+ <TABLE cellSpacing=1 cellPadding=1 width=100% border=0>
+            <TBODY>
+             <TR> 
+                <TD width=10 height=5></TD>
+                <TD width=330></TD>
+              </TR>
+<LOOP name="List" var="var" key="key">
+
+<TR> 
+      <TD class=f14 vAlign=top>·</TD>
+        <TD class=f14><A class=a05   href="[$var.URL]">[$var.Title]</A> <span class="process" style="font-size:9px; ">([@date('m-d H:i', $var.PublishDate)])</span></TD>
+</TR>
+			
+</LOOP>		
+</TBODY></TABLE>	

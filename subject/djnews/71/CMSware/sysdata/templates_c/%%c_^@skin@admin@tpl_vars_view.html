@@ -1,0 +1,40 @@
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@header.html");?>
+
+<table width="90%" border="0" align="center" cellspacing="1" cellpadding="4" class="table_border">
+ 
+  <tr class="table_header"> 
+    <td height="25" colspan="6" ><strong><?php echo $_LANG_SKIN['topic'];?></strong></td>
+  </tr>
+  <tr  align=center class="table_td1"> 
+    <td><?php echo $_LANG_SKIN['var_title'];?></td>
+    <td><?php echo $_LANG_SKIN['var_name'];?></td>
+    <td><?php echo $_LANG_SKIN['var_value'];?></td>
+    <td><?php echo $_LANG_SKIN['is_global'];?></td>
+    <td><?php echo $_LANG_SKIN_GLOBAL['operation'];?></td>
+  </tr>
+<?php if(!empty($this->_tpl_vars['List'] )): 
+ foreach ($this->_tpl_vars['List'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+  <tr><td class="table_td1"  ><?php echo $this->_tpl_vars["var"]["VarTitle"];?></td><td  class="table_td2"  > $<?php echo $this->_tpl_vars["var"]["VarName"];?></td>
+    <td   class="table_td2"  ><?php echo $this->_tpl_vars["var"]["VarValue"];?></td>
+    <td   class="table_td2" align=center >
+	<?php if($this->_tpl_vars["var"]["IsGlobal"] == 1): ?>
+	<?php echo $_LANG_SKIN_GLOBAL['yes'];?>
+	<?php else: ?>
+	-
+	<?php endif;?>
+	</td>
+  <td   class="table_td2" align=center>[<a href="<?php echo $this->_tpl_vars["base_url"];?>o=edit&Id=<?php echo $this->_tpl_vars["var"]["Id"];?>"><?php echo $_LANG_SKIN_GLOBAL['edit'];?></a>] [<a href="<?php echo $this->_tpl_vars["base_url"];?>o=del&Id=<?php echo $this->_tpl_vars["var"]["Id"];?>" onclick="return confirm('<?php echo $_LANG_SKIN_GLOBAL['confirm_del'];?>')"><?php echo $_LANG_SKIN_GLOBAL['del'];?></a>]</td></tr>
+<?php endforeach; endif;?>
+
+   <tr  align=center class="table_td2"> 
+    <td colspan=6>&nbsp;<?php echo $this->_tpl_vars["pagelist"];?></td>
+  </tr>
+  <tr class="Tablecontentbg"> 
+<form action="<?php echo $this->_tpl_vars["base_url"];?>o=add_submit" method="post" name="add_subject" id="add_subject">
+    <td colspan=6 bgcolor=ffffff>
+	  <input name="submit" type=button class=button value="<?php echo $_LANG_SKIN['new_var'];?>" onclick="document.location='<?php echo $this->_tpl_vars["base_url"];?>o=add'">
+                </TD>
+	</form>
+  </tr>
+</table>
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@footer.html");?>

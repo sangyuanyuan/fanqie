@@ -1,0 +1,353 @@
+<HTML xmlns:v = "urn:schemas-microsoft-com:vml">
+<HEAD><TITLE>手写板</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<STYLE type="text/css">
+v\:* { behavior: url(#default#VML);}
+.bodyPen { cursor: url("pen.cur"); }
+.bodyEraser { cursor: default; }
+.bodyMove { cursor: default; }
+.bodyZIndex { cursor: default; }
+.bodyFormatBrush { cursor: default; }
+.bodyFormatGet { cursor: default; }
+</STYLE>
+</HEAD>
+<BODY bgColor="#ffffff" scroll="no" class="bodyPen">
+<SCRIPT language="JavaScript">
+if(parent == self){
+	location.replace('editor.htm');
+}
+window.onerror = function(){ return true;}
+
+var pf = parent.document.forms[0];
+var editObj = null;
+var teller = 0;
+var X=Y=0;
+
+try{
+	var code = '';
+	var elm_id = window.name?'value_'+window.name:'';
+	if(elm_id && (elm=window.parent.document.getElementById(elm_id)) ){
+		code = elm.value;
+	}
+	if(!window.parent.createShapes(code,window)){
+		alert('代码有误,初始化图形失败!');
+	}
+}catch(e){}
+
+function make_draw(sh){
+	if(sh!='shape'&&sh!='pen'&&sh!='oval'&&sh!='rect'&&sh!='roundrect') return ;
+
+	teller++;
+	X = event.clientX;
+	Y = event.clientY;
+	
+	var fillHTML = (pf.backcolorvalue.value == '')? '<v:fill on="false" />': '<v:fill color="' + pf.backcolorvalue.value + '" />';  
+	var strokeweight = pf.strokeweight.value + 'px';
+	var strokeHTML = (pf.forecolorvalue.value == '')? '<v:stroke on="false" />': '<v:stroke weight="' + strokeweight + '" color="' + pf.forecolorvalue.value + '" />';
+	
+	var dshape = new Array(); 
+	dshape['shape'] = '<v:shape id="nr' + teller + '" style="display:none; position: absolute; z-index:' + teller + '; left: 0px; top: 0px; width: 1600px; height: 1200px;" coordsize="1600,1200"><v:path v="m ' + X + ',' + Y + ' l ' + X + ',' + Y + ' e" />' + fillHTML + strokeHTML + '</v:shape>';
+	dshape['pen'] = '<v:shape id="nr' + teller + '" style="display:none; position: absolute; z-index:' + teller + '; left: 0px; top: 0px; width: 1600px; height: 1200px;" coordsize="1600,1200"><v:path v="m ' + X + ',' + Y + ' l ' + X + ',' + Y + ' e" />' + fillHTML + strokeHTML + '</v:shape>';
+	dshape['oval'] = '<v:oval id="nr' + teller + '" style="display:none; position: absolute; z-index:' + teller + '; left: ' + X + '; top: ' + Y + '; " >' + fillHTML + strokeHTML + '</v:oval>';  
+	dshape['rect'] = '<v:rect id="nr' + teller + '" style="display:none; position: absolute; z-index:' + teller + '; left: ' + X + '; top: ' + Y + '; " >' + fillHTML + strokeHTML + '</v:rect>';
+	dshape['roundrect'] = '<v:roundrect id="nr' + teller + '" style="display:none; position: absolute; z-index:' + teller + '; left: ' + X + '; top: ' + Y + ';" >' + fillHTML + strokeHTML + '</v:roundrect>';
+	document.body.insertAdjacentHTML('beforeend', dshape[sh]);
+	parent.redo_array = new Array();
+
+	editObj = document.getElementById('nr' + teller);
+	
+	if(sh=='shape') document.onmousemove = taken_shape;
+	else if(sh=='pen') document.onmousemove = taken_point;
+	else document.onmousemove = taken_possion;
+
+	document.onmouseup = parent.document.onmouseup = ending_draw;
+
+}
+
+function taken_shape(){
+	if(!editObj) return;
+	var newPath = (editObj.path+'').replace('e','') + ' ' + event.clientX + ',' + event.clientY ;
+	newPath = newPath.replace(/(\d+)([^\d]+?)(\d+)([^\d]+?)(\d+)([^\d]+?)(\d+)([^\d]+?)(\d+)([^\d]+?)(\d+)([^\d]*?)$/,function(){var a=arguments;if((a[11]-a[7])*(a[5]-a[1])==(a[7]-a[3])*(a[9]-a[5]) && (a[5]-a[1])*(a[9]-a[5])>=0 && (a[7]-a[3])*(a[11]-a[7])>=0 ){ return a[1]+a[2]+a[3]+a[4]+a[9]+a[6]+a[11]; }else{ return a[0]; } });
+	editObj.path = newPath + ' e';
+	editObj.style.display = '';
+}
+
+function taken_point(){
+	if(!editObj) return;
+	editObj.path = (editObj.path+'').replace('e','').split('l')[0] + ' l ' + event.clientX + ',' + event.clientY + ' e';
+	editObj.style.display = '';
+}
+
+function taken_possion(){
+	if(!editObj) return;
+	var dis_X = event.clientX - X;
+	var dis_Y = event.clientY - Y;
+	if(dis_X < 0){
+		editObj.style.left = (X + dis_X) + 'px';
+		editObj.style.width = -dis_X + 'px';
+	} else {
+		editObj.style.width = dis_X + 'px';
+	}
+	if(dis_Y < 0){
+		editObj.style.top = (Y + dis_Y) + 'px';
+		editObj.style.height = -dis_Y + 'px';
+	} else {
+		editObj.style.height = dis_Y + 'px';
+	}
+	editObj.style.display = '';
+}
+
+function ending_draw(){
+	if(!editObj) return;
+	if(editObj.clientWidth*editObj.clientHeight==0){
+		editObj.removeNode(true);
+		teller--;
+	}
+	editObj = null;
+	eventInit();
+}
+
+function find_object(){
+	var obj = event.srcElement;
+	var idno = obj.id.replace(/^nr(\d+)$/,"$1");
+	if(!idno||idno==obj.id) return true;
+	var toolshape = pf.toolshape.value;
+	if(toolshape=='eraser') start_eraser(obj);
+	else if(toolshape=='move') ready_move(obj);
+	else if(toolshape=='zindexdown'||toolshape=='zindexup') start_zindex(obj);
+	else if(toolshape=='formatbrush') start_format(obj);
+	else if(toolshape=='formatget') start_getformat(obj);
+	else if(toolshape=='edit') start_edit(obj);
+}
+
+//更改工具
+function start_edit(obj){
+	obj.stroke.dashStyle = "shortDashDot";
+	obj.style.cursor = "pointer";
+	obj.onmouseout = function(){ ending_edit(obj); }
+	obj.onmousedown = do_edit;
+}
+function ending_edit(obj){
+	if(obj.stroke.dashStyle){
+		obj.stroke.dashStyle = '';
+		obj.style.cursor = "";
+	}
+	obj.onmousedown = obj.onmouseout =  null;
+}
+function do_edit(){
+	if(pf.toolshape.value!='edit') return true;
+	var obj = event.srcElement;
+	var idno = obj.id.replace(/^nr(\d+)$/,"$1");
+	if(!idno||idno==obj.id) return true;
+	ending_edit(obj);
+	parent.redo_array.unshift( [obj.outerHTML,2,obj.id] );
+	var sh = obj.tagName;
+	X = parseInt(obj.style.left);
+	Y = parseInt(obj.style.top);
+	editObj = obj;
+	if(sh=='shape' && (obj.path+'').match(/^([^\d]+)(\d+[^\d]*){4}$/)) document.onmousemove = taken_point;
+	else if(sh=='shape') document.onmousemove = taken_shape;
+	else document.onmousemove = taken_possion;
+	document.onmouseup = parent.document.onmouseup = ending_draw;
+}
+
+//拾取工具
+function start_getformat(obj){
+	obj.stroke.dashStyle = "shortDashDot";
+	obj.style.cursor = "pointer";
+	obj.onmouseout = function(){ ending_getformat(obj); }
+	obj.onclick = do_getformat;
+}
+function ending_getformat(obj){
+	if(obj.stroke.dashStyle){
+		obj.stroke.dashStyle = '';
+		obj.style.cursor = "";
+	}
+	obj.onclick = obj.onmouseout =  null;
+}
+function do_getformat(){
+	if(pf.toolshape.value!='formatget') return true;
+	var obj = event.srcElement;
+	var idno = obj.id.replace(/^nr(\d+)$/,"$1");
+	if(!idno||idno==obj.id) return true;
+
+	pf.strokeweight.value = parseInt(obj.strokeweight*4/3);
+	parent.obj_colorpicker = 'forecolor';
+	if(obj.stroked)	parent.do_pickcolor(obj.strokecolor+'');
+	else parent.do_pickcolor('');
+
+	parent.obj_colorpicker = 'backcolor';
+	if(obj.filled) parent.do_pickcolor(obj.fillcolor+'');
+	else parent.do_pickcolor('');
+	
+	if(obj.tagName=='shape' && (obj.path+'').match(/^([^\d]+)(\d+[^\d]*){4}$/)){
+		parent.selectToolShape('pen');		
+	}else{
+		parent.selectToolShape(obj.tagName);
+	}
+}
+
+
+//格式刷
+function start_format(obj){
+	obj.stroke.dashStyle = "shortDashDot";
+	obj.style.cursor = "pointer";
+	obj.onmouseout = function(){ ending_format(obj); }
+	obj.onclick = do_format;
+}
+function ending_format(obj){
+	if(obj.stroke.dashStyle){
+		obj.stroke.dashStyle = '';
+		obj.style.cursor = "";
+	}
+	obj.onclick = obj.onmouseout =  null;
+}
+function do_format(){
+	if(pf.toolshape.value!='formatbrush') return true;
+	var obj = event.srcElement;
+	var idno = obj.id.replace(/^nr(\d+)$/,"$1");
+	if(!idno||idno==obj.id) return true;
+	ending_format(obj);
+	parent.redo_array.unshift( [obj.outerHTML,2,obj.id] );
+	if(pf.forecolorvalue.value){
+		obj.strokeweight = pf.strokeweight.value + 'px';
+		obj.strokecolor = pf.forecolorvalue.value;
+		obj.stroked = true;
+	}else obj.stroked = false;
+	if(pf.backcolorvalue.value){
+		obj.fillcolor = pf.backcolorvalue.value;
+		obj.filled = true;
+	}else obj.filled = false;	
+}
+
+
+//层顺序
+function start_zindex(obj){
+	obj.stroke.dashStyle = "shortDashDot";
+	obj.style.cursor = "n-resize";
+	obj.onmouseout = function(){ ending_zindex(obj); }
+	obj.onclick = do_zindex;
+}
+function ending_zindex(obj){
+	if(obj.stroke.dashStyle){
+		obj.stroke.dashStyle = '';
+		obj.style.cursor = "";
+	}
+	obj.onclick = obj.onmouseout = null;
+}
+function do_zindex(){
+	if( pf.toolshape.value!='zindexdown' && pf.toolshape.value!='zindexup' ) return true;
+	var obj = event.srcElement;
+	var idno = obj.id.replace(/^nr(\d+)$/,"$1");
+	if(!idno||idno==obj.id) return true;
+	idno *= 1;
+	
+	var obj2;
+	if(pf.toolshape.value=='zindexdown'){ //向下交换
+		for(i=idno-1;i>0;i--){
+			if( obj2=document.getElementById('nr'+i) ){
+				obj.id='nrTEMPID';
+				obj2.id = 'nr' + idno;
+				obj2.style.zIndex = idno;
+				obj.id = 'nr' + i;
+				obj.style.zIndex = i;
+				parent.redo_array.unshift( [idno+','+i,3] );
+				return true;
+			}
+		}
+		alert('已最下层');
+	}else{ //向上交换
+		for(i=idno+1;i<=teller;i++){
+			if( obj2=document.getElementById('nr'+i) ){
+				obj.id='nrTEMPID';
+				obj2.id = 'nr' + idno;
+				obj2.style.zIndex = idno;
+				obj.id = 'nr' + i;
+				obj.style.zIndex = i;
+				parent.redo_array.unshift( [idno+','+i,3] );
+				return true;
+			}
+		}
+		alert('已最上层');
+	}	
+}
+
+//移动
+function ready_move(obj){
+	obj.stroke.dashStyle = "shortDashDot";
+	obj.style.cursor = "move";
+	obj.onmousedown = function(){ start_move(obj); }
+	obj.onmouseout = function(){ ending_move(obj); }
+}
+function ending_move(obj){
+	if(obj.stroke.dashStyle){
+		obj.stroke.dashStyle = '';
+		obj.style.cursor = '';
+	}
+	obj.onmousedown = obj.onmouseout = null;
+	if(editObj){
+		eventInit();
+		editObj = null; 
+		if(obj.outerHTML==parent.redo_array[0][0]) parent.redo_array.shift();
+	}
+}
+function start_move(obj){
+	X = parseInt(obj.style.left)-event.clientX;
+	Y = parseInt(obj.style.top)-event.clientY;
+	ending_move(obj);
+	parent.redo_array.unshift( [obj.outerHTML,2,obj.id] );
+	ready_move(obj);
+	obj.onmouseout = null;
+	document.onmousemove = do_move;
+	document.onmouseup = parent.document.onmouseup = function(){ ending_move(obj); }
+	editObj = obj;
+}
+function do_move(){
+	if(!editObj) return;
+	editObj.style.left = event.clientX+X;
+	editObj.style.top = event.clientY+Y;	
+}
+
+//橡皮
+function start_eraser(obj){
+	obj.stroke.dashStyle = "shortDashDot";
+	obj.style.cursor = "pointer";
+	obj.onmouseout = function(){ ending_eraser(obj); }
+	obj.onclick = do_eraser;
+}
+function ending_eraser(obj){
+	if(obj.stroke.dashStyle){
+		obj.stroke.dashStyle = '';
+		obj.style.cursor = "";
+	}
+	obj.onclick = obj.onmouseout = null;
+}
+function do_eraser(){
+	if(pf.toolshape.value!='eraser') return true;
+	var obj = event.srcElement;
+	var idno = obj.id.replace(/^nr(\d+)$/,"$1");
+	if(!idno||idno==obj.id) return true;
+	ending_eraser(obj);
+	parent.redo_array.unshift( [obj.outerHTML,0] );
+	obj.removeNode(true);
+}
+
+document.onmouseover = function(){var bd=document.body;var val=pf.toolshape.value; if(val=='eraser') bd.className='bodyEraser';else if(val=='move') bd.className='bodyMove';else if(val=='zindexdown'||val=='zindexup') bd.className='bodyZIndex';else if(val=='formatbrush') bd.className='bodyFormatBrush';else if(val=='formatget') bd.className='bodyFormatGet'; else bd.className='bodyPen'; }
+document.onkeydown = parent.startAcessKey;
+document.onkeyup = function(){ parent.doAccessKey(event);}
+
+function eventInit(){
+	document.onmouseup = parent.document.onmouseup = deny;
+	document.onmousedown = function(){make_draw(pf.toolshape.value);}
+	document.onmousemove = find_object; 
+}
+eventInit();
+
+
+function deny(){ return false;}
+document.onselectstart = deny;
+document.oncontextmenu = deny;
+
+</SCRIPT>
+
+</BODY></HTML>

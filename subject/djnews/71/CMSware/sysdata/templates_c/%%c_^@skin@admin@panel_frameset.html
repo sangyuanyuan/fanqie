@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" >
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title><?php echo $this->_tpl_vars["cms_version"];?></title>
+    <meta name="robots" content="noindex">
+    <script>
+					window.onload = loadCols;
+					
+					function loadCols()
+					{
+						try { panelMain.load("mnpFrames.data"); }
+						catch(e) { return; }
+						var colWidth = panelMain.getAttribute("colWidth");
+						if (colWidth)
+						{
+				
+							panelMain.cols = colWidth + ",*";
+				
+							if (colWidth == "0")
+								top.panelHeader.MNP_showtoc.style.display = "";
+						}				
+					}
+					
+					function saveCols()
+					{
+						panelMain.setAttribute("colWidth", fstMenuColumn.offsetWidth);
+						try { panelMain.save("mnpFrames.data"); }
+						catch(e) {}
+					}
+				</script>
+  </head>
+  <frameset rows="88,*" frameborder="0" framespacing="0"  >
+    <frame name="panelHeader" scrolling="no" noresize="true" src="<?php echo $this->_tpl_vars["base_url"];?>o=sys::view&extra=header">
+    <frameset name="panelMain" cols="216,*" framespacing="6" frameborder="1" id="panelMain" style="behavior:url(#default#userdata)" onresize="saveCols()" onmouseover="if(typeof(top.panelHeader.oPopup)!='undefined') top.panelHeader.oPopup.hide();">
+      <frameset framespacing="0" frameborder="0" id="fstMenuColumn" rows="21,*,0,0" name ="fstMenuColumn" >
+        <frame name="panelBox" scrolling="no" src="<?php echo $this->_tpl_vars["base_url"];?>o=sys::view&extra=box">
+        <frame name="panelMenu" scrolling="yes" src="<?php echo $this->_tpl_vars["base_url"];?>o=sys::view&extra=menu">
+        <frame name="actionFrame" scrolling="yes" src="" marginheight="0" marginwidth="0" frameborder="1" >
+		<frame name="CrawlerTaskFrame" scrolling="yes" src="<?php echo $this->_tpl_vars["base_url"];?>o=sys::view&extra=initMultiThread" marginheight="0" marginwidth="0" frameborder="1" >
+      </frameset>
+
+    <frameset name="panelMain1" rows="*,0" framespacing="3"  frameborder="1"  scrolling="no"  id="panelMain1"  >
+      <frame name="panelWork" frameborder="0"   src="<?php echo $this->_tpl_vars["base_url"];?>o=sys::view&extra=workarea" scrolling="yes" >
+  	<!--  <frame src="admin_collection.php?sId=<?php echo $this->_tpl_vars["sId"];?>&o=initMultiThread"  frameborder="0" name="CrawlerTaskFrame" scrolling="no"  framespacing="0"   >-->
+	  <frame src="<?php echo $this->_tpl_vars["base_url"];?>o=sys::view&extra=taskInfo" name="TaskInfoFrame" scrolling="yes"     >
+    </frameset>  
+
+
+    </frameset>
+  </frameset><noframes><?php echo $_LANG_SKIN['browser_not_support_frame_mode'];?></noframes>
+</html>
+
+

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wap>GBK2UTF8</wap>
+<!--GBK2UTF8,GBK2BIG5,BIG52GBK,UTF8ToGBK,UTF8ToUnicode,gb2unicode-->
+<!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml">
+<wml><head><meta http-equiv="Cache-Control" content="no-cache" forua="true"/></head>
+<CMS  action="NODE" return="rootNodeInfo" NodeGUID="com.cmsware.demo.wap" />
+<card id="MainCard" title="[$rootNodeInfo.Name]">

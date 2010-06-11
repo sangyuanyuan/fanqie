@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>CMSware  </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="Description" CONTENT="">
+
+</HEAD>
+<link rel='stylesheet' type='text/css' href='[$PUBLISH_URL]images/publish_style.css' />
+<body bgcolor="" TOPMARGIN="0" LEFTMARGIN="0">
+
+<table width="90%" border="0" align="center" cellpadding="3" cellspacing="1" class="table_border">
+  <tr> 
+    <td class="table_td1">
+	
+	<table width="100%" border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="">
+  <tr> 
+    <td  > <strong>CMSware   </strong></td>
+	 <td   align=right><a href="http://www.cmsware.com" >CMSware首页</a>&nbsp;-&nbsp;<a href="http://www.cmsware.com/bbs" >技术支持论坛</a></td>
+  </tr>
+</table>
+</td>
+  </tr>
+</table>
+ 
+<form name="form1" method="post"  action="contribution.php?o=do&TableID=[$TableID]">
+  <table width="90%" border="0" align="center"  cellpadding="5" cellspacing="1" class="table_border">
+    <tr > 
+      <td colspan="2" class="table_header">新闻投稿：</td>
+    </tr>
+<tr > 
+      <td class="table_td1">投稿栏目：</td>
+      <td class="table_td2">
+<select  name="TargetNodeID" id = "TargetNodeID">
+<loop $NODE_LIST var=var>
+<if $var.WorkFlow != 0 && $var.TableID == $TableID >
+<option value="[$var.NodeID]">[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+</if>
+ </loop></select>
+ 
+</td>
+    </tr>
+	<tr > 
+      <td class="table_td1">标题：</td>
+      <td class="table_td2"><input name="data_Title" type="text" id="data_Title"  ></td>
+    </tr>
+    <tr >
+      <td class="table_td1">作者：</td>
+      <td class="table_td2">
+        <input name="data_Author" type="text" id="data_Author" ></td>
+    </tr>
+    <tr > 
+      <td class="table_td1">来源：</td>
+      <td class="table_td2"><input name="data_FromSite" type="text" id="data_FromSite" ></td>
+    </tr>
+    <tr > 
+      <td class="table_td1">关键字：</td>
+      <td class="table_td2"><input name="data_Keywords" type="text" id="data_Keywords"  > 使用“,”分隔</td>
+    </tr>  
+    <tr > 
+      <td class="table_td1">内容：</td>
+      <td class="table_td2"> <textarea name="data_Content" cols="60" rows="10" id="data_Content"></textarea></td>
+    </tr>
+    <tr > 
+      <td  class="table_td2">&nbsp;</td>
+      <td class="table_td2"><input name="submit" type="submit" id="submit" value="提交">
+        &nbsp;&nbsp; 
+        <input type="reset" name="Submit2" value="重置"></td>
+    </tr>
+  </table>
+</form>
+
+<center><span class="process">
+Powered by <b><A HREF="http://www.cmsware.com" target="blank" class="o">[$cms_version]</A></b>  &copy 1999 - 2005  CMSware Ltd.  All rights reserved.</CENTER>
+</body>
+</html>

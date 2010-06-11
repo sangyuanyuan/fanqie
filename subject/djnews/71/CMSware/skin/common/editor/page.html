@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>插入分页符</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<style type="text/css">
+body{scrollbar-face-color: #B8B8B8; scrollbar-highlight-color: #F5F9FF; scrollbar-shadow-color: #828282; scrollbar-3dlight-color: #828282; scrollbar-arrow-color: #797979; scrollbar-track-color: #ECECEC; scrollbar-darkshadow-color: #ffffff}
+body,a,table,div,span,td,th,input,select{font:9pt;font-family:  Verdana,"宋体", Arial, Helvetica, sans-serif;}
+.text{border:1 solid #aaaaaa;}
+.button{height:18;border:1 ridge #aaaaaa;background-color:aaaaaa;color:ffffff}
+.table {  border: 1px inset; border-color: menu #FFFFFF #FFFFFF menu}
+</style>
+
+<script language="JavaScript">
+function info() {
+var codes;
+dm=document.form;
+codes=dm.code.value;
+//codes="<h3><font color=\"#888888\">[Page:" + codes +" ]</font></h3>";
+codes="<h3><font color=\"#888888\">[Page:" + codes +" ]</font></h3>";
+return codes;
+
+}
+</script>
+<body bgcolor=menu >
+
+  <table width="98%" border="0" cellspacing="6" cellpadding="0" align="center">
+    <form name="form" onsubmit='window.returnValue = info();window.close();return false;'>
+	<tr>
+      <td >
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
+          <tr> 
+            <td align=right>分页子标题：</td><td><input class=text type=text size=25  name=code></td>
+          </tr>
+			<tr> 
+            <td height=10></td><td></td>
+          </tr>
+          <tr > 
+           <td></td> <td > 
+               
+                <input class=button type=button onclick='window.returnValue = info();window.close();' value="确　定">
+                <input class=button type=button onclick="window.returnValue ='' ;window.close();" value="取　消">
+             </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+	</form>
+  </table>
+
+</body>
+</html>

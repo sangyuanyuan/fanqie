@@ -1,0 +1,4 @@
+<CMS action="LIST" return="List" NodeID="{$NodeID}" Num="10" OrderBy="Hits_Total" />
+<loop name="List" var="var" key="key">
+<a href="[$var.URL]" target="_blank" title="[$var.Title]"><if test="empty($var.ShortTitle)">[@Csubstr($var.Title,0,20,'')]<else>[$var.ShortTitle]</if></a>&nbsp;[[$var.Hits_Total]]<br />
+</loop>

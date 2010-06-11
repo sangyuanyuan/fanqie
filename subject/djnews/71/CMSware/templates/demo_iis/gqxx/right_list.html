@@ -1,0 +1,108 @@
+<div class="right">	
+		<!--右边样式1-->
+<!--供求搜索框-->		
+
+<div class="topside05">
+    <div class="topside05_l">&nbsp;</div>
+    <div class="topside05_c">&nbsp;</div>
+    <div class="topside05_r">&nbsp;</div>
+</div>
+<div class="center05">
+    <a href="[$PUBLISH_URL]content_v.php?id=[$Gqxx_fb_IndexID]&page=0"><font color="#FF66CC">发布供求信息</font></a>
+    
+</div>
+<div class="bottomside05">
+    <div class="bottomside05_l">&nbsp;</div>
+    <div class="bottomside05_c">&nbsp;</div>
+    <div class="bottomside05_r">&nbsp;</div>
+</div>
+
+<div class="topside05">
+    <div class="topside05_l">&nbsp;</div>
+    <div class="topside05_c">&nbsp;</div>
+    <div class="topside05_r">&nbsp;</div>
+</div>
+<div class="center05">
+    <div class="photo_fous"><font color="#0066FF">供求搜索</font></div>
+    <!--#CW#--搜索表单--#CW#-->
+    <form action="[$PUBLISH_URL]search.php?o=search&TableID=[$Gqxx_TableID]" method="post" style="margin:0;">
+          <input name=Keywords value="[$searchKeywords]" type=text id="keywords" size=23>
+          <input name="Field" type="hidden" id="field" value="Title">
+		  <input  name="image222" type="submit" value="供求搜索" onClick="if(this.form.Keywords.value=='') {alert('请输入关键字');return false;}">
+    </form>
+</div>
+<div class="bottomside05">
+    <div class="bottomside05_l">&nbsp;</div>
+    <div class="bottomside05_c">&nbsp;</div>
+    <div class="bottomside05_r">&nbsp;</div>
+</div>
+		<div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<div class="photo_fous"><font color="#9999FF">最热供求信息</font></div>
+			
+<CMS action="LIST" return="List" NodeID="{$Gqxx_AllNodeID}" OrderBy="Hits_Total"  Num="10" /> 
+<loop name="List" var="var" key="key">
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 10,'')] </a>
+点击:<font color="#FF0000">[$var.Hits_Total]</font>
+<!--显示文章链接，自动截取标题长度16-->
+<br> 
+</loop> 
+			
+		</div>
+		
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+		<!--右边样式2-->
+        <div class="topside05">
+			<div class="topside05_l">&nbsp;</div>
+			<div class="topside05_c">&nbsp;</div>
+			<div class="topside05_r">&nbsp;</div>
+		</div>
+		<div class="center05">
+        	<div class="photo_fous"><font  color="#66CC33">最新供应信息</font></div>
+			
+<CMS action="LIST" return="List" NodeID="{$Gqxx_AllNodeID}" where="c.GqType='1'" orderby="i.PublishDate DESC "  Num="10" /> 
+<loop name="List" var="var" key="key">
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 10,'')] </a>
+<font color="#FF0000">[@date("m-d", $var.PublishDate)]</font>
+<!--显示文章链接，自动截取标题长度16-->
+<br> 
+</loop>
+			
+		    </div>
+		<div class="bottomside05">
+			<div class="bottomside05_l">&nbsp;</div>
+			<div class="bottomside05_c">&nbsp;</div>
+			<div class="bottomside05_r">&nbsp;</div>
+		</div>
+        
+        <div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<div class="photo_fous"><font color="#CC66FF">最新寻求信息</font></div>
+            
+<CMS action="LIST" return="List" NodeID="{$Gqxx_AllNodeID}" where="c.GqType='2'" orderby="i.PublishDate DESC "  Num="10" /> 
+<loop name="List" var="var" key="key">
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 10,'')] </a>
+<font color="#FF0000">[@date("m-d", $var.PublishDate)]</font>
+<!--显示文章链接，自动截取标题长度16-->
+<br> 
+</loop>			
+			
+		    </div>
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+	</div>

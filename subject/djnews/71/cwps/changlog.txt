@@ -1,0 +1,45 @@
+﻿2006-01-20
+ALTER TABLE `cmsware_passport_oas` ADD `OASUID` VARCHAR( 255 ) NULL AFTER `OASID` ;
+
++ 新增OAS唯一标识符OASUID，可以使用OASUID代替OASID来传递某些参数。
+
+
+
+
+
+================================================================================
+ALTER TABLE `cmsware_passport_oas` CHANGE `IP` `IP` VARCHAR( 250 ) DEFAULT NULL ;
+
+2006-11-05
++ 新增CWPS与OAS的通信数据加密功能
+
+  CWPS端配置config.php：
+  $SYS_ENV['passport']['public_key'] = '123@cwps';  // 数据加密公锁,留空则不进行加密
+
+  OAS端调用时设置：
+  $oas = new SoapOAS($CWPS_Address);  //初始化OAS客户端
+  $oas->setPublicEncryptKey("123@cwps");  //设置数据加密公锁,留空则不进行加密
+
+* cwps管理后台不能修改用户的密码
+
+* utf8版的后台用户列表分页处会出现乱码,无法分页，后来有些用户的gb也不行
+
+
+2007-09-07
+解决cwps后台用户列表大于十页时，分页的链接不对的问题；更新文件：include/functions.php
+升级phpmailer到最新的cvs版本,并修正了phpmailer的一处配置问题；更新文件：lib/phpmailer整个目录
+修复了一个会产生大量的session表记录的问题，更新文件：/classes/com/member/biz/Auth.php
+
+2007-09-18
+修正了windows下安装脚本的一些问题，变动的文件－install.php
+
+2007-10-26
+修正了大数据量时后台用户列表出不来的问题，变动的文件－/classes/com/member/biz/User.php
+
+2007-12-03
+*解决安装程序的问题，让安装时自动检测并填入默认的服务器ip地址 
+*修正一个安装路径检测的环境兼容问题
+变动的文件:
+/classes/com/member/biz/Auth.php
+/install.php
+/install/base.sql

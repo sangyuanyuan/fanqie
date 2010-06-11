@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>[$Title] - [$NodeInfo.NodeName] - [$SITE_NAME]</title>
+
+<meta name="keywords" content="[$SoftKeywords],[$NodeInfo.Name]" />
+<link href="[$SKIN_URL]download/css/style.css" rel="stylesheet" type="text/css" />
+<!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+<script src="[$SKIN_URL]download/js/js.js"></script>
+</head>
+<include file="TplConfig.html">
+
+<body>
+<include file="../common/header.html" />
+<div class="news_nav"><!--#CW#--下载频道附加导航--#CW#-->
+	<CMS action="NODELIST" return="List" Type="set" NodeID="{$Index_NodeID}" /><!--#CW#根据TplConfig中设置的下载主结点ID号，生成导航#CW#-->
+	<loop name="List" var="var" key="key" start="1">
+	<a href="[$var.NodeURL]">[$var.NodeName]</a><if test="$key < count($List)"> | </if><!--#CW#如果已循环到最后一条，则不显示最后的|#CW#-->
+	</loop>
+</div>
+
+
+
+<div class="content">
+
+	<div class="left">
+
+        <!--#CW#---左边样式1--#CW#-->
+
+		<div class="topside01">
+
+			<div class="topside01_l">&nbsp;</div>
+
+			<div class="topside01_c">&nbsp;</div>
+
+			<div class="topside01_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center01">
+			<div class="focus"><a href="#" style="color:#328CB8;">[$Title]</a></div><div class="morefocuslink">[<a href="#2">下载软件</a>]</div>
+          	<div class="sonfocus">
+            <table width="100%" class="downcbox">
+		  <tr>
+                	<td width="33%" valign="top">
+                    	<b>软件大小：</b>[$SoftSize]<br />
+                        <b>下载次数：</b><script src="[$PUBLISH_URL]counter.php?o=display_counter&Id=[$IndexID]"></script><br />
+                        <b>软件语言：</b>[$Language]<br />
+                        <b>推荐等级：</b>[$Star]<br />
+                        <b>开&nbsp;发&nbsp;商：</b><if test="!empty($Developer)"><a href="[$Developer]">Home Page</a></if><br />
+                    </td>
+                    <td width="33%" valign="top">
+                    	<b>软件类别：</b>[$SoftType]<br />
+                        <b>运行环境：</b>[$Environment]<br />
+                      	<b>软件下载：</b><a href="[$var.]">Home Page</a><br />
+                    </td>
+              		<td width="34%" align="center" valign="middle"><if test="!empty($Photo)"><img src="[$Photo]" height="80" width="80" /><else>无图片预览</if></td>
+              	</tr>
+            </table> 
+          </div>
+        	<!--#CW#--软件介绍--#CW#-->
+            <div class="sonfocus" style="font-size:16px;">
+              <p><b>【软件介绍】：</b></p>
+              <p>[$Intro]<br></p>
+            </div>
+        <!--#CW#--播放地址--#CW#-->
+            <div class="sonfocus" style="font-size:16px;">
+           	  <p><b>【下载地址】：</b></p><a name="2">
+             
+              
+              <?php include(SETTING_DIR."model.download.func.parse_download_url.php");?>
+            </div>
+            <!--#CW#--评论--#CW#-->
+            <div class="sonfocus" style="font-size:16px;">
+
+              	<p><b>【用户评论】：</b></p>
+
+                <form action="[$PUBLISH_URL]comment.php?o=post&IndexID=[$IndexID]" method="post" onSubmit="return check('posteditor_textarea');">
+
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+
+   	  <tr>
+
+                    	<td width="91" align="right">昵称：</td>
+
+                      	<td width="181" align="left"><label><input id="username" name="username" type="text" /></label></td>
+
+                        <td width="54" align="left">验证码：</td>
+
+                        <td width="402" align="left"><label><input type="text" name="validCode" size="10" maxlength="40" tabindex="1"></label><img src="[$PUBLISH_URL]validCode.php"/></td>
+
+                  	</tr>
+
+                    <tr>
+
+                    	<td align="right">内容：</td>
+
+                        <td colspan="3">
+                        	<textarea id="content" name="content" cols="80" rows="2" style="display:none"></textarea>
+<iframe ID="Editor" name="Editor" src="[$PUBLISH_URL]ubb/edit.htm?id=content" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" style="height:320px;width:100%"></iframe>
+                            
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                    	<td colspan="4" align="center"><label><input type="submit" id="submit" value="提&nbsp;交"/></label>&nbsp;&nbsp;&nbsp;<label><input type="submit" value="重&nbsp;置" /></label></td>
+
+                    </tr>
+
+                </table>
+
+              </form>
+
+            </div>
+
+            <script type="text/javascript" src="[$PUBLISH_URL]js.php?id=down_comment&IndexID=[$IndexID]"></script>
+
+        
+      </div>
+
+		<div class="bottomside01">
+
+			<div class="bottomside01_l">&nbsp;</div>
+
+			<div class="bottomside01_c">&nbsp;</div>
+
+			<div class="bottomside01_r">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+
+
+	<!--#CW#--右边列开始--#CW#-->
+
+	<div class="right">	
+
+    	<!--#CW#--搜索BOX--#CW#-->
+
+		<include file="inc/search_box.html">
+
+		<!--#CW#--右边样式1--#CW#-->
+
+		<div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<!--#CW#--本类热门--#CW#-->
+
+        	<div class="photo_fous">本类推荐</div>
+
+            <CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$Content_LeftPink_Num}" where="{$Content_LeftPink_where}" />
+
+            <loop name="List" key="key" var="var">
+
+            <a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+            </loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+
+		<!--#CW#--右边样式2--#CW#-->
+
+        <div class="topside05">
+
+			<div class="topside05_l">&nbsp;</div>
+
+			<div class="topside05_c">&nbsp;</div>
+
+			<div class="topside05_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center05">
+
+        	<!--#CW#--本类推荐--#CW#-->
+
+        	<div class="photo_fous">本类热门软件</div>
+
+            
+ <CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$Content_LeftHot_Num}" OrderBy="{$Content_LeftHot_OrderBy}" />
+            <loop name="List" var="var" key="key">
+
+			<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside05">
+
+			<div class="bottomside05_l">&nbsp;</div>
+
+			<div class="bottomside05_c">&nbsp;</div>
+
+			<div class="bottomside05_r">&nbsp;</div>
+
+		</div>
+
+        
+
+        <div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<!--#CW#--本类总点击排行--#CW#-->
+
+        	<div class="photo_fous">本类总点击排行</div>
+
+  			<CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$Content_LeftHits_Total_Num}" OrderBy="{$Content_LeftHits_Total_OrderBy}" />
+
+            <loop name="List" var="var" key="key">
+
+			<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+</div>
+<include file="../common/footer.html" />
+</body>
+
+</html>
+

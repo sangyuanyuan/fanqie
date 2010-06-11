@@ -1,0 +1,94 @@
+<include file="TplConfig.html" /><!--#CW#  引入产品模块环境变量。  Add By CWTM #CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$NodeInfo.Name] - [$SITE_NAME]</title>
+<meta name="keywords" content="[$NodeInfo.Name],[$SITE_NAME]" />
+<link href="[$SKIN_URL]product/css/css.css" rel="stylesheet" type="text/css" />
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!--#CW#  顶部导航开始  Add By CWTM #CW#-->
+<include file="../common/header.html" />
+<!--#CW#  顶部导航结束  Add By CWTM #CW#-->
+<div class="content">
+  <div class="left">
+    <div class="topside02"><span>价格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新时间</span>
+      <ul>
+        <li>产品图片</li>
+        <li> 产品名称</li>
+      </ul>
+    </div>
+    <div class="center02">
+<!--#CW#  取出热门产品  Add By CWTM #CW#-->
+<CMS action="LIST" return="HotProduct" NodeID="{$NodeInfo.NodeID}" TableID="{$pdTableID}" num="page-10" />
+<LOOP name="HotProduct" var="var" key="key" start="1">
+      <div class="list-imgages">
+        <ul>
+          <li><a href="[$var.URL]" title="[$var.Title]" target="_blank"><img src="[$var.Photo]" width="135px" height="115px" /></a></li>
+        </ul>
+        <div class="list-right"><span> <font color="#ff6600">￥[$var.Price]</font> &nbsp;&nbsp;&nbsp;&nbsp;[@date('m-d', $var.PublishDate)]</span>
+          <h2><a href="[$var.URL]" title="[$var.Title]" target="_blank">[$var.Title]</a></h2>
+			 <op exp="$ShowIntro = str_replace('<br />', ' ', $var.Intro)">
+          <p>[@CsubStr($ShowIntro, 0, 110)]</p>
+        </div>
+      </div>
+</LOOP>
+
+<!--#CW#  如果总页数只有1页，则不显示分页代码。  Add By CWTM #CW#-->
+<if test="$ListPageModel == 1">
+      <div class="pages">当前：[$PageInfo.CurrentPage]/[$PageInfo.TotalPage] <strong>共[$PageInfo.TotalNum]条</strong> 分页：[@list_page( $PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)]</div>
+<else>
+      <div class="pages">当前：[$PageInfo.CurrentPage]/[$PageInfo.TotalPage] <strong>共[$PageInfo.TotalNum]条</strong> 分页：[@IndexPage( $PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)]</div>
+</if>
+    </div>
+    <div class="bottomside02"></div>
+  </div>
+
+  <div class="right">
+    <div class="right-topside"></div>
+<if test="$PCNodeID == $NodeInfo.NodeID">
+<op exp="$TheNodeID = $NewsPCNodeID">
+<elseif test="$SVRNodeID == $NodeInfo.NodeID">
+<op exp="$TheNodeID = $NewsSVRNodeID">
+<elseif test="$NBNodeID == $NodeInfo.NodeID">
+<op exp="$TheNodeID = $NewsNBNodeID">
+<elseif test="$PRNodeID == $NodeInfo.NodeID">
+<op exp="$TheNodeID = $NewsPRNodeID">
+<elseif test="$YTNodeID == $NodeInfo.NodeID">
+<op exp="$TheNodeID = $NewsYTNodeID">
+</if>
+<!--#CW#  取出产品相关文章  Add By CWTM #CW#-->
+<CMS action="LIST" return="ProductNews" NodeID="{$TheNodeID}" TableID="1" num="20" />
+<if test="!empty($ProductNews)">	
+    <div class="right-center">
+      <div class="title1">评测文章</div>
+      <ul>
+<LOOP name="ProductNews" var="var" key="key" start="1">
+        <li><a href="[$var.URL]">[@CsubStr($var.Title, 0, 18)]</a></li>
+</LOOP>
+      </ul>
+    </div>
+    <div class="right-bottomside"></div>
+    <div class="right-topside"></div>
+</if>
+    <div class="right-center">
+      <div class="title2">本月热门产品</div>
+      <ul>
+<!--#CW#  取出本月热门产品  Add By CWTM #CW#-->
+<CMS action="LIST" return="HotMonthProducts" NodeID="{$NodeInfo.NodeID}" TableID="{$pdTableID}" orderby="Hits_Month" num="10" />
+<LOOP name="HotMonthProducts" var="var" key="key" start="1">
+        <li><a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title, 0, 18)]</a></li>
+</LOOP>
+      </ul>
+    </div>
+    <div class="right-bottomside"></div>
+  </div>
+</div>
+
+<!--#CW#  引入页脚  Add By CWTM #CW#-->
+<include file="../common/footer.html" />
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="gb2312"?>
+<rss version="2.0">
+  <channel>
+    <title>CMSware RSS</title>
+    <link>http://www.cmsware.com</link>
+    <description>调用某个节点前10条记录</description>
+    <copyright>Copyright(C) CMSware</copyright>
+    <generator>Powered By  CMSware</generator>
+    <lastBuildDate>[@date('r')]</lastBuildDate>
+    <ttl>10</ttl>
+    <image>
+      <url>http://www.cmsware.org/images/rss.gif</url>
+      <title>CMSware</title>
+      <link>http://www.cmsware.com/</link>
+    </image>
+
+<CMS::LIST:List NodeID="self" Num="10" > 
+<LOOP $List var=var key=key>
+  
+    <item>
+      <title>[$var.Title]</title>
+      <link>[$var.URL]</link>
+      <description>[$var.Intro]</description>
+      <category>[$var.NodeName]</category>
+      <author>[$var.Author]</author>
+      <pubDate>[@date('r', $var.PublishDate)]</pubDate>
+    </item>
+</LOOP>
+</CMS>
+  </channel>
+</rss>
+
+				

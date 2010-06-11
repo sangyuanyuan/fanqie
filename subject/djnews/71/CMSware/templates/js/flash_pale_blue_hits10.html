@@ -1,0 +1,6 @@
+<!--调用下载系统模型(TableID=2)最热总点击前10条记录-->
+<CMS action="LIST" return="List"  where="co.TableID=3" orderby="Hits_Total" TableID="3" num="10" />
+<LOOP $List var=var key=key> 
+<li><a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 16)] </a>
+<span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span> </li>
+</LOOP> 

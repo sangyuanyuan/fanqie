@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="gb2312"?><Collection>
+<TargetURL>http://nj.onlinedown.net/sort/1_1.htm</TargetURL>
+<TargetURLArea>/&lt;font color=\&quot;#ffffff\&quot;&gt;&Egrave;&Euml;&AElig;&oslash;&lt;\/font&gt;&lt;\/td&gt;(.*)&lt;\/html&gt;/isU</TargetURLArea>
+<UrlFilterRule>/&lt;a[\s]*href=\&quot;([^\&quot;&gt;&lt;\s]*[0-9]+.htm)\&quot;/isU</UrlFilterRule>
+<UrlPageRule></UrlPageRule>
+<ContentModel>
+</ContentModel>
+</Collection>
+<!-- Published at 2007-01-07 20:41:01, Powered by CMSware 2.6.2 Plus -->

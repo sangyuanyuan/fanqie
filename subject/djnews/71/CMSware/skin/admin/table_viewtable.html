@@ -1,0 +1,98 @@
+<include: file="header.html">
+
+  <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+ <form action='[$base_url]o=addtable_submit' method='post' enctype="multipart/form-data" name='clientform' id=clientform onSubmit='return iWPC_formCheck(this);'>
+   <tr> 
+      <td colspan="3" class="table_header">{lang:topic} </td>
+    </tr>
+    <tr > 
+      <td width="10%" align="center" class="table_td1">TableID</td>
+      <td width="30%" align="center" class="table_td1">{lang:content_model}</td>
+      <td  align="center" class="table_td1"> {lang::global:execute_op}</td>
+    </tr>
+<loop $tableInfo key=key var=var>
+    <tr > 
+       <td width="10%" class="table_td2" align=center>[$var.TableID]</td>
+     <td width="20%" class="table_td2">[$var.Name]</td>
+      <td  align="center" class="table_td2"> <A HREF="[$base_url]o=edittable&TableID=[$var.TableID]">{lang::global:edit}</A>
+	  <if $var.TableID == 1 || $var.TableID == 2 >
+	  <else>
+	  <A HREF="[$base_url]o=deltable&TableID=[$var.TableID]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</a>
+	  </if>
+	  <A HREF="[$base_url]o=export&TableID=[$var.TableID]" >{lang:export}</a>
+	  </td>
+    </tr>
+</loop>
+ 
+   
+  </table>
+
+<br>
+    <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+    <tr> 
+      <td colspan="4" class="table_header">{lang:new_content_model} </td>
+    </tr>
+
+
+ <tr > 
+      <td class="table_td1" width=20%>{lang:model_name}:</td>
+        <td class="table_td2"  >
+	 <input name="tName" type="text" id="tName">&nbsp;&nbsp;
+	 {lang:self_tableid}: <input name="SelfTableID" type="text" id="SelfTableID" style="width:30px;">&nbsp;&nbsp;
+	<input type='submit' name='submit' value='{lang:create}' tabindex='13'>
+  </td>
+      
+    </tr>
+
+
+ </form>
+
+  </table>
+ <form action='[$base_url]o=import' method='post' enctype="multipart/form-data" name='importform'    >
+    <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+    <tr> 
+      <td colspan="2" class="table_header">{lang:import_content_model} </td>
+    </tr>
+
+
+ <tr > 
+      <td class="table_td1" width=20%>{lang:select_model_file}:</td>
+      <td class="table_td2"  >
+	 <input name="uploadFile" style="width:190px;" type="file" id="uploadFile" > &nbsp;&nbsp;
+	<input type='submit' name='submit' value=' {lang:import_it} ' tabindex='13'>
+ </td>
+    </tr>
+
+
+ </form>
+
+  </table>
+
+
+
+<script language='JavaScript'>
+function edit(form,id) 
+{
+	eval("var isdisabled = " + form + "." + id + ".disabled");
+
+	if(isdisabled) {
+		eval(form + "." + id + ".disabled = false");
+	} else {
+		eval(form + "." + id + ".disabled = true");
+
+	}
+
+}
+function iWPC_formCheck(form) 
+{
+	if(form.tName.value == '') {
+		alert("{lang:please_input_name}");
+		form.tName.focus();
+		form.tName.style.background = '#FFFFE1';
+		return false;
+	}
+}
+					
+</script> 		
+</BODY>
+<include: file="footer.html">

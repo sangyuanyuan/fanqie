@@ -1,0 +1,17 @@
+<CMS::LIST:List orderby="Hits_Total" TableID="1" num="10">
+ <TABLE cellSpacing=1 cellPadding=1 width=100% border=0>
+            <TBODY>
+             <TR> 
+                <TD width=10 height=5></TD>
+                <TD width=330></TD>
+              </TR>
+<LOOP $List var=var key=key>
+
+<TR> 
+      <TD class=f14 vAlign=top>·</TD>
+        <TD class=f14><A class=a05   href="[$var.URL]">[$var.Title]</A><span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span></TD>
+</TR>
+			
+</LOOP>		
+</TBODY></TABLE>	
+</CMS>

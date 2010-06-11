@@ -1,0 +1,40 @@
+#idx_atc_new h1,
+#idx_atc_1 h1,
+#idx_atc_2 h1,
+#idx_atc_3 h1,
+#idx_atc_4 h1,
+#idx_atc_5 h1 { padding:2px 0 0 28px; font-size:12px; background:url(../images/new_atc.gif) #E5EEF5 no-repeat 6px 2px; border:0px solid #84B0C7; }
+
+#right .more  { padding-top:5px; padding-right:4px; text-align:right; }
+#right .more  a { padding:1px 2px 0 4px; border:1px solid #84B0C7; background:#E5EEF5; color:#2C4C78;}
+#right .more a:hover { background:#fff; text-decoration:none; }
+
+.date,.date_new { margin:0px; padding-right:3px; font:10px Georgia, Sans-Serif; color:#ccc; float:right; }/*idx*/
+.date_com       { color:#e03; }
+.date_new       { color:#e03; }
+.footer { font-weight:bold; text-align:center; border-left:1px solid #9BB4D1; border-right:1px solid #9BB4D1; }
+#list_art      { background:#F6F6F6; }
+#list_art_top  { }
+#list_art_top ul li             { background:#CCC; padding:4px 0 4px 16px; font-weight:bold; }
+#list_art_top ul li span#top_m  { width:86px; float:right; text-align:center; }
+#list_art_top ul li span#top_r  { width:100px; float:right; text-align:center; }
+#list_art_content                { }
+#list_art_content ul li          { padding:2px 0; border-top:1px solid #FFF; list-style:url(../images/16.gif); margin-left:22px; }
+#list_art_content ul li span.cm  { width:86px; float:right;padding:1px; text-align:center; background:#F0F0F0; border-left:1px solid #FFF; }
+#list_art_content ul li span.cr  { width:110px; float:right;padding:1px; text-align:center; background:#E9E9E9; border-left:1px solid #FFF; }
+.content { padding:0px 4px 0px 4px; }
+.content p.pageview { text-align:center; clear:both; }
+.art_page   { margin:10px 10px 10px 0; background:#F6F6F6; }
+
+#right h1#articlename { padding:2px 0px 2px 28px; background:url(../images/document.gif) #E5EEF5 no-repeat 6px 3px; border-bottom:1px solid #FFF; }
+#atc_info         { background:#eee; }
+#atc_info li      { padding-left:22px; background:url(../images/16.gif) no-repeat 8px 0px; }
+#select_font      { float:right; }
+#select_font ul   { clear:both; margin:0;}
+#select_font li   { float:left; margin:2px 0 0 3px; }
+#select_font li a { display:block; border:1px solid #84B0C7; background:#E5EEF5; line-height:1em; padding:3px 3px 2px 3px;}
+#select_font li a:hover { background:#FFF; text-decoration:none; color:#2C4C78;}
+#select_font li#size_how       { border:1px solid #84B0C7; line-height:12px; padding:3px 3px 2px 3px; }
+#select_font li#s              { font-size:12px; }
+#select_font li#m              { font-size:14px; }
+#select_font li#l              { font-size:16px; }

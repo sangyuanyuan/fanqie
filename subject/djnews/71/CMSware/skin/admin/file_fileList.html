@@ -1,0 +1,324 @@
+<include: file="header_init.html">
+
+
+<style>
+body,tr,td,select {
+	color: #000000;
+	font-size: 11px; font-family: Tahoma, Arial;
+	
+}
+
+div.imagespacer {
+	width: [$width];
+	height: 18;
+	text-align: left;			
+	float: left;
+	font: 10pt verdana;
+	margin: 0px;
+	overflow: hidden;
+}
+div.imageholder {
+	margin: 0px;
+	height: 16;
+	padding: 0px;
+	cursor: default;
+}
+
+div.titleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 100;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;			
+}		
+
+</style>
+<script language="javascript">
+lastDiv = null;
+if('[$PATH]' == '/') {
+	var PATH = '';
+	var PSNURL = '[$PSNURL]';
+
+} else {
+	var PATH = '[$PATH]';
+	var PSNURL = '[$PSNURL][$PATH]';
+
+}
+function divClick(theDiv,filename) 
+{
+	if (lastDiv) {
+		//lastDiv.style.border = "1 solid #CCCCCC";
+		lastDiv.style.background = "#FFFFFF";
+		lastDiv.style.color = "#000000"
+	}
+	lastDiv = theDiv;
+	//theDiv.style.border = "2 solid #316AC5";
+	theDiv.style.background = "#000066";
+	lastDiv.style.color = "#FFFFFF"
+	//parent.document.form1.fileName.value= PATH + '/' + filename
+	//document.getElementById("FileToDelete").value = filename;
+
+}
+
+function opendir(dirname)
+{	
+	PATH = PATH + '/' + dirname;
+	window.location = 'admin_file.php?sId=[$sId]&o=list&PSNID=[$PSNID]&PATH=' + PATH
+}
+
+function viewfile(filename)
+{
+	var url = PSNURL + '/' + filename;
+	window.open(url,'');
+
+}
+function updir(dirname)
+{	
+	PATH = PATH + '/' + dirname;
+	window.location = 'admin_file.php?sId=[$sId]&o=list&extra=updir&PSNID=[$PSNID]&PATH=' + PATH
+}
+
+var message = '[$message]'
+switch(message) {
+	case '1':
+		alert("{lang:mkdir_ok}");
+		break;
+	case '2':
+		alert("{lang:mkdir_fail}");
+		break;
+
+}
+</script>	
+
+
+<SCRIPT>
+var elo;
+var loadmenuok=false;
+var type = 'main';
+var NodeID = '[$NodeInfo.NodeID]';
+function initrightmenu(){
+	loadmenuok = true;
+}
+
+function doing(action, IndexID) {
+	switch(action) {
+		case 'viewpublish':
+			eval('var mPath = URL_' + IndexID + '.href');
+			window.open(mPath,"","")
+
+			break;
+		case 'edit':
+			var leftPos = (screen.availWidth-800) / 2
+			var topPos = (screen.availHeight-600) / 2 
+			 window.open('[$base_url]type=main&o=content_editor_frameset&extra=edit&NodeID='+NodeID  + '&IndexID=' + IndexID,'','width=800,height=600,scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+			break;
+		case 'del':
+			if(confirm("{lang::global:confirm_del}")) {
+				document.documentlist.referer.value = document.location;
+				document.documentlist.action = '[$base_url]' + 'o=' + action + '&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID  ;
+				document.documentlist.submit();
+				
+			}
+			break;
+		case 'view':
+			var leftPos = (screen.availWidth-800) / 2
+			var topPos = (screen.availHeight-600) / 2 
+			 window.open('[$base_url]type=main&o=view&NodeID='+NodeID  + '&IndexID=' + IndexID,'','width=800,height=600,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+			break;
+		case 'cut':
+			var targetNodeID = showMeDialog("admin_select.php?sId=[$sId]&o=targetNodeWindow","color","dialogWidth:324px;dialogHeight:331px;help:0;status:0;scroll:no");
+			
+			if(targetNodeID != null && targetNodeID != '') {
+				document.documentlist.referer.value = document.location;
+				document.documentlist.action = '[$base_url]' + 'o=' + action + '&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID + '&targetNodeID=' + targetNodeID  ;
+				document.documentlist.submit();
+			
+			}
+
+			break;
+		case 'copy':
+			var targetNodeID = showMeDialog("admin_select.php?sId=[$sId]&o=targetNodeWindow","color","dialogWidth:324px;dialogHeight:331px;help:0;status:0;scroll:no");
+			
+			if(targetNodeID != null && targetNodeID != '') {
+				document.documentlist.referer.value = document.location;
+				document.documentlist.action = '[$base_url]' + 'o=' + action + '&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID + '&targetNodeID=' + targetNodeID  ;
+				document.documentlist.submit();
+			
+			}
+
+			break;
+		case 'createLink':
+			
+			var targetNodeID = showMeDialog("admin_select.php?sId=[$sId]&o=targetNodeWindow","color","dialogWidth:324px;dialogHeight:331px;help:0;status:0;scroll:no");
+			
+			if(targetNodeID != null && targetNodeID != '') {
+				document.documentlist.referer.value = document.location;
+				document.documentlist.action = '[$base_url]' + 'o=' + action + '&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID + '&targetNodeID=' + targetNodeID  ;
+				document.documentlist.submit();
+				//alert(IndexID + '-' + targetNodeID)
+			}
+			break;
+		case 'publish':
+			document.documentlist.referer.value = document.location;
+			document.documentlist.action = '[$base_url]' + 'o=' + action + '&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID + '&targetNodeID=' + targetNodeID  ;
+			document.documentlist.submit();
+				//alert(IndexID + '-' + targetNodeID)
+		
+			break;
+		case 'unpublish':
+			document.documentlist.referer.value = document.location;
+			document.documentlist.action = '[$base_url]' + 'o=' + action + '&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID + '&targetNodeID=' + targetNodeID  ;
+			document.documentlist.submit();
+				//alert(IndexID + '-' + targetNodeID)
+		
+			break;
+		case 'refresh':
+			document.documentlist.referer.value = document.location;
+			document.documentlist.action = '[$base_url]' + 'o=' + action + '&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID + '&targetNodeID=' + targetNodeID  ;
+			document.documentlist.submit();
+			break;
+		default:
+			document.location = document.location;
+
+	}
+	//sId=6891856b84ee23f2330ee8359cd3f60d&o=view&type=main&pId=41&cId=4
+}
+
+
+
+
+
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+function CheckAll(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.name !='copy')       e.checked = form.chkall.checked; 
+   }
+  }
+
+
+
+</script>
+<script>
+
+
+function going(form, o)
+{
+	document.documentlist.referer.value = document.location;
+
+	with(form) {
+		switch(o) {
+			case 'copy':
+				var targetNodeID = showMeDialog("admin_select.php?sId=[$sId]&o=targetNodeWindow","color","dialogWidth:324px;dialogHeight:331px;help:0;status:0;scroll:no");
+				
+				if(targetNodeID != null && targetNodeID != '') {
+					document.documentlist.referer.value = document.location;
+					document.documentlist.action = '[$base_url]' + 'o=' + o + '&type=' + type + '&NodeID=' + NodeID + '&multi=1&targetNodeID=' + targetNodeID  ;
+					document.documentlist.submit();
+					//alert(IndexID + '-' + targetNodeID)
+				}
+
+				break;
+			case 'cut':
+				var targetNodeID = showMeDialog("admin_select.php?sId=[$sId]&o=targetNodeWindow","color","dialogWidth:324px;dialogHeight:331px;help:0;status:0;scroll:no");
+				
+				if(targetNodeID != null && targetNodeID != '') {
+					document.documentlist.referer.value = document.location;
+					document.documentlist.action = '[$base_url]' + 'o=' + o + '&type=' + type + '&NodeID=' + NodeID + '&multi=1&targetNodeID=' + targetNodeID  ;
+					document.documentlist.submit();
+					//alert(IndexID + '-' + targetNodeID)
+				}
+				break;
+			case 'del':
+				if(confirm("{lang:confirm_multi_del}")) {
+					action = action + '&o=del&multi=1&PSNID=[$PSNID]&PATH=[$PATH]';
+					
+					submit();
+				}
+				break;
+
+		}
+	
+	}
+}
+</script>
+<div id="menudata"></div>
+<body leftmargin="2" topmargin="0" >
+<table cellpadding="0" cellspacing="0" width="100%" height="21" bgcolor="#F1F1F1" ><tr>
+			<td>[$PATH]</td>
+		</tr></table>
+
+<TABLE border="0" cellpadding="1" cellspacing="0" width=100% >
+  <form method="post" action="[$base_url]type=main&NodeID=[$NodeInfo.NodeID]" name="documentlist" >
+
+			
+<tr>
+<td colspan="3" align=center>{lang:name}</td>
+<td>{lang:size}</td>
+<td>{lang:modify_date}</td>
+<td>{lang:property}</td>
+</tr>
+			<TR onmouseover='this.style.backgroundColor="#F1F1F1"' 
+                    onmouseout='this.style.backgroundColor=""'>
+<td  width=10 >&nbsp;</td>
+				<TD ><img src="../html/images/icon/updir.gif" width="16" height="16" ondblclick="updir('[$var.name]')"></TD>
+				<TD>
+				<div   class="imageholder" ondblclick="updir('[$var.name]')"     > {lang:updir} </div>
+				</TD>
+				<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+			</TR>
+<loop $fileList key=key var=var>
+	<if $var.type == 'dir' && $var.name != ''>
+			<TR onmouseover='this.style.backgroundColor="#F1F1F1"' 
+                    onmouseout='this.style.backgroundColor=""' >
+      <td width=10><input type='checkbox' name='pData[]' value='[$var.name]' id="p_[$key]" ></td>
+				<TD width=16 height=16><img src="../html/images/icon/[$var.type].gif" width="16" height="16" ondblclick="opendir('[$var.name]')" ></TD>
+				<TD>
+				<label  for="p_[$key]" ondblclick="opendir('[$var.name]')">  [$var.name]</label>
+				</TD>
+				<td></td>
+<td>[$var.modifiedDate]</td>
+<td>[$var.mode]</td>
+			</TR>
+	<elseif  $var.name != ''>
+			<TR onmouseover='this.style.backgroundColor="#F1F1F1"' 
+                    onmouseout='this.style.backgroundColor=""'>
+      <td width=10 ><input type='checkbox' name='pData[]' value='[$var.name]' id="p_[$key]" ></td>
+				<TD width=16 height=16><img src="../html/images/icon/[$var.type].gif" width="16" height="16" ></TD>
+				<TD>
+				<label  for="p_[$key]" ondblclick="viewfile('[$var.name]')">  [$var.name]</label>
+				</TD>
+				<td>[$var.size]&nbsp;KB</td>
+<td>[$var.modifiedDate]</td>
+<td>[$var.mode]</td>
+			</TR>
+	</if>
+
+
+
+</loop>
+			<TR >
+      <td colspan="6" ><input type="checkbox" name="chkall" value="on" onclick="CheckAll(this.form)" id="chkall"  >
+<label for="chkall">{lang::global:select_all}</label>
+&nbsp;&nbsp;&nbsp;&nbsp;<select name="actionMap" id="actionMap" > 
+  
+         
+          <option value="del">{lang::global:del}</option>
+       
+
+			  </select>
+<INPUT TYPE="hidden" name="referer">
+			  <input type="button" value="{lang::global:go}" class=button onclick="going(this.form,actionMap.options[actionMap.selectedIndex].value)"> 
+</td>
+			</TR>
+</form>			
+	</TABLE>	
+</body>
+</html>

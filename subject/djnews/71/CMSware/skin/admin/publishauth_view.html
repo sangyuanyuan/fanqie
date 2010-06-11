@@ -1,0 +1,22 @@
+<include: file="header.html">
+
+  <table border="0" cellspacing="1" cellpadding="4" width="80%"  align=center class="table_border">
+    <tr> 
+      <td colspan="2" class="table_header">{lang:topic} </td>
+    </tr>
+    <tr > 
+      <td align="center" class="table_td1">[{lang::global:name}]</td>
+      <td width="20%" align="center" class="table_td2"> [{lang::global:execute_op}]</td>
+    </tr>
+<loop $pInfo key=key var=var>
+    <tr > 
+      <td class="table_td1">[$var.pName]</td>
+      <td width="20%" align="center" class="table_td2"> <A HREF="[$base_url]o=edit&pId=[$var.pId]">{lang::global:edit}</A> <A HREF="[$base_url]o=del&pId=[$var.pId]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</a></td>
+    </tr>
+</loop>
+
+   
+  </table>
+		
+</BODY>
+<include: file="footer.html">

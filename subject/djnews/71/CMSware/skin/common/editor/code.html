@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>插入代码</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+
+<style type="text/css">
+body{margin:0px;scrollbar-face-color: #B8B8B8; scrollbar-highlight-color: #F5F9FF; scrollbar-shadow-color: #828282; scrollbar-3dlight-color: #828282; scrollbar-arrow-color: #797979; scrollbar-track-color: #ECECEC; scrollbar-darkshadow-color: #ffffff}
+body,a,table,div,span,td,th,input,select{font:9pt;font-family:  Verdana,"宋体", Arial, Helvetica, sans-serif;}
+.text{border:1 solid #aaaaaa;}
+.button{height:18;border:1 ridge #aaaaaa;background-color:aaaaaa;color:ffffff}
+.table {  border: 1px inset; border-color: menu #FFFFFF #FFFFFF menu}
+</style>
+
+<script language="JavaScript">
+function info() {
+var codes;
+dm=document.form;
+codes=dm.code.value;
+//re = /"/gi;
+//codes=codes.replace(re, "&quot;");
+
+re = /&/gi;
+codes=codes.replace(re, "&amp;");
+
+re = /'/gi;
+codes=codes.replace(re, "'");
+
+re = /</gi;
+codes=codes.replace(re, "&lt;");
+re = />/gi;
+codes=codes.replace(re, "&gt;");
+re = /\n/gi;
+codes=codes.replace(re, "<br>");
+re = / /gi;
+codes=codes.replace(re, "&nbsp;");
+re = /	/gi;
+codes=codes.replace(re, "&nbsp;&nbsp;&nbsp;&nbsp;");
+codes='<table  border="0" cellspacing="4" cellpadding="0" align="center" class="highlightcodes"> <tr><td>' + codes +'</td></tr></table>';
+return codes;
+
+}
+
+</script>
+
+<body bgcolor=menu topmargin="0" leftmargin="0">
+<form name="form" >
+  <table width="381" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr>
+      <td >
+        <table width="349" border="0" cellspacing="0" cellpadding="0" align="center" height="184">
+          <tr> 
+            <td ></td>
+          </tr>
+          <tr> 
+            <td align="center" valign="top" > 
+              <textarea name="code" cols="50" rows="10" wrap="PHYSICAL" id="code"></textarea>
+            </td>
+          </tr>
+          <tr valign="baseline"> 
+            <td > <div align="center">
+                <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                  <tr>
+                    <td height="6"></td>
+                  </tr>
+                </table>
+                <input class=button type=button onclick='window.returnValue = info();window.close();' value="确　定">
+                <input class=button type=button onclick="window.returnValue ='' ;window.close();" value="取　消">
+              </div></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

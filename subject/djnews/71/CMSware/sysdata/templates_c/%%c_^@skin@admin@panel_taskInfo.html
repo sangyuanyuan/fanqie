@@ -1,0 +1,47 @@
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@header_init.html");?>
+<script>
+var currentpos;
+function currentDate()
+{
+        var  now  =  new  Date();  
+        var  yy  =  now.getYear(); 
+		var  date = now.getDate(); 
+        var  month  =  now.getMonth() + 1;  
+        var  hh  =  now.getHours();  
+        var  mm  =  now.getMinutes();  
+        var  ss  =  now.getSeconds();  
+		return  yy + '-' + month + '-' + date + ' ' + hh + ':' + mm + ':' +ss ;
+
+}
+
+function addInfo(Info, InfoID)
+{
+	var newEl = document.createElement('<div>');
+	newEl.setAttribute('name', InfoID);
+	newEl.setAttribute('id', InfoID);
+	//var tmp = document.createElement('TBODY');
+	//newEl.appendChild(tmp);
+	//var row = document.createElement('TR');
+	//var newEl = document.createElement('INPUT');
+	//newEl.setAttribute('TYPE',"button");
+	//newEl.setAttribute('value',"hawking");
+	document.getElementById('writeroot').appendChild(newEl);
+	newEl.innerHTML = '>&nbsp;' + Info + ' <I>'+currentDate()+'</I>';
+
+	currentpos=document.body.scrollTop;    
+	window.scroll(0, currentpos + 20);    
+  
+
+} 
+
+function endThread(ThreadID) 
+{
+	var root = document.getElementById('writeroot');
+	var oChild=document.getElementById(ThreadID);	
+    root.removeChild(oChild);
+
+}
+</script>
+<div id="writeroot"></div>
+<BODY>
+</html>

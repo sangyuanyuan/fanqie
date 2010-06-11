@@ -1,0 +1,43 @@
+{literal}
+td{FONT-FAMILY: "Verdana", "仿宋体";  font-size: 12px} 
+
+tr{FONT-FAMILY: "Verdana", "仿宋体"; font-size: 12px} 
+
+
+
+.button{
+	height:18;
+	background-color:#FFFFFF;
+	border: 1 solid #CCCCCC;
+	font-family:"sans-serif";
+	font-size: 12px;
+}
+.fixline {
+	border: 1px dotted #999999;
+}
+.subbutton {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	background-color: #C6D8F0;
+	border-top-width: 1.5px;
+	border-right-width: 1.5px;
+	border-bottom-width: 1.5px;
+	border-left-width: 1.5px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #FFFFFF;
+	border-right-color: #000000;
+	border-bottom-color: #000000;
+	border-left-color: #FFFFFF;
+	height: 22px;
+	padding-top: 3px;
+	width: 66px;
+}
+
+a {FONT-FAMILY: "Verdana", "宋体"; TEXT-DECORATION: none;FONT-SIZE: 12px; color: #000000} 
+
+a:hover {COLOR: #000000; TEXT-DECORATION: underline;FONT-SIZE:12px;} 
+#description { font-family:  "sans-serif";color:#000000; font-size:12px }
+{/literal}

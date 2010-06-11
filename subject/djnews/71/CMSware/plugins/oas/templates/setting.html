@@ -1,0 +1,546 @@
+<include: file="header.html">
+<script>
+function tplSelect(tpl,form, element) 
+{
+	var arr = showModalDialog("admin_select.php?sId=[$sId]&o=tpl&tpl=" + tpl,"color","dialogWidth:428px;dialogHeight:266px;help:0;status:0;scroll:no");
+	if(arr != null) {
+		with(form){
+			eval(element + ".value= '" +  arr + "'")
+		}
+	}
+
+}
+</script>
+
+  <table cellspacing="1" cellpadding="5" width="98%"   class="table_border"  border="0" align="center">
+    <tr>
+      <td colspan="3" class="table_td1"><table width="100%" cellspacing="0" cellpadding="0"  border="0">
+        <tr>
+          <td><img src="../html/images/info.gif" align="absmiddle">&nbsp;<strong>{lang::global:attension} </strong></td>
+          <td align="right"></td>
+        </tr>
+      </table>        </td>
+    </tr>
+<tbody id="access_group_view_help">
+   <tr>
+     <td class="table_td2"> <BR>{lang:description} </td>
+	 
+   </tr>
+   </tbody>
+</table>
+  <br>
+
+
+
+<TABLE width="98%" border=0 align=center cellSpacing=0 cellPadding=0  >
+  <form name="default" method="post" action="[$base_url]o=index::setting_submit" >
+    <TBODY>
+<TR>
+        <TD vAlign=top align=middle >
+		<TABLE cellspacing="1" cellpadding="4" width="100%"  border=0 class="table_border">
+            <TBODY>
+              <TR class="table_header" >
+                <TD height=25 colSpan=2 id=id2 ><strong>{lang:title}</strong></TD>
+              </TR> 
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_CWPS_Address_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_CWPS_Address_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.CWPS_Address)">
+			<input name="data_CWPS_Address" type="text"   id="CWPS_Address" value="" size="40">
+		<else>
+			<input name="data_CWPS_Address" type="text"   id="CWPS_Address" value="[@htmlspecialchars($setting.CWPS_Address)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_CWPS_TransactionAccessKey_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_CWPS_TransactionAccessKey_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.CWPS_TransactionAccessKey)">
+			<input name="data_CWPS_TransactionAccessKey" type="text"   id="CWPS_TransactionAccessKey" value="" size="40">
+		<else>
+			<input name="data_CWPS_TransactionAccessKey" type="text"   id="CWPS_TransactionAccessKey" value="[@htmlspecialchars($setting.CWPS_TransactionAccessKey)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_CWPS_RootURL_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_CWPS_RootURL_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.CWPS_RootURL)">
+			<input name="data_CWPS_RootURL" type="text"   id="CWPS_RootURL" value="" size="40">
+		<else>
+			<input name="data_CWPS_RootURL" type="text"   id="CWPS_RootURL" value="[@htmlspecialchars($setting.CWPS_RootURL)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_CWPS_SessionActiveTime_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_CWPS_SessionActiveTime_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.CWPS_SessionActiveTime)">
+			<input name="data_CWPS_SessionActiveTime" type="text"   id="CWPS_SessionActiveTime" value="{lang:form_input_CWPS_SessionActiveTime_value}" size="40">
+		<else>
+			<input name="data_CWPS_SessionActiveTime" type="text"   id="CWPS_SessionActiveTime" value="[@htmlspecialchars($setting.CWPS_SessionActiveTime)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_CWPS_AdminUserName_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_CWPS_AdminUserName_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.CWPS_AdminUserName)">
+			<input name="data_CWPS_AdminUserName" type="text"   id="CWPS_AdminUserName" value="" size="40">
+		<else>
+			<input name="data_CWPS_AdminUserName" type="text"   id="CWPS_AdminUserName" value="[@htmlspecialchars($setting.CWPS_AdminUserName)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_CWPS_AdminPassword_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_CWPS_AdminPassword_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.CWPS_AdminPassword)">
+			<input name="data_CWPS_AdminPassword" type="password"   id="CWPS_AdminPassword" value="" size="40">
+		<else>
+			<input name="data_CWPS_AdminPassword" type="password"   id="CWPS_AdminPassword" value="[@htmlspecialchars($setting.CWPS_AdminPassword)]" size="40">
+		</if>
+          
+	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_CWPS_SelfAdminURL_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_CWPS_SelfAdminURL_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.CWPS_SelfAdminURL)">
+			<input name="data_CWPS_SelfAdminURL" type="text"   id="CWPS_SelfAdminURL" value="" size="40">
+		<else>
+			<input name="data_CWPS_SelfAdminURL" type="text"   id="CWPS_SelfAdminURL" value="[@htmlspecialchars($setting.CWPS_SelfAdminURL)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_CWPS_SelfIndexURL_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_CWPS_SelfIndexURL_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.CWPS_SelfIndexURL)">
+			<input name="data_CWPS_SelfIndexURL" type="text"   id="CWPS_SelfIndexURL" value="" size="40">
+		<else>
+			<input name="data_CWPS_SelfIndexURL" type="text"   id="CWPS_SelfIndexURL" value="[@htmlspecialchars($setting.CWPS_SelfIndexURL)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+		         <TR class="table_header" >
+                <TD height=25 colSpan=2 ><strong>{lang:form_input_oas_setting_title}</strong></TD>
+             </TR> 
+
+			
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_OAS_RootURL_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_OAS_RootURL_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.OAS_RootURL)">
+			<input name="data_OAS_RootURL" type="text"   id="OAS_RootURL" value="" size="40">
+		<else>
+			<input name="data_OAS_RootURL" type="text"   id="OAS_RootURL" value="[@htmlspecialchars($setting.OAS_RootURL)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_AccessDenyTpl_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_AccessDenyTpl_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.AccessDenyTpl)">
+			<input name="data_AccessDenyTpl" type="text"   id="AccessDenyTpl" value="{lang:form_input_AccessDenyTpl_value}" size="40">
+		<else>
+			<input name="data_AccessDenyTpl" type="text"   id="AccessDenyTpl" value="[@htmlspecialchars($setting.AccessDenyTpl)]" size="40">
+		</if>
+
+					<input type='button'  tabindex='13' value='...' onclick="tplSelect('[$setting.AccessDenyTpl]',this.form,'AccessDenyTpl')">
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_IndexPageCacheTime_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_IndexPageCacheTime_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.IndexPageCacheTime)">
+			<input name="data_IndexPageCacheTime" type="text"   id="IndexPageCacheTime" value="{lang:form_input_IndexPageCacheTime_value}" size="40">
+		<else>
+			<input name="data_IndexPageCacheTime" type="text"   id="IndexPageCacheTime" value="[@htmlspecialchars($setting.IndexPageCacheTime)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_ContentPageCacheTime_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_ContentPageCacheTime_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.ContentPageCacheTime)">
+			<input name="data_ContentPageCacheTime" type="text"   id="ContentPageCacheTime" value="{lang:form_input_ContentPageCacheTime_value}" size="40">
+		<else>
+			<input name="data_ContentPageCacheTime" type="text"   id="ContentPageCacheTime" value="[@htmlspecialchars($setting.ContentPageCacheTime)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_EnableCacheUseSubDirs_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_EnableCacheUseSubDirs_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.EnableCacheUseSubDirs)">
+			<input type="radio" name="data_EnableCacheUseSubDirs" value="${_LANG_SKIN['form_input_EnableCacheUseSubDirs_value']}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		<else>
+			<input type="radio" name="data_EnableCacheUseSubDirs" value="{$setting.EnableCacheUseSubDirs}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		</if>
+	 		</TD>
+              </TR>
+		         <TR class="table_header" >
+                <TD height=25 colSpan=2 ><strong>{lang:form_input_comment_setting_title}</strong></TD>
+             </TR> 
+
+			
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_enableComment_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_enableComment_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_enableComment)">
+			<input type="radio" name="data_Comment_enableComment" value="${_LANG_SKIN['form_input_Comment_enableComment_value']}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		<else>
+			<input type="radio" name="data_Comment_enableComment" value="{$setting.Comment_enableComment}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		</if>
+	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_enableCommentApprove_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_enableCommentApprove_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_enableCommentApprove)">
+			<input type="radio" name="data_Comment_enableCommentApprove" value="${_LANG_SKIN['form_input_Comment_enableCommentApprove_value']}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		<else>
+			<input type="radio" name="data_Comment_enableCommentApprove" value="{$setting.Comment_enableCommentApprove}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		</if>
+	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_contentMinLength_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_contentMinLength_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_contentMinLength)">
+			<input name="data_Comment_contentMinLength" type="text"   id="Comment_contentMinLength" value="{lang:form_input_Comment_contentMinLength_value}" size="40">
+		<else>
+			<input name="data_Comment_contentMinLength" type="text"   id="Comment_contentMinLength" value="[@htmlspecialchars($setting.Comment_contentMinLength)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_contentMaxLength_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_contentMaxLength_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_contentMaxLength)">
+			<input name="data_Comment_contentMaxLength" type="text"   id="Comment_contentMaxLength" value="{lang:form_input_Comment_contentMaxLength_value}" size="40">
+		<else>
+			<input name="data_Comment_contentMaxLength" type="text"   id="Comment_contentMaxLength" value="[@htmlspecialchars($setting.Comment_contentMaxLength)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_filterMode_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_filterMode_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_filterMode)">
+			<input type="radio" name="data_Comment_filterMode" value="${_LANG_SKIN['form_input_Comment_filterMode_value']}">
+				<option value="0">{lang:form_input_Comment_filterMode_option_1}</option><option value="1">{lang:form_input_Comment_filterMode_option_2}</option><option value="2">{lang:form_input_Comment_filterMode_option_3}</option>
+			</input>
+
+		<else>
+			<input type="radio" name="data_Comment_filterMode" value="{$setting.Comment_filterMode}">
+				<option value="0">{lang:form_input_Comment_filterMode_option_1}</option><option value="1">{lang:form_input_Comment_filterMode_option_2}</option><option value="2">{lang:form_input_Comment_filterMode_option_3}</option>
+			</input>
+
+		</if>
+	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_replaceWord_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_replaceWord_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_replaceWord)">
+			<input name="data_Comment_replaceWord" type="text"   id="Comment_replaceWord" value="{lang:form_input_Comment_replaceWord_value}" size="40">
+		<else>
+			<input name="data_Comment_replaceWord" type="text"   id="Comment_replaceWord" value="[@htmlspecialchars($setting.Comment_replaceWord)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_filterWords_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_filterWords_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_filterWords)">
+			<input name="data_Comment_filterWords" type="text"   id="Comment_filterWords" value="{lang:form_input_Comment_filterWords_value}" size="40">
+		<else>
+			<input name="data_Comment_filterWords" type="text"   id="Comment_filterWords" value="[@htmlspecialchars($setting.Comment_filterWords)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_Tpl_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_Tpl_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_Tpl)">
+			<input name="data_Comment_Tpl" type="text"   id="Comment_Tpl" value="{lang:form_input_Comment_Tpl_value}" size="40">
+		<else>
+			<input name="data_Comment_Tpl" type="text"   id="Comment_Tpl" value="[@htmlspecialchars($setting.Comment_Tpl)]" size="40">
+		</if>
+
+					<input type='button'  tabindex='13' value='...' onclick="tplSelect('[$setting.Comment_Tpl]',this.form,'Comment_Tpl')">
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_PageNum_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_PageNum_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_PageNum)">
+			<input name="data_Comment_PageNum" type="text"   id="Comment_PageNum" value="{lang:form_input_Comment_PageNum_value}" size="40">
+		<else>
+			<input name="data_Comment_PageNum" type="text"   id="Comment_PageNum" value="[@htmlspecialchars($setting.Comment_PageNum)]" size="40">
+		</if>
+
+		
+ 	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_EnableDisplayCache_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_EnableDisplayCache_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_EnableDisplayCache)">
+			<input type="radio" name="data_Comment_EnableDisplayCache" value="${_LANG_SKIN['form_input_Comment_EnableDisplayCache_value']}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		<else>
+			<input type="radio" name="data_Comment_EnableDisplayCache" value="{$setting.Comment_EnableDisplayCache}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		</if>
+	 		</TD>
+              </TR>
+	
+
+
+              <TR class="table_td1" > 
+                <TD width="60%"> <strong>{lang:form_input_Comment_HiddenCommentIP_title}:</strong>
+								 
+				<br><span style="font-size: 11px; font-family: Tahoma, Verdana, Arial">{lang:form_input_Comment_HiddenCommentIP_description}</span>
+				
+				</TD>
+                <TD>
+			<if test="!isset($setting.Comment_HiddenCommentIP)">
+			<input type="radio" name="data_Comment_HiddenCommentIP" value="${_LANG_SKIN['form_input_Comment_HiddenCommentIP_value']}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		<else>
+			<input type="radio" name="data_Comment_HiddenCommentIP" value="{$setting.Comment_HiddenCommentIP}">
+				<option value="1">{lang::global:yes}</option><option value="0">{lang::global:no}</option>
+			</input>
+
+		</if>
+	 		</TD>
+              </TR>
+ 
+					   
+		       
+ 
+              <TR class="table_td1"    > 
+                <TD height=30 colSpan=2 align=middle > <INPUT name="submit" type=submit value="{lang::global:submit_value}" class="button"> 
+                  &nbsp;&nbsp; <INPUT name="reset" type=reset value="{lang::global:reset_value}"  class="button"> 
+                </TD>
+              </TR>
+            </TBODY>
+          </TABLE></TD>
+      </TR></TBODY></form></TABLE>
+<include: file="footer.html"><!--Auto Generated By kTplBuilder 1.0 2006-03-22 23:16:36-->

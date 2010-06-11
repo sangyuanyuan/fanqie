@@ -1,0 +1,87 @@
+<html><head><title>{lang:title}</title>
+<style type="text/css"><!--* {font-family: "Courier New", "Courier"; font-size: 12px;}--></style>
+</head>
+<script>
+<if test="$include_loop_error">
+var include_loop_Error = true;
+<else>
+var include_loop_Error = false;
+</if>
+
+
+<if test="$include_if_error">
+var include_if_Error = true;
+<else>
+var include_if_Error = false;
+</if>
+
+
+function init()
+{
+	if(include_loop_Error) {
+		alert("{lang:error_loop}");
+	}
+
+	if(include_if_Error) {
+		alert("{lang:error_if}");
+	}
+}
+var lastObj = null;
+function focusObj(obj) {
+	//alert(obj)
+	obj.style.backgroundColor='#CCCCCC';
+	if(lastObj != null) {
+		lastObj.style.backgroundColor='';
+	}
+	lastObj = obj;
+}
+</script>
+<script>
+function reportError(msg,url,line){
+line-=14;
+var str='You have found an error as below: \n\n';
+str+='Err: '+msg+' on line: '+(line);
+alert(str);
+opener.goto(line);
+opener.focus();
+window.onerror=null;
+setTimeout('self.close()',10);
+return true;
+}
+window.onerror = reportError;
+</script>
+
+<body onload="javascript:init();" topmargin="0" leftmargin="0">
+<op exp="$data = explode('<br />', $content)" />
+
+ <div style="white-space: nowrap;">
+ <table border=0>
+  <tr><td align="right"  valign="top" >
+ 
+  <table border='0' cellpadding='0' cellspacing='0'>
+ 
+ <loop name="data" key="key" var="var" start="1">
+  <tr><td align="right"  height="18"  onselectstart="return false" style="white-space: nowrap;cursor: hand;" onclick="parent.tabClick(0);parent.document.FM.content.focus();parent.goto([$key]);" title="{lang:jump_to}">
+&nbsp;<FONT   COLOR="#6F6F6F">[$key]</FONT>&nbsp;</td></tr>
+  </loop>
+  </table>
+  </td>
+  
+  <td style="white-space: nowrap;" valign="top">
+ <table border='0' cellpadding='0' cellspacing='0'>
+
+ <loop name="data" key="key" var="var" start="1">
+  <tr><td   height="18"  style="white-space: nowrap;" onClick="focusObj(this)"
+                    onDblClick="parent.tabClick(0);parent.document.FM.content.focus();parent.goto([$key]);" title="{lang:doubleclick_edit}" >
+[$var]</td></tr>
+  </loop>
+  </table>
+</td>
+  
+  </tr>
+  </table>
+ </div></h4><hr size=1> 
+<DIV align=center>Powered by <b>CMSware</b> 1999-2006 CMSware Ltd All rights reserved. </DIV> 
+
+</body></html>
+

@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> <META HTTP-EQUIV="Expires" CONTENT="0"> <title> [$NodeInfo.Name] - {lang:topic}</title>
+<style type="text/css">
+body{margin:0px;scrollbar-face-color: #B8B8B8; scrollbar-highlight-color: #F5F9FF; scrollbar-shadow-color: #828282; scrollbar-3dlight-color: #828282; scrollbar-arrow-color: #797979; scrollbar-track-color: #ECECEC; scrollbar-darkshadow-color: #ffffff}
+body,a,table,div,span,td,th,input,select{font:9pt;font-family: Verdana, Arial, Helvetica, sans-serif;}
+.text{border:1 solid #aaaaaa;}
+.button{height:18;border:1 ridge #aaaaaa;background-color:aaaaaa;color:ffffff}
+.table {  border: 1px inset; border-color: menu #FFFFFF #FFFFFF menu}
+</style>
+
+</HEAD>
+
+<BODY bgcolor=menu  text="#000000">
+
+
+ 
+<table width="100%" border="0" cellspacing="8" cellpadding="0">
+  <form  action="admin_publish.php?sId=[$sId]&o=topIt_submit&IndexID=[$IndexInfo.IndexID]&NodeID=[$IndexInfo.NodeID]" method="post" enctype="multipart/form-data" name="form" target="operation" >
+    <tr> 
+      <td> <fieldset class="search">
+        <legend>{lang:topic}:</legend>
+        <table width="100%" border="0" cellspacing="8" cellpadding="0">
+          <tr> 
+            <td> <table  border="0" cellspacing="6" cellpadding="0">
+                <TR> 
+                  <td > {lang:pink_height}: </td>
+                  <td > </td>
+                  <td ><input name="Weight" type="text" id="Weight" value="[$IndexInfo.Pink]" size="10"></td>
+                  <td ><input type="button" name="Submit" value="{lang::global:ok}" onclick="window.returnValue=document.form.Weight.value;window.close();">
+                    <input type="button" name="Submit2" value="{lang::global:cancel}" onclick="window.close();"> 
+                  </td>
+                </TR>
+                <TR align="right"> 
+                  <td colspan="4" >&nbsp; </td>
+                </TR>
+              </TABLE></td>
+          </tr>
+          <tr> 
+            <td> </td>
+          </tr>
+        </table>
+        </fieldset> </td>
+    </tr>
+  </form>
+</table>				
+
+ <Iframe name=operation src="" frameborder=0 class=button style="display:none"> 
+                    </Iframe>
+
+</BODY>
+</HTML>
+

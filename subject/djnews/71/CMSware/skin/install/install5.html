@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<title>[$version] 安装向导</title>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="Description" CONTENT="">
+</HEAD>
+<style type="text/css">
+<include: file="installstyle.css">
+</style>
+
+<script  type="text/javascript" language="javascript" src="html/title_fade.js"></script>
+<script src="html/functions.js" type="text/javascript" language="javascript"></script>
+<body bgcolor="" TOPMARGIN="0" LEFTMARGIN="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="80%" height="70" bgcolor="#2D66B5"><img src="html/images/install.gif" ></td>
+    <td><table width="100%" height="70" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td bgcolor="#2E68B8">&nbsp;</td>
+          <td bgcolor="#4D86D2">&nbsp;</td>
+          <td bgcolor="#739FDB">&nbsp;</td>
+          <td bgcolor="#9ABAE4">&nbsp;</td>
+          <td bgcolor="#C6D8F0">&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="20" align="center"><font color="#0000EE">[$output]</font></td>
+  </tr>
+</table>
+<form action="install.php" method="post" >
+  <table width="70%" border="0" align="center" cellpadding="8" cellspacing="0" class="fixline">
+    <tr> 
+      <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td align="center" bgcolor="#ececec"> <table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#2E68B8">
+                <tr> 
+                  <td colspan="3" bgcolor="#2E68B8"><font color="#FFFFFF">&nbsp;CWPS通行证会员系统的OAS客户端配置(您可以直接编辑/oas/oas.config.php文件来详细设置OAS)：</font></td>
+                </tr>
+                <tr> 
+                  <td bgcolor="#ececec">CWPS通行证系统安装地址:</td>
+                  <td bgcolor="#ececec"><input name="oas_cwps_url" type="text" class="button" id="oas_cwps_url" value="[$oas_cwps_url]" size="50"></td>
+                  <td bgcolor="#ececec"> <b>填写您已经安装好的CWPS的安装地址(最后要加上斜杠/) </b><br />（集成同时安装cwps时会自动探测这个地址不用修改）</td>
+                </tr>
+                <tr> 
+                  <td bgcolor="#ececec">当前OAS地址:</td>
+                  <td bgcolor="#ececec"><input name="oas_oas_url" type="text" class="button" id="oas_oas_url" value="[$oas_oas_url]" size="50"></td>
+                  <td bgcolor="#ececec"><b>指向安装包中与CMSware平级的oas目录。此项一般默认设置即是正确的。</b><br />（OAS：指用于与CWPS通讯的客户端接口，CMSware前台的会员中心应用就需要用到OAS来进行会员处理）</td>
+                </tr>
+                <tr> 
+                  <td bgcolor="#ececec">OAS ID:</td>
+                  <td bgcolor="#ececec"><input name="oas_oasid" type="text" class="button" id="oas_oasid" value="[$oas_oasid]"></td>
+                  <td bgcolor="#ececec"><b>您在CWPS后台管理界面中给此OAS端分配的ID号。</b><br />（可自行根据CWPS的设置调整，集成同时安装的CWPS可不用修改此值，安装程序会统一修改cwps和oas配置）</td>
+                </tr>
+                <tr> 
+                  <td bgcolor="#ececec">加密KEY:</td>
+                  <td bgcolor="#ececec"><input name="oas_transactionaccessKey" type="text" class="button" id="oas_transactionaccessKey" value="[$oas_transactionaccessKey]" size="50">
+                  <td bgcolor="#ececec"><b>您在CWPS中设置的分配给此OAS的CWPS访问密码。</b><br />（可自行根据CWPS中的设置调整，集成同时安装的cwps可不用修改此值，安装程序会统一修改cwps和oas配置）</td>
+                </tr>
+				 <tr> 
+                  <td bgcolor="#ececec">COOKIE域:</td>
+                  <td bgcolor="#ececec"><input name="oas_main_domain" type="text" class="button" id="oas_main_domain" value="[$oas_main_domain]" size="50">
+                  <td bgcolor="#ececec"><b>设置OAS登陆状态可作用的域名范围，默认为空。</b><br /> 为方便不同子域名应用统一登录, <b>建议设置为您的主域</b>(.lonmo.com形式), 如果是在本机localhost使用必须设置为空</td>
+                </tr>
+              </table></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td height="20">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td align="center">
+	  <input name="installType" type="hidden" value="[$installType]">
+	  <input name="installCWPS" type="hidden" value="[$installCWPS]">
+	  <input name="step" type="hidden" id="step" value="6"> 
+        <input name="Submit2" type="button" class="subbutton" value="上一步" onClick="javascript:history.go(-1);"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input name="Submit" type="submit" class="subbutton" value="下一步" > 
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

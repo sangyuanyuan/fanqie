@@ -1,0 +1,92 @@
+<include: file="header.html">
+<script language="JavaScript">
+function prepareSubmit() {
+ 
+		return true;
+}
+
+
+</script>
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="oas.do">OAS管理</A> -&gt; 新增记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form name="oasForm" action="oas.do?o=add_submit" method='post' enctype="multipart/form-data" >
+    <tr> 
+      <td colspan="2" class="table_header">新增OAS</td>
+    </tr>
+
+<tr>
+	<td class="table_td1" width="150">OAS名称:</td>
+	<td class="table_td2">
+		<input name="OASName" type='text' class='flat'  tabindex='8'>
+	</td>
+</tr>
+<tr>
+	<td class="table_td1" width="150">OAS唯一标识（OASUID）:</td>
+	<td class="table_td2">
+		<input name="OASUID" type='text' class='flat'  tabindex='8'>
+	</td>
+</tr>
+<tr>
+	<td class="table_td1">IP地址:</td>
+	<td class="table_td2">
+		<input name="IP" type='text' class='flat'  tabindex='8' style="width:300px">
+		&nbsp;&nbsp;多个IP地址用逗号“,”分隔
+
+	</td>
+</tr>
+<tr>
+	<td class="table_td1">CWPS访问密码:</td>
+	<td class="table_td2">
+		<input name="CWPSPassword" type='text' class='flat'  tabindex='8'>设为空则使用CWPS默认密码
+	</td>
+</tr>
+<tr>
+	<td class="table_td1">反向消息接收地址:</td>
+	<td class="table_td2">
+		<input name="ProvisionURL" type='text' class='flat'  tabindex='8'>
+	</td>
+</tr>
+<tr>
+	<td class="table_td1">反向消息接收地址访问密码:</td>
+	<td class="table_td2">
+		<input name="ProvisionPassword" type='text' class='flat'  tabindex='8'>
+	</td>
+</tr>
+   
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13' onClick="return prepareSubmit();"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+<BR>
+<table width="98%" align="center" border="0" cellspacing="1" cellpadding="5" class=table_border>
+         <tr   class=table_header> 
+		<td >
+		帮助
+		</td>
+ 
+        </tr>
+
+	          <tr  class="table_td1"> 
+		<td ><BR>
+		 <UL>
+		 	<LI>由于存在同一台机器多个IP的情况，你可以对OAS设置多个IP地址，多个IP地址使用逗号分隔。<BR>
+			比如你的OAS所在主机IP为202.102.3.18，推荐你设置OAS的IP地址为“202.102.3.18,127.0.0.1”.
+  		 </UL>
+		</td>
+ 
+        </tr>
+
+	  </table>
+
+</BODY>
+<include: file="footer.html">

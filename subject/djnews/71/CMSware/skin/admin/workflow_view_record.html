@@ -1,0 +1,80 @@
+<include: file="header.html">
+
+  <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+    <tr> 
+      <td colspan="7" class="table_header">[$workflowInfo.Name]</td>
+    </tr>
+    <tr > 
+      <td align="center" class="table_td1">{lang:zhixinren}</td>
+       <td  align="center" class="table_td2"> {lang:caozuomingchen}</td>
+       <td  align="center" class="table_td2"> {lang:caozuohouzhuangtaima}</td>
+       <td  align="center" class="table_td2">{lang:caozuoqianzhuangtaima} </td>
+       <td  align="center" class="table_td2"> {lang:xinxifujia}</td>
+       <td width="20%" align="center" class="table_td2"> {lang::global:execute_op}</td>
+     </tr>
+<loop $recordInfo key=key var=var>
+    <tr > 
+      <td class="table_td1"><A HREF="admin_group.php?sId=[$sId]&o=edit&gId=[$var.Executor]">
+	 <if test="$var.gName == '' ">
+	 {lang:is_sys}
+	 <else>
+	 [$var.gName]
+	 </if>
+	  
+	  
+	  </A></td>
+      <td class="table_td1" >[$var.OpName]</td>
+      <td class="table_td1" align="right"><B>[$var.StateAfterOp]</B></td>
+      <td class="table_td1" align="right"><B>[$var.StateBeforeOp]</B></td>
+      <td class="table_td1" align="center">
+<if $var.AppendNote == 1>
+<FONT size=1 COLOR=#009900>{lang::global:state_true}</FONT>
+<else>
+<FONT  COLOR=#FF0000>{lang::global:state_false}</FONT>
+</if>		 
+	  </td>
+     <td width="20%" align="center" class="table_td2">
+ 	 
+	 
+	 <A HREF="[$base_url]o=edit_record&OpID=[$var.OpID]&wID=[$var.wID]">{lang::global:edit}</A> 
+ 	<A HREF="[$base_url]o=del_record&OpID=[$var.OpID]&wID=[$var.wID]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</a>
+ 
+	</td>
+     </tr>
+</loop>
+
+   
+  </table>
+ 
+ <table border="0" cellspacing="1" cellpadding="3" width="90%"  align=center >
+  <tr     > 
+ 
+    <td >  
+	  <input name="submit" type="button" class=button value="{lang:add_workflow_op_node}" onclick="document.location='[$base_url]o=add_record&wID=[$workflowInfo.wID]'">
+                   
+                </TD>
+	</form> 
+  </tr>
+  </table>
+
+<BR><BR>
+    <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+    <tr> 
+      <td colspan="2" class="table_header">{lang:gaojianzhuangtaima} </td>
+    </tr>
+    <tr > 
+      <td align="center" class="table_td1">{lang:zhuangtaimingchen} </td>
+      <td align="center" class="table_td1">{lang:zhuangtaima}</td>
+    </tr>
+<loop $workflowState key=key var=var>
+    <tr > 
+      <td class="table_td1">[$var.Name]</td>
+      <td class="table_td1" align="right"><B>[$var.State]</B></td>
+     
+    </tr>
+</loop>
+
+   
+  </table>
+</BODY>
+<include: file="footer.html">

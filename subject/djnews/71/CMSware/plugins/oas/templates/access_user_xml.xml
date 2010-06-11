@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="[$charset]"?>
+<tree>
+<loop $NodeInfo key=key var=var>
+<if strpos( $pInfo.ReadIndex , ','.$var.NodeID .',' )>
+<?php $isChecked = 'checked';?>
+<else>
+<?php $isChecked = ' ';?>
+</if>
+
+<if strpos( $pInfo.ReadContent ,  ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.PostComment  ,  ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+
+<if strpos( $pInfo.ReadComment , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+
+
+<if strpos( $pInfo.AuthInherit , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+<if $var.haveSon == 1>
+	<tree text="[$var.Name]" action=""  src="[@str_replace('&', '&amp;', $base_url)]o=tree::access_user_xml&amp;NodeID=[$var.NodeID]&amp;AccessID=[$pInfo.AccessID]"  target="panelWork" cId="[$var.NodeID]" checked="<?=$isChecked?>"  />
+<else>
+	<tree text="[$var.Name]" action=""  target="panelWork"  cId="[$var.NodeID]" checked="<?=$isChecked?>"   />
+</if>
+</loop>
+</tree>

@@ -1,0 +1,258 @@
+<include file="TplConfig.html">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$NodeInfo.Name] - [$SITE_NAME]</title>
+<meta name="keywords" content="[$NodeInfo.Name],[$SITE_NAME]" />
+<link href="[$SKIN_URL]movie/css/style.css" rel="stylesheet" type="text/css" />
+<!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+<div class="news_nav"><!--#CW#--影视频道附加导航--#CW#-->
+	<CMS action="NODELIST" return="List" Type="set" NodeID="{$Index_NodeID}" /><!--#CW#根据TplConfig中设置的影视主结点ID号，生成导航#CW#-->
+	<loop name="List" var="var" key="key" start="1">
+	<a href="[$var.NodeURL]">[$var.NodeName]</a><if test="$key < count($List)"> | </if><!--#CW#如果已循环到最后一条，则不显示最后的|#CW#-->
+	</loop>
+</div>
+
+<div class="content">
+
+	<div class="left">
+
+        <!--#CW#---左边样式1--#CW#-->
+
+		<div class="topside01">
+
+			<div class="topside01_l">&nbsp;</div>
+
+			<div class="topside01_c">&nbsp;</div>
+
+			<div class="topside01_r">&nbsp;</div>
+
+		</div>
+
+        <!--#CW#--最新发布的电影--#CW#-->
+
+		<div class="center01">
+
+			<CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="page-{$List_Num}" Order="{$List_OrderBy}" /> 
+
+			<div class="focus"><a href="#">[$NodeInfo.Name]</a></div><div class="morefocuslink"></div>
+
+            <loop name="List" var="var" key="key">
+
+          	<div class="sonfocus">
+
+				<div class="movies_box">
+
+                	<div class="movies_box_photo"><a href="[$var.URL]" title="[$var.Title]"><img src="[$var.Photo]" width="209" height="279" alt="[$var.Title]" hspace='0' vspace='0' align="middle" border="0" /></a></div>
+
+                    <div class="movies_box_content">
+
+                    	<div class="tit"><a href="[$var.URL]" style="float:left">[@CsubStr($var.Title,0,28,'')]</a><a href="[$var.URL]" style="float:right;"><img src="[$SKIN_URL]movie/img/icon_xq.jpg" border="0" height="29" width="80" /></a></div>
+
+                        <div class="con">
+
+                        【上传时间】：[@date('y-m-d',$var.PublishDate)] 【评论】：[$var.CommentNum] 条<br> 
+
+                        【剧情看点】：[$var.Watch]<br>
+
+                        【英文片名】： [$var.EnName]<br>
+
+                        【主演】： [$var.Player] <br>
+
+                        【导演】： [$var.Director] <br>
+
+                        【类型】： [$var.Style]<br>                    
+
+                        【剧情介绍】：[@CsubStr($var.Content,0,100)]<br>
+
+                      </div>
+
+                    </div>
+
+                </div> 
+
+  	  	  	</div>
+
+            </loop>
+
+            
+
+			</div>
+
+		<div class="bottomside01">
+
+			<div class="bottomside01_l">&nbsp;</div>
+
+			<div class="bottomside01_c">&nbsp;</div>
+
+			<div class="bottomside01_r">&nbsp;</div>
+
+		</div>
+
+        <!--#CW#--左边样式2--#CW#-->
+
+        <div class="topside02">
+
+			<div class="topside02_l">&nbsp;</div>
+
+			<div class="topside02_c">&nbsp;</div>
+
+			<div class="topside02_r">&nbsp;</div>
+
+		</div> 
+
+		<div class="center02" style="text-align:center">        
+
+页次：<font color=red><b>[$PageInfo.CurrentPage]</b></font>/<B>[$PageInfo.TotalPage]</B> 每页<B>[$List_Num]</B>共<B>[$PageInfo.TotalNum]</B> 分页：[@list_page( $PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)]
+
+		</div>
+
+		<div class="bottomside02">
+
+			<div class="bottomside02_l">&nbsp;</div>
+
+			<div class="bottomside02_c">&nbsp;</div>
+
+			<div class="bottomside02_r">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+
+
+	<!--#CW#--右边列开始--#CW#-->
+
+	<div class="right">
+
+    	<!--#CW#--搜索BOX--#CW#-->
+
+		<include file="inc/search_box.html">
+
+		<!--#CW#--右边样式1--#CW#-->
+
+		<div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<!--#CW#--本类热影--#CW#-->
+
+        	<div class="photo_fous">本类热影</div>
+
+            <CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$List_LeftHot_Num}" OrderBy="{$List_leftHot_OrderBy}" />
+
+            <loop name="List" key="key" var="var">
+
+            <a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+            </loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+
+		<!--#CW#--右边样式2--#CW#-->
+
+        <div class="topside05">
+
+			<div class="topside05_l">&nbsp;</div>
+
+			<div class="topside05_c">&nbsp;</div>
+
+			<div class="topside05_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center05">
+
+        	<!--#CW#--本类推荐--#CW#-->
+
+        	<div class="photo_fous">本类推荐</div>
+
+            <CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$List_LeftPink_Num}" where="{$List_LeftPink_where}" />
+
+            <loop name="List" var="var" key="key">
+
+			<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside05">
+
+			<div class="bottomside05_l">&nbsp;</div>
+
+			<div class="bottomside05_c">&nbsp;</div>
+
+			<div class="bottomside05_r">&nbsp;</div>
+
+		</div>
+
+        
+
+        <div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<!--#CW#--本类总点击排行--#CW#-->
+
+        	<div class="photo_fous">本类总点击排行</div>
+
+  			<CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$List_LeftHits_Total_Num}" OrderBy="{$List_LeftHits_Total_OrderBy}" />
+
+            <loop name="List" var="var" key="key">
+
+			<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+		
+	</div>
+
+</div>
+<include file="../common/footer.html" />
+</body>
+
+</html>
+

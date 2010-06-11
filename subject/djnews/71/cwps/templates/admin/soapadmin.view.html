@@ -1,0 +1,28 @@
+<include: file="header.html">
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="soapadmin.do">SOAP接口管理</A> -&gt; 查看记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+
+<table width="98%" border="0" cellpadding="5" cellspacing="1" class="table_border" align="center">
+<tr>
+	<td colspan="2" class="table_header">查看SOAP接口信息</td>
+</tr>
+
+<tr>
+	<td class="table_td1" width="200">Soap接口ID：</td>
+	<td class="table_td2">[$RecordInfo.SoapID]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">Soap接口名称：</td>
+	<td class="table_td2">[$RecordInfo.SoapName]</td>
+</tr>
+</table>
+<include: file="footer.html">
+</body>
+</html>

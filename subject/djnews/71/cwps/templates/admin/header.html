@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+<TITLE>[$SYS_NAME]</TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Description" CONTENT="">
+
+</HEAD>
+<link rel='stylesheet' type='text/css' href='[$html_url]/style.css' />
+
+<script  type="text/javascript" language="javascript" src="title_fade.js"></script>
+<script src="[$html_url]/functions.js" type="text/javascript" language="javascript"></script>
+<body bgcolor="" TOPMARGIN="0" LEFTMARGIN="0">
+
+<table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" class="table_border">
+   <tr> 
+    <td class="table_td1">
+	
+	<table width="100%" border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="">
+  <tr> 
+    <td  > <strong>[$SYS_NAME] </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	
+ 	  <if test="!empty($Session.UserID)" >
+	 欢迎你&nbsp;<B>[$Session.UserName]</B> &nbsp;-&nbsp;<a href="changePass.do">修改密码</a>&nbsp;-&nbsp;<a href="logout.do" onclick="if(confirm('确认退出系统吗?')) { parent.location = this.href} else {return false;}">退出系统</a>
+	 </if>
+	</td>
+	 <td   align=right>
+	
+	  
+	<a href="index.php" target="_blank">
+	前台首页
+	</a>
+	 </td>
+  </tr>
+</table>
+</td>
+  </tr>
+</table>
+<br>

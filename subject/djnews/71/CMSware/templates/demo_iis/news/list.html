@@ -1,0 +1,117 @@
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<CMS action="NODE" return="NodeVar" NodeID="{$News_MainNodeID}" />
+<title>[$NodeInfo.Name] - [$NodeVar.Name] - [$SITE_NAME]</title>
+<meta name="keywords" content="[$NodeInfo.Name],[$NodeVar.Name],[$SITE_NAME]" />
+<link href="[$SKIN_URL]news/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+<div class="news_nav">
+	<CMS action="NODELIST" return="List" Type="set" NodeID="{$News_NavNodeIDs}" /><!--#CW#根据设置的导航结点ID号，生成导航#CW#-->
+	<loop name="List" var="var" key="key" start="1">
+	<a href="[$var.NodeURL]"><if test="$var.NodeID==$NodeInfo.NodeID"><strong>[$var.NodeName]</strong><else>[$var.NodeName]</if></a><if test="$key < count($List)"> | </if><!--#CW#如果已循环到最后一条，则不显示最后的|#CW#-->
+	</loop>
+</div>
+
+<div class="content">
+	<div class="listleft">
+		<div class="topside06">
+			<div class="topside06_l">&nbsp;</div>
+			<div class="topside06_c">&nbsp;</div>
+			<div class="topside06_r">&nbsp;</div>
+		</div>
+		<div class="center06" id="listcenter">
+			<div class="newstitle"><span class="title_link_2"><a href="[$NodeInfo.URL]">[$NodeInfo.Name]新闻</a></span></div>
+			<div class="solidline"></div>
+			<CMS action="LIST" return="List" NodeID="self" Num="5" where="CHAR_LENGTH(c.Photo) > 0" />
+			<div class="listphotonews">
+			<loop name="List" var="var" key="key">
+				<div><a href="[$var.URL]" target="_blank"><img src="[$var.Photo]" width="100" height="100" border="0" alt="[$var.Title]" /></a><a href="[$var.URL]" target="_blank" title="[$var.Title]"><if test="empty($var.ShortTitle)">[@Csubstr($var.Title,0,8,'')]<else>[@Csubstr($var.ShortTitle,0,8,'')]</if></a></div>
+			</loop>
+			</div>
+			<div class="solidline"></div>
+			<CMS action="LIST" return="List" NodeID="self" Num="page-30" />
+			<ul class="listnews">
+			<loop name="List" var="var" key="key">
+				<li><a href="[$var.URL]" target="_blank">[@Csubstr($var.Title,0,30,'')]</a>&nbsp;([@date('m月d日 H:i',$var.PublishDate)])</li>
+			</loop>
+			</ul>
+			<div class="page">[@list_page($PageInfo.TotalPage,$PageInfo.CurrentPage,$PageInfo.URL)]</div>
+		</div>
+		<div class="bottomside06">
+			<div class="bottomside06_l">&nbsp;</div>
+			<div class="bottomside06_c">&nbsp;</div>
+			<div class="bottomside06_r">&nbsp;</div>
+		</div>
+	</div>
+	<div class="middle">
+		<include file="inc/search_box.html" />
+		<div class="topside03">
+			<div class="topside03_l">&nbsp;</div>
+			<div class="topside03_c">&nbsp;</div>
+			<div class="topside03_r">&nbsp;</div>
+		</div>
+		<CMS action="LIST" return="List" NodeID="self" Num="10" OrderBy="Hits_Total" />
+		<div class="center03">
+			<div class="newstitle"><span class="title_link_5">本类热门</span></div>
+			<div class="topnews">
+				<loop name="List" var="var" key="key">
+				<a href="[$var.URL]" target="_blank" title="[$var.Title]"><if test="empty($var.ShortTitle)">[@Csubstr($var.Title,0,20,'')]<else>[$var.ShortTitle]</if></a>&nbsp;[[$var.Hits_Total]]<br />
+				</loop>
+			</div>
+		</div>
+		<div class="bottomside03">
+			<div class="bottomside03_l">&nbsp;</div>
+			<div class="bottomside03_c">&nbsp;</div>
+			<div class="bottomside03_r">&nbsp;</div>
+		</div>
+		
+		<div class="topside03">
+			<div class="topside03_l">&nbsp;</div>
+			<div class="topside03_c">&nbsp;</div>
+			<div class="topside03_r">&nbsp;</div>
+		</div>
+		<CMS action="LIST" return="List" NodeID="self" Num="10" OrderBy="CommentNum" />
+		<div class="center03">
+			<div class="newstitle"><span class="title_link_4">本类热评</span></div>
+			<div class="topnews">
+			<loop name="List" var="var" key="key">
+				<a href="[$var.URL]" target="_blank" title="[$var.Title]"><if test="empty($var.ShortTitle)">[@Csubstr($var.Title,0,20,'')]<else>[$var.ShortTitle]</if></a>&nbsp;[[$var.CommentNum]]<br />
+			</loop>
+			</div>
+		</div>
+		<div class="bottomside03">
+			<div class="bottomside03_l">&nbsp;</div>
+			<div class="bottomside03_c">&nbsp;</div>
+			<div class="bottomside03_r">&nbsp;</div>
+		</div>
+		
+		<div class="topside03">
+			<div class="topside03_l">&nbsp;</div>
+			<div class="topside03_c">&nbsp;</div>
+			<div class="topside03_r">&nbsp;</div>
+		</div>
+		<CMS action="LIST" return="List" NodeID="self" Num="10" Orderby="rand()" />
+		<div class="center03">
+			<div class="newstitle"><span class="title_link_6">推荐新闻</span></div>
+			<div class="topnews">
+				<loop name="List" var="var" key="key">
+				<a href="[$var.URL]" target="_blank" title="[$var.Title]"><if test="empty($var.ShortTitle)">[@Csubstr($var.Title,0,20,'')]<else>[$var.ShortTitle]</if></a><br />
+				</loop>
+			</div>
+		</div>
+		<div class="bottomside03">
+			<div class="bottomside03_l">&nbsp;</div>
+			<div class="bottomside03_c">&nbsp;</div>
+			<div class="bottomside03_r">&nbsp;</div>
+		</div>
+	</div>
+</div>
+<include file="../common/footer.html" />
+</body>
+</html>

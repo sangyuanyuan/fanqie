@@ -1,0 +1,115 @@
+<include file="inc_header.html">
+<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0" background="[$Skin_URL]images/bg.jpg">
+  <tr>
+    <td align="center"><table width="945" border="0" align="center" cellpadding="0" cellspacing="0" background="[$Skin_URL]images/index_071.jpg">
+      <tr>
+        <td><img src="[$Skin_URL]images/index_03.jpg" width="945" height="13" /></td>
+      </tr>
+    
+      <tr>
+        <td ><table width="90%" border="0" align="center" cellpadding="3" cellspacing="3">
+          <tr>
+            <td colspan="4" align="left">
+            	<table cellpadding="0" cellspacing="0" width="100%" align="left">
+                	<tr><td height="30">
+                    您的位置：
+<loop name="NodeInfo.Navigation" key="key" var="var" >
+<if test="$key == 0" >
+<A href=" [$var.URL] "> [$var.Name] </A> 
+<else>
+> <A href=" [$var.URL] "> [$var.Name] </A>
+</if> 
+</loop>
+<if test="$Title != ''">
+> [$Title] 
+</if></td></tr>
+                </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" align="left">
+            <if test="$NodeInfo.NodeID=='3'">
+            <img src="[$Skin_URL]images/xsqb.jpg" border="0"/>
+            <elseif test="$NodeInfo.NodeID=='4'">
+            <img src="[$Skin_URL]images/xcsb.png" border="0"/>
+            <elseif test="$NodeInfo.NodeID=='5'">
+            <img src="[$Skin_URL]images/fxsb.png" border="0"/>
+            <elseif test="$NodeInfo.NodeID=='6'">
+            <img src="[$Skin_URL]images/fwsb.png" border="0"/>
+            <elseif test="$NodeInfo.NodeID=='7'">
+            <img src="[$Skin_URL]images/cysb.png" border="0"/>
+            </if>
+            </td>
+            </tr>
+          
+          <tr>
+            <td align="center">
+<CMS action="LIST" return="List" NodeID="3" orderby="i.PublishDate DESC" num="page-8" />
+<table width="100%" border="0" cellpadding="3" cellspacing="0" align="center">
+               <tr>
+               <LOOP name="List" var="var" key="key"> 
+               <if test="$key==0" >
+               <td width="25%" valign="top">
+<table cellpadding="0" cellspacing="0" width="100%" align="center">
+	<tr><td valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" class="shdborder ">
+            <tr>
+              <td  align="center"><a href="[$var.URL]" target="_blank"><img src="[$var.Photo]" width="140" height="110" /></a></td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td height="5"></td></tr>
+    <tr><td align="center" class="height140"><a href="[$var.URL]" target="_blank">[$var.Title]</a></td></tr>
+</table>    
+               </td>
+               <elseif test="$key % 4 ==0" >
+               </tr>
+			   <tr>
+			   <td width="25%" valign="top">
+<table cellpadding="0" cellspacing="0" width="100%" align="center">
+	<tr><td valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" class="shdborder ">
+            <tr>
+              <td  align="center"><a href="[$var.URL]" target="_blank"><img src="[$var.Photo]" width="140" height="110" /></a></td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td height="5"></td></tr>
+    <tr><td align="center" class="height140"><a href="[$var.URL]" target="_blank">[$var.Title]</a></td></tr>
+</table>    
+               </td>
+               <else>
+               <td width="25%" valign="top">
+<table cellpadding="0" cellspacing="0" width="100%" align="center">
+	<tr><td valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" class="shdborder ">
+            <tr>
+              <td  align="center"><a href="[$var.URL]" target="_blank"><img src="[$var.Photo]" width="140" height="110" /></a></td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td height="5"></td></tr>
+    <tr><td align="center" class="height140"><a href="[$var.URL]" target="_blank">[$var.Title]</a></td></tr>
+</table>    
+               </td>
+               </if>
+               </LOOP>
+               </tr>
+</table>
+          	</td>
+          </tr>
+          
+          <tr>
+            <td height="30" colspan="4" align="center">[@IndexPage($PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)]</td>
+          </tr>
+        </table></td>
+        </tr>
+      <tr>
+        <td><img src="[$Skin_URL]images/index_331.jpg" width="945" height="12" /></td>
+      </tr>
+    </table>
+    <img src="[$Skin_URL]images/cpr.gif" width="945" height="63" /></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>CMSware搜索</TITLE>
+<META http-equiv=content-type content="text/html; charset=utf-8">
+<style type="text/css">
+.title14 {font-size:14px;line-height:130%}
+td,li,select,input,textarea {font-size:12px}
+.f7 {font-size:7px;}
+.f24{font-size:24px;}
+.f12{font-size:12px;}
+.f14{font-size:14px;}
+.l17 {line-height:170%;}
+.process		{ color: #000000; font-size: 11px; font-family: Tahoma, Arial; text-align: center;}
+A.o:visited { color:#000000; 	text-decoration:none;}
+A.o:hover { color:#000000;	text-decoration:none; }
+
+A:link {color: #0000ff;}
+A:visited {color: #800080;}
+A:active,A:hover {color : #ff0000}
+A.a01:link,A.a01:visited {text-decoration:none;color: #07015B;}
+A.a01:active,A.a01:hover {text-decoration:none;color : #ff0000}
+A.a02:link,A.a02:visited {text-decoration:none;color: #0000ff;}
+A.a02:active,A.a02:hover {text-decoration:none;color : #ff0000}
+.c03{color:#000000;border-color:#000000;}
+A.title2:link,A.title2:visited {text-decoration:underline;color:#000000;}
+A.title2:active,A.title2:hover {text-decoration:underline;color:#ff0000;}
+</style>
+
+
+      
+<script language="JavaScript">
+function search(){
+     
+   dm=document.searchForm;
+   
+   if (dm.keywords.value == "" ){
+	alert ("请输入搜索关键字，多个关键字请用空格分隔！");
+	return false;
+   }
+	dm.submit();	
+
+
+}
+ 
+</script>
+
+
+
+<CENTER>
+  <TABLE cellSpacing=0 cellPadding=0 width=750 border=0>
+    <TBODY>
+      <TR> 
+        <TD width=120><A HREF="http://www.cmsware.com"><img   src="./images/logo.gif"   border="0" alt=""></A></TD>
+        <TD vAlign=top align=right><SPAN class=h3>●</SPAN> <A HREF="http://www.cmsware.com">CMSware首页</a> 
+          <SPAN class=h3>●</SPAN> <A HREF="http://www.cmsware.com/official/bbs">技术支持论坛</a> 
+        </TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+  <TABLE cellSpacing=0 cellPadding=0 width=760 border=0>
+<TBODY>
+<TR>
+<TD vAlign=top>
+<TABLE cellSpacing=0 cellPadding=0 width=590 border=0>
+<TBODY>
+<TR>
+<TD width="590" vAlign=bottom><IMG height=3 src="" width=5></TD></TR></TBODY></TABLE>
+          <TABLE cellSpacing=1 cellPadding=4 width="100%" border=0>
+            <TBODY>
+            <FORM name=searchForm action="search.php?o=search&TableID=1" method=post>
+              <TR bgColor=#125FA7> 
+                <TD colSpan=2><SPAN id=tbh><B><FONT face=Tahoma color=#ffffff>CMSware高级搜索</FONT></B></SPAN></TD>
+              </TR>
+              <TR> 
+                <TD bgColor=#125FA7><SPAN id=cattext><FONT face=Tahoma color=#ffffff>请选择搜索字段</FONT></SPAN></TD>
+                <TD bgColor=#125FA7><SPAN id=cattext><FONT face=Tahoma color=#ffffff>请选择分类</FONT></SPAN></TD>
+              </TR>
+              <TR> 
+                <TD width="50%" bgColor=#ffffff> <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                      <TR> 
+                        <TD> <SELECT name="Field" id="select3">
+                            <option value="Title" selected>标题&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                            <option value="Content">内容</option>
+  
+                          </SELECT></TD>
+                      </TR>
+                    </TBODY>
+                  </TABLE></TD>
+                <TD bgColor=#ffffff rowSpan=3> 
+				<SELECT name=NodeID[] size=6 multiple>
+				<loop $Cate_List var=var key=key>
+					<if $var.PublishMode != 0 AND $var.TableID == 1>
+                    <option value='[$var.NodeID]'  >[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+					</if>
+                </loop>
+				 </SELECT>
+				 <BR>
+                  <INPUT type=checkbox CHECKED value=1 name=Sub>
+                  搜索子分类</TD>
+              </TR>
+              <TR> 
+                <TD bgColor=#125FA7><SPAN id=cattext><FONT face=Tahoma color=#ffffff>请输入搜索关键字</FONT></SPAN></TD>
+              </TR>
+              <TR> 
+                <TD height="53" bgColor=#ffffff> <INPUT name=Keywords id="Keywords" size=30 maxLength=20> 
+                </TD>
+              </TR>
+              <TR bgColor=#125FA7> 
+                <TD colSpan=2><SPAN id=tbh><B><FONT face=Tahoma color=#ffffff>其它选项</FONT></B></SPAN></TD>
+              </TR>
+              <TR bgColor=#ffffff> 
+                <TD bgColor=#125FA7 colSpan=2><FONT color=#ffffff><FONT face=Tahoma><SPAN id=cattext>日期限制</SPAN><SPAN id=cattext></SPAN></FONT></FONT></TD>
+              </TR>
+              <TR bgColor=#ffffff> 
+                <TD colSpan=2><SELECT name="Time" id="Time">
+                    <option value="30">最近一个月内发布的文章</option>
+                    <option value="60">在两个月内发布的文章</option>
+                    <option value="90">在三个月内发布的文章</option>
+                    <option value="180">在半年内发布的文章</option>
+                    <option value="360">一年内发布的文章</option>
+                    <option value="0" selected>任何时间发布的文章</option>
+                  </SELECT> </TD>
+                <!-- <td><span class="normalfont">每页显示
+                                <select name="perpage">
+                                  <option value="10">10</option>
+                                  <option value="20" selected>20</option>
+                                  <option value="50">50</option>
+                                  <option value="100">100</option>
+                                </select>
+                                个 结果</span></td>-->
+              </TR>
+              <TR align="center" bgColor=#125FA7> 
+                <TD colSpan=2>                  <INPUT name="button" type=submit class=button  value=" 搜  索 "> 
+                  <INPUT name="reset" type=reset class=button value=" 重  置 "> 
+                </TD>
+              </TR>
+            </FORM>
+          </TABLE> 
+        </TD>
+      </TR></TBODY></TABLE>
+</CENTER>
+	  <br>
+	  <center>
+	    <span class="process">
+Powered by <b><A HREF="http://www.cmsware.com" target="blank" class="o">[$cmsware_version]</A></b>  &copy 1999-2005 CMSware Ltd.  All rights reserved.
+</CENTER>
+</body>
+</html>

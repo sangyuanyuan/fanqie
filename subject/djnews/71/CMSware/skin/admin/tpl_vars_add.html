@@ -1,0 +1,149 @@
+<include: file="header.html">
+ <script language="JavaScript">
+function setIsGlobal(mode)
+{
+	switch(mode) {
+		case 1 :
+			Layer_IsGlobal.style.display = 'none';
+			break;
+		case 0: 
+ 			Layer_IsGlobal.style.display = '';
+			break;
+	}
+}
+</script>
+
+  <TABLE width="90%" border=0 align=center cellSpacing=1>
+<form action="[$base_url]o=[*IN.o]_submit&Id=[$Info.Id]" method="post" name="add_subject" id="add_subject">
+  <TBODY>
+<TR>
+<TD vAlign=top align=middle width="50%">
+<TABLE width="100%" border=0 cellspacing="1" cellpadding="4" class="table_border">
+            <TBODY>
+              <TR class="table_header"> 
+                <TD height=25 colSpan=2 ><strong>
+				<if *IN.o == 'add'>
+				{lang:add_topic}
+				<else>
+				{lang:edit_topic}
+				</if>
+				</strong></TD>
+              </TR>
+              <TR >
+                <TD width="90" height=30  class="table_td1">
+                  <P> {lang:var_title}</P></TD>
+                <TD   height=30  class="table_td2">
+                  <INPUT name=data_VarTitle type="text" class=button id="author"  value="[$Info.VarTitle]" size=30></TD>
+              </TR>
+              <TR >
+                <TD height=30  class="table_td1">
+                  <P> {lang:var_name}</P></TD>
+                <TD height=30  class="table_td2">
+                  <INPUT name=data_VarName type="text" class=button id="author"  value="[$Info.VarName]" size=30></TD>
+              </TR>
+              <TR class="table_td1"> 
+                <TD height=30 bgcolor="" id=id2>{lang:var_value}</TD>
+                <TD height=30 align=left class="table_td2"> <TEXTAREA name=data_VarValue cols=50 rows=6 id="content" >[$Info.VarValue]</TEXTAREA> 
+                </TD>
+              </TR>
+
+			   <TR class="table_td1" > 
+                <TD  id=id2>{lang:is_global}</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD><if $Info.IsGlobal == 1> 
+                  <input type="radio" name="data_IsGlobal" value="1" id="data_IsGlobal1" onclick="setIsGlobal(1);" checked>
+                  <label for="data_IsGlobal1"  >{lang::global:yes}</label>
+                  <input name="data_IsGlobal" type="radio" value="0" onclick="setIsGlobal(0);" id="data_IsGlobal2" >
+                  <label for="data_IsGlobal2"  >{lang::global:no}</label>
+                  <else> 
+                  <input type="radio" name="data_IsGlobal" value="1" onclick="setIsGlobal(1);" id="data_IsGlobal1" >
+                  <label for="data_IsGlobal1"  >{lang::global:yes}</label>
+                  <input name="data_IsGlobal" type="radio" value="0"  onclick="setIsGlobal(0);" id="data_IsGlobal2" checked>
+                  <label for="data_IsGlobal2"  >{lang::global:no}</label>
+                  </if> 
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+
+
+
+
+
+
+              
+            </TBODY>
+          </TABLE>
+		<if $Info.IsGlobal == 1> 
+		  <div id="Layer_IsGlobal" style="display:none">
+		  <else>
+		  <div id="Layer_IsGlobal" >
+		</if>
+
+<TABLE width="100%" border=0 cellspacing="1" cellpadding="4" class="table_border">
+               <TR class="table_header"> 
+                <TD height=25 colSpan=3 >{lang:node_scope}</TD>
+              </TR>
+ <tr>
+ <td class="table_td1" align="center" width="50">{lang:access_node}
+  </td>
+  <td class="table_td1" align="center" width="60">
+  {lang:sub_node}
+  </td>
+
+<td class="table_td1"></td>
+ </tr>
+
+ 
+ <loop $NODE_LIST var=var>
+ <tr>
+ <td class="table_td2" align="center">
+  <if test="preg_match('/,'.$var.NodeID .'/isU', $Info.NodeScope)">
+  <INPUT TYPE="checkbox" NAME="NodeIDs[]" value="[$var.NodeID]" checked>
+ <else>
+   <INPUT TYPE="checkbox" NAME="NodeIDs[]" value="[$var.NodeID]">
+</if>
+ </td>
+  <td class="table_td2" align="center">
+ <if test="preg_match('/all-' . $var.NodeID .'/isU', $Info.NodeScope)">
+ <INPUT TYPE="checkbox" NAME="SubNodeIDs[]" value="[$var.NodeID]" checked>
+  <else>
+ <INPUT TYPE="checkbox" NAME="SubNodeIDs[]" value="[$var.NodeID]">
+  </if>
+ </td>
+
+<td class="table_td1">
+<if test="$var.ParentID == 0">
+<B>[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]
+</B><else>
+[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]
+</if>
+
+</td>
+ </tr>
+ </loop>
+
+
+</tbody>
+	 </table> 
+		  
+</div><BR>	
+			  <input name="submit" type=submit class=button value="{lang::global:modify}">
+                  &nbsp;&nbsp; 
+                  <INPUT type=reset value="{lang::global:reset}" class=button> 
+	  
+		  
+		  </TD></TR></TBODY>
+		    </form>
+
+		  </TABLE>
+		
+	  
+
+
+
+		  </BODY>
+
+<include: file="footer.html">

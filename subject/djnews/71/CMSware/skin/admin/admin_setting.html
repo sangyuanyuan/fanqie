@@ -1,0 +1,335 @@
+<include: file="header.html">
+
+
+<script language="JavaScript">
+function psnSelect(psn,form, psn_element,url_element) {
+//showMeDialog
+var arr = showMeDialog("admin_select.php?sId=[$sId]&o=psn&psn=" + psn,"color","dialogWidth:428px;dialogHeight:266px;help:0;status:0;scroll:no");
+if(arr != null) {
+	var PSN = '{PSN:'+ arr;
+	var URL = '{PSN-URL:'+ arr;
+	with(form){
+
+	eval(psn_element + ".value= '" + PSN + "'")
+	eval(url_element + ".value= '" + URL + "'")
+
+	}
+
+
+}
+
+}
+</script>
+
+<TABLE width="95%" border=0 align=center cellSpacing=0 cellPadding=0  >
+  <form name="add_cate" method="post" action="[$base_url]o=edit_submit">
+    <TBODY>
+<TR>
+        <TD vAlign=top align=middle >
+		<TABLE cellspacing="1" cellpadding="4" width="100%"  border=0 class="table_border">
+            <TBODY>
+              <TR class="table_header" > 
+                <TD height=25 colSpan=2 id=id2 ><strong>{lang:setting}</strong></TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2 width="200"> {lang:install_url}:</TD>
+                <TD  id=id2> <input name="admin_sysname" type="text" class="button" id="admin_sysname" value="[$sInfo.sysname]" size="40"> 
+                  </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2> {lang:template_path}:</TD>
+                <TD  id=id2> <input name="admin_templatepath" type="text" class="button" id="admin_templatepath" value="[$sInfo.templatePath]" size="30"> 
+                </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2>{lang:backup_path}:</TD>
+                <TD  id=id2><input name="admin_backup" type="text" class="button" id="admin_backup" value="[$sInfo.backupPath]" size="30"> 
+                 </TD>
+              </TR>
+
+      <TR class="table_td1" > 
+                <TD  id=id2>{lang:DefaultResourcePSN}:</TD>
+                <TD  id=id2> <INPUT name="DefaultResourcePSN" id="DefaultResourcePSN" size=50  class='flat'  value="[$sInfo.DefaultResourcePSN]">
+        <input name="button5" type='button' tabindex='13' value='...' onclick="psnSelect('[$sInfo.DefaultResourcePSN]',this.form,'DefaultResourcePSN','DefaultResourcePSNURL')">
+                 </TD>
+              </TR>
+      <TR class="table_td1" > 
+                <TD  id=id2>{lang:DefaultResourcePSNURL}:</TD>
+                <TD  id=id2> <INPUT name="DefaultResourcePSNURL" id="DefaultResourcePSNURL" size=50  class='flat'  value="[$sInfo.DefaultResourcePSNURL]">
+                  </TD>
+              </TR>
+
+			 
+      <TR class="table_td1" > 
+                <TD  id=id2>{lang:DefaultContentPSN}:</TD>
+                <TD  id=id2> <INPUT name="DefaultContentPSN" id="DefaultContentPSN" size=50  class='flat'  value="[$sInfo.DefaultContentPSN]">
+        <input name="button5" type='button' tabindex='13' value='...' onclick="psnSelect('[$sInfo.DefaultContentPSN]',this.form,'DefaultContentPSN','DefaultContentPSNURL')">
+                 </TD>
+              </TR>
+      <TR class="table_td1" > 
+                <TD  id=id2>{lang:DefaultContentPSNURL}:</TD>
+                <TD  id=id2> <INPUT name="DefaultContentPSNURL" id="DefaultContentPSNURL" size=50  class='flat'  value="[$sInfo.DefaultContentPSNURL]">
+                  </TD>
+              </TR>
+
+
+
+   <TR class="table_td1" > 
+                <TD  id=id2>{lang:DialogFitXP}:</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+					   
+		         <input type="radio" name="DialogFitXP" value="{$sInfo.DialogFitXP}">
+				 <option value="1" >{lang::global:yes}</option>
+				 <option value="0" >{lang::global:no}</option>
+				 </input>
+					
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+   <TR class="table_td1" > 
+                <TD  id=id2>{lang:AutoRefreshTree}:</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+					   
+		         <input type="radio" name="AutoRefreshTree" value="{$sInfo.AutoRefreshTree}">
+				 <option value="1" >{lang::global:yes}</option>
+				 <option value="0" >{lang::global:no}</option>
+				 </input>
+					
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+
+
+          <!--
+ <TR class="table_td1" > 
+                <TD  id=id2>{lang:enable_gzip}:</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+					   
+		         <input type="radio" name="enable_gzip" value="{$sInfo.enable_gzip}">
+				 <option value="1" >{lang::global:yes}</option>
+				 <option value="0" >{lang::global:no}</option>
+				 </input>
+					
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+
+-->
+ <TR class="table_td1" > 
+                <TD  id=id2>{lang:DisplayNodeID}:</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+					 
+                  <input type="radio" name="DisplayNodeID" value="{$sInfo.DisplayNodeID}"  >
+				<option value="1">{lang::global:yes}</option>
+				<option value="0">{lang::global:no}</option>
+                  </input>
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+
+			<TR class="table_td1" > 
+                <TD  id=id2>{lang:content_view_mode}:</TD>
+                <TD  id=id2> 
+                  <input type="radio" name="ContentViewMode" value="{$sInfo.ContentViewMode}"  >
+					<option value="1">{lang:view_mode_src}</option>
+					<option value="0">{lang:view_mode_preview}</option>
+                  </input>
+				</TD>	 
+			</TR>
+			<TR class="table_td1" > 
+                <TD  id=id2>{lang:collection_view_mode}:</TD>
+                <TD  id=id2> 
+                  <input type="radio" name="CollectionViewMode" value="{$sInfo.CollectionViewMode}"  >
+					<option value="1">{lang:view_mode_src}</option>
+					<option value="0">{lang:view_mode_preview}</option>
+                  </input>
+				</TD>	 
+			</TR>
+			<TR class="table_td1" > 
+                <TD  id=id2>{lang:contribution_view_mode}:</TD>
+                <TD  id=id2> 
+                  <input type="radio" name="ContributionViewMode" value="{$sInfo.ContributionViewMode}"  >
+					<option value="1">{lang:view_mode_src}</option>
+					<option value="0">{lang:view_mode_preview}</option>
+                  </input>
+				</TD>	 
+			</TR>
+
+
+
+ <TR class="table_td1" > 
+                <TD  id=id2>{lang:DisplayPublishCount}:</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+ <input type="radio" name="DisplayPublishCount" value="{$sInfo.DisplayPublishCount}"  >
+				<option value="1">{lang::global:yes}</option>
+				<option value="0">{lang::global:no}</option>
+
+   </input>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+
+
+
+
+             <TR class="table_td1" > 
+                <TD  id=id2>{lang:content_page}:</TD>
+                <TD  id=id2><input name="ContentPageNum" type="text" class="button" id="ContentPageNum" value="[$sInfo.ContentPageNum]" size="10"> 
+                 </TD>
+              </TR>
+           <TR class="table_td1" > 
+                <TD  id=id2>{lang:search_page}:</TD>
+                <TD  id=id2><input name="SearchPageNum" type="text" class="button" id="SearchPageNum" value="[$sInfo.SearchPageNum]" size="10">
+                 </TD>
+              </TR>
+           <TR class="table_td1" > 
+                <TD  id=id2>{lang:collection_page}:</TD>
+                <TD  id=id2><input name="CollectionPageNum" type="text" class="button" id="CollectionPageNum" value="[$sInfo.CollectionPageNum]" size="10">
+                 </TD>
+              </TR>
+			 <TR class="table_td1" > 
+                <TD  id=id2>{lang:AutoPageLen}:</TD>
+                <TD  id=id2><input name="AutoPageLen" type="text" class="button" id="AutoPageLen" value="[$sInfo.AutoPageLen]" size="10">
+                 </TD>
+              </TR>
+			 
+            <TR class="table_header" > 
+                <TD height=25 colSpan=2 id=id2 ><strong>{lang:safe_setting}</strong></TD>
+              </TR>
+                  <TR class="table_td1" > 
+                <TD  id=id2>{lang:session_time_out}:</TD>
+                <TD  id=id2><input name="sessionTimeout" type="text" class="button" id="sessionTimeout" value="[$sInfo.sessionTimeout]" size="10"> 
+                 </TD>
+              </TR>
+
+			                    <TR class="table_td1" > 
+                <TD  id=id2>{lang:LoginTryCount}:</TD>
+                <TD  id=id2><input name="LoginTryCount" type="text" class="button" id="LoginTryCount" value="[$sInfo.LoginTryCount]" size="10"> 
+                 </TD>
+              </TR>
+
+                  <TR class="table_td1" > 
+                <TD  id=id2>{lang:LoginTryTime}:</TD>
+                <TD  id=id2><input name="LoginTryTime" type="text" class="button" id="LoginTryTime" value="[$sInfo.LoginTryTime]" size="10"> 
+                 </TD>
+              </TR>
+
+              <TR class="table_header" > 
+                <TD colspan="2"  id=id2>{lang:editor_upload_setting}</TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2>{lang:upload_img_type}:</TD>
+                <TD  id=id2><input name="upImgType" type="text" class="button" id="upImgType" value="[$sInfo.upImgType]" > 
+                   </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2>{lang:upload_img_size}:</TD>
+                <TD  id=id2><input name="upImgSize" type="text" class="button" id="upImgSize" value="[$sInfo.upImgSize]" >
+                  KB  </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2>{lang:upload_attach_size}:</TD>
+                <TD  id=id2><input name="upAttachSize" type="text" class="button" id="upAttachSize" value="[$sInfo.upAttachSize]" >
+                  KB  </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2>{lang:upload_attach_type}:</TD>
+                <TD  id=id2><input name="upAttachType" type="text" class="button" id="upAttachType" value="[$sInfo.upAttachType]" > 
+                   </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2>{lang:upload_flash_size}:</TD>
+                <TD  id=id2><input name="upFlashSize" type="text" class="button" id="upFlashSize" value="[$sInfo.upFlashSize]" >
+                  KB  </TD>
+              </TR>
+              <TR class="table_header" > 
+                <TD colspan="2"  id=id2>{lang:img_localize_setting}</TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2>{lang:img_localize_ignore_url}:</TD>
+                <TD  id=id2><textarea name="localImgIgnoreURL" cols="50" rows="5" class="button" id="localImgIgnoreURL">[$sInfo.localImgIgnoreURL]</textarea><BR>
+                  {lang:img_localize_ignore_url_help}</TD>
+              </TR>
+			       
+			      <TR class="table_header" > 
+                <TD colspan="2"  id=id2> <b>{lang:watermark_setting}</b> </TD>
+              </TR>
+			<TR class="table_td1" > 
+                <TD  id=id2>{lang:enable_watermark}:<BR>{lang:enable_watermark_help}</TD>
+                <TD  id=id2>
+				<input type="radio" name="EnableWaterMark" value="{$sInfo.EnableWaterMark}">
+				<option value="1">{lang::global:yes}</option>
+				<option value="0">{lang::global:no}</option>
+				</input>
+                 </TD>   
+              </TR>
+			  <TR class="table_td1" > 
+                <TD  id=id2>{lang:enable_collection_watermark}:<BR>({lang:enable_collection_watermark_help})</TD>
+                <TD  id=id2>
+				<input type="radio" name="EnableCLWaterMark" value="{$sInfo.EnableCLWaterMark}">
+				<option value="1">{lang::global:yes}</option>
+				<option value="0">{lang::global:no}</option>
+				</input>
+                 </TD>   
+              </TR>
+			  <TR class="table_td1" > 
+                <TD  id=id2>{lang:enable_editor_watermark}: </TD>
+                <TD  id=id2>
+				<input type="radio" name="EnableEditorWaterMark" value="{$sInfo.EnableEditorWaterMark}">
+				<option value="1">{lang::global:yes}</option>
+				<option value="0">{lang::global:no}</option>
+				</input>
+                 </TD>   
+              </TR>
+			  <TR class="table_td1" > 
+                <TD  id=id2>{lang:watermark_image_path}:<BR>{lang:watermark_image_path_help}</TD>
+                <TD  id=id2>
+				<input name="WaterMarkImgPath" type="text" class="button" value="[$sInfo.WaterMarkImgPath]" size="40">
+				 
+                 </TD>   
+              </TR>
+			   <TR class="table_td1" > 
+                <TD  id=id2>{lang:watermark_position}:</TD>
+                <TD  id=id2>
+				<select name="WaterMarkPosition" value="{$sInfo.WaterMarkPosition}">
+				<option value="0">{lang:postion0}</option>
+				<option value="1">{lang:postion1}</option>
+				<option value="2">{lang:postion2}</option>
+				<option value="3">{lang:postion3}</option>
+				<option value="4">{lang:postion4}</option>
+				<option value="5">{lang:postion5}</option>
+				<option value="6">{lang:postion6}</option>
+				<option value="7">{lang:postion7}</option>
+				<option value="8">{lang:postion8}</option>
+				<option value="9">{lang:postion9}</option>
+				</select>
+                  </TD>   
+              </TR>
+              <TR class="table_td1"    > 
+                <TD height=30 colSpan=2 align=middle > <INPUT name="submit" type=submit value="{lang::global:submit_value}" class="button"> 
+                  &nbsp;&nbsp; <INPUT name="reset" type=reset value="{lang::global:reset_value}"  class="button"> 
+                </TD>
+              </TR>
+            </TBODY>
+          </TABLE></TD>
+      </TR></TBODY><INPUT type=hidden value=edit_submit name=action></form></TABLE>
+<include: file="footer.html">

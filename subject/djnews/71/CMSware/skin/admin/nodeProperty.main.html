@@ -1,0 +1,48 @@
+<include file="header.html" />
+ 
+  <table width="98%" border="0" align="center" cellpadding="5" cellspacing="1" class="table_border">
+
+
+<tr > 
+      <td colspan="4" class="table_header">{lang:node_extra_field}</td>
+    </tr>	 
+	<tr class="table_td1"> 
+      <td >{lang:field_title}</td>
+      <td >{lang:field_name}</td>
+      <td >{lang:field_type}</td>
+      <td align="center">{lang:field_op}</td>
+    </tr>
+ 	
+<loop name="NodePropertys" var="var" key="key">
+  <tr class="table_td2">
+      <td>[$var.FieldTitle]</td>
+      <td>
+        <B>[$var.FieldName]</B>
+	  </td>
+	  <td>[$var.FieldType]
+	  <if test="!empty($var.FieldSize)">
+	  ([$var.FieldSize])
+	  </if>
+	  
+	  </td>
+      <td align="center"><A HREF="admin_site.php?sId=[$sId]&o=edit_node_property&FieldID=[$var.FieldID]">{lang::global:edit}</A>&nbsp;&nbsp;
+	  <A HREF="admin_site.php?sId=[$sId]&o=del_node_property&FieldID=[$var.FieldID]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</A>
+	  </td>
+    </tr>
+
+</loop>
+ 	
+ 
+  </table>
+ 
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center >
+ <tr > <td>  
+ </td><td align=right>[ <A HREF="admin_site.php?sId=[$sId]&o=add_node_property">{lang:add_field}</A> ] 
+ 
+  </td></tr>
+
+  </table>
+
+
+
+<include  file="footer.html"/>

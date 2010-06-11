@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+	<HEAD>
+		<title>CMSware</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $this->_tpl_vars["charset"];?>" />
+		<meta name="robots" content="noindex" />
+		<base target="_top" />
+<link rel='stylesheet' type='text/css' href='../html/configuration.css' />
+		
+		<script>
+			var fstMain_cols;
+			function mouseover(item)
+			{
+				item.style.borderColor = "#003399";
+				item.style.background = "#CCCCFF";
+			}
+			function mouseout(item)
+			{
+				item.style.borderColor = "#CCCCCC";
+				item.style.background = "#CCCCCC";
+			}
+			function hidetoc()
+			{
+
+
+			
+				fstMain_cols = top.panelMain.cols;
+				
+				top.panelMain.cols = "0,*";
+				top.panelHeader.MNP_showtoc.style.display="";
+				//alert(top.panelHeader.showtoc)
+
+			}
+			function showtoc()
+			{
+				//top.MNPMainFrame.MNP_showtoc.style.display = "none";
+				if (fstMain_cols)
+					top.fstMain.cols = fstMain_cols;
+				else
+				
+					top.fstMain.cols = "216,*";
+				
+			}
+			function synctoc()
+			{
+				top.panelMenu.location = top.panelMenu.location;
+			}
+			function moveNext()
+			{
+					history.forward(1);
+			}
+			function movePrevious()
+			{
+					history.back(1);
+			}
+		</script>
+		
+	</HEAD>
+	<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+	
+		<table cellpadding="0" cellspacing="0" width="100%" height="21" bgcolor="#CCCCCC" dir="LTR"><tr>
+			<td><div class="syncBarNext" title="" onmouseover="mouseover(this)" onmouseout="mouseout(this)" onclick="moveNext()" ondblclick="moveNext()"><img src="../html/images/tocNext.gif" width="13" height="13" alt="Next" /></div></td>
+			<td><div class="syncBarPrevious" title="" onmouseover="mouseover(this)" onmouseout="mouseout(this)" onclick="movePrevious()" ondblclick="movePrevious()"><img src="../html/images/tocPrevious.gif" width="13" height="13" alt="Previous" /></div></td>
+			<td width="100%" ></td>
+			<td align="right" nowrap="nowrap" style="color: #003399; font: 11px Verdana"><div style="cursor: hand; padding: 0px 2px; height: 15px; border-color: #CCCCCC; background: #CCCCCC; border-width: 1px; border-style: solid" title="" onmouseover="mouseover(this)" onmouseout="mouseout(this)" onclick="synctoc()"><span style="position: relative; top:1px"  id="labelName" title="<?php echo $_LANG_SKIN['refresh'];?>"><?php echo $_LANG_SKIN['publish_admin'];?></span><img src="../html/images/tocSync.gif"  width="13" height="13" alt="<?php echo $_LANG_SKIN['refresh'];?>"  style="position: relative; top:3px"  /></div></td>
+			<td><div style="cursor: hand; margin-left: 7px; margin-right: 4px; width: 15px; height: 15px; border-color: #CCCCCC; background: #CCCCCC; border-width: 1px; border-style: solid" title="" onmouseover="mouseover(this)" onmouseout="mouseout(this)" onclick="hidetoc()"><img src="../html/images/tocHide.gif" width="13" height="13" alt="hide toc" /></div></td>
+		</tr></table>
+		<br/>
+		<br/>
+		
+	</body>
+</HTML>

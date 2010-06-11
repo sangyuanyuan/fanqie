@@ -1,0 +1,93 @@
+<include file="header.html" />
+  
+<SCRIPT language=JavaScript>
+<!--
+function CheckAll(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.name !='copy')       e.checked = form.chkall.checked; 
+   }
+  }
+
+//-->
+
+function going(form, o)
+{
+	with(form) {
+		switch(o) {
+			case 'resetPass':
+				if(confirm("")) {
+					form.action = "admin.php?o=resetPass";
+					form.submit();
+				
+				} else return false;
+				break;
+		}
+	}
+}
+</script>
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+
+ <table width="100%" border="0"   cellspacing="1" align="center" > 
+ <tr>
+ <td><B><A HREF="resource.do">资源管理</A></B></td><td align="right"><B><A HREF="resource.do?o=add">新增资源</A></B></td>
+ </tr>
+ </table>
+
+	  
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+<table width="98%" align="center" border="0" cellspacing="1" cellpadding="3" class=table_border>
+	<form name="form2" method="post" action="resource.do?o=edit_submit">
+        <tr align="center" class=table_header> 
+		<td width="20"></td>
+<td>资源唯一标识名</td>
+<td>资源名称</td>
+ 		   
+		<td>操&nbsp;&nbsp;作</td>
+        </tr>
+
+		<loop name="RecordList" key="key" var="var" >
+        <tr  class="table_td1"> 
+		
+           <td> <INPUT TYPE="checkbox" NAME="RID[]" value="[$var.RID]" ></td>
+			
+<td>[$var.ResourceUID]</td>
+<td>[$var.ResourceName]</td>
+ 		   
+ 
+<td align="center">
+&nbsp;&nbsp;<a href="resource.do?o=view&RID=[$var.RID]">查看</a>
+ <a href="resource.do?o=edit&RID=[$var.RID]">编辑</a>
+&nbsp;&nbsp;<a href="resource.do?o=del&RID=[$var.RID]" onclick="return confirm('确认删除吗?')">删除</a>
+
+		   </td>
+	    </loop>
+        </tr> 
+<tr>
+<td  colspan="11" class="table_td2">
+<input type="checkbox" name="chkall" value="on" onclick="CheckAll(this.form)" id="chkall"  > 
+              <label for="chkall" >全选</label>&nbsp;&nbsp;
+<select name="actionMap" id="actionMap" > 
+           <option value="">--选择操作--</option>
+     
+</select>
+
+			  <input type="button" value="执行" class=button onclick="going(this.form,actionMap.options[actionMap.selectedIndex].value)"> 
+</td>
+</tr>
+
+</form>
+      </table>
+      <table width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+          <td align="right">[@pagelist($pageInfo.pageNum, $pageInfo.currentPage, $pageInfo.uri, 'Page')]</td>
+        </tr>
+      </table>
+
+<include file="footer.html"/>

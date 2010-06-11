@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>CMSware install...</title>
+<SCRIPT type=text/javascript>
+<!--
+
+var ie5 = (document.all && document.getElementsByTagName);
+var step = 0;
+function setSB(v, el, inforEl, message) {
+	if (ie5 || document.readyState == "complete") {
+		filterEl = el.children[0];
+		valueEl  = el.children[1];
+		
+		if (filterEl.style.pixelWidth > 0) {
+			var filterBackup = filterEl.style.filter;
+			filterEl.style.filter = "";
+			filterEl.style.filter = filterBackup;
+		}
+		
+		filterEl.style.width = v + "%";
+		valueEl.innerText = v + "%";
+		inforEl.innerText = message;
+	}
+}
+function setSBByStep(v, el, inforEl, message) {
+	if (ie5 || document.readyState == "complete") {
+		step = step + v;
+		filterEl = el.children[0];
+		valueEl  = el.children[1];
+		
+		if (filterEl.style.pixelWidth > 0) {
+			var filterBackup = filterEl.style.filter;
+			filterEl.style.filter = "";
+			filterEl.style.filter = filterBackup;
+		}
+		
+		filterEl.style.width = step + "%";
+		valueEl.innerText = step + "%"
+		inforEl.innerText = message;
+	}
+}
+//window.onload = new Function("setSB(100,sb,infor,'??????')")
+
+function fakeProgress(v, el) {
+	if (v >= 100){
+		setSB(100, el, infor, "Loading Complete");
+		window.close();
+	}
+	else {
+		setSB(v, el, infor, "Loading ...");
+		window.setTimeout("fakeProgress(" + (v + 1) + ", document.all['" + el.id + "'])", 60);
+	}
+}
+
+//-->
+</SCRIPT>
+    <!-- Status Bar Starts -->
+
+
+
+
+<style type="text/css">
+.medu {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+a {FONT-FAMILY: "Verdana", "宋体"; TEXT-DECORATION: none;FONT-SIZE: 12px; color: #000000} 
+
+a:hover {COLOR: #000000; TEXT-DECORATION: underline;FONT-SIZE:12px;} 
+td{
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Fireworks MX Dreamweaver MX target.  Created Sat May 03 09:41:17 GMT-0700 (Pacific Daylight Time) 2003-->
+<link href="justdn.css" rel="stylesheet" type="text/css">
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="fakeProgress(0, sb);">
+<table width="532" height="45" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr>
+    <td width="53%" height="43"><img name="index_r1_c1" src="./images/index_r1_c1.gif" width="186" height="41" border="0" alt=""></td>
+    <td width="47%" align="center" class="medu">Home Company Download Project 
+      Services </td>
+  </tr>
+</table>
+<table width="532" height="123" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr>
+    <td width="532" height="121"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+          <td width="47%"><img src="./images/index_r2_c1.gif"></td>
+          <td width="53%"><img src="./images/index_r2_c3.gif"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="532" height="58" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr>
+    <td width="532" height="56" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td >
+	<DIV id=sb 
+	style="BACKGROUND: white;WIDTH: 100%;HEIGHT: 6px;">
+	<DIV id=sbChild1 
+		style="FILTER: Alpha(Opacity=40, FinishOpacity=40, Style=1, StartX=0, StartY=0, FinishX=100, FinishY=0); WIDTH: 0%; POSITION: absolute; HEIGHT: 6px">
+		<DIV 
+			style="FONT-SIZE: 1px; BACKGROUND: #566253; WIDTH: 100%; HEIGHT: 100%">
+		</DIV>
+	</DIV>
+	<DIV 
+	style="display:none;FONT-SIZE: 12px; WIDTH: 100%; COLOR: white; FONT-FAMILY: arial; POSITION: absolute; TEXT-ALIGN: center">0%
+	</DIV>
+</DIV><!-- Status Bar Ends -->
+
+            <DIV id=infor
+style="FONT-SIZE: 12px; WIDTH: 100%; COLOR: black; FONT-FAMILY: arial; POSITION: relative; TEXT-ALIGN: center"> 
+            </DIV>	  
+ </DIV>
+  
+
+		  </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td height="10"></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td align=center valign=top > <script language="JavaScript">
+var delay = 0;
+var bcolor = "#f4f8ff";
+var tcolor = "#000000";
+var fcontent = new Array();
+begintag = '';
+fcontent[0] = "欢迎使用iWPC 2.6 Pro ";
+fcontent[1] = "安装前请仔细阅读安装说明";
+fcontent[2] = "Powered by iZz Studio 2004";
+
+closetag = '';
+</script> <script language="JavaScript" src="./images/newsfader.js"></script> </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</body>
+</html>

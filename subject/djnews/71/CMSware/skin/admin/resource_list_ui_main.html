@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD> <META HTTP-EQUIV="Pragma" CONTENT="no-cache"> <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> <META HTTP-EQUIV="Expires" CONTENT="0"> 
+<TITLE>{lang:topic}</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+</HEAD>
+<script type="text/javascript" src="../html/helptip.js"></script>
+<link type="text/css" rel="StyleSheet" href="../html/helptip.css" />
+<link type="text/css" rel="StyleSheet" href="../html/style.css" />
+<script language='JavaScript' src='../html/js-gui.js'></script>
+<script language='JavaScript' src='../html/js-form.js'></script>
+<LINK href="../html/xmenu.css" type=text/css rel=stylesheet>
+<SCRIPT src="../html/xmenu.js" type=text/javascript></SCRIPT>
+
+<script src="ui.php?sId=[$sId]&o=functions.js" type="text/javascript" language="javascript"></script>
+<script language="javascript">
+function psn_backward()
+{	//alert('a')
+			window.history.go(-1);
+}
+
+function psn_updir()
+{
+	var PATH =  document.workFrame.PATH;
+	var PSNID = document.form1.psn.options[document.form1.psn.selectedIndex].value
+	//alert(PSNID)
+	workFrame.location = 'admin_select.php?sId=[$sId]&o=psn_list_file&extra=updir&PSNID=' + PSNID + '&PATH=' + PATH
+
+}
+
+function psn_mkdir()
+{
+	var PATH =  document.workFrame.PATH;
+	var PSNID = document.form1.psn.options[document.form1.psn.selectedIndex].value
+
+	var dirname= showMeDialog("../html/input.php?Title="+encodeURI("{lang:dir_name}"),"color","dialogWidth:300px;dialogHeight:150px;help:0;status:0;scroll:no");
+
+	if(dirname != null && dirname != '') {
+		workFrame.location = 'admin_select.php?sId=[$sId]&o=psn_mkdir&dirname='+ dirname +'&PSNID=' + PSNID + '&PATH=' + PATH
+	}
+
+
+}
+
+
+</script>
+<body bgcolor=threedface STYLE="margin:0pt;padding:0pt;border: 1px buttonhighlight;" onload="workFrameReload()">
+<table width="100%" border="0" cellspacing="5">
+  <form name="form" method="post" action="">
+    <tr> 
+      <td colspan="3" align="right"><table width="100%" border="0" cellspacing="0">
+          <tr>
+            <td width="15%" align="right">{lang:selectNode}:</td>
+            <td  width="200"><select name="selectNode" style="width:250" onchange="if(this.options[this.selectedIndex].value != ''){
+workFrame.location=('admin_resource.php?sId=[$sId]&o=list&Category=[$Category]&NodeID='+this.options[this.selectedIndex].value);
+} ">                 <option value="0">{lang:viewall}
+</option>
+
+<loop $NODE_LIST var=var>
+ 
+<if $var.NodeType == 1>
+<option value="[$var.NodeID]">[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)]  - &nbsp;[$var.Name]</option>
+</if>
+
+ </loop>		
+
+              </select></td>
+            <td align=left >
+			
+<script>
+var action=new Array( "back","forward","refresh2")
+var tooltip=new Array(  "{lang:prev_page}", "{lang:next_page}", "{lang:refresh}")
+
+var s=
+'     ' +
+'    <style>' +
+'    .Utoolbutton{border:1 double;border-color:threedface threedface threedface threedface; background:threedface}' +
+'    .Dtoolbutton{border:1 double;border-color:#FFFFFF #999999 #999999 #FFFFFF; background:threedface}' +
+'    .Ctoolbutton{border:1 double;border-color:#999999 #FFFFFF #FFFFFF #999999; background:threedface}' +
+'    </style>' +
+'    <table border=0 cellPadding=0 cellSpacing=0 ><tbody>' +
+'      <tr><td colspan="2">';
+for (var i=0;i<action.length;i++) {
+    s+='<img width="21" height="21" src="../html/images/' + action[i] + '.gif" class="Utoolbutton" onmouseover="this.className=\'Dtoolbutton\';" onmouseout="this.className=\'Utoolbutton\';" onclick="this.className=\'Ctoolbutton\';'   
+     if(i==0) s+= "workFrame.location = 'admin_resource.php?sId=[$sId]&o=list&Category=[$Category]&back=1&NodeID=' + document.form.selectNode.options[document.form.selectNode.selectedIndex].value;"
+	 else if(i==1) s+="workFrame.location = 'admin_resource.php?sId=[$sId]&o=list&Category=[$Category]&next=1&NodeID=' + document.form.selectNode.options[document.form.selectNode.selectedIndex].value;"
+	 else if(i==2) s+='workFrame.location = workFrame.location;'
+
+	s+='" title="' + tooltip[i] + '" hspace="2" vspace="0">'
+}
+
+s+=
+'      </td></tr></table>' ;
+
+document.write(s)		
+</script>
+			
+			
+			
+			</td>
+          </tr>
+        </table>
+        
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="3" align="center">
+<Iframe name="workFrame"  src="admin_resource.php?sId=[$sId]&o=list&Category=[$Category]"  style="width:100%;height:282;overflow:auto;"    > 
+                </Iframe> </td>
+    </tr>
+    <tr> 
+      <td width="18%">{lang:filename}:</td>
+      <td width="59%"><input name="fileName" type="text" style="width:250;" disabled>
+        <input name="returnFileName" type="hidden" id="returnFileName" value=""></td>
+      <td width="20%"><input type="button" name="Submit" value="  {lang::global:ok}  " onclick="window.returnValue = document.form.returnFileName.value ;window.close();"></td>
+    </tr>
+    <tr> 
+      <td>{lang:filetype}</td>
+      <td><SELECT NAME="" style="width:250;">
+<option value="">{lang:file_photo}</option>
+<option value="">{lang:file_attach}</option>
+<option value="">{lang:file_flash}</option>
+</SELECT></td>
+      <td><input type="button" name="Submit2" value="  {lang::global:cancel}  " onclick="window.returnValue =''; window.close();"></td>
+    </tr>
+  </form>
+</table>
+
+</body>
+</html>
+<script language="javascript">
+function workFrameReload() {
+	var PSNID = '[$PSNID]';
+	var PATH = '[$psn_path]';
+	if(PSNID != '') {
+		//alert(PSNID);
+		document.form1.fileName.value = PATH + '/[$default_name]';
+		workFrame.location = 'admin_select.php?sId=[$sId]&o=psn_list_file&default_name=[$default_name]&PSNID=' + PSNID + '&PATH=' + PATH
+		//workFrame.location.reload()
+
+	}
+}
+
+</script>

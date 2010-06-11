@@ -1,0 +1,39 @@
+<include: file="header.html">
+
+<table width="90%" border="0" align="center" cellspacing="1" cellpadding="4" class="table_border">
+ 
+  <tr class="table_header"> 
+    <td height="25" colspan="6" ><strong>{lang:topic}</strong></td>
+  </tr>
+  <tr  align=center class="table_td1"> 
+    <td>{lang:var_title}</td>
+    <td>{lang:var_name}</td>
+    <td>{lang:var_value}</td>
+    <td>{lang:is_global}</td>
+    <td>{lang::global:operation}</td>
+  </tr>
+<loop $List key=key var=var>
+  <tr><td class="table_td1"  >[$var.VarTitle]</td><td  class="table_td2"  > $[$var.VarName]</td>
+    <td   class="table_td2"  >[$var.VarValue]</td>
+    <td   class="table_td2" align=center >
+	<if test="$var.IsGlobal == 1" >
+	{lang::global:yes}
+	<else>
+	-
+	</if>
+	</td>
+  <td   class="table_td2" align=center>[<a href="[$base_url]o=edit&Id=[$var.Id]">{lang::global:edit}</a>] [<a href="[$base_url]o=del&Id=[$var.Id]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</a>]</td></tr>
+</loop>
+
+   <tr  align=center class="table_td2"> 
+    <td colspan=6>&nbsp;[$pagelist]</td>
+  </tr>
+  <tr class="Tablecontentbg"> 
+<form action="[$base_url]o=add_submit" method="post" name="add_subject" id="add_subject">
+    <td colspan=6 bgcolor=ffffff>
+	  <input name="submit" type=button class=button value="{lang:new_var}" onclick="document.location='[$base_url]o=add'">
+                </TD>
+	</form>
+  </tr>
+</table>
+<include: file="footer.html">

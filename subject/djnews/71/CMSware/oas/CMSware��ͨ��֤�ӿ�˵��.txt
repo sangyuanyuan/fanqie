@@ -1,0 +1,26 @@
+此插件是在CMSware中增加整合CWPS通行证系统的接口
+
+
+安装：
+-----
+1，解压并覆盖CMSware中相应的目录文件
+2，在CMSware后台插件管理中增加oas插件(给出插件目录{cmsware}/plugins/oas，具体的请参考手册的插件管理)
+3，进入插件管理，然后对oas插件进行基本配置即可，具体使用插件后台也有说明 
+4，增加评论表的会员名字段，用phpMyAdmin在CMSware的数据库中执行以下语句(请替换表前缀为你的cmsware表前缀)
+    ALTER TABLE `cmsware_plugin_base_comment`  ADD COLUMN `UserID` int(10) NOT NULL DEFAULT '0'; 
+
+
+
+使用：
+-----
+CMSwareOAS 前台应用默认位于{cmsware}/oas（为了兼容以前的版本{cmsware}/publish下面的应用继续保留） ，
+如果你打算使用CMSwareOAS做为结点的动态发布接口，就需要进行如下设置：
+例如：
+首页模板 ：/oas/index.html   （{cmsware}/templates/oas下的模板为CMSwareOAS新闻模型动态发布的演示模板）
+内容页模板 ：/oas/content.html
+设置结点首页入口URL ：http://cms.cmsware.com/oas/index.php/{NodeID},{Page}.html
+设置内容页入口URL ：http://cms.cmsware.com/oas/content.php/{IndexID},{Page}.html
+
+相应的评论页模板也请替换为oas目录下的
+
+注：将cms.cmsware.com替换为你的CMSware安装目录URL。 

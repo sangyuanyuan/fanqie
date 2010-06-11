@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="[$charset]"?>
+<tree>
+<loop $DirList key=key var=var>
+<if $var.type == 'dir'>
+	<tree text="[$var.name]" action="admin_file.php?op=sId::[$sId];o::list;PSNID::[$PSNID];PATH::[$PATH]/[$var.name]"   src="admin_file.php?op=sId::[$sId];o::file_xml;PSNID::[$PSNID];PATH::[$PATH]/[$var.name]"  target="panelWork" cId="[$PSNID]"  />
+</if>
+</loop>
+</tree>

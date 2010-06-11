@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>
+评论 - 
+<if test="$TableID == 1">
+	<op exp="$NodeGUID = 'com.cmsware.demo'" />
+	[$Publish.Title]
+<elseif test="$TableID == 2">
+	<op exp="$NodeGUID = 'com.cmsware.demo.download'" />
+	[$Publish.SoftName]
+<elseif test="$TableID == 6">
+	<op exp="$NodeGUID = 'com.cmsware.demo.photo'" />
+	[$Publish.PhotoName]
+<elseif test="$TableID == 3">
+	<op exp="$NodeGUID = 'com.cmsware.demo.flash'" />
+	[$Publish.Title]
+</if>
+
+</title>
+<meta name="description" content="CMSware 让你自由自在地做网站" />
+<link type="text/css" href="[$Skin_Images]pale_blue_skin/css/css.css" rel="stylesheet"  />
+<script type="text/javascript" src="[$Skin_Images]pale_blue_skin/Js/exlink.js"></script>
+</head>
+<style type="text/css">
+<!--
+.process		{ color: #000000; font-size: 11px; font-family: Tahoma, Arial; text-align: center;}
+ 
+.blue14 {  font-family: "宋体"; font-size: 14px; line-height: 22px; color: #0000CC; text-decoration: underline; font-weight: bold}
+.bold{ font-weight: bold}
+-->
+</style>
+<body>
+<!--{{{初始化结点信息数组--->
+<CMS action="NODE" return="NodeInfo" NodeID="{$NodeInfo.NodeID}" />
+<!--}}}--->
+  
+<div id="header">
+
+<div id="top">
+	<div id="top_flot">
+	<p id="calendar">
+	<script type="text/javascript" src="[$Skin_Images]pale_blue_skin/Js/date.js">
+	</script> CMSware
+	</p>
+	<p id="banner">
+	<img title="广告条" src="[$Skin_Images]pale_blue_skin/images/cmsware_banner.jpg" />
+</p>     
+	</div>
+
+	<div id="logo">
+	<img alt="logo" src="[$Skin_Images]pale_blue_skin/images/newlogo.gif" />
+	</div>
+</div>
+
+<div id="nav">
+	<ul>
+	<CMS action="NODELIST" return="List" Type="sub" NodeID="0" />
+	<loop name="List" key="key" var="var" >
+	<if test="$var.NodeGUID== $NodeGUID ">
+	<li id="sel"><a href="[$var.NodeURL]" title="[$var.NodeName]"><span>[$var.NodeName]</span></a></li>
+	<else>
+	<li><a href="[$var.NodeURL]" title="[$var.NodeName]"><span>[$var.NodeName]</span></a></li>
+	</if>
+
+	</loop>
+	</CMS> 
+	</ul>
+</div>
+<div id="sub_nav">
+<CMS action="NODELIST" return="List" Type="sub" NodeGUID="{$NodeGUID}" ignore="17,18"  />
+	<loop name="List" key="key" var="var" >
+	<if test="$key == 0">
+		<if test="$var.NodeID == $NodeInfo.NodeID">
+			<a href="[$var.NodeURL]" title="[$var.NodeName]"><B>[$var.NodeName]</B></a>
+		<else>
+			<a href="[$var.NodeURL]" title="[$var.NodeName]">[$var.NodeName]</a>
+		</if>
+ 	<else>
+		<if test="$var.NodeID == $NodeInfo.NodeID">
+ | <a href="[$var.NodeURL]" title="[$var.NodeName]"><B>[$var.NodeName]</B></a>
+		<else>
+ | <a href="[$var.NodeURL]" title="[$var.NodeName]">[$var.NodeName]</a>
+		</if>
+
+	</if>
+
+	</loop>
+ </div>
+
+</div> 
+<div id="main">
+<div id="u_place">
+您的位置:
+
+<loop name="NodeInfo.Navigation" key="key" var="var" >
+<if test="$key == 0" >
+<A href=" [$var.URL] "> [$var.Name] </A> 
+<else>
+→ <A href=" [$var.URL] "> [$var.Name] </A>
+</if> 
+</loop>
+→ 
+<A HREF="[$Publish.URL]">
+<if test="$TableID == 1">
+[$Publish.Title]
+<elseif test="$TableID == 2">
+[$Publish.SoftName]
+<elseif test="$TableID == 6">
+[$Publish.PhotoName]
+</if>
+</A>
+ →  查看评论  
+
+</div>

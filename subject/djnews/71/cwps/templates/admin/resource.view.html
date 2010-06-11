@@ -1,0 +1,38 @@
+<include: file="header.html">
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="resource.do">资源管理</A> -&gt; 查看记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+
+<table width="98%" border="0" cellpadding="5" cellspacing="1" class="table_border" align="center">
+<tr>
+	<td colspan="2" class="table_header">查看资源信息</td>
+</tr>
+
+<tr>
+	<td class="table_td1" width="200">RID：</td>
+	<td class="table_td2">[$RecordInfo.RID]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">资源唯一标识名：</td>
+	<td class="table_td2">[$RecordInfo.ResourceUID]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">资源名称：</td>
+	<td class="table_td2">[$RecordInfo.ResourceName]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">OAS域绑定：</td>
+	<td class="table_td2"><loop name="TargetOASIDs" var="var">
+<A HREF="oas.do?o=view&OASID=[$var.value]"> [$var.title]</A> <BR>
+</loop></td>
+</tr>
+</table>
+<include: file="footer.html">
+</body>
+</html>

@@ -1,0 +1,110 @@
+<include: file="header.html">
+
+  <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+    <tr> 
+      <td colspan="3" class="table_header">{lang:topic} </td>
+    </tr>
+    <tr > 
+      <td align="center" class="table_td1">{lang:name}</td>
+       <td width="30%" align="center" class="table_td2"> {lang::global:execute_op}</td>
+    </tr>
+<loop $workflowInfo key=key var=var>
+    <tr > 
+      <td class="table_td1">[$var.Name]</td>
+     <td width="20%" align="center" class="table_td2"><A HREF="[$base_url]o=view_record&wID=[$var.wID]">{lang:gongzuoliudinyi}</A> 
+	 
+	 <A HREF="[$base_url]o=edit&wID=[$var.wID]">{lang::global:edit}</A> 
+	<if $var.uId != 1>
+	<A HREF="[$base_url]o=del&wID=[$var.wID]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</a>
+	</if>
+	</td>
+    </tr>
+</loop>
+
+   
+  </table>
+ 
+ <table border="0" cellspacing="1" cellpadding="3" width="90%"  align=center >
+  <tr     > 
+ 
+    <td >  
+	  <input name="submit" type="button" class=button value="{lang:workflow_add}" onclick="document.location='[$base_url]o=add'">
+                   
+                </TD>
+	</form> 
+  </tr>
+  </table>
+
+	
+<BR><BR><BR>
+  <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+    <tr> 
+      <td colspan="4" class="table_header">{lang:gaojianzhuangtaima} </td>
+    </tr>
+    <tr > 
+      <td align="center" class="table_td1">{lang:zhuangtaimingchen}</td>
+      <td align="center" class="table_td1">{lang:zhuangtaima}</td>
+      <td align="center" class="table_td1">{lang:xitongzhuangtaima}</td>
+       <td width="20%" align="center" class="table_td2"> {lang::global:execute_op}</td>
+    </tr>
+<loop $workflowState key=key var=var>
+    <tr> 
+      <td class="table_td1">[$var.Name]</td>
+      <td class="table_td1"  align="center">[$var.State]</td>
+      <td class="table_td1"  align="center">
+
+<if test="$var.System == 1">
+<FONT size=1 COLOR=#009900>{lang::global:state_true}</FONT>
+<else>
+<FONT  COLOR=#FF0000>{lang::global:state_false}</FONT>
+</if>	
+ 
+</td>
+     <td width="20%" align="center" class="table_td2">
+<if test="$var.System != 1">
+	 
+	 
+	 <A HREF="[$base_url]o=edit_state&ID=[$var.ID]">{lang::global:edit}</A> 
+	<if $var.uId != 1>
+	<A HREF="[$base_url]o=del_state&ID=[$var.ID]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</a>
+	</if>
+<else>
+-
+</if>
+
+	</td>
+    </tr>
+</loop>
+
+   
+  </table>
+ 
+ <table border="0" cellspacing="1" cellpadding="3" width="90%"  align=center >
+  <tr     > 
+<form action="[$base_url]o=add_state_submit" method="post" >
+    <td >{lang:workflow_state_name}
+	   <INPUT name="Name" type="text" class=button size=10 >	  {lang:state_mark} <INPUT name="State" type="text" class=button   size=10 >
+
+	  <input name="submit" type=submit class=button value="{lang:add_workflow_state}">
+                   
+                </TD>
+	</form> 
+  </tr>
+  </table>
+
+<BR><BR>
+  <table border="0" cellspacing="1" cellpadding="3" width="90%"  align=center >
+  
+    <tr> 
+      <td > 
+
+ <UL>
+	{lang:intro}
+</UL>
+</td>
+    </tr>
+ 
+   
+  </table>
+</BODY>
+<include: file="footer.html">

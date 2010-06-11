@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>[$cms_version]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]" />
+<script type="text/javascript" src="../html/tree/xtree.js"></script>
+<script type="text/javascript" src="../html/tree/xmlextras.js"></script>
+<script type="text/javascript" src="../html/tree/xloadtree.js"></script>
+<link type="text/css" rel="stylesheet" href="../html/tree/xtree.css" />
+<LINK href="../html/xmenu.css" type=text/css rel=stylesheet>
+<SCRIPT src="../html/xmenu.js" type=text/javascript></SCRIPT>
+<SCRIPT src="ui.php?sId=[$sId]&o=functions.js" type=text/javascript></SCRIPT>
+
+<style type="text/css">
+
+body {
+	background:	white;
+	color:		black;
+}
+
+</style>
+
+</head>
+<body>
+<script type="text/javascript">
+function rootGo()
+{
+	top.panelWork.location="[$url]?op=sId::[$sId];[$param]";
+
+}
+
+function rightMenu(cId, extra) {
+ 
+
+}
+
+/// XP Look
+webFXTreeConfig.rootIcon		= "../html/tree/images/xp/folder.png";
+webFXTreeConfig.openRootIcon	= "../html/tree/images/xp/openfolder.png";
+webFXTreeConfig.folderIcon		= "../html/tree/images/xp/folder.png";
+webFXTreeConfig.openFolderIcon	= "../html/tree/images/xp/openfolder.png";
+webFXTreeConfig.fileIcon		= "../html/tree/images/xp/folder.png";
+webFXTreeConfig.lMinusIcon		= "../html/tree/images/xp/Lminus.png";
+webFXTreeConfig.lPlusIcon		= "../html/tree/images/xp/Lplus.png";
+webFXTreeConfig.tMinusIcon		= "../html/tree/images/xp/Tminus.png";
+webFXTreeConfig.tPlusIcon		= "../html/tree/images/xp/Tplus.png";
+webFXTreeConfig.iIcon			= "../html/tree/images/xp/I.png";
+webFXTreeConfig.lIcon			= "../html/tree/images/xp/L.png";
+webFXTreeConfig.tIcon			= "../html/tree/images/xp/T.png";
+webFXTreeConfig.blankIcon		= "../html/tree/images/blank.png";
+
+var rti;
+var tree = new WebFXTree("{lang::global:root_node}" ,"javascript:rootGo();");
+<loop $NodeInfo key=key var=var>
+<if $var.haveSon == 1>
+	<if $var.NodeType == 1>
+tree.add(new WebFXLoadTreeItem("[@htmlspecialchars($var.Name)]", "admin_tree.php?op=sId::[$sId];o::common_xml;NodeID::[$var.NodeID];url::[$url];param::[@str_replace('::', '**', $param)]", "[$url]?op=sId::[$sId];NodeID::[$var.NodeID];[$param]", "panelWork", "[$var.NodeID]"));
+
+	<elseif $var.NodeType == 2>
+tree.add(new WebFXLoadTreeItem("[@htmlspecialchars($var.Name)]", "admin_tree.php?op=sId::[$sId];o::common_xml;NodeID::[$var.NodeID];url::[$url];param::[@str_replace('::', '**', $param)]", "[$url]?op=sId::[$sId];NodeID::[$var.NodeID];[$param]", "panelWork", "[$var.NodeID]","","../html/tree/images/xp/folder_2.png", "../html/tree/images/xp/openfolder_2.png"));
+	<elseif $var.NodeType == 3>
+tree.add(new WebFXLoadTreeItem("[@htmlspecialchars($var.Name)]", "admin_tree.php?op=sId::[$sId];o::common_xml;NodeID::[$var.NodeID];url::[$url];param::[@str_replace('::', '**', $param)]", "[$url]?op=sId::[$sId];NodeID::[$var.NodeID];[$param]", "panelWork", "[$var.NodeID]","","../html/tree/images/xp/folder_3.png", "../html/tree/images/xp/openfolder_3.png"));
+ 	</if>
+
+<else>
+	<if $var.NodeType == 1>
+	tree.add(new WebFXTreeItem("[@htmlspecialchars($var.Name)]","[$url]?op=sId::[$sId];NodeID::[$var.NodeID];[$param]", "panelWork", "[$var.NodeID]"));
+
+	<elseif $var.NodeType == 2>
+	tree.add(new WebFXTreeItem("[@htmlspecialchars($var.Name)]","[$url]?op=sId::[$sId];NodeID::[$var.NodeID];[$param]", "panelWork", "[$var.NodeID]","","../html/tree/images/xp/folder_2.png"));
+
+	<elseif $var.NodeType == 3>
+	tree.add(new WebFXTreeItem("[@htmlspecialchars($var.Name)]","[$url]?op=sId::[$sId];NodeID::[$var.NodeID];[$param]", "panelWork", "[$var.NodeID]","","../html/tree/images/xp/folder_3.png"));
+ 	</if>
+ </if>
+</loop>
+//function WebFXLoadTreeItem(sText, sXmlSrc, sAction, sTarget, sCId, eParent, sIcon, sOpenIcon) {
+//function WebFXTreeItem(sText, sAction, sTarget, sCId, eParent, sIcon, sOpenIcon) {
+
+
+//function WebFXTreeItem(sText, sAction, eParent, sIcon, sOpenIcon) {
+
+//WebFXLoadTree(sText, sXmlSrc, sAction, sBehavior, sIcon, sOpenIcon) 
+//tree.add(rti = new WebFXLoadTreeItem("Tree Item 3 (Reload)", "../html/tree/date.xml.pl"));
+//tree.add(new WebFXTreeItem("Tree Item 4"));
+//sText, sXmlSrc, sAction, sTarget, sCId, eParent, sIcon, sOpenIcon
+document.write(tree);
+
+</script>
+<div id="menudata"></div>
+
+</body>
+</html>

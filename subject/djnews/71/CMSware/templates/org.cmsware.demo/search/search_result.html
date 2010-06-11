@@ -1,0 +1,14 @@
+<include file="header.html"/>
+<if test="$TableID == 1">
+	<include file="search_result_news.html"/>
+<elseif test="$TableID == 2">
+	<include file="search_result_download.html"/>
+<elseif test="$TableID == 3">
+	<include file="search_result_flash.html"/>
+<elseif test="$TableID == 6">
+	<include file="search_result_photo.html"/>
+</if>
+
+<include file="../footer.html"/>
+</body>
+</html>

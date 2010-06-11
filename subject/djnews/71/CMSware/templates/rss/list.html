@@ -1,0 +1,81 @@
+<include file="header.html" />
+
+<div id="left">
+<include file="search_box.html"/>
+
+
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h4>本类评论Top 10</h4>
+<CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" where="co.TableID=1" orderby="CommentNum" num="10" Cache="1" /><!--调用新闻系统模型(TableID=1)最热总点击前10条记录-->
+<LOOP name="List" var="var" key="key">
+<ul>
+<li>
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 18)] </a><span class="process">(<font color="#FF6600">[$var.CommentNum]</font>)</span>
+</li>
+</ul> 
+</LOOP> 
+
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+
+
+</div>
+<div id="right">
+<div class="box_l">
+<div class="box_l_t">&nbsp;</div>
+<div class="box_l_c">
+<div id="list_art">
+<div id="list_art_top">
+<ul>
+<li>
+
+<span id="top_r"> 整理日期</span>
+
+
+文章标题
+</li>
+</ul>
+</div>
+<div id="list_art_content">
+<ul>
+<CMS action="LIST" return="List" NodeID="self" Num="page-30" OrderBy="PublishDate"  order="DESC" />
+<LOOP name="List" var="var" key="key"> 
+<li>
+<SPAN class=cr>
+[[@date('Y-m-d', $var.PublishDate)]]
+</SPAN>
+
+<A title="[$var.Title]" href="[$var.URL]" target=_blank>[$var.Title]</A>
+
+
+</li>
+</LOOP>
+
+</ul>
+</div>
+
+<div class="list_page">
+<ul>
+<li>
+页次：
+<FONT color="red"><B>[$PageInfo.CurrentPage]</B></FONT><B>[$PageInfo.TotalPage]</B>&nbsp;&nbsp;每页<B>30</B>&nbsp;&nbsp;共<B>[$PageInfo.TotalNum]</B>&nbsp;&nbsp;
+							  分页：
+[@list_page( $PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)] 
+ </li>
+</ul>
+</div>
+
+</div>
+</div>
+<div class="box_l_b">&nbsp;</div>
+</div>
+</div><span class="cls"></span>
+</div>
+<include  file="../footer.html" />
+</body>
+</html>

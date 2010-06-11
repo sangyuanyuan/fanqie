@@ -1,0 +1,106 @@
+<div id="left">
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>最新图片Top10</h3>
+<ul>
+
+<SCRIPT src="[$PUBLISH_URL]js.php?id=photo_pale_blue_new10" type=text/javascript></SCRIPT>
+
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+
+
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>最热点击Top10</h3>
+<ul>
+
+<SCRIPT src="[$PUBLISH_URL]js.php?id=photo_pale_blue_hits10" type=text/javascript></SCRIPT>
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+</div><!--left end-->
+
+<div id="right">
+
+
+<div class="box_l">
+<div class="box_l_t">&nbsp;</div>
+<div class="box_l_c">
+<h1>图片搜索结果</h1>
+<div class="list_page" align="right">
+<ul>
+<li>
+ 共找到<font color="red"> 
+              [$searchResultInfo.num]
+              </font>张有关 " <font color=red> 
+              [$searchKeywords]
+              </font> " 的图片&nbsp;&nbsp; 当前显示 
+              [$searchResultInfo.from]
+              - 
+              [$searchResultInfo.to]
+              条 , 共[$searchResultInfo.pageNum]页  
+							  
+[$pageList]  
+  </li>
+</ul>
+</div>
+ <table border="0" cellpadding="0" cellspacing="0"   >
+<tr><td>
+ <LOOP name="searchResult" var="var" key="key" start="1">
+<div class="imagespacer" >
+			<div class="imageholder" >
+			<A HREF="[$var.URL]"><img  alt="[$var.PhotoName]" src="[$PUBLISH_URL]automini.php?src=[@urlencode($var.PhotoURL)]&pixel=160*120&cache=1&cacheTime=10000&cacheKey=[$var.IndexID]"   style="MARGIN-LEFT:0px;MARGIN-TOP:0px;BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; BORDER-TOP-COLOR: #000000; BORDER-RIGHT-COLOR: #000000;border:1px" /></A> 
+			</div>
+
+			<div class="titleholder">
+ <A HREF="[$var.URL]" title="[$var.PhotoName]">[$var.PhotoName]</A>
+			</div>
+</div>
+
+<if test="$key%3 == 0">
+</td></tr>
+<tr><td>
+</if>
+
+</loop>
+</td></tr>
+</table>
+ 
+ 
+
+
+
+<div class="list_page" align="right">
+<ul>
+<li>
+  共找到<font color="red"> 
+              [$searchResultInfo.num]
+              </font>张有关 " <font color=red> 
+              [$searchKeywords]
+              </font> " 的图片&nbsp;&nbsp; 当前显示 
+              [$searchResultInfo.from]
+              - 
+              [$searchResultInfo.to]
+              条 , 共[$searchResultInfo.pageNum]页  
+							  
+[$pageList]  
+  </li>
+</ul>
+</div>
+</div>
+
+</div>
+<div class="box_l_b">&nbsp;</div>
+</div><span class="cls"></span>
+
+</div>

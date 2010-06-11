@@ -1,0 +1,103 @@
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
+    <tr> 
+      <td width="97%" colspan="2"> <table width=100% border=0 cellspacing=0 cellpadding=0 align=center class="i">
+          <form name="xh" method="post" action="search.php?o=search&TableID=1" >
+            <tr> 
+              <td colspan="2" bgcolor="#FFFFFF"> <br> <table  border=0 cellspacing=5 cellpadding=3  class="i">
+                  <tr> 
+                    <td   valign="right"><b>搜索关键字:</b> 
+                    <td  > 
+                      <input name=Keywords value="[$searchKeywords]" type=text id="keywords" size=25> 
+                    </td>
+                    <td  >&nbsp;&nbsp; <input  name="image222" type="submit" value="搜索" onClick="if(this.form.Keywords.value=='') {alert('请输入关键字');return false;}">
+                     
+                      <input name="Field" type="hidden" id="field" value="Content">
+                      </td>
+                  </tr>
+                </table></td>
+            </tr>
+          </form>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="6" align="center" bgcolor="#FFFFFF">
+          <tr> 
+            <td class=i bgcolor="#FFFFFF" colspan="2"> <font color="#000000"> 
+              共找到<font color="red"> 
+              [$searchResultInfo.num]
+              </font>篇有关 "</font><font color=red> 
+              [$searchKeywords]
+              </font><font color="#000000">" 的网页&nbsp;&nbsp; 当前显示 
+              [$searchResultInfo.from]
+              - 
+              [$searchResultInfo.to]
+              条 , 共[$searchResultInfo.pageNum]页 </font> </td>
+          </tr>
+          <tr> 
+            <td width="100%" height="5" align="left" valign="top" colspan="2"> 
+            </td>
+          </tr>
+        </table>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0" align="center">
+          <tr> 
+            <td width="100%" align="center" bgcolor="#D0DCEA" height="23"> 
+              <CENTER>[$pageList]</CENTER>
+            </td>
+          </tr>
+          <tr> 
+            <td width="100%" align="center" height="1" bgcolor="#FFFFCC"></td>
+          </tr>
+          <tr> 
+            <td width="100%" align="center" height="3" bgcolor="#FFFFFF"></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <loop $searchResult var=var>
+  <table width="100%" border="0" cellspacing="0" cellpadding="8" align="center" bgcolor="#EBEFF5">
+    <tr bgcolor="#FFFFFF"> 
+      <td class=i width="3%">&nbsp; </td>
+      <td class=i width="95%"><a href="[$var.URL]" target=_blank><font color="#663333"><span class="blue14">
+        [@highlight($var.Title,$searchKeywords)]
+        </span></font></a> [$var.score] 　 <font color="#666666">发布时间:[@date('Y年m月d日 H:i', $var.PublishDate)]</font>  </td>
+      <td class=i align="right" width="2%">&nbsp; </td>
+    </tr>
+    <tr> 
+      <td class=i colspan=5> <blockquote><font color=#000000>[@highlight(html2txt($var.Content), 
+          $searchKeywords,200)]     <br>
+          <a href="[$var.URL]" target=_blank><font color="#000000"><font color="#666666">[$var.URL]</font></font></a> 
+          </font></blockquote></td>
+    </tr>
+  </table>
+  </loop>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#333333">
+    <tr> 
+      <td height="1" bgcolor="#000066"></td>
+    </tr>
+  </table>
+  <table border="0" width="100%" cellspacing="0" cellpadding="0" align="center">
+    <tr> 
+      <td width="100%" align="center" height="1"  bgcolor="#FFFFFF"></td>
+    </tr>
+    <tr> 
+      <td width="100%" align="center" bgcolor="#D0DCEA" height="23"> 
+        <CENTER>[$pageList]</CENTER>
+        &nbsp; </td>
+    </tr>
+    <tr> 
+      <td width="100%" align="center" height="1" bgcolor="#FFFFCC"></td>
+    </tr>
+    <tr> 
+      <td width="100%" align="center" height="3" bgcolor="#FFFFFF"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+    <td align="center" bgcolor="#000000"><img src="spacer.gif" width="1" height="5"></td>
+  </tr>
+  <tr> 
+    <td align="center" bgcolor="#E5E5E5"><img src="spacer.gif" width="1" height="5"></td>
+  </tr>
+  <tr>
+    <td align="center">&nbsp;</td>
+  </tr>
+ 
+</table> 

@@ -1,0 +1,127 @@
+<include file="header.html" />
+<script language='JavaScript'>
+
+
+
+
+function checkData()
+{
+	with(document.form1){
+		if(Email.value=='') {
+			alert("Email不能为空");
+			Email.focus();
+			return false;
+		} else if(!checkEmail(Email.value)) {
+			alert("Email输入有误");
+			Email.focus();
+			return false;
+		
+		}
+	
+	}
+}
+
+</script>
+
+<table width="90%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B>[$SYS_NAME] &raquo; 修改资料 - OAS - 21</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+
+<form name="EditProfileSubmitForm" method="post" action="editProfileSubmit.do"  >
+  <table width="90%" border="0" cellpadding="5" align="center" cellspacing="1" class="table_border">
+	<tr > 
+      <td colspan="2" class="table_header">修改资料 - 必填内容</td>
+    </tr>
+  <tr >
+      <td class="table_td1">用户名：</td>
+      <td class="table_td2">
+       [$UserInfo.UserName]
+	  </td>
+    </tr>
+  <tr >
+      <td class="table_td1">Email：</td>
+      <td class="table_td2">
+        <input name="Email" type="text" value="[$UserInfo.Email]" > <span class="mustinput">*</span> 系统信息将通过该Email发送给你,请务必确保此Email有效性
+	  </td>
+    </tr>
+	    
+ 	<tr > 
+      <td colspan="2" class="table_header">
+	  注册 - 选填内容
+	  </td>
+    </tr>
+    <tr > 
+      <td class="table_td1">性别：</td>
+      <td class="table_td2">
+ 		  <input type="radio"  name="Gender"  value="{$UserInfo.Gender}">
+		  <option value="1">男</option>
+		  <option value="2">女</option>
+		  <option value="0">保密</option>
+		  </input>
+
+  	  </td>
+    </tr>
+    <tr > 
+      <td class="table_td1">生日：</td>
+      <td class="table_td2">
+<input type="text" name="Year" size="4" maxlength="4" value="[$UserInfo.Year]"> 年 
+<select name="Month" value="{$UserInfo.Month}">
+<option value="">&nbsp;</option>
+<option value="01">1</option>
+<option value="02">2</option>
+<option value="03">3</option>
+<option value="04">4</option>
+<option value="05">5</option>
+<option value="06">6</option>
+<option value="07">7</option>
+<option value="08">8</option>
+<option value="09">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select> 月 
+<select name="Day" value="{$UserInfo.Day}"> 
+<option value="">&nbsp;</option>
+<option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select> 日
+
+</td>
+    </tr>
+  
+    <tr > 
+      <td class="table_td1">QQ：</td>
+      <td class="table_td2"><input name="QQ" type="text" value="[$UserInfo.QQ]"></td>
+    </tr>
+
+    <tr > 
+      <td class="table_td1">昵称：</td>
+      <td class="table_td2"><input name="NickName" type="text"  value="[$UserInfo.NickName]"></td>
+    </tr>
+ 
+	
+	<tr > 
+      <td class="table_td1">个人介绍：</td>
+      <td class="table_td2"> <textarea name="Description" cols="60" rows="10"  >[$UserInfo.Description]</textarea></td>
+    </tr>
+
+ 
+	
+     <include file="extra_field.html" />
+
+    <tr > 
+      <td  class="table_td2">&nbsp;</td>
+      <td class="table_td2"><INPUT TYPE="hidden" name="referer" value="[$referer]"> <input name="submit" type="submit" id="submit" value=" 修 改 ">
+        &nbsp;&nbsp; 
+        <input type="reset" name="Submit2" value=" 重 置 "></td>
+    </tr>
+  </table>
+</form>
+ <script>
+
+ </script>
+ <include file="footer.html" />

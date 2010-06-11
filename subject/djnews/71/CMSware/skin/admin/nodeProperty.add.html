@@ -1,0 +1,64 @@
+<include: file="header.html">
+ 
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form action="admin_site.php?sId=[$sId]&o=add_node_property_submit" method='post' enctype="multipart/form-data" name='clientform'>
+    <tr> 
+      <td colspan="8" class="table_header">{lang:topic}</td>
+    </tr>
+    <tr> 
+      <td class="table_td2">{lang:field_title}:</td>
+      <td colspan=6 class="table_td2"><input name='FieldTitle' type='text' class='flat'  tabindex='8'> 
+        &nbsp;</td>
+    </tr>
+	<tr> 
+      <td width="20%" class="table_td2" >{lang:field_name}:</td>
+      <td colspan=6 class="table_td2"><input name='FieldName' type='text' class='flat'  tabindex='8'> 
+        &nbsp;{lang:field_name_help}</td>
+    </tr>
+
+    <tr> 
+      <td class="table_td2">{lang:field_type}:</td>
+      <td colspan=6 class="table_td2"><select name="FieldType" id="select" onchange="if(this.options[this.selectedIndex].value == 'varchar') {this.form.FieldSize.value= '250';} else if(this.options[this.selectedIndex].value == 'int') {this.form.FieldSize.value= '10';} else{this.form.FieldSize.value= '';}">
+          <option value="varchar">{lang:field_type_varchar}</option>
+          <option value="int">{lang:field_type_int}</option>
+          <option value="text">{lang:field_type_text}</option>
+          <option value="mediumtext">{lang:field_type_mediumtext}</option>
+          <option value="longtext">{lang:field_type_longtext}</option>
+         </select> &nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="table_td2">{lang:field_size}:</td>
+      <td colspan=6 class="table_td2"><input name='FieldSize' type='text' class='flat'  tabindex='8' value="250"> 
+        &nbsp;</td>
+    </tr>
+     <tr> 
+      <td class="table_td2">{lang:field_input}:</td>
+      <td colspan=6 class="table_td2"><select name="FieldInput" id="select2" value="{$FieldInfo.FieldInput}">
+          <option value="text">text</option>
+          <option value="textarea">textarea</option>
+           <option value="password">password</option>
+         <option value="select">select</option>
+          <option value="radio">radio</option>
+          <option value="checkbox">checkbox</option>
+        </select> &nbsp;</td>
+    </tr>
+	<tr>
+	  <td class="table_td2">{lang:FieldDataSource}:</td>
+	<td colspan=6 class="table_td2"><textarea name="FieldDataSource" cols="50" rows="6" class="flat" id="fieldname2" tabindex="8">[$FieldInfo.FieldDataSource]</textarea>
+        &nbsp;</td>
+	</tr>
+
+ 	<tr>
+	  <td class="table_td2">{lang:FieldDescription}:</td>
+	<td colspan=6 class="table_td2"><textarea name="FieldDescription" cols="50" rows="5" class="flat" id="fieldname2" tabindex="8">[$FieldInfo.FieldDescription]</textarea>
+        &nbsp;</td>
+	</tr>
+    <tr> 
+      <td colspan="8" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp;<INPUT TYPE="hidden" name="referer" value="[$referer]"> <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<include: file="footer.html">

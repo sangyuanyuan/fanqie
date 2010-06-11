@@ -1,0 +1,40 @@
+<?php 
+global $Debug, $db,$SYS_ENV;
+if($SYS_ENV['enable_debug']) {
+	if(is_object($Debug)) {
+		$totaltime = $Debug->endTimer();
+		$gzip = empty($SYS_ENV['enable_gzip']) ? '' : ', Gzip enabled';
+		if(is_object($db)) {
+			printf("<center><span  class=\"process\" > Processed in %f second(s), %d queries, %d cached %s</span></center>",$totaltime, $db->getTotalQueryNum(), $db->getTotalCacheNum(),$gzip);
+		} else {
+			printf("<center><span  class=\"process\" > Processed in %f second(s) %s</span></center>",$totaltime,$gzip);
+		
+		}
+		
+		if(!empty($db->errorinfo)) {
+			foreach($db->errorinfo as $var) {
+				echo $var.'<br>';
+			}
+		
+		}
+		echo $db->report;
+
+		if($db->debug) {
+			echo "<B>Total Query Time:</B> ".$db->getTotalQueryTime();
+			echo "<TABLE border=1>";
+			foreach($db->getQueryLog() as $var) {
+				printf("<TR><TD class=\"process\" align=left>%f</TD><TD align=left class=\"process\" ><B>%s</B>%s</TD></TR>",$var['time'],$var['cache'],$var['query']);
+			}
+			echo "</TABLE>";
+			echo "<B>Total Run Time:</B> ".$totaltime;
+			echo "<TABLE border=1>";
+			foreach($Debug->node as $key=>$var) {
+				printf("<TR><TD class=\"process\" align=left>%f</TD><TD align=left class=\"process\" >%s</TD></TR>",$var['time'],$Debug->node[ $key-1 ]['name'] . '->' . $var['name']);
+
+			}
+			echo "</TABLE>";
+		}
+		
+	}
+}
+?>

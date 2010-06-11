@@ -1,0 +1,64 @@
+<include file="header.html" />
+<br>
+  <table width="98%" border="0" cellpadding="5" align="center" cellspacing="1" class="table_border">
+
+	<tr > 
+      <td colspan="2" class="table_header">{lang:title}</td>
+    </tr>
+    <tr > 
+      <td width="60%" class="table_td1">{lang:node_id}:</td>
+      <td class="table_td2">
+	   [$NodeInfo.NodeID]
+  </td>
+    </tr>
+	    <tr > 
+      <td class="table_td1">{lang:nodeguid}:</td>
+      <td class="table_td2">
+	   [$NodeInfo.NodeGUID]  
+  </td>
+    </tr>	
+
+    <tr > 
+      <td class="table_td1">{lang:node_name}:</td>
+      <td class="table_td2">
+	   [$NodeInfo.Name]
+  </td>
+    </tr>
+
+    <tr > 
+      <td class="table_td1">{lang:parent_id}:</td>
+      <td class="table_td2">
+	  <if test="empty($NodeInfo.ParentID)">
+	  {lang:root_node}
+	  <else>
+	  [$NodeInfo.ParentID] <A HREF="admin_site.php?sId=[$sId]&NodeID=[$NodeInfo.ParentID]&o=view">[{lang::global:view}]</A>
+	  </if>
+	   
+  </td>
+    </tr>
+    <tr > 
+      <td class="table_td1">{lang:table_id}:</td>
+      <td class="table_td2">
+	   [$NodeInfo.TableID]  
+  </td>
+    </tr>	
+    <tr > 
+      <td class="table_td1">{lang:node_type}:</td>
+      <td class="table_td2">
+	  <if test="$NodeInfo.NodeType == 1">
+	  {lang:node_solid}
+	  <elseif test="$NodeInfo.NodeType == 2">
+	  {lang:node_void}
+	  </if>
+  </td>
+    </tr>	
+
+  
+    </tr>		
+     
+ 
+  </table>
+ 
+
+
+<include  file="footer.html"/>

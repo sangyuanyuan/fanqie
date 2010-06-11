@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>
+<if test="!empty($Title)">
+[$Title]
+<else>
+[$NodeInfo.Name][$site_name]
+</if>
+
+</title>
+<meta name="description" CONTENT="[$Title]">
+<meta name="keywords" CONTENT="[$Keywords]">
+<meta http-equiv="Content-Language" content="zh-CN"/>
+<link type="text/css" href="[$Skin_Images]pale_blue_skin/css/css.css" rel="stylesheet"  />
+<script type="text/javascript" src="[$Skin_Images]pale_blue_skin/Js/exlink.js"></script>
+<style type="text/css">
+<!--
+#header a {
+}
+asa {
+	font-size: 12px;
+}
+-->
+</style>
+</head>
+<body>
+<!--{{{兜兵晒润泣佚连方怏--->
+<CMS action="NODE" return="NodeInfo" />
+<!--}}}--->
+  
+<div id="header">
+<div id="top">
+	<div id="top_flot">	
+	<p id="banner">
+	<include file="../adsense.html"/></p>     
+	</div>
+
+	<div id="logo">
+	<img alt="云云利" src="[$Skin_Images]pale_blue_skin/images/newlogo.gif" />	</div>
+</div>
+
+<div id="nav">
+	<ul>
+	<CMS action="NODELIST" return="List" Type="sub" NodeID="0" ignore="76"/>
+	<loop name="List" key="key" var="var" >
+	<if test="$var.NodeGUID=='rss'">
+	<li id="sel"><a href="[$var.NodeURL]" title="[$var.NodeName]"><span>[$var.NodeName]</span></a></li>
+	<else>
+	<li><a href="[$var.NodeURL]" title="[$var.NodeName]"><span>[$var.NodeName]</span></a></li>
+	</if>
+
+	</loop>
+	</CMS> 
+	</ul>
+</div>
+
+<div id="main">

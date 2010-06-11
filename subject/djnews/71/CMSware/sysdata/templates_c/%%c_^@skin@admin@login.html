@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php echo $this->_tpl_vars["cms_version"];?> - Administration</title>
+<style type="text/css">
+<!--
+body,th{margin:0; padding:0; font-family:Tahoma,"宋体"; font-size:12px; color:#003399}
+a{text-decoration:none; color:#003399}
+a:hover{text-decoration:underline}
+
+/*顶部设置
+--------------------------------*/
+#wrapper{background:url(../html/images/logo/bg.jpg) repeat-x; width:100%; height:430px}
+#head{width:100%}
+#biao{background:url(../html/images/logo/top2.jpg) no-repeat; float:right; margin:0; padding:0; width:149px; height:63px}
+#logo{background:url(../html/images/logo/top.jpg) no-repeat; width:332px; height:63px}
+#logo span{display:none}
+#logo a{display:block;width:332px; height:63px}
+
+/*登陆模块
+--------------------------------*/
+#inbox{background:url(../html/images/logo/inbox_bg.jpg) no-repeat; width:384px; height:320px; margin-left:auto; margin-right:auto}
+/*错误信息*/
+#error{width:260px; border:1px solid #666666; background:#fff; margin-left:auto; margin-right:auto; margin-top:20px; padding:3px; color:#CC0000; filter:alpha(opacity=70);}
+#error_infor{width:90%; margin:auto;}
+
+/*登陆输入框
+--------------------------------*/
+#box{width:300px; margin-left:auto; margin-right:auto}
+#loginbox{width:100%; margin:0 0 2px 0}
+#title{padding:2px 0 2px 5px; font-weight:bold; font-size:12px; margin:0 0 5px 0}
+#enter{height:116px; font-size:14px; font-weight:bold}
+#enter_box{width:270px; margin:8px 0 5px 40px}
+#botton{width:100%; text-align:right}
+#ip{width:120px; float:left; padding:5px 0 0 5px}
+#footer{font:10px Tahoma; margin-top:2px}
+.inputclass{border:1px solid #eeeeee; font-size:14px; font-family:Tahoma; font-weight:bold}
+-->
+</style>
+<script>
+ function admin_login_submit(){
+	var MId,user_name,user_pass,targeturl;
+	var	user_name = document.login.username.value;
+	var user_pass = document.login.password.value;
+	
+	if((user_name!='') && (user_pass!='')){	
+		/*DMsysWin=window.open("","","scrollbars")
+		if (document.all){
+			DMsysWin.moveTo(0,0)
+			DMsysWin.resizeTo(screen.width,screen.height-30)
+		}
+		*/
+		targeturl='index.php?o=sys::login';
+		document.login.action = targeturl
+		document.login.submit();
+		
+		}else{
+			alert("<?php echo $_LANG_SKIN['please_input_username_password'];?>");
+		}
+	return false;
+}
+
+function user_login_submit(){
+	targeturl='../user/index.php';
+	document.login.action = targeturl;
+	document.login.submit();
+	return true;
+
+
+	var MId,user_name,user_pass,targeturl;
+	var	user_name = document.login.username.value;
+	var user_pass = document.login.password.value;
+	
+	if((user_name!='') && (user_pass!='')){	
+		/*DMsysWin=window.open("","","scrollbars")
+		if (document.all){
+			DMsysWin.moveTo(0,0)
+			DMsysWin.resizeTo(screen.width,screen.height-30)
+		}*/
+
+		targeturl='../user/index.php?o=sys::login';
+		//DMsysWin.location=targeturl		
+		document.login.action = targeturl
+		document.login.submit();
+
+		
+		}else{
+			alert("<?php echo $_LANG_SKIN['please_input_username_password'];?>");
+			return false;
+		}
+	return false;
+}
+
+if(top.panelHeader != null) {
+	top.panelHeader.sp_isRefash = 1;
+	top.location= 'index.php';
+}
+</script>
+</head>
+
+<body onLoad="this.document.login.username.focus();">
+<div id="wrapper">
+	<div id="head">
+		<div id="biao"></div>
+		<div id="logo"><a href="http://www.cmsware.com/" target="_blank"><span>思维|CMSware</span></a></div>
+	</div>
+	
+	<div id="inbox">
+		<div style="margin:10px 5px 13px 5px; height:92px; ">
+		
+		<?php if($this->_tpl_vars['error_message'] != ''): ?>
+		<div id="error">
+			<div id="error_infor"><span><img src='../html/images/errormessage1.gif' alt="eroor" align='absmiddle' class='errormessage' />&nbsp;<span class='tab-r'><?php echo $this->_tpl_vars["error_message"];?></span></span></div>
+		</div>
+		<?php endif;?>
+		
+		</div>
+		<div id="box">
+		<form  name= "login" action="#" method="post" >
+			<div id="loginbox">  
+					<div id="title"><?php echo $this->_tpl_vars["cms_version"];?>- <?php echo $_LANG_SKIN['admin_login'];?></div>
+					<div id="enter">
+						<div id="enter_box">
+						<?php echo $_LANG_SKIN['username'];?>:<INPUT NAME="username" TYPE="text" class="inputclass" id=input_login size="20" maxlength="20" >
+						</div>
+						<div id="enter_box">
+						<?php echo $_LANG_SKIN['password'];?>:<INPUT NAME="password" TYPE="password" class="inputclass" id=input_login size="20" maxlength="20" >
+						</div>
+						<div id="enter_box">
+						<?php if($this->_tpl_vars['EnableLoginValidCode'] == 1 ): ?><?php echo $_LANG_SKIN['valid_code'];?>:<INPUT NAME="validCode" TYPE="text" class="inputclass" size="13" maxlength="4" > 
+						<img  src="validCode.php" width="40" height="14" border="0" style="position: relative; top:4px; padding:2px; border:1px solid #eeeeee; background:#ffffff" ><?php endif;?>
+						</div>
+					</div>
+					</div>
+					<div id="botton">
+						<div id="ip">
+								<INPUT TYPE="checkbox" NAME="IpSecurity" id="IpSecurity"  Value="1" checked><label for="IpSecurity"><?php echo $_LANG_SKIN['IpSecurity'];?></label>
+               					<img src="../html/images/icon-client-new.gif" width="16" height="16"><img src="../html/images/arrow-r.gif" width="11" height="10"> 
+						</div>
+              
+<input name="login2" type="image" src="../html/images/logo/botton1.jpg" id=button_login  onClick="return admin_login_submit();" value="<?php echo $_LANG_SKIN['admin_login'];?>">
+<?php if(strpos($this->_tpl_vars['cmsware_version'],'ST') === FALSE and strpos($this->_tpl_vars['cmsware_version'],'Free') === FALSE): ?>
+<!--NOT ST Version add by easyt 2007.12.04-->
+<input name="login1" type="image" src="../html/images/logo/botton2.jpg" id=button_login  onClick="user_login_submit();" value="<?php echo $_LANG_SKIN['user_login'];?>">
+<?php endif;?>         
+					</div>	
+		</form>
+		</div>	
+	</div>
+	<div id="footer">
+	  <div align="center"><span style3="style3">Powered by <strong><a href="http://www.cmsware.com" target="_blank">CMSware</a> </strong>&copy; 2002-<?php echo date('Y');?> <a href="http://www.lonmo.com" target="_blank">Lonmo Technology Ltd.</a> All rights reserved. </span></div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<include: file="header.html">
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B>{lang:navigation}</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form action="userProperty.do?o=add_property_submit" method='post' enctype="multipart/form-data" name='clientform'>
+    <tr> 
+      <td colspan="8" class="table_header">{lang:topic}</td>
+    </tr>
+    <tr> 
+      <td class="table_td2">{lang:field_title}:</td>
+      <td colspan=6 class="table_td2"><input name='FieldTitle' type='text' class='flat'  tabindex='8'> 
+        &nbsp;</td>
+    </tr>
+	<tr> 
+      <td width="20%" class="table_td2" >{lang:field_name}:</td>
+      <td colspan=6 class="table_td2"><input name='FieldName' type='text' class='flat'  tabindex='8'> 
+        &nbsp;{lang:field_name_help}</td>
+    </tr>
+
+    <tr> 
+      <td class="table_td2">{lang:field_type}:</td>
+      <td colspan=6 class="table_td2"><select name="FieldType" id="select">
+          <option value="varchar">{lang:field_type_varchar}</option>
+          <option value="int">{lang:field_type_int}</option>
+          <option value="text">{lang:field_type_text}</option>
+          <option value="mediumtext">{lang:field_type_mediumtext}</option>
+          <option value="longtext">{lang:field_type_longtext}</option>
+         </select> &nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="table_td2">{lang:field_size}:</td>
+      <td colspan=6 class="table_td2"><input name='FieldSize' type='text' class='flat'  tabindex='8'> 
+        &nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="table_td2">允许用户修改:</td>
+      <td colspan=6 class="table_td2">
+	  <input type="radio" name="FieldAccess"  class="flat"  tabindex="8" value="0"> 
+	  <option value="1">是</option>
+	  <option value="0">否</option>
+	  </input>
+        &nbsp;</td>
+    </tr>
+	<!--
+    <tr> 
+      <td class="table_td2">{lang:field_input}:</td>
+      <td colspan=6 class="table_td2"><select name="data[FieldInput]" id="select2">
+          <option value="text">{lang:field_input_text}</option>
+          <option value="textaera">{lang:field_input_textaera}</option>
+          <option value="select">{lang:field_input_select}</option>
+          <option value="radio">{lang:field_input_radio}</option>
+          <option value="checkbox">{lang:field_input_checkbox}</option>
+          <option value="password">{lang:field_input_password}</option>
+          <option value="RichEditor">{lang:field_input_RichEditor}</option>
+        </select> &nbsp;</td>
+    </tr>
+ 
+  	
+  	<tr>
+	  <td class="table_td2">{lang:field_input_filter}:</td>
+	<td colspan=6 class="table_td2"><select name="data[FieldInputFilter]" id="select2">
+          <option value="">{lang:field_input_filter_nolimit}</option>
+          <option value="notnull">{lang:field_input_filter_notnull}</option>
+          <option value="num">{lang:field_input_filter_num}</option>
+          <option value="num_letter">{lang:field_input_filter_num_letter}</option>
+          <option value="unique">{lang:field_input_filter_unique}</option>
+        </select> &nbsp;
+        &nbsp;</td>
+	</tr>
+  	<tr>
+	  <td class="table_td2">{lang:field_input_picker}:</td>
+	<td colspan=6 class="table_td2"><select name="data[FieldInputPicker]" id="select2">
+          <option value="">{lang:field_input_picker_no}</option>
+          <option value="color">{lang:field_input_picker_color}</option>
+          <option value="date">{lang:field_input_picker_date}</option>
+        </select> &nbsp;
+        &nbsp;</td>
+	</tr>
+	 	<tr>
+	  <td class="table_td2">{lang:field_default_value}:</td>
+	<td colspan=6 class="table_td2">
+	<textarea name="data[FieldDefaultValue]" cols="50" rows="5" class="flat" id="fieldname2" tabindex="8"></textarea>
+	 &nbsp;{lang:field_default_value_help}</td>
+	</tr>
+		<tr>
+	  <td class="table_td2">{lang:field_description}:</td>
+	<td colspan=6 class="table_td2"><textarea name="data[FieldDescription]" cols="50" rows="5" class="flat" id="fieldname2" tabindex="8"></textarea>
+        &nbsp;</td>
+	</tr>
+ -->
+    <tr> 
+      <td colspan="8" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<include: file="footer.html">

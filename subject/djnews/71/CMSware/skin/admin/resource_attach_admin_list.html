@@ -1,0 +1,234 @@
+<include: file="header_init.html">
+<script>
+function returnImg(url)
+{
+
+parent.mainFrame.location = parent.mainFrame.location;
+}
+
+function returnInfo(a, b,c,d) {
+	parent.mainFrame.location = parent.mainFrame.location;
+
+}
+
+function loadBarUnDisplay() {
+	parent.mainFrame.loadBarUnDisplay();
+}
+</script>
+<SCRIPT language=JavaScript>
+var TCID="[$CateInfo.TCID]";
+function mhHover(tbl, idx, cls)
+{
+	var t, d;
+	if (document.getElementById)
+		t = document.getElementById(tbl);
+	else
+		t = document.all(tbl);
+	if (t == null) return;
+	if (t.getElementsByTagName)
+		d = t.getElementsByTagName("TD");
+	else
+		d = t.all.tags("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}
+
+function viewQuoteContents(ResourceID)
+{
+	var leftPos = (screen.availWidth-800) / 2
+	var topPos = (screen.availHeight-600) / 2 
+	window.open('[$base_url]o=viewQuoteContents&ResourceID='+ ResourceID  ,'','width=500,height=300,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+}
+
+
+ 
+function CheckAll(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.name !='copy')       e.checked = form.chkall.checked; 
+   }
+}
+
+function going(form, o)
+{
+	//document.documentlist.referer.value = document.location;
+
+	with(form) {
+		switch(o) {
+			case 'del':
+				if(confirm("{lang:confirm_multi_del}")) {
+					action = action + '&o=del&multi=1';
+					
+					submit();
+				}
+				break;
+		}
+	}
+}
+
+</script>
+<style>
+body,tr,td,select {
+	color: #000000;
+	font-size: 11px; font-family: Tahoma, Arial;
+	
+}
+
+div.imagespacer {
+	width: [$width];
+	height: 18;
+	text-align: left;			
+	float: left;
+	font: 10pt verdana;
+	margin: 0px;
+	overflow: hidden;
+}
+div.imageholder {
+	margin: 0px;
+	height: 16;
+	padding: 0px;
+	cursor: default;
+}
+
+div.titleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 100;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;			
+}		
+.3d {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #FFFFFF;
+	border-right-color: #808080;
+	border-bottom-color: #808080;
+	border-left-color: #FFFFFF;
+	background-color: #D4D0C8;
+}
+</style>
+<body   topmargin="0" leftmargin="0"   >
+<script>
+function loadBarDisplay()
+{
+  var x,y;
+   x = document.body.clientWidth;
+   y = document.body.clientHeight;
+
+		var top = (y/2) - 50;
+		var left = (x/2) - 150;
+		if( left<=0 ) left = 10;
+
+	
+	loader.style.left = left + "px"
+	loader.style.top = top + "px";
+
+	loader.style.display='';
+	
+	return;
+
+}
+
+function loadBarUnDisplay()
+{
+	loader.style.display='none';
+
+}
+</script>
+
+<DIV id=loader style="DISPLAY: none; Z-INDEX: 2; LEFT: 0px; POSITION: absolute; TOP: 0px">
+<TABLE class=loader style="FILTER: Alpha(opacity=75)" cellSpacing=1 cellPadding=5 bgColor=#bbbbb summary="Loader Layout" border=0>
+  <TBODY><TR><TD align=left bgColor=#ffffff>
+      <P><IMG style="MARGIN: 3px" height=32   src="../html/images/clocks.gif" width=32 align=left><STRONG>{lang::global:uploading}</STRONG><BR>
+	  <SPAN style="FONT-SIZE: 8pt">{lang::global:please_wait_uploading}</SPAN></P></TD></TR></TBODY></TABLE>
+</DIV>
+<TABLE border="0" cellpadding="1" cellspacing="0" width=100% >
+  <form method="post" action="[$base_url]&TCID=[$CateInfo.TCID]" name="documentlist" >
+  <tr>
+<td colspan="3"  class="3d" height=15>&nbsp;&nbsp;{lang::global:name}</td>
+<td class="3d" align=center>{lang:attach_size}&nbsp;&nbsp;</td>
+<td class="3d">&nbsp;&nbsp;{lang:creation_time}</td>
+<td class="3d">&nbsp;&nbsp;{lang:creation_user}</td>
+<td class="3d">&nbsp;&nbsp;{lang::global:execute_op}</td>
+</tr>
+
+<loop name="List" key="key" var="var">
+		<if test="$haveLinks == 0 && empty($var.IndexID) ">
+		<elseif test="$haveLinks == 1 && $var.IndexID!=''">
+		<elseif test="$haveLinks == 2 ">
+		<else>
+		<?php continue;?>
+		</if>
+		<TR onmouseover='this.style.backgroundColor="#F1F1F1"' 
+                    onmouseout='this.style.backgroundColor=""'>
+      <td width=10 >
+<if test="!empty($var.IndexID)">
+			<INPUT TYPE="checkbox" NAME="ResourceID[]" value="[$var.ResourceID]" id="p_[$var.ResourceID]" disabled>
+			<else>
+			 <INPUT TYPE="checkbox" NAME="ResourceID[]" value="[$var.ResourceID]" id="p_[$var.ResourceID]">
+			</if>
+
+</td>
+				<TD width=16 height=16>
+<?php preg_match("/\.([a-zA-Z0-9]+)$/isU" ,$this->_tpl_vars['var']['Path'], $match); ?>
+ <IMG src="../html/images/icon/<?=$match[1]?>.gif" border=0  width="16" height="16">				
+ 				
+				</TD>
+				<TD>
+
+				 <A HREF="[$SYS_ENV.ResourcePath]/[$var.Path]">
+<if test="$var.Title == ''">
+			[$var.Name]
+			<else>
+			[$var.Title]
+			</if>
+</a>	<if test="!empty($var.IndexID)">
+			<A HREF="javascript:viewQuoteContents('[$var.ResourceID]')" title="{lang:view_quote_contents}"><img src="../html/images/icon-zone-linked.gif" border="0"  /></A>
+			</if>
+
+				</TD>
+				<td align=right>
+			<op exp="$size = ceil($var.Size/1024)" />
+[$size]KB
+ 
+ 				
+				</td>
+<td>&nbsp;&nbsp;[@date('Y-m-d H:i', $var.ModifiedDate)]</td>
+<td>&nbsp;&nbsp;[$var.CreationUser]</td>
+<td>&nbsp;&nbsp;
+<if test="empty($var.IndexID)">
+<A HREF="[$base_url]o=del&ResourceID=[$var.ResourceID]" onclick="return confirm('{lang::global:confirm_del}');">{lang::global:del}</A>
+</if>
+</td>
+</TR>
+ 
+
+
+</loop>
+   <TR >
+      <td colspan="5" ><input type="checkbox" name="chkall" value="on" onclick="CheckAll(this.form)" id="chkall"  >
+<label for="chkall">{lang::global:select_all}</label>
+&nbsp;&nbsp;&nbsp;&nbsp;<select name="actionMap" id="actionMap" > 
+  
+
+          <option value="del">{lang::global:del}</option>
+       
+
+			  </select>
+<INPUT TYPE="hidden" name="referer">
+			  <input type="button" value="{lang::global:go}" class=button onclick="going(this.form,actionMap.options[actionMap.selectedIndex].value)"> </td><td align=center>[@sprintf(#lang:record#, $recordInfo.currentPage  , $recordInfo.pageNum, $recordInfo.offset, $recordInfo.from, $recordInfo.to, $recordInfo.recordNum )][$pagelist]
+</td>
+			</TR>
+ </form>			
+ </table>
+		
+</BODY>
+<include: file="footer.html">

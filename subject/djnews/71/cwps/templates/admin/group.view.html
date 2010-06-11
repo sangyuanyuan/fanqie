@@ -1,0 +1,44 @@
+<include: file="header.html">
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="group.do">用户组管理</A> -&gt; 查看记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+
+<table width="98%" border="0" cellpadding="5" cellspacing="1" class="table_border" align="center">
+<tr>
+	<td colspan="2" class="table_header">查看用户组信息</td>
+</tr>
+
+<tr>
+	<td class="table_td1" width="200">GroupID：</td>
+	<td class="table_td2">[$RecordInfo.GroupID]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">用户组名称：</td>
+	<td class="table_td2">[$RecordInfo.GroupName]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">所属主角色：</td>
+	<td class="table_td2"><A HREF="role.do?o=view&RoleID=[$RecordInfo.RoleID]">[$RecordInfo.RoleName]</a></td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">所属副角色：</td>
+	<td class="table_td2"><loop name="TargetSubRoleIDs" var="var">
+<A HREF="role.do?o=view&RoleID=[$var.value]">[$var.title]</A> <BR>
+</loop></td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">可用操作列表：</td>
+	<td class="table_td2"><loop name="TargetOpIDs" var="var">
+<A HREF="operator.do?o=view&OpID=[$var.value]"> [$var.title]</A> <BR>
+</loop></td>
+</tr>
+</table>
+<include: file="footer.html">
+</body>
+</html>

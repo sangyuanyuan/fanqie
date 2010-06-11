@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]">
+<title>[$PATH]/[$targetFile] - {lang:topic}
+(<if $o == 'add'>
+{lang::global:new}
+<elseif $o == 'edit'>
+{lang::global:edit}
+</if>
+)</title>
+</head>
+
+<frameset rows="39,0,*" frameborder="NO" border="0" framespacing="0">
+  <frame src="[$base_url]o=editor_header&PATH=[$PATH]&targetFile=[$targetFile]&NodeID=[$NodeID]&TCID=[$TCID]&TID=[$TID]" name="topFrame" scrolling="no" noresize >
+  <frame src="" name="actionFrame" scrolling="no" noresize >
+  <frame src="[$base_url]o=[$o]&PATH=[$PATH]&targetFile=[$targetFile]&NodeID=[$NodeID]&TCID=[$TCID]&TID=[$TID]" name="mainFrame" scrolling="no">
+</frameset>
+<noframes><body>
+
+</body></noframes>
+</html>

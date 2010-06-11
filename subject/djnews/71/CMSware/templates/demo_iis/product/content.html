@@ -1,0 +1,172 @@
+<include file="TplConfig.html" /><!--#CW#  引入产品模块环境变量。  Add By CWTM #CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$Title] - [$NodeInfo.Name] - [$SITE_NAME]</title>
+<meta name="keywords" content="[$Brand],[$Types],[$NodeInfo.Name]" />
+<link href="[$SKIN_URL]product/css/css.css" rel="stylesheet" type="text/css" />
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!--#CW#  顶部导航开始  Add By CWTM #CW#-->
+<include file="../common/header.html" />
+<!--#CW#  顶部导航结束  Add By CWTM #CW#-->
+<div class="content">
+  <div class="left">
+    <div class="tabs">
+      <div class="tab" ><a href="#">参数</a> </div>
+      <div class="tab"><a href="#">价格</a> </div>
+      <div class="tab" ><a href="#">商家</a> </div>
+    </div>
+    <div class="topside01">
+	 	<span>点击：<script src="[$PUBLISH_URL]counter.php?o=display_counter&Id=[$IndexID]"></script></span>
+		<loop name="NodeInfo.Navigation" key="key" var="var" >
+		<if test="$key == 0" >
+		<a href=" [$var.URL] ">[$var.Name]</a> 
+		<else>
+		> <a href=" [$var.URL] ">[$var.Name]</a>
+		</if> 
+		</loop>
+		<if test="$Title != ''">
+		> [$Title] 
+		</if>
+	</div>
+    <div class="center01">
+      <div class="imgages">
+        <table cellspacing="0" cellpadding="0" width="100%" border="0">
+          <tbody>
+            <tr>
+              <td height="10"></td>
+            </tr>
+            <tr>
+              <td><table width="99%" cellpadding="0" cellspacing="0" border="0" class="top_table" bgcolor="#FFFFFF">
+                  <tr>
+                    <td width="238" valign="top"><table width="77%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td colspan="4" align="center" height="230"><a href="#"><img src="[$Photo]" alt="[$Title]" width="228px" height="210px" /></a></td>
+                        </tr>
+                      </table></td>
+                    <td width="10">&nbsp;</td>
+                    <td width="372" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td height="35"><h3>[$Title]</h3></td>
+                        </tr>
+                        <tr>
+                          <td height="1" bgcolor="#cccccc"></td>
+                        </tr>
+                        <tr>
+                          <td><div class="table_p_n">产品类别：</div>
+                            <div class="table_p_v">[$Types]</div></td>
+                        </tr>
+                        <tr>
+                          <td><div class="table_p_n">生产厂商：</div>
+                            <div class="table_p_v">[$Brand]</div></td>
+                        </tr>
+<if test="$Types == '台式机'">
+<include file="inc/type_pc.html" />
+<elseif test="$Types == '服务器'">
+<include file="inc/type_sv.html" />
+<elseif test="$Types == '笔记本'">
+<include file="inc/type_nb.html" />
+<elseif test="$Types == '打印机'">
+<include file="inc/type_pr.html" />
+<elseif test="$Types == '一体机'">
+<include file="inc/type_yt.html" />
+</if>
+                      </table>
+							 </td>
+                  </tr>
+                </table>
+               <div>
+                 [$Parameter]
+               </div>
+					</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bottomside02"></div>
+    <div class="topside02">同品牌产品：</div>
+    <div class="center02">
+      <div class="imgages">
+        <ul>
+<!--#CW#  调用同品牌产品最新4款  Add By CWTM #CW#-->
+<CMS action="SEARCH" return="List" NodeID="{$NodeID}" Field="Brand" Keywords="{$Brand}" Num="4" Separator="," IgnoreContentID="{$ContentID}" /> 
+<loop name="List" var="var" key="key" > 
+          <li><a href="[$var.URL]"><img src="[$var.Photo]" alt="[$var.Title]" width="135px" height="115px" /></a><span><a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title, 0, 8, '...')]</a></span></li>
+</loop>
+        </ul>
+      </div>
+    </div>
+    <div class="bottomside02"></div>
+  </div>
+  <div class="right">
+    <div class="right-topside"></div>
+<if test="$PCNodeID == $NodeInfo.NodeID">
+<op exp="$TheNodeID = $NewsPCNodeID">
+<elseif test="$SVRNodeID == $NodeInfo.NodeID">
+<op exp="$TheNodeID = $NewsSVRNodeID">
+<elseif test="$NBNodeID == $NodeInfo.NodeID">
+<op exp="$TheNodeID = $NewsNBNodeID">
+<elseif test="$PRNodeID == $NodeInfo.NodeID">
+<op exp="$TheNodeID = $NewsPRNodeID">
+<elseif test="$YTNodeID == $NodeInfo.NodeID">
+<op exp="$TheNodeID = $NewsYTNodeID">
+</if>
+<!--#CW#  取出产品相关评测文章  Add By CWTM #CW#-->
+<CMS action="LIST" return="ProductNews" NodeID="{$TheNodeID}" TableID="1" num="10" />
+<if test="!empty($ProductNews)">
+    <div class="right-center">
+      <div class="title1">评测文章</div>
+      <ul>
+
+<LOOP name="ProductNews" var="var" key="key" start="1">
+        <li><a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title, 0, 18)]</a></li>
+</LOOP>
+      </ul>
+    </div>
+    <div class="right-bottomside"></div>
+    <div class="right-topside"></div>
+</if>
+    <div class="right-center">
+      <div class="title1">本月热门产品</div>
+      <ul>
+<!--#CW#  取出本月热门产品  Add By CWTM #CW#-->
+<CMS action="LIST" return="HotMonthProducts" NodeID="{$pdAllNodeID}" TableID="{$pdTableID}" orderby="Hits_Month" num="10" />
+<LOOP name="HotMonthProducts" var="var" key="key" start="1">
+        <li>[<a href="[$var.NodeURL]">[$var.NodeName]</a>] <a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title, 0, 15)]</a></li>
+</LOOP>
+      </ul>
+    </div>
+    <div class="right-bottomside"></div>
+    <div class="right-topside"></div>
+    <div class="right-center">
+      <div class="title3">[$NodeInfo.Name]关注排行</div>
+<!--#CW#  按本热门访问取出本栏目产品  Add By CWTM #CW#-->
+<CMS action="LIST" return="HotNodeProducts" NodeID="{$NodeInfo.NodeID}" TableID="{$pdTableID}" orderby="Hits_Month" num="11" />
+<LOOP name="HotNodeProducts" var="var" key="key" start="1">
+<if test="$key == 1">
+<op exp="$ShowIntro = str_replace('<br />', ' ', $var.Intro)">
+      <p>[@CsubStr($ShowIntro, 0, 50, '...')]</p>
+      <a href="[$var.URL]"><img src="[$var.Photo]" width="100px" height="75px" alt="[$var.Title]"/></a>
+      <ul>
+<else>
+        <li><a href="[$var.URL]">[@CsubStr($var.Title, 0, 18)]</a></li>
+</if>
+</LOOP>
+      </ul>
+    </div>
+    <div class="right-bottomside"></div>
+  </div>
+</div>
+
+
+<!--#CW#  引入页脚  Add By CWTM #CW#-->
+<include file="../common/footer.html" />
+
+
+</body>
+</html>

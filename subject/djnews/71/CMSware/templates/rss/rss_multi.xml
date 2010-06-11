@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="gb2312"?>
+<rss version="2.0">
+  <channel>
+    <title>[$Title]</title>
+    <link>[$URL]</link>
+    <description>[$SubTitle]</description>
+    <copyright>[$Author]</copyright>
+    <generator>[$Editor]</generator>
+    <lastBuildDate>[@date('r')]</lastBuildDate>
+    <ttl>10</ttl>
+    <image>
+      <url>http://www.benber.com/cmsware/rss.gif</url>
+      <title>[$Title]</title>
+      <link>[$SubTitle]</link>
+    </image>
+
+<CMS action="LIST" return="List" NodeID="{$Keywords}" Num="10" /> 
+<LOOP name="List" var="var" key="key">
+    <item>
+      <title>[$var.Title]</title>
+      <link>[$var.URL]</link>
+      <description>[$var.Intro]</description>
+      <category>[$var.NodeName]</category>s
+      <author>[$var.Author]</author>
+      <pubDate>[@date('r', $var.PublishDate)]</pubDate>
+    </item>
+	
+</LOOP>
+  </channel>
+</rss>
+
+				

@@ -1,0 +1,38 @@
+<include: file="header.html">
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="role.do">角色管理</A> -&gt; 查看记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+
+<table width="98%" border="0" cellpadding="5" cellspacing="1" class="table_border" align="center">
+<tr>
+	<td colspan="2" class="table_header">查看角色信息</td>
+</tr>
+
+<tr>
+	<td class="table_td1" width="200">RoleID：</td>
+	<td class="table_td2">[$RecordInfo.RoleID]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">角色名称：</td>
+	<td class="table_td2">[$RecordInfo.RoleName]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">所属基础角色：</td>
+	<td class="table_td2">[$RecordInfo.RoleBaseUID]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">可用操作列表：</td>
+	<td class="table_td2"><loop name="TargetOpIDs" var="var">
+<A HREF="operator.do?o=view&OpID=[$var.value]"> [$var.title]</A> <BR>
+</loop></td>
+</tr>
+</table>
+<include: file="footer.html">
+</body>
+</html>

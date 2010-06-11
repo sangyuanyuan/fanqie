@@ -1,0 +1,69 @@
+<include: file="header.html">
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form action='[$base_url]o=add_submit' method='post' enctype="multipart/form-data" name='clientform' id=clientform >
+    <tr> 
+      <td colspan="8" class="table_header">{lang:topic}</td>
+    </tr>
+    <tr> 
+      <td width="20%" class="table_td1">{lang:plugin_name}:</td>
+      <td colspan=6 class="table_td2"><input name='pName' type='text' class='flat' id="pName" tabindex='8'> 
+        &nbsp;</td>
+    </tr>
+  <tr id=local > 
+      <td class="table_td1">{lang:plugin_path}:</td>
+      <td colspan=6 class="table_td2">
+	  <select name="Path">
+	  <loop $pList var=var key=key>
+	  <option value="[$var]">[$var]</option>
+	  </loop>
+	  </select>
+        &nbsp; {lang:plugin_path_help} </td>
+    </tr>
+
+<tr> 
+      <td width="20%" class="table_td1">{lang:AccessGroup}:</td>
+      <td colspan=6 class="table_td2">	
+	  <select name="AccessGroup[]" size="8" multiple>
+		<option value="" ></option>
+<loop $Group var=var key=key>
+		<option value="[$var.gId]" >[$var.gName]</option>
+</loop>  
+		  </select>
+		  
+		  </td>
+    </tr>
+<tr> 
+      <td width="20%" class="table_td1">{lang:AccessUser}:</td>
+      <td colspan=6 class="table_td2">	
+	  <select name="AccessUser[]" size="8" multiple>
+		<option value="" ></option>
+<loop $User var=var key=key>
+		<option value="[$var.uId]" >[$var.uName]</option>
+</loop>  
+		  </select>
+		  
+		  </td>
+    </tr>
+
+
+
+<tr> 
+      <td width="20%" class="table_td1">{lang:plugin_license_key}:</td>
+      <td colspan=6 class="table_td2"><textarea name="LicenseKey" cols="50" wrap="VIRTUAL" class="flat" id="LicenseKey" tabindex="8"></textarea> 
+        &nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:info}:</td>
+      <td colspan=6 class="table_td2"><textarea name="Info" cols="50" rows="5" class="flat" id="fieldname2" tabindex="8"></textarea> 
+        &nbsp;</td>
+    </tr>
+
+    <tr> 
+      <td colspan="8" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<include: file="footer.html">

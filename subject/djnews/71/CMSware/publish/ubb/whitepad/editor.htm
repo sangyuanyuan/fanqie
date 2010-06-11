@@ -1,0 +1,443 @@
+<HTML>
+<HEAD><TITLE>手写板</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<STYLE type=text/css>
+v\:* { behavior: url(#default#VML); }
+*{ font-size:12px; }
+body {
+	background-color: #E3EFF9;
+	margin:5px;
+}
+#codeTable{
+	 background-color: #E3EFF9;
+	 display:none;
+}
+body,select, input, td {
+	font-size: 12px;
+}
+hr {
+	width: 150px;
+}
+#ColorTable{
+	border: 2px outset;
+}
+.colorvalue{
+	width: 8px;
+	height: 8px;
+	cursor: crosshair; 
+}
+.colorvalue div{
+	width:8px;
+	height:8px;
+	overflow:hidden;
+	font-size:8px;
+	padding:0px;
+	color:red;
+}
+a{
+	color: #333399;
+}
+form{
+	margin:0px;
+	padding: 0px;
+}
+.tool{
+	color: #666699;
+}
+.btn{
+	background-color: #E3EFF9;
+	border:solid 1px #FFF;
+	border-color:#FFF #888 #888 #FFF;
+	margin:0 1px 1px 0;	
+	padding-top:2px;
+}
+.btn_on{
+	background-color:#EFF6FF;
+	border:1px solid #FFFFF;
+	border-color:#60A5DD #FFF #FFF #60A5DD;
+	color: #6633FF;
+	margin:0 1px 1px 0;	
+	padding-top:3px;
+}
+.input{
+	border:1px solid #FFFFF;
+	border-color:#60A5DD #FFF #FFF #60A5DD;
+}
+</STYLE>
+</HEAD>
+<BODY onLoad="active_colorpicker();document.forms[0].reset();selectToolShape('shape');" oncontextmenu="var tagName=event.srcElement.tagName.toLowerCase();return (tagName=='textarea' || tagName=='input' || tagName=='img');">
+  <table width="100%" id="codeTable" border="0" cellspacing="3" cellpadding="0">
+    <tr>
+      <td valign="top">
+	  图形代码 <a href="#" onclick="alert('当前长度: '+document.getElementById('value_codetext').value.length+' 字符');">[字数检查]</a> :<br />
+	  <textarea name="value_codetext" id="value_codetext" style="width:100%; height:200px; word-break: break-all" class="input"></textarea>
+	  <br />
+	  <center>
+	  <input type="button" value="复制" class="btn" onClick="e=document.getElementById('value_codetext').createTextRange();e.expand('textedit');e.execCommand('copy');alert('代码已复制到剪帖板');" >
+	  <input type="button" value="粘贴" class="btn" onClick="e=document.getElementById('value_codetext').createTextRange();e.execCommand('paste');" >
+	  <input type="button" value=" 代码生成图形 " class="btn" onClick="document.frames[0].location.reload();codeTableShow(0);" >
+	  <input type="button" value=" 返回编辑界面 " class="btn" onClick="codeTableShow(0);" >
+	  </center>
+	  </td>
+    </tr>
+  </table>
+
+<script language="javascript" src="createShapes.js"></script>
+<SCRIPT language=JavaScript>
+window.onerror = function(){ return true;}
+
+function getQueryString(key,locString){
+  var reg = new RegExp("(\\?|\\&)" + key + "=([^\\&\\#]*)([\\&\\#]?)", "i").exec(locString);
+  return RegExp.$2;
+}
+try{
+	var name = getQueryString('name',window.location.href);
+	var obj = window.opener.document.getElementsByName(name)[0];
+	document.getElementById('value_codetext').value = ((obj.caretPos&&obj.caretPos.text)?obj.caretPos.text:'');
+}catch(e){}
+
+function dec_spcode(c,spcodeChars){  //数字=>纯粹码
+	var len = spcodeChars.length;
+	if(c<len)	return '0' + spcodeChars.charAt(c);
+	else if(c<len*len)	return spcodeChars.charAt(parseInt(c/len)) + spcodeChars.charAt(c%len);
+}
+
+function make_code(){
+	try{
+		var props = ('tagName=shape;style.left=0;style.top=0;style.width=1600;style.height=1200;coordsize=1600,1200;fillcolor=;strokecolor=black;strokeweight=1.5;path').split(';');
+		var f = document.frames[0];
+		var i,j,obj;
+		var code = '';
+		var lastValues = new Array(props.length-1);
+		for(i=1;i<=f.teller;i++){
+			var shape = f.document.getElementById('nr'+i);
+			if(!shape) continue;
+			if(code) code += "|";
+			for(j=0;j<props.length;j++){
+				var prop_arr = props[j].split('=',2);
+				if(i==1 && (prop_arr[1]||prop_arr[1]==='')) lastValues[j]=prop_arr[1];
+
+				eval("value=shape."+prop_arr[0]+";");
+				if(value) value +='' ; else value='';
+				if(typeof(value)=='undefined') value='';
+				if(prop_arr[0]=='fillcolor' && shape.filled==false) value='';
+				else if(prop_arr[0]=='strokecolor' && shape.stroked==false) value='';
+				else if(prop_arr[0]=='path' && value.match(/^(\s*m)(.+)(e\s*)$/)){
+					value = value.replace(/[^\d]+$/,'').replace(/([^\d]+)(\d+)/g, function(a,b,c){ return dec_spcode(c,spcodeChars); } );
+				}
+				else if(value==parseInt(value)+'px') value = parseInt(value);
+				if(value==lastValues[j]) value = '*';
+				else lastValues[j] = value;
+				code += value+(j<props.length-1&&value!='*' ? ';' : '');
+			}
+		}
+		code = code.replace(/(\*{4,})/g,function(a){ return '*'+a.length+'/' });
+	}catch(e){	}
+	return code;
+}
+
+
+function insertAtCaret(textEl, text){
+	if (textEl.createTextRange && textEl.caretPos){
+		var caretPos = textEl.caretPos;
+		caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+	} else if(textEl) {
+		textEl.value += text;
+	} else {
+		textEl.value = text;
+	}
+}
+function returnVal(){
+	var code=make_code();
+	if(code){	
+		try{			
+			var name = getQueryString('name',window.location.href);
+			var obj = window.opener.document.getElementsByName(name)[0];
+			insertAtCaret(obj,'[whitepad]'+code+'[/whitepad]');		
+		}catch(e){
+			document.getElementById('value_codetext').value = '[whitepad]'+code+'[/whitepad]';
+			codeTableShow(1);
+			alert("找不到输入框,返回失败.");
+			return false;
+		}
+	}
+	window.close();	
+}
+
+function codeTableShow(s){
+	var c = document.getElementById('codeTable');
+	var e = document.getElementById('editTable');
+	if(s==1){
+		c.style.width = e.offsetWidth;
+		c.style.height = e.offsetHeight;
+		c.style.display = 'block';
+		e.style.display = 'none';
+	}else{
+		c.style.display = 'none';
+		e.style.display = '';
+	}
+}
+
+obj_colorpicker = '';
+redo_array = new Array();
+
+function active_colorpicker(){
+	var cellen = document.getElementsByTagName('td');
+	for(var i = 0; i < cellen.length; i++){
+		if(cellen[i].className == 'colorvalue'){
+			cellen[i].onclick = do_pickcolor;
+			cellen[i].onmousemove = function(){ document.getElementById('colorShow').style.backgroundColor=this.bgColor; }
+		}
+	}
+}
+
+function start_pickcolor(obj){
+	if(obj_colorpicker==obj){
+		do_pickcolor('null');
+		return;
+	}
+	if(obj_colorpicker != ''){ return;}
+	document.getElementById('ColorTableDiv').style.display='';
+	obj_colorpicker = obj;
+}
+
+function do_pickcolor(color){
+	if(obj_colorpicker == '') return; 
+	if(color||color==='') var colorvalue = color;
+	else var colorvalue = this.bgColor;
+	
+	var HTML = colorvalue ? '':'透明';
+	document.forms[0].elements[obj_colorpicker + 'value'].value = colorvalue;
+	document.getElementById(obj_colorpicker + '_cel').innerHTML = HTML;
+	document.getElementById(obj_colorpicker + '_cel').style.backgroundColor = colorvalue ? colorvalue : '#FFFFFF';
+	hideColorTableDiv(1);
+}
+
+function hideColorTableDiv(d){
+	if(d || (obj_colorpicker && !document.inColorTable)){
+		document.getElementById('ColorTableDiv').style.display='none';
+		obj_colorpicker = '';
+	}
+}
+document.onmousedown = hideColorTableDiv;
+
+function op_undo(){
+	var f=document.frames[0];
+	if(f.teller > 0){
+		var obj = f.document.getElementById('nr' + f.teller);
+		redo_array.unshift( [obj.outerHTML,1] );
+		obj.removeNode(true);
+		f.teller--;
+		return true;
+	}
+	return false;
+}
+
+function op_redo(){
+	var f=document.frames[0];
+	if( redo_array.length > 0 ){
+		if(redo_array[0][1]==0){  //橡皮
+			f.document.body.insertAdjacentHTML('beforeend',redo_array[0][0]);
+		}
+		else if(redo_array[0][1]==1){ //删除
+			f.teller++;
+			f.document.body.insertAdjacentHTML('beforeend',redo_array[0][0]);
+		}
+		else if(redo_array[0][1]==2){  //属性更改
+			f.document.getElementById(redo_array[0][2]).outerHTML = redo_array[0][0];
+		}
+		else if(redo_array[0][1]==3){  //置前置后
+			var arg = redo_array[0][0].split(',');
+			var obj = f.document.getElementById('nr'+arg[0]);
+			var obj2 = f.document.getElementById('nr'+arg[1]);
+			obj.id='nrTEMPID';
+			obj2.id = 'nr' + arg[0];
+			obj2.style.zIndex = arg[0];
+			obj.id = 'nr' + arg[1];
+			obj.style.zIndex = arg[1];
+		}		
+		redo_array.shift();
+		return true;
+	}else{
+		redo_array = new Array();
+		alert('已无记录.');
+		return false;
+	}
+}
+
+function op_clear(){
+	while(op_undo()){}
+}
+
+function startAcessKey(){
+	document.keydowned=1;
+}
+function doAccessKey(ev){
+	if( document.keydowned && ev.srcElement.tagName.toLowerCase()!='textarea' ){
+		if((ev.ctrlKey && ev.keyCode!=17)||ev.keyCode==13){
+			var inputs = document.getElementsByTagName('input');
+			for(i=0;i<inputs.length;i++){
+				if(ev.keyCode==13 && inputs[i].type=='submit') inputs[i].click();
+				else if(inputs[i].accessKey==String.fromCharCode(ev.keyCode)) inputs[i].click();
+			}
+		}
+	}
+	document.keydowned = 0;
+}
+document.onkeydown = startAcessKey;
+document.onkeyup = function(){doAccessKey(event);}
+
+function help(){
+	var out = '1. 在图形编辑界面,画好图形后按"生成并返回",即可直接发帖.\n\n';
+	out += '2. 您可以点击"编辑代码",将图形代码粘贴到代码框中生成图形,并可继续编辑.\n\n';
+	out += '3. 选定发帖内容框中的相应代码,再点"纯粹手写板"按钮,可还原该代码的图形.';
+	alert(out);
+}
+</SCRIPT>
+
+<FORM onSubmit="return false;">
+<table width="100%"  border="0" cellspacing="3" cellpadding="0" id="editTable">
+  <tr>
+    <td><IFRAME src="paper.htm" width="400" height="200" name="codetext" frameborder="0" style="border:1px dashed #CCCCCC; "></IFRAME><br /></td>
+  </tr>
+  <tr>
+    <td><table  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="150" nowrap><table width="100%"  border="0" cellspacing="4" cellpadding="0">
+          <tr>
+            <td><input type="hidden" name="toolshape" id="toolshape" value="" />
+
+<script language="javascript">
+	var toolshape_array = new Array();
+	toolshape_array['shape'] = '～|铅笔工具 - 画任意曲线';
+	toolshape_array['pen'] = '─|直线工具';
+	toolshape_array['oval'] = '○|椭圆工具';
+	toolshape_array['rect'] = '□|矩形工具';
+	toolshape_array['roundrect'] = '&curren;|圆角矩形工具';
+	toolshape_array['br1'] = '';
+	toolshape_array['zindexdown'] = '后|置后一层 - 点击将选定元件置后一层';
+	toolshape_array['zindexup'] = '前|置前一层 - 点击将选定元件置前一层';
+	toolshape_array['move'] = '移|移动工具 - 拖动动选定元件';
+	toolshape_array['formatbrush'] = '刷|格式刷工具 - 将当前格式设置应用到选定元件';
+	toolshape_array['formatget'] = '取|拾取工具 - 将选定元件格式应用到当前设置';	
+	toolshape_array['br2'] = '';
+	toolshape_array['edit'] = '改|更改工具 - 更改选定元件';
+	toolshape_array['eraser'] = '擦|橡皮工具 - 点击擦除选定元件';
+
+	var toolshape_html = '';
+	for(key in toolshape_array){
+		if(toolshape_array[key]==''){
+			toolshape_html += '<br />';
+			continue;
+		}
+		var toolshape_txt = toolshape_array[key].split('|');
+		toolshape_html += "<label class='btn tool' id='button_"+key+"' style='width:20px;height:20px;text-align:center;' onclick='selectToolShape(\""+key+"\")' title=\""+toolshape_txt[1]+"\">"+toolshape_txt[0]+"</label>";
+	}
+	document.write(toolshape_html);
+	
+	function selectToolShape(val){
+		var toolshapeObj = document.getElementById('toolshape') ;
+		if(toolshapeObj.value) document.getElementById( 'button_' + toolshapeObj.value ).className = 'btn tool' ;
+		document.getElementById( 'button_' + val ).className = 'btn_on' ;
+		toolshapeObj.value = val ;
+	}
+
+</script>
+
+            </td>
+          </tr>
+          <tr>
+            <td>笔触:
+              <input type="input" size="3" name="strokeweight" id="strokeweight" class="input" style="text-align:center;" value="2" onBlur="if(!this.value.match(/^\d+$/)||this.value==0||this.value>20){alert('请输入小于20的正整数.');this.value=2;}" />
+              <input name="button" type="button" class="btn" title="减小笔触" onMouseDown="eval(this.script); this.timeout=setInterval(this.script,400);" onMouseUp="clearInterval(this.timeout)" value="↓" script="var obj=document.getElementById('strokeweight');if(obj.value>1) obj.value=parseInt(obj.value)-1;"><input name="button" type="button" class="btn" title="增大笔触" onMouseDown="eval(this.script); this.timeout=setInterval(this.script,400);" onMouseUp="clearInterval(this.timeout)" value="↑" script="var obj=document.getElementById('strokeweight');if(obj.value<20) obj.value=parseInt(obj.value)+1;">            </td>
+          </tr>
+        </table></td>
+        <td width="150" valign="top">
+<div style="position:absolute; display:none;" id="ColorTableDiv">
+<table border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+  <tr>
+    <td>
+	<table id="ColorTable" border="0" cellspacing="0" cellpadding="0" onMouseOver="document.inColorTable=1;"  onmouseout="document.inColorTable=0;"></table>	</td>
+	<td width="2"></td>
+    <td width="10" class="input" id="colorShow">&nbsp;</td>
+  </tr>
+</table>
+</div>
+
+<script language="javascript">
+
+function CreateColorTable()
+{
+	var oTable = document.getElementById('ColorTable') ;
+	var aColors = ['00','33','66','99','cc','ff'] ;
+	function AppendColorRow( rangeA, rangeB ){
+		for ( var i = rangeA ; i < rangeA + 3 ; i++ ){ 
+			var oRow = oTable.insertRow(-1); 
+			for ( var j = rangeB ; j < rangeB + 3 ; j++ ) { 
+				for ( var n = 0 ; n < 6 ; n++ ){ 
+					AppendColorCell( oRow, '#' + aColors[j] + aColors[n] + aColors[i] ) ; 
+				} 
+			} 
+		}
+	}
+	function AppendColorCell( targetRow, color){
+		var oCell = targetRow.insertCell(-1) ;
+		oCell.className = 'colorvalue' ;
+		oCell.bgColor = color ;
+		if(!color)oCell.innerHTML = '<div title="透明">&times;</div>';
+	}
+	AppendColorRow( 0, 0 ) ;
+	AppendColorRow( 3, 0 ) ;
+	AppendColorRow( 0, 3 ) ;
+	AppendColorRow( 3, 3 ) ;
+	var oRow = oTable.insertRow(-1) ;
+	for ( var n = 0 ; n < 6 ; n++ ){
+		AppendColorCell( oRow, '#' + aColors[n] + aColors[n] + aColors[n] ) ; 
+	}
+	for ( var i = 0 ; i < 12 ; i++ ){
+		AppendColorCell( oRow, '');
+	}
+}
+CreateColorTable();
+</script>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+<center>
+  <table width="100" border="0" cellspacing="3" cellpadding="0">
+  <tr>
+    <td width="29%" height="25" align="center">描边</td>
+	<td width="71%" align="center" id="forecolor_cel" style="CURSOR:pointer;BACKGROUND-COLOR:#000000;COLOR: #FF0033; BORDER:1px inset;" onClick="start_pickcolor('forecolor')">&nbsp;</td>
+  </tr>
+  <tr>
+  	<td width="29%" height="25" align="center">填充</td>
+    <td align="center" id="backcolor_cel" style="CURSOR: pointer;BACKGROUND-COLOR:#ffffff;COLOR: #FF0033; BORDER:1px inset;" onClick="start_pickcolor('backcolor')">透明</td>
+  </tr>
+</table>
+</center></td>
+  </tr>
+  <tr>
+    <td height=6></td>
+  </tr>
+  <tr>
+	<td align="center">
+		<input type=button class="btn" onClick="op_clear()" value="清空"><input type="button" class="btn" onClick="help()" value="帮助"><br>
+		<input type="button" class="btn" accesskey="Z" onClick="op_undo()" value="删除" title="删除最后产生的元件;快捷键:Ctrl+Z"><input type="button" class="btn" accesskey="Y" onClick="op_redo()" value="恢复" title="恢复最后的元件或属性;快捷键:Ctrl+Y">
+		<input type="hidden" value="" name="backcolorvalue">
+		<input type="hidden" value="#000000" name="forecolorvalue">	</td>
+  </tr>
+</table>		</td>
+		<td width="110" align="center">
+		<input type="button" class="btn" style="width:80px;" onClick="var code=make_code(); document.getElementById('value_codetext').value = (code?'[whitepad]'+code+'[/whitepad]':'');codeTableShow(1);" value="编辑代码">
+		<br>
+		<input name="submit" id="submit" type="submit" class="btn" style="width:80px;height:50px;margin-top:4px;font-weight:bold;" onClick="returnVal();" value="生成并返回"></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+</FORM>
+<SCRIPT language="JavaScript">
+	document.forms[0].reset();
+</SCRIPT>
+</BODY></HTML>

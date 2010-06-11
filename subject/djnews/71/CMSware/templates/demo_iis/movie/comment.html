@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>评论 - [$Publish.Title] - [$SITE_NAME]</title>
+
+<link href="[$SKIN_URL]movie/css/style.css" rel="stylesheet" type="text/css" />
+<!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+<script src="[$SKIN_URL]movie/js/js.js"></script>
+</head>
+<include file="TplConfig.html">
+
+<body>
+<include file="../common/header.html" />
+<div class="news_nav"><!--#CW#--影视频道附加导航--#CW#-->
+	<CMS action="NODELIST" return="List" Type="set" NodeID="{$Index_NodeID}" /><!--#CW#根据TplConfig中设置的影视主结点ID号，生成导航#CW#-->
+	<loop name="List" var="var" key="key" start="1">
+	<a href="[$var.NodeURL]">[$var.NodeName]</a><if test="$key < count($List)"> | </if><!--#CW#如果已循环到最后一条，则不显示最后的|#CW#-->
+	</loop>
+</div>
+<div class="content">
+
+	<div class="left">
+
+        <!--#CW#---左边样式1--#CW#-->
+
+		<div class="topside01">
+
+			<div class="topside01_l">&nbsp;</div>
+
+			<div class="topside01_c">&nbsp;</div>
+
+			<div class="topside01_r">&nbsp;</div>
+
+		</div>
+
+        <div class="center01">
+
+       	<h3><a href="[$Publish.URL]">[$Publish.Title]</a></h3>
+
+        <div class="sonfocus" style="font-size:16px;">
+
+            <ul class="comm_num">
+
+              <li>本电影所有评论共 [$CountNum]条 [$Page]</li>  
+
+            </ul>
+
+        </div>
+
+        <loop name="CommentList" key="key" var="var" >
+
+        <div class="sonfocus" style="font-size:16px;">
+
+            <table width="728" cellpadding="0" cellspacing="0" border="0" class="movies_comm">
+
+                <tr>
+
+                    <td width="130"  rowspan="4" align="center" valign="middle"><img src="[$SKIN_URL]movie/img/000.gif" /></td>
+
+                    <td width="598"></td>
+
+                </tr>
+
+                <tr>
+
+                    <td height="30"><span class="people">评论人：</span><span class="peoplee">[$var.Author]</span></td>
+
+                </tr>
+
+                <tr>                        
+                    <td><div class="commcon">[@ubbcode($var.Comment,1,0,1)]</div></td>
+
+                </tr>
+
+                <tr>
+
+                    <td align="right"><span>[@date('Y-m-d H:i', $var.CreationDate)]</span>&nbsp;&nbsp;<span>[$var.Ip]</span>&nbsp;&nbsp;<span><a href="#" onClick="return facomm('username')">发表评论</a></span></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+        </loop>
+
+        <div class="sonfocus" style="font-size:16px;">
+
+            <ul class="comm_num">
+
+              <li>本电影所有评论共 [$CountNum]条 [$Page]</li>  
+
+            </ul>
+
+        </div>
+
+        <div class="sonfocus" style="font-size:16px;">
+            <p><b>【用户评论】：</b></p>
+            <form action="[$PUBLISH_URL]comment.php?o=post&nodeid=[$Publish.NodeID]&id=[$Publish.IndexID]" method="post" onSubmit="return check('content');">
+
+            <table width="728" cellpadding="0" cellspacing="0" border="0">
+
+                	<tr>
+
+                    	<td width="91" align="right">昵称：</td>
+
+                      	<td width="181" align="left"><label><input id="username" name="username" type="text" /></label></td>
+
+                        <td width="54" align="left">验证码：</td>
+
+                        <td width="402" align="left"><label><input type="text" name="validCode" size="10" maxlength="40" tabindex="1"></label><img src="[$PUBLISH_URL]validCode.php"/></td>
+
+                  	</tr>
+
+                    <tr>
+
+                    	<td align="right">内容：</td>
+
+                        <td colspan="3">
+                        	<textarea id="content" name="content" cols="80" rows="2" style="display:none"></textarea>
+<iframe ID="Editor" name="Editor" src="[$PUBLISH_URL]ubb/edit.htm?id=content" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" style="height:320px;width:100%"></iframe>
+                            
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                    	<td colspan="4" align="center"><label><input type="submit" id="submit" value="提&nbsp;交" onClick="content()" /></label>&nbsp;&nbsp;&nbsp;<label><input type="submit" value="重&nbsp;置" /></label></td>
+
+                    </tr>
+
+                </table>
+
+            </form>
+
+        </div>
+
+        </div>
+
+        <div class="bottomside01">
+
+			<div class="bottomside01_l">&nbsp;</div>
+
+			<div class="bottomside01_c">&nbsp;</div>
+
+			<div class="bottomside01_r">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+
+
+	<!--#CW#--右边列开始--#CW#-->
+
+	<div class="right">
+
+    	<!--#CW#--搜索BOX--#CW#-->
+
+		<include file="inc/search_box.html">
+
+		<!--#CW#--右边样式1--#CW#-->
+
+		<div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<!--#CW#--一周热影--#CW#-->
+
+        	<div class="photo_fous">一周热影</div>
+
+            <CMS action="LIST" return="List" NodeID="{$Searech_LeftHot_NodeID}" Num="{$Searech_LeftHot_Num}" OrderBy="{$Searech_LeftHot_OrderBy}" />
+
+            <loop name="List" key="key" var="var">
+
+            <a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+            </loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+
+		<!--#CW#--右边样式2--#CW#-->
+
+        <div class="topside05">
+
+			<div class="topside05_l">&nbsp;</div>
+
+			<div class="topside05_c">&nbsp;</div>
+
+			<div class="topside05_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center05">
+
+        	<!--#CW#--推荐电影--#CW#-->
+
+        	<div class="photo_fous">推荐电影</div>
+
+            <CMS action="LIST" return="List" NodeID="{$Searech_LeftPink_NodeID}" Num="{$Searech_LeftPink_Num}" where="{$Searech_LeftPink_where}" />
+
+            <loop name="List" var="var" key="key">
+
+			<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside05">
+
+			<div class="bottomside05_l">&nbsp;</div>
+
+			<div class="bottomside05_c">&nbsp;</div>
+
+			<div class="bottomside05_r">&nbsp;</div>
+
+		</div>
+
+        
+
+        <div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<!--#CW#--总点击排行--#CW#-->
+
+        	<div class="photo_fous">总点击排行</div>
+
+  			<CMS action="LIST" return="List" NodeID="{$Searech_LeftHits_Total_NodeID}" Num="{$Searech_LeftHits_Total_Num}" OrderBy="{$Searech_LeftHits_Total_OrderBy}" />
+
+            <loop name="List" var="var" key="key">
+
+			<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+</div>
+<include file="../common/footer.html" />
+</body>
+
+</html>
+

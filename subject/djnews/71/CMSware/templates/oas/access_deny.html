@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>访问请求被禁止！</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+body,td {
+	font-size: 11px; 
+	font-family: Tahoma, Verdana, Arial;
+
+}
+div.titleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 165;
+	text-overflow: ellipsis;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;			
+}	
+input{
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+			
+}	
+.bold {
+ font-weight: bold 
+
+}
+</style>
+
+</HEAD>
+<BODY bgColor=#999999 leftMargin=0 background="[$PUBLISH_URL]images/bg.gif" topMargin=5>
+<table width="60%"  border="0" align="center" cellspacing="5">
+   <tr>
+    <td>
+<span class="bold">&raquo;</span>
+<if test="$UserSession.UserID ==0">
+<span class="bold">游客: &nbsp;</span><a href="[$OAS_URL]cwps.php?do=register">注册</a> 
+| <a href="[$OAS_URL]/cwps.php?do=login">登录</a> 
+
+<else>
+<span class="bold">[$UserSession.UserName]: </span><a href="[$OAS_URL]cwps.php?do=logout" onclick="return confirm('确认退出吗？')">退出</a> | <a href="[$OAS_URL]cwps.php?do=editProfile">个人设置</a> | <a href="[$OAS_URL]cwps.php?do=changePass">修改密码</a>
+ 
+</if>
+ 
+
+</td>
+     
+    </tr>
+ 
+ </table>
+
+<table width="60%"  border="0" align="center">
+  <tr>
+    <td><H4>你没有访问该页面的权限！</H4>
+	可能原因：
+	<UL>
+		<LI>你所在的用户组不具备访问该页面的权限，请联系系统管理员。
+		<LI>该页面可能需要<a href="[$OAS_URL]cwps.php?do=login">登录</a>后才能浏览，如果你没有通行证帐号请点击<A HREF="[$OAS_URL]cwps.php?do=register">注册</A>。
+		
+	</UL>
+	</td>
+  </tr>
+</table>
+<br>
+</BODY></HTML>

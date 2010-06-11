@@ -1,0 +1,49 @@
+<include: file="header.html">
+<script language="JavaScript">
+function prepareSubmit() {
+ 
+		return true;
+}
+
+
+</script>
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="soapadmin.do">SOAP接口管理</A> -&gt; 新增记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form name="soapadminForm" action="soapadmin.do?o=add_submit" method='post' enctype="multipart/form-data" >
+    <tr> 
+      <td colspan="2" class="table_header">新增SOAP接口</td>
+    </tr>
+<tr>
+	<td class="table_td1">Soap接口ID:</td>
+	<td class="table_td2">
+		<select name="SoapID" >
+		<loop name="UnRegSoapIDs" key="key" var="var">
+		<option value="[$var]">[$var]</option>
+		</loop>
+		</select>
+	</td>
+</tr>
+
+<tr>
+	<td class="table_td1">Soap接口名称:</td>
+	<td class="table_td2">
+		<input name="SoapName" type='text' class='flat'  tabindex='8'>
+	</td>
+</tr>
+   
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13' onClick="return prepareSubmit();"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<include: file="footer.html">

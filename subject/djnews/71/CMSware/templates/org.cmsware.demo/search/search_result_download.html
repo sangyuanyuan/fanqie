@@ -1,0 +1,127 @@
+<div id="left">
+
+<!--{{{软件搜索-->
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h4>软件搜索</h4>
+<ul>
+<TABLE cellSpacing=3 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE height=40 cellSpacing=0 cellPadding=3 width="100%">
+              <FORM action="[$PUBLISH_URL]search.php?o=search&TableID=2" 
+              method=post>
+              <TBODY>
+              <TR>
+                <TD align=middle colSpan=2><INPUT name=Keywords id="Keywords" size=12> <INPUT type=submit value=搜索 name=submit  onClick="if(this.form.Keywords.value=='') {alert('请输入关键字');return false;}">
+                          <input name="Field" type="hidden" id="field" value="SoftName"> 
+                          </TD></TR></FORM>
+              </TABLE></TD></TR>
+        </TABLE>
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+<!--}}}-->
+
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>最新下载Top10</h3>
+<ul>
+<SCRIPT src="[$PUBLISH_URL]js.php?id=download_pale_blue_new10" type=text/javascript></SCRIPT>
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>最热下载Top10</h3>
+<ul>
+<SCRIPT src="[$PUBLISH_URL]js.php?id=download_pale_blue_down10" type=text/javascript></SCRIPT>
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+</div><!--left end-->
+
+<div id="right">
+<div class="box_l">
+<div class="box_l_t">&nbsp;</div>
+<div class="box_l_c">
+
+<div class="soft_sort">
+<ul>
+<li class="s1"><a href="#" title="按照软件名称进行排序">软件名称</a></li>
+<li class="s2"><a href="#" title="按照更新时间进行排序">更新时间</a></li>
+<li class="s3"><a href="#" title="按照软件大小进行排序">软件大小</a></li>
+<li class="s4"><a href="#" title="按照下载人气进行排序">下载人气</a></li>
+<li class="s5"><a href="#" title="按照软件评价进行排序">软件评价</a></li>
+</ul>
+</div>
+<div class="list_page"  >
+<ul>
+<li>
+ 共找到<font color="red"> 
+              [$searchResultInfo.num]
+              </font>篇有关 "</font><font color=red> 
+              [$searchKeywords]
+              </font><font color="#000000">" 的网页&nbsp;&nbsp; 当前显示 
+              [$searchResultInfo.from]
+              - 
+              [$searchResultInfo.to]
+              条 , 共[$searchResultInfo.pageNum]页 </font> 
+							  
+[$pageList]  </li>
+</ul>
+</div>
+
+<div class="li_s">
+ <LOOP name="searchResult" var="var" key="key" >
+
+<ul class="u1">
+<li class="s1"><h4><a href="[$var.URL]">[@highlight($var.SoftName,$searchKeywords)]</a></h4></li>
+<li class="s2">[@date('Y-m-d',$var.PublishDate)]</li>
+<li class="s3">[$var.SoftSize]</li>
+<li class="s4">[$var.Hits_Total]</li>
+<li class="s5"><img alt="" src="[$Skin_Images]pale_blue_skin/images/star[$var.Star].gif" width="74" height="14" /></li>
+</ul>
+<div>[@CsubStr($var.Intro, 0, 80)]
+
+</div>
+<ul class="u2">
+<li class="s6"><span>语言界面：</span>[$var.Language]</li>
+<li class="s7"><span>软件类别：</span>[$var.SoftType]</li>
+<li class="s8"><span>运行平台：</span>[$var.Environment]</li>
+</ul>
+</LOOP>
+
+</div>
+<div class="list_page" align="right">
+<ul>
+<li>
+ 共找到<font color="red"> 
+              [$searchResultInfo.num]
+              </font>篇有关 "</font><font color=red> 
+              [$searchKeywords]
+              </font><font color="#000000">" 的网页&nbsp;&nbsp; 当前显示 
+              [$searchResultInfo.from]
+              - 
+              [$searchResultInfo.to]
+              条 , 共[$searchResultInfo.pageNum]页 </font> 
+							  
+[$pageList]  </li>
+</ul>
+</div>
+</div>
+
+</div>
+<div class="box_l_b">&nbsp;</div>
+</div><span class="cls"></span>
+
+</div>

@@ -1,0 +1,72 @@
+<include: file="header.html">
+<script type="text/javascript" language="javascript">
+function check(){
+	var theForm = document.clientform;
+	if(document.clientform.uName.value == ''){	
+			alert("{lang:error_username_null}");
+			document.clientform.uName.focus();
+			return false;
+	}
+	
+	
+	if(document.clientform.uPass.value == ''){	
+		
+			alert("{lang:error_password_null}");
+			document.clientform.uPass.focus();
+			return false;
+	} else if(document.clientform.uPass2.value!=document.clientform.uPass.value){	
+		
+			alert("{lang:error_password_not_match}");
+			document.clientform.uPass.value = '';
+			document.clientform.uPass2.value = '';
+			document.clientform.uPass.focus();
+			return false;
+	} else if(theForm.uGId.options[theForm.uGId.selectedIndex].value == '0' || theForm.uGId.options[theForm.uGId.selectedIndex].value == '') {
+			alert("{lang:select_group}");
+			return false;
+	
+	} else {
+		return true;
+	}
+	
+}
+</script>
+
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+<form name='clientform' id=clientform method='post' action='[$base_url]o=add_submit' >
+     <tr> 
+      <td colspan="2" class="table_header">{lang:topic} </td>
+    </tr>
+
+    <tr> 
+      <td class="table_td1">{lang:username}:</td>
+      <td class="table_td2"><input name='uName' type='text' class='flat' id="username" tabindex='8'   size='25' value="[$gInfo.gName]"></td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:password}:</td>
+      <td class="table_td2"><input name='uPass' type='password' class='flat'   tabindex='8'    size='25' value=""></td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:password2}:</td>
+      <td class="table_td2"><input name='uPass2' type='password' class='flat'   tabindex='8'    size='25' value=""></td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:group}:</td>
+      <td class="table_td2"> <select name="uGId" >
+          <loop $gInfo var=var> 
+          <option value="[$var.gId]">[$var.gName]</option>
+          </loop> </select></td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:info}:</td>
+      <td class="table_td2"><TEXTAREA NAME="uInfo" ROWS="8" COLS="45">[$var.uInfo]</TEXTAREA> </td>
+    </tr>
+
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13' onClick="return check();"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+
+<include: file="footer.html">

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="gb2312"?><Collection>
+<TargetURL>http://www.xinhuanet.com/newscenter/xhyw.htm</TargetURL>
+<TargetURLArea>&ETH;&Acirc;&raquo;&ordf;&Ograve;&ordf;&Icirc;&Aring;{DATA}&lt;/html&gt;</TargetURLArea>
+<UrlFilterRule>/(http:\/\/news.xinhuanet.com[^\&quot;&gt;&lt;\s]*content_[0-9]+.htm)/isU</UrlFilterRule>
+<UrlPageRule>&lt;center&gt;&lt;a href=&quot;{DATA}&quot; class=&quot;nextpage&quot;&gt;&lt;img</UrlPageRule>
+<ContentModel>
+<Title>&lt;Title&gt;{DATA}&lt;/Title&gt;</Title>
+<TitleColor></TitleColor>
+<Author>{Default:Hawking}</Author>
+<Photo></Photo>
+<Content></Content>
+<Keywords>&lt;font id=&quot;Zoom&quot;&gt;{DATA}              &lt;/font&gt; 
+              &lt;table==&gt;[clearRubbish]==&gt;[localizeImg]==&gt;[page]</Keywords>
+<SubTitle></SubTitle>
+<FromSite>{Default:&ETH;&Acirc;&raquo;&ordf;&Iacute;&oslash;}</FromSite>
+<Editor></Editor>
+<CustomLinks></CustomLinks>
+<Intro></Intro>
+</ContentModel>
+</Collection>
+<!-- Published at 2007-01-07 20:40:35, Powered by CMSware 2.6.2 Plus -->

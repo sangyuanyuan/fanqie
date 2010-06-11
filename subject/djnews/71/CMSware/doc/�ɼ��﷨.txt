@@ -1,0 +1,178 @@
+支持多页采集:
+==============
+多页采集增强（采集索引页URL改进） 比如需要采集 
+http://edu.qq.com/kaoyan/fuxizhidao01.htm
+...
+http://edu.qq.com/kaoyan/fuxizhidao08.htm
+
+这样的多页采集在RC6以前版本无法完成。
+
+RC6做了改进，使用如下的索引页规则 
+http://edu.qq.com/kaoyan/fuxizhidao{0[1,8,0]}.htm
+
+规则说明： {A[B,C,D]}
+“{...}”是索引页分页语法定义
+
+A:附加字符
+B:开始页数
+C:结束页数
+D:采集的第一页是否从默认初始页（去掉“{...}”的URL）开始，是的话填“1”，否则填“0”
+
+
+举例1－采集索引页URL规则1：
+-------------------------
+http://edu.qq.com/kaoyan/fuxizhidao{0[1,8,1]}.htm
+
+可以采集如下页面： 
+http://edu.qq.com/kaoyan/fuxizhidao.htm
+http://edu.qq.com/kaoyan/fuxizhidao01.htm
+http://edu.qq.com/kaoyan/fuxizhidao02.htm
+...
+http://edu.qq.com/kaoyan/fuxizhidao08.htm
+
+举例2－采集索引页URL规则2：
+-------------------------
+http://edu.qq.com/kaoyan/fuxizhidao{0[1,8,0]}.htm
+
+可以采集如下页面： 
+http://edu.qq.com/kaoyan/fuxizhidao01.htm
+http://edu.qq.com/kaoyan/fuxizhidao02.htm
+...
+http://edu.qq.com/kaoyan/fuxizhidao08.htm
+
+规则1比规则2多采集了一个 http://edu.qq.com/kaoyan/fuxizhidao.htm 这个就是参数D的作用 
+
+
+举例3－采集索引页URL规则3： 
+-------------------------
+http://www.blueidea.com/tech/web/index{_[2,8,1]}.asp 
+
+可以采集如下页面： 
+http://www.blueidea.com/tech/web/index.asp
+http://www.blueidea.com/tech/web/index_2.asp
+http://www.blueidea.com/tech/web/index_3.asp
+...
+http://www.blueidea.com/tech/web/index_8.asp
+
+举例4－采集索引页URL规则4： 
+--------------------------
+http://www.blueidea.com/tech/web/index{_[2,8,0]}.asp 
+
+可以采集如下页面： 
+http://www.blueidea.com/tech/web/index_2.asp
+http://www.blueidea.com/tech/web/index_3.asp
+...
+http://www.blueidea.com/tech/web/index_8.asp
+
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+
+多页采集索引页URL规则:
+http://www.xinhuanet.com/newscenter/xhyw{_[1,20]}.htm
+
+使用以上的规则就可以采集如下共20个页面
+http://www.xinhuanet.com/newscenter/xhyw.htm
+http://www.xinhuanet.com/newscenter/xhyw_1.htm
+http://www.xinhuanet.com/newscenter/xhyw_2.htm
+http://www.xinhuanet.com/newscenter/xhyw_3.htm
+...
+..
+.
+http://www.xinhuanet.com/newscenter/xhyw_20.htm
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+支持过虑函数管道:
+<Title>{DATA}</Title>==>[clearHTML]==>[localizeImg]==>helloworld
+通过使用==>[采集函数名称]就可以加入一个过虑管道。
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+内容图片本地化改为使用过虑函数实现：localizeImg
+<font id="Zoom">{DATA}              </font> 
+              <table==>[clearRubbish]==>[localizeImg]==>[page]
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+定义某个字段为分页采集字段：
+比如新闻内容:
+规则如下：
+<font id="Zoom">{DATA}              </font> 
+              <table==>[clearRubbish]==>[localizeImg]==>[page]
+
+内容页分页采集也使用过虑函数来实现
+内容分页采集函数:[page]
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+更为智能的自适应规则语法，不再需要你熟悉正则语法
+语法规则: [前标识]{DATA}[后标识](==>[过虑函数名1]==>[过虑函数名2]......)
+
+[前标识]                                 :必须。任何字符串，必须具有唯一性。
+{DATA}                                   :必须。就是你要采集的有效内容
+[后标识]                                 :必须。任何字符串
+(==>[过虑函数名1]==>[过虑函数名2]......) :可选。过虑函数管道，管道可以无限延伸下去
+
+2.1前的规则:
+/<Title>(.*)<\/Title>/isU==>[clearHTML]
+2.1的新规则:
+<Title>{DATA}</Title>==>[clearHTML]
+
+2.1前的规则:
+/<td class=\"Content\">(.*)<\/td>[\s]*<\/tr>[\s]*<\/table>[\s]*<table width=\"100%\" border=\"0\">/isU
+2.1的新规则:
+<td class="Content">{DATA}</td>  </tr> </table> <table width="100%" border="0">
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+智能采集地址修复：
+既便采集索引页内容中的有效内容页URL为相对地址也可以自动修复，例如
+采集索引页http://news.xinhuanet.com/newscenter/index.html
+
+2.1前版本只支持3种格式的URL
+<a href="http://news.xinhuanet.com/newscenter/2004-12/04/content_2293879.htm " >
+<a href="/newscenter/2004-12/04/content_2293879.htm " >
+<a href="newscenter/2004-12/04/content_2293879.htm " >
+
+2.1前的版本在采集这样的地址时会出现问题：
+<a href="./04/content_2293879.htm " >
+<a href="../../content_2293879.htm " >
+
+2.1开始全面支持以上格式的URL，2.1支持格式列表：
+<a href="http://news.xinhuanet.com/newscenter/2004-12/04/content_2293879.htm " >
+<a href="/newscenter/2004-12/04/content_2293879.htm " >
+<a href="newscenter/2004-12/04/content_2293879.htm " >
+[新增]<a href="./04/content_2293879.htm " >
+[新增]<a href="../../content_2293879.htm " >
+
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+内容页有分页时设置采集自动检测规则:
+<center><a href="{DATA}" class="nextpage"><img
+
+<a href="http://www.pconline.com.cn/pcjob/nettech/cisco/others/0412/506028_1.html" >[下一页]</a>
+<a href="http://news.xinhuanet.com/it/2004-12/04/content_2294495_2.htm" class="nextpage"><img src="http://imgs.xinhuanet.com/icon/newscenter/news_xy.gif"  border="0"></a>
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+设置默认值：
+{Default:xxx}
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+时间采集器:获取当前的时间戳（Timestamp）
+{Timer}
+
+
+来源地址采集器：猎取当前的来源网址
+{URL}

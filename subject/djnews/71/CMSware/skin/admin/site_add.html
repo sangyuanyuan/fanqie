@@ -1,0 +1,481 @@
+<include: file="header.html">
+
+<STYLE type=text/css>
+TD {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: "MS Shell Dlg"
+}
+.tab {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 12px; PADDING-BOTTOM: 1px; CURSOR: hand; PADDING-TOP: 5px; LETTER-SPACING: 1px
+}
+</STYLE>
+
+<script language="JavaScript">
+
+ 
+function psnSelect(psn,form, psn_element,url_element) {
+//showMeDialog
+var arr = showMeDialog("admin_select.php?sId=[$sId]&o=psn&psn=" + psn,"color","dialogWidth:428px;dialogHeight:266px;help:0;status:0;scroll:no");
+if(arr != null) {
+	var PSN = '{PSN:'+ arr;
+	var URL = '{PSN-URL:'+ arr;
+	with(form){
+
+	eval(psn_element + ".value= '" + PSN + "'")
+	eval(url_element + ".value= '" + URL + "'")
+
+	}
+
+
+}
+ //window.open("admin_select.php?sId=[$sId]&o=psn&psn=" + psn,"psnselect","toolbar=0,resizable=yes,width=415,height=235,scrollbars=no")
+ // if (arr != null) format('forecolor',arr);
+ // else idEdit.focus();
+}
+
+
+
+
+
+function PublishFileFormat(form,element)
+{
+ 	with(form){
+		eval("var value1 = " + element + ".value")
+	}
+	var arr = showMeDialog('../html/PublishFileFormat.html?value1=' + value1 ,"color","dialogWidth:428px;dialogHeight:266px;help:0;status:0;scroll:no");
+	if(arr != null && arr !='') {
+		with(form){
+
+			eval(element + ".value= '" +  arr + "'")
+
+		}
+
+
+	}
+
+}
+
+function tplSelect(tpl,form, element) 
+{
+	//showMeDialog
+	var arr = showMeDialog("admin_select.php?sId=[$sId]&o=tpl&tpl=" + tpl,"color","dialogWidth:428px;dialogHeight:266px;help:0;status:0;scroll:no");
+	if(arr != null) {
+		with(form){
+
+			eval(element + ".value= '" +  arr + "'")
+
+		}
+
+
+	}
+	 //window.open("admin_select.php?sId=[$sId]&o=psn&psn=" + psn,"psnselect","toolbar=0,resizable=yes,width=415,height=235,scrollbars=no")
+	 // if (arr != null) format('forecolor',arr);
+	 // else idEdit.focus();
+}
+
+function setPublishMode(mode)
+{
+	switch(mode) {
+		case 0 :
+			document.clientform.data_ContentPSN.disabled = true;
+			document.clientform.data_ContentURL.disabled = true;
+			document.clientform.data_ResourceURL.disabled = true;
+			document.clientform.data_ResourcePSN.disabled = true;
+			UI_content_psn.style.display = 'none';
+			UI_content_url.style.display = 'none';
+			UI_resource_psn.style.display = 'none';
+			UI_resource_url.style.display = 'none';
+			UI_content_psn.style.display = 'none';
+			UI_auto_publish.style.display = 'none';
+			UI_tpl_setting.style.display = 'none';
+			UI_index_tpl.style.display = 'none';
+			UI_content_tpl.style.display = 'none';
+			UI_img_tpl.style.display = 'none';
+			UI_static_publish_setting.style.display = 'none';
+			UI_index_name.style.display = 'none';
+			UI_sub_dir.style.display = 'none';
+			UI_publish_file_format.style.display = 'none';
+
+			UI_dynamic_publish_setting.style.display = 'none';
+			UI_content_portal_url.style.display = 'none';
+			UI_index_portal_url.style.display = 'none';
+			break;
+		case 1 :
+			document.clientform.data_ContentPSN.disabled = false;
+			document.clientform.data_ContentURL.disabled = false;
+			document.clientform.data_ResourceURL.disabled = false;
+			document.clientform.data_ResourcePSN.disabled = false;
+			UI_content_psn.style.display = '';
+			UI_content_url.style.display = '';
+			UI_resource_psn.style.display = '';
+			UI_resource_url.style.display = '';
+			UI_auto_publish.style.display = '';
+			UI_tpl_setting.style.display = '';
+			UI_index_tpl.style.display = '';
+			UI_content_tpl.style.display = '';
+			UI_img_tpl.style.display = '';
+			UI_static_publish_setting.style.display = '';
+			UI_index_name.style.display = '';
+			UI_sub_dir.style.display = '';
+			UI_publish_file_format.style.display = '';
+
+			UI_dynamic_publish_setting.style.display = 'none';
+			UI_content_portal_url.style.display = 'none';
+			UI_index_portal_url.style.display = 'none';
+			break;
+		case 2 :
+			document.clientform.data_ContentPSN.disabled = true;
+			document.clientform.data_ContentURL.disabled = true;
+			document.clientform.data_ResourceURL.disabled = false;
+			document.clientform.data_ResourcePSN.disabled = false;
+			UI_resource_psn.style.display = '';
+			UI_resource_url.style.display = '';
+			UI_auto_publish.style.display = '';
+			UI_tpl_setting.style.display = '';
+			UI_index_tpl.style.display = '';
+			UI_content_tpl.style.display = '';
+			UI_img_tpl.style.display = '';
+			UI_content_psn.style.display = 'none';
+			UI_content_url.style.display = 'none';
+			UI_static_publish_setting.style.display = 'none';
+			UI_index_name.style.display = 'none';
+			UI_sub_dir.style.display = 'none';
+			UI_publish_file_format.style.display = 'none';
+
+			UI_dynamic_publish_setting.style.display = '';
+			UI_content_portal_url.style.display = '';
+			UI_index_portal_url.style.display = '';
+			break;
+
+	}
+}
+</script>
+<body onload="setPublishMode([$NodeInfo.PublishMode])">
+
+      <TABLE cellSpacing=0 cellPadding=0 width="96%" border=0  align=center>
+        <TBODY>
+        <TR>
+<form action='[$base_url]o=add_submit' method='post' enctype="multipart/form-data" name='clientform' id=clientform onSubmit='return cate_submit(this);'>
+          <TD 
+          style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; " 
+          vAlign=top class="bigborder" >
+		  
+  <table border="0" cellspacing="1" cellpadding="4" width="100%"  align=center class="table_border">
+
+ 
+    <tr > 
+
+      <td width="20%" class="table_td1">{lang:parent_node} :</td>
+      <td class="table_td2"> [$ParentNodeName]
+      <input name="data_ParentID" type="hidden" id="data_ParentID" value="[$ParentID]"></td>
+    </tr>
+ 	    <tr id="makedir1"> 
+      <td class="table_td1"> {lang:node_type}:</td>
+      <td class="table_td2"> <select name="data_NodeType" id="data_NodeType"  class='flat' onchange="javascript:document.location = '[$base_url]o=add&ParentID=[$ParentID]&NodeType=' + this.value;">
+	  <if $NodeType == 1>
+	       <option value="1" selected>{lang:node_type_1}</option>
+           <option value="2">{lang:node_type_2}</option>
+           <!-- <option value="3">{lang:node_type_3}</option>-->
+
+	  <elseif $NodeType == 2>
+	       <option value="1">{lang:node_type_1}</option>
+           <option value="2" selected>{lang:node_type_2}</option>
+          <!--  <option value="3">{lang:node_type_3}</option>-->
+	  <elseif $NodeType == 3>
+	       <option value="1">{lang:node_type_1}</option>
+           <option value="2">{lang:node_type_2}</option>
+           <!-- <option value="3" selected>{lang:node_type_3}</option>-->
+	  <else>
+	       <option value="1">{lang:node_type_1}</option>
+           <option value="2">{lang:node_type_2}</option>
+           <!--<option value="3">{lang:node_type_3}</option>-->
+	  </if>
+            </select>
+{lang:can_not_change}         </td>
+    </tr>
+     <tr > 
+      <td class="table_td1">{lang:node_name_id} :</td>
+      <td class="table_td2"> <INPUT name="data_NodeGUID" id="data_NodeGUID" size=30  class='flat' value="" >{lang:node_name_id_help}</td>
+    </tr>
+    <tr > 
+      <td class="table_td1">{lang:node_name} :</td>
+      <td class="table_td2"> <INPUT name=data_Name id="data_Name" size=15  class='flat' value="" onMouseOver="setHelp('data_Name')"></td>
+    </tr>
+
+
+
+
+
+	   <tr id="makedir1" onMouseOver="setHelp('setPublishMode')"> 
+      <td class="table_td1">{lang:publish_mode}:</td>
+      <td class="table_td2">
+	  
+	  <input name="data_PublishMode" type="radio" value="1" id="publishMode_2" checked onclick="setPublishMode(1);"> 
+        <label for="publishMode_2"  >{lang:static_publish}</label> <input name="data_PublishMode" type="radio" value="2" id="publishMode_3" onclick="setPublishMode(2);"> 
+        <label for="publishMode_3"  >{lang:dynamic_publish}</label> <input name="data_PublishMode" type="radio" id="publishMode_1" value="0" onclick="setPublishMode(0);"> 
+        <label for="publishMode_1"  >{lang:unpublish}</label>
+	 		
+		</td>
+    </tr>
+    <tr id="UI_resource_psn"> 
+      <td class="table_td1">{lang:resource_psn} :</td>
+      <td class="table_td2"> <input name=data_ResourcePSN  class='flat' id="data_ResourcePSN"   size=50  value="[$NodeInfo.ResourcePSN]">
+        <input name="button5" type='button' tabindex='13' value='...' onclick="psnSelect('[$NodeInfo.ResourcePSN]',this.form,'data_ResourcePSN','data_ResourceURL')"></td>
+    </tr>
+    <tr id="UI_resource_url"> 
+      <td class="table_td1"> {lang:resource_url} :</td>
+      <td class="table_td2"> <INPUT name=data_ResourceURL id="data_ResourceURL" size=50  class='flat'   value="[$NodeInfo.ResourceURL]">
+      </td>
+    </tr>
+
+ 
+<if $NodeType != 2>
+    <tr id="makedir1"> 
+      <td class="table_td1"> {lang:content_model_inherit}:</td>
+      <td class="table_td2"> <select name="data_TableID" id="data_TableID"  class='flat'>
+          <loop $tableInfo key=key var=var>
+		  <if  $NodeInfo.TableID == $var.TableID >
+          <option value="[$var.TableID]" selected>[$var.Name]</option>
+		  <else>
+          <option value="[$var.TableID]">[$var.Name]</option>
+		  </if>
+		  
+ 		 
+          </loop> </select>
+{lang:can_not_change}         </td>
+    </tr>
+<elseif $NodeType == 2>
+    <tr id="makedir1"> 
+      <td class="table_td1"> {lang:node_inherit}:</td>
+      <td class="table_td2"> <select name="data_InheritNodeID" id="data_InheritNodeID"  class='flat'>
+<loop $NODE_LIST var=var>
+ 
+<if $var.NodeType == 1>
+<option value="[$var.NodeID]">[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)]  - &nbsp;[$var.Name]</option>
+</if>
+
+ </loop>		
+
+</select>
+{lang:can_not_change}         </td>
+    </tr>
+</if>
+ 
+
+	  <tr id="UI_auto_publish"> 
+      <td class="table_td1">{lang:auto_publish}:</td>
+      <td class="table_td2">
+	  	  <if $NodeInfo.AutoPublish == 1>
+
+	  <input name="data_AutoPublish" type="radio" value="1" id="AutoPublish_2" checked > 
+        <label for="AutoPublish_2"  >{lang::global:yes}</label> <input name="data_AutoPublish" type="radio" value="2" id="AutoPublish_3" > 
+        <label for="AutoPublish_3"  >{lang::global:no}</label> 
+	  <else>
+	  <input name="data_AutoPublish" type="radio" value="1" id="AutoPublish_2"> 
+        <label for="AutoPublish_2"  >{lang::global:yes}</label> <input name="data_AutoPublish" type="radio" value="2" id="AutoPublish_3"   checked > 
+        <label for="AutoPublish_3"  >{lang::global:no}</label> 
+
+	  </if>
+
+		
+		</td>
+    </tr>  
+  <tr id="makedir1"> 
+      <td class="table_td1"> {lang:editor}:</td>
+      <td class="table_td2"> <select name="data_Editor" id="data_Editor"  class='flat' >
+          <loop $EditorInfo key=key var=var>
+		  <if  $NodeInfo.Editor == $var.Editor >
+          <option value="[$var.Editor]" selected>[$var.EditorName]</option>
+		  <else>
+			
+		   <option value="[$var.Editor]" >[$var.EditorName]</option>
+
+		  </if>
+          </loop> </select>
+         </td>
+    </tr>	
+  <tr id="makedir1"> 
+      <td class="table_td1"> {lang:pager}:</td>
+      <td class="table_td2"> <select name="data_Pager" id="data_Pager"  class='flat' >
+          <loop $PagerInfo key=key var=var>
+		  <if  $NodeInfo.Pager == $var.Pager >
+          <option value="[$var.Pager]" selected>[$var.PagerName]</option>
+		  <else>
+          <option value="[$var.Pager]">[$var.PagerName]</option>
+		  </if>
+          </loop> </select>
+         </td>
+    </tr>
+  <tr id="makedir1"> 
+      <td class="table_td1"> {lang:workflow}:</td>
+      <td class="table_td2"> <select name="data_WorkFlow" id="data_WorkFlow"  class='flat' >
+		  <if test="$NodeInfo.WorkFlow == 0">
+		  <option value="0" selected>{lang:no_workflow}</option>
+		  <else>
+		  <option value="0"  >{lang:no_workflow}</option>
+
+		  </if>
+          <loop $workflowInfo key=key var=var>
+
+
+		  <if  $NodeInfo.WorkFlow == $var.wID >
+          <option value="[$var.wID]" selected>[$var.Name]</option>
+
+		  <else>
+          <option value="[$var.wID]">[$var.Name]</option>
+		  </if>
+          </loop> </select>
+         </td>
+    </tr>
+
+
+    <tr id="UI_tpl_setting"> 
+      <td colspan="2" class="table_header">{lang:tpl_setting}</td>
+    </tr>
+    <tr id="UI_index_tpl""> 
+      <td class="table_td1">{lang:index_tpl} :</td>
+      <td class="table_td2"> <INPUT name=data_IndexTpl id="data_IndexTpl" size=50  class='flat'  value="[$NodeInfo.IndexTpl]">
+        <input type='button' tabindex='13' value='...' onclick="tplSelect('[$NodeInfo.IndexTpl]',this.form,'data_IndexTpl')"> </td>
+    </tr>
+    <tr id="UI_content_tpl"> 
+      <td class="table_td1">{lang:content_tpl} :</td>
+      <td class="table_td2"> <INPUT name=data_ContentTpl id="data_ContentTpl" size=50  class='flat' value="[$NodeInfo.ContentTpl]">
+        <input name="button" type='button' tabindex='13' value='...' onclick="tplSelect('[$NodeInfo.ContentTpl]',this.form,'data_ContentTpl')"> </td>
+    </tr>
+    <tr id="UI_img_tpl"> 
+      <td class="table_td1">{lang:img_tpl} :</td>
+      <td class="table_td2"> <INPUT name=data_ImageTpl id="data_ImageTpl" size=50  class='flat'  value="[$NodeInfo.ImageTpl]">
+        <input name="button2" type='button' tabindex='13' value='...' onclick="tplSelect('[$NodeInfo.ImageTpl]',this.form,'data_ImageTpl')"> </td>
+    </tr>
+    <tr id="UI_static_publish_setting"> 
+      <td colspan="2" class="table_header">{lang:static_publish_setting}</td>
+    </tr>
+	    <tr id="UI_content_psn"> 
+      <td class="table_td1">{lang:content_psn} :</td>
+      <td class="table_td2"> <input name=data_ContentPSN  class='flat' id="data_ContentPSN"   size=50  value="[$NodeInfo.ContentPSN]">
+        <input name="button6" type='button' tabindex='13' value='...' onclick="psnSelect('[$NodeInfo.ContentPSN]',this.form,'data_ContentPSN','data_ContentURL')"></td>
+    </tr>
+    <tr id="UI_content_url"> 
+      <td class="table_td1"> {lang:content_url} :</td>
+      <td class="table_td2"> <INPUT name=data_ContentURL id="data_ContentURL" size=50  class='flat' value="[$NodeInfo.ContentURL]">
+      </td>
+    </tr>
+
+    <tr id="UI_index_name">
+      <td class="table_td1">{lang:index_name} :</td>
+
+      <td class="table_td2"> 
+	  <if $NodeInfo.IndexName != ''>
+	  <INPUT name=data_IndexName id="data_IndexName" size=30  class='flat'  value="[$NodeInfo.IndexName]">
+	  <else>
+	  <INPUT name=data_IndexName id="data_IndexName" size=30  class='flat'  value="index.html">
+	  </if>
+      </td>
+    </tr>
+
+	<tr id="UI_sub_dir"> 
+      <td  class="table_td1">{lang:sub_dir} :</td>
+      <td  class="table_td2"> 
+	  <if $NodeInfo.SubDir != ''>
+	  <INPUT name="data_SubDir" class='flat'  id="RsubDirs"   size=15 value="[$NodeInfo.SubDir]"> 
+	  <else>
+	  <INPUT name="data_SubDir" class='flat'  id="RsubDirs"   size=15 value="Y-m-d"> 
+	  </if>
+
+        &nbsp; <select name="select" class='flat' onchange="
+this.form.data_SubDir.value= this.options[this.selectedIndex].value;
+ ">
+          <option value="">-</option>
+          <option value="">none</option>
+          <option value="Y-m-d">Y-m-d</option>
+          <option value="Y/m/d">Y/m/d</option>
+          <option value="Y-m">Y-m</option>
+          <option value="Y">Y</option>
+           <option value="auto">auto</option>
+      </select> </td>
+    </tr>
+    <tr  id="UI_publish_file_format"> 
+      <td  class="table_td1">{lang:publish_file_format} :</td>
+      <td  class="table_td2"> 
+	  <if $NodeInfo.PublishFileFormat != ''>
+	  <input name=data_PublishFileFormat  class='flat' size=30  id="data_PublishFileFormat" value="[$NodeInfo.PublishFileFormat]" >
+	  <else>
+	  <input name=data_PublishFileFormat  class='flat' size=30  id="data_PublishFileFormat" value="{TimeStamp}d{ContentID}.html" >
+ 	  </if>
+        <input name="button7" type='button' tabindex='13' value='...' onclick="PublishFileFormat(this.form,'data_PublishFileFormat')"> </td>
+    </tr>
+
+	<tr id="UI_dynamic_publish_setting" style="display:none"> 
+      <td colspan="2" class="table_header">{lang:dynamic_publish_setting}</td>
+    </tr>
+    <tr  id="UI_index_portal_url" style="display:none"> 
+      <td  class="table_td1">{lang:index_portal_url} :</td>
+      <td  class="table_td2"> <input name=data_IndexPortalURL  class='flat' size="100%" value="http://[$LicenseInfo.Registered-URL]/publish/bbs.php/{NodeID},{Page}.html" id="data_IndexPortalURL" >
+      </td>
+    </tr>
+    <tr  id="UI_content_portal_url" style="display:none"> 
+      <td  class="table_td1">{lang:content_portal_url} :</td>
+      <td  class="table_td2"> <input name=data_ContentPortalURL  class='flat' size="100%" value="http://[$LicenseInfo.Registered-URL]/publish/bbs.php/{IndexID},{Page}.html" id="data_ContentPortalURL" >
+      </td>
+    </tr>   
+ </table>
+
+
+
+
+</TD>
+       </TR>
+<tr><td>
+<BR>
+<CENTER><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'  > 
+
+<INPUT TYPE="hidden" name="referer" value="[*IN.referer]">
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}">
+</CENTER>	   
+	   </TD>
+	   </form>
+
+	   </TR>
+ </TBODY></TABLE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script language='JavaScript'>
+
+function cate_submit(form)
+{
+	
+	//form.Submit();
+}					
+</script> 
+<script language='JavaScript'>
+<!--
+
+
+var helpArray = new Array();
+
+helpArray['default'] = '{lang:help-data_Name}';
+helpArray['data_Name'] = '{lang:help-data_Name}';
+helpArray['setPublishMode'] = '{lang:help-setPublishMode}';
+
+//-->
+</script>
+
+<include: file="footer.html">

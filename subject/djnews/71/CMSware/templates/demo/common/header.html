@@ -1,0 +1,36 @@
+<div id="header">
+	<div id="headercontent">
+		<div id="logo"><a href="[$SITE_URL]"><img src="[$SKIN_URL]common/img/logo.jpg" alt="[$SITE_NAME]" width="230" height="85" border="0" /></a></div>
+		<div id="loginarea"><!--#CW#此处显示会员登陆信息，是由页面底部(footer.html)中的JS来填充内容，以使得整体页面打开次序优于JS的调用次序，加快页面打开速度#CW#-->&nbsp;</div>
+		<div id="allsearch">
+		<form action="[$PUBLISH_URL]search.php?o=search" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="Field" value="Title">
+		<select name="TableID">
+			<option value="1">新闻</option>
+			<option value="2">下载</option>
+			<option value="3">图片</option>
+			<option value="4">产品</option>
+			<option value="5">影视</option>
+			<option value="6">供求</option>
+		</select>
+		<input type="text" name="Keywords" size="20" maxlength="20" />
+		<input name="submit" type="submit" value="搜索" />
+		</form>
+		</div>
+	</div>
+	<div id="headerside"></div>
+</div>
+<div id="nav">
+	<div class="topside08">
+		<div class="topside08_l">&nbsp;</div>
+		<div class="topside08_c">&nbsp;</div>
+		<div class="topside08_r">&nbsp;</div>
+	</div>
+	<div class="center08"><!--#CW#以下导航请自行修改#CW#-->
+	<a href="[$SITE_URL]">首页</a> | <a href="[$SITE_URL]news/">新闻频道</a> | <a href="[$SITE_URL]download/">下载频道</a> | <a href="[$SITE_URL]photo/">图片频道</a> | <a href="[$PUBLISH_URL]index.php/36,0.html">产品频道</a> | <a href="[$SITE_URL]movie/">影视频道</a> | <a href="[$PUBLISH_URL]index_nc.php/53,0.html">供求信息</a> | <a href="[$PUBLISH_URL]index_v.php/59,0.html">话题</a></div>
+	<div class="bottomside08">
+		<div class="bottomside08_l">&nbsp;</div>
+		<div class="bottomside08_c">&nbsp;</div>
+		<div class="bottomside08_r">&nbsp;</div>
+	</div>
+</div>

@@ -1,0 +1,337 @@
+<include file="TplConfig.html">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>[$Title] - [$NodeInfo.Name] - [$SITE_NAME]</title>
+<meta name="keywords" content="[$NodeInfo.Name],[$SITE_NAME]" />
+
+<link href="[$SKIN_URL]photo/css/style.css" rel="stylesheet" type="text/css" />
+<!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+<script language="jscript" src="[$SKIN_URL]photo/js/js.js"></script>
+
+</head>
+
+<body>
+<include file="../common/header.html" />
+<div class="news_nav"><!--#CW#-- 图片频道附加导航 --#CW#-->
+	<CMS action="NODELIST" return="List" Type="set" NodeID="{$MainNodeID}" /><!--#CW#根据TplConfig中设置的图片频道主结点ID号，生成导航#CW#-->
+	<loop name="List" var="var" key="key" start="1">
+	<a href="[$var.NodeURL]">[$var.NodeName]</a><if test="$key < count($List)"> | </if><!--#CW#如果已循环到最后一条，则不显示最后的|#CW#-->
+	</loop>
+</div>
+
+
+
+<div class="content">
+
+	<div class="left">
+
+        <!--#CW#--左边样式1--#CW#-->
+
+		<div class="topside01">
+
+			<div class="topside01_l">&nbsp;</div>
+			<div class="topside01_c">&nbsp;</div>
+			<div class="topside01_r">&nbsp;</div>
+		</div>
+		<!--#CW#--复制到论坛上的图片链接值--#CW#-->
+		<op exp="$PhotoBbs = HavePhoto($Publish.Content)" />
+		<input id="PhotoUrlBbs" type="hidden" value="<loop name="PhotoBbs" key="key" var="var">[img][$var][/img]<br /></loop>" />
+		<!--#CW#--复制网页地址的值--#CW#-->
+		<input id="PhotoUrl" type="hidden" value="[$URL]" />
+		<div class="center01" id="newsfocus">
+          <div class="focus" style="float:none; text-align:center; height:30px;"><a href="#">[$Title]</a></div>
+            <div class="photo_subinfo"><a class="photo_subinfo_but" href="[@HavePhoto($Content,1)]" target="_blank">放大图片</a>&nbsp;<a class="photo_subinfo_but" href="#" onclick="CopyToBbs('PhotoUrlBbs')">复制到论坛</a>&nbsp;<a class="photo_subinfo_but" href="#" onclick="CopyUrl('PhotoUrl')">发给好友</a>&nbsp;<a class="photo_subinfo_but" href="#" onclick="AddFavorite('[$URL]','[$Title]')">收藏图片</a>&nbsp;人气:<font color="#FF0000"><script src="[$PUBLISH_URL]counter.php?o=display_counter&Id=[$IndexID]"></script></font>&nbsp;<label><if test="!empty($PageNav)">
+	<select name="sNavigate" style=font-size:9pt  onchange=javascript:window.location=(this.options[this.selectedIndex].value)>
+	<?php $this->_tpl_vars['PageReg'] = "/<b>\[([0-9]*)\]<\/b>/i";?><!--#CW#正则规则赋值#CW#-->
+	<op exp="@preg_match($PageReg,$PageList,$NowPage)" /><!--#CW#按照正则规则搜索$PageList得到下一页页码#CW#-->
+	<op exp="$NextPage = $NowPage.1" /><!--#CW#下一页页码赋值#CW#-->
+	<op exp="$PageNav_tmp = $PageNav" />
+	<loop name="PageNav_tmp" key="key" var="var" start="1">
+	<if test="$key == $NextPage">
+	<option value="[$var.URL]" selected>第[$key]张</option>
+	<else>
+	<option value="[$var.URL]">第[$key]张</option>
+	</if>
+	</loop>
+	</select>
+</if></label></div>
+
+            <div id="Content" class="sonfocus" style="text-align:center; height:auto; margin:0 0 10px 0">
+			<if test="$NextPage < count($PageNav)">
+			<a href="[$PageNav.{$NextPage}.URL]" title="点击图片到下一页"><img onload="if(this.width > 700){this.width=700;}" src="[@HavePhoto($Content,1)]" /></a>
+			<else>
+            <CMS action="LIST" return="nextList" NodeID="{$NodeID}" Num="1" where="i.PublishDate < {$PublishDate} " />
+			<loop name="nextList" var="var" key="key">
+			<a href="[$var.URL]" title="点击图片到下一组图片"><img onload="if(this.width > 700){this.width=700;}" src="[@HavePhoto($Content,1)]" /></a>
+            </loop>
+			</if>
+			</div>
+            <div class="photo_content_page">[$PageList]</div>  
+
+		</div>
+
+		<div class="bottomside01">
+
+			<div class="bottomside01_l">&nbsp;</div>
+
+			<div class="bottomside01_c">&nbsp;</div>
+
+			<div class="bottomside01_r">&nbsp;</div>
+
+		</div>
+
+        <!--#CW#--上下篇图片--#CW#-->
+
+        <div class="topside02">
+
+			<div class="topside02_l">&nbsp;</div>
+
+			<div class="topside02_c">&nbsp;</div>
+
+			<div class="topside02_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center02">
+
+            <CMS action="LIST" return="backList" NodeID="{$NodeID}" Num="1" where="i.PublishDate > {$PublishDate}" orderby="i.PublishDate ASC"/>
+
+            <LOOP name="backList" var="var" key="key"> 
+
+				<div class="photo_content_sh"><span>上一组图片：</span><a href="[$var.URL]">[$var.Title]</a>&nbsp;&nbsp;<font color="#FF0000"></font></div>
+
+			</LOOP>
+
+            <CMS action="LIST" return="nextList" NodeID="{$NodeID}" Num="1" where="i.PublishDate < {$PublishDate} " />
+
+			<LOOP name="nextList" var="var" key="key"> 
+
+				<div class="photo_content_sh"><span>下一组图片：</span><a href="[$var.URL]">[$var.Title]</a>&nbsp;&nbsp;<font color="#FF0000"></font></div>
+
+			</LOOP>
+
+		</div>
+
+		<div class="bottomside02">
+
+			<div class="bottomside02_l">&nbsp;</div>
+
+			<div class="bottomside02_c">&nbsp;</div>
+
+			<div class="bottomside02_r">&nbsp;</div>
+
+		</div>	
+
+	<!--#CW#--相关图片--#CW#-->
+
+    	<div class="topside01">
+
+			<div class="topside01_l">&nbsp;</div>
+
+			<div class="topside01_c">&nbsp;</div>
+
+			<div class="topside01_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center01" id="newsfocus">
+
+
+
+			<div class="focus"><a href="#">相关图片</a></div>
+
+          	<div class="sonfocus">
+
+				<!--#CW#--通过上面返回的节点号调出返回节点下的列表--#CW#-->
+
+            <CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="20" Orderby="rand()" />
+
+            <loop name="List" var="var" key="key" start="1"> 
+
+            <if test="$key%5 == 0">
+
+            	<div class="photo_box" style="margin-right:0;">
+
+                	<div class="photo_img"><a href="[$var.URL]" title="[$var.Title]"><img src="[@AutoMini2(HavePhoto($var.Content,1),'134*89',$var,'1','1')]" border="0" alt="[$var.Title]" /></a></div>
+
+                    <div class="photo_title"><a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10,'')]</a></div>
+
+                 </div>
+
+  	  	  	</div>
+
+            <div class="sonfocus">
+
+            <elseif test="$key == 20">
+
+            	<div class="photo_box" style="margin-right:0;">
+
+                	<div class="photo_img"><a href="[$var.URL]" title="[$var.Title]"><img src="[@AutoMini2(HavePhoto($var.Content,1),'134*89',$var,'1','1')]" border="0" alt="[$var.Title]" /></a></div>
+
+                    <div class="photo_title"><a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10,'')]</a></div>
+
+                 </div>
+
+            <else>
+
+            	<div class="photo_box">
+
+                	<div class="photo_img"><a href="[$var.URL]" title="[$var.Title]"><img src="[@AutoMini2(HavePhoto($var.Content,1),'134*89',$var,'1','1')]" border="0" alt="[$var.Title]" /></a></div>
+
+                    <div class="photo_title"><a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10,'')]</a></div>
+
+                 </div>
+
+            </if>
+
+			</loop>
+
+  	  	  </div>
+
+        </div>
+
+		<div class="bottomside01">
+
+			<div class="bottomside01_l">&nbsp;</div>
+
+			<div class="bottomside01_c">&nbsp;</div>
+
+			<div class="bottomside01_r">&nbsp;</div>
+
+		</div>
+
+    </div>
+
+	<!--#CW#--右边列开始--#CW#-->
+
+	<div class="right">
+
+		<!--#CW#--右边样式2--#CW#-->
+
+        <div class="topside05">
+
+			<div class="topside05_l">&nbsp;</div>
+
+			<div class="topside05_c">&nbsp;</div>
+
+			<div class="topside05_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center05">
+
+        	<div class="photo_fous">本类热图</div>
+
+			<!--#CW#-- 本类热图 --#CW#-->
+
+            <CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$Content_LeftHot_Num}" OrderBy="{$Content_LeftHot_OrderBy}" />
+
+            <loop name="List" var="var" key="key">
+
+            <a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10,'')]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside05">
+
+			<div class="bottomside05_l">&nbsp;</div>
+
+			<div class="bottomside05_c">&nbsp;</div>
+
+			<div class="bottomside05_r">&nbsp;</div>
+
+		</div>
+
+        
+
+        <div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<div class="photo_fous">本类推荐</div>
+
+            <!--#CW#-- 本类推荐 --#CW#-->
+
+			<CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$Content_LeftPink_Num}" where="{$Content_LeftPink_where}" />
+
+            <loop name="List" var="var" key="key">
+
+            <a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10,'')]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+
+        <!--#CW#--右边样式1--#CW#-->
+
+        <div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<div class="photo_fous">总点击排行</div>
+
+            <!--#CW#-- 本类点击排行 --#CW#-->
+
+           <CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}" Num="{$Content_LeftHits_Total_Num}" OrderBy="{$Content_leftHits_Total_OrderBy}" />
+
+            <loop name="List" var="var" key="key">
+
+            <a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10,'')]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+</div>
+<include file="../common/footer.html" />
+</body>
+
+</html>
+

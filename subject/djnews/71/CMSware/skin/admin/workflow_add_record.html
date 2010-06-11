@@ -1,0 +1,72 @@
+<include: file="header.html">
+   
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+<form name='clientform' id=clientform method='post' action='[$base_url]o=add_record_submit&wID=[$workflowInfo.wID]' >
+    <tr> 
+      <td colspan="2" class="table_header">{lang:xinzenggongzuoliujiedian} - [$workflowInfo.Name] </td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:zhixingren}:</td>
+      <td class="table_td2">
+ <select name="data_Executor" >
+           <option value="0" >{lang:sys_auto}</option>
+         <loop $gInfo var=var>
+		  <if $RecordInfo.Executor == $var.gId> 
+          <option value="[$var.gId]" selected>[$var.gName]</option>
+          <else> 
+          <option value="[$var.gId]">[$var.gName]</option>
+          </if> 
+		  </loop> </select>
+</td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:jiediancaozuoming}:</td>
+      <td class="table_td2"><input name='data_OpName' type='text' class='flat'   tabindex='8'    size='25' value="[$RecordInfo.OpName]"></td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:caozuozhuangtaima}:</td>
+      <td class="table_td2"><input name='data_StateAfterOp' type='text' class='flat'   tabindex='8'    size='25' value="[$RecordInfo.StateAfterOp]">  {lang:conggaojianzhuangtai}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:caozuoqianzhuangtaima}:</td>
+      <td class="table_td2"><input name='data_StateBeforeOp' type='text' class='flat'   tabindex='8'    size='25' value="[$RecordInfo.StateBeforeOp]">  {lang:conggaojianzhuangtaiduoge}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:xinxifujia}:</td>
+      <td class="table_td2"> <input name="data_AppendNote" type="radio" id="hawking33" value="1"  > 
+        <label for="hawking33"  >{lang::global:yes}</label> 
+        <input name="data_AppendNote" type="radio" value="0" id="hawking53" checked> 
+        <label for="hawking53"  >{lang::global:no}</label>  {lang:jinxinggaicaozuo}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:caozuoshuoming}:</td>
+      <td class="table_td2"><TEXTAREA NAME="data_OpIntro" ROWS="10" COLS="50">[$RecordInfo.OpIntro]</TEXTAREA></td>
+    </tr>  
+
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+
+
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+    <tr> 
+      <td colspan="2" class="table_header">{lang:gaojianzhuangtaima} </td>
+    </tr>
+    <tr > 
+      <td align="center" class="table_td1">{lang:zhuangtaimingcheng}</td>
+      <td align="center" class="table_td1">{lang:zhuangtaima}</td>
+    </tr>
+<loop $workflowState key=key var=var>
+    <tr > 
+      <td class="table_td1">[$var.Name]</td>
+      <td class="table_td1">[$var.State]</td>
+     
+    </tr>
+</loop>
+
+   
+  </table>
+
+<include: file="footer.html">

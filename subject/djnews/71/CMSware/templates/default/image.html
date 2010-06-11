@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>[$Title]</title>
+<meta name="description" content="CmsWare 让你自由自在地做网站" />
+<link type="text/css" href="[$Skin_Images]pale_blue_skin/css/css.css" rel="stylesheet"  />
+<link type="text/css" href="[$Skin_Images]pale_blue_skin/css/images.css" rel="stylesheet"  />
+<SCRIPT language=JavaScript>
+function doZoom(size){
+	document.getElementById('zoom').style.fontSize=size+'px'
+         
+}
+</SCRIPT>
+<script type="text/javascript" src="[$Skin_Images]pale_blue_skin/Js/exlink.js"></script>
+</head>
+<body>
+<div id="header">
+<div id="top">
+<div id="top_flot">
+<p id="calendar">
+<script type="text/javascript" src="[$Skin_Images]pale_blue_skin/Js/date.js">
+</script> CmsWare
+</p>
+<p id="banner">
+<include: file="/org.cmsware.demo/include/banner1.htm"></p>
+</div>
+<div id="logo">
+<img alt="logo" src="[$Skin_Images]pale_blue_skin/images/newlogo.gif" />
+</div>
+</div>
+<include: file="/org.cmsware.demo/include/header.htm">
+
+
+</div>
+
+</div>
+
+<div id="main">
+
+<div id="u_place">
+您的位置:
+<CMS action="NODE" return="NodeInfo" />
+<loop name="NodeInfo.Navigation" key="key" var="var" >
+<if $key == 0>
+<A href=" [$var.URL] "> [$var.Name] </A> 
+<else>
+→ <A href=" [$var.URL] "> [$var.Name] </A>
+</if> 
+
+</loop>
+ 
+</div>
+<div align="center" style="PADDING-RIGHT: 48px; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 20px" >
+[$Title]　[@date('Y-m-d H:i', $PublishDate)]　
+</div>
+<CENTER>
+<TABLE height=482 cellSpacing=0 cellPadding=0 width=683 align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD>
+           <TABLE cellSpacing=0 cellPadding=0 width=664 align=center 
+              border=0><TBODY>
+              <TR>
+                <TD><IMG src="[$PUBLISH_URL]images/2_03.jpg"></TD>
+                <TD background=[$PUBLISH_URL]images/2_04.jpg colSpan=2></TD>
+                <TD><IMG src="[$PUBLISH_URL]images/2_06.jpg"></TD></TR>
+              <TR>
+                <TD background=[$PUBLISH_URL]images/2_08.jpg></TD>
+                <TD colSpan=2><A 
+                  href="[$Photo]" 
+                  target=_blank><IMG 
+                  src="[$Photo]" 
+                  width=600 border=0 height="500"></A></TD>
+                <TD background=[$PUBLISH_URL]images/2_10.jpg></TD></TR>
+              <TR>
+                <TD><IMG src="[$PUBLISH_URL]images/2_13.jpg"></TD>
+                <TD 
+                style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 5px" 
+                align=right width=500 background=[$PUBLISH_URL]images/2_14.jpg 
+                  height=37><A class=n01 
+                  href="[$Photo]" 
+                  target=_blank>点击查看原图</A></TD>
+                <TD 
+                style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 5px" 
+                width=100 background=[$PUBLISH_URL]images/2_14.jpg height=37><A 
+                  href="[$Photo]" 
+                  target=_blank><IMG src="[$PUBLISH_URL]images/1_21.jpg" border=0></A></TD>
+                <TD><IMG src="[$PUBLISH_URL]images/2_16.jpg"></TD></TR></TBODY></TABLE></TD>
+          <TD vAlign=top width=9 background=[$PUBLISH_URL]images/1_14.jpg><IMG 
+            src="[$PUBLISH_URL]images/1_12.jpg"></TD></TR>
+        <TR>
+          <TD background=[$PUBLISH_URL]images/1_25.jpg height=8><IMG 
+            src="[$PUBLISH_URL]images/1_24.jpg"></TD>
+          <TD><IMG src="[$PUBLISH_URL]images/1_32.jpg"></TD></TR></TBODY></TABLE>
+    <TABLE cellSpacing=0 cellPadding=0 width=683 align=center border=0>
+        <TBODY>
+        <TR>
+                <TD class=f12 style="PADDING-RIGHT: 10px; PADDING-LEFT: 10px" 
+          align=right height=50>　　【<a href="[$PUBLISH_URL]comment.php?o=display&Id=[$IndexID]">查看评论</a>】 【<A 
+            href="#">推荐</A>】 【<A href="javascript:doZoom(16)">大</A> <A 
+            href="javascript:doZoom(14)">中</A> <A 
+            href="javascript:doZoom(12)">小</A>】 【<A 
+            href="javascript:window.close()">关闭</A>】 </TD>
+              </TR>
+        <TR>
+          <TD height=10></TD></TR>
+        <TR>
+          <TD bgColor=#000000 height=1></TD></TR>
+        <TR>
+          <TD background=[$PUBLISH_URL]images/1_07.jpg height=1></TD></TR>
+        <TR>
+          <TD class=f14 
+          style="PADDING-RIGHT: 20px; PADDING-LEFT: 20px; PADDING-BOTTOM: 8px; PADDING-TOP: 10px" 
+          align=middle bgColor=#f4f4f4><FONT id=zoom><B>图片说明</B> </FONT></TD></TR>
+        <TR>
+          <TD class=l15 
+          style="PADDING-RIGHT: 20px; PADDING-LEFT: 20px; PADDING-BOTTOM: 20px; PADDING-TOP: 0px" 
+          bgColor=#f4f4f4><FONT id=zoom>　　[$Intro]<BR></FONT></TD></TR>
+        <TR>
+          <TD height=15></TD></TR></TBODY></TABLE>
+           </TD>
+      </TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+
+</CENTER>
+
+</TD></TR> 
+<TR>
+          <TD height=10></TD></TR>
+		  
+		  </TABLE>
+<span class="cls"></span> 
+</div>		  
+<include: file="/org.cmsware.demo/include/footer.htm">		  
+</BODY></HTML>

@@ -1,0 +1,106 @@
+<meta name="keywords" content="cmsware,cms- Powered By CMSware 2.6.2 Plus " >
+<meta name="description" content="cmsware- Powered By CMSware 2.6.2 Plus " >
+</HEAD>
+<style>
+body			{   font-family: Tahoma; color: #000000; font-size: 11px  }
+td			{ font-family: Tahoma; color: #000000; font-size: 11px }
+
+</style>
+<H1>CMSware WEB API
+</H1>
+<H3>使用方法: http://cmsware/api/index.php?password=***&o=***&id=***&sub=***<br>
+</H3>
+<UL>
+		<LI><B>password</B>: API访问密码
+		<LI><B>o</B>: 调用功能
+		<LI><B>id</B>: 调用ID
+		<LI><B>sub</B>: 是否包含子ID
+	</UL>	
+注意：结点更新、采集等功能可能需要很长的执行时间，建议使用CMSware shell来执行，如果你确实想用CMSwareWebAPI来调用，请设置php.ini的max_execution_time 为更大数值，否则会导致运行超时。
+<BR><BR>
+
+	<table border=1>
+<tr>
+<td>功能名称</td>	
+<td>o</td>	
+<td>id</td>	
+<td>sub</td>	
+<td>说明</td>	
+	</tr>
+		
+<tr>
+<td>更新结点首页</td>	
+<td>refreshNodeIndex</td>	
+<td>NodeID[=1,2,3]</td>	
+<td>0或1</td>	
+<td>http://cmsware/api/index.php?password=xxx&o=refreshNodeIndex&id=1&sub=1<br>
+更新id为1(id=NodeID)的结点首页，多个id用英文,号分隔，sub为是否包含子结点（包含置1，否则置0）.</td>
+</tr>
+
+<tr>
+<td>更新结点附加发布</td>	
+<td>refreshNodeExtra</td>	
+<td>NodeID[=1,2,3]</td>	
+<td>0或1</td>	
+<td>http://cmsware/api/index.php?password=xxx&o=refreshNodeExtra&id=1&sub=1<br>
+更新id为1(id=NodeID)的结点附加发布，多个id用英文,号分隔，sub为是否包含子结点（包含置1，否则置0）.</td>
+</tr>
+
+
+<tr>
+<td>更新结点内容页</td>	
+<td>refreshNodeContent</td>	
+<td>NodeID[=1,2,3]</td>	
+<td>0或1</td>	
+<td>http://cmsware/api/index.php?password=xxx&o=refreshNodeContent&id=1&sub=1<br>
+更新id为1(id=NodeID)的结点内容页，多个id用英文,号分隔，sub为是否包含子结点（包含置1，否则置0）.</td>
+</tr>
+
+<tr>
+<td>发布结点内容页</td>	
+<td>publishNodeContent</td>	
+<td>NodeID[=1,2,3]</td>	
+<td>0或1</td>	
+<td>http://cmsware/api/index.php?password=xxx&o=publishNodeContent&id=1&sub=1<br>
+发布id为1(id=NodeID)的结点内容页，多个id用英文,号分隔，sub为是否包含子结点（包含置1，否则置0）.</td>
+</tr>
+
+
+<tr>
+<td>更新附加发布</td>	
+<td>refreshExtra</td>	
+<td>PublishID[=1,2,3]</td>	
+<td>-</td>	
+<td>http://cmsware/api/index.php?password=xxx&o=refreshExtra&id=1<br>
+发布id为1(id=PublishID)的结点内容页，多个id用英文,号分隔.</td>
+</tr>
+
+<tr>
+<td>更新内容页</td>	
+<td>refreshContent</td>	
+<td>IndexID[=1,2,3]</td>	
+<td>-</td>	
+<td>http://cmsware/api/index.php?password=xxx&o=refreshContent&id=1<br>
+更新id为1(id=IndexID)的内容页，多个id用英文,号分隔.</td>
+</tr>
+
+<tr>
+<td>发布内容页</td>	
+<td>publishContent</td>	
+<td>IndexID[=1,2,3]</td>	
+<td>-</td>	
+<td>http://cmsware/api/index.php?password=xxx&o=publishContent&id=1<br>
+发布id为1(id=IndexID)的内容页，多个id用英文,号分隔.</td>
+</tr>
+
+<tr>
+<td>启动结点采集</td>	
+<td>collection</td>	
+<td>CateID[=1,2,3]</td>	
+<td>-</td>	
+<td>http://cmsware/api/index.php?password=xxx&o=collection&id=1<br>
+启动结点id为1(id=CateID)的采集进程，多个id用英文,号分隔.</td>
+</tr>
+ 
+ 
+</table>

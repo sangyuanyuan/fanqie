@@ -1,0 +1,266 @@
+<!--<script type="text/javascript" src="../html/cms_block_show_src.js"></script>-->
+
+ <SCRIPT>
+ 
+ 
+
+
+function refreshWorkArea() {
+	parent.document.location.reload();
+}
+
+
+function doCMSblockEdit(id) {
+	var leftPos = (screen.availWidth-770) / 2;
+	var topPos = (screen.availHeight-660) / 2 ;
+	imageWin = window.open("admin_cms_block.php?sId=[$sId]&NodeID=[$NodeID]&o=edit&id=" + id ,'','width=680,height=460,scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+ 
+}
+
+	function mouseover(item)
+			{
+				//border-color: #FFFFFF; border-width: 1px; border-style: solid\"
+				item.style.borderStyle = "solid";
+				item.style.borderWidth = "1px";
+				item.style.borderColor = "#003399";
+				item.style.background = "#CCCCFF";
+			}
+			function mouseout(item)
+			{
+				item.style.borderStyle = "";
+				item.style.borderWidth = "1px";
+				item.style.borderColor = "";
+				item.style.background = "";
+			}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=<?echo CHARSET;?>">
+<script type="text/javascript">
+
+var ie55 = /MSIE ((5\.[56789])|([6789]))/.test( navigator.userAgent ) &&
+			navigator.platform == "Win32";
+
+if ( !ie55 ) {
+	window.onerror = function () {
+		return true;
+	};
+}
+
+function writeNotSupported() {
+	if ( !ie55 ) {
+		document.write( "<p class=\"warning\">" +
+			"This script only works in Internet Explorer 5.5" +
+			" or greater for Windows</p>" );
+	}
+}
+
+</script>
+<script type="text/javascript">
+
+function getQueryString( sProp ) {
+	var re = new RegExp( sProp + "=([^\\&]*)", "i" );
+	var a = re.exec( document.location.search );
+	if ( a == null )
+		return "";
+	return a[1];
+};
+
+function changeCssFile( sCssFile ) {
+	var loc = String(document.location);
+	var search = document.location.search;
+	if ( search != "" )
+		loc = loc.replace( search, "" );
+	loc = loc + "?css=" + sCssFile;
+	document.location.replace( loc );
+}
+
+var cssFile = getQueryString( "css" );
+if ( cssFile == "" )
+	cssFile = "../html/menu/skins/winclassic.css";
+
+document.write("<link type=\"text/css\" rel=\"StyleSheet\" href=\"" + cssFile + "\" />" );
+
+</script>
+
+<script type="text/javascript" src="../html/menu/js/poslib.js"></script>
+<script type="text/javascript" src="../html/menu/js/scrollbutton.js"></script>
+<script type="text/javascript" src="../html/menu/js/menu4.js"></script>
+<style type="text/css">
+<!--
+.cmsButton {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	background-color: #F1F1F1;
+	border: 1px solid #999;
+}
+-->
+</style>
+</head>
+<script src="ui.php?sId=[$sId]&o=functions.js" type="text/javascript" language="javascript"></script>
+<SCRIPT language=JavaScript>
+var NodeID = '<?=$IN['NodeID']?>';
+var sId = '<?=$IN['sId']?>';
+var PATH = '<?=$IN['PATH']?>';
+var targetFile = '<?=$IN['targetFile']?>';
+var o = '<?=$IN['o']?>';
+
+</script>
+<body bgcolor=threedface STYLE="margin:0pt;padding:0pt;border: 1px buttonhighlight;"  >
+<script type="text/javascript">
+//<![CDATA[
+
+// set css file to use for menus
+//Menu.prototype.cssFile = cssFile;
+
+//var tmp;
+
+
+
+// edit menu
+/*
+eMenu.add( pasteItem = new MenuItem( "Paste", function () { document.execCommand( "Paste" ); }, "../../html/menu/images/paste.small.png" ) );
+pasteItem.mnemonic = "p";
+
+eMenu.add( deleteItem = new MenuItem( "Delete", function () { document.execCommand( "Delete" ); }, "../../html/menu/images/delete.small.png" ) );
+deleteItem.mnemonic = "d";
+
+
+eMenu.add( new MenuSeparator() );
+
+eMenu.add( searchItem = new MenuItem( "Search", function () { showModelessDialog("<?=INCLUDE_PATH?>editor/class.devedit.php?ToDo=FindReplace&DEP1=./&DEP=./", document.FM, "dialogWidth:385px; dialogHeight:165px; scroll:no; status:no; help:no;" );} ) );
+eMenu.add( new MenuSeparator() );
+
+eMenu.add( selectAllItem = new MenuItem( "Select All", function () { document.execCommand( "SelectAll" ); } ) );
+selectAllItem.mnemonic = "a";
+*/
+var oldOpenState = null;	// used to only change when needed
+var lastKeyCode = 0;
+var lastEvent = null;
+var lastEvent_x= null;
+var lastEvent_y= null;
+
+var event_clientX_lefter = null;
+var event_offsetX_leftoff = null;
+var event_clientY_topper = null;
+var event_offsetY_topoff = null;
+
+	var oPopup = window.createPopup();
+
+	function showPopupText(textid)
+	{
+    
+	var lefter =  event_clientX_lefter + lastEvent_x;
+	var leftoff = event_offsetX_leftoff
+	var topper = event_clientY_topper + lastEvent_y;
+	var topoff = event_offsetY_topoff;
+	var oPopBody = oPopup.document.body;
+	var cBgColor='#FFFFE1';
+	var cColor='#000000';
+	var cBorderColor='#000000';
+
+	 
+	//elo=window.event.srcElement;
+
+	//var o=lastEvent;
+	//MouseX=lastEvent_x;
+	//MouseY=lastEvent_y;
+	eval("var HTMLContent = " + textid +".innerHTML;");
+
+	HTMLContent ="<div  id='dypopLayer' style='overflow:auto;background-color: "+cBgColor+";color:"+cColor+"; border: 1px "+cBorderColor+" solid;font-family: \"Courier New\", \"Courier\"; font-size: 12px;  padding-right: 4px; padding-left: 4px; height: 20px; padding-top: 2px; padding-bottom: 2px; width:100%;height:100%;'  >"+
+	HTMLContent +
+	"</div>";
+	
+ 
+		if(HTMLContent.length > 1500) {
+			width = '600';
+			height = '350';
+		} else {
+			width = '400';
+			height = '200';
+		
+		}
+
+
+
+	//eval("oPopBody.innerHTML = " + textid +".innerHTML;");
+	oPopBody.innerHTML =  HTMLContent;
+ 	oPopup.show(lefter - leftoff - 2 , topper - topoff + 20, width, height, document.body);
+	//oPopup.document.body.innerHTML =  '' ;
+
+	return false;
+	}
+
+
+
+function rememberKeyCode() {
+	lastKeyCode = window.event.keyCode;
+}
+var blockid=null;
+function showContextMenu(bid) {
+	lastEvent = event.srcElement;
+	lastEvent_x = event.x;
+	lastEvent_y = event.y;
+ 
+	var lefter =  event_clientX_lefter;
+	var leftoff = event_offsetX_leftoff
+	var topper = event_clientY_topper;
+	var topoff = event_offsetY_topoff;
+
+	var eMenu = new Menu()
+	blockid=bid;
+	var undoItem, cutItem, copyItem, pasteItem, deleteItem, selectAllItem;
+
+	// undo is broken in IE
+	// eMenu.add( undoItem = new MenuItem( "Undo", function () { document.execCommand( "Undo" ); }, "images/undo.small.png" ) );
+	// undoItem.mnemonic = "u";
+	//
+	//
+	// eMenu.add( new MenuSeparator() );
+
+
+	eMenu.add( cutItem = new MenuItem( "{lang:view_cms_block}",    function () { showPopupText('d'+blockid); } , "../html/menu/images/notepad.png" ) );
+	cutItem.mnemonic = "t";
+
+	eMenu.add( copyItem = new MenuItem( "{lang:edit_cms_block}", function () { doCMSblockEdit(blockid) ;}, "../html/menu/images/copy.small.png" ) );
+	copyItem.mnemonic = "c";
+
+	eMenu.add( cancelItem = new MenuItem( "{lang:cancel}", function () { } ) );
+	copyItem.mnemonic = "d";
+
+	// find left and top
+	var left, top;
+ 
+	if ( lastKeyCode == 93 ) {	// context menu key
+		left = posLib.getScreenLeft( el );
+		top = posLib.getScreenTop( el );
+	}
+	else {
+		left = window.event.screenX;
+		top = window.event.screenY;
+	}
+
+ 
+		eMenu.show( left, top );
+
+	event.returnValue = false;
+	lastKeyCode = 0
+};
+
+//document.attachEvent( "oncontextmenu", showContextMenu );
+//document.attachEvent( "onkeyup", rememberKeyCode );
+
+//]]>
+
+</script>
+<script type="text/javascript">
+writeNotSupported();
+
+</script>
+
+[$content]
+<loop name="blockSrc" var="var" key="key">
+ <div id="d[$var.id]" style="display:none">
+		[$var.data]
+		 </div> 
+	
+</loop>

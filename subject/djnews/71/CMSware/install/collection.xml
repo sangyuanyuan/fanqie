@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="gb2312"?>
+<collections>
+	<collection>
+		<name>新华网新闻频道</name>
+		<TableID>1</TableID>
+		<file>xinhua.dat</file>
+	</collection>
+	<collection>
+		<name>华军软件园</name>
+		<TableID>2</TableID>
+		<file>newhua.dat</file>
+	</collection>
+</collections>

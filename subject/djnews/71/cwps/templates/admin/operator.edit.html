@@ -1,0 +1,78 @@
+<include: file="header.html">
+<script language="JavaScript">
+function prepareSubmit() {
+ 
+		return true;
+}
+
+
+</script>
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="operator.do">操作管理</A> -&gt; 修改记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form name="operatorForm" action="operator.do?o=edit_submit&OpID=[$RecordInfo.OpID]" method='post' enctype="multipart/form-data" >
+    <tr> 
+      <td colspan="2" class="table_header">修改操作</td>
+    </tr>
+
+<tr>
+<td class="table_td1">操作名称:</td>
+<td class="table_td2">
+			<input name="OpName" type='text' class='flat'  tabindex='8' value="[@htmlspecialchars($RecordInfo.OpName)]">
+
+	</td>
+</tr>
+<tr>
+<td class="table_td1">权限:</td>
+<td class="table_td2">
+			<select name="PID" id="PID">
+<loop name="SrcPID" var="var" key="key">
+<if test="$var.value == $RecordInfo.PID">
+		<option value="[$var.value]" selected>[$var.title]</option>
+<else>
+		<option value="[$var.value]">[$var.title]</option>
+</if>
+</loop>
+		</select>
+
+	</td>
+</tr>
+<tr>
+<td class="table_td1">资源:</td>
+<td class="table_td2">
+			<select name="RID" id="RID">
+<loop name="SrcRID" var="var" key="key">
+<if test="$var.value == $RecordInfo.RID">
+		<option value="[$var.value]" selected>[$var.title]</option>
+<else>
+		<option value="[$var.value]">[$var.title]</option>
+</if>
+</loop>
+		</select>
+
+	</td>
+</tr>
+<tr>
+<td class="table_td1">启用:</td>
+<td class="table_td2">
+			<input type="radio" name="Enabled"   class="flat"  tabindex="8" value="{$RecordInfo.Enabled}"> 		<option value="1">是</option>		<option value="0">否</option>		</input>
+	</td>
+</tr>
+
+
+   
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13' onClick="return prepareSubmit();"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<include: file="footer.html">

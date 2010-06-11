@@ -1,0 +1,42 @@
+程序可用变量
+用户Session ： $UserSession
+
+
+模板可用变量
+
+用户Session ： $UserSession
+
+
+$UserSession = Array
+(
+    [sId] => 439c1ca6cff949870d95eac1ebdcfe23
+    [UserName] => root
+    [UserID] => 1
+    [GroupID] => 2
+    [LogInTime] => 1146730791
+    [RunningTime] => 1146733143
+    [Ip] => 127.0.0.1
+    [SessionData] => Array
+        (
+            [OWNED-OPERATORS] => Array
+                (
+                    [0] => Edit-Download
+                    [1] => Add-News
+                )
+
+        )
+
+    [CWPS_SessionActiveTime] => 1146733176
+)
+
+
+论坛模式示例
+
+发贴/回复post.php接口
+
+发贴：o=add&NodeID=?
+发贴提交：o=add_submit&NodeID=?&Topic=?&Content=?
+
+回复：o=reply&NodeID=?&IndexID=?
+回复提交：o=reply_submit&NodeID=?&IndexID=?&content=?
+

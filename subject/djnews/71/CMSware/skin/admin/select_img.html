@@ -1,0 +1,143 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> <META HTTP-EQUIV="Expires" CONTENT="0"> 
+<title>Insert Image</title>
+<style>
+
+body {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	background: #ffffff; 
+	width: 100%;
+	overflow:hidden;
+	border: 0;
+}
+
+body,tr,td,select {
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+
+div.imagespacer {
+	width: 100;
+	height: 116;
+	text-align: center;			
+	float: left;
+	font: 10pt verdana;
+	margin: 5px;
+	overflow: hidden;
+}
+div.imageholder {
+	margin: 0px;
+	padding: 0px;
+	border: 1 solid #CCCCCC;
+	width: 100;
+	height: 100;
+}
+
+div.titleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 100;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;			
+}		
+
+</style>
+<script language=javascript src="../html/mouse_up.js"></script>
+
+<script language="javascript">
+lastDiv = null;
+function divClick(theDiv,filename) {
+	if (lastDiv) {
+		lastDiv.style.border = "1 solid #CCCCCC";
+	}
+	lastDiv = theDiv;
+	theDiv.style.border = "2 solid #316AC5";
+	
+	document.getElementById("FileToDelete").value = filename;
+
+}
+function gotoFolder(rootfolder,newfolder) {
+	window.navigate("ftb.imagegallery.aspx?frame=1&rif=" + rootfolder + "&cif=" + newfolder);
+}		
+function returnImage(imagename,width,height) {
+	var arr = new Array();
+	arr["filename"] = imagename;  
+	arr["width"] = width;  
+	arr["height"] = height;			 
+	window.parent.returnValue = arr;
+	window.parent.close();	
+}	
+function openwin(targeturl) {
+		
+		window.open(targeturl, '', 'width=300,height=170,resizable=1,scrollbars=yes');
+		//showMeDialog(targeturl,"color1","dialogWidth:400pt;dialogHeight:300pt;help:0;status:0;resizable:1");
+			
+}
+</script>	
+</HEAD>
+<body>
+<table width=100% height=100% cellpadding=0 cellspacing=0 border=0>
+
+	<form name="_ctl0" method="post" action="ftb.imagegallery.aspx?frame=1&amp;" language="javascript" onsubmit="ValidatorOnSubmit();" id="_ctl0" enctype="multipart/form-data">
+	
+
+	
+
+<tr><td><input name="FileToDelete" id="FileToDelete" type="hidden" />
+	<input name="RootImagesFolder" id="RootImagesFolder" type="hidden" value="images" />
+	<input name="CurrentImagesFolder" id="CurrentImagesFolder" type="hidden" value="images" />
+	
+	
+	<div id="galleryarea" style="width=100%; height:100%; overflow: auto;">
+		<span id="gallerymessage"></span>
+		<div id="GalleryPanel">
+		
+		
+		<loop $imgData key=key var=var>
+
+		<if $var.dimension.0 > 88 >   
+		<div class="imagespacer" >
+			<div class="imageholder" ondblclick="openwin('[$var.url}')"  onclick="divClick(this,'killua.gif');parent.add('[$var.url]',parent.document.form.mdoc);parent.document.all.preview_img.src='[$var.url]';parent.document.all.preview_img.style.display='';"  >
+				<img src="[$var.url]" unselectable="on" height="94" width="88" border=0  title="尺寸:[$var.dimension.0]x[$var.dimension.1]<br>类型:[$var.type]图像<br>大小:[$var.size] KB"/ >
+			</div>
+			<div class="titleHolder">
+				[$var.filename]	
+			</div>
+		</div>
+		<else>
+		<div class="imagespacer" >
+			<div class="imageholder" unselectable="on"  ondblclick="openwin('[$var.url]')"  onclick="divClick(this);parent.add('[$var.url]',parent.document.form.mdoc);parent.document.all.preview_img.src='[$var.url]';parent.document.all.preview_img.style.display='';" >
+				<img src="[$var.url]" unselectable="on" align="absmiddle" vspace="29" border=0 title="尺寸:[$var.dimension.0]x[$var.dimension.1]<br>类型:[$var.type]图像<br>大小:[$var.size] KB" />
+			</div>
+			<div class="titleHolder">
+				[$var.filename]
+			</div>
+		</div>
+		</if>
+		
+		</loop>
+		
+	</div>
+	<br>
+	<p align=center>[$pagelist]</p>
+	</div>
+	
+</td></tr>
+
+
+
+
+			</form>
+</table>
+
+</body>
+</HTML>
+
+
+

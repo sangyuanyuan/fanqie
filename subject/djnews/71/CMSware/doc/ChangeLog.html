@@ -1,0 +1,1440 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>CMSware Changlog</title>
+<style type='text/css'>
+
+BODY		          	
+{
+   background-color:#336699;
+   font-size: 11px;
+   font-family: Verdana, Arial;
+   color: #000;
+   margin: 20px;
+   padding: 0px;
+}
+.important {
+	COLOR: #cc3300
+}
+.code-comment {
+	COLOR: #009900
+}
+
+
+
+.code {
+	font-family: "Courier New", "Courier", "mono";
+	font-size: 12px;
+	line-height: 20px;
+	border: 1px solid #c0c0B3;
+	background-color: #E9E9E9;
+	PADDING-RIGHT: 10px; 
+	PADDING-LEFT: 10px;
+	PADDING-BOTTOM: 10px; 
+	MARGIN: 5px; 
+	PADDING-TOP: 10px;
+}
+
+
+h1 { font-family:arial,verdana,sans-serif;font-weight:bold;font-size:30px;color:#000; border-bottom:1px solid #000; }
+h2 { font-family:arial,verdana,sans-serif;font-weight:bold;font-size:20px;color:#000; }
+
+TABLE, TR, TD     { font-family:Verdana, Arial;font-size: 11px; color:#000 }
+
+a:link, a:visited, a:active  { color:#000055 }
+a:hover                      { color:#333377;text-decoration:underline }
+
+.centerbox { margin-right:10%;margin-left:10%;text-align:left }
+
+.warnbox {
+		  border:1px solid #F00;
+		  background: #FFE0E0;
+		  padding:6px;
+		  margin-right:10%;margin-left:10%;text-align:left;
+		}
+
+.tablepad    { background-color:#F5F9FD;padding:6px }
+
+.pformstrip { background-color: #D1DCEB; color:#3A4F6C;font-weight:bold;padding:7px;margin-top:1px;text-align:left }
+.pformleftw { background-color: #F5F9FD; padding:6px; margin-top:1px;width:40%; border-top:1px solid #C2CFDF; border-right:1px solid #C2CFDF; }
+.pformright { background-color: #F5F9FD; padding:6px; margin-top:1px;border-top:1px solid #C2CFDF; }
+
+.tableborder { border:1px solid #345487;background-color:#FFF; padding:0px; margin:0px; width:100% }
+
+
+#copy { font-size:10px }
+				   
+#button   { background-color: #4C77B6; color: #FFFFFF; font-family:Verdana, Arial; font-size:11px }
+
+#textinput { background-color: #EEEEEE; color:?000000; font-family:Verdana, Arial; font-size:10px; width:100% }
+
+#dropdown { background-color: #EEEEEE; color:?000000; font-family:Verdana, Arial; font-size:10px }
+
+#multitext { background-color: #EEEEEE; color:?000000; font-family:Courier, Verdana, Arial; font-size:10px }
+
+#logostrip {
+			padding: 0px;
+			margin: 0px;
+			background: #7AA3D0;
+		  }
+		  
+/*   table color setting start */
+.table_border {
+	background-color: #c0c0B3
+}
+.table_header{ font-family: Tahoma, Verdana; font-size: 11px; color: #000000; font-weight: bold; background-color: #DEDFD6 }
+.table_td1 {
+	background-color: #F7F7EF
+}
+.table_td2 {
+	background-color: #FFFFFF
+}
+
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+<tr>
+    <td align='left'> <h2>CMSware Changlog</h2>
+      <p>&nbsp;</p></td>
+ </tr>
+</table>
+
+<table width="750" align="center" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr>
+    <td align='left'><h2>2.8.5</h2>
+        <p>CMSware2.8.5  Released&nbsp;&nbsp;</p>
+        <ul>
+          <li>修正2.7以来大多数bug </li>
+          <li>开放CMSware程序绝大多数源代码供商业用户维护与扩展或修正; 除了最底层核心类文件，其它目录全开源 </li>
+          <li>随版本附上全新风格的门户型整站默认模板 包括了新闻、下载、产品、供求、影视、会员中心、投稿、话题、图片等频道 </li>
+          <li>模板化的会员中心，可自行修改会员注册登录与会员中心所有模板样式与功能，轻松构建互动站点 会员可发布维护文章与供求信息等(如二手服务等)，并可根据需要通过配置文件控制权限 </li>
+          <li>可以支持在已有的网站结构上加入以上单独的频道 </li>
+          <li>所有频道的功能均模块模板化，可复制修改形成新频道，包括图文形式和互动会员形式频道 </li>
+          <li>所有模板均附上注释文档，方便有能力的用户可以依葫芦画瓢扩展自己的新频道和互动应用 </li>
+          <li>PublishAPI 2.0提供支持会员认证的内容发布维护开发接口，有完整文档方便开发新会员功能 </li>
+          <li>同时发布CWPS1.6正式版 </li>
+        </UL>
+      <p><B>变动SQL：</B>无        </p>
+    </td>
+  </tr>
+</table>
+<!--{{{ 2.6.2-->
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr> 
+    <td align='left'><h2>2.7</h2>
+      <p>CMSware2.7.20060906 &nbsp;&nbsp;</p>
+      <b>New</b> <ul>
+        + 编辑器里的图片本地化加水印，在系统设置-编辑器图片本地化加水印处设置。<br>
+        + 系统设置“对话框尺寸适应XP”改为默认启用<br>
+        + 新增投稿删除<br>
+        + 复杂函数调用使用双@号包含：[@function(.....)@]<br>
+        +新增文件Log功能，文件Log将强制生成，管理界面无法删除。文件Log位于sysdata/logs(如果logs目录不存在或者不可写，将生成在sysdata目录)。admin.20060601.log为管理操作日志，login.20060601.log为登陆日志，tplerror.20060601.log为模版错误日志（config.php的$SYS_CONFIG['tpl_error_display']可以配置是否在最终页面显示错误信息），error.20060601.log为系统错误日志（config.php的$SYS_CONFIG['error_reporting']可以配置报错类型file-不显示报错，只将报错写入文件，html-显示html报错，js-显示js报错对话框）。<br>
+        +新增错误日志查看,信息查看-查看错误日志<br>
+        +结点PSN修改后系统支持对结点内容进行重新发布（临时取消原发布，再发布）。<br>
+        +新增结点重发布（临时取消发布结点所有内容，再发布）、全部取消发布、全部临时取消发布，位于发布管理-批量操作选择菜单。<br>
+        
+        +改进了模版错误信息的查看功能，避免了大量的错误信息可能破坏页面排版的问题。<br>
+        +安全上传检查,系统禁止所有native code方式的上传（php,jsp,asp,exe等）<br>
+        +静态内容页文件发布的名字能使用内容模型的字段名,例如 静态发布文件格式 :content.{Title}.{Author}.{TimeStamp}d{ContentID}.html，结点首页支持结点名称{NodeName}.html<br>
+        +结点首页文件名、内容页文件名支持函数格式定义：[@str_replace('a','A','{Title}')]_{ContentID}.html 
+        ，[@strlen(&quot;{Title}&quot;)].content.{TimeStamp}d{ContentID}.html，函数变量需要使用引号包含。<br>
+        +结点参数设置的&quot;发布模式&quot;新增一个“动静态发布”，此时结点首页选择的动态发布入口，内容页等依然是静态发布的选项。这么简单的设置一下或许就能解决栏目下内容太多时列表页的分页刷新问题<br>
+        +对话框尺寸支持自适应XP系统<br>
+        +后台新增文章时可以象投稿时那样同时选择索引和虚连接 <br>
+        +后台管理入口的目录名可修改（默认为admin），修改后需同时配置config.php的$SYS_CONFIG['admin_dir_name'] 
+        = &quot;admin&quot;项。<br>
+        + 创建虚链接 或索引链接后，根据 结点里的 “是否自动发布” 为判断来执行发布。<br>
+        + 关键字替换功能支持PSN参数的解析，比如 替换 test 为 带链接的（ &lt;A HREF=&quot;{PSN-URL:1}/test&quot;&gt;test&lt;/A&gt;）。<br>
+        + 内容模型的所有字段支持PSN参数的解析，比如内容包含&lt;A HREF=&quot;{PSN-URL:1}/hello.html&quot;&gt;test&lt;/A&gt;，{PSN-URL:1}将自动解析为实际地址。<br>
+        +新增评论验证码支持（publish/config.php中$PUBLISH_CONFIG['comment_validcode'] 配置开关，默认打开），请在原有评论模板表单内添加以下代码用以支持验证码功能
+        
+         <div class="code">验证码:&lt;input type=&quot;text&quot; name=&quot;validCode&quot; 
+          size=&quot;10&quot; &gt;<br>
+          &lt;img src=&quot;[$PUBLISH_URL]validCode.php&quot;/&gt;</div>
+          + 内容模型导入/导出。<br>
+          + 后台新增文章时可以象投稿时那样同时选择索引和虚连接 <br>
+          + 新建内容模型支持自定义TableID，为内容模型共享提供了更大便利，通常情况1~10的TableID已经被普遍使用，因此如果你新建内容模型的时候使用大于100的TableID，就可以避免与其他人已创建的TableID冲突，别人导入你的内容模型文件时候你的默认TableID将被继续使用（如果冲突，系统将使用自动生成的TableID代替默认TableID，如果你的模板中使用了TableID，显然，模板需要修改才能复用，所以，强烈推荐大家创建共享型内容模型时使用3位以上的自定义TableID）<br>
+          + CMSwareOAS 插件<br>
+          + CMSware Shell任务工具<br>
+          +系统设置增加开关：自动刷新级联结点，默认为&quot;否&quot;<br>
+          +附加发布可调用设置的属性变量,变量名为$PublishInfo ,结构如下 
+         
+          <div class="code">$PublishInfo = array (<br>
+          'PublishID' =&gt; '2',<br>
+          'NodeID' =&gt; '2',<br>
+          'PublishName' =&gt; 'test',<br>
+          'SelfPSN' =&gt; NULL,<br>
+          'SelfPSNURL' =&gt; NULL,<br>
+          'PublishFileName' =&gt; 'input_test.html',<br>
+          'Tpl' =&gt; '/input/test1.html',<br>
+          'Intro' =&gt; 'haha',<br>
+          'CreationUserID' =&gt; '1',<br>
+          'LastModifiedUserID' =&gt; '1',<br>
+          'CreationDate' =&gt; '1127447504',<br>
+          'ModifiedDate' =&gt; '1154852437',<br>
+          )</div> 
+         
+      </UL>
+      <b>Bug Fixed</b> <ul>
+        <br>
+        #9 删除虚链接文章时，无法同时删除生成的虚链接HTML文件。<br>
+        #13 批量图片上传－－显示设置－－色彩选择 JS错误。<br>
+        #32 数据备份设置分卷为1MB时实际的分卷文件却有很多接近两兆，容易招致还原时超时（默认分卷尺寸改为0.5M）<br>
+        #14 发布管理里，不选任何，然后选择下面的批量删除菜单，确定，这时就会有错误信息了<br>
+        #15 投稿不能删除？匿名投搞或用户投稿。没有删除项（管理后台处）。如果属于垃圾稿的，无法处理了。。<br>
+        #35 表单值采集器:附件录入，上传完附件后，没有把文件的路径显示到input框<br>
+        #43 cmsware安装程序改为在sysdata上建立%%install来做限制模式检测.<br>
+        #27 结点附加属性 - 字段输入类型 - 除了TXT字段正常可用外，其他类型都不能用。选择其他字段类型后，结点设置里，都不正常显示<br>
+        #26 结点加收站。点击结点时出现无效结点ID对话窗口。但如果是刚删除第一次点击的话，会出现两次不同警告的窗口。<br>
+        # kTemplate对op等语句的漏编译问题<br>
+        #数据库备份还原mysql5下的NULL问题<br>
+        #插件管理－会员接口的用户组权限管理和用户权限管理没做任何设置时会报错<br>
+        #mysql5环境下的一些兼容问题，包括用户管理，来稿管理等<br>
+        #38 new_editor图片上传时经常出现跑到上面去了<br>
+        #37 关键字替换功能，应该针对让每个内容模型的主内容都生效，目前只有默认内容模型的Content字段有效<br>
+        #29 采集－图片本地化：如果目录，或文件名中间有空格或＆等这样的符号的话，会引起采集图片本地化的失败。其它特殊符号可能也有。没有遇到。<br>
+        #18 内容模型管理，新增字段类型为&quot;字符串&quot;,字段长度如果不填时会出错<br>
+        #74 动态发布的结点的文章，设置自定义模板没用<br>
+        #71改PSN设置后，重提交结点设置，缓存清空，更新，都不管用，publish_log中的资源都还是原来的不会更新！<br>
+        #36 循环调用结点列表，然后调用每个结点的附加发布的一段代码，如果有附加发布的调用，就发布时会到附加发布的地方就停止更新，后台停止在那里不动了<br>
+        #56 评论管理－先搜索空值－再点删除时，会有错误。<br>
+        #28 发布管理－－下拉菜单里的“永久删除”（采集列表里已经删除导入记录的时候），没有删除掉 cmsware_resource 表 里的采集图片资源。回收站里的永久删除同样有问题。（就是在先删除掉采集管理里的这个新闻，然后发管管理里永久删除时，没有永久删除掉采集文章的图片，回收站里 
+        &quot;永久删除&quot; ，也是同样，无法完全删除掉。反过来，如果先在回收站里删除掉新闻，最后再从采集管理的列表里删除这个新闻时，是会把图片永久删除掉。）<br>
+        #77 关键字替换功能，如果关键字在&lt;&gt;之间替换，会引起HTML的错误。<br>
+        #AutoMini引起问题的用户改用AutoMini2试试<br>
+        #用户后台，点X号关左边栏后，头部没有恢复左边栏的 showtoc 按钮 <br>
+        <div class="code">/**<br>
+          * 图像自动缩略函数<br>
+          *<br>
+          * 自动判断来源图片的尺寸，按照传递的参赛生成缩略图(如果传入图片与定义尺寸相同，则不做缩略)<br>
+          * &lt;code&gt;&lt;img src=&quot;[@AutoMini($var.Photo, '120*100', $var)]&quot; 
+          border=&quot;0&quot; width=&quot;120&quot; height=&quot;100&quot;&gt;&lt;/code&gt;<br>
+          *<br>
+          * @param string $srcFile 来源图片的地址,可以是本地路径,也可以是http://<br>
+          * @param string $pixel 输出图片的尺寸,160*120<br>
+          * @param string $List 包含IndexID的数组<br>
+          * @param string $cache 缩略图是否缓存<br>
+          * @param string $miniMode 缩略模式 1-自动伸缩填充$pixel大小, 2-如果源图尺寸小于$pixel，则不自动伸缩填充<br>
+          * @return string 生成的缩略图Url地址<br>
+          * @access public<br>
+          */<br>
+          function AutoMini2($srcFile, $pixel, $List, $cache = true, $miniMode='1')</div>
+        #多图上传－显示设置－单选显示数，如果设置一行只显示一个图，最后插入后，第一行却是两个图，表格的也是同样<br>
+        #安装全文检索插件的时候会出有很多数据库报错信息，但还是可以安装成功 <br>
+        #自定义的模型－内容模型管理－列表显示－选择两个以上，创建出来的索链接，在发布管理里显示，只能显示一个字段<br>
+        #在后台进行搜索，如果搜索的时候在结点中的高级搜索中搜索，如果不选择结点范围，默认是搜索所有结点的所有字段。这种情况遇到的问题：<br>
+        如果有两个内容模型中存在相同的ContentID，就会一次搜索出多篇文章。<br>
+        #结点属性扩展,字段类型为字符串不设置长度时报错<br>
+        #UTF版的评论全局设置－过滤字符列表的默认数据乱码 <br>
+        #用户后台－稿件管理－标题上右键菜单有：查看，删除，移动。点击选择时 JS错误，无法弹出菜单。 <br>
+        #关键字替换处选择&quot;非全局变量&quot;,无效。<br>
+        #关键字替换只替换了部分匹配字符. 
+      </UL>
+      <B>变动SQL</B> <ul>
+        <TEXTAREA name="textarea2" style="width=100%;height=100;font-size: 12px;font-family: 'Courier New', 'Courier', 'mono';
+">ALTER TABLE cmsware_content_table CHANGE `Name` `Name` VARCHAR( 100 )  DEFAULT NULL ;
+ALTER TABLE cmsware_content_fields CHANGE `FieldTitle` `FieldTitle` VARCHAR( 100 ) DEFAULT NULL;
+ALTER TABLE `cmsware_site` CHANGE `IndexName` `IndexName` VARCHAR( 250 )  ;
+ALTER TABLE `cmsware_site` CHANGE `PublishFileFormat` `PublishFileFormat` VARCHAR( 250 )   ;
+UPDATE `cmsware_sys` SET `varValue`='1' WHERE `varName`='DialogFitXP';
+INSERT INTO `cmsware_sys` SET `varName`='EnableEditorWaterMark', `varValue`='1';
+ALTER TABLE `cmsware_plugin_base_comment`  ADD COLUMN `UserID` int(10) NOT NULL DEFAULT '0';
+ALTER TABLE `cmsware_content_table`  ADD COLUMN `TableGUID` varchar(32) NULL; </TEXTAREA>
+    </ul></td>
+  </tr>
+</table>
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr> 
+    <td align='left'> <h2>2.6.2</h2>
+      <p>CMSware2.6.2.20060223 Preview&nbsp;&nbsp;</p>
+       <b>New</b>
+      <ul>
+        <li> 新增utf8-zh、、utf8-tw、big5版本，CMSware系统产品全面支持utf8、gb2312、big5这几种主流字符集 。
+        </li>
+		
+        <li> 完全支持最新的MySQL4.1.x系列数据库,升级用户可以通过设置config.php来适配MySQL4.1.x那烦人的字符集 。
+          <div class="code"> //升级用户一般应该设置为latin1<BR>
+            $db_config['db_charset'] = '<span class="important"><B>gb2312</B></span>'; 
+            //数据库字符集 latin1,gb2312,utf8... </div>
+        </li>
+		<li>完全支持MySQL5.0,MySQL5.0的用户,如果你使用的是gb2312版本程序,请设置$db_config['db_charset'] = 'gbk'。 </li>
+        <li> 系统创建的目录和文件支持自定义权限设置。用户可以通过修改config.php的完成配置。 
+          <div class="code"> $SYS_CONFIG['dir_mode'] = <span class="important"><B>0755</B></span>; 
+            //系统创建目录的默认权限,0755、0777<BR>
+            $SYS_CONFIG['file_mode'] = <span class="important"><B>0755</B></span>; 
+            //系统创建文件的默认权限 </div>
+        </li>
+        <li>[门户版]新增节点属性扩展功能，有了此功能节点也就等于变成一个特殊的内容模型，具体用处不用我说了吧。</li>
+        <li>采集规则处{URL}支持过滤函数。</li>
+		<li>新增对allow_url_fopen 的检测，以及一些关键php.ini参数的显示。</li>
+		<li>安装过程中，如果GD库没有，则屏蔽验证码。</li>
+        <li>新增附加发布调用“<B>ExtraPublish</B>”，调用规则: 
+          <div class="code"> &lt;CMS action=&quot;<span class="important">ExtraPublish</span>&quot; 
+            return=&quot;ExtraInfo&quot; NodeID=&quot;2&quot; /&gt;</p> 
+            <p>&lt;ul&gt;<br>
+              &lt;loop name=&quot;ExtraInfo&quot; var=&quot;var&quot; key=&quot;key&quot;&gt;<br>
+              &lt;li&gt;&lt;A HREF=&quot; 
+              [$var.URL]
+              &quot;&gt; 
+              [$var.PublishName]
+              &lt;/A&gt;&lt;/li&gt;<br>
+              &lt;/loop&gt; <br>
+              &lt;/ul&gt; </div>
+          返回数组ExtraInfo信息说明：
+          <table   border="0" cellspacing="1" cellpadding="5" class="table_border">
+            <tr class="table_td1"> 
+              <td width="80" >属性名</td>
+              <td>说明</td>
+            </tr>
+            <tr> 
+              <td class="table_td1">PublishID</td>
+              <td class="table_td2">附加发布ID</td>
+            </tr>
+            <tr> 
+              <td class="table_td1">NodeID</td>
+              <td class="table_td2">所属节点ID号</td>
+            </tr>
+            <tr> 
+              <td class="table_td1">PublishName</td>
+              <td class="table_td2">发布名称</td>
+            </tr>
+            <tr> 
+              <td class="table_td1">PublishFileName</td>
+              <td class="table_td2">发布文件名</td>
+            </tr>
+            <tr> 
+              <td class="table_td1">Intro</td>
+              <td class="table_td2">附加注释</td>
+            </tr>
+            <tr> 
+              <td class="table_td1">URL</td>
+              <td class="table_td2">附加发布的发布URL
+              </td>
+            </tr>
+          </table>
+	  </li>
+
+
+ </UL>  
+      <b>Bug Fixed</b> 
+      <ul>
+         <li> CMS_CONTENT调用时,如果只调用一条数据时,必须加上LoopMode="1"参数才会有返回值, 应该是加LoopMode="1"时返回二维数组,而不加时,直接返回一维数组,这样可以兼容2.62以前版本的调用习惯 。</li>
+		 <li>系统创建目录、文件的权限问题。</li>
+		 <li> 对于IE状态栏一直处于打开状态的问题，实际和CMSware并无关系，此类情况下IE实际已经完成所有请求（不存在任何未完成的请求导致状态栏一直打开），问题应该和IE有关，此类情况对CMSware及其他应用的使用毫无影响。
+</li>
+		 <li> </li>
+          
+  </UL>
+	  <B>变动SQL</B> 
+      <ul>
+<TEXTAREA name="textarea" style="width=100%;height=100;font-size: 12px;font-family: 'Courier New', 'Courier', 'mono';
+">
+CREATE TABLE `cmsware_node_fields` (
+  `FieldID` int(8) NOT NULL auto_increment,
+  `FieldTitle` varchar(20) NOT NULL default '',
+  `FieldName` varchar(20) default NULL,
+  `FieldType` varchar(20) default NULL,
+  `FieldSize` varchar(20) NOT NULL default '',
+  `FieldInput` varchar(20) default NULL,
+  `FieldDescription` mediumtext,
+  `FieldOrder` mediumint(8) NOT NULL default '0',
+  `FieldAccess` tinyint(1) NOT NULL default '1',
+  `FieldDataSource` text,
+  PRIMARY KEY  (`FieldID`)
+) TYPE=MyISAM;
+</TEXTAREA>
+      </ul>
+    </td>
+  </tr>
+</table>
+<!--}}} 2.6.2-->
+
+<!--{{{ 2.6.2-->
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr> 
+    <td align='left'> <h2>2.6.2</h2>
+      <p>CMSware2.6.2 BUILD 20060120 Released&nbsp;&nbsp;</p>
+       <b>New</b>
+      <ul>
+	  <li><B>内核改进</B>：	  系统内核支持真正意义上的FTP模式，配置正确的情况下可以在任何安全限制模式下正常运行。系统安装时候可以设置FTP模式的运行参数。
+	  </li>
+	  <li>改进远程发布FTP连接机制，新增连接共享池，同一个PSN只建立一次连接（以前版本是发布多少文件建立多少次连接），大大提高远程发布效率</li>
+<li>改进的自动缩略图函数<B>AutoMini</B><br>
+		AutoMini(源图地址, 缩略图尺寸, 内容信息数组, 缩略图品质, 是否自动裁图, <B>URL前缀</B>)<br>
+		 URL前缀:默认为空，用于源图地址为相对地址时定位图片.<br>
+		 使用举例：<BR>
+[@AutoMini($a,"100*200",$var,'','','http://www.sohu.com/photo/')] 
+<BR>
+[@AutoMini($a,"100*200",$var,0,0,'http://www.sohu.com/photo/')] <BR><BR>
+
+		</li>
+        <li>
+		<B>评论增强</B>
+		<ul>
+		<li>评论字词过滤 ，评论过滤3种模式，关闭、开启-禁止发布限定关键词、开启-使用符号替换限定关键词</li>
+		<li>支持智能匹配“限 定 关键 词”为“限定关键词”，进一步增强关键词过滤的能力</li>
+		<li>支持评论内容最大和最小长度限制，支持评论用户名最大长度限制</li>
+		<li>评论审核功能</li>
+		<li>评论模块开启/关闭功能</li>
+		<li>集中管理删除修改功能:支持按照时间段、评论IP、评论用户批量删除，支持按照关键词搜索评论并进行批量删除</li>
+ 		</ul>
+ 
+		以上参数设置位于“插件管理->基础插件->评论全局设置”<br/><br/>
+		</li>
+  
+
+ 
+        <li>采集图片自动加水印:系统设置->启用采集图片水印</li>
+         <li>内容/采集/来稿新增查看新增源码/预览两种显示模式, 可以在系统设置处设置默认显示模式  </li>
+        <li>发布管理、搜索管理里面批量操作新增永久删除项。</li>
+         <li>CMS_CONTENT调用新增参数LoopMode="1"，在只有一条返回值时也生成二维数组。</li>
+         <li>系统关键目录写权限自动检测。</li>
+         <li>新闻编辑器新增“纯文本粘贴”、“从Word中粘贴”，并支持自动检测粘贴内容是否为Word格式。</li>
+       <li>后台信息分页增加“首页/尾页”链接</li>
+         <li>置顶 和 设置 精华可批量设置</li>
+         <li>pager里面分页器的PublishDate修改为CreationDate，保证date标记path的固定性</li>
+         <li>外部缩略图功能提供限定Host配置$ALLOW_HOSTS </li>
+         <li>在选择自定义文章的列表窗口里，象发布管理一样，把有图片的也显示出来标志 </li>
+         <li>后台搜索出来的文章可评论，刷新，发布等</li>
+	 <li>系统设置->对话框尺寸适应XP,解决某些XP浏览器无法看到提交按钮的问题</li>
+         <li>* 采集测试时显示测试结果，两种方式切换</li>
+
+ </UL>  
+      <b>Bug Fixed</b> 
+      <ul>
+         <li>搜索结果页 不完善,高级搜索多字段时 错误,添加，编辑 页的无TITLE </li>
+         <li>文章回收站－－分页的链接错误</li>
+         <li>回收站新增每页的显示文章条数，自定义显示条数</li>
+         <li>资源管理，新增记录数显示。</li>
+         <li>采集难免会有重复的采集新闻。但所有重复新闻的图片都是引用一个的。如果取消了重复的新闻，只留一个新闻的话，图片在取消重复时已经删除了</li>
+         <li>AutoMini源图文件名包含多个“.”时候路径出错</li>
+		 <li>内容模型，新建字段的时候没有“外部录入”的选择！</li>
+		 <li>如果没有图片页模板，点编辑图片页模板就会一直刷新窗口</li>
+ 		 <li>系统设置新增默认内容、资源发布PSN，解决CMS::SQL调用混混AutoMini函数使用时候的问题</li>
+		 <li>改进部分对话框XP下无法显示确认按钮的问题</li>
+		 <li>在PHP安全模式下面，进入用户管理出这个错而进管理后台却行 
+  Warning: set_time_limit(): Cannot set time limit in safe mode in /home/cmsware/user/init.php on line 8</li>
+  <li>开始采集按钮位置调整，并增加确认提示</li>
+         <li>全文搜索全部设置好，然后发布文章，但第一次发布的文章，在入plugin_fulltext_search_* 表时，URL字段根本没有数据，是空的。</li>
+         <li>在高级搜索列表页使用下面“更新”按扭，[$NodeInfo.NodeName] 调用问题</li>
+         <li>文章发布过后，如果再次更新，文章中附带的所有图片也会再次重新生成图片文件</li>
+         <li>Fatal error: Call to a member function on a non-object in  /cmsware/include/admin/collection_admin.class.php4.php on line 140</li>
+         <li>从回收站清空所有已经删除的数据，那么数据库里的几个表之间的数据量就不吻合了。</li>
+         <li>采集时，设置了==>[localizeImg]把图片保存到本地。在文章没有被导入到 content_* 表的情况下，删除已经采集的文章导致的图片采集问题</li>
+         <li>虚连接和索引连接的存在导致－－content_* 几个表之间相加就不等于 content_index 表的数量</li>
+         <li>列表的时候 关键字查询: 输入关键字，产生搜索结果……这个时候无法用  转移  </li>
+         <li>如果选择设置发布时间点发布计划，则选中的文章的日期全部变化。结果发布的带有date标记的path，会引起文件位置的改变。</li>
+         <li>log_admin log_login 恢复时会出问题，新安装好数据库后恢复说cmsware_log_admin中有重复键值"1"  </li>
+         <li>采集过程中常常出错</li>
+         <li>cms后台增加用户时，如果没有选择用户组，增加完后用户列不出来，改正为默认就要选择一个用户组</li>
+         <li>发布管理增加“临时取消发布”机制，可以临时取消发布的文章，删除发布库记录和已经发布的文件，但不能删除相关联的评论计数等等</li>
+         <li>模板管理里，移动文件时出的目标窗口目录树不对</li>
+         <li>结点内容都是索引连接无法分页</li>
+         <li>LIST调用忽略参数出错</li>
+         <li>在文章没有被导入到 content_* 表的情况下，如果把已经采集的文章删除，没有在 resource 和 resource_ref 表进行记录的删除</li>
+         <li>如果字段内容里有单引号就会出错</li>
+         <li>相对地址的分页采集没法解析</li>
+         <li>在后台列表那里，所有精华文章标题前都有 精华 文章的图片，采用标记图片后直接显示数字形式 </li>
+         <li>采集测试时的输出结果页面，改为直接显示采集到的结果值源码，而不是显示页面效果</li>
+         <li>js.php输出时处理一些特殊字符比如单引号双引号之类的转义！</li>
+         <li>模板管理中的上传模板文件固化只能用html,htm,tpl</li>
+         <li>模版管理里改名不可改后缀。 </li>
+         <li>* 默认安装包可以用localhost访问</li>
+         <li>* user投稿后台可以用别的域名访问</li>
+         <li>* 查看采集索引页面错误</li>
+         <li>* 默认的结点内容分页生成器为default</li>
+         <li>* 建立新结点时内容分页生成器也是default</li>
+         <li>* 采集后查看某文章，里面有[预览][源码]切换。点[源码]后就不能再切换过来了</li>
+  </UL>
+	  <B>变动SQL</B> 
+      <ul>
+<TEXTAREA name="textarea" style="width=100%;height=100;font-size: 12px;font-family: 'Courier New', 'Courier', 'mono';
+">
+ALTER TABLE `cmsware_plugin_base_comment` ADD COLUMN `Approved` tinyint(1) NOT NULL DEFAULT '0';
+update `cmsware_plugin_base_comment` set Approved=1
+INSERT INTO `cmsware_sys` SET `varName`='EnableCLWaterMark';
+ALTER TABLE `cmsware_resource_ref`  ADD COLUMN `CollectionKey` char(32)  NOT NULL ;
+ALTER TABLE `cmsware_resource_ref`
+  ADD INDEX `N_I_R` (`NodeID`,`IndexID`,`ResourceID`),
+  DROP INDEX `N_I_R`;
+  
+INSERT INTO `cmsware_sys` SET `varName`='ContentViewMode', `varValue`='1';
+INSERT INTO `cmsware_sys` SET `varName`='CollectionViewMode', `varValue`='1';  
+INSERT INTO `cmsware_sys` SET `varName`='ContributionViewMode', `varValue`='1';
+ALTER TABLE `cmsware_resource_ref`   ADD INDEX `R_C` (`ResourceID`,`CollectionKey`(32));
+----------------2006-01-20
+ALTER TABLE `cmsware_sys` CHANGE COLUMN `varName` `varName` varchar(50) NOT NULL;
+INSERT INTO `cmsware_sys` SET `varName`='DefaultResourcePSN';
+INSERT INTO `cmsware_sys` SET `varName`='DefaultResourcePSNURL';
+INSERT INTO `cmsware_sys` SET `varName`='DefaultContentPSN';
+INSERT INTO `cmsware_sys` SET `varName`='DefaultContentPSNURL';
+----------------------
+ALTER TABLE `cmsware_collection_*`  ADD INDEX `Src` (`Src`(250));  
+ALTER TABLE `cmsware_publish_*`  ADD INDEX `PublishDate` (`PublishDate`);
+
+ALTER TABLE `cmsware_site`  ADD INDEX `InheritNodeID` (`InheritNodeID`); 
+
+ALTER TABLE `cmsware_content_index`  ADD INDEX `PID` (`ParentIndexID`); 
+ALTER TABLE `cmsware_content_index`  ADD INDEX `Type` (`Type`);
+ALTER TABLE `cmsware_content_index`  ADD INDEX `Top` (`Top`);  
+ALTER TABLE `cmsware_content_index`  ADD INDEX `Pink` (`Pink`);
+
+ALTER TABLE `cmsware_plugin_base_count`  ADD INDEX `CID` (`ContentID`);
+ALTER TABLE `cmsware_plugin_base_count`  ADD INDEX `TID` (`TableID`); 
+
+ALTER TABLE `cmsware_resource`  ADD INDEX `CUID` (`CreationUserID`);
+ALTER TABLE `cmsware_tasks`  ADD INDEX `TID` (`TaskID`(32));  
+---------------------------------------------- 2006-01-25
+create table the_tmp_resource_ref as (select distinct * from cmsware_resource_ref);
+truncate table cmsware_resource_ref  ;
+insert into cmsware_resource_ref  select * from the_tmp_resource_ref;
+drop table the_tmp_resource_ref;
+INSERT INTO `cmsware_sys` SET `varName`='DialogFitXP', `varValue`='0';
+</TEXTAREA>
+      </ul>
+    </td>
+  </tr>
+</table>
+<!--}}} 2.6.2-->
+
+
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr> 
+    <td align='left'> <h2>2.6.1</h2>
+      <p>CMSware2.6.1 BUILD 20060101 Released&nbsp;&nbsp;</p>
+       <b>New</b>
+      <ul>
+        <li>新增图片水印功能，系统设置-图片上传水印设置  </li>
+        <li>新增临时取消发布，临时取消发布实现删除发布库记录和已经发布的文件，但不能删除相关联的评论计数信息等  </li>
+		<li>改进的自动缩略图函数<B>AutoMini</B><br>
+		AutoMini(源图地址, 缩略图尺寸, 内容信息数组, 缩略图品质, 是否自动裁图)<br>
+		缩略图品质:默认为75,可设范围0~100.<br>
+		是否自动裁图:默认为1,1为是,0为否<br>
+		例如:[@AutoMini($Photo, '120*100', $Publish, 90, 1)]<br>
+
+		</li>
+		<li>置顶 和 设置 精华 需要批量设置</li>
+		<li>automini.php可以限制外部连接使用</li>
+		<li>模板管理中的上传模板,固化只能用html,htm,tpl,wml,xml</li>
+		<li>
+		内容模型字段 新增关联数据源<br>
+
+- 表单值采集器:关联数据源<br>
+- 字段附加信息: 此处填写数据源语句
+<br>
+<p><B>DB数据源:</B><br>
+数据源语句: DB数据源必须返回value和title字段内容，以填充select表单控件内容<br>
+  &lt;dataSource&gt;<br>
+  &lt;sql&gt;select i.IndexID as value, c.CountryName as title from cmsware_content_index 
+  i left join cmsware_content_5 c ON c.ContentID=i.ContentID where i.TableID=5 
+  order by c.CountryName&lt;/sql&gt;<br>
+  &lt;/dataSource&gt; <br>
+</p>
+<p><B>XML数据源:</B><br>
+数据源语句: XML数据源必须使用以下格式定义数据，以填充select表单控件内容<br>
+例如:<BR>
+  &lt;dataSource&gt;<br>
+  &lt;List&gt;<br>
+  &lt;var&gt;<br>
+  &lt;title&gt;买家&lt;/title&gt;<br>
+  &lt;value&gt;0&lt;/value&gt;<br>
+  &lt;/var&gt;<br>
+  &lt;var&gt;<br>
+  &lt;title&gt;卖家&lt;/title&gt;<br>
+  &lt;value&gt;1&lt;/value&gt;<br>
+  &lt;/var&gt;<br>
+  &lt;/List&gt;<br>
+  &lt;/dataSource&gt;<br>
+</p>
+下面的数据源例子我们将"来源网站"的录入由原来的纯手工,改为下拉框选择:
+<p>&lt;dataSource&gt;<br>
+  &lt;List&gt;<br>
+  &lt;var&gt;<br>
+  &lt;title&gt;新浪&lt;/title&gt;<br>
+  &lt;value&gt;www.sina.com.cn&lt;/value&gt;<br>
+  &lt;/var&gt;<br>
+  &lt;var&gt;<br>
+  &lt;title&gt;搜狐&lt;/title&gt;<br>
+  &lt;value&gt;www.sohu.com&lt;/value&gt;<br>
+  &lt;/var&gt;<br>
+  &lt;var&gt;<br>
+  &lt;title&gt;网易&lt;/title&gt;<br>
+  &lt;value&gt;www.163.com&lt;/value&gt;<br>
+  &lt;/var&gt; <br>
+  &lt;/List&gt;<br>
+  &lt;/dataSource&gt;<br>
+</p>
+数据源功能的灵活运用将可以极大地提升CMSware内容录入的效率.
+</li>
+ </UL>  
+      <b>Bug Fixed</b> 
+      <ul>
+         <li>自定义相关文章只有1条时候的Bug  </li>
+       <li>删除采集内容及其图片后,再次采集时无法采集图片  </li>
+		<li>图片重复发布的问题  </li>
+		<li>全文搜索第一次发布的文章，URL字段根本没有数据  </li>
+		<li>列表的时候 关键字查询: 输入关键字，产生搜索结果……这个时候无法用  转移 </li>
+		<li>如果选择设置发布时间，点发布计划。。。则选中的文章的日期全部变化。
+ 结果发布的带有date标记的path，会引起文件位置的改变。</li>
+		<li>log_admin log_login 恢复时会出问题</li>
+		<li>采集测试时的输出结果页面，改为直接显示采集到的结果值源码，而不是显示页面效果</li>
+		<li>cms后台增加用户时，如果没有选择用户组，增加完后用户列不出来，改正为默认就要选择一个用户组</li>
+		<li>模板管理里，移动文件时出的目标窗口目录树不对</li>
+		<li>更多细节改进...</li>
+ </UL>
+	  <B>变动SQL</B> 
+      <ul>
+<TEXTAREA name="textarea" style="width=100%;height=100;font-size: 12px;font-family: 'Courier New', 'Courier', 'mono';
+">
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('EnableWaterMark','0');
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('WaterMarkImgPath', '../html/WaterMark.gif');
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('WaterMarkPosition', '1');
+ALTER TABLE cmsware_content_index ADD COLUMN `TableID` int(10) NOT NULL DEFAULT 0;
+</TEXTAREA>
+      </ul>
+    </td>
+  </tr>
+</table>
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr> 
+    <td align='left'> <h2>2.6 </h2>
+      <p>CMSware2.6  BUILD 1022 Released&nbsp;&nbsp;</p>
+      
+      <p><b>New</b></p>
+	  
+
+
+      <ul>
+        <p><B>专业版增强功能列表（提供更佳的模板管理与发布管理控制）：</B></p>
+	<li>CMS::LIST支持ignore="1,2"忽略结点ID</B> 	<li>结点首页文件名支持<B>index_{NodeID}_{date("Ymd")}.html</B> 这样的语法,可以生成index_1_20051011.html这样的文件名,date("Ymd")可以替换为其他返回字符串的函数</li> 
+	<li>采集新增{URL}采集器，可以用于自动录入采集的目标内容页URL</li>	<li>系统安装提供“典型安装”和“精简安装”两种选择，典型安装提供一套默认网站结构（适用于初级用户），精简安装只提供一套基础框架（适用于高级用户）。</li>
+        <li> 新增CMS计算统计类调用标签&quot;<strong>COUNT</strong>&quot;,用于求COUNT、SUM、AVG这些值,返回一个字符串变量,主要使用function属性定义统计操作,其他属性同CMS::LIST<br>
+          <div class="code"> &lt;cms action=&quot;COUNT&quot; return=&quot;countValue&quot; 
+            <strong>Function</strong>=&quot;count(*)&quot; NodeID=&quot;2&quot; 
+            /&gt;<br>
+            &lt;cms action=&quot;COUNT&quot; return=&quot;sumValue&quot;<strong> 
+            Function</strong>=&quot;SUM(c.Price)&quot; NodeID=&quot;2&quot; /&gt; 
+            <br>
+            &lt;cms action=&quot;COUNT&quot; return=&quot;avgValue&quot; <strong>Function</strong>=&quot;AVG(c.Price)&quot; 
+            NodeID=&quot;2&quot; /&gt; <br>
+            总记录数:[$countValue]<br>
+            Price字段和:
+            [$sumValue]
+            <br>
+            Price字段平均值:
+            [$avgValue]
+            <br>
+          </div>
+        </li>
+      </UL>
+      <ul>
+        <li>图片自动缩略器 
+          <div class="code"> /* ----------------------------------------------------------------------------<br>
+            图片自动缩略器<br>
+            ------------------------<br>
+            [$PUBLISH_URL]automini.php?src=[@urlencode($var.PhotoURL)]&amp;pixel=160*120&amp;cache=1&amp;cacheTime=1000
+            <p>**以下是可用GET参数,大小写敏感,在URL中写时用&amp;分开:</p>
+            <p>src : 待处理图片源地址,传给src的参数为URL,最好使用urlencode函数进行编码<br>
+              pixel : 缩略大小 默认为120*100<br>
+              cache : 是否缓存缩略图片,默认为不cache ,cache=0<br>
+              cacheTime: 缓存时间(秒) cache=1时候使用，cacheTime=3600 ,默认为1000秒<br>
+              cacheKey: 缓存序列号，cache=1时候使用，用于决定缓存目录的路径 <br>
+              miniMode : 缩略模式 1-自动伸缩填充$pixel大小, 2-如果源图尺寸小于$pixel，则不自动伸缩填充, 默认为1<br>
+              miniType : 缩略图格式(gif,jpg,png) 默认为jpg<br>
+              quality : 如果缩略图格式为jpg, 输出质量(1-100),默认为75<br>
+              ---------------------------------------------------------------------------- 
+              */ 
+            </p>
+            
+          </div>
+        </li>
+        <li>内容模型字段表单值采集器新增"外部页面数据输入",可以实现可定义的关联录入采集器,可以使用附加发布生成一个按照一定规则编写的html页面作为表单值采集器(默认提供一个演示模板,位于/templates/input/test.html),数据输入的灵活度大大提高</li>
+        <li> 内容模型字段表单值采集器新增图片录入、附件录入、Flash录入</li>
+        <li>流程里投稿即发布功能.定义方法:新增一个稿件工作流,然后新增一个操作结点,执行人选择"*系统*",操作后状态码填"2",操作前状态码填"1",完成.设置结点套用该工作流即可.</li>
+        <li>模板编辑改进：编辑前需选择对象结点,对象内容IndexID(可选)</li>
+        <li>改进新闻编辑器news_editor、下载编辑器download_editor的图片、附件表单值采集器</li>
+        <li>系统首页新增快捷通道，可以快速跳转到某个结点或者内容进行管理</li>
+        <li>采集记录删除同时删除采集内容中的图片</li>
+        <li>新增资源管理,实现一个资源库管理的概念。管理上传/采集来的图片、附件、Flash等资源,图片、附件、Flash的输入都可以来自本地上传、资源库选择、发布点PSN，保证高度灵活和易用性。（系统保留使用目录/sysdata/automini、/publish/tmp）</li>
+        <li>内容页中的评论列表调用改用js调用:<BR>
+          <B>&lt;script type="text/javascript" src=" 
+          [$PUBLISH_URL]
+          js.php?id=comment&amp;IndexID= 
+          [$IndexID]
+          "&gt;&lt;/script&gt;</B></li>
+        <li>0915 下载模型新增CustomLinks（相关文章）、CustomSoftLinks（相关软件），修改Intro的字段输入类型为“RichEditor”。</li>
+        <li>0913 新增auto分页符，支持html内容的自动分页发布，单页字数长度可以在系统设置“自动分页单页内容长度”处设置。</li>
+        <li>0913 完善WAP发布，WAP发布支持html到wap格式的自动转换以及自动分页</li>
+        <li>模板编辑增加源码预览，支持模板语法高亮显示、语法检测、行编辑聚焦等。</li>
+        <li>模板编辑增加“区块模式”，通过使用语法（&lt;!---{CMS-BLOCK}---&gt;区块内容&lt;!---{/CMS-BLOCK}---&gt;）定义区块，用户可以可视化的进行区块编辑，大大降低模板编辑的难度</li>
+        <li>结点管理新增附加发布，可以在一个结点下建立类似结点首页的内容索引附加页发布</li>
+        <li>SEARCH调用新增Exact属性。用于设置search是否为精确查询， Exact=&quot;1&quot;则为精确查询</li>
+        <p><B>门户版增强功能列表（主要是针对超大数据量性能优化与更细层面的权限管理）：</B></p>
+
+		<li>WAP发布支持图片自动缩略（可定制实现机型适配的图片尺寸）、自动分页</li>
+       
+		<li>基于全面改进和新增的分类模板权限控制、结点权限控制、用户组权限控制和PSN权限控制，CMSware期望实现子站分层管理员的功能。</li>
+        <li>发布点（PSN）新增用户组读权限控制（只允许对根用户组进行设置，子用户组自动继承根用户组的设置）</li>
+        <li>用户组管理新增上级用户组、创建子用户组、创建子用户选项，可以定义用户组具备管理子用户组、子用户的功能。</li>
+        <li>结点、分类模板分类的权限控制机制说明 
+          <UL>
+            <li>读权限：浏览内容 </li>
+            <li>写权限：新增、修改、删除内容</li>
+            <li>管理权限：具有管理权限的用户具有结点/分类的完全控制权，包括参数的设置、权限的分配，内容新增、修改，同时具备创建子结点/分类的权利</li>
+            <li>用户权限优先于用户组权限,一般设置用户组权限即可,用户权限用于用户级的细粒度权限控制.</li>
+            <li>继承父分类权限：通过继承父分类的权限，可以简化分类权限设置，方便多个亲缘分类的权限管理。这种继承是可以递归的，也就是说如果父分类也是继承父分类权限，子分类就递归继承父分类的父分类（祖父分类）的权限，以此类推。</li>
+            <li>分类的创建人具有分类的原始控制权（可实现分类子管理员功能）该原始控制权不受分类权限设置的影响，只有系统管理员和分类原始创建人具备删除自身创建分类的权限。</li>
+            <li>系统管理员具有所有控制权限</li>
+          </UL>
+        </li>
+        <li>重新设计的结点权限控制机制。</li>
+        <li>新增分类模板管理，原有的网站模板管理作为公用模板，分类模板具备访问权限控制机制（templates/ROOT：系统保留使用、sysdata/tmp：系统保留使用）</li>
+        <li>新增returnKey标签 ,可以定义内容列表记录返回那些字段，一般列表只需要获得Title即可，而无需返回Content等字段，使用此属性，可以一定程度上提高更新效能。<br>
+          <div class="code"> &lt;CMS action=&quot;LIST&quot; return=&quot;List&quot; 
+            NodeID=&quot;{$NodeInfo.NodeID}&quot; orderby=&quot;Hits_Total&quot; 
+            num=&quot;10&quot; <strong>returnKey</strong>=&quot;Title,Keywords&quot; 
+            /&gt;<br>
+            &lt;LOOP name=&quot;List&quot; var=&quot;var&quot; key=&quot;key&quot;&gt;<br>
+            &lt;ul&gt;<br>
+            &lt;li&gt;<br>
+            &lt;a href=&quot; 
+            [$var.URL]
+            &quot; target=_blank title=&quot; 
+            [$var.Title]
+            &quot; &gt;[@CsubStr($var.Title, 0, 18)] &lt;/a&gt;&lt;span class=&quot;process&quot;&gt;(&lt;font 
+            color=&quot;#FF6600&quot;&gt; 
+            [$var.Hits_Total]
+            &lt;/font&gt;)&lt;/span&gt;<br>
+            &lt;/li&gt;<br>
+            &lt;/ul&gt; <br>
+            &lt;/LOOP&gt; <br>
+          </div>
+        </li>
+      </UL>
+      <p><b>BUG修复</b></p>
+      <ul>
+        <li>用户投稿后台—添加新文章— 编辑器— 插入FLASH 、视频、音频、附件—除附件外，全是空白？附件上传菜单也不对劲。</li>
+        <li>经过超大数据量商用应用的考验，进一步改进底层算法，提升系统整体的性能</li>
+        <li>强化稳定性，修复2.5.1以来的bug</li>
+      </ul>
+      <B>变动SQL</B> 
+	   <ul> 2.5.2.1001<TEXTAREA style="width=100%;height=100;font-size: 12px;font-family: 'Courier New', 'Courier', 'mono';
+">
+ALTER TABLE `cmsware_resource`  ADD COLUMN `CreationUserID` int(8) NOT NULL DEFAULT 0;
+ALTER TABLE `cmsware_resource`  ADD UNIQUE INDEX `Path` (`Path`(250));
+ALTER TABLE `cmsware_resource`  CHANGE COLUMN `Path` `Path` varchar(250) NOT NULL;
+ALTER TABLE `cmsware_resource`  ADD COLUMN `Title` varchar(250) NOT NULL;
+ALTER TABLE `cmsware_resource`  ADD INDEX `Category` (`Category`(20));
+ALTER TABLE `cmsware_plugin_base_count`  ADD COLUMN `TableID` int(5) NOT NULL DEFAULT 0;
+ALTER TABLE `cmsware_publish_1`  ADD INDEX `PublishDate` (`PublishDate`);
+</TEXTAREA>
+</ul>
+	 
+	  <ul> 2.5.2.0913<TEXTAREA style="width=100%;height=100;font-size: 12px;font-family: 'Courier New', 'Courier', 'mono';">INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('AutoPageLen', '5000');</TEXTAREA>
+</ul>
+	  <ul>2.5.2.0912
+ <TEXTAREA style="width=100%;height=300;font-size: 12px;font-family: 'Courier New', 'Courier', 'mono';
+">
+CREATE TABLE `cmsware_tpl_cate` (
+  `TCID` int(10) NOT NULL auto_increment,
+  `CateName` varchar(50) default NULL,
+  `ParentTCID` int(10) default '0',
+  `ReadG` text,
+  `WriteG` text,
+  `ManageG` text,
+  `ReadU` text,
+  `WriteU` text,
+  `ManageU` text,
+  `Inherit` tinyint(1) default '0',
+  `CreationUserID` int(8) default NULL,
+  PRIMARY KEY  (`TCID`),
+  KEY `ParentTCID` (`ParentTCID`)
+) TYPE=MyISAM;
+
+CREATE TABLE `cmsware_tpl_data` (
+  `TID` int(11) NOT NULL auto_increment,
+  `TCID` int(10) NOT NULL default '0',
+  `TplName` varchar(50) default NULL,
+  `TplType` int(3) NOT NULL default '0',
+  `CreationUserID` int(5) default NULL,
+  `LastModifiedUserID` int(5) default NULL,
+  `CreationDate` int(10) default NULL,
+  `ModifiedDate` int(10) default NULL,
+  PRIMARY KEY  (`TID`),
+  KEY `NodeID` (`TCID`)
+ ) TYPE=MyISAM;
+
+DROP TABLE `cmsware_extra_publish`;
+CREATE TABLE `cmsware_extra_publish` (
+  `PublishID` int(8) NOT NULL auto_increment,
+  `NodeID` int(8) NOT NULL default '0',
+  `PublishName` varchar(100) default NULL,
+  `SelfPSN` varchar(250) default NULL,
+  `SelfPSNURL` varchar(250) default NULL,
+  `PublishFileName` varchar(100) default NULL,
+  `Tpl` varchar(250) default NULL,
+  `Intro` text,
+  `CreationUserID` int(8) default NULL,
+  `LastModifiedUserID` int(8) default NULL,
+  `CreationDate` int(10) default NULL,
+  `ModifiedDate` int(10) default NULL,
+  PRIMARY KEY  (`PublishID`),
+  KEY `NodeID` (`NodeID`)
+) TYPE=MyISAM;
+
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionManageG` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionManageU` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionReadG` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionReadU` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionWriteG` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionWriteU` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionApproveG` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionApproveU` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionPublishG` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionPublishU` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `PermissionInherit` text NULL;
+ALTER TABLE `cmsware_site`  ADD COLUMN `CreationUserID` int(8) NULL;
+
+ALTER TABLE `cmsware_group`  ADD COLUMN `ParentGID` mediumint(8) NULL;
+ALTER TABLE `cmsware_group`  ADD COLUMN `canMakeG` tinyint(1) NULL DEFAULT 0;
+ALTER TABLE `cmsware_group`  ADD COLUMN `canMakeU` tinyint(1) NULL DEFAULT 0;
+ALTER TABLE `cmsware_group`  ADD COLUMN `CreationUserID` mediumint(8) NULL;
+
+ALTER TABLE `cmsware_user`  ADD COLUMN `CreationUserID` mediumint(8) NULL;
+ALTER TABLE `cmsware_admin_sessions`  DROP COLUMN `sGAccessCate`;
+ALTER TABLE `cmsware_admin_sessions`  DROP COLUMN `sGAuth`;
+ALTER TABLE `cmsware_psn`  ADD COLUMN `PermissionReadG` text NULL;		
+</TEXTAREA>
+      </ul></td>
+  </tr>
+</table>
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr> 
+    <td align='left'> <h2>2.5.1 </h2>
+      <p>CMSware2.5.1 Stable Released<em> [2005-08-10]</em></p>
+      
+      <p><b>New</b></p>
+      <ul>
+        <li>AutoMini生成的缩略图空白背景由黑底改为白底</li>
+        <li>部分界面细节完善</li>
+        <li>来稿统计</li>
+        <li>GZIP输出支持,系统设置处可设置</li>
+        <li>优化算法,使用Query Cache,系统性能得到大幅提升,特别是大数据量环境下批量更新时候的运行缓慢问题得到根本改善.</li>
+        <li>新增Cache标签Cache="1" ,可以用于所有调用,模板中的CMS调用通过使用Cache,可以大幅提升批量更新的效率. <br>
+          Cache使用技巧需要特别注意,只有模板公共调用的部分使用Cache才有效果,比如内容页 头部的导航NODELIST调用,或者TOP10之类的调用,结点首页的Page-10分页调用最好不要用Cache, 
+          因为不会提升任何效率. <br>
+          <div class="code"> &lt;CMS action=&quot;LIST&quot; return=&quot;List&quot; 
+            NodeID=&quot;{$NodeInfo.NodeID}&quot; orderby=&quot;Hits_Total&quot; 
+            num=&quot;10&quot; <strong>Cache</strong>=&quot;1&quot; /&gt;<br>
+            &lt;LOOP name=&quot;List&quot; var=&quot;var&quot; key=&quot;key&quot;&gt;<br>
+            &lt;ul&gt;<br>
+            &lt;li&gt;<br>
+            &lt;a href=&quot; [$var.URL] &quot; target=_blank title=&quot; [$var.Title] 
+            &quot; &gt;[@CsubStr($var.Title, 0, 18)] &lt;/a&gt;&lt;span class=&quot;process&quot;&gt;(&lt;font 
+            color=&quot;#FF6600&quot;&gt;[$var.Hits_Total]&lt;/font&gt;)&lt;/span&gt;<br>
+            &lt;/li&gt;<br>
+            &lt;/ul&gt; <br>
+            &lt;/LOOP&gt; <br>
+          </div>
+        </li>
+      </UL>
+      <p><b>BUG修复</b></p>
+      <ul>
+        <li></li>
+      </ul>
+      <B>SQL</B> <ul>
+        <li>ALTER TABLE `cmsware_plus_demo`.`cmsware_content_index` ADD INDEX 
+          `N_S` (`NodeID`,`State`); </li>
+        <li>INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('enable_gzip', 
+          '1');</li>
+      </ul></td>
+  </tr>
+</table>
+<p>&nbsp;</p><table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr> 
+    <td align='left'> <h2>2.5 Stable</h2>
+      <p>CMSware2.5 Stable Released<em> [2005-08-10]</em></p>
+      
+     <p><b>New</b></p>
+      <ul>
+               <li>AutoMini生成的缩略图空白背景由黑底改为白底</li>
+             <li>部分界面细节完善</li>
+              <li>增加模板管理中的显示彩色源码功能</li>
+              <li>发布管理菜单中可直接编辑当前结点首页和内容页和图片页模板</li>
+              <li>增加 系统设置 - 登陆IP屏蔽功能</li>
+              <li>登陆增加登陆尝试次数限制/时间间隔机制，进一步强化安全性</li>
+              <li>登陆增加图形验证码，增强安全性</li>
+              <li> loop语句新增start属性，可以设置key的起始值
+			    <div class="code"> &lt;loop name=&quot;List&quot; var=&quot;var&quot; key=&quot;key&quot; <B>start</B>=&quot;1&quot; &gt; <br>
+&lt;LI&gt;[$key] &lt;A HREF=&quot;[$var.URL]&quot;&gt;[$var.Title]&lt;/A&gt;<br>
+&lt;/loop&gt;</div>
+              </li>
+        <li>新增“结点唯一标识符（<B>NodeGUID</B>）”，LIST调用里面使用NodeGUID进行调用。注意：NodeGUID不能和NodeID同时使用，节点唯一标识符建议使用”域名.节点名“的形式以保证唯一性。（对于对外发布共享的结点更需要注意这点）
+
+		  <div class="code">
+	&lt;CMS action=&quot;LIST&quot; return=&quot;List&quot; <B>NodeGUID</B>=&quot;com.cmsware.news.global&quot; 
+Num=&quot;20&quot; /&gt;<br>
+&lt;UL&gt;<br>
+&lt;loop name=&quot;List&quot; var=&quot;var&quot; key=&quot;key&quot;&gt;<br>
+ &nbsp;&lt;LI&gt;[$var.ContentID] &lt;A HREF=&quot;[$var.URL]&quot;&gt;[$var.Title]&lt;/A&gt;<br>
+&lt;/loop&gt;<br>
+&lt;/UL&gt;</div>   
+	   </li>
+       <li>评论管理 - 评论搜索</li>
+       <li>数据库管理 - 执行SQL语句</li>
+        <li>系统设置 - 结点名称后 显示（未发布数/未审核数）</li>
+        <li>用户组管理增加“采集管理”权限设置</li>
+        <li>内容模型字段集新增“投稿、采集、发布“三个选项，可以定义某个字段是否允许投稿，允许采集，允许字段内容发布</li>
+        <li>CMS::SQL调用支持page分页,支持使用“#TABLE_HEADER#”符号替换表名
+		  <div class="code">
+		  &lt;CMS <B>action</B>=&quot;SQL&quot; <B>return</B>=&quot;List&quot; <B>query</B>=&quot;select i.URL,c.ContentID,c.Title,c.Content 
+from #TABLE_HEADER#content_1 c left join #TABLE_HEADER#content_index i ON i.ContentID=c.ContentID 
+order by c.ContentID DESC&quot; <B>Num</B>=&quot;page-20&quot; /&gt;<br>
+&lt;UL&gt;<br>
+&lt;loop name=&quot;List&quot; var=&quot;var&quot; key=&quot;key&quot;&gt;<br>
+&lt;LI&gt;[$var.ContentID] &lt;A HREF=&quot;[$var.URL]&quot;&gt;[$var.Title]&lt;/A&gt;<br>
+&lt;/loop&gt;<br>
+&lt;/UL&gt;
+<p>[@list_page( $PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)] </p>
+		  </div>
+		  
+	    </li>
+ <li>管理工具：批量替换字段数据</li>
+	 <li>新增“表单值采集器－基于节点内容”，可以选择其它结点的内容自动输入指定字段(适用门户和企业版)</li>
+	 <li>新增登陆/管理日志记录功能。系统设置可以设置是否开启日志记录(适用门户和企业版) </li>
+	 <li>增加模板变量和关键字替换作用范围功能，可以定义某个变量为全局作用或者局部结点作用(适用门户和企业版) </li>
+	 <li>RC6升级Stable版用户请修改你的config.php 中在下面黑色代码后面添加以下3行红色的代码
+	   <div class="code">$this-&gt;workflow_state = $db_config['table_pre'].'workflow_state'; <BR>
+            $this-&gt;workflow_record = $db_config['table_pre'].'workflow_record';<br>
+              
+            <span class="important"> <br>
+            $this-&gt;log_login = $db_config['table_pre'].'log_login'; <br>
+            $this-&gt;log_admin = $db_config['table_pre'].'log_admin'; <br>
+            <br>
+          $this-&gt;block_ip = $db_config['table_pre'].'block_ip';</span></div>
+	 </li>
+	 </UL>
+
+      <p><b>BUG修复</b></p>
+      <ul>
+        <li>采集多页索引页时不能正确按顺序采集。</li>
+        <li>投稿管理中的几个bug </li>
+      </ul>
+      <B>SQL</B> <ul>
+
+	    <li>INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('isLogLogin', '1');</li>
+	    <li>INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('isLogAdmin', '1');</li>
+	    <li>INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('DisplayPublishCount', '1');</li>
+	    <li>ALTER TABLE `cmsware_group` ADD COLUMN `canCollection` tinyint(1) NULL DEFAULT 0;</li>
+	    <li>ALTER TABLE `cmsware_content_fields` ADD COLUMN `EnableContribution` tinyint(1) NULL DEFAULT 1;</li>
+	    <li> ALTER TABLE `cmsware_content_fields` ADD COLUMN `EnableCollection` tinyint(1) NULL DEFAULT 1;</li>
+	    <li> ALTER TABLE `cmsware_content_fields` ADD COLUMN `EnablePublish` tinyint(1) NULL DEFAULT 1;</li>
+	    <li> ALTER TABLE `cmsware_site` ADD COLUMN `NodeGUID` char(250) NOT NULL AFTER `NodeID`; </li>
+	    <li> CREATE TABLE `cmsware_log_admin` ( `LogID` int(10) NOT NULL auto_increment, `uName` char(50) default NULL, `IP` char(15) default NULL, `Action` char(100) default NULL, `ActionURL` char(250) default NULL, `Time` int(10) default NULL, PRIMARY KEY (`LogID`) ) TYPE=MyISAM;<BR>
+  <BR>
+        </li>
+	    <li> CREATE TABLE `cmsware_log_login` ( `LogID` int(10) NOT NULL auto_increment, `uName` char(50) default NULL, `IP` char(15) default NULL, `Time` int(10) default NULL, PRIMARY KEY (`LogID`) ) TYPE=MyISAM;<BR>
+  <BR>
+        </li>
+	    <li> CREATE TABLE `cmsware_block_ip` ( `Id` int(6) unsigned NOT NULL auto_increment, `IP` char(15) NULL, `ExpireTime` int(10) NULL, `Reason` char(250) NULL, PRIMARY KEY (`Id`) ) TYPE=MyISAM;<BR>
+  <BR>
+        </li>
+	    <li>INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('LoginTryTime', '15');</li>
+	    <li>INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('LoginTryCount', '5');</li>
+	    <li>ALTER TABLE `cmsware_tpl_vars` ADD COLUMN `IsGlobal` tinyint(1) NULL DEFAULT 1;</li>
+	    <li>ALTER TABLE `cmsware_tpl_vars` ADD COLUMN `NodeScope` text NULL;</li>
+	    <li>ALTER TABLE `cmsware_keywords` ADD COLUMN `IsGlobal` tinyint(1) NULL DEFAULT 1; </li>
+	    <li>ALTER TABLE `cmsware_keywords` ADD COLUMN `NodeScope` text NULL;</li>
+	    </ul></td>
+  </tr>
+</table>
+<br>
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr> 
+    <td align='left'> <h2>2.5 RC6</h2>
+      <p>CMSware2.5 Release Candidate 6 Released<em> [2005-07-28]</em></p>
+      <p><b>New</b></p>
+      <ul>
+          <li>系统设置 - 用户登陆超时时间设置</li>
+          <li>外部投稿接口（publish/contribution.php）（适用门户和企业版）</li>
+          <li>在CMS信息显示中增加自定义变量的显示</li>	
+<li>新增PSN有效性检测</li>	   
+<li>新增整站发布和结点发布中 发布所有未发布内容 功能选项，方便把还没有发布的内容全部发布，包括子目录</li>	   
+<li>内容页模板新增“简/繁”在线切换脚本功能，参考模板default/content.html</li>
+	   <li>内容模型字段属性“表单值采集器”新增“附件上传”选项</li>
+        <li>编辑器新增附件上传功能。</li>
+        <li>采集参数设置新增“加入全站采集”选项。</li>
+        <li>改进下载系统软件录入界面，支持本地上传软件。</li>
+ <li>下载模型新增“界面预览(Photo)”字段。</li>  
+  <li>下载模型新增“本地上传(LocalUpload)”字段。</li>      
+        <li>新增下载系统内容编辑器download_editor.php。</li>
+		 <li>后台高级搜索新增“搜索类型: 未发布文档 已发布文档 所有文档”选项 </li> 
+         <li>对于已经删除的节点(位于回收站)，恢复时提供“恢复到...”选项。</li>
+         <li>NODELIST调用新增新参数</li>
+		         &lt;CMS action=&quot;NODELIST&quot; return=&quot;List&quot; type=&quot;brother&quot;&gt; 
+				<BR><B>type</B><UL>
+				  	<LI>parent : 调用所有父级节点列表（新）
+				  	<LI>brother : 调用所有同级(兄)节点列表（新）
+				  	<LI>son : 调用所有子节点列表，等同于“sub”（新）
+				  </UL><BR>
+         <li>菜单布局优化调整。</li>
+		 <li>新增header标签，实现发送文件头的功能， 比如动态发布中加XML头</li><BR>
+		  属性（name：header名）<BR>
+<div class="code">
+&lt;header <strong>name</strong>=&quot;Content-Type: text/html; charset=gb2312&quot; /&gt; <BR>
+&lt;header <strong>name</strong>=&quot;Content-Type: text/xml; charset=gb2312&quot; /&gt; 
+</div>
+
+		 <li>多页采集增强（<B>采集索引页URL</B>改进）
+		 比如需要采集
+
+<div class="code"> http://edu.qq.com/kaoyan/fuxizhidao01.htm<BR>
+		 http://edu.qq.com/kaoyan/fuxizhidao02.htm<BR>
+		 http://edu.qq.com/kaoyan/fuxizhidao03.htm<BR>
+		 ...<BR>
+		 ..<BR>
+		 .<BR>
+		 http://edu.qq.com/kaoyan/fuxizhidao08.htm<BR>
+           </div>
+
+
+		 
+
+		 这样的多页采集RC6以前无法完成。<BR><BR>
+
+		 RC6做了改进，使用如下的索引页规则
+<div class="code">
+		 http://edu.qq.com/kaoyan/fuxizhidao<B>{0[1,8,0]}</B>.htm</div>
+<BR>
+		 <B>规则说明：</B>
+		 {<B>A</B>[<B>B</B>,<B>C</B>,<B>D</B>]}<BR>
+		 “{...}”是索引页分页语法定义<BR><BR>
+		 <B>A</B>:附加字符<BR>
+		 <B>B</B>:开始页数<BR>
+		 <B>C</B>:结束页数<BR>
+		 <B>D</B>:采集的第一页是否从默认初始页（去掉“{...}”的URL）开始，是的话填“1”，否则填“0”<BR>
+
+		 <BR>
+
+<div class="code">
+举例－采集索引页URL规则1：<BR><BR>http://edu.qq.com/kaoyan/fuxizhidao<B>{0[1,8,<span class="important">1</span>]}</B>.htm<BR><BR>
+可以采集如下页面：
+<BR>
+<span class="important">http://edu.qq.com/kaoyan/fuxizhidao.htm</span><BR>
+http://edu.qq.com/kaoyan/fuxizhidao01.htm<BR>
+		 http://edu.qq.com/kaoyan/fuxizhidao02.htm<BR>
+		 http://edu.qq.com/kaoyan/fuxizhidao03.htm<BR>
+		 ...<BR>
+		 ..<BR>
+		 .<BR>
+		 http://edu.qq.com/kaoyan/fuxizhidao08.htm<BR>
+           </div>
+<div class="code">
+举例－采集索引页URL规则2：<BR><BR>http://edu.qq.com/kaoyan/fuxizhidao<B>{0[1,8,<span class="important">0</span>]}</B>.htm<BR><BR>
+可以采集如下页面：
+<BR>
+http://edu.qq.com/kaoyan/fuxizhidao01.htm<BR>
+		 http://edu.qq.com/kaoyan/fuxizhidao02.htm<BR>
+		 http://edu.qq.com/kaoyan/fuxizhidao03.htm<BR>
+		 ...<BR>
+		 ..<BR>
+		 .<BR>
+		 http://edu.qq.com/kaoyan/fuxizhidao08.htm<BR>
+            <span class="important"></span></div>
+
+<p>规则1比规则2多采集了一个
+<span class="important">http://edu.qq.com/kaoyan/fuxizhidao.htm</span>
+这个就是参数<B>D</B>的作用	</p> <BR>
+
+
+<div class="code">
+
+举例－采集索引页URL规则3：
+
+<BR><BR>http://www.blueidea.com/tech/web/index<B>{_[2,8,1]}</B>.asp <BR><BR>
+可以采集如下页面：
+<BR>
+http://www.blueidea.com/tech/web/index.asp<BR>
+http://www.blueidea.com/tech/web/index_2.asp<BR>
+http://www.blueidea.com/tech/web/index_3.asp<BR>
+http://www.blueidea.com/tech/web/index_4.asp<BR>
+http://www.blueidea.com/tech/web/index_5.asp<BR>
+http://www.blueidea.com/tech/web/index_6.asp<BR>
+http://www.blueidea.com/tech/web/index_7.asp<BR>
+http://www.blueidea.com/tech/web/index_8.asp<BR>
+</div>
+
+<div class="code">
+
+举例－采集索引页URL规则4：
+
+<BR><BR>http://www.blueidea.com/tech/web/index<B>{_[2,8,0]}</B>.asp <BR><BR>
+可以采集如下页面：
+<BR>
+http://www.blueidea.com/tech/web/index_2.asp<BR>
+http://www.blueidea.com/tech/web/index_3.asp<BR>
+http://www.blueidea.com/tech/web/index_4.asp<BR>
+http://www.blueidea.com/tech/web/index_5.asp<BR>
+http://www.blueidea.com/tech/web/index_6.asp<BR>
+http://www.blueidea.com/tech/web/index_7.asp<BR>
+http://www.blueidea.com/tech/web/index_8.asp<BR>
+</div>
+
+
+
+
+
+		 </li>
+</UL>
+     <p><b>BUG修复</b></p>
+      <ul>
+        <li>取消/删除发布时可能遇到的发布内容删除问题。</li>
+        <li>内容页使用AutoMini错误问题，请使用[@AutoMini($Photo, '120*100',$Publish)]实现缩略图。</li>
+        <li>图片发布后图片地址可能丢失的问题。</li>
+        <li>前台搜索的SQL问题。</li>
+        <li>系统管理中的关键词替换功能页面显示BUG </li>
+		<li>自定义相关文章在新闻编辑器(news_editor)设置之后保存,再编辑时自定义相关文章消失。 </li>
+		<li>用户组权限：站点管理和模板管理有效性问题。 </li>
+		<li>BSD下sId丢失问题。 </li>
+		<li>修复CMS_SEARCH调用对page-x的支持，具体参考templates/default/search_index.html。 </li>
+		<li>自定义相关文章选择时，连未发布的也能选择出来，而且选择了以后，调用发布后没有内容</li>
+	<li> 批量操作时可以输入批注。</li>
+	<li>来稿管理列表中，如果不选择任何内容就点go，就会白屏。没有提示 </li>
+		<li>文档第一次发布URL变量丢失问题</li>
+      </ul>
+	  <B>Todo list</B>
+      <ul>
+		   
+
+		
+ 
+ <li>1，现在的NODELIST调用时，不能按设置的结点排序顺序调用出来，默认是按结点号的，现在也不能指定参数排序，希望增加排序参数可以指定，同时默认按设置的排序调用，结点排序和文章排序设置不是很直观，希望有批量排序功能，比如结点排序，能在一个窗口中列出所有结点树形后，在名称后面直接填完所有的数值后进行排序.象ipb论坛后台的排序那样
+ </li>
+ 
+  <li>2，完善文档</li>
+  <li>3，编辑器修改 http://tinymce.moxiecode.com/download.php</li>
+  </ul>
+	  <B>SQL</B>
+      <ul>
+        <li>ALTER TABLE `cmsware_collection_category`  ADD COLUMN `InRunPlan` tinyint(1) NOT NULL DEFAULT 1;</li>
+ <li>INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('sessionTimeout', '120');
+ </li>
+
+<li>INSERT INTO `cmsware_content_fields` VALUES ('', 2, '界面预览', 'Photo', 'varchar', '250', 'text', NULL, NULL, 'upload', NULL, NULL, 0, 0, 0, 0, 0);
+ </li>
+ 
+
+ <li> INSERT INTO `cmsware_content_fields` VALUES ('', 2, '本地上传', 'LocalUpload', 'varchar', '250', 'text', NULL, NULL, 'upload_attach', NULL, NULL, 0, 0, 0, 0, 0);</li>
+
+<li>ALTER TABLE `cmsware_collection_2`  ADD COLUMN `Photo` varchar(250) NOT NULL default '';</li>
+<li>ALTER TABLE `cmsware_collection_2`  ADD COLUMN `LocalUpload` varchar(250) NOT NULL default '';</li>
+<li>ALTER TABLE `cmsware_content_2`  ADD COLUMN `Photo` varchar(250) NOT NULL default '';</li>
+<li>ALTER TABLE `cmsware_content_2`  ADD COLUMN `LocalUpload` varchar(250) NOT NULL default '';</li>
+<li>ALTER TABLE `cmsware_contribution_2`  ADD COLUMN `Photo` varchar(250) NOT NULL default '';</li>
+<li>ALTER TABLE `cmsware_contribution_2`  ADD COLUMN `LocalUpload` varchar(250) NOT NULL default '';</li>
+<li>ALTER TABLE `cmsware_publish_2`  ADD COLUMN `Photo` varchar(250) NOT NULL default '';</li>
+<li>ALTER TABLE `cmsware_publish_2`  ADD COLUMN `LocalUpload` varchar(250) NOT NULL default '';</li>
+<li>ALTER TABLE `cmsware_plugin_fulltext_search_2`  ADD COLUMN `Photo` varchar(250) NOT NULL default '';</li>
+<li>ALTER TABLE `cmsware_plugin_fulltext_search_2`  ADD COLUMN `LocalUpload` varchar(250) NOT NULL default '';</li>
+
+      </ul>
+	  
+    </td>
+  </tr>
+</table>
+<p><a name='RC5' id="RC5"></a></p>
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr>
+    <td align='left'><h2>2.5 RC5</h2>
+        <p>CMSware2.5 Release Candidate 5 Released<em> [2005-07-08]</em></p>
+        <p><b>BUG修复</b></p>
+        <ul>
+          <li>不管是全新安装还是从rc3升级，击后台的 来稿管理 默认站点，都出现报错</li>
+          <li>发布管理 ---搜索 随便一个字。在出来的结果页里 再点 高级搜索 时 就会出错了。IE左下角有提示 </li>
+          <li>从后台 用户登陆－分类管理，新建分类并选择好内容模型套用时，“默认投稿主结点”会列出所有系统节点,包括和所建分类内容模型不匹配的以及不允许投稿的节点。改为<strong>新建分类时，“默认投稿主结点”只列出允许投稿的、内容模型匹配的节点</strong> </li>
+          <li> RC3升级RC4出现“SQL: SELECT * FROM ”错误的用户，请修改你的config.php <br>
+          在
+            <div class="code"> $this-&gt;tmp_file = $db_config['table_pre'].'tmp_file';<br>
+            $this-&gt;resource_ref = $db_config['table_pre'].'resource_ref';</div>
+            后面添加以下3行
+            <div class="code"> $this-&gt;tmp_file = $db_config['table_pre'].'tmp_file';<br>
+            $this-&gt;resource_ref = $db_config['table_pre'].'resource_ref';<br>
+            <br>
+            <span class="important">$this-&gt;workflow = $db_config['table_pre'].'workflow';<br>
+            $this-&gt;workflow_state = $db_config['table_pre'].'workflow_state';<br>
+            $this-&gt;workflow_record = $db_config['table_pre'].'workflow_record';</span></div>
+          </li>
+        </ul>
+        <p><strong>RC4升级到RC5方法 </strong></p>
+        <ul>
+          <li>使用RC5升级包覆盖替换RC4文件（config.php不要替换）。</li>
+      </ul></td>
+  </tr>
+</table>
+<p><a name='RC4' id="RC4"></a> <br />
+</p>
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr> 
+    <td align='left'> <h2>2.5 RC4</h2>
+      <p>CMSware2.5 Release Candidate 4 Released<em> [2005-07-01 ]</em><br />
+        <br />
+        <b>功能新增</b> </p>
+      <ul>
+        <li>New 增强授权投稿作者功能（用户登陆），新增分类视图和结点视图，方便作者投稿。未完成创建过程的文章可以暂存
+ 	可以分类浏览其发布的文章：未完成的和已提交给编辑的。其中，对于已提交给编辑但尚未被编辑验证的文章，作者可以主动撤回。
+</li>
+<li>
+New 稿件审核工作流增强支持，高端版本支持自定义审核工作流。
+</li>
+<li>
+New 稿件批注查看。
+</li>
+<li>
+New 全站采集，启动全站采集，将依次运行所有采集分类的采集任务。
+</li>
+      <li>New 新增支持自适应结点的RSS模板，可以设置任意结点文章发布成为RSS内容功能</li>
+      </ul>
+      <p><b>BUG修复</b></p>
+      <ul>
+        <li>用户投稿数据统计问题</li>
+        <li>#0000065 给文章自定义URL，增加外部连接时，用CMS_List调用不能调用到是外连接的文章</li>
+        <li>rc2-rc3的部分修复：<br>
+          0000033 内容调用指定ID出错 <br>
+          0000035 setting/model.download.php中的download.php默认路径不对，需要改 <br>
+          0000038 使用搜索搜出来的文章不能修改页面显示稿件数字 <br>
+          0000039 后台搜索出来的稿件无法使用“创建虚链接”“创建索引链接”等功能 <br>
+          0000040 用rc2不能采集，也不能导入采集规则 <br>
+          0000044 用户常遇问题 <br>
+          0000012 在右下frame的操作不应该影响到右侧节点的状态 <br>
+          0000015 发布管理显示记录数问题 <br>
+          0000017 在新标签where中支持&lt;where: c.IndexID&gt;'4442' &gt; <br>
+          0000018 采集出现空白标题 <br>
+          0000021 图片本地化上传有问题 <br>
+          0000022 文章发表时[$URL]显示错误 <br>
+          0000026 编辑器-右键-插入出错 <br>
+          0000007 采集节点的问题 <br>
+          0000027 取消插入时系统出问题 <br>
+          0000059 节点调用标签如果不带NodeID参数或带空的NodeID参数 <br>
+          0000054 用自定义模型添加文章的时候,如果输入类型为 radio,select..在添加新文章的时候,此种自段无法显示报错 <br>
+          0000052 CMS_LIST调用时不会再根据NodeID识别TableID <br>
+          0000051 评论comment.php <br>
+          0000050 update2_1to2_5.php 升级出错 <br>
+          0000049 使用JS输出 js.php出现问题 <br>
+          0000048 php4安装包出错,在显示服务器信息时也出此错 <br>
+          0000047 找不到function.php5.php和image.class.php5.php问题汇总 <br>
+          0000046 发布文章在发布设置里填写自定义内容保存后为空 <br>
+          0000065 自定义URL的文章调用不出来 <br>
+          0000067 RSS模板无法生成 <br>
+          0000004 分页下拉列表的问题 <br>
+          0000058 缩略图缓存机制<br>
+          <br>
+        </li>
+      </ul>
+      <p><strong>[SQL]</strong></p>
+      <ul>
+        <li>ALTER TABLE `cmsware_site` ADD COLUMN `WorkFlow` int(8) NOT NULL DEFAULT 0;<br>
+          ALTER TABLE `cmsware_contribution_1` ADD INDEX `NodeID` (`NodeID`);<br>
+          ALTER TABLE `cmsware_contribution_1` CHANGE COLUMN `State` `State` int(5) NULL DEFAULT 0;<br>
+          ALTER TABLE `cmsware_contribution_2` ADD INDEX `NodeID` (`NodeID`);<br>
+          ALTER TABLE `cmsware_contribution_2` CHANGE COLUMN `State` `State` int(5) NULL DEFAULT 0;
+          <br>
+          <br>
+          INSERT INTO `cmsware_group` VALUES (3, '编辑', '0', '', '', 0, 1, 0, 0, 0, 0);<br>
+          INSERT INTO `cmsware_group` VALUES (4, '高级编辑', '0', '', '', 0, 1, 0, 0, 0, 0);<br>          
+          <p>DROP TABLE IF EXISTS cmsware_workflow;<br>
+            CREATE TABLE cmsware_workflow (<br>
+  `wID` int(8) NOT NULL auto_increment,<br>
+  `Name` varchar(30) default NULL,<br>
+  `Intro` text,<br>
+  PRIMARY KEY (`wID`),<br>
+  UNIQUE KEY `wID` (`wID`)<br>
+  ) TYPE=MyISAM ;</p>
+          <p>INSERT INTO `cmsware_workflow` VALUES (3, '稿件审核工作流', '测试！！');</p>
+          <p>DROP TABLE IF EXISTS cmsware_workflow_record;<br>
+            CREATE TABLE cmsware_workflow_record (<br>
+  `OpID` int(8) NOT NULL auto_increment,<br>
+  `wID` int(8) default NULL,<br>
+  `Executor` int(8) default NULL,<br>
+  `OpName` varchar(50) default NULL,<br>
+  `StateBeforeOp` varchar(100) default NULL,<br>
+  `StateAfterOp` varchar(100) default NULL,<br>
+  `AppendNote` int(1) default '0',<br>
+  `OpIntro` text,<br>
+  PRIMARY KEY (`OpID`),<br>
+  UNIQUE KEY `OpID` (`OpID`),<br>
+  KEY `wID` (`wID`)<br>
+  ) TYPE=MyISAM ;<br>
+          </p>
+          <p>INSERT INTO `cmsware_workflow_record` VALUES (3, 3, 3, '设置为“正在编辑”', '1/103', '100', 0, '将用户的投稿设置为“正在编辑“状态');<br>
+            INSERT INTO `cmsware_workflow_record` VALUES (4, 3, 3, '通过审核', '100', '101', 0, NULL);<br>
+            INSERT INTO `cmsware_workflow_record` VALUES (5, 3, 3, '打回作者', '100/1/103', '3', 1, '');<br>
+            INSERT INTO `cmsware_workflow_record` VALUES (6, 3, 4, '设置为“正在编辑”', '101', '102', 0, NULL);<br>
+            INSERT INTO `cmsware_workflow_record` VALUES (7, 3, 4, '打回给作者', '102/101', '3', 1, NULL);<br>
+            INSERT INTO `cmsware_workflow_record` VALUES (8, 3, 4, '打回给编辑', '102/101', '103', 1, '');<br>
+            INSERT INTO `cmsware_workflow_record` VALUES (9, 3, 4, '通过终审', '102', '2', 0, '完成稿件的审核,稿件被导入内容库,等待发布');<br>
+            INSERT INTO `cmsware_workflow_record` VALUES (10, 3, 3, '撤回', '101', '100', 0, NULL);</p>
+          <p>DROP TABLE IF EXISTS cmsware_workflow_state;<br>
+            CREATE TABLE cmsware_workflow_state (<br>
+  `ID` int(8) NOT NULL auto_increment,<br>
+  `Name` char(30) default NULL,<br>
+  `State` int(5) default NULL,<br>
+  `System` int(1) default '0',<br>
+  PRIMARY KEY (`ID`),<br>
+  UNIQUE KEY `ID` (`ID`),<br>
+  UNIQUE KEY `State` (`State`)<br>
+  ) TYPE=MyISAM ;</p>
+          <p>INSERT INTO `cmsware_workflow_state` VALUES (1, '新增', 0, 1);<br>
+            INSERT INTO `cmsware_workflow_state` VALUES (2, '删除', -1, 1);<br>
+            INSERT INTO `cmsware_workflow_state` VALUES (3, '已投稿', 1, 1);<br>
+            INSERT INTO `cmsware_workflow_state` VALUES (4, '被打回', 3, 1);<br>
+            INSERT INTO `cmsware_workflow_state` VALUES (5, '已录用', 2, 1);<br>
+            INSERT INTO `cmsware_workflow_state` VALUES (9, '正在编辑(编辑)', 100, 0);<br>
+            INSERT INTO `cmsware_workflow_state` VALUES (11, '审核通过(编辑)', 101, 0);<br>
+            INSERT INTO `cmsware_workflow_state` VALUES (12, '正在编辑(高级编辑)', 102, 0);<br>
+            INSERT INTO `cmsware_workflow_state` VALUES (13, '打回编辑(高级编辑)', 103, 0);</p>
+        </li>
+
+
+	  </ul>
+    </td>
+  </tr>
+</table>
+<p><a name='RC3' id="RC3"></a></p>
+<table align="center" width="750" cellpadding="15" cellspacing="0" bgcolor='#FFFFF' style='border:1px solid #000'>
+  <tr> 
+    <td align='left'> <h2>2.5 RC3</h2>
+      <p>CMSware2.5 Release Candidate 3 Released<em> [2005-05-15 ]</em><br />
+        <br />
+        <b>功能新增</b> </p>
+      <ul>
+        <li>New <strong>新版模板语法，参见下面的说明。</strong></li>
+        <li>New 新版模板语法新增OP语句，用于表达式的运算</li>
+        <li>New 系统管理设置 -&gt; 发布管理单页显示记录、索结果单页显示记录、采集管理单页显示记录</li>
+        <li> New 标题采集不到的文章不进行采集导入</li>
+        <li>New 缩图功能新增检测大图是否存在功能，加入一个检查是否已经有了缩图文件的判断，如果有就不重新生成。</li>
+      </ul>
+      <p><b>BUG修复</b></p>
+      <ul>
+        <li><a href='http://www.cmsware.com/bbs/index.php?showtopic=2236'>#2236 
+          </a> 后台搜索出来的稿件可以“创建虚链接”“创建索引链接”</li>
+        <li><a href='http://www.cmsware.com/bbs/index.php?showtopic=2278'>#2278</a> 
+          修改文章成功但显示了出错代码</li>
+        <li> <a href='http://www.cmsware.com/bbs/index.php?showtopic=2242'>#2242</a> 
+          使用评论时出现错误</li>
+        <li><a href='http://www.cmsware.com/bbs/index.php?showtopic=2241'>#2241</a>不能采集稿件，采集管理的参数设置里，不能导入采集规则了</li>
+        <li> 关于图片发布的问题，流程如下：用户上传图片，上传图片保存于资源目录resource/hxxx/hxx下，所以文章中图片链接为管理后台的链接，文章发布之时，文章中的图片才进行真正的发布（一篇文章的发布，包括静态页面的生成和文章图片的发布这2个基本过程），图片发布到结点资源发布PSN上面，文章中的图片地址也会自动替换为发布后的地址，所以，你要理解，图片会有2个以上的拷贝，发布后台resource里面有个（文章删除时候会自动删除，前提是图片引用关联为0），资源发布PSN上也有一个（文章取消发布时会自动删除）。<br>
+        </li>
+      </ul>
+      <p><strong>[SQL]</strong></p>
+      <ul>
+        <li><em>INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('CollectionPageNum', 
+          '15');<br>
+          INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('ContentPageNum', 
+          '15');<br>
+          INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('SearchPageNum', 
+          '15');</em></li>
+      </ul>
+      <p><strong>[*新模板语法]</strong></p>
+      <p><strong>从2.5RC3起，模板引擎增加新的模板调用语法（该模板语法为cmsware3.0的计划，现在提前加入进行过渡测试），同时完全兼容1.x/2.x模板语法，新语法支持更多更强的功能。</strong></p>
+      <strong>CMS调用</strong> <div class="code">&lt;CMS <span class="important">action</span>=&quot;LIST&quot; 
+        <span class="important">return</span>=&quot;ListOne&quot; <span class="important">where</span>=&quot;(c.Title=='{$var.Title}' 
+        and c.Photo!='') or c.Hit&gt;=10&quot; NodeID=&quot;1&quot; <span class="important">/</span>&gt;<br>
+        &lt;CMS <span class="important">action</span>=&quot;CONTENT&quot; <span class="important">return</span>=&quot;contentInfo&quot; 
+        IndexID=&quot;{$var.IndexID}&quot; <span class="important">/</span>&gt; <br>
+        &lt;CMS <span class="important">action</span>=&quot;SQL&quot; <span class="important">return</span>=&quot;ListTwo&quot; 
+        query=&quot;select * from cmsware_site where Disabled=0&quot; <span class="important">/</span>&gt;</div>
+      <strong>IF语句</strong> <div class="code"> &lt;if <span class="important">test</span>=&quot;$a 
+        &gt; $b &amp;&amp; ($b&gt;$e)&quot;&gt;<br>
+        &lt;elseif <span class="important">test</span>=&quot;$c &gt; $b || $a 
+        == 0&quot; &gt;<br>
+        &lt;else&gt; <br>
+        &lt;/if&gt;</div>
+      <strong>LOOP语句</strong> <div class="code">&lt;loop <span class="important">name</span>=&quot;List&quot; 
+        <span class="important">var</span>=&quot;var&quot; <span class="important">key</span>=&quot;key&quot; 
+        &gt;<br>
+        &lt;/loop&gt;</div>
+      <p>&nbsp;</p>
+     <strong>OP操作语句</strong><br>
+        该语句为新增语句，用于表达式的运算<br>
+        格式：<strong>&lt;op exp=&quot;要运算的表达式&quot; /&gt;</strong><br>
+        <br>
+      
+      <div class="code"> 
+        例子：<br>
+        &lt;op<span class="important"> exp</span>=&quot;$var=$var+1&quot; <span class="important">/</span>&gt;<br>
+        &lt;op <span class="important">exp</span>=&quot;$var++&quot; <span class="important">/</span>&gt;<br>
+        &lt;op <span class="important">exp</span>=&quot;$var=($var - 5)/10&quot; <span class="important">/</span>&gt; 
+        <br>
+        &lt;op <span class="important">exp</span>=&quot;$var=date()&quot; <span class="important">/</span>&gt; 
+        <br>
+        &lt;op <span class="important">exp</span>=&quot;$var=date('Y-m-d', $info.Time)&quot; <span class="important">/</span>&gt;</div>
+      <p>OP语句的功能非常强大，可以用来替换var语句进行复杂变量定义</p>
+      <p> <span class="code">&lt;var <strong>name</strong>=&quot;hello&quot; <strong>value</strong>=&quot;world&quot; /&gt;</span> 
+        等同于<span class="code">&lt;op <strong>exp</strong>=&quot;$hello='world'&quot; /&gt;</span> 
+      </p>
+       使用OP语句进行复杂变量定义：
+      <div class="code">&lt;op <strong>exp</strong>=&quot;$hello=Cstrsub($var.Content,1,10,'...').'New!'&quot; 
+      /&gt;</div> <br>
+      <strong>Debug语句</strong><br>
+      该语句为新增语句，用于变量调试<br>
+      格式：<strong>&lt;debug name=&quot;变量名&quot; /&gt;</strong><br> <br> <div class="code"> 
+        例子：<br>
+        &lt;CMS action=&quot;SEARCH&quot; return=&quot;List&quot; NodeID=&quot;{$NodeID}&quot; 
+        Field=&quot;Keywords&quot; Keywords=&quot;{$Keywords}&quot; Num=&quot;10&quot; 
+        Separator=&quot;,&quot; IgnoreContentID=&quot;{$ContentID}&quot; /&gt;&lt;!--使用SEARCH调用获取相关文章列表--&gt;<br>
+        <span class="important">&lt;debug name=&quot;List&quot; /&gt;</span> <br>
+        &lt;LOOP name=&quot;List&quot; key=&quot;key&quot; var=&quot;var&quot;&gt;<br>
+        &lt;li&gt;&lt;a href=&quot;[$var.URL]&quot;&gt;[$var.Title]&lt;/a&gt;&lt;/li&gt;<br>
+        &lt;/LOOP&gt; <br>
+      </div>
+      <p><strong>[新旧模板语法比较]</strong> </p>
+      <ul>
+        <li>为了符合XML规范，新版本&lt;CMS...&gt;中的所有属性必须使用<span class="important"><strong>&quot;&quot;</strong></span>进行闭合，同时将老版的闭合标签&lt;CMS...&gt;..&lt;/CMS&gt;改为非闭合标签&lt;CMS.../&gt;。</li>
+        <li>所有非闭合标签必须使用<strong> /&gt;</strong>作为结束符,比如&lt;op exp=&quot;$var=$var+1&quot; 
+          <span class="important">/&gt;</span><br>
+          <strong>闭合标签:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;比如&nbsp;&lt;loop 
+          ......&gt;....&lt;/loop&gt;、&lt;if...&gt;......&lt;/if&gt;.<br>
+          <strong>非闭合标签</strong>:&nbsp;比如&nbsp;&lt;cms action=&quot;xxx&quot; return=&quot;xxx&quot;..../&gt;、&lt;op exp=&quot;xxx&quot; 
+          /&gt;、&lt;var name=&quot;xxx&quot; value=&quot;xxx&quot; /&gt;</li>
+        <li>新版模板语法改为将<strong>where</strong>调用直接放在&lt;cms...&gt;标签中,请大家注意</li>
+      </ul>
+      新版CMS调用: 
+      <div class="code">&lt;CMS <strong>action</strong>=&quot;LIST&quot; <strong>return</strong>=&quot;ListOne&quot; 
+        <strong>where</strong>=&quot;(c.Title=='{$var.Title}' and c.Photo!='') or c.Hit&gt;=10&quot; 
+        NodeID=&quot;1&quot;/&gt;<span class="code-comment"> &lt;!--新版本的where调用支持变量引用判断,及复杂表达式--&gt;</span><br>
+        &lt;CMS <strong>action</strong>=&quot;SQL&quot; <strong>return</strong>=&quot;ListTwo&quot; <strong>query</strong>=&quot;select 
+        * from cmsware_site where Disabled=0&quot; /&gt; </div>
+      老版CMS调用: 
+      <div class="code">&lt;CMS::LIST:ListOne NodeID=&quot;1&quot;&gt;<br>
+        &lt;where: (c.Title=='{$var.Title}' and c.Photo!='') or c.Hit&gt;=10 &gt; 
+        <span class="code-comment">&lt;!--老版本的where调用不支持变量引用判断,及复杂表达式--&gt;</span><br>
+        ...<br>
+
+        &lt;/CMS&gt;</div>
+      <br><br><br>新版LOOP调用:
+        <div class="code">&lt;loop <strong>name</strong>=&quot;List&quot; <strong>var</strong>=&quot;var&quot; 
+          <strong>key</strong>=&quot;key&quot;&gt;<br>
+        &lt;/loop&gt; </div><br>
+        老版LOOP调用:
+        <div class="code">&lt;loop $List var=var key=key&gt;<br>
+          &lt;/loop&gt;</div>
+     
+        
+        <br><br><br>新版IF调用: 
+      <div class="code">&lt;if <strong>test</strong>=&quot;$a &gt; $b &amp;&amp; ($b&gt;$e)&quot;&gt;<br>
+        &lt;elseif <strong>test</strong>=&quot;$c &gt; $b || $a == 0&quot; &gt;<br>
+        &lt;else&gt; <br>
+      &lt;/if&gt;</div>
+        老版IF调用:
+        <div class="code">&lt;if $a &gt; $b &amp;&amp; ($b&gt;$e)&gt;<br>
+        &lt;elseif $c &gt; $b || $a == 0 &gt;<br>
+        &lt;else&gt; <br>
+        &lt;/if&gt; </div>
+    </td>
+ </tr>
+</table>
+
+<br />
+</body>
+</html>

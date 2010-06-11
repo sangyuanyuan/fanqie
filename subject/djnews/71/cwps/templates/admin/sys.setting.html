@@ -1,0 +1,38 @@
+<include: file="header.html">
+<script language="JavaScript">
+function prepareSubmit() {
+ 
+		return true;
+}
+
+
+</script>
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="setting.do">系统设置</A></B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form name="oasForm" action="setting.do?o=edit_submit" method='post' enctype="multipart/form-data" >
+    <tr> 
+      <td colspan="2" class="table_header">系统设置</td>
+    </tr>
+
+<tr>
+	<td class="table_td1" width="150">CWPS默认访问密码:</td>
+	<td class="table_td2">
+		<input name="TransactionAccessKey" type='text' class='flat'  tabindex='10' value="[$RecordInfo.TransactionAccessKey]" disabled> v1.5.1版本后该设置无效
+	</td>
+</tr>
+<tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13' onClick="return prepareSubmit();"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<include: file="footer.html">

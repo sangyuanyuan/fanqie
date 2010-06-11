@@ -1,0 +1,79 @@
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@header.html");?>
+<SCRIPT language=JavaScript>
+function psnDetect(PSNID) {
+	var returnValue = CMSware_send("admin_psn.php?sId=<?php echo $this->_tpl_vars["sId"];?>&o=detect&PSNID=" + PSNID) ;
+
+	if(returnValue == '1') {
+		alert('<?php echo $_LANG_SKIN['detect_ok'];?>');
+	} else {
+		alert('<?php echo $_LANG_SKIN['detect_fail'];?>');
+	}
+
+
+}
+
+</script>
+				
+
+<!--<?php echo $this->_tpl_vars["base_url"];?>o=detect&PSNID=<?php echo $this->_tpl_vars["var"]["PSNID"];?>-->
+  <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+ <form action='<?php echo $this->_tpl_vars["base_url"];?>' method='post' enctype="multipart/form-data" name='clientform' id=clientform onSubmit='return iWPC_formCheck(this);'>
+   <tr> 
+      <td colspan="4" class="table_header"><?php echo $_LANG_SKIN['topic'];?> </td>
+    </tr>
+    <tr > 
+      <td width="10%" align="center" class="table_td1">PSNID</td>
+      <td width="30%" align="center" class="table_td1">PSN</td>
+<td width="30%" align="center" class="table_td1"><?php echo $_LANG_SKIN['publish_type'];?></td>      <td  align="center" class="table_td1"> <?php echo $_LANG_SKIN_GLOBAL['execute_op'];?></td>
+    </tr>
+    <?php if(!empty($this->_tpl_vars['psnList'] )): 
+ foreach ($this->_tpl_vars['psnList'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?> 
+    <tr > 
+      <td class="table_td2" align="center"><?php echo $this->_tpl_vars["var"]["PSNID"];?></td>
+      <td class="table_td2"><?php echo $this->_tpl_vars["var"]["Name"];?></td>
+      <td class="table_td2">
+<?php if(strpos('a'.$this->_tpl_vars["var"]["PSN"], 'ftp::')): ?>
+<?php echo $_LANG_SKIN['publish_type_remote'];?>
+<?php else: ?>
+<?php echo $_LANG_SKIN['publish_type_local'];?>
+<?php endif;?>
+
+</td>
+      <td  align="center" class="table_td2"> <A HREF="javascript:psnDetect('<?php echo $this->_tpl_vars["var"]["PSNID"];?>');"><?php echo $_LANG_SKIN['detect'];?></A> <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=edit&PSNID=<?php echo $this->_tpl_vars["var"]["PSNID"];?>"><?php echo $_LANG_SKIN_GLOBAL['edit'];?></A> 
+        <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=del&PSNID=<?php echo $this->_tpl_vars["var"]["PSNID"];?>" onclick="return confirm('<?php echo $_LANG_SKIN_GLOBAL['confirm_del'];?>')"><?php echo $_LANG_SKIN_GLOBAL['del'];?></a></td>
+    </tr>
+    <?php endforeach; endif;?> 
+    <tr > 
+      <td colspan="4" class="table_td2"> <input type="button" name="Submit" value="<?php echo $_LANG_SKIN['new_psn'];?>" onclick="window.location='<?php echo $this->_tpl_vars["base_url"];?>o=add'">
+      </td>
+    </tr>
+</form>
+  </table>
+
+ 
+<script language='JavaScript'>
+function edit(form,id) 
+{
+	eval("var isdisabled = " + form + "." + id + ".disabled");
+
+	if(isdisabled) {
+		eval(form + "." + id + ".disabled = false");
+	} else {
+		eval(form + "." + id + ".disabled = true");
+
+	}
+
+}
+function iWPC_formCheck(form) 
+{
+	if(form.tName.value == '') {
+		alert("<?php echo $_LANG_SKIN['please_input_name'];?>");
+		form.tName.focus();
+		form.tName.style.background = '#FFFFE1';
+		return false;
+	}
+}
+					
+</script> 		
+</BODY>
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@footer.html");?>

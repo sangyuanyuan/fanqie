@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<TITLE>调色板</TITLE>
+<style>
+.currentColor{width:20px;height:20px;border:1px solid black;margin-left:0pt;margin-right:15pt;margin-top:0pt;margin-bottom:0pt}
+ColorTable{border:1px solid black}
+</style>
+<SCRIPT LANGUAGE="javascript">
+window.returnValue="";
+function buildColorTable(szClick)
+{
+var sz,iCnt=2
+var cPick=new Array("00","33","66","99","CC","FF");
+//var cPick=new Array("00","11","22","33","44","55","66","77","88","99","AA","BB","CC","DD","EE","FF");
+var iColors=cPick.length,szColor=""
+sz =  "<TABLE CELLSPACING=0 CELLPADDING=0>";
+sz += "<TR><TD VALIGN=middle><DIV CLASS=currentColor ID=\"Current\">&nbsp;</DIV></TD>";
+sz += "<TD><div style=\"border:1px solid\"><TABLE ONMOUSEOUT=\"document.all.Current.style.backgroundColor=''\" ONMOUSEOVER=\"document.all.Current.style.backgroundColor=event.srcElement.bgColor\" CLASS=colorTable CELLSPACING=0 CELLPADDING=0 >";
+for(var r=0;r<iColors;r++){
+sz+="<TR>"
+for(var g=iColors-1;g>=0;g--)
+for(var b=iColors-1;b>=0;b--){
+szColor=cPick[r]+cPick[g]+cPick[b]
+sz+="<TD BGCOLOR=\"#"+szColor+"\" _item=\""+szColor+"\" TITLE=\"#"+szColor+"\" "+(szClick?"ONCLICK=\""+szClick+"\" ":"")+">&nbsp;</TD>"
+}
+sz+="</TR>"
+}
+sz+="</TABLE></div></TD></TR></TABLE>"
+return sz
+}
+function returnColor(){
+	window.returnValue = event.srcElement.bgColor;
+	window.close();
+}
+</SCRIPT>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</HEAD>
+
+<BODY  BGCOLOR="#FFFFFF" style="margin:5" >
+
+<script language=javascript>document.write( buildColorTable( "returnColor()" ) );</script>
+<div style="margin:5;font:9pt;color:red" align=center>注：请单击需要的颜色</div>
+</BODY>
+</HTML>

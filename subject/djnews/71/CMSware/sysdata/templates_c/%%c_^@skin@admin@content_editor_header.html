@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+<HEAD>
+<title><?php echo $this->_tpl_vars["cms_version"];?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $this->_tpl_vars["charset"];?>" />
+<meta name="generator" content="CMSware 2.8.5 Free" /> 
+<meta name="robots" content="noindex">		
+<link rel='stylesheet' type='text/css' href='../html/style.css' />
+<SCRIPT LANGUAGE=javascript>
+var sp_isRefash = false;
+
+function window_onbeforeunload() {
+        if(!sp_isRefash)
+        { 
+	var str="";
+	str="<?php echo $_LANG_SKIN['are_you_sure_force_exists'];?>";
+	return str; 
+        } else {
+		 //return false;
+		}
+ 
+     
+}
+
+</SCRIPT>
+<BODY     STYLE="margin:0pt;padding:0pt;border: 1px buttonhighlight;" onbeforeunload="return window_onbeforeunload();" >
+<script language='JavaScript'>
+function mhHover(tbl, idx, cls)
+{
+	var t, d;
+	if (document.getElementById)
+		t = document.getElementById(tbl);
+	else
+		t = document.all(tbl);
+	if (t == null) return;
+	if (t.getElementsByTagName)
+		d = t.getElementsByTagName("TD");
+	else
+		d = t.all.tags("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}
+
+var NodeID = '<?php echo $this->_tpl_vars["NodeInfo"]["NodeID"];?>'
+function doing(action)
+{
+	switch(action) {
+		case 'createContent':
+			parent.mainFrame.location = 'admin_publish.php?sId=<?php echo $this->_tpl_vars["sId"];?>&o=add&type=main&NodeID=' +NodeID;
+			break;
+		case 'saveContent':
+			var oBao = new ActiveXObject("Microsoft.XMLHTTP");
+			var returnValue;
+			if(!confirm("<?php echo $_LANG_SKIN_GLOBAL['confirm_save'];?>")) return false;
+
+		<?php if($this->_tpl_vars["NodeInfo"]["Editor"] == 'default.php'): ?>
+
+			<?php if(!empty($this->_tpl_vars['tableInfo'] )): 
+ foreach ($this->_tpl_vars['tableInfo'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+
+			<?php if($this->_tpl_vars["var"]["FieldInputFilter"] == 'notnull' && $this->_tpl_vars["var"]["FieldInput"] != 'select'): ?>
+				if(parent.mainFrame.document.FM.data_<?php echo $this->_tpl_vars["var"]["FieldName"];?>.value == '') {
+					alert("<?php echo $_LANG_SKIN['please_input'];?><?php echo $this->_tpl_vars["var"]["FieldTitle"];?>");
+					parent.mainFrame.document.FM.data_<?php echo $this->_tpl_vars["var"]["FieldName"];?>.focus();
+					return false;
+				}
+			
+			<?php elseif($this->_tpl_vars["var"]["FieldInputFilter"] == 'unique'  && $this->_tpl_vars["var"]["FieldInput"] != 'select'): ?>
+				oBao.open("POST","admin_publish.php?sId=<?php echo $this->_tpl_vars["sId"];?>&o=IsRecordExists&NodeID="+NodeID+"&FieldName=<?php echo $this->_tpl_vars["var"]["FieldName"];?>&FieldValue="+parent.mainFrame.document.FM.data_<?php echo $this->_tpl_vars["var"]["FieldName"];?>.value + "&action=" + parent.mainFrame.o + "&IndexID=" + parent.mainFrame.IndexID,false);
+				oBao.send();
+				returnValue = unescape(oBao.responseText);
+				//alert(returnValue)
+				if(returnValue == 'yes') {
+					alert("<?php echo $this->_tpl_vars["var"]["FieldTitle"];?><?php echo $_LANG_SKIN['exist_please_change'];?>");
+					parent.mainFrame.document.FM.data_<?php echo $this->_tpl_vars["var"]["FieldName"];?>.focus();
+					return false;
+					
+				}		
+			<?php endif;?>
+			<?php if($this->_tpl_vars["var"]["FieldType"] == 'contentlink' ): ?>
+			parent.mainFrame.document.FM.data_<?php echo $this->_tpl_vars["var"]["FieldName"];?>_value.value = parent.mainFrame.setContentLinkValue('<?php echo $this->_tpl_vars["var"]["FieldName"];?>');
+			//alert(parent.mainFrame.document.FM.data_<?php echo $this->_tpl_vars["var"]["FieldName"];?>_value.value);
+			<?php endif;?>
+			<?php endforeach; endif;?>
+		<?php else: ?>
+			<?php if(!empty($this->_tpl_vars['tableInfo'] )): 
+ foreach ($this->_tpl_vars['tableInfo'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+				<?php if($this->_tpl_vars["var"]["FieldType"] == 'contentlink' ): ?>
+				parent.mainFrame.document.FM.data_<?php echo $this->_tpl_vars["var"]["FieldName"];?>_value.value = parent.mainFrame.setContentLinkValue('<?php echo $this->_tpl_vars["var"]["FieldName"];?>');
+				//alert(parent.mainFrame.document.FM.data_<?php echo $this->_tpl_vars["var"]["FieldName"];?>_value.value);
+				<?php endif;?>
+
+			<?php endforeach; endif;?>
+
+		<?php endif;?>
+
+
+
+			parent.mainFrame.prepareSubmit();
+		    parent.mainFrame.document.FM.submit();
+
+			break;
+		case 'close':
+			sp_isRefash = true;
+			parent.window.close();
+			break;
+		case 'changeNode':
+			NodeID = changeNode.options[changeNode.selectedIndex].value
+ 			parent.mainFrame.location = 'admin_publish.php?sId=<?php echo $this->_tpl_vars["sId"];?>&o=add&type=main&NodeID=' +NodeID;
+			
+		
+	}
+}
+
+
+
+</script>
+
+<div id="msviLocalToolbar">
+  <table cellpadding="0" cellspacing="2" width="100%" height="19" border="0">
+    <tr> 
+      <td class="lt0" height="30" nowrap="nowrap"  onmouseover="mhHover('msviLocalToolbar', 0, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 0, 'lt0')" onclick="doing('createContent')"><?php echo $_LANG_SKIN['create_doc'];?></td>
+      <td><span class="ltsep">|</span></td>
+      <td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 2, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 2, 'lt0')" onclick="doing('saveContent')"><?php echo $_LANG_SKIN['save_doc'];?></td>
+      
+      <td><span class="ltsep">|</span></td>
+      <td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 4, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 4, 'lt0')" onclick="doing('close')"><?php echo $_LANG_SKIN_GLOBAL['close'];?></td>
+
+      <td width="100%" align=right> 
+<select  name="changeNode" id = "changeNode">
+<?php if(!empty($this->_tpl_vars['NODE_LIST'] )): 
+ foreach ($this->_tpl_vars['NODE_LIST'] as  $this->_tpl_vars['var']): ?>
+<?php if($this->_tpl_vars["NodeInfo"]["NodeID"] == $this->_tpl_vars["var"]["NodeID"]): ?>
+
+<option value="<?php echo $this->_tpl_vars["var"]["NodeID"];?>" selected><?php echo str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $this->_tpl_vars["var"]["cHeader"]);?> - &nbsp;<?php echo $this->_tpl_vars["var"]["Name"];?></option>
+<?php else: ?>
+<option value="<?php echo $this->_tpl_vars["var"]["NodeID"];?>"><?php echo str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $this->_tpl_vars["var"]["cHeader"]);?>  - &nbsp;<?php echo $this->_tpl_vars["var"]["Name"];?></option>
+<?php endif;?>
+
+ <?php endforeach; endif;?></select><td><td> <INPUT name="Go" TYPE="button" value="<?php echo $_LANG_SKIN['create_doc'];?>" onclick="doing('changeNode')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+  </table>
+</div>
+</body></html>

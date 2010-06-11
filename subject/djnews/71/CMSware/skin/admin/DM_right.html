@@ -1,0 +1,367 @@
+<include: file="header_init.html" >
+<script>
+function quickGo(NodeID, Action)
+{
+	//var NodeID = selectNode.options[selectNode.selectedIndex].value;
+	//var Action = selectAction.options[selectAction.selectedIndex].value;
+	if(NodeID == '') return false;
+	switch(Action) {
+		case 'publish':
+			document.location = "admin_publish.php?sId=[$sId]&o=list&NodeID=" + NodeID;
+			break;
+		case 'comment_admin':
+			document.location = "plugins.php?sId=[$sId]&plugin=base&o=admin_base::commentSearchAdmin";
+			break;
+		case 'contribution':
+			document.location = "admin_contribution.php?sId=[$sId]&o=list&NodeID=" + NodeID;
+			break;
+		case 'node_setting':
+ 			document.location = "admin_site.php?sId=[$sId]&o=edit&NodeID=" + NodeID;
+			break;
+		case 'resource_admin':
+ 			document.location = "admin_resource.php?sId=[$sId]&o=admin_frameset&NodeID=" + NodeID;
+			break;
+		case 'node_publish':
+			var arr = showMeDialog("admin_publish.php?sId=[$sId]&o=sitePublish&NodeID="+ NodeID,"color","dialogWidth:300px;dialogHeight:160px;help:0;status:0;scroll:no");
+			//alert(arr);
+			if(arr['content_num'] != null && arr['content_num'] != '') {
+			 
+				var returnValue = CMSware_send("admin_task.php?sId=[$sId]&o=publishSite&NodeID=" + NodeID +  "&include_sub=" + arr['include_sub'] + "&content_num=" + arr['content_num']);
+				
+				//alert(returnValue);
+				top.CrawlerTaskFrame.addThread("admin_task.php?sId=[$sId]&o=publishSite&mode=running&TaskID="+returnValue+"&NodeID=" + NodeID + "&content_num=" + arr['content_num'], returnValue);
+
+				top.TaskInfoFrame.addInfo('{lang:start_node_publish}', returnValue)			
+			
+			}
+			break;
+		case 'node_refresh':
+			var arr = showMeDialog("admin_publish.php?sId=[$sId]&o=siteRefresh&NodeID="+ NodeID,"color","dialogWidth:300px;dialogHeight:266px;help:0;status:0;scroll:no");
+			 
+			if(arr['content_num'] != null && arr['content_num'] != '') {
+
+				var returnValue = CMSware_send("admin_task.php?sId=[$sId]&o=refreshSite&NodeID=" + NodeID + "&refresh_index=" + arr['refresh_index'] + "&refresh_content=" + arr['refresh_content'] + "&refresh_extra=" + arr['refresh_extra'] + "&include_sub=" + arr['include_sub'] + "&content_num=" + arr['content_num']);
+				
+				//alert(returnValue);
+				top.CrawlerTaskFrame.addThread("admin_task.php?sId=[$sId]&o=refreshSite&mode=running&TaskID="+returnValue+"&NodeID=" + NodeID + "&content_num=" + arr['content_num'], returnValue);
+
+				top.TaskInfoFrame.addInfo('{lang:start_node_refresh}', returnValue)			
+			
+			}
+			break;
+		case 'view_index':
+			window.open("admin_extrapublish.php?sId=[$sId]&&o=viewIndex&NodeID=" +NodeID,'')
+			break;
+	}
+}
+
+function doFirstPublish(whether) {
+	if(whether == 1) {
+		alert('{lang:click_viewindex_after_refresh}');
+		var returnValue = CMSware_send("admin_task.php?sId=[$sId]&o=publishSite&NodeID=0&include_sub=1&content_num=10");
+		top.CrawlerTaskFrame.addThread("admin_task.php?sId=[$sId]&o=publishSite&mode=running&TaskID="+returnValue+"&NodeID=0&content_num=10", returnValue);
+
+		top.TaskInfoFrame.addInfo('{lang:start_node_publish}', returnValue)	
+		top.TaskInfoFrame.addInfo('{lang:click_viewindex_after_refresh}', returnValue)	
+		top.panelHeader.sysInfoView('state');	 
+ 	} else {
+ 		var returnValue = CMSware_send("admin_task.php?sId=[$sId]&o=stopFirstPublish");
+	
+	}
+}
+ 
+</script>
+<body topmargin=5  >
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><table width="90%" border="0" cellpadding="2" cellspacing="2" >
+        <tr> 
+          <td id=large style='border-bottom:1px solid #4C77B6' >Welcome to [$cms_version] Admin Panel </td>
+        </tr>
+      </table><br>
+
+ <table   border="0" cellpadding="2" cellspacing="2" >
+        <tr> 
+          <td > <B>{lang:quick_channel}</B> </td>
+        </tr>
+		<tr> 
+          <td >
+<select name="selectNode" id="selectNode" style="width:250" >  
+<option value="">{lang:please_select_node}</option>
+<loop $NODE_LIST var=var>
+
+<if $var.NodeType == 1>
+<option value="[$var.NodeID]">[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)]  - &nbsp;[$var.Name]</option>
+</if>
+
+ </loop>		
+
+              </select>
+ </td>
+  <td>
+<select name="selectAction" id="selectAction"  style="width:100"  >  
+
+<option value="publish">{lang:publish_admin}</option>
+<option value="contribution">{lang:contribution_admin}</option>
+<option value="resource_admin">{lang:resource_admin}</option>
+<option value="node_setting">{lang:node_setting}</option>
+<option value="node_publish">{lang:node_publish}</option>
+<option value="node_refresh">{lang:node_refresh}</option>
+<option value="view_index">{lang:view_index}</option>
+</select>
+</td>
+<td><INPUT TYPE="button" value="Go" style="height:20" onclick="quickGo(selectNode.options[selectNode.selectedIndex].value, selectAction.options[selectAction.selectedIndex].value);"></td>
+        </tr>
+<tr> 
+          <td >
+<INPUT TYPE="text" NAME="manageNodeID" id="manageNodeID" value="{lang:please_input_nodeid}" style="width:250" onfocus="this.value=''"> </td>
+  <td>
+<select name="selectAction1" id="selectAction1"  style="width:100"  >  
+
+<option value="publish">{lang:publish_admin}</option>
+<option value="contribution">{lang:contribution_admin}</option>
+<option value="resource_admin">{lang:resource_admin}</option>
+<option value="node_setting">{lang:node_setting}</option>
+<option value="node_publish">{lang:node_publish}</option>
+<option value="node_refresh">{lang:node_refresh}</option>
+<option value="view_index">{lang:view_index}</option>
+</select>
+</td>
+<td><INPUT TYPE="button" value="Go" style="height:20" onclick="quickGo(manageNodeID.value, selectAction1.options[selectAction1.selectedIndex].value);"></td>
+        </tr>
+		
+		<tr><td ><INPUT TYPE="text" NAME="manageIndexID" value="{lang:please_input_indexid}" style="width:250" onfocus="this.value=''"></td><td colspan=2><INPUT TYPE="button" value="Go" style="height:20" onclick="document.location='admin_publish.php?sId=[$sId]&o=list&IndexID=' + manageIndexID.value;"></td> </tr>
+
+<tr><td ><INPUT TYPE="button" value="{lang:publishsite}" style="height:25" onclick="quickGo('0', 'node_publish');">&nbsp;&nbsp;<INPUT TYPE="button" value="{lang:refreshsite}" style="height:25" onclick="quickGo('0', 'node_refresh');"> &nbsp;&nbsp;<INPUT TYPE="button" value="{lang:comment_admin}" style="height:25" onclick="quickGo('0', 'comment_admin');"> </td><td colspan=2><INPUT TYPE="button" value=" {lang:viewsiteindex} " style="height:25" onclick="quickGo('1', 'view_index');"></td> </tr>
+      </table>
+
+<!--UpdateMessage-->
+	  <br /><div id="updatemessage"></div>
+
+ <if test="file_exists('../sysdata/.install')">
+	  <BR><div class='errormessage' style='width: 500px;' >
+	  {lang:first_login_publish_refresh}<BR><INPUT TYPE="button" value="{lang:firstpublish_start}" style="height:25" onclick="doFirstPublish(1);">&nbsp;&nbsp;<INPUT TYPE="button" value="{lang:firstpublish_cancel}" style="height:25" onclick="doFirstPublish(0);"></div><BR>
+</if>
+
+
+<if test="$install_exists == 1" >
+	  <BR><div class='errormessage' style='width: 400px;' ><img class='errormessage' src='../html/images/errormessage1.gif' align='absmiddle'>&nbsp;<span class='tab-r'>{lang:install_exists}</span></div><BR>
+</if>
+
+<if test="$update_exists == 1" >
+	  <div class='errormessage' style='width: 400px;' ><img class='errormessage' src='../html/images/errormessage1.gif' align='absmiddle'>&nbsp;<span class='tab-r'>{lang:update_exists}</span></div><BR>
+</if>
+
+<if test="!empty($unwriteable)">
+	  <div class='errormessage' style='width: 400px;' ><img class='errormessage' src='../html/images/errormessage1.gif' align='absmiddle'>&nbsp;<span class='tab-r'>{lang:unwriteable_notice}</span><br/>
+	  <loop name="unwriteable" var="var">
+	  &nbsp;<span class='tab-r'><B>[$var]</B></span><br/>
+	  </loop>
+	  
+	  
+	  </div><BR>
+</if>
+<if test="!ini_get('allow_url_fopen')">
+	  <div class='errormessage' style='width: 400px;' ><img class='errormessage' src='../html/images/errormessage1.gif' align='absmiddle'>&nbsp;<span class='tab-r'>{lang:allow_url_fopen_warning}</span><br/>
+	   
+	  
+	  </div><BR>
+</if>
+ <div class='errormessage' style='display:none' id="version_news" > 
+	  </div> 
+ 
+      <table width="98%" border="0" align="center" cellpadding="1" cellspacing="1">
+        <tr>
+          <td id='subtitle'>System Overview </td>
+        </tr>
+        <tr>
+          <td><table  border="0"  cellpadding="3" cellspacing="2">
+              <tr> 
+                <td id='description' > <b>System version</b>:</td><td id='description'>[$cms_version](Build [$BUILD_VERSION][$patch_version])&nbsp;</td>
+              </tr>             
+ 			  <tr> 
+                <td  > <b>{lang:run_mode}</b>:</td><td id='description'>
+				<if test="$ftp_mode == 1">
+				FTP  
+				<else>
+				Normal 
+				</if>
+				</td>
+              </tr>
+			   <tr> 
+                <td  > <b>{lang:sys_charset}</b>:</td><td id='description'>
+				 [$charset]
+				</td>
+              </tr>
+			  <if test="$mysql4 == 1">
+			    <tr> 
+                <td  > <b>{lang:db_charset}</b>:</td><td id='description'>
+				 [$db_charset]
+				</td>
+              </tr>
+			  </if>
+             <tr> 
+                <td id='description'><b>PHP version</b>:</td><td id='description'><A HREF="[$base_url]o=sys::view&extra=phpinfo" id='description'>[$phpversion]</A></td>
+              </tr>
+              <tr> 
+                <td id='description'><b>MySQL version</b>:</td><td id='description'>[$mysqlversion]</td>
+              </tr>
+			  
+			  <tr> 
+                <td id='description'> <b ><a href="javascript:void(0);" onClick="Show('Hawking');"  id='description'>GD Module support</a></b>:</td><td id='description'>[$gd]</td>
+              </tr>
+
+			  <tr id='Hawking' style='display:none'> 
+                <td id='description' colspan=2> 
+				<table  border="0"  cellpadding="0" cellspacing="0">
+					  <tr> 
+						<td id='description' height=18> <b >GD version</b>:</td><td id='description'>[$gd_info.version]</td>
+					  </tr>
+					    <tr> 
+						<td id='description' height=18> <b >FreeType Support</b>:</td><td id='description'>[$gd_info.FreeType]</td>
+					  </tr>
+					    <tr> 
+						<td id='description' height=18> <b >T1Lib Support</b>:</td><td id='description'>[$gd_info.T1Lib]</td>
+					  </tr>
+					    <tr> 
+						<td id='description' height=18> <b >GIF Read Support</b>:</td><td id='description'>[$gd_info.GIFRead]</td>
+					  </tr>
+					    <tr> 
+						<td id='description' height=18> <b >GIF Create Support</b>:</td><td id='description'>[$gd_info.GIFCreate]</td>
+					  </tr>
+					    <tr> 
+						<td id='description' height=18> <b >JPG Support</b>:</td><td id='description'>[$gd_info.JPG]</td>
+					  </tr>
+					    <tr> 
+						<td id='description' height=18> <b >PNG Support</b>:</td><td id='description'>[$gd_info.PNG]</td>
+					  </tr>
+					    <tr> 
+						<td id='description' height=18> <b >WBMP Support</b>:</td><td id='description'>[$gd_info.WBMP]</td>
+					  </tr>
+					   </tr>
+					    <tr> 
+						<td id='description' height=18> <b >XBM Support</b>:</td><td id='description'>[$gd_info.XBM]</td>
+					  </tr>
+					</table>
+				
+				</td>
+			
+              </tr>
+
+
+			  <tr> 
+                <td id='description'> <b>FTP Module support</b>:</td><td id='description'>[$ftp]</td>
+              </tr>
+			  <tr> 
+                <td id='description'> <b>Upload Max FileSize</b>:</td><td id='description'>[$upload_max_filesize]</td>
+              </tr>
+		
+	  <tr> 
+                <td id='description'> <b>display_errors </b>:</td><td id='description'>
+<if test="ini_get('display_errors')">
+On
+<else>
+Off
+</if>
+</td>
+              </tr>
+	  <tr> 
+                <td id='description'> <b>allow_url_fopen</b>:</td><td id='description'>
+<if test="ini_get('allow_url_fopen')">
+On
+<else>
+Off
+</if>
+</td>
+              </tr>
+
+	  <tr> 
+                <td id='description'> <b>safe_mode</b>:</td><td id='description'>
+<if test="ini_get('safe_mode')">
+On
+<else>
+Off
+</if>
+</td>
+              </tr>
+
+
+
+			  <tr> 
+                <td id='description'> <b>memory_limit </b>:</td><td id='description'>
+[@get_cfg_var('memory_limit')]
+</td>
+              </tr>
+
+
+			
+            </table></td>
+        </tr>		
+            </table></td>
+        </tr>
+			
+
+
+
+
+
+		   <tr>
+          <td id='subtitle'>License Info </td>
+        </tr>
+        <tr>
+          <td><table  border="0"  cellpadding="3" cellspacing="2">
+
+              <tr> 
+                <td  > {lang:LicenseInfo_Product-name}:</td><td id='description'>[$LicenseInfo.Product-name]</td>
+              </tr>              <tr> 
+                <td  > {lang:LicenseInfo_Registered-to}:</td><td id='description'>[$LicenseInfo.Registered-to]</td>
+              </tr>
+            <tr> 
+                <td  > {lang:LicenseInfo_Registered-URL}:</td><td id='description'>[$LicenseInfo.Registered-URL]</td>
+              </tr>		
+            <tr> 
+                <td  > {lang:LicenseInfo_Node-num}:</td><td id='description'>[$LicenseInfo.Node-num]
+				({lang:used}&nbsp;[$node_used])
+				</td>
+              </tr>	
+            <tr> 
+                <td  > {lang:LicenseInfo_ContentModel-num}:</td><td id='description'>[$LicenseInfo.ContentModel-num]
+				({lang:used}&nbsp;[$content_model_used])
+				</td>
+              </tr>	     
+			  
+			  <tr> 
+                <td  > {lang:LicenseInfo_RemotePSN-num}:</td><td id='description'>[$LicenseInfo.RemotePSN-num]
+				({lang:used}&nbsp;[$remote_psn_used])
+				</td>
+              </tr>				  
+		 			  
+			  </table></td>
+        </tr>
+
+      </table>
+    
+
+      <table width="90%" border="0" cellpadding="2" cellspacing="2" >
+        <tr> 
+          <td id=large style='border-bottom:1px solid #4C77B6' >&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<script>
+function Show(MenuID){
+	if(Hawking.style.display=="none"){
+		Hawking.style.display="";
+		
+	}else{
+		Hawking.style.display="none";
+	
+	}
+}
+ 
+  
+</script>
+<iframe src="index.php?sId=[$sId]&o=sys::version" style="display:none" ></iframe>
+<include: file="footer.html">
+<script type="text/javascript" src="http://www.lonmo.com/update/checkcmswareupdate.php?ver=[@rawurlencode($cmsware_version)]&charset=[$charset]"></script>

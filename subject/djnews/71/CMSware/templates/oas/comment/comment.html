@@ -1,0 +1,318 @@
+<include file="header.html"/>
+
+ <TABLE cellSpacing=2 cellPadding=2 width=100% border=0>
+    <TBODY>
+      <TR> 
+        <TD align=center><CENTER><A href="[$Publish.URL]"><FONT 
+      style="FONT-SIZE: 22px;  "><B>
+<if test="$TableID == 1">
+[$Publish.Title]
+<elseif test="$TableID == 2">
+[$Publish.SoftName]
+<elseif test="$TableID == 6">
+[$Publish.PhotoName]
+<elseif test="$TableID == 3">
+[$Publish.Title]
+</if>
+
+</B></FONT></A> </CENTER>
+        </TD>
+      </TR>
+      <TR> 
+        <TD align=center><CENTER>以下网友留言只代表网友个人观点，不代表本网观点 <FONT 
+      color=#ff0000><a href="javascript:document.myform.content.focus();" >立即发表评论</a></FONT></CENTER></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+  <TABLE cellSpacing=0 cellPadding=0 width=100% border=0>
+    <TBODY>
+      <TR> 
+        <TD bgColor=#d4d3d1 colSpan=3 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+      <TR> 
+        <TD width=1 bgColor=#DEDFD6 height=25><BR></TD>
+        <TD class=f14 width=748 bgColor=#626C85>　 <FONT color=#ffffff>本新闻所有评论共 
+          [$CountNum]
+          条 
+          [$Page]
+          </FONT> </TD>
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+      </TR>
+      <TR> 
+        <TD bgColor=#d4d3d1 colSpan=3 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1 height=3><IMG height=1 
+      src="" width=1></TD>
+        <TD width=748 bgColor=#ffffff height=1><IMG height=1 
+      src="" width=1></TD>
+        <TD width=1 bgColor=#d4d3d1 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+<loop name="CommentList" key="key" var="var" >
+  <TABLE cellSpacing=0 cellPadding=0 width=100% border=0>
+    <TBODY>
+      <TR> 
+        <TD bgColor=#d4d3d1 colSpan=4 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+        <TD align=middle width=28 bgColor=#eeeded><IMG height=20 
+      src="[$PUBLISH_URL]images/lyb04.gif" width=20></TD>
+        <TD class=f14 width=720 bgColor=#eeeded>[@date('Y-m-d H:i', $var.CreationDate)] 网友：<B>[$var.Author]</B> 
+          　IP:[$var.Ip]</TD>
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+      </TR>
+      <TR> 
+        <TD bgColor=#d4d3d1 colSpan=4 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1 height=8><IMG height=1 
+      src="" width=1></TD>
+        <TD width=748 bgColor=#ffffff colSpan=2 height=1><IMG height=1 
+      src="images/c.gif" width=1></TD>
+        <TD width=1 bgColor=#d4d3d1 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+        <TD width=28><BR></TD>
+        <TD class=l17 width=720>[@nl2br($var.Comment)]</TD>
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+      </TR>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1 height=8><IMG height=1 
+      src="" width=1></TD>
+        <TD width=748 bgColor=#ffffff colSpan=2 height=1><IMG height=1 
+      src="" width=1></TD>
+        <TD width=1 bgColor=#d4d3d1 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+  </loop>
+  <TABLE cellSpacing=0 cellPadding=0 width=100% border=0>
+    <TBODY>
+      <TR> 
+        <TD bgColor=#d4d3d1 colSpan=3 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1 height=25><BR></TD>
+        <TD class=f14 width=748 bgColor=#626C85>　 <FONT color=#ffffff>本新闻所有评论共 
+          [$CountNum]条 [$Page]</FONT> </TD>
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+      </TR>
+      <TR> 
+        <TD bgColor=#d4d3d1 colSpan=3 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1 height=3><IMG height=1 
+      src="" width=1></TD>
+        <TD width=748 bgColor=#ffffff height=1><IMG height=1 
+      src="" width=1></TD>
+        <TD width=1 bgColor=#d4d3d1 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1 height=25><BR></TD>
+        <TD class=f14 align=middle width=748>　
+<TD width=1 bgColor=#d4d3d1><BR></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+  <TABLE cellSpacing=0 cellPadding=0 width=100% border=0>
+       <TBODY>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1 height=10><BR></TD>
+        <TD vAlign=bottom width=39 height=20><IMG height=28 
+      src="[$PUBLISH_URL]images/lyb05.gif" width=39></TD>
+        <TD vAlign=top width=340> <TABLE cellSpacing=0 cellPadding=0 width=340 border=0>
+            <TBODY>
+              <TR> 
+                <TD vAlign=bottom width=100 height=30><B>您的留言</B></TD>
+                <TD width=29><BR></TD>
+                <TD align=right></TD>
+              </TR>
+              <TR> 
+                <TD bgColor=#d4d3d1 colSpan=3 height=1><IMG height=1 
+            src="" width=1></TD>
+              </TR>
+              <TR> 
+                <TD bgColor=#eeeded colSpan=3 height=9><IMG height=1 
+            src="" width=1></TD>
+              </TR>
+            </TBODY>
+          </TABLE></TD>
+        <TD vAlign=bottom width=39 height=20>&nbsp;</TD>
+        <TD vAlign=top width=330> <TABLE cellSpacing=0 cellPadding=0 width=330 border=0>
+            <TBODY>
+              <TR> 
+                <TD vAlign=bottom width=120 height=30><B>热门新闻评论</B></TD>
+                <TD width=29><BR></TD>
+                <TD align=right></TD>
+              </TR>
+              <TR> 
+                <TD bgColor=#d4d3d1 colSpan=3 height=1><IMG height=1 
+            src="" width=1></TD>
+              </TR>
+              <TR> 
+                <TD bgColor=#eeeded colSpan=3 height=9><IMG height=1 
+            src="" width=1></TD>
+              </TR>
+            </TBODY>
+          </TABLE></TD>
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+  <TABLE cellSpacing=0 cellPadding=0 width=100% border=0>
+    <TBODY>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+        <TD width=19><BR></TD>
+        <TD vAlign=top width=370>
+		
+		 <TABLE cellSpacing=0 cellPadding=0 width=370 border=0>
+   			<FORM name=myform action="[$OAS_URL]comment.php?o=post&nodeid=[$Publish.NodeID]&id=[$Publish.IndexID]" method=post>
+         
+		 
+              <TR> 
+                <TD height=30>
+ <table    border="0">
+   <tr>
+    <td>
+<php>
+<span class="bold">&raquo;</span>欢迎你
+<if test="$UserSession.UserID ==0">
+<span class="bold">游客: &nbsp;</span><a href="[$OAS_URL]cwps.php?do=register">注册</a> 
+| <a href="[$OAS_URL]cwps.php?do=login">登录</a> 
+ 
+<else>
+<span class="bold">[$UserSession.UserName]: &nbsp;</span><a href="[$OAS_URL]cwps.php?do=logout" onclick="return confirm('确认退出吗？')">退出</a> 
+</if>
+</php>
+</td>
+     
+     
+  </tr>
+ </table>
+   
+
+
+                </TD>
+              </TR>
+              <TR> 
+                <TD class=l15>&nbsp;</TD>
+              </TR>
+              <TR> 
+                <TD 
+height=80><TEXTAREA name=content rows=8 cols=50></TEXTAREA></TD>
+              </TR>
+              <TR> 
+                <TD align=middle 
+          height=40><INPUT type=submit value=" 发 送 " name=s1><a name="add"></a></TD>
+              </TR>
+			  </form>
+            
+          </TABLE>
+		  
+		  
+		  </TD>
+        <TD width=18><BR></TD>
+        <TD vAlign=top width=340>
+<CMS action="LIST" return="List" orderby="CommentNum" where="co.TableID='{$TableID}'" TableID="{$TableID}" num="15" />
+ <TABLE cellSpacing=1 cellPadding=1 width=100% border=0>
+            <TBODY>
+             <TR> 
+                <TD width=10 height=5></TD>
+                <TD width=330></TD>
+              </TR>
+<LOOP name="List" var="var" key="key">
+
+<TR> 
+      <TD class=f14 vAlign=top>·</TD>
+        <TD class=f14><A class=a05   href="[$OAS_URL]comment.php?o=display&nodeid=[$var.NodeID]&id=[$var.IndexID]">
+
+<if test="$TableID == 1">
+[$var.Title]
+<elseif test="$TableID == 2">
+[$var.SoftName]
+<elseif test="$TableID == 6">
+[$var.PhotoName]
+<elseif test="$TableID == 3">
+[$var.Title]
+</if>
+
+</A><span class="process">([$var.CommentNum])</span></TD>
+</TR>
+			
+</LOOP>		
+</TBODY></TABLE>	
+</CMS>
+</TD>
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+      </TR>
+      
+    </TBODY>
+  </TABLE>
+  <TABLE cellSpacing=0 cellPadding=0 width=100% border=0>
+    <TBODY>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1 height=25><BR></TD>
+        <TD vAlign=bottom width=39 height=35><IMG height=28 
+      src="[$PUBLISH_URL]images/lyb06.gif" width=39></TD>
+        <TD vAlign=top width=709> <TABLE cellSpacing=0 cellPadding=0 width=709 border=0>
+            <TBODY>
+              <TR> 
+                <TD vAlign=bottom width=100 height=25><B>请您注意：</B></TD>
+                <TD width=580><BR></TD>
+                <TD width=29><BR></TD>
+              </TR>
+              <TR> 
+                <TD bgColor=#d4d3d1 colSpan=3 height=1><IMG height=1 
+            src="" width=1></TD>
+              </TR>
+              <TR> 
+                <TD bgColor=#eeeded colSpan=3 height=9><IMG height=1 
+            src="" width=1></TD>
+              </TR>
+            </TBODY>
+          </TABLE></TD>
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+  <TABLE cellSpacing=0 cellPadding=0 width=100% bgColor=#eeeded border=0>
+    <TBODY>
+      <TR> 
+        <TD width=1 bgColor=#d4d3d1 height=25><BR></TD>
+        <TD width=40><BR></TD>
+        <TD width=688>· 经营许可证编号: 京ICP证xxxx号<BR>
+          · 尊重网上道德，遵守<A 
+      href="http://tech.sina.com.cn/i/c/65606.shtml" 
+      target=_blank>《全国人大常委会关于维护互联网安全的决定》</A>及中华人民共和国其他各项有关法律法规<BR>
+          · 尊重网上道德，遵守中华人民共和国的各项有关法律法规<BR>
+          · 承担一切因您的行为而直接或间接导致的民事或刑事法律责任<BR>
+          ·新闻留言板管理人员有权保留或删除其管辖留言中的任意内容 <BR>
+          · 您在留言板发表的作品，本站有权在网站内转载或引用 <BR>
+          · 参与本留言即表明您已经阅读并接受上述条款 <BR></TD>
+        <TD width=20><BR></TD>
+        <TD width=1 bgColor=#d4d3d1><BR></TD>
+      </TR>
+      <TR> 
+        <TD bgColor=#d4d3d1 colSpan=6 height=1><IMG height=1 
+      src="" width=1></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+<include file="../footer.html"/>
+</body>
+</html>

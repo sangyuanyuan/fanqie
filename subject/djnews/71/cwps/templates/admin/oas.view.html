@@ -1,0 +1,48 @@
+<include: file="header.html">
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="oas.do">OAS管理</A> -&gt; 查看记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+
+<table width="98%" border="0" cellpadding="5" cellspacing="1" class="table_border" align="center">
+<tr>
+	<td colspan="2" class="table_header">查看OAS信息</td>
+</tr>
+
+<tr>
+	<td class="table_td1" width="200">OASID：</td>
+	<td class="table_td2">[$RecordInfo.OASID]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">OASUID：</td>
+	<td class="table_td2">[$RecordInfo.OASUID]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">OAS名称：</td>
+	<td class="table_td2">[$RecordInfo.OASName]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">IP地址：</td>
+	<td class="table_td2">[$RecordInfo.IP]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">CWPS访问密码：</td>
+	<td class="table_td2">[$RecordInfo.CWPSPassword]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">反向消息接收地址：</td>
+	<td class="table_td2">[$RecordInfo.ProvisionURL]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">反向消息接收地址访问密码：</td>
+	<td class="table_td2">[$RecordInfo.ProvisionPassword]</td>
+</tr>
+</table>
+<include: file="footer.html">
+</body>
+</html>

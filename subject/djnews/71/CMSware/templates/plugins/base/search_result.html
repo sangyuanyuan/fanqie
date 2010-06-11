@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>CMSware - 搜索</TITLE>
+<META http-equiv=content-type content="text/html; charset=utf-8">
+
+
+
+<style type="text/css">
+<!--
+.process		{ color: #000000; font-size: 11px; font-family: Tahoma, Arial; text-align: center;}
+A.o:visited { color:#000000; 	text-decoration:none;}
+A.o:hover { color:#000000;	text-decoration:none; }
+.w14 {  font-family: "宋体"; font-size: 14px; line-height: 16px; color: #FDFCDF; text-decoration: none}
+.lb12 {  font-family: "宋体"; font-size: 12px; color: #D27202; text-decoration: none}
+.lj {  font-family: "Geneva", "Arial", "Helvetica", "san-serif"; font-size: 14px; color: #99DAE8; text-decoration: none; font-weight: 900}
+.w12 {  font-family: "宋体"; font-size: 12px; line-height: 18px; color: #FFFFFF; text-decoration: none}
+.dbl {  font-family: "宋体"; font-size: 12px; line-height: 16px; color: #0544A4; text-decoration: none}
+.dbr14 {  font-family: "宋体"; font-size: 14px; line-height: 18px; color: #C22501; text-decoration: none; font-weight: bold}
+.dbb14 {  font-family: "宋体"; font-size: 14px; line-height: 18px; color: #C28501; text-decoration: none; font-weight: bold}
+.dblb {  font-family: "宋体"; font-size: 12px; line-height: 16px; color: #0544A4; text-decoration: none; font-weight: bold}
+.o12 {  font-family: "宋体"; font-size: 12px; color: #F99901}
+.b14 {  font-family: "宋体"; font-size: 14px; line-height: 16px; color: #000000; text-decoration: none}
+.b12 {  font-family: "宋体"; font-size: 12px; line-height: 18px; color: #000000; text-decoration: none}
+.do {  font-family: "宋体"; font-size: 12px; line-height: 16px; color: #D8831F; text-decoration: none}
+.z12 {  font-family: "宋体"; font-size: 12px; line-height: 16px; color: #BE692A; text-decoration: none}
+.ub12 {  font-family: "宋体"; font-size: 12px; color: #3D93BF; text-decoration: underline}
+.hz12 {  font-family: "宋体"; font-size: 12px; line-height: 14px; color: #551915; text-decoration: none}
+.dg12 {  font-family: "宋体"; font-size: 12px; line-height: 14px; color: #3D93BF; text-decoration: none}
+.qh {  font-family: "宋体"; font-size: 12px; line-height: 16px; color: #FDFCDF; text-decoration: none}
+.ww14 {  font-family: "宋体"; font-size: 14px; line-height: 16px; color: #FFFFFF; text-decoration: none}
+.gr {  font-family: "宋体"; font-size: 12px; line-height: 16px; color: #565655; text-decoration: none}
+.ubl {  font-family: "宋体"; font-size: 12px; color: #333333; text-decoration: underline}
+.s8 {  font-family: "Arial", "Helvetica", "sans-serif"; font-size: 9px; color: #666666}
+.wyt {  font-family: "Arial", "Helvetica", "sans-serif"; font-size: 12px; color: #81CBF1; text-decoration: none}
+.lg {  font-family: "宋体"; font-size: 12px; line-height: 16px; color: #CCCCCC; text-decoration: none}
+.ll {  font-family: "宋体"; font-size: 12px; line-height: 20px; color: #3D93BF; text-decoration: none}
+.r12 {  font-family: "宋体"; font-size: 12px; line-height: 16px; color: #C9431A; text-decoration: none}
+a:hover {  text-decoration: underline}
+a {  font-size: 12px}
+.s12 {  font-family: "宋体"; font-size: 12px; line-height: 16px; color: #000000; text-decoration: none}
+.ss12 {  font-family: "宋体"; font-size: 12px; line-height: 14px; color: #000000; text-decoration: underline}
+a.tt:link {  font-family: "黑体"; font-size: 20px; color: #061CA4; text-decoration: none}
+a.tt:visited {  font-family: "黑体"; font-size: 20px; color: #061CA4; text-decoration: none}
+a.tt:hover {  font-family: "黑体"; font-size: 20px; color: #CC0000; text-decoration: underline}
+.pt {  font-family: "宋体"; font-size: 12px}
+.shuxian {  background-attachment: scroll; background-image: url(http://imgs.xinhuanet.com/icon/xh/nt_4.gif); background-repeat: repeat-y; background-position: right top}
+.border {  border: 1px #FF6600 solid}
+.kuanfont {  font-size: 12px; line-height: normal; letter-spacing: 1px}
+.shuline {  background-attachment: scroll; background-image: url(http://imgs.xinhuanet.com/icon/xh/home_xu_line_0519.gif); background-repeat: repeat-y; background-position: center top}
+.blackborder {  border: #D5E0EC; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+.dfpd {  font-family: "宋体"; font-size: 16px; text-decoration: none}
+td {  font-family: "宋体"; font-size: 12px; line-height: 16px; text-decoration: none}
+.gray12 {  font-family: "宋体"; font-size: 12px; line-height: 18px; color: #534439; text-decoration: none}
+.blue14 {  font-family: "宋体"; font-size: 14px; line-height: 22px; color: #0000CC; text-decoration: underline; font-weight: bold}
+-->
+</style>
+<script language="JavaScript">
+function setBarPosition(){
+	document.getElementById('toolBar').style.top=0
+	document.getElementById('toolBar').style.left=621
+	document.getElementById('toolBar').style.display='block'
+}
+
+function setTailPosition(){
+var theHeight=(document.getElementById('toolBar').offsetHeight>document.getElementById('theEnd').offsetTop) ? document.getElementById('toolBar').offsetHeight : document.getElementById('theEnd').offsetTop
+	document.getElementById('sinaTail').style.top=theHeight
+	document.getElementById('sinaTail').style.left=document.getElementById('theEnd').offsetLeft
+	document.getElementById('sinaTail').style.display='block'
+}
+</script>
+
+<body bgcolor=#064891 LINK=#000066 VLINK=#000066 alink=#FF0000 topmargin=0 leftmargin=0 text="#000099">
+
+
+<CENTER>
+  <TABLE width=778 border=0 cellPadding=0 cellSpacing=0 bgcolor="#FFFFFF">
+    <TBODY>
+      <TR> 
+        <TD width=120><A HREF="http://www.cmsware.com"><img   src="./images/logo.gif"   border="0" alt=""></A></TD>
+        <TD vAlign=middle align=right> <A HREF="http://www.cmsware.com">CMSware首页</a> 
+          | <A HREF="http://www.cmsware.com/official/bbs">技术支持论坛</a>&nbsp;&nbsp; 
+        </TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+  <TABLE align=center bgColor=#125FA7 border=0 cellPadding=0 cellSpacing=0 width=778 height=25>
+    <TBODY>
+      <TR> 
+        <TD class=i vAlign=middle width="598"> <B><font color="#FFFFFF">&nbsp;&nbsp;　CMSware搜索</font></B> 
+          &nbsp;&nbsp;<a href="index.html"></a></td>
+        <TD align=right vAlign=top width="10">&nbsp;</TD>
+        <TD align=right vAlign=top width="165">&nbsp;</TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+  <table width="778" border="1" cellspacing="0" cellpadding="0" align="center" bordercolor="#FFFFFF">
+    <tr> 
+      <td width="97%" colspan="2"> <table width=100% border=0 cellspacing=0 cellpadding=0 align=center class="i">
+          <form name="xh" method="post" action="search.php?o=search&TableID=1" >
+            <tr> 
+              <td colspan="2" bgcolor="#FFFFFF"> <br> <table width="99%" border=0 cellspacing=0 cellpadding=0 align=center class="i">
+                  <tr> 
+                    <td width="122" height="25" valign="middle"><b><font color="#000000">搜索关键字:</font></b> 
+                    <td width="138"> 
+                      <input name=Keywords value="[$searchKeywords]" type=text id="keywords" size=25> 
+                    </td>
+                    <td width="506">&nbsp;&nbsp; <input  name="image222" type="submit" value="搜索" onClick="if(this.form.Keywords.value=='') {alert('请输入关键字');return false;}">
+                     
+                      <input name="Field" type="hidden" id="field" value="Content">
+                      <A HREF="search.php?o=pro&TableID=1">高级搜索</A></td>
+                  </tr>
+                </table></td>
+            </tr>
+          </form>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="6" align="center" bgcolor="#FFFFFF">
+          <tr> 
+            <td class=i bgcolor="#FFFFFF" colspan="2"> <font color="#000000"> 
+              CMSware搜索为您找到<font color="red"> 
+              [$searchResultInfo.num]
+              </font>篇有关 "</font><font color=red> 
+              [$searchKeywords]
+              </font><font color="#000000">" 的网页&nbsp;&nbsp; 当前显示 
+              [$searchResultInfo.from]
+              - 
+              [$searchResultInfo.to]
+              条 , 共[$searchResultInfo.pageNum]页 </font> </td>
+          </tr>
+          <tr> 
+            <td width="100%" height="5" align="left" valign="top" colspan="2"> 
+            </td>
+          </tr>
+        </table>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0" align="center">
+          <tr> 
+            <td width="100%" align="center" bgcolor="#D0DCEA" height="23"> 
+              [$pageList]
+            </td>
+          </tr>
+          <tr> 
+            <td width="100%" align="center" height="1" bgcolor="#FFFFCC"></td>
+          </tr>
+          <tr> 
+            <td width="100%" align="center" height="3" bgcolor="#FFFFFF"></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <loop $searchResult var=var>
+  <table width="778" border="0" cellspacing="0" cellpadding="8" align="center" bgcolor="#EBEFF5">
+    <tr bgcolor="#FFFFFF"> 
+      <td class=i width="3%">&nbsp; </td>
+      <td class=i width="95%"><a href="[$var.URL]" target=_blank><font color="#663333"><span class="blue14">
+        [@highlight($var.Title,$searchKeywords)]
+        </span></font></a> [$var.score] 　 <font color="#666666">发布时间:[@date('Y年m月d日 H:i', $var.PublishDate)]</font>  </td>
+      <td class=i align="right" width="2%">&nbsp; </td>
+    </tr>
+    <tr> 
+      <td class=i colspan=5> <blockquote><font color=#000000>[@highlight(html2txt($var.Content), 
+          $searchKeywords,200)]     <br>
+          <a href="[$var.URL]" target=_blank><font color="#000000"><font color="#666666">[$var.URL]</font></font></a> 
+          </font></blockquote></td>
+    </tr>
+  </table>
+  </loop>
+  <table width="778" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#333333">
+    <tr> 
+      <td height="1" bgcolor="#000066"></td>
+    </tr>
+  </table>
+  <table border="0" width="778" cellspacing="0" cellpadding="0" align="center">
+    <tr> 
+      <td width="100%" align="center" height="1"  bgcolor="#FFFFFF"></td>
+    </tr>
+    <tr> 
+      <td width="100%" align="center" bgcolor="#D0DCEA" height="23"> 
+        [$pageList]
+        &nbsp; </td>
+    </tr>
+    <tr> 
+      <td width="100%" align="center" height="1" bgcolor="#FFFFCC"></td>
+    </tr>
+    <tr> 
+      <td width="100%" align="center" height="3" bgcolor="#FFFFFF"></td>
+    </tr>
+  </table>
+  <table width="778" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+    <td align="center" bgcolor="#000000"><img src="spacer.gif" width="1" height="5"></td>
+  </tr>
+  <tr> 
+    <td align="center" bgcolor="#E5E5E5"><img src="spacer.gif" width="1" height="5"></td>
+  </tr>
+  <tr>
+    <td align="center">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td align="center" class="copyright">  <span class="process"> Powered by <b><A HREF="http://www.cmsware.com" target="blank" class="o">[$cmsware_version]</A></b> &copy 1999-2005 CMSware Ltd. All rights reserved. </span></td>
+  </tr>
+</table> 
+ 
+
+</CENTER>
+</body>
+</html>
