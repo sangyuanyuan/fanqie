@@ -331,6 +331,10 @@ class BlogImages
 				$sql .= " and {$param['condition']}";
 			}
 			
+			if(isset($param['group'])){
+				$sql .= " group by {$param['group']}";
+			}			
+			
 			if(isset($param['order'])){
 				$sql .= " order by {$param['order']}";
 			}else{
