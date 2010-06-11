@@ -1,0 +1,21 @@
+<%xml version="1.0" encoding="utf-8" %>
+<wap>GBK2UTF8</wap>
+<!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml">
+<wml><head><meta http-equiv="Cache-Control" content="no-cache" forua="true"/></head>
+<CMS action="NODE" return="NodeInfo" />
+
+<card id="MainCard" title="WAP">
+<p>
+==*[$NodeInfo.Name]*==<br/>
+<CMS action="NODELIST" return="List" Type="sub"  />
+<loop name="List" key="key" var="var" >
+<a href="[$var.NodeURL]" title="È·¶¨">[$var.NodeName]</a> <br/>
+
+</loop>
+</p>
+
+<p align="center">
+<br/>
+CopyRight 2005 <br/>CMSware<br/></p></card>
+
+</wml>

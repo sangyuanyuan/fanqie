@@ -1,0 +1,105 @@
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>评论 - [$Publish.Title] - [$SITE_NAME]</title><!--#CW#站点名称$SITE_NAME可在CMSWARE后台-系统管理-模板变量设置中设置,$NodeInfo.Name是本模板所在结点的结点名称#CW#-->
+<link href="[$SKIN_URL]gqxx/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+<div class="content">
+	<div class="topside07">
+		<div class="topside07_l">&nbsp;</div>
+		<div class="topside07_c">&nbsp;</div>
+		<div class="topside07_r">&nbsp;</div>
+	</div>
+	<div class="center07">
+		<div class="newstitle"><span class="title_link_3">相关评论</span>(共<span class="title_link_2">[$CountNum]</span>条评论)</div>
+		<div class="solidline"></div>
+		<div class="content_title"><a href="[$Publish.URL]" target="_blank">[$Publish.Title]</a></div>
+		<div class="content_info">以下网友留言只代表网友个人观点，不代表本网观点</div>
+		<table class="content_comment">
+		<if test="!empty($CommentList)">
+		<loop name="CommentList" var="var" key="key">
+			<tr>
+				<th width="33%">评论人：[$var.Author]</th>
+				<th width="33%">IP：[$var.Ip]</th>
+				<th width="34%">评论时间：[@date('Y-m-d H:i:s', $var.CreationDate)]</th>
+			</tr>
+			<tr>
+				<td colspan="3">[@nl2br(htmlspecialchars($var.Comment))]</td>
+			</tr>
+		</loop>
+			<tr>
+				<th colspan="3">[$Page]</th>
+			</tr>
+		<else>
+			<tr>
+				<th>暂无任何评论</th>
+			</tr>
+		</if>
+		</table>
+	</div>
+	<div class="bottomside07">
+		<div class="bottomside07_l">&nbsp;</div>
+		<div class="bottomside07_c">&nbsp;</div>
+		<div class="bottomside07_r">&nbsp;</div>
+	</div>
+	<div class="listleft">
+		<div class="topside06">
+			<div class="topside06_l">&nbsp;</div>
+			<div class="topside06_c">&nbsp;</div>
+			<div class="topside06_r">&nbsp;</div>
+		</div>
+		<div class="center06">
+			<form name="postform" action="[$PUBLISH_URL]comment_v.php?o=post&Id=[$Publish.IndexID]" method="post" target="_self" enctype="multipart/form-data">
+			<table class="content_comment">
+				<tr>
+					<td width="50%" height="30">
+					<input type="hidden" size="20" maxlength="15" readonly="readonly" name="username" value="[$UserInfo.UserName]" onBlur="if(this.value==''){this.value='[$UserInfo.UserName]'};" onFocus="if(this.value=='[$UserInfo.UserName]'){this.value=''};" />验证码：<input type="text" name="validCode" size="10" maxlength="4" />&nbsp;&nbsp;<img src="[$PUBLISH_URL]validCode.php" /></td>
+					<td width="50%">
+					</td>
+				</tr>
+				<tr>
+					<td height="160" colspan="2" align="center"><textarea name="content" rows="6" cols="70"></textarea><br /><br />
+<input type="submit" value="  发表评论  " name="submit" /></td>
+				</tr>
+				<tr>
+					<td align="left" colspan="2">· 您将承担一切因您的行为、言论而直接或间接导致的民事或刑事法律责任<br>· 留言板管理人员有权保留或删除其管辖留言中的任意内容<br>· 本站提醒：不要进行人身攻击。谢谢配合。</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+		<div class="bottomside06">
+			<div class="bottomside06_l">&nbsp;</div>
+			<div class="bottomside06_c">&nbsp;</div>
+			<div class="bottomside06_r">&nbsp;</div>
+		</div>
+	</div>
+	<div class="middle">
+		<div class="topside03">
+			<div class="topside03_l">&nbsp;</div>
+			<div class="topside03_c">&nbsp;</div>
+			<div class="topside03_r">&nbsp;</div>
+		</div>
+		<CMS action="LIST" return="List" NodeID="{$Gqxx_AllNodeID}" Num="11" OrderBy="CommentNum" />
+		<div class="center03">
+			<div class="newstitle"><span class="title_link_4">热门评论</span></div>
+			<div class="topnews">
+				<loop name="List" var="var" key="key">
+				<a href="[$var.URL]" target="_blank" title="[$var.Title]"><if test="empty($var.ShortTitle)">[@Csubstr($var.Title,0,20,'')]<else>[$var.Title]</if></a>&nbsp;[[$var.CommentNum]]<br />
+				</loop>
+			</div>
+		</div>
+		<div class="bottomside03">
+			<div class="bottomside03_l">&nbsp;</div>
+			<div class="bottomside03_c">&nbsp;</div>
+			<div class="bottomside03_r">&nbsp;</div>
+		</div>
+	</div>
+</div>
+<include file="../common/footer.html" />
+</body>
+</html>

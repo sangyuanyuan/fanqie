@@ -1,0 +1,589 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $this->_tpl_vars["charset"];?>">
+<meta name="generator" content="CMSware 2.8.5 Free" /> 
+<title><?php echo $_LANG_SKIN['topic'];?></title>
+
+
+<style type="text/css">
+body{margin:0px;scrollbar-face-color: #B8B8B8; scrollbar-highlight-color: #F5F9FF; scrollbar-shadow-color: #828282; scrollbar-3dlight-color: #828282; scrollbar-arrow-color: #797979; scrollbar-track-color: #ECECEC; scrollbar-darkshadow-color: #ffffff}
+body,a,table,div,span,td,th,input,select{font:9pt;font-family: Verdana, Arial, Helvetica, sans-serif;}
+.text{border:1 solid #aaaaaa;}
+.button{height:18;border:1 ridge #aaaaaa;background-color:aaaaaa;color:ffffff}
+.table {  border: 1px inset; border-color: menu #FFFFFF #FFFFFF menu}
+</style>
+<SCRIPT src="ui.php?sId=<?php echo $this->_tpl_vars["sId"];?>&o=functions.js" type=text/javascript></SCRIPT>
+
+
+<script language="JavaScript">
+var SonIndexID ;
+function setSonIndexID(IndexID) {
+	SonIndexID = IndexID;
+}
+
+
+function openwin(targeturl) {
+		window.open(targeturl, '', 'width=300,height=170,resizable=1,scrollbars=yes');
+		//showMeDialog(targeturl,"color1","dialogWidth:400pt;dialogHeight:300pt;help:0;status:0;resizable:1");
+			
+}
+
+
+function useMini() {
+		//form = document.form
+		if(form.width.disabled==false) {
+			form.width.disabled=true;
+			form.height.disabled=true;
+			form.mkHTML.disabled=true;
+			form.img_title.disabled=true;
+			form.img_intro.disabled=true;
+
+			document.form.img_mini.value='0';
+		}else {
+			form.mkHTML.disabled=false;
+			form.width.disabled=false
+			form.height.disabled=false;
+			document.form.img_mini.value='1';
+		}
+}
+
+
+function useMkHTML()
+{
+	//form = document.form;
+	if(form.mkHTML.checked==false) {
+				form.img_title.disabled=true;
+				form.img_intro.disabled=true;
+				
+	}else {
+				form.img_title.disabled=false
+				form.img_intro.disabled=false;
+	}
+}
+function show_view(MenuID)
+{
+ if(MenuID=="table")
+ {
+  view_table.style.display="";
+  document.form.img_dw.value = 'table';
+ // document.content.tplsend.value="edittpl";
+ }
+ else if(MenuID=="normal")
+ {
+   view_table.style.display="none";
+   document.form.img_dw.value = 'normal';
+  //document.content.tplsend.value="edittpl";
+ }	
+ 
+}
+
+function choosecolor(num) {
+  if (!Error()) return;
+  var arr = showMeDialog("../html/color.htm","color","dialogWidth:200pt;dialogHeight:175pt;help:0;status:0");
+  if (arr != null) {
+	if(num == 1) {
+		document.form.table_bg_color.value=arr ;
+		document.form.table_bg_color.focus();	
+	} else if(num==2) {
+		document.form.table_td_color.value=arr ;
+		document.form.table_td_color.focus();	
+	}
+  }
+}
+function  uploadSubmit() {
+	if(confirm("<?php echo $_LANG_SKIN['confirm_upload'];?>")) {
+		document.form.submit();
+	} else {
+		return false;
+	}
+	
+}
+function info() 
+{
+	var img;
+	img='';
+
+	dm=document.form;
+
+	image_url= img_url.value;
+	if(image_url == '' || image_url == 'http://')  {
+		alert("<?php echo $_LANG_SKIN['img_url_invalidation'];?>");
+		tabClick(0);
+		img_url.focus();
+		//dm.img_url.selected;
+		return false;
+	}
+
+	img+="<img src='";
+	img+=image_url;
+	img+="'";
+
+	img+="alt='";
+	img+=img_alt.value;
+	img+="'";
+
+	by=img_align;
+	cd=by.options[by.selectedIndex].value ;
+	img+="align='";
+	img+=cd;
+	img+="'";
+
+	img+="border='";
+	img+=img_border.value;
+	img+="'";
+
+	img+="hspace='";
+	img+=img_hspace.value;
+	img+="'";
+
+	img+="vspace='";
+	img+=img_vspace.value;
+	img+="'";
+
+	if(img_width.value!=""){
+	img+="width='";
+	img+=img_width.value;
+	img+="'";
+	}
+
+	if(img_height.value!=""){
+	img+="height='";
+	img+=img_height.value;
+	img+="'";
+	}
+
+
+	img= img + ">";
+	if(img_link.value!='') {
+
+	img="<a href='" + img_link.value + "'  target='"+img_target.value+"'>" + img + "</a>";
+	}	
+	var returnArray = new Array();
+	returnArray['str'] = img;
+	returnArray['SonIndexID'] = SonIndexID;
+	window.returnValue = returnArray ;window.close();
+
+
+
+
+}
+
+function selectMe()
+{
+		var info = showMeDialog("admin_select.php?sId=<?php echo $this->_tpl_vars["sId"];?>&o=psn_picker&psn=","color","dialogWidth:600px;dialogHeight:266px;help:0;status:0;scroll:no");
+
+	  if (info['filename'] != null && info['filename'] != '') {
+		
+		img_url.value = info['URL'] + info['filename']
+	  }
+}
+
+function select_img()
+{
+	img_url.value = select_resource('img');
+}
+
+
+</script><body bgcolor=menu >
+
+</HEAD>
+<STYLE type=text/css>
+TD {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: "MS Shell Dlg"
+}
+.tab {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 12px; PADDING-BOTTOM: 1px; CURSOR: hand; PADDING-TOP: 5px; LETTER-SPACING: 1px
+}
+</STYLE>
+<SCRIPT language=JavaScript>
+
+function tabClick(idx) 
+{
+
+  
+	for (i = 0; i < 3; i++) {
+    
+
+		if (i == idx) {
+
+			var tabImgLeft = eval("document.all.tabImgLeft__" + idx);
+
+			var tabImgRight = eval("document.all.tabImgRight__" + idx);
+      
+			var tabLabel = eval("document.all.tabLabel__" + idx);
+      
+			var tabContent = eval("document.all.tabContent__" + idx);
+
+      
+			tabImgLeft.src = "../html/images/mpc/tab_active_left.gif";
+      
+			tabImgRight.src = "../html/images/mpc/tab_active_right.gif";
+      
+			tabLabel.background = "../html/images/mpc/tab_active_bg.gif";
+      
+			tabContent.style.visibility = "visible";
+      
+			tabContent.style.display = "block";
+     
+		}
+  else {
+			var tabImgLeft = eval("document.all.tabImgLeft__" + i);
+		
+			var tabImgRight = eval("document.all.tabImgRight__" + i);
+		
+			var tabLabel = eval("document.all.tabLabel__" + i);
+		
+			var tabContent = eval("document.all.tabContent__" + i);
+
+		
+			tabImgLeft.src = "../html/images/mpc/tab_unactive_left.gif";
+		
+			tabImgRight.src = "../html/images/mpc/tab_unactive_right.gif";
+		
+			tabLabel.background = "../html/images/mpc/tab_unactive_bg.gif";
+		
+			tabContent.style.visibility = "hidden";
+		
+			tabContent.style.display = "none";
+  
+		
+		}  
+
+	}
+
+
+}
+
+</SCRIPT>
+<style type="text/css">
+<!--
+.bigborder {
+	border-top: 0px #FFFFFF;
+	border-right: 1px outset #999999;
+	border-bottom: 1px outset #999999;
+	border-left: 1px solid #FFFFFF;
+}
+-->
+</style>
+
+
+ 
+ 
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@upload_process.html");?>
+
+<BODY bgcolor=menu  text="#000000" leftMargin=0 topMargin=5 >
+
+<TABLE cellSpacing=0 cellPadding=0 width="97%" align=center border=0>
+
+<TBODY>
+  <TR>
+    <TD style="PADDING-LEFT: 2px; HEIGHT: 22px" 
+    background="../html/images/mpc/tab_top_bg.gif">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE height=22 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD width=3><IMG id=tabImgLeft__0 height=22 
+                  src="../html/images/mpc/tab_active_left.gif" 
+                  width=3></TD>
+                <TD class=tab id=tabLabel__0 onclick=tabClick(0) 
+                background="../html/images/mpc/tab_active_bg.gif" 
+                UNSELECTABLE="on" title="<?php echo $_LANG_SKIN['outer_img_help'];?>"><label><?php echo $_LANG_SKIN['outer_img'];?></label></TD>
+                <TD width=3><IMG id=tabImgRight__0 height=22 
+                  src="../html/images/mpc/tab_active_right.gif" 
+                  width=3></TD></TR></TBODY></TABLE></TD>
+          <TD>
+            <TABLE height=22 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD width=3><IMG id=tabImgLeft__1 height=22 
+                  src="../html/images/mpc/tab_unactive_left.gif" 
+                  width=3></TD>
+                <TD class=tab id=tabLabel__1 onclick=tabClick(1) 
+                background="../html/images/mpc/tab_unactive_bg.gif" 
+                UNSELECTABLE="on"><label><?php echo $_LANG_SKIN['img_upload'];?></label></TD>
+                <TD width=3><IMG id=tabImgRight__1 height=22 
+                  src="../html/images/mpc/tab_unactive_right.gif" 
+                  width=3></TD></TR></TBODY></TABLE></TD>
+          <TD>
+            <TABLE height=22 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD width=3><IMG id=tabImgLeft__2 height=22 
+                  src="../html/images/mpc/tab_unactive_left.gif" 
+                  width=3></TD>
+                <TD class=tab id=tabLabel__2 onclick=tabClick(2) 
+                background="../html/images/mpc/tab_unactive_bg.gif" 
+                UNSELECTABLE="on" TITLE="<?php echo $_LANG_SKIN['display_setting_help'];?>"><label><?php echo $_LANG_SKIN['display_setting'];?></label></TD>
+                <TD width=3><IMG id=tabImgRight__2 height=22 
+                  src="../html/images/mpc/tab_unactive_right.gif" 
+                  width=3></TD></TR></TBODY></TABLE></TD>
+				  
+				  
+				  </TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD bgcolor=menu>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD 
+          style="PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; " 
+          vAlign=top class="bigborder" height=320>
+		  
+<!--1-->
+<DIV id=tabContent__0 style="DISPLAY: block; VISIBILITY: visible">
+<table border="0" align="center" cellpadding="5" cellspacing="0" width="100%">
+  <tr> 
+   
+    <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+        
+          <tr> 
+            <td  valign="top">  
+				
+					
+				
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                				<tr > 
+                  <td colspan="2" >
+					<fieldset class="search">
+                                      <legend><?php echo $_LANG_SKIN['insert_img'];?>: </legend>
+                                      <table width="100%" border="0" cellspacing="8" cellpadding="0">
+                                        <tr> 
+                                          <td> <table  border="0" cellspacing="5" cellpadding="0">
+                                              <TR> 
+                                                <td colspan="2" ><?php echo $_LANG_SKIN['input_img_url'];?>
+                                                </td>
+                                              </tr>
+                                              <TR> 
+                                                <td ><?php echo $_LANG_SKIN['img_url'];?>:</td>
+                                                <td > <input name="img_url" type="text" id="img_url" value="http://" size="35" > 
+                                                </td>
+                                              </tr>
+                                              <tr> 
+                                                <td > 
+                                                   
+                                                  &nbsp;&nbsp;</td>
+                                                <td >
+ <input type="button" name="Submit32" value="<?php echo $_LANG_SKIN['psn_select'];?>" onclick="selectMe()"><BR>
+                                                   
+                                                  <input type="button" name="Submit" value="<?php echo $_LANG_SKIN['preview'];?>" onclick="openwin(img_url.value)"></td>
+                                              </TR>
+                                            </TABLE></td>
+                                        </tr>
+                                        <tr> 
+                                          <td> </td>
+                                        </tr>
+                                      </table>
+
+			
+		   </fieldset>
+				 </td>
+                </tr>
+            
+				
+                
+              </table></td>
+          </tr>
+        
+      </table> </td>
+  </tr>
+</table>
+
+</DIV>
+
+
+<!--2-->
+<DIV id=tabContent__1 style="DISPLAY: none; VISIBILITY: hidden">
+  <table width="100%" border="0" cellpadding="8" cellspacing="0"  >
+<form  action="<?php echo $this->_tpl_vars["base_url"];?>type=img&o=upload&mode=one&NodeID=<?php echo $this->_tpl_vars["NodeID"];?>"  method="post" enctype="multipart/form-data" name="form" target="operation" >
+	                  <tr  name=advance id=advance> 
+                        <td >
+ <fieldset class="search">
+ <legend><?php echo $_LANG_SKIN['img_select'];?>: </legend>
+                          <table width="100%" border="0" cellspacing="8" cellpadding="0">
+                                        <tr> 
+                                          <td> <table  border="0" cellspacing="5" cellpadding="0">
+                                  <TR> 
+                                   
+                                    <td ><input name="uploadFile[]" type="file" id="uploadFile" size="15" ></td>
+                                    <td > <label for="label"> 
+                                      <input type="checkbox" name="changeName" value="1"  checked id="changeName4">
+                                      <?php echo $_LANG_SKIN['upload_rename'];?></label>
+                                    </td>
+                                  </TR>
+                                </TABLE></td>
+                                        </tr>
+                                      </table>
+
+		   </fieldset>				 
+            <fieldset class="search">
+		     <legend><?php echo $_LANG_SKIN['mk_mini'];?><input type="checkbox" name="makeMini" value="1" onclick="useMini();"></legend>
+                     <table width="90%" border="0" cellpadding="5" cellspacing="0"  >
+                      <tr> 
+                        <td width=10><?php echo $_LANG_SKIN_GLOBAL['width'];?>:</td>
+                        <td><input type="text" name="width" size=10 disabled value=160> 
+                        </td>
+						<td width=10><?php echo $_LANG_SKIN_GLOBAL['height'];?>:</td>
+                        <td><input type="text" name="height" size=10  disabled value=120>
+                        </td>
+                      </tr>
+					  </table>
+					</fieldset>
+<fieldset class="search">
+					      <legend>
+                          <?php echo $_LANG_SKIN['img_to_html'];?>
+                          <input type="checkbox" name="mkHTML" value="1" id="mkHTML" onClick="useMkHTML();" disabled>
+                          </legend>
+                          <table width="90%" border="0" cellpadding="5" cellspacing="0"  >
+                            <tr> 
+                              <td><?php echo $_LANG_SKIN['title'];?>:</td>
+                              <td><input name="img_title" type="text"  id="img_title" disabled value="<?php echo $_LANG_SKIN['title'];?>" size="28"> 
+                              </td>
+                            </tr>
+                            <tr> 
+                              <td><?php echo $_LANG_SKIN['intro'];?>:</td>
+                              <td><textarea name="img_intro" rows="4" wrap="VIRTUAL" id="img_intro" disabled ><?php echo $_LANG_SKIN['intro'];?></textarea> 
+                              </td>
+                            </tr>
+                          </table>
+					
+					<input type="hidden" name="img_url_s" size=10 >
+					<input type="hidden" name="img_dw" size=10 value="normal">
+					<input type="hidden" name="img_mini" size=10 value="0">
+                    </fieldset>
+					
+					<br/>
+                          <input type="button" name="Submit3" value="<?php echo $_LANG_SKIN['upload'];?>" onclick="javascript:loadBarDisplay(this.form);"></td>
+				  
+                </tr>
+				</form>
+				</table>
+</DIV>
+
+<!--3-->
+<DIV id=tabContent__2 style="DISPLAY: none; VISIBILITY: hidden">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0"  >
+	 <tr  name=advance id=advance> 
+                  
+				 <td ><br/><fieldset class="search">
+		                  <legend><?php echo $_LANG_SKIN['display_setting'];?></legend>
+                        <table width="100%" border="0" cellspacing="8" cellpadding="0">
+                          <tr> 
+                            <td> <table  border="0" cellspacing="5" cellpadding="0">
+                                <tr  name=advance id=advance> 
+                                  <td  valign=top> <table width="100%" border="0" cellspacing="0" cellpadding="1">
+                                      <tr> 
+                                        <td colspan="2"><table border="0" cellspacing="0" cellpadding="2">
+                                            <tr> 
+                                              <td ><?php echo $_LANG_SKIN['replace_text'];?>:&nbsp; </td>
+                                              <td > <input name="img_alt" type="text" id="img_alt"> 
+                                              </td>
+                                            </tr>
+                                          </table></td>
+                                      </tr>
+                                      <tr> 
+                                        <td colspan="2"><table border="0" cellspacing="0" cellpadding="2" >
+                                            <tr> 
+                                              <td ><?php echo $_LANG_SKIN['img_link'];?>:&nbsp; </td>
+                                              <td > <input name="img_link" type="text" id="img_link" value="" size="25"> 
+                                              </td>
+                                            </tr>
+                                          </table></td>
+                                      </tr>
+                                      <tr> 
+                                        <td colspan="2"><table border="0" cellspacing="0" cellpadding="2" >
+                                            <tr> 
+                                              <td >Target:&nbsp; </td>
+                                              <td > <input name="img_target" type="text" id="img_target" value="_blank" size="25"> 
+                                              </td>
+                                            </tr>
+                                          </table></td>
+                                      </tr>
+                                      <tr> 
+                                        <td colspan="2"><table border="0" cellspacing="0" cellpadding="2" >
+                                            <tr> 
+                                              <td> <?php echo $_LANG_SKIN['size_limit'];?>:&nbsp;</td>
+                                              <td ><?php echo $_LANG_SKIN_GLOBAL['width'];?>(W):</td >
+                                              <td ><input name="img_width" type="text" id="img_width" size="3"> 
+                                              </td>
+                                              <td>&nbsp;<?php echo $_LANG_SKIN_GLOBAL['height'];?>(H):</td>
+                                              <td ><input name="img_height" type="text" id="img_height" size="3"> 
+                                              </td>
+                                            </tr>
+                                          </table></td>
+                                      </tr>
+                                      <tr> 
+                                        <td colspan="2"><table border="0" cellspacing="0" cellpadding="2" >
+                                            <tr> 
+                                              <td > <?php echo $_LANG_SKIN['align'];?>:&nbsp; 
+                                              </td >
+                                              <td > <select name="img_align" id="img_align">
+                                                  <option value=""><?php echo $_LANG_SKIN['align_default'];?></option>
+                                                  <option value="left"><?php echo $_LANG_SKIN['align_left'];?></option>
+                                                  <option value="right"><?php echo $_LANG_SKIN['align_right'];?></option>
+                                                  <option value="baseline"><?php echo $_LANG_SKIN['align_baseline'];?></option>
+                                                  <option value="top"><?php echo $_LANG_SKIN['align_top'];?></option>
+                                                  <option value="middle"><?php echo $_LANG_SKIN['align_middle'];?></option>
+                                                  <option value="texttop"><?php echo $_LANG_SKIN['align_texttop'];?></option>
+                                                  <option value="absmiddle"><?php echo $_LANG_SKIN['align_absmiddle'];?></option>
+                                                  <option value="absbottom"><?php echo $_LANG_SKIN['align_absbottom'];?></option>
+                                                </select> </td>
+                                            </tr>
+                                            <tr> 
+                                              <td><?php echo $_LANG_SKIN['img_border'];?>:&nbsp; </td>
+                                              <td > <input name="img_border" type="text" id="img_border" size="6"  value=0> 
+                                              </td>
+                                            </tr>
+                                          </table></td>
+                                      </tr>
+                                      <tr> 
+                                        <td colspan="2"><table border="0" cellspacing="0" cellpadding="2" >
+                                            <tr> 
+                                              <td > <?php echo $_LANG_SKIN['img_hspace'];?>:&nbsp; </td >
+                                              <td > <input name="img_hspace" type="text" id="img_hspace" size="6"> 
+                                              </td>
+                                            </tr>
+                                            <tr> 
+                                              <td><?php echo $_LANG_SKIN['img_vspace'];?>:&nbsp; </td>
+                                              <td ><input name="img_vspace" type="text" id="img_vspace" size="6"> 
+                                              </td>
+                                            </tr>
+                                          </table></td>
+                                      </tr>
+                                    </table></td>
+                                </tr>
+                              </TABLE></td>
+                          </tr>
+                        </table>
+					
+                    </fieldset> 
+					</td>
+				  
+                </tr>
+				</table>
+</DIV>
+
+</TD>
+       </TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD background="../html/images/mpc/tab_bg.gif" 
+    bgColor=#ffffff><IMG height=1 
+      src="../html/images/mpc/tab_bg.gif" 
+  width=1></TD></TR></TBODY></TABLE>
+
+  <table width="97%" border="0" cellpadding="1" cellspacing="0"  >
+
+				
+				<tr > 
+                  <td id = submit_change align="right"><input type="button"  name="Submit2" value=" <?php echo $_LANG_SKIN_GLOBAL['ok'];?> " onclick="info();"></td><td align="right" width=70> <input name="button" type=button  onclick="window.returnValue ='' ;window.close();" value=" <?php echo $_LANG_SKIN_GLOBAL['cancel'];?> "> 
+                     </td>
+                </tr>
+				</table>
+	 <Iframe name=operation src="" frameborder=0 class=button style="display:none"> 
+                    </Iframe>
+
+</BODY>
+</HTML>

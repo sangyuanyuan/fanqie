@@ -1,0 +1,112 @@
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<CMS action="NODE" return="NodeVar" NodeID="{$News_MainNodeID}" />
+<title>[$NodeInfo.Name] - [$NodeVar.Name] - [$SITE_NAME]</title>
+<link href="[$SKIN_URL]news/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+
+<div id="nav">
+	<div class="topside08">
+		<div class="topside08_l">&nbsp;</div>
+		<div class="topside08_c">&nbsp;</div>
+		<div class="topside08_r">&nbsp;</div>
+	</div>
+	<div class="center08">
+<loop name="NodeInfo.Navigation" key="key" var="var" >
+<if test="$key == 0" >
+<A href=" [$var.URL] "> [$var.Name] </A> 
+<else>
+→ <A href=" [$var.URL] "> [$var.Name] </A>
+</if> 
+</loop>
+→ 网站地图
+	</div>
+	<div class="bottomside08">
+		<div class="bottomside08_l">&nbsp;</div>
+		<div class="bottomside08_c">&nbsp;</div>
+		<div class="bottomside08_r">&nbsp;</div>
+	</div>
+	
+	
+<!--#CW# 生成网站地图  Add By CWTM #CW#-->
+<div id="nav">
+	<div class="topside08">
+		<div class="topside08_l">&nbsp;</div>
+		<div class="topside08_c">&nbsp;</div>
+		<div class="topside08_r">&nbsp;</div>
+	</div>
+		<div class="center08">
+		<h2>[$SITE_NAME] - 站点地图</h2>
+<if test="$Setting == 2"> <!--#CW# 二级结构网站地图  Add By CWTM #CW#-->
+<CMS action="NODELIST" return="List" Type="set" NodeID="{$SiteNodesList}" Ignore="{$DontDisplayNode}" />
+<loop name="List" var="var" key="key" start="1" ><!--#CW# 标签中 SiteNodesList 定义了一级栏目的数组，可定制前台显示顺序。  Add By CWTM #CW#-->
+	<h3><a href="[$var.NodeURL]" target="_blank">[$var.NodeName]</a></h3>
+<CMS action="NODELIST" return="List" Type="sub" NodeID="{$var.NodeID}" Ignore="{$DontDisplayNode}" /> <!--#CW# 根据上面的一级结点取出二级结点栏目。  Add By CWTM #CW#-->
+<loop name="List" key="key1" var="var1" start="1">
+	<if test="$key1 == 1">
+			<a href="[$var1.NodeURL]"> [$var1.NodeName] </a> | 
+	<elseif test="$key1%$DisplayNum==0">
+			<a href="[$var1.NodeURL]"> [$var1.NodeName] </a> <br />
+	<else>
+			<a href="[$var1.NodeURL]"> [$var1.NodeName] </a> | 
+	</if>
+</loop>
+</loop>
+
+<elseif test="$Setting == 3"> <!--#CW# 三级结构网站地图  Add By CWTM #CW#-->
+
+<CMS action="NODELIST" return="List" Type="set" NodeID="{$SiteNodesList}" />
+<loop name="List" var="var" key="key" start="1" ><!--#CW# 标签中 SiteNodesList 定义了一级栏目的数组，可定制前台显示顺序。  Add By CWTM #CW#-->
+	<h3><a href="[$var.NodeURL]" target="_blank">[$var.NodeName]</a></h3>
+<CMS action="NODELIST" return="List" Type="sub" NodeID="{$var.NodeID}" Ignore="{$DontDisplayNode}" /> <!--#CW# 根据上面的一级结点取出二级结点栏目。  Add By CWTM #CW#-->
+<loop name="List" key="key1" var="var1" start="1">
+	&nbsp;&nbsp;<h4><a href="[$var1.NodeURL]" target="_blank"><strong>[$var1.NodeName]</strong></a></h4>
+	<CMS action="NODELIST" return="List" Type="sub" NodeID="{$var1.NodeID}" Ignore="{$DontDisplayNode}" /> <!--#CW# 根据上面的二级结点取出三级结点栏目。  Add By CWTM #CW#-->
+	<loop name="List" key="key2" var="var2" start="1">
+		<if test="$key2 == 1">
+				<a href="[$var2.NodeURL]"> [$var2.NodeName] </a> | 
+		<elseif test="$key2%$DisplayNum==0">
+				<a href="[$var2.NodeURL]"> [$var2.NodeName] </a> <br />
+		<else>
+				<a href="[$var2.NodeURL]"> [$var2.NodeName] </a> | 
+		</if>
+	</loop>
+	<br />
+</loop>
+</loop>
+
+<else>
+
+<CMS action="NODELIST" return="List" Type="set" NodeID="{$SiteNodesList}" Ignore="{$DontDisplayNode}" />
+<loop name="List" var="var" key="key" start="1" ><!--#CW# 标签中 SiteNodesList 定义了一级栏目的数组，可定制前台显示顺序。  Add By CWTM #CW#-->
+	<h3><a href="[$var.NodeURL]" target="_blank">[$var.NodeName]</a></h3>
+<CMS action="NODELIST" return="List" Type="sub" NodeID="{$var.NodeID}" Ignore="{$DontDisplayNode}" /> <!--#CW# 根据上面的一级结点取出二级结点栏目。  Add By CWTM #CW#-->
+<loop name="List" key="key1" var="var1" start="1">
+	<if test="$key1 == 1">
+			<a href="[$var1.NodeURL]"> [$var1.NodeName] </a> | 
+	<elseif test="$key1%$DisplayNum==0">
+			<a href="[$var1.NodeURL]"> [$var1.NodeName] </a> <br />
+	<else>
+			<a href="[$var1.NodeURL]"> [$var1.NodeName] </a> | 
+	</if>
+</loop>
+</loop>
+
+</if>
+		</div>
+	<div class="bottomside08">
+		<div class="bottomside08_l">&nbsp;</div>
+		<div class="bottomside08_c">&nbsp;</div>
+		<div class="bottomside08_r">&nbsp;</div>
+	</div>
+</div>
+
+<include file="../common/footer.html" />
+</body>
+</html>

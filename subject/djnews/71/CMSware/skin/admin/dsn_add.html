@@ -1,0 +1,63 @@
+<include: file="header.html">
+<script>
+function detect()
+{
+	var url = '[$base_url]' + 'o=detect&dbHost=' + document.clientform.dbHost.value + '&dbUser=' + document.clientform.dbUser.value +  '&dbPass=' + document.clientform.dbPass.value + '&dbName=' + document.clientform.dbName.value ;
+	var returnValue = CMSware_send(url);
+	if(returnValue == '1') {
+		alert("{lang:db_connect_ok}");
+		return true;
+					
+	} else {
+		alert("{lang:db_connect_fail}");
+		return false;
+				
+	}		
+}
+</script>
+<form action='[$base_url]o=add_submit' method='post' enctype="multipart/form-data" name='clientform' id=clientform >
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+    <tr> 
+      <td colspan="8" class="table_header">{lang:topic}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:dsn_name}:</td>
+      <td colspan=6 class="table_td2"><input name='Name' type='text' class='flat' id="Name" tabindex='8'> 
+        &nbsp;</td>
+    </tr>
+	<!--
+    <tr id=local > 
+      <td class="table_td1">{lang:db_host}:</td>
+      <td colspan=6 class="table_td2"><input name='dbHost' type='text' class='flat' id="dbHost" tabindex='8' value="[$db_config.db_host]" disabled> 
+        &nbsp; </td>
+    </tr>
+    <tr > 
+      <td class="table_td1">{lang:db_user}:</td>
+      <td colspan=6 class="table_td2"><input name='dbUser' type='text' class='flat' id="dbUser" tabindex='8'  value="[$db_config.db_user]" disabled>
+        &nbsp;</td>
+    </tr>
+    <tr > 
+      <td class="table_td1">{lang:db_pass}:</td>
+      <td colspan=6 class="table_td2"><input name='dbPass' type='password' class='flat' id="dbPass" tabindex='8'   value="[$db_config.db_password]"  disabled> 
+        &nbsp; </td>
+    </tr>-->
+    <tr > 
+      <td class="table_td1">{lang:db_name}:</td>
+      <td colspan=6 class="table_td2"><input name='dbName' type='text' class='flat' id="dbName" tabindex='8' value="[$db_config.db_name]"> 
+        &nbsp; </td>
+    </tr>
+ 
+    <tr> 
+      <td class="table_td1">{lang:description}:</td>
+      <td colspan=6 class="table_td2"><textarea name="Description" cols="50" rows="5" class="flat" id="fieldname2" tabindex="8"></textarea> 
+        &nbsp;</td>
+    </tr>
+  
+    <tr> 
+      <td colspan="8" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}">&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' name='submit11' value='{lang:test}' tabindex='13' onclick="detect();"> </td>
+    </tr>
+  </table>
+</form>
+</BODY>
+<include: file="footer.html">

@@ -1,0 +1,129 @@
+<?php include("../CMSware/sysdata/templates_c/%%c_^@CMSware@templates@@71zl@inc_header.html");?>
+<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0" background="<?php echo $this->_tpl_vars["Skin_URL"];?>images/bg.jpg">
+  <tr>
+    <td align="center"><table width="945" border="0" align="center" cellpadding="0" cellspacing="0" background="<?php echo $this->_tpl_vars["Skin_URL"];?>images/index_071.jpg">
+      <tr>
+        <td><img src="<?php echo $this->_tpl_vars["Skin_URL"];?>images/index_03.jpg" width="945" height="13" /></td>
+      </tr>
+    
+      <tr>
+        <td ><table width="90%" border="0" align="center" cellpadding="3" cellspacing="3">
+          <tr>
+            <td colspan="4" align="left">
+            	<table cellpadding="0" cellspacing="0" width="100%" align="left">
+                	<tr><td height="30">
+                    您的位置：
+<?php if(!empty($this->_tpl_vars["NodeInfo"]["Navigation"] )): 
+   foreach ($this->_tpl_vars["NodeInfo"]["Navigation"] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+<?php if($this->_tpl_vars['key'] == 0): ?>
+<A href=" <?php echo $this->_tpl_vars["var"]["URL"];?> "> <?php echo $this->_tpl_vars["var"]["Name"];?> </A> 
+<?php else: ?>
+> <A href=" <?php echo $this->_tpl_vars["var"]["URL"];?> "> <?php echo $this->_tpl_vars["var"]["Name"];?> </A>
+<?php endif;?> 
+<?php endforeach; endif;?>
+<?php if($this->_tpl_vars['Title'] != ''): ?>
+> <?php echo $this->_tpl_vars["Title"];?> 
+<?php endif;?></td></tr>
+                </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" align="left">
+            <?php if($this->_tpl_vars["NodeInfo"]["NodeID"]=='3'): ?>
+            <img src="<?php echo $this->_tpl_vars["Skin_URL"];?>images/xsqb.jpg" border="0"/>
+            <?php elseif($this->_tpl_vars["NodeInfo"]["NodeID"]=='4'): ?>
+            <img src="<?php echo $this->_tpl_vars["Skin_URL"];?>images/xcsb.png" border="0"/>
+            <?php elseif($this->_tpl_vars["NodeInfo"]["NodeID"]=='5'): ?>
+            <img src="<?php echo $this->_tpl_vars["Skin_URL"];?>images/fxsb.png" border="0"/>
+            <?php elseif($this->_tpl_vars["NodeInfo"]["NodeID"]=='6'): ?>
+            <img src="<?php echo $this->_tpl_vars["Skin_URL"];?>images/fwsb.png" border="0"/>
+            <?php elseif($this->_tpl_vars["NodeInfo"]["NodeID"]=='7'): ?>
+            <img src="<?php echo $this->_tpl_vars["Skin_URL"];?>images/cysb.png" border="0"/>
+            <?php endif;?>
+            </td>
+            </tr>
+          
+          <tr>
+            <td align="center">
+<?php
+ global $PageInfo,$params; 
+ $params = array ( 
+	'action' => "LIST",
+	'return' => "List",
+	'nodeid' => "3",
+	'orderby' => "i.PublishDate DESC",
+	'num' => "page-8",
+ ); 
+;
+$this->_tpl_vars['List'] = CMS_LIST($params); 
+    $this->_tpl_vars['PageInfo'] = &$PageInfo;  
+?>
+<table width="100%" border="0" cellpadding="3" cellspacing="0" align="center">
+               <tr>
+               <?php if(!empty($this->_tpl_vars['List'] )): 
+   foreach ($this->_tpl_vars['List'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?> 
+               <?php if($this->_tpl_vars['key']==0): ?>
+               <td width="25%" valign="top">
+<table cellpadding="0" cellspacing="0" width="100%" align="center">
+	<tr><td valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" class="shdborder ">
+            <tr>
+              <td  align="center"><a href="<?php echo $this->_tpl_vars["var"]["URL"];?>" target="_blank"><img src="<?php echo $this->_tpl_vars["var"]["Photo"];?>" width="140" height="110" /></a></td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td height="5"></td></tr>
+    <tr><td align="center" class="height140"><a href="<?php echo $this->_tpl_vars["var"]["URL"];?>" target="_blank"><?php echo $this->_tpl_vars["var"]["Title"];?></a></td></tr>
+</table>    
+               </td>
+               <?php elseif($this->_tpl_vars['key'] % 4 ==0): ?>
+               </tr>
+			   <tr>
+			   <td width="25%" valign="top">
+<table cellpadding="0" cellspacing="0" width="100%" align="center">
+	<tr><td valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" class="shdborder ">
+            <tr>
+              <td  align="center"><a href="<?php echo $this->_tpl_vars["var"]["URL"];?>" target="_blank"><img src="<?php echo $this->_tpl_vars["var"]["Photo"];?>" width="140" height="110" /></a></td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td height="5"></td></tr>
+    <tr><td align="center" class="height140"><a href="<?php echo $this->_tpl_vars["var"]["URL"];?>" target="_blank"><?php echo $this->_tpl_vars["var"]["Title"];?></a></td></tr>
+</table>    
+               </td>
+               <?php else: ?>
+               <td width="25%" valign="top">
+<table cellpadding="0" cellspacing="0" width="100%" align="center">
+	<tr><td valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" class="shdborder ">
+            <tr>
+              <td  align="center"><a href="<?php echo $this->_tpl_vars["var"]["URL"];?>" target="_blank"><img src="<?php echo $this->_tpl_vars["var"]["Photo"];?>" width="140" height="110" /></a></td>
+            </tr>
+        </table>
+    </td></tr>
+    <tr><td height="5"></td></tr>
+    <tr><td align="center" class="height140"><a href="<?php echo $this->_tpl_vars["var"]["URL"];?>" target="_blank"><?php echo $this->_tpl_vars["var"]["Title"];?></a></td></tr>
+</table>    
+               </td>
+               <?php endif;?>
+               <?php endforeach; endif;?>
+               </tr>
+</table>
+          	</td>
+          </tr>
+          
+          <tr>
+            <td height="30" colspan="4" align="center"><?php echo IndexPage($this->_tpl_vars["PageInfo"]["TotalPage"], $this->_tpl_vars["PageInfo"]["CurrentPage"], $this->_tpl_vars["PageInfo"]["URL"]);?></td>
+          </tr>
+        </table></td>
+        </tr>
+      <tr>
+        <td><img src="<?php echo $this->_tpl_vars["Skin_URL"];?>images/index_331.jpg" width="945" height="12" /></td>
+      </tr>
+    </table>
+    <img src="<?php echo $this->_tpl_vars["Skin_URL"];?>images/cpr.gif" width="945" height="63" /></td>
+  </tr>
+</table>
+</body>
+</html>

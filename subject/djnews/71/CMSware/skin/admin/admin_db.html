@@ -1,0 +1,103 @@
+<include: file="header.html">
+<table width="70%" border="0" align="center" cellpadding="4" cellspacing="1"  class="table_border">
+  <form action="[$base_url]" method="post" enctype="multipart/form-data" target="_self">
+    <tr class="table_header"> 
+      <td height="25" colspan="4">&nbsp;{lang:db_admin}</td>
+    </tr>
+    <tr class="Tablecontentbg"> 
+      <td class="table_td1">&nbsp;</td>
+      <td align="center" class="table_td1">{lang:db_name}</td>
+      <td align="center" class="table_td1">{lang:db_Rows}</td>
+      <td align="center" class="table_td1">{lang:length}</td>
+
+   </tr>
+	<loop $tablelists var=var>
+   <tr >
+			<td width="60" align="center" class="table_td1"><INPUT TYPE="checkbox" NAME="tablename[]" value="[$var.name]"></td>
+			<td class="table_td2">[$var.name]</td>
+			<td class="table_td2" align="right">[$var.Rows]</td>
+			<td class="table_td2" align="right">[$var.length]</td>
+
+			</tr>
+	</loop>
+   <tr >
+			<td width="60" align="center" class="table_td1"> <B>{lang:total}</B></td>
+			<td class="table_td2"><B>[$tablestats.TableNum] {lang:tables}</B></td>
+			<td class="table_td2" align="right"><B>[$tablestats.Rows]</B></td>
+			<td class="table_td2" align="right"><B>[$tablestats.Length]</B></td>
+
+			</tr>
+
+
+
+    <tr class="table_td1"> 
+       <td colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="chkall"  id="chkall" value="on" onclick="CheckAll(this.form)"   > 
+        <label for="chkall">{lang::global:select_all}</label>&nbsp; </td>
+    </tr>
+    <tr class="table_td1"> 
+      <td align="center" >{lang::global:operation}:</td>
+      <td colspan="3"><table border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+           
+            <td><input name="o" type="radio" value="optimize" id="optimize" checked></td>
+            <td><label for="optimize">{lang:db_optimize}</label></td>
+			 
+          </tr>
+        </table></td>
+    </tr>
+
+	  <tr class="table_td1"> 
+      <td align="center" >{lang::global:operation}:</td>
+      <td colspan="3"><table border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+           
+            
+			 <td><input name="o" type="radio" value="backup" id="backup" ></td>
+            <td><label for="backup">{lang:db_backup}</label>&nbsp;&nbsp;&nbsp;</td><td>{lang:backup_volume_length}:<INPUT TYPE="text" size="1" NAME="MaxFileSize" value="0.5">MB&nbsp;&nbsp;<INPUT TYPE="checkbox" NAME="addDrop" value="1" checked>{lang:add_drop_table}</td>
+          </tr>
+        </table></td>
+    </tr>
+
+    <tr class="table_td1"> 
+       <td colspan="4">&nbsp;&nbsp;&nbsp; 
+        <input name="{lang::global:submit}" type="submit" value="{lang::global:submit_value}" class=button>
+        &nbsp;&nbsp; 
+        <input name="{lang::global:reset}" type="reset" value="{lang::global:reset_value}" class=button></td>
+    </tr>
+  </form>
+</table>
+</body>
+</html>
+
+<script>
+function CheckAll(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.type=='checkbox')       e.checked = form.chkall.checked; 
+   }
+  }
+	function show(){
+			 if(document.content.changename.checked==true) {
+				document.content.newName.disabled=false;
+			 } else {
+			 document.content.newName.disabled=true;
+			 }
+}
+	function msover(){
+		event.srcElement.style.backgroundColor="#FFF6DC";
+		event.srcElement.style.cursor = "hand";
+	}
+
+	function msout(){
+		event.srcElement.style.backgroundColor="#FFFFFF";
+		event.srcElement.style.cursor = "auto";
+	}
+	function usecate() {
+		if(content.cate.disabled==false) {
+			content.cate.disabled=true;
+		}else {
+			content.cate.disabled=false
+		}
+	}
+</script>
+<include: file="footer.html">

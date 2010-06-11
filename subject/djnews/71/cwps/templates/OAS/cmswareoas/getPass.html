@@ -1,0 +1,47 @@
+<include file="header.html" />
+<table width="90%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B>CMSware会员系统 &raquo; 取回密码</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+
+<form name="ChangePassForm" method="post" action="getPass.do?o=submit">
+<table width="90%" align="center" border="0" cellspacing="1" cellpadding="5" class=table_border>
+         <tr   class=table_header> 
+		<td >
+		帮助
+		</td>
+ 
+        </tr>
+	          <tr  class="table_td1"> 
+		<td ><BR>
+		 <UL>
+		 	<LI>提交后请去你的注册邮箱收取重置密码邮件，点击邮件中的确认地址，以重置你的密码。
+  		 </UL>
+		</td>
+ 
+        </tr>
+
+	  </table><BR>
+  <table width="90%" border="0" align="center" cellpadding="5" cellspacing="1" class="table_border">
+    <tr class="table_td1"> 
+      <td width="100">你的用户名：</td>
+      <td> <input name="UserName" type="text"  ></td>
+    </tr>
+    <tr class="table_td1"> 
+      <td width="100">你的注册Email：</td>
+      <td> <input name="Email" type="text"  ></td>
+    </tr>
+    <tr class="table_td2"> 
+      <td>&nbsp;</td>
+      <td> <INPUT TYPE="hidden" name="referer" value="[$referer]"><input name="submit" type="submit" id="submit" value="取回密码"></td>
+    </tr>
+  </table>
+</form>
+<include file="footer.html"/>
+</body>
+</html>

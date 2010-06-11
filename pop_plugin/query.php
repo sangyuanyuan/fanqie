@@ -16,3 +16,4 @@ $item = $db->query($sql);
 if($db->record_count>0){
 	echo $item[0]->id ."|" .$item[0]->width ."|" .$item[0]->height; 
 }
+?>

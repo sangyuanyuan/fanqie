@@ -22,15 +22,20 @@
 
 <body>
 	<table width="795" border="0" id="list">
+		<tr class="tr1">
+			<td colspan="5">
+				　<a target="_top" href="/pop/index.php">添加弹出框</a>
+			</td>
+		</tr>
 		<tr class="tr2">
 
-			<td width="55">删除</td><td width="220">发表人</td><td width="100">发表内容</td><td width="120">发布时间</td><td width="200">操作</td>
+			<td width="55">删除</td><td width="220">发布电脑</td><td width="100">发表内容</td><td width="120">发布时间</td><td width="200">操作</td>
 		</tr>
 		<?php
 			//--------------------
 			for($i=0;$i<count($record);$i++){
 		?>
-				<tr class=tr3>
+				<tr class=tr3 id=<?php echo $record[$i]->id;?>>
 					<td><input style="width:12px;" type="checkbox" name="delete_news[]" value="<?php echo $record[$i]->id;?>"></td>
 					<td><?php echo $record[$i]->user; ?></td>
 					<td>
@@ -75,7 +80,7 @@
 
 		$('#button_delete').click(function(){
 			if (confirm('确定删除选中的内容?')) {
-				$.post('delete_news.php', $('input:checkbox').serializeArray(), function(data){
+				$.post('delete_pop.php', $('input:checkbox').serializeArray(), function(data){
 					window.location.reload();
 				});
 			}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="gb2312"?>
+<models>
+	<model>
+		<name>新闻系统模型</name>
+		<TableID>1</TableID>
+		<file>news.xml</file>
+	</model>
+	<model>
+		<name>下载系统模型</name>
+		<TableID>2</TableID>
+		<file>download.xml</file>
+	</model>
+
+ </models>

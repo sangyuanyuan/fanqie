@@ -1,0 +1,38 @@
+<?php
+	$this->_tpl_vars['GET'] = $_GET;
+?>
+<div class="topside04">
+
+	<div class="topside04_l">&nbsp;</div>
+
+	<div class="topside04_c">&nbsp;</div>
+
+	<div class="topside04_r">&nbsp;</div>
+
+</div>
+
+<div class="center04">
+
+	<div class="photo_fous">一周热图</div>
+
+	<!--#CW#-- 一周热图 --#CW#-->
+
+	<CMS action="LIST" return="List" NodeID="{$GET.Index_LeftHot_NodeID}" Num="{$GET.Index_LeftHot_Num}" OrderBy="{$GET.Index_LeftHot_OrderBy}" />
+
+	<loop name="List" var="var" key="key">
+
+	<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10,'')]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+	</loop>
+
+</div>
+
+<div class="bottomside04">
+
+	<div class="bottomside04_l">&nbsp;</div>
+
+	<div class="bottomside04_c">&nbsp;</div>
+
+	<div class="bottomside04_r">&nbsp;</div>
+
+</div>

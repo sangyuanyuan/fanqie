@@ -188,7 +188,7 @@ total("首页","other");
 			
  			<!-- start top_left_middle !-->
   		<?php
- 					$sql = 'select n.short_title, n.title, n.id as news_id, n.photo_src, c.platform,c.id as c_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
+ 					$sql = 'select n.short_title, n.title, n.id as news_id, n.photo_src, n.cream, c.platform,c.id as c_id from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="我要报料" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc';
 					$record_baoliao=$db -> query($sql);		
 			?>	 		
 			<div id=t_l_m>
@@ -202,15 +202,15 @@ total("首页","other");
  						
  						<div id=c_r>
  							<?php for($i=0;$i<7;$i++){?>
- 								<div class=crcl><a   target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="images/index/redjiantou.jpg"> <?php echo delhtml($record_baoliao[$i]->short_title); ?></a></div>
+ 								<div class=crcl><a <?php if($record_baoliao[$i]->cream >=50){ ?>style="padding-left:15px; background:url('images/cream1.gif') no-repeat;"<?php } ?> target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><?php echo delhtml($record_baoliao[$i]->short_title); ?></a></div>
  							<?php } ?>
  						</div>
- 						<div id=imgtitle><a   target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$wybl]->news_id; ?>"><?php echo delhtml($record_baoliao[$wybl]->short_title); ?></a></div>
+ 						
  					</div>
  					<div id=content_b>
  						<?php for($i=7;$i<29;$i++){ ?>
  						<div class=cbcl>
- 								<a   target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><img border=0 src="images/index/jiantou.jpg"> <?php echo $record_baoliao[$i]->short_title; ?></a>	
+ 								<a <?php if($record_baoliao[$i]->cream >=50){ ?>style="padding-left:15px; background:url('images/cream1.gif') no-repeat;"<?php } ?> target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><?php echo $record_baoliao[$i]->short_title; ?></a>	
  						</div>
  						<?php } ?>
  					</div>
@@ -1198,9 +1198,6 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 
 </body>
 </html>
-<script>
-
-</script>
 <!--<script>
 	var MSG1 = new CLASS_MSN_MESSAGE("aa",300,140,"重要通知：","通知",'首届上海广播电视台、SMG年度颁奖盛典改为1月20日（周三）18：45开始，请相互转告、保持关注！<br>　　　　　　　　　　　　　总编室<br>　　　　　　　　　　二零一零年一月十九日');  
     MSG1.rect(null,null,null,screen.height-50); 

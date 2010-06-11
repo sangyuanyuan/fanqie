@@ -1,0 +1,35 @@
+<include: file="header.html">
+ 
+<TABLE width="95%" border=0 align=center cellSpacing=0 cellPadding=0  >
+  <form name="add_cate" method="post" action="[$base_url]o=admin_base::commentEdit_submit&CommentID=[$commentInfo.CommentID]">
+    <TBODY>
+<TR>
+        <TD vAlign=top align=middle width="50%">
+		<TABLE cellspacing="1" cellpadding="4" width="100%"  border=0 class="table_border">
+            <TBODY>
+              <TR class="table_header" > 
+                <TD height=25 colSpan=2 id=id2 ><strong>{lang:topic}</strong></TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  > {lang:author}                   </TD>
+                <TD  id=id2>[$commentInfo.Author]</TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2>{lang:ip}                 </TD>
+                <TD  id=id2> [$commentInfo.Ip]
+                </TD>
+              </TR>
+			     <tr > 
+      <td class="table_td1">{lang:comment}</td>
+      <td class="table_td2"><textarea name="Comment" cols="60" rows="8" wrap="VIRTUAL" class="button" id="Comment">[$commentInfo.Comment]</textarea></td>
+    </tr>
+              <TR class="table_td1"> 
+                <TD height=30 colSpan=2 align=middle > <INPUT name="submit" type=submit value="{lang::global:submit_value}" class="button"> 
+                  &nbsp;&nbsp; <INPUT name="reset" type=reset value="{lang::global:reset_value}"  class="button">
+                  <input name="referer" type="hidden" id="referer" value="[$referer]"> 
+                </TD>
+              </TR>
+            </TBODY>
+          </TABLE></TD>
+      </TR></TBODY><INPUT type=hidden value=edit_submit name=action></form></TABLE>
+<include: file="footer.html">

@@ -1,0 +1,132 @@
+<include file="header.html" />
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 20px;margin-top: 20px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="user.do">用户管理</A> -&gt; 查看用户</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+ 
+  <table width="98%" border="0" align="center" cellpadding="5" cellspacing="1" class="table_border">
+
+ 
+
+
+	<tr > 
+      <td colspan="2" class="table_header">查看用户信息</td>
+    </tr>
+	<tr> 
+      <td class="table_td1">用户名：</td>
+      <td class="table_td2"><B>[$UserInfo.UserName]</B>
+	  </td>
+    </tr>
+	<tr> 
+      <td class="table_td1">用户组：</td>
+      <td class="table_td2">[$UserInfo.GroupName]
+	  </td>
+    </tr>
+
+  <tr >
+      <td class="table_td1" width="150">Email：</td>
+      <td class="table_td2">
+        [$UserInfo.Email]
+	  </td>
+    </tr>
+	 
+    <tr > 
+      <td class="table_td1">QQ：</td>
+      <td class="table_td2">[$UserInfo.QQ]</td>
+    </tr>
+
+    <tr > 
+      <td class="table_td1">昵称：</td>
+      <td class="table_td2">[$UserInfo.NickName]</td>
+    </tr>
+  
+	<tr > 
+      <td class="table_td1">用户备注：</td>
+      <td class="table_td2">[@nl2br($UserInfo.Description)]</td>
+    </tr>	
+ 	<tr > 
+      <td class="table_td1">创建时间：</td>
+      <td class="table_td2">
+		<if test="$UserInfo.RegisterDate == 0">
+		 0
+		 <else>
+		 [@date('Y-m-d H:i:s', $UserInfo.RegisterDate)]
+		 </if>
+</td>
+    </tr>	
+	<tr > 
+      <td class="table_td1">上次登陆时间：</td>
+      <td class="table_td2">
+	   <if test="$UserInfo.LastLoginTime == 0">
+		 0
+		 <else>
+		 [@date('Y-m-d H:i:s', $UserInfo.LastLoginTime)]
+		 </if>
+</td>
+    </tr>	
+ <tr > 
+      <td colspan="2" class="table_header">
+ 	 用户附加属性
+ 	  </td>
+    </tr>
+<include file="user.view.extra_field.html" />
+ 
+  <tr > 
+      <td colspan="2" class="table_header">
+ 	 权限设置
+ 	  </td>
+    </tr>
+	 <tr> 
+      <td class="table_td1">所属主用户组：</td>
+      <td class="table_td2">
+[$UserInfo.GroupName]
+	  </td>
+    </tr>
+
+<tr>
+<td class="table_td1">所属副用户组:</td>
+<td class="table_td2">
+<loop name="TargetSubGroupIDs" var="var"> 
+[$var.title]<BR>
+</loop>
+	</td>
+</tr>
+
+
+<tr>
+<td class="table_td1">所属主角色:</td>
+<td class="table_td2">
+ <loop name="SrcRoleID" var="var" key="key">
+<if test="$var.value == $UserInfo.RoleID">
+ [$var.title] 
+ </if>
+ </loop>
+ 
+	</td>
+</tr>
+<tr>
+<td class="table_td1">所属副角色:</td>
+<td class="table_td2">
+	 <loop name="TargetSubRoleIDs" var="var"> 
+[$var.title]<BR>
+</loop>
+	</td>
+</tr>
+<tr>
+<td class="table_td1">可用操作列表:</td>
+<td class="table_td2">
+<loop name="TargetOpIDs" var="var"> 
+[$var.title]<BR>
+</loop>	
+
+	</td>
+</tr>
+  </table>
+ 
+
+
+<include  file="footer.html"/>

@@ -1,0 +1,9 @@
+
+
+======================================================
+从CWPS1.0升级到1.1请执行以下语句升级数据库
+ALTER TABLE `cmsware_passport_sessions`  ADD COLUMN `IsCookieLogin` tinyint(1) NULL DEFAULT '0';
+（标识这个Session是否为Cookie自动登陆创建）
+
+然后覆盖所有的文件
+======================================================

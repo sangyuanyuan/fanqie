@@ -1,0 +1,51 @@
+<include: file="header_init.html">
+<script>
+function gogo(action, NodeID,IndexID)
+{
+	switch(action) {
+		case 'search':
+			window.opener.location='admin_publish.php?sId=[$sId]&o=list&NodeID=' + NodeID + '&IndexID=' + IndexID;
+			break;
+		case 'node':
+			window.opener.location='admin_publish.php?sId=[$sId]&o=list&NodeID=' + NodeID ;
+			break;
+	}
+	 
+}
+</script>
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+    <tr> 
+      <td colspan="4" class="table_header">{lang:quote_content_list}</td>
+    </tr>
+
+    <tr> 
+      <td  class="table_td1">{lang:node}ID</td><td class="table_td1">ID</td><td class="table_td1"></td><td class="table_td1"></td>
+    </tr>
+<loop $List key=key var=var>
+<tr>
+              <td class="table_td2" align="center">	<A HREF="javascript:gogo('node','[$var.NodeID]');">[ [$var.NodeID] ]	</A>  </td>
+              <td class="table_td2">	<A HREF="javascript:gogo('search','[$var.NodeID]','[$var.IndexID]');">[ [$var.IndexID] ]</A>	  </td>
+
+              <td class="table_td2">
+
+			  <?php $this->_tpl_vars['info'] = $this->_tpl_vars['CONTENT_MODEL_INFO'][ $this->_tpl_vars['var']['TableID'] ]['TitleField'];?>
+
+			  <A HREF="admin_publish.php?sId=[$sId]&type=main&o=view&NodeID=[$var.NodeID]&IndexID=[$var.IndexID]" target="_blank"><?php echo $this->_tpl_vars['var']["{$this->_tpl_vars['info']}"];?></A>
+			  
+			  </td>
+ 			  <td class="table_td2">
+
+ 			  <A HREF="[$var.URL]" target="_blank">{lang:view_publish}</A>
+			  
+ 			  
+			  </td>
+</tr>
+
+</loop>
+
+
+
+
+  </table>
+	
+<include: file="footer.html">

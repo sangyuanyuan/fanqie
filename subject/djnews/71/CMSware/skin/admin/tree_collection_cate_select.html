@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>[$cms_version]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]" />
+<script type="text/javascript" src="../html/tree/xtree.js"></script>
+<script type="text/javascript" src="../html/tree/xmlextras.js"></script>
+<script type="text/javascript" src="../html/tree/xloadtree.js"></script>
+<link type="text/css" rel="stylesheet" href="../html/tree/xtree.css" />
+<LINK href="../html/xmenu.css" type=text/css rel=stylesheet>
+<SCRIPT src="../html/xmenu.js" type=text/javascript></SCRIPT>
+<SCRIPT src="ui.php?sId=[$sId]&o=functions.js" type=text/javascript></SCRIPT>
+
+<style type="text/css">
+
+body {
+	background:	white;
+	color:		black;
+}
+
+</style>
+
+<SCRIPT language=JavaScript>
+var elo;
+var loadmenuok=false;
+var type = 'main';
+var sId = '[$sId]';
+function going(action, cId) {
+	switch(action) {
+		case 'newdoc':
+			top.panelWork.location = 'admin_publish.php?sId='+ sId +'&o=add&cId='+ cId +'&type=main' + '&referer=' + 'admin_publish.php?op=sId::'+ sId +';o::list;cId::'+ cId +';type::main';
+
+			break;
+		case 'tpl':
+			top.panelWork.location = 'admin_tpl.php?op=sId::' + sId +';o::list;cId::' + cId ;
+			
+			break;
+		case 'site':
+			top.panelWork.location = 'admin_site.php?op=sId::' + sId +';o::edit;NodeID::' + cId + '&referer=' + 'admin_publish.php?op=sId::'+ sId +';o::list;cId::'+ cId +';type::main';
+			
+			break;
+		case 'publish':
+			top.panelWork.location = 'admin_publish.php?op=sId::' + sId +';o::list;cId::'+ cId +';type::main';
+			
+			break;
+		case 'create_node':
+			top.panelWork.location = 'admin_site.php?op=sId::' + sId +';o::add;ParentID::' + cId;
+			
+			break;
+		case 'del_node':
+			if(confirm("{lang:confirm_del_node}")) {
+				top.actionFrame.location = 'admin_site.php?op=sId::' + sId +';o::del;NodeID::' + cId;
+			
+			}
+			break;
+
+
+
+	}
+}
+
+
+</SCRIPT>
+
+</head>
+<body leftmargin="3" topmargin="0">
+<script type="text/javascript">
+
+/// XP Look
+webFXTreeConfig.rootIcon		= "../html/tree/images/xp/folder.png";
+webFXTreeConfig.openRootIcon	= "../html/tree/images/xp/openfolder.png";
+webFXTreeConfig.folderIcon		= "../html/tree/images/xp/folder.png";
+webFXTreeConfig.openFolderIcon	= "../html/tree/images/xp/openfolder.png";
+webFXTreeConfig.fileIcon		= "../html/tree/images/xp/file.png";
+webFXTreeConfig.lMinusIcon		= "../html/tree/images/xp/Lminus.png";
+webFXTreeConfig.lPlusIcon		= "../html/tree/images/xp/Lplus.png";
+webFXTreeConfig.tMinusIcon		= "../html/tree/images/xp/Tminus.png";
+webFXTreeConfig.tPlusIcon		= "../html/tree/images/xp/Tplus.png";
+webFXTreeConfig.iIcon			= "../html/tree/images/xp/I.png";
+webFXTreeConfig.lIcon			= "../html/tree/images/xp/L.png";
+webFXTreeConfig.tIcon			= "../html/tree/images/xp/T.png";
+webFXTreeConfig.blankIcon		= "../html/tree/images/blank.png";
+
+var rti;
+var tree = new WebFXTree("Root","javascript:parent.setTargetNodeID('0')");
+tree.cId = '0';
+<loop $CateInfo key=key var=var>
+<if $var.haveSon == 1>
+tree.add(new WebFXLoadTreeItem("[@htmlspecialchars($var.Name)]", "admin_tree.php?op=sId::[$sId];o::collection_cate_select_xml;CateID::[$var.CateID]", "javascript:parent.setTargetNodeID('[$var.CateID]')" , "", "[$var.CateID]"));
+<else>
+tree.add(new WebFXTreeItem("[@htmlspecialchars($var.Name)]","javascript:parent.setTargetNodeID('[$var.CateID]')" , "", "[$var.CateID]"));
+</if>
+</loop>
+
+document.write(tree);
+
+</script>
+<div id="menudata"></div>
+
+</body>
+</html>

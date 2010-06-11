@@ -1,0 +1,104 @@
+<if test="!isset($UserInfo.UserName)">
+<header name="Location:{$OAS_URL}login.php?forward={$SelfURL}" />
+</if>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>话题 - [$SITE_NAME]</title>
+<link href="[$SKIN_URL]huati/css/style.css" rel="stylesheet" type="text/css" />
+<!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+<script language="jscript" src="[$SKIN_URL]huati/js/js.js"></script>
+</head>
+<body>
+<include file="../common/header.html" />
+<div class="content">
+	<div class="left">
+        <!---左边样式1-->
+		<div class="topside01">
+			<div class="topside01_l"></div>
+			<div class="topside01_c"></div>
+			<div class="topside01_r"></div>
+		</div>
+		<div class="center01" id="newsfocus">
+
+			<div class="focus">创建新话题</div><div class="morefocuslink">[<a href="[$PUBLISH_URL]index_v.php/59,0.html">话题列表</a>]</div>
+          	<div class="sonfocus">
+			<form action="[$PUBLISH_URL]contribution_v.php?o=do&TableID=1" method="post" style="margin:0;">
+            <input type="hidden" name="TargetNodeID" id = "TargetNodeID" value="59" />
+            <input type="hidden" name="referer" value="[$PUBLISH_URL]index_v.php/59,0.html" />
+            <table width="100%">
+            	<tr>
+            		<td width="11%" align="right">作者：</td>
+               	  	<td width="89%">&nbsp;[$UserInfo.UserName]<input type="hidden" name="data_Author" id="data_Author" value="[$UserInfo.UserName]" /></td>
+           	  	</tr>
+            	<tr>
+            		<td width="11%" align="right">标题：</td>
+               	  	<td width="89%"><input type="text" name="data_Title" id="data_Title" size="40" /></td>
+           	  	</tr>
+                <tr>
+            		<td width="11%" align="right">简介：</td>
+               	  	<td width="89%"><textarea rows="4" cols="85%" name="data_Intro" id="data_Intro"></textarea></td>
+           	  	</tr>
+                <tr>
+            		<td width="11%" align="right">内容： </td>
+                  	<td width="89%"><textarea style="display:none;" name="data_Content" id="data_Content"></textarea><iframe ID="Editor" name="Editor" src="[$PUBLISH_URL]ubb/edit.htm?id=data_Content" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" style="height:320px;width:100%"></iframe></td>
+           	  	</tr>
+                <tr>
+            		<td colspan="2" align="center"><label><input type="submit" value="提&nbsp;交" /></label>&nbsp;&nbsp;<label><input type="reset" value="重&nbsp;置" /></label></td>
+               	</tr>
+            </table>
+            </form>
+  	  	  	</div>
+            </div>
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+	</div>
+
+	<!--右边列开始-->
+	<div class="right">		
+		<!--右边样式2-->
+        <div class="topside05">
+			<div class="topside05_l">&nbsp;</div>
+			<div class="topside05_c">&nbsp;</div>
+			<div class="topside05_r">&nbsp;</div>
+		</div>
+		<div class="center05">
+        	<div class="photo_fous">热门话题</div>
+			<CMS action="LIST" return="List" NodeID="59" Num="10" OrderBy="Hits_Total" />
+            <loop name="List" var="var" key="key">
+            <a href="[$var.URL]">[@CsubStr($var.Title,0,12,'')]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+            </loop>
+		</div>
+		<div class="bottomside05">
+			<div class="bottomside05_l">&nbsp;</div>
+			<div class="bottomside05_c">&nbsp;</div>
+			<div class="bottomside05_r">&nbsp;</div>
+		</div>
+        
+        <div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<div class="photo_fous">回复最多</div>
+			<CMS action="LIST" return="List" NodeID="59" Num="10" OrderBy="CommentNum" />
+            <loop name="List" var="var" key="key">
+            <a href="[$var.URL]">[@CsubStr($var.Title,0,12,'')]</a><span class="photo_hot"><font class="hot">[$var.CommentNum]</font></span><br />
+            </loop>
+		</div>
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+	</div>
+</div>
+<include file="../common/footer.html" />
+</body>
+</html>

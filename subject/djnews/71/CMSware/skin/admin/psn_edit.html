@@ -1,0 +1,60 @@
+<include: file="header.html">
+<script language="JavaScript">
+function prepareSubmit(){
+		select_submit('clientform', 'TargetPermissionReadG', 'data_PermissionReadG');
+ 
+
+		return true;
+}
+
+ 
+
+</script>
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form action='[$base_url]o=edit_submit&PSNID=[$psnInfo.PSNID]' method='post' enctype="multipart/form-data" name='clientform' id=clientform >
+    <tr> 
+      <td colspan="8" class="table_header">{lang:topic}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:psn_name}:</td>
+      <td colspan=6 class="table_td2"><input name='Name' type='text' class='flat' id="Name" tabindex='8' value="[$psnInfo.Name]"> 
+        &nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="20%" class="table_td1" >{lang:psn_type}:</td>
+      <td colspan=6 class="table_td2"><select name="psnType" id="select3"  >
+ 			  <option value="local" >{lang:psn_local}</option>
+		 
+        </select>
+        &nbsp;</td>
+    </tr>
+ 
+ 
+  <tr  > 
+      <td class="table_td1">{lang:local_path}:</td>
+      <td colspan=6 class="table_td2"><input name='localPath' type='text' class='flat' id="localPath" tabindex='8' size="50" value="[$psnInfo.publish_path]">
+        &nbsp; </td>
+    </tr>
+  
+ 
+     <tr> 
+      <td class="table_td1">{lang:url}:</td>
+      <td colspan=6 class="table_td2"><input name='URL' type='text' class='flat' id="URL" tabindex='8' size="50" value="[$psnInfo.URL]"> 
+        &nbsp;</td>
+    </tr>
+ 
+ 
+    <tr> 
+      <td class="table_td1">{lang:info}:</td>
+      <td colspan=6 class="table_td2"><textarea name="Description" cols="50" rows="5" class="flat" id="fieldname2" tabindex="8">[$psnInfo.Description]</textarea> 
+        &nbsp;</td>
+    </tr>
+ 
+    <tr> 
+      <td colspan="8" class="table_td2" align=center>  <input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'  > 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<include: file="footer.html">

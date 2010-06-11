@@ -1,0 +1,150 @@
+body {
+	font-family: "Arial", "宋体";
+	font-size: 9pt;
+	margin: 0px;
+	padding: 0px;
+
+}
+table {
+	font-family: "Arial", "宋体";
+	font-size: 9pt;
+	line-height: 150%;
+
+}
+.textform {
+	font-family: "Arial", "宋体";
+	font-size: 9pt;
+	color: #2C2C85;
+	height: 18px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #666666;
+	border-right-color: #F0F0F0;
+	border-bottom-color: #F0F0F0;
+	border-left-color: #666666;
+
+
+}
+.btn {
+
+	font-family: "Arial", "宋体";
+	font-size: 9pt;
+	color: #333333;
+	height: 18px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #F0F0F0;
+	border-right-color: #666666;
+	border-bottom-color: #666666;
+	border-left-color: #F0F0F0;
+}
+.preview {
+	border: 1px solid #CCCCFF;
+	background-color: #FFFFF0;
+
+}
+.position {
+	border-top: 0px none #CCCCFF;
+	border-right: 1px solid #CCCCFF;
+	border-bottom: 1px solid #CCCCFF;
+	border-left: 1px solid #CCCCFF;
+	background-color: #FFFFF0;
+
+
+}
+.fileform {
+
+
+	font-family: "Arial", "宋体";
+	font-size: 9pt;
+	color: #333333;
+	height: 18px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #666666;
+	border-right-color: #666666;
+	border-bottom-color: #666666;
+	border-left-color: #666666;
+}
+a:link {
+	color: #6666FF;
+	text-decoration: none;
+
+}
+a:hover {
+	color: #666699;
+	text-decoration: underline;
+
+}
+a:visited {
+	color: #6666CC;
+	text-decoration: none;
+
+}
+
+.toolsbtn {
+	border: none;
+	cursor: hand;
+}
+.listmenu {
+
+	font-family: "Arial", "宋体";
+	font-size: 9pt;
+	color: #2C2C85;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #666666;
+	border-right-color: #F0F0F0;
+	border-bottom-color: #F0F0F0;
+	border-left-color: #666666;
+}
+form {
+	margin: 0px;
+	padding: 0px;
+}
+.timeselector {
+	font-family: "Arial", "宋体";
+	font-size: 9pt;
+	height: 18px;
+	width: 43px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #999999;
+	border-bottom-color: #999999;
+	border-left-color: #333333;
+	margin: 0px;
+	padding: 0px;
+	color: #0066CC;
+
+}

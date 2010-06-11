@@ -1,0 +1,62 @@
+<include: file="header.html"> 
+<if test="$query_result !='' ">
+<table width="70%" border="0" align="center" cellpadding="4" cellspacing="1"  class="table_border">
+     <tr class="table_header"> 
+      <td height="25" colspan="4">&nbsp;{lang:db_query_result}</td>
+    </tr>
+    <tr class="Tablecontentbg"> 
+      <td class="table_td1">[$query_result]</td>
+    </tr>
+ <if test="$result !='' ">
+     <tr class="Tablecontentbg"> 
+      <td class="table_td1">
+
+<table width="70%" border="0" align="center" cellpadding="4" cellspacing="1"  class="table_border">
+
+	  <loop name="result" key="key" var="var">
+	  <if test="$key ==0">
+	  <tr>
+			<loop name="var" key="keyIn" var="varIn">
+			<td class="table_td1">[$keyIn]</td>
+			</loop>
+	  </tr>
+
+	  </if>
+	  <tr>
+			<loop name="var" key="keyIn" var="varIn">
+			<td class="table_td2">[$varIn]</td>
+			</loop>
+	  </tr>
+	  </loop>
+ </table>
+	  </td>
+    </tr>    
+ </if>
+</table>
+
+<br>
+</if>
+<table width="70%" border="0" align="center" cellpadding="4" cellspacing="1"  class="table_border">
+  <form action="[$base_url]&o=query_submit" method="post" enctype="multipart/form-data" target="_self">
+    <tr class="table_header"> 
+      <td height="25" colspan="4">&nbsp;{lang:db_query}</td>
+    </tr>
+    <tr class="Tablecontentbg"> 
+      <td class="table_td1">
+	  <textarea name="sql" cols="60" rows="8">[*IN.sql]</textarea></td>
+      
+
+   </tr>
+    <tr class="table_td1"> 
+       
+      <td colspan="4">&nbsp;&nbsp;&nbsp; 
+        <input name="{lang::global:submit}" type="submit" value="{lang:query_submit}" class=button  >
+        &nbsp;&nbsp; 
+        </td>
+    </tr>
+  </form>
+</table>
+</body>
+</html>
+
+ <include: file="footer.html">

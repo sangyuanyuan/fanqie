@@ -1,0 +1,10 @@
+<?php
+header('Content-type: application/x-javascript');
+header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+header("Expires: Mon, 18 Feb 1977 05:00:00 GMT"); // Date in the past
+?>
+<if test="!isset($UserInfo.UserName)">
+var LoginAreaDis="<a href='[$OAS_URL]login.php?forward="+location.href+"'>[登陆]</a>&nbsp;&nbsp;<a href='[$OAS_URL]register.php?forward="+location.href+"'>[注册]</a>";
+<else>
+var LoginAreaDis="欢迎您：[$UserInfo.UserName]&nbsp;|&nbsp;<a href='[$PUBLISH_URL]content_v.php?id=2&page=0'>[会员中心]</a>&nbsp;&nbsp;<a href='[$OAS_URL]logout.php?forward="+location.href+"'>[退出]</a>";
+</if>

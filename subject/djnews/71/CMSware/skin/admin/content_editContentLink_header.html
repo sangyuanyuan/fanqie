@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+<HEAD>
+<title>[$cms_version]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]" />
+<meta name="robots" content="noindex">		
+<link rel='stylesheet' type='text/css' href='../html/style.css' />
+ <BODY     STYLE="margin:0pt;padding:0pt;border: 1px buttonhighlight;"  >
+<script language='JavaScript'>
+var fieldName = '[$fieldName]';
+
+function mhHover(tbl, idx, cls)
+{
+	var t, d;
+	if (document.getElementById)
+		t = document.getElementById(tbl);
+	else
+		t = document.all(tbl);
+	if (t == null) return;
+	if (t.getElementsByTagName)
+		d = t.getElementsByTagName("TD");
+	else
+		d = t.all.tags("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}
+
+var NodeID = '[$NodeInfo.NodeID]'
+function doing(action)
+{
+	switch(action) {
+		case 'createContent':
+			parent.mainFrame.location = 'admin_publish.php?sId=[$sId]&o=add&type=main&NodeID=' +NodeID;
+			break;
+		case 'saveContent':
+			var oBao = new ActiveXObject("Microsoft.XMLHTTP");
+			var returnValue;
+			if(!confirm("{lang::global:confirm_save}")) return false;
+		
+		<loop $tableInfo var=var key=key>
+
+		<if $var.FieldInputFilter == 'notnull' && $var.FieldInput != 'select'>
+			if(parent.mainFrame.document.FM.data_[$var.FieldName].value == '') {
+				alert("{lang:please_input}[$var.FieldTitle]");
+				parent.mainFrame.document.FM.data_[$var.FieldName].focus();
+				return false;
+			}
+		
+		<elseif $var.FieldInputFilter == 'unique'  && $var.FieldInput != 'select'>
+			oBao.open("POST","admin_publish.php?sId=[$sId]&o=IsRecordExists&NodeID="+NodeID+"&FieldName=[$var.FieldName]&FieldValue="+parent.mainFrame.document.FM.data_[$var.FieldName].value + "&action=" + parent.mainFrame.o + "&IndexID=" + parent.mainFrame.IndexID,false);
+			oBao.send();
+			returnValue = unescape(oBao.responseText);
+			//alert(returnValue)
+			if(returnValue == 'yes') {
+				alert("[$var.FieldTitle]{lang:exist_please_change}");
+				parent.mainFrame.document.FM.data_[$var.FieldName].focus();
+				return false;
+				
+			}		
+		</if>
+		</loop>
+
+
+
+
+
+			parent.mainFrame.document.FM.submit();
+
+			break;
+		case 'changeNode':
+			NodeID = changeNode.options[changeNode.selectedIndex].value
+			//alert(CateID)[$base_url]o=editContentLink&extra=ui_header
+			parent.editContentLink_mainFrame.location = 'admin_publish.php?sId=[$sId]&o=editContentLink&extra=ui_main&NodeID=' + NodeID;
+			break;
+		case 'close':
+			sp_isRefash = true;
+			parent.window.close();
+			break;
+			
+		
+	}
+}
+
+
+
+</script>
+
+<div id="msviLocalToolbar">
+  <table cellpadding="0" cellspacing="2" width="100%" height="37" border="0">
+    <tr> 
+     
+
+     <td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 0, 'lt1')" onmouseout="mhHover('msviLocalToolbar',0, 'lt0')" onclick="doing('close')">{lang::global:close}</td>    <td width=100%></td>
+
+      <td   > 
+<select  name="changeNode" id = "changeNode">
+<loop $NODE_LIST var=var>
+<if $NodeInfo.NodeID == $var.NodeID>
+
+<option value="[$var.NodeID]" selected>[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)] - &nbsp;[$var.Name]</option>
+<else>
+<option value="[$var.NodeID]">[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)]  - &nbsp;[$var.Name]</option>
+</if>
+
+ </loop></select><td> <td > <INPUT name="Go" TYPE="button" value="Go" onclick="doing('changeNode')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+  </table>
+</div>
+</body></html>

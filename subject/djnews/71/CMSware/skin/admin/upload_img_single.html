@@ -1,0 +1,717 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]">
+<title>{lang:topic}</title>
+<style type="text/css">
+body{scrollbar-face-color: #B8B8B8; scrollbar-highlight-color: #F5F9FF; scrollbar-shadow-color: #828282; scrollbar-3dlight-color: #828282; scrollbar-arrow-color: #797979; scrollbar-track-color: #ECECEC; scrollbar-darkshadow-color: #ffffff}
+body,a,table,div,span,td,th,input,select{font:9pt;font-family: Verdana, Arial, Helvetica, sans-serif;}
+.text{border:1 solid #aaaaaa;}
+.button{height:18;border:1 ridge #aaaaaa;background-color:aaaaaa;color:ffffff}
+.table {  border: 1px inset; border-color: menu #FFFFFF #FFFFFF menu}
+</style>
+<SCRIPT src="ui.php?sId=[$sId]&o=functions.js" type=text/javascript></SCRIPT>
+<script language="JavaScript">
+function show(MenuID)
+{
+ if(MenuID=="advance")
+ {
+  if(advance.style.display=="") {
+  	advance.style.display="none";
+	//this.window.dialogHeight='110pt';
+  }else {
+  		advance.style.display="";
+		this.window.dialogHeight='240pt';
+  }
+ 
+ }
+}
+
+
+function openwin(targeturl) {
+		
+		window.open(targeturl, '', 'width=300,height=170,resizable=1,scrollbars=yes');
+		//showMeDialog(targeturl,"color1","dialogWidth:400pt;dialogHeight:300pt;help:0;status:0;resizable:1");
+			
+}
+
+function multiupload(num) {
+	var str="<table width=\"100%\" border=\"0\" cellpadding=\"0\"  >";
+	for (var i = 0; i < num; i++) {
+		str = str + " <tr> <td width=30% >{lang:img_upload}:</td><td><input name=uploadFile[] type=file id=uploadFile ></td><tr>";
+		
+	} 
+	
+	str = str + "</table>";
+	document.all.uploadform.innerHTML = str;
+
+}
+function useMini() {
+		//form = document.form
+		if(form.width.disabled==false) {
+			form.width.disabled=true;
+			form.height.disabled=true;
+			document.form.img_mini.value='0';
+		}else {
+			form.width.disabled=false
+			form.height.disabled=false;
+			document.form.img_mini.value='1';
+		}
+}
+
+function useLimit()
+{
+	if(form.display_width.disabled==false) {
+				form.display_width.disabled=true;
+				form.display_height.disabled=true;
+				
+	}else {
+				form.display_width.disabled=false
+				form.display_height.disabled=false;
+	}
+}
+function show_view(MenuID)
+{
+ if(MenuID=="table")
+ {
+  view_table.style.display="";
+  document.form.img_dw.value = 'table';
+ // document.content.tplsend.value="edittpl";
+ }
+ else if(MenuID=="normal")
+ {
+   view_table.style.display="none";
+   document.form.img_dw.value = 'normal';
+  //document.content.tplsend.value="edittpl";
+ }	
+ 
+}
+
+function choosecolor(num) {
+  if (!Error()) return;
+  var arr = showMeDialog("../html/color.htm","color","dialogWidth:200pt;dialogHeight:175pt;help:0;status:0");
+  if (arr != null) {
+	if(num == 1) {
+		document.form.table_bg_color.value=arr ;
+		document.form.table_bg_color.focus();	
+	} else if(num==2) {
+		document.form.table_td_color.value=arr ;
+		document.form.table_td_color.focus();	
+	}
+  }
+}
+function  uploadSubmit() {
+	if(confirm("{lang:confirm_upload}")) {
+		document.form.submit();
+	} else {
+		return false;
+	}
+	
+}
+function insertImg(){
+	var form = document.form;
+	var img_url_array = new Array();
+	
+	if(confirm("{lang:confirm_insert}")) {
+
+	} else {
+		return false;
+	}
+	//alert(form);
+	with(form){
+		for(i=1;i<mdoc.length;i++) {
+			img_url_array[i]=mdoc.options[i].value
+		}
+	}
+	
+	var dw = document.form.img_dw.value;
+	var img_mini = 0;
+	
+	var view_td = document.form.view_td.value;
+	var table_bg_color = document.form.table_bg_color.value;
+	var table_td_color = document.form.table_td_color.value;
+	var table_border = document.form.table_border.value;
+	var table_cellspacing = document.form.table_cellspacing.value;
+	var table_cellpadding = document.form.table_cellpadding.value;
+	var display_width = document.form.display_width.value;
+	var display_height = document.form.display_height.value;
+	var img_border = document.form.img_border.value;
+	var str= "";
+	var j = 0;
+
+	if (display_width != '') {
+		display_width = "width=" + display_width;
+	}
+	if (display_height != '') {
+		display_height = "height=" + display_height;
+	}
+	if (table_bg_color != '') {
+		 table_bg_color = "bgcolor=" + table_bg_color;
+	}
+	if (table_td_color != '') {
+		 table_td_color = "bgcolor=" + table_td_color;
+	}
+	if (table_border != '') {
+		 table_border = "border=" + table_border;
+	}
+
+	if (table_cellspacing != '') {
+		 table_cellspacing = "cellspacing=" + table_cellspacing;
+	}
+
+	if (table_cellpadding != '') {
+		 table_cellpadding = "cellpadding=" + table_cellpadding;
+	}
+	if(dw == 'normal') {
+		if (img_mini == '1') {
+			for (var i in img_url_s_array) {
+				j = i;
+				
+				if ( j == 1) {
+					str = "<p align=center><a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_s_array[i] + " border=" + img_border + " "+ display_width + " " + display_height + "></a>&nbsp;&nbsp;&nbsp;";
+				} else if((j % view_td) != 0) {	
+					str = str +  "<a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_s_array[i] + " border=" + img_border + " "+ display_width + " " + display_height + "></a>&nbsp;&nbsp;&nbsp;";
+				} else {
+					str = str +  "<a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_s_array[i] + " border=" + img_border + " "+ display_width + " " + display_height + "></a></p><p align=center>";
+				}
+				
+			}
+
+			str =  str + "</p>";
+		} else {
+			for (var i in img_url_array) {
+				j = i;
+				
+				if ( j == 1) {
+					str = "<p align=center><a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_array[i] + " border=" + img_border + " "+ display_width + " " + display_height + "></a>&nbsp;&nbsp;&nbsp;";
+				} else if((j % view_td) != 0) {	
+					str = str +  "<a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_array[i] + " border=" + img_border + " "+ display_width + " " + display_height + "></a>&nbsp;&nbsp;&nbsp;";
+				} else {
+					str = str +  "<a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_array[i] + " border=" + img_border + " "+ display_width + " " + display_height + "></a></p><p align=center>";
+				}
+				
+			}
+
+			str =  str + "</p>";
+		}
+		
+
+	} else if(dw == 'table') {
+		if (img_mini == '1') {
+			for (var i in img_url_s_array) {
+				//j = parseInt(i,10) + 1;
+				j = i
+				
+
+				if ( j == 1) {
+					str = "<tr><td " + table_td_color + "><a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_s_array[i] + " border=" + img_border + " "+ display_width + " " + display_height + "></a></td>";
+				} else if((j % view_td) != 0) {	
+					str = str +  "<td " + table_td_color + "><a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_s_array[i] + " border=" + img_border + " "+ display_width + "  " + display_height + "></a></td>";
+				} else {
+					str = str +  "<td " + table_td_color + "><a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_s_array[i] + " border=" + img_border + " "+ display_width + "  " + display_height + "></a></td></tr><tr>";
+				}
+				
+			}
+
+			str =  "<table  " + table_border + " " +  table_cellspacing + " " +  table_cellpadding + " align=center  " +  table_bg_color + " >" + str + "</tr></table>";
+		} else {
+			for (var i in img_url_array) {
+				//j = parseInt(i,10) + 1;
+								j = i
+				
+
+				if ( j == 1) {
+					str = "<tr><td " + table_td_color + "><a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_array[i] + " border=" + img_border + " "+ display_width + "  " + display_height + "></a></td>";
+				} else if((j % view_td) != 0) {	
+					str = str +  "<td " + table_td_color + "><a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_array[i] + " border=" + img_border + " "+ display_width + "  " + display_height + "></a></td>";
+				} else {
+					str = str +  "<td " + table_td_color + "><a href=" + img_url_array[i] + " target=_blank><img src=" + img_url_array[i] + " border=" + img_border + " "+ display_width + "  " + display_height + "></a></td></tr><tr>";
+				}
+				
+			}
+
+			str =  "<table  " + table_border + " " +  table_cellspacing + " " +  table_cellpadding + " align=center  " +  table_bg_color + " >" + str + "</tr></table>";
+		}
+		
+	}
+
+			window.returnValue = str;
+			window.close();
+
+	
+
+}
+
+function mysubmit(form)
+{
+with(form){
+	selectValue.value=''
+	var icon=head.value;
+	var sep=seperator.value
+	for(i=1;i<mdoc.length;i++) {
+		var addtime=''
+		stringToSplit=mdoc.options[i].value
+		arrayOfStrings=stringToSplit.split('%@%')
+		
+		dateToSplit=arrayOfStrings[1]
+		arrayOfDate=dateToSplit.split('-')
+		if(year.options[year.selectedIndex].value=='1') {
+			addtime=arrayOfDate[0]
+		}
+
+		if(month.options[month.selectedIndex].value=='1' && year.options[year.selectedIndex].value=='1') {
+			addtime=addtime+sep+arrayOfDate[1]
+		}else {
+			addtime=arrayOfDate[1]
+		
+		}
+
+		if(date.options[date.selectedIndex].value=='1' && month.options[month.selectedIndex].value=='1') {
+			addtime=addtime+sep+arrayOfDate[2]
+		}else {
+			addtime=addtime+arrayOfDate[2]
+		
+		}
+
+		if(time.options[time.selectedIndex].value=='1') {
+			addtime=addtime+' '+arrayOfDate[3]+':'+arrayOfDate[4]
+		}
+
+		selectValue.value+=icon + ' <A href=\"'+arrayOfStrings[0]+'\" target=\"_blank\">'+mdoc.options[i].text+'</A>    <FONT id=\"ADDTIME\">'+addtime+'</FONT><BR>\n'
+	}
+		window.returnValue = selectValue.value;
+		window.close();
+	}
+
+}
+function moveUp(obj)
+{
+with (obj){
+	if(selectedIndex==1){
+		options[length]=new Option(options[1].text,options[1].value)
+		options[1]=null
+		selectedIndex=length-1
+		}
+	else if(selectedIndex>1) moveG(obj,-1)
+	}
+}
+function moveDown(obj)
+{
+with (obj){
+	if(selectedIndex==length-1){
+		var otext=options[selectedIndex].text
+		var ovalue=options[selectedIndex].value
+		for(i=selectedIndex; i>1; i--){
+			options[i].text=options[i-1].text
+			options[i].value=options[i-1].value
+			}
+		options[i].text=otext
+		options[i].value=ovalue
+		selectedIndex=1
+		}
+	else if(selectedIndex>0 && selectedIndex<length-1) moveG(obj,+1)
+	}
+}
+function moveG(obj,offset)
+{
+with (obj){
+	desIndex=selectedIndex+offset
+	var otext=options[desIndex].text
+	var ovalue=options[desIndex].value
+	options[desIndex].text=options[selectedIndex].text
+	options[desIndex].value=options[selectedIndex].value
+	options[selectedIndex].text=otext
+	options[selectedIndex].value=ovalue
+	selectedIndex=desIndex
+	}
+}
+
+function add(data,obj2) {
+	with(obj2) {
+		length=obj2.length
+		if(data.length > 24) {
+			var data1 = "..." + data.substr(data.length-24 ,24)
+		} else {
+			var data1 = data
+		}
+		options[length]=new Option(data1,data)
+		
+	}
+	
+}
+
+function del(obj1) {
+
+	
+	with(obj1) {
+		try {
+			options[selectedIndex]=null
+			selectedIndex=length-1
+		} catch(i) {
+		
+		}
+		
+	}
+
+}
+function checkReload(url)
+{
+	if(document.form.isReload.value == '') {
+		document.hawking.location= url;
+		document.form.isReload.value = 'hawking';
+	}
+}
+</script>
+<STYLE type=text/css>
+TD {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: "MS Shell Dlg"
+}
+.tab {
+	PADDING-RIGHT: 30px; PADDING-LEFT: 10px; FONT-SIZE: 12px; PADDING-BOTTOM: 1px; CURSOR: hand; PADDING-TOP: 5px; LETTER-SPACING: 1px
+}
+</STYLE>
+<SCRIPT language=JavaScript>
+
+function tabClick(idx) 
+{
+
+  
+	for (i = 0; i < 2; i++) {
+    
+
+		if (i == idx) {
+
+			var tabImgLeft = eval("document.all.tabImgLeft__" + idx);
+
+			var tabImgRight = eval("document.all.tabImgRight__" + idx);
+      
+			var tabLabel = eval("document.all.tabLabel__" + idx);
+      
+			var tabContent = eval("document.all.tabContent__" + idx);
+
+      
+			tabImgLeft.src = "../html/images/mpc/tab_active_left.gif";
+      
+			tabImgRight.src = "../html/images/mpc/tab_active_right.gif";
+      
+			tabLabel.background = "../html/images/mpc/tab_active_bg.gif";
+      
+			tabContent.style.visibility = "visible";
+      
+			tabContent.style.display = "block";
+     
+		}
+  else {
+			var tabImgLeft = eval("document.all.tabImgLeft__" + i);
+		
+			var tabImgRight = eval("document.all.tabImgRight__" + i);
+		
+			var tabLabel = eval("document.all.tabLabel__" + i);
+		
+			var tabContent = eval("document.all.tabContent__" + i);
+
+		
+			tabImgLeft.src = "../html/images/mpc/tab_unactive_left.gif";
+		
+			tabImgRight.src = "../html/images/mpc/tab_unactive_right.gif";
+		
+			tabLabel.background = "../html/images/mpc/tab_unactive_bg.gif";
+		
+			tabContent.style.visibility = "hidden";
+		
+			tabContent.style.display = "none";
+  
+		
+		}  
+
+	}
+
+
+}
+
+
+</SCRIPT>
+</HEAD>
+
+<style type="text/css">
+<!--
+.bigborder {
+	border-top: 0px #FFFFFF;
+	border-right: 1px outset #999999;
+	border-bottom: 1px outset #999999;
+	border-left: 1px solid #FFFFFF;
+}
+-->
+</style>
+<include file="upload_process.html" />
+
+<BODY bgcolor=menu  text="#000000" leftMargin=0 topMargin=5 >
+
+<TABLE cellSpacing=0 cellPadding=0 width="97%" align=center border=0>
+<form  action="[$base_url]type=img&o=upload&mode=single&NodeID=[$NodeID]" method="post" enctype="multipart/form-data" name="form" target="operation" >
+<TBODY>
+  <TR>
+    <TD style="PADDING-LEFT: 2px; HEIGHT: 22px" 
+    background="../html/images/mpc/tab_top_bg.gif">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE height=22 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD width=3><IMG id=tabImgLeft__0 height=22 
+                  src="../html/images/mpc/tab_active_left.gif" 
+                  width=3></TD>
+                <TD class=tab id=tabLabel__0 onclick=tabClick(0) 
+                background="../html/images/mpc/tab_active_bg.gif" 
+                UNSELECTABLE="on" title="{lang:img_to_insert_help}">{lang:img_to_insert}</TD>
+                <TD width=3><IMG id=tabImgRight__0 height=22 
+                  src="../html/images/mpc/tab_active_right.gif" 
+                  width=3></TD></TR></TBODY></TABLE></TD>
+       <TD>
+            <TABLE height=22 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD width=3><IMG id=tabImgLeft__1 height=22 
+                  src="../html/images/mpc/tab_unactive_left.gif" 
+                  width=3></TD>
+                <TD class=tab id=tabLabel__1 onclick=tabClick(1) 
+                background="../html/images/mpc/tab_unactive_bg.gif" 
+                UNSELECTABLE="on">{lang:display_setting}</TD>
+                <TD width=3><IMG id=tabImgRight__1 height=22 
+                  src="../html/images/mpc/tab_unactive_right.gif" 
+                  width=3></TD></TR></TBODY></TABLE></TD>
+          <!--   <TD>
+            <TABLE height=22 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD width=3><IMG id=tabImgLeft__2 height=22 
+                  src="../html/images/mpc/tab_unactive_left.gif" 
+                  width=3></TD>
+                <TD class=tab id=tabLabel__2 onclick=tabClick(2) 
+                background="../html/images/mpc/tab_unactive_bg.gif" 
+                UNSELECTABLE="on" TITLE="{lang:display_setting_help}">{lang:display_setting}</TD>
+                <TD width=3><IMG id=tabImgRight__2 height=22 
+                  src="../html/images/mpc/tab_unactive_right.gif" 
+                  width=3></TD></TR></TBODY></TABLE></TD>-->
+				  
+				  
+				  </TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD bgcolor=menu>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+        <!--  <TD width=1 
+          background="../html/images/mpc/tab_bg.gif"><IMG 
+            height=1 src="../html/images/mpc/tab_bg.gif" 
+            width=1></TD>-->
+          <TD 
+          style="PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; " 
+          vAlign=top class="bigborder" height=380>
+		  
+            <DIV id=tabContent__0 style="DISPLAY: block; VISIBILITY: visible">
+ <table width="100%" border="0" cellspacing="5" cellpadding="0">
+ <tr>
+            <td>
+<fieldset class="search">
+		     <legend>{lang:img_list_to_insert}:</legend>
+	
+                          <table width="100%" border="0" cellspacing="5" cellpadding="0">
+                            <tr>
+    	
+	<td>
+	<table  border="0" cellspacing="5" cellpadding="0">
+          <TR> 
+        <td >{lang:add_img}:&nbsp; </td>
+                        <td > <input name="img_url" type="text" id="img_url" value="http://" size="40" > 
+                        </td>
+                        
+						 <td ><input type="button" name="Submit" value="{lang:add}" onclick="add(this.form.img_url.value,this.form.mdoc)">&nbsp;&nbsp;</td>
+						 <td ><input type="button" name="Submit" value="{lang:preview}" onclick="openwin(this.form.img_url.value)"></td>
+          </TR>
+         
+        </TABLE>
+	</td>
+	
+	</tr>
+	  <tr>
+    	
+	<td>
+	<table  border="0" cellspacing="5" cellpadding="0">
+          <TR> 
+        <td >{lang::global:upload}:&nbsp; </td>
+                        <td >
+                        </td>
+                        
+						 <td ><input name="uploadFile[]" type="file" id="uploadFile" ></td>
+						 <td >&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="Submit" value=" {lang::global:upload} " onclick="loadBarDisplay(this.form);">  {lang:upload_rename}<input type="checkbox" name="changeName" value="1"  checked></td>
+          </TR>
+         
+        </TABLE>
+	</td>
+	
+	</tr>
+	  
+	                        <tr> 
+                              <td>
+<table  border="0" cellspacing="3" cellpadding="0" width=100%>
+          <TR> 
+            <TD> <BR> <BR> <BR> <BR> </TD>
+            <TD><SELECT name=mdoc size=15 class="9p" onchange="preview_img.src=this.options[this.selectedIndex].value;preview_img.title=this.options[this.selectedIndex].value;preview_link.href=this.options[this.selectedIndex].value">
+               <option value=""></option>
+              </SELECT> </TD>
+            <TD>
+			
+			
+			  <p> 
+                <INPUT name="button2" type=button  onclick=del(this.form.mdoc) value="{lang::global:icon_del}">
+              </p>
+			  <p> <br>
+                <INPUT name="button2" type=button  onclick=moveUp(this.form.mdoc) value="{lang::global:icon_up}">
+              </p>
+              <p><br>
+                <INPUT name="button22" type=button  onclick=moveDown(this.form.mdoc) value="{lang::global:icon_down}">
+              </p></TD>
+			  <td align=right><a href="" target=_blank id=preview_link><img id=preview_img src="" width=180 height=180 border=0 style="display:none" title=""></a></td>
+          </TR>
+         
+        </TABLE>
+	</td></tr>
+        </table>
+	</fieldset>
+</td></tr>
+        </table>
+			</DIV>
+			
+			
+             <DIV id=tabContent__2 style="DISPLAY:none; VISIBILITY: hidden">
+             <table width="100%" border="0" cellpadding="5" cellspacing="0"  >
+	 <tr > 
+      <td >
+ <fieldset class="search"> <legend>{lang:img_select}: </legend>                
+<Iframe name=hawking  frameborder=0 class=button style="width:100%;height:310;" > 
+                </Iframe>
+				 </fieldset><img height=6 border=0 width=1>	
+					{lang:img_select_help}</td>
+				  
+                </tr>
+				</table>
+			</DIV>
+
+
+             <DIV id=tabContent__1 style="DISPLAY: none; VISIBILITY: hidden">
+
+  <table width="100%" border="0" cellpadding="5" cellspacing="0"  >
+	 <tr  name=advance id=advance> 
+                  
+				 <td ><br/><fieldset class="search">
+		     <legend>{lang:location_mode} <input type='radio' name='search_in' class="radiobutton" id="search_in_posts" value='posts' checked="checked" onclick="show_view('normal')" /><label for="search_in_posts" onclick="show_view('normal')">{lang:location_mode_normal}</label>
+                        
+                         <input type='radio' name='search_in' class="radiobutton" id="search_in_titles" value='titles'  onclick="show_view('table')" /><label for="search_in_titles" onclick="show_view('table')">{lang:location_mode_table}</label></legend>
+                     
+					 <table  width="100%" border="0" cellpadding="3" cellspacing="0"  >
+                      <tr  > 
+                        <td width=100>{lang:location_mode_table_td}:</td>
+                        <td><input type="text" name="view_td" size=10  value=3> 
+                       </td>
+                      </tr>
+
+					  <tr > 
+                        <td colspan="2" name=view_table id=view_table style="display:none">
+
+					 <table width="100%" border="0" cellpadding="2" cellspacing="0"  >
+						 <tr > 
+                        <td width=80>{lang:location_mode_table_background}:
+						</td>
+                        <td>
+						<input type="text" name="table_bg_color" size=10  value=0> 
+						 <a href="#" onclick=choosecolor('1')><img src="../html/images/search.gif" width="16" height="16" border="0"></a> 
+                       </td>
+                      </tr>
+					   <tr > 
+                        <td width=80>{lang:location_mode_cell_background}:
+						</td>
+                        <td>
+						<input type="text" name="table_td_color" size=10  value=0> 
+						 <a href="#" onclick=choosecolor('2')><img src="../html/images/search.gif" width="16" height="16" border="0"></a> 
+                       </td>
+                      </tr>
+					 <tr> 
+                        <td >{lang:location_mode_table_border}:</td>
+                        <td><input type="text" name="table_border" size=10  value=0> 
+                      </td>
+                      </tr>
+					  <tr> 
+                        <td >{lang:location_mode_table_cellspacing}:</td>
+                        <td><input type="text" name="table_cellspacing" size=10  value=2> 
+                      {lang:location_mode_table_cellpadding}:<input type="text" name="table_cellpadding" size=10  value=2> </td>
+                      </tr>
+					 
+					  </table>
+					  
+					  </td>
+                      </tr>
+					  </table>
+					
+                    </fieldset>
+					<br/><fieldset class="search">
+		     <legend>{lang:size_limit}<input type="checkbox" name="makeMini" value="1" onclick="useLimit();"></legend>
+                     <table width="90%" border="0" cellpadding="5" cellspacing="0"  >
+                      <tr> 
+                        <td width=10>{lang::global:width}:</td>
+                        <td><input type="text" name="display_width" size=10 disabled > 
+                        </td>
+						<td width=10>{lang::global:height}:</td>
+                        <td><input type="text" name="display_height" size=10  disabled >
+                        </td>
+                      </tr>
+					  </table>
+					
+                    </fieldset>
+					<br/><fieldset class="search">
+		     <legend>{lang:img_border}</legend>
+                     <table width="90%" border="0" cellpadding="5" cellspacing="0"  >
+                      <tr> 
+                        <td ><input type="text" name="img_border" size=10  value=0></td>
+                        					
+					<input type="hidden" name="img_url_s" size=10 >
+					<input type="hidden" name="isReload" size=10 >
+					<input type="hidden" name="img_dw" size=10 value="normal">
+					<input type="hidden" name="img_mini" size=10 value="0">
+                      </tr>
+					  </table>
+					
+                    </fieldset> 
+					</td>
+				  
+                </tr>
+				</table>
+			</DIV></TD>
+         <!-- <TD width=1 
+          background="../html/images/mpc/tab_bg.gif"><IMG 
+            height=1 src="../html/images/mpc/tab_bg.gif" 
+            width=1></TD>--></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD background="../html/images/mpc/tab_bg.gif" 
+    bgColor=#ffffff><IMG height=1 
+      src="../html/images/mpc/tab_bg.gif" 
+  width=1></TD></TR></TBODY></form></TABLE>
+
+  
+  
+<table width="95%" border="0" align="center" cellpadding="2" cellspacing="0"  >
+ 
+				<tr > 
+                  
+    <td height="30" align="right" id = submit_change>
+<input type="button"  name="Submit2" value="{lang:insert_img}" onclick="insertImg();"></td><td align="right" width=70> <input name="button" type=button  onclick="window.returnValue ='' ;window.close();" value=" {lang::global:cancel} "> 
+                     </td>
+                </tr>
+				</table>
+
+ <Iframe name=operation src="" frameborder=0 class=button style="display:none"> 
+                    </Iframe>
+</BODY>
+</HTML>
+

@@ -1,0 +1,76 @@
+<include: file="header_init.html">
+<script language="javascript">
+
+function doPreview(obj, src)
+{	 
+	
+	if(src.innerText == '[{lang:preview}]') {
+		eval("var targetCode = " + obj + " ;");
+		eval("var targetPreview = " + obj + "_Preview ;");
+		//visibility = "hidden"
+		targetCode.style.display = 'none';
+		targetPreview.style.display = '';
+		targetPreview.innerHTML = targetCode.innerText;
+
+		src.innerText = '[{lang:viewcode}]';
+	
+	} else {
+		eval("var targetCode = " + obj + " ;");
+		eval("var targetPreview = " + obj + "_Preview ;");
+		//visibility = "hidden"
+		targetCode.style.display = '';
+		targetPreview.style.display = 'none';
+		targetCode.innerText = targetPreview.innerHTML;
+		src.innerText = '[{lang:preview}]';
+	
+	}
+
+	//alert(target.innerText);
+}
+
+ </script>
+
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+    <tr> 
+      <td  height=25 colspan="2" class="table_header">{lang:url_parse_result}</td>
+    </tr>
+    <tr> 
+      <td   height=25 colspan="2" class="table_td1"><A HREF="[$Url]" target="_blank">[$Url]</A></td>
+    </tr>  
+	
+<loop $Rules var=var key=key >
+	
+	<tr> 
+      <td class="table_td1" width=100>[$var.title]</td>
+      <td class="table_td2">
+
+<?php
+ 		if(!empty($GLOBALS['SYS_ENV']['CollectionViewMode'])) {
+			echo "<p><A HREF='javascript:void(0);' onclick=\"doPreview('hello_{$this->_tpl_vars["key"]}', this)\">[".$_LANG_SKIN['preview']."]</A></p>";
+		
+		} else {
+			echo "<p><A HREF='javascript:void(0);' onclick=\"doPreview('hello_{$this->_tpl_vars["key"]}', this)\">[".$_LANG_SKIN['viewcode']."]</A></p>";
+		
+		}
+ 
+
+	if(!empty($GLOBALS['SYS_ENV']['CollectionViewMode'])) {
+		echo "<textarea class=\"content\" id=\"hello_{$this->_tpl_vars["key"]}\" readonly=\"readonly\" style=\"width:100%\">".htmlspecialchars($this->_tpl_vars["result"]["{$this->_tpl_vars["key"]}"])."</textarea>";
+		echo "<div id=\"hello_{$this->_tpl_vars["key"]}_Preview\" style=\"display:none\"></div>";
+
+	} else {
+		echo "<textarea class=\"content\" id=\"hello_{$this->_tpl_vars["key"]}\" readonly=\"readonly\" style=\"width:100%;display:none\">".htmlspecialchars($this->_tpl_vars["result"]["{$this->_tpl_vars["key"]}"])."</textarea>";
+		echo "<div id=\"hello_{$this->_tpl_vars["key"]}_Preview\">".$this->_tpl_vars["result"]["{$this->_tpl_vars["key"]}"]."</div>";
+	
+	}
+
+?>
+	  </td>
+  </tr>
+
+</loop>
+
+  </table>
+
+
+<include: file="footer.html">

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>[$version] 安装向导</title>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW">
+<META NAME="Description" CONTENT="">
+</HEAD>
+
+<style type="text/css">
+<include file="installstyle.css" />
+</style>
+<script type="text/javascript" src="html/images/helptip.js"></script>
+<link type="text/css" rel="StyleSheet" href="html/images/helptip.css" />
+<script  type="text/javascript" language="javascript" src="html/title_fade.js"></script>
+<script src="html/functions.js" type="text/javascript" language="javascript"></script>
+<body bgcolor="" TOPMARGIN="0" LEFTMARGIN="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="80%" height="70" bgcolor="#2D66B5"><img src="html/images/install.gif" ></td>
+    <td><table width="100%" height="70" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td bgcolor="#2E68B8">&nbsp;</td>
+          <td bgcolor="#4D86D2">&nbsp;</td>
+          <td bgcolor="#739FDB">&nbsp;</td>
+          <td bgcolor="#9ABAE4">&nbsp;</td>
+          <td bgcolor="#C6D8F0">&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="40">
+	</td>
+  </tr>
+</table>
+<table width="80%" border="0" align="center" cellpadding="8" cellspacing="0" class="fixline">
+  <tr> 
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td align="center" bgcolor="#ececec"> 
+            <table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#2E68B8">              
+              <tr> 
+                <td colspan="3" bgcolor="#2E68B8"><font color="#FFFFFF">&nbsp;服务器配置信息检测：</font></td>
+              </tr>
+              <tr> 
+                <td bgcolor="#ececec" width="28%">软件版本信息：</td>
+                <td bgcolor="#ececec">[$version]</td>
+				<td bgcolor="#ececec"></td>
+              </tr>
+              <tr> 
+                <td bgcolor="#ececec" width="28%">操作系统</td>
+                [$operation]
+              </tr>
+              <tr> 
+                <td bgcolor="#ececec">Web 服务器</td>
+               [$webserver]
+              </tr>
+              <tr> 
+                <td bgcolor="#ececec">PHP 版本</td>
+                [$php]
+              </tr>
+
+
+			   <tr> 
+                <td bgcolor="#ececec">GD 模块支持&nbsp;</td>
+               [$gd]
+              </tr>
+		 
+              <tr> 
+                <td bgcolor="#ececec">配置文件可写</td>
+			<if test="is_writeable('./config.php')">
+				<td bgcolor="#ececec">./config.php
+				 
+			
+				
+				</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">./config.php</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+
+			  </tr>
+          	  
+			  
+			  <tr bgcolor="#ececec"> 
+                <td>系统临时数据目录可写</td>
+			<if test="dir_writeable('./tmp')">
+				<td bgcolor="#ececec">
+				
+				./tmp
+				<if test="!dir_writeable('./tmp/templates_c')">
+					<BR><FONT   COLOR="#FF0000"><B>./tmp/templates_c</B></FONT>&nbsp;不可写
+				</if>
+ 
+				</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">./tmp</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>              </tr>
+              
+			  <tr bgcolor="#ececec"> 
+                <td>php运行模式</td>
+               
+			<if test="is_safe_mode() && file_exists(TMP_DIR.'.ftp')">
+			
+						<td bgcolor="#ececec"><font color=red>warning</font></td>-->
+					<td bgcolor="#ececec"><FONT  COLOR="#3300CC">FTP模式</FONT></td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>  
+			<else>
+				<td bgcolor="#ececec">正常模式</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td> 
+			</if>
+			
+
+
+
+              </tr>
+            </table>
+           </td>
+        </tr>
+      </table>
+ 
+	  </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td height="20">&nbsp;</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <form action="install.php" method="post">
+    <td align="center"  ><input name="step" type="hidden" id="step" value="2"> 
+        <input name="Submit2" type="button" class="subbutton" value="上一步" onClick="javascript:history.go(-1);">
+      &nbsp;&nbsp;&nbsp;&nbsp; 
+      <input name="Submit" type="submit" class="subbutton" value="下一步" >
+    </td>
+	 </form>
+  </tr>
+</table>
+</body>
+</html>

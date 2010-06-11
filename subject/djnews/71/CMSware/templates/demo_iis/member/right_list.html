@@ -1,0 +1,72 @@
+<div class="right">	
+
+		<!--右边样式1-->
+		
+		<div class="topside05">
+			<div class="topside05_l">&nbsp;</div>
+			<div class="topside05_c">&nbsp;</div>
+			<div class="topside05_r">&nbsp;</div>
+		</div>
+        <div class="center05">
+        	<div class="photo_fous"><font color="#0066FF">我的基本信息</font></div>
+			<br />
+			
+			用户名：<font color="#FF0000">[$UserInfo.UserName]</font>
+			<br />
+			昵　称：[$UserInfo.NickName]
+			<br />
+			<a href="[$OAS_URL]edituser.php?do=changePass"> 修改密码 </a>&nbsp;<a href="[$OAS_URL]edituser.php?do=editProfile"> 修改资料 </a>
+			</div>
+		<div class="bottomside05">
+			<div class="bottomside05_l">&nbsp;</div>
+			<div class="bottomside05_c">&nbsp;</div>
+			<div class="bottomside05_r">&nbsp;</div>
+		</div>
+		
+		<div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<div class="photo_fous"><font color="#FF66CC">最新供求信息</font></div>
+			
+            <CMS action="LIST" return="List" NodeID="{$Gqxx_AllNodeID}" orderby="i.PublishDate DESC "  Num="5" /> 
+<loop name="List" var="var" key="key">
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 9)] </a>
+<font color="#FF0000">[@date("m-d", $var.PublishDate)]</font>
+<!--显示文章链接，自动截取标题长度9-->
+<br> 
+</loop> 
+			
+		</div>
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+		<!--右边样式2-->
+        <div class="topside05">
+			<div class="topside05_l">&nbsp;</div>
+			<div class="topside05_c">&nbsp;</div>
+			<div class="topside05_r">&nbsp;</div>
+		</div>
+        <div class="center05">
+        	<div class="photo_fous"><font color="#0066FF">最新供求回复</font></div>
+<CMS action="COMMENT" return="List" Num="5" NodeID="{$Gqxx_AllNodeID}" orderby="CreationDate DESC" />
+<loop name="List" var="var" key="key">
+<a href=" [$PUBLISH_URL]comment_v.php?o=display&Id=[$var.IndexID]" target=_blank >[@CsubStr($var.Comment, 0, 9)] </a>
+<font color="#FF0000">[@date("m-d", $var.CreationDate)]</font>
+<!--显示文章链接，自动截取标题长度9-->
+<br> 
+</loop> 
+			
+		</div>
+		<div class="bottomside05">
+			<div class="bottomside05_l">&nbsp;</div>
+			<div class="bottomside05_c">&nbsp;</div>
+			<div class="bottomside05_r">&nbsp;</div>
+		</div>
+        
+        
+</div>

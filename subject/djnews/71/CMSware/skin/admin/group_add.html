@@ -1,0 +1,118 @@
+<include: file="header.html">
+<script type="text/javascript" language="javascript">
+function check(){
+ 	if(document.clientform.gName.value == ''){	
+
+	 		alert("{lang:error_gname_null}");
+ 			document.clientform.gName.focus();
+			return false;
+	}else {
+		return true;
+	}
+	
+}
+</script>
+   
+
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+<form name='clientform' id=clientform method='post' action='[$base_url]o=add_submit'  >
+      <tr> 
+      <td colspan="2" class="table_header">{lang:topic} </td>
+    </tr>
+    <tr> 
+      <td class="table_td1" width=180>{lang:group_name}:</td>
+      <td class="table_td2"><input name='gName' type='text' class='flat' id="username" tabindex='8'    size='25' value="[$gInfo.gName]"></td>
+    </tr>
+	<!--
+    <tr> 
+      <td class="table_td1">{lang:publish_auth}:</td>
+      <td class="table_td2"> <select name="gPublishAuth[]" size="8" multiple>
+    <loop $pAuthInfo var=var> 
+          <option value="[$var.pId]">[$var.pName]</option>
+          </loop>
+                <option value=""></option>
+		  
+		  </select></td>
+    </tr>-->
+    <tr> 
+      <td class="table_td1">{lang:can_admin_login}:</td>
+      <td class="table_td2"> <input name="canLoginAdmin" type="radio" id="hawking3" value="1" > 
+        <label for="hawking3"  >{lang::global:yes}</label> <input name="canLoginAdmin" type="radio" id="hawking5" value="0" checked > 
+        <label for="hawking5"  >{lang::global:no}</label></td>
+    </tr>
+
+
+<if test="$session.sGIsAdmin == 1">
+
+     <tr> 
+      <td colspan="2" class="table_header">{lang:other_auth}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1"><span class=highlight>{lang:is_admin}:</span></td>
+      <td class="table_td2"> <input type="radio" name="isAdmin" value="1" id="hawking1" onclick="accessPermission('yes')"> 
+        <label for="hawking1"  >{lang::global:yes}</label> <input name="isAdmin" type="radio" value="0" checked id="hawking2" onclick="accessPermission('no')"> 
+        <label for="hawking2"  >{lang::global:no}</label></td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:site_admin}:</td>
+      <td class="table_td2"><input name="canNode" type="radio" id="hawking21" value="1" > 
+        <label for="hawking21"  >{lang::global:yes}</label> <input name="canNode" type="radio" id="hawking22" value="0" checked > 
+        <label for="hawking22"  >{lang::global:no}</label> </td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:tpl_admin}:</td>
+      <td class="table_td2"><input name="canTpl" type="radio" id="hawking23" value="1" > 
+        <label for="hawking23"  >{lang::global:yes}</label> <input name="canTpl" type="radio" id="hawking25" value="0" checked > 
+        <label for="hawking25"  >{lang::global:no}</label> </td>
+    </tr>
+	    <tr> 
+      <td class="table_td1">{lang:collection_admin}:</td>
+      <td class="table_td2">
+		  <input name="canCollection" type="radio" id="canCollection23" value="1"> 
+        <label for="canCollection23"  >{lang::global:yes}</label> <input name="canCollection" type="radio" id="canCollection25" value="0"  checked > 
+        <label for="canCollection25"  >{lang::global:no}</label> 
+	  
+</td>
+    </tr>
+</if>
+
+    <tr> 
+      <td class="table_td1">{lang:group_info}:</td>
+      <td class="table_td2"> <textarea name="gInfo" cols="50" rows="5" class='flat' id="groupinfo" >[$gInfo.gInfo]</textarea></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13' onClick="return check();"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+<!-------------->            
+					<script language='Javascript1.1'>
+				<!--
+				
+		
+
+				function accessPermission(mode) {
+					var f = document.clientform;
+
+					if(mode == 'no') {
+			
+					} else {
+						if(confirm("{lang:warning_set_admin}")) {
+				
+
+						} else {
+					
+							eval( 'f.hawking2.checked= true' );
+
+							return false;
+						}
+
+					}
+				}
+
+		//-->
+				</script>
+					
+		</BODY>
+<include: file="footer.html">

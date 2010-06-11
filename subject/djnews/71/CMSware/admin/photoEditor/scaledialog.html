@@ -1,0 +1,104 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>图像缩放</title>
+<link href="album.css" rel="stylesheet" type="text/css">
+<script language="javascript">
+window.returnValue = "cancel";
+whrate = 1;
+function initparam(){
+    if( window.dialogArguments ){
+        parentwin = window.dialogArguments;
+	if(parentwin.document.box.zoom.value > 0 ){
+            document.box.zoom.value = parentwin.document.box.zoom.value;
+            document.box.mode[0].checked = true ;
+        }
+        document.box.w.value    = parentwin.document.all.workImage.width;
+        document.box.h.value    = parentwin.document.all.workImage.height;
+        document.box.mode[1].checked = !document.box.mode[0].checked ;
+	whrate = parentwin.document.all.workImage.width / parentwin.document.all.workImage.height;
+    }
+	setMode();
+}
+
+function setParam(){
+    if( window.dialogArguments ){
+        parentwin = window.dialogArguments;
+        parentwin.document.box.w.value     = document.box.w.value;
+        parentwin.document.box.h.value     = document.box.h.value  ;
+
+        if( document.box.mode[0].checked ){
+            if( document.box.zoom.value <1 || document.box.zoom.value >200 ){
+                alert("比例系数的范围是1%~200%！");
+                return;
+            }
+            parentwin.document.box.zoom.value  = document.box.zoom.value;
+        }
+        else{
+            parentwin.document.box.zoom.value  = -1;
+            if(document.box.w.value <= 0 ){
+                alert("宽度必须大于0！");
+                return;
+            }
+            if( document.box.whr.checked )
+                parentwin.document.box.h.value = -1;
+        }
+    }
+    window.returnValue="OK";
+    window.close();
+}
+
+function setRate(){
+    w = document.box.w.value;
+    whrflag = document.box.whr.checked;
+    if( whrflag ){
+        if( w > 0 )
+            document.box.h.value = Math.ceil( w / whrate );
+        document.box.h.disabled = true;
+    }
+    else
+        document.box.h.disabled = false;
+}
+function setMode(){
+    flag = document.box.mode[0].checked;
+    if( flag ){
+        document.box.w.disabled = true;
+        document.box.h.disabled = true;
+        document.box.whr.disabled = true;
+        document.box.zoom.disabled = false;
+    }
+    else{
+        document.box.w.disabled = false;
+        document.box.h.disabled = false;
+        document.box.whr.disabled = false;
+        document.box.zoom.disabled = true;
+	}
+}
+
+</script>
+</head>
+
+<body onload="initparam()" bgcolor="menu">
+<form method="post" name=box action="" onSubmit="return false">  
+   <table border=0 align="center" width="316">
+     <tr>
+       <td width="31%" height="38" align="right" ><input name="mode" type=radio value="0" checked onClick="setMode()">
+        按比例缩放:</td>
+       <td width="69%"><input name="zoom" type=text class="textform" style="border:1px solid;width:40px" value="100">
+        % (范围:1-200%)</td>
+     </tr>
+     <tr>
+       <td align="right" ><input type=radio name="mode" value="1" onClick="setMode()">
+        指定大小:宽</td>
+      <td>
+<input name="w" type=text class="textform" style="border:1px solid;width:40px" onchange="setRate()" value="100">
+       高<input name="h" type=text class="textform" style="border:1px solid;width:40px" value="100">
+       &nbsp;<input type=checkbox name="whr" value="1" onclick="setRate()">保持原图比例
+       </td>
+     </tr>
+     <tr><td height="37" colspan=2 align="center"><input type=BUTTON class="btn" onclick="setParam()" value=" 确 定 "> &nbsp; <input type=BUTTON class="btn"  onclick="window.close()" value=" 取 消 "></td></tr>
+   </table>
+</form>		
+</body>
+</html>

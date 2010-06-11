@@ -1,0 +1,225 @@
+<include file="header.html" />
+
+<table width="90%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B>[$SYS_NAME] &raquo; 查看用户资料</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+
+   <table width="90%" border="0" cellpadding="5" align="center" cellspacing="1" class="table_border">
+	<tr > 
+      <td colspan="2" class="table_header">查看用户资料</td>
+    </tr>
+  <tr >
+      <td class="table_td1">用户名：</td>
+      <td class="table_td2">
+       [$UserInfo.UserName]
+	  </td>
+    </tr>
+  <tr >
+      <td class="table_td1">Email：</td>
+      <td class="table_td2">
+        [$UserInfo.Email]
+	  </td>
+    </tr>
+	    
+ 
+    <tr > 
+      <td class="table_td1">性别：</td>
+      <td class="table_td2">
+		<if test="$UserInfo.Gender == 1">
+		男
+		<elseif test="$UserInfo.Gender == 2">
+		女
+		<else>
+		保密
+		</if>
+ 
+ 
+  	  </td>
+    </tr>
+    <tr > 
+      <td class="table_td1">生日：</td>
+      <td class="table_td2">
+[$UserInfo.Birthday]
+</td>
+    </tr>
+  
+    <tr > 
+      <td class="table_td1">QQ：</td>
+      <td class="table_td2">[$UserInfo.QQ]</td>
+    </tr>
+
+    <tr > 
+      <td class="table_td1">昵称：</td>
+      <td class="table_td2">[$UserInfo.NickName]</td>
+    </tr>
+ 
+	
+	<tr > 
+      <td class="table_td1">个人介绍：</td>
+      <td class="table_td2">[@htmlspecialchars($UserInfo.Description)]</td>
+    </tr>
+
+ 
+	
+<loop name="FieldsInfo" var="var" key="key">
+<literal>
+<?php
+			$FieldName = $this->_tpl_vars['var']['FieldName'];
+			$FieldDataSource = $this->_tpl_vars['var']['FieldDataSource'];
+			$valueInfo = $this->_tpl_vars['UserInfo'][$FieldName];
+?>
+</literal>
+	<tr > 
+      <td class="table_td1">[$var.FieldTitle]：
+	  
+	  </td>
+      <td class="table_td2"> 
+	  <if test="$var.FieldInput == 'text'">
+		<?php echo $valueInfo;?>
+	  <elseif test="$var.FieldInput == 'textarea'">
+		 <?php echo $valueInfo;?>
+	  <elseif test="$var.FieldInput == 'select'">
+		<literal>
+ 		<?php
+			$FieldName = $this->_tpl_vars['var']['FieldName'];
+			$FieldDataSource = $this->_tpl_vars['var']['FieldDataSource'];
+			$valueInfo = $this->_tpl_vars['UserInfo'][$FieldName];
+
+			if(preg_match("/<sql>(.*)<\/sql>/isU", $FieldDataSource, $match)) {
+				
+				$resultDSN = $db->Execute($match[1]);
+				while(!$resultDSN->EOF) {
+					if($valueInfo == $resultDSN->fields['value']) {
+						echo $resultDSN->fields[value];
+					} 
+				
+					$resultDSN->MoveNext();
+				}
+			} else if(preg_match("/<List>(.*)<\/List>/isU", $FieldDataSource, $match)) {
+				if(preg_match_all("/<var>(.*)<\/var>/isU", $FieldDataSource, $matches)) {
+					foreach($matches[1] as $dsnkey=>$dsnvalue) {
+						preg_match("/<title>(.*)<\/title>/isU", $dsnvalue, $titleMatch);
+						preg_match("/<value>(.*)<\/value>/isU", $dsnvalue, $valueMatch);
+						if($valueInfo == $valueMatch[1]) {
+							echo $titleMatch[1];
+						} 
+
+
+					}
+				}
+			}
+		?>  
+		</literal>
+
+		</select>
+	  <elseif test="$var.FieldInput == 'radio'">
+	<literal>
+ 		<?php
+			$FieldName = $this->_tpl_vars['var']['FieldName'];
+			$FieldDataSource = $this->_tpl_vars['var']['FieldDataSource'];
+ 			$valueInfo = $this->_tpl_vars['UserInfo'][$FieldName];
+			if(preg_match("/<sql>(.*)<\/sql>/isU", $FieldDataSource, $match)) {
+				
+				$resultDSN = $db->Execute($match[1]);
+				$i=0;
+				while(!$resultDSN->EOF) {
+				 
+					if($valueInfo== $resultDSN->fields['value']) {
+						echo "<INPUT TYPE='radio' NAME='{$FieldName}' id='{$FieldName}{$i}' value='". $resultDSN->fields[value] ."' checked>";
+						echo "<label for='{$FieldName}{$i}'>". $resultDSN->fields[title] ."</label>";		
+					} else {
+						echo "<INPUT TYPE='radio' NAME='{$FieldName}' id='{$FieldName}{$i}' value='". $resultDSN->fields[value] ."' >";
+						echo "<label for='{$FieldName}{$i}'>". $resultDSN->fields[title] ."</label>";					
+					}
+					$i++;
+				 
+					$resultDSN->MoveNext();
+				}
+			} else if(preg_match("/<List>(.*)<\/List>/isU", $FieldDataSource, $match)) {
+			 
+				if(preg_match_all("/<var>(.*)<\/var>/isU", $FieldDataSource, $matches)) {
+					 
+					foreach($matches[1] as $dsnkey=>$dsnvalue) {
+						preg_match("/<title>(.*)<\/title>/isU", $dsnvalue, $titleMatch);
+						preg_match("/<value>(.*)<\/value>/isU", $dsnvalue, $valueMatch);
+						if($valueInfo == $valueMatch[1]) {
+ 							echo "<INPUT TYPE='radio' NAME='{$FieldName}' id='{$FieldName}{$dsnkey}' value='". $valueMatch[1] ."' checked>";
+							echo "<label for='{$FieldName}{$dsnkey}'>". $titleMatch[1] ."</label>";
+						} else {
+ 							echo "<INPUT TYPE='radio' NAME='{$FieldName}' id='{$FieldName}{$dsnkey}' value='". $valueMatch[1] ."' >";
+							echo "<label for='{$FieldName}{$dsnkey}'>". $titleMatch[1] ."</label>";
+						}
+
+
+					}
+				}
+				 
+			}
+		?>  
+		</literal>
+	  <elseif test="$var.FieldInput == 'checkbox'">
+	<literal>
+ 		<?php
+			$FieldName = $this->_tpl_vars['var']['FieldName'];
+			$FieldDataSource = $this->_tpl_vars['var']['FieldDataSource'];
+			$valueInfo = explode(",", $this->_tpl_vars['UserInfo'][$FieldName]);
+			
+			if(preg_match("/<sql>(.*)<\/sql>/isU", $FieldDataSource, $match)) {
+				
+				$resultDSN = $db->Execute($match[1]);
+				$i=0;
+				while(!$resultDSN->EOF) {
+				 
+					if(in_array($resultDSN->fields['value'], $valueInfo)) {
+						echo "<INPUT TYPE='checkbox' NAME='{$FieldName}[]' id='{$FieldName}{$i}' value='". $resultDSN->fields[value] ."' checked>";
+						echo "<label for='{$FieldName}{$i}'>". $resultDSN->fields[title] ."</label>";		
+					} else {
+						echo "<INPUT TYPE='checkbox' NAME='{$FieldName}[]' id='{$FieldName}{$i}' value='". $resultDSN->fields[value] ."' >";
+						echo "<label for='{$FieldName}{$i}'>". $resultDSN->fields[title] ."</label>";				
+					}
+					$i++;
+				 
+					$resultDSN->MoveNext();
+				}
+			} else if(preg_match("/<List>(.*)<\/List>/isU", $FieldDataSource, $match)) {
+			 
+				if(preg_match_all("/<var>(.*)<\/var>/isU", $FieldDataSource, $matches)) {
+					 
+					foreach($matches[1] as $dsnkey=>$dsnvalue) {
+						preg_match("/<title>(.*)<\/title>/isU", $dsnvalue, $titleMatch);
+						preg_match("/<value>(.*)<\/value>/isU", $dsnvalue, $valueMatch);
+						if(in_array($valueMatch[1], $valueInfo) ) {
+ 							echo "<INPUT TYPE='checkbox' NAME='{$FieldName}[]' id='{$FieldName}{$dsnkey}' value='". $valueMatch[1] ."' checked>";
+							echo "<label for='{$FieldName}{$dsnkey}'>". $titleMatch[1] ."</label>";
+						} else {
+ 							echo "<INPUT TYPE='checkbox' NAME='{$FieldName}[]' id='{$FieldName}{$dsnkey}' value='". $valueMatch[1] ."' >";
+							echo "<label for='{$FieldName}{$dsnkey}'>". $titleMatch[1] ."</label>";
+						}
+
+
+					}
+				}
+				 
+			}
+		?>  
+		</literal>		
+	  </if>
+
+	 
+	  
+	  </td>
+    </tr>
+</loop>
+
+  
+  </table>
+  <script>
+
+ </script>
+ <include file="footer.html" />

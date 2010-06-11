@@ -1,0 +1,96 @@
+<include file="header.html">
+
+<div class="content">
+	<div class="left">
+        <!---左边样式1-->
+		<div class="topside01">
+			<div class="topside01_l">&nbsp;</div>
+			<div class="topside01_c">&nbsp;</div>
+			<div class="topside01_r">&nbsp;</div>
+		</div>
+		<div class="center01" id="newsfocus">
+          <div class="focus" style="float:none; text-align:center; height:30px;">供求信息搜索</div>
+
+<form name="xh" method="post" action="[$PUBLISH_URL]search.php?o=search&TableID=[$Gqxx_TableID]"/>    
+            
+            <div class="sonfocus" style="text-align:left; height:auto; margin:0 0 0px 0">
+            	
+          
+搜索分类：<input type="hidden" name="Sub" value="1" />
+              <select  name="TargetNodeID" id = "TargetNodeID">
+                <CMS action="NODELIST" return="List" Type="sub" NodeID="{$Gqxx_MainNodeID}"  />
+	                 <loop name="List" key="key" var="var" >
+                        <option value="[$var.NodeID]">&nbsp;[$var.Name]&nbsp;</option>
+                     </loop>
+              </select>
+	
+	      <input name="Andor[]" type="hidden" value="AND" />
+
+供求关系：<input name="Field[]" type="hidden" value="GqType" />
+          <input name="Op[]" type="hidden" value="EQ" />
+              <select name="Keywords[]" size="1">
+                   <option value="" selected="selected" >不限条件</option>
+		           <option value="1" id="GqType">供应</option>
+		           <option value="2" id="GqType">寻求</option>
+		      </select>
+	      
+		  <input name="Andor[]" type="hidden" value="AND" />
+
+<br /><br />
+所属地区：
+<input name="Field[]2" type="hidden" value="Area" />
+<input name="Op[]" type="hidden" value="LK" />
+<input name="Keywords[]" id="Keywords" size="30" />
+	 
+	      <input name="Andor[]" type="hidden" value="AND" />
+<br />
+<br />
+价格范围：<input name="Field[]" type="hidden" value="Price" />
+          <input name="Op[]" type="hidden" value="BT" />
+          <select name="Keywords[]" size="1">
+                 <option value="" selected="selected" >不限条件</option>
+	             <option value="0 1000" selected="selected" id="fnum2">1000元以下</option>
+                 <option value="1000 2000" id="Price">1000-2000元</option>
+                 <option value="2000 3000" id="Price">2000-3000元</option>
+	             <option value="3000 100000" id="Price">3000元以上</option>
+          </select>
+	      
+		  <input name="Andor[]" type="hidden" value="AND" />
+	
+发布会员：<input name="Field[]" type="hidden" value="UserName" />
+          <input name="Op[]" type="hidden" value="EQ" />
+
+                 <input name="Keywords[]" id="Keywords" size="20" />
+	 
+	      <input name="Andor[]" type="hidden" value="AND" />	
+	
+<br />
+<br />
+
+搜索关键字:
+  
+    <input name="Field[]" type="hidden"  value="Title">
+    <input name="Op[]" type="hidden" value="LK" />
+    <input name="Keywords[]" id="Keywords" size="30" />　
+<input type="submit" value=搜索  align="absmiddle" name=submit onClick="if(this.form.Keywords.value==''||this.form.Keywords.value==''){alert('请输入关键字');return false;}">
+
+				
+		    </div>
+</form>	              
+		</div>
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+        <!--上下篇图片-->
+        
+    </div>
+	<!--右边列开始-->
+	<include file="right_list.html">
+</div>
+
+<div class="content"></div>
+
+
+<include file="footer.html">

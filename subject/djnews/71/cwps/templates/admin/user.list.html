@@ -1,0 +1,180 @@
+<include file="header.html" />
+  
+<SCRIPT language=JavaScript>
+<!--
+function CheckAll(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.name !='copy')       e.checked = form.chkall.checked; 
+   }
+  }
+
+//-->
+
+function going(form, o)
+{
+	with(form) {
+		switch(o) {
+			case 'resetPass':
+				if(confirm("确认对选定的用户进行重置密码操作?")) {
+					form.action = "admin.php?o=resetPass";
+					form.submit();
+				
+				} else return false;
+				break;
+		}
+	}
+}
+</script>
+
+    
+<br>
+
+<table width="98%" align="center" border="0" cellspacing="2" cellpadding="0">
+        <tr> 
+           
+		   <form name="form1" method="post" action="user.do?o=search_user">
+		   <td>
+		     <input name="keywords" type="text" id="keywords">
+		     <input type="submit" name="Submit" value="搜索用户">	       </td></form>
+		   <td align=right>用户总数:[$recordInfo.recordNum]&nbsp;&nbsp;&nbsp;&nbsp;<!--销售总额:[$TotalMoney]&nbsp;--></td>
+        </tr>
+</table>
+
+      <table width="98%" align="center" border="0" cellspacing="1" cellpadding="3" class=table_border>
+		   <form name="form2" method="post" action="?">
+        <tr align="center" class=table_header> 
+  		  <td width="20"></td>
+		  <td>
+		  <if test="$Request.sort == 'UserName'">
+			<if test="$Request.order=='asc'">
+
+				<A HREF="user.do?o=list&order=desc&sort=UserName">用户名</A>
+				<img src="[$html_url]/images/sortasc.gif" border="0" />
+			<else>
+				<A HREF="user.do?o=list&order=asc&sort=UserName">用户名</A>
+				<img src="[$html_url]/images/sortdesc.gif" border="0" />
+			</if>
+		  <else>
+				<A HREF="user.do?o=list&order=asc&sort=UserName">用户名</A>
+		  </if>
+		  
+		   
+		  
+		  
+		  </td>
+ 		  <td>Email</td>
+    		  <td>
+		  <if test="$Request.sort == 'RegisterDate'">
+			<if test="$Request.order=='asc'">
+
+				<A HREF="user.do?o=list&order=desc&sort=RegisterDate">注册时间</A>
+				<img src="[$html_url]/images/sortasc.gif" border="0" />
+			<else>
+				<A HREF="user.do?o=list&order=asc&sort=RegisterDate">注册时间</A>
+				<img src="[$html_url]/images/sortdesc.gif" border="0" />
+			</if>
+		  <else>
+				<A HREF="user.do?o=list&order=asc&sort=RegisterDate">注册时间</A>
+		  </if>
+
+		  
+	 	  
+		  
+		  </td>
+  		  <td>
+		  <if test="$Request.sort == 'LastLoginTime'">
+			<if test="$Request.order=='asc'">
+
+				<A HREF="user.do?o=list&order=desc&sort=LastLoginTime">上次登陆</A>
+				<img src="[$html_url]/images/sortasc.gif" border="0" />
+			<else>
+				<A HREF="user.do?o=list&order=asc&sort=LastLoginTime">上次登陆</A>
+				<img src="[$html_url]/images/sortdesc.gif" border="0" />
+			</if>
+		  <else>
+				<A HREF="user.do?o=list&order=asc&sort=LastLoginTime">上次登陆</A>
+		  </if>
+
+
+
+		 
+		  
+		  
+		  </td>
+		  <td>用户组</td>
+		  <td>状态</td>
+		    <td>操&nbsp;&nbsp;作</td>
+        </tr>
+		<loop $pList key=key var=var >
+        <tr  class=table_td1> 
+		
+           <td class="table_td2"> <INPUT TYPE="checkbox" NAME="UserID[]" value="[$var.UserID]" ></td>
+         <td ><div class="titleholder">[$var.UserName]</div></td>
+          <td><div class="titleholder">[$var.Email]</div></td>
+            <td align="center"><div class="titleholder">
+		 <if test="$var.RegisterDate == 0">
+		 0
+		 <else>
+		 [@date('Y-m-d', $var.RegisterDate)]
+		 </if>
+		 
+		 </div></td>
+           <td align="center"><div class="titleholder">
+		   <if test="$var.LastLoginTime == 0">
+		 0
+		 <else>
+		 [@date('Y-m-d', $var.LastLoginTime)]
+		 </if>
+		   
+		  </div></td>
+            <td><div class="titleholder">[$var.GroupName]</div></td>
+
+          <td align="center">
+<if test="$var.Status==0">
+<FONT   COLOR="#CCCCCC">无效</FONT>
+<elseif test="$var.Status==1">
+<FONT   COLOR="#6600FF"> 有效
+</FONT>
+</if>
+</td>
+ 
+	   
+		   <td align="center">
+<if test="$var.Status==0">
+<a href="user.do?o=active_user&UserID=[$var.UserID]" onclick="return confirm('确认激活用户 [$var.UserName] 吗')">激活</a>
+
+<else>
+<a href="user.do?o=stop_user&UserID=[$var.UserID]" onclick="return confirm('确认禁用用户 [$var.UserName] 吗')">禁用</a>
+
+</if>
+<a href="user.do?o=edit_user&UserID=[$var.UserID]">编辑</a>
+&nbsp;&nbsp;<a href="user.do?o=view_user&UserID=[$var.UserID]">查看</a>
+&nbsp;&nbsp;<a href="user.do?o=del&UserID=[$var.UserID]" onclick="return confirm('确认删除用户 [$var.UserName] 吗?')">删除</a>
+
+		   </td>
+	    </loop>
+        </tr> 
+<tr>
+<td  colspan="11" class="table_td2">
+<input type="checkbox" name="chkall" value="on" onclick="CheckAll(this.form)" id="chkall"  > 
+              <label for="chkall" >全选</label>&nbsp;&nbsp;
+<select name="actionMap" id="actionMap" > 
+           <option value="">--选择操作--</option>
+         <!--<option value="resetPass">重置密码</option>-->
+     
+</select>
+
+			  <input type="button" value="执行" class=button onclick="going(this.form,actionMap.options[actionMap.selectedIndex].value)"> 
+</td>
+</tr>
+
+</form>
+      </table>
+      <table width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+          <td align="right">[@pagelist($recordInfo.pageNum, $recordInfo.currentPage, $recordInfo.uri, 'Page')]</td>
+        </tr>
+      </table>
+
+<include file="footer.html"/>

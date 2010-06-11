@@ -1,0 +1,129 @@
+<include: file="header.html">
+<script language="JavaScript">
+
+function tplSelect(tpl,form, element)
+{
+	var arr = showMeDialog("admin_select.php?sId=[$sId]&o=tpl&tpl=" + tpl,"color","dialogWidth:428px;dialogHeight:266px;help:0;status:0;scroll:no");
+	if(arr != null) {
+		with(form){
+
+			eval(element + ".value= '" +  arr + "'")
+
+		}
+  
+
+	}
+
+}
+</script>
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form action='[$base_url]o=editfield_submit&TableID=[*IN.TableID]&ContentFieldID=[$fieldInfo.ContentFieldID]' method='post' enctype="multipart/form-data" name='clientform' id=clientform >
+    <tr> 
+      <td colspan="8" class="table_header">{lang:topic}</td>
+    </tr>
+    <tr> 
+      <td class="table_td2">{lang:field_title}:</td>
+      <td colspan=6 class="table_td2"><input name='data[FieldTitle]' type='text' class='flat' id="data[FieldTitle]" tabindex='8' value="[$fieldInfo.FieldTitle]"> 
+        &nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="20%" class="table_td2" >{lang:field_name}:</td>
+      <td colspan=6 class="table_td2"><input name='data[FieldName]' type='text' class='flat' id="username" tabindex='8' value="[$fieldInfo.FieldName]"> 
+        &nbsp;{lang:field_name_help}</td>
+    </tr>
+    <tr> 
+      <td class="table_td2">{lang:field_type}:</td>
+      <td colspan=6 class="table_td2">
+
+	  <select name="data[FieldType]" id="select" value="{$fieldInfo.FieldType}">
+           <option value="varchar" >{lang:field_type_varchar}</option>
+          <option value="int">{lang:field_type_int}</option>
+          <option value="text">{lang:field_type_text}</option>
+          <option value="mediumtext">{lang:field_type_mediumtext}</option>
+          <option value="longtext">{lang:field_type_longtext}</option>
+          <option value="contentlink" >{lang:field_type_contentlink}</option>
+ 
+        </select> 
+		
+		&nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="table_td2">{lang:field_size}:</td>
+      <td colspan=6 class="table_td2"><input name='data[FieldSize]' type='text' class='flat' id="data[FieldSize]" tabindex='8' value="[$fieldInfo.FieldSize]"> 
+        &nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="table_td2">{lang:field_input}:</td>
+      <td colspan=6 class="table_td2">
+	  <select name="data[FieldInput]" id="select2" value="{$fieldInfo.FieldInput}" >
+          <option value="text" >{lang:field_input_text}</option>
+          <option value="textaera">{lang:field_input_textaera}</option>
+          <option value="select">{lang:field_input_select}</option>
+          <option value="radio">{lang:field_input_radio}</option>
+          <option value="checkbox">{lang:field_input_checkbox}</option>
+          <option value="password">{lang:field_input_password}</option>
+          <option value="RichEditor">{lang:field_input_RichEditor}</option>
+ 
+        </select> &nbsp;</td>
+    </tr>
+ 
+
+	<tr>
+	  <td class="table_td2">{lang:field_default_value}:</td>
+	<td colspan=6 class="table_td2"><input name='data[FieldDefaultValue]' type='text' class='flat' id="fieldname2" tabindex='8'   size='50' value="[$fieldInfo.FieldDefaultValue]">&nbsp;{lang:field_default_value_help}</td>
+	</tr>
+
+  	<tr>
+	  <td class="table_td2">{lang:field_input_filter}:</td>
+	<td colspan=6 class="table_td2">
+	<select name="data[FieldInputFilter]" id="select2" value="{$fieldInfo.FieldInputFilter}">
+           <option value="">{lang:field_input_filter_nolimit}</option>
+          <option value="notnull" selected>{lang:field_input_filter_notnull}</option>
+          <option value="num">{lang:field_input_filter_num}</option>
+          <option value="num_letter">{lang:field_input_filter_num_letter}</option>
+          <option value="unique">{lang:field_input_filter_unique}</option>
+ 
+
+        </select> &nbsp;
+        &nbsp;</td>
+	</tr>
+  	<tr>
+	  <td class="table_td2">{lang:field_input_picker}:</td>
+	<td colspan=6 class="table_td2">
+	
+	<select name="data[FieldInputPicker]" id="select2" value="{$fieldInfo.FieldInputPicker}" onchange="if(this.options[this.selectedIndex].value == 'url_content') {alert('{lang:please_input_url}');} else if(this.options[this.selectedIndex].value == 'dsn_content') {alert('{lang:picker_from_dsn_content_help}');}">
+		 
+ 		  <option value="" >{lang:field_input_picker_no}</option>
+		  <option value="color" >{lang:field_input_picker_color}</option>
+          <option value="date" >{lang:field_input_picker_date}</option>
+          <option value="upload" >{lang:field_input_picker_upload}</option>
+           <option value="upload_attach">{lang:field_input_picker_upload_attach}</option>
+         <option value="flash">{lang:field_input_picker_flash}</option> 
+			<option value="tpl">{lang:field_input_picker_tpl}</option>
+          <option value="psn" >{lang:field_input_picker_psn}</option>
+           <option value="content" >{lang:field_input_picker_from_content}</option>
+ 
+                 
+        </select> &nbsp;
+        &nbsp;</td>
+	</tr>
+	<tr>
+	  <td class="table_td2">{lang:field_input_tpl}:</td>
+	<td colspan=6 class="table_td2"><INPUT name="data[FieldInputTpl]" id="data_ImageTpl" size=30  class='flat' value="[$fieldInfo.FieldInputTpl]">
+        <input name="button2" type='button' tabindex='13' value='...' onclick="tplSelect('0',this.form,'data_ImageTpl')"> &nbsp;
+        &nbsp;</td>
+	</tr>
+
+
+  		<tr>
+	  <td class="table_td2">{lang:field_description}:</td>
+	<td colspan=6 class="table_td2"><textarea name="data[FieldDescription]" cols="50" rows="5" class="flat" id="fieldname2" tabindex="8">[$fieldInfo.FieldDescription]</textarea>
+        &nbsp;</td>
+	</tr>
+    <tr> 
+      <td colspan="8" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+<include: file="footer.html">

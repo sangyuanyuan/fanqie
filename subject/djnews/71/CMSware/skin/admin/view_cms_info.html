@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+<HEAD>
+<title>{lang:chakanxinxi}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]" />
+<meta name="robots" content="noindex">		
+<link rel='stylesheet' type='text/css' href='../html/style.css' />
+<STYLE type=text/css>
+TD {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: "MS Shell Dlg"
+}
+.tab {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 12px; PADDING-BOTTOM: 1px; CURSOR: hand; PADDING-TOP: 5px; LETTER-SPACING: 1px
+}
+</STYLE>
+<SCRIPT language=JavaScript>
+
+function tabClick(idx) 
+{
+
+  
+	for (i = 0; i < 4; i++) {
+    
+
+		if (i == idx) {
+
+			var tabImgLeft = eval("document.all.tabImgLeft__" + idx);
+
+			var tabImgRight = eval("document.all.tabImgRight__" + idx);
+      
+			var tabLabel = eval("document.all.tabLabel__" + idx);
+      
+			var tabContent = eval("document.all.tabContent__" + idx);
+
+      
+			tabImgLeft.src = "../html/images/mpc/tab_active_left.gif";
+      
+			tabImgRight.src = "../html/images/mpc/tab_active_right.gif";
+      
+			tabLabel.background = "../html/images/mpc/tab_active_bg.gif";
+      
+			tabContent.style.visibility = "visible";
+      
+			tabContent.style.display = "block";
+     
+		}
+  else {
+			var tabImgLeft = eval("document.all.tabImgLeft__" + i);
+		
+			var tabImgRight = eval("document.all.tabImgRight__" + i);
+		
+			var tabLabel = eval("document.all.tabLabel__" + i);
+		
+			var tabContent = eval("document.all.tabContent__" + i);
+
+		
+			tabImgLeft.src = "../html/images/mpc/tab_unactive_left.gif";
+		
+			tabImgRight.src = "../html/images/mpc/tab_unactive_right.gif";
+		
+			tabLabel.background = "../html/images/mpc/tab_unactive_bg.gif";
+		
+			tabContent.style.visibility = "hidden";
+		
+			tabContent.style.display = "none";
+  
+		
+		}  
+
+	}
+
+
+}
+</script>
+<style type="text/css">
+<!--
+.bigborder {
+	border-top: 0px #FFFFFF;
+	border-right: 1px outset #999999;
+	border-bottom: 1px outset #999999;
+	border-left: 1px solid #FFFFFF;
+}
+-->
+</style>
+
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+
+<TBODY>
+  <TR>
+    <TD style="PADDING-LEFT: 2px; HEIGHT: 22px" 
+    background="../html/images/mpc/tab_top_bg.gif">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE height=22 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD width=3><IMG id=tabImgLeft__0 height=22 
+                  src="../html/images/mpc/tab_active_left.gif" 
+                  width=3></TD>
+                <TD class=tab id=tabLabel__0 onclick=tabClick(0) 
+                background="../html/images/mpc/tab_active_bg.gif" 
+                UNSELECTABLE="on" title="{lang::global:yes}ÄÚÈÝ"><label>{lang:jiedian}ID</label></TD>
+                <TD width=3><IMG id=tabImgRight__0 height=22 
+                  src="../html/images/mpc/tab_active_right.gif" 
+                  width=3></TD></TR></TBODY></TABLE></TD>
+          <TD>
+            <TABLE height=22 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD width=3><IMG id=tabImgLeft__1 height=22 
+                  src="../html/images/mpc/tab_unactive_left.gif" 
+                  width=3></TD>
+                <TD class=tab id=tabLabel__1 onclick=tabClick(1) 
+                background="../html/images/mpc/tab_unactive_bg.gif" 
+                UNSELECTABLE="on"><label>{lang:neirongmoxing}</label></TD>
+                <TD width=3><IMG id=tabImgRight__1 height=22 
+                  src="../html/images/mpc/tab_unactive_right.gif" 
+                  width=3></TD></TR></TBODY></TABLE></TD>
+           
+				  
+ 	  <TD>
+            <TABLE height=22 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD width=3><IMG id=tabImgLeft__2 height=22 
+                  src="../html/images/mpc/tab_unactive_left.gif" 
+                  width=3></TD>
+                <TD class=tab id=tabLabel__2 onclick=tabClick(2) 
+                background="../html/images/mpc/tab_unactive_bg.gif" 
+                UNSELECTABLE="on"><label>{lang:mobanbianliang}</label></TD>
+                <TD width=3><IMG id=tabImgRight__2 height=22 
+                  src="../html/images/mpc/tab_unactive_right.gif" 
+                  width=3></TD></TR></TBODY></TABLE></TD>
+           
+				  	  
+				  
+		<TD> 
+            <TABLE height=22 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD width=3><IMG id=tabImgLeft__3 height=22 
+                  src="../html/images/mpc/tab_unactive_left.gif" 
+                  width=3></TD>
+                <TD class=tab id=tabLabel__3 onclick=tabClick(3)  background="../html/images/mpc/tab_unactive_bg.gif" UNSELECTABLE="on" TITLE="{lang:display_setting_help}">{lang:fabudian}</TD>
+                <TD width=3><IMG id=tabImgRight__3 height=22 
+                  src="../html/images/mpc/tab_unactive_right.gif" 
+                  width=3></TD></TR></TBODY></TABLE></TD>
+				  
+				  
+				  </TR></TBODY></TABLE></TD>					  
+				  </TR>
+  <TR>
+    <TD bgcolor=menu>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD 
+          style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; " 
+          vAlign=top class="bigborder" >
+		  
+<!--1-->
+<DIV id=tabContent__0 style="DISPLAY: block; VISIBILITY: visible">
+
+  <table border="0" cellspacing="1" cellpadding="3" width="100%"  align=center class="table_border">
+   
+    <tr > 
+      <td width="50" align="center" class="table_td1">NodeID</td>
+      <td width="50" align="center" class="table_td1">{lang:weiyibiaoshi}</td>
+      <td   align="center" class="table_td1">{lang:jiedianmingcheng}</td>
+      <td   align="center" class="table_td1">{lang:leixing}</td>
+       <td   align="center" class="table_td1">{lang:fabumoshi}</td>
+      <td   align="center" class="table_td1">TableID</td>
+     <td  align="center" class="table_td1"> {lang:caozuo}</td>
+    </tr>
+   <loop $NODE_LIST var=var>
+
+   <tr class="table_td1" onmouseover='this.style.backgroundColor="#FFFFFF"'  onmouseout='this.style.backgroundColor=""' > 
+      <td   align="center"  >[$var.NodeID]</td>
+      <td     >[$var.NodeGUID]</td>
+      <td     >
+	  <if test="empty($var.ParentID)">
+	  &nbsp;&nbsp;[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)]  - &nbsp;<B>[$var.Name]</B>
+	  <else>
+	  &nbsp;&nbsp;[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)]  - &nbsp;[$var.Name]
+	  </if>
+	  
+	  </td>
+      <td   align="center"  >
+	  	  <if test="$var.NodeType == 1">
+	  {lang:shi}
+	  <elseif test="$var.NodeType == 2">
+	  {lang:xu}
+	  <elseif test="$var.NodeType == 3">
+	  {lang:yingyong}
+ 	  </if>
+ </td>
+      <td   align="center"  >
+	  <if test="$var.PublishMode == 0">
+	  {lang:bufabu}
+	  <elseif test="$var.PublishMode == 1">
+	  {lang:jingtai}
+	  <elseif test="$var.PublishMode == 2">
+	  {lang:dongtai}
+ 	  </if>
+	  </td>
+      <td   align="center"  >[$var.TableID]</td>
+      <td  align="center"  > <A HREF="admin_extrapublish.php?sId=[$sId]&o=viewIndex&NodeID=[$var.NodeID]" target="_blank">{lang:liulan}</A></td>
+    </tr>
+
+ 
+
+ </loop>
+     
+  </table>
+
+
+
+
+ 
+</DIV>
+
+
+
+
+
+<!--1-->
+<DIV id=tabContent__1 style="DISPLAY: none; VISIBILITY: hidden">
+  <table border="0" cellspacing="1" cellpadding="3" width="100%"  align=center class="table_border">
+   
+    <tr > 
+      <td width="50" align="center" class="table_td1">TableID</td>
+      <td   align="center" class="table_td1">{lang:neirongmoxingmingchen}</td>
+     </tr>
+   <loop $tableInfo var=var>
+
+   <tr class="table_td1" onmouseover='this.style.backgroundColor="#FFFFFF"'  onmouseout='this.style.backgroundColor=""' > 
+      <td   align="center"  >[$var.TableID]</td>
+       <td   align="center"  >[$var.Name]</td>
+     </tr>
+
+ 
+
+ </loop>
+    
+  </table>
+ 
+</DIV>
+
+<!--2-->
+<DIV id=tabContent__2 style="DISPLAY: none; VISIBILITY: hidden">
+  <table border="0" cellspacing="1" cellpadding="3" width="100%"  align=center class="table_border">
+   
+    <tr > 
+      <td width="50" align="center" class="table_td1">{lang:bianliangming}</td>
+      <td   align="center" class="table_td1">{lang:bianliangshuoming}</td>
+      <td   align="center" class="table_td1">{lang:quanjubianliang}</td>
+     </tr>
+   <loop $tplVars var=var>
+
+   <tr class="table_td1" onmouseover='this.style.backgroundColor="#FFFFFF"'  onmouseout='this.style.backgroundColor=""' > 
+      <td ><span onclick="prompt('[$var.VarTitle]','$[$var.VarName]');" style="cursor:hand" >$[$var.VarName]</a></td>
+       <td>[$var.VarTitle]</td>
+       <td align="center">
+<if test="$var.IsGlobal == 1" >
+	{lang::global:yes}
+	<else>
+	-
+	</if>
+</td>
+     </tr>
+
+ 
+
+ </loop>
+    
+  </table>
+ 
+</DIV>
+
+<DIV id=tabContent__3 style="DISPLAY: none; VISIBILITY: hidden">
+
+  <table border="0" cellspacing="1" cellpadding="3" width="100%"  align=center class="table_border">
+   
+    <tr > 
+      <td width="50" align="center" class="table_td1">PSNID</td>
+      <td   align="center" class="table_td1">PSN{lang:mingchen}</td>
+      <td   align="center" class="table_td1">{lang:fabuleixing}</td>
+      <td   align="center" class="table_td1">PSN-URL</td>
+     </tr>
+   <loop $psnInfo var=var>
+
+   <tr class="table_td1" onmouseover='this.style.backgroundColor="#FFFFFF"'  onmouseout='this.style.backgroundColor=""' > 
+      <td   align="center"  >[$var.PSNID]</td>
+       <td   align="center"  >[$var.Name]</td>
+
+       <td   align="center"  > 
+
+	   	  <if test="$var.publish_type == 'ftp'">
+	   {lang:yuancheng}
+	  <else>
+	 {lang:bendi}
+ 	  </if>
+</td>
+
+       <td   align="center"  >[$var.URL]</td>
+
+     </tr>
+
+ 
+
+ </loop>
+    
+  </table>
+
+</DIV>
+ </TD>
+       </TR></TBODY></TABLE></TD></TR>
+ </TBODY></TABLE>
+ 
+ 		
+</BODY>
+<include: file="footer.html">

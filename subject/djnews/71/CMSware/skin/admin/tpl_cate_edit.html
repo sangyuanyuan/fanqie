@@ -1,0 +1,248 @@
+<include: file="header.html">
+<script type="text/javascript" language="javascript">
+function prepareSubmit(){
+		select_submit('clientform', 'TargetReadG', 'data_ReadG');
+		select_submit('clientform', 'TargetWriteG', 'data_WriteG');
+		select_submit('clientform', 'TargetReadU', 'data_ReadU');
+		select_submit('clientform', 'TargetWriteU', 'data_WriteU');
+		select_submit('clientform', 'TargetManageG', 'data_ManageG');
+		select_submit('clientform', 'TargetManageU', 'data_ManageU');
+		return true;
+}
+
+function setInherit(mode)
+{
+	switch(mode) {
+		case 0 :
+			Layer_Inherit.style.display = 'none';
+			break;
+		case 1 : 
+ 			Layer_Inherit.style.display = '';
+			break;
+	}
+}
+
+</script>
+
+   
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+<form name='clientform' id=clientform method='post' action='[$base_url]o=edit_submit&TCID=[$CateInfo.TCID]' >
+     <tr> 
+      <td colspan="2" class="table_header">{lang:tpl_cate_add} </td>
+    </tr>
+	<if test="empty($ParentTCID)">
+  <tr> 
+      <td class="table_td1">{lang:parent_cate_name} :</td>
+      <td class="table_td2"> [$ParentCateName]
+	  
+	  </td>
+    </tr>
+	</if>
+    <tr> 
+      <td class="table_td1" width="200">{lang:cate_name} :</td>
+      <td class="table_td2"><input name='data_CateName' type='text' class='flat' id="data_CateName" tabindex='8'  value="[$CateInfo.CateName]" size='25'  >
+ 	  </td>
+    </tr>
+	<tr> 
+      <td class="table_td1">{lang:cate_creator} :</td>
+      <td class="table_td2">[@userAdmin::getInfo($CateInfo.CreationUserID,'uName')]
+	  
+	  </td>
+    </tr>
+      <tr> 
+      <td colspan="2" class="table_header">{lang:PermissionSetting} </td>
+    </tr> 
+	    <tr> 
+      <td class="table_td1">{lang:inherit}:</td>
+      <td class="table_td2"> 
+  
+	  <TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+					<if test="$CateInfo.Inherit">
+                  <input type="radio" name="data_Inherit" value="1" id="data_Inherit1" checked onclick="setInherit(0);">
+                  <label for="data_Inherit1"  >{lang::global:yes}</label>
+                  <input name="data_Inherit" type="radio" value="0"  id="data_Inherit2" onclick="setInherit(1);">
+                  <label for="data_Inherit2"  >{lang::global:no}</label>
+					<else>
+                  <input type="radio" name="data_Inherit" value="1" id="data_Inherit1"  onclick="setInherit(0);">
+                  <label for="data_Inherit1"  >{lang::global:yes}</label>
+                  <input name="data_Inherit" type="radio" value="0"  id="data_Inherit2" checked onclick="setInherit(1);">
+                  <label for="data_Inherit2"  >{lang::global:no}</label>
+					</if>
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE>
+	   </td>
+    </tr>
+<if test="$CateInfo.Inherit">
+<tbody id="Layer_Inherit" style="display:none">
+<else>
+<tbody id="Layer_Inherit" >
+</if>
+<!--{{{ ReadG -->
+    <tr> 
+      <td class="table_td1">{lang:ReadG}:</td>
+      <td class="table_td2"> 
+<table> 
+<tr> 
+<td>{lang:src_group}<br><select name="SrcReadG"  onDblClick="select_move_to(this.form, 'SrcReadG', 'TargetReadG')" size="10" style="width:100px;">
+          <loop name="SrcReadG" var="var"> 
+          <option value="[$var.gId]">[$var.gName]</option>
+          </loop> </select></td> 
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcReadG', 'TargetReadG')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetReadG', 'SrcReadG')"><br><br><input type="button" value="{lang:select_all}" onClick="select_move_all_to(this.form, 'SrcReadG', 'TargetReadG')"><br><input type="button" value="{lang:del_all}" onClick="select_move_all_to(this.form, 'TargetReadG', 'SrcReadG')"></td> 
+<td>{lang:select_group}<br><select name="TargetReadG" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetReadG', 'SrcReadG')">
+<loop name="TargetReadG" var="var"> 
+          <option value="[$var.gId]">[$var.gName]</option>
+          </loop> 
+</select></td> 
+</tr> 
+</table> 
+	  
+	  
+	   </td>
+    </tr>
+<!-- ReadG }}}-->
+    
+<!--{{{ WriteG -->
+    <tr> 
+      <td class="table_td1">{lang:WriteG}:</td>
+      <td class="table_td2"> 
+<table> 
+<tr> 
+<td>{lang:src_group}<br><select name="SrcWriteG"  onDblClick="select_move_to(this.form, 'SrcWriteG', 'TargetWriteG')" size="10" style="width:100px;">
+          <loop name="SrcWriteG" var="var"> 
+          <option value="[$var.gId]">[$var.gName]</option>
+          </loop> </select></td> 
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcWriteG', 'TargetWriteG')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetWriteG', 'SrcWriteG')"><br><br><input type="button" value="{lang:select_all}" onClick="select_move_all_to(this.form, 'SrcWriteG', 'TargetWriteG')"><br><input type="button" value="{lang:del_all}" onClick="select_move_all_to(this.form, 'TargetWriteG', 'SrcWriteG')"></td> 
+<td>{lang:select_group}<br><select name="TargetWriteG" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetWriteG', 'SrcWriteG')">
+<loop name="TargetWriteG" var="var"> 
+          <option value="[$var.gId]">[$var.gName]</option>
+          </loop> 
+
+</select></td> 
+</tr> 
+</table> 
+	  
+	  
+	   </td>
+    </tr>
+<!-- WriteG }}}-->
+<!--{{{ ManageG -->
+    <tr> 
+      <td class="table_td1">{lang:mode_ManageG}:</td>
+      <td class="table_td2"> 
+<table> 
+<tr> 
+<td>{lang:src_group}<br><select name="SrcManageG"  onDblClick="select_move_to(this.form, 'SrcManageG', 'TargetManageG')" size="10" style="width:100px;">
+          <loop name="SrcManageG" var="var"> 
+          <option value="[$var.gId]">[$var.gName]</option>
+          </loop> </select></td> 
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcManageG', 'TargetManageG')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetManageG', 'SrcManageG')"><br><br><input type="button" value="{lang:select_all}" onClick="select_move_all_to(this.form, 'SrcManageG', 'TargetManageG')"><br><input type="button" value="{lang:del_all}" onClick="select_move_all_to(this.form, 'TargetManageG', 'SrcManageG')"></td> 
+<td>{lang:select_group}<br><select name="TargetManageG" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetManageG', 'SrcManageG')">
+<loop name="TargetManageG" var="var"> 
+          <option value="[$var.gId]">[$var.gName]</option>
+          </loop> 
+
+</select></td> 
+</tr> 
+</table> 
+	  
+	  
+	   </td>
+    </tr>
+<!-- ManageG }}}-->
+
+
+
+<!--{{{ ReadU -->
+    <tr> 
+      <td class="table_td1">{lang:ReadU}:</td>
+      <td class="table_td2"> 
+<table> 
+<tr> 
+<td>{lang:src_user}<br><select name="SrcReadU"  onDblClick="select_move_to(this.form, 'SrcReadU', 'TargetReadU')" size="10" style="width:100px;">
+          <loop name="SrcReadU" var="var"> 
+          <option value="[$var.uId]">[$var.uName]</option>
+          </loop> </select></td> 
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcReadU', 'TargetReadU')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetReadU', 'SrcReadU')"><br><br><input type="button" value="{lang:select_all}" onClick="select_move_all_to(this.form, 'SrcReadU', 'TargetReadU')"><br><input type="button" value="{lang:del_all}" onClick="select_move_all_to(this.form, 'TargetReadU', 'SrcReadU')"></td> 
+<td>{lang:select_user}<br><select name="TargetReadU" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetReadU', 'SrcReadU')">
+<loop name="TargetReadU" var="var"> 
+          <option value="[$var.uId]">[$var.uName]</option>
+          </loop> 
+
+</select></td> 
+</tr> 
+</table> 
+	  
+	  
+	   </td>
+    </tr>
+<!-- ReadU }}}-->
+
+<!--{{{ WriteU -->
+    <tr> 
+      <td class="table_td1">{lang:WriteU}:</td>
+      <td class="table_td2"> 
+<table> 
+<tr> 
+<td>{lang:src_user}<br><select name="SrcWriteU"  onDblClick="select_move_to(this.form, 'SrcWriteU', 'TargetWriteU')" size="10" style="width:100px;">
+          <loop name="SrcWriteU" var="var"> 
+          <option value="[$var.uId]">[$var.uName]</option>
+          </loop> </select></td> 
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcWriteU', 'TargetWriteU')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetWriteU', 'SrcWriteU')"><br><br><input type="button" value="{lang:select_all}" onClick="select_move_all_to(this.form, 'SrcWriteU', 'TargetWriteU')"><br><input type="button" value="{lang:del_all}" onClick="select_move_all_to(this.form, 'TargetWriteU', 'SrcWriteU')"></td> 
+<td>{lang:select_user}<br><select name="TargetWriteU" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetWriteU', 'SrcWriteU')">
+<loop name="TargetWriteU" var="var"> 
+          <option value="[$var.uId]">[$var.uName]</option>
+          </loop> 
+
+</select></td> 
+</tr> 
+</table> 
+	  
+	  
+	   </td>
+    </tr>
+<!-- WriteU }}}-->
+
+
+
+
+<!--{{{ ManageU -->
+    <tr> 
+      <td class="table_td1">{lang:mode_ManageU}:</td>
+      <td class="table_td2"> 
+<table> 
+<tr> 
+<td>{lang:src_user}<br><select name="SrcManageU"  onDblClick="select_move_to(this.form, 'SrcManageU', 'TargetManageU')" size="10" style="width:100px;">
+          <loop name="SrcManageU" var="var"> 
+          <option value="[$var.uId]">[$var.uName]</option>
+          </loop> </select></td> 
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcManageU', 'TargetManageU')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetManageU', 'SrcManageU')"><br><br><input type="button" value="{lang:select_all}" onClick="select_move_all_to(this.form, 'SrcManageU', 'TargetManageU')"><br><input type="button" value="{lang:del_all}" onClick="select_move_all_to(this.form, 'TargetManageU', 'SrcManageU')"></td> 
+<td>{lang:select_user}<br><select name="TargetManageU" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetManageU', 'SrcManageU')">
+<loop name="TargetManageU" var="var"> 
+          <option value="[$var.uId]">[$var.uName]</option>
+          </loop> 
+
+</select></td> 
+</tr> 
+</table> 
+	  
+	  
+	   </td>
+    </tr>
+<!-- ManageU }}}-->
+
+
+
+</tbody>    
+
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13' onClick="return prepareSubmit();"> <INPUT TYPE="hidden" name="data_ReadG"> <INPUT TYPE="hidden" name="data_WriteG"> <INPUT TYPE="hidden" name="data_ReadU"><INPUT TYPE="hidden" name="data_WriteU"> <INPUT TYPE="hidden" name="data_ManageG"><INPUT TYPE="hidden" name="data_ManageU"><INPUT TYPE="hidden" name="referer" value="[$referer]"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+
+<include: file="footer.html">

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="gb2312"?><ContentTable>
+<version>1.1</version>
+<Name>图片系统模型</Name>
+<TableID>6</TableID>
+<Fields>
+
+	<Field>
+		<FieldTitle>图片名称</FieldTitle>
+		<FieldName>PhotoName</FieldName>
+		<FieldType>varchar</FieldType>
+		<FieldSize>250</FieldSize>
+		<FieldInput>text</FieldInput>
+		<FieldDefaultValue></FieldDefaultValue>
+		<FieldInputFilter></FieldInputFilter>
+		<FieldInputPicker></FieldInputPicker>
+		<FieldInputTpl></FieldInputTpl> 
+		<FieldDescription></FieldDescription>
+		<FieldOrder>0</FieldOrder>
+		<FieldListDisplay>1</FieldListDisplay>
+		<IsMainField>0</IsMainField>
+		<IsTitleField>1</IsTitleField>
+		<FieldSearchable>0</FieldSearchable>
+		<EnableContribution>1</EnableContribution>
+		<EnableCollection>1</EnableCollection>
+		<EnablePublish>1</EnablePublish> 
+	</Field>
+
+	<Field>
+		<FieldTitle>图片地址</FieldTitle>
+		<FieldName>PhotoURL</FieldName>
+		<FieldType>varchar</FieldType>
+		<FieldSize>250</FieldSize>
+		<FieldInput>text</FieldInput>
+		<FieldDefaultValue></FieldDefaultValue>
+		<FieldInputFilter></FieldInputFilter>
+		<FieldInputPicker>upload</FieldInputPicker>
+		<FieldInputTpl></FieldInputTpl> 
+		<FieldDescription></FieldDescription>
+		<FieldOrder>0</FieldOrder>
+		<FieldListDisplay>0</FieldListDisplay>
+		<IsMainField>0</IsMainField>
+		<IsTitleField>0</IsTitleField>
+		<FieldSearchable>0</FieldSearchable>
+		<EnableContribution>1</EnableContribution>
+		<EnableCollection>1</EnableCollection>
+		<EnablePublish>1</EnablePublish> 
+	</Field>
+
+	<Field>
+		<FieldTitle>图片简介</FieldTitle>
+		<FieldName>PhotoIntro</FieldName>
+		<FieldType>text</FieldType>
+		<FieldSize></FieldSize>
+		<FieldInput>RichEditor</FieldInput>
+		<FieldDefaultValue></FieldDefaultValue>
+		<FieldInputFilter></FieldInputFilter>
+		<FieldInputPicker></FieldInputPicker>
+		<FieldInputTpl></FieldInputTpl> 
+		<FieldDescription></FieldDescription>
+		<FieldOrder>0</FieldOrder>
+		<FieldListDisplay>0</FieldListDisplay>
+		<IsMainField>0</IsMainField>
+		<IsTitleField>0</IsTitleField>
+		<FieldSearchable>0</FieldSearchable>
+		<EnableContribution>1</EnableContribution>
+		<EnableCollection>1</EnableCollection>
+		<EnablePublish>1</EnablePublish> 
+	</Field>
+
+</Fields>
+</ContentTable>
+<!-- Published at 2006-11-25 16:56:12, Powered by CMSware 2.6.2 Plus -->

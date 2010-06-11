@@ -1,0 +1,169 @@
+<include: file="header.html">
+
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form action='[$base_url]o=edittable_submit&TableID=[*IN.TableID]' method='post' enctype="multipart/form-data" name='clientform' id=clientform >
+    <tr> 
+      <td colspan="13" class="table_header">{lang:topic} </td>
+    </tr>
+	 <tr > 
+      <td class="table_td1"  >{lang:content_model_name}</td>
+      <td class="table_td2" colspan="12"><input name="tName" type="text"  value="[$tableInfo.Name]" id="[$key]" >
+  </td>
+    </tr>
+	 
+ 
+    <tr align="center"> 
+      <td class="table_header">{lang:field_title}</td>
+     <td class="table_header">{lang:field_name}</td>
+      <td class="table_header">{lang:field_type}</td>
+     <!-- <td class="table_header">{lang:field_input}</td>-->
+          <td class="table_header">{lang:is_title_field}</td>
+        <td class="table_header">{lang:is_main_field}</td>
+       <td class="table_header">{lang:field_list_display}</td>
+       <td class="table_header">{lang:field_searchable}</td>
+        <td class="table_header">{lang:field_EnableContribution}</td>
+        <td class="table_header">{lang:field_EnableCollection}</td>
+        <td class="table_header">{lang:field_EnablePublish}</td>
+      <td class="table_header" colspan="3">{lang::global:execute_op}</td>
+    </tr>
+
+	<loop $tableFieldsInfo key=key var=var>
+	 <tr > 
+      <td class="table_td2">[$var.FieldTitle]</td>
+      <td class="table_td2">[$var.FieldName]</td>
+       <td class="table_td2">[$var.FieldType]
+	  <if $var.FieldSize != ''>
+	  ([$var.FieldSize])
+	  </if>
+	  </td>
+      <!-- <td class="table_td2">[$var.FieldInput]</td>-->
+
+ <td class="table_td2" align=center>
+	  <if $var.IsTitleField == '1'>
+	 
+	  
+	  <FONT size=1 COLOR=#009900>{lang::global:icon_right}</FONT>
+	  <else>
+	 
+	   <A HREF="[$base_url]o=fieldSetTitle&TableID=[*IN.TableID]&ContentFieldID=[$var.ContentFieldID]">
+	  <FONT  COLOR=#FF0000>{lang::global:icon_error}</FONT></a>
+	  </if>
+
+	</td>
+
+
+	   <td class="table_td2" align=center>
+	  <if $var.IsMainField == '1'>
+	 
+	  
+	  <FONT size=1 COLOR=#009900>{lang::global:icon_right}</FONT>
+	  <else>
+	 
+	   <A HREF="[$base_url]o=field_setmain&TableID=[*IN.TableID]&ContentFieldID=[$var.ContentFieldID]">
+	  <FONT  COLOR=#FF0000>{lang::global:icon_error}</FONT></a>
+	  </if>
+
+	</td>
+      <td class="table_td2" align=center width=60>
+	  <if $var.FieldListDisplay == '1'>
+ <INPUT TYPE="checkbox" NAME="EnableFieldListDisplay[]" value="[$var.ContentFieldID]" checked>
+ <else>
+ <INPUT TYPE="checkbox" NAME="EnableFieldListDisplay[]" value="[$var.ContentFieldID]"  >
+	  </if>
+	  </td>
+
+	   <td class="table_td2" align=center>
+	  <if $var.FieldSearchable == '1'>
+	 
+	  
+ <INPUT TYPE="checkbox" NAME="EnableFieldSearch[]" value="[$var.ContentFieldID]" checked>
+ <else>
+ <INPUT TYPE="checkbox" NAME="EnableFieldSearch[]" value="[$var.ContentFieldID]"  >
+	  </if>
+
+	</td>
+	 
+	   <td class="table_td2" align=center>
+<if test="$var.EnableContribution == 1">
+ <INPUT TYPE="checkbox" NAME="EnableContribution[]" value="[$var.ContentFieldID]" checked>
+ <else>
+ <INPUT TYPE="checkbox" NAME="EnableContribution[]" value="[$var.ContentFieldID]"  >
+ </if>
+	</td>
+ <td class="table_td2" align=center>
+	  
+<if test="$var.EnableCollection == 1">
+ <INPUT TYPE="checkbox" NAME="EnableCollection[]" value="[$var.ContentFieldID]" checked>
+ <else>
+ <INPUT TYPE="checkbox" NAME="EnableCollection[]" value="[$var.ContentFieldID]"  >
+ </if>
+	</td> <td class="table_td2" align=center>
+	  
+<if test="$var.EnablePublish == 1">
+ <INPUT TYPE="checkbox" NAME="EnablePublish[]" value="[$var.ContentFieldID]" checked>
+ <else>
+ <INPUT TYPE="checkbox" NAME="EnablePublish[]" value="[$var.ContentFieldID]"  >
+ </if>
+ </td>	
+
+      <td class="table_td2" width=50 align="center"><A HREF="[$base_url]o=editfield&TableID=[*IN.TableID]&ContentFieldID=[$var.ContentFieldID]">{lang::global:edit}</A></td>
+      <td class="table_td2" width=50 align="center"><A HREF="[$base_url]o=delfield&TableID=[*IN.TableID]&ContentFieldID=[$var.ContentFieldID]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</A></td>
+  <!--<td class="table_td2" width=50 align="center">
+  <if  (( $var.FieldType == 'longtext' ) || ( $var.FieldType == 'mediumtext')  || ( $var.FieldType == 'text' )) && ( $var.IsIndex == 1)>
+  <A HREF="[$base_url]o=delFieldIndex&TableID=[*IN.TableID]&ContentFieldID=[$var.ContentFieldID]" >{lang:drop_fulltext} </A>
+  <elseif $var.IsIndex == 1>
+   <A HREF="[$base_url]o=delFieldIndex&TableID=[*IN.TableID]&ContentFieldID=[$var.ContentFieldID]" >{lang:drop_index}</A>
+  <elseif ( $var.FieldType == 'longtext' ) || ( $var.FieldType == 'mediumtext')  || ( $var.FieldType == 'text' ) >
+   <A HREF="[$base_url]o=indexField&TableID=[*IN.TableID]&ContentFieldID=[$var.ContentFieldID]" >{lang:fulltext}</A>
+  <else>
+   <A HREF="[$base_url]o=indexField&TableID=[*IN.TableID]&ContentFieldID=[$var.ContentFieldID]" >{lang:index}</A>
+  </if>
+ </td>	-->
+</td>
+   </tr>
+
+	</loop>
+  </table>
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center >
+ <tr > <td> <input type='submit' name='submit' value=' {lang::global:modify} ' tabindex='13'  > 
+  
+ </td><td align=right><input type="button" name="Submit" value="{lang:new_field}" onclick="doing('newfield')">
+ 
+   <input type="button" name="Submit1" value="{lang:sort_field}" onclick="doing('orderfield')">
+ </td></tr>
+</form>
+  </table>
+
+<script language='JavaScript'>
+function check(form,id) 
+{
+	eval("var ischecked = " + form + "." + id + ".checked");
+
+	if(ischecked) {
+		eval( form + "." + id + "_hidden.value = '1'");
+	} else {
+		eval( form + "." + id + "_hidden.value = '0'");
+
+	}
+
+}
+function doing(action)
+{
+	switch(action) {
+		case 'orderfield':
+			var arr = showMeDialog("[$base_url]o=orderfield&TableID=[*IN.TableID]" ,"color","dialogWidth:250px;dialogHeight:266px;help:0;status:0;scroll:no");
+			if(arr != '') {
+				window.location = window.location;
+			
+			}
+			break;
+		case 'newfield':
+			window.location='[$base_url]o=addfield&TableID=[*IN.TableID]'
+			break;
+
+	}
+}
+</script> 		
+</BODY>
+<include: file="footer.html">

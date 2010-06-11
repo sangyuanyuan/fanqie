@@ -1,0 +1,349 @@
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@header.html");?>
+
+
+<script language="JavaScript">
+function psnSelect(psn,form, psn_element,url_element) {
+//showMeDialog
+var arr = showMeDialog("admin_select.php?sId=<?php echo $this->_tpl_vars["sId"];?>&o=psn&psn=" + psn,"color","dialogWidth:428px;dialogHeight:266px;help:0;status:0;scroll:no");
+if(arr != null) {
+	var PSN = '{PSN:'+ arr;
+	var URL = '{PSN-URL:'+ arr;
+	with(form){
+
+	eval(psn_element + ".value= '" + PSN + "'")
+	eval(url_element + ".value= '" + URL + "'")
+
+	}
+
+
+}
+
+}
+</script>
+
+<TABLE width="95%" border=0 align=center cellSpacing=0 cellPadding=0  >
+  <form name="add_cate" method="post" action="<?php echo $this->_tpl_vars["base_url"];?>o=edit_submit">
+    <TBODY>
+<TR>
+        <TD vAlign=top align=middle >
+		<TABLE cellspacing="1" cellpadding="4" width="100%"  border=0 class="table_border">
+            <TBODY>
+              <TR class="table_header" > 
+                <TD height=25 colSpan=2 id=id2 ><strong><?php echo $_LANG_SKIN['setting'];?></strong></TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2 width="200"> <?php echo $_LANG_SKIN['install_url'];?>:</TD>
+                <TD  id=id2> <input name="admin_sysname" type="text" class="button" id="admin_sysname" value="<?php echo $this->_tpl_vars["sInfo"]["sysname"];?>" size="40"> 
+                  </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2> <?php echo $_LANG_SKIN['template_path'];?>:</TD>
+                <TD  id=id2> <input name="admin_templatepath" type="text" class="button" id="admin_templatepath" value="<?php echo $this->_tpl_vars["sInfo"]["templatePath"];?>" size="30"> 
+                </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['backup_path'];?>:</TD>
+                <TD  id=id2><input name="admin_backup" type="text" class="button" id="admin_backup" value="<?php echo $this->_tpl_vars["sInfo"]["backupPath"];?>" size="30"> 
+                 </TD>
+              </TR>
+
+      <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['DefaultResourcePSN'];?>:</TD>
+                <TD  id=id2> <INPUT name="DefaultResourcePSN" id="DefaultResourcePSN" size=50  class='flat'  value="<?php echo $this->_tpl_vars["sInfo"]["DefaultResourcePSN"];?>">
+        <input name="button5" type='button' tabindex='13' value='...' onclick="psnSelect('<?php echo $this->_tpl_vars["sInfo"]["DefaultResourcePSN"];?>',this.form,'DefaultResourcePSN','DefaultResourcePSNURL')">
+                 </TD>
+              </TR>
+      <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['DefaultResourcePSNURL'];?>:</TD>
+                <TD  id=id2> <INPUT name="DefaultResourcePSNURL" id="DefaultResourcePSNURL" size=50  class='flat'  value="<?php echo $this->_tpl_vars["sInfo"]["DefaultResourcePSNURL"];?>">
+                  </TD>
+              </TR>
+
+			 
+      <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['DefaultContentPSN'];?>:</TD>
+                <TD  id=id2> <INPUT name="DefaultContentPSN" id="DefaultContentPSN" size=50  class='flat'  value="<?php echo $this->_tpl_vars["sInfo"]["DefaultContentPSN"];?>">
+        <input name="button5" type='button' tabindex='13' value='...' onclick="psnSelect('<?php echo $this->_tpl_vars["sInfo"]["DefaultContentPSN"];?>',this.form,'DefaultContentPSN','DefaultContentPSNURL')">
+                 </TD>
+              </TR>
+      <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['DefaultContentPSNURL'];?>:</TD>
+                <TD  id=id2> <INPUT name="DefaultContentPSNURL" id="DefaultContentPSNURL" size=50  class='flat'  value="<?php echo $this->_tpl_vars["sInfo"]["DefaultContentPSNURL"];?>">
+                  </TD>
+              </TR>
+
+
+
+   <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['DialogFitXP'];?>:</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+					   
+		         <?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["DialogFitXP"]}";
+ $select_value = 'DialogFitXP'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="DialogFitXP" value="1" id="DialogFitXP0" <?php echo $DialogFitXP1 ;?>><label for="DialogFitXP0"  ><?php echo $_LANG_SKIN_GLOBAL['yes'];?></label>&nbsp;<input type="radio" name="DialogFitXP" value="0" id="DialogFitXP1" <?php echo $DialogFitXP0 ;?>><label for="DialogFitXP1"  ><?php echo $_LANG_SKIN_GLOBAL['no'];?></label>&nbsp;
+					
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+   <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['AutoRefreshTree'];?>:</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+					   
+		         <?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["AutoRefreshTree"]}";
+ $select_value = 'AutoRefreshTree'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="AutoRefreshTree" value="1" id="AutoRefreshTree0" <?php echo $AutoRefreshTree1 ;?>><label for="AutoRefreshTree0"  ><?php echo $_LANG_SKIN_GLOBAL['yes'];?></label>&nbsp;<input type="radio" name="AutoRefreshTree" value="0" id="AutoRefreshTree1" <?php echo $AutoRefreshTree0 ;?>><label for="AutoRefreshTree1"  ><?php echo $_LANG_SKIN_GLOBAL['no'];?></label>&nbsp;
+					
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+
+
+          <!--
+ <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['enable_gzip'];?>:</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+					   
+		         <?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["enable_gzip"]}";
+ $select_value = 'enable_gzip'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="enable_gzip" value="1" id="enable_gzip0" <?php echo $enable_gzip1 ;?>><label for="enable_gzip0"  ><?php echo $_LANG_SKIN_GLOBAL['yes'];?></label>&nbsp;<input type="radio" name="enable_gzip" value="0" id="enable_gzip1" <?php echo $enable_gzip0 ;?>><label for="enable_gzip1"  ><?php echo $_LANG_SKIN_GLOBAL['no'];?></label>&nbsp;
+					
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+
+-->
+ <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['DisplayNodeID'];?>:</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+					 
+                  <?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["DisplayNodeID"]}";
+ $select_value = 'DisplayNodeID'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="DisplayNodeID" value="1" id="DisplayNodeID0" <?php echo $DisplayNodeID1 ;?>><label for="DisplayNodeID0"  ><?php echo $_LANG_SKIN_GLOBAL['yes'];?></label>&nbsp;<input type="radio" name="DisplayNodeID" value="0" id="DisplayNodeID1" <?php echo $DisplayNodeID0 ;?>><label for="DisplayNodeID1"  ><?php echo $_LANG_SKIN_GLOBAL['no'];?></label>&nbsp;
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+
+			<TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['content_view_mode'];?>:</TD>
+                <TD  id=id2> 
+                  <?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["ContentViewMode"]}";
+ $select_value = 'ContentViewMode'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="ContentViewMode" value="1" id="ContentViewMode0" <?php echo $ContentViewMode1 ;?>><label for="ContentViewMode0"  ><?php echo $_LANG_SKIN['view_mode_src'];?></label>&nbsp;<input type="radio" name="ContentViewMode" value="0" id="ContentViewMode1" <?php echo $ContentViewMode0 ;?>><label for="ContentViewMode1"  ><?php echo $_LANG_SKIN['view_mode_preview'];?></label>&nbsp;
+				</TD>	 
+			</TR>
+			<TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['collection_view_mode'];?>:</TD>
+                <TD  id=id2> 
+                  <?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["CollectionViewMode"]}";
+ $select_value = 'CollectionViewMode'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="CollectionViewMode" value="1" id="CollectionViewMode0" <?php echo $CollectionViewMode1 ;?>><label for="CollectionViewMode0"  ><?php echo $_LANG_SKIN['view_mode_src'];?></label>&nbsp;<input type="radio" name="CollectionViewMode" value="0" id="CollectionViewMode1" <?php echo $CollectionViewMode0 ;?>><label for="CollectionViewMode1"  ><?php echo $_LANG_SKIN['view_mode_preview'];?></label>&nbsp;
+				</TD>	 
+			</TR>
+			<TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['contribution_view_mode'];?>:</TD>
+                <TD  id=id2> 
+                  <?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["ContributionViewMode"]}";
+ $select_value = 'ContributionViewMode'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="ContributionViewMode" value="1" id="ContributionViewMode0" <?php echo $ContributionViewMode1 ;?>><label for="ContributionViewMode0"  ><?php echo $_LANG_SKIN['view_mode_src'];?></label>&nbsp;<input type="radio" name="ContributionViewMode" value="0" id="ContributionViewMode1" <?php echo $ContributionViewMode0 ;?>><label for="ContributionViewMode1"  ><?php echo $_LANG_SKIN['view_mode_preview'];?></label>&nbsp;
+				</TD>	 
+			</TR>
+
+
+
+ <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['DisplayPublishCount'];?>:</TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD>
+ <?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["DisplayPublishCount"]}";
+ $select_value = 'DisplayPublishCount'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="DisplayPublishCount" value="1" id="DisplayPublishCount0" <?php echo $DisplayPublishCount1 ;?>><label for="DisplayPublishCount0"  ><?php echo $_LANG_SKIN_GLOBAL['yes'];?></label>&nbsp;<input type="radio" name="DisplayPublishCount" value="0" id="DisplayPublishCount1" <?php echo $DisplayPublishCount0 ;?>><label for="DisplayPublishCount1"  ><?php echo $_LANG_SKIN_GLOBAL['no'];?></label>&nbsp;
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+
+
+
+
+             <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['content_page'];?>:</TD>
+                <TD  id=id2><input name="ContentPageNum" type="text" class="button" id="ContentPageNum" value="<?php echo $this->_tpl_vars["sInfo"]["ContentPageNum"];?>" size="10"> 
+                 </TD>
+              </TR>
+           <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['search_page'];?>:</TD>
+                <TD  id=id2><input name="SearchPageNum" type="text" class="button" id="SearchPageNum" value="<?php echo $this->_tpl_vars["sInfo"]["SearchPageNum"];?>" size="10">
+                 </TD>
+              </TR>
+           <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['collection_page'];?>:</TD>
+                <TD  id=id2><input name="CollectionPageNum" type="text" class="button" id="CollectionPageNum" value="<?php echo $this->_tpl_vars["sInfo"]["CollectionPageNum"];?>" size="10">
+                 </TD>
+              </TR>
+			 <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['AutoPageLen'];?>:</TD>
+                <TD  id=id2><input name="AutoPageLen" type="text" class="button" id="AutoPageLen" value="<?php echo $this->_tpl_vars["sInfo"]["AutoPageLen"];?>" size="10">
+                 </TD>
+              </TR>
+			 
+            <TR class="table_header" > 
+                <TD height=25 colSpan=2 id=id2 ><strong><?php echo $_LANG_SKIN['safe_setting'];?></strong></TD>
+              </TR>
+                  <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['session_time_out'];?>:</TD>
+                <TD  id=id2><input name="sessionTimeout" type="text" class="button" id="sessionTimeout" value="<?php echo $this->_tpl_vars["sInfo"]["sessionTimeout"];?>" size="10"> 
+                 </TD>
+              </TR>
+
+			                    <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['LoginTryCount'];?>:</TD>
+                <TD  id=id2><input name="LoginTryCount" type="text" class="button" id="LoginTryCount" value="<?php echo $this->_tpl_vars["sInfo"]["LoginTryCount"];?>" size="10"> 
+                 </TD>
+              </TR>
+
+                  <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['LoginTryTime'];?>:</TD>
+                <TD  id=id2><input name="LoginTryTime" type="text" class="button" id="LoginTryTime" value="<?php echo $this->_tpl_vars["sInfo"]["LoginTryTime"];?>" size="10"> 
+                 </TD>
+              </TR>
+
+              <TR class="table_header" > 
+                <TD colspan="2"  id=id2><?php echo $_LANG_SKIN['editor_upload_setting'];?></TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['upload_img_type'];?>:</TD>
+                <TD  id=id2><input name="upImgType" type="text" class="button" id="upImgType" value="<?php echo $this->_tpl_vars["sInfo"]["upImgType"];?>" > 
+                   </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['upload_img_size'];?>:</TD>
+                <TD  id=id2><input name="upImgSize" type="text" class="button" id="upImgSize" value="<?php echo $this->_tpl_vars["sInfo"]["upImgSize"];?>" >
+                  KB  </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['upload_attach_size'];?>:</TD>
+                <TD  id=id2><input name="upAttachSize" type="text" class="button" id="upAttachSize" value="<?php echo $this->_tpl_vars["sInfo"]["upAttachSize"];?>" >
+                  KB  </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['upload_attach_type'];?>:</TD>
+                <TD  id=id2><input name="upAttachType" type="text" class="button" id="upAttachType" value="<?php echo $this->_tpl_vars["sInfo"]["upAttachType"];?>" > 
+                   </TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['upload_flash_size'];?>:</TD>
+                <TD  id=id2><input name="upFlashSize" type="text" class="button" id="upFlashSize" value="<?php echo $this->_tpl_vars["sInfo"]["upFlashSize"];?>" >
+                  KB  </TD>
+              </TR>
+              <TR class="table_header" > 
+                <TD colspan="2"  id=id2><?php echo $_LANG_SKIN['img_localize_setting'];?></TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['img_localize_ignore_url'];?>:</TD>
+                <TD  id=id2><textarea name="localImgIgnoreURL" cols="50" rows="5" class="button" id="localImgIgnoreURL"><?php echo $this->_tpl_vars["sInfo"]["localImgIgnoreURL"];?></textarea><BR>
+                  <?php echo $_LANG_SKIN['img_localize_ignore_url_help'];?></TD>
+              </TR>
+			       
+			      <TR class="table_header" > 
+                <TD colspan="2"  id=id2> <b><?php echo $_LANG_SKIN['watermark_setting'];?></b> </TD>
+              </TR>
+			<TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['enable_watermark'];?>:<BR><?php echo $_LANG_SKIN['enable_watermark_help'];?></TD>
+                <TD  id=id2>
+				<?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["EnableWaterMark"]}";
+ $select_value = 'EnableWaterMark'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="EnableWaterMark" value="1" id="EnableWaterMark0" <?php echo $EnableWaterMark1 ;?>><label for="EnableWaterMark0"  ><?php echo $_LANG_SKIN_GLOBAL['yes'];?></label>&nbsp;<input type="radio" name="EnableWaterMark" value="0" id="EnableWaterMark1" <?php echo $EnableWaterMark0 ;?>><label for="EnableWaterMark1"  ><?php echo $_LANG_SKIN_GLOBAL['no'];?></label>&nbsp;
+                 </TD>   
+              </TR>
+			  <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['enable_collection_watermark'];?>:<BR>(<?php echo $_LANG_SKIN['enable_collection_watermark_help'];?>)</TD>
+                <TD  id=id2>
+				<?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["EnableCLWaterMark"]}";
+ $select_value = 'EnableCLWaterMark'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="EnableCLWaterMark" value="1" id="EnableCLWaterMark0" <?php echo $EnableCLWaterMark1 ;?>><label for="EnableCLWaterMark0"  ><?php echo $_LANG_SKIN_GLOBAL['yes'];?></label>&nbsp;<input type="radio" name="EnableCLWaterMark" value="0" id="EnableCLWaterMark1" <?php echo $EnableCLWaterMark0 ;?>><label for="EnableCLWaterMark1"  ><?php echo $_LANG_SKIN_GLOBAL['no'];?></label>&nbsp;
+                 </TD>   
+              </TR>
+			  <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['enable_editor_watermark'];?>: </TD>
+                <TD  id=id2>
+				<?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["EnableEditorWaterMark"]}";
+ $select_value = 'EnableEditorWaterMark'.$select_value; 
+$$select_value = 'checked';?><input type="radio" name="EnableEditorWaterMark" value="1" id="EnableEditorWaterMark0" <?php echo $EnableEditorWaterMark1 ;?>><label for="EnableEditorWaterMark0"  ><?php echo $_LANG_SKIN_GLOBAL['yes'];?></label>&nbsp;<input type="radio" name="EnableEditorWaterMark" value="0" id="EnableEditorWaterMark1" <?php echo $EnableEditorWaterMark0 ;?>><label for="EnableEditorWaterMark1"  ><?php echo $_LANG_SKIN_GLOBAL['no'];?></label>&nbsp;
+                 </TD>   
+              </TR>
+			  <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['watermark_image_path'];?>:<BR><?php echo $_LANG_SKIN['watermark_image_path_help'];?></TD>
+                <TD  id=id2>
+				<input name="WaterMarkImgPath" type="text" class="button" value="<?php echo $this->_tpl_vars["sInfo"]["WaterMarkImgPath"];?>" size="40">
+				 
+                 </TD>   
+              </TR>
+			   <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['watermark_position'];?>:</TD>
+                <TD  id=id2>
+				<select name="WaterMarkPosition" value="{$this->_tpl_vars["sInfo"]["WaterMarkPosition"]}"><?php
+
+$select_value = "{$this->_tpl_vars["sInfo"]["WaterMarkPosition"]}";
+ $select_value = 'hawking'.md5($select_value); 
+$$select_value = 'selected';?>
+				<option value="0" <?php echo $hawkingcfcd208495d565ef66e7dff9f98764da ;?>><?php echo $_LANG_SKIN['postion0'];?></option>
+				<option value="1" <?php echo $hawkingc4ca4238a0b923820dcc509a6f75849b ;?>><?php echo $_LANG_SKIN['postion1'];?></option>
+				<option value="2" <?php echo $hawkingc81e728d9d4c2f636f067f89cc14862c ;?>><?php echo $_LANG_SKIN['postion2'];?></option>
+				<option value="3" <?php echo $hawkingeccbc87e4b5ce2fe28308fd9f2a7baf3 ;?>><?php echo $_LANG_SKIN['postion3'];?></option>
+				<option value="4" <?php echo $hawkinga87ff679a2f3e71d9181a67b7542122c ;?>><?php echo $_LANG_SKIN['postion4'];?></option>
+				<option value="5" <?php echo $hawkinge4da3b7fbbce2345d7772b0674a318d5 ;?>><?php echo $_LANG_SKIN['postion5'];?></option>
+				<option value="6" <?php echo $hawking1679091c5a880faf6fb5e6087eb1b2dc ;?>><?php echo $_LANG_SKIN['postion6'];?></option>
+				<option value="7" <?php echo $hawking8f14e45fceea167a5a36dedd4bea2543 ;?>><?php echo $_LANG_SKIN['postion7'];?></option>
+				<option value="8" <?php echo $hawkingc9f0f895fb98ab9159f51fd0297e236d ;?>><?php echo $_LANG_SKIN['postion8'];?></option>
+				<option value="9" <?php echo $hawking45c48cce2e2d7fbdea1afc51c7c6ad26 ;?>><?php echo $_LANG_SKIN['postion9'];?></option>
+				</select>
+                  </TD>   
+              </TR>
+              <TR class="table_td1"    > 
+                <TD height=30 colSpan=2 align=middle > <INPUT name="submit" type=submit value="<?php echo $_LANG_SKIN_GLOBAL['submit_value'];?>" class="button"> 
+                  &nbsp;&nbsp; <INPUT name="reset" type=reset value="<?php echo $_LANG_SKIN_GLOBAL['reset_value'];?>"  class="button"> 
+                </TD>
+              </TR>
+            </TBODY>
+          </TABLE></TD>
+      </TR></TBODY><INPUT type=hidden value=edit_submit name=action></form></TABLE>
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@footer.html");?>

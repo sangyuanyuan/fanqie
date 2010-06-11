@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="[$charset]"?>
+<tree>
+<loop $fileList key=key var=var>
+<if $var.type == 'dir' && $var.name != ''>
+	<tree text="[$var.name]" action="javascript:parent.setTargetNodeID('[$PATH]/[$var.name]')"  src="admin_tpl.php?op=sId::[$sId];o::dir_select_xml;PATH::[$PATH]/[$var.name]"  target="" cId="[$var.NodeID]" />
+</if>
+</loop>
+</tree>

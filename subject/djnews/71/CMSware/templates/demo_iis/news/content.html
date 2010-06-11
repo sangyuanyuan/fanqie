@@ -1,0 +1,172 @@
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<CMS action="NODE" return="NodeVar" NodeID="{$News_MainNodeID}" />
+<title>[$Title] - [$NodeInfo.Name] - [$NodeVar.Name] - [$SITE_NAME]</title>
+<meta name="keywords" content="[$Keywords],[$NodeVar.Name],[$NodeInfo.Name]" />
+<link href="[$SKIN_URL]news/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+<div class="news_nav">
+	<CMS action="NODELIST" return="List" Type="set" NodeID="{$News_NavNodeIDs}" /><!--#CW#根据设置的导航结点ID号，生成导航#CW#-->
+	<loop name="List" var="var" key="key" start="1">
+	<a href="[$var.NodeURL]"><if test="$var.NodeID==$NodeInfo.NodeID"><strong>[$var.NodeName]</strong><else>[$var.NodeName]</if></a><if test="$key < count($List)"> | </if><!--#CW#如果已循环到最后一条，则不显示最后的|#CW#-->
+	</loop>
+</div>
+
+<div class="content">
+	<div class="listleft">
+		<div class="topside06">
+			<div class="topside06_l">&nbsp;</div>
+			<div class="topside06_c">&nbsp;</div>
+			<div class="topside06_r">&nbsp;</div>
+		</div>
+
+		<div class="center06" id="contentcenter">
+			<div class="content_title">[$Title]</div>
+			<div class="content_info">[@date('Y-m-d H:i:s',$PublishDate)]<if test="!empty($Author)">&nbsp;&nbsp;作者：[$Author]</if><if test="!empty($FromSite)">&nbsp;&nbsp;来源网站：[$FromSite]</if><if test="$Content_IsDisHits=='1'">&nbsp;&nbsp;点击:<script src="[$PUBLISH_URL]counter.php?o=display_counter&Id=[$IndexID]"></script><else><script src="[$PUBLISH_URL]counter.php?Id=[$IndexID]"></script></if></div>
+			<if test="!empty($Intro)">
+			<div class="content_intro"><strong>新闻简介：</strong>[$Intro]</div>
+			</if>
+			<div class="maincontent">
+				[$Content]
+			</div>
+			<if test="!empty($PageList)">
+			<div class="page">[$PageList]</div>
+			</if>
+			
+			<if test="!empty($Keywords)">
+            <op exp="$keyword_links = explode(',',$Keywords)" />
+			<div class="nextnews">
+			<strong>关键字：</strong>
+			<loop name="keyword_links" var="var" key="key">
+			<a href="[$PUBLISH_URL]search.php?o=search&amp;TableID=[$News_TableID]&amp;Field=Content&amp;Keywords=[@urlencode($var)]" target="_blank">[$var]</a>&nbsp;
+			</loop>
+			</div>
+			</if>
+			
+			<div class="nextnews">
+			<CMS action="LIST" return="List" NodeID="{$NodeID}" Num="1" where="i.PublishDate > {$PublishDate}" />
+			<CMS action="LIST" return="List1" NodeID="{$NodeID}" Num="1" where="i.PublishDate < {$PublishDate}" />
+			<if test="!empty($List)"><strong>下一篇：</strong><a href="[$List.0.URL]" target="_blank">[@Csubstr($List.0.Title,0,30,'')]</a>&nbsp;([@date('Y-m-d H:i:s',$List.0.PublishDate)])<br /></if>
+			<if test="!empty($List1)"><strong>上一篇：</strong><a href="[$List1.0.URL]" target="_blank">[@Csubstr($List1.0.Title,0,30,'')]</a>&nbsp;([@date('Y-m-d H:i:s',$List1.0.PublishDate)])</if>
+			</div>
+			<script type="text/javascript" src="[$PUBLISH_URL]js.php?id=news_comment&IndexID=[$IndexID]"></script>
+			<form name="postform" action="[$PUBLISH_URL]comment.php?o=post&Id=[$IndexID]" method="post" target="_self" enctype="multipart/form-data">
+			<table class="content_comment">
+				<tr>
+					<td width="50%" height="30">用户名：
+					<input type="text" size="15" maxlength="15" name="username" value="匿名" onBlur="if(this.value==''){this.value='匿名'};" onFocus="if(this.value=='匿名'){this.value=''};" /></td>
+					<td width="50%">验证码：
+					<input type="text" name="validCode" size="10" maxlength="4" />&nbsp;&nbsp;<img src="[$PUBLISH_URL]validCode.php" /></td>
+				</tr>
+
+				<tr>
+					<td height="160" colspan="2" align="center"><textarea name="content" rows="6" cols="70"></textarea><br /><br />
+				<input type="submit" value="  发表评论  " name="submit" /></td>
+				</tr>
+				<tr>
+					<td align="left" colspan="2">· 您将承担一切因您的行为、言论而直接或间接导致的民事或刑事法律责任<br>· 留言板管理人员有权保留或删除其管辖留言中的任意内容<br>· 本站提醒：不要进行人身攻击。谢谢配合。</td>
+				</tr>
+			</table>
+			</form>
+		<if test="empty($CustomLinks)">
+			<CMS action="SEARCH" return="List" NodeID="{$News_AllNodeID}" Field="Keywords" Keywords="{$Keywords}" Num="5" Separator="," IgnoreContentID="{$ContentID}" />
+		<else>
+			<CMS action="CONTENT" return="List" IndexID="{$CustomLinks}" />
+		</if>	
+			<if test="!empty($List)">
+			<div class="nextnews">
+			<strong>相关文章：</strong><br />
+		<loop name="List" var="var" key="key">
+			<a href="[$var.URL]" target="_blank" title="[$var.Title]">[@Csubstr($var.Title,0,30,'')]</a>&nbsp;([@date('Y-m-d H:i:s',$var.PublishDate)])<br />
+			</loop>
+			</div>
+			</if>
+		</div>
+		<div class="bottomside06">
+			<div class="bottomside06_l">&nbsp;</div>
+			<div class="bottomside06_c">&nbsp;</div>
+			<div class="bottomside06_r">&nbsp;</div>
+		</div>
+	</div>
+	<div class="middle">
+		<include file="inc/search_box.html" />
+		<div class="topside03">
+			<div class="topside03_l">&nbsp;</div>
+			<div class="topside03_c">&nbsp;</div>
+			<div class="topside03_r">&nbsp;</div>
+		</div>
+		<div class="center03">
+			<div class="newstitle"><span class="title_link_2">本类最新</span></div>
+			<div class="topnews">
+			<script type="text/javascript" src="[$PUBLISH_URL]js.php?id=news_selfnewtop&NodeID=[$NodeID]"></script>
+			</div>
+		</div>
+		<div class="bottomside03">
+			<div class="bottomside03_l">&nbsp;</div>
+			<div class="bottomside03_c">&nbsp;</div>
+			<div class="bottomside03_r">&nbsp;</div>
+		</div>
+		<div class="topside03">
+			<div class="topside03_l">&nbsp;</div>
+			<div class="topside03_c">&nbsp;</div>
+			<div class="topside03_r">&nbsp;</div>
+		</div>
+		<div class="center03">
+			<div class="newstitle"><span class="title_link_4">本类热门</span></div>
+			<div class="topnews">
+				<script type="text/javascript" src="[$PUBLISH_URL]js.php?id=news_selfhitstop&NodeID=[$NodeID]"></script>
+			</div>
+		</div>
+		<div class="bottomside03">
+			<div class="bottomside03_l">&nbsp;</div>
+			<div class="bottomside03_c">&nbsp;</div>
+			<div class="bottomside03_r">&nbsp;</div>
+		</div>
+		
+		<div class="topside03">
+			<div class="topside03_l">&nbsp;</div>
+			<div class="topside03_c">&nbsp;</div>
+			<div class="topside03_r">&nbsp;</div>
+		</div>
+		<div class="center03">
+			<div class="newstitle"><span class="title_link_3">本类热评</span></div>
+			<div class="topnews">
+			<script type="text/javascript" src="[$PUBLISH_URL]js.php?id=news_selfcommenttop&NodeID=[$NodeID]"></script>
+			</div>
+		</div>
+		<div class="bottomside03">
+			<div class="bottomside03_l">&nbsp;</div>
+			<div class="bottomside03_c">&nbsp;</div>
+			<div class="bottomside03_r">&nbsp;</div>
+		</div>
+		
+		<div class="topside03">
+			<div class="topside03_l">&nbsp;</div>
+			<div class="topside03_c">&nbsp;</div>
+			<div class="topside03_r">&nbsp;</div>
+		</div>
+		<CMS action="LIST" return="List" NodeID="self" Num="10" Orderby="rand()" />
+		<div class="center03">
+			<div class="newstitle"><span class="title_link_5">推荐新闻</span></div>
+			<div class="topnews">
+				<loop name="List" var="var" key="key">
+				<a href="[$var.URL]" target="_blank" title="[$var.Title]"><if test="empty($var.ShortTitle)">[@Csubstr($var.Title,0,20,'')]<else>[$var.ShortTitle]</if></a><br />
+				</loop>
+			</div>
+		</div>
+		<div class="bottomside03">
+			<div class="bottomside03_l">&nbsp;</div>
+			<div class="bottomside03_c">&nbsp;</div>
+			<div class="bottomside03_r">&nbsp;</div>
+		</div>
+	</div>
+</div>
+<include file="../common/footer.html" />
+</body>
+</html>

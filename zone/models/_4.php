@@ -16,6 +16,11 @@ a img { border: none; }
 	$find_param['limit'] = 5; 
 	$items = UchomeTag::find($find_param);
 	$len = count($items);
+	$find_param['order']="tagid desc";
+	$find_param['limit']=2;
+	$new_mtag=UchomeTag::find($find_param);
+	$new_len=count($new_mtag);
+	
 ?>
 
 <ul class="thread_list">
@@ -27,7 +32,21 @@ a img { border: none; }
 			</a>
 		</div>
 		<a style="color:#2C629E;" href="<?php echo $item->href;?>" target='_blank'><?php echo $item->tagname;?></a><br>
-		<span class="thread_cat"><a style="color:#2C629E;" href="<?php echo $item->field_href?>" target='_blank'><?php echo $item->title;?></a></span><br>已有 <span class="num"><?php echo $item->membernum;?></span> 人加入
+		<span class="thread_cat"><a style="color:#2C629E;" href="<?php echo $item->field_href;?>" target='_blank'><?php echo $item->title;?></a></span><br>已有 <span class="num"><?php echo $item->membernum;?></span> 人加入
 	</li>
 	<?php }?>
+	<?php foreach($new_mtag as $item){?>
+	<li style="height:75px;">
+		<div class="threadimg60">
+			<a href="<?php echo $item->href;?>">
+				<img src="<?php echo $item->pic;?>">
+			</a>
+		</div>
+		<a style="color:#2C629E;" href="<?php echo $item->href;?>" target='_blank'><?php echo $item->tagname;?></a><br>
+		<span class="thread_cat"><a style="color:#2C629E;" href="<?php echo $item->field_href;?>" target='_blank'><?php echo $item->title;?></a></span><br>已有 <span class="num"><?php echo $item->membernum;?></span> 人加入
+	</li>
+	<?php }?>
+	<li style="height:75px;">
+		<div style="float:right; display:inline;"><a style="font-size:16px; color:blue;" target="_blank" href="/home/cp.php?ac=mtag">创建群组</a></div>
+	</li>
 </ul>

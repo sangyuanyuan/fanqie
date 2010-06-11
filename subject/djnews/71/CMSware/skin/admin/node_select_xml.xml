@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="[$charset]"?>
+<tree>
+<loop $NodeInfo key=key var=var>
+<if $var.haveSon == 1>
+	<tree text="[@htmlspecialchars($var.Name)]" action="javascript:parent.setTargetNodeID('[$var.NodeID]')"  src="admin_tree.php?op=sId::[$sId];o::node_select_xml;NodeID::[$var.NodeID]"  target="" cId="[$var.NodeID]" />
+<else>
+	<tree text="[@htmlspecialchars($var.Name)]" action="javascript:parent.setTargetNodeID('[$var.NodeID]')"  target="" cId="[$var.NodeID]" />
+</if>
+</loop>
+</tree>

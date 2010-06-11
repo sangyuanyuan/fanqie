@@ -1,0 +1,27 @@
+<?php
+$_LANG_SKIN = array(
+	'topic' => "批量上传图片",
+	'img_upload' => "图片上传",
+	'confirm_upload' => "设置完成？确认执行上传吗？",
+	'img_select' => "图片选择",
+	'img_select_help' => "选择你要上传的图片",
+	'upload_setting' => "上传设置",
+	'display_setting' => "显示设置",
+	'display_setting_help' => "上传图片显示排列设置",
+	'upload_multi_img' => "批量上传图片",
+	'mk_mini' => "生成缩略图",
+	'upload_rename' => "上传后重命名",
+	'location_mode' => "定位模式",
+	'location_mode_normal' => "一般",
+	'location_mode_table' => "表格",
+	'location_mode_table_td' => "单行显示数",
+	'location_mode_table_background' => "表格背景颜色",
+	'location_mode_cell_background' => "单元背景颜色",
+	'location_mode_table_border' => "表格边框",
+	'location_mode_table_cellspacing' => "表格间距",
+	'location_mode_table_cellpadding' => "表格填充",
+	'size_limit' => "限制尺寸",
+	'img_border' => "图片边框",
+	'submit_upload' => "提交上传",
+);
+?>

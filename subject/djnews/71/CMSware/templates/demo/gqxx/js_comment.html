@@ -1,0 +1,21 @@
+<if test="!empty($UserInfo.UserName)">
+<form name="postform" action="[$PUBLISH_URL]comment_v.php?o=post&Id=[$IndexID]" method="post" target="_self" enctype="multipart/form-data">
+			<table class="content_comment">
+				<tr>
+					<td width="50%" height="30">用户名：
+					<input type="text" size="20" maxlength="15" readonly="readonly" name="username" value="[$UserInfo.UserName]" onBlur="if(this.value==''){this.value='[$UserInfo.UserName]'};" onFocus="if(this.value=='[$UserInfo.UserName]'){this.value=''};" /></td>
+					<td width="50%">验证码：
+					<input type="text" name="validCode" size="10" maxlength="4" />&nbsp;&nbsp;<img src="[$PUBLISH_URL]validCode.php" /></td>
+				</tr>
+				<tr>
+				<td height="160" colspan="2" align="center"><textarea name="content" rows="6" cols="70"></textarea><br /><br />
+<input type="submit" value="  发表评论  " name="submit" /></td>
+				</tr>
+				<tr>
+					<td align="left" colspan="2">· 您将承担一切因您的行为、言论而直接或间接导致的民事或刑事法律责任<br>· 留言板管理人员有权保留或删除其管辖留言中的任意内容<br>· 本站提醒：不要进行人身攻击。谢谢配合。</td>
+				</tr>
+			</table>
+			</form>
+<else>
+你还没有登录，不能做评论，请先登录或注册
+</if>

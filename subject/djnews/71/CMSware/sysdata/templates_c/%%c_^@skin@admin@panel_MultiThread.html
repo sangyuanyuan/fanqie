@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+</HEAD>
+<script>
+function addThread(ThreadURL, ThreadID)
+{
+	var newEl = document.createElement('IFRAME');
+	newEl.setAttribute('src', ThreadURL);
+	newEl.setAttribute('name', ThreadID);
+	newEl.setAttribute('id', ThreadID);
+	newEl.setAttribute('style',"width:500;height:500");
+	newEl.setAttribute('frameborder',"5");
+	//var tmp = document.createElement('TBODY');
+	//newEl.appendChild(tmp);
+	//var row = document.createElement('TR');
+	//var newEl = document.createElement('INPUT');
+	//newEl.setAttribute('TYPE',"button");
+	//newEl.setAttribute('value',"hawking");
+	document.getElementById('writeroot').appendChild(newEl);
+
+
+} 
+
+function addInfo(Info, InfoID)
+{	
+	//alert(Info + InfoID)
+	top.TaskInfoFrame.addInfo(Info, InfoID);
+}
+function endThread(ThreadID) 
+{
+	var root = document.getElementById('writeroot');
+	var oChild=document.getElementById(ThreadID);	
+    root.removeChild(oChild);
+
+}
+</script>
+<BODY>
+<div id="writeroot"></div>
+</BODY>
+</HTML>

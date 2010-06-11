@@ -1,0 +1,416 @@
+<include: file="header_init.html">
+<BODY  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px">
+<style>
+
+div.titleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 200;
+	text-overflow: ellipsis;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;			
+}		
+div.subtitleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	
+	text-overflow: ellipsis;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;			
+}
+div.timeholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 90;
+	text-overflow: ellipsis;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;			
+}	
+</style>
+<script language='JavaScript'>
+var doImage = doImage;
+var TType = TType;
+
+function mhHover(tbl, idx, cls)
+{
+	var t, d;
+	if (document.getElementById)
+		t = document.getElementById(tbl);
+	else
+		t = document.all(tbl);
+	if (t == null) return;
+	if (t.getElementsByTagName)
+		d = t.getElementsByTagName("TD");
+	else
+		d = t.all.tags("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}
+
+</script>
+<SCRIPT>
+var elo;
+var loadmenuok=false;
+var type = 'main';
+var NodeID = '[$NodeInfo.NodeID]';
+function initrightmenu(){
+	loadmenuok = true;
+}
+
+
+
+function doing(action, ContributionID) {
+	switch(action) {
+		case 'viewByState':
+			parent.mainFrame.location = "[$base_url]o=content_list&NodeID=" +NodeID + "&State=" + ContributionID
+			break;
+		case 'edit':
+			var leftPos = (screen.availWidth-800) / 2
+			var topPos = (screen.availHeight-600) / 2 
+			 window.open('[$base_url]o=contribution_editor_frameset&extra=edit&NodeID='+NodeID  + '&ContributionID=' + ContributionID,'','width=800,height=600,scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+			break;
+		case 'view':
+			var leftPos = (screen.availWidth-800) / 2
+			var topPos = (screen.availHeight-600) / 2 
+			 window.open('[$base_url]o=view&NodeID='+NodeID  + '&ContributionID=' + ContributionID,'','width=800,height=600,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+			break;
+		case 'viewNote':
+			var leftPos = (screen.availWidth-800) / 2
+			var topPos = (screen.availHeight-600) / 2 
+			 window.open('[$base_url]o=viewNote&NodeID='+NodeID  + '&ContributionID=' + ContributionID,'','width=400,height=300,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+			break;
+		default:
+			document.documentlist.referer.value = document.location;
+			document.documentlist.action = '[$base_url]' + 'o=workflow&OpOneID=' + action + '&type=' + type + '&ContributionID=' + ContributionID + '&NodeID=' + NodeID;
+			document.documentlist.submit();
+			break;
+		/*case 'approve':
+			if(confirm("{lang:confirm_approve}")){
+				document.documentlist.referer.value = document.location;
+				document.documentlist.action = '[$base_url]' + 'o=' + action + '&type=' + type + '&ContributionID=' + ContributionID + '&NodeID=' + NodeID;
+				document.documentlist.submit();
+		
+			}
+			break;
+		case 'callback':
+			var Reason = showMeDialog("../html/textarea.php?Title={lang:input_callback_reason}","color","dialogWidth:324px;dialogHeight:180px;help:0;status:0;scroll:no");
+				
+			if(Reason != null && Reason != '') {
+
+				document.documentlist.referer.value = document.location;
+				document.documentlist.callbackReason.value = Reason
+				document.documentlist.action = '[$base_url]' + 'o=' + action + '&type=' + type + '&ContributionID=' + ContributionID + '&NodeID=' + NodeID;
+				document.documentlist.submit();
+				return true;
+			}
+			break;
+		*/
+
+	}
+	//sId=6891856b84ee23f2330ee8359cd3f60d&o=view&pId=41&cId=4
+}
+
+function doWorkFlow(OpID, AppendNote,ContributionID)
+{
+	if(AppendNote == '1') {
+		var Reason = showMeDialog("../html/textarea.php?Title={lang:input_callback_reason}","color","dialogWidth:324px;dialogHeight:180px;help:0;status:0;scroll:no");
+		document.documentlist.callbackReason.value = Reason;
+		if(Reason != null && Reason != '') {
+			document.documentlist.referer.value = document.location;
+			document.documentlist.action = '[$base_url]' + 'o=workflow&OpOneID=' + OpID  + '&ContributionID=' + ContributionID + '&NodeID=' + NodeID;
+			document.documentlist.submit();		
+		}
+	} else {
+		document.documentlist.referer.value = document.location;
+		document.documentlist.action = '[$base_url]' + 'o=workflow&OpOneID=' + OpID  + '&ContributionID=' + ContributionID + '&NodeID=' + NodeID;
+		document.documentlist.submit();	
+	
+	
+	}
+				
+
+
+}
+
+function rightMenu(pId, State, Type) {
+	var toolMenu = new WebFXMenu;
+
+
+	toolMenu.add(new WebFXMenuItem('{lang::global:view}','javascript:doing("view","'+ pId +'")','{lang::global:view}'));
+	toolMenu.add(new WebFXMenuItem('{lang::global:edit}','javascript:doing("edit","'+ pId +'")','{lang::global:edit}'));
+	
+ 
+
+	 <loop name="workflowRecord" var="var" key="key">
+			<if test="$sGIsAdmin == 1">
+			 toolMenu.add(new WebFXMenuItem('[$var.gName] - [$var.OpName]','javascript:doWorkFlow("[$var.OpID]", "[$var.AppendNote]","'+ pId +'")', '[$var.OpIntro]'));
+            
+			<else>
+			  toolMenu.add(new WebFXMenuItem('[$var.OpName]','javascript:doWorkFlow("[$var.OpID]", "[$var.AppendNote]","'+ pId +'")', '[$var.OpIntro]'));
+			</if>
+	</loop>
+
+
+
+	menudata.innerHTML = toolMenu 
+
+	elo=window.event.srcElement;
+	toolMenu.left = window.event.clientX;
+	toolMenu.top = window.event.clientY+document.body.scrollTop;
+	toolMenu.show();
+
+	//initrightmenu();
+
+}
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+
+function CheckAll(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.name !='copy')       e.checked = form.chkall.checked; 
+   }
+  }
+
+
+
+</script>
+<script>
+var mousemovecolor="#D4D4D4";
+var selectcolor ="#DDDDDD";
+var oldcolor;
+
+function GetRow(oElem)
+{
+	while (oElem)
+	{	//alert(oElem.tagName.toLowerCase())
+		if (oElem.tagName.toLowerCase() == "tr" || oElem.parentElement.tagName.toLowerCase() == "tbody") 
+		    return oElem;
+		if (oElem.tagName.toLowerCase() == "table" || oElem.tagName.toLowerCase() == "th") return false;
+		oElem = oElem.parentElement;
+	}
+}
+
+
+function selected()
+{	//alert(pid)
+
+	var trstyle = GetRow( window.event.srcElement );
+	var a;
+	if( !trstyle )
+		return false;
+
+	if( trstyle.style.backgroundColor.toLowerCase() == selectcolor.toLowerCase())
+	{
+		trstyle.style.backgroundColor = "";
+		a=eval("p_"+ trstyle.id);	
+		//alert(trstyle.id)
+		if (a!=null || a.checked) 
+			a.checked=false
+		oldcolor = "";
+	}
+	else
+	{		
+		trstyle.style.backgroundColor = selectcolor;
+		a=eval("p_"+ trstyle.id);
+		//alert(trstyle.id)
+		if (a!=null) 
+			a.checked=true
+		oldcolor = selectcolor;
+
+	
+	}
+}
+
+function going(form, o)
+{
+
+	var selected = 0 ; 
+
+	for (var i=0;i<form.elements.length;i++)    {
+	    var e = form.elements[i];
+	    if(e.type != 'checkbox')	continue;
+	   
+	   if(e.checked) {
+			if(e.name == 'pData[]') {
+				 selected = 1;
+				 break;
+			} else {
+				continue;
+			}
+ 
+	   } else {
+	   		continue;
+	   }
+	}
+
+	if(selected == 0) {
+		alert("{lang:please_select_content_todo}");
+		return false;
+	}
+
+	document.documentlist.referer.value = document.location;
+	with(form) {
+		//var start = o.indexOf(",");
+		if(o=='del') {
+			document.documentlist.referer.value = document.location;
+			document.documentlist.action = '[$base_url]' + '&multi=1&o=del&NodeID=' + NodeID;
+			 
+			 document.documentlist.submit();
+		} else {
+				var Op = o.split(",");
+
+				if(Op[1] == 1) {
+					var Reason = showMeDialog("../html/textarea.php?Title={lang:input_callback_reason}","color","dialogWidth:324px;dialogHeight:180px;help:0;status:0;scroll:no");
+					document.documentlist.callbackReason.value = Reason;
+					if(Reason != null && Reason != '') {
+						document.documentlist.referer.value = document.location;
+						document.documentlist.action = '[$base_url]' + '&multi=1&o=workflow&OpID=' + Op[0] + '&NodeID=' + NodeID + '&callbackReason=' + Reason;
+						document.documentlist.submit();
+					}
+				
+				} else {
+					document.documentlist.referer.value = document.location;
+					document.documentlist.action = '[$base_url]' + '&multi=1&o=workflow&OpID=' + Op[0] + '&NodeID=' + NodeID;
+					document.documentlist.submit();
+			
+				}		
+		}
+
+
+	}
+}
+</script>
+<div id="menudata"></div>
+
+
+<div id="msviLocalToolbar">
+  <table cellpadding="0" cellspacing="2" height="19" border="0">
+   <form action="" method="get"> <tr> 
+      <td  height="20" nowrap="nowrap" >{lang::global:display}:</td>
+	<td   height="20" nowrap="nowrap" >
+ 	<select name="FId" id="select2" onchange="doing('viewByState', this.options[this.selectedIndex].value)">
+	<if test="$IN.State == ''">
+    <option value=""  selected>{lang:display_all}</option>
+	<else>
+    <option value=""  >{lang:display_all}</option>
+	</if>
+
+	
+	<loop name="workflowState" var="var" key="key">
+	<if test="$IN.State == $var.State">
+          <option value="[$var.State]" selected>[$var.Name]</option>
+	<else>
+          <option value="[$var.State]"  >[$var.Name]</option>
+	</if>
+	</loop>
+        </select></td>
+    
+      
+    
+   
+        
+   
+   </tr></form>
+  </table>
+</div>
+
+
+<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1"  class="table_border" >
+  <TBODY>
+  <form method="post" action="[$base_url]NodeID=[$NodeInfo.NodeID]" name="documentlist" >
+
+    <tr class="table_td2"> 
+      <td> <input name="callbackReason" type="hidden" id="callbackReason"></td>
+      <td align="center">{lang:contribution_node}</td>
+<?php $td = 1;?>
+<loop $DisplayItem key=key var=var>
+<?php $td++;?>
+		<td align="center">[$var.FieldTitle]</td>
+	  </loop>
+      <td align="center">{lang:contribution_date}</td>
+      <td align="center">{lang:contribution_user} </td>
+      <td align="center">{lang:contribution_state} </td>
+      <td colspan="5" align="center">{lang::global:execute_op}</td>
+    </tr>
+
+
+<loop $pList key=key var=var>
+<!------onmouseover='this.style.backgroundColor="#FFFFFF"' 
+                    onmouseout='this.style.backgroundColor=""'------>
+    <tr class="table_td1" id="[$var.ContributionID]" onmouseover='this.style.backgroundColor="#FFFFFF"' 
+                    onmouseout='this.style.backgroundColor=""'> 
+      <td noWrap > <input type='checkbox' name='pData[]' value='[$var.ContributionID]' id="p_[$var.ContributionID]" ></td>
+      <td noWrap >  [$var.NodeName]</td>
+	 <loop $DisplayItem key=keyIn var=varIn>
+	
+		<if $keyIn == 0>
+      <td   noWrap  style="cursor:hand" id="[$var.pId]"><div class="titleholder">&nbsp;&nbsp;<A HREF="javascript:void(0);" onclick="doing('view','[$var.ContributionID]')" style="cursor:hand"   oncontextmenu="rightMenu('[$var.ContributionID]', '[$var.State]','[$var.Type]');return false;" title="<?php  echo    $this->_tpl_vars["var"]["{$this->_tpl_vars["varIn"]["FieldName"]}"]?>"><?php  echo    $this->_tpl_vars["var"]["{$this->_tpl_vars["varIn"]["FieldName"]}"]?> </A></div></td>
+
+		<else>
+      <td   noWrap   id="[$var.pId]"><div class="subtitleholder">&nbsp;&nbsp;<?php  echo    $this->_tpl_vars["var"]["{$this->_tpl_vars["varIn"]["FieldName"]}"]?> </div></td>
+
+		</if>
+
+	 </loop>
+      <td align="center" noWrap ><div class="timeholder">[@date('Y-m-d H:i',$var.ContributionDate)]</div></td>
+       <td align="center" noWrap ><div class="timeholder">
+		<if test="$var.OwnerName == ''" >
+		-
+		<else>
+	   [$var.OwnerName]
+		</if>
+	   
+	   </div></td>
+       <td align="center" noWrap ><div class="timeholder">[$var.StateName]</div></td>
+    <td colspan="5" align="center" noWrap>
+	  <A HREF="javascript:void(0);" onclick="doing('viewNote', '[$var.ContributionID]')">{lang::global:note}</A> 
+	  <A HREF="javascript:void(0);" onclick="doing('view', '[$var.ContributionID]')">{lang::global:view}</A> 
+	
+	  <A HREF="javascript:void(0);" onclick="doing('edit', '[$var.ContributionID]')">{lang::global:edit}</A> 
+	  
+	  </td>
+    </tr>
+
+</loop>
+    <tr class="Tablelistbg"> 
+      <td colspan="<?php echo $td+11;?>" align="left" bgcolor="#F5F5F5"> <table border="0" align="center"  cellpadding="0" cellspacing="0" width="100%">
+          <tr> 
+            <td align=left> 
+            <input type="checkbox" name="chkall" value="on" onclick="CheckAll(this.form)" id="chkall"  > 
+              <label for="chkall" >{lang:select_all}</label>&nbsp;&nbsp;
+			               
+			 <select name="OpID"  > 
+			 <loop name="workflowRecord" var="var" key="key">
+			 <if test="$sGIsAdmin == 1">
+            <option value="[$var.OpID],[$var.AppendNote]">[$var.gName] - [$var.OpName]</option>
+			<else>
+			 <option value="[$var.OpID],[$var.AppendNote]">[$var.OpName]</option>
+			</if>
+			 </loop>
+			<option value="del">{lang::global:del}</option>
+			  </select>
+
+			  <input type="button" value="{lang::global:go}" class=button onclick="going(this.form,OpID.options[OpID.selectedIndex].value)"> 
+         
+            </td>
+          </tr>
+        </table></td>
+    </tr>
+	<INPUT TYPE="hidden" name="referer" value ="" >
+  </form>
+  <tr class="table_td1"> 
+    <td colspan="<?php echo $td+11;?>" align=right> [$pagelist]&nbsp; </td>
+  </tr>
+  </tbody> 
+</table>
+
+<include: file="footer.html">

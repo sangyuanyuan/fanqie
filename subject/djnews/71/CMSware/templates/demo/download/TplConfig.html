@@ -1,0 +1,61 @@
+<var name="DownloadTableID" value="2" /><!--#CW#-- 下载模型ID--#CW#-->
+<var name="MainSubNavigate" value="inc/SubNavigate.html" /><!--#CW#-- 指定频道附加导航--#CW#-->
+
+<!--#CW#--index.html--#CW#-->
+<!--#CW#--  首页最新发布调用 --#CW#-->
+<var name="Index_NodeID" value="14" /><!--#CW#-- 频道主节点ID--#CW#-->
+<var name="Index_Ignore" value="" /><!--#CW#-- 不调用的节点ID--#CW#-->
+<var name="Index_Num" value="20" /><!--#CW#-- 调用的条数--#CW#-->
+<var name="Index_OrderBy" value="i.PublishDate DESC" /><!--#CW#-- 按什么规则调用--#CW#-->
+<!--#CW#--  左边一周热软调用  --#CW#-->
+<var name="Index_LeftHot_NodeID" value="all-14" /><!--#CW#-- 一周热门调用节点 --#CW#-->
+<var name="Index_LeftHot_Num" value="10" /><!--#CW#-- 一周热门调用数目 --#CW#-->
+<var name="Index_LeftHot_OrderBy" value="Hits_Week" /><!--#CW#-- 一周热门按一周的点击数目 --#CW#-->
+<!--#CW#--  左边推荐软件调用  --#CW#-->
+<var name="Index_LeftPink_NodeID" value="all-14" /><!--#CW#-- 推荐调用的节点 --#CW#-->
+<var name="Index_LeftPink_Num" value="5" /><!--#CW#-- 推荐调用的数目 --#CW#-->
+<var name="Index_LeftPink_where" value="i.Pink =1 " /><!--#CW#-- 推荐调用的条件为精华为1 --#CW#-->
+<!--#CW#--  左边总点击排行调用  --#CW#-->
+<var name="Index_LeftHits_Total_NodeID" value="all-14" /><!--#CW#-- 总点击排行的节点 --#CW#-->
+<var name="Index_LeftHits_Total_Num" value="10" /><!--#CW#-- 总点击排行的数目 --#CW#-->
+<var name="Index_LeftHits_Total_OrderBy" value="Hits_Total" /><!--#CW#-- 总点击排行 --#CW#-->
+
+<!--#CW#-- list.html   --#CW#-->
+<var name="List_Num" value="20" /><!--#CW#-- 列表页的一页的软件数目 --#CW#-->
+<!--#CW#--  左边本类热软调用  --#CW#-->
+<var name="List_LeftHot_Num" value="10" /><!--#CW#-- 一周热软调用数目 --#CW#-->
+<var name="List_LeftHot_OrderBy" value="Hits_Week" /><!--#CW#-- 一周热软按一周的点击数目 --#CW#-->
+<!--#CW#--  左边本类推荐调用  --#CW#-->
+<var name="List_LeftPink_Num" value="10" /><!--#CW#-- 推荐调用的数目 --#CW#-->
+<var name="List_LeftPink_where" value="i.Pink =1 " /><!--#CW#-- 推荐调用的条件为精华为1 --#CW#-->
+<!--#CW#--  左边本类总点击排行调用  --#CW#-->
+<var name="List_LeftHits_Total_Num" value="10" /><!--#CW#-- 总点击排行的数目 --#CW#-->
+<var name="List_LeftHits_Total_OrderBy" value="Hits_Total" /><!--#CW#-- 总点击排行 --#CW#-->
+
+<!--#CW#--  content.html --#CW#-->
+<!--#CW#--  左边本类热门调用  --#CW#-->
+<var name="Content_LeftHot_Num" value="10" /><!--#CW#-- 一周热门调用数目 --#CW#-->
+<var name="Content_LeftHot_OrderBy" value="Hits_Week" /><!--#CW#-- 一周热门按一周的点击数目 --#CW#-->
+<!--#CW#--  左边本类推荐调用  --#CW#-->
+<var name="Content_LeftPink_Num" value="10" /><!--#CW#-- 推荐调用的数目 --#CW#-->
+<var name="Content_LeftPink_where" value="i.Pink =1 " /><!--#CW#-- 推荐调用的条件为精华为1 --#CW#-->
+<!--#CW#--  左边本类总点击排行调用  --#CW#-->
+<var name="Content_LeftHits_Total_Num" value="10" /><!--#CW#-- 总点击排行的数目 --#CW#-->
+<var name="Content_LeftHits_Total_OrderBy" value="Hits_Total" /><!--#CW#-- 总点击排行 --#CW#-->
+
+<!--#CW#--searche_result.html--#CW#-->
+<!--#CW#--  左边一周热门调用  --#CW#-->
+<var name="Searech_LeftHot_NodeID" value="all-14" /><!--#CW#-- 一周热门调用节点 --#CW#-->
+<var name="Searech_LeftHot_Num" value="10" /><!--#CW#-- 一周热门调用数目 --#CW#-->
+<var name="Searech_LeftHot_OrderBy" value="Hits_Week" /><!--#CW#-- 一周热门按一周的点击数目 --#CW#-->
+
+<!--#CW#--  左边推荐调用  --#CW#-->
+<var name="Searech_LeftPink_NodeID" value="all-14" /><!--#CW#-- 推荐调用的节点 --#CW#-->
+<var name="Searech_LeftPink_Num" value="10" /><!--#CW#-- 推荐调用的数目 --#CW#-->
+<var name="Searech_LeftPink_where" value="i.Pink =1 " /><!--#CW#-- 推荐调用的条件为精华为1 --#CW#-->
+
+<!--#CW#--  左边总点击排行调用  --#CW#-->
+<var name="Searech_LeftHits_Total_NodeID" value="all-14" /><!--#CW#-- 总点击排行的节点 --#CW#-->
+<var name="Searech_LeftHits_Total_Num" value="10" /><!--#CW#-- 总点击排行的数目 --#CW#-->
+<var name="Searech_LeftHits_Total_OrderBy" value="Hits_Total" /><!--#CW#-- 总点击排行 --#CW#-->
+

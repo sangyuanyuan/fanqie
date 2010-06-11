@@ -1,0 +1,166 @@
+<include file="header.html" />
+
+<div id="left">
+<include file="search_box.html"/>
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>其他类别下载Top10</h3>
+<ul>
+
+<!--调用下载系统模型(TableID=2)最热总点击前10条记录-->
+<CMS action="LIST" return="List"  where="co.TableID=2" orderby="Hits_Total" TableID="2" num="10" />
+<LOOP $List var=var key=key> 
+<li><a href=" [$var.URL] " target=_blank title=" [$var.SoftName] " >[@CsubStr($var.SoftName, 0, 16)] </a>
+<span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span> </li>
+</LOOP> 
+
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+
+
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>[$NodeInfo.Name]下载Top10</h3>
+<ul>
+
+<!--调用下载系统模型(TableID=2)最热总点击前10条记录-->
+<CMS action="LIST" return="List" NodeID="self" orderby="Hits_Total" TableID="2" num="10" />
+<LOOP $List var=var key=key> 
+<li><a href=" [$var.URL] " target=_blank title=" [$var.SoftName] " >[@CsubStr($var.SoftName, 0, 16)] </a>
+<span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span> </li>
+</LOOP> 
+
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+<include file="../copyright.html" />
+
+</div><!--left end-->
+
+<div id="right">
+
+<div class="box_l">
+<div class="box_l_t">&nbsp;</div>
+<div class="box_l_c">
+<div id="dl_main">
+<h1 id="softwarename">[$SoftName]</h1>
+<div class="dl_left">
+<ul>
+<li>软件评价：    
+				  <?php
+				  echo str_repeat("<img src='".$this->_tpl_vars['PUBLISH_URL']."images/star.gif' border='0'>", $this->_tpl_vars[Star]);
+				  ?>
+				   
+                    </li>
+<li class="grid">软件界面：
+<if test="$Photo!=''">
+	<A HREF="[$Photo]" target="_blank">界面预览</A>
+<else>
+暂无界面预览
+</if>
+
+</li>
+<li >软件语言：[$Language]</li>
+<li class="grid">软件大小：[$SoftSize]</li>
+<li>运行环境：[$Environment]</li>
+<li class="grid">软件类型：[$SoftType]</li>
+<li>开&nbsp;发&nbsp;商&nbsp;：<A HREF="[$Developer]" target="_blank">Home Page</A></li>
+<li class="grid">更新日期：[@date('Y-m-d',$PublishDate)]</li>
+<li>下载次数：本日：
+			  <script src="[$PUBLISH_URL]counter.php?o=display&type=today&Id=[$IndexID]"></script>
+                 
+                本月： 
+			  <script src="[$PUBLISH_URL]counter.php?o=display&type=month&Id=[$IndexID]"></script>
+                总计： 
+			  <script src="[$PUBLISH_URL]counter.php?o=display&Id=[$IndexID]"></script></li>
+</ul>
+</div>
+<div class="dl_right">
+
+<if test="$Photo!=''">
+	<A HREF="[$Photo]" target="_blank"><img src="[@AutoMini($Photo, '200*160', $Publish)]" alt=" [$SoftName]" border="0"></A>
+</if>
+</script>
+</div>
+</div><!--dl_main end -->
+
+<div id="description">
+<dl>
+<dt>软件简介:</dt>
+<dd>[$Intro]</dd>
+</dl>
+</div>
+
+<div id="dl_select">
+                <?php include(SETTING_DIR."model.download.func.parse_download_url.php");?>
+</div>
+
+<div id="correlative_s">
+<h5>相关软件</h5>
+<ul>
+
+
+<!--如果存在自定义相关软件，则调用之-->
+<if test="!empty($CustomSoftLinks)">
+<CMS action="CONTENT" return="List" IndexID="{$CustomSoftLinks}" />
+<else>
+<!--自定义相关软件为空，则使用SEARCH调用根据软件设置的关键字自动获取相关软件列表-->
+<CMS action="SEARCH" return="List" TableID="2" Field="SoftKeywords" Keywords="{$SoftKeywords}"  Num="10" Separator="," IgnoreContentID="{$ContentID}" />
+</if>
+
+<!--开始显示相关软件-->
+<loop name="List" var="var" key="key" > 
+<li>
+·<a href="[$var.URL]" title="[$var.SoftName]">[@CsubStr($var.SoftName, 0, 25)]</a>
+</li>
+</LOOP> 
+<if test="$var.SoftName==''">
+暂时没有相关软件
+</if>
+</ul>
+</div>
+
+<div id="correlative_a">
+<h5>相关文章</h5>
+<ul>
+<!--如果存在自定义相关文章，则调用之-->
+<if test="!empty($CustomLinks)">
+<CMS action="CONTENT" return="List" IndexID="{$CustomLinks}" />
+<else>
+<!--自定义相关文章为空，则使用SEARCH调用根据文章设置的关键字自动获取相关文章列表-->
+<CMS action="SEARCH" return="List" TableID="1" Field="Keywords" Keywords="{$SoftKeywords}"  Num="10" Separator="," IgnoreContentID="{$ContentID}" />
+</if>
+
+<!--开始显示相关文章-->
+<loop name="List" var="var" key="key" > 
+<li>
+·<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title, 0, 25)]</a>
+</li>
+</LOOP> 
+<if test="$var.Title==''">
+暂时没有相关资讯
+</if>
+</ul>
+</div>
+<BR/>
+
+<script type="text/javascript" src="[$PUBLISH_URL]js.php?id=comment&IndexID=[$IndexID]"></script>
+ </div>
+ <div class="box_l_b">&nbsp;</div>
+</div>
+
+
+</div><span class="cls"></span><!--right end-->
+</div>
+<include  file="../footer.html" />
+</body>
+</html>

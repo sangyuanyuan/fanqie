@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>[$iwpc_version]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<link type="text/css" rel="StyleSheet" href="../html/style.css" />
+<script src="../html/functions.js" type="text/javascript" language="javascript"></script>
+<script>
+function edit(o)
+{
+	var leftPos = (screen.availWidth-800) / 2
+	var topPos = (screen.availHeight-600) / 2 
+	var popupWin = window.open('admin_setting.php?sId=[$sId]&o=editor_frameset&extra='+o, '','width=800,height=600,scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+}
+</script>
+<body  > 
+
+<table width="90%" border="0" align="center">
+  <tr>
+    <td>
+	       <table cellpadding='2' cellspacing='2' border='0'>
+<tr>
+          <td ><IMG SRC='../html/images/ip.gif' BORDER=0 align=absmiddle> <a href='[$base_url]o=index::setting'   target="panelWork">{lang:sys_setting}</a></td>
+        </tr>
+ 
+        <tr>
+          <td ><IMG SRC='../html/images/user.gif' BORDER=0 align=absmiddle> <a href='[$base_url]o=access_group::view'   target="panelWork">{lang:group_admin}</a></td>
+        </tr>      
+         <tr>
+          <td ><IMG SRC='../html/images/friend.gif' BORDER=0 align=absmiddle> <a href='[$base_url]o=access_user::view'   target="panelWork">{lang:user_admin}</a></td>
+        </tr>  
+
+     
+		 
+    
+ 
+	
+      </table>
+       
+       
+    
+	  
+    </td>
+  </tr>
+</table>
+
+<script language="JavaScript">
+function ShowMenu(MenuID){
+	if(MenuID.style.display=="none"){
+		MenuID.style.display="";
+		//len=document.body.scrollWidth+22;
+		//if(len > 160 ) {
+		//	a=len+",*";
+		//	parent.parent.dmsys.cols=a;
+		//}  
+	}else{
+		MenuID.style.display="none";
+		//len=document.body.scrollWidth-10;
+		//if(len > 150) {
+		//	a=len+",*";
+		//	//document.write(a +'aaaa');
+		//	parent.parent.dmsys.cols=a;
+		//}
+	}
+}
+function ShowMenu1(MenuID){
+	if(MenuID.style.display=="none"){
+		MenuID.style.display="";
+		
+	}else{
+		MenuID.style.display="none";
+	
+	}
+}
+
+function changeimage(imageID) {
+	var r, re;         //Declare variables.
+	
+	re = 'closedfold.gif';    //Create regular expression pattern.
+	r = imageID.src;  //Attempt match on search string.
+	a=r.match(re);
+	if(a==null){
+		imageID.src=" images/openfold.gif";
+	}else{
+		imageID.src="images/closedfold.gif";
+	}
+
+	
+}</script>
+
+
+<table height = 400>
+<tr>
+	<td><br></td>
+</tr>
+</table>
+</body>
+</html>

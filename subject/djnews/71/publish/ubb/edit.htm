@@ -1,0 +1,702 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>UBB编辑器</title>
+
+<meta name="description" content="UBB编辑器">
+
+<meta name="generator" content="UBB编辑器">
+
+<link rel="stylesheet" type="text/css" id="css" href="images/ubb.css">
+
+<script type="text/javascript" src="images/common.js"></script>
+
+<script type="text/javascript" src="images/menu.js"></script>
+
+<script type="text/javascript" src="images/bbcode.js"></script>
+
+<script type="text/javascript" src="images/editor.js"></script>
+
+</head>
+
+<body onkeydown="if(event.keyCode==27) return false;">
+
+<script type="text/javascript">
+
+var postminchars = parseInt('0');
+
+var postmaxchars = parseInt('100000');
+
+var disablepostctrl = parseInt('0');
+
+var typerequired = parseInt('');
+
+var bbinsert = parseInt('0');
+
+function checklength() {
+
+	var message = bbinsert && wysiwyg ? html2bbcode(getEditorContents()) : $("message").value;
+
+	var showmessage = postmaxchars != 0 ? '系统限制: ' + postminchars + ' 到 ' + postmaxchars + ' 字节' : '';
+
+	alert('\n当前长度: ' + message.length + ' 字节\n\n' + showmessage);
+
+}
+
+</script>
+
+<script type="text/javascript">
+
+var editorid = 'posteditor';
+
+var wysiwyg = (is_ie || is_moz || (is_opera && opera.version() >= 9)) && parseInt('1') && bbinsert == 1 ? 1 : 0;
+
+var allowswitcheditor = parseInt('1');
+
+var allowhtml = parseInt('0');
+
+var forumallowhtml = parseInt('0');
+
+var allowsmilies = parseInt('1');
+
+var allowbbcode = parseInt('1');
+
+var allowimgcode = parseInt('1');
+
+var smilies = new Array();
+
+smilies[1]= {'code' : ':)', 'url' : 'em01.gif'};
+
+smilies[2]= {'code' : ':(', 'url' : 'em02.gif'};
+
+smilies[3]= {'code' : ':D', 'url' : 'em03.gif'};
+
+smilies[4]= {'code' : ':\'(', 'url' : 'em04.gif'};
+
+smilies[5]= {'code' : ':@', 'url' : 'em05.gif'};
+
+smilies[6]= {'code' : ':o', 'url' : 'em06.gif'};
+
+smilies[7]= {'code' : ':P', 'url' : 'em07.gif'};
+
+smilies[8]= {'code' : ':$', 'url' : 'em08.gif'};
+
+smilies[9]= {'code' : ';P', 'url' : 'em09.gif'};
+
+smilies[10]= {'code' : ':L', 'url' : 'em10.gif'};
+
+smilies[11]= {'code' : ':Q', 'url' : 'em11.gif'};
+
+smilies[12]= {'code' : ':lol', 'url' : 'em12.gif'};
+
+smilies[13]= {'code' : ':hug:', 'url' : 'em13.gif'};
+
+smilies[14]= {'code' : ':victory:', 'url' : 'em14.gif'};
+
+smilies[15]= {'code' : ':time:', 'url' : 'em15.gif'};
+
+smilies[16]= {'code' : ':kiss:', 'url' : 'em16.gif'};
+
+smilies[17]= {'code' : ':handshake', 'url' : 'em17.gif'};
+
+smilies[18]= {'code' : ':call:', 'url' : 'em18.gif'};
+
+smilies[33]= {'code' : ':calld:', 'url' : 'em24.gif'};
+
+smilies[32]= {'code' : ':callc:', 'url' : 'em23.gif'};
+
+smilies[31]= {'code' : ':callb:', 'url' : 'em22.gif'};
+
+smilies[30]= {'code' : ':calla:', 'url' : 'em21.gif'};
+
+smilies[28]= {'code' : ':loveliness:', 'url' : 'em19.gif'};
+
+smilies[29]= {'code' : ':funk:', 'url' : 'em20.gif'};
+
+smilies[34]= {'code' : ':calle:', 'url' : 'em25.gif'};
+
+var BORDERCOLOR = "#7AC4EA";
+
+var ALTBG2 = "#FFFFFF";
+
+
+
+
+
+function clearcontent() {
+
+	if(wysiwyg && bbinsert) {
+
+		editdoc.body.innerHTML = is_moz ? '<br />' : '';
+
+	} else {
+
+		textobj.value = '';
+
+	}
+
+}
+
+
+
+function resizeEditor(change) {
+
+	var editorbox = bbinsert ? editbox : textobj;
+
+	var newheight = parseInt(editorbox.style.height, 10) + change;
+
+    var newheight2 = parseInt(parent.document.getElementById("Editor").style.height, 10) + change;
+
+	if(newheight >= 100) {
+
+		editorbox.style.height = newheight + 'px';
+
+		parent.document.getElementById("Editor").style.height=newheight2 + 'px';
+
+	}
+
+}
+
+
+
+
+
+var oURL = location.href;
+
+var offset = oURL.lastIndexOf("id=");
+
+if (offset == -1)
+
+{
+
+	alert("请传入调用参数ID，即隐藏的内容表单项ID！");
+
+} else {
+
+	offset = offset + 3
+
+}
+
+var sLinkFieldName = oURL.substring(offset)
+
+var oLinkField = parent.document.getElementsByName(sLinkFieldName)[0];
+
+var oForm = oLinkField.form ;
+
+// 设置所属表单的提交或reset事件
+
+function setLinkedField() {
+
+	if (! oLinkField) return ;
+
+	var oForm = oLinkField.form ;
+
+	if (!oForm) return ;
+
+	if(oForm.addEventListener){
+
+		oForm.addEventListener("onsubmit", AttachSubmit);
+
+		oForm.addEventListener("onreset", AttachReset);
+
+	}else{
+
+		oForm.attachEvent("onsubmit", AttachSubmit);
+
+		oForm.attachEvent("onreset", AttachReset);
+
+	}
+
+	AttachReset();
+
+}
+
+
+
+// 提交表单
+
+function AttachSubmit() { 
+
+    if(wysiwyg==0)oLinkField.value=$("posteditor_textarea").value;
+
+	else oLinkField.value=html2bbcode(getEditorContents());
+
+} 
+
+// 附加Reset事件
+
+function AttachReset() {
+
+     if(wysiwyg==0)$("posteditor_textarea").value="";
+
+	 else editdoc.body.innerHTML="";
+
+	 if (oLinkField.value!=""){
+
+		if(wysiwyg==0)$("posteditor_textarea").value=oLinkField.value;
+
+		else editdoc.body.innerHTML=bbcode2html(oLinkField.value);
+
+	 }
+
+}
+
+
+
+window.onload=setLinkedField;
+
+</script>
+
+<script type="text/javascript">
+
+var lang	= new Array();
+
+lang["enter_tag_option"]= "请输入 %1 标签的选项:";
+
+lang["enter_list_item"]= "输入一个列表项目.\r\n留空或者点击取消完成此列表.";
+
+lang["enter_link_url"]= "请输入链接的地址:";
+
+lang["enter_image_url"]= "请输入图片链接地址:";
+
+lang["enter_email_link"]= "请输入此链接的邮箱地址:";
+
+lang['enter_table_rows']= "请输入行数，最多 30 行:";
+
+lang['enter_table_columns']= "请输入列数，最多 30 列:";
+
+lang['fontname']= "字体";
+
+lang['fontsize']= "大小";
+
+var custombbcodes = new Array();
+
+custombbcodes["qq"] = "[qq=8]76994859[/qq]";
+
+custombbcodes["flash"] = "Flash Movie";
+
+custombbcodes["rm"] = "[rm]rtsp://your.com/example.rm[/rm]";
+
+custombbcodes["wmv"] = "[wmv]mms://your.com/example.wmv[/wmv]";
+
+custombbcodes["page"] = "[/page]";
+
+var fontoptions = new Array("仿宋_GB2312", "黑体", "楷体_GB2312", "宋体", "新宋体", "Tahoma", "Arial", "Impact", "Verdana", "Times New Roman");
+
+</script>
+
+<div class="spaceborder" style="width: 98%" >
+
+<table cellspacing="0" cellpadding="4" width="100%">
+
+<tr class="bottom">
+
+<td align="left" class="altbg2" valign="top">
+
+<div id="posteditor">
+
+
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="editor">
+
+<tr>
+
+<td id="posteditor_controls" class="editor_controlbar" colspan="2">
+
+<table cellpadding="0" cellspacing="0" border="0">
+
+<tr>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_removeformat" onClick="ubbcode('removeformat')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_removeformat.gif" width="21" height="20" title="清除文本格式" alt="清除文本格式" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_undo" onClick="ubbcode('undo')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_undo.gif" width="21" height="20" title="撤销" alt="撤销" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_redo" onClick="ubbcode('redo')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_redo.gif" width="21" height="20" title="重做" alt="重做" /></div></td>
+
+
+
+<td><img src="images/bb_separator.gif" width="6" height="20" alt="" /></td>
+
+
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_bold" onClick="ubbcode('bold')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_bold.gif" width="21" height="20" title="粗体" alt="粗体" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_italic" onClick="ubbcode('italic')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_italic.gif" width="21" height="20" title="斜体" alt="斜体" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_underline" onClick="ubbcode('underline')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_underline.gif" width="21" height="20" title="下划线" alt="下划线" /></div></td>
+
+
+
+<td><img src="images/bb_separator.gif" width="6" height="20" alt="" /></td>
+
+
+
+<td id="posteditor_popup_fontname" title="字体"><div class="editor_buttonnormal" onMouseOver="menuContext(this, 'mouseover')" onMouseOut="menuContext(this, 'mouseout')">
+
+<table cellpadding="0" cellspacing="0" border="0" unselectable="on">
+
+<tr>
+
+<td class="editor_menunormal" unselectable="on" id="posteditor_menu"><div id="posteditor_font_out" style="width:91px" unselectable="on">字体</div></td>
+
+<td unselectable="on"><img src="images/bb_menupop.gif" width="7" height="4" alt="" /></td>
+
+</tr>
+
+</table>
+
+<script type="text/javascript">menuregister(true, "posteditor_popup_fontname")</script></div></td>
+
+
+
+<td id="posteditor_popup_fontsize" title="大小"><div class="editor_buttonnormal" onMouseOver="menuContext(this, 'mouseover')" onMouseOut="menuContext(this, 'mouseout')">
+
+<table cellpadding="0" cellspacing="0" border="0" unselectable="on">
+
+<tr>
+
+<td class="editor_menunormal" unselectable="on" id="posteditor_menu"><div id="posteditor_size_out" style="width:25px" unselectable="on">大小</div></td>
+
+<td unselectable="on"><img src="images/bb_menupop.gif" width="7" height="4" alt="" /></td>
+
+</tr>
+
+</table>
+
+<script type="text/javascript">menuregister(true, "posteditor_popup_fontsize")</script></div></td>
+
+
+
+<td id="posteditor_popup_forecolor" title="颜色"><div class="editor_buttonnormal" onMouseOver="menuContext(this, 'mouseover')" onMouseOut="menuContext(this, 'mouseout')">
+
+<table cellpadding="0" cellspacing="0" border="0" unselectable="on">
+
+<tr>
+
+<td class="editor_colormenunormal" unselectable="on" id="posteditor_colormenu"><img src="images/bb_color.gif" width="21" height="16" alt="" /><br><img src="images/bb_clear.gif" id="posteditor_color_bar" alt="" style="background-color:black" width="21" height="4" /></td>
+
+<td unselectable="on"><img src="images/bb_menupop.gif" width="7" height="4" alt="" /></td>
+
+</tr>
+
+</table>
+
+<script type="text/javascript">menuregister(true, "posteditor_popup_forecolor")</script></div></td>
+
+
+
+<td><img src="images/bb_separator.gif" width="6" height="20" alt="" /></td>
+
+
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_justifyleft" onClick="ubbcode('justifyleft')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_left.gif" width="21" height="20" title="居左" alt="居左" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_justifycenter" onClick="ubbcode('justifycenter')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_center.gif" width="21" height="20" title="居中" alt="居中" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_justifyright" onClick="ubbcode('justifyright')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_right.gif" width="21" height="20" title="居右" alt="居右" /></div></td>
+
+
+
+<td><img src="images/bb_separator.gif" width="6" height="20" alt="" /></td>
+
+
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_insertorderedlist" onClick="ubbcode('insertorderedlist')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_orderedlist.gif" width="21" height="20" title="排序的列表" alt="排序的列表" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_insertunorderedlist" onClick="ubbcode('insertunorderedlist')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_unorderedlist.gif" width="21" height="20" title="未排序列表" alt="未排序列表" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_outdent" onClick="ubbcode('outdent')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_outdent.gif" width="21" height="20" title="减少缩进" alt="减少缩进" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_indent" onClick="ubbcode('indent')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_indent.gif" width="21" height="20" title="增加缩进" alt="增加缩进" /></div></td>
+
+</tr>
+
+</table>
+
+
+
+<table cellpadding="0" cellspacing="0" border="0">
+
+<tr>
+
+
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_createlink" onClick="ubbcode('createlink')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_url.gif" width="21" height="20" title="插入链接" alt="插入链接" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_unlink" onClick="ubbcode('unlink')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_unlink.gif" width="21" height="20" title="移除链接" alt="移除链接" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_email" onClick="ubbcode('email')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_email.gif" width="21" height="20" title="插入邮箱链接" alt="插入邮箱链接" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_insertimage" onClick="ubbcode('insertimage')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_image.gif" width="21" height="20" title="插入图片" alt="插入图片" /></div></td>
+
+
+
+<td><img src="images/bb_separator.gif" width="6" height="20" alt="" /></td>
+
+
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_wrap0_quote" onClick="ubbcode('quote')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_quote.gif" width="21" height="20" title="插入引用" alt="插入引用" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_wrap0_code" onClick="ubbcode('code')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_code.gif" width="21" height="20" title="插入代码" alt="插入代码" /></div></td>
+
+<td><div class="editor_buttonnormal" id="posteditor_cmd_table" onClick="ubbcode('table')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_table.gif" width="21" height="20" title="插入表格" alt="插入表格" /></div></td>
+
+
+
+<td><img src="images/bb_separator.gif" width="6" height="20" alt="" /></td>
+
+
+
+<td><!--#CW#--<div class="editor_buttonnormal" id="posteditor_cmd_custom1_qq" onMouseOver="buttonContext(this, 'mouseover')" onClick="ubbcode('custom1_qq')" onMouseOut="buttonContext(this, 'mouseout')"><IMG title="插入QQ在线状态按钮" height="20" alt=qq src="images/bb_qq.gif" 
+
+width=21></div>--#CW#--></td>
+
+<td><!--#CW#--<div class="editor_buttonnormal" id="posteditor_cmd_custom1_flash" onClick="ubbcode('custom1_flash')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_flash.gif" width="21" height="20" title="嵌入 Flash 动画" alt="flash" /></div>--#CW#--></td>
+
+<td><!--#CW#--<div class="editor_buttonnormal" id="posteditor_cmd_custom1_rm" onClick="ubbcode('custom1_rm')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_rm.gif" width="21" height="20" title="嵌入 Real 音频或视频" alt="rm" /></div>--#CW#--></td>
+
+<td><!--#CW#--<div class="editor_buttonnormal" id="posteditor_cmd_custom1_wmv" onClick="ubbcode('custom1_wmv')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><img src="images/bb_wmv.gif" width="21" height="20" title="嵌入 Windows media 音频或视频" alt="wmv" /></div>--#CW#--></td>
+
+
+
+<!--<td><div class="editor_buttonnormal" id="posteditor_cmd_custom1_wmv" onClick="ubbcode('custom1_page')" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><IMG title="嵌入分页标签" height="20" alt="标签" src="images/bb_look.gif" width="21"></div></td-->
+
+
+
+<td><div class="editor_buttonnormal" id="posteditor_pad" onMouseOver="buttonContext(this, 'mouseover')" onMouseOut="buttonContext(this, 'mouseout')"><a onClick="spwhitepad();return false;"><img src="images/bb_whitepad.gif" border="0" alt="手写板"></a></div>
+
+<script language="JavaScript">
+
+function spwhitepad(){
+
+var win = window.open("whitepad/editor.htm?name=message","spwhitepadeditor","width=420,height=330,left=200,top=50,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no");
+
+win.focus();
+
+}
+
+</script>
+
+</td>
+
+
+
+<td>
+
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+
+
+<div id="posteditor_switcher">
+
+<input type="button" id="bbcodemode" value="UBB 代码模式" onClick="switchEditor(0)" class="editor_switcher_highlight">
+
+<input type="button" id="wysiwygmode" value="所见即所得模式" onClick="switchEditor(1)" class="editor_switcher">
+
+</div>
+
+<div class="popupmenu_popup" id="posteditor_popup_fontname_menu" style="display: none">
+
+<table cellpadding="4" cellspacing="0" border="0" unselectable="on">
+
+<tr><td class="popupmenu_option" onClick="ubbcode('fontname', '仿宋_GB2312')" unselectable="on"><font face="仿宋_GB2312" unselectable="on">仿宋_GB2312</font></td></tr>
+
+<tr><td class="popupmenu_option" onClick="ubbcode('fontname', '黑体')" unselectable="on"><font face="黑体" unselectable="on">黑体</font></td></tr>
+
+<tr><td class="popupmenu_option" onClick="ubbcode('fontname', '楷体_GB2312')" unselectable="on"><font face="楷体_GB2312" unselectable="on">楷体_GB2312</font></td></tr>
+
+<tr><td class="popupmenu_option" onClick="ubbcode('fontname', '宋体')" unselectable="on"><font face="宋体" unselectable="on">宋体</font></td></tr>
+
+<tr><td class="popupmenu_option" onClick="ubbcode('fontname', '新宋体')" unselectable="on"><font face="新宋体" unselectable="on">新宋体</font></td></tr>
+
+<tr><td class="popupmenu_option" onClick="ubbcode('fontname', 'Tahoma')" unselectable="on"><font face="Tahoma" unselectable="on">Tahoma</font></td></tr>
+
+<tr><td class="popupmenu_option" onClick="ubbcode('fontname', 'Arial')" unselectable="on"><font face="Arial" unselectable="on">Arial</font></td></tr>
+
+<tr><td class="popupmenu_option" onClick="ubbcode('fontname', 'Impact')" unselectable="on"><font face="Impact" unselectable="on">Impact</font></td></tr>
+
+<tr><td class="popupmenu_option" onClick="ubbcode('fontname', 'Verdana')" unselectable="on"><font face="Verdana" unselectable="on">Verdana</font></td></tr>
+
+<tr><td class="popupmenu_option" onClick="ubbcode('fontname', 'Times New Roman')" unselectable="on"><font face="Times New Roman" unselectable="on">Times New Roman</font></td></tr>
+
+</table></div>
+
+<div class="popupmenu_popup" id="posteditor_popup_fontsize_menu" style="display: none">
+
+<table cellpadding="4" cellspacing="0" border="0" unselectable="on">
+
+<tr align="center"><td class="popupmenu_option" onClick="ubbcode('fontsize', 1)" unselectable="on"><font size="1" unselectable="on">1</font></td></tr>
+
+<tr align="center"><td class="popupmenu_option" onClick="ubbcode('fontsize', 2)" unselectable="on"><font size="2" unselectable="on">2</font></td></tr>
+
+<tr align="center"><td class="popupmenu_option" onClick="ubbcode('fontsize', 3)" unselectable="on"><font size="3" unselectable="on">3</font></td></tr>
+
+<tr align="center"><td class="popupmenu_option" onClick="ubbcode('fontsize', 4)" unselectable="on"><font size="4" unselectable="on">4</font></td></tr>
+
+<tr align="center"><td class="popupmenu_option" onClick="ubbcode('fontsize', 5)" unselectable="on"><font size="5" unselectable="on">5</font></td></tr>
+
+<tr align="center"><td class="popupmenu_option" onClick="ubbcode('fontsize', 6)" unselectable="on"><font size="6" unselectable="on">6</font></td></tr>
+
+<tr align="center"><td class="popupmenu_option" onClick="ubbcode('fontsize', 7)" unselectable="on"><font size="7" unselectable="on">7</font></td></tr>
+
+</table></div>
+
+<div class="popupmenu_popup" id="posteditor_popup_forecolor_menu" style="display: none">
+
+<table cellpadding="4" cellspacing="0" border="0" unselectable="on"><tr>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Black')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Black" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Sienna')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Sienna" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'DarkOliveGreen')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: DarkOliveGreen" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'DarkGreen')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: DarkGreen" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'DarkSlateBlue')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: DarkSlateBlue" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Navy')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Navy" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Indigo')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Indigo" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'DarkSlateGray')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: DarkSlateGray" unselectable="on"></div></td>
+
+</tr><tr>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'DarkRed')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: DarkRed" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'DarkOrange')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: DarkOrange" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Olive')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Olive" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Green')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Green" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Teal')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Teal" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Blue')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Blue" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'SlateGray')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: SlateGray" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'DimGray')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: DimGray" unselectable="on"></div></td>
+
+</tr><tr>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Red')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Red" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'SandyBrown')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: SandyBrown" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'YellowGreen')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: YellowGreen" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'SeaGreen')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: SeaGreen" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'MediumTurquoise')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: MediumTurquoise" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'RoyalBlue')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: RoyalBlue" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Purple')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Purple" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Gray')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Gray" unselectable="on"></div></td>
+
+</tr><tr>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Magenta')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Magenta" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Orange')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Orange" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Yellow')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Yellow" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Lime')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Lime" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Cyan')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Cyan" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'DeepSkyBlue')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: DeepSkyBlue" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'DarkOrchid')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: DarkOrchid" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Silver')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Silver" unselectable="on"></div></td>
+
+</tr><tr>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Pink')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Pink" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Wheat')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Wheat" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'LemonChiffon')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: LemonChiffon" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'PaleGreen')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: PaleGreen" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'PaleTurquoise')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: PaleTurquoise" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'LightBlue')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: LightBlue" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'Plum')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: Plum" unselectable="on"></div></td>
+
+<td class="editor_colornormal" onClick="ubbcode('forecolor', 'White')" unselectable="on" onMouseOver="colorContext(this, 'mouseover')" onMouseOut="colorContext(this, 'mouseout')"><div style="background-color: White" unselectable="on"></div></td>
+
+</tr><tr>
+
+</tr>
+
+</table>
+
+</div>
+
+</table>
+
+<div class="editor_text">
+
+<textarea name="message" rows="10" cols="60" style="width:100%; height:200px" tabindex="100" id="posteditor_textarea" onSelect="javascript: storeCaret(this);" onClick="javascript: storeCaret(this);" onKeyUp="javascript:storeCaret(this);" ></textarea>
+
+</div>
+
+<table width="100%" cellpadding="4" cellspacing="0" class="editor_button">
+
+<tr>
+
+<td>
+
+<div class="editor_textexpand"><img src="images/bb_contract.gif" width="11" height="21" title="收缩编辑框" alt="收缩编辑框" onClick="resizeEditor(-100)" /><img src="images/bb_expand.gif" width="12" height="21" title="扩展编辑框" alt="扩展编辑框" onClick="resizeEditor(100)" />
+
+</div>
+
+</td>
+
+<td align="right">
+
+<input type="button" class="lightbutton" value="字数检查" onClick="checklength()">
+
+<input type="button" class="lightbutton" value=" 清空内容 " tabindex="103" onClick="clearcontent()">
+
+</td>
+
+</tr>
+
+</table>
+
+<input type="hidden" name="wysiwyg" id="posteditor_mode" value="1">
+
+<script type="text/javascript">
+
+var textobj = $(editorid + '_textarea');
+
+newEditor(wysiwyg);
+
+</script>
+
+</body>
+
+</html>
+

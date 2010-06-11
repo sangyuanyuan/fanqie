@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>[$SYS_NAME] - 管理登陆</title>
+</head>
+<link rel='stylesheet' type='text/css' href='[$html_url]/style.css' />
+
+<body  onload="document.LoginForm.UserName.focus();">
+<br><br>
+ <form name="LoginForm" method="post" action="login.do">
+  <table width="500" border="0" align="center" cellpadding="5" cellspacing="1" class="table_border">
+ <tr  class="table_header"> 
+      <td colspan="2" align="center">[$SYS_NAME] - 管理登陆</td>
+      
+    </tr>
+	<include file="block.error.html"/>
+
+    <tr class="table_td1"> 
+      <td>用户名：</td>
+      <td> <input name="UserName" type="text" id="user" disabled></td>
+    </tr>
+    <tr class="table_td1"> 
+      <td>密码：</td>
+      <td> <input name="Password" type="password" id="pass" disabled></td>
+    </tr>
+	<if test="$SYS_ENV.enable_admin_validcode == 1" >
+	 <tr class="table_td1"> 
+      <td>验证码：</td>
+      <td> <input name="validCode" type="text" disabled>  <img  src="validCode.php" border="0" style="position: relative; top:4px" ></td>
+    </tr>
+ </if>
+    <tr class="table_td2"> 
+      <td>&nbsp;</td>
+      <td><INPUT TYPE="checkbox" NAME="IpSecurity" id="IpSecurity"  Value="1" disabled checked><label for="IpSecurity">IP安全</label>&nbsp;&nbsp;&nbsp;&nbsp;<input name="submit" type="submit" id="submit" value="登　陆" disabled></td>
+    </tr>
+  </table>
+</form>   
+<include file="footer.html" />
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!--//display errors-->
+<if test="!empty($Struts_Errors)">
+	<tr > 
+	<td colspan="2" class="table_td2">
+	<div class='errorwrap'   >
+	<h4>抱歉,发生错误!</h4>
+		<ol>
+		<loop name="Struts_Errors" key="key" var="var" >
+		<li>[$var]</li>
+		</loop>
+		</ol>
+	</div>
+	</td>
+	</tr>
+</if>
+<!--display errors//-->

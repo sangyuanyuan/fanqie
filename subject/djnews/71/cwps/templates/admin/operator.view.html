@@ -1,0 +1,54 @@
+<include: file="header.html">
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="operator.do">操作管理</A> -&gt; 查看记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+
+<table width="98%" border="0" cellpadding="5" cellspacing="1" class="table_border" align="center">
+<tr>
+	<td colspan="2" class="table_header">查看操作信息</td>
+</tr>
+
+<tr>
+	<td class="table_td1" width="200">OpID：</td>
+	<td class="table_td2">[$RecordInfo.OpID]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">操作名称：</td>
+	<td class="table_td2">[$RecordInfo.OpName]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">操作标识：</td>
+	<td class="table_td2"><B>[$RecordInfo.PrivilegeUID]-[$RecordInfo.ResourceUID]</B></td>
+</tr>
+
+
+<tr>
+	<td class="table_td1" width="200">权限：</td>
+	<td class="table_td2">[$RecordInfo.PrivilegeName]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">资源：</td>
+	<td class="table_td2">[$RecordInfo.ResourceName]</td>
+</tr>
+<tr>
+	<td class="table_td1" width="200">启用：</td>
+	<td class="table_td2">
+<if test="$RecordInfo.Enabled == 1">
+是
+<else>
+<FONT   COLOR="#CCCCCC">否</FONT>
+</if>
+ 
+
+</td>
+</tr>
+</table>
+<include: file="footer.html">
+</body>
+</html>

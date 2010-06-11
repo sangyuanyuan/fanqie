@@ -1,0 +1,238 @@
+<include file="TplConfig.html">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>搜索结果 - [$searchKeywords] - [$SITE_NAME]</title>
+<meta name="keywords" content="[$searchKeywords]" />
+<link href="[$SKIN_URL]movie/css/style.css" rel="stylesheet" type="text/css" />
+<!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="[$SKIN_URL]movie/js/js.js"></script>
+
+</head>
+
+<body>
+<include file="../common/header.html" />
+<div class="news_nav"><!--#CW#--影视频道附加导航--#CW#-->
+	<CMS action="NODELIST" return="List" Type="set" NodeID="{$Index_NodeID}" /><!--#CW#根据TplConfig中设置的影视主结点ID号，生成导航#CW#-->
+	<loop name="List" var="var" key="key" start="1">
+	<a href="[$var.NodeURL]">[$var.NodeName]</a><if test="$key < count($List)"> | </if><!--#CW#如果已循环到最后一条，则不显示最后的|#CW#-->
+	</loop>
+</div>
+
+<div class="content">
+
+	<div class="left">
+
+        <!--#CW#---左边样式1--#CW#-->
+
+		<div class="topside01">
+
+			<div class="topside01_l">&nbsp;</div>
+
+			<div class="topside01_c">&nbsp;</div>
+
+			<div class="topside01_r">&nbsp;</div>
+
+		</div>
+
+        <div class="center01">
+
+        <div class="sonfocus" style="font-size:16px;">
+
+            <ul class="comm_num">
+
+              <li>共找到<font color="red"> [$searchResultInfo.num]</font>篇有关 "</font><font color=red> [$searchKeywords] </font><font color="#000000">" 的网页&nbsp;&nbsp; 当前显示 [$searchResultInfo.from] - [$searchResultInfo.to] 条 , 共[$searchResultInfo.pageNum]页 </font></li>  
+
+            </ul>
+
+        </div>
+
+        <loop $searchResult var=var>
+
+        <div class="sonfocus" style="font-size:16px;">
+
+            <table width="728" cellpadding="0" cellspacing="0" border="0" class="movies_comm">
+
+                <tr>
+
+                    <td height="30"><span class="people">电影名：</span><span class="peoplee" style="font-size:14px;">[@highlight($var.Title,$searchKeywords)]</span></td>
+
+                </tr>
+
+                <tr>
+
+                    <td><div class="commcon">[@highlight(html2txt($var.Content),$searchKeywords,200)]</div></td>
+
+                </tr>
+
+                <tr>
+
+                    <td align="right"><span>[@date('Y-m-d H:i', $var.PublishDate)]</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="[$var.URL]" title="[$var.Title]">[$var.URL]</a></span></td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+        </loop>
+
+        <div class="sonfocus" style="font-size:16px;">
+
+            <ul class="comm_num"><li>[$pageList]</li>  </ul>
+
+        </div>
+
+        
+
+        </div>
+
+        <div class="bottomside01">
+
+			<div class="bottomside01_l">&nbsp;</div>
+
+			<div class="bottomside01_c">&nbsp;</div>
+
+			<div class="bottomside01_r">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+	<!--#CW#--右边列开始--#CW#-->
+
+	<div class="right">
+
+    	<!--#CW#--搜索BOX--#CW#-->
+
+		<include file="inc/search_box.html">
+
+		<!--#CW#--右边样式1--#CW#-->
+
+		<div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<!--#CW#--一周热影--#CW#-->
+
+        	<div class="photo_fous">一周热影</div>
+
+            <CMS action="LIST" return="List" NodeID="{$Searech_LeftHot_NodeID}" Num="{$Searech_LeftHot_Num}" OrderBy="{$Searech_LeftHot_OrderBy}" />
+
+            <loop name="List" key="key" var="var">
+
+            <a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+            </loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+
+		<!--#CW#--右边样式2--#CW#-->
+
+        <div class="topside05">
+
+			<div class="topside05_l">&nbsp;</div>
+
+			<div class="topside05_c">&nbsp;</div>
+
+			<div class="topside05_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center05">
+
+        	<!--#CW#--推荐电影--#CW#-->
+
+        	<div class="photo_fous">推荐电影</div>
+
+            <CMS action="LIST" return="List" NodeID="{$Searech_LeftPink_NodeID}" Num="{$Searech_LeftPink_Num}" where="{$Searech_LeftPink_where}" />
+
+            <loop name="List" var="var" key="key">
+
+			<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside05">
+
+			<div class="bottomside05_l">&nbsp;</div>
+
+			<div class="bottomside05_c">&nbsp;</div>
+
+			<div class="bottomside05_r">&nbsp;</div>
+
+		</div>
+
+        
+
+        <div class="topside04">
+
+			<div class="topside04_l">&nbsp;</div>
+
+			<div class="topside04_c">&nbsp;</div>
+
+			<div class="topside04_r">&nbsp;</div>
+
+		</div>
+
+		<div class="center04">
+
+        	<!--#CW#--总点击排行--#CW#-->
+
+        	<div class="photo_fous">总点击排行</div>
+
+  			<CMS action="LIST" return="List" NodeID="{$Searech_LeftHits_Total_NodeID}" Num="{$Searech_LeftHits_Total_Num}" OrderBy="{$Searech_LeftHits_Total_OrderBy}" />
+
+            <loop name="List" var="var" key="key">
+
+			<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title,0,10)]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+
+			</loop>
+
+		</div>
+
+		<div class="bottomside04">
+
+			<div class="bottomside04_l">&nbsp;</div>
+
+			<div class="bottomside04_c">&nbsp;</div>
+
+			<div class="bottomside04_r">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+</div>
+<include file="../common/footer.html" />
+</body>
+
+</html>
+

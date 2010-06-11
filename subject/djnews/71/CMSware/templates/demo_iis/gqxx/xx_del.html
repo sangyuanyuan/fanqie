@@ -1,0 +1,43 @@
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$SITE_NAME] - [$Title]</title><!--#CW#站点名称$SITE_NAME可在CMSWARE后台-系统管理-模板变量设置中设置,$NodeInfo.Name是本模板所在结点的结点名称#CW#-->
+<link href="[$SKIN_URL]gqxx/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+
+<div class="content">
+	
+<TABLE width="100%" height="113" style="border:1px solid #666666" cellPadding=4 cellSpacing=1>
+              <TBODY>
+              
+			  <TR>  
+                <TD vAlign=middle align="center" bgColor=#eeeeee>
+<CMS action="CONTENT" return="var" IndexID="{$Custom1}" /> 
+				
+<if test="$var.UserName != $UserInfo.UserName  and  $var.Author != $UserInfo.UserName">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对不起，你没有权限删除这个内容
+<else>
+				
+<form name="form1" method="post"  action="[$PUBLISHAPI_URL]index.php?IndexID=[$Custom1]&action=del&con=fabu&referer=[@rawurlencode($PUBLISH_URL . 'content_v.php?id=' . $Member_index_IndexID . '&page=0')]" >
+				你确定删除文章：<font color="#FF0000">[$var.Title]</font> 吗？<br /><br />
+				<input name="Submit" type="submit" value="确定删除" />
+  </form>
+				
+</if>				
+                </TD>
+			  </TR>
+			  </TBODY>
+</TABLE>
+	
+</div>
+
+<div class="content"></div>
+
+<include file="../common/footer.html" />
+</body>
+</html>

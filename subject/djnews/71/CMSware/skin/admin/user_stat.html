@@ -1,0 +1,32 @@
+<include: file="header.html">
+
+  <table border="0" cellspacing="1" cellpadding="4" width="80%"  align=center class="table_border">
+    <tr> 
+      <td colspan="7" class="table_header">{lang:topic} </td>
+    </tr>
+    <tr > 
+      <td align="center" class="table_td1">{lang:username}</td>
+      <td align="center" class="table_td1">{lang:group}</td>
+      <td width="50" align="center" class="table_td2">{lang:approved}</td>
+      <td width="50" align="center" class="table_td2">{lang:throw}</td>
+      <td width="50" align="center" class="table_td2">{lang:callback}</td>
+      <td width="50" align="center" class="table_td2">{lang:unthrow}</td>
+      <td width="50" align="center" class="table_td2">{lang:total}</td>
+    </tr>
+<loop $uInfo key=key var=var>
+    <tr > 
+      <td class="table_td1" align="center">[$var.uName]</td>
+        <td class="table_td1" align="center">[$var.gName]</td>
+        <td class="table_td2" align="center">[$var.ApproveNum]</td>
+        <td class="table_td2" align="center">[$var.ContributionNum]</td>
+        <td class="table_td2" align="center">[$var.CallBackNum]</td>
+        <td class="table_td2" align="center">[$var.NoContributionNum]</td>
+        <td class="table_td2" align="center">[$var.TotalNum]</td>
+</tr>
+</loop>
+
+   
+  </table>
+		
+</BODY>
+<include: file="footer.html">

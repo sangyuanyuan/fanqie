@@ -50,5 +50,10 @@
 		$table->resource_id = $_POST['id'];
 		$table->point = $_POST['value'];
 		$table->save();
+ 	}elseif($_POST['type']=='cream')
+ 	{
+ 		$table = new table_class('smg_news');
+		$table->find($_POST['id']);
+		$table->update_attribute('cream',$table->cream+1);
  	}
 ?>

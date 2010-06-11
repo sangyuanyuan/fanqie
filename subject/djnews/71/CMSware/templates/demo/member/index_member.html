@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$SITE_NAME] - [$NodeInfo.Name]</title><!--#CW#站点名称$SITE_NAME可在CMSWARE后台-系统管理-模板变量设置中设置,$NodeInfo.Name是本模板所在结点的结点名称#CW#-->
+<link href="[$SKIN_URL]member/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<body>
+<include file="../common/header.html" />
+<if test="!empty($UserInfo.UserName)">
+<div class="news_nav">
+	&nbsp;&nbsp;
+	&nbsp;&nbsp;
+</div>
+
+<div class="content">
+<div id="member_left">
+	<div class="mem_left">
+        <!--左边样式1-->		
+		<div class="mem_topside01">
+			<div class="mem_topside01_l">&nbsp;</div>
+			<div class="mem_topside01_c">&nbsp;</div>
+			<div class="mem_topside01_r">&nbsp;</div>
+		</div>
+		<div class="mem_center01">
+			<div class="mem_focus"><font color="#FF66CC">会员新闻</font></div>
+			<div class="mem_morefocuslink"><a href="[$PUBLISH_URL]contribution_v.php?Tpl=contribution.html">[投稿]</a>&nbsp;&nbsp;[<a href="[$PUBLISH_URL]content_v.php/[$Member_ckqb_IndexID],0,[$Member_NewsNodeID],[$Member_ckqb_0].html">查看全部</a>]</div>
+          	<div class="mem_sonfocus">
+			<CMS action="LIST" return="List" where="c.Author='{$UserInfo.UserName}'" NodeID="{$Member_NewsNodeID}" Num="10" />
+			<loop name="List" var="var" key="key" start="1">
+			<div id="mem_xxfb_list"> 
+			<div id="mem_xxfb_list_l">[$NodeVar.NodeName]<A title="[$var.Title]" href="[$var.URL]" target=_blank>[@Csubstr($var.Title,0,16,'')]</A></div>
+			<div id="mem_xxfb_list_r">[[@date('m-d', $var.PublishDate)]]</div>
+			<div id="mem_xxfb_list_edit">&nbsp;</div>
+			<div id="mem_xxfb_list_del"><a target="_self" href="[$PUBLISH_URL]content_v.php/[$Gqxx_del_IndexID],0,[$var.IndexID].html"><font color="#FF0000">[删]</font></a></div>
+			</div>
+			</loop>
+			</div>
+		</div>
+		<div class="mem_bottomside01">
+			<div class="mem_bottomside01_l">&nbsp;</div>
+			<div class="mem_bottomside01_c">&nbsp;</div>
+			<div class="mem_bottomside01_r">&nbsp;</div>
+		</div>
+	</div>
+
+	<div class="mem_right">
+        <!--左边样式1-->
+		<div class="mem_topside01">
+			<div class="mem_topside01_l">&nbsp;</div>
+			<div class="mem_topside01_c">&nbsp;</div>
+			<div class="mem_topside01_r">&nbsp;</div>
+		</div>
+		<div class="mem_center01">
+			<div class="mem_focus"><font  color="#66CC33">我的话题</font></div>
+			<div class="mem_morefocuslink"><a href="[$PUBLISH_URL]content_v.php/[$Member_fqht_IndexID],0.html">[发起新话题]</a>&nbsp;&nbsp;[<a href="[$PUBLISH_URL]content_v.php/[$Member_ckqb_IndexID],0,[$Ht_MainNodeID],[$Member_ckqb_0].html">查看全部</a>]</div>
+          	<div class="mem_sonfocus">
+			<CMS action="LIST" return="List" where="c.Author='{$UserInfo.UserName}'" NodeID="{$Ht_MainNodeID}" Num="10" />
+			<loop name="List" var="var" key="key" start="1">
+			<div id="mem_xxfb_list"> 
+			<div id="mem_xxfb_list_l">[$NodeVar.NodeName]<A title="[$var.Title]" href="[$var.URL]" target=_blank>[@Csubstr($var.Title,0,16,'')]</A></div>
+			<div id="mem_xxfb_list_r">[[@date('m-d', $var.PublishDate)]]</div>
+			<div id="mem_xxfb_list_edit">&nbsp;</div>
+			<div id="mem_xxfb_list_del"><a target="_self" href="[$PUBLISH_URL]content_v.php/[$Gqxx_del_IndexID],0,[$var.IndexID].html"><font color="#FF0000">[删]</font></a></div>
+			</div>
+			</loop>
+  	  	    </div>
+		</div>
+		<div class="mem_bottomside01">
+			<div class="mem_bottomside01_l">&nbsp;</div>
+			<div class="mem_bottomside01_c">&nbsp;</div>
+			<div class="mem_bottomside01_r">&nbsp;</div>
+		</div>
+	</div>
+
+	<div class="mem_left">
+        <!--左边样式1-->
+		<div class="mem_topside01">
+			<div class="mem_topside01_l">&nbsp;</div>
+			<div class="mem_topside01_c">&nbsp;</div>
+			<div class="mem_topside01_r">&nbsp;</div>
+		</div>
+		<div class="mem_center01">
+			<div class="mem_focus"><font color="#CC66FF">我的供应</font></div>
+			<div class="mem_morefocuslink"><a href="[$PUBLISH_URL]content_v.php/[$Gqxx_fb_IndexID],0,1.html">[发布新供应]</a>&nbsp;&nbsp;[<a href="[$PUBLISH_URL]content_v.php/[$Member_ckqb_IndexID],0,[$Gqxx_MainNodeID],[$Member_ckqb_1].html">查看全部</a>]</div>
+          	<div class="mem_sonfocus">
+			<CMS action="LIST" return="List" where="c.UserName='{$UserInfo.UserName}' and GqType='1'" NodeID="{$Gqxx_AllNodeID}" Num="10" />
+			<loop name="List" var="var" key="key" start="1">
+			<div id="mem_xxfb_list"> 
+			<div id="mem_xxfb_list_l">[$NodeVar.NodeName]<A title="[$var.Title]" href="[$var.URL]" target=_blank>[@Csubstr($var.Title,0,16,'')]</A></div>
+			<div id="mem_xxfb_list_r">[[@date('m-d', $var.PublishDate)]]</div>
+			<div id="mem_xxfb_list_edit"><a target="_self" href="[$PUBLISH_URL]content_v.php/[$Gqxx_edit_IndexID],0,[$var.IndexID].html"><font color="#FF0000">[编]</font></a></div>
+			<div id="mem_xxfb_list_del"><a target="_self" href="[$PUBLISH_URL]content_v.php/[$Gqxx_del_IndexID],0,[$var.IndexID].html"><font color="#FF0000">[删]</font></a></div>
+			</div>
+			</loop>
+  	  	    </div>
+		</div>
+		<div class="mem_bottomside01">
+			<div class="mem_bottomside01_l">&nbsp;</div>
+			<div class="mem_bottomside01_c">&nbsp;</div>
+			<div class="mem_bottomside01_r">&nbsp;</div>
+		</div>
+	</div>
+
+	<div class="mem_right">
+        <!--左边样式1-->
+		<div class="mem_topside01">
+			<div class="mem_topside01_l">&nbsp;</div>
+			<div class="mem_topside01_c">&nbsp;</div>
+			<div class="mem_topside01_r">&nbsp;</div>
+		</div>
+		<div class="mem_center01">
+			<div class="mem_focus"><font color="#0066FF">我的需求</font></div>
+			<div class="mem_morefocuslink"><a href="[$PUBLISH_URL]content_v.php/[$Gqxx_fb_IndexID],0,2.html">[发布新需求]</a>&nbsp;&nbsp;[<a href="[$PUBLISH_URL]content_v.php/[$Member_ckqb_IndexID],0,[$Gqxx_MainNodeID],[$Member_ckqb_2].html">查看全部</a>]</div>
+          	<div class="mem_sonfocus">
+			<CMS action="LIST" return="List" where="c.UserName='{$UserInfo.UserName}' and GqType='2'" NodeID="{$Gqxx_AllNodeID}" Num="10" />
+			<loop name="List" var="var" key="key" start="1">
+			<div id="mem_xxfb_list"> 
+			<div id="mem_xxfb_list_l">[$NodeVar.NodeName]<A title="[$var.Title]" href="[$var.URL]" target=_blank>[@Csubstr($var.Title,0,16,'')]</A></div>
+			<div id="mem_xxfb_list_r">[[@date('m-d', $var.PublishDate)]]</div>
+			<div id="mem_xxfb_list_edit"><a target="_self" href="[$PUBLISH_URL]content_v.php/[$Gqxx_edit_IndexID],0,[$var.IndexID].html"><font color="#FF0000">[编]</font></a></div>
+			<div id="mem_xxfb_list_del"><a target="_self" href="[$PUBLISH_URL]content_v.php/[$Gqxx_del_IndexID],0,[$var.IndexID].html"><font color="#FF0000">[删]</font></a></div>
+			</div>
+			</loop>
+  	  	    </div>
+		</div>
+		<div class="mem_bottomside01">
+			<div class="mem_bottomside01_l">&nbsp;</div>
+			<div class="mem_bottomside01_c">&nbsp;</div>
+			<div class="mem_bottomside01_r">&nbsp;</div>
+		</div>
+
+	</div>
+
+</div>
+
+	<!--右边列开始-->
+	<include file="right_list.html">
+	
+</div>
+
+<else>
+<div class="content">
+<div style="float:left; text-align:center; margin:50px 0px 0px 110px;">
+<div style="float:left; text-align:center; margin:10px 10px 80px 10px; padding:23px 0px 0px 0px; width:500px; height:50px; border:1px dashed #CCCCCC; font-size:16px;">
+您好，您还没有登录，请先...<a href="[$OAS_URL]login.php?forward=[@rawurlencode($SelfURL)]"><font color="#FF0000">登录</font></a>&nbsp;&nbsp;或&nbsp;&nbsp;<a href="[$OAS_URL]register.php?forward=[@rawurlencode($SelfURL)]"><font color="#FF0000">注册</font></a>
+</div>
+</div>
+</div>
+</if>
+
+<div class="content"></div>
+
+
+<include file="../common/footer.html" />
+</body>
+</html>

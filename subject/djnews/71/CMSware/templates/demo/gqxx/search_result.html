@@ -1,0 +1,194 @@
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>搜索结果 - [$searchKeywords] - [$SITE_NAME]</title>
+<!--#CW#站点名称$SITE_NAME可在CMSWARE后台-系统管理-模板变量设置中设置,$NodeInfo.Name是本模板所在结点的结点名称#CW#-->
+<meta name="keywords" content="[$searchKeywords]" />
+<link href="[$SKIN_URL]gqxx/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+<div class="content">
+	<div class="left">
+        <!---左边样式1-->
+		<div class="topside01">
+			<div class="topside01_l">&nbsp;</div>
+			<div class="topside01_c">&nbsp;</div>
+			<div class="topside01_r">&nbsp;</div>
+		</div>
+		<div class="center01" id="newsfocus">
+			<div class="focus">供求信息搜索结果页</div><div class="morefocuslink"></div>
+            <div class="sonfocus">
+<table width=100% border=0 cellspacing=0 cellpadding=0 align=center>
+          <form name="xh" method="post" action="[$PUBLISH_URL]search.php?o=search&TableID='[$Gqxx_TableID]' " >
+            <tr> 
+              <td colspan="2" bgcolor="#F7F7F7"> <br> <table width="100%" border=0 cellspacing=5 cellpadding=3 >
+                  <tr> 
+                    <td width="27%" align="right"><b>搜索关键字:</b>
+                    <td width="38%"  > 
+                      <input name=Keywords value="[$searchKeywords]" type=text id="keywords" size=35> 
+                    </td>
+                    <td width="35%"  >&nbsp;&nbsp; <input  name="image222" type="submit" value="搜索" onClick="if(this.form.Keywords.value=='') {alert('请输入关键字');return false;}">
+                     
+                      <input name="Field" type="hidden" id="field" value="Title">
+                    </td>
+                  </tr>
+                </table></td>
+            </tr>
+          </form>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="6" align="center">
+          <tr> 
+            <td bgcolor="#DFDFDF" colspan="2"> <font color="#000000"> 
+              共找到<font color="red"> 
+              [$searchResultInfo.num]
+              </font>篇有关 "</font><font color=red> 
+              [$searchKeywords]
+              </font><font color="#000000">" 的网页&nbsp;&nbsp; 当前显示 
+              [$searchResultInfo.from]
+              - 
+              [$searchResultInfo.to]
+              条 , 共[$searchResultInfo.pageNum]页 </font> </td>
+          </tr>
+          <tr> 
+            <td width="100%" height="5" align="left" valign="top" colspan="2"> 
+            </td>
+          </tr>
+        </table>
+        </td>
+    </tr>
+  </table>
+  <loop $searchResult var=var>
+  <table width="100%" border="0" cellspacing="0" cellpadding="8" align="center" bgcolor="#F7F7F7" >
+    <tr> 
+      <td width="3%">&nbsp; </td>
+      <td width="95%"><a href="[$var.URL]" target=_blank><font color="#663333"><span>
+        [@highlight($var.Title,$searchKeywords)]
+        </span></font></a> [$var.score]
+		
+<if test="$var.GqType!=1"><font color="#FF0000">[求]</font><else><font color="#FF0000">[供]</font></if>
+		
+		<font color="#666666">发布时间:[@date('Y年m月d日 H:i', $var.PublishDate)]</font>  </td>
+      <td align="right" width="2%">&nbsp; </td>
+    </tr>
+    <tr> 
+      <td colspan=5> <blockquote><font color=#000000>[@highlight(html2txt($var.Content), 
+          $searchKeywords,200)]     <br>
+          <a href="[$var.URL]" target=_blank><font color="#000000"><font color="#666666">[$var.URL]</font></font></a> 
+          </font></blockquote></td>
+    </tr>
+  </table>
+  </loop>
+  
+
+				
+  	  	    </div>
+			</div>
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+        <!--左边样式2-->
+        <div class="topside02">
+			<div class="topside02_l">&nbsp;</div>
+			<div class="topside02_c">&nbsp;</div>
+			<div class="topside02_r">&nbsp;</div>
+		</div> 
+		<div class="center02">
+       		<div class="xxfb_list_page">[$pageList]</div>
+		</div>
+		<div class="bottomside02">
+			<div class="bottomside02_l">&nbsp;</div>
+			<div class="bottomside02_c">&nbsp;</div>
+			<div class="bottomside02_r">&nbsp;</div>
+		</div>
+	</div>
+
+	<!--右边列开始-->
+	
+	<div class="right">	
+		<!--右边样式1-->
+<!--供求搜索框-->		
+		
+		<div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<div class="photo_fous">最热供求信息</div>
+			
+<CMS action="LIST" return="List" NodeID="{$Gqxx_AllNodeID}" OrderBy="Hits_Total DESC"  Num="10" /> 
+<loop name="List" var="var" key="key">
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 10,'')] </a>
+点击:<font color="#FF0000">[$var.Hits_Total]</font>
+<!--显示文章链接，自动截取标题长度16-->
+<br> 
+</loop> 
+			
+		</div>
+		
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+		<!--右边样式2-->
+        <div class="topside05">
+			<div class="topside05_l">&nbsp;</div>
+			<div class="topside05_c">&nbsp;</div>
+			<div class="topside05_r">&nbsp;</div>
+		</div>
+		<div class="center05">
+        	<div class="photo_fous">最新供应信息</div>
+			
+<CMS action="LIST" return="List" NodeID="{$Gqxx_AllNodeID}" where="c.GqType='1'" orderby="i.PublishDate DESC "  Num="10" /> 
+<loop name="List" var="var" key="key">
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 10,'')] </a>
+<font color="#FF0000">[@date("m-d", $var.PublishDate)]</font>
+<!--显示文章链接，自动截取标题长度16-->
+<br> 
+</loop>
+			
+		    </div>
+		<div class="bottomside05">
+			<div class="bottomside05_l">&nbsp;</div>
+			<div class="bottomside05_c">&nbsp;</div>
+			<div class="bottomside05_r">&nbsp;</div>
+		</div>
+        
+        <div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<div class="photo_fous">最新寻求信息</div>
+            
+<CMS action="LIST" return="List" NodeID="{$Gqxx_AllNodeID}" where="c.GqType='2'" orderby="i.PublishDate DESC "  Num="10" /> 
+<loop name="List" var="var" key="key">
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 10,'')] </a>
+<font color="#FF0000">[@date("m-d", $var.PublishDate)]</font>
+<!--显示文章链接，自动截取标题长度16-->
+<br> 
+</loop>			
+			
+		    </div>
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+	</div>
+	
+</div>
+
+<div class="content"></div>
+
+<include file="../common/footer.html" />
+</body>
+</html>

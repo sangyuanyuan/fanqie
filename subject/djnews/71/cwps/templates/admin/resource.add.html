@@ -1,0 +1,62 @@
+<include: file="header.html">
+<script language="JavaScript">
+function prepareSubmit() {
+		select_submit('resourceForm', 'TargetOASIDs', 'OASIDs');
+ 
+		return true;
+}
+
+
+</script>
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="resource.do">资源管理</A> -&gt; 新增记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form name="resourceForm" action="resource.do?o=add_submit" method='post' enctype="multipart/form-data" >
+    <tr> 
+      <td colspan="2" class="table_header">新增资源</td>
+    </tr>
+
+<tr>
+	<td class="table_td1">资源唯一标识名:</td>
+	<td class="table_td2">
+		<input name="ResourceUID" type='text' class='flat'  tabindex='8'>
+	</td>
+</tr>
+<tr>
+	<td class="table_td1">资源名称:</td>
+	<td class="table_td2">
+		<input name="ResourceName" type='text' class='flat'  tabindex='8'>
+	</td>
+</tr>
+<tr>
+	<td class="table_td1">OAS域绑定:</td>
+	<td class="table_td2">
+<table> <tr> <td>
+<select name="SrcOASIDs"  onDblClick="select_move_to(this.form, 'SrcOASIDs', 'TargetOASIDs')" size="10" style="width:100px;"><loop name="SrcOASIDs" var="var">
+<option value="[$var.value]">[$var.title]</option>
+</loop>
+</select>
+</td>
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcOASIDs', 'TargetOASIDs')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetOASIDs', 'SrcOASIDs')"><br><br><input type="button" value="全选" onClick="select_move_all_to(this.form, 'SrcOASIDs', 'TargetOASIDs')"><br><input type="button" value="全删" onClick="select_move_all_to(this.form, 'TargetOASIDs', 'SrcOASIDs')"></td><td><select name="TargetOASIDs" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetOASIDs', 'SrcOASIDs')"><loop name="TargetOASIDs" var="var"> <option value="[$var.value]" selected>[$var.title]</option>
+</loop>
+</select>
+<INPUT TYPE="hidden" name="OASIDs"></td>
+</tr></table>
+	</td>
+</tr>
+   
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13' onClick="return prepareSubmit();"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<include: file="footer.html">

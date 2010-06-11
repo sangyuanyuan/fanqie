@@ -1,0 +1,243 @@
+不同版本的升级办法:
+====================
+
+特别注意: 2.5到2.6版本为了向XML靠拢,改进了标签调用的参数写法,请自行查找并替换所有标签中的参数加上引号
+
+- Modify (非常重要) 标签语法遵守XML方式,所有调用标签参数的值必须用引号""括起来，比如:
+         <CMS::LIST:List NodeID="1" TableID="2" Limit="">
+         所有标签的参数名不再区分大小写,但调用标签名要区分大小写,如:
+          <CMS::NODELIST:List NodeID='1'> 中的NODELIST必须大写,但NodeID和nodeid一样
+（在官方论坛有模板转换器下载，自动帮您转换这些区别）
+
+
+
+======================================================================
+一、 完全备份所有的文件,其中包括最重要的:
+
+  /config.php    系统总配置文件
+  /templates/    所有的模板文件
+  /resource/     所有上传的图片资源原始目录
+  /plugins/bbsInterface/bbs/论坛名/bbs.config.php
+                 论坛接口的配置文件
+  /publish/config.php
+  /publish/js.config.php    前台动态应用插件配置文件
+
+  *所有发布的页面文件和目录只要不在CMSware目录中一般不影响,但请自行备份
+
+  特别注意:如果你自行改动过/setting/的函数配置文件,则需要再次去进行更改
+
+
+
+
+-----------------------------------------------------------
+二、完整备份数据库内容,使用系统后台的备份功能,也可以用phpMyAdmin完整插入方式备份
+
+
+
+
+-----------------------------------------------------------
+三、用新版本文件完全覆盖旧版本,注意以上重要配置文件不要覆盖
+
+
+
+
+-----------------------------------------------------------
+四、请执行update.php升级程序，在界面按您的版本，顺序执行或是从2.1一次升级，直到2.5正式版
+注意,如果没有对应版本的升级文件,则表示数据库不需要升级,你可以跳过这步. 如有疑问,直接与技术支持联系
+
+
+------------
+手工升级方法：
+
+或者，您想自己来手工执行升级就请参考以下
+
+以下是手工执行一个版本一个版本升级的过程
+
+升级 1.0.0905 到 1.1        执行 update1.0_1.1.php
+升级 1.0.0905 到 1.1 SP1    执行 update1.0_1.1SP1.php
+升级 1.1 to 2.0             执行 update1.1_2.0.php
+升级 2.0 to 2.1             执行 update2_0to2_1.php
+升级 2.1 to 2.5RC1          执行 update2_1to2_5.php
+升级 2.5RC1到2.5RC2         覆盖替换RC1文件，注意config.php不要覆盖
+
+-----升级 2.5RC2 到 2.5RC3 -----------------------------------
+1.使用RC3的文件覆盖RC2的文件，注意不要覆盖原RC2的config.php文件
+
+2.执行以下sql语句（推荐使用phpmyadmin）
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('CollectionPageNum', '15');
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('ContentPageNum', '15');
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('SearchPageNum', '15');
+
+3.清空系统缓存
+sysdata/Cache_*.php
+sysdata/templates_c/*
+sysdata/sysinfo/*
+
+
+-----升级 2.5RC3 到 2.5RC4 或 2.5RC5----------------------------------
+1.使用RC4的文件覆盖RC3的文件，注意不要覆盖原RC3的config.php文件
+2.执行以下sql语句（推荐使用phpmyadmin）
+ALTER TABLE `cmsware_site` ADD COLUMN `WorkFlow` int(8) NOT NULL DEFAULT 0;
+ALTER TABLE `cmsware_contribution_1` ADD INDEX `NodeID` (`NodeID`);
+ALTER TABLE `cmsware_contribution_1` CHANGE COLUMN `State` `State` int(5) NULL DEFAULT 0;
+ALTER TABLE `cmsware_contribution_2` ADD INDEX `NodeID` (`NodeID`);
+ALTER TABLE `cmsware_contribution_2` CHANGE COLUMN `State` `State` int(5) NULL DEFAULT 0;
+
+INSERT INTO `cmsware_group` VALUES (3, '编辑', '0', '', '', 0, 1, 0, 0, 0, 0);
+INSERT INTO `cmsware_group` VALUES (4, '高级编辑', '0', '', '', 0, 1, 0, 0, 0, 0);
+
+DROP TABLE IF EXISTS cmsware_workflow;
+CREATE TABLE cmsware_workflow (
+  `wID` int(8) NOT NULL auto_increment,
+  `Name` varchar(30) default NULL,
+  `Intro` text,
+  PRIMARY KEY  (`wID`),
+  UNIQUE KEY `wID` (`wID`)
+) TYPE=MyISAM  ;
+
+INSERT INTO `cmsware_workflow` VALUES (3, '稿件审核工作流', '测试！！');
+
+DROP TABLE IF EXISTS cmsware_workflow_record;
+CREATE TABLE cmsware_workflow_record (
+  `OpID` int(8) NOT NULL auto_increment,
+  `wID` int(8) default NULL,
+  `Executor` int(8) default NULL,
+  `OpName` varchar(50) default NULL,
+  `StateBeforeOp` varchar(100) default NULL,
+  `StateAfterOp` varchar(100) default NULL,
+  `AppendNote` int(1) default '0',
+  `OpIntro` text,
+  PRIMARY KEY  (`OpID`),
+  UNIQUE KEY `OpID` (`OpID`),
+  KEY `wID` (`wID`)
+) TYPE=MyISAM  ;
+
+
+INSERT INTO `cmsware_workflow_record` VALUES (3, 3, 3, '设置为“正在编辑”', '1/103', '100', 0, '将用户的投稿设置为“正在编辑“状态');
+INSERT INTO `cmsware_workflow_record` VALUES (4, 3, 3, '通过审核', '100', '101', 0, NULL);
+INSERT INTO `cmsware_workflow_record` VALUES (5, 3, 3, '打回作者', '100/1/103', '3', 1, '');
+INSERT INTO `cmsware_workflow_record` VALUES (6, 3, 4, '设置为“正在编辑”', '101', '102', 0, NULL);
+INSERT INTO `cmsware_workflow_record` VALUES (7, 3, 4, '打回给作者', '102/101', '3', 1, NULL);
+INSERT INTO `cmsware_workflow_record` VALUES (8, 3, 4, '打回给编辑', '102/101', '103', 1, '');
+INSERT INTO `cmsware_workflow_record` VALUES (9, 3, 4, '通过终审', '102', '2', 0, '完成稿件的审核,稿件被导入内容库,等待发布');
+INSERT INTO `cmsware_workflow_record` VALUES (10, 3, 3, '撤回', '101', '100', 0, NULL);
+
+DROP TABLE IF EXISTS cmsware_workflow_state;
+CREATE TABLE cmsware_workflow_state (
+  `ID` int(8) NOT NULL auto_increment,
+  `Name` char(30) default NULL,
+  `State` int(5) default NULL,
+  `System` int(1) default '0',
+  PRIMARY KEY  (`ID`),
+  UNIQUE KEY `ID` (`ID`),
+  UNIQUE KEY `State` (`State`)
+) TYPE=MyISAM  ;
+
+INSERT INTO `cmsware_workflow_state` VALUES (1, '新增', 0, 1);
+INSERT INTO `cmsware_workflow_state` VALUES (2, '删除', -1, 1);
+INSERT INTO `cmsware_workflow_state` VALUES (3, '已投稿', 1, 1);
+INSERT INTO `cmsware_workflow_state` VALUES (4, '被打回', 3, 1);
+INSERT INTO `cmsware_workflow_state` VALUES (5, '已录用', 2, 1);
+INSERT INTO `cmsware_workflow_state` VALUES (9, '正在编辑(编辑)', 100, 0);
+INSERT INTO `cmsware_workflow_state` VALUES (11, '审核通过(编辑)', 101, 0);
+INSERT INTO `cmsware_workflow_state` VALUES (12, '正在编辑(高级编辑)', 102, 0);
+INSERT INTO `cmsware_workflow_state` VALUES (13, '打回编辑(高级编辑)', 103, 0);
+
+
+3.清空系统缓存
+sysdata/Cache_*.php
+sysdata/templates_c/*
+sysdata/sysinfo/*
+
+4.修改config.php 在下面这行的下面增加后面三行代码，如下：
+  $this->resource_ref = $db_config['table_pre'].'resource_ref';
+  //这以下是RC4版本以后需要新增加的三行
+  $this->workflow = $db_config['table_pre'].'workflow';
+  $this->workflow_state = $db_config['table_pre'].'workflow_state';
+  $this->workflow_record = $db_config['table_pre'].'workflow_record';
+
+
+
+
+-----升级 2.5RC5 到 2.5RC6----------------------------------
+1.使用RC6的文件覆盖RC5的文件，注意不要覆盖原RC5的config.php文件
+2.执行以下sql语句（推荐使用phpmyadmin,把表名前缀cmsware_改成你的）
+ALTER TABLE `cmsware_collection_category` ADD COLUMN `InRunPlan` tinyint(1) NOT NULL DEFAULT 1; 
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('sessionTimeout', '120'); 
+INSERT INTO `cmsware_content_fields` VALUES ('', 2, '界面预览', 'Photo', 'varchar', '250', 'text', NULL, NULL, 'upload', NULL, NULL, 0, 0, 0, 0, 0); 
+INSERT INTO `cmsware_content_fields` VALUES ('', 2, '本地上传', 'LocalUpload', 'varchar', '250', 'text', NULL, NULL, 'upload_attach', NULL, NULL, 0, 0, 0, 0, 0); 
+ALTER TABLE `cmsware_collection_2` ADD COLUMN `Photo` varchar(250) NOT NULL default ''; 
+ALTER TABLE `cmsware_collection_2` ADD COLUMN `LocalUpload` varchar(250) NOT NULL default ''; 
+ALTER TABLE `cmsware_content_2` ADD COLUMN `Photo` varchar(250) NOT NULL default ''; 
+ALTER TABLE `cmsware_content_2` ADD COLUMN `LocalUpload` varchar(250) NOT NULL default ''; 
+ALTER TABLE `cmsware_contribution_2` ADD COLUMN `Photo` varchar(250) NOT NULL default ''; 
+ALTER TABLE `cmsware_contribution_2` ADD COLUMN `LocalUpload` varchar(250) NOT NULL default ''; 
+ALTER TABLE `cmsware_publish_2` ADD COLUMN `Photo` varchar(250) NOT NULL default ''; 
+ALTER TABLE `cmsware_publish_2` ADD COLUMN `LocalUpload` varchar(250) NOT NULL default ''; 
+ALTER TABLE `cmsware_plugin_fulltext_search_2` ADD COLUMN `Photo` varchar(250) NOT NULL default ''; 
+ALTER TABLE `cmsware_plugin_fulltext_search_2` ADD COLUMN `LocalUpload` varchar(250) NOT NULL default ''; 
+
+3.清空系统缓存
+sysdata/Cache_*.php
+sysdata/templates_c/*
+sysdata/sysinfo/*
+
+
+
+-----升级 2.5RC6 到 2.5正式版 ----------------------------------
+1.使用2.5正式版的文件覆盖RC6的文件，注意不要覆盖原RC6的config.php文件
+2.执行以下sql语句（推荐使用phpmyadmin,把表名前缀cmsware_改成你的）
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('isLogLogin', '1'); 
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('isLogAdmin', '1'); 
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('DisplayPublishCount', '1'); 
+ALTER TABLE `cmsware_group` ADD COLUMN `canCollection` tinyint(1) NULL DEFAULT 0; 
+ALTER TABLE `cmsware_content_fields` ADD COLUMN `EnableContribution` tinyint(1) NULL DEFAULT 1; 
+ALTER TABLE `cmsware_content_fields` ADD COLUMN `EnableCollection` tinyint(1) NULL DEFAULT 1; 
+ALTER TABLE `cmsware_content_fields` ADD COLUMN `EnablePublish` tinyint(1) NULL DEFAULT 1; 
+ALTER TABLE `cmsware_site` ADD COLUMN `NodeGUID` char(250) NOT NULL AFTER `NodeID`; 
+CREATE TABLE `cmsware_log_admin` ( `LogID` int(10) NOT NULL auto_increment, `uName` char(50) default NULL, `IP` char(15) default NULL, `Action` char(100) default NULL, `ActionURL` char(250) default NULL, `Time` int(10) default NULL, PRIMARY KEY (`LogID`) ) TYPE=MyISAM;
+CREATE TABLE `cmsware_log_login` ( `LogID` int(10) NOT NULL auto_increment, `uName` char(50) default NULL, `IP` char(15) default NULL, `Time` int(10) default NULL, PRIMARY KEY (`LogID`) ) TYPE=MyISAM;
+CREATE TABLE `cmsware_block_ip` ( `Id` int(6) unsigned NOT NULL auto_increment, `IP` char(15) NULL, `ExpireTime` int(10) NULL, `Reason` char(250) NULL, PRIMARY KEY (`Id`) ) TYPE=MyISAM;
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('LoginTryTime', '15'); 
+INSERT INTO `cmsware_sys` (`varName`, `varValue`) VALUES ('LoginTryCount', '5'); 
+ALTER TABLE `cmsware_tpl_vars` ADD COLUMN `IsGlobal` tinyint(1) NULL DEFAULT 1; 
+ALTER TABLE `cmsware_tpl_vars` ADD COLUMN `NodeScope` text NULL; 
+ALTER TABLE `cmsware_keywords` ADD COLUMN `IsGlobal` tinyint(1) NULL DEFAULT 1; 
+ALTER TABLE `cmsware_keywords` ADD COLUMN `NodeScope` text NULL; 
+
+3.RC6升级Stable的门户版用户请修改你的config.php 请在 
+	$this->workflow_state = $db_config['table_pre'].'workflow_state'; 
+	$this->workflow_record = $db_config['table_pre'].'workflow_record'; 
+后面添加以下2行 
+	$this->log_login = $db_config['table_pre'].'log_login'; 
+	$this->log_admin = $db_config['table_pre'].'log_login';
+
+4.清空系统缓存
+sysdata/Cache_*.php
+sysdata/templates_c/*
+sysdata/sysinfo/*
+
+
+
+-----升级 2.5 到 2.6版 ----------------------------------
+
+请执行update.php
+
+
+-----升级 2.6 到 2.7版 ----------------------------------
+
+请执行update.php
+
+
+-----升级 2.7 到 2.85版 ----------------------------------
+(1)不增加新的频道功能的用户，就直接覆盖升级，修改好相应的配置就可以了
+
+(2)需要新频道的，建议安装一份新的完整包，然后参考里面的模型和结点设置，参照着增加新结点，绑定模板，然后修改每个频道模板目录下的TplConfig.html. 
+因为频道基本是独立的，就是结点＋模型＋模板的形式。TplConfig.html里定义你的频道结点的入口结点号. 
+搬频道一般就是模型＋模板＋结点，而会变的就只有结点号，我们定的结构就是各频道都有一个TplConfig.html来存放此频道的结点号和参数变量. 
+搬频道的方法，都是基础操作，建立结点，建立模型，绑模板，改TplConfig.html，把skin目录放到根，这些统统是基础操作。
+最后，如果再有需要，再根据自己的需求，修改模板里的区块代码，或修正些错误。
+(3)现在扩展包的两个publish是一样的，用到的只有根目录的这个，cmsware/publish这个只是为了便于老用户覆盖
+=====================================================
+注：对应升级程序文件名的txt文件是各版本升级时的简要说明
+

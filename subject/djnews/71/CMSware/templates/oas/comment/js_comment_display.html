@@ -1,0 +1,17 @@
+<CMS action="COMMENT" return="List" IndexID="{$IndexID}" Num="8" hiddenIp="1" /> 
+<div id="quote">
+<ul>
+<li><h5 id="rev_title">网友评论:</h5></li>
+<li>当前评论：[$PageInfo.CommentNum] 条 </li><li><a href="[$OAS_URL]comment.php?o=display&Id=[$IndexID]">查看所有评论</a></li>  
+<li><a href="[$OAS_URL]comment.php?o=display&Id=[$IndexID]#add" rel="exlink">我要发表评论</a></li>
+
+</ul>
+
+ 
+<dl id="list_review">
+ <LOOP name="List" key="key" var="var"> 
+ <dt> 网友笔名：<b>[$var.Author]</b>&nbsp;&nbsp;发表时间：<i>[@date('Y-m-d H:i', $var.CreationDate)] </i> &nbsp;&nbsp;IP地址：[$var.Ip]   </dt>
+ <dd>[@CsubStr(nl2br($var.Comment), 0, 200)] </dd>				 
+</LOOP> 
+</dl>
+</div>

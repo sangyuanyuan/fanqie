@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+<HEAD>
+<title>[$iwpc_version]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]" />
+<meta name="robots" content="noindex">		
+<link rel='stylesheet' type='text/css' href='../html/style.css' />
+<LINK href="../html/xmenu.css" type=text/css rel=stylesheet>
+<SCRIPT src="../html/xmenu.js" type=text/javascript></SCRIPT>
+<SCRIPT src="../html/functions.js" type=text/javascript></SCRIPT>
+<if *message != ''>
+<center><div class='errormessage' style='width: 400px;' ><img class='errormessage' src='../html/images/errormessage.gif' align='absmiddle'><span class='tab-r'>[*message]</span></div></center><br>
+</if>
+
+<?php if(!empty($_LANG_SKIN['navigation'])) :?>
+<table width="100%"  border="0" align="center" cellspacing="1" class="table_border">
+  <tr> 
+    <td height="25" class="table_td1" style="padding-left:10px;">
+	<table width="100%"  border="0"  cellspacing="1"  >
+	<tr>
+	<td>{lang::global:navigation}{lang:navigation}</td>
+	<td align="right">
+	
+<?php if(!empty($_LANG_SKIN['help_message'])) :?>
+	<A HREF="javascript:showPopupHelpMsg()"><img src="../html/images/info.gif" align="absmiddle" border="0">&nbsp;{lang::global:help}</A>&nbsp;&nbsp;</td>
+<?php endif;?>
+	
+	</tr>
+	</table>	
+	</td>
+  </tr>
+</table>&nbsp;
+</if>

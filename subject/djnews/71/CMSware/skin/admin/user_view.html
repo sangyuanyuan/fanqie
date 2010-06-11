@@ -1,0 +1,33 @@
+<include: file="header.html">
+
+  <table border="0" cellspacing="1" cellpadding="4" width="80%"  align=center class="table_border">
+    <tr> 
+      <td colspan="4" class="table_header">{lang:topic} </td>
+    </tr>
+    <tr > 
+      <td align="center" class="table_td1">{lang:username}</td>
+      <td align="center" class="table_td1">{lang:group}</td>
+      <td width="20%" align="center" class="table_td2"> {lang::global:execute_op}</td>
+    </tr>
+<loop $uInfo key=key var=var>
+    <tr > 
+      <td class="table_td1">[$var.uName]</td>
+        <td class="table_td1">[$var.gName]</td>
+    <td width="20%" align="center" class="table_td2"> <A HREF="[$base_url]o=edit&uId=[$var.uId]">{lang::global:edit}</A> 
+	<if $var.uId != 1>
+	<A HREF="[$base_url]o=del&uId=[$var.uId]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</a>
+	</if>
+	</td>
+    </tr>
+</loop>
+
+   
+  </table>
+ <table border="0" cellspacing="0" cellpadding="0" width="80%"  align=center  >
+   <tr> 
+      <td style="padding-top:5px"><input type="button" name="Submit" value=" {lang:mk_user} " onclick="document.location='[$base_url]o=add'">	
+	  </td>
+	</tr>
+	</table>		
+</BODY>
+<include: file="footer.html">

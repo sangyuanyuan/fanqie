@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="[$charset]"?>
+<Collection>
+<TargetURL>[@htmlentities($CateInfo.TargetURL)]</TargetURL>
+<TargetURLArea>[@htmlentities($CateInfo.TargetURLArea)]</TargetURLArea>
+<UrlFilterRule>[@htmlentities($CateInfo.UrlFilterRule)]</UrlFilterRule>
+<UrlPageRule>[@htmlentities($CateInfo.UrlPageRule)]</UrlPageRule>
+<ContentModel>
+<loop $tableFieldInfo key=key var=var >
+<[$var.FieldName]><?php echo htmlentities($this->_tpl_vars['RulesInfo']["{$this->_tpl_vars['var']['ContentFieldID']}"]);?></[$var.FieldName]>
+</loop>
+</ContentModel>
+</Collection>

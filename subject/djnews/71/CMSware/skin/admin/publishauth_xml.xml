@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="[$charset]"?>
+<tree>
+<loop $NodeInfo key=key var=var>
+<if strpos( $pInfo.NodeList , ','.$var.NodeID .',' )>
+<?php $isChecked = 'checked';?>
+<else>
+<?php $isChecked = ' ';?>
+</if>
+
+<if strpos( $pInfo.NodeExtraPublish ,  ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.NodeSetting  ,  ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+
+<if strpos( $pInfo.ContentRead , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.ContentWrite , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.ContentApprove , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.ContentPublish , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.AuthInherit , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+<if $var.haveSon == 1>
+	<tree text="[$var.Name]" action=""  src="admin_tree.php?op=sId::[$sId];o::publishauth_xml;NodeID::[$var.NodeID];pId::[$pInfo.pId]"  target="panelWork" cId="[$var.NodeID]" checked="<?=$isChecked?>"  />
+<else>
+	<tree text="[$var.Name]" action=""  target="panelWork"  cId="[$var.NodeID]" checked="<?=$isChecked?>"   />
+</if>
+</loop>
+</tree>

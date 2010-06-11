@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+<HEAD>
+<title>[$cms_version]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]" />
+<meta HTTP-EQUIV="Pragma"  CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<meta name="robots" content="noindex">		
+<link rel='stylesheet' type='text/css' href='../html/style.css' />
+<LINK href="../html/xmenu.css" type=text/css rel=stylesheet>
+<SCRIPT src="../html/xmenu.js" type=text/javascript></SCRIPT>
+<SCRIPT src="ui.php?sId=[$sId]&o=functions.js" type=text/javascript></SCRIPT>
+<SCRIPT src="../html/js-help.js" type=text/javascript></SCRIPT>
+<?php if(!empty($_LANG_SKIN['help_message'])) :?>
+
+<SCRIPT language=JavaScript>
+
+var oPopup = window.createPopup();
+
+function showPopupHelpMsg()
+{
+	var leftPos = (screen.availWidth-770) / 2;
+	var topPos = (screen.availHeight-660) / 2 ;
+    
+	var oPopBody = oPopup.document.body;
+	var cBgColor='#FFFFE1';
+	var cColor='#000000';
+	var cBorderColor='#000000';
+
+	var HTMLContent = CMSHelpMsgLayer.innerHTML;
+
+	HTMLContent ="<div  id='dypopLayer' style='overflow:auto;background-color: "+cBgColor+";color:"+cColor+"; border: 1px "+cBorderColor+" solid;font-family: \"Courier New\", \"Courier\"; font-size: 12px;  padding-right: 4px; padding-left: 0px; height: 20px; padding-top: 2px; padding-bottom: 2px; width:100%;height:100%;'  >"+
+	HTMLContent +
+	"</div>";
+	
+ 
+		if(HTMLContent.length > 1500) {
+			width = '600';
+			height = '350';
+		} else {
+			width = '500';
+			height = '250';
+		
+		}
+
+
+
+ 	oPopBody.innerHTML =  HTMLContent;
+ 	oPopup.show(leftPos , topPos, width, height, document.body);
+ 
+}
+</SCRIPT>
+<?php endif;?>
+
+
+<BODY  topmargin=0 leftmargin=0 >
+<div id="CMSHelpMsgLayer" style="display:none">
+{lang:help_message}
+</div>
+<?php if(!empty($_LANG_SKIN['navigation'])) :?>
+
+<table width="100%"  border="0" align="center" cellspacing="1" class="table_border">
+  <tr> 
+    <td height="25" class="table_td1" style="padding-left:10px;">
+	<table width="100%"  border="0"  cellspacing="1"  >
+	<tr>
+	<td>{lang::global:navigation}{lang:navigation}</td>
+	<td align="right">
+	
+<?php if(!empty($_LANG_SKIN['help_message'])) :?>
+	<A HREF="javascript:showPopupHelpMsg()"><img src="../html/images/info.gif" align="absmiddle" border="0">&nbsp;{lang::global:help}</A>&nbsp;&nbsp;</td>
+<?php endif;?>
+	
+	</tr>
+	</table>	
+	</td>
+  </tr>
+</table>&nbsp;
+<?php endif;?>
+
+
+<if $message != ''>
+<center><div class='errormessage' style='width: 400px;' ><img class='errormessage' src='../html/images/info.gif' align='absmiddle'>&nbsp;<span class='tab-r'>[$message]</span></div></center><br>
+</if>
+<if $error_message != ''>
+<center><div class='errormessage' style='width: 400px;' ><img class='errormessage' src='../html/images/errormessage1.gif' align='absmiddle'>&nbsp;<span class='tab-r'>[$error_message]</span></div></center><br>
+</if>
+ 

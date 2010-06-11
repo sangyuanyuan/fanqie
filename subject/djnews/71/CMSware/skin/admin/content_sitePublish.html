@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]">
+<title> {lang:topic}</title>
+<style type="text/css">
+body{margin:0px;scrollbar-face-color: #B8B8B8; scrollbar-highlight-color: #F5F9FF; scrollbar-shadow-color: #828282; scrollbar-3dlight-color: #828282; scrollbar-arrow-color: #797979; scrollbar-track-color: #ECECEC; scrollbar-darkshadow-color: #ffffff}
+body,a,table,div,span,td,th,input,select{font:9pt;font-family:  Verdana, Arial, Helvetica, sans-serif;}
+.text{border:1 solid #aaaaaa;}
+.button{height:18;border:1 ridge #aaaaaa;background-color:aaaaaa;color:ffffff}
+.table {  border: 1px inset; border-color: menu #FFFFFF #FFFFFF menu}
+</style>
+<script language="JavaScript">
+
+function info() {
+
+	var returnValue;
+	returnValue= new Array();
+ 	returnValue['include_sub'] = document.form.include_sub.checked ? 1:0;
+	returnValue['content_num'] = document.form.content_num.value;
+	return returnValue;
+
+}
+</script>
+</HEAD>
+
+<BODY bgcolor=menu  text="#000000">
+
+
+ <table width="100%" border="0" cellspacing="8" cellpadding="0">
+<form  action="[$base_url]type=img&o=upload&mode=one&NodeID=[$NodeID]" method="post" enctype="multipart/form-data" name="form" target="operation" > <tr>
+            <td>
+ <fieldset class="search">
+        <legend>{lang:setting}:</legend>
+        <table width="100%" border="0" cellspacing="8" cellpadding="0">
+          <tr> 
+            <td> <input type="checkbox" name="include_sub" value="1" id="include_sub">
+              <label for="include_sub">{lang:refresh_sub}</label> </td>
+          </tr>
+          <tr> 
+            <td>{lang:content_num}
+              <input name="content_num" type="text" id="content_num" value="10" size="10"></td>
+          </tr>
+  
+        </table>
+        </fieldset>	
+
+      </td>
+    </tr>
+					<tr > 
+                  
+      <td height="20" align="right" id = submit_change>
+<input type="button"  name="Submit2" value="{lang:start}" onclick='window.returnValue = info();window.close();'>
+        &nbsp; <input name="button" type=button  onclick="window.returnValue ='' ;window.close();" value="{lang::global:cancel}"> 
+                     </td>
+                </tr>
+      </form>  </table>				
+
+ <Iframe name=operation src="" frameborder=0 class=button style="display:none"> 
+                    </Iframe>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,88 @@
+<include: file="header_init.html">
+<script language='JavaScript'>
+
+function doing(action, IndexID, NodeID)
+{
+	var query, returnValue;
+
+	switch(action) {
+		case 'del':
+			if(!confirm('{lang:confirm_del_link}')) {
+				break;
+			}
+
+			query = "admin_publish.php?sId=[$sId]&o=" + action +"&type=main&IndexID="+ IndexID  +"&NodeID=" + NodeID;
+			returnValue = CMSware_send(query);
+		 
+			document.location.reload();
+			return false;
+			break;
+
+		case 'edit':
+			var leftPos = (screen.availWidth-800) / 2
+			var topPos = (screen.availHeight-600) / 2 
+			 window.open('admin_publish.php?sId=[$sId]&type=main&o=content_editor_frameset&extra=edit&NodeID='+NodeID  + '&IndexID=' + IndexID,'','width=800,height=600,scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+	}
+
+}
+
+
+</script>
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+    <tr> 
+      <td colspan="2" class="table_header">{lang:view_link_state}</td>
+    </tr>
+
+<tr>
+              <td class="table_td1">{lang:link_type}</td>
+			  <td class="table_td2" >
+<if $LinkState.self.Type == 1 >
+{lang:solid_link}
+<elseif $LinkState.self.Type == 0 >
+{lang:link}
+<elseif $LinkState.self.Type == 2>
+{lang:index_link}
+</if>
+<A HREF="[$LinkState.self.URL]" target="_blank">[{lang::global:view}]</A>
+</td>
+</tr>
+
+<tr>
+ <td class="table_td1">{lang:solid_link}</td>
+ <td class="table_td2" ><B>[$LinkState.solid.Name]</B> [<A HREF="javascript:doing('edit','[$LinkState.solid.IndexID]','[$LinkState.solid.NodeID]');">{lang::global:edit}</A>]</td>
+</tr>
+
+<tr>
+ <td class="table_td1">{lang:link}</td>
+ <td class="table_td2" >
+ <loop $LinkState.void key=key var=var >
+ 
+ <B>[$var.Name]</B> [<A HREF="javascript:doing('del','[$var.IndexID]','[$var.NodeID]');">{lang::global:del}</A>] <br>
+
+ </loop>
+
+ </td>
+</tr>
+
+<tr>
+ <td class="table_td1">{lang:index_link}</td>
+ <td class="table_td2" >
+
+ <loop $LinkState.index key=key var=var >
+
+ <B>[$var.Name]</B>
+ [<A HREF="javascript:doing('del','[$var.IndexID]','[$var.NodeID]');">{lang::global:del}</A>] <br>
+ 
+  </loop>
+
+ </td>
+</tr>
+
+
+
+
+
+  </table>
+	
+<include: file="footer.html">

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>[$SYS_NAME]</title>
+</head>
+<link rel='stylesheet' type='text/css' href='[$html_url]/style.css' />
+
+<body  onload="document.LoginForm.UserName.focus();">
+<br><br>
+ <form name="LoginForm" method="post" action="login.do">
+  <table width="500" border="0" align="center" cellpadding="5" cellspacing="1" class="table_border">
+ <tr  class="table_header"> 
+      <td colspan="2" align="center">[$SYS_NAME]</td>
+      
+    </tr>
+	<include file="block.error.html"/>
+
+    <tr class="table_td1"> 
+      <td>用户名：</td>
+      <td> <input name="UserName" type="text" id="user" ></td>
+    </tr>
+    <tr class="table_td1"> 
+      <td>密码：</td>
+      <td> <input name="Password" type="password" id="pass"></td>
+    </tr>
+		<if test="$SYS_ENV.enable_validcode == 1" >
+
+	 <tr class="table_td1"> 
+      <td>验证码：</td>
+      <td> <input name="validCode" type="text" >  <img  src="validCode.php" border="0" style="position: relative; top:4px" ></td>
+    </tr>
+	</if>
+	<tr class="table_td1">
+<td  >Cookie 时间：</td>
+<td >
+<input type="radio"  name="CookieTime" value="31536000"> 一年 &nbsp;
+<input type="radio"  name="CookieTime" value="2592000" checked> 一个月 &nbsp;
+<input type="radio"  name="CookieTime" value="86400"> 一天 &nbsp;
+<input type="radio"  name="CookieTime" value="3600"> 一小时 &nbsp;
+<input type="radio"  name="CookieTime" value="0"> 浏览器进程 &nbsp; &nbsp;
+</td>
+</tr>
+
+    <tr class="table_td2"> 
+      <td>&nbsp;<INPUT TYPE="hidden" name="referer" value="[$referer]"></td>
+      <td> <input name="submit" type="submit" id="submit" value="登　陆">&nbsp;&nbsp; <A HREF="register.do">注册</A>&nbsp;&nbsp; <A HREF="getPass.do">忘记密码</A></td>
+    </tr>
+  </table>
+</form>   
+<include file="footer.html" />
+</body>
+</html>

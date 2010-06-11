@@ -1,0 +1,181 @@
+<include file="header.html" />
+
+
+<div id="left">
+<include file="search_box.html"/>
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h2>本类最新</h2>
+<CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}"  where="co.TableID=3" num="10" Cache="1" />
+<!--调用新闻系统模型(TableID=1)最新发布10条记录-->
+<LOOP name="List" var="var" key="key"> 
+<ul>
+<li>
+<a href="[$var.URL]" target="_blank" title="[$var.Title]" >[@CsubStr($var.Title, 0, 21)] </a></li>
+</ul>
+</LOOP> 
+
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c"><h4>本类热点</h4>
+<CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}"  where="co.TableID=3" orderby="Hits_Total" num="10" Cache="1" />
+<!--调用新闻系统模型(TableID=1)最热总点击前10条记录-->
+<LOOP name="List" var="var" key="key">
+<ul>
+<li>
+<a href=" [$var.URL] " target="_blank" title=" [$var.Title] " >[@CsubStr($var.Title, 0, 20)] </a>
+<span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span>
+<br />
+</li>
+</ul>
+</LOOP>
+
+
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+<include file="../copyright.html" />
+
+
+</div>
+
+<div id="right">
+<div class="box_l">
+<div class="box_l_t">&nbsp;</div>
+<div class="box_l_c">
+<h1 id="articlename">[$Title]</h1>
+<div id="atc_info">
+<ul>
+<li>
+作者：[$Author]&nbsp;&nbsp;日期：[@date('Y-m-d H:i', $PublishDate)] 
+&nbsp;&nbsp;&nbsp;
+点击：<script src="[$PUBLISH_URL]counter.php?o=display_counter&Id=[$IndexID]"></script>
+
+ </li>
+ 
+</ul>
+</div>
+
+<div class="content" align="center" >
+<BR>
+<object width=500 height=350 classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0"><param name="movie" value="[$FlashSrc]"><param name="wmode" value="opaque"><param name="quality" value="autohigh"><embed width=350 height=150 src="[$FlashSrc]" quality="autohigh" wmode="opaque" type="application/x-shockwave-flash" plugspace="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></embed></object>
+
+
+ <BR>
+
+ <BR>
+
+
+ <A HREF="[$FlashSrc]" target="_blank" title="全屏播放"> <img src="[$PUBLISH_URL]images/q1.gif" border="0" /> </A>
+ <A HREF="javascript:window.external.addFavorite('[$URL]','[$Title]')""   title="收藏"> <img src="[$PUBLISH_URL]images/q2.gif" border="0" /> </A>
+  <A HREF="javascript:window.close();"  title="关闭本页"> <img src="[$PUBLISH_URL]images/q3.gif" border="0" /> </A>
+ <br>
+ <CMS action="LIST" return="nextList" NodeID="{$NodeID}" Num="1" where="i.PublishDate < {$PublishDate} " />
+<CMS action="LIST" return="backList" NodeID="{$NodeID}" Num="1" where="i.PublishDate > {$PublishDate}" orderby="i.PublishDate ASC"/>
+ 
+ <LOOP name="backList" var="var" key="key"> 
+
+[ <a href="[$var.URL]">上一作品</a> ]
+
+</LOOP> 
+
+<LOOP name="nextList" var="var" key="key"> 
+[ <a href="[$var.URL]"> 下一作品 </a> ]
+ </LOOP> 
+
+ </div><!--Zoom end -->
+<div id="correlative_s">
+<h5>Flash简介</h5>
+[$Intro]
+</div>
+<p></p>
+
+
+ 
+
+<div id="correlative_a">
+<h5>相关Flash</h5>
+<ul>
+<!--如果存在自定义相关文章，则调用之-->
+<CMS action="CONTENT" return="List" IndexID="{$CustomLinks}" />
+ <!--开始显示相关文章-->
+<loop name="List" var="var" key="key" > 
+<if test="$var.IndexID == $IndexID " >
+<?php continue;?>
+</if>
+<li>
+·<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title, 0, 25)]</a>
+</li>
+</LOOP> 
+</ul>
+</div>
+<BR/>
+<!--评论调用-->
+<script type="text/javascript" src="[$PUBLISH_URL]js.php?id=comment&IndexID=[$IndexID]"></script>
+
+                  <TABLE cellSpacing=1 cellPadding=3 width="95%"  border=0 align="center">
+                    <FORM name="myform" action="[$PUBLISH_URL]comment.php?o=post&IndexID=[$IndexID]" method="post">
+                      <TR> 
+                        <TD class=title12 bgColor=#dcdcdc> <table width="100%" border="0" cellspacing="3">
+                            <tr> 
+                              <td>发表评论：</td>
+                              <td> <INPUT name="anonymous" type=checkbox value=1 checked>
+                                匿名发表</td>
+                              <td>用户名: 
+                                <INPUT size=16 name=username>
+                                　　</td>
+                              <td><a href="[$PUBLISH_URL]comment.php?o=display&Id=[$IndexID]">查看评论</a></td>
+                            </tr>
+                          </table></TD>
+                      </TR>
+                      <TR> 
+                        <TD class=title12 align=middle bgColor=#edf0f5> <center><TEXTAREA class=g name=content rows=6 cols=70></TEXTAREA> </center>
+                        </TD>
+                      </TR>
+                    </FORM>
+                    <TR> 
+                      <TD class=title12 align=middle bgColor=#edf0f5> <center><INPUT onclick='javascript:check(this);' type='submit' value='  发送  ' name='submit'> </center>
+                      </TD>
+                    </TR>
+									  <tr>
+				  	<td  bgcolor=#ffffff>· 您将承担一切因您的行为、言论而直接或间接导致的民事或刑事法律责任<br>· 留言板管理人员有权保留或删除其管辖留言中的任意内容<br>· 本站提醒：不要进行人身攻击。谢谢配合。</td>
+				  </tr>
+
+                  </TABLE><br>
+				  </DIV>
+
+
+<!--//评论显示结束-->
+</div><!--box_l_c end -->
+<div class="box_l_b">&nbsp;</div>
+</div>
+
+</div><span class="cls"></span><!--right end-->
+</div>
+<include  file="../footer.html" />
+<script>
+function check(obj) {
+	if(document.myform.content.value=='') { 
+		alert('请输入评论内容');
+		document.myform.content.focus();
+		return false;
+	} else if(document.myform.content.value.length > 2000) { 
+		alert('评论内容太长，字数不成超过2000');
+		document.myform.content.focus();
+		return false;
+	}
+
+	obj.disabled=true; 
+	document.myform.submit();
+}
+</script>
+
+</body>
+</html>

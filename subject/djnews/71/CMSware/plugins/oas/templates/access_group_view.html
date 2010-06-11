@@ -1,0 +1,58 @@
+<include: file="header.html">
+
+  <table cellspacing="1" cellpadding="5" width="98%"   class="table_border"  border="0" align="center">
+    <tr>
+      <td colspan="3" class="table_td1"><table width="100%" cellspacing="0" cellpadding="0"  border="0">
+        <tr>
+          <td><img src="../html/images/info.gif" align="absmiddle">&nbsp;<strong>{lang:attension} </strong></td>
+          <td align="right"><a href="#" onclick="toggle_collapse('access_group_view_help');"><img src="../html/images/collapse.gif" border="0"></a></td>
+        </tr>
+      </table>        </td>
+    </tr>
+<tbody id="access_group_view_help" style="[@display_help('access_group_view_help')]">
+   <tr>
+     <td class="table_td2"> {lang:help} </td>
+	 
+   </tr>
+   </tbody>
+</table>
+  <br>
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+    <tr> 
+      <td colspan="3" class="table_header"><strong>{lang:topic} </strong></td>
+    </tr>
+    <tr >
+      <td  align="center" class="table_td1"><strong>{lang:groupname}</strong></td>
+      <td   align="center" class="table_td1" width="80"><strong>{lang:isdefined}</strong></td> 
+      <td align="center" class="table_td1" width="35%"><strong> {lang::global:execute_op}</strong></td>
+    </tr>
+<loop $gList key=key var=var>
+    <tr >
+      <td class="table_td2">[$var.GroupName]</td> 
+      <td class="table_td2" align="center" >
+	  <if $var.AccessID != ''>
+<font color="green">{lang::global:state_true}</font>
+
+<else><font color="red">{lang::global:state_false}</font>
+
+</if>
+	  </td>
+      <td   align="center" class="table_td2">
+		  <if $var.AccessID != ''>
+<A HREF="[$base_url]o=access_group::edit&AccessID=[$var.AccessID]">{lang:edit}</A>&nbsp;&nbsp;
+<A HREF="[$base_url]o=access_group::del&AccessID=[$var.AccessID]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</A>
+
+<else><A HREF="[$base_url]o=access_group::add&GroupID=[$var.GroupID]&GroupName=[$var.GroupName]">{lang:add}</A>
+
+</if>  	
+		
+	&nbsp;</td>
+    </tr>
+</loop>
+</table>
+		
+  <br>  
+  <br>
+<p>&nbsp;</p>
+</BODY>
+<include: file="footer.html">

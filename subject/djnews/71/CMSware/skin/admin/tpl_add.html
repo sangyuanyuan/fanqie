@@ -1,0 +1,104 @@
+<include: file="header.html">
+<script type="text/javascript" language="javascript">
+function prepareSubmit(){
+		select_submit('clientform', 'TargetReadG', 'data_ReadG');
+		select_submit('clientform', 'TargetWriteG', 'data_WriteG');
+		select_submit('clientform', 'TargetReadU', 'data_ReadU');
+		select_submit('clientform', 'TargetWriteU', 'data_WriteU');
+		return true;
+}
+
+function setInherit(mode)
+{
+	switch(mode) {
+		case 0 :
+			Layer_Inherit.style.display = 'none';
+			break;
+		case 1 : 
+ 			Layer_Inherit.style.display = '';
+			break;
+	}
+}
+
+function doing(action)
+{
+	if(document.clientform.data_TplName.value=='') {
+		alert("{lang:please_input_tplname}");
+		return false;
+	}
+	var leftPos = (screen.availWidth-800) / 2
+	var topPos = (screen.availHeight-600) / 2 
+	switch(action) {
+		case 'editor':
+			var targetNodeID = showMeDialog("admin_select.php?sId=[$sId]&o=targetNodeWindow","color","dialogWidth:324px;dialogHeight:331px;help:0;status:0;scroll:no");
+					
+			if(targetNodeID != null && targetNodeID != '') {
+				var IndexID = prompt('{lang:input_indexid}', '0');
+				if(IndexID==null) {
+					IndexID = '';
+				}
+				var popupWin = window.open('admin_tpl.php?sId=[$sId]&o=editor_frameset&extra=add&TCID=[$CateInfo.TCID]'+ '&targetNodeID=' + targetNodeID + '&IndexID=' + IndexID, '','width=800,height=600,scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos); 
+					
+			}
+
+			 
+			break;
+		case 'upload':
+ 			window.open("admin_tpl.php?sId=[$sId]&o=upload&TCID=[$CateInfo.TCID]", '','width=350,height=100,scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+			 
+			break;
+ 
+			
+		
+	}
+
+}
+</script>
+ 
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align="center" class="table_border">
+<form name='clientform' id="clientform" method='post' action='[$base_url]o=add_submit&TCID=[$CateInfo.TCID]' >
+     <tr> 
+      <td colspan="2" class="table_header">{lang:topic} </td>
+    </tr>
+	 
+    <tr> 
+      <td class="table_td1" width="200">{lang:tpl_name} :</td>
+      <td class="table_td2"><input name='data_TplName' type='text' class='flat' id="data_TplName" tabindex='8'   size='25'  >
+ 	  </td>
+    </tr>
+    <tr> 
+      <td class="table_td1" width="200">{lang:tpl_type} :</td>
+      <td class="table_td2"> 
+	  <SELECT NAME="data_TplType">
+	  <option value="0">{lang:tpl_type_normal}</option>
+	  <option value="1">{lang:tpl_type_index}</option>
+	  <option value="2">{lang:tpl_type_content}</option>
+	  <option value="3">{lang:tpl_type_photo}</option>
+	  </SELECT>
+	   
+	  </td>
+    </tr>
+     <tr> 
+      <td class="table_td1" width="200">{lang:tpl_content} :</td>
+      <td class="table_td2"> 
+	  <TABLE border=0>
+	  <TR>
+	  	<TD><INPUT TYPE="button" name="upload" value="{lang:upload}" onclick="doing('upload')"></TD>
+	  	<TD> <div id="tplInputByUpload"></div></TD>
+	  	<TD>  &nbsp;&nbsp;<INPUT TYPE="button" id="editor" name="editor" value="{lang:editor}" onclick="doing('editor')"><INPUT TYPE="hidden" name="mode_upload" value="0"></TD>
+	  </TR>
+	  </TABLE>
+	 
+	 
+ 	  </td>
+    </tr>
+    
+
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'  > <INPUT TYPE="hidden" name="referer" value="[$referer]">
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+
+<include: file="footer.html">

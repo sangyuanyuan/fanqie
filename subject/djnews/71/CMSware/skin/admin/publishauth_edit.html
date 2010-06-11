@@ -1,0 +1,298 @@
+<include: file="header.html">
+<script type="text/javascript" src="../html/tree/xtree_publishauth.js"></script>
+<script type="text/javascript" src="../html/tree/xmlextras_publishauth.js"></script>
+<script type="text/javascript" src="../html/tree/xloadtree_publishauth.js"></script>
+<link type="text/css" rel="stylesheet" href="../html/tree/xtree.css" />
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+ <form name='clientform' id=clientform method='post' action='[$base_url]o=edit_submit&pId=[$pInfo.pId]' onSubmit='return init_submit(this);'>
+      <tr> 
+      <td colspan="2" class="table_header">{lang:topic} </td>
+    </tr>
+  
+    <tr> 
+      <td class="table_td1">{lang:name}:</td>
+      <td class="table_td2"><input name='pName' type='text' class='flat' id="username" tabindex='8'   size='25' value="[$pInfo.pName]"></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="table_header">{lang:setting}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1" colspan="2"> 
+			  <script type="text/javascript">
+
+/// XP Look
+webFXTreeConfig.rootIcon		= "../html/tree/images/xp/folder.png";
+webFXTreeConfig.openRootIcon	= "../html/tree/images/xp/openfolder.png";
+webFXTreeConfig.folderIcon		= "../html/tree/images/xp/folder.png";
+webFXTreeConfig.openFolderIcon	= "../html/tree/images/xp/openfolder.png";
+webFXTreeConfig.fileIcon		= "../html/tree/images/xp/file.png";
+webFXTreeConfig.lMinusIcon		= "../html/tree/images/xp/Lminus.png";
+webFXTreeConfig.lPlusIcon		= "../html/tree/images/xp/Lplus.png";
+webFXTreeConfig.tMinusIcon		= "../html/tree/images/xp/Tminus.png";
+webFXTreeConfig.tPlusIcon		= "../html/tree/images/xp/Tplus.png";
+webFXTreeConfig.iIcon			= "../html/tree/images/blank.png";
+webFXTreeConfig.lIcon			= "../html/tree/images/blank.png";
+webFXTreeConfig.tIcon			= "../html/tree/images/blank.png";
+webFXTreeConfig.blankIcon		= "../html/tree/images/blank.png";
+
+//var tree = new WebFXLoadTree("WebFXLoadTree", "tree1.xml");
+//tree.setBehavior("classic");
+/*
+	rootIcon        : 'images/foldericon.png',
+	openRootIcon    : 'images/openfoldericon.png',
+	folderIcon      : 'images/foldericon.png',
+	openFolderIcon  : 'images/openfoldericon.png',
+	fileIcon        : 'images/file.png',
+	iIcon           : 'images/I.png',
+	lIcon           : 'images/L.png',
+	lMinusIcon      : 'images/Lminus.png',
+	lPlusIcon       : 'images/Lplus.png',
+	tIcon           : 'images/T.png',
+	tMinusIcon      : 'images/Tminus.png',
+	tPlusIcon       : 'images/Tplus.png',
+	blankIcon       : 'images/blank.png',
+	defaultText     : 'Tree Item',
+	defaultAction   : 'javascript:void(0);',
+	defaultBehavior : 'classic',
+	usePersistence	: true
+*/
+var rti;
+var tree = new WebFXTree("Root");
+<loop $NodeInfo key=key var=var>
+
+<if strpos( $pInfo.NodeList , ','.$var.NodeID .',' )>
+<?php $isChecked = 'checked';?>
+<else>
+<?php $isChecked = ' ';?>
+</if>
+
+<if strpos( $pInfo.NodeExtraPublish ,  ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.NodeSetting  ,  ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+
+<if strpos( $pInfo.ContentRead , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.ContentWrite , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.ContentApprove , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.ContentPublish , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if strpos( $pInfo.AuthInherit , ','.$var.NodeID .',' )>
+<?php $isChecked .= '-checked';?>
+<else>
+<?php $isChecked .= '- ';?>
+</if>
+
+<if $var.haveSon == 1>
+tree.add(new WebFXLoadTreeItem("[$var.Name]", "admin_tree.php?op=sId::[$sId];o::publishauth_xml;NodeID::[$var.NodeID];pId::[$pInfo.pId]", "", "" , "[$var.NodeID]", "<?=$isChecked?>"));
+<else>
+tree.add(new WebFXTreeItem("[$var.Name]","", "panelWork", "[$var.NodeID]", "<?=$isChecked?>"));
+</if>
+</loop>
+//function WebFXTreeItem(sText, sAction, eParent, sIcon, sOpenIcon) {
+
+//WebFXLoadTree(sText, sXmlSrc, sAction, sBehavior, sIcon, sOpenIcon) 
+//tree.add(rti = new WebFXLoadTreeItem("Tree Item 3 (Reload)", "../html/tree/date.xml.pl"));
+//tree.add(new WebFXTreeItem("Tree Item 4"));
+
+document.write(tree);
+
+</script>
+
+
+      </td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:extra_info}:</td>
+      <td class="table_td2"> <textarea name="pInfo" cols="50" rows="5" class='flat' id="groupinfo" >[$pInfo.pInfo]</textarea></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}">
+		<INPUT  type="hidden" name="node_list_submit" value="">
+<INPUT  type="hidden" name="node_extrapublish_submit" value="">
+<INPUT  type="hidden" name="node_set_submit" value="">
+<INPUT  type="hidden" name="content_read_submit" value="">
+<INPUT  type="hidden"  name="content_write_submit" value="">
+<INPUT  type="hidden" name="content_approve_submit" value="">
+<INPUT  type="hidden" name="content_publish_submit" value="">
+<INPUT  type="hidden" name="auth_inherit_submit" value="">
+
+		</td>
+    </tr>
+
+	</form>
+
+  </table>
+
+<!-------------->            
+					<script language='Javascript1.1'>
+				<!--
+				
+		
+				function checkrow(IDnumber,status) {
+				
+					var f = document.clientform;
+					
+					
+					if ( status == '+')
+					{
+						mystat = 'true';
+						styleid = "mgred";
+					}
+					else
+					{
+						mystat = 'false';
+						styleid = "";
+				}
+					eval( 'f.node_list__'+IDnumber+'.checked='+mystat );
+					eval( 'f.node_extrapublish__'+IDnumber+'.checked='+mystat );
+					eval( 'f.node_set__'+IDnumber+'.checked='+mystat );
+					eval( 'f.content_read__'+IDnumber+'.checked='+mystat );
+					eval( 'f.content_write__'+IDnumber+'.checked='+mystat );
+					eval( 'f.content_approve__'+IDnumber+'.checked='+mystat );
+					eval( 'f.content_publish__'+IDnumber+'.checked='+mystat );
+					eval( 'f.auth_inherit__'+IDnumber+'.checked='+mystat );
+/*
+					eval( 'f.node_list__'+IDnumber+'.parentNode.id="'+styleid+'"');
+					eval( 'f.node_extrapublish__'+IDnumber+'.parentNode.id="'+styleid+'"');
+					eval( 'f.node_set__'+IDnumber+'.parentNode.id="'+styleid+'"');
+					eval( 'f.content_read__'+IDnumber+'.parentNode.id="'+styleid+'"');
+					eval( 'f.content_write__'+IDnumber+'.parentNode.id="'+styleid+'"');
+					eval( 'f.content_approve__'+IDnumber+'.parentNode.id="'+styleid+'"');
+					eval( 'f.content_publish__'+IDnumber+'.parentNode.id="'+styleid+'"');
+
+	*/				
+				}
+				function checkcol(id) {
+				
+			
+					
+					if ( status == '+')
+					{
+						mystat = 'true';
+						styleid = "mgred";
+					}
+					else
+					{
+						mystat = 'false';
+						styleid = "";
+					}
+
+					var form = document.clientform;
+	
+					eval(' var isAll = form.all_'+ id +'.value');
+					if(isAll == 1) {
+						var ischeck = false;
+						eval(' form.all_'+ id +'.value=0');
+						styleid = "";
+
+					} else {
+						var ischeck = true;
+						eval(' form.all_'+ id +'.value=1');
+						styleid = "mgred";
+			
+					}
+					
+					for (var i=0;i<form.elements.length;i++)    {
+						var e = form.elements[i];
+						if(e.type != 'checkbox')	continue;
+						var a = e.name;
+						var ok = a.indexOf(id + '_');
+						if(ok == -1) {
+							continue;
+						} else {
+							e.checked = ischeck
+							//eval( 'form.'+a+'.parentNode.id="'+styleid+'"');
+						}
+					}
+
+
+					//eval( 'f.node_view_'+IDnumber+'.checked='+mystat );
+
+
+					
+				}				
+				function check_me(IDnumber) {
+
+					/*eval( 'var a = clientform.'+IDnumber+'.parentNode.id' );
+					if(a == '') {
+						eval( 'clientform.'+IDnumber+'.parentNode.id='+ '"mgred"' );
+					} else {
+						eval( 'clientform.'+IDnumber+'.parentNode.id='+ '""' );
+					}*/
+
+				}
+
+				//-->
+				</script>
+					
+					
+
+        
+            
+		
+              <script language='JavaScript'>
+function init_submit(form) {
+	var query;
+	
+	eval(form.name + ".node_list_submit.value=''");
+	eval(form.name + ".node_extrapublish_submit.value=''");
+	eval(form.name + ".node_set_submit.value=''");
+	eval(form.name + ".content_read_submit.value=''");
+	eval(form.name + ".content_write_submit.value=''");
+	eval(form.name + ".content_approve_submit.value=''");
+	eval(form.name + ".content_publish_submit.value=''");
+	eval(form.name + ".auth_inherit_submit.value=''");
+
+	for (var i=0;i<form.elements.length;i++)    {
+	    var e = form.elements[i];
+	    if(e.type != 'checkbox')	continue;
+	   
+	   if(e.checked) {
+			var a = e.name;
+			var splits = a.split("__");
+			
+			query = form.name + '.'+splits[0]+'_submit.value ='+form.name + '.'+splits[0]+'_submit.value + ",'+splits[1]+'"'
+			eval(query)
+			
+			e.disabled = true;
+
+	   } else {
+	   		continue;
+	   }
+	}
+	
+	//form.submit();
+
+
+}					
+</script> 		</BODY>
+<include: file="footer.html">

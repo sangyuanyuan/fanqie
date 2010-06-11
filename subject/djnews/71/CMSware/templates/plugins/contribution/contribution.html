@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$SITE_NAME] - [$NodeInfo.Name]</title><!--#CW#站点名称$SITE_NAME可在CMSWARE后台-系统管理-模板变量设置中设置,$NodeInfo.Name是本模板所在结点的结点名称#CW#-->
+<link href="[$SKIN_URL]gqxx/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../../demo/member/TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<include file="../../demo/common/header.html" />
+<div class="content">
+	<div class="left">
+        <!---左边样式1-->
+		<div class="topside01">
+			<div class="topside01_l">&nbsp;</div>
+			<div class="topside01_c">&nbsp;</div>
+			<div class="topside01_r">&nbsp;</div>
+		</div>
+		<div class="center01" id="newsfocus">
+          <div class="focus" style="float:none; text-align:center; height:30px;">外部投稿信息发布</div>
+            
+            <div class="sonfocus" style="text-align:left; height:auto; margin:0 0 0px 0">
+<script type="text/javascript" src="[$PUBLISH_URL]FCKeditor/fckeditor.js"></script>
+<if test="!empty($UserInfo.UserName)">
+<form name="form1" method="post" action="[$PUBLISH_URL]contribution_v.php?o=do&TableID=[$TableID]&HTML=1&referer=[@rawurlencode($PUBLISH_URL . 'content_v.php?id=' . $Member_index_IndexID . '&page=0')]" >
+				投稿栏目：
+			<select  name="TargetNodeID" id = "TargetNodeID">
+			<loop $NODE_LIST var=var>
+				<if $var.WorkFlow != 0 && $var.ParentID == 2>
+				<option value="[$var.NodeID]">[@str_repeat('&nbsp;', $var.cHeader)] [$var.Name]&nbsp;</option>
+				</if>
+			</loop>
+			</select>
+              
+			    <br />
+				<br />
+				信息标题*：
+                      <input name="data_Title" type="text" id="data_Title" size="40" maxlength="50" /> 
+                      &nbsp;[<FONT color=#990000>请注意：</FONT>勿超过 50字符]
+				
+				<br />
+				<br />
+                关 键 字：
+                   <input name="data_Keywords" type="text" id="data_Keywords" size="29" />
+		  [可选项]
+                <br><br>
+                发 布 人：
+                <input name="data_Author" type="text" id="data_Author" size="29" readonly="readonly" value="[$UserInfo.UserName]" />
+                <br><br>
+                新闻内容：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="data_Content" cols="87" rows="20" id="data_Content"></textarea>
+				<script type=text/javascript>
+										var oFCKeditor = new FCKeditor( 'data_Content' ) ;
+										oFCKeditor.BasePath = '[$PUBLISH_URL]FCKeditor/' ;
+										oFCKeditor.ToolbarSet = 'Default' ;
+										oFCKeditor.Width = '601' ;
+										oFCKeditor.Height = '351' ;
+										oFCKeditor.Value = '' ;
+										//oFCKeditor.Create() ;
+										oFCKeditor.ReplaceTextarea() ;
+				</script>
+                    <br>
+               
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="submit" type="submit" id="submit" value="确定投稿">
+
+        &nbsp;&nbsp; 
+
+              <input type="reset" name="Submit2" value="重置">
+	
+	 
+</form>	
+<else>
+你还没有登录，不能投稿，请先...
+<a href="[$OAS_URL]login.php?forward=[@rawurlencode($SelfURL)]"><font color="#FF0000">登录</font></a>&nbsp;&nbsp;或&nbsp;&nbsp;<a href="[$OAS_URL]register.php?forward=[@rawurlencode($SelfURL)]"><font color="#FF0000">注册</font></a>
+</if>				
+		    </div>
+              
+		</div>
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+        <!--上下篇图片-->
+        	
+	
+    </div>
+	<!--右边列开始-->
+	
+	<div class="right">	
+		<!--右边样式1-->
+<!--供求搜索框-->		
+
+<div class="topside05">
+    <div class="topside05_l">&nbsp;</div>
+    <div class="topside05_c">&nbsp;</div>
+    <div class="topside05_r">&nbsp;</div>
+</div>
+<div class="center05">
+    <a href="[$PUBLISH_URL]content_v.php?id=3&page=0"><font color="#FF66CC">发布供求信息</font></a>
+    
+</div>
+<div class="bottomside05">
+    <div class="bottomside05_l">&nbsp;</div>
+    <div class="bottomside05_c">&nbsp;</div>
+    <div class="bottomside05_r">&nbsp;</div>
+</div>
+
+<div class="topside05">
+    <div class="topside05_l">&nbsp;</div>
+    <div class="topside05_c">&nbsp;</div>
+    <div class="topside05_r">&nbsp;</div>
+</div>
+<div class="center05">
+    <div class="photo_fous"><font color="#0066FF">供求搜索</font></div>
+    <!--#CW#--搜索表单--#CW#-->
+    <form action="[$PUBLISH_URL]search.php?o=search&TableID=6" method="post" style="margin:0;">
+          <input name=Keywords value="[$searchKeywords]" type=text id="keywords" size=23>
+          <input name="Field" type="hidden" id="field" value="Title">
+		  <input  name="image222" type="submit" value="供求搜索" onClick="if(this.form.Keywords.value=='') {alert('请输入关键字');return false;}">
+    </form>
+</div>
+<div class="bottomside05">
+    <div class="bottomside05_l">&nbsp;</div>
+    <div class="bottomside05_c">&nbsp;</div>
+    <div class="bottomside05_r">&nbsp;</div>
+</div>
+		<div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<div class="photo_fous"><font color="#9999FF">最热供求信息</font></div>
+			
+<CMS action="LIST" return="List" NodeID="all-22" OrderBy="Hits_Total DESC"  Num="10" /> 
+<loop name="List" var="var" key="key">
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 10,'')] </a>
+点击:<font color="#FF0000">[$var.Hits_Total]</font>
+<!--显示文章链接，自动截取标题长度16-->
+<br> 
+</loop> 
+			
+		</div>
+		
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+		<!--右边样式2-->
+        <div class="topside05">
+			<div class="topside05_l">&nbsp;</div>
+			<div class="topside05_c">&nbsp;</div>
+			<div class="topside05_r">&nbsp;</div>
+		</div>
+		<div class="center05">
+        	<div class="photo_fous"><font  color="#66CC33">最新供应信息</font></div>
+			
+<CMS action="LIST" return="List" NodeID="all-22" where="c.GqType='1'" orderby="i.PublishDate DESC "  Num="10" /> 
+<loop name="List" var="var" key="key">
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 10,'')] </a>
+<font color="#FF0000">[@date("m-d", $var.PublishDate)]</font>
+<!--显示文章链接，自动截取标题长度16-->
+<br> 
+</loop>
+			
+		    </div>
+		<div class="bottomside05">
+			<div class="bottomside05_l">&nbsp;</div>
+			<div class="bottomside05_c">&nbsp;</div>
+			<div class="bottomside05_r">&nbsp;</div>
+		</div>
+        
+        <div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<div class="photo_fous"><font color="#CC66FF">最新寻求信息</font></div>
+            
+<CMS action="LIST" return="List" NodeID="all-{$Gqxx_MainNodeID}" where="c.GqType='2'" orderby="i.PublishDate DESC "  Num="10" /> 
+<loop name="List" var="var" key="key">
+<a href=" [$var.URL] " target=_blank title=" [$var.Title] " >[@CsubStr($var.Title, 0, 10,'')] </a>
+<font color="#FF0000">[@date("m-d", $var.PublishDate)]</font>
+<!--显示文章链接，自动截取标题长度16-->
+<br> 
+</loop>			
+			
+		    </div>
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+	</div>
+	
+</div>
+
+<div class="content"></div>
+
+
+
+<include file="../../demo/common/footer.html" />
+</body>
+</html>

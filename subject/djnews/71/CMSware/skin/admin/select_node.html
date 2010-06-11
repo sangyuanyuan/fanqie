@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD> <META HTTP-EQUIV="Pragma" CONTENT="no-cache"> <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> <META HTTP-EQUIV="Expires" CONTENT="0"> 
+<TITLE>{lang:topic}</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+</HEAD>
+<script type="text/javascript" src="../html/helptip.js"></script>
+<link type="text/css" rel="StyleSheet" href="../html/helptip.css" />
+<link type="text/css" rel="StyleSheet" href="../html/style.css" />
+<script language='JavaScript' src='../html/js-gui.js'></script>
+<script language='JavaScript' src='../html/js-form.js'></script>
+<LINK href="../html/xmenu.css" type=text/css rel=stylesheet>
+<SCRIPT src="../html/xmenu.js" type=text/javascript></SCRIPT>
+
+<script src="ui.php?sId=[$sId]&o=functions.js" type="text/javascript" language="javascript"></script>
+<script language="javascript">
+function psn_backward()
+{	//alert('a')
+			window.history.go(-1);
+}
+
+function psn_updir()
+{
+	var PATH =  document.workFrame.PATH;
+	var PSNID = document.form1.psn.options[document.form1.psn.selectedIndex].value
+	//alert(PSNID)
+	workFrame.location = 'admin_select.php?sId=[$sId]&o=psn_list_file&extra=updir&PSNID=' + PSNID + '&PATH=' + PATH
+
+}
+
+function psn_mkdir()
+{
+	var PATH =  document.workFrame.PATH;
+	var PSNID = document.form1.psn.options[document.form1.psn.selectedIndex].value
+
+	var dirname= showMeDialog("../html/input.php?Title="+encodeURI("{lang:dir_name}"),"color","dialogWidth:300px;dialogHeight:150px;help:0;status:0;scroll:no");
+
+	if(dirname != null && dirname != '') {
+		workFrame.location = 'admin_select.php?sId=[$sId]&o=psn_mkdir&dirname='+ dirname +'&PSNID=' + PSNID + '&PATH=' + PATH
+	}
+
+
+}
+
+function setTargetNodeID(targetNodeID)
+{
+	document.form1.targetNodeID.value = targetNodeID
+	//alert(targetNodeID);
+}
+function returnNodeID()
+{
+	if(document.form1.targetNodeID.value == '') {
+		alert("{lang:please_select_target}");
+		return false;
+	} else {
+		window.returnValue = document.form1.targetNodeID.value;
+		window.close();
+
+	}
+}
+</script>
+<body bgcolor=threedface STYLE="margin:3pt;padding:0pt;border: 1px buttonhighlight;" onload="workFrameReload()">
+<table width="100%" border="0" cellspacing="5">
+  <form name="form1" method="post" action="">
+    <tr> 
+      <td colspan="3" align="right">
+	  <table width="100%" border="0" cellspacing="0">
+          <tr>
+            <td width="10%">{lang:select_target}</td>
+          </tr>
+          <tr>
+            <td width="10%" height=10> </td>
+          </tr>
+        </table>
+        
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="3" align="center">
+<Iframe name=workFrame  frameborder=1 class=button style="width:100%;height:203;" src="admin_tree.php?sId=[$sId]&o=node_select" > 
+                </Iframe> </td>
+    </tr>
+  <tr>
+            <td colspan="3" height=10> </td>
+  </tr>
+
+	<tr> 
+      <td  ><input name="targetNodeID" type="hidden" ></td>
+      <td  >
+       </td>
+      <td  align=right> <input type="button" name="Submit" value="{lang::global:ok}" onclick="returnNodeID();"> &nbsp;&nbsp;<input type="button" name="Submit2" value="{lang::global:cancel}" onclick='window.close();'></td>
+    </tr>
+
+  </form>
+</table>
+</body>
+</html>
+<script language="javascript">
+function workFrameReload() {
+	var PSNID = '[$PSNID]';
+	var PATH = '[$psn_path]';
+	if(PSNID != '') {
+		//alert(PSNID);
+		document.form1.fileName.value = PATH + '/[$default_name]';
+		workFrame.location = 'admin_select.php?sId=[$sId]&o=psn_list_file&default_name=[$default_name]&PSNID=' + PSNID + '&PATH=' + PATH
+		//workFrame.location.reload()
+
+	}
+}
+
+</script>

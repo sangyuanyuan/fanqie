@@ -1,0 +1,24 @@
+<include: file="header_init.html">
+
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+    <tr> 
+      <td colspan="2" class="table_header">{lang:pizhuchakan}</td>
+    </tr>
+<loop $NoteList key=key var=var>
+<tr>
+              <td class="table_td1">[$var.NoteUserName] &nbsp;&nbsp;([$var.gName]) &nbsp;&nbsp;[@date('Y-m-d H:i', $var.NoteDate)]</td>
+</tr>
+<tr class='tablelist'> 
+              <td class="table_td2">
+ [@nl2br( $var.Note)]
+</td>
+</tr>
+
+</loop>
+
+
+
+
+  </table>
+	
+<include: file="footer.html">

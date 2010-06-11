@@ -1,0 +1,20 @@
+#
+# robots.txt for CMSware
+#
+
+User-agent: *
+Disallow: /admin
+Disallow: /backup
+Disallow: /converter
+Disallow: /html
+Disallow: /include
+Disallow: /install
+Disallow: /language
+Disallow: /plugins
+Disallow: /publish
+Disallow: /resource
+Disallow: /setting
+Disallow: /skin
+Disallow: /sysdata
+Disallow: /templates
+Disallow: /user

@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>插入表格</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+
+<style type="text/css">
+body{margin:0px;scrollbar-face-color: #B8B8B8; scrollbar-highlight-color: #F5F9FF; scrollbar-shadow-color: #828282; scrollbar-3dlight-color: #828282; scrollbar-arrow-color: #797979; scrollbar-track-color: #ECECEC; scrollbar-darkshadow-color: #ffffff}
+body,a,table,div,span,td,th,input,select{font:9pt;font-family: "宋体", Verdana, Arial, Helvetica, sans-serif;}
+.text{border:1 solid #aaaaaa;}
+.button{height:18;border:1 ridge #aaaaaa;background-color:aaaaaa;color:ffffff}
+.table {  border: 1px inset; border-color: menu #FFFFFF #FFFFFF menu}
+</style>
+
+<script language="JavaScript">
+function info() {
+var table;
+table='';
+
+dm=document.form;
+//width
+table_w=dm.table_w.value;
+by=dm.table_w_1;
+cd=by.options[by.selectedIndex].value ;
+if(cd=='1'){
+table+=" width='";
+table+=table_w;
+table+="%'";
+}
+else if(cd=='2'){
+table+="width='";
+table+=table_w;
+table+="'";
+}
+//height
+table_h=dm.table_h.value;
+by=dm.table_h_1;
+cd=by.options[by.selectedIndex].value ;
+if(cd=='1'){
+table+=" height='";
+table+=table_h;
+table+="%'";
+}
+else if(cd=='2'){
+table+=" height='";
+table+=table_h;
+table+="'";
+}
+//border
+table_border=dm.table_border.value;
+if(table_border!=""){
+table+=" border='";
+table+=table_border;
+table+="'";
+}
+//cellspacing 
+table_cellspacing=dm.table_cellspacing.value;
+if(table_cellspacing!=""){
+table+=" cellspacing='";
+table+=table_cellspacing;
+table+="'";
+}
+
+// cellpadding
+table_cellpadding=dm.table_cellpadding.value;
+if(table_cellpadding!=""){
+table+=" cellpadding='";
+table+=table_cellpadding;
+table+="'";
+}
+//align
+by=dm.table_align;
+cd=by.options[by.selectedIndex].value ;
+table+="align='";
+table+=cd;
+table+="'>";
+
+//row column
+table_r=dm.table_r.value;
+table_c=dm.table_c.value;
+i=table_r;
+j=table_c;
+while(i--){
+	j=table_c;
+	table+="<tr>";
+	while(j--){
+	table+="<td align='left' valign='top'></td>";
+	}
+	table+="</tr>";
+}
+
+
+
+return table;
+
+
+
+}
+
+</script>
+
+<body bgcolor=menu topmargin="0" leftmargin="0">
+<form name="form" >
+  <table width="381" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr>
+      <td >
+        <table width="349" border="0" cellspacing="0" cellpadding="0" align="center" height="184">
+          <tr> 
+            <td > 
+              <table border="0" cellspacing="0" cellpadding="0" height="19">
+                <tr> 
+                  <td >&nbsp;高(H):&nbsp; </td>
+                  <td > 
+                    <input type="text" name="table_h" size="6" value="">
+                  </td>
+                  <td > 
+                    <select name="table_h_1">
+                      <option value="2">像素</option>
+                      <option value="1">%</option>
+                    </select>
+                  </td>
+                  <td >&nbsp;宽(W):&nbsp; </td>
+                  <td > 
+                    <input type="text" name="table_w" size="6" value="">
+                  </td>
+                  <td > 
+                    <select name="table_w_1">
+                      <option value="2">像素</option>
+                      <option value="1">%</option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr> 
+            <td > 
+              <table border="0" cellspacing="0" cellpadding="0" height="19">
+                <tr> 
+                  <td >&nbsp;行(R):&nbsp; </td>
+                  <td > 
+                    <input type="text" name="table_r" size="6" value="">
+                  </td>
+                  <td >&nbsp;列(C):&nbsp; </td>
+                  <td > 
+                    <input type="text" name="table_c" size="6" value="">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr> 
+            <td > 
+              <table border="0" cellspacing="0" cellpadding="0" width="80%" >
+                <tr> 
+                  <td >&nbsp;边框宽度:</td>
+                  <td > 
+                    <input type="text" name="table_border" size="6" value="0">
+                  </td>
+                  <td >&nbsp; 表格对齐:</td>
+                  <td > &nbsp; 
+                    <select name="table_align">
+                      <option>默认</option>
+                      <option value="left">左对齐</option>
+                      <option value="center">居中对齐</option>
+                      <option value="right">右对齐</option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+		  <tr>
+		  <td>
+		      <table width="80%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+    <td>&nbsp;表格间距(S);</td>
+    <td>&nbsp;
+                    <input type="text" name="table_cellspacing" size="6" value="4">
+</td>
+    <td>&nbsp;表格边距(P)</td>
+    <td>&nbsp;  
+                    <input type="text" name="table_cellpadding" size="6" value="0">
+                  </td>
+  </tr>
+</table>
+		  </td>
+		  </tr>
+          <tr valign="baseline"> 
+            <td > 
+              <div align="center"> 
+                <input class=button type=button onclick='window.returnValue = info();window.close();' value="确　定">
+                <input class=button type=button onclick="window.returnValue ='' ;window.close();" value="取　消">
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

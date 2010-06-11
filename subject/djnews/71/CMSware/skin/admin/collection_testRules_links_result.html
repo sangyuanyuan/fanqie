@@ -1,0 +1,56 @@
+<include: file="header_init.html">
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+    <tr> 
+      <td  class="table_header">{lang:topic}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1">
+
+  <table border="0" cellspacing="1" cellpadding="2"   >
+<loop $Links var=var key=key >
+  
+  <tr>
+  <td>{lang::global:icon_dot}</td>
+  <td>
+  <a href='[$var]' target=_blank>[$var]</a>
+  </td>
+  <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:void(0);' onclick="testContent('[$var]');">{lang:parse}</a></td>
+  </tr>
+
+</loop>
+</table>
+
+</td>
+      
+    </tr>
+
+  </table>
+<script language="JavaScript">
+var window_opened2 = null;
+function testContent(str)
+{	
+	document.all.FM.Url.value = str;
+
+	if(window_opened2 != null) window_opened2.close();
+	 
+	document.FM.submit();
+
+
+
+}
+</script>
+
+<form name="FM" method="post" action="[$base_url]o=testRule&mode=running"  target="window_opened2"  >
+<loop $Rules key=key var=var >
+  <input type="hidden" name="rule_[$key]" value="[$var.rule]">
+  <input type="hidden" name="title_[$key]" value="[$var.title]">
+
+
+</loop>
+	 <input type="hidden" name="TargetURL" value="[$TargetURL]">
+	 <input type="hidden" name="Url" value="">
+	 <input type="hidden" name="UrlPageRule" value="[$UrlPageRule]">
+
+</form>
+
+<include: file="footer.html">

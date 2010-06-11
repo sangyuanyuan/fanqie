@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CMSware会员系统 - 用户登录</title>
+<style type="text/css">
+<!--
+body,th{margin:0; padding:0; font-family:Tahoma,"宋体"; font-size:12px; color:#003399}
+a{text-decoration:none; color:#003399}
+a:hover{text-decoration:underline}
+
+/*顶部设置
+--------------------------------*/
+#wrapper{background:url(../html/images/logo/bg.jpg) repeat-x; width:100%; height:430px}
+#head{width:100%}
+#biao{background:url(../html/images/logo/top2.jpg) no-repeat; float:right; margin:0; padding:0; width:149px; height:63px}
+#logo{background:url(../html/images/logo/top.jpg) no-repeat; width:332px; height:63px}
+#logo span{display:none}
+#logo a{display:block;width:332px; height:63px}
+
+/*登陆模块
+--------------------------------*/
+#inbox{background:url(../html/images/logo/inbox_bg.jpg) no-repeat; width:384px; height:320px; margin-left:auto; margin-right:auto}
+/*错误信息*/
+#error{width:260px; border:1px solid #666666; background:#fff; margin-left:auto; margin-right:auto; margin-top:20px; padding:3px; color:#CC0000; filter:alpha(opacity=70);}
+#error_infor{width:90%; margin:auto;}
+
+/*登陆输入框
+--------------------------------*/
+#box{width:600px; margin-left:auto; margin-right:auto}
+#loginbox{width:100%; margin:0 0 2px 0}
+#title{padding:2px 0 2px 5px; font-weight:bold; font-size:12px; margin:0 0 5px 0}
+#enter{height:116px; font-size:14px; font-weight:bold}
+#enter_box{width:270px; margin:18px 0 5px 20px}
+#botton{width:100%; text-align:center; margin-bottom:0px}
+#ip{width:100%; float:center; padding:0px 0 0 0px;}
+#footer{font:10px Tahoma; margin-top:2px}
+.inputclass{border:1px solid #eeeeee; font-size:14px; font-family:Tahoma; font-weight:bold}
+-->
+</style>
+ <link rel='stylesheet' type='text/css' href='[$html_url]/style.css' />
+<script>
+ var error_message="[$error_message]";
+ if(error_message!='') {
+	alert(error_message);
+ }
+function login_submit(){
+	var MId,user_name,user_pass,targeturl;
+	var	user_name = document.login.username.value;
+	var user_pass = document.login.password.value;
+	
+	if((user_name!='') && (user_pass!='')){	
+		/*DMsysWin=window.open("","","scrollbars")
+		if (document.all){
+			DMsysWin.moveTo(0,0)
+			DMsysWin.resizeTo(screen.width,screen.height-30)
+		}*/
+
+		targeturl='index.php?o=sys::login';
+		//DMsysWin.location=targeturl		
+		document.login.action = targeturl
+		document.login.submit();
+
+		
+		}else{
+			alert("{lang:qingshuruyonghuminghemima}！");
+		}
+	return false;
+
+}
+</script>
+</head>
+
+<body onload="document.LoginForm.UserName.focus();">
+<div id="wrapper">
+	<div id="head">
+		<div id="biao"></div>
+		<div id="logo"><a href="http://www.cmsware.com/" target="_blank"><span>思维|CMSware</span></a></div>
+	</div>
+	
+	<div >
+		<div style="margin:10px 5px 13px 5px; height:52px; ">
+		
+		
+		</div>
+		<div >
+ <form name="LoginForm" method="post" action="login.do?OASUID=cmswareoas">
+  <table width="500" border="0" align="center" cellpadding="5" cellspacing="1" class="table_border">
+ <tr  class="table_header"> 
+      <td colspan="2" align="center">CMSware会员系统 - 用户登录</td>
+      
+    </tr>
+	<include file="block.error.html"/>
+
+    <tr class="table_td1"> 
+      <td>用户名：</td>
+      <td> <input name="UserName" type="text" id="user" ></td>
+    </tr>
+    <tr class="table_td1"> 
+      <td>密码：</td>
+      <td> <input name="Password" type="password" id="pass"></td>
+    </tr>
+	 <tr class="table_td1"> 
+      <td>验证码：</td>
+      <td> <input name="validCode" type="text" >  <img  src="validCode.php" border="0" style="position: relative; top:4px" ></td>
+    </tr>
+	<tr class="table_td1">
+<td  >Cookie 时间：</td>
+<td >
+<input type="radio"  name="CookieTime" value="31536000"> 一年 &nbsp;
+<input type="radio"  name="CookieTime" value="2592000" checked> 一个月 &nbsp;
+<input type="radio"  name="CookieTime" value="86400"> 一天 &nbsp;
+<input type="radio"  name="CookieTime" value="3600"> 一小时 &nbsp;
+<input type="radio"  name="CookieTime" value="0"> 浏览器进程 &nbsp; &nbsp;
+</td>
+</tr>
+
+    <tr class="table_td2"> 
+      <td>&nbsp;<INPUT TYPE="hidden" name="referer" value="[$referer]"></td>
+      <td> <input name="submit" type="submit" id="submit" value="登　陆">&nbsp;&nbsp; <A HREF="register.do?OASUID=cmswareoas">注册</A>&nbsp;&nbsp; <A HREF="getPass.do?OASUID=cmswareoas">忘记密码</A></td>
+    </tr>
+  </table>
+</form>   
+		</div>	
+	</div>
+	<div id="footer">
+	  <div align="center"><span style3="style3">Powered by <strong><a href="http://www.cmsware.com" target="_blank">CMSware</a> </strong>&copy; 1999-2006 <a href="http://www.cmsware.com" target="_blank">Lonmo Technology   Ltd</a>. All rights reserved. </span></div>
+	</div>
+</div>
+</body>
+</html>

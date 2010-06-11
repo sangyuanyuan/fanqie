@@ -1,0 +1,5 @@
+ <CMS action="LIST" return="List"  where="co.TableID=2"   TableID="2" num="10" />
+<LOOP $List var=var key=key> 
+<li><a href=" [$var.URL] " target=_blank title=" [$var.SoftName] " >[@CsubStr($var.SoftName, 0, 16)] </a>
+<span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span> </li>
+</LOOP> 

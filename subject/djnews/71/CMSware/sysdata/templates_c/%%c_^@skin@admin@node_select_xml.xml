@@ -1,0 +1,11 @@
+<?php echo base64_decode("PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i");?><?php echo $this->_tpl_vars["charset"];?><?php echo base64_decode("Ij8+");?>
+<tree>
+<?php if(!empty($this->_tpl_vars['NodeInfo'] )): 
+ foreach ($this->_tpl_vars['NodeInfo'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+<?php if($this->_tpl_vars["var"]["haveSon"] == 1): ?>
+	<tree text="<?php echo htmlspecialchars($this->_tpl_vars["var"]["Name"]);?>" action="javascript:parent.setTargetNodeID('<?php echo $this->_tpl_vars["var"]["NodeID"];?>')"  src="admin_tree.php?op=sId::<?php echo $this->_tpl_vars["sId"];?>;o::node_select_xml;NodeID::<?php echo $this->_tpl_vars["var"]["NodeID"];?>"  target="" cId="<?php echo $this->_tpl_vars["var"]["NodeID"];?>" />
+<?php else: ?>
+	<tree text="<?php echo htmlspecialchars($this->_tpl_vars["var"]["Name"]);?>" action="javascript:parent.setTargetNodeID('<?php echo $this->_tpl_vars["var"]["NodeID"];?>')"  target="" cId="<?php echo $this->_tpl_vars["var"]["NodeID"];?>" />
+<?php endif;?>
+<?php endforeach; endif;?>
+</tree>

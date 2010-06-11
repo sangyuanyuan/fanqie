@@ -1,0 +1,13 @@
+
+先将压缩包的里的文件里的文件一一对应放在CMSware\plugins\bbsInterface下的文件夹里。
+
+1, 修改cmsware/plugins/bbsInterface/bbs/ipb2/bbs.config.php文件中的论坛数据库信息，输入论坛的数据库名称和数据表前缀，插件要求只能在一个数据库服务器上；
+
+2.在cmsware后台里插件管理/会员插件里的插件设置中把论坛/会员系统类型修改为相应使用的论坛接口目录名 如:ipb2
+
+3.将cmsware/publish/config.php里将里面的BBS_NAME改成要使用的论坛目录名 如define('BBS_NAME', 'ipb2');.
+
+4.在插件管理中更改用户组权限，管理员和游客如果需要指定都要设置，不设置就是没有权限
+
+5.在系统管理里的全局模板变量管理里论坛的相关变量改成将要使用的论坛系统的.
+

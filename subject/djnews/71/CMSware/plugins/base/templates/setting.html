@@ -1,0 +1,34 @@
+<include: file="header.html">
+   <TABLE width="95%"  border=0 align="center" cellpadding="4" cellspacing="1" class="table_border">
+            <TBODY>
+              <TR class="table_header" >
+                <TD height=25 colspan="3" id=id2 ><strong>{lang:topic}</strong></TD> 
+              </TR>
+              <TR class="table_td1">
+                <TD align=middle ><strong>{lang:content_model}</strong></TD>
+                <TD align=middle ><strong>{lang:isSetted}</strong></TD>
+                <TD height=30 align=middle ><strong>{lang::global:execute_op}</strong></TD>
+              </TR>
+			  <LOOP $ContentModels var=var key=key >
+			   <TR class="table_td2">
+                <TD align=middle >[$var.Name]</TD>
+                <TD align=middle >
+				<if $var.CommentPageOffset != ''>
+				<font color="green">{lang::global:icon_right}</font>
+				
+				<else>
+				<font color="red">{lang::global:icon_error}</font>
+				</if>
+				</TD>
+                <TD height=30 align=middle >
+				<if $var.CommentPageOffset != ''>
+				<a href="[$base_url]o=index::setting_edit&TableID=[$var.TableID]">{lang:setting}</a>
+				<else>
+				<a href="[$base_url]o=index::setting_add&TableID=[$var.TableID]">{lang:setting}</a>
+				</if>
+				</TD>
+              </TR>
+			  </LOOP>
+            </TBODY>
+   </TABLE>
+<include: file="footer.html">

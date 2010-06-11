@@ -1,0 +1,122 @@
+<div id="left">
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>最新FlashTop10</h3>
+<ul>
+
+<SCRIPT src="[$PUBLISH_URL]js.php?id=flash_pale_blue_new10" type=text/javascript></SCRIPT>
+
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+
+
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h3>最热点击Top10</h3>
+<ul>
+
+<SCRIPT src="[$PUBLISH_URL]js.php?id=flash_pale_blue_hits10" type=text/javascript></SCRIPT>
+</ul>
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+</div><!--left end-->
+
+<div id="right">
+
+
+<div class="box_l">
+<div class="box_l_t">&nbsp;</div>
+<div class="box_l_c">
+<h1>Flash搜索结果</h1>
+<div class="list_page" align="right">
+<ul>
+<li>
+ 共找到<font color="red"> 
+              [$searchResultInfo.num]
+              </font>张有关 " <font color=red> 
+              [$searchKeywords]
+              </font> " 的Flash&nbsp;&nbsp; 当前显示 
+              [$searchResultInfo.from]
+              - 
+              [$searchResultInfo.to]
+              条 , 共[$searchResultInfo.pageNum]页  
+							  
+[$pageList]  
+  </li>
+</ul>
+</div>
+ 
+<table border="0" cellpadding="0" cellspacing="0"  align="center" >
+<tr>
+ <LOOP name="searchResult" var="var" key="key" start="1">
+<td>
+
+<table  cellpadding="0" cellspacing="3"  width="265" border="0">
+<tr> 
+    <td rowspan="4" width="120"><A HREF="[$var.URL]"><img  alt="[$var.Title]" src="[$PUBLISH_URL]automini.php?src=[@urlencode($var.Photo)]&pixel=120*90&cache=1&cacheTime=10000&cacheKey=[$var.IndexID]"   style="MARGIN-LEFT:0px;MARGIN-TOP:0px;BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; BORDER-TOP-COLOR: #000000; BORDER-RIGHT-COLOR: #000000;border:1px" /></A></td>
+    <td width="100%">[$var.Title]</td>
+  </tr>
+  <tr> 
+    <td>作者:[$var.Author]</td>
+  </tr>
+  <tr>
+    <td>大小:[$var.Size]</td>
+  </tr>
+  <tr> 
+    <td>[@date('Y-m-d H:i', $var.PublishDate)]</td>
+  </tr>
+  <tr> 
+    <td colspan="2" height="60" valign="top">[@CsubStr($var.Intro, 0, 50)]</td>
+  </tr>
+
+ </table>
+			 
+</td>
+<if test="$key%2 == 0">
+</tr>
+<tr>
+</if>
+
+</loop>
+</tr>
+</table>
+
+
+ 
+ 
+
+
+
+<div class="list_page" align="right">
+<ul>
+<li>
+  共找到<font color="red"> 
+              [$searchResultInfo.num]
+              </font>张有关 " <font color=red> 
+              [$searchKeywords]
+              </font> " 的Flash&nbsp;&nbsp; 当前显示 
+              [$searchResultInfo.from]
+              - 
+              [$searchResultInfo.to]
+              条 , 共[$searchResultInfo.pageNum]页  
+							  
+[$pageList]  
+  </li>
+</ul>
+</div>
+</div>
+
+</div>
+<div class="box_l_b">&nbsp;</div>
+</div><span class="cls"></span>
+
+</div>

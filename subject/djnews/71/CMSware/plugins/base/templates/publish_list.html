@@ -1,0 +1,332 @@
+<include: file="header.html">
+<BODY  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px" >
+<style>
+
+div.titleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 200;
+	text-overflow: ellipsis;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;			
+}		
+div.subtitleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	
+	text-overflow: ellipsis;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;			
+}
+div.timeholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 90;
+	text-overflow: ellipsis;
+	margin: 0px;
+	overflow: hidden;
+	white-space: nowrap;			
+}	
+</style>
+<script language='JavaScript'>
+var doImage = doImage;
+var TType = TType;
+
+function mhHover(tbl, idx, cls)
+{
+	var t, d;
+	if (document.getElementById)
+		t = document.getElementById(tbl);
+	else
+		t = document.all(tbl);
+	if (t == null) return;
+	if (t.getElementsByTagName)
+		d = t.getElementsByTagName("TD");
+	else
+		d = t.all.tags("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}
+
+</script>
+<SCRIPT>
+var elo;
+var loadmenuok=false;
+var type = 'main';
+var NodeID = '[$NodeInfo.NodeID]';
+function initrightmenu(){
+	loadmenuok = true;
+}
+
+
+
+
+function addThread(url,TaskID) {
+	top.CrawlerTaskFrame.addThread(url , TaskID)
+	
+}
+
+function doing(action, IndexID) {
+	var returnValue;
+	switch(action) {
+
+		case 'unpublish':
+			document.documentlist.referer.value = document.location;
+			document.documentlist.action = 'admin_publish.php?sId=[$sId]&' + 'o=' + action + '&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID + '&targetNodeID=' + targetNodeID  ;
+			document.documentlist.submit();
+				//alert(IndexID + '-' + targetNodeID)
+		
+			break;
+		case 'refresh':
+			document.documentlist.referer.value = document.location;
+			document.documentlist.action = 'admin_publish.php?sId=[$sId]&' + 'o=' + action + '&type=' + type + '&IndexID=' + IndexID + '&NodeID=' + NodeID + '&targetNodeID=' + targetNodeID  ;
+			document.documentlist.submit();
+			break;
+		case 'display_record':
+			top.panelWork.location = "[$base_url]&o=admin_base::list&NodeID=" + NodeID + "&offset=" + document.documentlist.offset.value;
+			break;
+		default:
+			document.location = document.location;
+
+	}
+	//sId=6891856b84ee23f2330ee8359cd3f60d&o=view&type=main&pId=41&cId=4
+}
+
+
+
+
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+<!--
+function CheckAll(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.name !='copy')       e.checked = form.chkall.checked; 
+   }
+  }
+
+//-->
+
+
+</script>
+<script>
+var mousemovecolor="#D4D4D4";
+var selectcolor ="#DDDDDD";
+var oldcolor;
+
+function GetRow(oElem)
+{
+	while (oElem)
+	{	//alert(oElem.tagName.toLowerCase())
+		if (oElem.tagName.toLowerCase() == "tr" || oElem.parentElement.tagName.toLowerCase() == "tbody") 
+		    return oElem;
+		if (oElem.tagName.toLowerCase() == "table" || oElem.tagName.toLowerCase() == "th") return false;
+		oElem = oElem.parentElement;
+	}
+}
+
+
+function selected()
+{	//alert(pid)
+
+	var trstyle = GetRow( window.event.srcElement );
+	var a;
+	if( !trstyle )
+		return false;
+
+	if( trstyle.style.backgroundColor.toLowerCase() == selectcolor.toLowerCase())
+	{
+		trstyle.style.backgroundColor = "";
+		a=eval("p_"+ trstyle.id);	
+		//alert(trstyle.id)
+		if (a!=null || a.checked) 
+			a.checked=false
+		oldcolor = "";
+	}
+	else
+	{		
+		trstyle.style.backgroundColor = selectcolor;
+		a=eval("p_"+ trstyle.id);
+		//alert(trstyle.id)
+		if (a!=null) 
+			a.checked=true
+		oldcolor = selectcolor;
+
+	
+	}
+}
+
+function going(form, o)
+{
+	document.documentlist.referer.value = document.location;
+
+	with(form) {
+		switch(o) {
+			case 'refresh':
+				document.documentlist.referer.value = document.location;
+				document.documentlist.action = 'admin_publish.php?sId=[$sId]&' + '&multi=1&o=' + o + '&type=' + type +  '&NodeID=' + NodeID  ;
+				document.documentlist.submit();
+				break;
+			case 'publish':
+				document.documentlist.referer.value = document.location;
+				document.documentlist.action = 'admin_publish.php?sId=[$sId]&' + '&multi=1&o=' + o + '&type=' + type +  '&NodeID=' + NodeID  ;
+				document.documentlist.submit();
+				break;
+			case 'unpublish':
+				document.documentlist.referer.value = document.location;
+				document.documentlist.action = 'admin_publish.php?sId=[$sId]&' + '&multi=1&o=' + o + '&type=' + type +  '&NodeID=' + NodeID  ;
+				document.documentlist.submit();
+				break;
+			case 'del':
+				if(confirm("{lang:confirm_multi_del}")) {
+					action = action + '&o=del&multi=1';
+					
+					submit();
+				}
+				break;
+
+			}
+	
+	}
+}
+</script>
+<div id="msviLocalToolbar">
+  <table cellpadding="0" cellspacing="2" width="100%" height="19" border="0">
+    <tr> 
+      <td class="lt0" height="30" nowrap="nowrap" onclick="doing('')" ><font id=large>[$NodeInfo.Name]</font> <font id=description> [ID : [$NodeInfo.NodeID]]</font></td>
+     
+      <td width="100%"></td>
+    </tr>
+  </table>
+</div>
+
+<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1"  class="table_border" >
+  <TBODY>
+  <form method="post" action="admin_publish.php?sId=[$sId]&type=main&NodeID=[$NodeInfo.NodeID]" name="documentlist" >
+
+    <tr class="table_td2"> 
+      <td align="center" height=25></td>
+ <td align="center"><B>ID</B></td>	  
+<loop $DisplayItem key=key var=var>
+		<td align="center"><B>[$var.FieldTitle]</B></td>
+	  </loop>
+      <td align="center" width=100><B>{lang::global:date}</B></td>
+ <td align="center"   width=40><B>{lang:Hits_Today}</B></td>
+ <td align="center"  width=40 ><B>{lang:Hits_Week}</B></td>
+  <td align="center"   width=40><B>{lang:Hits_Month}</B></td>
+  <td align="center"  width=40 ><B>{lang:Hits_Total}</B></td>
+  <td align="center"  width=40 ><B>{lang:CommentNum}</B></td>
+  <td colspan="5" align="center"><B>{lang::global:execute_op}</B></td>
+
+ </tr>
+
+
+<loop $pList key=key var=var>
+<!------onmouseover='this.style.backgroundColor="#FFFFFF"' 
+                    onmouseout='this.style.backgroundColor=""'------>
+    <tr class="table_td1" id="[$var.IndexID]" onmouseover='this.style.backgroundColor="#FFFFFF"' 
+                    onmouseout='this.style.backgroundColor=""'> 
+      <td noWrap > <input type='checkbox' name='pData[]' value='[$var.IndexID]' id="p_[$var.IndexID]" ></td>
+      <td align="center" noWrap   ><div class="subtitleholder">[$var.IndexID]</div></td>
+	 <loop $DisplayItem key=keyIn var=varIn>
+	 <if  $var.Type == 1>
+		<if $keyIn == 0>
+      <td   noWrap  style="cursor:hand" id="[$var.pId]">
+<table  border="0"  cellpadding="0" cellspacing="0"  >
+<tr>
+<td>
+	  <div class="titleholder">
+	  &nbsp;&nbsp;
+ 	 
+	  <A HREF="[$var.URL]"  target="_blank" class="o" style="cursor:hand"     title="[$var.$varIn:FieldName]">[$var.$varIn:FieldName]</A>   
+	  </div>
+</td>
+<td>
+ <if $var.Photo != ''>
+	  <img src="../html/images/image.gif" border=0>
+	  </if>
+</td>
+</tr>
+</table>
+
+	  
+	  </td>
+
+		<else>
+      <td   noWrap   id="[$var.pId]"><div class="subtitleholder">&nbsp;&nbsp;[$var.$varIn:FieldName] </div></td>
+
+		</if>
+</if>
+
+	 </loop>
+
+      <td align="center" noWrap ><div class="timeholder">[@date('Y-m-d H:i', $var.PublishDate)]</div></td>
+	   <td align="center"   ><div class="subtitleholder">[$var.Hits_Today]</div></td>
+ <td align="center"  ><div class="subtitleholder">[$var.Hits_Week]</div></td>
+  <td align="center"   ><div class="subtitleholder">[$var.Hits_Month]</div></td>
+  <td align="center"  ><div class="subtitleholder">[$var.Hits_Total]</div></td>
+  <td align="center"  ><div class="subtitleholder">[$var.CommentNum]</div></td>
+     <td colspan="5" align="center" noWrap><!--
+	  <A HREF="[$var.URL]" target="_blank" id="URL_[$var.IndexID]">{lang::global:browse}</A>
+	  <A HREF="javascript:void(0);" onclick="doing('edit','[$var.IndexID]')">{lang::global:edit}</A>
+	  <A HREF="admin_publish.php?sId=[$sId]&o=del&type=main&IndexID=[$var.IndexID]&NodeID=[$NodeInfo.NodeID]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</A> 
+	  --><A HREF="[$base_url]o=admin_base::commentAdmin&IndexID=[$var.IndexID]"   id="URL_[$var.IndexID]">{lang:admin_comment}</A>
+		
+ 
+	
+
+	  
+	  </td>
+
+ </tr>
+</loop>
+
+    <tr class="Tablelistbg"> 
+      <td colspan="16" align="left" bgcolor="#F5F5F5"> <table border="0" align="center"  cellpadding="0" cellspacing="0" width="100%">
+          <tr> 
+            <td align=left> 
+            <input type="checkbox" name="chkall" value="on" onclick="CheckAll(this.form)" id="chkall"  > 
+              <label for="chkall" >{lang::global:select_all}</label>&nbsp;&nbsp;
+			               
+			 <select name="actionMap" id="actionMap" > 
+          <option value="refresh">{lang::global:refresh}</option>
+ 
+          <option value="unpublish">{lang:unpublish}</option>
+ 
+          <!--<option value="del">{lang::global:del}</option>-->
+      
+
+			  </select>
+
+			  <input type="button" value="Go" class=button onclick="going(this.form,actionMap.options[actionMap.selectedIndex].value)"> 
+         
+            </td>
+			<td height="20" align="right" nowrap="nowrap"> <INPUT name="go_display" TYPE="button" value="{lang::global:display}" onclick="doing('display_record')" ></td>
+	  <td   height="20" nowrap="nowrap" align="right"  width=80> &nbsp;&nbsp;<INPUT TYPE="text" NAME="offset" size=1 value=[$offset]> {lang:display_record} 
+       
+   </td>
+          </tr>
+        </table></td>
+    </tr>
+	<INPUT TYPE="hidden" name="referer" value ="" >
+  </form>
+  <tr class="table_td1"> 
+    <td colspan="16" height=25 >
+	<table border=0 align="right">
+	<tr>
+	<td align=right>
+	 [$pagelist] &nbsp;&nbsp;&nbsp;&nbsp;
+	</td>
+	
+	</tr>
+	</table>
+	 </td>
+  </tr>
+  </tbody> 
+</table>
+
+<include: file="footer.html">

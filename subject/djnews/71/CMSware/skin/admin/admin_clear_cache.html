@@ -1,0 +1,51 @@
+<include: file="header.html">
+<TABLE width="95%" border=0 align=center cellSpacing=0 cellPadding=0  >
+  <form name="add_cate" method="post" action="[$base_url]o=clear_cache_submit">
+    <TBODY>
+<TR>
+        <TD vAlign=top align=middle width="50%">
+		<TABLE cellspacing="1" cellpadding="4" width="100%"  border=0 class="table_border">
+            <TBODY>
+              <TR class="table_header" > 
+                <TD height=25 colSpan=2 id=id2 ><strong>{lang:topic}</strong></TD>
+              </TR>
+              <TR class="table_td1" > 
+                <TD  id=id2  colSpan=2> {lang:please_select}:</TD>
+              
+              </TR>
+               <TR class="table_td1" > 
+                <TD width=120> {lang:compile_tpl}:</TD>
+				<TD  > <INPUT TYPE="checkbox" NAME="target[compile_tpl]" value=1 checked></TD>
+              </TR> 
+			       <TR class="table_td1" > 
+                <TD  > {lang:sys_cache}:</TD>
+				<TD> <INPUT TYPE="checkbox" NAME="target[sys_cache]" value=1 checked></TD>
+              </TR>  
+			       <TR class="table_td1" > 
+                <TD > {lang:node_cache}:</TD>
+				<TD> <INPUT TYPE="checkbox" NAME="target[node_cache]" value=1 checked></TD>
+              </TR>  
+			       <TR class="table_td1" > 
+                <TD > {lang:cache_dir}:</TD>
+				<TD> <INPUT TYPE="checkbox" NAME="target[cache_dir]" value=1 checked></TD>
+              </TR>  
+
+		     <TR class="table_td1" > 
+                <TD > {lang:automini_dir}:</TD>
+				<TD> <INPUT TYPE="checkbox" NAME="target[automini_dir]" value=1  ></TD>
+              </TR>  
+
+			   <TR class="table_td1" > 
+                <TD > {lang:tpl_dir}:</TD>
+				<TD> <INPUT TYPE="checkbox" NAME="target[tpl_dir]" value=1 onclick="if(this.checked) { if(!confirm('{lang:alert_del_tpl}')) {this.checked = false;} }"></TD>
+              </TR>  
+
+              <TR class="table_td1"> 
+                <TD height=30 colSpan=2 align=middle > <INPUT name="submit" type=submit value="{lang:clear}" class="button"> <INPUT TYPE="hidden" name="referer" value="[$referer]">
+                  &nbsp;&nbsp; <INPUT name="reset" type=reset value="{lang::global:reset_value}"  class="button"> 
+                </TD>
+              </TR>
+            </TBODY>
+          </TABLE></TD>
+      </TR></TBODY><INPUT type=hidden value=edit_submit name=action></form></TABLE>
+<include: file="footer.html">

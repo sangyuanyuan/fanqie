@@ -1,0 +1,26 @@
+<%xml version="1.0" encoding="utf-8" %>
+<wap>GBK2UTF8</wap>
+<!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml">
+<wml><head><meta http-equiv="Cache-Control" content="no-cache" forua="true"/></head>
+<CMS  action="NODE" return="rootNodeInfo" NodeGUID="com.cmsware.demo.wap" />
+<card id="MainCard" title="[$NodeInfo.Name]">
+<p>
+<cms action="LIST" return="List" NodeID="self" Num="page-10" />
+<loop name="List" key="key" var="var" start="1" >
+<op exp="$num = ( $PageInfo.CurrentPage - 1 ) * 10 + $key " />
+<a href="[$var.URL]" title="确定">[$num].[$var.Title]</a> <br/>
+ </loop>
+记录:[$PageInfo.TotalNum] 页次:[$PageInfo.CurrentPage]/[$PageInfo.TotalPage]<br/>
+[@wap_page($PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)]
+<br/>
+<CMS  action="NODE" return="NodeInfo" NodeID="parent" />
+<a href="[$NodeInfo.NodeURL]" title="确定">返回[$NodeInfo.Name]</a> <br/>
+<a href="[$rootNodeInfo.NodeURL]" title="确定">返回首页</a> <br/>
+
+</p>
+
+</card>
+
+</wml>
+
+ 

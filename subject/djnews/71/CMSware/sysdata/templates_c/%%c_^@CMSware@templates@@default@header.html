@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>
+<?php if(!empty($this->_tpl_vars['Title'])): ?>
+<?php echo $this->_tpl_vars["Title"];?>
+<?php else: ?>
+<?php echo $this->_tpl_vars["NodeInfo"]["Name"];?>
+<?php endif;?>
+
+</title>
+<meta name="description" content="CMSware 让你自由自在地做网站" />
+<link type="text/css" href="<?php echo $this->_tpl_vars["Skin_Images"];?>pale_blue_skin/css/css.css" rel="stylesheet"  />
+<script type="text/javascript" src="<?php echo $this->_tpl_vars["Skin_Images"];?>pale_blue_skin/Js/exlink.js"></script>
+</head>
+<body>
+<!--{{{初始化结点信息数组--->
+<?php
+ global $PageInfo,$params; 
+ $params = array ( 
+	'action' => "NODE",
+	'return' => "NodeInfo",
+ ); 
+;
+$this->_tpl_vars['NodeInfo'] = CMS_NODE($params); 
+    $this->_tpl_vars['PageInfo'] = &$PageInfo;  
+?>
+<!--}}}--->
+  
+<div id="header">
+
+<div id="top">
+	<div id="top_flot">
+	<p id="calendar">
+	<script type="text/javascript" src="<?php echo $this->_tpl_vars["Skin_Images"];?>pale_blue_skin/Js/date.js">
+	</script> CMSware
+	</p>
+	<p id="banner">
+	<img title="广告条" src="<?php echo $this->_tpl_vars["Skin_Images"];?>pale_blue_skin/images/cmsware_banner.jpg" />
+</p>     
+	</div>
+
+	<div id="logo">
+	<img alt="logo" src="<?php echo $this->_tpl_vars["Skin_Images"];?>pale_blue_skin/images/newlogo.gif" />
+	</div>
+</div>
+
+<div id="nav">
+	<ul>
+	<?php
+ global $PageInfo,$params; 
+ $params = array ( 
+	'action' => "NODELIST",
+	'return' => "List",
+	'type' => "sub",
+	'nodeid' => "0",
+ ); 
+;
+$this->_tpl_vars['List'] = CMS_NODELIST($params); 
+    $this->_tpl_vars['PageInfo'] = &$PageInfo;  
+?>
+	<?php if(!empty($this->_tpl_vars['List'] )): 
+   foreach ($this->_tpl_vars['List'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+	<?php if($this->_tpl_vars["var"]["NodeGUID"]=='com.cmsware.demo'): ?>
+	<li id="sel"><a href="<?php echo $this->_tpl_vars["var"]["NodeURL"];?>" title="<?php echo $this->_tpl_vars["var"]["NodeName"];?>"><span><?php echo $this->_tpl_vars["var"]["NodeName"];?></span></a></li>
+	<?php else: ?>
+	<li><a href="<?php echo $this->_tpl_vars["var"]["NodeURL"];?>" title="<?php echo $this->_tpl_vars["var"]["NodeName"];?>"><span><?php echo $this->_tpl_vars["var"]["NodeName"];?></span></a></li>
+	<?php endif;?>
+
+	<?php endforeach; endif;?>
+	 
+	</ul>
+</div>
+<div id="sub_nav">
+<?php
+ global $PageInfo,$params; 
+ $params = array ( 
+	'action' => "NODELIST",
+	'return' => "List",
+	'type' => "sub",
+	'nodeguid' => "com.cmsware.demo",
+ ); 
+;
+$this->_tpl_vars['List'] = CMS_NODELIST($params); 
+    $this->_tpl_vars['PageInfo'] = &$PageInfo;  
+?>
+	<?php if(!empty($this->_tpl_vars['List'] )): 
+   foreach ($this->_tpl_vars['List'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+	<?php if($this->_tpl_vars['key'] == 0): ?>
+		<?php if($this->_tpl_vars["var"]["NodeID"] == $this->_tpl_vars["NodeInfo"]["NodeID"]): ?>
+			<a href="<?php echo $this->_tpl_vars["var"]["NodeURL"];?>" title="<?php echo $this->_tpl_vars["var"]["NodeName"];?>"><B><?php echo $this->_tpl_vars["var"]["NodeName"];?></B></a>
+		<?php else: ?>
+			<a href="<?php echo $this->_tpl_vars["var"]["NodeURL"];?>" title="<?php echo $this->_tpl_vars["var"]["NodeName"];?>"><?php echo $this->_tpl_vars["var"]["NodeName"];?></a>
+		<?php endif;?>
+ 	<?php else: ?>
+		<?php if($this->_tpl_vars["var"]["NodeID"] == $this->_tpl_vars["NodeInfo"]["NodeID"]): ?>
+ | <a href="<?php echo $this->_tpl_vars["var"]["NodeURL"];?>" title="<?php echo $this->_tpl_vars["var"]["NodeName"];?>"><B><?php echo $this->_tpl_vars["var"]["NodeName"];?></B></a>
+		<?php else: ?>
+ | <a href="<?php echo $this->_tpl_vars["var"]["NodeURL"];?>" title="<?php echo $this->_tpl_vars["var"]["NodeName"];?>"><?php echo $this->_tpl_vars["var"]["NodeName"];?></a>
+		<?php endif;?>
+
+	<?php endif;?>
+
+	<?php endforeach; endif;?>
+ </div>
+
+</div> 
+<div id="main">
+<div id="u_place">
+您的位置:
+<?php if(!empty($this->_tpl_vars["NodeInfo"]["Navigation"] )): 
+   foreach ($this->_tpl_vars["NodeInfo"]["Navigation"] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+<?php if($this->_tpl_vars['key'] == 0): ?>
+<A href=" <?php echo $this->_tpl_vars["var"]["URL"];?> "> <?php echo $this->_tpl_vars["var"]["Name"];?> </A> 
+<?php else: ?>
+→ <A href=" <?php echo $this->_tpl_vars["var"]["URL"];?> "> <?php echo $this->_tpl_vars["var"]["Name"];?> </A>
+<?php endif;?> 
+<?php endforeach; endif;?>
+<?php if($this->_tpl_vars['Title'] != ''): ?>
+→ <?php echo $this->_tpl_vars["Title"];?> 
+<?php endif;?>
+</div>

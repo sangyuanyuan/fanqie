@@ -1,0 +1,185 @@
+<include file="header.html" />
+
+<script language="JavaScript">
+function prepareSubmit() {
+	with(document.EditUserSubmitForm){
+
+		if(Password.value != Password2.value) {
+			alert("密码和确认密码不符");
+			Password.focus();
+			return false;
+		}
+	}
+
+		
+	select_submit('EditUserSubmitForm', 'TargetSubGroupIDs', 'SubGroupIDs');
+	select_submit('EditUserSubmitForm', 'TargetSubRoleIDs', 'SubRoleIDs');
+	select_submit('EditUserSubmitForm', 'TargetOpIDs', 'OpIDs');
+
+	return true;
+}
+
+
+</script>
+
+<table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B> <A HREF="user.do">用户管理</A> -&gt; 编辑用户</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+
+<form name="EditUserSubmitForm" method="post" action="user.do?o=edit_user_submit&UserID=[$UserInfo.UserID]">
+  <table width="98%" border="0" align="center" cellpadding="5" cellspacing="1" class="table_border">
+	<tr > 
+      <td colspan="2" class="table_header">
+ 	编辑用户
+ 	  </td>
+    </tr>
+
+	
+    <tr> 
+      <td class="table_td1">用户名：</td>
+      <td class="table_td2"><input name="UserName" type="text" id="username2" value="[$UserInfo.UserName]">  <span class="mustinput">*</span>
+	  </td>
+    </tr>
+     
+  <tr >
+      <td class="table_td1">Email：</td>
+      <td class="table_td2">
+        <input name="Email" type="text" id="Email" value="[$UserInfo.Email]" style="width:200"> <span class="mustinput">*</span>务必确保此Email有效性
+	  </td>
+    </tr>
+	 
+    <tr> 
+      <td class="table_td1">新密码：</td>
+      <td class="table_td2"><input name="Password" type="password"  >   <span class="mustinput">*</span> 留空则不修改用户密码
+	  </td>
+    </tr>
+    <tr> 
+      <td class="table_td1">确认新密码：</td>
+      <td class="table_td2"><input name="Password2" type="password"  > <input name="submit" type="button" id="submit" value="重置密码" onClick="document.location = '[@getActionURL('resetPass')]&UserID=[$UserInfo.UserID]'">
+	  </td>
+    </tr>
+  
+    <tr > 
+      <td class="table_td1">QQ：</td>
+      <td class="table_td2"><input name="QQ" type="text" id="QQ" value="[$UserInfo.QQ]"></td>
+    </tr>
+    <tr > 
+      <td class="table_td1">昵称：</td>
+      <td class="table_td2"><input name="NickName" type="text" id="NickName" value="[$UserInfo.NickName]"></td>
+    </tr>
+   
+
+
+    <tr > 
+      <td class="table_td1">个人介绍：</td>
+      <td class="table_td2"> <textarea name="Description" cols="60" rows="10" id="Description">[$UserInfo.Description]</textarea></td>
+    </tr>
+<tr > 
+      <td colspan="2" class="table_header">
+ 	 用户附加属性
+ 	  </td>
+    </tr>
+
+<include file="user.edit.extra_field.html" />
+<tr > 
+      <td colspan="2" class="table_header">
+ 	 权限设置
+ 	  </td>
+    </tr>
+	 <tr> 
+      <td class="table_td1">所属主用户组：</td>
+      <td class="table_td2">
+<select name="GroupID" >
+<loop name="GroupInfo" key="key" var="var">
+<if test="$var.GroupID == $UserInfo.GroupID">
+		  <option value="[$var.GroupID]" selected>[$var.GroupName]</option>
+
+<else>
+		  <option value="[$var.GroupID]" >[$var.GroupName]</option>
+</if>
+</loop>
+</select>
+	  </td>
+    </tr>
+
+<tr>
+<td class="table_td1">所属副用户组:</td>
+<td class="table_td2">
+	<table> <tr> <td>
+<select name="SrcSubGroupIDs"  onDblClick="select_move_to(this.form, 'SrcSubGroupIDs', 'TargetSubGroupIDs')" size="10" style="width:100px;"><loop name="SrcSubGroupIDs" var="var">
+<option value="[$var.value]">[$var.title]</option>
+</loop>
+</select>
+</td>
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcSubGroupIDs', 'TargetSubGroupIDs')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetSubGroupIDs', 'SrcSubGroupIDs')"><br><br><input type="button" value="全选" onClick="select_move_all_to(this.form, 'SrcSubGroupIDs', 'TargetSubGroupIDs')"><br><input type="button" value="全删" onClick="select_move_all_to(this.form, 'TargetSubGroupIDs', 'SrcSubGroupIDs')"></td><td><select name="TargetSubGroupIDs" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetSubGroupIDs', 'SrcSubGroupIDs')" multiple><loop name="TargetSubGroupIDs" var="var"> <option value="[$var.value]" selected>[$var.title]</option>
+</loop>
+</select>
+<INPUT TYPE="hidden" name="SubGroupIDs"></td>
+</tr></table>
+	</td>
+</tr>
+
+
+<tr>
+<td class="table_td1">所属主角色:</td>
+<td class="table_td2">
+			<select name="RoleID" id="RoleID">
+<loop name="SrcRoleID" var="var" key="key">
+<if test="$var.value == $UserInfo.RoleID">
+		<option value="[$var.value]" selected>[$var.title]</option>
+<else>
+		<option value="[$var.value]">[$var.title]</option>
+</if>
+</loop>
+		</select>
+
+	</td>
+</tr>
+<tr>
+<td class="table_td1">所属副角色:</td>
+<td class="table_td2">
+	<table> <tr> <td>
+<select name="SrcSubRoleIDs"  onDblClick="select_move_to(this.form, 'SrcSubRoleIDs', 'TargetSubRoleIDs')" size="10" style="width:100px;"><loop name="SrcSubRoleIDs" var="var">
+<option value="[$var.value]">[$var.title]</option>
+</loop>
+</select>
+</td>
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcSubRoleIDs', 'TargetSubRoleIDs')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetSubRoleIDs', 'SrcSubRoleIDs')"><br><br><input type="button" value="全选" onClick="select_move_all_to(this.form, 'SrcSubRoleIDs', 'TargetSubRoleIDs')"><br><input type="button" value="全删" onClick="select_move_all_to(this.form, 'TargetSubRoleIDs', 'SrcSubRoleIDs')"></td><td><select name="TargetSubRoleIDs" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetSubRoleIDs', 'SrcSubRoleIDs')" multiple><loop name="TargetSubRoleIDs" var="var"> <option value="[$var.value]" selected>[$var.title]</option>
+</loop>
+</select>
+<INPUT TYPE="hidden" name="SubRoleIDs"></td>
+</tr></table>
+	</td>
+</tr>
+<tr>
+<td class="table_td1">可用操作列表:</td>
+<td class="table_td2">
+	<table> <tr> <td>
+<select name="SrcOpIDs"  onDblClick="select_move_to(this.form, 'SrcOpIDs', 'TargetOpIDs')" size="10" style="width:100px;"><loop name="SrcOpIDs" var="var">
+<option value="[$var.value]">[$var.title]</option>
+</loop>
+</select>
+</td>
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcOpIDs', 'TargetOpIDs')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetOpIDs', 'SrcOpIDs')"><br><br><input type="button" value="全选" onClick="select_move_all_to(this.form, 'SrcOpIDs', 'TargetOpIDs')"><br><input type="button" value="全删" onClick="select_move_all_to(this.form, 'TargetOpIDs', 'SrcOpIDs')"></td><td><select name="TargetOpIDs" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetOpIDs', 'SrcOpIDs')" multiple><loop name="TargetOpIDs" var="var"> <option value="[$var.value]" selected>[$var.title]</option>
+</loop>
+</select>
+<INPUT TYPE="hidden" name="OpIDs"></td>
+</tr></table>
+	</td>
+</tr>
+
+    <tr > 
+      <td  class="table_td2">&nbsp;</td>
+      <td class="table_td2"><input name="submit" type="submit" id="submit" value="提交" onClick="return prepareSubmit();">
+        &nbsp;&nbsp; <INPUT TYPE="hidden" name="referer" value="[$referer]">
+        <input type="reset" name="Submit2" value="重置"></td>
+    </tr>
+  </table>
+</form>
+<include file="footer.html" />

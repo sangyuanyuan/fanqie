@@ -260,7 +260,10 @@ $db->execute($sql); ?>
 				</div>	
 			<? }?>
 			<div id=contentpage><?php echo print_fck_pages($record[0]->content,"/news/news.php?id=".$id); ?></div>
-			<?php if($record[0]->categoryname=="我要报料"){?><div id=lc>此文系番茄网网友报料新闻，不代表番茄网的观点或立场。</div><?php } ?>
+			<?php if($record[0]->categoryname=="我要报料"){?>
+				<div id=lc>此文系番茄网网友报料新闻，不代表番茄网的观点或立场。</div>
+				<div id=cream param="<?php echo $id; ?>"><div id=num><?php echo $record[0]->cream; ?></div></div>
+			<?php } ?>
 			<?php } ?>
 			<?php  
 				if(count($comment)>0){?>

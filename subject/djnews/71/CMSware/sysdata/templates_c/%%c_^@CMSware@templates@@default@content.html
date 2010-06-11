@@ -1,0 +1,311 @@
+<?php include("../CMSware/sysdata/templates_c/%%c_^@CMSware@templates@@default@header.html");?>
+
+
+<div id="left">
+<?php include("../CMSware/sysdata/templates_c/%%c_^@CMSware@templates@@default@search_box.html");?>
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h2>本类最新</h2>
+<?php
+ global $PageInfo,$params; 
+ $params = array ( 
+	'action' => "LIST",
+	'return' => "List",
+	'nodeid' => "{$this->_tpl_vars["NodeInfo"]["NodeID"]}",
+	'where' => "co.TableID=1",
+	'num' => "10",
+	'cache' => "1",
+ ); 
+;
+$this->_tpl_vars['List'] = CMS_LIST($params); 
+    $this->_tpl_vars['PageInfo'] = &$PageInfo;  
+?>
+<!--调用新闻系统模型(TableID=1)最新发布10条记录-->
+<?php if(!empty($this->_tpl_vars['List'] )): 
+   foreach ($this->_tpl_vars['List'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?> 
+<ul>
+<li>
+<a href="<?php echo $this->_tpl_vars["var"]["URL"];?>" target="_blank" title="<?php echo $this->_tpl_vars["var"]["Title"];?>" ><?php echo CsubStr($this->_tpl_vars["var"]["Title"], 0, 21);?> </a></li>
+</ul>
+<?php endforeach; endif;?> 
+
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c"><h4>本类热点</h4>
+<?php
+ global $PageInfo,$params; 
+ $params = array ( 
+	'action' => "LIST",
+	'return' => "List",
+	'nodeid' => "{$this->_tpl_vars["NodeInfo"]["NodeID"]}",
+	'where' => "co.TableID=1",
+	'orderby' => "Hits_Total",
+	'num' => "10",
+	'cache' => "1",
+ ); 
+;
+$this->_tpl_vars['List'] = CMS_LIST($params); 
+    $this->_tpl_vars['PageInfo'] = &$PageInfo;  
+?>
+<!--调用新闻系统模型(TableID=1)最热总点击前10条记录-->
+<?php if(!empty($this->_tpl_vars['List'] )): 
+   foreach ($this->_tpl_vars['List'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+<ul>
+<li>
+<a href=" <?php echo $this->_tpl_vars["var"]["URL"];?> " target="_blank" title=" <?php echo $this->_tpl_vars["var"]["Title"];?> " ><?php echo CsubStr($this->_tpl_vars["var"]["Title"], 0, 20);?> </a>
+<span class="process">(<font color="#FF6600"><?php echo $this->_tpl_vars["var"]["Hits_Total"];?></font>)</span>
+<br />
+</li>
+</ul>
+<?php endforeach; endif;?>
+
+
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+<?php include("../CMSware/sysdata/templates_c/%%c_^@CMSware@templates@@default@copyright.html");?>
+
+
+</div>
+
+<div id="right">
+<div class="box_l">
+<div class="box_l_t">&nbsp;</div>
+<div class="box_l_c">
+<h1 id="articlename"><?php echo $this->_tpl_vars["Title"];?></h1>
+<div id="atc_info">
+<ul>
+<li>
+<?php if(!empty($this->_tpl_vars['Author'])): ?>
+作者：<?php echo $this->_tpl_vars["Author"];?> &nbsp;&nbsp;&nbsp;
+<?php endif;?>
+<?php if(!empty($this->_tpl_vars['FromSite'])): ?>
+来源：<?php echo $this->_tpl_vars["FromSite"];?> &nbsp;&nbsp;&nbsp;
+<?php endif;?>
+日期：<?php echo date('Y-m-d H:i', $this->_tpl_vars['PublishDate']);?> 
+&nbsp;&nbsp;&nbsp;
+点击：<script src="<?php echo $this->_tpl_vars["PUBLISH_URL"];?>counter.php?o=display_counter&Id=<?php echo $this->_tpl_vars["IndexID"];?>"></script>
+
+ </li>
+ 
+</ul>
+</div>
+<div id="select_font">
+<ul>
+<li id="size_how">
+<script type="text/javascript">function doZoom(size){var zoom=document.all?document.all['Zoom']:document.getElementById('Zoom');zoom.style.fontSize=size+'px';}
+</script>
+字体大小:
+</li>
+<li id="s"><a href="javascript:doZoom(12)">小</a></li>
+<li id="m"><a href="javascript:doZoom(14)">中</a></li>
+<li id="l"><a href="javascript:doZoom(16)">大</a></li>
+</ul>
+</div>
+<div class="content" id="Zoom">
+<BR>
+<?php if(!empty($this->_tpl_vars['PageNav'])): ?>
+	<?php if(!empty($this->_tpl_vars["PageNav"]["1"]["Title"]) && $this->_tpl_vars["PageNav"]["1"]["Title"] != ' ' ): ?>
+	<B>子标题：</B><I>
+	<?php if($this->_tpl_vars['PageTitle']=='CONTENT_HEADER'): ?>
+	前言
+	<?php else: ?>
+	<?php echo $this->_tpl_vars["PageTitle"];?>
+	<?php endif;?>
+	</I><br>
+	<select name="sNavigate" style=font-size:9pt  onchange=javascript:window.location=(this.options[this.selectedIndex].value)>
+	<?php if(!empty($this->_tpl_vars['PageNav'] )): 
+   foreach ($this->_tpl_vars['PageNav'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+	<?php $this->_tpl_vars['PageKey'] = $this->_tpl_vars['key']+1  ; ?>
+
+	<?php if($this->_tpl_vars["var"]["Title"]=='CONTENT_HEADER'): ?>
+		<?php $this->_tpl_vars['showTitle'] = ' 前言'  ; ?>
+
+	<?php else: ?>
+		<?php $this->_tpl_vars['showTitle'] = $this->_tpl_vars["var"]["Title"]  ; ?>
+
+	<?php endif;?>
+	<?php if($this->_tpl_vars['PageTitle'] == $this->_tpl_vars["var"]["Title"]): ?>
+ 
+	<option value="<?php echo $this->_tpl_vars["var"]["URL"];?>" selected>第<?php echo $this->_tpl_vars["PageKey"];?>页：<?php echo $this->_tpl_vars["showTitle"];?></option>
+	<?php else: ?>
+ 	<option value="<?php echo $this->_tpl_vars["var"]["URL"];?>" >第<?php echo $this->_tpl_vars["PageKey"];?>页：<?php echo $this->_tpl_vars["showTitle"];?></option>
+	<?php endif;?>
+	<?php endforeach; endif;?>
+	</select>
+
+	<?php endif;?>
+<?php endif;?>
+
+<?php echo $this->_tpl_vars["Content"];?>
+<p class="pageview">
+
+<B><?php echo $this->_tpl_vars["PageList"];?></B>
+
+</p>
+</div><!--Zoom end -->
+
+
+<div id="correlative_s">
+<h5>其他文章</h5>
+<ul>
+<!--使用SEARCH调用获取相关文章列表-->
+<!--相关文章显示-->
+<?php
+ global $PageInfo,$params; 
+ $params = array ( 
+	'action' => "LIST",
+	'return' => "List",
+	'nodeid' => "{$this->_tpl_vars['NodeID']}",
+	'num' => "1",
+	'where' => "i.PublishDate < {$this->_tpl_vars['PublishDate']} ",
+ ); 
+;
+$this->_tpl_vars['List'] = CMS_LIST($params); 
+    $this->_tpl_vars['PageInfo'] = &$PageInfo;  
+?>
+<?php if(!empty($this->_tpl_vars['List'] )): 
+   foreach ($this->_tpl_vars['List'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?> 
+<li>
+下一篇：<a href=<?php echo $this->_tpl_vars["var"]["URL"];?>><?php echo $this->_tpl_vars["var"]["Title"];?></a>&nbsp;&nbsp;[<?php echo date('Y-m-d H:m:s', $this->_tpl_vars["var"]["PublishDate"]);?>] <br>
+</li>
+<?php endforeach; endif;?> 
+
+<?php
+ global $PageInfo,$params; 
+ $params = array ( 
+	'action' => "LIST",
+	'return' => "List",
+	'nodeid' => "{$this->_tpl_vars['NodeID']}",
+	'num' => "1",
+	'where' => "i.PublishDate > {$this->_tpl_vars['PublishDate']}",
+	'orderby' => "i.PublishDate ASC",
+ ); 
+;
+$this->_tpl_vars['List'] = CMS_LIST($params); 
+    $this->_tpl_vars['PageInfo'] = &$PageInfo;  
+?>
+<?php if(!empty($this->_tpl_vars['List'] )): 
+   foreach ($this->_tpl_vars['List'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?> 
+<li>
+上一篇：<a href=<?php echo $this->_tpl_vars["var"]["URL"];?>><?php echo $this->_tpl_vars["var"]["Title"];?></a>&nbsp;&nbsp;[<?php echo date('Y-m-d H:m:s', $this->_tpl_vars["var"]["PublishDate"]);?>] <br>
+</li>
+<?php endforeach; endif;?> 
+</ul>
+</div>
+
+<div id="correlative_a">
+<h5>相关文章</h5>
+<ul>
+<!--如果存在自定义相关文章，则调用之-->
+<?php if(!empty($this->_tpl_vars['CustomLinks'])): ?>
+<?php
+ global $PageInfo,$params; 
+ $params = array ( 
+	'action' => "CONTENT",
+	'return' => "List",
+	'indexid' => "{$this->_tpl_vars['CustomLinks']}",
+ ); 
+;
+$this->_tpl_vars['List'] = CMS_CONTENT($params); 
+    $this->_tpl_vars['PageInfo'] = &$PageInfo;  
+?>
+<?php else: ?>
+<!--自定义相关文章为空，则使用SEARCH调用根据文章设置的关键字自动获取相关文章列表-->
+<?php
+ global $PageInfo,$params; 
+ $params = array ( 
+	'action' => "SEARCH",
+	'return' => "List",
+	'nodeid' => "{$this->_tpl_vars['NodeID']}",
+	'field' => "Keywords",
+	'keywords' => "{$this->_tpl_vars['Keywords']}",
+	'num' => "10",
+	'separator' => ",",
+	'ignorecontentid' => "{$this->_tpl_vars['ContentID']}",
+ ); 
+;
+$this->_tpl_vars['List'] = CMS_SEARCH($params); 
+    $this->_tpl_vars['PageInfo'] = &$PageInfo;  
+?>
+<?php endif;?>
+
+<!--开始显示相关文章-->
+<?php if(!empty($this->_tpl_vars['List'] )): 
+   foreach ($this->_tpl_vars['List'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?> 
+<li>
+·<a href="<?php echo $this->_tpl_vars["var"]["URL"];?>" title="<?php echo $this->_tpl_vars["var"]["Title"];?>"><?php echo CsubStr($this->_tpl_vars["var"]["Title"], 0, 25);?></a>
+</li>
+<?php endforeach; endif;?> 
+</ul>
+</div>
+<BR/>
+<!--评论调用-->
+<script type="text/javascript" src="<?php echo $this->_tpl_vars["PUBLISH_URL"];?>js.php?id=comment&IndexID=<?php echo $this->_tpl_vars["IndexID"];?>"></script>
+
+                  <TABLE cellSpacing=1 cellPadding=3 width="95%"  border=0 align="center">
+                    <FORM name="myform" action="<?php echo $this->_tpl_vars["PUBLISH_URL"];?>comment.php?o=post&IndexID=<?php echo $this->_tpl_vars["IndexID"];?>" method="post">
+                      <TR> 
+                        <TD class=title12 bgColor=#dcdcdc> <table width="100%" border="0" cellspacing="3">
+                            <tr> 
+                              <td>发表评论：</td>
+                              <td> <INPUT name="anonymous" type=checkbox value=1 checked>
+                                匿名发表</td>
+                              <td>用户名: 
+                                <INPUT size=16 name=username>
+                                　　</td>
+                              <td><a href="<?php echo $this->_tpl_vars["PUBLISH_URL"];?>comment.php?o=display&Id=<?php echo $this->_tpl_vars["IndexID"];?>">查看评论</a></td>
+                            </tr>
+                          </table></TD>
+                      </TR>
+                      <TR> 
+                        <TD class=title12 align=middle bgColor=#edf0f5> <center><TEXTAREA class=g name=content rows=6 cols=70></TEXTAREA> </center>
+                        </TD>
+                      </TR>
+                    </FORM>
+                    <TR> 
+                      <TD class=title12 align=middle bgColor=#edf0f5> <center><INPUT onclick='javascript:check(this);' type='submit' value='  发送  ' name='submit'> </center>
+                      </TD>
+                    </TR>
+									  <tr>
+				  	<td  bgcolor=#ffffff>· 您将承担一切因您的行为、言论而直接或间接导致的民事或刑事法律责任<br>· 留言板管理人员有权保留或删除其管辖留言中的任意内容<br>· 本站提醒：不要进行人身攻击。谢谢配合。</td>
+				  </tr>
+
+                  </TABLE><br>
+				  </DIV>
+
+
+<!--//评论显示结束-->
+</div><!--box_l_c end -->
+<div class="box_l_b">&nbsp;</div>
+</div>
+
+</div><span class="cls"></span><!--right end-->
+</div>
+<?php include("../CMSware/sysdata/templates_c/%%c_^@CMSware@templates@@default@footer.html");?>
+<script>
+function check(obj) {
+	if(document.myform.content.value=='') { 
+		alert('请输入评论内容');
+		document.myform.content.focus();
+		return false;
+	} else if(document.myform.content.value.length > 2000) { 
+		alert('评论内容太长，字数不成超过2000');
+		document.myform.content.focus();
+		return false;
+	}
+
+	obj.disabled=true; 
+	document.myform.submit();
+}
+</script>
+
+</body>
+</html>

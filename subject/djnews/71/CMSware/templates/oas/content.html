@@ -1,0 +1,233 @@
+<include file="header.html" />
+
+
+<div id="left">
+<include file="search_box.html"/>
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c">
+<h2>本类最新</h2>
+<CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}"  where="co.TableID=1" num="10" Cache="1" />
+<!--调用新闻系统模型(TableID=1)最新发布10条记录-->
+<LOOP name="List" var="var" key="key"> 
+<ul>
+<li>
+<a href="[$var.URL]" target="_blank" title="[$var.Title]" >[@CsubStr($var.Title, 0, 21)] </a></li>
+</ul>
+</LOOP> 
+
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+<div class="box_s">
+<div class="box_s_t">&nbsp;</div>
+<div class="box_s_c"><h4>本类热点</h4>
+<CMS action="LIST" return="List" NodeID="{$NodeInfo.NodeID}"  where="co.TableID=1" orderby="Hits_Total" num="10" Cache="1" />
+<!--调用新闻系统模型(TableID=1)最热总点击前10条记录-->
+<LOOP name="List" var="var" key="key">
+<ul>
+<li>
+<a href=" [$var.URL] " target="_blank" title=" [$var.Title] " >[@CsubStr($var.Title, 0, 20)] </a>
+<span class="process">(<font color="#FF6600">[$var.Hits_Total]</font>)</span>
+<br />
+</li>
+</ul>
+</LOOP>
+
+
+</div>
+<div class="box_s_b">&nbsp;</div>
+</div>
+
+<include file="../copyright.html" />
+
+
+</div>
+
+<div id="right">
+<div class="box_l">
+<div class="box_l_t">&nbsp;</div>
+<div class="box_l_c">
+<h1 id="articlename">[$Title]</h1>
+<div id="atc_info">
+<ul>
+<li>
+<if test="!empty($Author)">
+作者：[$Author] &nbsp;&nbsp;&nbsp;
+</if>
+<if test="!empty($FromSite)">
+来源：[$FromSite] &nbsp;&nbsp;&nbsp;
+</if>
+日期：[@date('Y-m-d H:i', $PublishDate)] 
+&nbsp;&nbsp;&nbsp;
+点击：<script src="[$PUBLISH_URL]counter.php?o=display_counter&Id=[$IndexID]"></script>
+
+ </li>
+ 
+</ul>
+</div>
+<div id="select_font">
+<ul>
+<li id="size_how">
+<script type="text/javascript">function doZoom(size){var zoom=document.all?document.all['Zoom']:document.getElementById('Zoom');zoom.style.fontSize=size+'px';}
+</script>
+字体大小:
+</li>
+<li id="s"><a href="javascript:doZoom(12)">小</a></li>
+<li id="m"><a href="javascript:doZoom(14)">中</a></li>
+<li id="l"><a href="javascript:doZoom(16)">大</a></li>
+</ul>
+</div>
+<div class="content" id="Zoom">
+<BR>
+<if test="!empty($PageNav)">
+	<if test="!empty($PageNav.1.Title) && $PageNav.1.Title != ' ' ">
+	<B>子标题：</B><I>
+	<if test="$PageTitle=='CONTENT_HEADER'">
+	前言
+	<else>
+	[$PageTitle]
+	</if>
+	</I><br>
+	<select name="sNavigate" style=font-size:9pt  onchange=javascript:window.location=(this.options[this.selectedIndex].value)>
+	<loop name="PageNav" key="key" var="var">
+	<op exp="$PageKey = $key+1 " />
+	<if test="$var.Title=='CONTENT_HEADER'">
+		<op exp="$showTitle = ' 前言' " />
+	<else>
+		<op exp="$showTitle = $var.Title " />
+	</if>
+	<if test="$PageTitle == $var.Title">
+ 
+	<option value="[$var.URL]" selected>第[$PageKey]页：[$showTitle]</option>
+	<else>
+ 	<option value="[$var.URL]" >第[$PageKey]页：[$showTitle]</option>
+	</if>
+	</loop>
+	</select>
+
+	</if>
+</if>
+
+[$Content]
+<p class="pageview">
+
+<B>[$PageList]</B>
+
+</p>
+</div><!--Zoom end -->
+
+
+<div id="correlative_s">
+<h5>其他文章</h5>
+<ul>
+<!--使用SEARCH调用获取相关文章列表-->
+<!--相关文章显示-->
+<CMS action="LIST" return="List" NodeID="{$NodeID}" Num="1" where="i.PublishDate < {$PublishDate} " />
+<LOOP name="List" var="var" key="key"> 
+<li>
+下一篇：<a href=[$var.URL]>[$var.Title]</a>&nbsp;&nbsp;[[@date('Y-m-d H:m:s', $var.PublishDate)]] <br>
+</li>
+</LOOP> 
+
+<CMS action="LIST" return="List" NodeID="{$NodeID}" Num="1" where="i.PublishDate > {$PublishDate}" orderby="i.PublishDate ASC"/>
+<LOOP name="List" var="var" key="key"> 
+<li>
+上一篇：<a href=[$var.URL]>[$var.Title]</a>&nbsp;&nbsp;[[@date('Y-m-d H:m:s', $var.PublishDate)]] <br>
+</li>
+</LOOP> 
+</ul>
+</div>
+
+<div id="correlative_a">
+<h5>相关文章</h5>
+<ul>
+<!--如果存在自定义相关文章，则调用之-->
+<if test="!empty($CustomLinks)">
+<CMS action="CONTENT" return="List" IndexID="{$CustomLinks}" />
+<else>
+<!--自定义相关文章为空，则使用SEARCH调用根据文章设置的关键字自动获取相关文章列表-->
+<CMS action="SEARCH" return="List" NodeID="{$NodeID}" Field="Keywords" Keywords="{$Keywords}" Num="10" Separator="," IgnoreContentID="{$ContentID}" />
+</if>
+
+<!--开始显示相关文章-->
+<loop name="List" var="var" key="key" > 
+<li>
+·<a href="[$var.URL]" title="[$var.Title]">[@CsubStr($var.Title, 0, 25)]</a>
+</li>
+</LOOP> 
+</ul>
+</div>
+<BR/>
+<!--评论调用-->
+<script type="text/javascript" src="[$OAS_URL]js.php?id=oas_comment&IndexID=[$IndexID]"></script>
+
+                  <TABLE cellSpacing=1 cellPadding=3 width="95%"  border=0 align="center">
+                    <FORM name="myform" action="[$OAS_URL]comment.php?o=post&IndexID=[$IndexID]" method="post">
+                      <TR> 
+                        <TD class=title12 bgColor=#dcdcdc> <table width="100%" border="0" cellspacing="3">
+                            <tr> 
+                              <td>发表评论：</td>
+                              <td> <php>
+<span class="bold">&raquo;</span>
+<if test="$UserSession.UserID ==0">
+<span class="bold">游客: &nbsp;</span><a href="[$OAS_URL]cwps.php?do=register">注册</a> 
+| <a href="[$OAS_URL]cwps.php?do=login">登录</a> 
+ 
+<else>
+欢迎你 <span class="bold">[$UserSession.UserName]: &nbsp;</span><a href="[$OAS_URL]cwps.php?do=logout" onclick="return confirm('确认退出吗？')">退出</a> 
+</if>
+</php>
+</td>
+                              <td> 
+                                　　</td>
+                              <td><a href="[$OAS_URL]comment.php?o=display&Id=[$IndexID]">查看评论</a></td>
+                            </tr>
+                          </table></TD>
+                      </TR>
+                      <TR> 
+                        <TD class=title12 align=middle bgColor=#edf0f5> <center><TEXTAREA class=g name=content rows=6 cols=70></TEXTAREA> </center>
+                        </TD>
+                      </TR>
+                    </FORM>
+                    <TR> 
+                      <TD class=title12 align=middle bgColor=#edf0f5> <center><INPUT onclick='javascript:check(this);' type='submit' value='  发送  ' name='submit'> </center>
+                      </TD>
+                    </TR>
+									  <tr>
+				  	<td  bgcolor=#ffffff>· 您将承担一切因您的行为、言论而直接或间接导致的民事或刑事法律责任<br>· 留言板管理人员有权保留或删除其管辖留言中的任意内容<br>· 本站提醒：不要进行人身攻击。谢谢配合。</td>
+				  </tr>
+
+                  </TABLE><br>
+				  </DIV>
+
+
+<!--//评论显示结束-->
+</div><!--box_l_c end -->
+<div class="box_l_b">&nbsp;</div>
+</div>
+
+</div><span class="cls"></span><!--right end-->
+</div>
+<include  file="../footer.html" />
+<script>
+function check(obj) {
+	if(document.myform.content.value=='') { 
+		alert('请输入评论内容');
+		document.myform.content.focus();
+		return false;
+	} else if(document.myform.content.value.length > 2000) { 
+		alert('评论内容太长，字数不成超过2000');
+		document.myform.content.focus();
+		return false;
+	}
+
+	obj.disabled=true; 
+	document.myform.submit();
+}
+</script>
+
+</body>
+</html>

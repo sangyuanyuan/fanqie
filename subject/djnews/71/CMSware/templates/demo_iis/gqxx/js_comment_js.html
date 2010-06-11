@@ -1,0 +1,24 @@
+<CMS action="COMMENT" return="List" IndexID="{$IndexID}" Num="8" HiddenIp="1" />
+<table class="content_comment">
+				<tr>
+					<th width="20%">评论人</th>
+					<th width="60%">评论内容</th>
+					<th width="20%">评论时间</th>
+				</tr>
+<if test="!empty($List)">
+				<loop name="List" var="var" key="key">
+				<tr>
+					<td align="center">[$var.Author]</td>
+					<td>[@htmlspecialchars(CsubStr($var.Comment, 0, 20))]</td>
+					<td align="center">[@date('Y-m-d H:i:s', $var.CreationDate)]</td>
+				</tr>
+				</loop>
+				<tr>
+					<th colspan="3">共 <span class="title_link_2"><a href="[$PUBLISH_URL]comment.php?o=display&Id=[$IndexID]">[$PageInfo.CommentNum]</a></span> 条评论 <a href="[$PUBLISH_URL]comment.php?o=display&Id=[$IndexID]">点击查看所有评论</a></th>
+				</tr>
+<else>
+				<tr>
+					<td colspan="3" align="center">暂无评论</td>
+				</tr>
+</if>
+</table>

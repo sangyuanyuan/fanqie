@@ -1,0 +1,25 @@
+<include file="header.html" />
+<table width="90%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B>[$SYS_NAME] &raquo; 重置用户密码</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+<form name="ResetPassForm" method="post" action="resetPass.do?o=submit&UserID=[$UserInfo.UserID]">
+  <table width="90%" border="0" align="center" cellpadding="5" cellspacing="1" class="table_border">
+    <tr class="table_td1"> 
+      <td width="100">用户Email地址：</td>
+      <td> <input name="Email" type="text" value="[$UserInfo.Email]" ><span class="mustinput">*</span>该地址为用户接收新密码的邮件地址,请正确填写</td>
+    </tr>
+    
+    <tr class="table_td2"> 
+      <td>&nbsp;</td>
+      <td> <input name="submit" type="submit" id="submit" value="重置密码"></td>
+    </tr>
+  </table>
+</form>
+<include file="footer.html"/>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<SCRIPT language=javascript>
+var itemp=12;
+var newsnum=4;
+var news = '';
+var tag0='';
+var tag2='';
+
+isns = navigator.appName == "Netscape";
+img1=new Image()
+img2=new Image()
+img3=new Image()
+img4=new Image()
+
+img1.src='http://www.cctv.com/entertainment/images/bao.jpg'
+img2.src='http://www.cctv.com/entertainment/images/liang.jpg'
+img3.src='http://www.cctv.com/entertainment/images/jui.jpg'
+img4.src='http://www.cctv.com/entertainment/images/mao.jpg'
+
+
+nn=1
+
+function change_img()
+{
+	eval('document.pic.src=img'+nn+'.src');
+	nn++;
+	if(nn>4) nn=1
+	if(!isns)
+	{
+		pic.filters.item(0).apply()
+		pic.style.visibility='visible'
+                                itemp++;
+                                if(itemp>23)itemp=0;
+                                pic.filters.item(0).transition=itemp;
+		pic.filters.item(0).play()
+		setTimeout("pic.style.visibility='hidden'",4000);
+	}
+	else
+	document.pic.visibility='visible'
+	tt=setTimeout('change_img()',4000)
+}
+
+
+function init()
+{
+	 change_img()
+    /*       newsnum=news.length-1
+	if(isns) eval(tag1+'clip.height=190')
+	eval(tag0+'news1'+tag2+'.top=0') 
+	for(i=2;i<=newsnum;i++)
+	{
+		j=i-1
+		follow(i,j)
+	}
+	newsmove()
+	if(isns) eval(tag1+'visibility="show"')
+	else divnews.style.visibility='visible'*/
+}
+</SCRIPT>
+<BODY bgColor=#ffffff leftMargin=5 onload=init() topMargin=5 marginwidth="5" marginheight="5">
+<TABLE bgColor=#ffffff border=0  cellPadding=0 cellSpacing=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=3 height=43 vAlign=bottom width=173>
+<IMG border=0 height=25 src="http://www.cctv.com/entertainment/images/ltop_02.gif" width=173>
+          </TD>
+        </TR>
+        <TR height=149 width="9">
+          <TD background=http://www.cctv.com/entertainment/images/bgbg01.gif height=149 vAlign=top width=9>
+           <IMG height=149 src="http://www.cctv.com/entertainment/images/ll_02.gif" width=9>
+          </TD>
+          <TD align=middle bgColor=#000000 height=175 vAlign=center width=146>
+           <IMG height=1 src="http://www.cctv.com/entertainment/images/c.gif" width=146><BR>
+         <IMG border=0 height=153 name=pic src="http://www.cctv.com/entertainment/images/c.gif" style="FILTER: revealtrans(duration=2.0,transition=23); VISIBILITY: hidden" 
+            width=132>
+          </TD>
+          <TD align=right background=http://www.cctv.com/entertainment/images/bgbg02.gif height=149 vAlign=top 
+          width=18>
+           <IMG height=149 src="http://www.cctv.com/entertainment/images/lr_02.gif" width=18>
+           </TD>
+        </TR>
+        <TR>
+          <TD colSpan=3 height=16 width=173><IMG height=16 
+            src="http://www.cctv.com/entertainment/images/lb_02.gif" width=173></TD></TR>
+</TBODY>
+</TABLE>
+</body>
+</html>

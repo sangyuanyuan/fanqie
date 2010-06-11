@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="[$charset]"?>      
+<tree>
+<loop $NodeInfo key=key var=var>
+<if $DisplayNodeID ==1>
+<?php $this->_tpl_vars['var']['Name'] = $this->_tpl_vars['var']['Name']." [".$this->_tpl_vars['var']['NodeID']."] ".$this->_tpl_vars['var']['Stats_Num']; ?>
+</if>
+<if $var.haveSon == 1>
+  <if $var.NodeType == 1>
+	<tree text="[@htmlspecialchars($var.Name)]" action="admin_publish.php?op=sId::[$sId];o::list;NodeID::[$var.NodeID];type::main"  src="admin_tree.php?op=sId::[$sId];o::publish_xml;NodeID::[$var.NodeID]"  target="panelWork" cId="[$var.NodeID]"  />
+  <elseif $var.NodeType == 2>
+	<tree icon="../html/tree/images/xp/folder_2.png" text="[@htmlspecialchars($var.Name)]" action="admin_publish.php?op=sId::[$sId];o::list;NodeID::[$var.NodeID];type::main"  src="admin_tree.php?op=sId::[$sId];o::publish_xml;NodeID::[$var.NodeID]"  target="panelWork" cId="[$var.NodeID]"  />
+
+  <elseif  $var.NodeType == 3>
+	<tree icon="../html/tree/images/xp/folder_3.png" text="[@htmlspecialchars($var.Name)]" action="admin_publish.php?op=sId::[$sId];o::list;NodeID::[$var.NodeID];type::main"  src="admin_tree.php?op=sId::[$sId];o::publish_xml;NodeID::[$var.NodeID]"  target="panelWork" cId="[$var.NodeID]"  />
+
+  </if>
+<else>
+
+  <if $var.NodeType == 1>
+	<tree text="[@htmlspecialchars($var.Name)]" action="admin_publish.php?op=sId::[$sId];o::list;NodeID::[$var.NodeID];type::main"  target="panelWork"  cId="[$var.NodeID]"  />
+  <elseif  $var.NodeType == 2>
+	<tree icon="../html/tree/images/xp/folder_2.png" text="[@htmlspecialchars($var.Name)]" action="admin_publish.php?op=sId::[$sId];o::list;NodeID::[$var.NodeID];type::main"  target="panelWork"  cId="[$var.NodeID]"  />
+  <elseif $var.NodeType == 3>
+	<tree icon="../html/tree/images/xp/folder_3.png" text="[@htmlspecialchars($var.Name)]" action="admin_publish.php?op=sId::[$sId];o::list;NodeID::[$var.NodeID];type::main"  target="panelWork"  cId="[$var.NodeID]"  />
+  </if>
+
+
+</if>
+</loop>
+</tree>

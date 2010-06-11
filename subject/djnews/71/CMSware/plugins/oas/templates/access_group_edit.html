@@ -1,0 +1,262 @@
+<include: file="header.html">
+<script type="text/javascript" src="[$plugin_path]images/xtree.js"></script>
+<script type="text/javascript" src="[$plugin_path]images/xmlextras.js"></script>
+<script type="text/javascript" src="[$plugin_path]images/xloadtree.js"></script>
+<script language='Javascript1.1'>
+<!--		
+function checkrow(IDnumber) {
+				
+					var f = document.clientform;
+					
+					eval(' var isAll = f.ALL_'+ IDnumber +'.value');
+					if(isAll == 1) {
+						var ischeck = "false";
+						eval(' f.ALL_'+ IDnumber +'.value=0');
+						 
+
+					} else {
+						var ischeck = "true";
+						eval(' f.ALL_'+ IDnumber +'.value=1');
+						 
+			
+					}					
+		 
+
+					<loop name="PermissionList" key="keyIn" var="varIn">
+						eval( 'f.[$varIn.PermissionKey]_'+IDnumber+'.checked='+ischeck );
+					</loop>
+						eval( 'f.AccessInherit_'+IDnumber+'.checked='+ischeck );
+
+			 
+ 	
+}
+
+function checkcol(id) {
+				
+			
+					
+					if ( status == '+')
+					{
+						mystat = 'true';
+						styleid = "mgred";
+					}
+					else
+					{
+						mystat = 'false';
+						styleid = "";
+					}
+
+					var form = document.clientform;
+	
+					eval(' var isAll = form.ALL_'+ id +'.value');
+					if(isAll == 1) {
+						var ischeck = false;
+						eval(' form.ALL_'+ id +'.value=0');
+						styleid = "";
+
+					} else {
+						var ischeck = true;
+						eval(' form.ALL_'+ id +'.value=1');
+						styleid = "mgred";
+			
+					}
+					
+					for (var i=0;i<form.elements.length;i++)    {
+						var e = form.elements[i];
+						if(e.type != 'checkbox')	continue;
+						var a = e.name;
+						var ok = a.indexOf(id + '_');
+						if(ok == -1) {
+							continue;
+						} else {
+							e.checked = ischeck
+							//eval( 'form.'+a+'.parentNode.id="'+styleid+'"');
+						}
+					}		
+}				
+ 
+
+//-->
+</script>
+					
+<link type="text/css" rel="stylesheet" href="../html/tree/xtree.css" />
+ <table cellspacing="1" cellpadding="5" width="98%"   class="table_border"  border="0" align="center">
+   <tr>
+     <td  class="table_td1"><table width="100%" cellspacing="0" cellpadding="0"  border="0">
+       <tr>
+         <td><img src="../html/images/info.gif" align="absmiddle">&nbsp;<strong>{lang:attension} </strong></td>
+         <td align="right"><a href="#" onclick="toggle_collapse('access_user_add_help');"><img src="../html/images/collapse.gif" border="0"></a></td>
+       </tr>
+     </table> </td>
+
+   </tr>
+   <tbody id="access_user_add_help" style="[@display_help('access_user_edit_help')]">
+   <tr>
+     <td class="table_td2"> {lang:help} </td>
+	 
+   </tr>
+   </tbody>
+ </table>
+ <form name='clientform' id=clientform method='post' action='[$base_url]o=access_group::edit_submit&AccessID=[$pInfo.AccessID]' onSubmit='return init_submit(this);'>
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+    <tr> 
+      <td colspan="2" class="table_header">{lang:topic}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:groupname}:</td>
+      <td class="table_td2">[$GroupName]       </td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="table_header">{lang:setting}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1" colspan="2"> 
+
+  <table border="0" cellspacing="1" cellpadding="3" width="100%"  align=center class="table_border">
+   
+    <tr > 
+       <td  align="center" class="table_td1">{lang:nodename}</td>
+	   <loop name="PermissionList" key="key" var="var">
+      <td   align="center" class="table_td1" ><span onclick="checkcol('[$var.PermissionKey]')" style="cursor: hand;" title="Select All">[$var.PermissionInfo]</span><INPUT TYPE="hidden" name="ALL_[$var.PermissionKey]" id="ALL_[$var.PermissionKey]" value="0"></td>
+	   </loop>
+       <td   align="center" class="table_td1"><span onclick="checkcol('AccessInherit')" class="bold" >{lang:AccessInherit}</span><INPUT TYPE="hidden" name="ALL_AccessInherit" id="ALL_AccessInherit" value="0"></td>
+     
+    </tr>
+   <loop $NODE_LIST var=var>
+	  <if test="$var.PublishMode == 0">
+
+	  <elseif test="$var.PublishMode == 1">
+
+			   <tr class="table_td1" style="background-color: #DEDFD6;" > 
+			 <td   title="NodeID: [$var.NodeID]"  disabled>
+			 <INPUT TYPE="hidden" name="ALL_[$var.NodeID]" id="ALL_[$var.NodeID]" value="0">
+			 <span onclick="checkrow('[$var.NodeID]')"  >
+			  <if test="empty($var.ParentID)">
+				  &nbsp;&nbsp;[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)]  - &nbsp;<B>[$var.Name]</B>
+				  <else>
+				  &nbsp;&nbsp;[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)]  - &nbsp;[$var.Name]
+				  </if>
+			</span>	  
+				  </td>
+				 <loop name="PermissionList" key="keyIn" var="varIn">
+				  <td align="center" >
+				  <if test="strpos($pInfo.$varIn:PermissionKey , ','.$var.NodeID .',' )">
+					 <INPUT style="background-color: #DEDFD6;" TYPE="checkbox" NAME="[$varIn.PermissionKey]_[$var.NodeID]" checked>
+				  <else> 
+					 <INPUT style="background-color: #DEDFD6;" TYPE="checkbox" NAME="[$varIn.PermissionKey]_[$var.NodeID]">
+				  </if>
+				  
+				  </td>
+				   </loop>
+				   
+				  <td  align="center"  > 
+				<if test="strpos($pInfo.AccessInherit , ','.$var.NodeID .',' )">
+					<INPUT TYPE="checkbox" style="background-color: #DEDFD6;" NAME="AccessInherit_[$var.NodeID]" checked>
+				  
+				<else>
+					<INPUT TYPE="checkbox" style="background-color: #DEDFD6;" NAME="AccessInherit_[$var.NodeID]">
+				  
+				</if>
+
+				  </td>
+	  <elseif test="$var.PublishMode == 2">
+	
+			   <tr class="table_td1" onmouseover='this.style.backgroundColor="#FFFFFF"'  onmouseout='this.style.backgroundColor=""' > 
+			 <td   title="NodeID: [$var.NodeID]"  >
+						 <INPUT TYPE="hidden" name="ALL_[$var.NodeID]" id="ALL_[$var.NodeID]" value="0">
+				<span onclick="checkrow('[$var.NodeID]')" style="cursor: hand;">
+				 <if test="empty($var.ParentID)">
+				  &nbsp;&nbsp;[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)]  - &nbsp;<B>[$var.Name]</B>
+				  <else>
+				  &nbsp;&nbsp;[@str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $var.cHeader)]  - &nbsp;[$var.Name]
+				  </if>
+				</span>	  
+			  
+				  </td>
+				 <loop name="PermissionList" key="keyIn" var="varIn">
+				  <td align="center" >
+				  <if test="strpos($pInfo.$varIn:PermissionKey , ','.$var.NodeID .',' )">
+					 <INPUT TYPE="checkbox" NAME="[$varIn.PermissionKey]_[$var.NodeID]" checked>
+				  <else> 
+					 <INPUT TYPE="checkbox" NAME="[$varIn.PermissionKey]_[$var.NodeID]">
+				  </if>
+				  
+				  
+				  </td>
+				   </loop>
+				   
+				  <td  align="center"  > 
+				<if test="strpos($pInfo.AccessInherit , ','.$var.NodeID .',' )">
+					<INPUT TYPE="checkbox" NAME="AccessInherit_[$var.NodeID]" checked>
+				<else>
+					<INPUT TYPE="checkbox" NAME="AccessInherit_[$var.NodeID]">
+
+				</if>
+				  </td>
+ 	  </if>
+       
+	
+    </tr>
+ </loop>
+     
+  </table>
+
+      </td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:extra_info}:</td>
+      <td class="table_td2"> <textarea name="Info" cols="50" rows="5" class='flat' id="groupinfo" >[$pInfo.Info]</textarea></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+  </table>
+
+<loop name="PermissionList" key="keyIn" var="varIn">
+<INPUT  type="hidden" name="[$varIn.PermissionKey]" value="">
+</loop>
+
+<INPUT  type="hidden" name="AccessInherit" value="">
+
+
+</form>
+ 
+					
+
+        
+            
+		
+              <script language='JavaScript'>
+function init_submit(form) {
+	var query;
+	
+	<loop name="PermissionList" key="keyIn" var="varIn">
+	eval(form.name + ".[$varIn.PermissionKey].value=''");
+ 	</loop>
+ 	eval(form.name + ".AccessInherit.value=''");
+
+	for (var i=0;i<form.elements.length;i++)    {
+	    var e = form.elements[i];
+	    if(e.type != 'checkbox')	continue;
+	   
+	   if(e.checked) {
+			var a = e.name;
+			var splits = a.split("_");
+			
+			query = form.name + '.'+splits[0]+'.value ='+form.name + '.'+splits[0]+'.value + ",'+splits[1]+'"';
+			eval(query)
+			
+			e.disabled = true;
+
+	   } else {
+	   		continue;
+	   }
+	}
+	
+	//form.submit();
+
+
+}					
+</script> 		</BODY>
+<include: file="footer.html">

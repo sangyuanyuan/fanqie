@@ -1,0 +1,150 @@
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@header.html");?>
+ <script language="JavaScript">
+function setIsGlobal(mode)
+{
+	switch(mode) {
+		case 1 :
+			Layer_IsGlobal.style.display = 'none';
+			break;
+		case 0: 
+ 			Layer_IsGlobal.style.display = '';
+			break;
+	}
+}
+</script>
+
+  <TABLE width="90%" border=0 align=center cellSpacing=1>
+<form action="<?php echo $this->_tpl_vars["base_url"];?>o=<?php echo $GLOBALS['IN']['o'];?>_submit&Id=<?php echo $this->_tpl_vars["Info"]["Id"];?>" method="post" name="add_subject" id="add_subject">
+  <TBODY>
+<TR>
+<TD vAlign=top align=middle width="50%">
+<TABLE width="100%" border=0 cellspacing="1" cellpadding="4" class="table_border">
+            <TBODY>
+              <TR class="table_header"> 
+                <TD height=25 colSpan=2 ><strong>
+				<?php if($GLOBALS['IN']['o'] == 'add'): ?>
+				<?php echo $_LANG_SKIN['add_topic'];?>
+				<?php else: ?>
+				<?php echo $_LANG_SKIN['edit_topic'];?>
+				<?php endif;?>
+				</strong></TD>
+              </TR>
+              <TR >
+                <TD width="90" height=30  class="table_td1">
+                  <P> <?php echo $_LANG_SKIN['var_title'];?></P></TD>
+                <TD   height=30  class="table_td2">
+                  <INPUT name=data_VarTitle type="text" class=button id="author"  value="<?php echo $this->_tpl_vars["Info"]["VarTitle"];?>" size=30></TD>
+              </TR>
+              <TR >
+                <TD height=30  class="table_td1">
+                  <P> <?php echo $_LANG_SKIN['var_name'];?></P></TD>
+                <TD height=30  class="table_td2">
+                  <INPUT name=data_VarName type="text" class=button id="author"  value="<?php echo $this->_tpl_vars["Info"]["VarName"];?>" size=30></TD>
+              </TR>
+              <TR class="table_td1"> 
+                <TD height=30 bgcolor="" id=id2><?php echo $_LANG_SKIN['var_value'];?></TD>
+                <TD height=30 align=left class="table_td2"> <TEXTAREA name=data_VarValue cols=50 rows=6 id="content" ><?php echo $this->_tpl_vars["Info"]["VarValue"];?></TEXTAREA> 
+                </TD>
+              </TR>
+
+			   <TR class="table_td1" > 
+                <TD  id=id2><?php echo $_LANG_SKIN['is_global'];?></TD>
+                <TD  id=id2><TABLE cellSpacing=1 cellPadding=1 border=0>
+                <TR>
+                	<TD><?php if($this->_tpl_vars["Info"]["IsGlobal"] == 1): ?> 
+                  <input type="radio" name="data_IsGlobal" value="1" id="data_IsGlobal1" onclick="setIsGlobal(1);" checked>
+                  <label for="data_IsGlobal1"  ><?php echo $_LANG_SKIN_GLOBAL['yes'];?></label>
+                  <input name="data_IsGlobal" type="radio" value="0" onclick="setIsGlobal(0);" id="data_IsGlobal2" >
+                  <label for="data_IsGlobal2"  ><?php echo $_LANG_SKIN_GLOBAL['no'];?></label>
+                  <?php else: ?> 
+                  <input type="radio" name="data_IsGlobal" value="1" onclick="setIsGlobal(1);" id="data_IsGlobal1" >
+                  <label for="data_IsGlobal1"  ><?php echo $_LANG_SKIN_GLOBAL['yes'];?></label>
+                  <input name="data_IsGlobal" type="radio" value="0"  onclick="setIsGlobal(0);" id="data_IsGlobal2" checked>
+                  <label for="data_IsGlobal2"  ><?php echo $_LANG_SKIN_GLOBAL['no'];?></label>
+                  <?php endif;?> 
+</TD>
+                	<TD></TD>
+                </TR>
+                </TABLE> </TD>
+              </TR>
+
+
+
+
+
+
+              
+            </TBODY>
+          </TABLE>
+		<?php if($this->_tpl_vars["Info"]["IsGlobal"] == 1): ?> 
+		  <div id="Layer_IsGlobal" style="display:none">
+		  <?php else: ?>
+		  <div id="Layer_IsGlobal" >
+		<?php endif;?>
+
+<TABLE width="100%" border=0 cellspacing="1" cellpadding="4" class="table_border">
+               <TR class="table_header"> 
+                <TD height=25 colSpan=3 ><?php echo $_LANG_SKIN['node_scope'];?></TD>
+              </TR>
+ <tr>
+ <td class="table_td1" align="center" width="50"><?php echo $_LANG_SKIN['access_node'];?>
+  </td>
+  <td class="table_td1" align="center" width="60">
+  <?php echo $_LANG_SKIN['sub_node'];?>
+  </td>
+
+<td class="table_td1"></td>
+ </tr>
+
+ 
+ <?php if(!empty($this->_tpl_vars['NODE_LIST'] )): 
+ foreach ($this->_tpl_vars['NODE_LIST'] as  $this->_tpl_vars['var']): ?>
+ <tr>
+ <td class="table_td2" align="center">
+  <?php if(preg_match('/,'.$this->_tpl_vars["var"]["NodeID"] .'/isU', $this->_tpl_vars["Info"]["NodeScope"])): ?>
+  <INPUT TYPE="checkbox" NAME="NodeIDs[]" value="<?php echo $this->_tpl_vars["var"]["NodeID"];?>" checked>
+ <?php else: ?>
+   <INPUT TYPE="checkbox" NAME="NodeIDs[]" value="<?php echo $this->_tpl_vars["var"]["NodeID"];?>">
+<?php endif;?>
+ </td>
+  <td class="table_td2" align="center">
+ <?php if(preg_match('/all-' . $this->_tpl_vars["var"]["NodeID"] .'/isU', $this->_tpl_vars["Info"]["NodeScope"])): ?>
+ <INPUT TYPE="checkbox" NAME="SubNodeIDs[]" value="<?php echo $this->_tpl_vars["var"]["NodeID"];?>" checked>
+  <?php else: ?>
+ <INPUT TYPE="checkbox" NAME="SubNodeIDs[]" value="<?php echo $this->_tpl_vars["var"]["NodeID"];?>">
+  <?php endif;?>
+ </td>
+
+<td class="table_td1">
+<?php if($this->_tpl_vars["var"]["ParentID"] == 0): ?>
+<B><?php echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $this->_tpl_vars["var"]["cHeader"]);?> - &nbsp;<?php echo $this->_tpl_vars["var"]["Name"];?>
+</B><?php else: ?>
+<?php echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $this->_tpl_vars["var"]["cHeader"]);?> - &nbsp;<?php echo $this->_tpl_vars["var"]["Name"];?>
+<?php endif;?>
+
+</td>
+ </tr>
+ <?php endforeach; endif;?>
+
+
+</tbody>
+	 </table> 
+		  
+</div><BR>	
+			  <input name="submit" type=submit class=button value="<?php echo $_LANG_SKIN_GLOBAL['modify'];?>">
+                  &nbsp;&nbsp; 
+                  <INPUT type=reset value="<?php echo $_LANG_SKIN_GLOBAL['reset'];?>" class=button> 
+	  
+		  
+		  </TD></TR></TBODY>
+		    </form>
+
+		  </TABLE>
+		
+	  
+
+
+
+		  </BODY>
+
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@footer.html");?>

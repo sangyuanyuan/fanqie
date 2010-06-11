@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD> <META HTTP-EQUIV="Pragma" CONTENT="no-cache"> <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> <META HTTP-EQUIV="Expires" CONTENT="0"> 
+<TITLE>{lang:topic}</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]">
+
+
+</HEAD>
+<style>
+body,tr,td,select {
+	color: #000000;
+	font-size: 11px; font-family: Tahoma, Arial;
+	
+}
+
+div.imagespacer {
+	width: [$width];
+	height: 18;
+	text-align: left;			
+	float: left;
+	font: 10pt verdana;
+	margin: 0px;
+	overflow: hidden;
+}
+div.imageholder {
+	margin: 0px;
+	padding: 0px;
+	cursor: default;
+}
+
+div.titleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 100;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;			
+}		
+
+</style>
+<script language="javascript">
+lastDiv = null;
+if('[$PATH]' == '/') {
+	var PATH = '';
+
+} else {
+	var PATH = '[$PATH]';
+
+}
+function divClick(theDiv,TID) 
+{
+	if (lastDiv) {
+		//lastDiv.style.border = "1 solid #CCCCCC";
+		lastDiv.style.background = "#FFFFFF";
+		lastDiv.style.color = "#000000"
+	}
+	lastDiv = theDiv;
+	//theDiv.style.border = "2 solid #316AC5";
+	theDiv.style.background = "#000066";
+	lastDiv.style.color = "#FFFFFF";
+	if(TID != '') {
+		parent.document.form1.fileName.value= "{TID:" + TID + "}";
+	
+	}
+	//document.getElementById("FileToDelete").value = filename;
+
+}
+
+function opendir(TCID)
+{	
+ 	window.location = 'admin_select.php?sId=[$sId]&o=cate_tpl_list_file&TCID=' + TCID
+}
+
+var message = '[$message]';
+var ParentTCID="[$CateInfo.ParentTCID]";
+ </script>	
+
+<body leftmargin="0" topmargin="0" >
+<loop name="cateList" key="key" var="var">
+ 	<div class="imagespacer" >			
+			<TABLE border="0" cellpadding="0" cellspacing="2">
+			<TR>
+				<TD width=16 height=16><img src="../html/images/icon/dir.gif" width="16" height="16" ></TD>
+				<TD>
+				<div   class="imageholder" ondblclick="opendir('[$var.TCID]')"  onclick="divClick(this,'[$var.TID]')"  >[$var.CateName]</div>
+				</TD>
+			</TR>
+			</TABLE>	
+	</div>
+</loop> 
+
+<loop name="fileList" key="key" var="var">
+ 	<div class="imagespacer" >			
+			<TABLE border="0" cellpadding="0" cellspacing="2">
+			<TR>
+				<TD width=16 height=16><img src="../html/images/icon/html.gif" width="16" height="16" ></TD>
+				<TD>
+				<div class="imageholder" ondblclick=""  onclick="divClick(this,'[$var.TID]')"  >[$var.TplName]</div>
+				</TD>
+			</TR>
+			</TABLE>	
+	</div>
+</loop> 
+</body>
+</html>

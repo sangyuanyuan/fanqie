@@ -1,0 +1,91 @@
+<include: file="header.html">
+<script language="JavaScript">
+function prepareSubmit() {
+		select_submit('groupForm', 'TargetSubRoleIDs', 'SubRoleIDs');
+		select_submit('groupForm', 'TargetOpIDs', 'OpIDs');
+ 
+		return true;
+}
+
+
+</script>
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 10px;margin-top: 10px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B><A HREF="group.do">用户组管理</A> -&gt; 修改记录</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form name="groupForm" action="group.do?o=edit_submit&GroupID=[$RecordInfo.GroupID]" method='post' enctype="multipart/form-data" >
+    <tr> 
+      <td colspan="2" class="table_header">修改用户组</td>
+    </tr>
+
+<tr>
+<td class="table_td1">用户组名称:</td>
+<td class="table_td2">
+			<input name="GroupName" type='text' class='flat'  tabindex='8' value="[@htmlspecialchars($RecordInfo.GroupName)]">
+
+	</td>
+</tr>
+<tr>
+<td class="table_td1">所属主角色:</td>
+<td class="table_td2">
+			<select name="RoleID" id="RoleID">
+<loop name="SrcRoleID" var="var" key="key">
+<if test="$var.value == $RecordInfo.RoleID">
+		<option value="[$var.value]" selected>[$var.title]</option>
+<else>
+		<option value="[$var.value]">[$var.title]</option>
+</if>
+</loop>
+		</select>
+
+	</td>
+</tr>
+<tr>
+<td class="table_td1">所属副角色:</td>
+<td class="table_td2">
+	<table> <tr> <td>
+<select name="SrcSubRoleIDs"  onDblClick="select_move_to(this.form, 'SrcSubRoleIDs', 'TargetSubRoleIDs')" size="10" style="width:100px;"><loop name="SrcSubRoleIDs" var="var">
+<option value="[$var.value]">[$var.title]</option>
+</loop>
+</select>
+</td>
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcSubRoleIDs', 'TargetSubRoleIDs')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetSubRoleIDs', 'SrcSubRoleIDs')"><br><br><input type="button" value="全选" onClick="select_move_all_to(this.form, 'SrcSubRoleIDs', 'TargetSubRoleIDs')"><br><input type="button" value="全删" onClick="select_move_all_to(this.form, 'TargetSubRoleIDs', 'SrcSubRoleIDs')"></td><td><select name="TargetSubRoleIDs" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetSubRoleIDs', 'SrcSubRoleIDs')" multiple><loop name="TargetSubRoleIDs" var="var"> <option value="[$var.value]" selected>[$var.title]</option>
+</loop>
+</select>
+<INPUT TYPE="hidden" name="SubRoleIDs"></td>
+</tr></table>
+	</td>
+</tr>
+<tr>
+<td class="table_td1">可用操作列表:</td>
+<td class="table_td2">
+	<table> <tr> <td>
+<select name="SrcOpIDs"  onDblClick="select_move_to(this.form, 'SrcOpIDs', 'TargetOpIDs')" size="10" style="width:100px;"><loop name="SrcOpIDs" var="var">
+<option value="[$var.value]">[$var.title]</option>
+</loop>
+</select>
+</td>
+<td><input type="button" value="=>" onClick="select_move_to(this.form, 'SrcOpIDs', 'TargetOpIDs')"><br><br><input type="button" value="<=" onClick="select_move_to(this.form, 'TargetOpIDs', 'SrcOpIDs')"><br><br><input type="button" value="全选" onClick="select_move_all_to(this.form, 'SrcOpIDs', 'TargetOpIDs')"><br><input type="button" value="全删" onClick="select_move_all_to(this.form, 'TargetOpIDs', 'SrcOpIDs')"></td><td><select name="TargetOpIDs" size="10" style="width:100px;" onDblClick="select_move_to(this.form, 'TargetOpIDs', 'SrcOpIDs')" multiple><loop name="TargetOpIDs" var="var"> <option value="[$var.value]" selected>[$var.title]</option>
+</loop>
+</select>
+<INPUT TYPE="hidden" name="OpIDs"></td>
+</tr></table>
+	</td>
+</tr>
+
+
+   
+    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13' onClick="return prepareSubmit();"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<include: file="footer.html">

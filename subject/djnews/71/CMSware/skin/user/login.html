@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$cms_version] - Administration</title>
+<style type="text/css">
+<!--
+body,th{margin:0; padding:0; font-family:Tahoma,"宋体"; font-size:12px; color:#003399}
+a{text-decoration:none; color:#003399}
+a:hover{text-decoration:underline}
+
+/*顶部设置
+--------------------------------*/
+#wrapper{background:url(../html/images/logo/bg.jpg) repeat-x; width:100%; height:430px}
+#head{width:100%}
+#biao{background:url(../html/images/logo/top2.jpg) no-repeat; float:right; margin:0; padding:0; width:149px; height:63px}
+#logo{background:url(../html/images/logo/top.jpg) no-repeat; width:332px; height:63px}
+#logo span{display:none}
+#logo a{display:block;width:332px; height:63px}
+
+/*登陆模块
+--------------------------------*/
+#inbox{background:url(../html/images/logo/inbox_bg.jpg) no-repeat; width:384px; height:320px; margin-left:auto; margin-right:auto}
+/*错误信息*/
+#error{width:260px; border:1px solid #666666; background:#fff; margin-left:auto; margin-right:auto; margin-top:20px; padding:3px; color:#CC0000; filter:alpha(opacity=70);}
+#error_infor{width:90%; margin:auto;}
+
+/*登陆输入框
+--------------------------------*/
+#box{width:300px; margin-left:auto; margin-right:auto}
+#loginbox{width:100%; margin:0 0 2px 0}
+#title{padding:2px 0 2px 5px; font-weight:bold; font-size:12px; margin:0 0 5px 0}
+#enter{height:116px; font-size:14px; font-weight:bold}
+#enter_box{width:270px; margin:18px 0 5px 20px}
+#botton{width:100%; text-align:center; margin-bottom:0px}
+#ip{width:100%; float:center; padding:0px 0 0 0px;}
+#footer{font:10px Tahoma; margin-top:2px}
+.inputclass{border:1px solid #eeeeee; font-size:14px; font-family:Tahoma; font-weight:bold}
+-->
+</style>
+ <script>
+ var error_message="[$error_message]";
+ if(error_message!='') {
+	alert(error_message);
+ }
+function login_submit(){
+	var MId,user_name,user_pass,targeturl;
+	var	user_name = document.login.username.value;
+	var user_pass = document.login.password.value;
+	
+	if((user_name!='') && (user_pass!='')){	
+		/*DMsysWin=window.open("","","scrollbars")
+		if (document.all){
+			DMsysWin.moveTo(0,0)
+			DMsysWin.resizeTo(screen.width,screen.height-30)
+		}*/
+
+		targeturl='index.php?o=sys::login';
+		//DMsysWin.location=targeturl		
+		document.login.action = targeturl
+		document.login.submit();
+
+		
+		}else{
+			alert("{lang:qingshuruyonghuminghemima}！");
+		}
+	return false;
+
+}
+</script>
+</head>
+
+<body onLoad="this.document.login.username.focus();">
+<div id="wrapper">
+	<div id="head">
+		<div id="biao"></div>
+		<div id="logo"><a href="http://www.cmsware.com/" target="_blank"><span>思维|CMSware</span></a></div>
+	</div>
+	
+	<div id="inbox">
+		<div style="margin:10px 5px 13px 5px; height:92px; ">
+		
+		<if $error_message != ''>
+		<div id="error">
+			<div id="error_infor"><span><img src='../html/images/errormessage1.gif' alt="eroor" align='absmiddle' class='errormessage' />&nbsp;<span class='tab-r'>[$error_message]</span></span></div>
+		</div>
+		</if>
+		
+		</div>
+		<div id="box">
+		 <form  name= "login" action="#" method="post" >
+			<div id="loginbox">  
+					<div id="title">[$cms_version]- {lang:guanlidenglu}</div>
+					<div id="enter">
+						<div id="enter_box">
+						{lang:yonghuming}:<INPUT NAME="username" TYPE="text" class="inputclass" id=input_login size="25" maxlength="20" >
+						</div>
+						<div id="enter_box">
+						{lang:mima}:<INPUT NAME="password" TYPE="password" class="inputclass" id=input_login size="25" maxlength="20" >
+						</div>
+			  </div>
+			</div>
+		   <div id="botton">
+						<div id="ip"><img src="../html/images/icon-client-new.gif" width="16" height="16"><img src="../html/images/arrow-r.gif" width="11" height="10">						<input name="login1" type="image" src="../html/images/logo/botton2.jpg"class="btnclass" id=button_login  onClick="login_submit();" value="{lang:yonghudenglu}"> &nbsp;<!--<A HREF="../user2/index.php">会员系统入口</A>--> </div>
+              
+                        
+&nbsp;			 </div>	
+		</form>
+		</div>	
+	</div>
+	<div id="footer">
+	  <div align="center"><span style3="style3">Powered by <strong><a href="http://www.cmsware.com" target="_blank">CMSware</a> </strong>&copy; 2002-[@date('Y')] <a href="http://www.cmsware.com" target="_blank">Lonmo Technology   Ltd</a>. All rights reserved. </span></div>
+	</div>
+</div>
+</body>
+</html>

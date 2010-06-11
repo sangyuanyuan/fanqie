@@ -1,0 +1,33 @@
+<include file="header.wml" />
+<p>[$Title]<br/>
+------------------------<br/>
+<if test="$Photo!='' && $PageNum==1">
+<img src="[$PUBLISH_URL]automini.php?src=[@urlencode($Photo)]&amp;pixel=100*80&amp;cache=1&amp;cacheTime=1000&amp;miniType=png" />
+<br/><a href="[$Photo]" title="确定">[下载]</a> <br/>
+</if>
+
+[$Content] </p>
+<if test="$PageList !=''">
+<p>[$PageList]</p>
+</if>
+
+<p>
+
+<CMS action="LIST" return="List" NodeID="{$NodeID}" Num="1" where="i.PublishDate < {$PublishDate} " />
+<LOOP name="List" var="var" key="key"> 
+下一篇：<a href="[$var.URL]">[$var.Title]</a><br/>
+</LOOP> 
+
+<CMS action="LIST" return="List" NodeID="{$NodeID}" Num="1" where="i.PublishDate > {$PublishDate}" orderby="i.PublishDate ASC"/>
+<LOOP name="List" var="var" key="key"> 
+上一篇：<a href="[$var.URL]">[$var.Title]</a><br/>
+</LOOP> 
+
+<CMS action="NODE" return="NodeInfo" NodeID="self" />
+<a href="[$NodeInfo.NodeURL]" title="确定">返回[$NodeInfo.Name]</a> <br/>
+<a href="[$rootNodeInfo.NodeURL]" title="确定">返回首页</a> <br/>
+</p>
+
+ 
+</card>
+</wml>

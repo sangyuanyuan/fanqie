@@ -1,0 +1,3 @@
+ALTER TABLE `cmsware_plugin_base_comment`  ADD COLUMN `UserID` int(10) NOT NULL DEFAULT '0'; 
+新增cmsware_plugin_oas_user表
+

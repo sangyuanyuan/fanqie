@@ -1,0 +1,60 @@
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@header.html");?>
+<script language="JavaScript">
+function prepareSubmit(){
+		select_submit('clientform', 'TargetPermissionReadG', 'data_PermissionReadG');
+ 
+
+		return true;
+}
+
+ 
+
+</script>
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form action='<?php echo $this->_tpl_vars["base_url"];?>o=edit_submit&PSNID=<?php echo $this->_tpl_vars["psnInfo"]["PSNID"];?>' method='post' enctype="multipart/form-data" name='clientform' id=clientform >
+    <tr> 
+      <td colspan="8" class="table_header"><?php echo $_LANG_SKIN['topic'];?></td>
+    </tr>
+    <tr> 
+      <td class="table_td1"><?php echo $_LANG_SKIN['psn_name'];?>:</td>
+      <td colspan=6 class="table_td2"><input name='Name' type='text' class='flat' id="Name" tabindex='8' value="<?php echo $this->_tpl_vars["psnInfo"]["Name"];?>"> 
+        &nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="20%" class="table_td1" ><?php echo $_LANG_SKIN['psn_type'];?>:</td>
+      <td colspan=6 class="table_td2"><select name="psnType" id="select3"  >
+ 			  <option value="local" ><?php echo $_LANG_SKIN['psn_local'];?></option>
+		 
+        </select>
+        &nbsp;</td>
+    </tr>
+ 
+ 
+  <tr  > 
+      <td class="table_td1"><?php echo $_LANG_SKIN['local_path'];?>:</td>
+      <td colspan=6 class="table_td2"><input name='localPath' type='text' class='flat' id="localPath" tabindex='8' size="50" value="<?php echo $this->_tpl_vars["psnInfo"]["publish_path"];?>">
+        &nbsp; </td>
+    </tr>
+  
+ 
+     <tr> 
+      <td class="table_td1"><?php echo $_LANG_SKIN['url'];?>:</td>
+      <td colspan=6 class="table_td2"><input name='URL' type='text' class='flat' id="URL" tabindex='8' size="50" value="<?php echo $this->_tpl_vars["psnInfo"]["URL"];?>"> 
+        &nbsp;</td>
+    </tr>
+ 
+ 
+    <tr> 
+      <td class="table_td1"><?php echo $_LANG_SKIN['info'];?>:</td>
+      <td colspan=6 class="table_td2"><textarea name="Description" cols="50" rows="5" class="flat" id="fieldname2" tabindex="8"><?php echo $this->_tpl_vars["psnInfo"]["Description"];?></textarea> 
+        &nbsp;</td>
+    </tr>
+ 
+    <tr> 
+      <td colspan="8" class="table_td2" align=center>  <input type='submit' name='submit' value='<?php echo $_LANG_SKIN_GLOBAL['submit_value'];?>' tabindex='13'  > 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="<?php echo $_LANG_SKIN_GLOBAL['reset_value'];?>"></td>
+    </tr>
+</form>
+  </table>
+</BODY>
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@footer.html");?>

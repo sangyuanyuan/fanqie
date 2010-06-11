@@ -1,0 +1,125 @@
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$SITE_NAME] - [$Title]</title><!--#CW#站点名称$SITE_NAME可在CMSWARE后台-系统管理-模板变量设置中设置,$NodeInfo.Name是本模板所在结点的结点名称#CW#-->
+<link href="[$SKIN_URL]gqxx/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+<div class="content">
+	<div class="left">
+        <!---左边样式1-->
+		<div class="topside01">
+			<div class="topside01_l">&nbsp;</div>
+			<div class="topside01_c">&nbsp;</div>
+			<div class="topside01_r">&nbsp;</div>
+		</div>
+		<div class="center01" id="newsfocus">
+          <div class="focus" style="float:none; text-align:center; height:30px;">供求信息编辑</div>
+            
+            <div class="sonfocus" style="text-align:left; height:auto; margin:0 0 0px 0">
+
+<script type="text/javascript" src="[$PUBLISH_URL]FCKeditor/fckeditor.js"></script>
+<CMS action="CONTENT" return="var" IndexID="{$Custom1}" /> 
+
+<if test="$var.UserName != $UserInfo.UserName  and  $var.Author != $UserInfo.UserName">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对不起，你没有权限编辑这个内容
+<else>
+          	
+<form name="form1" method="post" action="[$PUBLISHAPI_URL]index.php?IndexID=[$Custom1]&action=edit&con=fabu&referer=[@rawurlencode($PUBLISH_URL . 'content_v.php/' . $Member_index_IndexID . ',0.html')]" enctype="multipart/form-data">
+              <br />
+                信息标题：&nbsp;<font style="font-size:18px; font-weight:bold; color:#666666">[$var.Title]</font>
+                      
+                      &nbsp;[<FONT color=#990000>请注意：</FONT>标题不能编辑]
+			<br />
+				<br />
+				信息分类：
+                      <input name="NodeID" type="text" value="[$var.NodeName]" size="20"  readonly="readonly" /> 
+                      &nbsp;[<FONT color=#990000>请注意：</FONT>不能编辑]
+			
+				<br />
+				<br />
+				信息供求：
+				<input name="GqType" type="text" value="[$var.GqType]" readonly="readonly" size="5">
+				&nbsp;[<FONT color=#990000>请注意</FONT>：1 表示提供信息，如发布卖二手产品信息、房屋出租出售、服务黄页、以及求职信息等；<br />				
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 表示发布购买二手产品信息、求租房屋、寻求服务、招聘信息等。]
+			  
+                
+				<br>
+                信息分类：
+                   <input name="InfoType" type="text" value="[$var.InfoType]" size="29">
+				
+				[可选项]<br>
+                自定分类：
+                   <input name="SelfType" type="text" value="[$var.SelfType]" size="29">
+				
+				[可选项]<br>
+                关 键 字：
+                   <input name="Keywords" type="text" value="[$var.Keywords]" size="29" />
+		  [可选项]<br>
+                新旧成色：
+                   <input name="Xjcs" type="text" value="[$var.Xjcs]" size="29" />  [可选项]<br>
+                所在地区：
+                   <input name="Area" type="text" value="[$var.Area]" size="29">
+                   [可选项]<br>
+                   具体位置：
+                      <input name="Address" type="text" value="[$var.Address]" size="29">&nbsp;[可选项]<br />
+                      交易价格：
+                      <input name="Price" type="text" value="[$var.Price]" size="29">
+              
+                [可选项]<br><br>
+                发 布 人：&nbsp;<font color="#FF0000">[$UserInfo.UserName]</font>
+                <br>
+                <br>
+                详细介绍：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="Content" cols="70" rows="20" value="Content">[$var.Content]</textarea>
+				
+				<script type=text/javascript>
+										var oFCKeditor = new FCKeditor( 'Content' ) ;
+										oFCKeditor.BasePath = '[$PUBLISH_URL]FCKeditor/' ;
+										oFCKeditor.ToolbarSet = 'Default' ;
+										oFCKeditor.Width = '601' ;
+										oFCKeditor.Height = '351' ;
+										oFCKeditor.Value = '' ;
+										//oFCKeditor.Create() ;
+										oFCKeditor.ReplaceTextarea() ;
+									</script>
+									
+                    <br>
+               
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="submit" type="submit" id="submit" value="编辑保存">
+
+        &nbsp;&nbsp; 
+
+              
+	
+	 
+</form>	
+
+</if>				
+		    </div>
+              
+		</div>
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+        <!--上下篇图片-->
+        
+          	
+        
+    </div>
+	<!--右边列开始-->
+	<include file="right_list.html">
+</div>
+
+<div class="content"></div>
+
+
+<include file="../common/footer.html" />
+</body>
+</html>

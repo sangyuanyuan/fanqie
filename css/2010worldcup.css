@@ -43,6 +43,6 @@
 
 #bottom #turnleft{width:12px; height:58px; margin-top:44px; margin-left:15px; background:url('/images/worldcup/turn_left.jpg') no-repeat; cursor:pointer; float:left; display:inline;}
 #bottom #turnright{width:12px; height:58px; margin-top:44px; margin-right:15px; background:url('/images/worldcup/turn_right.jpg') no-repeat; cursor:pointer; float:right; display:inline;}
-#bottom .bottom_content{width:910px; height:126px; margin-top:10px; float:left; display:inline;}
+#bottom .bottom_content{width:950px; height:126px; margin-top:10px; margin-left:10px; float:left; display:inline;}
 #bottom .bottom_content .pic{width:175px; height:124px; margin-left:40px; border:1px solid #cccccc; overflow:hidden; float:left; display:inline;}
 #bottom .bottom_content .pic img{width:165px; height:114px; margin:5px;}

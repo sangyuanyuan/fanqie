@@ -1,0 +1,720 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+<HEAD>
+<title><?php echo $this->_tpl_vars["iwpc_version"];?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noindex">
+<base target="MNPMainFrame" />
+		
+<link rel='stylesheet' type='text/css' href='../html/style.css' />
+<LINK href="../html/xmenu.css" type=text/css rel=stylesheet>
+<SCRIPT src="../html/xmenu.js" type=text/javascript></SCRIPT>
+<if test="strpos($cmsware_version,'Plus') !== FALSE ">
+<!--Plus Version add by easyt 2007.9.9-->
+<SCRIPT src="ui.php?sId=[$sId]&o=functions.js" type=text/javascript></SCRIPT>
+</if>
+<script language='JavaScript'>var doImage = doImage;
+var TType = TType;
+
+function mhHover(tbl, idx, cls)
+{
+	var t, d;
+	if (document.getElementById)
+		t = document.getElementById(tbl);
+	else
+		t = document.all(tbl);
+	if (t == null) return;
+	if (t.getElementsByTagName)
+		d = t.getElementsByTagName("TD");
+	else
+		d = t.all.tags("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}
+
+function setMSResearch() {
+  var time = new Date();
+  if( document.cookie.indexOf( 'msresearch=1 ') == -1 ) {
+    document.cookie = 'msresearch=' + time.getTime() + ':' + escape( document.location) + ':' + escape( document.referrer) + '; path=/; domain=.microsoft.com; ';
+  }
+}
+
+function footerjs(doc)
+{
+	if (doImage == null)
+	{
+		var tt = TType == null ? "PV" : TType;
+		doc.write('<layer visibility="hide"><div style="display:none"><img src="../html/images/trans_pixel.gif width=0 height=0 hspace=0 vspace=0 border=0 /></div></layer>');
+	}
+
+	if( ( document.cookie.indexOf( 'msresearch=1 ') == -1 ) 
+	 && ( document.cookie.indexOf( 'msresearch=')   != -1 ) ) {
+	  setInterval( "setMSResearch()", 1000 );
+	}
+}</script>
+<SCRIPT LANGUAGE=javascript>
+var sp_isRefash = false;
+
+function window_onbeforeunload() {
+        if(!sp_isRefash)
+        { 
+	var str="";
+	str="{lang:close_window}";
+	return str; 
+        }
+ 
+     
+}
+function showtoc() 
+{
+				
+	top.panelMain.cols =  "216,*";
+				
+	MNP_showtoc.style.display = "none";
+				
+
+}
+var State = 0 ;
+var runState = 0 ;
+
+function sysInfoView(action)
+{
+	switch(action) {
+		case 'cms_info':
+		var leftPos = (screen.availWidth-770) / 2;
+		var topPos = (screen.availHeight-660) / 2 ;
+		//alert('a')
+		imageWin = window.open('admin_setting.php?sId=[$sId]&o=viewInfo' ,'','width=600,height=300,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+			
+			break;
+		case 'contribution_stat':
+			top.panelWork.location= "admin_user.php?sId=[$sId]&o=stat" ;
+ 			break;
+		case 'state':
+			if(State == 0) {
+				top.panelMain1.rows =  "*,100";
+
+				State = 1;
+			} else {
+				top.panelMain1.rows =  "*,0";
+				State = 0;
+			
+			}
+			break;
+		case 'run':
+			if(runState == 0) {
+				top.fstMenuColumn.rows =  "21,*,0,200";
+
+				runState = 1;
+			} else {
+				top.fstMenuColumn.rows =  "21,*,0,0";
+				runState = 0;
+			
+			}
+			break;
+		case 'php':
+			top.panelWork.location= "index.php?sId=[$sId]&o=sys::view&extra=phpinfo" ;
+			break;
+		case 'error':
+			window.open('admin_setting.php?sId=[$sId]&o=viewErrorInfo' ,'','width=650,height=320,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+			break;
+		case 'sys':
+			top.panelWork.location= "modules/phpsysinfo/index.php?sId=[$sId]" ;
+			break;
+	}
+	oPopup.hide();
+}
+
+	var oPopup = window.createPopup();
+
+	function showMenu(menu, width, height) {
+		var lefter = event.clientX;
+		var leftoff = event.offsetX
+		var topper = event.clientY;
+		var topoff = event.offsetY;
+		var oPopBody = oPopup.document.body;
+		moveMe = 0
+		elo=window.event.srcElement;
+
+		if (menu == "tableMenu"){
+			moveMe = 0
+		}
+
+		var mymenu = eval(menu);
+		var HTMLContent =mymenu.innerHTML
+		oPopBody.style.backgroundColor="#f1f1f1";
+		oPopBody.style.border="buttonshadow 1px solid";
+		oPopBody.style.overflowY="auto";
+		//oPopBody.onmouseout=golink;
+		if(mymenu.offsetHeight > 0) height = mymenu.offsetHeight+2;
+		oPopBody.innerHTML = HTMLContent;
+		oPopup.show(lefter - leftoff - 2 - moveMe, topper - topoff + 18, width, height, document.body);
+		return false;
+	}
+
+	function contextHilite(menu){
+	    menu.runtimeStyle.backgroundColor = "Highlight";
+	    if (menu.state){
+	        menu.runtimeStyle.color = "GrayText";
+	    } else {
+	        menu.runtimeStyle.color = "HighlightText";
+	    }
+	}
+
+	function contextDelite(menu){
+	    menu.runtimeStyle.backgroundColor = "";
+	    menu.runtimeStyle.color = "";
+	}
+
+function gotoPlugin(name, path)
+{
+	top.panelBox.labelName.innerHTML = name;
+	top.panelMenu.location= 'plugins.php?sId=[$sId]&plugin=' + path + '&o=index::menu';
+	oPopup.hide();
+
+}
+
+function doing(action)
+{
+	switch(action) {
+		case 'logout':
+			sp_isRefash = true;
+			if(confirm('{lang:confirm_logout}')) {
+				top.panelWork.location = '<?php echo $this->_tpl_vars["base_url"];?>o=sys::logout';
+			}
+			break;
+		case 'go_sys_index':
+			top.panelWork.location = '<?php echo $this->_tpl_vars["base_url"];?>o=sys::view&extra=workarea';
+			break;
+ 		case 'go_site_admin':
+			top.panelMenu.location = 'admin_tree.php?sId=[$sId]&o=site';
+ 			top.panelBox.labelName.innerHTML ='{lang:site_admin}';			
+			break;
+ 		case 'go_resource_admin':
+			top.panelMenu.location = 'admin_tree.php?sId=[$sId]&o=common&url=admin_resource.php&param=o::admin_frameset';
+			top.panelWork.location ='admin_resource.php?sId=[$sId]&o=admin_frameset';
+ 			top.panelBox.labelName.innerHTML ='{lang:resource_admin}';			
+			break;
+ 		case 'go_publish_admin':
+			top.panelMenu.location = 'admin_tree.php?sId=[$sId]&o=publish';
+ 			top.panelBox.labelName.innerHTML = '{lang:publish_admin}';			
+			break;
+ 		case 'go_contribution_admin':
+			top.panelMenu.location = 'admin_tree.php?sId=[$sId]&o=contribution';
+ 			top.panelBox.labelName.innerHTML ='{lang:contribution_admin}';
+			break;
+		case 'tpl_admin':
+			top.panelMenu.location ='admin_tree.php?sId=[$sId]&o=tpl';
+			top.panelWork.location ='admin_tpl.php?op=sId::[$sId];o::list';
+			top.panelBox.labelName.innerHTML ='{lang:tpl_admin_global}';
+			break;
+		case 'tpl_cate_admin':
+			top.panelMenu.location ='admin_tree.php?sId=[$sId]&o=tpl_cate';
+			//top.panelWork.location ='admin_tpl.php?op=sId::[$sId];o::list';
+			top.panelBox.labelName.innerHTML ='{lang:tpl_admin_cate}';
+			break;
+		case 'clear_cache':
+			//if(confirm('{lang:confirm_clear_cache}')) {
+				//top.panelWork.location= 'admin_setting.php?sId=[$sId]&o=clear_cache_submit&target[compile_tpl]=1&target[sys_cache]=1&target[node_cache]=1&target[cache_dir]=1&referer=' + escape(top.panelWork.location);
+			//}
+			url = top.panelWork.location;
+			top.panelWork.location = 'admin_setting.php?sId=[$sId]&o=clear_cache&referer=' + escape(url);
+			break;
+		case 'setting_panel':
+ 
+			top.panelMenu.location ='<?php echo $this->_tpl_vars["base_url"];?>o=sys::view&extra=admin_sys';
+			top.panelBox.labelName.innerHTML ='{lang:sys_admin}';
+			break;
+		case 'group_admin':
+			top.panelWork.location= 'admin_group.php?sId=[$sId]&o=view&referer=' + escape(top.panelWork.location);
+			break;
+		case 'user_admin':
+			top.panelWork.location= 'admin_user.php?sId=[$sId]&o=view&referer=' + escape(top.panelWork.location);
+			break;
+		case 'content_model_admin':
+			top.panelWork.location= 'admin_content_table.php?sId=[$sId]&o=viewtable&referer=' + escape(top.panelWork.location);
+			break;
+		case 'psn_admin':
+			top.panelWork.location= 'admin_psn.php?sId=[$sId]&o=view&referer=' + escape(top.panelWork.location);
+			break;
+		case 'dsn_admin':
+			top.panelWork.location= 'admin_dsn.php?sId=[$sId]&o=view&referer=' + escape(top.panelWork.location);
+			break;
+		case 'publishauth_admin':
+			top.panelWork.location= 'admin_publishauth.php?sId=[$sId]&o=view&referer=' + escape(top.panelWork.location);
+			break;
+		case 'setting':
+			top.panelWork.location= 'admin_setting.php?sId=[$sId]&o=edit&referer=' + escape(top.panelWork.location);
+			break;
+
+		case 'workflow_admin':
+			top.panelWork.location= 'workflow.php?sId=[$sId]&o=view&referer=' + escape(top.panelWork.location);
+			break;
+		case 'plugin_admin':
+			top.panelWork.location= 'admin_plugins.php?sId=[$sId]&o=view';
+			break;
+		case 'tpl_vars_admin':
+			top.panelWork.location= 'admin_tpl_vars.php?sId=[$sId]&o=view';
+			break;
+		case 'keywords_admin':
+			top.panelWork.location= 'admin_keywords.php?sId=[$sId]&o=view';
+			break;
+		case 'replace_admin':
+			top.panelWork.location= 'admin_db.php?sId=[$sId]&o=fieldReplace';
+			break;
+		case 'ip_admin': 
+			top.panelWork.location= 'admin_ipbanned.php?sId=[$sId]&o=list';
+			break;
+ 		case 'log_login_admin': 
+			top.panelWork.location= 'admin_log.php?sId=[$sId]&o=list_LoginLog';
+			break;	 
+		case 'log_admin_admin':
+			top.panelWork.location= 'admin_log.php?sId=[$sId]&o=list_AdminLog';
+			break;	 
+
+		case 'manual':
+			//top.panelMenu.location= '../doc/left.html';
+			window.open('http://www.cmsware.com/cmsware/manual');
+			break;
+
+		case 'online_manual':
+			//top.panelMenu.location= 'http://www.cmsware.com/manual/left.html';
+			window.open('http://www.cmsware.com/cmsware/manual');
+			break;
+		case 'cmsware_com':
+			window.open('http://www.cmsware.com/');
+			break;
+		case 'support_forum':
+			window.open('http://www.cmsware.com/bbs');
+			break;
+		case 'detect_news':
+			var returnValue = CMSware_send("index.php?sId=[$sId]&o=sys::detect_news");
+			alert(returnValue);
+			break;	
+		case 'about_cmsware':
+			var oPopupBody = oPopup.document.body;
+			//oPopupBody.style.backgroundColor = "lightyellow";
+			//oPopupBody.style.border = "solid black 1px";    
+			oPopupBody.innerHTML =  AboutCMSware.innerHTML; ;
+			var x = (screen.width / 2) - (506 / 2) ;
+			var y = (screen.height / 2) - (275 / 2) - 80 ;
+			//alert(screen.width + 'x' + screen.height);
+			oPopup.show(x, y, 436, 275, document.body);
+			return true;
+			break;	
+		case 'hidden_aboutcmsware':
+			break;
+		case 'go_collection':
+			top.panelMenu.location= "admin_tree.php?sId=<?php echo $this->_tpl_vars['sId'];?>&o=collection_cate";
+
+			top.panelBox.labelName.innerHTML ='{lang:collection_admin}';
+		 
+			break;
+
+		case 'go_file_admin':
+			top.panelMenu.location= "admin_file.php?sId=<?php echo $this->_tpl_vars['sId'];?>&o=tree";
+
+			top.panelBox.labelName.innerHTML ='{lang:file_admin}';
+
+			break;
+		}
+	
+	oPopup.hide();
+			//about.show(lefter - leftoff - 2 - moveMe, topper - topoff + 20, width, height, document.body);
+
+			// showMeDialog("admin_setting.php?sId=[$sId]&o=about_cmsware","color","dialogWidth:428px;dialogHeight:266px;help:0;status:0;scroll:no");
+			//return true;
+}
+</SCRIPT>
+	</HEAD>
+	<body topmargin="0" leftmargin="0"  marginheight="0"  marginwidth="0" style="border: 1px buttonhighlight;"   onbeforeunload="return window_onbeforeunload()">
+	<!--onbeforeunload="return window_onbeforeunload()"--->			
+		<div id="msviMasthead" xmlns:Utility="http://www.microsoft.com/MSCOM/VisualIdentity/Utility">
+
+  <table cellpadding="0" cellspacing="0" width="100%" border="0" onMouseOver="oPopup.hide();"><tr><td width="100%"><table cellpadding="0" cellspacing="0" width="100%" height="22" border="0">
+  <tr><td width="3%" bgcolor="#FFFFFF" id="msviRegionIdGraphic"><a href="http://www.cmsware.com"><img src="../html/images/logo2.gif" alt="&#34013;&#24917;&#31185;&#25216;" border="0" height="25" /></a></td>
+  <td width="97%" id="msviRegionGradient1"   style="filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#FFFFFF', endColorStr='#045584', gradientType='1')">&nbsp;</td>
+  </tr></table></td><td id="msviGlobalToolbar" bgcolor="#045584" height="22" nowrap="" dir="ltr" align="left"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="gt0" nowrap="nowrap"  ><a href="http://www.lonmo.com" class="white">&#34013;&#24917;&#20844;&#21496;</a><span class="ltsep">|</span><a href="http://www.cmsware.com" class="white">&#20135;&#21697;&#39318;&#39029;</a><span class="ltsep">|</span><a href="http://www.lonmo.com/bbs" class="white">&#25216;&#26415;&#25903;&#25345;&#35770;&#22363;</a>&nbsp;</td></tr></table></td></tr><tr valign="top"><td width="100%"><table cellpadding="0" cellspacing="0" width="100%" height="42" border="0" style="height: expression(parentElement.offsetHeight)"><tr valign="top"><td id="msviBrandBanner" bgcolor="FFFFFF" height="39" ><a href="http://www.cmsware.com"><img src="../html/images/logo.gif"  alt="&#34013;&#24917;&#31185;&#25216;" border="0" height="36"  /></a></td><td width="100%" style="filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#FFFFFF', endColorStr='#2A7FAA', gradientType='1')"></td></tr></table></td><td id="msviGlobalSearch" bgcolor="#2A7FAA"><div id="msviNoSearch"></div></td></tr></table>
+  <div id="msviLocalToolbar" oncontextmenu="window.event.returnValue=false"> 
+  <div id="MNP_showtoc" name="MNP_showtoc" style="display:none">
+    <table onclick="showtoc();" align="left" border=0 cellpadding=0 cellspacing=0 title="Show TOC" style="cursor:hand">
+      <tr>
+        
+        <td height="20" valign="middle">&nbsp;&nbsp;<img title="显示左栏" border="0" src="../html/images/showtoc.gif" /></td>
+        
+        <td height="20" valign="middle" nowrap><font face="verdana" size="1" color="#000000">Show toc</font></td>
+      </tr>
+    </table>
+    </div><table cellpadding="0" cellspacing="0" width="100%" height="19" border="0"><tr>
+
+
+				<td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 2, 'lt1');" onmouseout="mhHover('msviLocalToolbar', 2, 'lt0')" onclick="doing('go_sys_index');">{lang:sys_index}</td>
+			
+			<td><span class="ltsep">|</span></td>
+			
+			<td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 4, 'lt1');" onmouseout="mhHover('msviLocalToolbar', 4, 'lt0')" onclick="doing('go_site_admin');">{lang:site_admin}</td>
+			
+			
+			<td><span class="ltsep">|</span></td><td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 6, 'lt1');" onmouseout="mhHover('msviLocalToolbar', 6, 'lt0')" onclick="doing('go_publish_admin');">{lang:publish_admin}</td>
+
+<?php $Counter = 8;?>
+<if test="strpos($cmsware_version,'ST') === FALSE  and strpos($cmsware_version,'Free') === FALSE">
+<!--NOT ST Version add by easyt 2007.9.13-->
+<?php if($this->_tpl_vars['LicenseInfo']['Module-Contribution'] == 1): ?>
+		<td><span class="ltsep">|</span></td><td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt1');" onmouseout="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt0')" onclick="doing('go_contribution_admin');">
+{lang:contribution_admin}</td>
+<?php $Counter = $Counter + 2;?> 
+<?php endif;?>
+</if><!--NOT ST Version add by easyt 2007.9.13-->
+
+
+
+<if test="strpos($cmsware_version,'ST') === FALSE  and strpos($cmsware_version,'Free') === FALSE">
+<!--NOT ST Version add by easyt 2007.9.13-->
+	<td><span class="ltsep">|</span></td><td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt1');"  onmouseout="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt0')"  onclick="doing('go_resource_admin');" >
+{lang:resource_admin}</td>
+<?php $Counter = $Counter + 2;?> 
+</if><!--NOT ST Version add by easyt 2007.9.13-->
+
+		
+			<td><span class="ltsep">|</span></td><td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt1');showMenu('sys_admin_menu',160,292);"  onmouseout="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt0')"  >
+{lang:sys_admin}</td>
+
+<?php $Counter = $Counter + 2;?> 
+
+<?php if($this->_tpl_vars['LicenseInfo']['Module-Collection'] == 1): ?>
+
+  <if test="$session.sGIsAdmin == 1 || $session.Auth.canCollection == 1">
+
+	<td><span class="ltsep">|</span></td><td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt1');" onmouseout="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt0')" onclick="doing('go_collection');" > {lang:collection_admin}</td>
+<?php $Counter = $Counter + 2;?> 
+  </if>
+<?php endif;?>
+
+
+
+ 
+
+
+ 	<td><span class="ltsep">|</span></td><td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt1');showMenu('plugins_menu',160,[$pluginsMenuLength]);" onmouseout="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt0')"> 
+{lang:plugins_admin}</td>
+<?php $Counter = $Counter + 2;?>
+
+<td><span class="ltsep">|</span></td><td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt1');showMenu('TplAdmin',160,22);" onmouseout="mhHover('msviLocalToolbar',<?=$Counter?>, 'lt0')">{lang:tpl_admin}</td>
+	<?php $Counter = $Counter + 2;?> 
+	<td><span class="ltsep">|</span></td><td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt1');showMenu('sysinfo_menu',160,102);" onmouseout="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt0')"> 
+{lang:view_state} </td>
+<?php $Counter = $Counter + 2;?>
+<td><span class="ltsep">|</span></td><td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt1');showMenu('help_menu',160,132);" onmouseout="mhHover('msviLocalToolbar', <?=$Counter?>, 'lt0')"   >
+ {lang:help}</td>
+<?php $Counter = $Counter + 2;?>
+<td width="100%" align=right><span class="ltsep">{lang:welcome}:<?php echo $this->_tpl_vars["session"]["sUserName"];?>/<?php echo panel_header_view_group($this->_tpl_vars["session"]["sGId"]);?>&nbsp;&nbsp;| </span></td><td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar',<?=$Counter?>, 'lt1')" onmouseout="mhHover('msviLocalToolbar',<?=$Counter?>, 'lt0')" onclick="doing('logout');">{lang:logout}</td>
+			 
+			</tr></table></div></div>
+
+
+<DIV ID="sys_admin_menu" style="visibility:hidden">
+<table border="0" cellspacing="0" cellpadding="0" width=160  bgcolor="#F1F1F1">
+ <if test="$session.sGIsAdmin == 1">
+
+  <tr onClick="parent.doing('setting_panel');" title="{lang:setting_panel}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:setting_panel}&nbsp; </td>
+  </tr>
+  
+  <tr height=10> 
+<td align=center><img src="../include/editor/de_images/vertical_spacer.gif" width="140" height="2"></td>
+  </tr>
+</if>
+  
+<tr onClick="parent.doing('clear_cache');" title="{lang:clear_cache}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:clear_cache}&nbsp; </td>
+  </tr>
+<if test="$session.sGIsAdmin == 1 ">
+
+    <tr onClick="parent.doing('setting');" title="{lang:setting}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:setting}&nbsp; </td>
+  </tr>
+ </if>
+  <tr onClick="parent.doing('user_admin');" title="{lang:user_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:user_admin}&nbsp; </td>
+  </tr>
+<if test="strpos($cmsware_version,'ST') === FALSE  and strpos($cmsware_version,'Free') === FALSE">
+<!--NOT ST Version add by easyt 2007.9.13-->
+  <tr onClick="parent.doing('group_admin');" title="{lang:group_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:group_admin}&nbsp; </td>
+  </tr>
+</if><!--NOT ST Version add by easyt 2007.9.13-->
+  <!--
+  <tr onClick="parent.doing('publishauth_admin');" title="{lang:publishauth_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:publishauth_admin}&nbsp; </td>
+  </tr>
+  -->
+  <if test="$session.sGIsAdmin == 1 ">
+
+  <tr onClick="parent.doing('content_model_admin');" title="{lang:content_model_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:content_model_admin}&nbsp; </td>
+  </tr>
+   <tr onClick="parent.doing('psn_admin');" title="{lang:psn_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:psn_admin}&nbsp; </td>
+  </tr>
+ 
+<if test="strpos($cmsware_version,'Plus') !== FALSE ">
+<!--Plus Version add by easyt 2007.9.9-->
+  <tr onClick="parent.doing('workflow_admin');" title="{lang:workflow_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:workflow_admin}&nbsp; </td>
+  </tr>
+</if><!--Plus Version add by easyt 2007.9.13-->
+  <tr onClick="parent.doing('plugin_admin');" title="{lang:plugin_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:plugin_admin}&nbsp; </td>
+  </tr>
+  <tr onClick="parent.doing('tpl_vars_admin');" title="{lang:tpl_vars_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:tpl_vars_admin}&nbsp; </td>
+  </tr>
+  <tr onClick="parent.doing('keywords_admin');" title="{lang:keywords_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:keywords_admin}&nbsp; </td>
+  </tr>
+<if test="strpos($cmsware_version,'ST') === FALSE  and strpos($cmsware_version,'Free') === FALSE">
+<!-- NOT ST Version add by easyt 2007.9.13-->
+  <tr onClick="parent.doing('replace_admin');" title="{lang:replace_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:replace_admin}&nbsp; </td>
+  </tr>
+</if><!--NOT ST Version add by easyt 2007.9.13-->
+  <tr onClick="parent.doing('ip_admin');" title="{lang:ip_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:ip_admin}&nbsp; </td>
+  </tr>	
+<if test="strpos($cmsware_version,'ST') === FALSE  and strpos($cmsware_version,'Free') === FALSE">
+<!-- NOT ST Version add by easyt 2007.9.13-->
+  <tr onClick="parent.doing('log_login_admin');" title="{lang:log_login_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:log_login_admin}&nbsp; </td>
+  </tr>	
+  <tr onClick="parent.doing('log_admin_admin');" title="{lang:log_admin_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:log_admin_admin}&nbsp; </td>
+  </tr>	  
+</if><!-- NOT ST Version add by easyt 2007.9.13-->
+
+</if>
+ 
+<!--
+  <tr height=10> 
+<td align=center><img src="../include/editor/de_images/vertical_spacer.gif" width="140" height="2"></td>
+  </tr>
+top.panelBox.labelName.innerHTML ='{lang:help}';top.panelWork.location='http://www.cmsware.com/manual/index.html'-->
+
+</table>
+</div>
+
+<!--Help Menu-->
+<DIV ID="help_menu" style="visibility:hidden">
+<table border="0" cellspacing="0" cellpadding="0" width=160  bgcolor="#F1F1F1">
+  <tr onClick="parent.doing('manual');" title="{lang:online_manual}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:manual}&nbsp; </td>
+  </tr>
+
+
+ <tr onClick="parent.doing('online_manual');" title="{lang:online_manual}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:online_manual}&nbsp; </td>
+  </tr>
+
+    <tr onClick="parent.doing('cmsware_com');" title="{lang:cmsware_com}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:cmsware_com}&nbsp; </td>
+  </tr>
+
+    <tr onClick="parent.doing('support_forum');" title="{lang:support_forum}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:support_forum}&nbsp; </td>
+  </tr>
+
+    <tr onClick="parent.doing('detect_news');" title="{lang:detect_news}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:detect_news}&nbsp; </td>
+  </tr>
+  <tr height=10> 
+<td align=center><img src="../include/editor/de_images/vertical_spacer.gif" width="140" height="2"></td>
+  </tr>
+  
+  <tr onClick="parent.doing('about_cmsware');" title="{lang:about_cmsware}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:about_cmsware}&nbsp; </td>
+  </tr>
+
+<!--
+  <tr height=10> 
+<td align=center><img src="../include/editor/de_images/vertical_spacer.gif" width="140" height="2"></td>
+  </tr>
+top.panelBox.labelName.innerHTML ='{lang:help}';top.panelWork.location='http://www.cmsware.com/manual/index.html'-->
+
+</table>
+</div>
+
+<!--Plugins Menu-->
+<DIV ID="plugins_menu" style="visibility:hidden">
+<table border="0" cellspacing="0" cellpadding="0" width=160  bgcolor="#F1F1F1">
+<if test="strpos($cmsware_version,'ST') === FALSE  and strpos($cmsware_version,'Free') === FALSE">
+<!-- NOT ST Version add by easyt 2007.9.13-->
+<?php if($this->_tpl_vars['LicenseInfo']['Module-FileManager'] == 1): ?>
+ <tr  onClick="parent.doing('go_file_admin');" title="{lang:file_admin}" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:file_admin}&nbsp;</a> </td>
+  </tr>
+ 
+ <?php endif;?>
+</if><!--NOT ST Version add by easyt 2007.9.13-->
+
+ <loop $pluginsList var=var key=key>
+  <tr onClick="parent.gotoPlugin('[$var.pName]', '[$var.Path]');" title="[$var.Info]" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;[$var.pName]&nbsp; </td>
+  </tr>
+ </loop>
+<!--
+  <tr height=10> 
+<td align=center><img src="../include/editor/de_images/vertical_spacer.gif" width="140" height="2"></td>
+  </tr>
+top.panelBox.labelName.innerHTML ='{lang:help}';top.panelWork.location='http://www.cmsware.com/manual/index.html'-->
+
+</table>
+</div>
+
+<DIV ID="sysinfo_menu" style="visibility:hidden">
+<table border="0" cellspacing="0" cellpadding="0" width=160  bgcolor="#F1F1F1">
+ <tr onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td onClick="parent.sysInfoView('cms_info');" style="cursor: hand; font:8pt tahoma;" height=20 title="{lang:view_cms_info}"> 
+  &nbsp;&nbsp;{lang:view_cms_info}&nbsp; </td>
+  </tr>
+  <tr onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td onClick="parent.sysInfoView('state');" style="cursor: hand; font:8pt tahoma;" height=20 title="{lang:view_cms_state}"> 
+  &nbsp;&nbsp;{lang:view_cms_state}&nbsp; </td>
+  </tr>
+ <tr onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td onClick="parent.sysInfoView('run');" style="cursor: hand; font:8pt tahoma;" height=20 title="{lang:view_cms_run_state}"> 
+  &nbsp;&nbsp;{lang:view_cms_run_state}&nbsp; </td>
+  </tr>
+
+<if test="strpos($cmsware_version,'ST') === FALSE  and strpos($cmsware_version,'Free') === FALSE">
+<!-- NOT ST Version add by easyt 2007.9.13-->
+  <tr onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td onClick="parent.sysInfoView('contribution_stat');" style="cursor: hand; font:8pt tahoma;" height=20 title="{lang:contribution_stat}" > 
+  &nbsp;&nbsp;{lang:contribution_stat}&nbsp; </td>
+  </tr>
+</if><!--NOT ST Version add by easyt 2007.9.13-->
+ 
+
+
+<if test="$session.sGIsAdmin == 1  ">
+
+  <tr onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td onClick="parent.sysInfoView('php');" style="cursor: hand; font:8pt tahoma;" height=20 title="{lang:view_sys_php}"> 
+  &nbsp;&nbsp;{lang:view_sys_php}&nbsp; </td>
+  </tr>
+  <tr onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td onClick="parent.sysInfoView('error');" style="cursor: hand; font:8pt tahoma;" height=20 title="{lang:view_sys_error}"> 
+  &nbsp;&nbsp;{lang:view_sys_error}&nbsp; </td>
+  </tr>
+  <else>
+    <tr > 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp; &nbsp; </td>
+  </tr>
+    <tr > 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp; &nbsp; </td>
+  </tr>
+  </if>
+ <!-- <tr onClick="parent.sysInfoView('sys');" onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20> 
+  &nbsp;&nbsp;{lang:view_sys_env}&nbsp; </td>
+  </tr>-->
+
+</table>
+</div>
+
+<DIV ID="TplAdmin" style="visibility:hidden">
+<table border="0" cellspacing="0" cellpadding="0" width=160  bgcolor="#F1F1F1">
+<if test="$session.sGIsAdmin == 1 || $session.Auth.canTpl == 1">
+
+ <tr onClick="parent.doing('tpl_admin');"   onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20 title="{lang:tpl_admin_global}"> 
+  &nbsp;&nbsp;{lang:tpl_admin_global}&nbsp; </td>
+  </tr>
+<else>
+ <tr      > 
+<td style="cursor: hand; font:8pt tahoma;" height=20  > 
+   &nbsp;</td>
+  </tr>
+
+</if>
+
+<if test="strpos($cmsware_version,'Plus') !== FALSE ">
+<!--Plus Version add by easyt 2007.9.9-->
+  <tr onClick="parent.doing('tpl_cate_admin');"  " onMouseOver="parent.contextHilite(this);" onMouseOut="parent.contextDelite(this);"> 
+<td style="cursor: hand; font:8pt tahoma;" height=20 title="{lang:tpl_admin_cate}"> 
+  &nbsp;&nbsp;{lang:tpl_admin_cate}&nbsp; </td>
+  </tr>
+</if><!--Plus Version add by easyt 2007.9.9-->
+
+</table>
+</div>
+
+
+
+ 
+
+<DIV ID="AboutCMSware" style="visibility:hidden"  >
+<table border="0" cellspacing="0" cellpadding="0" width=100% height=275  bgcolor="#FFFFFF">
+  <tr > 
+<td style="font:8pt tahoma; padding-top:15px;padding-left:40px;"   valign=top> 
+<TABLE border="0" cellspacing="5" cellpadding="0" style="font:8pt tahoma;" >
+
+<TR>
+	<TD colspan="2"><IMG SRC="../html/images/full_logo.jpg" border=0></TD>
+</TR>
+<TR>
+	<TD width="60">{lang:version}:</TD>
+	<TD width="250">[$cmsware_version] (Build [$BUILD_VERSION])</TD>
+</TR>
+<TR>
+	<TD >{lang:LicenseInfo_Product-name}:</TD>
+	<TD>[$LicenseInfo.Product-name]</TD>
+</TR>
+<TR>
+	<TD>{lang:LicenseInfo_Registered-to}:</TD>
+	<TD>[$LicenseInfo.Registered-to]</TD>
+</TR>
+<TR>
+	<TD>{lang:LicenseInfo_Registered-URL}:</TD>
+	<TD>[$LicenseInfo.Registered-URL]</TD>
+</TR>
+<TR>
+	<TD colspan="2"> <textarea name="gInfo" rows="5" class='flat' id="groupinfo" style="font:8pt tahoma;width:350px;" >{lang:license_txt}</textarea></TD>
+</TR>
+<TR>
+	<TD colspan="2" ><a href="http://www.lonmo.com" target="_blank"><font color="#000000">{lang:copyright}</font></a></TD>
+</TR>
+</TABLE>
+
+ </td>
+  </tr>
+</table>
+</div>
+</body>
+</HTML>

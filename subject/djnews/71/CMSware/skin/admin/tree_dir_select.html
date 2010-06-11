@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<title>[$cms_version]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]" />
+<script type="text/javascript" src="../html/tree/xtree.js"></script>
+<script type="text/javascript" src="../html/tree/xmlextras.js"></script>
+<script type="text/javascript" src="../html/tree/xloadtree.js"></script>
+<link type="text/css" rel="stylesheet" href="../html/tree/xtree.css" />
+<LINK href="../html/xmenu.css" type=text/css rel=stylesheet>
+<SCRIPT src="../html/xmenu.js" type=text/javascript></SCRIPT>
+<SCRIPT src="ui.php?sId=[$sId]&o=functions.js" type=text/javascript></SCRIPT>
+
+<style type="text/css">
+
+body {
+	background:	white;
+	color:		black;
+}
+
+</style>
+
+<SCRIPT language=JavaScript>
+var elo;
+var loadmenuok=false;
+var type = 'main';
+var sId = '[$sId]';
+
+</SCRIPT>
+
+</head>
+<body leftmargin="3" topmargin="0">
+<script type="text/javascript">
+
+/// XP Look
+webFXTreeConfig.rootIcon		= "../html/tree/images/xp/folder.png";
+webFXTreeConfig.openRootIcon	= "../html/tree/images/xp/openfolder.png";
+webFXTreeConfig.folderIcon		= "../html/tree/images/xp/folder.png";
+webFXTreeConfig.openFolderIcon	= "../html/tree/images/xp/openfolder.png";
+webFXTreeConfig.fileIcon		= "../html/tree/images/xp/file.png";
+webFXTreeConfig.lMinusIcon		= "../html/tree/images/xp/Lminus.png";
+webFXTreeConfig.lPlusIcon		= "../html/tree/images/xp/Lplus.png";
+webFXTreeConfig.tMinusIcon		= "../html/tree/images/xp/Tminus.png";
+webFXTreeConfig.tPlusIcon		= "../html/tree/images/xp/Tplus.png";
+webFXTreeConfig.iIcon			= "../html/tree/images/xp/I.png";
+webFXTreeConfig.lIcon			= "../html/tree/images/xp/L.png";
+webFXTreeConfig.tIcon			= "../html/tree/images/xp/T.png";
+webFXTreeConfig.blankIcon		= "../html/tree/images/blank.png";
+
+//var tree = new WebFXLoadTree("WebFXLoadTree", "tree1.xml");
+//tree.setBehavior("classic");
+/*
+	rootIcon        : 'images/foldericon.png',
+	openRootIcon    : 'images/openfoldericon.png',
+	folderIcon      : 'images/foldericon.png',
+	openFolderIcon  : 'images/openfoldericon.png',
+	fileIcon        : 'images/file.png',
+	iIcon           : 'images/I.png',
+	lIcon           : 'images/L.png',
+	lMinusIcon      : 'images/Lminus.png',
+	lPlusIcon       : 'images/Lplus.png',
+	tIcon           : 'images/T.png',
+	tMinusIcon      : 'images/Tminus.png',
+	tPlusIcon       : 'images/Tplus.png',
+	blankIcon       : 'images/blank.png',
+	defaultText     : 'Tree Item',
+	defaultAction   : 'javascript:void(0);',
+	defaultBehavior : 'classic',
+	usePersistence	: true
+*/
+var rti;
+var tree = new WebFXTree("Root","javascript:parent.setTargetNodeID('/')");
+
+<loop $fileList key=key var=var>
+<if $var.type == 'dir' && $var.name != ''>
+tree.add(new WebFXLoadTreeItem("[@htmlspecialchars($var.name)]", "admin_tpl.php?op=sId::[$sId];o::dir_select_xml;PATH::[$PATH]/[$var.name]", "javascript:parent.setTargetNodeID('[$PATH]/[$var.name]')", "" , "[$var.PSNID]"));
+</if>
+</loop>
+
+//function WebFXTreeItem(sText, sAction, eParent, sIcon, sOpenIcon) {
+
+//WebFXLoadTree(sText, sXmlSrc, sAction, sBehavior, sIcon, sOpenIcon) 
+//tree.add(rti = new WebFXLoadTreeItem("Tree Item 3 (Reload)", "../html/tree/date.xml.pl"));
+//tree.add(new WebFXTreeItem("Tree Item 4"));
+
+document.write(tree);
+
+</script>
+<div id="menudata"></div>
+
+</body>
+</html>

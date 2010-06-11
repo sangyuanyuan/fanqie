@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD> <META HTTP-EQUIV="Pragma" CONTENT="no-cache"> <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> <META HTTP-EQUIV="Expires" CONTENT="0"> 
+<TITLE>{lang:topic}</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]">
+
+
+</HEAD>
+<script type="text/javascript" src="../html/helptip.js"></script>
+<link type="text/css" rel="StyleSheet" href="../html/helptip.css" />
+<link type="text/css" rel="StyleSheet" href="../html/style.css" />
+<script language='JavaScript' src='../html/js-gui.js'></script>
+<script language='JavaScript' src='../html/js-form.js'></script>
+<LINK href="../html/xmenu.css" type=text/css rel=stylesheet>
+<SCRIPT src="../html/xmenu.js" type=text/javascript></SCRIPT>
+
+<script src="ui.php?sId=[$sId]&o=functions.js" type="text/javascript" language="javascript"></script>
+<script language="javascript">
+var URL = "";
+function psn_backward()
+{	//alert('a')
+			window.history.go(-1);
+}
+
+function psn_updir()
+{
+	var PATH =  document.workFrame.PATH;
+	var PSNID = document.form1.psn.options[document.form1.psn.selectedIndex].value
+	//alert(PSNID)
+	workFrame.location = 'admin_select.php?sId=[$sId]&o=psn_picker_list_file&extra=updir&PSNID=' + PSNID + '&PATH=' + PATH
+
+}
+
+function psn_mkdir()
+{
+	var PATH =  document.workFrame.PATH;
+	var PSNID = document.form1.psn.options[document.form1.psn.selectedIndex].value
+
+	var dirname= prompt("{lang:dir_name}", ""); //showMeDialog("../html/input.php?Title={lang:dir_name}","color","dialogWidth:300px;dialogHeight:150px;help:0;status:0;scroll:no");
+
+	if(dirname != null && dirname != '') {
+		workFrame.location = 'admin_select.php?sId=[$sId]&o=psn_mkdir&dirname='+ dirname +'&PSNID=' + PSNID + '&PATH=' + PATH
+	}
+
+
+}
+
+function returnMe()
+{
+	var returnValue =  new Array();
+	returnValue['URL'] = URL;
+	returnValue['PSNID'] = document.form1.psn.options[document.form1.psn.selectedIndex].value;
+	returnValue['filename'] = document.form1.fileName.value;
+	window.returnValue = returnValue;
+	window.close();
+}
+function closeMe()
+{
+	var returnValue =  new Array();
+	returnValue['URL'] = '';
+	returnValue['PSNID'] = '';
+	returnValue['filename'] = '';
+	window.returnValue = returnValue;
+	window.close();
+}
+</script>
+<body bgcolor=threedface STYLE="margin:0pt;padding:0pt;border: 1px buttonhighlight;" onload="workFrameReload()">
+<table width="100%" border="0">
+  <tr>
+    <td valign="top">
+<table width="100%" border="0" cellspacing="5">
+        <form name="form1" method="post" action="">
+          <tr> 
+            <td colspan="3" align="right"><table width="100%" border="0" cellspacing="0">
+                <tr> 
+                  <td width="10%">{lang:search}:</td>
+                  <td  width="200"><select name="psn" id="select" onchange="if(this.options[this.selectedIndex].value != ''){
+workFrame.location=('admin_select.php?sId=[$sId]&o=psn_picker_list_file&PSNID='+this.options[this.selectedIndex].value);
+} ">
+                      <option value="">{lang:please_select_psn}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                      <loop $psnList key=key var=var> <if $PSNID == $var.PSNID> 
+                      <option value="[$var.PSNID]" selected>[ 
+                      [$var.Name]
+                      ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                      <else> 
+                      <option value="[$var.PSNID]">[ 
+                      [$var.Name]
+                      ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                      </if> </loop> </select></td>
+                  <td align=left ><script src="../html/psn_icon.js"></script></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td colspan="3" align="center"> <Iframe name=workFrame  frameborder=1 class=button style="width:100%;height:134;" src="" > 
+              </Iframe> </td>
+          </tr>
+          <tr> 
+            <td width="18%">{lang:file_name}:</td>
+            <td width="59%"><input name="fileName" type="text" size="36" title="{lang:file_name_help}"> <input name="selectPSN" type="hidden" id="selectPSN" >
+			
+			</td>
+            <td width="20%"><input type="button" name="Submit" value="  {lang::global:ok}  " onclick="returnMe();"></td>
+          </tr>
+          <tr> 
+            <td colspan="2">{lang:help}</td>
+             <td><input type="button" name="Submit2" value="  {lang::global:cancel}  " onclick='closeMe();'></td>
+          </tr>
+        </form>
+      </table>
+    </td>
+    <td valign="top"> 
+       <table width="100%" border="0" cellspacing="10">
+        <tr> 
+          <td>{lang:preview_img}</td>
+        </tr>
+        <tr> 
+          <td><img name="preview_img" id="preview_img" src="" border="0" width="160" height="120"></td>
+        </tr>
+      </table>
+        
+      </div></td>
+  </tr>
+</table>
+</body>
+</html>
+<script language="javascript">
+function workFrameReload() {
+	var PSNID = '[$PSNID]';
+	var PATH = '[$psn_path]';
+	var PSNURL = '[$psnInfo.URL]';
+	if(PSNID != '') {
+		//alert(PSNID);
+		document.form1.fileName.value = PATH + '/[$default_name]';
+		workFrame.location = 'admin_select.php?sId=[$sId]&o=psn_picker_list_file&default_name=[$default_name]&PSNID=' + PSNID + '&PATH=' + PATH
+
+		preview_img.src= PSNURL + PATH + '/[$default_name]';
+		//workFrame.location.reload()
+
+	}
+}
+
+</script>

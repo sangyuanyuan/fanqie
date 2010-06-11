@@ -1,0 +1,127 @@
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$SITE_NAME] - [$Title]</title><!--#CW#站点名称$SITE_NAME可在CMSWARE后台-系统管理-模板变量设置中设置,$NodeInfo.Name是本模板所在结点的结点名称#CW#-->
+<link href="[$SKIN_URL]gqxx/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../common/header.html" />
+<div class="content">
+	<div class="left">
+        <!---左边样式1-->
+		<div class="topside01">
+			<div class="topside01_l">&nbsp;</div>
+			<div class="topside01_c">&nbsp;</div>
+			<div class="topside01_r">&nbsp;</div>
+		</div>
+		<div class="center01" id="newsfocus">
+          <div class="focus" style="float:none; text-align:center; height:30px;">供求信息发布</div>
+            
+            <div class="sonfocus" style="text-align:left; height:auto; margin:0 0 0px 0">
+<script type="text/javascript" src="[$PUBLISH_URL]FCKeditor/fckeditor.js"></script>
+<if test="!empty($UserInfo.UserName)">
+<form name="form1" method="post" action="[$PUBLISHAPI_URL]index.php?action=add&con=fabu&referer=[@rawurlencode($PUBLISH_URL . 'content_v.php?id=' . $Member_index_IndexID . '&page=0')]" enctype="multipart/form-data">
+              
+                信息标题：
+                      <input name="Title" type="text" id="Title" size="40" maxlength="50" /> 
+                      &nbsp;[<FONT color=#990000>请注意：</FONT>勿超过 50字符]
+				
+				<br />
+				发布分类：
+				<select  name="NodeID" id = "NodeID">
+                <CMS action="NODELIST" return="List" Type="sub" NodeID="{$Gqxx_MainNodeID}"/>
+	                 <loop name="List" key="key" var="var" >
+                        <option value="[$var.NodeID]">&nbsp;[$var.Name]&nbsp;</option>
+                     </loop>
+                </select>
+              
+			    <br /><br />
+				信息供求：
+				
+				<select name="GqType" id="GqType">
+                        <option value="1" [@((($Custom1=='1') ? 'selected' : ''))]>供</option>
+						<option value="2" [@((($Custom1=='2') ? 'selected' : ''))]>求</option>
+                </select>
+				&nbsp;[请填写：供 表示提供信息，如发布卖二手产品信息、房屋出租出售、服务黄页、以及求职信息等；<br />				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;求 表示发布购买二手产品信息、求租房屋、寻求服务、招聘信息等。]
+			  
+                
+				<br>
+                信息分类：
+                   <input name="InfoType" type="text" id="InfoType" size="29">
+				
+				[可选项]<br>
+                自定分类：
+                   <input name="SelfType" type="text" id="SelfType" size="29">
+				
+				[可选项]<br>
+                关 键 字：
+                   <input name="Keywords" type="text" id="Keywords" size="29" />
+		  [可选项]<br>
+                新旧成色：
+                   <input name="Xjcs" type="text" id="Xjcs" size="29" />  [可选项]<br>
+                所在地区：
+                   <input name="Area" type="text" id="Area" size="29">
+                   [可选项]<br>
+                   具体位置：
+                      <input name="Address" type="text" id="Address" size="29">&nbsp;[可选项]<br />
+                      交易价格：
+                      <input name="Price" type="text" id="Price" size="29">
+              
+                [可选项]<br><br>
+                发 布 人：&nbsp;<font color="#FF0000">[$UserInfo.UserName]</font>
+                <br>
+                <br>
+                详细介绍：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="Content" cols="87" rows="20" id="Content">填写你要发布的内容的详细信息，如联系方式这些也可以在这里面写清楚，以便会员好浏览你的信息和你联系。。。</textarea>
+				<script type=text/javascript>
+										var oFCKeditor = new FCKeditor( 'Content' ) ;
+										oFCKeditor.BasePath = '[$PUBLISH_URL]FCKeditor/' ;
+										oFCKeditor.ToolbarSet = 'Default' ;
+										oFCKeditor.Width = '601' ;
+										oFCKeditor.Height = '351' ;
+										oFCKeditor.Value = '' ;
+										//oFCKeditor.Create() ;
+										oFCKeditor.ReplaceTextarea() ;
+									</script>
+                    <br>
+               
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="submit" type="submit" id="submit" value="确定发布">
+
+        &nbsp;&nbsp; 
+
+              <input type="reset" name="Submit2" value="重置">
+	
+	 
+</form>	
+<else>
+你还没有登录，不能发布供求信息，请先...
+<a href="[$OAS_URL]login.php?forward=[@rawurlencode($SelfURL)]"><font color="#FF0000">登录</font></a>&nbsp;&nbsp;或&nbsp;&nbsp;<a href="[$OAS_URL]register.php?forward=[@rawurlencode($SelfURL)]"><font color="#FF0000">注册</font></a>
+</if>
+
+				
+		    </div>
+              
+		</div>
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+        <!--上下篇图片-->
+        
+    </div>
+	<!--右边列开始-->
+	
+	<include file="right_list.html">
+	
+</div>
+
+<div class="content"></div>
+
+
+<include file="../common/footer.html" />
+</body>
+</html>

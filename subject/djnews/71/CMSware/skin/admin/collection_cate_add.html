@@ -1,0 +1,247 @@
+<include: file="header.html">
+<script language="JavaScript">
+function setAutoImport(mode)
+{
+	switch(mode) {
+		case 0 :
+			Layer_AutoImport.style.display = 'none';
+			break;
+		case 1 : 
+ 			Layer_AutoImport.style.display = '';
+			break;
+	}
+}
+</script>
+<form action='[$base_url]o=add_submit' method='post' enctype="multipart/form-data" name='clientform' id=clientform onSubmit='return cate_submit(this);'>
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+    <tr> 
+      <td colspan="2" class="table_header">{lang:topic}  <a href="" target="_blank"><img src="../html/images/b_help.png" border=0></a></td>
+    </tr>
+
+    <tr > 
+      <td width="26%" class="table_td1">{lang:cate_name}:</td>
+      <td class="table_td2"> <input name="data_ParentID" type="hidden" id="data_ParentID" value="[$ParentID]"> <INPUT name=data_Name id="data_Name" size=20  class='flat' value="[$CateInfo.Name]"></td>
+    </tr>
+    <tr id="makedir1"> 
+      <td class="table_td1"> {lang:content_model_inherit}:</td>
+      <td class="table_td2"> <select name="data_TableID" id="data_TableID"  class='flat' onchange="if(this.options[this.selectedIndex].value != ''){ 
+window.location = '[$base_url]o=add&TableID=' + this.options[this.selectedIndex].value + '&ParentID=[$ParentID]';
+} ">
+          <loop $tableInfo key=key var=var> 
+		  <if $var.TableID == $TableID >
+          <option value="[$var.TableID]" selected>[$var.Name]</option>
+		  <else>
+          <option value="[$var.TableID]">[$var.Name]</option>
+		  </if>
+          </loop> 
+        </select>
+        {lang:can_not_change_after_set} </td>
+    </tr>
+
+
+    <tr> 
+      <td colspan="2" class="table_header">{lang:target_url_rules}</td>
+    </tr>
+<tr > 
+      <td  class="table_td1">{lang:target_url}:</td>
+      <td class="table_td2"> <INPUT name="data_TargetURL" id="data_TargetURL" style="width=80%"  class='flat' value="[$CateInfo.TargetURL]"> <input type='button' name='submit' onclick="if(this.form.data_TargetURL.value != '' ) {window.open('[$base_url]o=go&url='+ this.form.data_TargetURL.value);}" value='Go' tabindex='13'> &nbsp;&nbsp;<input type='button' name='submit' onclick="if(this.form.data_TargetURL.value != '' && this.form.data_UrlFilterRule.value != '') {RuleTest();}" value='{lang:button_test}' tabindex='13'></td>
+</tr>
+<tr > 
+      <td  class="table_td1">{lang:target_url_area}:</td>
+      <td class="table_td2"> <textarea name="data_TargetURLArea" cols="70" rows="5" class="button" id="data_TargetURLArea">[$CateInfo.TargetURLArea]</textarea></td>
+</tr>
+
+<tr > 
+      <td  class="table_td1">{lang:url_filter_rule}:</td>
+      <td class="table_td2"><textarea name="data_UrlFilterRule" cols="70" rows="5" class="button" id="data_UrlFilterRule">[$CateInfo.UrlFilterRule]</textarea>
+</td>
+</tr>
+
+<tr > 
+      <td  class="table_td1">{lang:url_page_rule}:</td>
+      <td class="table_td2"><textarea name="data_UrlPageRule" cols="70" rows="5" class="button" id="data_UrlPageRule">[$CateInfo.UrlPageRule]</textarea>
+</td>
+</tr>
+
+<tr> 
+   <td colspan="2" class="table_header">{lang:content_rules}</td>
+</tr>
+
+
+ 
+<loop $tableFieldInfo key=key var=var >
+<if test="empty($var.EnableCollection)">
+<?php continue;?>
+</if>
+<tr>
+      <td  class="table_td1">[$var.FieldTitle]:</td>
+      <td class="table_td2"><textarea name="rule_[$var.ContentFieldID]" cols="70" rows="5" class="button" id="rule_[$var.ContentFieldID]"></textarea>
+</td>
+</tr>
+</loop>
+
+<tr> 
+   <td colspan="2" class="table_header">{lang:collection_setting}</td>
+</tr>
+<tr  > 
+              <td class="table_td1">{lang:is_repeat_collection}:</td>
+              <td class="table_td2"> 
+
+                  <input type="radio" name="data_RepeatCollection" value="1" id="smtp_auth1" >
+                  <label for="smtp_auth1"  >{lang::global:yes}</label>
+                  <input name="data_RepeatCollection" type="radio" value="0"  id="smtp_auth2" checked>
+                  <label for="smtp_auth2"  >{lang::global:no}</label>
+</td>
+</tr>
+
+<tr  > 
+              <td class="table_td1">{lang:hidden_imported}:</td>
+              <td class="table_td2">
+
+                   <input type="radio" name="data_HiddenImported" value="1" id="smtp_auth3" checked >
+                  <label for="smtp_auth3"  >{lang::global:yes}</label>
+                  <input name="data_HiddenImported" type="radio" value="0"  id="smtp_auth5" >
+                  <label for="smtp_auth5"  >{lang::global:no}</label>
+ </td>
+</tr>
+
+
+<tr  > 
+              <td class="table_td1">{lang:del_imported}:</td>
+              <td class="table_td2">
+
+                   <input type="radio" name="data_DelAfterImport" value="1" id="smtp_auth6"  >
+                  <label for="smtp_auth6"  >{lang::global:yes}</label>
+                  <input name="data_DelAfterImport" type="radio" value="0"  id="smtp_auth7" checked>
+                  <label for="smtp_auth7"  >{lang::global:no}</label>
+ </td>
+</tr>
+
+
+ 
+<tr  > 
+              <td class="table_td1">{lang:auto_import}:</td>
+              <td class="table_td2">
+
+ <if $CateInfo.AutoImport == 1> 
+                  <input type="radio" name="data_AutoImport" value="1" id="AutoImport1" checked onclick="setAutoImport(1);">
+                  <label for="AutoImport1"  >{lang::global:yes}</label>
+                  <input name="data_AutoImport" type="radio" value="0"  id="AutoImport2" onclick="setAutoImport(0);">
+                  <label for="AutoImport2"  >{lang::global:no}</label>
+                  <else> 
+                  <input type="radio" name="data_AutoImport" value="1" id="AutoImport1" onclick="setAutoImport(1);">
+                  <label for="AutoImport1"  >{lang::global:yes}</label>
+                  <input name="data_AutoImport" type="radio" value="0"  id="AutoImport2" checked onclick="setAutoImport(0);">
+                  <label for="AutoImport2"  >{lang::global:no}</label>
+                  </if> 
+</td>
+</tr>
+<tr  > 
+              <td class="table_td1">{lang:in_run_plan}:</td>
+              <td class="table_td2">
+
+                   <input type="radio" name="data_InRunPlan" value="1" id="InRunPlan1" checked >
+                  <label for="InRunPlan1"  >{lang::global:yes}</label>
+                  <input name="data_InRunPlan" type="radio" value="0"  id="InRunPlan2" >
+                  <label for="InRunPlan2"  >{lang::global:no}</label>
+ </td>
+</tr>
+
+<tbody id="Layer_AutoImport" style="display:none">
+<tr> 
+   <td colspan="2" class="table_header">{lang:auto_import_setting}</td>
+</tr>
+
+<tr class='tablelist'> 
+              <td class="table_td1">{lang:auto_import_NodeID}:</td>
+              <td class="table_td2"><select  name="TargetNodeID" id = "TargetNodeID">
+<loop $NODE_LIST var=var>
+<if $CateInfo.NodeID == $var.NodeID >
+<option value="[$var.NodeID]" selected>[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+<else>
+<option value="[$var.NodeID]">[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+</if>
+
+ </loop></select>
+ 
+</td>
+</tr>
+
+<tr class='tablelist'> 
+              <td  class="table_td1">{lang:auto_import_SubNodeID}:</td>
+              <td class="table_td2">
+<select  name="SubTargetNodeID[]" id = "SubTargetNodeID"  size="10" multiple>
+<option value="" >{lang:null}</option>
+ <loop $NODE_LIST var=var>
+ <option value="[$var.NodeID]">[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+ 
+ </loop>
+ </select>		          	  
+			  
+			  </td>
+</tr> 
+
+<tr class='tablelist'> 
+              <td  class="table_td1">{lang:auto_import_IndexNodeID}:</td>
+              <td class="table_td2">
+<select  name="IndexNodeID[]" id = "IndexNodeID"  size="10" multiple>
+<option value="" >{lang:null}</option>
+ <loop $NODE_LIST var=var>
+ <option value="[$var.NodeID]">[@str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $var.cHeader)] - &nbsp;[$var.Name]</option>
+ 
+ </loop>
+ </select>		          	  
+			  
+			  </td>
+</tr> 
+</tbody>
+
+ <tr class='tablelist'> 
+
+      <td colspan="2" class="table_td2" align=center><input type='button' name='submit' onclick="RuleTest();" value='{lang:button_test}' tabindex='13'> &nbsp;&nbsp;&nbsp;&nbsp; <input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+  </table>
+</form>
+
+<script language='JavaScript'>
+
+function cate_submit(form)
+{
+	
+	//form.Submit();
+}					
+</script> 		
+<script language="JavaScript">
+function RuleTest()
+{	
+	document.testRule.TargetURL.value = document.clientform.data_TargetURL.value;
+	document.testRule.TargetURLArea.value = document.clientform.data_TargetURLArea.value;
+	document.testRule.UrlFilterRule.value = document.clientform.data_UrlFilterRule.value;
+	document.testRule.UrlPageRule.value = document.clientform.data_UrlPageRule.value;
+<loop $tableFieldInfo key=key var=var >
+<if test="empty($var.EnableCollection)">
+<?php continue;?>
+</if>
+	document.testRule.rule_[$var.ContentFieldID].value = document.clientform.rule_[$var.ContentFieldID].value;
+</loop>	
+	document.testRule.submit();
+}
+
+</script>
+<form name="testRule" method="post" action="admin_collection.php?sId=[$sId]&o=testRule" target="_blank">
+  <input type="hidden" name="TargetURL" value="">
+  <input type="hidden" name="TargetURLArea" value="">
+  <input type="hidden" name="UrlFilterRule" value="">
+  <input type="hidden" name="UrlPageRule" value="">
+<loop $tableFieldInfo key=key var=var >
+<if test="empty($var.EnableCollection)">
+<?php continue;?>
+</if>
+  <input type="hidden" name="rule_[$var.ContentFieldID]" value="">
+  <input type="hidden" name="title_[$var.ContentFieldID]" value="[$var.FieldTitle]">
+</loop>	
+
+</form>
+
+<include: file="footer.html">

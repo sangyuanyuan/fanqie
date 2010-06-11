@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[$Title] - [$NodeInfo.Name] - [$SITE_NAME]</title>
+<!--#CW#站点名称$SITE_NAME可在CMSWARE后台-系统管理-模板变量设置中设置,$NodeInfo.Name是本模板所在结点的结点名称#CW#-->
+<meta name="keywords" content="[$Keywords],[$NodeInfo.Name]" />
+<link href="[$SKIN_URL]gqxx/css/style.css" rel="stylesheet" type="text/css" /><!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<include file="TplConfig.html" /><!--#CW#将模板配置文件包含进本模板，以便调用其中设置的参数#CW#-->
+<body>
+<include file="../common/header.html" />
+<div class="content">
+	<div class="left">
+        <!---左边样式1-->
+		<div class="topside01">
+			<div class="topside01_l">&nbsp;</div>
+			<div class="topside01_c">&nbsp;</div>
+			<div class="topside01_r">&nbsp;</div>
+		</div>
+		<div class="center01" id="newsfocus">
+          <div class="focus" style="float:none; text-align:center; height:30px;">[$Title]</div>
+            
+            <div class="sonfocus" style="text-align:left; height:auto; margin:0 0 0px 0">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+发 布 人：[$UserName] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布日期：[@date('Y-m-d H:i', $PublishDate)]&nbsp;&nbsp;&nbsp;&nbsp;点击：<script src="[$PUBLISH_URL]counter.php?o=display_counter&Id=[$IndexID]"></script>
+                <br /><br />
+				供求关系：
+				<if test="$GqType!=1">
+				[求]
+				<else>
+				[供]
+				</if>
+				<br>
+				信息分类：[$InfoType] [$SelfType]
+                <br />
+
+新旧成色：[$Xjcs]
+<br />
+所在地区：[$Area]
+<br />
+具体位置：[$Address]
+<br />
+交易价格：[$Price]
+                <br>
+                详细介绍：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[$Content]
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</div>
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+        <!--上下篇图片-->
+        <div class="topside02">
+			<div class="topside02_l">&nbsp;</div>
+			<div class="topside02_c">&nbsp;</div>
+			<div class="topside02_r">&nbsp;</div>
+		</div>
+		<div class="center02">
+
+<CMS action="LIST" return="List" NodeID="{$NodeID}" Num="1" where="i.PublishDate < {$PublishDate} " />
+<LOOP name="List" var="var" key="key"> 
+<div class="photo_content_sh"><span>下一篇：</span><a href=[$var.URL]>[$var.Title]</a>&nbsp;&nbsp;<font color="#FF0000">[[@date('Y-m-d H:m:s', $var.PublishDate)]] </font></div>
+</LOOP>
+        	
+<CMS action="LIST" return="List" NodeID="{$NodeID}" Num="1" where="i.PublishDate > {$PublishDate} " />
+<LOOP name="List" var="var" key="key"> 
+<div class="photo_content_sh"><span>上一篇：</span><a href=[$var.URL]>[$var.Title]</a>&nbsp;&nbsp;<font color="#FF0000">[[@date('Y-m-d H:m:s', $var.PublishDate)]] </font></div>
+</LOOP>
+		</div>
+		<div class="bottomside02">
+			<div class="bottomside02_l">&nbsp;</div>
+			<div class="bottomside02_c">&nbsp;</div>
+			<div class="bottomside02_r">&nbsp;</div>
+		</div>	
+	<!--相关图片-->
+    	<div class="topside01">
+			<div class="topside01_l">&nbsp;</div>
+			<div class="topside01_c">&nbsp;</div>
+			<div class="topside01_r">&nbsp;</div>
+		</div>
+		<div class="center01" id="newsfocus">
+
+			<div class="focus">相关评论</div>
+          	<div class="sonfocus">
+
+<script type="text/javascript" src="[$PUBLISH_URL]js.php?id=gqxx_comment_js&IndexID=[$IndexID]"></script>
+
+<script type="text/javascript" src="[$PUBLISH_URL]js_v.php?id=gqxx_comment&IndexID=[$IndexID]"></script>
+    
+  	  	    </div>
+          	
+        </div>
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+    </div>
+	<!--右边列开始-->
+	<include file="right_list.html">
+	
+</div>
+
+<div class="content"></div>
+
+
+<include file="../common/footer.html" />
+</body>
+</html>

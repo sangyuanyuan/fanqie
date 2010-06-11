@@ -1,0 +1,78 @@
+<include: file="header.html">
+<SCRIPT language=JavaScript>
+function psnDetect(PSNID) {
+	var returnValue = CMSware_send("admin_psn.php?sId=[$sId]&o=detect&PSNID=" + PSNID) ;
+
+	if(returnValue == '1') {
+		alert('{lang:detect_ok}');
+	} else {
+		alert('{lang:detect_fail}');
+	}
+
+
+}
+
+</script>
+				
+
+<!--[$base_url]o=detect&PSNID=[$var.PSNID]-->
+  <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+ <form action='[$base_url]' method='post' enctype="multipart/form-data" name='clientform' id=clientform onSubmit='return iWPC_formCheck(this);'>
+   <tr> 
+      <td colspan="4" class="table_header">{lang:topic} </td>
+    </tr>
+    <tr > 
+      <td width="10%" align="center" class="table_td1">PSNID</td>
+      <td width="30%" align="center" class="table_td1">PSN</td>
+<td width="30%" align="center" class="table_td1">{lang:publish_type}</td>      <td  align="center" class="table_td1"> {lang::global:execute_op}</td>
+    </tr>
+    <loop $psnList key=key var=var> 
+    <tr > 
+      <td class="table_td2" align="center">[$var.PSNID]</td>
+      <td class="table_td2">[$var.Name]</td>
+      <td class="table_td2">
+<if test="strpos('a'.$var.PSN, 'ftp::')">
+{lang:publish_type_remote}
+<else>
+{lang:publish_type_local}
+</if>
+
+</td>
+      <td  align="center" class="table_td2"> <A HREF="javascript:psnDetect('[$var.PSNID]');">{lang:detect}</A> <A HREF="[$base_url]o=edit&PSNID=[$var.PSNID]">{lang::global:edit}</A> 
+        <A HREF="[$base_url]o=del&PSNID=[$var.PSNID]" onclick="return confirm('{lang::global:confirm_del}')">{lang::global:del}</a></td>
+    </tr>
+    </loop> 
+    <tr > 
+      <td colspan="4" class="table_td2"> <input type="button" name="Submit" value="{lang:new_psn}" onclick="window.location='[$base_url]o=add'">
+      </td>
+    </tr>
+</form>
+  </table>
+
+ 
+<script language='JavaScript'>
+function edit(form,id) 
+{
+	eval("var isdisabled = " + form + "." + id + ".disabled");
+
+	if(isdisabled) {
+		eval(form + "." + id + ".disabled = false");
+	} else {
+		eval(form + "." + id + ".disabled = true");
+
+	}
+
+}
+function iWPC_formCheck(form) 
+{
+	if(form.tName.value == '') {
+		alert("{lang:please_input_name}");
+		form.tName.focus();
+		form.tName.style.background = '#FFFFE1';
+		return false;
+	}
+}
+					
+</script> 		
+</BODY>
+<include: file="footer.html">

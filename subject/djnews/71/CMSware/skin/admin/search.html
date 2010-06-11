@@ -1,0 +1,59 @@
+<include: file="header.html">
+   
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+<form name='clientform' id=clientform method='post' action='[$base_url]o=search&TableID=[$IN.TableID]' >
+    <tr> 
+      <td colspan="2" class="table_header">{lang:gaojisousuo}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1" width="20%">{lang:sousuoguanjianzi}:</td>
+      <td class="table_td2" width="80%"><input name='Keywords' type='text' class='flat'   tabindex='8'   size='25'> </td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:sousuoziduan}:<br/>{lang:keduoxuan}</td>
+      <td class="table_td2"><select name="Field[]" size="10" multiple id="select">
+          <loop $searchFields key=key var=var> 
+            <option value='[$var.FieldName]'  >[$var.FieldTitle]</option>
+  		 </loop>  
+        </select></td>
+   
+ </tr>
+
+    <tr> 
+      <td class="table_td1">{lang:sousuoleixing}:</td>
+      <td class="table_td2"> <INPUT TYPE="radio" NAME="Published" value="0" checked>{lang:weifabuwendang} <INPUT TYPE="radio" NAME="Published" value="1">{lang:yifabuwendang}  <INPUT TYPE="radio" NAME="Published" value="2">{lang:suoyouweidang}
+        </select></td>
+   
+ </tr>
+    <tr> 
+      <td class="table_td1">{lang:sousuofenlei}:<br/>{lang:keduoxuanbuxianfenlei}</td>
+      <td class="table_td2"><select name="NodeID[]" size="15" multiple id="select">
+          <loop $node_list key=key var=var> 
+		  <if $var.TableID == $IN.TableID>
+          <option value='[$var.NodeID]'  ><?php echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $this->_tpl_vars['var']['cHeader']);?> - &nbsp;[$var.Name]</option>
+		  </if>
+		 </loop>  
+        </select><INPUT TYPE="checkbox" NAME="Sub" id="Sub" value="1" checked><label for="Sub">{lang:baohanzifenlei}</label></td>
+   
+ </tr>
+     <tr> 
+      <td class="table_td1">{lang:riqixianzhi}:</td>
+      <td class="table_td2"><SELECT name="Time" id="Time">
+                     <option value="1">{lang:zuijinyitianneidewenzhang}</option>
+                   <option value="7">{lang:zuijinyigexingqineidewenzhang}</option>
+                    <option value="30">{lang:zuijinyigeyueneidewenzhang}</option>
+                    <option value="60">{lang:zailianggeyueneidewenzhang}</option>
+                    <option value="90">{lang:zaisangeyueneidewenzhang}</option>
+                    <option value="180">{lang:zaibannianeidewenzhang}</option>
+                    <option value="360">{lang:yinianneidewenzhang}</option>
+                    <option value="0" selected>{lang:renheshijiandewenzhang}</option>
+                  </SELECT><INPUT TYPE="hidden" name="Tpl" value="[$IN.Tpl]"></td>
+   
+ </tr>    <tr> 
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value=' {lang:kaishisousuo} ' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value=" {lang:chongzhi} "></td>
+    </tr>
+</form>
+  </table>
+
+<include: file="footer.html">

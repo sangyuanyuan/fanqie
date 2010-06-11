@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>教程</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="http://cafecj.hanmail.net/css/cafe3.css" type="text/css">
+</head>
+<body bgcolor="#ED9442">
+
+<script language="JavaScript">
+
+var scrollerwidth=280;
+var scrollerheight=20;
+var scrollerbgcolor='#ED9442';
+
+var pauseTime=4000;
+
+var maemul=new Array();
+
+
+	maemul[0]='<a class="t_white" href="http://tech.163.com/2004w07/12614/2004w07_1089857248592.html" target="_new">photoshop/入门 photoshop文件的新建与打开</a>'
+	var idx = 1;
+	
+	maemul[idx++] = '<a class="t_white" href="http://tech.163.com/2004w07/12614/2004w07_1089862435838.html" target="_new">PhotoShop学习方法论简单总结</a>';
+	
+	maemul[idx++] = '<a class="t_white" href="http://tech.163.com/2004w07/12614/2004w07_1089859374598.html" target="_new">photoshop/技巧 Photoshop使用密技八招</a>';
+	
+	maemul[idx++] = '<a class="t_white" href="http://tech.163.com/2004w07/12614/2004w07_1089858237061.html" target="_new">photoshop/入门 Photoshop菜单面板的使用</a>';
+
+	maemul[idx++] = '<a class="t_white" href="http://tech.163.com/2004w07/12614/2004w07_1089856379085.html" target="_new">photoshop/入门 photoshop中图像的显示和控制</a>';
+if (maemul.length>1) {
+	i=2;
+} else {
+	i=0;
+}
+
+function move1(whichdiv){
+	tdiv=eval(whichdiv)
+	if (tdiv.style.pixelLeft>0 && tdiv.style.pixelLeft<=5){
+		tdiv.style.pixelLeft=0
+		setTimeout("move1(tdiv)",pauseTime)
+		setTimeout("move2(second2)",pauseTime)
+		return
+	}
+	if (tdiv.style.pixelLeft >= tdiv.offsetWidth*-1){
+		tdiv.style.pixelLeft-=3
+		setTimeout("move1(tdiv)",15)
+	} else {
+		tdiv.style.pixelLeft=scrollerwidth
+		tdiv.innerHTML=maemul[i]
+		if (i==maemul.length-1)
+			i=0
+		else
+			i++
+	}
+}
+
+function move2(whichdiv){
+	tdiv2=eval(whichdiv)
+	if (tdiv2.style.pixelLeft>0 && tdiv2.style.pixelLeft<=5){
+		tdiv2.style.pixelLeft=0
+		setTimeout("move2(tdiv2)",pauseTime)
+		setTimeout("move1(first2)",pauseTime)
+		return
+	}
+	if (tdiv2.style.pixelLeft >= tdiv2.offsetWidth*-1){
+		tdiv2.style.pixelLeft-=3
+		setTimeout("move2(second2)",15)
+	} else {
+		tdiv2.style.pixelLeft=scrollerwidth
+		tdiv2.innerHTML=maemul[i]
+		if (i==maemul.length-1)
+			i=0
+		else
+			i++
+	}
+}
+
+function startscroll(){
+	if (document.all){
+		move1(first2)
+		second2.style.left=scrollerwidth
+	} else if (document.layers){
+		document.main.visibility='show'
+		move1(document.main.document.first)
+		document.main.document.second.left=scrollerwidth+5
+		document.main.document.second.visibility='show'
+	}
+}
+
+window.onload=startscroll
+</script>
+
+
+<script language="JavaScript">
+if (document.all){
+	scrollerwidth += 50;
+	document.writeln('<span id="main2" style="position:relative;width:'+scrollerwidth+';height:'+scrollerheight+';overflow:hiden;background-color:'+scrollerbgcolor+'">')
+	document.writeln('<div style="position:absolute;width:'+scrollerwidth+';height:'+scrollerheight+';clip:rect(0 '+scrollerwidth+' '+scrollerheight+' 0);left:0;top:2">')
+	document.writeln('<div id="first2" style="position:absolute;width:'+scrollerwidth+';left:1;top:2;">')
+	document.write(maemul[0])
+	document.writeln('</div>')
+	document.writeln('<div  border="1" id="second2" style="position:absolute;width:'+scrollerwidth+';left:0;top:2;">')
+	document.write(maemul[1])
+	document.writeln('</div>')
+	document.writeln('</div>')
+	document.writeln('</span>')
+}
+</script>
+<!-- START NNR Site Census V5.1 --><!-- COPYRIGHT 2004 Nielsen // Netratings --><script language="JavaScript" type="text/javascript"><!--	var _rsCI="cn-netease";var _rsCG="0";var _rsDT=0;var _rsDU=0; var _rsDO=0; 	var _rsX6=0; 	var _rsSI=escape(window.location);var _rsLP=location.protocol.indexOf('https')>-1?'https:':'http:';var _rsRP=escape(document.referrer);var _rsND=_rsLP+'//secure-cn.imrworldwide.com/';if (parseInt(navigator.appVersion)>=4){var _rsRD=(new Date()).getTime();var _rsSE=1;var _rsSV="";var _rsSM=0.01;_rsCL='<scr'+'ipt language="JavaScript" type="text/javascript" src="'+_rsND+'v51.js"><\/scr'+'ipt>';}else{	_rsCL='<img src="'+_rsND+'cgi-bin/m?ci='+_rsCI+'&cg='+_rsCG+'&si='+_rsSI+'&rp='+_rsRP+'">';}document.write(_rsCL);//--></script><noscript><img src="//secure-cn.imrworldwide.com/cgi-bin/m?ci=cn-netease&amp;cg=0" alt=""></noscript><!-- END NNR Site Census V5.1 --></body></html>

@@ -1,9 +1,13 @@
 @CHARSET "UTF-8";
 body {margin:0px; font-family:宋体; font-size:12px; color:#000000;}
-#ibody{width:995px; margin:0 auto; margin-top:10px;}
-#top_container{width:960px; float:left; text-align: right;}
-#top_container a{font-size:16px;color:#0000CC; font-weight: bold;}
-#left_container{width:330px;float:left;}
+#ibody{width:995px; margin:0 auto;}
+#top_container{width:960px; line-height:24px; float:left; display:inline;}
+#top_left{width:760px; height:24px;  float:left; display:inline;}
+#top_left .content{margin-right:25px; float:left; display:inline;}
+#top_left a{font-size:16px; color:#ff0000; text-decoration: none;}
+#top_right{width:120px; height:24px; text-align:center; background:url(/images/news/news_sub_button.jpg) no-repeat; float:right; display:inline;}
+#top_right a{font-size:16px; color:#ffffff;  font-weight: bold; text-decoration: none;}
+#left_container{width:330px; float:left;}
 #center_container{width:330px;float:left;}
 #right_container{width:330px; margin-left:3px; float:left;}
 .sortable{padding-bottom:30px;}

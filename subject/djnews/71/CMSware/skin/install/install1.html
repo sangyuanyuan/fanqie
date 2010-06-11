@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<title>[$version] 安装向导</title>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META NAME="Description" CONTENT="">
+</HEAD>
+
+<style type="text/css">
+<include file="installstyle.css" />
+</style>
+<script type="text/javascript" src="html/images/helptip.js"></script>
+<link type="text/css" rel="StyleSheet" href="html/images/helptip.css" />
+<script  type="text/javascript" language="javascript" src="html/title_fade.js"></script>
+<script src="html/functions.js" type="text/javascript" language="javascript"></script>
+<body bgcolor="" TOPMARGIN="0" LEFTMARGIN="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="80%" height="70" bgcolor="#2D66B5"><img src="html/images/install.gif" ></td>
+    <td><table width="100%" height="70" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td bgcolor="#2E68B8">&nbsp;</td>
+          <td bgcolor="#4D86D2">&nbsp;</td>
+          <td bgcolor="#739FDB">&nbsp;</td>
+          <td bgcolor="#9ABAE4">&nbsp;</td>
+          <td bgcolor="#C6D8F0">&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="40">
+	</td>
+  </tr>
+</table>
+<table width="80%" border="0" align="center" cellpadding="8" cellspacing="0" class="fixline">
+  <tr> 
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td align="center" bgcolor="#ececec"> 
+            <table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#2E68B8">
+              <tr> 
+                <td colspan="3" bgcolor="#2E68B8"><font color="#FFFFFF">&nbsp;服务器配置信息检测：</font></td>
+              </tr>
+              <tr> 
+                <td bgcolor="#ececec" width="28%">操作系统</td>
+                [$operation]
+              </tr>
+              <tr> 
+                <td bgcolor="#ececec">Web 服务器</td>
+               [$webserver]
+              </tr>
+              <tr> 
+                <td bgcolor="#ececec">PHP 版本</td>
+                [$php]
+              </tr>
+
+
+			   <tr> 
+                <td bgcolor="#ececec">GD 模块支持&nbsp;</td>
+               [$gd]
+              </tr>
+				 <tr> 
+                <td bgcolor="#ececec">FTP 模块支持&nbsp;</td>
+               [$ftp]
+              </tr>
+              <tr> 
+                <td bgcolor="#ececec">CMS配置文件可写</td>
+			<if test="is_writeable('./config.php')">
+				<td bgcolor="#ececec">./config.php
+				<if test="!is_writeable('./setting/cms.ini.php')">
+					<BR><FONT   COLOR="#FF0000"><B>./setting/cms.ini.php</B></FONT>&nbsp;不可写
+				</if>
+				<if test="!is_writeable('./setting/crawler.ini.php')">
+					<BR><FONT   COLOR="#FF0000"><B>./setting/crawler.ini.php</B></FONT>&nbsp;不可写
+				</if>
+			
+				
+				</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">./config.php</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+
+			  </tr>
+              <tr> 
+                <td bgcolor="#ececec">CMS默认模板目录可写</td>
+			<if test="dir_writeable('./templates')">
+				<td bgcolor="#ececec">./templates</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">./templates</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+
+			  </tr>
+              <tr bgcolor="#ececec"> 
+                <td>默认数据备份目录可写</td>
+			<if test="dir_writeable('./backup')">
+				<td bgcolor="#ececec">./backup</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">./backup</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+              </tr>
+              <tr bgcolor="#ececec"> 
+                <td>默认图片资源保存目录可写</td>
+			<if test="dir_writeable('./resource')">
+				<td bgcolor="#ececec">./resource</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">./resource</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+              </tr>  
+			  
+			  <tr bgcolor="#ececec"> 
+                <td>CMS系统临时数据目录可写</td>
+			<if test="dir_writeable('./sysdata')">
+				<td bgcolor="#ececec">
+				
+				./sysdata
+				<if test="!dir_writeable('./sysdata/templates_c')">
+					<BR><FONT   COLOR="#FF0000"><B>./sysdata/templates_c</B></FONT>&nbsp;不可写
+				</if>
+				<if test="!dir_writeable('./sysdata/sysinfo')">
+					<BR><FONT   COLOR="#FF0000"><B>./sysdata/sysinfo</B></FONT>&nbsp;不可写
+				</if>
+				<if test="!dir_writeable('./sysdata/cache')">
+					<BR><FONT   COLOR="#FF0000"><B>./sysdata/cache</B></FONT>&nbsp;不可写
+				</if>
+				<if test="!dir_writeable('./sysdata/tmp')">
+					<BR><FONT   COLOR="#FF0000"><B>./sysdata/tmp</B></FONT>&nbsp;不可写
+				</if>
+				<if test="!dir_writeable('./sysdata/automini')">
+					<BR><FONT   COLOR="#FF0000"><B>./sysdata/automini</B></FONT>&nbsp;不可写
+				</if>
+				
+				
+				</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">./sysdata</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>              </tr>
+              <tr bgcolor="#ececec"> 
+                <td>文件上传</td>
+                [$upload]
+              </tr>
+			  <tr bgcolor="#ececec"> 
+                <td>php运行模式</td>
+               
+			<if test="is_safe_mode() && file_exists(CACHE_DIR.'.ftp')">
+				<!--<td bgcolor="#ececec"><font color=red>你的php运行在安全限制模式</font>&nbsp;&nbsp;<a id="test" class="helpLink" href="?" onclick="showHelpTip(event, '<p><B>安全限制模式</B> 并不一定和服务器php配置文件php.ini的safe_mode=on有关.<br>主要原因可能是Apache的运行User/Group和你FTP上传的文件的User/Group不符合,导致php创建的目录php本身无法具备写权限.<br>（比如Apache运行的User和Group为nobody,而你用ftp上传的文件的User/Group可能是ftpusername,就可能导致此问题.请使用chown命令将上传的php文件设置为nobody的用户和组）,如下命令:<ul><li>  chown -R nobody:nobody    &nbsp;[你的cmsware目录] </li></ul>如果你使用的是php运行环境限制比较多的虚拟主机，可能无法使用chown命令，这时候需要使用CMSware的FTP模式来运行 ,如果你的空间支持FTP模块，请按系统提示设置你的ftp帐号，即可正常使用CMSware.</p>', true); return false">解决办法</a></td>
+						<td bgcolor="#ececec"><font color=red>warning</font></td>-->
+					<td bgcolor="#ececec"><FONT  COLOR="#3300CC">FTP模式</FONT></td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>  
+			<else>
+				<td bgcolor="#ececec">正常模式</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td> 
+			</if>
+			
+			<tr bgcolor="#ececec"> 
+                <td>Publish配置文件可写</td>
+			<if test="is_writeable('../publish/config.php')">
+				<td bgcolor="#ececec">../publish/config.php</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">../publish/config.php</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+             </tr>
+			<tr bgcolor="#ececec"> 
+                <td>Publish临时目录可写</td>
+			<if test="dir_writeable('../publish/tmp')">
+				<td bgcolor="#ececec">../publish/tmp</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">../publish/tmp</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+              </tr>
+			  
+			  <tr bgcolor="#ececec"> 
+                <td>OAS配置文件可写</td>
+			<if test="is_writeable('../oas/oas.config.php')">
+				<td bgcolor="#ececec">../oas/oas.config.php</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">../oas/oas.config.php</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+             </tr>
+			<tr bgcolor="#ececec"> 
+                <td>OAS临时目录可写</td>
+			<if test="dir_writeable('../oas/tmp')">
+				<td bgcolor="#ececec">../oas/tmp</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">../oas/tmp</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+              </tr>
+			  
+			<tr bgcolor="#ececec"> 
+                <td>PublishAPI配置文件可写</td>
+			<if test="is_writeable('../publishapi/config.ini.php')">
+				<td bgcolor="#ececec">../publishapi/config.ini.php</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">../publishapi/config.ini.php</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+             </tr>
+
+		<if test="file_exists('../cwps')">
+			<tr bgcolor="#ececec"> 
+                <td>CWPS配置文件可写</td>
+			<if test="is_writeable('../cwps/config.php')">
+				<td bgcolor="#ececec">../cwps/config.php</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">../cwps/config.php</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+             </tr>
+			<tr bgcolor="#ececec"> 
+                <td>CWPS临时目录可写</td>
+			<if test="is_writeable('../cwps/tmp')">
+				<td bgcolor="#ececec">../cwps/tmp</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">../cwps/tmp</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+             </tr>
+			<tr bgcolor="#ececec"> 
+                <td>CWPS缓存模板目录可写</td>
+			<if test="is_writeable('../cwps/tmp/templates_c')">
+				<td bgcolor="#ececec">../cwps/tmp/templates_c</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">../cwps/tmp/templates_c</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+             </tr>
+			<tr bgcolor="#ececec"> 
+                <td>CWPS缓存数据目录可写</td>
+			<if test="is_writeable('../cwps/tmp/cache')">
+				<td bgcolor="#ececec">../cwps/tmp/cache</td>
+						<td bgcolor="#ececec"><FONT size=1 COLOR=#009900>√</FONT></td>
+			<else>
+				<td bgcolor="#ececec">../cwps/tmp/cache</td>
+						<td bgcolor="#ececec"><FONT  COLOR=#FF0000>×</FONT></td>
+			</if>
+             </tr>
+		</if>
+
+			 </tr>
+            </table>
+           </td>
+        </tr>
+      </table>
+ 
+	  </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td height="20">&nbsp;</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <form action="install.php" method="post">
+    <td align="center"  ><input name="step" type="hidden" id="step" value="installtype"> 
+        <input name="Submit2" type="button" class="subbutton" value="上一步" onClick="javascript:history.go(-1);">
+      &nbsp;&nbsp;&nbsp;&nbsp; 
+      <input name="Submit" type="submit" class="subbutton" value="下一步" >
+    </td>
+	 </form>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="StyleSheet" href="../html/style.css" />
+<link rel="stylesheet" href="../html/calendar.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]">
+</head>
+<style type=text/css>
+<!--
+.A	{HEIGHT:20px;BORDER:1px solid #000000;TEXT-DECORATION:none;}
+.line_height {line-height: 25px;}
+//-->
+</style>
+
+<script src="ui.php?sId=[$sId]&o=functions.js" type="text/javascript" language="javascript"></script>
+<SCRIPT language=JavaScript>
+var NodeID = '<?=$IN[NodeID]?>';
+var sId = '<?=$IN['sId']?>';
+var IndexID = '<?=$IN[IndexID]?>';
+var o = '<?=$IN[o]?>';
+
+function mhHover(tbl, idx, cls)
+{
+	var t, d;
+	if (document.getElementById)
+		t = document.getElementById(tbl);
+	else
+		t = document.all(tbl);
+	if (t == null) return;
+	if (t.getElementsByTagName)
+		d = t.getElementsByTagName("TD");
+	else
+		d = t.all.tags("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}
+
+function doing(action)
+{
+	switch(action) {
+		case 'new':
+			var leftPos = (screen.availWidth-770) / 2;
+			var topPos = (screen.availHeight-660) / 2 ;
+			imageWin = window.open("cms_wizard.php?sId=[$sId]&NodeID=[$NodeID]&o=edit"  ,'','width=680,height=460,scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+			break;
+		case 'save':
+			if(!confirm("{lang::global:confirm_save}")) return false;
+			<if test="!$include_cms_tag">
+			setMode(false);
+			setMode(true);
+			</if>
+			document.FM.submit();
+			break;
+		
+		case 'close':
+			window.close();
+			break;
+			
+		
+	}
+}
+
+function init() {
+<if test="!$include_cms_tag">
+	EditContent.document.designMode="On";
+	idEdit = EditContent
+	var sContents=document.all.SaveContent.value
+	idEdit.document.open()
+	idEdit.document.write(sHeader+sContents)
+	idEdit.document.close()
+	idEdit.focus();
+</if>
+}
+</script>
+
+
+<body bgcolor="threedface" topmargin="0" leftmargin="0" STYLE="border: 1px buttonhighlight;" onload="init();" >
+
+<div id="msviLocalToolbar">
+  <table cellpadding="0" cellspacing="2"   height="19" border="0">
+    <tr> 
+      <td class="lt0" height="30" nowrap="nowrap"  onmouseover="mhHover('msviLocalToolbar', 0, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 0, 'lt0')" onclick="doing('new')">{lang:new_cms}</td>
+      <td><span class="ltsep">|</span></td>
+      <td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 2, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 2, 'lt0')" onclick="doing('save')">{lang::global:save}</td>
+       <td><span class="ltsep">|</span></td>
+         <!-- <td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 4, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 4, 'lt0')" onclick="doing('show_colorcode')">{lang:show_colorcode}</td>
+       <td><span class="ltsep">|</span></td>-->
+      <td class="lt0" nowrap="nowrap" onmouseover="mhHover('msviLocalToolbar', 4, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 4, 'lt0')" onclick="doing('close')">{lang::global:close}</td>
+
+      
+    </tr>
+  </table>
+</div>
+  <table cellpadding="0" cellspacing="2"   height="19" border="0">
+ <FORM METHOD="POST" ACTION='[$base_url]o=edit_submit&id=[$id]&NodeID=[$NodeID]' name="FM">
+ <tr><td>
+  
+ 
+
+<if test="$include_cms_tag">
+<textarea name="SaveContent" id="SaveContent"    class='button' id='Content' style='height:420;width:680px;overflow:auto;background-color:#FFFFFF;'>
+[$block_data]
+			</textarea>   
+<else>
+<script src="editor/js/edit_source.js"></script>
+
+<script src="editor/js/html.js"></script>
+<Iframe name=EditContent style="width:680px;height:380; " ></Iframe>
+<textarea name="SaveContent" id="SaveContent" class='button' style='display:none;height:380;width:680px;overflow:auto;background-color:#FFFFFF;'>
+[$block_data]
+			</textarea> 
+ 
+ 
+</if>
+
+ </td></tr>
+ </FORM>
+</table>
+
+

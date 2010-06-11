@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<CMS action="CONTENT" return="var" IndexID="{$Custom2}" />
+<title>话题回复 - [$var.Title] - [$SITE_NAME]</title>
+<link href="[$SKIN_URL]huati/css/style.css" rel="stylesheet" type="text/css" />
+<!--#CW#模板资源路径[$SKIN_URL]可在CMSWARE后台-系统管理-模板变量设置中设置#CW#-->
+<link href="[$SKIN_URL]common/css/style.css" rel="stylesheet" type="text/css" />
+<script language="jscript" src="[$SKIN_URL]huati/js/js.js"></script>
+</head>
+<body>
+<include file="../common/header.html" />
+<div class="content">
+	<div class="left">
+        <!---左边样式1-->
+		<div class="topside01">
+			<div class="topside01_l"></div>
+			<div class="topside01_c"></div>
+			<div class="topside01_r"></div>
+		</div>
+		<div class="center01" id="newsfocus">
+
+			<div class="focus"><a href="[$var.URL]">[$var.Title]</a></div><div class="morefocuslink">[<a href="#1">发布回复</a>]</div>
+          	<div class="sonfocus">
+            <CMS action="SQL" return="CommentList" Num="page-20" Query="SELECT * FROM `cmsware_plugin_base_comment` WHERE `IndexID` = {$Custom2}" />
+            <op exp="$CommentList = array_reverse($CommentList)" />
+            <loop name="CommentList" var="var" key="key">
+            <div class="com">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="10%" rowspan="3" align="center" valign="middle"><img src="[$SKIN_URL]huati/img/Light_Blog_icons_004.png" height="45" width="45" /></td>
+                    <td width="3%"><img src="[$SKIN_URL]huati/img/cm_Star0.gif" /></td>
+                    <td width="87%"><div class="com_2">作者: <span class="au">[$var.Author]</span></div></td>
+                </tr>
+                <tr>
+                    <td height="31" colspan="2"><div class="com_3">[@ubbcode($var.Comment,1,0,1)]</div></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><div class="com_4">IP:[$var.Ip] | 发布时间 [@date('y-m-d h:m:s',$var.PublishDate)] | <a href="#1">发布回复</a></div></td>
+                </tr>
+            </table>	
+            </div>
+            </loop>
+            <div class="com" style="text-align:center;">页次：<font color=red><b>[$PageInfo.CurrentPage]</b></font>/<B>[$PageInfo.TotalPage]</B> 每页<B>20</B> 共<B>[$PageInfo.TotalNum]</B> 分页：[@list_page( $PageInfo.TotalPage, $PageInfo.CurrentPage, $PageInfo.URL)]</div>
+            <if test="isset($UserInfo.UserName)">
+			<div class="com">
+			<form action="[$PUBLISH_URL]comment_v.php?o=post&nodeid=[$Custom1]&IndexID=[$Custom2]" method="post" style="margin:0;">
+            <input type="hidden" name="referer" value="[$PUBLISH_URL]index_v.php?nodeid=59&page=0&Custom2=[$Custom2]" />
+            <table width="100%">
+                <tr>
+            		<td width="11%" align="right">作者：</td>
+               	  	<td width="89%">&nbsp;[$UserInfo.UserName]</td>
+           	  	</tr>
+                <tr>
+            		<td width="11%" align="right">验证码：</td>
+               	  	<td width="89%"><input type="text" name="validCode" size="10" maxlength="4" />&nbsp;&nbsp;<img src="[$PUBLISH_URL]validCode.php" /></td>
+           	  	</tr>
+                <tr>
+            		<td width="11%" align="right">内容： </td>
+                  	<td width="89%"><a name="1"></a><textarea style="display:none;" name="content" id="content"></textarea><iframe ID="Editor" name="Editor" src="[$PUBLISH_URL]ubb/edit.htm?id=content" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" style="height:320px;width:100%"></iframe></td>
+           	  	</tr>
+                <tr>
+            		<td colspan="2" align="center"><label><input type="submit" value="提&nbsp;交" /></label>&nbsp;&nbsp;<label><input type="reset" value="重&nbsp;置" /></label></td>
+               	</tr>
+            </table>
+            </form>
+			</div>
+            <else>
+            <a name="1"></a>
+            <h3>请<a href="[$OAS_URL]login.php?forward=[$SelfURL]" style="color:#FF0000">登录</a>后再发表回复！</h3>
+            </if>
+  	  	  	</div>
+        </div>
+		<div class="bottomside01">
+			<div class="bottomside01_l">&nbsp;</div>
+			<div class="bottomside01_c">&nbsp;</div>
+			<div class="bottomside01_r">&nbsp;</div>
+		</div>
+	</div>
+
+	<!--右边列开始-->
+	<div class="right">		
+		<!--右边样式2-->
+        <div class="topside05">
+			<div class="topside05_l">&nbsp;</div>
+			<div class="topside05_c">&nbsp;</div>
+			<div class="topside05_r">&nbsp;</div>
+		</div>
+		<div class="center05">
+        	<div class="photo_fous">热门话题</div>
+			<CMS action="LIST" return="List" NodeID="59" Num="10" OrderBy="Hits_Total" />
+            <loop name="List" var="var" key="key">
+            <a href="[$var.URL]">[@CsubStr($var.Title,0,12,'')]</a><span class="photo_hot"><font class="hot">[$var.Hits_Total]</font></span><br />
+            </loop>
+		</div>
+		<div class="bottomside05">
+			<div class="bottomside05_l">&nbsp;</div>
+			<div class="bottomside05_c">&nbsp;</div>
+			<div class="bottomside05_r">&nbsp;</div>
+		</div>
+        
+        <div class="topside04">
+			<div class="topside04_l">&nbsp;</div>
+			<div class="topside04_c">&nbsp;</div>
+			<div class="topside04_r">&nbsp;</div>
+		</div>
+		<div class="center04">
+        	<div class="photo_fous">回复最多</div>
+			<CMS action="LIST" return="List" NodeID="59" Num="10" OrderBy="CommentNum" />
+            <loop name="List" var="var" key="key">
+            <a href="[$var.URL]">[@CsubStr($var.Title,0,12,'')]</a><span class="photo_hot"><font class="hot">[$var.CommentNum]</font></span><br />
+            </loop>
+		</div>
+		<div class="bottomside04">
+			<div class="bottomside04_l">&nbsp;</div>
+			<div class="bottomside04_c">&nbsp;</div>
+			<div class="bottomside04_r">&nbsp;</div>
+		</div>
+	</div>
+</div>
+<include file="../common/footer.html" />
+</body>
+</html>

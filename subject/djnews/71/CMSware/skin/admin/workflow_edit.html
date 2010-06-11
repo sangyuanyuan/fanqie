@@ -1,0 +1,24 @@
+<include: file="header.html">
+   
+  <table border="0" cellspacing="1" cellpadding="4" width="95%"  align=center class="table_border">
+<form name='clientform' id=clientform method='post' action='[$base_url]o=edit_submit&wID=[$Info.wID]' >
+    <tr> 
+      <td colspan="2" class="table_header">{lang:topic}</td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:name}:</td>
+      <td class="table_td2"><input name='Name' type='text' class='flat'   tabindex='8'    size='25' value="[$Info.Name]"></td>
+    </tr>
+    <tr> 
+      <td class="table_td1">{lang:intro}:</td>
+      <td class="table_td2"><TEXTAREA NAME="Intro" ROWS="10" COLS="50">[$Info.Intro]</TEXTAREA></td>
+    </tr>
+  
+
+      <td colspan="2" class="table_td2" align=center><input type='submit' name='submit' value='{lang::global:submit_value}' tabindex='13'> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" name="Submit" value="{lang::global:reset_value}"></td>
+    </tr>
+</form>
+  </table>
+
+<include: file="footer.html">

@@ -1,0 +1,123 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>[$version] 安装向导</title>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW">
+<META NAME="Description" CONTENT="">
+</HEAD>
+<style type="text/css">
+<include: file="installstyle.css">
+</style>
+
+<script type="text/javascript" language="javascript">
+function check(){
+	if(document.admin.password.value == ''){	
+		
+			alert("管理员密码不能为空");
+			document.admin.password.focus();
+			return false;
+	} else if(document.admin.password.value!=document.admin.password2.value){	
+		
+			alert("你两次输入的管理员密码不符,请重新输入");
+			return false;
+	}else {
+		return true;
+	}
+	
+}
+
+
+
+</script>
+
+<script  type="text/javascript" language="javascript" src="html/title_fade.js"></script>
+<script src="html/functions.js" type="text/javascript" language="javascript"></script>
+
+
+
+ 
+ 
+
+
+
+<body bgcolor="" TOPMARGIN="0" LEFTMARGIN="0"   >
+ 
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="80%" height="70" bgcolor="#2D66B5"><img src="html/images/install.gif" ></td>
+    <td><table width="100%" height="70" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td bgcolor="#2E68B8">&nbsp;</td>
+          <td bgcolor="#4D86D2">&nbsp;</td>
+          <td bgcolor="#739FDB">&nbsp;</td>
+          <td bgcolor="#9ABAE4">&nbsp;</td>
+          <td bgcolor="#C6D8F0">&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="20">&nbsp;</td>
+  </tr>
+</table>
+<form action="install.php" method="post" name="admin">
+  <table width="90%" border="0" align="center" cellpadding="8" cellspacing="0" class="fixline">
+    <tr> 
+      <td align="center">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>[$output]</td>
+          </tr>
+        </table>
+        <hr align="center" size="1">
+        <table width="400" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td align="center" bgcolor="#ececec"> <table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#2E68B8">
+                <tr> 
+                  <td colspan="2" bgcolor="#2E68B8"><font color="#FFFFFF">管理员账号设置：</font></td>
+                </tr>
+                <tr> 
+                  <td bgcolor="#ececec">管理员用户名:</td>
+                  <td bgcolor="#ececec"><input name="root" type="text" class="button" id="root" value="root"> 
+                  </td>
+                </tr>
+                <tr> 
+                  <td bgcolor="#ececec">管理员密码:</td>
+                  <td bgcolor="#ececec"><input name="password" type="password" class="button" id="password"></td>
+                </tr>
+                <tr> 
+                  <td bgcolor="#ececec">重复密码:</td>
+                  <td bgcolor="#ececec"><input name="password2" type="password" class="button" id="password2"> 
+                  </td>
+                </tr>
+				 <tr> 
+                  <td bgcolor="#ececec">Email:</td>
+                  <td bgcolor="#ececec"><input name="email" type="text" class="button" value="domain@site.com"> 
+                  </td>
+                </tr>
+              </table></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td height="20">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td align="center"  ><input name="step" type="hidden" id="step" value="4"> <input name="installType" type="hidden"   value="[$installType]">
+        <input name="Submit2" type="button" class="subbutton" value="上一步" onClick="javascript:history.go(-1);"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; <input name="Submit" type="submit" class="subbutton" value="下一步" onClick="return check();"> 
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

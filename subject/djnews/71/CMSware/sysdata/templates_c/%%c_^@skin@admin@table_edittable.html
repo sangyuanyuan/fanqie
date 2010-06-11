@@ -1,0 +1,170 @@
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@header.html");?>
+
+
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center class="table_border">
+<form action='<?php echo $this->_tpl_vars["base_url"];?>o=edittable_submit&TableID=<?php echo $GLOBALS['IN']['TableID'];?>' method='post' enctype="multipart/form-data" name='clientform' id=clientform >
+    <tr> 
+      <td colspan="13" class="table_header"><?php echo $_LANG_SKIN['topic'];?> </td>
+    </tr>
+	 <tr > 
+      <td class="table_td1"  ><?php echo $_LANG_SKIN['content_model_name'];?></td>
+      <td class="table_td2" colspan="12"><input name="tName" type="text"  value="<?php echo $this->_tpl_vars["tableInfo"]["Name"];?>" id="<?php echo $this->_tpl_vars["key"];?>" >
+  </td>
+    </tr>
+	 
+ 
+    <tr align="center"> 
+      <td class="table_header"><?php echo $_LANG_SKIN['field_title'];?></td>
+     <td class="table_header"><?php echo $_LANG_SKIN['field_name'];?></td>
+      <td class="table_header"><?php echo $_LANG_SKIN['field_type'];?></td>
+     <!-- <td class="table_header"><?php echo $_LANG_SKIN['field_input'];?></td>-->
+          <td class="table_header"><?php echo $_LANG_SKIN['is_title_field'];?></td>
+        <td class="table_header"><?php echo $_LANG_SKIN['is_main_field'];?></td>
+       <td class="table_header"><?php echo $_LANG_SKIN['field_list_display'];?></td>
+       <td class="table_header"><?php echo $_LANG_SKIN['field_searchable'];?></td>
+        <td class="table_header"><?php echo $_LANG_SKIN['field_EnableContribution'];?></td>
+        <td class="table_header"><?php echo $_LANG_SKIN['field_EnableCollection'];?></td>
+        <td class="table_header"><?php echo $_LANG_SKIN['field_EnablePublish'];?></td>
+      <td class="table_header" colspan="3"><?php echo $_LANG_SKIN_GLOBAL['execute_op'];?></td>
+    </tr>
+
+	<?php if(!empty($this->_tpl_vars['tableFieldsInfo'] )): 
+ foreach ($this->_tpl_vars['tableFieldsInfo'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+	 <tr > 
+      <td class="table_td2"><?php echo $this->_tpl_vars["var"]["FieldTitle"];?></td>
+      <td class="table_td2"><?php echo $this->_tpl_vars["var"]["FieldName"];?></td>
+       <td class="table_td2"><?php echo $this->_tpl_vars["var"]["FieldType"];?>
+	  <?php if($this->_tpl_vars["var"]["FieldSize"] != ''): ?>
+	  (<?php echo $this->_tpl_vars["var"]["FieldSize"];?>)
+	  <?php endif;?>
+	  </td>
+      <!-- <td class="table_td2"><?php echo $this->_tpl_vars["var"]["FieldInput"];?></td>-->
+
+ <td class="table_td2" align=center>
+	  <?php if($this->_tpl_vars["var"]["IsTitleField"] == '1'): ?>
+	 
+	  
+	  <FONT size=1 COLOR=#009900><?php echo $_LANG_SKIN_GLOBAL['icon_right'];?></FONT>
+	  <?php else: ?>
+	 
+	   <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=fieldSetTitle&TableID=<?php echo $GLOBALS['IN']['TableID'];?>&ContentFieldID=<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>">
+	  <FONT  COLOR=#FF0000><?php echo $_LANG_SKIN_GLOBAL['icon_error'];?></FONT></a>
+	  <?php endif;?>
+
+	</td>
+
+
+	   <td class="table_td2" align=center>
+	  <?php if($this->_tpl_vars["var"]["IsMainField"] == '1'): ?>
+	 
+	  
+	  <FONT size=1 COLOR=#009900><?php echo $_LANG_SKIN_GLOBAL['icon_right'];?></FONT>
+	  <?php else: ?>
+	 
+	   <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=field_setmain&TableID=<?php echo $GLOBALS['IN']['TableID'];?>&ContentFieldID=<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>">
+	  <FONT  COLOR=#FF0000><?php echo $_LANG_SKIN_GLOBAL['icon_error'];?></FONT></a>
+	  <?php endif;?>
+
+	</td>
+      <td class="table_td2" align=center width=60>
+	  <?php if($this->_tpl_vars["var"]["FieldListDisplay"] == '1'): ?>
+ <INPUT TYPE="checkbox" NAME="EnableFieldListDisplay[]" value="<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>" checked>
+ <?php else: ?>
+ <INPUT TYPE="checkbox" NAME="EnableFieldListDisplay[]" value="<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>"  >
+	  <?php endif;?>
+	  </td>
+
+	   <td class="table_td2" align=center>
+	  <?php if($this->_tpl_vars["var"]["FieldSearchable"] == '1'): ?>
+	 
+	  
+ <INPUT TYPE="checkbox" NAME="EnableFieldSearch[]" value="<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>" checked>
+ <?php else: ?>
+ <INPUT TYPE="checkbox" NAME="EnableFieldSearch[]" value="<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>"  >
+	  <?php endif;?>
+
+	</td>
+	 
+	   <td class="table_td2" align=center>
+<?php if($this->_tpl_vars["var"]["EnableContribution"] == 1): ?>
+ <INPUT TYPE="checkbox" NAME="EnableContribution[]" value="<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>" checked>
+ <?php else: ?>
+ <INPUT TYPE="checkbox" NAME="EnableContribution[]" value="<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>"  >
+ <?php endif;?>
+	</td>
+ <td class="table_td2" align=center>
+	  
+<?php if($this->_tpl_vars["var"]["EnableCollection"] == 1): ?>
+ <INPUT TYPE="checkbox" NAME="EnableCollection[]" value="<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>" checked>
+ <?php else: ?>
+ <INPUT TYPE="checkbox" NAME="EnableCollection[]" value="<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>"  >
+ <?php endif;?>
+	</td> <td class="table_td2" align=center>
+	  
+<?php if($this->_tpl_vars["var"]["EnablePublish"] == 1): ?>
+ <INPUT TYPE="checkbox" NAME="EnablePublish[]" value="<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>" checked>
+ <?php else: ?>
+ <INPUT TYPE="checkbox" NAME="EnablePublish[]" value="<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>"  >
+ <?php endif;?>
+ </td>	
+
+      <td class="table_td2" width=50 align="center"><A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=editfield&TableID=<?php echo $GLOBALS['IN']['TableID'];?>&ContentFieldID=<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>"><?php echo $_LANG_SKIN_GLOBAL['edit'];?></A></td>
+      <td class="table_td2" width=50 align="center"><A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=delfield&TableID=<?php echo $GLOBALS['IN']['TableID'];?>&ContentFieldID=<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>" onclick="return confirm('<?php echo $_LANG_SKIN_GLOBAL['confirm_del'];?>')"><?php echo $_LANG_SKIN_GLOBAL['del'];?></A></td>
+  <!--<td class="table_td2" width=50 align="center">
+  <?php if((( $this->_tpl_vars["var"]["FieldType"] == 'longtext' ) || ( $this->_tpl_vars["var"]["FieldType"] == 'mediumtext')  || ( $this->_tpl_vars["var"]["FieldType"] == 'text' )) && ( $this->_tpl_vars["var"]["IsIndex"] == 1)): ?>
+  <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=delFieldIndex&TableID=<?php echo $GLOBALS['IN']['TableID'];?>&ContentFieldID=<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>" ><?php echo $_LANG_SKIN['drop_fulltext'];?> </A>
+  <?php elseif($this->_tpl_vars["var"]["IsIndex"] == 1): ?>
+   <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=delFieldIndex&TableID=<?php echo $GLOBALS['IN']['TableID'];?>&ContentFieldID=<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>" ><?php echo $_LANG_SKIN['drop_index'];?></A>
+  <?php elseif(( $this->_tpl_vars["var"]["FieldType"] == 'longtext' ) || ( $this->_tpl_vars["var"]["FieldType"] == 'mediumtext')  || ( $this->_tpl_vars["var"]["FieldType"] == 'text' ) ): ?>
+   <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=indexField&TableID=<?php echo $GLOBALS['IN']['TableID'];?>&ContentFieldID=<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>" ><?php echo $_LANG_SKIN['fulltext'];?></A>
+  <?php else: ?>
+   <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=indexField&TableID=<?php echo $GLOBALS['IN']['TableID'];?>&ContentFieldID=<?php echo $this->_tpl_vars["var"]["ContentFieldID"];?>" ><?php echo $_LANG_SKIN['index'];?></A>
+  <?php endif;?>
+ </td>	-->
+</td>
+   </tr>
+
+	<?php endforeach; endif;?>
+  </table>
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center >
+ <tr > <td> <input type='submit' name='submit' value=' <?php echo $_LANG_SKIN_GLOBAL['modify'];?> ' tabindex='13'  > 
+  
+ </td><td align=right><input type="button" name="Submit" value="<?php echo $_LANG_SKIN['new_field'];?>" onclick="doing('newfield')">
+ 
+   <input type="button" name="Submit1" value="<?php echo $_LANG_SKIN['sort_field'];?>" onclick="doing('orderfield')">
+ </td></tr>
+</form>
+  </table>
+
+<script language='JavaScript'>
+function check(form,id) 
+{
+	eval("var ischecked = " + form + "." + id + ".checked");
+
+	if(ischecked) {
+		eval( form + "." + id + "_hidden.value = '1'");
+	} else {
+		eval( form + "." + id + "_hidden.value = '0'");
+
+	}
+
+}
+function doing(action)
+{
+	switch(action) {
+		case 'orderfield':
+			var arr = showMeDialog("<?php echo $this->_tpl_vars["base_url"];?>o=orderfield&TableID=<?php echo $GLOBALS['IN']['TableID'];?>" ,"color","dialogWidth:250px;dialogHeight:266px;help:0;status:0;scroll:no");
+			if(arr != '') {
+				window.location = window.location;
+			
+			}
+			break;
+		case 'newfield':
+			window.location='<?php echo $this->_tpl_vars["base_url"];?>o=addfield&TableID=<?php echo $GLOBALS['IN']['TableID'];?>'
+			break;
+
+	}
+}
+</script> 		
+</BODY>
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@footer.html");?>

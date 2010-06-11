@@ -1,0 +1,196 @@
+<include: file="header_init.html">
+<style>
+ 
+div.imagespacer {
+	width: 360;
+	height: 206;
+	text-align: center;			
+	float: left;
+	font: 10pt verdana;
+	margin: 5px;
+	overflow: hidden;
+}
+div.imageholder {
+	margin: 0px;
+	padding: 0px;
+	border: 1 solid #CCCCCC;
+ 	width: 350;
+	height: 150;
+}
+
+div.titleholder {
+	font-family: ms sans serif, arial;
+	font-size: 8pt;
+	width: 360;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;			
+}		
+
+</style>
+<script language=javascript src="../html/mouse_up.js"></script>
+
+<script language="javascript">
+<!--
+function CheckAll(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.name !='copy')       e.checked = form.chkall.checked; 
+   }
+  }
+
+//-->
+
+function viewQuoteContents(ResourceID)
+{
+	var leftPos = (screen.availWidth-800) / 2
+	var topPos = (screen.availHeight-600) / 2 
+	window.open('[$base_url]o=viewQuoteContents&ResourceID='+ ResourceID  ,'','width=500,height=300,scrollbars=yes,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+}
+
+
+function going(form, o)
+{
+	//document.documentlist.referer.value = document.location;
+
+	with(form) {
+		switch(o) {
+			case 'del':
+				if(confirm("{lang:confirm_multi_del}")) {
+					action = action + '&o=del&multi=1';
+					
+					submit();
+				}
+				break;
+		}
+	}
+}
+
+lastDiv = null;
+function divClick(theDiv,filename) {
+	if (lastDiv) {
+		lastDiv.style.border = "1 solid #CCCCCC";
+	}
+	lastDiv = theDiv;
+	theDiv.style.border = "2 solid #316AC5";
+	
+	document.getElementById("FileToDelete").value = filename;
+
+}
+function gotoFolder(rootfolder,newfolder) {
+	window.navigate("ftb.imagegallery.aspx?frame=1&rif=" + rootfolder + "&cif=" + newfolder);
+}		
+function returnImage(imagename,width,height) {
+	var arr = new Array();
+	arr["filename"] = imagename;  
+	arr["width"] = width;  
+	arr["height"] = height;			 
+	window.parent.returnValue = arr;
+	window.parent.close();	
+}	
+function openwin(targeturl) {
+		
+		window.open(targeturl, '', 'width=300,height=170,resizable=1,scrollbars=yes');
+		//showMeDialog(targeturl,"color1","dialogWidth:400pt;dialogHeight:300pt;help:0;status:0;resizable:1");
+			
+}
+</script>
+<BODY  topmargin=0 leftmargin=0 >
+
+<script>
+function loadBarDisplay()
+{
+  var x,y;
+   x = document.body.clientWidth;
+   y = document.body.clientHeight;
+
+		var top = (y/2) - 50;
+		var left = (x/2) - 150;
+		if( left<=0 ) left = 10;
+
+	
+	loader.style.left = left + "px"
+	loader.style.top = top + "px";
+
+	loader.style.display='';
+	
+	return;
+
+}
+
+function loadBarUnDisplay()
+{
+	loader.style.display='none';
+
+}
+</script>
+
+<DIV id=loader style="DISPLAY: none; Z-INDEX: 2; LEFT: 0px; POSITION: absolute; TOP: 0px">
+<TABLE class=loader style="FILTER: Alpha(opacity=75)" cellSpacing=1 cellPadding=5 bgColor=#bbbbb summary="Loader Layout" border=0>
+  <TBODY><TR><TD align=left bgColor=#ffffff>
+      <P><IMG style="MARGIN: 3px" height=32   src="../html/images/clocks.gif" width=32 align=left><STRONG>{lang::global:uploading}</STRONG><BR>
+	  <SPAN style="FONT-SIZE: 8pt">{lang::global:please_wait_uploading}</SPAN></P></TD></TR></TBODY></TABLE>
+</DIV>
+<table width=100% height=100% cellpadding=0 cellspacing=0 border=0>
+	<form name="form" method="post"   action="[$base_url]"  enctype="multipart/form-data">
+<tr><td valign="top"><input name="FileToDelete" id="FileToDelete" type="hidden" />
+	<input name="RootImagesFolder" id="RootImagesFolder" type="hidden" value="images" />
+	<input name="CurrentImagesFolder" id="CurrentImagesFolder" type="hidden" value="images" />
+		<loop name="List" key="key" var="var">	 
+		<if test="$haveLinks == 0 && $var.IndexID==''">
+		<elseif test="$haveLinks == 1 && $var.IndexID!=''">
+		<elseif test="$haveLinks == 2 ">
+		<else>
+		<?php continue;?>
+		</if>
+		<div class="imagespacer" >
+			<op exp="$size = ceil($var.Size/1024)" />
+			<div class="imageholder" unselectable="on"  ondblclick="openwin('[$SYS_ENV.ResourcePath]/[$var.Path]')"  onclick="divClick(this);if(document.form.p_[$var.ResourceID].checked == true) {document.form.p_[$var.ResourceID].checked = false;} else {document.form.p_[$var.ResourceID].checked = true;}"  >
+			 
+
+<object width=350 height=150 classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0"><param name="movie" value="[$SYS_ENV.ResourcePath]/[$var.Path]"><param name="wmode" value="opaque"><param name="quality" value="autohigh"><embed width=350 height=150 src="[$SYS_ENV.ResourcePath]/[$var.Path]" quality="autohigh" wmode="opaque" type="application/x-shockwave-flash" plugspace="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></embed></object>
+
+			</div>
+			<div class="titleHolder" title="{lang:filename}:[$var.Name]<br>{lang:filepixel}:[$var.Info]<br>{lang:filesize}:[$size]KB<br>{lang:createtime}:[@date('Y-m-d H:i', $var.ModifiedDate)]<br>{lang:creator}:[$var.CreationUser]<br>{lang:fromsrc}:[$var.Src]">
+			<if test="$var.Title == ''">
+			[$var.Name]
+			<else>
+			[$var.Title]
+			</if><BR>
+			<if test="!empty($var.IndexID)">
+			<A HREF="javascript:viewQuoteContents('[$var.ResourceID]')" title="{lang:view_quote_contents}"><img src="../html/images/icon-zone-linked.gif" border="0"  /></A>
+			<INPUT TYPE="checkbox" NAME="ResourceID[]" value="[$var.ResourceID]" id="p_[$var.ResourceID]" disabled>
+			<else>
+			 <INPUT TYPE="checkbox" NAME="ResourceID[]" value="[$var.ResourceID]" id="p_[$var.ResourceID]">
+			</if>
+			
+				
+			</div>
+		</div>	
+		</loop>  	
+</td></tr>
+<tr><td>
+<div id="msviLocalToolbar">
+<table width=100% height=30 cellpadding=0 cellspacing=0 border=0>
+<tr><td  >
+ <input type="checkbox" name="chkall" value="on" onclick="CheckAll(this.form)" id="chkall"  > 
+              <label for="chkall" >{lang::global:select_all}</label>&nbsp;&nbsp;
+			               
+			 <select name="actionMap" id="actionMap" > 
+           <option value="del">{lang::global:del}</option>
+			  </select>
+
+			  <input type="button" value="{lang::global:go}" class=button onclick="going(this.form,actionMap.options[actionMap.selectedIndex].value)"> 
+</td>
+<td>[@sprintf(#lang:record#, $recordInfo.currentPage  , $recordInfo.pageNum, $recordInfo.offset, $recordInfo.from, $recordInfo.to, $recordInfo.recordNum )][$pagelist]</td>
+</tr></table>
+
+</div>
+</td></tr>
+		
+</form>
+</table>
+
+<include file="footer.html" />
+
+

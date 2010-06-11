@@ -1,0 +1,99 @@
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@header.html");?>
+
+  <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+ <form action='<?php echo $this->_tpl_vars["base_url"];?>o=addtable_submit' method='post' enctype="multipart/form-data" name='clientform' id=clientform onSubmit='return iWPC_formCheck(this);'>
+   <tr> 
+      <td colspan="3" class="table_header"><?php echo $_LANG_SKIN['topic'];?> </td>
+    </tr>
+    <tr > 
+      <td width="10%" align="center" class="table_td1">TableID</td>
+      <td width="30%" align="center" class="table_td1"><?php echo $_LANG_SKIN['content_model'];?></td>
+      <td  align="center" class="table_td1"> <?php echo $_LANG_SKIN_GLOBAL['execute_op'];?></td>
+    </tr>
+<?php if(!empty($this->_tpl_vars['tableInfo'] )): 
+ foreach ($this->_tpl_vars['tableInfo'] as  $this->_tpl_vars['key']=>$this->_tpl_vars['var']): ?>
+    <tr > 
+       <td width="10%" class="table_td2" align=center><?php echo $this->_tpl_vars["var"]["TableID"];?></td>
+     <td width="20%" class="table_td2"><?php echo $this->_tpl_vars["var"]["Name"];?></td>
+      <td  align="center" class="table_td2"> <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=edittable&TableID=<?php echo $this->_tpl_vars["var"]["TableID"];?>"><?php echo $_LANG_SKIN_GLOBAL['edit'];?></A>
+	  <?php if($this->_tpl_vars["var"]["TableID"] == 1 || $this->_tpl_vars["var"]["TableID"] == 2 ): ?>
+	  <?php else: ?>
+	  <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=deltable&TableID=<?php echo $this->_tpl_vars["var"]["TableID"];?>" onclick="return confirm('<?php echo $_LANG_SKIN_GLOBAL['confirm_del'];?>')"><?php echo $_LANG_SKIN_GLOBAL['del'];?></a>
+	  <?php endif;?>
+	  <A HREF="<?php echo $this->_tpl_vars["base_url"];?>o=export&TableID=<?php echo $this->_tpl_vars["var"]["TableID"];?>" ><?php echo $_LANG_SKIN['export'];?></a>
+	  </td>
+    </tr>
+<?php endforeach; endif;?>
+ 
+   
+  </table>
+
+<br>
+    <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+    <tr> 
+      <td colspan="4" class="table_header"><?php echo $_LANG_SKIN['new_content_model'];?> </td>
+    </tr>
+
+
+ <tr > 
+      <td class="table_td1" width=20%><?php echo $_LANG_SKIN['model_name'];?>:</td>
+        <td class="table_td2"  >
+	 <input name="tName" type="text" id="tName">&nbsp;&nbsp;
+	 <?php echo $_LANG_SKIN['self_tableid'];?>: <input name="SelfTableID" type="text" id="SelfTableID" style="width:30px;">&nbsp;&nbsp;
+	<input type='submit' name='submit' value='<?php echo $_LANG_SKIN['create'];?>' tabindex='13'>
+  </td>
+      
+    </tr>
+
+
+ </form>
+
+  </table>
+ <form action='<?php echo $this->_tpl_vars["base_url"];?>o=import' method='post' enctype="multipart/form-data" name='importform'    >
+    <table border="0" cellspacing="1" cellpadding="4" width="90%"  align=center class="table_border">
+    <tr> 
+      <td colspan="2" class="table_header"><?php echo $_LANG_SKIN['import_content_model'];?> </td>
+    </tr>
+
+
+ <tr > 
+      <td class="table_td1" width=20%><?php echo $_LANG_SKIN['select_model_file'];?>:</td>
+      <td class="table_td2"  >
+	 <input name="uploadFile" style="width:190px;" type="file" id="uploadFile" > &nbsp;&nbsp;
+	<input type='submit' name='submit' value=' <?php echo $_LANG_SKIN['import_it'];?> ' tabindex='13'>
+ </td>
+    </tr>
+
+
+ </form>
+
+  </table>
+
+
+
+<script language='JavaScript'>
+function edit(form,id) 
+{
+	eval("var isdisabled = " + form + "." + id + ".disabled");
+
+	if(isdisabled) {
+		eval(form + "." + id + ".disabled = false");
+	} else {
+		eval(form + "." + id + ".disabled = true");
+
+	}
+
+}
+function iWPC_formCheck(form) 
+{
+	if(form.tName.value == '') {
+		alert("<?php echo $_LANG_SKIN['please_input_name'];?>");
+		form.tName.focus();
+		form.tName.style.background = '#FFFFE1';
+		return false;
+	}
+}
+					
+</script> 		
+</BODY>
+<?php include("../sysdata/templates_c/%%c_^@skin@admin@footer.html");?>

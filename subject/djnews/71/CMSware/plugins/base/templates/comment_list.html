@@ -1,0 +1,318 @@
+<include: file="header.html">
+<link rel="stylesheet" href="../html/calendar.css" type="text/css">
+<SCRIPT language=JavaScript>
+<!--
+function CheckAll(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.name !='copy' && e.name !='chkall2')       e.checked = form.chkall.checked; 
+   }
+  }
+function CheckAll2(form)  {
+  for (var i=0;i<form.elements.length;i++)    {
+    var e = form.elements[i];
+    if (e.name != 'chkall' && e.name !='copy' && e.name !='chkall2')       e.checked = form.chkall2.checked; 
+   }
+  }
+//-->
+
+
+</script>
+
+<script type="text/javascript" src="../html/calendar.js"></script>
+<script type="text/javascript">
+Calendar._DN = new Array
+("<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Sunday']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Monday']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Tuesday']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Wednesday']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Thursday']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Friday']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Saturday']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Sunday']; ?>");
+Calendar._MN = new Array
+("<?echo $_LANG_SKIN_GLOBAL["common_calender"]['January']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['February']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['March']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['April']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['May']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['June']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['July']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['August']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['September']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['October']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['November']; ?>",
+ "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['December']; ?>");
+
+Calendar._TT = {};
+Calendar._TT["TOGGLE"] = "Toggle first day of week";
+Calendar._TT["PREV_YEAR"] = "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Last_year']; ?>  ";
+Calendar._TT["PREV_MONTH"] = "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Last_month']; ?>  ";
+Calendar._TT["GO_TODAY"] = "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Today']; ?>";
+Calendar._TT["NEXT_MONTH"] = "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Next_month']; ?>  ";
+Calendar._TT["NEXT_YEAR"] = "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Next_year']; ?>  ";
+Calendar._TT["SEL_DATE"] = "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['select_date']; ?>";
+Calendar._TT["DRAG_TO_MOVE"] = "Drag to move";
+Calendar._TT["PART_TODAY"] = " <?echo $_LANG_SKIN_GLOBAL["common_calender"]['Today1']; ?>";
+Calendar._TT["MON_FIRST"] = "Display Monday first";
+Calendar._TT["SUN_FIRST"] = "Display Sunday first";
+Calendar._TT["CLOSE"] = "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['close']; ?>";
+Calendar._TT["TODAY"] = "<?echo $_LANG_SKIN_GLOBAL["common_calender"]['Today']; ?>";
+</script>
+ <script type="text/javascript">
+
+var calendar = null; // remember the calendar object so that we reuse it and
+                     // avoid creation other calendars.
+
+// code from http://www.meyerweb.com -- change the active stylesheet.
+function setActiveStyleSheet(title) {
+  var i, a, main;
+  for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {
+    if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title")) {
+      a.disabled = true;
+      if(a.getAttribute("title") == title) a.disabled = false;
+    }
+  }
+  document.getElementById("style").innerHTML = title;
+  return false;
+}
+
+// This function gets called when the end-user clicks on some date.
+function selected(cal, date) {
+  cal.sel.value = date; // just update the date in the input field.
+  if (cal.sel.id == "sel1" || cal.sel.id == "sel3" || cal.sel.id == "sel5" || cal.sel.id == "sel7")
+    // if we add this call we close the calendar on single-click.
+    // just to exemplify both cases, we are using this only for the 1st
+    // and the 3rd field, while 2nd and 4th will still require double-click.
+    cal.callCloseHandler();
+}
+
+// And this gets called when the end-user clicks on the _selected_ date,
+// or clicks on the "Close" button.  It just hides the calendar without
+// destroying it.
+function closeHandler(cal) {
+  cal.hide();                        // hide the calendar
+
+  // don't check mousedown on document anymore (used to be able to hide the
+  // calendar when someone clicks outside it, see the showCalendar function).
+  Calendar.removeEvent(document, "mousedown", checkCalendar);
+}
+
+// This gets called when the user presses a mouse button anywhere in the
+// document, if the calendar is shown.  If the click was outside the open
+// calendar this function closes it.
+function checkCalendar(ev) {
+  var el = Calendar.is_ie ? Calendar.getElement(ev) : Calendar.getTargetElement(ev);
+  for (; el != null; el = el.parentNode)
+    // FIXME: allow end-user to click some link without closing the
+    // calendar.  Good to see real-time stylesheet change :)
+    if (el == calendar.element || el.tagName == "A") break;
+  if (el == null) {
+    // calls closeHandler which should hide the calendar.
+    calendar.callCloseHandler();
+    Calendar.stopEvent(ev);
+  }
+}
+
+// This function shows the calendar under the element having the given id.
+// It takes care of catching "mousedown" signals on document and hiding the
+// calendar if the click was outside.
+function showCalendar(id, format) {
+  var el = document.getElementById(id);
+  if (calendar != null) {
+    // we already have some calendar created
+    calendar.hide();                 // so we hide it first.
+  } else {
+    // first-time call, create the calendar.
+    var cal = new Calendar(true, null, selected, closeHandler);
+    calendar = cal;                  // remember it in the global var
+    cal.setRange(1900, 2070);        // min/max year allowed.
+    cal.create();
+  }
+  calendar.setDateFormat(format);    // set the specified date format
+  calendar.parseDate(el.value);      // try to parse the text in field
+  calendar.sel = el;                 // inform it what input field we use
+  calendar.showAtElement(el);        // show the calendar below it
+
+  // catch "mousedown" on document
+  Calendar.addEvent(document, "mousedown", checkCalendar);
+  return false;
+}
+
+var MINUTE = 60 * 1000;
+var HOUR = 60 * MINUTE;
+var DAY = 24 * HOUR;
+var WEEK = 7 * DAY;
+
+// If this handler returns true then the "date" given as
+// parameter will be disabled.  In this example we enable
+// only days within a range of 10 days from the current
+// date.
+// You can use the functions date.getFullYear() -- returns the year
+// as 4 digit number, date.getMonth() -- returns the month as 0..11,
+// and date.getDate() -- returns the date of the month as 1..31, to
+// make heavy calculations here.  However, beware that this function
+// should be very fast, as it is called for each day in a month when
+// the calendar is (re)constructed.
+function isDisabled(date) {
+  var today = new Date();
+  return (Math.abs(date.getTime() - today.getTime()) / DAY) > 10;
+}
+
+function flatSelected(cal, date) {
+  var el = document.getElementById("preview");
+  el.innerHTML = date;
+}
+
+function showFlatCalendar() {
+  var parent = document.getElementById("display");
+
+  // construct a calendar giving only the "selected" handler.
+  var cal = new Calendar(true, null, flatSelected);
+
+  // We want some dates to be disabled; see function isDisabled above
+  cal.setDisabledHandler(isDisabled);
+  cal.setDateFormat("DD, M d");
+
+  // this call must be the last as it might use data initialized above; if
+  // we specify a parent, as opposite to the "showCalendar" function above,
+  // then we create a flat calendar -- not popup.  Hidden, though, but...
+  cal.create(parent);
+
+  // ... we can show it here.
+  cal.show();
+}
+</script>
+<BODY  topmargin=0 leftmargin=0 >
+ 
+  <TABLE width=95% border=0 align="center" cellPadding=2 cellSpacing=2>
+    <TBODY>
+      <TR> 
+        <TD align=middle><FONT 
+      style="FONT-SIZE: 22px;  "><B>
+	  <if test="!empty($Publish.Title)">
+	  <A  href="[$Publish.URL]" target="_blank">[$Publish.Title]</A>
+	  </if>
+	  </B></FONT>
+        </TD>
+      </TR>
+      <TR> 
+        <TD align=middle>  </TD>
+      </TR>
+    </TBODY>
+</TABLE>
+    
+<table width="95%"  border="0" align="center" cellspacing="1" class="table_border">
+ <form method="post" action="[$base_url]"  >
+ <tr> 
+    <td height="30" class="table_td1" style="padding-left:10px;"> {lang:admin}&nbsp;&nbsp;<INPUT TYPE="text" NAME="start_time"   id="start_time" onFocus="return showCalendar('start_time', 'y-mm-dd');" value="[*IN.start_time]" >&nbsp; {lang:zhi}&nbsp;
+
+	<INPUT TYPE="text" NAME="end_time"   id="end_time" onFocus="return showCalendar('end_time', 'y-mm-dd');" value="[*IN.end_time]" > &nbsp;{lang:de_log}&nbsp;&nbsp;
+	<SELECT NAME="o">
+	<option value="admin_base::commentSearchAdmin">{lang:search_LoginLog}</option>
+	<option value="admin_base::commentDel">{lang:delLoginLog}</option>
+	</SELECT>&nbsp;&nbsp;
+      <input type="submit" name="Submit3" value="{lang:execute}"></td>
+  </tr>
+</form>
+</table>
+
+  <TABLE width=95% border=0 align="center" cellPadding=2 cellSpacing=2>
+  <tr><td height=3></td></tr>
+</table>
+<table  width="95%"  border="0" align="center" cellspacing="1" class="table_border">
+  <tr> 
+<form method="post" action="[$base_url]o=admin_base::commentDel"  >
+  <td height="30" class="table_td1" style="padding-left:10px;">{lang:comment_ip} <input name="ip" type="text"  value=""   style="width:200">
+      <input type="submit" name="Submit3" value="{lang:del_comment}"></td>
+ </form>
+
+ <form method="post" action="[$base_url]o=admin_base::commentDel"  >
+<td height="30" class="table_td1" style="padding-left:10px;">{lang:comment_user} <input name="username" type="text"  value=""   style="width:200">
+      <input type="submit" name="Submit3" value="{lang:del_comment}"></td>
+</form>
+
+  </tr>
+</table>
+
+   
+<table  width="95%"  border="0" align="center" cellspacing="1" class="table_border">
+  <tr> 
+ 
+  </tr>
+</table>
+
+
+  <TABLE width=95% border=0 align="center" cellPadding=2 cellSpacing=2>
+  <tr><td height=3></td></tr>
+</table>
+
+<table  width="95%"  border="0" align="center" cellspacing="1" class="table_border">
+<form method="post" action="[$base_url]o=admin_base::commentSearchAdmin"  >
+  <tr> 
+    <td height="30" class="table_td1" style="padding-left:10px;"> <input name="Keywords" type="text" id="Keywords" value="{lang:please_input_keywords}" onfocus="this.value=''"  style="width:200">
+      <input type="submit" name="Submit3" value="{lang:search}"></td>
+  </tr>
+</form>
+</table>
+
+<form method="post" action="[$base_url]" name="documentlist" >
+
+  <table width="95%"  border="0" align="center" cellspacing="1" class="table_border">
+  <tr class="table_header" ><td height=25>&nbsp;{lang:comment_list}</td></tr>
+    <tr>
+      <td height="30" class="table_td1" style="padding-left:10px;"> <input type="checkbox" name="chkall2" value="on" onclick="CheckAll2(this.form)" id="chkall2"  >
+        <label for="chkall2" >{lang::global:select_all}</label>
+        &nbsp;&nbsp;
+		<if test="$IN.viewmode=='approved'"><b></if>
+		<A HREF="[$base_url]o=admin_base::commentSearchAdmin&viewmode=approved"><FONT  COLOR="#3300CC">[<U>{lang:view_approved}</U>]</FONT></A>&nbsp;&nbsp;
+		<if test="$IN.viewmode=='approved'"></b></if>
+
+		
+		<if test="$IN.viewmode=='unapproved'"><b></if>
+		<A HREF="[$base_url]o=admin_base::commentSearchAdmin&viewmode=unapproved"><FONT  COLOR="#3300CC">[<U>{lang:view_unapproved}</U>]</FONT></A>&nbsp;&nbsp;
+		<if test="$IN.viewmode=='unapproved'"></b></if>
+
+		<if test="$IN.viewmode=='all' || $IN.viewmode==''"><b></if>
+		<A HREF="[$base_url]o=admin_base::commentSearchAdmin&viewmode=all"><FONT  COLOR="#3300CC">[<U>{lang:view_all}</U>]</FONT></A>&nbsp;&nbsp;
+		<if test="$IN.viewmode=='all' || $IN.viewmode==''"></b></if>
+      &nbsp;&nbsp;{lang:all_comment} <strong>[$CountNum]</strong> {lang:tiao} &nbsp;&nbsp;&nbsp;[$Page]   </td>
+    </tr>
+</table>
+<if test="!empty($CommentList)">
+   <loop $CommentList key=key var=var ><br>
+  
+   <table width="95%"  border="0" align="center" cellspacing="1" class="table_border">
+   <tr>
+      <td class="table_td1" style="padding-left:10px; padding-top:5px;padding-bottom:5px;  "><input type="checkbox" name="CommentIDs[]" value="[$var.CommentID]">
+       <if test="empty($var.Approved)">
+	   <FONT  COLOR="#3300CC">[<U>{lang:unapproved}</U>]</FONT>
+	  </if>
+	  
+	   [$var.Ip]( [$var.Author] ) [@date('Y-m-d H:i', $var.CreationDate)]   &nbsp;&nbsp;
+	  <if test="empty($var.Approved)">
+	    <a href="[$base_url]o=admin_base::commentApprove&CommentID=[$var.CommentID]"><FONT  COLOR="#FF0000">[{lang::global:approve}]</FONT></a>
+		&nbsp;&nbsp;
+	  </if>
+	  <a href="[$base_url]o=admin_base::commentEdit&CommentID=[$var.CommentID]">[{lang::global:edit}]</a>&nbsp;&nbsp;<a href="[$base_url]o=admin_base::commentDel&CommentID=[$var.CommentID]" onclick="return confirm('{lang::global:confirm_del}')">[{lang::global:del}]</a>&nbsp;&nbsp;<A HREF="[$var.URL]" target="_blank">[$var.Title]</A></td>
+    </tr>
+    <tr>
+      <td class="table_td2" style="padding-left:15px; padding-top:15px; padding-bottom:15px;  "><span class="l17">[@nl2br($var.Comment)]</span></td>
+    </tr>
+	</table>
+	</loop>
+
+	<br><INPUT TYPE="hidden" name="referer" value="[$referer]">
+   <table width="95%"  border="0" align="center" cellspacing="1" class="table_border">
+    <tr>
+      <td height="30" class="table_td1" style="padding-left:10px;"> 
+        <select name="o" id="o" > 
+          <option value="admin_base::commentDel">{lang:multi_del}</option>
+            <option value="admin_base::commentApprove">{lang:multi_approve}</option>
+          			  </select>
+        <input type="button" name="Submit2" value="{lang::global:go}" onclick="this.form.submit();">    {lang:all_comment} <strong>[$CountNum]</strong> {lang:tiao} &nbsp;&nbsp;&nbsp;[$Page]   </td>
+    </tr>
+</table>
+</form>
+</if>
+  <include: file="footer.html">

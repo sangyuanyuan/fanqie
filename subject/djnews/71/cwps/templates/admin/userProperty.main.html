@@ -1,0 +1,156 @@
+<include file="header.html" />
+ <table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" class="table_border" style="margin-bottom: 20px;margin-top: 20px;">
+	<tr > 
+      <td colspan="2" class="table_td1">
+	  <B>[$SYS_NAME] &raquo; 用户属性管理</B>
+	  </td>
+    </tr>
+<include file="block.error.html"/>
+</table>   
+ 
+  <table width="98%" border="0" align="center" cellpadding="5" cellspacing="1" class="table_border">
+
+ 
+
+
+	<tr > 
+      <td colspan="4" class="table_header">系统用户属性</td>
+    </tr>
+	<tr class="table_td1"> 
+      <td >字段标识</td>
+      <td >字段名</td>
+      <td >字段类型</td>
+      <td align="center">操作</td>
+    </tr>
+	<tr class="table_td2"> 
+      <td>用户名</td>
+      <td><B>UserName</B>
+	  </td>
+	  <td>varchar(32)</td>
+      <td align="center"> - </td>
+    </tr>
+	<tr class="table_td2"> 
+      <td>用户ID</td>
+      <td><B>UserID</B>
+	  </td>
+	  <td>int(8)</td>
+      <td align="center"> - </td>
+    </tr>
+	<tr class="table_td2"> 
+      <td>用户组</td>
+      <td><B>GroupID</B>
+	  </td>
+	   <td>int(8)</td>
+      <td align="center"> - </td>
+    </tr>
+	<tr class="table_td2"> 
+      <td>密码</td>
+      <td><B>Password</B>
+	  </td>
+	  <td>varchar(32) MD5加密</td>
+      <td align="center"> - </td>
+    </tr>
+
+  <tr class="table_td2">
+      <td>电子邮件</td>
+      <td>
+        <B>Email</B>
+	  </td>
+	  <td>varchar(30)</td>
+      <td align="center"> - </td>
+    </tr>
+  <tr class="table_td2">
+      <td>性别</td>
+      <td>
+        <B>Gender</B>
+	  </td>
+	  <td>tinyint(1)  1-男,2-女,0-保留</td>
+      <td align="center"> - </td>
+    </tr>
+  <tr class="table_td2">
+      <td>生日</td>
+      <td>
+        <B>Birthday</B>
+	  </td>
+	  <td>date </td>
+      <td align="center"> - </td>
+    </tr>
+  <tr class="table_td2">
+      <td>QQ号码</td>
+      <td>
+        <B>QQ</B>
+	  </td>
+	  <td>varchar(20) </td>
+      <td align="center"> - </td>
+    </tr>
+  <tr class="table_td2">
+      <td>个人介绍</td>
+      <td>
+        <B>Description</B>
+	  </td>
+	  <td>varchar(250) </td>
+      <td align="center"> - </td>
+    </tr>
+  <tr class="table_td2">
+      <td>注册时间</td>
+      <td>
+        <B>RegisterDate</B>
+	  </td>
+	  <td>int(10) 时间戳timestamp</td>
+      <td align="center"> - </td>
+    </tr>
+  <tr class="table_td2">
+      <td>上次登陆时间</td>
+      <td>
+        <B>LastLoginTime</B>
+	  </td>
+	  <td>int(10) 时间戳timestamp</td>
+      <td align="center"> - </td>
+    </tr>
+  <tr class="table_td2">
+      <td>用户状态</td>
+      <td>
+        <B>Status</B>
+	  </td>
+	  <td>tinyint(1) 0-无效,1-有效</td>
+      <td align="center"> - </td>
+    </tr>
+<tr > 
+      <td colspan="4" class="table_header">附加用户属性</td>
+    </tr>	 
+ 	
+<loop name="UserPropertys" var="var" key="key">
+  <tr class="table_td2">
+      <td>[$var.FieldTitle]</td>
+      <td>
+        <B>[$var.FieldName]</B>
+	  </td>
+	  <td>[$var.FieldType]
+	  <if test="!empty($var.FieldSize)">
+	  ([$var.FieldSize])
+	  </if>
+	  
+	  </td>
+      <td align="center"><A HREF="userProperty.do?o=edit_property&FieldID=[$var.FieldID]">编辑</A>&nbsp;&nbsp;
+	  <A HREF="userProperty.do?o=del_property&FieldID=[$var.FieldID]" onclick="return confirm('确认删除属性[$var.FieldName]吗?')">删除</A>
+	  </td>
+    </tr>
+
+</loop>
+ 	
+ 
+  </table>
+ 
+  <table border="0" cellspacing="1" cellpadding="4" width="98%"  align=center >
+ <tr > <td> <!--<input type='submit' name='submit' value=' 修改 ' tabindex='13'  > -->
+  
+ </td><td align=right><input type="button" name="Submit" value=" 新增属性 " onclick="document.location='userProperty.do?o=add_property'">
+ 
+  <!-- <input type="button" name="Submit1" value=" 字段排序 " onclick="doing('orderfield')">-->
+ </td></tr>
+
+  </table>
+
+
+
+<include  file="footer.html"/>

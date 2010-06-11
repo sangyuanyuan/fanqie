@@ -1,0 +1,35 @@
+<script>
+function loadBarDisplay(form)
+{
+  var x,y;
+   x = document.body.clientWidth;
+   y = document.body.clientHeight;
+
+		var top = (y/2) - 50;
+		var left = (x/2) - 150;
+		if( left<=0 ) left = 10;
+
+	
+	loader.style.left = left + "px"
+	loader.style.top = top + "px";
+
+	loader.style.display='';
+	form.submit();
+	return;
+
+}
+
+function loadBarUnDisplay()
+{
+	loader.style.display='none';
+
+}
+</script>
+
+<DIV id=loader style="DISPLAY: none; Z-INDEX: 2; LEFT: 0px; POSITION: absolute; TOP: 0px">
+<TABLE class=loader style="FILTER: Alpha(opacity=75)" cellSpacing=1 cellPadding=5 bgColor=#bbbbb summary="Loader Layout" border=0>
+  <TBODY><TR><TD align=left bgColor=#ffffff>
+      <P><IMG style="MARGIN: 3px" height=32   src="../html/images/clocks.gif" width=32 align=left><STRONG>{lang::global:uploading}</STRONG><BR>
+	  <SPAN style="FONT-SIZE: 8pt">{lang::global:please_wait_uploading}</SPAN></P></TD></TR></TBODY></TABLE>
+</DIV>
+

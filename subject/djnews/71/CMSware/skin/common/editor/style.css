@@ -1,0 +1,148 @@
+{literal}
+
+body {
+	FONT-FAMILY: "Verdana", "仿宋体";
+	COLOR: Black;
+	FONT-SIZE: 12px;
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	scrollbar-face-color: #CBDDF1;
+	scrollbar-highlight-color: #547CBB;
+	scrollbar-shadow-color: #547CBB;
+	scrollbar-3dlight-color: #ffffff;
+	scrollbar-arrow-color:  #547CBB;
+	scrollbar-track-color: #FFFFFF;
+	scrollbar-darkshadow-color: #FFFFFF;
+	
+}
+
+
+.a9 { FONT-FAMILY: "Verdana", "仿宋体"; FONT-SIZE: 12px} 
+
+link {FONT-FAMILY: "Verdana", "仿宋体"; COLOR: #fee9c0; FONT-SIZE: 12px} 
+
+SELECT {FONT-FAMILY:"宋体"; FONT-SIZE:12px; background-color: #FFFFFF;
+} 
+
+a {FONT-FAMILY: "Verdana", "仿宋体"; TEXT-DECORATION: none;FONT-SIZE: 12px; color: #000000} 
+
+a:hover {COLOR: #000000; TEXT-DECORATION: underline;} 
+
+
+a.highlight:link {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: #FF6600;
+	text-decoration: underline;
+}
+a.highlight:hover {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: #FF6600;
+	text-decoration: underline;
+}
+a.highlight:active {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: #FF6600;
+	text-decoration: underline;
+}
+a.highlight:visited {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: #FF6600;
+	text-decoration: underline;
+}
+
+td{FONT-FAMILY: "Verdana", "仿宋体";  font-size: 12px} 
+
+tr{FONT-FAMILY: "Verdana", "仿宋体"; font-size: 12px} 
+
+
+
+button { height:18px;FONT-FAMILY: "Verdana", "仿宋体";font-size:12px;color:#000000;background-color:#EEEEEE;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px } 
+
+.xpinput { height:18px;FONT-FAMILY: "Verdana", "仿宋体";font-size:12px;color:#000000;background-color:#EEEEEE;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px } 
+.largefont {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 14px;
+	font-weight: bolder;
+
+}
+
+
+.Tableheaderbg {
+	background-image: url(../images/25header_bg.gif);
+}
+.Tablebg {
+	background-color: #5075B4;
+}
+.Tablelistbg {
+	background-color: #F5F5F5;
+}
+.Tablefieldbg {
+	background-color: #CCCCCC;
+}
+.Tablecontentbg {
+	background-color: #A0C5F1;
+}
+.button{
+	height:18;
+	background-color:#FFFFFF;
+	border: 1 solid #CCCCCC;
+	font-family:"sans-serif","宋体";
+	font-size: 12px;
+}
+
+.point {
+	 CURSOR: hand; }
+.hair {
+	 CURSOR: crosshair; 
+}
+.tablebox {
+	border-top: 1px solid #5075B4;
+	border-right: 1px solid #5075B4;
+	border-bottom: 0px solid #5075B4;
+	border-left: 1px solid #5075B4;
+	background-image: none;
+	background-color: #CBDDF1;
+
+
+
+
+}
+.tableboxhighlight {
+	border-top: 1px solid #5075B4;
+	border-right: 1px solid #5075B4;
+	border-bottom: 0px solid #5075B4;
+	border-left: 1px solid #5075B4;
+	background-image: url(../images/25header_bg.gif);
+
+}
+.highlightcodes{
+	border-top: 1px solid #5075B4;
+	border-right: 1px solid #5075B4;
+	border-bottom: 1px solid #5075B4;
+	border-left: 1px solid #5075B4;
+	background: #ffffff;
+	width: 560px;
+	}
+.process		{ color: #000000; font-size: 11px; font-family: Tahoma, Arial; text-align: center;}
+.bold			{ font-weight: bold }
+.multi			{ font-family: Tahoma, Verdana; font-size: 8pt; color: #003366; }
+.smalltxt		{ font-family: Tahoma, Verdana; font-size: 8pt }
+.mediumtxt		{ font-family: Tahoma, Verdana; font-size: 9pt; color: #000000 }
+
+#copyright { color:#000000; font-size:12px }
+#description { color:#000000; font-size:10px }
+#template { color:#000000; font-size:11px }
+#con_template { color: #3C6094; font-size:12px }
+#large { font-family: verdana, arial; font-size:18px; color:#4C77B6; font-weight:bold; letter-spacing:-1px }
+#subtitle { font-family: Arial,Verdana; font-size:16px; color:#FF9900; font-weight:bold }
+#smalltitle { font-family: Arial,Verdana; font-size:11px; color:#FF9900; font-weight:bold }
+#ID { font-family: Arial,Verdana; font-size:11px; color: #0000CD;  }
+#ADDTIME { font-family: Arial,Verdana; font-size:11px; color: #000000;  }
+#input_login {font-size:9pt;height:20px;width:100px}
+#button_login {font-size:9pt;height:20px;width:40px}
+
+{/literal}

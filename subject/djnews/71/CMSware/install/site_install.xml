@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Sites>
+	<Site>
+		<Name>空白站点</Name>
+		<TableID>1,2,3,4,5,6</TableID>
+		<SiteUID>CMSware_Site_Blank</SiteUID>
+		<Desc>空白站点将只安装CMSware的基础框架，高级用户可以基于此框架自由设计自己的网站结构。&lt;BR&gt;（适用于对CMSware比较熟悉的高级用户）
+		</Desc>
+		<Checked>1</Checked>
+	</Site>
+	<Site>
+		<Name>默认综合站点</Name>
+		<TableID>1,2,3,4,5,6</TableID>
+		<SiteUID>CMSware_Site_Default</SiteUID>
+		<Desc>默认综合站点介绍</Desc>
+	</Site>
+	
+	<Site>
+		<Name>产品报价站</Name>
+		<TableID>3</TableID>
+		<SiteUID>CMSware_Site_Product</SiteUID>
+		<Desc>产品报价站介绍</Desc>
+	</Site>
+
+</Sites>

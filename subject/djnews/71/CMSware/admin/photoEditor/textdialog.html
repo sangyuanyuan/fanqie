@@ -1,0 +1,141 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="album.css" rel="stylesheet" type="text/css">
+<title>文字叠加</title>
+<script language="javascript">
+window.returnValue = "cancel";
+function initparam(){
+    if( window.dialogArguments ){
+        parentwin = window.dialogArguments;
+        var f = parentwin.document.box.font.value;
+        for( i = 0; i < document.box.font.options.length; i++ ){
+            if( f == document.box.font.options[i].value ){
+                document.box.font.selectedIndex = i;
+                break;
+            }
+        }
+        document.box.size.value   = parentwin.document.box.size.value;
+        document.box.color.value  = parentwin.document.box.color.value;
+        document.box.wrap.checked = (parentwin.document.box.wrap.value == "yes");
+        document.box.text.value   = parentwin.document.box.text.value;
+	    font = document.box.font.options[document.box.font.selectedIndex].text;
+		document.box.text.style.font =  document.box.size.value + "pt "+ font
+    }
+
+}
+
+function setParam(){
+    if( window.dialogArguments ){
+        parentwin = window.dialogArguments;
+        parentwin.document.box.font.value  = document.box.font.options[document.box.font.selectedIndex].value;
+        parentwin.document.box.font2.value  = document.box.font.options[document.box.font.selectedIndex].text;
+        parentwin.document.box.size.value  = document.box.size.value  ;
+        parentwin.document.box.color.value = document.box.color.value  ;
+        parentwin.document.box.wrap.value  = document.box.wrap.checked?"yes":"no" ;
+        parentwin.document.box.text.value  = document.box.text.value  ;
+    }
+    window.returnValue="OK";
+    window.close();
+}
+
+function setColor()
+{
+	var ret = window.showModalDialog("color.html","","dialogHeight: 180px; dialogWidth: 360px;  center: Yes; help: No; resizable: No; status: No;");
+	if( ret )
+	 	document.box.color.value = ret;
+}
+
+function setFont(f)
+{
+    font = document.box.font.options[document.box.font.selectedIndex].text;
+	size = document.box.size.value;
+	if( size<9 ) size=9;
+	if( size >72 ) size = 72;
+	if( f =="font" )
+        document.box.size.value = size;
+    document.box.text.style.font =  size + "pt "+ font
+	document.all.fontPreview.src = "fonts/" + document.box.font.options[document.box.font.selectedIndex].value + ".gif"
+
+}
+
+function previewFont()
+{
+	document.all.fontPreviewLayer.style.display=""
+	
+}
+
+function unpreviewFont()
+{
+	document.all.fontPreviewLayer.style.display="none"
+	
+}
+
+</script>
+</head>
+
+<body onload="initparam()" bgcolor="menu">
+<form method="post" name=box action="" onSubmit="return false">  
+   
+  <table border=0 align="center" width="256">
+    <tr> 
+      <td width="59%" >字体: 
+
+        <SELECT name=font onChange="setFont('font')" onfocusin="previewFont()" onfocusout="unpreviewFont()">
+          <OPTION value=songti selected>宋体</OPTION>
+          <OPTION value=arial>Arial</OPTION>
+		  <OPTION value=heiti>黑体</OPTION>
+		  <OPTION value=kaishu>隶书</OPTION>
+		   <OPTION value=youyuan>幼圆</OPTION>
+		 
+		  <OPTION value=fangsong>仿宋_GB2312</OPTION>
+		  <OPTION value=kaiti>楷体_GB2312</OPTION>
+
+		  <OPTION value=FZYTK>方正姚体</OPTION>
+		  <OPTION value=FZCQJW>方正粗倩</OPTION>
+		   <OPTION value=FZSTK>方正舒体</OPTION>
+			 <OPTION value=SURSONG>方正宋体</OPTION>
+<OPTION value=STCAIYUN>华文彩云</OPTION>
+<OPTION value=sthupo>华文琥珀</OPTION>
+<OPTION value=STXIHEI>华文细黑</OPTION>
+<OPTION value=STXINGKA>华文行楷</OPTION>
+<OPTION value=STXINWEI>华文新魏</OPTION>
+<OPTION value=STZHONGS>华文中宋</OPTION>
+
+ 
+        </SELECT><div id="fontPreviewLayer" style="position:absolute; width:135px; height:30px; z-index:2; left: 140px; top: 2px; border: 2px outset;background-color: #FFFFFF;display:none;">
+      <img  id=fontPreview src="images/none.gif" border=0>
+</div> </td>
+      <td width="41%"  align="right">字号: 
+        <input name="size" type=text class="textform" style="border:1px solid;width:20px" value="9"  onChange="setFont('font')" onKeyUp="setFont('size')" maxlength="2">
+        (9-72)</td>
+    </tr>
+    <tr> 
+      <td colspan="2" >颜色: 
+        <input name=color type=text class="textform" style="border:1px solid;width:70px" value="#ee0000" size=7> 
+        <input type=BUTTON class="btn" style="font:9pt;border:1px solid;" onclick="setColor()" value="选取&gt;&gt;"> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="59%" >文字：</td>
+      <td width="41%" align="right"><INPUT type="checkbox" name="wrap" >
+        自动换行</INPUT></td>
+    </tr>
+    <tr> 
+      <td colspan=2><textarea name="text" cols="40" rows=5 style="font:9pt;border:1px solid;"></textarea></td>
+    </tr>
+    <tr> 
+      <td height="27" colspan="2" align="center"><input type=BUTTON class="btn" onclick="setParam()" value=" 确 定 ">
+        &nbsp;&nbsp;&nbsp;&nbsp; 
+        <input name="BUTTON" type=BUTTON class="btn" onClick="window.close()" value=" 取 消 "></td>
+    </tr>
+  </table>
+<!--INPUT onclick=textOverlayChange() type=checkbox name=boldSwitch>粗体</INPUT> 
+<INPUT onclick=textOverlayChange() type=checkbox name=italicSwitch>斜体</INPUT><BR/>
+<INPUT onclick=textOverlayChange() type=checkbox name=underLineSwitch>下划线</INPUT> 
+<INPUT onclick=textOverlayChange() type=checkbox name=strikeSwitch>删除线</INPUT-->
+
+</form>		
+</body>
+</html>

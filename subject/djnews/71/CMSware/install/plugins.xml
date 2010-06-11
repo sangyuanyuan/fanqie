@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="gb2312"?>
+<plugins>
+	<plugin>
+		<name>会员接口</name>
+		<PluginUID>bbsInterface</PluginUID>
+		<file>plugin_bbsi.sql</file>
+	</plugin>
+	<plugin>
+		<name>全文检索</name>
+		<PluginUID>FullText</PluginUID>
+		<file>plugin_fulltext.sql</file>
+	</plugin>
+</plugins>

@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>[$cms_version]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=[$charset]">
+</head>
+<link type="text/css" rel="StyleSheet" href="../html/style.css" />
+<script src="ui.php?sId=[$sId]&o=functions.js" type="text/javascript" language="javascript"></script>
+<script>
+function edit(o)
+{
+	var leftPos = (screen.availWidth-800) / 2
+	var topPos = (screen.availHeight-600) / 2 
+	var popupWin = window.open('admin_setting.php?sId=[$sId]&o=editor_frameset&extra='+o, '','width=800,height=600,scrollbars=no,resizable=yes,titlebar=0,top=' + topPos + ',left=' + leftPos);
+
+}
+</script>
+<body  > 
+
+<table width="90%" border="0" align="center">
+  <tr>
+    <td>
+	       <table cellpadding='2' cellspacing='2' border='0'>
+ <tr>
+          <td ><IMG SRC='../html/images/ip.gif' BORDER=0 align=absmiddle> <a href='admin_setting.php?sId=[$sId]&o=edit'   target="panelWork">{lang:sys_setting}</a></td>
+        </tr>
+		   <tr>
+          <td ><IMG SRC='../html/images/friend.gif' BORDER=0 align=absmiddle> <a href='javascript:void(0);' onClick='javascript:ShowMenu1(adminuser)' >{lang:user_admin}</a></td>
+        </tr>
+        <tr id=adminuser style='display:none' >
+          <td> <IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href='admin_user.php?sId=[$sId]&o=add' target="panelWork">{lang:add} 
+            </a><br> <IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href='admin_user.php?sId=[$sId]&o=view' target="panelWork">{lang:edit_del}
+            </a></td>
+        </tr>
+       
+ 
+       
+<!--
+        <tr>
+          <td ><IMG SRC='../html/images/cate.gif' BORDER=0 align=absmiddle> <a href='javascript:void(0);' onClick='javascript:ShowMenu1(admincateauth)' >{lang:publish_auth_admin}</a></td>
+        </tr>-->
+        <tr id=admincateauth style='display:none' >
+          <td> <IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href='admin_publishauth.php?sId=[$sId]&o=add' target="panelWork">{lang:add} 
+            </a><br> <IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href='admin_publishauth.php?sId=[$sId]&o=view' target="panelWork">{lang:edit_del} 
+            </a></td>
+        </tr>
+
+        <tr>
+          <td ><IMG SRC='../html/images/cate.gif' BORDER=0 align=absmiddle> <a href="admin_content_table.php?sId=[$sId]&o=viewtable" target="panelWork">{lang:content_model_admin}</a></td>
+        </tr>
+ 
+        <tr>
+          <td ><IMG SRC='../html/images/ip.gif' BORDER=0 align=absmiddle> <a href="admin_psn.php?sId=[$sId]&o=view" target="panelWork">{lang:psn_admin}</a></td>
+        </tr>
+
+
+
+
+     
+		
+		<tr>
+          <td ><IMG SRC='../html/images/cate.gif' BORDER=0 align=absmiddle> <a href='javascript:void(0);' onClick='javascript:ShowMenu1(plugins_admin)' >{lang:plugins_admin}</a></td>
+        </tr>
+        <tr id=plugins_admin style='display:none' >
+          <td> <IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href='admin_plugins.php?sId=[$sId]&o=add' target="panelWork">{lang:add} 
+            </a><br> <IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href='admin_plugins.php?sId=[$sId]&o=view' target="panelWork">{lang:edit_del} 
+            </a></td>
+        </tr>
+      <tr>
+          <td ><IMG SRC='../html/images/ip.gif' BORDER=0 align=absmiddle> <a href="admin_tpl_vars.php?sId=[$sId]&o=view" target="panelWork">{lang:tpl_vars_admin}</a></td>
+        </tr>
+		 <tr>
+          <td ><IMG SRC='../html/images/ip.gif' BORDER=0 align=absmiddle> <a href='admin_keywords.php?sId=[$sId]&o=view' target="panelWork">{lang:keywords_replace}</a></td>
+        </tr>
+
+
+		 <tr>
+          <td ><IMG SRC='../html/images/ip.gif' BORDER=0 align=absmiddle> <a href='admin_setting.php?sId=[$sId]&o=clear_cache'   target="panelWork">{lang:clear_cache}</a></td>
+        </tr>
+		  <tr>
+          <td ><IMG SRC='../html/images/cate.gif' BORDER=0 align=absmiddle> <a href='javascript:void(0);' onClick='javascript:ShowMenu1(func_admin)' >{lang:function_admin}</a></td>
+        </tr>
+        <tr id=func_admin style='display:none' >
+          <td> <IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href="javascript:edit('cms_func');" >{lang:cms_func} 
+            </a><br><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href="javascript:edit('crawler_func');" >{lang:crawler_func} 
+            </a></td>
+        </tr>
+
+		  <tr>
+          <td ><IMG SRC='../html/images/rubbish1.gif' BORDER=0 align=absmiddle> <a href='javascript:void(0);' onClick='javascript:ShowMenu1(db_admin)' >{lang:db_admin}</a></td>
+        </tr>
+
+ <tr id=db_admin style='display:none' >
+          <td> <IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href="admin_db.php?sId=[$sId]" target="panelWork">{lang:db_backup} 
+            </a><br><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href="admin_db.php?sId=[$sId]&o=restore" target="panelWork">{lang:db_restore} 
+            </a> 
+			<br><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/spacer.gif' BORDER=0><IMG SRC='../html/images/111.gif' BORDER=0><a href="admin_db.php?sId=[$sId]&o=query" target="panelWork">{lang:db_query} 
+            </a> 
+			</td>
+        </tr>
+ 
+		      <tr>
+          <td ><IMG SRC='../html/images/ip.gif' BORDER=0 align=absmiddle> <a href="admin_ipbanned.php?sId=[$sId]&o=list" target="panelWork">{lang:ipbanned_admin}</a></td>
+        </tr>
+
+ 
+    
+ 
+	
+      </table>
+       
+       
+    
+	  
+	  </td>
+  </tr>
+</table>
+
+<script language="JavaScript">
+function ShowMenu(MenuID){
+	if(MenuID.style.display=="none"){
+		MenuID.style.display="";
+		//len=document.body.scrollWidth+22;
+		//if(len > 160 ) {
+		//	a=len+",*";
+		//	parent.parent.dmsys.cols=a;
+		//}  
+	}else{
+		MenuID.style.display="none";
+		//len=document.body.scrollWidth-10;
+		//if(len > 150) {
+		//	a=len+",*";
+		//	//document.write(a +'aaaa');
+		//	parent.parent.dmsys.cols=a;
+		//}
+	}
+}
+function ShowMenu1(MenuID){
+	if(MenuID.style.display=="none"){
+		MenuID.style.display="";
+		
+	}else{
+		MenuID.style.display="none";
+	
+	}
+}
+
+function changeimage(imageID) {
+	var r, re;         //Declare variables.
+	
+	re = 'closedfold.gif';    //Create regular expression pattern.
+	r = imageID.src;  //Attempt match on search string.
+	a=r.match(re);
+	if(a==null){
+		imageID.src=" images/openfold.gif";
+	}else{
+		imageID.src="images/closedfold.gif";
+	}
+
+	
+}</script>
+
+
+<table height = 400>
+<tr>
+	<td><br></td>
+</tr>
+</table>
+</body>
+</html>
