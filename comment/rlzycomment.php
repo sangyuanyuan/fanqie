@@ -22,7 +22,7 @@
 	              </tr>
               <?php } ?>
               <tr>
-                <td height="125" class="height180 txtLeft" style="background:url(images/haibao.jpg) no-repeat; padding-left:100px;"><b><span style="color:red">『世博承诺在我心,创先争优见我行』</span><br />
+                <td height="125" class="height180 txtLeft" style="background:url(images/haibao.jpg) no-repeat; padding-left:100px;"><b><span style="color:red; font-weight:bold;">『世博承诺在我心,创先争优见我行』</span><br />
                   欢迎留下您的七一感言。参与方式：</b><br />
                   在以下对话框直接输入您的心声，然后按
 “发送留言”。</td>

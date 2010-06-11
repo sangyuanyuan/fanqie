@@ -11,7 +11,7 @@
 		<PARAM   NAME= "playCount"   VALUE= "1"> 
 		<PARAM   NAME= "autoStart"   VALUE= "true"> 
 		<PARAM   NAME= "invokeURLs"   VALUE= "false">
-		<param name="wmode" value="opaque">
+		<param name="wmode" value="transparent">
 		<PARAM   NAME= "uiMode"   VALUE= "Full">
 		<PARAM   NAME= "EnableContextMenu"   VALUE= "true">			
 		<embed src="<?php echo $video[0]->online_url; ?>" align="baseline" border="0" width="286" height="250" type="application/x-mplayer2"pluginspage="" name="MediaPlayer1" showcontrols="1" showpositioncontrols="0" showaudiocontrols="1" showtracker="1" showdisplay="0" showstatusbar="1" autosize="0" showgotobar="0" showcaptioning="0" autostart="false" autorewind="0" animationatstart="0" transparentatstart="0" allowscan="1" enablecontextmenu="1" clicktoplay="0" defaultframe="datawindow" invokeurls="0"></embed> 
