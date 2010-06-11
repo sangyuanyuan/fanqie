@@ -38,6 +38,7 @@ total("首页","other");
 			<div id=reg></div>
 		</div>
 	</div>
+	
 </div>
 </body>
 </html>
