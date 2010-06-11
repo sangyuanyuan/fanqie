@@ -9,7 +9,7 @@
 <table width="330" border="0" cellspacing="0" cellpadding="0"  >
           <tr >
             <td width="170" height="35" style="border-bottom:solid 2px #dde5f2;" class="txtLeft"><img src="images/dyxs.png" width="70" height="26" /></td>
-            <td width="170" style="border-bottom:solid 2px #dde5f2;" class="txtRight"><a href="#" onclick="javascript:window.parent.location.href='/subject/djnews/71/skin/liuyan.html" class="blue">『点击查看全部留言』</a></td>
+            <td width="170" style="border-bottom:solid 2px #dde5f2;" class="txtRight"><a target="_top" href="/subject/djnews/71/skin/liuyan.html" class="blue">『点击查看全部留言』</a></td>
           </tr>
           <tr>
             <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
