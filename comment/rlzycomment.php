@@ -22,10 +22,9 @@
 	              </tr>
               <?php } ?>
               <tr>
-                <td height="125" class="height180 txtLeft" style="background:url(images/haibao.jpg) no-repeat; padding-left:100px;"><b>『世博承诺在我心,创先争优见我行』<br />
+                <td height="125" class="height180 txtLeft" style="background:url(images/haibao.jpg) no-repeat; padding-left:100px;"><b><span style="color:red">『世博承诺在我心,创先争优见我行』</span><br />
                   欢迎留下您的七一感言。参与方式：</b><br />
-                  1、发送文字短信到<span class="red">10657300001610001</span>。<br />
-                  2、在以下对话框直接输入您的心声，然后按
+                  在以下对话框直接输入您的心声，然后按
 “发送留言”。</td>
               </tr>
               <tr>

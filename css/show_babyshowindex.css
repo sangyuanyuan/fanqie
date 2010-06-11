@@ -1,0 +1,20 @@
+﻿body {margin:0px; font-family:宋体; font-size:12px; color:#000000;}
+P{margin:0px; padding:0px;}
+ul{margin:0px; padding:0px;}
+li{margin:0px; list-style-type:none;}
+
+#ibody{width:1280px; height:1130px; background:url('/images/baby/babyshow_index.jpg') no-repeat; margin:0 auto;}
+#ileft_t{width:728px; height:328px; margin-top:192px; margin-left:180px; overflow:hidden; float:left; display:inline;}
+#ileft_t #pic{width:317px; height:210px; margin-top:90px; margin-left:30px; float:left; display:inline;}
+#ileft_t #pic img{width:317px; height:210px; border:0px;}
+#ileft_t #content{width:317px; height:220px; margin-top:85px; margin-left:40px; line-height:20px; float:left; display:inline;}
+#ileft_t #content .context{width:317px; height:20px; overflow:hidden; float:left; display:inline;}
+#ileft_t #content .context a{color:#000000; text-decoration:none;}
+#login{width:188px; height:124px; margin-top:255px; float:left; display:inline;}
+#login input{width:95px; height:37px; padding-left:5px; border:0px; line-height:37px; background:url('/images/baby/index_input.jpg') no-repeat;}
+#login #username{width:100px; height:37px; margin-right:25px; float:right; display:inline;}
+#login #password{width:100px; height:37px; margin-right:25px; float:right; display:inline;}
+#login #logins{width:157px; height:25px; margin-top:7px; line-height:25px;  float:left; display:inline;}
+#login #logins #sub{width:57px; height:25px; margin-left:35px; cursor:pointer; float:left; display:inline;}
+#login #logins #reg{width:30px; height:25px; cursor:pointer; margin-left:18px; float:left; display:inline;}
+#ileft_b{width:}
