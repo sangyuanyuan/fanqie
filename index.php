@@ -202,7 +202,7 @@ total("首页","other");
  						
  						<div id=c_r>
  							<?php for($i=0;$i<7;$i++){?>
- 								<div class=crcl><a <?php if($record_baoliao[$i]->cream >=50){ ?>style="padding-left:15px; background:url('images/cream1.gif') no-repeat;"<?php } ?> target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><?php echo delhtml($record_baoliao[$i]->short_title); ?></a></div>
+ 								<div class=crcl><a <?php if($record_baoliao[$i]->cream >=30){ ?>style="padding-left:15px; background:url('images/cream1.gif') no-repeat;"<?php } ?> target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><?php echo delhtml($record_baoliao[$i]->short_title); ?></a></div>
  							<?php } ?>
  						</div>
  						

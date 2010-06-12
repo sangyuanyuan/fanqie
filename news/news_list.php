@@ -34,7 +34,7 @@
 		}
 		if($id==4&&$iscream!="")
 		{
-			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id." and n.cream>=50 order by n.priority asc,n.created_at desc";
+			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id." and n.cream>=30 order by n.priority asc,n.created_at desc";
 		}
 		$record=$db->paginate($sql,30);		
   ?>
