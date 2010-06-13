@@ -1,0 +1,13 @@
+﻿body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+P{margin:0px; padding:0px;}
+ul{margin:0px; padding:0px;}
+li{margin:0px; list-style-type:none;}
+
+#logo{width:1280px; height:176px; background:url('/images/baby/logo.jpg') no-repeat; float:left; display:inline;}
+#ileft{width:138px; height:390px; margin-top:20px; margin-left:180px; background:#fcf9e6; border:1px solid #ebe6c9; float:left; display:inline;}
+#ileft #photo{width:60px; height:15px; font-size:13px; padding-left:18px; margin-top:30px; margin-left:15px; line-height:15px; background:url('/images/baby/photo.jpg') no-repeat; float:left; display:inline;}
+#ileft #photo a{color:#2c629e; text-decoration:none;}
+#ileft #log{width:50px; height:15px; font-size:13px; padding-left:18px; margin-top:30px; margin-left:15px; line-height:15px; background:url('/images/baby/log.jpg') no-repeat; float:left; display:inline;}
+#ileft #log a{color:#2c629e; text-decoration:none;}
+#ileft .upload{width:30px; height:15px; margin-top:30px; margin-right:10px; line-height:15px; float:right; display:inline;}
+#ileft .upload a{color:#999999; text-decoration:none;}
