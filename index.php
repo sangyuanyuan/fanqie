@@ -801,8 +801,8 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 					$yyts=$db -> query($sql);	
 			?>	 
  			<div id=t_r_r_b>
- 				<div class=menu_trrb id=menu_trrb1 param=1 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:9px; font-weight:bold;"><a href="/news/news_list.php?id=216" target="_blank">绿番茄</a></div>
- 				<div class=menu_trrb id=menu_trrb2 param=2 style="background:url(/images/index/btn7.jpg) no-repeat; margin-left:5px;"><a   href="/news/news_list.php?id=218" target="_blank">语音提示</a></div>
+ 				<div class=menu_trrb id=menu_trrb1 param=1 style="background:url(/images/index/btn7.jpg) no-repeat; margin-left:9px; font-weight:bold;"><a href="/news/news_list.php?id=216" target="_blank">绿番茄</a></div>
+ 				<div class=menu_trrb id=menu_trrb2 param=2 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;"><a   href="/news/news_list.php?id=218" target="_blank">语音提示</a></div>
  				<div class=menu_trrb id=menu_trrb3 param=3 style="background:url(/images/index/btn8.jpg) no-repeat; margin-left:5px;"><a   href="/news/news_top_list.php" target="_blank">新闻排行</a></div>
 				<div class=content_trrb id=content_trrb1 style="display:inline">
 					<ul>
