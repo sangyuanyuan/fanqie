@@ -25,10 +25,23 @@ total("首页","other");
 	<div id=ibody>
 		<? require_once('person_left.php');?>
 		<div id=iright>
-				<div id=title>相册</div><div id=add></div>
-			 	<?php for($i=0;$i<12;$i++){ ?>
-			 		<div class=pic><a href=""><img src=""></a><div class=pictitle></div><div class=edit><a href="">编辑</a>　　<span>删除</span></div></div>
-			 	<?php } ?>
+				<div id=title>相册</div>
+			 	<div id=content>
+			 		<table>
+			 			<tr>
+			 				<td>标　题</td><td><input type="text" /></td>
+			 			</tr>
+			 			<tr>
+			 				<td>描　述</td><td><textarea rows=5 ></textarea></td>
+			 			</tr>
+			 			<tr>
+			 				<td>选择照片</td><td><input type="file" /></td>
+			 			</tr>
+			 			<tr>
+			 				<td><button>开始上传</button></td>	
+			 			</tr>
+			 		</table>	
+			 	</div>
 		</div>
 	</div>
 </body>

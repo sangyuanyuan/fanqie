@@ -1,8 +1,8 @@
-﻿body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000;}
+﻿body {margin:0px; font-family:宋体; font-size:12px; line-height:0px; color:#000000; background:#faffc6;}
 P{margin:0px; padding:0px;}
 ul{margin:0px; padding:0px;}
 li{margin:0px; list-style-type:none;}
-
+#ibody{width:1280px; padding-bottom:10px; background:url('/images/baby/babyshow_bg.jpg') repeat-x; float:left; display:inline;}
 #logo{width:1280px; height:176px; background:url('/images/baby/logo.jpg') no-repeat; float:left; display:inline;}
 #ileft{width:138px; height:390px; margin-top:20px; margin-left:180px; background:#fcf9e6; border:1px solid #ebe6c9; float:left; display:inline;}
 #ileft #photo{width:60px; height:15px; font-size:13px; padding-left:18px; margin-top:30px; margin-left:15px; line-height:15px; background:url('/images/baby/photo.jpg') no-repeat; float:left; display:inline;}
@@ -11,3 +11,18 @@ li{margin:0px; list-style-type:none;}
 #ileft #log a{color:#2c629e; text-decoration:none;}
 #ileft .upload{width:30px; height:15px; margin-top:30px; margin-right:10px; line-height:15px; float:right; display:inline;}
 #ileft .upload a{color:#999999; text-decoration:none;}
+
+#iright{width:815px; margin-top:20px; padding-bottom:10px; margin-left:15px; line-height:20px; background:#ffffff; float:left; display:inline;}
+#iright #title{width:650px; height:25px; font-size:13px; font-weight:bold; margin-top:5px; padding-left:20px; margin-left:15px; line-height:25px; background:url('/images/baby/photo.jpg') 0 5px no-repeat; float:left; display:inline;}
+#iright #title1{width:650px; height:25px; font-size:13px; font-weight:bold; margin-top:5px; padding-left:20px; margin-left:15px; line-height:25px; background:url('/images/baby/log.jpg') 0 5px no-repeat; float:left; display:inline;}
+#iright #add{width:95px; height:25px; cursor:pointer; margin-top:10px; margin-right:10px; background:url('/images/baby/photo_add.jpg') no-repeat; overflow:hidden; float:right; display:inline;}
+#iright .pic{width:106px; margin-top:20px; margin-left:78px; float:left; display:inline;}
+#iright .pic img{width:106px; height:72px; border:none;}
+#iright .pictitle{width:106px; line-height:20px; float:left; display:inline;}
+#iright .pictitle a{color:#000000; text-decoration:none;}
+#iright .pic .edit{width:106px; height:20px; text-align:center; float:left; display:inline;}
+#iright .pic .edit a{color:#0000ff;}
+#iright .pic .edit span{color:#0000ff; cursor:pointer; text-decoration:underline;}
+#iright table{width:800px; margin-left:10px; float:left; display:inline;}
+#iright button{width:85px; height:24px; text-align:center; border:0px; line-height:24px; background:#ff8901; color:#ffffff; float:left; display:inline;}
+
