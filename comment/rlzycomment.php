@@ -16,7 +16,7 @@
             <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
             	<?php for($i=0;$i<count($comment);$i++){ ?>
 	              <tr>
-	                <td height="30" class="height180 txtLeft"><span class="bigblue b"><?php echo $comment[$i]->nick_name; ?>：</span><span class="gray"><?php echo $comment[$i]->comment; ?></span><?php if($cookie=="01720059"||$cookie=="01003441"){ ?>　　<span id="delcomment" param="<?php echo $comment[$i]->id; ?>" style="color:#0000ff; text-decoration:underline; cursor:pointer;">删除</span><?php } ?></td>
+	                <td height="30" class="height180 txtLeft"><span class="bigblue b"><?php echo $comment[$i]->nick_name; ?>：</span><span class="gray"><?php echo $comment[$i]->comment; ?></span><?php if($cookie=="01720059"||$cookie=="01003441"){ ?>　　<span class="delcomment" param="<?php echo $comment[$i]->id; ?>" style="color:#0000ff; text-decoration:underline; cursor:pointer;">删除</span><?php } ?></td>
 	              </tr>
 	              <tr>
 	                <td><img src="images/index_18.png" width="335" height="2" /></td>
@@ -50,7 +50,7 @@
 </body>
 <script>
 	$(document).ready(function(){
-		$("#delcomment").click(function(){
+		$(".delcomment").click(function(){
 			$.post("delcomment.post.php",{'id':$(this).attr('param')},function(data){			
 				alert('删除成功！');
 				location.reload();
