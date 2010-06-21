@@ -24,23 +24,15 @@ total("首页","other");
 <div id="ibody">
 	<div id="ileft_t">
 		<?php 
-			$find_param['order'] = $order ? $order : ' dateline desc';
-			$find_param['condition'] = 'catid=110';
-			$find_param['limit'] = 13;
-			$find_param['group'] = 'uid';
-			$images = BlogImages::find($find_param);
-			$find_param['order'] = $order ? $order : 'dateline desc';
-			$find_param['condition'] = 'catid=111';
-			$find_param['limit'] = 11;
-			$articles = BlogArticles::find($find_param);
+				
 		?>
 		<div id=pic>
-			<a target="_blank" href=""><img src="<?php echo $images[0]->thumbpath;?>"></a>	
+			<a target="_blank" href=""><img src="<?php echo $images[0]->photo_src;?>"></a>	
 		</div>
 		<div id=content>
 	
 		 <?php for($i=0;$i<11;$i++){ ?>
-			<div class=context><a target='_blank' href=''><?php echo $articles[$i]->subject; ?></a></div>
+			<div class=context><a target='_blank' href=''><?php echo $articles[$i]->title; ?></a></div>
 			<?php } ?>
 		</div>
 	</div>
@@ -52,6 +44,7 @@ total("首页","other");
 			<div id=sub></div>
 			<div id=reg></div>
 		</div>
+		<input type="hidden" name="user_type" value="login">
 	</div>
 </form>
 	<div id=iright_t>

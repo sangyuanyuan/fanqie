@@ -2,7 +2,7 @@
 
 $db_config['db_driver']   = 'db';	              //db,adodb,mdb
 $db_config['db_type']     = 'mysql';                  //mysql,mssql,oracle
-$db_config['db_host']     = '172.27.203.80';      //数据库主机	
+$db_config['db_host']     = '127.0.0.1';      //数据库主机	
 $db_config['db_user']     = 'root';      //数据库用户名	
 $db_config['db_password'] = 'xunao';  //数据库用户密码	
 $db_config['db_name']     = 'smg_new';      //数据库名		

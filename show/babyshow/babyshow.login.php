@@ -99,16 +99,7 @@ if($_POST['user_type']=="login")
 		echo $error;
 	}else{
 		if($error == 'ok'){
-
-			$last_url = $_POST['lasturl'];
-			if($login_info[0]->role_name == 'admin' || $login_info[0]->role_name == 'dept_admin'){
-				
-				$last_url = '/admin/admin.php';
-				//var_dump($_SESSION);
-			}else{
-				$last_url = '/';
-			}
-			redirect('');
+			redirect('person_index.php?id='.$login_info[0]->id,'js');
 		}else{
 			alert($error);
 			redirect('babyshow.login.php','js');
@@ -117,50 +108,6 @@ if($_POST['user_type']=="login")
 }
 
 
-
-if($_REQUEST['user_type']=="logout")
-{
-		SetCookie('smg_user_dept',"",$y2k,'/');
-		SetCookie('smg_username',"",$y2k,'/');
-		SetCookie('smg_user_nickname',"",$y2k,'/');
-		SetCookie('smg_userid',"",$y2k,'/');
-		SetCookie('smg_user_id',"",$y2k,'/');
-		SetCookie('smg_role',"",$y2k,'/');
-		$_SESSION["smg_role"]  = '';
-		echo uc_user_synlogout();
-		if(is_ajax()){
-			echo "ok";
-		}else{
-			redirect('/');
-		}
-		
-}
-
-if($_POST['user_type']=="reg")
-{
-	$user_text = $_POST['user_text'];
-	$password_text = $_POST['password_text'];
-	$email_text = $_POST['email_text'];
-
-	$db = get_db();
-	$sql = 'select * from smg_user where name="'.$user_text.'" ';
-	$reg_info = $db->query($sql);
-	$reg_info_num = $db->record_count;
-	if($reg_info_num == 1)
-	{
-		echo "error";
-	}
-	else
-	{
-		$y2k = mktime(0,0,0,1,1,2020); 
-		$sql = 'insert into smg_user (name,password,nickname,register_type,role) values ("'.$user_text.'","'.$password_text.'","'.$user_text.'",2,"member") ';
-		$db->execute($sql);
-		SetCookie(smg_username,$user_text,$y2k,'/');
-		SetCookie(smg_user_nickname,$user_text,$y2k,'/');
-		uc_user_register($user_text,$password_text,$user_text ."@smg.com");
-		echo "ok";
-	}	
-}
 
 
 

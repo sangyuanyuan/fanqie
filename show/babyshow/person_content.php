@@ -21,16 +21,14 @@
 total("首页","other");
 </script>
 <body>
-	<?php require_once('person_head.php');
-				$y2k = mktime(0,0,0,1,1,2020);
-				@setcookie('babyshowid',$_REQUEST['id'],$y2k,'/');?>
+	<?php require_once('person_head.php');?>
 	<div id=ibody>
 		<? require_once('person_left.php');?>
 		<div id=iright>
-			<?php $photo=$db->query('select * from smg_babyshow_photo where user_id='.$id); ?>
+			<?php $act=$db->query('select * from smg_babyshow_act where user_id='.$id); ?>
 				<div id=title>相册</div><div id=addphoto></div>
-			 	<?php for($i=0;$i<count($photo);$i++){ ?>
-			 		<div class=pic><a href="<?php echo $photo[$i]->photo_src; ?>"><img src="<?php echo $photo[$i]->photo_src; ?>"></a><div class=pictitle></div><div class=edit><?php if($id==$cookie){ ?><a href="person_addphoto.php?id=<?php echo $photo[$i]->id; ?>">编辑</a>　　<span id="photodel" param="<?php echo $photo[$i]->id; ?>">删除</span><?php } ?></div></div>
+			 	<?php for($i=0;$i<count($act);$i++){ ?>
+			 		<div class=listcontent></div>
 			 	<?php } ?>
 		</div>
 	</div>

@@ -22,7 +22,7 @@
                   </tr>
                    <?php } ?>
                   <tr>
-                    <td height="40" align="center"><a href="#" class="blue"><?php paginate('');?></a></td>
+                    <td height="40" align="center"><?php paginate('');?></td>
                   </tr>
                   </table></td>
               </tr>
@@ -36,11 +36,10 @@
                 <td width="340" ><table width="100%" border="0" cellspacing="0" cellpadding="0">
                  
                   <tr>
-                    <td height="125" class="height180 txtLeft" style="background:url(images/haibao.gif) no-repeat; padding-left:100px;"><b>『世博承诺在我心,创先争优见我行』<br />
-                      欢迎留下您的七一感言。参与方式：</b><br />
-                      1、发送文字短信到<span class="red">10657300001610001</span>。<br />
-                      2、在以下对话框直接输入您的心声，然后按
-                      “发送留言”。</td>
+                    <td height="125" class="height180 txtLeft" style="background:url(images/haibao.gif) no-repeat; padding-left:100px;"><b><span style="color:red; font-weight:bold;">『世博承诺在我心,创先争优见我行』</span><br />
+                  欢迎留下您的七一感言。参与方式：</b><br />
+                  在以下对话框直接输入您的心声，然后按
+“发送留言”。</td>
                     </tr>
                   <tr>
                     <td height="35" class="b txtRight p">姓名

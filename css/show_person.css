@@ -15,7 +15,8 @@ li{margin:0px; list-style-type:none;}
 #iright{width:815px; margin-top:20px; padding-bottom:10px; margin-left:15px; line-height:20px; background:#ffffff; float:left; display:inline;}
 #iright #title{width:650px; height:25px; font-size:13px; font-weight:bold; margin-top:5px; padding-left:20px; margin-left:15px; line-height:25px; background:url('/images/baby/photo.jpg') 0 5px no-repeat; float:left; display:inline;}
 #iright #title1{width:650px; height:25px; font-size:13px; font-weight:bold; margin-top:5px; padding-left:20px; margin-left:15px; line-height:25px; background:url('/images/baby/log.jpg') 0 5px no-repeat; float:left; display:inline;}
-#iright #add{width:95px; height:25px; cursor:pointer; margin-top:10px; margin-right:10px; background:url('/images/baby/photo_add.jpg') no-repeat; overflow:hidden; float:right; display:inline;}
+#iright #addphoto{width:95px; height:25px; cursor:pointer; margin-top:10px; margin-right:10px; background:url('/images/baby/photo_add.jpg') no-repeat; overflow:hidden; float:right; display:inline;}
+#iright #addact{width:95px; height:25px; cursor:pointer; margin-top:10px; margin-right:10px; background:url('/images/baby/photo_add.jpg') no-repeat; overflow:hidden; float:right; display:inline;}
 #iright .pic{width:106px; margin-top:20px; margin-left:78px; float:left; display:inline;}
 #iright .pic img{width:106px; height:72px; border:none;}
 #iright .pictitle{width:106px; line-height:20px; float:left; display:inline;}
@@ -25,4 +26,12 @@ li{margin:0px; list-style-type:none;}
 #iright .pic .edit span{color:#0000ff; cursor:pointer; text-decoration:underline;}
 #iright table{width:800px; margin-left:10px; float:left; display:inline;}
 #iright button{width:85px; height:24px; text-align:center; border:0px; line-height:24px; background:#ff8901; color:#ffffff; float:left; display:inline;}
-
+#iright .listcontent{width:800px; height:20px; margin-left:10px; line-height:20px; float:left; display:inline;}
+#iright .listtitle{width:600px; height:20px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#iright .listtitle a{color:#000000; text-decoration:none;}
+#iright .listtime{width:80px; height:20px; text-align:center; line-height:20px; color:#cccccc; overflow:hidden; float:left; display:inline;}
+#iright .listcz{width:120px; height:20px; text-align:center; float:right; display:inline;}
+#iright .listcz a{color:#0000ff;}
+#iright .listcz span{color:#0000ff; cursor:pointer;}
+#iright .listcontent #content_title{width:800px; height:30px; margin-left:10px; line-height:30px; text-align:center; font-size:26px; font-weight:bold; float:left; display:inline;}
+#iright .listcontent #content_content{width:800px; margin-left:10px; float:left; display:inline;}
