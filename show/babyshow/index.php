@@ -24,16 +24,16 @@ total("宝宝秀","show");
 <div id="ibody">
 	<div id="ileft_t">
 		<?php 
-				$images=$db->query('select * from smg_babyshow_photo order by created_at desc');
+				$images=$db->query('select distinct user_id,photo_src from smg_babyshow_photo order by created_at desc');
 		?>
 		<div id=pic>
-			<a target="_blank" href=""><img src="<?php echo $images[0]->photo_src;?>"></a>	
+			<a target="_blank" href="person_index.php?id=<?php echo urlencode($images[0]->user_id); ?>"><img src="<?php echo $images[0]->photo_src;?>"></a>	
 		</div>
 		<div id=content>
  <?php
  $articles=$db->query('select * from smg_babyshow_act order by created_at desc');
   for($i=0;$i<11;$i++){ ?>
-			<div class=context><a target='_blank' href=''><?php echo $articles[$i]->title; ?></a></div>
+			<div class=context><a target='_blank' href='person_content.php?id='><?php echo $articles[$i]->title; ?></a></div>
 			<?php } ?>
 		</div>
 	</div>
@@ -55,20 +55,28 @@ total("宝宝秀","show");
 		 	if($blog[$i]->pid=="")
 		 	{
 		 	?>
-				<div class=content><a href="person_index.php?id=<?php echo $blog[$i]->auser; ?>"><?php echo $blog[$i]->auser; ?></a>发表了<a href="">新日志</div>	
-			<?php} } ?>
+				<div class=content><a target="_blank" href="person_index.php?id=<?php echo urlencode($blog[$i]->auser); ?>"><?php echo $blog[$i]->auser; ?></a>发表了<a target="_blank" href="person_content.php?id=<?php echo $blog[$i]->aid; ?>">新日志</a></div>	
+			<?php }else{?>
+				<div class=content><a target="_blank" href="person_index.php?id=<?php echo urlencode($blog[$i]->puser); ?>"><?php echo $blog[$i]->puser; ?></a>上传了<a target="_blank" href="<?php echo $blog[$i]->photo_src; ?>">新图片</a></div>	
+				<? }} ?>
 	</div>
 	<div id=ileft_b>
 			<?php for($i=1;$i<count($images);$i++){ ?>
-				<div class=pic><a target="_blank" href="<?php echo $images[$i]->href.'>'.$images[$i]->subject; ?>"><img src="<?php echo $images[$i]->thumbpath;?>"></a></div>
+				<div class=pic><a target="_blank" href="person_index.php?id=<?php echo urlencode($images[$i]->user_id); ?>"><img src="<?php echo $images[$i]->photo_src;?>"></a></div>
 			<?php } ?>
 	</div>
 	<div id=iright_b>
 		<?php 
-
-		for($i=0;$i<count($blog);$i++){ ?>
-			<div class=pic><a target="_blank" href=""><img src="/ucenter/data/avatar/000/00/00/<?php echo $blog[$i]->uid; ?>_avatar_middle.jpg"></a></div>
-		<?php } ?>	
+		$j=0;
+		for($i=0;$i<count($blog);$i++){
+			if($blog[$i]->puser!=""&&$j<6)
+			{
+				$j++;
+			 ?>
+			<div class=pic><a target="_blank" href="person_index.php?id=<?php echo urlencode($blog[$i]->puser); ?>"><img src="<?php echo $blog[$i]->photo_src; ?>"></a></div>
+		<?php
+			}
+		} ?>	
 	</div>
 </div>
 </body>
