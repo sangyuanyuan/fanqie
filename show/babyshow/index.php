@@ -55,7 +55,7 @@ total("宝宝秀","show");
 		 	if($blog[$i]->pid=="")
 		 	{
 		 	?>
-				<div class=content><a href="person_index.php?id=<?php echo iconv("gb2312","utf-8",$blog[$i]->auser); ?>"><?php echo $blog[$i]->auser; ?></a>发表了<a href="">新日志</div>	
+				<div class=content><a href="person_index.php?id=<?php echo $blog[$i]->auser; ?>"><?php echo $blog[$i]->auser; ?></a>发表了<a href="">新日志</div>	
 			<?php} } ?>
 	</div>
 	<div id=ileft_b>
