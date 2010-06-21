@@ -15,7 +15,7 @@
                 <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
                 	<?php for($i=0;$i<count($comment);$i++){ ?>
                   <tr>
-                    <td class="height180 txtLeft"><span class="bigblue b"><?php echo $comment[$i]->nick_name; ?>：</span><span class="gray"><?php echo $comment[$i]->comment; ?></span></td>
+                    <td class="height180 txtLeft"><span class="bigblue b"><?php echo $comment[$i]->nick_name; ?>：</span><span class="gray"><?php echo $comment[$i]->comment; ?></span>　　<span id="delcomment" param="<?php echo $comment[$i]->id; ?>" style="color:#0000ff; text-decoration:underline; cursor:pointer;">删除</span></td>
                   </tr>
                   <tr>
                     <td><img src="images/listline.gif" width="494" height="4" /></td>
@@ -64,3 +64,13 @@
           </tr>
           </table>
  </body>
+ <script>
+	$(document).ready(function(){
+		$("#delcomment").click(function(){
+			$.post("delcomment.post.php",{'id':$(this).attr('param')},function(data){			
+				alert('删除成功！');
+				location.reload();
+			});
+		});	
+	});	
+</script>
