@@ -1,8 +1,8 @@
 ﻿<?php
 	require_once('../../frame.php');
 	$db = get_db();
-	$id=$_REQUEST['id'];
-	$cookie=$_COOKIE['smg_user_id'];
+	$id=urlencode($_REQUEST['id']);
+	$cookie=$_COOKIE['smg_user_nickname'];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,7 +18,7 @@
 	
 </head>
 <script>
-total("首页","other");
+total("宝宝秀","show");
 </script>
 <body>
 	<?php require_once('person_head.php');

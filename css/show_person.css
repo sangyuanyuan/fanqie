@@ -16,7 +16,7 @@ li{margin:0px; list-style-type:none;}
 #iright #title{width:650px; height:25px; font-size:13px; font-weight:bold; margin-top:5px; padding-left:20px; margin-left:15px; line-height:25px; background:url('/images/baby/photo.jpg') 0 5px no-repeat; float:left; display:inline;}
 #iright #title1{width:650px; height:25px; font-size:13px; font-weight:bold; margin-top:5px; padding-left:20px; margin-left:15px; line-height:25px; background:url('/images/baby/log.jpg') 0 5px no-repeat; float:left; display:inline;}
 #iright #addphoto{width:95px; height:25px; cursor:pointer; margin-top:10px; margin-right:10px; background:url('/images/baby/photo_add.jpg') no-repeat; overflow:hidden; float:right; display:inline;}
-#iright #addact{width:95px; height:25px; cursor:pointer; margin-top:10px; margin-right:10px; background:url('/images/baby/photo_add.jpg') no-repeat; overflow:hidden; float:right; display:inline;}
+#iright #addact{width:95px; height:25px; cursor:pointer; margin-top:10px; margin-right:10px; background:url('/images/baby/act_add.jpg') no-repeat; overflow:hidden; float:right; display:inline;}
 #iright .pic{width:106px; margin-top:20px; margin-left:78px; float:left; display:inline;}
 #iright .pic img{width:106px; height:72px; border:none;}
 #iright .pictitle{width:106px; line-height:20px; float:left; display:inline;}

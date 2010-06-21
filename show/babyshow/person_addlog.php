@@ -5,7 +5,7 @@
 	{
 		$babyshow=$db->query('select * from smg_babyshow_act where id='.$_REQUEST['id']);	
 	}
-	$cookie=$_COOKIE['smg_user_id'];
+	$cookie=$_COOKIE['smg_user_nickname'];
 	if($cookie=="")
 	{
 		alert('请登录后进行操作！');
@@ -26,7 +26,7 @@
 	
 </head>
 <script>
-total("首页","other");
+total("宝宝秀","show");
 </script>
 <body>
 	<?php require_once('person_head.php');?>

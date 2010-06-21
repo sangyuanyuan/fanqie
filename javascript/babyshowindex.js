@@ -35,8 +35,8 @@
 		if(confirm('确定要删除吗？'))
 		{
 			$.post("person.post.php",{'babyshowtype':'photodel','id':$(this).attr('param')},function(data){
-				alert('删除成功！');
-				location.reload();
+					alert('删除成功！');
+					location.reload();
 			});
 		}
 	});

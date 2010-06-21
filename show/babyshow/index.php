@@ -18,20 +18,21 @@
 	
 </head>
 <script>
-total("首页","other");
+total("宝宝秀","show");
 </script>
 <body>
 <div id="ibody">
 	<div id="ileft_t">
 		<?php 
-				
+				$images=$db->query('select * from smg_babyshow_photo order by created_at desc');
 		?>
 		<div id=pic>
 			<a target="_blank" href=""><img src="<?php echo $images[0]->photo_src;?>"></a>	
 		</div>
 		<div id=content>
-	
-		 <?php for($i=0;$i<11;$i++){ ?>
+ <?php
+ $articles=$db->query('select * from smg_babyshow_act order by created_at desc');
+  for($i=0;$i<11;$i++){ ?>
 			<div class=context><a target='_blank' href=''><?php echo $articles[$i]->title; ?></a></div>
 			<?php } ?>
 		</div>
@@ -48,11 +49,14 @@ total("首页","other");
 	</div>
 </form>
 	<div id=iright_t>
-				<?php $db=get_db();
-		$blog=$db->query('select a.uid,m.username,a.type from blog_attachments a left join blog_members m on a.uid=m.uid where (a.catid=110 or a.catid=111) group by uid order by dateline desc limit 11');
-		 for($i=0;$i<11;$i++){ ?>
-				<div class=content><a target="_blank" href=""></a></div>
-			<?php } ?>
+				<?php 
+		$blog=$db->query('select a.id as aid,a.title,p.id as pid,photo_src,p.user_id as puser,a.user_id as auser from smg_babyshow_act a,smg_babyshow_photo p order by p.created_at desc,a.created_at desc');
+		 for($i=0;$i<11;$i++){ 
+		 	if($blog[$i]->pid=="")
+		 	{
+		 	?>
+				<div class=content><a href="person_index.php?id=<?php echo iconv("gb2312","utf-8",$blog[$i]->auser); ?>"><?php echo $blog[$i]->auser; ?></a>发表了<a href="">新日志</div>	
+			<?php} } ?>
 	</div>
 	<div id=ileft_b>
 			<?php for($i=1;$i<count($images);$i++){ ?>

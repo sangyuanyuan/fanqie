@@ -1,7 +1,7 @@
 ﻿<?php
 	require_once('../../frame.php');
 	$db = get_db();
-	$cookie=$_COOKIE['smg_user_id'];
+	$cookie=$_COOKIE['smg_user_nickname'];
 	if($cookie=="")
 	{
 		alert('请登录后进行操作！');
@@ -26,7 +26,7 @@
 	
 </head>
 <script>
-total("首页","other");
+total("宝宝秀","show");
 </script>
 <body>
 	<?php require_once('person_head.php');?>
