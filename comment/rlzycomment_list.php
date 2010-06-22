@@ -49,7 +49,7 @@
                    </tr>
                   <tr>
 		                <td height="35" class="b txtRight p">部门
-		                  <input type="text" class="borderbox" id="textfield" size="8" name="post[dept_name]" />&nbsp;&nbsp;</td>
+		                  <input type="text" class="borderbox" id="textfield" size="16" name="post[dept_name]" />&nbsp;&nbsp;</td>
 		              </tr>
                   <tr>
                     <td><span class="b">
