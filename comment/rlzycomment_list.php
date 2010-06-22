@@ -16,7 +16,7 @@
                 <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
                 	<?php for($i=0;$i<count($comment);$i++){ ?>
                   <tr>
-                    <td class="height180 txtLeft"><span class="bigblue b"><?php echo $comment->dept_name." ".$comment[$i]->nick_name; ?>：</span><span class="gray"><?php echo $comment[$i]->comment; ?></span><?php if($cookie=="01720059"||$cookie=="01003441"){ ?>　　<span class="delcomment" param="<?php echo $comment[$i]->id; ?>" style="color:#0000ff; text-decoration:underline; cursor:pointer;">删除</span><?php } ?></td>
+                    <td class="height180 txtLeft"><span class="bigblue b"><?php echo $comment[$i]->dept_name." ".$comment[$i]->nick_name; ?>：</span><span class="gray"><?php echo $comment[$i]->comment; ?></span><?php if($cookie=="01720059"||$cookie=="01003441"){ ?>　　<span class="delcomment" param="<?php echo $comment[$i]->id; ?>" style="color:#0000ff; text-decoration:underline; cursor:pointer;">删除</span><?php } ?></td>
                   </tr>
                   <tr>
                     <td><img src="images/listline.gif" width="494" height="4" /></td>
