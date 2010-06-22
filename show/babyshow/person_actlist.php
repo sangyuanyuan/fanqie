@@ -28,7 +28,7 @@ total("宝宝秀","show");
 			<?php $act=$db->query('select * from smg_babyshow_act where user_id='.$id); ?>
 				<div id=title>日志</div><div id=addact></div>
 			 	<?php for($i=0;$i<count($act);$i++){ ?>
-			 		<div class=listcontent><div class=listtitle><?php echo $act[$i]->title; ?></div><div class=listtime><?php echo $act[$i]->created_at; ?></div><div class=listcz><?php if($id==$cookie){ if($act[$i]->isadopt==0){ ?><span id="isdopt">发布</span><?php }else{ ?><span id="undopt" style="color:red;">撤销</span><?php } ?>　　<a href="person_addlog.php?id=<?php echo $act[$i]->id; ?>">编辑</a>　　<span id="photodel" param="<?php echo $photo[$i]->id; ?>">删除</span><?php } ?></div></div>
+			 		<div class=listcontent><div class=listtitle><a target="_blank" href="person_content.php?id=<?php echo $act[$i]->id; ?>&type=act"><?php echo $act[$i]->title; ?></a></div><div class=listtime><?php echo $act[$i]->created_at; ?></div><div class=listcz><?php if($id==$cookie){ if($act[$i]->isadopt==0){ ?><span id="isdopt">发布</span><?php }else{ ?><span id="undopt" style="color:red;">撤销</span><?php } ?>　　<a href="person_addlog.php?id=<?php echo $act[$i]->id; ?>">编辑</a>　　<span id="photodel" param="<?php echo $photo[$i]->id; ?>">删除</span><?php } ?></div></div>
 			 	<?php } ?>
 		</div>
 	</div>

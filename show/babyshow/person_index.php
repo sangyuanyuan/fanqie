@@ -30,7 +30,7 @@ total("宝宝秀","show");
 			<?php $photo=$db->query('select * from smg_babyshow_photo where user_id='.$id); ?>
 				<div id=title>相册</div><div id=addphoto></div>
 			 	<?php for($i=0;$i<count($photo);$i++){ ?>
-			 		<div class=pic><a href="<?php echo $photo[$i]->photo_src; ?>"><img src="<?php echo $photo[$i]->photo_src; ?>"></a><div class=pictitle></div><div class=edit><?php if($id==$cookie){ ?><a href="person_addphoto.php?id=<?php echo $photo[$i]->id; ?>">编辑</a>　　<span id="photodel" param="<?php echo $photo[$i]->id; ?>">删除</span><?php } ?></div></div>
+			 		<div class=pic><a target="_blank" href="person_content.php?id=<?php echo $photo[$i]->id; ?>&type=photo"><img src="<?php echo $photo[$i]->photo_src; ?>"></a><div class=pictitle></div><div class=edit><?php if($id==$cookie){ ?><a href="person_addphoto.php?id=<?php echo $photo[$i]->id; ?>">编辑</a>　　<span id="photodel" param="<?php echo $photo[$i]->id; ?>">删除</span><?php } ?></div></div>
 			 	<?php } ?>
 		</div>
 	</div>

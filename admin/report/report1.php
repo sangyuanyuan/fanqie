@@ -44,7 +44,7 @@ $clickcount1=$db->query("select sum(count) as totalcount from smg_total where pl
 			<td>展示</td><td>　<?php echo $clickcount1[3]->totalcount; ?></td>
 		</tr>
 		<tr height="20" align="center">
-			<td>交流</td><td>　<?php echo $clickcount1[4]->totalcount; ?></td>
+			<td>交流</td><td>　<?php echo $clickcount1[5]->totalcount; ?></td>
 		</tr>
 		<tr height="20" align="center">
 			<td>其他</td><td>　<?php echo $clickcount1[1]->totalcount; ?></td>

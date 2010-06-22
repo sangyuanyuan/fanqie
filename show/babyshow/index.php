@@ -55,9 +55,9 @@ total("宝宝秀","show");
 		 	if($blog[$i]->pid=="")
 		 	{
 		 	?>
-				<div class=content><a target="_blank" href="person_index.php?id=<?php echo urlencode($blog[$i]->auser); ?>"><?php echo $blog[$i]->auser; ?></a>发表了<a target="_blank" href="person_content.php?id=<?php echo $blog[$i]->aid; ?>">新日志</a></div>	
+				<div class=content><a target="_blank" href="person_index.php?id=<?php echo urlencode($blog[$i]->auser); ?>"><?php echo $blog[$i]->auser; ?></a>发表了<a target="_blank" href="person_content.php?id=<?php echo $blog[$i]->aid; ?>&type=act">新日志</a></div>	
 			<?php }else{?>
-				<div class=content><a target="_blank" href="person_index.php?id=<?php echo urlencode($blog[$i]->puser); ?>"><?php echo $blog[$i]->puser; ?></a>上传了<a target="_blank" href="<?php echo $blog[$i]->photo_src; ?>">新图片</a></div>	
+				<div class=content><a target="_blank" href="person_index.php?id=<?php echo urlencode($blog[$i]->puser); ?>"><?php echo $blog[$i]->puser; ?></a>上传了<a target="_blank" href="person_content.php?id=<?php echo $blog[$i]->pid; ?>&type=photo">新图片</a></div>	
 				<? }} ?>
 	</div>
 	<div id=ileft_b>
