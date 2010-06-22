@@ -16,7 +16,7 @@
                 <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
                 	<?php for($i=0;$i<count($comment);$i++){ ?>
                   <tr>
-                    <td class="height180 txtLeft"><span class="bigblue b"><?php echo $comment[$i]->nick_name; ?>：</span><span class="gray"><?php echo $comment[$i]->comment; ?></span><?php if($cookie=="01720059"||$cookie=="01003441"){ ?>　　<span class="delcomment" param="<?php echo $comment[$i]->id; ?>" style="color:#0000ff; text-decoration:underline; cursor:pointer;">删除</span><?php } ?></td>
+                    <td class="height180 txtLeft"><span class="bigblue b"><?php echo $comment->dept_name."_".$comment[$i]->nick_name; ?>：</span><span class="gray"><?php echo $comment[$i]->comment; ?></span><?php if($cookie=="01720059"||$cookie=="01003441"){ ?>　　<span class="delcomment" param="<?php echo $comment[$i]->id; ?>" style="color:#0000ff; text-decoration:underline; cursor:pointer;">删除</span><?php } ?></td>
                   </tr>
                   <tr>
                     <td><img src="images/listline.gif" width="494" height="4" /></td>
@@ -46,7 +46,11 @@
                     <td height="35" class="b txtRight p">姓名
                       <input name="post[nick_name]" type="text" class="borderbox" id="textfield" size="16" />
                       &nbsp;&nbsp;</td>
-                    </tr>
+                   </tr>
+                  <tr>
+		                <td height="35" class="b txtRight p">部门
+		                  <input type="text" class="borderbox" id="textfield" size="8" name="post[dept_name]" />&nbsp;&nbsp;</td>
+		              </tr>
                   <tr>
                     <td><span class="b">
                       <textarea name="post[comment]" style="width:320px;"rows="8" class="borderbox" id="textfield2"></textarea>
