@@ -44,8 +44,7 @@
                     </tr>
                   <tr>
                     <td height="35" class="b txtRight p">姓名
-                      <input name="post[nick_name]" type="text" class="borderbox" id="textfield" size="16" />
-                      &nbsp;&nbsp;</td>
+                      <input name="post[nick_name]" type="text" class="borderbox" id="textfield" size="16" />&nbsp;&nbsp;</td>
                    </tr>
                   <tr>
 		                <td height="35" class="b txtRight p">部门
