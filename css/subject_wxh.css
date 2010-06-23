@@ -23,7 +23,7 @@
 .b_content .cl a{color:#ffffff; text-decoration:none;}
 .b_content .flower{width:65px; height:30px; margin-top:5px; cursor:pointer; margin-right:5px; line-height:23px; color:#ffffff; float:right; display:inline;}
 .b_content .flower img{width:32px; height:23px; border:0px;}
-.b_content_person{width:119px; height:168px; background:url('/images/bg/wxh_person_bg.jpg') no-repeat; float:left; display:inline;}
+.b_content_person{width:119px; height:168px; margin-top:20px; margin-left:4px; background:url('/images/bg/wxh_person_bg.jpg') no-repeat; float:left; display:inline;}
 .b_content_person .b_c_t{width:108px; height:90px; text-align:center; margin-top:7px; float:left; display:inline;}
 .b_content_person .b_c_b{width:108px; height:56px; margin-top:10px; line-height:18px; float:left; display:inline;}
 .b_content_person .b_c_b_t{width:104px; height:30px; margin:2px; line-height:15px; overflow:hidden; float:left; display:inline;}
