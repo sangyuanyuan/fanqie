@@ -6,7 +6,7 @@
 	$title = $_REQUEST['title'];
 	$db = get_db();
 	if($title){
-		$record = search_content($title,'smg_wxh_question','',20,'priority asc,created_at desc');
+		$record = $db->query('select * from smg_wxh_question where title like "%'.$title.'%"');
 	}else{
 		$news = new table_class('smg_wxh_question');
 		$record = $news->paginate('all',array('conditions' => '','order' => 'priority asc,created_at desc'),20);
