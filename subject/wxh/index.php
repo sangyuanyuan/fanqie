@@ -38,7 +38,7 @@ total("务虚会专题","other");
 					<marquee height="100" width="250" DIRECTION="up" scrollamount="2" onmouseover=this.stop() onmouseout=this.start()>
 							<?php 
 								$db=get_db(); 
-								$comment=$db->query('select * from smg_comment where resource_type="wxh" order by created_at desc');
+								$comment=$db->query('select * from smg_comment where resource_type="wxh2" order by created_at desc');
 								for($i=0;$i<count($comment);$i++)
 								{
 									echo $comment[$i]->nick_name.':'.$comment[$i]->comment.'<br>';
@@ -61,29 +61,58 @@ total("务虚会专题","other");
 			</div>
 		</div>
 		<div id=ibottom>
-			<div id=b_t>
-				<?php $pic=$db->query('select id,title,photo_src,flower from smg_news where category_id=185 and is_adopt=1 order by priority asc,created_at desc limit 14');
-				for($i=0;$i<6;$i++)
-				{
-					$flower = file_get_contents($pic[$i]->id.'.txt');
-				?>
-				<div class="b_content" <?php if($i==0){ ?>style="margin-left:133px;"<?php } ?>>
-					<div class="b_c_t">
-						<a target="_blank" href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=70 height=90 src="<?php echo $pic[$i]->photo_src; ?>"></a>	
-					</div>
-					<div class="b_c_b">
-						<div class=b_c_b_t><a href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><?php echo delhtml($pic[$i]->title); ?></a></div>
-						<div class=b_c_b_b><div class=b_c_b_wz><?php echo $flower; ?></div><div class=b_c_b_pic name="<?php echo $pic[$i]->id; ?>"><img class="flower" src="/images/wxh_flower.gif"></div></div>
-					</div>
-				</div>
+			<div class=b_title style="border-left:none;">最新问题</div>
+			<div class=b_title style="border-left:none; border-right:none;">所有问题</div>
+			<div class=b_title style="border-right:none;">问题排行</div>
+			<div class=b_content style="border-left:none;">
+				<?php
+				$question=$db->query("select * from smg_wxh_question where is_adopt=1 order by created_at desc");
+				 for($i=0;$i<10;$i++){ ?>
+					<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img src="/images/wxh_flower.gif">　<?php echo $question[$i]->flowernum; ?></div>
 				<?php } ?>
 			</div>
-			<div id=b_b>
-				<? for($i=6;$i<count($pic);$i++)
+			<div class=b_content style="border-left:none; border-right:none;">
+				<div id="demo" style="height:315px; width:330px; overflow:hidden ">
+					<div id="demo1">
+					    <?php for($i=0;$i<count($question);$i++){ ?>
+								<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img src="/images/wxh_flower.gif">　<?php echo $question[$i]->flowernum; ?></div>
+							<?php } ?>
+					</div>
+					<div id="demo2"></div>
+					
+					<!--滚动的javascript-->
+					<script>
+					var speed=50
+					$("#demo2").innerHTML=$("#demo1").innerHTML
+					function Marquees(){
+					if($("#demo2").offsetTop-$("#demo").scrollTop<=0)
+					$("#demo").scrollTop-=$("#demo1").offsetHeight
+					else{
+					$("#demo").scrollTop++
+					}
+					}
+					var MyMars=setInterval(Marquees,speed)
+					$("#demo").onmouseover=function() { clearInterval(MyMars) }
+					$("#demo").onmouseout=function() { MyMars=setInterval(Marquees,speed) }
+					</script><!--滚动的javascript结束-->
+       	</div> 
+				
+					<div class=cl><a style="font-size:16px; font-weight:bold; float:right; display:inline;" class="thickbox" href="question.php?height=255&width=320">我要提问</a></div>
+			</div>
+			<div class=b_content style="border-right:none;">
+				<?php 
+				$question=$db->query("select * from smg_wxh_question where is_adopt=1 order by flowernum desc limit 10");
+				for($i=0;$i<10;$i++){ ?>
+					<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img src="/images/wxh_flower.gif">　<?php echo $question[$i]->flowernum; ?></div>
+				<?php } ?>
+			</div>
+				<?
+				$pic=$db->query('select id,title,photo_src,flower from smg_news where category_id=232 and is_adopt=1 order by priority asc,created_at desc limit 14');
+				 for($i=0;$i<count($pic);$i++)
 				{
-					$flower = file_get_contents($pic[$i]->id.'.txt');
+					//$flower = file_get_contents($pic[$i]->id.'.txt');
 				?>
-				<div class="b_content" <?php if($i==6){ ?>style="margin-left:5px;"<?php } ?>>
+				<div class="b_content_person" <?php if($i==6){ ?>style="margin-left:5px;"<?php } ?>>
 					<div class="b_c_t">
 						<a target="_blank" href="/news/news/news.php?id=<?php echo $pic[$i]->id; ?>"><img border=0 width=70 height=90 src="<?php echo $pic[$i]->photo_src; ?>"></a>	
 					</div>
@@ -93,7 +122,6 @@ total("务虚会专题","other");
 					</div>
 				</div>
 				<?php } ?>
-			</div>
 			<input id="session" type="hidden" value="<?php echo $_SESSION['smg_role']; ?>">
 		</div>
 	</div>

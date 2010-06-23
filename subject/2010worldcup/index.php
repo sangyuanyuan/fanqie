@@ -40,10 +40,9 @@
 		<div id=comment>
 			<div class=title>
 				<div class="title_left"><img src="/images/worldcup/comment_title.jpg"></div>
-				<div class="adidas"><img src="/images/worldcup/adidas.jpg"></div>
 				<div class="title_more"><a target="_blank" href="video_list.php?id=<?php echo $record_video[0]->id; ?>">精彩视频</a></div>	
 			</div>
-			<div style="width:100%; height:25px; line-height:25px; font-size:18px; color:#ff0000; text-align:center; float:left; display:inline;">参加活动的网友均有机会获得adidas精美小礼品</div>
+			<div style="width:100%; height:25px; line-height:25px; font-size:18px; color:#ff0000; text-align:center; float:left; display:inline;">参加活动的网友均有机会获得番茄网精美小礼品</div>
 			<div id=answer>世界杯答题第一期</div><div id=submit>我要答题</div>
 			<div id=content>	
 				<?php for($i=0;$i<count($comment);$i++){ ?>
