@@ -72,34 +72,32 @@ total("务虚会专题","other");
 				<?php } ?>
 			</div>
 			<div class=b_content style="border-left:none; border-right:none;">
-				<div id="demo" style="height:315px; width:330px; overflow:hidden ">
-					<div id="demo1">
-					    <?php for($i=0;$i<count($question);$i++){ ?>
-								<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img class="flowernum" param="<?php echo $question[$i]->id; ?>" src="/images/wxh_flower.gif">　<span style="display:none;"><?php echo $question[$i]->flowernum; ?></span></div>
-							<?php } ?>
+					<DIV id=demo style="OVERFLOW: hidden; height:315px; width:330px;">
+				      <DIV id=demo1>
+	            <?php for($i=0;$i<count($question);$i++){ ?>
+	            	<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img class="flowernum" param="<?php echo $question[$i]->id; ?>" src="/images/wxh_flower.gif">　<span style="display:none;"><?php echo $question[$i]->flowernum; ?></span></div>
+	            <? }?>
+	          	</div>
+        			<div id="demo2"></div>
+			      <SCRIPT language="javascript"> 
+							var speed=50; 
+							var demo = document.getElementById('demo');
+							var demo1 = document.getElementById('demo1');
+							var demo2 = document.getElementById('demo2'); 
+							demo2.innerHTML=demo1.innerHTML; 
+							function Marquee(){ 
+							    if(demo2.offsetTop-demo.scrollTop<=0){ 
+							        demo.scrollTop-=demo1.offsetHeight; 
+							    } 
+							    else{ 
+							        demo.scrollTop++; 
+							    } 
+							} 
+							var MyMar=setInterval(Marquee,speed); 
+							demo.onmouseover=function() {clearInterval(MyMar)}; 
+							demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}; 
+						</SCRIPT> 
 					</div>
-					<div id="demo2"></div>
-					
-					<!--滚动的javascript-->
-					<script>
-					var speed=50;
-					var demo = document.getElementById('demo');
-					var demo1 = document.getElementById('demo1');
-					var demo2 = document.getElementById('demo2'); 
-					demo2.innerHTML=demo1.innerHTML
-					function Marquees(){
-					if(demo2.offsetTop-demo.scrollTop<=0)
-					demo.scrollTop-=demo1.offsetHeight
-					else{
-					demo.scrollTop++
-					}
-					}
-					var MyMars=setInterval(Marquees,speed)
-					demo.onmouseover=function() { clearInterval(MyMars) }
-					demo.onmouseout=function() { MyMars=setInterval(Marquees,speed) }
-					</script><!--滚动的javascript结束-->
-       	</div> 
-				
 					<div class=cl><a style="font-size:16px; font-weight:bold; float:right; display:inline;" class="thickbox" href="question.php?height=255&width=320">我要提问</a></div>
 			</div>
 			<div class=b_content style="border-right:none;">
