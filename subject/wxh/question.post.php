@@ -14,7 +14,7 @@
 	$comment->created_at = date("Y-m-d H:i:s");
 	$comment->ip = $_SERVER['REMOTE_ADDR'];
 	$comment->jd=2;
-	$comment->priority=0;
+	$comment->priority=100;
 	$comment->save();
 	alert('提交成功！');
 	redirect('index.php');
