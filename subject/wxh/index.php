@@ -61,39 +61,42 @@ total("务虚会专题","other");
 			</div>
 		</div>
 		<div id=ibottom>
-			<div class=b_title style="border-left:none;">最新问题</div>
+			<div class=b_title style="border-left:none;">热点问题</div>
 			<div class=b_title style="border-left:none; border-right:none;">所有问题</div>
-			<div class=b_title style="border-right:none;">问题排行</div>
+			<div class=b_title style="border-right:none;">人气榜</div>
 			<div class=b_content style="border-left:none;">
 				<?php
-				$question=$db->query("select * from smg_wxh_question where is_adopt=1 order by created_at desc");
+				$question=$db->query("select * from smg_wxh_question where is_adopt=1 order by priority asc, created_at desc");
 				 for($i=0;$i<10;$i++){ ?>
-					<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img src="/images/wxh_flower.gif">　<?php echo $question[$i]->flowernum; ?></div>
+					<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img class="flowernum" param="<?php echo $question[$i]->id; ?>" src="/images/wxh_flower.gif">　<span style="display:none;"><?php echo $question[$i]->flowernum; ?></span></div>
 				<?php } ?>
 			</div>
 			<div class=b_content style="border-left:none; border-right:none;">
 				<div id="demo" style="height:315px; width:330px; overflow:hidden ">
 					<div id="demo1">
 					    <?php for($i=0;$i<count($question);$i++){ ?>
-								<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img src="/images/wxh_flower.gif">　<?php echo $question[$i]->flowernum; ?></div>
+								<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img class="flowernum" param="<?php echo $question[$i]->id; ?>" src="/images/wxh_flower.gif">　<span style="display:none;"><?php echo $question[$i]->flowernum; ?></span></div>
 							<?php } ?>
 					</div>
 					<div id="demo2"></div>
 					
 					<!--滚动的javascript-->
 					<script>
-					var speed=50
-					$("#demo2").innerHTML=$("#demo1").innerHTML
+					var speed=50;
+					var demo = document.getElementById('demo');
+					var demo1 = document.getElementById('demo1');
+					var demo2 = document.getElementById('demo2'); 
+					demo2.innerHTML=demo1.innerHTML
 					function Marquees(){
-					if($("#demo2").offsetTop-$("#demo").scrollTop<=0)
-					$("#demo").scrollTop-=$("#demo1").offsetHeight
+					if(demo2.offsetTop-demo.scrollTop<=0)
+					demo.scrollTop-=demo1.offsetHeight
 					else{
-					$("#demo").scrollTop++
+					demo.scrollTop++
 					}
 					}
 					var MyMars=setInterval(Marquees,speed)
-					$("#demo").onmouseover=function() { clearInterval(MyMars) }
-					$("#demo").onmouseout=function() { MyMars=setInterval(Marquees,speed) }
+					demo.onmouseover=function() { clearInterval(MyMars) }
+					demo.onmouseout=function() { MyMars=setInterval(Marquees,speed) }
 					</script><!--滚动的javascript结束-->
        	</div> 
 				
@@ -103,7 +106,7 @@ total("务虚会专题","other");
 				<?php 
 				$question=$db->query("select * from smg_wxh_question where is_adopt=1 order by flowernum desc limit 10");
 				for($i=0;$i<10;$i++){ ?>
-					<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img src="/images/wxh_flower.gif">　<?php echo $question[$i]->flowernum; ?></div>
+					<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img class="flowernum" param="<?php echo $question[$i]->id; ?>" src="/images/wxh_flower.gif">　<span ><?php echo $question[$i]->flowernum; ?></span></div>
 				<?php } ?>
 			</div>
 				<?
@@ -144,6 +147,15 @@ $(document).ready(function(){
 	});	
 	$('#fb').click(function(){
 		tb_show(null,$(this).attr('name'),null);	
-	})
+	});
+	$('.flowernum').click(function(){
+		var flowernum=$(this).next().html();
+		flowernum=parseInt(flowernum)+1;
+		$(this).next().html(flowernum);
+		$.post("questionflower.post.php",{'id':$(this).attr('param')},function(data){
+				alert('献花成功！');
+			});
+			total('专题DIGG','subject');
+	});
 });
 </script>
