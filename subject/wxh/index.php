@@ -108,7 +108,7 @@ total("务虚会专题","other");
 				<?php } ?>
 			</div>
 				<?
-				$pic=$db->query('select id,title,photo_src,flower from smg_news where category_id=232 and is_adopt=1 order by priority asc,created_at desc limit 14');
+				$pic=$db->query('select id,title,photo_src,flower from smg_news where category_id=185 and is_adopt=1 order by priority asc,created_at desc limit 14');
 				 for($i=0;$i<count($pic);$i++)
 				{
 					//$flower = file_get_contents($pic[$i]->id.'.txt');
