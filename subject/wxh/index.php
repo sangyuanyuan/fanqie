@@ -11,7 +11,7 @@
 		js_include_once_tag('thickbox','total');
 	?>
 <script>
-total("务虚会专题","other");
+total("务虚会专题","subject");
 </script>
 </head>
 <body>
@@ -49,32 +49,13 @@ total("务虚会专题","other");
 				</div>
 			</div>
 			<div class=r_content style="margin-top:20px;">
-				<div class=title>投票</div>
+				<div class=title>提问</div>
 				<div class=content>
-						<?php 
-						$vote=$db->query('select id from smg_vote where category_id=181 order by priority asc,created_at desc limit 1');
-							$vote = new smg_vote_class();
-							$vote->find(298);
-							$vote->display(true,true,'target');
-						 ?>	
-				</div>
-			</div>
-		</div>
-		<div id=ibottom>
-			<div class=b_title style="border-left:none;">热点问题</div>
-			<div class=b_title style="border-left:none; border-right:none;">所有问题</div>
-			<div class=b_title style="border-right:none;">人气榜</div>
-			<div class=b_content style="border-left:none;">
-				<?php
-				$question=$db->query("select * from smg_wxh_question where is_adopt=1 order by priority asc, created_at desc");
-				 for($i=0;$i<10;$i++){ ?>
-					<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img class="flowernum" param="<?php echo $question[$i]->id; ?>" src="/images/wxh_flower.gif">　<span style="display:none;"><?php echo $question[$i]->flowernum; ?></span></div>
-				<?php } ?>
-			</div>
-			<div class=b_content style="border-left:none; border-right:none;">
-					<DIV id=demo style="OVERFLOW: hidden; height:315px; width:330px;">
+					<DIV id=demo style="OVERFLOW: hidden; height:100px; width:250px;">
 				      <DIV id=demo1>
-	            <?php for($i=0;$i<count($question);$i++){ ?>
+	            <?php
+	            $question=$db->query("select * from smg_wxh_question where is_adopt=1 order by priority asc, created_at desc");
+	             for($i=0;$i<count($question);$i++){ ?>
 	            	<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img class="flowernum" param="<?php echo $question[$i]->id; ?>" src="/images/wxh_flower.gif">　<span style="display:none;"><?php echo $question[$i]->flowernum; ?></span></div>
 	            <? }?>
 	          	</div>
@@ -98,16 +79,12 @@ total("务虚会专题","other");
 							demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}; 
 						</SCRIPT> 
 					</div>
-					<div class=cl><a style="font-size:16px; font-weight:bold; float:right; display:inline;" class="thickbox" href="question.php?height=255&width=320">我要提问</a></div>
+					<div class=cl style="text-align:right;"><a style="font-size:16px; font-weight:bold;" class="thickbox" href="question.php?height=255&width=320">我要提问</a></div>
+				</div>
 			</div>
-			<div class=b_content style="border-right:none;">
-				<?php 
-				$question=$db->query("select * from smg_wxh_question where is_adopt=1 order by flowernum desc limit 10");
-				for($i=0;$i<10;$i++){ ?>
-					<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img class="flowernum" param="<?php echo $question[$i]->id; ?>" src="/images/wxh_flower.gif">　<span ><?php echo $question[$i]->flowernum; ?></span></div>
-				<?php } ?>
-			</div>
-				<?
+		</div>
+		<div id=ibottom>
+			<?
 				$pic=$db->query('select id,title,photo_src,flower from smg_news where category_id=185 and is_adopt=1 order by priority asc,created_at desc limit 14');
 				 for($i=0;$i<count($pic);$i++)
 				{
@@ -122,7 +99,24 @@ total("务虚会专题","other");
 						<div class=b_c_b_b><div class=b_c_b_wz><?php echo $flower; ?></div><div class=b_c_b_pic name="<?php echo $pic[$i]->id; ?>"><img class="flower"   src="/images/wxh_flower.gif"></div></div>
 					</div>
 				</div>
+			<?php } ?>
+			<div class=b_title>热点问题</div>
+			<div class=b_title style="border-left:none;">人气榜</div>
+			<div class=b_content>
+				<?php
+				
+				 for($i=0;$i<10;$i++){ ?>
+					<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img class="flowernum" param="<?php echo $question[$i]->id; ?>" src="/images/wxh_flower.gif">　<span style="display:none;"><?php echo $question[$i]->flowernum; ?></span></div>
 				<?php } ?>
+			</div>
+			<div class=b_content style="border-left:none;">
+				<?php 
+				$question=$db->query("select * from smg_wxh_question where is_adopt=1 order by flowernum desc limit 10");
+				for($i=0;$i<10;$i++){ ?>
+					<div class=cl><a class=thickbox href="question.php?height=255&width=320&id=<?php echo $question[$i]->id; ?>"><?php echo $question[$i]->nick_name."：".$question[$i]->title; ?></a></div><div class="flower"><img class="flowernum" param="<?php echo $question[$i]->id; ?>" src="/images/wxh_flower.gif">　<span ><?php echo $question[$i]->flowernum; ?></span></div>
+				<?php } ?>
+			</div>
+				
 			<input id="session" type="hidden" value="<?php echo $_SESSION['smg_role']; ?>">
 		</div>
 	</div>

@@ -99,7 +99,7 @@ if($_POST['user_type']=="login")
 		echo $error;
 	}else{
 		if($error == 'ok'){
-			redirect('person_index.php?id='.$login_info[0]->id,'js');
+			redirect('person_index.php?id='.$login_text,'js');
 		}else{
 			alert($error);
 			redirect('babyshow.login.php','js');

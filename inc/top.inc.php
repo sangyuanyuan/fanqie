@@ -62,7 +62,7 @@
 	</div>
 </div>-->
 <div id=bannerimg1>
-<a target="_blank" href="/subject/2010worldcup/"><img border=0 src="/images/worldcup/2010worldcup.jpg"></a>
+<a target="_blank" href="/subject/djnews/71/"><img border=0 src="/images/redqy.jpg"></a>
 </div>
 <div id=nav2>
 	

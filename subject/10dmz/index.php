@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once('../../frame.php');
   $db = get_db();
 ?>
@@ -7,40 +7,44 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -2010世界杯</title>
-	<?php css_include_tag('2010worldcup');
+	<title>SMG -2010年动漫展</title>
+	<?php css_include_tag('2010dmz');
 		use_jquery();
 		js_include_once_tag('total');
 	?>
 	<script>
-		total("2010世界杯专题","subject");
+		total("2010动漫展","subject");
 	</script>	
 </head>
 <body>
-	<div id=logo></div>
+	<div id=logo><div id=day></div></div>
 	<div id=ibody>
-		<?php $sql = 'select n.photo_url,n.video_url,n.title,n.id from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="video" and i.is_adopt=1 and c.name="南非世界杯视频" order by i.priority asc, n.created_at desc';
+		
+		<?php $sql = 'select n.photo_url,n.video_url,n.title,n.id from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="video" and i.is_adopt=1 and c.name="佳片展播" order by i.priority asc, n.created_at desc';
 				$record_video=$db -> query($sql);
 		?>
 		<div id=video>
-			<iframe id=video_src src="video.php?photo=<?php echo $record_video[0]->photo_url; ?>&video=<?php echo $record_video[0]->video_url; ?>" width=463 height=322 scrolling="no" frameborder="0"></iframe>	
+			<div class=title>
+				<div class="title_left"><img src="/images/dmz/video_title.jpg"></div>
+			</div>
+			<iframe id=video_src src="video.php?photo=<?php echo $record_video[0]->photo_url; ?>&video=<?php echo $record_video[0]->video_url; ?>" width=463 height=290 scrolling="no" frameborder="0"></iframe>	
 		</div>
 		<?php 
-				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="赛程表" order by i.priority asc, n.created_at desc limit 1';
+				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="news" and i.is_adopt=1 and c.name="活动公告" order by i.priority asc, n.created_at desc limit 1';
 				$racecard=$db -> query($sql);
 		?>
 		<div id=racecard>
 			<div class=title>
-				<div class="title_left"><img src="/images/worldcup/racecard_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="http://192.168.61.247/offical/pages/class.aspx?id=A0012">世界杯视频资料库</a>　<a target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=2856&extra=">电视直播表</a></div>	
+				<div class="title_left"><img src="/images/dmz/hdgg_title.jpg"></div>
+				<div class="title_more"></div>	
 			</div>
 			<div id=content><a target="_blank" href="/zone/news/news.php?id=<?php echo $racecard[0]->id; ?>"><?php echo $racecard[0]->content; ?></a></div>
 		</div>
 		<?php $comment=$db->query('select * from smg_question where problem_id="50" order by create_time asc limit 5'); ?>
 		<div id=comment>
 			<div class=title>
-				<div class="title_left"><img src="/images/worldcup/comment_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="video_list.php?id=<?php echo $record_video[0]->id; ?>">精彩视频</a></div>	
+				<div class="title_left"><img src="/images/dmz/yjhd_title.jpg"></div>
+				<div class="title_more"><a target="_blank" href="" style="color:#ff0000; font-size:14px; font-weight:bold;">答题抢票</a></div>	
 			</div>
 			<div style="width:100%; height:25px; line-height:25px; font-size:18px; color:#ff0000; text-align:center; float:left; display:inline;">参加活动的网友均有机会获得番茄网精美小礼品</div>
 			<div id=answer>世界杯答题第一期</div><div id=submit>我要答题</div>
@@ -92,35 +96,35 @@
 		</div>
 		<div id=gg><a href=""><img border=0 src="/images/worldcup/gg.jpg" /></div>
 		<?php 
-				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 15';
+				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 15';
 				$africa=$db -> query($sql);
 		?>
 		<div id=africa>
-			<div class=title>
-				<div class="title_left"><img src="/images/worldcup/africa_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=86&page=1">更多内容</a></div>	
+			<div class=title style="margin-top:5px;">
+				<div class="title_left"><img src="/images/dmz/xdsd_title.jpg"></div>
+				<div class="title_more"><a target="_blank" href="">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><img border=0 src="<?php echo $africa[0]->photo_src; ?>"></a></div>
 			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><?php echo $africa[0]->description; ?></a></div>
 			<div class=news_content>
-				<?php for($i=1;$i<14;$i++){ ?>
+				<?php for($i=1;$i<11;$i++){ ?>
 					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[$i]->id; ?>"><?php echo $africa[$i]->title; ?></a></div>
 				<?php } ?>
 			</div>
 		</div>
 		<?php 
-				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 15';
+				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 15';
 				$worldsoccer=$db -> query($sql);
 		?>
 		<div id=worldsoccer>
-			<div class=title>
-				<div class="title_left"><img src="/images/worldcup/worldsoccer_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="http://172.27.203.81:8080/bbs/forumdisplay.php?fid=86&page=1">更多内容</a></div>	
+			<div class=title style="margin-top:5px;">
+				<div class="title_left"><img src="/images/dmz/zxdt_title.jpg"></div>
+				<div class="title_more"><a target="_blank" href="">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><img border=0 src="<?php echo $worldsoccer[0]->photo_src; ?>"></a></div>
 			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><?php echo $worldsoccer[0]->description; ?></a></div>
 			<div class=news_content>
-				<?php for($i=1;$i<14;$i++){ ?>
+				<?php for($i=1;$i<11;$i++){ ?>
 					<div class=context><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[$i]->id; ?>"><?php echo $worldsoccer[$i]->title; ?></a></div>
 				<?php } ?>
 			</div>
@@ -129,9 +133,12 @@
 		
 		<div id=bottom>
 			<?php 
-				$sql = 'select n.src,n.url from smg_subject_items i left join smg_images n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="南非世界杯" and i.category_type="photo" and i.is_adopt=1 and c.name="精彩图片" order by i.priority asc, n.created_at desc';
+				$sql = 'select n.src,n.url from smg_subject_items i left join smg_images n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="photo" and i.is_adopt=1 and c.name="炫图下载" order by i.priority asc, n.created_at desc';
 				$photo=$db -> query($sql);
 			?>
+			<div class=title style="margin-top:5px;">
+					<div class="title_left"><img src="/images/dmz/xdtp_title.jpg"></div>
+			</div>
 			<div class=bottom_content >
 				<DIV id=demo6 style="OVERFLOW: hidden; WIDTH: 100%;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
@@ -169,6 +176,7 @@
 									</SCRIPT>
 			</div>
 		</div>
+		<div id=bottom_bg><img src="/images/dmz/bottom_bg.jpg"></div>
 	</div>
 </body>
 </html>
@@ -210,5 +218,24 @@
 		$("#submit").click(function(){
 			window.open('/answer/pro_answer.php?id=50');
 		});
+		var d=new Date();
+		var starttime=d.getYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+		var day=getDateDiff(starttime,'2010-07-08');
+		$("#day").html(day);
 	});
+	function getDateDiff(date1,date2){
+	   var   re   =   /^(\d{4})\S(\d{1,2})\S(\d{1,2})$/;   
+	   var   dt1,dt2;   
+	   if   (re.test(date1))   
+	   {   
+	    dt1   =   new   Date(RegExp.$1,RegExp.$2   -   1,RegExp.$3);   
+	   } 
+	    
+	   if   (re.test(date2))   
+	   {   
+	    dt2   =   new   Date(RegExp.$1,RegExp.$2   -   1,RegExp.$3);   
+	   }  
+	    
+	   return Math.floor((dt2-dt1)/(1000 * 60 * 60 * 24));
+	}
 </script>

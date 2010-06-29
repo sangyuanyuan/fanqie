@@ -13,7 +13,7 @@
 		js_include_once_tag('dj','total');
 	?>
 <script>
-	total("2010六一儿童节","show");
+	total("2010六一儿童节","subject");
 </script>
 </head>
 <body>

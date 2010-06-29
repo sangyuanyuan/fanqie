@@ -71,7 +71,12 @@
 		if($record[0]->cplatform=="news"||$record[0]->cplatform=="show"||$record[0]->cplatform=="server"||$record[0]->cplatform=="zone"){
 			$platform = $record[0]->cplatform;
 			$name = $record[0]->categoryname;
-		}else{
+		}else if($record[0]->categoryname=="绿番茄")
+		{
+			$platform = 'subject';
+			$name = '绿番茄';
+		}
+		else{
 			$platform = 'news';
 			$name = '部门或专题';
 		}
