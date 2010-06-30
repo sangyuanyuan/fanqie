@@ -460,7 +460,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 												}
 												else
 												{
-													echo '[<a href="'.$record_sub_news[$i]->platform.'/news/news_head.php?id='.$record_sub_news[$i]->news_id.'" target=_blank>'.$record_sub_news[$i]->short_title.'</a>]<a  style="color:#ff6600; margin-left:2px;" target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=2921&extra=">参与讨论</a><a  style="color:red; margin-left:2px;" target="_blank" href="/news/news_list.php?id='.$record_sub_news[$i]->cid.'">更多</a>';		
+													echo '[<a href="'.$record_sub_news[$i]->platform.'/news/news_head.php?id='.$record_sub_news[$i]->news_id.'" target=_blank>'.$record_sub_news[$i]->short_title.'</a>]<a  style="color:#ff0000; margin-left:2px;" target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=2921&extra=">参与讨论</a><a  style="color:#ff6600; margin-left:2px;" target="_blank" href="/news/news_list.php?id='.$record_sub_news[$i]->cid.'">更多</a>';		
 												}
 											}
 									}		
