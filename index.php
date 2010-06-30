@@ -432,7 +432,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  				<div id=box>
  					<div id="wxh_subject">
  						<?php
-							$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="世博系列" and c.platform="news" and is_recommend=1 order by n.priority asc,n.created_at desc limit 4';
+							$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="暑期宣传" and c.platform="news" and is_recommend=1 order by n.priority asc,n.created_at desc limit 4';
 							$record_sub_news=$db -> query($sql);
 						?>
  						<div id=wxh_title><a href="<?php echo "/".$record_sub_news[0]->platform."/news/news_head.php?id=".$record_sub_news[0]->news_id ?>" target="_blank"><?php echo delhtml($record_sub_news[0]->short_title); ?></a></div>

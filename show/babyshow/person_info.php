@@ -36,12 +36,36 @@ total("宝宝秀","show");
 					<td><span style="color:#ff0000; font-weight:bold;">上传头像</span><br><br><br><input type="file" name="head_photo" id="head_photo"  onChange="javascript:PreviewPhotoatwidth(this,picpreview,120)"></td>
 				</tr>	
 				<tr>
-					<td>是父/母</td>
+					<td height="50">是父/母</td>
 					<td><input type="radio" name="person[is_parent]" <?php if($person[0]->is_parent=='父'){ ?>checked=checked<?php } ?> value="父">父　　<input type="radio" <?php if($person[0]->is_parent=='母'){ ?>checked=checked<?php } ?> name="person[is_parent]" value="母">母</td>	
 				</tr>
 				<tr>
-					<td height="50">宝宝生日</td>
-					<td><input type="text" name="baby_birthday" id="start" value="<?php echo $person[0]->baby_birthday; ?>"  class="date_jquery"></td>	
+					<?php $dept = new table_class("smg_dept");
+	$rows_dept = $dept->find("all"); ?>
+					<td height="50">部门</td>
+					<td><select id=select name="person[dept_id]">
+					<?php
+						for($i=0;$i<count($rows_dept);$i++){
+					?>
+						<option <?php if($person[0]->dept_id)==$rows_dept[$i]->id){ ?>selected=selected<?php } ?> value="<?php echo $rows_dept[$i]->id;?>" ><?php echo $rows_dept[$i]->name;?></option>
+					<?php  }?>
+				</select></td>	
+				</tr>
+				<tr>
+					<td height="50">宝宝1姓名</td>
+					<td><input type="text" name="person[baby1_name]"></td>	
+				</tr>
+				<tr>
+					<td height="50">宝宝1生日</td>
+					<td><input type="text" name="baby_birthday" id="start" value="<?php echo $person[0]->baby1_birthday; ?>"  class="date_jquery"></td>	
+				</tr>
+				<tr>
+					<td height="50">宝宝2姓名</td>
+					<td><input type="text" name="person[baby2_name]" ></td>	
+				</tr>
+				<tr>
+					<td height="50">宝宝2生日</td>
+					<td><input type="text" name="baby_birthday" id="start" value="<?php echo $person[0]->baby2_birthday; ?>"  class="date_jquery"></td>	
 				</tr>
 				<tr>
 					<td height="50">QQ</td>
