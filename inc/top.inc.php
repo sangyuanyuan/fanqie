@@ -61,8 +61,8 @@
 		</div>	
 	</div>
 </div>-->
-<div id=bannerimg1>
-<a target="_blank" href="/subject/djnews/71/"><img border=0 src="/images/redqy.jpg"></a>
+<div id=bannerimg1 <?php if($nowday>="2010-07-02"){ ?>style="height:396px;"<?php } ?>>
+	<a target="_blank" href="/subject/10dmz/"><img id="day" border=0 src=""></a>
 </div>
 <div id=nav2>
 	
@@ -251,5 +251,40 @@ $(function(){
 				location.href="http://172.27.203.81:8080/blog/?3444";
 			}
 		});
+		var d=new Date();
+		var starttime=d.getYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+		var day=getDateDiff(starttime,'2010-07-08');
+		if(day>0&&day<7)
+		{
+			$("#day").attr('src','/images/dmz/logo'+day+'.jpg');
+		}
+		else if(day==0)
+		{
+			$("#day").attr('src','/images/dmz/logo_start.jpg');	
+		}
+		else if(day<=-4)
+		{
+			$("#day").attr('src','/images/dmz/logo_end.jpg');		
+		}
+		else
+		{
+			$("#day").attr('src','/images/dmz/logo_ing.jpg');			
+		}
+	});
+	function getDateDiff(date1,date2){
+	   var   re   =   /^(\d{4})\S(\d{1,2})\S(\d{1,2})$/;   
+	   var   dt1,dt2;   
+	   if   (re.test(date1))   
+	   {   
+	    dt1   =   new   Date(RegExp.$1,RegExp.$2   -   1,RegExp.$3);   
+	   } 
+	    
+	   if   (re.test(date2))   
+	   {   
+	    dt2   =   new   Date(RegExp.$1,RegExp.$2   -   1,RegExp.$3);   
+	   }  
+	    
+	   return Math.floor((dt2-dt1)/(1000 * 60 * 60 * 24));
+	}
 	});
 </script>

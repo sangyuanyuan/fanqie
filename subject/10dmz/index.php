@@ -7,7 +7,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<title>SMG -2010年动漫展</title>
+	<title>SMG -CCG EXPO</title>
 	<?php css_include_tag('2010dmz');
 		use_jquery();
 		js_include_once_tag('total');
@@ -17,7 +17,7 @@
 	</script>	
 </head>
 <body>
-	<div id=logo><div id=day></div></div>
+	<div id=logo><img width="995" height="396" border=0 id="day" src=""></div>
 	<div id=ibody>
 		
 		<?php $sql = 'select n.photo_url,n.video_url,n.title,n.id from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="video" and i.is_adopt=1 and c.name="佳片展播" order by i.priority asc, n.created_at desc';
@@ -221,7 +221,22 @@
 		var d=new Date();
 		var starttime=d.getYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
 		var day=getDateDiff(starttime,'2010-07-08');
-		$("#day").html(day);
+		if(day>0&&day<7)
+		{
+			$("#day").attr('src','/images/dmz/logo'+day+'.jpg');
+		}
+		else if(day==0)
+		{
+			$("#day").attr('src','/images/dmz/logo_start.jpg');	
+		}
+		else if(day<=-4)
+		{
+			$("#day").attr('src','/images/dmz/logo_end.jpg');		
+		}
+		else
+		{
+			$("#day").attr('src','/images/dmz/logo_ing.jpg');			
+		}
 	});
 	function getDateDiff(date1,date2){
 	   var   re   =   /^(\d{4})\S(\d{1,2})\S(\d{1,2})$/;   
