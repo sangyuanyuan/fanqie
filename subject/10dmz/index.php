@@ -20,7 +20,7 @@
 	<div id=logo><img width="995" height="396" border=0 id="day" src=""></div>
 	<div id=ibody>
 		
-		<?php $sql = 'select n.photo_url,n.video_url,n.title,n.id from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="video" and i.is_adopt=1 and c.name="佳片展播" order by i.priority asc, n.created_at desc';
+		<?php $sql = 'select n.photo_url,n.video_url,n.title,n.id from smg_subject_items i left join smg_video n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="CCG EXPO" and i.category_type="video" and i.is_adopt=1 and c.name="佳片展播" order by i.priority asc, n.created_at desc';
 				$record_video=$db -> query($sql);
 		?>
 		<div id=video>
@@ -30,7 +30,7 @@
 			<iframe id=video_src src="video.php?photo=<?php echo $record_video[0]->photo_url; ?>&video=<?php echo $record_video[0]->video_url; ?>" width=463 height=290 scrolling="no" frameborder="0"></iframe>	
 		</div>
 		<?php 
-				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="news" and i.is_adopt=1 and c.name="活动公告" order by i.priority asc, n.created_at desc limit 1';
+				$sql = 'select n.photo_src,n.content,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="CCG EXPO" and i.category_type="news" and i.is_adopt=1 and c.name="活动公告" order by i.priority asc, n.created_at desc limit 1';
 				$racecard=$db -> query($sql);
 		?>
 		<div id=racecard>
@@ -96,7 +96,7 @@
 		</div>
 		<div id=gg><a href=""><img border=0 src="/images/worldcup/gg.jpg" /></div>
 		<?php 
-				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 15';
+				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="CCG EXPO" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 15';
 				$africa=$db -> query($sql);
 		?>
 		<div id=africa>
@@ -113,7 +113,7 @@
 			</div>
 		</div>
 		<?php 
-				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 15';
+				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="CCG EXPO" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 15';
 				$worldsoccer=$db -> query($sql);
 		?>
 		<div id=worldsoccer>
@@ -133,7 +133,7 @@
 		
 		<div id=bottom>
 			<?php 
-				$sql = 'select n.src,n.url from smg_subject_items i left join smg_images n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="10年动漫展" and i.category_type="photo" and i.is_adopt=1 and c.name="炫图下载" order by i.priority asc, n.created_at desc';
+				$sql = 'select n.src,n.url from smg_subject_items i left join smg_images n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="CCG EXPO" and i.category_type="photo" and i.is_adopt=1 and c.name="炫图下载" order by i.priority asc, n.created_at desc';
 				$photo=$db -> query($sql);
 			?>
 			<div class=title style="margin-top:5px;">
