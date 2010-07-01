@@ -57,7 +57,7 @@
 </script>
 <body>
 <?php
-	require_once('../inc/top.inc.php');
+	require_once('../inc/top.inc.html');
 	js_include_once_tag('thickbox');
 ?>
 

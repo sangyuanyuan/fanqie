@@ -40,14 +40,14 @@
 			</div>
 			<div id=content><a target="_blank" href="/zone/news/news.php?id=<?php echo $racecard[0]->id; ?>"><?php echo $racecard[0]->content; ?></a></div>
 		</div>
-		<?php $comment=$db->query('select * from smg_question where problem_id="50" order by create_time asc limit 5'); ?>
+		<?php $comment=$db->query('select * from smg_question where problem_id="51" order by create_time asc limit 5'); ?>
 		<div id=comment>
 			<div class=title>
 				<div class="title_left"><img src="/images/dmz/yjhd_title.jpg"></div>
 				<div class="title_more"><a target="_blank" href="" style="color:#ff0000; font-size:14px; font-weight:bold;">答题抢票</a></div>	
 			</div>
-			<div style="width:100%; height:25px; line-height:25px; font-size:18px; color:#ff0000; text-align:center; float:left; display:inline;">参加活动的网友均有机会获得番茄网精美小礼品</div>
-			<div id=answer>世界杯答题第一期</div><div id=submit>我要答题</div>
+			<div style="width:100%; height:28px; line-height:14px; font-size:12px; text-indent:2em; color:#ff0000; text-align:center; float:left; display:inline;">我们将每天从参与答题的网友中随机抽取产生3位幸运儿！送出CCG EXPO入场券（每人2张）！</div>
+			<div id=answer>CCG EXPO互动答题第一期</div><div id=submit>我要答题</div>
 			<div id=content>	
 				<?php for($i=0;$i<count($comment);$i++){ ?>
 					<div class=context <?php if($i==0){ ?>style="border-top:none;"<?php } ?>>
@@ -58,7 +58,7 @@
 			
 		</div>
 		<div id=video_bottom>
-			<DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%;">
+			<DIV id=demo9 style="OVERFLOW: hidden; WIDTH: 95%; margin-left:10px;">
 				      <TABLE cellSpacing=0 cellPadding=0 border=0>
 				        <TBODY>
 				        <TR>
@@ -94,15 +94,15 @@
 										})
 									</SCRIPT>
 		</div>
-		<div id=gg><a href=""><img border=0 src="/images/worldcup/gg.jpg" /></div>
+		<div id=gg><img border=0 src="/images/dmz/banner.jpg" /></div>
 		<?php 
-				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="CCG EXPO" and i.category_type="news" and i.is_adopt=1 and c.name="五星体育在南非" order by i.priority asc, n.created_at desc limit 15';
+				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="CCG EXPO" and i.category_type="news" and i.is_adopt=1 and c.name="炫动速递" order by i.priority asc, n.created_at desc limit 15';
 				$africa=$db -> query($sql);
 		?>
 		<div id=africa>
 			<div class=title style="margin-top:5px;">
 				<div class="title_left"><img src="/images/dmz/xdsd_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="">更多内容</a></div>	
+				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $africa[0]->cid; ?>">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><img border=0 src="<?php echo $africa[0]->photo_src; ?>"></a></div>
 			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $africa[0]->id; ?>"><?php echo $africa[0]->description; ?></a></div>
@@ -113,13 +113,13 @@
 			</div>
 		</div>
 		<?php 
-				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="CCG EXPO" and i.category_type="news" and i.is_adopt=1 and c.name="绿茵风云" order by i.priority asc, n.created_at desc limit 15';
+				$sql = 'select n.photo_src,n.description,n.id,n.title,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="CCG EXPO" and i.category_type="news" and i.is_adopt=1 and c.name="最新动态" order by i.priority asc, n.created_at desc limit 15';
 				$worldsoccer=$db -> query($sql);
 		?>
 		<div id=worldsoccer>
 			<div class=title style="margin-top:5px;">
 				<div class="title_left"><img src="/images/dmz/zxdt_title.jpg"></div>
-				<div class="title_more"><a target="_blank" href="">更多内容</a></div>	
+				<div class="title_more"><a target="_blank" href="/news/news_subject_list.php?id=<?php echo $worldsoccer[0]->cid; ?>">更多内容</a></div>	
 			</div>
 			<div class=photo><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><img border=0 src="<?php echo $worldsoccer[0]->photo_src; ?>"></a></div>
 			<div class=desc><a target="_blank" href="/zone/news/news.php?id=<?php echo $worldsoccer[0]->id; ?>"><?php echo $worldsoccer[0]->description; ?></a></div>
@@ -151,7 +151,7 @@
 				              	<?php 
 													for($i=0;$i<count($photo);$i++){
 												?>
-				                <TD><div class=pic><a target="_blank" href="<?php echo $photo[$i]->url; ?>"><img border=0 src="<?php echo $photo[$i]->src; ?>"></a></div></TD>
+				                <TD><div class=pic><a target="_blank" href="<?php echo $photo[$i]->src; ?>"><img border=0 src="<?php echo $photo[$i]->src; ?>"></a></div></TD>
 				                <? }?>
 				              </TR></TBODY></TABLE></TD>
 				          			<TD id="demo8" vAlign=top></TD></TR></TBODY></TABLE></DIV>
@@ -216,7 +216,7 @@
 		});
 		
 		$("#submit").click(function(){
-			window.open('/answer/pro_answer.php?id=50');
+			window.open('/answer/pro_answer.php?id=51');
 		});
 		var d=new Date();
 		var starttime=d.getYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
