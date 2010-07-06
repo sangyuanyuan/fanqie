@@ -1,6 +1,5 @@
-<style type="text/css">
+﻿<style type="text/css">
 <!--
-@import url("../top.css");
 .add {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
@@ -23,11 +22,10 @@
 }
 -->
 </style>
-
 <table width="100" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td bgcolor="#00A9EE" class="addr">&nbsp;&nbsp;<a target="_blank" href="http://172.27.203.81:8080/"><span class="add">http://172.27.203.81:8080/</span></a></td>
-        <td width="501" height="19" align="right" bgcolor="#00A9EE" class="ss"><? echo strftime("%Y年").strftime("%m月").strftime("%d日") ?> </td>
+        <td width="501" height="19" align="right" bgcolor="#00A9EE" class="ss"><? echo date('Y')."年".date('m')."月".date('d')."日"; ?> </td>
         <td width="21" bgcolor="#00A9EE">&nbsp;</td>
       </tr>
       <tr>

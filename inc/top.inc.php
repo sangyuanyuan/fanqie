@@ -177,7 +177,7 @@
 </div>
 <script>
 $(function(){
-	display_login();
+		display_login();
 		$('#button1').click(function(){
 			$('#top_search_form').attr('action','/search/?search_key=smg_news');
 			$('#search_type_hidden').val('smg_news');
@@ -286,5 +286,4 @@ $(function(){
 	    
 	   return Math.floor((dt2-dt1)/(1000 * 60 * 60 * 24));
 	}
-	});
 </script>

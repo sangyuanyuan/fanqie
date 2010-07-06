@@ -1,0 +1,6 @@
+﻿body{background:#0099ff; font-size:12px; font-family:宋体;}
+.td1{line-height:20px;}
+textarea{width:98%; height:90px; margin-top:5px; overflow-y:auto;}
+button{width:100px; height:20px; line-height:20px;}
+table a{color:#000000; text-decoration:none;}
+table span{cursor:pointer;}

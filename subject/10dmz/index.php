@@ -46,7 +46,7 @@
 				<div class="title_left"><img src="/images/dmz/yjhd_title.jpg"></div>
 				<div class="title_more"><a target="_blank" href="" style="color:#ff0000; font-size:14px; font-weight:bold;">答题抢票</a></div>	
 			</div>
-			<div style="width:100%; height:28px; line-height:14px; font-size:12px; text-indent:2em; color:#ff0000; text-align:center; float:left; display:inline;">我们将每天从参与答题的网友中随机抽取产生3位幸运儿！送出CCG EXPO入场券（每人2张）！</div>
+			<div style="width:100%; height:28px; line-height:14px; font-size:12px; text-indent:2em; color:#ff0000; text-align:center; float:left; display:inline;">7月2日获奖名单：许理 沈陶瑜 TobyGwan<br>7月5日获奖名单：刘晨 吉吉 罗伯特</div>
 			<div id=answer>CCG EXPO互动答题第一期</div><div id=submit>我要答题</div>
 			<div id=content>	
 				<?php for($i=0;$i<count($comment);$i++){ ?>
