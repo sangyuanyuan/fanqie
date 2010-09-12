@@ -1,0 +1,21 @@
+body {margin:0px; font-family:ËÎÌו; font-size:12px; color:#000000;}
+#ibody{width:995px; height:1096px; background:url('/subject/sbzdy/images/page.jpg') no-repeat; margin:0 auto;}
+#video{width:408px; height:269px; margin-top:532px; margin-left:78px; float:left; display:inline;}
+.video_pic{width:75px; height:60px; line-height:15px; margin-top:5px; margin-left:5px; overflow:hidden; float:left; display:inline;}
+.video_pic img{width:75px; height:45px; border:0px;}
+#news_more{width:35px; height:20px; cursor:pointer; margin-top:502px; margin-right:85px; float:right; display:inline;}
+#news{width:408px; height:269px; margin-top:10px; margin-right:75px; float:right; display:inline;}
+.newspic{width:110px; height:110px; margin-top:9px; margin-left:4px; float:left; display:inline;}
+.newspic img{width:110px; height:110px; border:0px;}
+.piccontent{width:280px; height:110px; margin-top:9px; margin-right:4px; overflow:hidden; float:right; display:inline;}
+.piccontent .title{width:280px; height:20px; line-height:20px; font-size:14px; font-weight:bold; overflow:hidden; float:left; display:inline;}
+.piccontent .title a{color:red; text-decoration:none;}
+.piccontent .context{width:280px; height:90px; line-height:15px; float:left; display:inline;}
+.piccontent .context a{color:#000000; text-decoration:none;}
+.content{width:204px; height:150px; float:left; display:inline;}
+
+.content .cl{width:200px; height:25px; margin-left:4px; line-height:25px; font-weight:bold; overflow:hidden; float:left; display:inline;}
+.content .cl a{color:#000000; text-decoration:none;}
+#image{width:842px; height:157px; margin-top:55px; margin-left:78px; float:left; display:inline;}
+#image .pic{width:200px; height:140px; margin-top:9px; margin-left:20px; float:left; display:inline;}
+#image .pic img{width:200px; height:140px; border:0px;}

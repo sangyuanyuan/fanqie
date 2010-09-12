@@ -21,62 +21,91 @@
 	$db=get_db();
 	$sql="select distinct(i.name),i.id,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' group by i.name order by i.id desc";
 	$name=$db->query($sql);
+	$sql="select n.title from smg_news n left join smg_category c on n.category_id=c.id where c.name='收视率分析滚动更新' order by n.created_at desc";
+	$news=$db->query($sql);
 	?>
 	<div id=ibody>
-		<div style="width:995px; font-weight:bold; text-align:center; float:left; display:inline;"><h1>电视节目收视定量分析工具</h1></div>
-		<?php $sql="select n.title from smg_news n left join smg_category c on n.category_id=c.id where c.name='收视率分析滚动更新' order by n.created_at desc";
-			$news=$db->query($sql);
-		 ?>
-		<div style="width:995px; height:20px; line-height:20px; text-align:center; float:left; display:inline;">
-			<marquee scrollAmount="3" onmouseover=stop() onmouseout=start()>
-			<?php for($i=0;$i<count($news);$i++){echo "　　".get_fck_content($news[$i]->title);}?>
-		</marquee></div>
+		<div id="ssl_banner">
+			<div id="zdtj"><label>重点推荐：</label><?php echo $news[0]->title; ?></div>
+		</div>
 		<div id=ibody_left>
-			<div class=l_title>SMG收视率和收视份额分析</div>
+			<div class=l_title>番茄收视预测</div>
 			<div class=l_content>
-				<select style="margin-left:10px;" id="raderpd">
-					<?php for($i=0;$i<count($name);$i++){ ?>
-						<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
-						<?php } ?>
-				</select>
-				<input type="button" id="radercx" value="查询">
-				<a style="color:#000000; text-decoration:none;" href="list.php">历史数据</a>
-				<?php $sql="select i.id,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' and i.name='上海电视台新闻综合频道'  order by r.id desc";
-					$rader=$db->query($sql);
-				?>
-				<!--<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>-->
-				<div style="width:375px; height:363px; margin-top:10px; margin-left:10px; float:left; display:inline;" id="raderimg"><img src="<?php echo $rader[0]->file_path; ?>"></div>
-			</div>
-			
+				<div id="l_c_t">
+					<div id=content>
+						<?php 
+							$sql="SELECT v.value,v.date,i.id,i.name,i.content,i.click_count FROM smg_rating_value v left join smg_report_item i on v.item_id=i.id where i.is_dept=1 and i.is_show=1 order by v.date desc"; 
+							$news=$db->query($sql);
+							$w = date( "w ",strtotime(substr($news[0]->date,0,10)));
+						  if($w!=0)
+						  {
+								$date=aweek(substr($news[0]->date,0,10),1);
+							}
+							if(substr($news[0]->date,0,10)==$date[5]||$w==0)
+							{
+								$datetime=substr($news[0]->date,0,10);	
+							}
+							else
+							{
+								$datetime=$date[0]." -- ".$date[4];	
+							}
+						?>
+						<div id="pic">
+							<div id="pic_l"><?php echo $news[0]->name; ?></div>
+							<div id="pic_r"><?php echo $news[0]->value; ?></div>
+						</div>
+						<div id="pictitle">预测时间段：<?php echo $datetime; ?></div>
+						<div id="piccontent">
+								<a href="/news/ratings.php?id=<?php echo $news[0]->id ?>"><?php echo delhtml($news[0]->content); ?></a>
+						</div>
+					</div>
+					<div id="more"><a target="_blank" href="/news/ratings_list.php">>>更多节目预测</a></div>	
+				</div>
+				<?php $sql="select * from smg_comment where resource_id=".$news[0]->id." and resource_type='ratings' order by created_at desc";
+					$comment=$db->query($sql);
+				 ?>
+				<div id="l_c_b">
+					<div id="click_num">点击(<?php echo $news[0]->click_count; ?>)</div><div id="comment_num">评论(<?php echo count($comment); ?>)</div>
+					<?php for($i=0;$i<count($comment);$i++){ ?>
+						<div class="comment">评论<?php echo $i+1; ?>：<?php echo $comment[$i]->nick_name; ?>发表：<?php echo $comment[$i]->content; ?></div>
+					<?php } ?>
+				</div>
+			</div>			
 		</div>
 		<div id=ibody_right>
-			<div class=r_title>收视率预测系统使用说明</div>
-			<div id=r_content>
-				<iframe FRAMEBORDER=0 style="width:590px; height:264px; margin-top:10px; overflow:hidden; float:left; display:inline;" src="sslfxframe.php"></iframe>
-				<div class=table><a style="color:#FF0000;" href="预测节目信息登记表.xls">预测节目信息登记表</a></div><div class=table><a style="color:#FF0000;" href="新节目审片信息登记表.doc">新节目审片信息登记表</a></div>
-				<div style=" margin-top:10px; margin-left:10px; font-size:15px; line-height:25px; float:left; display:inline;">
-					<form method=post name=sndml action=sendmail.php ENCTYPE="multipart/form-data"> 
-						<table> 
-						<tr ><td>发送者：</td> 
-						<td><input type=text name=from ></td>
-						<td>主题：</td> 
-						<td><input type=text name=subject ></td>
-						</tr> 
-						<tr ><td>附件：</td> 
-						<td><input type=file name=upload_file></td> <td>&nbsp</td> 
-						<td><input type="submit" value="发送"> 
-						</td> 
-						</tr> 
-						</table> 
-						</form> 	
-					</div>
+			<div class=r_title>SMG电视总裁奖</div>
+			<div class=r_content>
+				<div class="r_c_t_l">总裁奖</div>
+				<div class="r_c_t_r"><img  src="/images/ssl/zcj.jpg"></div>
+				<div class="calendars"><a target="_blank" href="/news/news_list.php?id="240""><img border="0" src="/images/ssl/zcjrl.jpg"></a></div>
+				<?php $sql="select * from smg_news where category_id=240 and is_adopt=1 order by priority asc,created_at desc"; 
+					$news=$db->query($sql);
+					for($i=0;$i<5;$i++){
+				?>
+				<div class="zcj" <?php if($i==0){ ?>style="background:url('/images/ssl/star.jpg') no-repeat 7px;"<?php } ?>>
+					<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title; ?></a>
+				</div>
+				<?php } ?>
 			</div>
-			
+			<div class=r_title>SMG收听收视警示榜</div>
+			<div class=r_content>
+				<div class="r_c_t_l">警示榜</div>
+				<div class="r_c_t_r"><img border="0" src="/images/ssl/jsb.jpg"></div>
+				<div class="calendars"><a target="_blank" href="/news/news_list.php?id="240""><img border="0" src="/images/ssl/jsbrl.jpg"></a></div>
+				<?php $sql="select * from smg_news where category_id=238 and is_adopt=1 order by priority asc,created_at desc"; 
+					$news=$db->query($sql);
+					for($i=0;$i<5;$i++){
+				?>
+				<div class="zcj" <?php if($i==0){ ?>style="background:url('/images/ssl/star.jpg') no-repeat 7px;"<?php } ?>>
+					<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id; ?>"><?php echo $news[$i]->short_title; ?></a>
+				</div>
+				<?php } ?>
+			</div>
 		</div>
-		<?php $sql="select a.* from (select r.*,i.name from smg_ratings r right join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by r.id desc) as a group by name order by id desc limit 5";
-				$prom=$db->query($sql);
+		<?php /*$sql="select a.* from (select r.*,i.name from smg_ratings r right join smg_report_item i on r.item_id=i.id where is_dept=1 and i.is_show=1 order by r.id desc) as a group by name order by id desc limit 5";
+				$prom=$db->query($sql);*/
 			?>
-			<div class=b_title><div style="float:left; display:inline;">预测节目收视率跟踪</div><div style="margin-right:10px; float:right; display:inline;"><a style="color:#ffffff; font-size:12px; text-decoration:none;" href="list2.php">历史数据</a></div></div>
+			<!--<div class=b_title><div style="float:left; display:inline;">预测节目收视率跟踪</div><div style="margin-right:10px; float:right; display:inline;"><a style="color:#ffffff; font-size:12px; text-decoration:none;" href="list2.php">历史数据</a></div></div>
 			<div class=b_content>
 				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldincom0"><img width=800 height=400 src="<?php echo $prom[0]->file_path;?>"></div>
 				<div class="imagefoldincom" style="width:970px; text-align:center; float:left; display:none;" id="imagefoldincom1"><img width=800 height=400 src="<?php echo $prom[1]->file_path;?>"></div>
@@ -88,237 +117,97 @@
 				<?php for($i=0;$i<count($prom);$i++){ ?>
 					<div param="<?php echo $i;?>" class=b_pro1 <?php if($i==0){?>style="width:197px; color:#000000; background:#FF9900;"<?php } ?>><?php echo $prom[$i]->name; ?></div>
 				<?php } ?>
-			</div>
-		<div class=b_title><div style="float:left; display:inline;">番茄跟踪T Tracking　　　<?php echo date('Y-m-d');$date=date("Y-m-d H:i:s",mktime(0,0,0,date("m"),date("d")-1,date("Y")));?></div><div style="margin-right:10px; float:right; display:inline;"></div></div>	
-			<div class=b_content>
-				<?php $sql="select content from smg_news where title='上海东方卫视波动说明' order by created_at desc";
-					$news=$db->query($sql);
-					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=12 and v.date='".$date."'";
-					$dfws=$db->query($sql);	
-				?>
-				<div class="bpro" id="bpro1">
-					<div style="width:800px;  line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;">
-						<?php for($i=0;$i<4;$i++){ ?>
-						<div style="width:200px; float:left; display:inline;">
-										<div style="width:60px; float:left; display:inline;">节目名称</div><div style="width:70px; float:left; display:inline;">本期收视率</div><div style="width:60px; float:left; display:inline;">与上期差额</div>
-							</div>
-							<?php } ?>
-						<?php for($i=0;$i<count($dfws);$i++){ 
-								$sql="select value,value2,value3 from smg_rating_value where item_id=".$dfws[$i]->id." and date='".$date."' order by date desc,id desc limit 1";
-								$record=$db->query($sql);
-							?>
-							
-							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
-								<div style="width:60px; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" target="_blank" href="list3.php?itemid=12&reportitem=<?php echo $dfws[$i]->id;?>"><?php echo $dfws[$i]->name;?></a></div>
-								<div style="width:70px; float:left; display:inline;">
-									<?php echo $record[0]->value;?> 
-								</div>
-								<div style="width:60px; float:left; display:inline;">
-									<?php if($record[0]->value3 =="up"){?>
-									<span style="color:red;"><?php echo $record[0]->value2; ?> ↑</span>
-									<?php }else if($record[0]->value3 =="down"){?>
-										<span style="color:green;"><?php echo $record[0]->value2;?> ↓</span>
-									<?php }else {?>
-										<span style="color:#000000;"><?php echo $record[0]->value2;?> →</span>
-									<?php } ?>
-								</div>
-							</div>
-						<?php } ?>
-					</div>
-					<div style="width:193px;  float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div></div>
-				<?php $sql="select content from smg_news where title='上海电视台电视剧频道波动说明' order by created_at desc";
-					$news=$db->query($sql);	
-					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=21 and v.date='".$date."'";
-					$dsj=$db->query($sql);	
-				?>
-				<div class="bpro" id="bpro2" style="display:none;">
-					<div style="width:800px;  line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;">
-						<?php for($i=0;$i<4;$i++){ ?>
-						<div style="width:200px; float:left; display:inline;">
-										<div style="width:60px; float:left; display:inline;">节目名称</div><div style="width:70px; float:left; display:inline;">本期收视率</div><div style="width:60px; float:left; display:inline;">与上期差额</div>
-							</div>
-							<?php } ?>
-						<?php for($i=0;$i<count($dsj);$i++){ 
-								$sql="select value,value2,value3 from smg_rating_value where item_id=".$dsj[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
-								$record=$db->query($sql);
-							?>
-							
-							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
-								<div style="width:60px; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" target="_blank" href="list3.php?itemid=21&reportitem=<?php echo $dsj[$i]->id;?>"><?php echo $dsj[$i]->name;?></a></div>
-								<div style="width:70px; float:left; display:inline;">
-									<?php echo $record[0]->value;?> 
-								</div>
-								<div style="width:60px; float:left; display:inline;">
-									<?php if($record[0]->value3 =="up"){?>
-									<span style="color:red;"><?php echo $record[0]->value2; ?> ↑</span>
-									<?php }else if($record[0]->value3 =="down"){?>
-										<span style="color:green;"><?php echo $record[0]->value2;?> ↓</span>
-									<?php }else {?>
-										<span style="color:#000000;"><?php echo $record[0]->value2;?> →</span>
-									<?php } ?>
-								</div>
-							</div>
-						<?php } ?>
-					</div>
-					<div style="width:193px; float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div></div>
-				<?php $sql="select content from smg_news where title='上海电视台生活时尚频道波动说明' order by created_at desc";
-					$news=$db->query($sql);
-					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=22 and v.date='".$date."'";
-					$shss=$db->query($sql);
-				?>
-				<div class="bpro" id="bpro3" style="display:none;">
-					<div style="width:800px;  line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;">
-						<?php for($i=0;$i<4;$i++){ ?>
-						<div style="width:200px; float:left; display:inline;">
-										<div style="width:60px; float:left; display:inline;">节目名称</div><div style="width:70px; float:left; display:inline;">本期收视率</div><div style="width:60px; float:left; display:inline;">与上期差额</div>
-							</div>
-							<?php } ?>
-						<?php for($i=0;$i<count($shss);$i++){ 
-								$sql="select value,value2,value3 from smg_rating_value where item_id=".$shss[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
-								$record=$db->query($sql);
-							?>
-							
-							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
-								<div style="width:60px; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" target="_blank" href="list3.php?itemid=22&reportitem=<?php echo $shss[$i]->id;?>"><?php echo $shss[$i]->name;?></a></div>
-								<div style="width:70px; float:left; display:inline;">
-									<?php echo $record[0]->value;?> 
-								</div>
-								<div style="width:60px; float:left; display:inline;">
-									<?php if($record[0]->value3 =="up"){?>
-									<span style="color:red;"><?php echo $record[0]->value2; ?> ↑</span>
-									<?php }else if($record[0]->value3 =="down"){?>
-										<span style="color:green;"><?php echo $record[0]->value2;?> ↓</span>
-									<?php }else {?>
-										<span style="color:#000000;"><?php echo $record[0]->value2;?> →</span>
-									<?php } ?>
-								</div>
-							</div>
-						<?php } ?>
-					</div>
-					<div style="width:193px; float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div>
+			</div>-->
+		<div class=b_title><div style="float:left; display:inline;"><!--番茄跟踪T Tracking　　　<?php echo date('Y-m-d');$date=date("Y-m-d H:i:s",mktime(0,0,0,date("m"),date("d")-1,date("Y")));?></div><div style="margin-right:10px; float:right; display:inline;">-->使用说明</div></div>	
+		<div class=b_content style="height:264px;">
+			<iframe FRAMEBORDER=0 style="width:600px; height:264px; margin-top:10px; overflow:hidden; float:left; display:inline;" src="sslfxframe.php"></iframe>
+			<div class=table><a style="color:#FF0000;" href="预测节目信息登记表.xls">预测节目信息登记表</a></div><div class=table><a style="color:#FF0000;" href="新节目审片信息登记表.doc">新节目审片信息登记表</a></div>
+			<div style=" margin-top:10px; margin-left:10px; font-size:15px; line-height:25px; float:left; display:inline;">
+				<form method=post name=sndml action=sendmail.php ENCTYPE="multipart/form-data"> 
+					<table> 
+					<tr><td>发送者：</td> 
+					<td><input type=text name=from ></td>
+					<td>主题：</td> 
+					<td><input type=text name=subject ></td>
+					</tr> 
+					<tr><td colspan="4">附　件：　<input style="width:150px;" type=file name=upload_file>　<input type="submit" value="发送"> 
+					</td> 
+					</tr> 
+					</table> 
+					</form> 	
 				</div>
-				<?php $sql="select content from smg_news where title='上海电视台新闻综合频道波动说明' order by created_at desc";
-					$news=$db->query($sql);
-					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=19 and v.date='".$date."'";
-					$newscenter=$db->query($sql);
-				?>
-				<div class="bpro" id="bpro4" style="display:none;">
-					<div style="width:800px;  line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;">
-						<?php for($i=0;$i<4;$i++){ ?>
-						<div style="width:200px; float:left; display:inline;">
-										<div style="width:60px; float:left; display:inline;">节目名称</div><div style="width:70px; float:left; display:inline;">本期收视率</div><div style="width:60px; float:left; display:inline;">与上期差额</div>
-							</div>
-							<?php } ?>
-						<?php for($i=0;$i<count($newscenter);$i++){ 
-								$sql="select value,value2,value3 from smg_rating_value where item_id=".$newscenter[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
-								$record=$db->query($sql);
-							?>
-							
-							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
-								<div style="width:60px; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" target="_blank" href="list3.php?itemid=19&reportitem=<?php echo $newscenter[$i]->id;?>"><?php echo $newscenter[$i]->name;?></a></div>
-								<div style="width:70px; float:left; display:inline;">
-									<?php echo $record[0]->value;?> 
-								</div>
-								<div style="width:60px; float:left; display:inline;">
-									<?php if($record[0]->value3 =="up"){?>
-									<span style="color:red;"><?php echo $record[0]->value2; ?> ↑</span>
-									<?php }else if($record[0]->value3 =="down"){?>
-										<span style="color:green;"><?php echo $record[0]->value2;?> ↓</span>
-									<?php }else {?>
-										<span style="color:#000000;"><?php echo $record[0]->value2;?> →</span>
-									<?php } ?>
-								</div>
-							</div>
-						<?php } ?>
-					</div>
-					<div style="width:193px; float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div>
-				</div>
-				<?php $sql="select content from smg_news where title='上海东方电视台娱乐频道波动说明' order by created_at desc";
-					$news=$db->query($sql);
-					$sql="select distinct(l.name),l.id from smg_report_item l left join smg_rating_value v on v.item_id=l.id where l.dept_id=16 and v.date='".$date."'";
-					$yl=$db->query($sql);
-				?>
-				<div class="bpro" id="bpro5" style="display:none;">
-					<div style="width:800px;  line-height:20px; text-align:center; overflow:hidden; float:left; display:inline;">
-						<?php for($i=0;$i<4;$i++){ ?>
-						<div style="width:200px; float:left; display:inline;">
-										<div style="width:60px; float:left; display:inline;">节目名称</div><div style="width:70px; float:left; display:inline;">本期收视率</div><div style="width:60px; float:left; display:inline;">与上期差额</div>
-							</div>
-							<?php } ?>
-						<?php for($i=0;$i<count($yl);$i++){ 
-								$sql="select value,value2,value3 from smg_rating_value where item_id=".$yl[$i]->id." and date='".$date."' order by date desc,id desc limit 2";
-								$record=$db->query($sql);
-							?>
-							
-							<div style="width:200px; height:20px; overflow:hidden; float:left; display:inline;">
-								<div style="width:60px; float:left; display:inline;"><a style="color:#000000; text-decoration:none;" target="_blank" href="list3.php?itemid=16&reportitem=<?php echo $yl[$i]->id;?>"><?php echo $yl[$i]->name;?></a></div>
-								<div style="width:70px; float:left; display:inline;">
-									<?php echo $record[0]->value;?> 
-								</div>
-								<div style="width:60px; float:left; display:inline;">
-									<?php if($record[0]->value3 =="up"){?>
-									<span style="color:red;"><?php echo $record[0]->value2; ?> ↑</span>
-									<?php }else if($record[0]->value3 =="down"){?>
-										<span style="color:green;"><?php echo $record[0]->value2;?> ↓</span>
-									<?php }else {?>
-										<span style="color:#000000;"><?php echo $record[0]->value2;?> →</span>
-									<?php } ?>
-								</div>
-							</div>
-						<?php } ?>
-					</div>
-					<div style="width:193px; float:left; display:inline;"><?php echo get_fck_content($news[0]->content); ?></div>
-				</div>
-			</div>
-			<div style="width:993px; border:1px solid #DC7638; border-top:none; float:left; display:inline;">
-					<div param="1" class=b_b_pro1 style="width:197px; background:#FF9900;"><a style="color:#000000" class="b_b_pro1a" id="b_b_pro11" target="_blank" href="list3.php?itemid=12">上海东方卫视</a></div>
-					<div param="2" class=b_b_pro1><a class="b_b_pro1a" id="b_b_pro12" target="_blank" href="list3.php?itemid=21">上海电视台电视剧频道</a></div>
-					<div param="3" class=b_b_pro1><a class="b_b_pro1a" id="b_b_pro13" target="_blank" href="list3.php?itemid=22">上海电视台生活时尚频道</a></div>
-					<div param="4" class=b_b_pro1><a class="b_b_pro1a" id="b_b_pro14" target="_blank" href="list3.php?itemid=19">上海电视台新闻综合频道</a></div>
-					<div param="5" class=b_b_pro1><a class="b_b_pro1a" id="b_b_pro15" target="_blank" href="list3.php?itemid=16">上海东方电视台娱乐频道</a></div>
-			</div>
-		<?php $sql="select n.title,n.id,n.content,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='news' and c.name='收视率相关文献' and n.is_adopt=1 order by n.priority asc, n.created_at desc limit 2";
+			
+		</div>
+					
+		<?php $sql="select n.title,n.id,n.content,n.publisher_id,n.click_count,c.id as cid,c.platform as cpf from smg_news n left join smg_category c on n.category_id=c.id where c.category_type='server' and c.name='番茄点评' and n.is_adopt=1 order by n.priority asc, n.created_at desc";
 				$news=$db->query($sql);
 			?>
-			<div class=b_title><div style="float:left; display:inline;">相关文献</div><div class=more><a href="/news/news_list.php?id=<?php echo $news[0]->cid;?>">更多</a></div></div>
+			<div class=b_title><div style="float:left; display:inline;">番茄点评</div><div class=more><a href="/news/news_list.php?id=<?php echo $news[0]->cid;?>">更多</a></div></div>
 			<div id=b_content>
 				<?php for($i=0;$i<count($news);$i++){ ?>
 				<div class="b_content_every">
-					<div class=title><span style="color:#ff9900; font-weight:bold;">【题目】<a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[$i]->title);?></a></span></div>
+					<div class=title><span style="font-weight:bold;"><a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[$i]->title);?></a></span></div><div class="from">技术运营中心　　　<?php echo $news[$i]->publisher_id; ?></div>
 					<div class=content><a target="_blank" href="/server/news/news.php?id=<?php echo $news[$i]->id;?>"><?php echo get_fck_content($news[$i]->content);?></a></div>
+					<?php $sql="select * from smg_comment where resource_id=".$news[$i]->id." and resource_type='news' order by created_at desc";
+						$comment=$db->query($sql);
+					 ?>
+					<div class="click_num">点击(<?php echo $news[$i]->click_count ?>)</div><div class="comment_num">评论(<?php echo count($comment); ?>)</div>
+					<div class=comment>
+						<?php for($j=0;$j<count($comment);$j++){ ?>
+							<div class="comment">评论<?php echo $j+1; ?>：<?php echo $comment[$j]->nick_name; ?>发表：<?php echo $comment[$j]->content; ?></div>
+						<?php } ?>
+					</div>
 				</div>
 				<?php } ?>
 			</div>
-		<div class=b_title>18:00~24:00每十分钟收视率曲线图</div>
-			<div class=b_content>
-				<?php $sql="select distinct(i.name),i.id,r.date from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' group by i.name order by i.id desc";
-	$name=$db->query($sql);?>
-				<select id="pd">
-					<?php for($i=0;$i<count($name);$i++){ ?>
-						<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){ ?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
-						<?php } ?>
-				</select>
-				<?php $rq=$db->query('select date from smg_ratings where imagetype="foldline" order by id desc');
-				$rq=substr($rq[0]->date,0,10);
-				$w   =   date( "w ",strtotime($rq));
-				if($w==0)
-				{
-					$rq=date("Y-m-d",strtotime($rq.' -1 day'));	
-				}
-				$date=aweek($rq,1);
-				?>
-				<select id="rq">
-					<option value="<?php echo $date[0]."-".$date[4]; ?>">周一~周五</option>
-					<option value="<?php echo $date[5];?>" selected=selected >周六</option>
-					<option value="<?php echo $date[6];?>">周日</option>
-				</select>
-				<input type="button" id="pdcx" value="查询"> <a style="text-decoration:none; color:#000000;" target="_blank" href="list.php">历史数据</a>
-				<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
-				<div style="width:970px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings r left join smg_report_item i on r.item_id=i.id where r.imagetype='foldline' and i.name='上海电视台新闻综合频道' and r.date='".$date[5]."' order by r.id desc limit 1"); ?>
-					<img src="<?php echo $foldline[0]->file_path; ?>">
+			<div id="forecasting">
+				<div id=forecasting_title>番茄收视预测</div>
+				<div id=forecasting_content>
+					<select style="margin-left:10px;" id="raderpd">
+						<?php for($i=0;$i<count($name);$i++){ ?>
+							<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
+							<?php } ?>
+					</select>
+					<input type="button" id="radercx" value="查询">
+					<a style="color:#000000; text-decoration:none;" href="list.php">历史数据</a>
+					<?php $sql="select i.id,r.file_path from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='rader' and i.name='上海电视台新闻综合频道'  order by r.id desc";
+						$rader=$db->query($sql);
+					?>
+					<!--<iframe style="width:395px; height:395px; float:left; display:inline;" frameborder="no" scrolling=no id="raderimg" src="/pChart/example8.jpg"></iframe>-->
+					<div style="width:375px; height:342px; margin-top:10px; margin-left:10px; overflow:hidden; float:left; display:inline;" id="raderimg"><img src="<?php echo $rader[0]->file_path; ?>"></div>
 				</div>
 			</div>
-	</div>
+			<div id="graph">
+				<div id=graph_title>18:00~24:00每十分钟收视率曲线图</div>
+				<div id=graph_content>
+					<?php $sql="select distinct(i.name),i.id,r.date from smg_report_item i left join smg_ratings r on i.id=r.item_id where i.is_dept=0 and r.imagetype='foldline' group by i.name order by i.id desc";
+		$name=$db->query($sql);?>
+					<select id="pd">
+						<?php for($i=0;$i<count($name);$i++){ ?>
+							<option value="<?php echo $name[$i]->id; ?>" <?php if($name[$i]->name=="上海电视台新闻综合频道"){ ?>selected="selected"<?php } ?>><?php echo $name[$i]->name; ?></option>
+							<?php } ?>
+					</select>
+					<?php $rq=$db->query('select date from smg_ratings where imagetype="foldline" order by id desc');
+					$rq=substr($rq[0]->date,0,10);
+					$w   =   date( "w ",strtotime($rq));
+					if($w==0)
+					{
+						$rq=date("Y-m-d",strtotime($rq.' -1 day'));	
+					}
+					$date=aweek($rq,1);
+					?>
+					<select id="rq">
+						<option value="<?php echo $date[0]."-".$date[4]; ?>">周一~周五</option>
+						<option value="<?php echo $date[5];?>" selected=selected >周六</option>
+						<option value="<?php echo $date[6];?>">周日</option>
+					</select>
+					<input type="button" id="pdcx" value="查询"> <a style="text-decoration:none; color:#000000;" target="_blank" href="list.php">历史数据</a>
+					<input id="riqi" style="width:200px; border:0px;" type="text" readonly="true">
+					<div style="width:570px; text-align:center; float:left; display:inline;" id="imagefoldline"><?php $foldline=$db->query("select file_path from smg_ratings r left join smg_report_item i on r.item_id=i.id where r.imagetype='foldline' and i.name='上海电视台新闻综合频道' and r.date='".$date[5]."' order by r.id desc limit 1"); ?>
+						<img width="560" height="330" src="<?php echo $foldline[0]->file_path; ?>">
+					</div>
+			</div>
+		</div>	
 <?php require_once('../inc/bottom.inc.php');?>
 </body>
 </html>

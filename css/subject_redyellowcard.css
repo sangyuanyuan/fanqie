@@ -1,0 +1,33 @@
+body {margin:0px; font-family:ËÎÌו; font-size:12px; line-height:0px; color:#000000; background:#f4f4f4;}
+#ibody{width:950px; padding-bottom:10px; margin:0 auto; background:#ffffff;}
+#banner{width:950px; height:177px; background:url('/images/subject/redyellowcard_title.jpg') no-repeat; float:left; display:inline;}
+#left{width:228px; margin-left:3px; float:left; display:inline;}
+#left #title{width:228px; height:26px; margin-top:10px; text-align:center; color:#ffffff; font-size:14px; font-weight:bold; line-height:26px; background:url('/images/subject/redyellowcard_left_title.jpg') no-repeat; float:left; display:inline;}
+#left #content{width:228px; height:624px; margin-top:5px; background:#f0fafe; float:left; display:inline;}
+#left #content .cl{width:210px; height:24px; margin-left:9px; line-height:24px; float:left; display:inline;}
+#left #content .cl a{color:#2f5fa1; text-decoration:none;}
+#center{width:482px; margin-top:10px; margin-left:3px; float:left; display:inline;}
+#c_t{width:480px; height:176px; margin-left:1px; overflow:hidden; float:left; display:inline;}
+.c_title{width:470px; height:28px; margin-top:2px; padding-left:12px; line-height:28px; color:#ffffff; background:url('/images/subject/redyellowcard_center_title.jpg') no-repeat; float:left; display:inline;}
+.c_title .c_title_left{font-size:14px; font-weight:bold; float:left; display:inline;}
+.c_title .c_title_right{margin-right:5px; float:right; display:inline;}
+.c_title .c_title_right a{color:#ffffff; text-decoration:none;}
+.c_content{width:480px; height:125px; margin-left:1px; float:left; display:inline;}
+.c_content .cl{width:450px; height:25px; margin-left:10px; padding-left:10px; line-height:25px; background:url('/images/subject/icon.jpg') no-repeat; float:left; display:inline;}
+#right{width:228px; margin-top:10px; margin-right:3px; float:right; display:inline;}
+#r_t_title{width:228px; height:48px; background:url('/images/subject/redyellowcard_r_t.jpg') no-repeat; overflow:hidden; float:left; display:inline;}
+#r_t_content{width:228px; height:280px; background:#f0fafe; overflow:hidden; float:left; display:inline;}
+#r_t_content .cl{width:210px; height:20px; margin-left:9px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#r_t_content .cl a{color:#2f5fa1; text-decoration:none;}
+#r_b_title{width:228px; height:48px; margin-top:2px; background:url('/images/subject/redyellowcard_r_b.jpg') no-repeat; overflow:hidden; float:left; display:inline;}
+#r_b_content{width:228px; height:280px; background:#f0fafe; overflow:hidden; float:left; display:inline;}
+#r_b_content .cl{width:210px; height:20px; margin-left:9px; line-height:20px; overflow:hidden; float:left; display:inline;}
+#r_b_content .cl a{color:#2f5fa1; text-decoration:none;}
+
+#comment{width:950px; margin-top:10px; float:left; display:inline;}
+#b_left{width:485px; height:278px; margin-left:7px; background:url('/images/subject/b_left.jpg') no-repeat; overflow:hidden; float:left; display:inline;}
+#b_left #content{width:470px; height:240px; margin-top:34px; margin-left:7px; line-height:20px; float:left; display:inline;}
+#b_right{width:440px; height:278px; margin-right:7px; background:#e7e7e7; overflow:hidden; float:right; display:inline;}
+#b_right #title{width:420px; height:32px; margin-top:2px; padding-left:15px; font-size:14px; font-weight:bold; line-height:32px; float:left; display:inline;}
+#b_right #content{width:420px; padding-left:15px; line-height:32px; float:left; display:inline;}
+#b_right button{width:105px; height:30px; border:0px; margin-top:10px; margin-left:168px; background:url('/images/subject/redyellowcard_button_bg.jpg') no-repeat; float:left; display:inline;}

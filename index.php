@@ -118,7 +118,7 @@ total("首页","other");
 				<? }?>	
   		  </div>
  				<div class=content_tlt id=content2 <?php if($record_inline[0]->name=='spxw'){?>style="display:inline;"<?php }?>>
- 					
+ 						<!--<iframe id=video_src src="index_video.php" width=235 height=182 scrolling="no" frameborder="0"></iframe>-->
  						<iframe id=video_src src="index_video.php?photo=<?php echo $record_video[0]->video_photo_src ?>&video=<?php echo $record_video[0]->video_src ?>" width=235px height=182px scrolling="no" frameborder="0"></iframe>
  				</div>
   			<div class=content_tlt id=content3 <?php if($record_inline[0]->name=='fqgg'){?>style="display:inline"<?php }?>>
@@ -210,7 +210,7 @@ total("首页","other");
  					<div id=content_b>
  						<?php for($i=7;$i<29;$i++){ ?>
  						<div class=cbcl>
- 								<a <?php if($record_baoliao[$i]->cream >=50){ ?>style="padding-left:15px; background:url('images/cream1.gif') no-repeat;"<?php } ?> target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><?php echo $record_baoliao[$i]->short_title; ?></a>	
+ 								<a <?php if($record_baoliao[$i]->cream >=30){ ?>style="padding-left:15px; background:url('images/cream1.gif') no-repeat;"<?php } ?> target="_blank" title="<?php echo $record_baoliao[$i]->title; ?>" href="/news/news/news_wybl.php?id=<?php echo $record_baoliao[$i]->news_id; ?>"><?php echo $record_baoliao[$i]->short_title; ?></a>	
  						</div>
  						<?php } ?>
  					</div>
@@ -267,14 +267,17 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 		<div id=p2>
  			<!-- start top_right_top !-->
   		<?php
-				$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 1';
+				$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="大头条" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2';
 				$record_head=$db -> query($sql);
+				$state=$db->query('select * from smg_news_head_ctrl');
 			?>
 			<div id=t_r_t>
- 				<div id=title><a   href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a><?php echo show_video($record_head[0]->video_flag,40,35)?><?php echo show_img($record_head[0]->image_flag,40,35)?></div>
+ 				<div id=title <?php if($state[0]->state==1){ ?>style="height:38px; line-height:38px; font-size:24px;"<?php } ?>><a href="<?php echo "/".$record_head[0]->platform."/news/news_head.php?id=".$record_head[0]->news_id ?>" target="_blank"><?php echo $record_head[0]->short_title ?></a><?php echo show_video($record_head[0]->video_flag,40,35)?><?php echo show_img($record_head[0]->image_flag,40,35)?></div>
  				<a   href="/news/news_list.php?id=<?php echo $record_head[0]->cid; ?>" id=btn target=_blank></a>
- 				<div id=content>
- 				<?php
+ 				<div id=content <?php if($state[0]->state==1){ ?>style="height:30px; border-top:1px dotted #cccccc; padding-top:4px; margin-top:0px; line-height:30px;"<?php } ?>>
+ 					<?php if($state[0]->state==1){ ?>
+ 					<a style="color:#CC0000; font-size:24px; font-weight:bold;" href="<?php echo "/".$record_head[1]->platform."/news/news_head.php?id=".$record_head[1]->news_id ?>" target="_blank"><?php echo $record_head[1]->short_title ?></a><?php echo show_video($record_head[1]->video_flag,40,35)?><?php echo show_img($record_head[1]->image_flag,40,35);
+ 						}else{
  					if($record_head[0]->sub_headline==1)
  					{ 
  							echo $record_head[0]->news_description; 
@@ -296,7 +299,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 									}
 							}		
 
-					}	
+					}}
 				?>
  				</div>
 
@@ -422,7 +425,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 					$record_import_a1=$db -> query($sql1);
 					$sql = 'select n.photo_src,c.platform,c.id as cid,n.id,n.short_title from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-图" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
 					$record_import_b=$db -> query($sql);
-					$sql = 'select n.short_title, c.platform,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="重点关注-专" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2';
+					$sql = 'select n.id,n.short_title,n.content,n.description,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="最新动态" order by i.priority asc, n.created_at desc limit 9';
 					$record_import_c=$db -> query($sql);
 					$sql='select n.short_title, c.id as cid,n.id,n.image_flag,n.video_flag from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="改革发展调研" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 2';
 					$record_import_d=$db->query($sql);
@@ -432,7 +435,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  				<div id=box>
  					<div id="wxh_subject">
  						<?php
-							$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="世博系列" and c.platform="news" and is_recommend=1 order by n.priority asc,n.created_at desc limit 4';
+							$sql = 'select n.*,n.id as news_id,n.description as news_description,c.*,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="节目管理办法" and c.platform="news" and is_recommend=1 order by n.priority asc,n.created_at desc limit 7';
 							$record_sub_news=$db -> query($sql);
 						?>
  						<div id=wxh_title><a href="<?php echo "/".$record_sub_news[0]->platform."/news/news_head.php?id=".$record_sub_news[0]->news_id ?>" target="_blank"><?php echo delhtml($record_sub_news[0]->short_title); ?></a></div>
@@ -456,11 +459,11 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 											{
 												if(date("Y-m-d")=="2010-04-21")
 												{
-													echo '[<a style="color:#000000;" href="'.$record_sub_news[$i]->platform.'/news/news_head.php?id='.$record_sub_news[$i]->news_id.'" target=_blank>'.$record_sub_news[$i]->short_title.'</a>]<a  style="color:#000000; margin-left:2px;" target="_blank" href="/news/news_list.php?id='.$record_sub_news[$i]->cid.'">更多</a>';	
+													echo '[<a style="color:#000000;" href="'.$record_sub_news[$i]->platform.'/news/news_head.php?id='.$record_sub_news[$i]->news_id.'" target=_blank>'.$record_sub_news[$i]->short_title.'</a>]<!--<a  style="color:#000000; margin-left:2px;" target="_blank" href="/news/news_list.php?id='.$record_sub_news[$i]->cid.'">更多</a>-->';	
 												}
 												else
 												{
-													echo '[<a href="'.$record_sub_news[$i]->platform.'/news/news_head.php?id='.$record_sub_news[$i]->news_id.'" target=_blank>'.$record_sub_news[$i]->short_title.'</a>]<!--<a  style="color:red; margin-left:2px;" target="_blank" href="http://172.27.203.81:8080/bbs/viewthread.php?tid=2921&extra=">参与讨论</a>--><a  style="color:#ff6600; margin-left:2px;" target="_blank" href="/news/news_list.php?id='.$record_sub_news[$i]->cid.'">更多</a>';		
+													echo '[<a href="'.$record_sub_news[$i]->platform.'/news/news_head.php?id='.$record_sub_news[$i]->news_id.'" target=_blank>'.$record_sub_news[$i]->short_title.'</a>]<!--<a  style="color:#ff6600; margin-left:2px;" target="_blank" href="/news/news_list.php?id='.$record_sub_news[$i]->cid.'">更多</a>-->';		
 												}
 											}
 									}		
@@ -492,28 +495,28 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  					</div>	 
  					
  					<div id=r>
- 						<div class=title><a target="_blank" href="/news/news_list.php?id=33">广而告之</a></div>
- 						<?php
-							$sql = 'select n.short_title, c.platform,n.id as news_id,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="广而告之" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
+ 						<?php 
+							$sql='select n.short_title, c.platform, n.id as news_id,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="要情专递" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
+							$xbjj=$db->query($sql);
+							$sql = 'select n.short_title, c.platform,n.id as news_id,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="广而告之" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 4';
 							$gegz=$db -> query($sql);
 						?>
+ 						<div class=title><a target="_blank" href="/news/news_list.php?id=227">要情专递</a></div>
+ 						
  						<div class=content>
  							<div class=r_content_t>
 	 							<ul>
-		 						 <?php for($i=0; $i<count($gegz); $i++){?>
-		 							<li <?php if($gegz[$i]->image_flag||$gegz[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($gegz[$i]->image_flag)?><?php show_video2($gegz[$i]->video_flag)?></div><div <?php  if($gegz[$i]->image_flag==1||$gegz[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($gegz[$i]->video_flag!=1){ ?><a   <? news_date($gegz[$i]->created_at,$days)?> href="<?php echo "/".$gegz[$i]->platform."/news/news.php?id=".$gegz[$i]->news_id ?>" target="_blank" ><?php }else{ ?><a   <? news_date($gegz[$i]->created_at,$days)?> href="<?php echo "/".$gegz[$i]->platform."/news/news_video.php?id=".$gegz[$i]->news_id ?>" target="_blank" ><?php } ?><?php if($gegz[$i]->image_flag==0 && $gegz[$i]->video_flag==0){ ?>.<?php } ?><?php echo $gegz[$i]->short_title ?></a></div></li>
+		 						 <?php for($i=0; $i<count($xbjj); $i++){?>
+		 							<li <?php if($xbjj[$i]->image_flag||$xbjj[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($xbjj[$i]->image_flag)?><?php show_video2($xbjj[$i]->video_flag)?></div><div <?php  if($xbjj[$i]->image_flag==1||$xbjj[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($xbjj[$i]->video_flag!=1){ ?><a   <? news_date($xbjj[$i]->created_at,$days)?> href="<?php echo "/".$xbjj[$i]->platform."/news/news.php?id=".$xbjj[$i]->news_id ?>" target="_blank" ><?php }else{ ?><a   <? news_date($xbjj[$i]->created_at,$days)?> href="<?php echo "/".$xbjj[$i]->platform."/news/news_video.php?id=".$xbjj[$i]->news_id ?>" target="_blank" ><?php } ?><?php if($xbjj[$i]->image_flag==0 && $xbjj[$i]->video_flag==0){ ?>.<?php } ?><?php echo $xbjj[$i]->short_title ?></a></div></li>
 		             <? }?>
 		 						</ul>
 		 					</div>
-		 					<?php 
-							 $sql='select n.short_title, c.platform, n.id as news_id,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="小编视点" and c.platform="news"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
-							 $xbjj=$db->query($sql);
-							?>
-	 						<div class=title style="width:112px; margin-top:4px; background:url('/images/index/jt.jpg') no-repeat; border-top:1px dashed #666666; overflow:hidden;"><a target="_blank" href="/news/news_list.php?id=227">小编加精</a></div>
+		 					
+	 						<div class=title style="width:112px; margin-top:4px; background:url('/images/index/jt.jpg') no-repeat; border-top:1px dashed #666666; overflow:hidden;"><a target="_blank" href="/news/news_list.php?id=33">广而告之</a></div>
 	 						<div class=r_content_t>
 	 							<ul>
-		 						 <?php for($i=0; $i<count($xbjj); $i++){?>
-		 							<li <?php if($xbjj[$i]->image_flag||$xbjj[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($xbjj[$i]->image_flag)?><?php show_video2($xbjj[$i]->video_flag)?></div><div <?php  if($xbjj[$i]->image_flag==1||$xbjj[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($xbjj[$i]->video_flag!=1){ ?><a   <? news_date($xbjj[$i]->created_at,$days)?> href="<?php echo "/".$xbjj[$i]->platform."/news/news.php?id=".$xbjj[$i]->news_id ?>" target="_blank" ><?php }else{ ?><a   <? news_date($xbjj[$i]->created_at,$days)?> href="<?php echo "/".$xbjj[$i]->platform."/news/news_video.php?id=".$xbjj[$i]->news_id ?>" target="_blank" ><?php } ?><?php if($xbjj[$i]->image_flag==0 && $xbjj[$i]->video_flag==0){ ?>.<?php } ?><?php echo $xbjj[$i]->short_title ?></a></div></li>
+		 						 <?php for($i=0; $i<count($gegz); $i++){?>
+		 							<li <?php if($gegz[$i]->image_flag||$gegz[$i]->video_flag==1){echo 'style="background:none; padding:0px;" ';}?>><div><?php show_img2($gegz[$i]->image_flag)?><?php show_video2($gegz[$i]->video_flag)?></div><div <?php  if($gegz[$i]->image_flag==1||$gegz[$i]->video_flag==1){?>style="width:142px; height:18px; line-height:18px; overflow:hidden; float:left; display:inline;"<?php } ?>><? if($gegz[$i]->video_flag!=1){ ?><a   <? news_date($gegz[$i]->created_at,$days)?> href="<?php echo "/".$gegz[$i]->platform."/news/news.php?id=".$gegz[$i]->news_id ?>" target="_blank" ><?php }else{ ?><a   <? news_date($gegz[$i]->created_at,$days)?> href="<?php echo "/".$gegz[$i]->platform."/news/news_video.php?id=".$gegz[$i]->news_id ?>" target="_blank" ><?php } ?><?php if($gegz[$i]->image_flag==0 && $gegz[$i]->video_flag==0){ ?>.<?php } ?><?php echo $gegz[$i]->short_title ?></a></div></li>
 		             <? }?>
 		 						</ul>
 		 					</div>
@@ -521,18 +524,23 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  					</div>	 				
  				</div>
  				<div id=b>
+ 					<div class=pic><a target="_blank" href="subject/sxxx2/"><img src="/images/index/sxxx.jpg" border=0 /></a></div>
 	 				<div class="content">
-							<a href="/news/abld_list.php" target=_blank><img src="/images/4.jpg" width="125" border=0></a>
-							<a style="width:160px; height:15px; line-height:15px; text-decoration:none; color:#000000; overflow:hidden; float:left; display:inline;" href="/news/abld_list.php" target="_blank">双月劳动竞赛</a>
-	 				</div>
-	 				<div class="content">
-							<a href="/subject/djnews/" target=_blank><img src="/images/2.jpg" width="125px; height:20px;" border=0></a>
-							<a style="width:160px; height:15px; line-height:15px; text-decoration:none; color:#000000; overflow:hidden; float:left; display:inline;" href="<?php echo "/".$record_import_c[1]->platform."/news/news.php?id=".$record_import_c[1]->id ?>" target="_blank"><?php echo $record_import_c[1]->short_title ?></a>
-	 				</div>
-	 				<div class="content">
-						<a href="/subject/sxxx2/" target=_blank><img src="/images/1.jpg" width="125px; height:20px;" border=0></a>
-						<a style="width:160px; height:15px; line-height:15px; text-decoration:none; color:#000000; overflow:hidden; float:left; display:inline;" href="<?php echo "/".$record_import_c[0]->platform."/news/news.php?id=".$record_import_c[0]->id ?>" target="_blank"><?php echo $record_import_c[0]->short_title ?></a>
+	 					<?php for($i=0;$i<3;$i++){ ?>
+							<a href="/subject/news/news.php?id=<?php echo $record_import_c[$i]->id ?>" target="_blank"><?php echo $record_import_c[$i]->short_title ?></a>
+						<?php } ?>
 					</div>
+	 				<div class="content">
+						<?php for($i=3;$i<6;$i++){ ?>
+							<a href="/subject/news/news.php?id=<?php echo $record_import_c[$i]->id ?>" target="_blank"><?php echo $record_import_c[$i]->short_title ?></a>
+						<?php } ?>
+					</div>
+	 				<div class="content">
+	 					<?php for($i=6;$i<9;$i++){ ?>
+							<a href="/subject/news/news.php?id=<?php echo $record_import_c[$i]->id ?>" target="_blank"><?php echo $record_import_c[$i]->short_title ?></a>
+						<?php } ?>
+					</div>
+					<div class=pic style="float:right;"><a target="_blank" href="news/news_list.php?id=239"><img src="/images/index/zxcy.jpg" border=0 /></a></div>
 				</div>
  			</div>
  			<!-- end !-->
@@ -543,62 +551,77 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  				<iframe src="index_report.html" frameborder=0 scrolling="no" ></iframe>
  			</div>
  			<!-- end !-->
- 			<?php 
- 				$today=date("Y-m-d",time())." 23:59:59";
- 				$lastyesterday=date("Y-m-d",strtotime("-2 day"))." 00:00:00";
- 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='视听观察周刊' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
- 				$stgc=$db->query($sql);
- 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='节目观察周刊' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
- 				$jmgc=$db->query($sql);
- 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='传媒观察周刊' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
- 				$cmgc=$db->query($sql);
- 				$sql="select count(*) as num from smg_news n left join smg_category c on n.category_id=c.id where c.name='发展研究专报' and category_type='news' and n.created_at>='".$lastyesterday."' and n.created_at<='".$today."' order by n.created_at desc";
- 				$fzyjzb=$db->query($sql);
- 			?>
 			<div id=t_r_c_b_c>
-				<div id="title"><img src="/images/index/fzyjbb.jpg"></div>
-				<div class="cl"><a   target="_blank" <?php if((int)$stgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=133">视听观察周刊</a></div>
-				<div class="cl"><a   target="_blank" <?php if((int)$jmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=134">节目观察周刊</a></div>
-				<div class="cl"><a   target="_blank" <?php if((int)$cmgc[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=135">传媒观察周刊</a></div>
-				<div class="cl"><a   target="_blank" <?php if((int)$fzyjzb[0]->num > 0){ ?>style="color:red;"<?php } ?> href="/news/news_list.php?id=136">发展研究专报</a></div>
-				<div class="cl"><a target="_blank" href="/news/news_list.php?id=217">广电科技信息</a></div>
-				<a   target="_blank" href="/news/newscenter_list.php" style="margin-top:5px;"><img border=0 width=90 height=30 src="images/34.jpg"></a>
+				<?php $sql = 'select n.id,n.short_title,n.category_id,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 6';
+				$record_out=$db -> query($sql);?>
+				<a target="_blank" href="/news/news_list.php?id=28"><div class="title">业界动态</div></a>
+				<div id="marquees">
+					<?php for($i=0;$i<count($record_out);$i++){ ?>
+						<div class="cl"><a target="_blank" href="/news/news/news.php?id=<?php echo $record_out[$i]->id; ?>"><?php echo $record_out[$i]->short_title; ?></a></div>
+					<?php } ?>
+				</div>
+				<script language="javascript">
+<!--
+marqueesHeight=45; //内容区高度
+stopscroll=false; //这个变量控制是否停止滚动
+with(marquees){
+noWrap=true; //这句表内容区不自动换行
+style.width=0; //于是我们可以将它的宽度设为0，因为它会被撑大
+style.height=marqueesHeight;
+style.overflowY="hidden"; //滚动条不可见
+onmouseover=new Function("stopscroll=true"); //鼠标经过，停止滚动
+onmouseout=new Function("stopscroll=false"); //鼠标离开，开始滚动
+}
+//这时候，内容区的高度是无法读取了。下面输出一个不可见的层"templayer"，稍后将内容复制到里面：
+document.write('<div id="templayer" style="position:absolute;z-index:1;visibility:hidden"></div>');
+function init(){ //初始化滚动内容
+//多次复制原内容到"templayer"，直到"templayer"的高度大于内容区高度：
+while(templayer.offsetHeight<marqueesHeight){
+templayer.innerHTML+=marquees.innerHTML;
+} //把"templayer"的内容的“两倍”复制回原内容区：
+marquees.innerHTML=templayer.innerHTML+templayer.innerHTML;
+//设置连续超时，调用"scrollUp()"函数驱动滚动条：
+setInterval("scrollUp()",50);
+}
+document.body.onload=init;
+preTop=0; //这个变量用于判断滚动条是否已经到了尽头
+function scrollUp(){ //滚动条的驱动函数
+if(stopscroll==true) return; //如果变量"stopscroll"为真，则停止滚动 
+preTop=marquees.scrollTop; //记录滚动前的滚动条位置
+marquees.scrollTop+=1; //滚动条向下移动一个像素
+//如果滚动条不动了，则向上滚动到和当前画面一样的位置
+//当然不仅如此，同样还要向下滚动一个像素(+1)：
+if(preTop==marquees.scrollTop){
+marquees.scrollTop=templayer.offsetHeight-marqueesHeight+1;
+}
+}
+-->
+</script> 
+				<div class="cl"><a target="_blank" style="color:red; font-weight:bold;" href="/news/news_list.php?id=217">广电科技信息</a></div>
+				<a target="_blank" href="/news/fzyjbb_list.php"><div class="title" style="margin-top:5px;">发展研究帮帮</div></a>
+				<div class="title" style="margin-top:5px; background:none;"><a target="_blank" href="/sslfx/"><img border=0 src="images/index/fqssl.jpg"></a></div>
 			</div>
 			
 
  			<!-- start top_right_center_bottom_right !-->
-  		
+  		<?php $sql = 'select n.id,n.short_title,n.category_id,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄节目工厂" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 5';
+				$fqjmgc=$db -> query($sql);?>
 			<div id=t_r_c_b_r>
-				<?php
-				$sql = 'select n.id,n.short_title,n.category_id,c.platform,c.id as cid  from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="业界动态" and c.platform="server"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 20';
-				$record_out=$db -> query($sql);
-				 ?>
-				 <div id=title></div><div id=more><a   target="_blank" href="news/news_list.php?id=<?php echo $record_out[0]->cid; ?>"><img border=0 src="images/index/more1.gif"></a></div>
-				<div class=box1 style="height:60px; margin-top:10px;">
-					<ul>
-						<marquee height="50" width=100% DIRECTION="up" scrollamount="1" onmouseover=this.stop() onmouseout=this.start()>
-						<?php for($i=0;$i<count($record_out);$i++){ ?>
-							<li><a  style="margin-top:5px; margin-right:5px; text-decoration:none;" target="_blank" href="/server/news/news.php?id=<?php echo $record_out[$i]->id; ?>"><?php echo $record_out[$i]->short_title; ?></a></li>
-						<?php } ?>
-						</marquee>
-					</ul>
+				<div id=jmgc><img border=0 src="images/index/jmgc.jpg"></div>
+				<div id=jmgccontent>
+					<?php for($i=0;$i<count($fqjmgc);$i++){?>
+						<div class="cl"><a target="_blank" href="/subject/news/news.php?id=<?php echo $fqjmgc[$i]->id; ?>">·<?php echo $fqjmgc[$i]->short_title; ?></a></div>
+					<?php } ?>
+					<div style="width:151px; height:35px; margin-top:6px; overflow:hidden; float:left; display:inline;"><a target="blank" href="subject/cy/"><img border=0 src="images/buyidea.jpg"></a></div>
 				</div>
-					<!--<div id=title></div>
-					<a   href="/news/news_list.php?id=64" id=more target=_blank></a>-->
-					<div class=box1 style="margin-top:5px;">
-						<a   target="_blank" href="/sslfx/"><img border=0 src="/images/index/rating_logo.jpg"></a><br>
-						<ul>
-							<li><a   style="margin-top:5px; margin-right:5px; color:red; font-weight:bold; text-decoration:none;" target="_blank" href="/news/news_list.php?id=64">更多番茄工具</a></li>
-						</ul>
-					</div>
-					<!--<div id=box2>
-						<ul>
-							<li>·<a   style="color:red; font-weight:bold;" target="_blank" href="/sslfx/">电视节目收视定量分析工具</a></li>
-							<li>·<a   target="_blank" href="/server/news/news.php?id=12302">员工自助系统</a></li>
-							<li>·<a   target="_blank" href="/server/news/news.php?id=12312">人力资源部常用表格</a></li>
-							<li>·<a   target="_blank" href="/server/news/news.php?id=12310">办公室常用表格</a></li>
-						</ul>						
-					</div>-->
+				<div id=jmgclist style="display:none;">
+					<div class="cl"><a target="_blank" href="/subject/cy/"><img border=0 src="images/index/jmyf.jpg"></a></div>
+					<div class="cl"><a target="_blank" href="/news/news_list.php?id=242"><img border=0 src="images/index/spgl.jpg"></a></div>
+					<div class="cl"><a target="_blank" href="/news/news_list.php?id=241"><img border=0 src="images/index/stsskh.jpg"></a></div>
+					<div class="cl"><a target="_blank" href="/news/news_list.php?id=240"><img border=0 src="images/index/xdszcj.jpg"></a></div>
+					<div class="cl"><a target="_blank" href="/news/news_list.php?id=243"><img border=0 src="images/index/lmtt.jpg"></a></div>
+					<div id="jmgcclose">关闭</div>
+				</div>
  			</div>
  			<!-- end !-->
 		
@@ -614,6 +637,8 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 						$record_tg=$db -> query($sql);
 						$sql="select * from smg_fhtg where is_adopt=1 and show_index=1 order by priority asc,created_at desc limit 3";
 						$fhtg=$db->query($sql);
+	 					$sql = 'select n.short_title,n.id as news_id,n.photo_src,n.content,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 12';
+						$record_happy=$db -> query($sql);
 					?>
 				<div class=tg_content id=content_trrt1>
 	 				<div class=content_trrt id=content_trrt10>
@@ -629,8 +654,9 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 							</ul>
 						</div>
 						<? }}else{?>
+						
 						<?php for($i=0;$i<2;$i++){?>
-						<div class=box style="margin-bottom:5px;">
+						<div class=box style="margin-bottom:10px;">
 							<a   href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $record_tg[$i]->photourl; ?>" target=_blank border=0></a>
 							<ul>
 								<li style="width:95px; overflow:hidden;"><a   href="/fqtg/fqtglist.php" target=_blank><?php echo $record_tg[$i]->title ?></a></li>
@@ -640,7 +666,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 							</ul>
 						</div>
 						<?php }?>
-						<div class=box style="margin-bottom:5px;">
+						<div class=box style="margin-bottom:10px;">
 							<a   href="/fqtg/fqtglist.php" target=_blank><img src="<?php echo $fhtg[0]->src; ?>" target=_blank border=0></a>
 							<ul>
 								<li style="width:95px; overflow:hidden;"><a   href="/fqtg/fqtglist.php" target=_blank><?php echo $fhtg[0]->title ?></a></li>
@@ -689,10 +715,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 						<!--<a   target="_blank" href="subject/xyy2/pkend.php"><img border=0 width=180 height=122 src="images/xyy2.gif"></a>-->
 	 				</div>
 	 			</div>
- 				<?php
- 					$sql = 'select n.short_title,n.id as news_id,c.platform from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="快乐番茄" and c.platform="server" order by n.priority asc,n.created_at desc limit 12';
-					$record_happy=$db -> query($sql);		
-				?>	
+ 				
  				<div class=content_trrt id=content_trrt2 style="display:none;">
  					<div class=box>
 						<ul>
@@ -768,7 +791,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  			<!-- end !-->			
  			<!-- start top_right_right_middle !-->
   		<div id=t_r_r_m>
-  			<?php $sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄声音" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc';
+  			<?php $sql = 'select n.id as news_id, n.photo_src,n.short_title,c.platform,c.id as cid from smg_news n left join smg_category c on n.category_id=c.id where n.is_adopt=1 and c.name="番茄声音" and c.platform="zone"  and is_recommend=1 order by n.priority asc,n.created_at desc limit 8';
 						$record_industry=$db -> query($sql); ?>
  				<div class=btn_tlm param=1 id=btn_tlm_1 style="margin-left:20px;background:url(/images/index/btn4.jpg) no-repeat"><a   href="/news/news_list.php?id=<?php echo $record_industry[0]->cid?>" target=_blank>番茄声音</a></div>
  				<div class=btn_tlm id=btn_tlm_1 style="width:67px; height:19px; background:url(/images/index/btn4a.jpg) no-repeat"><a   target="_blank" href="/bbs/forumdisplay.php?fid=16" target=_blank>发声音</a></div>
@@ -807,7 +830,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 				<div class=content_trrb id=content_trrb1 style="display:inline">
 					<ul>
 					<?php for($i=0;$i<count($greentomato);$i++){?>
-						<li><a href="/<?php echo $greentomato[$i]->platform; ?>/news/news.php?id=<?php echo $greentomato[$i]->id ?>" <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($greentomato[$i]->short_title); ?></a></li>
+						<li><a href="/subject/news/news.php?id=<?php echo $greentomato[$i]->id ?>" <?php if($i<=2){?>  style="color:#E52520" <?php }?> target=_blank ><?php echo delhtml($greentomato[$i]->short_title); ?></a></li>
 					<? }?>	
 					</ul>
 				</div>
@@ -1034,13 +1057,13 @@ $gb=$db->query('select description,content from smg_news where id=47028');
       <!-- start bottom_top_left !-->
  			<div id=b_t_l <?php if(date('Y-m-d')=="2010-04-01"){ ?>style="background:url('images/index/bg_b_t_l1.jpg') no-repeat;"<?php } ?>>
 				<div class=l_box>
- 					<?php $sql = 'select id,title from smg_question where is_adopt=1 and problem_id<>39 order by create_time desc limit 5';
+ 					<?php $sql = 'select id,title from smg_question where is_adopt=1 and problem_id<>39 order by create_time desc limit 6';
  								$record = $db->query($sql);
  					 ?>
- 					<div class="top_title"><a   href="/answer/pro_answer.php?id=49"  target=_blank>答题：2010端午答题</a></div>
- 					<?php for($i=0;$i<count($record);$i++)
+ 					<div class="top_title"><a href="/answer/answer.php?id=<?php echo $record[0]->id; ?>"  target=_blank>答题：<?php echo $record[0]->title;?></a></div>
+ 					<?php for($i=1;$i<count($record);$i++)
 						{?>
-						<div class="bottom_title"><li><span style="color:#FF9900">·</span><a   href="/answer/pro_answer.php?id=49"  target=_blank>答题：<?php echo $record[$i]->title;?></a></li></div>
+						<div class="bottom_title"><li><span style="color:#FF9900">·</span><a   href="/answer/answer.php?id=<?php echo $record[$i]->id; ?>"  target=_blank>答题：<?php echo $record[$i]->title;?></a></li></div>
 					 <?php } ?>
  				</div>
 				<div class=m_box>
@@ -1084,7 +1107,36 @@ $gb=$db->query('select description,content from smg_news where id=47028');
 				<div id=begin_vote><a href="/vote/beginvote.php" target="_blank"><img border=0 src="/images/index/begin_vote1.jpg"></a></div>
  			</div>
  			<!-- end !-->	      	
- 
+ 			<div id=server_brithday>
+				<div id=title>生日祝福</div>
+				<?php
+						$today = date("m-d");
+						$sql = 'select t1.nickname,t1.gender,t1.loginname,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.$today.'" and t1.hide_birthday=0 and t1.state=3';
+						$records = $db->query($sql);
+						$count = count($records);
+						for($i=0;$i< $count;$i++){
+				?>
+				<div class=brithday_content id="brithday_content<?php echo $i; ?>" <?php if($i >0){ ?>style="display:none;"<?php } ?>>
+					<div class=photo><img src="images/headpic.jpg" /></div>
+					<div class=brithdayinfo>
+						<div class=brithdayinfo_l>
+							<div class=title>生日提醒：</div>
+							<div class=l_content>今天是<a href="/server/today.php"><?php echo $records[$i]->nickname; ?></a>的生日（<?php echo $today; ?>）<br><a href="/server/today.php">送他/她生日礼物</a></div>
+						</div>
+						<?php $sql="select distinct(gift_src) from smg_birthday_gift where reciever='".$records[$i]->loginname."' order by created_at desc";
+						$gift=$db->query($sql); ?>
+						<div class=brithdayinfo_r>
+							<div class=title>已收到的礼物：</div>
+							<div class=pic><div style="width:74px; height:14px; line-height:14px; text-align:center; overflow:hidden; color:red; float:left; display:inline;">番茄礼物</div><img style="height:70px;" src="/images/server/gifts/5.gif"></div>
+							<?php for($j=0;$j<count($gift);$j++){ ?>
+							<div class=pic><img src="<?php echo $gift[$j]->gift_src; ?>" /></div>
+							<?php } ?>
+						</div>	
+					</div>
+				</div>
+				<?php } ?>
+				<input id="countbirthday" type="hidden" value="<?php echo $count; ?>">
+			</div>
       <!-- start bottom_top_right !-->
  			<div id=b_t_r>
  				<div class=l_box>
@@ -1159,35 +1211,7 @@ $gb=$db->query('select description,content from smg_news where id=47028');
  			<!-- end !-->	 
     	
     </div>
-			<div id=server_brithday>
-				<div id=title>生日祝福</div>
-				<?php
-						$today = date("m-d");
-						$sql = 'select t1.nickname,t1.gender,t1.loginname,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.$today.'" and t1.hide_birthday=0 and t1.state=3';
-						$records = $db->query($sql);
-						$count = count($records);
-						for($i=0;$i< $count;$i++){
-				?>
-				<div class=brithday_content id="brithday_content<?php echo $i; ?>" <?php if($i >0){ ?>style="display:none;"<?php } ?>>
-					<div class=photo><!--<img src="" />--></div>
-					<div class=brithdayinfo>
-						<div class=brithdayinfo_l>
-							<div class=title>生日提醒：</div>
-							<div class=l_content>今天是<a href="/server/today.php"><?php echo $records[$i]->nickname; ?></a>的生日（<?php echo $today; ?>）<br><a href="/server/today.php">送他/她生日礼物</a></div>
-						</div>
-						<?php $sql="select distinct(gift_src) from smg_birthday_gift where reciever='".$records[$i]->loginname."' order by created_at desc";
-						$gift=$db->query($sql); ?>
-						<div class=brithdayinfo_r>
-							<div class=title>已收到的礼物：</div>
-							<?php for($j=0;$j<count($gift);$j++){ ?>
-							<div class=pic><img src="<?php echo $gift[$j]->gift_src; ?>" /></div>
-							<?php } ?>
-						</div>	
-					</div>
-				</div>
-				<?php } ?>
-				<input id="countbirthday" type="hidden" value="<?php echo $count; ?>">
-			</div>
+			
     </div>
  </div> 
  

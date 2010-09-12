@@ -21,6 +21,9 @@
 			break;
 		case "problem":
 			$category_name = "试题";
+			break;
+		case "subject":
+			$category_name = "专题";
 			break;	
 		default:
 			$category_name = "其他";

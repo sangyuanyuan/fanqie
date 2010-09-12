@@ -56,6 +56,9 @@ total("部门后台","other");
 					}
 				  //--------------------				
 				?>
+				<?php if($_COOKIE['smg_user_dept']==39){ ?>
+					<div class="menu1"><a href="news/dept_app.php" target="admin_iframe" list="4">创意审核</a></div>
+				<?php } ?>
 		</div>
 		
 		<div id=part3>

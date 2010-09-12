@@ -18,7 +18,14 @@
 		$db = get_db();
 		if($id!=""&&$id!=null&&$type=="")
 		{
-			$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id." order by n.priority asc,n.created_at desc";
+			if($id>2)
+			{
+				$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id=".$id." order by n.priority asc,n.created_at desc";
+			}
+			else
+			{
+				$sql="select n.title,c.platform,n.id,n.last_edited_at,n.category_id,c.id as cid,c.name as categoryname from smg_news n inner join smg_category c on n.category_id=c.id and n.is_adopt=1 and n.category_id in (1,2) order by n.priority asc,n.created_at desc";	
+			}
 		}
 		else if($tags!=""&&$tags!=null)
 		{
@@ -39,7 +46,11 @@
 		$record=$db->paginate($sql,30);		
   ?>
 <script>
-	total("新闻列表","news");
+	<?php if($id!=238){?>
+		total("新闻列表","news");
+	<?php }else{?>
+		total("收听收视警示榜","subject");
+	<?php } ?>
 </script>
 </head>
 <body>
@@ -47,7 +58,7 @@
 <div id=ibody>
 	<div id=ibody_left>
 		<div id=l_t>
-			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><?php if($id!=""||$id!=null){ ?><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php echo $record[0]->categoryname;?></a><?php } else if($tags!=""||$tags!=null){?><a href="news_list.php?tags=<? echo $tags;?>"></a><?php echo $tags;?><?php } else{ ?><a href="news_list.php">所有新闻</a><? }?>
+			<img src="/images/news/news_l_t_icon.jpg">　　<a href="/">首页</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><a href="#">新闻</a><span style="margin-left:20px; margin-right:20px; color:#B23200;">></span><?php if($id!=""||$id!=null){ ?><a href="news_list.php?id=<? echo $record[0]->cid;?>"><?php  if($id>2){ echo $record[0]->categoryname;}else{echo '头条';}?></a><?php } else if($tags!=""||$tags!=null){?><a href="news_list.php?tags=<? echo $tags;?>"></a><?php echo $tags;?><?php } else{ ?><a href="news_list.php">所有新闻</a><? }?>
 		</div>
 		<div id=l_b>
 			<?php if($id==4)
@@ -68,7 +79,7 @@
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>
 			<?php }}else{?>
-				<div class=l_b_l_l><img src="/images/news/li_square.jpg" /></div>
+				<div class=l_b_l_l></div>
 					<div class=l_b_l_r><a target="_blank" href="/news/news.php?id=<?php echo $record[$i]->id;?>"><?php echo delhtml($record[$i]->title);?></a></div>
 				</div>
 				<div class=l_b_r><?php echo $record[$i]->created_at; ?></div>

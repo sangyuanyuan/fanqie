@@ -54,6 +54,7 @@
 					<option value="zone">交流平台</option>
 					<option value="show">展示平台</option>
 					<option value="server">服务平台</option>
+					<option value="subject">专题平台</option>
 				</select>
 			</td>
 		</tr>		

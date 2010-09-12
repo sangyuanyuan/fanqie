@@ -55,7 +55,7 @@ function xh(count)
 	var i=0;
 	for(i;i<count;i++)
 	{
-		setTimeout('birthday('+i+')',10000*i);
+		setTimeout('birthday('+i+')',5000*i);
 	}	
 }
 
@@ -92,7 +92,17 @@ $(function(){
 			var num=$(this).attr('param');
 			$("#list_tlb"+num).css('display','inline');
 
-	});	
+	});
+	
+	$("#jmgc").click(function(){
+		$("#jmgccontent").css('display','none');
+		$("#jmgclist").css('display','inline');
+	});
+	
+	$("#jmgcclose").click(function(){
+		$("#jmgclist").css('display','none');
+		$("#jmgccontent").css('display','inline');
+	});
 
 	$(".menu_trrt").mouseover(function(){
 			
@@ -131,7 +141,7 @@ $(function(){
 	setInterval('tg()',10000);
 	var count=parseInt($("#countbirthday").val());
 	xh(count);
-	setInterval('xh('+count+')',10000*count+10000);	
+	setInterval('xh('+count+')',5000*count+5000);	
 });
 
 

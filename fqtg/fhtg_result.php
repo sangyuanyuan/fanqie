@@ -24,7 +24,7 @@
 			<div style="width:30px; height:20px;  margin-left:10px; text-align:center; float:left; display:inline;"><? echo $nyf[$i]->num;?></div>
 			<div style="width:150px; height:20px; margin-left:15px;  text-align:center; color:#0071B5; float:left; display:inline;"><?php echo $nyf[$i]->createtime; ?></div>
     	<? if($_COOKIE['smg_userid']==157||$_COOKIE['smg_userid']==3926||$_COOKIE['smg_userid']==3384){?><div style="width:65px; height:20px; margin-left:10px; text-align:center; color:#0071B5; float:left; display:inline"><? if($nyf[$i]->state=="0"){?><button class="lq" style="border:0px;">领取</button><input type="hidden" value="<?php echo $nyf[$i]->id; ?>"><? }else{?><span class="ylq" name="<?php echo $nyf[$i]->id; ?>" style="cursor:pointer;">已领取</span><? }?></div><? }?>
-    	<div style="width:120px; height:20px; margin-left:10px; text-align:center; color:#0071B5; overflow:hidden; float:left; display:inline;"><?php echo $nyf[$i]->remark; ?></div>
+    	<div style="width:120px; height:20px; line-height:20px; margin-left:10px; text-align:center; color:#0071B5; overflow:hidden; float:left; display:inline;"><?php echo $nyf[$i]->remark; ?></div>
    </div>
 	<? }?>
 

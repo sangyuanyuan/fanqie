@@ -19,7 +19,7 @@
 	<div id=le_body>
 		<div id=le_left>
 			<? 
-			$zbtj = $db->query('select s.id,s.is_photo_news,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="重磅推荐" and c.category_type="news" order by created_at desc limit 5');
+			$zbtj = $db->query('select s.id,s.is_photo_news,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="2010年新员工培训" and c.category_type="news" order by created_at desc limit 5');
 			for($i=0;$i < 2 && $i<count($zbtj);$i++){?>
 			<div class=top>
 				<a href="/news/news.php?id=<?php echo $zbtj[$i]->id;?>"><?php echo $zbtj[$i]->title;?></a>
@@ -47,10 +47,10 @@
 			  	$pic = $zbtj[0]->photo_src;
 			  }else 
 			  {
-			  	$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.category_id=c.id and i.is_adopt = 1 and c.name="重磅推荐" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
+			  	$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.category_id=c.id where i.is_adopt = 1 and c.name="2010年新员工培训" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
 			  	$pic = $pics[0]->src;
 			  }
-			  $zbtj = $db->query('select s.id,s.is_photo_news,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="重磅推荐" and c.category_type="news" order by s.priority asc,s.created_at desc limit 1');
+			  $zbtj = $db->query('select s.id,s.is_photo_news,s.photo_src,s.click_count,s.title,s.description,c.platform,c.id as cid from smg_news s inner join smg_category c on s.category_id=c.id and is_adopt = 1 and c.name ="2010年新员工培训" and c.category_type="news" order by s.priority asc,s.created_at desc limit 1');
 			  ?>
 				<a target="_blank" href="/<?php echo $zbtj[0]->platform;?>/news/news.php?id=<?php echo $zbtj[0]->id;?>"><?php echo $zbtj[0]->title;?></a>
 				<div id=left><img width=90 height=94 src="<?php echo $pic;?>" /><a target="_blank" href="/<?php echo $zbtj[0]->platform; ?>/news/news.php?id=<?php echo $zbtj[0]->id;?>">[点击查询详情]</a></div>
@@ -82,7 +82,7 @@
 							}
 						}else 
 						{
-							$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.is_adopt = 1 and c.name="培训案例分享" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
+							$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.category_id=c.id where i.is_adopt = 1 and c.name="培训案例分享" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
 							$pic = $pics[0]->src;
 							if($pic=="")
 							{
@@ -109,7 +109,7 @@
 								$pic='/images/pic/read.jpg';
 							}
 						}else {
-							$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.is_adopt = 1 and c.name="读书阅报" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
+							$pics = $db->query('select i.src from smg_images i left join smg_category c on i.category_id=c.id where i.is_adopt = 1 and c.name="读书阅报" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
 							$pic = $pics[0]->src;
 							if($pic=="")
 							{
@@ -134,7 +134,7 @@
 								$pic='/images/pic/ys.jpg';
 							}
 						}else {
-							$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.is_adopt = 1 and c.name="读书阅报" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
+							$pics = $db->query('select i.src from smg_images i inner join smg_category c on i.category_id=c.id where i.is_adopt = 1 and c.name="影音艺术" and c.category_type="picture" order by i.priority asc, i.created_at desc limit 1');
 							$pic = $pics[0]->src;
 							if($pic=="")
 							{

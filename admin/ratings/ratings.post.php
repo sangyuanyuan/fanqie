@@ -6,7 +6,8 @@
   }
   if($_POST['name']!=''){
   	$item->name = $_POST['name'];
-	$item->dept_id = $_POST['dept_id'];
+		$item->dept_id = $_POST['dept_id'];
+		$item->content=$_POST['ratings']['content'];
 	  if($_POST['check']!=''){
 	  	$item->is_dept = 1;
 	  }else{

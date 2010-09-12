@@ -50,7 +50,7 @@
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="5">
+			<td colspan="6">
 				　<a href="news_add_dept.php">添加新闻</a>　　　搜索　
 				<input id=title type="text" value="<? echo $_REQUEST['title']?>"><select id=recommend style="width:100px" class="select_new">
 					<option value="">推荐状态</option>
@@ -68,7 +68,7 @@
 			</td>
 		</tr>
 		<tr class="tr2">
-			<td width="235">短标题</td><td width="110">所属类别</td><td width="130">发布时间</td><td width="110">推荐到集团首页</td><td width="210">操作</td>
+			<td width="235">短标题</td><td width="100">所属类别</td><td width="120">发布时间</td><td width="110">推荐到集团首页</td><td width="210">操作</td>
 		</tr>
 		<?php
 			//--------------------

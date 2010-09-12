@@ -71,11 +71,12 @@
 		if($record[0]->cplatform=="news"||$record[0]->cplatform=="show"||$record[0]->cplatform=="server"||$record[0]->cplatform=="zone"){
 			$platform = $record[0]->cplatform;
 			$name = $record[0]->categoryname;
-		}else if($record[0]->categoryname=="绿番茄")
-		{
-			$platform = 'subject';
-			$name = '绿番茄';
-		}
+			if($record[0]->categoryname=="绿番茄")
+			{
+				$platform = 'subject';
+				$name = '绿番茄';
+			}
+		} 
 		else{
 			$platform = 'news';
 			$name = '部门或专题';
@@ -84,7 +85,7 @@
 		$record1=$db -> query($strsql);
 		if(!$record1 || count($record1)==0)
 		{
-			$strsql='insert into smg_total (platform,name,datetime,count,parentname) values("'.$platform.'","'.$name.'",now(),1,"'.$_SERVER['PHP_SELF'].'")'; 
+			$strsql='insert into smg_total (platform,name,datetime,count,parentname) values("'.$platform.'","'.$name.'",now(),1,"'.$_SERVER['PHP_SELF'].'")';
 			$db->execute($strsql);
 		}
 		else

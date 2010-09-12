@@ -1,6 +1,9 @@
-﻿body{background:#0099ff; font-size:12px; font-family:宋体;}
-.td1{line-height:20px;}
-textarea{width:98%; height:90px; margin-top:5px; overflow-y:auto;}
-button{width:100px; height:20px; line-height:20px;}
+﻿body{background:#0099ff; margin:0px auto; line-height:0px; font-size:12px; font-family:宋体;}
+.td1{line-height:30px;}
+#table1 td{padding-top:7px; line-height:20px;}
+#table1 .tr1 td{background:#CCCCCC; color:#990f26; font-weight:bold;}
+#table1 .tr2 td{background:#EAEAEA;}
+#table1 .tr3 td{background:#f8f8f8;}
+textarea{width:98%; height:130px;  margin-top:5px; overflow-y:auto;}
 table a{color:#000000; text-decoration:none;}
 table span{cursor:pointer;}

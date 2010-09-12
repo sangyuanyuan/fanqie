@@ -1,7 +1,7 @@
 ﻿<?php
 	require_once('../../frame.php');
 	$db=get_db();
-	$record=$db->query('select t.*,h.user from smg_pop_task t left join smg_pop_history h on t.id=h.task_id order by created_at desc');
+	$record=$db->query('select * from smg_pop_task order by created_at desc');
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -23,13 +23,13 @@
 <body>
 	<table width="795" border="0" id="list">
 		<tr class="tr1">
-			<td colspan="5">
-				　<a target="_top" href="/pop/index.php">添加弹出框</a>
+			<td colspan="4">
+				　<a target="_blank" href="/pop/index.php">添加弹出框</a>
 			</td>
 		</tr>
 		<tr class="tr2">
 
-			<td width="55">删除</td><td width="220">发布电脑</td><td width="100">发表内容</td><td width="120">发布时间</td><td width="200">操作</td>
+			<td width="55">删除</td><td align="center">发表内容</td><td width="120">发布时间</td><td width="200">操作</td>
 		</tr>
 		<?php
 			//--------------------
@@ -37,7 +37,6 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?>>
 					<td><input style="width:12px;" type="checkbox" name="delete_news[]" value="<?php echo $record[$i]->id;?>"></td>
-					<td><?php echo $record[$i]->user; ?></td>
 					<td>
 						<?php echo delhtml($record[$i]->content); ?>
 					</td>
@@ -50,7 +49,7 @@
 						<?php if($record[$i]->is_adopt=="0"){?>
 							<span style="color:#0000FF;cursor:pointer" class="publish" param="<?php echo $record[$i]->phone;?>" name="<?php echo $record[$i]->id;?>">发布</span>
 						<?php }?>
-						<a target="_top" href="/pop/index.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>
+						<a target="_blank" href="/pop/index.php?id=<?php echo $record[$i]->id;?>" class="edit" name="<?php echo $record[$i]->id;?>" style="cursor:pointer">编辑</a>
 						<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $record[$i]->id;?>">删除</span>
 					</td>
 				</tr>
@@ -60,7 +59,7 @@
 		?>
 		<iframe id="senddx" style="display:none;"></iframe>
 		<tr class="tr3">
-			<td colspan=6><button id="select_all">全选</button><button id="button_delete">删除</button></td>
+			<td colspan=4><button id="select_all">全选</button><button id="button_delete">删除</button></td>
 		</tr>
 		<input type="hidden" id="db_talbe" value="smg_pop_task">
 

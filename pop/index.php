@@ -12,14 +12,13 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-CN>
-	<? 	
-		css_include_tag('news_sub','top','bottom');
-		use_jquery();
-  ?>
 	<title>SMG -弹出框管理</title>
 </head>
 <body>
 <? require_once('../inc/top.inc.html');?>
+<?php 
+css_include_tag('news_sub','top','bottom','colorbox');
+js_include_once_tag('colorbox');?>
 <div id=ibody>
 	<form id="news_add" name="news_add" enctype="multipart/form-data" action="pop.post.php" method="post">
 	<div class=title>弹出框管理</div>
@@ -42,10 +41,11 @@
 	</div>
 	<div id=m>
 		<div class=l><img src="/images/news/news_sub_icon.jpg">　内容</div>
-		<div id=m_r><?php show_fckeditor('pop[content]','Admin',true,"230",delhtml($pop[0]->content),"750");?></div>
+		<div id=m_r><?php show_fckeditor('pop[content]','Admin',true,"230",$pop[0]->content,"750");?></div>
+		<input type="hidden" id="content">
 	</div>
 	<div id=b_button>
-			<button id="button_submit">提　交</button>
+			<button id="button_submit">提　交</button>　<a id="browser" class="colorbox" href="pop_content.php?type=browser">浏览</a>
 	</div>
 	</form>
 </div>
@@ -56,7 +56,7 @@
 <script>
 	$(function(){
 		$('#button_submit').click(function(){
-			if($("#height").val()==""||$("#height").val()=="")
+			if($("#width").val()==""||$("#height").val()=="")
 			{
 				alert('请输入高宽！');
 				return false;
@@ -70,6 +70,13 @@
 				alert('请正确输入高宽！');
 				return false;
 			}
+		});
+		 $('#browser').click(function(e){
+		 	var oEditor = FCKeditorAPI.GetInstance('pop[content]');
+		 	var content = oEditor.GetHTML();
+		 	$('#content').attr('value',content);
+		  e.preventDefault();
+		  $.fn.colorbox({width:$("#width").val(), height:$('#height').val(),iframe:true,href:'pop_content.php?type=browser'});
 		});
 	});
 	function IsInteger(string,sign)

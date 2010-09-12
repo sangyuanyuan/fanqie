@@ -9,8 +9,9 @@
 	<meta http-equiv=Content-Language content=zh-cn>
 	<title>传承文化 传播知识 传达真实的力量</title>
 <?php 
+	css_include_tag('thickbox');
 	use_jquery();
-	js_include_once_tag('total');
+	js_include_once_tag('total','thickbox');
 ?>
 <style type="text/css">
 <!--
@@ -97,7 +98,7 @@ include("inc/topbar.inc.php");
 										<? for($i=0;$i<$count;$i++)
 										{
 	              						?>
-	              					<a title="<?php echo $records[$i]->title; ?>" href="news.php?id=<? echo $records[$i]->id;?>" class="blue short">・<? echo $records[$i]->short_title;?></a>
+	              					<a title="<?php echo strip_tags($records[$i]->title); ?>" href="news.php?id=<? echo $records[$i]->id;?>" class="blue short">・<? echo $records[$i]->short_title;?></a>
 	              				</a> <br>
 	                  	<?
 	                  	}
@@ -127,7 +128,7 @@ include("inc/topbar.inc.php");
                    <? for($i=0;$i<$count;$i++)
 										{
 	              						?>
-	              					<a title="<?php echo $records[$i]->title; ?>" href="news.php?id=<? echo $records[$i]->id;?>" class="blue short">・<? echo $records[$i]->short_title;?></a>
+	              					<a title="<?php echo strip_tags($records[$i]->title); ?>" href="news.php?id=<? echo $records[$i]->id;?>" class="blue short">・<? echo $records[$i]->short_title;?></a>
 	              				</a> <br>
 	                  	<?
 	                  	}
@@ -217,7 +218,7 @@ include("inc/topbar.inc.php");
                   <td valign="top" class="gry"> 	
                   	<?php
                   		for($i=0;$i<$count;$i++){?>
-                  			<a target="_blank" href="<? echo $records[$i]->link;?>" title="<?php echo $records[$i]->name; ?>" target="_blank" class="gry short">・ 
+                  			<a target="_blank" href="<? echo $records[$i]->link;?>" title="<?php echo strip_tags($records[$i]->name); ?>" target="_blank" class="gry short">・ 
                   				<?php
 		              					echo $records[$i]->name;
 								?>
@@ -291,7 +292,7 @@ include("inc/topbar.inc.php");
 	                    <td class="gre-nr" valign="top">
 	                    	<div  class="mltt hide" style="display:block;">
 	                    		<? for($i=0;$i<$count1;$i++){?>
-		                    		<a target="_blank" title="<?php echo $records1[$i]->title; ?>" href="news.php?id=<?php echo $records1[$i]->id;?>" class="gre-nr long">・ 
+		                    		<a target="_blank" title="<?php echo strip_tags($records1[$i]->title); ?>" href="news.php?id=<?php echo $records1[$i]->id;?>" class="gre-nr long">・ 
 			                    		<?php
 					              					echo $records1[$i]->short_title;
 			                    		?>
@@ -300,7 +301,7 @@ include("inc/topbar.inc.php");
 	                    	</div>	                     
 	                     	<div class="zdgz hide" style="display:none;">
 		                    		<? for($i=0;$i<$count2;$i++){?>
-			                    		<a target="_blank" title="<?php echo $records2[$i]->title; ?>" href="news.php?id=<?php echo $records2[$i]->id;?>" class="gre-nr long">・ 
+			                    		<a target="_blank" title="<?php echo strip_tags($records2[$i]->title); ?>" href="news.php?id=<?php echo $records2[$i]->id;?>" class="gre-nr long">・ 
 				                    		<?php
 						              					echo $records2[$i]->short_title;
 				                    		?>
@@ -344,7 +345,7 @@ include("inc/topbar.inc.php");
                   <tr>
                     <td class="gre-nr">
                     		<?php for($i=0;$i<$count;$i++){?>
-	                    		<a target="_blank" title="<?php echo $records[$i]->title;?>" href="news.php?id=<? echo $records[$i]->id;?>" class="gre-nr long">・ 
+	                    		<a target="_blank" title="<?php echo strip_tags($records[$i]->title);?>" href="news.php?id=<? echo $records[$i]->id;?>" class="gre-nr long">・ 
 	                    			<?php
 			              					echo $records[$i]->short_title;
 	                    			?>
@@ -374,7 +375,7 @@ include("inc/topbar.inc.php");
                   <tr>
                     <td class="gre-nr">
                     	<?php for($i=0;$i<$count;$i++){?>
-	                    		<a target="_blank" title="<?php echo $records[$i]->title;?>" href="news.php?id=<? echo $records[$i]->id;?>" class="gre-nr long">・ 
+	                    		<a target="_blank" title="<?php echo strip_tags($records[$i]->title);?>" href="news.php?id=<? echo $records[$i]->id;?>" class="gre-nr long">・ 
 	                    			<?php
 			              					echo $records[$i]->short_title;
 	                    			?>
@@ -457,7 +458,7 @@ include("inc/topbar.inc.php");
                     </tr>
                     <tr>
                       <td height="18" colspan="2" class="nr-d" align="left"><? for($i=1;$i<$count;$i++){?>
-		              	<a target="_blank" href="news.php?id=<? echo $records[$i]->id;?>" class="nr-d short" title="<?php echo $records[$i]->title;?>">・<? echo $records[$i]->short_title;?></a>
+		              	<a target="_blank" href="news.php?id=<? echo $records[$i]->id;?>" class="nr-d short" title="<?php echo strip_tags($records[$i]->title);?>">・<? echo $records[$i]->short_title;?></a>
                       	</a><br><? }?>
 					  </td>
                     </tr>
@@ -465,7 +466,7 @@ include("inc/topbar.inc.php");
                 </td>
               </tr>
               <tr>
-                <td><a target="_blank" href="kxfz-ok.php"><img  src="images/rig_03.jpg" alt="" width="271" height="70" border="0"></a></td>
+                <td><a class="thickbox" target="_blank" href="pwd.php?width=170&height=100"><img  src="images/banner1.jpg" alt="" width="271" height="70" border="0"></a></td>
               </tr>
               <tr>
                 <td><a target="_blank" target="_blank" href="/bbs/forumdisplay.php?fid=37"><img border="0" src="images/rig_04.jpg" width="271" height="73" alt=""></a></td>
@@ -502,7 +503,7 @@ include("inc/topbar.inc.php");
                       		<?php 
 								for($i=1;$i<$count;$i++) {
 							?>
-								<a target="_blank" href="news.php?id=<? echo$records[$i]->id;?>" title="<?php echo $records[$i]->title;?>" class="whi short">・<? echo $records[$i]->short_title;?></a><br/>
+								<a target="_blank" href="news.php?id=<? echo$records[$i]->id;?>" title="<?php echo strip_tags($records[$i]->title);?>" class="whi short">・<? echo $records[$i]->short_title;?></a><br/>
 							<?php 
 								}
 							?>   
@@ -541,7 +542,7 @@ include("inc/topbar.inc.php");
                     <tr>
                       <td class="whi" align="left">
                       	<? for($i=1;$i<$count;$i++){?>
-		              		<a target="_blank" title="<?php echo $records[$i]->title; ?>" class="whi short" href="news.php?id=<? echo $records[$i]->id;?>">・<? echo $records[$i]->short_title;?></a>
+		              		<a target="_blank" title="<?php echo strip_tags($records[$i]->title); ?>" class="whi short" href="news.php?id=<? echo $records[$i]->id;?>">・<? echo $records[$i]->short_title;?></a>
 						<? }?>			
 		              </td>
                   </tr>

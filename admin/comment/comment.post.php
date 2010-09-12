@@ -12,7 +12,12 @@
 		$db = get_db();
 		$sql = 'update smg_comment set comment="'.$_POST['comment'].'" where id='.$_POST['id'];
 		$db ->execute($sql);
+		if($db ->execute($sql))
+		{
+			echo "OK";	
+		}
 		close_db();
+		
 	}
 	
 ?>

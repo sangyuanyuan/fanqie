@@ -53,6 +53,7 @@
 					<option value="zone" <?php if($record[0]->platform == 'zone') {?>  selected="selected" <?php }?>>交流平台</option>
 					<option value="show" <?php if($record[0]->platform == 'show') {?>  selected="selected" <?php }?>>展示平台</option>
 					<option value="server" <?php if($record[0]->platform == 'server') {?>  selected="selected" <?php }?>>服务平台</option>
+					<option value="subject" <?php if($record[0]->platform == 'subject') {?>  selected="selected" <?php }?>>专题平台</option>
 				</select>
 			</td>
 		</tr>

@@ -61,8 +61,9 @@
 		</div>	
 	</div>
 </div>-->
-<div id=bannerimg1 <?php if($nowday>="2010-07-02"){ ?>style="height:396px;"<?php } ?>>
-	<a target="_blank" href="/subject/10dmz/"><img id="day" border=0 src=""></a>
+<div id=bannerimg1>
+	<!--<iframe src=/CR/index.html width="995" height="200" scrolling="no" frameborder="0"></iframe>-->
+	<a target="_blank" href="/subject/dfgb/"><img border=0 src="/images/dfgb.jpg"></a>
 </div>
 <div id=nav2>
 	
@@ -98,7 +99,7 @@
    			<? //}?>
    			<a href='/zongcai/' target="_blank">总裁奖</a><a style="margin-left:5px;" href='/subject/tw/' target="_blank">世博志愿者</a>
    		</div>
-			<div id=zongcai><?php if(date('Y-m-d')!="2010-04-21"){ ?><a target="_blank" href="http://172.28.10.55/smg_sava/dongtai/temp/media-effect2.htm" style="font-size:12px; text-decoration:none; color:#ffffff;">世博资料创意<!--<img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/world.jpg">--></a><?php } ?></div>
+			<div id=zongcai><?php if(date('Y-m-d')!="2010-04-21"){ ?><a target="_blank" href="http://192.168.61.247/" style="font-size:12px; text-decoration:none; color:#ffffff;">世博资源发布<!--<img border=0 style="width:86px; height:14px; margin-top:0px; background:none;" src="/images/pic/world.jpg">--></a><?php } ?></div>
    	</div>
    	<?php 
    				$cookie=isset($_COOKIE['smg_username']) ? $_COOKIE['smg_username'] : "";
@@ -251,7 +252,7 @@ $(function(){
 				location.href="http://172.27.203.81:8080/blog/?3444";
 			}
 		});
-		var d=new Date();
+		/*var d=new Date();
 		var starttime=d.getYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
 		var day=getDateDiff(starttime,'2010-07-08');
 		if(day>0&&day<7)
@@ -262,14 +263,14 @@ $(function(){
 		{
 			$("#day").attr('src','/images/dmz/logo_start.jpg');	
 		}
-		else if(day<=-4)
+		else if(day<-4)
 		{
 			$("#day").attr('src','/images/dmz/logo_end.jpg');		
 		}
 		else
 		{
 			$("#day").attr('src','/images/dmz/logo_ing.jpg');			
-		}
+		}*/
 	});
 	function getDateDiff(date1,date2){
 	   var   re   =   /^(\d{4})\S(\d{1,2})\S(\d{1,2})$/;   

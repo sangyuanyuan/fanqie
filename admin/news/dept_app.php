@@ -1,0 +1,112 @@
+﻿<?php
+	#var_dump($_REQUEST);
+	require_once('../../frame.php');
+	$user = judge_role('dept_admin');
+	
+	$title = $_REQUEST['title'];
+	$db = get_db();
+	if($title){
+		$record = $db->paginate('select * from smg_news_wycy where title like "%'.$title.'%" order by created_at desc',20);
+	}else{
+		$news = new table_class('smg_news_wycy');
+		$record = $news->paginate('all',array('conditions' =>'','order' => 'created_at desc'),20);
+	}
+?>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+	<meta http-equiv=Content-Language content=zh-CN>
+	<title>smg</title>
+	<?php
+		css_include_tag('admin');
+		use_jquery();
+		js_include_tag('admin_pub','total');	
+	?>
+	<script>
+			total("创意审核","subject");
+	</script>
+</head>
+
+<body>
+	<table width="795" border="0" id="list">
+		<tr class="tr1">
+			<td colspan="8"> 　　　
+				搜索　<input id=title type="text" value="<? echo $_REQUEST['title']?>"><input type="button" value="搜索" id="search_new" style="border:1px solid #0000ff; height:21px">
+			</td>
+		</tr>
+		<tr class="tr2">
+
+			<td width="55">删除</td><td width="250">标题</td><td width="100">所属部门</td><td width="50">提案人</td><td>电子邮件</td><td>联系方式</td><td width="120">发布时间</td><td width="50">操作</td>
+		</tr>
+		<?php
+			//--------------------
+			for($i=0;$i<count($record);$i++){
+		?>
+				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
+					<?php 
+						$var_name = "delete_news[]";
+					?>
+					<td><input style="width:12px;" type="checkbox" name="<?php echo $var_name;?>" value="<?php echo $record[$i]->id;?>"></td>
+					<td><a href='/news/news_cy.php?id=<?php echo $record[$i]->id;?>' target="_blank"><?php echo strip_tags($record[$i]->title);?></a></td>
+					<td>
+						<?php echo $record[$i]->address; ?>
+					</td>
+					<td>
+						<?php echo $record[$i]->username; ?>
+					</td>
+					<td>
+						<?php echo $record[$i]->mail; ?>
+					</td>
+					<td>
+						<?php echo $record[$i]->phone; ?>
+					</td>
+					<td>
+						<?php echo $record[$i]->created_at; ?>
+					</td>								
+					<td>
+						<span style="cursor:pointer;color:#FF0000" class="del" name="<?php echo $record[$i]->id;?>">删除</span>
+					</td>
+				</tr>
+		<?php
+			}
+			//--------------------
+		?>
+		<tr class="tr3">
+			<td colspan=8><button id="select_all">全选</button> <button id="button_delete">删除</button> <?php paginate();?></td>
+		</tr>
+		<input type="hidden" id="db_talbe" value="smg_news_wycy">
+
+	</table>
+</body>
+</html>
+
+<script>
+	$("#search").click(function(){
+			window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value');
+	});
+	
+	$(".select").change(function(){
+		window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value');
+	});
+	$('#title').keydown(function(e){
+			if(e.keyCode == 13){
+				window.location.href="?title="+$("#title").attr('value')+"&dept="+$("#dept").attr('value');
+			}
+	});
+	$(function(){
+		var all_selected = false;
+		$('#select_all').click(function(){
+			all_selected = !all_selected;
+			$('input:checkbox').attr('checked',all_selected);
+		});
+		$('#button_delete').click(function(){
+			if (confirm('确定删除选中创意?')) {
+				$.post('delete_cy.php', $('input:checkbox').serializeArray(), function(data){
+					window.location.reload();
+				});
+			}
+		});
+	});
+</script>

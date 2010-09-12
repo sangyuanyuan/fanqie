@@ -17,7 +17,7 @@
 	
 </head>
 <script>
-	total("对话","zone");
+	total("对话","server");
 </script>
 <body>
 <? require_once('../inc/top.inc.html');?>

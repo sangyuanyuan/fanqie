@@ -33,7 +33,7 @@
  	?>
 </head>
 <script>
-	total("<?php echo $category->name;?>","other");	
+	total("番茄直播","subject");	
 </script>
 
 <body>

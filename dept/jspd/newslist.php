@@ -95,7 +95,7 @@ body {
 				  	for($i=0;$i<$count;$i++){
 				  ?>
                   <tr>
-                    <td align="left" height="30"><a href="news.php?id=<?php echo $record[$i]->id;?>" title="<?php echo $record[$i]->title;?>">・<?php echo $record[$i]->short_title;?></a></td>  
+                    <td align="left" height="30"><a href="news.php?id=<?php echo $record[$i]->id;?>" title="<?php echo strip_tags($record[$i]->title);?>">・<?php echo $record[$i]->short_title;?></a></td>  
                     <td align="left"><? echo $record[$i]->click_count;?></td>
                     <td align="left"><? echo $record[$i]->last_edited_at;?></td>
                   </tr>

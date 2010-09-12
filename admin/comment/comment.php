@@ -53,9 +53,9 @@
 		?>
 				<tr class=tr3 id=<?php echo $record[$i]->id;?> >
 					<td><?php echo $record[$i]->nick_name;?></td>
-					<td><?php echo $record[$i]->comment;?></td>
+					<td><?php show_fckeditor('comment'.$record[$i]->id,'Title',true,"100",$record[$i]->comment,"100%");?></td>
 					<td><?php echo $record[$i]->created_at;?></td>
-					<td><a class="del_comment" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a><a class="edit"  style="color:#000000; text-decoration:none; margin-left:10px; cursor:pointer">编辑</a></td>
+					<td><a class="del_comment" name="<?php echo $record[$i]->id;?>" style="color:#ff0000; cursor:pointer">删除</a><a class="edit" name="<?php echo $record[$i]->id;?>" style="color:#000000; text-decoration:none; margin-left:10px; cursor:pointer">编辑</a></td>
 				</tr>
 		<?php
 			}
@@ -105,6 +105,17 @@
 					$("#"+data).remove();
 				});
 			}
+		});
+		$(".edit").click(function(){
+			var oEditor = FCKeditorAPI.GetInstance('comment'+$(this).attr('name')) ;
+			var comment = oEditor.GetHTML();
+			$.post("comment.post.php",{'id':$(this).attr('name'),'comment':comment,'post_type':'edit'},function(data){
+				if(data=="OK")
+				{
+					alert('更新成功！');
+					location.reload();
+				}
+			});
 		});
 	})
 </script>

@@ -12,7 +12,7 @@
 		js_include_once_tag('thickbox','total');
 	?>
 <script>
-	total("专题-三项学习教育","news");
+	total("专题-三项学习教育","subject");
 </script>
 </head>
 <body>
@@ -201,6 +201,7 @@
 		<div id=c_r>
 			<div class=c_title1>
 				<div class=wz><img src="/images/sxxx/4.gif"></div>
+				<div class=more style="width:120px; height:20px; line-height:20px;"><a target="_blank" href="/news/news_subject_list.php?id=197">争先创意博客</a></div>
 			</div>
 			<div id=c_r_l>
 				<?php  
@@ -236,11 +237,11 @@
 					<?php } ?>
 				</div>
 			</div>
-			<?php $bbs=$db->query('select subject,tid from bbs_threads where fid in (16,81) order by dateline desc limit 11'); ?>
+			<?php $bbs=$db->query('select n.id,n.short_title,n.content,n.description,n.news_type,n.target_url,n.file_name,i.category_id as cid from smg_subject_items i left join smg_news n on i.resource_id=n.id left join smg_subject_category c on c.id=i.category_id left join smg_subject s on c.subject_id=s.id where s.name="新三项学习教育专题" and i.category_type="news" and i.is_adopt=1 and c.name="争先创优博客" order by i.priority asc, n.created_at desc limit 11'); ?>
 			<div id=sx_dash></div>
 			<div id=c_r_r>
 				<?php for($i=0;$i<count($bbs);$i++){ ?>
-				<div class=cl><a target="_blank" href="/bbs/viewthread.php?tid=<?php echo $bbs[$i]->tid; ?>">·<?php echo $bbs[$i]->subject; ?></a></div>
+				<div class=cl><a target="_blank" href="/subject/news/news.php?id=<?php echo $bbs[$i]->id; ?>">·<?php echo $bbs[$i]->short_title; ?></a></div>
 				<?php } ?>
 			</div>
 		</div>	

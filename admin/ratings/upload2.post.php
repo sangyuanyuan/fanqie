@@ -9,6 +9,8 @@
   $rating_value->value = $_POST['value'];
   $rating_value->value2 = $_POST['value2'];
   $rating_value->value3 = $_POST['value3'];
+  $rating_value->start = $_POST['started_at'];
+  $rating_value->end = $_POST['ended_at'];
   $rating_value->save();
   redirect('index.php');
 ?>

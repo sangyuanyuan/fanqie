@@ -7,7 +7,7 @@
 <head>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<meta http-equiv=Content-Language content=zh-cn>
-	<title>SMG-番茄网-交流-对话列表</title>
+	<title>SMG-番茄网-服务-对话列表</title>
 	<? 	
 		css_include_tag('zone_dialog_list','top','bottom','thickbox');
 		use_jquery();
@@ -16,7 +16,7 @@
 	
 </head>
 <script>
-	total("对话列表","zone");
+	total("对话列表","server");
 </script>
 <body>
 <? require_once('../inc/top.inc.html');?>

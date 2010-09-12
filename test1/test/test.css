@@ -1,0 +1,68 @@
+body{width:964px; margin:0; font:0; background:pink;}
+#ibody{width:964px; margin:0 auto;}
+div{display:inline;}
+#div_top{width:964px; height:33px; background:url("div_top_bj.jpg") repeat-x; float:left;}
+#div_middle{width:964px; height:718px; background:url("div_middle.jpg") no-repeat; float:left;}
+#div_middle2{width:964px; height:55px; background:url("div_middle_bj.jpg")repeat-x; float:left;}
+
+#nav {line-height:28px; float:left; margin-left:49px; font-weight:bolder; padding-bottom:5px; font-size:14px;}
+#nav a{text-decoration:none; float:left; color:white; padding:0px 15px;}
+#nav a:hover {background:url("div_top_bj3.jpg") repeat-x; color:white; float:left; text-decoration:none; padding:0 15px;}
+#search a{float:left; width:16px; height:16px; line-height:33px; margin:6px 0 0 60px;}
+#input{float:left; width:150px; height:18px; margin:4px 0 0 10px;}
+#input_txt{width:150px; height:16px; font-size:12px; border:2px solid #D4D0C7;}
+#go a{float:left; width:31px; height:18px; line-height:33px; margin:5px 0 0 10px;}
+
+#news {float:left; width:481px; height:308px; margin-top:410px;}
+#news_txt {float:left; width:350px; height:160px; margin:40px 0 0 78px; background:red;}
+#news2 {float:left; width:481px; height:308px;  margin-top:410px;}
+#news_txt2 {float:left; width:350px; height:160px; margin:40px 65px 0px 55px; background:red;}
+#readmore a{width:72px; height:17px; margin:26px 0 0 78px; float:left;}
+#readmore2 a{width:72px; height:17px; margin:26px 0 0 52px;float:left;}
+#div_middle2_new{width:188px; height:54px; margin-left:65px; background: url("div_middle2_new.jpg") no-repeat; float:left;}
+#div_middle2 a{width:93px; height:27px; float:left; margin:12px 0 0 105px;}
+
+#div_bottom{width:964px; height:542px; background:url("div_bottom.jpg") no-repeat;float:left;}
+#bottom_first{width:284px; height:384px; margin:20px 0 0 49px;/*background:white;*/float:left;}
+#bottom_sec{width:290px; height:352px; margin-left:28px; float:left; /*background:white;*/}
+#bottom_thr{width:195px; height:328px; margin:25px 0 0 64px; /*background:white;*/ float:left;}
+
+#news_fir{height:86px; width:285px; background:pink; float:left;}
+#bottom_02{height:20px; width:250px; text-indent:20px; font-size:14px; font-weight:bolder; color:red; line-height:20px; margin:19px 0 0 19px; background:url('bottom_02.jpg') no-repeat;}
+#bottom_02 img{float:left;}
+/*#bottom_02 span{height:24px; width:240px; font-size:12px; font-weight:bolder; margin-left:19px;background:red; float:left;}*/
+/*#January2010{font-weight:bolder; font-size:14px; color:red; margin-bottom:5px;}*/
+.news_first{line-height:12px; display:inline; height:24px; width:240px; font-size:12px; margin-left:19px;background:red; float:left; overflow-x:hidden;}
+#news_first font{font-weight:bolder;}
+#more {margin:33px 0 0 222px;}
+#news_sec{height:72px; width:285px; background:green; float:left;}
+#bottom_08{height:20px; width:250px; text-indent:20px; font-size:14px; font-weight:bolder; color:red; line-height:20px; margin:1px 0 0 19px; background:url('bottom_02.jpg') no-repeat;}
+#more2 {margin:37px 0 0 222px;}
+#news_thr{height:86px; width:285px; background:blue; float:left;}
+#bottom_09{height:20px; width:250px; text-indent:20px; font-size:14px; font-weight:bolder; color:red; line-height:20px; margin-left:19px; background:url('bottom_02.jpg') no-repeat;}
+#more3{margin:37px 0px 18px 222px;}
+#bottom_logo{margin:251px 0 0 1px;}
+
+#cup{width:290px; height:51px; margin-top:17px; float:left;}
+#pro{width:248px; height:47px; margin-top:5px; float:right;}
+#cup1{float:left;}
+#m_txt1{width:286px; height:66px; margin:12px 0 0 4px; float:left;}
+#m_txt2{width:286px; height:66px; margin:3px 0 0 4px; float:left;}
+#m_txt3{width:286px; height:66px; margin:3px 0 0 4px; float:left;}
+#m_txt4{width:286px; height:66px; margin:3px 0 0 4px; float:left;}
+#bottom_page{width:294px; line-height:25px; font-size:12px; height:25px; font-weight:bolder; margin:11px 0 0 3px; float:left; background:url("bottom_page2.jpg") no-repeat; border:3px soild #F15B25;}
+#nav2{width:294px; height:25px; line-height:25px; float:left; font-size:12px; font-weight:bolder; color=white; margin-left:2px;}
+#nav3 a{color:white; text-decoration:none;padding:0 5px; float:left;}
+.gang{width:1px; height:10px; line-height:25px;margin-top:8px;background:#FFFFFF; float:left;}
+#tl a{color:white; text-decoration:none; height:20px; margin:8px 0 0 5px; padding:0 1px; float:left;}
+#tr a{color:white; text-decoration:none; height:20px; margin:8px 5px 0 0; padding:0 1px; float:right;}
+
+#pic_cook1 {width:195px; height:94px; margin-top:4px; float:left;}
+#no1 a{float:left;}
+#no2 a{float:right;}
+#pic_cook2{width:195px; height:94px; margin-top:7px; float:left;}
+#no3 a{float:left;}
+#no4 a{float:right;}
+#pic_cook3{width:195px; height:94px; margin-top:7px;  float:left;}
+#no5 a{float:left}
+#no6 a{float:right;}

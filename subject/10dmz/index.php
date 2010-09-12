@@ -40,14 +40,14 @@
 			</div>
 			<div id=content><a target="_blank" href="/zone/news/news.php?id=<?php echo $racecard[0]->id; ?>"><?php echo $racecard[0]->content; ?></a></div>
 		</div>
-		<?php $comment=$db->query('select * from smg_question where problem_id="51" order by create_time asc limit 5'); ?>
+		<?php $comment=$db->query('select * from smg_question where problem_id="52" order by create_time asc limit 5'); ?>
 		<div id=comment>
 			<div class=title>
 				<div class="title_left"><img src="/images/dmz/yjhd_title.jpg"></div>
 				<div class="title_more"><a target="_blank" href="" style="color:#ff0000; font-size:14px; font-weight:bold;">答题抢票</a></div>	
 			</div>
-			<div style="width:100%; height:28px; line-height:14px; font-size:12px; text-indent:2em; color:#ff0000; text-align:center; float:left; display:inline;">7月2日获奖名单：许理 沈陶瑜 TobyGwan<br>7月5日获奖名单：刘晨 吉吉 罗伯特</div>
-			<div id=answer>CCG EXPO互动答题第一期</div><div id=submit>我要答题</div>
+			<div style="width:100%; height:28px; line-height:14px; font-size:12px; text-indent:2em; color:#ff0000; text-align:center; float:left; display:inline;">7月9日—13日我们将从参与答题的网友中随机抽取产生幸运儿赠送精美小礼物！</div>
+			<div id=answer>CCG EXPO互动答题第二期　　　<a target="_blank" href="http://172.27.203.81:8080/news/news/news.php?id=51968">抽奖规则</a></div><div id=submit>我要答题</div>
 			<div id=content>	
 				<?php for($i=0;$i<count($comment);$i++){ ?>
 					<div class=context <?php if($i==0){ ?>style="border-top:none;"<?php } ?>>
@@ -229,7 +229,7 @@
 		{
 			$("#day").attr('src','/images/dmz/logo_start.jpg');	
 		}
-		else if(day<=-4)
+		else if(day<-4)
 		{
 			$("#day").attr('src','/images/dmz/logo_end.jpg');		
 		}

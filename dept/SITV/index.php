@@ -378,7 +378,7 @@ ul {
       <tr align="left">
         <td style="border:1px solid #bbbbbb;">
 				    <? for($i=0;$i<$count; $i++){?>	
-				    	<a target="_blank" style="text-decoration:none;" href="/show/show.php?id=<?php echo $records[$i]->id;?>"><img width="180" style="margin-top:5px; margin-left:12px;" border="0" src="<? echo $records[$i]->src;?>" /></a>
+				    	<a target="_blank" style="text-decoration:none;" href="/show/show.php?id=<?php echo $records[$i]->id;?>"><img width="160" height="160" style="margin-top:5px; margin-left:22px;" border="0" src="<? echo $records[$i]->src;?>" /></a>
 				    <? }?></td>
       </tr>
       <tr><td height="5"></td></tr>

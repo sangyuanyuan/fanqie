@@ -1,0 +1,12 @@
+﻿body{background:#000000; font-size:12px; font-family:宋体; }
+#ibody{width:1000px; height:800px; background:url('/subject/cy/images/cy_bg.jpg') no-repeat; margin:0 auto;}
+#iright{width:472px; margin-top:100px; margin-right:13px; float:right; display:inline;}
+#top{width:472px; height:461px; overflow:hidden; float:left; display:inline;}
+table{width:100%; height:96%; color:#ffffff; font-size:14px; line-height:30px; float:left; display:inline;}
+td{line-height:30px; font-weight:bold;}
+button{width:133px; height:32px; border:0px; font-size:18px; color:#000000; font-weight:bold; cursor:pointer; line-height:32px; background:url(/subject/cy/images/button_bg.png) no-repeat !important; background-image:none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=image, src="/subject/cy/images/button_bg.png");}
+.more{width:70px; margin-top:5px; font-weight:bold; line-height:20px; font-size:14px; text-align:center; float:right; display:inline;}
+.more a{color:#ffffff; text-decoration:none;}
+#about{width:472px; margin-top:25px;  float:right; display:inline;}
+#about .cl{width:227px; height:20px; margin-left:6px; overflow:hidden; line-height:20px; float:left; display:inline;}
+#about .cl a{color:#ffffff; text-decoration:none;}

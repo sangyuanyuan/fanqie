@@ -60,6 +60,10 @@
 			<td width=645 align="left"><input type="checkbox" name="check1" <?php if($item->is_show==1){?>checked="checked"<?php }?>></td>
 		</tr>
 		<tr class=tr3>
+			<td width=150>内　　容：</td>
+			<td width=645 align="left"><?php show_fckeditor('ratings[content]','Admin',true,"265",$item->content);?></td>
+		</tr>
+		<tr class=tr3>
 			<td colspan="2"><button type="submit">提 交</button></td>
 		</tr>
 		<input type="hidden" name="id" value="<?php echo $id;?>">
