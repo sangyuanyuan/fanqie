@@ -8,6 +8,8 @@
   	require_once('../frame.php');
    	css_include_tag('smg','top','bottom');
 		js_include_once_tag('flash');
+		session_start();
+		setsession($_SERVER['HTTP_HOST']);
 	?>
 	<script  language="javascript">    
 		function score(var1)    
@@ -29,8 +31,8 @@
  	</div>
  	<div style="width:995px; line-height:25px; margin-top:10px; text-align:center; float:left; display:inline;">
  		<span style="width:995px; color:red; font-size:20px; font-weight:bold;">游戏结束后，如果您对自己的成绩够满意的话 ，请在游戏下方提交您的姓名和联系电话！分数前三名有礼品送哦！！</span><br>
- 		<embed src="flash.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="650" height="600">
- 			</embed><br><span style="font-weight:bold;">说明：鼠标控制，按住左键续力，松开发射，只能打老虎，如果打到人就会被扣分，注意。</span>
+ 		<embed src="test.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="650" height="600">
+ 			</embed><br><span style="font-weight:bold;">说明：结束游戏后请<span style="color:red;">点击“再来一次”</span>才能记录到您的成绩，当您填写完下面的姓名和电话并提交时，我们会记录您本次游戏中的最好成绩。</span>
  		</div>
 		<form name="flash" method="post" action="flash.post.php" target="_blank"> 
    	<div id=content9 style="width:995px;">

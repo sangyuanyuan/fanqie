@@ -1,5 +1,6 @@
 <?php
     require_once('../../frame.php');
+    judge_role('admin');
 	if($_POST['post_type']=="del"){
 		$db = get_db();
 		$sql = "insert into smg_del_comment (comment_id,news_id,ip,time) values (".$_POST['comment_id'].",".$_POST['news_id'].",'".$_SERVER['REMOTE_ADDR']."','".date("Y-m-d H:i:s")."')";

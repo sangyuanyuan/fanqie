@@ -1,5 +1,7 @@
 ﻿<?php
-    require_once('../frame.php');
+  require_once('../frame.php');
+  session_start();
+	setsession($_SERVER['HTTP_HOST']);
 	$id = $_REQUEST['id'];
 	$first_id = isset($_POST['first_id'])?$_POST['first_id']:$id;
 	$db = get_db();

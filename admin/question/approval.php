@@ -1,5 +1,6 @@
 ﻿<?php
 	require_once('../../frame.php');
+	judge_role('admin');
 	$key = $_REQUEST['key'];
 	$project_id = 0;
 	if($key!=''){

@@ -1,6 +1,7 @@
 <?php 
 	require "../../frame.php";
 	$news_id = $_POST['id'] ? $_POST['id'] : 0;
+	judge_role('admin');
 	//var_dump($_POST);
 	//exit;
 	$news = new table_class('smg_news');

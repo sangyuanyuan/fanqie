@@ -1,5 +1,6 @@
 <?php
 	require_once "../../frame.php";
+	judge_role('admin');
 	$smg_image = new smg_images_class();
 	if($_POST['id']!=''){
 		$smg_image->find($_POST['id']);

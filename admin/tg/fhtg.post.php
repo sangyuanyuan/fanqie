@@ -1,5 +1,6 @@
 ﻿<?php
 	require_once "../../frame.php";
+	judge_role('admin');
 	if($_POST['post_type']=='del_item'){
 		$question_item = new table_class('smg_fhtg_item');
 		$question_item->delete($_POST['del_id']);

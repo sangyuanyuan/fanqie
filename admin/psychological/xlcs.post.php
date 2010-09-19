@@ -1,6 +1,6 @@
 ﻿<?php
     require_once "../../frame.php";
-	
+	judge_role('admin');
 	if($_POST['post_type']=='del'){
 		$db = get_db();
 		$sql = 'delete from smg_xlcs where id='.$_POST['del_id'];

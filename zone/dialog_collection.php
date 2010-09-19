@@ -2,6 +2,8 @@
 require_once('../frame.php');
 if(!is_ajax()){use_jquery();}
 js_include_once_tag('jquery.cookie');
+session_start();
+setsession($_SERVER['HTTP_HOST']);
 ?>
 
 <div style="text-align:center">

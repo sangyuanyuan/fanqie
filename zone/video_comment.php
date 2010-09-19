@@ -1,5 +1,7 @@
 <?php
     require_once('../frame.php');
+    session_start();
+		setsession($_SERVER['HTTP_HOST']);
 ?>
 <div style="width:280px; height:200px; float:left; display:inline;">
 <div style='width:280px; height:30px; margin-top:65px; line-height:15px; float:left; display:inline;'>

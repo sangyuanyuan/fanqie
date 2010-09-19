@@ -612,7 +612,7 @@ marquees.scrollTop=templayer.offsetHeight-marqueesHeight+1;
 					<?php for($i=0;$i<count($fqjmgc);$i++){?>
 						<div class="cl"><a target="_blank" href="/subject/news/news.php?id=<?php echo $fqjmgc[$i]->id; ?>">·<?php echo $fqjmgc[$i]->short_title; ?></a></div>
 					<?php } ?>
-					<div style="width:151px; height:35px; margin-top:6px; overflow:hidden; float:left; display:inline;"><a target="blank" href="subject/cy/"><img border=0 src="images/buyidea.jpg"></a></div>
+					<a target="blank" href="subject/cy/"><img border=0 src="images/buyidea.jpg"></a>
 				</div>
 				<div id=jmgclist style="display:none;">
 					<div class="cl"><a target="_blank" href="/subject/cy/"><img border=0 src="images/index/jmyf.jpg"></a></div>
@@ -1054,7 +1054,38 @@ marquees.scrollTop=templayer.offsetHeight-marqueesHeight+1;
  </div>
  <div id=ibody_bottom>
     <div id=p1>
-      <!-- start bottom_top_left !-->
+      	      	
+ 			<div id=server_brithday>
+				<div id=title>生日祝福</div>
+				<?php
+						$today = date("m-d");
+						$sql = 'select t1.nickname,t1.gender,t1.loginname,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.$today.'" and t1.hide_birthday=0 and t1.state=3';
+						$records = $db->query($sql);
+						$count = count($records);
+						for($i=0;$i< $count;$i++){
+				?>
+				<div class=brithday_content id="brithday_content<?php echo $i; ?>" <?php if($i >0){ ?>style="display:none;"<?php } ?>>
+					<div class=photo><img src="images/headpic.jpg" /></div>
+					<div class=brithdayinfo>
+						<div class=brithdayinfo_l>
+							<div class=title>生日提醒：</div>
+							<div class=l_content>今天是<a href="/server/today.php"><?php echo $records[$i]->nickname; ?></a>的生日（<?php echo $today; ?>）<br><a href="/server/today.php">送他/她生日礼物</a></div>
+						</div>
+						<?php $sql="select distinct(gift_src) from smg_birthday_gift where reciever='".$records[$i]->loginname."' order by created_at desc";
+						$gift=$db->query($sql); ?>
+						<div class=brithdayinfo_r>
+							<div class=title>已收到的礼物：</div>
+							<div class=pic><div style="width:74px; height:14px; line-height:14px; text-align:center; overflow:hidden; color:red; float:left; display:inline;">番茄礼物</div><img style="height:70px;" src="/images/server/gifts/5.gif"></div>
+							<?php for($j=0;$j<count($gift);$j++){ ?>
+							<div class=pic><img src="<?php echo $gift[$j]->gift_src; ?>" /></div>
+							<?php } ?>
+						</div>	
+					</div>
+				</div>
+				<?php } ?>
+				<input id="countbirthday" type="hidden" value="<?php echo $count; ?>">
+			</div>
+			<!-- start bottom_top_left !-->
  			<div id=b_t_l <?php if(date('Y-m-d')=="2010-04-01"){ ?>style="background:url('images/index/bg_b_t_l1.jpg') no-repeat;"<?php } ?>>
 				<div class=l_box>
  					<?php $sql = 'select id,title from smg_question where is_adopt=1 and problem_id<>39 order by create_time desc limit 6';
@@ -1106,37 +1137,7 @@ marquees.scrollTop=templayer.offsetHeight-marqueesHeight+1;
 				<div id=vote><a href="/answer/question.php" target="_blank"><img border=0 src="/images/index/vote1.jpg"></a></div>
 				<div id=begin_vote><a href="/vote/beginvote.php" target="_blank"><img border=0 src="/images/index/begin_vote1.jpg"></a></div>
  			</div>
- 			<!-- end !-->	      	
- 			<div id=server_brithday>
-				<div id=title>生日祝福</div>
-				<?php
-						$today = date("m-d");
-						$sql = 'select t1.nickname,t1.gender,t1.loginname,t2.name from smg_user_real t1 join smg_org_dept t2 on t1.org_id=t2.orgid where t1.birthday_short="'.$today.'" and t1.hide_birthday=0 and t1.state=3';
-						$records = $db->query($sql);
-						$count = count($records);
-						for($i=0;$i< $count;$i++){
-				?>
-				<div class=brithday_content id="brithday_content<?php echo $i; ?>" <?php if($i >0){ ?>style="display:none;"<?php } ?>>
-					<div class=photo><img src="images/headpic.jpg" /></div>
-					<div class=brithdayinfo>
-						<div class=brithdayinfo_l>
-							<div class=title>生日提醒：</div>
-							<div class=l_content>今天是<a href="/server/today.php"><?php echo $records[$i]->nickname; ?></a>的生日（<?php echo $today; ?>）<br><a href="/server/today.php">送他/她生日礼物</a></div>
-						</div>
-						<?php $sql="select distinct(gift_src) from smg_birthday_gift where reciever='".$records[$i]->loginname."' order by created_at desc";
-						$gift=$db->query($sql); ?>
-						<div class=brithdayinfo_r>
-							<div class=title>已收到的礼物：</div>
-							<div class=pic><div style="width:74px; height:14px; line-height:14px; text-align:center; overflow:hidden; color:red; float:left; display:inline;">番茄礼物</div><img style="height:70px;" src="/images/server/gifts/5.gif"></div>
-							<?php for($j=0;$j<count($gift);$j++){ ?>
-							<div class=pic><img src="<?php echo $gift[$j]->gift_src; ?>" /></div>
-							<?php } ?>
-						</div>	
-					</div>
-				</div>
-				<?php } ?>
-				<input id="countbirthday" type="hidden" value="<?php echo $count; ?>">
-			</div>
+ 			<!-- end !-->
       <!-- start bottom_top_right !-->
  			<div id=b_t_r>
  				<div class=l_box>

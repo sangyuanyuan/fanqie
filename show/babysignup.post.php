@@ -1,5 +1,6 @@
 ﻿<?
 	require_once('../frame.php');
+ if(date('Y-m-d')!="2010-09-18"){
 	$db=get_db();
 if($_POST['utype']=="babyvote")
 {
@@ -45,5 +46,10 @@ if($_POST['utype']=="babyitem")
 	$news->save();
 	alert('上传成功！');
 	redirect('babyshow.php?id='.$_POST['baby']['babyid']);
+}
+}
+else
+{
+	alert('对不起今天关闭一切番茄网提交功能！');	
 }
 ?>

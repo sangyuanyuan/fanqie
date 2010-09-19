@@ -3,6 +3,8 @@
 	$id=$_REQUEST['id'];
 	if($id==""||$id==null){die('没有找到网页');}
 	$cookie= (isset($_COOKIE['vote_user'])) ? $_COOKIE['vote_user'] : 0;
+	session_start();
+	setsession($_SERVER['HTTP_HOST']);
 	/*$cookie1=isset($_COOKIE['news_head_'.date('Y-m-d').$id]) ? $_COOKIE['news_head_'.date('Y-m-d').$id] : 0;
 	if($cookie1==0)
 	{

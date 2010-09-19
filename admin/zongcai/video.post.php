@@ -1,5 +1,6 @@
 <?php
 	require_once "../../frame.php";
+	judge_role('admin');
 	$video = new table_class("smg_video");
 	if($_POST['id']!=''){
 		$video->find($_POST['id']);

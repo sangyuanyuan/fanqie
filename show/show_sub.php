@@ -80,7 +80,7 @@
 	</div>
 	<?php } ?>
 	<div id=b_button>
-			<button id="button_submit">提　交</button>
+			<?php if(date('Y-m-d')!="2010-09-18"){?><button id="button_submit">提　交</button><?php } ?>
 	</div>
 	</form>
 </div>

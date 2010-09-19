@@ -1,6 +1,8 @@
 ﻿<? 
 	require_once('../frame.php');
 	$id=$_REQUEST['id'];
+	session_start();
+	setsession($_SERVER['HTTP_HOST']);
 	$db=get_db();
 	$tg=$db->query('select * from smg_tg where id='.$id);
 	$count=$db->query('select sum(num) as total from smg_tg_signup where tg_id='.$id);
@@ -29,7 +31,7 @@
 <body>
 <? 
 	include('../inc/top.inc.html');
-	$sql="SELECT count(*) as num FROM smg_tg_signup where tg_id=46 and name='".$_COOKIE['smg_user_nickname']."'";
+	$sql="SELECT count(*) as num FROM smg_tg_signup where tg_id=".$id." and name='".$_COOKIE['smg_user_nickname']."'";
 	$num=$db->query($sql);
 ?>
 <div id=bodys>

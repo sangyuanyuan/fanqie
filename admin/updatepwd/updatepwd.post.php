@@ -1,5 +1,6 @@
 ﻿<?
 require_once('../../frame.php');
+judge_role('admin');
  function reset_password($userid, $oldpwd, $newpwd, $type, $operatorid=null){
   	$operatorid = is_null($operatorid) ? $userid : $operatorid;
   	$client = new SoapClient("http://172.27.203.49/ssov1.0/changepassword.asmx?WSDL");

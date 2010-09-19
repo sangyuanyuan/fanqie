@@ -58,7 +58,7 @@
 						<td>参评简介：</td>
 						<td align="left"><textarea name="post[content]" maxlength="20"></textarea>(只显示20个字)</td>
 					</tr>
-					<tr><td></td><td><button style="margin-right:10px;" OnClick="signuppost()">提　交</button><button type="reset">重　置</button></td></tr>
+					<tr><td></td><td><?php if(date('Y-m-d')!="2010-09-18"){  ?><button style="margin-right:10px;" OnClick="signuppost()">提　交</button><button type="reset">重　置</button><?php } ?></td></tr>
 				</table>
 				</form>
 			</div>

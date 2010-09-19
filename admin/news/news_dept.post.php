@@ -1,5 +1,6 @@
 <?php 
 	require "../../frame.php";
+	judge_role('dept_admin');
 	#var_dump($_POST);
 	//die();
 	$news_id = $_POST['id'] ? $_POST['id'] : 0;

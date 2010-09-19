@@ -100,7 +100,7 @@ if($type=="report")
 
 }
 
-if($type=="weather"||$type="index")
+/*if($type=="weather"||$type="index")
 {
 	$full_path='http://qixiang.xixik.com/call/5/58362.htm';
 	$fcontent="";
@@ -128,7 +128,7 @@ if($type=="weather"||$type="index")
 	fclose($handle);
   echo "天气预报静态执行成功<br>";
 
-}
+}*/
 
 
 

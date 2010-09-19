@@ -1,5 +1,6 @@
 ﻿<?php 
 	require "../../frame.php";
+	judge_role('admin');
 	$db=get_db();
 	if($_POST['subtype']=="add")
 	{
@@ -47,5 +48,5 @@
 		$db->execute('update smg_admin_subject set is_del=1 where id='.$_POST['subid']);
 		return "OK";
 	}
-	#redirect('index.php');
+	redirect('index.php');
 ?>

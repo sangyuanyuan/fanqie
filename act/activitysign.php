@@ -7,8 +7,12 @@
 	<link href="/css/smg.css" rel="stylesheet" type="text/css">
 	<script language="javascript" src="activity.js"></script>
 	<?php require_once('../frame.php');
+		session_start();
+		setsession($_SERVER['HTTP_HOST']);
 		use_jquery();
-		js_include_once_tag('total'); ?>
+		js_include_once_tag('total');
+				
+	?>
 	<script>
 		total("报名","news");
 	</script>

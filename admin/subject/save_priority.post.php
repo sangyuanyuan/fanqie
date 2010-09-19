@@ -1,5 +1,6 @@
 <?php
     include_once("../../frame.php");
+    judge_role('admin');
 	$ids = $_POST['ids'];
 	if($ids == "") exit;
 	var_dump($_POST);

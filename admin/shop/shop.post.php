@@ -1,5 +1,6 @@
 <?php
 	require_once "../../frame.php";
+	judge_role('admin');
 	$shop= new table_class("smg_shop");
 	if($_POST['tgid']!="")
 	{

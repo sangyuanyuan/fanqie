@@ -1,5 +1,6 @@
 <?php
 	include "../../frame.php";
+	judge_role('admin');
 	$gift = new table_class('smg_gift');
 	$gift->update_attributes($_POST['gift'],false);
 	$gift->id = $_REQUEST['gift_id'] ? $_REQUEST['gift_id'] : 0;

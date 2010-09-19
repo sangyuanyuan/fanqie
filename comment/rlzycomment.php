@@ -1,6 +1,8 @@
 ﻿<?php require_once('../frame.php');
 	css_include_tag('global');
 	use_jquery();
+	session_start();
+	setsession($_SERVER['HTTP_HOST']);
 	$db=get_db();
 	$cookie=$_COOKIE['smg_username'];
 	$comment=$db->query('select * from smg_comment where resource_type="rlzy" order by created_at desc limit 5');

@@ -2,6 +2,7 @@
 	include("../../pChart/pChart/pData.php");
  	include("../../pChart/pChart/pChart.php");
   require_once('../../frame.php');
+  judge_role('admin');
   $ratings = new table_class('smg_ratings');
   $w   =   date( "w ",   strtotime($_POST['date']));
   if($w!=0)

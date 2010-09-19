@@ -61,10 +61,10 @@
 		</div>	
 	</div>
 </div>-->
-<div id=bannerimg1>
-	<!--<iframe src=/CR/index.html width="995" height="200" scrolling="no" frameborder="0"></iframe>-->
+<!--<div id=bannerimg1>
+	<iframe src=/CR/index.html width="995" height="200" scrolling="no" frameborder="0"></iframe>
 	<a target="_blank" href="/subject/dfgb/"><img border=0 src="/images/dfgb.jpg"></a>
-</div>
+</div>-->
 <div id=nav2>
 	
 	<div id=box <? if($nowday=="2010-04-01"){ ?>style="background:url('/images/top/bg2.jpg') no-repeat;"<?php } ?>>

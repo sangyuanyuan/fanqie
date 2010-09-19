@@ -1,5 +1,6 @@
 <?php 
 	include "../../frame.php";
+	judge_role('admin');
 	$id = $_POST['id'];
 	$item_id = $_POST['item_id'];
 	$subject_item = new table_class('smg_subject_items');

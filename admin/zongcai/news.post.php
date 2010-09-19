@@ -1,5 +1,6 @@
 <?php 
 	require "../../frame.php";
+	judge_role('admin');
 	$news_id = $_POST['id'] ? $_POST['id'] : 0;
 	$news = new table_class('smg_news');
 	if($news_id!=0){

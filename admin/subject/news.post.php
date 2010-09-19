@@ -1,5 +1,6 @@
 <?php 
 	include "../../frame.php";
+	judge_role('admin');
 	$news  = new table_class('smg_news');
 	if($_POST['id']){
 		//edit

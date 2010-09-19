@@ -1,5 +1,7 @@
 ﻿<?
 include('../inc/db.inc.php');
+session_start();
+setsession($_SERVER['HTTP_HOST']);
 ConnectDB();
 
 $strsql='select * from smg_subject_category_vote';

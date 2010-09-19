@@ -1,5 +1,6 @@
 ﻿<?php
 	require_once('../../frame.php');
+	judge_role('admin');
 	$id = $_REQUEST['id'];
 	$question = new table_class('smg_question');
 	$question->find($id);

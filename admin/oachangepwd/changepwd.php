@@ -7,6 +7,8 @@
 </head>
 <? 
 	require_once("../../frame.php");
+	session_start();
+	setsession($_SERVER['HTTP_HOST']);
 	js_include_tag("total");
 	css_include_tag('login');
 	validate_form('change');

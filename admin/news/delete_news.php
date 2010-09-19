@@ -1,5 +1,6 @@
 <?php
 	require "../../frame.php";
+	judge_role('admin');
 	$db = get_db();
 	if($_POST['delete_news']){
 		$delete_news_id  = implode(',',$_POST['delete_news']);

@@ -1,5 +1,6 @@
 ﻿<?
 require_once('../frame.php');
+judge_role('admin');
 $db=get_db();
 if($_POST['uptype']=="tginsert")
 {

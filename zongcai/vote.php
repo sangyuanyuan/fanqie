@@ -1,5 +1,7 @@
 ﻿<?php
 	require_once('../frame.php');
+	session_start();
+	setsession($_SERVER['HTTP_HOST']);
 	$db = get_db();
 	$sql = 'select * from smg_zongcai_vote order by id desc limit 1';
 	$vote = $db->query($sql);

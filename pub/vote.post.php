@@ -62,7 +62,7 @@
 			$vote_record->id=0;
 			$vote_record->vote_id = $k;
 			$vote_record->vote_item_id = $value;
-			$vote_record->ip = $_SERVER['REMOTE_ADDR'];
+			$vote_record->ip = getenv('HTTP_X_FORWARDED_FOR');
 			$vote_record->user_id = $_COOKIE['smg_userid'];
 			$vote_record->created_at = now();
 			$vote_record->nick_name = $nick_name;

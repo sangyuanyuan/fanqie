@@ -1,5 +1,8 @@
 ﻿<?
 require_once('../../frame.php');
+session_start();
+if($_SESSION['url']=="172.27.203.81:8080"||$_SESSION['url']=="172.27.203.83:8080")
+{
  function reset_password($userid, $oldpwd, $newpwd, $type, $operatorid=null){
   	$operatorid = is_null($operatorid) ? $userid : $operatorid;
   	$client = new SoapClient("http://172.27.203.49/ssov1.0/changepassword.asmx?WSDL");
@@ -30,4 +33,8 @@ $success=0;
 	{
 		die('密码更新失败！');
 	}
+}else
+{
+	die('请通过您的帐号进入修改密码页面！');	
+}
 ?>

@@ -1,5 +1,6 @@
 <?php
   require_once('../../frame.php');
+  judge_role('admin');
   $rating_value = new table_class("smg_rating_value");
   if($_POST['id']!=''){
   	$rating_value->find($_POST['id']);

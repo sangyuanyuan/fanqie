@@ -1,5 +1,6 @@
 <?php
     require_once "../../frame.php";
+    judge_role('admin');
 	if($_POST['type']=='clear'){
 		$db = get_db();
 		$sql = 'update smg_zongcai_item set state=0 where id in( select item_id from smg_zongcai_vote_item) and program_type="'.$_POST['name'].'"';

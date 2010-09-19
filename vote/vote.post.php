@@ -1,5 +1,8 @@
 ﻿<?php
     require_once('../frame.php');
+    session_start();
+	if($_SESSION['url']=="172.27.203.81:8080"||$_SESSION['url']=="172.27.203.83:8080")
+	{
 	$vote_item_id=$_REQUEST['item_id'];
 	$ip=getenv('REMOTE_ADDR');
 	$userid=$_REQUEST['userid'];
@@ -59,4 +62,10 @@
 	else{
 		echo "error";
 	}
+	$_SESSION['url']="";
+}
+else
+{
+	die('请从网站入口提交！');	
+}
 ?>

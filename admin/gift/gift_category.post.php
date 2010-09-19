@@ -1,5 +1,6 @@
 <?php
 	include "../../frame.php";
+	judge_role('admin');
 	$category = new table_class('smg_gift_category');
 	$category->update_attributes($_POST['category'],false);
 	$category->id = $_REQUEST['category_id'] ? $_REQUEST['category_id'] : 0;

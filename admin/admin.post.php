@@ -1,6 +1,8 @@
 ﻿<?php
 include('../frame.php');
+judge_role('admin');
 $db=get_db();
+
 if ($_POST["type"]=="tgcan")
 {
 	$StrSql='update smg_tg set isadopt=0 where id='.$_POST['id']; 

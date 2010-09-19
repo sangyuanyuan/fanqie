@@ -1,5 +1,6 @@
 ﻿<?php
 include('../../frame.php');
+judge_role('admin');
  $db=get_db();
 if ($_POST["type"]=="xlcscan")
 {

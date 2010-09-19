@@ -1,5 +1,6 @@
 <?php
   require_once('../../frame.php');
+  judge_role('admin');
   $item = new table_class('smg_report_item');
   if($_POST['id']!=''){
   	$item->find($_POST['id']);

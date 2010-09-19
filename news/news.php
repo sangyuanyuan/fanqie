@@ -4,6 +4,8 @@
 	//$id =14621;
 	if($id==""||$id==null){die('没有找到网页');}
 	$cookie= (isset($_COOKIE['vote_user'])) ? $_COOKIE['vote_user'] : 0;
+	session_start();
+	setsession($_SERVER['HTTP_HOST']);
 	/*$cookie1=isset($_COOKIE['news_'.date('Y-m-d').$id]) ? $_COOKIE['news_'.date('Y-m-d').$id] : 0;
 	if($cookie1==0)
 	{
@@ -242,7 +244,7 @@ $db->execute($sql); ?>
 						if($record[0]->categoryname=="绿番茄")
 						{
 			 ?>
-			 <div class=sy style="font-size:14px;">文章摘自上海市文化广播影视监测中心《上海声屏监测》</div>
+			 <!--<div class=sy style="font-size:14px;">文章摘自上海市文化广播影视监测中心《上海声屏监测》</div>-->
 			<?php } ?>
 			<div id=content>
 				

@@ -2,7 +2,7 @@
 	require_once "../../frame.php";
 	//var_dump($_POST);
 	
-	
+	judge_role('admin');
 	if($_POST['type']=='del_leader'){
 		$db = get_db();
 		$sql = 'delete from smg_dialog_leader where id='.$_POST['del_id'];

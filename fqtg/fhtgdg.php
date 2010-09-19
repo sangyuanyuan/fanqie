@@ -1,5 +1,7 @@
 ﻿<? 
 	require_once('../frame.php');
+	session_start();
+	setsession($_SERVER['HTTP_HOST']);
 	$id=$_REQUEST['id'];
 	$db=get_db();
 	$tg=$db->query('select * from smg_fhtg_item where id='.$id);

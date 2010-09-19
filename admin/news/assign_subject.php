@@ -1,6 +1,5 @@
 <?php
 	require_once('../../frame.php');
-	
 	$key = urldecode($_REQUEST['key']);
 	if($_REQUEST['show_div'] != '0'){
 		echo "<div id='result_box'>";

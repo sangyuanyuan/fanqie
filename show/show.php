@@ -1,5 +1,7 @@
 <?php
 	require_once('../frame.php');
+	session_start();
+	setsession($_SERVER['HTTP_HOST']);
 	$id = $_REQUEST['id'];
 	$image = new smg_images_class();
 	$image->find($id);

@@ -1,5 +1,6 @@
 <?php
  	require_once('../../frame.php');
+ 	judge_role('admin');
 	$id_str=explode("|",$_POST['id_str']); 
 	$short_title_length_str=explode("|",$_POST['short_title_length_str']); 
 	$id_str_num=sizeof($id_str)-1;

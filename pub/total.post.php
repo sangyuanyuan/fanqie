@@ -29,7 +29,7 @@
 	$record=$db -> query($strsql);
 	if(!$record || count($record)==0)
 	{
-		$strsql='insert into smg_total (platform,name,datetime,count,parentname) values("'.$platform.'","'.$name.'",now(),1,"'.$parent_name.'")'; 
+		$strsql='insert into smg_total (platform,name,datetime,count,parentname,ip) values("'.$platform.'","'.$name.'",now(),1,"'.$parent_name.'","'.getenv('HTTP_X_FORWARDED_FOR').'")'; 
 		$record = $db->execute($strsql);
 	}
 	else

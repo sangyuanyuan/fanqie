@@ -1,5 +1,6 @@
 ﻿<?php
 	require_once "../../frame.php";
+	judge_role('admin');
 	$subject = new table_class('smg_subject');
 	$subject->update_attributes($_POST['subject'],false);
 	$subject->identity = strtolower($subject->identity);

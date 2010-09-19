@@ -1,5 +1,7 @@
 <?php
 	require_once('../frame.php');
+	session_start();
+	setsession($_SERVER['HTTP_HOST']);
 	$user_id = $_COOKIE['smg_username'];
 	$db = get_db();
 	$sql = 'select hide_birthday from smg_user_real where loginname="'.$user_id.'"';

@@ -1,5 +1,6 @@
 <?php
 	require_once "../../frame.php";
+	judge_role('admin');
 	$magazine = new table_class("smg_magazine");
 	if($_POST['id']!=''){
 		$magazine->find($_POST['id']);
