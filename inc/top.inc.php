@@ -63,7 +63,7 @@
 </div>-->
 <div id=bannerimg1>
 	<!--<iframe src=/CR/index.html width="995" height="200" scrolling="no" frameborder="0"></iframe>-->
-	<!--<a target="_blank" href="http://172.27.203.81:8080/news/news/news.php?id=58678">--><img border=0 src="/images/guoqing.jpg"><!--</a>-->
+	<a target="_blank" href="http://172.27.203.81:8080/news/news/news.php?id=58728"><img border=0 src="/images/guoqing.gif"></a>
 </div>
 <div id=nav2>
 	
