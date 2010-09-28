@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_zongcai_item`;
+CREATE TABLE  `smg_new`.`smg_zongcai_item` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `name` varchar(255) default NULL COMMENT '节目名称',
+  `program_type` varchar(45) default NULL COMMENT '节目类型',
+  `author` varchar(255) default NULL COMMENT '主创人员',
+  `mobile` varchar(255) default NULL COMMENT '联系方式',
+  `broadcast_name` varchar(255) default NULL COMMENT '播出栏目',
+  `program_length` varchar(255) default NULL COMMENT '节目长度',
+  `broadcast_unit` varchar(255) default NULL COMMENT '播出单位',
+  `broadcast_date` text COMMENT '播出日期',
+  `reason` text COMMENT '推荐理由',
+  `progress` text COMMENT '采编、创造过程',
+  `effect` text COMMENT '节目影响',
+  `uploader` varchar(255) default NULL COMMENT '推荐、上传者',
+  `createtime` datetime default NULL COMMENT '推荐时间',
+  `state` int(10) unsigned default '0' COMMENT '状态：0未审核1:已采用2：未采用，3：已删除''',
+  `url` varchar(255) default NULL COMMENT '节目链接地址',
+  `photourl` varchar(200) default NULL COMMENT '附件图片',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

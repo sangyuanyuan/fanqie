@@ -7,10 +7,10 @@
 	require_once(CURRENT_DIR ."lib/database_connection_class.php");
 	require_once(CURRENT_DIR ."lib/table_class.php");
 	require_once(CURRENT_DIR ."lib/upload_file_class.php");
-	require_once CURRENT_DIR ."lib/image_handler_class.php";
-	require_once CURRENT_DIR ."lib/smg_images_class.php";
-	require_once CURRENT_DIR ."lib/smg_category_class.php";
-	require_once CURRENT_DIR ."lib/smg_vote_class.php";
+	require_once(CURRENT_DIR ."lib/image_handler_class.php");
+	require_once(CURRENT_DIR ."lib/smg_images_class.php");
+	require_once(CURRENT_DIR ."lib/smg_category_class.php");
+	require_once(CURRENT_DIR ."lib/smg_vote_class.php");
 	
 	function get_config($var,$path=''){
 		if(empty($path)){$path = LIB_PATH .'../config/config.php';}

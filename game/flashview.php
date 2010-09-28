@@ -6,7 +6,12 @@
 	<meta http-equiv=Content-Language content=zh-CN>
 	<title>SMG</title>
 	<? css_include_tag('smg','top','bottom');
+		use_jquery();
+		js_include_once_tag('total');
 	?>
+	<script  language="javascript">   
+		total("FLASH游戏","subject");
+	</script>
 </head>
 <body>
 <? 

@@ -1,6 +1,6 @@
 <?php
 //CMS cache file, DO NOT modify me!
-//Created on June 10, 2010, 15:48
+//Created on June 12, 2010, 10:37
 
 $NodeInfo = array (
   'NodeID' => '3',
@@ -30,8 +30,8 @@ $NodeInfo = array (
   'IsMail' => '0',
   'Disabled' => '0',
   'AutoPublish' => '1',
-  'IndexPortalURL' => '/publish/index.php/{NodeID},{Page}.html',
-  'ContentPortalURL' => '/publish/content.php/{IndexID},{Page}.html',
+  'IndexPortalURL' => 'http://172.27.203.81:8080/subject/djnews/71/publish/index.php/{NodeID},{Page}.html',
+  'ContentPortalURL' => 'http://172.27.203.81:8080/subject/djnews/71/publish/content.php/{IndexID},{Page}.html',
   'Pager' => 'default.php',
   'Editor' => 'default.php',
   'WorkFlow' => '0',
@@ -50,24 +50,24 @@ $NodeInfo = array (
   'SubNodeID' => '3',
   'ParentNodeID' => '1%3',
   'Nav' => 'a:2:{i:0;a:2:{s:6:"NodeID";s:1:"1";s:4:"Name";s:15:"7.1党的生日";}i:1;a:2:{s:6:"NodeID";s:1:"3";s:4:"Name";s:18:"党旗下的宣言";}}',
-  'URL' => '/publish/index.php/3,0.html',
+  'URL' => 'http://172.27.203.81:8080/subject/djnews/71/publish/index.php/3,0.html',
   'Navigation' => 
   array (
     0 => 
     array (
       'NodeID' => '1',
       'Name' => '7.1党的生日',
-      'URL' => '/publish/index.php/1,0.html',
+      'URL' => 'http://172.27.203.81:8080/subject/djnews/71/publish/index.php/1,0.html',
       'NodeName' => '7.1党的生日',
-      'NodeURL' => '/publish/index.php/1,0.html',
+      'NodeURL' => 'http://172.27.203.81:8080/subject/djnews/71/publish/index.php/1,0.html',
     ),
     1 => 
     array (
       'NodeID' => '3',
       'Name' => '党旗下的宣言',
-      'URL' => '/publish/index.php/3,0.html',
+      'URL' => 'http://172.27.203.81:8080/subject/djnews/71/publish/index.php/3,0.html',
       'NodeName' => '党旗下的宣言',
-      'NodeURL' => '/publish/index.php/3,0.html',
+      'NodeURL' => 'http://172.27.203.81:8080/subject/djnews/71/publish/index.php/3,0.html',
     ),
   ),
 );

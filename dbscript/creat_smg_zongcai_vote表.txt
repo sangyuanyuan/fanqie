@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_zongcai_vote`;
+CREATE TABLE  `smg_new`.`smg_zongcai_vote` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `createtime` datetime default NULL,
+  `endtime` datetime default NULL,
+  `votetype` varchar(55) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;

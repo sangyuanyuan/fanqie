@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_dialog_question`;
+CREATE TABLE  `smg_new`.`smg_dialog_question` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `dialog_id` int(10) unsigned DEFAULT '0',
+  `ip` varchar(45) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `writer` varchar(255) DEFAULT NULL,
+  `content` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,0 +1,2 @@
+ALTER TABLE smg_images ADD dept_id int(10) ;
+ALTER TABLE smg_images ADD commentable varchar(50) ;

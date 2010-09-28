@@ -1,6 +1,6 @@
 <?php
 //CMS cache file, DO NOT modify me!
-//Created on June 10, 2010, 15:48
+//Created on June 12, 2010, 10:31
 
 $NODE_LIST = array (
   1 => 
@@ -54,7 +54,7 @@ $NODE_LIST = array (
     'cHeader' => 1,
     'NodeType' => '1',
     'WorkFlow' => '0',
-    'NodeGUID' => NULL,
+    'NodeGUID' => '',
     'NodeClassMark' => NULL,
     'NodeSort' => '0',
   ),
@@ -68,7 +68,7 @@ $NODE_LIST = array (
     'cHeader' => 1,
     'NodeType' => '1',
     'WorkFlow' => '0',
-    'NodeGUID' => NULL,
+    'NodeGUID' => '',
     'NodeClassMark' => NULL,
     'NodeSort' => '0',
   ),
@@ -82,7 +82,7 @@ $NODE_LIST = array (
     'cHeader' => 1,
     'NodeType' => '1',
     'WorkFlow' => '0',
-    'NodeGUID' => NULL,
+    'NodeGUID' => '',
     'NodeClassMark' => NULL,
     'NodeSort' => '0',
   ),
@@ -96,7 +96,7 @@ $NODE_LIST = array (
     'cHeader' => 1,
     'NodeType' => '1',
     'WorkFlow' => '0',
-    'NodeGUID' => NULL,
+    'NodeGUID' => '',
     'NodeClassMark' => NULL,
     'NodeSort' => '0',
   ),

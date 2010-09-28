@@ -612,7 +612,7 @@ marquees.scrollTop=templayer.offsetHeight-marqueesHeight+1;
 					<?php for($i=0;$i<count($fqjmgc);$i++){?>
 						<div class="cl"><a target="_blank" href="/subject/news/news.php?id=<?php echo $fqjmgc[$i]->id; ?>">·<?php echo $fqjmgc[$i]->short_title; ?></a></div>
 					<?php } ?>
-					<a target="blank" href="subject/cy/"><img border=0 src="images/buyidea.jpg"></a>
+					<a target="blank" href="news/abld_list.php"><img border=0 src="images/abld.jpg"></a>
 				</div>
 				<div id=jmgclist style="display:none;">
 					<div class="cl"><a target="_blank" href="/subject/cy/"><img border=0 src="images/index/jmyf.jpg"></a></div>

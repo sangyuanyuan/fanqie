@@ -1,4 +1,4 @@
-<div id=btm>
+﻿<div id=btm>
 		<div id=content>
 				<div id=top>
 					LINKS　应用连接：
@@ -13,6 +13,7 @@
 						<a href="http://172.27.203.47/login/smglogin.jsp" target="_blank">管理信息平台</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.16:8088/zb/" target="_blank">节目信息管理系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.28.10.237:8080/fbrole/main/login.jsp" target="_blank">广播媒资管理系统</a><span style="margin-left:10px;">|</span>
+						<a href="http://172.18.7.34/smgbudget/admin/Index/Login.aspx" target="_blank">大型活动（节目）经费审批系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.16:8188/book/" target="_blank">SMG图书管理系统 </a><span style="margin-left:10px;">|</span>
 						<a href="http://172.28.10.31/" target="_blank">广播节目检索系统</a><span style="margin-left:10px;">|</span>
 						<a href="http://172.27.203.88/zc/" target="_blank">集团固定资产管理信息系统</a><span style="margin-left:10px;">|</span>

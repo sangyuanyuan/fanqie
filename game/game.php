@@ -6,12 +6,14 @@
 	<title>SMG -FLASH游戏</title>
 	<?php
   	require_once('../frame.php');
+  	use_jquery();
    	css_include_tag('smg','top','bottom');
-		js_include_once_tag('flash');
+		js_include_once_tag('flash','total');
 		session_start();
 		setsession($_SERVER['HTTP_HOST']);
 	?>
-	<script  language="javascript">    
+	<script  language="javascript">   
+		total("FLASH游戏","subject"); 
 		function score(var1)    
 		{ 
 			document.getElementById('score').value=var1;		

@@ -1,11 +1,11 @@
 <?php
 //CMS cache file, DO NOT modify me!
-//Created on June 10, 2010, 13:54
+//Created on June 12, 2010, 10:31
 
 $SYS_ENV = array (
   'backupPath' => '../backup',
   'hostname' => NULL,
-  'sysname' => '/CMSware/',
+  'sysname' => 'http://172.27.203.81:8080/subject/djnews/71/CMSware/',
   'version' => 'CMSware 2.5 Plus Stable',
   'templatePath' => '../templates',
   'smtp_host' => '',
@@ -17,18 +17,18 @@ $SYS_ENV = array (
   'upImgSize' => '10000',
   'upAttachType' => 'zip|rar|doc|xls|txt',
   'upAttachSize' => '1000',
-  'tasktimeout' => '',
+  'tasktimeout' => '1276236718',
   'sitename' => NULL,
   'uploadPath' => NULL,
-  'ResourceNum' => '322',
+  'ResourceNum' => '530',
   'upload_flash_num' => '32',
   'upload_attach_num' => '44',
   'uploadUrl' => NULL,
   'upFlashSize' => '10000',
   'openTask' => '',
   'ResourcePath' => '../resource',
-  'localImgIgnoreURL' => '{localhost}{127.0.0.1}{localhost}',
-  'publishResourceNum' => '10852',
+  'localImgIgnoreURL' => '{localhost}{127.0.0.1}{172.27.203.81:8080}',
+  'publishResourceNum' => '11084',
   'is_safe_mode' => '',
   'ftp_server' => '',
   'ftp_server_port' => '',

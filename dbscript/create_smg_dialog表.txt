@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_dialog`;
+CREATE TABLE  `smg_new`.`smg_dialog` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `is_adopt` int(10) unsigned default '0',
+  `click_count` int(10) unsigned default NULL,
+  `create_time` datetime default NULL,
+  `start_time` datetime default NULL,
+  `end_time` datetime default NULL,
+  `title` varchar(255) default NULL,
+  `content` text,
+  `master_ids` varchar(255) default '0',
+  `leader_ids` varchar(255) default '0',
+  `leader_state` varchar(255) default NULL,
+  `photo_url` varchar(255) default NULL,
+  `video_url` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

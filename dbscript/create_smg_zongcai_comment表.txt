@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS `smg_new`.`smg_zongcai_comment`;
+CREATE TABLE  `smg_new`.`smg_zongcai_comment` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `commenter` varchar(255) default NULL,
+  `content` text,
+  `ip` varchar(45) default NULL,
+  `createtime` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `Index_2` (`createtime`)
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;

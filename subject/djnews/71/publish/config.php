@@ -1,7 +1,7 @@
 <?php
 /*****************必须正确配置以下2个参数*****************/
 
-$PUBLISH_CONFIG['ROOT_PATH'] = "../CMSware/"; //定义cmsware系统根目录,也就是publish目录相对{cmsware}目录的路径
+$PUBLISH_CONFIG['ROOT_PATH'] = "../CMSware/"; //定义cmsware系统根目录的位置，请勿忘记最后的斜杠
 $PUBLISH_CONFIG['OAS_PATH'] = "../oas/";	//定义OAS目录的位置，请勿忘记最后的斜杠
 
 
@@ -13,16 +13,6 @@ $PUBLISH_CONFIG['comment_validcode'] = true; //评论启用验证码
 $PUBLISH_DEBUG = false; //是否开启调试模式
 
 //如果需要挂接会员系统，请设置。会员接口挂接论坛名，论坛名为{cmsware}plugins/bbsInterface/bbs下的目录名
-
-/*********************************************************/
-
-
-
-
-
-
-
-/*******************以下内容请不要随意修改****************/
 define('ROOT_PATH', $PUBLISH_CONFIG['ROOT_PATH']); 
 define('_BBS_INTERFACE', $PUBLISH_CONFIG['BBS_INTERFACE']); 
 define('PLUGIN', 'bbsInterface'); //会员接口插件目录名
@@ -138,4 +128,11 @@ function search_page($pagenum,$currentpage,$sendVar)
 return $page;
 
 }
+
+$_REQUEST = preg_replace('/([\.]+[\/\\\\]+)/', '', $_REQUEST); 
+
+$_GET = preg_replace('/([\.]+[\/\\\\]+)/', '', $_GET); 
+
+$_POST = preg_replace('/([\.]+[\/\\\\]+)/', '', $_POST);
+
 ?>

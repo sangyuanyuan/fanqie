@@ -100,7 +100,7 @@ if($type=="report")
 
 }
 
-/*if($type=="weather"||$type="index")
+if($type=="weather"||$type="index")
 {
 	$full_path='http://qixiang.xixik.com/call/5/58362.htm';
 	$fcontent="";
@@ -111,13 +111,14 @@ if($type=="report")
 	}
 	fclose($fp);
 	$fcontent=StrChar($fcontent);
-	$fcontent = strstr($fcontent, '<div class="temperature">');
+	$fcontent = strstr($fcontent, '<span class="cc30">');
 	$fcontent=strip_tags($fcontent);
+	alert($fcontent);
 	$fcontent=str_replace('详细&raquo;','',$fcontent);
 	$fcontent=str_replace('℃～','!@#$%^&*()',$fcontent);
 	$fcontent=str_replace('℃','℃ ',$fcontent);
 	$fcontent=str_replace('!@#$%^&*()','℃～',$fcontent);
-	$fcontent = '<meta http-equiv=Content-Type content="text/html; charset=utf-8">'.$fcontent;
+	$fcontent = '<meta http-equiv=Content-Type content="text/html; charset=gbk">'.$fcontent;
 	$fcontent = '<body style="margin:0; background:#CD3301;  color:#ffffff;  font-size:12px; text-align:center">'.$fcontent;
 	$fcontent = $fcontent.'</body>';
 	
@@ -126,9 +127,9 @@ if($type=="report")
 	
 	fwrite($handle,$fcontent);
 	fclose($handle);
-  echo "天气预报静态执行成功<br>";
+  	echo "天气预报静态执行成功<br>";
 
-}*/
+}
 
 
 

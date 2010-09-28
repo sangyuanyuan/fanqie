@@ -1,6 +1,6 @@
 <?php
 //CMS cache file, DO NOT modify me!
-//Created on June 10, 2010, 14:44
+//Created on June 12, 2010, 10:31
 
 $CONTENT_MODEL_INFO = array (
   1 => 

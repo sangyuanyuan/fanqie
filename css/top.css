@@ -11,7 +11,7 @@ li{margin:0px; list-style-type:none;}
 #nav1 #context span{color:#999999; cursor:pointer;}
 #nav1 #home{width:51px; height:11px; margin-top:3px; margin-right:5px; float:right; display:inline;}
 /*#nimg1{width:995px; height:116px; background:url('/images/shanghailoianghui.jpg') no-repeat; text-align:center; margin:0 auto;}*/
-#bannerimg{width:995px; height:250px; background:url('/images/smg-banner.jpg') no-repeat; margin:0 auto; position:relative;}
+#bannerimg{width:995px; height:200px; background:url('/images/smg-banner.jpg') no-repeat; margin:0 auto; position:relative;}
 #bannerimg1{width:995px; height:200px; margin:0 auto; position:relative; overflow:hidden;}
 #bannerimg1 #wz{width:440px; height:50px; margin-top:190px; color:#ffffff; font-size:30px; line-height:50px; font-weight:bold; float:right; display:inline;}
 #bannerimg1 #wz a{color:yellow; text-decoration:none;}
@@ -34,7 +34,7 @@ li{margin:0px; list-style-type:none;}
 #nav2 li{height:22px; margin:0px; margin-left:6px; line-height:17px; color:#ffffff; float:left; display:inline;}
 #nav2 li a{color:#ffffff; text-decoration:none;}
 /*#nav2 #weather{width:135px; height:22px; margin-top:15px; text-align:center; color:#ffffff; background:#CD3301; float:left; display:inline;}*/
-#nav2 #weather{width:135px; height:10px; margin-top:15px; text-align:center; color:#ffffff; float:left; display:inline;}
+#nav2 #weather{width:135px; height:22px; margin-top:15px; text-align:center; color:#ffffff; float:left; display:inline;}
 #nav2 #weather img{width:15px; height:15px; margin-top:2px; margin-left:3px; float:left; display:inline;}
 #nav2 #weather #context{width:110px; text-align:center; float:left; display:inline;}
 #nav2 #deptbtn{width:102px; height:23px; margin-left:15px; background:url('/images/top/dept.jpg') no-repeat; cursor:pointer; float:left; display:inline;}
